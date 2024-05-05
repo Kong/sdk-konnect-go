@@ -1,0 +1,11 @@
+# InvalidParameterChoiceItem
+
+
+## Fields
+
+| Field                                                               | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `Field`                                                             | *string*                                                            | :heavy_check_mark:                                                  | N/A                                                                 | name                                                                |
+| `Rule`                                                              | [*components.InvalidRules](../../models/components/invalidrules.md) | :heavy_minus_sign:                                                  | invalid parameters rules                                            |                                                                     |
+| `Reason`                                                            | *string*                                                            | :heavy_check_mark:                                                  | N/A                                                                 | is a required field                                                 |
+| `Choices`                                                           | []*interface{}*                                                     | :heavy_minus_sign:                                                  | N/A                                                                 |                                                                     |

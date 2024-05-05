@@ -1,0 +1,12 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    konnect:
+        inputs:
+            - location: ./openapi.yaml
+targets:
+    go:
+        target: go
+        source: konnect
+        output: .
+        repo: github.com/Kong/sdk-konnect-go
