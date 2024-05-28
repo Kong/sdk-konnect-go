@@ -27,7 +27,7 @@ func newControlPlaneGroups(sdkConfig sdkConfiguration) *ControlPlaneGroups {
 
 // GetControlPlanesIDGroupMemberStatus - Control Plane Group Member Status
 // Determines the group membership status of a control plane.
-func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberStatus(ctx context.Context, id string) (*components.GroupMemberStatus, error) {
+func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberStatus(ctx context.Context, id string) (*operations.GetControlPlanesIDGroupMemberStatusResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-control-planes-id-group-member-status",
@@ -85,6 +85,12 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberStatus(ctx context.Con
 		}
 	}
 
+	res := &operations.GetControlPlanesIDGroupMemberStatusResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: httpRes.Header.Get("Content-Type"),
+		RawResponse: httpRes,
+	}
+
 	rawBody, err := io.ReadAll(httpRes.Body)
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
@@ -101,7 +107,7 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberStatus(ctx context.Con
 				return nil, err
 			}
 
-			return &out, nil
+			res.GroupMemberStatus = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -172,11 +178,14 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberStatus(ctx context.Con
 	default:
 		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
 	}
+
+	return res, nil
+
 }
 
 // GetControlPlanesIDGroupMemberships - List Control Plane Group Memberships
 // Returns an array of control planes that are a member of this control plane group.
-func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberships(ctx context.Context, request operations.GetControlPlanesIDGroupMembershipsRequest) (*components.ListGroupMemberships, error) {
+func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberships(ctx context.Context, request operations.GetControlPlanesIDGroupMembershipsRequest) (*operations.GetControlPlanesIDGroupMembershipsResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-control-planes-id-group-memberships",
@@ -234,6 +243,12 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberships(ctx context.Cont
 		}
 	}
 
+	res := &operations.GetControlPlanesIDGroupMembershipsResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: httpRes.Header.Get("Content-Type"),
+		RawResponse: httpRes,
+	}
+
 	rawBody, err := io.ReadAll(httpRes.Body)
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
@@ -250,7 +265,7 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberships(ctx context.Cont
 				return nil, err
 			}
 
-			return &out, nil
+			res.ListGroupMemberships = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -321,6 +336,9 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberships(ctx context.Cont
 	default:
 		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
 	}
+
+	return res, nil
+
 }
 
 // PostControlPlanesIDGroupMembershipsAdd - Add Control Plane Group Members
@@ -390,7 +408,11 @@ func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsAdd(ctx context.
 		}
 	}
 
-	res := &operations.PostControlPlanesIDGroupMembershipsAddResponse{}
+	res := &operations.PostControlPlanesIDGroupMembershipsAddResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: httpRes.Header.Get("Content-Type"),
+		RawResponse: httpRes,
+	}
 
 	rawBody, err := io.ReadAll(httpRes.Body)
 	if err != nil {
@@ -470,6 +492,7 @@ func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsAdd(ctx context.
 	}
 
 	return res, nil
+
 }
 
 // PostControlPlanesIDGroupMembershipsRemove - Remove Control Plane Group Members
@@ -539,7 +562,11 @@ func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsRemove(ctx conte
 		}
 	}
 
-	res := &operations.PostControlPlanesIDGroupMembershipsRemoveResponse{}
+	res := &operations.PostControlPlanesIDGroupMembershipsRemoveResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: httpRes.Header.Get("Content-Type"),
+		RawResponse: httpRes,
+	}
 
 	rawBody, err := io.ReadAll(httpRes.Body)
 	if err != nil {
@@ -619,11 +646,12 @@ func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsRemove(ctx conte
 	}
 
 	return res, nil
+
 }
 
 // GetControlPlanesIDGroupStatus - Get Control Plane Group Status
 // Returns the status of a control plane group, including existing conflicts.
-func (s *ControlPlaneGroups) GetControlPlanesIDGroupStatus(ctx context.Context, id string) (*components.GroupStatus, error) {
+func (s *ControlPlaneGroups) GetControlPlanesIDGroupStatus(ctx context.Context, id string) (*operations.GetControlPlanesIDGroupStatusResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-control-planes-id-group-status",
@@ -681,6 +709,12 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupStatus(ctx context.Context, 
 		}
 	}
 
+	res := &operations.GetControlPlanesIDGroupStatusResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: httpRes.Header.Get("Content-Type"),
+		RawResponse: httpRes,
+	}
+
 	rawBody, err := io.ReadAll(httpRes.Body)
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
@@ -697,7 +731,7 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupStatus(ctx context.Context, 
 				return nil, err
 			}
 
-			return &out, nil
+			res.GroupStatus = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -768,4 +802,7 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupStatus(ctx context.Context, 
 	default:
 		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
 	}
+
+	return res, nil
+
 }

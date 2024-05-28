@@ -4,6 +4,7 @@ package operations
 
 import (
 	"github.com/Kong/sdk-konnect-go/models/components"
+	"net/http"
 )
 
 type UpdateControlPlaneRequest struct {
@@ -24,4 +25,43 @@ func (o *UpdateControlPlaneRequest) GetUpdateControlPlaneRequest() components.Up
 		return components.UpdateControlPlaneRequest{}
 	}
 	return o.UpdateControlPlaneRequest
+}
+
+type UpdateControlPlaneResponse struct {
+	// HTTP response content type for this operation
+	ContentType string
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
+	// A response to updating a control plane.
+	ControlPlane *components.ControlPlane
+}
+
+func (o *UpdateControlPlaneResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *UpdateControlPlaneResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *UpdateControlPlaneResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *UpdateControlPlaneResponse) GetControlPlane() *components.ControlPlane {
+	if o == nil {
+		return nil
+	}
+	return o.ControlPlane
 }

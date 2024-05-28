@@ -9,11 +9,11 @@ import (
 
 // BadRequestError - standard error
 type BadRequestError struct {
-	Status   interface{} `json:"status"`
-	Title    interface{} `json:"title"`
-	Type     interface{} `json:"type,omitempty"`
-	Instance interface{} `json:"instance"`
-	Detail   interface{} `json:"detail"`
+	Status   any `json:"status"`
+	Title    any `json:"title"`
+	Type     any `json:"type,omitempty"`
+	Instance any `json:"instance"`
+	Detail   any `json:"detail"`
 	// invalid parameters
 	InvalidParameters []components.InvalidParameters `json:"invalid_parameters"`
 }

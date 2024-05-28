@@ -2,11 +2,14 @@
 
 package operations
 
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"net/http"
+)
+
 type ListControlPlanesRequest struct {
-	// The maximum number of items to include per page. The last page of a collection may include fewer items.
-	PageSize *int64 `queryParam:"style=form,explode=true,name=page[size]"`
-	// Determines which page of the entities to retrieve.
-	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
+	// Pagination related query parameters
+	Page *components.OffsetPage `queryParam:"style=deepObject,explode=true,name=page"`
 	// Filter by direct equality comparison of the name property with a supplied value.
 	FilterNameEq *string `queryParam:"style=form,explode=true,name=filter[name][eq]"`
 	// Filter by direct equality comparison (short-hand) of the name property with a supplied value.
@@ -31,18 +34,11 @@ type ListControlPlanesRequest struct {
 	Labels *string `queryParam:"style=form,explode=true,name=labels"`
 }
 
-func (o *ListControlPlanesRequest) GetPageSize() *int64 {
+func (o *ListControlPlanesRequest) GetPage() *components.OffsetPage {
 	if o == nil {
 		return nil
 	}
-	return o.PageSize
-}
-
-func (o *ListControlPlanesRequest) GetPageNumber() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.PageNumber
+	return o.Page
 }
 
 func (o *ListControlPlanesRequest) GetFilterNameEq() *string {
@@ -120,4 +116,43 @@ func (o *ListControlPlanesRequest) GetLabels() *string {
 		return nil
 	}
 	return o.Labels
+}
+
+type ListControlPlanesResponse struct {
+	// HTTP response content type for this operation
+	ContentType string
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
+	// A paginated list response for a collection of control planes.
+	ListControlPlanesResponse *components.ListControlPlanesResponse
+}
+
+func (o *ListControlPlanesResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ListControlPlanesResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ListControlPlanesResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *ListControlPlanesResponse) GetListControlPlanesResponse() *components.ListControlPlanesResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ListControlPlanesResponse
 }

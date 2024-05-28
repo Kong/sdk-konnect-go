@@ -39,11 +39,7 @@ func main() {
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
-
-	ctx := context.Background()
-	res, err := s.ControlPlanes.List(ctx, operations.ListControlPlanesRequest{
-		PageSize:             sdkkonnectgo.Int64(10),
-		PageNumber:           sdkkonnectgo.Int64(1),
+	request := operations.ListControlPlanesRequest{
 		FilterNameEq:         sdkkonnectgo.String("test"),
 		FilterName:           sdkkonnectgo.String("test"),
 		FilterNameContains:   sdkkonnectgo.String("test"),
@@ -55,7 +51,9 @@ func main() {
 		FilterClusterType:    sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
 		FilterClusterTypeNeq: sdkkonnectgo.String("test"),
 		Labels:               sdkkonnectgo.String("key:value,existCheck"),
-	})
+	}
+	ctx := context.Background()
+	res, err := s.ControlPlanes.List(ctx, request)
 	if err != nil {
 
 		var e *sdkerrors.BadRequestError
@@ -127,11 +125,7 @@ func main() {
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
-
-	ctx := context.Background()
-	res, err := s.ControlPlanes.List(ctx, operations.ListControlPlanesRequest{
-		PageSize:             sdkkonnectgo.Int64(10),
-		PageNumber:           sdkkonnectgo.Int64(1),
+	request := operations.ListControlPlanesRequest{
 		FilterNameEq:         sdkkonnectgo.String("test"),
 		FilterName:           sdkkonnectgo.String("test"),
 		FilterNameContains:   sdkkonnectgo.String("test"),
@@ -143,11 +137,13 @@ func main() {
 		FilterClusterType:    sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
 		FilterClusterTypeNeq: sdkkonnectgo.String("test"),
 		Labels:               sdkkonnectgo.String("key:value,existCheck"),
-	})
+	}
+	ctx := context.Background()
+	res, err := s.ControlPlanes.List(ctx, request)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res != nil {
+	if res.ListControlPlanesResponse != nil {
 		// handle response
 	}
 }
@@ -176,11 +172,7 @@ func main() {
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
-
-	ctx := context.Background()
-	res, err := s.ControlPlanes.List(ctx, operations.ListControlPlanesRequest{
-		PageSize:             sdkkonnectgo.Int64(10),
-		PageNumber:           sdkkonnectgo.Int64(1),
+	request := operations.ListControlPlanesRequest{
 		FilterNameEq:         sdkkonnectgo.String("test"),
 		FilterName:           sdkkonnectgo.String("test"),
 		FilterNameContains:   sdkkonnectgo.String("test"),
@@ -192,11 +184,13 @@ func main() {
 		FilterClusterType:    sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
 		FilterClusterTypeNeq: sdkkonnectgo.String("test"),
 		Labels:               sdkkonnectgo.String("key:value,existCheck"),
-	})
+	}
+	ctx := context.Background()
+	res, err := s.ControlPlanes.List(ctx, request)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res != nil {
+	if res.ListControlPlanesResponse != nil {
 		// handle response
 	}
 }
@@ -263,11 +257,7 @@ func main() {
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
-
-	ctx := context.Background()
-	res, err := s.ControlPlanes.List(ctx, operations.ListControlPlanesRequest{
-		PageSize:             sdkkonnectgo.Int64(10),
-		PageNumber:           sdkkonnectgo.Int64(1),
+	request := operations.ListControlPlanesRequest{
 		FilterNameEq:         sdkkonnectgo.String("test"),
 		FilterName:           sdkkonnectgo.String("test"),
 		FilterNameContains:   sdkkonnectgo.String("test"),
@@ -279,11 +269,13 @@ func main() {
 		FilterClusterType:    sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
 		FilterClusterTypeNeq: sdkkonnectgo.String("test"),
 		Labels:               sdkkonnectgo.String("key:value,existCheck"),
-	})
+	}
+	ctx := context.Background()
+	res, err := s.ControlPlanes.List(ctx, request)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res != nil {
+	if res.ListControlPlanesResponse != nil {
 		// handle response
 	}
 }

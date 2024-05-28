@@ -4,9 +4,10 @@ sources:
     konnect:
         inputs:
             - location: ./openapi.yaml
+        registry:
+            location: registry.speakeasyapi.dev/kong/kong/konnect
 targets:
     go:
         target: go
         source: konnect
         output: .
-        repo: github.com/Kong/sdk-konnect-go

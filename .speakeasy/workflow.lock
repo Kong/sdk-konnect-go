@@ -1,6 +1,18 @@
-speakeasyVersion: 1.279.0
-sources: {}
-targets: {}
+speakeasyVersion: 1.296.1
+sources:
+    konnect:
+        sourceNamespace: konnect
+        sourceRevisionDigest: sha256:0629eef3ba0b2abdbc51e3d6eb85cfb825a7756d31aaf3af881528bed827d2eb
+        sourceBlobDigest: sha256:24344a0b5ab03568128ae3c62715231fe32c0ebfcc10e0ad329c3aebb4107d54
+        tags:
+            - latest
+targets:
+    go:
+        source: konnect
+        sourceNamespace: konnect
+        sourceRevisionDigest: sha256:0629eef3ba0b2abdbc51e3d6eb85cfb825a7756d31aaf3af881528bed827d2eb
+        sourceBlobDigest: sha256:24344a0b5ab03568128ae3c62715231fe32c0ebfcc10e0ad329c3aebb4107d54
+        outLocation: .
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -8,6 +20,8 @@ workflow:
         konnect:
             inputs:
                 - location: ./openapi.yaml
+            registry:
+                location: registry.speakeasyapi.dev/kong/kong/konnect
     targets:
         go:
             target: go

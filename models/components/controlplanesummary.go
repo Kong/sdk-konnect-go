@@ -22,7 +22,6 @@ const (
 func (e ControlPlaneSummaryClusterType) ToPointer() *ControlPlaneSummaryClusterType {
 	return &e
 }
-
 func (e *ControlPlaneSummaryClusterType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -54,7 +53,6 @@ const (
 func (e ControlPlaneSummaryAuthType) ToPointer() *ControlPlaneSummaryAuthType {
 	return &e
 }
-
 func (e *ControlPlaneSummaryAuthType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

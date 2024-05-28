@@ -17,7 +17,6 @@ const (
 func (e InternalServerErrorStatus) ToPointer() *InternalServerErrorStatus {
 	return &e
 }
-
 func (e *InternalServerErrorStatus) UnmarshalJSON(data []byte) error {
 	var v int64
 	if err := json.Unmarshal(data, &v); err != nil {

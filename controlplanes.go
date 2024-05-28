@@ -28,7 +28,7 @@ func newControlPlanes(sdkConfig sdkConfiguration) *ControlPlanes {
 
 // List Control Planes
 // Returns an array of control plane objects containing information about the Konnect Control Planes.
-func (s *ControlPlanes) List(ctx context.Context, request operations.ListControlPlanesRequest) (*components.ListControlPlanesResponse, error) {
+func (s *ControlPlanes) List(ctx context.Context, request operations.ListControlPlanesRequest) (*operations.ListControlPlanesResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "list-control-planes",
@@ -86,6 +86,12 @@ func (s *ControlPlanes) List(ctx context.Context, request operations.ListControl
 		}
 	}
 
+	res := &operations.ListControlPlanesResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: httpRes.Header.Get("Content-Type"),
+		RawResponse: httpRes,
+	}
+
 	rawBody, err := io.ReadAll(httpRes.Body)
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
@@ -102,7 +108,7 @@ func (s *ControlPlanes) List(ctx context.Context, request operations.ListControl
 				return nil, err
 			}
 
-			return &out, nil
+			res.ListControlPlanesResponse = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -161,11 +167,14 @@ func (s *ControlPlanes) List(ctx context.Context, request operations.ListControl
 	default:
 		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
 	}
+
+	return res, nil
+
 }
 
 // Create Control Plane
 // Create a control plane in the Konnect Organization.
-func (s *ControlPlanes) Create(ctx context.Context, request components.CreateControlPlaneRequest) (*components.ControlPlane, error) {
+func (s *ControlPlanes) Create(ctx context.Context, request components.CreateControlPlaneRequest) (*operations.CreateControlPlaneResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "create-control-plane",
@@ -225,6 +234,12 @@ func (s *ControlPlanes) Create(ctx context.Context, request components.CreateCon
 		}
 	}
 
+	res := &operations.CreateControlPlaneResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: httpRes.Header.Get("Content-Type"),
+		RawResponse: httpRes,
+	}
+
 	rawBody, err := io.ReadAll(httpRes.Body)
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
@@ -241,7 +256,7 @@ func (s *ControlPlanes) Create(ctx context.Context, request components.CreateCon
 				return nil, err
 			}
 
-			return &out, nil
+			res.ControlPlane = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -324,11 +339,14 @@ func (s *ControlPlanes) Create(ctx context.Context, request components.CreateCon
 	default:
 		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
 	}
+
+	return res, nil
+
 }
 
 // Get - Fetch Control Plane
 // Returns information about a team from a given team ID.
-func (s *ControlPlanes) Get(ctx context.Context, id string) (*components.ControlPlane, error) {
+func (s *ControlPlanes) Get(ctx context.Context, id string) (*operations.GetControlPlaneResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-control-plane",
@@ -386,6 +404,12 @@ func (s *ControlPlanes) Get(ctx context.Context, id string) (*components.Control
 		}
 	}
 
+	res := &operations.GetControlPlaneResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: httpRes.Header.Get("Content-Type"),
+		RawResponse: httpRes,
+	}
+
 	rawBody, err := io.ReadAll(httpRes.Body)
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
@@ -402,7 +426,7 @@ func (s *ControlPlanes) Get(ctx context.Context, id string) (*components.Control
 				return nil, err
 			}
 
-			return &out, nil
+			res.ControlPlane = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -473,11 +497,14 @@ func (s *ControlPlanes) Get(ctx context.Context, id string) (*components.Control
 	default:
 		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
 	}
+
+	return res, nil
+
 }
 
 // Update Control Plane
 // Update an individual control plane.
-func (s *ControlPlanes) Update(ctx context.Context, id string, updateControlPlaneRequest components.UpdateControlPlaneRequest) (*components.ControlPlane, error) {
+func (s *ControlPlanes) Update(ctx context.Context, id string, updateControlPlaneRequest components.UpdateControlPlaneRequest) (*operations.UpdateControlPlaneResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "update-control-plane",
@@ -542,6 +569,12 @@ func (s *ControlPlanes) Update(ctx context.Context, id string, updateControlPlan
 		}
 	}
 
+	res := &operations.UpdateControlPlaneResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: httpRes.Header.Get("Content-Type"),
+		RawResponse: httpRes,
+	}
+
 	rawBody, err := io.ReadAll(httpRes.Body)
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
@@ -558,7 +591,7 @@ func (s *ControlPlanes) Update(ctx context.Context, id string, updateControlPlan
 				return nil, err
 			}
 
-			return &out, nil
+			res.ControlPlane = &out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -641,6 +674,9 @@ func (s *ControlPlanes) Update(ctx context.Context, id string, updateControlPlan
 	default:
 		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
 	}
+
+	return res, nil
+
 }
 
 // Delete Control Plane
@@ -703,7 +739,11 @@ func (s *ControlPlanes) Delete(ctx context.Context, id string) (*operations.Dele
 		}
 	}
 
-	res := &operations.DeleteControlPlaneResponse{}
+	res := &operations.DeleteControlPlaneResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: httpRes.Header.Get("Content-Type"),
+		RawResponse: httpRes,
+	}
 
 	rawBody, err := io.ReadAll(httpRes.Body)
 	if err != nil {
@@ -795,4 +835,5 @@ func (s *ControlPlanes) Delete(ctx context.Context, id string) (*operations.Dele
 	}
 
 	return res, nil
+
 }

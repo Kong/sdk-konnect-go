@@ -4,6 +4,7 @@ package operations
 
 import (
 	"github.com/Kong/sdk-konnect-go/models/components"
+	"net/http"
 )
 
 type PostControlPlanesIDGroupMembershipsAddRequest struct {
@@ -28,4 +29,31 @@ func (o *PostControlPlanesIDGroupMembershipsAddRequest) GetGroupMembership() *co
 }
 
 type PostControlPlanesIDGroupMembershipsAddResponse struct {
+	// HTTP response content type for this operation
+	ContentType string
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
+}
+
+func (o *PostControlPlanesIDGroupMembershipsAddResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PostControlPlanesIDGroupMembershipsAddResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PostControlPlanesIDGroupMembershipsAddResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

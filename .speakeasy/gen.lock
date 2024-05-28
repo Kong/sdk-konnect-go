@@ -1,21 +1,26 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 0474ecf509ad5be0147c0b5499ee3281
+  docChecksum: 56db0cd737c3bb799c5316990bf62956
   docVersion: 2.0.0
-  speakeasyVersion: 1.279.0
-  generationVersion: 2.322.5
-  releaseVersion: 0.0.2
-  configChecksum: 9e63c79bf5db340b0dcd52b093597a90
+  speakeasyVersion: 1.296.1
+  generationVersion: 2.338.1
+  releaseVersion: 0.1.0
+  configChecksum: 68addbb5babf48c66c4bfb2b75fe0e4b
 features:
   go:
-    core: 3.4.7
+    additionalDependencies: 0.1.0
+    core: 3.4.10
     flattening: 2.81.1
     globalSecurity: 2.82.9
+    globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.2
+    intellisenseMarkdownSupport: 0.1.0
     nameOverrides: 2.81.2
-    responseFormat: 0.1.1
-    unions: 2.85.4
+    nullables: 0.1.0
+    responseFormat: 0.1.2
+    sdkHooks: 0.1.0
+    unions: 2.85.8
 generatedFiles:
   - controlplanes.go
   - controlplanegroups.go
@@ -37,6 +42,16 @@ generatedFiles:
   - internal/utils/retries.go
   - internal/utils/security.go
   - internal/utils/utils.go
+  - /models/operations/listcontrolplanes.go
+  - /models/operations/createcontrolplane.go
+  - /models/operations/getcontrolplane.go
+  - /models/operations/updatecontrolplane.go
+  - /models/operations/deletecontrolplane.go
+  - /models/operations/getcontrolplanesidgroupmemberstatus.go
+  - /models/operations/getcontrolplanesidgroupmemberships.go
+  - /models/operations/postcontrolplanesidgroupmembershipsadd.go
+  - /models/operations/postcontrolplanesidgroupmembershipsremove.go
+  - /models/operations/getcontrolplanesidgroupstatus.go
   - /models/components/listcontrolplanesresponse.go
   - /models/components/controlplane.go
   - /models/components/paginatedmeta.go
@@ -45,6 +60,7 @@ generatedFiles:
   - /models/components/invalidparameterchoiceitem.go
   - /models/components/invalidrules.go
   - /models/components/invalidparameterdependentitem.go
+  - /models/components/offsetpage.go
   - /models/components/createcontrolplanerequest.go
   - /models/components/proxyurl.go
   - /models/components/updatecontrolplanerequest.go
@@ -63,15 +79,25 @@ generatedFiles:
   - /models/sdkerrors/conflicterror.go
   - /models/sdkerrors/internalservererror.go
   - /models/sdkerrors/notfounderror.go
-  - /models/operations/listcontrolplanes.go
-  - /models/operations/getcontrolplane.go
-  - /models/operations/updatecontrolplane.go
-  - /models/operations/deletecontrolplane.go
-  - /models/operations/getcontrolplanesidgroupmemberstatus.go
-  - /models/operations/getcontrolplanesidgroupmemberships.go
-  - /models/operations/postcontrolplanesidgroupmembershipsadd.go
-  - /models/operations/postcontrolplanesidgroupmembershipsremove.go
-  - /models/operations/getcontrolplanesidgroupstatus.go
+  - docs/models/operations/listcontrolplanesrequest.md
+  - docs/models/operations/listcontrolplanesresponse.md
+  - docs/models/operations/createcontrolplaneresponse.md
+  - docs/models/operations/getcontrolplanerequest.md
+  - docs/models/operations/getcontrolplaneresponse.md
+  - docs/models/operations/updatecontrolplanerequest.md
+  - docs/models/operations/updatecontrolplaneresponse.md
+  - docs/models/operations/deletecontrolplanerequest.md
+  - docs/models/operations/deletecontrolplaneresponse.md
+  - docs/models/operations/getcontrolplanesidgroupmemberstatusrequest.md
+  - docs/models/operations/getcontrolplanesidgroupmemberstatusresponse.md
+  - docs/models/operations/getcontrolplanesidgroupmembershipsrequest.md
+  - docs/models/operations/getcontrolplanesidgroupmembershipsresponse.md
+  - docs/models/operations/postcontrolplanesidgroupmembershipsaddrequest.md
+  - docs/models/operations/postcontrolplanesidgroupmembershipsaddresponse.md
+  - docs/models/operations/postcontrolplanesidgroupmembershipsremoverequest.md
+  - docs/models/operations/postcontrolplanesidgroupmembershipsremoveresponse.md
+  - docs/models/operations/getcontrolplanesidgroupstatusrequest.md
+  - docs/models/operations/getcontrolplanesidgroupstatusresponse.md
   - docs/models/components/listcontrolplanesresponse.md
   - docs/models/components/config.md
   - docs/models/components/controlplane.md
@@ -82,6 +108,7 @@ generatedFiles:
   - docs/models/components/invalidrules.md
   - docs/models/components/rule.md
   - docs/models/components/invalidparameterdependentitem.md
+  - docs/models/components/offsetpage.md
   - docs/models/components/clustertype.md
   - docs/models/components/authtype.md
   - docs/models/components/createcontrolplanerequest.md
@@ -110,18 +137,6 @@ generatedFiles:
   - docs/models/sdkerrors/internalservererrorstatus.md
   - docs/models/sdkerrors/internalservererror.md
   - docs/models/sdkerrors/notfounderror.md
-  - docs/models/operations/listcontrolplanesrequest.md
-  - docs/models/operations/getcontrolplanerequest.md
-  - docs/models/operations/updatecontrolplanerequest.md
-  - docs/models/operations/deletecontrolplanerequest.md
-  - docs/models/operations/deletecontrolplaneresponse.md
-  - docs/models/operations/getcontrolplanesidgroupmemberstatusrequest.md
-  - docs/models/operations/getcontrolplanesidgroupmembershipsrequest.md
-  - docs/models/operations/postcontrolplanesidgroupmembershipsaddrequest.md
-  - docs/models/operations/postcontrolplanesidgroupmembershipsaddresponse.md
-  - docs/models/operations/postcontrolplanesidgroupmembershipsremoverequest.md
-  - docs/models/operations/postcontrolplanesidgroupmembershipsremoveresponse.md
-  - docs/models/operations/getcontrolplanesidgroupstatusrequest.md
   - USAGE.md
   - .gitattributes
   - internal/hooks/hooks.go

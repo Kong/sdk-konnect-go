@@ -32,8 +32,7 @@ paths:
         Returns an array of control plane objects containing information about
         the Konnect Control Planes.
       parameters:
-        - $ref: '#/components/parameters/PageSize'
-        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/OffsetPage'
         - $ref: '#/components/parameters/FilterByNameEquality'
         - $ref: '#/components/parameters/FilterByNameEqualityShort'
         - $ref: '#/components/parameters/FilterByNameContains'
@@ -426,6 +425,27 @@ components:
       schema:
         type: string
         example: test
+    OffsetPage:
+      name: page
+      description: Pagination related query parameters
+      required: false
+      in: query
+      style: deepObject
+      explode: true
+      schema:
+        type: object
+        required:
+          - size
+          - number
+        properties:
+          size:
+            type: string
+            description: >-
+              The maximum number of items to include per page. The last page of
+              a collection may include fewer items.
+          number:
+            type: string
+            description: Determines which page of the entities to retrieve.
     PageSize:
       name: page[size]
       description: >-

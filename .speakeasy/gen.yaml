@@ -12,8 +12,9 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 go:
-  version: 0.0.2
+  version: 0.1.0
   additionalDependencies: {}
+  allowUnknownFieldsInWeakUnions: false
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
   imports:
@@ -26,6 +27,7 @@ go:
       webhooks: models/webhooks
   inputModelSuffix: input
   maxMethodParams: 2
+  methodArguments: require-security-and-request
   outputModelSuffix: output
   packageName: github.com/Kong/sdk-konnect-go
-  responseFormat: flat
+  responseFormat: envelope

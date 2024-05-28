@@ -7,8 +7,8 @@ standard error
 
 | Field                        | Type                         | Required                     | Description                  | Example                      |
 | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| `Status`                     | *interface{}*                | :heavy_check_mark:           | N/A                          | 403                          |
-| `Title`                      | *interface{}*                | :heavy_check_mark:           | N/A                          | Forbidden                    |
-| `Type`                       | *interface{}*                | :heavy_minus_sign:           | N/A                          | https://httpstatuses.com/403 |
-| `Instance`                   | *interface{}*                | :heavy_check_mark:           | N/A                          | kong:trace:1234567890        |
-| `Detail`                     | *interface{}*                | :heavy_check_mark:           | N/A                          | Forbidden                    |
+| `Status`                     | *any*                        | :heavy_check_mark:           | N/A                          | 403                          |
+| `Title`                      | *any*                        | :heavy_check_mark:           | N/A                          | Forbidden                    |
+| `Type`                       | *any*                        | :heavy_minus_sign:           | N/A                          | https://httpstatuses.com/403 |
+| `Instance`                   | *any*                        | :heavy_check_mark:           | N/A                          | kong:trace:1234567890        |
+| `Detail`                     | *any*                        | :heavy_check_mark:           | N/A                          | Forbidden                    |

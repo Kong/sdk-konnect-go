@@ -8,11 +8,11 @@ import (
 
 // UnauthorizedError - standard error
 type UnauthorizedError struct {
-	Status   interface{} `json:"status"`
-	Title    interface{} `json:"title"`
-	Type     interface{} `json:"type,omitempty"`
-	Instance interface{} `json:"instance"`
-	Detail   interface{} `json:"detail"`
+	Status   any `json:"status"`
+	Title    any `json:"title"`
+	Type     any `json:"type,omitempty"`
+	Instance any `json:"instance"`
+	Detail   any `json:"detail"`
 }
 
 var _ error = &UnauthorizedError{}

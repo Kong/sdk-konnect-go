@@ -4,6 +4,7 @@ package components
 
 import (
 	"errors"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -41,21 +42,21 @@ func CreateInvalidParametersInvalidParameterDependentItem(invalidParameterDepend
 
 func (u *InvalidParameters) UnmarshalJSON(data []byte) error {
 
-	invalidParameterChoiceItem := InvalidParameterChoiceItem{}
+	var invalidParameterChoiceItem InvalidParameterChoiceItem = InvalidParameterChoiceItem{}
 	if err := utils.UnmarshalJSON(data, &invalidParameterChoiceItem, "", true, true); err == nil {
 		u.InvalidParameterChoiceItem = &invalidParameterChoiceItem
 		u.Type = InvalidParametersTypeInvalidParameterChoiceItem
 		return nil
 	}
 
-	invalidParameterDependentItem := InvalidParameterDependentItem{}
+	var invalidParameterDependentItem InvalidParameterDependentItem = InvalidParameterDependentItem{}
 	if err := utils.UnmarshalJSON(data, &invalidParameterDependentItem, "", true, true); err == nil {
 		u.InvalidParameterDependentItem = &invalidParameterDependentItem
 		u.Type = InvalidParametersTypeInvalidParameterDependentItem
 		return nil
 	}
 
-	return errors.New("could not unmarshal into supported union types")
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for InvalidParameters", string(data))
 }
 
 func (u InvalidParameters) MarshalJSON() ([]byte, error) {
@@ -67,5 +68,5 @@ func (u InvalidParameters) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.InvalidParameterDependentItem, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type: all fields are null")
+	return nil, errors.New("could not marshal union type InvalidParameters: all fields are null")
 }
