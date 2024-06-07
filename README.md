@@ -1,6 +1,6 @@
 # sdk-konnect-go
 
-This is a prototype and should not be use
+This is a prototype and should not be used. See [CONTRIBUTING.md](https://github.com/Kong/sdk-konnect-go/blob/main/CONTRIBUTING.md) for information on how this SDK is generated.
 
 <!-- No SDK Installation -->
 <!-- No SDK Example Usage -->
