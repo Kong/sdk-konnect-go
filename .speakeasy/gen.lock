@@ -3,14 +3,14 @@ id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
   docChecksum: 56db0cd737c3bb799c5316990bf62956
   docVersion: 2.0.0
-  speakeasyVersion: 1.296.1
-  generationVersion: 2.338.1
-  releaseVersion: 0.1.0
-  configChecksum: 68addbb5babf48c66c4bfb2b75fe0e4b
+  speakeasyVersion: 1.314.2
+  generationVersion: 2.349.6
+  releaseVersion: 0.1.1
+  configChecksum: 03662155ed145c1d31f5e23cdeab9109
 features:
   go:
     additionalDependencies: 0.1.0
-    core: 3.4.10
+    core: 3.4.14
     flattening: 2.81.1
     globalSecurity: 2.82.9
     globalSecurityCallbacks: 0.1.0
