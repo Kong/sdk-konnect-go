@@ -339,10 +339,7 @@ components:
     CreateControlPlaneRequest:
       x-speakeasy-entity: GatewayControlPlane
       title: CreateControlPlaneRequest
-      description: >
-        The request schema for the create control plane request.
-
-        +kubebuilder:object:generate=true
+      description: The request schema for the create control plane request.
       type: object
       additionalProperties: false
       properties:
