@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 0257c97ce8300e2e7153bd6aee449189
+  docChecksum: 27d627f3467fc5026cf3053315a38346
   docVersion: 2.0.0
   speakeasyVersion: 1.321.0
   generationVersion: 2.354.2
-  releaseVersion: 0.2.1
-  configChecksum: cf0ab17394e9e2121aea210b85ad0a81
+  releaseVersion: 0.2.2
+  configChecksum: e404ecb9c97fbbb591b8f4269a4ebe60
 features:
   go:
     additionalDependencies: 0.1.0
@@ -49,10 +49,8 @@ generatedFiles:
   - /models/operations/postcontrolplanesidgroupmembershipsremove.go
   - /models/components/controlplane.go
   - /models/components/invalidparameters.go
-  - /models/components/invalidparameterstandard.go
-  - /models/components/invalidrules.go
-  - /models/components/invalidparameterminimumlength.go
   - /models/components/invalidparameterchoiceitem.go
+  - /models/components/invalidrules.go
   - /models/components/invalidparameterdependentitem.go
   - /models/components/createcontrolplanerequest.go
   - /models/components/proxyurl.go
@@ -80,13 +78,9 @@ generatedFiles:
   - docs/models/components/config.md
   - docs/models/components/controlplane.md
   - docs/models/components/invalidparameters.md
-  - docs/models/components/invalidparameterstandard.md
+  - docs/models/components/invalidparameterchoiceitem.md
   - docs/models/components/invalidrules.md
   - docs/models/components/rule.md
-  - docs/models/components/invalidparameterminimumlength.md
-  - docs/models/components/invalidparameterchoiceitemrule.md
-  - docs/models/components/invalidparameterchoiceitem.md
-  - docs/models/components/invalidparameterdependentitemrule.md
   - docs/models/components/invalidparameterdependentitem.md
   - docs/models/components/clustertype.md
   - docs/models/components/authtype.md
