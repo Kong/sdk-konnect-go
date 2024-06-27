@@ -7,34 +7,34 @@ import (
 	"fmt"
 )
 
-// InternalServerErrorStatus - The HTTP status code.
-type InternalServerErrorStatus int64
+// Status - The HTTP status code.
+type Status int64
 
 const (
-	InternalServerErrorStatusFiveHundred InternalServerErrorStatus = 500
+	StatusFiveHundred Status = 500
 )
 
-func (e InternalServerErrorStatus) ToPointer() *InternalServerErrorStatus {
+func (e Status) ToPointer() *Status {
 	return &e
 }
-func (e *InternalServerErrorStatus) UnmarshalJSON(data []byte) error {
+func (e *Status) UnmarshalJSON(data []byte) error {
 	var v int64
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case 500:
-		*e = InternalServerErrorStatus(v)
+		*e = Status(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for InternalServerErrorStatus: %v", v)
+		return fmt.Errorf("invalid value for Status: %v", v)
 	}
 }
 
 // InternalServerError - The error response object.
 type InternalServerError struct {
 	// The HTTP status code.
-	Status InternalServerErrorStatus `json:"status"`
+	Status Status `json:"status"`
 	// The error response code.
 	Title string `json:"title"`
 	// The Konnect traceback code

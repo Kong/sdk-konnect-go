@@ -5,6 +5,6 @@ The HTTP status code.
 
 ## Values
 
-| Name                        | Value                       |
-| --------------------------- | --------------------------- |
-| `StatusFiveHundredAndThree` | 503                         |
+| Name                | Value               |
+| ------------------- | ------------------- |
+| `StatusFiveHundred` | 500                 |

@@ -68,6 +68,7 @@ func (e *AuthType) UnmarshalJSON(data []byte) error {
 }
 
 // CreateControlPlaneRequest - The request schema for the create control plane request.
+// +kubebuilder:object:generate=true
 type CreateControlPlaneRequest struct {
 	// The name of the control plane.
 	Name string `json:"name"`

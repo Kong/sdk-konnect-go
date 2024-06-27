@@ -1,0 +1,11 @@
+# InvalidParameterStandard
+
+
+## Fields
+
+| Field                                                               | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `Field`                                                             | *string*                                                            | :heavy_check_mark:                                                  | N/A                                                                 | name                                                                |
+| `Rule`                                                              | [*components.InvalidRules](../../models/components/invalidrules.md) | :heavy_minus_sign:                                                  | invalid parameters rules                                            |                                                                     |
+| `Source`                                                            | **string*                                                           | :heavy_minus_sign:                                                  | N/A                                                                 | body                                                                |
+| `Reason`                                                            | *string*                                                            | :heavy_check_mark:                                                  | N/A                                                                 | is a required field                                                 |

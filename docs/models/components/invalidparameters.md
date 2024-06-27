@@ -3,6 +3,18 @@
 
 ## Supported Types
 
+### InvalidParameterStandard
+
+```go
+invalidParameters := components.CreateInvalidParametersInvalidParameterStandard(components.InvalidParameterStandard{/* values here */})
+```
+
+### InvalidParameterMinimumLength
+
+```go
+invalidParameters := components.CreateInvalidParametersInvalidParameterMinimumLength(components.InvalidParameterMinimumLength{/* values here */})
+```
+
 ### InvalidParameterChoiceItem
 
 ```go

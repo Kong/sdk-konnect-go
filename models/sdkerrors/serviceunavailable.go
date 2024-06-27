@@ -7,34 +7,34 @@ import (
 	"fmt"
 )
 
-// Status - The HTTP status code.
-type Status int64
+// ServiceUnavailableStatus - The HTTP status code.
+type ServiceUnavailableStatus int64
 
 const (
-	StatusFiveHundredAndThree Status = 503
+	ServiceUnavailableStatusFiveHundredAndThree ServiceUnavailableStatus = 503
 )
 
-func (e Status) ToPointer() *Status {
+func (e ServiceUnavailableStatus) ToPointer() *ServiceUnavailableStatus {
 	return &e
 }
-func (e *Status) UnmarshalJSON(data []byte) error {
+func (e *ServiceUnavailableStatus) UnmarshalJSON(data []byte) error {
 	var v int64
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case 503:
-		*e = Status(v)
+		*e = ServiceUnavailableStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Status: %v", v)
+		return fmt.Errorf("invalid value for ServiceUnavailableStatus: %v", v)
 	}
 }
 
 // ServiceUnavailable - Error response for temporary service unavailability.
 type ServiceUnavailable struct {
 	// The HTTP status code.
-	Status Status `json:"status"`
+	Status ServiceUnavailableStatus `json:"status"`
 	// The error response code.
 	Title string `json:"title"`
 	// The Konnect traceback code
