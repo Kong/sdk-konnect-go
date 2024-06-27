@@ -10,15 +10,13 @@ This is a prototype and should not be used. See [CONTRIBUTING.md](https://github
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
 
-| Error Object                  | Status Code                   | Content Type                  |
-| ----------------------------- | ----------------------------- | ----------------------------- |
-| sdkerrors.BadRequestError     | 400                           | application/problem+json      |
-| sdkerrors.UnauthorizedError   | 401                           | application/problem+json      |
-| sdkerrors.ForbiddenError      | 403                           | application/problem+json      |
-| sdkerrors.ConflictError       | 409                           | application/problem+json      |
-| sdkerrors.InternalServerError | 500                           | application/problem+json      |
-| sdkerrors.ServiceUnavailable  | 503                           | application/problem+json      |
-| sdkerrors.SDKError            | 4xx-5xx                       | */*                           |
+| Error Object                 | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| sdkerrors.BadRequestError    | 400                          | application/problem+json     |
+| sdkerrors.UnauthorizedError  | 401                          | application/problem+json     |
+| sdkerrors.ForbiddenError     | 403                          | application/problem+json     |
+| sdkerrors.ServiceUnavailable | 503                          | application/problem+json     |
+| sdkerrors.SDKError           | 4xx-5xx                      | */*                          |
 
 ### Example
 
@@ -30,6 +28,7 @@ import (
 	"errors"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
 	"log"
 )
@@ -40,25 +39,23 @@ func main() {
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
-	request := components.CreateControlPlaneRequest{
-		Name:         "Test Control Plane",
-		Description:  sdkkonnectgo.String("A test control plane for exploration."),
-		ClusterType:  components.ClusterTypeClusterTypeControlPlane.ToPointer(),
-		AuthType:     components.AuthTypePinnedClientCerts.ToPointer(),
-		CloudGateway: sdkkonnectgo.Bool(false),
-		ProxyUrls: []components.ProxyURL{
-			components.ProxyURL{
-				Host:     "example.com",
-				Port:     443,
-				Protocol: "https",
-			},
-		},
-		Labels: map[string]string{
-			"env": "test",
-		},
+	request := operations.ListControlPlanesRequest{
+		PageSize:             sdkkonnectgo.Int64(10),
+		PageNumber:           sdkkonnectgo.Int64(1),
+		FilterNameEq:         sdkkonnectgo.String("test"),
+		FilterName:           sdkkonnectgo.String("test"),
+		FilterNameContains:   sdkkonnectgo.String("test"),
+		FilterNameNeq:        sdkkonnectgo.String("test"),
+		FilterIDEq:           sdkkonnectgo.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+		FilterID:             sdkkonnectgo.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+		FilterIDOeq:          sdkkonnectgo.String("some-value,some-other-value"),
+		FilterClusterTypeEq:  sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
+		FilterClusterType:    sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
+		FilterClusterTypeNeq: sdkkonnectgo.String("test"),
+		Labels:               sdkkonnectgo.String("key:value,existCheck"),
 	}
 	ctx := context.Background()
-	res, err := s.ControlPlanes.CreateControlPlane(ctx, request)
+	res, err := s.ControlPlanes.ListControlPlanes(ctx, request)
 	if err != nil {
 
 		var e *sdkerrors.BadRequestError
@@ -74,18 +71,6 @@ func main() {
 		}
 
 		var e *sdkerrors.ForbiddenError
-		if errors.As(err, &e) {
-			// handle error
-			log.Fatal(e.Error())
-		}
-
-		var e *sdkerrors.ConflictError
-		if errors.As(err, &e) {
-			// handle error
-			log.Fatal(e.Error())
-		}
-
-		var e *sdkerrors.InternalServerError
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
@@ -131,6 +116,7 @@ import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -141,29 +127,27 @@ func main() {
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
-	request := components.CreateControlPlaneRequest{
-		Name:         "Test Control Plane",
-		Description:  sdkkonnectgo.String("A test control plane for exploration."),
-		ClusterType:  components.ClusterTypeClusterTypeControlPlane.ToPointer(),
-		AuthType:     components.AuthTypePinnedClientCerts.ToPointer(),
-		CloudGateway: sdkkonnectgo.Bool(false),
-		ProxyUrls: []components.ProxyURL{
-			components.ProxyURL{
-				Host:     "example.com",
-				Port:     443,
-				Protocol: "https",
-			},
-		},
-		Labels: map[string]string{
-			"env": "test",
-		},
+	request := operations.ListControlPlanesRequest{
+		PageSize:             sdkkonnectgo.Int64(10),
+		PageNumber:           sdkkonnectgo.Int64(1),
+		FilterNameEq:         sdkkonnectgo.String("test"),
+		FilterName:           sdkkonnectgo.String("test"),
+		FilterNameContains:   sdkkonnectgo.String("test"),
+		FilterNameNeq:        sdkkonnectgo.String("test"),
+		FilterIDEq:           sdkkonnectgo.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+		FilterID:             sdkkonnectgo.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+		FilterIDOeq:          sdkkonnectgo.String("some-value,some-other-value"),
+		FilterClusterTypeEq:  sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
+		FilterClusterType:    sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
+		FilterClusterTypeNeq: sdkkonnectgo.String("test"),
+		Labels:               sdkkonnectgo.String("key:value,existCheck"),
 	}
 	ctx := context.Background()
-	res, err := s.ControlPlanes.CreateControlPlane(ctx, request)
+	res, err := s.ControlPlanes.ListControlPlanes(ctx, request)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ControlPlane != nil {
+	if res.ListControlPlanesResponse != nil {
 		// handle response
 	}
 }
@@ -181,6 +165,7 @@ import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -191,29 +176,27 @@ func main() {
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
-	request := components.CreateControlPlaneRequest{
-		Name:         "Test Control Plane",
-		Description:  sdkkonnectgo.String("A test control plane for exploration."),
-		ClusterType:  components.ClusterTypeClusterTypeControlPlane.ToPointer(),
-		AuthType:     components.AuthTypePinnedClientCerts.ToPointer(),
-		CloudGateway: sdkkonnectgo.Bool(false),
-		ProxyUrls: []components.ProxyURL{
-			components.ProxyURL{
-				Host:     "example.com",
-				Port:     443,
-				Protocol: "https",
-			},
-		},
-		Labels: map[string]string{
-			"env": "test",
-		},
+	request := operations.ListControlPlanesRequest{
+		PageSize:             sdkkonnectgo.Int64(10),
+		PageNumber:           sdkkonnectgo.Int64(1),
+		FilterNameEq:         sdkkonnectgo.String("test"),
+		FilterName:           sdkkonnectgo.String("test"),
+		FilterNameContains:   sdkkonnectgo.String("test"),
+		FilterNameNeq:        sdkkonnectgo.String("test"),
+		FilterIDEq:           sdkkonnectgo.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+		FilterID:             sdkkonnectgo.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+		FilterIDOeq:          sdkkonnectgo.String("some-value,some-other-value"),
+		FilterClusterTypeEq:  sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
+		FilterClusterType:    sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
+		FilterClusterTypeNeq: sdkkonnectgo.String("test"),
+		Labels:               sdkkonnectgo.String("key:value,existCheck"),
 	}
 	ctx := context.Background()
-	res, err := s.ControlPlanes.CreateControlPlane(ctx, request)
+	res, err := s.ControlPlanes.ListControlPlanes(ctx, request)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ControlPlane != nil {
+	if res.ListControlPlanesResponse != nil {
 		// handle response
 	}
 }
@@ -270,6 +253,7 @@ import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -279,29 +263,27 @@ func main() {
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
-	request := components.CreateControlPlaneRequest{
-		Name:         "Test Control Plane",
-		Description:  sdkkonnectgo.String("A test control plane for exploration."),
-		ClusterType:  components.ClusterTypeClusterTypeControlPlane.ToPointer(),
-		AuthType:     components.AuthTypePinnedClientCerts.ToPointer(),
-		CloudGateway: sdkkonnectgo.Bool(false),
-		ProxyUrls: []components.ProxyURL{
-			components.ProxyURL{
-				Host:     "example.com",
-				Port:     443,
-				Protocol: "https",
-			},
-		},
-		Labels: map[string]string{
-			"env": "test",
-		},
+	request := operations.ListControlPlanesRequest{
+		PageSize:             sdkkonnectgo.Int64(10),
+		PageNumber:           sdkkonnectgo.Int64(1),
+		FilterNameEq:         sdkkonnectgo.String("test"),
+		FilterName:           sdkkonnectgo.String("test"),
+		FilterNameContains:   sdkkonnectgo.String("test"),
+		FilterNameNeq:        sdkkonnectgo.String("test"),
+		FilterIDEq:           sdkkonnectgo.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+		FilterID:             sdkkonnectgo.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+		FilterIDOeq:          sdkkonnectgo.String("some-value,some-other-value"),
+		FilterClusterTypeEq:  sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
+		FilterClusterType:    sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
+		FilterClusterTypeNeq: sdkkonnectgo.String("test"),
+		Labels:               sdkkonnectgo.String("key:value,existCheck"),
 	}
 	ctx := context.Background()
-	res, err := s.ControlPlanes.CreateControlPlane(ctx, request)
+	res, err := s.ControlPlanes.ListControlPlanes(ctx, request)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ControlPlane != nil {
+	if res.ListControlPlanesResponse != nil {
 		// handle response
 	}
 }

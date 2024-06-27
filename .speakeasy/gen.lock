@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 27d627f3467fc5026cf3053315a38346
+  docChecksum: c84973e57ff3db4422ee1c18334bf911
   docVersion: 2.0.0
   speakeasyVersion: 1.321.0
   generationVersion: 2.354.2
-  releaseVersion: 0.2.2
-  configChecksum: e404ecb9c97fbbb591b8f4269a4ebe60
+  releaseVersion: 0.2.3
+  configChecksum: 618233b528b4ee10fc0abdfc4aaf6305
 features:
   go:
     additionalDependencies: 0.1.0
@@ -41,13 +41,20 @@ generatedFiles:
   - internal/utils/retries.go
   - internal/utils/security.go
   - internal/utils/utils.go
+  - /models/operations/listcontrolplanes.go
   - /models/operations/createcontrolplane.go
   - /models/operations/getcontrolplane.go
   - /models/operations/updatecontrolplane.go
   - /models/operations/deletecontrolplane.go
+  - /models/operations/getcontrolplanesidgroupmemberstatus.go
+  - /models/operations/getcontrolplanesidgroupmemberships.go
   - /models/operations/postcontrolplanesidgroupmembershipsadd.go
   - /models/operations/postcontrolplanesidgroupmembershipsremove.go
+  - /models/operations/getcontrolplanesidgroupstatus.go
+  - /models/components/listcontrolplanesresponse.go
   - /models/components/controlplane.go
+  - /models/components/paginatedmeta.go
+  - /models/components/pagemeta.go
   - /models/components/invalidparameters.go
   - /models/components/invalidparameterchoiceitem.go
   - /models/components/invalidrules.go
@@ -55,15 +62,23 @@ generatedFiles:
   - /models/components/createcontrolplanerequest.go
   - /models/components/proxyurl.go
   - /models/components/updatecontrolplanerequest.go
+  - /models/components/groupmemberstatus.go
+  - /models/components/listgroupmemberships.go
+  - /models/components/controlplanesummary.go
   - /models/components/groupmembership.go
+  - /models/components/groupstatus.go
+  - /models/components/groupconflict.go
+  - /models/components/groupconflictresource.go
   - /models/components/security.go
   - /models/sdkerrors/badrequesterror.go
   - /models/sdkerrors/unauthorizederror.go
   - /models/sdkerrors/forbiddenerror.go
+  - /models/sdkerrors/serviceunavailable.go
   - /models/sdkerrors/conflicterror.go
   - /models/sdkerrors/internalservererror.go
-  - /models/sdkerrors/serviceunavailable.go
   - /models/sdkerrors/notfounderror.go
+  - docs/models/operations/listcontrolplanesrequest.md
+  - docs/models/operations/listcontrolplanesresponse.md
   - docs/models/operations/createcontrolplaneresponse.md
   - docs/models/operations/getcontrolplanerequest.md
   - docs/models/operations/getcontrolplaneresponse.md
@@ -71,12 +86,21 @@ generatedFiles:
   - docs/models/operations/updatecontrolplaneresponse.md
   - docs/models/operations/deletecontrolplanerequest.md
   - docs/models/operations/deletecontrolplaneresponse.md
+  - docs/models/operations/getcontrolplanesidgroupmemberstatusrequest.md
+  - docs/models/operations/getcontrolplanesidgroupmemberstatusresponse.md
+  - docs/models/operations/getcontrolplanesidgroupmembershipsrequest.md
+  - docs/models/operations/getcontrolplanesidgroupmembershipsresponse.md
   - docs/models/operations/postcontrolplanesidgroupmembershipsaddrequest.md
   - docs/models/operations/postcontrolplanesidgroupmembershipsaddresponse.md
   - docs/models/operations/postcontrolplanesidgroupmembershipsremoverequest.md
   - docs/models/operations/postcontrolplanesidgroupmembershipsremoveresponse.md
+  - docs/models/operations/getcontrolplanesidgroupstatusrequest.md
+  - docs/models/operations/getcontrolplanesidgroupstatusresponse.md
+  - docs/models/components/listcontrolplanesresponse.md
   - docs/models/components/config.md
   - docs/models/components/controlplane.md
+  - docs/models/components/paginatedmeta.md
+  - docs/models/components/pagemeta.md
   - docs/models/components/invalidparameters.md
   - docs/models/components/invalidparameterchoiceitem.md
   - docs/models/components/invalidrules.md
@@ -88,17 +112,27 @@ generatedFiles:
   - docs/models/components/proxyurl.md
   - docs/models/components/updatecontrolplanerequestauthtype.md
   - docs/models/components/updatecontrolplanerequest.md
+  - docs/models/components/groupmemberstatus.md
+  - docs/models/components/listgroupmemberships.md
+  - docs/models/components/controlplanesummaryclustertype.md
+  - docs/models/components/controlplanesummaryauthtype.md
+  - docs/models/components/controlplanesummaryconfig.md
+  - docs/models/components/controlplanesummary.md
   - docs/models/components/members.md
   - docs/models/components/groupmembership.md
+  - docs/models/components/state.md
+  - docs/models/components/groupstatus.md
+  - docs/models/components/groupconflict.md
+  - docs/models/components/groupconflictresource.md
   - docs/models/components/security.md
   - docs/models/sdkerrors/badrequesterror.md
   - docs/models/sdkerrors/unauthorizederror.md
   - docs/models/sdkerrors/forbiddenerror.md
-  - docs/models/sdkerrors/conflicterror.md
   - docs/models/sdkerrors/status.md
-  - docs/models/sdkerrors/internalservererror.md
-  - docs/models/sdkerrors/serviceunavailablestatus.md
   - docs/models/sdkerrors/serviceunavailable.md
+  - docs/models/sdkerrors/conflicterror.md
+  - docs/models/sdkerrors/internalservererrorstatus.md
+  - docs/models/sdkerrors/internalservererror.md
   - docs/models/sdkerrors/notfounderror.md
   - USAGE.md
   - .gitattributes
