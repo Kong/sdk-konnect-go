@@ -2,16 +2,16 @@ speakeasyVersion: 1.321.0
 sources:
     konnect:
         sourceNamespace: konnect
-        sourceRevisionDigest: sha256:dd299f1c2541952d5f585ce7b30a6eb8d2716c6ec808e75ec673dce917a83900
-        sourceBlobDigest: sha256:396de0a311e6c54721c9a7602cfb2cb23d62f125c3ae4f477d7dab202539b024
+        sourceRevisionDigest: sha256:c639a509989846db09eb72fa0384d9d4cc7717a96710ef0075f7e4f85d3e5bed
+        sourceBlobDigest: sha256:1d37bad2d56ec14c07aa336eab140bce5c3865b8072372dbd43c751527fa0e1d
         tags:
             - latest
 targets:
     go:
         source: konnect
         sourceNamespace: konnect
-        sourceRevisionDigest: sha256:dd299f1c2541952d5f585ce7b30a6eb8d2716c6ec808e75ec673dce917a83900
-        sourceBlobDigest: sha256:396de0a311e6c54721c9a7602cfb2cb23d62f125c3ae4f477d7dab202539b024
+        sourceRevisionDigest: sha256:c639a509989846db09eb72fa0384d9d4cc7717a96710ef0075f7e4f85d3e5bed
+        sourceBlobDigest: sha256:1d37bad2d56ec14c07aa336eab140bce5c3865b8072372dbd43c751527fa0e1d
         outLocation: .
 workflow:
     workflowVersion: 1.0.0
