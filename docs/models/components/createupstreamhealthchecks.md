@@ -1,0 +1,10 @@
+# CreateUpstreamHealthchecks
+
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `Active`                                                                              | [*components.CreateUpstreamActive](../../models/components/createupstreamactive.md)   | :heavy_minus_sign:                                                                    | N/A                                                                                   |
+| `Passive`                                                                             | [*components.CreateUpstreamPassive](../../models/components/createupstreampassive.md) | :heavy_minus_sign:                                                                    | N/A                                                                                   |
+| `Threshold`                                                                           | **float64*                                                                            | :heavy_minus_sign:                                                                    | N/A                                                                                   |

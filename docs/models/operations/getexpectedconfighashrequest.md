@@ -1,0 +1,10 @@
+# GetExpectedConfigHashRequest
+
+
+## Fields
+
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `ControlPlaneID`                                                                  | *string*                                                                          | :heavy_check_mark:                                                                | The UUID of your control plane. This variable is available in the Konnect manager | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                              |
+| `PageSize`                                                                        | **int64*                                                                          | :heavy_minus_sign:                                                                | The number of items to include in a page.                                         |                                                                                   |
+| `PageNumber`                                                                      | **int64*                                                                          | :heavy_minus_sign:                                                                | The specific page number in the collection results.                               |                                                                                   |

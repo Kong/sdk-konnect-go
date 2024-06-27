@@ -1,0 +1,10 @@
+# UpsertSniRequest
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ControlPlaneID`                                                                   | *string*                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
+| `SNIID`                                                                            | *string*                                                                           | :heavy_check_mark:                                                                 | ID of the SNI to lookup                                                            | 64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f                                               |
+| `CreateSNI`                                                                        | [components.CreateSNI](../../models/components/createsni.md)                       | :heavy_check_mark:                                                                 | Description of the SNI                                                             |                                                                                    |

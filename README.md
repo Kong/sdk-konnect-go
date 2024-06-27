@@ -244,6 +244,7 @@ This SDK supports the following security schemes globally:
 | -------------------------- | -------------------------- | -------------------------- |
 | `PersonalAccessToken`      | http                       | HTTP Bearer                |
 | `SystemAccountAccessToken` | http                       | HTTP Bearer                |
+| `KonnectAccessToken`       | http                       | HTTP Bearer                |
 
 You can set the security parameters through the `WithSecurity` option when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```go

@@ -1,0 +1,15 @@
+# CreateKey
+
+A Key object holds a representation of asymmetric keys in various formats. When Kong or a Kong plugin requires a specific public or private key to perform certain operations, it can use this entity.
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `Jwk`                                                                          | **string*                                                                      | :heavy_minus_sign:                                                             | A JSON Web Key represented as a string.                                        |
+| `Kid`                                                                          | *string*                                                                       | :heavy_check_mark:                                                             | A unique identifier for a key.                                                 |
+| `Name`                                                                         | **string*                                                                      | :heavy_minus_sign:                                                             | The name to associate with the given keys.                                     |
+| `Pem`                                                                          | [*components.CreateKeyPem](../../models/components/createkeypem.md)            | :heavy_minus_sign:                                                             | A keypair in PEM format.                                                       |
+| `Set`                                                                          | [*components.CreateKeySet1](../../models/components/createkeyset1.md)          | :heavy_minus_sign:                                                             | The id (an UUID) of the key-set with which to associate the key.               |
+| `Tags`                                                                         | []*string*                                                                     | :heavy_minus_sign:                                                             | An optional set of strings associated with the Key for grouping and filtering. |
