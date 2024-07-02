@@ -10,7 +10,7 @@ deepcopy:
 
 OPENAPI_FILE = openapi.yaml
 SPEAKEASY_DIR = .speakeasy
-KUBEBUILDER_GENERATE_CODE_MARKER = \n+kubebuilder:object:generate=true\n+k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+KUBEBUILDER_GENERATE_CODE_MARKER = \n+kubebuilder:object:generate=true
 
 # NOTE: add more types that need to have DeepCopy() generated.
 .PHONY: generate.sdk

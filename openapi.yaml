@@ -7575,16 +7575,6 @@ components:
           items:
             type: string
           type: array
-        client_certificate:
-          additionalProperties: false
-          description: >-
-            Certificate to be used as client certificate while TLS handshaking
-            to the upstream server.
-          properties:
-            id:
-              type: string
-          type: object
-          x-foreign: true
         connect_timeout:
           default: 60000
           description: >-
@@ -7733,16 +7723,6 @@ components:
             - least-connections
             - round-robin
           type: string
-        client_certificate:
-          additionalProperties: false
-          description: >-
-            If set, the certificate to be used as client certificate while TLS
-            handshaking to the upstream server.
-          properties:
-            id:
-              type: string
-          type: object
-          x-foreign: true
         hash_fallback:
           default: none
           description: >-

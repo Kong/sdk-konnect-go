@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 0e47e7066b2f29c35488137e1b0ae22c
+  docChecksum: 7b7a8d82a3cf3de69109cd474a160c92
   docVersion: 3.0.0
   speakeasyVersion: 1.325.1
   generationVersion: 2.358.0
-  releaseVersion: 0.4.0
-  configChecksum: 385b6834df4e9be8e276feb54f380682
+  releaseVersion: 0.4.1
+  configChecksum: fc0ec3118de10456960c1593ae5be13d
 features:
   go:
     additionalDependencies: 0.1.0
@@ -841,11 +841,9 @@ generatedFiles:
   - docs/models/components/createroutewithoutparentssources.md
   - docs/models/components/createroutewithoutparents.md
   - docs/models/components/service.md
-  - docs/models/components/clientcertificate.md
   - docs/models/components/protocol.md
   - docs/models/components/createservice.md
   - docs/models/components/upstreamalgorithm.md
-  - docs/models/components/upstreamclientcertificate.md
   - docs/models/components/hashfallback.md
   - docs/models/components/hashon.md
   - docs/models/components/healthy.md
@@ -859,7 +857,6 @@ generatedFiles:
   - docs/models/components/healthchecks.md
   - docs/models/components/upstream.md
   - docs/models/components/createupstreamalgorithm.md
-  - docs/models/components/createupstreamclientcertificate.md
   - docs/models/components/createupstreamhashfallback.md
   - docs/models/components/createupstreamhashon.md
   - docs/models/components/createupstreamhealthy.md
