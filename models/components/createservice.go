@@ -71,6 +71,7 @@ func (e *Protocol) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CreateService - The request schema for the create control plane's request.
 type CreateService struct {
 	// Helper field to set `protocol`, `host`, `port` and `path` using a URL. This field is write-only and is not returned in responses.
 	URL *string `json:"url,omitempty"`
