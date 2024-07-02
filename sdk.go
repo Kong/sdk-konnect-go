@@ -8,6 +8,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/hooks"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/retry"
 	"net/http"
 	"time"
 )
@@ -53,7 +54,7 @@ type sdkConfiguration struct {
 	SDKVersion        string
 	GenVersion        string
 	UserAgent         string
-	RetryConfig       *utils.RetryConfig
+	RetryConfig       *retry.Config
 	Hooks             *hooks.Hooks
 }
 
@@ -163,8 +164,21 @@ type SDK struct {
 	// DP Certificates
 	DPCertificates *DPCertificates
 	// DP Nodes
-	DPNodes            *DPNodes
-	ControlPlaneGroups *ControlPlaneGroups
+	DPNodes                      *DPNodes
+	ControlPlaneGroups           *ControlPlaneGroups
+	Authentication               *Authentication
+	AuthSettings                 *AuthSettings
+	Invites                      *Invites
+	ImpersonationSettings        *ImpersonationSettings
+	Me                           *Me
+	Roles                        *Roles
+	SystemAccounts               *SystemAccounts
+	SystemAccountsAccessTokens   *SystemAccountsAccessTokens
+	SystemAccountsRoles          *SystemAccountsRoles
+	Teams                        *Teams
+	SystemAccountsTeamMembership *SystemAccountsTeamMembership
+	TeamMembership               *TeamMembership
+	Users                        *Users
 
 	sdkConfiguration sdkConfiguration
 }
@@ -223,7 +237,7 @@ func WithSecuritySource(security func(context.Context) (components.Security, err
 	}
 }
 
-func WithRetryConfig(retryConfig utils.RetryConfig) SDKOption {
+func WithRetryConfig(retryConfig retry.Config) SDKOption {
 	return func(sdk *SDK) {
 		sdk.sdkConfiguration.RetryConfig = &retryConfig
 	}
@@ -234,10 +248,10 @@ func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
-			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "0.3.1",
-			GenVersion:        "2.356.0",
-			UserAgent:         "speakeasy-sdk/go 0.3.1 2.356.0 0.0.1 github.com/Kong/sdk-konnect-go",
+			OpenAPIDocVersion: "3.0.0",
+			SDKVersion:        "0.4.0",
+			GenVersion:        "2.358.0",
+			UserAgent:         "speakeasy-sdk/go 0.4.0 2.358.0 3.0.0 github.com/Kong/sdk-konnect-go",
 			Hooks:             hooks.New(),
 		},
 	}
@@ -302,6 +316,32 @@ func New(opts ...SDKOption) *SDK {
 	sdk.DPNodes = newDPNodes(sdk.sdkConfiguration)
 
 	sdk.ControlPlaneGroups = newControlPlaneGroups(sdk.sdkConfiguration)
+
+	sdk.Authentication = newAuthentication(sdk.sdkConfiguration)
+
+	sdk.AuthSettings = newAuthSettings(sdk.sdkConfiguration)
+
+	sdk.Invites = newInvites(sdk.sdkConfiguration)
+
+	sdk.ImpersonationSettings = newImpersonationSettings(sdk.sdkConfiguration)
+
+	sdk.Me = newMe(sdk.sdkConfiguration)
+
+	sdk.Roles = newRoles(sdk.sdkConfiguration)
+
+	sdk.SystemAccounts = newSystemAccounts(sdk.sdkConfiguration)
+
+	sdk.SystemAccountsAccessTokens = newSystemAccountsAccessTokens(sdk.sdkConfiguration)
+
+	sdk.SystemAccountsRoles = newSystemAccountsRoles(sdk.sdkConfiguration)
+
+	sdk.Teams = newTeams(sdk.sdkConfiguration)
+
+	sdk.SystemAccountsTeamMembership = newSystemAccountsTeamMembership(sdk.sdkConfiguration)
+
+	sdk.TeamMembership = newTeamMembership(sdk.sdkConfiguration)
+
+	sdk.Users = newUsers(sdk.sdkConfiguration)
 
 	return sdk
 }

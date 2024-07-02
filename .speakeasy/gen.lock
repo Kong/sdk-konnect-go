@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: bc1332185d6800bb93ce0f5efbe406e0
-  docVersion: 0.0.1
-  speakeasyVersion: 1.325.0
-  generationVersion: 2.356.0
-  releaseVersion: 0.3.1
-  configChecksum: 8e7091fec9cbb9d75f406befa494cb8b
+  docChecksum: 0e47e7066b2f29c35488137e1b0ae22c
+  docVersion: 3.0.0
+  speakeasyVersion: 1.325.1
+  generationVersion: 2.358.0
+  releaseVersion: 0.4.0
+  configChecksum: 385b6834df4e9be8e276feb54f380682
 features:
   go:
     additionalDependencies: 0.1.0
@@ -45,9 +45,23 @@ generatedFiles:
   - dpcertificates.go
   - dpnodes.go
   - controlplanegroups.go
+  - authentication.go
+  - authsettings.go
+  - invites.go
+  - impersonationsettings.go
+  - me.go
+  - roles.go
+  - systemaccounts.go
+  - systemaccountsaccesstokens.go
+  - systemaccountsroles.go
+  - teams.go
+  - systemaccountsteammembership.go
+  - teammembership.go
+  - users.go
   - sdk.go
   - go.mod
   - models/sdkerrors/sdkerror.go
+  - retry/config.go
   - types/bigint.go
   - types/date.go
   - types/datetime.go
@@ -202,6 +216,48 @@ generatedFiles:
   - /models/operations/postcontrolplanesidgroupmembershipsadd.go
   - /models/operations/postcontrolplanesidgroupmembershipsremove.go
   - /models/operations/getcontrolplanesidgroupstatus.go
+  - /models/operations/authenticatesso.go
+  - /models/operations/getauthenticationsettings.go
+  - /models/operations/updateauthenticationsettings.go
+  - /models/operations/getidpconfiguration.go
+  - /models/operations/updateidpconfiguration.go
+  - /models/operations/getteamgroupmappings.go
+  - /models/operations/patchteamgroupmappings.go
+  - /models/operations/updateidpteammappings.go
+  - /models/operations/getidpteammappings.go
+  - /models/operations/inviteuser.go
+  - /models/operations/getimpersonationsettings.go
+  - /models/operations/updateimpersonationsettings.go
+  - /models/operations/getorganizationsme.go
+  - /models/operations/getpredefinedroles.go
+  - /models/operations/listteamroles.go
+  - /models/operations/teamsassignrole.go
+  - /models/operations/teamsremoverole.go
+  - /models/operations/listuserroles.go
+  - /models/operations/usersassignrole.go
+  - /models/operations/usersremoverole.go
+  - /models/operations/postsystemaccounts.go
+  - /models/operations/getsystemaccountsid.go
+  - /models/operations/patchsystemaccountsid.go
+  - /models/operations/deletesystemaccountsid.go
+  - /models/operations/postsystemaccountsidaccesstokens.go
+  - /models/operations/getsystemaccountsidaccesstokensid.go
+  - /models/operations/patchsystemaccountsidaccesstokensid.go
+  - /models/operations/deletesystemaccountsidaccesstokensid.go
+  - /models/operations/getsystemaccountsaccountidassignedroles.go
+  - /models/operations/postsystemaccountsaccountidassignedroles.go
+  - /models/operations/deletesystemaccountsaccountidassignedrolesroleid.go
+  - /models/operations/createteam.go
+  - /models/operations/getteam.go
+  - /models/operations/updateteam.go
+  - /models/operations/deleteteam.go
+  - /models/operations/postteamsteamidsystemaccounts.go
+  - /models/operations/deleteteamsteamidsystemaccountsaccountid.go
+  - /models/operations/addusertoteam.go
+  - /models/operations/removeuserfromteam.go
+  - /models/operations/getuser.go
+  - /models/operations/updateuser.go
+  - /models/operations/deleteuser.go
   - /models/components/listcontrolplanesresponse.go
   - /models/components/controlplane.go
   - /models/components/paginatedmeta.go
@@ -269,6 +325,40 @@ generatedFiles:
   - /models/components/groupstatus.go
   - /models/components/groupconflict.go
   - /models/components/groupconflictresource.go
+  - /models/components/authenticationsettings.go
+  - /models/components/updateauthenticationsettings.go
+  - /models/components/idp.go
+  - /models/components/updateidpconfiguration.go
+  - /models/components/teamgroupmappingcollection.go
+  - /models/components/teamgroupmapping.go
+  - /models/components/patchteamgroupmappings.go
+  - /models/components/teammappingcollection.go
+  - /models/components/teammapping.go
+  - /models/components/updateteammappings.go
+  - /models/components/teammappingresponse.go
+  - /models/components/inviteuser.go
+  - /models/components/getimpersonationsettingsresponse.go
+  - /models/components/updateimpersonationsettingsresponse.go
+  - /models/components/updateimpersonationsettingsrequest.go
+  - /models/components/meorganization.go
+  - /models/components/roles.go
+  - /models/components/assignedrolecollection.go
+  - /models/components/assignedrole.go
+  - /models/components/assignrole.go
+  - /models/components/systemaccount.go
+  - /models/components/createsystemaccount.go
+  - /models/components/updatesystemaccount.go
+  - /models/components/systemaccountaccesstokencreated.go
+  - /models/components/createsystemaccountaccesstoken.go
+  - /models/components/systemaccountaccesstoken.go
+  - /models/components/updatesystemaccountaccesstoken.go
+  - /models/components/team.go
+  - /models/components/createteam.go
+  - /models/components/updateteam.go
+  - /models/components/addsystemaccounttoteam.go
+  - /models/components/addusertoteam.go
+  - /models/components/user.go
+  - /models/components/updateuser.go
   - /models/components/security.go
   - /models/sdkerrors/badrequesterror.go
   - /models/sdkerrors/unauthorizederror.go
@@ -278,6 +368,8 @@ generatedFiles:
   - /models/sdkerrors/internalservererror.go
   - /models/sdkerrors/notfounderror.go
   - /models/sdkerrors/schemasunauthorizederror.go
+  - /models/sdkerrors/preconditionfailed.go
+  - /models/sdkerrors/ratelimited.go
   - docs/models/operations/listcontrolplanesrequest.md
   - docs/models/operations/listcontrolplanesresponse.md
   - docs/models/operations/createcontrolplaneresponse.md
@@ -582,6 +674,80 @@ generatedFiles:
   - docs/models/operations/postcontrolplanesidgroupmembershipsremoveresponse.md
   - docs/models/operations/getcontrolplanesidgroupstatusrequest.md
   - docs/models/operations/getcontrolplanesidgroupstatusresponse.md
+  - docs/models/operations/authenticatessorequest.md
+  - docs/models/operations/authenticatessoresponse.md
+  - docs/models/operations/getauthenticationsettingsresponse.md
+  - docs/models/operations/updateauthenticationsettingsresponse.md
+  - docs/models/operations/getidpconfigurationresponse.md
+  - docs/models/operations/updateidpconfigurationresponse.md
+  - docs/models/operations/getteamgroupmappingsrequest.md
+  - docs/models/operations/getteamgroupmappingsresponse.md
+  - docs/models/operations/patchteamgroupmappingsresponse.md
+  - docs/models/operations/updateidpteammappingsresponse.md
+  - docs/models/operations/getidpteammappingsrequest.md
+  - docs/models/operations/getidpteammappingsresponse.md
+  - docs/models/operations/inviteuserresponse.md
+  - docs/models/operations/getimpersonationsettingsresponse.md
+  - docs/models/operations/updateimpersonationsettingsresponse.md
+  - docs/models/operations/getorganizationsmeresponse.md
+  - docs/models/operations/getpredefinedrolesresponse.md
+  - docs/models/operations/queryparamfilter.md
+  - docs/models/operations/listteamrolesrequest.md
+  - docs/models/operations/listteamrolesresponse.md
+  - docs/models/operations/teamsassignrolerequest.md
+  - docs/models/operations/teamsassignroleresponse.md
+  - docs/models/operations/teamsremoverolerequest.md
+  - docs/models/operations/teamsremoveroleresponse.md
+  - docs/models/operations/listuserrolesqueryparamfilter.md
+  - docs/models/operations/listuserrolesrequest.md
+  - docs/models/operations/listuserrolesresponse.md
+  - docs/models/operations/usersassignrolerequest.md
+  - docs/models/operations/usersassignroleresponse.md
+  - docs/models/operations/usersremoverolerequest.md
+  - docs/models/operations/usersremoveroleresponse.md
+  - docs/models/operations/postsystemaccountsresponse.md
+  - docs/models/operations/getsystemaccountsidrequest.md
+  - docs/models/operations/getsystemaccountsidresponse.md
+  - docs/models/operations/patchsystemaccountsidrequest.md
+  - docs/models/operations/patchsystemaccountsidresponse.md
+  - docs/models/operations/deletesystemaccountsidrequest.md
+  - docs/models/operations/deletesystemaccountsidresponse.md
+  - docs/models/operations/postsystemaccountsidaccesstokensrequest.md
+  - docs/models/operations/postsystemaccountsidaccesstokensresponse.md
+  - docs/models/operations/getsystemaccountsidaccesstokensidrequest.md
+  - docs/models/operations/getsystemaccountsidaccesstokensidresponse.md
+  - docs/models/operations/patchsystemaccountsidaccesstokensidrequest.md
+  - docs/models/operations/patchsystemaccountsidaccesstokensidresponse.md
+  - docs/models/operations/deletesystemaccountsidaccesstokensidrequest.md
+  - docs/models/operations/deletesystemaccountsidaccesstokensidresponse.md
+  - docs/models/operations/filter.md
+  - docs/models/operations/getsystemaccountsaccountidassignedrolesrequest.md
+  - docs/models/operations/getsystemaccountsaccountidassignedrolesresponse.md
+  - docs/models/operations/postsystemaccountsaccountidassignedrolesrequest.md
+  - docs/models/operations/postsystemaccountsaccountidassignedrolesresponse.md
+  - docs/models/operations/deletesystemaccountsaccountidassignedrolesroleidrequest.md
+  - docs/models/operations/deletesystemaccountsaccountidassignedrolesroleidresponse.md
+  - docs/models/operations/createteamresponse.md
+  - docs/models/operations/getteamrequest.md
+  - docs/models/operations/getteamresponse.md
+  - docs/models/operations/updateteamrequest.md
+  - docs/models/operations/updateteamresponse.md
+  - docs/models/operations/deleteteamrequest.md
+  - docs/models/operations/deleteteamresponse.md
+  - docs/models/operations/postteamsteamidsystemaccountsrequest.md
+  - docs/models/operations/postteamsteamidsystemaccountsresponse.md
+  - docs/models/operations/deleteteamsteamidsystemaccountsaccountidrequest.md
+  - docs/models/operations/deleteteamsteamidsystemaccountsaccountidresponse.md
+  - docs/models/operations/addusertoteamrequest.md
+  - docs/models/operations/addusertoteamresponse.md
+  - docs/models/operations/removeuserfromteamrequest.md
+  - docs/models/operations/removeuserfromteamresponse.md
+  - docs/models/operations/getuserrequest.md
+  - docs/models/operations/getuserresponse.md
+  - docs/models/operations/updateuserrequest.md
+  - docs/models/operations/updateuserresponse.md
+  - docs/models/operations/deleteuserrequest.md
+  - docs/models/operations/deleteuserresponse.md
   - docs/models/components/listcontrolplanesresponse.md
   - docs/models/components/config.md
   - docs/models/components/controlplane.md
@@ -642,19 +808,16 @@ generatedFiles:
   - docs/models/components/item.md
   - docs/models/components/pluginschemas.md
   - docs/models/components/createpluginschemas.md
-  - docs/models/components/pluginconfig.md
   - docs/models/components/protocols.md
   - docs/models/components/pluginconsumer.md
   - docs/models/components/pluginroute.md
   - docs/models/components/pluginservice.md
   - docs/models/components/plugin.md
-  - docs/models/components/createpluginconfig.md
   - docs/models/components/createpluginprotocols.md
   - docs/models/components/createpluginconsumer.md
   - docs/models/components/createpluginroute.md
   - docs/models/components/createpluginservice.md
   - docs/models/components/createplugin.md
-  - docs/models/components/createpluginwithoutparentsconfig.md
   - docs/models/components/createpluginwithoutparentsprotocols.md
   - docs/models/components/createpluginwithoutparents.md
   - docs/models/components/destinations.md
@@ -712,9 +875,7 @@ generatedFiles:
   - docs/models/components/targetupstream.md
   - docs/models/components/target.md
   - docs/models/components/createtargetwithoutparents.md
-  - docs/models/components/vaultconfig.md
   - docs/models/components/vault.md
-  - docs/models/components/createvaultconfig.md
   - docs/models/components/createvault.md
   - docs/models/components/listdataplanecertificatesresponsepage.md
   - docs/models/components/listdataplanecertificatesresponse.md
@@ -744,6 +905,137 @@ generatedFiles:
   - docs/models/components/groupstatus.md
   - docs/models/components/groupconflict.md
   - docs/models/components/groupconflictresource.md
+  - docs/models/components/authenticationsettings.md
+  - docs/models/components/updateauthenticationsettings.md
+  - docs/models/components/claimmappings.md
+  - docs/models/components/idp.md
+  - docs/models/components/updateidpconfigurationclaimmappings.md
+  - docs/models/components/updateidpconfiguration.md
+  - docs/models/components/teamgroupmappingcollection.md
+  - docs/models/components/teamgroupmapping.md
+  - docs/models/components/data.md
+  - docs/models/components/patchteamgroupmappings.md
+  - docs/models/components/teammappingcollection.md
+  - docs/models/components/teammapping.md
+  - docs/models/components/mappings.md
+  - docs/models/components/updateteammappings.md
+  - docs/models/components/teammappingresponsepage.md
+  - docs/models/components/meta.md
+  - docs/models/components/teammappingresponsedata.md
+  - docs/models/components/teammappingresponse.md
+  - docs/models/components/inviteuser.md
+  - docs/models/components/getimpersonationsettingsresponse.md
+  - docs/models/components/updateimpersonationsettingsresponse.md
+  - docs/models/components/updateimpersonationsettingsrequest.md
+  - docs/models/components/meorganizationstate.md
+  - docs/models/components/meorganization.md
+  - docs/models/components/name.md
+  - docs/models/components/rolescontrolplanesrolesadminname.md
+  - docs/models/components/description.md
+  - docs/models/components/admin.md
+  - docs/models/components/rolescontrolplanesname.md
+  - docs/models/components/rolesdescription.md
+  - docs/models/components/certificateadmin.md
+  - docs/models/components/rolescontrolplanesrolesname.md
+  - docs/models/components/rolescontrolplanesdescription.md
+  - docs/models/components/consumeradmin.md
+  - docs/models/components/rolescontrolplanesrolescreatorname.md
+  - docs/models/components/rolescontrolplanesrolesdescription.md
+  - docs/models/components/creator.md
+  - docs/models/components/rolescontrolplanesrolesdeployername.md
+  - docs/models/components/rolescontrolplanesrolesdeployerdescription.md
+  - docs/models/components/deployer.md
+  - docs/models/components/rolescontrolplanesrolesgatewayserviceadminname.md
+  - docs/models/components/rolescontrolplanesrolesgatewayserviceadmindescription.md
+  - docs/models/components/gatewayserviceadmin.md
+  - docs/models/components/rolescontrolplanesrolespluginadminname.md
+  - docs/models/components/rolescontrolplanesrolespluginadmindescription.md
+  - docs/models/components/pluginadmin.md
+  - docs/models/components/rolescontrolplanesrolesrouteadminname.md
+  - docs/models/components/rolescontrolplanesrolesrouteadmindescription.md
+  - docs/models/components/routeadmin.md
+  - docs/models/components/rolescontrolplanesrolessniadminname.md
+  - docs/models/components/rolescontrolplanesrolessniadmindescription.md
+  - docs/models/components/sniadmin.md
+  - docs/models/components/rolescontrolplanesrolesupstreamadminname.md
+  - docs/models/components/rolescontrolplanesrolesupstreamadmindescription.md
+  - docs/models/components/upstreamadmin.md
+  - docs/models/components/rolescontrolplanesrolesviewername.md
+  - docs/models/components/rolescontrolplanesrolesviewerdescription.md
+  - docs/models/components/viewer.md
+  - docs/models/components/rolescontrolplanesroles.md
+  - docs/models/components/controlplanes.md
+  - docs/models/components/rolesname.md
+  - docs/models/components/rolesapiproductsname.md
+  - docs/models/components/rolesapiproductsdescription.md
+  - docs/models/components/rolesadmin.md
+  - docs/models/components/rolesapiproductsrolesname.md
+  - docs/models/components/rolesapiproductsrolesdescription.md
+  - docs/models/components/applicationregistration.md
+  - docs/models/components/rolesapiproductsrolescreatorname.md
+  - docs/models/components/rolesapiproductsrolescreatordescription.md
+  - docs/models/components/rolescreator.md
+  - docs/models/components/rolesapiproductsrolesdeployername.md
+  - docs/models/components/rolesapiproductsrolesdeployerdescription.md
+  - docs/models/components/rolesdeployer.md
+  - docs/models/components/rolesapiproductsrolesmaintainername.md
+  - docs/models/components/rolesapiproductsrolesmaintainerdescription.md
+  - docs/models/components/maintainer.md
+  - docs/models/components/rolesapiproductsrolespluginsadminname.md
+  - docs/models/components/rolesapiproductsrolespluginsadmindescription.md
+  - docs/models/components/pluginsadmin.md
+  - docs/models/components/rolesapiproductsrolespublishername.md
+  - docs/models/components/rolesapiproductsrolespublisherdescription.md
+  - docs/models/components/publisher.md
+  - docs/models/components/rolesapiproductsrolesviewername.md
+  - docs/models/components/rolesapiproductsrolesviewerdescription.md
+  - docs/models/components/rolesviewer.md
+  - docs/models/components/rolesroles.md
+  - docs/models/components/apiproducts.md
+  - docs/models/components/rolesauditlogsname.md
+  - docs/models/components/rolesauditlogsrolesname.md
+  - docs/models/components/rolesauditlogsdescription.md
+  - docs/models/components/rolesauditlogsadmin.md
+  - docs/models/components/rolesauditlogsroles.md
+  - docs/models/components/auditlogs.md
+  - docs/models/components/rolesidentityname.md
+  - docs/models/components/rolesidentityrolesname.md
+  - docs/models/components/rolesidentitydescription.md
+  - docs/models/components/rolesidentityadmin.md
+  - docs/models/components/rolesidentityroles.md
+  - docs/models/components/identity.md
+  - docs/models/components/rolesmeshcontrolplanesname.md
+  - docs/models/components/rolesmeshcontrolplanesrolesname.md
+  - docs/models/components/rolesmeshcontrolplanesdescription.md
+  - docs/models/components/rolesmeshcontrolplanesadmin.md
+  - docs/models/components/rolesmeshcontrolplanesrolescreatorname.md
+  - docs/models/components/rolesmeshcontrolplanesrolesdescription.md
+  - docs/models/components/rolesmeshcontrolplanescreator.md
+  - docs/models/components/rolesmeshcontrolplanesrolesviewername.md
+  - docs/models/components/rolesmeshcontrolplanesrolesviewerdescription.md
+  - docs/models/components/rolesmeshcontrolplanesviewer.md
+  - docs/models/components/rolesmeshcontrolplanesroles.md
+  - docs/models/components/meshcontrolplanes.md
+  - docs/models/components/roles.md
+  - docs/models/components/assignedrolecollection.md
+  - docs/models/components/entityregion.md
+  - docs/models/components/assignedrole.md
+  - docs/models/components/assignroleentityregion.md
+  - docs/models/components/assignrole.md
+  - docs/models/components/systemaccount.md
+  - docs/models/components/createsystemaccount.md
+  - docs/models/components/updatesystemaccount.md
+  - docs/models/components/systemaccountaccesstokencreated.md
+  - docs/models/components/createsystemaccountaccesstoken.md
+  - docs/models/components/systemaccountaccesstoken.md
+  - docs/models/components/updatesystemaccountaccesstoken.md
+  - docs/models/components/team.md
+  - docs/models/components/createteam.md
+  - docs/models/components/updateteam.md
+  - docs/models/components/addsystemaccounttoteam.md
+  - docs/models/components/addusertoteam.md
+  - docs/models/components/user.md
+  - docs/models/components/updateuser.md
   - docs/models/components/security.md
   - docs/models/sdkerrors/badrequesterror.md
   - docs/models/sdkerrors/unauthorizederror.md
@@ -755,6 +1047,8 @@ generatedFiles:
   - docs/models/sdkerrors/internalservererror.md
   - docs/models/sdkerrors/notfounderror.md
   - docs/models/sdkerrors/schemasunauthorizederror.md
+  - docs/models/sdkerrors/preconditionfailed.md
+  - docs/models/sdkerrors/ratelimited.md
   - USAGE.md
   - .gitattributes
   - internal/hooks/hooks.go
