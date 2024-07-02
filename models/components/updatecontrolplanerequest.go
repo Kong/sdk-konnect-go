@@ -44,7 +44,10 @@ type UpdateControlPlaneRequest struct {
 	AuthType *UpdateControlPlaneRequestAuthType `json:"auth_type,omitempty"`
 	// Array of proxy URLs associated with reaching the data-planes connected to a control-plane.
 	ProxyUrls []ProxyURL `json:"proxy_urls,omitempty"`
-	// Labels to facilitate tagged search on control planes. Keys must be of length 1-63 characters, and cannot start with 'kong', 'konnect', 'mesh', 'kic', or '_'.
+	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
+	//
+	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
+	//
 	Labels map[string]string `json:"labels,omitempty"`
 }
 

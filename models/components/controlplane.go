@@ -37,7 +37,10 @@ type ControlPlane struct {
 	Name *string `json:"name,omitempty"`
 	// The description of the control plane in Konnect.
 	Description *string `json:"description,omitempty"`
-	// Labels to facilitate tagged search on control planes. Keys must be of length 1-63 characters, and cannot start with 'kong', 'konnect', 'mesh', 'kic', or '_'.
+	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
+	//
+	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
+	//
 	Labels map[string]string `json:"labels,omitempty"`
 	// CP configuration object for related access endpoints.
 	Config *Config `json:"config,omitempty"`

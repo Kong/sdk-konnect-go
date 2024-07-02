@@ -1,0 +1,11 @@
+# AuthenticationSettings
+
+
+## Fields
+
+| Field                                              | Type                                               | Required                                           | Description                                        | Example                                            |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `BasicAuthEnabled`                                 | **bool*                                            | :heavy_minus_sign:                                 | The organization has basic auth enabled.           | true                                               |
+| `OidcAuthEnabled`                                  | **bool*                                            | :heavy_minus_sign:                                 | The organization has OIDC disabled.                | false                                              |
+| `IdpMappingEnabled`                                | **bool*                                            | :heavy_minus_sign:                                 | IdP groups determine the Konnect teams a user has. | true                                               |
+| `KonnectMappingEnabled`                            | **bool*                                            | :heavy_minus_sign:                                 | A Konnect Identity Admin assigns teams to a user.  | false                                              |

@@ -19,5 +19,7 @@ generate.sdk:
 	speakeasy generate sdk --lang go --out . --schema ./$(OPENAPI_FILE)
 	git checkout -- $(SPEAKEASY_DIR)/gen.lock $(SPEAKEASY_DIR)/gen.yaml sdk.go
 	$(MAKE) generate.deepcopy
-	git checkout -- $(OPENAPI_FILE)
+	git checkout -- $(OPENAPI_FILE) \
+		models/components/createcontrolplanerequest.go \
+		docs/models/components/createcontrolplanerequest.md
 	speakeasy generate sdk --lang go --out . --schema ./$(OPENAPI_FILE)

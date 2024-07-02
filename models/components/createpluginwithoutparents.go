@@ -8,10 +8,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// CreatePluginWithoutParentsConfig - The configuration properties for the Plugin which can be found on the plugins documentation page in the [Kong Hub](https://docs.konghq.com/hub/).
-type CreatePluginWithoutParentsConfig struct {
-}
-
 type CreatePluginWithoutParentsProtocols string
 
 const (
@@ -64,7 +60,7 @@ func (e *CreatePluginWithoutParentsProtocols) UnmarshalJSON(data []byte) error {
 
 type CreatePluginWithoutParents struct {
 	// The configuration properties for the Plugin which can be found on the plugins documentation page in the [Kong Hub](https://docs.konghq.com/hub/).
-	Config *CreatePluginWithoutParentsConfig `json:"config,omitempty"`
+	Config map[string]any `json:"config,omitempty"`
 	// Whether the plugin is applied.
 	Enabled *bool `default:"true" json:"enabled"`
 	// The name of the Plugin that's going to be added. Currently, the Plugin must be installed in every Kong instance separately.
@@ -87,7 +83,7 @@ func (c *CreatePluginWithoutParents) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CreatePluginWithoutParents) GetConfig() *CreatePluginWithoutParentsConfig {
+func (o *CreatePluginWithoutParents) GetConfig() map[string]any {
 	if o == nil {
 		return nil
 	}

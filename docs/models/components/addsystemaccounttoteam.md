@@ -1,0 +1,8 @@
+# AddSystemAccountToTeam
+
+
+## Fields
+
+| Field                     | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `ID`                      | **string*                 | :heavy_minus_sign:        | ID of the system account. |
