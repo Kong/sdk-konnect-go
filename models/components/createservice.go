@@ -83,7 +83,7 @@ type CreateService struct {
 	// Whether the Service is active. If set to `false`, the proxy behavior will be as if any routes attached to it do not exist (404). Default: `true`.
 	Enabled *bool `default:"true" json:"enabled"`
 	// The host of the upstream server. Note that the host value is case sensitive.
-	Host string `json:"host"`
+	Host *string `json:"host,omitempty"`
 	// The Service name.
 	Name *string `json:"name,omitempty"`
 	// The path to be used in requests to the upstream server.
@@ -152,9 +152,9 @@ func (o *CreateService) GetEnabled() *bool {
 	return o.Enabled
 }
 
-func (o *CreateService) GetHost() string {
+func (o *CreateService) GetHost() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Host
 }
