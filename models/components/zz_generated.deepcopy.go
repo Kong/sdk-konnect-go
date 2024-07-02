@@ -91,11 +91,6 @@ func (in *CreateService) DeepCopyInto(out *CreateService) {
 		*out = new(bool)
 		**out = **in
 	}
-	if in.Host != nil {
-		in, out := &in.Host, &out.Host
-		*out = new(string)
-		**out = **in
-	}
 	if in.Name != nil {
 		in, out := &in.Name, &out.Name
 		*out = new(string)

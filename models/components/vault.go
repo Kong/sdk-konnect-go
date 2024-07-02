@@ -2,20 +2,16 @@
 
 package components
 
-// VaultConfig - The configuration properties for the Vault which can be found on the vaults' documentation page.
-type VaultConfig struct {
-}
-
 // Vault entities are used to configure different Vault connectors. Examples of Vaults are Environment Variables, Hashicorp Vault and AWS Secrets Manager. Configuring a Vault allows referencing the secrets with other entities. For example a certificate entity can store a reference to a certificate and key, stored in a vault, instead of storing the certificate and key within the entity. This allows a proper separation of secrets and configuration and prevents secret sprawl.
 type Vault struct {
 	// The configuration properties for the Vault which can be found on the vaults' documentation page.
-	Config *VaultConfig `json:"config,omitempty"`
+	Config map[string]any `json:"config,omitempty"`
 	// The description of the Vault entity.
 	Description *string `json:"description,omitempty"`
 	// The name of the Vault that's going to be added. Currently, the Vault implementation must be installed in every Kong instance.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// The unique prefix (or identifier) for this Vault configuration. The prefix is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
-	Prefix *string `json:"prefix,omitempty"`
+	Prefix string `json:"prefix"`
 	// An optional set of strings associated with the Vault for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
 	// Unix epoch when the resource was created.
@@ -25,7 +21,7 @@ type Vault struct {
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 }
 
-func (o *Vault) GetConfig() *VaultConfig {
+func (o *Vault) GetConfig() map[string]any {
 	if o == nil {
 		return nil
 	}
@@ -39,16 +35,16 @@ func (o *Vault) GetDescription() *string {
 	return o.Description
 }
 
-func (o *Vault) GetName() *string {
+func (o *Vault) GetName() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Name
 }
 
-func (o *Vault) GetPrefix() *string {
+func (o *Vault) GetPrefix() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Prefix
 }
