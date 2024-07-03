@@ -2,6 +2,7 @@ package hooks
 
 import (
 	"net/http"
+	"strings"
 	"sync"
 )
 
@@ -44,7 +45,12 @@ func (i *UserAgentPreRequestHook) BeforeRequest(hookCtx BeforeRequestContext, re
 	case "get-organizations-me":
 		// NOTE(pmalek): This is because we merge OpenAPI specs and /organizations/me
 		// is only served by the global API.
-		req.URL.Host = "global.api.konghq.com"
+		// @mheap mentioned that we can add operation specific URLs to do away with this.
+		if strings.HasSuffix(req.URL.Host, "api.konghq.tech") {
+			req.URL.Host = "global.api.konghq.tech"
+		} else {
+			req.URL.Host = "global.api.konghq.com"
+		}
 	}
 	return req, nil
 }
