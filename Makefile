@@ -21,6 +21,6 @@ generate.sdk:
 	git checkout -- $(SPEAKEASY_DIR)/gen.lock $(SPEAKEASY_DIR)/gen.yaml sdk.go
 	$(MAKE) generate.deepcopy
 	git checkout -- $(OPENAPI_FILE) \
-		models/components/create*.go \
-		docs/models/components/create*.md
+		$(shell git ls-files models/components/create*.go) \
+		$(shell git ls-files docs/models/components/create*.md)
 	speakeasy generate sdk --lang go --out . --schema ./$(OPENAPI_FILE)
