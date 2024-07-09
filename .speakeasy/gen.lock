@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 6d0ac8f78fe589272c2d4ff6c7cc5f81
+  docChecksum: 0e47e7066b2f29c35488137e1b0ae22c
   docVersion: 3.0.0
   speakeasyVersion: 1.330.0
   generationVersion: 2.361.10
-  releaseVersion: 0.4.2
-  configChecksum: a62649160df31dd6b5f8b93393aa87e2
+  releaseVersion: 0.4.3
+  configChecksum: 9eacea71481c4bb748e4b97cc8906d6d
 features:
   go:
     additionalDependencies: 0.1.0
@@ -808,19 +808,16 @@ generatedFiles:
   - docs/models/components/item.md
   - docs/models/components/pluginschemas.md
   - docs/models/components/createpluginschemas.md
-  - docs/models/components/pluginconfig.md
   - docs/models/components/protocols.md
   - docs/models/components/pluginconsumer.md
   - docs/models/components/pluginroute.md
   - docs/models/components/pluginservice.md
   - docs/models/components/plugin.md
-  - docs/models/components/createpluginconfig.md
   - docs/models/components/createpluginprotocols.md
   - docs/models/components/createpluginconsumer.md
   - docs/models/components/createpluginroute.md
   - docs/models/components/createpluginservice.md
   - docs/models/components/createplugin.md
-  - docs/models/components/createpluginwithoutparentsconfig.md
   - docs/models/components/createpluginwithoutparentsprotocols.md
   - docs/models/components/createpluginwithoutparents.md
   - docs/models/components/destinations.md
@@ -878,9 +875,7 @@ generatedFiles:
   - docs/models/components/targetupstream.md
   - docs/models/components/target.md
   - docs/models/components/createtargetwithoutparents.md
-  - docs/models/components/vaultconfig.md
   - docs/models/components/vault.md
-  - docs/models/components/createvaultconfig.md
   - docs/models/components/createvault.md
   - docs/models/components/listdataplanecertificatesresponsepage.md
   - docs/models/components/listdataplanecertificatesresponse.md

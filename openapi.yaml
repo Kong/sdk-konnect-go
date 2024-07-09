@@ -7280,6 +7280,7 @@ components:
             the plugins documentation page in the [Kong
             Hub](https://docs.konghq.com/hub/).
           type: object
+          additionalProperties: true
         enabled:
           default: true
           description: Whether the plugin is applied.
@@ -8008,6 +8009,7 @@ components:
             The configuration properties for the Vault which can be found on the
             vaults' documentation page.
           type: object
+          additionalProperties: true
         description:
           description: The description of the Vault entity.
           type: string
