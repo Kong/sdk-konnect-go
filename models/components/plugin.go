@@ -8,6 +8,10 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// PluginConfig - The configuration properties for the Plugin which can be found on the plugins documentation page in the [Kong Hub](https://docs.konghq.com/hub/).
+type PluginConfig struct {
+}
+
 type Protocols string
 
 const (
@@ -97,7 +101,7 @@ func (o *PluginService) GetID() *string {
 // A Plugin entity represents a plugin configuration that will be executed during the HTTP request/response lifecycle. It is how you can add functionalities to Services that run behind Kong, like Authentication or Rate Limiting for example. You can find more information about how to install and what values each plugin takes by visiting the [Kong Hub](https://docs.konghq.com/hub/). When adding a Plugin Configuration to a Service, every request made by a client to that Service will run said Plugin. If a Plugin needs to be tuned to different values for some specific Consumers, you can do so by creating a separate plugin instance that specifies both the Service and the Consumer, through the `service` and `consumer` fields.
 type Plugin struct {
 	// The configuration properties for the Plugin which can be found on the plugins documentation page in the [Kong Hub](https://docs.konghq.com/hub/).
-	Config map[string]any `json:"config"`
+	Config PluginConfig `json:"config"`
 	// Whether the plugin is applied.
 	Enabled *bool `default:"true" json:"enabled"`
 	// The name of the Plugin that's going to be added. Currently, the Plugin must be installed in every Kong instance separately.
@@ -129,9 +133,9 @@ func (p *Plugin) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Plugin) GetConfig() map[string]any {
+func (o *Plugin) GetConfig() PluginConfig {
 	if o == nil {
-		return map[string]any{}
+		return PluginConfig{}
 	}
 	return o.Config
 }

@@ -1,7 +1,9 @@
 package hooks
 
 import (
+	"fmt"
 	"net/http"
+	"net/http/httputil"
 	"strings"
 	"sync"
 )
@@ -14,6 +16,7 @@ import (
 
 func initHooks(h *Hooks) {
 	h.registerBeforeRequestHook(&UserAgentPreRequestHook{})
+	h.registerAfterSuccessHook(&UserAgentPreRequestHook{})
 }
 
 var (
@@ -39,6 +42,13 @@ type UserAgentPreRequestHook struct{}
 var _ beforeRequestHook = (*UserAgentPreRequestHook)(nil)
 
 func (i *UserAgentPreRequestHook) BeforeRequest(hookCtx BeforeRequestContext, req *http.Request) (*http.Request, error) {
+	b, err := httputil.DumpRequestOut(req, true)
+	if err != nil {
+		fmt.Printf("Error dumping request: %v\n", err)
+	} else {
+		fmt.Printf("request:\n%s\n\n", b)
+	}
+
 	req.Header.Set("User-Agent", GetUserAgent())
 
 	switch hookCtx.OperationID {
@@ -53,4 +63,15 @@ func (i *UserAgentPreRequestHook) BeforeRequest(hookCtx BeforeRequestContext, re
 		}
 	}
 	return req, nil
+}
+
+func (i *UserAgentPreRequestHook) AfterSuccess(hookCtx AfterSuccessContext, res *http.Response) (*http.Response, error) {
+	b, err := httputil.DumpResponse(res, true)
+	if err != nil {
+		fmt.Printf("Error dumping respone: %v\n", err)
+	} else {
+		fmt.Printf("response:\n%s\n\n", b)
+	}
+
+	return res, nil
 }

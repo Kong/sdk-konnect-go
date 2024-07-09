@@ -12,6 +12,10 @@ OPENAPI_FILE = openapi.yaml
 SPEAKEASY_DIR = .speakeasy
 KUBEBUILDER_GENERATE_CODE_MARKER = \n+kubebuilder:object:generate=true
 
+# NOTE: We call speakeasy twice to generate DeepCopy() for the types that need it.
+#       The generation is called twice because we want to generate the zz_generated.deepcopy.go
+#       file for the types that need DeepCopy() to be generated but to not include
+#       the related code markers in the generated sdk source code or docs.
 # NOTE: add more types that need to have DeepCopy() generated.
 .PHONY: generate.sdk
 generate.sdk:

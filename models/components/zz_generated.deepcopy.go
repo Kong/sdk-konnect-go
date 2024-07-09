@@ -66,6 +66,11 @@ func (in *CreateService) DeepCopyInto(out *CreateService) {
 		*out = make([]string, len(*in))
 		copy(*out, *in)
 	}
+	if in.ClientCertificate != nil {
+		in, out := &in.ClientCertificate, &out.ClientCertificate
+		*out = new(ClientCertificate)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.ConnectTimeout != nil {
 		in, out := &in.ConnectTimeout, &out.ConnectTimeout
 		*out = new(int64)

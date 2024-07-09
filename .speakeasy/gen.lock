@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 7b7a8d82a3cf3de69109cd474a160c92
+  docChecksum: 6d0ac8f78fe589272c2d4ff6c7cc5f81
   docVersion: 3.0.0
-  speakeasyVersion: 1.325.1
-  generationVersion: 2.358.0
-  releaseVersion: 0.4.1
-  configChecksum: fc0ec3118de10456960c1593ae5be13d
+  speakeasyVersion: 1.330.0
+  generationVersion: 2.361.10
+  releaseVersion: 0.4.2
+  configChecksum: a62649160df31dd6b5f8b93393aa87e2
 features:
   go:
     additionalDependencies: 0.1.0
@@ -808,16 +808,19 @@ generatedFiles:
   - docs/models/components/item.md
   - docs/models/components/pluginschemas.md
   - docs/models/components/createpluginschemas.md
+  - docs/models/components/pluginconfig.md
   - docs/models/components/protocols.md
   - docs/models/components/pluginconsumer.md
   - docs/models/components/pluginroute.md
   - docs/models/components/pluginservice.md
   - docs/models/components/plugin.md
+  - docs/models/components/createpluginconfig.md
   - docs/models/components/createpluginprotocols.md
   - docs/models/components/createpluginconsumer.md
   - docs/models/components/createpluginroute.md
   - docs/models/components/createpluginservice.md
   - docs/models/components/createplugin.md
+  - docs/models/components/createpluginwithoutparentsconfig.md
   - docs/models/components/createpluginwithoutparentsprotocols.md
   - docs/models/components/createpluginwithoutparents.md
   - docs/models/components/destinations.md
@@ -841,9 +844,11 @@ generatedFiles:
   - docs/models/components/createroutewithoutparentssources.md
   - docs/models/components/createroutewithoutparents.md
   - docs/models/components/service.md
+  - docs/models/components/clientcertificate.md
   - docs/models/components/protocol.md
   - docs/models/components/createservice.md
   - docs/models/components/upstreamalgorithm.md
+  - docs/models/components/upstreamclientcertificate.md
   - docs/models/components/hashfallback.md
   - docs/models/components/hashon.md
   - docs/models/components/healthy.md
@@ -857,6 +862,7 @@ generatedFiles:
   - docs/models/components/healthchecks.md
   - docs/models/components/upstream.md
   - docs/models/components/createupstreamalgorithm.md
+  - docs/models/components/createupstreamclientcertificate.md
   - docs/models/components/createupstreamhashfallback.md
   - docs/models/components/createupstreamhashon.md
   - docs/models/components/createupstreamhealthy.md
@@ -872,7 +878,9 @@ generatedFiles:
   - docs/models/components/targetupstream.md
   - docs/models/components/target.md
   - docs/models/components/createtargetwithoutparents.md
+  - docs/models/components/vaultconfig.md
   - docs/models/components/vault.md
+  - docs/models/components/createvaultconfig.md
   - docs/models/components/createvault.md
   - docs/models/components/listdataplanecertificatesresponsepage.md
   - docs/models/components/listdataplanecertificatesresponse.md

@@ -8,6 +8,18 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// ClientCertificate - Certificate to be used as client certificate while TLS handshaking to the upstream server.
+type ClientCertificate struct {
+	ID *string `json:"id,omitempty"`
+}
+
+func (o *ClientCertificate) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
 // Protocol - The protocol used to communicate with the upstream.
 type Protocol string
 
@@ -65,6 +77,8 @@ type CreateService struct {
 	URL *string `json:"url,omitempty"`
 	// Array of `CA Certificate` object UUIDs that are used to build the trust store while verifying upstream server's TLS certificate. If set to `null` when Nginx default is respected. If default CA list in Nginx are not specified and TLS verification is enabled, then handshake with upstream server will always fail (because no CA are trusted).
 	CaCertificates []string `json:"ca_certificates,omitempty"`
+	// Certificate to be used as client certificate while TLS handshaking to the upstream server.
+	ClientCertificate *ClientCertificate `json:"client_certificate,omitempty"`
 	// The timeout in milliseconds for establishing a connection to the upstream server.
 	ConnectTimeout *int64 `default:"60000" json:"connect_timeout"`
 	// Whether the Service is active. If set to `false`, the proxy behavior will be as if any routes attached to it do not exist (404). Default: `true`.
@@ -116,6 +130,13 @@ func (o *CreateService) GetCaCertificates() []string {
 		return nil
 	}
 	return o.CaCertificates
+}
+
+func (o *CreateService) GetClientCertificate() *ClientCertificate {
+	if o == nil {
+		return nil
+	}
+	return o.ClientCertificate
 }
 
 func (o *CreateService) GetConnectTimeout() *int64 {

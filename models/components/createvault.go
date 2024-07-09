@@ -2,10 +2,14 @@
 
 package components
 
+// CreateVaultConfig - The configuration properties for the Vault which can be found on the vaults' documentation page.
+type CreateVaultConfig struct {
+}
+
 // CreateVault - Vault entities are used to configure different Vault connectors. Examples of Vaults are Environment Variables, Hashicorp Vault and AWS Secrets Manager. Configuring a Vault allows referencing the secrets with other entities. For example a certificate entity can store a reference to a certificate and key, stored in a vault, instead of storing the certificate and key within the entity. This allows a proper separation of secrets and configuration and prevents secret sprawl.
 type CreateVault struct {
 	// The configuration properties for the Vault which can be found on the vaults' documentation page.
-	Config map[string]any `json:"config,omitempty"`
+	Config *CreateVaultConfig `json:"config,omitempty"`
 	// The description of the Vault entity.
 	Description *string `json:"description,omitempty"`
 	// The name of the Vault that's going to be added. Currently, the Vault implementation must be installed in every Kong instance.
@@ -16,7 +20,7 @@ type CreateVault struct {
 	Tags []string `json:"tags,omitempty"`
 }
 
-func (o *CreateVault) GetConfig() map[string]any {
+func (o *CreateVault) GetConfig() *CreateVaultConfig {
 	if o == nil {
 		return nil
 	}
