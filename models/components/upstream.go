@@ -38,18 +38,6 @@ func (e *UpstreamAlgorithm) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// UpstreamClientCertificate - If set, the certificate to be used as client certificate while TLS handshaking to the upstream server.
-type UpstreamClientCertificate struct {
-	ID *string `json:"id,omitempty"`
-}
-
-func (o *UpstreamClientCertificate) GetID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ID
-}
-
 // HashFallback - What to use as hashing input if the primary `hash_on` does not return a hash (eg. header is missing, or no Consumer identified). Not available if `hash_on` is set to `cookie`.
 type HashFallback string
 
@@ -544,8 +532,6 @@ func (o *Healthchecks) GetThreshold() *float64 {
 type Upstream struct {
 	// Which load balancing algorithm to use.
 	Algorithm *UpstreamAlgorithm `default:"round-robin" json:"algorithm"`
-	// If set, the certificate to be used as client certificate while TLS handshaking to the upstream server.
-	ClientCertificate *UpstreamClientCertificate `json:"client_certificate,omitempty"`
 	// What to use as hashing input if the primary `hash_on` does not return a hash (eg. header is missing, or no Consumer identified). Not available if `hash_on` is set to `cookie`.
 	HashFallback *HashFallback `default:"none" json:"hash_fallback"`
 	// The header name to take the value from as hash input. Only required when `hash_fallback` is set to `header`.
@@ -598,13 +584,6 @@ func (o *Upstream) GetAlgorithm() *UpstreamAlgorithm {
 		return nil
 	}
 	return o.Algorithm
-}
-
-func (o *Upstream) GetClientCertificate() *UpstreamClientCertificate {
-	if o == nil {
-		return nil
-	}
-	return o.ClientCertificate
 }
 
 func (o *Upstream) GetHashFallback() *HashFallback {
