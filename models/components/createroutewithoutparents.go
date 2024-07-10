@@ -158,6 +158,7 @@ func (o *CreateRouteWithoutParentsSources) GetPort() *int64 {
 	return o.Port
 }
 
+// CreateRouteWithoutParents - The request schema for the create route's request.
 type CreateRouteWithoutParents struct {
 	// A list of IP destinations of incoming connections that match this Route when using stream routing. Each entry is an object with fields "ip" (optionally in CIDR range notation) and/or "port".
 	Destinations []CreateRouteWithoutParentsDestinations `json:"destinations,omitempty"`

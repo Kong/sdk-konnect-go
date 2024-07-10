@@ -3,7 +3,7 @@ SHELL = bash
 
 OPENAPI_FILE = openapi.yaml
 SPEAKEASY_DIR = .speakeasy
-KUBEBUILDER_GENERATE_CODE_MARKER = \n+kubebuilder:object:generate=true
+KUBEBUILDER_GENERATE_CODE_MARKER = +kubebuilder:object:generate=true
 
 SED=sed
 ifeq (Darwin,$(shell uname -s))
@@ -27,14 +27,18 @@ deepcopy:
 # NOTE: add more types that need to have DeepCopy() generated.
 .PHONY: generate.sdk
 generate.sdk:
-	yq --inplace '.components.schemas.CreateControlPlaneRequest.description += "$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
-	yq --inplace '.components.schemas.CreateServiceWithoutParents.description += "$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
-	yq --inplace '.components.schemas.CreateRouteWithoutParents.description += "$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
-	yq --inplace '.components.schemas.CreateRouteWithoutParents.properties.destinations.description += "$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
-	yq --inplace '.components.schemas.CreateRouteWithoutParents.properties.sources.description += "$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
+	yq --inplace '.components.schemas.CreateControlPlaneRequest.description += "\n$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
+	yq --inplace '.components.schemas.CreateServiceWithoutParents.description += "\n$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
+	yq --inplace '.components.schemas.CreateRouteWithoutParents.description += "\n$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
 
 	speakeasy generate sdk --lang go --out . --schema ./$(OPENAPI_FILE)
 	git checkout -- $(SPEAKEASY_DIR)/gen.lock $(SPEAKEASY_DIR)/gen.yaml sdk.go
+
+	$(SED) -i 's#\(type CreateRouteWithoutParentsDestinations struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' models/components/createroutewithoutparents.go
+	$(SED) -i 's#\(type CreateRouteDestinations struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' models/components/createroute.go
+	$(SED) -i 's#\(type CreateRouteWithoutParentsSources struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' models/components/createroutewithoutparents.go
+	$(SED) -i 's#\(type CreateRouteSources struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' models/components/createroute.go
+
 	$(MAKE) generate.deepcopy
 	git checkout -- $(OPENAPI_FILE) \
 		$(shell git ls-files models/components/create*.go) \
