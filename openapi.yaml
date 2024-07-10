@@ -7351,6 +7351,7 @@ components:
               type: object
           type: object
     CreateRouteWithoutParents:
+      description: The request schema for the create route's request.
       properties:
         destinations:
           description: >-
