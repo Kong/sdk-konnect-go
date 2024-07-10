@@ -12,7 +12,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 go:
-  version: 0.4.5
+  version: 0.4.6
   additionalDependencies:
     k8s.io/apimachinery: v0.30.2
   allowUnknownFieldsInWeakUnions: false

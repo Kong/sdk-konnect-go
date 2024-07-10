@@ -1,3 +1,15 @@
+SHELL = bash
+.SHELLFLAGS = -ec -o pipefail
+
+OPENAPI_FILE = openapi.yaml
+SPEAKEASY_DIR = .speakeasy
+KUBEBUILDER_GENERATE_CODE_MARKER = \n+kubebuilder:object:generate=true
+
+SED=sed
+ifeq (Darwin,$(shell uname -s))
+	SED=gsed
+endif
+
 .PHONY: generate.deepcopy
 generate.deepcopy: deepcopy
 # Generate deepcopy/runtime.Object implementations for a particular file
@@ -8,10 +20,6 @@ generate.deepcopy: deepcopy
 deepcopy:
 	go install -v sigs.k8s.io/controller-tools/cmd/controller-gen@latest
 
-OPENAPI_FILE = openapi.yaml
-SPEAKEASY_DIR = .speakeasy
-KUBEBUILDER_GENERATE_CODE_MARKER = \n+kubebuilder:object:generate=true
-
 # NOTE: We call speakeasy twice to generate DeepCopy() for the types that need it.
 #       The generation is called twice because we want to generate the zz_generated.deepcopy.go
 #       file for the types that need DeepCopy() to be generated but to not include
@@ -21,6 +29,10 @@ KUBEBUILDER_GENERATE_CODE_MARKER = \n+kubebuilder:object:generate=true
 generate.sdk:
 	yq --inplace '.components.schemas.CreateControlPlaneRequest.description += "$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
 	yq --inplace '.components.schemas.CreateServiceWithoutParents.description += "$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
+	yq --inplace '.components.schemas.CreateRouteWithoutParents.description += "$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
+	yq --inplace '.components.schemas.CreateRouteWithoutParents.properties.destinations.description += "$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
+	yq --inplace '.components.schemas.CreateRouteWithoutParents.properties.sources.description += "$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
+
 	speakeasy generate sdk --lang go --out . --schema ./$(OPENAPI_FILE)
 	git checkout -- $(SPEAKEASY_DIR)/gen.lock $(SPEAKEASY_DIR)/gen.yaml sdk.go
 	$(MAKE) generate.deepcopy

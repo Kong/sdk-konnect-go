@@ -7366,7 +7366,8 @@ components:
             type: object
           type: array
         headers:
-          additionalProperties: true
+          additionalProperties:
+            type: string
           description: >-
             One or more lists of values indexed by header name that will cause
             this Route to match if present in the request. The `Host` header
