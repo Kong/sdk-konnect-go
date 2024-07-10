@@ -5,7 +5,6 @@ package components
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 // ClientCertificate - Certificate to be used as client certificate while TLS handshaking to the upstream server.
@@ -80,9 +79,9 @@ type CreateService struct {
 	// Certificate to be used as client certificate while TLS handshaking to the upstream server.
 	ClientCertificate *ClientCertificate `json:"client_certificate,omitempty"`
 	// The timeout in milliseconds for establishing a connection to the upstream server.
-	ConnectTimeout *int64 `default:"60000" json:"connect_timeout"`
+	ConnectTimeout *int64 `json:"connect_timeout,omitempty"`
 	// Whether the Service is active. If set to `false`, the proxy behavior will be as if any routes attached to it do not exist (404). Default: `true`.
-	Enabled *bool `default:"true" json:"enabled"`
+	Enabled *bool `json:"enabled,omitempty"`
 	// The host of the upstream server. Note that the host value is case sensitive.
 	Host string `json:"host"`
 	// The Service name.
@@ -90,13 +89,13 @@ type CreateService struct {
 	// The path to be used in requests to the upstream server.
 	Path *string `json:"path,omitempty"`
 	// The upstream server port.
-	Port *int64 `default:"80" json:"port"`
+	Port *int64 `json:"port,omitempty"`
 	// The protocol used to communicate with the upstream.
-	Protocol *Protocol `default:"http" json:"protocol"`
+	Protocol *Protocol `json:"protocol,omitempty"`
 	// The timeout in milliseconds between two successive read operations for transmitting a request to the upstream server.
-	ReadTimeout *int64 `default:"60000" json:"read_timeout"`
+	ReadTimeout *int64 `json:"read_timeout,omitempty"`
 	// The number of retries to execute upon failure to proxy.
-	Retries *int64 `default:"5" json:"retries"`
+	Retries *int64 `json:"retries,omitempty"`
 	// An optional set of strings associated with the Service for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
 	// Whether to enable verification of upstream server TLS certificate. If set to `null`, then the Nginx default is respected.
@@ -104,18 +103,7 @@ type CreateService struct {
 	// Maximum depth of chain while verifying Upstream server's TLS certificate. If set to `null`, then the Nginx default is respected.
 	TLSVerifyDepth *int64 `json:"tls_verify_depth,omitempty"`
 	// The timeout in milliseconds between two successive write operations for transmitting a request to the upstream server.
-	WriteTimeout *int64 `default:"60000" json:"write_timeout"`
-}
-
-func (c CreateService) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateService) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
-		return err
-	}
-	return nil
+	WriteTimeout *int64 `json:"write_timeout,omitempty"`
 }
 
 func (o *CreateService) GetURL() *string {

@@ -7349,7 +7349,6 @@ components:
                 id:
                   type: string
               type: object
-              x-foreign: true
           type: object
     CreateRouteWithoutParents:
       properties:
@@ -7384,7 +7383,6 @@ components:
             type: string
           type: array
         https_redirect_status_code:
-          default: 426
           description: >-
             The status code Kong responds with when all properties of a Route
             match except the protocol i.e. if the protocol of the request is
@@ -7410,7 +7408,6 @@ components:
             "test" and "Test".
           type: string
         path_handling:
-          default: v0
           description: >-
             Controls how the Service path, Route path and requested path are
             combined when sending a request to the upstream. See above for a
@@ -7425,7 +7422,6 @@ components:
             type: string
           type: array
         preserve_host:
-          default: false
           description: >-
             When matching a Route via one of the `hosts` domain names, use the
             request `Host` header in the upstream request headers. If set to
@@ -7433,9 +7429,6 @@ components:
             `host`.
           type: boolean
         protocols:
-          default:
-            - http
-            - https
           description: >-
             An array of the protocols this Route should allow. See the [Route
             Object](#route-object) section for a list of accepted protocols.
@@ -7457,7 +7450,6 @@ components:
             type: string
           type: array
         regex_priority:
-          default: 0
           description: >-
             A number used to choose which route resolves a given request when
             several routes match it using regexes simultaneously. When two
@@ -7467,14 +7459,12 @@ components:
             before shorter ones).
           type: integer
         request_buffering:
-          default: true
           description: >-
             Whether to enable request body buffering or not. With HTTP 1.1, it
             may make sense to turn this off on services that receive data with
             chunked transfer encoding.
           type: boolean
         response_buffering:
-          default: true
           description: >-
             Whether to enable response body buffering or not. With HTTP 1.1, it
             may make sense to turn this off on services that send data with
@@ -7499,7 +7489,6 @@ components:
             type: object
           type: array
         strip_path:
-          default: true
           description: >-
             When matching a Route via one of the `paths`, strip the matching
             prefix from the upstream request URL.
@@ -7584,15 +7573,12 @@ components:
             id:
               type: string
           type: object
-          x-foreign: true
         connect_timeout:
-          default: 60000
           description: >-
             The timeout in milliseconds for establishing a connection to the
             upstream server.
           type: integer
         enabled:
-          default: true
           description: >-
             Whether the Service is active. If set to `false`, the proxy behavior
             will be as if any routes attached to it do not exist (404). Default:
@@ -7610,11 +7596,9 @@ components:
           description: The path to be used in requests to the upstream server.
           type: string
         port:
-          default: 80
           description: The upstream server port.
           type: integer
         protocol:
-          default: http
           description: The protocol used to communicate with the upstream.
           enum:
             - grpc
@@ -7629,13 +7613,11 @@ components:
             - wss
           type: string
         read_timeout:
-          default: 60000
           description: >-
             The timeout in milliseconds between two successive read operations
             for transmitting a request to the upstream server.
           type: integer
         retries:
-          default: 5
           description: The number of retries to execute upon failure to proxy.
           type: integer
         tags:
@@ -7656,7 +7638,6 @@ components:
             certificate. If set to `null`, then the Nginx default is respected.
           type: integer
         write_timeout:
-          default: 60000
           description: >-
             The timeout in milliseconds between two successive write operations
             for transmitting a request to the upstream server.
@@ -7742,7 +7723,6 @@ components:
             id:
               type: string
           type: object
-          x-foreign: true
         hash_fallback:
           default: none
           description: >-
@@ -9218,6 +9198,8 @@ tags:
       - `ws`: At least one of `hosts`, `headers`, or `paths`
 
       - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
+
+
         <br>
         A route can't have both `tls` and `tls_passthrough` protocols at same time.
         <br><br>
