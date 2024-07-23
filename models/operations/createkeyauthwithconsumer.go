@@ -13,7 +13,7 @@ type CreateKeyAuthWithConsumerRequest struct {
 	// Consumer ID for nested entities
 	ConsumerIDForNestedEntities string `pathParam:"style=simple,explode=false,name=ConsumerIdForNestedEntities"`
 	// Description of new API-key for creation
-	CreateKeyAuthWithoutParents components.CreateKeyAuthWithoutParents `request:"mediaType=application/json"`
+	KeyAuthWithoutParents components.KeyAuthWithoutParents `request:"mediaType=application/json"`
 }
 
 func (o *CreateKeyAuthWithConsumerRequest) GetControlPlaneID() string {
@@ -30,11 +30,11 @@ func (o *CreateKeyAuthWithConsumerRequest) GetConsumerIDForNestedEntities() stri
 	return o.ConsumerIDForNestedEntities
 }
 
-func (o *CreateKeyAuthWithConsumerRequest) GetCreateKeyAuthWithoutParents() components.CreateKeyAuthWithoutParents {
+func (o *CreateKeyAuthWithConsumerRequest) GetKeyAuthWithoutParents() components.KeyAuthWithoutParents {
 	if o == nil {
-		return components.CreateKeyAuthWithoutParents{}
+		return components.KeyAuthWithoutParents{}
 	}
-	return o.CreateKeyAuthWithoutParents
+	return o.KeyAuthWithoutParents
 }
 
 type CreateKeyAuthWithConsumerResponse struct {

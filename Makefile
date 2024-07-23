@@ -29,18 +29,28 @@ deepcopy:
 generate.sdk:
 	yq --inplace '.components.schemas.CreateControlPlaneRequest.description += "\n$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
 	yq --inplace '.components.schemas.CreateServiceWithoutParents.description += "\n$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
-	yq --inplace '.components.schemas.CreateRouteWithoutParents.description += "\n$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
+	yq --inplace '.components.schemas.RouteWithoutParents.description += "\n$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
 
 	speakeasy generate sdk --lang go --out . --schema ./$(OPENAPI_FILE)
 	git checkout -- $(SPEAKEASY_DIR)/gen.lock $(SPEAKEASY_DIR)/gen.yaml sdk.go
 
-	$(SED) -i 's#\(type CreateRouteWithoutParentsDestinations struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' models/components/createroutewithoutparents.go
-	$(SED) -i 's#\(type CreateRouteDestinations struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' models/components/createroute.go
-	$(SED) -i 's#\(type CreateRouteWithoutParentsSources struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' models/components/createroutewithoutparents.go
-	$(SED) -i 's#\(type CreateRouteSources struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' models/components/createroute.go
+	$(SED) -i 's#\(type RouteWithoutParentsDestinations struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/routewithoutparents.go
+	$(SED) -i 's#\(type Destinations struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/route.go
+	$(SED) -i 's#\(type Sources struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/route.go
+	$(SED) -i 's#\(type RouteService struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/route.go
+	$(SED) -i 's#\(type RouteWithoutParentsSources struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/routewithoutparents.go
+	$(SED) -i 's#\(type RouteInput struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/route.go
 
 	$(MAKE) generate.deepcopy
 	git checkout -- $(OPENAPI_FILE) \
+		$(shell git ls-files models/components/route*.go) \
+		$(shell git ls-files docs/models/components/route*.md) \
 		$(shell git ls-files models/components/create*.go) \
 		$(shell git ls-files docs/models/components/create*.md)
 	speakeasy generate sdk --lang go --out . --schema ./$(OPENAPI_FILE)

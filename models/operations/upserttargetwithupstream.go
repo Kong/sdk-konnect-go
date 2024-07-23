@@ -15,7 +15,7 @@ type UpsertTargetWithUpstreamRequest struct {
 	// ID of the Target to lookup
 	TargetID string `pathParam:"style=simple,explode=false,name=TargetId"`
 	// Description of the Target
-	CreateTargetWithoutParents components.CreateTargetWithoutParents `request:"mediaType=application/json"`
+	TargetWithoutParents components.TargetWithoutParents `request:"mediaType=application/json"`
 }
 
 func (o *UpsertTargetWithUpstreamRequest) GetControlPlaneID() string {
@@ -39,11 +39,11 @@ func (o *UpsertTargetWithUpstreamRequest) GetTargetID() string {
 	return o.TargetID
 }
 
-func (o *UpsertTargetWithUpstreamRequest) GetCreateTargetWithoutParents() components.CreateTargetWithoutParents {
+func (o *UpsertTargetWithUpstreamRequest) GetTargetWithoutParents() components.TargetWithoutParents {
 	if o == nil {
-		return components.CreateTargetWithoutParents{}
+		return components.TargetWithoutParents{}
 	}
-	return o.CreateTargetWithoutParents
+	return o.TargetWithoutParents
 }
 
 type UpsertTargetWithUpstreamResponse struct {

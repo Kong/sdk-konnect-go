@@ -13,7 +13,7 @@ type UpsertSniRequest struct {
 	// ID of the SNI to lookup
 	SNIID string `pathParam:"style=simple,explode=false,name=SNIId"`
 	// Description of the SNI
-	CreateSNI components.CreateSNI `request:"mediaType=application/json"`
+	Sni components.SNIInput `request:"mediaType=application/json"`
 }
 
 func (o *UpsertSniRequest) GetControlPlaneID() string {
@@ -30,11 +30,11 @@ func (o *UpsertSniRequest) GetSNIID() string {
 	return o.SNIID
 }
 
-func (o *UpsertSniRequest) GetCreateSNI() components.CreateSNI {
+func (o *UpsertSniRequest) GetSni() components.SNIInput {
 	if o == nil {
-		return components.CreateSNI{}
+		return components.SNIInput{}
 	}
-	return o.CreateSNI
+	return o.Sni
 }
 
 type UpsertSniResponse struct {

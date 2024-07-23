@@ -13,7 +13,7 @@ type UpsertConsumerRequest struct {
 	// ID of the Consumer to lookup
 	ConsumerID string `pathParam:"style=simple,explode=false,name=ConsumerId"`
 	// Description of the Consumer
-	CreateConsumer components.CreateConsumer `request:"mediaType=application/json"`
+	Consumer components.ConsumerInput `request:"mediaType=application/json"`
 }
 
 func (o *UpsertConsumerRequest) GetControlPlaneID() string {
@@ -30,11 +30,11 @@ func (o *UpsertConsumerRequest) GetConsumerID() string {
 	return o.ConsumerID
 }
 
-func (o *UpsertConsumerRequest) GetCreateConsumer() components.CreateConsumer {
+func (o *UpsertConsumerRequest) GetConsumer() components.ConsumerInput {
 	if o == nil {
-		return components.CreateConsumer{}
+		return components.ConsumerInput{}
 	}
-	return o.CreateConsumer
+	return o.Consumer
 }
 
 type UpsertConsumerResponse struct {

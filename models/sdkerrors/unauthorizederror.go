@@ -8,12 +8,11 @@ import (
 
 // UnauthorizedError - standard error
 type UnauthorizedError struct {
-	Status   int64  `json:"status"`
-	Title    any    `json:"title"`
-	Type     any    `json:"type,omitempty"`
-	Instance any    `json:"instance"`
-	Detail   any    `json:"detail"`
-	Message  string `json:"message"`
+	Status   any `json:"status"`
+	Title    any `json:"title"`
+	Type     any `json:"type,omitempty"`
+	Instance any `json:"instance"`
+	Detail   any `json:"detail"`
 }
 
 var _ error = &UnauthorizedError{}

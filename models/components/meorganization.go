@@ -51,6 +51,8 @@ type MeOrganization struct {
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// State of the organization
 	State *MeOrganizationState `json:"state,omitempty"`
+	// The number of days an organization spends inactive before being deleted.
+	RetentionPeriodDays *int64 `json:"retention_period_days,omitempty"`
 }
 
 func (m MeOrganization) MarshalJSON() ([]byte, error) {
@@ -111,4 +113,11 @@ func (o *MeOrganization) GetState() *MeOrganizationState {
 		return nil
 	}
 	return o.State
+}
+
+func (o *MeOrganization) GetRetentionPeriodDays() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.RetentionPeriodDays
 }

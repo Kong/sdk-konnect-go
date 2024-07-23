@@ -14,8 +14,6 @@ type ListPluginSchemasRequest struct {
 	PageSize *int64 `queryParam:"style=form,explode=true,name=page[size]"`
 	// Request the next page of data, starting with the item after this parameter.
 	PageAfter *string `queryParam:"style=form,explode=true,name=page[after]"`
-	// Request the next page of data, starting with the item before this parameter.
-	PageBefore *string `queryParam:"style=form,explode=true,name=page[before]"`
 }
 
 func (o *ListPluginSchemasRequest) GetControlPlaneID() string {
@@ -37,13 +35,6 @@ func (o *ListPluginSchemasRequest) GetPageAfter() *string {
 		return nil
 	}
 	return o.PageAfter
-}
-
-func (o *ListPluginSchemasRequest) GetPageBefore() *string {
-	if o == nil {
-		return nil
-	}
-	return o.PageBefore
 }
 
 type ListPluginSchemasResponse struct {

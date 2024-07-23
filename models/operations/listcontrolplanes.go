@@ -34,6 +34,10 @@ type ListControlPlanesRequest struct {
 	FilterClusterTypeNeq *string `queryParam:"style=form,explode=true,name=filter[cluster_type][neq]"`
 	// Filter control planes in the response by associated labels.
 	Labels *string `queryParam:"style=form,explode=true,name=labels"`
+	// Sorts a collection of control-planes. Supported sort attributes are:
+	//   - created_at
+	//
+	Sort *string `queryParam:"style=form,explode=true,name=sort"`
 }
 
 func (o *ListControlPlanesRequest) GetPageSize() *int64 {
@@ -125,6 +129,13 @@ func (o *ListControlPlanesRequest) GetLabels() *string {
 		return nil
 	}
 	return o.Labels
+}
+
+func (o *ListControlPlanesRequest) GetSort() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Sort
 }
 
 type ListControlPlanesResponse struct {

@@ -13,7 +13,7 @@ type UpsertCertificateRequest struct {
 	// ID of the Certificate to lookup
 	CertificateID string `pathParam:"style=simple,explode=false,name=CertificateId"`
 	// Description of the Certificate
-	CreateCertificate components.CreateCertificate `request:"mediaType=application/json"`
+	Certificate components.CertificateInput `request:"mediaType=application/json"`
 }
 
 func (o *UpsertCertificateRequest) GetControlPlaneID() string {
@@ -30,11 +30,11 @@ func (o *UpsertCertificateRequest) GetCertificateID() string {
 	return o.CertificateID
 }
 
-func (o *UpsertCertificateRequest) GetCreateCertificate() components.CreateCertificate {
+func (o *UpsertCertificateRequest) GetCertificate() components.CertificateInput {
 	if o == nil {
-		return components.CreateCertificate{}
+		return components.CertificateInput{}
 	}
-	return o.CreateCertificate
+	return o.Certificate
 }
 
 type UpsertCertificateResponse struct {

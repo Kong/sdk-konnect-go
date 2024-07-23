@@ -1,11 +1,10 @@
 # QueryParamFilter
 
-Filter roles returned in the response.
+Filter access tokens returned in the response.
 
 
 ## Fields
 
-| Field                                 | Type                                  | Required                              | Description                           |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| `RoleName`                            | **string*                             | :heavy_minus_sign:                    | Filter a string value by exact match. |
-| `EntityTypeName`                      | **string*                             | :heavy_minus_sign:                    | Filter a string value by exact match. |
+| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `Name`                                                                        | [*components.StringFieldFilter](../../models/components/stringfieldfilter.md) | :heavy_minus_sign:                                                            | Filter a string value field either by exact match or partial contains.        |

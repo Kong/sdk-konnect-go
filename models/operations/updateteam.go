@@ -7,6 +7,10 @@ import (
 	"net/http"
 )
 
+var UpdateTeamServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
 type UpdateTeamRequest struct {
 	// The team ID
 	TeamID string `pathParam:"style=simple,explode=false,name=teamId"`

@@ -13,7 +13,7 @@ type CreateSniWithCertificateRequest struct {
 	// ID of the Certificate to lookup
 	CertificateID string `pathParam:"style=simple,explode=false,name=CertificateId"`
 	// Description of new SNI for creation
-	CreateSNIWithoutParents components.CreateSNIWithoutParents `request:"mediaType=application/json"`
+	SNIWithoutParents components.SNIWithoutParents `request:"mediaType=application/json"`
 }
 
 func (o *CreateSniWithCertificateRequest) GetControlPlaneID() string {
@@ -30,11 +30,11 @@ func (o *CreateSniWithCertificateRequest) GetCertificateID() string {
 	return o.CertificateID
 }
 
-func (o *CreateSniWithCertificateRequest) GetCreateSNIWithoutParents() components.CreateSNIWithoutParents {
+func (o *CreateSniWithCertificateRequest) GetSNIWithoutParents() components.SNIWithoutParents {
 	if o == nil {
-		return components.CreateSNIWithoutParents{}
+		return components.SNIWithoutParents{}
 	}
-	return o.CreateSNIWithoutParents
+	return o.SNIWithoutParents
 }
 
 type CreateSniWithCertificateResponse struct {

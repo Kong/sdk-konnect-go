@@ -13,7 +13,7 @@ type UpsertKeyRequest struct {
 	// ID of the Key to lookup
 	KeyID string `pathParam:"style=simple,explode=false,name=KeyId"`
 	// Description of the Key
-	CreateKey components.CreateKey `request:"mediaType=application/json"`
+	Key components.KeyInput `request:"mediaType=application/json"`
 }
 
 func (o *UpsertKeyRequest) GetControlPlaneID() string {
@@ -30,11 +30,11 @@ func (o *UpsertKeyRequest) GetKeyID() string {
 	return o.KeyID
 }
 
-func (o *UpsertKeyRequest) GetCreateKey() components.CreateKey {
+func (o *UpsertKeyRequest) GetKey() components.KeyInput {
 	if o == nil {
-		return components.CreateKey{}
+		return components.KeyInput{}
 	}
-	return o.CreateKey
+	return o.Key
 }
 
 type UpsertKeyResponse struct {

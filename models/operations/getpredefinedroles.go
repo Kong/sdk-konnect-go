@@ -7,6 +7,10 @@ import (
 	"net/http"
 )
 
+var GetPredefinedRolesServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
 type GetPredefinedRolesResponse struct {
 	// HTTP response content type for this operation
 	ContentType string

@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type Destinations struct {
@@ -170,8 +171,10 @@ func (o *RouteService) GetID() *string {
 	return o.ID
 }
 
-// Route entities define rules to match client requests. Each Route is associated with a Service, and a Service may have multiple Routes associated to it. Every request matching a given Route will be proxied to its associated Service. The combination of Routes and Services (and the separation of concerns between them) offers a powerful routing mechanism with which it is possible to define fine-grained entry-points in Kong leading to different upstream services of your infrastructure. You need at least one matching rule that applies to the protocol being matched by the Route.
+// Route - The request schema for the create route's request.
 type Route struct {
+	// Unix epoch when the resource was created.
+	CreatedAt *int64 `json:"created_at,omitempty"`
 	// A list of IP destinations of incoming connections that match this Route when using stream routing. Each entry is an object with fields "ip" (optionally in CIDR range notation) and/or "port".
 	Destinations []Destinations `json:"destinations,omitempty"`
 	// One or more lists of values indexed by header name that will cause this Route to match if present in the request. The `Host` header cannot be used with this attribute: hosts should be specified using the `hosts` attribute. When `headers` contains only one value and that value starts with the special prefix `~*`, the value is interpreted as a regular expression.
@@ -179,40 +182,56 @@ type Route struct {
 	// A list of domain names that match this Route. Note that the hosts value is case sensitive.
 	Hosts []string `json:"hosts,omitempty"`
 	// The status code Kong responds with when all properties of a Route match except the protocol i.e. if the protocol of the request is `HTTP` instead of `HTTPS`. `Location` header is injected by Kong if the field is set to 301, 302, 307 or 308. Note: This config applies only if the Route is configured to only accept the `https` protocol.
-	HTTPSRedirectStatusCode *HTTPSRedirectStatusCode `json:"https_redirect_status_code,omitempty"`
+	HTTPSRedirectStatusCode *HTTPSRedirectStatusCode `default:"426" json:"https_redirect_status_code"`
+	ID                      *string                  `json:"id,omitempty"`
 	// A list of HTTP methods that match this Route.
 	Methods []string `json:"methods,omitempty"`
 	// The name of the Route. Route names must be unique, and they are case sensitive. For example, there can be two different Routes named "test" and "Test".
 	Name *string `json:"name,omitempty"`
 	// Controls how the Service path, Route path and requested path are combined when sending a request to the upstream. See above for a detailed description of each behavior.
-	PathHandling *PathHandling `json:"path_handling,omitempty"`
+	PathHandling *PathHandling `default:"v0" json:"path_handling"`
 	// A list of paths that match this Route.
 	Paths []string `json:"paths,omitempty"`
 	// When matching a Route via one of the `hosts` domain names, use the request `Host` header in the upstream request headers. If set to `false`, the upstream `Host` header will be that of the Service's `host`.
-	PreserveHost *bool `json:"preserve_host,omitempty"`
+	PreserveHost *bool `default:"false" json:"preserve_host"`
 	// An array of the protocols this Route should allow. See the [Route Object](#route-object) section for a list of accepted protocols. When set to only `"https"`, HTTP requests are answered with an upgrade error. When set to only `"http"`, HTTPS requests are answered with an error.
 	Protocols []RouteProtocols `json:"protocols,omitempty"`
 	// A number used to choose which route resolves a given request when several routes match it using regexes simultaneously. When two routes match the path and have the same `regex_priority`, the older one (lowest `created_at`) is used. Note that the priority for non-regex routes is different (longer non-regex routes are matched before shorter ones).
-	RegexPriority *int64 `json:"regex_priority,omitempty"`
+	RegexPriority *int64 `default:"0" json:"regex_priority"`
 	// Whether to enable request body buffering or not. With HTTP 1.1, it may make sense to turn this off on services that receive data with chunked transfer encoding.
-	RequestBuffering *bool `json:"request_buffering,omitempty"`
+	RequestBuffering *bool `default:"true" json:"request_buffering"`
 	// Whether to enable response body buffering or not. With HTTP 1.1, it may make sense to turn this off on services that send data with chunked transfer encoding.
-	ResponseBuffering *bool `json:"response_buffering,omitempty"`
+	ResponseBuffering *bool `default:"true" json:"response_buffering"`
 	// A list of SNIs that match this Route when using stream routing.
 	Snis []string `json:"snis,omitempty"`
 	// A list of IP sources of incoming connections that match this Route when using stream routing. Each entry is an object with fields "ip" (optionally in CIDR range notation) and/or "port".
 	Sources []Sources `json:"sources,omitempty"`
 	// When matching a Route via one of the `paths`, strip the matching prefix from the upstream request URL.
-	StripPath *bool `json:"strip_path,omitempty"`
+	StripPath *bool `default:"true" json:"strip_path"`
 	// An optional set of strings associated with the Route for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
-	// The Service this Route is associated to. This is where the Route proxies traffic to.
-	Service *RouteService `json:"service,omitempty"`
-	// Unix epoch when the resource was created.
-	CreatedAt *int64  `json:"created_at,omitempty"`
-	ID        *string `json:"id,omitempty"`
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
+	// The Service this Route is associated to. This is where the Route proxies traffic to.
+	Service *RouteService `json:"service,omitempty"`
+}
+
+func (r Route) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *Route) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *Route) GetCreatedAt() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
 }
 
 func (o *Route) GetDestinations() []Destinations {
@@ -241,6 +260,13 @@ func (o *Route) GetHTTPSRedirectStatusCode() *HTTPSRedirectStatusCode {
 		return nil
 	}
 	return o.HTTPSRedirectStatusCode
+}
+
+func (o *Route) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
 }
 
 func (o *Route) GetMethods() []string {
@@ -334,6 +360,13 @@ func (o *Route) GetTags() []string {
 	return o.Tags
 }
 
+func (o *Route) GetUpdatedAt() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
 func (o *Route) GetService() *RouteService {
 	if o == nil {
 		return nil
@@ -341,23 +374,179 @@ func (o *Route) GetService() *RouteService {
 	return o.Service
 }
 
-func (o *Route) GetCreatedAt() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.CreatedAt
+// RouteInput - The request schema for the create route's request.
+type RouteInput struct {
+	// A list of IP destinations of incoming connections that match this Route when using stream routing. Each entry is an object with fields "ip" (optionally in CIDR range notation) and/or "port".
+	Destinations []Destinations `json:"destinations,omitempty"`
+	// One or more lists of values indexed by header name that will cause this Route to match if present in the request. The `Host` header cannot be used with this attribute: hosts should be specified using the `hosts` attribute. When `headers` contains only one value and that value starts with the special prefix `~*`, the value is interpreted as a regular expression.
+	Headers map[string]string `json:"headers,omitempty"`
+	// A list of domain names that match this Route. Note that the hosts value is case sensitive.
+	Hosts []string `json:"hosts,omitempty"`
+	// The status code Kong responds with when all properties of a Route match except the protocol i.e. if the protocol of the request is `HTTP` instead of `HTTPS`. `Location` header is injected by Kong if the field is set to 301, 302, 307 or 308. Note: This config applies only if the Route is configured to only accept the `https` protocol.
+	HTTPSRedirectStatusCode *HTTPSRedirectStatusCode `default:"426" json:"https_redirect_status_code"`
+	// A list of HTTP methods that match this Route.
+	Methods []string `json:"methods,omitempty"`
+	// The name of the Route. Route names must be unique, and they are case sensitive. For example, there can be two different Routes named "test" and "Test".
+	Name *string `json:"name,omitempty"`
+	// Controls how the Service path, Route path and requested path are combined when sending a request to the upstream. See above for a detailed description of each behavior.
+	PathHandling *PathHandling `default:"v0" json:"path_handling"`
+	// A list of paths that match this Route.
+	Paths []string `json:"paths,omitempty"`
+	// When matching a Route via one of the `hosts` domain names, use the request `Host` header in the upstream request headers. If set to `false`, the upstream `Host` header will be that of the Service's `host`.
+	PreserveHost *bool `default:"false" json:"preserve_host"`
+	// An array of the protocols this Route should allow. See the [Route Object](#route-object) section for a list of accepted protocols. When set to only `"https"`, HTTP requests are answered with an upgrade error. When set to only `"http"`, HTTPS requests are answered with an error.
+	Protocols []RouteProtocols `json:"protocols,omitempty"`
+	// A number used to choose which route resolves a given request when several routes match it using regexes simultaneously. When two routes match the path and have the same `regex_priority`, the older one (lowest `created_at`) is used. Note that the priority for non-regex routes is different (longer non-regex routes are matched before shorter ones).
+	RegexPriority *int64 `default:"0" json:"regex_priority"`
+	// Whether to enable request body buffering or not. With HTTP 1.1, it may make sense to turn this off on services that receive data with chunked transfer encoding.
+	RequestBuffering *bool `default:"true" json:"request_buffering"`
+	// Whether to enable response body buffering or not. With HTTP 1.1, it may make sense to turn this off on services that send data with chunked transfer encoding.
+	ResponseBuffering *bool `default:"true" json:"response_buffering"`
+	// A list of SNIs that match this Route when using stream routing.
+	Snis []string `json:"snis,omitempty"`
+	// A list of IP sources of incoming connections that match this Route when using stream routing. Each entry is an object with fields "ip" (optionally in CIDR range notation) and/or "port".
+	Sources []Sources `json:"sources,omitempty"`
+	// When matching a Route via one of the `paths`, strip the matching prefix from the upstream request URL.
+	StripPath *bool `default:"true" json:"strip_path"`
+	// An optional set of strings associated with the Route for grouping and filtering.
+	Tags []string `json:"tags,omitempty"`
+	// The Service this Route is associated to. This is where the Route proxies traffic to.
+	Service *RouteService `json:"service,omitempty"`
 }
 
-func (o *Route) GetID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ID
+func (r RouteInput) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
 }
 
-func (o *Route) GetUpdatedAt() *int64 {
+func (r *RouteInput) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RouteInput) GetDestinations() []Destinations {
 	if o == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return o.Destinations
+}
+
+func (o *RouteInput) GetHeaders() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Headers
+}
+
+func (o *RouteInput) GetHosts() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Hosts
+}
+
+func (o *RouteInput) GetHTTPSRedirectStatusCode() *HTTPSRedirectStatusCode {
+	if o == nil {
+		return nil
+	}
+	return o.HTTPSRedirectStatusCode
+}
+
+func (o *RouteInput) GetMethods() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Methods
+}
+
+func (o *RouteInput) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *RouteInput) GetPathHandling() *PathHandling {
+	if o == nil {
+		return nil
+	}
+	return o.PathHandling
+}
+
+func (o *RouteInput) GetPaths() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Paths
+}
+
+func (o *RouteInput) GetPreserveHost() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.PreserveHost
+}
+
+func (o *RouteInput) GetProtocols() []RouteProtocols {
+	if o == nil {
+		return nil
+	}
+	return o.Protocols
+}
+
+func (o *RouteInput) GetRegexPriority() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.RegexPriority
+}
+
+func (o *RouteInput) GetRequestBuffering() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.RequestBuffering
+}
+
+func (o *RouteInput) GetResponseBuffering() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.ResponseBuffering
+}
+
+func (o *RouteInput) GetSnis() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Snis
+}
+
+func (o *RouteInput) GetSources() []Sources {
+	if o == nil {
+		return nil
+	}
+	return o.Sources
+}
+
+func (o *RouteInput) GetStripPath() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.StripPath
+}
+
+func (o *RouteInput) GetTags() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Tags
+}
+
+func (o *RouteInput) GetService() *RouteService {
+	if o == nil {
+		return nil
+	}
+	return o.Service
 }

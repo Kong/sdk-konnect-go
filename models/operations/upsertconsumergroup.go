@@ -13,7 +13,7 @@ type UpsertConsumerGroupRequest struct {
 	// ID of the Consumer Group to lookup
 	ConsumerGroupID string `pathParam:"style=simple,explode=false,name=ConsumerGroupId"`
 	// Description of the Consumer Group
-	CreateConsumerGroup components.CreateConsumerGroup `request:"mediaType=application/json"`
+	ConsumerGroup components.ConsumerGroupInput `request:"mediaType=application/json"`
 }
 
 func (o *UpsertConsumerGroupRequest) GetControlPlaneID() string {
@@ -30,11 +30,11 @@ func (o *UpsertConsumerGroupRequest) GetConsumerGroupID() string {
 	return o.ConsumerGroupID
 }
 
-func (o *UpsertConsumerGroupRequest) GetCreateConsumerGroup() components.CreateConsumerGroup {
+func (o *UpsertConsumerGroupRequest) GetConsumerGroup() components.ConsumerGroupInput {
 	if o == nil {
-		return components.CreateConsumerGroup{}
+		return components.ConsumerGroupInput{}
 	}
-	return o.CreateConsumerGroup
+	return o.ConsumerGroup
 }
 
 type UpsertConsumerGroupResponse struct {

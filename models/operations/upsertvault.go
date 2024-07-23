@@ -13,7 +13,7 @@ type UpsertVaultRequest struct {
 	// ID of the Vault to lookup
 	VaultID string `pathParam:"style=simple,explode=false,name=VaultId"`
 	// Description of the Vault
-	CreateVault components.CreateVault `request:"mediaType=application/json"`
+	Vault components.VaultInput `request:"mediaType=application/json"`
 }
 
 func (o *UpsertVaultRequest) GetControlPlaneID() string {
@@ -30,11 +30,11 @@ func (o *UpsertVaultRequest) GetVaultID() string {
 	return o.VaultID
 }
 
-func (o *UpsertVaultRequest) GetCreateVault() components.CreateVault {
+func (o *UpsertVaultRequest) GetVault() components.VaultInput {
 	if o == nil {
-		return components.CreateVault{}
+		return components.VaultInput{}
 	}
-	return o.CreateVault
+	return o.Vault
 }
 
 type UpsertVaultResponse struct {

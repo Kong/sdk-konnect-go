@@ -7,22 +7,26 @@ import (
 	"net/http"
 )
 
-// QueryParamFilter - Filter roles returned in the response.
-type QueryParamFilter struct {
+var ListTeamRolesServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
+// ListTeamRolesQueryParamFilter - Filter roles returned in the response.
+type ListTeamRolesQueryParamFilter struct {
 	// Filter a string value by exact match.
 	RoleName *string `queryParam:"name=role_name"`
 	// Filter a string value by exact match.
 	EntityTypeName *string `queryParam:"name=entity_type_name"`
 }
 
-func (o *QueryParamFilter) GetRoleName() *string {
+func (o *ListTeamRolesQueryParamFilter) GetRoleName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.RoleName
 }
 
-func (o *QueryParamFilter) GetEntityTypeName() *string {
+func (o *ListTeamRolesQueryParamFilter) GetEntityTypeName() *string {
 	if o == nil {
 		return nil
 	}
@@ -33,7 +37,7 @@ type ListTeamRolesRequest struct {
 	// The team ID
 	TeamID string `pathParam:"style=simple,explode=false,name=teamId"`
 	// Filter roles returned in the response.
-	Filter *QueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *ListTeamRolesQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
 func (o *ListTeamRolesRequest) GetTeamID() string {
@@ -43,7 +47,7 @@ func (o *ListTeamRolesRequest) GetTeamID() string {
 	return o.TeamID
 }
 
-func (o *ListTeamRolesRequest) GetFilter() *QueryParamFilter {
+func (o *ListTeamRolesRequest) GetFilter() *ListTeamRolesQueryParamFilter {
 	if o == nil {
 		return nil
 	}

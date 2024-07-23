@@ -15,7 +15,7 @@ type UpsertHmacAuthWithConsumerRequest struct {
 	// ID of the HMAC-auth credential to lookup
 	HMACAuthID string `pathParam:"style=simple,explode=false,name=HMACAuthId"`
 	// Description of the HMAC-auth credential
-	CreateHMACAuthWithoutParents components.CreateHMACAuthWithoutParents `request:"mediaType=application/json"`
+	HMACAuthWithoutParents components.HMACAuthWithoutParents `request:"mediaType=application/json"`
 }
 
 func (o *UpsertHmacAuthWithConsumerRequest) GetControlPlaneID() string {
@@ -39,11 +39,11 @@ func (o *UpsertHmacAuthWithConsumerRequest) GetHMACAuthID() string {
 	return o.HMACAuthID
 }
 
-func (o *UpsertHmacAuthWithConsumerRequest) GetCreateHMACAuthWithoutParents() components.CreateHMACAuthWithoutParents {
+func (o *UpsertHmacAuthWithConsumerRequest) GetHMACAuthWithoutParents() components.HMACAuthWithoutParents {
 	if o == nil {
-		return components.CreateHMACAuthWithoutParents{}
+		return components.HMACAuthWithoutParents{}
 	}
-	return o.CreateHMACAuthWithoutParents
+	return o.HMACAuthWithoutParents
 }
 
 type UpsertHmacAuthWithConsumerResponse struct {

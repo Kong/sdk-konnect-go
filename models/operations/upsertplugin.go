@@ -13,7 +13,7 @@ type UpsertPluginRequest struct {
 	// ID of the Plugin to lookup
 	PluginID string `pathParam:"style=simple,explode=false,name=PluginId"`
 	// Description of the Plugin
-	CreatePlugin components.CreatePlugin `request:"mediaType=application/json"`
+	Plugin components.PluginInput `request:"mediaType=application/json"`
 }
 
 func (o *UpsertPluginRequest) GetControlPlaneID() string {
@@ -30,11 +30,11 @@ func (o *UpsertPluginRequest) GetPluginID() string {
 	return o.PluginID
 }
 
-func (o *UpsertPluginRequest) GetCreatePlugin() components.CreatePlugin {
+func (o *UpsertPluginRequest) GetPlugin() components.PluginInput {
 	if o == nil {
-		return components.CreatePlugin{}
+		return components.PluginInput{}
 	}
-	return o.CreatePlugin
+	return o.Plugin
 }
 
 type UpsertPluginResponse struct {

@@ -4,12 +4,12 @@ package components
 
 type AddSystemAccountToTeam struct {
 	// ID of the system account.
-	ID *string `json:"id,omitempty"`
+	AccountID *string `json:"id,omitempty"`
 }
 
-func (o *AddSystemAccountToTeam) GetID() *string {
+func (o *AddSystemAccountToTeam) GetAccountID() *string {
 	if o == nil {
 		return nil
 	}
-	return o.ID
+	return o.AccountID
 }

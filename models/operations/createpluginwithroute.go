@@ -13,7 +13,7 @@ type CreatePluginWithRouteRequest struct {
 	// ID of the Route to lookup
 	RouteID string `pathParam:"style=simple,explode=false,name=RouteId"`
 	// Description of new Plugin for creation
-	CreatePluginWithoutParents components.CreatePluginWithoutParents `request:"mediaType=application/json"`
+	PluginWithoutParents components.PluginWithoutParents `request:"mediaType=application/json"`
 }
 
 func (o *CreatePluginWithRouteRequest) GetControlPlaneID() string {
@@ -30,11 +30,11 @@ func (o *CreatePluginWithRouteRequest) GetRouteID() string {
 	return o.RouteID
 }
 
-func (o *CreatePluginWithRouteRequest) GetCreatePluginWithoutParents() components.CreatePluginWithoutParents {
+func (o *CreatePluginWithRouteRequest) GetPluginWithoutParents() components.PluginWithoutParents {
 	if o == nil {
-		return components.CreatePluginWithoutParents{}
+		return components.PluginWithoutParents{}
 	}
-	return o.CreatePluginWithoutParents
+	return o.PluginWithoutParents
 }
 
 type CreatePluginWithRouteResponse struct {

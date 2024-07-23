@@ -15,7 +15,7 @@ type UpsertACLWithConsumerRequest struct {
 	// ID of the ACL to lookup
 	ACLID string `pathParam:"style=simple,explode=false,name=ACLId"`
 	// Description of the ACL
-	CreateACLWithoutParents components.CreateACLWithoutParents `request:"mediaType=application/json"`
+	ACLWithoutParents components.ACLWithoutParents `request:"mediaType=application/json"`
 }
 
 func (o *UpsertACLWithConsumerRequest) GetControlPlaneID() string {
@@ -39,11 +39,11 @@ func (o *UpsertACLWithConsumerRequest) GetACLID() string {
 	return o.ACLID
 }
 
-func (o *UpsertACLWithConsumerRequest) GetCreateACLWithoutParents() components.CreateACLWithoutParents {
+func (o *UpsertACLWithConsumerRequest) GetACLWithoutParents() components.ACLWithoutParents {
 	if o == nil {
-		return components.CreateACLWithoutParents{}
+		return components.ACLWithoutParents{}
 	}
-	return o.CreateACLWithoutParents
+	return o.ACLWithoutParents
 }
 
 type UpsertACLWithConsumerResponse struct {

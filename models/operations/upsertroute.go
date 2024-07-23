@@ -13,7 +13,7 @@ type UpsertRouteRequest struct {
 	// ID of the Route to lookup
 	RouteID string `pathParam:"style=simple,explode=false,name=RouteId"`
 	// Description of the Route
-	CreateRoute components.CreateRoute `request:"mediaType=application/json"`
+	Route components.RouteInput `request:"mediaType=application/json"`
 }
 
 func (o *UpsertRouteRequest) GetControlPlaneID() string {
@@ -30,11 +30,11 @@ func (o *UpsertRouteRequest) GetRouteID() string {
 	return o.RouteID
 }
 
-func (o *UpsertRouteRequest) GetCreateRoute() components.CreateRoute {
+func (o *UpsertRouteRequest) GetRoute() components.RouteInput {
 	if o == nil {
-		return components.CreateRoute{}
+		return components.RouteInput{}
 	}
-	return o.CreateRoute
+	return o.Route
 }
 
 type UpsertRouteResponse struct {

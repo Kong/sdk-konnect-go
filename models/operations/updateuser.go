@@ -7,6 +7,10 @@ import (
 	"net/http"
 )
 
+var UpdateUserServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
 type UpdateUserRequest struct {
 	// The ID of the user being deleted.
 	UserID string `pathParam:"style=simple,explode=false,name=userId"`

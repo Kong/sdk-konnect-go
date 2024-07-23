@@ -15,7 +15,7 @@ type UpsertBasicAuthWithConsumerRequest struct {
 	// ID of the Basic-auth credential to lookup
 	BasicAuthID string `pathParam:"style=simple,explode=false,name=BasicAuthId"`
 	// Description of the Basic-auth credential
-	CreateBasicAuthWithoutParents components.CreateBasicAuthWithoutParents `request:"mediaType=application/json"`
+	BasicAuthWithoutParents components.BasicAuthWithoutParents `request:"mediaType=application/json"`
 }
 
 func (o *UpsertBasicAuthWithConsumerRequest) GetControlPlaneID() string {
@@ -39,11 +39,11 @@ func (o *UpsertBasicAuthWithConsumerRequest) GetBasicAuthID() string {
 	return o.BasicAuthID
 }
 
-func (o *UpsertBasicAuthWithConsumerRequest) GetCreateBasicAuthWithoutParents() components.CreateBasicAuthWithoutParents {
+func (o *UpsertBasicAuthWithConsumerRequest) GetBasicAuthWithoutParents() components.BasicAuthWithoutParents {
 	if o == nil {
-		return components.CreateBasicAuthWithoutParents{}
+		return components.BasicAuthWithoutParents{}
 	}
-	return o.CreateBasicAuthWithoutParents
+	return o.BasicAuthWithoutParents
 }
 
 type UpsertBasicAuthWithConsumerResponse struct {

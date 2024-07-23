@@ -7,6 +7,10 @@ import (
 	"net/http"
 )
 
+var GetAuthenticationSettingsServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
 type GetAuthenticationSettingsResponse struct {
 	// HTTP response content type for this operation
 	ContentType string

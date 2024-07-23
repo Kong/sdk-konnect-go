@@ -10,10 +10,6 @@ import (
 type GetExpectedConfigHashRequest struct {
 	// The UUID of your control plane. This variable is available in the Konnect manager
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
-	// The number of items to include in a page.
-	PageSize *int64 `queryParam:"style=form,explode=true,name=page_size"`
-	// The specific page number in the collection results.
-	PageNumber *int64 `queryParam:"style=form,explode=true,name=page_number"`
 }
 
 func (o *GetExpectedConfigHashRequest) GetControlPlaneID() string {
@@ -21,20 +17,6 @@ func (o *GetExpectedConfigHashRequest) GetControlPlaneID() string {
 		return ""
 	}
 	return o.ControlPlaneID
-}
-
-func (o *GetExpectedConfigHashRequest) GetPageSize() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.PageSize
-}
-
-func (o *GetExpectedConfigHashRequest) GetPageNumber() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.PageNumber
 }
 
 type GetExpectedConfigHashResponse struct {

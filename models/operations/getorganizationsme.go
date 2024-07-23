@@ -7,6 +7,10 @@ import (
 	"net/http"
 )
 
+var GetOrganizationsMeServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
 type GetOrganizationsMeResponse struct {
 	// HTTP response content type for this operation
 	ContentType string

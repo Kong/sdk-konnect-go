@@ -7,6 +7,10 @@ import (
 	"net/http"
 )
 
+var PatchTeamGroupMappingsServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
 type PatchTeamGroupMappingsResponse struct {
 	// HTTP response content type for this operation
 	ContentType string

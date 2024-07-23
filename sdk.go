@@ -56,6 +56,7 @@ type sdkConfiguration struct {
 	UserAgent         string
 	RetryConfig       *retry.Config
 	Hooks             *hooks.Hooks
+	Timeout           *time.Duration
 }
 
 func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
@@ -70,9 +71,10 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 //
 // https://docs.konghq.com - Documentation for Kong Gateway and its APIs
 type SDK struct {
-	ControlPlanes        *ControlPlanes
-	ACLs                 *ACLs
-	BasicAuthCredentials *BasicAuthCredentials
+	ServerlessCloudGateways *ServerlessCloudGateways
+	ControlPlanes           *ControlPlanes
+	ACLs                    *ACLs
+	BasicAuthCredentials    *BasicAuthCredentials
 	// A CA certificate object represents a trusted certificate authority.
 	// These objects are used by Kong Gateway to verify the validity of a client or server certificate.
 	CACertificates *CACertificates
@@ -132,6 +134,9 @@ type SDK struct {
 	//
 	//
 	//
+	//
+	//
+	//
 	//   <br>
 	//   A route can't have both `tls` and `tls_passthrough` protocols at same time.
 	//   <br><br>
@@ -178,8 +183,8 @@ type SDK struct {
 	SystemAccounts               *SystemAccounts
 	SystemAccountsAccessTokens   *SystemAccountsAccessTokens
 	SystemAccountsRoles          *SystemAccountsRoles
-	Teams                        *Teams
 	SystemAccountsTeamMembership *SystemAccountsTeamMembership
+	Teams                        *Teams
 	TeamMembership               *TeamMembership
 	Users                        *Users
 
@@ -246,15 +251,22 @@ func WithRetryConfig(retryConfig retry.Config) SDKOption {
 	}
 }
 
+// WithTimeout Optional request timeout applied to each operation
+func WithTimeout(timeout time.Duration) SDKOption {
+	return func(sdk *SDK) {
+		sdk.sdkConfiguration.Timeout = &timeout
+	}
+}
+
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
-			OpenAPIDocVersion: "3.0.0",
-			SDKVersion:        "0.4.7",
-			GenVersion:        "2.361.10",
-			UserAgent:         "speakeasy-sdk/go 0.4.7 2.361.10 3.0.0 github.com/Kong/sdk-konnect-go",
+			OpenAPIDocVersion: "0.0.1",
+			SDKVersion:        "0.5.0",
+			GenVersion:        "2.378.3",
+			UserAgent:         "speakeasy-sdk/go 0.5.0 2.378.3 0.0.1 github.com/Kong/sdk-konnect-go",
 			Hooks:             hooks.New(),
 		},
 	}
@@ -273,6 +285,8 @@ func New(opts ...SDKOption) *SDK {
 	if serverURL != currentServerURL {
 		sdk.sdkConfiguration.ServerURL = serverURL
 	}
+
+	sdk.ServerlessCloudGateways = newServerlessCloudGateways(sdk.sdkConfiguration)
 
 	sdk.ControlPlanes = newControlPlanes(sdk.sdkConfiguration)
 
@@ -338,9 +352,9 @@ func New(opts ...SDKOption) *SDK {
 
 	sdk.SystemAccountsRoles = newSystemAccountsRoles(sdk.sdkConfiguration)
 
-	sdk.Teams = newTeams(sdk.sdkConfiguration)
-
 	sdk.SystemAccountsTeamMembership = newSystemAccountsTeamMembership(sdk.sdkConfiguration)
+
+	sdk.Teams = newTeams(sdk.sdkConfiguration)
 
 	sdk.TeamMembership = newTeamMembership(sdk.sdkConfiguration)
 

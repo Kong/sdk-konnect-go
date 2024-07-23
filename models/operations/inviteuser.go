@@ -6,6 +6,10 @@ import (
 	"net/http"
 )
 
+var InviteUserServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
 type InviteUserResponse struct {
 	// HTTP response content type for this operation
 	ContentType string

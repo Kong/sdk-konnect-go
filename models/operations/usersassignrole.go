@@ -7,6 +7,10 @@ import (
 	"net/http"
 )
 
+var UsersAssignRoleServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
 type UsersAssignRoleRequest struct {
 	// The user ID
 	UserID string `pathParam:"style=simple,explode=false,name=userId"`

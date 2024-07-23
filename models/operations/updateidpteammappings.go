@@ -7,6 +7,10 @@ import (
 	"net/http"
 )
 
+var UpdateIdpTeamMappingsServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
 type UpdateIdpTeamMappingsResponse struct {
 	// HTTP response content type for this operation
 	ContentType string

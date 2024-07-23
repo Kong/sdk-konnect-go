@@ -6,6 +6,10 @@ import (
 	"net/http"
 )
 
+var DeleteTeamServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
 type DeleteTeamRequest struct {
 	// The team ID
 	TeamID string `pathParam:"style=simple,explode=false,name=teamId"`

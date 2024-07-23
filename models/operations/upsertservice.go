@@ -13,7 +13,7 @@ type UpsertServiceRequest struct {
 	// ID of the Service to lookup
 	ServiceID string `pathParam:"style=simple,explode=false,name=ServiceId"`
 	// Description of the Service
-	CreateService components.CreateService `request:"mediaType=application/json"`
+	Service components.ServiceInput `request:"mediaType=application/json"`
 }
 
 func (o *UpsertServiceRequest) GetControlPlaneID() string {
@@ -30,11 +30,11 @@ func (o *UpsertServiceRequest) GetServiceID() string {
 	return o.ServiceID
 }
 
-func (o *UpsertServiceRequest) GetCreateService() components.CreateService {
+func (o *UpsertServiceRequest) GetService() components.ServiceInput {
 	if o == nil {
-		return components.CreateService{}
+		return components.ServiceInput{}
 	}
-	return o.CreateService
+	return o.Service
 }
 
 type UpsertServiceResponse struct {

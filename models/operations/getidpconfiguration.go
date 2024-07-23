@@ -7,6 +7,10 @@ import (
 	"net/http"
 )
 
+var GetIdpConfigurationServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
 type GetIdpConfigurationResponse struct {
 	// HTTP response content type for this operation
 	ContentType string

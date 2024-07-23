@@ -13,7 +13,7 @@ type CreateRouteWithServiceRequest struct {
 	// ID of the Service to lookup
 	ServiceID string `pathParam:"style=simple,explode=false,name=ServiceId"`
 	// Description of new Route for creation
-	CreateRouteWithoutParents components.CreateRouteWithoutParents `request:"mediaType=application/json"`
+	RouteWithoutParents components.RouteWithoutParents `request:"mediaType=application/json"`
 }
 
 func (o *CreateRouteWithServiceRequest) GetControlPlaneID() string {
@@ -30,11 +30,11 @@ func (o *CreateRouteWithServiceRequest) GetServiceID() string {
 	return o.ServiceID
 }
 
-func (o *CreateRouteWithServiceRequest) GetCreateRouteWithoutParents() components.CreateRouteWithoutParents {
+func (o *CreateRouteWithServiceRequest) GetRouteWithoutParents() components.RouteWithoutParents {
 	if o == nil {
-		return components.CreateRouteWithoutParents{}
+		return components.RouteWithoutParents{}
 	}
-	return o.CreateRouteWithoutParents
+	return o.RouteWithoutParents
 }
 
 type CreateRouteWithServiceResponse struct {

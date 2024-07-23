@@ -6,6 +6,10 @@ import (
 	"net/http"
 )
 
+var UsersRemoveRoleServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
 type UsersRemoveRoleRequest struct {
 	// ID of the user.
 	UserID string `pathParam:"style=simple,explode=false,name=userId"`

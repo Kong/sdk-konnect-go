@@ -1,27 +1,35 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: eac599bd8197bb32608f588b865662b7
-  docVersion: 3.0.0
-  speakeasyVersion: 1.330.0
-  generationVersion: 2.361.10
-  releaseVersion: 0.4.7
-  configChecksum: 2d05df8fa154a8a6bce3c162c010b607
+  docChecksum: a875b7abc18b4af8e37823890feb2033
+  docVersion: 0.0.1
+  speakeasyVersion: 1.345.3
+  generationVersion: 2.378.3
+  releaseVersion: 0.5.0
+  configChecksum: 3fe328215a13372da34e31a457c687a7
 features:
   go:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.4
-    core: 3.4.14
+    core: 3.5.1
+    deepObjectParams: 0.1.0
+    defaultEnabledRetries: 0.2.0
+    envVarSecurityUsage: 0.2.0
     flattening: 2.81.1
     globalSecurity: 2.82.9
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.2
+    inputOutputModels: 2.83.0
     intellisenseMarkdownSupport: 0.1.0
+    methodServerURLs: 2.82.1
+    nameOverrides: 2.81.2
     nullables: 0.1.0
     responseFormat: 0.1.2
+    retries: 2.83.0
     sdkHooks: 0.1.0
     unions: 2.85.8
 generatedFiles:
+  - serverlesscloudgateways.go
   - controlplanes.go
   - acls.go
   - basicauthcredentials.go
@@ -54,8 +62,8 @@ generatedFiles:
   - systemaccounts.go
   - systemaccountsaccesstokens.go
   - systemaccountsroles.go
-  - teams.go
   - systemaccountsteammembership.go
+  - teams.go
   - teammembership.go
   - users.go
   - sdk.go
@@ -77,6 +85,10 @@ generatedFiles:
   - internal/utils/retries.go
   - internal/utils/security.go
   - internal/utils/utils.go
+  - /models/operations/listserverlesscloudgateway.go
+  - /models/operations/createserverlesscloudgateway.go
+  - /models/operations/getserverlesscloudgateway.go
+  - /models/operations/deleteserverlesscloudgateway.go
   - /models/operations/listcontrolplanes.go
   - /models/operations/createcontrolplane.go
   - /models/operations/getcontrolplane.go
@@ -85,123 +97,125 @@ generatedFiles:
   - /models/operations/listacl.go
   - /models/operations/listaclwithconsumer.go
   - /models/operations/createaclwithconsumer.go
-  - /models/operations/deleteaclwithconsumer.go
   - /models/operations/getaclwithconsumer.go
   - /models/operations/upsertaclwithconsumer.go
+  - /models/operations/deleteaclwithconsumer.go
   - /models/operations/listbasicauth.go
   - /models/operations/listbasicauthwithconsumer.go
   - /models/operations/createbasicauthwithconsumer.go
-  - /models/operations/deletebasicauthwithconsumer.go
   - /models/operations/getbasicauthwithconsumer.go
   - /models/operations/upsertbasicauthwithconsumer.go
+  - /models/operations/deletebasicauthwithconsumer.go
   - /models/operations/listcacertificate.go
   - /models/operations/createcacertificate.go
-  - /models/operations/deletecacertificate.go
   - /models/operations/getcacertificate.go
   - /models/operations/upsertcacertificate.go
+  - /models/operations/deletecacertificate.go
   - /models/operations/listcertificate.go
   - /models/operations/createcertificate.go
-  - /models/operations/deletecertificate.go
   - /models/operations/getcertificate.go
   - /models/operations/upsertcertificate.go
+  - /models/operations/deletecertificate.go
   - /models/operations/listsniwithcertificate.go
   - /models/operations/createsniwithcertificate.go
-  - /models/operations/deletesniwithcertificate.go
   - /models/operations/getsniwithcertificate.go
   - /models/operations/upsertsniwithcertificate.go
+  - /models/operations/deletesniwithcertificate.go
   - /models/operations/listsni.go
   - /models/operations/createsni.go
-  - /models/operations/deletesni.go
   - /models/operations/getsni.go
   - /models/operations/upsertsni.go
+  - /models/operations/deletesni.go
   - /models/operations/listconsumergroup.go
   - /models/operations/createconsumergroup.go
-  - /models/operations/deleteconsumergroup.go
   - /models/operations/getconsumergroup.go
   - /models/operations/upsertconsumergroup.go
+  - /models/operations/deleteconsumergroup.go
+  - /models/operations/addconsumertogroup.go
   - /models/operations/listconsumer.go
   - /models/operations/createconsumer.go
-  - /models/operations/deleteconsumer.go
   - /models/operations/getconsumer.go
   - /models/operations/upsertconsumer.go
+  - /models/operations/deleteconsumer.go
   - /models/operations/listhmacauthwithconsumer.go
   - /models/operations/createhmacauthwithconsumer.go
-  - /models/operations/deletehmacauthwithconsumer.go
   - /models/operations/gethmacauthwithconsumer.go
   - /models/operations/upserthmacauthwithconsumer.go
+  - /models/operations/deletehmacauthwithconsumer.go
   - /models/operations/listhmacauth.go
   - /models/operations/listjwtwithconsumer.go
   - /models/operations/createjwtwithconsumer.go
-  - /models/operations/deletejwtwithconsumer.go
   - /models/operations/getjwtwithconsumer.go
   - /models/operations/upsertjwtwithconsumer.go
+  - /models/operations/deletejwtwithconsumer.go
   - /models/operations/listjwt.go
   - /models/operations/listkeyauthwithconsumer.go
   - /models/operations/createkeyauthwithconsumer.go
-  - /models/operations/deletekeyauthwithconsumer.go
   - /models/operations/getkeyauthwithconsumer.go
   - /models/operations/upsertkeyauthwithconsumer.go
+  - /models/operations/deletekeyauthwithconsumer.go
   - /models/operations/listkeyauth.go
   - /models/operations/listkeyset.go
   - /models/operations/createkeyset.go
-  - /models/operations/deletekeyset.go
   - /models/operations/getkeyset.go
   - /models/operations/upsertkeyset.go
+  - /models/operations/deletekeyset.go
   - /models/operations/listkey.go
   - /models/operations/createkey.go
-  - /models/operations/deletekey.go
   - /models/operations/getkey.go
   - /models/operations/upsertkey.go
+  - /models/operations/deletekey.go
   - /models/operations/listpluginschemas.go
   - /models/operations/createpluginschemas.go
   - /models/operations/getpluginschema.go
-  - /models/operations/deletepluginschemas.go
   - /models/operations/updatepluginschemas.go
+  - /models/operations/deletepluginschemas.go
   - /models/operations/listplugin.go
   - /models/operations/createplugin.go
-  - /models/operations/deleteplugin.go
   - /models/operations/getplugin.go
   - /models/operations/upsertplugin.go
+  - /models/operations/deleteplugin.go
   - /models/operations/listpluginwithroute.go
   - /models/operations/createpluginwithroute.go
-  - /models/operations/deletepluginwithroute.go
   - /models/operations/getpluginwithroute.go
   - /models/operations/upsertpluginwithroute.go
+  - /models/operations/deletepluginwithroute.go
+  - /models/operations/fetchpluginschema.go
   - /models/operations/listpluginwithservice.go
   - /models/operations/createpluginwithservice.go
-  - /models/operations/deletepluginwithservice.go
   - /models/operations/getpluginwithservice.go
   - /models/operations/upsertpluginwithservice.go
+  - /models/operations/deletepluginwithservice.go
   - /models/operations/listroute.go
   - /models/operations/createroute.go
-  - /models/operations/deleteroute.go
   - /models/operations/getroute.go
   - /models/operations/upsertroute.go
+  - /models/operations/deleteroute.go
   - /models/operations/listroutewithservice.go
   - /models/operations/createroutewithservice.go
-  - /models/operations/deleteroutewithservice.go
   - /models/operations/getroutewithservice.go
   - /models/operations/upsertroutewithservice.go
+  - /models/operations/deleteroutewithservice.go
   - /models/operations/listservice.go
   - /models/operations/createservice.go
-  - /models/operations/deleteservice.go
   - /models/operations/getservice.go
   - /models/operations/upsertservice.go
+  - /models/operations/deleteservice.go
   - /models/operations/listupstream.go
   - /models/operations/createupstream.go
-  - /models/operations/deleteupstream.go
   - /models/operations/getupstream.go
   - /models/operations/upsertupstream.go
+  - /models/operations/deleteupstream.go
   - /models/operations/listtargetwithupstream.go
   - /models/operations/createtargetwithupstream.go
-  - /models/operations/deletetargetwithupstream.go
   - /models/operations/gettargetwithupstream.go
   - /models/operations/upserttargetwithupstream.go
+  - /models/operations/deletetargetwithupstream.go
   - /models/operations/listvault.go
   - /models/operations/createvault.go
-  - /models/operations/deletevault.go
   - /models/operations/getvault.go
   - /models/operations/upsertvault.go
+  - /models/operations/deletevault.go
   - /models/operations/listdpclientcertificates.go
   - /models/operations/createdataplanecertificate.go
   - /models/operations/getdataplanecertificate.go
@@ -223,8 +237,8 @@ generatedFiles:
   - /models/operations/updateidpconfiguration.go
   - /models/operations/getteamgroupmappings.go
   - /models/operations/patchteamgroupmappings.go
-  - /models/operations/updateidpteammappings.go
   - /models/operations/getidpteammappings.go
+  - /models/operations/updateidpteammappings.go
   - /models/operations/inviteuser.go
   - /models/operations/getimpersonationsettings.go
   - /models/operations/updateimpersonationsettings.go
@@ -236,10 +250,12 @@ generatedFiles:
   - /models/operations/listuserroles.go
   - /models/operations/usersassignrole.go
   - /models/operations/usersremoverole.go
+  - /models/operations/getsystemaccounts.go
   - /models/operations/postsystemaccounts.go
   - /models/operations/getsystemaccountsid.go
   - /models/operations/patchsystemaccountsid.go
   - /models/operations/deletesystemaccountsid.go
+  - /models/operations/getsystemaccountidaccesstokens.go
   - /models/operations/postsystemaccountsidaccesstokens.go
   - /models/operations/getsystemaccountsidaccesstokensid.go
   - /models/operations/patchsystemaccountsidaccesstokensid.go
@@ -247,70 +263,76 @@ generatedFiles:
   - /models/operations/getsystemaccountsaccountidassignedroles.go
   - /models/operations/postsystemaccountsaccountidassignedroles.go
   - /models/operations/deletesystemaccountsaccountidassignedrolesroleid.go
+  - /models/operations/getsystemaccountsaccountidteams.go
+  - /models/operations/getteamsteamidsystemaccounts.go
+  - /models/operations/postteamsteamidsystemaccounts.go
+  - /models/operations/deleteteamsteamidsystemaccountsaccountid.go
+  - /models/operations/listteams.go
   - /models/operations/createteam.go
   - /models/operations/getteam.go
   - /models/operations/updateteam.go
   - /models/operations/deleteteam.go
-  - /models/operations/postteamsteamidsystemaccounts.go
-  - /models/operations/deleteteamsteamidsystemaccountsaccountid.go
+  - /models/operations/listteamusers.go
   - /models/operations/addusertoteam.go
   - /models/operations/removeuserfromteam.go
+  - /models/operations/listuserteams.go
+  - /models/operations/listusers.go
   - /models/operations/getuser.go
   - /models/operations/updateuser.go
   - /models/operations/deleteuser.go
-  - /models/components/listcontrolplanesresponse.go
-  - /models/components/controlplane.go
+  - /models/components/listserverlesscloudgatewaysresponse.go
+  - /models/components/serverlesscloudgateway.go
+  - /models/components/serverlesscontrolplane.go
+  - /models/components/cpregion.go
   - /models/components/paginatedmeta.go
   - /models/components/pagemeta.go
   - /models/components/invalidparameters.go
-  - /models/components/invalidparameterchoiceitem.go
+  - /models/components/invalidparameterstandard.go
   - /models/components/invalidrules.go
+  - /models/components/invalidparameterminimumlength.go
+  - /models/components/invalidparameterchoiceitem.go
   - /models/components/invalidparameterdependentitem.go
+  - /models/components/createserverlesscloudgatewayrequest.go
+  - /models/components/listcontrolplanesresponse.go
+  - /models/components/controlplane.go
   - /models/components/createcontrolplanerequest.go
   - /models/components/proxyurl.go
   - /models/components/updatecontrolplanerequest.go
   - /models/components/acl.go
-  - /models/components/createaclwithoutparents.go
+  - /models/components/aclwithoutparents.go
   - /models/components/basicauth.go
-  - /models/components/createbasicauthwithoutparents.go
+  - /models/components/basicauthwithoutparents.go
   - /models/components/cacertificate.go
-  - /models/components/createcacertificate.go
+  - /models/components/cacertificateinput.go
   - /models/components/certificate.go
-  - /models/components/createcertificate.go
+  - /models/components/certificateinput.go
   - /models/components/sni.go
-  - /models/components/createsniwithoutparents.go
-  - /models/components/createsni.go
+  - /models/components/sniwithoutparents.go
   - /models/components/consumergroup.go
-  - /models/components/createconsumergroup.go
+  - /models/components/consumergroupinput.go
   - /models/components/consumer.go
-  - /models/components/createconsumer.go
+  - /models/components/consumerinput.go
   - /models/components/hmacauth.go
-  - /models/components/createhmacauthwithoutparents.go
+  - /models/components/hmacauthwithoutparents.go
   - /models/components/jwt.go
-  - /models/components/createjwtwithoutparents.go
+  - /models/components/jwtwithoutparents.go
   - /models/components/keyauth.go
-  - /models/components/createkeyauthwithoutparents.go
+  - /models/components/keyauthwithoutparents.go
   - /models/components/keyset.go
-  - /models/components/createkeyset.go
+  - /models/components/keysetinput.go
   - /models/components/key.go
-  - /models/components/createkey.go
   - /models/components/listpluginschemas.go
   - /models/components/pluginschemas.go
   - /models/components/createpluginschemas.go
   - /models/components/plugin.go
-  - /models/components/createplugin.go
-  - /models/components/createpluginwithoutparents.go
+  - /models/components/pluginwithoutparents.go
   - /models/components/route.go
-  - /models/components/createroute.go
-  - /models/components/createroutewithoutparents.go
+  - /models/components/routewithoutparents.go
   - /models/components/service.go
-  - /models/components/createservice.go
   - /models/components/upstream.go
-  - /models/components/createupstream.go
   - /models/components/target.go
-  - /models/components/createtargetwithoutparents.go
+  - /models/components/targetwithoutparents.go
   - /models/components/vault.go
-  - /models/components/createvault.go
   - /models/components/listdataplanecertificatesresponse.go
   - /models/components/dataplaneclientcertificate.go
   - /models/components/dataplaneclientcertificaterequest.go
@@ -321,6 +343,8 @@ generatedFiles:
   - /models/components/groupmemberstatus.go
   - /models/components/listgroupmemberships.go
   - /models/components/controlplanesummary.go
+  - /models/components/cursorpaginatedmetawithsizeandtotal.go
+  - /models/components/cursormetawithsizeandtotal.go
   - /models/components/groupmembership.go
   - /models/components/groupstatus.go
   - /models/components/groupconflict.go
@@ -332,10 +356,10 @@ generatedFiles:
   - /models/components/teamgroupmappingcollection.go
   - /models/components/teamgroupmapping.go
   - /models/components/patchteamgroupmappings.go
+  - /models/components/teammappingresponse.go
   - /models/components/teammappingcollection.go
   - /models/components/teammapping.go
   - /models/components/updateteammappings.go
-  - /models/components/teammappingresponse.go
   - /models/components/inviteuser.go
   - /models/components/getimpersonationsettingsresponse.go
   - /models/components/updateimpersonationsettingsresponse.go
@@ -345,31 +369,44 @@ generatedFiles:
   - /models/components/assignedrolecollection.go
   - /models/components/assignedrole.go
   - /models/components/assignrole.go
+  - /models/components/systemaccountcollection.go
   - /models/components/systemaccount.go
+  - /models/components/stringfieldfilter.go
+  - /models/components/stringfieldcontainsfilter.go
   - /models/components/createsystemaccount.go
   - /models/components/updatesystemaccount.go
+  - /models/components/systemaccountaccesstokencollection.go
+  - /models/components/systemaccountaccesstoken.go
   - /models/components/systemaccountaccesstokencreated.go
   - /models/components/createsystemaccountaccesstoken.go
-  - /models/components/systemaccountaccesstoken.go
   - /models/components/updatesystemaccountaccesstoken.go
+  - /models/components/teamcollection.go
   - /models/components/team.go
+  - /models/components/addsystemaccounttoteam.go
   - /models/components/createteam.go
   - /models/components/updateteam.go
-  - /models/components/addsystemaccounttoteam.go
-  - /models/components/addusertoteam.go
+  - /models/components/usercollection.go
   - /models/components/user.go
+  - /models/components/addusertoteam.go
   - /models/components/updateuser.go
   - /models/components/security.go
-  - /models/sdkerrors/badrequesterror.go
   - /models/sdkerrors/unauthorizederror.go
   - /models/sdkerrors/forbiddenerror.go
+  - /models/sdkerrors/badrequesterror.go
+  - /models/sdkerrors/notfounderror.go
   - /models/sdkerrors/serviceunavailable.go
   - /models/sdkerrors/conflicterror.go
   - /models/sdkerrors/internalservererror.go
-  - /models/sdkerrors/notfounderror.go
-  - /models/sdkerrors/schemasunauthorizederror.go
+  - /models/sdkerrors/gatewayunauthorizederror.go
   - /models/sdkerrors/preconditionfailed.go
   - /models/sdkerrors/ratelimited.go
+  - docs/models/operations/listserverlesscloudgatewayrequest.md
+  - docs/models/operations/listserverlesscloudgatewayresponse.md
+  - docs/models/operations/createserverlesscloudgatewayresponse.md
+  - docs/models/operations/getserverlesscloudgatewayrequest.md
+  - docs/models/operations/getserverlesscloudgatewayresponse.md
+  - docs/models/operations/deleteserverlesscloudgatewayrequest.md
+  - docs/models/operations/deleteserverlesscloudgatewayresponse.md
   - docs/models/operations/listcontrolplanesrequest.md
   - docs/models/operations/listcontrolplanesresponse.md
   - docs/models/operations/createcontrolplaneresponse.md
@@ -387,12 +424,12 @@ generatedFiles:
   - docs/models/operations/listaclwithconsumerresponse.md
   - docs/models/operations/createaclwithconsumerrequest.md
   - docs/models/operations/createaclwithconsumerresponse.md
-  - docs/models/operations/deleteaclwithconsumerrequest.md
-  - docs/models/operations/deleteaclwithconsumerresponse.md
   - docs/models/operations/getaclwithconsumerrequest.md
   - docs/models/operations/getaclwithconsumerresponse.md
   - docs/models/operations/upsertaclwithconsumerrequest.md
   - docs/models/operations/upsertaclwithconsumerresponse.md
+  - docs/models/operations/deleteaclwithconsumerrequest.md
+  - docs/models/operations/deleteaclwithconsumerresponse.md
   - docs/models/operations/listbasicauthrequest.md
   - docs/models/operations/listbasicauthresponsebody.md
   - docs/models/operations/listbasicauthresponse.md
@@ -401,89 +438,93 @@ generatedFiles:
   - docs/models/operations/listbasicauthwithconsumerresponse.md
   - docs/models/operations/createbasicauthwithconsumerrequest.md
   - docs/models/operations/createbasicauthwithconsumerresponse.md
-  - docs/models/operations/deletebasicauthwithconsumerrequest.md
-  - docs/models/operations/deletebasicauthwithconsumerresponse.md
   - docs/models/operations/getbasicauthwithconsumerrequest.md
   - docs/models/operations/getbasicauthwithconsumerresponse.md
   - docs/models/operations/upsertbasicauthwithconsumerrequest.md
   - docs/models/operations/upsertbasicauthwithconsumerresponse.md
+  - docs/models/operations/deletebasicauthwithconsumerrequest.md
+  - docs/models/operations/deletebasicauthwithconsumerresponse.md
   - docs/models/operations/listcacertificaterequest.md
   - docs/models/operations/listcacertificateresponsebody.md
   - docs/models/operations/listcacertificateresponse.md
   - docs/models/operations/createcacertificaterequest.md
   - docs/models/operations/createcacertificateresponse.md
-  - docs/models/operations/deletecacertificaterequest.md
-  - docs/models/operations/deletecacertificateresponse.md
   - docs/models/operations/getcacertificaterequest.md
   - docs/models/operations/getcacertificateresponse.md
   - docs/models/operations/upsertcacertificaterequest.md
   - docs/models/operations/upsertcacertificateresponse.md
+  - docs/models/operations/deletecacertificaterequest.md
+  - docs/models/operations/deletecacertificateresponse.md
   - docs/models/operations/listcertificaterequest.md
   - docs/models/operations/listcertificateresponsebody.md
   - docs/models/operations/listcertificateresponse.md
   - docs/models/operations/createcertificaterequest.md
   - docs/models/operations/createcertificateresponse.md
-  - docs/models/operations/deletecertificaterequest.md
-  - docs/models/operations/deletecertificateresponse.md
   - docs/models/operations/getcertificaterequest.md
   - docs/models/operations/getcertificateresponse.md
   - docs/models/operations/upsertcertificaterequest.md
   - docs/models/operations/upsertcertificateresponse.md
+  - docs/models/operations/deletecertificaterequest.md
+  - docs/models/operations/deletecertificateresponse.md
   - docs/models/operations/listsniwithcertificaterequest.md
   - docs/models/operations/listsniwithcertificateresponsebody.md
   - docs/models/operations/listsniwithcertificateresponse.md
   - docs/models/operations/createsniwithcertificaterequest.md
   - docs/models/operations/createsniwithcertificateresponse.md
-  - docs/models/operations/deletesniwithcertificaterequest.md
-  - docs/models/operations/deletesniwithcertificateresponse.md
   - docs/models/operations/getsniwithcertificaterequest.md
   - docs/models/operations/getsniwithcertificateresponse.md
   - docs/models/operations/upsertsniwithcertificaterequest.md
   - docs/models/operations/upsertsniwithcertificateresponse.md
+  - docs/models/operations/deletesniwithcertificaterequest.md
+  - docs/models/operations/deletesniwithcertificateresponse.md
   - docs/models/operations/listsnirequest.md
   - docs/models/operations/listsniresponsebody.md
   - docs/models/operations/listsniresponse.md
   - docs/models/operations/createsnirequest.md
   - docs/models/operations/createsniresponse.md
-  - docs/models/operations/deletesnirequest.md
-  - docs/models/operations/deletesniresponse.md
   - docs/models/operations/getsnirequest.md
   - docs/models/operations/getsniresponse.md
   - docs/models/operations/upsertsnirequest.md
   - docs/models/operations/upsertsniresponse.md
+  - docs/models/operations/deletesnirequest.md
+  - docs/models/operations/deletesniresponse.md
   - docs/models/operations/listconsumergrouprequest.md
   - docs/models/operations/listconsumergroupresponsebody.md
   - docs/models/operations/listconsumergroupresponse.md
   - docs/models/operations/createconsumergrouprequest.md
   - docs/models/operations/createconsumergroupresponse.md
-  - docs/models/operations/deleteconsumergrouprequest.md
-  - docs/models/operations/deleteconsumergroupresponse.md
   - docs/models/operations/getconsumergrouprequest.md
   - docs/models/operations/getconsumergroupresponse.md
   - docs/models/operations/upsertconsumergrouprequest.md
   - docs/models/operations/upsertconsumergroupresponse.md
+  - docs/models/operations/deleteconsumergrouprequest.md
+  - docs/models/operations/deleteconsumergroupresponse.md
+  - docs/models/operations/addconsumertogrouprequestbody.md
+  - docs/models/operations/addconsumertogrouprequest.md
+  - docs/models/operations/addconsumertogroupresponsebody.md
+  - docs/models/operations/addconsumertogroupresponse.md
   - docs/models/operations/listconsumerrequest.md
   - docs/models/operations/listconsumerresponsebody.md
   - docs/models/operations/listconsumerresponse.md
   - docs/models/operations/createconsumerrequest.md
   - docs/models/operations/createconsumerresponse.md
-  - docs/models/operations/deleteconsumerrequest.md
-  - docs/models/operations/deleteconsumerresponse.md
   - docs/models/operations/getconsumerrequest.md
   - docs/models/operations/getconsumerresponse.md
   - docs/models/operations/upsertconsumerrequest.md
   - docs/models/operations/upsertconsumerresponse.md
+  - docs/models/operations/deleteconsumerrequest.md
+  - docs/models/operations/deleteconsumerresponse.md
   - docs/models/operations/listhmacauthwithconsumerrequest.md
   - docs/models/operations/listhmacauthwithconsumerresponsebody.md
   - docs/models/operations/listhmacauthwithconsumerresponse.md
   - docs/models/operations/createhmacauthwithconsumerrequest.md
   - docs/models/operations/createhmacauthwithconsumerresponse.md
-  - docs/models/operations/deletehmacauthwithconsumerrequest.md
-  - docs/models/operations/deletehmacauthwithconsumerresponse.md
   - docs/models/operations/gethmacauthwithconsumerrequest.md
   - docs/models/operations/gethmacauthwithconsumerresponse.md
   - docs/models/operations/upserthmacauthwithconsumerrequest.md
   - docs/models/operations/upserthmacauthwithconsumerresponse.md
+  - docs/models/operations/deletehmacauthwithconsumerrequest.md
+  - docs/models/operations/deletehmacauthwithconsumerresponse.md
   - docs/models/operations/listhmacauthrequest.md
   - docs/models/operations/listhmacauthresponsebody.md
   - docs/models/operations/listhmacauthresponse.md
@@ -492,12 +533,12 @@ generatedFiles:
   - docs/models/operations/listjwtwithconsumerresponse.md
   - docs/models/operations/createjwtwithconsumerrequest.md
   - docs/models/operations/createjwtwithconsumerresponse.md
-  - docs/models/operations/deletejwtwithconsumerrequest.md
-  - docs/models/operations/deletejwtwithconsumerresponse.md
   - docs/models/operations/getjwtwithconsumerrequest.md
   - docs/models/operations/getjwtwithconsumerresponse.md
   - docs/models/operations/upsertjwtwithconsumerrequest.md
   - docs/models/operations/upsertjwtwithconsumerresponse.md
+  - docs/models/operations/deletejwtwithconsumerrequest.md
+  - docs/models/operations/deletejwtwithconsumerresponse.md
   - docs/models/operations/listjwtrequest.md
   - docs/models/operations/listjwtresponsebody.md
   - docs/models/operations/listjwtresponse.md
@@ -506,12 +547,12 @@ generatedFiles:
   - docs/models/operations/listkeyauthwithconsumerresponse.md
   - docs/models/operations/createkeyauthwithconsumerrequest.md
   - docs/models/operations/createkeyauthwithconsumerresponse.md
-  - docs/models/operations/deletekeyauthwithconsumerrequest.md
-  - docs/models/operations/deletekeyauthwithconsumerresponse.md
   - docs/models/operations/getkeyauthwithconsumerrequest.md
   - docs/models/operations/getkeyauthwithconsumerresponse.md
   - docs/models/operations/upsertkeyauthwithconsumerrequest.md
   - docs/models/operations/upsertkeyauthwithconsumerresponse.md
+  - docs/models/operations/deletekeyauthwithconsumerrequest.md
+  - docs/models/operations/deletekeyauthwithconsumerresponse.md
   - docs/models/operations/listkeyauthrequest.md
   - docs/models/operations/listkeyauthresponsebody.md
   - docs/models/operations/listkeyauthresponse.md
@@ -520,132 +561,135 @@ generatedFiles:
   - docs/models/operations/listkeysetresponse.md
   - docs/models/operations/createkeysetrequest.md
   - docs/models/operations/createkeysetresponse.md
-  - docs/models/operations/deletekeysetrequest.md
-  - docs/models/operations/deletekeysetresponse.md
   - docs/models/operations/getkeysetrequest.md
   - docs/models/operations/getkeysetresponse.md
   - docs/models/operations/upsertkeysetrequest.md
   - docs/models/operations/upsertkeysetresponse.md
+  - docs/models/operations/deletekeysetrequest.md
+  - docs/models/operations/deletekeysetresponse.md
   - docs/models/operations/listkeyrequest.md
   - docs/models/operations/listkeyresponsebody.md
   - docs/models/operations/listkeyresponse.md
   - docs/models/operations/createkeyrequest.md
   - docs/models/operations/createkeyresponse.md
-  - docs/models/operations/deletekeyrequest.md
-  - docs/models/operations/deletekeyresponse.md
   - docs/models/operations/getkeyrequest.md
   - docs/models/operations/getkeyresponse.md
   - docs/models/operations/upsertkeyrequest.md
   - docs/models/operations/upsertkeyresponse.md
+  - docs/models/operations/deletekeyrequest.md
+  - docs/models/operations/deletekeyresponse.md
   - docs/models/operations/listpluginschemasrequest.md
   - docs/models/operations/listpluginschemasresponse.md
   - docs/models/operations/createpluginschemasrequest.md
   - docs/models/operations/createpluginschemasresponse.md
   - docs/models/operations/getpluginschemarequest.md
   - docs/models/operations/getpluginschemaresponse.md
-  - docs/models/operations/deletepluginschemasrequest.md
-  - docs/models/operations/deletepluginschemasresponse.md
   - docs/models/operations/updatepluginschemasrequest.md
   - docs/models/operations/updatepluginschemasresponse.md
+  - docs/models/operations/deletepluginschemasrequest.md
+  - docs/models/operations/deletepluginschemasresponse.md
   - docs/models/operations/listpluginrequest.md
   - docs/models/operations/listpluginresponsebody.md
   - docs/models/operations/listpluginresponse.md
   - docs/models/operations/createpluginrequest.md
   - docs/models/operations/createpluginresponse.md
-  - docs/models/operations/deletepluginrequest.md
-  - docs/models/operations/deletepluginresponse.md
   - docs/models/operations/getpluginrequest.md
   - docs/models/operations/getpluginresponse.md
   - docs/models/operations/upsertpluginrequest.md
   - docs/models/operations/upsertpluginresponse.md
+  - docs/models/operations/deletepluginrequest.md
+  - docs/models/operations/deletepluginresponse.md
   - docs/models/operations/listpluginwithrouterequest.md
   - docs/models/operations/listpluginwithrouteresponsebody.md
   - docs/models/operations/listpluginwithrouteresponse.md
   - docs/models/operations/createpluginwithrouterequest.md
   - docs/models/operations/createpluginwithrouteresponse.md
-  - docs/models/operations/deletepluginwithrouterequest.md
-  - docs/models/operations/deletepluginwithrouteresponse.md
   - docs/models/operations/getpluginwithrouterequest.md
   - docs/models/operations/getpluginwithrouteresponse.md
   - docs/models/operations/upsertpluginwithrouterequest.md
   - docs/models/operations/upsertpluginwithrouteresponse.md
+  - docs/models/operations/deletepluginwithrouterequest.md
+  - docs/models/operations/deletepluginwithrouteresponse.md
+  - docs/models/operations/fetchpluginschemarequest.md
+  - docs/models/operations/fetchpluginschemaresponsebody.md
+  - docs/models/operations/fetchpluginschemaresponse.md
   - docs/models/operations/listpluginwithservicerequest.md
   - docs/models/operations/listpluginwithserviceresponsebody.md
   - docs/models/operations/listpluginwithserviceresponse.md
   - docs/models/operations/createpluginwithservicerequest.md
   - docs/models/operations/createpluginwithserviceresponse.md
-  - docs/models/operations/deletepluginwithservicerequest.md
-  - docs/models/operations/deletepluginwithserviceresponse.md
   - docs/models/operations/getpluginwithservicerequest.md
   - docs/models/operations/getpluginwithserviceresponse.md
   - docs/models/operations/upsertpluginwithservicerequest.md
   - docs/models/operations/upsertpluginwithserviceresponse.md
+  - docs/models/operations/deletepluginwithservicerequest.md
+  - docs/models/operations/deletepluginwithserviceresponse.md
   - docs/models/operations/listrouterequest.md
   - docs/models/operations/listrouteresponsebody.md
   - docs/models/operations/listrouteresponse.md
   - docs/models/operations/createrouterequest.md
   - docs/models/operations/createrouteresponse.md
-  - docs/models/operations/deleterouterequest.md
-  - docs/models/operations/deleterouteresponse.md
   - docs/models/operations/getrouterequest.md
   - docs/models/operations/getrouteresponse.md
   - docs/models/operations/upsertrouterequest.md
   - docs/models/operations/upsertrouteresponse.md
+  - docs/models/operations/deleterouterequest.md
+  - docs/models/operations/deleterouteresponse.md
   - docs/models/operations/listroutewithservicerequest.md
   - docs/models/operations/listroutewithserviceresponsebody.md
   - docs/models/operations/listroutewithserviceresponse.md
   - docs/models/operations/createroutewithservicerequest.md
   - docs/models/operations/createroutewithserviceresponse.md
-  - docs/models/operations/deleteroutewithservicerequest.md
-  - docs/models/operations/deleteroutewithserviceresponse.md
   - docs/models/operations/getroutewithservicerequest.md
   - docs/models/operations/getroutewithserviceresponse.md
   - docs/models/operations/upsertroutewithservicerequest.md
   - docs/models/operations/upsertroutewithserviceresponse.md
+  - docs/models/operations/deleteroutewithservicerequest.md
+  - docs/models/operations/deleteroutewithserviceresponse.md
   - docs/models/operations/listservicerequest.md
   - docs/models/operations/listserviceresponsebody.md
   - docs/models/operations/listserviceresponse.md
   - docs/models/operations/createservicerequest.md
   - docs/models/operations/createserviceresponse.md
-  - docs/models/operations/deleteservicerequest.md
-  - docs/models/operations/deleteserviceresponse.md
   - docs/models/operations/getservicerequest.md
   - docs/models/operations/getserviceresponse.md
   - docs/models/operations/upsertservicerequest.md
   - docs/models/operations/upsertserviceresponse.md
+  - docs/models/operations/deleteservicerequest.md
+  - docs/models/operations/deleteserviceresponse.md
   - docs/models/operations/listupstreamrequest.md
   - docs/models/operations/listupstreamresponsebody.md
   - docs/models/operations/listupstreamresponse.md
   - docs/models/operations/createupstreamrequest.md
   - docs/models/operations/createupstreamresponse.md
-  - docs/models/operations/deleteupstreamrequest.md
-  - docs/models/operations/deleteupstreamresponse.md
   - docs/models/operations/getupstreamrequest.md
   - docs/models/operations/getupstreamresponse.md
   - docs/models/operations/upsertupstreamrequest.md
   - docs/models/operations/upsertupstreamresponse.md
+  - docs/models/operations/deleteupstreamrequest.md
+  - docs/models/operations/deleteupstreamresponse.md
   - docs/models/operations/listtargetwithupstreamrequest.md
   - docs/models/operations/listtargetwithupstreamresponsebody.md
   - docs/models/operations/listtargetwithupstreamresponse.md
   - docs/models/operations/createtargetwithupstreamrequest.md
   - docs/models/operations/createtargetwithupstreamresponse.md
-  - docs/models/operations/deletetargetwithupstreamrequest.md
-  - docs/models/operations/deletetargetwithupstreamresponse.md
   - docs/models/operations/gettargetwithupstreamrequest.md
   - docs/models/operations/gettargetwithupstreamresponse.md
   - docs/models/operations/upserttargetwithupstreamrequest.md
   - docs/models/operations/upserttargetwithupstreamresponse.md
+  - docs/models/operations/deletetargetwithupstreamrequest.md
+  - docs/models/operations/deletetargetwithupstreamresponse.md
   - docs/models/operations/listvaultrequest.md
   - docs/models/operations/listvaultresponsebody.md
   - docs/models/operations/listvaultresponse.md
   - docs/models/operations/createvaultrequest.md
   - docs/models/operations/createvaultresponse.md
-  - docs/models/operations/deletevaultrequest.md
-  - docs/models/operations/deletevaultresponse.md
   - docs/models/operations/getvaultrequest.md
   - docs/models/operations/getvaultresponse.md
   - docs/models/operations/upsertvaultrequest.md
   - docs/models/operations/upsertvaultresponse.md
+  - docs/models/operations/deletevaultrequest.md
+  - docs/models/operations/deletevaultresponse.md
   - docs/models/operations/listdpclientcertificatesrequest.md
   - docs/models/operations/listdpclientcertificatesresponse.md
   - docs/models/operations/createdataplanecertificaterequest.md
@@ -683,15 +727,15 @@ generatedFiles:
   - docs/models/operations/getteamgroupmappingsrequest.md
   - docs/models/operations/getteamgroupmappingsresponse.md
   - docs/models/operations/patchteamgroupmappingsresponse.md
-  - docs/models/operations/updateidpteammappingsresponse.md
   - docs/models/operations/getidpteammappingsrequest.md
   - docs/models/operations/getidpteammappingsresponse.md
+  - docs/models/operations/updateidpteammappingsresponse.md
   - docs/models/operations/inviteuserresponse.md
   - docs/models/operations/getimpersonationsettingsresponse.md
   - docs/models/operations/updateimpersonationsettingsresponse.md
   - docs/models/operations/getorganizationsmeresponse.md
   - docs/models/operations/getpredefinedrolesresponse.md
-  - docs/models/operations/queryparamfilter.md
+  - docs/models/operations/listteamrolesqueryparamfilter.md
   - docs/models/operations/listteamrolesrequest.md
   - docs/models/operations/listteamrolesresponse.md
   - docs/models/operations/teamsassignrolerequest.md
@@ -705,6 +749,9 @@ generatedFiles:
   - docs/models/operations/usersassignroleresponse.md
   - docs/models/operations/usersremoverolerequest.md
   - docs/models/operations/usersremoveroleresponse.md
+  - docs/models/operations/filter.md
+  - docs/models/operations/getsystemaccountsrequest.md
+  - docs/models/operations/getsystemaccountsresponse.md
   - docs/models/operations/postsystemaccountsresponse.md
   - docs/models/operations/getsystemaccountsidrequest.md
   - docs/models/operations/getsystemaccountsidresponse.md
@@ -712,6 +759,9 @@ generatedFiles:
   - docs/models/operations/patchsystemaccountsidresponse.md
   - docs/models/operations/deletesystemaccountsidrequest.md
   - docs/models/operations/deletesystemaccountsidresponse.md
+  - docs/models/operations/queryparamfilter.md
+  - docs/models/operations/getsystemaccountidaccesstokensrequest.md
+  - docs/models/operations/getsystemaccountidaccesstokensresponse.md
   - docs/models/operations/postsystemaccountsidaccesstokensrequest.md
   - docs/models/operations/postsystemaccountsidaccesstokensresponse.md
   - docs/models/operations/getsystemaccountsidaccesstokensidrequest.md
@@ -720,13 +770,26 @@ generatedFiles:
   - docs/models/operations/patchsystemaccountsidaccesstokensidresponse.md
   - docs/models/operations/deletesystemaccountsidaccesstokensidrequest.md
   - docs/models/operations/deletesystemaccountsidaccesstokensidresponse.md
-  - docs/models/operations/filter.md
+  - docs/models/operations/getsystemaccountsaccountidassignedrolesqueryparamfilter.md
   - docs/models/operations/getsystemaccountsaccountidassignedrolesrequest.md
   - docs/models/operations/getsystemaccountsaccountidassignedrolesresponse.md
   - docs/models/operations/postsystemaccountsaccountidassignedrolesrequest.md
   - docs/models/operations/postsystemaccountsaccountidassignedrolesresponse.md
   - docs/models/operations/deletesystemaccountsaccountidassignedrolesroleidrequest.md
   - docs/models/operations/deletesystemaccountsaccountidassignedrolesroleidresponse.md
+  - docs/models/operations/getsystemaccountsaccountidteamsqueryparamfilter.md
+  - docs/models/operations/getsystemaccountsaccountidteamsrequest.md
+  - docs/models/operations/getsystemaccountsaccountidteamsresponse.md
+  - docs/models/operations/getteamsteamidsystemaccountsqueryparamfilter.md
+  - docs/models/operations/getteamsteamidsystemaccountsrequest.md
+  - docs/models/operations/getteamsteamidsystemaccountsresponse.md
+  - docs/models/operations/postteamsteamidsystemaccountsrequest.md
+  - docs/models/operations/postteamsteamidsystemaccountsresponse.md
+  - docs/models/operations/deleteteamsteamidsystemaccountsaccountidrequest.md
+  - docs/models/operations/deleteteamsteamidsystemaccountsaccountidresponse.md
+  - docs/models/operations/listteamsqueryparamfilter.md
+  - docs/models/operations/listteamsrequest.md
+  - docs/models/operations/listteamsresponse.md
   - docs/models/operations/createteamresponse.md
   - docs/models/operations/getteamrequest.md
   - docs/models/operations/getteamresponse.md
@@ -734,30 +797,44 @@ generatedFiles:
   - docs/models/operations/updateteamresponse.md
   - docs/models/operations/deleteteamrequest.md
   - docs/models/operations/deleteteamresponse.md
-  - docs/models/operations/postteamsteamidsystemaccountsrequest.md
-  - docs/models/operations/postteamsteamidsystemaccountsresponse.md
-  - docs/models/operations/deleteteamsteamidsystemaccountsaccountidrequest.md
-  - docs/models/operations/deleteteamsteamidsystemaccountsaccountidresponse.md
+  - docs/models/operations/listteamusersqueryparamfilter.md
+  - docs/models/operations/listteamusersrequest.md
+  - docs/models/operations/listteamusersresponse.md
   - docs/models/operations/addusertoteamrequest.md
   - docs/models/operations/addusertoteamresponse.md
   - docs/models/operations/removeuserfromteamrequest.md
   - docs/models/operations/removeuserfromteamresponse.md
+  - docs/models/operations/listuserteamsqueryparamfilter.md
+  - docs/models/operations/listuserteamsrequest.md
+  - docs/models/operations/listuserteamsresponse.md
+  - docs/models/operations/listusersqueryparamfilter.md
+  - docs/models/operations/listusersrequest.md
+  - docs/models/operations/listusersresponse.md
   - docs/models/operations/getuserrequest.md
   - docs/models/operations/getuserresponse.md
   - docs/models/operations/updateuserrequest.md
   - docs/models/operations/updateuserresponse.md
   - docs/models/operations/deleteuserrequest.md
   - docs/models/operations/deleteuserresponse.md
-  - docs/models/components/listcontrolplanesresponse.md
-  - docs/models/components/config.md
-  - docs/models/components/controlplane.md
+  - docs/models/components/listserverlesscloudgatewaysresponse.md
+  - docs/models/components/serverlesscloudgateway.md
+  - docs/models/components/serverlesscontrolplane.md
+  - docs/models/components/cpregion.md
   - docs/models/components/paginatedmeta.md
   - docs/models/components/pagemeta.md
   - docs/models/components/invalidparameters.md
-  - docs/models/components/invalidparameterchoiceitem.md
+  - docs/models/components/invalidparameterstandard.md
   - docs/models/components/invalidrules.md
   - docs/models/components/rule.md
+  - docs/models/components/invalidparameterminimumlength.md
+  - docs/models/components/invalidparameterchoiceitemrule.md
+  - docs/models/components/invalidparameterchoiceitem.md
+  - docs/models/components/invalidparameterdependentitemrule.md
   - docs/models/components/invalidparameterdependentitem.md
+  - docs/models/components/createserverlesscloudgatewayrequest.md
+  - docs/models/components/listcontrolplanesresponse.md
+  - docs/models/components/config.md
+  - docs/models/components/controlplane.md
   - docs/models/components/clustertype.md
   - docs/models/components/authtype.md
   - docs/models/components/createcontrolplanerequest.md
@@ -766,42 +843,39 @@ generatedFiles:
   - docs/models/components/updatecontrolplanerequest.md
   - docs/models/components/aclconsumer.md
   - docs/models/components/acl.md
-  - docs/models/components/createaclwithoutparents.md
+  - docs/models/components/aclwithoutparents.md
   - docs/models/components/basicauthconsumer.md
   - docs/models/components/basicauth.md
-  - docs/models/components/createbasicauthwithoutparents.md
+  - docs/models/components/basicauthwithoutparents.md
   - docs/models/components/cacertificate.md
-  - docs/models/components/createcacertificate.md
+  - docs/models/components/cacertificateinput.md
   - docs/models/components/certificate.md
-  - docs/models/components/createcertificate.md
+  - docs/models/components/certificateinput.md
   - docs/models/components/snicertificate.md
   - docs/models/components/sni.md
-  - docs/models/components/createsniwithoutparents.md
-  - docs/models/components/createsnicertificate.md
-  - docs/models/components/createsni.md
+  - docs/models/components/sniwithoutparents.md
+  - docs/models/components/sniinput.md
   - docs/models/components/consumergroup.md
-  - docs/models/components/createconsumergroup.md
+  - docs/models/components/consumergroupinput.md
   - docs/models/components/consumer.md
-  - docs/models/components/createconsumer.md
+  - docs/models/components/consumerinput.md
   - docs/models/components/hmacauthconsumer.md
   - docs/models/components/hmacauth.md
-  - docs/models/components/createhmacauthwithoutparents.md
+  - docs/models/components/hmacauthwithoutparents.md
   - docs/models/components/algorithm.md
   - docs/models/components/jwtconsumer.md
   - docs/models/components/jwt.md
-  - docs/models/components/createjwtwithoutparentsalgorithm.md
-  - docs/models/components/createjwtwithoutparents.md
+  - docs/models/components/jwtwithoutparentsalgorithm.md
+  - docs/models/components/jwtwithoutparents.md
   - docs/models/components/keyauthconsumer.md
   - docs/models/components/keyauth.md
-  - docs/models/components/createkeyauthwithoutparents.md
+  - docs/models/components/keyauthwithoutparents.md
   - docs/models/components/keyset.md
-  - docs/models/components/createkeyset.md
+  - docs/models/components/keysetinput.md
   - docs/models/components/pem.md
   - docs/models/components/set.md
   - docs/models/components/key.md
-  - docs/models/components/createkeypem.md
-  - docs/models/components/createkeyset1.md
-  - docs/models/components/createkey.md
+  - docs/models/components/keyinput.md
   - docs/models/components/items.md
   - docs/models/components/page.md
   - docs/models/components/listpluginschemas.md
@@ -810,16 +884,13 @@ generatedFiles:
   - docs/models/components/createpluginschemas.md
   - docs/models/components/protocols.md
   - docs/models/components/pluginconsumer.md
+  - docs/models/components/pluginconsumergroup.md
   - docs/models/components/pluginroute.md
   - docs/models/components/pluginservice.md
   - docs/models/components/plugin.md
-  - docs/models/components/createpluginprotocols.md
-  - docs/models/components/createpluginconsumer.md
-  - docs/models/components/createpluginroute.md
-  - docs/models/components/createpluginservice.md
-  - docs/models/components/createplugin.md
-  - docs/models/components/createpluginwithoutparentsprotocols.md
-  - docs/models/components/createpluginwithoutparents.md
+  - docs/models/components/plugininput.md
+  - docs/models/components/pluginwithoutparentsprotocols.md
+  - docs/models/components/pluginwithoutparents.md
   - docs/models/components/destinations.md
   - docs/models/components/httpsredirectstatuscode.md
   - docs/models/components/pathhandling.md
@@ -827,23 +898,19 @@ generatedFiles:
   - docs/models/components/sources.md
   - docs/models/components/routeservice.md
   - docs/models/components/route.md
-  - docs/models/components/createroutedestinations.md
-  - docs/models/components/createroutehttpsredirectstatuscode.md
-  - docs/models/components/createroutepathhandling.md
-  - docs/models/components/createrouteprotocols.md
-  - docs/models/components/createroutesources.md
-  - docs/models/components/createrouteservice.md
-  - docs/models/components/createroute.md
-  - docs/models/components/createroutewithoutparentsdestinations.md
-  - docs/models/components/createroutewithoutparentshttpsredirectstatuscode.md
-  - docs/models/components/createroutewithoutparentspathhandling.md
-  - docs/models/components/createroutewithoutparentsprotocols.md
-  - docs/models/components/createroutewithoutparentssources.md
-  - docs/models/components/createroutewithoutparents.md
-  - docs/models/components/service.md
+  - docs/models/components/routeinput.md
+  - docs/models/components/routewithoutparentsdestinations.md
+  - docs/models/components/routewithoutparentshttpsredirectstatuscode.md
+  - docs/models/components/routewithoutparentspathhandling.md
+  - docs/models/components/routewithoutparentsprotocols.md
+  - docs/models/components/routewithoutparentssources.md
+  - docs/models/components/routewithoutparents.md
+  - docs/models/components/clientcertificate.md
   - docs/models/components/protocol.md
-  - docs/models/components/createservice.md
+  - docs/models/components/service.md
+  - docs/models/components/serviceinput.md
   - docs/models/components/upstreamalgorithm.md
+  - docs/models/components/upstreamclientcertificate.md
   - docs/models/components/hashfallback.md
   - docs/models/components/hashon.md
   - docs/models/components/healthy.md
@@ -856,24 +923,13 @@ generatedFiles:
   - docs/models/components/passive.md
   - docs/models/components/healthchecks.md
   - docs/models/components/upstream.md
-  - docs/models/components/createupstreamalgorithm.md
-  - docs/models/components/createupstreamhashfallback.md
-  - docs/models/components/createupstreamhashon.md
-  - docs/models/components/createupstreamhealthy.md
-  - docs/models/components/createupstreamtype.md
-  - docs/models/components/createupstreamunhealthy.md
-  - docs/models/components/createupstreamactive.md
-  - docs/models/components/createupstreamhealthcheckshealthy.md
-  - docs/models/components/createupstreamhealthcheckstype.md
-  - docs/models/components/createupstreamhealthchecksunhealthy.md
-  - docs/models/components/createupstreampassive.md
-  - docs/models/components/createupstreamhealthchecks.md
-  - docs/models/components/createupstream.md
+  - docs/models/components/upstreaminput.md
   - docs/models/components/targetupstream.md
   - docs/models/components/target.md
-  - docs/models/components/createtargetwithoutparents.md
+  - docs/models/components/targetwithoutparents.md
+  - docs/models/components/vaultconfig.md
   - docs/models/components/vault.md
-  - docs/models/components/createvault.md
+  - docs/models/components/vaultinput.md
   - docs/models/components/listdataplanecertificatesresponsepage.md
   - docs/models/components/listdataplanecertificatesresponse.md
   - docs/models/components/dataplaneclientcertificateitem.md
@@ -896,6 +952,8 @@ generatedFiles:
   - docs/models/components/controlplanesummaryauthtype.md
   - docs/models/components/controlplanesummaryconfig.md
   - docs/models/components/controlplanesummary.md
+  - docs/models/components/cursorpaginatedmetawithsizeandtotal.md
+  - docs/models/components/cursormetawithsizeandtotal.md
   - docs/models/components/members.md
   - docs/models/components/groupmembership.md
   - docs/models/components/state.md
@@ -912,14 +970,14 @@ generatedFiles:
   - docs/models/components/teamgroupmapping.md
   - docs/models/components/data.md
   - docs/models/components/patchteamgroupmappings.md
-  - docs/models/components/teammappingcollection.md
-  - docs/models/components/teammapping.md
-  - docs/models/components/mappings.md
-  - docs/models/components/updateteammappings.md
   - docs/models/components/teammappingresponsepage.md
   - docs/models/components/meta.md
   - docs/models/components/teammappingresponsedata.md
   - docs/models/components/teammappingresponse.md
+  - docs/models/components/teammappingcollection.md
+  - docs/models/components/teammapping.md
+  - docs/models/components/mappings.md
+  - docs/models/components/updateteammappings.md
   - docs/models/components/inviteuser.md
   - docs/models/components/getimpersonationsettingsresponse.md
   - docs/models/components/updateimpersonationsettingsresponse.md
@@ -1017,35 +1075,44 @@ generatedFiles:
   - docs/models/components/assignedrolecollection.md
   - docs/models/components/entityregion.md
   - docs/models/components/assignedrole.md
+  - docs/models/components/rolename.md
+  - docs/models/components/entitytypename.md
   - docs/models/components/assignroleentityregion.md
   - docs/models/components/assignrole.md
+  - docs/models/components/systemaccountcollection.md
   - docs/models/components/systemaccount.md
+  - docs/models/components/stringfieldfilter.md
+  - docs/models/components/stringfieldcontainsfilter.md
   - docs/models/components/createsystemaccount.md
   - docs/models/components/updatesystemaccount.md
+  - docs/models/components/systemaccountaccesstokencollection.md
+  - docs/models/components/systemaccountaccesstoken.md
   - docs/models/components/systemaccountaccesstokencreated.md
   - docs/models/components/createsystemaccountaccesstoken.md
-  - docs/models/components/systemaccountaccesstoken.md
   - docs/models/components/updatesystemaccountaccesstoken.md
+  - docs/models/components/teamcollection.md
   - docs/models/components/team.md
+  - docs/models/components/addsystemaccounttoteam.md
   - docs/models/components/createteam.md
   - docs/models/components/updateteam.md
-  - docs/models/components/addsystemaccounttoteam.md
-  - docs/models/components/addusertoteam.md
+  - docs/models/components/usercollection.md
   - docs/models/components/user.md
+  - docs/models/components/addusertoteam.md
   - docs/models/components/updateuser.md
   - docs/models/components/security.md
-  - docs/models/sdkerrors/badrequesterror.md
   - docs/models/sdkerrors/unauthorizederror.md
   - docs/models/sdkerrors/forbiddenerror.md
+  - docs/models/sdkerrors/badrequesterror.md
+  - docs/models/sdkerrors/notfounderror.md
   - docs/models/sdkerrors/status.md
   - docs/models/sdkerrors/serviceunavailable.md
   - docs/models/sdkerrors/conflicterror.md
   - docs/models/sdkerrors/internalservererrorstatus.md
   - docs/models/sdkerrors/internalservererror.md
-  - docs/models/sdkerrors/notfounderror.md
-  - docs/models/sdkerrors/schemasunauthorizederror.md
+  - docs/models/sdkerrors/gatewayunauthorizederror.md
   - docs/models/sdkerrors/preconditionfailed.md
   - docs/models/sdkerrors/ratelimited.md
   - USAGE.md
+  - models/operations/options.go
   - .gitattributes
   - internal/hooks/hooks.go

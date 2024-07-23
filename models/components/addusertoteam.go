@@ -4,12 +4,12 @@ package components
 
 type AddUserToTeam struct {
 	// The user ID for the user being added to a team.
-	ID string `json:"id"`
+	UserID string `json:"id"`
 }
 
-func (o *AddUserToTeam) GetID() string {
+func (o *AddUserToTeam) GetUserID() string {
 	if o == nil {
 		return ""
 	}
-	return o.ID
+	return o.UserID
 }

@@ -7,6 +7,10 @@ import (
 	"net/http"
 )
 
+var TeamsAssignRoleServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
 type TeamsAssignRoleRequest struct {
 	// The team ID
 	TeamID string `pathParam:"style=simple,explode=false,name=teamId"`

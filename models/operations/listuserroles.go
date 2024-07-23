@@ -7,6 +7,10 @@ import (
 	"net/http"
 )
 
+var ListUserRolesServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
 // ListUserRolesQueryParamFilter - Filter roles returned in the response.
 type ListUserRolesQueryParamFilter struct {
 	// Filter a string value by exact match.

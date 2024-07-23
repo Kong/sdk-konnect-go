@@ -7,6 +7,10 @@ import (
 	"net/http"
 )
 
+var GetTeamGroupMappingsServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
 type GetTeamGroupMappingsRequest struct {
 	// The maximum number of items to include per page. The last page of a collection may include fewer items.
 	PageSize *int64 `queryParam:"style=form,explode=true,name=page[size]"`

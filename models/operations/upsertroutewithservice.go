@@ -15,7 +15,7 @@ type UpsertRouteWithServiceRequest struct {
 	// ID of the Route to lookup
 	RouteID string `pathParam:"style=simple,explode=false,name=RouteId"`
 	// Description of the Route
-	CreateRouteWithoutParents components.CreateRouteWithoutParents `request:"mediaType=application/json"`
+	RouteWithoutParents components.RouteWithoutParents `request:"mediaType=application/json"`
 }
 
 func (o *UpsertRouteWithServiceRequest) GetControlPlaneID() string {
@@ -39,11 +39,11 @@ func (o *UpsertRouteWithServiceRequest) GetRouteID() string {
 	return o.RouteID
 }
 
-func (o *UpsertRouteWithServiceRequest) GetCreateRouteWithoutParents() components.CreateRouteWithoutParents {
+func (o *UpsertRouteWithServiceRequest) GetRouteWithoutParents() components.RouteWithoutParents {
 	if o == nil {
-		return components.CreateRouteWithoutParents{}
+		return components.RouteWithoutParents{}
 	}
-	return o.CreateRouteWithoutParents
+	return o.RouteWithoutParents
 }
 
 type UpsertRouteWithServiceResponse struct {

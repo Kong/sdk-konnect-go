@@ -6,6 +6,10 @@ import (
 	"net/http"
 )
 
+var TeamsRemoveRoleServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
 type TeamsRemoveRoleRequest struct {
 	// The team ID.
 	TeamID string `pathParam:"style=simple,explode=false,name=teamId"`

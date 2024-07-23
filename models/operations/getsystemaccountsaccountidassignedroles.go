@@ -7,22 +7,26 @@ import (
 	"net/http"
 )
 
-// Filter roles returned in the response.
-type Filter struct {
+var GetSystemAccountsAccountIDAssignedRolesServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
+// GetSystemAccountsAccountIDAssignedRolesQueryParamFilter - Filter roles returned in the response.
+type GetSystemAccountsAccountIDAssignedRolesQueryParamFilter struct {
 	// Filter a string value by exact match.
 	RoleName *string `queryParam:"name=role_name"`
 	// Filter a string value by exact match.
 	EntityTypeName *string `queryParam:"name=entity_type_name"`
 }
 
-func (o *Filter) GetRoleName() *string {
+func (o *GetSystemAccountsAccountIDAssignedRolesQueryParamFilter) GetRoleName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.RoleName
 }
 
-func (o *Filter) GetEntityTypeName() *string {
+func (o *GetSystemAccountsAccountIDAssignedRolesQueryParamFilter) GetEntityTypeName() *string {
 	if o == nil {
 		return nil
 	}
@@ -33,7 +37,7 @@ type GetSystemAccountsAccountIDAssignedRolesRequest struct {
 	// ID of the system account.
 	AccountID string `pathParam:"style=simple,explode=false,name=accountId"`
 	// Filter roles returned in the response.
-	Filter *Filter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *GetSystemAccountsAccountIDAssignedRolesQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
 func (o *GetSystemAccountsAccountIDAssignedRolesRequest) GetAccountID() string {
@@ -43,7 +47,7 @@ func (o *GetSystemAccountsAccountIDAssignedRolesRequest) GetAccountID() string {
 	return o.AccountID
 }
 
-func (o *GetSystemAccountsAccountIDAssignedRolesRequest) GetFilter() *Filter {
+func (o *GetSystemAccountsAccountIDAssignedRolesRequest) GetFilter() *GetSystemAccountsAccountIDAssignedRolesQueryParamFilter {
 	if o == nil {
 		return nil
 	}

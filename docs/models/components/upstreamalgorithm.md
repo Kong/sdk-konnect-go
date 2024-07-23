@@ -10,3 +10,4 @@ Which load balancing algorithm to use.
 | `UpstreamAlgorithmConsistentHashing` | consistent-hashing                   |
 | `UpstreamAlgorithmLeastConnections`  | least-connections                    |
 | `UpstreamAlgorithmRoundRobin`        | round-robin                          |
+| `UpstreamAlgorithmLatency`           | latency                              |

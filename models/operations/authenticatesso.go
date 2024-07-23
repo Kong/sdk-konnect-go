@@ -6,6 +6,10 @@ import (
 	"net/http"
 )
 
+var AuthenticateSsoServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
 type AuthenticateSsoRequest struct {
 	// The login path for the organization.
 	OrganizationLoginPath string `pathParam:"style=simple,explode=false,name=organizationLoginPath"`

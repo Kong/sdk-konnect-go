@@ -7,6 +7,10 @@ import (
 	"net/http"
 )
 
+var CreateTeamServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
 type CreateTeamResponse struct {
 	// HTTP response content type for this operation
 	ContentType string

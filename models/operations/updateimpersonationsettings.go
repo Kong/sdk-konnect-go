@@ -7,6 +7,10 @@ import (
 	"net/http"
 )
 
+var UpdateImpersonationSettingsServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
 type UpdateImpersonationSettingsResponse struct {
 	// HTTP response content type for this operation
 	ContentType string

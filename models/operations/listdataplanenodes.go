@@ -10,10 +10,10 @@ import (
 type ListDataplaneNodesRequest struct {
 	// The UUID of your control plane. This variable is available in the Konnect manager
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
-	// The number of items to include in a page.
-	PageSize *int64 `queryParam:"style=form,explode=true,name=page_size"`
-	// The specific page number in the collection results.
-	PageNumber *int64 `queryParam:"style=form,explode=true,name=page_number"`
+	// The maximum number of items to include per page. The last page of a collection may include fewer items.
+	PageSize *int64 `queryParam:"style=form,explode=true,name=page[size]"`
+	// Request the next page of data, starting with the item after this parameter.
+	PageAfter *string `queryParam:"style=form,explode=true,name=page[after]"`
 }
 
 func (o *ListDataplaneNodesRequest) GetControlPlaneID() string {
@@ -30,11 +30,11 @@ func (o *ListDataplaneNodesRequest) GetPageSize() *int64 {
 	return o.PageSize
 }
 
-func (o *ListDataplaneNodesRequest) GetPageNumber() *int64 {
+func (o *ListDataplaneNodesRequest) GetPageAfter() *string {
 	if o == nil {
 		return nil
 	}
-	return o.PageNumber
+	return o.PageAfter
 }
 
 type ListDataplaneNodesResponse struct {

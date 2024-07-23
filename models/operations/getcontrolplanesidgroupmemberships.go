@@ -12,8 +12,8 @@ type GetControlPlanesIDGroupMembershipsRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 	// The maximum number of items to include per page. The last page of a collection may include fewer items.
 	PageSize *int64 `queryParam:"style=form,explode=true,name=page[size]"`
-	// Determines which page of the entities to retrieve.
-	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
+	// Request the next page of data, starting with the item after this parameter.
+	PageAfter *string `queryParam:"style=form,explode=true,name=page[after]"`
 }
 
 func (o *GetControlPlanesIDGroupMembershipsRequest) GetID() string {
@@ -30,11 +30,11 @@ func (o *GetControlPlanesIDGroupMembershipsRequest) GetPageSize() *int64 {
 	return o.PageSize
 }
 
-func (o *GetControlPlanesIDGroupMembershipsRequest) GetPageNumber() *int64 {
+func (o *GetControlPlanesIDGroupMembershipsRequest) GetPageAfter() *string {
 	if o == nil {
 		return nil
 	}
-	return o.PageNumber
+	return o.PageAfter
 }
 
 type GetControlPlanesIDGroupMembershipsResponse struct {

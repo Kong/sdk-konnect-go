@@ -13,7 +13,7 @@ type CreatePluginWithServiceRequest struct {
 	// ID of the Service to lookup
 	ServiceID string `pathParam:"style=simple,explode=false,name=ServiceId"`
 	// Description of new Plugin for creation
-	CreatePluginWithoutParents components.CreatePluginWithoutParents `request:"mediaType=application/json"`
+	PluginWithoutParents components.PluginWithoutParents `request:"mediaType=application/json"`
 }
 
 func (o *CreatePluginWithServiceRequest) GetControlPlaneID() string {
@@ -30,11 +30,11 @@ func (o *CreatePluginWithServiceRequest) GetServiceID() string {
 	return o.ServiceID
 }
 
-func (o *CreatePluginWithServiceRequest) GetCreatePluginWithoutParents() components.CreatePluginWithoutParents {
+func (o *CreatePluginWithServiceRequest) GetPluginWithoutParents() components.PluginWithoutParents {
 	if o == nil {
-		return components.CreatePluginWithoutParents{}
+		return components.PluginWithoutParents{}
 	}
-	return o.CreatePluginWithoutParents
+	return o.PluginWithoutParents
 }
 
 type CreatePluginWithServiceResponse struct {

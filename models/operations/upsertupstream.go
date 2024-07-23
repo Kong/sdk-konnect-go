@@ -13,7 +13,7 @@ type UpsertUpstreamRequest struct {
 	// ID of the Upstream to lookup
 	UpstreamID string `pathParam:"style=simple,explode=false,name=UpstreamId"`
 	// Description of the Upstream
-	CreateUpstream components.CreateUpstream `request:"mediaType=application/json"`
+	Upstream components.UpstreamInput `request:"mediaType=application/json"`
 }
 
 func (o *UpsertUpstreamRequest) GetControlPlaneID() string {
@@ -30,11 +30,11 @@ func (o *UpsertUpstreamRequest) GetUpstreamID() string {
 	return o.UpstreamID
 }
 
-func (o *UpsertUpstreamRequest) GetCreateUpstream() components.CreateUpstream {
+func (o *UpsertUpstreamRequest) GetUpstream() components.UpstreamInput {
 	if o == nil {
-		return components.CreateUpstream{}
+		return components.UpstreamInput{}
 	}
-	return o.CreateUpstream
+	return o.Upstream
 }
 
 type UpsertUpstreamResponse struct {

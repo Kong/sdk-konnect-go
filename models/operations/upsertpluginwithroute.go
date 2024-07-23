@@ -15,7 +15,7 @@ type UpsertPluginWithRouteRequest struct {
 	// ID of the Plugin to lookup
 	PluginID string `pathParam:"style=simple,explode=false,name=PluginId"`
 	// Description of the Plugin
-	CreatePluginWithoutParents components.CreatePluginWithoutParents `request:"mediaType=application/json"`
+	PluginWithoutParents components.PluginWithoutParents `request:"mediaType=application/json"`
 }
 
 func (o *UpsertPluginWithRouteRequest) GetControlPlaneID() string {
@@ -39,11 +39,11 @@ func (o *UpsertPluginWithRouteRequest) GetPluginID() string {
 	return o.PluginID
 }
 
-func (o *UpsertPluginWithRouteRequest) GetCreatePluginWithoutParents() components.CreatePluginWithoutParents {
+func (o *UpsertPluginWithRouteRequest) GetPluginWithoutParents() components.PluginWithoutParents {
 	if o == nil {
-		return components.CreatePluginWithoutParents{}
+		return components.PluginWithoutParents{}
 	}
-	return o.CreatePluginWithoutParents
+	return o.PluginWithoutParents
 }
 
 type UpsertPluginWithRouteResponse struct {

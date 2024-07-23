@@ -6,6 +6,10 @@ import (
 	"net/http"
 )
 
+var RemoveUserFromTeamServerList = []string{
+	"https://global.api.konghq.com/",
+}
+
 type RemoveUserFromTeamRequest struct {
 	// User ID
 	UserID string `pathParam:"style=simple,explode=false,name=userId"`

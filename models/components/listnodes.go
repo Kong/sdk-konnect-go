@@ -89,30 +89,22 @@ func (o *ListNodesItems) GetCompatibilityStatus() *CompatibilityStatus {
 }
 
 type ListNodesPage struct {
-	TotalCount  *int64  `json:"total_count,omitempty"`
-	NextCursor  *string `json:"next_cursor,omitempty"`
-	HasNextPage *bool   `json:"has_next_page,omitempty"`
+	Total *int64  `json:"total,omitempty"`
+	Next  *string `json:"next,omitempty"`
 }
 
-func (o *ListNodesPage) GetTotalCount() *int64 {
+func (o *ListNodesPage) GetTotal() *int64 {
 	if o == nil {
 		return nil
 	}
-	return o.TotalCount
+	return o.Total
 }
 
-func (o *ListNodesPage) GetNextCursor() *string {
+func (o *ListNodesPage) GetNext() *string {
 	if o == nil {
 		return nil
 	}
-	return o.NextCursor
-}
-
-func (o *ListNodesPage) GetHasNextPage() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.HasNextPage
+	return o.Next
 }
 
 type ListNodes struct {

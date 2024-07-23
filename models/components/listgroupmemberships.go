@@ -4,12 +4,12 @@ package components
 
 type ListGroupMemberships struct {
 	// returns the pagination information
-	Meta *PaginatedMeta `json:"meta,omitempty"`
+	Meta *CursorPaginatedMetaWithSizeAndTotal `json:"meta,omitempty"`
 	// Array of control planes summary who are a child to this control plane group.
 	Data []ControlPlaneSummary `json:"data,omitempty"`
 }
 
-func (o *ListGroupMemberships) GetMeta() *PaginatedMeta {
+func (o *ListGroupMemberships) GetMeta() *CursorPaginatedMetaWithSizeAndTotal {
 	if o == nil {
 		return nil
 	}

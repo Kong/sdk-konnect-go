@@ -15,6 +15,7 @@ const (
 	ClusterTypeClusterTypeHybrid               ClusterType = "CLUSTER_TYPE_HYBRID"
 	ClusterTypeClusterTypeK8SIngressController ClusterType = "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER"
 	ClusterTypeClusterTypeControlPlaneGroup    ClusterType = "CLUSTER_TYPE_CONTROL_PLANE_GROUP"
+	ClusterTypeClusterTypeServerless           ClusterType = "CLUSTER_TYPE_SERVERLESS"
 )
 
 func (e ClusterType) ToPointer() *ClusterType {
@@ -33,6 +34,8 @@ func (e *ClusterType) UnmarshalJSON(data []byte) error {
 	case "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER":
 		fallthrough
 	case "CLUSTER_TYPE_CONTROL_PLANE_GROUP":
+		fallthrough
+	case "CLUSTER_TYPE_SERVERLESS":
 		*e = ClusterType(v)
 		return nil
 	default:
@@ -68,6 +71,7 @@ func (e *AuthType) UnmarshalJSON(data []byte) error {
 }
 
 // CreateControlPlaneRequest - The request schema for the create control plane request.
+// +kubebuilder:object:generate=true
 type CreateControlPlaneRequest struct {
 	// The name of the control plane.
 	Name string `json:"name"`

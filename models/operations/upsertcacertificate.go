@@ -13,7 +13,7 @@ type UpsertCaCertificateRequest struct {
 	// ID of the CA Certificate to lookup
 	CACertificateID string `pathParam:"style=simple,explode=false,name=CACertificateId"`
 	// Description of the CA Certificate
-	CreateCACertificate components.CreateCACertificate `request:"mediaType=application/json"`
+	CACertificate components.CACertificateInput `request:"mediaType=application/json"`
 }
 
 func (o *UpsertCaCertificateRequest) GetControlPlaneID() string {
@@ -30,11 +30,11 @@ func (o *UpsertCaCertificateRequest) GetCACertificateID() string {
 	return o.CACertificateID
 }
 
-func (o *UpsertCaCertificateRequest) GetCreateCACertificate() components.CreateCACertificate {
+func (o *UpsertCaCertificateRequest) GetCACertificate() components.CACertificateInput {
 	if o == nil {
-		return components.CreateCACertificate{}
+		return components.CACertificateInput{}
 	}
-	return o.CreateCACertificate
+	return o.CACertificate
 }
 
 type UpsertCaCertificateResponse struct {
