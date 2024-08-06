@@ -6,6 +6,7 @@ import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -15,29 +16,17 @@ func main() {
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
-	request := components.CreateControlPlaneRequest{
-		Name:         "Test Control Plane",
-		Description:  sdkkonnectgo.String("A test control plane for exploration."),
-		ClusterType:  components.ClusterTypeClusterTypeControlPlane.ToPointer(),
-		AuthType:     components.AuthTypePinnedClientCerts.ToPointer(),
-		CloudGateway: sdkkonnectgo.Bool(false),
-		ProxyUrls: []components.ProxyURL{
-			components.ProxyURL{
-				Host:     "example.com",
-				Port:     443,
-				Protocol: "https",
-			},
-		},
-		Labels: map[string]string{
-			"env": "test",
-		},
+	request := operations.ListServerlessCloudGatewayRequest{
+		PageSize:   sdkkonnectgo.Int64(10),
+		PageNumber: sdkkonnectgo.Int64(1),
+		Labels:     sdkkonnectgo.String("filter[labels][eq]=env:prod"),
 	}
 	ctx := context.Background()
-	res, err := s.ControlPlanes.CreateControlPlane(ctx, request)
+	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, request)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ControlPlane != nil {
+	if res.ListServerlessCloudGatewaysResponse != nil {
 		// handle response
 	}
 }

@@ -1,0 +1,13 @@
+# ListTeamUsersQueryParamFilter
+
+Filter users returned in the response.
+
+
+## Fields
+
+| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   | Example                                                                       |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `ID`                                                                          | **string*                                                                     | :heavy_minus_sign:                                                            | Filter a string value by exact match.                                         |                                                                               |
+| `Email`                                                                       | [*components.StringFieldFilter](../../models/components/stringfieldfilter.md) | :heavy_minus_sign:                                                            | Filter a string value field either by exact match or partial contains.        |                                                                               |
+| `FullName`                                                                    | [*components.StringFieldFilter](../../models/components/stringfieldfilter.md) | :heavy_minus_sign:                                                            | Filter a string value field either by exact match or partial contains.        |                                                                               |
+| `Active`                                                                      | **bool*                                                                       | :heavy_minus_sign:                                                            | Filter by a boolean value (true/false).                                       | true                                                                          |

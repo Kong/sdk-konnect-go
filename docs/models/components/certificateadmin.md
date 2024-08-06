@@ -1,0 +1,9 @@
+# CertificateAdmin
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            | Example                                                                                |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `Name`                                                                                 | [components.RolesControlPlanesName](../../models/components/rolescontrolplanesname.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |                                                                                        |
+| `Description`                                                                          | [components.RolesDescription](../../models/components/rolesdescription.md)             | :heavy_check_mark:                                                                     | N/A                                                                                    | This role grants full write access to administer certificates.                         |

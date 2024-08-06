@@ -11,3 +11,4 @@ The ClusterType value of the cluster associated with the Control Plane.
 | `ClusterTypeClusterTypeHybrid`               | CLUSTER_TYPE_HYBRID                          |
 | `ClusterTypeClusterTypeK8SIngressController` | CLUSTER_TYPE_K8S_INGRESS_CONTROLLER          |
 | `ClusterTypeClusterTypeControlPlaneGroup`    | CLUSTER_TYPE_CONTROL_PLANE_GROUP             |
+| `ClusterTypeClusterTypeServerless`           | CLUSTER_TYPE_SERVERLESS                      |

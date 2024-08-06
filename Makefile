@@ -1,3 +1,15 @@
+SHELL = bash
+.SHELLFLAGS = -ec -o pipefail
+
+OPENAPI_FILE = openapi.yaml
+SPEAKEASY_DIR = .speakeasy
+KUBEBUILDER_GENERATE_CODE_MARKER = +kubebuilder:object:generate=true
+
+SED=sed
+ifeq (Darwin,$(shell uname -s))
+	SED=gsed
+endif
+
 .PHONY: generate.deepcopy
 generate.deepcopy: deepcopy
 # Generate deepcopy/runtime.Object implementations for a particular file
@@ -8,22 +20,37 @@ generate.deepcopy: deepcopy
 deepcopy:
 	go install -v sigs.k8s.io/controller-tools/cmd/controller-gen@latest
 
-OPENAPI_FILE = openapi.yaml
-SPEAKEASY_DIR = .speakeasy
-KUBEBUILDER_GENERATE_CODE_MARKER = \n+kubebuilder:object:generate=true
-VERSION_TMP_FILE = $(SPEAKEASY_DIR)/.version_temp
-
+# NOTE: We call speakeasy twice to generate DeepCopy() for the types that need it.
+#       The generation is called twice because we want to generate the zz_generated.deepcopy.go
+#       file for the types that need DeepCopy() to be generated but to not include
+#       the related code markers in the generated sdk source code or docs.
 # NOTE: add more types that need to have DeepCopy() generated.
 .PHONY: generate.sdk
 generate.sdk:
-	yq --inplace '.components.schemas.CreateControlPlaneRequest.description += "$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
+	yq --inplace '.components.schemas.CreateControlPlaneRequest.description += "\n$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
+	yq --inplace '.components.schemas.CreateServiceWithoutParents.description += "\n$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
+	yq --inplace '.components.schemas.RouteWithoutParents.description += "\n$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
+
 	speakeasy generate sdk --lang go --out . --schema ./$(OPENAPI_FILE)
 	git checkout -- $(SPEAKEASY_DIR)/gen.lock $(SPEAKEASY_DIR)/gen.yaml sdk.go
-	$(MAKE) generate.deepcopy
-	git checkout -- $(OPENAPI_FILE)
-	speakeasy generate sdk --lang go --out . --schema ./$(OPENAPI_FILE)
 
-# yq '.management.releaseVersion' $(SPEAKEASY_DIR)/gen.lock > $(VERSION_TMP_FILE)
-# yq --inplace '.management.releaseVersion = load("${VERSION_TMP_FILE}")' $(speakeasy_dir)/gen.lock
-# yq --inplace '.go.version = load("${VERSION_TMP_FILE}")' $(SPEAKEASY_DIR)/gen.yaml
-# rm $(VERSION_TMP_FILE)
+	$(SED) -i 's#\(type RouteWithoutParentsDestinations struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/routewithoutparents.go
+	$(SED) -i 's#\(type Destinations struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/route.go
+	$(SED) -i 's#\(type Sources struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/route.go
+	$(SED) -i 's#\(type RouteService struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/route.go
+	$(SED) -i 's#\(type RouteWithoutParentsSources struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/routewithoutparents.go
+	$(SED) -i 's#\(type RouteInput struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/route.go
+
+	$(MAKE) generate.deepcopy
+	git checkout -- $(OPENAPI_FILE) \
+		$(shell git ls-files models/components/route*.go) \
+		$(shell git ls-files docs/models/components/route*.md) \
+		$(shell git ls-files models/components/create*.go) \
+		$(shell git ls-files docs/models/components/create*.md)
+	speakeasy generate sdk --lang go --out . --schema ./$(OPENAPI_FILE)

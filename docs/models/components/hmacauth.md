@@ -1,0 +1,13 @@
+# HMACAuth
+
+
+## Fields
+
+| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `CreatedAt`                                                                 | **int64*                                                                    | :heavy_minus_sign:                                                          | Unix epoch when the resource was created.                                   |
+| `ID`                                                                        | **string*                                                                   | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `Secret`                                                                    | **string*                                                                   | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `Tags`                                                                      | []*string*                                                                  | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `Username`                                                                  | **string*                                                                   | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `Consumer`                                                                  | [*components.HMACAuthConsumer](../../models/components/hmacauthconsumer.md) | :heavy_minus_sign:                                                          | N/A                                                                         |

@@ -1,0 +1,10 @@
+# RolesMeshControlPlanesRoles
+
+
+## Fields
+
+| Field                                                                                                 | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `Admin`                                                                                               | [*components.RolesMeshControlPlanesAdmin](../../models/components/rolesmeshcontrolplanesadmin.md)     | :heavy_minus_sign:                                                                                    | N/A                                                                                                   |
+| `Creator`                                                                                             | [*components.RolesMeshControlPlanesCreator](../../models/components/rolesmeshcontrolplanescreator.md) | :heavy_minus_sign:                                                                                    | N/A                                                                                                   |
+| `Viewer`                                                                                              | [*components.RolesMeshControlPlanesViewer](../../models/components/rolesmeshcontrolplanesviewer.md)   | :heavy_minus_sign:                                                                                    | N/A                                                                                                   |

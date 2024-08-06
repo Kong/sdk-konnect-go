@@ -1,5 +1,13 @@
 package hooks
 
+import (
+	"fmt"
+	"net/http"
+	"net/http/httputil"
+	"strings"
+	"sync"
+)
+
 /*
  * This file is only ever generated once on the first generation and then is free to be modified.
  * Any hooks you wish to add should be registered in the InitHooks function. Feel free to define them
@@ -7,7 +15,63 @@ package hooks
  */
 
 func initHooks(h *Hooks) {
-	// Add hooks by calling h.register{SDKInit/BeforeRequest/AfterSuccess/AfterError}Hook
-	// with an instance of a hook that implements that specific Hook interface
-	// Hooks are registered per SDK instance, and are valid for the lifetime of the SDK instance
+	h.registerBeforeRequestHook(&UserAgentPreRequestHook{})
+	h.registerAfterSuccessHook(&UserAgentPreRequestHook{})
+}
+
+var (
+	l                sync.RWMutex
+	userAgent        string
+	defaultUserAgent = "SpeakeasyGoSDK/0.1"
+)
+
+func SetUserAgent(ua string) {
+	l.Lock()
+	defer l.Unlock()
+	userAgent = ua
+}
+
+func GetUserAgent() string {
+	l.RLock()
+	defer l.RUnlock()
+	return userAgent
+}
+
+type UserAgentPreRequestHook struct{}
+
+var _ beforeRequestHook = (*UserAgentPreRequestHook)(nil)
+
+func (i *UserAgentPreRequestHook) BeforeRequest(hookCtx BeforeRequestContext, req *http.Request) (*http.Request, error) {
+	b, err := httputil.DumpRequestOut(req, true)
+	if err != nil {
+		fmt.Printf("Error dumping request: %v\n", err)
+	} else {
+		fmt.Printf("request:\n%s\n\n", b)
+	}
+
+	req.Header.Set("User-Agent", GetUserAgent())
+
+	switch hookCtx.OperationID {
+	case "get-organizations-me":
+		// NOTE(pmalek): This is because we merge OpenAPI specs and /organizations/me
+		// is only served by the global API.
+		// @mheap mentioned that we can add operation specific URLs to do away with this.
+		if strings.HasSuffix(req.URL.Host, "api.konghq.tech") {
+			req.URL.Host = "global.api.konghq.tech"
+		} else {
+			req.URL.Host = "global.api.konghq.com"
+		}
+	}
+	return req, nil
+}
+
+func (i *UserAgentPreRequestHook) AfterSuccess(hookCtx AfterSuccessContext, res *http.Response) (*http.Response, error) {
+	b, err := httputil.DumpResponse(res, true)
+	if err != nil {
+		fmt.Printf("Error dumping respone: %v\n", err)
+	} else {
+		fmt.Printf("response:\n%s\n\n", b)
+	}
+
+	return res, nil
 }

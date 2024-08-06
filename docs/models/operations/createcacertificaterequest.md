@@ -1,0 +1,9 @@
+# CreateCaCertificateRequest
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ControlPlaneID`                                                                   | *string*                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
+| `CACertificate`                                                                    | [components.CACertificateInput](../../models/components/cacertificateinput.md)     | :heavy_check_mark:                                                                 | Description of the new CA Certificate for creation                                 |                                                                                    |
