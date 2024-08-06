@@ -1,8 +1,6 @@
 # CreateControlPlaneRequest
 
 The request schema for the create control plane request.
-+kubebuilder:object:generate=true
-
 
 ## Fields
 
