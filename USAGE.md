@@ -8,13 +8,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
-	"os"
 )
 
 func main() {
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithSecurity(components.Security{
-			PersonalAccessToken: sdkkonnectgo.String(os.Getenv("PERSONAL_ACCESS_TOKEN")),
+			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
 	request := operations.ListServerlessCloudGatewayRequest{

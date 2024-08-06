@@ -29,13 +29,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
 	"log"
-	"os"
 )
 
 func main() {
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithSecurity(components.Security{
-			PersonalAccessToken: sdkkonnectgo.String(os.Getenv("PERSONAL_ACCESS_TOKEN")),
+			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
 	request := operations.ListServerlessCloudGatewayRequest{
@@ -95,14 +94,13 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
-	"os"
 )
 
 func main() {
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithServerIndex(3),
 		sdkkonnectgo.WithSecurity(components.Security{
-			PersonalAccessToken: sdkkonnectgo.String(os.Getenv("PERSONAL_ACCESS_TOKEN")),
+			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
 	request := operations.ListServerlessCloudGatewayRequest{
@@ -135,14 +133,13 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
-	"os"
 )
 
 func main() {
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithServerURL("https://global.api.konghq.com"),
 		sdkkonnectgo.WithSecurity(components.Security{
-			PersonalAccessToken: sdkkonnectgo.String(os.Getenv("PERSONAL_ACCESS_TOKEN")),
+			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
 	request := operations.ListServerlessCloudGatewayRequest{
@@ -174,13 +171,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
-	"os"
 )
 
 func main() {
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithSecurity(components.Security{
-			PersonalAccessToken: sdkkonnectgo.String(os.Getenv("PERSONAL_ACCESS_TOKEN")),
+			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
 	request := operations.ListServerlessCloudGatewayRequest{
@@ -253,13 +249,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
-	"os"
 )
 
 func main() {
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithSecurity(components.Security{
-			PersonalAccessToken: sdkkonnectgo.String(os.Getenv("PERSONAL_ACCESS_TOKEN")),
+			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
 	request := operations.ListServerlessCloudGatewayRequest{
@@ -303,13 +298,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/retry"
 	"log"
 	"models/operations"
-	"os"
 )
 
 func main() {
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithSecurity(components.Security{
-			PersonalAccessToken: sdkkonnectgo.String(os.Getenv("PERSONAL_ACCESS_TOKEN")),
+			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
 	request := operations.ListServerlessCloudGatewayRequest{
@@ -350,7 +344,6 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"github.com/Kong/sdk-konnect-go/retry"
 	"log"
-	"os"
 )
 
 func main() {
@@ -367,7 +360,7 @@ func main() {
 				RetryConnectionErrors: false,
 			}),
 		sdkkonnectgo.WithSecurity(components.Security{
-			PersonalAccessToken: sdkkonnectgo.String(os.Getenv("PERSONAL_ACCESS_TOKEN")),
+			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
 	request := operations.ListServerlessCloudGatewayRequest{
