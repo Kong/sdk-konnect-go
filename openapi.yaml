@@ -6705,7 +6705,6 @@ components:
       title: CreateControlPlaneRequest
       description: |-
         The request schema for the create control plane request.
-        +kubebuilder:object:generate=true
       type: object
       additionalProperties: false
       properties:
@@ -8523,10 +8522,10 @@ components:
       type: object
     CreateServiceWithoutParents:
       description: |-
-        +kubebuilder:object:generate=true
+        The request schema for the create service request.
     CreateRouteWithoutParents:
       description: |2-
-        +kubebuilder:object:generate=true
+        The request schema for the create route request.
   securitySchemes:
     konnectAccessToken:
       type: http

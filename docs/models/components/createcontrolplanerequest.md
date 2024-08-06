@@ -2,6 +2,7 @@
 
 The request schema for the create control plane request.
 
+
 ## Fields
 
 | Field                                                                                                                                                                                                                             | Type                                                                                                                                                                                                                              | Required                                                                                                                                                                                                                          | Description                                                                                                                                                                                                                       | Example                                                                                                                                                                                                                           |
