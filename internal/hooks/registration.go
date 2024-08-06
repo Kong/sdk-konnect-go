@@ -15,8 +15,8 @@ import (
  */
 
 func initHooks(h *Hooks) {
-	h.registerBeforeRequestHook(&UserAgentPreRequestHook{})
-	h.registerAfterSuccessHook(&UserAgentPreRequestHook{})
+	//h.registerBeforeRequestHook(&UserAgentPreRequestHook{})
+	//h.registerAfterSuccessHook(&UserAgentPreRequestHook{})
 }
 
 var (
