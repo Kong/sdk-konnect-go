@@ -3,18 +3,18 @@ id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
   docChecksum: ec4d3cb9876f69aa90a3374c55d5aae7
   docVersion: 0.0.1
-  speakeasyVersion: 1.353.0
-  generationVersion: 2.386.0
-  releaseVersion: 0.5.4
-  configChecksum: bdea683995ba1f269c7edba7c4ae286f
+  speakeasyVersion: 1.356.0
+  generationVersion: 2.388.1
+  releaseVersion: 0.6.0
+  configChecksum: 5f429f51a658cebeb3992fec8c330332
 features:
   go:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.4
+    constsAndDefaults: 0.1.5
     core: 3.5.3
     deepObjectParams: 0.1.0
     defaultEnabledRetries: 0.2.0
-    envVarSecurityUsage: 0.2.2
+    envVarSecurityUsage: 0.3.0
     flattening: 2.81.1
     globalSecurity: 2.82.10
     globalSecurityCallbacks: 0.1.0
