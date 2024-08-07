@@ -32,9 +32,9 @@ func (o *Config) GetTelemetryEndpoint() *string {
 // ControlPlane - The control plane object contains information about a Kong control plane.
 type ControlPlane struct {
 	// The control plane ID.
-	ID *string `json:"id,omitempty"`
+	ID string `json:"id"`
 	// The name of the control plane.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// The description of the control plane in Konnect.
 	Description *string `json:"description,omitempty"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
@@ -43,11 +43,11 @@ type ControlPlane struct {
 	//
 	Labels map[string]string `json:"labels,omitempty"`
 	// CP configuration object for related access endpoints.
-	Config *Config `json:"config,omitempty"`
+	Config Config `json:"config"`
 	// An ISO-8604 timestamp representation of control plane creation date.
-	CreatedAt *time.Time `json:"created_at,omitempty"`
+	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8604 timestamp representation of control plane update date.
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	UpdatedAt time.Time `json:"updated_at"`
 }
 
 func (c ControlPlane) MarshalJSON() ([]byte, error) {
@@ -61,16 +61,16 @@ func (c *ControlPlane) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ControlPlane) GetID() *string {
+func (o *ControlPlane) GetID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ID
 }
 
-func (o *ControlPlane) GetName() *string {
+func (o *ControlPlane) GetName() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Name
 }
@@ -89,23 +89,23 @@ func (o *ControlPlane) GetLabels() map[string]string {
 	return o.Labels
 }
 
-func (o *ControlPlane) GetConfig() *Config {
+func (o *ControlPlane) GetConfig() Config {
 	if o == nil {
-		return nil
+		return Config{}
 	}
 	return o.Config
 }
 
-func (o *ControlPlane) GetCreatedAt() *time.Time {
+func (o *ControlPlane) GetCreatedAt() time.Time {
 	if o == nil {
-		return nil
+		return time.Time{}
 	}
 	return o.CreatedAt
 }
 
-func (o *ControlPlane) GetUpdatedAt() *time.Time {
+func (o *ControlPlane) GetUpdatedAt() time.Time {
 	if o == nil {
-		return nil
+		return time.Time{}
 	}
 	return o.UpdatedAt
 }

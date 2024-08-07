@@ -113,7 +113,8 @@ paths:
       operationId: list-control-planes
       summary: List Control Planes
       description: >-
-        Returns an array of control plane objects containing information about the Konnect Control Planes.
+        Returns an array of control plane objects containing information about
+        the Konnect Control Planes.
       responses:
         '200':
           $ref: '#/components/responses/ListControlPlanesResponse'
@@ -986,7 +987,8 @@ paths:
       operationId: upsert-basic-auth-with-consumer
       summary: Upsert a Basic-auth credential associated with a Consumer
       description: >-
-        Create or Update a Basic-auth credential associated with a Consumer using ID.
+        Create or Update a Basic-auth credential associated with a Consumer
+        using ID.
       requestBody:
         content:
           application/json:
@@ -1013,7 +1015,8 @@ paths:
       responses:
         '204':
           description: >-
-            Successfully deleted Basic-auth credential or the resource didn't exist
+            Successfully deleted Basic-auth credential or the resource didn't
+            exist
       tags:
         - Basic-auth credentials
       parameters:
@@ -1094,7 +1097,8 @@ paths:
       operationId: upsert-hmac-auth-with-consumer
       summary: Upsert a HMAC-auth credential associated with a Consumer
       description: >-
-        Create or Update a HMAC-auth credential associated with a Consumer using ID.
+        Create or Update a HMAC-auth credential associated with a Consumer using
+        ID.
       requestBody:
         content:
           application/json:
@@ -1121,7 +1125,8 @@ paths:
       responses:
         '204':
           description: >-
-            Successfully deleted HMAC-auth credential or the resource didn't exist
+            Successfully deleted HMAC-auth credential or the resource didn't
+            exist
       tags:
         - HMAC-auth credentials
       parameters:
@@ -1653,7 +1658,8 @@ paths:
       operationId: list-plugin-schemas
       summary: List custom plugin schemas associated with a control plane
       description: >-
-        Returns an array of custom plugins schemas associated with a control plane.
+        Returns an array of custom plugins schemas associated with a control
+        plane.
       responses:
         '200':
           $ref: '#/components/responses/list-plugin-schemas'
@@ -2719,7 +2725,8 @@ paths:
       operationId: upsert-target-with-upstream
       summary: Upsert a Target associated with an Upstream
       description: >-
-        Create or Update a Target associated with an Upstream using ID or target.
+        Create or Update a Target associated with an Upstream using ID or
+        target.
       requestBody:
         content:
           application/json:
@@ -2868,7 +2875,10 @@ paths:
       operationId: list-dp-client-certificates
       summary: List DP Client Certificates
       description: >-
-        Returns a list of pinned dataplane client certificates that are associated to this control plane. A pinned dataplane certificate allows dataplanes configured with the certificate and corresponding private key to establish connection with this control plane.
+        Returns a list of pinned dataplane client certificates that are
+        associated to this control plane. A pinned dataplane certificate allows
+        dataplanes configured with the certificate and corresponding private key
+        to establish connection with this control plane.
       responses:
         '200':
           $ref: '#/components/responses/ListDataPlaneCertificatesResponse'
@@ -2882,7 +2892,10 @@ paths:
       operationId: create-dataplane-certificate
       summary: Pin New DP Client Certificate
       description: >-
-        Pin a new DP Client Certificate to this control plane. A pinned dataplane certificate allows dataplanes configured with the certificate and corresponding private key to establish connection with this control plane.
+        Pin a new DP Client Certificate to this control plane. A pinned
+        dataplane certificate allows dataplanes configured with the certificate
+        and corresponding private key to establish connection with this control
+        plane.
       requestBody:
         $ref: '#/components/requestBodies/DataPlaneClientCertificateRequest'
       responses:
@@ -2899,7 +2912,10 @@ paths:
       operationId: get-dataplane-certificate
       summary: Fetch DP Client Certificate
       description: >-
-        Retrieve a pinned dataplane client certificate associated to this control plane. A pinned dataplane certificate allows dataplanes configured with the certificate and corresponding private key to establish connection with this control plane.
+        Retrieve a pinned dataplane client certificate associated to this
+        control plane. A pinned dataplane certificate allows dataplanes
+        configured with the certificate and corresponding private key to
+        establish connection with this control plane.
       tags:
         - DP Certificates
       responses:
@@ -2910,7 +2926,10 @@ paths:
       operationId: delete-dataplane-certificate
       summary: Delete DP Client Certificate
       description: >-
-        Remove a pinned dataplane client certificate associated to this control plane. Removing a pinned dataplane certificate would invalidate any dataplanes currently connected to this control plane using this certificate.
+        Remove a pinned dataplane client certificate associated to this control
+        plane. Removing a pinned dataplane certificate would invalidate any
+        dataplanes currently connected to this control plane using this
+        certificate.
       responses:
         '204':
           description: No Content
@@ -2923,7 +2942,10 @@ paths:
       operationId: get-expected-config-hash
       summary: Fetch Expected Config Hash
       description: >-
-        Retrieve the expected config hash for this control plane. The expected config hash can be used to verify if the config hash of a data plane node is up to date with the control plane. The config hash will be the same if they are in sync.
+        Retrieve the expected config hash for this control plane. The expected
+        config hash can be used to verify if the config hash of a data plane
+        node is up to date with the control plane. The config hash will be the
+        same if they are in sync.
       tags:
         - DP Nodes
       responses:
@@ -2936,7 +2958,9 @@ paths:
       operationId: list-dataplane-nodes
       summary: List Data Plane Node Records
       description: >-
-        Returns a list of data plane node records that are associated to this control plane. A data plane node record contains metadata information for the data plane running Kong Gateway.
+        Returns a list of data plane node records that are associated to this
+        control plane. A data plane node record contains metadata information
+        for the data plane running Kong Gateway.
       responses:
         '200':
           $ref: '#/components/responses/list-nodes'
@@ -2957,7 +2981,9 @@ paths:
       operationId: get-nodes-node_id
       summary: Fetch Data Plane Node Record
       description: >-
-        Retrieve a specific data plane node record associated to this control plane. A data plane node record contains all the metadata information of the Kong Gateway dataplane.
+        Retrieve a specific data plane node record associated to this control
+        plane. A data plane node record contains all the metadata information of
+        the Kong Gateway dataplane.
       responses:
         '200':
           $ref: '#/components/responses/get-node'
@@ -2970,7 +2996,9 @@ paths:
       operationId: delete-nodes-node_id
       summary: Delete Data Plane Node Record
       description: >-
-        Remove a specific data plane node record associated to this control plane. Deleting this record does not prevent the data plane node from re-connecting to the control plane.
+        Remove a specific data plane node record associated to this control
+        plane. Deleting this record does not prevent the data plane node from
+        re-connecting to the control plane.
       responses:
         '204':
           description: No Content
@@ -2983,7 +3011,11 @@ paths:
       operationId: get-nodes-eol
       summary: List End-of-Life Data Plane Node Records
       description: >-
-        Returns a list of records of data plane nodes, whose versions are approaching End of Full Support/End of Life, that are associated with this control plane. Each record contains a data plane node's id, version, and corresponding resolution message to upgrade to the closest Long Term Support version.
+        Returns a list of records of data plane nodes, whose versions are
+        approaching End of Full Support/End of Life, that are associated with
+        this control plane. Each record contains a data plane node's id,
+        version, and corresponding resolution message to upgrade to the closest
+        Long Term Support version.
       responses:
         '200':
           $ref: '#/components/responses/list-nodes-eol'
@@ -3111,7 +3143,8 @@ paths:
       operationId: get-control-planes-id-group-memberships
       summary: List Control Plane Group Memberships
       description: >-
-        Returns an array of control planes that are a member of this control plane group.
+        Returns an array of control planes that are a member of this control
+        plane group.
       tags:
         - Control Plane Groups
       responses:
@@ -3173,7 +3206,8 @@ paths:
       operationId: post-control-planes-id-group-memberships-remove
       summary: Remove Control Plane Group Members
       description: >-
-        Removes one or more control planes from the members of a control plane group.
+        Removes one or more control planes from the members of a control plane
+        group.
       requestBody:
         $ref: '#/components/requestBodies/GroupMembershipRemove'
       tags:
@@ -3203,7 +3237,8 @@ paths:
       operationId: get-control-planes-id-group-status
       summary: Get Control Plane Group Status
       description: >-
-        Returns the status of a control plane group, including existing conflicts.
+        Returns the status of a control plane group, including existing
+        conflicts.
       tags:
         - Control Plane Groups
       responses:
@@ -3252,7 +3287,8 @@ paths:
       operationId: get-authentication-settings
       summary: Get Auth Settings
       description: >-
-        Returns authentication configuration, which determines how users can log in and how they are assigned to teams.
+        Returns authentication configuration, which determines how users can log
+        in and how they are assigned to teams.
       tags:
         - Auth Settings
       responses:
@@ -3326,7 +3362,8 @@ paths:
       operationId: get-team-group-mappings
       summary: Fetch Team Group Mappings
       description: >-
-        Retrieves the mappings between Konnect Teams and Identity Provider Groups.
+        Retrieves the mappings between Konnect Teams and Identity Provider
+        Groups.
 
         Returns a 400 error if an Identity Provider has not yet been configured.
       responses:
@@ -3349,14 +3386,18 @@ paths:
       operationId: patch-team-group-mappings
       summary: Patch Mappings by Team ID
       description: >-
-        Allows partial updates to the mappings between Konnect Teams and Identity Provider Groups.
+        Allows partial updates to the mappings between Konnect Teams and
+        Identity Provider Groups.
 
-        The request body must be keyed on team ID. For a given team ID, the given group list is a
+        The request body must be keyed on team ID. For a given team ID, the
+        given group list is a
 
-        complete replacement. To remove all mappings for a given team, provide an empty group list.
+        complete replacement. To remove all mappings for a given team, provide
+        an empty group list.
 
 
-        Returns a 400 error if an Identity Provider has not yet been configured, or if a team ID in
+        Returns a 400 error if an Identity Provider has not yet been configured,
+        or if a team ID in
 
         the request body is not found or is not a UUID.
       requestBody:
@@ -3423,7 +3464,10 @@ paths:
       operationId: invite-user
       summary: Invite User
       description: >-
-        Sends an invitation email to invite a user to the Konnect organization. The email contains a link with a one time token to accept the invitation. Upon accepting the invitation, the user is directed to https://cloud.konghq.com/login to complete registration.
+        Sends an invitation email to invite a user to the Konnect organization.
+        The email contains a link with a one time token to accept the
+        invitation. Upon accepting the invitation, the user is directed to
+        https://cloud.konghq.com/login to complete registration.
       requestBody:
         $ref: '#/components/requestBodies/InviteUser'
       responses:
@@ -3444,7 +3488,8 @@ paths:
       operationId: get-impersonation-settings
       summary: Get Impersonation Settings
       description: >-
-        Returns Impersonation Settings, which determines if user impersonation is allowed for an organization.
+        Returns Impersonation Settings, which determines if user impersonation
+        is allowed for an organization.
       tags:
         - Impersonation Settings
       responses:
@@ -3483,7 +3528,8 @@ paths:
       operationId: get-organizations-me
       summary: Retrieve My Organization
       description: >-
-        Returns the organization of the user identified in the token of the request.
+        Returns the organization of the user identified in the token of the
+        request.
       tags:
         - Me
       responses:
@@ -3514,7 +3560,8 @@ paths:
       operationId: get-system-accounts
       summary: List System Accounts
       description: >-
-        Returns an array of system accounts (SA) in the organization. Returns 400 if any filter parameters are invalid.
+        Returns an array of system accounts (SA) in the organization. Returns
+        400 if any filter parameters are invalid.
       tags:
         - System Accounts
       responses:
@@ -3550,7 +3597,8 @@ paths:
       operationId: post-system-accounts
       summary: Create System Account
       description: >-
-        Creates a system account. Returns a 409 if a system account with the same name already exists.
+        Creates a system account. Returns a 409 if a system account with the
+        same name already exists.
       requestBody:
         $ref: '#/components/requestBodies/CreateSystemAccount'
       tags:
@@ -3580,7 +3628,8 @@ paths:
       operationId: get-system-accounts-id
       summary: Fetch System Account
       description: >-
-        Returns the system account (SA) for the SA ID specified as a path parameter.
+        Returns the system account (SA) for the SA ID specified as a path
+        parameter.
       tags:
         - System Accounts
       responses:
@@ -3599,7 +3648,8 @@ paths:
       operationId: patch-system-accounts-id
       summary: Update System Account
       description: >-
-        Updates the specified system account. Returns a 409 if the updated name is the same as another system account in the organization.
+        Updates the specified system account. Returns a 409 if the updated name
+        is the same as another system account in the organization.
       requestBody:
         $ref: '#/components/requestBodies/UpdateSystemAccount'
       responses:
@@ -3622,7 +3672,8 @@ paths:
       operationId: delete-system-accounts-id
       summary: Delete System Account
       description: >-
-        Deletes the specified system account. Returns 404 if the requested account was not found.
+        Deletes the specified system account. Returns 404 if the requested
+        account was not found.
       responses:
         '204':
           description: No Content
@@ -3648,7 +3699,8 @@ paths:
       operationId: get-system-account-id-access-tokens
       summary: List System Account Access Tokens
       description: >-
-        Returns the access tokens for the specified system account. Returns 400 if any filter parameters are invalid.
+        Returns the access tokens for the specified system account. Returns 400
+        if any filter parameters are invalid.
       tags:
         - System Accounts - Access Tokens
       responses:
@@ -3682,7 +3734,10 @@ paths:
       operationId: post-system-accounts-id-access-tokens
       summary: Create System Account Access Token
       description: >-
-        Creates an access token for the specified system account (SA). The access token can be used for authenticating API and CLI requests. The token will only be displayed once on creation. Returns a 409 if the system account already has a token with the same name.
+        Creates an access token for the specified system account (SA). The
+        access token can be used for authenticating API and CLI requests. The
+        token will only be displayed once on creation. Returns a 409 if the
+        system account already has a token with the same name.
       requestBody:
         $ref: '#/components/requestBodies/CreateSystemAccountAccessToken'
       responses:
@@ -3720,7 +3775,8 @@ paths:
       operationId: get-system-accounts-id-access-tokens-id
       summary: Fetch System Account Access Token
       description: >-
-        Returns the system account (SA) access token for the SA Access Token ID specified as a path parameter.
+        Returns the system account (SA) access token for the SA Access Token ID
+        specified as a path parameter.
       responses:
         '200':
           $ref: '#/components/responses/SystemAccountAccessTokenSingle'
@@ -3740,7 +3796,8 @@ paths:
       operationId: patch-system-accounts-id-access-tokens-id
       summary: Update System Account Access Token
       description: >-
-        Updates the specified access token. Returns a 409 if the updated name is the same as another token belonging to the specified system user.
+        Updates the specified access token. Returns a 409 if the updated name is
+        the same as another token belonging to the specified system user.
       requestBody:
         $ref: '#/components/requestBodies/UpdateSystemAccountAccessToken'
       responses:
@@ -3788,7 +3845,8 @@ paths:
       operationId: get-system-accounts-accountId-assigned-roles
       summary: Fetch Assigned Roles for System Account
       description: >-
-        Lists the roles belonging to a system account. Returns 400 if any filter parameters are invalid.
+        Lists the roles belonging to a system account. Returns 400 if any filter
+        parameters are invalid.
       responses:
         '200':
           $ref: '#/components/responses/AssignedRoleCollection'
@@ -3822,7 +3880,8 @@ paths:
       operationId: post-system-accounts-accountId-assigned-roles
       summary: Create Assigned Role for System Account
       description: >-
-        Assigns a role to a system account. Returns 409 if role is already assigned.
+        Assigns a role to a system account. Returns 409 if role is already
+        assigned.
       requestBody:
         $ref: '#/components/requestBodies/AssignRole'
       responses:
@@ -3860,7 +3919,8 @@ paths:
       operationId: delete-system-accounts-accountId-assigned-roles-roleId
       summary: Delete Assigned Role from System Account
       description: >-
-        Removes an assigned role from a system account. Returns 404 if the system account or assigned role were not found.
+        Removes an assigned role from a system account. Returns 404 if the
+        system account or assigned role were not found.
       responses:
         '204':
           description: No Content
@@ -3918,7 +3978,8 @@ paths:
       operationId: list-teams
       summary: List Teams
       description: >-
-        Returns an array of team objects containing information about the Konnect Teams.
+        Returns an array of team objects containing information about the
+        Konnect Teams.
       responses:
         '200':
           $ref: '#/components/responses/TeamCollection'
@@ -4036,7 +4097,8 @@ paths:
       operationId: list-team-roles
       summary: List Team Roles
       description: >-
-        Lists the roles belonging to a team. Returns 400 if any filter parameters are invalid.
+        Lists the roles belonging to a team. Returns 400 if any filter
+        parameters are invalid.
       tags:
         - Roles
       responses:
@@ -4113,7 +4175,8 @@ paths:
       operationId: teams-remove-role
       summary: Remove Team Role
       description: >-
-        Removes an assigned role from a team. Returns 404 if the requested team or assigned role were not found.
+        Removes an assigned role from a team. Returns 404 if the requested team
+        or assigned role were not found.
       responses:
         '204':
           description: No Content
@@ -4141,7 +4204,8 @@ paths:
       operationId: get-teams-teamId-system-accounts
       summary: List System Accounts on a Team
       description: >-
-        Returns a paginated list of system accounts that belong to the team specified in the path parameter.
+        Returns a paginated list of system accounts that belong to the team
+        specified in the path parameter.
       responses:
         '200':
           $ref: '#/components/responses/SystemAccountCollection'
@@ -4173,7 +4237,8 @@ paths:
       operationId: post-teams-teamId-system-accounts
       summary: Add System Account to a Team
       description: >-
-        Adds a system account to a team. Returns a 409 if the system account is already a member of the team.
+        Adds a system account to a team. Returns a 409 if the system account is
+        already a member of the team.
       requestBody:
         $ref: '#/components/requestBodies/AddSystemAccountToTeam'
       responses:
@@ -4210,7 +4275,8 @@ paths:
       operationId: delete-teams-teamId-system-accounts-accountId
       summary: Remove System Account From Team
       description: >-
-        Removes a system account from a team. Returns 404 if the team or system account were not found.
+        Removes a system account from a team. Returns 404 if the team or system
+        account were not found.
       responses:
         '204':
           description: No Content
@@ -4238,7 +4304,8 @@ paths:
       operationId: list-team-users
       summary: List Team Users
       description: >-
-        Returns a paginated list of users that belong to the team specified in the path parameter.
+        Returns a paginated list of users that belong to the team specified in
+        the path parameter.
       responses:
         '200':
           $ref: '#/components/responses/UserCollection'
@@ -4312,7 +4379,8 @@ paths:
       description: >-
         Removes a user from a team.
 
-        If the user was removed, returns a 204 empty response. Returns 404 if the user or team were not found.
+        If the user was removed, returns a 204 empty response. Returns 404 if
+        the user or team were not found.
       responses:
         '204':
           description: No Content
@@ -4405,7 +4473,8 @@ paths:
       operationId: delete-user
       summary: Delete User
       description: >-
-        Deletes an individual user. Returns 404 if the requested user was not found.
+        Deletes an individual user. Returns 404 if the requested user was not
+        found.
       responses:
         '204':
           description: No Content
@@ -4429,7 +4498,8 @@ paths:
       operationId: list-user-roles
       summary: List User Roles
       description: >-
-        Lists the roles assigned to a user.  Returns 400 if any filter parameters are invalid.
+        Lists the roles assigned to a user.  Returns 400 if any filter
+        parameters are invalid.
       tags:
         - Roles
       responses:
@@ -4499,7 +4569,8 @@ paths:
       operationId: users-remove-role
       summary: Remove Role
       description: >-
-        Removes an assigned role from a user. Returns 404 if the requested user or assigned role were not found.
+        Removes an assigned role from a user. Returns 404 if the requested user
+        or assigned role were not found.
       responses:
         '204':
           description: No Content
@@ -4616,10 +4687,12 @@ components:
         format: uuid
         example: 9524ec7d-36d9-465d-a8c5-83a3c9390458
       description: >-
-        The UUID of your control plane. This variable is available in the Konnect manager
+        The UUID of your control plane. This variable is available in the
+        Konnect manager
     ControlPlaneId:
       description: >-
-        The UUID of your control plane. This variable is available in the Konnect manager.
+        The UUID of your control plane. This variable is available in the
+        Konnect manager.
       example: 9524ec7d-36d9-465d-a8c5-83a3c9390458
       in: path
       name: controlPlaneId
@@ -4646,7 +4719,8 @@ components:
     FilterByClusterTypeEquality:
       name: filter[cluster_type][eq]
       description: >-
-        Filter by direct equality comparison of the cluster_type property with a supplied value.
+        Filter by direct equality comparison of the cluster_type property with a
+        supplied value.
       in: query
       required: false
       schema:
@@ -4655,7 +4729,8 @@ components:
     FilterByClusterTypeEqualityShort:
       name: filter[cluster_type]
       description: >-
-        Filter by direct equality comparison (short-hand) of the cluster_type property with a supplied value.
+        Filter by direct equality comparison (short-hand) of the cluster_type
+        property with a supplied value.
       in: query
       required: false
       schema:
@@ -4664,7 +4739,8 @@ components:
     FilterByClusterTypeNotEquals:
       name: filter[cluster_type][neq]
       description: >-
-        Filter by non-equality comparison of the cluster_type property with a supplied value.
+        Filter by non-equality comparison of the cluster_type property with a
+        supplied value.
       in: query
       required: false
       schema:
@@ -4673,7 +4749,8 @@ components:
     FilterByIdEquality:
       name: filter[id][eq]
       description: >-
-        Filter by direct equality comparison of the id property with a supplied value.
+        Filter by direct equality comparison of the id property with a supplied
+        value.
       in: query
       required: false
       schema:
@@ -4682,7 +4759,8 @@ components:
     FilterByIdEqualityShort:
       name: filter[id]
       description: >-
-        Filter by direct equality comparison (short-hand) of the id property with a supplied value.
+        Filter by direct equality comparison (short-hand) of the id property
+        with a supplied value.
       in: query
       required: false
       schema:
@@ -4691,7 +4769,8 @@ components:
     FilterByIdsEquality:
       name: filter[id][oeq]
       description: >-
-        Filter by direct equality comparison of id property with multiple supplied values.
+        Filter by direct equality comparison of id property with multiple
+        supplied values.
       in: query
       required: false
       schema:
@@ -4708,7 +4787,8 @@ components:
     FilterByNameContains:
       name: filter[name][contains]
       description: >-
-        Filter by contains comparison of the name property with a supplied substring.
+        Filter by contains comparison of the name property with a supplied
+        substring.
       in: query
       required: false
       schema:
@@ -4717,7 +4797,8 @@ components:
     FilterByNameEquality:
       name: filter[name][eq]
       description: >-
-        Filter by direct equality comparison of the name property with a supplied value.
+        Filter by direct equality comparison of the name property with a
+        supplied value.
       in: query
       required: false
       schema:
@@ -4726,7 +4807,8 @@ components:
     FilterByNameEqualityShort:
       name: filter[name]
       description: >-
-        Filter by direct equality comparison (short-hand) of the name property with a supplied value.
+        Filter by direct equality comparison (short-hand) of the name property
+        with a supplied value.
       in: query
       required: false
       schema:
@@ -4735,7 +4817,8 @@ components:
     FilterByNameNotEquals:
       name: filter[name][neq]
       description: >-
-        Filter by non-equality comparison of the name property with a supplied value.
+        Filter by non-equality comparison of the name property with a supplied
+        value.
       in: query
       required: false
       schema:
@@ -4792,7 +4875,8 @@ components:
     PageAfter:
       name: page[after]
       description: >-
-        Request the next page of data, starting with the item after this parameter.
+        Request the next page of data, starting with the item after this
+        parameter.
       required: false
       in: query
       allowEmptyValue: true
@@ -4811,7 +4895,8 @@ components:
     PageSize:
       name: page[size]
       description: >-
-        The maximum number of items to include per page. The last page of a collection may include fewer items.
+        The maximum number of items to include per page. The last page of a
+        collection may include fewer items.
       required: false
       in: query
       allowEmptyValue: true
@@ -4829,7 +4914,8 @@ components:
         type: integer
     pagination-tags-filter:
       description: >-
-        A list of tags to filter the list of resources on. Multiple tags can be concatenated using ',' to mean AND or using '/' to mean OR.
+        A list of tags to filter the list of resources on. Multiple tags can be
+        concatenated using ',' to mean AND or using '/' to mean OR.
       example: tag1,tag2
       in: query
       name: tags
@@ -4837,7 +4923,9 @@ components:
         type: string
     PaginationOffset:
       description: >-
-        Offset from which to return the next set of resources. Use the value of the 'offset' field from the response of a list operation as input here to paginate through all the resources
+        Offset from which to return the next set of resources. Use the value of
+        the 'offset' field from the response of a list operation as input here
+        to paginate through all the resources
       in: query
       name: offset
       schema:
@@ -4853,7 +4941,8 @@ components:
         type: integer
     PaginationTagsFilter:
       description: >-
-        A list of tags to filter the list of resources on. Multiple tags can be concatenated using ',' to mean AND or using '/' to mean OR.
+        A list of tags to filter the list of resources on. Multiple tags can be
+        concatenated using ',' to mean AND or using '/' to mean OR.
       example: tag1,tag2
       in: query
       name: tags
@@ -5037,7 +5126,8 @@ components:
             $ref: '#/components/schemas/ForbiddenError'
     get-expected-config-hash:
       description: >-
-        Response body for retrieving the expected config hash of the control plane.
+        Response body for retrieving the expected config hash of the control
+        plane.
       content:
         application/json:
           schema:
@@ -5175,7 +5265,8 @@ components:
               detail:
                 type: string
                 example: >-
-                  Could not propagate control plane changes to control plane cluster service.
+                  Could not propagate control plane changes to control plane
+                  cluster service.
                 description: Details about the error.
             required:
               - status
@@ -5260,21 +5351,25 @@ components:
                       type: string
                       description: The custom plugin schema; `jq -Rs '.' schema.lua`.
                       example: >-
-                        return { name = \"myplugin\", fields = { { config = { type = \"record\", fields = { } } } } }
+                        return { name = \"myplugin\", fields = { { config = {
+                        type = \"record\", fields = { } } } } }
                     name:
                       type: string
                       description: >-
-                        The custom plugin name determined by the custom plugin schema.
+                        The custom plugin name determined by the custom plugin
+                        schema.
                       example: myplugin
                     created_at:
                       type: integer
                       description: >-
-                        An ISO-8604 timestamp representation of custom plugin schema creation date.
+                        An ISO-8604 timestamp representation of custom plugin
+                        schema creation date.
                       example: 1422386534
                     updated_at:
                       type: integer
                       description: >-
-                        An ISO-8604 timestamp representation of custom plugin schema update date.
+                        An ISO-8604 timestamp representation of custom plugin
+                        schema update date.
                       example: 1422412345
               page:
                 type: object
@@ -5317,7 +5412,8 @@ components:
                     type: integer
     ListGroupMemberships:
       description: >-
-        A paginated list response for a collection of control plane group memberships.
+        A paginated list response for a collection of control plane group
+        memberships.
       content:
         application/json:
           schema:
@@ -5328,7 +5424,8 @@ components:
               data:
                 type: array
                 description: >-
-                  Array of control planes summary who are a child to this control plane group.
+                  Array of control planes summary who are a child to this
+                  control plane group.
                 items:
                   $ref: '#/components/schemas/ControlPlaneSummary'
     ListServerlessCloudGatewaysResponse:
@@ -5375,7 +5472,8 @@ components:
               login_path:
                 type: string
                 description: >-
-                  Path to organization-specific login when single sign on (SSO) is enabled. Blank otherwise.
+                  Path to organization-specific login when single sign on (SSO)
+                  is enabled. Blank otherwise.
               created_at:
                 type: string
                 description: Date the organization was created.
@@ -5395,7 +5493,8 @@ components:
               retention_period_days:
                 type: integer
                 description: >-
-                  The number of days an organization spends inactive before being deleted.
+                  The number of days an organization spends inactive before
+                  being deleted.
     NotFound:
       description: Not Found
       content:
@@ -5417,21 +5516,25 @@ components:
                     type: string
                     description: The custom plugin schema; `jq -Rs '.' schema.lua`.
                     example: >-
-                      return { name = \"myplugin\", fields = { { config = { type = \"record\", fields = { } } } } }
+                      return { name = \"myplugin\", fields = { { config = { type
+                      = \"record\", fields = { } } } } }
                   name:
                     type: string
                     description: >-
-                      The custom plugin name determined by the custom plugin schema.
+                      The custom plugin name determined by the custom plugin
+                      schema.
                     example: myplugin
                   created_at:
                     type: integer
                     description: >-
-                      An ISO-8604 timestamp representation of custom plugin schema creation date.
+                      An ISO-8604 timestamp representation of custom plugin
+                      schema creation date.
                     example: 1422386534
                   updated_at:
                     type: integer
                     description: >-
-                      An ISO-8604 timestamp representation of custom plugin schema update date.
+                      An ISO-8604 timestamp representation of custom plugin
+                      schema update date.
                     example: 1422412345
     PreconditionFailed:
       description: Precondition Failed
@@ -5531,10 +5634,12 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants full write access to all entities within a control plane.
+                              This role grants full write access to all entities
+                              within a control plane.
                             enum:
                               - >-
-                                This role grants full write access to all entities within a control plane.
+                                This role grants full write access to all
+                                entities within a control plane.
                       certificate_admin:
                         type: object
                         additionalProperties: false
@@ -5549,10 +5654,12 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants full write access to administer certificates.
+                              This role grants full write access to administer
+                              certificates.
                             enum:
                               - >-
-                                This role grants full write access to administer certificates.
+                                This role grants full write access to administer
+                                certificates.
                       consumer_admin:
                         type: object
                         additionalProperties: false
@@ -5567,10 +5674,12 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants full write access to administer consumers.
+                              This role grants full write access to administer
+                              consumers.
                             enum:
                               - >-
-                                This role grants full write access to administer consumers.
+                                This role grants full write access to administer
+                                consumers.
                       creator:
                         type: object
                         additionalProperties: false
@@ -5585,10 +5694,14 @@ components:
                           description:
                             type: string
                             example: >-
-                              Creates a new Control Plane in an organization. The creator becomes the owner of the Control Plane they create.
+                              Creates a new Control Plane in an organization.
+                              The creator becomes the owner of the Control Plane
+                              they create.
                             enum:
                               - >-
-                                Creates a new Control Plane in an organization. The creator becomes the owner of the Control Plane they create.
+                                Creates a new Control Plane in an organization.
+                                The creator becomes the owner of the Control
+                                Plane they create.
                       deployer:
                         type: object
                         additionalProperties: false
@@ -5603,10 +5716,14 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants full write access to administer services, routes and plugins necessary to deploy services in Service Hub.
+                              This role grants full write access to administer
+                              services, routes and plugins necessary to deploy
+                              services in Service Hub.
                             enum:
                               - >-
-                                This role grants full write access to administer services, routes and plugins necessary to deploy services in Service Hub.
+                                This role grants full write access to administer
+                                services, routes and plugins necessary to deploy
+                                services in Service Hub.
                       gateway_service_admin:
                         type: object
                         additionalProperties: false
@@ -5621,10 +5738,12 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants full write access to administer gateway services.
+                              This role grants full write access to administer
+                              gateway services.
                             enum:
                               - >-
-                                This role grants full write access to administer gateway services.
+                                This role grants full write access to administer
+                                gateway services.
                       plugin_admin:
                         type: object
                         additionalProperties: false
@@ -5639,10 +5758,12 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants full write access to administer plugins.
+                              This role grants full write access to administer
+                              plugins.
                             enum:
                               - >-
-                                This role grants full write access to administer plugins.
+                                This role grants full write access to administer
+                                plugins.
                       route_admin:
                         type: object
                         additionalProperties: false
@@ -5657,10 +5778,12 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants full write access to administer routes.
+                              This role grants full write access to administer
+                              routes.
                             enum:
                               - >-
-                                This role grants full write access to administer routes.
+                                This role grants full write access to administer
+                                routes.
                       sni_admin:
                         type: object
                         additionalProperties: false
@@ -5675,10 +5798,12 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants full write access to administer SNIs.
+                              This role grants full write access to administer
+                              SNIs.
                             enum:
                               - >-
-                                This role grants full write access to administer SNIs.
+                                This role grants full write access to administer
+                                SNIs.
                       upstream_admin:
                         type: object
                         additionalProperties: false
@@ -5693,10 +5818,12 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants full write access to administer upstreams.
+                              This role grants full write access to administer
+                              upstreams.
                             enum:
                               - >-
-                                This role grants full write access to administer upstreams.
+                                This role grants full write access to administer
+                                upstreams.
                       viewer:
                         type: object
                         additionalProperties: false
@@ -5711,10 +5838,12 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants read only access to all entities within a control plane.
+                              This role grants read only access to all entities
+                              within a control plane.
                             enum:
                               - >-
-                                This role grants read only access to all entities within a control plane.
+                                This role grants read only access to all
+                                entities within a control plane.
               api_products:
                 type: object
                 additionalProperties: false
@@ -5743,10 +5872,12 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants full write access to an API product and its versions.
+                              This role grants full write access to an API
+                              product and its versions.
                             enum:
                               - >-
-                                This role grants full write access to an API product and its versions.
+                                This role grants full write access to an API
+                                product and its versions.
                       application_registration:
                         type: object
                         additionalProperties: false
@@ -5761,10 +5892,13 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants permission to enable and disable application registration on an API product.
+                              This role grants permission to enable and disable
+                              application registration on an API product.
                             enum:
                               - >-
-                                This role grants permission to enable and disable application registration on an API product.
+                                This role grants permission to enable and
+                                disable application registration on an API
+                                product.
                       creator:
                         type: object
                         additionalProperties: false
@@ -5779,10 +5913,14 @@ components:
                           description:
                             type: string
                             example: >-
-                              This access is required to create API products. This access is not for creating sub-entities such as versions, API specs, etc.
+                              This access is required to create API products.
+                              This access is not for creating sub-entities such
+                              as versions, API specs, etc.
                             enum:
                               - >-
-                                This access is required to create API products. This access is not for creating sub-entities such as versions, API specs, etc.
+                                This access is required to create API products.
+                                This access is not for creating sub-entities
+                                such as versions, API specs, etc.
                       deployer:
                         type: object
                         additionalProperties: false
@@ -5797,10 +5935,12 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants permission to deploy and remove an API product from a control plane.
+                              This role grants permission to deploy and remove
+                              an API product from a control plane.
                             enum:
                               - >-
-                                This role grants permission to deploy and remove an API product from a control plane.
+                                This role grants permission to deploy and remove
+                                an API product from a control plane.
                       maintainer:
                         type: object
                         additionalProperties: false
@@ -5815,10 +5955,12 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants all write permission to manage an API product and to administer plugins.
+                              This role grants all write permission to manage an
+                              API product and to administer plugins.
                             enum:
                               - >-
-                                This role grants all write permission to manage an API product and to administer plugins.
+                                This role grants all write permission to manage
+                                an API product and to administer plugins.
                       plugins_admin:
                         type: object
                         additionalProperties: false
@@ -5833,10 +5975,12 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants full write permission to administer plugins.
+                              This role grants full write permission to
+                              administer plugins.
                             enum:
                               - >-
-                                This role grants full write permission to administer plugins.
+                                This role grants full write permission to
+                                administer plugins.
                       publisher:
                         type: object
                         additionalProperties: false
@@ -5851,10 +5995,12 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants permission to publish an API product to one or more portals.
+                              This role grants permission to publish an API
+                              product to one or more portals.
                             enum:
                               - >-
-                                This role grants permission to publish an API product to one or more portals.
+                                This role grants permission to publish an API
+                                product to one or more portals.
                       viewer:
                         type: object
                         additionalProperties: false
@@ -5869,10 +6015,12 @@ components:
                           description:
                             type: string
                             example: >-
-                              Viewer has read-only access to an API product and its sub-entities.
+                              Viewer has read-only access to an API product and
+                              its sub-entities.
                             enum:
                               - >-
-                                Viewer has read-only access to an API product and its sub-entities.
+                                Viewer has read-only access to an API product
+                                and its sub-entities.
               audit_logs:
                 type: object
                 additionalProperties: false
@@ -5901,10 +6049,12 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants full write access to the Audit log configuration.
+                              This role grants full write access to the Audit
+                              log configuration.
                             enum:
                               - >-
-                                This role grants full write access to the Audit log configuration.
+                                This role grants full write access to the Audit
+                                log configuration.
               identity:
                 type: object
                 additionalProperties: false
@@ -5933,10 +6083,12 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants full write access to the Identity configuration.
+                              This role grants full write access to the Identity
+                              configuration.
                             enum:
                               - >-
-                                This role grants full write access to the Identity configuration.
+                                This role grants full write access to the
+                                Identity configuration.
               mesh_control_planes:
                 type: object
                 additionalProperties: false
@@ -5965,10 +6117,12 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants full write access to the related to Mesh control planes.
+                              This role grants full write access to the related
+                              to Mesh control planes.
                             enum:
                               - >-
-                                This role grants full write access to the related to Mesh control planes.
+                                This role grants full write access to the
+                                related to Mesh control planes.
                       creator:
                         type: object
                         additionalProperties: false
@@ -5983,10 +6137,12 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants access to create new Mesh control planes.
+                              This role grants access to create new Mesh control
+                              planes.
                             enum:
                               - >-
-                                This role grants access to create new Mesh control planes.
+                                This role grants access to create new Mesh
+                                control planes.
                       viewer:
                         type: object
                         additionalProperties: false
@@ -6001,10 +6157,12 @@ components:
                           description:
                             type: string
                             example: >-
-                              This role grants access to read-only permissions to Mesh control planes.
+                              This role grants access to read-only permissions
+                              to Mesh control planes.
                             enum:
                               - >-
-                                This role grants access to read-only permissions to Mesh control planes.
+                                This role grants access to read-only permissions
+                                to Mesh control planes.
     ServiceUnavailable:
       description: Service Unavailable
       content:
@@ -6031,7 +6189,8 @@ components:
               detail:
                 type: string
                 example: >-
-                  Could not retrieve permissions to check resource accessibility.
+                  Could not retrieve permissions to check resource
+                  accessibility.
                 description: Details about the error.
             required:
               - status
@@ -6039,7 +6198,8 @@ components:
               - instance
     SystemAccountAccessTokenCollection:
       description: >-
-        A paginated list response for a collection of system accounts access tokens.
+        A paginated list response for a collection of system accounts access
+        tokens.
       content:
         application/json:
           schema:
@@ -6054,7 +6214,8 @@ components:
                   $ref: '#/components/schemas/SystemAccountAccessToken'
     SystemAccountAccessTokenCreated:
       description: >-
-        A response including a single system account access token with the token.
+        A response including a single system account access token with the
+        token.
       content:
         application/json:
           schema:
@@ -6085,7 +6246,8 @@ components:
               updated_at:
                 type: string
                 description: >-
-                  Timestamp of when the system account access token was last updated.
+                  Timestamp of when the system account access token was last
+                  updated.
                 format: date-time
                 readOnly: true
               expires_at:
@@ -6096,7 +6258,8 @@ components:
               last_used_at:
                 type: string
                 description: >-
-                  Timestamp of when the system account access token was last used.
+                  Timestamp of when the system account access token was last
+                  used.
                 format: date-time
                 readOnly: true
               token:
@@ -6373,8 +6536,8 @@ components:
           description: >
             The HTTP status code of the error. Useful when passing the response
 
-            body to child properties in a frontend UI. Must be returned as an integer.
-
+            body to child properties in a frontend UI. Must be returned as an
+            integer.
           readOnly: true
         title:
           type: string
@@ -6397,14 +6560,16 @@ components:
         detail:
           type: string
           description: >
-            A human readable explanation specific to this occurence of the problem.
+            A human readable explanation specific to this occurence of the
+            problem.
 
-            This field may contain request/entity data to help the user understand
+            This field may contain request/entity data to help the user
+            understand
 
-            what went wrong. Enclose variable values in square brackets. Should be
+            what went wrong. Enclose variable values in square brackets. Should
+            be
 
             provided as "Sentence case" for direct use in the UI.
-
           readOnly: true
     BasicAuth:
       allOf:
@@ -6448,7 +6613,9 @@ components:
           type: string
         cert_digest:
           description: >-
-            SHA256 hex digest of the public certificate. This field is read-only and it cannot be set by the caller, the value is automatically computed.
+            SHA256 hex digest of the public certificate. This field is read-only
+            and it cannot be set by the caller, the value is automatically
+            computed.
           type: string
         created_at:
           description: Unix epoch when the resource was created.
@@ -6459,7 +6626,8 @@ components:
           type: string
         tags:
           description: >-
-            An optional set of strings associated with the Certificate for grouping and filtering.
+            An optional set of strings associated with the Certificate for
+            grouping and filtering.
           items:
             type: string
           type: array
@@ -6472,11 +6640,22 @@ components:
       properties:
         cert:
           description: >-
-            PEM-encoded public certificate chain of the SSL key pair. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
+            PEM-encoded public certificate chain of the SSL key pair. This field
+            is _referenceable_, which means it can be securely stored as a
+            [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started)
+            in a vault. References must follow a [specific
+            format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
           type: string
         cert_alt:
           description: >-
-            PEM-encoded public certificate chain of the alternate SSL key pair. This should only be set if you have both RSA and ECDSA types of certificate available and would like Kong to prefer serving using ECDSA certs when client advertises support for it. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
+            PEM-encoded public certificate chain of the alternate SSL key pair.
+            This should only be set if you have both RSA and ECDSA types of
+            certificate available and would like Kong to prefer serving using
+            ECDSA certs when client advertises support for it. This field is
+            _referenceable_, which means it can be securely stored as a
+            [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started)
+            in a vault. References must follow a [specific
+            format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
           type: string
         created_at:
           description: Unix epoch when the resource was created.
@@ -6487,15 +6666,27 @@ components:
           type: string
         key:
           description: >-
-            PEM-encoded private key of the SSL key pair. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
+            PEM-encoded private key of the SSL key pair. This field is
+            _referenceable_, which means it can be securely stored as a
+            [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started)
+            in a vault. References must follow a [specific
+            format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
           type: string
         key_alt:
           description: >-
-            PEM-encoded private key of the alternate SSL key pair. This should only be set if you have both RSA and ECDSA types of certificate available and would like Kong to prefer serving using ECDSA certs when client advertises support for it. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
+            PEM-encoded private key of the alternate SSL key pair. This should
+            only be set if you have both RSA and ECDSA types of certificate
+            available and would like Kong to prefer serving using ECDSA certs
+            when client advertises support for it. This field is
+            _referenceable_, which means it can be securely stored as a
+            [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started)
+            in a vault. References must follow a [specific
+            format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
           type: string
         tags:
           description: >-
-            An optional set of strings associated with the Certificate for grouping and filtering.
+            An optional set of strings associated with the Certificate for
+            grouping and filtering.
           items:
             type: string
           type: array
@@ -6527,14 +6718,17 @@ components:
           type: integer
         custom_id:
           description: >-
-            Field for storing an existing unique ID for the Consumer - useful for mapping Kong with users in your existing database. You must send either this field or `username` with the request.
+            Field for storing an existing unique ID for the Consumer - useful
+            for mapping Kong with users in your existing database. You must send
+            either this field or `username` with the request.
           type: string
         id:
           readOnly: true
           type: string
         tags:
           description: >-
-            An optional set of strings associated with the Consumer for grouping and filtering.
+            An optional set of strings associated with the Consumer for grouping
+            and filtering.
           items:
             type: string
           type: array
@@ -6544,7 +6738,8 @@ components:
           type: integer
         username:
           description: >-
-            The unique username of the Consumer. You must send either this field or `custom_id` with the request.
+            The unique username of the Consumer. You must send either this field
+            or `custom_id` with the request.
           type: string
       type: object
     ConsumerGroup:
@@ -6598,7 +6793,8 @@ components:
               format: date-time
               example: '2022-11-04T20:10:06.927Z'
               description: >-
-                An ISO-8604 timestamp representation of control plane creation date.
+                An ISO-8604 timestamp representation of control plane creation
+                date.
               readOnly: true
             updated_at:
               x-speakeasy-terraform-ignore: true
@@ -6606,13 +6802,15 @@ components:
               format: date-time
               example: '2022-11-04T20:10:06.927Z'
               description: >-
-                An ISO-8604 timestamp representation of control plane update date.
+                An ISO-8604 timestamp representation of control plane update
+                date.
               readOnly: true
     ControlPlaneSummary:
       title: ControlPlaneSummary
       type: object
       description: >-
-        The control plane object contains information about a Kong control plane.
+        The control plane object contains information about a Kong control
+        plane.
       additionalProperties: false
       properties:
         id:
@@ -6652,7 +6850,8 @@ components:
             cluster_type:
               type: string
               description: >-
-                The ClusterType value of the cluster associated with the Control Plane.
+                The ClusterType value of the cluster associated with the Control
+                Plane.
               example: CLUSTER_TYPE_CONTROL_PLANE
               enum:
                 - CLUSTER_TYPE_CONTROL_PLANE
@@ -6663,7 +6862,8 @@ components:
             auth_type:
               type: string
               description: >-
-                The auth type value of the cluster associated with the Runtime Group.
+                The auth type value of the cluster associated with the Runtime
+                Group.
               example: pinned_client_certs
               enum:
                 - pinned_client_certs
@@ -6687,6 +6887,12 @@ components:
         updated_at:
           type: string
           format: date-time
+      required:
+        - id
+        - name
+        - config
+        - created_at
+        - updated_at
     CpRegion:
       title: Control plane region
       type: string
@@ -6703,8 +6909,7 @@ components:
     CreateControlPlaneRequest:
       x-speakeasy-entity: GatewayControlPlane
       title: CreateControlPlaneRequest
-      description: |-
-        The request schema for the create control plane request.
+      description: The request schema for the create control plane request.
       type: object
       additionalProperties: false
       properties:
@@ -6719,7 +6924,8 @@ components:
         cluster_type:
           type: string
           description: >-
-            The ClusterType value of the cluster associated with the Control Plane.
+            The ClusterType value of the cluster associated with the Control
+            Plane.
           example: CLUSTER_TYPE_CONTROL_PLANE
           enum:
             - CLUSTER_TYPE_CONTROL_PLANE
@@ -6730,7 +6936,8 @@ components:
         auth_type:
           type: string
           description: >-
-            The auth type value of the cluster associated with the Runtime Group.
+            The auth type value of the cluster associated with the Runtime
+            Group.
           example: pinned_client_certs
           enum:
             - pinned_client_certs
@@ -6762,14 +6969,39 @@ components:
           type: string
           description: The cluster certificate (public key).
           example: >
-            -----BEGIN CERTIFICATE----- MIICRDCCAa2gAwIBAgIBADANBgkqhkiG9w0BAQ0FADA/MQswCQYDVQQGEwJ1czEL MAkGA1UECAwCVFgxDTALBgNVBAoMBFRlc3QxFDASBgNVBAMMC2V4YW1wbGUuY29t MB4XDTI0MDQyNjA5NTA1OVoXDTI1MDQyNjA5NTA1OVowPzELMAkGA1UEBhMCdXMx CzAJBgNVBAgMAlRYMQ0wCwYDVQQKDARUZXN0MRQwEgYDVQQDDAtleGFtcGxlLmNv bTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA8FaJZmPsthBT1XkTyqUJiuQV 4p4KaLpNMioNQtIdeGKFXelmZlVfW0bfLGBgFmkwo19KIzFtOlITUjb0Qqlub2Dn TIPoDs7rXA8aw6umJu73Z6647U3+alxNCpwTuYOY2CJQ+HWEIuOuwAdtQkndEp9r 7ZWA2xLatQKBYEvEmykCAwEAAaNQME4wHQYDVR0OBBYEFGUznNeZK74vlA4bqKHb 706tyMwcMB8GA1UdIwQYMBaAFGUznNeZK74vlA4bqKHb706tyMwcMAwGA1UdEwQF MAMBAf8wDQYJKoZIhvcNAQENBQADgYEARmnu/2vUcmJYLlg86MN0prXGC3CGXsem fDtPF4SBPxfchdG7HJKywTloIiCBKGEQALkCHiJcQJNcSHmzH3/Qk+SrOJNH01gt HsKA4SNFJZR5fCRpT6USCukyE2Wlr+PWPscrFCWbLXhK4Ql/t0oog1255B10HqKk 1qDkNrzCd/o= -----END CERTIFICATE-----
-
+            -----BEGIN CERTIFICATE-----
+            MIICRDCCAa2gAwIBAgIBADANBgkqhkiG9w0BAQ0FADA/MQswCQYDVQQGEwJ1czEL
+            MAkGA1UECAwCVFgxDTALBgNVBAoMBFRlc3QxFDASBgNVBAMMC2V4YW1wbGUuY29t
+            MB4XDTI0MDQyNjA5NTA1OVoXDTI1MDQyNjA5NTA1OVowPzELMAkGA1UEBhMCdXMx
+            CzAJBgNVBAgMAlRYMQ0wCwYDVQQKDARUZXN0MRQwEgYDVQQDDAtleGFtcGxlLmNv
+            bTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEA8FaJZmPsthBT1XkTyqUJiuQV
+            4p4KaLpNMioNQtIdeGKFXelmZlVfW0bfLGBgFmkwo19KIzFtOlITUjb0Qqlub2Dn
+            TIPoDs7rXA8aw6umJu73Z6647U3+alxNCpwTuYOY2CJQ+HWEIuOuwAdtQkndEp9r
+            7ZWA2xLatQKBYEvEmykCAwEAAaNQME4wHQYDVR0OBBYEFGUznNeZK74vlA4bqKHb
+            706tyMwcMB8GA1UdIwQYMBaAFGUznNeZK74vlA4bqKHb706tyMwcMAwGA1UdEwQF
+            MAMBAf8wDQYJKoZIhvcNAQENBQADgYEARmnu/2vUcmJYLlg86MN0prXGC3CGXsem
+            fDtPF4SBPxfchdG7HJKywTloIiCBKGEQALkCHiJcQJNcSHmzH3/Qk+SrOJNH01gt
+            HsKA4SNFJZR5fCRpT6USCukyE2Wlr+PWPscrFCWbLXhK4Ql/t0oog1255B10HqKk
+            1qDkNrzCd/o= -----END CERTIFICATE-----
         cluster_cert_key:
           type: string
           description: The cluster certificate key (private key).
           example: >
-            -----BEGIN PRIVATE KEY----- MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAPBWiWZj7LYQU9V5 E8qlCYrkFeKeCmi6TTIqDULSHXhihV3pZmZVX1tG3yxgYBZpMKNfSiMxbTpSE1I2 9EKpbm9g50yD6A7O61wPGsOrpibu92euuO1N/mpcTQqcE7mDmNgiUPh1hCLjrsAH bUJJ3RKfa+2VgNsS2rUCgWBLxJspAgMBAAECgYEAvA7qqozL/1ZdUu/P1cQ36E86 9L03ZeVJXFRdVgj2eGqW8vob3z00RUb6gE3VQhQDNALvDwSw9G6eoblQfgz31Hju sb+j6bGOm2BqzYrx6rpcgme7k9ScV0tEbtiBNX0E/ToHvNywHtdOBvDocN2wh42Z 6bS9um51H+SXR036mgUCQQD4T7WrJHL97Hj8TtHnTw895xWKaGn94H7ZQa2lo1nk 7CQ4Oi8rFX5tDdyV7UU6fekBWuhpmIhSGJhyHD7UThBjAkEA98ef9ey2Qx+j+R8S tgpgJAF3LVNJJicEHCS/Vltgc84X/vidVAMa2+TYPxPrrUjxBr0STCeB5wZhvvsB D8cOAwJBAJ5JqaQPUx1dDe7Ai/vooO20Dj4xu0c0QYha3sfU7qwIgDo7lO/g/ruj 93a3TscvlkXf3oHZ0ySKOzual86ciMMCQQDGOLgaWHVy+4QFTzt70I8bHuUFqKRT VlEuZqN/ZXijDFQcES5jwFwjYE8zHy+ioEDaIDXcIJsGhA98Zndx9M+bAkA4IFdx 4YIDhuk1MJAYPqVQs5szEF/0BGymLNVYlIox48bZg+TH3uXwTVRVySxvpRa8dd3O 0gHs3EIV6GFUl7ev -----END PRIVATE KEY-----
-
+            -----BEGIN PRIVATE KEY-----
+            MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAPBWiWZj7LYQU9V5
+            E8qlCYrkFeKeCmi6TTIqDULSHXhihV3pZmZVX1tG3yxgYBZpMKNfSiMxbTpSE1I2
+            9EKpbm9g50yD6A7O61wPGsOrpibu92euuO1N/mpcTQqcE7mDmNgiUPh1hCLjrsAH
+            bUJJ3RKfa+2VgNsS2rUCgWBLxJspAgMBAAECgYEAvA7qqozL/1ZdUu/P1cQ36E86
+            9L03ZeVJXFRdVgj2eGqW8vob3z00RUb6gE3VQhQDNALvDwSw9G6eoblQfgz31Hju
+            sb+j6bGOm2BqzYrx6rpcgme7k9ScV0tEbtiBNX0E/ToHvNywHtdOBvDocN2wh42Z
+            6bS9um51H+SXR036mgUCQQD4T7WrJHL97Hj8TtHnTw895xWKaGn94H7ZQa2lo1nk
+            7CQ4Oi8rFX5tDdyV7UU6fekBWuhpmIhSGJhyHD7UThBjAkEA98ef9ey2Qx+j+R8S
+            tgpgJAF3LVNJJicEHCS/Vltgc84X/vidVAMa2+TYPxPrrUjxBr0STCeB5wZhvvsB
+            D8cOAwJBAJ5JqaQPUx1dDe7Ai/vooO20Dj4xu0c0QYha3sfU7qwIgDo7lO/g/ruj
+            93a3TscvlkXf3oHZ0ySKOzual86ciMMCQQDGOLgaWHVy+4QFTzt70I8bHuUFqKRT
+            VlEuZqN/ZXijDFQcES5jwFwjYE8zHy+ioEDaIDXcIJsGhA98Zndx9M+bAkA4IFdx
+            4YIDhuk1MJAYPqVQs5szEF/0BGymLNVYlIox48bZg+TH3uXwTVRVySxvpRa8dd3O
+            0gHs3EIV6GFUl7ev -----END PRIVATE KEY-----
         labels:
           $ref: '#/components/schemas/SCGWLabels'
     CursorMetaWithSizeAndTotal:
@@ -6790,7 +7022,8 @@ components:
           example: 10
         total:
           description: >-
-            Total number of objects in the collection; will only be present on the first page
+            Total number of objects in the collection; will only be present on
+            the first page
           type: number
           example: 974
           nullable: true
@@ -6851,7 +7084,8 @@ components:
       title: GroupConflict
       type: object
       description: >-
-        The Group Conflict object contains information about a conflict in a control plane group.
+        The Group Conflict object contains information about a conflict in a
+        control plane group.
       properties:
         cluster_id:
           type: string
@@ -6862,7 +7096,8 @@ components:
         description:
           type: string
           example: >-
-            conflicting entity found: ID=38d790ad-8b08-4ff5-a074-2e1e9e64d8bd, Name=foo
+            conflicting entity found: ID=38d790ad-8b08-4ff5-a074-2e1e9e64d8bd,
+            Name=foo
           description: The description of the conflict.
           readOnly: true
         resource:
@@ -6901,13 +7136,15 @@ components:
       title: GroupMemberStatus
       type: object
       description: >-
-        Object with information determining the group membership status of a control plane.
+        Object with information determining the group membership status of a
+        control plane.
       properties:
         is_member:
           type: boolean
           example: true
           description: >-
-            Boolean indicating if a control plane is a member of a control plane group.
+            Boolean indicating if a control plane is a member of a control plane
+            group.
           readOnly: true
       required:
         - is_member
@@ -6915,7 +7152,8 @@ components:
       title: GroupStatus
       type: object
       description: >-
-        The Group Status object contains information about the status of a control plane group.
+        The Group Status object contains information about the status of a
+        control plane group.
       properties:
         id:
           type: string
@@ -6928,14 +7166,16 @@ components:
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: >-
-            An ISO-8604 timestamp representation of control plane group status creation date.
+            An ISO-8604 timestamp representation of control plane group status
+            creation date.
           readOnly: true
         updated_at:
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: >-
-            An ISO-8604 timestamp representation of control plane group status update date.
+            An ISO-8604 timestamp representation of control plane group status
+            update date.
           readOnly: true
         conflicts:
           type: array
@@ -6985,10 +7225,12 @@ components:
       title: IdP Configuration
       type: object
       description: >-
-        The IdP object contains the configuration data for the OIDC authentication integration.
+        The IdP object contains the configuration data for the OIDC
+        authentication integration.
 
 
-        NOTE: The `openid` scope is required. Removing it could break the OIDC integration.
+        NOTE: The `openid` scope is required. Removing it could break the OIDC
+        integration.
       properties:
         issuer:
           type: string
@@ -7269,7 +7511,8 @@ components:
           x-foreign: true
         tags:
           description: >-
-            An optional set of strings associated with the Key for grouping and filtering.
+            An optional set of strings associated with the Key for grouping and
+            filtering.
           items:
             type: string
           type: array
@@ -7331,7 +7574,13 @@ components:
       type: object
       example:
         env: test
-      description: "Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types. \n\nKeys must be of length 1-63 characters, and cannot start with \"kong\", \"konnect\", \"mesh\", \"kic\", or \"_\".\n"
+      description: >
+        Labels store metadata of an entity that can be used for filtering an
+        entity list or for searching across entity types. 
+
+
+        Keys must be of length 1-63 characters, and cannot start with "kong",
+        "konnect", "mesh", "kic", or "_".
       additionalProperties:
         type: string
         pattern: ^[a-z0-9A-Z]{1}([a-z0-9A-Z-._]*[a-z0-9A-Z]+)?$
@@ -7341,7 +7590,13 @@ components:
     LabelsUpdate:
       type: object
       nullable: true
-      description: "Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types. \n\nKeys must be of length 1-63 characters, and cannot start with \"kong\", \"konnect\", \"mesh\", \"kic\", or \"_\".\n"
+      description: >
+        Labels store metadata of an entity that can be used for filtering an
+        entity list or for searching across entity types. 
+
+
+        Keys must be of length 1-63 characters, and cannot start with "kong",
+        "konnect", "mesh", "kic", or "_".
       example:
         env: test
       maxProperties: 50
@@ -7370,7 +7625,8 @@ components:
     PageMeta:
       type: object
       description: >-
-        Contains pagination query parameters and the total number of objects returned.
+        Contains pagination query parameters and the total number of objects
+        returned.
       required:
         - number
         - size
@@ -7396,7 +7652,8 @@ components:
         - page
     PaginationOffsetResponse:
       description: >-
-        Offset is used to paginate through the API. Provide this value to the next list operation to fetch the next page
+        Offset is used to paginate through the API. Provide this value to the
+        next list operation to fetch the next page
       type: string
     Plugin:
       allOf:
@@ -7405,7 +7662,10 @@ components:
             consumer:
               additionalProperties: false
               description: >-
-                If set, the plugin will activate only for requests where the specified has been authenticated. (Note that some plugins can not be restricted to consumers this way.). Leave unset for the plugin to activate regardless of the authenticated Consumer.
+                If set, the plugin will activate only for requests where the
+                specified has been authenticated. (Note that some plugins can
+                not be restricted to consumers this way.). Leave unset for the
+                plugin to activate regardless of the authenticated Consumer.
               properties:
                 id:
                   type: string
@@ -7421,7 +7681,9 @@ components:
             route:
               additionalProperties: false
               description: >-
-                If set, the plugin will only activate when receiving requests via the specified route. Leave unset for the plugin to activate regardless of the Route being used.
+                If set, the plugin will only activate when receiving requests
+                via the specified route. Leave unset for the plugin to activate
+                regardless of the Route being used.
               properties:
                 id:
                   type: string
@@ -7430,7 +7692,10 @@ components:
             service:
               additionalProperties: false
               description: >-
-                If set, the plugin will only activate when receiving requests via one of the routes belonging to the specified Service. Leave unset for the plugin to activate regardless of the Service being matched.
+                If set, the plugin will only activate when receiving requests
+                via one of the routes belonging to the specified Service. Leave
+                unset for the plugin to activate regardless of the Service being
+                matched.
               properties:
                 id:
                   type: string
@@ -7442,7 +7707,9 @@ components:
         config:
           additionalProperties: true
           description: >-
-            The configuration properties for the Plugin which can be found on the plugins documentation page in the [Kong Hub](https://docs.konghq.com/hub/).
+            The configuration properties for the Plugin which can be found on
+            the plugins documentation page in the [Kong
+            Hub](https://docs.konghq.com/hub/).
           type: object
         created_at:
           description: Unix epoch when the resource was created.
@@ -7459,7 +7726,8 @@ components:
           type: string
         name:
           description: >-
-            The name of the Plugin that's going to be added. Currently, the Plugin must be installed in every Kong instance separately.
+            The name of the Plugin that's going to be added. Currently, the
+            Plugin must be installed in every Kong instance separately.
           type: string
         ordering:
           additionalProperties: true
@@ -7471,7 +7739,10 @@ components:
             - http
             - https
           description: >-
-            A list of the request protocols that will trigger this plugin. The default value, as well as the possible values allowed on this field, may change depending on the plugin type. For example, plugins that only work in stream mode will only support `"tcp"` and `"tls"`.
+            A list of the request protocols that will trigger this plugin. The
+            default value, as well as the possible values allowed on this field,
+            may change depending on the plugin type. For example, plugins that
+            only work in stream mode will only support `"tcp"` and `"tls"`.
           items:
             enum:
               - grpc
@@ -7488,7 +7759,8 @@ components:
           type: array
         tags:
           description: >-
-            An optional set of strings associated with the Plugin for grouping and filtering.
+            An optional set of strings associated with the Plugin for grouping
+            and filtering.
           items:
             type: string
           type: array
@@ -7500,7 +7772,8 @@ components:
     ProxyURL:
       title: ProxyURL
       description: >-
-        Proxy URL associated with reaching the data-planes connected to a control-plane.
+        Proxy URL associated with reaching the data-planes connected to a
+        control-plane.
       type: object
       additionalProperties: false
       properties:
@@ -7524,7 +7797,8 @@ components:
     ProxyURLs:
       title: ProxyURLs
       description: >-
-        Array of proxy URLs associated with reaching the data-planes connected to a control-plane.
+        Array of proxy URLs associated with reaching the data-planes connected
+        to a control-plane.
       type: array
       items:
         $ref: '#/components/schemas/ProxyURL'
@@ -7539,7 +7813,8 @@ components:
             service:
               additionalProperties: false
               description: >-
-                The Service this Route is associated to. This is where the Route proxies traffic to.
+                The Service this Route is associated to. This is where the Route
+                proxies traffic to.
               properties:
                 id:
                   type: string
@@ -7554,7 +7829,9 @@ components:
           type: integer
         destinations:
           description: >-
-            A list of IP destinations of incoming connections that match this Route when using stream routing. Each entry is an object with fields "ip" (optionally in CIDR range notation) and/or "port".
+            A list of IP destinations of incoming connections that match this
+            Route when using stream routing. Each entry is an object with fields
+            "ip" (optionally in CIDR range notation) and/or "port".
           items:
             properties:
               ip:
@@ -7567,18 +7844,28 @@ components:
           additionalProperties:
             type: string
           description: >-
-            One or more lists of values indexed by header name that will cause this Route to match if present in the request. The `Host` header cannot be used with this attribute: hosts should be specified using the `hosts` attribute. When `headers` contains only one value and that value starts with the special prefix `~*`, the value is interpreted as a regular expression.
+            One or more lists of values indexed by header name that will cause
+            this Route to match if present in the request. The `Host` header
+            cannot be used with this attribute: hosts should be specified using
+            the `hosts` attribute. When `headers` contains only one value and
+            that value starts with the special prefix `~*`, the value is
+            interpreted as a regular expression.
           type: object
         hosts:
           description: >-
-            A list of domain names that match this Route. Note that the hosts value is case sensitive.
+            A list of domain names that match this Route. Note that the hosts
+            value is case sensitive.
           items:
             type: string
           type: array
         https_redirect_status_code:
           default: 426
           description: >-
-            The status code Kong responds with when all properties of a Route match except the protocol i.e. if the protocol of the request is `HTTP` instead of `HTTPS`. `Location` header is injected by Kong if the field is set to 301, 302, 307 or 308. Note: This config applies only if the Route is configured to only accept the `https` protocol.
+            The status code Kong responds with when all properties of a Route
+            match except the protocol i.e. if the protocol of the request is
+            `HTTP` instead of `HTTPS`. `Location` header is injected by Kong if
+            the field is set to 301, 302, 307 or 308. Note: This config applies
+            only if the Route is configured to only accept the `https` protocol.
           enum:
             - 426
             - 301
@@ -7596,12 +7883,16 @@ components:
           type: array
         name:
           description: >-
-            The name of the Route. Route names must be unique, and they are case sensitive. For example, there can be two different Routes named "test" and "Test".
+            The name of the Route. Route names must be unique, and they are case
+            sensitive. For example, there can be two different Routes named
+            "test" and "Test".
           type: string
         path_handling:
           default: v0
           description: >-
-            Controls how the Service path, Route path and requested path are combined when sending a request to the upstream. See above for a detailed description of each behavior.
+            Controls how the Service path, Route path and requested path are
+            combined when sending a request to the upstream. See above for a
+            detailed description of each behavior.
           enum:
             - v0
             - v1
@@ -7614,14 +7905,21 @@ components:
         preserve_host:
           default: false
           description: >-
-            When matching a Route via one of the `hosts` domain names, use the request `Host` header in the upstream request headers. If set to `false`, the upstream `Host` header will be that of the Service's `host`.
+            When matching a Route via one of the `hosts` domain names, use the
+            request `Host` header in the upstream request headers. If set to
+            `false`, the upstream `Host` header will be that of the Service's
+            `host`.
           type: boolean
         protocols:
           default:
             - http
             - https
           description: >-
-            An array of the protocols this Route should allow. See the [Route Object](#route-object) section for a list of accepted protocols. When set to only `"https"`, HTTP requests are answered with an upgrade error. When set to only `"http"`, HTTPS requests are answered with an error.
+            An array of the protocols this Route should allow. See the [Route
+            Object](#route-object) section for a list of accepted protocols.
+            When set to only `"https"`, HTTP requests are answered with an
+            upgrade error. When set to only `"http"`, HTTPS requests are
+            answered with an error.
           items:
             enum:
               - grpc
@@ -7639,17 +7937,26 @@ components:
         regex_priority:
           default: 0
           description: >-
-            A number used to choose which route resolves a given request when several routes match it using regexes simultaneously. When two routes match the path and have the same `regex_priority`, the older one (lowest `created_at`) is used. Note that the priority for non-regex routes is different (longer non-regex routes are matched before shorter ones).
+            A number used to choose which route resolves a given request when
+            several routes match it using regexes simultaneously. When two
+            routes match the path and have the same `regex_priority`, the older
+            one (lowest `created_at`) is used. Note that the priority for
+            non-regex routes is different (longer non-regex routes are matched
+            before shorter ones).
           type: integer
         request_buffering:
           default: true
           description: >-
-            Whether to enable request body buffering or not. With HTTP 1.1, it may make sense to turn this off on services that receive data with chunked transfer encoding.
+            Whether to enable request body buffering or not. With HTTP 1.1, it
+            may make sense to turn this off on services that receive data with
+            chunked transfer encoding.
           type: boolean
         response_buffering:
           default: true
           description: >-
-            Whether to enable response body buffering or not. With HTTP 1.1, it may make sense to turn this off on services that send data with chunked transfer encoding.
+            Whether to enable response body buffering or not. With HTTP 1.1, it
+            may make sense to turn this off on services that send data with
+            chunked transfer encoding.
           type: boolean
         snis:
           description: A list of SNIs that match this Route when using stream routing.
@@ -7658,7 +7965,9 @@ components:
           type: array
         sources:
           description: >-
-            A list of IP sources of incoming connections that match this Route when using stream routing. Each entry is an object with fields "ip" (optionally in CIDR range notation) and/or "port".
+            A list of IP sources of incoming connections that match this Route
+            when using stream routing. Each entry is an object with fields "ip"
+            (optionally in CIDR range notation) and/or "port".
           items:
             properties:
               ip:
@@ -7670,11 +7979,13 @@ components:
         strip_path:
           default: true
           description: >-
-            When matching a Route via one of the `paths`, strip the matching prefix from the upstream request URL.
+            When matching a Route via one of the `paths`, strip the matching
+            prefix from the upstream request URL.
           type: boolean
         tags:
           description: >-
-            An optional set of strings associated with the Route for grouping and filtering.
+            An optional set of strings associated with the Route for grouping
+            and filtering.
           items:
             type: string
           type: array
@@ -7689,7 +8000,9 @@ components:
       example:
         env: test
       description: >-
-        Labels to facilitate tagged search on serverless cloud gateways. Keys must be of length 1-63 characters, and cannot start with 'kong', 'konnect', 'mesh', 'kic', or '_'.
+        Labels to facilitate tagged search on serverless cloud gateways. Keys
+        must be of length 1-63 characters, and cannot start with 'kong',
+        'konnect', 'mesh', 'kic', or '_'.
       additionalProperties:
         type: string
         pattern: ^[a-z0-9A-Z]{1}([a-z0-9A-Z\-\.\_]*[a-z0-9A-Z]+)?$
@@ -7751,14 +8064,20 @@ components:
       properties:
         ca_certificates:
           description: >-
-            Array of `CA Certificate` object UUIDs that are used to build the trust store while verifying upstream server's TLS certificate. If set to `null` when Nginx default is respected. If default CA list in Nginx are not specified and TLS verification is enabled, then handshake with upstream server will always fail (because no CA are trusted).
+            Array of `CA Certificate` object UUIDs that are used to build the
+            trust store while verifying upstream server's TLS certificate. If
+            set to `null` when Nginx default is respected. If default CA list in
+            Nginx are not specified and TLS verification is enabled, then
+            handshake with upstream server will always fail (because no CA are
+            trusted).
           items:
             type: string
           type: array
         client_certificate:
           additionalProperties: false
           description: >-
-            Certificate to be used as client certificate while TLS handshaking to the upstream server.
+            Certificate to be used as client certificate while TLS handshaking
+            to the upstream server.
           properties:
             id:
               type: string
@@ -7766,7 +8085,8 @@ components:
         connect_timeout:
           default: 60000
           description: >-
-            The timeout in milliseconds for establishing a connection to the upstream server.
+            The timeout in milliseconds for establishing a connection to the
+            upstream server.
           type: integer
         created_at:
           description: Unix epoch when the resource was created.
@@ -7775,11 +8095,14 @@ components:
         enabled:
           default: true
           description: >-
-            Whether the Service is active. If set to `false`, the proxy behavior will be as if any routes attached to it do not exist (404). Default: `true`.
+            Whether the Service is active. If set to `false`, the proxy behavior
+            will be as if any routes attached to it do not exist (404). Default:
+            `true`.
           type: boolean
         host:
           description: >-
-            The host of the upstream server. Note that the host value is case sensitive.
+            The host of the upstream server. Note that the host value is case
+            sensitive.
           type: string
         id:
           readOnly: true
@@ -7812,7 +8135,8 @@ components:
         read_timeout:
           default: 60000
           description: >-
-            The timeout in milliseconds between two successive read operations for transmitting a request to the upstream server.
+            The timeout in milliseconds between two successive read operations
+            for transmitting a request to the upstream server.
           type: integer
         retries:
           default: 5
@@ -7820,17 +8144,20 @@ components:
           type: integer
         tags:
           description: >-
-            An optional set of strings associated with the Service for grouping and filtering.
+            An optional set of strings associated with the Service for grouping
+            and filtering.
           items:
             type: string
           type: array
         tls_verify:
           description: >-
-            Whether to enable verification of upstream server TLS certificate. If set to `null`, then the Nginx default is respected.
+            Whether to enable verification of upstream server TLS certificate.
+            If set to `null`, then the Nginx default is respected.
           type: boolean
         tls_verify_depth:
           description: >-
-            Maximum depth of chain while verifying Upstream server's TLS certificate. If set to `null`, then the Nginx default is respected.
+            Maximum depth of chain while verifying Upstream server's TLS
+            certificate. If set to `null`, then the Nginx default is respected.
           type: integer
         updated_at:
           description: Unix epoch when the resource was last updated.
@@ -7838,13 +8165,15 @@ components:
           type: integer
         url:
           description: >-
-            Helper field to set `protocol`, `host`, `port` and `path` using a URL. This field is write-only and is not returned in responses.
+            Helper field to set `protocol`, `host`, `port` and `path` using a
+            URL. This field is write-only and is not returned in responses.
           type: string
           writeOnly: true
         write_timeout:
           default: 60000
           description: >-
-            The timeout in milliseconds between two successive write operations for transmitting a request to the upstream server.
+            The timeout in milliseconds between two successive write operations
+            for transmitting a request to the upstream server.
           type: integer
       type: object
       required:
@@ -7856,7 +8185,9 @@ components:
             certificate:
               additionalProperties: false
               description: >-
-                The id (a UUID) of the certificate with which to associate the SNI hostname. The Certificate must have a valid private key associated with it to be used by the SNI object.
+                The id (a UUID) of the certificate with which to associate the
+                SNI hostname. The Certificate must have a valid private key
+                associated with it to be used by the SNI object.
               properties:
                 id:
                   type: string
@@ -7877,7 +8208,8 @@ components:
           type: string
         tags:
           description: >-
-            An optional set of strings associated with the SNIs for grouping and filtering.
+            An optional set of strings associated with the SNIs for grouping and
+            filtering.
           items:
             type: string
           type: array
@@ -7897,8 +8229,8 @@ components:
 
         Multiple sort attributes may be provided via a comma separated list.
 
-        JSONPath notation may be used to specify a sub-attribute (eg: 'foo.bar desc').
-
+        JSONPath notation may be used to specify a sub-attribute (eg: 'foo.bar
+        desc').
     StringFieldContainsFilter:
       type: object
       title: StringFieldContainsFilter
@@ -8018,13 +8350,16 @@ components:
           type: string
         tags:
           description: >-
-            An optional set of strings associated with the Target for grouping and filtering.
+            An optional set of strings associated with the Target for grouping
+            and filtering.
           items:
             type: string
           type: array
         target:
           description: >-
-            The target address (ip or hostname) and port. If the hostname resolves to an SRV record, the `port` value will be overridden by the value from the DNS record.
+            The target address (ip or hostname) and port. If the hostname
+            resolves to an SRV record, the `port` value will be overridden by
+            the value from the DNS record.
           type: string
         updated_at:
           description: Unix epoch when the resource was last updated.
@@ -8033,7 +8368,9 @@ components:
         weight:
           default: 100
           description: >-
-            The weight this target gets within the upstream loadbalancer (`0`-`65535`). If the hostname resolves to an SRV record, the `weight` value will be overridden by the value from the DNS record.
+            The weight this target gets within the upstream loadbalancer
+            (`0`-`65535`). If the hostname resolves to an SRV record, the
+            `weight` value will be overridden by the value from the DNS record.
           type: integer
       type: object
     Team:
@@ -8072,7 +8409,9 @@ components:
           type: boolean
           default: false
           description: >-
-            Returns True if a user belongs to a `system_team`. System teams are teams that can manage Konnect objects, like "Organization Admin", or "Service"
+            Returns True if a user belongs to a `system_team`. System teams are
+            teams that can manage Konnect objects, like "Organization Admin", or
+            "Service"
           readOnly: true
         labels:
           $ref: '#/components/schemas/Labels'
@@ -8087,8 +8426,8 @@ components:
           format: date-time
           example: '2022-02-07T17:00:00.52Z'
           description: >
-            A Unix timestamp representation of the most recent change to the team object in Konnect.
-
+            A Unix timestamp representation of the most recent change to the
+            team object in Konnect.
           readOnly: true
     TeamGroupMapping:
       title: TeamGroupMapping
@@ -8165,7 +8504,8 @@ components:
         auth_type:
           type: string
           description: >-
-            The auth type value of the cluster associated with the Runtime Group.
+            The auth type value of the cluster associated with the Runtime
+            Group.
           example: pinned_client_certs
           enum:
             - pinned_client_certs
@@ -8188,7 +8528,8 @@ components:
         client_certificate:
           additionalProperties: false
           description: >-
-            If set, the certificate to be used as client certificate while TLS handshaking to the upstream server.
+            If set, the certificate to be used as client certificate while TLS
+            handshaking to the upstream server.
           properties:
             id:
               type: string
@@ -8200,7 +8541,9 @@ components:
         hash_fallback:
           default: none
           description: >-
-            What to use as hashing input if the primary `hash_on` does not return a hash (eg. header is missing, or no Consumer identified). Not available if `hash_on` is set to `cookie`.
+            What to use as hashing input if the primary `hash_on` does not
+            return a hash (eg. header is missing, or no Consumer identified).
+            Not available if `hash_on` is set to `cookie`.
           enum:
             - none
             - consumer
@@ -8213,20 +8556,24 @@ components:
           type: string
         hash_fallback_header:
           description: >-
-            The header name to take the value from as hash input. Only required when `hash_fallback` is set to `header`.
+            The header name to take the value from as hash input. Only required
+            when `hash_fallback` is set to `header`.
           type: string
         hash_fallback_query_arg:
           description: >-
-            The name of the query string argument to take the value from as hash input. Only required when `hash_fallback` is set to `query_arg`.
+            The name of the query string argument to take the value from as hash
+            input. Only required when `hash_fallback` is set to `query_arg`.
           type: string
         hash_fallback_uri_capture:
           description: >-
-            The name of the route URI capture to take the value from as hash input. Only required when `hash_fallback` is set to `uri_capture`.
+            The name of the route URI capture to take the value from as hash
+            input. Only required when `hash_fallback` is set to `uri_capture`.
           type: string
         hash_on:
           default: none
           description: >-
-            What to use as hashing input. Using `none` results in a weighted-round-robin scheme with no hashing.
+            What to use as hashing input. Using `none` results in a
+            weighted-round-robin scheme with no hashing.
           enum:
             - none
             - consumer
@@ -8239,24 +8586,31 @@ components:
           type: string
         hash_on_cookie:
           description: >-
-            The cookie name to take the value from as hash input. Only required when `hash_on` or `hash_fallback` is set to `cookie`. If the specified cookie is not in the request, Kong will generate a value and set the cookie in the response.
+            The cookie name to take the value from as hash input. Only required
+            when `hash_on` or `hash_fallback` is set to `cookie`. If the
+            specified cookie is not in the request, Kong will generate a value
+            and set the cookie in the response.
           type: string
         hash_on_cookie_path:
           default: /
           description: >-
-            The cookie path to set in the response headers. Only required when `hash_on` or `hash_fallback` is set to `cookie`.
+            The cookie path to set in the response headers. Only required when
+            `hash_on` or `hash_fallback` is set to `cookie`.
           type: string
         hash_on_header:
           description: >-
-            The header name to take the value from as hash input. Only required when `hash_on` is set to `header`.
+            The header name to take the value from as hash input. Only required
+            when `hash_on` is set to `header`.
           type: string
         hash_on_query_arg:
           description: >-
-            The name of the query string argument to take the value from as hash input. Only required when `hash_on` is set to `query_arg`.
+            The name of the query string argument to take the value from as hash
+            input. Only required when `hash_on` is set to `query_arg`.
           type: string
         hash_on_uri_capture:
           description: >-
-            The name of the route URI capture to take the value from as hash input. Only required when `hash_on` is set to `uri_capture`.
+            The name of the route URI capture to take the value from as hash
+            input. Only required when `hash_on` is set to `uri_capture`.
           type: string
         healthchecks:
           properties:
@@ -8401,7 +8755,8 @@ components:
           type: object
         host_header:
           description: >-
-            The hostname to be used as `Host` header when proxying requests through Kong.
+            The hostname to be used as `Host` header when proxying requests
+            through Kong.
           type: string
         id:
           readOnly: true
@@ -8412,11 +8767,16 @@ components:
         slots:
           default: 10000
           description: >-
-            The number of slots in the load balancer algorithm. If `algorithm` is set to `round-robin`, this setting determines the maximum number of slots. If `algorithm` is set to `consistent-hashing`, this setting determines the actual number of slots in the algorithm. Accepts an integer in the range `10`-`65536`.
+            The number of slots in the load balancer algorithm. If `algorithm`
+            is set to `round-robin`, this setting determines the maximum number
+            of slots. If `algorithm` is set to `consistent-hashing`, this
+            setting determines the actual number of slots in the algorithm.
+            Accepts an integer in the range `10`-`65536`.
           type: integer
         tags:
           description: >-
-            An optional set of strings associated with the Upstream for grouping and filtering.
+            An optional set of strings associated with the Upstream for grouping
+            and filtering.
           items:
             type: string
           type: array
@@ -8427,14 +8787,16 @@ components:
         use_srv_name:
           default: false
           description: >-
-            If set, the balancer will use SRV hostname(if DNS Answer has SRV record) as the proxy upstream `Host`.
+            If set, the balancer will use SRV hostname(if DNS Answer has SRV
+            record) as the proxy upstream `Host`.
           type: boolean
       type: object
     User:
       title: User
       type: object
       description: >-
-        The user object contains information about an individual user who can use the Konnect application and API.
+        The user object contains information about an individual user who can
+        use the Konnect application and API.
       example:
         id: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
         email: user@email.com
@@ -8483,13 +8845,15 @@ components:
           format: date-time
           example: '2022-10-08T17:00:00.52Z'
           description: >-
-            A Unix timestamp representation of the most recent change to the User account.
+            A Unix timestamp representation of the most recent change to the
+            User account.
           readOnly: true
     Vault:
       properties:
         config:
           description: >-
-            The configuration properties for the Vault which can be found on the vaults' documentation page.
+            The configuration properties for the Vault which can be found on the
+            vaults' documentation page.
           type: object
         created_at:
           description: Unix epoch when the resource was created.
@@ -8503,15 +8867,19 @@ components:
           type: string
         name:
           description: >-
-            The name of the Vault that's going to be added. Currently, the Vault implementation must be installed in every Kong instance.
+            The name of the Vault that's going to be added. Currently, the Vault
+            implementation must be installed in every Kong instance.
           type: string
         prefix:
           description: >-
-            The unique prefix (or identifier) for this Vault configuration. The prefix is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
+            The unique prefix (or identifier) for this Vault configuration. The
+            prefix is used to load the right Vault configuration and
+            implementation when referencing secrets with the other entities.
           type: string
         tags:
           description: >-
-            An optional set of strings associated with the Vault for grouping and filtering.
+            An optional set of strings associated with the Vault for grouping
+            and filtering.
           items:
             type: string
           type: array
@@ -8520,38 +8888,39 @@ components:
           readOnly: true
           type: integer
       type: object
-    CreateServiceWithoutParents:
-      description: |-
-        The request schema for the create service request.
-    CreateRouteWithoutParents:
-      description: |2-
-        The request schema for the create route request.
   securitySchemes:
     konnectAccessToken:
       type: http
       scheme: bearer
       bearerFormat: JWT
       description: >-
-        The Konnect access token is meant to be used by the Konnect dashboard and the decK CLI to authenticate with.
+        The Konnect access token is meant to be used by the Konnect dashboard
+        and the decK CLI to authenticate with.
     personalAccessToken:
       type: http
       scheme: bearer
       bearerFormat: Token
       description: >-
-        The personal access token is meant to be used as an alternative to basic-auth when accessing Konnect via APIs. You can generate a Personal Access Token (PAT) from the personal access token page in the Konnect dashboard.
+        The personal access token is meant to be used as an alternative to
+        basic-auth when accessing Konnect via APIs. You can generate a Personal
+        Access Token (PAT) from the personal access token page in the Konnect
+        dashboard.
     systemAccountAccessToken:
       type: http
       scheme: bearer
       bearerFormat: Token
       description: >
-        The system account access token is meant for automations and integrations that are not directly associated with a human identity.
+        The system account access token is meant for automations and
+        integrations that are not directly associated with a human identity.
 
-        You can generate a system account Access Token by creating a system account and then obtaining a system account access token for that account.
+        You can generate a system account Access Token by creating a system
+        account and then obtaining a system account access token for that
+        account.
 
         The access token must be passed in the header of a request, for example:
 
-        `curl -X GET 'https://global.api.konghq.com/v2/users/' --header 'Authorization: Bearer spat_i2Ej...'`
-
+        `curl -X GET 'https://global.api.konghq.com/v2/users/' --header
+        'Authorization: Bearer spat_i2Ej...'`
   requestBodies:
     AddSystemAccountToTeam:
       content:
@@ -8588,7 +8957,8 @@ components:
           schema:
             type: object
             description: >-
-              An assigned role is a role that has been assigned to a user or team.
+              An assigned role is a role that has been assigned to a user or
+              team.
             properties:
               role_name:
                 type: string
@@ -8668,7 +9038,8 @@ components:
                 description: |
                   The custom plugin schema; `jq -Rs '.' schema.lua`.
                 example: >-
-                  return { name = \"myplugin\", fields = { { config = { type = \"record\", fields = { } } } } }
+                  return { name = \"myplugin\", fields = { { config = { type =
+                  \"record\", fields = { } } } } }
             required:
               - lua_schema
     CreateSystemAccount:
@@ -8687,7 +9058,9 @@ components:
               description:
                 type: string
                 description: >-
-                  Description of the system account. Useful when the system account name is not sufficient to differentiate one system account from another.
+                  Description of the system account. Useful when the system
+                  account name is not sufficient to differentiate one system
+                  account from another.
               konnect_managed:
                 type: boolean
                 description: The system account is managed by Konnect (true/false).
@@ -8710,7 +9083,10 @@ components:
         The request schema for the create team request.
 
 
-        If you pass the same `name` and `description` of an existing team in the request, a team with the same `name` and `description` will be created. The two teams will have different `team_id` values to differentiate them.
+        If you pass the same `name` and `description` of an existing team in the
+        request, a team with the same `name` and `description` will be created.
+        The two teams will have different `team_id` values to differentiate
+        them.
       content:
         application/json:
           schema:
@@ -8751,14 +9127,16 @@ components:
           schema:
             $ref: '#/components/schemas/GroupMembership'
       description: >-
-        Request body for removing a list of child control planes from a control plane group membership.
+        Request body for removing a list of child control planes from a control
+        plane group membership.
     GroupMemebershipAdd:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/GroupMembership'
       description: >-
-        Request body for adding a list of child control planes to a control plane group membership.
+        Request body for adding a list of child control planes to a control
+        plane group membership.
     InviteUser:
       content:
         application/json:
@@ -8776,7 +9154,9 @@ components:
         The request schema for the invite user request.
 
 
-        If you pass an `email` that is not already an active user in the request, a fresh invitation email will be created and sent to the new user.
+        If you pass an `email` that is not already an active user in the
+        request, a fresh invitation email will be created and sent to the new
+        user.
     PatchTeamGroupMappings:
       content:
         application/json:
@@ -8802,7 +9182,8 @@ components:
                       items:
                         type: string
       description: >-
-        The request schema for a partial update of mappings from Konnect Teams to IdP Groups.
+        The request schema for a partial update of mappings from Konnect Teams
+        to IdP Groups.
     UpdateAuthenticationSettings:
       description: The request schema to update an organization's authentication settings.
       content:
@@ -8881,7 +9262,8 @@ components:
                 type: boolean
                 example: true
                 description: >-
-                  Indicates if user impersonation is allowed for the organization.
+                  Indicates if user impersonation is allowed for the
+                  organization.
       description: The request schema for adding a system account to a team.
     UpdateSystemAccount:
       content:
@@ -9000,27 +9382,43 @@ tags:
   - description: Custom Plugin Schemas
     name: Custom Plugin Schemas
   - description: >
-      Service entities are abstractions of your microservice interfaces or formal APIs. For example, a service could be a data transformation microservice or a billing API.
+      Service entities are abstractions of your microservice interfaces or
+      formal APIs. For example, a service could be a data transformation
+      microservice or a billing API.
 
       <br><br>
 
-      The main attribute of a service is the destination URL for proxying traffic. This URL can be set as a single string or by specifying its protocol, host, port and path individually.
+      The main attribute of a service is the destination URL for proxying
+      traffic. This URL can be set as a single string or by specifying its
+      protocol, host, port and path individually.
 
       <br><br>
 
-      Services are associated to routes, and a single service can have many routes associated with it. Routes are entrypoints in Kong Gateway which define rules to match client requests. Once a route is matched, Kong Gateway proxies the request to its associated service. See the [Proxy Reference](https://docs.konghq.com/gateway/latest/how-kong-works/routing-traffic/) for a detailed explanation of how Kong proxies traffic.
+      Services are associated to routes, and a single service can have many
+      routes associated with it. Routes are entrypoints in Kong Gateway which
+      define rules to match client requests. Once a route is matched, Kong
+      Gateway proxies the request to its associated service. See the [Proxy
+      Reference](https://docs.konghq.com/gateway/latest/how-kong-works/routing-traffic/)
+      for a detailed explanation of how Kong proxies traffic.
 
       <br><br>
 
-      Services can be both [tagged and filtered by tags](https://docs.konghq.com/gateway/latest/admin-api/#tags).
-
+      Services can be both [tagged and filtered by
+      tags](https://docs.konghq.com/gateway/latest/admin-api/#tags).
     name: Services
   - description: >
-      Route entities define rules to match client requests. Each route is associated with a service, and a service may have multiple routes associated to it. Every request matching a given route will be proxied to the associated service. You need at least one matching rule that applies to the protocol being matched by the route.
+      Route entities define rules to match client requests. Each route is
+      associated with a service, and a service may have multiple routes
+      associated to it. Every request matching a given route will be proxied to
+      the associated service. You need at least one matching rule that applies
+      to the protocol being matched by the route.
 
       <br><br>
 
-      The combination of routes and services, and the separation of concerns between them, offers a powerful routing mechanism with which it is possible to define fine-grained entrypoints in Kong Gateway leading to different upstream services of your infrastructure.
+      The combination of routes and services, and the separation of concerns
+      between them, offers a powerful routing mechanism with which it is
+      possible to define fine-grained entrypoints in Kong Gateway leading to
+      different upstream services of your infrastructure.
 
       <br><br>
 
@@ -9031,7 +9429,8 @@ tags:
 
       - `http`: At least one of `methods`, `hosts`, `headers`, or `paths`
 
-      - `https`: At least one of `methods`, `hosts`, `headers`, `paths`, or `snis`
+      - `https`: At least one of `methods`, `hosts`, `headers`, `paths`, or
+      `snis`
 
       - `tcp`: At least one of `sources` or `destinations`
 
@@ -9049,81 +9448,131 @@ tags:
 
 
 
-
-
-
         <br>
         A route can't have both `tls` and `tls_passthrough` protocols at same time.
         <br><br>
         Learn more about the router:
-      - [Configure routes using expressions](https://docs.konghq.com/gateway/latest/key-concepts/routes/expressions)
+      - [Configure routes using
+      expressions](https://docs.konghq.com/gateway/latest/key-concepts/routes/expressions)
 
-      - [Router Expressions language reference](https://docs.konghq.com/gateway/latest/reference/router-expressions-language/)
-
+      - [Router Expressions language
+      reference](https://docs.konghq.com/gateway/latest/reference/router-expressions-language/)
     name: Routes
   - description: >
-      A plugin entity represents a plugin configuration that will be executed during the HTTP request/response lifecycle. Plugins let you add functionality to services that run behind a Kong Gateway instance, like authentication or rate limiting.
+      A plugin entity represents a plugin configuration that will be executed
+      during the HTTP request/response lifecycle. Plugins let you add
+      functionality to services that run behind a Kong Gateway instance, like
+      authentication or rate limiting.
 
-      You can find more information about available plugins and which values each plugin accepts at the [Plugin Hub](https://docs.konghq.com/hub/).
+      You can find more information about available plugins and which values
+      each plugin accepts at the [Plugin Hub](https://docs.konghq.com/hub/).
 
       <br><br>
 
-      When adding a plugin configuration to a service, the plugin will run on every request made by a client to that service. If a plugin needs to be tuned to different values for some specific consumers, you can do so by creating a separate plugin instance that specifies both the service and the consumer, through the service and consumer fields.
+      When adding a plugin configuration to a service, the plugin will run on
+      every request made by a client to that service. If a plugin needs to be
+      tuned to different values for some specific consumers, you can do so by
+      creating a separate plugin instance that specifies both the service and
+      the consumer, through the service and consumer fields.
 
       <br><br>
 
-      Plugins can be both [tagged and filtered by tags](https://docs.konghq.com/gateway/latest/admin-api/#tags).
-
+      Plugins can be both [tagged and filtered by
+      tags](https://docs.konghq.com/gateway/latest/admin-api/#tags).
     name: Plugins
   - description: >
       The consumer object represents a consumer - or a user - of a service.
 
-      You can either rely on Kong Gateway as the primary datastore, or you can map the consumer list with your database to keep consistency between Kong Gateway and your existing primary datastore.
-
+      You can either rely on Kong Gateway as the primary datastore, or you can
+      map the consumer list with your database to keep consistency between Kong
+      Gateway and your existing primary datastore.
     name: Consumers
-  - description: "Consumer groups enable the organization and categorization of consumers (users or applications) within an API ecosystem. \nBy grouping consumers together, you eliminate the need to manage them individually, providing a scalable, efficient approach to managing configurations."
+  - description: >-
+      Consumer groups enable the organization and categorization of consumers
+      (users or applications) within an API ecosystem. 
+
+      By grouping consumers together, you eliminate the need to manage them
+      individually, providing a scalable, efficient approach to managing
+      configurations.
     name: Consumer Groups
   - description: >
-      A certificate object represents a public certificate, and can be optionally paired with the corresponding private key. These objects are used by Kong Gateway to handle SSL/TLS termination for encrypted requests, or for use as a trusted CA store when validating peer certificate of client/service.
+      A certificate object represents a public certificate, and can be
+      optionally paired with the corresponding private key. These objects are
+      used by Kong Gateway to handle SSL/TLS termination for encrypted requests,
+      or for use as a trusted CA store when validating peer certificate of
+      client/service.
 
       <br><br>
 
-      Certificates are optionally associated with SNI objects to tie a cert/key pair to one or more hostnames.
+      Certificates are optionally associated with SNI objects to tie a cert/key
+      pair to one or more hostnames.
 
       <br><br>
 
-      If intermediate certificates are required in addition to the main certificate, they should be concatenated together into one string.
-
+      If intermediate certificates are required in addition to the main
+      certificate, they should be concatenated together into one string.
     name: Certificates
-  - description: "An SNI object represents a many-to-one mapping of hostnames to a certificate. \n<br><br>\nA certificate object can have many hostnames associated with it. When Kong Gateway receives an SSL request, it uses the SNI field in the Client Hello to look up the certificate object based on the SNI associated with the certificate."
+  - description: >-
+      An SNI object represents a many-to-one mapping of hostnames to a
+      certificate. 
+
+      <br><br>
+
+      A certificate object can have many hostnames associated with it. When Kong
+      Gateway receives an SSL request, it uses the SNI field in the Client Hello
+      to look up the certificate object based on the SNI associated with the
+      certificate.
     name: SNIs
-  - description: "A CA certificate object represents a trusted certificate authority. \nThese objects are used by Kong Gateway to verify the validity of a client or server certificate."
+  - description: >-
+      A CA certificate object represents a trusted certificate authority. 
+
+      These objects are used by Kong Gateway to verify the validity of a client
+      or server certificate.
     name: CA Certificates
-  - description: "The upstream object represents a virtual hostname and can be used to load balance incoming requests over multiple services (targets). \n<br><br>\nAn upstream also includes a [health checker](https://docs.konghq.com/gateway/latest/how-kong-works/health-checks/), which can enable and disable targets based on their ability or inability to serve requests. \nThe configuration for the health checker is stored in the upstream object, and applies to all of its targets."
+  - description: >-
+      The upstream object represents a virtual hostname and can be used to load
+      balance incoming requests over multiple services (targets). 
+
+      <br><br>
+
+      An upstream also includes a [health
+      checker](https://docs.konghq.com/gateway/latest/how-kong-works/health-checks/),
+      which can enable and disable targets based on their ability or inability
+      to serve requests. 
+
+      The configuration for the health checker is stored in the upstream object,
+      and applies to all of its targets.
     name: Upstreams
   - description: >
-      Vault objects are used to configure different vault connectors for [managing secrets](https://docs.konghq.com/gateway/latest/kong-enterprise/secrets-management/).
+      Vault objects are used to configure different vault connectors for
+      [managing
+      secrets](https://docs.konghq.com/gateway/latest/kong-enterprise/secrets-management/).
 
       Configuring a vault lets you reference secrets from other entities.
 
-      This allows for a proper separation of secrets and configuration and prevents secret sprawl.
+      This allows for a proper separation of secrets and configuration and
+      prevents secret sprawl.
 
       <br><br>
 
-      For example, you could store a certificate and a key in a vault, then reference them from a certificate entity. This way, the certificate and key are not stored in the entity directly and are more secure.
+      For example, you could store a certificate and a key in a vault, then
+      reference them from a certificate entity. This way, the certificate and
+      key are not stored in the entity directly and are more secure.
 
       <br><br>
 
-      Secrets rotation can be managed using [TTLs](https://docs.konghq.com/gateway/latest/kong-enterprise/secrets-management/advanced-usage/).
-
+      Secrets rotation can be managed using
+      [TTLs](https://docs.konghq.com/gateway/latest/kong-enterprise/secrets-management/advanced-usage/).
     name: Vaults
   - description: >
-      A key object holds a representation of asymmetric keys in various formats. When Kong Gateway or a Kong plugin requires a specific public or private key to perform certain operations, it can use this entity.
-
+      A key object holds a representation of asymmetric keys in various formats.
+      When Kong Gateway or a Kong plugin requires a specific public or private
+      key to perform certain operations, it can use this entity.
     name: Keys
   - description: >
-      A JSON Web key set. Key sets are the preferred way to expose keys to plugins because they tell the plugin where to look for keys or have a scoping mechanism to restrict plugins to specific keys.
-
+      A JSON Web key set. Key sets are the preferred way to expose keys to
+      plugins because they tell the plugin where to look for keys or have a
+      scoping mechanism to restrict plugins to specific keys.
     name: KeySets
   - name: API-keys
   - name: Basic-auth credentials
