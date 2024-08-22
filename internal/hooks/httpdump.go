@@ -6,12 +6,14 @@ import (
 	"net/http/httputil"
 )
 
+// HTTPDumpRequestHook is a hook that dumps the request to stdout.
 type HTTPDumpRequestHook struct {
 	Enabled bool
 }
 
 var _ beforeRequestHook = (*HTTPDumpRequestHook)(nil)
 
+// BeforeRequest dumps the request to stdout if enabled.
 func (i *HTTPDumpRequestHook) BeforeRequest(hookCtx BeforeRequestContext, req *http.Request) (*http.Request, error) {
 	if !i.Enabled {
 		return req, nil
@@ -27,12 +29,14 @@ func (i *HTTPDumpRequestHook) BeforeRequest(hookCtx BeforeRequestContext, req *h
 	return req, nil
 }
 
+// HTTPDumpResponseHook is a hook that dumps the response to stdout.
 type HTTPDumpResponseHook struct {
 	Enabled bool
 }
 
 var _ afterSuccessHook = (*HTTPDumpResponseHook)(nil)
 
+// AfterSuccess dumps the response to stdout if enabled.
 func (i *HTTPDumpResponseHook) AfterSuccess(hookCtx AfterSuccessContext, res *http.Response) (*http.Response, error) {
 	if !i.Enabled {
 		return res, nil
