@@ -5,6 +5,11 @@ PROJECT_DIR := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))
 TOOLS_VERSIONS_FILE = $(PROJECT_DIR)/.tools_versions.yaml
 export MISE_DATA_DIR = $(PROJECT_DIR)/bin/
 
+MISE := $(shell which mise)
+.PHONY: mise
+mise:
+	@mise -V >/dev/null || (echo "mise - https://github.com/jdx/mise - not found. Please install it." && exit 1)
+
 # Do not store yq's version in .tools_versions.yaml as it is used to get tool versions.
 # renovate: datasource=github-releases depName=mikefarah/yq
 YQ_VERSION = 4.43.1
