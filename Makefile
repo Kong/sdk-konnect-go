@@ -71,6 +71,7 @@ generate.sdk:
 	$(SED) -i 's#\(type RouteInput struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/route.go
 
+	go mod tidy
 	$(MAKE) generate.deepcopy
 	git checkout -- $(OPENAPI_FILE) \
 		$(shell git ls-files models/components/route*.go) \
