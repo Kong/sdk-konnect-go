@@ -3,15 +3,15 @@ id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
   docChecksum: ec4d3cb9876f69aa90a3374c55d5aae7
   docVersion: 0.0.1
-  speakeasyVersion: 1.361.1
-  generationVersion: 2.393.4
-  releaseVersion: 0.6.1
-  configChecksum: 05ecbbdcf203570969c97dc3d214e0bf
+  speakeasyVersion: 1.377.2
+  generationVersion: 2.404.1
+  releaseVersion: 0.6.2
+  configChecksum: b86fca46bee624dcf2da9162efcf8b23
 features:
   go:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.6
-    core: 3.5.3
+    core: 3.5.5
     deepObjectParams: 0.1.0
     defaultEnabledRetries: 0.2.0
     envVarSecurityUsage: 0.3.0
@@ -848,17 +848,12 @@ generatedFiles:
   - docs/models/components/basicauth.md
   - docs/models/components/basicauthwithoutparents.md
   - docs/models/components/cacertificate.md
-  - docs/models/components/cacertificateinput.md
   - docs/models/components/certificate.md
-  - docs/models/components/certificateinput.md
   - docs/models/components/snicertificate.md
   - docs/models/components/sni.md
   - docs/models/components/sniwithoutparents.md
-  - docs/models/components/sniinput.md
   - docs/models/components/consumergroup.md
-  - docs/models/components/consumergroupinput.md
   - docs/models/components/consumer.md
-  - docs/models/components/consumerinput.md
   - docs/models/components/hmacauthconsumer.md
   - docs/models/components/hmacauth.md
   - docs/models/components/hmacauthwithoutparents.md
@@ -871,11 +866,9 @@ generatedFiles:
   - docs/models/components/keyauth.md
   - docs/models/components/keyauthwithoutparents.md
   - docs/models/components/keyset.md
-  - docs/models/components/keysetinput.md
   - docs/models/components/pem.md
   - docs/models/components/set.md
   - docs/models/components/key.md
-  - docs/models/components/keyinput.md
   - docs/models/components/items.md
   - docs/models/components/page.md
   - docs/models/components/listpluginschemas.md
@@ -888,7 +881,6 @@ generatedFiles:
   - docs/models/components/pluginroute.md
   - docs/models/components/pluginservice.md
   - docs/models/components/plugin.md
-  - docs/models/components/plugininput.md
   - docs/models/components/pluginwithoutparentsprotocols.md
   - docs/models/components/pluginwithoutparents.md
   - docs/models/components/destinations.md
@@ -898,7 +890,6 @@ generatedFiles:
   - docs/models/components/sources.md
   - docs/models/components/routeservice.md
   - docs/models/components/route.md
-  - docs/models/components/routeinput.md
   - docs/models/components/routewithoutparentsdestinations.md
   - docs/models/components/routewithoutparentshttpsredirectstatuscode.md
   - docs/models/components/routewithoutparentspathhandling.md
@@ -908,7 +899,6 @@ generatedFiles:
   - docs/models/components/clientcertificate.md
   - docs/models/components/protocol.md
   - docs/models/components/service.md
-  - docs/models/components/serviceinput.md
   - docs/models/components/upstreamalgorithm.md
   - docs/models/components/upstreamclientcertificate.md
   - docs/models/components/hashfallback.md
@@ -923,13 +913,11 @@ generatedFiles:
   - docs/models/components/passive.md
   - docs/models/components/healthchecks.md
   - docs/models/components/upstream.md
-  - docs/models/components/upstreaminput.md
   - docs/models/components/targetupstream.md
   - docs/models/components/target.md
   - docs/models/components/targetwithoutparents.md
   - docs/models/components/vaultconfig.md
   - docs/models/components/vault.md
-  - docs/models/components/vaultinput.md
   - docs/models/components/listdataplanecertificatesresponsepage.md
   - docs/models/components/listdataplanecertificatesresponse.md
   - docs/models/components/dataplaneclientcertificateitem.md
