@@ -1,0 +1,26 @@
+name: Generate SDK
+
+on:
+  pull_request:
+    branches:
+      - '*'
+    types:
+    - labeled
+
+jobs:
+  check-label:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: mheap/github-action-required-labels@v5
+        with:
+          mode: exactly
+          count: 1
+          labels: "regenerate"
+
+  generate:
+    needs:
+    - check-label
+    uses: ./.github/workflows/__generate.yaml

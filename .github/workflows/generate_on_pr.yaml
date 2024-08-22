@@ -1,0 +1,14 @@
+name: Generate SDK
+
+on:
+  pull_request:
+    paths:
+      - .speakeasy/gen.yaml
+    types:
+    - opened
+    - synchronize
+
+jobs:
+  build:
+    uses: ./.github/workflows/__generate.yaml
+
