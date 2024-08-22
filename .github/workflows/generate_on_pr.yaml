@@ -28,14 +28,17 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
 
+      - name: Configure speakeasy CLI
+        run: |
+          mkdir -p ~/.speakeasy
+          echo 'speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}' > ~/.speakeasy/config.yaml
+
       - uses: jdx/mise-action@v2
         with:
           install: false
 
       - name: Generate SDK
         run: make generate.sdk
-        env:
-          SPEAKEASYAPIKEY: ${{ secrets.SPEAKEASY_API_KEY }}
 
       - name: Commit SDK changes to the PR
         uses: EndBug/add-and-commit@v9
