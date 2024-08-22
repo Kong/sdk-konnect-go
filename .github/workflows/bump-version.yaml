@@ -51,4 +51,4 @@ jobs:
         with:
           add: .
           default_author: github_actor
-          message: Bump gen.yaml based on label
+          message: Bump .speakeasy/gen.yaml based on label
