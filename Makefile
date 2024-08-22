@@ -1,14 +1,38 @@
 SHELL = bash
 .SHELLFLAGS = -ec -o pipefail
 
-OPENAPI_FILE = openapi.yaml
-SPEAKEASY_DIR = .speakeasy
-KUBEBUILDER_GENERATE_CODE_MARKER = +kubebuilder:object:generate=true
+PROJECT_DIR := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))
+TOOLS_VERSIONS_FILE = $(PROJECT_DIR)/.tools_versions.yaml
+export MISE_DATA_DIR = $(PROJECT_DIR)/bin/
+
+# Do not store yq's version in .tools_versions.yaml as it is used to get tool versions.
+# renovate: datasource=github-releases depName=mikefarah/yq
+YQ_VERSION = 4.43.1
+YQ = $(PROJECT_DIR)/bin/installs/yq/$(YQ_VERSION)/bin/yq
+.PHONY: yq
+yq: mise # Download yq locally if necessary.
+	@$(MISE) plugin install --yes -q yq
+	@$(MISE) install -q yq@$(YQ_VERSION)
+
+CONTROLLER_GEN_VERSION = $(shell $(YQ) -r '.controller-tools' < $(TOOLS_VERSIONS_FILE))
+CONTROLLER_GEN = $(PROJECT_DIR)/bin/installs/kube-controller-tools/$(CONTROLLER_GEN_VERSION)/bin/controller-gen
+.PHONY: controller-gen
+controller-gen: mise yq ## Download controller-gen locally if necessary.
+	@$(MISE) plugin install --yes -q kube-controller-tools
+	@$(MISE) install -q kube-controller-tools@$(CONTROLLER_GEN_VERSION)
+
+# ------------------------------------------------------------------------------
+# Code generation
+# ------------------------------------------------------------------------------
 
 SED=sed
 ifeq (Darwin,$(shell uname -s))
 	SED=gsed
 endif
+
+OPENAPI_FILE = openapi.yaml
+SPEAKEASY_DIR = .speakeasy
+KUBEBUILDER_GENERATE_CODE_MARKER = +kubebuilder:object:generate=true
 
 .PHONY: generate.deepcopy
 generate.deepcopy: deepcopy
