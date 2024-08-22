@@ -35,14 +35,9 @@ SPEAKEASY_DIR = .speakeasy
 KUBEBUILDER_GENERATE_CODE_MARKER = +kubebuilder:object:generate=true
 
 .PHONY: generate.deepcopy
-generate.deepcopy: deepcopy
+generate.deepcopy: controller-gen
 # Generate deepcopy/runtime.Object implementations for a particular file
-	controller-gen object paths=./models/components/
-
-# TODO: add versioning
-.PHONY: deepcopy
-deepcopy:
-	go install -v sigs.k8s.io/controller-tools/cmd/controller-gen@latest
+	$(CONTROLLER_GEN) object paths=./models/components/
 
 # NOTE: We call speakeasy twice to generate DeepCopy() for the types that need it.
 #       The generation is called twice because we want to generate the zz_generated.deepcopy.go
