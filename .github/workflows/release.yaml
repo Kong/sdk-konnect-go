@@ -1,0 +1,42 @@
+name: Publish
+
+on:
+  push:
+    paths:
+      - ".speakeasy/gen.lock"
+    branches:
+      - main
+  workflow_dispatch:
+
+# Releases need permissions to read and write the repository contents.
+# GitHub considers creating releases and uploading assets as writing contents.
+permissions:
+  contents: write
+
+jobs:
+  goreleaser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Allow goreleaser to access older tag information.
+          fetch-depth: 0
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: "go.mod"
+      - name: Read current version + create tag
+        run: |
+          TAG=$(yq '.management.releaseVersion' .speakeasy/gen.lock)
+
+          git config --global user.email "apiops@konghq.com"
+          git config --global user.name "kong-apiops[bot]"
+
+          git tag -a v$TAG -m "Release v$TAG"
+          git push origin v$TAG
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v6
+        with:
+          args: release --clean
+          version: ~> v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
