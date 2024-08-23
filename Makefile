@@ -79,3 +79,4 @@ generate.sdk:
 		$(shell git ls-files models/components/create*.go) \
 		$(shell git ls-files docs/models/components/create*.md)
 	speakeasy generate sdk --lang go --out . --schema ./$(OPENAPI_FILE)
+	go mod tidy

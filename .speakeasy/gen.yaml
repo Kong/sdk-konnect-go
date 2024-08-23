@@ -12,9 +12,8 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 go:
-  version: 0.0.5
-  additionalDependencies:
-    k8s.io/apimachinery: v0.30.2
+  version: 0.0.6
+  additionalDependencies: {}
   allowUnknownFieldsInWeakUnions: false
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
