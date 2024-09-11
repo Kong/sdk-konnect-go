@@ -9,7 +9,7 @@ import (
 )
 
 type ListTargetWithUpstreamRequest struct {
-	// The UUID of your control plane. This variable is available in the Konnect manager.
+	// The UUID of your control plane. This variable is available in the Konnect manager
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// ID or target of the Target to lookup
 	UpstreamIDForTarget string `pathParam:"style=simple,explode=false,name=UpstreamIdForTarget"`
@@ -70,6 +70,8 @@ func (o *ListTargetWithUpstreamRequest) GetTags() *string {
 // ListTargetWithUpstreamResponseBody - A successful response listing Targets
 type ListTargetWithUpstreamResponseBody struct {
 	Data []components.Target `json:"data,omitempty"`
+	// URI to the next page (may be null)
+	Next *string `json:"next,omitempty"`
 	// Offset is used to paginate through the API. Provide this value to the next list operation to fetch the next page
 	Offset *string `json:"offset,omitempty"`
 }
@@ -79,6 +81,13 @@ func (o *ListTargetWithUpstreamResponseBody) GetData() []components.Target {
 		return nil
 	}
 	return o.Data
+}
+
+func (o *ListTargetWithUpstreamResponseBody) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
 }
 
 func (o *ListTargetWithUpstreamResponseBody) GetOffset() *string {

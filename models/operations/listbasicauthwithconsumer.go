@@ -9,7 +9,7 @@ import (
 )
 
 type ListBasicAuthWithConsumerRequest struct {
-	// The UUID of your control plane. This variable is available in the Konnect manager.
+	// The UUID of your control plane. This variable is available in the Konnect manager
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Consumer ID for nested entities
 	ConsumerIDForNestedEntities string `pathParam:"style=simple,explode=false,name=ConsumerIdForNestedEntities"`
@@ -70,6 +70,8 @@ func (o *ListBasicAuthWithConsumerRequest) GetTags() *string {
 // ListBasicAuthWithConsumerResponseBody - A successful response listing Basic-auth credentials
 type ListBasicAuthWithConsumerResponseBody struct {
 	Data []components.BasicAuth `json:"data,omitempty"`
+	// URI to the next page (may be null)
+	Next *string `json:"next,omitempty"`
 	// Offset is used to paginate through the API. Provide this value to the next list operation to fetch the next page
 	Offset *string `json:"offset,omitempty"`
 }
@@ -79,6 +81,13 @@ func (o *ListBasicAuthWithConsumerResponseBody) GetData() []components.BasicAuth
 		return nil
 	}
 	return o.Data
+}
+
+func (o *ListBasicAuthWithConsumerResponseBody) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
 }
 
 func (o *ListBasicAuthWithConsumerResponseBody) GetOffset() *string {

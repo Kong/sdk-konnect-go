@@ -8,19 +8,12 @@ import (
 )
 
 type UpsertServiceRequest struct {
-	// The UUID of your control plane. This variable is available in the Konnect manager.
-	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// ID of the Service to lookup
 	ServiceID string `pathParam:"style=simple,explode=false,name=ServiceId"`
+	// The UUID of your control plane. This variable is available in the Konnect manager
+	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Description of the Service
 	Service components.ServiceInput `request:"mediaType=application/json"`
-}
-
-func (o *UpsertServiceRequest) GetControlPlaneID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ControlPlaneID
 }
 
 func (o *UpsertServiceRequest) GetServiceID() string {
@@ -28,6 +21,13 @@ func (o *UpsertServiceRequest) GetServiceID() string {
 		return ""
 	}
 	return o.ServiceID
+}
+
+func (o *UpsertServiceRequest) GetControlPlaneID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ControlPlaneID
 }
 
 func (o *UpsertServiceRequest) GetService() components.ServiceInput {

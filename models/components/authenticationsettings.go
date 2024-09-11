@@ -7,6 +7,8 @@ type AuthenticationSettings struct {
 	BasicAuthEnabled *bool `json:"basic_auth_enabled,omitempty"`
 	// The organization has OIDC disabled.
 	OidcAuthEnabled *bool `json:"oidc_auth_enabled,omitempty"`
+	// The organization has SAML disabled.
+	SamlAuthEnabled *bool `json:"saml_auth_enabled,omitempty"`
 	// IdP groups determine the Konnect teams a user has.
 	IdpMappingEnabled *bool `json:"idp_mapping_enabled,omitempty"`
 	// A Konnect Identity Admin assigns teams to a user.
@@ -25,6 +27,13 @@ func (o *AuthenticationSettings) GetOidcAuthEnabled() *bool {
 		return nil
 	}
 	return o.OidcAuthEnabled
+}
+
+func (o *AuthenticationSettings) GetSamlAuthEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.SamlAuthEnabled
 }
 
 func (o *AuthenticationSettings) GetIdpMappingEnabled() *bool {

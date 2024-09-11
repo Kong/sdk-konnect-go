@@ -9,7 +9,7 @@ import (
 )
 
 type ListJwtWithConsumerRequest struct {
-	// The UUID of your control plane. This variable is available in the Konnect manager.
+	// The UUID of your control plane. This variable is available in the Konnect manager
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Consumer ID for nested entities
 	ConsumerIDForNestedEntities string `pathParam:"style=simple,explode=false,name=ConsumerIdForNestedEntities"`
@@ -70,6 +70,8 @@ func (o *ListJwtWithConsumerRequest) GetTags() *string {
 // ListJwtWithConsumerResponseBody - A successful response listing JWTs
 type ListJwtWithConsumerResponseBody struct {
 	Data []components.Jwt `json:"data,omitempty"`
+	// URI to the next page (may be null)
+	Next *string `json:"next,omitempty"`
 	// Offset is used to paginate through the API. Provide this value to the next list operation to fetch the next page
 	Offset *string `json:"offset,omitempty"`
 }
@@ -79,6 +81,13 @@ func (o *ListJwtWithConsumerResponseBody) GetData() []components.Jwt {
 		return nil
 	}
 	return o.Data
+}
+
+func (o *ListJwtWithConsumerResponseBody) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
 }
 
 func (o *ListJwtWithConsumerResponseBody) GetOffset() *string {

@@ -9,7 +9,7 @@ import (
 )
 
 type ListPluginWithServiceRequest struct {
-	// The UUID of your control plane. This variable is available in the Konnect manager.
+	// The UUID of your control plane. This variable is available in the Konnect manager
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// ID of the Service to lookup
 	ServiceID string `pathParam:"style=simple,explode=false,name=ServiceId"`
@@ -70,6 +70,8 @@ func (o *ListPluginWithServiceRequest) GetTags() *string {
 // ListPluginWithServiceResponseBody - A successful response listing Plugins
 type ListPluginWithServiceResponseBody struct {
 	Data []components.Plugin `json:"data,omitempty"`
+	// URI to the next page (may be null)
+	Next *string `json:"next,omitempty"`
 	// Offset is used to paginate through the API. Provide this value to the next list operation to fetch the next page
 	Offset *string `json:"offset,omitempty"`
 }
@@ -79,6 +81,13 @@ func (o *ListPluginWithServiceResponseBody) GetData() []components.Plugin {
 		return nil
 	}
 	return o.Data
+}
+
+func (o *ListPluginWithServiceResponseBody) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
 }
 
 func (o *ListPluginWithServiceResponseBody) GetOffset() *string {

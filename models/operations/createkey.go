@@ -8,7 +8,7 @@ import (
 )
 
 type CreateKeyRequest struct {
-	// The UUID of your control plane. This variable is available in the Konnect manager.
+	// The UUID of your control plane. This variable is available in the Konnect manager
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Description of the new Key for creation
 	Key components.KeyInput `request:"mediaType=application/json"`

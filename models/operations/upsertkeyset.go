@@ -8,19 +8,12 @@ import (
 )
 
 type UpsertKeySetRequest struct {
-	// The UUID of your control plane. This variable is available in the Konnect manager.
-	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// ID of the KeySet to lookup
 	KeySetID string `pathParam:"style=simple,explode=false,name=KeySetId"`
+	// The UUID of your control plane. This variable is available in the Konnect manager
+	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Description of the KeySet
 	KeySet components.KeySetInput `request:"mediaType=application/json"`
-}
-
-func (o *UpsertKeySetRequest) GetControlPlaneID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ControlPlaneID
 }
 
 func (o *UpsertKeySetRequest) GetKeySetID() string {
@@ -28,6 +21,13 @@ func (o *UpsertKeySetRequest) GetKeySetID() string {
 		return ""
 	}
 	return o.KeySetID
+}
+
+func (o *UpsertKeySetRequest) GetControlPlaneID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ControlPlaneID
 }
 
 func (o *UpsertKeySetRequest) GetKeySet() components.KeySetInput {

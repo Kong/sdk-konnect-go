@@ -8,19 +8,12 @@ import (
 )
 
 type UpsertUpstreamRequest struct {
-	// The UUID of your control plane. This variable is available in the Konnect manager.
-	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// ID of the Upstream to lookup
 	UpstreamID string `pathParam:"style=simple,explode=false,name=UpstreamId"`
+	// The UUID of your control plane. This variable is available in the Konnect manager
+	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Description of the Upstream
 	Upstream components.UpstreamInput `request:"mediaType=application/json"`
-}
-
-func (o *UpsertUpstreamRequest) GetControlPlaneID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ControlPlaneID
 }
 
 func (o *UpsertUpstreamRequest) GetUpstreamID() string {
@@ -28,6 +21,13 @@ func (o *UpsertUpstreamRequest) GetUpstreamID() string {
 		return ""
 	}
 	return o.UpstreamID
+}
+
+func (o *UpsertUpstreamRequest) GetControlPlaneID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ControlPlaneID
 }
 
 func (o *UpsertUpstreamRequest) GetUpstream() components.UpstreamInput {

@@ -29,12 +29,16 @@ func newDPCertificates(sdkConfig sdkConfiguration) *DPCertificates {
 
 // ListDpClientCertificates - List DP Client Certificates
 // Returns a list of pinned dataplane client certificates that are associated to this control plane. A pinned dataplane certificate allows dataplanes configured with the certificate and corresponding private key to establish connection with this control plane.
-func (s *DPCertificates) ListDpClientCertificates(ctx context.Context, request operations.ListDpClientCertificatesRequest, opts ...operations.Option) (*operations.ListDpClientCertificatesResponse, error) {
+func (s *DPCertificates) ListDpClientCertificates(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.ListDpClientCertificatesResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "list-dp-client-certificates",
 		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
+	}
+
+	request := operations.ListDpClientCertificatesRequest{
+		ControlPlaneID: controlPlaneID,
 	}
 
 	o := operations.Options{}
@@ -72,10 +76,6 @@ func (s *DPCertificates) ListDpClientCertificates(ctx context.Context, request o
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
-
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
-		return nil, fmt.Errorf("error populating query params: %w", err)
-	}
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err
