@@ -37,13 +37,13 @@ func main() {
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
-	request := operations.ListServerlessCloudGatewayRequest{
+
+	ctx := context.Background()
+	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, operations.ListServerlessCloudGatewayRequest{
 		PageSize:   sdkkonnectgo.Int64(10),
 		PageNumber: sdkkonnectgo.Int64(1),
 		Labels:     sdkkonnectgo.String("filter[labels][eq]=env:prod"),
-	}
-	ctx := context.Background()
-	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, request)
+	})
 	if err != nil {
 
 		var e *sdkerrors.UnauthorizedError
@@ -103,13 +103,13 @@ func main() {
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
-	request := operations.ListServerlessCloudGatewayRequest{
+
+	ctx := context.Background()
+	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, operations.ListServerlessCloudGatewayRequest{
 		PageSize:   sdkkonnectgo.Int64(10),
 		PageNumber: sdkkonnectgo.Int64(1),
 		Labels:     sdkkonnectgo.String("filter[labels][eq]=env:prod"),
-	}
-	ctx := context.Background()
-	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, request)
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -142,13 +142,13 @@ func main() {
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
-	request := operations.ListServerlessCloudGatewayRequest{
+
+	ctx := context.Background()
+	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, operations.ListServerlessCloudGatewayRequest{
 		PageSize:   sdkkonnectgo.Int64(10),
 		PageNumber: sdkkonnectgo.Int64(1),
 		Labels:     sdkkonnectgo.String("filter[labels][eq]=env:prod"),
-	}
-	ctx := context.Background()
-	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, request)
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -179,13 +179,13 @@ func main() {
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
-	request := operations.ListServerlessCloudGatewayRequest{
+
+	ctx := context.Background()
+	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, operations.ListServerlessCloudGatewayRequest{
 		PageSize:   sdkkonnectgo.Int64(10),
 		PageNumber: sdkkonnectgo.Int64(1),
 		Labels:     sdkkonnectgo.String("filter[labels][eq]=env:prod"),
-	}
-	ctx := context.Background()
-	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, request, operations.WithServerURL("https://global.api.konghq.com/"))
+	}, operations.WithServerURL("https://global.api.konghq.com/"))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -257,13 +257,13 @@ func main() {
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
-	request := operations.ListServerlessCloudGatewayRequest{
+
+	ctx := context.Background()
+	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, operations.ListServerlessCloudGatewayRequest{
 		PageSize:   sdkkonnectgo.Int64(10),
 		PageNumber: sdkkonnectgo.Int64(1),
 		Labels:     sdkkonnectgo.String("filter[labels][eq]=env:prod"),
-	}
-	ctx := context.Background()
-	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, request)
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -280,6 +280,28 @@ func main() {
 
 
 <!-- End Special Types [types] -->
+
+<!-- Start Summary [summary] -->
+## Summary
+
+Konnect API - Go SDK: The Konnect platform API
+
+For more information about the API: [Documentation for Kong Gateway and its APIs](https://docs.konghq.com)
+<!-- End Summary [summary] -->
+
+<!-- Start Table of Contents [toc] -->
+## Table of Contents
+
+* [SDK Installation](#sdk-installation)
+* [SDK Example Usage](#sdk-example-usage)
+* [Available Resources and Operations](#available-resources-and-operations)
+* [Retries](#retries)
+* [Error Handling](#error-handling)
+* [Server Selection](#server-selection)
+* [Custom HTTP Client](#custom-http-client)
+* [Authentication](#authentication)
+* [Special Types](#special-types)
+<!-- End Table of Contents [toc] -->
 
 <!-- Start Retries [retries] -->
 ## Retries
@@ -306,13 +328,13 @@ func main() {
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
-	request := operations.ListServerlessCloudGatewayRequest{
+
+	ctx := context.Background()
+	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, operations.ListServerlessCloudGatewayRequest{
 		PageSize:   sdkkonnectgo.Int64(10),
 		PageNumber: sdkkonnectgo.Int64(1),
 		Labels:     sdkkonnectgo.String("filter[labels][eq]=env:prod"),
-	}
-	ctx := context.Background()
-	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, request, operations.WithRetries(
+	}, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
 			Backoff: &retry.BackoffStrategy{
@@ -363,13 +385,13 @@ func main() {
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
-	request := operations.ListServerlessCloudGatewayRequest{
+
+	ctx := context.Background()
+	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, operations.ListServerlessCloudGatewayRequest{
 		PageSize:   sdkkonnectgo.Int64(10),
 		PageNumber: sdkkonnectgo.Int64(1),
 		Labels:     sdkkonnectgo.String("filter[labels][eq]=env:prod"),
-	}
-	ctx := context.Background()
-	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, request)
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
