@@ -8620,7 +8620,8 @@ components:
                   default: 10
                   type: integer
                 headers:
-                  additionalProperties: true
+                  additionalProperties:
+                    type: string
                   type: object
                 healthy:
                   properties:
