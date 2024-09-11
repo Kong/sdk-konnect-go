@@ -54,6 +54,7 @@ generate.sdk:
 	yq --inplace '.components.schemas.CreateControlPlaneRequest.description += "\n$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
 	yq --inplace '.components.schemas.CreateServiceWithoutParents.description += "\n$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
 	yq --inplace '.components.schemas.RouteWithoutParents.description += "\n$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
+	yq --inplace '.components.schemas.Upstream.properties.healthchecks.description += "\n$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
 
 	speakeasy generate sdk --lang go --out . --schema ./$(OPENAPI_FILE)
 	git checkout -- $(SPEAKEASY_DIR)/gen.lock $(SPEAKEASY_DIR)/gen.yaml sdk.go
@@ -70,6 +71,8 @@ generate.sdk:
 		models/components/routewithoutparents.go
 	$(SED) -i 's#\(type RouteInput struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/route.go
+	$(SED) -i 's#\(type UpstreamClientCertificate struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/upstream.go
 
 	go mod tidy
 	$(MAKE) generate.deepcopy
@@ -77,6 +80,9 @@ generate.sdk:
 		$(shell git ls-files models/components/route*.go) \
 		$(shell git ls-files docs/models/components/route*.md) \
 		$(shell git ls-files models/components/create*.go) \
-		$(shell git ls-files docs/models/components/create*.md)
+		$(shell git ls-files docs/models/components/create*.md) \
+		$(shell git ls-files models/components/upstream*.go) \
+		$(shell git ls-files docs/models/components/upstream*.md) \
+		$(shell git ls-files docs/models/components/healthchecks*.md)
 	speakeasy generate sdk --lang go --out . --schema ./$(OPENAPI_FILE)
 	go mod tidy
