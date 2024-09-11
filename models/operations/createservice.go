@@ -8,7 +8,7 @@ import (
 )
 
 type CreateServiceRequest struct {
-	// The UUID of your control plane. This variable is available in the Konnect manager.
+	// The UUID of your control plane. This variable is available in the Konnect manager
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Description of the new Service for creation
 	Service components.ServiceInput `request:"mediaType=application/json"`

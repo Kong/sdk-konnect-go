@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 9c5d9fb0ef0ed11b79e5aae7c6a7ab34
+  docChecksum: 06a2bfc01beff2ee8a6ecab150113dcf
   docVersion: 0.0.1
   speakeasyVersion: 1.395.1
   generationVersion: 2.415.0
-  releaseVersion: 0.0.11
-  configChecksum: 960eed39d63bfb5d5a60adbf86f56c5c
+  releaseVersion: 0.0.12
+  configChecksum: 0fa9efa852062e6e89e5c9a14d0cbae1
 features:
   go:
     additionalDependencies: 0.1.0
@@ -47,6 +47,7 @@ generatedFiles:
   - /models/components/consumer.go
   - /models/components/consumergroup.go
   - /models/components/consumergroupinput.go
+  - /models/components/consumergroupinsidewrapper.go
   - /models/components/consumerinput.go
   - /models/components/controlplane.go
   - /models/components/controlplanesummary.go
@@ -251,6 +252,7 @@ generatedFiles:
   - /models/operations/getteamsteamidsystemaccounts.go
   - /models/operations/getupstream.go
   - /models/operations/getuser.go
+  - /models/operations/getusersme.go
   - /models/operations/getvault.go
   - /models/operations/inviteuser.go
   - /models/operations/listacl.go
@@ -300,6 +302,7 @@ generatedFiles:
   - /models/operations/postsystemaccountsaccountidassignedroles.go
   - /models/operations/postsystemaccountsidaccesstokens.go
   - /models/operations/postteamsteamidsystemaccounts.go
+  - /models/operations/removeconsumerfromgroup.go
   - /models/operations/removeuserfromteam.go
   - /models/operations/teamsassignrole.go
   - /models/operations/teamsremoverole.go
@@ -389,6 +392,7 @@ generatedFiles:
   - docs/models/components/consumer.md
   - docs/models/components/consumeradmin.md
   - docs/models/components/consumergroup.md
+  - docs/models/components/consumergroupinsidewrapper.md
   - docs/models/components/controlplane.md
   - docs/models/components/controlplanes.md
   - docs/models/components/controlplanesummary.md
@@ -851,6 +855,7 @@ generatedFiles:
   - docs/models/operations/getupstreamresponse.md
   - docs/models/operations/getuserrequest.md
   - docs/models/operations/getuserresponse.md
+  - docs/models/operations/getusersmeresponse.md
   - docs/models/operations/getvaultrequest.md
   - docs/models/operations/getvaultresponse.md
   - docs/models/operations/inviteuserresponse.md
@@ -980,6 +985,8 @@ generatedFiles:
   - docs/models/operations/postteamsteamidsystemaccountsrequest.md
   - docs/models/operations/postteamsteamidsystemaccountsresponse.md
   - docs/models/operations/queryparamfilter.md
+  - docs/models/operations/removeconsumerfromgrouprequest.md
+  - docs/models/operations/removeconsumerfromgroupresponse.md
   - docs/models/operations/removeuserfromteamrequest.md
   - docs/models/operations/removeuserfromteamresponse.md
   - docs/models/operations/teamsassignrolerequest.md
@@ -1376,6 +1383,13 @@ examples:
         "401":
           application/json: {"message": "<value>", "status": 812329}
         "201": {}
+    speakeasy-default-create-ca-certificate:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 812329}
   get-ca_certificate:
     "":
       parameters:
@@ -1425,6 +1439,13 @@ examples:
         "401":
           application/json: {"message": "<value>", "status": 143829}
         "201": {}
+    speakeasy-default-create-certificate:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 143829}
   get-certificate:
     "":
       parameters:
@@ -1509,6 +1530,13 @@ examples:
         "401":
           application/json: {"message": "<value>", "status": 805552}
         "201": {}
+    speakeasy-default-create-sni:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 805552}
   get-sni:
     "":
       parameters:
@@ -1558,6 +1586,13 @@ examples:
         "401":
           application/json: {"message": "<value>", "status": 933383}
         "201": {}
+    speakeasy-default-create-consumer-group:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 933383}
   get-consumer_group:
     "":
       parameters:
@@ -1595,6 +1630,13 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
         application/json: {"consumer": "bob"}
+    speakeasy-default-add-consumer-to-group:
+      parameters:
+        path:
+          ConsumerGroupId: "<value>"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"consumer": "cf4c7e60-11db-49dd-b300-7c7e5f0f7e6b"}
   list-consumer:
     "":
       parameters:
@@ -1615,6 +1657,13 @@ examples:
         "401":
           application/json: {"message": "<value>", "status": 848959}
         "201": {}
+    speakeasy-default-create-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 848959}
   get-consumer:
     "":
       parameters:
@@ -1802,6 +1851,13 @@ examples:
         "401":
           application/json: {"message": "<value>", "status": 454928}
         "201": {}
+    speakeasy-default-create-key-set:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 454928}
   get-key-set:
     "":
       parameters:
@@ -1851,6 +1907,13 @@ examples:
         "401":
           application/json: {"message": "<value>", "status": 907390}
         "201": {}
+    speakeasy-default-create-key:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 907390}
   get-key:
     "":
       parameters:
@@ -1980,6 +2043,13 @@ examples:
         "401":
           application/json: {"message": "<value>", "status": 130029}
         "201": {}
+    speakeasy-default-create-plugin:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 130029}
   get-plugin:
     "":
       parameters:
@@ -2050,6 +2120,11 @@ examples:
         path:
           pluginName: "<value>"
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+    speakeasy-default-fetch-plugin-schema:
+      parameters:
+        path:
+          pluginName: "<value>"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
   list-plugin-with-service:
     "":
       parameters:
@@ -2105,6 +2180,13 @@ examples:
         "401":
           application/json: {"message": "<value>", "status": 811488}
         "201": {}
+    speakeasy-default-create-route:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 811488}
   get-route:
     "":
       parameters:
@@ -2192,6 +2274,17 @@ examples:
           application/json: {"host": "courageous-jalapeño.com"}
         "401":
           application/json: {"message": "<value>", "status": 216580}
+    speakeasy-default-create-service:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"host": "fumbling-airship.org"}
+      responses:
+        "201":
+          application/json: {"host": "courageous-jalapeño.com"}
+        "401":
+          application/json: {"message": "<value>", "status": 216580}
   get-service:
     "":
       parameters:
@@ -2245,6 +2338,13 @@ examples:
         "401":
           application/json: {"message": "<value>", "status": 670650}
         "201": {}
+    speakeasy-default-create-upstream:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 670650}
   get-upstream:
     "":
       parameters:
@@ -2329,6 +2429,13 @@ examples:
         "401":
           application/json: {"message": "<value>", "status": 954798}
         "201": {}
+    speakeasy-default-create-vault:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 954798}
   get-vault:
     "":
       parameters:
@@ -2522,16 +2629,16 @@ examples:
     speakeasy-default-get-authentication-settings:
       responses:
         "200":
-          application/json: {"basic_auth_enabled": true, "oidc_auth_enabled": false, "idp_mapping_enabled": true, "konnect_mapping_enabled": false}
+          application/json: {"basic_auth_enabled": true, "oidc_auth_enabled": false, "saml_auth_enabled": false, "idp_mapping_enabled": true, "konnect_mapping_enabled": false}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
   update-authentication-settings:
     speakeasy-default-update-authentication-settings:
       requestBody:
-        application/json: {"basic_auth_enabled": true, "oidc_auth_enabled": false, "idp_mapping_enabled": true, "konnect_mapping_enabled": false}
+        application/json: {"basic_auth_enabled": true, "oidc_auth_enabled": false, "saml_auth_enabled": false, "idp_mapping_enabled": true, "konnect_mapping_enabled": false}
       responses:
         "200":
-          application/json: {"basic_auth_enabled": true, "oidc_auth_enabled": false, "idp_mapping_enabled": true, "konnect_mapping_enabled": false}
+          application/json: {"basic_auth_enabled": true, "oidc_auth_enabled": false, "saml_auth_enabled": false, "idp_mapping_enabled": true, "konnect_mapping_enabled": false}
         "400":
           application/problem+json: {"status": 512469, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -3151,3 +3258,17 @@ examples:
       responses:
         "404":
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  remove-consumer-from-group:
+    speakeasy-default-remove-consumer-from-group:
+      parameters:
+        path:
+          ConsumerGroupId: "<value>"
+          ConsumerId: "<value>"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+  get-users-me:
+    speakeasy-default-get-users-me:
+      responses:
+        "200":
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "email": "user@email.com", "full_name": "Test User", "preferred_name": "test", "active": true, "created_at": "2022-02-07T17:46:57.52Z", "updated_at": "2022-10-08T17:00:00.52Z"}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}

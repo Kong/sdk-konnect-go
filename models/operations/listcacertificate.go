@@ -9,7 +9,7 @@ import (
 )
 
 type ListCaCertificateRequest struct {
-	// The UUID of your control plane. This variable is available in the Konnect manager.
+	// The UUID of your control plane. This variable is available in the Konnect manager
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Number of resources to be returned.
 	Size *int64 `default:"100" queryParam:"style=form,explode=true,name=size"`
@@ -61,6 +61,8 @@ func (o *ListCaCertificateRequest) GetTags() *string {
 // ListCaCertificateResponseBody - A successful response listing CA Certificates
 type ListCaCertificateResponseBody struct {
 	Data []components.CACertificate `json:"data,omitempty"`
+	// URI to the next page (may be null)
+	Next *string `json:"next,omitempty"`
 	// Offset is used to paginate through the API. Provide this value to the next list operation to fetch the next page
 	Offset *string `json:"offset,omitempty"`
 }
@@ -70,6 +72,13 @@ func (o *ListCaCertificateResponseBody) GetData() []components.CACertificate {
 		return nil
 	}
 	return o.Data
+}
+
+func (o *ListCaCertificateResponseBody) GetNext() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Next
 }
 
 func (o *ListCaCertificateResponseBody) GetOffset() *string {

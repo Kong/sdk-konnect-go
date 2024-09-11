@@ -8,19 +8,12 @@ import (
 )
 
 type UpsertSniRequest struct {
-	// The UUID of your control plane. This variable is available in the Konnect manager.
-	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// ID of the SNI to lookup
 	SNIID string `pathParam:"style=simple,explode=false,name=SNIId"`
+	// The UUID of your control plane. This variable is available in the Konnect manager
+	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Description of the SNI
 	Sni components.SNIInput `request:"mediaType=application/json"`
-}
-
-func (o *UpsertSniRequest) GetControlPlaneID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ControlPlaneID
 }
 
 func (o *UpsertSniRequest) GetSNIID() string {
@@ -28,6 +21,13 @@ func (o *UpsertSniRequest) GetSNIID() string {
 		return ""
 	}
 	return o.SNIID
+}
+
+func (o *UpsertSniRequest) GetControlPlaneID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ControlPlaneID
 }
 
 func (o *UpsertSniRequest) GetSni() components.SNIInput {

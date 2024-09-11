@@ -8,19 +8,12 @@ import (
 )
 
 type UpsertVaultRequest struct {
-	// The UUID of your control plane. This variable is available in the Konnect manager.
-	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// ID of the Vault to lookup
 	VaultID string `pathParam:"style=simple,explode=false,name=VaultId"`
+	// The UUID of your control plane. This variable is available in the Konnect manager
+	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Description of the Vault
 	Vault components.VaultInput `request:"mediaType=application/json"`
-}
-
-func (o *UpsertVaultRequest) GetControlPlaneID() string {
-	if o == nil {
-		return ""
-	}
-	return o.ControlPlaneID
 }
 
 func (o *UpsertVaultRequest) GetVaultID() string {
@@ -28,6 +21,13 @@ func (o *UpsertVaultRequest) GetVaultID() string {
 		return ""
 	}
 	return o.VaultID
+}
+
+func (o *UpsertVaultRequest) GetControlPlaneID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ControlPlaneID
 }
 
 func (o *UpsertVaultRequest) GetVault() components.VaultInput {

@@ -8,20 +8,19 @@ import (
 )
 
 type AddConsumerToGroupRequestBody struct {
-	Consumer *string `json:"consumer,omitempty"`
+	ConsumerID *string `json:"consumer,omitempty"`
 }
 
-func (o *AddConsumerToGroupRequestBody) GetConsumer() *string {
+func (o *AddConsumerToGroupRequestBody) GetConsumerID() *string {
 	if o == nil {
 		return nil
 	}
-	return o.Consumer
+	return o.ConsumerID
 }
 
 type AddConsumerToGroupRequest struct {
-	// ID of the Consumer Group to lookup
 	ConsumerGroupID string `pathParam:"style=simple,explode=false,name=ConsumerGroupId"`
-	// The UUID of your control plane. This variable is available in the Konnect manager.
+	// The UUID of your control plane. This variable is available in the Konnect manager
 	ControlPlaneID string                         `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	RequestBody    *AddConsumerToGroupRequestBody `request:"mediaType=application/json"`
 }
@@ -47,17 +46,10 @@ func (o *AddConsumerToGroupRequest) GetRequestBody() *AddConsumerToGroupRequestB
 	return o.RequestBody
 }
 
-// AddConsumerToGroupResponseBody - Consumer Added
+// AddConsumerToGroupResponseBody - Consumer added to group
 type AddConsumerToGroupResponseBody struct {
-	Consumer      *components.Consumer      `json:"consumer,omitempty"`
 	ConsumerGroup *components.ConsumerGroup `json:"consumer_group,omitempty"`
-}
-
-func (o *AddConsumerToGroupResponseBody) GetConsumer() *components.Consumer {
-	if o == nil {
-		return nil
-	}
-	return o.Consumer
+	Consumers     []components.Consumer     `json:"consumers,omitempty"`
 }
 
 func (o *AddConsumerToGroupResponseBody) GetConsumerGroup() *components.ConsumerGroup {
@@ -67,6 +59,13 @@ func (o *AddConsumerToGroupResponseBody) GetConsumerGroup() *components.Consumer
 	return o.ConsumerGroup
 }
 
+func (o *AddConsumerToGroupResponseBody) GetConsumers() []components.Consumer {
+	if o == nil {
+		return nil
+	}
+	return o.Consumers
+}
+
 type AddConsumerToGroupResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -74,7 +73,7 @@ type AddConsumerToGroupResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// Consumer Added
+	// Consumer added to group
 	Object *AddConsumerToGroupResponseBody
 }
 
