@@ -41,28 +41,17 @@ KUBEBUILDER_GENERATE_CODE_MARKER = +kubebuilder:object:generate=true
 
 .PHONY: generate.deepcopy
 generate.deepcopy: controller-gen
-# Generate deepcopy/runtime.Object implementations for a particular file
-	$(CONTROLLER_GEN) object paths=./models/components/
-
-# NOTE: We call speakeasy twice to generate DeepCopy() for the types that need it.
-#       The generation is called twice because we want to generate the zz_generated.deepcopy.go
-#       file for the types that need DeepCopy() to be generated but to not include
-#       the related code markers in the generated sdk source code or docs.
-# NOTE: add more types that need to have DeepCopy() generated.
-.PHONY: generate.sdk
-generate.sdk:
-	yq --inplace '.components.schemas.CreateControlPlaneRequest.description += "\n$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
-	yq --inplace '.components.schemas.CreateServiceWithoutParents.description += "\n$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
-	yq --inplace '.components.schemas.RouteWithoutParents.description += "\n$(KUBEBUILDER_GENERATE_CODE_MARKER)"' $(OPENAPI_FILE)
-
-	speakeasy generate sdk --lang go --out . --schema ./$(OPENAPI_FILE)
-	git checkout -- $(SPEAKEASY_DIR)/gen.lock $(SPEAKEASY_DIR)/gen.yaml sdk.go
-
+	$(SED) -i 's#\(type CreateControlPlaneRequest struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/createcontrolplanerequest.go
+	$(SED) -i 's#\(type RouteWithoutParents struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/routewithoutparents.go
 	$(SED) -i 's#\(type RouteWithoutParentsDestinations struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/routewithoutparents.go
 	$(SED) -i 's#\(type Destinations struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/route.go
 	$(SED) -i 's#\(type Sources struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/route.go
+	$(SED) -i 's#\(type Route struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/route.go
 	$(SED) -i 's#\(type RouteService struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/route.go
@@ -74,9 +63,22 @@ generate.sdk:
 		models/components/upstream.go
 	$(SED) -i 's#\(type Healthchecks struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/upstream.go
+	$(SED) -i 's#\(type Active struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/upstream.go
+	$(SED) -i 's#\(type Passive struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/upstream.go
+	$(SED) -i 's#\(type UpstreamHealthy struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/upstream.go
+	$(SED) -i 's#\(type Healthy struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/upstream.go
+	$(SED) -i 's#\(type UpstreamUnhealthy struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/upstream.go
+	$(SED) -i 's#\(type Unhealthy struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/upstream.go
 
+	$(CONTROLLER_GEN) object paths=./models/components/
 	go mod tidy
-	$(MAKE) generate.deepcopy
+
 	git checkout -- $(OPENAPI_FILE) \
 		$(shell git ls-files models/components/route*.go) \
 		$(shell git ls-files docs/models/components/route*.md) \
@@ -85,5 +87,13 @@ generate.sdk:
 		$(shell git ls-files models/components/upstream*.go) \
 		$(shell git ls-files docs/models/components/upstream*.md) \
 		$(shell git ls-files docs/models/components/healthchecks*.md)
+
+# NOTE: SDK generation consists of adding the kubebuilder code marker and generating
+#       DeepCopy() for the types that need it and then using speakeasy to generate
+#       the final sdk code.
+# NOTE: add more types that need to have DeepCopy() generated.
+.PHONY: generate.sdk
+generate.sdk:
+	$(MAKE) generate.deepcopy
 	speakeasy generate sdk --lang go --out . --schema ./$(OPENAPI_FILE)
 	go mod tidy
