@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: ccea8e55243ee749372158877bff4acf
+  docChecksum: a91f4dd853a539b78c9a996a60c5e069
   docVersion: 0.0.1
   speakeasyVersion: 1.395.1
   generationVersion: 2.415.0
-  releaseVersion: 0.0.12
-  configChecksum: 0fa9efa852062e6e89e5c9a14d0cbae1
+  releaseVersion: 0.0.13
+  configChecksum: 6841b42e3bbd1466d5f9879f23a04b00
 features:
   go:
     additionalDependencies: 0.1.0
@@ -263,6 +263,7 @@ generatedFiles:
   - /models/operations/listcertificate.go
   - /models/operations/listconsumer.go
   - /models/operations/listconsumergroup.go
+  - /models/operations/listconsumergroupsforconsumer.go
   - /models/operations/listcontrolplanes.go
   - /models/operations/listdataplanenodes.go
   - /models/operations/listdpclientcertificates.go
@@ -880,6 +881,9 @@ generatedFiles:
   - docs/models/operations/listconsumergrouprequest.md
   - docs/models/operations/listconsumergroupresponse.md
   - docs/models/operations/listconsumergroupresponsebody.md
+  - docs/models/operations/listconsumergroupsforconsumerrequest.md
+  - docs/models/operations/listconsumergroupsforconsumerresponse.md
+  - docs/models/operations/listconsumergroupsforconsumerresponsebody.md
   - docs/models/operations/listconsumerrequest.md
   - docs/models/operations/listconsumerresponse.md
   - docs/models/operations/listconsumerresponsebody.md
@@ -1390,6 +1394,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 812329}
+        "201": {}
   get-ca_certificate:
     "":
       parameters:
@@ -1446,6 +1451,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 143829}
+        "201": {}
   get-certificate:
     "":
       parameters:
@@ -1537,6 +1543,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 805552}
+        "201": {}
   get-sni:
     "":
       parameters:
@@ -1593,6 +1600,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 933383}
+        "201": {}
   get-consumer_group:
     "":
       parameters:
@@ -1664,6 +1672,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 848959}
+        "201": {}
   get-consumer:
     "":
       parameters:
@@ -1858,6 +1867,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 454928}
+        "201": {}
   get-key-set:
     "":
       parameters:
@@ -1914,6 +1924,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 907390}
+        "201": {}
   get-key:
     "":
       parameters:
@@ -2050,6 +2061,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 130029}
+        "201": {}
   get-plugin:
     "":
       parameters:
@@ -2187,6 +2199,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 811488}
+        "201": {}
   get-route:
     "":
       parameters:
@@ -2345,6 +2358,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 670650}
+        "201": {}
   get-upstream:
     "":
       parameters:
@@ -2436,6 +2450,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 954798}
+        "201": {}
   get-vault:
     "":
       parameters:
@@ -3272,3 +3287,11 @@ examples:
           application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "email": "user@email.com", "full_name": "Test User", "preferred_name": "test", "active": true, "created_at": "2022-02-07T17:46:57.52Z", "updated_at": "2022-10-08T17:00:00.52Z"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+  list-consumer-groups-for-consumer:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
+        query:
+          tags: "tag1,tag2"
