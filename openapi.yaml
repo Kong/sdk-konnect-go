@@ -7487,6 +7487,7 @@ components:
             The configuration properties for the Vault which can be found on the
             vaults' documentation page.
           type: object
+          additionalProperties: true
         created_at:
           description: Unix epoch when the resource was created.
           type: integer

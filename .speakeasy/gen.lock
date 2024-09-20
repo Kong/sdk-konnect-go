@@ -1,17 +1,17 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: ccea8e55243ee749372158877bff4acf
+  docChecksum: 61d1943d83aae1dbfe013dbdafa5f49d
   docVersion: 0.0.1
-  speakeasyVersion: 1.395.1
-  generationVersion: 2.415.0
-  releaseVersion: 0.0.12
-  configChecksum: 0fa9efa852062e6e89e5c9a14d0cbae1
+  speakeasyVersion: 1.399.2
+  generationVersion: 2.416.6
+  releaseVersion: 0.0.13
+  configChecksum: 6841b42e3bbd1466d5f9879f23a04b00
 features:
   go:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.6
-    core: 3.5.6
+    core: 3.5.8
     deepObjectParams: 0.1.0
     defaultEnabledRetries: 0.2.0
     envVarSecurityUsage: 0.3.1
@@ -141,6 +141,7 @@ generatedFiles:
   - /models/components/user.go
   - /models/components/usercollection.go
   - /models/components/vault.go
+  - /models/components/vaultinput.go
   - /models/operations/addconsumertogroup.go
   - /models/operations/addusertoteam.go
   - /models/operations/authenticatesso.go
@@ -632,7 +633,6 @@ generatedFiles:
   - docs/models/components/user.md
   - docs/models/components/usercollection.md
   - docs/models/components/vault.md
-  - docs/models/components/vaultconfig.md
   - docs/models/components/viewer.md
   - docs/models/operations/addconsumertogrouprequest.md
   - docs/models/operations/addconsumertogrouprequestbody.md
@@ -1390,6 +1390,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 812329}
+        "201": {}
   get-ca_certificate:
     "":
       parameters:
@@ -1446,6 +1447,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 143829}
+        "201": {}
   get-certificate:
     "":
       parameters:
@@ -1537,6 +1539,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 805552}
+        "201": {}
   get-sni:
     "":
       parameters:
@@ -1593,6 +1596,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 933383}
+        "201": {}
   get-consumer_group:
     "":
       parameters:
@@ -1664,6 +1668,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 848959}
+        "201": {}
   get-consumer:
     "":
       parameters:
@@ -1858,6 +1863,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 454928}
+        "201": {}
   get-key-set:
     "":
       parameters:
@@ -1914,6 +1920,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 907390}
+        "201": {}
   get-key:
     "":
       parameters:
@@ -2050,6 +2057,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 130029}
+        "201": {}
   get-plugin:
     "":
       parameters:
@@ -2187,6 +2195,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 811488}
+        "201": {}
   get-route:
     "":
       parameters:
@@ -2345,6 +2354,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 670650}
+        "201": {}
   get-upstream:
     "":
       parameters:
@@ -2436,6 +2446,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 954798}
+        "201": {}
   get-vault:
     "":
       parameters:
