@@ -27,7 +27,7 @@ func newAPIKeys(sdkConfig sdkConfiguration) *APIKeys {
 }
 
 // ListKeyAuthWithConsumer - List all API-keys associated with a Consumer
-// List all API-keys associated with a a Consumer
+// List all API-keys associated with a Consumer
 func (s *APIKeys) ListKeyAuthWithConsumer(ctx context.Context, request operations.ListKeyAuthWithConsumerRequest, opts ...operations.Option) (*operations.ListKeyAuthWithConsumerResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
@@ -428,8 +428,8 @@ func (s *APIKeys) CreateKeyAuthWithConsumer(ctx context.Context, request operati
 
 }
 
-// DeleteKeyAuthWithConsumer - Delete a an API-key associated with a a Consumer
-// Delete a an API-key associated with a a Consumer using ID.
+// DeleteKeyAuthWithConsumer - Delete a an API-key associated with a Consumer
+// Delete a an API-key associated with a Consumer using ID.
 func (s *APIKeys) DeleteKeyAuthWithConsumer(ctx context.Context, request operations.DeleteKeyAuthWithConsumerRequest, opts ...operations.Option) (*operations.DeleteKeyAuthWithConsumerResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,

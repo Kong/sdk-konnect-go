@@ -8,6 +8,47 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type PluginWithoutParentsAfter struct {
+	Access []string `json:"access,omitempty"`
+}
+
+func (o *PluginWithoutParentsAfter) GetAccess() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Access
+}
+
+type PluginWithoutParentsBefore struct {
+	Access []string `json:"access,omitempty"`
+}
+
+func (o *PluginWithoutParentsBefore) GetAccess() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Access
+}
+
+type PluginWithoutParentsOrdering struct {
+	After  *PluginWithoutParentsAfter  `json:"after,omitempty"`
+	Before *PluginWithoutParentsBefore `json:"before,omitempty"`
+}
+
+func (o *PluginWithoutParentsOrdering) GetAfter() *PluginWithoutParentsAfter {
+	if o == nil {
+		return nil
+	}
+	return o.After
+}
+
+func (o *PluginWithoutParentsOrdering) GetBefore() *PluginWithoutParentsBefore {
+	if o == nil {
+		return nil
+	}
+	return o.Before
+}
+
 type PluginWithoutParentsProtocols string
 
 const (
@@ -65,8 +106,8 @@ type PluginWithoutParents struct {
 	Enabled      *bool   `default:"true" json:"enabled"`
 	InstanceName *string `json:"instance_name,omitempty"`
 	// The name of the Plugin that's going to be added. Currently, the Plugin must be installed in every Kong instance separately.
-	Name     *string        `json:"name,omitempty"`
-	Ordering map[string]any `json:"ordering,omitempty"`
+	Name     *string                       `json:"name,omitempty"`
+	Ordering *PluginWithoutParentsOrdering `json:"ordering,omitempty"`
 	// A list of the request protocols that will trigger this plugin. The default value, as well as the possible values allowed on this field, may change depending on the plugin type. For example, plugins that only work in stream mode will only support `"tcp"` and `"tls"`.
 	Protocols []PluginWithoutParentsProtocols `json:"protocols,omitempty"`
 	// An optional set of strings associated with the Plugin for grouping and filtering.
@@ -112,7 +153,7 @@ func (o *PluginWithoutParents) GetName() *string {
 	return o.Name
 }
 
-func (o *PluginWithoutParents) GetOrdering() map[string]any {
+func (o *PluginWithoutParents) GetOrdering() *PluginWithoutParentsOrdering {
 	if o == nil {
 		return nil
 	}

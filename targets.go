@@ -27,7 +27,7 @@ func newTargets(sdkConfig sdkConfiguration) *Targets {
 }
 
 // ListTargetWithUpstream - List all Targets associated with an Upstream
-// List all Targets associated with a an Upstream
+// List all Targets associated with an Upstream
 func (s *Targets) ListTargetWithUpstream(ctx context.Context, request operations.ListTargetWithUpstreamRequest, opts ...operations.Option) (*operations.ListTargetWithUpstreamResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
@@ -428,8 +428,8 @@ func (s *Targets) CreateTargetWithUpstream(ctx context.Context, request operatio
 
 }
 
-// DeleteTargetWithUpstream - Delete a a Target associated with a an Upstream
-// Delete a a Target associated with a an Upstream using ID or target.
+// DeleteTargetWithUpstream - Delete a a Target associated with an Upstream
+// Delete a a Target associated with an Upstream using ID or target.
 func (s *Targets) DeleteTargetWithUpstream(ctx context.Context, request operations.DeleteTargetWithUpstreamRequest, opts ...operations.Option) (*operations.DeleteTargetWithUpstreamResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,

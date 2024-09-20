@@ -27,7 +27,7 @@ func newJWTs(sdkConfig sdkConfiguration) *JWTs {
 }
 
 // ListJwtWithConsumer - List all JWTs associated with a Consumer
-// List all JWTs associated with a a Consumer
+// List all JWTs associated with a Consumer
 func (s *JWTs) ListJwtWithConsumer(ctx context.Context, request operations.ListJwtWithConsumerRequest, opts ...operations.Option) (*operations.ListJwtWithConsumerResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
@@ -428,8 +428,8 @@ func (s *JWTs) CreateJwtWithConsumer(ctx context.Context, request operations.Cre
 
 }
 
-// DeleteJwtWithConsumer - Delete a a JWT associated with a a Consumer
-// Delete a a JWT associated with a a Consumer using ID.
+// DeleteJwtWithConsumer - Delete a a JWT associated with a Consumer
+// Delete a a JWT associated with a Consumer using ID.
 func (s *JWTs) DeleteJwtWithConsumer(ctx context.Context, request operations.DeleteJwtWithConsumerRequest, opts ...operations.Option) (*operations.DeleteJwtWithConsumerResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,

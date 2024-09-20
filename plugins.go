@@ -1135,7 +1135,7 @@ func (s *Plugins) UpsertPlugin(ctx context.Context, request operations.UpsertPlu
 }
 
 // ListPluginWithRoute - List all Plugins associated with a Route
-// List all Plugins associated with a a Route
+// List all Plugins associated with a Route
 func (s *Plugins) ListPluginWithRoute(ctx context.Context, request operations.ListPluginWithRouteRequest, opts ...operations.Option) (*operations.ListPluginWithRouteResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
@@ -1536,8 +1536,8 @@ func (s *Plugins) CreatePluginWithRoute(ctx context.Context, request operations.
 
 }
 
-// DeletePluginWithRoute - Delete a a Plugin associated with a a Route
-// Delete a a Plugin associated with a a Route using ID.
+// DeletePluginWithRoute - Delete a a Plugin associated with a Route
+// Delete a a Plugin associated with a Route using ID.
 func (s *Plugins) DeletePluginWithRoute(ctx context.Context, request operations.DeletePluginWithRouteRequest, opts ...operations.Option) (*operations.DeletePluginWithRouteResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
@@ -2313,7 +2313,7 @@ func (s *Plugins) FetchPluginSchema(ctx context.Context, pluginName string, cont
 }
 
 // ListPluginWithService - List all Plugins associated with a Service
-// List all Plugins associated with a a Service
+// List all Plugins associated with a Service
 func (s *Plugins) ListPluginWithService(ctx context.Context, request operations.ListPluginWithServiceRequest, opts ...operations.Option) (*operations.ListPluginWithServiceResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
@@ -2714,8 +2714,8 @@ func (s *Plugins) CreatePluginWithService(ctx context.Context, request operation
 
 }
 
-// DeletePluginWithService - Delete a a Plugin associated with a a Service
-// Delete a a Plugin associated with a a Service using ID.
+// DeletePluginWithService - Delete a a Plugin associated with a Service
+// Delete a a Plugin associated with a Service using ID.
 func (s *Plugins) DeletePluginWithService(ctx context.Context, request operations.DeletePluginWithServiceRequest, opts ...operations.Option) (*operations.DeletePluginWithServiceResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,

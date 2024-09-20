@@ -30,7 +30,7 @@ func newSNIs(sdkConfig sdkConfiguration) *SNIs {
 }
 
 // ListSniWithCertificate - List all SNIs associated with a Certificate
-// List all SNIs associated with a a Certificate
+// List all SNIs associated with a Certificate
 func (s *SNIs) ListSniWithCertificate(ctx context.Context, request operations.ListSniWithCertificateRequest, opts ...operations.Option) (*operations.ListSniWithCertificateResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
@@ -431,8 +431,8 @@ func (s *SNIs) CreateSniWithCertificate(ctx context.Context, request operations.
 
 }
 
-// DeleteSniWithCertificate - Delete a an SNI associated with a a Certificate
-// Delete a an SNI associated with a a Certificate using ID or name.
+// DeleteSniWithCertificate - Delete a an SNI associated with a Certificate
+// Delete a an SNI associated with a Certificate using ID or name.
 func (s *SNIs) DeleteSniWithCertificate(ctx context.Context, request operations.DeleteSniWithCertificateRequest, opts ...operations.Option) (*operations.DeleteSniWithCertificateResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,

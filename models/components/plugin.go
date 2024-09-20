@@ -8,6 +8,47 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type After struct {
+	Access []string `json:"access,omitempty"`
+}
+
+func (o *After) GetAccess() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Access
+}
+
+type Before struct {
+	Access []string `json:"access,omitempty"`
+}
+
+func (o *Before) GetAccess() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Access
+}
+
+type Ordering struct {
+	After  *After  `json:"after,omitempty"`
+	Before *Before `json:"before,omitempty"`
+}
+
+func (o *Ordering) GetAfter() *After {
+	if o == nil {
+		return nil
+	}
+	return o.After
+}
+
+func (o *Ordering) GetBefore() *Before {
+	if o == nil {
+		return nil
+	}
+	return o.Before
+}
+
 type Protocols string
 
 const (
@@ -115,8 +156,8 @@ type Plugin struct {
 	ID           *string `json:"id,omitempty"`
 	InstanceName *string `json:"instance_name,omitempty"`
 	// The name of the Plugin that's going to be added. Currently, the Plugin must be installed in every Kong instance separately.
-	Name     *string        `json:"name,omitempty"`
-	Ordering map[string]any `json:"ordering,omitempty"`
+	Name     *string   `json:"name,omitempty"`
+	Ordering *Ordering `json:"ordering,omitempty"`
 	// A list of the request protocols that will trigger this plugin. The default value, as well as the possible values allowed on this field, may change depending on the plugin type. For example, plugins that only work in stream mode will only support `"tcp"` and `"tls"`.
 	Protocols []Protocols `json:"protocols,omitempty"`
 	// An optional set of strings associated with the Plugin for grouping and filtering.
@@ -185,7 +226,7 @@ func (o *Plugin) GetName() *string {
 	return o.Name
 }
 
-func (o *Plugin) GetOrdering() map[string]any {
+func (o *Plugin) GetOrdering() *Ordering {
 	if o == nil {
 		return nil
 	}
@@ -248,8 +289,8 @@ type PluginInput struct {
 	Enabled      *bool   `default:"true" json:"enabled"`
 	InstanceName *string `json:"instance_name,omitempty"`
 	// The name of the Plugin that's going to be added. Currently, the Plugin must be installed in every Kong instance separately.
-	Name     *string        `json:"name,omitempty"`
-	Ordering map[string]any `json:"ordering,omitempty"`
+	Name     *string   `json:"name,omitempty"`
+	Ordering *Ordering `json:"ordering,omitempty"`
 	// A list of the request protocols that will trigger this plugin. The default value, as well as the possible values allowed on this field, may change depending on the plugin type. For example, plugins that only work in stream mode will only support `"tcp"` and `"tls"`.
 	Protocols []Protocols `json:"protocols,omitempty"`
 	// An optional set of strings associated with the Plugin for grouping and filtering.
@@ -302,7 +343,7 @@ func (o *PluginInput) GetName() *string {
 	return o.Name
 }
 
-func (o *PluginInput) GetOrdering() map[string]any {
+func (o *PluginInput) GetOrdering() *Ordering {
 	if o == nil {
 		return nil
 	}

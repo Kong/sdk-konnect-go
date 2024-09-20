@@ -27,7 +27,7 @@ func newHMACAuthCredentials(sdkConfig sdkConfiguration) *HMACAuthCredentials {
 }
 
 // ListHmacAuthWithConsumer - List all HMAC-auth credentials associated with a Consumer
-// List all HMAC-auth credentials associated with a a Consumer
+// List all HMAC-auth credentials associated with a Consumer
 func (s *HMACAuthCredentials) ListHmacAuthWithConsumer(ctx context.Context, request operations.ListHmacAuthWithConsumerRequest, opts ...operations.Option) (*operations.ListHmacAuthWithConsumerResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
@@ -428,8 +428,8 @@ func (s *HMACAuthCredentials) CreateHmacAuthWithConsumer(ctx context.Context, re
 
 }
 
-// DeleteHmacAuthWithConsumer - Delete a a HMAC-auth credential associated with a a Consumer
-// Delete a a HMAC-auth credential associated with a a Consumer using ID.
+// DeleteHmacAuthWithConsumer - Delete a a HMAC-auth credential associated with a Consumer
+// Delete a a HMAC-auth credential associated with a Consumer using ID.
 func (s *HMACAuthCredentials) DeleteHmacAuthWithConsumer(ctx context.Context, request operations.DeleteHmacAuthWithConsumerRequest, opts ...operations.Option) (*operations.DeleteHmacAuthWithConsumerResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,

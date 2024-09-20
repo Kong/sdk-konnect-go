@@ -1,17 +1,17 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: ccea8e55243ee749372158877bff4acf
+  docChecksum: 42c48d212003a57034dde18e8b83f912
   docVersion: 0.0.1
-  speakeasyVersion: 1.395.1
-  generationVersion: 2.415.0
-  releaseVersion: 0.0.12
-  configChecksum: 0fa9efa852062e6e89e5c9a14d0cbae1
+  speakeasyVersion: 1.400.1
+  generationVersion: 2.420.2
+  releaseVersion: 0.0.13
+  configChecksum: 6841b42e3bbd1466d5f9879f23a04b00
 features:
   go:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.6
-    core: 3.5.6
+    core: 3.5.9
     deepObjectParams: 0.1.0
     defaultEnabledRetries: 0.2.0
     envVarSecurityUsage: 0.3.1
@@ -141,6 +141,7 @@ generatedFiles:
   - /models/components/user.go
   - /models/components/usercollection.go
   - /models/components/vault.go
+  - /models/components/vaultinput.go
   - /models/operations/addconsumertogroup.go
   - /models/operations/addusertoteam.go
   - /models/operations/authenticatesso.go
@@ -263,6 +264,7 @@ generatedFiles:
   - /models/operations/listcertificate.go
   - /models/operations/listconsumer.go
   - /models/operations/listconsumergroup.go
+  - /models/operations/listconsumergroupsforconsumer.go
   - /models/operations/listcontrolplanes.go
   - /models/operations/listdataplanenodes.go
   - /models/operations/listdpclientcertificates.go
@@ -368,6 +370,7 @@ generatedFiles:
   - docs/models/components/addsystemaccounttoteam.md
   - docs/models/components/addusertoteam.md
   - docs/models/components/admin.md
+  - docs/models/components/after.md
   - docs/models/components/algorithm.md
   - docs/models/components/apiproducts.md
   - docs/models/components/applicationregistration.md
@@ -381,6 +384,7 @@ generatedFiles:
   - docs/models/components/basicauth.md
   - docs/models/components/basicauthconsumer.md
   - docs/models/components/basicauthwithoutparents.md
+  - docs/models/components/before.md
   - docs/models/components/cacertificate.md
   - docs/models/components/certificate.md
   - docs/models/components/certificateadmin.md
@@ -479,6 +483,7 @@ generatedFiles:
   - docs/models/components/meshcontrolplanes.md
   - docs/models/components/meta.md
   - docs/models/components/name.md
+  - docs/models/components/ordering.md
   - docs/models/components/page.md
   - docs/models/components/pagemeta.md
   - docs/models/components/paginatedmeta.md
@@ -495,6 +500,9 @@ generatedFiles:
   - docs/models/components/pluginschemas.md
   - docs/models/components/pluginservice.md
   - docs/models/components/pluginwithoutparents.md
+  - docs/models/components/pluginwithoutparentsafter.md
+  - docs/models/components/pluginwithoutparentsbefore.md
+  - docs/models/components/pluginwithoutparentsordering.md
   - docs/models/components/pluginwithoutparentsprotocols.md
   - docs/models/components/protocol.md
   - docs/models/components/protocols.md
@@ -632,7 +640,6 @@ generatedFiles:
   - docs/models/components/user.md
   - docs/models/components/usercollection.md
   - docs/models/components/vault.md
-  - docs/models/components/vaultconfig.md
   - docs/models/components/viewer.md
   - docs/models/operations/addconsumertogrouprequest.md
   - docs/models/operations/addconsumertogrouprequestbody.md
@@ -880,6 +887,9 @@ generatedFiles:
   - docs/models/operations/listconsumergrouprequest.md
   - docs/models/operations/listconsumergroupresponse.md
   - docs/models/operations/listconsumergroupresponsebody.md
+  - docs/models/operations/listconsumergroupsforconsumerrequest.md
+  - docs/models/operations/listconsumergroupsforconsumerresponse.md
+  - docs/models/operations/listconsumergroupsforconsumerresponsebody.md
   - docs/models/operations/listconsumerrequest.md
   - docs/models/operations/listconsumerresponse.md
   - docs/models/operations/listconsumerresponsebody.md
@@ -1390,6 +1400,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 812329}
+        "201": {}
   get-ca_certificate:
     "":
       parameters:
@@ -1446,6 +1457,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 143829}
+        "201": {}
   get-certificate:
     "":
       parameters:
@@ -1537,6 +1549,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 805552}
+        "201": {}
   get-sni:
     "":
       parameters:
@@ -1593,6 +1606,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 933383}
+        "201": {}
   get-consumer_group:
     "":
       parameters:
@@ -1664,6 +1678,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 848959}
+        "201": {}
   get-consumer:
     "":
       parameters:
@@ -1858,6 +1873,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 454928}
+        "201": {}
   get-key-set:
     "":
       parameters:
@@ -1914,6 +1930,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 907390}
+        "201": {}
   get-key:
     "":
       parameters:
@@ -2050,6 +2067,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 130029}
+        "201": {}
   get-plugin:
     "":
       parameters:
@@ -2187,6 +2205,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 811488}
+        "201": {}
   get-route:
     "":
       parameters:
@@ -2345,6 +2364,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 670650}
+        "201": {}
   get-upstream:
     "":
       parameters:
@@ -2436,6 +2456,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 954798}
+        "201": {}
   get-vault:
     "":
       parameters:
@@ -2802,7 +2823,7 @@ examples:
         application/json: {"role_name": "Viewer", "entity_id": "e67490ce-44dc-4cbd-b65e-b52c746fc26a", "entity_type_name": "Control Planes", "entity_region": "eu"}
       responses:
         "201":
-          application/json: {"id": "54cc6168-ebb1-4300-8168-d62a0dd08fc8", "role_name": "Viewer", "entity_id": "18ee2573-dec0-4b83-be99-fa7700bcdc61", "entity_type_name": "Control Planes", "entity_region": "us"}
+          application/json: {"id": "eaf7adf1-32c8-4bbf-b960-d1f8456afe67", "role_name": "Viewer", "entity_id": "817d0422-45c9-4d88-8d64-45aef05c1ae7", "entity_type_name": "Control Planes", "entity_region": "eu"}
         "400":
           application/problem+json: {"status": 96861, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -2850,7 +2871,7 @@ examples:
         application/json: {"role_name": "Viewer", "entity_id": "e67490ce-44dc-4cbd-b65e-b52c746fc26a", "entity_type_name": "Control Planes", "entity_region": "eu"}
       responses:
         "201":
-          application/json: {"id": "54cc6168-ebb1-4300-8168-d62a0dd08fc8", "role_name": "Viewer", "entity_id": "18ee2573-dec0-4b83-be99-fa7700bcdc61", "entity_type_name": "Control Planes", "entity_region": "us"}
+          application/json: {"id": "eaf7adf1-32c8-4bbf-b960-d1f8456afe67", "role_name": "Viewer", "entity_id": "817d0422-45c9-4d88-8d64-45aef05c1ae7", "entity_type_name": "Control Planes", "entity_region": "eu"}
         "400":
           application/problem+json: {"status": 883546, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -3027,7 +3048,7 @@ examples:
         application/json: {"role_name": "Viewer", "entity_id": "e67490ce-44dc-4cbd-b65e-b52c746fc26a", "entity_type_name": "Control Planes", "entity_region": "eu"}
       responses:
         "201":
-          application/json: {"id": "54cc6168-ebb1-4300-8168-d62a0dd08fc8", "role_name": "Viewer", "entity_id": "18ee2573-dec0-4b83-be99-fa7700bcdc61", "entity_type_name": "Control Planes", "entity_region": "us"}
+          application/json: {"id": "eaf7adf1-32c8-4bbf-b960-d1f8456afe67", "role_name": "Viewer", "entity_id": "817d0422-45c9-4d88-8d64-45aef05c1ae7", "entity_type_name": "Control Planes", "entity_region": "eu"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "404":
@@ -3117,7 +3138,7 @@ examples:
         application/json: {"name": "IDM - Developers", "description": "The Identity Management (IDM) team.", "labels": {"env": "test"}}
       responses:
         "201":
-          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "IDM - Developers", "description": "The developers for the IDM API.", "system_team": false, "labels": {"env": "test"}, "created_at": "1992-02-07T17:46:57.52Z", "updated_at": "2022-08-31T17:00:00.52Z"}
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "IDM - Developers", "description": "The developers for the IDM API.", "system_team": false, "labels": {"env": "test"}, "created_at": "1992-02-07T17:46:57.52Z", "updated_at": "2022-02-07T17:00:00.52Z"}
         "400":
           application/problem+json: {"status": 100185, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "403":
@@ -3129,7 +3150,7 @@ examples:
           teamId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
       responses:
         "200":
-          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "IDM - Developers", "description": "The developers for the IDM API.", "system_team": false, "labels": {"env": "test"}, "created_at": "1992-02-07T17:46:57.52Z", "updated_at": "2022-08-31T17:00:00.52Z"}
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "IDM - Developers", "description": "The developers for the IDM API.", "system_team": false, "labels": {"env": "test"}, "created_at": "1992-02-07T17:46:57.52Z", "updated_at": "2022-02-07T17:00:00.52Z"}
         "400":
           application/problem+json: {"status": 367838, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "404":
@@ -3143,7 +3164,7 @@ examples:
         application/json: {"name": "IDM - Developers", "description": "The Identity Management (IDM) API team.", "labels": {"env": "test"}}
       responses:
         "200":
-          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "IDM - Developers", "description": "The developers for the IDM API.", "system_team": false, "labels": {"env": "test"}, "created_at": "1992-02-07T17:46:57.52Z", "updated_at": "2022-08-31T17:00:00.52Z"}
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "IDM - Developers", "description": "The developers for the IDM API.", "system_team": false, "labels": {"env": "test"}, "created_at": "1992-02-07T17:46:57.52Z", "updated_at": "2022-02-07T17:00:00.52Z"}
         "400":
           application/problem+json: {"status": 338118, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "404":
@@ -3229,7 +3250,7 @@ examples:
           userId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
       responses:
         "200":
-          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "email": "user@email.com", "full_name": "Test User", "preferred_name": "test", "active": true, "created_at": "2022-02-07T17:46:57.52Z", "updated_at": "2022-10-08T17:00:00.52Z"}
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "email": "user@email.com", "full_name": "Jane Doe", "preferred_name": "Jane", "active": true, "created_at": "2022-02-07T17:46:57.52Z", "updated_at": "2022-10-08T17:00:00.52Z"}
         "400":
           application/problem+json: {"status": 281740, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "404":
@@ -3243,7 +3264,7 @@ examples:
         application/json: {"full_name": "James C. Woods", "preferred_name": "Jimmy"}
       responses:
         "200":
-          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "email": "user@email.com", "full_name": "Test User", "preferred_name": "test", "active": true, "created_at": "2022-02-07T17:46:57.52Z", "updated_at": "2022-10-08T17:00:00.52Z"}
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "email": "user@email.com", "full_name": "Jane Doe", "preferred_name": "Jane", "active": true, "created_at": "2022-02-07T17:46:57.52Z", "updated_at": "2022-10-08T17:00:00.52Z"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -3269,6 +3290,14 @@ examples:
     speakeasy-default-get-users-me:
       responses:
         "200":
-          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "email": "user@email.com", "full_name": "Test User", "preferred_name": "test", "active": true, "created_at": "2022-02-07T17:46:57.52Z", "updated_at": "2022-10-08T17:00:00.52Z"}
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "email": "user@email.com", "full_name": "Jane Doe", "preferred_name": "Jane", "active": true, "created_at": "2022-02-07T17:46:57.52Z", "updated_at": "2022-10-08T17:00:00.52Z"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+  list-consumer-groups-for-consumer:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
+        query:
+          tags: "tag1,tag2"

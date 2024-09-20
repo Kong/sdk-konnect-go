@@ -249,7 +249,7 @@ func (s *BasicAuthCredentials) ListBasicAuth(ctx context.Context, request operat
 }
 
 // ListBasicAuthWithConsumer - List all Basic-auth credentials associated with a Consumer
-// List all Basic-auth credentials associated with a a Consumer
+// List all Basic-auth credentials associated with a Consumer
 func (s *BasicAuthCredentials) ListBasicAuthWithConsumer(ctx context.Context, request operations.ListBasicAuthWithConsumerRequest, opts ...operations.Option) (*operations.ListBasicAuthWithConsumerResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
@@ -650,8 +650,8 @@ func (s *BasicAuthCredentials) CreateBasicAuthWithConsumer(ctx context.Context, 
 
 }
 
-// DeleteBasicAuthWithConsumer - Delete a a Basic-auth credential associated with a a Consumer
-// Delete a a Basic-auth credential associated with a a Consumer using ID.
+// DeleteBasicAuthWithConsumer - Delete a a Basic-auth credential associated with a Consumer
+// Delete a a Basic-auth credential associated with a Consumer using ID.
 func (s *BasicAuthCredentials) DeleteBasicAuthWithConsumer(ctx context.Context, request operations.DeleteBasicAuthWithConsumerRequest, opts ...operations.Option) (*operations.DeleteBasicAuthWithConsumerResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,

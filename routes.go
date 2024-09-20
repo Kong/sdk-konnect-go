@@ -1151,7 +1151,7 @@ func (s *Routes) UpsertRoute(ctx context.Context, request operations.UpsertRoute
 }
 
 // ListRouteWithService - List all Routes associated with a Service
-// List all Routes associated with a a Service
+// List all Routes associated with a Service
 func (s *Routes) ListRouteWithService(ctx context.Context, request operations.ListRouteWithServiceRequest, opts ...operations.Option) (*operations.ListRouteWithServiceResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
@@ -1552,8 +1552,8 @@ func (s *Routes) CreateRouteWithService(ctx context.Context, request operations.
 
 }
 
-// DeleteRouteWithService - Delete a a Route associated with a a Service
-// Delete a a Route associated with a a Service using ID or name.
+// DeleteRouteWithService - Delete a a Route associated with a Service
+// Delete a a Route associated with a Service using ID or name.
 func (s *Routes) DeleteRouteWithService(ctx context.Context, request operations.DeleteRouteWithServiceRequest, opts ...operations.Option) (*operations.DeleteRouteWithServiceResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,

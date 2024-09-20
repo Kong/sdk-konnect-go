@@ -249,7 +249,7 @@ func (s *ACLs) ListACL(ctx context.Context, request operations.ListACLRequest, o
 }
 
 // ListACLWithConsumer - List all ACLs associated with a Consumer
-// List all ACLs associated with a a Consumer
+// List all ACLs associated with a Consumer
 func (s *ACLs) ListACLWithConsumer(ctx context.Context, request operations.ListACLWithConsumerRequest, opts ...operations.Option) (*operations.ListACLWithConsumerResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
@@ -650,8 +650,8 @@ func (s *ACLs) CreateACLWithConsumer(ctx context.Context, request operations.Cre
 
 }
 
-// DeleteACLWithConsumer - Delete a an ACL associated with a a Consumer
-// Delete a an ACL associated with a a Consumer using ID.
+// DeleteACLWithConsumer - Delete a an ACL associated with a Consumer
+// Delete a an ACL associated with a Consumer using ID.
 func (s *ACLs) DeleteACLWithConsumer(ctx context.Context, request operations.DeleteACLWithConsumerRequest, opts ...operations.Option) (*operations.DeleteACLWithConsumerResponse, error) {
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
