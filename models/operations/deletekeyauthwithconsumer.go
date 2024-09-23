@@ -7,7 +7,7 @@ import (
 )
 
 type DeleteKeyAuthWithConsumerRequest struct {
-	// The UUID of your control plane. This variable is available in the Konnect manager
+	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Consumer ID for nested entities
 	ConsumerIDForNestedEntities string `pathParam:"style=simple,explode=false,name=ConsumerIdForNestedEntities"`

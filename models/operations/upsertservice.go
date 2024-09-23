@@ -10,7 +10,7 @@ import (
 type UpsertServiceRequest struct {
 	// ID of the Service to lookup
 	ServiceID string `pathParam:"style=simple,explode=false,name=ServiceId"`
-	// The UUID of your control plane. This variable is available in the Konnect manager
+	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Description of the Service
 	Service components.ServiceInput `request:"mediaType=application/json"`

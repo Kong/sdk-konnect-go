@@ -148,7 +148,7 @@ func (o *PluginService) GetID() *string {
 
 type Plugin struct {
 	// The configuration properties for the Plugin which can be found on the plugins documentation page in the [Kong Hub](https://docs.konghq.com/hub/).
-	Config map[string]any `json:"config,omitempty"`
+	Config map[string]any `json:"config"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
 	// Whether the plugin is applied.
@@ -156,7 +156,7 @@ type Plugin struct {
 	ID           *string `json:"id,omitempty"`
 	InstanceName *string `json:"instance_name,omitempty"`
 	// The name of the Plugin that's going to be added. Currently, the Plugin must be installed in every Kong instance separately.
-	Name     *string   `json:"name,omitempty"`
+	Name     string    `json:"name"`
 	Ordering *Ordering `json:"ordering,omitempty"`
 	// A list of the request protocols that will trigger this plugin. The default value, as well as the possible values allowed on this field, may change depending on the plugin type. For example, plugins that only work in stream mode will only support `"tcp"` and `"tls"`.
 	Protocols []Protocols `json:"protocols,omitempty"`
@@ -186,7 +186,7 @@ func (p *Plugin) UnmarshalJSON(data []byte) error {
 
 func (o *Plugin) GetConfig() map[string]any {
 	if o == nil {
-		return nil
+		return map[string]any{}
 	}
 	return o.Config
 }
@@ -219,9 +219,9 @@ func (o *Plugin) GetInstanceName() *string {
 	return o.InstanceName
 }
 
-func (o *Plugin) GetName() *string {
+func (o *Plugin) GetName() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Name
 }
@@ -284,12 +284,13 @@ func (o *Plugin) GetService() *PluginService {
 
 type PluginInput struct {
 	// The configuration properties for the Plugin which can be found on the plugins documentation page in the [Kong Hub](https://docs.konghq.com/hub/).
-	Config map[string]any `json:"config,omitempty"`
+	Config map[string]any `json:"config"`
 	// Whether the plugin is applied.
 	Enabled      *bool   `default:"true" json:"enabled"`
+	ID           *string `json:"id,omitempty"`
 	InstanceName *string `json:"instance_name,omitempty"`
 	// The name of the Plugin that's going to be added. Currently, the Plugin must be installed in every Kong instance separately.
-	Name     *string   `json:"name,omitempty"`
+	Name     string    `json:"name"`
 	Ordering *Ordering `json:"ordering,omitempty"`
 	// A list of the request protocols that will trigger this plugin. The default value, as well as the possible values allowed on this field, may change depending on the plugin type. For example, plugins that only work in stream mode will only support `"tcp"` and `"tls"`.
 	Protocols []Protocols `json:"protocols,omitempty"`
@@ -317,7 +318,7 @@ func (p *PluginInput) UnmarshalJSON(data []byte) error {
 
 func (o *PluginInput) GetConfig() map[string]any {
 	if o == nil {
-		return nil
+		return map[string]any{}
 	}
 	return o.Config
 }
@@ -329,6 +330,13 @@ func (o *PluginInput) GetEnabled() *bool {
 	return o.Enabled
 }
 
+func (o *PluginInput) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
 func (o *PluginInput) GetInstanceName() *string {
 	if o == nil {
 		return nil
@@ -336,9 +344,9 @@ func (o *PluginInput) GetInstanceName() *string {
 	return o.InstanceName
 }
 
-func (o *PluginInput) GetName() *string {
+func (o *PluginInput) GetName() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Name
 }

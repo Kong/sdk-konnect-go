@@ -133,9 +133,9 @@ func (o *ControlPlaneSummaryConfig) GetProxyUrls() []ProxyURL {
 // ControlPlaneSummary - The control plane object contains information about a Kong control plane.
 type ControlPlaneSummary struct {
 	// The control plane ID.
-	ID string `json:"id"`
+	ID *string `json:"id,omitempty"`
 	// The name of the control plane.
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 	// The description of the control plane in Konnect.
 	Description *string `json:"description,omitempty"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
@@ -144,9 +144,9 @@ type ControlPlaneSummary struct {
 	//
 	Labels map[string]string `json:"labels,omitempty"`
 	// CP configuration object for related access endpoints.
-	Config    ControlPlaneSummaryConfig `json:"config"`
-	CreatedAt time.Time                 `json:"created_at"`
-	UpdatedAt time.Time                 `json:"updated_at"`
+	Config    *ControlPlaneSummaryConfig `json:"config,omitempty"`
+	CreatedAt *time.Time                 `json:"created_at,omitempty"`
+	UpdatedAt *time.Time                 `json:"updated_at,omitempty"`
 }
 
 func (c ControlPlaneSummary) MarshalJSON() ([]byte, error) {
@@ -160,16 +160,16 @@ func (c *ControlPlaneSummary) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ControlPlaneSummary) GetID() string {
+func (o *ControlPlaneSummary) GetID() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.ID
 }
 
-func (o *ControlPlaneSummary) GetName() string {
+func (o *ControlPlaneSummary) GetName() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Name
 }
@@ -188,23 +188,23 @@ func (o *ControlPlaneSummary) GetLabels() map[string]string {
 	return o.Labels
 }
 
-func (o *ControlPlaneSummary) GetConfig() ControlPlaneSummaryConfig {
+func (o *ControlPlaneSummary) GetConfig() *ControlPlaneSummaryConfig {
 	if o == nil {
-		return ControlPlaneSummaryConfig{}
+		return nil
 	}
 	return o.Config
 }
 
-func (o *ControlPlaneSummary) GetCreatedAt() time.Time {
+func (o *ControlPlaneSummary) GetCreatedAt() *time.Time {
 	if o == nil {
-		return time.Time{}
+		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *ControlPlaneSummary) GetUpdatedAt() time.Time {
+func (o *ControlPlaneSummary) GetUpdatedAt() *time.Time {
 	if o == nil {
-		return time.Time{}
+		return nil
 	}
 	return o.UpdatedAt
 }

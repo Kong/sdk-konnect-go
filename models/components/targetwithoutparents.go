@@ -7,6 +7,7 @@ import (
 )
 
 type TargetWithoutParents struct {
+	ID *string `json:"id,omitempty"`
 	// An optional set of strings associated with the Target for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
 	// The target address (ip or hostname) and port. If the hostname resolves to an SRV record, the `port` value will be overridden by the value from the DNS record.
@@ -24,6 +25,13 @@ func (t *TargetWithoutParents) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (o *TargetWithoutParents) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
 }
 
 func (o *TargetWithoutParents) GetTags() []string {

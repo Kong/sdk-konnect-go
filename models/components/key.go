@@ -41,7 +41,7 @@ type Key struct {
 	// A JSON Web Key represented as a string.
 	Jwk *string `json:"jwk,omitempty"`
 	// A unique identifier for a key.
-	Kid *string `json:"kid,omitempty"`
+	Kid string `json:"kid"`
 	// The name to associate with the given keys.
 	Name *string `json:"name,omitempty"`
 	// A keypair in PEM format.
@@ -75,9 +75,9 @@ func (o *Key) GetJwk() *string {
 	return o.Jwk
 }
 
-func (o *Key) GetKid() *string {
+func (o *Key) GetKid() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Kid
 }
@@ -118,10 +118,11 @@ func (o *Key) GetUpdatedAt() *int64 {
 }
 
 type KeyInput struct {
+	ID *string `json:"id,omitempty"`
 	// A JSON Web Key represented as a string.
 	Jwk *string `json:"jwk,omitempty"`
 	// A unique identifier for a key.
-	Kid *string `json:"kid,omitempty"`
+	Kid string `json:"kid"`
 	// The name to associate with the given keys.
 	Name *string `json:"name,omitempty"`
 	// A keypair in PEM format.
@@ -132,6 +133,13 @@ type KeyInput struct {
 	Tags []string `json:"tags,omitempty"`
 }
 
+func (o *KeyInput) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
 func (o *KeyInput) GetJwk() *string {
 	if o == nil {
 		return nil
@@ -139,9 +147,9 @@ func (o *KeyInput) GetJwk() *string {
 	return o.Jwk
 }
 
-func (o *KeyInput) GetKid() *string {
+func (o *KeyInput) GetKid() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Kid
 }

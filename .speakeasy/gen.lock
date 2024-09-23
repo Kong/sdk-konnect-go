@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 42c48d212003a57034dde18e8b83f912
+  docChecksum: 173f20beea4b96421d5c18e6c34cd581
   docVersion: 0.0.1
-  speakeasyVersion: 1.400.1
-  generationVersion: 2.420.2
-  releaseVersion: 0.0.13
-  configChecksum: 6841b42e3bbd1466d5f9879f23a04b00
+  speakeasyVersion: 1.401.2
+  generationVersion: 2.421.3
+  releaseVersion: 0.0.14
+  configChecksum: db87764003c94ae1bf990fd868a238f1
 features:
   go:
     additionalDependencies: 0.1.0
@@ -51,10 +51,8 @@ generatedFiles:
   - /models/components/consumerinput.go
   - /models/components/controlplane.go
   - /models/components/controlplanesummary.go
-  - /models/components/cpregion.go
   - /models/components/createcontrolplanerequest.go
   - /models/components/createpluginschemas.go
-  - /models/components/createserverlesscloudgatewayrequest.go
   - /models/components/createsystemaccount.go
   - /models/components/createsystemaccountaccesstoken.go
   - /models/components/createteam.go
@@ -93,7 +91,6 @@ generatedFiles:
   - /models/components/listnodes.go
   - /models/components/listnodeseol.go
   - /models/components/listpluginschemas.go
-  - /models/components/listserverlesscloudgatewaysresponse.go
   - /models/components/meorganization.go
   - /models/components/pagemeta.go
   - /models/components/paginatedmeta.go
@@ -106,8 +103,6 @@ generatedFiles:
   - /models/components/route.go
   - /models/components/routewithoutparents.go
   - /models/components/security.go
-  - /models/components/serverlesscloudgateway.go
-  - /models/components/serverlesscontrolplane.go
   - /models/components/service.go
   - /models/components/sni.go
   - /models/components/sniwithoutparents.go
@@ -164,7 +159,6 @@ generatedFiles:
   - /models/operations/createpluginwithservice.go
   - /models/operations/createroute.go
   - /models/operations/createroutewithservice.go
-  - /models/operations/createserverlesscloudgateway.go
   - /models/operations/createservice.go
   - /models/operations/createsni.go
   - /models/operations/createsniwithcertificate.go
@@ -192,7 +186,6 @@ generatedFiles:
   - /models/operations/deletepluginwithservice.go
   - /models/operations/deleteroute.go
   - /models/operations/deleteroutewithservice.go
-  - /models/operations/deleteserverlesscloudgateway.go
   - /models/operations/deleteservice.go
   - /models/operations/deletesni.go
   - /models/operations/deletesniwithcertificate.go
@@ -237,7 +230,6 @@ generatedFiles:
   - /models/operations/getpredefinedroles.go
   - /models/operations/getroute.go
   - /models/operations/getroutewithservice.go
-  - /models/operations/getserverlesscloudgateway.go
   - /models/operations/getservice.go
   - /models/operations/getsni.go
   - /models/operations/getsniwithcertificate.go
@@ -282,7 +274,6 @@ generatedFiles:
   - /models/operations/listpluginwithservice.go
   - /models/operations/listroute.go
   - /models/operations/listroutewithservice.go
-  - /models/operations/listserverlesscloudgateway.go
   - /models/operations/listservice.go
   - /models/operations/listsni.go
   - /models/operations/listsniwithcertificate.go
@@ -304,6 +295,7 @@ generatedFiles:
   - /models/operations/postsystemaccountsaccountidassignedroles.go
   - /models/operations/postsystemaccountsidaccesstokens.go
   - /models/operations/postteamsteamidsystemaccounts.go
+  - /models/operations/putcontrolplanesidgroupmemberships.go
   - /models/operations/removeconsumerfromgroup.go
   - /models/operations/removeuserfromteam.go
   - /models/operations/teamsassignrole.go
@@ -403,10 +395,8 @@ generatedFiles:
   - docs/models/components/controlplanesummaryauthtype.md
   - docs/models/components/controlplanesummaryclustertype.md
   - docs/models/components/controlplanesummaryconfig.md
-  - docs/models/components/cpregion.md
   - docs/models/components/createcontrolplanerequest.md
   - docs/models/components/createpluginschemas.md
-  - docs/models/components/createserverlesscloudgatewayrequest.md
   - docs/models/components/createsystemaccount.md
   - docs/models/components/createsystemaccountaccesstoken.md
   - docs/models/components/createteam.md
@@ -474,7 +464,6 @@ generatedFiles:
   - docs/models/components/listnodesitems.md
   - docs/models/components/listnodespage.md
   - docs/models/components/listpluginschemas.md
-  - docs/models/components/listserverlesscloudgatewaysresponse.md
   - docs/models/components/maintainer.md
   - docs/models/components/mappings.md
   - docs/models/components/members.md
@@ -587,8 +576,6 @@ generatedFiles:
   - docs/models/components/routewithoutparentssources.md
   - docs/models/components/rule.md
   - docs/models/components/security.md
-  - docs/models/components/serverlesscloudgateway.md
-  - docs/models/components/serverlesscontrolplane.md
   - docs/models/components/service.md
   - docs/models/components/set.md
   - docs/models/components/sni.md
@@ -686,7 +673,6 @@ generatedFiles:
   - docs/models/operations/createrouteresponse.md
   - docs/models/operations/createroutewithservicerequest.md
   - docs/models/operations/createroutewithserviceresponse.md
-  - docs/models/operations/createserverlesscloudgatewayresponse.md
   - docs/models/operations/createservicerequest.md
   - docs/models/operations/createserviceresponse.md
   - docs/models/operations/createsnirequest.md
@@ -740,8 +726,6 @@ generatedFiles:
   - docs/models/operations/deleterouteresponse.md
   - docs/models/operations/deleteroutewithservicerequest.md
   - docs/models/operations/deleteroutewithserviceresponse.md
-  - docs/models/operations/deleteserverlesscloudgatewayrequest.md
-  - docs/models/operations/deleteserverlesscloudgatewayresponse.md
   - docs/models/operations/deleteservicerequest.md
   - docs/models/operations/deleteserviceresponse.md
   - docs/models/operations/deletesnirequest.md
@@ -827,8 +811,6 @@ generatedFiles:
   - docs/models/operations/getrouteresponse.md
   - docs/models/operations/getroutewithservicerequest.md
   - docs/models/operations/getroutewithserviceresponse.md
-  - docs/models/operations/getserverlesscloudgatewayrequest.md
-  - docs/models/operations/getserverlesscloudgatewayresponse.md
   - docs/models/operations/getservicerequest.md
   - docs/models/operations/getserviceresponse.md
   - docs/models/operations/getsnirequest.md
@@ -940,8 +922,6 @@ generatedFiles:
   - docs/models/operations/listroutewithservicerequest.md
   - docs/models/operations/listroutewithserviceresponse.md
   - docs/models/operations/listroutewithserviceresponsebody.md
-  - docs/models/operations/listserverlesscloudgatewayrequest.md
-  - docs/models/operations/listserverlesscloudgatewayresponse.md
   - docs/models/operations/listservicerequest.md
   - docs/models/operations/listserviceresponse.md
   - docs/models/operations/listserviceresponsebody.md
@@ -994,6 +974,8 @@ generatedFiles:
   - docs/models/operations/postsystemaccountsresponse.md
   - docs/models/operations/postteamsteamidsystemaccountsrequest.md
   - docs/models/operations/postteamsteamidsystemaccountsresponse.md
+  - docs/models/operations/putcontrolplanesidgroupmembershipsrequest.md
+  - docs/models/operations/putcontrolplanesidgroupmembershipsresponse.md
   - docs/models/operations/queryparamfilter.md
   - docs/models/operations/removeconsumerfromgrouprequest.md
   - docs/models/operations/removeconsumerfromgroupresponse.md
@@ -1103,7 +1085,6 @@ generatedFiles:
   - roles.go
   - routes.go
   - sdk.go
-  - serverlesscloudgateways.go
   - services.go
   - snis.go
   - systemaccounts.go
@@ -1397,10 +1378,13 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"cert": "<value>"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 812329}
-        "201": {}
+        "201":
+          application/json: {"cert": "<value>"}
   get-ca_certificate:
     "":
       parameters:
@@ -1410,17 +1394,21 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 834989}
-        "200": {}
+        "200":
+          application/json: {"cert": "<value>"}
   upsert-ca_certificate:
     "":
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           CACertificateId: "3c31f18a-f27a-4f9b-8cd4-bf841554612f"
+      requestBody:
+        application/json: {"cert": "<value>"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 10999}
-        "200": {}
+        "200":
+          application/json: {"cert": "<value>"}
   delete-ca_certificate:
     "":
       parameters:
@@ -1454,10 +1442,13 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"cert": "<value>", "key": "<key>"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 143829}
-        "201": {}
+        "201":
+          application/json: {"cert": "<value>", "key": "<key>"}
   get-certificate:
     "":
       parameters:
@@ -1467,17 +1458,21 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 173775}
-        "200": {}
+        "200":
+          application/json: {"cert": "<value>", "key": "<key>"}
   upsert-certificate:
     "":
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           CertificateId: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7"
+      requestBody:
+        application/json: {"cert": "<value>", "key": "<key>"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 45220}
-        "200": {}
+        "200":
+          application/json: {"cert": "<value>", "key": "<key>"}
   delete-certificate:
     "":
       parameters:
@@ -1501,6 +1496,11 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           CertificateId: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7"
+      requestBody:
+        application/json: {"name": "<value>"}
+      responses:
+        "201":
+          application/json: {"name": "<value>"}
   get-sni-with-certificate:
     "":
       parameters:
@@ -1508,6 +1508,9 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           CertificateId: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7"
           SNIId: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f"
+      responses:
+        "200":
+          application/json: {"name": "<value>"}
   upsert-sni-with-certificate:
     "":
       parameters:
@@ -1515,6 +1518,11 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           CertificateId: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7"
           SNIId: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f"
+      requestBody:
+        application/json: {"name": "<value>"}
+      responses:
+        "200":
+          application/json: {"name": "<value>"}
   delete-sni-with-certificate:
     "":
       parameters:
@@ -1546,10 +1554,13 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"name": "<value>"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 805552}
-        "201": {}
+        "201":
+          application/json: {"name": "<value>"}
   get-sni:
     "":
       parameters:
@@ -1559,17 +1570,21 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 786293}
-        "200": {}
+        "200":
+          application/json: {"name": "<value>"}
   upsert-sni:
     "":
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           SNIId: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f"
+      requestBody:
+        application/json: {"name": "<value>"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 145107}
-        "200": {}
+        "200":
+          application/json: {"name": "<value>"}
   delete-sni:
     "":
       parameters:
@@ -1603,10 +1618,13 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"name": "<value>"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 933383}
-        "201": {}
+        "201":
+          application/json: {"name": "<value>"}
   get-consumer_group:
     "":
       parameters:
@@ -1623,10 +1641,13 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerGroupId: ""
+      requestBody:
+        application/json: {"name": "<value>"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 153550}
-        "200": {}
+        "200":
+          application/json: {"name": "<value>"}
   delete-consumer_group:
     "":
       parameters:
@@ -1927,10 +1948,13 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"kid": "<value>"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 907390}
-        "201": {}
+        "201":
+          application/json: {"kid": "<value>"}
   get-key:
     "":
       parameters:
@@ -1940,17 +1964,21 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 265510}
-        "200": {}
+        "200":
+          application/json: {"kid": "<value>"}
   upsert-key:
     "":
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           KeyId: "bba22c06-a632-42be-a018-1b9ff357b5b9"
+      requestBody:
+        application/json: {"kid": "<value>"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 385247}
-        "200": {}
+        "200":
+          application/json: {"kid": "<value>"}
   delete-key:
     "":
       parameters:
@@ -2064,10 +2092,13 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"config": {}, "name": "<value>"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 130029}
-        "201": {}
+        "201":
+          application/json: {"config": {"key": "<value>", "key1": "<value>"}, "name": "<value>"}
   get-plugin:
     "":
       parameters:
@@ -2077,17 +2108,21 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 929065}
-        "200": {}
+        "200":
+          application/json: {"config": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "name": "<value>"}
   upsert-plugin:
     "":
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+      requestBody:
+        application/json: {"config": {}, "name": "<value>"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 114024}
-        "200": {}
+        "200":
+          application/json: {"config": {"key": "<value>", "key1": "<value>"}, "name": "<value>"}
   delete-plugin:
     "":
       parameters:
@@ -2111,6 +2146,11 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
+      requestBody:
+        application/json: {"config": {}, "name": "<value>"}
+      responses:
+        "201":
+          application/json: {"config": {"key": "<value>", "key1": "<value>"}, "name": "<value>"}
   get-plugin-with-route:
     "":
       parameters:
@@ -2118,6 +2158,9 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+      responses:
+        "200":
+          application/json: {"config": {"key": "<value>"}, "name": "<value>"}
   upsert-plugin-with-route:
     "":
       parameters:
@@ -2125,6 +2168,11 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+      requestBody:
+        application/json: {"config": {"key": "<value>"}, "name": "<value>"}
+      responses:
+        "200":
+          application/json: {"config": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "name": "<value>"}
   delete-plugin-with-route:
     "":
       parameters:
@@ -2157,6 +2205,11 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+      requestBody:
+        application/json: {"config": {"key": "<value>"}, "name": "<value>"}
+      responses:
+        "201":
+          application/json: {"config": {}, "name": "<value>"}
   get-plugin-with-service:
     "":
       parameters:
@@ -2164,6 +2217,9 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+      responses:
+        "200":
+          application/json: {"config": {}, "name": "<value>"}
   upsert-plugin-with-service:
     "":
       parameters:
@@ -2171,6 +2227,11 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+      requestBody:
+        application/json: {"config": {}, "name": "<value>"}
+      responses:
+        "200":
+          application/json: {"config": {"key": "<value>", "key1": "<value>"}, "name": "<value>"}
   delete-plugin-with-service:
     "":
       parameters:
@@ -2361,10 +2422,13 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"name": "<value>"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 670650}
-        "201": {}
+        "201":
+          application/json: {"name": "<value>"}
   get-upstream:
     "":
       parameters:
@@ -2374,17 +2438,21 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 104017}
-        "200": {}
+        "200":
+          application/json: {"name": "<value>"}
   upsert-upstream:
     "":
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           UpstreamId: "426d620c-7058-4ae6-aacc-f85a3204a2c5"
+      requestBody:
+        application/json: {"name": "<value>"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 59493}
-        "200": {}
+        "200":
+          application/json: {"name": "<value>"}
   delete-upstream:
     "":
       parameters:
@@ -2453,10 +2521,13 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"name": "<value>", "prefix": "<value>"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 954798}
-        "201": {}
+        "201":
+          application/json: {"name": "<value>", "prefix": "<value>"}
   get-vault:
     "":
       parameters:
@@ -2466,17 +2537,21 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 429820}
-        "200": {}
+        "200":
+          application/json: {"name": "<value>", "prefix": "<value>"}
   upsert-vault:
     "":
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           VaultId: "9d4d6d19-77c6-428e-a965-9bc9647633e9"
+      requestBody:
+        application/json: {"name": "<value>", "prefix": "<value>"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 63413}
-        "200": {}
+        "200":
+          application/json: {"name": "<value>", "prefix": "<value>"}
   delete-vault:
     "":
       parameters:
@@ -3301,3 +3376,19 @@ examples:
           ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
         query:
           tags: "tag1,tag2"
+  put-control-planes-id-group-memberships:
+    speakeasy-default-put-control-planes-id-group-memberships:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "400":
+          application/problem+json: {"status": 768745, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value>"], "source": "body"}, {"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value>", "<value>"], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "503":
+          application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}

@@ -10,7 +10,7 @@ import (
 type UpsertSniRequest struct {
 	// ID of the SNI to lookup
 	SNIID string `pathParam:"style=simple,explode=false,name=SNIId"`
-	// The UUID of your control plane. This variable is available in the Konnect manager
+	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Description of the SNI
 	Sni components.SNIInput `request:"mediaType=application/json"`

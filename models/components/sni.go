@@ -19,13 +19,13 @@ type Sni struct {
 	CreatedAt *int64  `json:"created_at,omitempty"`
 	ID        *string `json:"id,omitempty"`
 	// The SNI name to associate with the given certificate.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// An optional set of strings associated with the SNIs for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 	// The id (a UUID) of the certificate with which to associate the SNI hostname. The Certificate must have a valid private key associated with it to be used by the SNI object.
-	Certificate *SNICertificate `json:"certificate,omitempty"`
+	Certificate SNICertificate `json:"certificate"`
 }
 
 func (o *Sni) GetCreatedAt() *int64 {
@@ -42,9 +42,9 @@ func (o *Sni) GetID() *string {
 	return o.ID
 }
 
-func (o *Sni) GetName() *string {
+func (o *Sni) GetName() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Name
 }
@@ -63,25 +63,33 @@ func (o *Sni) GetUpdatedAt() *int64 {
 	return o.UpdatedAt
 }
 
-func (o *Sni) GetCertificate() *SNICertificate {
+func (o *Sni) GetCertificate() SNICertificate {
 	if o == nil {
-		return nil
+		return SNICertificate{}
 	}
 	return o.Certificate
 }
 
 type SNIInput struct {
+	ID *string `json:"id,omitempty"`
 	// The SNI name to associate with the given certificate.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// An optional set of strings associated with the SNIs for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
 	// The id (a UUID) of the certificate with which to associate the SNI hostname. The Certificate must have a valid private key associated with it to be used by the SNI object.
-	Certificate *SNICertificate `json:"certificate,omitempty"`
+	Certificate SNICertificate `json:"certificate"`
 }
 
-func (o *SNIInput) GetName() *string {
+func (o *SNIInput) GetID() *string {
 	if o == nil {
 		return nil
+	}
+	return o.ID
+}
+
+func (o *SNIInput) GetName() string {
+	if o == nil {
+		return ""
 	}
 	return o.Name
 }
@@ -93,9 +101,9 @@ func (o *SNIInput) GetTags() []string {
 	return o.Tags
 }
 
-func (o *SNIInput) GetCertificate() *SNICertificate {
+func (o *SNIInput) GetCertificate() SNICertificate {
 	if o == nil {
-		return nil
+		return SNICertificate{}
 	}
 	return o.Certificate
 }

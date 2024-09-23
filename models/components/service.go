@@ -71,7 +71,6 @@ func (e *Protocol) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// Service - The request schema for the create control plane's request.
 type Service struct {
 	// Array of `CA Certificate` object UUIDs that are used to build the trust store while verifying upstream server's TLS certificate. If set to `null` when Nginx default is respected. If default CA list in Nginx are not specified and TLS verification is enabled, then handshake with upstream server will always fail (because no CA are trusted).
 	CaCertificates []string `json:"ca_certificates,omitempty"`
@@ -247,7 +246,6 @@ func (o *Service) GetWriteTimeout() *int64 {
 	return o.WriteTimeout
 }
 
-// ServiceInput - The request schema for the create control plane's request.
 type ServiceInput struct {
 	// Array of `CA Certificate` object UUIDs that are used to build the trust store while verifying upstream server's TLS certificate. If set to `null` when Nginx default is respected. If default CA list in Nginx are not specified and TLS verification is enabled, then handshake with upstream server will always fail (because no CA are trusted).
 	CaCertificates []string `json:"ca_certificates,omitempty"`
@@ -258,7 +256,8 @@ type ServiceInput struct {
 	// Whether the Service is active. If set to `false`, the proxy behavior will be as if any routes attached to it do not exist (404). Default: `true`.
 	Enabled *bool `default:"true" json:"enabled"`
 	// The host of the upstream server. Note that the host value is case sensitive.
-	Host string `json:"host"`
+	Host string  `json:"host"`
+	ID   *string `json:"id,omitempty"`
 	// The Service name.
 	Name *string `json:"name,omitempty"`
 	// The path to be used in requests to the upstream server.
@@ -327,6 +326,13 @@ func (o *ServiceInput) GetHost() string {
 		return ""
 	}
 	return o.Host
+}
+
+func (o *ServiceInput) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
 }
 
 func (o *ServiceInput) GetName() *string {

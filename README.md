@@ -10,11 +10,13 @@ This is a prototype and should not be used. See [CONTRIBUTING.md](https://github
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.SDKError          | 4xx-5xx                     | */*                         |
+| Error Object                 | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| sdkerrors.BadRequestError    | 400                          | application/problem+json     |
+| sdkerrors.UnauthorizedError  | 401                          | application/problem+json     |
+| sdkerrors.ForbiddenError     | 403                          | application/problem+json     |
+| sdkerrors.ServiceUnavailable | 503                          | application/problem+json     |
+| sdkerrors.SDKError           | 4xx-5xx                      | */*                          |
 
 ### Example
 
@@ -39,12 +41,29 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, operations.ListServerlessCloudGatewayRequest{
-		PageSize:   sdkkonnectgo.Int64(10),
-		PageNumber: sdkkonnectgo.Int64(1),
-		Labels:     sdkkonnectgo.String("filter[labels][eq]=env:prod"),
+	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
+		PageSize:             sdkkonnectgo.Int64(10),
+		PageNumber:           sdkkonnectgo.Int64(1),
+		FilterNameEq:         sdkkonnectgo.String("test"),
+		FilterName:           sdkkonnectgo.String("test"),
+		FilterNameContains:   sdkkonnectgo.String("test"),
+		FilterNameNeq:        sdkkonnectgo.String("test"),
+		FilterIDEq:           sdkkonnectgo.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+		FilterID:             sdkkonnectgo.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+		FilterIDOeq:          sdkkonnectgo.String("some-value,some-other-value"),
+		FilterClusterTypeEq:  sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
+		FilterClusterType:    sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
+		FilterClusterTypeNeq: sdkkonnectgo.String("test"),
+		Labels:               sdkkonnectgo.String("key:value,existCheck"),
+		Sort:                 sdkkonnectgo.String("name,created_at desc"),
 	})
 	if err != nil {
+
+		var e *sdkerrors.BadRequestError
+		if errors.As(err, &e) {
+			// handle error
+			log.Fatal(e.Error())
+		}
 
 		var e *sdkerrors.UnauthorizedError
 		if errors.As(err, &e) {
@@ -53,6 +72,12 @@ func main() {
 		}
 
 		var e *sdkerrors.ForbiddenError
+		if errors.As(err, &e) {
+			// handle error
+			log.Fatal(e.Error())
+		}
+
+		var e *sdkerrors.ServiceUnavailable
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
@@ -105,15 +130,26 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, operations.ListServerlessCloudGatewayRequest{
-		PageSize:   sdkkonnectgo.Int64(10),
-		PageNumber: sdkkonnectgo.Int64(1),
-		Labels:     sdkkonnectgo.String("filter[labels][eq]=env:prod"),
+	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
+		PageSize:             sdkkonnectgo.Int64(10),
+		PageNumber:           sdkkonnectgo.Int64(1),
+		FilterNameEq:         sdkkonnectgo.String("test"),
+		FilterName:           sdkkonnectgo.String("test"),
+		FilterNameContains:   sdkkonnectgo.String("test"),
+		FilterNameNeq:        sdkkonnectgo.String("test"),
+		FilterIDEq:           sdkkonnectgo.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+		FilterID:             sdkkonnectgo.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+		FilterIDOeq:          sdkkonnectgo.String("some-value,some-other-value"),
+		FilterClusterTypeEq:  sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
+		FilterClusterType:    sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
+		FilterClusterTypeNeq: sdkkonnectgo.String("test"),
+		Labels:               sdkkonnectgo.String("key:value,existCheck"),
+		Sort:                 sdkkonnectgo.String("name,created_at desc"),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListServerlessCloudGatewaysResponse != nil {
+	if res.ListControlPlanesResponse != nil {
 		// handle response
 	}
 }
@@ -144,15 +180,26 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, operations.ListServerlessCloudGatewayRequest{
-		PageSize:   sdkkonnectgo.Int64(10),
-		PageNumber: sdkkonnectgo.Int64(1),
-		Labels:     sdkkonnectgo.String("filter[labels][eq]=env:prod"),
+	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
+		PageSize:             sdkkonnectgo.Int64(10),
+		PageNumber:           sdkkonnectgo.Int64(1),
+		FilterNameEq:         sdkkonnectgo.String("test"),
+		FilterName:           sdkkonnectgo.String("test"),
+		FilterNameContains:   sdkkonnectgo.String("test"),
+		FilterNameNeq:        sdkkonnectgo.String("test"),
+		FilterIDEq:           sdkkonnectgo.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+		FilterID:             sdkkonnectgo.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+		FilterIDOeq:          sdkkonnectgo.String("some-value,some-other-value"),
+		FilterClusterTypeEq:  sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
+		FilterClusterType:    sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
+		FilterClusterTypeNeq: sdkkonnectgo.String("test"),
+		Labels:               sdkkonnectgo.String("key:value,existCheck"),
+		Sort:                 sdkkonnectgo.String("name,created_at desc"),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListServerlessCloudGatewaysResponse != nil {
+	if res.ListControlPlanesResponse != nil {
 		// handle response
 	}
 }
@@ -181,15 +228,11 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, operations.ListServerlessCloudGatewayRequest{
-		PageSize:   sdkkonnectgo.Int64(10),
-		PageNumber: sdkkonnectgo.Int64(1),
-		Labels:     sdkkonnectgo.String("filter[labels][eq]=env:prod"),
-	}, operations.WithServerURL("https://global.api.konghq.com/"))
+	res, err := s.Authentication.AuthenticateSso(ctx, "<value>", nil, operations.WithServerURL("https://global.api.konghq.com/"))
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListServerlessCloudGatewaysResponse != nil {
+	if res != nil {
 		// handle response
 	}
 }
@@ -259,15 +302,26 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, operations.ListServerlessCloudGatewayRequest{
-		PageSize:   sdkkonnectgo.Int64(10),
-		PageNumber: sdkkonnectgo.Int64(1),
-		Labels:     sdkkonnectgo.String("filter[labels][eq]=env:prod"),
+	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
+		PageSize:             sdkkonnectgo.Int64(10),
+		PageNumber:           sdkkonnectgo.Int64(1),
+		FilterNameEq:         sdkkonnectgo.String("test"),
+		FilterName:           sdkkonnectgo.String("test"),
+		FilterNameContains:   sdkkonnectgo.String("test"),
+		FilterNameNeq:        sdkkonnectgo.String("test"),
+		FilterIDEq:           sdkkonnectgo.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+		FilterID:             sdkkonnectgo.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+		FilterIDOeq:          sdkkonnectgo.String("some-value,some-other-value"),
+		FilterClusterTypeEq:  sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
+		FilterClusterType:    sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
+		FilterClusterTypeNeq: sdkkonnectgo.String("test"),
+		Labels:               sdkkonnectgo.String("key:value,existCheck"),
+		Sort:                 sdkkonnectgo.String("name,created_at desc"),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListServerlessCloudGatewaysResponse != nil {
+	if res.ListControlPlanesResponse != nil {
 		// handle response
 	}
 }
@@ -330,10 +384,21 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, operations.ListServerlessCloudGatewayRequest{
-		PageSize:   sdkkonnectgo.Int64(10),
-		PageNumber: sdkkonnectgo.Int64(1),
-		Labels:     sdkkonnectgo.String("filter[labels][eq]=env:prod"),
+	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
+		PageSize:             sdkkonnectgo.Int64(10),
+		PageNumber:           sdkkonnectgo.Int64(1),
+		FilterNameEq:         sdkkonnectgo.String("test"),
+		FilterName:           sdkkonnectgo.String("test"),
+		FilterNameContains:   sdkkonnectgo.String("test"),
+		FilterNameNeq:        sdkkonnectgo.String("test"),
+		FilterIDEq:           sdkkonnectgo.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+		FilterID:             sdkkonnectgo.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+		FilterIDOeq:          sdkkonnectgo.String("some-value,some-other-value"),
+		FilterClusterTypeEq:  sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
+		FilterClusterType:    sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
+		FilterClusterTypeNeq: sdkkonnectgo.String("test"),
+		Labels:               sdkkonnectgo.String("key:value,existCheck"),
+		Sort:                 sdkkonnectgo.String("name,created_at desc"),
 	}, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
@@ -348,7 +413,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListServerlessCloudGatewaysResponse != nil {
+	if res.ListControlPlanesResponse != nil {
 		// handle response
 	}
 }
@@ -387,15 +452,26 @@ func main() {
 	)
 
 	ctx := context.Background()
-	res, err := s.ServerlessCloudGateways.ListServerlessCloudGateway(ctx, operations.ListServerlessCloudGatewayRequest{
-		PageSize:   sdkkonnectgo.Int64(10),
-		PageNumber: sdkkonnectgo.Int64(1),
-		Labels:     sdkkonnectgo.String("filter[labels][eq]=env:prod"),
+	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
+		PageSize:             sdkkonnectgo.Int64(10),
+		PageNumber:           sdkkonnectgo.Int64(1),
+		FilterNameEq:         sdkkonnectgo.String("test"),
+		FilterName:           sdkkonnectgo.String("test"),
+		FilterNameContains:   sdkkonnectgo.String("test"),
+		FilterNameNeq:        sdkkonnectgo.String("test"),
+		FilterIDEq:           sdkkonnectgo.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+		FilterID:             sdkkonnectgo.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
+		FilterIDOeq:          sdkkonnectgo.String("some-value,some-other-value"),
+		FilterClusterTypeEq:  sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
+		FilterClusterType:    sdkkonnectgo.String("CLUSTER_TYPE_CONTROL_PLANE"),
+		FilterClusterTypeNeq: sdkkonnectgo.String("test"),
+		Labels:               sdkkonnectgo.String("key:value,existCheck"),
+		Sort:                 sdkkonnectgo.String("name,created_at desc"),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListServerlessCloudGatewaysResponse != nil {
+	if res.ListControlPlanesResponse != nil {
 		// handle response
 	}
 }

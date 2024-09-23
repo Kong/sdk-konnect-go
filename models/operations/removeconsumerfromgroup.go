@@ -9,7 +9,7 @@ import (
 type RemoveConsumerFromGroupRequest struct {
 	ConsumerGroupID string `pathParam:"style=simple,explode=false,name=ConsumerGroupId"`
 	ConsumerID      string `pathParam:"style=simple,explode=false,name=ConsumerId"`
-	// The UUID of your control plane. This variable is available in the Konnect manager
+	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 }
 

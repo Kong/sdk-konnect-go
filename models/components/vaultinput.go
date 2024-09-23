@@ -7,10 +7,11 @@ type VaultInput struct {
 	Config map[string]any `json:"config,omitempty"`
 	// The description of the Vault entity.
 	Description *string `json:"description,omitempty"`
+	ID          *string `json:"id,omitempty"`
 	// The name of the Vault that's going to be added. Currently, the Vault implementation must be installed in every Kong instance.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// The unique prefix (or identifier) for this Vault configuration. The prefix is used to load the right Vault configuration and implementation when referencing secrets with the other entities.
-	Prefix *string `json:"prefix,omitempty"`
+	Prefix string `json:"prefix"`
 	// An optional set of strings associated with the Vault for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
 }
@@ -29,16 +30,23 @@ func (o *VaultInput) GetDescription() *string {
 	return o.Description
 }
 
-func (o *VaultInput) GetName() *string {
+func (o *VaultInput) GetID() *string {
 	if o == nil {
 		return nil
+	}
+	return o.ID
+}
+
+func (o *VaultInput) GetName() string {
+	if o == nil {
+		return ""
 	}
 	return o.Name
 }
 
-func (o *VaultInput) GetPrefix() *string {
+func (o *VaultInput) GetPrefix() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Prefix
 }

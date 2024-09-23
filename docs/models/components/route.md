@@ -1,7 +1,5 @@
 # Route
 
-The request schema for the create route's request.
-
 
 ## Fields
 

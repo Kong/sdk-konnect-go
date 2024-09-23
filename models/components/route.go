@@ -171,7 +171,6 @@ func (o *RouteService) GetID() *string {
 	return o.ID
 }
 
-// Route - The request schema for the create route's request.
 type Route struct {
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
@@ -374,7 +373,6 @@ func (o *Route) GetService() *RouteService {
 	return o.Service
 }
 
-// RouteInput - The request schema for the create route's request.
 type RouteInput struct {
 	// A list of IP destinations of incoming connections that match this Route when using stream routing. Each entry is an object with fields "ip" (optionally in CIDR range notation) and/or "port".
 	Destinations []Destinations `json:"destinations,omitempty"`
@@ -384,6 +382,7 @@ type RouteInput struct {
 	Hosts []string `json:"hosts,omitempty"`
 	// The status code Kong responds with when all properties of a Route match except the protocol i.e. if the protocol of the request is `HTTP` instead of `HTTPS`. `Location` header is injected by Kong if the field is set to 301, 302, 307 or 308. Note: This config applies only if the Route is configured to only accept the `https` protocol.
 	HTTPSRedirectStatusCode *HTTPSRedirectStatusCode `default:"426" json:"https_redirect_status_code"`
+	ID                      *string                  `json:"id,omitempty"`
 	// A list of HTTP methods that match this Route.
 	Methods []string `json:"methods,omitempty"`
 	// The name of the Route. Route names must be unique, and they are case sensitive. For example, there can be two different Routes named "test" and "Test".
@@ -451,6 +450,13 @@ func (o *RouteInput) GetHTTPSRedirectStatusCode() *HTTPSRedirectStatusCode {
 		return nil
 	}
 	return o.HTTPSRedirectStatusCode
+}
+
+func (o *RouteInput) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
 }
 
 func (o *RouteInput) GetMethods() []string {

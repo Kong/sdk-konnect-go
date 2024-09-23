@@ -3,15 +3,23 @@
 package components
 
 type SNIWithoutParents struct {
+	ID *string `json:"id,omitempty"`
 	// The SNI name to associate with the given certificate.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// An optional set of strings associated with the SNIs for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
 }
 
-func (o *SNIWithoutParents) GetName() *string {
+func (o *SNIWithoutParents) GetID() *string {
 	if o == nil {
 		return nil
+	}
+	return o.ID
+}
+
+func (o *SNIWithoutParents) GetName() string {
+	if o == nil {
+		return ""
 	}
 	return o.Name
 }

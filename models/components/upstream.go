@@ -575,7 +575,7 @@ type Upstream struct {
 	HostHeader *string `json:"host_header,omitempty"`
 	ID         *string `json:"id,omitempty"`
 	// This is a hostname, which must be equal to the `host` of a Service.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// The number of slots in the load balancer algorithm. If `algorithm` is set to `round-robin`, this setting determines the maximum number of slots. If `algorithm` is set to `consistent-hashing`, this setting determines the actual number of slots in the algorithm. Accepts an integer in the range `10`-`65536`.
 	Slots *int64 `default:"10000" json:"slots"`
 	// An optional set of strings associated with the Upstream for grouping and filtering.
@@ -709,9 +709,9 @@ func (o *Upstream) GetID() *string {
 	return o.ID
 }
 
-func (o *Upstream) GetName() *string {
+func (o *Upstream) GetName() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Name
 }
@@ -772,8 +772,9 @@ type UpstreamInput struct {
 	Healthchecks     *Healthchecks `json:"healthchecks,omitempty"`
 	// The hostname to be used as `Host` header when proxying requests through Kong.
 	HostHeader *string `json:"host_header,omitempty"`
+	ID         *string `json:"id,omitempty"`
 	// This is a hostname, which must be equal to the `host` of a Service.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// The number of slots in the load balancer algorithm. If `algorithm` is set to `round-robin`, this setting determines the maximum number of slots. If `algorithm` is set to `consistent-hashing`, this setting determines the actual number of slots in the algorithm. Accepts an integer in the range `10`-`65536`.
 	Slots *int64 `default:"10000" json:"slots"`
 	// An optional set of strings associated with the Upstream for grouping and filtering.
@@ -891,9 +892,16 @@ func (o *UpstreamInput) GetHostHeader() *string {
 	return o.HostHeader
 }
 
-func (o *UpstreamInput) GetName() *string {
+func (o *UpstreamInput) GetID() *string {
 	if o == nil {
 		return nil
+	}
+	return o.ID
+}
+
+func (o *UpstreamInput) GetName() string {
+	if o == nil {
+		return ""
 	}
 	return o.Name
 }

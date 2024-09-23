@@ -10,7 +10,7 @@ import (
 type UpsertUpstreamRequest struct {
 	// ID of the Upstream to lookup
 	UpstreamID string `pathParam:"style=simple,explode=false,name=UpstreamId"`
-	// The UUID of your control plane. This variable is available in the Konnect manager
+	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Description of the Upstream
 	Upstream components.UpstreamInput `request:"mediaType=application/json"`

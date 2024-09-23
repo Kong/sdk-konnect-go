@@ -1,4 +1,4 @@
-# DeleteServerlessCloudGatewayResponse
+# PutControlPlanesIDGroupMembershipsResponse
 
 
 ## Fields

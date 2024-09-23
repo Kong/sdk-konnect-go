@@ -4,14 +4,14 @@ package components
 
 type Certificate struct {
 	// PEM-encoded public certificate chain of the SSL key pair. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
-	Cert *string `json:"cert,omitempty"`
+	Cert string `json:"cert"`
 	// PEM-encoded public certificate chain of the alternate SSL key pair. This should only be set if you have both RSA and ECDSA types of certificate available and would like Kong to prefer serving using ECDSA certs when client advertises support for it. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
 	CertAlt *string `json:"cert_alt,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64  `json:"created_at,omitempty"`
 	ID        *string `json:"id,omitempty"`
 	// PEM-encoded private key of the SSL key pair. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
-	Key *string `json:"key,omitempty"`
+	Key string `json:"key"`
 	// PEM-encoded private key of the alternate SSL key pair. This should only be set if you have both RSA and ECDSA types of certificate available and would like Kong to prefer serving using ECDSA certs when client advertises support for it. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
 	KeyAlt *string `json:"key_alt,omitempty"`
 	// An optional set of strings associated with the Certificate for grouping and filtering.
@@ -20,9 +20,9 @@ type Certificate struct {
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 }
 
-func (o *Certificate) GetCert() *string {
+func (o *Certificate) GetCert() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Cert
 }
@@ -48,9 +48,9 @@ func (o *Certificate) GetID() *string {
 	return o.ID
 }
 
-func (o *Certificate) GetKey() *string {
+func (o *Certificate) GetKey() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Key
 }

@@ -74,10 +74,9 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 //
 // https://docs.konghq.com - Documentation for Kong Gateway and its APIs
 type SDK struct {
-	ServerlessCloudGateways *ServerlessCloudGateways
-	ControlPlanes           *ControlPlanes
-	ACLs                    *ACLs
-	BasicAuthCredentials    *BasicAuthCredentials
+	ControlPlanes        *ControlPlanes
+	ACLs                 *ACLs
+	BasicAuthCredentials *BasicAuthCredentials
 	// A CA certificate object represents a trusted certificate authority.
 	// These objects are used by Kong Gateway to verify the validity of a client or server certificate.
 	CACertificates *CACertificates
@@ -261,9 +260,9 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "0.0.13",
-			GenVersion:        "2.420.2",
-			UserAgent:         "speakeasy-sdk/go 0.0.13 2.420.2 0.0.1 github.com/Kong/sdk-konnect-go",
+			SDKVersion:        "0.0.14",
+			GenVersion:        "2.421.3",
+			UserAgent:         "speakeasy-sdk/go 0.0.14 2.421.3 0.0.1 github.com/Kong/sdk-konnect-go",
 			Hooks:             hooks.New(),
 		},
 	}
@@ -282,8 +281,6 @@ func New(opts ...SDKOption) *SDK {
 	if serverURL != currentServerURL {
 		sdk.sdkConfiguration.ServerURL = serverURL
 	}
-
-	sdk.ServerlessCloudGateways = newServerlessCloudGateways(sdk.sdkConfiguration)
 
 	sdk.ControlPlanes = newControlPlanes(sdk.sdkConfiguration)
 

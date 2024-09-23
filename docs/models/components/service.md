@@ -1,7 +1,5 @@
 # Service
 
-The request schema for the create control plane's request.
-
 
 ## Fields
 
