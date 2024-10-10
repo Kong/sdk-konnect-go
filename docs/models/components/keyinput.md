@@ -1,0 +1,14 @@
+# KeyInput
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ID`                                                                           | **string*                                                                      | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `Jwk`                                                                          | **string*                                                                      | :heavy_minus_sign:                                                             | A JSON Web Key represented as a string.                                        |
+| `Kid`                                                                          | *string*                                                                       | :heavy_check_mark:                                                             | A unique identifier for a key.                                                 |
+| `Name`                                                                         | **string*                                                                      | :heavy_minus_sign:                                                             | The name to associate with the given keys.                                     |
+| `Pem`                                                                          | [*components.Pem](../../models/components/pem.md)                              | :heavy_minus_sign:                                                             | A keypair in PEM format.                                                       |
+| `Set`                                                                          | [*components.Set](../../models/components/set.md)                              | :heavy_minus_sign:                                                             | The id (an UUID) of the key-set with which to associate the key.               |
+| `Tags`                                                                         | []*string*                                                                     | :heavy_minus_sign:                                                             | An optional set of strings associated with the Key for grouping and filtering. |

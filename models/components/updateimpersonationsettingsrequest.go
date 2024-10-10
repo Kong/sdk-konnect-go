@@ -2,6 +2,7 @@
 
 package components
 
+// UpdateImpersonationSettingsRequest - The request schema for adding a system account to a team.
 type UpdateImpersonationSettingsRequest struct {
 	// Indicates if user impersonation is allowed for the organization.
 	Enabled *bool `json:"enabled,omitempty"`

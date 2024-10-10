@@ -2,6 +2,7 @@
 
 package components
 
+// TeamMappingCollection - A paginated list response for a collection of team mappings.
 type TeamMappingCollection struct {
 	Data []TeamMapping `json:"data,omitempty"`
 }

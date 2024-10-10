@@ -21,6 +21,7 @@ func (o *Mappings) GetTeamIds() []string {
 	return o.TeamIds
 }
 
+// UpdateTeamMappings - The request schema for updating IdP team mappings.
 type UpdateTeamMappings struct {
 	// The mappings object.
 	Mappings []Mappings `json:"mappings,omitempty"`

@@ -2,6 +2,7 @@
 
 package components
 
+// UpdateImpersonationSettingsResponse - Response for Update Impersonation Settings endpoint
 type UpdateImpersonationSettingsResponse struct {
 	// The organization has user impersonation enabled.
 	Enabled *bool `json:"enabled,omitempty"`

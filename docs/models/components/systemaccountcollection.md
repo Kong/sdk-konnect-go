@@ -1,5 +1,7 @@
 # SystemAccountCollection
 
+A paginated list response for a collection of system accounts.
+
 
 ## Fields
 

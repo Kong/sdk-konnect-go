@@ -36,6 +36,7 @@ func (e *MeOrganizationState) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// MeOrganization - Me Organization
 type MeOrganization struct {
 	// UUID of the organization.
 	ID *string `json:"id,omitempty"`

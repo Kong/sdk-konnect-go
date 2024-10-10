@@ -1,5 +1,7 @@
 # AddUserToTeam
 
+The request schema for adding a user to a team.
+
 
 ## Fields
 

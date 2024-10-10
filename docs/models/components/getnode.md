@@ -1,5 +1,7 @@
 # GetNode
 
+Example response
+
 
 ## Fields
 

@@ -67,6 +67,7 @@ func (o *TeamMappingResponseData) GetTeamIds() []string {
 	return o.TeamIds
 }
 
+// TeamMappingResponse - A paginated list response for a collection of team mappings.
 type TeamMappingResponse struct {
 	// Contains pagination data.
 	Meta *Meta                     `json:"meta,omitempty"`

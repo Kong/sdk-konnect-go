@@ -1,5 +1,7 @@
 # GetImpersonationSettingsResponse
 
+Response for Get Impersonation Settings endpoint
+
 
 ## Fields
 

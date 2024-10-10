@@ -1,5 +1,7 @@
 # AuthenticationSettings
 
+Response for authentication settings endpoint
+
 
 ## Fields
 

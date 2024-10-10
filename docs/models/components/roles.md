@@ -1,5 +1,7 @@
 # Roles
 
+The predefined, or system managed, roles.
+
 
 ## Fields
 

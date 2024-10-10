@@ -40,6 +40,7 @@ func (o *ListNodesEolPage) GetTotal() *int64 {
 	return o.Total
 }
 
+// ListNodesEol - Example response
 type ListNodesEol struct {
 	Items []ListNodesEolItems `json:"items,omitempty"`
 	Page  *ListNodesEolPage   `json:"page,omitempty"`

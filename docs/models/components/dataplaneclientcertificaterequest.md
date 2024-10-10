@@ -1,5 +1,7 @@
 # DataPlaneClientCertificateRequest
 
+Request body for creating a dp-client-certificate.
+
 
 ## Fields
 

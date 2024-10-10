@@ -1,5 +1,7 @@
 # CreateSystemAccountAccessToken
 
+The request body to create a system account access token.
+
 
 ## Fields
 

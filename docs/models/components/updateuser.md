@@ -1,5 +1,7 @@
 # UpdateUser
 
+The request schema for the update user request.
+
 
 ## Fields
 

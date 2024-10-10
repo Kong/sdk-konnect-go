@@ -13,6 +13,7 @@ func (o *ListDataPlaneCertificatesResponsePage) GetTotal() *int64 {
 	return o.Total
 }
 
+// ListDataPlaneCertificatesResponse - Example response
 type ListDataPlaneCertificatesResponse struct {
 	Items []DataPlaneClientCertificate           `json:"items,omitempty"`
 	Page  *ListDataPlaneCertificatesResponsePage `json:"page,omitempty"`

@@ -3,15 +3,15 @@ id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
   docChecksum: 173f20beea4b96421d5c18e6c34cd581
   docVersion: 0.0.1
-  speakeasyVersion: 1.401.2
-  generationVersion: 2.421.3
-  releaseVersion: 0.0.14
-  configChecksum: db87764003c94ae1bf990fd868a238f1
+  speakeasyVersion: 1.414.1
+  generationVersion: 2.437.1
+  releaseVersion: 0.0.15
+  configChecksum: 228b2201ba718142f50393580b7c1111
 features:
   go:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.6
-    core: 3.5.9
+    core: 3.5.13
     deepObjectParams: 0.1.0
     defaultEnabledRetries: 0.2.0
     envVarSecurityUsage: 0.3.1
@@ -378,8 +378,10 @@ generatedFiles:
   - docs/models/components/basicauthwithoutparents.md
   - docs/models/components/before.md
   - docs/models/components/cacertificate.md
+  - docs/models/components/cacertificateinput.md
   - docs/models/components/certificate.md
   - docs/models/components/certificateadmin.md
+  - docs/models/components/certificateinput.md
   - docs/models/components/claimmappings.md
   - docs/models/components/clientcertificate.md
   - docs/models/components/clustertype.md
@@ -388,7 +390,9 @@ generatedFiles:
   - docs/models/components/consumer.md
   - docs/models/components/consumeradmin.md
   - docs/models/components/consumergroup.md
+  - docs/models/components/consumergroupinput.md
   - docs/models/components/consumergroupinsidewrapper.md
+  - docs/models/components/consumerinput.md
   - docs/models/components/controlplane.md
   - docs/models/components/controlplanes.md
   - docs/models/components/controlplanesummary.md
@@ -452,7 +456,9 @@ generatedFiles:
   - docs/models/components/keyauth.md
   - docs/models/components/keyauthconsumer.md
   - docs/models/components/keyauthwithoutparents.md
+  - docs/models/components/keyinput.md
   - docs/models/components/keyset.md
+  - docs/models/components/keysetinput.md
   - docs/models/components/listcontrolplanesresponse.md
   - docs/models/components/listdataplanecertificatesresponse.md
   - docs/models/components/listdataplanecertificatesresponsepage.md
@@ -484,6 +490,7 @@ generatedFiles:
   - docs/models/components/pluginadmin.md
   - docs/models/components/pluginconsumer.md
   - docs/models/components/pluginconsumergroup.md
+  - docs/models/components/plugininput.md
   - docs/models/components/pluginroute.md
   - docs/models/components/pluginsadmin.md
   - docs/models/components/pluginschemas.md
@@ -566,6 +573,7 @@ generatedFiles:
   - docs/models/components/rolesviewer.md
   - docs/models/components/route.md
   - docs/models/components/routeadmin.md
+  - docs/models/components/routeinput.md
   - docs/models/components/routeprotocols.md
   - docs/models/components/routeservice.md
   - docs/models/components/routewithoutparents.md
@@ -577,10 +585,12 @@ generatedFiles:
   - docs/models/components/rule.md
   - docs/models/components/security.md
   - docs/models/components/service.md
+  - docs/models/components/serviceinput.md
   - docs/models/components/set.md
   - docs/models/components/sni.md
   - docs/models/components/sniadmin.md
   - docs/models/components/snicertificate.md
+  - docs/models/components/sniinput.md
   - docs/models/components/sniwithoutparents.md
   - docs/models/components/sources.md
   - docs/models/components/state.md
@@ -622,11 +632,13 @@ generatedFiles:
   - docs/models/components/upstreamalgorithm.md
   - docs/models/components/upstreamclientcertificate.md
   - docs/models/components/upstreamhealthy.md
+  - docs/models/components/upstreaminput.md
   - docs/models/components/upstreamtype.md
   - docs/models/components/upstreamunhealthy.md
   - docs/models/components/user.md
   - docs/models/components/usercollection.md
   - docs/models/components/vault.md
+  - docs/models/components/vaultinput.md
   - docs/models/components/viewer.md
   - docs/models/operations/addconsumertogrouprequest.md
   - docs/models/operations/addconsumertogrouprequestbody.md

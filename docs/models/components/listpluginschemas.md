@@ -1,5 +1,7 @@
 # ListPluginSchemas
 
+A paginated list response for a collection of custom plugin schemas.
+
 
 ## Fields
 

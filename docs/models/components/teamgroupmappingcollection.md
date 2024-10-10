@@ -1,5 +1,7 @@
 # TeamGroupMappingCollection
 
+A paginated collection of mappings grouped by team_id.
+
 
 ## Fields
 

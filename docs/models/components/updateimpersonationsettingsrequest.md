@@ -1,5 +1,7 @@
 # UpdateImpersonationSettingsRequest
 
+The request schema for adding a system account to a team.
+
 
 ## Fields
 

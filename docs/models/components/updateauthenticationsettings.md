@@ -1,5 +1,7 @@
 # UpdateAuthenticationSettings
 
+The request schema to update an organization's authentication settings.
+
 
 ## Fields
 

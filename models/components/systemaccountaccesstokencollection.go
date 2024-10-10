@@ -2,6 +2,7 @@
 
 package components
 
+// SystemAccountAccessTokenCollection - A paginated list response for a collection of system accounts access tokens.
 type SystemAccountAccessTokenCollection struct {
 	// returns the pagination information
 	Meta *PaginatedMeta             `json:"meta,omitempty"`

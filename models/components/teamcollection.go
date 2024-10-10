@@ -2,6 +2,7 @@
 
 package components
 
+// TeamCollection - A paginated list response for a collection of users.
 type TeamCollection struct {
 	// returns the pagination information
 	Meta *PaginatedMeta `json:"meta,omitempty"`

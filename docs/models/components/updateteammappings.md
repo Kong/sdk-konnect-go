@@ -1,5 +1,7 @@
 # UpdateTeamMappings
 
+The request schema for updating IdP team mappings.
+
 
 ## Fields
 

@@ -21,6 +21,7 @@ func (o *Data) GetGroups() []string {
 	return o.Groups
 }
 
+// PatchTeamGroupMappings - The request schema for a partial update of mappings from Konnect Teams to IdP Groups.
 type PatchTeamGroupMappings struct {
 	// The IdP groups to map to the given team.
 	Data []Data `json:"data,omitempty"`

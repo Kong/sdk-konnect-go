@@ -1,5 +1,7 @@
 # PluginSchemas
 
+A response for a single custom plugin schema.
+
 
 ## Fields
 

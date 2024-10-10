@@ -1,5 +1,7 @@
 # ListGroupMemberships
 
+A paginated list response for a collection of control plane group memberships.
+
 
 ## Fields
 

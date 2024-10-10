@@ -1984,6 +1984,7 @@ func (o *MeshControlPlanes) GetRoles() RolesMeshControlPlanesRoles {
 	return o.Roles
 }
 
+// Roles - The predefined, or system managed, roles.
 type Roles struct {
 	ControlPlanes     *ControlPlanes     `json:"control_planes,omitempty"`
 	APIProducts       *APIProducts       `json:"api_products,omitempty"`

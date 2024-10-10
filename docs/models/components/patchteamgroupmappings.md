@@ -1,5 +1,7 @@
 # PatchTeamGroupMappings
 
+The request schema for a partial update of mappings from Konnect Teams to IdP Groups.
+
 
 ## Fields
 

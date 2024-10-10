@@ -1,5 +1,7 @@
 # GetExpectedConfigHash
 
+Response body for retrieving the expected config hash of the control plane.
+
 
 ## Fields
 

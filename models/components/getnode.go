@@ -88,6 +88,7 @@ func (o *GetNodeItem) GetCompatibilityStatus() *GetNodeCompatibilityStatus {
 	return o.CompatibilityStatus
 }
 
+// GetNode - Example response
 type GetNode struct {
 	Item *GetNodeItem `json:"item,omitempty"`
 }

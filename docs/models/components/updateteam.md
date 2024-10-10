@@ -1,5 +1,7 @@
 # UpdateTeam
 
+The request schema for the update team request.
+
 
 ## Fields
 

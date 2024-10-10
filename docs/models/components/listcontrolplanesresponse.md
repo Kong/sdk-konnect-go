@@ -1,5 +1,7 @@
 # ListControlPlanesResponse
 
+A paginated list response for a collection of control planes.
+
 
 ## Fields
 

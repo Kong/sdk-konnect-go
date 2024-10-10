@@ -2,6 +2,7 @@
 
 package components
 
+// UserCollection - A paginated list response for a collection of users.
 type UserCollection struct {
 	// returns the pagination information
 	Meta *PaginatedMeta `json:"meta,omitempty"`

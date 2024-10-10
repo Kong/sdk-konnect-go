@@ -2,6 +2,7 @@
 
 package components
 
+// TeamGroupMappingCollection - A paginated collection of mappings grouped by team_id.
 type TeamGroupMappingCollection struct {
 	// returns the pagination information
 	Meta *PaginatedMeta     `json:"meta,omitempty"`

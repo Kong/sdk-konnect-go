@@ -1,5 +1,7 @@
 # UpdateIDPConfiguration
 
+The request schema for the update IdP configuration request.
+
 
 ## Fields
 

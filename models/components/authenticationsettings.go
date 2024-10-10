@@ -2,6 +2,7 @@
 
 package components
 
+// AuthenticationSettings - Response for authentication settings endpoint
 type AuthenticationSettings struct {
 	// The organization has basic auth enabled.
 	BasicAuthEnabled *bool `json:"basic_auth_enabled,omitempty"`

@@ -1,5 +1,7 @@
 # SystemAccountAccessTokenCreated
 
+A response including a single system account access token with the token.
+
 
 ## Fields
 

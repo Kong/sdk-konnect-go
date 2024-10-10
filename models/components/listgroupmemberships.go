@@ -2,6 +2,7 @@
 
 package components
 
+// ListGroupMemberships - A paginated list response for a collection of control plane group memberships.
 type ListGroupMemberships struct {
 	// returns the pagination information
 	Meta *CursorPaginatedMetaWithSizeAndTotal `json:"meta,omitempty"`

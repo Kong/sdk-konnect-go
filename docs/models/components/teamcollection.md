@@ -1,5 +1,7 @@
 # TeamCollection
 
+A paginated list response for a collection of users.
+
 
 ## Fields
 

@@ -1,5 +1,7 @@
 # TeamMappingCollection
 
+A paginated list response for a collection of team mappings.
+
 
 ## Fields
 

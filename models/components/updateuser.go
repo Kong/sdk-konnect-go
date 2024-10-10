@@ -2,6 +2,7 @@
 
 package components
 
+// UpdateUser - The request schema for the update user request.
 type UpdateUser struct {
 	// The user's full name.
 	FullName *string `json:"full_name,omitempty"`

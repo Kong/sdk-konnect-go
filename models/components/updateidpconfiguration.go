@@ -44,6 +44,7 @@ func (o *UpdateIDPConfigurationClaimMappings) GetGroups() *string {
 	return o.Groups
 }
 
+// UpdateIDPConfiguration - The request schema for the update IdP configuration request.
 type UpdateIDPConfiguration struct {
 	Issuer        *string                              `json:"issuer,omitempty"`
 	LoginPath     *string                              `json:"login_path,omitempty"`

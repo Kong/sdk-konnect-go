@@ -1,5 +1,7 @@
 # UpdateImpersonationSettingsResponse
 
+Response for Update Impersonation Settings endpoint
+
 
 ## Fields
 

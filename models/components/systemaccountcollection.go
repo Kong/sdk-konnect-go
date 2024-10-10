@@ -2,6 +2,7 @@
 
 package components
 
+// SystemAccountCollection - A paginated list response for a collection of system accounts.
 type SystemAccountCollection struct {
 	// returns the pagination information
 	Meta *PaginatedMeta  `json:"meta,omitempty"`

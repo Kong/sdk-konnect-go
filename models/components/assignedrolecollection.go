@@ -2,6 +2,7 @@
 
 package components
 
+// AssignedRoleCollection - A paginated list response for a collection of assigned roles.
 type AssignedRoleCollection struct {
 	// returns the pagination information
 	Meta *PaginatedMeta `json:"meta,omitempty"`

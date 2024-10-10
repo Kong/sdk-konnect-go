@@ -2,6 +2,7 @@
 
 package components
 
+// GetExpectedConfigHash - Response body for retrieving the expected config hash of the control plane.
 type GetExpectedConfigHash struct {
 	// The expected configuration hash.
 	ExpectedHash *string `json:"expected_hash,omitempty"`

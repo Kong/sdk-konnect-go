@@ -1,5 +1,7 @@
 # SystemAccountAccessTokenCollection
 
+A paginated list response for a collection of system accounts access tokens.
+
 
 ## Fields
 

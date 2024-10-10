@@ -1,5 +1,7 @@
 # AssignedRoleCollection
 
+A paginated list response for a collection of assigned roles.
+
 
 ## Fields
 

@@ -52,6 +52,7 @@ func (o *Page) GetTotal() *int64 {
 	return o.Total
 }
 
+// ListPluginSchemas - A paginated list response for a collection of custom plugin schemas.
 type ListPluginSchemas struct {
 	Items []Items `json:"items,omitempty"`
 	Page  *Page   `json:"page,omitempty"`

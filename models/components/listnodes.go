@@ -107,6 +107,7 @@ func (o *ListNodesPage) GetNext() *string {
 	return o.Next
 }
 
+// ListNodes - Example response
 type ListNodes struct {
 	Items []ListNodesItems `json:"items,omitempty"`
 	Page  *ListNodesPage   `json:"page,omitempty"`

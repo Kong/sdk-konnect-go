@@ -2,6 +2,7 @@
 
 package components
 
+// UpdateAuthenticationSettings - The request schema to update an organization's authentication settings.
 type UpdateAuthenticationSettings struct {
 	// The organization has basic auth enabled.
 	BasicAuthEnabled *bool `json:"basic_auth_enabled,omitempty"`
