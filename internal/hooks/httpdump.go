@@ -38,6 +38,18 @@ var _ afterSuccessHook = (*HTTPDumpResponseHook)(nil)
 
 // AfterSuccess dumps the response to stdout if enabled.
 func (i *HTTPDumpResponseHook) AfterSuccess(hookCtx AfterSuccessContext, res *http.Response) (*http.Response, error) {
+	return i.dumpResponse(res)
+}
+
+var _ afterErrorHook = (*HTTPDumpResponseHook)(nil)
+
+// AfterSuccess dumps the response to stdout if enabled.
+func (i *HTTPDumpResponseHook) AfterError(hookCtx AfterErrorContext, res *http.Response, err error) (*http.Response, error) {
+	fmt.Printf("Error: %v\n", err)
+	return i.dumpResponse(res)
+}
+
+func (i *HTTPDumpResponseHook) dumpResponse(res *http.Response) (*http.Response, error) {
 	if !i.Enabled {
 		return res, nil
 	}
