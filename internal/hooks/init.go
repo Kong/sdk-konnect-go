@@ -20,7 +20,7 @@ func initHooks(h *Hooks) {
 	h.registerAfterSuccessHook(&HTTPDumpResponseHook{
 		Enabled: os.Getenv("KONNECT_SDK_HTTP_DUMP_RESPONSE") == "true",
 	})
-	h.registerAfterErrorHook(&HTTPDumpResponseHook{
-		Enabled: os.Getenv("KONNECT_SDK_HTTP_DUMP_RESPONSE") == "true",
+	h.registerAfterErrorHook(&HTTPDumpResponseErrorHook{
+		Enabled: os.Getenv("KONNECT_SDK_HTTP_DUMP_RESPONSE_ERROR") == "true",
 	})
 }
