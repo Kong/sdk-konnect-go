@@ -3,6 +3,6 @@
 
 ## Values
 
-| Name                   | Value                  |
-| ---------------------- | ---------------------- |
-| `RolesNameAPIProducts` | API Products           |
+| Name                     | Value                    |
+| ------------------------ | ------------------------ |
+| `RolesNameControlPlanes` | Control Planes           |

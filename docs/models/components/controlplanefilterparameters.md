@@ -1,0 +1,11 @@
+# ControlPlaneFilterParameters
+
+
+## Fields
+
+| Field                                                             | Type                                                              | Required                                                          | Description                                                       | Example                                                           |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `ID`                                                              | [*components.ID](../../models/components/id.md)                   | :heavy_minus_sign:                                                | N/A                                                               |                                                                   |
+| `Name`                                                            | [*components.Name](../../models/components/name.md)               | :heavy_minus_sign:                                                | N/A                                                               |                                                                   |
+| `ClusterType`                                                     | [*components.ClusterType](../../models/components/clustertype.md) | :heavy_minus_sign:                                                | N/A                                                               |                                                                   |
+| `CloudGateway`                                                    | **bool*                                                           | :heavy_minus_sign:                                                | Filter by a boolean value (true/false).                           | true                                                              |

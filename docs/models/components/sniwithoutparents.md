@@ -1,5 +1,7 @@
 # SNIWithoutParents
 
+An SNI object represents a many-to-one mapping of hostnames to a certificate. That is, a certificate object can have many hostnames associated with it; when Kong receives an SSL request, it uses the SNI field in the Client Hello to lookup the certificate object based on the SNI associated with the certificate.
+
 
 ## Fields
 

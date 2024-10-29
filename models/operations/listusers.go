@@ -14,7 +14,7 @@ var ListUsersServerList = []string{
 // ListUsersQueryParamFilter - Filter users returned in the response.
 type ListUsersQueryParamFilter struct {
 	// Filter a string value by exact match.
-	ID *string `queryParam:"name=id"`
+	ID *components.StringFieldEqualsFilter `queryParam:"name=id"`
 	// Filter a string value field either by exact match or partial contains.
 	Email *components.StringFieldFilter `queryParam:"name=email"`
 	// Filter a string value field either by exact match or partial contains.
@@ -23,7 +23,7 @@ type ListUsersQueryParamFilter struct {
 	Active *bool `queryParam:"name=active"`
 }
 
-func (o *ListUsersQueryParamFilter) GetID() *string {
+func (o *ListUsersQueryParamFilter) GetID() *components.StringFieldEqualsFilter {
 	if o == nil {
 		return nil
 	}

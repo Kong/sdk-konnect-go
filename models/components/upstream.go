@@ -543,6 +543,7 @@ func (o *Healthchecks) GetThreshold() *float64 {
 	return o.Threshold
 }
 
+// Upstream - The upstream object represents a virtual hostname and can be used to loadbalance incoming requests over multiple services (targets). So for example an upstream named `service.v1.xyz` for a Service object whose `host` is `service.v1.xyz`. Requests for this Service would be proxied to the targets defined within the upstream. An upstream also includes a [health checker][healthchecks], which is able to enable and disable targets based on their ability or inability to serve requests. The configuration for the health checker is stored in the upstream object, and applies to all of its targets.
 type Upstream struct {
 	// Which load balancing algorithm to use.
 	Algorithm *UpstreamAlgorithm `default:"round-robin" json:"algorithm"`
@@ -744,6 +745,7 @@ func (o *Upstream) GetUseSrvName() *bool {
 	return o.UseSrvName
 }
 
+// UpstreamInput - The upstream object represents a virtual hostname and can be used to loadbalance incoming requests over multiple services (targets). So for example an upstream named `service.v1.xyz` for a Service object whose `host` is `service.v1.xyz`. Requests for this Service would be proxied to the targets defined within the upstream. An upstream also includes a [health checker][healthchecks], which is able to enable and disable targets based on their ability or inability to serve requests. The configuration for the health checker is stored in the upstream object, and applies to all of its targets.
 type UpstreamInput struct {
 	// Which load balancing algorithm to use.
 	Algorithm *UpstreamAlgorithm `default:"round-robin" json:"algorithm"`

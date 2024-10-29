@@ -6,6 +6,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// TargetWithoutParents - A target is an ip address/hostname with a port that identifies an instance of a backend service. Every upstream can have many targets, and the targets can be dynamically added, modified, or deleted. Changes take effect on the fly. To disable a target, post a new one with `weight=0`; alternatively, use the `DELETE` convenience method to accomplish the same. The current target object definition is the one with the latest `created_at`.
 type TargetWithoutParents struct {
 	ID *string `json:"id,omitempty"`
 	// An optional set of strings associated with the Target for grouping and filtering.

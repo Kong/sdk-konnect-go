@@ -1,5 +1,7 @@
 # ConsumerInput
 
+The Consumer object represents a consumer - or a user - of a Service. You can either rely on Kong as the primary datastore, or you can map the consumer list with your database to keep consistency between Kong and your existing primary datastore.
+
 
 ## Fields
 

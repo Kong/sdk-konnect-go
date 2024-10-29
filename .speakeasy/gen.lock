@@ -1,17 +1,17 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 173f20beea4b96421d5c18e6c34cd581
+  docChecksum: e9093ae35a5e8939c715167d4836f51a
   docVersion: 0.0.1
-  speakeasyVersion: 1.414.1
-  generationVersion: 2.437.1
-  releaseVersion: 0.0.15
-  configChecksum: 228b2201ba718142f50393580b7c1111
+  speakeasyVersion: 1.423.1
+  generationVersion: 2.442.11
+  releaseVersion: 0.1.2
+  configChecksum: b0611f2b9c20392d6a306eeeecc39da2
 features:
   go:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.6
-    core: 3.5.13
+    core: 3.5.14
     deepObjectParams: 0.1.0
     defaultEnabledRetries: 0.2.0
     envVarSecurityUsage: 0.3.1
@@ -27,6 +27,7 @@ features:
     responseFormat: 0.1.2
     retries: 2.83.0
     sdkHooks: 0.1.0
+    tests: 0.6.0
     unions: 2.85.9
 generatedFiles:
   - .gitattributes
@@ -50,7 +51,7 @@ generatedFiles:
   - /models/components/consumergroupinsidewrapper.go
   - /models/components/consumerinput.go
   - /models/components/controlplane.go
-  - /models/components/controlplanesummary.go
+  - /models/components/controlplanefilterparameters.go
   - /models/components/createcontrolplanerequest.go
   - /models/components/createpluginschemas.go
   - /models/components/createsystemaccount.go
@@ -85,6 +86,7 @@ generatedFiles:
   - /models/components/keyauthwithoutparents.go
   - /models/components/keyset.go
   - /models/components/keysetinput.go
+  - /models/components/keywithoutparents.go
   - /models/components/listcontrolplanesresponse.go
   - /models/components/listdataplanecertificatesresponse.go
   - /models/components/listgroupmemberships.go
@@ -107,7 +109,10 @@ generatedFiles:
   - /models/components/sni.go
   - /models/components/sniwithoutparents.go
   - /models/components/stringfieldcontainsfilter.go
+  - /models/components/stringfieldequalsfilter.go
   - /models/components/stringfieldfilter.go
+  - /models/components/stringfieldneqfilter.go
+  - /models/components/stringfieldoeqfilter.go
   - /models/components/systemaccount.go
   - /models/components/systemaccountaccesstoken.go
   - /models/components/systemaccountaccesstokencollection.go
@@ -153,6 +158,7 @@ generatedFiles:
   - /models/operations/createkey.go
   - /models/operations/createkeyauthwithconsumer.go
   - /models/operations/createkeyset.go
+  - /models/operations/createkeywithkeyset.go
   - /models/operations/createplugin.go
   - /models/operations/createpluginschemas.go
   - /models/operations/createpluginwithroute.go
@@ -179,6 +185,7 @@ generatedFiles:
   - /models/operations/deletekey.go
   - /models/operations/deletekeyauthwithconsumer.go
   - /models/operations/deletekeyset.go
+  - /models/operations/deletekeywithkeyset.go
   - /models/operations/deletenodesnodeid.go
   - /models/operations/deleteplugin.go
   - /models/operations/deletepluginschemas.go
@@ -220,6 +227,7 @@ generatedFiles:
   - /models/operations/getkey.go
   - /models/operations/getkeyauthwithconsumer.go
   - /models/operations/getkeyset.go
+  - /models/operations/getkeywithkeyset.go
   - /models/operations/getnodeseol.go
   - /models/operations/getnodesnodeid.go
   - /models/operations/getorganizationsme.go
@@ -268,6 +276,7 @@ generatedFiles:
   - /models/operations/listkeyauth.go
   - /models/operations/listkeyauthwithconsumer.go
   - /models/operations/listkeyset.go
+  - /models/operations/listkeywithkeyset.go
   - /models/operations/listplugin.go
   - /models/operations/listpluginschemas.go
   - /models/operations/listpluginwithroute.go
@@ -319,6 +328,7 @@ generatedFiles:
   - /models/operations/upsertkey.go
   - /models/operations/upsertkeyauthwithconsumer.go
   - /models/operations/upsertkeyset.go
+  - /models/operations/upsertkeywithkeyset.go
   - /models/operations/upsertplugin.go
   - /models/operations/upsertpluginwithroute.go
   - /models/operations/upsertpluginwithservice.go
@@ -394,12 +404,12 @@ generatedFiles:
   - docs/models/components/consumergroupinsidewrapper.md
   - docs/models/components/consumerinput.md
   - docs/models/components/controlplane.md
+  - docs/models/components/controlplaneauthtype.md
+  - docs/models/components/controlplaneclustertype.md
+  - docs/models/components/controlplanefilterparameters.md
   - docs/models/components/controlplanes.md
-  - docs/models/components/controlplanesummary.md
-  - docs/models/components/controlplanesummaryauthtype.md
-  - docs/models/components/controlplanesummaryclustertype.md
-  - docs/models/components/controlplanesummaryconfig.md
   - docs/models/components/createcontrolplanerequest.md
+  - docs/models/components/createcontrolplanerequestclustertype.md
   - docs/models/components/createpluginschemas.md
   - docs/models/components/createsystemaccount.md
   - docs/models/components/createsystemaccountaccesstoken.md
@@ -435,6 +445,7 @@ generatedFiles:
   - docs/models/components/hmacauthconsumer.md
   - docs/models/components/hmacauthwithoutparents.md
   - docs/models/components/httpsredirectstatuscode.md
+  - docs/models/components/id.md
   - docs/models/components/identity.md
   - docs/models/components/idp.md
   - docs/models/components/invalidparameterchoiceitem.md
@@ -459,6 +470,9 @@ generatedFiles:
   - docs/models/components/keyinput.md
   - docs/models/components/keyset.md
   - docs/models/components/keysetinput.md
+  - docs/models/components/keywithoutparents.md
+  - docs/models/components/keywithoutparentspem.md
+  - docs/models/components/keywithoutparentsset.md
   - docs/models/components/listcontrolplanesresponse.md
   - docs/models/components/listdataplanecertificatesresponse.md
   - docs/models/components/listdataplanecertificatesresponsepage.md
@@ -478,6 +492,7 @@ generatedFiles:
   - docs/models/components/meshcontrolplanes.md
   - docs/models/components/meta.md
   - docs/models/components/name.md
+  - docs/models/components/one.md
   - docs/models/components/ordering.md
   - docs/models/components/page.md
   - docs/models/components/pagemeta.md
@@ -509,6 +524,7 @@ generatedFiles:
   - docs/models/components/rolesadmin.md
   - docs/models/components/rolesapiproductsdescription.md
   - docs/models/components/rolesapiproductsname.md
+  - docs/models/components/rolesapiproductsrolesapplicationregistrationname.md
   - docs/models/components/rolesapiproductsrolescreatordescription.md
   - docs/models/components/rolesapiproductsrolescreatorname.md
   - docs/models/components/rolesapiproductsrolesdeployerdescription.md
@@ -531,7 +547,7 @@ generatedFiles:
   - docs/models/components/rolescontrolplanesdescription.md
   - docs/models/components/rolescontrolplanesname.md
   - docs/models/components/rolescontrolplanesroles.md
-  - docs/models/components/rolescontrolplanesrolesadminname.md
+  - docs/models/components/rolescontrolplanesrolesconsumeradminname.md
   - docs/models/components/rolescontrolplanesrolescreatorname.md
   - docs/models/components/rolescontrolplanesrolesdeployerdescription.md
   - docs/models/components/rolescontrolplanesrolesdeployername.md
@@ -595,7 +611,10 @@ generatedFiles:
   - docs/models/components/sources.md
   - docs/models/components/state.md
   - docs/models/components/stringfieldcontainsfilter.md
+  - docs/models/components/stringfieldequalsfilter.md
   - docs/models/components/stringfieldfilter.md
+  - docs/models/components/stringfieldneqfilter.md
+  - docs/models/components/stringfieldoeqfilter.md
   - docs/models/components/systemaccount.md
   - docs/models/components/systemaccountaccesstoken.md
   - docs/models/components/systemaccountaccesstokencollection.md
@@ -613,6 +632,7 @@ generatedFiles:
   - docs/models/components/teammappingresponse.md
   - docs/models/components/teammappingresponsedata.md
   - docs/models/components/teammappingresponsepage.md
+  - docs/models/components/two.md
   - docs/models/components/type.md
   - docs/models/components/unhealthy.md
   - docs/models/components/updateauthenticationsettings.md
@@ -673,6 +693,8 @@ generatedFiles:
   - docs/models/operations/createkeyresponse.md
   - docs/models/operations/createkeysetrequest.md
   - docs/models/operations/createkeysetresponse.md
+  - docs/models/operations/createkeywithkeysetrequest.md
+  - docs/models/operations/createkeywithkeysetresponse.md
   - docs/models/operations/createpluginrequest.md
   - docs/models/operations/createpluginresponse.md
   - docs/models/operations/createpluginschemasrequest.md
@@ -724,6 +746,8 @@ generatedFiles:
   - docs/models/operations/deletekeyresponse.md
   - docs/models/operations/deletekeysetrequest.md
   - docs/models/operations/deletekeysetresponse.md
+  - docs/models/operations/deletekeywithkeysetrequest.md
+  - docs/models/operations/deletekeywithkeysetresponse.md
   - docs/models/operations/deletenodesnodeidrequest.md
   - docs/models/operations/deletenodesnodeidresponse.md
   - docs/models/operations/deletepluginrequest.md
@@ -805,6 +829,8 @@ generatedFiles:
   - docs/models/operations/getkeyresponse.md
   - docs/models/operations/getkeysetrequest.md
   - docs/models/operations/getkeysetresponse.md
+  - docs/models/operations/getkeywithkeysetrequest.md
+  - docs/models/operations/getkeywithkeysetresponse.md
   - docs/models/operations/getnodeseolrequest.md
   - docs/models/operations/getnodeseolresponse.md
   - docs/models/operations/getnodesnodeidrequest.md
@@ -917,6 +943,9 @@ generatedFiles:
   - docs/models/operations/listkeysetrequest.md
   - docs/models/operations/listkeysetresponse.md
   - docs/models/operations/listkeysetresponsebody.md
+  - docs/models/operations/listkeywithkeysetrequest.md
+  - docs/models/operations/listkeywithkeysetresponse.md
+  - docs/models/operations/listkeywithkeysetresponsebody.md
   - docs/models/operations/listpluginrequest.md
   - docs/models/operations/listpluginresponse.md
   - docs/models/operations/listpluginresponsebody.md
@@ -1031,6 +1060,8 @@ generatedFiles:
   - docs/models/operations/upsertkeyresponse.md
   - docs/models/operations/upsertkeysetrequest.md
   - docs/models/operations/upsertkeysetresponse.md
+  - docs/models/operations/upsertkeywithkeysetrequest.md
+  - docs/models/operations/upsertkeywithkeysetresponse.md
   - docs/models/operations/upsertpluginrequest.md
   - docs/models/operations/upsertpluginresponse.md
   - docs/models/operations/upsertpluginwithrouterequest.md
@@ -1197,13 +1228,32 @@ examples:
           application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
         "503":
           application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+    speakeasy-default-list-control-planes:
+      parameters:
+        query:
+          page[size]: 10
+          page[number]: 1
+          filter: {"cloud_gateway": true}
+          labels: "key:value,existCheck"
+          sort: "name,created_at desc"
+      responses:
+        "200":
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "Test Control Plane", "description": "A test control plane for exploration.", "labels": {"env": "test"}, "config": {"control_plane_endpoint": "https://acfe5f253f.cp0.konghq.com", "telemetry_endpoint": "https://acfe5f253f.tp0.konghq.com", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": true, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}]}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "Test Control Plane", "description": "A test control plane for exploration.", "labels": {"env": "test"}, "config": {"control_plane_endpoint": "https://acfe5f253f.cp0.konghq.com", "telemetry_endpoint": "https://acfe5f253f.tp0.konghq.com", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": false, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}]}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+        "400":
+          application/problem+json: {"status": 641159, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value>", "<value>", "<value>"], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "503":
+          application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
   create-control-plane:
     speakeasy-default-create-control-plane:
       requestBody:
         application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": false, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
       responses:
         "201":
-          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "Test Control Plane", "description": "A test control plane for exploration.", "labels": {"env": "test"}, "config": {"control_plane_endpoint": "https://acfe5f253f.cp0.konghq.com", "telemetry_endpoint": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "Test Control Plane", "description": "A test control plane for exploration.", "labels": {"env": "test"}, "config": {"control_plane_endpoint": "https://acfe5f253f.cp0.konghq.com", "telemetry_endpoint": "https://acfe5f253f.tp0.konghq.com", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": false, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}]}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 528095, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -1223,7 +1273,7 @@ examples:
           id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
       responses:
         "200":
-          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "Test Control Plane", "description": "A test control plane for exploration.", "labels": {"env": "test"}, "config": {"control_plane_endpoint": "https://acfe5f253f.cp0.konghq.com", "telemetry_endpoint": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "Test Control Plane", "description": "A test control plane for exploration.", "labels": {"env": "test"}, "config": {"control_plane_endpoint": "https://acfe5f253f.cp0.konghq.com", "telemetry_endpoint": "https://acfe5f253f.tp0.konghq.com", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": true, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}]}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 95128, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -1243,7 +1293,7 @@ examples:
         application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "auth_type": "pinned_client_certs", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
       responses:
         "200":
-          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "Test Control Plane", "description": "A test control plane for exploration.", "labels": {"env": "test"}, "config": {"control_plane_endpoint": "https://acfe5f253f.cp0.konghq.com", "telemetry_endpoint": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "Test Control Plane", "description": "A test control plane for exploration.", "labels": {"env": "test"}, "config": {"control_plane_endpoint": "https://acfe5f253f.cp0.konghq.com", "telemetry_endpoint": "https://acfe5f253f.tp0.konghq.com", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": true, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}]}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 292302, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -1284,7 +1334,8 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 186994}
-        "200": {}
+        "200":
+          application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "group": "foo", "id": "b1f34145-0343-41a4-9602-4c69dec2f269"}]}
   list-acl-with-consumer:
     "":
       parameters:
@@ -1293,12 +1344,20 @@ examples:
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
         query:
           tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "group": "foo", "id": "b1f34145-0343-41a4-9602-4c69dec2f269"}]}
   create-acl-with-consumer:
     "":
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+      requestBody:
+        application/json: {"group": "foo", "id": "b1f34145-0343-41a4-9602-4c69dec2f269"}
+      responses:
+        "201":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "group": "foo", "id": "b1f34145-0343-41a4-9602-4c69dec2f269"}
   get-acl-with-consumer:
     "":
       parameters:
@@ -1306,6 +1365,9 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           ACLId: "f28acbfa-c866-4587-b688-0208ac24df21"
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "group": "foo", "id": "b1f34145-0343-41a4-9602-4c69dec2f269"}
   upsert-acl-with-consumer:
     "":
       parameters:
@@ -1313,6 +1375,11 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           ACLId: "f28acbfa-c866-4587-b688-0208ac24df21"
+      requestBody:
+        application/json: {"group": "foo", "id": "b1f34145-0343-41a4-9602-4c69dec2f269"}
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "group": "foo", "id": "b1f34145-0343-41a4-9602-4c69dec2f269"}
   delete-acl-with-consumer:
     "":
       parameters:
@@ -1330,7 +1397,8 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 601420}
-        "200": {}
+        "200":
+          application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}]}
   list-basic-auth-with-consumer:
     "":
       parameters:
@@ -1339,12 +1407,20 @@ examples:
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
         query:
           tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}]}
   create-basic-auth-with-consumer:
     "":
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+      requestBody:
+        application/json: {"id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}
+      responses:
+        "201":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}
   get-basic-auth-with-consumer:
     "":
       parameters:
@@ -1352,6 +1428,9 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           BasicAuthId: "80db1b58-ca7c-4d21-b92a-64eb07725872"
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}
   upsert-basic-auth-with-consumer:
     "":
       parameters:
@@ -1359,6 +1438,11 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           BasicAuthId: "80db1b58-ca7c-4d21-b92a-64eb07725872"
+      requestBody:
+        application/json: {"id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}
   delete-basic-auth-with-consumer:
     "":
       parameters:
@@ -1376,7 +1460,8 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 41102}
-        "200": {}
+        "200":
+          application/json: {"data": [{"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f260"}]}
   create-ca_certificate:
     "":
       parameters:
@@ -1391,12 +1476,12 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"cert": "<value>"}
+        application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f260"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 812329}
         "201":
-          application/json: {"cert": "<value>"}
+          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f260"}
   get-ca_certificate:
     "":
       parameters:
@@ -1407,7 +1492,7 @@ examples:
         "401":
           application/json: {"message": "<value>", "status": 834989}
         "200":
-          application/json: {"cert": "<value>"}
+          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f260"}
   upsert-ca_certificate:
     "":
       parameters:
@@ -1415,12 +1500,12 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           CACertificateId: "3c31f18a-f27a-4f9b-8cd4-bf841554612f"
       requestBody:
-        application/json: {"cert": "<value>"}
+        application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f260"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 10999}
         "200":
-          application/json: {"cert": "<value>"}
+          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f260"}
   delete-ca_certificate:
     "":
       parameters:
@@ -1440,7 +1525,8 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 637614}
-        "200": {}
+        "200":
+          application/json: {"data": [{"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----"}]}
   create-certificate:
     "":
       parameters:
@@ -1455,12 +1541,12 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"cert": "<value>", "key": "<key>"}
+        application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 143829}
         "201":
-          application/json: {"cert": "<value>", "key": "<key>"}
+          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----"}
   get-certificate:
     "":
       parameters:
@@ -1471,7 +1557,7 @@ examples:
         "401":
           application/json: {"message": "<value>", "status": 173775}
         "200":
-          application/json: {"cert": "<value>", "key": "<key>"}
+          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----"}
   upsert-certificate:
     "":
       parameters:
@@ -1479,12 +1565,12 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           CertificateId: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7"
       requestBody:
-        application/json: {"cert": "<value>", "key": "<key>"}
+        application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 45220}
         "200":
-          application/json: {"cert": "<value>", "key": "<key>"}
+          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----"}
   delete-certificate:
     "":
       parameters:
@@ -1502,6 +1588,9 @@ examples:
           CertificateId: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7"
         query:
           tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}]}
   create-sni-with-certificate:
     "":
       parameters:
@@ -1509,10 +1598,10 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           CertificateId: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7"
       requestBody:
-        application/json: {"name": "<value>"}
+        application/json: {"id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}
       responses:
         "201":
-          application/json: {"name": "<value>"}
+          application/json: {"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}
   get-sni-with-certificate:
     "":
       parameters:
@@ -1522,7 +1611,7 @@ examples:
           SNIId: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f"
       responses:
         "200":
-          application/json: {"name": "<value>"}
+          application/json: {"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}
   upsert-sni-with-certificate:
     "":
       parameters:
@@ -1531,10 +1620,10 @@ examples:
           CertificateId: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7"
           SNIId: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f"
       requestBody:
-        application/json: {"name": "<value>"}
+        application/json: {"id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}
       responses:
         "200":
-          application/json: {"name": "<value>"}
+          application/json: {"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}
   delete-sni-with-certificate:
     "":
       parameters:
@@ -1552,7 +1641,8 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 974373}
-        "200": {}
+        "200":
+          application/json: {"data": [{"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}]}
   create-sni:
     "":
       parameters:
@@ -1567,12 +1657,12 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"name": "<value>"}
+        application/json: {"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 805552}
         "201":
-          application/json: {"name": "<value>"}
+          application/json: {"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}
   get-sni:
     "":
       parameters:
@@ -1583,7 +1673,7 @@ examples:
         "401":
           application/json: {"message": "<value>", "status": 786293}
         "200":
-          application/json: {"name": "<value>"}
+          application/json: {"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}
   upsert-sni:
     "":
       parameters:
@@ -1591,12 +1681,12 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           SNIId: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f"
       requestBody:
-        application/json: {"name": "<value>"}
+        application/json: {"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 145107}
         "200":
-          application/json: {"name": "<value>"}
+          application/json: {"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}
   delete-sni:
     "":
       parameters:
@@ -1684,6 +1774,9 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
         application/json: {"consumer": "cf4c7e60-11db-49dd-b300-7c7e5f0f7e6b"}
+      responses:
+        "201":
+          application/json: {"consumers": [{"custom_id": "4200", "id": "8a388226-80e8-4027-a486-25e4f7db5d21", "tags": ["silver-tier"], "username": "bob-the-builder"}]}
   list-consumer:
     "":
       parameters:
@@ -1694,7 +1787,8 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 184678}
-        "200": {}
+        "200":
+          application/json: {"data": [{"custom_id": "4200", "id": "8a388226-80e8-4027-a486-25e4f7db5d21", "tags": ["silver-tier"], "username": "bob-the-builder"}]}
   create-consumer:
     "":
       parameters:
@@ -1708,10 +1802,13 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"custom_id": "4200", "id": "8a388226-80e8-4027-a486-25e4f7db5d21", "tags": ["silver-tier"], "username": "bob-the-builder"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 848959}
-        "201": {}
+        "201":
+          application/json: {"custom_id": "4200", "id": "8a388226-80e8-4027-a486-25e4f7db5d21", "tags": ["silver-tier"], "username": "bob-the-builder"}
   get-consumer:
     "":
       parameters:
@@ -1721,17 +1818,21 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 616749}
-        "200": {}
+        "200":
+          application/json: {"custom_id": "4200", "id": "8a388226-80e8-4027-a486-25e4f7db5d21", "tags": ["silver-tier"], "username": "bob-the-builder"}
   upsert-consumer:
     "":
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
+      requestBody:
+        application/json: {"custom_id": "4200", "id": "8a388226-80e8-4027-a486-25e4f7db5d21", "tags": ["silver-tier"], "username": "bob-the-builder"}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 246381}
-        "200": {}
+        "200":
+          application/json: {"custom_id": "4200", "id": "8a388226-80e8-4027-a486-25e4f7db5d21", "tags": ["silver-tier"], "username": "bob-the-builder"}
   delete-consumer:
     "":
       parameters:
@@ -1749,12 +1850,20 @@ examples:
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
         query:
           tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "secret": "wQazJ304DW5huJklHgUfjfiSyCyTAEDZ", "username": "xerxes"}]}
   create-hmac-auth-with-consumer:
     "":
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+      requestBody:
+        application/json: {"id": "75695322-e8a0-4109-aed4-5416b0308d85", "secret": "wQazJ304DW5huJklHgUfjfiSyCyTAEDZ", "username": "xerxes"}
+      responses:
+        "201":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "secret": "wQazJ304DW5huJklHgUfjfiSyCyTAEDZ", "username": "xerxes"}
   get-hmac-auth-with-consumer:
     "":
       parameters:
@@ -1762,6 +1871,9 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           HMACAuthId: "70e7b00b-72f2-471b-a5ce-9c4171775360"
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "secret": "wQazJ304DW5huJklHgUfjfiSyCyTAEDZ", "username": "xerxes"}
   upsert-hmac-auth-with-consumer:
     "":
       parameters:
@@ -1769,6 +1881,11 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           HMACAuthId: "70e7b00b-72f2-471b-a5ce-9c4171775360"
+      requestBody:
+        application/json: {"id": "75695322-e8a0-4109-aed4-5416b0308d85", "secret": "wQazJ304DW5huJklHgUfjfiSyCyTAEDZ", "username": "xerxes"}
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "secret": "wQazJ304DW5huJklHgUfjfiSyCyTAEDZ", "username": "xerxes"}
   delete-hmac-auth-with-consumer:
     "":
       parameters:
@@ -1786,7 +1903,8 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 964312}
-        "200": {}
+        "200":
+          application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "secret": "wQazJ304DW5huJklHgUfjfiSyCyTAEDZ", "username": "xerxes"}]}
   list-jwt-with-consumer:
     "":
       parameters:
@@ -1795,12 +1913,20 @@ examples:
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
         query:
           tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}]}
   create-jwt-with-consumer:
     "":
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+      requestBody:
+        application/json: {"algorithm": "HS256", "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
+      responses:
+        "201":
+          application/json: {"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
   get-jwt-with-consumer:
     "":
       parameters:
@@ -1808,6 +1934,9 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           JWTId: "4a7f5faa-8c96-46d6-8214-c87573ef2ac4"
+      responses:
+        "200":
+          application/json: {"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
   upsert-jwt-with-consumer:
     "":
       parameters:
@@ -1815,6 +1944,11 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           JWTId: "4a7f5faa-8c96-46d6-8214-c87573ef2ac4"
+      requestBody:
+        application/json: {"algorithm": "HS256", "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
+      responses:
+        "200":
+          application/json: {"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
   delete-jwt-with-consumer:
     "":
       parameters:
@@ -1832,7 +1966,8 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 276}
-        "200": {}
+        "200":
+          application/json: {"data": [{"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}]}
   list-key-auth-with-consumer:
     "":
       parameters:
@@ -1841,12 +1976,20 @@ examples:
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
         query:
           tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}]}
   create-key-auth-with-consumer:
     "":
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+      requestBody:
+        application/json: {"id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}
+      responses:
+        "201":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}
   get-key-auth-with-consumer:
     "":
       parameters:
@@ -1854,6 +1997,9 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           KeyAuthId: ""
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}
   upsert-key-auth-with-consumer:
     "":
       parameters:
@@ -1861,6 +2007,11 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           KeyAuthId: ""
+      requestBody:
+        application/json: {"id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}
   delete-key-auth-with-consumer:
     "":
       parameters:
@@ -1878,7 +2029,8 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 225401}
-        "200": {}
+        "200":
+          application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}]}
   list-key-set:
     "":
       parameters:
@@ -1889,7 +2041,8 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 539517}
-        "200": {}
+        "200":
+          application/json: {"data": [{"id": "b58c7d9d-e54f-444c-b24d-cdfc4159f61e", "name": "example-key-set", "tags": ["idp-keys"]}]}
   create-key-set:
     "":
       parameters:
@@ -1903,10 +2056,13 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"id": "b58c7d9d-e54f-444c-b24d-cdfc4159f61e", "name": "example-key-set", "tags": ["idp-keys"]}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 454928}
-        "201": {}
+        "201":
+          application/json: {"id": "b58c7d9d-e54f-444c-b24d-cdfc4159f61e", "name": "example-key-set", "tags": ["idp-keys"]}
   get-key-set:
     "":
       parameters:
@@ -1916,17 +2072,21 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 321714}
-        "200": {}
+        "200":
+          application/json: {"id": "b58c7d9d-e54f-444c-b24d-cdfc4159f61e", "name": "example-key-set", "tags": ["idp-keys"]}
   upsert-key-set:
     "":
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           KeySetId: "6cc34248-50b4-4a81-9201-3bdf7a83f712"
+      requestBody:
+        application/json: {"id": "b58c7d9d-e54f-444c-b24d-cdfc4159f61e", "name": "example-key-set", "tags": ["idp-keys"]}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 666641}
-        "200": {}
+        "200":
+          application/json: {"id": "b58c7d9d-e54f-444c-b24d-cdfc4159f61e", "name": "example-key-set", "tags": ["idp-keys"]}
   delete-key-set:
     "":
       parameters:
@@ -1946,7 +2106,8 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 54127}
-        "200": {}
+        "200":
+          application/json: {"data": [{"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}]}
   create-key:
     "":
       parameters:
@@ -1961,12 +2122,12 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"kid": "<value>"}
+        application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 907390}
         "201":
-          application/json: {"kid": "<value>"}
+          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
   get-key:
     "":
       parameters:
@@ -1977,7 +2138,7 @@ examples:
         "401":
           application/json: {"message": "<value>", "status": 265510}
         "200":
-          application/json: {"kid": "<value>"}
+          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
   upsert-key:
     "":
       parameters:
@@ -1985,12 +2146,12 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           KeyId: "bba22c06-a632-42be-a018-1b9ff357b5b9"
       requestBody:
-        application/json: {"kid": "<value>"}
+        application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 385247}
         "200":
-          application/json: {"kid": "<value>"}
+          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
   delete-key:
     "":
       parameters:
@@ -2090,7 +2251,8 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 792384}
-        "200": {}
+        "200":
+          application/json: {"data": [{"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}]}
   create-plugin:
     "":
       parameters:
@@ -2105,12 +2267,12 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"config": {}, "name": "<value>"}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 130029}
         "201":
-          application/json: {"config": {"key": "<value>", "key1": "<value>"}, "name": "<value>"}
+          application/json: {"config": {"key": "<value>", "key1": "<value>", "anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
   get-plugin:
     "":
       parameters:
@@ -2121,7 +2283,7 @@ examples:
         "401":
           application/json: {"message": "<value>", "status": 929065}
         "200":
-          application/json: {"config": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "name": "<value>"}
+          application/json: {"config": {"key": "<value>", "key1": "<value>", "key2": "<value>", "anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
   upsert-plugin:
     "":
       parameters:
@@ -2129,12 +2291,12 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       requestBody:
-        application/json: {"config": {}, "name": "<value>"}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 114024}
         "200":
-          application/json: {"config": {"key": "<value>", "key1": "<value>"}, "name": "<value>"}
+          application/json: {"config": {"key": "<value>", "key1": "<value>", "anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
   delete-plugin:
     "":
       parameters:
@@ -2152,6 +2314,9 @@ examples:
           RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
         query:
           tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}]}
   create-plugin-with-route:
     "":
       parameters:
@@ -2159,10 +2324,10 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
       requestBody:
-        application/json: {"config": {}, "name": "<value>"}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "201":
-          application/json: {"config": {"key": "<value>", "key1": "<value>"}, "name": "<value>"}
+          application/json: {"config": {"key": "<value>", "key1": "<value>", "anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
   get-plugin-with-route:
     "":
       parameters:
@@ -2172,7 +2337,7 @@ examples:
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       responses:
         "200":
-          application/json: {"config": {"key": "<value>"}, "name": "<value>"}
+          application/json: {"config": {"key": "<value>", "anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
   upsert-plugin-with-route:
     "":
       parameters:
@@ -2181,10 +2346,10 @@ examples:
           RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       requestBody:
-        application/json: {"config": {"key": "<value>"}, "name": "<value>"}
+        application/json: {"config": {"key": "<value>", "anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "200":
-          application/json: {"config": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "name": "<value>"}
+          application/json: {"config": {"key": "<value>", "key1": "<value>", "key2": "<value>", "anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
   delete-plugin-with-route:
     "":
       parameters:
@@ -2211,6 +2376,9 @@ examples:
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
         query:
           tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}]}
   create-plugin-with-service:
     "":
       parameters:
@@ -2218,10 +2386,10 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
       requestBody:
-        application/json: {"config": {"key": "<value>"}, "name": "<value>"}
+        application/json: {"config": {"key": "<value>", "anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "201":
-          application/json: {"config": {}, "name": "<value>"}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
   get-plugin-with-service:
     "":
       parameters:
@@ -2231,7 +2399,7 @@ examples:
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       responses:
         "200":
-          application/json: {"config": {}, "name": "<value>"}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
   upsert-plugin-with-service:
     "":
       parameters:
@@ -2240,10 +2408,10 @@ examples:
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       requestBody:
-        application/json: {"config": {}, "name": "<value>"}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "200":
-          application/json: {"config": {"key": "<value>", "key1": "<value>"}, "name": "<value>"}
+          application/json: {"config": {"key": "<value>", "key1": "<value>", "anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
   delete-plugin-with-service:
     "":
       parameters:
@@ -2261,7 +2429,8 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 175066}
-        "200": {}
+        "200":
+          application/json: {"data": [{"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}]}
   create-route:
     "":
       parameters:
@@ -2275,10 +2444,13 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 811488}
-        "201": {}
+        "201":
+          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
   get-route:
     "":
       parameters:
@@ -2288,17 +2460,21 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 248766}
-        "200": {}
+        "200":
+          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
   upsert-route:
     "":
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
+      requestBody:
+        application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 298474}
-        "200": {}
+        "200":
+          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
   delete-route:
     "":
       parameters:
@@ -2316,12 +2492,20 @@ examples:
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
         query:
           tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}]}
   create-route-with-service:
     "":
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+      requestBody:
+        application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"]}
+      responses:
+        "201":
+          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
   get-route-with-service:
     "":
       parameters:
@@ -2329,6 +2513,9 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
           RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
+      responses:
+        "200":
+          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
   upsert-route-with-service:
     "":
       parameters:
@@ -2336,6 +2523,11 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
           RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
+      requestBody:
+        application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"]}
+      responses:
+        "200":
+          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
   delete-route-with-service:
     "":
       parameters:
@@ -2353,7 +2545,8 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 151286}
-        "200": {}
+        "200":
+          application/json: {"data": [{"host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http"}]}
   create-service:
     "":
       parameters:
@@ -2371,10 +2564,10 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"host": "fumbling-airship.org"}
+        application/json: {"host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http"}
       responses:
         "201":
-          application/json: {"host": "courageous-jalapeño.com"}
+          application/json: {"host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http"}
         "401":
           application/json: {"message": "<value>", "status": 216580}
   get-service:
@@ -2385,7 +2578,7 @@ examples:
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
       responses:
         "200":
-          application/json: {"host": "stable-menu.org"}
+          application/json: {"host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http"}
         "401":
           application/json: {"message": "<value>", "status": 446943}
   upsert-service:
@@ -2395,10 +2588,10 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
       requestBody:
-        application/json: {"host": "shady-zen.name"}
+        application/json: {"host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http"}
       responses:
         "200":
-          application/json: {"host": "criminal-shield.name"}
+          application/json: {"host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http"}
         "401":
           application/json: {"message": "<value>", "status": 431439}
   delete-service:
@@ -2420,7 +2613,8 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 702828}
-        "200": {}
+        "200":
+          application/json: {"data": [{"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000}]}
   create-upstream:
     "":
       parameters:
@@ -2435,12 +2629,12 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"name": "<value>"}
+        application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 670650}
         "201":
-          application/json: {"name": "<value>"}
+          application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000}
   get-upstream:
     "":
       parameters:
@@ -2451,7 +2645,7 @@ examples:
         "401":
           application/json: {"message": "<value>", "status": 104017}
         "200":
-          application/json: {"name": "<value>"}
+          application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000}
   upsert-upstream:
     "":
       parameters:
@@ -2459,12 +2653,12 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           UpstreamId: "426d620c-7058-4ae6-aacc-f85a3204a2c5"
       requestBody:
-        application/json: {"name": "<value>"}
+        application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 59493}
         "200":
-          application/json: {"name": "<value>"}
+          application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000}
   delete-upstream:
     "":
       parameters:
@@ -2482,12 +2676,20 @@ examples:
           UpstreamIdForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
         query:
           tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "upstream": {"id": "5f1d7e76-2fed-4806-a6af-869984f025cb"}, "weight": 100}]}
   create-target-with-upstream:
     "":
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           UpstreamIdForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
+      requestBody:
+        application/json: {"id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "weight": 100}
+      responses:
+        "201":
+          application/json: {"id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "upstream": {"id": "5f1d7e76-2fed-4806-a6af-869984f025cb"}, "weight": 100}
   get-target-with-upstream:
     "":
       parameters:
@@ -2495,6 +2697,9 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           UpstreamIdForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
           TargetId: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
+      responses:
+        "200":
+          application/json: {"id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "upstream": {"id": "5f1d7e76-2fed-4806-a6af-869984f025cb"}, "weight": 100}
   upsert-target-with-upstream:
     "":
       parameters:
@@ -2502,6 +2707,11 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           UpstreamIdForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
           TargetId: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
+      requestBody:
+        application/json: {"id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "weight": 100}
+      responses:
+        "200":
+          application/json: {"id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "upstream": {"id": "5f1d7e76-2fed-4806-a6af-869984f025cb"}, "weight": 100}
   delete-target-with-upstream:
     "":
       parameters:
@@ -2519,7 +2729,8 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 831425}
-        "200": {}
+        "200":
+          application/json: {"data": [{"config": {"prefix": "ENV_PREFIX"}, "description": "environment variable based vault", "id": "2747d1e5-8246-4f65-a939-b392f1ee17f8", "name": "env", "prefix": "env", "tags": ["foo", "bar"]}]}
   create-vault:
     "":
       parameters:
@@ -2534,12 +2745,12 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"name": "<value>", "prefix": "<value>"}
+        application/json: {"config": {"prefix": "ENV_PREFIX"}, "description": "environment variable based vault", "id": "2747d1e5-8246-4f65-a939-b392f1ee17f8", "name": "env", "prefix": "env", "tags": ["foo", "bar"]}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 954798}
         "201":
-          application/json: {"name": "<value>", "prefix": "<value>"}
+          application/json: {"config": {"prefix": "ENV_PREFIX"}, "description": "environment variable based vault", "id": "2747d1e5-8246-4f65-a939-b392f1ee17f8", "name": "env", "prefix": "env", "tags": ["foo", "bar"]}
   get-vault:
     "":
       parameters:
@@ -2550,7 +2761,7 @@ examples:
         "401":
           application/json: {"message": "<value>", "status": 429820}
         "200":
-          application/json: {"name": "<value>", "prefix": "<value>"}
+          application/json: {"config": {"prefix": "ENV_PREFIX"}, "description": "environment variable based vault", "id": "2747d1e5-8246-4f65-a939-b392f1ee17f8", "name": "env", "prefix": "env", "tags": ["foo", "bar"]}
   upsert-vault:
     "":
       parameters:
@@ -2558,12 +2769,12 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           VaultId: "9d4d6d19-77c6-428e-a965-9bc9647633e9"
       requestBody:
-        application/json: {"name": "<value>", "prefix": "<value>"}
+        application/json: {"config": {"prefix": "ENV_PREFIX"}, "description": "environment variable based vault", "id": "2747d1e5-8246-4f65-a939-b392f1ee17f8", "name": "env", "prefix": "env", "tags": ["foo", "bar"]}
       responses:
         "401":
           application/json: {"message": "<value>", "status": 63413}
         "200":
-          application/json: {"name": "<value>", "prefix": "<value>"}
+          application/json: {"config": {"prefix": "ENV_PREFIX"}, "description": "environment variable based vault", "id": "2747d1e5-8246-4f65-a939-b392f1ee17f8", "name": "env", "prefix": "env", "tags": ["foo", "bar"]}
   delete-vault:
     "":
       parameters:
@@ -3404,3 +3615,54 @@ examples:
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
         "503":
           application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+  list-key-with-key-set:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          KeySetId: "6cc34248-50b4-4a81-9201-3bdf7a83f712"
+        query:
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}]}
+  create-key-with-key-set:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          KeySetId: "6cc34248-50b4-4a81-9201-3bdf7a83f712"
+      requestBody:
+        application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
+      responses:
+        "201":
+          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
+  delete-key-with-key-set:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          KeySetId: "6cc34248-50b4-4a81-9201-3bdf7a83f712"
+          KeyId: "bba22c06-a632-42be-a018-1b9ff357b5b9"
+  get-key-with-key-set:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          KeySetId: "6cc34248-50b4-4a81-9201-3bdf7a83f712"
+          KeyId: "bba22c06-a632-42be-a018-1b9ff357b5b9"
+      responses:
+        "200":
+          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
+  upsert-key-with-key-set:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          KeySetId: "6cc34248-50b4-4a81-9201-3bdf7a83f712"
+          KeyId: "bba22c06-a632-42be-a018-1b9ff357b5b9"
+      requestBody:
+        application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
+      responses:
+        "200":
+          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}

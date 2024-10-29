@@ -7,7 +7,7 @@ type ListGroupMemberships struct {
 	// returns the pagination information
 	Meta *CursorPaginatedMetaWithSizeAndTotal `json:"meta,omitempty"`
 	// Array of control planes summary who are a child to this control plane group.
-	Data []ControlPlaneSummary `json:"data,omitempty"`
+	Data []ControlPlane `json:"data,omitempty"`
 }
 
 func (o *ListGroupMemberships) GetMeta() *CursorPaginatedMetaWithSizeAndTotal {
@@ -17,7 +17,7 @@ func (o *ListGroupMemberships) GetMeta() *CursorPaginatedMetaWithSizeAndTotal {
 	return o.Meta
 }
 
-func (o *ListGroupMemberships) GetData() []ControlPlaneSummary {
+func (o *ListGroupMemberships) GetData() []ControlPlane {
 	if o == nil {
 		return nil
 	}

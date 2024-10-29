@@ -3,6 +3,6 @@
 
 ## Values
 
-| Name                                       | Value                                      |
-| ------------------------------------------ | ------------------------------------------ |
-| `RolesControlPlanesRolesNameConsumerAdmin` | Consumer Admin                             |
+| Name                                          | Value                                         |
+| --------------------------------------------- | --------------------------------------------- |
+| `RolesControlPlanesRolesNameCertificateAdmin` | Certificate Admin                             |

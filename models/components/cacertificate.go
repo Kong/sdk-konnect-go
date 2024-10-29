@@ -2,6 +2,7 @@
 
 package components
 
+// CACertificate - A CA certificate object represents a trusted CA. These objects are used by Kong to verify the validity of a client or server certificate.
 type CACertificate struct {
 	// PEM-encoded public certificate of the CA.
 	Cert string `json:"cert"`

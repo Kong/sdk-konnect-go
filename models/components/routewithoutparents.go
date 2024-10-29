@@ -159,6 +159,7 @@ func (o *RouteWithoutParentsSources) GetPort() *int64 {
 	return o.Port
 }
 
+// RouteWithoutParents - Route entities define rules to match client requests. Each Route is associated with a Service, and a Service may have multiple Routes associated to it. Every request matching a given Route will be proxied to its associated Service. The combination of Routes and Services (and the separation of concerns between them) offers a powerful routing mechanism with which it is possible to define fine-grained entry-points in Kong leading to different upstream services of your infrastructure. You need at least one matching rule that applies to the protocol being matched by the Route.
 type RouteWithoutParents struct {
 	// A list of IP destinations of incoming connections that match this Route when using stream routing. Each entry is an object with fields "ip" (optionally in CIDR range notation) and/or "port".
 	Destinations []RouteWithoutParentsDestinations `json:"destinations,omitempty"`

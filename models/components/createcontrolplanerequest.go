@@ -7,21 +7,20 @@ import (
 	"fmt"
 )
 
-// The ClusterType value of the cluster associated with the Control Plane.
-type ClusterType string
+// CreateControlPlaneRequestClusterType - The ClusterType value of the cluster associated with the Control Plane.
+type CreateControlPlaneRequestClusterType string
 
 const (
-	ClusterTypeClusterTypeControlPlane         ClusterType = "CLUSTER_TYPE_CONTROL_PLANE"
-	ClusterTypeClusterTypeHybrid               ClusterType = "CLUSTER_TYPE_HYBRID"
-	ClusterTypeClusterTypeK8SIngressController ClusterType = "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER"
-	ClusterTypeClusterTypeControlPlaneGroup    ClusterType = "CLUSTER_TYPE_CONTROL_PLANE_GROUP"
-	ClusterTypeClusterTypeServerless           ClusterType = "CLUSTER_TYPE_SERVERLESS"
+	CreateControlPlaneRequestClusterTypeClusterTypeControlPlane         CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_CONTROL_PLANE"
+	CreateControlPlaneRequestClusterTypeClusterTypeK8SIngressController CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER"
+	CreateControlPlaneRequestClusterTypeClusterTypeControlPlaneGroup    CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_CONTROL_PLANE_GROUP"
+	CreateControlPlaneRequestClusterTypeClusterTypeServerless           CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_SERVERLESS"
 )
 
-func (e ClusterType) ToPointer() *ClusterType {
+func (e CreateControlPlaneRequestClusterType) ToPointer() *CreateControlPlaneRequestClusterType {
 	return &e
 }
-func (e *ClusterType) UnmarshalJSON(data []byte) error {
+func (e *CreateControlPlaneRequestClusterType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -29,17 +28,15 @@ func (e *ClusterType) UnmarshalJSON(data []byte) error {
 	switch v {
 	case "CLUSTER_TYPE_CONTROL_PLANE":
 		fallthrough
-	case "CLUSTER_TYPE_HYBRID":
-		fallthrough
 	case "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER":
 		fallthrough
 	case "CLUSTER_TYPE_CONTROL_PLANE_GROUP":
 		fallthrough
 	case "CLUSTER_TYPE_SERVERLESS":
-		*e = ClusterType(v)
+		*e = CreateControlPlaneRequestClusterType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ClusterType: %v", v)
+		return fmt.Errorf("invalid value for CreateControlPlaneRequestClusterType: %v", v)
 	}
 }
 
@@ -77,7 +74,7 @@ type CreateControlPlaneRequest struct {
 	// The description of the control plane in Konnect.
 	Description *string `json:"description,omitempty"`
 	// The ClusterType value of the cluster associated with the Control Plane.
-	ClusterType *ClusterType `json:"cluster_type,omitempty"`
+	ClusterType *CreateControlPlaneRequestClusterType `json:"cluster_type,omitempty"`
 	// The auth type value of the cluster associated with the Runtime Group.
 	AuthType *AuthType `json:"auth_type,omitempty"`
 	// Whether this control-plane can be used for cloud-gateways.
@@ -105,7 +102,7 @@ func (o *CreateControlPlaneRequest) GetDescription() *string {
 	return o.Description
 }
 
-func (o *CreateControlPlaneRequest) GetClusterType() *ClusterType {
+func (o *CreateControlPlaneRequest) GetClusterType() *CreateControlPlaneRequestClusterType {
 	if o == nil {
 		return nil
 	}

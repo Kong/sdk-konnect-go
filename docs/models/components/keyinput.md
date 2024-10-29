@@ -1,5 +1,7 @@
 # KeyInput
 
+A Key object holds a representation of asymmetric keys in various formats. When Kong or a Kong plugin requires a specific public or private key to perform certain operations, it can use this entity.
+
 
 ## Fields
 

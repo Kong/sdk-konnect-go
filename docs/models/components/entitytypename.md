@@ -7,6 +7,7 @@ The type of entity.
 
 | Name                                      | Value                                     |
 | ----------------------------------------- | ----------------------------------------- |
+| `EntityTypeNameApIs`                      | APIs                                      |
 | `EntityTypeNameAPIProducts`               | API Products                              |
 | `EntityTypeNameApplicationAuthStrategies` | Application Auth Strategies               |
 | `EntityTypeNameAuditLogs`                 | Audit Logs                                |

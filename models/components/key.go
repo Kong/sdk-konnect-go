@@ -34,6 +34,7 @@ func (o *Set) GetID() *string {
 	return o.ID
 }
 
+// A Key object holds a representation of asymmetric keys in various formats. When Kong or a Kong plugin requires a specific public or private key to perform certain operations, it can use this entity.
 type Key struct {
 	// Unix epoch when the resource was created.
 	CreatedAt *int64  `json:"created_at,omitempty"`
@@ -117,6 +118,7 @@ func (o *Key) GetUpdatedAt() *int64 {
 	return o.UpdatedAt
 }
 
+// KeyInput - A Key object holds a representation of asymmetric keys in various formats. When Kong or a Kong plugin requires a specific public or private key to perform certain operations, it can use this entity.
 type KeyInput struct {
 	ID *string `json:"id,omitempty"`
 	// A JSON Web Key represented as a string.

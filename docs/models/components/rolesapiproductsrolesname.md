@@ -3,6 +3,6 @@
 
 ## Values
 
-| Name                                               | Value                                              |
-| -------------------------------------------------- | -------------------------------------------------- |
-| `RolesAPIProductsRolesNameApplicationRegistration` | Application Registration                           |
+| Name                             | Value                            |
+| -------------------------------- | -------------------------------- |
+| `RolesAPIProductsRolesNameAdmin` | Admin                            |

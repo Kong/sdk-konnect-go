@@ -11,24 +11,24 @@ import (
 type StringFieldFilterType string
 
 const (
-	StringFieldFilterTypeStr                       StringFieldFilterType = "str"
+	StringFieldFilterTypeStringFieldEqualsFilter   StringFieldFilterType = "StringFieldEqualsFilter"
 	StringFieldFilterTypeStringFieldContainsFilter StringFieldFilterType = "StringFieldContainsFilter"
 )
 
 // StringFieldFilter - Filter a string value field either by exact match or partial contains.
 type StringFieldFilter struct {
-	Str                       *string
+	StringFieldEqualsFilter   *StringFieldEqualsFilter
 	StringFieldContainsFilter *StringFieldContainsFilter
 
 	Type StringFieldFilterType
 }
 
-func CreateStringFieldFilterStr(str string) StringFieldFilter {
-	typ := StringFieldFilterTypeStr
+func CreateStringFieldFilterStringFieldEqualsFilter(stringFieldEqualsFilter StringFieldEqualsFilter) StringFieldFilter {
+	typ := StringFieldFilterTypeStringFieldEqualsFilter
 
 	return StringFieldFilter{
-		Str:  &str,
-		Type: typ,
+		StringFieldEqualsFilter: &stringFieldEqualsFilter,
+		Type:                    typ,
 	}
 }
 
@@ -50,10 +50,10 @@ func (u *StringFieldFilter) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
-		u.Str = &str
-		u.Type = StringFieldFilterTypeStr
+	var stringFieldEqualsFilter StringFieldEqualsFilter = StringFieldEqualsFilter{}
+	if err := utils.UnmarshalJSON(data, &stringFieldEqualsFilter, "", true, true); err == nil {
+		u.StringFieldEqualsFilter = &stringFieldEqualsFilter
+		u.Type = StringFieldFilterTypeStringFieldEqualsFilter
 		return nil
 	}
 
@@ -61,8 +61,8 @@ func (u *StringFieldFilter) UnmarshalJSON(data []byte) error {
 }
 
 func (u StringFieldFilter) MarshalJSON() ([]byte, error) {
-	if u.Str != nil {
-		return utils.MarshalJSON(u.Str, "", true)
+	if u.StringFieldEqualsFilter != nil {
+		return utils.MarshalJSON(u.StringFieldEqualsFilter, "", true)
 	}
 
 	if u.StringFieldContainsFilter != nil {

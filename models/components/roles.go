@@ -7,49 +7,49 @@ import (
 	"fmt"
 )
 
-type Name string
+type RolesName string
 
 const (
-	NameControlPlanes Name = "Control Planes"
+	RolesNameControlPlanes RolesName = "Control Planes"
 )
 
-func (e Name) ToPointer() *Name {
+func (e RolesName) ToPointer() *RolesName {
 	return &e
 }
-func (e *Name) UnmarshalJSON(data []byte) error {
+func (e *RolesName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "Control Planes":
-		*e = Name(v)
+		*e = RolesName(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Name: %v", v)
+		return fmt.Errorf("invalid value for RolesName: %v", v)
 	}
 }
 
-type RolesControlPlanesRolesAdminName string
+type RolesControlPlanesName string
 
 const (
-	RolesControlPlanesRolesAdminNameAdmin RolesControlPlanesRolesAdminName = "Admin"
+	RolesControlPlanesNameAdmin RolesControlPlanesName = "Admin"
 )
 
-func (e RolesControlPlanesRolesAdminName) ToPointer() *RolesControlPlanesRolesAdminName {
+func (e RolesControlPlanesName) ToPointer() *RolesControlPlanesName {
 	return &e
 }
-func (e *RolesControlPlanesRolesAdminName) UnmarshalJSON(data []byte) error {
+func (e *RolesControlPlanesName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "Admin":
-		*e = RolesControlPlanesRolesAdminName(v)
+		*e = RolesControlPlanesName(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RolesControlPlanesRolesAdminName: %v", v)
+		return fmt.Errorf("invalid value for RolesControlPlanesName: %v", v)
 	}
 }
 
@@ -77,13 +77,13 @@ func (e *Description) UnmarshalJSON(data []byte) error {
 }
 
 type Admin struct {
-	Name        RolesControlPlanesRolesAdminName `json:"name"`
-	Description Description                      `json:"description"`
+	Name        RolesControlPlanesName `json:"name"`
+	Description Description            `json:"description"`
 }
 
-func (o *Admin) GetName() RolesControlPlanesRolesAdminName {
+func (o *Admin) GetName() RolesControlPlanesName {
 	if o == nil {
-		return RolesControlPlanesRolesAdminName("")
+		return RolesControlPlanesName("")
 	}
 	return o.Name
 }
@@ -95,26 +95,26 @@ func (o *Admin) GetDescription() Description {
 	return o.Description
 }
 
-type RolesControlPlanesName string
+type RolesControlPlanesRolesName string
 
 const (
-	RolesControlPlanesNameCertificateAdmin RolesControlPlanesName = "Certificate Admin"
+	RolesControlPlanesRolesNameCertificateAdmin RolesControlPlanesRolesName = "Certificate Admin"
 )
 
-func (e RolesControlPlanesName) ToPointer() *RolesControlPlanesName {
+func (e RolesControlPlanesRolesName) ToPointer() *RolesControlPlanesRolesName {
 	return &e
 }
-func (e *RolesControlPlanesName) UnmarshalJSON(data []byte) error {
+func (e *RolesControlPlanesRolesName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "Certificate Admin":
-		*e = RolesControlPlanesName(v)
+		*e = RolesControlPlanesRolesName(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RolesControlPlanesName: %v", v)
+		return fmt.Errorf("invalid value for RolesControlPlanesRolesName: %v", v)
 	}
 }
 
@@ -142,13 +142,13 @@ func (e *RolesDescription) UnmarshalJSON(data []byte) error {
 }
 
 type CertificateAdmin struct {
-	Name        RolesControlPlanesName `json:"name"`
-	Description RolesDescription       `json:"description"`
+	Name        RolesControlPlanesRolesName `json:"name"`
+	Description RolesDescription            `json:"description"`
 }
 
-func (o *CertificateAdmin) GetName() RolesControlPlanesName {
+func (o *CertificateAdmin) GetName() RolesControlPlanesRolesName {
 	if o == nil {
-		return RolesControlPlanesName("")
+		return RolesControlPlanesRolesName("")
 	}
 	return o.Name
 }
@@ -160,26 +160,26 @@ func (o *CertificateAdmin) GetDescription() RolesDescription {
 	return o.Description
 }
 
-type RolesControlPlanesRolesName string
+type RolesControlPlanesRolesConsumerAdminName string
 
 const (
-	RolesControlPlanesRolesNameConsumerAdmin RolesControlPlanesRolesName = "Consumer Admin"
+	RolesControlPlanesRolesConsumerAdminNameConsumerAdmin RolesControlPlanesRolesConsumerAdminName = "Consumer Admin"
 )
 
-func (e RolesControlPlanesRolesName) ToPointer() *RolesControlPlanesRolesName {
+func (e RolesControlPlanesRolesConsumerAdminName) ToPointer() *RolesControlPlanesRolesConsumerAdminName {
 	return &e
 }
-func (e *RolesControlPlanesRolesName) UnmarshalJSON(data []byte) error {
+func (e *RolesControlPlanesRolesConsumerAdminName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "Consumer Admin":
-		*e = RolesControlPlanesRolesName(v)
+		*e = RolesControlPlanesRolesConsumerAdminName(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RolesControlPlanesRolesName: %v", v)
+		return fmt.Errorf("invalid value for RolesControlPlanesRolesConsumerAdminName: %v", v)
 	}
 }
 
@@ -207,13 +207,13 @@ func (e *RolesControlPlanesDescription) UnmarshalJSON(data []byte) error {
 }
 
 type ConsumerAdmin struct {
-	Name        RolesControlPlanesRolesName   `json:"name"`
-	Description RolesControlPlanesDescription `json:"description"`
+	Name        RolesControlPlanesRolesConsumerAdminName `json:"name"`
+	Description RolesControlPlanesDescription            `json:"description"`
 }
 
-func (o *ConsumerAdmin) GetName() RolesControlPlanesRolesName {
+func (o *ConsumerAdmin) GetName() RolesControlPlanesRolesConsumerAdminName {
 	if o == nil {
-		return RolesControlPlanesRolesName("")
+		return RolesControlPlanesRolesConsumerAdminName("")
 	}
 	return o.Name
 }
@@ -837,13 +837,13 @@ func (o *RolesControlPlanesRoles) GetViewer() *Viewer {
 }
 
 type ControlPlanes struct {
-	Name  Name                    `json:"name"`
+	Name  RolesName               `json:"name"`
 	Roles RolesControlPlanesRoles `json:"roles"`
 }
 
-func (o *ControlPlanes) GetName() Name {
+func (o *ControlPlanes) GetName() RolesName {
 	if o == nil {
-		return Name("")
+		return RolesName("")
 	}
 	return o.Name
 }
@@ -855,33 +855,10 @@ func (o *ControlPlanes) GetRoles() RolesControlPlanesRoles {
 	return o.Roles
 }
 
-type RolesName string
-
-const (
-	RolesNameAPIProducts RolesName = "API Products"
-)
-
-func (e RolesName) ToPointer() *RolesName {
-	return &e
-}
-func (e *RolesName) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "API Products":
-		*e = RolesName(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for RolesName: %v", v)
-	}
-}
-
 type RolesAPIProductsName string
 
 const (
-	RolesAPIProductsNameAdmin RolesAPIProductsName = "Admin"
+	RolesAPIProductsNameAPIProducts RolesAPIProductsName = "API Products"
 )
 
 func (e RolesAPIProductsName) ToPointer() *RolesAPIProductsName {
@@ -893,11 +870,34 @@ func (e *RolesAPIProductsName) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "Admin":
+	case "API Products":
 		*e = RolesAPIProductsName(v)
 		return nil
 	default:
 		return fmt.Errorf("invalid value for RolesAPIProductsName: %v", v)
+	}
+}
+
+type RolesAPIProductsRolesName string
+
+const (
+	RolesAPIProductsRolesNameAdmin RolesAPIProductsRolesName = "Admin"
+)
+
+func (e RolesAPIProductsRolesName) ToPointer() *RolesAPIProductsRolesName {
+	return &e
+}
+func (e *RolesAPIProductsRolesName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Admin":
+		*e = RolesAPIProductsRolesName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesAPIProductsRolesName: %v", v)
 	}
 }
 
@@ -925,13 +925,13 @@ func (e *RolesAPIProductsDescription) UnmarshalJSON(data []byte) error {
 }
 
 type RolesAdmin struct {
-	Name        RolesAPIProductsName        `json:"name"`
+	Name        RolesAPIProductsRolesName   `json:"name"`
 	Description RolesAPIProductsDescription `json:"description"`
 }
 
-func (o *RolesAdmin) GetName() RolesAPIProductsName {
+func (o *RolesAdmin) GetName() RolesAPIProductsRolesName {
 	if o == nil {
-		return RolesAPIProductsName("")
+		return RolesAPIProductsRolesName("")
 	}
 	return o.Name
 }
@@ -943,26 +943,26 @@ func (o *RolesAdmin) GetDescription() RolesAPIProductsDescription {
 	return o.Description
 }
 
-type RolesAPIProductsRolesName string
+type RolesAPIProductsRolesApplicationRegistrationName string
 
 const (
-	RolesAPIProductsRolesNameApplicationRegistration RolesAPIProductsRolesName = "Application Registration"
+	RolesAPIProductsRolesApplicationRegistrationNameApplicationRegistration RolesAPIProductsRolesApplicationRegistrationName = "Application Registration"
 )
 
-func (e RolesAPIProductsRolesName) ToPointer() *RolesAPIProductsRolesName {
+func (e RolesAPIProductsRolesApplicationRegistrationName) ToPointer() *RolesAPIProductsRolesApplicationRegistrationName {
 	return &e
 }
-func (e *RolesAPIProductsRolesName) UnmarshalJSON(data []byte) error {
+func (e *RolesAPIProductsRolesApplicationRegistrationName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "Application Registration":
-		*e = RolesAPIProductsRolesName(v)
+		*e = RolesAPIProductsRolesApplicationRegistrationName(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RolesAPIProductsRolesName: %v", v)
+		return fmt.Errorf("invalid value for RolesAPIProductsRolesApplicationRegistrationName: %v", v)
 	}
 }
 
@@ -990,13 +990,13 @@ func (e *RolesAPIProductsRolesDescription) UnmarshalJSON(data []byte) error {
 }
 
 type ApplicationRegistration struct {
-	Name        RolesAPIProductsRolesName        `json:"name"`
-	Description RolesAPIProductsRolesDescription `json:"description"`
+	Name        RolesAPIProductsRolesApplicationRegistrationName `json:"name"`
+	Description RolesAPIProductsRolesDescription                 `json:"description"`
 }
 
-func (o *ApplicationRegistration) GetName() RolesAPIProductsRolesName {
+func (o *ApplicationRegistration) GetName() RolesAPIProductsRolesApplicationRegistrationName {
 	if o == nil {
-		return RolesAPIProductsRolesName("")
+		return RolesAPIProductsRolesApplicationRegistrationName("")
 	}
 	return o.Name
 }
@@ -1466,13 +1466,13 @@ func (o *RolesRoles) GetViewer() *RolesViewer {
 }
 
 type APIProducts struct {
-	Name  RolesName  `json:"name"`
-	Roles RolesRoles `json:"roles"`
+	Name  RolesAPIProductsName `json:"name"`
+	Roles RolesRoles           `json:"roles"`
 }
 
-func (o *APIProducts) GetName() RolesName {
+func (o *APIProducts) GetName() RolesAPIProductsName {
 	if o == nil {
-		return RolesName("")
+		return RolesAPIProductsName("")
 	}
 	return o.Name
 }

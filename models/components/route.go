@@ -140,6 +140,18 @@ func (e *RouteProtocols) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// RouteService - The Service this Route is associated to. This is where the Route proxies traffic to.
+type RouteService struct {
+	ID *string `json:"id,omitempty"`
+}
+
+func (o *RouteService) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
 type Sources struct {
 	IP   *string `json:"ip,omitempty"`
 	Port *int64  `json:"port,omitempty"`
@@ -159,18 +171,7 @@ func (o *Sources) GetPort() *int64 {
 	return o.Port
 }
 
-// RouteService - The Service this Route is associated to. This is where the Route proxies traffic to.
-type RouteService struct {
-	ID *string `json:"id,omitempty"`
-}
-
-func (o *RouteService) GetID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ID
-}
-
+// Route entities define rules to match client requests. Each Route is associated with a Service, and a Service may have multiple Routes associated to it. Every request matching a given Route will be proxied to its associated Service. The combination of Routes and Services (and the separation of concerns between them) offers a powerful routing mechanism with which it is possible to define fine-grained entry-points in Kong leading to different upstream services of your infrastructure. You need at least one matching rule that applies to the protocol being matched by the Route.
 type Route struct {
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
@@ -201,6 +202,8 @@ type Route struct {
 	RequestBuffering *bool `default:"true" json:"request_buffering"`
 	// Whether to enable response body buffering or not. With HTTP 1.1, it may make sense to turn this off on services that send data with chunked transfer encoding.
 	ResponseBuffering *bool `default:"true" json:"response_buffering"`
+	// The Service this Route is associated to. This is where the Route proxies traffic to.
+	Service *RouteService `json:"service,omitempty"`
 	// A list of SNIs that match this Route when using stream routing.
 	Snis []string `json:"snis,omitempty"`
 	// A list of IP sources of incoming connections that match this Route when using stream routing. Each entry is an object with fields "ip" (optionally in CIDR range notation) and/or "port".
@@ -211,8 +214,6 @@ type Route struct {
 	Tags []string `json:"tags,omitempty"`
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
-	// The Service this Route is associated to. This is where the Route proxies traffic to.
-	Service *RouteService `json:"service,omitempty"`
 }
 
 func (r Route) MarshalJSON() ([]byte, error) {
@@ -331,6 +332,13 @@ func (o *Route) GetResponseBuffering() *bool {
 	return o.ResponseBuffering
 }
 
+func (o *Route) GetService() *RouteService {
+	if o == nil {
+		return nil
+	}
+	return o.Service
+}
+
 func (o *Route) GetSnis() []string {
 	if o == nil {
 		return nil
@@ -366,13 +374,7 @@ func (o *Route) GetUpdatedAt() *int64 {
 	return o.UpdatedAt
 }
 
-func (o *Route) GetService() *RouteService {
-	if o == nil {
-		return nil
-	}
-	return o.Service
-}
-
+// RouteInput - Route entities define rules to match client requests. Each Route is associated with a Service, and a Service may have multiple Routes associated to it. Every request matching a given Route will be proxied to its associated Service. The combination of Routes and Services (and the separation of concerns between them) offers a powerful routing mechanism with which it is possible to define fine-grained entry-points in Kong leading to different upstream services of your infrastructure. You need at least one matching rule that applies to the protocol being matched by the Route.
 type RouteInput struct {
 	// A list of IP destinations of incoming connections that match this Route when using stream routing. Each entry is an object with fields "ip" (optionally in CIDR range notation) and/or "port".
 	Destinations []Destinations `json:"destinations,omitempty"`
@@ -401,6 +403,8 @@ type RouteInput struct {
 	RequestBuffering *bool `default:"true" json:"request_buffering"`
 	// Whether to enable response body buffering or not. With HTTP 1.1, it may make sense to turn this off on services that send data with chunked transfer encoding.
 	ResponseBuffering *bool `default:"true" json:"response_buffering"`
+	// The Service this Route is associated to. This is where the Route proxies traffic to.
+	Service *RouteService `json:"service,omitempty"`
 	// A list of SNIs that match this Route when using stream routing.
 	Snis []string `json:"snis,omitempty"`
 	// A list of IP sources of incoming connections that match this Route when using stream routing. Each entry is an object with fields "ip" (optionally in CIDR range notation) and/or "port".
@@ -409,8 +413,6 @@ type RouteInput struct {
 	StripPath *bool `default:"true" json:"strip_path"`
 	// An optional set of strings associated with the Route for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
-	// The Service this Route is associated to. This is where the Route proxies traffic to.
-	Service *RouteService `json:"service,omitempty"`
 }
 
 func (r RouteInput) MarshalJSON() ([]byte, error) {
@@ -522,6 +524,13 @@ func (o *RouteInput) GetResponseBuffering() *bool {
 	return o.ResponseBuffering
 }
 
+func (o *RouteInput) GetService() *RouteService {
+	if o == nil {
+		return nil
+	}
+	return o.Service
+}
+
 func (o *RouteInput) GetSnis() []string {
 	if o == nil {
 		return nil
@@ -548,11 +557,4 @@ func (o *RouteInput) GetTags() []string {
 		return nil
 	}
 	return o.Tags
-}
-
-func (o *RouteInput) GetService() *RouteService {
-	if o == nil {
-		return nil
-	}
-	return o.Service
 }

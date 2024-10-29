@@ -3,6 +3,6 @@
 
 ## Values
 
-| Name                                     | Value                                    |
-| ---------------------------------------- | ---------------------------------------- |
-| `RolesControlPlanesNameCertificateAdmin` | Certificate Admin                        |
+| Name                          | Value                         |
+| ----------------------------- | ----------------------------- |
+| `RolesControlPlanesNameAdmin` | Admin                         |

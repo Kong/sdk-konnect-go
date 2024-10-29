@@ -78,7 +78,7 @@ func (in *CreateControlPlaneRequest) DeepCopyInto(out *CreateControlPlaneRequest
 	}
 	if in.ClusterType != nil {
 		in, out := &in.ClusterType, &out.ClusterType
-		*out = new(ClusterType)
+		*out = new(CreateControlPlaneRequestClusterType)
 		**out = **in
 	}
 	if in.AuthType != nil {
@@ -312,6 +312,11 @@ func (in *Route) DeepCopyInto(out *Route) {
 		*out = new(bool)
 		**out = **in
 	}
+	if in.Service != nil {
+		in, out := &in.Service, &out.Service
+		*out = new(RouteService)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.Snis != nil {
 		in, out := &in.Snis, &out.Snis
 		*out = make([]string, len(*in))
@@ -338,11 +343,6 @@ func (in *Route) DeepCopyInto(out *Route) {
 		in, out := &in.UpdatedAt, &out.UpdatedAt
 		*out = new(int64)
 		**out = **in
-	}
-	if in.Service != nil {
-		in, out := &in.Service, &out.Service
-		*out = new(RouteService)
-		(*in).DeepCopyInto(*out)
 	}
 }
 
@@ -433,6 +433,11 @@ func (in *RouteInput) DeepCopyInto(out *RouteInput) {
 		*out = new(bool)
 		**out = **in
 	}
+	if in.Service != nil {
+		in, out := &in.Service, &out.Service
+		*out = new(RouteService)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.Snis != nil {
 		in, out := &in.Snis, &out.Snis
 		*out = make([]string, len(*in))
@@ -454,11 +459,6 @@ func (in *RouteInput) DeepCopyInto(out *RouteInput) {
 		in, out := &in.Tags, &out.Tags
 		*out = make([]string, len(*in))
 		copy(*out, *in)
-	}
-	if in.Service != nil {
-		in, out := &in.Service, &out.Service
-		*out = new(RouteService)
-		(*in).DeepCopyInto(*out)
 	}
 }
 

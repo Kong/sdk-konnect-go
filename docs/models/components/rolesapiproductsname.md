@@ -3,6 +3,6 @@
 
 ## Values
 
-| Name                        | Value                       |
-| --------------------------- | --------------------------- |
-| `RolesAPIProductsNameAdmin` | Admin                       |
+| Name                              | Value                             |
+| --------------------------------- | --------------------------------- |
+| `RolesAPIProductsNameAPIProducts` | API Products                      |
