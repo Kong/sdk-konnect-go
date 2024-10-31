@@ -39,6 +39,15 @@ OPENAPI_FILE = openapi.yaml
 SPEAKEASY_DIR = .speakeasy
 KUBEBUILDER_GENERATE_CODE_MARKER = +kubebuilder:object:generate=true
 
+
+# TODO: this works around the fact that speakeasy does not support fields that
+# do not have "omitempty" set and are not required.
+# Related slack thread: https://kongstrong.slack.com/archives/C05MLAA216D/p1730369303065339
+.PHONY: _generate.omitempty
+_generate.omitempty:
+	$(SED) -i 's#Members \[\]Members `json:"members,omitempty"`#Members \[\]Members `json:"members"`#g' \
+		models/components/groupmembership.go
+
 .PHONY: generate.deepcopy
 generate.deepcopy: controller-gen
 	$(SED) -i 's#\(type CreateControlPlaneRequest struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
@@ -96,4 +105,5 @@ generate.deepcopy: controller-gen
 generate.sdk:
 	$(MAKE) generate.deepcopy
 	speakeasy generate sdk --lang go --out . --schema ./$(OPENAPI_FILE)
+	$(MAKE) _generate.omitempty
 	go mod tidy
