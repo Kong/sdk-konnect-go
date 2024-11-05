@@ -13,14 +13,15 @@ func initHooks(h *Hooks) {
 
 	h.registerBeforeRequestHook(&APIURLRequestHook{})
 
-	h.registerBeforeRequestHook(&HTTPDumpRequestHook{
-		Enabled: os.Getenv("KONNECT_SDK_HTTP_DUMP_REQUEST") == "true",
-	})
+	if os.Getenv("KONNECT_SDK_HTTP_DUMP_REQUEST") == "true" {
+		h.registerBeforeRequestHook(&HTTPDumpRequestHook{})
+	}
 
-	h.registerAfterSuccessHook(&HTTPDumpResponseHook{
-		Enabled: os.Getenv("KONNECT_SDK_HTTP_DUMP_RESPONSE") == "true",
-	})
-	h.registerAfterErrorHook(&HTTPDumpResponseErrorHook{
-		Enabled: os.Getenv("KONNECT_SDK_HTTP_DUMP_RESPONSE_ERROR") == "true",
-	})
+	if os.Getenv("KONNECT_SDK_HTTP_DUMP_RESPONSE") == "true" {
+		h.registerAfterSuccessHook(&HTTPDumpResponseHook{})
+	}
+
+	if os.Getenv("KONNECT_SDK_HTTP_DUMP_RESPONSE_ERROR") == "true" {
+		h.registerAfterErrorHook(&HTTPDumpResponseErrorHook{})
+	}
 }

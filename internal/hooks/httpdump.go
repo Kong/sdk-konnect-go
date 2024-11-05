@@ -7,17 +7,12 @@ import (
 )
 
 // HTTPDumpRequestHook is a hook that dumps the request to stdout.
-type HTTPDumpRequestHook struct {
-	Enabled bool
-}
+type HTTPDumpRequestHook struct{}
 
 var _ beforeRequestHook = (*HTTPDumpRequestHook)(nil)
 
 // BeforeRequest dumps the request to stdout if enabled.
 func (i *HTTPDumpRequestHook) BeforeRequest(hookCtx BeforeRequestContext, req *http.Request) (*http.Request, error) {
-	if !i.Enabled {
-		return req, nil
-	}
 	if req == nil {
 		return nil, nil
 	}
@@ -33,32 +28,22 @@ func (i *HTTPDumpRequestHook) BeforeRequest(hookCtx BeforeRequestContext, req *h
 }
 
 // HTTPDumpResponseHook is a hook that dumps the response to stdout.
-type HTTPDumpResponseHook struct {
-	Enabled bool
-}
+type HTTPDumpResponseHook struct{}
 
 var _ afterSuccessHook = (*HTTPDumpResponseHook)(nil)
 
 // AfterSuccess dumps the response to stdout if enabled.
 func (i *HTTPDumpResponseHook) AfterSuccess(hookCtx AfterSuccessContext, res *http.Response) (*http.Response, error) {
-	if !i.Enabled {
-		return res, nil
-	}
 	return dumpResponse(res), nil
 }
 
 // HTTPDumpResponseErrorHook is a hook that dumps the error response to stdout.
-type HTTPDumpResponseErrorHook struct {
-	Enabled bool
-}
+type HTTPDumpResponseErrorHook struct{}
 
 var _ afterErrorHook = (*HTTPDumpResponseErrorHook)(nil)
 
 // AfterError dumps the error response to stdout if enabled.
 func (i *HTTPDumpResponseErrorHook) AfterError(hookCtx AfterErrorContext, res *http.Response, err error) (*http.Response, error) {
-	if !i.Enabled {
-		return res, nil
-	}
 	if err != nil {
 		fmt.Printf("Error: %v\n", err)
 	}
