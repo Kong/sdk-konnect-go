@@ -9,3 +9,5 @@ State of the organization
 | ----------------------------- | ----------------------------- |
 | `MeOrganizationStateActive`   | active                        |
 | `MeOrganizationStateInactive` | inactive                      |
+| `MeOrganizationStateDeleting` | deleting                      |
+| `MeOrganizationStateDeleted`  | deleted                       |

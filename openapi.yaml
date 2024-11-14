@@ -569,6 +569,32 @@ paths:
       tags:
         - Consumer Groups
   /v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/consumers:
+    get:
+      operationId: list-consumers-for-consumer-group
+      summary: List all Consumers in a Consumer Group
+      description: List all consumers in a consumer group
+      parameters:
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationOffset'
+        - $ref: '#/components/parameters/PaginationTagsFilter'
+      responses:
+        '200':
+          description: A successful response listing of consumers
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Consumer'
+                  next:
+                    $ref: '#/components/schemas/PaginationNextResponse'
+                  offset:
+                    $ref: '#/components/schemas/PaginationOffsetResponse'
+      tags:
+        - Consumer Groups
     parameters:
       - $ref: '#/components/parameters/ConsumerGroupIdManageConsumers'
       - $ref: '#/components/parameters/controlPlaneId'
@@ -622,6 +648,114 @@ paths:
         schema:
           type: string
       - $ref: '#/components/parameters/controlPlaneId'
+  /v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins:
+    get:
+      operationId: list-plugin-with-consumer_group
+      summary: List all Plugins associated with a Consumer Group
+      description: List all Plugins associated with a Consumer Group
+      parameters:
+        - $ref: '#/components/parameters/ConsumerGroupId'
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationOffset'
+        - $ref: '#/components/parameters/PaginationTagsFilter'
+      responses:
+        '200':
+          description: A successful response listing Plugins
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Plugin'
+                  next:
+                    $ref: '#/components/schemas/PaginationNextResponse'
+                  offset:
+                    $ref: '#/components/schemas/PaginationOffsetResponse'
+      tags:
+        - Plugins
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+    post:
+      operationId: create-plugin-with-consumer_group
+      summary: Create a new Plugin associated with a Consumer Group
+      description: Create a new Plugin associated with a Consumer Group
+      parameters:
+        - $ref: '#/components/parameters/ConsumerGroupId'
+      requestBody:
+        description: Description of new Plugin for creation
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PluginWithoutParents'
+      responses:
+        '201':
+          description: Successfully created Plugin
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plugin'
+      tags:
+        - Plugins
+  /v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}:
+    delete:
+      operationId: delete-plugin-with-consumer_group
+      summary: Delete a a Plugin associated with a Consumer Group
+      description: Delete a a Plugin associated with a Consumer Group using ID.
+      parameters:
+        - $ref: '#/components/parameters/ConsumerGroupId'
+        - $ref: '#/components/parameters/PluginId'
+      responses:
+        '204':
+          description: Successfully deleted Plugin or the resource didn't exist
+      tags:
+        - Plugins
+    get:
+      operationId: get-plugin-with-consumer_group
+      summary: Fetch a Plugin associated with a Consumer Group
+      description: Get a Plugin associated with a Consumer Group using ID.
+      parameters:
+        - $ref: '#/components/parameters/ConsumerGroupId'
+        - $ref: '#/components/parameters/PluginId'
+      responses:
+        '200':
+          description: Successfully fetched Plugin
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plugin'
+        '404':
+          description: Resource does not exist
+      tags:
+        - Plugins
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+    put:
+      operationId: upsert-plugin-with-consumer_group
+      summary: Upsert a Plugin associated with a Consumer Group
+      description: Create or Update a Plugin associated with a Consumer Group using ID.
+      parameters:
+        - $ref: '#/components/parameters/ConsumerGroupId'
+        - $ref: '#/components/parameters/PluginId'
+      requestBody:
+        description: Description of the Plugin
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PluginWithoutParents'
+      responses:
+        '200':
+          description: Successfully upserted Plugin
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plugin'
+      tags:
+        - Plugins
   /v2/control-planes/{controlPlaneId}/core-entities/consumers:
     get:
       operationId: list-consumer
@@ -757,6 +891,55 @@ paths:
                     $ref: '#/components/schemas/PaginationNextResponse'
                   offset:
                     $ref: '#/components/schemas/PaginationOffsetResponse'
+      tags:
+        - Consumer Groups
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+    post:
+      operationId: add-consumer-to-specific-consumer-group
+      summary: Add consumer to a specific consumer group
+      description: Add a consumer to a consumer group
+      parameters:
+        - $ref: '#/components/parameters/ConsumerId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group:
+                  type: string
+                  example: fedee695-2ae2-4e45-877a-776d9b2fc793
+                  x-speakeasy-name-override: group
+      responses:
+        '201':
+          description: Consumer added to a specific group
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  consumer:
+                    $ref: '#/components/schemas/Consumer'
+                  consumer_groups:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ConsumerGroup'
+      tags:
+        - Consumer Groups
+  /v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups/{ConsumerGroupId}:
+    delete:
+      operationId: remove-consumer-from-consumer-group
+      summary: Remove consumer from consumer group
+      description: >-
+        Removes a consumer from a consumer group. This operation does not delete
+        the consumer group.
+      parameters:
+        - $ref: '#/components/parameters/ConsumerId'
+        - $ref: '#/components/parameters/ConsumerGroupId'
+      responses:
+        '204':
+          description: Consumer removed from group
       tags:
         - Consumer Groups
     parameters:
@@ -1309,6 +1492,226 @@ paths:
                 $ref: '#/components/schemas/KeyAuth'
       tags:
         - API-keys
+  /v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/mtls-auth:
+    get:
+      operationId: list-mtls-auth-with-consumer
+      summary: List all MTLS-auth credentials associated with a Consumer
+      description: List all MTLS-auth credentials associated with a Consumer
+      parameters:
+        - $ref: '#/components/parameters/ConsumerIdForNestedEntities'
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationOffset'
+        - $ref: '#/components/parameters/PaginationTagsFilter'
+      responses:
+        '200':
+          description: A successful response listing MTLS-auth credentials
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MTLSAuth'
+                  next:
+                    $ref: '#/components/schemas/PaginationNextResponse'
+                  offset:
+                    $ref: '#/components/schemas/PaginationOffsetResponse'
+      tags:
+        - MTLS-auth credentials
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+    post:
+      operationId: create-mtls-auth-with-consumer
+      summary: Create a new MTLS-auth credential associated with a Consumer
+      description: Create a new MTLS-auth credential associated with a Consumer
+      parameters:
+        - $ref: '#/components/parameters/ConsumerIdForNestedEntities'
+      requestBody:
+        description: Description of new MTLS-auth credential for creation
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MTLSAuthWithoutParents'
+      responses:
+        '201':
+          description: Successfully created MTLS-auth credential
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MTLSAuth'
+      tags:
+        - MTLS-auth credentials
+  /v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/mtls-auth/{MTLSAuthId}:
+    delete:
+      operationId: delete-mtls-auth-with-consumer
+      summary: Delete a a MTLS-auth credential associated with a Consumer
+      description: Delete a a MTLS-auth credential associated with a Consumer using ID.
+      parameters:
+        - $ref: '#/components/parameters/ConsumerIdForNestedEntities'
+        - $ref: '#/components/parameters/MTLSAuthId'
+      responses:
+        '204':
+          description: >-
+            Successfully deleted MTLS-auth credential or the resource didn't
+            exist
+      tags:
+        - MTLS-auth credentials
+    get:
+      operationId: get-mtls-auth-with-consumer
+      summary: Fetch a MTLS-auth credential associated with a Consumer
+      description: Get a MTLS-auth credential associated with a Consumer using ID.
+      parameters:
+        - $ref: '#/components/parameters/ConsumerIdForNestedEntities'
+        - $ref: '#/components/parameters/MTLSAuthId'
+      responses:
+        '200':
+          description: Successfully fetched MTLS-auth credential
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MTLSAuth'
+        '404':
+          description: Resource does not exist
+      tags:
+        - MTLS-auth credentials
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+    put:
+      operationId: upsert-mtls-auth-with-consumer
+      summary: Upsert a MTLS-auth credential associated with a Consumer
+      description: >-
+        Create or Update a MTLS-auth credential associated with a Consumer using
+        ID.
+      parameters:
+        - $ref: '#/components/parameters/ConsumerIdForNestedEntities'
+        - $ref: '#/components/parameters/MTLSAuthId'
+      requestBody:
+        description: Description of the MTLS-auth credential
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MTLSAuthWithoutParents'
+      responses:
+        '200':
+          description: Successfully upserted MTLS-auth credential
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MTLSAuth'
+      tags:
+        - MTLS-auth credentials
+  /v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/plugins:
+    get:
+      operationId: list-plugin-with-consumer
+      summary: List all Plugins associated with a Consumer
+      description: List all Plugins associated with a Consumer
+      parameters:
+        - $ref: '#/components/parameters/ConsumerIdForNestedEntities'
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationOffset'
+        - $ref: '#/components/parameters/PaginationTagsFilter'
+      responses:
+        '200':
+          description: A successful response listing Plugins
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Plugin'
+                  next:
+                    $ref: '#/components/schemas/PaginationNextResponse'
+                  offset:
+                    $ref: '#/components/schemas/PaginationOffsetResponse'
+      tags:
+        - Plugins
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+    post:
+      operationId: create-plugin-with-consumer
+      summary: Create a new Plugin associated with a Consumer
+      description: Create a new Plugin associated with a Consumer
+      parameters:
+        - $ref: '#/components/parameters/ConsumerIdForNestedEntities'
+      requestBody:
+        description: Description of new Plugin for creation
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PluginWithoutParents'
+      responses:
+        '201':
+          description: Successfully created Plugin
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plugin'
+      tags:
+        - Plugins
+  /v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}:
+    delete:
+      operationId: delete-plugin-with-consumer
+      summary: Delete a a Plugin associated with a Consumer
+      description: Delete a a Plugin associated with a Consumer using ID.
+      parameters:
+        - $ref: '#/components/parameters/ConsumerIdForNestedEntities'
+        - $ref: '#/components/parameters/PluginId'
+      responses:
+        '204':
+          description: Successfully deleted Plugin or the resource didn't exist
+      tags:
+        - Plugins
+    get:
+      operationId: get-plugin-with-consumer
+      summary: Fetch a Plugin associated with a Consumer
+      description: Get a Plugin associated with a Consumer using ID.
+      parameters:
+        - $ref: '#/components/parameters/ConsumerIdForNestedEntities'
+        - $ref: '#/components/parameters/PluginId'
+      responses:
+        '200':
+          description: Successfully fetched Plugin
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plugin'
+        '404':
+          description: Resource does not exist
+      tags:
+        - Plugins
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+    put:
+      operationId: upsert-plugin-with-consumer
+      summary: Upsert a Plugin associated with a Consumer
+      description: Create or Update a Plugin associated with a Consumer using ID.
+      parameters:
+        - $ref: '#/components/parameters/ConsumerIdForNestedEntities'
+        - $ref: '#/components/parameters/PluginId'
+      requestBody:
+        description: Description of the Plugin
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PluginWithoutParents'
+      responses:
+        '200':
+          description: Successfully upserted Plugin
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plugin'
+      tags:
+        - Plugins
   /v2/control-planes/{controlPlaneId}/core-entities/hmac-auths:
     get:
       operationId: list-hmac-auth
@@ -1728,6 +2131,37 @@ paths:
           $ref: '#/components/responses/HTTP401Error'
       tags:
         - Keys
+  /v2/control-planes/{controlPlaneId}/core-entities/mtls-auths:
+    get:
+      operationId: list-mtls-auth
+      summary: List all MTLS-auth credentials
+      description: List all MTLS-auth credentials
+      parameters:
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationOffset'
+        - $ref: '#/components/parameters/PaginationTagsFilter'
+      responses:
+        '200':
+          description: A successful response listing MTLS-auth credentials
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MTLSAuth'
+                  next:
+                    $ref: '#/components/schemas/PaginationNextResponse'
+                  offset:
+                    $ref: '#/components/schemas/PaginationOffsetResponse'
+        '401':
+          $ref: '#/components/responses/HTTP401Error'
+      tags:
+        - MTLS-auth credentials
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
   /v2/control-planes/{controlPlaneId}/core-entities/plugin-schemas:
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
@@ -3022,7 +3456,7 @@ paths:
         same if they are in sync.
       responses:
         '200':
-          $ref: '#/components/responses/get-expected-config-hash'
+          $ref: '#/components/responses/GetExpectedConfigHashResponse'
       tags:
         - DP Nodes
     parameters:
@@ -3244,7 +3678,7 @@ paths:
       summary: Upsert Control Plane Group Members
       description: Adds one or more control planes as a member of a control plane group.
       requestBody:
-        $ref: '#/components/requestBodies/GroupMemebershipUpsert'
+        $ref: '#/components/requestBodies/GroupMembershipUpsert'
       responses:
         '204':
           description: No Content
@@ -3274,7 +3708,7 @@ paths:
       summary: Add Control Plane Group Members
       description: Adds one or more control planes as a member of a control plane group.
       requestBody:
-        $ref: '#/components/requestBodies/GroupMemebershipAdd'
+        $ref: '#/components/requestBodies/GroupMembershipAdd'
       responses:
         '204':
           description: No Content
@@ -4446,6 +4880,8 @@ paths:
           $ref: '#/components/responses/IdentityBadRequest'
         '404':
           $ref: '#/components/responses/IdentityNotFound'
+        '409':
+          $ref: '#/components/responses/IdentityConflict'
       servers:
         - url: https://global.api.konghq.com/
       tags:
@@ -4785,8 +5221,8 @@ components:
         type: string
       x-speakeasy-name-override: consumer_group_id
     ConsumerId:
-      description: ID of the Consumer to lookup
-      example: c1059869-6fa7-4329-a5f5-5946d14ca2c5
+      description: The UUID of the consumer.
+      example: 123e4567-e89b-12d3-a456-426614174000
       in: path
       name: ConsumerId
       required: true
@@ -4869,6 +5305,14 @@ components:
       example: 6cc34248-50b4-4a81-9201-3bdf7a83f712
       in: path
       name: KeySetId
+      required: true
+      schema:
+        type: string
+    MTLSAuthId:
+      description: ID of the MTLS-auth credential to lookup
+      example: ''
+      in: path
+      name: MTLSAuthId
       required: true
       schema:
         type: string
@@ -5033,9 +5477,13 @@ components:
           type: array
           items:
             type: object
+            required:
+              - id
             properties:
               id:
                 type: string
+      required:
+        - members
     CreateControlPlaneRequest:
       x-speakeasy-entity: GatewayControlPlane
       description: The request schema for the create control plane request.
@@ -5157,7 +5605,6 @@ components:
               example: CLUSTER_TYPE_CONTROL_PLANE
               enum:
                 - CLUSTER_TYPE_CONTROL_PLANE
-                - CLUSTER_TYPE_HYBRID
                 - CLUSTER_TYPE_K8S_INGRESS_CONTROLLER
                 - CLUSTER_TYPE_CONTROL_PLANE_GROUP
                 - CLUSTER_TYPE_SERVERLESS
@@ -5247,6 +5694,11 @@ components:
             - CONFLICT
             - UNKNOWN
           readOnly: true
+      required:
+        - id
+        - created_at
+        - updated_at
+        - state
       title: GroupStatus
     GroupConflict:
       description: >-
@@ -5269,6 +5721,10 @@ components:
           readOnly: true
         resource:
           $ref: '#/components/schemas/GroupConflictResource'
+      required:
+        - cluster_id
+        - description
+        - resource
       title: GroupConflict
     GroupConflictResource:
       description: A resource causing a conflict in a control plane group.
@@ -5528,7 +5984,6 @@ components:
       type: string
       enum:
         - required
-        - max_length
         - is_array
         - is_base64
         - is_boolean
@@ -5586,6 +6041,8 @@ components:
             - min_lowercase
             - min_uppercase
             - min_symbols
+            - min_items
+            - min
           nullable: false
           readOnly: true
         minimum:
@@ -5596,7 +6053,7 @@ components:
           example: body
         reason:
           type: string
-          example: is a required field
+          example: must have at least 8 characters
           readOnly: true
       additionalProperties: false
       required:
@@ -5604,6 +6061,38 @@ components:
         - reason
         - rule
         - minimum
+    InvalidParameterMaximumLength:
+      type: object
+      properties:
+        field:
+          type: string
+          example: name
+          readOnly: true
+        rule:
+          description: invalid parameters rules
+          type: string
+          enum:
+            - max_length
+            - max_items
+            - max
+          nullable: false
+          readOnly: true
+        maximum:
+          type: integer
+          example: 8
+        source:
+          type: string
+          example: body
+        reason:
+          type: string
+          example: must not have more than 8 characters
+          readOnly: true
+      additionalProperties: false
+      required:
+        - field
+        - reason
+        - rule
+        - maximum
     InvalidParameterChoiceItem:
       type: object
       properties:
@@ -5678,6 +6167,7 @@ components:
         oneOf:
           - $ref: '#/components/schemas/InvalidParameterStandard'
           - $ref: '#/components/schemas/InvalidParameterMinimumLength'
+          - $ref: '#/components/schemas/InvalidParameterMaximumLength'
           - $ref: '#/components/schemas/InvalidParameterChoiceItem'
           - $ref: '#/components/schemas/InvalidParameterDependentItem'
       minItems: 1
@@ -5808,10 +6298,6 @@ components:
           type: array
           items:
             type: string
-          default:
-            - email
-            - openid
-            - profile
         claim_mappings:
           type: object
           minProperties: 3
@@ -5819,15 +6305,12 @@ components:
             name:
               type: string
               example: name
-              default: name
             email:
               type: string
               example: email
-              default: email
             groups:
               type: string
               example: custom-groups-claim
-              default: groups
       title: IdP Configuration
     User:
       description: >-
@@ -5861,7 +6344,6 @@ components:
         active:
           description: Returns True if a user has verified their email address.
           type: boolean
-          default: true
           readOnly: true
         created_at:
           description: The time stamp for the date the account was registered.
@@ -5914,7 +6396,6 @@ components:
             teams that can manage Konnect objects, like "Organization Admin", or
             "Service"
           type: boolean
-          default: false
           readOnly: true
         labels:
           $ref: '#/components/schemas/Labels'
@@ -6159,13 +6640,14 @@ components:
             id:
               type: string
           x-foreign: true
+          x-speakeasy-terraform-plan-only: true
+          default: null
         created_at:
           description: Unix epoch when the resource was created.
           type: integer
           readOnly: true
         group:
           type: string
-          nullable: true
         id:
           type: string
           nullable: true
@@ -6173,13 +6655,14 @@ components:
           type: array
           items:
             type: string
-          nullable: true
       example:
         consumer:
           id: 84a73fb8-50fc-44a7-a4d5-aa17728ee83f
         group: foo
         id: b1f34145-0343-41a4-9602-4c69dec2f269
       additionalProperties: false
+      required:
+        - group
     ACLWithoutParents:
       type: object
       properties:
@@ -6189,7 +6672,6 @@ components:
           readOnly: true
         group:
           type: string
-          nullable: true
         id:
           type: string
           nullable: true
@@ -6197,11 +6679,12 @@ components:
           type: array
           items:
             type: string
-          nullable: true
       example:
         group: foo
         id: b1f34145-0343-41a4-9602-4c69dec2f269
       additionalProperties: false
+      required:
+        - group
     BasicAuth:
       type: object
       properties:
@@ -6213,6 +6696,8 @@ components:
             id:
               type: string
           x-foreign: true
+          x-speakeasy-terraform-plan-only: true
+          default: null
         created_at:
           description: Unix epoch when the resource was created.
           type: integer
@@ -6222,15 +6707,12 @@ components:
           nullable: true
         password:
           type: string
-          nullable: true
         tags:
           type: array
           items:
             type: string
-          nullable: true
         username:
           type: string
-          nullable: true
       example:
         consumer:
           id: 84a73fb8-50fc-44a7-a4d5-aa17728ee83f
@@ -6238,6 +6720,9 @@ components:
         password: hashedsoopersecretvalue
         username: darius
       additionalProperties: false
+      required:
+        - username
+        - password
     BasicAuthWithoutParents:
       type: object
       properties:
@@ -6250,20 +6735,20 @@ components:
           nullable: true
         password:
           type: string
-          nullable: true
         tags:
           type: array
           items:
             type: string
-          nullable: true
         username:
           type: string
-          nullable: true
       example:
         id: b2f34145-0343-41a4-9602-4c69dec2f269
         password: hashedsoopersecretvalue
         username: darius
       additionalProperties: false
+      required:
+        - username
+        - password
     CACertificate:
       description: >-
         A CA certificate object represents a trusted CA. These objects are used
@@ -6294,7 +6779,6 @@ components:
           type: array
           items:
             type: string
-          nullable: true
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -6369,6 +6853,11 @@ components:
             format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
           type: string
           nullable: true
+        snis:
+          type: array
+          items:
+            type: string
+          nullable: true
         tags:
           description: >-
             An optional set of strings associated with the Certificate for
@@ -6376,7 +6865,6 @@ components:
           type: array
           items:
             type: string
-          nullable: true
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -6424,7 +6912,6 @@ components:
           type: array
           items:
             type: string
-          nullable: true
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -6458,7 +6945,6 @@ components:
           type: array
           items:
             type: string
-          nullable: true
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -6492,6 +6978,8 @@ components:
             id:
               type: string
           x-foreign: true
+          x-speakeasy-terraform-plan-only: true
+          default: null
         created_at:
           description: Unix epoch when the resource was created.
           type: integer
@@ -6506,10 +6994,8 @@ components:
           type: array
           items:
             type: string
-          nullable: true
         username:
           type: string
-          nullable: true
       example:
         consumer:
           id: 84a73fb8-50fc-44a7-a4d5-aa17728ee83f
@@ -6517,6 +7003,8 @@ components:
         secret: wQazJ304DW5huJklHgUfjfiSyCyTAEDZ
         username: xerxes
       additionalProperties: false
+      required:
+        - username
     HMACAuthWithoutParents:
       type: object
       properties:
@@ -6534,21 +7022,20 @@ components:
           type: array
           items:
             type: string
-          nullable: true
         username:
           type: string
-          nullable: true
       example:
         id: 75695322-e8a0-4109-aed4-5416b0308d85
         secret: wQazJ304DW5huJklHgUfjfiSyCyTAEDZ
         username: xerxes
       additionalProperties: false
+      required:
+        - username
     JWT:
       type: object
       properties:
         algorithm:
           type: string
-          default: HS256
           enum:
             - HS256
             - HS384
@@ -6572,6 +7059,8 @@ components:
             id:
               type: string
           x-foreign: true
+          x-speakeasy-terraform-plan-only: true
+          default: null
         created_at:
           description: Unix epoch when the resource was created.
           type: integer
@@ -6592,7 +7081,6 @@ components:
           type: array
           items:
             type: string
-          nullable: true
       example:
         algorithm: HS256
         consumer:
@@ -6606,7 +7094,6 @@ components:
       properties:
         algorithm:
           type: string
-          default: HS256
           enum:
             - HS256
             - HS384
@@ -6642,7 +7129,6 @@ components:
           type: array
           items:
             type: string
-          nullable: true
       example:
         algorithm: HS256
         id: 75695322-e8a0-4109-aed4-5416b0308d85
@@ -6692,6 +7178,8 @@ components:
             id:
               type: string
           x-foreign: true
+          x-speakeasy-terraform-plan-only: true
+          default: null
         tags:
           description: >-
             An optional set of strings associated with the Key for grouping and
@@ -6699,7 +7187,6 @@ components:
           type: array
           items:
             type: string
-          nullable: true
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -6728,6 +7215,8 @@ components:
             id:
               type: string
           x-foreign: true
+          x-speakeasy-terraform-plan-only: true
+          default: null
         created_at:
           description: Unix epoch when the resource was created.
           type: integer
@@ -6737,18 +7226,18 @@ components:
           nullable: true
         key:
           type: string
-          nullable: true
         tags:
           type: array
           items:
             type: string
-          nullable: true
       example:
         consumer:
           id: 84a73fb8-50fc-44a7-a4d5-aa17728ee83f
         id: b2f34145-0343-41a4-9602-4c69dec2f269
         key: IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo
       additionalProperties: false
+      required:
+        - key
     KeyAuthWithoutParents:
       type: object
       properties:
@@ -6761,16 +7250,16 @@ components:
           nullable: true
         key:
           type: string
-          nullable: true
         tags:
           type: array
           items:
             type: string
-          nullable: true
       example:
         id: b2f34145-0343-41a4-9602-4c69dec2f269
         key: IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo
       additionalProperties: false
+      required:
+        - key
     KeySet:
       type: object
       properties:
@@ -6788,7 +7277,6 @@ components:
           type: array
           items:
             type: string
-          nullable: true
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -6842,6 +7330,8 @@ components:
             id:
               type: string
           x-foreign: true
+          x-speakeasy-terraform-plan-only: true
+          default: null
         tags:
           description: >-
             An optional set of strings associated with the Key for grouping and
@@ -6849,7 +7339,6 @@ components:
           type: array
           items:
             type: string
-          nullable: true
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -6867,6 +7356,86 @@ components:
       additionalProperties: false
       required:
         - kid
+    MTLSAuth:
+      type: object
+      properties:
+        ca_certificate:
+          type: object
+          additionalProperties: false
+          nullable: true
+          properties:
+            id:
+              type: string
+          x-foreign: true
+          x-speakeasy-terraform-plan-only: true
+          default: null
+        consumer:
+          type: object
+          additionalProperties: false
+          nullable: true
+          properties:
+            id:
+              type: string
+          x-foreign: true
+          x-speakeasy-terraform-plan-only: true
+          default: null
+        created_at:
+          description: Unix epoch when the resource was created.
+          type: integer
+          readOnly: true
+        id:
+          type: string
+          nullable: true
+        subject_name:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+      example:
+        ca_certificate:
+          id: b2f34145-0343-41a4-9602-4c69dec2f260
+        consumer:
+          id: 84a73fb8-50fc-44a7-a4d5-aa17728ee83f
+        id: b2f34145-0343-41a4-9602-4c69dec2f269
+        subject_name: CA_Subject_Name
+      additionalProperties: false
+      required:
+        - subject_name
+    MTLSAuthWithoutParents:
+      type: object
+      properties:
+        ca_certificate:
+          type: object
+          additionalProperties: false
+          nullable: true
+          properties:
+            id:
+              type: string
+          x-foreign: true
+          x-speakeasy-terraform-plan-only: true
+          default: null
+        created_at:
+          description: Unix epoch when the resource was created.
+          type: integer
+          readOnly: true
+        id:
+          type: string
+          nullable: true
+        subject_name:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+      example:
+        ca_certificate:
+          id: b2f34145-0343-41a4-9602-4c69dec2f260
+        id: b2f34145-0343-41a4-9602-4c69dec2f269
+        subject_name: CA_Subject_Name
+      additionalProperties: false
+      required:
+        - subject_name
     PaginationNextResponse:
       description: URI to the next page (may be null)
       type: string
@@ -6910,6 +7479,8 @@ components:
             id:
               type: string
           x-foreign: true
+          x-speakeasy-terraform-plan-only: true
+          default: null
         consumer_group:
           type: object
           additionalProperties: false
@@ -6918,6 +7489,8 @@ components:
             id:
               type: string
           x-foreign: true
+          x-speakeasy-terraform-plan-only: true
+          default: null
         created_at:
           description: Unix epoch when the resource was created.
           type: integer
@@ -6925,7 +7498,6 @@ components:
         enabled:
           description: Whether the plugin is applied.
           type: boolean
-          default: true
           nullable: true
         id:
           type: string
@@ -6976,11 +7548,6 @@ components:
               - ws
               - wss
             type: string
-          default:
-            - grpc
-            - grpcs
-            - http
-            - https
           nullable: true
         route:
           description: >-
@@ -6994,6 +7561,8 @@ components:
             id:
               type: string
           x-foreign: true
+          x-speakeasy-terraform-plan-only: true
+          default: null
         service:
           description: >-
             If set, the plugin will only activate when receiving requests via
@@ -7006,6 +7575,8 @@ components:
             id:
               type: string
           x-foreign: true
+          x-speakeasy-terraform-plan-only: true
+          default: null
         tags:
           description: >-
             An optional set of strings associated with the Plugin for grouping
@@ -7013,7 +7584,6 @@ components:
           type: array
           items:
             type: string
-          nullable: true
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -7069,7 +7639,6 @@ components:
         enabled:
           description: Whether the plugin is applied.
           type: boolean
-          default: true
           nullable: true
         id:
           type: string
@@ -7120,11 +7689,6 @@ components:
               - ws
               - wss
             type: string
-          default:
-            - grpc
-            - grpcs
-            - http
-            - https
           nullable: true
         tags:
           description: >-
@@ -7133,7 +7697,6 @@ components:
           type: array
           items:
             type: string
-          nullable: true
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -7219,7 +7782,6 @@ components:
             the field is set to 301, 302, 307 or 308. Note: This config applies
             only if the Route is configured to only accept the `https` protocol.
           type: integer
-          default: 426
           enum:
             - 426
             - 301
@@ -7249,7 +7811,6 @@ components:
             combined when sending a request to the upstream. See above for a
             detailed description of each behavior.
           type: string
-          default: v0
           enum:
             - v0
             - v1
@@ -7267,7 +7828,6 @@ components:
             `false`, the upstream `Host` header will be that of the Service's
             `host`.
           type: boolean
-          default: false
           nullable: true
         protocols:
           description: >-
@@ -7290,9 +7850,6 @@ components:
               - ws
               - wss
             type: string
-          default:
-            - http
-            - https
           nullable: true
         regex_priority:
           description: >-
@@ -7303,7 +7860,6 @@ components:
             non-regex routes is different (longer non-regex routes are matched
             before shorter ones).
           type: integer
-          default: 0
           nullable: true
         request_buffering:
           description: >-
@@ -7311,7 +7867,6 @@ components:
             may make sense to turn this off on services that receive data with
             chunked transfer encoding.
           type: boolean
-          default: true
           nullable: true
         response_buffering:
           description: >-
@@ -7319,7 +7874,6 @@ components:
             may make sense to turn this off on services that send data with
             chunked transfer encoding.
           type: boolean
-          default: true
           nullable: true
         service:
           description: >-
@@ -7332,6 +7886,8 @@ components:
             id:
               type: string
           x-foreign: true
+          x-speakeasy-terraform-plan-only: true
+          default: null
         snis:
           description: A list of SNIs that match this Route when using stream routing.
           type: array
@@ -7357,7 +7913,6 @@ components:
             When matching a Route via one of the `paths`, strip the matching
             prefix from the upstream request URL.
           type: boolean
-          default: true
           nullable: true
         tags:
           description: >-
@@ -7366,7 +7921,6 @@ components:
           type: array
           items:
             type: string
-          nullable: true
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -7442,7 +7996,6 @@ components:
             the field is set to 301, 302, 307 or 308. Note: This config applies
             only if the Route is configured to only accept the `https` protocol.
           type: integer
-          default: 426
           enum:
             - 426
             - 301
@@ -7472,7 +8025,6 @@ components:
             combined when sending a request to the upstream. See above for a
             detailed description of each behavior.
           type: string
-          default: v0
           enum:
             - v0
             - v1
@@ -7490,7 +8042,6 @@ components:
             `false`, the upstream `Host` header will be that of the Service's
             `host`.
           type: boolean
-          default: false
           nullable: true
         protocols:
           description: >-
@@ -7513,9 +8064,6 @@ components:
               - ws
               - wss
             type: string
-          default:
-            - http
-            - https
           nullable: true
         regex_priority:
           description: >-
@@ -7526,7 +8074,6 @@ components:
             non-regex routes is different (longer non-regex routes are matched
             before shorter ones).
           type: integer
-          default: 0
           nullable: true
         request_buffering:
           description: >-
@@ -7534,7 +8081,6 @@ components:
             may make sense to turn this off on services that receive data with
             chunked transfer encoding.
           type: boolean
-          default: true
           nullable: true
         response_buffering:
           description: >-
@@ -7542,7 +8088,6 @@ components:
             may make sense to turn this off on services that send data with
             chunked transfer encoding.
           type: boolean
-          default: true
           nullable: true
         snis:
           description: A list of SNIs that match this Route when using stream routing.
@@ -7569,7 +8114,6 @@ components:
             When matching a Route via one of the `paths`, strip the matching
             prefix from the upstream request URL.
           type: boolean
-          default: true
           nullable: true
         tags:
           description: >-
@@ -7578,7 +8122,6 @@ components:
           type: array
           items:
             type: string
-          nullable: true
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -7613,6 +8156,9 @@ components:
             id:
               type: string
           x-foreign: true
+          x-speakeasy-terraform-plan-only: true
+          nullable: true
+          default: null
         created_at:
           description: Unix epoch when the resource was created.
           type: integer
@@ -7630,7 +8176,6 @@ components:
           type: array
           items:
             type: string
-          nullable: true
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -7670,7 +8215,6 @@ components:
           type: array
           items:
             type: string
-          nullable: true
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -7719,12 +8263,13 @@ components:
             id:
               type: string
           x-foreign: true
+          x-speakeasy-terraform-plan-only: true
+          default: null
         connect_timeout:
           description: >-
             The timeout in milliseconds for establishing a connection to the
             upstream server.
           type: integer
-          default: 60000
           nullable: true
         created_at:
           description: Unix epoch when the resource was created.
@@ -7736,7 +8281,6 @@ components:
             will be as if any routes attached to it do not exist (404). Default:
             `true`.
           type: boolean
-          default: true
           nullable: true
         host:
           description: >-
@@ -7757,11 +8301,9 @@ components:
         port:
           description: The upstream server port.
           type: integer
-          default: 80
         protocol:
           description: The protocol used to communicate with the upstream.
           type: string
-          default: http
           enum:
             - grpc
             - grpcs
@@ -7778,12 +8320,10 @@ components:
             The timeout in milliseconds between two successive read operations
             for transmitting a request to the upstream server.
           type: integer
-          default: 60000
           nullable: true
         retries:
           description: The number of retries to execute upon failure to proxy.
           type: integer
-          default: 5
           nullable: true
         tags:
           description: >-
@@ -7792,7 +8332,6 @@ components:
           type: array
           items:
             type: string
-          nullable: true
         tls_verify:
           description: >-
             Whether to enable verification of upstream server TLS certificate.
@@ -7820,7 +8359,6 @@ components:
             The timeout in milliseconds between two successive write operations
             for transmitting a request to the upstream server.
           type: integer
-          default: 60000
           nullable: true
       example:
         host: example.internal
@@ -7859,7 +8397,6 @@ components:
           type: array
           items:
             type: string
-          nullable: true
         target:
           description: >-
             The target address (ip or hostname) and port. If the hostname
@@ -7879,13 +8416,14 @@ components:
             id:
               type: string
           x-foreign: true
+          x-speakeasy-terraform-plan-only: true
+          default: null
         weight:
           description: >-
             The weight this target gets within the upstream loadbalancer
             (`0`-`65535`). If the hostname resolves to an SRV record, the
             `weight` value will be overridden by the value from the DNS record.
           type: integer
-          default: 100
           nullable: true
       example:
         id: 089292a7-ba3d-4d88-acf0-97b4b2e2621a
@@ -7919,7 +8457,6 @@ components:
           type: array
           items:
             type: string
-          nullable: true
         target:
           description: >-
             The target address (ip or hostname) and port. If the hostname
@@ -7937,7 +8474,6 @@ components:
             (`0`-`65535`). If the hostname resolves to an SRV record, the
             `weight` value will be overridden by the value from the DNS record.
           type: integer
-          default: 100
           nullable: true
       example:
         id: 089292a7-ba3d-4d88-acf0-97b4b2e2621a
@@ -7960,7 +8496,6 @@ components:
         algorithm:
           description: Which load balancing algorithm to use.
           type: string
-          default: round-robin
           enum:
             - consistent-hashing
             - least-connections
@@ -7978,6 +8513,8 @@ components:
             id:
               type: string
           x-foreign: true
+          x-speakeasy-terraform-plan-only: true
+          default: null
         created_at:
           description: Unix epoch when the resource was created.
           type: integer
@@ -7988,7 +8525,6 @@ components:
             return a hash (eg. header is missing, or no Consumer identified).
             Not available if `hash_on` is set to `cookie`.
           type: string
-          default: none
           enum:
             - none
             - consumer
@@ -8022,7 +8558,6 @@ components:
             What to use as hashing input. Using `none` results in a
             weighted-round-robin scheme with no hashing.
           type: string
-          default: none
           enum:
             - none
             - consumer
@@ -8046,7 +8581,6 @@ components:
             The cookie path to set in the response headers. Only required when
             `hash_on` or `hash_fallback` is set to `cookie`.
           type: string
-          default: /
           nullable: true
         hash_on_header:
           description: >-
@@ -8075,7 +8609,6 @@ components:
               properties:
                 concurrency:
                   type: integer
-                  default: 10
                 headers:
                   type: object
                   additionalProperties:
@@ -8087,29 +8620,20 @@ components:
                       type: array
                       items:
                         type: integer
-                      default:
-                        - 200
-                        - 302
                     interval:
                       type: number
-                      default: 0
                     successes:
                       type: integer
-                      default: 0
                 http_path:
                   type: string
-                  default: /
                 https_sni:
                   type: string
                 https_verify_certificate:
                   type: boolean
-                  default: true
                 timeout:
                   type: number
-                  default: 1
                 type:
                   type: string
-                  default: http
                   enum:
                     - tcp
                     - http
@@ -8121,29 +8645,16 @@ components:
                   properties:
                     http_failures:
                       type: integer
-                      default: 0
                     http_statuses:
                       type: array
                       items:
                         type: integer
-                      default:
-                        - 429
-                        - 404
-                        - 500
-                        - 501
-                        - 502
-                        - 503
-                        - 504
-                        - 505
                     interval:
                       type: number
-                      default: 0
                     tcp_failures:
                       type: integer
-                      default: 0
                     timeouts:
                       type: integer
-                      default: 0
             passive:
               type: object
               properties:
@@ -8154,32 +8665,10 @@ components:
                       type: array
                       items:
                         type: integer
-                      default:
-                        - 200
-                        - 201
-                        - 202
-                        - 203
-                        - 204
-                        - 205
-                        - 206
-                        - 207
-                        - 208
-                        - 226
-                        - 300
-                        - 301
-                        - 302
-                        - 303
-                        - 304
-                        - 305
-                        - 306
-                        - 307
-                        - 308
                     successes:
                       type: integer
-                      default: 0
                 type:
                   type: string
-                  default: http
                   enum:
                     - tcp
                     - http
@@ -8191,24 +8680,16 @@ components:
                   properties:
                     http_failures:
                       type: integer
-                      default: 0
                     http_statuses:
                       type: array
                       items:
                         type: integer
-                      default:
-                        - 429
-                        - 500
-                        - 503
                     tcp_failures:
                       type: integer
-                      default: 0
                     timeouts:
                       type: integer
-                      default: 0
             threshold:
               type: number
-              default: 0
         host_header:
           description: >-
             The hostname to be used as `Host` header when proxying requests
@@ -8229,7 +8710,6 @@ components:
             setting determines the actual number of slots in the algorithm.
             Accepts an integer in the range `10`-`65536`.
           type: integer
-          default: 10000
           nullable: true
         tags:
           description: >-
@@ -8238,7 +8718,6 @@ components:
           type: array
           items:
             type: string
-          nullable: true
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -8248,7 +8727,6 @@ components:
             If set, the balancer will use SRV hostname(if DNS Answer has SRV
             record) as the proxy upstream `Host`.
           type: boolean
-          default: false
           nullable: true
       example:
         algorithm: round-robin
@@ -8368,7 +8846,6 @@ components:
           type: array
           items:
             type: string
-          nullable: true
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -8388,7 +8865,7 @@ components:
         - name
         - prefix
   requestBodies:
-    GroupMemebershipAdd:
+    GroupMembershipAdd:
       content:
         application/json:
           schema:
@@ -8404,7 +8881,7 @@ components:
       description: >-
         Request body for removing a list of child control planes from a control
         plane group membership.
-    GroupMemebershipUpsert:
+    GroupMembershipUpsert:
       content:
         application/json:
           schema:
@@ -8783,11 +9260,6 @@ components:
                 type: array
                 items:
                   type: string
-                  default: openid
-                default:
-                  - email
-                  - openid
-                  - profile
               claim_mappings:
                 type: object
                 minProperties: 3
@@ -8795,15 +9267,12 @@ components:
                   name:
                     type: string
                     example: name
-                    default: name
                   email:
                     type: string
                     example: email
-                    default: email
                   groups:
                     type: string
                     example: custom-group-claim
-                    default: groups
       description: The request schema for the update IdP configuration request.
     DataPlaneClientCertificateRequest:
       content:
@@ -8984,6 +9453,9 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/ControlPlane'
+            required:
+              - meta
+              - data
     GetGroupStatus:
       description: Status of a control plane group, including existing conflicts.
       content:
@@ -10002,6 +10474,8 @@ components:
                 enum:
                   - active
                   - inactive
+                  - deleting
+                  - deleted
               retention_period_days:
                 description: >-
                   The number of days an organization spends inactive before
@@ -10028,7 +10502,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/DataPlaneClientCertificate'
-    get-expected-config-hash:
+    GetExpectedConfigHashResponse:
       description: >-
         Response body for retrieving the expected config hash of the control
         plane.
@@ -10046,6 +10520,10 @@ components:
               updated_at:
                 description: Date the control plane configuration was last updated.
                 type: integer
+            required:
+              - expected_hash
+              - created_at
+              - updated_at
     ListDataPlaneCertificatesResponse:
       description: Example response
       content:
@@ -10493,6 +10971,7 @@ tags:
   - name: Basic-auth credentials
   - name: JWTs
   - name: HMAC-auth credentials
+  - name: MTLS-auth credentials
   - name: ACLs
 externalDocs:
   description: Documentation for Kong Gateway and its APIs

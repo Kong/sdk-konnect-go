@@ -15,6 +15,8 @@ type MeOrganizationState string
 const (
 	MeOrganizationStateActive   MeOrganizationState = "active"
 	MeOrganizationStateInactive MeOrganizationState = "inactive"
+	MeOrganizationStateDeleting MeOrganizationState = "deleting"
+	MeOrganizationStateDeleted  MeOrganizationState = "deleted"
 )
 
 func (e MeOrganizationState) ToPointer() *MeOrganizationState {
@@ -29,6 +31,10 @@ func (e *MeOrganizationState) UnmarshalJSON(data []byte) error {
 	case "active":
 		fallthrough
 	case "inactive":
+		fallthrough
+	case "deleting":
+		fallthrough
+	case "deleted":
 		*e = MeOrganizationState(v)
 		return nil
 	default:

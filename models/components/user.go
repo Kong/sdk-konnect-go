@@ -18,7 +18,7 @@ type User struct {
 	// The User's preferred name.
 	PreferredName *string `json:"preferred_name,omitempty"`
 	// Returns True if a user has verified their email address.
-	Active *bool `default:"true" json:"active"`
+	Active *bool `json:"active,omitempty"`
 	// The time stamp for the date the account was registered.
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	// A Unix timestamp representation of the most recent change to the User account.

@@ -180,12 +180,12 @@ func (s *DPNodes) GetExpectedConfigHash(ctx context.Context, controlPlaneID stri
 				return nil, err
 			}
 
-			var out components.GetExpectedConfigHash
+			var out components.GetExpectedConfigHashResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.GetExpectedConfigHash = &out
+			res.GetExpectedConfigHashResponse = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {

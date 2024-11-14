@@ -5,7 +5,6 @@ package components
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type JWTWithoutParentsAlgorithm string
@@ -68,23 +67,12 @@ func (e *JWTWithoutParentsAlgorithm) UnmarshalJSON(data []byte) error {
 }
 
 type JWTWithoutParents struct {
-	Algorithm    *JWTWithoutParentsAlgorithm `default:"HS256" json:"algorithm"`
+	Algorithm    *JWTWithoutParentsAlgorithm `json:"algorithm,omitempty"`
 	ID           *string                     `json:"id,omitempty"`
 	Key          *string                     `json:"key,omitempty"`
 	RsaPublicKey *string                     `json:"rsa_public_key,omitempty"`
 	Secret       *string                     `json:"secret,omitempty"`
 	Tags         []string                    `json:"tags,omitempty"`
-}
-
-func (j JWTWithoutParents) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(j, "", false)
-}
-
-func (j *JWTWithoutParents) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &j, "", false, false); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (o *JWTWithoutParents) GetAlgorithm() *JWTWithoutParentsAlgorithm {

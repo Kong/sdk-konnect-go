@@ -42,14 +42,14 @@ func (e *State) UnmarshalJSON(data []byte) error {
 // GroupStatus - The Group Status object contains information about the status of a control plane group.
 type GroupStatus struct {
 	// The control plane group ID.
-	ID *string `json:"id,omitempty"`
+	ID string `json:"id"`
 	// An ISO-8604 timestamp representation of control plane group status creation date.
-	CreatedAt *time.Time `json:"created_at,omitempty"`
+	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8604 timestamp representation of control plane group status update date.
-	UpdatedAt *time.Time      `json:"updated_at,omitempty"`
+	UpdatedAt time.Time       `json:"updated_at"`
 	Conflicts []GroupConflict `json:"conflicts,omitempty"`
 	// The state of the control plane group.
-	State *State `json:"state,omitempty"`
+	State State `json:"state"`
 }
 
 func (g GroupStatus) MarshalJSON() ([]byte, error) {
@@ -63,23 +63,23 @@ func (g *GroupStatus) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GroupStatus) GetID() *string {
+func (o *GroupStatus) GetID() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.ID
 }
 
-func (o *GroupStatus) GetCreatedAt() *time.Time {
+func (o *GroupStatus) GetCreatedAt() time.Time {
 	if o == nil {
-		return nil
+		return time.Time{}
 	}
 	return o.CreatedAt
 }
 
-func (o *GroupStatus) GetUpdatedAt() *time.Time {
+func (o *GroupStatus) GetUpdatedAt() time.Time {
 	if o == nil {
-		return nil
+		return time.Time{}
 	}
 	return o.UpdatedAt
 }
@@ -91,9 +91,9 @@ func (o *GroupStatus) GetConflicts() []GroupConflict {
 	return o.Conflicts
 }
 
-func (o *GroupStatus) GetState() *State {
+func (o *GroupStatus) GetState() State {
 	if o == nil {
-		return nil
+		return State("")
 	}
 	return o.State
 }

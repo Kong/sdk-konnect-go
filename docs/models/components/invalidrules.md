@@ -8,7 +8,6 @@ invalid parameters rules
 | Name                                                 | Value                                                |
 | ---------------------------------------------------- | ---------------------------------------------------- |
 | `InvalidRulesRequired`                               | required                                             |
-| `InvalidRulesMaxLength`                              | max_length                                           |
 | `InvalidRulesIsArray`                                | is_array                                             |
 | `InvalidRulesIsBase64`                               | is_base64                                            |
 | `InvalidRulesIsBoolean`                              | is_boolean                                           |

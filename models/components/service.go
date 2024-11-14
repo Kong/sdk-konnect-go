@@ -5,7 +5,6 @@ package components
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 // ClientCertificate - Certificate to be used as client certificate while TLS handshaking to the upstream server.
@@ -78,11 +77,11 @@ type Service struct {
 	// Certificate to be used as client certificate while TLS handshaking to the upstream server.
 	ClientCertificate *ClientCertificate `json:"client_certificate,omitempty"`
 	// The timeout in milliseconds for establishing a connection to the upstream server.
-	ConnectTimeout *int64 `default:"60000" json:"connect_timeout"`
+	ConnectTimeout *int64 `json:"connect_timeout,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
 	// Whether the Service is active. If set to `false`, the proxy behavior will be as if any routes attached to it do not exist (404). Default: `true`.
-	Enabled *bool `default:"true" json:"enabled"`
+	Enabled *bool `json:"enabled,omitempty"`
 	// The host of the upstream server. Note that the host value is case sensitive.
 	Host string  `json:"host"`
 	ID   *string `json:"id,omitempty"`
@@ -91,13 +90,13 @@ type Service struct {
 	// The path to be used in requests to the upstream server.
 	Path *string `json:"path,omitempty"`
 	// The upstream server port.
-	Port *int64 `default:"80" json:"port"`
+	Port int64 `json:"port"`
 	// The protocol used to communicate with the upstream.
-	Protocol *Protocol `default:"http" json:"protocol"`
+	Protocol Protocol `json:"protocol"`
 	// The timeout in milliseconds between two successive read operations for transmitting a request to the upstream server.
-	ReadTimeout *int64 `default:"60000" json:"read_timeout"`
+	ReadTimeout *int64 `json:"read_timeout,omitempty"`
 	// The number of retries to execute upon failure to proxy.
-	Retries *int64 `default:"5" json:"retries"`
+	Retries *int64 `json:"retries,omitempty"`
 	// An optional set of strings associated with the Service for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
 	// Whether to enable verification of upstream server TLS certificate. If set to `null`, then the Nginx default is respected.
@@ -107,18 +106,7 @@ type Service struct {
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 	// The timeout in milliseconds between two successive write operations for transmitting a request to the upstream server.
-	WriteTimeout *int64 `default:"60000" json:"write_timeout"`
-}
-
-func (s Service) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(s, "", false)
-}
-
-func (s *Service) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
-		return err
-	}
-	return nil
+	WriteTimeout *int64 `json:"write_timeout,omitempty"`
 }
 
 func (o *Service) GetCaCertificates() []string {
@@ -184,16 +172,16 @@ func (o *Service) GetPath() *string {
 	return o.Path
 }
 
-func (o *Service) GetPort() *int64 {
+func (o *Service) GetPort() int64 {
 	if o == nil {
-		return nil
+		return 0
 	}
 	return o.Port
 }
 
-func (o *Service) GetProtocol() *Protocol {
+func (o *Service) GetProtocol() Protocol {
 	if o == nil {
-		return nil
+		return Protocol("")
 	}
 	return o.Protocol
 }
@@ -254,9 +242,9 @@ type ServiceInput struct {
 	// Certificate to be used as client certificate while TLS handshaking to the upstream server.
 	ClientCertificate *ClientCertificate `json:"client_certificate,omitempty"`
 	// The timeout in milliseconds for establishing a connection to the upstream server.
-	ConnectTimeout *int64 `default:"60000" json:"connect_timeout"`
+	ConnectTimeout *int64 `json:"connect_timeout,omitempty"`
 	// Whether the Service is active. If set to `false`, the proxy behavior will be as if any routes attached to it do not exist (404). Default: `true`.
-	Enabled *bool `default:"true" json:"enabled"`
+	Enabled *bool `json:"enabled,omitempty"`
 	// The host of the upstream server. Note that the host value is case sensitive.
 	Host string  `json:"host"`
 	ID   *string `json:"id,omitempty"`
@@ -265,13 +253,13 @@ type ServiceInput struct {
 	// The path to be used in requests to the upstream server.
 	Path *string `json:"path,omitempty"`
 	// The upstream server port.
-	Port *int64 `default:"80" json:"port"`
+	Port int64 `json:"port"`
 	// The protocol used to communicate with the upstream.
-	Protocol *Protocol `default:"http" json:"protocol"`
+	Protocol Protocol `json:"protocol"`
 	// The timeout in milliseconds between two successive read operations for transmitting a request to the upstream server.
-	ReadTimeout *int64 `default:"60000" json:"read_timeout"`
+	ReadTimeout *int64 `json:"read_timeout,omitempty"`
 	// The number of retries to execute upon failure to proxy.
-	Retries *int64 `default:"5" json:"retries"`
+	Retries *int64 `json:"retries,omitempty"`
 	// An optional set of strings associated with the Service for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
 	// Whether to enable verification of upstream server TLS certificate. If set to `null`, then the Nginx default is respected.
@@ -281,18 +269,7 @@ type ServiceInput struct {
 	// Helper field to set `protocol`, `host`, `port` and `path` using a URL. This field is write-only and is not returned in responses.
 	URL *string `json:"url,omitempty"`
 	// The timeout in milliseconds between two successive write operations for transmitting a request to the upstream server.
-	WriteTimeout *int64 `default:"60000" json:"write_timeout"`
-}
-
-func (s ServiceInput) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(s, "", false)
-}
-
-func (s *ServiceInput) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
-		return err
-	}
-	return nil
+	WriteTimeout *int64 `json:"write_timeout,omitempty"`
 }
 
 func (o *ServiceInput) GetCaCertificates() []string {
@@ -351,16 +328,16 @@ func (o *ServiceInput) GetPath() *string {
 	return o.Path
 }
 
-func (o *ServiceInput) GetPort() *int64 {
+func (o *ServiceInput) GetPort() int64 {
 	if o == nil {
-		return nil
+		return 0
 	}
 	return o.Port
 }
 
-func (o *ServiceInput) GetProtocol() *Protocol {
+func (o *ServiceInput) GetProtocol() Protocol {
 	if o == nil {
-		return nil
+		return Protocol("")
 	}
 	return o.Protocol
 }

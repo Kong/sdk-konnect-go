@@ -14,7 +14,6 @@ type ControlPlaneClusterType string
 
 const (
 	ControlPlaneClusterTypeClusterTypeControlPlane         ControlPlaneClusterType = "CLUSTER_TYPE_CONTROL_PLANE"
-	ControlPlaneClusterTypeClusterTypeHybrid               ControlPlaneClusterType = "CLUSTER_TYPE_HYBRID"
 	ControlPlaneClusterTypeClusterTypeK8SIngressController ControlPlaneClusterType = "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER"
 	ControlPlaneClusterTypeClusterTypeControlPlaneGroup    ControlPlaneClusterType = "CLUSTER_TYPE_CONTROL_PLANE_GROUP"
 	ControlPlaneClusterTypeClusterTypeServerless           ControlPlaneClusterType = "CLUSTER_TYPE_SERVERLESS"
@@ -30,8 +29,6 @@ func (e *ControlPlaneClusterType) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "CLUSTER_TYPE_CONTROL_PLANE":
-		fallthrough
-	case "CLUSTER_TYPE_HYBRID":
 		fallthrough
 	case "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER":
 		fallthrough

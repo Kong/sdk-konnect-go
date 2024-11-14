@@ -27,7 +27,7 @@ type GetExpectedConfigHashResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Response body for retrieving the expected config hash of the control plane.
-	GetExpectedConfigHash *components.GetExpectedConfigHash
+	GetExpectedConfigHashResponse *components.GetExpectedConfigHashResponse
 }
 
 func (o *GetExpectedConfigHashResponse) GetContentType() string {
@@ -51,9 +51,9 @@ func (o *GetExpectedConfigHashResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *GetExpectedConfigHashResponse) GetGetExpectedConfigHash() *components.GetExpectedConfigHash {
+func (o *GetExpectedConfigHashResponse) GetGetExpectedConfigHashResponse() *components.GetExpectedConfigHashResponse {
 	if o == nil {
 		return nil
 	}
-	return o.GetExpectedConfigHash
+	return o.GetExpectedConfigHashResponse
 }

@@ -5,7 +5,6 @@ package components
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type Algorithm string
@@ -79,7 +78,7 @@ func (o *JWTConsumer) GetID() *string {
 }
 
 type Jwt struct {
-	Algorithm *Algorithm   `default:"HS256" json:"algorithm"`
+	Algorithm *Algorithm   `json:"algorithm,omitempty"`
 	Consumer  *JWTConsumer `json:"consumer,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt    *int64   `json:"created_at,omitempty"`
@@ -88,17 +87,6 @@ type Jwt struct {
 	RsaPublicKey *string  `json:"rsa_public_key,omitempty"`
 	Secret       *string  `json:"secret,omitempty"`
 	Tags         []string `json:"tags,omitempty"`
-}
-
-func (j Jwt) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(j, "", false)
-}
-
-func (j *Jwt) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &j, "", false, false); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (o *Jwt) GetAlgorithm() *Algorithm {

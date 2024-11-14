@@ -94,21 +94,6 @@ type SDK struct {
 	// Consumer groups enable the organization and categorization of consumers (users or applications) within an API ecosystem.
 	// By grouping consumers together, you eliminate the need to manage them individually, providing a scalable, efficient approach to managing configurations.
 	ConsumerGroups *ConsumerGroups
-	// The consumer object represents a consumer - or a user - of a service.
-	// You can either rely on Kong Gateway as the primary datastore, or you can map the consumer list with your database to keep consistency between Kong Gateway and your existing primary datastore.
-	//
-	Consumers           *Consumers
-	HMACAuthCredentials *HMACAuthCredentials
-	JWTs                *JWTs
-	APIKeys             *APIKeys
-	// A JSON Web key set. Key sets are the preferred way to expose keys to plugins because they tell the plugin where to look for keys or have a scoping mechanism to restrict plugins to specific keys.
-	//
-	KeySets *KeySets
-	// A key object holds a representation of asymmetric keys in various formats. When Kong Gateway or a Kong plugin requires a specific public or private key to perform certain operations, it can use this entity.
-	//
-	Keys *Keys
-	// Custom Plugin Schemas
-	CustomPluginSchemas *CustomPluginSchemas
 	// A plugin entity represents a plugin configuration that will be executed during the HTTP request/response lifecycle. Plugins let you add functionality to services that run behind a Kong Gateway instance, like authentication or rate limiting.
 	// You can find more information about available plugins and which values each plugin accepts at the [Plugin Hub](https://docs.konghq.com/hub/).
 	// <br><br>
@@ -117,6 +102,22 @@ type SDK struct {
 	// Plugins can be both [tagged and filtered by tags](https://docs.konghq.com/gateway/latest/admin-api/#tags).
 	//
 	Plugins *Plugins
+	// The consumer object represents a consumer - or a user - of a service.
+	// You can either rely on Kong Gateway as the primary datastore, or you can map the consumer list with your database to keep consistency between Kong Gateway and your existing primary datastore.
+	//
+	Consumers           *Consumers
+	HMACAuthCredentials *HMACAuthCredentials
+	JWTs                *JWTs
+	APIKeys             *APIKeys
+	MTLSAuthCredentials *MTLSAuthCredentials
+	// A JSON Web key set. Key sets are the preferred way to expose keys to plugins because they tell the plugin where to look for keys or have a scoping mechanism to restrict plugins to specific keys.
+	//
+	KeySets *KeySets
+	// A key object holds a representation of asymmetric keys in various formats. When Kong Gateway or a Kong plugin requires a specific public or private key to perform certain operations, it can use this entity.
+	//
+	Keys *Keys
+	// Custom Plugin Schemas
+	CustomPluginSchemas *CustomPluginSchemas
 	// Route entities define rules to match client requests. Each route is associated with a service, and a service may have multiple routes associated to it. Every request matching a given route will be proxied to the associated service. You need at least one matching rule that applies to the protocol being matched by the route.
 	// <br><br>
 	// The combination of routes and services, and the separation of concerns between them, offers a powerful routing mechanism with which it is possible to define fine-grained entrypoints in Kong Gateway leading to different upstream services of your infrastructure.
@@ -260,9 +261,9 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "0.1.5",
-			GenVersion:        "2.447.4",
-			UserAgent:         "speakeasy-sdk/go 0.1.5 2.447.4 0.0.1 github.com/Kong/sdk-konnect-go",
+			SDKVersion:        "0.1.6",
+			GenVersion:        "2.457.9",
+			UserAgent:         "speakeasy-sdk/go 0.1.6 2.457.9 0.0.1 github.com/Kong/sdk-konnect-go",
 			Hooks:             hooks.New(),
 		},
 	}
@@ -296,6 +297,8 @@ func New(opts ...SDKOption) *SDK {
 
 	sdk.ConsumerGroups = newConsumerGroups(sdk.sdkConfiguration)
 
+	sdk.Plugins = newPlugins(sdk.sdkConfiguration)
+
 	sdk.Consumers = newConsumers(sdk.sdkConfiguration)
 
 	sdk.HMACAuthCredentials = newHMACAuthCredentials(sdk.sdkConfiguration)
@@ -304,13 +307,13 @@ func New(opts ...SDKOption) *SDK {
 
 	sdk.APIKeys = newAPIKeys(sdk.sdkConfiguration)
 
+	sdk.MTLSAuthCredentials = newMTLSAuthCredentials(sdk.sdkConfiguration)
+
 	sdk.KeySets = newKeySets(sdk.sdkConfiguration)
 
 	sdk.Keys = newKeys(sdk.sdkConfiguration)
 
 	sdk.CustomPluginSchemas = newCustomPluginSchemas(sdk.sdkConfiguration)
-
-	sdk.Plugins = newPlugins(sdk.sdkConfiguration)
 
 	sdk.Routes = newRoutes(sdk.sdkConfiguration)
 

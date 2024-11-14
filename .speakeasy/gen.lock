@@ -1,17 +1,17 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: e9093ae35a5e8939c715167d4836f51a
+  docChecksum: 621f79fe092199d80a95ca5aa0238ebc
   docVersion: 0.0.1
-  speakeasyVersion: 1.428.0
-  generationVersion: 2.447.4
-  releaseVersion: 0.1.5
-  configChecksum: 842844ce7940b9fa7ce8ff52e625d2fe
+  speakeasyVersion: 1.439.0
+  generationVersion: 2.457.9
+  releaseVersion: 0.1.6
+  configChecksum: 5464a3ce17d764c785662a6628d0b0ec
 features:
   go:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.6
-    core: 3.5.15
+    core: 3.5.16
     deepObjectParams: 0.1.0
     defaultEnabledRetries: 0.2.0
     envVarSecurityUsage: 0.3.2
@@ -61,7 +61,7 @@ generatedFiles:
   - /models/components/cursorpaginatedmetawithsizeandtotal.go
   - /models/components/dataplaneclientcertificate.go
   - /models/components/dataplaneclientcertificaterequest.go
-  - /models/components/getexpectedconfighash.go
+  - /models/components/getexpectedconfighashresponse.go
   - /models/components/getimpersonationsettingsresponse.go
   - /models/components/getnode.go
   - /models/components/groupconflict.go
@@ -74,6 +74,7 @@ generatedFiles:
   - /models/components/idp.go
   - /models/components/invalidparameterchoiceitem.go
   - /models/components/invalidparameterdependentitem.go
+  - /models/components/invalidparametermaximumlength.go
   - /models/components/invalidparameterminimumlength.go
   - /models/components/invalidparameters.go
   - /models/components/invalidparameterstandard.go
@@ -94,6 +95,8 @@ generatedFiles:
   - /models/components/listnodeseol.go
   - /models/components/listpluginschemas.go
   - /models/components/meorganization.go
+  - /models/components/mtlsauth.go
+  - /models/components/mtlsauthwithoutparents.go
   - /models/components/pagemeta.go
   - /models/components/paginatedmeta.go
   - /models/components/patchteamgroupmappings.go
@@ -143,6 +146,7 @@ generatedFiles:
   - /models/components/vault.go
   - /models/components/vaultinput.go
   - /models/operations/addconsumertogroup.go
+  - /models/operations/addconsumertospecificconsumergroup.go
   - /models/operations/addusertoteam.go
   - /models/operations/authenticatesso.go
   - /models/operations/createaclwithconsumer.go
@@ -159,8 +163,11 @@ generatedFiles:
   - /models/operations/createkeyauthwithconsumer.go
   - /models/operations/createkeyset.go
   - /models/operations/createkeywithkeyset.go
+  - /models/operations/createmtlsauthwithconsumer.go
   - /models/operations/createplugin.go
   - /models/operations/createpluginschemas.go
+  - /models/operations/createpluginwithconsumer.go
+  - /models/operations/createpluginwithconsumergroup.go
   - /models/operations/createpluginwithroute.go
   - /models/operations/createpluginwithservice.go
   - /models/operations/createroute.go
@@ -186,9 +193,12 @@ generatedFiles:
   - /models/operations/deletekeyauthwithconsumer.go
   - /models/operations/deletekeyset.go
   - /models/operations/deletekeywithkeyset.go
+  - /models/operations/deletemtlsauthwithconsumer.go
   - /models/operations/deletenodesnodeid.go
   - /models/operations/deleteplugin.go
   - /models/operations/deletepluginschemas.go
+  - /models/operations/deletepluginwithconsumer.go
+  - /models/operations/deletepluginwithconsumergroup.go
   - /models/operations/deletepluginwithroute.go
   - /models/operations/deletepluginwithservice.go
   - /models/operations/deleteroute.go
@@ -228,11 +238,14 @@ generatedFiles:
   - /models/operations/getkeyauthwithconsumer.go
   - /models/operations/getkeyset.go
   - /models/operations/getkeywithkeyset.go
+  - /models/operations/getmtlsauthwithconsumer.go
   - /models/operations/getnodeseol.go
   - /models/operations/getnodesnodeid.go
   - /models/operations/getorganizationsme.go
   - /models/operations/getplugin.go
   - /models/operations/getpluginschema.go
+  - /models/operations/getpluginwithconsumer.go
+  - /models/operations/getpluginwithconsumergroup.go
   - /models/operations/getpluginwithroute.go
   - /models/operations/getpluginwithservice.go
   - /models/operations/getpredefinedroles.go
@@ -265,6 +278,7 @@ generatedFiles:
   - /models/operations/listconsumer.go
   - /models/operations/listconsumergroup.go
   - /models/operations/listconsumergroupsforconsumer.go
+  - /models/operations/listconsumersforconsumergroup.go
   - /models/operations/listcontrolplanes.go
   - /models/operations/listdataplanenodes.go
   - /models/operations/listdpclientcertificates.go
@@ -277,8 +291,12 @@ generatedFiles:
   - /models/operations/listkeyauthwithconsumer.go
   - /models/operations/listkeyset.go
   - /models/operations/listkeywithkeyset.go
+  - /models/operations/listmtlsauth.go
+  - /models/operations/listmtlsauthwithconsumer.go
   - /models/operations/listplugin.go
   - /models/operations/listpluginschemas.go
+  - /models/operations/listpluginwithconsumer.go
+  - /models/operations/listpluginwithconsumergroup.go
   - /models/operations/listpluginwithroute.go
   - /models/operations/listpluginwithservice.go
   - /models/operations/listroute.go
@@ -305,6 +323,7 @@ generatedFiles:
   - /models/operations/postsystemaccountsidaccesstokens.go
   - /models/operations/postteamsteamidsystemaccounts.go
   - /models/operations/putcontrolplanesidgroupmemberships.go
+  - /models/operations/removeconsumerfromconsumergroup.go
   - /models/operations/removeconsumerfromgroup.go
   - /models/operations/removeuserfromteam.go
   - /models/operations/teamsassignrole.go
@@ -329,7 +348,10 @@ generatedFiles:
   - /models/operations/upsertkeyauthwithconsumer.go
   - /models/operations/upsertkeyset.go
   - /models/operations/upsertkeywithkeyset.go
+  - /models/operations/upsertmtlsauthwithconsumer.go
   - /models/operations/upsertplugin.go
+  - /models/operations/upsertpluginwithconsumer.go
+  - /models/operations/upsertpluginwithconsumergroup.go
   - /models/operations/upsertpluginwithroute.go
   - /models/operations/upsertpluginwithservice.go
   - /models/operations/upsertroute.go
@@ -427,7 +449,7 @@ generatedFiles:
   - docs/models/components/entityregion.md
   - docs/models/components/entitytypename.md
   - docs/models/components/gatewayserviceadmin.md
-  - docs/models/components/getexpectedconfighash.md
+  - docs/models/components/getexpectedconfighashresponse.md
   - docs/models/components/getimpersonationsettingsresponse.md
   - docs/models/components/getnode.md
   - docs/models/components/getnodecompatibilitystatus.md
@@ -452,6 +474,8 @@ generatedFiles:
   - docs/models/components/invalidparameterchoiceitemrule.md
   - docs/models/components/invalidparameterdependentitem.md
   - docs/models/components/invalidparameterdependentitemrule.md
+  - docs/models/components/invalidparametermaximumlength.md
+  - docs/models/components/invalidparametermaximumlengthrule.md
   - docs/models/components/invalidparameterminimumlength.md
   - docs/models/components/invalidparameters.md
   - docs/models/components/invalidparameterstandard.md
@@ -491,6 +515,11 @@ generatedFiles:
   - docs/models/components/meorganizationstate.md
   - docs/models/components/meshcontrolplanes.md
   - docs/models/components/meta.md
+  - docs/models/components/mtlsauth.md
+  - docs/models/components/mtlsauthcacertificate.md
+  - docs/models/components/mtlsauthconsumer.md
+  - docs/models/components/mtlsauthwithoutparents.md
+  - docs/models/components/mtlsauthwithoutparentscacertificate.md
   - docs/models/components/name.md
   - docs/models/components/one.md
   - docs/models/components/ordering.md
@@ -664,6 +693,10 @@ generatedFiles:
   - docs/models/operations/addconsumertogrouprequestbody.md
   - docs/models/operations/addconsumertogroupresponse.md
   - docs/models/operations/addconsumertogroupresponsebody.md
+  - docs/models/operations/addconsumertospecificconsumergrouprequest.md
+  - docs/models/operations/addconsumertospecificconsumergrouprequestbody.md
+  - docs/models/operations/addconsumertospecificconsumergroupresponse.md
+  - docs/models/operations/addconsumertospecificconsumergroupresponsebody.md
   - docs/models/operations/addusertoteamrequest.md
   - docs/models/operations/addusertoteamresponse.md
   - docs/models/operations/authenticatessorequest.md
@@ -695,10 +728,16 @@ generatedFiles:
   - docs/models/operations/createkeysetresponse.md
   - docs/models/operations/createkeywithkeysetrequest.md
   - docs/models/operations/createkeywithkeysetresponse.md
+  - docs/models/operations/createmtlsauthwithconsumerrequest.md
+  - docs/models/operations/createmtlsauthwithconsumerresponse.md
   - docs/models/operations/createpluginrequest.md
   - docs/models/operations/createpluginresponse.md
   - docs/models/operations/createpluginschemasrequest.md
   - docs/models/operations/createpluginschemasresponse.md
+  - docs/models/operations/createpluginwithconsumergrouprequest.md
+  - docs/models/operations/createpluginwithconsumergroupresponse.md
+  - docs/models/operations/createpluginwithconsumerrequest.md
+  - docs/models/operations/createpluginwithconsumerresponse.md
   - docs/models/operations/createpluginwithrouterequest.md
   - docs/models/operations/createpluginwithrouteresponse.md
   - docs/models/operations/createpluginwithservicerequest.md
@@ -748,12 +787,18 @@ generatedFiles:
   - docs/models/operations/deletekeysetresponse.md
   - docs/models/operations/deletekeywithkeysetrequest.md
   - docs/models/operations/deletekeywithkeysetresponse.md
+  - docs/models/operations/deletemtlsauthwithconsumerrequest.md
+  - docs/models/operations/deletemtlsauthwithconsumerresponse.md
   - docs/models/operations/deletenodesnodeidrequest.md
   - docs/models/operations/deletenodesnodeidresponse.md
   - docs/models/operations/deletepluginrequest.md
   - docs/models/operations/deletepluginresponse.md
   - docs/models/operations/deletepluginschemasrequest.md
   - docs/models/operations/deletepluginschemasresponse.md
+  - docs/models/operations/deletepluginwithconsumergrouprequest.md
+  - docs/models/operations/deletepluginwithconsumergroupresponse.md
+  - docs/models/operations/deletepluginwithconsumerrequest.md
+  - docs/models/operations/deletepluginwithconsumerresponse.md
   - docs/models/operations/deletepluginwithrouterequest.md
   - docs/models/operations/deletepluginwithrouteresponse.md
   - docs/models/operations/deletepluginwithservicerequest.md
@@ -831,6 +876,8 @@ generatedFiles:
   - docs/models/operations/getkeysetresponse.md
   - docs/models/operations/getkeywithkeysetrequest.md
   - docs/models/operations/getkeywithkeysetresponse.md
+  - docs/models/operations/getmtlsauthwithconsumerrequest.md
+  - docs/models/operations/getmtlsauthwithconsumerresponse.md
   - docs/models/operations/getnodeseolrequest.md
   - docs/models/operations/getnodeseolresponse.md
   - docs/models/operations/getnodesnodeidrequest.md
@@ -840,6 +887,10 @@ generatedFiles:
   - docs/models/operations/getpluginresponse.md
   - docs/models/operations/getpluginschemarequest.md
   - docs/models/operations/getpluginschemaresponse.md
+  - docs/models/operations/getpluginwithconsumergrouprequest.md
+  - docs/models/operations/getpluginwithconsumergroupresponse.md
+  - docs/models/operations/getpluginwithconsumerrequest.md
+  - docs/models/operations/getpluginwithconsumerresponse.md
   - docs/models/operations/getpluginwithrouterequest.md
   - docs/models/operations/getpluginwithrouteresponse.md
   - docs/models/operations/getpluginwithservicerequest.md
@@ -913,6 +964,9 @@ generatedFiles:
   - docs/models/operations/listconsumerrequest.md
   - docs/models/operations/listconsumerresponse.md
   - docs/models/operations/listconsumerresponsebody.md
+  - docs/models/operations/listconsumersforconsumergrouprequest.md
+  - docs/models/operations/listconsumersforconsumergroupresponse.md
+  - docs/models/operations/listconsumersforconsumergroupresponsebody.md
   - docs/models/operations/listcontrolplanesrequest.md
   - docs/models/operations/listcontrolplanesresponse.md
   - docs/models/operations/listdataplanenodesrequest.md
@@ -946,11 +1000,23 @@ generatedFiles:
   - docs/models/operations/listkeywithkeysetrequest.md
   - docs/models/operations/listkeywithkeysetresponse.md
   - docs/models/operations/listkeywithkeysetresponsebody.md
+  - docs/models/operations/listmtlsauthrequest.md
+  - docs/models/operations/listmtlsauthresponse.md
+  - docs/models/operations/listmtlsauthresponsebody.md
+  - docs/models/operations/listmtlsauthwithconsumerrequest.md
+  - docs/models/operations/listmtlsauthwithconsumerresponse.md
+  - docs/models/operations/listmtlsauthwithconsumerresponsebody.md
   - docs/models/operations/listpluginrequest.md
   - docs/models/operations/listpluginresponse.md
   - docs/models/operations/listpluginresponsebody.md
   - docs/models/operations/listpluginschemasrequest.md
   - docs/models/operations/listpluginschemasresponse.md
+  - docs/models/operations/listpluginwithconsumergrouprequest.md
+  - docs/models/operations/listpluginwithconsumergroupresponse.md
+  - docs/models/operations/listpluginwithconsumergroupresponsebody.md
+  - docs/models/operations/listpluginwithconsumerrequest.md
+  - docs/models/operations/listpluginwithconsumerresponse.md
+  - docs/models/operations/listpluginwithconsumerresponsebody.md
   - docs/models/operations/listpluginwithrouterequest.md
   - docs/models/operations/listpluginwithrouteresponse.md
   - docs/models/operations/listpluginwithrouteresponsebody.md
@@ -1018,6 +1084,8 @@ generatedFiles:
   - docs/models/operations/putcontrolplanesidgroupmembershipsrequest.md
   - docs/models/operations/putcontrolplanesidgroupmembershipsresponse.md
   - docs/models/operations/queryparamfilter.md
+  - docs/models/operations/removeconsumerfromconsumergrouprequest.md
+  - docs/models/operations/removeconsumerfromconsumergroupresponse.md
   - docs/models/operations/removeconsumerfromgrouprequest.md
   - docs/models/operations/removeconsumerfromgroupresponse.md
   - docs/models/operations/removeuserfromteamrequest.md
@@ -1062,8 +1130,14 @@ generatedFiles:
   - docs/models/operations/upsertkeysetresponse.md
   - docs/models/operations/upsertkeywithkeysetrequest.md
   - docs/models/operations/upsertkeywithkeysetresponse.md
+  - docs/models/operations/upsertmtlsauthwithconsumerrequest.md
+  - docs/models/operations/upsertmtlsauthwithconsumerresponse.md
   - docs/models/operations/upsertpluginrequest.md
   - docs/models/operations/upsertpluginresponse.md
+  - docs/models/operations/upsertpluginwithconsumergrouprequest.md
+  - docs/models/operations/upsertpluginwithconsumergroupresponse.md
+  - docs/models/operations/upsertpluginwithconsumerrequest.md
+  - docs/models/operations/upsertpluginwithconsumerresponse.md
   - docs/models/operations/upsertpluginwithrouterequest.md
   - docs/models/operations/upsertpluginwithrouteresponse.md
   - docs/models/operations/upsertpluginwithservicerequest.md
@@ -1123,6 +1197,7 @@ generatedFiles:
   - me.go
   - models/operations/options.go
   - models/sdkerrors/sdkerror.go
+  - mtlsauthcredentials.go
   - plugins.go
   - retry/config.go
   - roles.go
@@ -1814,7 +1889,7 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
-          ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
+          ConsumerId: "123e4567-e89b-12d3-a456-426614174000"
       responses:
         "401":
           application/json: {"message": "<value>", "status": 616749}
@@ -1825,7 +1900,7 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
-          ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
+          ConsumerId: "123e4567-e89b-12d3-a456-426614174000"
       requestBody:
         application/json: {"custom_id": "4200", "id": "8a388226-80e8-4027-a486-25e4f7db5d21", "tags": ["silver-tier"], "username": "bob-the-builder"}
       responses:
@@ -1838,7 +1913,7 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
-          ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
+          ConsumerId: "123e4567-e89b-12d3-a456-426614174000"
       responses:
         "401":
           application/json: {"message": "<value>", "status": 265954}
@@ -2814,6 +2889,9 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"expected_hash": "<value>", "created_at": 586919, "updated_at": 525612}
   list-dataplane-nodes:
     speakeasy-default-list-dataplane-nodes:
       parameters:
@@ -3505,6 +3583,8 @@ examples:
           application/problem+json: {"status": 346361, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "404":
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "409":
+          application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
   remove-user-from-team:
     speakeasy-default-remove-user-from-team:
       parameters:
@@ -3596,7 +3676,7 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
-          ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
+          ConsumerId: "123e4567-e89b-12d3-a456-426614174000"
         query:
           tags: "tag1,tag2"
   put-control-planes-id-group-memberships:
@@ -3666,3 +3746,197 @@ examples:
       responses:
         "200":
           application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
+  list-consumers-for-consumer-group:
+    "":
+      parameters:
+        path:
+          ConsumerGroupId: "<id>"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"custom_id": "4200", "id": "8a388226-80e8-4027-a486-25e4f7db5d21", "tags": ["silver-tier"], "username": "bob-the-builder"}]}
+  add-consumer-to-specific-consumer-group:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerId: "123e4567-e89b-12d3-a456-426614174000"
+      requestBody:
+        application/json: {"group": "fedee695-2ae2-4e45-877a-776d9b2fc793"}
+      responses:
+        "201":
+          application/json: {"consumer": {"custom_id": "4200", "id": "8a388226-80e8-4027-a486-25e4f7db5d21", "tags": ["silver-tier"], "username": "bob-the-builder"}}
+  remove-consumer-from-consumer-group:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerId: "123e4567-e89b-12d3-a456-426614174000"
+          ConsumerGroupId: ""
+  list-plugin-with-consumer_group:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerGroupId: ""
+        query:
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}]}
+  create-plugin-with-consumer_group:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerGroupId: ""
+      requestBody:
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
+      responses:
+        "201":
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
+  delete-plugin-with-consumer_group:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerGroupId: ""
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+  get-plugin-with-consumer_group:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerGroupId: ""
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+      responses:
+        "200":
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
+  upsert-plugin-with-consumer_group:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerGroupId: ""
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+      requestBody:
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
+      responses:
+        "200":
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
+  list-plugin-with-consumer:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+        query:
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}]}
+  create-plugin-with-consumer:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+      requestBody:
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
+      responses:
+        "201":
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
+  delete-plugin-with-consumer:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+  get-plugin-with-consumer:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+      responses:
+        "200":
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
+  upsert-plugin-with-consumer:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+      requestBody:
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
+      responses:
+        "200":
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "protocols": ["grpc", "grpcs", "http", "https"]}
+  list-mtls-auth-with-consumer:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+        query:
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}]}
+  create-mtls-auth-with-consumer:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+      requestBody:
+        application/json: {"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}
+      responses:
+        "201":
+          application/json: {"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}
+  delete-mtls-auth-with-consumer:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          MTLSAuthId: ""
+  get-mtls-auth-with-consumer:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          MTLSAuthId: ""
+      responses:
+        "200":
+          application/json: {"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}
+  upsert-mtls-auth-with-consumer:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          MTLSAuthId: ""
+      requestBody:
+        application/json: {"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}
+      responses:
+        "200":
+          application/json: {"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}
+  list-mtls-auth:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}]}
+        "401":
+          application/json: {"message": "<value>", "status": 846487}

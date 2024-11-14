@@ -15,6 +15,12 @@ invalidParameters := components.CreateInvalidParametersInvalidParameterStandard(
 invalidParameters := components.CreateInvalidParametersInvalidParameterMinimumLength(components.InvalidParameterMinimumLength{/* values here */})
 ```
 
+### InvalidParameterMaximumLength
+
+```go
+invalidParameters := components.CreateInvalidParametersInvalidParameterMaximumLength(components.InvalidParameterMaximumLength{/* values here */})
+```
+
 ### InvalidParameterChoiceItem
 
 ```go

@@ -14,13 +14,13 @@ By Default, an API error will return `sdkerrors.SDKError`. When custom error res
 
 For example, the `ListControlPlanes` function may return the following errors:
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| sdkerrors.BadRequestError    | 400                          | application/problem+json     |
-| sdkerrors.UnauthorizedError  | 401                          | application/problem+json     |
-| sdkerrors.ForbiddenError     | 403                          | application/problem+json     |
-| sdkerrors.ServiceUnavailable | 503                          | application/problem+json     |
-| sdkerrors.SDKError           | 4XX, 5XX                     | \*/\*                        |
+| Error Type                   | Status Code | Content Type             |
+| ---------------------------- | ----------- | ------------------------ |
+| sdkerrors.BadRequestError    | 400         | application/problem+json |
+| sdkerrors.UnauthorizedError  | 401         | application/problem+json |
+| sdkerrors.ForbiddenError     | 403         | application/problem+json |
+| sdkerrors.ServiceUnavailable | 503         | application/problem+json |
+| sdkerrors.SDKError           | 4XX, 5XX    | \*/\*                    |
 
 ### Example
 
@@ -96,14 +96,14 @@ func main() {
 
 ### Select Server by Index
 
-You can override the default server globally using the `WithServerIndex` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+You can override the default server globally using the `WithServerIndex(serverIndex int)` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `https://global.api.konghq.com` | None |
-| 1 | `https://us.api.konghq.com` | None |
-| 2 | `https://eu.api.konghq.com` | None |
-| 3 | `https://au.api.konghq.com` | None |
+| #   | Server                          |
+| --- | ------------------------------- |
+| 0   | `https://global.api.konghq.com` |
+| 1   | `https://us.api.konghq.com`     |
+| 2   | `https://eu.api.konghq.com`     |
+| 3   | `https://au.api.konghq.com`     |
 
 #### Example
 
@@ -146,10 +146,9 @@ func main() {
 
 ```
 
-
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally using the `WithServerURL` option when initializing the SDK client instance. For example:
+The default server can also be overridden globally using the `WithServerURL(serverURL string)` option when initializing the SDK client instance. For example:
 ```go
 package main
 
@@ -259,11 +258,11 @@ This can be a convenient way to configure timeouts, cookies, proxies, custom hea
 
 This SDK supports the following security schemes globally:
 
-| Name                       | Type                       | Scheme                     |
-| -------------------------- | -------------------------- | -------------------------- |
-| `PersonalAccessToken`      | http                       | HTTP Bearer                |
-| `SystemAccountAccessToken` | http                       | HTTP Bearer                |
-| `KonnectAccessToken`       | http                       | HTTP Bearer                |
+| Name                       | Type | Scheme      |
+| -------------------------- | ---- | ----------- |
+| `PersonalAccessToken`      | http | HTTP Bearer |
+| `SystemAccountAccessToken` | http | HTTP Bearer |
+| `KonnectAccessToken`       | http | HTTP Bearer |
 
 You can set the security parameters through the `WithSecurity` option when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```go

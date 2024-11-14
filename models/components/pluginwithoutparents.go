@@ -5,7 +5,6 @@ package components
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type PluginWithoutParentsAfter struct {
@@ -104,7 +103,7 @@ type PluginWithoutParents struct {
 	// The configuration properties for the Plugin which can be found on the plugins documentation page in the [Kong Hub](https://docs.konghq.com/hub/).
 	Config map[string]any `json:"config"`
 	// Whether the plugin is applied.
-	Enabled      *bool   `default:"true" json:"enabled"`
+	Enabled      *bool   `json:"enabled,omitempty"`
 	ID           *string `json:"id,omitempty"`
 	InstanceName *string `json:"instance_name,omitempty"`
 	// The name of the Plugin that's going to be added. Currently, the Plugin must be installed in every Kong instance separately.
@@ -114,17 +113,6 @@ type PluginWithoutParents struct {
 	Protocols []PluginWithoutParentsProtocols `json:"protocols,omitempty"`
 	// An optional set of strings associated with the Plugin for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
-}
-
-func (p PluginWithoutParents) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PluginWithoutParents) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (o *PluginWithoutParents) GetConfig() map[string]any {

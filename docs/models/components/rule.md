@@ -12,3 +12,5 @@ invalid parameters rules
 | `RuleMinLowercase` | min_lowercase      |
 | `RuleMinUppercase` | min_uppercase      |
 | `RuleMinSymbols`   | min_symbols        |
+| `RuleMinItems`     | min_items          |
+| `RuleMin`          | min                |
