@@ -11,7 +11,9 @@ import "os"
 func initHooks(h *Hooks) {
 	h.registerBeforeRequestHook(&UserAgentPreRequestHook{})
 
-	h.registerBeforeRequestHook(&APIURLRequestHook{})
+	h.registerBeforeRequestHook(&APIURLRequestHook{
+		CustomDomain: os.Getenv("KONG_CUSTOM_DOMAIN"),
+	})
 
 	if os.Getenv("KONNECT_SDK_HTTP_DUMP_REQUEST") == "true" {
 		h.registerBeforeRequestHook(&HTTPDumpRequestHook{})

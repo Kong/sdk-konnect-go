@@ -3,10 +3,10 @@ id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
   docChecksum: 621f79fe092199d80a95ca5aa0238ebc
   docVersion: 0.0.1
-  speakeasyVersion: 1.439.0
-  generationVersion: 2.457.9
-  releaseVersion: 0.1.6
-  configChecksum: 5464a3ce17d764c785662a6628d0b0ec
+  speakeasyVersion: 1.441.0
+  generationVersion: 2.460.1
+  releaseVersion: 0.1.7
+  configChecksum: db304f60e3a64fc47b514a7de5d55c5b
 features:
   go:
     additionalDependencies: 0.1.0
