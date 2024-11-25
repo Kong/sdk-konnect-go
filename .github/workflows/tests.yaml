@@ -1,0 +1,53 @@
+name: tests
+run-name: tests, branch:${{ github.ref_name }}, triggered by @${{ github.actor }}
+
+concurrency:
+  # Run only for most recent commit in PRs but for all tags and commits on main
+  # Ref: https://docs.github.com/en/actions/using-jobs/using-concurrency
+  group: ${{ github.workflow }}-${{ github.head_ref || github.sha }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    branches:
+      - '*'
+  push:
+    branches:
+      - 'main'
+  schedule:
+    - cron: '30 2 * * *'
+  workflow_dispatch: {}
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-go@v5
+      with:
+        go-version-file: go.mod
+
+    - name: run unit tests
+      run: make test.unit
+
+  integration-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - konnect-api-url: https://us.api.konghq.tech
+        - konnect-api-url: https://eu.api.konghq.tech
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-go@v5
+      with:
+        go-version-file: go.mod
+
+    - name: run integration tests
+      run: make test.integration
+      env:
+        KONNECT_API_URL: ${{ matrix.konnect-api-url }}
+        KONNECT_API_PAT: ${{ secrets.KONNECT_API_PAT }}

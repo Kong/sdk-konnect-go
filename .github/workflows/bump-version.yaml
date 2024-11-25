@@ -14,6 +14,7 @@ jobs:
     permissions:
       issues: write
       pull-requests: write
+      contents: write
     steps:
       - uses: mheap/github-action-required-labels@v5
         with:
@@ -33,19 +34,23 @@ jobs:
           repo: speakeasy
           cli_name: speakeasy
           package_type: zip
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           token: ${{ secrets.PAT }}
+
       - name: Reset .speakeasy/gen.yaml to the version on main
         run: |
           git fetch origin main
           git checkout origin/main .speakeasy/gen.yaml .speakeasy/gen.lock
+
       - name: Set bump (patch)
         run: |
           BUMP_TYPE=$(echo '${{ toJson(github.event.pull_request.labels.*.name) }}' | jq -r '.[]' | grep -E 'patch|minor|major')
           speakeasy bump $BUMP_TYPE
+
       - name: Commit SDK changes to the PR
         uses: EndBug/add-and-commit@v9
         with:

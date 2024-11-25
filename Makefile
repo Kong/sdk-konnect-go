@@ -107,3 +107,15 @@ generate.sdk:
 	speakeasy generate sdk --lang go --out . --schema ./$(OPENAPI_FILE)
 	$(MAKE) _generate.omitempty
 	go mod tidy
+
+.PHONY: test
+test: test.unit test.integration
+
+.PHONY: test.unit
+test.unit:
+
+.PHONY: test.integration
+test.integration:
+	KONNECT_TEST_RUN_ID=$(shell openssl rand -hex 8) \
+		go test -v -race $(GOTESTFLAGS) \
+		./test/integration/...

@@ -11,6 +11,8 @@ import "os"
 func initHooks(h *Hooks) {
 	h.registerBeforeRequestHook(&UserAgentPreRequestHook{})
 
+	h.registerBeforeRequestHook(&GlobalAPIURLRequestHook{})
+
 	h.registerBeforeRequestHook(&APIURLRequestHook{
 		CustomDomain: os.Getenv("KONG_CUSTOM_DOMAIN"),
 	})
