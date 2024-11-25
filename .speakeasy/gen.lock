@@ -3,10 +3,10 @@ id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
   docChecksum: 621f79fe092199d80a95ca5aa0238ebc
   docVersion: 0.0.1
-  speakeasyVersion: 1.441.0
-  generationVersion: 2.460.1
-  releaseVersion: 0.1.7
-  configChecksum: db304f60e3a64fc47b514a7de5d55c5b
+  speakeasyVersion: 1.444.4
+  generationVersion: 2.461.4
+  releaseVersion: 0.1.8
+  configChecksum: df33a88d43c66b96ed2dbd72421eaee2
 features:
   go:
     additionalDependencies: 0.1.0
@@ -25,7 +25,7 @@ features:
     nameOverrides: 2.81.2
     nullables: 0.1.0
     responseFormat: 0.1.2
-    retries: 2.83.0
+    retries: 2.83.1
     sdkHooks: 0.1.0
     tests: 0.6.0
     unions: 2.85.10
