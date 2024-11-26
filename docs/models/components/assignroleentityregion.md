@@ -10,4 +10,5 @@ The region of the team.
 | `AssignRoleEntityRegionUs`       | us                               |
 | `AssignRoleEntityRegionEu`       | eu                               |
 | `AssignRoleEntityRegionAu`       | au                               |
+| `AssignRoleEntityRegionMe`       | me                               |
 | `AssignRoleEntityRegionWildcard` | *                                |
