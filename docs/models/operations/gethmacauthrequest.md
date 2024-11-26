@@ -1,0 +1,9 @@
+# GetHmacAuthRequest
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `HMACAuthID`                                                                       | *string*                                                                           | :heavy_check_mark:                                                                 | ID of the HMAC-auth credential to lookup                                           | 70e7b00b-72f2-471b-a5ce-9c4171775360                                               |
+| `ControlPlaneID`                                                                   | *string*                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |

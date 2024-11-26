@@ -27,7 +27,7 @@ type GetControlPlanesIDGroupStatusResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Status of a control plane group, including existing conflicts.
-	GroupStatus *components.GroupStatus
+	GetGroupStatus *components.GetGroupStatus
 }
 
 func (o *GetControlPlanesIDGroupStatusResponse) GetContentType() string {
@@ -51,9 +51,9 @@ func (o *GetControlPlanesIDGroupStatusResponse) GetRawResponse() *http.Response 
 	return o.RawResponse
 }
 
-func (o *GetControlPlanesIDGroupStatusResponse) GetGroupStatus() *components.GroupStatus {
+func (o *GetControlPlanesIDGroupStatusResponse) GetGetGroupStatus() *components.GetGroupStatus {
 	if o == nil {
 		return nil
 	}
-	return o.GroupStatus
+	return o.GetGroupStatus
 }
