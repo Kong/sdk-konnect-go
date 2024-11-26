@@ -9,11 +9,36 @@ on:
     - synchronize
 
 jobs:
+  # NOTE: This is a poor man's way of checking if the last commit was made by
+  # this workflow. If it was then we don't want to generate the SDK again.
+  should-generate:
+    permissions:
+      contents: read
+    runs-on:
+      - ubuntu-latest
+    outputs:
+      result: ${{ steps.decision.outputs.result }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ secrets.PAT }}
+      - id: decision
+        run: |
+            if [[ "$(git show -s --format=%B HEAD)" == "Update provider based on openapi.yaml changes" ]]; then
+              echo "result=false" >> "$GITHUB_OUTPUT"
+            else
+              echo "result=true" >> "$GITHUB_OUTPUT"
+            fi
+
   generate:
+    needs:
+    - should-generate
     permissions:
       contents: write
     runs-on:
       - ubuntu-latest
+    if: needs.should-generate.outputs.result == 'true'
     steps:
       - name: Install Speakeasy
         uses: mheap/setup-go-cli@v1
