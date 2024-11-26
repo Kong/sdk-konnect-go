@@ -1624,12 +1624,12 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupStatus(ctx context.Context, 
 				return nil, err
 			}
 
-			var out components.GroupStatus
+			var out components.GetGroupStatus
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.GroupStatus = &out
+			res.GetGroupStatus = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {

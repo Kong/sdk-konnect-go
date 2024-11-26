@@ -1,17 +1,17 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 621f79fe092199d80a95ca5aa0238ebc
+  docChecksum: 63fbac813a0aa3fa24ffb199de5fa858
   docVersion: 0.0.1
-  speakeasyVersion: 1.444.4
-  generationVersion: 2.461.4
-  releaseVersion: 0.1.8
-  configChecksum: df33a88d43c66b96ed2dbd72421eaee2
+  speakeasyVersion: 1.446.1
+  generationVersion: 2.462.1
+  releaseVersion: 0.1.9
+  configChecksum: ea4943250fc3728ab6d9fca49f8d3212
 features:
   go:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.6
-    core: 3.5.16
+    core: 3.5.17
     deepObjectParams: 0.1.0
     defaultEnabledRetries: 0.2.0
     envVarSecurityUsage: 0.3.2
@@ -27,7 +27,6 @@ features:
     responseFormat: 0.1.2
     retries: 2.83.1
     sdkHooks: 0.1.0
-    tests: 0.6.0
     unions: 2.85.10
 generatedFiles:
   - .gitattributes
@@ -62,6 +61,7 @@ generatedFiles:
   - /models/components/dataplaneclientcertificate.go
   - /models/components/dataplaneclientcertificaterequest.go
   - /models/components/getexpectedconfighashresponse.go
+  - /models/components/getgroupstatus.go
   - /models/components/getimpersonationsettingsresponse.go
   - /models/components/getnode.go
   - /models/components/groupconflict.go
@@ -216,8 +216,10 @@ generatedFiles:
   - /models/operations/deleteuser.go
   - /models/operations/deletevault.go
   - /models/operations/fetchpluginschema.go
+  - /models/operations/getacl.go
   - /models/operations/getaclwithconsumer.go
   - /models/operations/getauthenticationsettings.go
+  - /models/operations/getbasicauth.go
   - /models/operations/getbasicauthwithconsumer.go
   - /models/operations/getcacertificate.go
   - /models/operations/getcertificate.go
@@ -229,15 +231,19 @@ generatedFiles:
   - /models/operations/getcontrolplanesidgroupstatus.go
   - /models/operations/getdataplanecertificate.go
   - /models/operations/getexpectedconfighash.go
+  - /models/operations/gethmacauth.go
   - /models/operations/gethmacauthwithconsumer.go
   - /models/operations/getidpconfiguration.go
   - /models/operations/getidpteammappings.go
   - /models/operations/getimpersonationsettings.go
+  - /models/operations/getjwt.go
   - /models/operations/getjwtwithconsumer.go
   - /models/operations/getkey.go
+  - /models/operations/getkeyauth.go
   - /models/operations/getkeyauthwithconsumer.go
   - /models/operations/getkeyset.go
   - /models/operations/getkeywithkeyset.go
+  - /models/operations/getmtlsauth.go
   - /models/operations/getmtlsauthwithconsumer.go
   - /models/operations/getnodeseol.go
   - /models/operations/getnodesnodeid.go
@@ -323,6 +329,8 @@ generatedFiles:
   - /models/operations/postsystemaccountsidaccesstokens.go
   - /models/operations/postteamsteamidsystemaccounts.go
   - /models/operations/putcontrolplanesidgroupmemberships.go
+  - /models/operations/removeallconsumersfromconsumergroup.go
+  - /models/operations/removeconsumerfromallconsumergroups.go
   - /models/operations/removeconsumerfromconsumergroup.go
   - /models/operations/removeconsumerfromgroup.go
   - /models/operations/removeuserfromteam.go
@@ -450,6 +458,7 @@ generatedFiles:
   - docs/models/components/entitytypename.md
   - docs/models/components/gatewayserviceadmin.md
   - docs/models/components/getexpectedconfighashresponse.md
+  - docs/models/components/getgroupstatus.md
   - docs/models/components/getimpersonationsettingsresponse.md
   - docs/models/components/getnode.md
   - docs/models/components/getnodecompatibilitystatus.md
@@ -835,9 +844,13 @@ generatedFiles:
   - docs/models/operations/fetchpluginschemaresponse.md
   - docs/models/operations/fetchpluginschemaresponsebody.md
   - docs/models/operations/filter.md
+  - docs/models/operations/getaclrequest.md
+  - docs/models/operations/getaclresponse.md
   - docs/models/operations/getaclwithconsumerrequest.md
   - docs/models/operations/getaclwithconsumerresponse.md
   - docs/models/operations/getauthenticationsettingsresponse.md
+  - docs/models/operations/getbasicauthrequest.md
+  - docs/models/operations/getbasicauthresponse.md
   - docs/models/operations/getbasicauthwithconsumerrequest.md
   - docs/models/operations/getbasicauthwithconsumerresponse.md
   - docs/models/operations/getcacertificaterequest.md
@@ -860,14 +873,20 @@ generatedFiles:
   - docs/models/operations/getdataplanecertificateresponse.md
   - docs/models/operations/getexpectedconfighashrequest.md
   - docs/models/operations/getexpectedconfighashresponse.md
+  - docs/models/operations/gethmacauthrequest.md
+  - docs/models/operations/gethmacauthresponse.md
   - docs/models/operations/gethmacauthwithconsumerrequest.md
   - docs/models/operations/gethmacauthwithconsumerresponse.md
   - docs/models/operations/getidpconfigurationresponse.md
   - docs/models/operations/getidpteammappingsrequest.md
   - docs/models/operations/getidpteammappingsresponse.md
   - docs/models/operations/getimpersonationsettingsresponse.md
+  - docs/models/operations/getjwtrequest.md
+  - docs/models/operations/getjwtresponse.md
   - docs/models/operations/getjwtwithconsumerrequest.md
   - docs/models/operations/getjwtwithconsumerresponse.md
+  - docs/models/operations/getkeyauthrequest.md
+  - docs/models/operations/getkeyauthresponse.md
   - docs/models/operations/getkeyauthwithconsumerrequest.md
   - docs/models/operations/getkeyauthwithconsumerresponse.md
   - docs/models/operations/getkeyrequest.md
@@ -876,6 +895,8 @@ generatedFiles:
   - docs/models/operations/getkeysetresponse.md
   - docs/models/operations/getkeywithkeysetrequest.md
   - docs/models/operations/getkeywithkeysetresponse.md
+  - docs/models/operations/getmtlsauthrequest.md
+  - docs/models/operations/getmtlsauthresponse.md
   - docs/models/operations/getmtlsauthwithconsumerrequest.md
   - docs/models/operations/getmtlsauthwithconsumerresponse.md
   - docs/models/operations/getnodeseolrequest.md
@@ -1084,6 +1105,10 @@ generatedFiles:
   - docs/models/operations/putcontrolplanesidgroupmembershipsrequest.md
   - docs/models/operations/putcontrolplanesidgroupmembershipsresponse.md
   - docs/models/operations/queryparamfilter.md
+  - docs/models/operations/removeallconsumersfromconsumergrouprequest.md
+  - docs/models/operations/removeallconsumersfromconsumergroupresponse.md
+  - docs/models/operations/removeconsumerfromallconsumergroupsrequest.md
+  - docs/models/operations/removeconsumerfromallconsumergroupsresponse.md
   - docs/models/operations/removeconsumerfromconsumergrouprequest.md
   - docs/models/operations/removeconsumerfromconsumergroupresponse.md
   - docs/models/operations/removeconsumerfromgrouprequest.md
@@ -1181,6 +1206,7 @@ generatedFiles:
   - impersonationsettings.go
   - internal/hooks/hooks.go
   - internal/utils/contenttype.go
+  - internal/utils/env.go
   - internal/utils/form.go
   - internal/utils/headers.go
   - internal/utils/json.go
@@ -3940,3 +3966,82 @@ examples:
           application/json: {"data": [{"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}]}
         "401":
           application/json: {"message": "<value>", "status": 846487}
+  get-acl:
+    "":
+      parameters:
+        path:
+          ACLId: "f28acbfa-c866-4587-b688-0208ac24df21"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "group": "foo", "id": "b1f34145-0343-41a4-9602-4c69dec2f269"}
+        "401":
+          application/json: {"message": "<value>", "status": 812094}
+  get-basic-auth:
+    "":
+      parameters:
+        path:
+          BasicAuthId: "80db1b58-ca7c-4d21-b92a-64eb07725872"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}
+        "401":
+          application/json: {"message": "<value>", "status": 109949}
+  remove-all-consumers-from-consumer-group:
+    speakeasy-default-remove-all-consumers-from-consumer-group:
+      parameters:
+        path:
+          ConsumerGroupId: "<id>"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+  remove-consumer-from-all-consumer-groups:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerId: "123e4567-e89b-12d3-a456-426614174000"
+  get-hmac-auth:
+    "":
+      parameters:
+        path:
+          HMACAuthId: "70e7b00b-72f2-471b-a5ce-9c4171775360"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "secret": "wQazJ304DW5huJklHgUfjfiSyCyTAEDZ", "username": "xerxes"}
+        "401":
+          application/json: {"message": "<value>", "status": 9615}
+  get-jwt:
+    "":
+      parameters:
+        path:
+          JWTId: "4a7f5faa-8c96-46d6-8214-c87573ef2ac4"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
+        "401":
+          application/json: {"message": "<value>", "status": 7837}
+  get-key-auth:
+    "":
+      parameters:
+        path:
+          KeyAuthId: ""
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}
+        "401":
+          application/json: {"message": "<value>", "status": 808504}
+  get-mtls-auth:
+    "":
+      parameters:
+        path:
+          MTLSAuthId: ""
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}
+        "401":
+          application/json: {"message": "<value>", "status": 955072}
+generatedTests: {}
