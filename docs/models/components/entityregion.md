@@ -10,4 +10,5 @@ Region of the entity.
 | `EntityRegionUs`       | us                     |
 | `EntityRegionEu`       | eu                     |
 | `EntityRegionAu`       | au                     |
+| `EntityRegionMe`       | me                     |
 | `EntityRegionWildcard` | *                      |
