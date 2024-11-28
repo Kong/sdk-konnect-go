@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: fa29cc9e179c247d0bd4fc3d22a986e7
+  docChecksum: f777507689e9cee350ab6cce0ce0c4c9
   docVersion: 0.0.1
-  speakeasyVersion: 1.447.0
-  generationVersion: 2.463.0
-  releaseVersion: 0.1.10
-  configChecksum: c8dc9502d5252fed4b14ed4eff9888c2
+  speakeasyVersion: 1.448.2
+  generationVersion: 2.467.4
+  releaseVersion: 0.1.11
+  configChecksum: 8a6943464f649367a254aeacf4fc469c
 features:
   go:
     additionalDependencies: 0.1.0
@@ -1086,6 +1086,7 @@ generatedFiles:
   - docs/models/operations/listvaultrequest.md
   - docs/models/operations/listvaultresponse.md
   - docs/models/operations/listvaultresponsebody.md
+  - docs/models/operations/option.md
   - docs/models/operations/patchsystemaccountsidaccesstokensidrequest.md
   - docs/models/operations/patchsystemaccountsidaccesstokensidresponse.md
   - docs/models/operations/patchsystemaccountsidrequest.md
@@ -1199,6 +1200,44 @@ generatedFiles:
   - docs/models/sdkerrors/serviceunavailable.md
   - docs/models/sdkerrors/status.md
   - docs/models/sdkerrors/unauthorizederror.md
+  - docs/sdks/acls/README.md
+  - docs/sdks/apikeys/README.md
+  - docs/sdks/authentication/README.md
+  - docs/sdks/authsettings/README.md
+  - docs/sdks/basicauthcredentials/README.md
+  - docs/sdks/cacertificates/README.md
+  - docs/sdks/certificates/README.md
+  - docs/sdks/consumergroups/README.md
+  - docs/sdks/consumers/README.md
+  - docs/sdks/controlplanegroups/README.md
+  - docs/sdks/controlplanes/README.md
+  - docs/sdks/custompluginschemas/README.md
+  - docs/sdks/dpcertificates/README.md
+  - docs/sdks/dpnodes/README.md
+  - docs/sdks/hmacauthcredentials/README.md
+  - docs/sdks/impersonationsettings/README.md
+  - docs/sdks/invites/README.md
+  - docs/sdks/jwts/README.md
+  - docs/sdks/keys/README.md
+  - docs/sdks/keysets/README.md
+  - docs/sdks/me/README.md
+  - docs/sdks/mtlsauthcredentials/README.md
+  - docs/sdks/plugins/README.md
+  - docs/sdks/roles/README.md
+  - docs/sdks/routes/README.md
+  - docs/sdks/sdk/README.md
+  - docs/sdks/services/README.md
+  - docs/sdks/snis/README.md
+  - docs/sdks/systemaccounts/README.md
+  - docs/sdks/systemaccountsaccesstokens/README.md
+  - docs/sdks/systemaccountsroles/README.md
+  - docs/sdks/systemaccountsteammembership/README.md
+  - docs/sdks/targets/README.md
+  - docs/sdks/teammembership/README.md
+  - docs/sdks/teams/README.md
+  - docs/sdks/upstreams/README.md
+  - docs/sdks/users/README.md
+  - docs/sdks/vaults/README.md
   - dpcertificates.go
   - dpnodes.go
   - go.mod

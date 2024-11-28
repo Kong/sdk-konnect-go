@@ -7517,12 +7517,12 @@ components:
         ca_certificate:
           type: object
           additionalProperties: false
-          nullable: true
           properties:
             id:
               type: string
           x-foreign: true
           x-speakeasy-terraform-plan-only: true
+          nullable: true
           default: null
         consumer:
           type: object
@@ -7563,12 +7563,12 @@ components:
         ca_certificate:
           type: object
           additionalProperties: false
-          nullable: true
           properties:
             id:
               type: string
           x-foreign: true
           x-speakeasy-terraform-plan-only: true
+          nullable: true
           default: null
         created_at:
           description: Unix epoch when the resource was created.
