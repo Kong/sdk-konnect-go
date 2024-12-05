@@ -3,7 +3,7 @@ module github.com/Kong/sdk-konnect-go
 go 1.20
 
 require (
-	github.com/ericlagergren/decimal v0.0.0-20221120152707-495c53812d05
+	github.com/ericlagergren/decimal v0.0.0-20240411145413-00de7ca16731
 	github.com/stretchr/testify v1.10.0
 )
 
