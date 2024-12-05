@@ -39,6 +39,8 @@ jobs:
         include:
         - konnect-api-url: https://us.api.konghq.tech
         - konnect-api-url: https://eu.api.konghq.tech
+        - konnect-api-url: https://au.api.konghq.tech
+        - konnect-api-url: https://me.api.konghq.tech
     steps:
     - uses: actions/checkout@v4
 
