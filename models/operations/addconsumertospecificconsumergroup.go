@@ -21,7 +21,7 @@ func (o *AddConsumerToSpecificConsumerGroupRequestBody) GetGroup() *string {
 type AddConsumerToSpecificConsumerGroupRequest struct {
 	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
-	// The UUID of the consumer.
+	// ID of the Consumer to lookup
 	ConsumerID  string                                         `pathParam:"style=simple,explode=false,name=ConsumerId"`
 	RequestBody *AddConsumerToSpecificConsumerGroupRequestBody `request:"mediaType=application/json"`
 }

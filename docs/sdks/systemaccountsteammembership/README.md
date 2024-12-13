@@ -20,21 +20,22 @@ Returns a paginated list of a teams that the system account belongs to.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.SystemAccountsTeamMembership.GetSystemAccountsAccountIDTeams(ctx, operations.GetSystemAccountsAccountIDTeamsRequest{
         AccountID: "<value>",
         PageSize: sdkkonnectgo.Int64(10),
@@ -79,21 +80,22 @@ Returns a paginated list of system accounts that belong to the team specified in
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.SystemAccountsTeamMembership.GetTeamsTeamIDSystemAccounts(ctx, operations.GetTeamsTeamIDSystemAccountsRequest{
         TeamID: "<value>",
         PageSize: sdkkonnectgo.Int64(10),
@@ -138,20 +140,21 @@ Adds a system account to a team. Returns a 409 if the system account is already 
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.SystemAccountsTeamMembership.PostTeamsTeamIDSystemAccounts(ctx, "<value>", nil)
     if err != nil {
         log.Fatal(err)
@@ -194,20 +197,21 @@ Removes a system account from a team. Returns 404 if the team or system account 
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.SystemAccountsTeamMembership.DeleteTeamsTeamIDSystemAccountsAccountID(ctx, "<value>", "<value>")
     if err != nil {
         log.Fatal(err)

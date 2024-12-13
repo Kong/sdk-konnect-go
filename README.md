@@ -38,13 +38,14 @@ import (
 )
 
 func main() {
+	ctx := context.Background()
+
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithSecurity(components.Security{
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
 		PageSize:   sdkkonnectgo.Int64(10),
 		PageNumber: sdkkonnectgo.Int64(1),
@@ -119,6 +120,8 @@ import (
 )
 
 func main() {
+	ctx := context.Background()
+
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithServerIndex(3),
 		sdkkonnectgo.WithSecurity(components.Security{
@@ -126,7 +129,6 @@ func main() {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
 		PageSize:   sdkkonnectgo.Int64(10),
 		PageNumber: sdkkonnectgo.Int64(1),
@@ -161,6 +163,8 @@ import (
 )
 
 func main() {
+	ctx := context.Background()
+
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithServerURL("https://global.api.konghq.com"),
 		sdkkonnectgo.WithSecurity(components.Security{
@@ -168,7 +172,6 @@ func main() {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
 		PageSize:   sdkkonnectgo.Int64(10),
 		PageNumber: sdkkonnectgo.Int64(1),
@@ -203,13 +206,14 @@ import (
 )
 
 func main() {
+	ctx := context.Background()
+
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithSecurity(components.Security{
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.Authentication.AuthenticateSso(ctx, "<value>", nil, operations.WithServerURL("https://global.api.konghq.com/"))
 	if err != nil {
 		log.Fatal(err)
@@ -277,13 +281,14 @@ import (
 )
 
 func main() {
+	ctx := context.Background()
+
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithSecurity(components.Security{
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
 		PageSize:   sdkkonnectgo.Int64(10),
 		PageNumber: sdkkonnectgo.Int64(1),
@@ -344,13 +349,14 @@ import (
 )
 
 func main() {
+	ctx := context.Background()
+
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithSecurity(components.Security{
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
 		PageSize:   sdkkonnectgo.Int64(10),
 		PageNumber: sdkkonnectgo.Int64(1),
@@ -394,6 +400,8 @@ import (
 )
 
 func main() {
+	ctx := context.Background()
+
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithRetryConfig(
 			retry.Config{
@@ -411,7 +419,6 @@ func main() {
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
 		PageSize:   sdkkonnectgo.Int64(10),
 		PageNumber: sdkkonnectgo.Int64(1),

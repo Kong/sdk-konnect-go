@@ -23,20 +23,21 @@ Retrieves the predefined, or system managed, roles.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Roles.GetPredefinedRoles(ctx)
     if err != nil {
         log.Fatal(err)
@@ -76,20 +77,21 @@ Lists the roles belonging to a team. Returns 400 if any filter parameters are in
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Roles.ListTeamRoles(ctx, "e81bc3e5-e9db-4764-b7dd-e81e39072cbe", nil)
     if err != nil {
         log.Fatal(err)
@@ -133,20 +135,21 @@ Assigns a role to a team. Returns 409 if role is already assigned.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Roles.TeamsAssignRole(ctx, "e81bc3e5-e9db-4764-b7dd-e81e39072cbe", &components.AssignRole{
         RoleName: components.RoleNameViewer.ToPointer(),
         EntityID: sdkkonnectgo.String("e67490ce-44dc-4cbd-b65e-b52c746fc26a"),
@@ -196,20 +199,21 @@ Removes an assigned role from a team. Returns 404 if the requested team or assig
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Roles.TeamsRemoveRole(ctx, "e81bc3e5-e9db-4764-b7dd-e81e39072cbe", "8350205f-a305-4e39-abe9-bc082a80091a")
     if err != nil {
         log.Fatal(err)
@@ -253,20 +257,21 @@ Lists the roles assigned to a user.  Returns 400 if any filter parameters are in
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Roles.ListUserRoles(ctx, "e81bc3e5-e9db-4764-b7dd-e81e39072cbe", nil)
     if err != nil {
         log.Fatal(err)
@@ -308,20 +313,21 @@ Assigns a role to a user. Returns 409 if role is already assigned.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Roles.UsersAssignRole(ctx, "e81bc3e5-e9db-4764-b7dd-e81e39072cbe", &components.AssignRole{
         RoleName: components.RoleNameViewer.ToPointer(),
         EntityID: sdkkonnectgo.String("e67490ce-44dc-4cbd-b65e-b52c746fc26a"),
@@ -371,20 +377,21 @@ Removes an assigned role from a user. Returns 404 if the requested user or assig
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Roles.UsersRemoveRole(ctx, "e81bc3e5-e9db-4764-b7dd-e81e39072cbe", "8350205f-a305-4e39-abe9-bc082a80091a")
     if err != nil {
         log.Fatal(err)

@@ -11,13 +11,14 @@ import (
 )
 
 func main() {
+	ctx := context.Background()
+
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithSecurity(components.Security{
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
 
-	ctx := context.Background()
 	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
 		PageSize:   sdkkonnectgo.Int64(10),
 		PageNumber: sdkkonnectgo.Int64(1),
