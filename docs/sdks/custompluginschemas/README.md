@@ -23,21 +23,22 @@ Returns an array of custom plugins schemas associated with a control plane.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.CustomPluginSchemas.ListPluginSchemas(ctx, operations.ListPluginSchemasRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         PageSize: sdkkonnectgo.Int64(10),
@@ -83,20 +84,21 @@ Upload a custom plugin schema associated with a control plane.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.CustomPluginSchemas.CreatePluginSchemas(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", &components.CreatePluginSchemas{
         LuaSchema: "return { name = \\"myplugin\\", fields = { { config = { type = \\"record\\", fields = { } } } } }",
     })
@@ -142,20 +144,21 @@ Returns information about a custom plugin from a given name.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.CustomPluginSchemas.GetPluginSchema(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "myplugin")
     if err != nil {
         log.Fatal(err)
@@ -198,20 +201,21 @@ Delete an individual custom plugin schema.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.CustomPluginSchemas.DeletePluginSchemas(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "myplugin")
     if err != nil {
         log.Fatal(err)
@@ -254,21 +258,22 @@ Create or update an individual custom plugin schema.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.CustomPluginSchemas.UpdatePluginSchemas(ctx, operations.UpdatePluginSchemasRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Name: "myplugin",

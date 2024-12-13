@@ -21,21 +21,22 @@ Returns an array of system accounts (SA) in the organization. Returns 400 if any
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.SystemAccounts.GetSystemAccounts(ctx, operations.GetSystemAccountsRequest{
         PageSize: sdkkonnectgo.Int64(10),
         PageNumber: sdkkonnectgo.Int64(1),
@@ -82,20 +83,21 @@ Creates a system account. Returns a 409 if a system account with the same name a
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.SystemAccounts.PostSystemAccounts(ctx, nil)
     if err != nil {
         log.Fatal(err)
@@ -136,20 +138,21 @@ Returns the system account (SA) for the SA ID specified as a path parameter.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.SystemAccounts.GetSystemAccountsID(ctx, "<value>")
     if err != nil {
         log.Fatal(err)
@@ -190,20 +193,21 @@ Updates the specified system account. Returns a 409 if the updated name is the s
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.SystemAccounts.PatchSystemAccountsID(ctx, "<value>", nil)
     if err != nil {
         log.Fatal(err)
@@ -246,20 +250,21 @@ Deletes the specified system account. Returns 404 if the requested account was n
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.SystemAccounts.DeleteSystemAccountsID(ctx, "<value>")
     if err != nil {
         log.Fatal(err)

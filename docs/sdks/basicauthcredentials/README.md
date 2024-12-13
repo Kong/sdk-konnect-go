@@ -23,21 +23,22 @@ List all Basic-auth credentials
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.BasicAuthCredentials.ListBasicAuth(ctx, operations.ListBasicAuthRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.String("tag1,tag2"),
@@ -80,20 +81,21 @@ Get a Basic-auth credential using ID.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.BasicAuthCredentials.GetBasicAuth(ctx, "80db1b58-ca7c-4d21-b92a-64eb07725872", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
     if err != nil {
         log.Fatal(err)
@@ -134,21 +136,22 @@ List all Basic-auth credentials associated with a Consumer
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.BasicAuthCredentials.ListBasicAuthWithConsumer(ctx, operations.ListBasicAuthWithConsumerRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
@@ -191,21 +194,22 @@ Create a new Basic-auth credential associated with a Consumer
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.BasicAuthCredentials.CreateBasicAuthWithConsumer(ctx, operations.CreateBasicAuthWithConsumerRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
@@ -252,21 +256,22 @@ Delete a a Basic-auth credential associated with a Consumer using ID.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.BasicAuthCredentials.DeleteBasicAuthWithConsumer(ctx, operations.DeleteBasicAuthWithConsumerRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
@@ -309,21 +314,22 @@ Get a Basic-auth credential associated with a Consumer using ID.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.BasicAuthCredentials.GetBasicAuthWithConsumer(ctx, operations.GetBasicAuthWithConsumerRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
@@ -366,21 +372,22 @@ Create or Update a Basic-auth credential associated with a Consumer using ID.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.BasicAuthCredentials.UpsertBasicAuthWithConsumer(ctx, operations.UpsertBasicAuthWithConsumerRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",

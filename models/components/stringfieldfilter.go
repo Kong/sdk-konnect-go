@@ -17,8 +17,8 @@ const (
 
 // StringFieldFilter - Filter a string value field either by exact match or partial contains.
 type StringFieldFilter struct {
-	StringFieldEqualsFilter   *StringFieldEqualsFilter
-	StringFieldContainsFilter *StringFieldContainsFilter
+	StringFieldEqualsFilter   *StringFieldEqualsFilter   `queryParam:"inline"`
+	StringFieldContainsFilter *StringFieldContainsFilter `queryParam:"inline"`
 
 	Type StringFieldFilterType
 }

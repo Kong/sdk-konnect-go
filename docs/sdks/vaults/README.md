@@ -30,21 +30,22 @@ List all Vaults
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Vaults.ListVault(ctx, operations.ListVaultRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.String("tag1,tag2"),
@@ -87,20 +88,21 @@ Create a new Vault
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Vaults.CreateVault(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.VaultInput{
         Config: map[string]any{
             "prefix": "ENV_PREFIX",
@@ -153,20 +155,21 @@ Delete a Vault
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Vaults.DeleteVault(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "9d4d6d19-77c6-428e-a965-9bc9647633e9")
     if err != nil {
         log.Fatal(err)
@@ -207,20 +210,21 @@ Get a Vault using ID or prefix.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Vaults.GetVault(ctx, "9d4d6d19-77c6-428e-a965-9bc9647633e9", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
     if err != nil {
         log.Fatal(err)
@@ -261,21 +265,22 @@ Create or Update Vault using ID or prefix.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.Vaults.UpsertVault(ctx, operations.UpsertVaultRequest{
         VaultID: "9d4d6d19-77c6-428e-a965-9bc9647633e9",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",

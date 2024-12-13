@@ -19,20 +19,21 @@ Lists the roles belonging to a system account. Returns 400 if any filter paramet
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.SystemAccountsRoles.GetSystemAccountsAccountIDAssignedRoles(ctx, "<value>", nil)
     if err != nil {
         log.Fatal(err)
@@ -75,20 +76,21 @@ Assigns a role to a system account. Returns 409 if role is already assigned.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.SystemAccountsRoles.PostSystemAccountsAccountIDAssignedRoles(ctx, "<value>", &components.AssignRole{
         RoleName: components.RoleNameViewer.ToPointer(),
         EntityID: sdkkonnectgo.String("e67490ce-44dc-4cbd-b65e-b52c746fc26a"),
@@ -136,20 +138,21 @@ Removes an assigned role from a system account. Returns 404 if the system accoun
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.SystemAccountsRoles.DeleteSystemAccountsAccountIDAssignedRolesRoleID(ctx, "<value>", "<value>")
     if err != nil {
         log.Fatal(err)

@@ -16,8 +16,8 @@ const (
 )
 
 type ID struct {
-	StringFieldEqualsFilter *StringFieldEqualsFilter
-	StringFieldOEQFilter    *StringFieldOEQFilter
+	StringFieldEqualsFilter *StringFieldEqualsFilter `queryParam:"inline"`
+	StringFieldOEQFilter    *StringFieldOEQFilter    `queryParam:"inline"`
 
 	Type IDType
 }
@@ -80,9 +80,9 @@ const (
 )
 
 type Name struct {
-	StringFieldEqualsFilter   *StringFieldEqualsFilter
-	StringFieldContainsFilter *StringFieldContainsFilter
-	StringFieldNEQFilter      *StringFieldNEQFilter
+	StringFieldEqualsFilter   *StringFieldEqualsFilter   `queryParam:"inline"`
+	StringFieldContainsFilter *StringFieldContainsFilter `queryParam:"inline"`
+	StringFieldNEQFilter      *StringFieldNEQFilter      `queryParam:"inline"`
 
 	Type NameType
 }
@@ -164,8 +164,8 @@ const (
 )
 
 type ClusterType struct {
-	StringFieldEqualsFilter *StringFieldEqualsFilter
-	StringFieldNEQFilter    *StringFieldNEQFilter
+	StringFieldEqualsFilter *StringFieldEqualsFilter `queryParam:"inline"`
+	StringFieldNEQFilter    *StringFieldNEQFilter    `queryParam:"inline"`
 
 	Type ClusterTypeType
 }

@@ -21,21 +21,22 @@ Returns the access tokens for the specified system account. Returns 400 if any f
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.SystemAccountsAccessTokens.GetSystemAccountIDAccessTokens(ctx, operations.GetSystemAccountIDAccessTokensRequest{
         AccountID: "<value>",
         PageSize: sdkkonnectgo.Int64(10),
@@ -81,20 +82,21 @@ Creates an access token for the specified system account (SA). The access token 
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.SystemAccountsAccessTokens.PostSystemAccountsIDAccessTokens(ctx, "<value>", nil)
     if err != nil {
         log.Fatal(err)
@@ -137,20 +139,21 @@ Returns the system account (SA) access token for the SA Access Token ID specifie
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.SystemAccountsAccessTokens.GetSystemAccountsIDAccessTokensID(ctx, "<value>", "<value>")
     if err != nil {
         log.Fatal(err)
@@ -192,21 +195,22 @@ Updates the specified access token. Returns a 409 if the updated name is the sam
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.SystemAccountsAccessTokens.PatchSystemAccountsIDAccessTokensID(ctx, operations.PatchSystemAccountsIDAccessTokensIDRequest{
         AccountID: "<value>",
         TokenID: "<value>",
@@ -251,20 +255,21 @@ Deletes the specified token. Returns 404 if the token was not found.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.SystemAccountsAccessTokens.DeleteSystemAccountsIDAccessTokensID(ctx, "<value>", "<value>")
     if err != nil {
         log.Fatal(err)

@@ -19,8 +19,8 @@ const (
 )
 
 type Two struct {
-	One *One
-	Str *string
+	One *One    `queryParam:"inline"`
+	Str *string `queryParam:"inline"`
 
 	Type TwoType
 }
@@ -83,8 +83,8 @@ const (
 
 // StringFieldEqualsFilter - Filter a string value by exact match.
 type StringFieldEqualsFilter struct {
-	Str *string
-	Two *Two
+	Str *string `queryParam:"inline"`
+	Two *Two    `queryParam:"inline"`
 
 	Type StringFieldEqualsFilterType
 }

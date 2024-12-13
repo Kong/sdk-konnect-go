@@ -22,20 +22,21 @@ Returns a list of pinned dataplane client certificates that are associated to th
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.DPCertificates.ListDpClientCertificates(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458")
     if err != nil {
         log.Fatal(err)
@@ -74,20 +75,21 @@ Pin a new DP Client Certificate to this control plane. A pinned dataplane certif
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.DPCertificates.CreateDataplaneCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", nil)
     if err != nil {
         log.Fatal(err)
@@ -127,20 +129,21 @@ Retrieve a pinned dataplane client certificate associated to this control plane.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.DPCertificates.GetDataplaneCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "<value>")
     if err != nil {
         log.Fatal(err)
@@ -180,20 +183,21 @@ Remove a pinned dataplane client certificate associated to this control plane. R
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.DPCertificates.DeleteDataplaneCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "<value>")
     if err != nil {
         log.Fatal(err)

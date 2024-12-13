@@ -1,18 +1,18 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: f777507689e9cee350ab6cce0ce0c4c9
+  docChecksum: e7f0997368d05f4181c30c542b81c1b8
   docVersion: 0.0.1
-  speakeasyVersion: 1.448.2
-  generationVersion: 2.467.4
-  releaseVersion: 0.1.11
-  configChecksum: 8a6943464f649367a254aeacf4fc469c
+  speakeasyVersion: 1.455.1
+  generationVersion: 2.479.3
+  releaseVersion: 0.1.12
+  configChecksum: 8969566b3caede08d8673179ed758403
 features:
   go:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.6
-    core: 3.5.17
-    deepObjectParams: 0.1.0
+    core: 3.6.0
+    deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
     envVarSecurityUsage: 0.3.2
     flattening: 2.81.1
@@ -1954,7 +1954,7 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
-          ConsumerId: "123e4567-e89b-12d3-a456-426614174000"
+          ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
       responses:
         "401":
           application/json: {"message": "<value>", "status": 616749}
@@ -1965,7 +1965,7 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
-          ConsumerId: "123e4567-e89b-12d3-a456-426614174000"
+          ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
       requestBody:
         application/json: {"custom_id": "4200", "id": "8a388226-80e8-4027-a486-25e4f7db5d21", "tags": ["silver-tier"], "username": "bob-the-builder"}
       responses:
@@ -1978,7 +1978,7 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
-          ConsumerId: "123e4567-e89b-12d3-a456-426614174000"
+          ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
       responses:
         "401":
           application/json: {"message": "<value>", "status": 265954}
@@ -3741,7 +3741,7 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
-          ConsumerId: "123e4567-e89b-12d3-a456-426614174000"
+          ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
         query:
           tags: "tag1,tag2"
   put-control-planes-id-group-memberships:
@@ -3827,7 +3827,7 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
-          ConsumerId: "123e4567-e89b-12d3-a456-426614174000"
+          ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
       requestBody:
         application/json: {"group": "fedee695-2ae2-4e45-877a-776d9b2fc793"}
       responses:
@@ -3838,7 +3838,7 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
-          ConsumerId: "123e4567-e89b-12d3-a456-426614174000"
+          ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
           ConsumerGroupId: ""
   list-plugin-with-consumer_group:
     "":
@@ -4038,7 +4038,7 @@ examples:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
-          ConsumerId: "123e4567-e89b-12d3-a456-426614174000"
+          ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
   get-hmac-auth:
     "":
       parameters:

@@ -24,7 +24,7 @@ type AcceptHeaderEnum string
 const (
 	AcceptHeaderEnumApplicationJson            AcceptHeaderEnum = "application/json"
 	AcceptHeaderEnumApplicationProblemPlusJson AcceptHeaderEnum = "application/problem+json"
-	AcceptHeaderEnumWildcardWildcard           AcceptHeaderEnum = "*/*"
+	AcceptHeaderEnumWildcardRootWildcard       AcceptHeaderEnum = "*/*"
 )
 
 func (e AcceptHeaderEnum) ToPointer() *AcceptHeaderEnum {
@@ -37,6 +37,7 @@ type Options struct {
 	Timeout              *time.Duration
 	AcceptHeaderOverride *AcceptHeaderEnum
 	URLOverride          *string
+	SetHeaders           map[string]string
 }
 
 type Option func(*Options, ...string) error
@@ -112,6 +113,15 @@ func WithURLOverride(urlOverride string) Option {
 		}
 
 		opts.URLOverride = &urlOverride
+		return nil
+	}
+}
+
+// WithSetHeaders takes a map of headers that will applied to a request. If the
+// request contains headers that are in the map then they will be overwritten.
+func WithSetHeaders(hdrs map[string]string) Option {
+	return func(opts *Options, supportedOptions ...string) error {
+		opts.SetHeaders = hdrs
 		return nil
 	}
 }

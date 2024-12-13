@@ -22,20 +22,21 @@ Determines the group membership status of a control plane.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.ControlPlaneGroups.GetControlPlanesIDGroupMemberStatus(ctx, "<id>")
     if err != nil {
         log.Fatal(err)
@@ -79,21 +80,22 @@ Returns an array of control planes that are a member of this control plane group
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.ControlPlaneGroups.GetControlPlanesIDGroupMemberships(ctx, operations.GetControlPlanesIDGroupMembershipsRequest{
         ID: "<id>",
         PageSize: sdkkonnectgo.Int64(10),
@@ -141,20 +143,21 @@ Adds one or more control planes as a member of a control plane group.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.ControlPlaneGroups.PutControlPlanesIDGroupMemberships(ctx, "<id>", nil)
     if err != nil {
         log.Fatal(err)
@@ -199,20 +202,21 @@ Adds one or more control planes as a member of a control plane group.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.ControlPlaneGroups.PostControlPlanesIDGroupMembershipsAdd(ctx, "<id>", nil)
     if err != nil {
         log.Fatal(err)
@@ -257,20 +261,21 @@ Removes one or more control planes from the members of a control plane group.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.ControlPlaneGroups.PostControlPlanesIDGroupMembershipsRemove(ctx, "<id>", nil)
     if err != nil {
         log.Fatal(err)
@@ -315,20 +320,21 @@ Returns the status of a control plane group, including existing conflicts.
 package main
 
 import(
+	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"context"
 	"log"
 )
 
 func main() {
+    ctx := context.Background()
+    
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    ctx := context.Background()
     res, err := s.ControlPlaneGroups.GetControlPlanesIDGroupStatus(ctx, "<id>")
     if err != nil {
         log.Fatal(err)
