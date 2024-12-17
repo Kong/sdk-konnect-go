@@ -38,7 +38,6 @@ func (s *SystemAccounts) GetSystemAccounts(ctx context.Context, request operatio
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -282,7 +281,6 @@ func (s *SystemAccounts) PostSystemAccounts(ctx context.Context, request *compon
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -532,7 +530,6 @@ func (s *SystemAccounts) GetSystemAccountsID(ctx context.Context, accountID stri
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -777,7 +774,6 @@ func (s *SystemAccounts) PatchSystemAccountsID(ctx context.Context, accountID st
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -1048,7 +1044,6 @@ func (s *SystemAccounts) DeleteSystemAccountsID(ctx context.Context, accountID s
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}

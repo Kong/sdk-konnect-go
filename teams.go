@@ -38,7 +38,6 @@ func (s *Teams) ListTeams(ctx context.Context, request operations.ListTeamsReque
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -280,7 +279,6 @@ func (s *Teams) CreateTeam(ctx context.Context, request *components.CreateTeam, 
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -528,7 +526,6 @@ func (s *Teams) GetTeam(ctx context.Context, teamID string, opts ...operations.O
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -771,7 +768,6 @@ func (s *Teams) UpdateTeam(ctx context.Context, teamID string, updateTeam *compo
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -1019,7 +1015,6 @@ func (s *Teams) DeleteTeam(ctx context.Context, teamID string, opts ...operation
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}

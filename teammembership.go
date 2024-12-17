@@ -37,7 +37,6 @@ func (s *TeamMembership) ListTeamUsers(ctx context.Context, request operations.L
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -284,7 +283,6 @@ func (s *TeamMembership) AddUserToTeam(ctx context.Context, teamID string, addUs
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -535,7 +533,6 @@ func (s *TeamMembership) RemoveUserFromTeam(ctx context.Context, userID string, 
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -753,7 +750,6 @@ func (s *TeamMembership) ListUserTeams(ctx context.Context, request operations.L
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}

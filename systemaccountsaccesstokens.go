@@ -37,7 +37,6 @@ func (s *SystemAccountsAccessTokens) GetSystemAccountIDAccessTokens(ctx context.
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -307,7 +306,6 @@ func (s *SystemAccountsAccessTokens) PostSystemAccountsIDAccessTokens(ctx contex
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -579,7 +577,6 @@ func (s *SystemAccountsAccessTokens) GetSystemAccountsIDAccessTokensID(ctx conte
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -819,7 +816,6 @@ func (s *SystemAccountsAccessTokens) PatchSystemAccountsIDAccessTokensID(ctx con
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -1091,7 +1087,6 @@ func (s *SystemAccountsAccessTokens) DeleteSystemAccountsIDAccessTokensID(ctx co
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}

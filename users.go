@@ -38,7 +38,6 @@ func (s *Users) ListUsers(ctx context.Context, request operations.ListUsersReque
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -263,7 +262,6 @@ func (s *Users) GetUser(ctx context.Context, userID string, opts ...operations.O
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -506,7 +504,6 @@ func (s *Users) UpdateUser(ctx context.Context, userID string, updateUser *compo
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -775,7 +772,6 @@ func (s *Users) DeleteUser(ctx context.Context, userID string, opts ...operation
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
