@@ -3,16 +3,44 @@
   "extends": [
     "config:recommended"
   ],
+  "enabledManagers": [
+    "custom.regex",
+    "gomod"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "schedule": "before 5am every weekday",
   "packageRules": [
     {
-      "packagePatterns": ["*"],
+      "matchManagers": [
+        "gomod"
+      ],
+      "matchPackageNames": [
+        "*"
+      ],
       "enabled": false
     },
   {
-      "packageNames": [
+      "matchManagers": [
+        "gomod"
+      ],
+      "matchPackageNames": [
         "github.com/stretchr/testify"
       ],
       "enabled": true
+  }
+  ],
+  "customManagers": [
+    {
+      "description": "Match dependencies in .github/workflows/.*.yaml that are properly annotated with `# renovate: datasource={} depName={}.`",
+      "customType": "regex",
+      "fileMatch": [
+        "^.github/workflows/.*.yaml$"
+      ],
+      "matchStrings": [
+        "(?<currentValue>[0-9.]+?)\\s+#\\s+renovate:\\s+datasource=(?<datasource>.*?)\\s+depName=(?<depName>.*?)\\n"
+      ]
     }
   ]
 }
