@@ -51,3 +51,4 @@ jobs:
       env:
         KONNECT_API_URL: ${{ matrix.konnect-api-url }}
         KONNECT_API_PAT: ${{ secrets.KONNECT_API_PAT }}
+        KONG_CUSTOM_DOMAIN: konghq.tech
