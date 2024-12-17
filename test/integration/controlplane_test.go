@@ -4,8 +4,10 @@ import (
 	"context"
 	"testing"
 
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	sdkkonnectcomp "github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectops "github.com/Kong/sdk-konnect-go/models/operations"
 )
@@ -46,43 +48,98 @@ func TestControlPlaneList(t *testing.T) {
 
 	sdk := SDK(t)
 
-	ctx := context.Background()
-	reqList := sdkkonnectops.ListControlPlanesRequest{
-		// TODO listing doesn't work with criteria yet.
+	testcases := []struct {
+		name          string
+		createFunc    func(ctx context.Context, t *testing.T, sdk *sdkkonnectgo.ControlPlanes)
+		req           sdkkonnectops.ListControlPlanesRequest
+		expectedError bool
+		assert        func(t *testing.T, resp *sdkkonnectops.ListControlPlanesResponse)
+	}{
+		{
+			name: "no filter",
+			req:  sdkkonnectops.ListControlPlanesRequest{},
+			assert: func(t *testing.T, resp *sdkkonnectops.ListControlPlanesResponse) {
+				require.NotNil(t, resp)
+			},
+		},
+		{
+			name: "filter by name eq",
+			createFunc: func(ctx context.Context, t *testing.T, sdk *sdkkonnectgo.ControlPlanes) {
+				req := sdkkonnectcomp.CreateControlPlaneRequest{
+					Name: KonnectTestRunID(t) + "-filter-1",
+				}
+				resp, err := sdk.CreateControlPlane(ctx, req)
+				require.NoError(t, err)
+				t.Cleanup(func() {
+					_, err := sdk.DeleteControlPlane(ctx, resp.ControlPlane.ID)
+					assert.NoError(t, err)
+				})
+			},
+			req: sdkkonnectops.ListControlPlanesRequest{
+				Filter: &sdkkonnectcomp.ControlPlaneFilterParameters{
+					Name: &sdkkonnectcomp.Name{
+						StringFieldEqualsFilter: &sdkkonnectcomp.StringFieldEqualsFilter{
+							Str: Ptr(KonnectTestRunID(t) + "-filter-1"),
+						},
+					},
+				},
+			},
+			assert: func(t *testing.T, resp *sdkkonnectops.ListControlPlanesResponse) {
+				require.NotNil(t, resp)
+				require.Len(t, resp.ListControlPlanesResponse.Data, 1)
+			},
+		},
+		{
+			name: "filter by name and cluster type",
+			createFunc: func(ctx context.Context, t *testing.T, sdk *sdkkonnectgo.ControlPlanes) {
+				req := sdkkonnectcomp.CreateControlPlaneRequest{
+					Name:        KonnectTestRunID(t) + "-type-1",
+					ClusterType: Ptr(sdkkonnectcomp.CreateControlPlaneRequestClusterTypeClusterTypeK8SIngressController),
+				}
+				resp, err := sdk.CreateControlPlane(ctx, req)
+				require.NoError(t, err)
+				t.Cleanup(func() {
+					_, err := sdk.DeleteControlPlane(ctx, resp.ControlPlane.ID)
+					assert.NoError(t, err)
+				})
+			},
+			req: sdkkonnectops.ListControlPlanesRequest{
+				Filter: &sdkkonnectcomp.ControlPlaneFilterParameters{
+					Name: &sdkkonnectcomp.Name{
+						StringFieldEqualsFilter: &sdkkonnectcomp.StringFieldEqualsFilter{
+							Str: Ptr(KonnectTestRunID(t) + "-type-1"),
+						},
+					},
+					ClusterType: &sdkkonnectcomp.ClusterType{
+						StringFieldEqualsFilter: &sdkkonnectcomp.StringFieldEqualsFilter{
+							Str: Ptr(string(sdkkonnectcomp.CreateControlPlaneRequestClusterTypeClusterTypeK8SIngressController)),
+						},
+					},
+				},
+			},
+			assert: func(t *testing.T, resp *sdkkonnectops.ListControlPlanesResponse) {
+				require.NotNil(t, resp)
+				require.Len(t, resp.ListControlPlanesResponse.Data, 1)
+			},
+		},
 	}
-	respList, err := sdk.ControlPlanes.ListControlPlanes(ctx, reqList)
-	require.NoError(t, err)
-	require.NotNil(t, respList.ListControlPlanesResponse)
 
-	// TODO listing doesn't work with criteria yet.
+	for _, tc := range testcases {
+		t.Run(tc.name, func(t *testing.T) {
+			ctx := context.Background()
+			if tc.createFunc != nil {
+				tc.createFunc(ctx, t, sdk.ControlPlanes)
+			}
+			respList, err := sdk.ControlPlanes.ListControlPlanes(ctx, tc.req)
+			if tc.expectedError {
+				require.Error(t, err)
+				return
+			}
 
-	// require.Empty(t, respList.ListControlPlanesResponse.Data)
-
-	// req := sdkkonnectcomp.CreateControlPlaneRequest{
-	// 	Name:   cpName,
-	// 	Labels: Labels(t),
-	// }
-	// resp, err := sdk.ControlPlanes.CreateControlPlane(ctx, req)
-	// require.NoError(t, err)
-	// t.Cleanup(func() {
-	// 	_, err := sdk.ControlPlanes.DeleteControlPlane(ctx, resp.ControlPlane.ID)
-	// 	require.NoError(t, err)
-	// })
-
-	// require.NotNil(t, resp)
-
-	// reqList = sdkkonnectops.ListControlPlanesRequest{
-	// 	Filter: &sdkkonnectcomp.ControlPlaneFilterParameters{
-	// 		ID: &sdkkonnectcomp.ID{
-	// 			StringFieldOEQFilter: &sdkkonnectcomp.StringFieldOEQFilter{
-	// 				Oeq: resp.ControlPlane.GetID(),
-	// 			},
-	// 		},
-	// 	},
-	// }
-	// respList, err = sdk.ControlPlanes.ListControlPlanes(ctx, reqList)
-	// require.NoError(t, err)
-	// require.NotEmpty(t, respList.ListControlPlanesResponse.Data)
-	// require.Len(t, respList.ListControlPlanesResponse.Data, 1)
-	// require.Equal(t, respList.ListControlPlanesResponse.Data[0].ID, resp.ControlPlane.ID)
+			require.NoError(t, err)
+			if tc.assert != nil {
+				tc.assert(t, respList)
+			}
+		})
+	}
 }
