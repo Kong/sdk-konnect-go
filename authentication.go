@@ -41,7 +41,6 @@ func (s *Authentication) AuthenticateSso(ctx context.Context, organizationLoginP
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}

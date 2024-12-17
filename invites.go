@@ -38,7 +38,6 @@ func (s *Invites) InviteUser(ctx context.Context, request *components.InviteUser
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}

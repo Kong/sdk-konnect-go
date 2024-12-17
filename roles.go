@@ -38,7 +38,6 @@ func (s *Roles) GetPredefinedRoles(ctx context.Context, opts ...operations.Optio
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -281,7 +280,6 @@ func (s *Roles) ListTeamRoles(ctx context.Context, teamID string, filter *operat
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -570,7 +568,6 @@ func (s *Roles) TeamsAssignRole(ctx context.Context, teamID string, assignRole *
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -882,7 +879,6 @@ func (s *Roles) TeamsRemoveRole(ctx context.Context, teamID string, roleID strin
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -1147,7 +1143,6 @@ func (s *Roles) ListUserRoles(ctx context.Context, userID string, filter *operat
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -1394,7 +1389,6 @@ func (s *Roles) UsersAssignRole(ctx context.Context, userID string, assignRole *
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -1706,7 +1700,6 @@ func (s *Roles) UsersRemoveRole(ctx context.Context, userID string, roleID strin
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}

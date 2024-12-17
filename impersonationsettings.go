@@ -38,7 +38,6 @@ func (s *ImpersonationSettings) GetImpersonationSettings(ctx context.Context, op
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -276,7 +275,6 @@ func (s *ImpersonationSettings) UpdateImpersonationSettings(ctx context.Context,
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}

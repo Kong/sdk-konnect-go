@@ -38,7 +38,6 @@ func (s *Me) GetOrganizationsMe(ctx context.Context, opts ...operations.Option) 
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
@@ -255,7 +254,6 @@ func (s *Me) GetUsersMe(ctx context.Context, opts ...operations.Option) (*operat
 
 	o := operations.Options{}
 	supportedOptions := []string{
-		operations.SupportedOptionServerURL,
 		operations.SupportedOptionRetries,
 		operations.SupportedOptionTimeout,
 	}
