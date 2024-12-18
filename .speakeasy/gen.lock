@@ -3,10 +3,10 @@ id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
   docChecksum: e7f0997368d05f4181c30c542b81c1b8
   docVersion: 0.0.1
-  speakeasyVersion: 1.455.7
-  generationVersion: 2.480.1
-  releaseVersion: 0.1.13
-  configChecksum: 2eb0a814765f2c0824d21f551f48825e
+  speakeasyVersion: 1.456.0
+  generationVersion: 2.481.0
+  releaseVersion: 0.1.14
+  configChecksum: dfdd25813314f765054f9b4f0b36e1f3
 features:
   go:
     additionalDependencies: 0.1.0
@@ -2508,6 +2508,9 @@ examples:
         path:
           pluginName: "<value>"
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {}
   list-plugin-with-service:
     "":
       parameters:
@@ -2932,17 +2935,26 @@ examples:
         query:
           page[size]: 10
           page[after]: "ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"
+      responses:
+        "200":
+          application/json: {}
   create-dataplane-certificate:
     speakeasy-default-create-dataplane-certificate:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "201":
+          application/json: {}
   get-dataplane-certificate:
     speakeasy-default-get-dataplane-certificate:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           certificateId: "<value>"
+      responses:
+        "200":
+          application/json: {}
   delete-dataplane-certificate:
     speakeasy-default-delete-dataplane-certificate:
       parameters:
@@ -2965,6 +2977,9 @@ examples:
         query:
           page[size]: 10
           page[after]: "ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"
+      responses:
+        "200":
+          application/json: {}
   get-nodes-node_id:
     "":
       parameters:
@@ -2987,6 +3002,9 @@ examples:
         query:
           page[size]: 10
           page[after]: "ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"
+      responses:
+        "200":
+          application/json: {}
   get-control-planes-id-group-member-status:
     speakeasy-default-get-control-planes-id-group-member-status:
       parameters:
@@ -3065,7 +3083,7 @@ examples:
           id: "<id>"
       responses:
         "200":
-          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "conflicts": [], "state": "CONFLICT"}
+          application/json: {}
         "400":
           application/problem+json: {"status": 801860, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
