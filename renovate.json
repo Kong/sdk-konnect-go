@@ -21,7 +21,7 @@
       ],
       "enabled": false
     },
-  {
+    {
       "matchManagers": [
         "gomod"
       ],
@@ -29,7 +29,23 @@
         "github.com/stretchr/testify"
       ],
       "enabled": true
-  }
+    },
+    {
+      "description": "Add 'patch' label to a renovate PR if it is a minor or patch upgrade",
+      "matchManagers": [
+        "custom.regex"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "matchPackageNames": [
+        "speakeasy-api/speakeasy"
+      ],
+      "addLabels": [
+        "patch"
+      ]
+    }
   ],
   "customManagers": [
     {
