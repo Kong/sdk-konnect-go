@@ -1,0 +1,852 @@
+lockVersion: 2.0.0
+id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
+management:
+  docChecksum: 56db0cd737c3bb799c5316990bf62956
+  docVersion: 2.0.0
+  speakeasyVersion: 1.466.1
+  generationVersion: 2.488.4
+  releaseVersion: 0.0.1
+  configChecksum: 8f6372903a8a29333a40a171297cf08a
+features:
+  go:
+    additionalDependencies: 0.1.0
+    core: 3.6.2
+    defaultEnabledRetries: 0.2.0
+    envVarSecurityUsage: 0.3.2
+    flattening: 2.81.1
+    globalSecurity: 2.82.10
+    globalSecurityCallbacks: 0.1.0
+    globalServerURLs: 2.82.2
+    intellisenseMarkdownSupport: 0.1.0
+    nameOverrides: 2.81.2
+    nullables: 0.1.0
+    responseFormat: 0.1.2
+    retries: 2.83.2
+    sdkHooks: 0.1.0
+    unions: 2.85.10
+generatedFiles:
+  - .gitattributes
+  - /models/components/controlplane.go
+  - /models/components/controlplanesummary.go
+  - /models/components/createcontrolplanerequest.go
+  - /models/components/groupconflict.go
+  - /models/components/groupconflictresource.go
+  - /models/components/groupmembership.go
+  - /models/components/groupmemberstatus.go
+  - /models/components/groupstatus.go
+  - /models/components/invalidparameterchoiceitem.go
+  - /models/components/invalidparameterdependentitem.go
+  - /models/components/invalidparameters.go
+  - /models/components/invalidrules.go
+  - /models/components/listcontrolplanesresponse.go
+  - /models/components/listgroupmemberships.go
+  - /models/components/offsetpage.go
+  - /models/components/pagemeta.go
+  - /models/components/paginatedmeta.go
+  - /models/components/proxyurl.go
+  - /models/components/security.go
+  - /models/components/updatecontrolplanerequest.go
+  - /models/operations/createcontrolplane.go
+  - /models/operations/deletecontrolplane.go
+  - /models/operations/getcontrolplane.go
+  - /models/operations/getcontrolplanesidgroupmemberships.go
+  - /models/operations/getcontrolplanesidgroupmemberstatus.go
+  - /models/operations/getcontrolplanesidgroupstatus.go
+  - /models/operations/listcontrolplanes.go
+  - /models/operations/postcontrolplanesidgroupmembershipsadd.go
+  - /models/operations/postcontrolplanesidgroupmembershipsremove.go
+  - /models/operations/updatecontrolplane.go
+  - /models/sdkerrors/badrequesterror.go
+  - /models/sdkerrors/conflicterror.go
+  - /models/sdkerrors/forbiddenerror.go
+  - /models/sdkerrors/internalservererror.go
+  - /models/sdkerrors/notfounderror.go
+  - /models/sdkerrors/serviceunavailable.go
+  - /models/sdkerrors/unauthorizederror.go
+  - CONTRIBUTING.md
+  - USAGE.md
+  - controlplanegroups.go
+  - controlplanes.go
+  - docs/models/components/authtype.md
+  - docs/models/components/clustertype.md
+  - docs/models/components/config.md
+  - docs/models/components/controlplane.md
+  - docs/models/components/controlplanesummary.md
+  - docs/models/components/controlplanesummaryauthtype.md
+  - docs/models/components/controlplanesummaryclustertype.md
+  - docs/models/components/controlplanesummaryconfig.md
+  - docs/models/components/createcontrolplanerequest.md
+  - docs/models/components/groupconflict.md
+  - docs/models/components/groupconflictresource.md
+  - docs/models/components/groupmembership.md
+  - docs/models/components/groupmemberstatus.md
+  - docs/models/components/groupstatus.md
+  - docs/models/components/invalidparameterchoiceitem.md
+  - docs/models/components/invalidparameterdependentitem.md
+  - docs/models/components/invalidparameters.md
+  - docs/models/components/invalidrules.md
+  - docs/models/components/listcontrolplanesresponse.md
+  - docs/models/components/listgroupmemberships.md
+  - docs/models/components/members.md
+  - docs/models/components/offsetpage.md
+  - docs/models/components/pagemeta.md
+  - docs/models/components/paginatedmeta.md
+  - docs/models/components/proxyurl.md
+  - docs/models/components/rule.md
+  - docs/models/components/security.md
+  - docs/models/components/state.md
+  - docs/models/components/updatecontrolplanerequest.md
+  - docs/models/components/updatecontrolplanerequestauthtype.md
+  - docs/models/operations/createcontrolplaneresponse.md
+  - docs/models/operations/deletecontrolplanerequest.md
+  - docs/models/operations/deletecontrolplaneresponse.md
+  - docs/models/operations/getcontrolplanerequest.md
+  - docs/models/operations/getcontrolplaneresponse.md
+  - docs/models/operations/getcontrolplanesidgroupmembershipsrequest.md
+  - docs/models/operations/getcontrolplanesidgroupmembershipsresponse.md
+  - docs/models/operations/getcontrolplanesidgroupmemberstatusrequest.md
+  - docs/models/operations/getcontrolplanesidgroupmemberstatusresponse.md
+  - docs/models/operations/getcontrolplanesidgroupstatusrequest.md
+  - docs/models/operations/getcontrolplanesidgroupstatusresponse.md
+  - docs/models/operations/listcontrolplanesrequest.md
+  - docs/models/operations/listcontrolplanesresponse.md
+  - docs/models/operations/option.md
+  - docs/models/operations/postcontrolplanesidgroupmembershipsaddrequest.md
+  - docs/models/operations/postcontrolplanesidgroupmembershipsaddresponse.md
+  - docs/models/operations/postcontrolplanesidgroupmembershipsremoverequest.md
+  - docs/models/operations/postcontrolplanesidgroupmembershipsremoveresponse.md
+  - docs/models/operations/updatecontrolplanerequest.md
+  - docs/models/operations/updatecontrolplaneresponse.md
+  - docs/models/sdkerrors/badrequesterror.md
+  - docs/models/sdkerrors/conflicterror.md
+  - docs/models/sdkerrors/forbiddenerror.md
+  - docs/models/sdkerrors/internalservererror.md
+  - docs/models/sdkerrors/internalservererrorstatus.md
+  - docs/models/sdkerrors/notfounderror.md
+  - docs/models/sdkerrors/serviceunavailable.md
+  - docs/models/sdkerrors/status.md
+  - docs/models/sdkerrors/unauthorizederror.md
+  - docs/sdks/controlplanegroups/README.md
+  - docs/sdks/controlplanes/README.md
+  - docs/sdks/sdk/README.md
+  - go.mod
+  - internal/hooks/hooks.go
+  - internal/utils/contenttype.go
+  - internal/utils/env.go
+  - internal/utils/form.go
+  - internal/utils/headers.go
+  - internal/utils/json.go
+  - internal/utils/pathparams.go
+  - internal/utils/queryparams.go
+  - internal/utils/requestbody.go
+  - internal/utils/retries.go
+  - internal/utils/security.go
+  - internal/utils/utils.go
+  - models/operations/options.go
+  - models/sdkerrors/sdkerror.go
+  - retry/config.go
+  - sdk.go
+  - types/bigint.go
+  - types/date.go
+  - types/datetime.go
+  - types/decimal.go
+  - types/pointers.go
+examples:
+  list-control-planes:
+    "":
+      parameters:
+        query:
+          filter[name][eq]: "test"
+          filter[name]: "test"
+          filter[name][contains]: "test"
+          filter[name][neq]: "test"
+          filter[id][eq]: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          filter[id]: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          filter[id][oeq]: "some-value,some-other-value"
+          filter[cluster_type][eq]: "CLUSTER_TYPE_CONTROL_PLANE"
+          filter[cluster_type]: "CLUSTER_TYPE_CONTROL_PLANE"
+          filter[cluster_type][neq]: "test"
+          labels: "key:value,existCheck"
+      responses:
+        "200":
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "Test Control Plane", "description": "A test control plane for exploration.", "labels": {"env": "test"}, "config": {"control_plane_endpoint": "https://acfe5f253f.cp0.konghq.com", "telemetry_endpoint": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "Test Control Plane", "description": "A test control plane for exploration.", "labels": {"env": "test"}, "config": {"control_plane_endpoint": "https://acfe5f253f.cp0.konghq.com", "telemetry_endpoint": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "type": "https://httpstatuses.com/400", "instance": "kong:trace:1234567890", "detail": "Invalid request body", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "503":
+          application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+    Request Format Invalid:
+      parameters:
+        query:
+          filter[name][eq]: "test"
+          filter[name]: "test"
+          filter[name][contains]: "test"
+          filter[name][neq]: "test"
+          filter[id][eq]: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          filter[id]: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          filter[id][oeq]: "some-value,some-other-value"
+          filter[cluster_type][eq]: "CLUSTER_TYPE_CONTROL_PLANE"
+          filter[cluster_type]: "CLUSTER_TYPE_CONTROL_PLANE"
+          filter[cluster_type][neq]: "test"
+          labels: "key:value,existCheck"
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:3674017986744198214", "detail": "Invalid request body", "invalid_parameters": [{"field": "body", "reason": "request format is invalid"}]}
+    Cannot Be Blank:
+      parameters:
+        query:
+          filter[name][eq]: "test"
+          filter[name]: "test"
+          filter[name][contains]: "test"
+          filter[name][neq]: "test"
+          filter[id][eq]: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          filter[id]: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          filter[id][oeq]: "some-value,some-other-value"
+          filter[cluster_type][eq]: "CLUSTER_TYPE_CONTROL_PLANE"
+          filter[cluster_type]: "CLUSTER_TYPE_CONTROL_PLANE"
+          filter[cluster_type][neq]: "test"
+          labels: "key:value,existCheck"
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:6644808935508571943", "detail": "Invalid request body", "invalid_parameters": [{"field": "name", "reason": "cannot be blank"}]}
+    Invalid ID Format:
+      parameters:
+        query:
+          filter[name][eq]: "test"
+          filter[name]: "test"
+          filter[name][contains]: "test"
+          filter[name][neq]: "test"
+          filter[id][eq]: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          filter[id]: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          filter[id][oeq]: "some-value,some-other-value"
+          filter[cluster_type][eq]: "CLUSTER_TYPE_CONTROL_PLANE"
+          filter[cluster_type]: "CLUSTER_TYPE_CONTROL_PLANE"
+          filter[cluster_type][neq]: "test"
+          labels: "key:value,existCheck"
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:8988732526256293040", "detail": "Invalid request body", "invalid_parameters": [{"field": "id", "reason": "invalid ID format"}]}
+    Usage Limits Reached:
+      parameters:
+        query:
+          filter[name][eq]: "test"
+          filter[name]: "test"
+          filter[name][contains]: "test"
+          filter[name][neq]: "test"
+          filter[id][eq]: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          filter[id]: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          filter[id][oeq]: "some-value,some-other-value"
+          filter[cluster_type][eq]: "CLUSTER_TYPE_CONTROL_PLANE"
+          filter[cluster_type]: "CLUSTER_TYPE_CONTROL_PLANE"
+          filter[cluster_type][neq]: "test"
+          labels: "key:value,existCheck"
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:8988732526256293040", "detail": "Cannot create an additional control plane because usage limits have been reached.", "invalid_parameters": [{"field": "name", "reason": "is a required field"}]}
+    Unknown Property:
+      parameters:
+        query:
+          filter[name][eq]: "test"
+          filter[name]: "test"
+          filter[name][contains]: "test"
+          filter[name][neq]: "test"
+          filter[id][eq]: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          filter[id]: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          filter[id][oeq]: "some-value,some-other-value"
+          filter[cluster_type][eq]: "CLUSTER_TYPE_CONTROL_PLANE"
+          filter[cluster_type]: "CLUSTER_TYPE_CONTROL_PLANE"
+          filter[cluster_type][neq]: "test"
+          labels: "key:value,existCheck"
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:8988732526256293040", "detail": "Invalid request body", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": []}]}
+    Unauthorized:
+      parameters:
+        query:
+          filter[name][eq]: "test"
+          filter[name]: "test"
+          filter[name][contains]: "test"
+          filter[name][neq]: "test"
+          filter[id][eq]: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          filter[id]: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          filter[id][oeq]: "some-value,some-other-value"
+          filter[cluster_type][eq]: "CLUSTER_TYPE_CONTROL_PLANE"
+          filter[cluster_type]: "CLUSTER_TYPE_CONTROL_PLANE"
+          filter[cluster_type][neq]: "test"
+          labels: "key:value,existCheck"
+      responses:
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthenticated", "instance": "konnect:trace:952172606039454040", "detail": "A valid token is required"}
+    Permission Denied:
+      parameters:
+        query:
+          filter[name][eq]: "test"
+          filter[name]: "test"
+          filter[name][contains]: "test"
+          filter[name][neq]: "test"
+          filter[id][eq]: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          filter[id]: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          filter[id][oeq]: "some-value,some-other-value"
+          filter[cluster_type][eq]: "CLUSTER_TYPE_CONTROL_PLANE"
+          filter[cluster_type]: "CLUSTER_TYPE_CONTROL_PLANE"
+          filter[cluster_type][neq]: "test"
+          labels: "key:value,existCheck"
+      responses:
+        "403":
+          application/problem+json: {"status": 403, "title": "Permission denied", "instance": "konnect:trace:2822394689570210664", "detail": "Insufficient role-set to create control planes."}
+    Service Unavailable:
+      parameters:
+        query:
+          filter[name][eq]: "test"
+          filter[name]: "test"
+          filter[name][contains]: "test"
+          filter[name][neq]: "test"
+          filter[id][eq]: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          filter[id]: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          filter[id][oeq]: "some-value,some-other-value"
+          filter[cluster_type][eq]: "CLUSTER_TYPE_CONTROL_PLANE"
+          filter[cluster_type]: "CLUSTER_TYPE_CONTROL_PLANE"
+          filter[cluster_type][neq]: "test"
+          labels: "key:value,existCheck"
+      responses:
+        "503":
+          application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+  create-control-plane:
+    Example Request Body:
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "cluster_type": "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER", "cloud_gateway": false, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "201":
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "Test Control Plane", "description": "A test control plane for exploration.", "labels": {"env": "test"}, "config": {"control_plane_endpoint": "https://acfe5f253f.cp0.konghq.com", "telemetry_endpoint": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "type": "https://httpstatuses.com/400", "instance": "kong:trace:1234567890", "detail": "Invalid request body", "invalid_parameters": [{"field": "name", "reason": "is a required field"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "409":
+          application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
+        "500":
+          application/problem+json: {"status": 500, "title": "Internal Server Error", "instance": "konnect:trace:2287285207635123011", "detail": "Could not propagate control plane changes to control plane cluster service."}
+        "503":
+          application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+    Create Control Plane Response:
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": false, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "201":
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "Test Control Plane", "description": "A test control plane for exploration.", "labels": {"env": "test"}, "config": {"control_plane_endpoint": "https://acfe5f253f.cp0.konghq.com", "telemetry_endpoint": "https://acfe5f253f.tp0.konghq.com"}}
+    Request Format Invalid:
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": false, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:3674017986744198214", "detail": "Invalid request body", "invalid_parameters": [{"field": "body", "reason": "request format is invalid"}]}
+    Cannot Be Blank:
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": false, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:6644808935508571943", "detail": "Invalid request body", "invalid_parameters": [{"field": "name", "reason": "cannot be blank"}]}
+    Invalid ID Format:
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": false, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:8988732526256293040", "detail": "Invalid request body", "invalid_parameters": [{"field": "id", "reason": "invalid ID format"}]}
+    Usage Limits Reached:
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": false, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:8988732526256293040", "detail": "Cannot create an additional control plane because usage limits have been reached.", "invalid_parameters": [{"field": "name", "reason": "is a required field"}, {"field": "name", "reason": "is a required field"}]}
+    Unknown Property:
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": false, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:8988732526256293040", "detail": "Invalid request body", "invalid_parameters": [{"field": "name", "reason": "is a required field"}]}
+    Unauthorized:
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": false, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthenticated", "instance": "konnect:trace:952172606039454040", "detail": "A valid token is required"}
+    Permission Denied:
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": false, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "403":
+          application/problem+json: {"status": 403, "title": "Permission denied", "instance": "konnect:trace:2822394689570210664", "detail": "Insufficient role-set to create control planes."}
+    Conflict:
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": false, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "409":
+          application/problem+json: {"status": 409, "title": "Conflict", "instance": "konnect:trace:2287285207635123011", "detail": "Control Plane with provided name already exists."}
+    Internal Server Error:
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": false, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "500":
+          application/problem+json: {"status": 500, "title": "Internal Server Error", "instance": "konnect:trace:2287285207635123011", "detail": "Could not propagate control plane changes to control plane cluster service."}
+    Service Unavailable:
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": false, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "503":
+          application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+  get-control-plane:
+    Single control plane response:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "200":
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "Test Control Plane", "description": "A test control plane for exploration.", "labels": {"env": "test"}, "config": {"control_plane_endpoint": "https://acfe5f253f.cp0.konghq.com", "telemetry_endpoint": "https://acfe5f253f.tp0.konghq.com"}}
+    Request Format Invalid:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:3674017986744198214", "detail": "Invalid request body", "invalid_parameters": [{"field": "body", "reason": "request format is invalid"}]}
+    Cannot Be Blank:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:6644808935508571943", "detail": "Invalid request body", "invalid_parameters": [{"field": "name", "reason": "cannot be blank"}]}
+    Invalid ID Format:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:8988732526256293040", "detail": "Invalid request body", "invalid_parameters": [{"field": "id", "reason": "invalid ID format"}]}
+    Usage Limits Reached:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:8988732526256293040", "detail": "Cannot create an additional control plane because usage limits have been reached.", "invalid_parameters": [{"field": "name", "reason": "is a required field"}]}
+    Unknown Property:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:8988732526256293040", "detail": "Invalid request body", "invalid_parameters": [{"field": "name", "reason": "is a required field"}]}
+    Unauthorized:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthenticated", "instance": "konnect:trace:952172606039454040", "detail": "A valid token is required"}
+    Permission Denied:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "403":
+          application/problem+json: {"status": 403, "title": "Permission denied", "instance": "konnect:trace:2822394689570210664", "detail": "Insufficient role-set to create control planes."}
+    Not Found:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "instance": "konnect:trace:2287285207635123011", "detail": "The requested control plane was not found."}
+    Service Unavailable:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "503":
+          application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+  update-control-plane:
+    Example Request Body:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "development"}}
+      responses:
+        "200":
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "Test Control Plane", "description": "A test control plane for exploration.", "labels": {"env": "test"}, "config": {"control_plane_endpoint": "https://acfe5f253f.cp0.konghq.com", "telemetry_endpoint": "https://acfe5f253f.tp0.konghq.com"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "type": "https://httpstatuses.com/400", "instance": "kong:trace:1234567890", "detail": "Invalid request body", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": []}, {"field": "name", "reason": "is a required field"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "500":
+          application/problem+json: {"status": 500, "title": "Internal Server Error", "instance": "konnect:trace:2287285207635123011", "detail": "Could not propagate control plane changes to control plane cluster service."}
+        "503":
+          application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+    Update Control Plane Response:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "auth_type": "pinned_client_certs", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "200":
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "Test Control Plane", "description": "A test control plane for exploration.", "labels": {"env": "test"}, "config": {"control_plane_endpoint": "https://acfe5f253f.cp0.konghq.com", "telemetry_endpoint": "https://acfe5f253f.tp0.konghq.com"}}
+    Request Format Invalid:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "auth_type": "pinned_client_certs", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:3674017986744198214", "detail": "Invalid request body", "invalid_parameters": [{"field": "body", "reason": "request format is invalid"}]}
+    Cannot Be Blank:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "auth_type": "pinned_client_certs", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:6644808935508571943", "detail": "Invalid request body", "invalid_parameters": [{"field": "name", "reason": "cannot be blank"}]}
+    Invalid ID Format:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "auth_type": "pinned_client_certs", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:8988732526256293040", "detail": "Invalid request body", "invalid_parameters": [{"field": "id", "reason": "invalid ID format"}]}
+    Usage Limits Reached:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "auth_type": "pinned_client_certs", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:8988732526256293040", "detail": "Cannot create an additional control plane because usage limits have been reached.", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": []}]}
+    Unknown Property:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "auth_type": "pinned_client_certs", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:8988732526256293040", "detail": "Invalid request body", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value>", "<value>"]}]}
+    Unauthorized:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "auth_type": "pinned_client_certs", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthenticated", "instance": "konnect:trace:952172606039454040", "detail": "A valid token is required"}
+    Permission Denied:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "auth_type": "pinned_client_certs", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "403":
+          application/problem+json: {"status": 403, "title": "Permission denied", "instance": "konnect:trace:2822394689570210664", "detail": "Insufficient role-set to create control planes."}
+    Not Found:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "auth_type": "pinned_client_certs", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "instance": "konnect:trace:2287285207635123011", "detail": "The requested control plane was not found."}
+    Internal Server Error:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "auth_type": "pinned_client_certs", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "500":
+          application/problem+json: {"status": 500, "title": "Internal Server Error", "instance": "konnect:trace:2287285207635123011", "detail": "Could not propagate control plane changes to control plane cluster service."}
+    Service Unavailable:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      requestBody:
+        application/json: {"name": "Test Control Plane", "description": "A test control plane for exploration.", "auth_type": "pinned_client_certs", "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}], "labels": {"env": "test"}}
+      responses:
+        "503":
+          application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+  delete-control-plane:
+    Request Format Invalid:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:3674017986744198214", "detail": "Invalid request body", "invalid_parameters": [{"field": "body", "reason": "request format is invalid"}]}
+    Cannot Be Blank:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:6644808935508571943", "detail": "Invalid request body", "invalid_parameters": [{"field": "name", "reason": "cannot be blank"}]}
+    Invalid ID Format:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:8988732526256293040", "detail": "Invalid request body", "invalid_parameters": [{"field": "id", "reason": "invalid ID format"}]}
+    Usage Limits Reached:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:8988732526256293040", "detail": "Cannot create an additional control plane because usage limits have been reached.", "invalid_parameters": [{"field": "name", "reason": "is a required field"}, {"field": "name", "reason": "is a required field"}, {"field": "name", "reason": "is a required field"}]}
+    Unknown Property:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "instance": "konnect:trace:8988732526256293040", "detail": "Invalid request body", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value>"]}]}
+    Unauthorized:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthenticated", "instance": "konnect:trace:952172606039454040", "detail": "A valid token is required"}
+    Permission Denied:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "403":
+          application/problem+json: {"status": 403, "title": "Permission denied", "instance": "konnect:trace:2822394689570210664", "detail": "Insufficient role-set to create control planes."}
+    Not Found:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "instance": "konnect:trace:2287285207635123011", "detail": "The requested control plane was not found."}
+    Internal Server Error:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "500":
+          application/problem+json: {"status": 500, "title": "Internal Server Error", "instance": "konnect:trace:2287285207635123011", "detail": "Could not propagate control plane changes to control plane cluster service."}
+    Service Unavailable:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "503":
+          application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+  get-control-planes-id-group-member-status:
+    UnauthorizedExample:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "instance": "kong:trace:8347343766220159418", "detail": "Unauthorized"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "instance": "kong:trace:2723154947768991354", "detail": "You do not have permission to perform this action"}
+    NotFoundExample:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "instance": "kong:trace:6816496025408232265", "detail": "Not Found"}
+    Service Unavailable:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "503":
+          application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+  get-control-planes-id-group-memberships:
+    List Group Memberships Example:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          page[size]: 10
+          page[number]: 1
+      responses:
+        "200":
+          application/json: {"meta": {"page": {"number": 1, "size": 100, "total": 2}}, "data": [{"id": "774f2a35-509d-4b94-97e9-1ed49563bcb1", "name": "Group Member 1", "description": "Child RG", "labels": {"env": "prod"}, "config": {"control_plane_endpoint": "https://9e0353434a.us.cp0.konghq.com", "telemetry_endpoint": "https://9e0353434a.us.tp0.konghq.com", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": false, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}]}, "created_at": "2023-03-20T22:23:45.873Z", "updated_at": "2023-03-30T16:17:55.073Z"}, {"id": "e4a1917c-bb26-4aa1-9a3e-50ee366f13db", "name": "Group Member 2", "description": "Child RG", "labels": {"env": "prod", "foo": "bar"}, "config": {"control_plane_endpoint": "https://05459046af.us.cp0.konghq.com", "telemetry_endpoint": "https://05459046af.us.tp0.konghq.com", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": false, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}]}, "created_at": "2023-03-23T22:25:30.907Z", "updated_at": "2023-03-30T16:18:12.067Z"}]}
+    UnauthorizedExample:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          page[size]: 10
+          page[number]: 1
+      responses:
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "instance": "kong:trace:8347343766220159418", "detail": "Unauthorized"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "instance": "kong:trace:2723154947768991354", "detail": "You do not have permission to perform this action"}
+    NotFoundExample:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          page[size]: 10
+          page[number]: 1
+      responses:
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "instance": "kong:trace:6816496025408232265", "detail": "Not Found"}
+    Service Unavailable:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          page[size]: 10
+          page[number]: 1
+      responses:
+        "503":
+          application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+  post-control-planes-id-group-memberships-add:
+    Example 1:
+      parameters:
+        path:
+          id: "<id>"
+      requestBody:
+        application/json: {"members": [{"id": "1beb9ad3-d21b-4090-b6e3-574784d1166d"}, {"id": "778a0474-687d-41af-8e51-a0488d790586"}, {"id": "fa85f8e8-2e5a-496e-b6d0-4e534eaab459"}]}
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "type": "https://httpstatuses.com/400", "instance": "kong:trace:1234567890", "detail": "Invalid request body", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value>", "<value>", "<value>"]}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "503":
+          application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+    UnauthorizedExample:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "instance": "kong:trace:8347343766220159418", "detail": "Unauthorized"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "instance": "kong:trace:2723154947768991354", "detail": "You do not have permission to perform this action"}
+    NotFoundExample:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "instance": "kong:trace:6816496025408232265", "detail": "Not Found"}
+    Service Unavailable:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "503":
+          application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+  post-control-planes-id-group-memberships-remove:
+    Example 1:
+      parameters:
+        path:
+          id: "<id>"
+      requestBody:
+        application/json: {"members": [{"id": "1beb9ad3-d21b-4090-b6e3-574784d1166d"}, {"id": "778a0474-687d-41af-8e51-a0488d790586"}, {"id": "fa85f8e8-2e5a-496e-b6d0-4e534eaab459"}]}
+      responses:
+        "400":
+          application/problem+json: {"status": 400, "title": "Bad Request", "type": "https://httpstatuses.com/400", "instance": "kong:trace:1234567890", "detail": "Invalid request body", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value>", "<value>"]}, {"field": "name", "reason": "is a required field"}, {"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value>"]}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "503":
+          application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+    UnauthorizedExample:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "instance": "kong:trace:8347343766220159418", "detail": "Unauthorized"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "instance": "kong:trace:2723154947768991354", "detail": "You do not have permission to perform this action"}
+    NotFoundExample:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "instance": "kong:trace:6816496025408232265", "detail": "Not Found"}
+    Service Unavailable:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "503":
+          application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+  get-control-planes-id-group-status:
+    Group Conflict Status Example:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "conflicts": [{"cluster_id": "57fdf779-7935-476f-ab2b-7fa1323b70e6", "description": "conflicting entity found: ID=df43b088-cace-4119-9e2a-d83e5fbb0c48, Name=svc1", "resource": {"id": "df43b088-cace-4119-9e2a-d83e5fbb0c48", "type": "service"}}, {"cluster_id": "38ceea96-fe39-11ed-be56-0242ac120002", "description": "conflicting entity found: ID=15f3ab7d-7202-498a-95b4-334f783dbcdd, Name=svc1", "resource": {"id": "15f3ab7d-7202-498a-95b4-334f783dbcdd", "type": "service"}}], "state": "CONFLICT"}
+    Group No Conflict Status Example:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "conflicts": [{"cluster_id": "57fdf779-7935-476f-ab2b-7fa1323b70e6", "description": "conflicting entity found: ID=df43b088-cace-4119-9e2a-d83e5fbb0c48, Name=svc1", "resource": {"id": "df43b088-cace-4119-9e2a-d83e5fbb0c48", "type": "service"}}, {"cluster_id": "38ceea96-fe39-11ed-be56-0242ac120002", "description": "conflicting entity found: ID=15f3ab7d-7202-498a-95b4-334f783dbcdd, Name=svc1", "resource": {"id": "15f3ab7d-7202-498a-95b4-334f783dbcdd", "type": "service"}}], "state": "CONFLICT"}
+    UnauthorizedExample:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "instance": "kong:trace:8347343766220159418", "detail": "Unauthorized"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "instance": "kong:trace:2723154947768991354", "detail": "You do not have permission to perform this action"}
+    NotFoundExample:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "instance": "kong:trace:6816496025408232265", "detail": "Not Found"}
+    Service Unavailable:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "503":
+          application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+generatedTests: {}

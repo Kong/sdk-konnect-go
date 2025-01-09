@@ -1,0 +1,17 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    konnect:
+        inputs:
+            - location: ./openapi.yaml
+        registry:
+            location: registry.speakeasyapi.dev/kong/kong/konnect
+targets:
+    go:
+        target: go
+        source: konnect
+        output: .
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/kong/kong/konnect-go-code-samples
+            blocking: false

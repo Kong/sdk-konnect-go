@@ -1,0 +1,75 @@
+name: Generate SDK
+
+on:
+  pull_request:
+    paths:
+      - .speakeasy/gen.yaml
+    types:
+    - opened
+    - synchronize
+
+jobs:
+  # NOTE: This is a poor man's way of checking if the last commit was made by
+  # this workflow. If it was then we don't want to generate the SDK again.
+  should-generate:
+    permissions:
+      contents: read
+    runs-on:
+      - ubuntu-latest
+    outputs:
+      result: ${{ steps.decision.outputs.result }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ secrets.PAT }}
+      - id: decision
+        run: |
+            if [[ "$(git show -s --format=%B HEAD)" == "Update provider based on openapi.yaml changes" ]]; then
+              echo "result=false" >> "$GITHUB_OUTPUT"
+            else
+              echo "result=true" >> "$GITHUB_OUTPUT"
+            fi
+
+  generate:
+    needs:
+    - should-generate
+    permissions:
+      contents: write
+    runs-on:
+      - ubuntu-latest
+    if: needs.should-generate.outputs.result == 'true'
+    steps:
+      - name: Install Speakeasy
+        uses: mheap/setup-go-cli@fa9b01cdd4115eac636164f0de43bf7d51c82697 # v1.2.2
+        with:
+          owner: speakeasy-api
+          repo: speakeasy
+          cli_name: speakeasy
+          package_type: zip
+          version: 1.465.0 # renovate: datasource=github-releases depName=speakeasy-api/speakeasy
+
+      - name: Checkout current repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ secrets.PAT }}
+
+      - name: Configure speakeasy CLI
+        run: |
+          mkdir -p ~/.speakeasy
+          echo 'speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}' > ~/.speakeasy/config.yaml
+
+      - uses: jdx/mise-action@5083fe46898c414b2475087cc79da59e7da859e8 # v2.1.11
+        with:
+          install: false
+
+      - name: Generate SDK
+        run: make generate.sdk
+
+      - name: Commit SDK changes to the PR
+        uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9.1.4
+        with:
+          add: .
+          default_author: github_actor
+          message: Update provider based on openapi.yaml changes

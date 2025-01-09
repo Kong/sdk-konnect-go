@@ -1,0 +1,9 @@
+# PostControlPlanesIDGroupMembershipsAddRequest
+
+
+## Fields
+
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `ID`                                                                                        | *string*                                                                                    | :heavy_check_mark:                                                                          | ID of a control plane group                                                                 |
+| `GroupMembership`                                                                           | [*components.GroupMembership](../../models/components/groupmembership.md)                   | :heavy_minus_sign:                                                                          | Request body for adding a list of child control planes to a control plane group membership. |
