@@ -21,6 +21,7 @@ invalid parameters rules
 | `InvalidRulesIsFqdn`                                 | is_fqdn                                              |
 | `InvalidRulesIsArn`                                  | is_arn                                               |
 | `InvalidRulesUnknownProperty`                        | unknown_property                                     |
+| `InvalidRulesMissingReference`                       | missing_reference                                    |
 | `InvalidRulesIsLabel`                                | is_label                                             |
 | `InvalidRulesMatchesRegex`                           | matches_regex                                        |
 | `InvalidRulesInvalid`                                | invalid                                              |
