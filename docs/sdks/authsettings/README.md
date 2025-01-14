@@ -337,7 +337,11 @@ func main() {
         }),
     )
 
-    res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{})
+    res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
+        Data: []components.Data{
+            components.Data{},
+        },
+    })
     if err != nil {
         log.Fatal(err)
     }
