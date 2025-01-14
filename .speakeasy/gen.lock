@@ -3,15 +3,15 @@ id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
   docChecksum: 3fa21b5bc073d3ea4d54118051e31d65
   docVersion: 0.0.1
-  speakeasyVersion: 1.465.0
-  generationVersion: 2.486.6
-  releaseVersion: 0.1.19
-  configChecksum: c0813351eba42c757e53ec488c78183d
+  speakeasyVersion: 1.468.5
+  generationVersion: 2.493.11
+  releaseVersion: 0.1.20
+  configChecksum: 2652e074781e0e6dd5da078681ed8fbe
 features:
   go:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.6
-    core: 3.6.2
+    core: 3.6.5
     deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
     envVarSecurityUsage: 0.3.2
@@ -3165,7 +3165,7 @@ examples:
   patch-team-group-mappings:
     speakeasy-default-patch-team-group-mappings:
       requestBody:
-        application/json: {}
+        application/json: {"data": [{}]}
       responses:
         "200":
           application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"team_id": "6801e673-cc10-498a-94cd-4271de07a0d3", "groups": ["Tech Leads", "API Engineers"]}]}
