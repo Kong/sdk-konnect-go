@@ -31,6 +31,7 @@ func (s *JWTs) ListJwtWithConsumer(ctx context.Context, request operations.ListJ
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "list-jwt-with-consumer",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -205,11 +206,7 @@ func (s *JWTs) ListJwtWithConsumer(ctx context.Context, request operations.ListJ
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -234,6 +231,7 @@ func (s *JWTs) CreateJwtWithConsumer(ctx context.Context, request operations.Cre
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "create-jwt-with-consumer",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -412,11 +410,7 @@ func (s *JWTs) CreateJwtWithConsumer(ctx context.Context, request operations.Cre
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -441,6 +435,7 @@ func (s *JWTs) DeleteJwtWithConsumer(ctx context.Context, request operations.Del
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "delete-jwt-with-consumer",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -591,11 +586,7 @@ func (s *JWTs) DeleteJwtWithConsumer(ctx context.Context, request operations.Del
 	switch {
 	case httpRes.StatusCode == 204:
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -620,6 +611,7 @@ func (s *JWTs) GetJwtWithConsumer(ctx context.Context, request operations.GetJwt
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-jwt-with-consumer",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -792,11 +784,7 @@ func (s *JWTs) GetJwtWithConsumer(ctx context.Context, request operations.GetJwt
 	case httpRes.StatusCode == 404:
 		fallthrough
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -821,6 +809,7 @@ func (s *JWTs) UpsertJwtWithConsumer(ctx context.Context, request operations.Ups
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "upsert-jwt-with-consumer",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -999,11 +988,7 @@ func (s *JWTs) UpsertJwtWithConsumer(ctx context.Context, request operations.Ups
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1028,6 +1013,7 @@ func (s *JWTs) ListJwt(ctx context.Context, request operations.ListJwtRequest, o
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "list-jwt",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1223,11 +1209,7 @@ func (s *JWTs) ListJwt(ctx context.Context, request operations.ListJwtRequest, o
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1252,6 +1234,7 @@ func (s *JWTs) GetJwt(ctx context.Context, jwtID string, controlPlaneID string, 
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-jwt",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1450,11 +1433,7 @@ func (s *JWTs) GetJwt(ctx context.Context, jwtID string, controlPlaneID string, 
 	case httpRes.StatusCode == 404:
 		fallthrough
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {

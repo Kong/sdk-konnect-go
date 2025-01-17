@@ -31,6 +31,7 @@ func (s *SystemAccountsAccessTokens) GetSystemAccountIDAccessTokens(ctx context.
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-system-account-id-access-tokens",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -269,11 +270,7 @@ func (s *SystemAccountsAccessTokens) GetSystemAccountIDAccessTokens(ctx context.
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -298,6 +295,7 @@ func (s *SystemAccountsAccessTokens) PostSystemAccountsIDAccessTokens(ctx contex
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "post-system-accounts-id-access-tokens",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -545,11 +543,7 @@ func (s *SystemAccountsAccessTokens) PostSystemAccountsIDAccessTokens(ctx contex
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -574,6 +568,7 @@ func (s *SystemAccountsAccessTokens) GetSystemAccountsIDAccessTokensID(ctx conte
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-system-accounts-id-access-tokens-id",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -792,11 +787,7 @@ func (s *SystemAccountsAccessTokens) GetSystemAccountsIDAccessTokensID(ctx conte
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -821,6 +812,7 @@ func (s *SystemAccountsAccessTokens) PatchSystemAccountsIDAccessTokensID(ctx con
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "patch-system-accounts-id-access-tokens-id",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1063,11 +1055,7 @@ func (s *SystemAccountsAccessTokens) PatchSystemAccountsIDAccessTokensID(ctx con
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1092,6 +1080,7 @@ func (s *SystemAccountsAccessTokens) DeleteSystemAccountsIDAccessTokensID(ctx co
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "delete-system-accounts-id-access-tokens-id",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1290,11 +1279,7 @@ func (s *SystemAccountsAccessTokens) DeleteSystemAccountsIDAccessTokensID(ctx co
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {

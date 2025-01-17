@@ -33,6 +33,7 @@ func (s *ConsumerGroups) ListConsumerGroup(ctx context.Context, request operatio
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "list-consumer_group",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -228,11 +229,7 @@ func (s *ConsumerGroups) ListConsumerGroup(ctx context.Context, request operatio
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -257,6 +254,7 @@ func (s *ConsumerGroups) CreateConsumerGroup(ctx context.Context, controlPlaneID
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "create-consumer_group",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -461,11 +459,7 @@ func (s *ConsumerGroups) CreateConsumerGroup(ctx context.Context, controlPlaneID
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -490,6 +484,7 @@ func (s *ConsumerGroups) DeleteConsumerGroup(ctx context.Context, controlPlaneID
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "delete-consumer_group",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -666,11 +661,7 @@ func (s *ConsumerGroups) DeleteConsumerGroup(ctx context.Context, controlPlaneID
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -695,6 +686,7 @@ func (s *ConsumerGroups) GetConsumerGroup(ctx context.Context, consumerGroupID s
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-consumer_group",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -893,11 +885,7 @@ func (s *ConsumerGroups) GetConsumerGroup(ctx context.Context, consumerGroupID s
 	case httpRes.StatusCode == 404:
 		fallthrough
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -922,6 +910,7 @@ func (s *ConsumerGroups) UpsertConsumerGroup(ctx context.Context, request operat
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "upsert-consumer_group",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1121,11 +1110,7 @@ func (s *ConsumerGroups) UpsertConsumerGroup(ctx context.Context, request operat
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1150,6 +1135,7 @@ func (s *ConsumerGroups) RemoveAllConsumersFromConsumerGroup(ctx context.Context
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "remove-all-consumers-from-consumer-group",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1307,11 +1293,7 @@ func (s *ConsumerGroups) RemoveAllConsumersFromConsumerGroup(ctx context.Context
 	case httpRes.StatusCode == 404:
 		fallthrough
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1336,6 +1318,7 @@ func (s *ConsumerGroups) ListConsumersForConsumerGroup(ctx context.Context, requ
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "list-consumers-for-consumer-group",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1510,11 +1493,7 @@ func (s *ConsumerGroups) ListConsumersForConsumerGroup(ctx context.Context, requ
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1539,6 +1518,7 @@ func (s *ConsumerGroups) AddConsumerToGroup(ctx context.Context, request operati
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "add-consumer-to-group",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1717,11 +1697,7 @@ func (s *ConsumerGroups) AddConsumerToGroup(ctx context.Context, request operati
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1746,6 +1722,7 @@ func (s *ConsumerGroups) RemoveConsumerFromGroup(ctx context.Context, request op
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "remove-consumer-from-group",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1896,11 +1873,7 @@ func (s *ConsumerGroups) RemoveConsumerFromGroup(ctx context.Context, request op
 	switch {
 	case httpRes.StatusCode == 204:
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1925,6 +1898,7 @@ func (s *ConsumerGroups) RemoveConsumerFromAllConsumerGroups(ctx context.Context
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "remove-consumer-from-all-consumer-groups",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -2082,11 +2056,7 @@ func (s *ConsumerGroups) RemoveConsumerFromAllConsumerGroups(ctx context.Context
 	case httpRes.StatusCode == 404:
 		fallthrough
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -2111,6 +2081,7 @@ func (s *ConsumerGroups) ListConsumerGroupsForConsumer(ctx context.Context, requ
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "list-consumer-groups-for-consumer",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -2285,11 +2256,7 @@ func (s *ConsumerGroups) ListConsumerGroupsForConsumer(ctx context.Context, requ
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -2314,6 +2281,7 @@ func (s *ConsumerGroups) AddConsumerToSpecificConsumerGroup(ctx context.Context,
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "add-consumer-to-specific-consumer-group",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -2492,11 +2460,7 @@ func (s *ConsumerGroups) AddConsumerToSpecificConsumerGroup(ctx context.Context,
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -2521,6 +2485,7 @@ func (s *ConsumerGroups) RemoveConsumerFromConsumerGroup(ctx context.Context, re
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "remove-consumer-from-consumer-group",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -2671,11 +2636,7 @@ func (s *ConsumerGroups) RemoveConsumerFromConsumerGroup(ctx context.Context, re
 	switch {
 	case httpRes.StatusCode == 204:
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {

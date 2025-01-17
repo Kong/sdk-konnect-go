@@ -31,6 +31,7 @@ func (s *MTLSAuthCredentials) ListMtlsAuthWithConsumer(ctx context.Context, requ
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "list-mtls-auth-with-consumer",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -205,11 +206,7 @@ func (s *MTLSAuthCredentials) ListMtlsAuthWithConsumer(ctx context.Context, requ
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -234,6 +231,7 @@ func (s *MTLSAuthCredentials) CreateMtlsAuthWithConsumer(ctx context.Context, re
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "create-mtls-auth-with-consumer",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -412,11 +410,7 @@ func (s *MTLSAuthCredentials) CreateMtlsAuthWithConsumer(ctx context.Context, re
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -441,6 +435,7 @@ func (s *MTLSAuthCredentials) DeleteMtlsAuthWithConsumer(ctx context.Context, re
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "delete-mtls-auth-with-consumer",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -591,11 +586,7 @@ func (s *MTLSAuthCredentials) DeleteMtlsAuthWithConsumer(ctx context.Context, re
 	switch {
 	case httpRes.StatusCode == 204:
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -620,6 +611,7 @@ func (s *MTLSAuthCredentials) GetMtlsAuthWithConsumer(ctx context.Context, reque
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-mtls-auth-with-consumer",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -792,11 +784,7 @@ func (s *MTLSAuthCredentials) GetMtlsAuthWithConsumer(ctx context.Context, reque
 	case httpRes.StatusCode == 404:
 		fallthrough
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -821,6 +809,7 @@ func (s *MTLSAuthCredentials) UpsertMtlsAuthWithConsumer(ctx context.Context, re
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "upsert-mtls-auth-with-consumer",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -999,11 +988,7 @@ func (s *MTLSAuthCredentials) UpsertMtlsAuthWithConsumer(ctx context.Context, re
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1028,6 +1013,7 @@ func (s *MTLSAuthCredentials) ListMtlsAuth(ctx context.Context, request operatio
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "list-mtls-auth",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1223,11 +1209,7 @@ func (s *MTLSAuthCredentials) ListMtlsAuth(ctx context.Context, request operatio
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1252,6 +1234,7 @@ func (s *MTLSAuthCredentials) GetMtlsAuth(ctx context.Context, mtlsAuthID string
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-mtls-auth",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1450,11 +1433,7 @@ func (s *MTLSAuthCredentials) GetMtlsAuth(ctx context.Context, mtlsAuthID string
 	case httpRes.StatusCode == 404:
 		fallthrough
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		rawBody, err := utils.ConsumeRawBody(httpRes)
-		if err != nil {
-			return nil, err
-		}
-		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+		fallthrough
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
