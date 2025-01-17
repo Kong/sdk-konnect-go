@@ -31,7 +31,6 @@ func (s *ACLs) ListACL(ctx context.Context, request operations.ListACLRequest, o
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "list-acl",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -227,7 +226,11 @@ func (s *ACLs) ListACL(ctx context.Context, request operations.ListACLRequest, o
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -252,7 +255,6 @@ func (s *ACLs) GetACL(ctx context.Context, aclID string, controlPlaneID string, 
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-acl",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -451,7 +453,11 @@ func (s *ACLs) GetACL(ctx context.Context, aclID string, controlPlaneID string, 
 	case httpRes.StatusCode == 404:
 		fallthrough
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -476,7 +482,6 @@ func (s *ACLs) ListACLWithConsumer(ctx context.Context, request operations.ListA
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "list-acl-with-consumer",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -651,7 +656,11 @@ func (s *ACLs) ListACLWithConsumer(ctx context.Context, request operations.ListA
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -676,7 +685,6 @@ func (s *ACLs) CreateACLWithConsumer(ctx context.Context, request operations.Cre
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "create-acl-with-consumer",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -855,7 +863,11 @@ func (s *ACLs) CreateACLWithConsumer(ctx context.Context, request operations.Cre
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -880,7 +892,6 @@ func (s *ACLs) DeleteACLWithConsumer(ctx context.Context, request operations.Del
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "delete-acl-with-consumer",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1031,7 +1042,11 @@ func (s *ACLs) DeleteACLWithConsumer(ctx context.Context, request operations.Del
 	switch {
 	case httpRes.StatusCode == 204:
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1056,7 +1071,6 @@ func (s *ACLs) GetACLWithConsumer(ctx context.Context, request operations.GetACL
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-acl-with-consumer",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1229,7 +1243,11 @@ func (s *ACLs) GetACLWithConsumer(ctx context.Context, request operations.GetACL
 	case httpRes.StatusCode == 404:
 		fallthrough
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1254,7 +1272,6 @@ func (s *ACLs) UpsertACLWithConsumer(ctx context.Context, request operations.Ups
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "upsert-acl-with-consumer",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1433,7 +1450,11 @@ func (s *ACLs) UpsertACLWithConsumer(ctx context.Context, request operations.Ups
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {

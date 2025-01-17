@@ -32,7 +32,6 @@ func (s *DPCertificates) ListDpClientCertificates(ctx context.Context, controlPl
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "list-dp-client-certificates",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -207,7 +206,11 @@ func (s *DPCertificates) ListDpClientCertificates(ctx context.Context, controlPl
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -232,7 +235,6 @@ func (s *DPCertificates) CreateDataplaneCertificate(ctx context.Context, control
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "create-dataplane-certificate",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -416,7 +418,11 @@ func (s *DPCertificates) CreateDataplaneCertificate(ctx context.Context, control
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -441,7 +447,6 @@ func (s *DPCertificates) GetDataplaneCertificate(ctx context.Context, controlPla
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-dataplane-certificate",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -617,7 +622,11 @@ func (s *DPCertificates) GetDataplaneCertificate(ctx context.Context, controlPla
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -642,7 +651,6 @@ func (s *DPCertificates) DeleteDataplaneCertificate(ctx context.Context, control
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "delete-dataplane-certificate",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -798,7 +806,11 @@ func (s *DPCertificates) DeleteDataplaneCertificate(ctx context.Context, control
 	switch {
 	case httpRes.StatusCode == 204:
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {

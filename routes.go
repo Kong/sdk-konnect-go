@@ -55,7 +55,6 @@ func (s *Routes) ListRoute(ctx context.Context, request operations.ListRouteRequ
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "list-route",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -251,7 +250,11 @@ func (s *Routes) ListRoute(ctx context.Context, request operations.ListRouteRequ
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -276,7 +279,6 @@ func (s *Routes) CreateRoute(ctx context.Context, controlPlaneID string, route c
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "create-route",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -481,7 +483,11 @@ func (s *Routes) CreateRoute(ctx context.Context, controlPlaneID string, route c
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -506,7 +512,6 @@ func (s *Routes) DeleteRoute(ctx context.Context, controlPlaneID string, routeID
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "delete-route",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -683,7 +688,11 @@ func (s *Routes) DeleteRoute(ctx context.Context, controlPlaneID string, routeID
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -708,7 +717,6 @@ func (s *Routes) GetRoute(ctx context.Context, routeID string, controlPlaneID st
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-route",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -907,7 +915,11 @@ func (s *Routes) GetRoute(ctx context.Context, routeID string, controlPlaneID st
 	case httpRes.StatusCode == 404:
 		fallthrough
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -932,7 +944,6 @@ func (s *Routes) UpsertRoute(ctx context.Context, request operations.UpsertRoute
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "upsert-route",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1132,7 +1143,11 @@ func (s *Routes) UpsertRoute(ctx context.Context, request operations.UpsertRoute
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1157,7 +1172,6 @@ func (s *Routes) ListRouteWithService(ctx context.Context, request operations.Li
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "list-route-with-service",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1332,7 +1346,11 @@ func (s *Routes) ListRouteWithService(ctx context.Context, request operations.Li
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1357,7 +1375,6 @@ func (s *Routes) CreateRouteWithService(ctx context.Context, request operations.
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "create-route-with-service",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1536,7 +1553,11 @@ func (s *Routes) CreateRouteWithService(ctx context.Context, request operations.
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1561,7 +1582,6 @@ func (s *Routes) DeleteRouteWithService(ctx context.Context, request operations.
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "delete-route-with-service",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1712,7 +1732,11 @@ func (s *Routes) DeleteRouteWithService(ctx context.Context, request operations.
 	switch {
 	case httpRes.StatusCode == 204:
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1737,7 +1761,6 @@ func (s *Routes) GetRouteWithService(ctx context.Context, request operations.Get
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-route-with-service",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1910,7 +1933,11 @@ func (s *Routes) GetRouteWithService(ctx context.Context, request operations.Get
 	case httpRes.StatusCode == 404:
 		fallthrough
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1935,7 +1962,6 @@ func (s *Routes) UpsertRouteWithService(ctx context.Context, request operations.
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "upsert-route-with-service",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -2114,7 +2140,11 @@ func (s *Routes) UpsertRouteWithService(ctx context.Context, request operations.
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {

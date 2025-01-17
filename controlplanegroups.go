@@ -31,7 +31,6 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberStatus(ctx context.Con
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-control-planes-id-group-member-status",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -311,7 +310,11 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberStatus(ctx context.Con
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -336,7 +339,6 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberships(ctx context.Cont
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-control-planes-id-group-memberships",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -616,7 +618,11 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberships(ctx context.Cont
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -641,7 +647,6 @@ func (s *ControlPlaneGroups) PutControlPlanesIDGroupMemberships(ctx context.Cont
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "put-control-planes-id-group-memberships",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -910,7 +915,11 @@ func (s *ControlPlaneGroups) PutControlPlanesIDGroupMemberships(ctx context.Cont
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -935,7 +944,6 @@ func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsAdd(ctx context.
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "post-control-planes-id-group-memberships-add",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1204,7 +1212,11 @@ func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsAdd(ctx context.
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1229,7 +1241,6 @@ func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsRemove(ctx conte
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "post-control-planes-id-group-memberships-remove",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1498,7 +1509,11 @@ func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsRemove(ctx conte
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1523,7 +1538,6 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupStatus(ctx context.Context, 
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-control-planes-id-group-status",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1803,7 +1817,11 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupStatus(ctx context.Context, 
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {

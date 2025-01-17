@@ -31,7 +31,6 @@ func (s *SystemAccountsTeamMembership) GetSystemAccountsAccountIDTeams(ctx conte
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-system-accounts-accountId-teams",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -249,7 +248,11 @@ func (s *SystemAccountsTeamMembership) GetSystemAccountsAccountIDTeams(ctx conte
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -274,7 +277,6 @@ func (s *SystemAccountsTeamMembership) GetTeamsTeamIDSystemAccounts(ctx context.
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-teams-teamId-system-accounts",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -492,7 +494,11 @@ func (s *SystemAccountsTeamMembership) GetTeamsTeamIDSystemAccounts(ctx context.
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -517,7 +523,6 @@ func (s *SystemAccountsTeamMembership) PostTeamsTeamIDSystemAccounts(ctx context
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "post-teams-teamId-system-accounts",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -745,7 +750,11 @@ func (s *SystemAccountsTeamMembership) PostTeamsTeamIDSystemAccounts(ctx context
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -770,7 +779,6 @@ func (s *SystemAccountsTeamMembership) DeleteTeamsTeamIDSystemAccountsAccountID(
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "delete-teams-teamId-system-accounts-accountId",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -969,7 +977,11 @@ func (s *SystemAccountsTeamMembership) DeleteTeamsTeamIDSystemAccountsAccountID(
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {

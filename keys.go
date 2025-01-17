@@ -32,7 +32,6 @@ func (s *Keys) ListKeyWithKeySet(ctx context.Context, request operations.ListKey
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "list-key-with-key-set",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -207,7 +206,11 @@ func (s *Keys) ListKeyWithKeySet(ctx context.Context, request operations.ListKey
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -232,7 +235,6 @@ func (s *Keys) CreateKeyWithKeySet(ctx context.Context, request operations.Creat
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "create-key-with-key-set",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -411,7 +413,11 @@ func (s *Keys) CreateKeyWithKeySet(ctx context.Context, request operations.Creat
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -436,7 +442,6 @@ func (s *Keys) DeleteKeyWithKeySet(ctx context.Context, request operations.Delet
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "delete-key-with-key-set",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -587,7 +592,11 @@ func (s *Keys) DeleteKeyWithKeySet(ctx context.Context, request operations.Delet
 	switch {
 	case httpRes.StatusCode == 204:
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -612,7 +621,6 @@ func (s *Keys) GetKeyWithKeySet(ctx context.Context, request operations.GetKeyWi
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-key-with-key-set",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -785,7 +793,11 @@ func (s *Keys) GetKeyWithKeySet(ctx context.Context, request operations.GetKeyWi
 	case httpRes.StatusCode == 404:
 		fallthrough
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -810,7 +822,6 @@ func (s *Keys) UpsertKeyWithKeySet(ctx context.Context, request operations.Upser
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "upsert-key-with-key-set",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -989,7 +1000,11 @@ func (s *Keys) UpsertKeyWithKeySet(ctx context.Context, request operations.Upser
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1014,7 +1029,6 @@ func (s *Keys) ListKey(ctx context.Context, request operations.ListKeyRequest, o
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "list-key",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1210,7 +1224,11 @@ func (s *Keys) ListKey(ctx context.Context, request operations.ListKeyRequest, o
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1235,7 +1253,6 @@ func (s *Keys) CreateKey(ctx context.Context, controlPlaneID string, key compone
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "create-key",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1440,7 +1457,11 @@ func (s *Keys) CreateKey(ctx context.Context, controlPlaneID string, key compone
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1465,7 +1486,6 @@ func (s *Keys) DeleteKey(ctx context.Context, controlPlaneID string, keyID strin
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "delete-key",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1642,7 +1662,11 @@ func (s *Keys) DeleteKey(ctx context.Context, controlPlaneID string, keyID strin
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1667,7 +1691,6 @@ func (s *Keys) GetKey(ctx context.Context, keyID string, controlPlaneID string, 
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "get-key",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1866,7 +1889,11 @@ func (s *Keys) GetKey(ctx context.Context, keyID string, controlPlaneID string, 
 	case httpRes.StatusCode == 404:
 		fallthrough
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {
@@ -1891,7 +1918,6 @@ func (s *Keys) UpsertKey(ctx context.Context, request operations.UpsertKeyReques
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "upsert-key",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -2091,7 +2117,11 @@ func (s *Keys) UpsertKey(ctx context.Context, request operations.UpsertKeyReques
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
-		fallthrough
+		rawBody, err := utils.ConsumeRawBody(httpRes)
+		if err != nil {
+			return nil, err
+		}
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {

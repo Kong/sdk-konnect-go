@@ -9568,7 +9568,9 @@ components:
             interpreted as a regular expression.
           type: object
           additionalProperties:
-            type: string
+            type: array
+            items:
+              type: string
           nullable: true
         hosts:
           description: >-
@@ -9782,7 +9784,9 @@ components:
             interpreted as a regular expression.
           type: object
           additionalProperties:
-            type: string
+            type: array
+            items:
+              type: string
           nullable: true
         hosts:
           description: >-
