@@ -37,7 +37,7 @@ func main() {
     )
 
     res, err := s.SystemAccountsTeamMembership.GetSystemAccountsAccountIDTeams(ctx, operations.GetSystemAccountsAccountIDTeamsRequest{
-        AccountID: "<value>",
+        AccountID: "<id>",
         PageSize: sdkkonnectgo.Int64(10),
         PageNumber: sdkkonnectgo.Int64(1),
     })
@@ -97,7 +97,7 @@ func main() {
     )
 
     res, err := s.SystemAccountsTeamMembership.GetTeamsTeamIDSystemAccounts(ctx, operations.GetTeamsTeamIDSystemAccountsRequest{
-        TeamID: "<value>",
+        TeamID: "<id>",
         PageSize: sdkkonnectgo.Int64(10),
         PageNumber: sdkkonnectgo.Int64(1),
     })
@@ -155,7 +155,7 @@ func main() {
         }),
     )
 
-    res, err := s.SystemAccountsTeamMembership.PostTeamsTeamIDSystemAccounts(ctx, "<value>", nil)
+    res, err := s.SystemAccountsTeamMembership.PostTeamsTeamIDSystemAccounts(ctx, "<id>", nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -212,7 +212,7 @@ func main() {
         }),
     )
 
-    res, err := s.SystemAccountsTeamMembership.DeleteTeamsTeamIDSystemAccountsAccountID(ctx, "<value>", "<value>")
+    res, err := s.SystemAccountsTeamMembership.DeleteTeamsTeamIDSystemAccountsAccountID(ctx, "<id>", "<id>")
     if err != nil {
         log.Fatal(err)
     }

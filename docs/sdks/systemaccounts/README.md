@@ -153,7 +153,7 @@ func main() {
         }),
     )
 
-    res, err := s.SystemAccounts.GetSystemAccountsID(ctx, "<value>")
+    res, err := s.SystemAccounts.GetSystemAccountsID(ctx, "<id>")
     if err != nil {
         log.Fatal(err)
     }
@@ -208,7 +208,7 @@ func main() {
         }),
     )
 
-    res, err := s.SystemAccounts.PatchSystemAccountsID(ctx, "<value>", nil)
+    res, err := s.SystemAccounts.PatchSystemAccountsID(ctx, "<id>", nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -265,7 +265,7 @@ func main() {
         }),
     )
 
-    res, err := s.SystemAccounts.DeleteSystemAccountsID(ctx, "<value>")
+    res, err := s.SystemAccounts.DeleteSystemAccountsID(ctx, "<id>")
     if err != nil {
         log.Fatal(err)
     }

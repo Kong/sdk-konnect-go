@@ -69,6 +69,7 @@ func main() {
     res, err := s.Plugins.ListPluginWithConsumerGroup(ctx, operations.ListPluginWithConsumerGroupRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerGroupID: "",
+        Size: sdkkonnectgo.Int64(100),
         Tags: sdkkonnectgo.String("tag1,tag2"),
     })
     if err != nil {
@@ -402,6 +403,7 @@ func main() {
     res, err := s.Plugins.ListPluginWithConsumer(ctx, operations.ListPluginWithConsumerRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
+        Size: sdkkonnectgo.Int64(100),
         Tags: sdkkonnectgo.String("tag1,tag2"),
     })
     if err != nil {
@@ -734,6 +736,7 @@ func main() {
 
     res, err := s.Plugins.ListPlugin(ctx, operations.ListPluginRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Size: sdkkonnectgo.Int64(100),
         Tags: sdkkonnectgo.String("tag1,tag2"),
     })
     if err != nil {
@@ -1059,6 +1062,7 @@ func main() {
     res, err := s.Plugins.ListPluginWithRoute(ctx, operations.ListPluginWithRouteRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
+        Size: sdkkonnectgo.Int64(100),
         Tags: sdkkonnectgo.String("tag1,tag2"),
     })
     if err != nil {
@@ -1315,7 +1319,6 @@ func main() {
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
         PluginWithoutParents: components.PluginWithoutParents{
             Config: map[string]any{
-                "key": "<value>",
                 "anonymous": "<value>",
                 "hide_credentials": false,
                 "key_in_body": false,
@@ -1447,6 +1450,7 @@ func main() {
     res, err := s.Plugins.ListPluginWithService(ctx, operations.ListPluginWithServiceRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
+        Size: sdkkonnectgo.Int64(100),
         Tags: sdkkonnectgo.String("tag1,tag2"),
     })
     if err != nil {
@@ -1507,7 +1511,6 @@ func main() {
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         PluginWithoutParents: components.PluginWithoutParents{
             Config: map[string]any{
-                "key": "<value>",
                 "anonymous": "<value>",
                 "hide_credentials": false,
                 "key_in_body": false,

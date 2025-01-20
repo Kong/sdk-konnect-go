@@ -34,7 +34,7 @@ func main() {
         }),
     )
 
-    res, err := s.SystemAccountsRoles.GetSystemAccountsAccountIDAssignedRoles(ctx, "<value>", nil)
+    res, err := s.SystemAccountsRoles.GetSystemAccountsAccountIDAssignedRoles(ctx, "<id>", nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -91,7 +91,7 @@ func main() {
         }),
     )
 
-    res, err := s.SystemAccountsRoles.PostSystemAccountsAccountIDAssignedRoles(ctx, "<value>", &components.AssignRole{
+    res, err := s.SystemAccountsRoles.PostSystemAccountsAccountIDAssignedRoles(ctx, "<id>", &components.AssignRole{
         RoleName: components.RoleNameViewer.ToPointer(),
         EntityID: sdkkonnectgo.String("e67490ce-44dc-4cbd-b65e-b52c746fc26a"),
         EntityTypeName: components.EntityTypeNameControlPlanes.ToPointer(),
@@ -153,7 +153,7 @@ func main() {
         }),
     )
 
-    res, err := s.SystemAccountsRoles.DeleteSystemAccountsAccountIDAssignedRolesRoleID(ctx, "<value>", "<value>")
+    res, err := s.SystemAccountsRoles.DeleteSystemAccountsAccountIDAssignedRolesRoleID(ctx, "<id>", "<id>")
     if err != nil {
         log.Fatal(err)
     }

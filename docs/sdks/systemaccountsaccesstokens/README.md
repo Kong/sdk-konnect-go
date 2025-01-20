@@ -38,7 +38,7 @@ func main() {
     )
 
     res, err := s.SystemAccountsAccessTokens.GetSystemAccountIDAccessTokens(ctx, operations.GetSystemAccountIDAccessTokensRequest{
-        AccountID: "<value>",
+        AccountID: "<id>",
         PageSize: sdkkonnectgo.Int64(10),
         PageNumber: sdkkonnectgo.Int64(1),
     })
@@ -97,7 +97,7 @@ func main() {
         }),
     )
 
-    res, err := s.SystemAccountsAccessTokens.PostSystemAccountsIDAccessTokens(ctx, "<value>", nil)
+    res, err := s.SystemAccountsAccessTokens.PostSystemAccountsIDAccessTokens(ctx, "<id>", nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -154,7 +154,7 @@ func main() {
         }),
     )
 
-    res, err := s.SystemAccountsAccessTokens.GetSystemAccountsIDAccessTokensID(ctx, "<value>", "<value>")
+    res, err := s.SystemAccountsAccessTokens.GetSystemAccountsIDAccessTokensID(ctx, "<id>", "<id>")
     if err != nil {
         log.Fatal(err)
     }
@@ -212,8 +212,8 @@ func main() {
     )
 
     res, err := s.SystemAccountsAccessTokens.PatchSystemAccountsIDAccessTokensID(ctx, operations.PatchSystemAccountsIDAccessTokensIDRequest{
-        AccountID: "<value>",
-        TokenID: "<value>",
+        AccountID: "<id>",
+        TokenID: "<id>",
     })
     if err != nil {
         log.Fatal(err)
@@ -270,7 +270,7 @@ func main() {
         }),
     )
 
-    res, err := s.SystemAccountsAccessTokens.DeleteSystemAccountsIDAccessTokensID(ctx, "<value>", "<value>")
+    res, err := s.SystemAccountsAccessTokens.DeleteSystemAccountsIDAccessTokensID(ctx, "<id>", "<id>")
     if err != nil {
         log.Fatal(err)
     }

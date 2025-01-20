@@ -48,6 +48,7 @@ func main() {
 
     res, err := s.Services.ListService(ctx, operations.ListServiceRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Size: sdkkonnectgo.Int64(100),
         Tags: sdkkonnectgo.String("tag1,tag2"),
     })
     if err != nil {
@@ -104,8 +105,11 @@ func main() {
     )
 
     res, err := s.Services.CreateService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.ServiceInput{
-        Host: "fumbling-airship.org",
-        Port: 31300,
+        Host: "example.internal",
+        ID: sdkkonnectgo.String("49fd316e-c457-481c-9fc7-8079153e4f3c"),
+        Name: sdkkonnectgo.String("example-service"),
+        Path: sdkkonnectgo.String("/"),
+        Port: 80,
         Protocol: components.ProtocolHTTP,
     })
     if err != nil {
