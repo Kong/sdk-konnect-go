@@ -2,47 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
-// EntityRegion - Region of the entity.
-type EntityRegion string
-
-const (
-	EntityRegionUs       EntityRegion = "us"
-	EntityRegionEu       EntityRegion = "eu"
-	EntityRegionAu       EntityRegion = "au"
-	EntityRegionMe       EntityRegion = "me"
-	EntityRegionWildcard EntityRegion = "*"
-)
-
-func (e EntityRegion) ToPointer() *EntityRegion {
-	return &e
-}
-func (e *EntityRegion) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "us":
-		fallthrough
-	case "eu":
-		fallthrough
-	case "au":
-		fallthrough
-	case "me":
-		fallthrough
-	case "*":
-		*e = EntityRegion(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for EntityRegion: %v", v)
-	}
-}
-
 // AssignedRole - An assigned role is a role that has been assigned to a user or team.
 type AssignedRole struct {
 	// The ID of the role assignment.
@@ -52,9 +11,8 @@ type AssignedRole struct {
 	// A RBAC entity ID.
 	EntityID *string `json:"entity_id,omitempty"`
 	// Name of the entity type the role is being assigned to.
-	EntityTypeName *string `json:"entity_type_name,omitempty"`
-	// Region of the entity.
-	EntityRegion *EntityRegion `json:"entity_region,omitempty"`
+	EntityTypeName *string       `json:"entity_type_name,omitempty"`
+	EntityRegion   *EntityRegion `json:"entity_region,omitempty"`
 }
 
 func (o *AssignedRole) GetID() *string {

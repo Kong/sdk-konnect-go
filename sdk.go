@@ -110,6 +110,7 @@ type SDK struct {
 	JWTs                *JWTs
 	APIKeys             *APIKeys
 	MTLSAuthCredentials *MTLSAuthCredentials
+	CustomPlugins       *CustomPlugins
 	// A JSON Web key set. Key sets are the preferred way to expose keys to plugins because they tell the plugin where to look for keys or have a scoping mechanism to restrict plugins to specific keys.
 	//
 	KeySets *KeySets
@@ -264,9 +265,9 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "0.1.21",
+			SDKVersion:        "0.1.22",
 			GenVersion:        "2.493.31",
-			UserAgent:         "speakeasy-sdk/go 0.1.21 2.493.31 0.0.1 github.com/Kong/sdk-konnect-go",
+			UserAgent:         "speakeasy-sdk/go 0.1.22 2.493.31 0.0.1 github.com/Kong/sdk-konnect-go",
 			Hooks:             hooks.New(),
 		},
 	}
@@ -311,6 +312,8 @@ func New(opts ...SDKOption) *SDK {
 	sdk.APIKeys = newAPIKeys(sdk.sdkConfiguration)
 
 	sdk.MTLSAuthCredentials = newMTLSAuthCredentials(sdk.sdkConfiguration)
+
+	sdk.CustomPlugins = newCustomPlugins(sdk.sdkConfiguration)
 
 	sdk.KeySets = newKeySets(sdk.sdkConfiguration)
 
