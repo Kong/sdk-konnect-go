@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 3fa21b5bc073d3ea4d54118051e31d65
+  docChecksum: 63079c55ef2d05c34dcca45ef9cac76b
   docVersion: 0.0.1
   speakeasyVersion: 1.469.10
   generationVersion: 2.493.31
-  releaseVersion: 0.1.21
-  configChecksum: 1f3b8fea190db355b8645b8a9b859c1d
+  releaseVersion: 0.1.23
+  configChecksum: c2a5aa69db3dcb7a093fe001733aec24
 features:
   go:
     additionalDependencies: 0.1.0
@@ -58,8 +58,10 @@ generatedFiles:
   - /models/components/createteam.go
   - /models/components/cursormetawithsizeandtotal.go
   - /models/components/cursorpaginatedmetawithsizeandtotal.go
+  - /models/components/customplugin.go
   - /models/components/dataplaneclientcertificate.go
   - /models/components/dataplaneclientcertificaterequest.go
+  - /models/components/entityregion.go
   - /models/components/getexpectedconfighashresponse.go
   - /models/components/getgroupstatus.go
   - /models/components/getimpersonationsettingsresponse.go
@@ -186,6 +188,7 @@ generatedFiles:
   - /models/operations/deleteconsumer.go
   - /models/operations/deleteconsumergroup.go
   - /models/operations/deletecontrolplane.go
+  - /models/operations/deletecustomplugin.go
   - /models/operations/deletedataplanecertificate.go
   - /models/operations/deletehmacauthwithconsumer.go
   - /models/operations/deletejwtwithconsumer.go
@@ -286,6 +289,7 @@ generatedFiles:
   - /models/operations/listconsumergroupsforconsumer.go
   - /models/operations/listconsumersforconsumergroup.go
   - /models/operations/listcontrolplanes.go
+  - /models/operations/listcustomplugin.go
   - /models/operations/listdataplanenodes.go
   - /models/operations/listdpclientcertificates.go
   - /models/operations/listhmacauth.go
@@ -394,6 +398,7 @@ generatedFiles:
   - consumers.go
   - controlplanegroups.go
   - controlplanes.go
+  - customplugins.go
   - custompluginschemas.go
   - docs/models/components/acl.md
   - docs/models/components/aclconsumer.md
@@ -409,7 +414,6 @@ generatedFiles:
   - docs/models/components/assignedrole.md
   - docs/models/components/assignedrolecollection.md
   - docs/models/components/assignrole.md
-  - docs/models/components/assignroleentityregion.md
   - docs/models/components/auditlogs.md
   - docs/models/components/authenticationsettings.md
   - docs/models/components/authtype.md
@@ -447,6 +451,7 @@ generatedFiles:
   - docs/models/components/creator.md
   - docs/models/components/cursormetawithsizeandtotal.md
   - docs/models/components/cursorpaginatedmetawithsizeandtotal.md
+  - docs/models/components/customplugin.md
   - docs/models/components/data.md
   - docs/models/components/dataplaneclientcertificate.md
   - docs/models/components/dataplaneclientcertificateitem.md
@@ -782,6 +787,8 @@ generatedFiles:
   - docs/models/operations/deleteconsumerresponse.md
   - docs/models/operations/deletecontrolplanerequest.md
   - docs/models/operations/deletecontrolplaneresponse.md
+  - docs/models/operations/deletecustompluginrequest.md
+  - docs/models/operations/deletecustompluginresponse.md
   - docs/models/operations/deletedataplanecertificaterequest.md
   - docs/models/operations/deletedataplanecertificateresponse.md
   - docs/models/operations/deletehmacauthwithconsumerrequest.md
@@ -990,6 +997,9 @@ generatedFiles:
   - docs/models/operations/listconsumersforconsumergroupresponsebody.md
   - docs/models/operations/listcontrolplanesrequest.md
   - docs/models/operations/listcontrolplanesresponse.md
+  - docs/models/operations/listcustompluginrequest.md
+  - docs/models/operations/listcustompluginresponse.md
+  - docs/models/operations/listcustompluginresponsebody.md
   - docs/models/operations/listdataplanenodesrequest.md
   - docs/models/operations/listdataplanenodesresponse.md
   - docs/models/operations/listdpclientcertificatesrequest.md
@@ -1211,6 +1221,7 @@ generatedFiles:
   - docs/sdks/consumers/README.md
   - docs/sdks/controlplanegroups/README.md
   - docs/sdks/controlplanes/README.md
+  - docs/sdks/customplugins/README.md
   - docs/sdks/custompluginschemas/README.md
   - docs/sdks/dpcertificates/README.md
   - docs/sdks/dpnodes/README.md
@@ -1772,6 +1783,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 463382}
+        "200": {}
   create-consumer_group:
     speakeasy-default-create-consumer-group:
       parameters:
@@ -1802,6 +1814,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 945866}
+        "200": {}
   upsert-consumer_group:
     "":
       parameters:
@@ -3939,5 +3952,27 @@ examples:
       responses:
         "404":
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  list-custom-plugin:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"handler": "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }", "id": "868346aa-1105-4b77-8346-aa1105fb77c4", "name": "set-header", "schema": "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }"}]}
+        "401":
+          application/json: {"message": "<value>", "status": 319573}
+  delete-custom-plugin:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          CustomPluginId: ""
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 523768}
 examplesVersion: 1.0.0
 generatedTests: {}
