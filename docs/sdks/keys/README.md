@@ -48,6 +48,7 @@ func main() {
     res, err := s.Keys.ListKeyWithKeySet(ctx, operations.ListKeyWithKeySetRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         KeySetID: "6cc34248-50b4-4a81-9201-3bdf7a83f712",
+        Size: sdkkonnectgo.Int64(100),
         Tags: sdkkonnectgo.String("tag1,tag2"),
     })
     if err != nil {
@@ -362,6 +363,7 @@ func main() {
 
     res, err := s.Keys.ListKey(ctx, operations.ListKeyRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Size: sdkkonnectgo.Int64(100),
         Tags: sdkkonnectgo.String("tag1,tag2"),
     })
     if err != nil {

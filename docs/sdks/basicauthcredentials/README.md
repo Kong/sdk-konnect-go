@@ -41,6 +41,7 @@ func main() {
 
     res, err := s.BasicAuthCredentials.ListBasicAuth(ctx, operations.ListBasicAuthRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Size: sdkkonnectgo.Int64(100),
         Tags: sdkkonnectgo.String("tag1,tag2"),
     })
     if err != nil {
@@ -155,6 +156,7 @@ func main() {
     res, err := s.BasicAuthCredentials.ListBasicAuthWithConsumer(ctx, operations.ListBasicAuthWithConsumerRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
+        Size: sdkkonnectgo.Int64(100),
         Tags: sdkkonnectgo.String("tag1,tag2"),
     })
     if err != nil {

@@ -144,7 +144,7 @@ func main() {
         }),
     )
 
-    res, err := s.DPCertificates.GetDataplaneCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "<value>")
+    res, err := s.DPCertificates.GetDataplaneCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "<id>")
     if err != nil {
         log.Fatal(err)
     }
@@ -198,7 +198,7 @@ func main() {
         }),
     )
 
-    res, err := s.DPCertificates.DeleteDataplaneCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "<value>")
+    res, err := s.DPCertificates.DeleteDataplaneCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "<id>")
     if err != nil {
         log.Fatal(err)
     }
