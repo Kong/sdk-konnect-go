@@ -596,6 +596,11 @@ func (in *RouteWithoutParents) DeepCopyInto(out *RouteWithoutParents) {
 		*out = new(bool)
 		**out = **in
 	}
+	if in.Service != nil {
+		in, out := &in.Service, &out.Service
+		*out = new(RouteWithoutParentsService)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.Snis != nil {
 		in, out := &in.Snis, &out.Snis
 		*out = make([]string, len(*in))
