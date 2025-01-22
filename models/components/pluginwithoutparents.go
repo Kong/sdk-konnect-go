@@ -7,6 +7,29 @@ import (
 	"fmt"
 )
 
+// PluginWithoutParentsConsumer - If set, the plugin will activate only for requests where the specified has been authenticated. (Note that some plugins can not be restricted to consumers this way.). Leave unset for the plugin to activate regardless of the authenticated Consumer.
+type PluginWithoutParentsConsumer struct {
+	ID *string `json:"id,omitempty"`
+}
+
+func (o *PluginWithoutParentsConsumer) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+type PluginWithoutParentsConsumerGroup struct {
+	ID *string `json:"id,omitempty"`
+}
+
+func (o *PluginWithoutParentsConsumerGroup) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
 type PluginWithoutParentsAfter struct {
 	Access []string `json:"access,omitempty"`
 }
@@ -98,10 +121,37 @@ func (e *PluginWithoutParentsProtocols) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// PluginWithoutParentsRoute - If set, the plugin will only activate when receiving requests via the specified route. Leave unset for the plugin to activate regardless of the Route being used.
+type PluginWithoutParentsRoute struct {
+	ID *string `json:"id,omitempty"`
+}
+
+func (o *PluginWithoutParentsRoute) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+// PluginWithoutParentsService - If set, the plugin will only activate when receiving requests via one of the routes belonging to the specified Service. Leave unset for the plugin to activate regardless of the Service being matched.
+type PluginWithoutParentsService struct {
+	ID *string `json:"id,omitempty"`
+}
+
+func (o *PluginWithoutParentsService) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
 // PluginWithoutParents - A Plugin entity represents a plugin configuration that will be executed during the HTTP request/response lifecycle. It is how you can add functionalities to Services that run behind Kong, like Authentication or Rate Limiting for example. You can find more information about how to install and what values each plugin takes by visiting the [Kong Hub](https://docs.konghq.com/hub/). When adding a Plugin Configuration to a Service, every request made by a client to that Service will run said Plugin. If a Plugin needs to be tuned to different values for some specific Consumers, you can do so by creating a separate plugin instance that specifies both the Service and the Consumer, through the `service` and `consumer` fields.
 type PluginWithoutParents struct {
 	// The configuration properties for the Plugin which can be found on the plugins documentation page in the [Kong Hub](https://docs.konghq.com/hub/).
 	Config map[string]any `json:"config"`
+	// If set, the plugin will activate only for requests where the specified has been authenticated. (Note that some plugins can not be restricted to consumers this way.). Leave unset for the plugin to activate regardless of the authenticated Consumer.
+	Consumer      *PluginWithoutParentsConsumer      `json:"consumer,omitempty"`
+	ConsumerGroup *PluginWithoutParentsConsumerGroup `json:"consumer_group,omitempty"`
 	// Whether the plugin is applied.
 	Enabled      *bool   `json:"enabled,omitempty"`
 	ID           *string `json:"id,omitempty"`
@@ -111,6 +161,10 @@ type PluginWithoutParents struct {
 	Ordering *PluginWithoutParentsOrdering `json:"ordering,omitempty"`
 	// A list of the request protocols that will trigger this plugin. The default value, as well as the possible values allowed on this field, may change depending on the plugin type. For example, plugins that only work in stream mode will only support `"tcp"` and `"tls"`.
 	Protocols []PluginWithoutParentsProtocols `json:"protocols,omitempty"`
+	// If set, the plugin will only activate when receiving requests via the specified route. Leave unset for the plugin to activate regardless of the Route being used.
+	Route *PluginWithoutParentsRoute `json:"route,omitempty"`
+	// If set, the plugin will only activate when receiving requests via one of the routes belonging to the specified Service. Leave unset for the plugin to activate regardless of the Service being matched.
+	Service *PluginWithoutParentsService `json:"service,omitempty"`
 	// An optional set of strings associated with the Plugin for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
 }
@@ -120,6 +174,20 @@ func (o *PluginWithoutParents) GetConfig() map[string]any {
 		return map[string]any{}
 	}
 	return o.Config
+}
+
+func (o *PluginWithoutParents) GetConsumer() *PluginWithoutParentsConsumer {
+	if o == nil {
+		return nil
+	}
+	return o.Consumer
+}
+
+func (o *PluginWithoutParents) GetConsumerGroup() *PluginWithoutParentsConsumerGroup {
+	if o == nil {
+		return nil
+	}
+	return o.ConsumerGroup
 }
 
 func (o *PluginWithoutParents) GetEnabled() *bool {
@@ -162,6 +230,20 @@ func (o *PluginWithoutParents) GetProtocols() []PluginWithoutParentsProtocols {
 		return nil
 	}
 	return o.Protocols
+}
+
+func (o *PluginWithoutParents) GetRoute() *PluginWithoutParentsRoute {
+	if o == nil {
+		return nil
+	}
+	return o.Route
+}
+
+func (o *PluginWithoutParents) GetService() *PluginWithoutParentsService {
+	if o == nil {
+		return nil
+	}
+	return o.Service
 }
 
 func (o *PluginWithoutParents) GetTags() []string {

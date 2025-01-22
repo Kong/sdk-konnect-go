@@ -66,8 +66,20 @@ func (e *JWTWithoutParentsAlgorithm) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type JWTWithoutParentsConsumer struct {
+	ID *string `json:"id,omitempty"`
+}
+
+func (o *JWTWithoutParentsConsumer) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
 type JWTWithoutParents struct {
 	Algorithm    *JWTWithoutParentsAlgorithm `json:"algorithm,omitempty"`
+	Consumer     *JWTWithoutParentsConsumer  `json:"consumer,omitempty"`
 	ID           *string                     `json:"id,omitempty"`
 	Key          *string                     `json:"key,omitempty"`
 	RsaPublicKey *string                     `json:"rsa_public_key,omitempty"`
@@ -80,6 +92,13 @@ func (o *JWTWithoutParents) GetAlgorithm() *JWTWithoutParentsAlgorithm {
 		return nil
 	}
 	return o.Algorithm
+}
+
+func (o *JWTWithoutParents) GetConsumer() *JWTWithoutParentsConsumer {
+	if o == nil {
+		return nil
+	}
+	return o.Consumer
 }
 
 func (o *JWTWithoutParents) GetID() *string {

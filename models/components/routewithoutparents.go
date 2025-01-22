@@ -139,6 +139,18 @@ func (e *RouteWithoutParentsProtocols) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// RouteWithoutParentsService - The Service this Route is associated to. This is where the Route proxies traffic to.
+type RouteWithoutParentsService struct {
+	ID *string `json:"id,omitempty"`
+}
+
+func (o *RouteWithoutParentsService) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
 type RouteWithoutParentsSources struct {
 	IP   *string `json:"ip,omitempty"`
 	Port *int64  `json:"port,omitempty"`
@@ -187,6 +199,8 @@ type RouteWithoutParents struct {
 	RequestBuffering *bool `json:"request_buffering,omitempty"`
 	// Whether to enable response body buffering or not. With HTTP 1.1, it may make sense to turn this off on services that send data with chunked transfer encoding.
 	ResponseBuffering *bool `json:"response_buffering,omitempty"`
+	// The Service this Route is associated to. This is where the Route proxies traffic to.
+	Service *RouteWithoutParentsService `json:"service,omitempty"`
 	// A list of SNIs that match this Route when using stream routing.
 	Snis []string `json:"snis,omitempty"`
 	// A list of IP sources of incoming connections that match this Route when using stream routing. Each entry is an object with fields "ip" (optionally in CIDR range notation) and/or "port".
@@ -293,6 +307,13 @@ func (o *RouteWithoutParents) GetResponseBuffering() *bool {
 		return nil
 	}
 	return o.ResponseBuffering
+}
+
+func (o *RouteWithoutParents) GetService() *RouteWithoutParentsService {
+	if o == nil {
+		return nil
+	}
+	return o.Service
 }
 
 func (o *RouteWithoutParents) GetSnis() []string {

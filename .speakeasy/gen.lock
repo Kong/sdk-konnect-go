@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 63079c55ef2d05c34dcca45ef9cac76b
+  docChecksum: bf793ad8dca95f0e711ff6b2850c7b9d
   docVersion: 0.0.1
   speakeasyVersion: 1.469.11
   generationVersion: 2.493.32
-  releaseVersion: 0.1.24
-  configChecksum: 7afe7cc40c5f811d4238fdf262c43ff4
+  releaseVersion: 0.1.25
+  configChecksum: 06e231360048ac0b59985902cd9e0015
 features:
   go:
     additionalDependencies: 0.1.0
@@ -403,6 +403,7 @@ generatedFiles:
   - docs/models/components/acl.md
   - docs/models/components/aclconsumer.md
   - docs/models/components/aclwithoutparents.md
+  - docs/models/components/aclwithoutparentsconsumer.md
   - docs/models/components/active.md
   - docs/models/components/addsystemaccounttoteam.md
   - docs/models/components/addusertoteam.md
@@ -420,6 +421,7 @@ generatedFiles:
   - docs/models/components/basicauth.md
   - docs/models/components/basicauthconsumer.md
   - docs/models/components/basicauthwithoutparents.md
+  - docs/models/components/basicauthwithoutparentsconsumer.md
   - docs/models/components/before.md
   - docs/models/components/cacertificate.md
   - docs/models/components/cacertificateinput.md
@@ -480,6 +482,7 @@ generatedFiles:
   - docs/models/components/hmacauth.md
   - docs/models/components/hmacauthconsumer.md
   - docs/models/components/hmacauthwithoutparents.md
+  - docs/models/components/hmacauthwithoutparentsconsumer.md
   - docs/models/components/httpsredirectstatuscode.md
   - docs/models/components/id.md
   - docs/models/components/identity.md
@@ -501,10 +504,12 @@ generatedFiles:
   - docs/models/components/jwtconsumer.md
   - docs/models/components/jwtwithoutparents.md
   - docs/models/components/jwtwithoutparentsalgorithm.md
+  - docs/models/components/jwtwithoutparentsconsumer.md
   - docs/models/components/key.md
   - docs/models/components/keyauth.md
   - docs/models/components/keyauthconsumer.md
   - docs/models/components/keyauthwithoutparents.md
+  - docs/models/components/keyauthwithoutparentsconsumer.md
   - docs/models/components/keyinput.md
   - docs/models/components/keyset.md
   - docs/models/components/keysetinput.md
@@ -534,6 +539,7 @@ generatedFiles:
   - docs/models/components/mtlsauthconsumer.md
   - docs/models/components/mtlsauthwithoutparents.md
   - docs/models/components/mtlsauthwithoutparentscacertificate.md
+  - docs/models/components/mtlsauthwithoutparentsconsumer.md
   - docs/models/components/name.md
   - docs/models/components/one.md
   - docs/models/components/ordering.md
@@ -556,8 +562,12 @@ generatedFiles:
   - docs/models/components/pluginwithoutparents.md
   - docs/models/components/pluginwithoutparentsafter.md
   - docs/models/components/pluginwithoutparentsbefore.md
+  - docs/models/components/pluginwithoutparentsconsumer.md
+  - docs/models/components/pluginwithoutparentsconsumergroup.md
   - docs/models/components/pluginwithoutparentsordering.md
   - docs/models/components/pluginwithoutparentsprotocols.md
+  - docs/models/components/pluginwithoutparentsroute.md
+  - docs/models/components/pluginwithoutparentsservice.md
   - docs/models/components/protocol.md
   - docs/models/components/protocols.md
   - docs/models/components/proxyurl.md
@@ -640,6 +650,7 @@ generatedFiles:
   - docs/models/components/routewithoutparentshttpsredirectstatuscode.md
   - docs/models/components/routewithoutparentspathhandling.md
   - docs/models/components/routewithoutparentsprotocols.md
+  - docs/models/components/routewithoutparentsservice.md
   - docs/models/components/routewithoutparentssources.md
   - docs/models/components/rule.md
   - docs/models/components/security.md
@@ -651,6 +662,7 @@ generatedFiles:
   - docs/models/components/snicertificate.md
   - docs/models/components/sniinput.md
   - docs/models/components/sniwithoutparents.md
+  - docs/models/components/sniwithoutparentscertificate.md
   - docs/models/components/sources.md
   - docs/models/components/state.md
   - docs/models/components/stringfieldcontainsfilter.md
@@ -666,6 +678,7 @@ generatedFiles:
   - docs/models/components/target.md
   - docs/models/components/targetupstream.md
   - docs/models/components/targetwithoutparents.md
+  - docs/models/components/targetwithoutparentsupstream.md
   - docs/models/components/team.md
   - docs/models/components/teamcollection.md
   - docs/models/components/teamgroupmapping.md
