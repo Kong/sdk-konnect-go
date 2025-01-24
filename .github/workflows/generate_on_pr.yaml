@@ -8,12 +8,13 @@ on:
     - opened
     - synchronize
 
+permissions:
+  contents: read
+
 jobs:
   # NOTE: This is a poor man's way of checking if the last commit was made by
   # this workflow. If it was then we don't want to generate the SDK again.
   should-generate:
-    permissions:
-      contents: read
     runs-on:
       - ubuntu-latest
     outputs:

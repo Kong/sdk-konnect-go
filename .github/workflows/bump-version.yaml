@@ -8,6 +8,9 @@ on:
     - labeled
     - unlabeled
 
+permissions:
+  contents: read
+
 jobs:
   check-semver-label:
     runs-on: ubuntu-latest
