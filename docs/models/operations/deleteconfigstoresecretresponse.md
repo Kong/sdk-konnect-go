@@ -1,4 +1,4 @@
-# DeleteCustomPluginResponse
+# DeleteConfigStoreSecretResponse
 
 
 ## Fields

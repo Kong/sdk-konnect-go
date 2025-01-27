@@ -41,7 +41,10 @@ tags:
     name: DP Certificates
   - description: Custom Plugin Schemas
     name: Custom Plugin Schemas
-  - name: CustomPlugins
+  - description: Config Stores
+    name: Config Stores
+  - description: Config Store Secrets
+    name: Config Store Secrets
   - description: >
       Service entities are abstractions of your microservice interfaces or
       formal APIs. For example, a service could be a data transformation
@@ -297,6 +300,247 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateControlPlaneRequest'
       description: Create a control plane in the Konnect Organization.
+  /v2/control-planes/{controlPlaneId}/config-stores:
+    get:
+      summary: List all config stores for a control plane
+      operationId: list-config-stores
+      parameters:
+        - $ref: '#/components/parameters/controlPlaneId'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageAfter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListConfigStoresResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        '401':
+          $ref: '#/components/responses/ConfigStoreUnauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Config Stores
+    post:
+      summary: Create Config Store
+      description: Create a Config Store
+      operationId: create-config-store
+      responses:
+        '201':
+          $ref: '#/components/responses/ConfigStoreResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        '401':
+          $ref: '#/components/responses/ConfigStoreUnauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      parameters:
+        - $ref: '#/components/parameters/controlPlaneId'
+      requestBody:
+        $ref: '#/components/requestBodies/CreateConfigStoreRequest'
+      tags:
+        - Config Stores
+  /v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}:
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/configStoreId'
+    get:
+      summary: Fetch Config Store
+      description: Returns a Config Store
+      operationId: get-config-store
+      responses:
+        '200':
+          $ref: '#/components/responses/ConfigStoreResponse'
+        '401':
+          $ref: '#/components/responses/ConfigStoreUnauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Config Stores
+    put:
+      summary: Update an individual Config Store
+      description: Updates a Config Store
+      operationId: update-config-store
+      responses:
+        '200':
+          $ref: '#/components/responses/ConfigStoreResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        '401':
+          $ref: '#/components/responses/ConfigStoreUnauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/ConfigStoreNotFound'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateConfigStoreRequest'
+      tags:
+        - Config Stores
+    delete:
+      summary: Delete Config Store
+      description: Removes a config store
+      operationId: delete-config-store
+      parameters:
+        - schema:
+            type: string
+            default: 'false'
+            enum:
+              - 'true'
+              - 'false'
+          name: force
+          in: query
+          description: >-
+            If true, delete specified config store and all secrets, even if
+            there are secrets linked to the config store If false, do not allow
+            deletion if there are secrets linked to the config store
+      responses:
+        '204':
+          description: Config Store was deleted successfully.
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        '401':
+          $ref: '#/components/responses/ConfigStoreUnauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Config Stores
+  /v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets:
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/configStoreId'
+    post:
+      summary: Create Config Store Secret
+      description: Creates a secret for a Config Store.
+      operationId: create-config-store-secret
+      responses:
+        '201':
+          $ref: '#/components/responses/ConfigStoreSecretResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        '401':
+          $ref: '#/components/responses/ConfigStoreSecretUnauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/ConfigStoreSecretNotFound'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      requestBody:
+        $ref: '#/components/requestBodies/CreateConfigStoreSecretRequest'
+      tags:
+        - Config Store Secrets
+    get:
+      summary: List Config Store Secrets
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageAfter'
+      description: Returns a collection of all secrets for a Config Store.
+      operationId: list-config-store-secrets
+      responses:
+        '200':
+          $ref: '#/components/responses/ListConfigStoreSecretsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        '401':
+          $ref: '#/components/responses/ConfigStoreSecretUnauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/ConfigStoreSecretNotFound'
+      tags:
+        - Config Store Secrets
+  /v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets/{key}:
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/configStoreId'
+      - schema:
+          type: string
+          example: ConfigStoreSecretKey
+        name: key
+        in: path
+        required: true
+        description: Config Store Secret key
+    get:
+      summary: Fetch Config Store Secret
+      description: Returns a secret for the Config Store.
+      operationId: get-config-store-secret
+      responses:
+        '200':
+          $ref: '#/components/responses/ConfigStoreSecretResponse'
+        '401':
+          $ref: '#/components/responses/ConfigStoreSecretUnauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/ConfigStoreSecretNotFound'
+      tags:
+        - Config Store Secrets
+    put:
+      summary: Update Config Store Secret
+      description: Updates a secret for a Config Store.
+      operationId: update-config-store-secret
+      responses:
+        '200':
+          $ref: '#/components/responses/ConfigStoreSecretResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        '401':
+          $ref: '#/components/responses/ConfigStoreSecretUnauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/ConfigStoreSecretNotFound'
+        '415':
+          $ref: '#/components/responses/UnsupportedMediaType'
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateConfigStoreSecretRequest'
+      tags:
+        - Config Store Secrets
+    delete:
+      summary: Delete Config Store Secret
+      description: Removes a secret from a Config Store.
+      operationId: delete-config-store-secret
+      responses:
+        '204':
+          description: Secret for the Config Store was deleted successfully.
+        '401':
+          $ref: '#/components/responses/ConfigStoreSecretUnauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/ConfigStoreSecretNotFound'
+      tags:
+        - Config Store Secrets
   /v2/control-planes/{controlPlaneId}/core-entities/acls:
     get:
       operationId: list-acl
@@ -2008,54 +2252,6 @@ paths:
                 $ref: '#/components/schemas/Plugin'
       tags:
         - Plugins
-  /v2/control-planes/{controlPlaneId}/core-entities/custom-plugins:
-    get:
-      operationId: list-custom-plugin
-      summary: List all CustomPlugins
-      description: List all CustomPlugins
-      parameters:
-        - $ref: '#/components/parameters/PaginationSize'
-        - $ref: '#/components/parameters/PaginationOffset'
-        - $ref: '#/components/parameters/PaginationTagsFilter'
-      responses:
-        '200':
-          description: A successful response listing CustomPlugins
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/CustomPlugin'
-                  next:
-                    $ref: '#/components/schemas/PaginationNextResponse'
-                  offset:
-                    $ref: '#/components/schemas/PaginationOffsetResponse'
-        '401':
-          $ref: '#/components/responses/HTTP401Error'
-      tags:
-        - CustomPlugins
-    parameters:
-      - $ref: '#/components/parameters/controlPlaneId'
-  /v2/control-planes/{controlPlaneId}/core-entities/custom-plugins/{CustomPluginId}:
-    delete:
-      operationId: delete-custom-plugin
-      summary: Delete a CustomPlugin
-      description: Delete a CustomPlugin
-      parameters:
-        - $ref: '#/components/parameters/CustomPluginId'
-      responses:
-        '204':
-          description: Successfully deleted CustomPlugin or the resource didn't exist
-        '401':
-          $ref: '#/components/responses/HTTP401Error'
-      tags:
-        - CustomPlugins
-    parameters:
-      - $ref: '#/components/parameters/CustomPluginId'
-      - $ref: '#/components/parameters/controlPlaneId'
   /v2/control-planes/{controlPlaneId}/core-entities/hmac-auths:
     get:
       operationId: list-hmac-auth
@@ -5694,6 +5890,15 @@ components:
         type: string
       required: true
       x-speakeasy-match: id
+    configStoreId:
+      schema:
+        type: string
+        format: uuid
+        example: d32d905a-ed33-46a3-a093-d8f536af9a8a
+      name: configStoreId
+      in: path
+      required: true
+      description: Config Store identifier
     ACLId:
       description: ID of the ACL to lookup
       example: f28acbfa-c866-4587-b688-0208ac24df21
@@ -5754,14 +5959,6 @@ components:
       example: f28acbfa-c866-4587-b688-0208ac24df21
       in: path
       name: ConsumerIdForNestedEntities
-      required: true
-      schema:
-        type: string
-    CustomPluginId:
-      description: ID of the CustomPlugin to lookup
-      example: ''
-      in: path
-      name: CustomPluginId
       required: true
       schema:
         type: string
@@ -7315,6 +7512,76 @@ components:
                       An ISO-8604 timestamp representation of custom plugin
                       schema update date.
                     example: 1422412345
+    ListConfigStoresResponse:
+      description: List of Config Stores
+      content:
+        application/json:
+          schema:
+            title: ListConfigStoresResponse
+            type: object
+            required:
+              - data
+              - meta
+            properties:
+              meta:
+                $ref: '#/components/schemas/CursorMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ConfigStore'
+    ListConfigStoreSecretsResponse:
+      description: List of Config Store Secrets
+      content:
+        application/json:
+          schema:
+            title: ListConfigStoreSecretsResponse
+            type: object
+            required:
+              - data
+              - meta
+            properties:
+              meta:
+                $ref: '#/components/schemas/CursorMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ConfigStoreSecret'
+    ConfigStoreResponse:
+      description: Config Store
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ConfigStore'
+    ConfigStoreSecretResponse:
+      description: Config Store Secret
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ConfigStoreSecret'
+    ConfigStoreUnauthorized:
+      description: Unauthorized
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/UnauthorizedError'
+    ConfigStoreSecretUnauthorized:
+      description: Unauthorized
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/UnauthorizedError'
+    ConfigStoreNotFound:
+      description: Not Found
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/NotFoundError'
+    ConfigStoreSecretNotFound:
+      description: Not Found
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/NotFoundError'
     HTTP401Error:
       description: Unauthorized
       content:
@@ -7327,6 +7594,12 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/ConflictError'
+    UnsupportedMediaType:
+      description: Unsupported Media Type
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/UnsupportedMediaTypeError'
   schemas:
     GroupMembership:
       x-speakeasy-entity: GatewayControlPlaneMembership
@@ -8437,6 +8710,18 @@ components:
           format: date-time
           description: Timestamp of when the system account access token was last used.
           readOnly: true
+    CreatedAt:
+      type: string
+      format: date-time
+      example: '2022-11-04T20:10:06.927Z'
+      description: An ISO-8601 timestamp representation of entity creation date.
+      readOnly: true
+    UpdatedAt:
+      type: string
+      format: date-time
+      example: '2022-11-04T20:10:06.927Z'
+      description: An ISO-8601 timestamp representation of entity update date.
+      readOnly: true
     StringFieldFilter:
       title: StringFieldFilter
       description: Filter a string value field either by exact match or partial contains.
@@ -8495,6 +8780,79 @@ components:
             cert:
               type: string
               description: JSON escaped string of the certificate.
+    ConfigStore:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: b9e81174-b5bb-4638-a3c3-8afe61a0abf8
+          description: The Config Store ID.
+          readOnly: true
+        name:
+          type: string
+          description: The name of the Config Store
+          example: My Name
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+    CreateConfigStore:
+      title: Create Config Store Request
+      description: The request schema to create a Config Store.
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+          example: Config Store
+    UpdateConfigStore:
+      title: Update Config Store Request
+      description: The request schema to update a Config Store.
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+          example: Config Store
+    ConfigStoreSecret:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+    CreateConfigStoreSecret:
+      type: object
+      required:
+        - key
+        - value
+      properties:
+        key:
+          type: string
+          minLength: 1
+          maxLength: 512
+        value:
+          type: string
+          minLength: 1
+          maxLength: 5120
+    UpdateConfigStoreSecret:
+      type: object
+      required:
+        - value
+      properties:
+        value:
+          type: string
+          minLength: 1
+          maxLength: 5120
     ACL:
       type: object
       properties:
@@ -8843,49 +9201,6 @@ components:
       properties:
         consumer_group:
           $ref: '#/components/schemas/ConsumerGroup'
-    CustomPlugin:
-      type: object
-      properties:
-        created_at:
-          description: Unix epoch when the resource was created.
-          type: integer
-          readOnly: true
-        handler:
-          type: string
-        id:
-          type: string
-          nullable: true
-        name:
-          type: string
-        schema:
-          type: string
-        tags:
-          type: array
-          items:
-            type: string
-        updated_at:
-          description: Unix epoch when the resource was last updated.
-          type: integer
-          readOnly: true
-      example:
-        handler: >-
-          return { VERSION = '1.0,0', PRIORITY = 500, access = function(self,
-          config) kong.service.request.set_header(config.name, config.value) end
-          }
-        id: 868346aa-1105-4b77-8346-aa1105fb77c4
-        name: set-header
-        schema: >-
-          return { name = 'set-header', fields = { { protocols =
-          require('kong.db.schema.typedefs').protocols_http }, { config = { type
-          = 'record', fields = { { name = { description = 'The name of the
-          header to set.', type = 'string', required = true } }, { value = {
-          description = 'The value for the header.', type = 'string', required =
-          true } } } } } } }
-      additionalProperties: false
-      required:
-        - name
-        - schema
-        - handler
     GatewayUnauthorizedError:
       type: object
       properties:
@@ -10927,6 +11242,58 @@ components:
         - name
         - prefix
         - config
+    CursorMetaPage:
+      type: object
+      required:
+        - size
+        - next
+        - previous
+      properties:
+        first:
+          description: URI to the first page
+          type: string
+          format: path
+        last:
+          description: URI to the last page
+          type: string
+          format: path
+        next:
+          description: URI to the next page
+          type: string
+          format: path
+          nullable: true
+        previous:
+          description: URI to the previous page
+          type: string
+          format: path
+          nullable: true
+        size:
+          description: Requested page size
+          type: number
+          example: 10
+    CursorMeta:
+      type: object
+      description: Pagination metadata.
+      required:
+        - page
+      properties:
+        page:
+          $ref: '#/components/schemas/CursorMetaPage'
+    UnsupportedMediaTypeError:
+      allOf:
+        - $ref: '#/components/schemas/BaseError'
+        - type: object
+          properties:
+            status:
+              example: 415
+            title:
+              example: UnsupportedMediaType
+            type:
+              example: https://httpstatuses.com/415
+            instance:
+              example: kong:trace:1234567890
+            detail:
+              example: UnsupportedMediaType
   securitySchemes:
     personalAccessToken:
       type: http
@@ -11394,6 +11761,30 @@ components:
                   \"record\", fields = { } } } } }
             required:
               - lua_schema
+    CreateConfigStoreRequest:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateConfigStore'
+    CreateConfigStoreSecretRequest:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateConfigStoreSecret'
+    UpdateConfigStoreRequest:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateConfigStore'
+    UpdateConfigStoreSecretRequest:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateConfigStoreSecret'
 externalDocs:
   description: Documentation for Kong Gateway and its APIs
   url: https://docs.konghq.com
