@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: bf793ad8dca95f0e711ff6b2850c7b9d
+  docChecksum: 775faead244b67eac8090b0b6a8af0fd
   docVersion: 0.0.1
   speakeasyVersion: 1.470.1
   generationVersion: 2.493.34
-  releaseVersion: 0.1.27
-  configChecksum: 9d97302606b945989145a2e4a72376dd
+  releaseVersion: 0.1.28
+  configChecksum: f6aa55aadea433268e0c46840d52ef21
 features:
   go:
     additionalDependencies: 0.1.0
@@ -44,6 +44,8 @@ generatedFiles:
   - /models/components/cacertificateinput.go
   - /models/components/certificate.go
   - /models/components/certificateinput.go
+  - /models/components/configstore.go
+  - /models/components/configstoresecret.go
   - /models/components/consumer.go
   - /models/components/consumergroup.go
   - /models/components/consumergroupinput.go
@@ -51,14 +53,17 @@ generatedFiles:
   - /models/components/consumerinput.go
   - /models/components/controlplane.go
   - /models/components/controlplanefilterparameters.go
+  - /models/components/createconfigstore.go
+  - /models/components/createconfigstoresecret.go
   - /models/components/createcontrolplanerequest.go
   - /models/components/createpluginschemas.go
   - /models/components/createsystemaccount.go
   - /models/components/createsystemaccountaccesstoken.go
   - /models/components/createteam.go
+  - /models/components/cursormeta.go
+  - /models/components/cursormetapage.go
   - /models/components/cursormetawithsizeandtotal.go
   - /models/components/cursorpaginatedmetawithsizeandtotal.go
-  - /models/components/customplugin.go
   - /models/components/dataplaneclientcertificate.go
   - /models/components/dataplaneclientcertificaterequest.go
   - /models/components/entityregion.go
@@ -90,6 +95,8 @@ generatedFiles:
   - /models/components/keyset.go
   - /models/components/keysetinput.go
   - /models/components/keywithoutparents.go
+  - /models/components/listconfigstoresecretsresponse.go
+  - /models/components/listconfigstoresresponse.go
   - /models/components/listcontrolplanesresponse.go
   - /models/components/listdataplanecertificatesresponse.go
   - /models/components/listgroupmemberships.go
@@ -133,6 +140,8 @@ generatedFiles:
   - /models/components/teammappingcollection.go
   - /models/components/teammappingresponse.go
   - /models/components/updateauthenticationsettings.go
+  - /models/components/updateconfigstore.go
+  - /models/components/updateconfigstoresecret.go
   - /models/components/updatecontrolplanerequest.go
   - /models/components/updateidpconfiguration.go
   - /models/components/updateimpersonationsettingsrequest.go
@@ -155,6 +164,8 @@ generatedFiles:
   - /models/operations/createbasicauthwithconsumer.go
   - /models/operations/createcacertificate.go
   - /models/operations/createcertificate.go
+  - /models/operations/createconfigstore.go
+  - /models/operations/createconfigstoresecret.go
   - /models/operations/createconsumer.go
   - /models/operations/createconsumergroup.go
   - /models/operations/createcontrolplane.go
@@ -185,10 +196,11 @@ generatedFiles:
   - /models/operations/deletebasicauthwithconsumer.go
   - /models/operations/deletecacertificate.go
   - /models/operations/deletecertificate.go
+  - /models/operations/deleteconfigstore.go
+  - /models/operations/deleteconfigstoresecret.go
   - /models/operations/deleteconsumer.go
   - /models/operations/deleteconsumergroup.go
   - /models/operations/deletecontrolplane.go
-  - /models/operations/deletecustomplugin.go
   - /models/operations/deletedataplanecertificate.go
   - /models/operations/deletehmacauthwithconsumer.go
   - /models/operations/deletejwtwithconsumer.go
@@ -226,6 +238,8 @@ generatedFiles:
   - /models/operations/getbasicauthwithconsumer.go
   - /models/operations/getcacertificate.go
   - /models/operations/getcertificate.go
+  - /models/operations/getconfigstore.go
+  - /models/operations/getconfigstoresecret.go
   - /models/operations/getconsumer.go
   - /models/operations/getconsumergroup.go
   - /models/operations/getcontrolplane.go
@@ -284,12 +298,13 @@ generatedFiles:
   - /models/operations/listbasicauthwithconsumer.go
   - /models/operations/listcacertificate.go
   - /models/operations/listcertificate.go
+  - /models/operations/listconfigstores.go
+  - /models/operations/listconfigstoresecrets.go
   - /models/operations/listconsumer.go
   - /models/operations/listconsumergroup.go
   - /models/operations/listconsumergroupsforconsumer.go
   - /models/operations/listconsumersforconsumergroup.go
   - /models/operations/listcontrolplanes.go
-  - /models/operations/listcustomplugin.go
   - /models/operations/listdataplanenodes.go
   - /models/operations/listdpclientcertificates.go
   - /models/operations/listhmacauth.go
@@ -341,6 +356,8 @@ generatedFiles:
   - /models/operations/teamsassignrole.go
   - /models/operations/teamsremoverole.go
   - /models/operations/updateauthenticationsettings.go
+  - /models/operations/updateconfigstore.go
+  - /models/operations/updateconfigstoresecret.go
   - /models/operations/updatecontrolplane.go
   - /models/operations/updateidpconfiguration.go
   - /models/operations/updateidpteammappings.go
@@ -386,6 +403,7 @@ generatedFiles:
   - /models/sdkerrors/ratelimited.go
   - /models/sdkerrors/serviceunavailable.go
   - /models/sdkerrors/unauthorizederror.go
+  - /models/sdkerrors/unsupportedmediatypeerror.go
   - USAGE.md
   - acls.go
   - apikeys.go
@@ -394,11 +412,12 @@ generatedFiles:
   - basicauthcredentials.go
   - cacertificates.go
   - certificates.go
+  - configstores.go
+  - configstoresecrets.go
   - consumergroups.go
   - consumers.go
   - controlplanegroups.go
   - controlplanes.go
-  - customplugins.go
   - custompluginschemas.go
   - docs/models/components/acl.md
   - docs/models/components/aclconsumer.md
@@ -433,6 +452,8 @@ generatedFiles:
   - docs/models/components/clustertype.md
   - docs/models/components/compatibilitystatus.md
   - docs/models/components/config.md
+  - docs/models/components/configstore.md
+  - docs/models/components/configstoresecret.md
   - docs/models/components/consumer.md
   - docs/models/components/consumeradmin.md
   - docs/models/components/consumergroup.md
@@ -444,6 +465,8 @@ generatedFiles:
   - docs/models/components/controlplaneclustertype.md
   - docs/models/components/controlplanefilterparameters.md
   - docs/models/components/controlplanes.md
+  - docs/models/components/createconfigstore.md
+  - docs/models/components/createconfigstoresecret.md
   - docs/models/components/createcontrolplanerequest.md
   - docs/models/components/createcontrolplanerequestclustertype.md
   - docs/models/components/createpluginschemas.md
@@ -451,9 +474,10 @@ generatedFiles:
   - docs/models/components/createsystemaccountaccesstoken.md
   - docs/models/components/createteam.md
   - docs/models/components/creator.md
+  - docs/models/components/cursormeta.md
+  - docs/models/components/cursormetapage.md
   - docs/models/components/cursormetawithsizeandtotal.md
   - docs/models/components/cursorpaginatedmetawithsizeandtotal.md
-  - docs/models/components/customplugin.md
   - docs/models/components/data.md
   - docs/models/components/dataplaneclientcertificate.md
   - docs/models/components/dataplaneclientcertificateitem.md
@@ -516,6 +540,8 @@ generatedFiles:
   - docs/models/components/keywithoutparents.md
   - docs/models/components/keywithoutparentspem.md
   - docs/models/components/keywithoutparentsset.md
+  - docs/models/components/listconfigstoresecretsresponse.md
+  - docs/models/components/listconfigstoresresponse.md
   - docs/models/components/listcontrolplanesresponse.md
   - docs/models/components/listdataplanecertificatesresponse.md
   - docs/models/components/listdataplanecertificatesresponsepage.md
@@ -692,6 +718,8 @@ generatedFiles:
   - docs/models/components/type.md
   - docs/models/components/unhealthy.md
   - docs/models/components/updateauthenticationsettings.md
+  - docs/models/components/updateconfigstore.md
+  - docs/models/components/updateconfigstoresecret.md
   - docs/models/components/updatecontrolplanerequest.md
   - docs/models/components/updatecontrolplanerequestauthtype.md
   - docs/models/components/updateidpconfiguration.md
@@ -736,6 +764,10 @@ generatedFiles:
   - docs/models/operations/createcacertificateresponse.md
   - docs/models/operations/createcertificaterequest.md
   - docs/models/operations/createcertificateresponse.md
+  - docs/models/operations/createconfigstorerequest.md
+  - docs/models/operations/createconfigstoreresponse.md
+  - docs/models/operations/createconfigstoresecretrequest.md
+  - docs/models/operations/createconfigstoresecretresponse.md
   - docs/models/operations/createconsumergrouprequest.md
   - docs/models/operations/createconsumergroupresponse.md
   - docs/models/operations/createconsumerrequest.md
@@ -794,14 +826,16 @@ generatedFiles:
   - docs/models/operations/deletecacertificateresponse.md
   - docs/models/operations/deletecertificaterequest.md
   - docs/models/operations/deletecertificateresponse.md
+  - docs/models/operations/deleteconfigstorerequest.md
+  - docs/models/operations/deleteconfigstoreresponse.md
+  - docs/models/operations/deleteconfigstoresecretrequest.md
+  - docs/models/operations/deleteconfigstoresecretresponse.md
   - docs/models/operations/deleteconsumergrouprequest.md
   - docs/models/operations/deleteconsumergroupresponse.md
   - docs/models/operations/deleteconsumerrequest.md
   - docs/models/operations/deleteconsumerresponse.md
   - docs/models/operations/deletecontrolplanerequest.md
   - docs/models/operations/deletecontrolplaneresponse.md
-  - docs/models/operations/deletecustompluginrequest.md
-  - docs/models/operations/deletecustompluginresponse.md
   - docs/models/operations/deletedataplanecertificaterequest.md
   - docs/models/operations/deletedataplanecertificateresponse.md
   - docs/models/operations/deletehmacauthwithconsumerrequest.md
@@ -864,6 +898,7 @@ generatedFiles:
   - docs/models/operations/fetchpluginschemaresponse.md
   - docs/models/operations/fetchpluginschemaresponsebody.md
   - docs/models/operations/filter.md
+  - docs/models/operations/force.md
   - docs/models/operations/getaclrequest.md
   - docs/models/operations/getaclresponse.md
   - docs/models/operations/getaclwithconsumerrequest.md
@@ -877,6 +912,10 @@ generatedFiles:
   - docs/models/operations/getcacertificateresponse.md
   - docs/models/operations/getcertificaterequest.md
   - docs/models/operations/getcertificateresponse.md
+  - docs/models/operations/getconfigstorerequest.md
+  - docs/models/operations/getconfigstoreresponse.md
+  - docs/models/operations/getconfigstoresecretrequest.md
+  - docs/models/operations/getconfigstoresecretresponse.md
   - docs/models/operations/getconsumergrouprequest.md
   - docs/models/operations/getconsumergroupresponse.md
   - docs/models/operations/getconsumerrequest.md
@@ -996,6 +1035,10 @@ generatedFiles:
   - docs/models/operations/listcertificaterequest.md
   - docs/models/operations/listcertificateresponse.md
   - docs/models/operations/listcertificateresponsebody.md
+  - docs/models/operations/listconfigstoresecretsrequest.md
+  - docs/models/operations/listconfigstoresecretsresponse.md
+  - docs/models/operations/listconfigstoresrequest.md
+  - docs/models/operations/listconfigstoresresponse.md
   - docs/models/operations/listconsumergrouprequest.md
   - docs/models/operations/listconsumergroupresponse.md
   - docs/models/operations/listconsumergroupresponsebody.md
@@ -1010,9 +1053,6 @@ generatedFiles:
   - docs/models/operations/listconsumersforconsumergroupresponsebody.md
   - docs/models/operations/listcontrolplanesrequest.md
   - docs/models/operations/listcontrolplanesresponse.md
-  - docs/models/operations/listcustompluginrequest.md
-  - docs/models/operations/listcustompluginresponse.md
-  - docs/models/operations/listcustompluginresponsebody.md
   - docs/models/operations/listdataplanenodesrequest.md
   - docs/models/operations/listdataplanenodesresponse.md
   - docs/models/operations/listdpclientcertificatesrequest.md
@@ -1144,6 +1184,10 @@ generatedFiles:
   - docs/models/operations/teamsremoverolerequest.md
   - docs/models/operations/teamsremoveroleresponse.md
   - docs/models/operations/updateauthenticationsettingsresponse.md
+  - docs/models/operations/updateconfigstorerequest.md
+  - docs/models/operations/updateconfigstoreresponse.md
+  - docs/models/operations/updateconfigstoresecretrequest.md
+  - docs/models/operations/updateconfigstoresecretresponse.md
   - docs/models/operations/updatecontrolplanerequest.md
   - docs/models/operations/updatecontrolplaneresponse.md
   - docs/models/operations/updateidpconfigurationresponse.md
@@ -1223,6 +1267,7 @@ generatedFiles:
   - docs/models/sdkerrors/serviceunavailable.md
   - docs/models/sdkerrors/status.md
   - docs/models/sdkerrors/unauthorizederror.md
+  - docs/models/sdkerrors/unsupportedmediatypeerror.md
   - docs/sdks/acls/README.md
   - docs/sdks/apikeys/README.md
   - docs/sdks/authentication/README.md
@@ -1230,11 +1275,12 @@ generatedFiles:
   - docs/sdks/basicauthcredentials/README.md
   - docs/sdks/cacertificates/README.md
   - docs/sdks/certificates/README.md
+  - docs/sdks/configstores/README.md
+  - docs/sdks/configstoresecrets/README.md
   - docs/sdks/consumergroups/README.md
   - docs/sdks/consumers/README.md
   - docs/sdks/controlplanegroups/README.md
   - docs/sdks/controlplanes/README.md
-  - docs/sdks/customplugins/README.md
   - docs/sdks/custompluginschemas/README.md
   - docs/sdks/dpcertificates/README.md
   - docs/sdks/dpnodes/README.md
@@ -3987,5 +4033,182 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 523768}
+  list-config-stores:
+    speakeasy-default-list-config-stores:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          page[size]: 10
+          page[after]: "ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"
+      responses:
+        "200":
+          application/json: {"meta": {"page": {"next": "/etc/periodic", "previous": "/etc/ppp", "size": 10}}, "data": [{"id": "b9e81174-b5bb-4638-a3c3-8afe61a0abf8", "name": "My Name", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "b9e81174-b5bb-4638-a3c3-8afe61a0abf8", "name": "My Name", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "b9e81174-b5bb-4638-a3c3-8afe61a0abf8", "name": "My Name", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+        "400":
+          application/problem+json: {"status": 432502, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+  create-config-store:
+    speakeasy-default-create-config-store:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"name": "Config Store"}
+      responses:
+        "201":
+          application/json: {"id": "b9e81174-b5bb-4638-a3c3-8afe61a0abf8", "name": "My Name", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 264934, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value>"], "source": "body"}, {"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value>", "<value>"], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "415":
+          application/problem+json: {"status": 415, "title": "UnsupportedMediaType", "type": "https://httpstatuses.com/415", "instance": "kong:trace:1234567890", "detail": "UnsupportedMediaType"}
+  get-config-store:
+    speakeasy-default-get-config-store:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          configStoreId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "200":
+          application/json: {"id": "b9e81174-b5bb-4638-a3c3-8afe61a0abf8", "name": "My Name", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+  update-config-store:
+    speakeasy-default-update-config-store:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          configStoreId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      requestBody:
+        application/json: {"name": "Config Store"}
+      responses:
+        "200":
+          application/json: {"id": "b9e81174-b5bb-4638-a3c3-8afe61a0abf8", "name": "My Name", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 188203, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "415":
+          application/problem+json: {"status": 415, "title": "UnsupportedMediaType", "type": "https://httpstatuses.com/415", "instance": "kong:trace:1234567890", "detail": "UnsupportedMediaType"}
+  delete-config-store:
+    speakeasy-default-delete-config-store:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          configStoreId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+        query:
+          force: "false"
+      responses:
+        "400":
+          application/problem+json: {"status": 632538, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+  create-config-store-secret:
+    speakeasy-default-create-config-store-secret:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          configStoreId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      requestBody:
+        application/json: {"key": "<key>", "value": "<value>"}
+      responses:
+        "201":
+          application/json: {"created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 940090, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "max_length", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "415":
+          application/problem+json: {"status": 415, "title": "UnsupportedMediaType", "type": "https://httpstatuses.com/415", "instance": "kong:trace:1234567890", "detail": "UnsupportedMediaType"}
+  list-config-store-secrets:
+    speakeasy-default-list-config-store-secrets:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          configStoreId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+        query:
+          page[size]: 10
+          page[after]: "ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"
+      responses:
+        "200":
+          application/json: {"meta": {"page": {"next": "/usr/include", "previous": "/opt", "size": 10}}, "data": [{"created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+        "400":
+          application/problem+json: {"status": 854272, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  get-config-store-secret:
+    speakeasy-default-get-config-store-secret:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          configStoreId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+          key: "ConfigStoreSecretKey"
+      responses:
+        "200":
+          application/json: {"created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  update-config-store-secret:
+    speakeasy-default-update-config-store-secret:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          configStoreId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+          key: "ConfigStoreSecretKey"
+      requestBody:
+        application/json: {"value": "<value>"}
+      responses:
+        "200":
+          application/json: {"created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 282423, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value>"], "source": "body"}, {"field": "name", "rule": "max_length", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}, {"field": "name", "source": "body", "reason": "is a required field"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "415":
+          application/problem+json: {"status": 415, "title": "UnsupportedMediaType", "type": "https://httpstatuses.com/415", "instance": "kong:trace:1234567890", "detail": "UnsupportedMediaType"}
+  delete-config-store-secret:
+    speakeasy-default-delete-config-store-secret:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          configStoreId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+          key: "ConfigStoreSecretKey"
+      responses:
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
 examplesVersion: 1.0.0
 generatedTests: {}
