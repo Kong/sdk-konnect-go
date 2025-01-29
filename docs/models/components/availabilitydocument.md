@@ -1,0 +1,12 @@
+# AvailabilityDocument
+
+Document containing availability information for configurations.
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `Versions`                                                                                     | []*string*                                                                                     | :heavy_check_mark:                                                                             | List of supported gateway versions for cloud gateways.                                         |
+| `InstanceTypes`                                                                                | [][components.InstanceType](../../models/components/instancetype.md)                           | :heavy_check_mark:                                                                             | List of supported instance types, along with their associated resource parameters and pricing. |
+| `Providers`                                                                                    | [][components.Provider](../../models/components/provider.md)                                   | :heavy_check_mark:                                                                             | List of supported cloud providers that run cloud gateway instances.                            |

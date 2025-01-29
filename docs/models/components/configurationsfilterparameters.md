@@ -1,0 +1,9 @@
+# ConfigurationsFilterParameters
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `ControlPlaneID`                                                                                | [*components.IDFieldFilter](../../models/components/idfieldfilter.md)                           | :heavy_minus_sign:                                                                              | N/A                                                                                             |
+| `ControlPlaneGeo`                                                                               | [*components.ControlPlaneGeoFieldFilter](../../models/components/controlplanegeofieldfilter.md) | :heavy_minus_sign:                                                                              | N/A                                                                                             |

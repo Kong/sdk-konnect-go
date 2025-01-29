@@ -9,19 +9,19 @@ import (
 	"time"
 )
 
-// State - The state of the control plane group.
-type State string
+// GroupStatusState - The state of the control plane group.
+type GroupStatusState string
 
 const (
-	StateOk       State = "OK"
-	StateConflict State = "CONFLICT"
-	StateUnknown  State = "UNKNOWN"
+	GroupStatusStateOk       GroupStatusState = "OK"
+	GroupStatusStateConflict GroupStatusState = "CONFLICT"
+	GroupStatusStateUnknown  GroupStatusState = "UNKNOWN"
 )
 
-func (e State) ToPointer() *State {
+func (e GroupStatusState) ToPointer() *GroupStatusState {
 	return &e
 }
-func (e *State) UnmarshalJSON(data []byte) error {
+func (e *GroupStatusState) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -32,10 +32,10 @@ func (e *State) UnmarshalJSON(data []byte) error {
 	case "CONFLICT":
 		fallthrough
 	case "UNKNOWN":
-		*e = State(v)
+		*e = GroupStatusState(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for State: %v", v)
+		return fmt.Errorf("invalid value for GroupStatusState: %v", v)
 	}
 }
 
@@ -49,7 +49,7 @@ type GroupStatus struct {
 	UpdatedAt time.Time       `json:"updated_at"`
 	Conflicts []GroupConflict `json:"conflicts,omitempty"`
 	// The state of the control plane group.
-	State State `json:"state"`
+	State GroupStatusState `json:"state"`
 }
 
 func (g GroupStatus) MarshalJSON() ([]byte, error) {
@@ -91,9 +91,9 @@ func (o *GroupStatus) GetConflicts() []GroupConflict {
 	return o.Conflicts
 }
 
-func (o *GroupStatus) GetState() State {
+func (o *GroupStatus) GetState() GroupStatusState {
 	if o == nil {
-		return State("")
+		return GroupStatusState("")
 	}
 	return o.State
 }

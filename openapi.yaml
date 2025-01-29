@@ -35,6 +35,14 @@ tags:
   - name: Me
   - name: Authentication
   - name: Impersonation Settings
+  - name: Data-Plane Group Configurations
+  - name: Networks
+  - name: Transit Gateways
+  - name: Provider Accounts
+  - name: Custom Domains
+  - name: Resource Quotas
+  - name: Resource Configurations
+  - name: Resource Availability
   - description: DP Nodes
     name: DP Nodes
   - description: DP Certificates
@@ -245,6 +253,726 @@ tags:
   - name: MTLS-auth credentials
   - name: ACLs
 paths:
+  /v2/cloud-gateways/availability.json:
+    get:
+      operationId: get-availability-json
+      summary: Get Resource Availability JSON
+      description: >
+        Get Cloud Gateways Availability JSON document for describing cloud
+        provider and region availability, pricing,
+
+        gateway version availability, and instance type information.
+      security: []
+      responses:
+        '200':
+          $ref: >-
+            #/components/responses/RetrieveCloudGatewaysAvailabilityDocumentResponse
+      tags:
+        - Resource Availability
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/configurations:
+    get:
+      summary: List Configurations
+      description: >
+        Returns a paginated collection of configurations across control-planes
+        for an organization (restricted by
+
+        permitted control-plane reads).
+      operationId: list-configurations
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/ConfigurationsFilter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListConfigurationsResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Data-Plane Group Configurations
+      servers:
+        - url: https://global.api.konghq.com/
+    put:
+      x-speakeasy-entity-operation: CloudGatewayConfiguration#create,update
+      summary: Create Configuration
+      description: >
+        Creates a new configuration for a control-plane (restricted by permitted
+        control-plane permissions for
+
+        configurations). This request will replace any existing configuration
+        for the requested control_plane_id and
+
+        control_plane_geo by performing a diff. From this diff, new resources
+        detected in the requested configuration
+
+        will be added, resources not found in the request configuration but in
+        the previous will be deleted, and
+
+        resources found in both will be updated to the requested configuration.
+        Networks referenced in this request that
+
+        are in an offline state will automatically initialize (i.e. move to an
+        initializing state).
+      operationId: create-configuration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateConfigurationRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/CreateConfigurationResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/CloudGatewaysForbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/CloudGatewaysConflict'
+      tags:
+        - Data-Plane Group Configurations
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/configurations/{configurationId}:
+    get:
+      x-speakeasy-entity-operation: CloudGatewayConfiguration#get
+      summary: Get Configuration
+      description: >-
+        Retrieves a configuration by ID (restricted by permitted control-plane
+        read).
+      operationId: get-configuration
+      parameters:
+        - $ref: '#/components/parameters/ConfigurationId'
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveConfigurationResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Data-Plane Group Configurations
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/custom-domains:
+    get:
+      summary: List Custom Domains
+      description: >
+        Returns a paginated collection of custom domains across control-planes
+        for an organization (restricted by
+
+        permitted control-plane reads).
+      operationId: list-custom-domains
+      parameters:
+        - $ref: '#/components/parameters/CustomDomainsFilter'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListCustomDomainsResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Custom Domains
+      servers:
+        - url: https://global.api.konghq.com/
+    post:
+      x-speakeasy-entity-operation: CloudGatewayCustomDomain#create
+      summary: Create Custom Domain
+      description: >
+        Creates a new custom domain for a control-plane (restricted by permitted
+        control-plane associate-custom-domain
+
+        action).
+      operationId: create-custom-domains
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomDomainRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/CreateCustomDomainResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Custom Domains
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/custom-domains/{customDomainId}:
+    get:
+      x-speakeasy-entity-operation: CloudGatewayCustomDomain#read
+      summary: Get Custom Domain
+      description: >-
+        Retrieves a custom domain by ID (restricted by permitted control-plane
+        reads).
+      operationId: get-custom-domain
+      parameters:
+        - $ref: '#/components/parameters/CustomDomainId'
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveCustomDomainResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Custom Domains
+      servers:
+        - url: https://global.api.konghq.com/
+    delete:
+      x-speakeasy-entity-operation: CloudGatewayCustomDomain#delete
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 10000
+          maxInterval: 60000
+          maxElapsedTime: 1800000
+          exponent: 1.5
+        statusCodes:
+          - 400
+        retryConnectionErrors: false
+      summary: Delete Custom Domain
+      description: >-
+        Deletes a custom domain by ID (restricted by permitted control-plane
+        reads).
+      operationId: delete-custom-domain
+      parameters:
+        - $ref: '#/components/parameters/CustomDomainId'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Custom Domains
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/custom-domains/{customDomainId}/online-status:
+    get:
+      summary: Get Custom Domain Online Status
+      description: Retrieves the CNAME and SSL status of a custom domain.
+      operationId: get-custom-domain-online-status
+      parameters:
+        - $ref: '#/components/parameters/CustomDomainId'
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveCustomDomainOnlineStatusResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Custom Domains
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/default-resource-configurations:
+    get:
+      summary: List Default Resource Configurations
+      description: >
+        Returns a paginated collection of default resource configurations for
+        cloud-gateways, along with
+
+        organizationally-defined overrides for those resource configurations.
+
+        Resource configurations are settings that are applied to all cloud
+        gateway resources in an organization.
+
+        For example, the "data-plane-group-idle-timeout-minutes" resource
+        configuration sets the idle timeout for all data plane groups in an
+        organization.
+      operationId: list-default-resource-configurations
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListDefaultResourceConfigurationsResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Resource Configurations
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/default-resource-quotas:
+    get:
+      summary: List Default Resource Quotas
+      description: >
+        Returns a paginated collection of default resource quotas for
+        cloud-gateways, along with
+
+        organizationally-defined overrides for those resource quotas.
+      operationId: list-default-resource-quotas
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListDefaultResourceQuotasResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Resource Quotas
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/networks:
+    get:
+      summary: List Networks
+      description: Returns a paginated list of networks.
+      operationId: list-networks
+      parameters:
+        - $ref: '#/components/parameters/NetworksFilter'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListNetworksResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Networks
+      servers:
+        - url: https://global.api.konghq.com/
+    post:
+      x-speakeasy-entity-operation: CloudGatewayNetwork#create
+      summary: Create Network
+      description: Creates a new network for a given provider account.
+      operationId: create-network
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNetworkRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/CreateNetworkResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/CloudGatewaysForbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Networks
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/networks/{networkId}:
+    get:
+      x-speakeasy-entity-operation: CloudGatewayNetwork#read
+      summary: Get Network
+      description: Retrieves a network by ID.
+      operationId: get-network
+      parameters:
+        - $ref: '#/components/parameters/NetworkId'
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveNetworkResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Networks
+      servers:
+        - url: https://global.api.konghq.com/
+    patch:
+      x-speakeasy-entity-operation: CloudGatewayNetwork#update
+      summary: Update Network
+      description: Updates a network by ID.
+      operationId: update-network
+      parameters:
+        - $ref: '#/components/parameters/NetworkId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchNetworkRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/PatchNetworkResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/CloudGatewaysForbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Networks
+      servers:
+        - url: https://global.api.konghq.com/
+    delete:
+      x-speakeasy-entity-operation: CloudGatewayNetwork#delete
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 10000
+          maxInterval: 60000
+          maxElapsedTime: 1800000
+          exponent: 1.5
+        statusCodes:
+          - 400
+        retryConnectionErrors: false
+      summary: Delete Network
+      description: Deletes a network by ID.
+      operationId: delete-network
+      parameters:
+        - $ref: '#/components/parameters/NetworkId'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Networks
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/networks/{networkId}/configuration-references:
+    get:
+      description: List Network Configuration References
+      summary: >
+        Returns a paginated collection of configurations that reference a
+        network.
+      operationId: list-network-configurations
+      parameters:
+        - $ref: '#/components/parameters/NetworkId'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListNetworkConfigurationReferencesResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Networks
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/networks/{networkId}/transit-gateways:
+    get:
+      summary: List Transit Gateways
+      description: Returns a paginated collection of transit gateways for a given network.
+      operationId: list-transit-gateways
+      parameters:
+        - $ref: '#/components/parameters/NetworkId'
+        - $ref: '#/components/parameters/TransitGatewaysFilter'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListTransitGatewaysResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Transit Gateways
+      servers:
+        - url: https://global.api.konghq.com/
+    post:
+      x-speakeasy-entity-operation: CloudGatewayTransitGateway#create
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 30000
+          maxInterval: 60000
+          maxElapsedTime: 3600000
+          exponent: 1.5
+        statusCodes:
+          - 400
+        retryConnectionErrors: false
+      summary: Create Transit Gateway
+      description: Creates a new transit gateway for a given network.
+      operationId: create-transit-gateway
+      parameters:
+        - $ref: '#/components/parameters/NetworkId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTransitGatewayRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/CreateTransitGatewayResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Transit Gateways
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/networks/{networkId}/transit-gateways/{transitGatewayId}:
+    get:
+      x-speakeasy-entity-operation: CloudGatewayTransitGateway#read
+      summary: Get Transit Gateway
+      description: Retrieves a transit gateway by ID for a given network.
+      operationId: get-transit-gateway
+      parameters:
+        - $ref: '#/components/parameters/NetworkId'
+        - $ref: '#/components/parameters/TransitGatewayId'
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveTransitGatewayResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Transit Gateways
+      servers:
+        - url: https://global.api.konghq.com/
+    delete:
+      x-speakeasy-entity-operation: CloudGatewayTransitGateway#delete
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 10000
+          maxInterval: 60000
+          maxElapsedTime: 1800000
+          exponent: 1.5
+        statusCodes:
+          - 400
+        retryConnectionErrors: false
+      summary: Delete Transit Gateway
+      description: Deletes a transit gateway by ID for a given network.
+      operationId: delete-transit-gateway
+      parameters:
+        - $ref: '#/components/parameters/NetworkId'
+        - $ref: '#/components/parameters/TransitGatewayId'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Transit Gateways
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/provider-accounts:
+    get:
+      x-speakeasy-entity-operation: CloudGatewayProviderAccountList#read
+      summary: List Provider Accounts
+      description: >-
+        Returns a a paginated collection of provider accounts for an
+        organization.
+      operationId: list-provider-accounts
+      parameters:
+        - $ref: '#/components/parameters/ProviderAccountsFilter'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListProviderAccountsResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Provider Accounts
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/provider-accounts/{providerAccountId}:
+    get:
+      summary: Get Provider Account
+      description: Retrieves a provider account by ID.
+      operationId: get-provider-account
+      parameters:
+        - $ref: '#/components/parameters/ProviderAccountId'
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveProviderAccountResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Provider Accounts
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/resource-configurations:
+    get:
+      summary: List Resource Configurations
+      description: >
+        Returns a paginated collection of resource configurations for an
+        organization.
+
+        Resource configurations are settings that are applied to all cloud
+        gateway resources in an organization.
+
+        For example, the "data-plane-group-idle-timeout-minutes" resource
+        configuration sets the idle timeout for all data plane groups in an
+        organization.
+      operationId: list-resource-configurations
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListResourceConfigurationsResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Resource Configurations
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/resource-configurations/{resourceConfigurationId}:
+    get:
+      summary: Get Resource Configuration
+      description: Retrieves a resource configuration by ID.
+      operationId: get-resource-configuration
+      parameters:
+        - $ref: '#/components/parameters/ResourceConfigurationId'
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveResourceConfigurationResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Resource Configurations
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/resource-quotas:
+    get:
+      summary: List Resource Quotas
+      description: |
+        Returns a paginated collection of resource quotas for an organization.
+      operationId: list-resource-quotas
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListResourceQuotasResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Resource Quotas
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/resource-quotas/{resourceQuotaId}:
+    get:
+      summary: Get Resource Quota
+      description: Retrieves a resource quota by ID.
+      operationId: get-resource-quota
+      parameters:
+        - $ref: '#/components/parameters/ResourceQuotaId'
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveResourceQuotaResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Resource Quotas
+      servers:
+        - url: https://global.api.konghq.com/
   /v2/control-planes:
     get:
       summary: List Control Planes
@@ -5853,6 +6581,99 @@ components:
       schema:
         type: string
         example: ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ
+    NetworksFilter:
+      name: filter
+      description: Filters supported for networks.
+      required: false
+      in: query
+      schema:
+        $ref: '#/components/schemas/NetworksFilterParameters'
+      style: deepObject
+    ProviderAccountsFilter:
+      name: filter
+      description: Filters supported for provider accounts.
+      required: false
+      in: query
+      schema:
+        $ref: '#/components/schemas/ProviderAccountsFilterParameters'
+      style: deepObject
+    ConfigurationsFilter:
+      name: filter
+      description: Filters supported for configurations.
+      required: false
+      in: query
+      schema:
+        $ref: '#/components/schemas/ConfigurationsFilterParameters'
+      style: deepObject
+    TransitGatewaysFilter:
+      name: filter
+      description: Filters supported for transit gateways.
+      required: false
+      in: query
+      schema:
+        $ref: '#/components/schemas/TransitGatewaysFilterParameters'
+      style: deepObject
+    CustomDomainsFilter:
+      name: filter
+      description: Filters supported for custom domains on the global API.
+      required: false
+      in: query
+      schema:
+        $ref: '#/components/schemas/CustomDomainsFilterParameters'
+      style: deepObject
+    ConfigurationId:
+      name: configurationId
+      in: path
+      description: The ID of the configuration to operate on.
+      required: true
+      schema:
+        $ref: '#/components/schemas/ConfigurationId'
+      x-speakeasy-match: id
+    CustomDomainId:
+      name: customDomainId
+      description: ID of the custom domain to operate on.
+      required: true
+      in: path
+      schema:
+        $ref: '#/components/schemas/CustomDomainId'
+      x-speakeasy-match: id
+    NetworkId:
+      name: networkId
+      in: path
+      description: The network to operate on.
+      required: true
+      schema:
+        $ref: '#/components/schemas/NetworkId'
+      x-speakeasy-match: id
+    TransitGatewayId:
+      name: transitGatewayId
+      in: path
+      description: The ID of the transit gateway to operate on.
+      required: true
+      schema:
+        $ref: '#/components/schemas/TransitGatewayId'
+      x-speakeasy-match: id
+    ResourceQuotaId:
+      name: resourceQuotaId
+      in: path
+      description: The ID of the resource quota to operate on.
+      required: true
+      schema:
+        $ref: '#/components/schemas/ResourceQuotaId'
+    ResourceConfigurationId:
+      name: resourceConfigurationId
+      in: path
+      description: The ID of the resource configuration to operate on.
+      required: true
+      schema:
+        $ref: '#/components/schemas/ResourceConfigurationId'
+    ProviderAccountId:
+      name: providerAccountId
+      in: path
+      description: The ID of the provider account to operate on.
+      required: true
+      schema:
+        $ref: '#/components/schemas/ProviderAccountId'
     pagination-size:
       description: Number of resources to be returned.
       in: query
@@ -7298,6 +8119,295 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/IdP'
+    RetrieveCloudGatewaysAvailabilityDocumentResponse:
+      description: >-
+        Response format for retrieving the cloud gateways availability JSON
+        document.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AvailabilityDocument'
+    ListNetworkConfigurationReferencesResponse:
+      description: >-
+        A paginated list for a collection of configurations that reference a
+        network.
+      content:
+        application/json:
+          schema:
+            title: ListNetworkConfigurationReferencesResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/PaginatedMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NetworkConfigurationReference'
+            required:
+              - meta
+              - data
+    ListConfigurationsResponse:
+      description: A paginated list for a collection of configurations.
+      content:
+        application/json:
+          schema:
+            title: ListConfigurationsResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/PaginatedMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ConfigurationManifest'
+            required:
+              - meta
+              - data
+    RetrieveConfigurationResponse:
+      description: Response format for retrieving a configuration by ID.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ConfigurationManifest'
+    CreateConfigurationResponse:
+      description: Response format for creating a configuration.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ConfigurationManifest'
+    ListNetworksResponse:
+      description: A paginated list for a collection of networks.
+      content:
+        application/json:
+          schema:
+            title: ListNetworksResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/PaginatedMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Network'
+            required:
+              - meta
+              - data
+    RetrieveNetworkResponse:
+      description: Response format for retrieving a network.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Network'
+    CreateNetworkResponse:
+      description: Response format for creating a network.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Network'
+    PatchNetworkResponse:
+      description: Response format for patching a network.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Network'
+    CreateTransitGatewayResponse:
+      description: Response format for creating a transit gateway.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TransitGatewayResponse'
+    ListTransitGatewaysResponse:
+      description: A paginated list for a collection of transit gateways for a network.
+      content:
+        application/json:
+          schema:
+            title: ListTransitGatewaysResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/PaginatedMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransitGatewayResponse'
+            required:
+              - meta
+              - data
+    RetrieveTransitGatewayResponse:
+      description: Response format for retrieving a transit gateway.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TransitGatewayResponse'
+    ListProviderAccountsResponse:
+      description: A paginated list for a collection of provider accounts.
+      content:
+        application/json:
+          schema:
+            x-speakeasy-entity: CloudGatewayProviderAccountList
+            title: ListCloudGatewayProviderAccountsResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/PaginatedMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProviderAccount'
+            required:
+              - meta
+              - data
+    RetrieveProviderAccountResponse:
+      description: Response format for retrieving a provider account.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ProviderAccount'
+    CreateCustomDomainResponse:
+      description: >-
+        Response format for creating a custom domain for a control-plane in the
+        global API.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CustomDomain'
+    RetrieveCustomDomainResponse:
+      description: Response format for retrieving a custom domain for a control-plane.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CustomDomain'
+    ListCustomDomainsResponse:
+      description: A paginated list for a collection of custom domains.
+      content:
+        application/json:
+          schema:
+            title: ListGlobalCustomDomainsResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/PaginatedMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomDomain'
+            required:
+              - meta
+              - data
+    RetrieveCustomDomainOnlineStatusResponse:
+      description: >-
+        Response format for retrieving the CNAME and SSL status of a custom
+        domain.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CustomDomainOnlineStatus'
+    RetrieveResourceQuotaResponse:
+      description: Response format for retrieving a resource quota for an organization.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceQuota'
+    ListResourceQuotasResponse:
+      description: A paginated list for a collection of resource quotas.
+      content:
+        application/json:
+          schema:
+            title: ListResourceQuotasResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/PaginatedMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourceQuota'
+            required:
+              - meta
+              - data
+    ListDefaultResourceQuotasResponse:
+      description: A paginated list for a collection of default resource quotas.
+      content:
+        application/json:
+          schema:
+            title: ListDefaultResourceQuotasResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/PaginatedMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DefaultResourceQuota'
+            required:
+              - meta
+              - data
+    CloudGatewaysBadRequest:
+      description: Bad Request
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/BadRequestError'
+    CloudGatewaysForbidden:
+      description: Forbidden
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ForbiddenError'
+    CloudGatewaysConflict:
+      description: Conflict
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ConflictError'
+    ListDefaultResourceConfigurationsResponse:
+      description: A paginated list for a collection of default resource configurations.
+      content:
+        application/json:
+          schema:
+            title: ListDefaultResourceConfigurationsResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/PaginatedMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DefaultResourceConfiguration'
+            required:
+              - meta
+              - data
+    ListResourceConfigurationsResponse:
+      description: A paginated list for a collection of resource configurations.
+      content:
+        application/json:
+          schema:
+            title: ListResourceConfigurationsResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/PaginatedMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ResourceConfiguration'
+            required:
+              - meta
+              - data
+    RetrieveResourceConfigurationResponse:
+      description: >-
+        Response format for retrieving a resource configuration for an
+        organization.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ResourceConfiguration'
+    Conflict:
+      description: Conflict
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ConflictError'
     DataPlaneClientCertificateResponse:
       description: Response body for retrieving a dp-client-certificate.
       content:
@@ -7588,12 +8698,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/GatewayUnauthorizedError'
-    Conflict:
-      description: Conflict
-      content:
-        application/problem+json:
-          schema:
-            $ref: '#/components/schemas/ConflictError'
     UnsupportedMediaType:
       description: Unsupported Media Type
       content:
@@ -7985,9 +9089,7 @@ components:
       type: string
     StringFieldOEQFilter:
       title: StringFieldOEQFilter
-      description: >-
-        Returns entities that exact match any of the comma-delimited phrases in
-        the filter string.
+      description: Filters on the given comma separated string by one or more exact match.
       type: object
       additionalProperties: false
       properties:
@@ -8012,6 +9114,8 @@ components:
       additionalProperties: false
       properties:
         neq:
+          type: string
+        oeq:
           type: string
       required:
         - neq
@@ -8761,6 +9865,1577 @@ components:
         - in
         - '*'
       example: eu
+    ControlPlaneId:
+      type: string
+      format: uuid
+      example: 0949471e-b759-45ba-87ab-ee63fb781388
+    ConfigurationId:
+      type: string
+      format: uuid
+      example: edaf40f9-9fb0-4ffe-bb74-4e763a6bd471
+      readOnly: true
+    DataPlaneGroupId:
+      type: string
+      format: uuid
+      description: >-
+        ID of the data-plane group that represents a deployment target for a set
+        of data-planes.
+      example: cbb8872a-1f83-4806-bf69-fdf0b4783c7e
+      readOnly: true
+    CustomDomainId:
+      type: string
+      format: uuid
+      example: 39ed3790-085d-4605-9627-f96d86aaf425
+      readOnly: true
+    NetworkId:
+      type: string
+      format: uuid
+      example: 36ae63d3-efd1-4bec-b246-62aa5d3f5695
+    TransitGatewayId:
+      type: string
+      format: uuid
+      example: 0850820b-d153-4a2a-b9be-7d2204779139
+      readOnly: true
+    ProviderAccountId:
+      type: string
+      format: uuid
+      example: 929b2449-c69f-44c4-b6ad-9ecec6f811ae
+    ResourceQuotaId:
+      type: string
+      format: uuid
+      example: 9678f205-49a1-47bb-82d9-d01cafa42a0d
+      readOnly: true
+    DefaultResourceQuotaId:
+      type: string
+      format: uuid
+      example: cc504063-f3bb-4e09-8e32-bbcdbc5cd618
+      readOnly: true
+    ResourceConfigurationId:
+      type: string
+      format: uuid
+      example: 9678f205-49a1-47bb-82d9-d01cafa42a0d
+      readOnly: true
+    DefaultResourceConfigurationId:
+      type: string
+      format: uuid
+      example: cc504063-f3bb-4e09-8e32-bbcdbc5cd618
+      readOnly: true
+    ControlPlaneGeo:
+      title: Control-Plane Geo
+      description: >-
+        Set of control-plane geos supported for deploying cloud-gateways
+        configurations.
+      type: string
+      enum:
+        - us
+        - eu
+        - au
+        - me
+        - in
+    GatewayVersion:
+      title: Gateway Version
+      description: Supported gateway version.
+      type: string
+      pattern: ^(\d)+(\.(\d)+)?$
+      example: '3.2'
+    VersionList:
+      title: Version List
+      description: List of supported gateway versions for cloud gateways.
+      readOnly: true
+      type: array
+      items:
+        $ref: '#/components/schemas/GatewayVersion'
+    InstanceTypeName:
+      type: string
+      enum:
+        - small
+        - medium
+        - large
+      description: Instance type name to indicate capacity.
+    ApiAccess:
+      type: string
+      enum:
+        - private
+        - public
+        - private+public
+      description: Type of API access data-plane groups will support for a configuration.
+      default: private+public
+    InstanceType:
+      title: Instance Type
+      description: Resource parameters and pricing of a given supported instance type.
+      readOnly: true
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          $ref: '#/components/schemas/InstanceTypeName'
+        hourly_cost:
+          description: >-
+            Hourly cost to run a single cloud gateway instance of this instance
+            type.
+          type: string
+          format: ^(\d)+(\.(\d)+)?$
+          example: '1.00'
+        v_cpu:
+          description: >-
+            Number of virtual CPUs available to a cloud gateway instance of this
+            instance type.
+          type: string
+          format: ^(\d)+
+          example: '2'
+        gb_memory:
+          description: >-
+            Number of gigabytes of memory available to a cloud gateway instance
+            of this instance type.
+          type: string
+          format: ^(\d)+
+          example: '2'
+      required:
+        - name
+        - hourly_cost
+        - v_cpu
+        - gb_memory
+    InstanceTypes:
+      title: Instance Types
+      description: >-
+        List of supported instance types, along with their associated resource
+        parameters and pricing.
+      type: array
+      items:
+        $ref: '#/components/schemas/InstanceType'
+    ProviderRegionName:
+      title: Provider Region Name
+      description: >
+        Human-readable name for cloud provider region. The list of available
+        provider regions can be retrieved via the
+
+        availability endpoint `/v2/cloud-gateways/availability.json`.
+      type: string
+      example: N. Virginia
+    ProviderRegionId:
+      title: Provider Region ID
+      description: Region ID for cloud provider region.
+      type: string
+      example: us-east-2
+    ProviderRegion:
+      title: Provider Region
+      description: Region ID and human-readable name for a cloud provider region.
+      type: object
+      additionalProperties: false
+      properties:
+        region:
+          $ref: '#/components/schemas/ProviderRegionId'
+        name:
+          $ref: '#/components/schemas/ProviderRegionName'
+        availability_zones:
+          description: >
+            List of supported availability zones for cloud provider region, for
+            network AZ configuration.
+          type: array
+          items:
+            type: string
+          example:
+            - use2-az1
+            - use2-az2
+            - use2-az3
+        cidr_blocks:
+          description: >
+            List of supported CIDR blocks for cloud provider region, for network
+            CIDR block configuration.
+          type: array
+          items:
+            type: string
+          example:
+            - 10.0.0.0/8
+            - 100.64.0.0/10
+            - 172.16.0.0/12
+            - 192.168.0.0/16
+            - 198.18.0.0/15
+        reserved_cidr_blocks:
+          description: >
+            List of reserved CIDR blocks for cloud provider region, to restrict
+            allowed network CIDR block
+
+            configuration.
+          type: array
+          items:
+            type: string
+          example:
+            - 10.100.0.0/16
+            - 172.17.0.0/16
+      required:
+        - region
+        - name
+        - availability_zones
+        - cidr_blocks
+        - reserved_cidr_blocks
+    ProviderRegions:
+      title: Provider Regions
+      description: >-
+        List of available regions to run cloud gateway instances on for a given
+        cloud provider.
+      type: array
+      items:
+        $ref: '#/components/schemas/ProviderRegion'
+    ProviderName:
+      title: Provider Name
+      description: Name of cloud provider.
+      type: string
+      enum:
+        - aws
+        - azure
+      example: aws
+    Provider:
+      title: Provider
+      description: Description of cloud provider that runs cloud gateway instances.
+      type: object
+      additionalProperties: false
+      properties:
+        provider:
+          $ref: '#/components/schemas/ProviderName'
+        regions:
+          $ref: '#/components/schemas/ProviderRegions'
+      required:
+        - provider
+        - regions
+    Providers:
+      title: Providers
+      description: List of supported cloud providers that run cloud gateway instances.
+      type: array
+      items:
+        $ref: '#/components/schemas/Provider'
+    AvailabilityDocument:
+      title: Availability Document
+      description: Document containing availability information for configurations.
+      type: object
+      additionalProperties: false
+      properties:
+        versions:
+          $ref: '#/components/schemas/VersionList'
+        instance_types:
+          $ref: '#/components/schemas/InstanceTypes'
+        providers:
+          $ref: '#/components/schemas/Providers'
+      required:
+        - versions
+        - instance_types
+        - providers
+    ConfigurationDataPlaneGroupAutoscale:
+      oneOf:
+        - $ref: '#/components/schemas/ConfigurationDataPlaneGroupAutoscaleStatic'
+        - $ref: '#/components/schemas/ConfigurationDataPlaneGroupAutoscaleAutopilot'
+    ConfigurationDataPlaneGroupAutoscaleStatic:
+      title: Configuration Autoscale Static
+      description: Object that describes the static autoscaling strategy.
+      type: object
+      properties:
+        kind:
+          type: string
+          enum:
+            - static
+        instance_type:
+          $ref: '#/components/schemas/InstanceTypeName'
+        requested_instances:
+          type: integer
+          example: 3
+          description: Number of data-planes the deployment target will contain.
+      required:
+        - kind
+        - instance_type
+        - requested_instances
+      additionalProperties: false
+    ConfigurationDataPlaneGroupAutoscaleAutopilot:
+      title: Configuration Autoscale Autopilot
+      description: Object that describes the autopilot autoscaling strategy.
+      type: object
+      properties:
+        kind:
+          type: string
+          enum:
+            - autopilot
+        base_rps:
+          type: integer
+          example: 1
+          description: >-
+            Base number of requests per second that the deployment target should
+            support.
+        max_rps:
+          type: integer
+          example: 1000
+          description: >-
+            Max number of requests per second that the deployment target should
+            support. If not set, this defaults to 10x base_rps.
+      required:
+        - kind
+        - base_rps
+      additionalProperties: false
+    ConfigurationDataPlaneGroupEnvironment:
+      title: Configuration Data-Plane Group Environment
+      description: Array of environment variables to set for a data-plane group.
+      type: array
+      items:
+        $ref: '#/components/schemas/ConfigurationDataPlaneGroupEnvironmentField'
+    ConfigurationDataPlaneGroupEnvironmentField:
+      title: Configuration Data-Plane Group Environment Field
+      description: Environment variable name and value to set for a data-plane group.
+      type: object
+      properties:
+        name:
+          type: string
+          format: ^KONG_[a-zA-Z_]+[a-zA-Z0-9_]*
+          minLength: 6
+          maxLength: 120
+          example: KONG_LOG_LEVEL
+          description: >
+            Name of the environment variable field to set for the data-plane
+            group. Must be prefixed by KONG_.
+        value:
+          type: string
+          minLength: 1
+          maxLength: 120
+          example: INFO
+          description: >-
+            Value assigned to the environment variable field for the data-plane
+            group.
+      required:
+        - name
+        - value
+    ConfigurationDataPlaneGroupConfig:
+      title: Configuration Data-Plane Group Config Item
+      description: >-
+        Object that describes where a data-plane group will be deployed to,
+        along with how many instances.
+      type: object
+      properties:
+        provider:
+          $ref: '#/components/schemas/ProviderName'
+        region:
+          $ref: '#/components/schemas/ProviderRegionId'
+        cloud_gateway_network_id:
+          $ref: '#/components/schemas/NetworkId'
+        autoscale:
+          $ref: '#/components/schemas/ConfigurationDataPlaneGroupAutoscale'
+        environment:
+          $ref: '#/components/schemas/ConfigurationDataPlaneGroupEnvironment'
+      required:
+        - autoscale
+        - provider
+        - region
+        - cloud_gateway_network_id
+      additionalProperties: false
+    ConfigurationDataPlaneGroupConfigs:
+      title: Configuration Data-Plane Group Configs
+      description: >-
+        Object that describes where data-planes will be deployed to, along with
+        how many instances.
+      type: array
+      items:
+        $ref: '#/components/schemas/ConfigurationDataPlaneGroupConfig'
+    ConfigurationDataPlaneGroup:
+      title: Cloud Gateway Configuration Data-Plane Group
+      description: >-
+        Object that describes the set of data-plane groups currently pointed to
+        this configuration.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/DataPlaneGroupId'
+        provider:
+          $ref: '#/components/schemas/ProviderName'
+        region:
+          $ref: '#/components/schemas/ProviderRegionId'
+        autoscale:
+          $ref: '#/components/schemas/ConfigurationDataPlaneGroupAutoscale'
+        environment:
+          $ref: '#/components/schemas/ConfigurationDataPlaneGroupEnvironment'
+        cloud_gateway_network_id:
+          $ref: '#/components/schemas/NetworkId'
+        state:
+          type: string
+          enum:
+            - created
+            - initializing
+            - ready
+            - terminating
+            - terminated
+          description: State of the data-plane group.
+        private_ip_addresses:
+          type: array
+          items:
+            type: string
+          description: >
+            List of private IP addresses of the internal load balancer that
+            proxies traffic to this data-plane group.
+          example:
+            - 192.168.248.132
+            - 192.168.66.81
+            - 192.168.137.135
+        egress_ip_addresses:
+          type: array
+          items:
+            type: string
+          description: >
+            List of egress IP addresses for the network that this data-plane
+            group runs on.
+          example:
+            - 71.78.149.75
+            - 91.149.112.244
+            - 51.235.15.121
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: >-
+            An RFC-3339 timestamp representation of data-plane group creation
+            date.
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: >-
+            An RFC-3339 timestamp representation of data-plane group update
+            date.
+          readOnly: true
+      required:
+        - id
+        - provider
+        - region
+        - autoscale
+        - cloud_gateway_network_id
+        - state
+        - created_at
+        - updated_at
+    NetworkConfigurationReference:
+      $ref: '#/components/schemas/ConfigurationManifest'
+    ConfigurationManifest:
+      x-speakeasy-entity: CloudGatewayConfiguration
+      title: Configuration
+      description: >-
+        Object containing information about a control-plane's cloud-gateways
+        configuration.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ConfigurationId'
+        version:
+          $ref: '#/components/schemas/GatewayVersion'
+        api_access:
+          $ref: '#/components/schemas/ApiAccess'
+        dataplane_group_config:
+          $ref: '#/components/schemas/ConfigurationDataPlaneGroupConfigs'
+        dataplane_groups:
+          type: array
+          format: set
+          description: >
+            List of data-plane groups that describe where data-planes will be
+            deployed to, along with how many
+
+            instances.
+          items:
+            $ref: '#/components/schemas/ConfigurationDataPlaneGroup'
+        entity_version:
+          type: number
+          example: 1
+          description: >
+            Positive, monotonically increasing version integer, to serialize
+            configuration changes.
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: An RFC-3339 timestamp representation of configuration creation date.
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: An RFC-3339 timestamp representation of configuration update date.
+          readOnly: true
+        control_plane_id:
+          $ref: '#/components/schemas/ControlPlaneId'
+        control_plane_geo:
+          $ref: '#/components/schemas/ControlPlaneGeo'
+      required:
+        - id
+        - control_plane_id
+        - control_plane_geo
+        - version
+        - dataplane_group_config
+        - dataplane_groups
+        - entity_version
+        - created_at
+        - updated_at
+    CreateConfigurationDataPlaneGroup:
+      title: CreateConfigurationDataPlaneGroup
+      description: >-
+        Object that describes where to deploy a data-plane group, along with how
+        many instances.
+      type: object
+      additionalProperties: false
+      properties:
+        provider:
+          $ref: '#/components/schemas/ProviderName'
+        region:
+          $ref: '#/components/schemas/ProviderRegionId'
+        cloud_gateway_network_id:
+          $ref: '#/components/schemas/NetworkId'
+        autoscale:
+          $ref: '#/components/schemas/ConfigurationDataPlaneGroupAutoscale'
+        environment:
+          $ref: '#/components/schemas/ConfigurationDataPlaneGroupEnvironment'
+      required:
+        - autoscale
+        - provider
+        - region
+        - cloud_gateway_network_id
+    ProviderAccount:
+      title: Cloud Gateway Provider Account
+      description: >-
+        Object containing mapping for organization and cloud provider to account
+        ID.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ProviderAccountId'
+        provider:
+          $ref: '#/components/schemas/ProviderName'
+        provider_account_id:
+          type: string
+          description: ID of the cloud provider account.
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: >-
+            An RFC-3339 timestamp representation of provider account creation
+            date.
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: >-
+            An RFC-3339 timestamp representation of provider account update
+            date.
+          readOnly: true
+      required:
+        - id
+        - provider
+        - provider_account_id
+        - created_at
+        - updated_at
+    NetworkCreateState:
+      title: Network Create State
+      description: Initial state for creating a network.
+      type: string
+      default: initializing
+      enum:
+        - initializing
+        - offline
+    NetworkState:
+      title: Network State
+      description: State of the network.
+      enum:
+        - created
+        - initializing
+        - offline
+        - ready
+        - terminating
+        - terminated
+      readOnly: true
+    NetworkProviderMetadata:
+      title: Network Provider Metadata
+      description: >-
+        Metadata describing attributes returned by cloud-provider for the
+        network.
+      type: object
+      additionalProperties: false
+      properties:
+        vpc_id:
+          title: VPC ID
+          type: string
+        subnet_ids:
+          title: Subnet IDs
+          type: array
+          items:
+            type: string
+      readOnly: true
+    NetworkName:
+      title: Network Name
+      type: string
+      description: Human-readable name of the network.
+      example: us-east-2 network
+    NetworkCIDRBlock:
+      title: Network CIDR Block
+      description: CIDR block configuration for the network.
+      type: string
+      example: 10.0.0.0/8
+    NetworkAvailabilityZones:
+      type: array
+      items:
+        type: string
+      description: List of availability zones that the network is attached to.
+      example:
+        - use2-az1
+        - use2-az2
+        - use2-az3
+    Network:
+      x-speakeasy-entity: CloudGatewayNetwork
+      title: Network
+      description: >-
+        Object containing information about a network to be used in
+        configurations.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/NetworkId'
+        name:
+          $ref: '#/components/schemas/NetworkName'
+        default:
+          type: boolean
+          description: >
+            Whether the network is a default network or not. Default networks
+            are Networks that are created
+
+            automatically by Konnect when an organization is linked to a
+            provider account.
+          example: false
+        cloud_gateway_provider_account_id:
+          $ref: '#/components/schemas/ProviderAccountId'
+        region:
+          $ref: '#/components/schemas/ProviderRegionId'
+        availability_zones:
+          $ref: '#/components/schemas/NetworkAvailabilityZones'
+        cidr_block:
+          $ref: '#/components/schemas/NetworkCIDRBlock'
+        state:
+          $ref: '#/components/schemas/NetworkState'
+        provider_metadata:
+          $ref: '#/components/schemas/NetworkProviderMetadata'
+        transit_gateway_count:
+          type: integer
+          description: The number of transit gateways attached to this network.
+          readOnly: true
+          example: 0
+        configuration_reference_count:
+          type: integer
+          description: The number of configurations that reference this network.
+          readOnly: true
+          example: 0
+        entity_version:
+          type: integer
+          description: >
+            Monotonically-increasing version count of the network, to indicate
+            the order of updates to the network.
+          readOnly: true
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: An RFC-3339 timestamp representation of network creation date.
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: An RFC-3339 timestamp representation of network update date.
+          readOnly: true
+      required:
+        - id
+        - name
+        - default
+        - cloud_gateway_provider_account_id
+        - region
+        - availability_zones
+        - cidr_block
+        - provider_metadata
+        - state
+        - transit_gateway_count
+        - configuration_reference_count
+        - entity_version
+        - created_at
+        - updated_at
+    CreateNetworkRequest:
+      x-speakeasy-entity: CloudGatewayNetwork
+      title: CreateNetworkRequest
+      description: Request schema for creating a network.
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          $ref: '#/components/schemas/NetworkName'
+        cloud_gateway_provider_account_id:
+          $ref: '#/components/schemas/ProviderAccountId'
+        region:
+          $ref: '#/components/schemas/ProviderRegionId'
+        availability_zones:
+          $ref: '#/components/schemas/NetworkAvailabilityZones'
+        cidr_block:
+          $ref: '#/components/schemas/NetworkCIDRBlock'
+        state:
+          $ref: '#/components/schemas/NetworkCreateState'
+      required:
+        - name
+        - cloud_gateway_provider_account_id
+        - region
+        - availability_zones
+        - cidr_block
+    PatchNetworkRequest:
+      x-speakeasy-entity: CloudGatewayNetwork
+      title: PatchNetworkRequest
+      description: Request schema for updating a network.
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          $ref: '#/components/schemas/NetworkName'
+    TransitGatewayState:
+      title: Transit Gateway State
+      type: string
+      description: State of the transit gateway.
+      enum:
+        - created
+        - initializing
+        - ready
+        - terminating
+        - terminated
+      readOnly: true
+    AwsTransitGatewayAttachmentConfig:
+      title: AWS Transit Gateway Attachment Config
+      type: object
+      additionalProperties: false
+      properties:
+        kind:
+          title: AWS Transit Gateway Attachment Type
+          enum:
+            - aws-transit-gateway-attachment
+        transit_gateway_id:
+          title: Transit Gateway ID
+          description: AWS Transit Gateway ID to create attachment to.
+          type: string
+        ram_share_arn:
+          title: RAM Share ARN
+          description: >-
+            Resource Share ARN to verify request to create transit gateway
+            attachment.
+          type: string
+      required:
+        - kind
+        - transit_gateway_id
+        - ram_share_arn
+    AzureVNETPeeringAttachmentConfig:
+      title: Azure VNET Peering Attachment Config
+      type: object
+      additionalProperties: false
+      properties:
+        kind:
+          title: Azure VNET Peering Attachment Type
+          enum:
+            - azure-vnet-peering-attachment
+        tenant_id:
+          title: Tenant ID
+          description: Tenant ID for the Azure VNET Peering attachment.
+          type: string
+        subscription_id:
+          title: Subscription ID
+          description: Subscription ID for the Azure VNET Peering attachment.
+          type: string
+        resource_group_name:
+          title: Resource Group Name
+          description: Resource Group Name for the Azure VNET Peering attachment.
+          type: string
+        vnet_name:
+          title: VNET Name
+          description: VNET Name for the Azure VNET Peering attachment.
+          type: string
+      required:
+        - kind
+        - tenant_id
+        - subscription_id
+        - resource_group_name
+        - vnet_name
+    TransitGatewayDnsConfig:
+      title: Transit Gateway DNS Config
+      description: >
+        List of mappings from remote DNS server IP address sets to proxied
+        internal domains, for a transit gateway
+
+        attachment.
+      type: array
+      items:
+        type: object
+        additionalProperties: false
+        properties:
+          remote_dns_server_ip_addresses:
+            title: Remote DNS Server IP Addresses
+            description: >-
+              Remote DNS Server IP Addresses to connect to for resolving
+              internal DNS via a transit gateway.
+            type: array
+            items:
+              type: string
+            example:
+              - 10.0.0.2
+          domain_proxy_list:
+            title: Domain Proxy List
+            type: array
+            description: >
+              Internal domain names to proxy for DNS resolution from the listed
+              remote DNS server IP addresses,
+
+              for a transit gateway.
+            items:
+              type: string
+            example:
+              - foobar.com
+        required:
+          - remote_dns_server_ip_addresses
+          - domain_proxy_list
+    TransitGatewayName:
+      title: Transit Gateway Name
+      type: string
+      description: Human-readable name of the transit gateway.
+      example: us-east-2 transit gateway
+    TransitGatewayCIDRBlocks:
+      title: Transit Gateway CIDR Blocks
+      type: array
+      items:
+        type: string
+      description: >
+        CIDR blocks for constructing a route table for the transit gateway, when
+        attaching to the owning
+
+        network.
+      example:
+        - 10.0.0.0/8
+        - 100.64.0.0/10
+        - 172.16.0.0/12
+    BaseTransitGateway:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/TransitGatewayName'
+        dns_config:
+          $ref: '#/components/schemas/TransitGatewayDnsConfig'
+      required:
+        - name
+    BaseTransitGatewayResponse:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/TransitGatewayId'
+        state:
+          $ref: '#/components/schemas/TransitGatewayState'
+        entity_version:
+          type: integer
+          description: >
+            Monotonically-increasing version count of the transit gateway, to
+            indicate the order of updates to the
+
+            transit gateway.
+          readOnly: true
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: >-
+            An RFC-3339 timestamp representation of transit gateway creation
+            date.
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: An RFC-3339 timestamp representation of transit gateway update date.
+          readOnly: true
+      required:
+        - id
+        - dns_config
+        - state
+        - entity_version
+        - created_at
+        - updated_at
+    AwsTransitGateway:
+      x-flatten-allOf: true
+      allOf:
+        - $ref: '#/components/schemas/BaseTransitGateway'
+        - title: AWS Transit Gateway
+          type: object
+          properties:
+            cidr_blocks:
+              $ref: '#/components/schemas/TransitGatewayCIDRBlocks'
+            transit_gateway_attachment_config:
+              $ref: '#/components/schemas/AwsTransitGatewayAttachmentConfig'
+          required:
+            - cidr_blocks
+            - transit_gateway_attachment_config
+    AwsTransitGatewayResponse:
+      x-flatten-allOf: true
+      allOf:
+        - $ref: '#/components/schemas/AwsTransitGateway'
+        - required:
+            - dns_config
+        - $ref: '#/components/schemas/BaseTransitGatewayResponse'
+    AzureTransitGateway:
+      x-flatten-allOf: true
+      allOf:
+        - $ref: '#/components/schemas/BaseTransitGateway'
+        - title: Azure Transit Gateway
+          type: object
+          properties:
+            transit_gateway_attachment_config:
+              $ref: '#/components/schemas/AzureVNETPeeringAttachmentConfig'
+          required:
+            - transit_gateway_attachment_config
+    AzureTransitGatewayResponse:
+      x-flatten-allOf: true
+      allOf:
+        - $ref: '#/components/schemas/AzureTransitGateway'
+        - $ref: '#/components/schemas/BaseTransitGatewayResponse'
+    TransitGatewayResponse:
+      oneOf:
+        - $ref: '#/components/schemas/AwsTransitGatewayResponse'
+        - $ref: '#/components/schemas/AzureTransitGatewayResponse'
+    CreateAwsTransitGateway:
+      x-flatten-allOf: true
+      allOf:
+        - $ref: '#/components/schemas/AwsTransitGateway'
+        - required:
+            - name
+    CreateAzureTransitGateway:
+      x-flatten-allOf: true
+      allOf:
+        - $ref: '#/components/schemas/AzureTransitGateway'
+        - required:
+            - name
+    CreateTransitGatewayRequest:
+      title: CreateTransitGatewayRequest
+      description: Request schema for creating a transit gateway.
+      type: object
+      oneOf:
+        - $ref: '#/components/schemas/CreateAwsTransitGateway'
+        - $ref: '#/components/schemas/CreateAzureTransitGateway'
+    CustomDomainState:
+      title: Custom Domain State
+      type: string
+      description: State of the custom domain.
+      enum:
+        - created
+        - initializing
+        - ready
+        - terminating
+        - terminated
+        - error
+      readOnly: true
+    CustomDomainName:
+      title: Custom Domain Name
+      type: string
+      description: Domain name of the custom domain.
+      example: example.com
+    CustomDomain:
+      x-speakeasy-entity: CloudGatewayCustomDomain
+      title: Custom Domain
+      description: Object containing information about a custom domain for a control-plane.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/CustomDomainId'
+        control_plane_id:
+          $ref: '#/components/schemas/ControlPlaneId'
+        control_plane_geo:
+          $ref: '#/components/schemas/ControlPlaneGeo'
+        domain:
+          $ref: '#/components/schemas/CustomDomainName'
+        certificate_id:
+          type: string
+          format: uuid
+          nullable: true
+          description: >
+            Certificate ID for the certificate representing this domain and
+            stored on data-planes for this
+
+            control-plane. Can be retrieved via the control-planes API for this
+            custom domain's control-plane.
+          readOnly: true
+          example: 3b7cbeee-fbec-440e-a5ef-89e7dec3b9d0
+        sni_id:
+          type: string
+          format: uuid
+          nullable: true
+          description: >
+            Server Name Indication ID for this domain and stored on data-planes
+            for this control-plane. Can be retrieved
+
+            via the control-planes API for this custom domain's control-plane.
+          readOnly: true
+          example: a8f11ea8-af09-4422-9735-5d4f8910aba1
+        state:
+          $ref: '#/components/schemas/CustomDomainState'
+        state_metadata:
+          title: CustomDomainStateMetadata
+          type: object
+          description: >
+            Metadata describing the backing state of the custom domain and why
+            it may be in an erroneous state.
+          additionalProperties: false
+          properties:
+            reported_status:
+              type: string
+              description: >-
+                Reported status of the custom domain from backing
+                infrastructure.
+              example: INVALID
+            reason:
+              type: string
+              description: >
+                Reason why the custom domain may be in an erroneous state,
+                reported from backing infrastructure.
+              example: >
+                CNAME points to '_acme-challenge.<prefix>.gateways.konghq.tech.'
+                instead of '_acme-challenge.<prefix>.acme.gateways.konghq.tech.'
+          readOnly: true
+        entity_version:
+          type: integer
+          description: >
+            Monotonically-increasing version count of the custom domain, to
+            indicate the order of updates to the custom
+
+            domain.
+          readOnly: true
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: An RFC-3339 timestamp representation of custom domain creation date.
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: An RFC-3339 timestamp representation of custom domain update date.
+          readOnly: true
+      required:
+        - id
+        - control_plane_id
+        - control_plane_geo
+        - domain
+        - state
+        - state_metadata
+        - entity_version
+        - created_at
+        - updated_at
+    CustomDomainOnlinePropertyStatus:
+      title: Custom Domain Online Property Status
+      description: Set of available statuses for the online properties of a custom domain.
+      type: string
+      readOnly: true
+      enum:
+        - verified
+        - unverified
+    CustomDomainOnlineStatus:
+      title: Custom Domain Online Status
+      type: object
+      properties:
+        cname:
+          $ref: '#/components/schemas/CustomDomainOnlinePropertyStatus'
+        ssl:
+          $ref: '#/components/schemas/CustomDomainOnlinePropertyStatus'
+      additionalProperties: false
+      required:
+        - cname
+        - ssl
+    CreateConfigurationRequest:
+      title: CreateConfigurationRequest
+      description: |
+        Request schema for creating a configuration.
+      type: object
+      additionalProperties: false
+      properties:
+        control_plane_id:
+          $ref: '#/components/schemas/ControlPlaneId'
+        control_plane_geo:
+          $ref: '#/components/schemas/ControlPlaneGeo'
+        version:
+          $ref: '#/components/schemas/GatewayVersion'
+        dataplane_groups:
+          type: array
+          format: set
+          description: >-
+            List of data-plane groups that describe where to deploy instances,
+            along with how many instances.
+          items:
+            $ref: '#/components/schemas/CreateConfigurationDataPlaneGroup'
+        api_access:
+          $ref: '#/components/schemas/ApiAccess'
+      required:
+        - control_plane_id
+        - control_plane_geo
+        - version
+        - dataplane_groups
+    CreateCustomDomainRequest:
+      title: CreateCustomDomainRequest
+      description: Request schema for creating a custom domain in the global API.
+      type: object
+      additionalProperties: false
+      properties:
+        control_plane_id:
+          $ref: '#/components/schemas/ControlPlaneId'
+        control_plane_geo:
+          $ref: '#/components/schemas/ControlPlaneGeo'
+        domain:
+          $ref: '#/components/schemas/CustomDomainName'
+      required:
+        - control_plane_id
+        - control_plane_geo
+        - domain
+    ResourceQuotaQualifier:
+      description: Enumeration of resources available for quota enforcement.
+      type: string
+      enum:
+        - count/provider-accounts.per-provider
+        - count/networks.not-offline
+        - count/data-planes-estimate
+        - count/serverless-data-planes-estimate
+    ResourceQuotaName:
+      type: string
+      description: The human-readable name of this resource quota.
+      readOnly: true
+      example: Active Networks
+    ResourceQuotaDescription:
+      type: string
+      description: A more verbose description of what this resource quota enforces.
+      readOnly: true
+      example: >-
+        Across the organization, the aggregate number of active networks cannot
+        exceed this value.
+    ResourceQuotaValue:
+      type: integer
+      minimum: 0
+      description: >
+        The aggregate non-negative integer count of this resource that's allowed
+        for the organization.
+      example: 2
+    ResourceQuota:
+      title: Resource Quota
+      description: >-
+        Object containing information about a resource quota for an
+        organization.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ResourceQuotaId'
+        resource:
+          $ref: '#/components/schemas/ResourceQuotaQualifier'
+        name:
+          $ref: '#/components/schemas/ResourceQuotaName'
+        description:
+          $ref: '#/components/schemas/ResourceQuotaDescription'
+        value:
+          $ref: '#/components/schemas/ResourceQuotaValue'
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: >-
+            An RFC-3339 timestamp representation of resource quota creation
+            date.
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: An RFC-3339 timestamp representation of resource quota update date.
+          readOnly: true
+      required:
+        - id
+        - resource
+        - name
+        - description
+        - value
+        - created_at
+        - updated_at
+    DefaultResourceQuota:
+      title: Default Resource Quota
+      description: >-
+        Object containing information about a default resource quota, and any
+        organizational overrides.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/DefaultResourceQuotaId'
+        resource:
+          $ref: '#/components/schemas/ResourceQuotaQualifier'
+        name:
+          $ref: '#/components/schemas/ResourceQuotaName'
+        description:
+          $ref: '#/components/schemas/ResourceQuotaDescription'
+        value:
+          $ref: '#/components/schemas/ResourceQuotaValue'
+        overrides:
+          type: array
+          description: Organizational overrides for this default resource quota.
+          items:
+            $ref: '#/components/schemas/ResourceQuota'
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: >-
+            An RFC-3339 timestamp representation of default resource quota
+            creation date.
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: >-
+            An RFC-3339 timestamp representation of default resource quota
+            update date.
+          readOnly: true
+      required:
+        - id
+        - resource
+        - name
+        - description
+        - value
+        - overrides
+        - created_at
+        - updated_at
+    ResourceConfigurationQualifier:
+      description: >-
+        Enumeration of configuration qualifiers available for organization-wide
+        configuration.
+      type: string
+      enum:
+        - data-plane-group-idle-timeout-minutes
+    ResourceConfigurationValue:
+      type: integer
+      description: The value of this resource configuration.
+      example: 45
+    ResourceConfigurationName:
+      type: string
+      description: The human-readable name of this resource configuration.
+      readOnly: true
+      example: Data Plane Group Idle Timeout Minutes
+    ResourceConfigurationDescription:
+      type: string
+      description: A more verbose description of what this resource configuration enforces.
+      readOnly: true
+      example: >-
+        The number of minutes that a data plane group can be idle before it is
+        automatically scaled down to zero instances.
+    ConfigurationsFilterParameters:
+      title: ConfigurationsFilterParameters
+      type: object
+      additionalProperties: false
+      properties:
+        control_plane_id:
+          $ref: '#/components/schemas/IDFieldFilter'
+        control_plane_geo:
+          $ref: '#/components/schemas/ControlPlaneGeoFieldFilter'
+    CustomDomainsFilterParameters:
+      title: CustomDomainsFilterParameters
+      type: object
+      additionalProperties: false
+      properties:
+        control_plane_id:
+          $ref: '#/components/schemas/IDFieldFilter'
+        control_plane_geo:
+          $ref: '#/components/schemas/ControlPlaneGeoFieldFilter'
+        domain:
+          $ref: '#/components/schemas/CloudGatewaysStringFieldFilterOverride'
+        state:
+          $ref: '#/components/schemas/CustomDomainStateFieldFilter'
+    TransitGatewaysFilterParameters:
+      title: TransitGatewaysFilterParameters
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          $ref: '#/components/schemas/CloudGatewaysStringFieldFilterOverride'
+        state:
+          $ref: '#/components/schemas/TransitGatewayStateFieldFilter'
+    NetworksFilterParameters:
+      title: NetworksFilterParameters
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          $ref: '#/components/schemas/CloudGatewaysStringFieldFilterOverride'
+        state:
+          $ref: '#/components/schemas/NetworkStateFieldFilter'
+    ProviderAccountsFilterParameters:
+      title: ProviderAccountsFilterParameters
+      type: object
+      additionalProperties: false
+      properties:
+        provider:
+          $ref: '#/components/schemas/CloudGatewaysStringFieldFilterOverride'
+    CloudGatewaysStringFieldFilterOverride:
+      title: CloudGatewaysStringFieldFilterOverride
+      oneOf:
+        - $ref: '#/components/schemas/CloudGatewaysStringFieldEqualsFilterOverride'
+        - $ref: '#/components/schemas/StringFieldContainsFilter'
+        - $ref: '#/components/schemas/StringFieldNEQFilter'
+        - $ref: '#/components/schemas/StringFieldOEQFilter'
+        - $ref: '#/components/schemas/StringFieldOContainsFilter'
+    CloudGatewaysStringFieldEqualsFilterOverride:
+      title: StringFieldEqualsFilter
+      description: Filters on the given string field value by exact match.
+      oneOf:
+        - type: string
+        - type: object
+          title: StringFieldEqualsComparison
+          additionalProperties: false
+          properties:
+            eq:
+              type: string
+          required:
+            - eq
+    NetworkStateFieldFilter:
+      title: NetworkStateFieldFilter
+      oneOf:
+        - $ref: '#/components/schemas/NetworkStateFieldEqualsFilter'
+        - $ref: '#/components/schemas/NetworkStateFieldNotEqualsFilter'
+        - $ref: '#/components/schemas/NetworkStateFieldOrEqualityFilter'
+    NetworkStateFieldEqualsFilter:
+      title: NetworkStateFieldEqualsFilter
+      description: Filter a network state by exact match.
+      oneOf:
+        - $ref: '#/components/schemas/NetworkState'
+        - type: object
+          title: NetworkStateFieldEqualsComparison
+          properties:
+            eq:
+              $ref: '#/components/schemas/NetworkState'
+          required:
+            - eq
+    NetworkStateFieldNotEqualsFilter:
+      title: NetworkStateFieldNotEqualsFilter
+      description: Filter a network state by inequality match.
+      type: object
+      properties:
+        neq:
+          $ref: '#/components/schemas/NetworkState'
+      required:
+        - neq
+    NetworkStateFieldOrEqualityFilter:
+      title: NetworkStateFieldOrEqualityFilter
+      description: >
+        Filter a network state by determining if the value is equal to any in a
+        set of values, where the set is a
+
+        comma-delimited list.
+      type: object
+      properties:
+        oeq:
+          type: string
+      required:
+        - oeq
+    CustomDomainStateFieldFilter:
+      title: CustomDomainStateFieldFilter
+      oneOf:
+        - $ref: '#/components/schemas/CustomDomainStateFieldEqualsFilter'
+        - $ref: '#/components/schemas/CustomDomainStateFieldNotEqualsFilter'
+        - $ref: '#/components/schemas/CustomDomainStateFieldOrEqualityFilter'
+    CustomDomainStateFieldEqualsFilter:
+      title: CustomDomainStateFieldEqualsFilter
+      description: Filter custom domain state by exact match.
+      oneOf:
+        - $ref: '#/components/schemas/CustomDomainState'
+        - type: object
+          title: CustomDomainStateFieldEqualsComparison
+          properties:
+            eq:
+              $ref: '#/components/schemas/CustomDomainState'
+          required:
+            - eq
+    CustomDomainStateFieldNotEqualsFilter:
+      title: CustomDomainStateFieldNotEqualsFilter
+      description: Filter custom domain state by inequality match.
+      type: object
+      properties:
+        neq:
+          $ref: '#/components/schemas/CustomDomainState'
+      required:
+        - neq
+    CustomDomainStateFieldOrEqualityFilter:
+      title: CustomDomainStateFieldOrEqualityFilter
+      description: >
+        Filter custom domain state by determining if the value is equal to any
+        in a set of values, where the set is a
+
+        comma-delimited list.
+      type: object
+      properties:
+        oeq:
+          type: string
+      required:
+        - oeq
+    TransitGatewayStateFieldFilter:
+      title: TransitGatewayStateFieldFilter
+      oneOf:
+        - $ref: '#/components/schemas/TransitGatewayStateFieldEqualsFilter'
+        - $ref: '#/components/schemas/TransitGatewayStateFieldNotEqualsFilter'
+        - $ref: '#/components/schemas/TransitGatewayStateFieldOrEqualityFilter'
+    TransitGatewayStateFieldEqualsFilter:
+      title: TransitGatewayStateFieldEqualsFilter
+      description: Filter transit-gateway state by exact match.
+      oneOf:
+        - $ref: '#/components/schemas/TransitGatewayState'
+        - type: object
+          title: TransitGatewayStateFieldEqualsComparison
+          properties:
+            eq:
+              $ref: '#/components/schemas/TransitGatewayState'
+          required:
+            - eq
+    TransitGatewayStateFieldNotEqualsFilter:
+      title: TransitGatewayStateFieldNotEqualsFilter
+      description: Filter transit-gateway state by inequality match.
+      type: object
+      properties:
+        neq:
+          $ref: '#/components/schemas/TransitGatewayState'
+      required:
+        - neq
+    TransitGatewayStateFieldOrEqualityFilter:
+      title: TransitGatewayStateFieldOrEqualityFilter
+      description: >
+        Filter transit-gateway state by determining if the value is equal to any
+        in a set of values, where the set is a
+
+        comma-delimited list.
+      type: object
+      properties:
+        oeq:
+          type: string
+      required:
+        - oeq
+    IDFieldFilter:
+      title: IDFieldFilter
+      oneOf:
+        - $ref: '#/components/schemas/StringFieldEqualsFilter'
+        - $ref: '#/components/schemas/StringFieldNEQFilter'
+        - $ref: '#/components/schemas/StringFieldOEQFilter'
+    ControlPlaneGeoFieldFilter:
+      title: ControlPlaneGeoFieldFilter
+      oneOf:
+        - $ref: '#/components/schemas/ControlPlaneGeoFieldEqualsFilter'
+        - $ref: '#/components/schemas/ControlPlaneGeoFieldNotEqualsFilter'
+        - $ref: '#/components/schemas/ControlPlaneGeoFieldOrEqualityFilter'
+    ControlPlaneGeoFieldEqualsFilter:
+      title: ControlPlaneGeoFieldEqualsFilter
+      description: Filter a control-plane geo by exact match.
+      oneOf:
+        - $ref: '#/components/schemas/ControlPlaneGeo'
+        - type: object
+          title: ControlPlaneGeoFieldEqualsComparison
+          properties:
+            eq:
+              $ref: '#/components/schemas/ControlPlaneGeo'
+          required:
+            - eq
+    ControlPlaneGeoFieldNotEqualsFilter:
+      title: ControlPlaneGeoFieldNotEqualsFilter
+      description: Filter a control-plane geo by inequality match.
+      type: object
+      properties:
+        neq:
+          $ref: '#/components/schemas/ControlPlaneGeo'
+      required:
+        - neq
+    ControlPlaneGeoFieldOrEqualityFilter:
+      title: ControlPlaneGeoFieldOrEqualityFilter
+      description: >
+        Filter a control-plane geo by determining if the value is equal to any
+        in a set of values, where the set is a
+
+        comma-delimited list.
+      type: object
+      properties:
+        oeq:
+          type: string
+      required:
+        - oeq
+    ResourceConfiguration:
+      title: Resource Configuration
+      description: Object containing information about a resource configuration.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/ResourceConfigurationId'
+        qualifier:
+          $ref: '#/components/schemas/ResourceConfigurationQualifier'
+        value:
+          $ref: '#/components/schemas/ResourceConfigurationValue'
+      required:
+        - id
+        - qualifier
+        - value
+    DefaultResourceConfiguration:
+      title: Default Resource Configuration
+      description: >-
+        Object containing information about a default resource configurations,
+        and any organizational overrides.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/DefaultResourceConfigurationId'
+        qualifier:
+          $ref: '#/components/schemas/ResourceConfigurationQualifier'
+        name:
+          $ref: '#/components/schemas/ResourceConfigurationName'
+        description:
+          $ref: '#/components/schemas/ResourceConfigurationDescription'
+        value:
+          $ref: '#/components/schemas/ResourceConfigurationValue'
+        overrides:
+          type: array
+          description: Organizational overrides for this default resource configuration.
+          items:
+            $ref: '#/components/schemas/ResourceConfiguration'
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: >-
+            An RFC-3339 timestamp representation of default resource
+            configuration creation date.
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: >-
+            An RFC-3339 timestamp representation of default resource
+            configuration update date.
+          readOnly: true
+      required:
+        - id
+        - qualifier
+        - name
+        - description
+        - value
+        - overrides
+        - created_at
+        - updated_at
+    StringFieldOContainsFilter:
+      title: StringFieldOContainsFilter
+      description: Filters on the union of given string values by fuzzy match.
+      type: object
+      additionalProperties: false
+      properties:
+        ocontains:
+          type: string
+      required:
+        - ocontains
     DataPlaneClientCertificate:
       type: object
       properties:

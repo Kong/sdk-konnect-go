@@ -1,12 +1,14 @@
 # State
 
-The state of the control plane group.
+State of the data-plane group.
 
 
 ## Values
 
-| Name            | Value           |
-| --------------- | --------------- |
-| `StateOk`       | OK              |
-| `StateConflict` | CONFLICT        |
-| `StateUnknown`  | UNKNOWN         |
+| Name                | Value               |
+| ------------------- | ------------------- |
+| `StateCreated`      | created             |
+| `StateInitializing` | initializing        |
+| `StateReady`        | ready               |
+| `StateTerminating`  | terminating         |
+| `StateTerminated`   | terminated          |
