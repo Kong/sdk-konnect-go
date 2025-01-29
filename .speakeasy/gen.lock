@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 601381a10c211e8633c04701dc20ad1a
+  docChecksum: 731c1d3003af5c8fbd1f7920b7bb42da
   docVersion: 0.0.1
-  speakeasyVersion: 1.476.2
-  generationVersion: 2.495.1
-  releaseVersion: 0.1.29
-  configChecksum: 02c5f8e2efc6fcc044fcf48df4a5275a
+  speakeasyVersion: 1.477.0
+  generationVersion: 2.497.0
+  releaseVersion: 0.2.2
+  configChecksum: 39b798381f2de2e6b2cebc4f05bd9fe1
 features:
   go:
     additionalDependencies: 0.1.0
@@ -19,6 +19,7 @@ features:
     globalSecurity: 2.82.10
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.2
+    groups: 2.81.2
     inputOutputModels: 2.83.0
     intellisenseMarkdownSupport: 0.1.0
     methodServerURLs: 2.82.1
@@ -518,15 +519,14 @@ generatedFiles:
   - basicauthcredentials.go
   - cacertificates.go
   - certificates.go
+  - cloudgateways.go
   - configstores.go
   - configstoresecrets.go
   - consumergroups.go
   - consumers.go
   - controlplanegroups.go
   - controlplanes.go
-  - customdomains.go
   - custompluginschemas.go
-  - dataplanegroupconfigurations.go
   - docs/models/components/acl.md
   - docs/models/components/aclconsumer.md
   - docs/models/components/aclwithoutparents.md
@@ -1525,15 +1525,14 @@ generatedFiles:
   - docs/sdks/basicauthcredentials/README.md
   - docs/sdks/cacertificates/README.md
   - docs/sdks/certificates/README.md
+  - docs/sdks/cloudgateways/README.md
   - docs/sdks/configstores/README.md
   - docs/sdks/configstoresecrets/README.md
   - docs/sdks/consumergroups/README.md
   - docs/sdks/consumers/README.md
   - docs/sdks/controlplanegroups/README.md
   - docs/sdks/controlplanes/README.md
-  - docs/sdks/customdomains/README.md
   - docs/sdks/custompluginschemas/README.md
-  - docs/sdks/dataplanegroupconfigurations/README.md
   - docs/sdks/dpcertificates/README.md
   - docs/sdks/dpnodes/README.md
   - docs/sdks/hmacauthcredentials/README.md
@@ -1546,10 +1545,6 @@ generatedFiles:
   - docs/sdks/mtlsauthcredentials/README.md
   - docs/sdks/networks/README.md
   - docs/sdks/plugins/README.md
-  - docs/sdks/provideraccounts/README.md
-  - docs/sdks/resourceavailability/README.md
-  - docs/sdks/resourceconfigurations/README.md
-  - docs/sdks/resourcequotas/README.md
   - docs/sdks/roles/README.md
   - docs/sdks/routes/README.md
   - docs/sdks/sdk/README.md
@@ -1562,7 +1557,6 @@ generatedFiles:
   - docs/sdks/targets/README.md
   - docs/sdks/teammembership/README.md
   - docs/sdks/teams/README.md
-  - docs/sdks/transitgateways/README.md
   - docs/sdks/upstreams/README.md
   - docs/sdks/users/README.md
   - docs/sdks/vaults/README.md
@@ -1593,10 +1587,6 @@ generatedFiles:
   - mtlsauthcredentials.go
   - networks.go
   - plugins.go
-  - provideraccounts.go
-  - resourceavailability.go
-  - resourceconfigurations.go
-  - resourcequotas.go
   - retry/config.go
   - roles.go
   - routes.go
@@ -1610,7 +1600,6 @@ generatedFiles:
   - targets.go
   - teammembership.go
   - teams.go
-  - transitgateways.go
   - types/bigint.go
   - types/date.go
   - types/datetime.go

@@ -13,7 +13,7 @@ func main() {
 
 	s := sdkkonnectgo.New()
 
-	res, err := s.ResourceAvailability.GetAvailabilityJSON(ctx)
+	res, err := s.CloudGateways.GetAvailabilityJSON(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}

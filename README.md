@@ -45,7 +45,7 @@ func main() {
 		}),
 	)
 
-	res, err := s.DataPlaneGroupConfigurations.ListConfigurations(ctx, operations.ListConfigurationsRequest{
+	res, err := s.CloudGateways.ListConfigurations(ctx, operations.ListConfigurationsRequest{
 		PageSize:   sdkkonnectgo.Int64(10),
 		PageNumber: sdkkonnectgo.Int64(1),
 	})
@@ -112,7 +112,7 @@ func main() {
 		sdkkonnectgo.WithServerIndex(3),
 	)
 
-	res, err := s.ResourceAvailability.GetAvailabilityJSON(ctx)
+	res, err := s.CloudGateways.GetAvailabilityJSON(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -142,7 +142,7 @@ func main() {
 		sdkkonnectgo.WithServerURL("https://global.api.konghq.com"),
 	)
 
-	res, err := s.ResourceAvailability.GetAvailabilityJSON(ctx)
+	res, err := s.CloudGateways.GetAvailabilityJSON(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -171,7 +171,7 @@ func main() {
 
 	s := sdkkonnectgo.New()
 
-	res, err := s.ResourceAvailability.GetAvailabilityJSON(ctx, operations.WithServerURL("https://global.api.konghq.com/"))
+	res, err := s.CloudGateways.GetAvailabilityJSON(ctx, operations.WithServerURL("https://global.api.konghq.com/"))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -245,7 +245,7 @@ func main() {
 		}),
 	)
 
-	res, err := s.ResourceAvailability.GetAvailabilityJSON(ctx)
+	res, err := s.CloudGateways.GetAvailabilityJSON(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -299,7 +299,7 @@ func main() {
 
 	s := sdkkonnectgo.New()
 
-	res, err := s.ResourceAvailability.GetAvailabilityJSON(ctx, operations.WithRetries(
+	res, err := s.CloudGateways.GetAvailabilityJSON(ctx, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
 			Backoff: &retry.BackoffStrategy{
@@ -348,7 +348,7 @@ func main() {
 			}),
 	)
 
-	res, err := s.ResourceAvailability.GetAvailabilityJSON(ctx)
+	res, err := s.CloudGateways.GetAvailabilityJSON(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}

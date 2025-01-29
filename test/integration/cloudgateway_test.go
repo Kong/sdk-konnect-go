@@ -19,7 +19,7 @@ func TestCloudGateway(t *testing.T) {
 	t.Run("CustomDomains", func(t *testing.T) {
 		ctx := context.Background()
 		req := sdkkonnectops.ListCustomDomainsRequest{}
-		respList, err := sdk.CustomDomains.ListCustomDomains(ctx, req)
+		respList, err := sdk.CloudGateways.ListCustomDomains(ctx, req)
 		require.NoError(t, err)
 		require.NotNil(t, respList)
 
@@ -91,7 +91,7 @@ func TestCloudGateway(t *testing.T) {
 	t.Run("TransitGateways", func(t *testing.T) {
 		ctx := context.Background()
 		req := sdkkonnectops.ListTransitGatewaysRequest{}
-		_, err := sdk.TransitGateways.ListTransitGateways(ctx, req)
+		_, err := sdk.CloudGateways.ListTransitGateways(ctx, req)
 		// TODO: This shouldn't really return a 404?
 		require.Error(t, err, "Should return a 404 error")
 	})
@@ -99,7 +99,7 @@ func TestCloudGateway(t *testing.T) {
 	t.Run("Networks", func(t *testing.T) {
 		ctx := context.Background()
 		req := sdkkonnectops.ListNetworksRequest{}
-		_, err := sdk.Networks.ListNetworks(ctx, req)
+		_, err := sdk.CloudGateways.ListNetworks(ctx, req)
 		require.NoError(t, err)
 	})
 }

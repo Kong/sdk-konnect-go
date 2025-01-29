@@ -255,6 +255,7 @@ tags:
 paths:
   /v2/cloud-gateways/availability.json:
     get:
+      x-speakeasy-group: CloudGateways
       operationId: get-availability-json
       summary: Get Resource Availability JSON
       description: >
@@ -273,6 +274,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/cloud-gateways/configurations:
     get:
+      x-speakeasy-group: CloudGateways
       summary: List Configurations
       description: >
         Returns a paginated collection of configurations across control-planes
@@ -298,6 +300,7 @@ paths:
       servers:
         - url: https://global.api.konghq.com/
     put:
+      x-speakeasy-group: CloudGateways
       x-speakeasy-entity-operation: CloudGatewayConfiguration#create,update
       summary: Create Configuration
       description: >
@@ -344,6 +347,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/cloud-gateways/configurations/{configurationId}:
     get:
+      x-speakeasy-group: CloudGateways
       x-speakeasy-entity-operation: CloudGatewayConfiguration#get
       summary: Get Configuration
       description: >-
@@ -367,6 +371,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/cloud-gateways/custom-domains:
     get:
+      x-speakeasy-group: CloudGateways
       summary: List Custom Domains
       description: >
         Returns a paginated collection of custom domains across control-planes
@@ -394,6 +399,7 @@ paths:
       servers:
         - url: https://global.api.konghq.com/
     post:
+      x-speakeasy-group: CloudGateways
       x-speakeasy-entity-operation: CloudGatewayCustomDomain#create
       summary: Create Custom Domain
       description: >
@@ -427,6 +433,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/cloud-gateways/custom-domains/{customDomainId}:
     get:
+      x-speakeasy-group: CloudGateways
       x-speakeasy-entity-operation: CloudGatewayCustomDomain#read
       summary: Get Custom Domain
       description: >-
@@ -449,6 +456,7 @@ paths:
       servers:
         - url: https://global.api.konghq.com/
     delete:
+      x-speakeasy-group: CloudGateways
       x-speakeasy-entity-operation: CloudGatewayCustomDomain#delete
       x-speakeasy-retries:
         strategy: backoff
@@ -484,6 +492,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/cloud-gateways/custom-domains/{customDomainId}/online-status:
     get:
+      x-speakeasy-group: CloudGateways
       summary: Get Custom Domain Online Status
       description: Retrieves the CNAME and SSL status of a custom domain.
       operationId: get-custom-domain-online-status
@@ -504,6 +513,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/cloud-gateways/default-resource-configurations:
     get:
+      x-speakeasy-group: CloudGateways
       summary: List Default Resource Configurations
       description: >
         Returns a paginated collection of default resource configurations for
@@ -536,6 +546,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/cloud-gateways/default-resource-quotas:
     get:
+      x-speakeasy-group: CloudGateways
       summary: List Default Resource Quotas
       description: >
         Returns a paginated collection of default resource quotas for
@@ -561,6 +572,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/cloud-gateways/networks:
     get:
+      x-speakeasy-group: CloudGateways
       summary: List Networks
       description: Returns a paginated list of networks.
       operationId: list-networks
@@ -582,6 +594,7 @@ paths:
       servers:
         - url: https://global.api.konghq.com/
     post:
+      x-speakeasy-group: CloudGateways
       x-speakeasy-entity-operation: CloudGatewayNetwork#create
       summary: Create Network
       description: Creates a new network for a given provider account.
@@ -609,6 +622,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/cloud-gateways/networks/{networkId}:
     get:
+      x-speakeasy-group: CloudGateways
       x-speakeasy-entity-operation: CloudGatewayNetwork#read
       summary: Get Network
       description: Retrieves a network by ID.
@@ -659,6 +673,7 @@ paths:
       servers:
         - url: https://global.api.konghq.com/
     delete:
+      x-speakeasy-group: CloudGateways
       x-speakeasy-entity-operation: CloudGatewayNetwork#delete
       x-speakeasy-retries:
         strategy: backoff
@@ -692,6 +707,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/cloud-gateways/networks/{networkId}/configuration-references:
     get:
+      x-speakeasy-group: CloudGateways
       description: List Network Configuration References
       summary: >
         Returns a paginated collection of configurations that reference a
@@ -718,6 +734,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/cloud-gateways/networks/{networkId}/transit-gateways:
     get:
+      x-speakeasy-group: CloudGateways
       summary: List Transit Gateways
       description: Returns a paginated collection of transit gateways for a given network.
       operationId: list-transit-gateways
@@ -742,6 +759,7 @@ paths:
       servers:
         - url: https://global.api.konghq.com/
     post:
+      x-speakeasy-group: CloudGateways
       x-speakeasy-entity-operation: CloudGatewayTransitGateway#create
       x-speakeasy-retries:
         strategy: backoff
@@ -783,6 +801,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/cloud-gateways/networks/{networkId}/transit-gateways/{transitGatewayId}:
     get:
+      x-speakeasy-group: CloudGateways
       x-speakeasy-entity-operation: CloudGatewayTransitGateway#read
       summary: Get Transit Gateway
       description: Retrieves a transit gateway by ID for a given network.
@@ -804,6 +823,7 @@ paths:
       servers:
         - url: https://global.api.konghq.com/
     delete:
+      x-speakeasy-group: CloudGateways
       x-speakeasy-entity-operation: CloudGatewayTransitGateway#delete
       x-speakeasy-retries:
         strategy: backoff
@@ -838,6 +858,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/cloud-gateways/provider-accounts:
     get:
+      x-speakeasy-group: CloudGateways
       x-speakeasy-entity-operation: CloudGatewayProviderAccountList#read
       summary: List Provider Accounts
       description: >-
@@ -863,6 +884,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/cloud-gateways/provider-accounts/{providerAccountId}:
     get:
+      x-speakeasy-group: CloudGateways
       summary: Get Provider Account
       description: Retrieves a provider account by ID.
       operationId: get-provider-account
@@ -883,6 +905,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/cloud-gateways/resource-configurations:
     get:
+      x-speakeasy-group: CloudGateways
       summary: List Resource Configurations
       description: >
         Returns a paginated collection of resource configurations for an
@@ -913,6 +936,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/cloud-gateways/resource-configurations/{resourceConfigurationId}:
     get:
+      x-speakeasy-group: CloudGateways
       summary: Get Resource Configuration
       description: Retrieves a resource configuration by ID.
       operationId: get-resource-configuration
@@ -933,6 +957,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/cloud-gateways/resource-quotas:
     get:
+      x-speakeasy-group: CloudGateways
       summary: List Resource Quotas
       description: |
         Returns a paginated collection of resource quotas for an organization.
@@ -955,6 +980,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/cloud-gateways/resource-quotas/{resourceQuotaId}:
     get:
+      x-speakeasy-group: CloudGateways
       summary: Get Resource Quota
       description: Retrieves a resource quota by ID.
       operationId: get-resource-quota

@@ -74,15 +74,9 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 //
 // https://docs.konghq.com - Documentation for Kong Gateway and its APIs
 type SDK struct {
-	ResourceAvailability         *ResourceAvailability
-	DataPlaneGroupConfigurations *DataPlaneGroupConfigurations
-	CustomDomains                *CustomDomains
-	ResourceConfigurations       *ResourceConfigurations
-	ResourceQuotas               *ResourceQuotas
-	Networks                     *Networks
-	TransitGateways              *TransitGateways
-	ProviderAccounts             *ProviderAccounts
-	ControlPlanes                *ControlPlanes
+	CloudGateways *CloudGateways
+	Networks      *Networks
+	ControlPlanes *ControlPlanes
 	// Config Stores
 	ConfigStores *ConfigStores
 	// Config Store Secrets
@@ -276,9 +270,9 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "0.1.29",
-			GenVersion:        "2.495.1",
-			UserAgent:         "speakeasy-sdk/go 0.1.29 2.495.1 0.0.1 github.com/Kong/sdk-konnect-go",
+			SDKVersion:        "0.2.2",
+			GenVersion:        "2.497.0",
+			UserAgent:         "speakeasy-sdk/go 0.2.2 2.497.0 0.0.1 github.com/Kong/sdk-konnect-go",
 			Hooks:             hooks.New(),
 		},
 	}
@@ -298,21 +292,9 @@ func New(opts ...SDKOption) *SDK {
 		sdk.sdkConfiguration.ServerURL = serverURL
 	}
 
-	sdk.ResourceAvailability = newResourceAvailability(sdk.sdkConfiguration)
-
-	sdk.DataPlaneGroupConfigurations = newDataPlaneGroupConfigurations(sdk.sdkConfiguration)
-
-	sdk.CustomDomains = newCustomDomains(sdk.sdkConfiguration)
-
-	sdk.ResourceConfigurations = newResourceConfigurations(sdk.sdkConfiguration)
-
-	sdk.ResourceQuotas = newResourceQuotas(sdk.sdkConfiguration)
+	sdk.CloudGateways = newCloudGateways(sdk.sdkConfiguration)
 
 	sdk.Networks = newNetworks(sdk.sdkConfiguration)
-
-	sdk.TransitGateways = newTransitGateways(sdk.sdkConfiguration)
-
-	sdk.ProviderAccounts = newProviderAccounts(sdk.sdkConfiguration)
 
 	sdk.ControlPlanes = newControlPlanes(sdk.sdkConfiguration)
 
