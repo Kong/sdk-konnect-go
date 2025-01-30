@@ -1,10 +1,13 @@
 package integration
 
-import "testing"
+import (
+	"strings"
+	"testing"
+)
 
 // NamePrefix returns a prefix for the test name.
 func NamePrefix(t *testing.T) string {
-	return "sdk-konnect-go-test-integration-" + t.Name()
+	return "sdk-konnect-go-test-integration-" + strings.ReplaceAll(t.Name(), "/", "_")
 }
 
 func Labels(t *testing.T) map[string]string {
