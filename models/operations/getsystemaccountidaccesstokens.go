@@ -11,13 +11,13 @@ var GetSystemAccountIDAccessTokensServerList = []string{
 	"https://global.api.konghq.com/",
 }
 
-// QueryParamFilter - Filter access tokens returned in the response.
-type QueryParamFilter struct {
+// GetSystemAccountIDAccessTokensQueryParamFilter - Filter access tokens returned in the response.
+type GetSystemAccountIDAccessTokensQueryParamFilter struct {
 	// Filter a string value field either by exact match or partial contains.
 	Name *components.StringFieldFilter `queryParam:"name=name"`
 }
 
-func (o *QueryParamFilter) GetName() *components.StringFieldFilter {
+func (o *GetSystemAccountIDAccessTokensQueryParamFilter) GetName() *components.StringFieldFilter {
 	if o == nil {
 		return nil
 	}
@@ -32,7 +32,7 @@ type GetSystemAccountIDAccessTokensRequest struct {
 	// Determines which page of the entities to retrieve.
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 	// Filter access tokens returned in the response.
-	Filter *QueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *GetSystemAccountIDAccessTokensQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
 func (o *GetSystemAccountIDAccessTokensRequest) GetAccountID() string {
@@ -56,7 +56,7 @@ func (o *GetSystemAccountIDAccessTokensRequest) GetPageNumber() *int64 {
 	return o.PageNumber
 }
 
-func (o *GetSystemAccountIDAccessTokensRequest) GetFilter() *QueryParamFilter {
+func (o *GetSystemAccountIDAccessTokensRequest) GetFilter() *GetSystemAccountIDAccessTokensQueryParamFilter {
 	if o == nil {
 		return nil
 	}

@@ -13,6 +13,11 @@
 * [PatchTeamGroupMappings](#patchteamgroupmappings) - Patch Mappings by Team ID
 * [UpdateIdpTeamMappings](#updateidpteammappings) - Update Team Mappings
 * [GetIdpTeamMappings](#getidpteammappings) - Fetch Team Mapping
+* [GetIdentityProviders](#getidentityproviders) - Retrieve Identity Providers
+* [CreateIdentityProvider](#createidentityprovider) - Create Identity Provider
+* [GetIdentityProvider](#getidentityprovider) - Get Identity Provider
+* [UpdateIdentityProvider](#updateidentityprovider) - Update Identity Provider
+* [DeleteIdentityProvider](#deleteidentityprovider) - Delete Identity Provider
 
 ## GetAuthenticationSettings
 
@@ -495,3 +500,322 @@ func main() {
 | sdkerrors.NotFoundError      | 404                          | application/problem+json     |
 | sdkerrors.PreconditionFailed | 412                          | application/problem+json     |
 | sdkerrors.SDKError           | 4XX, 5XX                     | \*/\*                        |
+
+## GetIdentityProviders
+
+Retrieves the identity providers available within the organization. This operation provides information about 
+various identity providers for SAML or OIDC authentication integrations.
+
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+    
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.GetIdentityProviders(ctx, nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProviders != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
+| `filter`                                                 | [*operations.Filter](../../models/operations/filter.md)  | :heavy_minus_sign:                                       | Filter identity providers returned in the response.      |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
+
+### Response
+
+**[*operations.GetIdentityProvidersResponse](../../models/operations/getidentityprovidersresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## CreateIdentityProvider
+
+Creates a new identity provider. This operation allows the creation of a new identity provider for 
+authentication purposes.
+
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+    
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
+        Type: components.IdentityProviderTypeOidc.ToPointer(),
+        LoginPath: sdkkonnectgo.String("myapp"),
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
+            components.SAMLIdentityProviderConfigInput{
+                IdpMetadataURL: sdkkonnectgo.String("https://mocksaml.com/api/saml/metadata"),
+                IdpMetadataXML: sdkkonnectgo.String("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n" +
+                "  <!-- SAML metadata content here -->\n" +
+                "</EntityDescriptor>\n" +
+                ""),
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |
+| `request`                                                                              | [components.CreateIdentityProvider](../../models/components/createidentityprovider.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `opts`                                                                                 | [][operations.Option](../../models/operations/option.md)                               | :heavy_minus_sign:                                                                     | The options for this request.                                                          |
+
+### Response
+
+**[*operations.CreateIdentityProviderResponse](../../models/operations/createidentityproviderresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetIdentityProvider
+
+Retrieves the configuration of a single identity provider. This operation returns information about a 
+specific identity provider's settings and authentication integration details.
+
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+    
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.GetIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | ID of the identity provider.                             | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.GetIdentityProviderResponse](../../models/operations/getidentityproviderresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## UpdateIdentityProvider
+
+Updates the configuration of an existing identity provider. This operation allows modifications to be made 
+to an existing identity provider's configuration.
+
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+    
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Bool(true),
+        LoginPath: sdkkonnectgo.String("myapp"),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigSAMLIdentityProviderConfigInput(
+            components.SAMLIdentityProviderConfigInput{
+                IdpMetadataURL: sdkkonnectgo.String("https://mocksaml.com/api/saml/metadata"),
+                IdpMetadataXML: sdkkonnectgo.String("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n" +
+                "  <!-- SAML metadata content here -->\n" +
+                "</EntityDescriptor>\n" +
+                ""),
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                   | Type                                                                                                                                                        | Required                                                                                                                                                    | Description                                                                                                                                                 | Example                                                                                                                                                     |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                                       | [context.Context](https://pkg.go.dev/context#Context)                                                                                                       | :heavy_check_mark:                                                                                                                                          | The context to use for the request.                                                                                                                         |                                                                                                                                                             |
+| `id`                                                                                                                                                        | *string*                                                                                                                                                    | :heavy_check_mark:                                                                                                                                          | ID of the identity provider.                                                                                                                                | d32d905a-ed33-46a3-a093-d8f536af9a8a                                                                                                                        |
+| `updateIdentityProvider`                                                                                                                                    | [components.UpdateIdentityProvider](../../models/components/updateidentityprovider.md)                                                                      | :heavy_check_mark:                                                                                                                                          | An object representing the configuration for updating an identity provider. This configuration may pertain  to either an OIDC or a SAML identity provider.<br/> |                                                                                                                                                             |
+| `opts`                                                                                                                                                      | [][operations.Option](../../models/operations/option.md)                                                                                                    | :heavy_minus_sign:                                                                                                                                          | The options for this request.                                                                                                                               |                                                                                                                                                             |
+
+### Response
+
+**[*operations.UpdateIdentityProviderResponse](../../models/operations/updateidentityproviderresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## DeleteIdentityProvider
+
+Deletes an existing identity provider configuration. This operation removes a specific identity provider 
+from the organization.
+
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+    
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.DeleteIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | ID of the identity provider.                             | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.DeleteIdentityProviderResponse](../../models/operations/deleteidentityproviderresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 775faead244b67eac8090b0b6a8af0fd
+  docChecksum: 9ac40cfe02459222cb1c69a368a3f482
   docVersion: 0.0.1
   speakeasyVersion: 1.470.1
   generationVersion: 2.493.34
-  releaseVersion: 0.1.28
-  configChecksum: f6aa55aadea433268e0c46840d52ef21
+  releaseVersion: 0.1.29
+  configChecksum: 02c5f8e2efc6fcc044fcf48df4a5275a
 features:
   go:
     additionalDependencies: 0.1.0
@@ -56,6 +56,7 @@ generatedFiles:
   - /models/components/createconfigstore.go
   - /models/components/createconfigstoresecret.go
   - /models/components/createcontrolplanerequest.go
+  - /models/components/createidentityprovider.go
   - /models/components/createpluginschemas.go
   - /models/components/createsystemaccount.go
   - /models/components/createsystemaccountaccesstoken.go
@@ -78,6 +79,8 @@ generatedFiles:
   - /models/components/groupstatus.go
   - /models/components/hmacauth.go
   - /models/components/hmacauthwithoutparents.go
+  - /models/components/identityprovider.go
+  - /models/components/identityprovidertype.go
   - /models/components/idp.go
   - /models/components/invalidparameterchoiceitem.go
   - /models/components/invalidparameterdependentitem.go
@@ -106,6 +109,8 @@ generatedFiles:
   - /models/components/meorganization.go
   - /models/components/mtlsauth.go
   - /models/components/mtlsauthwithoutparents.go
+  - /models/components/oidcidentityproviderclaimmappings.go
+  - /models/components/oidcidentityproviderconfig.go
   - /models/components/pagemeta.go
   - /models/components/paginatedmeta.go
   - /models/components/patchteamgroupmappings.go
@@ -116,6 +121,8 @@ generatedFiles:
   - /models/components/roles.go
   - /models/components/route.go
   - /models/components/routewithoutparents.go
+  - /models/components/samlidentityproviderconfig.go
+  - /models/components/samlidentityproviderconfiginput.go
   - /models/components/security.go
   - /models/components/service.go
   - /models/components/sni.go
@@ -143,6 +150,7 @@ generatedFiles:
   - /models/components/updateconfigstore.go
   - /models/components/updateconfigstoresecret.go
   - /models/components/updatecontrolplanerequest.go
+  - /models/components/updateidentityprovider.go
   - /models/components/updateidpconfiguration.go
   - /models/components/updateimpersonationsettingsrequest.go
   - /models/components/updateimpersonationsettingsresponse.go
@@ -171,6 +179,7 @@ generatedFiles:
   - /models/operations/createcontrolplane.go
   - /models/operations/createdataplanecertificate.go
   - /models/operations/createhmacauthwithconsumer.go
+  - /models/operations/createidentityprovider.go
   - /models/operations/createjwtwithconsumer.go
   - /models/operations/createkey.go
   - /models/operations/createkeyauthwithconsumer.go
@@ -203,6 +212,7 @@ generatedFiles:
   - /models/operations/deletecontrolplane.go
   - /models/operations/deletedataplanecertificate.go
   - /models/operations/deletehmacauthwithconsumer.go
+  - /models/operations/deleteidentityprovider.go
   - /models/operations/deletejwtwithconsumer.go
   - /models/operations/deletekey.go
   - /models/operations/deletekeyauthwithconsumer.go
@@ -250,6 +260,8 @@ generatedFiles:
   - /models/operations/getexpectedconfighash.go
   - /models/operations/gethmacauth.go
   - /models/operations/gethmacauthwithconsumer.go
+  - /models/operations/getidentityprovider.go
+  - /models/operations/getidentityproviders.go
   - /models/operations/getidpconfiguration.go
   - /models/operations/getidpteammappings.go
   - /models/operations/getimpersonationsettings.go
@@ -359,6 +371,7 @@ generatedFiles:
   - /models/operations/updateconfigstore.go
   - /models/operations/updateconfigstoresecret.go
   - /models/operations/updatecontrolplane.go
+  - /models/operations/updateidentityprovider.go
   - /models/operations/updateidpconfiguration.go
   - /models/operations/updateidpteammappings.go
   - /models/operations/updateimpersonationsettings.go
@@ -469,6 +482,8 @@ generatedFiles:
   - docs/models/components/createconfigstoresecret.md
   - docs/models/components/createcontrolplanerequest.md
   - docs/models/components/createcontrolplanerequestclustertype.md
+  - docs/models/components/createidentityprovider.md
+  - docs/models/components/createidentityproviderconfig.md
   - docs/models/components/createpluginschemas.md
   - docs/models/components/createsystemaccount.md
   - docs/models/components/createsystemaccountaccesstoken.md
@@ -510,6 +525,9 @@ generatedFiles:
   - docs/models/components/httpsredirectstatuscode.md
   - docs/models/components/id.md
   - docs/models/components/identity.md
+  - docs/models/components/identityprovider.md
+  - docs/models/components/identityproviderconfig.md
+  - docs/models/components/identityprovidertype.md
   - docs/models/components/idp.md
   - docs/models/components/invalidparameterchoiceitem.md
   - docs/models/components/invalidparameterchoiceitemrule.md
@@ -567,6 +585,8 @@ generatedFiles:
   - docs/models/components/mtlsauthwithoutparentscacertificate.md
   - docs/models/components/mtlsauthwithoutparentsconsumer.md
   - docs/models/components/name.md
+  - docs/models/components/oidcidentityproviderclaimmappings.md
+  - docs/models/components/oidcidentityproviderconfig.md
   - docs/models/components/one.md
   - docs/models/components/ordering.md
   - docs/models/components/page.md
@@ -679,6 +699,8 @@ generatedFiles:
   - docs/models/components/routewithoutparentsservice.md
   - docs/models/components/routewithoutparentssources.md
   - docs/models/components/rule.md
+  - docs/models/components/samlidentityproviderconfig.md
+  - docs/models/components/samlidentityproviderconfiginput.md
   - docs/models/components/security.md
   - docs/models/components/service.md
   - docs/models/components/serviceinput.md
@@ -722,6 +744,8 @@ generatedFiles:
   - docs/models/components/updateconfigstoresecret.md
   - docs/models/components/updatecontrolplanerequest.md
   - docs/models/components/updatecontrolplanerequestauthtype.md
+  - docs/models/components/updateidentityprovider.md
+  - docs/models/components/updateidentityproviderconfig.md
   - docs/models/components/updateidpconfiguration.md
   - docs/models/components/updateidpconfigurationclaimmappings.md
   - docs/models/components/updateimpersonationsettingsrequest.md
@@ -777,6 +801,7 @@ generatedFiles:
   - docs/models/operations/createdataplanecertificateresponse.md
   - docs/models/operations/createhmacauthwithconsumerrequest.md
   - docs/models/operations/createhmacauthwithconsumerresponse.md
+  - docs/models/operations/createidentityproviderresponse.md
   - docs/models/operations/createjwtwithconsumerrequest.md
   - docs/models/operations/createjwtwithconsumerresponse.md
   - docs/models/operations/createkeyauthwithconsumerrequest.md
@@ -840,6 +865,8 @@ generatedFiles:
   - docs/models/operations/deletedataplanecertificateresponse.md
   - docs/models/operations/deletehmacauthwithconsumerrequest.md
   - docs/models/operations/deletehmacauthwithconsumerresponse.md
+  - docs/models/operations/deleteidentityproviderrequest.md
+  - docs/models/operations/deleteidentityproviderresponse.md
   - docs/models/operations/deletejwtwithconsumerrequest.md
   - docs/models/operations/deletejwtwithconsumerresponse.md
   - docs/models/operations/deletekeyauthwithconsumerrequest.md
@@ -936,6 +963,10 @@ generatedFiles:
   - docs/models/operations/gethmacauthresponse.md
   - docs/models/operations/gethmacauthwithconsumerrequest.md
   - docs/models/operations/gethmacauthwithconsumerresponse.md
+  - docs/models/operations/getidentityproviderrequest.md
+  - docs/models/operations/getidentityproviderresponse.md
+  - docs/models/operations/getidentityprovidersrequest.md
+  - docs/models/operations/getidentityprovidersresponse.md
   - docs/models/operations/getidpconfigurationresponse.md
   - docs/models/operations/getidpteammappingsrequest.md
   - docs/models/operations/getidpteammappingsresponse.md
@@ -986,6 +1017,7 @@ generatedFiles:
   - docs/models/operations/getsniresponse.md
   - docs/models/operations/getsniwithcertificaterequest.md
   - docs/models/operations/getsniwithcertificateresponse.md
+  - docs/models/operations/getsystemaccountidaccesstokensqueryparamfilter.md
   - docs/models/operations/getsystemaccountidaccesstokensrequest.md
   - docs/models/operations/getsystemaccountidaccesstokensresponse.md
   - docs/models/operations/getsystemaccountsaccountidassignedrolesqueryparamfilter.md
@@ -1190,6 +1222,8 @@ generatedFiles:
   - docs/models/operations/updateconfigstoresecretresponse.md
   - docs/models/operations/updatecontrolplanerequest.md
   - docs/models/operations/updatecontrolplaneresponse.md
+  - docs/models/operations/updateidentityproviderrequest.md
+  - docs/models/operations/updateidentityproviderresponse.md
   - docs/models/operations/updateidpconfigurationresponse.md
   - docs/models/operations/updateidpteammappingsresponse.md
   - docs/models/operations/updateimpersonationsettingsresponse.md
@@ -4204,6 +4238,76 @@ examples:
           configStoreId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
           key: "ConfigStoreSecretKey"
       responses:
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  get-identity-providers:
+    speakeasy-default-get-identity-providers:
+      responses:
+        "200":
+          application/json: [{"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "type": "oidc", "enabled": true, "login_path": "myapp", "config": {"idp_metadata_url": "https://mocksaml.com/api/saml/metadata", "idp_metadata_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n", "sp_metadata_url": "https://cloud.konghq.com/v2/authenticate/the-saml-konnect-org/saml/metadata", "sp_entity_id": "https://cloud.konghq.com/sp/00000000-0000-0000-0000-000000000000", "login_url": "https://cloud.konghq.com/login/the-saml-konnect-org", "callback_url": "https://cloud.konghq.com/v2/authenticate/the-saml-konnect-org/saml/acs"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+  create-identity-provider:
+    speakeasy-default-create-identity-provider:
+      requestBody:
+        application/json: {"type": "oidc", "login_path": "myapp", "config": {"idp_metadata_url": "https://mocksaml.com/api/saml/metadata", "idp_metadata_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"}}
+      responses:
+        "201":
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "type": "oidc", "enabled": true, "login_path": "myapp", "config": {"issuer_url": "https://konghq.okta.com/oauth2/default", "client_id": "YOUR_CLIENT_ID", "claim_mappings": {"name": "name", "email": "email", "groups": "groups"}}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 293827, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "min_digits", "minimum": 8, "source": "body", "reason": "must have at least 8 characters"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+  get-identity-provider:
+    speakeasy-default-get-identity-provider:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "200":
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "type": "oidc", "enabled": true, "login_path": "myapp", "config": {"idp_metadata_url": "https://mocksaml.com/api/saml/metadata", "idp_metadata_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n", "sp_metadata_url": "https://cloud.konghq.com/v2/authenticate/the-saml-konnect-org/saml/metadata", "sp_entity_id": "https://cloud.konghq.com/sp/00000000-0000-0000-0000-000000000000", "login_url": "https://cloud.konghq.com/login/the-saml-konnect-org", "callback_url": "https://cloud.konghq.com/v2/authenticate/the-saml-konnect-org/saml/acs"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 517249, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  update-identity-provider:
+    speakeasy-default-update-identity-provider:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      requestBody:
+        application/json: {"enabled": true, "login_path": "myapp", "config": {"idp_metadata_url": "https://mocksaml.com/api/saml/metadata", "idp_metadata_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"}}
+      responses:
+        "200":
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "type": "oidc", "enabled": true, "login_path": "myapp", "config": {"idp_metadata_url": "https://mocksaml.com/api/saml/metadata", "idp_metadata_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n", "sp_metadata_url": "https://cloud.konghq.com/v2/authenticate/the-saml-konnect-org/saml/metadata", "sp_entity_id": "https://cloud.konghq.com/sp/00000000-0000-0000-0000-000000000000", "login_url": "https://cloud.konghq.com/login/the-saml-konnect-org", "callback_url": "https://cloud.konghq.com/v2/authenticate/the-saml-konnect-org/saml/acs"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 568700, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  delete-identity-provider:
+    speakeasy-default-delete-identity-provider:
+      parameters:
+        path:
+          id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
+        "400":
+          application/problem+json: {"status": 24808, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value>"], "source": "body"}, {"field": "name", "source": "body", "reason": "is a required field"}]}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
