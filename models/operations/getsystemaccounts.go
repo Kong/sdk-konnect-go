@@ -11,8 +11,8 @@ var GetSystemAccountsServerList = []string{
 	"https://global.api.konghq.com/",
 }
 
-// Filter system accounts returned in the response.
-type Filter struct {
+// QueryParamFilter - Filter system accounts returned in the response.
+type QueryParamFilter struct {
 	// Filter a string value field either by exact match or partial contains.
 	Name *components.StringFieldFilter `queryParam:"name=name"`
 	// Filter a string value field either by exact match or partial contains.
@@ -21,21 +21,21 @@ type Filter struct {
 	KonnectManaged *bool `queryParam:"name=konnect_managed"`
 }
 
-func (o *Filter) GetName() *components.StringFieldFilter {
+func (o *QueryParamFilter) GetName() *components.StringFieldFilter {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *Filter) GetDescription() *components.StringFieldFilter {
+func (o *QueryParamFilter) GetDescription() *components.StringFieldFilter {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *Filter) GetKonnectManaged() *bool {
+func (o *QueryParamFilter) GetKonnectManaged() *bool {
 	if o == nil {
 		return nil
 	}
@@ -48,7 +48,7 @@ type GetSystemAccountsRequest struct {
 	// Determines which page of the entities to retrieve.
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 	// Filter system accounts returned in the response.
-	Filter *Filter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *QueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
 func (o *GetSystemAccountsRequest) GetPageSize() *int64 {
@@ -65,7 +65,7 @@ func (o *GetSystemAccountsRequest) GetPageNumber() *int64 {
 	return o.PageNumber
 }
 
-func (o *GetSystemAccountsRequest) GetFilter() *Filter {
+func (o *GetSystemAccountsRequest) GetFilter() *QueryParamFilter {
 	if o == nil {
 		return nil
 	}
