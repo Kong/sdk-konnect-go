@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 9ac40cfe02459222cb1c69a368a3f482
+  docChecksum: fe43d33d203b7561758301b8b6eca122
   docVersion: 0.0.1
   speakeasyVersion: 1.470.1
   generationVersion: 2.493.34
-  releaseVersion: 0.1.29
-  configChecksum: 02c5f8e2efc6fcc044fcf48df4a5275a
+  releaseVersion: 0.2.0
+  configChecksum: 6bd6c3b1bf7f850519936cd72c879871
 features:
   go:
     additionalDependencies: 0.1.0
@@ -19,6 +19,7 @@ features:
     globalSecurity: 2.82.10
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.2
+    groups: 2.81.2
     inputOutputModels: 2.83.0
     intellisenseMarkdownSupport: 0.1.0
     methodServerURLs: 2.82.1
@@ -34,18 +35,34 @@ generatedFiles:
   - /models/components/aclwithoutparents.go
   - /models/components/addsystemaccounttoteam.go
   - /models/components/addusertoteam.go
+  - /models/components/apiaccess.go
   - /models/components/assignedrole.go
   - /models/components/assignedrolecollection.go
   - /models/components/assignrole.go
   - /models/components/authenticationsettings.go
+  - /models/components/availabilitydocument.go
+  - /models/components/awstransitgatewayattachmentconfig.go
+  - /models/components/awstransitgatewayresponse.go
+  - /models/components/azuretransitgatewayresponse.go
+  - /models/components/azurevnetpeeringattachmentconfig.go
   - /models/components/basicauth.go
   - /models/components/basicauthwithoutparents.go
   - /models/components/cacertificate.go
   - /models/components/cacertificateinput.go
   - /models/components/certificate.go
   - /models/components/certificateinput.go
+  - /models/components/cloudgatewaysstringfieldequalsfilteroverride.go
+  - /models/components/cloudgatewaysstringfieldfilteroverride.go
   - /models/components/configstore.go
   - /models/components/configstoresecret.go
+  - /models/components/configurationdataplanegroup.go
+  - /models/components/configurationdataplanegroupautoscale.go
+  - /models/components/configurationdataplanegroupautoscaleautopilot.go
+  - /models/components/configurationdataplanegroupautoscalestatic.go
+  - /models/components/configurationdataplanegroupconfig.go
+  - /models/components/configurationdataplanegroupenvironmentfield.go
+  - /models/components/configurationmanifest.go
+  - /models/components/configurationsfilterparameters.go
   - /models/components/consumer.go
   - /models/components/consumergroup.go
   - /models/components/consumergroupinput.go
@@ -53,20 +70,41 @@ generatedFiles:
   - /models/components/consumerinput.go
   - /models/components/controlplane.go
   - /models/components/controlplanefilterparameters.go
+  - /models/components/controlplanegeo.go
+  - /models/components/controlplanegeofieldequalsfilter.go
+  - /models/components/controlplanegeofieldfilter.go
+  - /models/components/controlplanegeofieldnotequalsfilter.go
+  - /models/components/controlplanegeofieldorequalityfilter.go
   - /models/components/createconfigstore.go
   - /models/components/createconfigstoresecret.go
+  - /models/components/createconfigurationdataplanegroup.go
+  - /models/components/createconfigurationrequest.go
   - /models/components/createcontrolplanerequest.go
+  - /models/components/createcustomdomainrequest.go
   - /models/components/createidentityprovider.go
+  - /models/components/createnetworkrequest.go
   - /models/components/createpluginschemas.go
   - /models/components/createsystemaccount.go
   - /models/components/createsystemaccountaccesstoken.go
   - /models/components/createteam.go
+  - /models/components/createtransitgatewayrequest.go
   - /models/components/cursormeta.go
   - /models/components/cursormetapage.go
   - /models/components/cursormetawithsizeandtotal.go
   - /models/components/cursorpaginatedmetawithsizeandtotal.go
+  - /models/components/customdomain.go
+  - /models/components/customdomainonlinepropertystatus.go
+  - /models/components/customdomainonlinestatus.go
+  - /models/components/customdomainsfilterparameters.go
+  - /models/components/customdomainstate.go
+  - /models/components/customdomainstatefieldequalsfilter.go
+  - /models/components/customdomainstatefieldfilter.go
+  - /models/components/customdomainstatefieldnotequalsfilter.go
+  - /models/components/customdomainstatefieldorequalityfilter.go
   - /models/components/dataplaneclientcertificate.go
   - /models/components/dataplaneclientcertificaterequest.go
+  - /models/components/defaultresourceconfiguration.go
+  - /models/components/defaultresourcequota.go
   - /models/components/entityregion.go
   - /models/components/getexpectedconfighashresponse.go
   - /models/components/getgroupstatus.go
@@ -81,7 +119,10 @@ generatedFiles:
   - /models/components/hmacauthwithoutparents.go
   - /models/components/identityprovider.go
   - /models/components/identityprovidertype.go
+  - /models/components/idfieldfilter.go
   - /models/components/idp.go
+  - /models/components/instancetype.go
+  - /models/components/instancetypename.go
   - /models/components/invalidparameterchoiceitem.go
   - /models/components/invalidparameterdependentitem.go
   - /models/components/invalidparametermaximumlength.go
@@ -100,24 +141,54 @@ generatedFiles:
   - /models/components/keywithoutparents.go
   - /models/components/listconfigstoresecretsresponse.go
   - /models/components/listconfigstoresresponse.go
+  - /models/components/listconfigurationsresponse.go
   - /models/components/listcontrolplanesresponse.go
+  - /models/components/listcustomdomainsresponse.go
   - /models/components/listdataplanecertificatesresponse.go
+  - /models/components/listdefaultresourceconfigurationsresponse.go
+  - /models/components/listdefaultresourcequotasresponse.go
   - /models/components/listgroupmemberships.go
+  - /models/components/listnetworkconfigurationreferencesresponse.go
+  - /models/components/listnetworksresponse.go
   - /models/components/listnodes.go
   - /models/components/listnodeseol.go
   - /models/components/listpluginschemas.go
+  - /models/components/listprovideraccountsresponse.go
+  - /models/components/listresourceconfigurationsresponse.go
+  - /models/components/listresourcequotasresponse.go
+  - /models/components/listtransitgatewaysresponse.go
   - /models/components/meorganization.go
   - /models/components/mtlsauth.go
   - /models/components/mtlsauthwithoutparents.go
+  - /models/components/network.go
+  - /models/components/networkconfigurationreference.go
+  - /models/components/networkcreatestate.go
+  - /models/components/networkprovidermetadata.go
+  - /models/components/networksfilterparameters.go
+  - /models/components/networkstate.go
+  - /models/components/networkstatefieldequalsfilter.go
+  - /models/components/networkstatefieldfilter.go
+  - /models/components/networkstatefieldnotequalsfilter.go
+  - /models/components/networkstatefieldorequalityfilter.go
   - /models/components/oidcidentityproviderclaimmappings.go
   - /models/components/oidcidentityproviderconfig.go
   - /models/components/pagemeta.go
   - /models/components/paginatedmeta.go
+  - /models/components/patchnetworkrequest.go
   - /models/components/patchteamgroupmappings.go
   - /models/components/plugin.go
   - /models/components/pluginschemas.go
   - /models/components/pluginwithoutparents.go
+  - /models/components/provider.go
+  - /models/components/provideraccount.go
+  - /models/components/provideraccountsfilterparameters.go
+  - /models/components/providername.go
+  - /models/components/providerregion.go
   - /models/components/proxyurl.go
+  - /models/components/resourceconfiguration.go
+  - /models/components/resourceconfigurationqualifier.go
+  - /models/components/resourcequota.go
+  - /models/components/resourcequotaqualifier.go
   - /models/components/roles.go
   - /models/components/route.go
   - /models/components/routewithoutparents.go
@@ -131,6 +202,7 @@ generatedFiles:
   - /models/components/stringfieldequalsfilter.go
   - /models/components/stringfieldfilter.go
   - /models/components/stringfieldneqfilter.go
+  - /models/components/stringfieldocontainsfilter.go
   - /models/components/stringfieldoeqfilter.go
   - /models/components/systemaccount.go
   - /models/components/systemaccountaccesstoken.go
@@ -146,6 +218,14 @@ generatedFiles:
   - /models/components/teammapping.go
   - /models/components/teammappingcollection.go
   - /models/components/teammappingresponse.go
+  - /models/components/transitgatewaydnsconfig.go
+  - /models/components/transitgatewayresponse.go
+  - /models/components/transitgatewaysfilterparameters.go
+  - /models/components/transitgatewaystate.go
+  - /models/components/transitgatewaystatefieldequalsfilter.go
+  - /models/components/transitgatewaystatefieldfilter.go
+  - /models/components/transitgatewaystatefieldnotequalsfilter.go
+  - /models/components/transitgatewaystatefieldorequalityfilter.go
   - /models/components/updateauthenticationsettings.go
   - /models/components/updateconfigstore.go
   - /models/components/updateconfigstoresecret.go
@@ -174,9 +254,11 @@ generatedFiles:
   - /models/operations/createcertificate.go
   - /models/operations/createconfigstore.go
   - /models/operations/createconfigstoresecret.go
+  - /models/operations/createconfiguration.go
   - /models/operations/createconsumer.go
   - /models/operations/createconsumergroup.go
   - /models/operations/createcontrolplane.go
+  - /models/operations/createcustomdomains.go
   - /models/operations/createdataplanecertificate.go
   - /models/operations/createhmacauthwithconsumer.go
   - /models/operations/createidentityprovider.go
@@ -186,6 +268,7 @@ generatedFiles:
   - /models/operations/createkeyset.go
   - /models/operations/createkeywithkeyset.go
   - /models/operations/createmtlsauthwithconsumer.go
+  - /models/operations/createnetwork.go
   - /models/operations/createplugin.go
   - /models/operations/createpluginschemas.go
   - /models/operations/createpluginwithconsumer.go
@@ -199,6 +282,7 @@ generatedFiles:
   - /models/operations/createsniwithcertificate.go
   - /models/operations/createtargetwithupstream.go
   - /models/operations/createteam.go
+  - /models/operations/createtransitgateway.go
   - /models/operations/createupstream.go
   - /models/operations/createvault.go
   - /models/operations/deleteaclwithconsumer.go
@@ -210,6 +294,7 @@ generatedFiles:
   - /models/operations/deleteconsumer.go
   - /models/operations/deleteconsumergroup.go
   - /models/operations/deletecontrolplane.go
+  - /models/operations/deletecustomdomain.go
   - /models/operations/deletedataplanecertificate.go
   - /models/operations/deletehmacauthwithconsumer.go
   - /models/operations/deleteidentityprovider.go
@@ -219,6 +304,7 @@ generatedFiles:
   - /models/operations/deletekeyset.go
   - /models/operations/deletekeywithkeyset.go
   - /models/operations/deletemtlsauthwithconsumer.go
+  - /models/operations/deletenetwork.go
   - /models/operations/deletenodesnodeid.go
   - /models/operations/deleteplugin.go
   - /models/operations/deletepluginschemas.go
@@ -237,6 +323,7 @@ generatedFiles:
   - /models/operations/deletetargetwithupstream.go
   - /models/operations/deleteteam.go
   - /models/operations/deleteteamsteamidsystemaccountsaccountid.go
+  - /models/operations/deletetransitgateway.go
   - /models/operations/deleteupstream.go
   - /models/operations/deleteuser.go
   - /models/operations/deletevault.go
@@ -244,18 +331,22 @@ generatedFiles:
   - /models/operations/getacl.go
   - /models/operations/getaclwithconsumer.go
   - /models/operations/getauthenticationsettings.go
+  - /models/operations/getavailabilityjson.go
   - /models/operations/getbasicauth.go
   - /models/operations/getbasicauthwithconsumer.go
   - /models/operations/getcacertificate.go
   - /models/operations/getcertificate.go
   - /models/operations/getconfigstore.go
   - /models/operations/getconfigstoresecret.go
+  - /models/operations/getconfiguration.go
   - /models/operations/getconsumer.go
   - /models/operations/getconsumergroup.go
   - /models/operations/getcontrolplane.go
   - /models/operations/getcontrolplanesidgroupmemberships.go
   - /models/operations/getcontrolplanesidgroupmemberstatus.go
   - /models/operations/getcontrolplanesidgroupstatus.go
+  - /models/operations/getcustomdomain.go
+  - /models/operations/getcustomdomainonlinestatus.go
   - /models/operations/getdataplanecertificate.go
   - /models/operations/getexpectedconfighash.go
   - /models/operations/gethmacauth.go
@@ -274,6 +365,7 @@ generatedFiles:
   - /models/operations/getkeywithkeyset.go
   - /models/operations/getmtlsauth.go
   - /models/operations/getmtlsauthwithconsumer.go
+  - /models/operations/getnetwork.go
   - /models/operations/getnodeseol.go
   - /models/operations/getnodesnodeid.go
   - /models/operations/getorganizationsme.go
@@ -284,6 +376,9 @@ generatedFiles:
   - /models/operations/getpluginwithroute.go
   - /models/operations/getpluginwithservice.go
   - /models/operations/getpredefinedroles.go
+  - /models/operations/getprovideraccount.go
+  - /models/operations/getresourceconfiguration.go
+  - /models/operations/getresourcequota.go
   - /models/operations/getroute.go
   - /models/operations/getroutewithservice.go
   - /models/operations/getservice.go
@@ -299,6 +394,7 @@ generatedFiles:
   - /models/operations/getteam.go
   - /models/operations/getteamgroupmappings.go
   - /models/operations/getteamsteamidsystemaccounts.go
+  - /models/operations/gettransitgateway.go
   - /models/operations/getupstream.go
   - /models/operations/getuser.go
   - /models/operations/getusersme.go
@@ -312,12 +408,16 @@ generatedFiles:
   - /models/operations/listcertificate.go
   - /models/operations/listconfigstores.go
   - /models/operations/listconfigstoresecrets.go
+  - /models/operations/listconfigurations.go
   - /models/operations/listconsumer.go
   - /models/operations/listconsumergroup.go
   - /models/operations/listconsumergroupsforconsumer.go
   - /models/operations/listconsumersforconsumergroup.go
   - /models/operations/listcontrolplanes.go
+  - /models/operations/listcustomdomains.go
   - /models/operations/listdataplanenodes.go
+  - /models/operations/listdefaultresourceconfigurations.go
+  - /models/operations/listdefaultresourcequotas.go
   - /models/operations/listdpclientcertificates.go
   - /models/operations/listhmacauth.go
   - /models/operations/listhmacauthwithconsumer.go
@@ -330,12 +430,17 @@ generatedFiles:
   - /models/operations/listkeywithkeyset.go
   - /models/operations/listmtlsauth.go
   - /models/operations/listmtlsauthwithconsumer.go
+  - /models/operations/listnetworkconfigurations.go
+  - /models/operations/listnetworks.go
   - /models/operations/listplugin.go
   - /models/operations/listpluginschemas.go
   - /models/operations/listpluginwithconsumer.go
   - /models/operations/listpluginwithconsumergroup.go
   - /models/operations/listpluginwithroute.go
   - /models/operations/listpluginwithservice.go
+  - /models/operations/listprovideraccounts.go
+  - /models/operations/listresourceconfigurations.go
+  - /models/operations/listresourcequotas.go
   - /models/operations/listroute.go
   - /models/operations/listroutewithservice.go
   - /models/operations/listservice.go
@@ -345,6 +450,7 @@ generatedFiles:
   - /models/operations/listteamroles.go
   - /models/operations/listteams.go
   - /models/operations/listteamusers.go
+  - /models/operations/listtransitgateways.go
   - /models/operations/listupstream.go
   - /models/operations/listuserroles.go
   - /models/operations/listusers.go
@@ -375,6 +481,7 @@ generatedFiles:
   - /models/operations/updateidpconfiguration.go
   - /models/operations/updateidpteammappings.go
   - /models/operations/updateimpersonationsettings.go
+  - /models/operations/updatenetwork.go
   - /models/operations/updatepluginschemas.go
   - /models/operations/updateteam.go
   - /models/operations/updateuser.go
@@ -425,6 +532,7 @@ generatedFiles:
   - basicauthcredentials.go
   - cacertificates.go
   - certificates.go
+  - cloudgateways.go
   - configstores.go
   - configstoresecrets.go
   - consumergroups.go
@@ -442,6 +550,7 @@ generatedFiles:
   - docs/models/components/admin.md
   - docs/models/components/after.md
   - docs/models/components/algorithm.md
+  - docs/models/components/apiaccess.md
   - docs/models/components/apiproducts.md
   - docs/models/components/applicationregistration.md
   - docs/models/components/assignedrole.md
@@ -450,6 +559,15 @@ generatedFiles:
   - docs/models/components/auditlogs.md
   - docs/models/components/authenticationsettings.md
   - docs/models/components/authtype.md
+  - docs/models/components/availabilitydocument.md
+  - docs/models/components/awstransitgateway.md
+  - docs/models/components/awstransitgatewayattachmentconfig.md
+  - docs/models/components/awstransitgatewayattachmenttype.md
+  - docs/models/components/awstransitgatewayresponse.md
+  - docs/models/components/azuretransitgateway.md
+  - docs/models/components/azuretransitgatewayresponse.md
+  - docs/models/components/azurevnetpeeringattachmentconfig.md
+  - docs/models/components/azurevnetpeeringattachmenttype.md
   - docs/models/components/basicauth.md
   - docs/models/components/basicauthconsumer.md
   - docs/models/components/basicauthwithoutparents.md
@@ -462,11 +580,22 @@ generatedFiles:
   - docs/models/components/certificateinput.md
   - docs/models/components/claimmappings.md
   - docs/models/components/clientcertificate.md
+  - docs/models/components/cloudgatewaysstringfieldequalsfilteroverride.md
+  - docs/models/components/cloudgatewaysstringfieldfilteroverride.md
   - docs/models/components/clustertype.md
   - docs/models/components/compatibilitystatus.md
   - docs/models/components/config.md
   - docs/models/components/configstore.md
   - docs/models/components/configstoresecret.md
+  - docs/models/components/configurationdataplanegroup.md
+  - docs/models/components/configurationdataplanegroupautoscale.md
+  - docs/models/components/configurationdataplanegroupautoscaleautopilot.md
+  - docs/models/components/configurationdataplanegroupautoscaleautopilotkind.md
+  - docs/models/components/configurationdataplanegroupautoscalestatic.md
+  - docs/models/components/configurationdataplanegroupconfig.md
+  - docs/models/components/configurationdataplanegroupenvironmentfield.md
+  - docs/models/components/configurationmanifest.md
+  - docs/models/components/configurationsfilterparameters.md
   - docs/models/components/consumer.md
   - docs/models/components/consumeradmin.md
   - docs/models/components/consumergroup.md
@@ -477,26 +606,50 @@ generatedFiles:
   - docs/models/components/controlplaneauthtype.md
   - docs/models/components/controlplaneclustertype.md
   - docs/models/components/controlplanefilterparameters.md
+  - docs/models/components/controlplanegeo.md
+  - docs/models/components/controlplanegeofieldequalscomparison.md
+  - docs/models/components/controlplanegeofieldequalsfilter.md
+  - docs/models/components/controlplanegeofieldfilter.md
+  - docs/models/components/controlplanegeofieldnotequalsfilter.md
+  - docs/models/components/controlplanegeofieldorequalityfilter.md
   - docs/models/components/controlplanes.md
   - docs/models/components/createconfigstore.md
   - docs/models/components/createconfigstoresecret.md
+  - docs/models/components/createconfigurationdataplanegroup.md
+  - docs/models/components/createconfigurationrequest.md
   - docs/models/components/createcontrolplanerequest.md
   - docs/models/components/createcontrolplanerequestclustertype.md
+  - docs/models/components/createcustomdomainrequest.md
   - docs/models/components/createidentityprovider.md
   - docs/models/components/createidentityproviderconfig.md
+  - docs/models/components/createnetworkrequest.md
   - docs/models/components/createpluginschemas.md
   - docs/models/components/createsystemaccount.md
   - docs/models/components/createsystemaccountaccesstoken.md
   - docs/models/components/createteam.md
+  - docs/models/components/createtransitgatewayrequest.md
   - docs/models/components/creator.md
   - docs/models/components/cursormeta.md
   - docs/models/components/cursormetapage.md
   - docs/models/components/cursormetawithsizeandtotal.md
   - docs/models/components/cursorpaginatedmetawithsizeandtotal.md
+  - docs/models/components/customdomain.md
+  - docs/models/components/customdomainonlinepropertystatus.md
+  - docs/models/components/customdomainonlinestatus.md
+  - docs/models/components/customdomainsfilterparameters.md
+  - docs/models/components/customdomainstate.md
+  - docs/models/components/customdomainstatefieldequalscomparison.md
+  - docs/models/components/customdomainstatefieldequalsfilter.md
+  - docs/models/components/customdomainstatefieldfilter.md
+  - docs/models/components/customdomainstatefieldnotequalsfilter.md
+  - docs/models/components/customdomainstatefieldorequalityfilter.md
+  - docs/models/components/customdomainstatemetadata.md
   - docs/models/components/data.md
   - docs/models/components/dataplaneclientcertificate.md
   - docs/models/components/dataplaneclientcertificateitem.md
   - docs/models/components/dataplaneclientcertificaterequest.md
+  - docs/models/components/defaultresourceconfiguration.md
+  - docs/models/components/defaultresourcequota.md
   - docs/models/components/deployer.md
   - docs/models/components/description.md
   - docs/models/components/destinations.md
@@ -514,6 +667,7 @@ generatedFiles:
   - docs/models/components/groupmembership.md
   - docs/models/components/groupmemberstatus.md
   - docs/models/components/groupstatus.md
+  - docs/models/components/groupstatusstate.md
   - docs/models/components/hashfallback.md
   - docs/models/components/hashon.md
   - docs/models/components/healthchecks.md
@@ -528,7 +682,10 @@ generatedFiles:
   - docs/models/components/identityprovider.md
   - docs/models/components/identityproviderconfig.md
   - docs/models/components/identityprovidertype.md
+  - docs/models/components/idfieldfilter.md
   - docs/models/components/idp.md
+  - docs/models/components/instancetype.md
+  - docs/models/components/instancetypename.md
   - docs/models/components/invalidparameterchoiceitem.md
   - docs/models/components/invalidparameterchoiceitemrule.md
   - docs/models/components/invalidparameterdependentitem.md
@@ -558,12 +715,19 @@ generatedFiles:
   - docs/models/components/keywithoutparents.md
   - docs/models/components/keywithoutparentspem.md
   - docs/models/components/keywithoutparentsset.md
+  - docs/models/components/kind.md
   - docs/models/components/listconfigstoresecretsresponse.md
   - docs/models/components/listconfigstoresresponse.md
+  - docs/models/components/listconfigurationsresponse.md
   - docs/models/components/listcontrolplanesresponse.md
+  - docs/models/components/listcustomdomainsresponse.md
   - docs/models/components/listdataplanecertificatesresponse.md
   - docs/models/components/listdataplanecertificatesresponsepage.md
+  - docs/models/components/listdefaultresourceconfigurationsresponse.md
+  - docs/models/components/listdefaultresourcequotasresponse.md
   - docs/models/components/listgroupmemberships.md
+  - docs/models/components/listnetworkconfigurationreferencesresponse.md
+  - docs/models/components/listnetworksresponse.md
   - docs/models/components/listnodes.md
   - docs/models/components/listnodeseol.md
   - docs/models/components/listnodeseolitems.md
@@ -571,6 +735,10 @@ generatedFiles:
   - docs/models/components/listnodesitems.md
   - docs/models/components/listnodespage.md
   - docs/models/components/listpluginschemas.md
+  - docs/models/components/listprovideraccountsresponse.md
+  - docs/models/components/listresourceconfigurationsresponse.md
+  - docs/models/components/listresourcequotasresponse.md
+  - docs/models/components/listtransitgatewaysresponse.md
   - docs/models/components/maintainer.md
   - docs/models/components/mappings.md
   - docs/models/components/members.md
@@ -585,6 +753,17 @@ generatedFiles:
   - docs/models/components/mtlsauthwithoutparentscacertificate.md
   - docs/models/components/mtlsauthwithoutparentsconsumer.md
   - docs/models/components/name.md
+  - docs/models/components/network.md
+  - docs/models/components/networkconfigurationreference.md
+  - docs/models/components/networkcreatestate.md
+  - docs/models/components/networkprovidermetadata.md
+  - docs/models/components/networksfilterparameters.md
+  - docs/models/components/networkstate.md
+  - docs/models/components/networkstatefieldequalscomparison.md
+  - docs/models/components/networkstatefieldequalsfilter.md
+  - docs/models/components/networkstatefieldfilter.md
+  - docs/models/components/networkstatefieldnotequalsfilter.md
+  - docs/models/components/networkstatefieldorequalityfilter.md
   - docs/models/components/oidcidentityproviderclaimmappings.md
   - docs/models/components/oidcidentityproviderconfig.md
   - docs/models/components/one.md
@@ -593,6 +772,7 @@ generatedFiles:
   - docs/models/components/pagemeta.md
   - docs/models/components/paginatedmeta.md
   - docs/models/components/passive.md
+  - docs/models/components/patchnetworkrequest.md
   - docs/models/components/patchteamgroupmappings.md
   - docs/models/components/pathhandling.md
   - docs/models/components/pem.md
@@ -616,8 +796,17 @@ generatedFiles:
   - docs/models/components/pluginwithoutparentsservice.md
   - docs/models/components/protocol.md
   - docs/models/components/protocols.md
+  - docs/models/components/provider.md
+  - docs/models/components/provideraccount.md
+  - docs/models/components/provideraccountsfilterparameters.md
+  - docs/models/components/providername.md
+  - docs/models/components/providerregion.md
   - docs/models/components/proxyurl.md
   - docs/models/components/publisher.md
+  - docs/models/components/resourceconfiguration.md
+  - docs/models/components/resourceconfigurationqualifier.md
+  - docs/models/components/resourcequota.md
+  - docs/models/components/resourcequotaqualifier.md
   - docs/models/components/rolename.md
   - docs/models/components/roles.md
   - docs/models/components/rolesadmin.md
@@ -714,9 +903,11 @@ generatedFiles:
   - docs/models/components/sources.md
   - docs/models/components/state.md
   - docs/models/components/stringfieldcontainsfilter.md
+  - docs/models/components/stringfieldequalscomparison.md
   - docs/models/components/stringfieldequalsfilter.md
   - docs/models/components/stringfieldfilter.md
   - docs/models/components/stringfieldneqfilter.md
+  - docs/models/components/stringfieldocontainsfilter.md
   - docs/models/components/stringfieldoeqfilter.md
   - docs/models/components/systemaccount.md
   - docs/models/components/systemaccountaccesstoken.md
@@ -736,6 +927,15 @@ generatedFiles:
   - docs/models/components/teammappingresponse.md
   - docs/models/components/teammappingresponsedata.md
   - docs/models/components/teammappingresponsepage.md
+  - docs/models/components/transitgatewaydnsconfig.md
+  - docs/models/components/transitgatewayresponse.md
+  - docs/models/components/transitgatewaysfilterparameters.md
+  - docs/models/components/transitgatewaystate.md
+  - docs/models/components/transitgatewaystatefieldequalscomparison.md
+  - docs/models/components/transitgatewaystatefieldequalsfilter.md
+  - docs/models/components/transitgatewaystatefieldfilter.md
+  - docs/models/components/transitgatewaystatefieldnotequalsfilter.md
+  - docs/models/components/transitgatewaystatefieldorequalityfilter.md
   - docs/models/components/two.md
   - docs/models/components/type.md
   - docs/models/components/unhealthy.md
@@ -792,11 +992,13 @@ generatedFiles:
   - docs/models/operations/createconfigstoreresponse.md
   - docs/models/operations/createconfigstoresecretrequest.md
   - docs/models/operations/createconfigstoresecretresponse.md
+  - docs/models/operations/createconfigurationresponse.md
   - docs/models/operations/createconsumergrouprequest.md
   - docs/models/operations/createconsumergroupresponse.md
   - docs/models/operations/createconsumerrequest.md
   - docs/models/operations/createconsumerresponse.md
   - docs/models/operations/createcontrolplaneresponse.md
+  - docs/models/operations/createcustomdomainsresponse.md
   - docs/models/operations/createdataplanecertificaterequest.md
   - docs/models/operations/createdataplanecertificateresponse.md
   - docs/models/operations/createhmacauthwithconsumerrequest.md
@@ -814,6 +1016,7 @@ generatedFiles:
   - docs/models/operations/createkeywithkeysetresponse.md
   - docs/models/operations/createmtlsauthwithconsumerrequest.md
   - docs/models/operations/createmtlsauthwithconsumerresponse.md
+  - docs/models/operations/createnetworkresponse.md
   - docs/models/operations/createpluginrequest.md
   - docs/models/operations/createpluginresponse.md
   - docs/models/operations/createpluginschemasrequest.md
@@ -839,6 +1042,8 @@ generatedFiles:
   - docs/models/operations/createtargetwithupstreamrequest.md
   - docs/models/operations/createtargetwithupstreamresponse.md
   - docs/models/operations/createteamresponse.md
+  - docs/models/operations/createtransitgatewayrequest.md
+  - docs/models/operations/createtransitgatewayresponse.md
   - docs/models/operations/createupstreamrequest.md
   - docs/models/operations/createupstreamresponse.md
   - docs/models/operations/createvaultrequest.md
@@ -861,6 +1066,8 @@ generatedFiles:
   - docs/models/operations/deleteconsumerresponse.md
   - docs/models/operations/deletecontrolplanerequest.md
   - docs/models/operations/deletecontrolplaneresponse.md
+  - docs/models/operations/deletecustomdomainrequest.md
+  - docs/models/operations/deletecustomdomainresponse.md
   - docs/models/operations/deletedataplanecertificaterequest.md
   - docs/models/operations/deletedataplanecertificateresponse.md
   - docs/models/operations/deletehmacauthwithconsumerrequest.md
@@ -879,6 +1086,8 @@ generatedFiles:
   - docs/models/operations/deletekeywithkeysetresponse.md
   - docs/models/operations/deletemtlsauthwithconsumerrequest.md
   - docs/models/operations/deletemtlsauthwithconsumerresponse.md
+  - docs/models/operations/deletenetworkrequest.md
+  - docs/models/operations/deletenetworkresponse.md
   - docs/models/operations/deletenodesnodeidrequest.md
   - docs/models/operations/deletenodesnodeidresponse.md
   - docs/models/operations/deletepluginrequest.md
@@ -915,6 +1124,8 @@ generatedFiles:
   - docs/models/operations/deleteteamresponse.md
   - docs/models/operations/deleteteamsteamidsystemaccountsaccountidrequest.md
   - docs/models/operations/deleteteamsteamidsystemaccountsaccountidresponse.md
+  - docs/models/operations/deletetransitgatewayrequest.md
+  - docs/models/operations/deletetransitgatewayresponse.md
   - docs/models/operations/deleteupstreamrequest.md
   - docs/models/operations/deleteupstreamresponse.md
   - docs/models/operations/deleteuserrequest.md
@@ -931,6 +1142,7 @@ generatedFiles:
   - docs/models/operations/getaclwithconsumerrequest.md
   - docs/models/operations/getaclwithconsumerresponse.md
   - docs/models/operations/getauthenticationsettingsresponse.md
+  - docs/models/operations/getavailabilityjsonresponse.md
   - docs/models/operations/getbasicauthrequest.md
   - docs/models/operations/getbasicauthresponse.md
   - docs/models/operations/getbasicauthwithconsumerrequest.md
@@ -943,6 +1155,8 @@ generatedFiles:
   - docs/models/operations/getconfigstoreresponse.md
   - docs/models/operations/getconfigstoresecretrequest.md
   - docs/models/operations/getconfigstoresecretresponse.md
+  - docs/models/operations/getconfigurationrequest.md
+  - docs/models/operations/getconfigurationresponse.md
   - docs/models/operations/getconsumergrouprequest.md
   - docs/models/operations/getconsumergroupresponse.md
   - docs/models/operations/getconsumerrequest.md
@@ -955,6 +1169,10 @@ generatedFiles:
   - docs/models/operations/getcontrolplanesidgroupmemberstatusresponse.md
   - docs/models/operations/getcontrolplanesidgroupstatusrequest.md
   - docs/models/operations/getcontrolplanesidgroupstatusresponse.md
+  - docs/models/operations/getcustomdomainonlinestatusrequest.md
+  - docs/models/operations/getcustomdomainonlinestatusresponse.md
+  - docs/models/operations/getcustomdomainrequest.md
+  - docs/models/operations/getcustomdomainresponse.md
   - docs/models/operations/getdataplanecertificaterequest.md
   - docs/models/operations/getdataplanecertificateresponse.md
   - docs/models/operations/getexpectedconfighashrequest.md
@@ -989,6 +1207,8 @@ generatedFiles:
   - docs/models/operations/getmtlsauthresponse.md
   - docs/models/operations/getmtlsauthwithconsumerrequest.md
   - docs/models/operations/getmtlsauthwithconsumerresponse.md
+  - docs/models/operations/getnetworkrequest.md
+  - docs/models/operations/getnetworkresponse.md
   - docs/models/operations/getnodeseolrequest.md
   - docs/models/operations/getnodeseolresponse.md
   - docs/models/operations/getnodesnodeidrequest.md
@@ -1007,6 +1227,12 @@ generatedFiles:
   - docs/models/operations/getpluginwithservicerequest.md
   - docs/models/operations/getpluginwithserviceresponse.md
   - docs/models/operations/getpredefinedrolesresponse.md
+  - docs/models/operations/getprovideraccountrequest.md
+  - docs/models/operations/getprovideraccountresponse.md
+  - docs/models/operations/getresourceconfigurationrequest.md
+  - docs/models/operations/getresourceconfigurationresponse.md
+  - docs/models/operations/getresourcequotarequest.md
+  - docs/models/operations/getresourcequotaresponse.md
   - docs/models/operations/getrouterequest.md
   - docs/models/operations/getrouteresponse.md
   - docs/models/operations/getroutewithservicerequest.md
@@ -1041,6 +1267,8 @@ generatedFiles:
   - docs/models/operations/getteamsteamidsystemaccountsqueryparamfilter.md
   - docs/models/operations/getteamsteamidsystemaccountsrequest.md
   - docs/models/operations/getteamsteamidsystemaccountsresponse.md
+  - docs/models/operations/gettransitgatewayrequest.md
+  - docs/models/operations/gettransitgatewayresponse.md
   - docs/models/operations/getupstreamrequest.md
   - docs/models/operations/getupstreamresponse.md
   - docs/models/operations/getuserrequest.md
@@ -1071,6 +1299,8 @@ generatedFiles:
   - docs/models/operations/listconfigstoresecretsresponse.md
   - docs/models/operations/listconfigstoresrequest.md
   - docs/models/operations/listconfigstoresresponse.md
+  - docs/models/operations/listconfigurationsrequest.md
+  - docs/models/operations/listconfigurationsresponse.md
   - docs/models/operations/listconsumergrouprequest.md
   - docs/models/operations/listconsumergroupresponse.md
   - docs/models/operations/listconsumergroupresponsebody.md
@@ -1085,8 +1315,14 @@ generatedFiles:
   - docs/models/operations/listconsumersforconsumergroupresponsebody.md
   - docs/models/operations/listcontrolplanesrequest.md
   - docs/models/operations/listcontrolplanesresponse.md
+  - docs/models/operations/listcustomdomainsrequest.md
+  - docs/models/operations/listcustomdomainsresponse.md
   - docs/models/operations/listdataplanenodesrequest.md
   - docs/models/operations/listdataplanenodesresponse.md
+  - docs/models/operations/listdefaultresourceconfigurationsrequest.md
+  - docs/models/operations/listdefaultresourceconfigurationsresponse.md
+  - docs/models/operations/listdefaultresourcequotasrequest.md
+  - docs/models/operations/listdefaultresourcequotasresponse.md
   - docs/models/operations/listdpclientcertificatesrequest.md
   - docs/models/operations/listdpclientcertificatesresponse.md
   - docs/models/operations/listhmacauthrequest.md
@@ -1122,6 +1358,10 @@ generatedFiles:
   - docs/models/operations/listmtlsauthwithconsumerrequest.md
   - docs/models/operations/listmtlsauthwithconsumerresponse.md
   - docs/models/operations/listmtlsauthwithconsumerresponsebody.md
+  - docs/models/operations/listnetworkconfigurationsrequest.md
+  - docs/models/operations/listnetworkconfigurationsresponse.md
+  - docs/models/operations/listnetworksrequest.md
+  - docs/models/operations/listnetworksresponse.md
   - docs/models/operations/listpluginrequest.md
   - docs/models/operations/listpluginresponse.md
   - docs/models/operations/listpluginresponsebody.md
@@ -1139,6 +1379,12 @@ generatedFiles:
   - docs/models/operations/listpluginwithservicerequest.md
   - docs/models/operations/listpluginwithserviceresponse.md
   - docs/models/operations/listpluginwithserviceresponsebody.md
+  - docs/models/operations/listprovideraccountsrequest.md
+  - docs/models/operations/listprovideraccountsresponse.md
+  - docs/models/operations/listresourceconfigurationsrequest.md
+  - docs/models/operations/listresourceconfigurationsresponse.md
+  - docs/models/operations/listresourcequotasrequest.md
+  - docs/models/operations/listresourcequotasresponse.md
   - docs/models/operations/listrouterequest.md
   - docs/models/operations/listrouteresponse.md
   - docs/models/operations/listrouteresponsebody.md
@@ -1166,6 +1412,8 @@ generatedFiles:
   - docs/models/operations/listteamusersqueryparamfilter.md
   - docs/models/operations/listteamusersrequest.md
   - docs/models/operations/listteamusersresponse.md
+  - docs/models/operations/listtransitgatewaysrequest.md
+  - docs/models/operations/listtransitgatewaysresponse.md
   - docs/models/operations/listupstreamrequest.md
   - docs/models/operations/listupstreamresponse.md
   - docs/models/operations/listupstreamresponsebody.md
@@ -1227,6 +1475,8 @@ generatedFiles:
   - docs/models/operations/updateidpconfigurationresponse.md
   - docs/models/operations/updateidpteammappingsresponse.md
   - docs/models/operations/updateimpersonationsettingsresponse.md
+  - docs/models/operations/updatenetworkrequest.md
+  - docs/models/operations/updatenetworkresponse.md
   - docs/models/operations/updatepluginschemasrequest.md
   - docs/models/operations/updatepluginschemasresponse.md
   - docs/models/operations/updateteamrequest.md
@@ -1309,6 +1559,7 @@ generatedFiles:
   - docs/sdks/basicauthcredentials/README.md
   - docs/sdks/cacertificates/README.md
   - docs/sdks/certificates/README.md
+  - docs/sdks/cloudgateways/README.md
   - docs/sdks/configstores/README.md
   - docs/sdks/configstoresecrets/README.md
   - docs/sdks/consumergroups/README.md
@@ -1326,6 +1577,7 @@ generatedFiles:
   - docs/sdks/keysets/README.md
   - docs/sdks/me/README.md
   - docs/sdks/mtlsauthcredentials/README.md
+  - docs/sdks/networks/README.md
   - docs/sdks/plugins/README.md
   - docs/sdks/roles/README.md
   - docs/sdks/routes/README.md
@@ -1367,6 +1619,7 @@ generatedFiles:
   - models/operations/options.go
   - models/sdkerrors/sdkerror.go
   - mtlsauthcredentials.go
+  - networks.go
   - plugins.go
   - retry/config.go
   - roles.go
@@ -4314,5 +4567,415 @@ examples:
           application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
         "404":
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  get-availability-json:
+    speakeasy-default-get-availability-json:
+      responses:
+        "200":
+          application/json: {"versions": ["3.2"], "instance_types": [{"name": "large", "hourly_cost": "1.00", "v_cpu": "2", "gb_memory": "2"}, {"name": "medium", "hourly_cost": "1.00", "v_cpu": "2", "gb_memory": "2"}], "providers": [{"provider": "aws", "regions": [{"region": "us-east-2", "name": "N. Virginia", "availability_zones": ["use2-az1", "use2-az2", "use2-az3"], "cidr_blocks": ["10.0.0.0/8", "100.64.0.0/10", "172.16.0.0/12", "192.168.0.0/16", "198.18.0.0/15"], "reserved_cidr_blocks": ["10.100.0.0/16", "172.17.0.0/16"]}, {"region": "us-east-2", "name": "N. Virginia", "availability_zones": ["use2-az1", "use2-az2", "use2-az3"], "cidr_blocks": ["10.0.0.0/8", "100.64.0.0/10", "172.16.0.0/12", "192.168.0.0/16", "198.18.0.0/15"], "reserved_cidr_blocks": ["10.100.0.0/16", "172.17.0.0/16"]}]}]}
+  list-configurations:
+    speakeasy-default-list-configurations:
+      parameters:
+        query:
+          page[size]: 10
+          page[number]: 1
+      responses:
+        "200":
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "version": "3.2", "api_access": "private+public", "dataplane_group_config": [{"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}]}, {"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}]}, {"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}], "dataplane_groups": [{"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "initializing", "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminating", "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminated", "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}], "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "me"}]}
+        "400":
+          application/problem+json: {"status": 623394, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "max_items", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}, {"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value>", "<value>", "<value>"], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+  create-configuration:
+    speakeasy-default-create-configuration:
+      requestBody:
+        application/json: {"control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "eu", "version": "3.2", "dataplane_groups": [{"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "static", "instance_type": "medium", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}], "api_access": "private+public"}
+      responses:
+        "200":
+          application/json: {"id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "version": "3.2", "api_access": "private+public", "dataplane_group_config": [{"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}, {"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}]}, {"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "static", "instance_type": "large", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}]}], "dataplane_groups": [{"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminated", "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "static", "instance_type": "small", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "created", "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminating", "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}], "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "eu"}
+        "400":
+          application/problem+json: {"status": 409156, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "409":
+          application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
+  get-configuration:
+    speakeasy-default-get-configuration:
+      parameters:
+        path:
+          configurationId: "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471"
+      responses:
+        "200":
+          application/json: {"id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "version": "3.2", "api_access": "private+public", "dataplane_group_config": [{"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}, {"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}]}, {"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}]}], "dataplane_groups": [], "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "in"}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  list-custom-domains:
+    speakeasy-default-list-custom-domains:
+      parameters:
+        query:
+          page[size]: 10
+          page[number]: 1
+      responses:
+        "200":
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "39ed3790-085d-4605-9627-f96d86aaf425", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "eu", "domain": "example.com", "certificate_id": "3b7cbeee-fbec-440e-a5ef-89e7dec3b9d0", "sni_id": "a8f11ea8-af09-4422-9735-5d4f8910aba1", "state": "terminating", "state_metadata": {"reported_status": "INVALID", "reason": "CNAME points to '_acme-challenge.<prefix>.gateways.konghq.tech.' instead of '_acme-challenge.<prefix>.acme.gateways.konghq.tech.'\n"}, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "39ed3790-085d-4605-9627-f96d86aaf425", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "us", "domain": "example.com", "certificate_id": "3b7cbeee-fbec-440e-a5ef-89e7dec3b9d0", "sni_id": "a8f11ea8-af09-4422-9735-5d4f8910aba1", "state": "error", "state_metadata": {"reported_status": "INVALID", "reason": "CNAME points to '_acme-challenge.<prefix>.gateways.konghq.tech.' instead of '_acme-challenge.<prefix>.acme.gateways.konghq.tech.'\n"}, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "39ed3790-085d-4605-9627-f96d86aaf425", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "me", "domain": "example.com", "certificate_id": "3b7cbeee-fbec-440e-a5ef-89e7dec3b9d0", "sni_id": "a8f11ea8-af09-4422-9735-5d4f8910aba1", "state": "ready", "state_metadata": {"reported_status": "INVALID", "reason": "CNAME points to '_acme-challenge.<prefix>.gateways.konghq.tech.' instead of '_acme-challenge.<prefix>.acme.gateways.konghq.tech.'\n"}, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+        "400":
+          application/problem+json: {"status": 936940, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "max_items", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  create-custom-domains:
+    speakeasy-default-create-custom-domains:
+      requestBody:
+        application/json: {"control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "au", "domain": "example.com"}
+      responses:
+        "201":
+          application/json: {"id": "39ed3790-085d-4605-9627-f96d86aaf425", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "us", "domain": "example.com", "certificate_id": "3b7cbeee-fbec-440e-a5ef-89e7dec3b9d0", "sni_id": "a8f11ea8-af09-4422-9735-5d4f8910aba1", "state": "ready", "state_metadata": {"reported_status": "INVALID", "reason": "CNAME points to '_acme-challenge.<prefix>.gateways.konghq.tech.' instead of '_acme-challenge.<prefix>.acme.gateways.konghq.tech.'\n"}, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 900818, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "min_uppercase", "minimum": 8, "source": "body", "reason": "must have at least 8 characters"}, {"field": "name", "rule": "max_items", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "409":
+          application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
+  get-custom-domain:
+    speakeasy-default-get-custom-domain:
+      parameters:
+        path:
+          customDomainId: "39ed3790-085d-4605-9627-f96d86aaf425"
+      responses:
+        "200":
+          application/json: {"id": "39ed3790-085d-4605-9627-f96d86aaf425", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "in", "domain": "example.com", "certificate_id": "3b7cbeee-fbec-440e-a5ef-89e7dec3b9d0", "sni_id": "a8f11ea8-af09-4422-9735-5d4f8910aba1", "state": "terminating", "state_metadata": {"reported_status": "INVALID", "reason": "CNAME points to '_acme-challenge.<prefix>.gateways.konghq.tech.' instead of '_acme-challenge.<prefix>.acme.gateways.konghq.tech.'\n"}, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  delete-custom-domain:
+    speakeasy-default-delete-custom-domain:
+      parameters:
+        path:
+          customDomainId: "39ed3790-085d-4605-9627-f96d86aaf425"
+      responses:
+        "400":
+          application/problem+json: {"status": 268566, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  get-custom-domain-online-status:
+    speakeasy-default-get-custom-domain-online-status:
+      parameters:
+        path:
+          customDomainId: "39ed3790-085d-4605-9627-f96d86aaf425"
+      responses:
+        "200":
+          application/json: {"cname": "verified", "ssl": "unverified"}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  list-default-resource-configurations:
+    speakeasy-default-list-default-resource-configurations:
+      parameters:
+        query:
+          page[size]: 10
+          page[number]: 1
+      responses:
+        "200":
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "cc504063-f3bb-4e09-8e32-bbcdbc5cd618", "qualifier": "data-plane-group-idle-timeout-minutes", "name": "Data Plane Group Idle Timeout Minutes", "description": "The number of minutes that a data plane group can be idle before it is automatically scaled down to zero instances.", "value": 45, "overrides": [], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cc504063-f3bb-4e09-8e32-bbcdbc5cd618", "qualifier": "data-plane-group-idle-timeout-minutes", "name": "Data Plane Group Idle Timeout Minutes", "description": "The number of minutes that a data plane group can be idle before it is automatically scaled down to zero instances.", "value": 45, "overrides": [{"id": "9678f205-49a1-47bb-82d9-d01cafa42a0d", "qualifier": "data-plane-group-idle-timeout-minutes", "value": 45}, {"id": "9678f205-49a1-47bb-82d9-d01cafa42a0d", "qualifier": "data-plane-group-idle-timeout-minutes", "value": 45}, {"id": "9678f205-49a1-47bb-82d9-d01cafa42a0d", "qualifier": "data-plane-group-idle-timeout-minutes", "value": 45}], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+        "400":
+          application/problem+json: {"status": 990913, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "source": "body", "reason": "is a required field"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+  list-default-resource-quotas:
+    speakeasy-default-list-default-resource-quotas:
+      parameters:
+        query:
+          page[size]: 10
+          page[number]: 1
+      responses:
+        "200":
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": []}
+        "400":
+          application/problem+json: {"status": 763409, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "source": "body", "reason": "is a required field"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+  list-networks:
+    speakeasy-default-list-networks:
+      parameters:
+        query:
+          page[size]: 10
+          page[number]: 1
+      responses:
+        "200":
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "name": "us-east-2 network", "default": false, "cloud_gateway_provider_account_id": "929b2449-c69f-44c4-b6ad-9ecec6f811ae", "region": "us-east-2", "availability_zones": ["use2-az1", "use2-az2", "use2-az3"], "cidr_block": "10.0.0.0/8", "state": "terminated", "provider_metadata": {}, "transit_gateway_count": 0, "configuration_reference_count": 0, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "name": "us-east-2 network", "default": false, "cloud_gateway_provider_account_id": "929b2449-c69f-44c4-b6ad-9ecec6f811ae", "region": "us-east-2", "availability_zones": ["use2-az1", "use2-az2", "use2-az3"], "cidr_block": "10.0.0.0/8", "state": "created", "provider_metadata": {}, "transit_gateway_count": 0, "configuration_reference_count": 0, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+        "400":
+          application/problem+json: {"status": 484174, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value>", "<value>", "<value>"], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+  create-network:
+    speakeasy-default-create-network:
+      requestBody:
+        application/json: {"name": "us-east-2 network", "cloud_gateway_provider_account_id": "929b2449-c69f-44c4-b6ad-9ecec6f811ae", "region": "us-east-2", "availability_zones": ["use2-az1", "use2-az2", "use2-az3"], "cidr_block": "10.0.0.0/8", "state": "initializing"}
+      responses:
+        "201":
+          application/json: {"id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "name": "us-east-2 network", "default": false, "cloud_gateway_provider_account_id": "929b2449-c69f-44c4-b6ad-9ecec6f811ae", "region": "us-east-2", "availability_zones": ["use2-az1", "use2-az2", "use2-az3"], "cidr_block": "10.0.0.0/8", "state": "ready", "provider_metadata": {}, "transit_gateway_count": 0, "configuration_reference_count": 0, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 651863, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value>"], "source": "body"}, {"field": "name", "source": "body", "reason": "is a required field"}, {"field": "name", "source": "body", "reason": "is a required field"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "409":
+          application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
+  get-network:
+    speakeasy-default-get-network:
+      parameters:
+        path:
+          networkId: "36ae63d3-efd1-4bec-b246-62aa5d3f5695"
+      responses:
+        "200":
+          application/json: {"id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "name": "us-east-2 network", "default": false, "cloud_gateway_provider_account_id": "929b2449-c69f-44c4-b6ad-9ecec6f811ae", "region": "us-east-2", "availability_zones": ["use2-az1", "use2-az2", "use2-az3"], "cidr_block": "10.0.0.0/8", "state": "created", "provider_metadata": {}, "transit_gateway_count": 0, "configuration_reference_count": 0, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  delete-network:
+    speakeasy-default-delete-network:
+      parameters:
+        path:
+          networkId: "36ae63d3-efd1-4bec-b246-62aa5d3f5695"
+      responses:
+        "400":
+          application/problem+json: {"status": 310855, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  list-network-configurations:
+    speakeasy-default-list-network-configurations:
+      parameters:
+        path:
+          networkId: "36ae63d3-efd1-4bec-b246-62aa5d3f5695"
+        query:
+          page[size]: 10
+          page[number]: 1
+      responses:
+        "200":
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "version": "3.2", "api_access": "private+public", "dataplane_group_config": [{"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}]}, {"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}]}, {"provider": "aws", "region": "us-east-2", "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "autoscale": {"kind": "autopilot", "base_rps": 1, "max_rps": 1000}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}]}], "dataplane_groups": [{"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "static", "instance_type": "large", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "terminating", "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "static", "instance_type": "large", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "initializing", "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}], "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "me"}, {"id": "edaf40f9-9fb0-4ffe-bb74-4e763a6bd471", "version": "3.2", "api_access": "private+public", "dataplane_group_config": [], "dataplane_groups": [{"id": "cbb8872a-1f83-4806-bf69-fdf0b4783c7e", "provider": "aws", "region": "us-east-2", "autoscale": {"kind": "static", "instance_type": "large", "requested_instances": 3}, "environment": [{"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}, {"name": "KONG_LOG_LEVEL", "value": "INFO"}], "cloud_gateway_network_id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "state": "created", "private_ip_addresses": ["192.168.248.132", "192.168.66.81", "192.168.137.135"], "egress_ip_addresses": ["71.78.149.75", "91.149.112.244", "51.235.15.121"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}], "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "control_plane_id": "0949471e-b759-45ba-87ab-ee63fb781388", "control_plane_geo": "us"}]}
+        "400":
+          application/problem+json: {"status": 895617, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value>", "<value>", "<value>"], "source": "body"}, {"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value>"], "source": "body"}, {"field": "name", "rule": "max_length", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  list-transit-gateways:
+    speakeasy-default-list-transit-gateways:
+      parameters:
+        path:
+          networkId: "36ae63d3-efd1-4bec-b246-62aa5d3f5695"
+        query:
+          page[size]: 10
+          page[number]: 1
+      responses:
+        "200":
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"name": "us-east-2 transit gateway", "dns_config": [], "transit_gateway_attachment_config": {"kind": "azure-vnet-peering-attachment", "tenant_id": "<id>", "subscription_id": "<id>", "resource_group_name": "<value>", "vnet_name": "<value>"}, "id": "0850820b-d153-4a2a-b9be-7d2204779139", "state": "terminated", "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"name": "us-east-2 transit gateway", "dns_config": [], "transit_gateway_attachment_config": {"kind": "azure-vnet-peering-attachment", "tenant_id": "<id>", "subscription_id": "<id>", "resource_group_name": "<value>", "vnet_name": "<value>"}, "id": "0850820b-d153-4a2a-b9be-7d2204779139", "state": "ready", "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"name": "us-east-2 transit gateway", "dns_config": [{"remote_dns_server_ip_addresses": ["10.0.0.2"], "domain_proxy_list": ["foobar.com"]}, {"remote_dns_server_ip_addresses": ["10.0.0.2"], "domain_proxy_list": ["foobar.com"]}], "cidr_blocks": ["10.0.0.0/8", "100.64.0.0/10", "172.16.0.0/12"], "transit_gateway_attachment_config": {"kind": "aws-transit-gateway-attachment", "transit_gateway_id": "<id>", "ram_share_arn": "<value>"}, "id": "0850820b-d153-4a2a-b9be-7d2204779139", "state": "initializing", "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+        "400":
+          application/problem+json: {"status": 239574, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  create-transit-gateway:
+    speakeasy-default-create-transit-gateway:
+      parameters:
+        path:
+          networkId: "36ae63d3-efd1-4bec-b246-62aa5d3f5695"
+      requestBody:
+        application/json: {"name": "us-east-2 transit gateway", "dns_config": [{"remote_dns_server_ip_addresses": ["10.0.0.2"], "domain_proxy_list": ["foobar.com"]}, {"remote_dns_server_ip_addresses": ["10.0.0.2"], "domain_proxy_list": ["foobar.com"]}], "cidr_blocks": ["10.0.0.0/8", "100.64.0.0/10", "172.16.0.0/12"], "transit_gateway_attachment_config": {"kind": "aws-transit-gateway-attachment", "transit_gateway_id": "<id>", "ram_share_arn": "<value>"}}
+      responses:
+        "201":
+          application/json: {"name": "us-east-2 transit gateway", "dns_config": [{"remote_dns_server_ip_addresses": ["10.0.0.2"], "domain_proxy_list": ["foobar.com"]}], "cidr_blocks": ["10.0.0.0/8", "100.64.0.0/10", "172.16.0.0/12"], "transit_gateway_attachment_config": {"kind": "aws-transit-gateway-attachment", "transit_gateway_id": "<id>", "ram_share_arn": "<value>"}, "id": "0850820b-d153-4a2a-b9be-7d2204779139", "state": "ready", "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 430402, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value>"], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "409":
+          application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
+  get-transit-gateway:
+    speakeasy-default-get-transit-gateway:
+      parameters:
+        path:
+          networkId: "36ae63d3-efd1-4bec-b246-62aa5d3f5695"
+          transitGatewayId: "0850820b-d153-4a2a-b9be-7d2204779139"
+      responses:
+        "200":
+          application/json: {"name": "us-east-2 transit gateway", "dns_config": [], "transit_gateway_attachment_config": {"kind": "azure-vnet-peering-attachment", "tenant_id": "<id>", "subscription_id": "<id>", "resource_group_name": "<value>", "vnet_name": "<value>"}, "id": "0850820b-d153-4a2a-b9be-7d2204779139", "state": "ready", "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  delete-transit-gateway:
+    speakeasy-default-delete-transit-gateway:
+      parameters:
+        path:
+          networkId: "36ae63d3-efd1-4bec-b246-62aa5d3f5695"
+          transitGatewayId: "0850820b-d153-4a2a-b9be-7d2204779139"
+      responses:
+        "400":
+          application/problem+json: {"status": 830929, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value>", "<value>", "<value>"], "source": "body"}, {"field": "name", "source": "body", "reason": "is a required field"}, {"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value>"], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  list-provider-accounts:
+    speakeasy-default-list-provider-accounts:
+      parameters:
+        query:
+          page[size]: 10
+          page[number]: 1
+      responses:
+        "200":
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "929b2449-c69f-44c4-b6ad-9ecec6f811ae", "provider": "aws", "provider_account_id": "<id>", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+        "400":
+          application/problem+json: {"status": 627108, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "max_items", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+  get-provider-account:
+    speakeasy-default-get-provider-account:
+      parameters:
+        path:
+          providerAccountId: "929b2449-c69f-44c4-b6ad-9ecec6f811ae"
+      responses:
+        "200":
+          application/json: {"id": "929b2449-c69f-44c4-b6ad-9ecec6f811ae", "provider": "aws", "provider_account_id": "<id>", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  list-resource-configurations:
+    speakeasy-default-list-resource-configurations:
+      parameters:
+        query:
+          page[size]: 10
+          page[number]: 1
+      responses:
+        "200":
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": []}
+        "400":
+          application/problem+json: {"status": 15647, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "min_lowercase", "minimum": 8, "source": "body", "reason": "must have at least 8 characters"}, {"field": "name", "rule": "max_items", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+  get-resource-configuration:
+    speakeasy-default-get-resource-configuration:
+      parameters:
+        path:
+          resourceConfigurationId: "9678f205-49a1-47bb-82d9-d01cafa42a0d"
+      responses:
+        "200":
+          application/json: {"id": "9678f205-49a1-47bb-82d9-d01cafa42a0d", "qualifier": "data-plane-group-idle-timeout-minutes", "value": 45}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  list-resource-quotas:
+    speakeasy-default-list-resource-quotas:
+      parameters:
+        query:
+          page[size]: 10
+          page[number]: 1
+      responses:
+        "200":
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "9678f205-49a1-47bb-82d9-d01cafa42a0d", "resource": "count/serverless-data-planes-estimate", "name": "Active Networks", "description": "Across the organization, the aggregate number of active networks cannot exceed this value.", "value": 2, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "9678f205-49a1-47bb-82d9-d01cafa42a0d", "resource": "count/provider-accounts.per-provider", "name": "Active Networks", "description": "Across the organization, the aggregate number of active networks cannot exceed this value.", "value": 2, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "9678f205-49a1-47bb-82d9-d01cafa42a0d", "resource": "count/serverless-data-planes-estimate", "name": "Active Networks", "description": "Across the organization, the aggregate number of active networks cannot exceed this value.", "value": 2, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+        "400":
+          application/problem+json: {"status": 66124, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "source": "body", "reason": "is a required field"}, {"field": "name", "rule": "min_length", "minimum": 8, "source": "body", "reason": "must have at least 8 characters"}, {"field": "name", "rule": "max_length", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+  get-resource-quota:
+    speakeasy-default-get-resource-quota:
+      parameters:
+        path:
+          resourceQuotaId: "9678f205-49a1-47bb-82d9-d01cafa42a0d"
+      responses:
+        "200":
+          application/json: {"id": "9678f205-49a1-47bb-82d9-d01cafa42a0d", "resource": "count/networks.not-offline", "name": "Active Networks", "description": "Across the organization, the aggregate number of active networks cannot exceed this value.", "value": 2, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  update-network:
+    speakeasy-default-update-network:
+      parameters:
+        path:
+          networkId: "36ae63d3-efd1-4bec-b246-62aa5d3f5695"
+      requestBody:
+        application/json: {"name": "us-east-2 network"}
+      responses:
+        "200":
+          application/json: {"id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "name": "us-east-2 network", "default": false, "cloud_gateway_provider_account_id": "929b2449-c69f-44c4-b6ad-9ecec6f811ae", "region": "us-east-2", "availability_zones": ["use2-az1", "use2-az2", "use2-az3"], "cidr_block": "10.0.0.0/8", "state": "offline", "provider_metadata": {}, "transit_gateway_count": 0, "configuration_reference_count": 0, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 168453, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "409":
+          application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
 examplesVersion: 1.0.0
 generatedTests: {}

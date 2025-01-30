@@ -4,7 +4,8 @@ package components
 
 // StringFieldNEQFilter - Filters on the given string field value by exact match inequality.
 type StringFieldNEQFilter struct {
-	Neq string `queryParam:"name=neq"`
+	Neq string  `queryParam:"name=neq"`
+	Oeq *string `queryParam:"name=oeq"`
 }
 
 func (o *StringFieldNEQFilter) GetNeq() string {
@@ -12,4 +13,11 @@ func (o *StringFieldNEQFilter) GetNeq() string {
 		return ""
 	}
 	return o.Neq
+}
+
+func (o *StringFieldNEQFilter) GetOeq() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Oeq
 }

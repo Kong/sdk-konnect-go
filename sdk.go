@@ -74,6 +74,8 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 //
 // https://docs.konghq.com - Documentation for Kong Gateway and its APIs
 type SDK struct {
+	CloudGateways *CloudGateways
+	Networks      *Networks
 	ControlPlanes *ControlPlanes
 	// Config Stores
 	ConfigStores *ConfigStores
@@ -268,9 +270,9 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "0.1.29",
+			SDKVersion:        "0.2.0",
 			GenVersion:        "2.493.34",
-			UserAgent:         "speakeasy-sdk/go 0.1.29 2.493.34 0.0.1 github.com/Kong/sdk-konnect-go",
+			UserAgent:         "speakeasy-sdk/go 0.2.0 2.493.34 0.0.1 github.com/Kong/sdk-konnect-go",
 			Hooks:             hooks.New(),
 		},
 	}
@@ -289,6 +291,10 @@ func New(opts ...SDKOption) *SDK {
 	if serverURL != currentServerURL {
 		sdk.sdkConfiguration.ServerURL = serverURL
 	}
+
+	sdk.CloudGateways = newCloudGateways(sdk.sdkConfiguration)
+
+	sdk.Networks = newNetworks(sdk.sdkConfiguration)
 
 	sdk.ControlPlanes = newControlPlanes(sdk.sdkConfiguration)
 

@@ -12,15 +12,14 @@ Handling errors in this SDK should largely match your expectations. All operatio
 
 By Default, an API error will return `sdkerrors.SDKError`. When custom error responses are specified for an operation, the SDK may also return their associated error. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation.
 
-For example, the `ListControlPlanes` function may return the following errors:
+For example, the `ListConfigurations` function may return the following errors:
 
-| Error Type                   | Status Code | Content Type             |
-| ---------------------------- | ----------- | ------------------------ |
-| sdkerrors.BadRequestError    | 400         | application/problem+json |
-| sdkerrors.UnauthorizedError  | 401         | application/problem+json |
-| sdkerrors.ForbiddenError     | 403         | application/problem+json |
-| sdkerrors.ServiceUnavailable | 503         | application/problem+json |
-| sdkerrors.SDKError           | 4XX, 5XX    | \*/\*                    |
+| Error Type                  | Status Code | Content Type             |
+| --------------------------- | ----------- | ------------------------ |
+| sdkerrors.BadRequestError   | 400         | application/problem+json |
+| sdkerrors.UnauthorizedError | 401         | application/problem+json |
+| sdkerrors.ForbiddenError    | 403         | application/problem+json |
+| sdkerrors.SDKError          | 4XX, 5XX    | \*/\*                    |
 
 ### Example
 
@@ -46,14 +45,9 @@ func main() {
 		}),
 	)
 
-	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
+	res, err := s.CloudGateways.ListConfigurations(ctx, operations.ListConfigurationsRequest{
 		PageSize:   sdkkonnectgo.Int64(10),
 		PageNumber: sdkkonnectgo.Int64(1),
-		Filter: &components.ControlPlaneFilterParameters{
-			CloudGateway: sdkkonnectgo.Bool(true),
-		},
-		Labels: sdkkonnectgo.String("key:value,existCheck"),
-		Sort:   sdkkonnectgo.String("name,created_at desc"),
 	})
 	if err != nil {
 
@@ -70,12 +64,6 @@ func main() {
 		}
 
 		var e *sdkerrors.ForbiddenError
-		if errors.As(err, &e) {
-			// handle error
-			log.Fatal(e.Error())
-		}
-
-		var e *sdkerrors.ServiceUnavailable
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
@@ -114,8 +102,6 @@ package main
 import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -124,24 +110,13 @@ func main() {
 
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithServerIndex(3),
-		sdkkonnectgo.WithSecurity(components.Security{
-			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
-		}),
 	)
 
-	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
-		PageSize:   sdkkonnectgo.Int64(10),
-		PageNumber: sdkkonnectgo.Int64(1),
-		Filter: &components.ControlPlaneFilterParameters{
-			CloudGateway: sdkkonnectgo.Bool(true),
-		},
-		Labels: sdkkonnectgo.String("key:value,existCheck"),
-		Sort:   sdkkonnectgo.String("name,created_at desc"),
-	})
+	res, err := s.CloudGateways.GetAvailabilityJSON(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListControlPlanesResponse != nil {
+	if res.AvailabilityDocument != nil {
 		// handle response
 	}
 }
@@ -157,8 +132,6 @@ package main
 import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -167,24 +140,13 @@ func main() {
 
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithServerURL("https://global.api.konghq.com"),
-		sdkkonnectgo.WithSecurity(components.Security{
-			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
-		}),
 	)
 
-	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
-		PageSize:   sdkkonnectgo.Int64(10),
-		PageNumber: sdkkonnectgo.Int64(1),
-		Filter: &components.ControlPlaneFilterParameters{
-			CloudGateway: sdkkonnectgo.Bool(true),
-		},
-		Labels: sdkkonnectgo.String("key:value,existCheck"),
-		Sort:   sdkkonnectgo.String("name,created_at desc"),
-	})
+	res, err := s.CloudGateways.GetAvailabilityJSON(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListControlPlanesResponse != nil {
+	if res.AvailabilityDocument != nil {
 		// handle response
 	}
 }
@@ -200,7 +162,6 @@ package main
 import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -208,17 +169,13 @@ import (
 func main() {
 	ctx := context.Background()
 
-	s := sdkkonnectgo.New(
-		sdkkonnectgo.WithSecurity(components.Security{
-			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
-		}),
-	)
+	s := sdkkonnectgo.New()
 
-	res, err := s.Authentication.AuthenticateSso(ctx, "<value>", nil, operations.WithServerURL("https://global.api.konghq.com/"))
+	res, err := s.CloudGateways.GetAvailabilityJSON(ctx, operations.WithServerURL("https://global.api.konghq.com/"))
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res != nil {
+	if res.AvailabilityDocument != nil {
 		// handle response
 	}
 }
@@ -276,7 +233,6 @@ import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -289,19 +245,11 @@ func main() {
 		}),
 	)
 
-	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
-		PageSize:   sdkkonnectgo.Int64(10),
-		PageNumber: sdkkonnectgo.Int64(1),
-		Filter: &components.ControlPlaneFilterParameters{
-			CloudGateway: sdkkonnectgo.Bool(true),
-		},
-		Labels: sdkkonnectgo.String("key:value,existCheck"),
-		Sort:   sdkkonnectgo.String("name,created_at desc"),
-	})
+	res, err := s.CloudGateways.GetAvailabilityJSON(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListControlPlanesResponse != nil {
+	if res.AvailabilityDocument != nil {
 		// handle response
 	}
 }
@@ -341,8 +289,6 @@ package main
 import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	"github.com/Kong/sdk-konnect-go/models/operations"
 	"github.com/Kong/sdk-konnect-go/retry"
 	"log"
 	"models/operations"
@@ -351,21 +297,9 @@ import (
 func main() {
 	ctx := context.Background()
 
-	s := sdkkonnectgo.New(
-		sdkkonnectgo.WithSecurity(components.Security{
-			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
-		}),
-	)
+	s := sdkkonnectgo.New()
 
-	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
-		PageSize:   sdkkonnectgo.Int64(10),
-		PageNumber: sdkkonnectgo.Int64(1),
-		Filter: &components.ControlPlaneFilterParameters{
-			CloudGateway: sdkkonnectgo.Bool(true),
-		},
-		Labels: sdkkonnectgo.String("key:value,existCheck"),
-		Sort:   sdkkonnectgo.String("name,created_at desc"),
-	}, operations.WithRetries(
+	res, err := s.CloudGateways.GetAvailabilityJSON(ctx, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
 			Backoff: &retry.BackoffStrategy{
@@ -379,7 +313,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListControlPlanesResponse != nil {
+	if res.AvailabilityDocument != nil {
 		// handle response
 	}
 }
@@ -393,8 +327,6 @@ package main
 import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	"github.com/Kong/sdk-konnect-go/models/operations"
 	"github.com/Kong/sdk-konnect-go/retry"
 	"log"
 )
@@ -414,24 +346,13 @@ func main() {
 				},
 				RetryConnectionErrors: false,
 			}),
-		sdkkonnectgo.WithSecurity(components.Security{
-			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
-		}),
 	)
 
-	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
-		PageSize:   sdkkonnectgo.Int64(10),
-		PageNumber: sdkkonnectgo.Int64(1),
-		Filter: &components.ControlPlaneFilterParameters{
-			CloudGateway: sdkkonnectgo.Bool(true),
-		},
-		Labels: sdkkonnectgo.String("key:value,existCheck"),
-		Sort:   sdkkonnectgo.String("name,created_at desc"),
-	})
+	res, err := s.CloudGateways.GetAvailabilityJSON(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListControlPlanesResponse != nil {
+	if res.AvailabilityDocument != nil {
 		// handle response
 	}
 }
