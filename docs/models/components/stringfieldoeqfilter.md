@@ -1,6 +1,6 @@
 # StringFieldOEQFilter
 
-Returns entities that exact match any of the comma-delimited phrases in the filter string.
+Filters on the given comma separated string by one or more exact match.
 
 
 ## Fields

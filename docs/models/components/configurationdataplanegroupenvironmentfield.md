@@ -1,0 +1,11 @@
+# ConfigurationDataPlaneGroupEnvironmentField
+
+Environment variable name and value to set for a data-plane group.
+
+
+## Fields
+
+| Field                                                                                               | Type                                                                                                | Required                                                                                            | Description                                                                                         | Example                                                                                             |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `Name`                                                                                              | *string*                                                                                            | :heavy_check_mark:                                                                                  | Name of the environment variable field to set for the data-plane group. Must be prefixed by KONG_.<br/> | KONG_LOG_LEVEL                                                                                      |
+| `Value`                                                                                             | *string*                                                                                            | :heavy_check_mark:                                                                                  | Value assigned to the environment variable field for the data-plane group.                          | INFO                                                                                                |
