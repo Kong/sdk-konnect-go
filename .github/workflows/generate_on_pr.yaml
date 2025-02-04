@@ -48,7 +48,7 @@ jobs:
           repo: speakeasy
           cli_name: speakeasy
           package_type: zip
-          version: 1.470.1 # renovate: datasource=github-releases depName=speakeasy-api/speakeasy
+          version: 1.484.1 # renovate: datasource=github-releases depName=speakeasy-api/speakeasy
 
       - name: Checkout current repo
         uses: actions/checkout@v4
