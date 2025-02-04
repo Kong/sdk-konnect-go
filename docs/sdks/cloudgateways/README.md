@@ -204,6 +204,7 @@ func main() {
                 },
             },
         },
+        APIAccess: components.APIAccessPrivatePlusPublic.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)
@@ -804,6 +805,7 @@ func main() {
             "use2-az3",
         },
         CidrBlock: "10.0.0.0/8",
+        State: components.NetworkCreateStateInitializing.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)

@@ -50,6 +50,7 @@ func main() {
 
     res, err := s.ConsumerGroups.ListConsumerGroup(ctx, operations.ListConsumerGroupRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Size: sdkkonnectgo.Int64(100),
         Tags: sdkkonnectgo.String("tag1,tag2"),
     })
     if err != nil {
@@ -391,6 +392,7 @@ func main() {
     res, err := s.ConsumerGroups.ListConsumersForConsumerGroup(ctx, operations.ListConsumersForConsumerGroupRequest{
         ConsumerGroupID: "<id>",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Size: sdkkonnectgo.Int64(100),
         Tags: sdkkonnectgo.String("tag1,tag2"),
     })
     if err != nil {
@@ -621,6 +623,7 @@ func main() {
     res, err := s.ConsumerGroups.ListConsumerGroupsForConsumer(ctx, operations.ListConsumerGroupsForConsumerRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
+        Size: sdkkonnectgo.Int64(100),
         Tags: sdkkonnectgo.String("tag1,tag2"),
     })
     if err != nil {

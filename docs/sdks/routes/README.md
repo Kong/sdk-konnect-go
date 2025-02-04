@@ -71,6 +71,7 @@ func main() {
 
     res, err := s.Routes.ListRoute(ctx, operations.ListRouteRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Size: sdkkonnectgo.Int64(100),
         Tags: sdkkonnectgo.String("tag1,tag2"),
     })
     if err != nil {
@@ -382,6 +383,7 @@ func main() {
     res, err := s.Routes.ListRouteWithService(ctx, operations.ListRouteWithServiceRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
+        Size: sdkkonnectgo.Int64(100),
         Tags: sdkkonnectgo.String("tag1,tag2"),
     })
     if err != nil {

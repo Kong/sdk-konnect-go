@@ -40,6 +40,7 @@ func main() {
     res, err := s.Targets.ListTargetWithUpstream(ctx, operations.ListTargetWithUpstreamRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         UpstreamIDForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8",
+        Size: sdkkonnectgo.Int64(100),
         Tags: sdkkonnectgo.String("tag1,tag2"),
     })
     if err != nil {
