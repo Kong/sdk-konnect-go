@@ -20,7 +20,7 @@ jobs:
     outputs:
       result: ${{ steps.decision.outputs.result }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           token: ${{ secrets.PAT }}
@@ -51,7 +51,7 @@ jobs:
           version: 1.470.1 # renovate: datasource=github-releases depName=speakeasy-api/speakeasy
 
       - name: Checkout current repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           token: ${{ secrets.PAT }}
