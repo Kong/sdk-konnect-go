@@ -643,6 +643,7 @@ paths:
       servers:
         - url: https://global.api.konghq.com/
     patch:
+      x-speakeasy-group: CloudGateways
       x-speakeasy-entity-operation: CloudGatewayNetwork#update
       summary: Update Network
       description: Updates a network by ID.
