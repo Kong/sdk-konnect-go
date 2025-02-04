@@ -1,17 +1,17 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: fe43d33d203b7561758301b8b6eca122
+  docChecksum: 19341fe43fa268b5935b125486560d03
   docVersion: 0.0.1
-  speakeasyVersion: 1.470.1
-  generationVersion: 2.493.34
-  releaseVersion: 0.2.0
-  configChecksum: 6bd6c3b1bf7f850519936cd72c879871
+  speakeasyVersion: 1.483.0
+  generationVersion: 2.502.0
+  releaseVersion: 0.2.2
+  configChecksum: 39b798381f2de2e6b2cebc4f05bd9fe1
 features:
   go:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.6
-    core: 3.6.9
+    core: 3.6.12
     deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
     envVarSecurityUsage: 0.3.2
@@ -1577,7 +1577,6 @@ generatedFiles:
   - docs/sdks/keysets/README.md
   - docs/sdks/me/README.md
   - docs/sdks/mtlsauthcredentials/README.md
-  - docs/sdks/networks/README.md
   - docs/sdks/plugins/README.md
   - docs/sdks/roles/README.md
   - docs/sdks/routes/README.md
@@ -1619,7 +1618,6 @@ generatedFiles:
   - models/operations/options.go
   - models/sdkerrors/sdkerror.go
   - mtlsauthcredentials.go
-  - networks.go
   - plugins.go
   - retry/config.go
   - roles.go
