@@ -716,7 +716,6 @@ func main() {
     )
 
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
-        Enabled: sdkkonnectgo.Bool(true),
         LoginPath: sdkkonnectgo.String("myapp"),
         Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
