@@ -10285,6 +10285,7 @@ components:
       example: 39ed3790-085d-4605-9627-f96d86aaf425
       readOnly: true
     NetworkId:
+      x-speakeasy-param-suppress-computed-diff: true
       type: string
       format: uuid
       example: 36ae63d3-efd1-4bec-b246-62aa5d3f5695
@@ -10833,6 +10834,7 @@ components:
         - initializing
         - offline
     NetworkState:
+      x-speakeasy-terraform-ignore: true
       title: Network State
       description: State of the network.
       enum:
@@ -10844,6 +10846,7 @@ components:
         - terminated
       readOnly: true
     NetworkProviderMetadata:
+      x-speakeasy-param-suppress-computed-diff: true
       title: Network Provider Metadata
       description: >-
         Metadata describing attributes returned by cloud-provider for the
@@ -10892,6 +10895,7 @@ components:
         name:
           $ref: '#/components/schemas/NetworkName'
         default:
+          x-speakeasy-param-suppress-computed-diff: true
           type: boolean
           description: >
             Whether the network is a default network or not. Default networks
@@ -10913,16 +10917,19 @@ components:
         provider_metadata:
           $ref: '#/components/schemas/NetworkProviderMetadata'
         transit_gateway_count:
+          x-speakeasy-param-suppress-computed-diff: true
           type: integer
           description: The number of transit gateways attached to this network.
           readOnly: true
           example: 0
         configuration_reference_count:
+          x-speakeasy-param-suppress-computed-diff: true
           type: integer
           description: The number of configurations that reference this network.
           readOnly: true
           example: 0
         entity_version:
+          x-speakeasy-param-suppress-computed-diff: true
           type: integer
           description: >
             Monotonically-increasing version count of the network, to indicate
@@ -10930,12 +10937,14 @@ components:
           readOnly: true
           example: 1
         created_at:
+          x-speakeasy-param-suppress-computed-diff: true
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: An RFC-3339 timestamp representation of network creation date.
           readOnly: true
         updated_at:
+          x-speakeasy-param-suppress-computed-diff: true
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
