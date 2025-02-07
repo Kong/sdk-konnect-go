@@ -15,7 +15,7 @@ import (
 func TestCloudGateway(t *testing.T) {
 	t.Parallel()
 
-	sdk := SDK(t)
+	sdk := SDK(t, RegionalAPI)
 	runID := KonnectTestRunID(t)
 	_ = runID
 
@@ -120,5 +120,45 @@ func TestCloudGateway(t *testing.T) {
 		// TODO: This shouldn't really return a 404?
 		var sdkError *sdkerrors.NotFoundError
 		require.True(t, errors.As(err, &sdkError), "Should return a 404 error")
+	})
+}
+
+func TestCloudGatewayNetwork(t *testing.T) {
+	t.Parallel()
+
+	sdk := SDK(t, GlobalAPI)
+	// runID := KonnectTestRunID(t)
+
+	t.Run("Networks", func(t *testing.T) {
+		ctx := context.Background()
+
+		reqList := sdkkonnectops.ListNetworksRequest{}
+		respList, err := sdk.CloudGateways.ListNetworks(ctx, reqList)
+		require.NoError(t, err)
+		require.NotNil(t, respList)
+		// ------------
+
+		// reqCreate := sdkkonnectcomp.CreateNetworkRequest{
+		// 	Name:                          "pmalek-" + runID,
+		// 	CloudGatewayProviderAccountID: "ea1897ae-4036-48c1-af63-8abfcaa9049b",
+		// 	AvailabilityZones: []string{
+		// 		"euc2-az1",
+		// 		"euc2-az2",
+		// 	},
+		// 	CidrBlock: "10.0.0.0/16",
+		// 	Region:    "eu-central-2",
+		// }
+		// respCreate, err := sdk.CloudGateways.CreateNetwork(ctx, reqCreate)
+		// require.NoError(t, err)
+		// require.NotNil(t, respCreate)
+		// ------------
+
+		respGet, err := sdk.CloudGateways.GetNetwork(ctx, "03fc0cb9-e9ec-49e5-bb2d-b07928bfb47a")
+		require.NoError(t, err)
+		require.NotNil(t, respGet)
+
+		respDelete, err := sdk.CloudGateways.DeleteNetwork(ctx, respGet.Network.ID)
+		require.NoError(t, err)
+		require.NotNil(t, respDelete)
 	})
 }
