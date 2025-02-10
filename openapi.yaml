@@ -9736,6 +9736,11 @@ components:
       type: string
       example: YOUR_CLIENT_ID
       description: The client ID assigned to your application by the identity provider.
+    OIDCIdentityProviderClientSecret:
+      title: OIDC Identity Provider Login Client Secret Property
+      type: string
+      example: YOUR_CLIENT_SECRET
+      description: The Client Secret assigned to your application by the identity provider.
     OIDCIdentityProviderScopes:
       title: OIDC Identity Provider Scopes Property
       type: array
@@ -9802,7 +9807,7 @@ components:
         config:
           type: object
           oneOf:
-            - $ref: '#/components/schemas/OIDCIdentityProviderConfig'
+            - $ref: '#/components/schemas/ConfigureOIDCIdentityProviderConfig'
             - $ref: '#/components/schemas/SAMLIdentityProviderConfig'
     UpdateIdentityProvider:
       title: Identity Provider
@@ -9818,7 +9823,7 @@ components:
         config:
           type: object
           oneOf:
-            - $ref: '#/components/schemas/OIDCIdentityProviderConfig'
+            - $ref: '#/components/schemas/ConfigureOIDCIdentityProviderConfig'
             - $ref: '#/components/schemas/SAMLIdentityProviderConfig'
     IdentityProvider:
       title: Identity Provider
@@ -9855,6 +9860,27 @@ components:
           $ref: '#/components/schemas/OIDCIdentityProviderIssuer'
         client_id:
           $ref: '#/components/schemas/OIDCIdentityProviderClientId'
+        scopes:
+          $ref: '#/components/schemas/OIDCIdentityProviderScopes'
+        claim_mappings:
+          $ref: '#/components/schemas/OIDCIdentityProviderClaimMappings'
+      additionalProperties: false
+      required:
+        - issuer_url
+        - client_id
+    ConfigureOIDCIdentityProviderConfig:
+      title: OIDC Identity Provider Config
+      type: object
+      description: >-
+        The identity provider that contains configuration data for the OIDC
+        authentication integration.
+      properties:
+        issuer_url:
+          $ref: '#/components/schemas/OIDCIdentityProviderIssuer'
+        client_id:
+          $ref: '#/components/schemas/OIDCIdentityProviderClientId'
+        client_secret:
+          $ref: '#/components/schemas/OIDCIdentityProviderClientSecret'
         scopes:
           $ref: '#/components/schemas/OIDCIdentityProviderScopes'
         claim_mappings:
