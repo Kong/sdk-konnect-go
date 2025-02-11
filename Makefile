@@ -117,6 +117,8 @@ test: test.unit test.integration
 
 .PHONY: test.unit
 test.unit:
+	go test -v -race $(GOTESTFLAGS) \
+		./internal/...
 
 .PHONY: test.integration
 test.integration:

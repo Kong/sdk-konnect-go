@@ -1,7 +1,9 @@
 package hooks
 
 import (
+	"bytes"
 	"fmt"
+	"io"
 	"net/http"
 	"net/http/httputil"
 )
@@ -17,12 +19,29 @@ func (i *HTTPDumpRequestHook) BeforeRequest(hookCtx BeforeRequestContext, req *h
 		return nil, nil
 	}
 
-	b, err := httputil.DumpRequestOut(req, true)
+	// Dumping the body consumes it, so we need to clone the request and copy
+	// the body as Clone() only performs a shallow copy.
+
+	cpy := req.Clone(hookCtx.Context)
+	var (
+		b   []byte
+		err error
+	)
+	if req.Body != nil {
+		b, err = io.ReadAll(req.Body)
+		if err != nil {
+			return req, fmt.Errorf("error reading request body: %w", err)
+		}
+		cpy.Body = io.NopCloser(bytes.NewReader(b))
+	}
+
+	dump, err := httputil.DumpRequestOut(cpy, true)
 	if err != nil {
 		fmt.Printf("Error dumping request: %v\n", err)
 	} else {
-		fmt.Printf("request:\n%s\n\n", b)
+		fmt.Printf("request:\n%s\n\n", dump)
 	}
+	req.Body = io.NopCloser(bytes.NewReader(b))
 
 	return req, nil
 }
