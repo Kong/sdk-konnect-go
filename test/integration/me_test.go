@@ -10,7 +10,7 @@ import (
 func TestMeOrganizations(t *testing.T) {
 	t.Parallel()
 
-	sdk := SDK(t)
+	sdk := SDK(t, RegionalAPI)
 	ctx := context.Background()
 	respOrg, err := sdk.Me.GetOrganizationsMe(ctx)
 
@@ -25,7 +25,7 @@ func TestMeOrganizations(t *testing.T) {
 func TestMeUsers(t *testing.T) {
 	t.Parallel()
 
-	sdk := SDK(t)
+	sdk := SDK(t, RegionalAPI)
 	ctx := context.Background()
 	respOrg, err := sdk.Me.GetUsersMe(ctx)
 	require.NoError(t, err)
