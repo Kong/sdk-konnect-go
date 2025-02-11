@@ -15,14 +15,15 @@ import (
 func TestCloudGateway(t *testing.T) {
 	t.Parallel()
 
-	sdk := SDK(t)
+	sdkGlobal := SDK(t, GlobalAPI)
+	sdkRegional := SDK(t, RegionalAPI)
 	runID := KonnectTestRunID(t)
 	_ = runID
 
 	t.Run("CustomDomains", func(t *testing.T) {
 		ctx := context.Background()
 		req := sdkkonnectops.ListCustomDomainsRequest{}
-		respList, err := sdk.CloudGateways.ListCustomDomains(ctx, req)
+		respList, err := sdkGlobal.CloudGateways.ListCustomDomains(ctx, req)
 		require.NoError(t, err)
 		require.NotNil(t, respList)
 
@@ -31,10 +32,10 @@ func TestCloudGateway(t *testing.T) {
 			Labels:       Labels(t),
 			CloudGateway: Ptr(true),
 		}
-		respCreateCP, err := sdk.ControlPlanes.CreateControlPlane(ctx, reqCreateCP)
+		respCreateCP, err := sdkRegional.ControlPlanes.CreateControlPlane(ctx, reqCreateCP)
 		require.NoError(t, err)
 		t.Cleanup(func() {
-			_, err := sdk.ControlPlanes.DeleteControlPlane(ctx, respCreateCP.ControlPlane.ID)
+			_, err := sdkRegional.ControlPlanes.DeleteControlPlane(ctx, respCreateCP.ControlPlane.ID)
 			require.NoError(t, err)
 		})
 
@@ -94,31 +95,33 @@ func TestCloudGateway(t *testing.T) {
 	t.Run("TransitGateways", func(t *testing.T) {
 		ctx := context.Background()
 		req := sdkkonnectops.ListTransitGatewaysRequest{}
-		_, err := sdk.CloudGateways.ListTransitGateways(ctx, req)
+		_, err := sdkGlobal.CloudGateways.ListTransitGateways(ctx, req)
 		// TODO: This shouldn't really return a 404?
-		require.Error(t, err, "Should return a 404 error")
+		require.Error(t, err)
+		var errNotFound *sdkerrors.NotFoundError
+		require.True(t, errors.As(err, &errNotFound), "Should return a 404 error")
 	})
 
 	t.Run("Networks", func(t *testing.T) {
 		ctx := context.Background()
 		req := sdkkonnectops.ListNetworksRequest{}
-		_, err := sdk.CloudGateways.ListNetworks(ctx, req)
+		_, err := sdkGlobal.CloudGateways.ListNetworks(ctx, req)
 		require.NoError(t, err)
 	})
 
 	t.Run("ProviderAccounts", func(t *testing.T) {
 		ctx := context.Background()
 		req := sdkkonnectops.ListProviderAccountsRequest{}
-		_, err := sdk.CloudGateways.ListProviderAccounts(ctx, req)
+		_, err := sdkGlobal.CloudGateways.ListProviderAccounts(ctx, req)
 		require.NoError(t, err)
 	})
 
 	t.Run("NetworkConfigurations", func(t *testing.T) {
 		ctx := context.Background()
 		req := sdkkonnectops.ListNetworkConfigurationsRequest{}
-		_, err := sdk.CloudGateways.ListNetworkConfigurations(ctx, req)
+		_, err := sdkGlobal.CloudGateways.ListNetworkConfigurations(ctx, req)
 		// TODO: This shouldn't really return a 404?
-		var sdkError *sdkerrors.NotFoundError
-		require.True(t, errors.As(err, &sdkError), "Should return a 404 error")
+		var errNotFound *sdkerrors.NotFoundError
+		require.True(t, errors.As(err, &errNotFound), "Should return a 404 error")
 	})
 }

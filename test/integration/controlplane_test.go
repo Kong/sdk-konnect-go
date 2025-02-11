@@ -15,7 +15,7 @@ import (
 func TestControlPlaneCreateGetDelete(t *testing.T) {
 	t.Parallel()
 
-	sdk := SDK(t)
+	sdk := SDK(t, RegionalAPI)
 	runID := KonnectTestRunID(t)
 
 	ctx := context.Background()
@@ -46,7 +46,7 @@ func TestControlPlaneCreateGetDelete(t *testing.T) {
 func TestControlPlaneList(t *testing.T) {
 	t.Parallel()
 
-	sdk := SDK(t)
+	sdk := SDK(t, RegionalAPI)
 
 	testcases := []struct {
 		name          string

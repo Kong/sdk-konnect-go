@@ -1,6 +1,9 @@
 package integration
 
 import (
+	"fmt"
+	"regexp"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -44,4 +47,36 @@ func SDK(t *testing.T, apiType APIType, opts ...func(*sdkkonnectgo.SDK)) *sdkkon
 
 	require.NotNil(t, sdk)
 	return sdk
+}
+
+func replaceFirstSegmentWithGlobal(url string) (string, error) {
+	if url == "" {
+		return "", fmt.Errorf("empty URL provided")
+	}
+
+	// Pattern explanation:
+	// ^(?:https?:\/\/)? - Optional http:// or https:// at the start
+	// ([^\.]+)         - Capture the first segment (anything before the first dot)
+	// (\..+)           - Capture everything else starting with the dot
+	pattern := `^(?:https?:\/\/)?([^\.]+)(\..+)`
+	regex := regexp.MustCompile(pattern)
+
+	matches := regex.FindStringSubmatch(url)
+	if matches == nil {
+		return "", fmt.Errorf("invalid URL format")
+	}
+
+	// matches[0] is the full match
+	// matches[1] is the first segment
+	// matches[2] is the rest of the URL
+	result := "global" + matches[2]
+
+	// If the original URL had the protocol, preserve it
+	if strings.HasPrefix(url, "http://") {
+		result = "http://" + result
+	} else if strings.HasPrefix(url, "https://") {
+		result = "https://" + result
+	}
+
+	return result, nil
 }
