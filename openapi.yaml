@@ -1012,6 +1012,8 @@ paths:
           $ref: '#/components/responses/ControlPlaneUnauthenticated'
         '403':
           $ref: '#/components/responses/ControlPlanePermissionDenied'
+        '500':
+          $ref: '#/components/responses/Internal'
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
       operationId: list-control-planes
@@ -4937,6 +4939,8 @@ paths:
           $ref: '#/components/responses/ControlPlanePermissionDenied'
         '404':
           $ref: '#/components/responses/ControlPlaneNotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
       operationId: get-control-plane
@@ -5018,6 +5022,8 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
   /v2/control-planes/{id}/group-memberships:
@@ -5043,6 +5049,8 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
       operationId: get-control-planes-id-group-memberships
@@ -5066,6 +5074,8 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
       requestBody:
@@ -5096,6 +5106,8 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
       requestBody:
@@ -5133,6 +5145,8 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
   /v2/control-planes/{id}/group-status:
@@ -5158,6 +5172,8 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
       operationId: get-control-planes-id-group-status
@@ -7163,6 +7179,8 @@ components:
             properties:
               status:
                 type: integer
+                format: int32
+                x-go-type: int32
                 description: The HTTP status code.
                 example: 500
                 enum:
@@ -7196,6 +7214,8 @@ components:
             properties:
               status:
                 type: integer
+                format: int32
+                x-go-type: int32
                 description: The HTTP status code.
                 example: 503
                 enum:
@@ -7254,6 +7274,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/GroupMemberStatus'
+    Internal:
+      description: Internal
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/BaseError'
     BadRequest:
       description: Bad Request
       content:
@@ -9701,6 +9727,18 @@ components:
           $ref: '#/components/schemas/CursorMetaWithSizeAndTotal'
       required:
         - page
+    CreatedAt:
+      type: string
+      format: date-time
+      example: '2022-11-04T20:10:06.927Z'
+      description: An ISO-8601 timestamp representation of entity creation date.
+      readOnly: true
+    UpdatedAt:
+      type: string
+      format: date-time
+      example: '2022-11-04T20:10:06.927Z'
+      description: An ISO-8601 timestamp representation of entity update date.
+      readOnly: true
     IdentityProviderEnabled:
       title: Identity Provider Enabled Property
       type: boolean
@@ -10236,18 +10274,6 @@ components:
       format: uuid
       example: 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7
       description: Contains a unique identifier used by the API for this resource.
-      readOnly: true
-    CreatedAt:
-      type: string
-      format: date-time
-      example: '2022-11-04T20:10:06.927Z'
-      description: An ISO-8601 timestamp representation of entity creation date.
-      readOnly: true
-    UpdatedAt:
-      type: string
-      format: date-time
-      example: '2022-11-04T20:10:06.927Z'
-      description: An ISO-8601 timestamp representation of entity update date.
       readOnly: true
     StringFieldFilter:
       title: StringFieldFilter

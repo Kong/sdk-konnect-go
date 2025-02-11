@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: ef3aecbef61895496c5083db71141b1c
+  docChecksum: 9617ae19d319d81dcbcda62f23a45ae9
   docVersion: 0.0.1
-  speakeasyVersion: 1.488.0
+  speakeasyVersion: 1.487.0
   generationVersion: 2.506.0
-  releaseVersion: 0.2.7
-  configChecksum: 8591e19e35dc56a3cf9a2b743b401dc1
+  releaseVersion: 0.2.8
+  configChecksum: 48033ff7bb5afe216466e3222447fe0b
 features:
   go:
     additionalDependencies: 0.1.0
@@ -515,6 +515,7 @@ generatedFiles:
   - /models/operations/usersassignrole.go
   - /models/operations/usersremoverole.go
   - /models/sdkerrors/badrequesterror.go
+  - /models/sdkerrors/baseerror.go
   - /models/sdkerrors/conflicterror.go
   - /models/sdkerrors/forbiddenerror.go
   - /models/sdkerrors/gatewayunauthorizederror.go
@@ -1542,6 +1543,7 @@ generatedFiles:
   - docs/models/operations/usersremoverolerequest.md
   - docs/models/operations/usersremoveroleresponse.md
   - docs/models/sdkerrors/badrequesterror.md
+  - docs/models/sdkerrors/baseerror.md
   - docs/models/sdkerrors/conflicterror.md
   - docs/models/sdkerrors/forbiddenerror.md
   - docs/models/sdkerrors/gatewayunauthorizederror.md
@@ -1663,6 +1665,8 @@ examples:
           application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
         "503":
           application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+        "500":
+          application/problem+json: {"status": 710664, "title": "<value>", "instance": "<value>", "detail": "<value>"}
   create-control-plane:
     speakeasy-default-create-control-plane:
       requestBody:
@@ -1700,6 +1704,8 @@ examples:
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
         "503":
           application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+        "500":
+          application/problem+json: {"status": 95128, "title": "<value>", "instance": "<value>", "detail": "<value>"}
   update-control-plane:
     speakeasy-default-update-control-plane:
       parameters:
@@ -3558,6 +3564,8 @@ examples:
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
         "503":
           application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+        "500":
+          application/problem+json: {"status": 237682, "title": "<value>", "instance": "<value>", "detail": "<value>"}
   get-control-planes-id-group-memberships:
     speakeasy-default-get-control-planes-id-group-memberships:
       parameters:
@@ -3579,6 +3587,8 @@ examples:
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
         "503":
           application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+        "500":
+          application/problem+json: {"status": 201034, "title": "<value>", "instance": "<value>", "detail": "<value>"}
   put-control-planes-id-group-memberships:
     speakeasy-default-put-control-planes-id-group-memberships:
       parameters:
@@ -3595,6 +3605,8 @@ examples:
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
         "503":
           application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+        "500":
+          application/problem+json: {"status": 768745, "title": "<value>", "instance": "<value>", "detail": "<value>"}
   post-control-planes-id-group-memberships-add:
     speakeasy-default-post-control-planes-id-group-memberships-add:
       parameters:
@@ -3611,6 +3623,8 @@ examples:
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
         "503":
           application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+        "500":
+          application/problem+json: {"status": 436362, "title": "<value>", "instance": "<value>", "detail": "<value>"}
   post-control-planes-id-group-memberships-remove:
     speakeasy-default-post-control-planes-id-group-memberships-remove:
       parameters:
@@ -3627,6 +3641,8 @@ examples:
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
         "503":
           application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+        "500":
+          application/problem+json: {"status": 753975, "title": "<value>", "instance": "<value>", "detail": "<value>"}
   get-control-planes-id-group-status:
     speakeasy-default-get-control-planes-id-group-status:
       parameters:
@@ -3645,6 +3661,8 @@ examples:
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
         "503":
           application/problem+json: {"status": 503, "title": "Service Unavailable", "instance": "konnect:trace:2287285207635123011", "detail": "Could not retrieve permissions to check resource accessibility."}
+        "500":
+          application/problem+json: {"status": 801860, "title": "<value>", "instance": "<value>", "detail": "<value>"}
   authenticate-sso:
     speakeasy-default-authenticate-sso:
       parameters:
