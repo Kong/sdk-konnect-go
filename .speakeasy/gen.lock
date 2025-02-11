@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 34b2443a340696b1a551870449747ec4
+  docChecksum: ef3aecbef61895496c5083db71141b1c
   docVersion: 0.0.1
   speakeasyVersion: 1.487.0
   generationVersion: 2.506.0
-  releaseVersion: 0.2.5
-  configChecksum: fe20990526e3844f97a776ece534b9f7
+  releaseVersion: 0.2.6
+  configChecksum: fdf1a6be5d1949c2fecafec1937df907
 features:
   go:
     additionalDependencies: 0.1.0
@@ -63,6 +63,7 @@ generatedFiles:
   - /models/components/configurationdataplanegroupenvironmentfield.go
   - /models/components/configurationmanifest.go
   - /models/components/configurationsfilterparameters.go
+  - /models/components/configureoidcidentityproviderconfig.go
   - /models/components/consumer.go
   - /models/components/consumergroup.go
   - /models/components/consumergroupinput.go
@@ -596,6 +597,7 @@ generatedFiles:
   - docs/models/components/configurationdataplanegroupenvironmentfield.md
   - docs/models/components/configurationmanifest.md
   - docs/models/components/configurationsfilterparameters.md
+  - docs/models/components/configureoidcidentityproviderconfig.md
   - docs/models/components/consumer.md
   - docs/models/components/consumeradmin.md
   - docs/models/components/consumergroup.md

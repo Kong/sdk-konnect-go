@@ -11,23 +11,23 @@ import (
 type UpdateIdentityProviderConfigType string
 
 const (
-	UpdateIdentityProviderConfigTypeOIDCIdentityProviderConfig      UpdateIdentityProviderConfigType = "OIDCIdentityProviderConfig"
-	UpdateIdentityProviderConfigTypeSAMLIdentityProviderConfigInput UpdateIdentityProviderConfigType = "SAMLIdentityProviderConfig_input"
+	UpdateIdentityProviderConfigTypeConfigureOIDCIdentityProviderConfig UpdateIdentityProviderConfigType = "ConfigureOIDCIdentityProviderConfig"
+	UpdateIdentityProviderConfigTypeSAMLIdentityProviderConfigInput     UpdateIdentityProviderConfigType = "SAMLIdentityProviderConfig_input"
 )
 
 type UpdateIdentityProviderConfig struct {
-	OIDCIdentityProviderConfig      *OIDCIdentityProviderConfig      `queryParam:"inline"`
-	SAMLIdentityProviderConfigInput *SAMLIdentityProviderConfigInput `queryParam:"inline"`
+	ConfigureOIDCIdentityProviderConfig *ConfigureOIDCIdentityProviderConfig `queryParam:"inline"`
+	SAMLIdentityProviderConfigInput     *SAMLIdentityProviderConfigInput     `queryParam:"inline"`
 
 	Type UpdateIdentityProviderConfigType
 }
 
-func CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(oidcIdentityProviderConfig OIDCIdentityProviderConfig) UpdateIdentityProviderConfig {
-	typ := UpdateIdentityProviderConfigTypeOIDCIdentityProviderConfig
+func CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(configureOIDCIdentityProviderConfig ConfigureOIDCIdentityProviderConfig) UpdateIdentityProviderConfig {
+	typ := UpdateIdentityProviderConfigTypeConfigureOIDCIdentityProviderConfig
 
 	return UpdateIdentityProviderConfig{
-		OIDCIdentityProviderConfig: &oidcIdentityProviderConfig,
-		Type:                       typ,
+		ConfigureOIDCIdentityProviderConfig: &configureOIDCIdentityProviderConfig,
+		Type:                                typ,
 	}
 }
 
@@ -49,10 +49,10 @@ func (u *UpdateIdentityProviderConfig) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var oidcIdentityProviderConfig OIDCIdentityProviderConfig = OIDCIdentityProviderConfig{}
-	if err := utils.UnmarshalJSON(data, &oidcIdentityProviderConfig, "", true, true); err == nil {
-		u.OIDCIdentityProviderConfig = &oidcIdentityProviderConfig
-		u.Type = UpdateIdentityProviderConfigTypeOIDCIdentityProviderConfig
+	var configureOIDCIdentityProviderConfig ConfigureOIDCIdentityProviderConfig = ConfigureOIDCIdentityProviderConfig{}
+	if err := utils.UnmarshalJSON(data, &configureOIDCIdentityProviderConfig, "", true, true); err == nil {
+		u.ConfigureOIDCIdentityProviderConfig = &configureOIDCIdentityProviderConfig
+		u.Type = UpdateIdentityProviderConfigTypeConfigureOIDCIdentityProviderConfig
 		return nil
 	}
 
@@ -60,8 +60,8 @@ func (u *UpdateIdentityProviderConfig) UnmarshalJSON(data []byte) error {
 }
 
 func (u UpdateIdentityProviderConfig) MarshalJSON() ([]byte, error) {
-	if u.OIDCIdentityProviderConfig != nil {
-		return utils.MarshalJSON(u.OIDCIdentityProviderConfig, "", true)
+	if u.ConfigureOIDCIdentityProviderConfig != nil {
+		return utils.MarshalJSON(u.ConfigureOIDCIdentityProviderConfig, "", true)
 	}
 
 	if u.SAMLIdentityProviderConfigInput != nil {

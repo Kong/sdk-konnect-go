@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### OIDCIdentityProviderConfig
+### ConfigureOIDCIdentityProviderConfig
 
 ```go
-createIdentityProviderConfig := components.CreateCreateIdentityProviderConfigOIDCIdentityProviderConfig(components.OIDCIdentityProviderConfig{/* values here */})
+createIdentityProviderConfig := components.CreateCreateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(components.ConfigureOIDCIdentityProviderConfig{/* values here */})
 ```
 
 ### SAMLIdentityProviderConfigInput
