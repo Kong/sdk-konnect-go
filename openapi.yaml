@@ -1081,6 +1081,7 @@ paths:
       tags:
         - Config Stores
     post:
+      x-speakeasy-entity-operation: GatewayConfigStore#create
       summary: Create Config Store
       description: Create a Config Store
       operationId: create-config-store
@@ -1110,6 +1111,7 @@ paths:
       - $ref: '#/components/parameters/controlPlaneId'
       - $ref: '#/components/parameters/configStoreId'
     get:
+      x-speakeasy-entity-operation: GatewayConfigStore#read
       summary: Fetch Config Store
       description: Returns a Config Store
       operationId: get-config-store
@@ -1123,6 +1125,7 @@ paths:
       tags:
         - Config Stores
     put:
+      x-speakeasy-entity-operation: GatewayConfigStore#update
       summary: Update an individual Config Store
       description: Updates a Config Store
       operationId: update-config-store
@@ -1148,6 +1151,7 @@ paths:
       tags:
         - Config Stores
     delete:
+      x-speakeasy-entity-operation: GatewayConfigStore#delete
       summary: Delete Config Store
       description: Removes a config store
       operationId: delete-config-store
@@ -6899,6 +6903,7 @@ components:
       in: path
       required: true
       description: Config Store identifier
+      x-speakeasy-match: id
     ACLId:
       description: ID of the ACL to lookup
       example: f28acbfa-c866-4587-b688-0208ac24df21
