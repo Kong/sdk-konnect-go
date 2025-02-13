@@ -42,6 +42,9 @@ func (i *HTTPDumpRequestHook) BeforeRequest(hookCtx BeforeRequestContext, req *h
 		fmt.Printf("request:\n%s\n\n", dump)
 	}
 	req.Body = io.NopCloser(bytes.NewReader(b))
+	req.GetBody = func() (io.ReadCloser, error) {
+		return req.Body, nil
+	}
 
 	return req, nil
 }
