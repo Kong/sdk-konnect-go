@@ -1,4 +1,4 @@
-# RouteService
+# RouteJSONService
 
 The Service this Route is associated to. This is where the Route proxies traffic to.
 

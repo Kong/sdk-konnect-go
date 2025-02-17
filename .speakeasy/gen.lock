@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: e43963ba3b2971a579f5cd74497b065f
+  docChecksum: 1c33de3180335d9e55c4aef1ee457182
   docVersion: 0.0.1
   speakeasyVersion: 1.487.0
   generationVersion: 2.506.0
-  releaseVersion: 0.2.10
-  configChecksum: 8f8dfb448ae26f951daa47e5d099c113
+  releaseVersion: 0.2.11
+  configChecksum: 904128b94001a7d80e5ff133d107642c
 features:
   go:
     additionalDependencies: 0.1.0
@@ -192,6 +192,9 @@ generatedFiles:
   - /models/components/resourcequotaqualifier.go
   - /models/components/roles.go
   - /models/components/route.go
+  - /models/components/routeexpression.go
+  - /models/components/routeinput.go
+  - /models/components/routejson.go
   - /models/components/routewithoutparents.go
   - /models/components/samlidentityproviderconfig.go
   - /models/components/samlidentityproviderconfiginput.go
@@ -880,9 +883,17 @@ generatedFiles:
   - docs/models/components/rolesviewer.md
   - docs/models/components/route.md
   - docs/models/components/routeadmin.md
+  - docs/models/components/routeexpression.md
+  - docs/models/components/routeexpressionhttpsredirectstatuscode.md
+  - docs/models/components/routeexpressioninput.md
+  - docs/models/components/routeexpressionpathhandling.md
+  - docs/models/components/routeexpressionprotocols.md
+  - docs/models/components/routeexpressionservice.md
   - docs/models/components/routeinput.md
-  - docs/models/components/routeprotocols.md
-  - docs/models/components/routeservice.md
+  - docs/models/components/routejson.md
+  - docs/models/components/routejsoninput.md
+  - docs/models/components/routejsonprotocols.md
+  - docs/models/components/routejsonservice.md
   - docs/models/components/routewithoutparents.md
   - docs/models/components/routewithoutparentsdestinations.md
   - docs/models/components/routewithoutparentshttpsredirectstatuscode.md

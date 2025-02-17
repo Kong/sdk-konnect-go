@@ -126,21 +126,23 @@ func main() {
         }),
     )
 
-    res, err := s.Routes.CreateRoute(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.RouteInput{
-        Hosts: []string{
-            "foo.example.com",
-            "foo.example.us",
+    res, err := s.Routes.CreateRoute(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateRouteInputRouteJSONInput(
+        components.RouteJSONInput{
+            Hosts: []string{
+                "foo.example.com",
+                "foo.example.us",
+            },
+            ID: sdkkonnectgo.String("56c4566c-14cc-4132-9011-4139fcbbe50a"),
+            Name: sdkkonnectgo.String("example-route"),
+            Paths: []string{
+                "/v1",
+                "/v2",
+            },
+            Service: &components.RouteJSONService{
+                ID: sdkkonnectgo.String("bd380f99-659d-415e-b0e7-72ea05df3218"),
+            },
         },
-        ID: sdkkonnectgo.String("56c4566c-14cc-4132-9011-4139fcbbe50a"),
-        Name: sdkkonnectgo.String("example-route"),
-        Paths: []string{
-            "/v1",
-            "/v2",
-        },
-        Service: &components.RouteService{
-            ID: sdkkonnectgo.String("bd380f99-659d-415e-b0e7-72ea05df3218"),
-        },
-    })
+    ))
     if err != nil {
         log.Fatal(err)
     }
@@ -152,12 +154,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                           | Type                                                                                                                                                                                                                | Required                                                                                                                                                                                                            | Description                                                                                                                                                                                                         | Example                                                                                                                                                                                                             |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                                                                                                               | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                                                                  | The context to use for the request.                                                                                                                                                                                 |                                                                                                                                                                                                                     |
-| `controlPlaneID`                                                                                                                                                                                                    | *string*                                                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                                                  | The UUID of your control plane. This variable is available in the Konnect manager.                                                                                                                                  | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                                                                                                                                                                |
-| `route`                                                                                                                                                                                                             | [components.RouteInput](../../models/components/routeinput.md)                                                                                                                                                      | :heavy_check_mark:                                                                                                                                                                                                  | Description of the new Route for creation                                                                                                                                                                           | {<br/>"hosts": [<br/>"foo.example.com",<br/>"foo.example.us"<br/>],<br/>"id": "56c4566c-14cc-4132-9011-4139fcbbe50a",<br/>"name": "example-route",<br/>"paths": [<br/>"/v1",<br/>"/v2"<br/>],<br/>"service": {<br/>"id": "bd380f99-659d-415e-b0e7-72ea05df3218"<br/>}<br/>} |
-| `opts`                                                                                                                                                                                                              | [][operations.Option](../../models/operations/option.md)                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                  | The options for this request.                                                                                                                                                                                       |                                                                                                                                                                                                                     |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
+| `controlPlaneID`                                                                   | *string*                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
+| `route`                                                                            | [components.RouteInput](../../models/components/routeinput.md)                     | :heavy_check_mark:                                                                 | Description of the new Route for creation                                          |                                                                                    |
+| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
 
 ### Response
 
@@ -309,21 +311,23 @@ func main() {
     res, err := s.Routes.UpsertRoute(ctx, operations.UpsertRouteRequest{
         RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        Route: components.RouteInput{
-            Hosts: []string{
-                "foo.example.com",
-                "foo.example.us",
+        Route: components.CreateRouteInputRouteJSONInput(
+            components.RouteJSONInput{
+                Hosts: []string{
+                    "foo.example.com",
+                    "foo.example.us",
+                },
+                ID: sdkkonnectgo.String("56c4566c-14cc-4132-9011-4139fcbbe50a"),
+                Name: sdkkonnectgo.String("example-route"),
+                Paths: []string{
+                    "/v1",
+                    "/v2",
+                },
+                Service: &components.RouteJSONService{
+                    ID: sdkkonnectgo.String("bd380f99-659d-415e-b0e7-72ea05df3218"),
+                },
             },
-            ID: sdkkonnectgo.String("56c4566c-14cc-4132-9011-4139fcbbe50a"),
-            Name: sdkkonnectgo.String("example-route"),
-            Paths: []string{
-                "/v1",
-                "/v2",
-            },
-            Service: &components.RouteService{
-                ID: sdkkonnectgo.String("bd380f99-659d-415e-b0e7-72ea05df3218"),
-            },
-        },
+        ),
     })
     if err != nil {
         log.Fatal(err)
