@@ -174,6 +174,8 @@ func (o *RouteWithoutParentsSources) GetPort() *int64 {
 type RouteWithoutParents struct {
 	// A list of IP destinations of incoming connections that match this Route when using stream routing. Each entry is an object with fields "ip" (optionally in CIDR range notation) and/or "port".
 	Destinations []RouteWithoutParentsDestinations `json:"destinations,omitempty"`
+	// Use Router Expression to perform route match. This option is only available when `router_flavor` is set to `expressions`.
+	Expression *string `json:"expression,omitempty"`
 	// One or more lists of values indexed by header name that will cause this Route to match if present in the request. The `Host` header cannot be used with this attribute: hosts should be specified using the `hosts` attribute. When `headers` contains only one value and that value starts with the special prefix `~*`, the value is interpreted as a regular expression.
 	Headers map[string][]string `json:"headers,omitempty"`
 	// A list of domain names that match this Route. Note that the hosts value is case sensitive.
@@ -190,7 +192,8 @@ type RouteWithoutParents struct {
 	// A list of paths that match this Route.
 	Paths []string `json:"paths,omitempty"`
 	// When matching a Route via one of the `hosts` domain names, use the request `Host` header in the upstream request headers. If set to `false`, the upstream `Host` header will be that of the Service's `host`.
-	PreserveHost *bool `json:"preserve_host,omitempty"`
+	PreserveHost *bool  `json:"preserve_host,omitempty"`
+	Priority     *int64 `json:"priority,omitempty"`
 	// An array of the protocols this Route should allow. See the [Route Object](#route-object) section for a list of accepted protocols. When set to only `"https"`, HTTP requests are answered with an upgrade error. When set to only `"http"`, HTTPS requests are answered with an error.
 	Protocols []RouteWithoutParentsProtocols `json:"protocols,omitempty"`
 	// A number used to choose which route resolves a given request when several routes match it using regexes simultaneously. When two routes match the path and have the same `regex_priority`, the older one (lowest `created_at`) is used. Note that the priority for non-regex routes is different (longer non-regex routes are matched before shorter ones).
@@ -216,6 +219,13 @@ func (o *RouteWithoutParents) GetDestinations() []RouteWithoutParentsDestination
 		return nil
 	}
 	return o.Destinations
+}
+
+func (o *RouteWithoutParents) GetExpression() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Expression
 }
 
 func (o *RouteWithoutParents) GetHeaders() map[string][]string {
@@ -279,6 +289,13 @@ func (o *RouteWithoutParents) GetPreserveHost() *bool {
 		return nil
 	}
 	return o.PreserveHost
+}
+
+func (o *RouteWithoutParents) GetPriority() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Priority
 }
 
 func (o *RouteWithoutParents) GetProtocols() []RouteWithoutParentsProtocols {
