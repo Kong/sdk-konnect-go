@@ -28,13 +28,6 @@ func newSystemAccountsRoles(sdkConfig sdkConfiguration) *SystemAccountsRoles {
 // GetSystemAccountsAccountIDAssignedRoles - Fetch Assigned Roles for System Account
 // Lists the roles belonging to a system account. Returns 400 if any filter parameters are invalid.
 func (s *SystemAccountsRoles) GetSystemAccountsAccountIDAssignedRoles(ctx context.Context, accountID string, filter *operations.GetSystemAccountsAccountIDAssignedRolesQueryParamFilter, opts ...operations.Option) (*operations.GetSystemAccountsAccountIDAssignedRolesResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "get-system-accounts-accountId-assigned-roles",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.GetSystemAccountsAccountIDAssignedRolesRequest{
 		AccountID: accountID,
 		Filter:    filter,
@@ -60,6 +53,14 @@ func (s *SystemAccountsRoles) GetSystemAccountsAccountIDAssignedRoles(ctx contex
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/system-accounts/{accountId}/assigned-roles", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "get-system-accounts-accountId-assigned-roles",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -301,13 +302,6 @@ func (s *SystemAccountsRoles) GetSystemAccountsAccountIDAssignedRoles(ctx contex
 // PostSystemAccountsAccountIDAssignedRoles - Create Assigned Role for System Account
 // Assigns a role to a system account. Returns 409 if role is already assigned.
 func (s *SystemAccountsRoles) PostSystemAccountsAccountIDAssignedRoles(ctx context.Context, accountID string, assignRole *components.AssignRole, opts ...operations.Option) (*operations.PostSystemAccountsAccountIDAssignedRolesResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "post-system-accounts-accountId-assigned-roles",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.PostSystemAccountsAccountIDAssignedRolesRequest{
 		AccountID:  accountID,
 		AssignRole: assignRole,
@@ -335,6 +329,13 @@ func (s *SystemAccountsRoles) PostSystemAccountsAccountIDAssignedRoles(ctx conte
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "post-system-accounts-accountId-assigned-roles",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "AssignRole", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -578,13 +579,6 @@ func (s *SystemAccountsRoles) PostSystemAccountsAccountIDAssignedRoles(ctx conte
 // DeleteSystemAccountsAccountIDAssignedRolesRoleID - Delete Assigned Role from System Account
 // Removes an assigned role from a system account. Returns 404 if the system account or assigned role were not found.
 func (s *SystemAccountsRoles) DeleteSystemAccountsAccountIDAssignedRolesRoleID(ctx context.Context, accountID string, roleID string, opts ...operations.Option) (*operations.DeleteSystemAccountsAccountIDAssignedRolesRoleIDResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "delete-system-accounts-accountId-assigned-roles-roleId",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.DeleteSystemAccountsAccountIDAssignedRolesRoleIDRequest{
 		AccountID: accountID,
 		RoleID:    roleID,
@@ -610,6 +604,14 @@ func (s *SystemAccountsRoles) DeleteSystemAccountsAccountIDAssignedRolesRoleID(c
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/system-accounts/{accountId}/assigned-roles/{roleId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "delete-system-accounts-accountId-assigned-roles-roleId",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout

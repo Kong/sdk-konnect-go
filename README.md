@@ -87,12 +87,12 @@ func main() {
 
 You can override the default server globally using the `WithServerIndex(serverIndex int)` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
-| #   | Server                          |
-| --- | ------------------------------- |
-| 0   | `https://global.api.konghq.com` |
-| 1   | `https://us.api.konghq.com`     |
-| 2   | `https://eu.api.konghq.com`     |
-| 3   | `https://au.api.konghq.com`     |
+| #   | Server                          | Description |
+| --- | ------------------------------- | ----------- |
+| 0   | `https://global.api.konghq.com` |             |
+| 1   | `https://us.api.konghq.com`     |             |
+| 2   | `https://eu.api.konghq.com`     |             |
+| 3   | `https://au.api.konghq.com`     |             |
 
 #### Example
 

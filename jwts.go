@@ -28,13 +28,6 @@ func newJWTs(sdkConfig sdkConfiguration) *JWTs {
 // ListJwtWithConsumer - List all JWTs associated with a Consumer
 // List all JWTs associated with a Consumer
 func (s *JWTs) ListJwtWithConsumer(ctx context.Context, request operations.ListJwtWithConsumerRequest, opts ...operations.Option) (*operations.ListJwtWithConsumerResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "list-jwt-with-consumer",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -56,6 +49,14 @@ func (s *JWTs) ListJwtWithConsumer(ctx context.Context, request operations.ListJ
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/jwt", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "list-jwt-with-consumer",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -232,13 +233,6 @@ func (s *JWTs) ListJwtWithConsumer(ctx context.Context, request operations.ListJ
 // CreateJwtWithConsumer - Create a new JWT associated with a Consumer
 // Create a new JWT associated with a Consumer
 func (s *JWTs) CreateJwtWithConsumer(ctx context.Context, request operations.CreateJwtWithConsumerRequest, opts ...operations.Option) (*operations.CreateJwtWithConsumerResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "create-jwt-with-consumer",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -262,6 +256,13 @@ func (s *JWTs) CreateJwtWithConsumer(ctx context.Context, request operations.Cre
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "create-jwt-with-consumer",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "JWTWithoutParents", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -440,13 +441,6 @@ func (s *JWTs) CreateJwtWithConsumer(ctx context.Context, request operations.Cre
 // DeleteJwtWithConsumer - Delete a a JWT associated with a Consumer
 // Delete a a JWT associated with a Consumer using ID.
 func (s *JWTs) DeleteJwtWithConsumer(ctx context.Context, request operations.DeleteJwtWithConsumerRequest, opts ...operations.Option) (*operations.DeleteJwtWithConsumerResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "delete-jwt-with-consumer",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -468,6 +462,14 @@ func (s *JWTs) DeleteJwtWithConsumer(ctx context.Context, request operations.Del
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/jwt/{JWTId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "delete-jwt-with-consumer",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -620,13 +622,6 @@ func (s *JWTs) DeleteJwtWithConsumer(ctx context.Context, request operations.Del
 // GetJwtWithConsumer - Fetch a JWT associated with a Consumer
 // Get a JWT associated with a Consumer using ID.
 func (s *JWTs) GetJwtWithConsumer(ctx context.Context, request operations.GetJwtWithConsumerRequest, opts ...operations.Option) (*operations.GetJwtWithConsumerResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "get-jwt-with-consumer",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -648,6 +643,14 @@ func (s *JWTs) GetJwtWithConsumer(ctx context.Context, request operations.GetJwt
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/jwt/{JWTId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "get-jwt-with-consumer",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -822,13 +825,6 @@ func (s *JWTs) GetJwtWithConsumer(ctx context.Context, request operations.GetJwt
 // UpsertJwtWithConsumer - Upsert a JWT associated with a Consumer
 // Create or Update a JWT associated with a Consumer using ID.
 func (s *JWTs) UpsertJwtWithConsumer(ctx context.Context, request operations.UpsertJwtWithConsumerRequest, opts ...operations.Option) (*operations.UpsertJwtWithConsumerResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "upsert-jwt-with-consumer",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -852,6 +848,13 @@ func (s *JWTs) UpsertJwtWithConsumer(ctx context.Context, request operations.Ups
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "upsert-jwt-with-consumer",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "JWTWithoutParents", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -1030,13 +1033,6 @@ func (s *JWTs) UpsertJwtWithConsumer(ctx context.Context, request operations.Ups
 // ListJwt - List all JWTs
 // List all JWTs
 func (s *JWTs) ListJwt(ctx context.Context, request operations.ListJwtRequest, opts ...operations.Option) (*operations.ListJwtResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "list-jwt",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1058,6 +1054,14 @@ func (s *JWTs) ListJwt(ctx context.Context, request operations.ListJwtRequest, o
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/jwts", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "list-jwt",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1255,13 +1259,6 @@ func (s *JWTs) ListJwt(ctx context.Context, request operations.ListJwtRequest, o
 // GetJwt - Fetch a JWT
 // Get a JWT using ID.
 func (s *JWTs) GetJwt(ctx context.Context, jwtID string, controlPlaneID string, opts ...operations.Option) (*operations.GetJwtResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "get-jwt",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.GetJwtRequest{
 		JWTID:          jwtID,
 		ControlPlaneID: controlPlaneID,
@@ -1288,6 +1285,14 @@ func (s *JWTs) GetJwt(ctx context.Context, jwtID string, controlPlaneID string, 
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/jwts/{JWTId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "get-jwt",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout

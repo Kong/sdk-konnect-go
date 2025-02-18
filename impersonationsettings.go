@@ -29,13 +29,6 @@ func newImpersonationSettings(sdkConfig sdkConfiguration) *ImpersonationSettings
 // GetImpersonationSettings - Get Impersonation Settings
 // Returns Impersonation Settings, which determines if user impersonation is allowed for an organization.
 func (s *ImpersonationSettings) GetImpersonationSettings(ctx context.Context, opts ...operations.Option) (*operations.GetImpersonationSettingsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "get-impersonation-settings",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -56,6 +49,14 @@ func (s *ImpersonationSettings) GetImpersonationSettings(ctx context.Context, op
 	opURL, err := url.JoinPath(baseURL, "/v3/organizations/impersonation")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "get-impersonation-settings",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -270,13 +271,6 @@ func (s *ImpersonationSettings) GetImpersonationSettings(ctx context.Context, op
 // UpdateImpersonationSettings - Update Impersonation Settings
 // Updates Impersonation Settings.
 func (s *ImpersonationSettings) UpdateImpersonationSettings(ctx context.Context, request *components.UpdateImpersonationSettingsRequest, opts ...operations.Option) (*operations.UpdateImpersonationSettingsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "update-impersonation-settings",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -299,6 +293,13 @@ func (s *ImpersonationSettings) UpdateImpersonationSettings(ctx context.Context,
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "update-impersonation-settings",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err

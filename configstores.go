@@ -28,13 +28,6 @@ func newConfigStores(sdkConfig sdkConfiguration) *ConfigStores {
 
 // ListConfigStores - List all config stores for a control plane
 func (s *ConfigStores) ListConfigStores(ctx context.Context, request operations.ListConfigStoresRequest, opts ...operations.Option) (*operations.ListConfigStoresResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "list-config-stores",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -56,6 +49,14 @@ func (s *ConfigStores) ListConfigStores(ctx context.Context, request operations.
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/config-stores", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "list-config-stores",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -295,13 +296,6 @@ func (s *ConfigStores) ListConfigStores(ctx context.Context, request operations.
 // CreateConfigStore - Create Config Store
 // Create a Config Store
 func (s *ConfigStores) CreateConfigStore(ctx context.Context, controlPlaneID string, createConfigStore components.CreateConfigStore, opts ...operations.Option) (*operations.CreateConfigStoreResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "create-config-store",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.CreateConfigStoreRequest{
 		ControlPlaneID:    controlPlaneID,
 		CreateConfigStore: createConfigStore,
@@ -330,6 +324,13 @@ func (s *ConfigStores) CreateConfigStore(ctx context.Context, controlPlaneID str
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "create-config-store",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateConfigStore", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -592,13 +593,6 @@ func (s *ConfigStores) CreateConfigStore(ctx context.Context, controlPlaneID str
 // GetConfigStore - Fetch Config Store
 // Returns a Config Store
 func (s *ConfigStores) GetConfigStore(ctx context.Context, controlPlaneID string, configStoreID string, opts ...operations.Option) (*operations.GetConfigStoreResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "get-config-store",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.GetConfigStoreRequest{
 		ControlPlaneID: controlPlaneID,
 		ConfigStoreID:  configStoreID,
@@ -625,6 +619,14 @@ func (s *ConfigStores) GetConfigStore(ctx context.Context, controlPlaneID string
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "get-config-store",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -839,13 +841,6 @@ func (s *ConfigStores) GetConfigStore(ctx context.Context, controlPlaneID string
 // UpdateConfigStore - Update an individual Config Store
 // Updates a Config Store
 func (s *ConfigStores) UpdateConfigStore(ctx context.Context, request operations.UpdateConfigStoreRequest, opts ...operations.Option) (*operations.UpdateConfigStoreResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "update-config-store",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -869,6 +864,13 @@ func (s *ConfigStores) UpdateConfigStore(ctx context.Context, request operations
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "update-config-store",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateConfigStore", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -1152,13 +1154,6 @@ func (s *ConfigStores) UpdateConfigStore(ctx context.Context, request operations
 // DeleteConfigStore - Delete Config Store
 // Removes a config store
 func (s *ConfigStores) DeleteConfigStore(ctx context.Context, request operations.DeleteConfigStoreRequest, opts ...operations.Option) (*operations.DeleteConfigStoreResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "delete-config-store",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1180,6 +1175,14 @@ func (s *ConfigStores) DeleteConfigStore(ctx context.Context, request operations
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "delete-config-store",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
