@@ -10,6 +10,7 @@ import (
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	sdkkonnectcomp "github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectops "github.com/Kong/sdk-konnect-go/models/operations"
+	"github.com/Kong/sdk-konnect-go/pkg"
 )
 
 func TestControlPlaneCreateGetDelete(t *testing.T) {
@@ -66,7 +67,8 @@ func TestControlPlaneList(t *testing.T) {
 			name: "filter by name eq",
 			createFunc: func(ctx context.Context, t *testing.T, sdk *sdkkonnectgo.ControlPlanes) {
 				req := sdkkonnectcomp.CreateControlPlaneRequest{
-					Name: KonnectTestRunID(t) + "-filter-1",
+					Name:   KonnectTestRunID(t) + "-filter-1",
+					Labels: Labels(t),
 				}
 				resp, err := sdk.CreateControlPlane(ctx, req)
 				require.NoError(t, err)
@@ -79,7 +81,7 @@ func TestControlPlaneList(t *testing.T) {
 				Filter: &sdkkonnectcomp.ControlPlaneFilterParameters{
 					Name: &sdkkonnectcomp.Name{
 						StringFieldEqualsFilter: &sdkkonnectcomp.StringFieldEqualsFilter{
-							Str: Ptr(KonnectTestRunID(t) + "-filter-1"),
+							Str: pkg.Ptr(KonnectTestRunID(t) + "-filter-1"),
 						},
 					},
 				},
@@ -94,7 +96,8 @@ func TestControlPlaneList(t *testing.T) {
 			createFunc: func(ctx context.Context, t *testing.T, sdk *sdkkonnectgo.ControlPlanes) {
 				req := sdkkonnectcomp.CreateControlPlaneRequest{
 					Name:        KonnectTestRunID(t) + "-type-1",
-					ClusterType: Ptr(sdkkonnectcomp.CreateControlPlaneRequestClusterTypeClusterTypeK8SIngressController),
+					Labels:      Labels(t),
+					ClusterType: pkg.Ptr(sdkkonnectcomp.CreateControlPlaneRequestClusterTypeClusterTypeK8SIngressController),
 				}
 				resp, err := sdk.CreateControlPlane(ctx, req)
 				require.NoError(t, err)
@@ -107,12 +110,12 @@ func TestControlPlaneList(t *testing.T) {
 				Filter: &sdkkonnectcomp.ControlPlaneFilterParameters{
 					Name: &sdkkonnectcomp.Name{
 						StringFieldEqualsFilter: &sdkkonnectcomp.StringFieldEqualsFilter{
-							Str: Ptr(KonnectTestRunID(t) + "-type-1"),
+							Str: pkg.Ptr(KonnectTestRunID(t) + "-type-1"),
 						},
 					},
 					ClusterType: &sdkkonnectcomp.ClusterType{
 						StringFieldEqualsFilter: &sdkkonnectcomp.StringFieldEqualsFilter{
-							Str: Ptr(string(sdkkonnectcomp.CreateControlPlaneRequestClusterTypeClusterTypeK8SIngressController)),
+							Str: pkg.Ptr(string(sdkkonnectcomp.CreateControlPlaneRequestClusterTypeClusterTypeK8SIngressController)),
 						},
 					},
 				},

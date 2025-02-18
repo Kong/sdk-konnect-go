@@ -1,5 +1,5 @@
-name: tests
-run-name: tests, branch:${{ github.ref_name }}, triggered by @${{ github.actor }}
+name: Konnect cleanup
+run-name: Konnect cleanup, branch:${{ github.ref_name }}, triggered by @${{ github.actor }}
 
 concurrency:
   # Run only for most recent commit in PRs but for all tags and commits on main
@@ -8,37 +8,21 @@ concurrency:
   cancel-in-progress: true
 
 on:
-  pull_request:
-    branches:
-      - '*'
-  push:
-    branches:
-      - 'main'
   schedule:
-    - cron: '30 2 * * *'
+    - cron: '47 */4 * * *'
   workflow_dispatch: {}
 
 permissions:
   contents: read
 
 jobs:
-  unit-tests:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-
-    - uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34 # v5
-      with:
-        go-version-file: go.mod
-
-    - name: run unit tests
-      run: make test.unit
-
   integration-tests:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
+        # NOTE: this matrix should match the test matrix which is used for
+        # integration tests.
         include:
         - konnect-api-url: https://us.api.konghq.tech
         - konnect-api-url: https://eu.api.konghq.tech
