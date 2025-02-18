@@ -7,7 +7,14 @@ import (
 
 // NamePrefix returns a prefix for the test name.
 func NamePrefix(t *testing.T) string {
-	return "sdk-konnect-go-test-integration-" + strings.ReplaceAll(t.Name(), "/", "_")
+	ret := "sdk-konnect-go-test-integration-" + strings.ReplaceAll(t.Name(), "/", "_")
+	if len(ret) > 63 {
+		ret = ret[:63]
+	}
+	if strings.HasSuffix(ret, "_") {
+		ret = ret[:len(ret)-1]
+	}
+	return ret
 }
 
 func Labels(t *testing.T) map[string]string {
@@ -16,9 +23,4 @@ func Labels(t *testing.T) map[string]string {
 		"test_name":      NamePrefix(t),
 		"test_run_id":    KonnectTestRunID(t),
 	}
-}
-
-// Ptr returns a pointer to the given object.
-func Ptr[T any](obj T) *T {
-	return &obj
 }

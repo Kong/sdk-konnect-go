@@ -10,6 +10,7 @@ import (
 	sdkkonnectcomp "github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectops "github.com/Kong/sdk-konnect-go/models/operations"
 	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
+	"github.com/Kong/sdk-konnect-go/pkg"
 )
 
 func TestCloudGateway(t *testing.T) {
@@ -30,7 +31,7 @@ func TestCloudGateway(t *testing.T) {
 		reqCreateCP := sdkkonnectcomp.CreateControlPlaneRequest{
 			Name:         NamePrefix(t) + "-" + runID,
 			Labels:       Labels(t),
-			CloudGateway: Ptr(true),
+			CloudGateway: pkg.Ptr(true),
 		}
 		respCreateCP, err := sdkRegional.ControlPlanes.CreateControlPlane(ctx, reqCreateCP)
 		require.NoError(t, err)

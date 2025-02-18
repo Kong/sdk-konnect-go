@@ -137,3 +137,7 @@ test.integration:
 	KONNECT_TEST_RUN_ID=$(shell openssl rand -hex 8) \
 		go test -v -race $(GOTESTFLAGS) \
 		./test/integration/...
+
+.PHONY: cleanup.konnect
+cleanup.konnect:
+	go run ./ci/konnect-cleanup
