@@ -29,13 +29,6 @@ func newKeySets(sdkConfig sdkConfiguration) *KeySets {
 // ListKeySet - List all KeySets
 // List all KeySets
 func (s *KeySets) ListKeySet(ctx context.Context, request operations.ListKeySetRequest, opts ...operations.Option) (*operations.ListKeySetResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "list-key-set",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -57,6 +50,14 @@ func (s *KeySets) ListKeySet(ctx context.Context, request operations.ListKeySetR
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/key-sets", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "list-key-set",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -254,13 +255,6 @@ func (s *KeySets) ListKeySet(ctx context.Context, request operations.ListKeySetR
 // CreateKeySet - Create a new KeySet
 // Create a new KeySet
 func (s *KeySets) CreateKeySet(ctx context.Context, controlPlaneID string, keySet components.KeySetInput, opts ...operations.Option) (*operations.CreateKeySetResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "create-key-set",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.CreateKeySetRequest{
 		ControlPlaneID: controlPlaneID,
 		KeySet:         keySet,
@@ -289,6 +283,13 @@ func (s *KeySets) CreateKeySet(ctx context.Context, controlPlaneID string, keySe
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "create-key-set",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "KeySet", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -488,13 +489,6 @@ func (s *KeySets) CreateKeySet(ctx context.Context, controlPlaneID string, keySe
 // DeleteKeySet - Delete a KeySet
 // Delete a KeySet
 func (s *KeySets) DeleteKeySet(ctx context.Context, controlPlaneID string, keySetID string, opts ...operations.Option) (*operations.DeleteKeySetResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "delete-key-set",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.DeleteKeySetRequest{
 		ControlPlaneID: controlPlaneID,
 		KeySetID:       keySetID,
@@ -521,6 +515,14 @@ func (s *KeySets) DeleteKeySet(ctx context.Context, controlPlaneID string, keySe
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/key-sets/{KeySetId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "delete-key-set",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -694,13 +696,6 @@ func (s *KeySets) DeleteKeySet(ctx context.Context, controlPlaneID string, keySe
 // GetKeySet - Fetch a KeySet
 // Get a KeySet using ID or name.
 func (s *KeySets) GetKeySet(ctx context.Context, keySetID string, controlPlaneID string, opts ...operations.Option) (*operations.GetKeySetResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "get-key-set",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.GetKeySetRequest{
 		KeySetID:       keySetID,
 		ControlPlaneID: controlPlaneID,
@@ -727,6 +722,14 @@ func (s *KeySets) GetKeySet(ctx context.Context, keySetID string, controlPlaneID
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/key-sets/{KeySetId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "get-key-set",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -922,13 +925,6 @@ func (s *KeySets) GetKeySet(ctx context.Context, keySetID string, controlPlaneID
 // UpsertKeySet - Upsert a KeySet
 // Create or Update KeySet using ID or name.
 func (s *KeySets) UpsertKeySet(ctx context.Context, request operations.UpsertKeySetRequest, opts ...operations.Option) (*operations.UpsertKeySetResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "upsert-key-set",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -952,6 +948,13 @@ func (s *KeySets) UpsertKeySet(ctx context.Context, request operations.UpsertKey
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "upsert-key-set",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "KeySet", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err

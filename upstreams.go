@@ -32,13 +32,6 @@ func newUpstreams(sdkConfig sdkConfiguration) *Upstreams {
 // ListUpstream - List all Upstreams
 // List all Upstreams
 func (s *Upstreams) ListUpstream(ctx context.Context, request operations.ListUpstreamRequest, opts ...operations.Option) (*operations.ListUpstreamResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "list-upstream",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -60,6 +53,14 @@ func (s *Upstreams) ListUpstream(ctx context.Context, request operations.ListUps
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/upstreams", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "list-upstream",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -257,13 +258,6 @@ func (s *Upstreams) ListUpstream(ctx context.Context, request operations.ListUps
 // CreateUpstream - Create a new Upstream
 // Create a new Upstream
 func (s *Upstreams) CreateUpstream(ctx context.Context, controlPlaneID string, upstream components.UpstreamInput, opts ...operations.Option) (*operations.CreateUpstreamResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "create-upstream",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.CreateUpstreamRequest{
 		ControlPlaneID: controlPlaneID,
 		Upstream:       upstream,
@@ -292,6 +286,13 @@ func (s *Upstreams) CreateUpstream(ctx context.Context, controlPlaneID string, u
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "create-upstream",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Upstream", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -491,13 +492,6 @@ func (s *Upstreams) CreateUpstream(ctx context.Context, controlPlaneID string, u
 // DeleteUpstream - Delete an Upstream
 // Delete an Upstream
 func (s *Upstreams) DeleteUpstream(ctx context.Context, controlPlaneID string, upstreamID string, opts ...operations.Option) (*operations.DeleteUpstreamResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "delete-upstream",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.DeleteUpstreamRequest{
 		ControlPlaneID: controlPlaneID,
 		UpstreamID:     upstreamID,
@@ -524,6 +518,14 @@ func (s *Upstreams) DeleteUpstream(ctx context.Context, controlPlaneID string, u
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "delete-upstream",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -697,13 +699,6 @@ func (s *Upstreams) DeleteUpstream(ctx context.Context, controlPlaneID string, u
 // GetUpstream - Fetch an Upstream
 // Get an Upstream using ID or name.
 func (s *Upstreams) GetUpstream(ctx context.Context, upstreamID string, controlPlaneID string, opts ...operations.Option) (*operations.GetUpstreamResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "get-upstream",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.GetUpstreamRequest{
 		UpstreamID:     upstreamID,
 		ControlPlaneID: controlPlaneID,
@@ -730,6 +725,14 @@ func (s *Upstreams) GetUpstream(ctx context.Context, upstreamID string, controlP
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "get-upstream",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -925,13 +928,6 @@ func (s *Upstreams) GetUpstream(ctx context.Context, upstreamID string, controlP
 // UpsertUpstream - Upsert a Upstream
 // Create or Update Upstream using ID or name.
 func (s *Upstreams) UpsertUpstream(ctx context.Context, request operations.UpsertUpstreamRequest, opts ...operations.Option) (*operations.UpsertUpstreamResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "upsert-upstream",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -955,6 +951,13 @@ func (s *Upstreams) UpsertUpstream(ctx context.Context, request operations.Upser
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "upsert-upstream",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Upstream", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err

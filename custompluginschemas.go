@@ -29,13 +29,6 @@ func newCustomPluginSchemas(sdkConfig sdkConfiguration) *CustomPluginSchemas {
 // ListPluginSchemas - List custom plugin schemas associated with a control plane
 // Returns an array of custom plugins schemas associated with a control plane.
 func (s *CustomPluginSchemas) ListPluginSchemas(ctx context.Context, request operations.ListPluginSchemasRequest, opts ...operations.Option) (*operations.ListPluginSchemasResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "list-plugin-schemas",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -57,6 +50,14 @@ func (s *CustomPluginSchemas) ListPluginSchemas(ctx context.Context, request ope
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/plugin-schemas", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "list-plugin-schemas",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -296,13 +297,6 @@ func (s *CustomPluginSchemas) ListPluginSchemas(ctx context.Context, request ope
 // CreatePluginSchemas - Upload custom plugin schema
 // Upload a custom plugin schema associated with a control plane.
 func (s *CustomPluginSchemas) CreatePluginSchemas(ctx context.Context, controlPlaneID string, createPluginSchemas *components.CreatePluginSchemas, opts ...operations.Option) (*operations.CreatePluginSchemasResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "create-plugin-schemas",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.CreatePluginSchemasRequest{
 		ControlPlaneID:      controlPlaneID,
 		CreatePluginSchemas: createPluginSchemas,
@@ -331,6 +325,13 @@ func (s *CustomPluginSchemas) CreatePluginSchemas(ctx context.Context, controlPl
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "create-plugin-schemas",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "CreatePluginSchemas", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -593,13 +594,6 @@ func (s *CustomPluginSchemas) CreatePluginSchemas(ctx context.Context, controlPl
 // GetPluginSchema - Fetch custom plugin schema
 // Returns information about a custom plugin from a given name.
 func (s *CustomPluginSchemas) GetPluginSchema(ctx context.Context, controlPlaneID string, name string, opts ...operations.Option) (*operations.GetPluginSchemaResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "get-plugin-schema",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.GetPluginSchemaRequest{
 		ControlPlaneID: controlPlaneID,
 		Name:           name,
@@ -626,6 +620,14 @@ func (s *CustomPluginSchemas) GetPluginSchema(ctx context.Context, controlPlaneI
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/plugin-schemas/{name}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "get-plugin-schema",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -861,13 +863,6 @@ func (s *CustomPluginSchemas) GetPluginSchema(ctx context.Context, controlPlaneI
 // DeletePluginSchemas - Delete custom plugin schema
 // Delete an individual custom plugin schema.
 func (s *CustomPluginSchemas) DeletePluginSchemas(ctx context.Context, controlPlaneID string, name string, opts ...operations.Option) (*operations.DeletePluginSchemasResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "delete-plugin-schemas",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.DeletePluginSchemasRequest{
 		ControlPlaneID: controlPlaneID,
 		Name:           name,
@@ -894,6 +889,14 @@ func (s *CustomPluginSchemas) DeletePluginSchemas(ctx context.Context, controlPl
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/plugin-schemas/{name}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "delete-plugin-schemas",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1109,13 +1112,6 @@ func (s *CustomPluginSchemas) DeletePluginSchemas(ctx context.Context, controlPl
 // UpdatePluginSchemas - Create or update a custom plugin schema
 // Create or update an individual custom plugin schema.
 func (s *CustomPluginSchemas) UpdatePluginSchemas(ctx context.Context, request operations.UpdatePluginSchemasRequest, opts ...operations.Option) (*operations.UpdatePluginSchemasResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "update-plugin-schemas",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1139,6 +1135,13 @@ func (s *CustomPluginSchemas) UpdatePluginSchemas(ctx context.Context, request o
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "update-plugin-schemas",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "CreatePluginSchemas", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err

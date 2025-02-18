@@ -28,13 +28,6 @@ func newBasicAuthCredentials(sdkConfig sdkConfiguration) *BasicAuthCredentials {
 // ListBasicAuth - List all Basic-auth credentials
 // List all Basic-auth credentials
 func (s *BasicAuthCredentials) ListBasicAuth(ctx context.Context, request operations.ListBasicAuthRequest, opts ...operations.Option) (*operations.ListBasicAuthResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "list-basic-auth",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -56,6 +49,14 @@ func (s *BasicAuthCredentials) ListBasicAuth(ctx context.Context, request operat
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/basic-auths", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "list-basic-auth",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -253,13 +254,6 @@ func (s *BasicAuthCredentials) ListBasicAuth(ctx context.Context, request operat
 // GetBasicAuth - Fetch a Basic-auth credential
 // Get a Basic-auth credential using ID.
 func (s *BasicAuthCredentials) GetBasicAuth(ctx context.Context, basicAuthID string, controlPlaneID string, opts ...operations.Option) (*operations.GetBasicAuthResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "get-basic-auth",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.GetBasicAuthRequest{
 		BasicAuthID:    basicAuthID,
 		ControlPlaneID: controlPlaneID,
@@ -286,6 +280,14 @@ func (s *BasicAuthCredentials) GetBasicAuth(ctx context.Context, basicAuthID str
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/basic-auths/{BasicAuthId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "get-basic-auth",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -481,13 +483,6 @@ func (s *BasicAuthCredentials) GetBasicAuth(ctx context.Context, basicAuthID str
 // ListBasicAuthWithConsumer - List all Basic-auth credentials associated with a Consumer
 // List all Basic-auth credentials associated with a Consumer
 func (s *BasicAuthCredentials) ListBasicAuthWithConsumer(ctx context.Context, request operations.ListBasicAuthWithConsumerRequest, opts ...operations.Option) (*operations.ListBasicAuthWithConsumerResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "list-basic-auth-with-consumer",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -509,6 +504,14 @@ func (s *BasicAuthCredentials) ListBasicAuthWithConsumer(ctx context.Context, re
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/basic-auth", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "list-basic-auth-with-consumer",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -685,13 +688,6 @@ func (s *BasicAuthCredentials) ListBasicAuthWithConsumer(ctx context.Context, re
 // CreateBasicAuthWithConsumer - Create a new Basic-auth credential associated with a Consumer
 // Create a new Basic-auth credential associated with a Consumer
 func (s *BasicAuthCredentials) CreateBasicAuthWithConsumer(ctx context.Context, request operations.CreateBasicAuthWithConsumerRequest, opts ...operations.Option) (*operations.CreateBasicAuthWithConsumerResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "create-basic-auth-with-consumer",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -715,6 +711,13 @@ func (s *BasicAuthCredentials) CreateBasicAuthWithConsumer(ctx context.Context, 
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "create-basic-auth-with-consumer",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "BasicAuthWithoutParents", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -893,13 +896,6 @@ func (s *BasicAuthCredentials) CreateBasicAuthWithConsumer(ctx context.Context, 
 // DeleteBasicAuthWithConsumer - Delete a a Basic-auth credential associated with a Consumer
 // Delete a a Basic-auth credential associated with a Consumer using ID.
 func (s *BasicAuthCredentials) DeleteBasicAuthWithConsumer(ctx context.Context, request operations.DeleteBasicAuthWithConsumerRequest, opts ...operations.Option) (*operations.DeleteBasicAuthWithConsumerResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "delete-basic-auth-with-consumer",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -921,6 +917,14 @@ func (s *BasicAuthCredentials) DeleteBasicAuthWithConsumer(ctx context.Context, 
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/basic-auth/{BasicAuthId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "delete-basic-auth-with-consumer",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1073,13 +1077,6 @@ func (s *BasicAuthCredentials) DeleteBasicAuthWithConsumer(ctx context.Context, 
 // GetBasicAuthWithConsumer - Fetch a Basic-auth credential associated with a Consumer
 // Get a Basic-auth credential associated with a Consumer using ID.
 func (s *BasicAuthCredentials) GetBasicAuthWithConsumer(ctx context.Context, request operations.GetBasicAuthWithConsumerRequest, opts ...operations.Option) (*operations.GetBasicAuthWithConsumerResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "get-basic-auth-with-consumer",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1101,6 +1098,14 @@ func (s *BasicAuthCredentials) GetBasicAuthWithConsumer(ctx context.Context, req
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/basic-auth/{BasicAuthId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "get-basic-auth-with-consumer",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1275,13 +1280,6 @@ func (s *BasicAuthCredentials) GetBasicAuthWithConsumer(ctx context.Context, req
 // UpsertBasicAuthWithConsumer - Upsert a Basic-auth credential associated with a Consumer
 // Create or Update a Basic-auth credential associated with a Consumer using ID.
 func (s *BasicAuthCredentials) UpsertBasicAuthWithConsumer(ctx context.Context, request operations.UpsertBasicAuthWithConsumerRequest, opts ...operations.Option) (*operations.UpsertBasicAuthWithConsumerResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "upsert-basic-auth-with-consumer",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1305,6 +1303,13 @@ func (s *BasicAuthCredentials) UpsertBasicAuthWithConsumer(ctx context.Context, 
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "upsert-basic-auth-with-consumer",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "BasicAuthWithoutParents", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err

@@ -29,13 +29,6 @@ func newRoles(sdkConfig sdkConfiguration) *Roles {
 // GetPredefinedRoles - Get Predefined Roles
 // Retrieves the predefined, or system managed, roles.
 func (s *Roles) GetPredefinedRoles(ctx context.Context, opts ...operations.Option) (*operations.GetPredefinedRolesResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "get-predefined-roles",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -56,6 +49,14 @@ func (s *Roles) GetPredefinedRoles(ctx context.Context, opts ...operations.Optio
 	opURL, err := url.JoinPath(baseURL, "/v3/roles")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "get-predefined-roles",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -270,13 +271,6 @@ func (s *Roles) GetPredefinedRoles(ctx context.Context, opts ...operations.Optio
 // ListTeamRoles - List Team Roles
 // Lists the roles belonging to a team. Returns 400 if any filter parameters are invalid.
 func (s *Roles) ListTeamRoles(ctx context.Context, teamID string, filter *operations.ListTeamRolesQueryParamFilter, opts ...operations.Option) (*operations.ListTeamRolesResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "list-team-roles",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.ListTeamRolesRequest{
 		TeamID: teamID,
 		Filter: filter,
@@ -302,6 +296,14 @@ func (s *Roles) ListTeamRoles(ctx context.Context, teamID string, filter *operat
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/teams/{teamId}/assigned-roles", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "list-team-roles",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -562,13 +564,6 @@ func (s *Roles) ListTeamRoles(ctx context.Context, teamID string, filter *operat
 // TeamsAssignRole - Assign Team Role
 // Assigns a role to a team. Returns 409 if role is already assigned.
 func (s *Roles) TeamsAssignRole(ctx context.Context, teamID string, assignRole *components.AssignRole, opts ...operations.Option) (*operations.TeamsAssignRoleResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "teams-assign-role",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.TeamsAssignRoleRequest{
 		TeamID:     teamID,
 		AssignRole: assignRole,
@@ -596,6 +591,13 @@ func (s *Roles) TeamsAssignRole(ctx context.Context, teamID string, assignRole *
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "teams-assign-role",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "AssignRole", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -879,13 +881,6 @@ func (s *Roles) TeamsAssignRole(ctx context.Context, teamID string, assignRole *
 // TeamsRemoveRole - Remove Team Role
 // Removes an assigned role from a team. Returns 404 if the requested team or assigned role were not found.
 func (s *Roles) TeamsRemoveRole(ctx context.Context, teamID string, roleID string, opts ...operations.Option) (*operations.TeamsRemoveRoleResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "teams-remove-role",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.TeamsRemoveRoleRequest{
 		TeamID: teamID,
 		RoleID: roleID,
@@ -911,6 +906,14 @@ func (s *Roles) TeamsRemoveRole(ctx context.Context, teamID string, roleID strin
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/teams/{teamId}/assigned-roles/{roleId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "teams-remove-role",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1147,13 +1150,6 @@ func (s *Roles) TeamsRemoveRole(ctx context.Context, teamID string, roleID strin
 // ListUserRoles - List User Roles
 // Lists the roles assigned to a user.  Returns 400 if any filter parameters are invalid.
 func (s *Roles) ListUserRoles(ctx context.Context, userID string, filter *operations.ListUserRolesQueryParamFilter, opts ...operations.Option) (*operations.ListUserRolesResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "list-user-roles",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.ListUserRolesRequest{
 		UserID: userID,
 		Filter: filter,
@@ -1179,6 +1175,14 @@ func (s *Roles) ListUserRoles(ctx context.Context, userID string, filter *operat
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/users/{userId}/assigned-roles", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "list-user-roles",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1397,13 +1401,6 @@ func (s *Roles) ListUserRoles(ctx context.Context, userID string, filter *operat
 // UsersAssignRole - Assign Role
 // Assigns a role to a user. Returns 409 if role is already assigned.
 func (s *Roles) UsersAssignRole(ctx context.Context, userID string, assignRole *components.AssignRole, opts ...operations.Option) (*operations.UsersAssignRoleResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "users-assign-role",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.UsersAssignRoleRequest{
 		UserID:     userID,
 		AssignRole: assignRole,
@@ -1431,6 +1428,13 @@ func (s *Roles) UsersAssignRole(ctx context.Context, userID string, assignRole *
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "users-assign-role",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "AssignRole", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -1714,13 +1718,6 @@ func (s *Roles) UsersAssignRole(ctx context.Context, userID string, assignRole *
 // UsersRemoveRole - Remove Role
 // Removes an assigned role from a user. Returns 404 if the requested user or assigned role were not found.
 func (s *Roles) UsersRemoveRole(ctx context.Context, userID string, roleID string, opts ...operations.Option) (*operations.UsersRemoveRoleResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "users-remove-role",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.UsersRemoveRoleRequest{
 		UserID: userID,
 		RoleID: roleID,
@@ -1746,6 +1743,14 @@ func (s *Roles) UsersRemoveRole(ctx context.Context, userID string, roleID strin
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/users/{userId}/assigned-roles/{roleId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "users-remove-role",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout

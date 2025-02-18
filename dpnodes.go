@@ -29,13 +29,6 @@ func newDPNodes(sdkConfig sdkConfiguration) *DPNodes {
 // GetExpectedConfigHash - Fetch Expected Config Hash
 // Retrieve the expected config hash for this control plane. The expected config hash can be used to verify if the config hash of a data plane node is up to date with the control plane. The config hash will be the same if they are in sync.
 func (s *DPNodes) GetExpectedConfigHash(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetExpectedConfigHashResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "get-expected-config-hash",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.GetExpectedConfigHashRequest{
 		ControlPlaneID: controlPlaneID,
 	}
@@ -61,6 +54,14 @@ func (s *DPNodes) GetExpectedConfigHash(ctx context.Context, controlPlaneID stri
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/expected-config-hash", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "get-expected-config-hash",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -233,13 +234,6 @@ func (s *DPNodes) GetExpectedConfigHash(ctx context.Context, controlPlaneID stri
 // ListDataplaneNodes - List Data Plane Node Records
 // Returns a list of data plane node records that are associated to this control plane. A data plane node record contains metadata information for the data plane running Kong Gateway.
 func (s *DPNodes) ListDataplaneNodes(ctx context.Context, request operations.ListDataplaneNodesRequest, opts ...operations.Option) (*operations.ListDataplaneNodesResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "list-dataplane-nodes",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -261,6 +255,14 @@ func (s *DPNodes) ListDataplaneNodes(ctx context.Context, request operations.Lis
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/nodes", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "list-dataplane-nodes",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -437,13 +439,6 @@ func (s *DPNodes) ListDataplaneNodes(ctx context.Context, request operations.Lis
 // GetNodesNodeID - Fetch Data Plane Node Record
 // Retrieve a specific data plane node record associated to this control plane. A data plane node record contains all the metadata information of the Kong Gateway dataplane.
 func (s *DPNodes) GetNodesNodeID(ctx context.Context, request operations.GetNodesNodeIDRequest, opts ...operations.Option) (*operations.GetNodesNodeIDResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "get-nodes-node_id",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -465,6 +460,14 @@ func (s *DPNodes) GetNodesNodeID(ctx context.Context, request operations.GetNode
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/nodes/{nodeId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "get-nodes-node_id",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -641,13 +644,6 @@ func (s *DPNodes) GetNodesNodeID(ctx context.Context, request operations.GetNode
 // DeleteNodesNodeID - Delete Data Plane Node Record
 // Remove a specific data plane node record associated to this control plane. Deleting this record does not prevent the data plane node from re-connecting to the control plane.
 func (s *DPNodes) DeleteNodesNodeID(ctx context.Context, nodeID string, controlPlaneID string, opts ...operations.Option) (*operations.DeleteNodesNodeIDResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "delete-nodes-node_id",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.DeleteNodesNodeIDRequest{
 		NodeID:         nodeID,
 		ControlPlaneID: controlPlaneID,
@@ -674,6 +670,14 @@ func (s *DPNodes) DeleteNodesNodeID(ctx context.Context, nodeID string, controlP
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/nodes/{nodeId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "delete-nodes-node_id",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -826,13 +830,6 @@ func (s *DPNodes) DeleteNodesNodeID(ctx context.Context, nodeID string, controlP
 // GetNodesEol - List End-of-Life Data Plane Node Records
 // Returns a list of records of data plane nodes, whose versions are approaching End of Full Support/End of Life, that are associated with this control plane. Each record contains a data plane node's id, version, and corresponding resolution message to upgrade to the closest Long Term Support version.
 func (s *DPNodes) GetNodesEol(ctx context.Context, request operations.GetNodesEolRequest, opts ...operations.Option) (*operations.GetNodesEolResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "get-nodes-eol",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -854,6 +851,14 @@ func (s *DPNodes) GetNodesEol(ctx context.Context, request operations.GetNodesEo
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/nodes/eol", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "get-nodes-eol",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
