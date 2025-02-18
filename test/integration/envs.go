@@ -4,29 +4,26 @@ import (
 	"os"
 	"testing"
 
+	"github.com/Kong/sdk-konnect-go/pkg/sdkcfg"
 	"github.com/stretchr/testify/require"
 )
 
 const (
-	// KonnectPersonalAccessTokenEnv is the environment variable name for the Konnect PAT.
-	KonnectPersonalAccessTokenEnv = "KONNECT_API_PAT"
-	// KonnectURLEnv is the environment variable name for the Konnect URL.
-	KonnectURLEnv = "KONNECT_API_URL"
 	// KonnectTestRunIDEnv is the environment variable name for the Konnect test run ID.
 	KonnectTestRunIDEnv = "KONNECT_TEST_RUN_ID"
 )
 
 // KonnectPersonalAccessToken returns the Konnect PAT from the environment.
 func KonnectPersonalAccessToken(t *testing.T) string {
-	token := os.Getenv(KonnectPersonalAccessTokenEnv)
-	require.NotEmptyf(t, token, "%s is not set", KonnectPersonalAccessTokenEnv)
+	token := sdkcfg.PersonalAccessToken()
+	require.NotEmpty(t, token, "Personal Access Token is not set")
 	return token
 }
 
 // KonnectURL returns the Konnect url from the environment.
 func KonnectURL(t *testing.T) string {
-	url := os.Getenv(KonnectURLEnv)
-	require.NotEmptyf(t, url, "%s is not set", KonnectURLEnv)
+	url := sdkcfg.URL()
+	require.NotEmpty(t, url, "Konnect API URL is not set")
 	return url
 }
 
