@@ -214,8 +214,8 @@ func main() {
     res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
         Name: sdkkonnectgo.String("IDM - Developers"),
         Description: sdkkonnectgo.String("The Identity Management (IDM) API team."),
-        Labels: map[string]string{
-            "env": "test",
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.String("test"),
         },
     })
     if err != nil {
