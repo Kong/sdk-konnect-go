@@ -10021,6 +10021,7 @@ components:
         full_name: Test User
         preferred_name: test
         active: true
+        inferred_region: us
         created_at: '2022-02-07T17:46:57.52Z'
         updated_at: '2022-10-08T17:00:00.52Z'
       properties:
@@ -10050,6 +10051,14 @@ components:
         active:
           type: boolean
           description: Returns True if a user has verified their email address.
+          readOnly: true
+        inferred_region:
+          type: string
+          description: >-
+            The Konnect region closest to the user's IP address. This property
+            might only be set for users on signup through Konnect’s build-in
+            native authentication.
+          example: us
           readOnly: true
         created_at:
           type: string
@@ -11996,7 +12005,6 @@ components:
       properties:
         consumer:
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -12030,7 +12038,6 @@ components:
       properties:
         consumer:
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -12062,7 +12069,6 @@ components:
       properties:
         consumer:
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -12100,7 +12106,6 @@ components:
       properties:
         consumer:
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -12354,7 +12359,6 @@ components:
       properties:
         consumer:
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -12392,7 +12396,6 @@ components:
       properties:
         consumer:
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -12445,7 +12448,6 @@ components:
           nullable: true
         consumer:
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -12503,7 +12505,6 @@ components:
           nullable: true
         consumer:
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -12574,7 +12575,6 @@ components:
         set:
           description: The id (an UUID) of the key-set with which to associate the key.
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -12611,7 +12611,6 @@ components:
       properties:
         consumer:
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -12645,7 +12644,6 @@ components:
       properties:
         consumer:
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -12736,7 +12734,6 @@ components:
         set:
           description: The id (an UUID) of the key-set with which to associate the key.
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -12773,7 +12770,6 @@ components:
       properties:
         ca_certificate:
           type: object
-          additionalProperties: false
           properties:
             id:
               type: string
@@ -12783,7 +12779,6 @@ components:
           default: null
         consumer:
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -12819,7 +12814,6 @@ components:
       properties:
         ca_certificate:
           type: object
-          additionalProperties: false
           properties:
             id:
               type: string
@@ -12829,7 +12823,6 @@ components:
           default: null
         consumer:
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -12895,7 +12888,6 @@ components:
             restricted to consumers this way.). Leave unset for the plugin to
             activate regardless of the authenticated Consumer.
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -12905,7 +12897,6 @@ components:
           default: null
         consumer_group:
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -12977,7 +12968,6 @@ components:
             the specified route. Leave unset for the plugin to activate
             regardless of the Route being used.
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -12991,7 +12981,6 @@ components:
             one of the routes belonging to the specified Service. Leave unset
             for the plugin to activate regardless of the Service being matched.
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -13061,7 +13050,6 @@ components:
             restricted to consumers this way.). Leave unset for the plugin to
             activate regardless of the authenticated Consumer.
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -13071,7 +13059,6 @@ components:
           default: null
         consumer_group:
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -13143,7 +13130,6 @@ components:
             the specified route. Leave unset for the plugin to activate
             regardless of the Route being used.
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -13157,7 +13143,6 @@ components:
             one of the routes belonging to the specified Service. Leave unset
             for the plugin to activate regardless of the Service being matched.
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -13313,7 +13298,6 @@ components:
             The Service this Route is associated to. This is where the Route
             proxies traffic to.
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -13498,7 +13482,6 @@ components:
             The Service this Route is associated to. This is where the Route
             proxies traffic to.
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -13723,7 +13706,6 @@ components:
             The Service this Route is associated to. This is where the Route
             proxies traffic to.
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -13793,7 +13775,6 @@ components:
             hostname. The Certificate must have a valid private key associated
             with it to be used by the SNI object.
           type: object
-          additionalProperties: false
           properties:
             id:
               type: string
@@ -13846,7 +13827,6 @@ components:
             hostname. The Certificate must have a valid private key associated
             with it to be used by the SNI object.
           type: object
-          additionalProperties: false
           properties:
             id:
               type: string
@@ -13913,7 +13893,6 @@ components:
             Certificate to be used as client certificate while TLS handshaking
             to the upstream server.
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -14066,7 +14045,6 @@ components:
           readOnly: true
         upstream:
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -14126,7 +14104,6 @@ components:
           readOnly: true
         upstream:
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
@@ -14173,7 +14150,6 @@ components:
             If set, the certificate to be used as client certificate while TLS
             handshaking to the upstream server.
           type: object
-          additionalProperties: false
           nullable: true
           properties:
             id:
