@@ -19,6 +19,8 @@ type User struct {
 	PreferredName *string `json:"preferred_name,omitempty"`
 	// Returns True if a user has verified their email address.
 	Active *bool `json:"active,omitempty"`
+	// The Konnect region closest to the user's IP address. This property might only be set for users on signup through Konnect’s build-in native authentication.
+	InferredRegion *string `json:"inferred_region,omitempty"`
 	// The time stamp for the date the account was registered.
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	// A Unix timestamp representation of the most recent change to the User account.
@@ -69,6 +71,13 @@ func (o *User) GetActive() *bool {
 		return nil
 	}
 	return o.Active
+}
+
+func (o *User) GetInferredRegion() *string {
+	if o == nil {
+		return nil
+	}
+	return o.InferredRegion
 }
 
 func (o *User) GetCreatedAt() *time.Time {
