@@ -27,6 +27,13 @@ func newAuthentication(sdkConfig sdkConfiguration) *Authentication {
 // AuthenticateSso - SSO Callback
 // Callback for authenticating via an organization's IdP
 func (s *Authentication) AuthenticateSso(ctx context.Context, organizationLoginPath string, returnTo *string, opts ...operations.Option) (*operations.AuthenticateSsoResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "authenticate-sso",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	request := operations.AuthenticateSsoRequest{
 		OrganizationLoginPath: organizationLoginPath,
 		ReturnTo:              returnTo,
@@ -52,14 +59,6 @@ func (s *Authentication) AuthenticateSso(ctx context.Context, organizationLoginP
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/authenticate/{organizationLoginPath}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "authenticate-sso",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout

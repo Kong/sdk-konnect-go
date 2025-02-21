@@ -30,6 +30,13 @@ func newCACertificates(sdkConfig sdkConfiguration) *CACertificates {
 // ListCaCertificate - List all CA Certificates
 // List all CA Certificates
 func (s *CACertificates) ListCaCertificate(ctx context.Context, request operations.ListCaCertificateRequest, opts ...operations.Option) (*operations.ListCaCertificateResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "list-ca_certificate",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -51,14 +58,6 @@ func (s *CACertificates) ListCaCertificate(ctx context.Context, request operatio
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/ca_certificates", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "list-ca_certificate",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -256,6 +255,13 @@ func (s *CACertificates) ListCaCertificate(ctx context.Context, request operatio
 // CreateCaCertificate - Create a new CA Certificate
 // Create a new CA Certificate
 func (s *CACertificates) CreateCaCertificate(ctx context.Context, controlPlaneID string, caCertificate components.CACertificateInput, opts ...operations.Option) (*operations.CreateCaCertificateResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "create-ca_certificate",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	request := operations.CreateCaCertificateRequest{
 		ControlPlaneID: controlPlaneID,
 		CACertificate:  caCertificate,
@@ -284,13 +290,6 @@ func (s *CACertificates) CreateCaCertificate(ctx context.Context, controlPlaneID
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "create-ca_certificate",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CACertificate", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -490,6 +489,13 @@ func (s *CACertificates) CreateCaCertificate(ctx context.Context, controlPlaneID
 // DeleteCaCertificate - Delete a CA Certificate
 // Delete a CA Certificate
 func (s *CACertificates) DeleteCaCertificate(ctx context.Context, controlPlaneID string, caCertificateID string, opts ...operations.Option) (*operations.DeleteCaCertificateResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "delete-ca_certificate",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	request := operations.DeleteCaCertificateRequest{
 		ControlPlaneID:  controlPlaneID,
 		CACertificateID: caCertificateID,
@@ -516,14 +522,6 @@ func (s *CACertificates) DeleteCaCertificate(ctx context.Context, controlPlaneID
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/ca_certificates/{CACertificateId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "delete-ca_certificate",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -697,6 +695,13 @@ func (s *CACertificates) DeleteCaCertificate(ctx context.Context, controlPlaneID
 // GetCaCertificate - Fetch a CA Certificate
 // Get a CA Certificate using ID.
 func (s *CACertificates) GetCaCertificate(ctx context.Context, caCertificateID string, controlPlaneID string, opts ...operations.Option) (*operations.GetCaCertificateResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "get-ca_certificate",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	request := operations.GetCaCertificateRequest{
 		CACertificateID: caCertificateID,
 		ControlPlaneID:  controlPlaneID,
@@ -723,14 +728,6 @@ func (s *CACertificates) GetCaCertificate(ctx context.Context, caCertificateID s
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/ca_certificates/{CACertificateId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "get-ca_certificate",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -926,6 +923,13 @@ func (s *CACertificates) GetCaCertificate(ctx context.Context, caCertificateID s
 // UpsertCaCertificate - Upsert a CA Certificate
 // Create or Update CA Certificate using ID.
 func (s *CACertificates) UpsertCaCertificate(ctx context.Context, request operations.UpsertCaCertificateRequest, opts ...operations.Option) (*operations.UpsertCaCertificateResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "upsert-ca_certificate",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -949,13 +953,6 @@ func (s *CACertificates) UpsertCaCertificate(ctx context.Context, request operat
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "upsert-ca_certificate",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CACertificate", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err

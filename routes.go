@@ -52,6 +52,13 @@ func newRoutes(sdkConfig sdkConfiguration) *Routes {
 // ListRoute - List all Routes
 // List all Routes
 func (s *Routes) ListRoute(ctx context.Context, request operations.ListRouteRequest, opts ...operations.Option) (*operations.ListRouteResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "list-route",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -73,14 +80,6 @@ func (s *Routes) ListRoute(ctx context.Context, request operations.ListRouteRequ
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/routes", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "list-route",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -278,6 +277,13 @@ func (s *Routes) ListRoute(ctx context.Context, request operations.ListRouteRequ
 // CreateRoute - Create a new Route
 // Create a new Route
 func (s *Routes) CreateRoute(ctx context.Context, controlPlaneID string, route components.RouteInput, opts ...operations.Option) (*operations.CreateRouteResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "create-route",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	request := operations.CreateRouteRequest{
 		ControlPlaneID: controlPlaneID,
 		Route:          route,
@@ -306,13 +312,6 @@ func (s *Routes) CreateRoute(ctx context.Context, controlPlaneID string, route c
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "create-route",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Route", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -512,6 +511,13 @@ func (s *Routes) CreateRoute(ctx context.Context, controlPlaneID string, route c
 // DeleteRoute - Delete a Route
 // Delete a Route
 func (s *Routes) DeleteRoute(ctx context.Context, controlPlaneID string, routeID string, opts ...operations.Option) (*operations.DeleteRouteResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "delete-route",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	request := operations.DeleteRouteRequest{
 		ControlPlaneID: controlPlaneID,
 		RouteID:        routeID,
@@ -538,14 +544,6 @@ func (s *Routes) DeleteRoute(ctx context.Context, controlPlaneID string, routeID
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "delete-route",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -719,6 +717,13 @@ func (s *Routes) DeleteRoute(ctx context.Context, controlPlaneID string, routeID
 // GetRoute - Fetch a Route
 // Get a Route using ID or name.
 func (s *Routes) GetRoute(ctx context.Context, routeID string, controlPlaneID string, opts ...operations.Option) (*operations.GetRouteResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "get-route",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	request := operations.GetRouteRequest{
 		RouteID:        routeID,
 		ControlPlaneID: controlPlaneID,
@@ -745,14 +750,6 @@ func (s *Routes) GetRoute(ctx context.Context, routeID string, controlPlaneID st
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "get-route",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -948,6 +945,13 @@ func (s *Routes) GetRoute(ctx context.Context, routeID string, controlPlaneID st
 // UpsertRoute - Upsert a Route
 // Create or Update Route using ID or name.
 func (s *Routes) UpsertRoute(ctx context.Context, request operations.UpsertRouteRequest, opts ...operations.Option) (*operations.UpsertRouteResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "upsert-route",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -971,13 +975,6 @@ func (s *Routes) UpsertRoute(ctx context.Context, request operations.UpsertRoute
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "upsert-route",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Route", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -1177,6 +1174,13 @@ func (s *Routes) UpsertRoute(ctx context.Context, request operations.UpsertRoute
 // ListRouteWithService - List all Routes associated with a Service
 // List all Routes associated with a Service
 func (s *Routes) ListRouteWithService(ctx context.Context, request operations.ListRouteWithServiceRequest, opts ...operations.Option) (*operations.ListRouteWithServiceResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "list-route-with-service",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1198,14 +1202,6 @@ func (s *Routes) ListRouteWithService(ctx context.Context, request operations.Li
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/routes", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "list-route-with-service",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1382,6 +1378,13 @@ func (s *Routes) ListRouteWithService(ctx context.Context, request operations.Li
 // CreateRouteWithService - Create a new Route associated with a Service
 // Create a new Route associated with a Service
 func (s *Routes) CreateRouteWithService(ctx context.Context, request operations.CreateRouteWithServiceRequest, opts ...operations.Option) (*operations.CreateRouteWithServiceResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "create-route-with-service",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1405,13 +1408,6 @@ func (s *Routes) CreateRouteWithService(ctx context.Context, request operations.
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "create-route-with-service",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RouteWithoutParents", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -1590,6 +1586,13 @@ func (s *Routes) CreateRouteWithService(ctx context.Context, request operations.
 // DeleteRouteWithService - Delete a a Route associated with a Service
 // Delete a a Route associated with a Service using ID or name.
 func (s *Routes) DeleteRouteWithService(ctx context.Context, request operations.DeleteRouteWithServiceRequest, opts ...operations.Option) (*operations.DeleteRouteWithServiceResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "delete-route-with-service",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1611,14 +1614,6 @@ func (s *Routes) DeleteRouteWithService(ctx context.Context, request operations.
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/routes/{RouteId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "delete-route-with-service",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1771,6 +1766,13 @@ func (s *Routes) DeleteRouteWithService(ctx context.Context, request operations.
 // GetRouteWithService - Fetch a Route associated with a Service
 // Get a Route associated with a Service using ID or name.
 func (s *Routes) GetRouteWithService(ctx context.Context, request operations.GetRouteWithServiceRequest, opts ...operations.Option) (*operations.GetRouteWithServiceResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "get-route-with-service",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1792,14 +1794,6 @@ func (s *Routes) GetRouteWithService(ctx context.Context, request operations.Get
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/routes/{RouteId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "get-route-with-service",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1974,6 +1968,13 @@ func (s *Routes) GetRouteWithService(ctx context.Context, request operations.Get
 // UpsertRouteWithService - Upsert a Route associated with a Service
 // Create or Update a Route associated with a Service using ID or name.
 func (s *Routes) UpsertRouteWithService(ctx context.Context, request operations.UpsertRouteWithServiceRequest, opts ...operations.Option) (*operations.UpsertRouteWithServiceResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "upsert-route-with-service",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1997,13 +1998,6 @@ func (s *Routes) UpsertRouteWithService(ctx context.Context, request operations.
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "upsert-route-with-service",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "RouteWithoutParents", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err

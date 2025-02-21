@@ -29,6 +29,13 @@ func newConfigStoreSecrets(sdkConfig sdkConfiguration) *ConfigStoreSecrets {
 // CreateConfigStoreSecret - Create Config Store Secret
 // Creates a secret for a Config Store.
 func (s *ConfigStoreSecrets) CreateConfigStoreSecret(ctx context.Context, request operations.CreateConfigStoreSecretRequest, opts ...operations.Option) (*operations.CreateConfigStoreSecretResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "create-config-store-secret",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -52,13 +59,6 @@ func (s *ConfigStoreSecrets) CreateConfigStoreSecret(ctx context.Context, reques
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "create-config-store-secret",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateConfigStoreSecret", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -342,6 +342,13 @@ func (s *ConfigStoreSecrets) CreateConfigStoreSecret(ctx context.Context, reques
 // ListConfigStoreSecrets - List Config Store Secrets
 // Returns a collection of all secrets for a Config Store.
 func (s *ConfigStoreSecrets) ListConfigStoreSecrets(ctx context.Context, request operations.ListConfigStoreSecretsRequest, opts ...operations.Option) (*operations.ListConfigStoreSecretsResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "list-config-store-secrets",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -363,14 +370,6 @@ func (s *ConfigStoreSecrets) ListConfigStoreSecrets(ctx context.Context, request
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "list-config-store-secrets",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -631,6 +630,13 @@ func (s *ConfigStoreSecrets) ListConfigStoreSecrets(ctx context.Context, request
 // GetConfigStoreSecret - Fetch Config Store Secret
 // Returns a secret for the Config Store.
 func (s *ConfigStoreSecrets) GetConfigStoreSecret(ctx context.Context, request operations.GetConfigStoreSecretRequest, opts ...operations.Option) (*operations.GetConfigStoreSecretResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "get-config-store-secret",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -652,14 +658,6 @@ func (s *ConfigStoreSecrets) GetConfigStoreSecret(ctx context.Context, request o
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets/{key}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "get-config-store-secret",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -895,6 +893,13 @@ func (s *ConfigStoreSecrets) GetConfigStoreSecret(ctx context.Context, request o
 // UpdateConfigStoreSecret - Update Config Store Secret
 // Updates a secret for a Config Store.
 func (s *ConfigStoreSecrets) UpdateConfigStoreSecret(ctx context.Context, request operations.UpdateConfigStoreSecretRequest, opts ...operations.Option) (*operations.UpdateConfigStoreSecretResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "update-config-store-secret",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -918,13 +923,6 @@ func (s *ConfigStoreSecrets) UpdateConfigStoreSecret(ctx context.Context, reques
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "update-config-store-secret",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateConfigStoreSecret", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -1208,6 +1206,13 @@ func (s *ConfigStoreSecrets) UpdateConfigStoreSecret(ctx context.Context, reques
 // DeleteConfigStoreSecret - Delete Config Store Secret
 // Removes a secret from a Config Store.
 func (s *ConfigStoreSecrets) DeleteConfigStoreSecret(ctx context.Context, request operations.DeleteConfigStoreSecretRequest, opts ...operations.Option) (*operations.DeleteConfigStoreSecretResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "delete-config-store-secret",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1229,14 +1234,6 @@ func (s *ConfigStoreSecrets) DeleteConfigStoreSecret(ctx context.Context, reques
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets/{key}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "delete-config-store-secret",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout

@@ -34,6 +34,13 @@ func newPlugins(sdkConfig sdkConfiguration) *Plugins {
 // ListPluginWithConsumerGroup - List all Plugins associated with a Consumer Group
 // List all Plugins associated with a Consumer Group
 func (s *Plugins) ListPluginWithConsumerGroup(ctx context.Context, request operations.ListPluginWithConsumerGroupRequest, opts ...operations.Option) (*operations.ListPluginWithConsumerGroupResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "list-plugin-with-consumer_group",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -55,14 +62,6 @@ func (s *Plugins) ListPluginWithConsumerGroup(ctx context.Context, request opera
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "list-plugin-with-consumer_group",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -239,6 +238,13 @@ func (s *Plugins) ListPluginWithConsumerGroup(ctx context.Context, request opera
 // CreatePluginWithConsumerGroup - Create a new Plugin associated with a Consumer Group
 // Create a new Plugin associated with a Consumer Group
 func (s *Plugins) CreatePluginWithConsumerGroup(ctx context.Context, request operations.CreatePluginWithConsumerGroupRequest, opts ...operations.Option) (*operations.CreatePluginWithConsumerGroupResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "create-plugin-with-consumer_group",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -262,13 +268,6 @@ func (s *Plugins) CreatePluginWithConsumerGroup(ctx context.Context, request ope
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "create-plugin-with-consumer_group",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -447,6 +446,13 @@ func (s *Plugins) CreatePluginWithConsumerGroup(ctx context.Context, request ope
 // DeletePluginWithConsumerGroup - Delete a a Plugin associated with a Consumer Group
 // Delete a a Plugin associated with a Consumer Group using ID.
 func (s *Plugins) DeletePluginWithConsumerGroup(ctx context.Context, request operations.DeletePluginWithConsumerGroupRequest, opts ...operations.Option) (*operations.DeletePluginWithConsumerGroupResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "delete-plugin-with-consumer_group",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -468,14 +474,6 @@ func (s *Plugins) DeletePluginWithConsumerGroup(ctx context.Context, request ope
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "delete-plugin-with-consumer_group",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -628,6 +626,13 @@ func (s *Plugins) DeletePluginWithConsumerGroup(ctx context.Context, request ope
 // GetPluginWithConsumerGroup - Fetch a Plugin associated with a Consumer Group
 // Get a Plugin associated with a Consumer Group using ID.
 func (s *Plugins) GetPluginWithConsumerGroup(ctx context.Context, request operations.GetPluginWithConsumerGroupRequest, opts ...operations.Option) (*operations.GetPluginWithConsumerGroupResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "get-plugin-with-consumer_group",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -649,14 +654,6 @@ func (s *Plugins) GetPluginWithConsumerGroup(ctx context.Context, request operat
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "get-plugin-with-consumer_group",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -831,6 +828,13 @@ func (s *Plugins) GetPluginWithConsumerGroup(ctx context.Context, request operat
 // UpsertPluginWithConsumerGroup - Upsert a Plugin associated with a Consumer Group
 // Create or Update a Plugin associated with a Consumer Group using ID.
 func (s *Plugins) UpsertPluginWithConsumerGroup(ctx context.Context, request operations.UpsertPluginWithConsumerGroupRequest, opts ...operations.Option) (*operations.UpsertPluginWithConsumerGroupResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "upsert-plugin-with-consumer_group",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -854,13 +858,6 @@ func (s *Plugins) UpsertPluginWithConsumerGroup(ctx context.Context, request ope
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "upsert-plugin-with-consumer_group",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -1039,6 +1036,13 @@ func (s *Plugins) UpsertPluginWithConsumerGroup(ctx context.Context, request ope
 // ListPluginWithConsumer - List all Plugins associated with a Consumer
 // List all Plugins associated with a Consumer
 func (s *Plugins) ListPluginWithConsumer(ctx context.Context, request operations.ListPluginWithConsumerRequest, opts ...operations.Option) (*operations.ListPluginWithConsumerResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "list-plugin-with-consumer",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1060,14 +1064,6 @@ func (s *Plugins) ListPluginWithConsumer(ctx context.Context, request operations
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/plugins", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "list-plugin-with-consumer",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1244,6 +1240,13 @@ func (s *Plugins) ListPluginWithConsumer(ctx context.Context, request operations
 // CreatePluginWithConsumer - Create a new Plugin associated with a Consumer
 // Create a new Plugin associated with a Consumer
 func (s *Plugins) CreatePluginWithConsumer(ctx context.Context, request operations.CreatePluginWithConsumerRequest, opts ...operations.Option) (*operations.CreatePluginWithConsumerResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "create-plugin-with-consumer",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1267,13 +1270,6 @@ func (s *Plugins) CreatePluginWithConsumer(ctx context.Context, request operatio
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "create-plugin-with-consumer",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -1452,6 +1448,13 @@ func (s *Plugins) CreatePluginWithConsumer(ctx context.Context, request operatio
 // DeletePluginWithConsumer - Delete a a Plugin associated with a Consumer
 // Delete a a Plugin associated with a Consumer using ID.
 func (s *Plugins) DeletePluginWithConsumer(ctx context.Context, request operations.DeletePluginWithConsumerRequest, opts ...operations.Option) (*operations.DeletePluginWithConsumerResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "delete-plugin-with-consumer",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1473,14 +1476,6 @@ func (s *Plugins) DeletePluginWithConsumer(ctx context.Context, request operatio
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "delete-plugin-with-consumer",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1633,6 +1628,13 @@ func (s *Plugins) DeletePluginWithConsumer(ctx context.Context, request operatio
 // GetPluginWithConsumer - Fetch a Plugin associated with a Consumer
 // Get a Plugin associated with a Consumer using ID.
 func (s *Plugins) GetPluginWithConsumer(ctx context.Context, request operations.GetPluginWithConsumerRequest, opts ...operations.Option) (*operations.GetPluginWithConsumerResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "get-plugin-with-consumer",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1654,14 +1656,6 @@ func (s *Plugins) GetPluginWithConsumer(ctx context.Context, request operations.
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "get-plugin-with-consumer",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1836,6 +1830,13 @@ func (s *Plugins) GetPluginWithConsumer(ctx context.Context, request operations.
 // UpsertPluginWithConsumer - Upsert a Plugin associated with a Consumer
 // Create or Update a Plugin associated with a Consumer using ID.
 func (s *Plugins) UpsertPluginWithConsumer(ctx context.Context, request operations.UpsertPluginWithConsumerRequest, opts ...operations.Option) (*operations.UpsertPluginWithConsumerResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "upsert-plugin-with-consumer",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1859,13 +1860,6 @@ func (s *Plugins) UpsertPluginWithConsumer(ctx context.Context, request operatio
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "upsert-plugin-with-consumer",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -2044,6 +2038,13 @@ func (s *Plugins) UpsertPluginWithConsumer(ctx context.Context, request operatio
 // ListPlugin - List all Plugins
 // List all Plugins
 func (s *Plugins) ListPlugin(ctx context.Context, request operations.ListPluginRequest, opts ...operations.Option) (*operations.ListPluginResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "list-plugin",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -2065,14 +2066,6 @@ func (s *Plugins) ListPlugin(ctx context.Context, request operations.ListPluginR
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/plugins", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "list-plugin",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -2270,6 +2263,13 @@ func (s *Plugins) ListPlugin(ctx context.Context, request operations.ListPluginR
 // CreatePlugin - Create a new Plugin
 // Create a new Plugin
 func (s *Plugins) CreatePlugin(ctx context.Context, controlPlaneID string, plugin components.PluginInput, opts ...operations.Option) (*operations.CreatePluginResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "create-plugin",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	request := operations.CreatePluginRequest{
 		ControlPlaneID: controlPlaneID,
 		Plugin:         plugin,
@@ -2298,13 +2298,6 @@ func (s *Plugins) CreatePlugin(ctx context.Context, controlPlaneID string, plugi
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "create-plugin",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Plugin", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -2504,6 +2497,13 @@ func (s *Plugins) CreatePlugin(ctx context.Context, controlPlaneID string, plugi
 // DeletePlugin - Delete a Plugin
 // Delete a Plugin
 func (s *Plugins) DeletePlugin(ctx context.Context, controlPlaneID string, pluginID string, opts ...operations.Option) (*operations.DeletePluginResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "delete-plugin",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	request := operations.DeletePluginRequest{
 		ControlPlaneID: controlPlaneID,
 		PluginID:       pluginID,
@@ -2530,14 +2530,6 @@ func (s *Plugins) DeletePlugin(ctx context.Context, controlPlaneID string, plugi
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "delete-plugin",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -2711,6 +2703,13 @@ func (s *Plugins) DeletePlugin(ctx context.Context, controlPlaneID string, plugi
 // GetPlugin - Fetch a Plugin
 // Get a Plugin using ID.
 func (s *Plugins) GetPlugin(ctx context.Context, pluginID string, controlPlaneID string, opts ...operations.Option) (*operations.GetPluginResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "get-plugin",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	request := operations.GetPluginRequest{
 		PluginID:       pluginID,
 		ControlPlaneID: controlPlaneID,
@@ -2737,14 +2736,6 @@ func (s *Plugins) GetPlugin(ctx context.Context, pluginID string, controlPlaneID
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "get-plugin",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -2940,6 +2931,13 @@ func (s *Plugins) GetPlugin(ctx context.Context, pluginID string, controlPlaneID
 // UpsertPlugin - Upsert a Plugin
 // Create or Update Plugin using ID.
 func (s *Plugins) UpsertPlugin(ctx context.Context, request operations.UpsertPluginRequest, opts ...operations.Option) (*operations.UpsertPluginResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "upsert-plugin",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -2963,13 +2961,6 @@ func (s *Plugins) UpsertPlugin(ctx context.Context, request operations.UpsertPlu
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "upsert-plugin",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Plugin", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -3169,6 +3160,13 @@ func (s *Plugins) UpsertPlugin(ctx context.Context, request operations.UpsertPlu
 // ListPluginWithRoute - List all Plugins associated with a Route
 // List all Plugins associated with a Route
 func (s *Plugins) ListPluginWithRoute(ctx context.Context, request operations.ListPluginWithRouteRequest, opts ...operations.Option) (*operations.ListPluginWithRouteResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "list-plugin-with-route",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -3190,14 +3188,6 @@ func (s *Plugins) ListPluginWithRoute(ctx context.Context, request operations.Li
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}/plugins", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "list-plugin-with-route",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -3374,6 +3364,13 @@ func (s *Plugins) ListPluginWithRoute(ctx context.Context, request operations.Li
 // CreatePluginWithRoute - Create a new Plugin associated with a Route
 // Create a new Plugin associated with a Route
 func (s *Plugins) CreatePluginWithRoute(ctx context.Context, request operations.CreatePluginWithRouteRequest, opts ...operations.Option) (*operations.CreatePluginWithRouteResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "create-plugin-with-route",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -3397,13 +3394,6 @@ func (s *Plugins) CreatePluginWithRoute(ctx context.Context, request operations.
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "create-plugin-with-route",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -3582,6 +3572,13 @@ func (s *Plugins) CreatePluginWithRoute(ctx context.Context, request operations.
 // DeletePluginWithRoute - Delete a a Plugin associated with a Route
 // Delete a a Plugin associated with a Route using ID.
 func (s *Plugins) DeletePluginWithRoute(ctx context.Context, request operations.DeletePluginWithRouteRequest, opts ...operations.Option) (*operations.DeletePluginWithRouteResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "delete-plugin-with-route",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -3603,14 +3600,6 @@ func (s *Plugins) DeletePluginWithRoute(ctx context.Context, request operations.
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "delete-plugin-with-route",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -3763,6 +3752,13 @@ func (s *Plugins) DeletePluginWithRoute(ctx context.Context, request operations.
 // GetPluginWithRoute - Fetch a Plugin associated with a Route
 // Get a Plugin associated with a Route using ID.
 func (s *Plugins) GetPluginWithRoute(ctx context.Context, request operations.GetPluginWithRouteRequest, opts ...operations.Option) (*operations.GetPluginWithRouteResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "get-plugin-with-route",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -3784,14 +3780,6 @@ func (s *Plugins) GetPluginWithRoute(ctx context.Context, request operations.Get
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "get-plugin-with-route",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -3966,6 +3954,13 @@ func (s *Plugins) GetPluginWithRoute(ctx context.Context, request operations.Get
 // UpsertPluginWithRoute - Upsert a Plugin associated with a Route
 // Create or Update a Plugin associated with a Route using ID.
 func (s *Plugins) UpsertPluginWithRoute(ctx context.Context, request operations.UpsertPluginWithRouteRequest, opts ...operations.Option) (*operations.UpsertPluginWithRouteResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "upsert-plugin-with-route",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -3989,13 +3984,6 @@ func (s *Plugins) UpsertPluginWithRoute(ctx context.Context, request operations.
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "upsert-plugin-with-route",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -4174,6 +4162,13 @@ func (s *Plugins) UpsertPluginWithRoute(ctx context.Context, request operations.
 // FetchPluginSchema - Fetch plugin schema
 // Get the schema for a plugin
 func (s *Plugins) FetchPluginSchema(ctx context.Context, pluginName string, controlPlaneID string, opts ...operations.Option) (*operations.FetchPluginSchemaResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "fetch-plugin-schema",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	request := operations.FetchPluginSchemaRequest{
 		PluginName:     pluginName,
 		ControlPlaneID: controlPlaneID,
@@ -4200,14 +4195,6 @@ func (s *Plugins) FetchPluginSchema(ctx context.Context, pluginName string, cont
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/schemas/plugins/{pluginName}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "fetch-plugin-schema",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -4380,6 +4367,13 @@ func (s *Plugins) FetchPluginSchema(ctx context.Context, pluginName string, cont
 // ListPluginWithService - List all Plugins associated with a Service
 // List all Plugins associated with a Service
 func (s *Plugins) ListPluginWithService(ctx context.Context, request operations.ListPluginWithServiceRequest, opts ...operations.Option) (*operations.ListPluginWithServiceResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "list-plugin-with-service",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -4401,14 +4395,6 @@ func (s *Plugins) ListPluginWithService(ctx context.Context, request operations.
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/plugins", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "list-plugin-with-service",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -4585,6 +4571,13 @@ func (s *Plugins) ListPluginWithService(ctx context.Context, request operations.
 // CreatePluginWithService - Create a new Plugin associated with a Service
 // Create a new Plugin associated with a Service
 func (s *Plugins) CreatePluginWithService(ctx context.Context, request operations.CreatePluginWithServiceRequest, opts ...operations.Option) (*operations.CreatePluginWithServiceResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "create-plugin-with-service",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -4608,13 +4601,6 @@ func (s *Plugins) CreatePluginWithService(ctx context.Context, request operation
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "create-plugin-with-service",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -4793,6 +4779,13 @@ func (s *Plugins) CreatePluginWithService(ctx context.Context, request operation
 // DeletePluginWithService - Delete a a Plugin associated with a Service
 // Delete a a Plugin associated with a Service using ID.
 func (s *Plugins) DeletePluginWithService(ctx context.Context, request operations.DeletePluginWithServiceRequest, opts ...operations.Option) (*operations.DeletePluginWithServiceResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "delete-plugin-with-service",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -4814,14 +4807,6 @@ func (s *Plugins) DeletePluginWithService(ctx context.Context, request operation
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "delete-plugin-with-service",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -4974,6 +4959,13 @@ func (s *Plugins) DeletePluginWithService(ctx context.Context, request operation
 // GetPluginWithService - Fetch a Plugin associated with a Service
 // Get a Plugin associated with a Service using ID.
 func (s *Plugins) GetPluginWithService(ctx context.Context, request operations.GetPluginWithServiceRequest, opts ...operations.Option) (*operations.GetPluginWithServiceResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "get-plugin-with-service",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -4995,14 +4987,6 @@ func (s *Plugins) GetPluginWithService(ctx context.Context, request operations.G
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/plugins/{PluginId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "get-plugin-with-service",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -5177,6 +5161,13 @@ func (s *Plugins) GetPluginWithService(ctx context.Context, request operations.G
 // UpsertPluginWithService - Upsert a Plugin associated with a Service
 // Create or Update a Plugin associated with a Service using ID.
 func (s *Plugins) UpsertPluginWithService(ctx context.Context, request operations.UpsertPluginWithServiceRequest, opts ...operations.Option) (*operations.UpsertPluginWithServiceResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "upsert-plugin-with-service",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -5200,13 +5191,6 @@ func (s *Plugins) UpsertPluginWithService(ctx context.Context, request operation
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "upsert-plugin-with-service",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PluginWithoutParents", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err

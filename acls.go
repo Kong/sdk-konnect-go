@@ -28,6 +28,13 @@ func newACLs(sdkConfig sdkConfiguration) *ACLs {
 // ListACL - List all ACLs
 // List all ACLs
 func (s *ACLs) ListACL(ctx context.Context, request operations.ListACLRequest, opts ...operations.Option) (*operations.ListACLResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "list-acl",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -49,14 +56,6 @@ func (s *ACLs) ListACL(ctx context.Context, request operations.ListACLRequest, o
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/acls", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "list-acl",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -254,6 +253,13 @@ func (s *ACLs) ListACL(ctx context.Context, request operations.ListACLRequest, o
 // GetACL - Fetch an ACL
 // Get an ACL using ID.
 func (s *ACLs) GetACL(ctx context.Context, aclID string, controlPlaneID string, opts ...operations.Option) (*operations.GetACLResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "get-acl",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	request := operations.GetACLRequest{
 		ACLID:          aclID,
 		ControlPlaneID: controlPlaneID,
@@ -280,14 +286,6 @@ func (s *ACLs) GetACL(ctx context.Context, aclID string, controlPlaneID string, 
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/acls/{ACLId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "get-acl",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -483,6 +481,13 @@ func (s *ACLs) GetACL(ctx context.Context, aclID string, controlPlaneID string, 
 // ListACLWithConsumer - List all ACLs associated with a Consumer
 // List all ACLs associated with a Consumer
 func (s *ACLs) ListACLWithConsumer(ctx context.Context, request operations.ListACLWithConsumerRequest, opts ...operations.Option) (*operations.ListACLWithConsumerResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "list-acl-with-consumer",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -504,14 +509,6 @@ func (s *ACLs) ListACLWithConsumer(ctx context.Context, request operations.ListA
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/acls", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "list-acl-with-consumer",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -688,6 +685,13 @@ func (s *ACLs) ListACLWithConsumer(ctx context.Context, request operations.ListA
 // CreateACLWithConsumer - Create a new ACL associated with a Consumer
 // Create a new ACL associated with a Consumer
 func (s *ACLs) CreateACLWithConsumer(ctx context.Context, request operations.CreateACLWithConsumerRequest, opts ...operations.Option) (*operations.CreateACLWithConsumerResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "create-acl-with-consumer",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -711,13 +715,6 @@ func (s *ACLs) CreateACLWithConsumer(ctx context.Context, request operations.Cre
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "create-acl-with-consumer",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "ACLWithoutParents", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -896,6 +893,13 @@ func (s *ACLs) CreateACLWithConsumer(ctx context.Context, request operations.Cre
 // DeleteACLWithConsumer - Delete a an ACL associated with a Consumer
 // Delete a an ACL associated with a Consumer using ID.
 func (s *ACLs) DeleteACLWithConsumer(ctx context.Context, request operations.DeleteACLWithConsumerRequest, opts ...operations.Option) (*operations.DeleteACLWithConsumerResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "delete-acl-with-consumer",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -917,14 +921,6 @@ func (s *ACLs) DeleteACLWithConsumer(ctx context.Context, request operations.Del
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/acls/{ACLId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "delete-acl-with-consumer",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1077,6 +1073,13 @@ func (s *ACLs) DeleteACLWithConsumer(ctx context.Context, request operations.Del
 // GetACLWithConsumer - Fetch an ACL associated with a Consumer
 // Get an ACL associated with a Consumer using ID.
 func (s *ACLs) GetACLWithConsumer(ctx context.Context, request operations.GetACLWithConsumerRequest, opts ...operations.Option) (*operations.GetACLWithConsumerResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "get-acl-with-consumer",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1098,14 +1101,6 @@ func (s *ACLs) GetACLWithConsumer(ctx context.Context, request operations.GetACL
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/acls/{ACLId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "get-acl-with-consumer",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1280,6 +1275,13 @@ func (s *ACLs) GetACLWithConsumer(ctx context.Context, request operations.GetACL
 // UpsertACLWithConsumer - Upsert an ACL associated with a Consumer
 // Create or Update an ACL associated with a Consumer using ID.
 func (s *ACLs) UpsertACLWithConsumer(ctx context.Context, request operations.UpsertACLWithConsumerRequest, opts ...operations.Option) (*operations.UpsertACLWithConsumerResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "upsert-acl-with-consumer",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1303,13 +1305,6 @@ func (s *ACLs) UpsertACLWithConsumer(ctx context.Context, request operations.Ups
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "upsert-acl-with-consumer",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "ACLWithoutParents", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err

@@ -29,6 +29,13 @@ func newMe(sdkConfig sdkConfiguration) *Me {
 // GetOrganizationsMe - Retrieve My Organization
 // Returns the organization of the user identified in the token of the request.
 func (s *Me) GetOrganizationsMe(ctx context.Context, opts ...operations.Option) (*operations.GetOrganizationsMeResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "get-organizations-me",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -49,14 +56,6 @@ func (s *Me) GetOrganizationsMe(ctx context.Context, opts ...operations.Option) 
 	opURL, err := url.JoinPath(baseURL, "/v3/organizations/me")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "get-organizations-me",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -250,6 +249,13 @@ func (s *Me) GetOrganizationsMe(ctx context.Context, opts ...operations.Option) 
 // GetUsersMe - Retrieve My User Account
 // Returns the user account for the user identified in the token of the request.
 func (s *Me) GetUsersMe(ctx context.Context, opts ...operations.Option) (*operations.GetUsersMeResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "get-users-me",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -270,14 +276,6 @@ func (s *Me) GetUsersMe(ctx context.Context, opts ...operations.Option) (*operat
 	opURL, err := url.JoinPath(baseURL, "/v3/users/me")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "get-users-me",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout

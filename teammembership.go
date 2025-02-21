@@ -28,6 +28,13 @@ func newTeamMembership(sdkConfig sdkConfiguration) *TeamMembership {
 // ListTeamUsers - List Team Users
 // Returns a paginated list of users that belong to the team specified in the path parameter.
 func (s *TeamMembership) ListTeamUsers(ctx context.Context, request operations.ListTeamUsersRequest, opts ...operations.Option) (*operations.ListTeamUsersResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "list-team-users",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -48,14 +55,6 @@ func (s *TeamMembership) ListTeamUsers(ctx context.Context, request operations.L
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/teams/{teamId}/users", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "list-team-users",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -274,6 +273,13 @@ func (s *TeamMembership) ListTeamUsers(ctx context.Context, request operations.L
 // AddUserToTeam - Add User
 // Adds a user to a team.
 func (s *TeamMembership) AddUserToTeam(ctx context.Context, teamID string, addUserToTeam *components.AddUserToTeam, opts ...operations.Option) (*operations.AddUserToTeamResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "add-user-to-team",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	request := operations.AddUserToTeamRequest{
 		TeamID:        teamID,
 		AddUserToTeam: addUserToTeam,
@@ -301,13 +307,6 @@ func (s *TeamMembership) AddUserToTeam(ctx context.Context, teamID string, addUs
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "add-user-to-team",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "AddUserToTeam", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -530,6 +529,13 @@ func (s *TeamMembership) AddUserToTeam(ctx context.Context, teamID string, addUs
 // Removes a user from a team.
 // If the user was removed, returns a 204 empty response. Returns 404 if the user or team were not found.
 func (s *TeamMembership) RemoveUserFromTeam(ctx context.Context, userID string, teamID string, opts ...operations.Option) (*operations.RemoveUserFromTeamResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "remove-user-from-team",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	request := operations.RemoveUserFromTeamRequest{
 		UserID: userID,
 		TeamID: teamID,
@@ -555,14 +561,6 @@ func (s *TeamMembership) RemoveUserFromTeam(ctx context.Context, userID string, 
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/teams/{teamId}/users/{userId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "remove-user-from-team",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -757,6 +755,13 @@ func (s *TeamMembership) RemoveUserFromTeam(ctx context.Context, userID string, 
 // ListUserTeams - List User Teams
 // Returns a paginated list of a teams that the user belongs to.
 func (s *TeamMembership) ListUserTeams(ctx context.Context, request operations.ListUserTeamsRequest, opts ...operations.Option) (*operations.ListUserTeamsResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "list-user-teams",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -777,14 +782,6 @@ func (s *TeamMembership) ListUserTeams(ctx context.Context, request operations.L
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/users/{userId}/teams", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "list-user-teams",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout

@@ -28,6 +28,13 @@ func newSystemAccountsTeamMembership(sdkConfig sdkConfiguration) *SystemAccounts
 // GetSystemAccountsAccountIDTeams - List Teams for a System Account
 // Returns a paginated list of a teams that the system account belongs to.
 func (s *SystemAccountsTeamMembership) GetSystemAccountsAccountIDTeams(ctx context.Context, request operations.GetSystemAccountsAccountIDTeamsRequest, opts ...operations.Option) (*operations.GetSystemAccountsAccountIDTeamsResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "get-system-accounts-accountId-teams",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -48,14 +55,6 @@ func (s *SystemAccountsTeamMembership) GetSystemAccountsAccountIDTeams(ctx conte
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/system-accounts/{accountId}/teams", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "get-system-accounts-accountId-teams",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -276,6 +275,13 @@ func (s *SystemAccountsTeamMembership) GetSystemAccountsAccountIDTeams(ctx conte
 // GetTeamsTeamIDSystemAccounts - List System Accounts on a Team
 // Returns a paginated list of system accounts that belong to the team specified in the path parameter.
 func (s *SystemAccountsTeamMembership) GetTeamsTeamIDSystemAccounts(ctx context.Context, request operations.GetTeamsTeamIDSystemAccountsRequest, opts ...operations.Option) (*operations.GetTeamsTeamIDSystemAccountsResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "get-teams-teamId-system-accounts",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -296,14 +302,6 @@ func (s *SystemAccountsTeamMembership) GetTeamsTeamIDSystemAccounts(ctx context.
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/teams/{teamId}/system-accounts", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "get-teams-teamId-system-accounts",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -524,6 +522,13 @@ func (s *SystemAccountsTeamMembership) GetTeamsTeamIDSystemAccounts(ctx context.
 // PostTeamsTeamIDSystemAccounts - Add System Account to a Team
 // Adds a system account to a team. Returns a 409 if the system account is already a member of the team.
 func (s *SystemAccountsTeamMembership) PostTeamsTeamIDSystemAccounts(ctx context.Context, teamID string, addSystemAccountToTeam *components.AddSystemAccountToTeam, opts ...operations.Option) (*operations.PostTeamsTeamIDSystemAccountsResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "post-teams-teamId-system-accounts",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	request := operations.PostTeamsTeamIDSystemAccountsRequest{
 		TeamID:                 teamID,
 		AddSystemAccountToTeam: addSystemAccountToTeam,
@@ -551,13 +556,6 @@ func (s *SystemAccountsTeamMembership) PostTeamsTeamIDSystemAccounts(ctx context
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "post-teams-teamId-system-accounts",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "AddSystemAccountToTeam", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -781,6 +779,13 @@ func (s *SystemAccountsTeamMembership) PostTeamsTeamIDSystemAccounts(ctx context
 // DeleteTeamsTeamIDSystemAccountsAccountID - Remove System Account From Team
 // Removes a system account from a team. Returns 404 if the team or system account were not found.
 func (s *SystemAccountsTeamMembership) DeleteTeamsTeamIDSystemAccountsAccountID(ctx context.Context, teamID string, accountID string, opts ...operations.Option) (*operations.DeleteTeamsTeamIDSystemAccountsAccountIDResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "delete-teams-teamId-system-accounts-accountId",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	request := operations.DeleteTeamsTeamIDSystemAccountsAccountIDRequest{
 		TeamID:    teamID,
 		AccountID: accountID,
@@ -806,14 +811,6 @@ func (s *SystemAccountsTeamMembership) DeleteTeamsTeamIDSystemAccountsAccountID(
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/teams/{teamId}/system-accounts/{accountId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "delete-teams-teamId-system-accounts-accountId",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout

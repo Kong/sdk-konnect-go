@@ -29,6 +29,13 @@ func newUsers(sdkConfig sdkConfiguration) *Users {
 // ListUsers - List Users
 // Returns a paginated list of user objects.
 func (s *Users) ListUsers(ctx context.Context, request operations.ListUsersRequest, opts ...operations.Option) (*operations.ListUsersResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "list-users",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -49,14 +56,6 @@ func (s *Users) ListUsers(ctx context.Context, request operations.ListUsersReque
 	opURL, err := url.JoinPath(baseURL, "/v3/users")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "list-users",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -254,6 +253,13 @@ func (s *Users) ListUsers(ctx context.Context, request operations.ListUsersReque
 // GetUser - Fetch User
 // Returns the user object for the user ID specified as a path parameter.
 func (s *Users) GetUser(ctx context.Context, userID string, opts ...operations.Option) (*operations.GetUserResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "get-user",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	request := operations.GetUserRequest{
 		UserID: userID,
 	}
@@ -278,14 +284,6 @@ func (s *Users) GetUser(ctx context.Context, userID string, opts ...operations.O
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/users/{userId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "get-user",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -500,6 +498,13 @@ func (s *Users) GetUser(ctx context.Context, userID string, opts ...operations.O
 // UpdateUser - Update User
 // Update an individual user.
 func (s *Users) UpdateUser(ctx context.Context, userID string, updateUser *components.UpdateUser, opts ...operations.Option) (*operations.UpdateUserResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "update-user",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	request := operations.UpdateUserRequest{
 		UserID:     userID,
 		UpdateUser: updateUser,
@@ -527,13 +532,6 @@ func (s *Users) UpdateUser(ctx context.Context, userID string, updateUser *compo
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "update-user",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "UpdateUser", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -775,6 +773,13 @@ func (s *Users) UpdateUser(ctx context.Context, userID string, updateUser *compo
 // DeleteUser - Delete User
 // Deletes an individual user. Returns 404 if the requested user was not found.
 func (s *Users) DeleteUser(ctx context.Context, userID string, opts ...operations.Option) (*operations.DeleteUserResponse, error) {
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "delete-user",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
+
 	request := operations.DeleteUserRequest{
 		UserID: userID,
 	}
@@ -799,14 +804,6 @@ func (s *Users) DeleteUser(ctx context.Context, userID string, opts ...operation
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/users/{userId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
-	}
-
-	hookCtx := hooks.HookContext{
-		BaseURL:        baseURL,
-		Context:        ctx,
-		OperationID:    "delete-user",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
