@@ -1,0 +1,15 @@
+# UserConfiguration
+
+Properties of an event.
+
+
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `EventID`                                                                            | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `EventTitle`                                                                         | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `EventDescription`                                                                   | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `EventNamespace`                                                                     | [components.NotificationNamespace](../../models/components/notificationnamespace.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `EventSubscriptionCount`                                                             | *int64*                                                                              | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `DefaultSubscription`                                                                | [][components.DefaultSubscription](../../models/components/defaultsubscription.md)   | :heavy_check_mark:                                                                   | N/A                                                                                  |
