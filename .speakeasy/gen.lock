@@ -3,15 +3,15 @@ id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
   docChecksum: 487182638bcd59d7d3aae627c4bd59e2
   docVersion: 0.0.1
-  speakeasyVersion: 1.494.0
-  generationVersion: 2.515.0
-  releaseVersion: 0.2.15
-  configChecksum: bf750ba11c7ece6e198e6fc316747e28
+  speakeasyVersion: 1.505.2
+  generationVersion: 2.531.3
+  releaseVersion: 0.2.16
+  configChecksum: 9eb40f2d7f9363a75141d216ddbbfa3c
 features:
   go:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.9
-    core: 3.7.1
+    constsAndDefaults: 0.1.10
+    core: 3.7.2
     deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
     envVarSecurityUsage: 0.3.2
@@ -24,7 +24,7 @@ features:
     intellisenseMarkdownSupport: 0.1.0
     methodServerURLs: 2.82.1
     nameOverrides: 2.81.2
-    nullables: 0.1.0
+    nullables: 0.1.1
     responseFormat: 0.1.2
     retries: 2.83.2
     sdkHooks: 0.1.0
@@ -5086,6 +5086,8 @@ examples:
           application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
         "404":
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "200":
+          application/json: {"data": []}
   list-event-subscriptions:
     speakeasy-default-list-event-subscriptions:
       parameters:

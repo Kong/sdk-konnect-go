@@ -29,7 +29,7 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
@@ -91,7 +91,7 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
@@ -151,7 +151,7 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
@@ -208,7 +208,7 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
             PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
