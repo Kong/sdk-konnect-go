@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: cfee80d033b678738b191601da22e3d8
+  docChecksum: 487182638bcd59d7d3aae627c4bd59e2
   docVersion: 0.0.1
   speakeasyVersion: 1.494.0
   generationVersion: 2.515.0
-  releaseVersion: 0.2.14
-  configChecksum: 321aa487aa1d1bad45dc5609a2843908
+  releaseVersion: 0.2.15
+  configChecksum: bf750ba11c7ece6e198e6fc316747e28
 features:
   go:
     additionalDependencies: 0.1.0
@@ -47,6 +47,7 @@ generatedFiles:
   - /models/components/azurevnetpeeringattachmentconfig.go
   - /models/components/basicauth.go
   - /models/components/basicauthwithoutparents.go
+  - /models/components/bulkpayload.go
   - /models/components/cacertificate.go
   - /models/components/cacertificateinput.go
   - /models/components/certificate.go
@@ -61,6 +62,7 @@ generatedFiles:
   - /models/components/configurationdataplanegroupautoscalestatic.go
   - /models/components/configurationdataplanegroupconfig.go
   - /models/components/configurationdataplanegroupenvironmentfield.go
+  - /models/components/configurationfilterparameters.go
   - /models/components/configurationmanifest.go
   - /models/components/configurationsfilterparameters.go
   - /models/components/configureoidcidentityproviderconfig.go
@@ -106,7 +108,11 @@ generatedFiles:
   - /models/components/dataplaneclientcertificaterequest.go
   - /models/components/defaultresourceconfiguration.go
   - /models/components/defaultresourcequota.go
+  - /models/components/defaultsubscription.go
   - /models/components/entityregion.go
+  - /models/components/eventsubscription.go
+  - /models/components/eventsubscriptionlistresponse.go
+  - /models/components/eventsubscriptionresponse.go
   - /models/components/getexpectedconfighashresponse.go
   - /models/components/getgroupstatus.go
   - /models/components/getimpersonationsettingsresponse.go
@@ -171,6 +177,15 @@ generatedFiles:
   - /models/components/networkstatefieldfilter.go
   - /models/components/networkstatefieldnotequalsfilter.go
   - /models/components/networkstatefieldorequalityfilter.go
+  - /models/components/notification.go
+  - /models/components/notificationchannel.go
+  - /models/components/notificationchanneltype.go
+  - /models/components/notificationfilterparameters.go
+  - /models/components/notificationlistresponse.go
+  - /models/components/notificationnamespace.go
+  - /models/components/notificationregion.go
+  - /models/components/notificationstatus.go
+  - /models/components/notificationupdatepayload.go
   - /models/components/oidcidentityproviderclaimmappings.go
   - /models/components/oidcidentityproviderconfig.go
   - /models/components/pagemeta.go
@@ -246,12 +261,15 @@ generatedFiles:
   - /models/components/upstream.go
   - /models/components/user.go
   - /models/components/usercollection.go
+  - /models/components/userconfiguration.go
+  - /models/components/userconfigurationlistresponse.go
   - /models/components/vault.go
   - /models/components/vaultinput.go
   - /models/operations/addconsumertogroup.go
   - /models/operations/addconsumertospecificconsumergroup.go
   - /models/operations/addusertoteam.go
   - /models/operations/authenticatesso.go
+  - /models/operations/bulknotifications.go
   - /models/operations/createaclwithconsumer.go
   - /models/operations/createbasicauthwithconsumer.go
   - /models/operations/createcacertificate.go
@@ -264,6 +282,7 @@ generatedFiles:
   - /models/operations/createcontrolplane.go
   - /models/operations/createcustomdomains.go
   - /models/operations/createdataplanecertificate.go
+  - /models/operations/createeventsubscription.go
   - /models/operations/createhmacauthwithconsumer.go
   - /models/operations/createidentityprovider.go
   - /models/operations/createjwtwithconsumer.go
@@ -300,6 +319,7 @@ generatedFiles:
   - /models/operations/deletecontrolplane.go
   - /models/operations/deletecustomdomain.go
   - /models/operations/deletedataplanecertificate.go
+  - /models/operations/deleteeventsubscription.go
   - /models/operations/deletehmacauthwithconsumer.go
   - /models/operations/deleteidentityprovider.go
   - /models/operations/deletejwtwithconsumer.go
@@ -310,6 +330,7 @@ generatedFiles:
   - /models/operations/deletemtlsauthwithconsumer.go
   - /models/operations/deletenetwork.go
   - /models/operations/deletenodesnodeid.go
+  - /models/operations/deletenotification.go
   - /models/operations/deleteplugin.go
   - /models/operations/deletepluginschemas.go
   - /models/operations/deletepluginwithconsumer.go
@@ -352,6 +373,7 @@ generatedFiles:
   - /models/operations/getcustomdomain.go
   - /models/operations/getcustomdomainonlinestatus.go
   - /models/operations/getdataplanecertificate.go
+  - /models/operations/geteventsubscription.go
   - /models/operations/getexpectedconfighash.go
   - /models/operations/gethmacauth.go
   - /models/operations/gethmacauthwithconsumer.go
@@ -372,6 +394,7 @@ generatedFiles:
   - /models/operations/getnetwork.go
   - /models/operations/getnodeseol.go
   - /models/operations/getnodesnodeid.go
+  - /models/operations/getnotificationdetails.go
   - /models/operations/getorganizationsme.go
   - /models/operations/getplugin.go
   - /models/operations/getpluginschema.go
@@ -423,6 +446,7 @@ generatedFiles:
   - /models/operations/listdefaultresourceconfigurations.go
   - /models/operations/listdefaultresourcequotas.go
   - /models/operations/listdpclientcertificates.go
+  - /models/operations/listeventsubscriptions.go
   - /models/operations/listhmacauth.go
   - /models/operations/listhmacauthwithconsumer.go
   - /models/operations/listjwt.go
@@ -436,6 +460,7 @@ generatedFiles:
   - /models/operations/listmtlsauthwithconsumer.go
   - /models/operations/listnetworkconfigurations.go
   - /models/operations/listnetworks.go
+  - /models/operations/listnotifications.go
   - /models/operations/listplugin.go
   - /models/operations/listpluginschemas.go
   - /models/operations/listpluginwithconsumer.go
@@ -456,6 +481,7 @@ generatedFiles:
   - /models/operations/listteamusers.go
   - /models/operations/listtransitgateways.go
   - /models/operations/listupstream.go
+  - /models/operations/listuserconfigurations.go
   - /models/operations/listuserroles.go
   - /models/operations/listusers.go
   - /models/operations/listuserteams.go
@@ -481,11 +507,13 @@ generatedFiles:
   - /models/operations/updateconfigstore.go
   - /models/operations/updateconfigstoresecret.go
   - /models/operations/updatecontrolplane.go
+  - /models/operations/updateeventsubscription.go
   - /models/operations/updateidentityprovider.go
   - /models/operations/updateidpconfiguration.go
   - /models/operations/updateidpteammappings.go
   - /models/operations/updateimpersonationsettings.go
   - /models/operations/updatenetwork.go
+  - /models/operations/updatenotification.go
   - /models/operations/updatepluginschemas.go
   - /models/operations/updateteam.go
   - /models/operations/updateuser.go
@@ -578,6 +606,7 @@ generatedFiles:
   - docs/models/components/basicauthwithoutparents.md
   - docs/models/components/basicauthwithoutparentsconsumer.md
   - docs/models/components/before.md
+  - docs/models/components/bulkpayload.md
   - docs/models/components/cacertificate.md
   - docs/models/components/cacertificateinput.md
   - docs/models/components/certificate.md
@@ -599,6 +628,7 @@ generatedFiles:
   - docs/models/components/configurationdataplanegroupautoscalestatic.md
   - docs/models/components/configurationdataplanegroupconfig.md
   - docs/models/components/configurationdataplanegroupenvironmentfield.md
+  - docs/models/components/configurationfilterparameters.md
   - docs/models/components/configurationmanifest.md
   - docs/models/components/configurationsfilterparameters.md
   - docs/models/components/configureoidcidentityproviderconfig.md
@@ -656,11 +686,16 @@ generatedFiles:
   - docs/models/components/dataplaneclientcertificaterequest.md
   - docs/models/components/defaultresourceconfiguration.md
   - docs/models/components/defaultresourcequota.md
+  - docs/models/components/defaultsubscription.md
   - docs/models/components/deployer.md
   - docs/models/components/description.md
   - docs/models/components/destinations.md
+  - docs/models/components/details.md
   - docs/models/components/entityregion.md
   - docs/models/components/entitytypename.md
+  - docs/models/components/eventsubscription.md
+  - docs/models/components/eventsubscriptionlistresponse.md
+  - docs/models/components/eventsubscriptionresponse.md
   - docs/models/components/gatewayserviceadmin.md
   - docs/models/components/getexpectedconfighashresponse.md
   - docs/models/components/getgroupstatus.md
@@ -770,6 +805,15 @@ generatedFiles:
   - docs/models/components/networkstatefieldfilter.md
   - docs/models/components/networkstatefieldnotequalsfilter.md
   - docs/models/components/networkstatefieldorequalityfilter.md
+  - docs/models/components/notification.md
+  - docs/models/components/notificationchannel.md
+  - docs/models/components/notificationchanneltype.md
+  - docs/models/components/notificationfilterparameters.md
+  - docs/models/components/notificationlistresponse.md
+  - docs/models/components/notificationnamespace.md
+  - docs/models/components/notificationregion.md
+  - docs/models/components/notificationstatus.md
+  - docs/models/components/notificationupdatepayload.md
   - docs/models/components/oidcidentityproviderclaimmappings.md
   - docs/models/components/oidcidentityproviderconfig.md
   - docs/models/components/one.md
@@ -979,6 +1023,8 @@ generatedFiles:
   - docs/models/components/upstreamunhealthy.md
   - docs/models/components/user.md
   - docs/models/components/usercollection.md
+  - docs/models/components/userconfiguration.md
+  - docs/models/components/userconfigurationlistresponse.md
   - docs/models/components/vault.md
   - docs/models/components/vaultinput.md
   - docs/models/components/viewer.md
@@ -994,6 +1040,7 @@ generatedFiles:
   - docs/models/operations/addusertoteamresponse.md
   - docs/models/operations/authenticatessorequest.md
   - docs/models/operations/authenticatessoresponse.md
+  - docs/models/operations/bulknotificationsresponse.md
   - docs/models/operations/createaclwithconsumerrequest.md
   - docs/models/operations/createaclwithconsumerresponse.md
   - docs/models/operations/createbasicauthwithconsumerrequest.md
@@ -1015,6 +1062,8 @@ generatedFiles:
   - docs/models/operations/createcustomdomainsresponse.md
   - docs/models/operations/createdataplanecertificaterequest.md
   - docs/models/operations/createdataplanecertificateresponse.md
+  - docs/models/operations/createeventsubscriptionrequest.md
+  - docs/models/operations/createeventsubscriptionresponse.md
   - docs/models/operations/createhmacauthwithconsumerrequest.md
   - docs/models/operations/createhmacauthwithconsumerresponse.md
   - docs/models/operations/createidentityproviderresponse.md
@@ -1084,6 +1133,8 @@ generatedFiles:
   - docs/models/operations/deletecustomdomainresponse.md
   - docs/models/operations/deletedataplanecertificaterequest.md
   - docs/models/operations/deletedataplanecertificateresponse.md
+  - docs/models/operations/deleteeventsubscriptionrequest.md
+  - docs/models/operations/deleteeventsubscriptionresponse.md
   - docs/models/operations/deletehmacauthwithconsumerrequest.md
   - docs/models/operations/deletehmacauthwithconsumerresponse.md
   - docs/models/operations/deleteidentityproviderrequest.md
@@ -1104,6 +1155,8 @@ generatedFiles:
   - docs/models/operations/deletenetworkresponse.md
   - docs/models/operations/deletenodesnodeidrequest.md
   - docs/models/operations/deletenodesnodeidresponse.md
+  - docs/models/operations/deletenotificationrequest.md
+  - docs/models/operations/deletenotificationresponse.md
   - docs/models/operations/deletepluginrequest.md
   - docs/models/operations/deletepluginresponse.md
   - docs/models/operations/deletepluginschemasrequest.md
@@ -1189,6 +1242,8 @@ generatedFiles:
   - docs/models/operations/getcustomdomainresponse.md
   - docs/models/operations/getdataplanecertificaterequest.md
   - docs/models/operations/getdataplanecertificateresponse.md
+  - docs/models/operations/geteventsubscriptionrequest.md
+  - docs/models/operations/geteventsubscriptionresponse.md
   - docs/models/operations/getexpectedconfighashrequest.md
   - docs/models/operations/getexpectedconfighashresponse.md
   - docs/models/operations/gethmacauthrequest.md
@@ -1227,6 +1282,8 @@ generatedFiles:
   - docs/models/operations/getnodeseolresponse.md
   - docs/models/operations/getnodesnodeidrequest.md
   - docs/models/operations/getnodesnodeidresponse.md
+  - docs/models/operations/getnotificationdetailsrequest.md
+  - docs/models/operations/getnotificationdetailsresponse.md
   - docs/models/operations/getorganizationsmeresponse.md
   - docs/models/operations/getpluginrequest.md
   - docs/models/operations/getpluginresponse.md
@@ -1339,6 +1396,8 @@ generatedFiles:
   - docs/models/operations/listdefaultresourcequotasresponse.md
   - docs/models/operations/listdpclientcertificatesrequest.md
   - docs/models/operations/listdpclientcertificatesresponse.md
+  - docs/models/operations/listeventsubscriptionsrequest.md
+  - docs/models/operations/listeventsubscriptionsresponse.md
   - docs/models/operations/listhmacauthrequest.md
   - docs/models/operations/listhmacauthresponse.md
   - docs/models/operations/listhmacauthresponsebody.md
@@ -1376,6 +1435,8 @@ generatedFiles:
   - docs/models/operations/listnetworkconfigurationsresponse.md
   - docs/models/operations/listnetworksrequest.md
   - docs/models/operations/listnetworksresponse.md
+  - docs/models/operations/listnotificationsrequest.md
+  - docs/models/operations/listnotificationsresponse.md
   - docs/models/operations/listpluginrequest.md
   - docs/models/operations/listpluginresponse.md
   - docs/models/operations/listpluginresponsebody.md
@@ -1431,6 +1492,8 @@ generatedFiles:
   - docs/models/operations/listupstreamrequest.md
   - docs/models/operations/listupstreamresponse.md
   - docs/models/operations/listupstreamresponsebody.md
+  - docs/models/operations/listuserconfigurationsrequest.md
+  - docs/models/operations/listuserconfigurationsresponse.md
   - docs/models/operations/listuserrolesqueryparamfilter.md
   - docs/models/operations/listuserrolesrequest.md
   - docs/models/operations/listuserrolesresponse.md
@@ -1484,6 +1547,8 @@ generatedFiles:
   - docs/models/operations/updateconfigstoresecretresponse.md
   - docs/models/operations/updatecontrolplanerequest.md
   - docs/models/operations/updatecontrolplaneresponse.md
+  - docs/models/operations/updateeventsubscriptionrequest.md
+  - docs/models/operations/updateeventsubscriptionresponse.md
   - docs/models/operations/updateidentityproviderrequest.md
   - docs/models/operations/updateidentityproviderresponse.md
   - docs/models/operations/updateidpconfigurationresponse.md
@@ -1491,6 +1556,8 @@ generatedFiles:
   - docs/models/operations/updateimpersonationsettingsresponse.md
   - docs/models/operations/updatenetworkrequest.md
   - docs/models/operations/updatenetworkresponse.md
+  - docs/models/operations/updatenotificationrequest.md
+  - docs/models/operations/updatenotificationresponse.md
   - docs/models/operations/updatepluginschemasrequest.md
   - docs/models/operations/updatepluginschemasresponse.md
   - docs/models/operations/updateteamrequest.md
@@ -1592,6 +1659,7 @@ generatedFiles:
   - docs/sdks/keysets/README.md
   - docs/sdks/me/README.md
   - docs/sdks/mtlsauthcredentials/README.md
+  - docs/sdks/notifications/README.md
   - docs/sdks/plugins/README.md
   - docs/sdks/roles/README.md
   - docs/sdks/routes/README.md
@@ -1633,6 +1701,7 @@ generatedFiles:
   - models/operations/options.go
   - models/sdkerrors/sdkerror.go
   - mtlsauthcredentials.go
+  - notifications.go
   - plugins.go
   - retry/config.go
   - roles.go
@@ -5006,5 +5075,165 @@ examples:
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
         "409":
           application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
+  list-user-configurations:
+    speakeasy-default-list-user-configurations:
+      responses:
+        "400":
+          application/problem+json: {"status": 135991, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "min_symbols", "minimum": 8, "source": "body", "reason": "must have at least 8 characters"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  list-event-subscriptions:
+    speakeasy-default-list-event-subscriptions:
+      parameters:
+        path:
+          eventId: "invoice-ready"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "regions": [], "entities": [], "channels": [{"type": "EMAIL", "enabled": true}], "enabled": true}], "meta": {"next": "/usr/include", "previous": "/sbin", "size": 10}}
+        "400":
+          application/problem+json: {"status": 452496, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  create-event-subscription:
+    speakeasy-default-create-event-subscription:
+      parameters:
+        path:
+          eventId: "invoice-ready"
+      responses:
+        "201":
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "regions": ["AU"], "entities": [], "channels": [{"type": "EMAIL", "enabled": false}, {"type": "IN_APP", "enabled": false}], "enabled": false}
+        "400":
+          application/problem+json: {"status": 426370, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value>"], "source": "body"}, {"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value>"], "source": "body"}, {"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value>", "<value>", "<value>"], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  get-event-subscription:
+    speakeasy-default-get-event-subscription:
+      parameters:
+        path:
+          eventId: "invoice-ready"
+          subscriptionId: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "regions": ["US", "EU", "AU"], "entities": ["<value>", "<value>", "<value>"], "channels": [], "enabled": false}
+        "400":
+          application/problem+json: {"status": 713072, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  update-event-subscription:
+    speakeasy-default-update-event-subscription:
+      parameters:
+        path:
+          eventId: "invoice-ready"
+          subscriptionId: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "regions": ["AU", "US"], "entities": ["<value>", "<value>", "<value>"], "channels": [], "enabled": false}
+        "400":
+          application/problem+json: {"status": 146335, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  delete-event-subscription:
+    speakeasy-default-delete-event-subscription:
+      parameters:
+        path:
+          eventId: "invoice-ready"
+          subscriptionId: "<id>"
+      responses:
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  list-notifications:
+    speakeasy-default-list-notifications:
+      parameters:
+        query:
+          page[before]: "ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"
+          page[after]: "ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"
+      responses:
+        "200":
+          application/json: {"data": [], "meta": {"next": "/mnt", "previous": "/home", "size": 10}}
+        "400":
+          application/problem+json: {"status": 274673, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "source": "body", "reason": "is a required field"}, {"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value>"], "source": "body"}, {"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value>", "<value>"], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  get-notification-details:
+    speakeasy-default-get-notification-details:
+      parameters:
+        path:
+          notificationId: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "title": "<value>", "description": "bathrobe dead by chromakey fork drain quadruple fooey near", "status": "UNREAD", "region": "*", "namespace": "plan-and-usage", "entity_id": "<id>", "details": {}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  update-notification:
+    speakeasy-default-update-notification:
+      parameters:
+        path:
+          notificationId: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "title": "<value>", "description": "shell metabolite uneven consequently given meh", "status": "ARCHIVED", "region": "US", "namespace": "organization", "entity_id": "<id>", "details": {}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 66255, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value>", "<value>", "<value>"], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  delete-notification:
+    speakeasy-default-delete-notification:
+      parameters:
+        path:
+          notificationId: "<id>"
+      responses:
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  bulk-notifications:
+    speakeasy-default-bulk-notifications:
+      responses:
+        "400":
+          application/problem+json: {"status": 421129, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "source": "body", "reason": "is a required field"}, {"field": "name", "rule": "max", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}, {"field": "name", "rule": "enum", "reason": "is a required field", "choices": [], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
 examplesVersion: 1.0.0
 generatedTests: {}

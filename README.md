@@ -12,13 +12,14 @@ Handling errors in this SDK should largely match your expectations. All operatio
 
 By Default, an API error will return `sdkerrors.SDKError`. When custom error responses are specified for an operation, the SDK may also return their associated error. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation.
 
-For example, the `ListConfigurations` function may return the following errors:
+For example, the `ListUserConfigurations` function may return the following errors:
 
 | Error Type                  | Status Code | Content Type             |
 | --------------------------- | ----------- | ------------------------ |
 | sdkerrors.BadRequestError   | 400         | application/problem+json |
 | sdkerrors.UnauthorizedError | 401         | application/problem+json |
 | sdkerrors.ForbiddenError    | 403         | application/problem+json |
+| sdkerrors.NotFoundError     | 404         | application/problem+json |
 | sdkerrors.SDKError          | 4XX, 5XX    | \*/\*                    |
 
 ### Example
@@ -31,7 +32,6 @@ import (
 	"errors"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"github.com/Kong/sdk-konnect-go/models/operations"
 	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
 	"log"
 )
@@ -45,10 +45,7 @@ func main() {
 		}),
 	)
 
-	res, err := s.CloudGateways.ListConfigurations(ctx, operations.ListConfigurationsRequest{
-		PageSize:   sdkkonnectgo.Int64(10),
-		PageNumber: sdkkonnectgo.Int64(1),
-	})
+	res, err := s.Notifications.ListUserConfigurations(ctx, nil)
 	if err != nil {
 
 		var e *sdkerrors.BadRequestError
@@ -64,6 +61,12 @@ func main() {
 		}
 
 		var e *sdkerrors.ForbiddenError
+		if errors.As(err, &e) {
+			// handle error
+			log.Fatal(e.Error())
+		}
+
+		var e *sdkerrors.NotFoundError
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
@@ -102,6 +105,7 @@ package main
 import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"log"
 )
 
@@ -110,13 +114,16 @@ func main() {
 
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithServerIndex(3),
+		sdkkonnectgo.WithSecurity(components.Security{
+			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+		}),
 	)
 
-	res, err := s.CloudGateways.GetAvailabilityJSON(ctx)
+	res, err := s.Notifications.ListUserConfigurations(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.AvailabilityDocument != nil {
+	if res.UserConfigurationListResponse != nil {
 		// handle response
 	}
 }
@@ -132,6 +139,7 @@ package main
 import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"log"
 )
 
@@ -140,13 +148,16 @@ func main() {
 
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithServerURL("https://global.api.konghq.com"),
+		sdkkonnectgo.WithSecurity(components.Security{
+			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+		}),
 	)
 
-	res, err := s.CloudGateways.GetAvailabilityJSON(ctx)
+	res, err := s.Notifications.ListUserConfigurations(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.AvailabilityDocument != nil {
+	if res.UserConfigurationListResponse != nil {
 		// handle response
 	}
 }
@@ -245,11 +256,11 @@ func main() {
 		}),
 	)
 
-	res, err := s.CloudGateways.GetAvailabilityJSON(ctx)
+	res, err := s.Notifications.ListUserConfigurations(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.AvailabilityDocument != nil {
+	if res.UserConfigurationListResponse != nil {
 		// handle response
 	}
 }
@@ -289,6 +300,7 @@ package main
 import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/retry"
 	"log"
 	"models/operations"
@@ -297,9 +309,13 @@ import (
 func main() {
 	ctx := context.Background()
 
-	s := sdkkonnectgo.New()
+	s := sdkkonnectgo.New(
+		sdkkonnectgo.WithSecurity(components.Security{
+			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+		}),
+	)
 
-	res, err := s.CloudGateways.GetAvailabilityJSON(ctx, operations.WithRetries(
+	res, err := s.Notifications.ListUserConfigurations(ctx, nil, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
 			Backoff: &retry.BackoffStrategy{
@@ -313,7 +329,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.AvailabilityDocument != nil {
+	if res.UserConfigurationListResponse != nil {
 		// handle response
 	}
 }
@@ -327,6 +343,7 @@ package main
 import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/retry"
 	"log"
 )
@@ -346,13 +363,16 @@ func main() {
 				},
 				RetryConnectionErrors: false,
 			}),
+		sdkkonnectgo.WithSecurity(components.Security{
+			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+		}),
 	)
 
-	res, err := s.CloudGateways.GetAvailabilityJSON(ctx)
+	res, err := s.Notifications.ListUserConfigurations(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.AvailabilityDocument != nil {
+	if res.UserConfigurationListResponse != nil {
 		// handle response
 	}
 }

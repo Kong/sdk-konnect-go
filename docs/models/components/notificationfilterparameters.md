@@ -1,0 +1,12 @@
+# NotificationFilterParameters
+
+
+## Fields
+
+| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `Title`                                                                       | [*components.StringFieldFilter](../../models/components/stringfieldfilter.md) | :heavy_minus_sign:                                                            | Filter a string value field either by exact match or partial contains.        |
+| `Description`                                                                 | [*components.StringFieldFilter](../../models/components/stringfieldfilter.md) | :heavy_minus_sign:                                                            | Filter a string value field either by exact match or partial contains.        |
+| `Namespace`                                                                   | [*components.StringFieldFilter](../../models/components/stringfieldfilter.md) | :heavy_minus_sign:                                                            | Filter a string value field either by exact match or partial contains.        |
+| `Region`                                                                      | [*components.StringFieldFilter](../../models/components/stringfieldfilter.md) | :heavy_minus_sign:                                                            | Filter a string value field either by exact match or partial contains.        |
+| `Status`                                                                      | [*components.StringFieldFilter](../../models/components/stringfieldfilter.md) | :heavy_minus_sign:                                                            | Filter a string value field either by exact match or partial contains.        |
