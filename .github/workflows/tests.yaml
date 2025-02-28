@@ -22,6 +22,41 @@ permissions:
   contents: read
 
 jobs:
+  verify-diff:
+    if: github.event_name != 'schedule'
+    runs-on:
+      - ubuntu-latest
+    steps:
+      - name: Install Speakeasy
+        uses: mheap/setup-go-cli@fa9b01cdd4115eac636164f0de43bf7d51c82697 # v1.2.2
+        with:
+          owner: speakeasy-api
+          repo: speakeasy
+          cli_name: speakeasy
+          package_type: zip
+          version: 1.470.1 # renovate: datasource=github-releases depName=speakeasy-api/speakeasy
+
+      - name: Checkout current repo
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ secrets.PAT }}
+
+      - name: Configure speakeasy CLI
+        run: |
+          mkdir -p ~/.speakeasy
+          echo 'speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}' > ~/.speakeasy/config.yaml
+
+      - uses: jdx/mise-action@5083fe46898c414b2475087cc79da59e7da859e8 # v2.1.11
+        with:
+          install: false
+
+      - name: Generate SDK
+        run: make generate.sdk
+
+      - name: Verify diff (should be empty)
+        run: make verify.diff
+
   unit-tests:
     runs-on: ubuntu-latest
     steps:
