@@ -94,7 +94,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.DataPlaneClientCertificate != nil {
+    if res.DataPlaneClientCertificateResponse != nil {
         // handle response
     }
 }
@@ -148,7 +148,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.DataPlaneClientCertificate != nil {
+    if res.DataPlaneClientCertificateResponse != nil {
         // handle response
     }
 }

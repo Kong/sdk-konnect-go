@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 8fdcb527678454cd950bc351ff8112bf
+  docChecksum: 45b90d9654ab434320e0d7a7178073bd
   docVersion: 0.0.1
   speakeasyVersion: 1.505.2
   generationVersion: 2.531.3
-  releaseVersion: 0.2.18
-  configChecksum: 2d7c3699ba6d3726d800df2f72414327
+  releaseVersion: 0.2.19
+  configChecksum: 0894ad69f057b5f2bf4b35a14f08c31e
 features:
   go:
     additionalDependencies: 0.1.0
@@ -108,6 +108,7 @@ generatedFiles:
   - /models/components/customdomainstatefieldorequalityfilter.go
   - /models/components/dataplaneclientcertificate.go
   - /models/components/dataplaneclientcertificaterequest.go
+  - /models/components/dataplaneclientcertificateresponse.go
   - /models/components/defaultresourceconfiguration.go
   - /models/components/defaultresourcequota.go
   - /models/components/defaultsubscription.go
@@ -688,8 +689,8 @@ generatedFiles:
   - docs/models/components/customdomainstatemetadata.md
   - docs/models/components/data.md
   - docs/models/components/dataplaneclientcertificate.md
-  - docs/models/components/dataplaneclientcertificateitem.md
   - docs/models/components/dataplaneclientcertificaterequest.md
+  - docs/models/components/dataplaneclientcertificateresponse.md
   - docs/models/components/defaultresourceconfiguration.md
   - docs/models/components/defaultresourcequota.md
   - docs/models/components/defaultsubscription.md

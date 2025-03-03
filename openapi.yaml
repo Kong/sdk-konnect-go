@@ -9007,7 +9007,13 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/DataPlaneClientCertificate'
+            type: object
+            properties:
+              item:
+                $ref: '#/components/schemas/DataPlaneClientCertificate'
+            x-speakeasy-param-computed: false
+            nullable: true
+            default: null
     GetExpectedConfigHashResponse:
       description: >-
         Response body for retrieving the expected config hash of the control
@@ -12591,27 +12597,21 @@ components:
           type: number
           example: 10
     DataPlaneClientCertificate:
+      x-speakeasy-entity: GatewayDataPlaneClientCertificate
       type: object
       properties:
-        item:
-          x-speakeasy-entity: GatewayDataPlaneClientCertificate
-          type: object
-          properties:
-            id:
-              type: string
-              description: Unique ID of the certificate entity.
-            created_at:
-              type: integer
-              description: Date certificate was created.
-            updated_at:
-              type: integer
-              description: Date certificate was last updated.
-            cert:
-              type: string
-              description: JSON escaped string of the certificate.
-      x-speakeasy-param-computed: false
-      nullable: true
-      default: null
+        id:
+          type: string
+          description: Unique ID of the certificate entity.
+        created_at:
+          type: integer
+          description: Date certificate was created.
+        updated_at:
+          type: integer
+          description: Date certificate was last updated.
+        cert:
+          type: string
+          description: JSON escaped string of the certificate.
     ConfigStore:
       type: object
       properties:
