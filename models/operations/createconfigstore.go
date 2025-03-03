@@ -9,8 +9,8 @@ import (
 
 type CreateConfigStoreRequest struct {
 	// The UUID of your control plane. This variable is available in the Konnect manager.
-	ControlPlaneID    string                       `pathParam:"style=simple,explode=false,name=controlPlaneId"`
-	CreateConfigStore components.CreateConfigStore `request:"mediaType=application/json"`
+	ControlPlaneID    string                        `pathParam:"style=simple,explode=false,name=controlPlaneId"`
+	CreateConfigStore *components.CreateConfigStore `request:"mediaType=application/json"`
 }
 
 func (o *CreateConfigStoreRequest) GetControlPlaneID() string {
@@ -20,9 +20,9 @@ func (o *CreateConfigStoreRequest) GetControlPlaneID() string {
 	return o.ControlPlaneID
 }
 
-func (o *CreateConfigStoreRequest) GetCreateConfigStore() components.CreateConfigStore {
+func (o *CreateConfigStoreRequest) GetCreateConfigStore() *components.CreateConfigStore {
 	if o == nil {
-		return components.CreateConfigStore{}
+		return nil
 	}
 	return o.CreateConfigStore
 }

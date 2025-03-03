@@ -917,7 +917,7 @@ func main() {
         }),
     )
 
-    res, err := s.CloudGateways.UpdateNetwork(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.PatchNetworkRequest{
+    res, err := s.CloudGateways.UpdateNetwork(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", &components.PatchNetworkRequest{
         Name: sdkkonnectgo.String("us-east-2 network"),
     })
     if err != nil {

@@ -11,8 +11,8 @@ type UpdateConfigStoreRequest struct {
 	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Config Store identifier
-	ConfigStoreID     string                       `pathParam:"style=simple,explode=false,name=configStoreId"`
-	UpdateConfigStore components.UpdateConfigStore `request:"mediaType=application/json"`
+	ConfigStoreID     string                        `pathParam:"style=simple,explode=false,name=configStoreId"`
+	UpdateConfigStore *components.UpdateConfigStore `request:"mediaType=application/json"`
 }
 
 func (o *UpdateConfigStoreRequest) GetControlPlaneID() string {
@@ -29,9 +29,9 @@ func (o *UpdateConfigStoreRequest) GetConfigStoreID() string {
 	return o.ConfigStoreID
 }
 
-func (o *UpdateConfigStoreRequest) GetUpdateConfigStore() components.UpdateConfigStore {
+func (o *UpdateConfigStoreRequest) GetUpdateConfigStore() *components.UpdateConfigStore {
 	if o == nil {
-		return components.UpdateConfigStore{}
+		return nil
 	}
 	return o.UpdateConfigStore
 }

@@ -295,7 +295,7 @@ func (s *ConfigStores) ListConfigStores(ctx context.Context, request operations.
 
 // CreateConfigStore - Create Config Store
 // Create a Config Store
-func (s *ConfigStores) CreateConfigStore(ctx context.Context, controlPlaneID string, createConfigStore components.CreateConfigStore, opts ...operations.Option) (*operations.CreateConfigStoreResponse, error) {
+func (s *ConfigStores) CreateConfigStore(ctx context.Context, controlPlaneID string, createConfigStore *components.CreateConfigStore, opts ...operations.Option) (*operations.CreateConfigStoreResponse, error) {
 	request := operations.CreateConfigStoreRequest{
 		ControlPlaneID:    controlPlaneID,
 		CreateConfigStore: createConfigStore,
@@ -331,7 +331,7 @@ func (s *ConfigStores) CreateConfigStore(ctx context.Context, controlPlaneID str
 		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateConfigStore", "json", `request:"mediaType=application/json"`)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, true, false, "CreateConfigStore", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
 	}
@@ -871,7 +871,7 @@ func (s *ConfigStores) UpdateConfigStore(ctx context.Context, request operations
 		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateConfigStore", "json", `request:"mediaType=application/json"`)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, true, false, "UpdateConfigStore", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
 	}
