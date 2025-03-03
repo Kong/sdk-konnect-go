@@ -407,12 +407,12 @@ func (s *DPCertificates) CreateDataplaneCertificate(ctx context.Context, control
 				return nil, err
 			}
 
-			var out components.DataPlaneClientCertificate
+			var out components.DataPlaneClientCertificateResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.DataPlaneClientCertificate = &out
+			res.DataPlaneClientCertificateResponse = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -613,12 +613,12 @@ func (s *DPCertificates) GetDataplaneCertificate(ctx context.Context, controlPla
 				return nil, err
 			}
 
-			var out components.DataPlaneClientCertificate
+			var out components.DataPlaneClientCertificateResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.DataPlaneClientCertificate = &out
+			res.DataPlaneClientCertificateResponse = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {

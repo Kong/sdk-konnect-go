@@ -15,11 +15,11 @@ func (o *ListDataPlaneCertificatesResponsePage) GetTotal() *int64 {
 
 // ListDataPlaneCertificatesResponse - Example response
 type ListDataPlaneCertificatesResponse struct {
-	Items []*DataPlaneClientCertificate          `json:"items,omitempty"`
+	Items []DataPlaneClientCertificate           `json:"items,omitempty"`
 	Page  *ListDataPlaneCertificatesResponsePage `json:"page,omitempty"`
 }
 
-func (o *ListDataPlaneCertificatesResponse) GetItems() []*DataPlaneClientCertificate {
+func (o *ListDataPlaneCertificatesResponse) GetItems() []DataPlaneClientCertificate {
 	if o == nil {
 		return nil
 	}
