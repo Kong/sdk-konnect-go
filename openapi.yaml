@@ -11496,6 +11496,26 @@ components:
         - kind
         - transit_gateway_id
         - ram_share_arn
+    AwsVpcPeeringGatewayAttachmentConfig:
+      title: AWS VPC Peering Attachment Config
+      type: object
+      additionalProperties: false
+      properties:
+        kind:
+          title: AWS VPC Peering Attachment Config
+          enum:
+            - aws-vpc-peering-attachment
+        peer_account_id:
+          type: string
+        peer_vpc_id:
+          type: string
+        peer_vpc_region:
+          type: string
+      required:
+        - kind
+        - peer_account_id
+        - peer_vpc_id
+        - peer_vpc_region
     AzureVNETPeeringAttachmentConfig:
       title: Azure VNET Peering Attachment Config
       type: object
@@ -11650,6 +11670,27 @@ components:
         - required:
             - dns_config
         - $ref: '#/components/schemas/BaseTransitGatewayResponse'
+    AwsVpcPeeringGateway:
+      x-flatten-allOf: true
+      allOf:
+        - $ref: '#/components/schemas/BaseTransitGateway'
+        - title: AWS Transit Gateway
+          type: object
+          properties:
+            cidr_blocks:
+              $ref: '#/components/schemas/TransitGatewayCIDRBlocks'
+            transit_gateway_attachment_config:
+              $ref: '#/components/schemas/AwsVpcPeeringGatewayAttachmentConfig'
+          required:
+            - cidr_blocks
+            - transit_gateway_attachment_config
+    AwsVpcPeeringGatewayResponse:
+      x-flatten-allOf: true
+      allOf:
+        - $ref: '#/components/schemas/AwsVpcPeeringGateway'
+        - required:
+            - dns_config
+        - $ref: '#/components/schemas/BaseTransitGatewayResponse'
     AzureTransitGateway:
       x-flatten-allOf: true
       allOf:
@@ -11669,11 +11710,18 @@ components:
     TransitGatewayResponse:
       oneOf:
         - $ref: '#/components/schemas/AwsTransitGatewayResponse'
+        - $ref: '#/components/schemas/AwsVpcPeeringGatewayResponse'
         - $ref: '#/components/schemas/AzureTransitGatewayResponse'
     CreateAwsTransitGateway:
       x-flatten-allOf: true
       allOf:
         - $ref: '#/components/schemas/AwsTransitGateway'
+        - required:
+            - name
+    CreateAwsVpcPeeringGateway:
+      x-flatten-allOf: true
+      allOf:
+        - $ref: '#/components/schemas/AwsVpcPeeringGateway'
         - required:
             - name
     CreateAzureTransitGateway:
@@ -11688,6 +11736,7 @@ components:
       type: object
       oneOf:
         - $ref: '#/components/schemas/CreateAwsTransitGateway'
+        - $ref: '#/components/schemas/CreateAwsVpcPeeringGateway'
         - $ref: '#/components/schemas/CreateAzureTransitGateway'
     CustomDomainState:
       title: Custom Domain State
