@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 5abfbd4e64f46b7d9f7e1a3ebae42202
+  docChecksum: 8fdcb527678454cd950bc351ff8112bf
   docVersion: 0.0.1
   speakeasyVersion: 1.505.2
   generationVersion: 2.531.3
-  releaseVersion: 0.2.17
-  configChecksum: 2782632e7c51d0860a5dfbab879dd861
+  releaseVersion: 0.2.18
+  configChecksum: 2d7c3699ba6d3726d800df2f72414327
 features:
   go:
     additionalDependencies: 0.1.0
@@ -43,6 +43,8 @@ generatedFiles:
   - /models/components/availabilitydocument.go
   - /models/components/awstransitgatewayattachmentconfig.go
   - /models/components/awstransitgatewayresponse.go
+  - /models/components/awsvpcpeeringgatewayattachmentconfig.go
+  - /models/components/awsvpcpeeringgatewayresponse.go
   - /models/components/azuretransitgatewayresponse.go
   - /models/components/azurevnetpeeringattachmentconfig.go
   - /models/components/basicauth.go
@@ -597,6 +599,9 @@ generatedFiles:
   - docs/models/components/awstransitgatewayattachmentconfig.md
   - docs/models/components/awstransitgatewayattachmenttype.md
   - docs/models/components/awstransitgatewayresponse.md
+  - docs/models/components/awsvpcpeeringattachmentconfig.md
+  - docs/models/components/awsvpcpeeringgatewayattachmentconfig.md
+  - docs/models/components/awsvpcpeeringgatewayresponse.md
   - docs/models/components/azuretransitgateway.md
   - docs/models/components/azuretransitgatewayresponse.md
   - docs/models/components/azurevnetpeeringattachmentconfig.md
@@ -649,6 +654,7 @@ generatedFiles:
   - docs/models/components/controlplanegeofieldnotequalsfilter.md
   - docs/models/components/controlplanegeofieldorequalityfilter.md
   - docs/models/components/controlplanes.md
+  - docs/models/components/createawsvpcpeeringgatewayawstransitgateway.md
   - docs/models/components/createconfigstore.md
   - docs/models/components/createconfigstoresecret.md
   - docs/models/components/createconfigurationdataplanegroup.md
