@@ -13,8 +13,8 @@ var UpdateNetworkServerList = []string{
 
 type UpdateNetworkRequest struct {
 	// The network to operate on.
-	NetworkID           string                         `pathParam:"style=simple,explode=false,name=networkId"`
-	PatchNetworkRequest components.PatchNetworkRequest `request:"mediaType=application/json"`
+	NetworkID           string                          `pathParam:"style=simple,explode=false,name=networkId"`
+	PatchNetworkRequest *components.PatchNetworkRequest `request:"mediaType=application/json"`
 }
 
 func (o *UpdateNetworkRequest) GetNetworkID() string {
@@ -24,9 +24,9 @@ func (o *UpdateNetworkRequest) GetNetworkID() string {
 	return o.NetworkID
 }
 
-func (o *UpdateNetworkRequest) GetPatchNetworkRequest() components.PatchNetworkRequest {
+func (o *UpdateNetworkRequest) GetPatchNetworkRequest() *components.PatchNetworkRequest {
 	if o == nil {
-		return components.PatchNetworkRequest{}
+		return nil
 	}
 	return o.PatchNetworkRequest
 }
