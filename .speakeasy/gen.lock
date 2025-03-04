@@ -3,10 +3,10 @@ id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
   docChecksum: 45b90d9654ab434320e0d7a7178073bd
   docVersion: 0.0.1
-  speakeasyVersion: 1.505.2
-  generationVersion: 2.531.3
-  releaseVersion: 0.2.19
-  configChecksum: 0894ad69f057b5f2bf4b35a14f08c31e
+  speakeasyVersion: 1.509.1
+  generationVersion: 2.539.1
+  releaseVersion: 0.2.20
+  configChecksum: 00ce732818072f5289c591da5cc9bb74
 features:
   go:
     additionalDependencies: 0.1.0
@@ -758,11 +758,11 @@ generatedFiles:
   - docs/models/components/keyauthwithoutparents.md
   - docs/models/components/keyauthwithoutparentsconsumer.md
   - docs/models/components/keyinput.md
+  - docs/models/components/keypem.md
   - docs/models/components/keyset.md
+  - docs/models/components/keyset1.md
   - docs/models/components/keysetinput.md
   - docs/models/components/keywithoutparents.md
-  - docs/models/components/keywithoutparentspem.md
-  - docs/models/components/keywithoutparentsset.md
   - docs/models/components/kind.md
   - docs/models/components/listconfigstoresecretsresponse.md
   - docs/models/components/listconfigstoresresponse.md

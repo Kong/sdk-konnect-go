@@ -2,32 +2,32 @@
 
 package components
 
-// KeyWithoutParentsPem - A keypair in PEM format.
-type KeyWithoutParentsPem struct {
+// Pem - A keypair in PEM format.
+type Pem struct {
 	PrivateKey *string `json:"private_key,omitempty"`
 	PublicKey  *string `json:"public_key,omitempty"`
 }
 
-func (o *KeyWithoutParentsPem) GetPrivateKey() *string {
+func (o *Pem) GetPrivateKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.PrivateKey
 }
 
-func (o *KeyWithoutParentsPem) GetPublicKey() *string {
+func (o *Pem) GetPublicKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.PublicKey
 }
 
-// KeyWithoutParentsSet - The id (an UUID) of the key-set with which to associate the key.
-type KeyWithoutParentsSet struct {
+// Set - The id (an UUID) of the key-set with which to associate the key.
+type Set struct {
 	ID *string `json:"id,omitempty"`
 }
 
-func (o *KeyWithoutParentsSet) GetID() *string {
+func (o *Set) GetID() *string {
 	if o == nil {
 		return nil
 	}
@@ -44,9 +44,9 @@ type KeyWithoutParents struct {
 	// The name to associate with the given keys.
 	Name *string `json:"name,omitempty"`
 	// A keypair in PEM format.
-	Pem *KeyWithoutParentsPem `json:"pem,omitempty"`
+	Pem *Pem `json:"pem,omitempty"`
 	// The id (an UUID) of the key-set with which to associate the key.
-	Set *KeyWithoutParentsSet `json:"set,omitempty"`
+	Set *Set `json:"set,omitempty"`
 	// An optional set of strings associated with the Key for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
 }
@@ -79,14 +79,14 @@ func (o *KeyWithoutParents) GetName() *string {
 	return o.Name
 }
 
-func (o *KeyWithoutParents) GetPem() *KeyWithoutParentsPem {
+func (o *KeyWithoutParents) GetPem() *Pem {
 	if o == nil {
 		return nil
 	}
 	return o.Pem
 }
 
-func (o *KeyWithoutParents) GetSet() *KeyWithoutParentsSet {
+func (o *KeyWithoutParents) GetSet() *Set {
 	if o == nil {
 		return nil
 	}
