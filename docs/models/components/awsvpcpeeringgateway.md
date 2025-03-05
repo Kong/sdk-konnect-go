@@ -1,4 +1,4 @@
-# CreateAWSVpcPeeringGatewayAWSTransitGateway
+# AWSVPCPeeringGateway
 
 
 ## Fields

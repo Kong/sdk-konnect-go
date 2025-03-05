@@ -99,7 +99,7 @@ func main() {
         }),
     )
 
-    res, err := s.ConfigStores.CreateConfigStore(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", &components.CreateConfigStore{
+    res, err := s.ConfigStores.CreateConfigStore(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateConfigStore{
         Name: sdkkonnectgo.String("Config Store"),
     })
     if err != nil {
@@ -219,7 +219,7 @@ func main() {
     res, err := s.ConfigStores.UpdateConfigStore(ctx, operations.UpdateConfigStoreRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
-        UpdateConfigStore: &components.UpdateConfigStore{
+        UpdateConfigStore: components.UpdateConfigStore{
             Name: sdkkonnectgo.String("Config Store"),
         },
     })

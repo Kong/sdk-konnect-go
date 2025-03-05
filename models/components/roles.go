@@ -1584,8 +1584,8 @@ func (o *RolesAuditLogsRoles) GetAdmin() *RolesAuditLogsAdmin {
 }
 
 type AuditLogs struct {
-	Name  RolesAuditLogsName   `json:"name"`
-	Roles *RolesAuditLogsRoles `json:"roles"`
+	Name  RolesAuditLogsName  `json:"name"`
+	Roles RolesAuditLogsRoles `json:"roles"`
 }
 
 func (o *AuditLogs) GetName() RolesAuditLogsName {
@@ -1595,9 +1595,9 @@ func (o *AuditLogs) GetName() RolesAuditLogsName {
 	return o.Name
 }
 
-func (o *AuditLogs) GetRoles() *RolesAuditLogsRoles {
+func (o *AuditLogs) GetRoles() RolesAuditLogsRoles {
 	if o == nil {
-		return nil
+		return RolesAuditLogsRoles{}
 	}
 	return o.Roles
 }
@@ -1702,8 +1702,8 @@ func (o *RolesIdentityRoles) GetAdmin() *RolesIdentityAdmin {
 }
 
 type Identity struct {
-	Name  RolesIdentityName   `json:"name"`
-	Roles *RolesIdentityRoles `json:"roles"`
+	Name  RolesIdentityName  `json:"name"`
+	Roles RolesIdentityRoles `json:"roles"`
 }
 
 func (o *Identity) GetName() RolesIdentityName {
@@ -1713,9 +1713,9 @@ func (o *Identity) GetName() RolesIdentityName {
 	return o.Name
 }
 
-func (o *Identity) GetRoles() *RolesIdentityRoles {
+func (o *Identity) GetRoles() RolesIdentityRoles {
 	if o == nil {
-		return nil
+		return RolesIdentityRoles{}
 	}
 	return o.Roles
 }

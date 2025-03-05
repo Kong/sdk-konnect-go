@@ -142,6 +142,16 @@ func main() {
             Enabled: sdkkonnectgo.Bool(true),
             ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
+            Partials: []map[string]any{
+                map[string]any{
+                    "id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae",
+                    "path": "config.redis",
+                },
+                map[string]any{
+                    "id": "129ee345-cba8-4e55-9d6d-93c223ff91ae",
+                    "path": "config.redis",
+                },
+            },
             Protocols: []components.PluginWithoutParentsProtocols{
                 components.PluginWithoutParentsProtocolsGrpc,
                 components.PluginWithoutParentsProtocolsGrpcs,
@@ -338,6 +348,16 @@ func main() {
             Enabled: sdkkonnectgo.Bool(true),
             ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
+            Partials: []map[string]any{
+                map[string]any{
+                    "id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae",
+                    "path": "config.redis",
+                },
+                map[string]any{
+                    "id": "129ee345-cba8-4e55-9d6d-93c223ff91ae",
+                    "path": "config.redis",
+                },
+            },
             Protocols: []components.PluginWithoutParentsProtocols{
                 components.PluginWithoutParentsProtocolsGrpc,
                 components.PluginWithoutParentsProtocolsGrpcs,
@@ -475,6 +495,16 @@ func main() {
             Enabled: sdkkonnectgo.Bool(true),
             ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
+            Partials: []map[string]any{
+                map[string]any{
+                    "id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae",
+                    "path": "config.redis",
+                },
+                map[string]any{
+                    "id": "129ee345-cba8-4e55-9d6d-93c223ff91ae",
+                    "path": "config.redis",
+                },
+            },
             Protocols: []components.PluginWithoutParentsProtocols{
                 components.PluginWithoutParentsProtocolsGrpc,
                 components.PluginWithoutParentsProtocolsGrpcs,
@@ -671,6 +701,16 @@ func main() {
             Enabled: sdkkonnectgo.Bool(true),
             ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
+            Partials: []map[string]any{
+                map[string]any{
+                    "id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae",
+                    "path": "config.redis",
+                },
+                map[string]any{
+                    "id": "129ee345-cba8-4e55-9d6d-93c223ff91ae",
+                    "path": "config.redis",
+                },
+            },
             Protocols: []components.PluginWithoutParentsProtocols{
                 components.PluginWithoutParentsProtocolsGrpc,
                 components.PluginWithoutParentsProtocolsGrpcs,
@@ -804,6 +844,16 @@ func main() {
         Enabled: sdkkonnectgo.Bool(true),
         ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
         Name: "key-auth",
+        Partials: []map[string]any{
+            map[string]any{
+                "id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae",
+                "path": "config.redis",
+            },
+            map[string]any{
+                "id": "129ee345-cba8-4e55-9d6d-93c223ff91ae",
+                "path": "config.redis",
+            },
+        },
         Protocols: []components.Protocols{
             components.ProtocolsGrpc,
             components.ProtocolsGrpcs,
@@ -822,12 +872,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                                                                                                                    | Type                                                                                                                                                                                                                                                                                                                         | Required                                                                                                                                                                                                                                                                                                                     | Description                                                                                                                                                                                                                                                                                                                  | Example                                                                                                                                                                                                                                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                                                                                                                                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                                                                                                                                           | The context to use for the request.                                                                                                                                                                                                                                                                                          |                                                                                                                                                                                                                                                                                                                              |
-| `controlPlaneID`                                                                                                                                                                                                                                                                                                             | *string*                                                                                                                                                                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                                                                                                                           | The UUID of your control plane. This variable is available in the Konnect manager.                                                                                                                                                                                                                                           | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                                                                                                                                                                                                                                                                         |
-| `plugin`                                                                                                                                                                                                                                                                                                                     | [components.PluginInput](../../models/components/plugininput.md)                                                                                                                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                                                                                                                                                           | Description of the new Plugin for creation                                                                                                                                                                                                                                                                                   | {<br/>"config": {<br/>"anonymous": null,<br/>"hide_credentials": false,<br/>"key_in_body": false,<br/>"key_in_header": true,<br/>"key_in_query": true,<br/>"key_names": [<br/>"apikey"<br/>],<br/>"run_on_preflight": true<br/>},<br/>"enabled": true,<br/>"id": "3fd1eea1-885a-4011-b986-289943ff8177",<br/>"name": "key-auth",<br/>"protocols": [<br/>"grpc",<br/>"grpcs",<br/>"http",<br/>"https"<br/>]<br/>} |
-| `opts`                                                                                                                                                                                                                                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                                                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                           | The options for this request.                                                                                                                                                                                                                                                                                                |                                                                                                                                                                                                                                                                                                                              |
+| Parameter                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Required                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Example                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                                                                                                                                                                                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | The context to use for the request.                                                                                                                                                                                                                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `controlPlaneID`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | *string*                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | The UUID of your control plane. This variable is available in the Konnect manager.                                                                                                                                                                                                                                                                                                                                                                                                               | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `plugin`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | [components.PluginInput](../../models/components/plugininput.md)                                                                                                                                                                                                                                                                                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Description of the new Plugin for creation                                                                                                                                                                                                                                                                                                                                                                                                                                                       | {<br/>"config": {<br/>"anonymous": null,<br/>"hide_credentials": false,<br/>"key_in_body": false,<br/>"key_in_header": true,<br/>"key_in_query": true,<br/>"key_names": [<br/>"apikey"<br/>],<br/>"run_on_preflight": true<br/>},<br/>"enabled": true,<br/>"id": "3fd1eea1-885a-4011-b986-289943ff8177",<br/>"name": "key-auth",<br/>"partials": [<br/>{<br/>"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae",<br/>"path": "config.redis"<br/>},<br/>{<br/>"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae",<br/>"path": "config.redis"<br/>}<br/>],<br/>"protocols": [<br/>"grpc",<br/>"grpcs",<br/>"http",<br/>"https"<br/>]<br/>} |
+| `opts`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | [][operations.Option](../../models/operations/option.md)                                                                                                                                                                                                                                                                                                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | The options for this request.                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 ### Response
 
@@ -994,6 +1044,16 @@ func main() {
             Enabled: sdkkonnectgo.Bool(true),
             ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
+            Partials: []map[string]any{
+                map[string]any{
+                    "id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae",
+                    "path": "config.redis",
+                },
+                map[string]any{
+                    "id": "129ee345-cba8-4e55-9d6d-93c223ff91ae",
+                    "path": "config.redis",
+                },
+            },
             Protocols: []components.Protocols{
                 components.ProtocolsGrpc,
                 components.ProtocolsGrpcs,
@@ -1132,6 +1192,16 @@ func main() {
             Enabled: sdkkonnectgo.Bool(true),
             ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
+            Partials: []map[string]any{
+                map[string]any{
+                    "id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae",
+                    "path": "config.redis",
+                },
+                map[string]any{
+                    "id": "129ee345-cba8-4e55-9d6d-93c223ff91ae",
+                    "path": "config.redis",
+                },
+            },
             Protocols: []components.PluginWithoutParentsProtocols{
                 components.PluginWithoutParentsProtocolsGrpc,
                 components.PluginWithoutParentsProtocolsGrpcs,
@@ -1328,6 +1398,16 @@ func main() {
             Enabled: sdkkonnectgo.Bool(true),
             ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
+            Partials: []map[string]any{
+                map[string]any{
+                    "id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae",
+                    "path": "config.redis",
+                },
+                map[string]any{
+                    "id": "129ee345-cba8-4e55-9d6d-93c223ff91ae",
+                    "path": "config.redis",
+                },
+            },
             Protocols: []components.PluginWithoutParentsProtocols{
                 components.PluginWithoutParentsProtocolsGrpc,
                 components.PluginWithoutParentsProtocolsGrpcs,
@@ -1519,6 +1599,16 @@ func main() {
             Enabled: sdkkonnectgo.Bool(true),
             ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
+            Partials: []map[string]any{
+                map[string]any{
+                    "id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae",
+                    "path": "config.redis",
+                },
+                map[string]any{
+                    "id": "129ee345-cba8-4e55-9d6d-93c223ff91ae",
+                    "path": "config.redis",
+                },
+            },
             Protocols: []components.PluginWithoutParentsProtocols{
                 components.PluginWithoutParentsProtocolsGrpc,
                 components.PluginWithoutParentsProtocolsGrpcs,
@@ -1715,6 +1805,16 @@ func main() {
             Enabled: sdkkonnectgo.Bool(true),
             ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
+            Partials: []map[string]any{
+                map[string]any{
+                    "id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae",
+                    "path": "config.redis",
+                },
+                map[string]any{
+                    "id": "129ee345-cba8-4e55-9d6d-93c223ff91ae",
+                    "path": "config.redis",
+                },
+            },
             Protocols: []components.PluginWithoutParentsProtocols{
                 components.PluginWithoutParentsProtocolsGrpc,
                 components.PluginWithoutParentsProtocolsGrpcs,
