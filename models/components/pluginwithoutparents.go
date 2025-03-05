@@ -159,6 +159,7 @@ type PluginWithoutParents struct {
 	// The name of the Plugin that's going to be added. Currently, the Plugin must be installed in every Kong instance separately.
 	Name     string                        `json:"name"`
 	Ordering *PluginWithoutParentsOrdering `json:"ordering,omitempty"`
+	Partials []map[string]any              `json:"partials,omitempty"`
 	// A list of the request protocols that will trigger this plugin. The default value, as well as the possible values allowed on this field, may change depending on the plugin type. For example, plugins that only work in stream mode will only support `"tcp"` and `"tls"`.
 	Protocols []PluginWithoutParentsProtocols `json:"protocols,omitempty"`
 	// If set, the plugin will only activate when receiving requests via the specified route. Leave unset for the plugin to activate regardless of the Route being used.
@@ -223,6 +224,13 @@ func (o *PluginWithoutParents) GetOrdering() *PluginWithoutParentsOrdering {
 		return nil
 	}
 	return o.Ordering
+}
+
+func (o *PluginWithoutParents) GetPartials() []map[string]any {
+	if o == nil {
+		return nil
+	}
+	return o.Partials
 }
 
 func (o *PluginWithoutParents) GetProtocols() []PluginWithoutParentsProtocols {

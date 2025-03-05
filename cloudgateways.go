@@ -3860,7 +3860,7 @@ func (s *CloudGateways) GetNetwork(ctx context.Context, networkID string, opts .
 
 // UpdateNetwork - Update Network
 // Updates a network by ID.
-func (s *CloudGateways) UpdateNetwork(ctx context.Context, networkID string, patchNetworkRequest *components.PatchNetworkRequest, opts ...operations.Option) (*operations.UpdateNetworkResponse, error) {
+func (s *CloudGateways) UpdateNetwork(ctx context.Context, networkID string, patchNetworkRequest components.PatchNetworkRequest, opts ...operations.Option) (*operations.UpdateNetworkResponse, error) {
 	request := operations.UpdateNetworkRequest{
 		NetworkID:           networkID,
 		PatchNetworkRequest: patchNetworkRequest,
@@ -3895,7 +3895,7 @@ func (s *CloudGateways) UpdateNetwork(ctx context.Context, networkID string, pat
 		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, true, false, "PatchNetworkRequest", "json", `request:"mediaType=application/json"`)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PatchNetworkRequest", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
 	}

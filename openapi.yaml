@@ -2115,9 +2115,6 @@ paths:
                   type: string
                   example: cf4c7e60-11db-49dd-b300-7c7e5f0f7e6b
                   x-speakeasy-name-override: consumer_id
-              x-speakeasy-param-computed: false
-              nullable: true
-              default: null
       responses:
         '201':
           description: Consumer added to group
@@ -2431,9 +2428,6 @@ paths:
                   type: string
                   example: fedee695-2ae2-4e45-877a-776d9b2fc793
                   x-speakeasy-name-override: group
-              x-speakeasy-param-computed: false
-              nullable: true
-              default: null
       responses:
         '201':
           description: Consumer added to a specific group
@@ -5626,9 +5620,6 @@ paths:
             properties:
               type:
                 $ref: '#/components/schemas/StringFieldEqualsFilter'
-            x-speakeasy-param-computed: false
-            nullable: true
-            default: null
           in: query
           name: filter
           description: Filter identity providers returned in the response.
@@ -6005,9 +5996,6 @@ paths:
             properties:
               name:
                 $ref: '#/components/schemas/StringFieldFilter'
-            x-speakeasy-param-computed: false
-            nullable: true
-            default: null
           in: query
           name: filter
           description: Filter access tokens returned in the response.
@@ -6256,9 +6244,6 @@ paths:
             properties:
               name:
                 $ref: '#/components/schemas/StringFieldFilter'
-            x-speakeasy-param-computed: false
-            nullable: true
-            default: null
           in: query
           name: filter
           description: Filter teams returned in the response.
@@ -6290,9 +6275,6 @@ paths:
             properties:
               name:
                 $ref: '#/components/schemas/StringFieldFilter'
-            x-speakeasy-param-computed: false
-            nullable: true
-            default: null
           in: query
           name: filter
           description: Filter teams returned in the response.
@@ -6522,9 +6504,6 @@ paths:
             properties:
               name:
                 $ref: '#/components/schemas/StringFieldFilter'
-            x-speakeasy-param-computed: false
-            nullable: true
-            default: null
           in: query
           name: filter
           description: Filter system accounts returned in the response.
@@ -6915,9 +6894,6 @@ paths:
             properties:
               name:
                 $ref: '#/components/schemas/StringFieldFilter'
-            x-speakeasy-param-computed: false
-            nullable: true
-            default: null
           in: query
           name: filter
           description: Filter teams returned in the response.
@@ -7562,9 +7538,6 @@ components:
             properties:
               item:
                 $ref: '#/components/schemas/GroupStatus'
-            x-speakeasy-param-computed: false
-            nullable: true
-            default: null
     GetGroupMemberStatus:
       description: Determines the group membership status of a control plane.
       content:
@@ -7633,9 +7606,6 @@ components:
                 type: boolean
                 example: true
                 description: The organization has user impersonation enabled.
-            x-speakeasy-param-computed: false
-            nullable: true
-            default: null
     UpdateImpersonationSettingsResponse:
       description: Response for Update Impersonation Settings endpoint
       content:
@@ -7648,9 +7618,6 @@ components:
                 type: boolean
                 example: true
                 description: The organization has user impersonation enabled.
-            x-speakeasy-param-computed: false
-            nullable: true
-            default: null
     UserSingle:
       description: A get action response of a single user.
       content:
@@ -7880,9 +7847,6 @@ components:
                         type: integer
                         description: Total number of results.
                         example: 5
-                x-speakeasy-param-computed: false
-                nullable: true
-                default: null
               data:
                 type: array
                 items:
@@ -8355,9 +8319,6 @@ components:
                               - >-
                                 This role grants full write access to the Audit
                                 log configuration.
-                    x-speakeasy-param-computed: false
-                    nullable: true
-                    default: null
               identity:
                 type: object
                 additionalProperties: false
@@ -8392,9 +8353,6 @@ components:
                               - >-
                                 This role grants full write access to the
                                 Identity configuration.
-                    x-speakeasy-param-computed: false
-                    nullable: true
-                    default: null
               mesh_control_planes:
                 type: object
                 additionalProperties: false
@@ -9011,9 +8969,6 @@ components:
             properties:
               item:
                 $ref: '#/components/schemas/DataPlaneClientCertificate'
-            x-speakeasy-param-computed: false
-            nullable: true
-            default: null
     GetExpectedConfigHashResponse:
       description: >-
         Response body for retrieving the expected config hash of the control
@@ -9052,9 +9007,6 @@ components:
                 properties:
                   total:
                     type: integer
-                x-speakeasy-param-computed: false
-                nullable: true
-                default: null
     list-nodes:
       description: Example response
       content:
@@ -9088,9 +9040,6 @@ components:
                       properties:
                         state:
                           type: string
-                      x-speakeasy-param-computed: false
-                      nullable: true
-                      default: null
               page:
                 type: object
                 properties:
@@ -9121,9 +9070,6 @@ components:
                 properties:
                   total:
                     type: integer
-                x-speakeasy-param-computed: false
-                nullable: true
-                default: null
     get-node:
       description: Example response
       content:
@@ -9155,12 +9101,6 @@ components:
                     properties:
                       state:
                         type: string
-                    x-speakeasy-param-computed: false
-                    nullable: true
-                    default: null
-            x-speakeasy-param-computed: false
-            nullable: true
-            default: null
     list-plugin-schemas:
       description: A paginated list response for a collection of custom plugin schemas.
       content:
@@ -9202,9 +9142,6 @@ components:
                 properties:
                   total:
                     type: integer
-                x-speakeasy-param-computed: false
-                nullable: true
-                default: null
     plugin-schemas:
       description: A response for a single custom plugin schema.
       content:
@@ -9240,9 +9177,6 @@ components:
                       An ISO-8604 timestamp representation of custom plugin
                       schema update date.
                     example: 1422412345
-            x-speakeasy-param-computed: false
-            nullable: true
-            default: null
     ListConfigStoresResponse:
       description: List of Config Stores
       content:
@@ -11465,9 +11399,6 @@ components:
       properties:
         name:
           $ref: '#/components/schemas/NetworkName'
-      x-speakeasy-param-computed: false
-      nullable: true
-      default: null
     TransitGatewayState:
       title: Transit Gateway State
       type: string
@@ -11680,7 +11611,7 @@ components:
       x-flatten-allOf: true
       allOf:
         - $ref: '#/components/schemas/BaseTransitGateway'
-        - title: AWS Transit Gateway
+        - title: AWS VPC Peering Gateway
           type: object
           properties:
             cidr_blocks:
@@ -12101,9 +12032,6 @@ components:
       properties:
         provider:
           $ref: '#/components/schemas/CloudGatewaysStringFieldFilterOverride'
-      x-speakeasy-param-computed: false
-      nullable: true
-      default: null
     CloudGatewaysStringFieldFilterOverride:
       title: CloudGatewaysStringFieldFilterOverride
       oneOf:
@@ -12640,9 +12568,6 @@ components:
           minLength: 1
           maxLength: 100
           example: Config Store
-      x-speakeasy-param-computed: false
-      nullable: true
-      default: null
     UpdateConfigStore:
       title: Update Config Store Request
       description: The request schema to update a Config Store.
@@ -12654,9 +12579,6 @@ components:
           minLength: 1
           maxLength: 100
           example: Config Store
-      x-speakeasy-param-computed: false
-      nullable: true
-      default: null
     ConfigStoreSecret:
       type: object
       properties:
@@ -13035,9 +12957,6 @@ components:
       properties:
         consumer_group:
           $ref: '#/components/schemas/ConsumerGroup'
-      x-speakeasy-param-computed: false
-      nullable: true
-      default: null
     GatewayUnauthorizedError:
       type: object
       properties:
@@ -13635,6 +13554,12 @@ components:
                   type: array
                   items:
                     type: string
+        partials:
+          type: array
+          items:
+            additionalProperties: true
+            type: object
+          nullable: true
         protocols:
           description: >-
             A list of the request protocols that will trigger this plugin. The
@@ -13706,6 +13631,11 @@ components:
         enabled: true
         id: 3fd1eea1-885a-4011-b986-289943ff8177
         name: key-auth
+        partials:
+          - id: cff1230a-00f7-4ae8-b376-c370f0eb4dae
+            path: config.redis
+          - id: 129ee345-cba8-4e55-9d6d-93c223ff91ae
+            path: config.redis
         protocols:
           - grpc
           - grpcs
@@ -13797,6 +13727,12 @@ components:
                   type: array
                   items:
                     type: string
+        partials:
+          type: array
+          items:
+            additionalProperties: true
+            type: object
+          nullable: true
         protocols:
           description: >-
             A list of the request protocols that will trigger this plugin. The
@@ -13868,6 +13804,11 @@ components:
         enabled: true
         id: 3fd1eea1-885a-4011-b986-289943ff8177
         name: key-auth
+        partials:
+          - id: cff1230a-00f7-4ae8-b376-c370f0eb4dae
+            path: config.redis
+          - id: 129ee345-cba8-4e55-9d6d-93c223ff91ae
+            path: config.redis
         protocols:
           - grpc
           - grpcs
@@ -15293,9 +15234,6 @@ components:
                 description: >-
                   Indicates if user impersonation is allowed for the
                   organization.
-            x-speakeasy-param-computed: false
-            nullable: true
-            default: null
       description: The request schema for adding a system account to a team.
     UpdateUser:
       description: The request schema for the update user request.
@@ -15575,9 +15513,6 @@ components:
               name:
                 type: string
                 description: Name of the system account access token.
-            x-speakeasy-param-computed: false
-            nullable: true
-            default: null
     CreateSystemAccountAccessToken:
       content:
         application/json:
