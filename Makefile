@@ -27,6 +27,14 @@ controller-gen: mise yq ## Download controller-gen locally if necessary.
 	@$(MISE) install -q kube-controller-tools@$(CONTROLLER_GEN_VERSION)
 
 # ------------------------------------------------------------------------------
+# Verify repo
+# ------------------------------------------------------------------------------
+
+.PHONY: verify.diff
+verify.diff:
+	@$(PROJECT_DIR)/scripts/verify-diff.sh $(PROJECT_DIR)
+
+# ------------------------------------------------------------------------------
 # Code generation
 # ------------------------------------------------------------------------------
 
