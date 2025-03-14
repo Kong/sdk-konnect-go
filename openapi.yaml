@@ -23,6 +23,7 @@ tags:
   - name: Control Planes
   - name: Control Plane Groups
   - name: Resource Quotas
+    x-bundled-name: Control Plane Resource Quotas
   - name: Auth Settings
   - name: Invites
   - name: Roles
@@ -41,6 +42,8 @@ tags:
   - name: Transit Gateways
   - name: Provider Accounts
   - name: Custom Domains
+  - name: Resource Quotas
+    x-bundled-name: Cloud Gateways Resource Quotas
   - name: Resource Configurations
   - name: Resource Availability
   - name: Notifications
@@ -7281,6 +7284,7 @@ components:
       schema:
         type: string
     PaginationOffset:
+      allowEmptyValue: true
       description: >-
         Offset from which to return the next set of resources. Use the value of
         the 'offset' field from the response of a list operation as input here
@@ -7299,6 +7303,7 @@ components:
         maximum: 1000
         minimum: 1
     PaginationTagsFilter:
+      allowEmptyValue: true
       description: >-
         A list of tags to filter the list of resources on. Multiple tags can be
         concatenated using ',' to mean AND or using '/' to mean OR.
@@ -8387,6 +8392,26 @@ components:
                               - >-
                                 This role grants full write access to the
                                 related to Mesh control planes.
+                      connector:
+                        type: object
+                        additionalProperties: false
+                        required:
+                          - name
+                          - description
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Connector
+                          description:
+                            type: string
+                            example: >-
+                              This role grants a mesh zone to connect to the
+                              mesh control plane in Konnect.
+                            enum:
+                              - >-
+                                This role grants a mesh zone to connect to the
+                                mesh control plane in Konnect.
                       creator:
                         type: object
                         additionalProperties: false
@@ -11406,6 +11431,7 @@ components:
       enum:
         - created
         - initializing
+        - pending-acceptance
         - ready
         - terminating
         - terminated
@@ -13633,8 +13659,10 @@ components:
         name: key-auth
         partials:
           - id: cff1230a-00f7-4ae8-b376-c370f0eb4dae
+            name: foo-partial
             path: config.redis
           - id: 129ee345-cba8-4e55-9d6d-93c223ff91ae
+            name: bar-partial
             path: config.redis
         protocols:
           - grpc
@@ -13806,8 +13834,10 @@ components:
         name: key-auth
         partials:
           - id: cff1230a-00f7-4ae8-b376-c370f0eb4dae
+            name: foo-partial
             path: config.redis
           - id: 129ee345-cba8-4e55-9d6d-93c223ff91ae
+            name: bar-partial
             path: config.redis
         protocols:
           - grpc
@@ -15395,6 +15425,7 @@ components:
                   - Cloud Gateway Cluster Admin
                   - Cloud Gateway Cluster Viewer
                   - Consumer Admin
+                  - Connector
                   - Creator
                   - Deployer
                   - Discovery Admin
