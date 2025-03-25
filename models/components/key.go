@@ -2,32 +2,32 @@
 
 package components
 
-// KeyPem - A keypair in PEM format.
-type KeyPem struct {
+// Pem - A keypair in PEM format.
+type Pem struct {
 	PrivateKey *string `json:"private_key,omitempty"`
 	PublicKey  *string `json:"public_key,omitempty"`
 }
 
-func (o *KeyPem) GetPrivateKey() *string {
+func (o *Pem) GetPrivateKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.PrivateKey
 }
 
-func (o *KeyPem) GetPublicKey() *string {
+func (o *Pem) GetPublicKey() *string {
 	if o == nil {
 		return nil
 	}
 	return o.PublicKey
 }
 
-// KeySet1 - The id (an UUID) of the key-set with which to associate the key.
-type KeySet1 struct {
+// Set - The id (an UUID) of the key-set with which to associate the key.
+type Set struct {
 	ID *string `json:"id,omitempty"`
 }
 
-func (o *KeySet1) GetID() *string {
+func (o *Set) GetID() *string {
 	if o == nil {
 		return nil
 	}
@@ -46,9 +46,9 @@ type Key struct {
 	// The name to associate with the given keys.
 	Name *string `json:"name,omitempty"`
 	// A keypair in PEM format.
-	Pem *KeyPem `json:"pem,omitempty"`
+	Pem *Pem `json:"pem,omitempty"`
 	// The id (an UUID) of the key-set with which to associate the key.
-	Set *KeySet1 `json:"set,omitempty"`
+	Set *Set `json:"set,omitempty"`
 	// An optional set of strings associated with the Key for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
 	// Unix epoch when the resource was last updated.
@@ -90,14 +90,14 @@ func (o *Key) GetName() *string {
 	return o.Name
 }
 
-func (o *Key) GetPem() *KeyPem {
+func (o *Key) GetPem() *Pem {
 	if o == nil {
 		return nil
 	}
 	return o.Pem
 }
 
-func (o *Key) GetSet() *KeySet1 {
+func (o *Key) GetSet() *Set {
 	if o == nil {
 		return nil
 	}
@@ -128,9 +128,9 @@ type KeyInput struct {
 	// The name to associate with the given keys.
 	Name *string `json:"name,omitempty"`
 	// A keypair in PEM format.
-	Pem *KeyPem `json:"pem,omitempty"`
+	Pem *Pem `json:"pem,omitempty"`
 	// The id (an UUID) of the key-set with which to associate the key.
-	Set *KeySet1 `json:"set,omitempty"`
+	Set *Set `json:"set,omitempty"`
 	// An optional set of strings associated with the Key for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
 }
@@ -163,14 +163,14 @@ func (o *KeyInput) GetName() *string {
 	return o.Name
 }
 
-func (o *KeyInput) GetPem() *KeyPem {
+func (o *KeyInput) GetPem() *Pem {
 	if o == nil {
 		return nil
 	}
 	return o.Pem
 }
 
-func (o *KeyInput) GetSet() *KeySet1 {
+func (o *KeyInput) GetSet() *Set {
 	if o == nil {
 		return nil
 	}
