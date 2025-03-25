@@ -111,11 +111,11 @@ func main() {
             Jwk: sdkkonnectgo.String("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
             Kid: "42",
             Name: sdkkonnectgo.String("a-key"),
-            Pem: &components.Pem{
+            Pem: &components.KeyWithoutParentsPem{
                 PrivateKey: sdkkonnectgo.String("-----BEGIN"),
                 PublicKey: sdkkonnectgo.String("-----BEGIN"),
             },
-            Set: &components.Set{
+            Set: &components.KeyWithoutParentsSet{
                 ID: sdkkonnectgo.String("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
             },
         },
@@ -298,11 +298,11 @@ func main() {
             Jwk: sdkkonnectgo.String("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
             Kid: "42",
             Name: sdkkonnectgo.String("a-key"),
-            Pem: &components.Pem{
+            Pem: &components.KeyWithoutParentsPem{
                 PrivateKey: sdkkonnectgo.String("-----BEGIN"),
                 PublicKey: sdkkonnectgo.String("-----BEGIN"),
             },
-            Set: &components.Set{
+            Set: &components.KeyWithoutParentsSet{
                 ID: sdkkonnectgo.String("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
             },
         },
@@ -422,11 +422,11 @@ func main() {
         Jwk: sdkkonnectgo.String("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
         Kid: "42",
         Name: sdkkonnectgo.String("a-key"),
-        Pem: &components.KeyPem{
+        Pem: &components.Pem{
             PrivateKey: sdkkonnectgo.String("-----BEGIN"),
             PublicKey: sdkkonnectgo.String("-----BEGIN"),
         },
-        Set: &components.KeySet1{
+        Set: &components.Set{
             ID: sdkkonnectgo.String("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
         },
     })
@@ -603,11 +603,11 @@ func main() {
             Jwk: sdkkonnectgo.String("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
             Kid: "42",
             Name: sdkkonnectgo.String("a-key"),
-            Pem: &components.KeyPem{
+            Pem: &components.Pem{
                 PrivateKey: sdkkonnectgo.String("-----BEGIN"),
                 PublicKey: sdkkonnectgo.String("-----BEGIN"),
             },
-            Set: &components.KeySet1{
+            Set: &components.Set{
                 ID: sdkkonnectgo.String("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
             },
         },
