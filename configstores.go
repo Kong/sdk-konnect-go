@@ -55,7 +55,7 @@ func (s *ConfigStores) ListConfigStores(ctx context.Context, request operations.
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "list-config-stores",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -328,7 +328,7 @@ func (s *ConfigStores) CreateConfigStore(ctx context.Context, controlPlaneID str
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "create-config-store",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateConfigStore", "json", `request:"mediaType=application/json"`)
@@ -625,7 +625,7 @@ func (s *ConfigStores) GetConfigStore(ctx context.Context, controlPlaneID string
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "get-config-store",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -868,7 +868,7 @@ func (s *ConfigStores) UpdateConfigStore(ctx context.Context, request operations
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "update-config-store",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateConfigStore", "json", `request:"mediaType=application/json"`)
@@ -1181,7 +1181,7 @@ func (s *ConfigStores) DeleteConfigStore(ctx context.Context, request operations
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "delete-config-store",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 

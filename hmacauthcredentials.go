@@ -55,7 +55,7 @@ func (s *HMACAuthCredentials) ListHmacAuthWithConsumer(ctx context.Context, requ
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "list-hmac-auth-with-consumer",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -260,7 +260,7 @@ func (s *HMACAuthCredentials) CreateHmacAuthWithConsumer(ctx context.Context, re
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "create-hmac-auth-with-consumer",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "HMACAuthWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -468,7 +468,7 @@ func (s *HMACAuthCredentials) DeleteHmacAuthWithConsumer(ctx context.Context, re
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "delete-hmac-auth-with-consumer",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -649,7 +649,7 @@ func (s *HMACAuthCredentials) GetHmacAuthWithConsumer(ctx context.Context, reque
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "get-hmac-auth-with-consumer",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -852,7 +852,7 @@ func (s *HMACAuthCredentials) UpsertHmacAuthWithConsumer(ctx context.Context, re
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "upsert-hmac-auth-with-consumer",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "HMACAuthWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -1060,7 +1060,7 @@ func (s *HMACAuthCredentials) ListHmacAuth(ctx context.Context, request operatio
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "list-hmac-auth",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1291,7 +1291,7 @@ func (s *HMACAuthCredentials) GetHmacAuth(ctx context.Context, hmacAuthID string
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "get-hmac-auth",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 

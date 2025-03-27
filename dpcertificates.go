@@ -60,7 +60,7 @@ func (s *DPCertificates) ListDpClientCertificates(ctx context.Context, controlPl
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "list-dp-client-certificates",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -266,7 +266,7 @@ func (s *DPCertificates) CreateDataplaneCertificate(ctx context.Context, control
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "create-dataplane-certificate",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "DataPlaneClientCertificateRequest", "json", `request:"mediaType=application/json"`)
@@ -479,7 +479,7 @@ func (s *DPCertificates) GetDataplaneCertificate(ctx context.Context, controlPla
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "get-dataplane-certificate",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -685,7 +685,7 @@ func (s *DPCertificates) DeleteDataplaneCertificate(ctx context.Context, control
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "delete-dataplane-certificate",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
