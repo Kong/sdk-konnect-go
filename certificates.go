@@ -60,7 +60,7 @@ func (s *Certificates) ListCertificate(ctx context.Context, request operations.L
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "list-certificate",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -291,7 +291,7 @@ func (s *Certificates) CreateCertificate(ctx context.Context, controlPlaneID str
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "create-certificate",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Certificate", "json", `request:"mediaType=application/json"`)
@@ -525,7 +525,7 @@ func (s *Certificates) DeleteCertificate(ctx context.Context, controlPlaneID str
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "delete-certificate",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -732,7 +732,7 @@ func (s *Certificates) GetCertificate(ctx context.Context, certificateID string,
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "get-certificate",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -956,7 +956,7 @@ func (s *Certificates) UpsertCertificate(ctx context.Context, request operations
 		BaseURL:        baseURL,
 		Context:        ctx,
 		OperationID:    "upsert-certificate",
-		OAuth2Scopes:   []string{},
+		OAuth2Scopes:   nil,
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Certificate", "json", `request:"mediaType=application/json"`)
