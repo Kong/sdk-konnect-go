@@ -254,7 +254,7 @@ func (s *KeySets) ListKeySet(ctx context.Context, request operations.ListKeySetR
 
 // CreateKeySet - Create a new KeySet
 // Create a new KeySet
-func (s *KeySets) CreateKeySet(ctx context.Context, controlPlaneID string, keySet components.KeySetInput, opts ...operations.Option) (*operations.CreateKeySetResponse, error) {
+func (s *KeySets) CreateKeySet(ctx context.Context, controlPlaneID string, keySet components.KeySet, opts ...operations.Option) (*operations.CreateKeySetResponse, error) {
 	request := operations.CreateKeySetRequest{
 		ControlPlaneID: controlPlaneID,
 		KeySet:         keySet,

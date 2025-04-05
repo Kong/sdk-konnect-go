@@ -11,7 +11,7 @@ type CreateKeyRequest struct {
 	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Description of the new Key for creation
-	Key components.KeyInput `request:"mediaType=application/json"`
+	Key components.Key `request:"mediaType=application/json"`
 }
 
 func (o *CreateKeyRequest) GetControlPlaneID() string {
@@ -21,9 +21,9 @@ func (o *CreateKeyRequest) GetControlPlaneID() string {
 	return o.ControlPlaneID
 }
 
-func (o *CreateKeyRequest) GetKey() components.KeyInput {
+func (o *CreateKeyRequest) GetKey() components.Key {
 	if o == nil {
-		return components.KeyInput{}
+		return components.Key{}
 	}
 	return o.Key
 }

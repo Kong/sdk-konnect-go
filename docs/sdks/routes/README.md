@@ -126,8 +126,8 @@ func main() {
         }),
     )
 
-    res, err := s.Routes.CreateRoute(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateRouteInputRouteJSONInput(
-        components.RouteJSONInput{
+    res, err := s.Routes.CreateRoute(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateRouteRouteJSON(
+        components.RouteJSON{
             Hosts: []string{
                 "foo.example.com",
                 "foo.example.us",
@@ -158,7 +158,7 @@ func main() {
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
 | `controlPlaneID`                                                                   | *string*                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `route`                                                                            | [components.RouteInput](../../models/components/routeinput.md)                     | :heavy_check_mark:                                                                 | Description of the new Route for creation                                          |                                                                                    |
+| `route`                                                                            | [components.Route](../../models/components/route.md)                               | :heavy_check_mark:                                                                 | Description of the new Route for creation                                          |                                                                                    |
 | `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
 
 ### Response
@@ -311,8 +311,8 @@ func main() {
     res, err := s.Routes.UpsertRoute(ctx, operations.UpsertRouteRequest{
         RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        Route: components.CreateRouteInputRouteJSONInput(
-            components.RouteJSONInput{
+        Route: components.CreateRouteRouteJSON(
+            components.RouteJSON{
                 Hosts: []string{
                     "foo.example.com",
                     "foo.example.us",
@@ -444,18 +444,20 @@ func main() {
     res, err := s.Routes.CreateRouteWithService(ctx, operations.CreateRouteWithServiceRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
-        RouteWithoutParents: components.RouteWithoutParents{
-            Hosts: []string{
-                "foo.example.com",
-                "foo.example.us",
+        RouteWithoutParents: components.CreateRouteWithoutParentsRouteJSON(
+            components.RouteJSON{
+                Hosts: []string{
+                    "foo.example.com",
+                    "foo.example.us",
+                },
+                ID: sdkkonnectgo.String("56c4566c-14cc-4132-9011-4139fcbbe50a"),
+                Name: sdkkonnectgo.String("example-route"),
+                Paths: []string{
+                    "/v1",
+                    "/v2",
+                },
             },
-            ID: sdkkonnectgo.String("56c4566c-14cc-4132-9011-4139fcbbe50a"),
-            Name: sdkkonnectgo.String("example-route"),
-            Paths: []string{
-                "/v1",
-                "/v2",
-            },
-        },
+        ),
     })
     if err != nil {
         log.Fatal(err)
@@ -630,18 +632,20 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
-        RouteWithoutParents: components.RouteWithoutParents{
-            Hosts: []string{
-                "foo.example.com",
-                "foo.example.us",
+        RouteWithoutParents: components.CreateRouteWithoutParentsRouteJSON(
+            components.RouteJSON{
+                Hosts: []string{
+                    "foo.example.com",
+                    "foo.example.us",
+                },
+                ID: sdkkonnectgo.String("56c4566c-14cc-4132-9011-4139fcbbe50a"),
+                Name: sdkkonnectgo.String("example-route"),
+                Paths: []string{
+                    "/v1",
+                    "/v2",
+                },
             },
-            ID: sdkkonnectgo.String("56c4566c-14cc-4132-9011-4139fcbbe50a"),
-            Name: sdkkonnectgo.String("example-route"),
-            Paths: []string{
-                "/v1",
-                "/v2",
-            },
-        },
+        ),
     })
     if err != nil {
         log.Fatal(err)

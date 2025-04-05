@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: f5985046c7879882d1923de8c0d2faa7
+  docChecksum: 51f5b9add39e6a021405d720c4e6553b
   docVersion: 0.0.1
   speakeasyVersion: 1.523.2
   generationVersion: 2.560.1
-  releaseVersion: 0.2.22
-  configChecksum: 64f2cf748fe29f9fca7bffec8bfbddc4
+  releaseVersion: 0.2.23
+  configChecksum: 1e0d4f6d39b68aad86324162627d46bf
 features:
   go:
     additionalDependencies: 0.1.0
@@ -51,9 +51,7 @@ generatedFiles:
   - /models/components/basicauthwithoutparents.go
   - /models/components/bulkpayload.go
   - /models/components/cacertificate.go
-  - /models/components/cacertificateinput.go
   - /models/components/certificate.go
-  - /models/components/certificateinput.go
   - /models/components/cloudgatewaysstringfieldequalsfilteroverride.go
   - /models/components/cloudgatewaysstringfieldfilteroverride.go
   - /models/components/configstore.go
@@ -70,9 +68,7 @@ generatedFiles:
   - /models/components/configureoidcidentityproviderconfig.go
   - /models/components/consumer.go
   - /models/components/consumergroup.go
-  - /models/components/consumergroupinput.go
   - /models/components/consumergroupinsidewrapper.go
-  - /models/components/consumerinput.go
   - /models/components/controlplane.go
   - /models/components/controlplanefilterparameters.go
   - /models/components/controlplanegeo.go
@@ -106,6 +102,7 @@ generatedFiles:
   - /models/components/customdomainstatefieldfilter.go
   - /models/components/customdomainstatefieldnotequalsfilter.go
   - /models/components/customdomainstatefieldorequalityfilter.go
+  - /models/components/customplugin.go
   - /models/components/dataplaneclientcertificate.go
   - /models/components/dataplaneclientcertificaterequest.go
   - /models/components/dataplaneclientcertificateresponse.go
@@ -147,7 +144,6 @@ generatedFiles:
   - /models/components/keyauth.go
   - /models/components/keyauthwithoutparents.go
   - /models/components/keyset.go
-  - /models/components/keysetinput.go
   - /models/components/keywithoutparents.go
   - /models/components/listconfigstoresecretsresponse.go
   - /models/components/listconfigstoresresponse.go
@@ -211,13 +207,12 @@ generatedFiles:
   - /models/components/roles.go
   - /models/components/route.go
   - /models/components/routeexpression.go
-  - /models/components/routeinput.go
   - /models/components/routejson.go
   - /models/components/routewithoutparents.go
   - /models/components/samlidentityproviderconfig.go
   - /models/components/samlidentityproviderconfiginput.go
   - /models/components/security.go
-  - /models/components/service.go
+  - /models/components/serviceoutput.go
   - /models/components/sni.go
   - /models/components/sniwithoutparents.go
   - /models/components/stringfieldcontainsfilter.go
@@ -267,7 +262,6 @@ generatedFiles:
   - /models/components/userconfiguration.go
   - /models/components/userconfigurationlistresponse.go
   - /models/components/vault.go
-  - /models/components/vaultinput.go
   - /models/operations/addconsumertogroup.go
   - /models/operations/addconsumertospecificconsumergroup.go
   - /models/operations/addusertoteam.go
@@ -284,6 +278,7 @@ generatedFiles:
   - /models/operations/createconsumergroup.go
   - /models/operations/createcontrolplane.go
   - /models/operations/createcustomdomains.go
+  - /models/operations/createcustomplugin.go
   - /models/operations/createdataplanecertificate.go
   - /models/operations/createeventsubscription.go
   - /models/operations/createhmacauthwithconsumer.go
@@ -321,6 +316,7 @@ generatedFiles:
   - /models/operations/deleteconsumergroup.go
   - /models/operations/deletecontrolplane.go
   - /models/operations/deletecustomdomain.go
+  - /models/operations/deletecustomplugin.go
   - /models/operations/deletedataplanecertificate.go
   - /models/operations/deleteeventsubscription.go
   - /models/operations/deletehmacauthwithconsumer.go
@@ -375,6 +371,7 @@ generatedFiles:
   - /models/operations/getcontrolplanesidgroupstatus.go
   - /models/operations/getcustomdomain.go
   - /models/operations/getcustomdomainonlinestatus.go
+  - /models/operations/getcustomplugin.go
   - /models/operations/getdataplanecertificate.go
   - /models/operations/geteventsubscription.go
   - /models/operations/getexpectedconfighash.go
@@ -445,6 +442,7 @@ generatedFiles:
   - /models/operations/listconsumersforconsumergroup.go
   - /models/operations/listcontrolplanes.go
   - /models/operations/listcustomdomains.go
+  - /models/operations/listcustomplugin.go
   - /models/operations/listdataplanenodes.go
   - /models/operations/listdefaultresourceconfigurations.go
   - /models/operations/listdefaultresourcequotas.go
@@ -526,6 +524,7 @@ generatedFiles:
   - /models/operations/upsertcertificate.go
   - /models/operations/upsertconsumer.go
   - /models/operations/upsertconsumergroup.go
+  - /models/operations/upsertcustomplugin.go
   - /models/operations/upserthmacauthwithconsumer.go
   - /models/operations/upsertjwtwithconsumer.go
   - /models/operations/upsertkey.go
@@ -575,6 +574,7 @@ generatedFiles:
   - consumers.go
   - controlplanegroups.go
   - controlplanes.go
+  - customplugins.go
   - custompluginschemas.go
   - docs/models/components/acl.md
   - docs/models/components/aclconsumer.md
@@ -615,10 +615,8 @@ generatedFiles:
   - docs/models/components/before.md
   - docs/models/components/bulkpayload.md
   - docs/models/components/cacertificate.md
-  - docs/models/components/cacertificateinput.md
   - docs/models/components/certificate.md
   - docs/models/components/certificateadmin.md
-  - docs/models/components/certificateinput.md
   - docs/models/components/claimmappings.md
   - docs/models/components/clientcertificate.md
   - docs/models/components/cloudgatewaysstringfieldequalsfilteroverride.md
@@ -639,12 +637,11 @@ generatedFiles:
   - docs/models/components/configurationmanifest.md
   - docs/models/components/configurationsfilterparameters.md
   - docs/models/components/configureoidcidentityproviderconfig.md
+  - docs/models/components/connector.md
   - docs/models/components/consumer.md
   - docs/models/components/consumeradmin.md
   - docs/models/components/consumergroup.md
-  - docs/models/components/consumergroupinput.md
   - docs/models/components/consumergroupinsidewrapper.md
-  - docs/models/components/consumerinput.md
   - docs/models/components/controlplane.md
   - docs/models/components/controlplaneauthtype.md
   - docs/models/components/controlplaneclustertype.md
@@ -687,6 +684,7 @@ generatedFiles:
   - docs/models/components/customdomainstatefieldnotequalsfilter.md
   - docs/models/components/customdomainstatefieldorequalityfilter.md
   - docs/models/components/customdomainstatemetadata.md
+  - docs/models/components/customplugin.md
   - docs/models/components/data.md
   - docs/models/components/dataplaneclientcertificate.md
   - docs/models/components/dataplaneclientcertificaterequest.md
@@ -757,9 +755,7 @@ generatedFiles:
   - docs/models/components/keyauthconsumer.md
   - docs/models/components/keyauthwithoutparents.md
   - docs/models/components/keyauthwithoutparentsconsumer.md
-  - docs/models/components/keyinput.md
   - docs/models/components/keyset.md
-  - docs/models/components/keysetinput.md
   - docs/models/components/keywithoutparents.md
   - docs/models/components/keywithoutparentspem.md
   - docs/models/components/keywithoutparentsset.md
@@ -828,6 +824,7 @@ generatedFiles:
   - docs/models/components/page.md
   - docs/models/components/pagemeta.md
   - docs/models/components/paginatedmeta.md
+  - docs/models/components/partials.md
   - docs/models/components/passive.md
   - docs/models/components/patchnetworkrequest.md
   - docs/models/components/patchteamgroupmappings.md
@@ -837,7 +834,6 @@ generatedFiles:
   - docs/models/components/pluginadmin.md
   - docs/models/components/pluginconsumer.md
   - docs/models/components/pluginconsumergroup.md
-  - docs/models/components/plugininput.md
   - docs/models/components/pluginroute.md
   - docs/models/components/pluginsadmin.md
   - docs/models/components/pluginschemas.md
@@ -848,6 +844,7 @@ generatedFiles:
   - docs/models/components/pluginwithoutparentsconsumer.md
   - docs/models/components/pluginwithoutparentsconsumergroup.md
   - docs/models/components/pluginwithoutparentsordering.md
+  - docs/models/components/pluginwithoutparentspartials.md
   - docs/models/components/pluginwithoutparentsprotocols.md
   - docs/models/components/pluginwithoutparentsroute.md
   - docs/models/components/pluginwithoutparentsservice.md
@@ -923,6 +920,8 @@ generatedFiles:
   - docs/models/components/rolesmeshcontrolplanesdescription.md
   - docs/models/components/rolesmeshcontrolplanesname.md
   - docs/models/components/rolesmeshcontrolplanesroles.md
+  - docs/models/components/rolesmeshcontrolplanesrolesconnectorname.md
+  - docs/models/components/rolesmeshcontrolplanesrolescreatordescription.md
   - docs/models/components/rolesmeshcontrolplanesrolescreatorname.md
   - docs/models/components/rolesmeshcontrolplanesrolesdescription.md
   - docs/models/components/rolesmeshcontrolplanesrolesname.md
@@ -936,33 +935,23 @@ generatedFiles:
   - docs/models/components/routeadmin.md
   - docs/models/components/routeexpression.md
   - docs/models/components/routeexpressionhttpsredirectstatuscode.md
-  - docs/models/components/routeexpressioninput.md
   - docs/models/components/routeexpressionpathhandling.md
   - docs/models/components/routeexpressionprotocols.md
   - docs/models/components/routeexpressionservice.md
-  - docs/models/components/routeinput.md
   - docs/models/components/routejson.md
-  - docs/models/components/routejsoninput.md
   - docs/models/components/routejsonprotocols.md
   - docs/models/components/routejsonservice.md
   - docs/models/components/routewithoutparents.md
-  - docs/models/components/routewithoutparentsdestinations.md
-  - docs/models/components/routewithoutparentshttpsredirectstatuscode.md
-  - docs/models/components/routewithoutparentspathhandling.md
-  - docs/models/components/routewithoutparentsprotocols.md
-  - docs/models/components/routewithoutparentsservice.md
-  - docs/models/components/routewithoutparentssources.md
   - docs/models/components/rule.md
   - docs/models/components/samlidentityproviderconfig.md
   - docs/models/components/samlidentityproviderconfiginput.md
   - docs/models/components/security.md
   - docs/models/components/service.md
-  - docs/models/components/serviceinput.md
+  - docs/models/components/serviceoutput.md
   - docs/models/components/set.md
   - docs/models/components/sni.md
   - docs/models/components/sniadmin.md
   - docs/models/components/snicertificate.md
-  - docs/models/components/sniinput.md
   - docs/models/components/sniwithoutparents.md
   - docs/models/components/sniwithoutparentscertificate.md
   - docs/models/components/sources.md
@@ -1025,7 +1014,6 @@ generatedFiles:
   - docs/models/components/upstreamalgorithm.md
   - docs/models/components/upstreamclientcertificate.md
   - docs/models/components/upstreamhealthy.md
-  - docs/models/components/upstreaminput.md
   - docs/models/components/upstreamtype.md
   - docs/models/components/upstreamunhealthy.md
   - docs/models/components/user.md
@@ -1033,7 +1021,6 @@ generatedFiles:
   - docs/models/components/userconfiguration.md
   - docs/models/components/userconfigurationlistresponse.md
   - docs/models/components/vault.md
-  - docs/models/components/vaultinput.md
   - docs/models/components/viewer.md
   - docs/models/operations/addconsumertogrouprequest.md
   - docs/models/operations/addconsumertogrouprequestbody.md
@@ -1067,6 +1054,8 @@ generatedFiles:
   - docs/models/operations/createconsumerresponse.md
   - docs/models/operations/createcontrolplaneresponse.md
   - docs/models/operations/createcustomdomainsresponse.md
+  - docs/models/operations/createcustompluginrequest.md
+  - docs/models/operations/createcustompluginresponse.md
   - docs/models/operations/createdataplanecertificaterequest.md
   - docs/models/operations/createdataplanecertificateresponse.md
   - docs/models/operations/createeventsubscriptionrequest.md
@@ -1138,6 +1127,8 @@ generatedFiles:
   - docs/models/operations/deletecontrolplaneresponse.md
   - docs/models/operations/deletecustomdomainrequest.md
   - docs/models/operations/deletecustomdomainresponse.md
+  - docs/models/operations/deletecustompluginrequest.md
+  - docs/models/operations/deletecustompluginresponse.md
   - docs/models/operations/deletedataplanecertificaterequest.md
   - docs/models/operations/deletedataplanecertificateresponse.md
   - docs/models/operations/deleteeventsubscriptionrequest.md
@@ -1247,6 +1238,8 @@ generatedFiles:
   - docs/models/operations/getcustomdomainonlinestatusresponse.md
   - docs/models/operations/getcustomdomainrequest.md
   - docs/models/operations/getcustomdomainresponse.md
+  - docs/models/operations/getcustompluginrequest.md
+  - docs/models/operations/getcustompluginresponse.md
   - docs/models/operations/getdataplanecertificaterequest.md
   - docs/models/operations/getdataplanecertificateresponse.md
   - docs/models/operations/geteventsubscriptionrequest.md
@@ -1395,6 +1388,9 @@ generatedFiles:
   - docs/models/operations/listcontrolplanesresponse.md
   - docs/models/operations/listcustomdomainsrequest.md
   - docs/models/operations/listcustomdomainsresponse.md
+  - docs/models/operations/listcustompluginrequest.md
+  - docs/models/operations/listcustompluginresponse.md
+  - docs/models/operations/listcustompluginresponsebody.md
   - docs/models/operations/listdataplanenodesrequest.md
   - docs/models/operations/listdataplanenodesresponse.md
   - docs/models/operations/listdefaultresourceconfigurationsrequest.md
@@ -1583,6 +1579,8 @@ generatedFiles:
   - docs/models/operations/upsertconsumergroupresponse.md
   - docs/models/operations/upsertconsumerrequest.md
   - docs/models/operations/upsertconsumerresponse.md
+  - docs/models/operations/upsertcustompluginrequest.md
+  - docs/models/operations/upsertcustompluginresponse.md
   - docs/models/operations/upserthmacauthwithconsumerrequest.md
   - docs/models/operations/upserthmacauthwithconsumerresponse.md
   - docs/models/operations/upsertjwtwithconsumerrequest.md
@@ -1655,6 +1653,7 @@ generatedFiles:
   - docs/sdks/consumers/README.md
   - docs/sdks/controlplanegroups/README.md
   - docs/sdks/controlplanes/README.md
+  - docs/sdks/customplugins/README.md
   - docs/sdks/custompluginschemas/README.md
   - docs/sdks/dpcertificates/README.md
   - docs/sdks/dpnodes/README.md
@@ -2355,10 +2354,10 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerGroupId: ""
       requestBody:
-        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "201":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   delete-plugin-with-consumer_group:
     "":
       parameters:
@@ -2375,7 +2374,7 @@ examples:
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       responses:
         "200":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   upsert-plugin-with-consumer_group:
     "":
       parameters:
@@ -2384,10 +2383,10 @@ examples:
           ConsumerGroupId: ""
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       requestBody:
-        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "200":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   list-plugin-with-consumer:
     "":
       parameters:
@@ -2407,10 +2406,10 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
       requestBody:
-        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "201":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   delete-plugin-with-consumer:
     "":
       parameters:
@@ -2427,7 +2426,7 @@ examples:
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       responses:
         "200":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   upsert-plugin-with-consumer:
     "":
       parameters:
@@ -2436,10 +2435,10 @@ examples:
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       requestBody:
-        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "200":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   list-plugin:
     "":
       parameters:
@@ -2459,10 +2458,10 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "201":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
         "401":
           application/json: {"message": "<value>", "status": 130029}
   delete-plugin:
@@ -2482,7 +2481,7 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       responses:
         "200":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
         "401":
           application/json: {"message": "<value>", "status": 929065}
   upsert-plugin:
@@ -2492,10 +2491,10 @@ examples:
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "200":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
         "401":
           application/json: {"message": "<value>", "status": 114024}
   list-plugin-with-route:
@@ -2517,10 +2516,10 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
       requestBody:
-        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "201":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   delete-plugin-with-route:
     "":
       parameters:
@@ -2537,7 +2536,7 @@ examples:
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       responses:
         "200":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   upsert-plugin-with-route:
     "":
       parameters:
@@ -2546,10 +2545,10 @@ examples:
           RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       requestBody:
-        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "200":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   fetch-plugin-schema:
     speakeasy-default-fetch-plugin-schema:
       parameters:
@@ -2578,10 +2577,10 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
       requestBody:
-        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "201":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   delete-plugin-with-service:
     "":
       parameters:
@@ -2598,7 +2597,7 @@ examples:
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       responses:
         "200":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   upsert-plugin-with-service:
     "":
       parameters:
@@ -2607,10 +2606,10 @@ examples:
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       requestBody:
-        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "200":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   list-consumer:
     "":
       parameters:
@@ -3611,7 +3610,7 @@ examples:
     "":
       parameters:
         path:
-          nodeId: "<id>"
+          nodeId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
         query:
           size: 100
@@ -3620,7 +3619,7 @@ examples:
     speakeasy-default-delete-nodes-node-id:
       parameters:
         path:
-          nodeId: "<id>"
+          nodeId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
   get-nodes-eol:
     speakeasy-default-get-nodes-eol:
@@ -3914,7 +3913,7 @@ examples:
     speakeasy-default-get-predefined-roles:
       responses:
         "200":
-          application/json: {"control_planes": {"name": "Control Planes", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to all entities within a control plane."}, "certificate_admin": {"name": "Certificate Admin", "description": "This role grants full write access to administer certificates."}, "consumer_admin": {"name": "Consumer Admin", "description": "This role grants full write access to administer consumers."}, "creator": {"name": "Creator", "description": "Creates a new Control Plane in an organization. The creator becomes the owner of the Control Plane they create."}, "deployer": {"name": "Deployer", "description": "This role grants full write access to administer services, routes and plugins necessary to deploy services in Service Hub."}, "gateway_service_admin": {"name": "Gateway Service Admin", "description": "This role grants full write access to administer gateway services."}, "plugin_admin": {"name": "Plugin Admin", "description": "This role grants full write access to administer plugins."}, "route_admin": {"name": "Route Admin", "description": "This role grants full write access to administer routes."}, "sni_admin": {"name": "SNI Admin", "description": "This role grants full write access to administer SNIs."}, "upstream_admin": {"name": "Upstream Admin", "description": "This role grants full write access to administer upstreams."}, "viewer": {"name": "Viewer", "description": "This role grants read only access to all entities within a control plane."}}}, "api_products": {"name": "API Products", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to an API product and its versions."}, "application_registration": {"name": "Application Registration", "description": "This role grants permission to enable and disable application registration on an API product."}, "creator": {"name": "Creator", "description": "This access is required to create API products. This access is not for creating sub-entities such as versions, API specs, etc."}, "deployer": {"name": "Deployer", "description": "This role grants permission to deploy and remove an API product from a control plane."}, "maintainer": {"name": "Maintainer", "description": "This role grants all write permission to manage an API product and to administer plugins."}, "plugins_admin": {"name": "Plugins Admin", "description": "This role grants full write permission to administer plugins."}, "publisher": {"name": "Publisher", "description": "This role grants permission to publish an API product to one or more portals."}, "viewer": {"name": "Viewer", "description": "Viewer has read-only access to an API product and its sub-entities."}}}, "audit_logs": {"name": "Audit Logs", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to the Audit log configuration."}}}, "identity": {"name": "Identity", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to the Identity configuration."}}}, "mesh_control_planes": {"name": "Mesh Control Plane", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to the related to Mesh control planes."}, "creator": {"name": "Creator", "description": "This role grants access to create new Mesh control planes."}, "viewer": {"name": "Viewer", "description": "This role grants access to read-only permissions to Mesh control planes."}}}}
+          application/json: {"control_planes": {"name": "Control Planes", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to all entities within a control plane."}, "certificate_admin": {"name": "Certificate Admin", "description": "This role grants full write access to administer certificates."}, "consumer_admin": {"name": "Consumer Admin", "description": "This role grants full write access to administer consumers."}, "creator": {"name": "Creator", "description": "Creates a new Control Plane in an organization. The creator becomes the owner of the Control Plane they create."}, "deployer": {"name": "Deployer", "description": "This role grants full write access to administer services, routes and plugins necessary to deploy services in Service Hub."}, "gateway_service_admin": {"name": "Gateway Service Admin", "description": "This role grants full write access to administer gateway services."}, "plugin_admin": {"name": "Plugin Admin", "description": "This role grants full write access to administer plugins."}, "route_admin": {"name": "Route Admin", "description": "This role grants full write access to administer routes."}, "sni_admin": {"name": "SNI Admin", "description": "This role grants full write access to administer SNIs."}, "upstream_admin": {"name": "Upstream Admin", "description": "This role grants full write access to administer upstreams."}, "viewer": {"name": "Viewer", "description": "This role grants read only access to all entities within a control plane."}}}, "api_products": {"name": "API Products", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to an API product and its versions."}, "application_registration": {"name": "Application Registration", "description": "This role grants permission to enable and disable application registration on an API product."}, "creator": {"name": "Creator", "description": "This access is required to create API products. This access is not for creating sub-entities such as versions, API specs, etc."}, "deployer": {"name": "Deployer", "description": "This role grants permission to deploy and remove an API product from a control plane."}, "maintainer": {"name": "Maintainer", "description": "This role grants all write permission to manage an API product and to administer plugins."}, "plugins_admin": {"name": "Plugins Admin", "description": "This role grants full write permission to administer plugins."}, "publisher": {"name": "Publisher", "description": "This role grants permission to publish an API product to one or more portals."}, "viewer": {"name": "Viewer", "description": "Viewer has read-only access to an API product and its sub-entities."}}}, "audit_logs": {"name": "Audit Logs", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to the Audit log configuration."}}}, "identity": {"name": "Identity", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to the Identity configuration."}}}, "mesh_control_planes": {"name": "Mesh Control Plane", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to the related to Mesh control planes."}, "connector": {"name": "Connector", "description": "This role grants a mesh zone to connect to the mesh control plane in Konnect."}, "creator": {"name": "Creator", "description": "This role grants access to create new Mesh control planes."}, "viewer": {"name": "Viewer", "description": "This role grants access to read-only permissions to Mesh control planes."}}}}
         "400":
           application/problem+json: {"status": 615012, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "max_items", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
         "401":
@@ -5244,5 +5243,41 @@ examples:
           application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
         "404":
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  create-custom-plugin:
+    speakeasy-default-create-custom-plugin:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"handler": "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }", "id": "868346aa-1105-4b77-8346-aa1105fb77c4", "name": "set-header", "schema": "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }"}
+      responses:
+        "201":
+          application/json: {"handler": "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }", "id": "868346aa-1105-4b77-8346-aa1105fb77c4", "name": "set-header", "schema": "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }"}
+        "401":
+          application/json: {"message": "<value>", "status": 714396}
+  get-custom-plugin:
+    "":
+      parameters:
+        path:
+          CustomPluginId: ""
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"handler": "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }", "id": "868346aa-1105-4b77-8346-aa1105fb77c4", "name": "set-header", "schema": "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }"}
+        "401":
+          application/json: {"message": "<value>", "status": 4946}
+  upsert-custom-plugin:
+    "":
+      parameters:
+        path:
+          CustomPluginId: ""
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"handler": "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }", "id": "868346aa-1105-4b77-8346-aa1105fb77c4", "name": "set-header", "schema": "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }"}
+      responses:
+        "200":
+          application/json: {"handler": "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }", "id": "868346aa-1105-4b77-8346-aa1105fb77c4", "name": "set-header", "schema": "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }"}
+        "401":
+          application/json: {"message": "<value>", "status": 939505}
 examplesVersion: 1.0.0
 generatedTests: {}

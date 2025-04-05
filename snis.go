@@ -1261,7 +1261,7 @@ func (s *SNIs) ListSni(ctx context.Context, request operations.ListSniRequest, o
 
 // CreateSni - Create a new SNI
 // Create a new SNI
-func (s *SNIs) CreateSni(ctx context.Context, controlPlaneID string, sni components.SNIInput, opts ...operations.Option) (*operations.CreateSniResponse, error) {
+func (s *SNIs) CreateSni(ctx context.Context, controlPlaneID string, sni components.Sni, opts ...operations.Option) (*operations.CreateSniResponse, error) {
 	request := operations.CreateSniRequest{
 		ControlPlaneID: controlPlaneID,
 		Sni:            sni,

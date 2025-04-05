@@ -13,7 +13,7 @@ type UpsertUpstreamRequest struct {
 	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Description of the Upstream
-	Upstream components.UpstreamInput `request:"mediaType=application/json"`
+	Upstream components.Upstream `request:"mediaType=application/json"`
 }
 
 func (o *UpsertUpstreamRequest) GetUpstreamID() string {
@@ -30,9 +30,9 @@ func (o *UpsertUpstreamRequest) GetControlPlaneID() string {
 	return o.ControlPlaneID
 }
 
-func (o *UpsertUpstreamRequest) GetUpstream() components.UpstreamInput {
+func (o *UpsertUpstreamRequest) GetUpstream() components.Upstream {
 	if o == nil {
-		return components.UpstreamInput{}
+		return components.Upstream{}
 	}
 	return o.Upstream
 }

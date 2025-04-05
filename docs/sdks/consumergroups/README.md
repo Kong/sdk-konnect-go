@@ -3,7 +3,7 @@
 
 ## Overview
 
-Consumer groups enable the organization and categorization of consumers (users or applications) within an API ecosystem. 
+Consumer groups enable the organization and categorization of consumers (users or applications) within an API ecosystem.
 By grouping consumers together, you eliminate the need to manage them individually, providing a scalable, efficient approach to managing configurations.
 
 ### Available Operations
@@ -105,7 +105,7 @@ func main() {
         }),
     )
 
-    res, err := s.ConsumerGroups.CreateConsumerGroup(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.ConsumerGroupInput{
+    res, err := s.ConsumerGroups.CreateConsumerGroup(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.ConsumerGroup{
         Name: "<value>",
     })
     if err != nil {
@@ -123,7 +123,7 @@ func main() {
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
 | `controlPlaneID`                                                                   | *string*                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `consumerGroup`                                                                    | [components.ConsumerGroupInput](../../models/components/consumergroupinput.md)     | :heavy_check_mark:                                                                 | Description of the new Consumer Group for creation                                 |                                                                                    |
+| `consumerGroup`                                                                    | [components.ConsumerGroup](../../models/components/consumergroup.md)               | :heavy_check_mark:                                                                 | Description of the new Consumer Group for creation                                 |                                                                                    |
 | `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
 
 ### Response
@@ -276,7 +276,7 @@ func main() {
     res, err := s.ConsumerGroups.UpsertConsumerGroup(ctx, operations.UpsertConsumerGroupRequest{
         ConsumerGroupID: "",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        ConsumerGroup: components.ConsumerGroupInput{
+        ConsumerGroup: components.ConsumerGroup{
             Name: "<value>",
         },
     })
@@ -309,6 +309,9 @@ func main() {
 | sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
 
 ## RemoveAllConsumersFromConsumerGroup
+
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
 
 Removes all consumers from a consumer groups. This operation does not delete the consumer group.
 

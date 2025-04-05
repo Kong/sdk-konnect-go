@@ -255,7 +255,7 @@ func (s *ConsumerGroups) ListConsumerGroup(ctx context.Context, request operatio
 
 // CreateConsumerGroup - Create a new Consumer Group
 // Create a new Consumer Group
-func (s *ConsumerGroups) CreateConsumerGroup(ctx context.Context, controlPlaneID string, consumerGroup components.ConsumerGroupInput, opts ...operations.Option) (*operations.CreateConsumerGroupResponse, error) {
+func (s *ConsumerGroups) CreateConsumerGroup(ctx context.Context, controlPlaneID string, consumerGroup components.ConsumerGroup, opts ...operations.Option) (*operations.CreateConsumerGroupResponse, error) {
 	request := operations.CreateConsumerGroupRequest{
 		ControlPlaneID: controlPlaneID,
 		ConsumerGroup:  consumerGroup,
@@ -1153,6 +1153,9 @@ func (s *ConsumerGroups) UpsertConsumerGroup(ctx context.Context, request operat
 }
 
 // RemoveAllConsumersFromConsumerGroup - Remove consumers from consumer group
+// **Pre-release Endpoint**
+// This endpoint is currently in beta and is subject to change.
+//
 // Removes all consumers from a consumer groups. This operation does not delete the consumer group.
 func (s *ConsumerGroups) RemoveAllConsumersFromConsumerGroup(ctx context.Context, consumerGroupID string, controlPlaneID string, opts ...operations.Option) (*operations.RemoveAllConsumersFromConsumerGroupResponse, error) {
 	request := operations.RemoveAllConsumersFromConsumerGroupRequest{

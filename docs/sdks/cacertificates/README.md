@@ -3,7 +3,7 @@
 
 ## Overview
 
-A CA certificate object represents a trusted certificate authority. 
+A CA certificate object represents a trusted certificate authority.
 These objects are used by Kong Gateway to verify the validity of a client or server certificate.
 
 ### Available Operations
@@ -97,7 +97,7 @@ func main() {
         }),
     )
 
-    res, err := s.CACertificates.CreateCaCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CACertificateInput{
+    res, err := s.CACertificates.CreateCaCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CACertificate{
         Cert: "-----BEGIN CERTIFICATE-----\n" +
         "certificate-content\n" +
         "-----END CERTIFICATE-----",
@@ -118,7 +118,7 @@ func main() {
 | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                                                   | :heavy_check_mark:                                                                                                                      | The context to use for the request.                                                                                                     |                                                                                                                                         |
 | `controlPlaneID`                                                                                                                        | *string*                                                                                                                                | :heavy_check_mark:                                                                                                                      | The UUID of your control plane. This variable is available in the Konnect manager.                                                      | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                                                                                    |
-| `caCertificate`                                                                                                                         | [components.CACertificateInput](../../models/components/cacertificateinput.md)                                                          | :heavy_check_mark:                                                                                                                      | Description of the new CA Certificate for creation                                                                                      | {<br/>"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",<br/>"id": "b2f34145-0343-41a4-9602-4c69dec2f260"<br/>} |
+| `caCertificate`                                                                                                                         | [components.CACertificate](../../models/components/cacertificate.md)                                                                    | :heavy_check_mark:                                                                                                                      | Description of the new CA Certificate for creation                                                                                      | {<br/>"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",<br/>"id": "b2f34145-0343-41a4-9602-4c69dec2f260"<br/>} |
 | `opts`                                                                                                                                  | [][operations.Option](../../models/operations/option.md)                                                                                | :heavy_minus_sign:                                                                                                                      | The options for this request.                                                                                                           |                                                                                                                                         |
 
 ### Response
@@ -271,7 +271,7 @@ func main() {
     res, err := s.CACertificates.UpsertCaCertificate(ctx, operations.UpsertCaCertificateRequest{
         CACertificateID: "3c31f18a-f27a-4f9b-8cd4-bf841554612f",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        CACertificate: components.CACertificateInput{
+        CACertificate: components.CACertificate{
             Cert: "-----BEGIN CERTIFICATE-----\n" +
             "certificate-content\n" +
             "-----END CERTIFICATE-----",

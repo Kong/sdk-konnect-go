@@ -18,11 +18,15 @@ func (o *SNIWithoutParentsCertificate) GetID() *string {
 type SNIWithoutParents struct {
 	// The id (a UUID) of the certificate with which to associate the SNI hostname. The Certificate must have a valid private key associated with it to be used by the SNI object.
 	Certificate *SNIWithoutParentsCertificate `json:"certificate,omitempty"`
-	ID          *string                       `json:"id,omitempty"`
+	// Unix epoch when the resource was created.
+	CreatedAt *int64  `json:"created_at,omitempty"`
+	ID        *string `json:"id,omitempty"`
 	// The SNI name to associate with the given certificate.
 	Name string `json:"name"`
 	// An optional set of strings associated with the SNIs for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
+	// Unix epoch when the resource was last updated.
+	UpdatedAt *int64 `json:"updated_at,omitempty"`
 }
 
 func (o *SNIWithoutParents) GetCertificate() *SNIWithoutParentsCertificate {
@@ -30,6 +34,13 @@ func (o *SNIWithoutParents) GetCertificate() *SNIWithoutParentsCertificate {
 		return nil
 	}
 	return o.Certificate
+}
+
+func (o *SNIWithoutParents) GetCreatedAt() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
 }
 
 func (o *SNIWithoutParents) GetID() *string {
@@ -51,4 +62,11 @@ func (o *SNIWithoutParents) GetTags() []string {
 		return nil
 	}
 	return o.Tags
+}
+
+func (o *SNIWithoutParents) GetUpdatedAt() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
 }

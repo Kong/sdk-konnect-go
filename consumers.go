@@ -255,7 +255,7 @@ func (s *Consumers) ListConsumer(ctx context.Context, request operations.ListCon
 
 // CreateConsumer - Create a new Consumer
 // Create a new Consumer
-func (s *Consumers) CreateConsumer(ctx context.Context, controlPlaneID string, consumer components.ConsumerInput, opts ...operations.Option) (*operations.CreateConsumerResponse, error) {
+func (s *Consumers) CreateConsumer(ctx context.Context, controlPlaneID string, consumer components.Consumer, opts ...operations.Option) (*operations.CreateConsumerResponse, error) {
 	request := operations.CreateConsumerRequest{
 		ControlPlaneID: controlPlaneID,
 		Consumer:       consumer,

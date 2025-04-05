@@ -36,7 +36,9 @@ func (o *KeyWithoutParentsSet) GetID() *string {
 
 // KeyWithoutParents - A Key object holds a representation of asymmetric keys in various formats. When Kong or a Kong plugin requires a specific public or private key to perform certain operations, it can use this entity.
 type KeyWithoutParents struct {
-	ID *string `json:"id,omitempty"`
+	// Unix epoch when the resource was created.
+	CreatedAt *int64  `json:"created_at,omitempty"`
+	ID        *string `json:"id,omitempty"`
 	// A JSON Web Key represented as a string.
 	Jwk *string `json:"jwk,omitempty"`
 	// A unique identifier for a key.
@@ -49,6 +51,16 @@ type KeyWithoutParents struct {
 	Set *KeyWithoutParentsSet `json:"set,omitempty"`
 	// An optional set of strings associated with the Key for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
+	// Unix epoch when the resource was last updated.
+	UpdatedAt *int64  `json:"updated_at,omitempty"`
+	X5t       *string `json:"x5t,omitempty"`
+}
+
+func (o *KeyWithoutParents) GetCreatedAt() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
 }
 
 func (o *KeyWithoutParents) GetID() *string {
@@ -98,4 +110,18 @@ func (o *KeyWithoutParents) GetTags() []string {
 		return nil
 	}
 	return o.Tags
+}
+
+func (o *KeyWithoutParents) GetUpdatedAt() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *KeyWithoutParents) GetX5t() *string {
+	if o == nil {
+		return nil
+	}
+	return o.X5t
 }

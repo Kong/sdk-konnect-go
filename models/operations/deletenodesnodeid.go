@@ -7,16 +7,10 @@ import (
 )
 
 type DeleteNodesNodeIDRequest struct {
-	NodeID string `pathParam:"style=simple,explode=false,name=nodeId"`
 	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
-}
-
-func (o *DeleteNodesNodeIDRequest) GetNodeID() string {
-	if o == nil {
-		return ""
-	}
-	return o.NodeID
+	// Node identifier
+	NodeID string `pathParam:"style=simple,explode=false,name=nodeId"`
 }
 
 func (o *DeleteNodesNodeIDRequest) GetControlPlaneID() string {
@@ -24,6 +18,13 @@ func (o *DeleteNodesNodeIDRequest) GetControlPlaneID() string {
 		return ""
 	}
 	return o.ControlPlaneID
+}
+
+func (o *DeleteNodesNodeIDRequest) GetNodeID() string {
+	if o == nil {
+		return ""
+	}
+	return o.NodeID
 }
 
 type DeleteNodesNodeIDResponse struct {

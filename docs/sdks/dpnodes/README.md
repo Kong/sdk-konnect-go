@@ -151,8 +151,8 @@ func main() {
     )
 
     res, err := s.DPNodes.GetNodesNodeID(ctx, operations.GetNodesNodeIDRequest{
-        NodeID: "<id>",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        NodeID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         Tags: sdkkonnectgo.String("tag1,tag2"),
     })
     if err != nil {
@@ -207,7 +207,7 @@ func main() {
         }),
     )
 
-    res, err := s.DPNodes.DeleteNodesNodeID(ctx, "<id>", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
+    res, err := s.DPNodes.DeleteNodesNodeID(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "d32d905a-ed33-46a3-a093-d8f536af9a8a")
     if err != nil {
         log.Fatal(err)
     }
@@ -222,8 +222,8 @@ func main() {
 | Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `nodeID`                                                                           | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |                                                                                    |
 | `controlPlaneID`                                                                   | *string*                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
+| `nodeID`                                                                           | *string*                                                                           | :heavy_check_mark:                                                                 | Node identifier                                                                    | d32d905a-ed33-46a3-a093-d8f536af9a8a                                               |
 | `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
 
 ### Response

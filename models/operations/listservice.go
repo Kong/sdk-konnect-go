@@ -60,14 +60,14 @@ func (o *ListServiceRequest) GetTags() *string {
 
 // ListServiceResponseBody - A successful response listing Services
 type ListServiceResponseBody struct {
-	Data []components.Service `json:"data,omitempty"`
+	Data []components.ServiceOutput `json:"data,omitempty"`
 	// URI to the next page (may be null)
 	Next *string `json:"next,omitempty"`
 	// Offset is used to paginate through the API. Provide this value to the next list operation to fetch the next page
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListServiceResponseBody) GetData() []components.Service {
+func (o *ListServiceResponseBody) GetData() []components.ServiceOutput {
 	if o == nil {
 		return nil
 	}

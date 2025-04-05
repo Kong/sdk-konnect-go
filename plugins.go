@@ -2269,7 +2269,7 @@ func (s *Plugins) ListPlugin(ctx context.Context, request operations.ListPluginR
 
 // CreatePlugin - Create a new Plugin
 // Create a new Plugin
-func (s *Plugins) CreatePlugin(ctx context.Context, controlPlaneID string, plugin components.PluginInput, opts ...operations.Option) (*operations.CreatePluginResponse, error) {
+func (s *Plugins) CreatePlugin(ctx context.Context, controlPlaneID string, plugin components.Plugin, opts ...operations.Option) (*operations.CreatePluginResponse, error) {
 	request := operations.CreatePluginRequest{
 		ControlPlaneID: controlPlaneID,
 		Plugin:         plugin,

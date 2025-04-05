@@ -260,7 +260,7 @@ func (s *Services) ListService(ctx context.Context, request operations.ListServi
 
 // CreateService - Create a new Service
 // Create a new Service
-func (s *Services) CreateService(ctx context.Context, controlPlaneID string, service components.ServiceInput, opts ...operations.Option) (*operations.CreateServiceResponse, error) {
+func (s *Services) CreateService(ctx context.Context, controlPlaneID string, service components.Service, opts ...operations.Option) (*operations.CreateServiceResponse, error) {
 	request := operations.CreateServiceRequest{
 		ControlPlaneID: controlPlaneID,
 		Service:        service,
@@ -434,7 +434,7 @@ func (s *Services) CreateService(ctx context.Context, controlPlaneID string, ser
 				return nil, err
 			}
 
-			var out components.Service
+			var out components.ServiceOutput
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -868,7 +868,7 @@ func (s *Services) GetService(ctx context.Context, serviceID string, controlPlan
 				return nil, err
 			}
 
-			var out components.Service
+			var out components.ServiceOutput
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1099,7 +1099,7 @@ func (s *Services) UpsertService(ctx context.Context, request operations.UpsertS
 				return nil, err
 			}
 
-			var out components.Service
+			var out components.ServiceOutput
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

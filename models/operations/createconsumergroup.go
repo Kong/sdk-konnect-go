@@ -11,7 +11,7 @@ type CreateConsumerGroupRequest struct {
 	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Description of the new Consumer Group for creation
-	ConsumerGroup components.ConsumerGroupInput `request:"mediaType=application/json"`
+	ConsumerGroup components.ConsumerGroup `request:"mediaType=application/json"`
 }
 
 func (o *CreateConsumerGroupRequest) GetControlPlaneID() string {
@@ -21,9 +21,9 @@ func (o *CreateConsumerGroupRequest) GetControlPlaneID() string {
 	return o.ControlPlaneID
 }
 
-func (o *CreateConsumerGroupRequest) GetConsumerGroup() components.ConsumerGroupInput {
+func (o *CreateConsumerGroupRequest) GetConsumerGroup() components.ConsumerGroup {
 	if o == nil {
-		return components.ConsumerGroupInput{}
+		return components.ConsumerGroup{}
 	}
 	return o.ConsumerGroup
 }
