@@ -3,6 +3,6 @@
 
 ## Values
 
-| Name                                                                                     | Value                                                                                    |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `RolesMeshControlPlanesRolesDescriptionThisRoleGrantsAccessToCreateNewMeshControlPlanes` | This role grants access to create new Mesh control planes.                               |
+| Name                                                                                                   | Value                                                                                                  |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `RolesMeshControlPlanesRolesDescriptionThisRoleGrantsAMeshZoneToConnectToTheMeshControlPlaneInKonnect` | This role grants a mesh zone to connect to the mesh control plane in Konnect.                          |

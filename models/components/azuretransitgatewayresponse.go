@@ -13,10 +13,17 @@ type AzureTransitGatewayResponse struct {
 	// List of mappings from remote DNS server IP address sets to proxied internal domains, for a transit gateway
 	// attachment.
 	//
-	DNSConfig                      []TransitGatewayDNSConfig        `json:"dns_config"`
+	DNSConfig                      []TransitGatewayDNSConfig        `json:"dns_config,omitempty"`
 	TransitGatewayAttachmentConfig AzureVNETPeeringAttachmentConfig `json:"transit_gateway_attachment_config"`
 	ID                             string                           `json:"id"`
-	// State of the transit gateway.
+	// The current state of the Transit Gateway. Possible values:
+	// - `created` - The attachment has been created but is not attached to transit gateway.
+	// - `initializing` - The attachment is in the process of being initialized and is setting up necessary resources.
+	// - `pending` - acceptance The attachment request is awaiting acceptance in customer VPC.
+	// - `ready` - The transit gateway attachment is fully operational and can route traffic as configured.
+	// - `terminating` - The attachment is in the process of being deleted and is no longer accepting new traffic.
+	// - `terminated` - The attachment has been fully deleted and is no longer available.
+	//
 	State TransitGatewayState `json:"state"`
 	// Monotonically-increasing version count of the transit gateway, to indicate the order of updates to the
 	// transit gateway.
@@ -48,7 +55,7 @@ func (o *AzureTransitGatewayResponse) GetName() string {
 
 func (o *AzureTransitGatewayResponse) GetDNSConfig() []TransitGatewayDNSConfig {
 	if o == nil {
-		return []TransitGatewayDNSConfig{}
+		return nil
 	}
 	return o.DNSConfig
 }

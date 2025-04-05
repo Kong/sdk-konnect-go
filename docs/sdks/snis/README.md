@@ -3,7 +3,7 @@
 
 ## Overview
 
-An SNI object represents a many-to-one mapping of hostnames to a certificate. 
+An SNI object represents a many-to-one mapping of hostnames to a certificate.
 <br><br>
 A certificate object can have many hostnames associated with it. When Kong Gateway receives an SSL request, it uses the SNI field in the Client Hello to look up the certificate object based on the SNI associated with the certificate.
 
@@ -400,7 +400,7 @@ func main() {
         }),
     )
 
-    res, err := s.SNIs.CreateSni(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.SNIInput{
+    res, err := s.SNIs.CreateSni(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Sni{
         Certificate: &components.SNICertificate{
             ID: sdkkonnectgo.String("bd380f99-659d-415e-b0e7-72ea05df3218"),
         },
@@ -422,7 +422,7 @@ func main() {
 | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                                                         | [context.Context](https://pkg.go.dev/context#Context)                                                                                         | :heavy_check_mark:                                                                                                                            | The context to use for the request.                                                                                                           |                                                                                                                                               |
 | `controlPlaneID`                                                                                                                              | *string*                                                                                                                                      | :heavy_check_mark:                                                                                                                            | The UUID of your control plane. This variable is available in the Konnect manager.                                                            | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                                                                                          |
-| `sni`                                                                                                                                         | [components.SNIInput](../../models/components/sniinput.md)                                                                                    | :heavy_check_mark:                                                                                                                            | Description of the new SNI for creation                                                                                                       | {<br/>"certificate": {<br/>"id": "bd380f99-659d-415e-b0e7-72ea05df3218"<br/>},<br/>"id": "36c4566c-14cc-4132-9011-4139fcbbe50a",<br/>"name": "some.example.org"<br/>} |
+| `sni`                                                                                                                                         | [components.Sni](../../models/components/sni.md)                                                                                              | :heavy_check_mark:                                                                                                                            | Description of the new SNI for creation                                                                                                       | {<br/>"certificate": {<br/>"id": "bd380f99-659d-415e-b0e7-72ea05df3218"<br/>},<br/>"id": "36c4566c-14cc-4132-9011-4139fcbbe50a",<br/>"name": "some.example.org"<br/>} |
 | `opts`                                                                                                                                        | [][operations.Option](../../models/operations/option.md)                                                                                      | :heavy_minus_sign:                                                                                                                            | The options for this request.                                                                                                                 |                                                                                                                                               |
 
 ### Response
@@ -575,7 +575,7 @@ func main() {
     res, err := s.SNIs.UpsertSni(ctx, operations.UpsertSniRequest{
         SNIID: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        Sni: components.SNIInput{
+        Sni: components.Sni{
             Certificate: &components.SNICertificate{
                 ID: sdkkonnectgo.String("bd380f99-659d-415e-b0e7-72ea05df3218"),
             },

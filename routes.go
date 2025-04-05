@@ -277,7 +277,7 @@ func (s *Routes) ListRoute(ctx context.Context, request operations.ListRouteRequ
 
 // CreateRoute - Create a new Route
 // Create a new Route
-func (s *Routes) CreateRoute(ctx context.Context, controlPlaneID string, route components.RouteInput, opts ...operations.Option) (*operations.CreateRouteResponse, error) {
+func (s *Routes) CreateRoute(ctx context.Context, controlPlaneID string, route components.Route, opts ...operations.Option) (*operations.CreateRouteResponse, error) {
 	request := operations.CreateRouteRequest{
 		ControlPlaneID: controlPlaneID,
 		Route:          route,

@@ -260,7 +260,7 @@ func (s *Vaults) ListVault(ctx context.Context, request operations.ListVaultRequ
 
 // CreateVault - Create a new Vault
 // Create a new Vault
-func (s *Vaults) CreateVault(ctx context.Context, controlPlaneID string, vault components.VaultInput, opts ...operations.Option) (*operations.CreateVaultResponse, error) {
+func (s *Vaults) CreateVault(ctx context.Context, controlPlaneID string, vault components.Vault, opts ...operations.Option) (*operations.CreateVaultResponse, error) {
 	request := operations.CreateVaultRequest{
 		ControlPlaneID: controlPlaneID,
 		Vault:          vault,

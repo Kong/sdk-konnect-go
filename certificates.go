@@ -258,7 +258,7 @@ func (s *Certificates) ListCertificate(ctx context.Context, request operations.L
 
 // CreateCertificate - Create a new Certificate
 // Create a new Certificate
-func (s *Certificates) CreateCertificate(ctx context.Context, controlPlaneID string, certificate components.CertificateInput, opts ...operations.Option) (*operations.CreateCertificateResponse, error) {
+func (s *Certificates) CreateCertificate(ctx context.Context, controlPlaneID string, certificate components.Certificate, opts ...operations.Option) (*operations.CreateCertificateResponse, error) {
 	request := operations.CreateCertificateRequest{
 		ControlPlaneID: controlPlaneID,
 		Certificate:    certificate,

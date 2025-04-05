@@ -1259,7 +1259,7 @@ func (s *Keys) ListKey(ctx context.Context, request operations.ListKeyRequest, o
 
 // CreateKey - Create a new Key
 // Create a new Key
-func (s *Keys) CreateKey(ctx context.Context, controlPlaneID string, key components.KeyInput, opts ...operations.Option) (*operations.CreateKeyResponse, error) {
+func (s *Keys) CreateKey(ctx context.Context, controlPlaneID string, key components.Key, opts ...operations.Option) (*operations.CreateKeyResponse, error) {
 	request := operations.CreateKeyRequest{
 		ControlPlaneID: controlPlaneID,
 		Key:            key,

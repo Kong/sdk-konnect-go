@@ -257,7 +257,7 @@ func (s *Upstreams) ListUpstream(ctx context.Context, request operations.ListUps
 
 // CreateUpstream - Create a new Upstream
 // Create a new Upstream
-func (s *Upstreams) CreateUpstream(ctx context.Context, controlPlaneID string, upstream components.UpstreamInput, opts ...operations.Option) (*operations.CreateUpstreamResponse, error) {
+func (s *Upstreams) CreateUpstream(ctx context.Context, controlPlaneID string, upstream components.Upstream, opts ...operations.Option) (*operations.CreateUpstreamResponse, error) {
 	request := operations.CreateUpstreamRequest{
 		ControlPlaneID: controlPlaneID,
 		Upstream:       upstream,

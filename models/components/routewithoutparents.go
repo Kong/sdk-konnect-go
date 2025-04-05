@@ -3,360 +3,70 @@
 package components
 
 import (
-	"encoding/json"
+	"errors"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type RouteWithoutParentsDestinations struct {
-	IP   *string `json:"ip,omitempty"`
-	Port *int64  `json:"port,omitempty"`
-}
-
-func (o *RouteWithoutParentsDestinations) GetIP() *string {
-	if o == nil {
-		return nil
-	}
-	return o.IP
-}
-
-func (o *RouteWithoutParentsDestinations) GetPort() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.Port
-}
-
-// RouteWithoutParentsHTTPSRedirectStatusCode - The status code Kong responds with when all properties of a Route match except the protocol i.e. if the protocol of the request is `HTTP` instead of `HTTPS`. `Location` header is injected by Kong if the field is set to 301, 302, 307 or 308. Note: This config applies only if the Route is configured to only accept the `https` protocol.
-type RouteWithoutParentsHTTPSRedirectStatusCode int64
+type RouteWithoutParentsType string
 
 const (
-	RouteWithoutParentsHTTPSRedirectStatusCodeFourHundredAndTwentySix RouteWithoutParentsHTTPSRedirectStatusCode = 426
-	RouteWithoutParentsHTTPSRedirectStatusCodeThreeHundredAndOne      RouteWithoutParentsHTTPSRedirectStatusCode = 301
-	RouteWithoutParentsHTTPSRedirectStatusCodeThreeHundredAndTwo      RouteWithoutParentsHTTPSRedirectStatusCode = 302
-	RouteWithoutParentsHTTPSRedirectStatusCodeThreeHundredAndSeven    RouteWithoutParentsHTTPSRedirectStatusCode = 307
-	RouteWithoutParentsHTTPSRedirectStatusCodeThreeHundredAndEight    RouteWithoutParentsHTTPSRedirectStatusCode = 308
+	RouteWithoutParentsTypeRouteJSON       RouteWithoutParentsType = "RouteJson"
+	RouteWithoutParentsTypeRouteExpression RouteWithoutParentsType = "RouteExpression"
 )
 
-func (e RouteWithoutParentsHTTPSRedirectStatusCode) ToPointer() *RouteWithoutParentsHTTPSRedirectStatusCode {
-	return &e
-}
-func (e *RouteWithoutParentsHTTPSRedirectStatusCode) UnmarshalJSON(data []byte) error {
-	var v int64
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case 426:
-		fallthrough
-	case 301:
-		fallthrough
-	case 302:
-		fallthrough
-	case 307:
-		fallthrough
-	case 308:
-		*e = RouteWithoutParentsHTTPSRedirectStatusCode(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for RouteWithoutParentsHTTPSRedirectStatusCode: %v", v)
-	}
-}
-
-// RouteWithoutParentsPathHandling - Controls how the Service path, Route path and requested path are combined when sending a request to the upstream. See above for a detailed description of each behavior.
-type RouteWithoutParentsPathHandling string
-
-const (
-	RouteWithoutParentsPathHandlingV0 RouteWithoutParentsPathHandling = "v0"
-	RouteWithoutParentsPathHandlingV1 RouteWithoutParentsPathHandling = "v1"
-)
-
-func (e RouteWithoutParentsPathHandling) ToPointer() *RouteWithoutParentsPathHandling {
-	return &e
-}
-func (e *RouteWithoutParentsPathHandling) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "v0":
-		fallthrough
-	case "v1":
-		*e = RouteWithoutParentsPathHandling(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for RouteWithoutParentsPathHandling: %v", v)
-	}
-}
-
-type RouteWithoutParentsProtocols string
-
-const (
-	RouteWithoutParentsProtocolsGrpc           RouteWithoutParentsProtocols = "grpc"
-	RouteWithoutParentsProtocolsGrpcs          RouteWithoutParentsProtocols = "grpcs"
-	RouteWithoutParentsProtocolsHTTP           RouteWithoutParentsProtocols = "http"
-	RouteWithoutParentsProtocolsHTTPS          RouteWithoutParentsProtocols = "https"
-	RouteWithoutParentsProtocolsTCP            RouteWithoutParentsProtocols = "tcp"
-	RouteWithoutParentsProtocolsTLS            RouteWithoutParentsProtocols = "tls"
-	RouteWithoutParentsProtocolsTLSPassthrough RouteWithoutParentsProtocols = "tls_passthrough"
-	RouteWithoutParentsProtocolsUDP            RouteWithoutParentsProtocols = "udp"
-	RouteWithoutParentsProtocolsWs             RouteWithoutParentsProtocols = "ws"
-	RouteWithoutParentsProtocolsWss            RouteWithoutParentsProtocols = "wss"
-)
-
-func (e RouteWithoutParentsProtocols) ToPointer() *RouteWithoutParentsProtocols {
-	return &e
-}
-func (e *RouteWithoutParentsProtocols) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "grpc":
-		fallthrough
-	case "grpcs":
-		fallthrough
-	case "http":
-		fallthrough
-	case "https":
-		fallthrough
-	case "tcp":
-		fallthrough
-	case "tls":
-		fallthrough
-	case "tls_passthrough":
-		fallthrough
-	case "udp":
-		fallthrough
-	case "ws":
-		fallthrough
-	case "wss":
-		*e = RouteWithoutParentsProtocols(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for RouteWithoutParentsProtocols: %v", v)
-	}
-}
-
-// RouteWithoutParentsService - The Service this Route is associated to. This is where the Route proxies traffic to.
-type RouteWithoutParentsService struct {
-	ID *string `json:"id,omitempty"`
-}
-
-func (o *RouteWithoutParentsService) GetID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ID
-}
-
-type RouteWithoutParentsSources struct {
-	IP   *string `json:"ip,omitempty"`
-	Port *int64  `json:"port,omitempty"`
-}
-
-func (o *RouteWithoutParentsSources) GetIP() *string {
-	if o == nil {
-		return nil
-	}
-	return o.IP
-}
-
-func (o *RouteWithoutParentsSources) GetPort() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.Port
-}
-
-// RouteWithoutParents - Route entities define rules to match client requests. Each Route is associated with a Service, and a Service may have multiple Routes associated to it. Every request matching a given Route will be proxied to its associated Service. The combination of Routes and Services (and the separation of concerns between them) offers a powerful routing mechanism with which it is possible to define fine-grained entry-points in Kong leading to different upstream services of your infrastructure. You need at least one matching rule that applies to the protocol being matched by the Route.
 type RouteWithoutParents struct {
-	// A list of IP destinations of incoming connections that match this Route when using stream routing. Each entry is an object with fields "ip" (optionally in CIDR range notation) and/or "port".
-	Destinations []RouteWithoutParentsDestinations `json:"destinations,omitempty"`
-	// Use Router Expression to perform route match. This option is only available when `router_flavor` is set to `expressions`.
-	Expression *string `json:"expression,omitempty"`
-	// One or more lists of values indexed by header name that will cause this Route to match if present in the request. The `Host` header cannot be used with this attribute: hosts should be specified using the `hosts` attribute. When `headers` contains only one value and that value starts with the special prefix `~*`, the value is interpreted as a regular expression.
-	Headers map[string][]string `json:"headers,omitempty"`
-	// A list of domain names that match this Route. Note that the hosts value is case sensitive.
-	Hosts []string `json:"hosts,omitempty"`
-	// The status code Kong responds with when all properties of a Route match except the protocol i.e. if the protocol of the request is `HTTP` instead of `HTTPS`. `Location` header is injected by Kong if the field is set to 301, 302, 307 or 308. Note: This config applies only if the Route is configured to only accept the `https` protocol.
-	HTTPSRedirectStatusCode *RouteWithoutParentsHTTPSRedirectStatusCode `json:"https_redirect_status_code,omitempty"`
-	ID                      *string                                     `json:"id,omitempty"`
-	// A list of HTTP methods that match this Route.
-	Methods []string `json:"methods,omitempty"`
-	// The name of the Route. Route names must be unique, and they are case sensitive. For example, there can be two different Routes named "test" and "Test".
-	Name *string `json:"name,omitempty"`
-	// Controls how the Service path, Route path and requested path are combined when sending a request to the upstream. See above for a detailed description of each behavior.
-	PathHandling *RouteWithoutParentsPathHandling `json:"path_handling,omitempty"`
-	// A list of paths that match this Route.
-	Paths []string `json:"paths,omitempty"`
-	// When matching a Route via one of the `hosts` domain names, use the request `Host` header in the upstream request headers. If set to `false`, the upstream `Host` header will be that of the Service's `host`.
-	PreserveHost *bool  `json:"preserve_host,omitempty"`
-	Priority     *int64 `json:"priority,omitempty"`
-	// An array of the protocols this Route should allow. See the [Route Object](#route-object) section for a list of accepted protocols. When set to only `"https"`, HTTP requests are answered with an upgrade error. When set to only `"http"`, HTTPS requests are answered with an error.
-	Protocols []RouteWithoutParentsProtocols `json:"protocols,omitempty"`
-	// A number used to choose which route resolves a given request when several routes match it using regexes simultaneously. When two routes match the path and have the same `regex_priority`, the older one (lowest `created_at`) is used. Note that the priority for non-regex routes is different (longer non-regex routes are matched before shorter ones).
-	RegexPriority *int64 `json:"regex_priority,omitempty"`
-	// Whether to enable request body buffering or not. With HTTP 1.1, it may make sense to turn this off on services that receive data with chunked transfer encoding.
-	RequestBuffering *bool `json:"request_buffering,omitempty"`
-	// Whether to enable response body buffering or not. With HTTP 1.1, it may make sense to turn this off on services that send data with chunked transfer encoding.
-	ResponseBuffering *bool `json:"response_buffering,omitempty"`
-	// The Service this Route is associated to. This is where the Route proxies traffic to.
-	Service *RouteWithoutParentsService `json:"service,omitempty"`
-	// A list of SNIs that match this Route when using stream routing.
-	Snis []string `json:"snis,omitempty"`
-	// A list of IP sources of incoming connections that match this Route when using stream routing. Each entry is an object with fields "ip" (optionally in CIDR range notation) and/or "port".
-	Sources []RouteWithoutParentsSources `json:"sources,omitempty"`
-	// When matching a Route via one of the `paths`, strip the matching prefix from the upstream request URL.
-	StripPath *bool `json:"strip_path,omitempty"`
-	// An optional set of strings associated with the Route for grouping and filtering.
-	Tags []string `json:"tags,omitempty"`
+	RouteJSON       *RouteJSON       `queryParam:"inline"`
+	RouteExpression *RouteExpression `queryParam:"inline"`
+
+	Type RouteWithoutParentsType
 }
 
-func (o *RouteWithoutParents) GetDestinations() []RouteWithoutParentsDestinations {
-	if o == nil {
-		return nil
+func CreateRouteWithoutParentsRouteJSON(routeJSON RouteJSON) RouteWithoutParents {
+	typ := RouteWithoutParentsTypeRouteJSON
+
+	return RouteWithoutParents{
+		RouteJSON: &routeJSON,
+		Type:      typ,
 	}
-	return o.Destinations
 }
 
-func (o *RouteWithoutParents) GetExpression() *string {
-	if o == nil {
-		return nil
+func CreateRouteWithoutParentsRouteExpression(routeExpression RouteExpression) RouteWithoutParents {
+	typ := RouteWithoutParentsTypeRouteExpression
+
+	return RouteWithoutParents{
+		RouteExpression: &routeExpression,
+		Type:            typ,
 	}
-	return o.Expression
 }
 
-func (o *RouteWithoutParents) GetHeaders() map[string][]string {
-	if o == nil {
+func (u *RouteWithoutParents) UnmarshalJSON(data []byte) error {
+
+	var routeExpression RouteExpression = RouteExpression{}
+	if err := utils.UnmarshalJSON(data, &routeExpression, "", true, true); err == nil {
+		u.RouteExpression = &routeExpression
+		u.Type = RouteWithoutParentsTypeRouteExpression
 		return nil
 	}
-	return o.Headers
+
+	var routeJSON RouteJSON = RouteJSON{}
+	if err := utils.UnmarshalJSON(data, &routeJSON, "", true, true); err == nil {
+		u.RouteJSON = &routeJSON
+		u.Type = RouteWithoutParentsTypeRouteJSON
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RouteWithoutParents", string(data))
 }
 
-func (o *RouteWithoutParents) GetHosts() []string {
-	if o == nil {
-		return nil
+func (u RouteWithoutParents) MarshalJSON() ([]byte, error) {
+	if u.RouteJSON != nil {
+		return utils.MarshalJSON(u.RouteJSON, "", true)
 	}
-	return o.Hosts
-}
 
-func (o *RouteWithoutParents) GetHTTPSRedirectStatusCode() *RouteWithoutParentsHTTPSRedirectStatusCode {
-	if o == nil {
-		return nil
+	if u.RouteExpression != nil {
+		return utils.MarshalJSON(u.RouteExpression, "", true)
 	}
-	return o.HTTPSRedirectStatusCode
-}
 
-func (o *RouteWithoutParents) GetID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ID
-}
-
-func (o *RouteWithoutParents) GetMethods() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Methods
-}
-
-func (o *RouteWithoutParents) GetName() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Name
-}
-
-func (o *RouteWithoutParents) GetPathHandling() *RouteWithoutParentsPathHandling {
-	if o == nil {
-		return nil
-	}
-	return o.PathHandling
-}
-
-func (o *RouteWithoutParents) GetPaths() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Paths
-}
-
-func (o *RouteWithoutParents) GetPreserveHost() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.PreserveHost
-}
-
-func (o *RouteWithoutParents) GetPriority() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.Priority
-}
-
-func (o *RouteWithoutParents) GetProtocols() []RouteWithoutParentsProtocols {
-	if o == nil {
-		return nil
-	}
-	return o.Protocols
-}
-
-func (o *RouteWithoutParents) GetRegexPriority() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.RegexPriority
-}
-
-func (o *RouteWithoutParents) GetRequestBuffering() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.RequestBuffering
-}
-
-func (o *RouteWithoutParents) GetResponseBuffering() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.ResponseBuffering
-}
-
-func (o *RouteWithoutParents) GetService() *RouteWithoutParentsService {
-	if o == nil {
-		return nil
-	}
-	return o.Service
-}
-
-func (o *RouteWithoutParents) GetSnis() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Snis
-}
-
-func (o *RouteWithoutParents) GetSources() []RouteWithoutParentsSources {
-	if o == nil {
-		return nil
-	}
-	return o.Sources
-}
-
-func (o *RouteWithoutParents) GetStripPath() *bool {
-	if o == nil {
-		return nil
-	}
-	return o.StripPath
-}
-
-func (o *RouteWithoutParents) GetTags() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Tags
+	return nil, errors.New("could not marshal union type RouteWithoutParents: all fields are null")
 }

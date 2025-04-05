@@ -71,6 +71,33 @@ func (o *PluginWithoutParentsOrdering) GetBefore() *PluginWithoutParentsBefore {
 	return o.Before
 }
 
+type PluginWithoutParentsPartials struct {
+	ID   *string `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Path *string `json:"path,omitempty"`
+}
+
+func (o *PluginWithoutParentsPartials) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *PluginWithoutParentsPartials) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *PluginWithoutParentsPartials) GetPath() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Path
+}
+
 type PluginWithoutParentsProtocols string
 
 const (
@@ -148,18 +175,20 @@ func (o *PluginWithoutParentsService) GetID() *string {
 // PluginWithoutParents - A Plugin entity represents a plugin configuration that will be executed during the HTTP request/response lifecycle. It is how you can add functionalities to Services that run behind Kong, like Authentication or Rate Limiting for example. You can find more information about how to install and what values each plugin takes by visiting the [Kong Hub](https://docs.konghq.com/hub/). When adding a Plugin Configuration to a Service, every request made by a client to that Service will run said Plugin. If a Plugin needs to be tuned to different values for some specific Consumers, you can do so by creating a separate plugin instance that specifies both the Service and the Consumer, through the `service` and `consumer` fields.
 type PluginWithoutParents struct {
 	// The configuration properties for the Plugin which can be found on the plugins documentation page in the [Kong Hub](https://docs.konghq.com/hub/).
-	Config map[string]any `json:"config"`
+	Config map[string]any `json:"config,omitempty"`
 	// If set, the plugin will activate only for requests where the specified has been authenticated. (Note that some plugins can not be restricted to consumers this way.). Leave unset for the plugin to activate regardless of the authenticated Consumer.
 	Consumer      *PluginWithoutParentsConsumer      `json:"consumer,omitempty"`
 	ConsumerGroup *PluginWithoutParentsConsumerGroup `json:"consumer_group,omitempty"`
+	// Unix epoch when the resource was created.
+	CreatedAt *int64 `json:"created_at,omitempty"`
 	// Whether the plugin is applied.
 	Enabled      *bool   `json:"enabled,omitempty"`
 	ID           *string `json:"id,omitempty"`
 	InstanceName *string `json:"instance_name,omitempty"`
 	// The name of the Plugin that's going to be added. Currently, the Plugin must be installed in every Kong instance separately.
-	Name     string                        `json:"name"`
-	Ordering *PluginWithoutParentsOrdering `json:"ordering,omitempty"`
-	Partials []map[string]any              `json:"partials,omitempty"`
+	Name     string                         `json:"name"`
+	Ordering *PluginWithoutParentsOrdering  `json:"ordering,omitempty"`
+	Partials []PluginWithoutParentsPartials `json:"partials,omitempty"`
 	// A list of the request protocols that will trigger this plugin. The default value, as well as the possible values allowed on this field, may change depending on the plugin type. For example, plugins that only work in stream mode will only support `"tcp"` and `"tls"`.
 	Protocols []PluginWithoutParentsProtocols `json:"protocols,omitempty"`
 	// If set, the plugin will only activate when receiving requests via the specified route. Leave unset for the plugin to activate regardless of the Route being used.
@@ -168,11 +197,13 @@ type PluginWithoutParents struct {
 	Service *PluginWithoutParentsService `json:"service,omitempty"`
 	// An optional set of strings associated with the Plugin for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
+	// Unix epoch when the resource was last updated.
+	UpdatedAt *int64 `json:"updated_at,omitempty"`
 }
 
 func (o *PluginWithoutParents) GetConfig() map[string]any {
 	if o == nil {
-		return map[string]any{}
+		return nil
 	}
 	return o.Config
 }
@@ -189,6 +220,13 @@ func (o *PluginWithoutParents) GetConsumerGroup() *PluginWithoutParentsConsumerG
 		return nil
 	}
 	return o.ConsumerGroup
+}
+
+func (o *PluginWithoutParents) GetCreatedAt() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
 }
 
 func (o *PluginWithoutParents) GetEnabled() *bool {
@@ -226,7 +264,7 @@ func (o *PluginWithoutParents) GetOrdering() *PluginWithoutParentsOrdering {
 	return o.Ordering
 }
 
-func (o *PluginWithoutParents) GetPartials() []map[string]any {
+func (o *PluginWithoutParents) GetPartials() []PluginWithoutParentsPartials {
 	if o == nil {
 		return nil
 	}
@@ -259,4 +297,11 @@ func (o *PluginWithoutParents) GetTags() []string {
 		return nil
 	}
 	return o.Tags
+}
+
+func (o *PluginWithoutParents) GetUpdatedAt() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
 }

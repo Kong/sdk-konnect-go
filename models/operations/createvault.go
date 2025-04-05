@@ -11,7 +11,7 @@ type CreateVaultRequest struct {
 	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Description of the new Vault for creation
-	Vault components.VaultInput `request:"mediaType=application/json"`
+	Vault components.Vault `request:"mediaType=application/json"`
 }
 
 func (o *CreateVaultRequest) GetControlPlaneID() string {
@@ -21,9 +21,9 @@ func (o *CreateVaultRequest) GetControlPlaneID() string {
 	return o.ControlPlaneID
 }
 
-func (o *CreateVaultRequest) GetVault() components.VaultInput {
+func (o *CreateVaultRequest) GetVault() components.Vault {
 	if o == nil {
-		return components.VaultInput{}
+		return components.Vault{}
 	}
 	return o.Vault
 }

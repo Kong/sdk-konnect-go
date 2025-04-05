@@ -103,13 +103,13 @@ func main() {
         }),
     )
 
-    res, err := s.Services.CreateService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.ServiceInput{
+    res, err := s.Services.CreateService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Service{
         Host: "example.internal",
         ID: sdkkonnectgo.String("49fd316e-c457-481c-9fc7-8079153e4f3c"),
         Name: sdkkonnectgo.String("example-service"),
         Path: sdkkonnectgo.String("/"),
-        Port: 80,
-        Protocol: components.ProtocolHTTP,
+        Port: sdkkonnectgo.Int64(80),
+        Protocol: components.ProtocolHTTP.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)
@@ -126,7 +126,7 @@ func main() {
 | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                                                | :heavy_check_mark:                                                                                                                                   | The context to use for the request.                                                                                                                  |                                                                                                                                                      |
 | `controlPlaneID`                                                                                                                                     | *string*                                                                                                                                             | :heavy_check_mark:                                                                                                                                   | The UUID of your control plane. This variable is available in the Konnect manager.                                                                   | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                                                                                                 |
-| `service`                                                                                                                                            | [components.ServiceInput](../../models/components/serviceinput.md)                                                                                   | :heavy_check_mark:                                                                                                                                   | Description of the new Service for creation                                                                                                          | {<br/>"host": "example.internal",<br/>"id": "49fd316e-c457-481c-9fc7-8079153e4f3c",<br/>"name": "example-service",<br/>"path": "/",<br/>"port": 80,<br/>"protocol": "http"<br/>} |
+| `service`                                                                                                                                            | [components.Service](../../models/components/service.md)                                                                                             | :heavy_check_mark:                                                                                                                                   | Description of the new Service for creation                                                                                                          | {<br/>"host": "example.internal",<br/>"id": "49fd316e-c457-481c-9fc7-8079153e4f3c",<br/>"name": "example-service",<br/>"path": "/",<br/>"port": 80,<br/>"protocol": "http"<br/>} |
 | `opts`                                                                                                                                               | [][operations.Option](../../models/operations/option.md)                                                                                             | :heavy_minus_sign:                                                                                                                                   | The options for this request.                                                                                                                        |                                                                                                                                                      |
 
 ### Response
@@ -279,13 +279,13 @@ func main() {
     res, err := s.Services.UpsertService(ctx, operations.UpsertServiceRequest{
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        Service: components.ServiceInput{
+        Service: components.Service{
             Host: "example.internal",
             ID: sdkkonnectgo.String("49fd316e-c457-481c-9fc7-8079153e4f3c"),
             Name: sdkkonnectgo.String("example-service"),
             Path: sdkkonnectgo.String("/"),
-            Port: 80,
-            Protocol: components.ProtocolHTTP,
+            Port: sdkkonnectgo.Int64(80),
+            Protocol: components.ProtocolHTTP.ToPointer(),
         },
     })
     if err != nil {

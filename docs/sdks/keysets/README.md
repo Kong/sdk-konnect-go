@@ -97,7 +97,7 @@ func main() {
         }),
     )
 
-    res, err := s.KeySets.CreateKeySet(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.KeySetInput{
+    res, err := s.KeySets.CreateKeySet(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.KeySet{
         ID: sdkkonnectgo.String("b58c7d9d-e54f-444c-b24d-cdfc4159f61e"),
         Name: sdkkonnectgo.String("example-key-set"),
         Tags: []string{
@@ -119,7 +119,7 @@ func main() {
 | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                               | [context.Context](https://pkg.go.dev/context#Context)                                               | :heavy_check_mark:                                                                                  | The context to use for the request.                                                                 |                                                                                                     |
 | `controlPlaneID`                                                                                    | *string*                                                                                            | :heavy_check_mark:                                                                                  | The UUID of your control plane. This variable is available in the Konnect manager.                  | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                                                |
-| `keySet`                                                                                            | [components.KeySetInput](../../models/components/keysetinput.md)                                    | :heavy_check_mark:                                                                                  | Description of the new KeySet for creation                                                          | {<br/>"id": "b58c7d9d-e54f-444c-b24d-cdfc4159f61e",<br/>"name": "example-key-set",<br/>"tags": [<br/>"idp-keys"<br/>]<br/>} |
+| `keySet`                                                                                            | [components.KeySet](../../models/components/keyset.md)                                              | :heavy_check_mark:                                                                                  | Description of the new KeySet for creation                                                          | {<br/>"id": "b58c7d9d-e54f-444c-b24d-cdfc4159f61e",<br/>"name": "example-key-set",<br/>"tags": [<br/>"idp-keys"<br/>]<br/>} |
 | `opts`                                                                                              | [][operations.Option](../../models/operations/option.md)                                            | :heavy_minus_sign:                                                                                  | The options for this request.                                                                       |                                                                                                     |
 
 ### Response
@@ -272,7 +272,7 @@ func main() {
     res, err := s.KeySets.UpsertKeySet(ctx, operations.UpsertKeySetRequest{
         KeySetID: "6cc34248-50b4-4a81-9201-3bdf7a83f712",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        KeySet: components.KeySetInput{
+        KeySet: components.KeySet{
             ID: sdkkonnectgo.String("b58c7d9d-e54f-444c-b24d-cdfc4159f61e"),
             Name: sdkkonnectgo.String("example-key-set"),
             Tags: []string{

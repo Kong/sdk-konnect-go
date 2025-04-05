@@ -36,7 +36,7 @@ type GetServiceResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Successfully fetched Service
-	Service *components.Service
+	Service *components.ServiceOutput
 }
 
 func (o *GetServiceResponse) GetContentType() string {
@@ -60,7 +60,7 @@ func (o *GetServiceResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *GetServiceResponse) GetService() *components.Service {
+func (o *GetServiceResponse) GetService() *components.ServiceOutput {
 	if o == nil {
 		return nil
 	}

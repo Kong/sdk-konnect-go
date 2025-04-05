@@ -14,6 +14,7 @@ The desired role.
 | `RoleNameCloudGatewayClusterAdmin`  | Cloud Gateway Cluster Admin         |
 | `RoleNameCloudGatewayClusterViewer` | Cloud Gateway Cluster Viewer        |
 | `RoleNameConsumerAdmin`             | Consumer Admin                      |
+| `RoleNameConnector`                 | Connector                           |
 | `RoleNameCreator`                   | Creator                             |
 | `RoleNameDeployer`                  | Deployer                            |
 | `RoleNameDiscoveryAdmin`            | Discovery Admin                     |

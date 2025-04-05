@@ -1808,6 +1808,71 @@ func (o *RolesMeshControlPlanesAdmin) GetDescription() RolesMeshControlPlanesDes
 	return o.Description
 }
 
+type RolesMeshControlPlanesRolesConnectorName string
+
+const (
+	RolesMeshControlPlanesRolesConnectorNameConnector RolesMeshControlPlanesRolesConnectorName = "Connector"
+)
+
+func (e RolesMeshControlPlanesRolesConnectorName) ToPointer() *RolesMeshControlPlanesRolesConnectorName {
+	return &e
+}
+func (e *RolesMeshControlPlanesRolesConnectorName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Connector":
+		*e = RolesMeshControlPlanesRolesConnectorName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesMeshControlPlanesRolesConnectorName: %v", v)
+	}
+}
+
+type RolesMeshControlPlanesRolesDescription string
+
+const (
+	RolesMeshControlPlanesRolesDescriptionThisRoleGrantsAMeshZoneToConnectToTheMeshControlPlaneInKonnect RolesMeshControlPlanesRolesDescription = "This role grants a mesh zone to connect to the mesh control plane in Konnect."
+)
+
+func (e RolesMeshControlPlanesRolesDescription) ToPointer() *RolesMeshControlPlanesRolesDescription {
+	return &e
+}
+func (e *RolesMeshControlPlanesRolesDescription) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "This role grants a mesh zone to connect to the mesh control plane in Konnect.":
+		*e = RolesMeshControlPlanesRolesDescription(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesMeshControlPlanesRolesDescription: %v", v)
+	}
+}
+
+type Connector struct {
+	Name        RolesMeshControlPlanesRolesConnectorName `json:"name"`
+	Description RolesMeshControlPlanesRolesDescription   `json:"description"`
+}
+
+func (o *Connector) GetName() RolesMeshControlPlanesRolesConnectorName {
+	if o == nil {
+		return RolesMeshControlPlanesRolesConnectorName("")
+	}
+	return o.Name
+}
+
+func (o *Connector) GetDescription() RolesMeshControlPlanesRolesDescription {
+	if o == nil {
+		return RolesMeshControlPlanesRolesDescription("")
+	}
+	return o.Description
+}
+
 type RolesMeshControlPlanesRolesCreatorName string
 
 const (
@@ -1831,32 +1896,32 @@ func (e *RolesMeshControlPlanesRolesCreatorName) UnmarshalJSON(data []byte) erro
 	}
 }
 
-type RolesMeshControlPlanesRolesDescription string
+type RolesMeshControlPlanesRolesCreatorDescription string
 
 const (
-	RolesMeshControlPlanesRolesDescriptionThisRoleGrantsAccessToCreateNewMeshControlPlanes RolesMeshControlPlanesRolesDescription = "This role grants access to create new Mesh control planes."
+	RolesMeshControlPlanesRolesCreatorDescriptionThisRoleGrantsAccessToCreateNewMeshControlPlanes RolesMeshControlPlanesRolesCreatorDescription = "This role grants access to create new Mesh control planes."
 )
 
-func (e RolesMeshControlPlanesRolesDescription) ToPointer() *RolesMeshControlPlanesRolesDescription {
+func (e RolesMeshControlPlanesRolesCreatorDescription) ToPointer() *RolesMeshControlPlanesRolesCreatorDescription {
 	return &e
 }
-func (e *RolesMeshControlPlanesRolesDescription) UnmarshalJSON(data []byte) error {
+func (e *RolesMeshControlPlanesRolesCreatorDescription) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "This role grants access to create new Mesh control planes.":
-		*e = RolesMeshControlPlanesRolesDescription(v)
+		*e = RolesMeshControlPlanesRolesCreatorDescription(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RolesMeshControlPlanesRolesDescription: %v", v)
+		return fmt.Errorf("invalid value for RolesMeshControlPlanesRolesCreatorDescription: %v", v)
 	}
 }
 
 type RolesMeshControlPlanesCreator struct {
-	Name        RolesMeshControlPlanesRolesCreatorName `json:"name"`
-	Description RolesMeshControlPlanesRolesDescription `json:"description"`
+	Name        RolesMeshControlPlanesRolesCreatorName        `json:"name"`
+	Description RolesMeshControlPlanesRolesCreatorDescription `json:"description"`
 }
 
 func (o *RolesMeshControlPlanesCreator) GetName() RolesMeshControlPlanesRolesCreatorName {
@@ -1866,9 +1931,9 @@ func (o *RolesMeshControlPlanesCreator) GetName() RolesMeshControlPlanesRolesCre
 	return o.Name
 }
 
-func (o *RolesMeshControlPlanesCreator) GetDescription() RolesMeshControlPlanesRolesDescription {
+func (o *RolesMeshControlPlanesCreator) GetDescription() RolesMeshControlPlanesRolesCreatorDescription {
 	if o == nil {
-		return RolesMeshControlPlanesRolesDescription("")
+		return RolesMeshControlPlanesRolesCreatorDescription("")
 	}
 	return o.Description
 }
@@ -1939,9 +2004,10 @@ func (o *RolesMeshControlPlanesViewer) GetDescription() RolesMeshControlPlanesRo
 }
 
 type RolesMeshControlPlanesRoles struct {
-	Admin   *RolesMeshControlPlanesAdmin   `json:"admin,omitempty"`
-	Creator *RolesMeshControlPlanesCreator `json:"creator,omitempty"`
-	Viewer  *RolesMeshControlPlanesViewer  `json:"viewer,omitempty"`
+	Admin     *RolesMeshControlPlanesAdmin   `json:"admin,omitempty"`
+	Connector *Connector                     `json:"connector,omitempty"`
+	Creator   *RolesMeshControlPlanesCreator `json:"creator,omitempty"`
+	Viewer    *RolesMeshControlPlanesViewer  `json:"viewer,omitempty"`
 }
 
 func (o *RolesMeshControlPlanesRoles) GetAdmin() *RolesMeshControlPlanesAdmin {
@@ -1949,6 +2015,13 @@ func (o *RolesMeshControlPlanesRoles) GetAdmin() *RolesMeshControlPlanesAdmin {
 		return nil
 	}
 	return o.Admin
+}
+
+func (o *RolesMeshControlPlanesRoles) GetConnector() *Connector {
+	if o == nil {
+		return nil
+	}
+	return o.Connector
 }
 
 func (o *RolesMeshControlPlanesRoles) GetCreator() *RolesMeshControlPlanesCreator {

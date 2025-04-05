@@ -11,7 +11,7 @@ type CreateCaCertificateRequest struct {
 	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Description of the new CA Certificate for creation
-	CACertificate components.CACertificateInput `request:"mediaType=application/json"`
+	CACertificate components.CACertificate `request:"mediaType=application/json"`
 }
 
 func (o *CreateCaCertificateRequest) GetControlPlaneID() string {
@@ -21,9 +21,9 @@ func (o *CreateCaCertificateRequest) GetControlPlaneID() string {
 	return o.ControlPlaneID
 }
 
-func (o *CreateCaCertificateRequest) GetCACertificate() components.CACertificateInput {
+func (o *CreateCaCertificateRequest) GetCACertificate() components.CACertificate {
 	if o == nil {
-		return components.CACertificateInput{}
+		return components.CACertificate{}
 	}
 	return o.CACertificate
 }

@@ -9,9 +9,10 @@ import (
 )
 
 type GetNodesNodeIDRequest struct {
-	NodeID string `pathParam:"style=simple,explode=false,name=nodeId"`
 	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
+	// Node identifier
+	NodeID string `pathParam:"style=simple,explode=false,name=nodeId"`
 	// Number of resources to be returned.
 	Size *int64 `default:"100" queryParam:"style=form,explode=true,name=size"`
 	// A list of tags to filter the list of resources on. Multiple tags can be concatenated using ',' to mean AND or using '/' to mean OR.
@@ -29,18 +30,18 @@ func (g *GetNodesNodeIDRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GetNodesNodeIDRequest) GetNodeID() string {
-	if o == nil {
-		return ""
-	}
-	return o.NodeID
-}
-
 func (o *GetNodesNodeIDRequest) GetControlPlaneID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ControlPlaneID
+}
+
+func (o *GetNodesNodeIDRequest) GetNodeID() string {
+	if o == nil {
+		return ""
+	}
+	return o.NodeID
 }
 
 func (o *GetNodesNodeIDRequest) GetSize() *int64 {

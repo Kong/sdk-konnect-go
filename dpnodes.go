@@ -643,10 +643,10 @@ func (s *DPNodes) GetNodesNodeID(ctx context.Context, request operations.GetNode
 
 // DeleteNodesNodeID - Delete Data Plane Node Record
 // Remove a specific data plane node record associated to this control plane. Deleting this record does not prevent the data plane node from re-connecting to the control plane.
-func (s *DPNodes) DeleteNodesNodeID(ctx context.Context, nodeID string, controlPlaneID string, opts ...operations.Option) (*operations.DeleteNodesNodeIDResponse, error) {
+func (s *DPNodes) DeleteNodesNodeID(ctx context.Context, controlPlaneID string, nodeID string, opts ...operations.Option) (*operations.DeleteNodesNodeIDResponse, error) {
 	request := operations.DeleteNodesNodeIDRequest{
-		NodeID:         nodeID,
 		ControlPlaneID: controlPlaneID,
+		NodeID:         nodeID,
 	}
 
 	o := operations.Options{}

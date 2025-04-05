@@ -13,7 +13,7 @@ type UpsertConsumerRequest struct {
 	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Description of the Consumer
-	Consumer components.ConsumerInput `request:"mediaType=application/json"`
+	Consumer components.Consumer `request:"mediaType=application/json"`
 }
 
 func (o *UpsertConsumerRequest) GetConsumerID() string {
@@ -30,9 +30,9 @@ func (o *UpsertConsumerRequest) GetControlPlaneID() string {
 	return o.ControlPlaneID
 }
 
-func (o *UpsertConsumerRequest) GetConsumer() components.ConsumerInput {
+func (o *UpsertConsumerRequest) GetConsumer() components.Consumer {
 	if o == nil {
-		return components.ConsumerInput{}
+		return components.Consumer{}
 	}
 	return o.Consumer
 }
