@@ -1159,8 +1159,8 @@ func main() {
         }),
     )
 
-    res, err := s.CloudGateways.CreateTransitGateway(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreateCreateTransitGatewayRequestAWSTransitGateway(
-        components.AWSTransitGateway{
+    res, err := s.CloudGateways.CreateTransitGateway(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreateCreateTransitGatewayRequestAWSVPCPeeringGateway(
+        components.AWSVPCPeeringGateway{
             Name: "us-east-2 transit gateway",
             DNSConfig: []components.TransitGatewayDNSConfig{
                 components.TransitGatewayDNSConfig{
@@ -1185,10 +1185,11 @@ func main() {
                 "100.64.0.0/10",
                 "172.16.0.0/12",
             },
-            TransitGatewayAttachmentConfig: components.AwsTransitGatewayAttachmentConfig{
-                Kind: components.AWSTransitGatewayAttachmentTypeAwsTransitGatewayAttachment,
-                TransitGatewayID: "<id>",
-                RAMShareArn: "<value>",
+            TransitGatewayAttachmentConfig: components.AwsVpcPeeringGatewayAttachmentConfig{
+                Kind: components.AWSVPCPeeringAttachmentConfigAwsVpcPeeringAttachment,
+                PeerAccountID: "<id>",
+                PeerVpcID: "<id>",
+                PeerVpcRegion: "<value>",
             },
         },
     ))
