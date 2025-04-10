@@ -1159,8 +1159,8 @@ func main() {
         }),
     )
 
-    res, err := s.CloudGateways.CreateTransitGateway(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreateCreateTransitGatewayRequestAWSVPCPeeringGateway(
-        components.AWSVPCPeeringGateway{
+    res, err := s.CloudGateways.CreateTransitGateway(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreateCreateTransitGatewayRequestAWSVpcPeeringGateway(
+        components.AWSVpcPeeringGateway{
             Name: "us-east-2 transit gateway",
             DNSConfig: []components.TransitGatewayDNSConfig{
                 components.TransitGatewayDNSConfig{

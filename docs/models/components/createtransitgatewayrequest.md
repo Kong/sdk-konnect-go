@@ -11,10 +11,10 @@ Request schema for creating a transit gateway.
 createTransitGatewayRequest := components.CreateCreateTransitGatewayRequestAWSTransitGateway(components.AWSTransitGateway{/* values here */})
 ```
 
-### AWSVPCPeeringGateway
+### AWSVpcPeeringGateway
 
 ```go
-createTransitGatewayRequest := components.CreateCreateTransitGatewayRequestAWSVPCPeeringGateway(components.AWSVPCPeeringGateway{/* values here */})
+createTransitGatewayRequest := components.CreateCreateTransitGatewayRequestAWSVpcPeeringGateway(components.AWSVpcPeeringGateway{/* values here */})
 ```
 
 ### AzureTransitGateway

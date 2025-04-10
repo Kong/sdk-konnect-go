@@ -272,8 +272,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
       tags:
         - Notifications
   /v1/notifications/configurations/{eventId}/subscriptions:
@@ -292,8 +290,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
       tags:
         - Notifications
     post:
@@ -390,8 +386,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
       tags:
         - Notifications
   /v1/notifications/inbox/{notificationId}:
@@ -11743,6 +11737,8 @@ components:
       properties:
         id:
           $ref: '#/components/schemas/TransitGatewayId'
+        dns_config:
+          $ref: '#/components/schemas/TransitGatewayDnsConfig'
         state:
           $ref: '#/components/schemas/TransitGatewayState'
         entity_version:
@@ -11770,6 +11766,7 @@ components:
           readOnly: true
       required:
         - id
+        - dns_config
         - state
         - entity_version
         - created_at
@@ -11843,18 +11840,21 @@ components:
         - $ref: '#/components/schemas/AwsTransitGateway'
         - required:
             - name
+        - x-speakeasy-name-override: AWSTransitGateway
     CreateAwsVpcPeeringGateway:
       x-flatten-allOf: true
       allOf:
         - $ref: '#/components/schemas/AwsVpcPeeringGateway'
         - required:
             - name
+        - x-speakeasy-name-override: AWSVpcPeeringGateway
     CreateAzureTransitGateway:
       x-flatten-allOf: true
       allOf:
         - $ref: '#/components/schemas/AzureTransitGateway'
         - required:
             - name
+        - x-speakeasy-name-override: AzureTransitGateway
     CreateTransitGatewayRequest:
       title: CreateTransitGatewayRequest
       description: Request schema for creating a transit gateway.

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 51f5b9add39e6a021405d720c4e6553b
+  docChecksum: 727ec0dd2227c3dc7e747229df9f63b2
   docVersion: 0.0.1
   speakeasyVersion: 1.531.1
   generationVersion: 2.568.5
-  releaseVersion: 0.2.25
-  configChecksum: ba32b5e8d17f064b100ac7189b5f6c52
+  releaseVersion: 0.2.26
+  configChecksum: c63eaef988cabced6a5051d3e5b5f8d3
 features:
   go:
     additionalDependencies: 0.1.0
@@ -212,7 +212,7 @@ generatedFiles:
   - /models/components/samlidentityproviderconfig.go
   - /models/components/samlidentityproviderconfiginput.go
   - /models/components/security.go
-  - /models/components/serviceoutput.go
+  - /models/components/service.go
   - /models/components/sni.go
   - /models/components/sniwithoutparents.go
   - /models/components/stringfieldcontainsfilter.go
@@ -2970,6 +2970,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 463382}
+        "200": {}
   create-consumer_group:
     speakeasy-default-create-consumer-group:
       parameters:
@@ -3000,6 +3001,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 945866}
+        "200": {}
   upsert-consumer_group:
     "":
       parameters:
@@ -4044,7 +4046,7 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {}
+        application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
       responses:
         "201":
           application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
