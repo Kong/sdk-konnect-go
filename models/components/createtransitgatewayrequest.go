@@ -39,7 +39,7 @@ func (o *AzureTransitGateway) GetTransitGatewayAttachmentConfig() AzureVNETPeeri
 	return o.TransitGatewayAttachmentConfig
 }
 
-type AWSVPCPeeringGateway struct {
+type AWSVpcPeeringGateway struct {
 	// Human-readable name of the transit gateway.
 	Name string `json:"name"`
 	// List of mappings from remote DNS server IP address sets to proxied internal domains, for a transit gateway
@@ -53,28 +53,28 @@ type AWSVPCPeeringGateway struct {
 	TransitGatewayAttachmentConfig AwsVpcPeeringGatewayAttachmentConfig `json:"transit_gateway_attachment_config"`
 }
 
-func (o *AWSVPCPeeringGateway) GetName() string {
+func (o *AWSVpcPeeringGateway) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *AWSVPCPeeringGateway) GetDNSConfig() []TransitGatewayDNSConfig {
+func (o *AWSVpcPeeringGateway) GetDNSConfig() []TransitGatewayDNSConfig {
 	if o == nil {
 		return nil
 	}
 	return o.DNSConfig
 }
 
-func (o *AWSVPCPeeringGateway) GetCidrBlocks() []string {
+func (o *AWSVpcPeeringGateway) GetCidrBlocks() []string {
 	if o == nil {
 		return []string{}
 	}
 	return o.CidrBlocks
 }
 
-func (o *AWSVPCPeeringGateway) GetTransitGatewayAttachmentConfig() AwsVpcPeeringGatewayAttachmentConfig {
+func (o *AWSVpcPeeringGateway) GetTransitGatewayAttachmentConfig() AwsVpcPeeringGatewayAttachmentConfig {
 	if o == nil {
 		return AwsVpcPeeringGatewayAttachmentConfig{}
 	}
@@ -126,15 +126,15 @@ func (o *AWSTransitGateway) GetTransitGatewayAttachmentConfig() AwsTransitGatewa
 type CreateTransitGatewayRequestType string
 
 const (
-	CreateTransitGatewayRequestTypeAWSTransitGateway    CreateTransitGatewayRequestType = "AWS Transit Gateway"
-	CreateTransitGatewayRequestTypeAWSVPCPeeringGateway CreateTransitGatewayRequestType = "AWS VPC Peering Gateway"
-	CreateTransitGatewayRequestTypeAzureTransitGateway  CreateTransitGatewayRequestType = "Azure Transit Gateway"
+	CreateTransitGatewayRequestTypeAWSTransitGateway    CreateTransitGatewayRequestType = "AWSTransitGateway"
+	CreateTransitGatewayRequestTypeAWSVpcPeeringGateway CreateTransitGatewayRequestType = "AWSVpcPeeringGateway"
+	CreateTransitGatewayRequestTypeAzureTransitGateway  CreateTransitGatewayRequestType = "AzureTransitGateway"
 )
 
 // CreateTransitGatewayRequest - Request schema for creating a transit gateway.
 type CreateTransitGatewayRequest struct {
 	AWSTransitGateway    *AWSTransitGateway    `queryParam:"inline"`
-	AWSVPCPeeringGateway *AWSVPCPeeringGateway `queryParam:"inline"`
+	AWSVpcPeeringGateway *AWSVpcPeeringGateway `queryParam:"inline"`
 	AzureTransitGateway  *AzureTransitGateway  `queryParam:"inline"`
 
 	Type CreateTransitGatewayRequestType
@@ -149,11 +149,11 @@ func CreateCreateTransitGatewayRequestAWSTransitGateway(awsTransitGateway AWSTra
 	}
 }
 
-func CreateCreateTransitGatewayRequestAWSVPCPeeringGateway(awsVPCPeeringGateway AWSVPCPeeringGateway) CreateTransitGatewayRequest {
-	typ := CreateTransitGatewayRequestTypeAWSVPCPeeringGateway
+func CreateCreateTransitGatewayRequestAWSVpcPeeringGateway(awsVpcPeeringGateway AWSVpcPeeringGateway) CreateTransitGatewayRequest {
+	typ := CreateTransitGatewayRequestTypeAWSVpcPeeringGateway
 
 	return CreateTransitGatewayRequest{
-		AWSVPCPeeringGateway: &awsVPCPeeringGateway,
+		AWSVpcPeeringGateway: &awsVpcPeeringGateway,
 		Type:                 typ,
 	}
 }
@@ -183,10 +183,10 @@ func (u *CreateTransitGatewayRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var awsVPCPeeringGateway AWSVPCPeeringGateway = AWSVPCPeeringGateway{}
-	if err := utils.UnmarshalJSON(data, &awsVPCPeeringGateway, "", true, true); err == nil {
-		u.AWSVPCPeeringGateway = &awsVPCPeeringGateway
-		u.Type = CreateTransitGatewayRequestTypeAWSVPCPeeringGateway
+	var awsVpcPeeringGateway AWSVpcPeeringGateway = AWSVpcPeeringGateway{}
+	if err := utils.UnmarshalJSON(data, &awsVpcPeeringGateway, "", true, true); err == nil {
+		u.AWSVpcPeeringGateway = &awsVpcPeeringGateway
+		u.Type = CreateTransitGatewayRequestTypeAWSVpcPeeringGateway
 		return nil
 	}
 
@@ -198,8 +198,8 @@ func (u CreateTransitGatewayRequest) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.AWSTransitGateway, "", true)
 	}
 
-	if u.AWSVPCPeeringGateway != nil {
-		return utils.MarshalJSON(u.AWSVPCPeeringGateway, "", true)
+	if u.AWSVpcPeeringGateway != nil {
+		return utils.MarshalJSON(u.AWSVpcPeeringGateway, "", true)
 	}
 
 	if u.AzureTransitGateway != nil {

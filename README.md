@@ -19,7 +19,6 @@ For example, the `ListUserConfigurations` function may return the following erro
 | sdkerrors.BadRequestError   | 400         | application/problem+json |
 | sdkerrors.UnauthorizedError | 401         | application/problem+json |
 | sdkerrors.ForbiddenError    | 403         | application/problem+json |
-| sdkerrors.NotFoundError     | 404         | application/problem+json |
 | sdkerrors.SDKError          | 4XX, 5XX    | \*/\*                    |
 
 ### Example
@@ -61,12 +60,6 @@ func main() {
 		}
 
 		var e *sdkerrors.ForbiddenError
-		if errors.As(err, &e) {
-			// handle error
-			log.Fatal(e.Error())
-		}
-
-		var e *sdkerrors.NotFoundError
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())

@@ -13,7 +13,7 @@ type AzureTransitGatewayResponse struct {
 	// List of mappings from remote DNS server IP address sets to proxied internal domains, for a transit gateway
 	// attachment.
 	//
-	DNSConfig                      []TransitGatewayDNSConfig        `json:"dns_config,omitempty"`
+	DNSConfig                      []TransitGatewayDNSConfig        `json:"dns_config"`
 	TransitGatewayAttachmentConfig AzureVNETPeeringAttachmentConfig `json:"transit_gateway_attachment_config"`
 	ID                             string                           `json:"id"`
 	// The current state of the Transit Gateway. Possible values:
@@ -55,7 +55,7 @@ func (o *AzureTransitGatewayResponse) GetName() string {
 
 func (o *AzureTransitGatewayResponse) GetDNSConfig() []TransitGatewayDNSConfig {
 	if o == nil {
-		return nil
+		return []TransitGatewayDNSConfig{}
 	}
 	return o.DNSConfig
 }

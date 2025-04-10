@@ -1,4 +1,4 @@
-# AWSVPCPeeringGateway
+# AWSVpcPeeringGateway
 
 
 ## Fields
