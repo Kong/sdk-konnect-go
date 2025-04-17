@@ -133,6 +133,7 @@ tags:
       - [Router Expressions language
       reference](https://docs.konghq.com/gateway/latest/reference/router-expressions-language/)
     name: Routes
+  - name: Degraphql_routes
   - description: >
       A plugin entity represents a plugin configuration that will be executed
       during the HTTP request/response lifecycle. Plugins let you add
@@ -255,6 +256,7 @@ tags:
   - name: HMAC-auth credentials
   - name: MTLS-auth credentials
   - name: ACLs
+  - name: Partials
 paths:
   /v1/notifications/configurations:
     get:
@@ -1213,6 +1215,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/control-planes:
     get:
+      x-speakeasy-entity-operation: GatewayControlPlaneList#read
       summary: List Control Planes
       responses:
         '200':
@@ -3358,6 +3361,58 @@ paths:
           $ref: '#/components/responses/HTTP401Error'
       tags:
         - CustomPlugins
+  /v2/control-planes/{controlPlaneId}/core-entities/degraphql_routes:
+    get:
+      operationId: list-degraphql_route
+      summary: List all Degraphql_routes
+      description: List all Degraphql_routes
+      parameters:
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationOffset'
+        - $ref: '#/components/parameters/PaginationTagsFilter'
+      responses:
+        '200':
+          description: A successful response listing Degraphql_routes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Degraphql_route'
+                  next:
+                    $ref: '#/components/schemas/PaginationNextResponse'
+                  offset:
+                    $ref: '#/components/schemas/PaginationOffsetResponse'
+        '401':
+          $ref: '#/components/responses/HTTP401Error'
+      tags:
+        - Degraphql_routes
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+  /v2/control-planes/{controlPlaneId}/core-entities/degraphql_routes/{Degraphql_routeId}:
+    get:
+      operationId: get-degraphql_route
+      summary: Fetch a Degraphql_route
+      description: Get a Degraphql_route using ID or name.
+      responses:
+        '200':
+          description: Successfully fetched Degraphql_route
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Degraphql_route'
+        '401':
+          $ref: '#/components/responses/HTTP401Error'
+        '404':
+          description: Resource does not exist
+      tags:
+        - Degraphql_routes
+    parameters:
+      - $ref: '#/components/parameters/Degraphql_routeId'
+      - $ref: '#/components/parameters/controlPlaneId'
   /v2/control-planes/{controlPlaneId}/core-entities/hmac-auths:
     get:
       operationId: list-hmac-auth
@@ -3891,6 +3946,149 @@ paths:
         - MTLS-auth credentials
     parameters:
       - $ref: '#/components/parameters/MTLSAuthId'
+      - $ref: '#/components/parameters/controlPlaneId'
+  /v2/control-planes/{controlPlaneId}/core-entities/partials:
+    get:
+      operationId: list-partial
+      summary: List all Partials
+      description: List all Partials
+      parameters:
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationOffset'
+        - $ref: '#/components/parameters/PaginationTagsFilter'
+      responses:
+        '200':
+          description: A successful response listing Partials
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Partial'
+                  next:
+                    $ref: '#/components/schemas/PaginationNextResponse'
+                  offset:
+                    $ref: '#/components/schemas/PaginationOffsetResponse'
+        '401':
+          $ref: '#/components/responses/HTTP401Error'
+      tags:
+        - Partials
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+    post:
+      operationId: create-partial
+      summary: Create a new Partial
+      description: Create a new Partial
+      requestBody:
+        description: Description of the new Partial for creation
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Partial'
+      responses:
+        '201':
+          description: Successfully created Partial
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Partial'
+        '401':
+          $ref: '#/components/responses/HTTP401Error'
+      tags:
+        - Partials
+  /v2/control-planes/{controlPlaneId}/core-entities/partials/{PartialId}:
+    delete:
+      operationId: delete-partial
+      summary: Delete a Partial
+      description: Delete a Partial
+      parameters:
+        - $ref: '#/components/parameters/PartialId'
+      responses:
+        '204':
+          description: Successfully deleted Partial or the resource didn't exist
+        '401':
+          $ref: '#/components/responses/HTTP401Error'
+      tags:
+        - Partials
+    get:
+      operationId: get-partial
+      summary: Fetch a Partial
+      description: Get a Partial using ID.
+      responses:
+        '200':
+          description: Successfully fetched Partial
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Partial'
+        '401':
+          $ref: '#/components/responses/HTTP401Error'
+        '404':
+          description: Resource does not exist
+      tags:
+        - Partials
+    parameters:
+      - $ref: '#/components/parameters/PartialId'
+      - $ref: '#/components/parameters/controlPlaneId'
+    put:
+      operationId: upsert-partial
+      summary: Upsert a Partial
+      description: Create or Update Partial using ID.
+      requestBody:
+        description: Description of the Partial
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Partial'
+      responses:
+        '200':
+          description: Successfully upserted Partial
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Partial'
+        '401':
+          $ref: '#/components/responses/HTTP401Error'
+      tags:
+        - Partials
+  /v2/control-planes/{controlPlaneId}/core-entities/partials/{PartialId}/links:
+    get:
+      operationId: list-partial-link
+      summary: List partial links
+      description: List all plugins linked to the partial
+      parameters:
+        - $ref: '#/components/parameters/PartialId'
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationOffset'
+        - $ref: '#/components/parameters/PaginationTagsFilter'
+      responses:
+        '200':
+          description: The plugins linked to the partial
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    description: The total number of plugins linked to the partial
+                    type: integer
+                    example: 10
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PartialLink'
+                  next:
+                    $ref: '#/components/schemas/PaginationNextResponse'
+                  offset:
+                    $ref: '#/components/schemas/PaginationOffsetResponse'
+      tags:
+        - Partial Links
+    parameters:
       - $ref: '#/components/parameters/controlPlaneId'
   /v2/control-planes/{controlPlaneId}/core-entities/plugin-schemas:
     parameters:
@@ -4458,6 +4656,116 @@ paths:
           $ref: '#/components/responses/HTTP401Error'
       tags:
         - Services
+  /v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/degraphql/routes:
+    get:
+      operationId: list-degraphql_route-with-service
+      summary: List all Degraphql_routes associated with a Service
+      description: List all Degraphql_routes associated with a Service
+      parameters:
+        - $ref: '#/components/parameters/ServiceId'
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationOffset'
+        - $ref: '#/components/parameters/PaginationTagsFilter'
+      responses:
+        '200':
+          description: A successful response listing Degraphql_routes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Degraphql_route'
+                  next:
+                    $ref: '#/components/schemas/PaginationNextResponse'
+                  offset:
+                    $ref: '#/components/schemas/PaginationOffsetResponse'
+      tags:
+        - Degraphql_routes
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+    post:
+      operationId: create-degraphql_route-with-service
+      summary: Create a new Degraphql_route associated with a Service
+      description: Create a new Degraphql_route associated with a Service
+      parameters:
+        - $ref: '#/components/parameters/ServiceId'
+      requestBody:
+        description: Description of new Degraphql_route for creation
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Degraphql_routeWithoutParents'
+      responses:
+        '201':
+          description: Successfully created Degraphql_route
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Degraphql_route'
+      tags:
+        - Degraphql_routes
+  /v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/degraphql/routes/{Degraphql_routeId}:
+    delete:
+      operationId: delete-degraphql_route-with-service
+      summary: Delete a a Degraphql_route associated with a Service
+      description: Delete a a Degraphql_route associated with a Service using ID or name.
+      parameters:
+        - $ref: '#/components/parameters/ServiceId'
+        - $ref: '#/components/parameters/Degraphql_routeId'
+      responses:
+        '204':
+          description: Successfully deleted Degraphql_route or the resource didn't exist
+      tags:
+        - Degraphql_routes
+    get:
+      operationId: get-degraphql_route-with-service
+      summary: Fetch a Degraphql_route associated with a Service
+      description: Get a Degraphql_route associated with a Service using ID or name.
+      parameters:
+        - $ref: '#/components/parameters/ServiceId'
+        - $ref: '#/components/parameters/Degraphql_routeId'
+      responses:
+        '200':
+          description: Successfully fetched Degraphql_route
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Degraphql_route'
+        '404':
+          description: Resource does not exist
+      tags:
+        - Degraphql_routes
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+    put:
+      operationId: upsert-degraphql_route-with-service
+      summary: Upsert a Degraphql_route associated with a Service
+      description: >-
+        Create or Update a Degraphql_route associated with a Service using ID or
+        name.
+      parameters:
+        - $ref: '#/components/parameters/ServiceId'
+        - $ref: '#/components/parameters/Degraphql_routeId'
+      requestBody:
+        description: Description of the Degraphql_route
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Degraphql_routeWithoutParents'
+      responses:
+        '200':
+          description: Successfully upserted Degraphql_route
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Degraphql_route'
+      tags:
+        - Degraphql_routes
   /v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/plugins:
     get:
       operationId: list-plugin-with-service
@@ -7374,6 +7682,14 @@ components:
       required: true
       schema:
         type: string
+    Degraphql_routeId:
+      description: ID of the Degraphql_route to lookup
+      example: ''
+      in: path
+      name: Degraphql_routeId
+      required: true
+      schema:
+        type: string
     HMACAuthId:
       description: ID of the HMAC-auth credential to lookup
       example: 70e7b00b-72f2-471b-a5ce-9c4171775360
@@ -7449,6 +7765,14 @@ components:
       example: tag1,tag2
       in: query
       name: tags
+      schema:
+        type: string
+    PartialId:
+      description: ID of the Partial to lookup
+      example: ''
+      in: path
+      name: PartialId
+      required: true
       schema:
         type: string
     PluginId:
@@ -9778,34 +10102,45 @@ components:
       additionalProperties: false
       properties:
         id:
-          oneOf:
-            - $ref: '#/components/schemas/StringFieldEqualsFilter'
-            - $ref: '#/components/schemas/StringFieldOEQFilter'
+          description: >-
+            Filters on the given comma separated string by one or more exact
+            match.
+          type: object
+          properties:
+            eq:
+              type: string
+            oeq:
+              type: string
+          additionalProperties: false
         name:
-          oneOf:
-            - $ref: '#/components/schemas/StringFieldEqualsFilter'
-            - $ref: '#/components/schemas/StringFieldContainsFilter'
-            - $ref: '#/components/schemas/StringFieldNEQFilter'
+          description: Filters on the given string field value by exact match inequality.
+          type: object
+          properties:
+            eq:
+              type: string
+            contains:
+              type: string
+            neq:
+              type: string
+          additionalProperties: false
         cluster_type:
-          oneOf:
-            - $ref: '#/components/schemas/StringFieldEqualsFilter'
-            - $ref: '#/components/schemas/StringFieldNEQFilter'
+          description: Filters on the given string field value by exact match inequality.
+          type: object
+          properties:
+            eq:
+              type: string
+            neq:
+              type: string
+          additionalProperties: false
         cloud_gateway:
           $ref: '#/components/schemas/BooleanFieldFilter'
     StringFieldEqualsFilter:
       title: StringFieldEqualsFilter
       description: Filter a string value by exact match.
-      oneOf:
-        - type: string
-        - type: object
-          title: StringFieldEqualsComparison
-          additionalProperties: false
-          properties:
-            eq:
-              type: string
-          required:
-            - eq
       type: string
+      properties:
+        eq:
+          type: string
     StringFieldOEQFilter:
       title: StringFieldOEQFilter
       description: Filters on the given comma separated string by one or more exact match.
@@ -9834,8 +10169,6 @@ components:
       properties:
         neq:
           type: string
-        oeq:
-          type: string
       required:
         - neq
     BooleanFieldFilter:
@@ -9846,7 +10179,7 @@ components:
     SortQuery:
       title: SortQuery
       type: string
-      example: name,created_at desc
+      example: created_at desc
       description: >
         The `asc` suffix is optional as the default sort order is ascending.
 
@@ -10700,10 +11033,16 @@ components:
           example: Control Planes
           description: Name of the entity type the role is being assigned to.
         entity_region:
-          x-flatten-allOf: true
-          allOf:
-            - $ref: '#/components/schemas/EntityRegion'
-            - description: Region of the entity.
+          type: string
+          enum:
+            - us
+            - eu
+            - au
+            - me
+            - in
+            - '*'
+          example: eu
+          description: Region of the entity.
     SystemAccount:
       x-speakeasy-entity: SystemAccount
       title: System Account
@@ -10788,11 +11127,14 @@ components:
       description: Contains a unique identifier used by the API for this resource.
       readOnly: true
     StringFieldFilter:
-      title: StringFieldFilter
-      description: Filter a string value field either by exact match or partial contains.
-      oneOf:
-        - $ref: '#/components/schemas/StringFieldEqualsFilter'
-        - $ref: '#/components/schemas/StringFieldContainsFilter'
+      description: Filter a string value field by partial contains.
+      type: object
+      properties:
+        eq:
+          type: string
+        contains:
+          type: string
+      additionalProperties: false
     LabelsUpdate:
       type: object
       nullable: true
@@ -10816,16 +11158,6 @@ components:
         maxLength: 63
         nullable: true
       writeOnly: true
-    EntityRegion:
-      type: string
-      enum:
-        - us
-        - eu
-        - au
-        - me
-        - in
-        - '*'
-      example: eu
     ControlPlaneId:
       type: string
       format: uuid
@@ -11574,8 +11906,8 @@ components:
         - `initializing` - The attachment is in the process of being initialized
         and is setting up necessary resources.
 
-        - `pending` - acceptance The attachment request is awaiting acceptance
-        in customer VPC.
+        - `pending-acceptance` The attachment request is awaiting acceptance in
+        customer VPC.
 
         - `ready` - The transit gateway attachment is fully operational and can
         route traffic as configured.
@@ -11723,22 +12055,19 @@ components:
         - 10.0.0.0/8
         - 100.64.0.0/10
         - 172.16.0.0/12
-    BaseTransitGateway:
+    AwsTransitGatewayResponse:
       type: object
       properties:
         name:
           $ref: '#/components/schemas/TransitGatewayName'
         dns_config:
           $ref: '#/components/schemas/TransitGatewayDnsConfig'
-      required:
-        - name
-    BaseTransitGatewayResponse:
-      type: object
-      properties:
+        cidr_blocks:
+          $ref: '#/components/schemas/TransitGatewayCIDRBlocks'
+        transit_gateway_attachment_config:
+          $ref: '#/components/schemas/AwsTransitGatewayAttachmentConfig'
         id:
           $ref: '#/components/schemas/TransitGatewayId'
-        dns_config:
-          $ref: '#/components/schemas/TransitGatewayDnsConfig'
         state:
           $ref: '#/components/schemas/TransitGatewayState'
         entity_version:
@@ -11765,96 +12094,164 @@ components:
           description: An RFC-3339 timestamp representation of transit gateway update date.
           readOnly: true
       required:
+        - name
+        - cidr_blocks
+        - transit_gateway_attachment_config
+        - dns_config
+        - id
+        - state
+        - entity_version
+        - created_at
+        - updated_at
+      title: AWS Transit Gateway
+    AwsVpcPeeringGatewayResponse:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/TransitGatewayName'
+        dns_config:
+          $ref: '#/components/schemas/TransitGatewayDnsConfig'
+        cidr_blocks:
+          $ref: '#/components/schemas/TransitGatewayCIDRBlocks'
+        transit_gateway_attachment_config:
+          $ref: '#/components/schemas/AwsVpcPeeringGatewayAttachmentConfig'
+        id:
+          $ref: '#/components/schemas/TransitGatewayId'
+        state:
+          $ref: '#/components/schemas/TransitGatewayState'
+        entity_version:
+          type: integer
+          description: >
+            Monotonically-increasing version count of the transit gateway, to
+            indicate the order of updates to the
+
+            transit gateway.
+          readOnly: true
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: >-
+            An RFC-3339 timestamp representation of transit gateway creation
+            date.
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: An RFC-3339 timestamp representation of transit gateway update date.
+          readOnly: true
+      required:
+        - name
+        - cidr_blocks
+        - transit_gateway_attachment_config
+        - dns_config
+        - id
+        - state
+        - entity_version
+        - created_at
+        - updated_at
+      title: AWS VPC Peering Gateway
+    AzureTransitGatewayResponse:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/TransitGatewayName'
+        dns_config:
+          $ref: '#/components/schemas/TransitGatewayDnsConfig'
+        transit_gateway_attachment_config:
+          $ref: '#/components/schemas/AzureVNETPeeringAttachmentConfig'
+        id:
+          $ref: '#/components/schemas/TransitGatewayId'
+        state:
+          $ref: '#/components/schemas/TransitGatewayState'
+        entity_version:
+          type: integer
+          description: >
+            Monotonically-increasing version count of the transit gateway, to
+            indicate the order of updates to the
+
+            transit gateway.
+          readOnly: true
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: >-
+            An RFC-3339 timestamp representation of transit gateway creation
+            date.
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: An RFC-3339 timestamp representation of transit gateway update date.
+          readOnly: true
+      required:
+        - name
+        - transit_gateway_attachment_config
         - id
         - dns_config
         - state
         - entity_version
         - created_at
         - updated_at
-    AwsTransitGateway:
-      x-flatten-allOf: true
-      allOf:
-        - $ref: '#/components/schemas/BaseTransitGateway'
-        - title: AWS Transit Gateway
-          type: object
-          properties:
-            cidr_blocks:
-              $ref: '#/components/schemas/TransitGatewayCIDRBlocks'
-            transit_gateway_attachment_config:
-              $ref: '#/components/schemas/AwsTransitGatewayAttachmentConfig'
-          required:
-            - cidr_blocks
-            - transit_gateway_attachment_config
-    AwsTransitGatewayResponse:
-      x-flatten-allOf: true
-      allOf:
-        - $ref: '#/components/schemas/AwsTransitGateway'
-        - required:
-            - dns_config
-        - $ref: '#/components/schemas/BaseTransitGatewayResponse'
-    AwsVpcPeeringGateway:
-      x-flatten-allOf: true
-      allOf:
-        - $ref: '#/components/schemas/BaseTransitGateway'
-        - title: AWS VPC Peering Gateway
-          type: object
-          properties:
-            cidr_blocks:
-              $ref: '#/components/schemas/TransitGatewayCIDRBlocks'
-            transit_gateway_attachment_config:
-              $ref: '#/components/schemas/AwsVpcPeeringGatewayAttachmentConfig'
-          required:
-            - cidr_blocks
-            - transit_gateway_attachment_config
-    AwsVpcPeeringGatewayResponse:
-      x-flatten-allOf: true
-      allOf:
-        - $ref: '#/components/schemas/AwsVpcPeeringGateway'
-        - required:
-            - dns_config
-        - $ref: '#/components/schemas/BaseTransitGatewayResponse'
-    AzureTransitGateway:
-      x-flatten-allOf: true
-      allOf:
-        - $ref: '#/components/schemas/BaseTransitGateway'
-        - title: Azure Transit Gateway
-          type: object
-          properties:
-            transit_gateway_attachment_config:
-              $ref: '#/components/schemas/AzureVNETPeeringAttachmentConfig'
-          required:
-            - transit_gateway_attachment_config
-    AzureTransitGatewayResponse:
-      x-flatten-allOf: true
-      allOf:
-        - $ref: '#/components/schemas/AzureTransitGateway'
-        - $ref: '#/components/schemas/BaseTransitGatewayResponse'
+      title: Azure Transit Gateway
     TransitGatewayResponse:
       oneOf:
         - $ref: '#/components/schemas/AwsTransitGatewayResponse'
         - $ref: '#/components/schemas/AwsVpcPeeringGatewayResponse'
         - $ref: '#/components/schemas/AzureTransitGatewayResponse'
     CreateAwsTransitGateway:
-      x-flatten-allOf: true
-      allOf:
-        - $ref: '#/components/schemas/AwsTransitGateway'
-        - required:
-            - name
-        - x-speakeasy-name-override: AWSTransitGateway
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/TransitGatewayName'
+        dns_config:
+          $ref: '#/components/schemas/TransitGatewayDnsConfig'
+        cidr_blocks:
+          $ref: '#/components/schemas/TransitGatewayCIDRBlocks'
+        transit_gateway_attachment_config:
+          $ref: '#/components/schemas/AwsTransitGatewayAttachmentConfig'
+      required:
+        - name
+        - cidr_blocks
+        - transit_gateway_attachment_config
+      title: AWS Transit Gateway
+      x-speakeasy-name-override: AWSTransitGateway
     CreateAwsVpcPeeringGateway:
-      x-flatten-allOf: true
-      allOf:
-        - $ref: '#/components/schemas/AwsVpcPeeringGateway'
-        - required:
-            - name
-        - x-speakeasy-name-override: AWSVpcPeeringGateway
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/TransitGatewayName'
+        dns_config:
+          $ref: '#/components/schemas/TransitGatewayDnsConfig'
+        cidr_blocks:
+          $ref: '#/components/schemas/TransitGatewayCIDRBlocks'
+        transit_gateway_attachment_config:
+          $ref: '#/components/schemas/AwsVpcPeeringGatewayAttachmentConfig'
+      required:
+        - name
+        - cidr_blocks
+        - transit_gateway_attachment_config
+      title: AWS VPC Peering Gateway
+      x-speakeasy-name-override: AWSVpcPeeringGateway
     CreateAzureTransitGateway:
-      x-flatten-allOf: true
-      allOf:
-        - $ref: '#/components/schemas/AzureTransitGateway'
-        - required:
-            - name
-        - x-speakeasy-name-override: AzureTransitGateway
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/TransitGatewayName'
+        dns_config:
+          $ref: '#/components/schemas/TransitGatewayDnsConfig'
+        transit_gateway_attachment_config:
+          $ref: '#/components/schemas/AzureVNETPeeringAttachmentConfig'
+      required:
+        - name
+        - transit_gateway_attachment_config
+      title: Azure Transit Gateway
+      x-speakeasy-name-override: AzureTransitGateway
     CreateTransitGatewayRequest:
       title: CreateTransitGatewayRequest
       description: Request schema for creating a transit gateway.
@@ -12362,11 +12759,16 @@ components:
       required:
         - oeq
     IDFieldFilter:
-      title: IDFieldFilter
-      oneOf:
-        - $ref: '#/components/schemas/StringFieldEqualsFilter'
-        - $ref: '#/components/schemas/StringFieldNEQFilter'
-        - $ref: '#/components/schemas/StringFieldOEQFilter'
+      description: Filters on the given comma separated string by one or more exact match.
+      type: object
+      properties:
+        eq:
+          type: string
+        neq:
+          type: string
+        oeq:
+          type: string
+      additionalProperties: false
     ControlPlaneGeoFieldFilter:
       title: ControlPlaneGeoFieldFilter
       oneOf:
@@ -12567,6 +12969,8 @@ components:
         - US
         - EU
         - AU
+        - ME
+        - IN
         - '*'
     NotificationChannel:
       type: object
@@ -12589,6 +12993,13 @@ components:
       enum:
         - plan-and-usage
         - organization
+        - dev-portal
+    EntityTypes:
+      type: string
+      enum:
+        - billing-invoice
+        - access-token
+        - webhook
         - dev-portal
     UserConfiguration:
       description: Properties of an event.
@@ -12626,22 +13037,46 @@ components:
         enabled:
           type: boolean
     EventSubscriptionResponse:
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        entity_type:
+          $ref: '#/components/schemas/EntityTypes'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+        regions:
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationRegion'
+        entities:
+          type: array
+          items:
+            type: string
+            description: ID of the entity. Use '*' to represent all entities of this type.
+        channels:
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationChannel'
+        enabled:
+          type: boolean
+          description: Enable/Disable complete subscription within an event.
+        name:
+          type: string
+          description: User provided name of the subscription.
+      description: Properties associated with an event subscription.
+      required:
+        - id
+        - entity_type
+        - created_at
+        - updated_at
+        - regions
+        - entities
+        - channels
+        - enabled
+        - name
       type: object
-      x-flatten-allOf: true
-      allOf:
-        - properties:
-            id:
-              $ref: '#/components/schemas/UUID'
-            created_at:
-              $ref: '#/components/schemas/CreatedAt'
-            updated_at:
-              $ref: '#/components/schemas/UpdatedAt'
-          description: Subscription response associated with a notification event.
-          required:
-            - id
-            - created_at
-            - updated_at
-        - $ref: '#/components/schemas/EventSubscription'
     EventSubscription:
       description: Properties associated with an event subscription.
       type: object
@@ -12650,6 +13085,7 @@ components:
         - entities
         - channels
         - enabled
+        - name
       properties:
         regions:
           type: array
@@ -12667,6 +13103,9 @@ components:
         enabled:
           type: boolean
           description: Enable/Disable complete subscription within an event.
+        name:
+          type: string
+          description: User provided name of the subscription.
     BulkPayload:
       description: Request body schema for bulk status update.
       type: object
@@ -13188,6 +13627,93 @@ components:
         - name
         - schema
         - handler
+    Degraphql_route:
+      type: object
+      properties:
+        created_at:
+          description: Unix epoch when the resource was created.
+          type: integer
+          nullable: true
+        id:
+          type: string
+          nullable: true
+        methods:
+          type: array
+          items:
+            type: string
+          default:
+            - GET
+          nullable: true
+        query:
+          type: string
+        service:
+          type: object
+          properties:
+            id:
+              type: string
+          x-foreign: true
+          x-speakeasy-param-computed: false
+          nullable: true
+          default: null
+        updated_at:
+          description: Unix epoch when the resource was last updated.
+          type: integer
+          nullable: true
+        uri:
+          type: string
+      example:
+        id: 56c4566c-14cc-4132-9011-4139fcbbe50a
+        query: query{ user { email } }
+        service:
+          id: bd380f99-659d-415e-b0e7-72ea05df3218
+        uri: /users
+      additionalProperties: false
+      required:
+        - service
+        - uri
+        - query
+    Degraphql_routeWithoutParents:
+      type: object
+      properties:
+        created_at:
+          description: Unix epoch when the resource was created.
+          type: integer
+          nullable: true
+        id:
+          type: string
+          nullable: true
+        methods:
+          type: array
+          items:
+            type: string
+          default:
+            - GET
+          nullable: true
+        query:
+          type: string
+        service:
+          type: object
+          properties:
+            id:
+              type: string
+          x-foreign: true
+          x-speakeasy-param-computed: false
+          nullable: true
+          default: null
+        updated_at:
+          description: Unix epoch when the resource was last updated.
+          type: integer
+          nullable: true
+        uri:
+          type: string
+      example:
+        id: 56c4566c-14cc-4132-9011-4139fcbbe50a
+        query: query{ user { email } }
+        uri: /users
+      additionalProperties: false
+      required:
+        - uri
+        - query
     GatewayUnauthorizedError:
       type: object
       properties:
@@ -13478,6 +14004,10 @@ components:
           type: array
           items:
             type: string
+        ttl:
+          description: key-auth ttl in seconds
+          type: integer
+          nullable: true
       example:
         consumer:
           id: 84a73fb8-50fc-44a7-a4d5-aa17728ee83f
@@ -13511,6 +14041,10 @@ components:
           type: array
           items:
             type: string
+        ttl:
+          description: key-auth ttl in seconds
+          type: integer
+          nullable: true
       example:
         id: b2f34145-0343-41a4-9602-4c69dec2f269
         key: IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo
@@ -13709,6 +14243,51 @@ components:
         Offset is used to paginate through the API. Provide this value to the
         next list operation to fetch the next page
       type: string
+    Partial:
+      type: object
+      properties:
+        config:
+          type: object
+          additionalProperties: true
+        created_at:
+          description: Unix epoch when the resource was created.
+          type: integer
+          nullable: true
+        id:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        tags:
+          type: array
+          items:
+            type: string
+        type:
+          type: string
+        updated_at:
+          description: Unix epoch when the resource was last updated.
+          type: integer
+          nullable: true
+      additionalProperties: false
+      required:
+        - type
+        - config
+    PartialLink:
+      type: object
+      properties:
+        id:
+          description: The plugin's unique identifier
+          type: string
+        instance_name:
+          description: The instance name of the plugin
+          type: string
+        name:
+          description: The plugin's name
+          type: string
+      required:
+        - id
+        - name
     Plugin:
       description: >-
         A Plugin entity represents a plugin configuration that will be executed
@@ -13824,6 +14403,11 @@ components:
               - ws
               - wss
             type: string
+          default:
+            - grpc
+            - grpcs
+            - http
+            - https
           nullable: true
         route:
           description: >-
@@ -14005,6 +14589,11 @@ components:
               - ws
               - wss
             type: string
+          default:
+            - grpc
+            - grpcs
+            - http
+            - https
           nullable: true
         route:
           description: >-
@@ -14166,6 +14755,9 @@ components:
               - ws
               - wss
             type: string
+          default:
+            - http
+            - https
           nullable: true
         request_buffering:
           description: >-
@@ -14340,6 +14932,9 @@ components:
               - ws
               - wss
             type: string
+          default:
+            - http
+            - https
           nullable: true
         regex_priority:
           description: >-
@@ -15477,10 +16072,16 @@ components:
                   - Portals
                   - Service Hub
               entity_region:
-                x-flatten-allOf: true
-                allOf:
-                  - $ref: '#/components/schemas/EntityRegion'
-                  - description: Region of the team.
+                type: string
+                enum:
+                  - us
+                  - eu
+                  - au
+                  - me
+                  - in
+                  - '*'
+                example: eu
+                description: Region of the team.
       description: The request schema for assigning a role.
     InviteUser:
       content:
