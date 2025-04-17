@@ -275,9 +275,9 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "0.2.27",
+			SDKVersion:        "0.2.28",
 			GenVersion:        "2.568.5",
-			UserAgent:         "speakeasy-sdk/go 0.2.27 2.568.5 0.0.1 github.com/Kong/sdk-konnect-go",
+			UserAgent:         "speakeasy-sdk/go 0.2.28 2.568.5 0.0.1 github.com/Kong/sdk-konnect-go",
 			Hooks:             hooks.New(),
 		},
 	}

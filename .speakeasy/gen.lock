@@ -5,8 +5,8 @@ management:
   docVersion: 0.0.1
   speakeasyVersion: 1.531.1
   generationVersion: 2.568.5
-  releaseVersion: 0.2.27
-  configChecksum: 81d8928bf6bd0ef6b6378c5310025bfd
+  releaseVersion: 0.2.28
+  configChecksum: a866aa4be344c03abd45c11f2e6c5070
 features:
   go:
     additionalDependencies: 0.1.0
@@ -219,7 +219,7 @@ generatedFiles:
   - /models/components/samlidentityproviderconfig.go
   - /models/components/samlidentityproviderconfiginput.go
   - /models/components/security.go
-  - /models/components/service.go
+  - /models/components/serviceoutput.go
   - /models/components/sni.go
   - /models/components/sniwithoutparents.go
   - /models/components/stringfieldcontainsfilter.go
@@ -5426,6 +5426,7 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 753857}
+        "200": {}
   create-partial:
     speakeasy-default-create-partial:
       parameters:
