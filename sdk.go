@@ -118,12 +118,15 @@ type SDK struct {
 	APIKeys             *APIKeys
 	MTLSAuthCredentials *MTLSAuthCredentials
 	CustomPlugins       *CustomPlugins
+	DegraphqlRoutes     *DegraphqlRoutes
 	// A JSON Web key set. Key sets are the preferred way to expose keys to plugins because they tell the plugin where to look for keys or have a scoping mechanism to restrict plugins to specific keys.
 	//
 	KeySets *KeySets
 	// A key object holds a representation of asymmetric keys in various formats. When Kong Gateway or a Kong plugin requires a specific public or private key to perform certain operations, it can use this entity.
 	//
-	Keys *Keys
+	Keys         *Keys
+	Partials     *Partials
+	PartialLinks *PartialLinks
 	// Custom Plugin Schemas
 	CustomPluginSchemas *CustomPluginSchemas
 	// Route entities define rules to match client requests. Each route is associated with a service, and a service may have multiple routes associated to it. Every request matching a given route will be proxied to the associated service. You need at least one matching rule that applies to the protocol being matched by the route.
@@ -272,9 +275,9 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "0.2.26",
+			SDKVersion:        "0.2.27",
 			GenVersion:        "2.568.5",
-			UserAgent:         "speakeasy-sdk/go 0.2.26 2.568.5 0.0.1 github.com/Kong/sdk-konnect-go",
+			UserAgent:         "speakeasy-sdk/go 0.2.27 2.568.5 0.0.1 github.com/Kong/sdk-konnect-go",
 			Hooks:             hooks.New(),
 		},
 	}
@@ -330,9 +333,15 @@ func New(opts ...SDKOption) *SDK {
 
 	sdk.CustomPlugins = newCustomPlugins(sdk.sdkConfiguration)
 
+	sdk.DegraphqlRoutes = newDegraphqlRoutes(sdk.sdkConfiguration)
+
 	sdk.KeySets = newKeySets(sdk.sdkConfiguration)
 
 	sdk.Keys = newKeys(sdk.sdkConfiguration)
+
+	sdk.Partials = newPartials(sdk.sdkConfiguration)
+
+	sdk.PartialLinks = newPartialLinks(sdk.sdkConfiguration)
 
 	sdk.CustomPluginSchemas = newCustomPluginSchemas(sdk.sdkConfiguration)
 

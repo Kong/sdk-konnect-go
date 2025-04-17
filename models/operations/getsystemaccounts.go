@@ -13,9 +13,9 @@ var GetSystemAccountsServerList = []string{
 
 // QueryParamFilter - Filter system accounts returned in the response.
 type QueryParamFilter struct {
-	// Filter a string value field either by exact match or partial contains.
+	// Filter a string value field by partial contains.
 	Name *components.StringFieldFilter `queryParam:"name=name"`
-	// Filter a string value field either by exact match or partial contains.
+	// Filter a string value field by partial contains.
 	Description *components.StringFieldFilter `queryParam:"name=description"`
 	// Filter by a boolean value (true/false).
 	KonnectManaged *bool `queryParam:"name=konnect_managed"`

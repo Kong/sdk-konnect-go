@@ -2,72 +2,22 @@
 
 package components
 
-import (
-	"errors"
-	"fmt"
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
-type StringFieldFilterType string
-
-const (
-	StringFieldFilterTypeStringFieldEqualsFilter   StringFieldFilterType = "StringFieldEqualsFilter"
-	StringFieldFilterTypeStringFieldContainsFilter StringFieldFilterType = "StringFieldContainsFilter"
-)
-
-// StringFieldFilter - Filter a string value field either by exact match or partial contains.
+// StringFieldFilter - Filter a string value field by partial contains.
 type StringFieldFilter struct {
-	StringFieldEqualsFilter   *StringFieldEqualsFilter   `queryParam:"inline"`
-	StringFieldContainsFilter *StringFieldContainsFilter `queryParam:"inline"`
-
-	Type StringFieldFilterType
+	Eq       *string `queryParam:"name=eq"`
+	Contains *string `queryParam:"name=contains"`
 }
 
-func CreateStringFieldFilterStringFieldEqualsFilter(stringFieldEqualsFilter StringFieldEqualsFilter) StringFieldFilter {
-	typ := StringFieldFilterTypeStringFieldEqualsFilter
-
-	return StringFieldFilter{
-		StringFieldEqualsFilter: &stringFieldEqualsFilter,
-		Type:                    typ,
-	}
-}
-
-func CreateStringFieldFilterStringFieldContainsFilter(stringFieldContainsFilter StringFieldContainsFilter) StringFieldFilter {
-	typ := StringFieldFilterTypeStringFieldContainsFilter
-
-	return StringFieldFilter{
-		StringFieldContainsFilter: &stringFieldContainsFilter,
-		Type:                      typ,
-	}
-}
-
-func (u *StringFieldFilter) UnmarshalJSON(data []byte) error {
-
-	var stringFieldContainsFilter StringFieldContainsFilter = StringFieldContainsFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldContainsFilter, "", true, true); err == nil {
-		u.StringFieldContainsFilter = &stringFieldContainsFilter
-		u.Type = StringFieldFilterTypeStringFieldContainsFilter
+func (o *StringFieldFilter) GetEq() *string {
+	if o == nil {
 		return nil
 	}
-
-	var stringFieldEqualsFilter StringFieldEqualsFilter = StringFieldEqualsFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldEqualsFilter, "", true, true); err == nil {
-		u.StringFieldEqualsFilter = &stringFieldEqualsFilter
-		u.Type = StringFieldFilterTypeStringFieldEqualsFilter
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for StringFieldFilter", string(data))
+	return o.Eq
 }
 
-func (u StringFieldFilter) MarshalJSON() ([]byte, error) {
-	if u.StringFieldEqualsFilter != nil {
-		return utils.MarshalJSON(u.StringFieldEqualsFilter, "", true)
+func (o *StringFieldFilter) GetContains() *string {
+	if o == nil {
+		return nil
 	}
-
-	if u.StringFieldContainsFilter != nil {
-		return utils.MarshalJSON(u.StringFieldContainsFilter, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type StringFieldFilter: all fields are null")
+	return o.Contains
 }

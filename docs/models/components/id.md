@@ -1,17 +1,11 @@
 # ID
 
+Filters on the given comma separated string by one or more exact match.
 
-## Supported Types
 
-### StringFieldEqualsFilter
+## Fields
 
-```go
-id := components.CreateIDStringFieldEqualsFilter(components.StringFieldEqualsFilter{/* values here */})
-```
-
-### StringFieldOEQFilter
-
-```go
-id := components.CreateIDStringFieldOEQFilter(components.StringFieldOEQFilter{/* values here */})
-```
-
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `Eq`               | **string*          | :heavy_minus_sign: | N/A                |
+| `Oeq`              | **string*          | :heavy_minus_sign: | N/A                |

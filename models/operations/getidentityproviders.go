@@ -14,10 +14,10 @@ var GetIdentityProvidersServerList = []string{
 // Filter identity providers returned in the response.
 type Filter struct {
 	// Filter a string value by exact match.
-	Type *components.StringFieldEqualsFilter `queryParam:"name=type"`
+	Type *string `queryParam:"name=type"`
 }
 
-func (o *Filter) GetType() *components.StringFieldEqualsFilter {
+func (o *Filter) GetType() *string {
 	if o == nil {
 		return nil
 	}

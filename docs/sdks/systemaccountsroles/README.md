@@ -95,7 +95,7 @@ func main() {
         RoleName: components.RoleNameViewer.ToPointer(),
         EntityID: sdkkonnectgo.String("e67490ce-44dc-4cbd-b65e-b52c746fc26a"),
         EntityTypeName: components.EntityTypeNameControlPlanes.ToPointer(),
-        EntityRegion: components.EntityRegionEu.ToPointer(),
+        EntityRegion: components.AssignRoleEntityRegionEu.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)

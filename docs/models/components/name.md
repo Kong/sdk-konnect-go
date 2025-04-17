@@ -1,23 +1,12 @@
 # Name
 
+Filters on the given string field value by exact match inequality.
 
-## Supported Types
 
-### StringFieldEqualsFilter
+## Fields
 
-```go
-name := components.CreateNameStringFieldEqualsFilter(components.StringFieldEqualsFilter{/* values here */})
-```
-
-### StringFieldContainsFilter
-
-```go
-name := components.CreateNameStringFieldContainsFilter(components.StringFieldContainsFilter{/* values here */})
-```
-
-### StringFieldNEQFilter
-
-```go
-name := components.CreateNameStringFieldNEQFilter(components.StringFieldNEQFilter{/* values here */})
-```
-
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `Eq`               | **string*          | :heavy_minus_sign: | N/A                |
+| `Contains`         | **string*          | :heavy_minus_sign: | N/A                |
+| `Neq`              | **string*          | :heavy_minus_sign: | N/A                |

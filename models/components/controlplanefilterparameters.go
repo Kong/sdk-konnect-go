@@ -2,226 +2,80 @@
 
 package components
 
-import (
-	"errors"
-	"fmt"
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
-type IDType string
-
-const (
-	IDTypeStringFieldEqualsFilter IDType = "StringFieldEqualsFilter"
-	IDTypeStringFieldOEQFilter    IDType = "StringFieldOEQFilter"
-)
-
+// ID - Filters on the given comma separated string by one or more exact match.
 type ID struct {
-	StringFieldEqualsFilter *StringFieldEqualsFilter `queryParam:"inline"`
-	StringFieldOEQFilter    *StringFieldOEQFilter    `queryParam:"inline"`
-
-	Type IDType
+	Eq  *string `queryParam:"name=eq"`
+	Oeq *string `queryParam:"name=oeq"`
 }
 
-func CreateIDStringFieldEqualsFilter(stringFieldEqualsFilter StringFieldEqualsFilter) ID {
-	typ := IDTypeStringFieldEqualsFilter
-
-	return ID{
-		StringFieldEqualsFilter: &stringFieldEqualsFilter,
-		Type:                    typ,
-	}
-}
-
-func CreateIDStringFieldOEQFilter(stringFieldOEQFilter StringFieldOEQFilter) ID {
-	typ := IDTypeStringFieldOEQFilter
-
-	return ID{
-		StringFieldOEQFilter: &stringFieldOEQFilter,
-		Type:                 typ,
-	}
-}
-
-func (u *ID) UnmarshalJSON(data []byte) error {
-
-	var stringFieldOEQFilter StringFieldOEQFilter = StringFieldOEQFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldOEQFilter, "", true, true); err == nil {
-		u.StringFieldOEQFilter = &stringFieldOEQFilter
-		u.Type = IDTypeStringFieldOEQFilter
+func (o *ID) GetEq() *string {
+	if o == nil {
 		return nil
 	}
+	return o.Eq
+}
 
-	var stringFieldEqualsFilter StringFieldEqualsFilter = StringFieldEqualsFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldEqualsFilter, "", true, true); err == nil {
-		u.StringFieldEqualsFilter = &stringFieldEqualsFilter
-		u.Type = IDTypeStringFieldEqualsFilter
+func (o *ID) GetOeq() *string {
+	if o == nil {
 		return nil
 	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ID", string(data))
+	return o.Oeq
 }
 
-func (u ID) MarshalJSON() ([]byte, error) {
-	if u.StringFieldEqualsFilter != nil {
-		return utils.MarshalJSON(u.StringFieldEqualsFilter, "", true)
-	}
-
-	if u.StringFieldOEQFilter != nil {
-		return utils.MarshalJSON(u.StringFieldOEQFilter, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type ID: all fields are null")
-}
-
-type NameType string
-
-const (
-	NameTypeStringFieldEqualsFilter   NameType = "StringFieldEqualsFilter"
-	NameTypeStringFieldContainsFilter NameType = "StringFieldContainsFilter"
-	NameTypeStringFieldNEQFilter      NameType = "StringFieldNEQFilter"
-)
-
+// Name - Filters on the given string field value by exact match inequality.
 type Name struct {
-	StringFieldEqualsFilter   *StringFieldEqualsFilter   `queryParam:"inline"`
-	StringFieldContainsFilter *StringFieldContainsFilter `queryParam:"inline"`
-	StringFieldNEQFilter      *StringFieldNEQFilter      `queryParam:"inline"`
-
-	Type NameType
+	Eq       *string `queryParam:"name=eq"`
+	Contains *string `queryParam:"name=contains"`
+	Neq      *string `queryParam:"name=neq"`
 }
 
-func CreateNameStringFieldEqualsFilter(stringFieldEqualsFilter StringFieldEqualsFilter) Name {
-	typ := NameTypeStringFieldEqualsFilter
-
-	return Name{
-		StringFieldEqualsFilter: &stringFieldEqualsFilter,
-		Type:                    typ,
-	}
-}
-
-func CreateNameStringFieldContainsFilter(stringFieldContainsFilter StringFieldContainsFilter) Name {
-	typ := NameTypeStringFieldContainsFilter
-
-	return Name{
-		StringFieldContainsFilter: &stringFieldContainsFilter,
-		Type:                      typ,
-	}
-}
-
-func CreateNameStringFieldNEQFilter(stringFieldNEQFilter StringFieldNEQFilter) Name {
-	typ := NameTypeStringFieldNEQFilter
-
-	return Name{
-		StringFieldNEQFilter: &stringFieldNEQFilter,
-		Type:                 typ,
-	}
-}
-
-func (u *Name) UnmarshalJSON(data []byte) error {
-
-	var stringFieldContainsFilter StringFieldContainsFilter = StringFieldContainsFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldContainsFilter, "", true, true); err == nil {
-		u.StringFieldContainsFilter = &stringFieldContainsFilter
-		u.Type = NameTypeStringFieldContainsFilter
+func (o *Name) GetEq() *string {
+	if o == nil {
 		return nil
 	}
-
-	var stringFieldNEQFilter StringFieldNEQFilter = StringFieldNEQFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldNEQFilter, "", true, true); err == nil {
-		u.StringFieldNEQFilter = &stringFieldNEQFilter
-		u.Type = NameTypeStringFieldNEQFilter
-		return nil
-	}
-
-	var stringFieldEqualsFilter StringFieldEqualsFilter = StringFieldEqualsFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldEqualsFilter, "", true, true); err == nil {
-		u.StringFieldEqualsFilter = &stringFieldEqualsFilter
-		u.Type = NameTypeStringFieldEqualsFilter
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Name", string(data))
+	return o.Eq
 }
 
-func (u Name) MarshalJSON() ([]byte, error) {
-	if u.StringFieldEqualsFilter != nil {
-		return utils.MarshalJSON(u.StringFieldEqualsFilter, "", true)
+func (o *Name) GetContains() *string {
+	if o == nil {
+		return nil
 	}
-
-	if u.StringFieldContainsFilter != nil {
-		return utils.MarshalJSON(u.StringFieldContainsFilter, "", true)
-	}
-
-	if u.StringFieldNEQFilter != nil {
-		return utils.MarshalJSON(u.StringFieldNEQFilter, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type Name: all fields are null")
+	return o.Contains
 }
 
-type ClusterTypeType string
+func (o *Name) GetNeq() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Neq
+}
 
-const (
-	ClusterTypeTypeStringFieldEqualsFilter ClusterTypeType = "StringFieldEqualsFilter"
-	ClusterTypeTypeStringFieldNEQFilter    ClusterTypeType = "StringFieldNEQFilter"
-)
-
+// ClusterType - Filters on the given string field value by exact match inequality.
 type ClusterType struct {
-	StringFieldEqualsFilter *StringFieldEqualsFilter `queryParam:"inline"`
-	StringFieldNEQFilter    *StringFieldNEQFilter    `queryParam:"inline"`
-
-	Type ClusterTypeType
+	Eq  *string `queryParam:"name=eq"`
+	Neq *string `queryParam:"name=neq"`
 }
 
-func CreateClusterTypeStringFieldEqualsFilter(stringFieldEqualsFilter StringFieldEqualsFilter) ClusterType {
-	typ := ClusterTypeTypeStringFieldEqualsFilter
-
-	return ClusterType{
-		StringFieldEqualsFilter: &stringFieldEqualsFilter,
-		Type:                    typ,
-	}
-}
-
-func CreateClusterTypeStringFieldNEQFilter(stringFieldNEQFilter StringFieldNEQFilter) ClusterType {
-	typ := ClusterTypeTypeStringFieldNEQFilter
-
-	return ClusterType{
-		StringFieldNEQFilter: &stringFieldNEQFilter,
-		Type:                 typ,
-	}
-}
-
-func (u *ClusterType) UnmarshalJSON(data []byte) error {
-
-	var stringFieldNEQFilter StringFieldNEQFilter = StringFieldNEQFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldNEQFilter, "", true, true); err == nil {
-		u.StringFieldNEQFilter = &stringFieldNEQFilter
-		u.Type = ClusterTypeTypeStringFieldNEQFilter
+func (o *ClusterType) GetEq() *string {
+	if o == nil {
 		return nil
 	}
-
-	var stringFieldEqualsFilter StringFieldEqualsFilter = StringFieldEqualsFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldEqualsFilter, "", true, true); err == nil {
-		u.StringFieldEqualsFilter = &stringFieldEqualsFilter
-		u.Type = ClusterTypeTypeStringFieldEqualsFilter
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ClusterType", string(data))
+	return o.Eq
 }
 
-func (u ClusterType) MarshalJSON() ([]byte, error) {
-	if u.StringFieldEqualsFilter != nil {
-		return utils.MarshalJSON(u.StringFieldEqualsFilter, "", true)
+func (o *ClusterType) GetNeq() *string {
+	if o == nil {
+		return nil
 	}
-
-	if u.StringFieldNEQFilter != nil {
-		return utils.MarshalJSON(u.StringFieldNEQFilter, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type ClusterType: all fields are null")
+	return o.Neq
 }
 
 type ControlPlaneFilterParameters struct {
-	ID          *ID          `queryParam:"name=id"`
-	Name        *Name        `queryParam:"name=name"`
+	// Filters on the given comma separated string by one or more exact match.
+	ID *ID `queryParam:"name=id"`
+	// Filters on the given string field value by exact match inequality.
+	Name *Name `queryParam:"name=name"`
+	// Filters on the given string field value by exact match inequality.
 	ClusterType *ClusterType `queryParam:"name=cluster_type"`
 	// Filter by a boolean value (true/false).
 	CloudGateway *bool `queryParam:"name=cloud_gateway"`

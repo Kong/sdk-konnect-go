@@ -14,6 +14,8 @@ const (
 	NotificationRegionUs       NotificationRegion = "US"
 	NotificationRegionEu       NotificationRegion = "EU"
 	NotificationRegionAu       NotificationRegion = "AU"
+	NotificationRegionMe       NotificationRegion = "ME"
+	NotificationRegionIn       NotificationRegion = "IN"
 	NotificationRegionWildcard NotificationRegion = "*"
 )
 
@@ -31,6 +33,10 @@ func (e *NotificationRegion) UnmarshalJSON(data []byte) error {
 	case "EU":
 		fallthrough
 	case "AU":
+		fallthrough
+	case "ME":
+		fallthrough
+	case "IN":
 		fallthrough
 	case "*":
 		*e = NotificationRegion(v)

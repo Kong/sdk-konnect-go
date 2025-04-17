@@ -1,17 +1,11 @@
 # ClusterType
 
+Filters on the given string field value by exact match inequality.
 
-## Supported Types
 
-### StringFieldEqualsFilter
+## Fields
 
-```go
-clusterType := components.CreateClusterTypeStringFieldEqualsFilter(components.StringFieldEqualsFilter{/* values here */})
-```
-
-### StringFieldNEQFilter
-
-```go
-clusterType := components.CreateClusterTypeStringFieldNEQFilter(components.StringFieldNEQFilter{/* values here */})
-```
-
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `Eq`               | **string*          | :heavy_minus_sign: | N/A                |
+| `Neq`              | **string*          | :heavy_minus_sign: | N/A                |

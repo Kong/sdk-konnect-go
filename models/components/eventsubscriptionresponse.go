@@ -10,7 +10,8 @@ import (
 // EventSubscriptionResponse - Properties associated with an event subscription.
 type EventSubscriptionResponse struct {
 	// Contains a unique identifier used by the API for this resource.
-	ID string `json:"id"`
+	ID         string      `json:"id"`
+	EntityType EntityTypes `json:"entity_type"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
@@ -20,6 +21,8 @@ type EventSubscriptionResponse struct {
 	Channels  []NotificationChannel `json:"channels"`
 	// Enable/Disable complete subscription within an event.
 	Enabled bool `json:"enabled"`
+	// User provided name of the subscription.
+	Name string `json:"name"`
 }
 
 func (e EventSubscriptionResponse) MarshalJSON() ([]byte, error) {
@@ -38,6 +41,13 @@ func (o *EventSubscriptionResponse) GetID() string {
 		return ""
 	}
 	return o.ID
+}
+
+func (o *EventSubscriptionResponse) GetEntityType() EntityTypes {
+	if o == nil {
+		return EntityTypes("")
+	}
+	return o.EntityType
 }
 
 func (o *EventSubscriptionResponse) GetCreatedAt() time.Time {
@@ -80,4 +90,11 @@ func (o *EventSubscriptionResponse) GetEnabled() bool {
 		return false
 	}
 	return o.Enabled
+}
+
+func (o *EventSubscriptionResponse) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
 }

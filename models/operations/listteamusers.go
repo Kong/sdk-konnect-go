@@ -14,16 +14,16 @@ var ListTeamUsersServerList = []string{
 // ListTeamUsersQueryParamFilter - Filter users returned in the response.
 type ListTeamUsersQueryParamFilter struct {
 	// Filter a string value by exact match.
-	ID *components.StringFieldEqualsFilter `queryParam:"name=id"`
-	// Filter a string value field either by exact match or partial contains.
+	ID *string `queryParam:"name=id"`
+	// Filter a string value field by partial contains.
 	Email *components.StringFieldFilter `queryParam:"name=email"`
-	// Filter a string value field either by exact match or partial contains.
+	// Filter a string value field by partial contains.
 	FullName *components.StringFieldFilter `queryParam:"name=full_name"`
 	// Filter by a boolean value (true/false).
 	Active *bool `queryParam:"name=active"`
 }
 
-func (o *ListTeamUsersQueryParamFilter) GetID() *components.StringFieldEqualsFilter {
+func (o *ListTeamUsersQueryParamFilter) GetID() *string {
 	if o == nil {
 		return nil
 	}
