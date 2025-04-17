@@ -1,19 +1,11 @@
 # StringFieldFilter
 
-Filter a string value field either by exact match or partial contains.
+Filter a string value field by partial contains.
 
 
-## Supported Types
+## Fields
 
-### StringFieldEqualsFilter
-
-```go
-stringFieldFilter := components.CreateStringFieldFilterStringFieldEqualsFilter(components.StringFieldEqualsFilter{/* values here */})
-```
-
-### StringFieldContainsFilter
-
-```go
-stringFieldFilter := components.CreateStringFieldFilterStringFieldContainsFilter(components.StringFieldContainsFilter{/* values here */})
-```
-
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `Eq`               | **string*          | :heavy_minus_sign: | N/A                |
+| `Contains`         | **string*          | :heavy_minus_sign: | N/A                |

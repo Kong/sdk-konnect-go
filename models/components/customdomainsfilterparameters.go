@@ -3,6 +3,7 @@
 package components
 
 type CustomDomainsFilterParameters struct {
+	// Filters on the given comma separated string by one or more exact match.
 	ControlPlaneID  *IDFieldFilter                          `queryParam:"name=control_plane_id"`
 	ControlPlaneGeo *ControlPlaneGeoFieldFilter             `queryParam:"name=control_plane_geo"`
 	Domain          *CloudGatewaysStringFieldFilterOverride `queryParam:"name=domain"`

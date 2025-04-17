@@ -82,6 +82,13 @@ func (u *CloudGatewaysStringFieldFilterOverride) UnmarshalJSON(data []byte) erro
 		return nil
 	}
 
+	var stringFieldNEQFilter StringFieldNEQFilter = StringFieldNEQFilter{}
+	if err := utils.UnmarshalJSON(data, &stringFieldNEQFilter, "", true, true); err == nil {
+		u.StringFieldNEQFilter = &stringFieldNEQFilter
+		u.Type = CloudGatewaysStringFieldFilterOverrideTypeStringFieldNEQFilter
+		return nil
+	}
+
 	var stringFieldOEQFilter StringFieldOEQFilter = StringFieldOEQFilter{}
 	if err := utils.UnmarshalJSON(data, &stringFieldOEQFilter, "", true, true); err == nil {
 		u.StringFieldOEQFilter = &stringFieldOEQFilter
@@ -93,13 +100,6 @@ func (u *CloudGatewaysStringFieldFilterOverride) UnmarshalJSON(data []byte) erro
 	if err := utils.UnmarshalJSON(data, &stringFieldOContainsFilter, "", true, true); err == nil {
 		u.StringFieldOContainsFilter = &stringFieldOContainsFilter
 		u.Type = CloudGatewaysStringFieldFilterOverrideTypeStringFieldOContainsFilter
-		return nil
-	}
-
-	var stringFieldNEQFilter StringFieldNEQFilter = StringFieldNEQFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldNEQFilter, "", true, true); err == nil {
-		u.StringFieldNEQFilter = &stringFieldNEQFilter
-		u.Type = CloudGatewaysStringFieldFilterOverrideTypeStringFieldNEQFilter
 		return nil
 	}
 

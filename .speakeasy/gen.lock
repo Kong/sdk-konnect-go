@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 727ec0dd2227c3dc7e747229df9f63b2
+  docChecksum: c57b63b466d209142ef0ae950b89ea05
   docVersion: 0.0.1
   speakeasyVersion: 1.531.1
   generationVersion: 2.568.5
-  releaseVersion: 0.2.26
-  configChecksum: c63eaef988cabced6a5051d3e5b5f8d3
+  releaseVersion: 0.2.28
+  configChecksum: a866aa4be344c03abd45c11f2e6c5070
 features:
   go:
     additionalDependencies: 0.1.0
@@ -41,10 +41,13 @@ generatedFiles:
   - /models/components/assignrole.go
   - /models/components/authenticationsettings.go
   - /models/components/availabilitydocument.go
+  - /models/components/awstransitgateway.go
   - /models/components/awstransitgatewayattachmentconfig.go
   - /models/components/awstransitgatewayresponse.go
+  - /models/components/awsvpcpeeringgateway.go
   - /models/components/awsvpcpeeringgatewayattachmentconfig.go
   - /models/components/awsvpcpeeringgatewayresponse.go
+  - /models/components/azuretransitgateway.go
   - /models/components/azuretransitgatewayresponse.go
   - /models/components/azurevnetpeeringattachmentconfig.go
   - /models/components/basicauth.go
@@ -109,7 +112,9 @@ generatedFiles:
   - /models/components/defaultresourceconfiguration.go
   - /models/components/defaultresourcequota.go
   - /models/components/defaultsubscription.go
-  - /models/components/entityregion.go
+  - /models/components/degraphqlroute.go
+  - /models/components/degraphqlroutewithoutparents.go
+  - /models/components/entitytypes.go
   - /models/components/eventsubscription.go
   - /models/components/eventsubscriptionlistresponse.go
   - /models/components/eventsubscriptionresponse.go
@@ -189,6 +194,8 @@ generatedFiles:
   - /models/components/oidcidentityproviderconfig.go
   - /models/components/pagemeta.go
   - /models/components/paginatedmeta.go
+  - /models/components/partial.go
+  - /models/components/partiallink.go
   - /models/components/patchnetworkrequest.go
   - /models/components/patchteamgroupmappings.go
   - /models/components/plugin.go
@@ -212,11 +219,10 @@ generatedFiles:
   - /models/components/samlidentityproviderconfig.go
   - /models/components/samlidentityproviderconfiginput.go
   - /models/components/security.go
-  - /models/components/service.go
+  - /models/components/serviceoutput.go
   - /models/components/sni.go
   - /models/components/sniwithoutparents.go
   - /models/components/stringfieldcontainsfilter.go
-  - /models/components/stringfieldequalsfilter.go
   - /models/components/stringfieldfilter.go
   - /models/components/stringfieldneqfilter.go
   - /models/components/stringfieldocontainsfilter.go
@@ -280,6 +286,7 @@ generatedFiles:
   - /models/operations/createcustomdomains.go
   - /models/operations/createcustomplugin.go
   - /models/operations/createdataplanecertificate.go
+  - /models/operations/createdegraphqlroutewithservice.go
   - /models/operations/createeventsubscription.go
   - /models/operations/createhmacauthwithconsumer.go
   - /models/operations/createidentityprovider.go
@@ -290,6 +297,7 @@ generatedFiles:
   - /models/operations/createkeywithkeyset.go
   - /models/operations/createmtlsauthwithconsumer.go
   - /models/operations/createnetwork.go
+  - /models/operations/createpartial.go
   - /models/operations/createplugin.go
   - /models/operations/createpluginschemas.go
   - /models/operations/createpluginwithconsumer.go
@@ -318,6 +326,7 @@ generatedFiles:
   - /models/operations/deletecustomdomain.go
   - /models/operations/deletecustomplugin.go
   - /models/operations/deletedataplanecertificate.go
+  - /models/operations/deletedegraphqlroutewithservice.go
   - /models/operations/deleteeventsubscription.go
   - /models/operations/deletehmacauthwithconsumer.go
   - /models/operations/deleteidentityprovider.go
@@ -330,6 +339,7 @@ generatedFiles:
   - /models/operations/deletenetwork.go
   - /models/operations/deletenodesnodeid.go
   - /models/operations/deletenotification.go
+  - /models/operations/deletepartial.go
   - /models/operations/deleteplugin.go
   - /models/operations/deletepluginschemas.go
   - /models/operations/deletepluginwithconsumer.go
@@ -373,6 +383,8 @@ generatedFiles:
   - /models/operations/getcustomdomainonlinestatus.go
   - /models/operations/getcustomplugin.go
   - /models/operations/getdataplanecertificate.go
+  - /models/operations/getdegraphqlroute.go
+  - /models/operations/getdegraphqlroutewithservice.go
   - /models/operations/geteventsubscription.go
   - /models/operations/getexpectedconfighash.go
   - /models/operations/gethmacauth.go
@@ -396,6 +408,7 @@ generatedFiles:
   - /models/operations/getnodesnodeid.go
   - /models/operations/getnotificationdetails.go
   - /models/operations/getorganizationsme.go
+  - /models/operations/getpartial.go
   - /models/operations/getplugin.go
   - /models/operations/getpluginschema.go
   - /models/operations/getpluginwithconsumer.go
@@ -446,6 +459,8 @@ generatedFiles:
   - /models/operations/listdataplanenodes.go
   - /models/operations/listdefaultresourceconfigurations.go
   - /models/operations/listdefaultresourcequotas.go
+  - /models/operations/listdegraphqlroute.go
+  - /models/operations/listdegraphqlroutewithservice.go
   - /models/operations/listdpclientcertificates.go
   - /models/operations/listeventsubscriptions.go
   - /models/operations/listhmacauth.go
@@ -462,6 +477,8 @@ generatedFiles:
   - /models/operations/listnetworkconfigurations.go
   - /models/operations/listnetworks.go
   - /models/operations/listnotifications.go
+  - /models/operations/listpartial.go
+  - /models/operations/listpartiallink.go
   - /models/operations/listplugin.go
   - /models/operations/listpluginschemas.go
   - /models/operations/listpluginwithconsumer.go
@@ -525,6 +542,7 @@ generatedFiles:
   - /models/operations/upsertconsumer.go
   - /models/operations/upsertconsumergroup.go
   - /models/operations/upsertcustomplugin.go
+  - /models/operations/upsertdegraphqlroutewithservice.go
   - /models/operations/upserthmacauthwithconsumer.go
   - /models/operations/upsertjwtwithconsumer.go
   - /models/operations/upsertkey.go
@@ -532,6 +550,7 @@ generatedFiles:
   - /models/operations/upsertkeyset.go
   - /models/operations/upsertkeywithkeyset.go
   - /models/operations/upsertmtlsauthwithconsumer.go
+  - /models/operations/upsertpartial.go
   - /models/operations/upsertplugin.go
   - /models/operations/upsertpluginwithconsumer.go
   - /models/operations/upsertpluginwithconsumergroup.go
@@ -576,6 +595,7 @@ generatedFiles:
   - controlplanes.go
   - customplugins.go
   - custompluginschemas.go
+  - degraphqlroutes.go
   - docs/models/components/acl.md
   - docs/models/components/aclconsumer.md
   - docs/models/components/aclwithoutparents.md
@@ -592,6 +612,7 @@ generatedFiles:
   - docs/models/components/assignedrole.md
   - docs/models/components/assignedrolecollection.md
   - docs/models/components/assignrole.md
+  - docs/models/components/assignroleentityregion.md
   - docs/models/components/auditlogs.md
   - docs/models/components/authenticationsettings.md
   - docs/models/components/authtype.md
@@ -692,12 +713,17 @@ generatedFiles:
   - docs/models/components/defaultresourceconfiguration.md
   - docs/models/components/defaultresourcequota.md
   - docs/models/components/defaultsubscription.md
+  - docs/models/components/degraphqlroute.md
+  - docs/models/components/degraphqlrouteservice.md
+  - docs/models/components/degraphqlroutewithoutparents.md
+  - docs/models/components/degraphqlroutewithoutparentsservice.md
   - docs/models/components/deployer.md
   - docs/models/components/description.md
   - docs/models/components/destinations.md
   - docs/models/components/details.md
   - docs/models/components/entityregion.md
   - docs/models/components/entitytypename.md
+  - docs/models/components/entitytypes.md
   - docs/models/components/eventsubscription.md
   - docs/models/components/eventsubscriptionlistresponse.md
   - docs/models/components/eventsubscriptionresponse.md
@@ -819,11 +845,12 @@ generatedFiles:
   - docs/models/components/notificationupdatepayload.md
   - docs/models/components/oidcidentityproviderclaimmappings.md
   - docs/models/components/oidcidentityproviderconfig.md
-  - docs/models/components/one.md
   - docs/models/components/ordering.md
   - docs/models/components/page.md
   - docs/models/components/pagemeta.md
   - docs/models/components/paginatedmeta.md
+  - docs/models/components/partial.md
+  - docs/models/components/partiallink.md
   - docs/models/components/partials.md
   - docs/models/components/passive.md
   - docs/models/components/patchnetworkrequest.md
@@ -958,7 +985,6 @@ generatedFiles:
   - docs/models/components/state.md
   - docs/models/components/stringfieldcontainsfilter.md
   - docs/models/components/stringfieldequalscomparison.md
-  - docs/models/components/stringfieldequalsfilter.md
   - docs/models/components/stringfieldfilter.md
   - docs/models/components/stringfieldneqfilter.md
   - docs/models/components/stringfieldocontainsfilter.md
@@ -990,7 +1016,6 @@ generatedFiles:
   - docs/models/components/transitgatewaystatefieldfilter.md
   - docs/models/components/transitgatewaystatefieldnotequalsfilter.md
   - docs/models/components/transitgatewaystatefieldorequalityfilter.md
-  - docs/models/components/two.md
   - docs/models/components/type.md
   - docs/models/components/unhealthy.md
   - docs/models/components/updateauthenticationsettings.md
@@ -1058,6 +1083,8 @@ generatedFiles:
   - docs/models/operations/createcustompluginresponse.md
   - docs/models/operations/createdataplanecertificaterequest.md
   - docs/models/operations/createdataplanecertificateresponse.md
+  - docs/models/operations/createdegraphqlroutewithservicerequest.md
+  - docs/models/operations/createdegraphqlroutewithserviceresponse.md
   - docs/models/operations/createeventsubscriptionrequest.md
   - docs/models/operations/createeventsubscriptionresponse.md
   - docs/models/operations/createhmacauthwithconsumerrequest.md
@@ -1076,6 +1103,8 @@ generatedFiles:
   - docs/models/operations/createmtlsauthwithconsumerrequest.md
   - docs/models/operations/createmtlsauthwithconsumerresponse.md
   - docs/models/operations/createnetworkresponse.md
+  - docs/models/operations/createpartialrequest.md
+  - docs/models/operations/createpartialresponse.md
   - docs/models/operations/createpluginrequest.md
   - docs/models/operations/createpluginresponse.md
   - docs/models/operations/createpluginschemasrequest.md
@@ -1131,6 +1160,8 @@ generatedFiles:
   - docs/models/operations/deletecustompluginresponse.md
   - docs/models/operations/deletedataplanecertificaterequest.md
   - docs/models/operations/deletedataplanecertificateresponse.md
+  - docs/models/operations/deletedegraphqlroutewithservicerequest.md
+  - docs/models/operations/deletedegraphqlroutewithserviceresponse.md
   - docs/models/operations/deleteeventsubscriptionrequest.md
   - docs/models/operations/deleteeventsubscriptionresponse.md
   - docs/models/operations/deletehmacauthwithconsumerrequest.md
@@ -1155,6 +1186,8 @@ generatedFiles:
   - docs/models/operations/deletenodesnodeidresponse.md
   - docs/models/operations/deletenotificationrequest.md
   - docs/models/operations/deletenotificationresponse.md
+  - docs/models/operations/deletepartialrequest.md
+  - docs/models/operations/deletepartialresponse.md
   - docs/models/operations/deletepluginrequest.md
   - docs/models/operations/deletepluginresponse.md
   - docs/models/operations/deletepluginschemasrequest.md
@@ -1242,6 +1275,10 @@ generatedFiles:
   - docs/models/operations/getcustompluginresponse.md
   - docs/models/operations/getdataplanecertificaterequest.md
   - docs/models/operations/getdataplanecertificateresponse.md
+  - docs/models/operations/getdegraphqlrouterequest.md
+  - docs/models/operations/getdegraphqlrouteresponse.md
+  - docs/models/operations/getdegraphqlroutewithservicerequest.md
+  - docs/models/operations/getdegraphqlroutewithserviceresponse.md
   - docs/models/operations/geteventsubscriptionrequest.md
   - docs/models/operations/geteventsubscriptionresponse.md
   - docs/models/operations/getexpectedconfighashrequest.md
@@ -1285,6 +1322,8 @@ generatedFiles:
   - docs/models/operations/getnotificationdetailsrequest.md
   - docs/models/operations/getnotificationdetailsresponse.md
   - docs/models/operations/getorganizationsmeresponse.md
+  - docs/models/operations/getpartialrequest.md
+  - docs/models/operations/getpartialresponse.md
   - docs/models/operations/getpluginrequest.md
   - docs/models/operations/getpluginresponse.md
   - docs/models/operations/getpluginschemarequest.md
@@ -1397,6 +1436,12 @@ generatedFiles:
   - docs/models/operations/listdefaultresourceconfigurationsresponse.md
   - docs/models/operations/listdefaultresourcequotasrequest.md
   - docs/models/operations/listdefaultresourcequotasresponse.md
+  - docs/models/operations/listdegraphqlrouterequest.md
+  - docs/models/operations/listdegraphqlrouteresponse.md
+  - docs/models/operations/listdegraphqlrouteresponsebody.md
+  - docs/models/operations/listdegraphqlroutewithservicerequest.md
+  - docs/models/operations/listdegraphqlroutewithserviceresponse.md
+  - docs/models/operations/listdegraphqlroutewithserviceresponsebody.md
   - docs/models/operations/listdpclientcertificatesrequest.md
   - docs/models/operations/listdpclientcertificatesresponse.md
   - docs/models/operations/listeventsubscriptionsrequest.md
@@ -1440,6 +1485,12 @@ generatedFiles:
   - docs/models/operations/listnetworksresponse.md
   - docs/models/operations/listnotificationsrequest.md
   - docs/models/operations/listnotificationsresponse.md
+  - docs/models/operations/listpartiallinkrequest.md
+  - docs/models/operations/listpartiallinkresponse.md
+  - docs/models/operations/listpartiallinkresponsebody.md
+  - docs/models/operations/listpartialrequest.md
+  - docs/models/operations/listpartialresponse.md
+  - docs/models/operations/listpartialresponsebody.md
   - docs/models/operations/listpluginrequest.md
   - docs/models/operations/listpluginresponse.md
   - docs/models/operations/listpluginresponsebody.md
@@ -1581,6 +1632,8 @@ generatedFiles:
   - docs/models/operations/upsertconsumerresponse.md
   - docs/models/operations/upsertcustompluginrequest.md
   - docs/models/operations/upsertcustompluginresponse.md
+  - docs/models/operations/upsertdegraphqlroutewithservicerequest.md
+  - docs/models/operations/upsertdegraphqlroutewithserviceresponse.md
   - docs/models/operations/upserthmacauthwithconsumerrequest.md
   - docs/models/operations/upserthmacauthwithconsumerresponse.md
   - docs/models/operations/upsertjwtwithconsumerrequest.md
@@ -1595,6 +1648,8 @@ generatedFiles:
   - docs/models/operations/upsertkeywithkeysetresponse.md
   - docs/models/operations/upsertmtlsauthwithconsumerrequest.md
   - docs/models/operations/upsertmtlsauthwithconsumerresponse.md
+  - docs/models/operations/upsertpartialrequest.md
+  - docs/models/operations/upsertpartialresponse.md
   - docs/models/operations/upsertpluginrequest.md
   - docs/models/operations/upsertpluginresponse.md
   - docs/models/operations/upsertpluginwithconsumergrouprequest.md
@@ -1655,6 +1710,7 @@ generatedFiles:
   - docs/sdks/controlplanes/README.md
   - docs/sdks/customplugins/README.md
   - docs/sdks/custompluginschemas/README.md
+  - docs/sdks/degraphqlroutes/README.md
   - docs/sdks/dpcertificates/README.md
   - docs/sdks/dpnodes/README.md
   - docs/sdks/hmacauthcredentials/README.md
@@ -1666,6 +1722,8 @@ generatedFiles:
   - docs/sdks/me/README.md
   - docs/sdks/mtlsauthcredentials/README.md
   - docs/sdks/notifications/README.md
+  - docs/sdks/partiallinks/README.md
+  - docs/sdks/partials/README.md
   - docs/sdks/plugins/README.md
   - docs/sdks/roles/README.md
   - docs/sdks/routes/README.md
@@ -1708,6 +1766,8 @@ generatedFiles:
   - models/sdkerrors/sdkerror.go
   - mtlsauthcredentials.go
   - notifications.go
+  - partiallinks.go
+  - partials.go
   - plugins.go
   - retry/config.go
   - roles.go
@@ -1751,7 +1811,7 @@ examples:
           eventId: "invoice-ready"
       responses:
         "200":
-          application/json: {"data": [{"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "regions": [], "entities": [], "channels": [{"type": "EMAIL", "enabled": true}], "enabled": true}], "meta": {"next": "/usr/include", "previous": "/sbin", "size": 10}}
+          application/json: {"data": [{"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "entity_type": "access-token", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "regions": [], "entities": [], "channels": [{"type": "EMAIL", "enabled": true}], "enabled": true, "name": "<value>"}], "meta": {"next": "/usr/include", "previous": "/sbin", "size": 10}}
         "400":
           application/problem+json: {"status": 452496, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -1767,7 +1827,7 @@ examples:
           eventId: "invoice-ready"
       responses:
         "201":
-          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "regions": ["AU"], "entities": [], "channels": [{"type": "EMAIL", "enabled": false}, {"type": "IN_APP", "enabled": false}], "enabled": false}
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "entity_type": "access-token", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "regions": ["AU"], "entities": [], "channels": [{"type": "EMAIL", "enabled": false}, {"type": "IN_APP", "enabled": false}], "enabled": false, "name": "<value>"}
         "400":
           application/problem+json: {"status": 426370, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value>"], "source": "body"}, {"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value>"], "source": "body"}, {"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value>", "<value>", "<value>"], "source": "body"}]}
         "401":
@@ -1784,7 +1844,7 @@ examples:
           subscriptionId: "<id>"
       responses:
         "200":
-          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "regions": ["US", "EU", "AU"], "entities": ["<value>", "<value>", "<value>"], "channels": [], "enabled": false}
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "entity_type": "dev-portal", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "regions": ["US", "EU", "AU"], "entities": ["<value>", "<value>", "<value>"], "channels": [], "enabled": false, "name": "<value>"}
         "400":
           application/problem+json: {"status": 713072, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -1801,7 +1861,7 @@ examples:
           subscriptionId: "<id>"
       responses:
         "200":
-          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "regions": ["AU", "US"], "entities": ["<value>", "<value>", "<value>"], "channels": [], "enabled": false}
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "entity_type": "webhook", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "regions": ["AU", "US"], "entities": ["<value>", "<value>", "<value>"], "channels": [], "enabled": false, "name": "<value>"}
         "400":
           application/problem+json: {"status": 146335, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -2311,7 +2371,7 @@ examples:
           page[number]: 1
           filter: {"cloud_gateway": true}
           labels: "key:value,existCheck"
-          sort: "name,created_at desc"
+          sort: "created_at desc"
       responses:
         "200":
           application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "Test Control Plane", "description": "A test control plane for exploration.", "labels": {"env": "test"}, "config": {"control_plane_endpoint": "https://acfe5f253f.cp0.konghq.com", "telemetry_endpoint": "https://acfe5f253f.tp0.konghq.com", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": true, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}]}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "Test Control Plane", "description": "A test control plane for exploration.", "labels": {"env": "test"}, "config": {"control_plane_endpoint": "https://acfe5f253f.cp0.konghq.com", "telemetry_endpoint": "https://acfe5f253f.tp0.konghq.com", "cluster_type": "CLUSTER_TYPE_CONTROL_PLANE", "auth_type": "pinned_client_certs", "cloud_gateway": false, "proxy_urls": [{"host": "example.com", "port": 443, "protocol": "https"}]}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
@@ -5279,5 +5339,150 @@ examples:
       responses:
         "404":
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  list-degraphql_route:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "query": "query{ user { email } }", "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "uri": "/users"}]}
+        "401":
+          application/json: {"message": "<value>", "status": 571587}
+  get-degraphql_route:
+    "":
+      parameters:
+        path:
+          Degraphql_routeId: ""
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "query": "query{ user { email } }", "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "uri": "/users"}
+        "401":
+          application/json: {"message": "<value>", "status": 262442}
+  list-degraphql_route-with-service:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "query": "query{ user { email } }", "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "uri": "/users"}]}
+  create-degraphql_route-with-service:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+      requestBody:
+        application/json: {"id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "query": "query{ user { email } }", "uri": "/users"}
+      responses:
+        "201":
+          application/json: {"id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "query": "query{ user { email } }", "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "uri": "/users"}
+  delete-degraphql_route-with-service:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+          Degraphql_routeId: ""
+  get-degraphql_route-with-service:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+          Degraphql_routeId: ""
+      responses:
+        "200":
+          application/json: {"id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "query": "query{ user { email } }", "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "uri": "/users"}
+  upsert-degraphql_route-with-service:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+          Degraphql_routeId: ""
+      requestBody:
+        application/json: {"id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "query": "query{ user { email } }", "uri": "/users"}
+      responses:
+        "200":
+          application/json: {"id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "query": "query{ user { email } }", "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "uri": "/users"}
+  list-partial:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 753857}
+        "200": {}
+  create-partial:
+    speakeasy-default-create-partial:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"config": {"key": "<value>", "key1": "<value>"}, "type": "<value>"}
+      responses:
+        "201":
+          application/json: {"config": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "type": "<value>"}
+        "401":
+          application/json: {"message": "<value>", "status": 520657}
+  delete-partial:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          PartialId: ""
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 746418}
+  get-partial:
+    "":
+      parameters:
+        path:
+          PartialId: ""
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"config": {"key": "<value>"}, "type": "<value>"}
+        "401":
+          application/json: {"message": "<value>", "status": 200517}
+  upsert-partial:
+    "":
+      parameters:
+        path:
+          PartialId: ""
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"config": {}, "type": "<value>"}
+      responses:
+        "200":
+          application/json: {"config": {"key": "<value>", "key1": "<value>"}, "type": "<value>"}
+        "401":
+          application/json: {"message": "<value>", "status": 208224}
+  list-partial-link:
+    "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          PartialId: ""
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"count": 10}
 examplesVersion: 1.0.1
 generatedTests: {}

@@ -44,7 +44,7 @@ func main() {
             CloudGateway: sdkkonnectgo.Bool(true),
         },
         Labels: sdkkonnectgo.String("key:value,existCheck"),
-        Sort: sdkkonnectgo.String("name,created_at desc"),
+        Sort: sdkkonnectgo.String("created_at desc"),
     })
     if err != nil {
         log.Fatal(err)

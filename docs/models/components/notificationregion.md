@@ -10,4 +10,6 @@ Region associated to a notification.
 | `NotificationRegionUs`       | US                           |
 | `NotificationRegionEu`       | EU                           |
 | `NotificationRegionAu`       | AU                           |
+| `NotificationRegionMe`       | ME                           |
+| `NotificationRegionIn`       | IN                           |
 | `NotificationRegionWildcard` | *                            |

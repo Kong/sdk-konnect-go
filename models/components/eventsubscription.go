@@ -9,6 +9,8 @@ type EventSubscription struct {
 	Channels []NotificationChannel `json:"channels"`
 	// Enable/Disable complete subscription within an event.
 	Enabled bool `json:"enabled"`
+	// User provided name of the subscription.
+	Name string `json:"name"`
 }
 
 func (o *EventSubscription) GetRegions() []NotificationRegion {
@@ -37,4 +39,11 @@ func (o *EventSubscription) GetEnabled() bool {
 		return false
 	}
 	return o.Enabled
+}
+
+func (o *EventSubscription) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
 }

@@ -80,9 +80,7 @@ func TestControlPlaneList(t *testing.T) {
 			req: sdkkonnectops.ListControlPlanesRequest{
 				Filter: &sdkkonnectcomp.ControlPlaneFilterParameters{
 					Name: &sdkkonnectcomp.Name{
-						StringFieldEqualsFilter: &sdkkonnectcomp.StringFieldEqualsFilter{
-							Str: pkg.Ptr(KonnectTestRunID(t) + "-filter-1"),
-						},
+						Eq: pkg.Ptr(KonnectTestRunID(t) + "-filter-1"),
 					},
 				},
 			},
@@ -109,14 +107,10 @@ func TestControlPlaneList(t *testing.T) {
 			req: sdkkonnectops.ListControlPlanesRequest{
 				Filter: &sdkkonnectcomp.ControlPlaneFilterParameters{
 					Name: &sdkkonnectcomp.Name{
-						StringFieldEqualsFilter: &sdkkonnectcomp.StringFieldEqualsFilter{
-							Str: pkg.Ptr(KonnectTestRunID(t) + "-type-1"),
-						},
+						Eq: pkg.Ptr(KonnectTestRunID(t) + "-type-1"),
 					},
 					ClusterType: &sdkkonnectcomp.ClusterType{
-						StringFieldEqualsFilter: &sdkkonnectcomp.StringFieldEqualsFilter{
-							Str: pkg.Ptr(string(sdkkonnectcomp.CreateControlPlaneRequestClusterTypeClusterTypeK8SIngressController)),
-						},
+						Eq: pkg.Ptr(string(sdkkonnectcomp.CreateControlPlaneRequestClusterTypeClusterTypeK8SIngressController)),
 					},
 				},
 			},
