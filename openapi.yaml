@@ -9789,6 +9789,7 @@ components:
             - CLUSTER_TYPE_K8S_INGRESS_CONTROLLER
             - CLUSTER_TYPE_CONTROL_PLANE_GROUP
             - CLUSTER_TYPE_SERVERLESS
+            - CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY
         auth_type:
           type: string
           description: >-
@@ -9888,6 +9889,7 @@ components:
                 - CLUSTER_TYPE_K8S_INGRESS_CONTROLLER
                 - CLUSTER_TYPE_CONTROL_PLANE_GROUP
                 - CLUSTER_TYPE_SERVERLESS
+                - CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY
               readOnly: true
             auth_type:
               type: string
@@ -11552,6 +11554,27 @@ components:
             - terminating
             - terminated
           description: State of the data-plane group.
+        state_metadata:
+          type: object
+          description: >
+            Metadata describing the backing state of the dataplane group and why
+            it may be in an erroneous state.
+          additionalProperties: false
+          properties:
+            reported_status:
+              type: string
+              description: >-
+                Reported status of the dataplane group from backing
+                infrastructure.
+              example: ERROR
+            reason:
+              type: string
+              description: >
+                Reason why the dataplane group may be in an erroneous state,
+                reported from backing infrastructure.
+              example: >
+                Dataplane group could not be deployed due to insufficient cloud
+                provider compute instances.
         private_ip_addresses:
           type: array
           items:
@@ -12070,6 +12093,29 @@ components:
           $ref: '#/components/schemas/TransitGatewayId'
         state:
           $ref: '#/components/schemas/TransitGatewayState'
+        state_metadata:
+          title: TransitGatewayStateMetadata
+          type: object
+          description: >
+            Metadata describing the backing state of the transit gateway and why
+            it may be in an erroneous state.
+          additionalProperties: false
+          properties:
+            reported_status:
+              type: string
+              description: >-
+                Reported status of the transit gateway from backing
+                infrastructure.
+              example: ERROR
+            reason:
+              type: string
+              description: >
+                Reason why the transit gateway may be in an erroneous state,
+                reported from backing infrastructure.
+              example: >
+                Transit Gateway Attachment configuration could not find a
+                resource with the provided ram share arn.
+          readOnly: true
         entity_version:
           type: integer
           description: >
@@ -12119,6 +12165,29 @@ components:
           $ref: '#/components/schemas/TransitGatewayId'
         state:
           $ref: '#/components/schemas/TransitGatewayState'
+        state_metadata:
+          title: TransitGatewayStateMetadata
+          type: object
+          description: >
+            Metadata describing the backing state of the transit gateway and why
+            it may be in an erroneous state.
+          additionalProperties: false
+          properties:
+            reported_status:
+              type: string
+              description: >-
+                Reported status of the transit gateway from backing
+                infrastructure.
+              example: ERROR
+            reason:
+              type: string
+              description: >
+                Reason why the transit gateway may be in an erroneous state,
+                reported from backing infrastructure.
+              example: >
+                Transit Gateway Attachment configuration could not find a
+                resource with the provided ram share arn.
+          readOnly: true
         entity_version:
           type: integer
           description: >
@@ -12166,6 +12235,29 @@ components:
           $ref: '#/components/schemas/TransitGatewayId'
         state:
           $ref: '#/components/schemas/TransitGatewayState'
+        state_metadata:
+          title: TransitGatewayStateMetadata
+          type: object
+          description: >
+            Metadata describing the backing state of the transit gateway and why
+            it may be in an erroneous state.
+          additionalProperties: false
+          properties:
+            reported_status:
+              type: string
+              description: >-
+                Reported status of the transit gateway from backing
+                infrastructure.
+              example: ERROR
+            reason:
+              type: string
+              description: >
+                Reason why the transit gateway may be in an erroneous state,
+                reported from backing infrastructure.
+              example: >
+                Transit Gateway Attachment configuration could not find a
+                resource with the provided ram share arn.
+          readOnly: true
         entity_version:
           type: integer
           description: >
@@ -12994,6 +13086,7 @@ components:
         - plan-and-usage
         - organization
         - dev-portal
+        - cloud-gateways
     EntityTypes:
       type: string
       enum:
@@ -13001,6 +13094,7 @@ components:
         - access-token
         - webhook
         - dev-portal
+        - dataplane-group
     UserConfiguration:
       description: Properties of an event.
       type: object
@@ -16335,4 +16429,4 @@ components:
             $ref: '#/components/schemas/UpdateConfigStoreSecret'
 externalDocs:
   description: Documentation for Kong Gateway and its APIs
-  url: https://docs.konghq.com
+  url: https://developer.konghq.com
