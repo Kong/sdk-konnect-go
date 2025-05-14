@@ -13,10 +13,11 @@ import (
 type ControlPlaneClusterType string
 
 const (
-	ControlPlaneClusterTypeClusterTypeControlPlane         ControlPlaneClusterType = "CLUSTER_TYPE_CONTROL_PLANE"
-	ControlPlaneClusterTypeClusterTypeK8SIngressController ControlPlaneClusterType = "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER"
-	ControlPlaneClusterTypeClusterTypeControlPlaneGroup    ControlPlaneClusterType = "CLUSTER_TYPE_CONTROL_PLANE_GROUP"
-	ControlPlaneClusterTypeClusterTypeServerless           ControlPlaneClusterType = "CLUSTER_TYPE_SERVERLESS"
+	ControlPlaneClusterTypeClusterTypeControlPlane          ControlPlaneClusterType = "CLUSTER_TYPE_CONTROL_PLANE"
+	ControlPlaneClusterTypeClusterTypeK8SIngressController  ControlPlaneClusterType = "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER"
+	ControlPlaneClusterTypeClusterTypeControlPlaneGroup     ControlPlaneClusterType = "CLUSTER_TYPE_CONTROL_PLANE_GROUP"
+	ControlPlaneClusterTypeClusterTypeServerless            ControlPlaneClusterType = "CLUSTER_TYPE_SERVERLESS"
+	ControlPlaneClusterTypeClusterTypeKafkaNativeEventProxy ControlPlaneClusterType = "CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY"
 )
 
 func (e ControlPlaneClusterType) ToPointer() *ControlPlaneClusterType {
@@ -35,6 +36,8 @@ func (e *ControlPlaneClusterType) UnmarshalJSON(data []byte) error {
 	case "CLUSTER_TYPE_CONTROL_PLANE_GROUP":
 		fallthrough
 	case "CLUSTER_TYPE_SERVERLESS":
+		fallthrough
+	case "CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY":
 		*e = ControlPlaneClusterType(v)
 		return nil
 	default:

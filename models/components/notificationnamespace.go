@@ -10,9 +10,11 @@ import (
 type NotificationNamespace string
 
 const (
-	NotificationNamespacePlanAndUsage NotificationNamespace = "plan-and-usage"
-	NotificationNamespaceOrganization NotificationNamespace = "organization"
-	NotificationNamespaceDevPortal    NotificationNamespace = "dev-portal"
+	NotificationNamespacePlanAndUsage   NotificationNamespace = "plan-and-usage"
+	NotificationNamespaceOrganization   NotificationNamespace = "organization"
+	NotificationNamespaceDevPortal      NotificationNamespace = "dev-portal"
+	NotificationNamespaceCloudGateways  NotificationNamespace = "cloud-gateways"
+	NotificationNamespaceGatewayManager NotificationNamespace = "gateway-manager"
 )
 
 func (e NotificationNamespace) ToPointer() *NotificationNamespace {
@@ -29,6 +31,10 @@ func (e *NotificationNamespace) UnmarshalJSON(data []byte) error {
 	case "organization":
 		fallthrough
 	case "dev-portal":
+		fallthrough
+	case "cloud-gateways":
+		fallthrough
+	case "gateway-manager":
 		*e = NotificationNamespace(v)
 		return nil
 	default:

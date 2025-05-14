@@ -9,3 +9,5 @@
 | `EntityTypesAccessToken`    | access-token                |
 | `EntityTypesWebhook`        | webhook                     |
 | `EntityTypesDevPortal`      | dev-portal                  |
+| `EntityTypesDataplaneGroup` | dataplane-group             |
+| `EntityTypesDataplane`      | dataplane                   |

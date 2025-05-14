@@ -72,7 +72,7 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 
 // SDK - Konnect API - Go SDK: The Konnect platform API
 //
-// https://docs.konghq.com - Documentation for Kong Gateway and its APIs
+// https://developer.konghq.com - Documentation for Kong Gateway and its APIs
 type SDK struct {
 	// Operations related to notifications
 	Notifications *Notifications
@@ -275,9 +275,9 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "0.2.28",
+			SDKVersion:        "0.2.29",
 			GenVersion:        "2.568.5",
-			UserAgent:         "speakeasy-sdk/go 0.2.28 2.568.5 0.0.1 github.com/Kong/sdk-konnect-go",
+			UserAgent:         "speakeasy-sdk/go 0.2.29 2.568.5 0.0.1 github.com/Kong/sdk-konnect-go",
 			Hooks:             hooks.New(),
 		},
 	}
