@@ -11,10 +11,11 @@ import (
 type CreateControlPlaneRequestClusterType string
 
 const (
-	CreateControlPlaneRequestClusterTypeClusterTypeControlPlane         CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_CONTROL_PLANE"
-	CreateControlPlaneRequestClusterTypeClusterTypeK8SIngressController CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER"
-	CreateControlPlaneRequestClusterTypeClusterTypeControlPlaneGroup    CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_CONTROL_PLANE_GROUP"
-	CreateControlPlaneRequestClusterTypeClusterTypeServerless           CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_SERVERLESS"
+	CreateControlPlaneRequestClusterTypeClusterTypeControlPlane          CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_CONTROL_PLANE"
+	CreateControlPlaneRequestClusterTypeClusterTypeK8SIngressController  CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER"
+	CreateControlPlaneRequestClusterTypeClusterTypeControlPlaneGroup     CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_CONTROL_PLANE_GROUP"
+	CreateControlPlaneRequestClusterTypeClusterTypeServerless            CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_SERVERLESS"
+	CreateControlPlaneRequestClusterTypeClusterTypeKafkaNativeEventProxy CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY"
 )
 
 func (e CreateControlPlaneRequestClusterType) ToPointer() *CreateControlPlaneRequestClusterType {
@@ -33,6 +34,8 @@ func (e *CreateControlPlaneRequestClusterType) UnmarshalJSON(data []byte) error 
 	case "CLUSTER_TYPE_CONTROL_PLANE_GROUP":
 		fallthrough
 	case "CLUSTER_TYPE_SERVERLESS":
+		fallthrough
+	case "CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY":
 		*e = CreateControlPlaneRequestClusterType(v)
 		return nil
 	default:

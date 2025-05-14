@@ -14,6 +14,8 @@ const (
 	EntityTypesAccessToken    EntityTypes = "access-token"
 	EntityTypesWebhook        EntityTypes = "webhook"
 	EntityTypesDevPortal      EntityTypes = "dev-portal"
+	EntityTypesDataplaneGroup EntityTypes = "dataplane-group"
+	EntityTypesDataplane      EntityTypes = "dataplane"
 )
 
 func (e EntityTypes) ToPointer() *EntityTypes {
@@ -32,6 +34,10 @@ func (e *EntityTypes) UnmarshalJSON(data []byte) error {
 	case "webhook":
 		fallthrough
 	case "dev-portal":
+		fallthrough
+	case "dataplane-group":
+		fallthrough
+	case "dataplane":
 		*e = EntityTypes(v)
 		return nil
 	default:

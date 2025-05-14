@@ -228,6 +228,7 @@ This SDK supports the following security schemes globally:
 | `PersonalAccessToken`      | http | HTTP Bearer |
 | `SystemAccountAccessToken` | http | HTTP Bearer |
 | `KonnectAccessToken`       | http | HTTP Bearer |
+| `ServiceAccessToken`       | http | HTTP Bearer |
 
 You can set the security parameters through the `WithSecurity` option when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```go
@@ -266,7 +267,7 @@ func main() {
 
 Konnect API - Go SDK: The Konnect platform API
 
-For more information about the API: [Documentation for Kong Gateway and its APIs](https://docs.konghq.com)
+For more information about the API: [Documentation for Kong Gateway and its APIs](https://developer.konghq.com)
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->

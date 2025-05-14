@@ -19,6 +19,7 @@ security:
   - personalAccessToken: []
   - systemAccountAccessToken: []
   - konnectAccessToken: []
+  - serviceAccessToken: []
 tags:
   - name: Control Planes
   - name: Control Plane Groups
@@ -9789,6 +9790,7 @@ components:
             - CLUSTER_TYPE_K8S_INGRESS_CONTROLLER
             - CLUSTER_TYPE_CONTROL_PLANE_GROUP
             - CLUSTER_TYPE_SERVERLESS
+            - CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY
         auth_type:
           type: string
           description: >-
@@ -9888,6 +9890,7 @@ components:
                 - CLUSTER_TYPE_K8S_INGRESS_CONTROLLER
                 - CLUSTER_TYPE_CONTROL_PLANE_GROUP
                 - CLUSTER_TYPE_SERVERLESS
+                - CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY
               readOnly: true
             auth_type:
               type: string
@@ -11552,6 +11555,27 @@ components:
             - terminating
             - terminated
           description: State of the data-plane group.
+        state_metadata:
+          type: object
+          description: >
+            Metadata describing the backing state of the dataplane group and why
+            it may be in an erroneous state.
+          additionalProperties: false
+          properties:
+            reported_status:
+              type: string
+              description: >-
+                Reported status of the dataplane group from backing
+                infrastructure.
+              example: ERROR
+            reason:
+              type: string
+              description: >
+                Reason why the dataplane group may be in an erroneous state,
+                reported from backing infrastructure.
+              example: >
+                Dataplane group could not be deployed due to insufficient cloud
+                provider compute instances.
         private_ip_addresses:
           type: array
           items:
@@ -11740,6 +11764,28 @@ components:
         - terminating
         - terminated
       readOnly: true
+    NetworkStateMetadata:
+      x-speakeasy-terraform-ignore: true
+      title: Network State Metadata
+      description: >
+        Metadata describing the backing state of the network and why it may be
+        in an erroneous state.
+      type: object
+      additionalProperties: false
+      properties:
+        reported_status:
+          type: string
+          description: Reported status of the network from backing infrastructure.
+          example: INVALID
+        reason:
+          type: string
+          description: >
+            Reason why the network may be in an erroneous state, reported from
+            backing infrastructure.
+          example: >
+            Network could not be deployed due to insufficient cloud provider
+            compute instances.
+      readOnly: true
     NetworkProviderMetadata:
       x-speakeasy-param-suppress-computed-diff: true
       title: Network Provider Metadata
@@ -11809,6 +11855,8 @@ components:
           $ref: '#/components/schemas/NetworkCIDRBlock'
         state:
           $ref: '#/components/schemas/NetworkState'
+        state_metadata:
+          $ref: '#/components/schemas/NetworkStateMetadata'
         provider_metadata:
           $ref: '#/components/schemas/NetworkProviderMetadata'
         transit_gateway_count:
@@ -12070,6 +12118,29 @@ components:
           $ref: '#/components/schemas/TransitGatewayId'
         state:
           $ref: '#/components/schemas/TransitGatewayState'
+        state_metadata:
+          title: TransitGatewayStateMetadata
+          type: object
+          description: >
+            Metadata describing the backing state of the transit gateway and why
+            it may be in an erroneous state.
+          additionalProperties: false
+          properties:
+            reported_status:
+              type: string
+              description: >-
+                Reported status of the transit gateway from backing
+                infrastructure.
+              example: ERROR
+            reason:
+              type: string
+              description: >
+                Reason why the transit gateway may be in an erroneous state,
+                reported from backing infrastructure.
+              example: >
+                Transit Gateway Attachment configuration could not find a
+                resource with the provided ram share arn.
+          readOnly: true
         entity_version:
           type: integer
           description: >
@@ -12119,6 +12190,29 @@ components:
           $ref: '#/components/schemas/TransitGatewayId'
         state:
           $ref: '#/components/schemas/TransitGatewayState'
+        state_metadata:
+          title: TransitGatewayStateMetadata
+          type: object
+          description: >
+            Metadata describing the backing state of the transit gateway and why
+            it may be in an erroneous state.
+          additionalProperties: false
+          properties:
+            reported_status:
+              type: string
+              description: >-
+                Reported status of the transit gateway from backing
+                infrastructure.
+              example: ERROR
+            reason:
+              type: string
+              description: >
+                Reason why the transit gateway may be in an erroneous state,
+                reported from backing infrastructure.
+              example: >
+                Transit Gateway Attachment configuration could not find a
+                resource with the provided ram share arn.
+          readOnly: true
         entity_version:
           type: integer
           description: >
@@ -12166,6 +12260,29 @@ components:
           $ref: '#/components/schemas/TransitGatewayId'
         state:
           $ref: '#/components/schemas/TransitGatewayState'
+        state_metadata:
+          title: TransitGatewayStateMetadata
+          type: object
+          description: >
+            Metadata describing the backing state of the transit gateway and why
+            it may be in an erroneous state.
+          additionalProperties: false
+          properties:
+            reported_status:
+              type: string
+              description: >-
+                Reported status of the transit gateway from backing
+                infrastructure.
+              example: ERROR
+            reason:
+              type: string
+              description: >
+                Reason why the transit gateway may be in an erroneous state,
+                reported from backing infrastructure.
+              example: >
+                Transit Gateway Attachment configuration could not find a
+                resource with the provided ram share arn.
+          readOnly: true
         entity_version:
           type: integer
           description: >
@@ -12994,6 +13111,8 @@ components:
         - plan-and-usage
         - organization
         - dev-portal
+        - cloud-gateways
+        - gateway-manager
     EntityTypes:
       type: string
       enum:
@@ -13001,6 +13120,8 @@ components:
         - access-token
         - webhook
         - dev-portal
+        - dataplane-group
+        - dataplane
     UserConfiguration:
       description: Properties of an event.
       type: object
@@ -15827,6 +15948,12 @@ components:
       description: >-
         The Konnect access token is meant to be used by the Konnect dashboard
         and the decK CLI to authenticate with.
+    serviceAccessToken:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: |
+        The Service access token is meant to be used between internal services.
   requestBodies:
     GroupMembershipAdd:
       content:
@@ -16335,4 +16462,4 @@ components:
             $ref: '#/components/schemas/UpdateConfigStoreSecret'
 externalDocs:
   description: Documentation for Kong Gateway and its APIs
-  url: https://docs.konghq.com
+  url: https://developer.konghq.com
