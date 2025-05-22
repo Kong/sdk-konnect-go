@@ -445,7 +445,21 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         RouteWithoutParents: components.CreateRouteWithoutParentsRouteJSON(
-            components.RouteJSON{},
+            components.RouteJSON{
+                Hosts: []string{
+                    "foo.example.com",
+                    "foo.example.us",
+                },
+                ID: sdkkonnectgo.String("56c4566c-14cc-4132-9011-4139fcbbe50a"),
+                Name: sdkkonnectgo.String("example-route"),
+                Paths: []string{
+                    "/v1",
+                    "/v2",
+                },
+                Service: &components.RouteJSONService{
+                    ID: sdkkonnectgo.String("bd380f99-659d-415e-b0e7-72ea05df3218"),
+                },
+            },
         ),
     })
     if err != nil {
