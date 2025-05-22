@@ -3,13 +3,13 @@
 package components
 
 type ConfigurationFilterParameters struct {
-	// Filter a string value field by partial contains.
+	// Filters on the given string field value by exact match inequality.
 	EventTitle *StringFieldFilter `queryParam:"name=event_title"`
-	// Filter a string value field by partial contains.
+	// Filters on the given string field value by exact match inequality.
 	EventDescription *StringFieldFilter `queryParam:"name=event_description"`
-	// Filter a string value field by partial contains.
+	// Filters on the given string field value by exact match inequality.
 	EventNamespace *StringFieldFilter `queryParam:"name=event_namespace"`
-	// Filter a string value field by partial contains.
+	// Filters on the given string field value by exact match inequality.
 	Region *StringFieldFilter `queryParam:"name=region"`
 }
 

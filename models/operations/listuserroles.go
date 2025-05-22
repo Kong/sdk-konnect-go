@@ -13,9 +13,9 @@ var ListUserRolesServerList = []string{
 
 // ListUserRolesQueryParamFilter - Filter roles returned in the response.
 type ListUserRolesQueryParamFilter struct {
-	// Filter a string value by exact match.
+	// Filters on the given string field value by exact match.
 	RoleName *string `queryParam:"name=role_name"`
-	// Filter a string value by exact match.
+	// Filters on the given string field value by exact match.
 	EntityTypeName *string `queryParam:"name=entity_type_name"`
 }
 

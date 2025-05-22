@@ -1,19 +1,21 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 3ac482e4057a4eb58de5aecc8fea25ea
+  docChecksum: 900e219fd377dba982105df7e07317a6
   docVersion: 0.0.1
-  speakeasyVersion: 1.548.4
-  generationVersion: 2.605.6
-  releaseVersion: 0.2.30
-  configChecksum: eec63cc79f566a4b6be3eebe28f175ab
+  speakeasyVersion: 1.549.0
+  generationVersion: 2.607.0
+  releaseVersion: 0.3.0
+  configChecksum: ade6a57900a0fc540ab15f27638f94cb
 features:
   go:
     additionalDependencies: 0.1.0
+    additionalProperties: 0.1.2
     constsAndDefaults: 0.1.12
     core: 3.7.5
     deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
+    deprecations: 2.81.3
     envVarSecurityUsage: 0.3.2
     flattening: 2.81.1
     globalSecurity: 2.82.11
@@ -36,6 +38,9 @@ generatedFiles:
   - /models/components/addsystemaccounttoteam.go
   - /models/components/addusertoteam.go
   - /models/components/apiaccess.go
+  - /models/components/appauthstrategy.go
+  - /models/components/appauthstrategyconfigkeyauth.go
+  - /models/components/appauthstrategyconfigopenidconnect.go
   - /models/components/assignedrole.go
   - /models/components/assignedrolecollection.go
   - /models/components/assignrole.go
@@ -79,12 +84,26 @@ generatedFiles:
   - /models/components/controlplanegeofieldfilter.go
   - /models/components/controlplanegeofieldnotequalsfilter.go
   - /models/components/controlplanegeofieldorequalityfilter.go
+  - /models/components/createappauthstrategyrequest.go
+  - /models/components/createappauthstrategyresponse.go
   - /models/components/createconfigstore.go
   - /models/components/createconfigstoresecret.go
   - /models/components/createconfigurationdataplanegroup.go
   - /models/components/createconfigurationrequest.go
   - /models/components/createcontrolplanerequest.go
   - /models/components/createcustomdomainrequest.go
+  - /models/components/createdcrconfigauth0inrequest.go
+  - /models/components/createdcrconfigazureadinrequest.go
+  - /models/components/createdcrconfigcurityinrequest.go
+  - /models/components/createdcrconfighttpinrequest.go
+  - /models/components/createdcrconfigoktainrequest.go
+  - /models/components/createdcrproviderrequest.go
+  - /models/components/createdcrproviderrequestauth0.go
+  - /models/components/createdcrproviderrequestazuread.go
+  - /models/components/createdcrproviderrequestcurity.go
+  - /models/components/createdcrproviderrequesthttp.go
+  - /models/components/createdcrproviderrequestokta.go
+  - /models/components/createdcrproviderresponse.go
   - /models/components/createidentityprovider.go
   - /models/components/createnetworkrequest.go
   - /models/components/createpluginschemas.go
@@ -109,6 +128,8 @@ generatedFiles:
   - /models/components/dataplaneclientcertificate.go
   - /models/components/dataplaneclientcertificaterequest.go
   - /models/components/dataplaneclientcertificateresponse.go
+  - /models/components/dcrproviderresponse.go
+  - /models/components/dcrprovidertype.go
   - /models/components/defaultresourceconfiguration.go
   - /models/components/defaultresourcequota.go
   - /models/components/defaultsubscription.go
@@ -150,12 +171,14 @@ generatedFiles:
   - /models/components/keyauthwithoutparents.go
   - /models/components/keyset.go
   - /models/components/keywithoutparents.go
+  - /models/components/listappauthstrategiesresponse.go
   - /models/components/listconfigstoresecretsresponse.go
   - /models/components/listconfigstoresresponse.go
   - /models/components/listconfigurationsresponse.go
   - /models/components/listcontrolplanesresponse.go
   - /models/components/listcustomdomainsresponse.go
   - /models/components/listdataplanecertificatesresponse.go
+  - /models/components/listdcrprovidersresponse.go
   - /models/components/listdefaultresourceconfigurationsresponse.go
   - /models/components/listdefaultresourcequotasresponse.go
   - /models/components/listgroupmemberships.go
@@ -196,6 +219,7 @@ generatedFiles:
   - /models/components/pagemeta.go
   - /models/components/paginatedmeta.go
   - /models/components/partial.go
+  - /models/components/partialappauthstrategyconfigopenidconnect.go
   - /models/components/partiallink.go
   - /models/components/patchnetworkrequest.go
   - /models/components/patchteamgroupmappings.go
@@ -250,10 +274,17 @@ generatedFiles:
   - /models/components/transitgatewaystatefieldfilter.go
   - /models/components/transitgatewaystatefieldnotequalsfilter.go
   - /models/components/transitgatewaystatefieldorequalityfilter.go
+  - /models/components/updateappauthstrategyrequest.go
   - /models/components/updateauthenticationsettings.go
   - /models/components/updateconfigstore.go
   - /models/components/updateconfigstoresecret.go
   - /models/components/updatecontrolplanerequest.go
+  - /models/components/updatedcrconfigauth0inrequest.go
+  - /models/components/updatedcrconfigazureadinrequest.go
+  - /models/components/updatedcrconfigcurityinrequest.go
+  - /models/components/updatedcrconfighttpinrequest.go
+  - /models/components/updatedcrconfigoktainrequest.go
+  - /models/components/updatedcrproviderrequest.go
   - /models/components/updateidentityprovider.go
   - /models/components/updateidpconfiguration.go
   - /models/components/updateimpersonationsettingsrequest.go
@@ -268,13 +299,16 @@ generatedFiles:
   - /models/components/usercollection.go
   - /models/components/userconfiguration.go
   - /models/components/userconfigurationlistresponse.go
+  - /models/components/uuidfieldfilter.go
   - /models/components/vault.go
+  - /models/components/verifydcrproviderresponse.go
   - /models/operations/addconsumertogroup.go
   - /models/operations/addconsumertospecificconsumergroup.go
   - /models/operations/addusertoteam.go
   - /models/operations/authenticatesso.go
   - /models/operations/bulknotifications.go
   - /models/operations/createaclwithconsumer.go
+  - /models/operations/createappauthstrategy.go
   - /models/operations/createbasicauthwithconsumer.go
   - /models/operations/createcacertificate.go
   - /models/operations/createcertificate.go
@@ -287,6 +321,7 @@ generatedFiles:
   - /models/operations/createcustomdomains.go
   - /models/operations/createcustomplugin.go
   - /models/operations/createdataplanecertificate.go
+  - /models/operations/createdcrprovider.go
   - /models/operations/createdegraphqlroutewithservice.go
   - /models/operations/createeventsubscription.go
   - /models/operations/createhmacauthwithconsumer.go
@@ -316,6 +351,7 @@ generatedFiles:
   - /models/operations/createupstream.go
   - /models/operations/createvault.go
   - /models/operations/deleteaclwithconsumer.go
+  - /models/operations/deleteappauthstrategy.go
   - /models/operations/deletebasicauthwithconsumer.go
   - /models/operations/deletecacertificate.go
   - /models/operations/deletecertificate.go
@@ -327,6 +363,7 @@ generatedFiles:
   - /models/operations/deletecustomdomain.go
   - /models/operations/deletecustomplugin.go
   - /models/operations/deletedataplanecertificate.go
+  - /models/operations/deletedcrprovider.go
   - /models/operations/deletedegraphqlroutewithservice.go
   - /models/operations/deleteeventsubscription.go
   - /models/operations/deletehmacauthwithconsumer.go
@@ -365,6 +402,7 @@ generatedFiles:
   - /models/operations/fetchpluginschema.go
   - /models/operations/getacl.go
   - /models/operations/getaclwithconsumer.go
+  - /models/operations/getappauthstrategy.go
   - /models/operations/getauthenticationsettings.go
   - /models/operations/getavailabilityjson.go
   - /models/operations/getbasicauth.go
@@ -384,6 +422,7 @@ generatedFiles:
   - /models/operations/getcustomdomainonlinestatus.go
   - /models/operations/getcustomplugin.go
   - /models/operations/getdataplanecertificate.go
+  - /models/operations/getdcrprovider.go
   - /models/operations/getdegraphqlroute.go
   - /models/operations/getdegraphqlroutewithservice.go
   - /models/operations/geteventsubscription.go
@@ -443,6 +482,7 @@ generatedFiles:
   - /models/operations/inviteuser.go
   - /models/operations/listacl.go
   - /models/operations/listaclwithconsumer.go
+  - /models/operations/listappauthstrategies.go
   - /models/operations/listbasicauth.go
   - /models/operations/listbasicauthwithconsumer.go
   - /models/operations/listcacertificate.go
@@ -458,6 +498,7 @@ generatedFiles:
   - /models/operations/listcustomdomains.go
   - /models/operations/listcustomplugin.go
   - /models/operations/listdataplanenodes.go
+  - /models/operations/listdcrproviders.go
   - /models/operations/listdefaultresourceconfigurations.go
   - /models/operations/listdefaultresourcequotas.go
   - /models/operations/listdegraphqlroute.go
@@ -520,12 +561,15 @@ generatedFiles:
   - /models/operations/removeconsumerfromconsumergroup.go
   - /models/operations/removeconsumerfromgroup.go
   - /models/operations/removeuserfromteam.go
+  - /models/operations/replaceappauthstrategy.go
   - /models/operations/teamsassignrole.go
   - /models/operations/teamsremoverole.go
+  - /models/operations/updateappauthstrategy.go
   - /models/operations/updateauthenticationsettings.go
   - /models/operations/updateconfigstore.go
   - /models/operations/updateconfigstoresecret.go
   - /models/operations/updatecontrolplane.go
+  - /models/operations/updatedcrprovider.go
   - /models/operations/updateeventsubscription.go
   - /models/operations/updateidentityprovider.go
   - /models/operations/updateidpconfiguration.go
@@ -567,6 +611,7 @@ generatedFiles:
   - /models/operations/upsertvault.go
   - /models/operations/usersassignrole.go
   - /models/operations/usersremoverole.go
+  - /models/operations/verifydcrprovider.go
   - /models/sdkerrors/badrequesterror.go
   - /models/sdkerrors/baseerror.go
   - /models/sdkerrors/conflicterror.go
@@ -582,6 +627,7 @@ generatedFiles:
   - USAGE.md
   - acls.go
   - apikeys.go
+  - appauthstrategies.go
   - authentication.go
   - authsettings.go
   - basicauthcredentials.go
@@ -596,6 +642,7 @@ generatedFiles:
   - controlplanes.go
   - customplugins.go
   - custompluginschemas.go
+  - dcrproviders.go
   - degraphqlroutes.go
   - docs/models/components/acl.md
   - docs/models/components/aclconsumer.md
@@ -609,6 +656,29 @@ generatedFiles:
   - docs/models/components/algorithm.md
   - docs/models/components/apiaccess.md
   - docs/models/components/apiproducts.md
+  - docs/models/components/appauthstrategy.md
+  - docs/models/components/appauthstrategyconfigkeyauth.md
+  - docs/models/components/appauthstrategyconfigopenidconnect.md
+  - docs/models/components/appauthstrategykeyauthrequest.md
+  - docs/models/components/appauthstrategykeyauthrequestconfigs.md
+  - docs/models/components/appauthstrategykeyauthresponse.md
+  - docs/models/components/appauthstrategykeyauthresponseappauthstrategyconfigs.md
+  - docs/models/components/appauthstrategykeyauthresponseappauthstrategykeyauthresponse.md
+  - docs/models/components/appauthstrategykeyauthresponseappauthstrategystrategytype.md
+  - docs/models/components/appauthstrategykeyauthresponseconfigs.md
+  - docs/models/components/appauthstrategykeyauthresponsedcrprovider.md
+  - docs/models/components/appauthstrategykeyauthresponsestrategytype.md
+  - docs/models/components/appauthstrategyopenidconnectrequest.md
+  - docs/models/components/appauthstrategyopenidconnectrequestconfigs.md
+  - docs/models/components/appauthstrategyopenidconnectrequeststrategytype.md
+  - docs/models/components/appauthstrategyopenidconnectresponse.md
+  - docs/models/components/appauthstrategyopenidconnectresponseappauthstrategyconfigs.md
+  - docs/models/components/appauthstrategyopenidconnectresponseappauthstrategydcrprovider.md
+  - docs/models/components/appauthstrategyopenidconnectresponseappauthstrategyopenidconnectresponse.md
+  - docs/models/components/appauthstrategyopenidconnectresponseappauthstrategystrategytype.md
+  - docs/models/components/appauthstrategyopenidconnectresponseconfigs.md
+  - docs/models/components/appauthstrategyopenidconnectresponsedcrprovider.md
+  - docs/models/components/appauthstrategyopenidconnectresponsestrategytype.md
   - docs/models/components/applicationregistration.md
   - docs/models/components/assignedrole.md
   - docs/models/components/assignedrolecollection.md
@@ -648,6 +718,7 @@ generatedFiles:
   - docs/models/components/clustertype.md
   - docs/models/components/compatibilitystatus.md
   - docs/models/components/config.md
+  - docs/models/components/configs.md
   - docs/models/components/configstore.md
   - docs/models/components/configstoresecret.md
   - docs/models/components/configurationdataplanegroup.md
@@ -677,6 +748,8 @@ generatedFiles:
   - docs/models/components/controlplanegeofieldnotequalsfilter.md
   - docs/models/components/controlplanegeofieldorequalityfilter.md
   - docs/models/components/controlplanes.md
+  - docs/models/components/createappauthstrategyrequest.md
+  - docs/models/components/createappauthstrategyresponse.md
   - docs/models/components/createconfigstore.md
   - docs/models/components/createconfigstoresecret.md
   - docs/models/components/createconfigurationdataplanegroup.md
@@ -684,6 +757,22 @@ generatedFiles:
   - docs/models/components/createcontrolplanerequest.md
   - docs/models/components/createcontrolplanerequestclustertype.md
   - docs/models/components/createcustomdomainrequest.md
+  - docs/models/components/createdcrconfigauth0inrequest.md
+  - docs/models/components/createdcrconfigazureadinrequest.md
+  - docs/models/components/createdcrconfigcurityinrequest.md
+  - docs/models/components/createdcrconfighttpinrequest.md
+  - docs/models/components/createdcrconfigoktainrequest.md
+  - docs/models/components/createdcrproviderrequest.md
+  - docs/models/components/createdcrproviderrequestauth0.md
+  - docs/models/components/createdcrproviderrequestazuread.md
+  - docs/models/components/createdcrproviderrequestazureadprovidertype.md
+  - docs/models/components/createdcrproviderrequestcurity.md
+  - docs/models/components/createdcrproviderrequestcurityprovidertype.md
+  - docs/models/components/createdcrproviderrequesthttp.md
+  - docs/models/components/createdcrproviderrequesthttpprovidertype.md
+  - docs/models/components/createdcrproviderrequestokta.md
+  - docs/models/components/createdcrproviderrequestoktaprovidertype.md
+  - docs/models/components/createdcrproviderresponse.md
   - docs/models/components/createidentityprovider.md
   - docs/models/components/createidentityproviderconfig.md
   - docs/models/components/createnetworkrequest.md
@@ -713,6 +802,30 @@ generatedFiles:
   - docs/models/components/dataplaneclientcertificate.md
   - docs/models/components/dataplaneclientcertificaterequest.md
   - docs/models/components/dataplaneclientcertificateresponse.md
+  - docs/models/components/dcrconfig.md
+  - docs/models/components/dcrprovider.md
+  - docs/models/components/dcrproviderauth0.md
+  - docs/models/components/dcrproviderauth0createdcrproviderresponsedcrconfig.md
+  - docs/models/components/dcrproviderauth0dcrconfig.md
+  - docs/models/components/dcrproviderauth0dcrproviderauth0.md
+  - docs/models/components/dcrproviderazuread.md
+  - docs/models/components/dcrproviderazureaddcrconfig.md
+  - docs/models/components/dcrproviderazureaddcrproviderazuread.md
+  - docs/models/components/dcrproviderazureaddcrproviderresponsedcrconfig.md
+  - docs/models/components/dcrprovidercurity.md
+  - docs/models/components/dcrprovidercuritydcrconfig.md
+  - docs/models/components/dcrprovidercuritydcrprovidercurity.md
+  - docs/models/components/dcrprovidercuritydcrproviderresponsedcrconfig.md
+  - docs/models/components/dcrproviderhttp.md
+  - docs/models/components/dcrproviderhttpdcrconfig.md
+  - docs/models/components/dcrproviderhttpdcrproviderhttp.md
+  - docs/models/components/dcrproviderhttpdcrproviderresponsedcrconfig.md
+  - docs/models/components/dcrproviderokta.md
+  - docs/models/components/dcrprovideroktadcrconfig.md
+  - docs/models/components/dcrprovideroktadcrproviderokta.md
+  - docs/models/components/dcrprovideroktadcrproviderresponsedcrconfig.md
+  - docs/models/components/dcrproviderresponse.md
+  - docs/models/components/dcrprovidertype.md
   - docs/models/components/defaultresourceconfiguration.md
   - docs/models/components/defaultresourcequota.md
   - docs/models/components/defaultsubscription.md
@@ -789,6 +902,7 @@ generatedFiles:
   - docs/models/components/keywithoutparentspem.md
   - docs/models/components/keywithoutparentsset.md
   - docs/models/components/kind.md
+  - docs/models/components/listappauthstrategiesresponse.md
   - docs/models/components/listconfigstoresecretsresponse.md
   - docs/models/components/listconfigstoresresponse.md
   - docs/models/components/listconfigurationsresponse.md
@@ -796,6 +910,7 @@ generatedFiles:
   - docs/models/components/listcustomdomainsresponse.md
   - docs/models/components/listdataplanecertificatesresponse.md
   - docs/models/components/listdataplanecertificatesresponsepage.md
+  - docs/models/components/listdcrprovidersresponse.md
   - docs/models/components/listdefaultresourceconfigurationsresponse.md
   - docs/models/components/listdefaultresourcequotasresponse.md
   - docs/models/components/listgroupmemberships.md
@@ -849,11 +964,13 @@ generatedFiles:
   - docs/models/components/notificationupdatepayload.md
   - docs/models/components/oidcidentityproviderclaimmappings.md
   - docs/models/components/oidcidentityproviderconfig.md
+  - docs/models/components/one.md
   - docs/models/components/ordering.md
   - docs/models/components/page.md
   - docs/models/components/pagemeta.md
   - docs/models/components/paginatedmeta.md
   - docs/models/components/partial.md
+  - docs/models/components/partialappauthstrategyconfigopenidconnect.md
   - docs/models/components/partiallink.md
   - docs/models/components/partials.md
   - docs/models/components/passive.md
@@ -886,6 +1003,7 @@ generatedFiles:
   - docs/models/components/provideraccountsfilterparameters.md
   - docs/models/components/providername.md
   - docs/models/components/providerregion.md
+  - docs/models/components/providertype.md
   - docs/models/components/proxyurl.md
   - docs/models/components/publisher.md
   - docs/models/components/resourceconfiguration.md
@@ -988,6 +1106,8 @@ generatedFiles:
   - docs/models/components/sources.md
   - docs/models/components/state.md
   - docs/models/components/statemetadata.md
+  - docs/models/components/status.md
+  - docs/models/components/strategytype.md
   - docs/models/components/stringfieldcontainsfilter.md
   - docs/models/components/stringfieldequalscomparison.md
   - docs/models/components/stringfieldfilter.md
@@ -1022,13 +1142,21 @@ generatedFiles:
   - docs/models/components/transitgatewaystatefieldnotequalsfilter.md
   - docs/models/components/transitgatewaystatefieldorequalityfilter.md
   - docs/models/components/transitgatewaystatemetadata.md
+  - docs/models/components/two.md
   - docs/models/components/type.md
   - docs/models/components/unhealthy.md
+  - docs/models/components/updateappauthstrategyrequest.md
   - docs/models/components/updateauthenticationsettings.md
   - docs/models/components/updateconfigstore.md
   - docs/models/components/updateconfigstoresecret.md
   - docs/models/components/updatecontrolplanerequest.md
   - docs/models/components/updatecontrolplanerequestauthtype.md
+  - docs/models/components/updatedcrconfigauth0inrequest.md
+  - docs/models/components/updatedcrconfigazureadinrequest.md
+  - docs/models/components/updatedcrconfigcurityinrequest.md
+  - docs/models/components/updatedcrconfighttpinrequest.md
+  - docs/models/components/updatedcrconfigoktainrequest.md
+  - docs/models/components/updatedcrproviderrequest.md
   - docs/models/components/updateidentityprovider.md
   - docs/models/components/updateidentityproviderconfig.md
   - docs/models/components/updateidpconfiguration.md
@@ -1051,7 +1179,9 @@ generatedFiles:
   - docs/models/components/usercollection.md
   - docs/models/components/userconfiguration.md
   - docs/models/components/userconfigurationlistresponse.md
+  - docs/models/components/uuidfieldfilter.md
   - docs/models/components/vault.md
+  - docs/models/components/verifydcrproviderresponse.md
   - docs/models/components/viewer.md
   - docs/models/operations/addconsumertogrouprequest.md
   - docs/models/operations/addconsumertogrouprequestbody.md
@@ -1068,6 +1198,7 @@ generatedFiles:
   - docs/models/operations/bulknotificationsresponse.md
   - docs/models/operations/createaclwithconsumerrequest.md
   - docs/models/operations/createaclwithconsumerresponse.md
+  - docs/models/operations/createappauthstrategyresponse.md
   - docs/models/operations/createbasicauthwithconsumerrequest.md
   - docs/models/operations/createbasicauthwithconsumerresponse.md
   - docs/models/operations/createcacertificaterequest.md
@@ -1089,6 +1220,7 @@ generatedFiles:
   - docs/models/operations/createcustompluginresponse.md
   - docs/models/operations/createdataplanecertificaterequest.md
   - docs/models/operations/createdataplanecertificateresponse.md
+  - docs/models/operations/createdcrproviderresponse.md
   - docs/models/operations/createdegraphqlroutewithservicerequest.md
   - docs/models/operations/createdegraphqlroutewithserviceresponse.md
   - docs/models/operations/createeventsubscriptionrequest.md
@@ -1144,6 +1276,8 @@ generatedFiles:
   - docs/models/operations/createvaultresponse.md
   - docs/models/operations/deleteaclwithconsumerrequest.md
   - docs/models/operations/deleteaclwithconsumerresponse.md
+  - docs/models/operations/deleteappauthstrategyrequest.md
+  - docs/models/operations/deleteappauthstrategyresponse.md
   - docs/models/operations/deletebasicauthwithconsumerrequest.md
   - docs/models/operations/deletebasicauthwithconsumerresponse.md
   - docs/models/operations/deletecacertificaterequest.md
@@ -1166,6 +1300,8 @@ generatedFiles:
   - docs/models/operations/deletecustompluginresponse.md
   - docs/models/operations/deletedataplanecertificaterequest.md
   - docs/models/operations/deletedataplanecertificateresponse.md
+  - docs/models/operations/deletedcrproviderrequest.md
+  - docs/models/operations/deletedcrproviderresponse.md
   - docs/models/operations/deletedegraphqlroutewithservicerequest.md
   - docs/models/operations/deletedegraphqlroutewithserviceresponse.md
   - docs/models/operations/deleteeventsubscriptionrequest.md
@@ -1245,6 +1381,8 @@ generatedFiles:
   - docs/models/operations/getaclresponse.md
   - docs/models/operations/getaclwithconsumerrequest.md
   - docs/models/operations/getaclwithconsumerresponse.md
+  - docs/models/operations/getappauthstrategyrequest.md
+  - docs/models/operations/getappauthstrategyresponse.md
   - docs/models/operations/getauthenticationsettingsresponse.md
   - docs/models/operations/getavailabilityjsonresponse.md
   - docs/models/operations/getbasicauthrequest.md
@@ -1281,6 +1419,8 @@ generatedFiles:
   - docs/models/operations/getcustompluginresponse.md
   - docs/models/operations/getdataplanecertificaterequest.md
   - docs/models/operations/getdataplanecertificateresponse.md
+  - docs/models/operations/getdcrproviderrequest.md
+  - docs/models/operations/getdcrproviderresponse.md
   - docs/models/operations/getdegraphqlrouterequest.md
   - docs/models/operations/getdegraphqlrouteresponse.md
   - docs/models/operations/getdegraphqlroutewithservicerequest.md
@@ -1372,6 +1512,7 @@ generatedFiles:
   - docs/models/operations/getsystemaccountsidaccesstokensidresponse.md
   - docs/models/operations/getsystemaccountsidrequest.md
   - docs/models/operations/getsystemaccountsidresponse.md
+  - docs/models/operations/getsystemaccountsqueryparamfilter.md
   - docs/models/operations/getsystemaccountsrequest.md
   - docs/models/operations/getsystemaccountsresponse.md
   - docs/models/operations/gettargetwithupstreamrequest.md
@@ -1399,6 +1540,8 @@ generatedFiles:
   - docs/models/operations/listaclwithconsumerrequest.md
   - docs/models/operations/listaclwithconsumerresponse.md
   - docs/models/operations/listaclwithconsumerresponsebody.md
+  - docs/models/operations/listappauthstrategiesrequest.md
+  - docs/models/operations/listappauthstrategiesresponse.md
   - docs/models/operations/listbasicauthrequest.md
   - docs/models/operations/listbasicauthresponse.md
   - docs/models/operations/listbasicauthresponsebody.md
@@ -1438,6 +1581,8 @@ generatedFiles:
   - docs/models/operations/listcustompluginresponsebody.md
   - docs/models/operations/listdataplanenodesrequest.md
   - docs/models/operations/listdataplanenodesresponse.md
+  - docs/models/operations/listdcrprovidersrequest.md
+  - docs/models/operations/listdcrprovidersresponse.md
   - docs/models/operations/listdefaultresourceconfigurationsrequest.md
   - docs/models/operations/listdefaultresourceconfigurationsresponse.md
   - docs/models/operations/listdefaultresourcequotasrequest.md
@@ -1596,10 +1741,14 @@ generatedFiles:
   - docs/models/operations/removeconsumerfromgroupresponse.md
   - docs/models/operations/removeuserfromteamrequest.md
   - docs/models/operations/removeuserfromteamresponse.md
+  - docs/models/operations/replaceappauthstrategyrequest.md
+  - docs/models/operations/replaceappauthstrategyresponse.md
   - docs/models/operations/teamsassignrolerequest.md
   - docs/models/operations/teamsassignroleresponse.md
   - docs/models/operations/teamsremoverolerequest.md
   - docs/models/operations/teamsremoveroleresponse.md
+  - docs/models/operations/updateappauthstrategyrequest.md
+  - docs/models/operations/updateappauthstrategyresponse.md
   - docs/models/operations/updateauthenticationsettingsresponse.md
   - docs/models/operations/updateconfigstorerequest.md
   - docs/models/operations/updateconfigstoreresponse.md
@@ -1607,6 +1756,8 @@ generatedFiles:
   - docs/models/operations/updateconfigstoresecretresponse.md
   - docs/models/operations/updatecontrolplanerequest.md
   - docs/models/operations/updatecontrolplaneresponse.md
+  - docs/models/operations/updatedcrproviderrequest.md
+  - docs/models/operations/updatedcrproviderresponse.md
   - docs/models/operations/updateeventsubscriptionrequest.md
   - docs/models/operations/updateeventsubscriptionresponse.md
   - docs/models/operations/updateidentityproviderrequest.md
@@ -1686,6 +1837,8 @@ generatedFiles:
   - docs/models/operations/usersassignroleresponse.md
   - docs/models/operations/usersremoverolerequest.md
   - docs/models/operations/usersremoveroleresponse.md
+  - docs/models/operations/verifydcrproviderrequest.md
+  - docs/models/operations/verifydcrproviderresponse.md
   - docs/models/sdkerrors/badrequesterror.md
   - docs/models/sdkerrors/baseerror.md
   - docs/models/sdkerrors/conflicterror.md
@@ -1702,6 +1855,7 @@ generatedFiles:
   - docs/models/sdkerrors/unsupportedmediatypeerror.md
   - docs/sdks/acls/README.md
   - docs/sdks/apikeys/README.md
+  - docs/sdks/appauthstrategies/README.md
   - docs/sdks/authentication/README.md
   - docs/sdks/authsettings/README.md
   - docs/sdks/basicauthcredentials/README.md
@@ -1716,6 +1870,7 @@ generatedFiles:
   - docs/sdks/controlplanes/README.md
   - docs/sdks/customplugins/README.md
   - docs/sdks/custompluginschemas/README.md
+  - docs/sdks/dcrproviders/README.md
   - docs/sdks/degraphqlroutes/README.md
   - docs/sdks/dpcertificates/README.md
   - docs/sdks/dpnodes/README.md
@@ -5487,6 +5642,182 @@ examples:
         path:
           userId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
       responses:
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  create-app-auth-strategy:
+    speakeasy-default-create-app-auth-strategy:
+      requestBody:
+        application/json: {"name": "<value>", "display_name": "Theo_Boyer", "strategy_type": "key_auth", "configs": {"key-auth": {}}}
+      responses:
+        "201":
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "display_name": "Joana.Mann", "strategy_type": "key_auth", "configs": {"key-auth": {}}, "active": true, "dcr_provider": {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "provider_type": "http"}, "labels": {"env": "test"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 927156, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "max", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+  list-app-auth-strategies:
+    speakeasy-default-list-app-auth-strategies:
+      parameters:
+        query:
+          page[size]: 10
+          page[number]: 1
+      responses:
+        "200":
+          application/json: {"data": [], "meta": {"page": {"number": 1, "size": 10, "total": 100}}}
+        "400":
+          application/problem+json: {"status": 164479, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "max", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}, {"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value 1>"], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+  get-app-auth-strategy:
+    speakeasy-default-get-app-auth-strategy:
+      parameters:
+        path:
+          authStrategyId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+      responses:
+        "200":
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "display_name": "Abdiel_Pacocha", "strategy_type": "key_auth", "configs": {"key-auth": {}}, "active": true, "dcr_provider": {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "provider_type": "curity"}, "labels": {"env": "test"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  replace-app-auth-strategy:
+    speakeasy-default-replace-app-auth-strategy:
+      parameters:
+        path:
+          authStrategyId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+      requestBody:
+        application/json: {"name": "<value>", "display_name": "Dannie77", "strategy_type": "openid_connect", "configs": {"openid-connect": {"issuer": "https://tedious-tinderbox.org/", "credential_claim": ["<value 1>", "<value 2>", "<value 3>"], "scopes": [], "auth_methods": [], "labels": {"env": "test"}}}}
+      responses:
+        "201":
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "display_name": "Deondre.Walter", "strategy_type": "openid_connect", "configs": {"openid-connect": {"issuer": "https://tedious-tinderbox.org/", "credential_claim": ["<value 1>", "<value 2>", "<value 3>"], "scopes": [], "auth_methods": [], "labels": {"env": "test"}}}, "active": true, "dcr_provider": {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "provider_type": "curity"}, "labels": {"env": "test"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 566206, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value 1>", "<value 2>"], "source": "body"}, {"field": "name", "rule": "max_items", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}, {"field": "name", "rule": "max_items", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+  update-app-auth-strategy:
+    speakeasy-default-update-app-auth-strategy:
+      parameters:
+        path:
+          authStrategyId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+      requestBody:
+        application/json: {"labels": {"env": "test"}}
+      responses:
+        "200":
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "display_name": "Ora_MacGyver-Waelchi", "strategy_type": "key_auth", "configs": {"key-auth": {}}, "active": false, "dcr_provider": {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "provider_type": "azureAd"}, "labels": {"env": "test"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 360314, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": null, "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  delete-app-auth-strategy:
+    speakeasy-default-delete-app-auth-strategy:
+      parameters:
+        path:
+          authStrategyId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+      responses:
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "409":
+          application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
+  create-dcr-provider:
+    speakeasy-default-create-dcr-provider:
+      requestBody:
+        application/json: {"provider_type": "okta", "dcr_config": {"dcr_token": "<value>"}, "name": "<value>", "issuer": "https://growing-meadow.biz/"}
+      responses:
+        "201":
+          application/json: {"provider_type": "DcrProviderOkta", "dcr_config": {}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "issuer": "https://authentic-injunction.net/", "active": true, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 616904, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": [], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+  list-dcr-providers:
+    speakeasy-default-list-dcr-providers:
+      parameters:
+        query:
+          page[size]: 10
+          page[number]: 1
+      responses:
+        "200":
+          application/json: {"data": [{"provider_type": "DcrProviderAzureAd", "dcr_config": {}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "issuer": "https://grim-grandpa.info", "active": false, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}], "meta": {"page": {"number": 1, "size": 10, "total": 100}}}
+        "400":
+          application/problem+json: {"status": 174728, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+  get-dcr-provider:
+    speakeasy-default-get-dcr-provider:
+      parameters:
+        path:
+          dcrProviderId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+      responses:
+        "200":
+          application/json: {"provider_type": "DcrProviderOkta", "dcr_config": {}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "issuer": "https://scientific-metal.org/", "active": true, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  update-dcr-provider:
+    speakeasy-default-update-dcr-provider:
+      parameters:
+        path:
+          dcrProviderId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+      requestBody:
+        application/json: {"labels": {"env": "test"}}
+      responses:
+        "200":
+          application/json: {"provider_type": "DcrProviderAuth0", "dcr_config": {}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "issuer": "https://slow-stump.org/", "active": true, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 638047, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "max", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}, {"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value 1>"], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  delete-dcr-provider:
+    speakeasy-default-delete-dcr-provider:
+      parameters:
+        path:
+          dcrProviderId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+      responses:
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  verify-dcr-provider:
+    speakeasy-default-verify-dcr-provider:
+      parameters:
+        path:
+          dcrProviderId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+      responses:
+        "200":
+          application/json: {"status": "success", "errors": ["<value 1>", "<value 2>"]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
         "404":
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
 examplesVersion: 1.0.2

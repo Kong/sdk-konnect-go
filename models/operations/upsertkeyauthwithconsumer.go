@@ -15,7 +15,7 @@ type UpsertKeyAuthWithConsumerRequest struct {
 	// ID of the API-key to lookup
 	KeyAuthID string `pathParam:"style=simple,explode=false,name=KeyAuthId"`
 	// Description of the API-key
-	KeyAuthWithoutParents components.KeyAuthWithoutParents `request:"mediaType=application/json"`
+	KeyAuthWithoutParents *components.KeyAuthWithoutParents `request:"mediaType=application/json"`
 }
 
 func (o *UpsertKeyAuthWithConsumerRequest) GetControlPlaneID() string {
@@ -39,9 +39,9 @@ func (o *UpsertKeyAuthWithConsumerRequest) GetKeyAuthID() string {
 	return o.KeyAuthID
 }
 
-func (o *UpsertKeyAuthWithConsumerRequest) GetKeyAuthWithoutParents() components.KeyAuthWithoutParents {
+func (o *UpsertKeyAuthWithConsumerRequest) GetKeyAuthWithoutParents() *components.KeyAuthWithoutParents {
 	if o == nil {
-		return components.KeyAuthWithoutParents{}
+		return nil
 	}
 	return o.KeyAuthWithoutParents
 }

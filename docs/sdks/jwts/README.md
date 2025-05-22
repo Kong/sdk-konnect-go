@@ -100,7 +100,7 @@ func main() {
     res, err := s.JWTs.CreateJwtWithConsumer(ctx, operations.CreateJwtWithConsumerRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
-        JWTWithoutParents: components.JWTWithoutParents{
+        JWTWithoutParents: &components.JWTWithoutParents{
             Algorithm: components.JWTWithoutParentsAlgorithmHs256.ToPointer(),
             ID: sdkkonnectgo.String("75695322-e8a0-4109-aed4-5416b0308d85"),
             Key: sdkkonnectgo.String("YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz"),
@@ -280,7 +280,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         JWTID: "4a7f5faa-8c96-46d6-8214-c87573ef2ac4",
-        JWTWithoutParents: components.JWTWithoutParents{
+        JWTWithoutParents: &components.JWTWithoutParents{
             Algorithm: components.JWTWithoutParentsAlgorithmHs256.ToPointer(),
             ID: sdkkonnectgo.String("75695322-e8a0-4109-aed4-5416b0308d85"),
             Key: sdkkonnectgo.String("YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz"),

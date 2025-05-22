@@ -76,8 +76,13 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 type SDK struct {
 	// Operations related to notifications
 	Notifications *Notifications
-	CloudGateways *CloudGateways
-	ControlPlanes *ControlPlanes
+	// Application Auth Strategies are sets of plugin configurations that represent how the gateway will perform authentication and authorization for a Product Version.
+	// Called “Auth Strategy” for short in the context of portals/applications.
+	// The plugins are synced to any Gateway Service that is currently linked or becomes linked to the Product Version.
+	//
+	AppAuthStrategies *AppAuthStrategies
+	CloudGateways     *CloudGateways
+	ControlPlanes     *ControlPlanes
 	// Config Stores
 	ConfigStores *ConfigStores
 	// Config Store Secrets
@@ -183,8 +188,13 @@ type SDK struct {
 	// DP Certificates
 	DPCertificates *DPCertificates
 	// DP Nodes
-	DPNodes                      *DPNodes
-	ControlPlaneGroups           *ControlPlaneGroups
+	DPNodes            *DPNodes
+	ControlPlaneGroups *ControlPlaneGroups
+	// Dynamic Client Registration Providers are configurations representing an external Identity Provider whose clients (i.e. Applications) Konnect will be authorized to manage.
+	// For instance, they will be able to perform dynamic client registration (DCR) with the provider.
+	// The DCR provider provides credentials to each DCR-enabled application in Konnect that can be used to access Product Versions that the app is registered for.
+	//
+	DCRProviders                 *DCRProviders
 	Authentication               *Authentication
 	AuthSettings                 *AuthSettings
 	Invites                      *Invites
@@ -275,9 +285,9 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "0.2.30",
-			GenVersion:        "2.605.6",
-			UserAgent:         "speakeasy-sdk/go 0.2.30 2.605.6 0.0.1 github.com/Kong/sdk-konnect-go",
+			SDKVersion:        "0.3.0",
+			GenVersion:        "2.607.0",
+			UserAgent:         "speakeasy-sdk/go 0.3.0 2.607.0 0.0.1 github.com/Kong/sdk-konnect-go",
 			Hooks:             hooks.New(),
 		},
 	}
@@ -298,6 +308,8 @@ func New(opts ...SDKOption) *SDK {
 	}
 
 	sdk.Notifications = newNotifications(sdk.sdkConfiguration)
+
+	sdk.AppAuthStrategies = newAppAuthStrategies(sdk.sdkConfiguration)
 
 	sdk.CloudGateways = newCloudGateways(sdk.sdkConfiguration)
 
@@ -360,6 +372,8 @@ func New(opts ...SDKOption) *SDK {
 	sdk.DPNodes = newDPNodes(sdk.sdkConfiguration)
 
 	sdk.ControlPlaneGroups = newControlPlaneGroups(sdk.sdkConfiguration)
+
+	sdk.DCRProviders = newDCRProviders(sdk.sdkConfiguration)
 
 	sdk.Authentication = newAuthentication(sdk.sdkConfiguration)
 

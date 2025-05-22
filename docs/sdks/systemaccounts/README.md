@@ -40,7 +40,7 @@ func main() {
     res, err := s.SystemAccounts.GetSystemAccounts(ctx, operations.GetSystemAccountsRequest{
         PageSize: sdkkonnectgo.Int64(10),
         PageNumber: sdkkonnectgo.Int64(1),
-        Filter: &operations.QueryParamFilter{
+        Filter: &operations.GetSystemAccountsQueryParamFilter{
             KonnectManaged: sdkkonnectgo.Bool(true),
         },
     })

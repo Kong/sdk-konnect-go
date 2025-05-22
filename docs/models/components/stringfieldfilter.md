@@ -1,6 +1,6 @@
 # StringFieldFilter
 
-Filter a string value field by partial contains.
+Filters on the given string field value by exact match inequality.
 
 
 ## Fields
@@ -9,3 +9,6 @@ Filter a string value field by partial contains.
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `Eq`               | **string*          | :heavy_minus_sign: | N/A                |
 | `Contains`         | **string*          | :heavy_minus_sign: | N/A                |
+| `Ocontains`        | **string*          | :heavy_minus_sign: | N/A                |
+| `Oeq`              | **string*          | :heavy_minus_sign: | N/A                |
+| `Neq`              | **string*          | :heavy_minus_sign: | N/A                |

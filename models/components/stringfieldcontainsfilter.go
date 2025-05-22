@@ -2,7 +2,7 @@
 
 package components
 
-// StringFieldContainsFilter - Filter a string value field by partial contains.
+// StringFieldContainsFilter - Filters on the given string field value by fuzzy match.
 type StringFieldContainsFilter struct {
 	Contains string `queryParam:"name=contains"`
 }

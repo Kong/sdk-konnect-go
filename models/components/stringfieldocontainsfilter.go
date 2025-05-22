@@ -2,7 +2,7 @@
 
 package components
 
-// StringFieldOContainsFilter - Filters on the union of given string values by fuzzy match.
+// StringFieldOContainsFilter - Returns entities that fuzzy-match any of the comma-delimited phrases in the filter string.
 type StringFieldOContainsFilter struct {
 	Ocontains string `queryParam:"name=ocontains"`
 }

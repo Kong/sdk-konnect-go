@@ -1,12 +1,10 @@
 # QueryParamFilter
 
-Filter system accounts returned in the response.
+Filter identity providers returned in the response.
 
 
 ## Fields
 
-| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   | Example                                                                       |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `Name`                                                                        | [*components.StringFieldFilter](../../models/components/stringfieldfilter.md) | :heavy_minus_sign:                                                            | Filter a string value field by partial contains.                              |                                                                               |
-| `Description`                                                                 | [*components.StringFieldFilter](../../models/components/stringfieldfilter.md) | :heavy_minus_sign:                                                            | Filter a string value field by partial contains.                              |                                                                               |
-| `KonnectManaged`                                                              | **bool*                                                                       | :heavy_minus_sign:                                                            | Filter by a boolean value (true/false).                                       | true                                                                          |
+| Field                                                   | Type                                                    | Required                                                | Description                                             |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `Type`                                                  | **string*                                               | :heavy_minus_sign:                                      | Filters on the given string field value by exact match. |
