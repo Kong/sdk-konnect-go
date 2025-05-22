@@ -2,5 +2,6 @@
 **/.speakeasy/temp/
 **/.speakeasy/logs/
 .speakeasy/reports
+.speakeasy/logs
 # .gitignore
 bin/
