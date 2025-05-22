@@ -717,14 +717,16 @@ func main() {
 
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         LoginPath: sdkkonnectgo.String("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigSAMLIdentityProviderConfigInput(
-            components.SAMLIdentityProviderConfigInput{
-                IdpMetadataURL: sdkkonnectgo.String("https://mocksaml.com/api/saml/metadata"),
-                IdpMetadataXML: sdkkonnectgo.String("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                "<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n" +
-                "  <!-- SAML metadata content here -->\n" +
-                "</EntityDescriptor>\n" +
-                ""),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "YOUR_CLIENT_ID",
+                ClientSecret: sdkkonnectgo.String("YOUR_CLIENT_SECRET"),
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.String("name"),
+                    Email: sdkkonnectgo.String("email"),
+                    Groups: sdkkonnectgo.String("groups"),
+                },
             },
         )),
     })

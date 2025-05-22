@@ -97,7 +97,6 @@ func main() {
     res, err := s.Partials.CreatePartial(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Partial{
         Config: map[string]any{
             "key": "<value>",
-            "key1": "<value>",
         },
         Type: "<value>",
     })
@@ -271,7 +270,9 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Partial: components.Partial{
             Config: map[string]any{
-
+                "key": "<value>",
+                "key1": "<value>",
+                "key2": "<value>",
             },
             Type: "<value>",
         },

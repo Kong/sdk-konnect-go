@@ -178,18 +178,40 @@ func main() {
 
     res, err := s.CloudGateways.CreateConfiguration(ctx, components.CreateConfigurationRequest{
         ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
-        ControlPlaneGeo: components.ControlPlaneGeoEu,
+        ControlPlaneGeo: components.ControlPlaneGeoIn,
         Version: "3.2",
         DataplaneGroups: []components.CreateConfigurationDataPlaneGroup{
             components.CreateConfigurationDataPlaneGroup{
                 Provider: components.ProviderNameAws,
                 Region: "us-east-2",
                 CloudGatewayNetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
-                Autoscale: components.CreateConfigurationDataPlaneGroupAutoscaleConfigurationDataPlaneGroupAutoscaleStatic(
-                    components.ConfigurationDataPlaneGroupAutoscaleStatic{
-                        Kind: components.KindStatic,
-                        InstanceType: components.InstanceTypeNameMedium,
-                        RequestedInstances: 3,
+                Autoscale: components.CreateConfigurationDataPlaneGroupAutoscaleConfigurationDataPlaneGroupAutoscaleAutopilot(
+                    components.ConfigurationDataPlaneGroupAutoscaleAutopilot{
+                        Kind: components.ConfigurationDataPlaneGroupAutoscaleAutopilotKindAutopilot,
+                        BaseRps: 1,
+                        MaxRps: sdkkonnectgo.Int64(1000),
+                    },
+                ),
+                Environment: []components.ConfigurationDataPlaneGroupEnvironmentField{
+                    components.ConfigurationDataPlaneGroupEnvironmentField{
+                        Name: "KONG_LOG_LEVEL",
+                        Value: "INFO",
+                    },
+                    components.ConfigurationDataPlaneGroupEnvironmentField{
+                        Name: "KONG_LOG_LEVEL",
+                        Value: "INFO",
+                    },
+                },
+            },
+            components.CreateConfigurationDataPlaneGroup{
+                Provider: components.ProviderNameAws,
+                Region: "us-east-2",
+                CloudGatewayNetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
+                Autoscale: components.CreateConfigurationDataPlaneGroupAutoscaleConfigurationDataPlaneGroupAutoscaleAutopilot(
+                    components.ConfigurationDataPlaneGroupAutoscaleAutopilot{
+                        Kind: components.ConfigurationDataPlaneGroupAutoscaleAutopilotKindAutopilot,
+                        BaseRps: 1,
+                        MaxRps: sdkkonnectgo.Int64(1000),
                     },
                 ),
                 Environment: []components.ConfigurationDataPlaneGroupEnvironmentField{
@@ -385,7 +407,7 @@ func main() {
 
     res, err := s.CloudGateways.CreateCustomDomains(ctx, components.CreateCustomDomainRequest{
         ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
-        ControlPlaneGeo: components.ControlPlaneGeoAu,
+        ControlPlaneGeo: components.ControlPlaneGeoUs,
         Domain: "example.com",
     })
     if err != nil {

@@ -140,7 +140,7 @@ func main() {
 	ctx := context.Background()
 
 	s := sdkkonnectgo.New(
-		sdkkonnectgo.WithServerURL("https://global.api.konghq.com"),
+		sdkkonnectgo.WithServerURL("https://au.api.konghq.com"),
 		sdkkonnectgo.WithSecurity(components.Security{
 			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
