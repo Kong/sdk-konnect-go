@@ -14732,6 +14732,9 @@ components:
       type: object
       discriminator:
         propertyName: strategy_type
+        mapping:
+          key_auth: '#/components/schemas/AppAuthStrategyKeyAuthRequest'
+          openid_connect: '#/components/schemas/AppAuthStrategyOpenIDConnectRequest'
       required:
         - strategy_type
       oneOf:
@@ -14749,6 +14752,9 @@ components:
       type: object
       discriminator:
         propertyName: strategy_type
+        mapping:
+          key_auth: '#/components/schemas/AppAuthStrategyKeyAuthResponse'
+          openid_connect: '#/components/schemas/AppAuthStrategyOpenIDConnectResponse'
       required:
         - strategy_type
       oneOf:
