@@ -100,9 +100,9 @@ func main() {
     res, err := s.APIKeys.CreateKeyAuthWithConsumer(ctx, operations.CreateKeyAuthWithConsumerRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
-        KeyAuthWithoutParents: components.KeyAuthWithoutParents{
+        KeyAuthWithoutParents: &components.KeyAuthWithoutParents{
             ID: sdkkonnectgo.String("b2f34145-0343-41a4-9602-4c69dec2f269"),
-            Key: "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo",
+            Key: sdkkonnectgo.String("IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"),
         },
     })
     if err != nil {
@@ -278,9 +278,9 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         KeyAuthID: "",
-        KeyAuthWithoutParents: components.KeyAuthWithoutParents{
+        KeyAuthWithoutParents: &components.KeyAuthWithoutParents{
             ID: sdkkonnectgo.String("b2f34145-0343-41a4-9602-4c69dec2f269"),
-            Key: "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo",
+            Key: sdkkonnectgo.String("IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"),
         },
     })
     if err != nil {

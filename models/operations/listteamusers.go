@@ -13,11 +13,11 @@ var ListTeamUsersServerList = []string{
 
 // ListTeamUsersQueryParamFilter - Filter users returned in the response.
 type ListTeamUsersQueryParamFilter struct {
-	// Filter a string value by exact match.
+	// Filters on the given string field value by exact match.
 	ID *string `queryParam:"name=id"`
-	// Filter a string value field by partial contains.
+	// Filters on the given string field value by exact match inequality.
 	Email *components.StringFieldFilter `queryParam:"name=email"`
-	// Filter a string value field by partial contains.
+	// Filters on the given string field value by exact match inequality.
 	FullName *components.StringFieldFilter `queryParam:"name=full_name"`
 	// Filter by a boolean value (true/false).
 	Active *bool `queryParam:"name=active"`

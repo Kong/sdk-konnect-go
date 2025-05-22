@@ -2,7 +2,7 @@
 
 package components
 
-// StringFieldOEQFilter - Filters on the given comma separated string by one or more exact match.
+// StringFieldOEQFilter - Returns entities that exact match any of the comma-delimited phrases in the filter string.
 type StringFieldOEQFilter struct {
 	Oeq string `queryParam:"name=oeq"`
 }

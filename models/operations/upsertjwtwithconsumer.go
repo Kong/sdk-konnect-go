@@ -15,7 +15,7 @@ type UpsertJwtWithConsumerRequest struct {
 	// ID of the JWT to lookup
 	JWTID string `pathParam:"style=simple,explode=false,name=JWTId"`
 	// Description of the JWT
-	JWTWithoutParents components.JWTWithoutParents `request:"mediaType=application/json"`
+	JWTWithoutParents *components.JWTWithoutParents `request:"mediaType=application/json"`
 }
 
 func (o *UpsertJwtWithConsumerRequest) GetControlPlaneID() string {
@@ -39,9 +39,9 @@ func (o *UpsertJwtWithConsumerRequest) GetJWTID() string {
 	return o.JWTID
 }
 
-func (o *UpsertJwtWithConsumerRequest) GetJWTWithoutParents() components.JWTWithoutParents {
+func (o *UpsertJwtWithConsumerRequest) GetJWTWithoutParents() *components.JWTWithoutParents {
 	if o == nil {
-		return components.JWTWithoutParents{}
+		return nil
 	}
 	return o.JWTWithoutParents
 }

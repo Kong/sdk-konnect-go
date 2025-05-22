@@ -1,6 +1,6 @@
 # StringFieldContainsFilter
 
-Filter a string value field by partial contains.
+Filters on the given string field value by fuzzy match.
 
 
 ## Fields

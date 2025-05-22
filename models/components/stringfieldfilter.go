@@ -2,10 +2,13 @@
 
 package components
 
-// StringFieldFilter - Filter a string value field by partial contains.
+// StringFieldFilter - Filters on the given string field value by exact match inequality.
 type StringFieldFilter struct {
-	Eq       *string `queryParam:"name=eq"`
-	Contains *string `queryParam:"name=contains"`
+	Eq        *string `queryParam:"name=eq"`
+	Contains  *string `queryParam:"name=contains"`
+	Ocontains *string `queryParam:"name=ocontains"`
+	Oeq       *string `queryParam:"name=oeq"`
+	Neq       *string `queryParam:"name=neq"`
 }
 
 func (o *StringFieldFilter) GetEq() *string {
@@ -20,4 +23,25 @@ func (o *StringFieldFilter) GetContains() *string {
 		return nil
 	}
 	return o.Contains
+}
+
+func (o *StringFieldFilter) GetOcontains() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Ocontains
+}
+
+func (o *StringFieldFilter) GetOeq() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Oeq
+}
+
+func (o *StringFieldFilter) GetNeq() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Neq
 }

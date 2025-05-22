@@ -2,7 +2,7 @@
 
 package components
 
-// IDFieldFilter - Filters on the given comma separated string by one or more exact match.
+// IDFieldFilter - Returns entities that exact match any of the comma-delimited phrases in the filter string.
 type IDFieldFilter struct {
 	Eq  *string `queryParam:"name=eq"`
 	Neq *string `queryParam:"name=neq"`

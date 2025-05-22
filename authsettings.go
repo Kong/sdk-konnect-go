@@ -2168,7 +2168,7 @@ func (s *AuthSettings) GetIdpTeamMappings(ctx context.Context, pageSize *int64, 
 // GetIdentityProviders - Retrieve Identity Providers
 // Retrieves the identity providers available within the organization. This operation provides information about
 // various identity providers for SAML or OIDC authentication integrations.
-func (s *AuthSettings) GetIdentityProviders(ctx context.Context, filter *operations.Filter, opts ...operations.Option) (*operations.GetIdentityProvidersResponse, error) {
+func (s *AuthSettings) GetIdentityProviders(ctx context.Context, filter *operations.QueryParamFilter, opts ...operations.Option) (*operations.GetIdentityProvidersResponse, error) {
 	request := operations.GetIdentityProvidersRequest{
 		Filter: filter,
 	}

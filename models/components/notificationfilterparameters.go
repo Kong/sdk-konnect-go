@@ -3,15 +3,15 @@
 package components
 
 type NotificationFilterParameters struct {
-	// Filter a string value field by partial contains.
+	// Filters on the given string field value by exact match inequality.
 	Title *StringFieldFilter `queryParam:"name=title"`
-	// Filter a string value field by partial contains.
+	// Filters on the given string field value by exact match inequality.
 	Description *StringFieldFilter `queryParam:"name=description"`
-	// Filter a string value field by partial contains.
+	// Filters on the given string field value by exact match inequality.
 	Namespace *StringFieldFilter `queryParam:"name=namespace"`
-	// Filter a string value field by partial contains.
+	// Filters on the given string field value by exact match inequality.
 	Region *StringFieldFilter `queryParam:"name=region"`
-	// Filter a string value field by partial contains.
+	// Filters on the given string field value by exact match inequality.
 	Status *StringFieldFilter `queryParam:"name=status"`
 }
 

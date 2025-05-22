@@ -1,6 +1,6 @@
 # ID
 
-Filters on the given comma separated string by one or more exact match.
+Returns entities that exact match any of the comma-delimited phrases in the filter string.
 
 
 ## Fields

@@ -11,31 +11,31 @@ var GetSystemAccountsServerList = []string{
 	"https://global.api.konghq.com/",
 }
 
-// QueryParamFilter - Filter system accounts returned in the response.
-type QueryParamFilter struct {
-	// Filter a string value field by partial contains.
+// GetSystemAccountsQueryParamFilter - Filter system accounts returned in the response.
+type GetSystemAccountsQueryParamFilter struct {
+	// Filters on the given string field value by exact match inequality.
 	Name *components.StringFieldFilter `queryParam:"name=name"`
-	// Filter a string value field by partial contains.
+	// Filters on the given string field value by exact match inequality.
 	Description *components.StringFieldFilter `queryParam:"name=description"`
 	// Filter by a boolean value (true/false).
 	KonnectManaged *bool `queryParam:"name=konnect_managed"`
 }
 
-func (o *QueryParamFilter) GetName() *components.StringFieldFilter {
+func (o *GetSystemAccountsQueryParamFilter) GetName() *components.StringFieldFilter {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *QueryParamFilter) GetDescription() *components.StringFieldFilter {
+func (o *GetSystemAccountsQueryParamFilter) GetDescription() *components.StringFieldFilter {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *QueryParamFilter) GetKonnectManaged() *bool {
+func (o *GetSystemAccountsQueryParamFilter) GetKonnectManaged() *bool {
 	if o == nil {
 		return nil
 	}
@@ -48,7 +48,7 @@ type GetSystemAccountsRequest struct {
 	// Determines which page of the entities to retrieve.
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 	// Filter system accounts returned in the response.
-	Filter *QueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *GetSystemAccountsQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
 func (o *GetSystemAccountsRequest) GetPageSize() *int64 {
@@ -65,7 +65,7 @@ func (o *GetSystemAccountsRequest) GetPageNumber() *int64 {
 	return o.PageNumber
 }
 
-func (o *GetSystemAccountsRequest) GetFilter() *QueryParamFilter {
+func (o *GetSystemAccountsRequest) GetFilter() *GetSystemAccountsQueryParamFilter {
 	if o == nil {
 		return nil
 	}
