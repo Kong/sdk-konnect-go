@@ -9472,6 +9472,7 @@ components:
                 type: string
                 description: The token of the system account access token.
                 readOnly: true
+                x-speakeasy-param-sensitive: true
     MeOrganization:
       description: Me Organization
       content:
@@ -11889,6 +11890,16 @@ components:
         - availability_zones
         - cidr_blocks
         - reserved_cidr_blocks
+    HighVelocityProviderRegion:
+      title: HighVelocity Provider Region
+      description: Region ID and human-readable name for a cloud provider region.
+      type: object
+      additionalProperties: false
+      properties:
+        region:
+          $ref: '#/components/schemas/ProviderRegionId'
+      required:
+        - region
     ProviderRegions:
       title: Provider Regions
       description: >-
@@ -11897,6 +11908,14 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/ProviderRegion'
+    HighVelocityProviderRegions:
+      title: High Velocity Provider Regions
+      description: >-
+        List of available regions to run high velocity cloud gateway instances 
+        on for a given cloud provider.
+      type: array
+      items:
+        $ref: '#/components/schemas/HighVelocityProviderRegion'
     ProviderName:
       title: Provider Name
       description: Name of cloud provider.
@@ -11904,6 +11923,12 @@ components:
       enum:
         - aws
         - azure
+      example: aws
+    HighVelocityCloudGatewaysProviderName:
+      description: Name of cloud provider.
+      type: string
+      enum:
+        - aws
       example: aws
     Provider:
       title: Provider
@@ -11918,12 +11943,35 @@ components:
       required:
         - provider
         - regions
+    HighVelocityProvider:
+      title: High Velocity Provider
+      description: >-
+        Description of cloud provider that runs high velocity cloud gateway
+        instances.
+      type: object
+      additionalProperties: false
+      properties:
+        provider:
+          $ref: '#/components/schemas/HighVelocityCloudGatewaysProviderName'
+        regions:
+          $ref: '#/components/schemas/HighVelocityProviderRegions'
+      required:
+        - provider
+        - regions
     Providers:
       title: Providers
       description: List of supported cloud providers that run cloud gateway instances.
       type: array
       items:
         $ref: '#/components/schemas/Provider'
+    HighVelocityProviders:
+      title: High Velocity Providers
+      description: >-
+        List of supported cloud providers that run high velocity cloud gateway
+        instances.
+      type: array
+      items:
+        $ref: '#/components/schemas/HighVelocityProvider'
     AvailabilityDocument:
       title: Availability Document
       description: Document containing availability information for configurations.
@@ -11936,18 +11984,25 @@ components:
           $ref: '#/components/schemas/InstanceTypes'
         providers:
           $ref: '#/components/schemas/Providers'
+        high_velocity_providers:
+          $ref: '#/components/schemas/HighVelocityProviders'
       required:
         - versions
         - instance_types
         - providers
+        - high_velocity_providers
     ConfigurationDataPlaneGroupAutoscale:
       oneOf:
         - $ref: '#/components/schemas/ConfigurationDataPlaneGroupAutoscaleStatic'
         - $ref: '#/components/schemas/ConfigurationDataPlaneGroupAutoscaleAutopilot'
     ConfigurationDataPlaneGroupAutoscaleStatic:
       title: Configuration Autoscale Static
-      description: Object that describes the static autoscaling strategy.
+      description: >-
+        Object that describes the static autoscaling strategy. Deprecated in
+        favor of the autopilot autoscaling strategy. Static autoscaling will be
+        removed in a future version.
       type: object
+      deprecated: true
       properties:
         kind:
           type: string
@@ -12017,7 +12072,7 @@ components:
           type: string
           minLength: 1
           maxLength: 120
-          example: INFO
+          example: info
           description: >-
             Value assigned to the environment variable field for the data-plane
             group.
@@ -14605,7 +14660,7 @@ components:
               $ref: '#/components/schemas/AppAuthStrategyConfigKeyAuth'
         active:
           type: boolean
-          description: At least one published product version is using this auth strategy.
+          description: At least one published entity is using this auth strategy.
         dcr_provider:
           nullable: true
           type: object
@@ -14701,7 +14756,7 @@ components:
               $ref: '#/components/schemas/AppAuthStrategyConfigOpenIDConnect'
         active:
           type: boolean
-          description: At least one published product version is using this auth strategy.
+          description: At least one published entity is using this auth strategy.
         dcr_provider:
           nullable: true
           type: object
@@ -17766,6 +17821,8 @@ components:
                   - Publisher
                   - Route Admin
                   - SNI Admin
+                  - Scorecard Admin
+                  - Scorecard Viewer
                   - Service Admin
                   - Service Creator
                   - Service Viewer
