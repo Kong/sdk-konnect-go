@@ -39,6 +39,7 @@ tags:
   - name: Data-Plane Group Configurations
   - name: Networks
   - name: Transit Gateways
+  - name: Private DNS
   - name: Provider Accounts
   - name: Custom Domains
   - name: Cloud Gateways Resource Quotas
@@ -1104,6 +1105,162 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Networks
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/networks/{networkId}/private-dns:
+    get:
+      x-speakeasy-group: CloudGateways
+      summary: List Private DNS
+      description: Returns a paginated collection of Private DNS for a given network.
+      operationId: list-private-dns
+      parameters:
+        - $ref: '#/components/parameters/NetworkId'
+        - $ref: '#/components/parameters/PrivateDnsFilter'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListPrivateDnsResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Private DNS
+      servers:
+        - url: https://global.api.konghq.com/
+    post:
+      x-speakeasy-group: CloudGateways
+      x-speakeasy-entity-operation: CloudGatewayPrivateDns#create
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 30000
+          maxInterval: 60000
+          maxElapsedTime: 3600000
+          exponent: 1.5
+        statusCodes:
+          - 400
+        retryConnectionErrors: false
+      summary: Create Private DNS
+      description: Creates a new Private DNS for a given network.
+      operationId: create-private-dns
+      parameters:
+        - $ref: '#/components/parameters/NetworkId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePrivateDnsRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/CreatePrivateDnsResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Private DNS
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}:
+    get:
+      x-speakeasy-group: CloudGateways
+      x-speakeasy-entity-operation: CloudGatewayPrivateDns#read
+      summary: Get Private DNS
+      description: Retrieves a Private DNS by ID for a given network.
+      operationId: get-private-dns
+      parameters:
+        - $ref: '#/components/parameters/NetworkId'
+        - $ref: '#/components/parameters/PrivateDnsId'
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrievePrivateDnsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Private DNS
+      servers:
+        - url: https://global.api.konghq.com/
+    patch:
+      x-speakeasy-group: CloudGateways
+      x-speakeasy-entity-operation: CloudGatewayPrivateDns#update
+      summary: Update Private DNS
+      description: Updates a Private DNS by ID for a given network.
+      operationId: update-private-dns
+      parameters:
+        - $ref: '#/components/parameters/NetworkId'
+        - $ref: '#/components/parameters/PrivateDnsId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchPrivateDnsRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/PatchPrivateDnsResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Private DNS
+      servers:
+        - url: https://global.api.konghq.com/
+    delete:
+      x-speakeasy-group: CloudGateways
+      x-speakeasy-entity-operation: CloudGatewayPrivateDns#delete
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 10000
+          maxInterval: 60000
+          maxElapsedTime: 1800000
+          exponent: 1.5
+        statusCodes:
+          - 400
+        retryConnectionErrors: false
+      summary: Delete Private DNS
+      description: Deletes a Private DNS by ID for a given network.
+      operationId: delete-private-dns
+      parameters:
+        - $ref: '#/components/parameters/NetworkId'
+        - $ref: '#/components/parameters/PrivateDnsId'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Private DNS
       servers:
         - url: https://global.api.konghq.com/
   /v2/cloud-gateways/networks/{networkId}/transit-gateways:
@@ -7729,6 +7886,14 @@ components:
       schema:
         $ref: '#/components/schemas/TransitGatewaysFilterParameters'
       style: deepObject
+    PrivateDnsFilter:
+      name: filter
+      description: Filters supported for Private DNS.
+      required: false
+      in: query
+      schema:
+        $ref: '#/components/schemas/PrivateDnsFilterParameters'
+      style: deepObject
     CustomDomainsFilter:
       name: filter
       description: Filters supported for custom domains on the global API.
@@ -7760,6 +7925,14 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/NetworkId'
+      x-speakeasy-match: id
+    PrivateDnsId:
+      name: privateDnsId
+      in: path
+      description: The ID of the Private DNS to operate on.
+      required: true
+      schema:
+        $ref: '#/components/schemas/PrivateDnsId'
       x-speakeasy-match: id
     TransitGatewayId:
       name: transitGatewayId
@@ -9472,6 +9645,7 @@ components:
                 type: string
                 description: The token of the system account access token.
                 readOnly: true
+                x-speakeasy-param-sensitive: true
     MeOrganization:
       description: Me Organization
       content:
@@ -9645,6 +9819,41 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Network'
+    CreatePrivateDnsResponse:
+      description: Response format for creating a Private DNS.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PrivateDnsResponse'
+    PatchPrivateDnsResponse:
+      description: Response format for updating a Private DNS.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PrivateDnsResponse'
+    ListPrivateDnsResponse:
+      description: A paginated list for a collection of Private DNS for a network.
+      content:
+        application/json:
+          schema:
+            title: ListPrivateDnsResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/PaginatedMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PrivateDnsResponse'
+            required:
+              - meta
+              - data
+    RetrievePrivateDnsResponse:
+      description: Response format for retrieving a Private DNS.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PrivateDnsResponse'
     CreateTransitGatewayResponse:
       description: Response format for creating a transit gateway.
       content:
@@ -11717,6 +11926,11 @@ components:
       format: uuid
       example: 0850820b-d153-4a2a-b9be-7d2204779139
       readOnly: true
+    PrivateDnsId:
+      type: string
+      format: uuid
+      example: 1850820b-c69f-4a2a-b9be-bbcdbc5cd618
+      readOnly: true
     ProviderAccountId:
       type: string
       format: uuid
@@ -11889,6 +12103,16 @@ components:
         - availability_zones
         - cidr_blocks
         - reserved_cidr_blocks
+    HighVelocityProviderRegion:
+      title: HighVelocity Provider Region
+      description: Region ID and human-readable name for a cloud provider region.
+      type: object
+      additionalProperties: false
+      properties:
+        region:
+          $ref: '#/components/schemas/ProviderRegionId'
+      required:
+        - region
     ProviderRegions:
       title: Provider Regions
       description: >-
@@ -11897,6 +12121,14 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/ProviderRegion'
+    HighVelocityProviderRegions:
+      title: High Velocity Provider Regions
+      description: >-
+        List of available regions to run high velocity cloud gateway instances 
+        on for a given cloud provider.
+      type: array
+      items:
+        $ref: '#/components/schemas/HighVelocityProviderRegion'
     ProviderName:
       title: Provider Name
       description: Name of cloud provider.
@@ -11904,6 +12136,12 @@ components:
       enum:
         - aws
         - azure
+      example: aws
+    HighVelocityCloudGatewaysProviderName:
+      description: Name of cloud provider.
+      type: string
+      enum:
+        - aws
       example: aws
     Provider:
       title: Provider
@@ -11918,12 +12156,35 @@ components:
       required:
         - provider
         - regions
+    HighVelocityProvider:
+      title: High Velocity Provider
+      description: >-
+        Description of cloud provider that runs high velocity cloud gateway
+        instances.
+      type: object
+      additionalProperties: false
+      properties:
+        provider:
+          $ref: '#/components/schemas/HighVelocityCloudGatewaysProviderName'
+        regions:
+          $ref: '#/components/schemas/HighVelocityProviderRegions'
+      required:
+        - provider
+        - regions
     Providers:
       title: Providers
       description: List of supported cloud providers that run cloud gateway instances.
       type: array
       items:
         $ref: '#/components/schemas/Provider'
+    HighVelocityProviders:
+      title: High Velocity Providers
+      description: >-
+        List of supported cloud providers that run high velocity cloud gateway
+        instances.
+      type: array
+      items:
+        $ref: '#/components/schemas/HighVelocityProvider'
     AvailabilityDocument:
       title: Availability Document
       description: Document containing availability information for configurations.
@@ -11936,18 +12197,25 @@ components:
           $ref: '#/components/schemas/InstanceTypes'
         providers:
           $ref: '#/components/schemas/Providers'
+        high_velocity_providers:
+          $ref: '#/components/schemas/HighVelocityProviders'
       required:
         - versions
         - instance_types
         - providers
+        - high_velocity_providers
     ConfigurationDataPlaneGroupAutoscale:
       oneOf:
         - $ref: '#/components/schemas/ConfigurationDataPlaneGroupAutoscaleStatic'
         - $ref: '#/components/schemas/ConfigurationDataPlaneGroupAutoscaleAutopilot'
     ConfigurationDataPlaneGroupAutoscaleStatic:
       title: Configuration Autoscale Static
-      description: Object that describes the static autoscaling strategy.
+      description: >-
+        Object that describes the static autoscaling strategy. Deprecated in
+        favor of the autopilot autoscaling strategy. Static autoscaling will be
+        removed in a future version.
       type: object
+      deprecated: true
       properties:
         kind:
           type: string
@@ -12017,7 +12285,7 @@ components:
           type: string
           minLength: 1
           maxLength: 120
-          example: INFO
+          example: info
           description: >-
             Value assigned to the environment variable field for the data-plane
             group.
@@ -12631,6 +12899,251 @@ components:
         - 10.0.0.0/8
         - 100.64.0.0/10
         - 172.16.0.0/12
+    PrivateDnsResponse:
+      oneOf:
+        - $ref: '#/components/schemas/AwsPrivateHostedZoneResponse'
+        - $ref: '#/components/schemas/AwsPrivateDnsResolverResponse'
+    AwsPrivateHostedZoneResponse:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/PrivateDnsId'
+        state:
+          $ref: '#/components/schemas/PrivateDnsState'
+        state_metadata:
+          title: PrivateDnsStateMetadata
+          type: object
+          description: >
+            Metadata describing the backing state of the Private Dns and why it
+            may be in an erroneous state.
+          additionalProperties: false
+          properties:
+            reported_status:
+              type: string
+              description: Reported status of the Private Dns from backing infrastructure.
+              example: ERROR
+            reason:
+              type: string
+              description: >
+                Reason why the Private Dns may be in an erroneous state,
+                reported from backing infrastructure.
+              example: >
+                Failed to create Private Dns due to invalid Cloud Provider
+                configuration.
+        entity_version:
+          type: integer
+          description: >
+            Monotonically-increasing version count of the Private DNS, to
+            indicate the order of updates to the
+
+            Private DNS.
+          readOnly: true
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: An RFC-3339 timestamp representation of Private DNS creation date.
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: An RFC-3339 timestamp representation of Private DNS update date.
+          readOnly: true
+        name:
+          $ref: '#/components/schemas/PrivateDnsName'
+        private_dns_attachment_config:
+          $ref: '#/components/schemas/AwsPrivateHostedZoneAttachmentConfig'
+      required:
+        - id
+        - state
+        - state_metadata
+        - entity_version
+        - created_at
+        - updated_at
+        - name
+        - private_dns_attachment_config
+    AwsPrivateHostedZoneAttachmentConfig:
+      title: AWS Private Hosted Zone Attachment Config
+      type: object
+      additionalProperties: false
+      properties:
+        kind:
+          title: AWS Private Hosted Zone Type
+          enum:
+            - aws-private-hosted-zone-attachment
+        hosted_zone_id:
+          title: Hosted Zone Id
+          description: AWS Hosted Zone to create attachment to.
+          type: string
+      required:
+        - kind
+        - hosted_zone_id
+    AwsPrivateDnsResolverResponse:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/PrivateDnsId'
+        state:
+          $ref: '#/components/schemas/PrivateDnsState'
+        state_metadata:
+          title: PrivateDnsStateMetadata
+          type: object
+          description: >
+            Metadata describing the backing state of the Private Dns and why it
+            may be in an erroneous state.
+          additionalProperties: false
+          properties:
+            reported_status:
+              type: string
+              description: Reported status of the Private Dns from backing infrastructure.
+              example: ERROR
+            reason:
+              type: string
+              description: >
+                Reason why the Private Dns may be in an erroneous state,
+                reported from backing infrastructure.
+              example: >
+                Failed to create Private Dns due to invalid Cloud Provider
+                configuration.
+        entity_version:
+          type: integer
+          description: >
+            Monotonically-increasing version count of the Private DNS, to
+            indicate the order of updates to the
+
+            Private DNS.
+          readOnly: true
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: An RFC-3339 timestamp representation of Private DNS creation date.
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: An RFC-3339 timestamp representation of Private DNS update date.
+          readOnly: true
+        name:
+          $ref: '#/components/schemas/PrivateDnsName'
+        private_dns_attachment_config:
+          $ref: '#/components/schemas/AwsPrivateDnsResolverAttachmentConfig'
+      required:
+        - id
+        - state
+        - state_metadata
+        - entity_version
+        - created_at
+        - updated_at
+        - name
+        - private_dns_attachment_config
+    AwsPrivateDnsResolverAttachmentConfig:
+      title: AWS Private DNS Resolver Attachment Config
+      type: object
+      additionalProperties: false
+      properties:
+        kind:
+          title: AWS Private DNS Resolver Type
+          enum:
+            - aws-outbound-resolver
+        dns_config:
+          $ref: '#/components/schemas/PrivateDnsResolverConfig'
+      required:
+        - kind
+        - dns_config
+    PrivateDnsResolverConfig:
+      title: Private DNS Resolver Config Item
+      description: >
+        Object that contains mappings from proxied internal domains to remote
+        DNS server IP address for a Private DNS Resolver.
+      type: object
+      example:
+        global.api.konghq.com:
+          remote_dns_server_ip_addresses:
+            - 10.0.0.2
+        us.api.konghq.dev:
+          remote_dns_server_ip_addresses:
+            - 10.0.0.8
+      additionalProperties:
+        type: object
+        properties:
+          remote_dns_server_ip_addresses:
+            description: >-
+              IP addresses of remote DNS servers used by the Private DNS
+              Resolver for DNS resolution.
+            type: array
+            items:
+              type: string
+            example:
+              - 10.0.0.2
+        required:
+          - remote_dns_server_ip_addresses
+    PrivateDnsName:
+      title: Private DNS Name
+      type: string
+      description: Human-readable name of the Private DNS.
+      example: us-east-2 private dns
+    PrivateDnsState:
+      title: Private DNS State
+      type: string
+      description: >
+        The current state of the Private DNS attachment. Possible values:
+
+        - `created` - The attachment has been created but is not attached to
+        Private DNS.
+
+        - `initializing` - The attachment is in the process of being initialized
+        and is setting up necessary resources.
+
+        - `pending-association` The attachment request is awaiting association
+        to the cloud provider infrastructure in order for provisioning to
+        proceed.
+
+        - `ready` - The attachment is fully operational and can route traffic as
+        configured.
+
+        - `error` - The attachment is in an error state, and is not operational.
+
+        - `terminating` - The attachment is in the process of being deleted.
+
+        - `terminated` - The attachment has been fully deleted and is no longer
+        available.
+      enum:
+        - created
+        - initializing
+        - pending-association
+        - ready
+        - error
+        - terminating
+        - terminated
+    PatchAwsPrivateDnsResolver:
+      description: Request schema for updating a Private DNS AWS Resolver.
+      properties:
+        name:
+          $ref: '#/components/schemas/PrivateDnsName'
+        private_dns_attachment_config:
+          $ref: '#/components/schemas/AwsPrivateDnsResolverAttachmentConfig'
+    CreatePrivateDnsRequest:
+      title: CreatePrivateDnsRequest
+      description: Request schema for creating a Private DNS.
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/PrivateDnsName'
+        private_dns_attachment_config:
+          oneOf:
+            - $ref: '#/components/schemas/AwsPrivateHostedZoneAttachmentConfig'
+            - $ref: '#/components/schemas/AwsPrivateDnsResolverAttachmentConfig'
+    PatchPrivateDnsRequest:
+      title: PatchPrivateDnsRequest
+      description: Request schema for updating a Private DNS.
+      type: object
+      oneOf:
+        - $ref: '#/components/schemas/PatchAwsPrivateDnsResolver'
     AwsTransitGatewayResponse:
       type: object
       properties:
@@ -13246,6 +13759,15 @@ components:
           $ref: '#/components/schemas/CloudGatewaysStringFieldFilterOverride'
         state:
           $ref: '#/components/schemas/TransitGatewayStateFieldFilter'
+    PrivateDnsFilterParameters:
+      title: PrivateDnsFilterParameters
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          $ref: '#/components/schemas/CloudGatewaysStringFieldFilterOverride'
+        state:
+          $ref: '#/components/schemas/PrivateDnsStateFieldFilter'
     NetworksFilterParameters:
       title: NetworksFilterParameters
       type: object
@@ -13395,6 +13917,46 @@ components:
       description: >
         Filter transit-gateway state by determining if the value is equal to any
         in a set of values, where the set is a
+
+        comma-delimited list.
+      type: object
+      properties:
+        oeq:
+          type: string
+      required:
+        - oeq
+    PrivateDnsStateFieldFilter:
+      title: PrivateDnsStateFieldFilter
+      oneOf:
+        - $ref: '#/components/schemas/PrivateDnsStateFieldEqualsFilter'
+        - $ref: '#/components/schemas/PrivateDnsStateFieldNotEqualsFilter'
+        - $ref: '#/components/schemas/PrivateDnsStateFieldOrEqualityFilter'
+    PrivateDnsStateFieldEqualsFilter:
+      title: PrivateDnsStateFieldEqualsFilter
+      description: Filter Private DNS state by exact match.
+      oneOf:
+        - $ref: '#/components/schemas/PrivateDnsState'
+        - type: object
+          title: PrivateDnsStateFieldEqualsComparison
+          properties:
+            eq:
+              $ref: '#/components/schemas/PrivateDnsState'
+          required:
+            - eq
+    PrivateDnsStateFieldNotEqualsFilter:
+      title: PrivateDnsStateFieldNotEqualsFilter
+      description: Filter private-dns state by inequality match.
+      type: object
+      properties:
+        neq:
+          $ref: '#/components/schemas/PrivateDnsState'
+      required:
+        - neq
+    PrivateDnsStateFieldOrEqualityFilter:
+      title: PrivateDnsStateFieldOrEqualityFilter
+      description: >
+        Filter Private DNS state by determining if the value is equal to any in
+        a set of values, where the set is a
 
         comma-delimited list.
       type: object
@@ -14605,7 +15167,7 @@ components:
               $ref: '#/components/schemas/AppAuthStrategyConfigKeyAuth'
         active:
           type: boolean
-          description: At least one published product version is using this auth strategy.
+          description: At least one published entity is using this auth strategy.
         dcr_provider:
           nullable: true
           type: object
@@ -14701,7 +15263,7 @@ components:
               $ref: '#/components/schemas/AppAuthStrategyConfigOpenIDConnect'
         active:
           type: boolean
-          description: At least one published product version is using this auth strategy.
+          description: At least one published entity is using this auth strategy.
         dcr_provider:
           nullable: true
           type: object
@@ -17439,6 +18001,7 @@ components:
             vaults' documentation page.
           type: object
           additionalProperties: true
+          nullable: true
         created_at:
           description: Unix epoch when the resource was created.
           type: integer
@@ -17486,7 +18049,6 @@ components:
       required:
         - name
         - prefix
-        - config
     CursorMeta:
       type: object
       description: Pagination metadata.
@@ -17766,6 +18328,8 @@ components:
                   - Publisher
                   - Route Admin
                   - SNI Admin
+                  - Scorecard Admin
+                  - Scorecard Viewer
                   - Service Admin
                   - Service Creator
                   - Service Viewer
