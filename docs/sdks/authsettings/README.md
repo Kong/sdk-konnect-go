@@ -344,7 +344,12 @@ func main() {
 
     res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
         Data: []components.Data{
-            components.Data{},
+            components.Data{
+                TeamID: sdkkonnectgo.String("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
+                Groups: []string{
+                    "Service Developers",
+                },
+            },
         },
     })
     if err != nil {
@@ -627,6 +632,7 @@ func main() {
 | sdkerrors.BadRequestError   | 400                         | application/problem+json    |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## GetIdentityProvider
@@ -760,6 +766,7 @@ func main() {
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## DeleteIdentityProvider

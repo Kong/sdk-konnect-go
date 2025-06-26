@@ -76,8 +76,23 @@ type CreateIdentityProvider struct {
 	// Specifies the type of identity provider.
 	Type *IdentityProviderType `json:"type,omitempty"`
 	// The path used for initiating login requests with the identity provider.
-	LoginPath *string                       `json:"login_path,omitempty"`
-	Config    *CreateIdentityProviderConfig `json:"config,omitempty"`
+	LoginPath *string `json:"login_path,omitempty"`
+	// Indicates whether the identity provider is enabled.
+	// Only one identity provider can be active at a time, such as SAML or OIDC.
+	//
+	Enabled *bool                         `default:"false" json:"enabled"`
+	Config  *CreateIdentityProviderConfig `json:"config,omitempty"`
+}
+
+func (c CreateIdentityProvider) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateIdentityProvider) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateIdentityProvider) GetType() *IdentityProviderType {
@@ -92,6 +107,13 @@ func (o *CreateIdentityProvider) GetLoginPath() *string {
 		return nil
 	}
 	return o.LoginPath
+}
+
+func (o *CreateIdentityProvider) GetEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Enabled
 }
 
 func (o *CreateIdentityProvider) GetConfig() *CreateIdentityProviderConfig {

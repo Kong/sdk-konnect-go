@@ -100,7 +100,7 @@ func main() {
     )
 
     res, err := s.CustomPluginSchemas.CreatePluginSchemas(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", &components.CreatePluginSchemas{
-        LuaSchema: "return { name = \\"myplugin\\", fields = { { config = { type = \\"record\\", fields = { } } } } }",
+        LuaSchema: "return { name = \"myplugin\", fields = { { config = { type = \"record\", fields = { } } } } }",
     })
     if err != nil {
         log.Fatal(err)
@@ -126,13 +126,13 @@ func main() {
 
 ### Errors
 
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.ConflictError     | 409                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+| Error Type                                 | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| sdkerrors.KonnectCPLegacyBadRequestError   | 400                                        | application/json                           |
+| sdkerrors.KonnectCPLegacyUnauthorizedError | 401                                        | application/json                           |
+| sdkerrors.KonnectCPLegacyForbiddenError    | 403                                        | application/json                           |
+| sdkerrors.KonnectCPLegacyConflictError     | 409                                        | application/json                           |
+| sdkerrors.SDKError                         | 4XX, 5XX                                   | \*/\*                                      |
 
 ## GetPluginSchema
 
@@ -184,12 +184,12 @@ func main() {
 
 ### Errors
 
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+| Error Type                                 | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| sdkerrors.KonnectCPLegacyUnauthorizedError | 401                                        | application/json                           |
+| sdkerrors.KonnectCPLegacyForbiddenError    | 403                                        | application/json                           |
+| sdkerrors.KonnectCPLegacyNotFoundError     | 404                                        | application/json                           |
+| sdkerrors.SDKError                         | 4XX, 5XX                                   | \*/\*                                      |
 
 ## DeletePluginSchemas
 
@@ -241,12 +241,12 @@ func main() {
 
 ### Errors
 
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+| Error Type                                 | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| sdkerrors.KonnectCPLegacyUnauthorizedError | 401                                        | application/json                           |
+| sdkerrors.KonnectCPLegacyForbiddenError    | 403                                        | application/json                           |
+| sdkerrors.KonnectCPLegacyNotFoundError     | 404                                        | application/json                           |
+| sdkerrors.SDKError                         | 4XX, 5XX                                   | \*/\*                                      |
 
 ## UpdatePluginSchemas
 
@@ -278,7 +278,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Name: "myplugin",
         CreatePluginSchemas: &components.CreatePluginSchemas{
-            LuaSchema: "return { name = \\"myplugin\\", fields = { { config = { type = \\"record\\", fields = { } } } } }",
+            LuaSchema: "return { name = \"myplugin\", fields = { { config = { type = \"record\", fields = { } } } } }",
         },
     })
     if err != nil {
@@ -304,9 +304,9 @@ func main() {
 
 ### Errors
 
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+| Error Type                                 | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| sdkerrors.KonnectCPLegacyUnauthorizedError | 401                                        | application/json                           |
+| sdkerrors.KonnectCPLegacyForbiddenError    | 403                                        | application/json                           |
+| sdkerrors.KonnectCPLegacyNotFoundError     | 404                                        | application/json                           |
+| sdkerrors.SDKError                         | 4XX, 5XX                                   | \*/\*                                      |

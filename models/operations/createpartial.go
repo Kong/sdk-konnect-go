@@ -28,6 +28,14 @@ func (o *CreatePartialRequest) GetPartial() components.Partial {
 	return o.Partial
 }
 
+func (o *CreatePartialRequest) GetPartialRedisCe() *components.PartialRedisCE {
+	return o.GetPartial().PartialRedisCE
+}
+
+func (o *CreatePartialRequest) GetPartialRedisEe() *components.PartialRedisEE {
+	return o.GetPartial().PartialRedisEE
+}
+
 type CreatePartialResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -65,4 +73,18 @@ func (o *CreatePartialResponse) GetPartial() *components.Partial {
 		return nil
 	}
 	return o.Partial
+}
+
+func (o *CreatePartialResponse) GetPartialRedisCe() *components.PartialRedisCE {
+	if v := o.GetPartial(); v != nil {
+		return v.PartialRedisCE
+	}
+	return nil
+}
+
+func (o *CreatePartialResponse) GetPartialRedisEe() *components.PartialRedisEE {
+	if v := o.GetPartial(); v != nil {
+		return v.PartialRedisEE
+	}
+	return nil
 }

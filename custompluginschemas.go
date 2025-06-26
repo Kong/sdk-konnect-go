@@ -485,13 +485,13 @@ func (s *CustomPluginSchemas) CreatePluginSchemas(ctx context.Context, controlPl
 		}
 	case httpRes.StatusCode == 400:
 		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
 				return nil, err
 			}
 
-			var out sdkerrors.BadRequestError
+			var out sdkerrors.KonnectCPLegacyBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -506,13 +506,13 @@ func (s *CustomPluginSchemas) CreatePluginSchemas(ctx context.Context, controlPl
 		}
 	case httpRes.StatusCode == 401:
 		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
 				return nil, err
 			}
 
-			var out sdkerrors.UnauthorizedError
+			var out sdkerrors.KonnectCPLegacyUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -527,13 +527,13 @@ func (s *CustomPluginSchemas) CreatePluginSchemas(ctx context.Context, controlPl
 		}
 	case httpRes.StatusCode == 403:
 		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
 				return nil, err
 			}
 
-			var out sdkerrors.ForbiddenError
+			var out sdkerrors.KonnectCPLegacyForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -548,13 +548,13 @@ func (s *CustomPluginSchemas) CreatePluginSchemas(ctx context.Context, controlPl
 		}
 	case httpRes.StatusCode == 409:
 		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
 				return nil, err
 			}
 
-			var out sdkerrors.ConflictError
+			var out sdkerrors.KonnectCPLegacyConflictError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -775,13 +775,13 @@ func (s *CustomPluginSchemas) GetPluginSchema(ctx context.Context, controlPlaneI
 		}
 	case httpRes.StatusCode == 401:
 		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
 				return nil, err
 			}
 
-			var out sdkerrors.UnauthorizedError
+			var out sdkerrors.KonnectCPLegacyUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -796,13 +796,13 @@ func (s *CustomPluginSchemas) GetPluginSchema(ctx context.Context, controlPlaneI
 		}
 	case httpRes.StatusCode == 403:
 		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
 				return nil, err
 			}
 
-			var out sdkerrors.ForbiddenError
+			var out sdkerrors.KonnectCPLegacyForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -817,13 +817,13 @@ func (s *CustomPluginSchemas) GetPluginSchema(ctx context.Context, controlPlaneI
 		}
 	case httpRes.StatusCode == 404:
 		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
 				return nil, err
 			}
 
-			var out sdkerrors.NotFoundError
+			var out sdkerrors.KonnectCPLegacyNotFoundError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -914,7 +914,7 @@ func (s *CustomPluginSchemas) DeletePluginSchemas(ctx context.Context, controlPl
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
-	req.Header.Set("Accept", "application/problem+json")
+	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
@@ -1024,13 +1024,13 @@ func (s *CustomPluginSchemas) DeletePluginSchemas(ctx context.Context, controlPl
 	case httpRes.StatusCode == 204:
 	case httpRes.StatusCode == 401:
 		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
 				return nil, err
 			}
 
-			var out sdkerrors.UnauthorizedError
+			var out sdkerrors.KonnectCPLegacyUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1045,13 +1045,13 @@ func (s *CustomPluginSchemas) DeletePluginSchemas(ctx context.Context, controlPl
 		}
 	case httpRes.StatusCode == 403:
 		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
 				return nil, err
 			}
 
-			var out sdkerrors.ForbiddenError
+			var out sdkerrors.KonnectCPLegacyForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1066,13 +1066,13 @@ func (s *CustomPluginSchemas) DeletePluginSchemas(ctx context.Context, controlPl
 		}
 	case httpRes.StatusCode == 404:
 		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
 				return nil, err
 			}
 
-			var out sdkerrors.NotFoundError
+			var out sdkerrors.KonnectCPLegacyNotFoundError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1295,13 +1295,13 @@ func (s *CustomPluginSchemas) UpdatePluginSchemas(ctx context.Context, request o
 		}
 	case httpRes.StatusCode == 401:
 		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
 				return nil, err
 			}
 
-			var out sdkerrors.UnauthorizedError
+			var out sdkerrors.KonnectCPLegacyUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1316,13 +1316,13 @@ func (s *CustomPluginSchemas) UpdatePluginSchemas(ctx context.Context, request o
 		}
 	case httpRes.StatusCode == 403:
 		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
 				return nil, err
 			}
 
-			var out sdkerrors.ForbiddenError
+			var out sdkerrors.KonnectCPLegacyForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1337,13 +1337,13 @@ func (s *CustomPluginSchemas) UpdatePluginSchemas(ctx context.Context, request o
 		}
 	case httpRes.StatusCode == 404:
 		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
 				return nil, err
 			}
 
-			var out sdkerrors.NotFoundError
+			var out sdkerrors.KonnectCPLegacyNotFoundError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

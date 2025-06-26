@@ -3,6 +3,6 @@
 
 ## Values
 
-| Name                                                                    | Value                                                                   |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `RolesDescriptionThisRoleGrantsFullWriteAccessToAdministerCertificates` | This role grants full write access to administer certificates.          |
+| Name                                                                            | Value                                                                           |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `RolesDescriptionThisRoleGrantsFullWriteAccessToAllEntitiesWithinAControlPlane` | This role grants full write access to all entities within a control plane.      |
