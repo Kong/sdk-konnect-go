@@ -24,6 +24,7 @@ go:
   version: 0.3.2
   additionalDependencies: {}
   allowUnknownFieldsInWeakUnions: false
+  baseErrorName: SDKBaseError
   clientServerStatusCodesAsErrors: true
   defaultErrorName: SDKError
   flattenGlobalSecurity: true
