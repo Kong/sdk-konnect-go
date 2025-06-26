@@ -254,7 +254,7 @@ func (s *KeySets) ListKeySet(ctx context.Context, request operations.ListKeySetR
 
 // CreateKeySet - Create a new KeySet
 // Create a new KeySet
-func (s *KeySets) CreateKeySet(ctx context.Context, controlPlaneID string, keySet components.KeySet, opts ...operations.Option) (*operations.CreateKeySetResponse, error) {
+func (s *KeySets) CreateKeySet(ctx context.Context, controlPlaneID string, keySet *components.KeySet, opts ...operations.Option) (*operations.CreateKeySetResponse, error) {
 	request := operations.CreateKeySetRequest{
 		ControlPlaneID: controlPlaneID,
 		KeySet:         keySet,
@@ -290,7 +290,7 @@ func (s *KeySets) CreateKeySet(ctx context.Context, controlPlaneID string, keySe
 		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "KeySet", "json", `request:"mediaType=application/json"`)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "KeySet", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
 	}
@@ -955,7 +955,7 @@ func (s *KeySets) UpsertKeySet(ctx context.Context, request operations.UpsertKey
 		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "KeySet", "json", `request:"mediaType=application/json"`)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "KeySet", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
 	}

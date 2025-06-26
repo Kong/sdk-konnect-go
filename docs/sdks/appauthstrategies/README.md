@@ -238,8 +238,10 @@ func main() {
                     },
                     Scopes: []string{},
                     AuthMethods: []string{},
-                    Labels: map[string]string{
-                        "env": "test",
+                    AdditionalProperties: map[string]any{
+                        "labels": map[string]any{
+                            "env": "test",
+                        },
                     },
                 },
             },

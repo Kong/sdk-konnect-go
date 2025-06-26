@@ -20,7 +20,7 @@ type DCRProviderHTTPDCRProviderHTTP struct {
 	ProviderType string `json:"provider_type"`
 	// The DCR configuration for this DCR provider.
 	DcrConfig DcrProviderHTTPDcrProviderResponseDcrConfig `json:"dcr_config"`
-	// Contains a unique identifier used by the API for this resource.
+	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// The name of the DCR provider. This is used to identify the DCR provider in the Konnect UI.
 	//
@@ -134,7 +134,7 @@ type DCRProviderOKTADCRProviderOKTA struct {
 	ProviderType string `json:"provider_type"`
 	// The DCR configuration for this DCR provider.
 	DcrConfig DcrProviderOktaDcrProviderResponseDcrConfig `json:"dcr_config"`
-	// Contains a unique identifier used by the API for this resource.
+	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// The name of the DCR provider. This is used to identify the DCR provider in the Konnect UI.
 	//
@@ -248,7 +248,7 @@ type DCRProviderCurityDCRProviderCurity struct {
 	ProviderType string `json:"provider_type"`
 	// The DCR configuration for this DCR provider.
 	DcrConfig DcrProviderCurityDcrProviderResponseDcrConfig `json:"dcr_config"`
-	// Contains a unique identifier used by the API for this resource.
+	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// The name of the DCR provider. This is used to identify the DCR provider in the Konnect UI.
 	//
@@ -362,7 +362,7 @@ type DCRProviderAzureADDCRProviderAzureAD struct {
 	ProviderType string `json:"provider_type"`
 	// The DCR configuration for this DCR provider.
 	DcrConfig DcrProviderAzureAdDcrProviderResponseDcrConfig `json:"dcr_config"`
-	// Contains a unique identifier used by the API for this resource.
+	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// The name of the DCR provider. This is used to identify the DCR provider in the Konnect UI.
 	//
@@ -476,7 +476,7 @@ type DCRProviderAuth0DCRProviderAuth0 struct {
 	ProviderType string `json:"provider_type"`
 	// The DCR configuration for this DCR provider.
 	DcrConfig DcrProviderAuth0DcrConfig `json:"dcr_config"`
-	// Contains a unique identifier used by the API for this resource.
+	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// The name of the DCR provider. This is used to identify the DCR provider in the Konnect UI.
 	//

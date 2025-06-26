@@ -23,6 +23,11 @@
 * [DeleteNetwork](#deletenetwork) - Delete Network
 * [ListNetworkConfigurations](#listnetworkconfigurations) - Returns a paginated collection of configurations that reference a network.
 
+* [ListPrivateDNS](#listprivatedns) - List Private DNS
+* [CreatePrivateDNS](#createprivatedns) - Create Private DNS
+* [GetPrivateDNS](#getprivatedns) - Get Private DNS
+* [UpdatePrivateDNS](#updateprivatedns) - Update Private DNS
+* [DeletePrivateDNS](#deleteprivatedns) - Delete Private DNS
 * [ListTransitGateways](#listtransitgateways) - List Transit Gateways
 * [CreateTransitGateway](#createtransitgateway) - Create Transit Gateway
 * [GetTransitGateway](#gettransitgateway) - Get Transit Gateway
@@ -1083,6 +1088,332 @@ func main() {
 ### Response
 
 **[*operations.ListNetworkConfigurationsResponse](../../models/operations/listnetworkconfigurationsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListPrivateDNS
+
+Returns a paginated collection of Private DNS for a given network.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.ListPrivateDNS(ctx, operations.ListPrivateDNSRequest{
+        NetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
+        PageSize: sdkkonnectgo.Int64(10),
+        PageNumber: sdkkonnectgo.Int64(1),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ListPrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
+| `request`                                                                            | [operations.ListPrivateDNSRequest](../../models/operations/listprivatednsrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `opts`                                                                               | [][operations.Option](../../models/operations/option.md)                             | :heavy_minus_sign:                                                                   | The options for this request.                                                        |
+
+### Response
+
+**[*operations.ListPrivateDNSResponse](../../models/operations/listprivatednsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## CreatePrivateDNS
+
+Creates a new Private DNS for a given network.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreatePrivateDNS(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreatePrivateDNSRequest{
+        Name: sdkkonnectgo.String("us-east-2 private dns"),
+        PrivateDNSAttachmentConfig: sdkkonnectgo.Pointer(components.CreatePrivateDNSAttachmentConfigAwsPrivateHostedZoneAttachmentConfig(
+            components.AwsPrivateHostedZoneAttachmentConfig{
+                Kind: components.AWSPrivateHostedZoneTypeAwsPrivateHostedZoneAttachment,
+                HostedZoneID: "<id>",
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              | Example                                                                                  |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |                                                                                          |
+| `networkID`                                                                              | *string*                                                                                 | :heavy_check_mark:                                                                       | The network to operate on.                                                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                                                     |
+| `createPrivateDNSRequest`                                                                | [components.CreatePrivateDNSRequest](../../models/components/createprivatednsrequest.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |                                                                                          |
+| `opts`                                                                                   | [][operations.Option](../../models/operations/option.md)                                 | :heavy_minus_sign:                                                                       | The options for this request.                                                            |                                                                                          |
+
+### Response
+
+**[*operations.CreatePrivateDNSResponse](../../models/operations/createprivatednsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetPrivateDNS
+
+Retrieves a Private DNS by ID for a given network.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.GetPrivateDNS(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "1850820b-c69f-4a2a-b9be-bbcdbc5cd618")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `networkID`                                              | *string*                                                 | :heavy_check_mark:                                       | The network to operate on.                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                     |
+| `privateDNSID`                                           | *string*                                                 | :heavy_check_mark:                                       | The ID of the Private DNS to operate on.                 | 1850820b-c69f-4a2a-b9be-bbcdbc5cd618                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.GetPrivateDNSResponse](../../models/operations/getprivatednsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## UpdatePrivateDNS
+
+Updates a Private DNS by ID for a given network.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdatePrivateDNS(ctx, operations.UpdatePrivateDNSRequest{
+        NetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
+        PrivateDNSID: "1850820b-c69f-4a2a-b9be-bbcdbc5cd618",
+        PatchPrivateDNSRequest: components.CreatePatchPrivateDNSRequestPatchAwsPrivateDNSResolver(
+            components.PatchAwsPrivateDNSResolver{
+                Name: sdkkonnectgo.String("us-east-2 private dns"),
+                PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
+                    Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
+                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
+                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
+                            RemoteDNSServerIPAddresses: []string{
+                                "10.0.0.2",
+                            },
+                        },
+                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
+                            RemoteDNSServerIPAddresses: []string{
+                                "10.0.0.8",
+                            },
+                        },
+                    },
+                },
+            },
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |
+| `request`                                                                                | [operations.UpdatePrivateDNSRequest](../../models/operations/updateprivatednsrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `opts`                                                                                   | [][operations.Option](../../models/operations/option.md)                                 | :heavy_minus_sign:                                                                       | The options for this request.                                                            |
+
+### Response
+
+**[*operations.UpdatePrivateDNSResponse](../../models/operations/updateprivatednsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## DeletePrivateDNS
+
+Deletes a Private DNS by ID for a given network.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.DeletePrivateDNS(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "1850820b-c69f-4a2a-b9be-bbcdbc5cd618")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `networkID`                                              | *string*                                                 | :heavy_check_mark:                                       | The network to operate on.                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                     |
+| `privateDNSID`                                           | *string*                                                 | :heavy_check_mark:                                       | The ID of the Private DNS to operate on.                 | 1850820b-c69f-4a2a-b9be-bbcdbc5cd618                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.DeletePrivateDNSResponse](../../models/operations/deleteprivatednsresponse.md), error**
 
 ### Errors
 

@@ -3,6 +3,11 @@
 
 ## Overview
 
+A target is an IP address or hostname with a port that identifies an instance of a backend service. Every upstream can have many targets, and the targets can be dynamically added, modified, or deleted. Changes take effect on the fly.
+<br><br>
+To disable a target, post a new one with `weight=0`, or use the `DELETE` method to accomplish the same.
+
+
 ### Available Operations
 
 * [ListTargetWithUpstream](#listtargetwithupstream) - List all Targets associated with an Upstream

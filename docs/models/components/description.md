@@ -3,6 +3,6 @@
 
 ## Values
 
-| Name                                                                       | Value                                                                      |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `DescriptionThisRoleGrantsFullWriteAccessToAllEntitiesWithinAControlPlane` | This role grants full write access to all entities within a control plane. |
+| Name                                                                            | Value                                                                           |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `DescriptionAPIViewersHaveReadOnlyAccessToTheDocumentationOfAServiceInAPortal`  | API Viewers have read-only access to the documentation of a service in a portal |

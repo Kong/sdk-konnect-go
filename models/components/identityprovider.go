@@ -74,7 +74,7 @@ func (u IdentityProviderConfig) MarshalJSON() ([]byte, error) {
 
 // IdentityProvider - The identity provider that contains configuration data for authentication integration.
 type IdentityProvider struct {
-	// Contains a unique identifier used by the API for this resource.
+	// Contains a unique identifier used for this resource.
 	ID *string `json:"id,omitempty"`
 	// Specifies the type of identity provider.
 	Type *IdentityProviderType `json:"type,omitempty"`
