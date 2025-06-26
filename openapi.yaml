@@ -39,6 +39,7 @@ tags:
   - name: Data-Plane Group Configurations
   - name: Networks
   - name: Transit Gateways
+  - name: Private DNS
   - name: Provider Accounts
   - name: Custom Domains
   - name: Cloud Gateways Resource Quotas
@@ -78,32 +79,88 @@ tags:
     name: Config Stores
   - description: Config Store Secrets
     name: Config Store Secrets
-  - name: CustomPlugins
+  - name: ACLs
+  - name: API-keys
+  - name: Basic-auth credentials
+  - description: >-
+      A CA certificate object represents a trusted certificate authority.
+
+      These objects are used by Kong Gateway to verify the validity of a client
+      or server certificate.
+    name: CA Certificates
   - description: >
-      Service entities are abstractions of your microservice interfaces or
-      formal APIs. For example, a service could be a data transformation
-      microservice or a billing API.
+      A certificate object represents a public certificate, and can be
+      optionally paired with the corresponding private key. These objects are
+      used by Kong Gateway to handle SSL/TLS termination for encrypted requests,
+      or for use as a trusted CA store when validating peer certificate of
+      client/service.
 
       <br><br>
 
-      The main attribute of a service is the destination URL for proxying
-      traffic. This URL can be set as a single string or by specifying its
-      protocol, host, port and path individually.
+      Certificates are optionally associated with SNI objects to tie a cert/key
+      pair to one or more hostnames.
 
       <br><br>
 
-      Services are associated to routes, and a single service can have many
-      routes associated with it. Routes are entrypoints in Kong Gateway which
-      define rules to match client requests. Once a route is matched, Kong
-      Gateway proxies the request to its associated service. See the [Proxy
-      Reference](https://docs.konghq.com/gateway/latest/how-kong-works/routing-traffic/)
-      for a detailed explanation of how Kong proxies traffic.
+      If intermediate certificates are required in addition to the main
+      certificate, they should be concatenated together into one string.
+    name: Certificates
+  - description: >-
+      Consumer groups enable the organization and categorization of consumers
+      (users or applications) within an API ecosystem.
+
+      By grouping consumers together, you eliminate the need to manage them
+      individually, providing a scalable, efficient approach to managing
+      configurations.
+    name: Consumer Groups
+  - description: >
+      The consumer object represents a consumer - or a user - of a service.
+
+      You can either rely on Kong Gateway as the primary datastore, or you can
+      map the consumer list with your database to keep consistency between Kong
+      Gateway and your existing primary datastore.
+    name: Consumers
+  - name: CustomPlugins
+  - name: Degraphql_routes
+  - name: HMAC-auth credentials
+  - name: JWTs
+  - description: >
+      A JSON Web key set. Key sets are the preferred way to expose keys to
+      plugins because they tell the plugin where to look for keys or have a
+      scoping mechanism to restrict plugins to specific keys.
+    name: KeySets
+  - description: >
+      A key object holds a representation of asymmetric keys in various formats.
+      When Kong Gateway or a Kong plugin requires a specific public or private
+      key to perform certain operations, it can use this entity.
+    name: Keys
+  - name: MTLS-auth credentials
+  - name: Partial Links
+  - description: >-
+      Some entities in Kong Gateway share common configuration settings that
+      often need to be repeated. For example, multiple plugins that connect to
+      Redis may require the same connection settings. Without Partials, you
+      would need to replicate this configuration across all plugins. If the
+      settings change, you would need to update each plugin individually.
+    name: Partials
+  - description: >-
+      A plugin entity represents a plugin configuration that will be executed
+      during the HTTP request/response lifecycle. Plugins let you add
+      functionality to services that run behind a Kong Gateway instance, like
+      authentication or rate limiting.
+
+      You can find more information about available plugins and which values
+      each plugin accepts at the [Plugin
+      Hub](https://developer.konghq.com/plugins/).
 
       <br><br>
 
-      Services can be both [tagged and filtered by
-      tags](https://docs.konghq.com/gateway/latest/admin-api/#tags).
-    name: Services
+      When adding a plugin configuration to a service, the plugin will run on
+      every request made by a client to that service. If a plugin needs to be
+      tuned to different values for some specific consumers, you can do so by
+      creating a separate plugin instance that specifies both the service and
+      the consumer, through the service and consumer fields.
+    name: Plugins
   - description: >
       Route entities define rules to match client requests. Each route is
       associated with a service, and a service may have multiple routes
@@ -151,66 +208,8 @@ tags:
         <br><br>
         Learn more about the router:
       - [Configure routes using
-      expressions](https://docs.konghq.com/gateway/latest/key-concepts/routes/expressions)
-
-      - [Router Expressions language
-      reference](https://docs.konghq.com/gateway/latest/reference/router-expressions-language/)
+      expressions](https://developer.konghq.com/gateway/routing/expressions/)
     name: Routes
-  - name: Degraphql_routes
-  - description: >
-      A plugin entity represents a plugin configuration that will be executed
-      during the HTTP request/response lifecycle. Plugins let you add
-      functionality to services that run behind a Kong Gateway instance, like
-      authentication or rate limiting.
-
-      You can find more information about available plugins and which values
-      each plugin accepts at the [Plugin Hub](https://docs.konghq.com/hub/).
-
-      <br><br>
-
-      When adding a plugin configuration to a service, the plugin will run on
-      every request made by a client to that service. If a plugin needs to be
-      tuned to different values for some specific consumers, you can do so by
-      creating a separate plugin instance that specifies both the service and
-      the consumer, through the service and consumer fields.
-
-      <br><br>
-
-      Plugins can be both [tagged and filtered by
-      tags](https://docs.konghq.com/gateway/latest/admin-api/#tags).
-    name: Plugins
-  - description: >
-      The consumer object represents a consumer - or a user - of a service.
-
-      You can either rely on Kong Gateway as the primary datastore, or you can
-      map the consumer list with your database to keep consistency between Kong
-      Gateway and your existing primary datastore.
-    name: Consumers
-  - description: >-
-      Consumer groups enable the organization and categorization of consumers
-      (users or applications) within an API ecosystem.
-
-      By grouping consumers together, you eliminate the need to manage them
-      individually, providing a scalable, efficient approach to managing
-      configurations.
-    name: Consumer Groups
-  - description: >
-      A certificate object represents a public certificate, and can be
-      optionally paired with the corresponding private key. These objects are
-      used by Kong Gateway to handle SSL/TLS termination for encrypted requests,
-      or for use as a trusted CA store when validating peer certificate of
-      client/service.
-
-      <br><br>
-
-      Certificates are optionally associated with SNI objects to tie a cert/key
-      pair to one or more hostnames.
-
-      <br><br>
-
-      If intermediate certificates are required in addition to the main
-      certificate, they should be concatenated together into one string.
-    name: Certificates
   - description: >-
       An SNI object represents a many-to-one mapping of hostnames to a
       certificate.
@@ -222,22 +221,52 @@ tags:
       to look up the certificate object based on the SNI associated with the
       certificate.
     name: SNIs
-  - description: >-
-      A CA certificate object represents a trusted certificate authority.
+  - description: >
+      Service entities are abstractions of your microservice interfaces or
+      formal APIs. For example, a service could be a data transformation
+      microservice or a billing API.
 
-      These objects are used by Kong Gateway to verify the validity of a client
-      or server certificate.
-    name: CA Certificates
+      <br><br>
+
+      The main attribute of a service is the destination URL for proxying
+      traffic. This URL can be set as a single string or by specifying its
+      protocol, host, port and path individually.
+
+      <br><br>
+
+      Services are associated to routes, and a single service can have many
+      routes associated with it. Routes are entrypoints in Kong Gateway which
+      define rules to match client requests. Once a route is matched, Kong
+      Gateway proxies the request to its associated service. See the [Route
+      documentation](https://developer.konghq.com/gateway/entities/route/) for a
+      detailed explanation of how Kong proxies traffic.
+
+      <br><br>
+
+      Services can be both [tagged and filtered by
+      tags](https://developer.konghq.com/admin-api/).
+    name: Services
+  - description: >
+      A target is an IP address or hostname with a port that identifies an
+      instance of a backend service. Every upstream can have many targets, and
+      the targets can be dynamically added, modified, or deleted. Changes take
+      effect on the fly.
+
+      <br><br>
+
+      To disable a target, post a new one with `weight=0`, or use the `DELETE`
+      method to accomplish the same.
+    name: Targets
   - description: >-
       The upstream object represents a virtual hostname and can be used to load
-      balance incoming requests over multiple services (targets).
+      balance incoming requests over multiple services (targets). 
 
       <br><br>
 
       An upstream also includes a [health
-      checker](https://docs.konghq.com/gateway/latest/how-kong-works/health-checks/),
+      checker](https://developer.konghq.com/gateway/traffic-control/health-checks-circuit-breakers/),
       which can enable and disable targets based on their ability or inability
-      to serve requests.
+      to serve requests. 
 
       The configuration for the health checker is stored in the upstream object,
       and applies to all of its targets.
@@ -245,7 +274,7 @@ tags:
   - description: >
       Vault objects are used to configure different vault connectors for
       [managing
-      secrets](https://docs.konghq.com/gateway/latest/kong-enterprise/secrets-management/).
+      secrets](https://developer.konghq.com/gateway/secrets-management/).
 
       Configuring a vault lets you reference secrets from other entities.
 
@@ -261,25 +290,8 @@ tags:
       <br><br>
 
       Secrets rotation can be managed using
-      [TTLs](https://docs.konghq.com/gateway/latest/kong-enterprise/secrets-management/advanced-usage/).
+      [TTLs](https://developer.konghq.com/gateway/entities/vault/).
     name: Vaults
-  - description: >
-      A key object holds a representation of asymmetric keys in various formats.
-      When Kong Gateway or a Kong plugin requires a specific public or private
-      key to perform certain operations, it can use this entity.
-    name: Keys
-  - description: >
-      A JSON Web key set. Key sets are the preferred way to expose keys to
-      plugins because they tell the plugin where to look for keys or have a
-      scoping mechanism to restrict plugins to specific keys.
-    name: KeySets
-  - name: API-keys
-  - name: Basic-auth credentials
-  - name: JWTs
-  - name: HMAC-auth credentials
-  - name: MTLS-auth credentials
-  - name: ACLs
-  - name: Partials
 paths:
   /v1/notifications/configurations:
     get:
@@ -1104,6 +1116,162 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Networks
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/networks/{networkId}/private-dns:
+    get:
+      x-speakeasy-group: CloudGateways
+      summary: List Private DNS
+      description: Returns a paginated collection of Private DNS for a given network.
+      operationId: list-private-dns
+      parameters:
+        - $ref: '#/components/parameters/NetworkId'
+        - $ref: '#/components/parameters/PrivateDnsFilter'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListPrivateDnsResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Private DNS
+      servers:
+        - url: https://global.api.konghq.com/
+    post:
+      x-speakeasy-group: CloudGateways
+      x-speakeasy-entity-operation: CloudGatewayPrivateDns#create
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 30000
+          maxInterval: 60000
+          maxElapsedTime: 3600000
+          exponent: 1.5
+        statusCodes:
+          - 400
+        retryConnectionErrors: false
+      summary: Create Private DNS
+      description: Creates a new Private DNS for a given network.
+      operationId: create-private-dns
+      parameters:
+        - $ref: '#/components/parameters/NetworkId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePrivateDnsRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/CreatePrivateDnsResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Private DNS
+      servers:
+        - url: https://global.api.konghq.com/
+  /v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}:
+    get:
+      x-speakeasy-group: CloudGateways
+      x-speakeasy-entity-operation: CloudGatewayPrivateDns#read
+      summary: Get Private DNS
+      description: Retrieves a Private DNS by ID for a given network.
+      operationId: get-private-dns
+      parameters:
+        - $ref: '#/components/parameters/NetworkId'
+        - $ref: '#/components/parameters/PrivateDnsId'
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrievePrivateDnsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Private DNS
+      servers:
+        - url: https://global.api.konghq.com/
+    patch:
+      x-speakeasy-group: CloudGateways
+      x-speakeasy-entity-operation: CloudGatewayPrivateDns#update
+      summary: Update Private DNS
+      description: Updates a Private DNS by ID for a given network.
+      operationId: update-private-dns
+      parameters:
+        - $ref: '#/components/parameters/NetworkId'
+        - $ref: '#/components/parameters/PrivateDnsId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchPrivateDnsRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/PatchPrivateDnsResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Private DNS
+      servers:
+        - url: https://global.api.konghq.com/
+    delete:
+      x-speakeasy-group: CloudGateways
+      x-speakeasy-entity-operation: CloudGatewayPrivateDns#delete
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 10000
+          maxInterval: 60000
+          maxElapsedTime: 1800000
+          exponent: 1.5
+        statusCodes:
+          - 400
+        retryConnectionErrors: false
+      summary: Delete Private DNS
+      description: Deletes a Private DNS by ID for a given network.
+      operationId: delete-private-dns
+      parameters:
+        - $ref: '#/components/parameters/NetworkId'
+        - $ref: '#/components/parameters/PrivateDnsId'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Private DNS
       servers:
         - url: https://global.api.konghq.com/
   /v2/cloud-gateways/networks/{networkId}/transit-gateways:
@@ -2225,7 +2393,7 @@ paths:
         This endpoint is currently in beta and is subject to change.
 
 
-        Removes all consumers from a consumer groups. This operation does not
+        Removes all consumers from a Consumer Groups. This operation does not
         delete the consumer group.
       responses:
         '204':
@@ -2533,9 +2701,9 @@ paths:
   /v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups:
     delete:
       operationId: remove-consumer-from-all-consumer-groups
-      summary: Remove consumer from consumer group
+      summary: Remove consumer from all consumer groups
       description: >-
-        Removes a consumer from all consumer groups. This operation does not
+        Removes a consumer from all Consumer Groups. This operation does not
         delete the consumer group.
       parameters:
         - $ref: '#/components/parameters/ConsumerId'
@@ -2545,7 +2713,7 @@ paths:
         '404':
           description: Consumer does not exist
       tags:
-        - Consumer Groups
+        - Consumers
     get:
       operationId: list-consumer-groups-for-consumer
       summary: List all Consumer Groups a Consumer belongs to
@@ -2557,7 +2725,7 @@ paths:
         - $ref: '#/components/parameters/PaginationTagsFilter'
       responses:
         '200':
-          description: A successful response listing consumer groups
+          description: A successful response listing Consumer Groups
           content:
             application/json:
               schema:
@@ -2572,7 +2740,7 @@ paths:
                   offset:
                     $ref: '#/components/schemas/PaginationOffsetResponse'
       tags:
-        - Consumer Groups
+        - Consumers
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
     post:
@@ -2606,13 +2774,13 @@ paths:
                     items:
                       $ref: '#/components/schemas/ConsumerGroup'
       tags:
-        - Consumer Groups
+        - Consumers
   /v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups/{ConsumerGroupId}:
     delete:
       operationId: remove-consumer-from-consumer-group
       summary: Remove consumer from consumer group
       description: >-
-        Removes a consumer from a consumer group. This operation does not delete
+        Removes a consumer from a Consumer Group. This operation does not delete
         the consumer group.
       parameters:
         - $ref: '#/components/parameters/ConsumerId'
@@ -2621,7 +2789,7 @@ paths:
         '204':
           description: Consumer removed from group
       tags:
-        - Consumer Groups
+        - Consumers
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
   /v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/acls:
@@ -3762,7 +3930,7 @@ paths:
       description: Create a new KeySet
       requestBody:
         description: Description of the new KeySet for creation
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -3818,7 +3986,6 @@ paths:
       description: Create or Update KeySet using ID or name.
       requestBody:
         description: Description of the KeySet
-        required: true
         content:
           application/json:
             schema:
@@ -4277,13 +4444,13 @@ paths:
         '201':
           $ref: '#/components/responses/plugin-schemas'
         '400':
-          $ref: '#/components/responses/BadRequest'
+          $ref: '#/components/responses/KonnectCPLegacyBadRequest'
         '401':
-          $ref: '#/components/responses/Unauthorized'
+          $ref: '#/components/responses/KonnectCPLegacyUnauthorized'
         '403':
-          $ref: '#/components/responses/Forbidden'
+          $ref: '#/components/responses/KonnectCPLegacyForbidden'
         '409':
-          $ref: '#/components/responses/Conflict'
+          $ref: '#/components/responses/KonnectCPLegacyConflict'
       tags:
         - Custom Plugin Schemas
       description: Upload a custom plugin schema associated with a control plane.
@@ -4306,11 +4473,11 @@ paths:
         '200':
           $ref: '#/components/responses/plugin-schemas'
         '401':
-          $ref: '#/components/responses/Unauthorized'
+          $ref: '#/components/responses/KonnectCPLegacyUnauthorized'
         '403':
-          $ref: '#/components/responses/Forbidden'
+          $ref: '#/components/responses/KonnectCPLegacyForbidden'
         '404':
-          $ref: '#/components/responses/NotFound'
+          $ref: '#/components/responses/KonnectCPLegacyNotFound'
       operationId: get-plugin-schema
       description: Returns information about a custom plugin from a given name.
       tags:
@@ -4323,11 +4490,11 @@ paths:
         '204':
           description: No Content
         '401':
-          $ref: '#/components/responses/Unauthorized'
+          $ref: '#/components/responses/KonnectCPLegacyUnauthorized'
         '403':
-          $ref: '#/components/responses/Forbidden'
+          $ref: '#/components/responses/KonnectCPLegacyForbidden'
         '404':
-          $ref: '#/components/responses/NotFound'
+          $ref: '#/components/responses/KonnectCPLegacyNotFound'
       description: Delete an individual custom plugin schema.
       tags:
         - Custom Plugin Schemas
@@ -4339,11 +4506,11 @@ paths:
         '200':
           $ref: '#/components/responses/plugin-schemas'
         '401':
-          $ref: '#/components/responses/Unauthorized'
+          $ref: '#/components/responses/KonnectCPLegacyUnauthorized'
         '403':
-          $ref: '#/components/responses/Forbidden'
+          $ref: '#/components/responses/KonnectCPLegacyForbidden'
         '404':
-          $ref: '#/components/responses/NotFound'
+          $ref: '#/components/responses/KonnectCPLegacyNotFound'
       description: Create or update an individual custom plugin schema.
       tags:
         - Custom Plugin Schemas
@@ -4682,17 +4849,7 @@ paths:
       description: Get the schema for a plugin
       responses:
         '200':
-          description: The schema for the plugin
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  fields:
-                    type: array
-                    items:
-                      additionalProperties: true
-                      type: object
+          $ref: '#/components/responses/GetPluginSchemaResponse'
       tags:
         - Plugins
     parameters:
@@ -6372,6 +6529,8 @@ paths:
           $ref: '#/components/responses/IdentityUnauthenticated'
         '403':
           $ref: '#/components/responses/CreateIdentityProviderPermissionDenied'
+        '409':
+          $ref: '#/components/responses/Conflict'
       tags:
         - Auth Settings
       servers:
@@ -6431,6 +6590,8 @@ paths:
           $ref: '#/components/responses/IdentityPermissionDenied'
         '404':
           $ref: '#/components/responses/IdentityNotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
       tags:
         - Auth Settings
       servers:
@@ -7729,6 +7890,14 @@ components:
       schema:
         $ref: '#/components/schemas/TransitGatewaysFilterParameters'
       style: deepObject
+    PrivateDnsFilter:
+      name: filter
+      description: Filters supported for Private DNS.
+      required: false
+      in: query
+      schema:
+        $ref: '#/components/schemas/PrivateDnsFilterParameters'
+      style: deepObject
     CustomDomainsFilter:
       name: filter
       description: Filters supported for custom domains on the global API.
@@ -7760,6 +7929,14 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/NetworkId'
+      x-speakeasy-match: id
+    PrivateDnsId:
+      name: privateDnsId
+      in: path
+      description: The ID of the Private DNS to operate on.
+      required: true
+      schema:
+        $ref: '#/components/schemas/PrivateDnsId'
       x-speakeasy-match: id
     TransitGatewayId:
       name: transitGatewayId
@@ -9472,6 +9649,7 @@ components:
                 type: string
                 description: The token of the system account access token.
                 readOnly: true
+                x-speakeasy-param-sensitive: true
     MeOrganization:
       description: Me Organization
       content:
@@ -9527,15 +9705,12 @@ components:
                 description: >-
                   The number of days an organization spends inactive before
                   being deleted.
-    IdentityProvider:
-      description: >
-        An identity provider configuration. This response represents the
-        configuration of a specific identity provider, which can be either OIDC
-        or SAML.
+    IdPConfiguration:
+      description: A get action response of the IdP configuration.
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/IdentityProvider'
+            $ref: '#/components/schemas/IdP'
     IdentityProviders:
       description: >
         A collection of identity providers. This response contains a collection
@@ -9547,13 +9722,22 @@ components:
             type: array
             title: Identity Provider Collection Response
             items:
-              $ref: '#/components/schemas/IdentityProvider'
-    IdPConfiguration:
-      description: A get action response of the IdP configuration.
+              $ref: '#/components/schemas/schemas-IdentityProvider'
+    IdentityProvider:
+      description: >
+        An identity provider configuration. This response represents the
+        configuration of a specific identity provider, which can be either OIDC
+        or SAML.
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/IdP'
+            $ref: '#/components/schemas/schemas-IdentityProvider'
+    Conflict:
+      description: Conflict
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ConflictError'
     RetrieveCloudGatewaysAvailabilityDocumentResponse:
       description: >-
         Response format for retrieving the cloud gateways availability JSON
@@ -9645,6 +9829,41 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Network'
+    CreatePrivateDnsResponse:
+      description: Response format for creating a Private DNS.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PrivateDnsResponse'
+    PatchPrivateDnsResponse:
+      description: Response format for updating a Private DNS.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PrivateDnsResponse'
+    ListPrivateDnsResponse:
+      description: A paginated list for a collection of Private DNS for a network.
+      content:
+        application/json:
+          schema:
+            title: ListPrivateDnsResponse
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/PaginatedMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PrivateDnsResponse'
+            required:
+              - meta
+              - data
+    RetrievePrivateDnsResponse:
+      description: Response format for retrieving a Private DNS.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PrivateDnsResponse'
     CreateTransitGatewayResponse:
       description: Response format for creating a transit gateway.
       content:
@@ -9837,12 +10056,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ResourceConfiguration'
-    Conflict:
-      description: Conflict
-      content:
-        application/problem+json:
-          schema:
-            $ref: '#/components/schemas/ConflictError'
     NotificationResponse:
       description: View a single notification.
       content:
@@ -10252,12 +10465,54 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/NotFoundError'
+    GetPluginSchemaResponse:
+      description: The schema for the plugin
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              fields:
+                type: array
+                items:
+                  additionalProperties: true
+                  type: object
     HTTP401Error:
       description: Unauthorized
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/GatewayUnauthorizedError'
+    KonnectCPLegacyBadRequest:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/KonnectCPLegacyBadRequestError'
+    KonnectCPLegacyUnauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/KonnectCPLegacyUnauthorizedError'
+    KonnectCPLegacyForbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/KonnectCPLegacyForbiddenError'
+    KonnectCPLegacyConflict:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/KonnectCPLegacyConflictError'
+    KonnectCPLegacyNotFound:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/KonnectCPLegacyNotFoundError'
     UnsupportedMediaType:
       description: Unsupported Media Type
       content:
@@ -11090,120 +11345,19 @@ components:
       example: '2022-11-04T20:10:06.927Z'
       description: An ISO-8601 timestamp representation of entity creation date.
       readOnly: true
+      x-speakeasy-param-suppress-computed-diff: true
     UpdatedAt:
       type: string
       format: date-time
       example: '2022-11-04T20:10:06.927Z'
       description: An ISO-8601 timestamp representation of entity update date.
       readOnly: true
-    IdentityProviderEnabled:
-      title: Identity Provider Enabled Property
-      type: boolean
-      description: >
-        Indicates whether the identity provider is enabled. 
-
-        Only one identity provider can be active at a time, such as SAML or
-        OIDC.
-      default: false
-      example: true
-    IdentityProviderType:
-      type: string
-      enum:
-        - oidc
-        - saml
-      description: Specifies the type of identity provider.
-      example: oidc
+      x-speakeasy-param-suppress-computed-diff: true
     IdentityProviderLoginPath:
       title: Identity Provider Login Path Property
       type: string
       example: myapp
       description: The path used for initiating login requests with the identity provider.
-    OIDCIdentityProviderIssuer:
-      title: OIDC Identity Provider Issuer Property
-      type: string
-      format: uri
-      description: >-
-        The issuer URI of the identity provider. This is the URL where the
-        provider's metadata can be obtained.
-      example: https://konghq.okta.com/oauth2/default
-    OIDCIdentityProviderClientId:
-      title: OIDC Identity Provider Login Client Id Property
-      type: string
-      example: YOUR_CLIENT_ID
-      description: The client ID assigned to your application by the identity provider.
-    OIDCIdentityProviderClientSecret:
-      title: OIDC Identity Provider Login Client Secret Property
-      type: string
-      example: YOUR_CLIENT_SECRET
-      description: The Client Secret assigned to your application by the identity provider.
-    OIDCIdentityProviderScopes:
-      title: OIDC Identity Provider Scopes Property
-      type: array
-      description: >-
-        The scopes requested by your application when authenticating with the
-        identity provider.
-      default:
-        - email
-        - openid
-        - profile
-      items:
-        type: string
-    OIDCIdentityProviderClaimMappings:
-      title: OIDC Claim Mappings
-      type: object
-      description: >
-        Defines the mappings between OpenID Connect (OIDC) claims and local
-        claims used by your application for 
-
-        authentication.
-      properties:
-        name:
-          type: string
-          example: name
-          description: The claim mapping for the user's name.
-        email:
-          type: string
-          example: email
-          description: The claim mapping for the user's email address.
-        groups:
-          type: string
-          example: groups
-          description: The claim mapping for the user's group membership information.
-    SAMLIdentityProviderMetadataURL:
-      title: SAML Identity Provider Metadata URL
-      type: string
-      format: uri
-      description: >-
-        The identity provider's metadata URL where the identity provider's
-        metadata can be obtained.
-      example: https://mocksaml.com/api/saml/metadata
-    SAMLIdentityProviderMetadata:
-      title: SAML Identity Provider Metadata
-      type: string
-      description: >
-        The identity provider's SAML metadata. If the identity provider supports
-        a metadata URL, you can use the `idp_metadata_url` field instead.
-      example: |
-        <?xml version="1.0" encoding="UTF-8"?>
-        <EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata">
-          <!-- SAML metadata content here -->
-        </EntityDescriptor>
-    CreateIdentityProvider:
-      title: Identity Provider
-      type: object
-      description: >-
-        The identity provider that contains configuration data for creating an
-        authentication integration.
-      properties:
-        type:
-          $ref: '#/components/schemas/IdentityProviderType'
-        login_path:
-          $ref: '#/components/schemas/IdentityProviderLoginPath'
-        config:
-          type: object
-          oneOf:
-            - $ref: '#/components/schemas/ConfigureOIDCIdentityProviderConfig'
-            - $ref: '#/components/schemas/SAMLIdentityProviderConfig'
     UpdateIdentityProvider:
       title: Identity Provider
       type: object
@@ -11212,7 +11366,7 @@ components:
         authentication integration.
       properties:
         enabled:
-          $ref: '#/components/schemas/IdentityProviderEnabled'
+          $ref: '#/components/schemas/schemas-IdentityProviderEnabled'
         login_path:
           $ref: '#/components/schemas/IdentityProviderLoginPath'
         config:
@@ -11220,70 +11374,6 @@ components:
           oneOf:
             - $ref: '#/components/schemas/ConfigureOIDCIdentityProviderConfig'
             - $ref: '#/components/schemas/SAMLIdentityProviderConfig'
-    IdentityProvider:
-      title: Identity Provider
-      type: object
-      description: >-
-        The identity provider that contains configuration data for
-        authentication integration.
-      properties:
-        id:
-          $ref: '#/components/schemas/UUID'
-        type:
-          $ref: '#/components/schemas/IdentityProviderType'
-        enabled:
-          $ref: '#/components/schemas/IdentityProviderEnabled'
-        login_path:
-          $ref: '#/components/schemas/IdentityProviderLoginPath'
-        config:
-          type: object
-          oneOf:
-            - $ref: '#/components/schemas/OIDCIdentityProviderConfig'
-            - $ref: '#/components/schemas/SAMLIdentityProviderConfig'
-        created_at:
-          $ref: '#/components/schemas/CreatedAt'
-        updated_at:
-          $ref: '#/components/schemas/UpdatedAt'
-    OIDCIdentityProviderConfig:
-      title: OIDC Identity Provider Config
-      type: object
-      description: >-
-        The identity provider that contains configuration data for the OIDC
-        authentication integration.
-      properties:
-        issuer_url:
-          $ref: '#/components/schemas/OIDCIdentityProviderIssuer'
-        client_id:
-          $ref: '#/components/schemas/OIDCIdentityProviderClientId'
-        scopes:
-          $ref: '#/components/schemas/OIDCIdentityProviderScopes'
-        claim_mappings:
-          $ref: '#/components/schemas/OIDCIdentityProviderClaimMappings'
-      additionalProperties: false
-      required:
-        - issuer_url
-        - client_id
-    ConfigureOIDCIdentityProviderConfig:
-      title: OIDC Identity Provider Config
-      type: object
-      description: >-
-        The identity provider that contains configuration data for the OIDC
-        authentication integration.
-      properties:
-        issuer_url:
-          $ref: '#/components/schemas/OIDCIdentityProviderIssuer'
-        client_id:
-          $ref: '#/components/schemas/OIDCIdentityProviderClientId'
-        client_secret:
-          $ref: '#/components/schemas/OIDCIdentityProviderClientSecret'
-        scopes:
-          $ref: '#/components/schemas/OIDCIdentityProviderScopes'
-        claim_mappings:
-          $ref: '#/components/schemas/OIDCIdentityProviderClaimMappings'
-      additionalProperties: false
-      required:
-        - issuer_url
-        - client_id
     SAMLIdentityProviderConfig:
       title: SAML Identity Provider Config
       type: object
@@ -11645,8 +11735,203 @@ components:
       type: string
       format: uuid
       example: 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7
-      description: Contains a unique identifier used by the API for this resource.
+      description: Contains a unique identifier used for this resource.
       readOnly: true
+    IdentityProviderType:
+      type: string
+      enum:
+        - oidc
+        - saml
+      description: Specifies the type of identity provider.
+      example: oidc
+    schemas-IdentityProviderEnabled:
+      title: Identity Provider Enabled Property
+      type: boolean
+      description: >
+        Indicates whether the identity provider is enabled. 
+
+        Only one identity provider can be active at a time, such as SAML or
+        OIDC.
+      default: false
+      example: true
+    OIDCIdentityProviderIssuer:
+      title: OIDC Identity Provider Issuer Property
+      type: string
+      format: uri
+      description: >-
+        The issuer URI of the identity provider. This is the URL where the
+        provider's metadata can be obtained.
+      example: https://konghq.okta.com/oauth2/default
+    OIDCIdentityProviderClientId:
+      title: OIDC Identity Provider Login Client Id Property
+      type: string
+      example: YOUR_CLIENT_ID
+      description: The client ID assigned to your application by the identity provider.
+    OIDCIdentityProviderScopes:
+      title: OIDC Identity Provider Scopes Property
+      type: array
+      description: >-
+        The scopes requested by your application when authenticating with the
+        identity provider.
+      default:
+        - email
+        - openid
+        - profile
+      items:
+        type: string
+    schemas-OIDCIdentityProviderClaimMappings:
+      title: OIDC Claim Mappings
+      type: object
+      description: >
+        Defines the mappings between OpenID Connect (OIDC) claims and local
+        claims used by your application for 
+
+        authentication.
+      properties:
+        name:
+          type: string
+          example: name
+          description: The claim mapping for the user's name.
+        email:
+          type: string
+          example: email
+          description: The claim mapping for the user's email address.
+        groups:
+          type: string
+          example: groups
+          description: The claim mapping for the user's group membership information.
+    schemas-OIDCIdentityProviderConfig:
+      title: OIDC Identity Provider Config
+      type: object
+      description: >-
+        The identity provider that contains configuration data for the OIDC
+        authentication integration.
+      properties:
+        issuer_url:
+          $ref: '#/components/schemas/OIDCIdentityProviderIssuer'
+        client_id:
+          $ref: '#/components/schemas/OIDCIdentityProviderClientId'
+        scopes:
+          $ref: '#/components/schemas/OIDCIdentityProviderScopes'
+        claim_mappings:
+          $ref: '#/components/schemas/schemas-OIDCIdentityProviderClaimMappings'
+      additionalProperties: false
+      required:
+        - issuer_url
+        - client_id
+    SAMLIdentityProviderMetadataURL:
+      title: SAML Identity Provider Metadata URL
+      type: string
+      format: uri
+      description: >-
+        The identity provider's metadata URL where the identity provider's
+        metadata can be obtained.
+      example: https://mocksaml.com/api/saml/metadata
+    SAMLIdentityProviderMetadata:
+      title: SAML Identity Provider Metadata
+      type: string
+      description: >
+        The identity provider's SAML metadata. If the identity provider supports
+        a metadata URL, you can use the `idp_metadata_url` field instead.
+      example: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata">
+          <!-- SAML metadata content here -->
+        </EntityDescriptor>
+    schemas-SAMLIdentityProviderConfig:
+      title: SAML Identity Provider Config
+      type: object
+      description: >-
+        The identity provider that contains configuration data for the SAML
+        authentication integration.
+      properties:
+        idp_metadata_url:
+          $ref: '#/components/schemas/SAMLIdentityProviderMetadataURL'
+        idp_metadata_xml:
+          $ref: '#/components/schemas/SAMLIdentityProviderMetadata'
+        sp_metadata_url:
+          type: string
+          format: path
+          example: /api/v2/developer/authenticate/saml/metadata
+          readOnly: true
+        sp_entity_id:
+          type: string
+          description: The entity ID of the service provider (SP).
+          example: https://cloud.konghq.com/sp/00000000-0000-0000-0000-000000000000
+          readOnly: true
+        callback_url:
+          type: string
+          description: >-
+            The path URL where the SAML identity provider sends authentication
+            responses after successful login attempts.
+          format: path
+          example: /api/v2/developer/authenticate/saml/acs
+          readOnly: true
+      additionalProperties: false
+    schemas-IdentityProvider:
+      title: Identity Provider
+      type: object
+      description: >-
+        The identity provider that contains configuration data for
+        authentication integration.
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/IdentityProviderType'
+        enabled:
+          $ref: '#/components/schemas/schemas-IdentityProviderEnabled'
+        config:
+          type: object
+          oneOf:
+            - $ref: '#/components/schemas/schemas-OIDCIdentityProviderConfig'
+            - $ref: '#/components/schemas/schemas-SAMLIdentityProviderConfig'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+    OIDCIdentityProviderClientSecret:
+      title: OIDC Identity Provider Login Client Secret Property
+      type: string
+      example: YOUR_CLIENT_SECRET
+      description: The Client Secret assigned to your application by the identity provider.
+    ConfigureOIDCIdentityProviderConfig:
+      title: OIDC Identity Provider Config
+      type: object
+      description: >-
+        The identity provider that contains configuration data for the OIDC
+        authentication integration.
+      properties:
+        issuer_url:
+          $ref: '#/components/schemas/OIDCIdentityProviderIssuer'
+        client_id:
+          $ref: '#/components/schemas/OIDCIdentityProviderClientId'
+        client_secret:
+          $ref: '#/components/schemas/OIDCIdentityProviderClientSecret'
+        scopes:
+          $ref: '#/components/schemas/OIDCIdentityProviderScopes'
+        claim_mappings:
+          $ref: '#/components/schemas/schemas-OIDCIdentityProviderClaimMappings'
+      additionalProperties: false
+      required:
+        - issuer_url
+        - client_id
+    schemas-CreateIdentityProvider:
+      title: Identity Provider
+      type: object
+      description: >-
+        The identity provider that contains configuration data for creating an
+        authentication integration.
+      properties:
+        enabled:
+          $ref: '#/components/schemas/schemas-IdentityProviderEnabled'
+        type:
+          $ref: '#/components/schemas/IdentityProviderType'
+        config:
+          type: object
+          oneOf:
+            - $ref: '#/components/schemas/ConfigureOIDCIdentityProviderConfig'
+            - $ref: '#/components/schemas/schemas-SAMLIdentityProviderConfig'
     StringFieldFilter:
       description: Filters on the given string field value by exact match inequality.
       type: object
@@ -11716,6 +12001,11 @@ components:
       type: string
       format: uuid
       example: 0850820b-d153-4a2a-b9be-7d2204779139
+      readOnly: true
+    PrivateDnsId:
+      type: string
+      format: uuid
+      example: 1850820b-c69f-4a2a-b9be-bbcdbc5cd618
       readOnly: true
     ProviderAccountId:
       type: string
@@ -11889,6 +12179,16 @@ components:
         - availability_zones
         - cidr_blocks
         - reserved_cidr_blocks
+    HighVelocityProviderRegion:
+      title: HighVelocity Provider Region
+      description: Region ID and human-readable name for a cloud provider region.
+      type: object
+      additionalProperties: false
+      properties:
+        region:
+          $ref: '#/components/schemas/ProviderRegionId'
+      required:
+        - region
     ProviderRegions:
       title: Provider Regions
       description: >-
@@ -11897,6 +12197,14 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/ProviderRegion'
+    HighVelocityProviderRegions:
+      title: High Velocity Provider Regions
+      description: >-
+        List of available regions to run high velocity cloud gateway instances 
+        on for a given cloud provider.
+      type: array
+      items:
+        $ref: '#/components/schemas/HighVelocityProviderRegion'
     ProviderName:
       title: Provider Name
       description: Name of cloud provider.
@@ -11904,6 +12212,12 @@ components:
       enum:
         - aws
         - azure
+      example: aws
+    HighVelocityCloudGatewaysProviderName:
+      description: Name of cloud provider.
+      type: string
+      enum:
+        - aws
       example: aws
     Provider:
       title: Provider
@@ -11918,12 +12232,35 @@ components:
       required:
         - provider
         - regions
+    HighVelocityProvider:
+      title: High Velocity Provider
+      description: >-
+        Description of cloud provider that runs high velocity cloud gateway
+        instances.
+      type: object
+      additionalProperties: false
+      properties:
+        provider:
+          $ref: '#/components/schemas/HighVelocityCloudGatewaysProviderName'
+        regions:
+          $ref: '#/components/schemas/HighVelocityProviderRegions'
+      required:
+        - provider
+        - regions
     Providers:
       title: Providers
       description: List of supported cloud providers that run cloud gateway instances.
       type: array
       items:
         $ref: '#/components/schemas/Provider'
+    HighVelocityProviders:
+      title: High Velocity Providers
+      description: >-
+        List of supported cloud providers that run high velocity cloud gateway
+        instances.
+      type: array
+      items:
+        $ref: '#/components/schemas/HighVelocityProvider'
     AvailabilityDocument:
       title: Availability Document
       description: Document containing availability information for configurations.
@@ -11936,18 +12273,25 @@ components:
           $ref: '#/components/schemas/InstanceTypes'
         providers:
           $ref: '#/components/schemas/Providers'
+        high_velocity_providers:
+          $ref: '#/components/schemas/HighVelocityProviders'
       required:
         - versions
         - instance_types
         - providers
+        - high_velocity_providers
     ConfigurationDataPlaneGroupAutoscale:
       oneOf:
         - $ref: '#/components/schemas/ConfigurationDataPlaneGroupAutoscaleStatic'
         - $ref: '#/components/schemas/ConfigurationDataPlaneGroupAutoscaleAutopilot'
     ConfigurationDataPlaneGroupAutoscaleStatic:
       title: Configuration Autoscale Static
-      description: Object that describes the static autoscaling strategy.
+      description: >-
+        Object that describes the static autoscaling strategy. Deprecated in
+        favor of the autopilot autoscaling strategy. Static autoscaling will be
+        removed in a future version.
       type: object
+      deprecated: true
       properties:
         kind:
           type: string
@@ -12017,7 +12361,7 @@ components:
           type: string
           minLength: 1
           maxLength: 120
-          example: INFO
+          example: info
           description: >-
             Value assigned to the environment variable field for the data-plane
             group.
@@ -12047,14 +12391,6 @@ components:
         - region
         - cloud_gateway_network_id
       additionalProperties: false
-    ConfigurationDataPlaneGroupConfigs:
-      title: Configuration Data-Plane Group Configs
-      description: >-
-        Object that describes where data-planes will be deployed to, along with
-        how many instances.
-      type: array
-      items:
-        $ref: '#/components/schemas/ConfigurationDataPlaneGroupConfig'
     ConfigurationDataPlaneGroup:
       title: Cloud Gateway Configuration Data-Plane Group
       description: >-
@@ -12089,6 +12425,7 @@ components:
             Metadata describing the backing state of the dataplane group and why
             it may be in an erroneous state.
           additionalProperties: false
+          x-speakeasy-terraform-ignore: true
           properties:
             reported_status:
               type: string
@@ -12168,7 +12505,14 @@ components:
         api_access:
           $ref: '#/components/schemas/ApiAccess'
         dataplane_group_config:
-          $ref: '#/components/schemas/ConfigurationDataPlaneGroupConfigs'
+          x-speakeasy-terraform-ignore: true
+          title: Configuration Data-Plane Group Configs
+          description: >-
+            Object that describes where data-planes will be deployed to, along
+            with how many instances.
+          type: array
+          items:
+            $ref: '#/components/schemas/ConfigurationDataPlaneGroupConfig'
         dataplane_groups:
           type: array
           format: set
@@ -12631,6 +12975,251 @@ components:
         - 10.0.0.0/8
         - 100.64.0.0/10
         - 172.16.0.0/12
+    PrivateDnsResponse:
+      oneOf:
+        - $ref: '#/components/schemas/AwsPrivateHostedZoneResponse'
+        - $ref: '#/components/schemas/AwsPrivateDnsResolverResponse'
+    AwsPrivateHostedZoneResponse:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/PrivateDnsId'
+        state:
+          $ref: '#/components/schemas/PrivateDnsState'
+        state_metadata:
+          title: PrivateDnsStateMetadata
+          type: object
+          description: >
+            Metadata describing the backing state of the Private Dns and why it
+            may be in an erroneous state.
+          additionalProperties: false
+          properties:
+            reported_status:
+              type: string
+              description: Reported status of the Private Dns from backing infrastructure.
+              example: ERROR
+            reason:
+              type: string
+              description: >
+                Reason why the Private Dns may be in an erroneous state,
+                reported from backing infrastructure.
+              example: >
+                Failed to create Private Dns due to invalid Cloud Provider
+                configuration.
+        entity_version:
+          type: integer
+          description: >
+            Monotonically-increasing version count of the Private DNS, to
+            indicate the order of updates to the
+
+            Private DNS.
+          readOnly: true
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: An RFC-3339 timestamp representation of Private DNS creation date.
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: An RFC-3339 timestamp representation of Private DNS update date.
+          readOnly: true
+        name:
+          $ref: '#/components/schemas/PrivateDnsName'
+        private_dns_attachment_config:
+          $ref: '#/components/schemas/AwsPrivateHostedZoneAttachmentConfig'
+      required:
+        - id
+        - state
+        - state_metadata
+        - entity_version
+        - created_at
+        - updated_at
+        - name
+        - private_dns_attachment_config
+    AwsPrivateHostedZoneAttachmentConfig:
+      title: AWS Private Hosted Zone Attachment Config
+      type: object
+      additionalProperties: false
+      properties:
+        kind:
+          title: AWS Private Hosted Zone Type
+          enum:
+            - aws-private-hosted-zone-attachment
+        hosted_zone_id:
+          title: Hosted Zone Id
+          description: AWS Hosted Zone to create attachment to.
+          type: string
+      required:
+        - kind
+        - hosted_zone_id
+    AwsPrivateDnsResolverResponse:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/PrivateDnsId'
+        state:
+          $ref: '#/components/schemas/PrivateDnsState'
+        state_metadata:
+          title: PrivateDnsStateMetadata
+          type: object
+          description: >
+            Metadata describing the backing state of the Private Dns and why it
+            may be in an erroneous state.
+          additionalProperties: false
+          properties:
+            reported_status:
+              type: string
+              description: Reported status of the Private Dns from backing infrastructure.
+              example: ERROR
+            reason:
+              type: string
+              description: >
+                Reason why the Private Dns may be in an erroneous state,
+                reported from backing infrastructure.
+              example: >
+                Failed to create Private Dns due to invalid Cloud Provider
+                configuration.
+        entity_version:
+          type: integer
+          description: >
+            Monotonically-increasing version count of the Private DNS, to
+            indicate the order of updates to the
+
+            Private DNS.
+          readOnly: true
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: An RFC-3339 timestamp representation of Private DNS creation date.
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: An RFC-3339 timestamp representation of Private DNS update date.
+          readOnly: true
+        name:
+          $ref: '#/components/schemas/PrivateDnsName'
+        private_dns_attachment_config:
+          $ref: '#/components/schemas/AwsPrivateDnsResolverAttachmentConfig'
+      required:
+        - id
+        - state
+        - state_metadata
+        - entity_version
+        - created_at
+        - updated_at
+        - name
+        - private_dns_attachment_config
+    AwsPrivateDnsResolverAttachmentConfig:
+      title: AWS Private DNS Resolver Attachment Config
+      type: object
+      additionalProperties: false
+      properties:
+        kind:
+          title: AWS Private DNS Resolver Type
+          enum:
+            - aws-outbound-resolver
+        dns_config:
+          $ref: '#/components/schemas/PrivateDnsResolverConfig'
+      required:
+        - kind
+        - dns_config
+    PrivateDnsResolverConfig:
+      title: Private DNS Resolver Config Item
+      description: >
+        Object that contains mappings from proxied internal domains to remote
+        DNS server IP address for a Private DNS Resolver.
+      type: object
+      example:
+        global.api.konghq.com:
+          remote_dns_server_ip_addresses:
+            - 10.0.0.2
+        us.api.konghq.dev:
+          remote_dns_server_ip_addresses:
+            - 10.0.0.8
+      additionalProperties:
+        type: object
+        properties:
+          remote_dns_server_ip_addresses:
+            description: >-
+              IP addresses of remote DNS servers used by the Private DNS
+              Resolver for DNS resolution.
+            type: array
+            items:
+              type: string
+            example:
+              - 10.0.0.2
+        required:
+          - remote_dns_server_ip_addresses
+    PrivateDnsName:
+      title: Private DNS Name
+      type: string
+      description: Human-readable name of the Private DNS.
+      example: us-east-2 private dns
+    PrivateDnsState:
+      title: Private DNS State
+      type: string
+      description: >
+        The current state of the Private DNS attachment. Possible values:
+
+        - `created` - The attachment has been created but is not attached to
+        Private DNS.
+
+        - `initializing` - The attachment is in the process of being initialized
+        and is setting up necessary resources.
+
+        - `pending-association` The attachment request is awaiting association
+        to the cloud provider infrastructure in order for provisioning to
+        proceed.
+
+        - `ready` - The attachment is fully operational and can route traffic as
+        configured.
+
+        - `error` - The attachment is in an error state, and is not operational.
+
+        - `terminating` - The attachment is in the process of being deleted.
+
+        - `terminated` - The attachment has been fully deleted and is no longer
+        available.
+      enum:
+        - created
+        - initializing
+        - pending-association
+        - ready
+        - error
+        - terminating
+        - terminated
+    PatchAwsPrivateDnsResolver:
+      description: Request schema for updating a Private DNS AWS Resolver.
+      properties:
+        name:
+          $ref: '#/components/schemas/PrivateDnsName'
+        private_dns_attachment_config:
+          $ref: '#/components/schemas/AwsPrivateDnsResolverAttachmentConfig'
+    CreatePrivateDnsRequest:
+      title: CreatePrivateDnsRequest
+      description: Request schema for creating a Private DNS.
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/PrivateDnsName'
+        private_dns_attachment_config:
+          oneOf:
+            - $ref: '#/components/schemas/AwsPrivateHostedZoneAttachmentConfig'
+            - $ref: '#/components/schemas/AwsPrivateDnsResolverAttachmentConfig'
+    PatchPrivateDnsRequest:
+      title: PatchPrivateDnsRequest
+      description: Request schema for updating a Private DNS.
+      type: object
+      oneOf:
+        - $ref: '#/components/schemas/PatchAwsPrivateDnsResolver'
     AwsTransitGatewayResponse:
       type: object
       properties:
@@ -13246,6 +13835,15 @@ components:
           $ref: '#/components/schemas/CloudGatewaysStringFieldFilterOverride'
         state:
           $ref: '#/components/schemas/TransitGatewayStateFieldFilter'
+    PrivateDnsFilterParameters:
+      title: PrivateDnsFilterParameters
+      type: object
+      additionalProperties: false
+      properties:
+        name:
+          $ref: '#/components/schemas/CloudGatewaysStringFieldFilterOverride'
+        state:
+          $ref: '#/components/schemas/PrivateDnsStateFieldFilter'
     NetworksFilterParameters:
       title: NetworksFilterParameters
       type: object
@@ -13395,6 +13993,46 @@ components:
       description: >
         Filter transit-gateway state by determining if the value is equal to any
         in a set of values, where the set is a
+
+        comma-delimited list.
+      type: object
+      properties:
+        oeq:
+          type: string
+      required:
+        - oeq
+    PrivateDnsStateFieldFilter:
+      title: PrivateDnsStateFieldFilter
+      oneOf:
+        - $ref: '#/components/schemas/PrivateDnsStateFieldEqualsFilter'
+        - $ref: '#/components/schemas/PrivateDnsStateFieldNotEqualsFilter'
+        - $ref: '#/components/schemas/PrivateDnsStateFieldOrEqualityFilter'
+    PrivateDnsStateFieldEqualsFilter:
+      title: PrivateDnsStateFieldEqualsFilter
+      description: Filter Private DNS state by exact match.
+      oneOf:
+        - $ref: '#/components/schemas/PrivateDnsState'
+        - type: object
+          title: PrivateDnsStateFieldEqualsComparison
+          properties:
+            eq:
+              $ref: '#/components/schemas/PrivateDnsState'
+          required:
+            - eq
+    PrivateDnsStateFieldNotEqualsFilter:
+      title: PrivateDnsStateFieldNotEqualsFilter
+      description: Filter private-dns state by inequality match.
+      type: object
+      properties:
+        neq:
+          $ref: '#/components/schemas/PrivateDnsState'
+      required:
+        - neq
+    PrivateDnsStateFieldOrEqualityFilter:
+      title: PrivateDnsStateFieldOrEqualityFilter
+      description: >
+        Filter Private DNS state by determining if the value is equal to any in
+        a set of values, where the set is a
 
         comma-delimited list.
       type: object
@@ -14533,8 +15171,6 @@ components:
           items:
             type: string
             maxLength: 64
-        labels:
-          $ref: '#/components/schemas/Labels'
     AppAuthStrategyKeyAuthRequest:
       title: AppAuthStrategyKeyAuthRequest
       description: Request for creating a Key Auth Application Auth Strategy
@@ -14605,7 +15241,7 @@ components:
               $ref: '#/components/schemas/AppAuthStrategyConfigKeyAuth'
         active:
           type: boolean
-          description: At least one published product version is using this auth strategy.
+          description: At least one published entity is using this auth strategy.
         dcr_provider:
           nullable: true
           type: object
@@ -14701,7 +15337,7 @@ components:
               $ref: '#/components/schemas/AppAuthStrategyConfigOpenIDConnect'
         active:
           type: boolean
-          description: At least one published product version is using this auth strategy.
+          description: At least one published entity is using this auth strategy.
         dcr_provider:
           nullable: true
           type: object
@@ -15133,7 +15769,12 @@ components:
           -----BEGIN CERTIFICATE-----
           certificate-content
           -----END CERTIFICATE-----
+        cert_digest: 9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f
+        created_at: 1706598432
         id: b2f34145-0343-41a4-9602-4c69dec2f260
+        tags:
+          - trusted
+          - api
       additionalProperties: false
       required:
         - cert
@@ -15961,10 +16602,81 @@ components:
       type: string
     Partial:
       type: object
+      discriminator:
+        mapping:
+          redis-ce: '#/components/schemas/PartialRedisCE'
+          redis-ee: '#/components/schemas/PartialRedisEE'
+        propertyName: type
+      oneOf:
+        - $ref: '#/components/schemas/PartialRedisCE'
+        - $ref: '#/components/schemas/PartialRedisEE'
+    PartialLink:
+      type: object
+      properties:
+        id:
+          description: The plugin's unique identifier
+          type: string
+        instance_name:
+          description: The instance name of the plugin
+          type: string
+        name:
+          description: The plugin's name
+          type: string
+      required:
+        - id
+        - name
+    PartialRedisCE:
+      type: object
       properties:
         config:
+          description: Redis-CE configuration
           type: object
-          additionalProperties: true
+          example:
+            database: 0
+            host: localhost
+            password: password
+            port: 6379
+            server_name: redis
+            ssl: false
+            ssl_verify: false
+            timeout: 2000
+            username: username
+          properties:
+            database:
+              description: >-
+                Database to use for the Redis connection when using the `redis`
+                strategy
+              type: integer
+            host:
+              description: Redis host.
+              type: string
+            password:
+              description: >-
+                Password to use for Redis connections. If undefined, no AUTH
+                commands are sent to Redis.
+              type: string
+            port:
+              description: Redis port.
+              type: integer
+            server_name:
+              description: Server name for SSL verification.
+              type: string
+            ssl:
+              description: If set to true, uses SSL to connect to Redis.
+              type: boolean
+            ssl_verify:
+              description: >-
+                If set to true, verifies the validity of the server SSL
+                certificate.
+              type: boolean
+            timeout:
+              description: Connection timeout.
+              type: integer
+            username:
+              description: >-
+                Username to use for Redis connections. If undefined, ACL
+                authentication won't be performed. Requires Redis v6.0.0+.
+              type: string
         created_at:
           description: Unix epoch when the resource was created.
           type: integer
@@ -15981,6 +16693,8 @@ components:
             type: string
         type:
           type: string
+          enum:
+            - redis-ce
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -15989,21 +16703,157 @@ components:
       required:
         - type
         - config
-    PartialLink:
+    PartialRedisEE:
       type: object
       properties:
+        config:
+          description: Redis-EE configuration
+          type: object
+          example:
+            cluster_nodes:
+              - ip: 192.168.1.10
+                port: 6380
+            connect_timeout: 2000
+            database: 0
+            host: localhost
+            keepalive_pool_size: 256
+            password: password
+            port: 6379
+            read_timeout: 1000
+            send_timeout: 1000
+            sentinel_nodes:
+              - host: sentinel1.redis.server
+                port: 26379
+            server_name: redis-ee
+            ssl: false
+            ssl_verify: false
+            username: username
+          properties:
+            cluster_max_redirections:
+              description: Maximum retry attempts for redirection.
+              type: integer
+            cluster_nodes:
+              description: >-
+                Cluster addresses for Redis connections using the `redis`
+                strategy.
+              type: array
+              items:
+                properties:
+                  ip:
+                    description: Cluster node IP.
+                    type: string
+                  port:
+                    description: Cluster node port.
+                    type: integer
+                type: object
+            connect_timeout:
+              description: Connect timeout.
+              type: integer
+            connection_is_proxied:
+              description: If the connection to Redis is proxied, e.g., Envoy.
+              type: boolean
+            database:
+              description: Database index.
+              type: integer
+            host:
+              description: Redis host.
+              type: string
+            keepalive_backlog:
+              description: Limits the total number of opened connections for a pool.
+              type: integer
+            keepalive_pool_size:
+              description: Size limit for cosocket connection pool per worker process.
+              type: integer
+            password:
+              description: >-
+                Password to use for Redis connections. If undefined, no AUTH
+                commands are sent to Redis.
+              type: string
+            port:
+              description: The port is only used when the host is set.
+              type: integer
+            read_timeout:
+              description: Read timeout.
+              type: integer
+            send_timeout:
+              description: Send timeout.
+              type: integer
+            sentinel_master:
+              description: >-
+                Sentinel master to use for Redis connections. Defining this
+                implies using Redis Sentinel.
+              type: string
+            sentinel_nodes:
+              description: >-
+                Sentinel addresses for Redis connections using the `redis`
+                strategy. Array must have at least 1 element.
+              type: array
+              items:
+                properties:
+                  host:
+                    description: Sentinel node hostname.
+                    type: string
+                  port:
+                    description: Sentinel node port.
+                    type: integer
+                type: object
+            sentinel_password:
+              description: >-
+                Sentinel password to authenticate with a Redis Sentinel
+                instance.
+              type: string
+            sentinel_role:
+              description: >-
+                Sentinel role to use for Redis connections when `redis` strategy
+                is used, implies using Redis Sentinel.
+              type: string
+            sentinel_username:
+              description: >-
+                Sentinel username to authenticate with a Redis Sentinel
+                instance. Requires Redis v6.2.0+.
+              type: string
+            server_name:
+              description: Server name for SSL verification.
+              type: string
+            ssl:
+              description: If set to true, uses SSL to connect to Redis.
+              type: boolean
+            ssl_verify:
+              description: >-
+                If set to true, verifies the validity of the server SSL
+                certificate.
+              type: boolean
+            username:
+              description: >-
+                Username to use for Redis connections. If undefined, ACL
+                authentication won't be performed. Requires Redis v6.0.0+.
+              type: string
+        created_at:
+          description: Unix epoch when the resource was created.
+          type: integer
+          nullable: true
         id:
-          description: The plugin's unique identifier
           type: string
-        instance_name:
-          description: The instance name of the plugin
-          type: string
+          nullable: true
         name:
-          description: The plugin's name
           type: string
+          nullable: true
+        tags:
+          type: array
+          items:
+            type: string
+        type:
+          type: string
+          enum:
+            - redis-ee
+        updated_at:
+          description: Unix epoch when the resource was last updated.
+          type: integer
+          nullable: true
+      additionalProperties: false
       required:
-        - id
-        - name
+        - type
+        - config
     Plugin:
       description: >-
         A Plugin entity represents a plugin configuration that will be executed
@@ -16381,7 +17231,6 @@ components:
         - $ref: '#/components/schemas/RouteJson'
         - $ref: '#/components/schemas/RouteExpression'
     RouteExpression:
-      x-speakeasy-entity: GatewayRouteExpression
       description: >-
         Route entities define rules to match client requests. Each Route is
         associated with a Service, and a Service may have multiple Routes
@@ -17439,6 +18288,7 @@ components:
             vaults' documentation page.
           type: object
           additionalProperties: true
+          nullable: true
         created_at:
           description: Unix epoch when the resource was created.
           type: integer
@@ -17486,7 +18336,51 @@ components:
       required:
         - name
         - prefix
-        - config
+    KonnectCPLegacyBaseError:
+      type: object
+      title: Error
+      description: standard error
+      properties:
+        message:
+          type: string
+          description: |
+            A short summary of the problem.
+          readOnly: true
+    KonnectCPLegacyBadRequestError:
+      allOf:
+        - $ref: '#/components/schemas/KonnectCPLegacyBaseError'
+        - type: object
+          properties:
+            message:
+              example: Bad Request
+    KonnectCPLegacyUnauthorizedError:
+      allOf:
+        - $ref: '#/components/schemas/KonnectCPLegacyBaseError'
+        - type: object
+          properties:
+            message:
+              example: Unauthorized
+    KonnectCPLegacyForbiddenError:
+      allOf:
+        - $ref: '#/components/schemas/KonnectCPLegacyBaseError'
+        - type: object
+          properties:
+            message:
+              example: Forbidden
+    KonnectCPLegacyConflictError:
+      allOf:
+        - $ref: '#/components/schemas/KonnectCPLegacyBaseError'
+        - type: object
+          properties:
+            message:
+              example: Conflict
+    KonnectCPLegacyNotFoundError:
+      allOf:
+        - $ref: '#/components/schemas/KonnectCPLegacyBaseError'
+        - type: object
+          properties:
+            message:
+              example: Not Found
     CursorMeta:
       type: object
       description: Pagination metadata.
@@ -17706,9 +18600,9 @@ components:
             type: object
             example:
               data:
-                - group: Service Developers
-                  team_ids:
-                    - af91db4c-6e51-403e-a2bf-33d27ae50c0a
+                - team_id: af91db4c-6e51-403e-a2bf-33d27ae50c0a
+                  groups:
+                    - Service Developers
             properties:
               data:
                 type: array
@@ -17766,6 +18660,8 @@ components:
                   - Publisher
                   - Route Admin
                   - SNI Admin
+                  - Scorecard Admin
+                  - Scorecard Viewer
                   - Service Admin
                   - Service Creator
                   - Service Viewer
@@ -17965,16 +18861,6 @@ components:
                     type: string
                     example: custom-group-claim
       description: The request schema for the update IdP configuration request.
-    CreateIdentityProviderRequest:
-      description: >
-        An object representing the configuration for creating a new identity
-        provider. This configuration may pertain  to either an OIDC or a SAML
-        identity provider.
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/CreateIdentityProvider'
     UpdateIdentityProviderRequest:
       description: >
         An object representing the configuration for updating an identity
@@ -17985,6 +18871,16 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/UpdateIdentityProvider'
+    CreateIdentityProviderRequest:
+      description: >
+        An object representing the configuration for creating a new identity
+        provider. This configuration may pertain  to either an OIDC or a SAML
+        identity provider.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/schemas-CreateIdentityProvider'
     NotificationUpdateRequest:
       description: Request body schema for updating notification status.
       content:
@@ -18051,8 +18947,8 @@ components:
                 description: |
                   The custom plugin schema; `jq -Rs '.' schema.lua`.
                 example: >-
-                  return { name = \"myplugin\", fields = { { config = { type =
-                  \"record\", fields = { } } } } }
+                  return { name = "myplugin", fields = { { config = { type =
+                  "record", fields = { } } } } }
             required:
               - lua_schema
     CreateConfigStoreRequest:
