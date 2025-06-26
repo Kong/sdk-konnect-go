@@ -3,16 +3,16 @@ id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
   docChecksum: 900e219fd377dba982105df7e07317a6
   docVersion: 0.0.1
-  speakeasyVersion: 1.548.4
-  generationVersion: 2.605.6
-  releaseVersion: 0.3.1
-  configChecksum: a76713de9e9f537a49e324c5d62ca1d0
+  speakeasyVersion: 1.570.2
+  generationVersion: 2.638.5
+  releaseVersion: 0.3.2
+  configChecksum: e74101dd3c5f1676567c207d553a68a3
 features:
   go:
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.2
     constsAndDefaults: 0.1.12
-    core: 3.7.5
+    core: 3.8.1
     deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.3
@@ -25,12 +25,13 @@ features:
     inputOutputModels: 2.83.0
     intellisenseMarkdownSupport: 0.1.0
     methodServerURLs: 2.82.1
+    mockServer: 0.1.0
     nameOverrides: 2.81.2
     nullables: 0.1.1
     responseFormat: 0.1.2
-    retries: 2.83.2
-    sdkHooks: 0.1.0
-    unions: 2.85.10
+    retries: 2.83.3
+    sdkHooks: 0.2.0
+    unions: 2.85.11
 generatedFiles:
   - .gitattributes
   - /models/components/acl.go
@@ -1906,6 +1907,7 @@ generatedFiles:
   - go.mod
   - hmacauthcredentials.go
   - impersonationsettings.go
+  - internal/config/sdkconfiguration.go
   - internal/hooks/hooks.go
   - internal/utils/contenttype.go
   - internal/utils/env.go
@@ -1943,6 +1945,642 @@ generatedFiles:
   - targets.go
   - teammembership.go
   - teams.go
+  - tests/mockserver/.gitignore
+  - tests/mockserver/Dockerfile
+  - tests/mockserver/Makefile
+  - tests/mockserver/README.md
+  - tests/mockserver/go.mod
+  - tests/mockserver/go.sum
+  - tests/mockserver/internal/handler/assert/contenttype.go
+  - tests/mockserver/internal/handler/assert/header.go
+  - tests/mockserver/internal/handler/assert/parameter.go
+  - tests/mockserver/internal/handler/assert/pointer.go
+  - tests/mockserver/internal/handler/assert/security.go
+  - tests/mockserver/internal/handler/doc.go
+  - tests/mockserver/internal/handler/generated_handler.go
+  - tests/mockserver/internal/handler/generated_handlers.go
+  - tests/mockserver/internal/handler/values/files.go
+  - tests/mockserver/internal/logging/doc.go
+  - tests/mockserver/internal/logging/formats.go
+  - tests/mockserver/internal/logging/http_file.go
+  - tests/mockserver/internal/logging/http_logger.go
+  - tests/mockserver/internal/logging/levels.go
+  - tests/mockserver/internal/logging/logger.go
+  - tests/mockserver/internal/logging/oas_operation.go
+  - tests/mockserver/internal/logging/oas_operation_call.go
+  - tests/mockserver/internal/sdk/models/components/acl.go
+  - tests/mockserver/internal/sdk/models/components/aclwithoutparents.go
+  - tests/mockserver/internal/sdk/models/components/addsystemaccounttoteam.go
+  - tests/mockserver/internal/sdk/models/components/addusertoteam.go
+  - tests/mockserver/internal/sdk/models/components/apiaccess.go
+  - tests/mockserver/internal/sdk/models/components/appauthstrategy.go
+  - tests/mockserver/internal/sdk/models/components/appauthstrategyconfigkeyauth.go
+  - tests/mockserver/internal/sdk/models/components/appauthstrategyconfigopenidconnect.go
+  - tests/mockserver/internal/sdk/models/components/assignedrole.go
+  - tests/mockserver/internal/sdk/models/components/assignedrolecollection.go
+  - tests/mockserver/internal/sdk/models/components/assignrole.go
+  - tests/mockserver/internal/sdk/models/components/authenticationsettings.go
+  - tests/mockserver/internal/sdk/models/components/availabilitydocument.go
+  - tests/mockserver/internal/sdk/models/components/awstransitgateway.go
+  - tests/mockserver/internal/sdk/models/components/awstransitgatewayattachmentconfig.go
+  - tests/mockserver/internal/sdk/models/components/awstransitgatewayresponse.go
+  - tests/mockserver/internal/sdk/models/components/awsvpcpeeringgateway.go
+  - tests/mockserver/internal/sdk/models/components/awsvpcpeeringgatewayattachmentconfig.go
+  - tests/mockserver/internal/sdk/models/components/awsvpcpeeringgatewayresponse.go
+  - tests/mockserver/internal/sdk/models/components/azuretransitgateway.go
+  - tests/mockserver/internal/sdk/models/components/azuretransitgatewayresponse.go
+  - tests/mockserver/internal/sdk/models/components/azurevnetpeeringattachmentconfig.go
+  - tests/mockserver/internal/sdk/models/components/basicauth.go
+  - tests/mockserver/internal/sdk/models/components/basicauthwithoutparents.go
+  - tests/mockserver/internal/sdk/models/components/bulkpayload.go
+  - tests/mockserver/internal/sdk/models/components/cacertificate.go
+  - tests/mockserver/internal/sdk/models/components/certificate.go
+  - tests/mockserver/internal/sdk/models/components/cloudgatewaysstringfieldequalsfilteroverride.go
+  - tests/mockserver/internal/sdk/models/components/cloudgatewaysstringfieldfilteroverride.go
+  - tests/mockserver/internal/sdk/models/components/configstore.go
+  - tests/mockserver/internal/sdk/models/components/configstoresecret.go
+  - tests/mockserver/internal/sdk/models/components/configurationdataplanegroup.go
+  - tests/mockserver/internal/sdk/models/components/configurationdataplanegroupautoscale.go
+  - tests/mockserver/internal/sdk/models/components/configurationdataplanegroupautoscaleautopilot.go
+  - tests/mockserver/internal/sdk/models/components/configurationdataplanegroupautoscalestatic.go
+  - tests/mockserver/internal/sdk/models/components/configurationdataplanegroupconfig.go
+  - tests/mockserver/internal/sdk/models/components/configurationdataplanegroupenvironmentfield.go
+  - tests/mockserver/internal/sdk/models/components/configurationfilterparameters.go
+  - tests/mockserver/internal/sdk/models/components/configurationmanifest.go
+  - tests/mockserver/internal/sdk/models/components/configurationsfilterparameters.go
+  - tests/mockserver/internal/sdk/models/components/configureoidcidentityproviderconfig.go
+  - tests/mockserver/internal/sdk/models/components/consumer.go
+  - tests/mockserver/internal/sdk/models/components/consumergroup.go
+  - tests/mockserver/internal/sdk/models/components/consumergroupinsidewrapper.go
+  - tests/mockserver/internal/sdk/models/components/controlplane.go
+  - tests/mockserver/internal/sdk/models/components/controlplanefilterparameters.go
+  - tests/mockserver/internal/sdk/models/components/controlplanegeo.go
+  - tests/mockserver/internal/sdk/models/components/controlplanegeofieldequalsfilter.go
+  - tests/mockserver/internal/sdk/models/components/controlplanegeofieldfilter.go
+  - tests/mockserver/internal/sdk/models/components/controlplanegeofieldnotequalsfilter.go
+  - tests/mockserver/internal/sdk/models/components/controlplanegeofieldorequalityfilter.go
+  - tests/mockserver/internal/sdk/models/components/createappauthstrategyrequest.go
+  - tests/mockserver/internal/sdk/models/components/createappauthstrategyresponse.go
+  - tests/mockserver/internal/sdk/models/components/createconfigstore.go
+  - tests/mockserver/internal/sdk/models/components/createconfigstoresecret.go
+  - tests/mockserver/internal/sdk/models/components/createconfigurationdataplanegroup.go
+  - tests/mockserver/internal/sdk/models/components/createconfigurationrequest.go
+  - tests/mockserver/internal/sdk/models/components/createcontrolplanerequest.go
+  - tests/mockserver/internal/sdk/models/components/createcustomdomainrequest.go
+  - tests/mockserver/internal/sdk/models/components/createdcrconfigauth0inrequest.go
+  - tests/mockserver/internal/sdk/models/components/createdcrconfigazureadinrequest.go
+  - tests/mockserver/internal/sdk/models/components/createdcrconfigcurityinrequest.go
+  - tests/mockserver/internal/sdk/models/components/createdcrconfighttpinrequest.go
+  - tests/mockserver/internal/sdk/models/components/createdcrconfigoktainrequest.go
+  - tests/mockserver/internal/sdk/models/components/createdcrproviderrequest.go
+  - tests/mockserver/internal/sdk/models/components/createdcrproviderrequestauth0.go
+  - tests/mockserver/internal/sdk/models/components/createdcrproviderrequestazuread.go
+  - tests/mockserver/internal/sdk/models/components/createdcrproviderrequestcurity.go
+  - tests/mockserver/internal/sdk/models/components/createdcrproviderrequesthttp.go
+  - tests/mockserver/internal/sdk/models/components/createdcrproviderrequestokta.go
+  - tests/mockserver/internal/sdk/models/components/createdcrproviderresponse.go
+  - tests/mockserver/internal/sdk/models/components/createidentityprovider.go
+  - tests/mockserver/internal/sdk/models/components/createnetworkrequest.go
+  - tests/mockserver/internal/sdk/models/components/createpluginschemas.go
+  - tests/mockserver/internal/sdk/models/components/createsystemaccount.go
+  - tests/mockserver/internal/sdk/models/components/createsystemaccountaccesstoken.go
+  - tests/mockserver/internal/sdk/models/components/createteam.go
+  - tests/mockserver/internal/sdk/models/components/createtransitgatewayrequest.go
+  - tests/mockserver/internal/sdk/models/components/cursormeta.go
+  - tests/mockserver/internal/sdk/models/components/cursormetapage.go
+  - tests/mockserver/internal/sdk/models/components/cursormetawithsizeandtotal.go
+  - tests/mockserver/internal/sdk/models/components/cursorpaginatedmetawithsizeandtotal.go
+  - tests/mockserver/internal/sdk/models/components/customdomain.go
+  - tests/mockserver/internal/sdk/models/components/customdomainonlinepropertystatus.go
+  - tests/mockserver/internal/sdk/models/components/customdomainonlinestatus.go
+  - tests/mockserver/internal/sdk/models/components/customdomainsfilterparameters.go
+  - tests/mockserver/internal/sdk/models/components/customdomainstate.go
+  - tests/mockserver/internal/sdk/models/components/customdomainstatefieldequalsfilter.go
+  - tests/mockserver/internal/sdk/models/components/customdomainstatefieldfilter.go
+  - tests/mockserver/internal/sdk/models/components/customdomainstatefieldnotequalsfilter.go
+  - tests/mockserver/internal/sdk/models/components/customdomainstatefieldorequalityfilter.go
+  - tests/mockserver/internal/sdk/models/components/customplugin.go
+  - tests/mockserver/internal/sdk/models/components/dataplaneclientcertificate.go
+  - tests/mockserver/internal/sdk/models/components/dataplaneclientcertificaterequest.go
+  - tests/mockserver/internal/sdk/models/components/dataplaneclientcertificateresponse.go
+  - tests/mockserver/internal/sdk/models/components/dcrproviderresponse.go
+  - tests/mockserver/internal/sdk/models/components/dcrprovidertype.go
+  - tests/mockserver/internal/sdk/models/components/defaultresourceconfiguration.go
+  - tests/mockserver/internal/sdk/models/components/defaultresourcequota.go
+  - tests/mockserver/internal/sdk/models/components/defaultsubscription.go
+  - tests/mockserver/internal/sdk/models/components/degraphqlroute.go
+  - tests/mockserver/internal/sdk/models/components/degraphqlroutewithoutparents.go
+  - tests/mockserver/internal/sdk/models/components/entitytypes.go
+  - tests/mockserver/internal/sdk/models/components/eventsubscription.go
+  - tests/mockserver/internal/sdk/models/components/eventsubscriptionlistresponse.go
+  - tests/mockserver/internal/sdk/models/components/eventsubscriptionresponse.go
+  - tests/mockserver/internal/sdk/models/components/getexpectedconfighashresponse.go
+  - tests/mockserver/internal/sdk/models/components/getgroupstatus.go
+  - tests/mockserver/internal/sdk/models/components/getimpersonationsettingsresponse.go
+  - tests/mockserver/internal/sdk/models/components/getnode.go
+  - tests/mockserver/internal/sdk/models/components/groupconflict.go
+  - tests/mockserver/internal/sdk/models/components/groupconflictresource.go
+  - tests/mockserver/internal/sdk/models/components/groupmembership.go
+  - tests/mockserver/internal/sdk/models/components/groupmemberstatus.go
+  - tests/mockserver/internal/sdk/models/components/groupstatus.go
+  - tests/mockserver/internal/sdk/models/components/hmacauth.go
+  - tests/mockserver/internal/sdk/models/components/hmacauthwithoutparents.go
+  - tests/mockserver/internal/sdk/models/components/httpmetadata.go
+  - tests/mockserver/internal/sdk/models/components/identityprovider.go
+  - tests/mockserver/internal/sdk/models/components/identityprovidertype.go
+  - tests/mockserver/internal/sdk/models/components/idfieldfilter.go
+  - tests/mockserver/internal/sdk/models/components/idp.go
+  - tests/mockserver/internal/sdk/models/components/instancetype.go
+  - tests/mockserver/internal/sdk/models/components/instancetypename.go
+  - tests/mockserver/internal/sdk/models/components/internalservererror.go
+  - tests/mockserver/internal/sdk/models/components/invalidparameterchoiceitem.go
+  - tests/mockserver/internal/sdk/models/components/invalidparameterdependentitem.go
+  - tests/mockserver/internal/sdk/models/components/invalidparametermaximumlength.go
+  - tests/mockserver/internal/sdk/models/components/invalidparameterminimumlength.go
+  - tests/mockserver/internal/sdk/models/components/invalidparameters.go
+  - tests/mockserver/internal/sdk/models/components/invalidparameterstandard.go
+  - tests/mockserver/internal/sdk/models/components/invalidrules.go
+  - tests/mockserver/internal/sdk/models/components/inviteuser.go
+  - tests/mockserver/internal/sdk/models/components/jwt.go
+  - tests/mockserver/internal/sdk/models/components/jwtwithoutparents.go
+  - tests/mockserver/internal/sdk/models/components/key.go
+  - tests/mockserver/internal/sdk/models/components/keyauth.go
+  - tests/mockserver/internal/sdk/models/components/keyauthwithoutparents.go
+  - tests/mockserver/internal/sdk/models/components/keyset.go
+  - tests/mockserver/internal/sdk/models/components/keywithoutparents.go
+  - tests/mockserver/internal/sdk/models/components/listappauthstrategiesresponse.go
+  - tests/mockserver/internal/sdk/models/components/listconfigstoresecretsresponse.go
+  - tests/mockserver/internal/sdk/models/components/listconfigstoresresponse.go
+  - tests/mockserver/internal/sdk/models/components/listconfigurationsresponse.go
+  - tests/mockserver/internal/sdk/models/components/listcontrolplanesresponse.go
+  - tests/mockserver/internal/sdk/models/components/listcustomdomainsresponse.go
+  - tests/mockserver/internal/sdk/models/components/listdataplanecertificatesresponse.go
+  - tests/mockserver/internal/sdk/models/components/listdcrprovidersresponse.go
+  - tests/mockserver/internal/sdk/models/components/listdefaultresourceconfigurationsresponse.go
+  - tests/mockserver/internal/sdk/models/components/listdefaultresourcequotasresponse.go
+  - tests/mockserver/internal/sdk/models/components/listgroupmemberships.go
+  - tests/mockserver/internal/sdk/models/components/listnetworkconfigurationreferencesresponse.go
+  - tests/mockserver/internal/sdk/models/components/listnetworksresponse.go
+  - tests/mockserver/internal/sdk/models/components/listnodes.go
+  - tests/mockserver/internal/sdk/models/components/listnodeseol.go
+  - tests/mockserver/internal/sdk/models/components/listpluginschemas.go
+  - tests/mockserver/internal/sdk/models/components/listprovideraccountsresponse.go
+  - tests/mockserver/internal/sdk/models/components/listresourceconfigurationsresponse.go
+  - tests/mockserver/internal/sdk/models/components/listresourcequotasresponse.go
+  - tests/mockserver/internal/sdk/models/components/listtransitgatewaysresponse.go
+  - tests/mockserver/internal/sdk/models/components/meorganization.go
+  - tests/mockserver/internal/sdk/models/components/mtlsauth.go
+  - tests/mockserver/internal/sdk/models/components/mtlsauthwithoutparents.go
+  - tests/mockserver/internal/sdk/models/components/network.go
+  - tests/mockserver/internal/sdk/models/components/networkconfigurationreference.go
+  - tests/mockserver/internal/sdk/models/components/networkcreatestate.go
+  - tests/mockserver/internal/sdk/models/components/networkprovidermetadata.go
+  - tests/mockserver/internal/sdk/models/components/networksfilterparameters.go
+  - tests/mockserver/internal/sdk/models/components/networkstate.go
+  - tests/mockserver/internal/sdk/models/components/networkstatefieldequalsfilter.go
+  - tests/mockserver/internal/sdk/models/components/networkstatefieldfilter.go
+  - tests/mockserver/internal/sdk/models/components/networkstatefieldnotequalsfilter.go
+  - tests/mockserver/internal/sdk/models/components/networkstatefieldorequalityfilter.go
+  - tests/mockserver/internal/sdk/models/components/networkstatemetadata.go
+  - tests/mockserver/internal/sdk/models/components/notification.go
+  - tests/mockserver/internal/sdk/models/components/notificationchannel.go
+  - tests/mockserver/internal/sdk/models/components/notificationchanneltype.go
+  - tests/mockserver/internal/sdk/models/components/notificationfilterparameters.go
+  - tests/mockserver/internal/sdk/models/components/notificationlistresponse.go
+  - tests/mockserver/internal/sdk/models/components/notificationnamespace.go
+  - tests/mockserver/internal/sdk/models/components/notificationregion.go
+  - tests/mockserver/internal/sdk/models/components/notificationstatus.go
+  - tests/mockserver/internal/sdk/models/components/notificationupdatepayload.go
+  - tests/mockserver/internal/sdk/models/components/oidcidentityproviderclaimmappings.go
+  - tests/mockserver/internal/sdk/models/components/oidcidentityproviderconfig.go
+  - tests/mockserver/internal/sdk/models/components/pagemeta.go
+  - tests/mockserver/internal/sdk/models/components/paginatedmeta.go
+  - tests/mockserver/internal/sdk/models/components/partial.go
+  - tests/mockserver/internal/sdk/models/components/partialappauthstrategyconfigopenidconnect.go
+  - tests/mockserver/internal/sdk/models/components/partiallink.go
+  - tests/mockserver/internal/sdk/models/components/patchnetworkrequest.go
+  - tests/mockserver/internal/sdk/models/components/patchteamgroupmappings.go
+  - tests/mockserver/internal/sdk/models/components/plugin.go
+  - tests/mockserver/internal/sdk/models/components/pluginschemas.go
+  - tests/mockserver/internal/sdk/models/components/pluginwithoutparents.go
+  - tests/mockserver/internal/sdk/models/components/provider.go
+  - tests/mockserver/internal/sdk/models/components/provideraccount.go
+  - tests/mockserver/internal/sdk/models/components/provideraccountsfilterparameters.go
+  - tests/mockserver/internal/sdk/models/components/providername.go
+  - tests/mockserver/internal/sdk/models/components/providerregion.go
+  - tests/mockserver/internal/sdk/models/components/proxyurl.go
+  - tests/mockserver/internal/sdk/models/components/resourceconfiguration.go
+  - tests/mockserver/internal/sdk/models/components/resourceconfigurationqualifier.go
+  - tests/mockserver/internal/sdk/models/components/resourcequota.go
+  - tests/mockserver/internal/sdk/models/components/resourcequotaqualifier.go
+  - tests/mockserver/internal/sdk/models/components/roles.go
+  - tests/mockserver/internal/sdk/models/components/route.go
+  - tests/mockserver/internal/sdk/models/components/routeexpression.go
+  - tests/mockserver/internal/sdk/models/components/routejson.go
+  - tests/mockserver/internal/sdk/models/components/routewithoutparents.go
+  - tests/mockserver/internal/sdk/models/components/samlidentityproviderconfig.go
+  - tests/mockserver/internal/sdk/models/components/samlidentityproviderconfiginput.go
+  - tests/mockserver/internal/sdk/models/components/security.go
+  - tests/mockserver/internal/sdk/models/components/serviceoutput.go
+  - tests/mockserver/internal/sdk/models/components/serviceunavailableerror.go
+  - tests/mockserver/internal/sdk/models/components/sni.go
+  - tests/mockserver/internal/sdk/models/components/sniwithoutparents.go
+  - tests/mockserver/internal/sdk/models/components/stringfieldcontainsfilter.go
+  - tests/mockserver/internal/sdk/models/components/stringfieldfilter.go
+  - tests/mockserver/internal/sdk/models/components/stringfieldneqfilter.go
+  - tests/mockserver/internal/sdk/models/components/stringfieldocontainsfilter.go
+  - tests/mockserver/internal/sdk/models/components/stringfieldoeqfilter.go
+  - tests/mockserver/internal/sdk/models/components/systemaccount.go
+  - tests/mockserver/internal/sdk/models/components/systemaccountaccesstoken.go
+  - tests/mockserver/internal/sdk/models/components/systemaccountaccesstokencollection.go
+  - tests/mockserver/internal/sdk/models/components/systemaccountaccesstokencreated.go
+  - tests/mockserver/internal/sdk/models/components/systemaccountcollection.go
+  - tests/mockserver/internal/sdk/models/components/target.go
+  - tests/mockserver/internal/sdk/models/components/targetwithoutparents.go
+  - tests/mockserver/internal/sdk/models/components/team.go
+  - tests/mockserver/internal/sdk/models/components/teamcollection.go
+  - tests/mockserver/internal/sdk/models/components/teamgroupmapping.go
+  - tests/mockserver/internal/sdk/models/components/teamgroupmappingcollection.go
+  - tests/mockserver/internal/sdk/models/components/teammapping.go
+  - tests/mockserver/internal/sdk/models/components/teammappingcollection.go
+  - tests/mockserver/internal/sdk/models/components/teammappingresponse.go
+  - tests/mockserver/internal/sdk/models/components/transitgatewaydnsconfig.go
+  - tests/mockserver/internal/sdk/models/components/transitgatewayresponse.go
+  - tests/mockserver/internal/sdk/models/components/transitgatewaysfilterparameters.go
+  - tests/mockserver/internal/sdk/models/components/transitgatewaystate.go
+  - tests/mockserver/internal/sdk/models/components/transitgatewaystatefieldequalsfilter.go
+  - tests/mockserver/internal/sdk/models/components/transitgatewaystatefieldfilter.go
+  - tests/mockserver/internal/sdk/models/components/transitgatewaystatefieldnotequalsfilter.go
+  - tests/mockserver/internal/sdk/models/components/transitgatewaystatefieldorequalityfilter.go
+  - tests/mockserver/internal/sdk/models/components/updateappauthstrategyrequest.go
+  - tests/mockserver/internal/sdk/models/components/updateauthenticationsettings.go
+  - tests/mockserver/internal/sdk/models/components/updateconfigstore.go
+  - tests/mockserver/internal/sdk/models/components/updateconfigstoresecret.go
+  - tests/mockserver/internal/sdk/models/components/updatecontrolplanerequest.go
+  - tests/mockserver/internal/sdk/models/components/updatedcrconfigauth0inrequest.go
+  - tests/mockserver/internal/sdk/models/components/updatedcrconfigazureadinrequest.go
+  - tests/mockserver/internal/sdk/models/components/updatedcrconfigcurityinrequest.go
+  - tests/mockserver/internal/sdk/models/components/updatedcrconfighttpinrequest.go
+  - tests/mockserver/internal/sdk/models/components/updatedcrconfigoktainrequest.go
+  - tests/mockserver/internal/sdk/models/components/updatedcrproviderrequest.go
+  - tests/mockserver/internal/sdk/models/components/updateidentityprovider.go
+  - tests/mockserver/internal/sdk/models/components/updateidpconfiguration.go
+  - tests/mockserver/internal/sdk/models/components/updateimpersonationsettingsrequest.go
+  - tests/mockserver/internal/sdk/models/components/updateimpersonationsettingsresponse.go
+  - tests/mockserver/internal/sdk/models/components/updatesystemaccount.go
+  - tests/mockserver/internal/sdk/models/components/updatesystemaccountaccesstoken.go
+  - tests/mockserver/internal/sdk/models/components/updateteam.go
+  - tests/mockserver/internal/sdk/models/components/updateteammappings.go
+  - tests/mockserver/internal/sdk/models/components/updateuser.go
+  - tests/mockserver/internal/sdk/models/components/upstream.go
+  - tests/mockserver/internal/sdk/models/components/user.go
+  - tests/mockserver/internal/sdk/models/components/usercollection.go
+  - tests/mockserver/internal/sdk/models/components/userconfiguration.go
+  - tests/mockserver/internal/sdk/models/components/userconfigurationlistresponse.go
+  - tests/mockserver/internal/sdk/models/components/uuidfieldfilter.go
+  - tests/mockserver/internal/sdk/models/components/vault.go
+  - tests/mockserver/internal/sdk/models/components/verifydcrproviderresponse.go
+  - tests/mockserver/internal/sdk/models/operations/addconsumertogroup.go
+  - tests/mockserver/internal/sdk/models/operations/addconsumertospecificconsumergroup.go
+  - tests/mockserver/internal/sdk/models/operations/addusertoteam.go
+  - tests/mockserver/internal/sdk/models/operations/authenticatesso.go
+  - tests/mockserver/internal/sdk/models/operations/bulknotifications.go
+  - tests/mockserver/internal/sdk/models/operations/createaclwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/createappauthstrategy.go
+  - tests/mockserver/internal/sdk/models/operations/createbasicauthwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/createcacertificate.go
+  - tests/mockserver/internal/sdk/models/operations/createcertificate.go
+  - tests/mockserver/internal/sdk/models/operations/createconfigstore.go
+  - tests/mockserver/internal/sdk/models/operations/createconfigstoresecret.go
+  - tests/mockserver/internal/sdk/models/operations/createconfiguration.go
+  - tests/mockserver/internal/sdk/models/operations/createconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/createconsumergroup.go
+  - tests/mockserver/internal/sdk/models/operations/createcontrolplane.go
+  - tests/mockserver/internal/sdk/models/operations/createcustomdomains.go
+  - tests/mockserver/internal/sdk/models/operations/createcustomplugin.go
+  - tests/mockserver/internal/sdk/models/operations/createdataplanecertificate.go
+  - tests/mockserver/internal/sdk/models/operations/createdcrprovider.go
+  - tests/mockserver/internal/sdk/models/operations/createdegraphqlroutewithservice.go
+  - tests/mockserver/internal/sdk/models/operations/createeventsubscription.go
+  - tests/mockserver/internal/sdk/models/operations/createhmacauthwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/createidentityprovider.go
+  - tests/mockserver/internal/sdk/models/operations/createjwtwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/createkey.go
+  - tests/mockserver/internal/sdk/models/operations/createkeyauthwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/createkeyset.go
+  - tests/mockserver/internal/sdk/models/operations/createkeywithkeyset.go
+  - tests/mockserver/internal/sdk/models/operations/createmtlsauthwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/createnetwork.go
+  - tests/mockserver/internal/sdk/models/operations/createpartial.go
+  - tests/mockserver/internal/sdk/models/operations/createplugin.go
+  - tests/mockserver/internal/sdk/models/operations/createpluginschemas.go
+  - tests/mockserver/internal/sdk/models/operations/createpluginwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/createpluginwithconsumergroup.go
+  - tests/mockserver/internal/sdk/models/operations/createpluginwithroute.go
+  - tests/mockserver/internal/sdk/models/operations/createpluginwithservice.go
+  - tests/mockserver/internal/sdk/models/operations/createroute.go
+  - tests/mockserver/internal/sdk/models/operations/createroutewithservice.go
+  - tests/mockserver/internal/sdk/models/operations/createservice.go
+  - tests/mockserver/internal/sdk/models/operations/createsni.go
+  - tests/mockserver/internal/sdk/models/operations/createsniwithcertificate.go
+  - tests/mockserver/internal/sdk/models/operations/createtargetwithupstream.go
+  - tests/mockserver/internal/sdk/models/operations/createteam.go
+  - tests/mockserver/internal/sdk/models/operations/createtransitgateway.go
+  - tests/mockserver/internal/sdk/models/operations/createupstream.go
+  - tests/mockserver/internal/sdk/models/operations/createvault.go
+  - tests/mockserver/internal/sdk/models/operations/deleteaclwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/deleteappauthstrategy.go
+  - tests/mockserver/internal/sdk/models/operations/deletebasicauthwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/deletecacertificate.go
+  - tests/mockserver/internal/sdk/models/operations/deletecertificate.go
+  - tests/mockserver/internal/sdk/models/operations/deleteconfigstore.go
+  - tests/mockserver/internal/sdk/models/operations/deleteconfigstoresecret.go
+  - tests/mockserver/internal/sdk/models/operations/deleteconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/deleteconsumergroup.go
+  - tests/mockserver/internal/sdk/models/operations/deletecontrolplane.go
+  - tests/mockserver/internal/sdk/models/operations/deletecustomdomain.go
+  - tests/mockserver/internal/sdk/models/operations/deletecustomplugin.go
+  - tests/mockserver/internal/sdk/models/operations/deletedataplanecertificate.go
+  - tests/mockserver/internal/sdk/models/operations/deletedcrprovider.go
+  - tests/mockserver/internal/sdk/models/operations/deletedegraphqlroutewithservice.go
+  - tests/mockserver/internal/sdk/models/operations/deleteeventsubscription.go
+  - tests/mockserver/internal/sdk/models/operations/deletehmacauthwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/deleteidentityprovider.go
+  - tests/mockserver/internal/sdk/models/operations/deletejwtwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/deletekey.go
+  - tests/mockserver/internal/sdk/models/operations/deletekeyauthwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/deletekeyset.go
+  - tests/mockserver/internal/sdk/models/operations/deletekeywithkeyset.go
+  - tests/mockserver/internal/sdk/models/operations/deletemtlsauthwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/deletenetwork.go
+  - tests/mockserver/internal/sdk/models/operations/deletenodesnodeid.go
+  - tests/mockserver/internal/sdk/models/operations/deletenotification.go
+  - tests/mockserver/internal/sdk/models/operations/deletepartial.go
+  - tests/mockserver/internal/sdk/models/operations/deleteplugin.go
+  - tests/mockserver/internal/sdk/models/operations/deletepluginschemas.go
+  - tests/mockserver/internal/sdk/models/operations/deletepluginwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/deletepluginwithconsumergroup.go
+  - tests/mockserver/internal/sdk/models/operations/deletepluginwithroute.go
+  - tests/mockserver/internal/sdk/models/operations/deletepluginwithservice.go
+  - tests/mockserver/internal/sdk/models/operations/deleteroute.go
+  - tests/mockserver/internal/sdk/models/operations/deleteroutewithservice.go
+  - tests/mockserver/internal/sdk/models/operations/deleteservice.go
+  - tests/mockserver/internal/sdk/models/operations/deletesni.go
+  - tests/mockserver/internal/sdk/models/operations/deletesniwithcertificate.go
+  - tests/mockserver/internal/sdk/models/operations/deletesystemaccountsaccountidassignedrolesroleid.go
+  - tests/mockserver/internal/sdk/models/operations/deletesystemaccountsid.go
+  - tests/mockserver/internal/sdk/models/operations/deletesystemaccountsidaccesstokensid.go
+  - tests/mockserver/internal/sdk/models/operations/deletetargetwithupstream.go
+  - tests/mockserver/internal/sdk/models/operations/deleteteam.go
+  - tests/mockserver/internal/sdk/models/operations/deleteteamsteamidsystemaccountsaccountid.go
+  - tests/mockserver/internal/sdk/models/operations/deletetransitgateway.go
+  - tests/mockserver/internal/sdk/models/operations/deleteupstream.go
+  - tests/mockserver/internal/sdk/models/operations/deleteuser.go
+  - tests/mockserver/internal/sdk/models/operations/deletevault.go
+  - tests/mockserver/internal/sdk/models/operations/fetchpluginschema.go
+  - tests/mockserver/internal/sdk/models/operations/getacl.go
+  - tests/mockserver/internal/sdk/models/operations/getaclwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/getappauthstrategy.go
+  - tests/mockserver/internal/sdk/models/operations/getauthenticationsettings.go
+  - tests/mockserver/internal/sdk/models/operations/getavailabilityjson.go
+  - tests/mockserver/internal/sdk/models/operations/getbasicauth.go
+  - tests/mockserver/internal/sdk/models/operations/getbasicauthwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/getcacertificate.go
+  - tests/mockserver/internal/sdk/models/operations/getcertificate.go
+  - tests/mockserver/internal/sdk/models/operations/getconfigstore.go
+  - tests/mockserver/internal/sdk/models/operations/getconfigstoresecret.go
+  - tests/mockserver/internal/sdk/models/operations/getconfiguration.go
+  - tests/mockserver/internal/sdk/models/operations/getconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/getconsumergroup.go
+  - tests/mockserver/internal/sdk/models/operations/getcontrolplane.go
+  - tests/mockserver/internal/sdk/models/operations/getcontrolplanesidgroupmemberships.go
+  - tests/mockserver/internal/sdk/models/operations/getcontrolplanesidgroupmemberstatus.go
+  - tests/mockserver/internal/sdk/models/operations/getcontrolplanesidgroupstatus.go
+  - tests/mockserver/internal/sdk/models/operations/getcustomdomain.go
+  - tests/mockserver/internal/sdk/models/operations/getcustomdomainonlinestatus.go
+  - tests/mockserver/internal/sdk/models/operations/getcustomplugin.go
+  - tests/mockserver/internal/sdk/models/operations/getdataplanecertificate.go
+  - tests/mockserver/internal/sdk/models/operations/getdcrprovider.go
+  - tests/mockserver/internal/sdk/models/operations/getdegraphqlroute.go
+  - tests/mockserver/internal/sdk/models/operations/getdegraphqlroutewithservice.go
+  - tests/mockserver/internal/sdk/models/operations/geteventsubscription.go
+  - tests/mockserver/internal/sdk/models/operations/getexpectedconfighash.go
+  - tests/mockserver/internal/sdk/models/operations/gethmacauth.go
+  - tests/mockserver/internal/sdk/models/operations/gethmacauthwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/getidentityprovider.go
+  - tests/mockserver/internal/sdk/models/operations/getidentityproviders.go
+  - tests/mockserver/internal/sdk/models/operations/getidpconfiguration.go
+  - tests/mockserver/internal/sdk/models/operations/getidpteammappings.go
+  - tests/mockserver/internal/sdk/models/operations/getimpersonationsettings.go
+  - tests/mockserver/internal/sdk/models/operations/getjwt.go
+  - tests/mockserver/internal/sdk/models/operations/getjwtwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/getkey.go
+  - tests/mockserver/internal/sdk/models/operations/getkeyauth.go
+  - tests/mockserver/internal/sdk/models/operations/getkeyauthwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/getkeyset.go
+  - tests/mockserver/internal/sdk/models/operations/getkeywithkeyset.go
+  - tests/mockserver/internal/sdk/models/operations/getmtlsauth.go
+  - tests/mockserver/internal/sdk/models/operations/getmtlsauthwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/getnetwork.go
+  - tests/mockserver/internal/sdk/models/operations/getnodeseol.go
+  - tests/mockserver/internal/sdk/models/operations/getnodesnodeid.go
+  - tests/mockserver/internal/sdk/models/operations/getnotificationdetails.go
+  - tests/mockserver/internal/sdk/models/operations/getorganizationsme.go
+  - tests/mockserver/internal/sdk/models/operations/getpartial.go
+  - tests/mockserver/internal/sdk/models/operations/getplugin.go
+  - tests/mockserver/internal/sdk/models/operations/getpluginschema.go
+  - tests/mockserver/internal/sdk/models/operations/getpluginwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/getpluginwithconsumergroup.go
+  - tests/mockserver/internal/sdk/models/operations/getpluginwithroute.go
+  - tests/mockserver/internal/sdk/models/operations/getpluginwithservice.go
+  - tests/mockserver/internal/sdk/models/operations/getpredefinedroles.go
+  - tests/mockserver/internal/sdk/models/operations/getprovideraccount.go
+  - tests/mockserver/internal/sdk/models/operations/getresourceconfiguration.go
+  - tests/mockserver/internal/sdk/models/operations/getresourcequota.go
+  - tests/mockserver/internal/sdk/models/operations/getroute.go
+  - tests/mockserver/internal/sdk/models/operations/getroutewithservice.go
+  - tests/mockserver/internal/sdk/models/operations/getservice.go
+  - tests/mockserver/internal/sdk/models/operations/getsni.go
+  - tests/mockserver/internal/sdk/models/operations/getsniwithcertificate.go
+  - tests/mockserver/internal/sdk/models/operations/getsystemaccountidaccesstokens.go
+  - tests/mockserver/internal/sdk/models/operations/getsystemaccounts.go
+  - tests/mockserver/internal/sdk/models/operations/getsystemaccountsaccountidassignedroles.go
+  - tests/mockserver/internal/sdk/models/operations/getsystemaccountsaccountidteams.go
+  - tests/mockserver/internal/sdk/models/operations/getsystemaccountsid.go
+  - tests/mockserver/internal/sdk/models/operations/getsystemaccountsidaccesstokensid.go
+  - tests/mockserver/internal/sdk/models/operations/gettargetwithupstream.go
+  - tests/mockserver/internal/sdk/models/operations/getteam.go
+  - tests/mockserver/internal/sdk/models/operations/getteamgroupmappings.go
+  - tests/mockserver/internal/sdk/models/operations/getteamsteamidsystemaccounts.go
+  - tests/mockserver/internal/sdk/models/operations/gettransitgateway.go
+  - tests/mockserver/internal/sdk/models/operations/getupstream.go
+  - tests/mockserver/internal/sdk/models/operations/getuser.go
+  - tests/mockserver/internal/sdk/models/operations/getusersme.go
+  - tests/mockserver/internal/sdk/models/operations/getvault.go
+  - tests/mockserver/internal/sdk/models/operations/inviteuser.go
+  - tests/mockserver/internal/sdk/models/operations/listacl.go
+  - tests/mockserver/internal/sdk/models/operations/listaclwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/listappauthstrategies.go
+  - tests/mockserver/internal/sdk/models/operations/listbasicauth.go
+  - tests/mockserver/internal/sdk/models/operations/listbasicauthwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/listcacertificate.go
+  - tests/mockserver/internal/sdk/models/operations/listcertificate.go
+  - tests/mockserver/internal/sdk/models/operations/listconfigstores.go
+  - tests/mockserver/internal/sdk/models/operations/listconfigstoresecrets.go
+  - tests/mockserver/internal/sdk/models/operations/listconfigurations.go
+  - tests/mockserver/internal/sdk/models/operations/listconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/listconsumergroup.go
+  - tests/mockserver/internal/sdk/models/operations/listconsumergroupsforconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/listconsumersforconsumergroup.go
+  - tests/mockserver/internal/sdk/models/operations/listcontrolplanes.go
+  - tests/mockserver/internal/sdk/models/operations/listcustomdomains.go
+  - tests/mockserver/internal/sdk/models/operations/listcustomplugin.go
+  - tests/mockserver/internal/sdk/models/operations/listdataplanenodes.go
+  - tests/mockserver/internal/sdk/models/operations/listdcrproviders.go
+  - tests/mockserver/internal/sdk/models/operations/listdefaultresourceconfigurations.go
+  - tests/mockserver/internal/sdk/models/operations/listdefaultresourcequotas.go
+  - tests/mockserver/internal/sdk/models/operations/listdegraphqlroute.go
+  - tests/mockserver/internal/sdk/models/operations/listdegraphqlroutewithservice.go
+  - tests/mockserver/internal/sdk/models/operations/listdpclientcertificates.go
+  - tests/mockserver/internal/sdk/models/operations/listeventsubscriptions.go
+  - tests/mockserver/internal/sdk/models/operations/listhmacauth.go
+  - tests/mockserver/internal/sdk/models/operations/listhmacauthwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/listjwt.go
+  - tests/mockserver/internal/sdk/models/operations/listjwtwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/listkey.go
+  - tests/mockserver/internal/sdk/models/operations/listkeyauth.go
+  - tests/mockserver/internal/sdk/models/operations/listkeyauthwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/listkeyset.go
+  - tests/mockserver/internal/sdk/models/operations/listkeywithkeyset.go
+  - tests/mockserver/internal/sdk/models/operations/listmtlsauth.go
+  - tests/mockserver/internal/sdk/models/operations/listmtlsauthwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/listnetworkconfigurations.go
+  - tests/mockserver/internal/sdk/models/operations/listnetworks.go
+  - tests/mockserver/internal/sdk/models/operations/listnotifications.go
+  - tests/mockserver/internal/sdk/models/operations/listpartial.go
+  - tests/mockserver/internal/sdk/models/operations/listpartiallink.go
+  - tests/mockserver/internal/sdk/models/operations/listplugin.go
+  - tests/mockserver/internal/sdk/models/operations/listpluginschemas.go
+  - tests/mockserver/internal/sdk/models/operations/listpluginwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/listpluginwithconsumergroup.go
+  - tests/mockserver/internal/sdk/models/operations/listpluginwithroute.go
+  - tests/mockserver/internal/sdk/models/operations/listpluginwithservice.go
+  - tests/mockserver/internal/sdk/models/operations/listprovideraccounts.go
+  - tests/mockserver/internal/sdk/models/operations/listresourceconfigurations.go
+  - tests/mockserver/internal/sdk/models/operations/listresourcequotas.go
+  - tests/mockserver/internal/sdk/models/operations/listroute.go
+  - tests/mockserver/internal/sdk/models/operations/listroutewithservice.go
+  - tests/mockserver/internal/sdk/models/operations/listservice.go
+  - tests/mockserver/internal/sdk/models/operations/listsni.go
+  - tests/mockserver/internal/sdk/models/operations/listsniwithcertificate.go
+  - tests/mockserver/internal/sdk/models/operations/listtargetwithupstream.go
+  - tests/mockserver/internal/sdk/models/operations/listteamroles.go
+  - tests/mockserver/internal/sdk/models/operations/listteams.go
+  - tests/mockserver/internal/sdk/models/operations/listteamusers.go
+  - tests/mockserver/internal/sdk/models/operations/listtransitgateways.go
+  - tests/mockserver/internal/sdk/models/operations/listupstream.go
+  - tests/mockserver/internal/sdk/models/operations/listuserconfigurations.go
+  - tests/mockserver/internal/sdk/models/operations/listuserroles.go
+  - tests/mockserver/internal/sdk/models/operations/listusers.go
+  - tests/mockserver/internal/sdk/models/operations/listuserteams.go
+  - tests/mockserver/internal/sdk/models/operations/listvault.go
+  - tests/mockserver/internal/sdk/models/operations/patchsystemaccountsid.go
+  - tests/mockserver/internal/sdk/models/operations/patchsystemaccountsidaccesstokensid.go
+  - tests/mockserver/internal/sdk/models/operations/patchteamgroupmappings.go
+  - tests/mockserver/internal/sdk/models/operations/postcontrolplanesidgroupmembershipsadd.go
+  - tests/mockserver/internal/sdk/models/operations/postcontrolplanesidgroupmembershipsremove.go
+  - tests/mockserver/internal/sdk/models/operations/postsystemaccounts.go
+  - tests/mockserver/internal/sdk/models/operations/postsystemaccountsaccountidassignedroles.go
+  - tests/mockserver/internal/sdk/models/operations/postsystemaccountsidaccesstokens.go
+  - tests/mockserver/internal/sdk/models/operations/postteamsteamidsystemaccounts.go
+  - tests/mockserver/internal/sdk/models/operations/putcontrolplanesidgroupmemberships.go
+  - tests/mockserver/internal/sdk/models/operations/removeallconsumersfromconsumergroup.go
+  - tests/mockserver/internal/sdk/models/operations/removeconsumerfromallconsumergroups.go
+  - tests/mockserver/internal/sdk/models/operations/removeconsumerfromconsumergroup.go
+  - tests/mockserver/internal/sdk/models/operations/removeconsumerfromgroup.go
+  - tests/mockserver/internal/sdk/models/operations/removeuserfromteam.go
+  - tests/mockserver/internal/sdk/models/operations/replaceappauthstrategy.go
+  - tests/mockserver/internal/sdk/models/operations/teamsassignrole.go
+  - tests/mockserver/internal/sdk/models/operations/teamsremoverole.go
+  - tests/mockserver/internal/sdk/models/operations/updateappauthstrategy.go
+  - tests/mockserver/internal/sdk/models/operations/updateauthenticationsettings.go
+  - tests/mockserver/internal/sdk/models/operations/updateconfigstore.go
+  - tests/mockserver/internal/sdk/models/operations/updateconfigstoresecret.go
+  - tests/mockserver/internal/sdk/models/operations/updatecontrolplane.go
+  - tests/mockserver/internal/sdk/models/operations/updatedcrprovider.go
+  - tests/mockserver/internal/sdk/models/operations/updateeventsubscription.go
+  - tests/mockserver/internal/sdk/models/operations/updateidentityprovider.go
+  - tests/mockserver/internal/sdk/models/operations/updateidpconfiguration.go
+  - tests/mockserver/internal/sdk/models/operations/updateidpteammappings.go
+  - tests/mockserver/internal/sdk/models/operations/updateimpersonationsettings.go
+  - tests/mockserver/internal/sdk/models/operations/updatenetwork.go
+  - tests/mockserver/internal/sdk/models/operations/updatenotification.go
+  - tests/mockserver/internal/sdk/models/operations/updatepluginschemas.go
+  - tests/mockserver/internal/sdk/models/operations/updateteam.go
+  - tests/mockserver/internal/sdk/models/operations/updateuser.go
+  - tests/mockserver/internal/sdk/models/operations/upsertaclwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/upsertbasicauthwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/upsertcacertificate.go
+  - tests/mockserver/internal/sdk/models/operations/upsertcertificate.go
+  - tests/mockserver/internal/sdk/models/operations/upsertconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/upsertconsumergroup.go
+  - tests/mockserver/internal/sdk/models/operations/upsertcustomplugin.go
+  - tests/mockserver/internal/sdk/models/operations/upsertdegraphqlroutewithservice.go
+  - tests/mockserver/internal/sdk/models/operations/upserthmacauthwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/upsertjwtwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/upsertkey.go
+  - tests/mockserver/internal/sdk/models/operations/upsertkeyauthwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/upsertkeyset.go
+  - tests/mockserver/internal/sdk/models/operations/upsertkeywithkeyset.go
+  - tests/mockserver/internal/sdk/models/operations/upsertmtlsauthwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/upsertpartial.go
+  - tests/mockserver/internal/sdk/models/operations/upsertplugin.go
+  - tests/mockserver/internal/sdk/models/operations/upsertpluginwithconsumer.go
+  - tests/mockserver/internal/sdk/models/operations/upsertpluginwithconsumergroup.go
+  - tests/mockserver/internal/sdk/models/operations/upsertpluginwithroute.go
+  - tests/mockserver/internal/sdk/models/operations/upsertpluginwithservice.go
+  - tests/mockserver/internal/sdk/models/operations/upsertroute.go
+  - tests/mockserver/internal/sdk/models/operations/upsertroutewithservice.go
+  - tests/mockserver/internal/sdk/models/operations/upsertservice.go
+  - tests/mockserver/internal/sdk/models/operations/upsertsni.go
+  - tests/mockserver/internal/sdk/models/operations/upsertsniwithcertificate.go
+  - tests/mockserver/internal/sdk/models/operations/upserttargetwithupstream.go
+  - tests/mockserver/internal/sdk/models/operations/upsertupstream.go
+  - tests/mockserver/internal/sdk/models/operations/upsertvault.go
+  - tests/mockserver/internal/sdk/models/operations/usersassignrole.go
+  - tests/mockserver/internal/sdk/models/operations/usersremoverole.go
+  - tests/mockserver/internal/sdk/models/operations/verifydcrprovider.go
+  - tests/mockserver/internal/sdk/models/sdkerrors/badrequesterror.go
+  - tests/mockserver/internal/sdk/models/sdkerrors/baseerror.go
+  - tests/mockserver/internal/sdk/models/sdkerrors/conflicterror.go
+  - tests/mockserver/internal/sdk/models/sdkerrors/forbiddenerror.go
+  - tests/mockserver/internal/sdk/models/sdkerrors/gatewayunauthorizederror.go
+  - tests/mockserver/internal/sdk/models/sdkerrors/internalservererror.go
+  - tests/mockserver/internal/sdk/models/sdkerrors/notfounderror.go
+  - tests/mockserver/internal/sdk/models/sdkerrors/preconditionfailederror.go
+  - tests/mockserver/internal/sdk/models/sdkerrors/ratelimitederror.go
+  - tests/mockserver/internal/sdk/models/sdkerrors/serviceunavailableerror.go
+  - tests/mockserver/internal/sdk/models/sdkerrors/unauthorizederror.go
+  - tests/mockserver/internal/sdk/models/sdkerrors/unsupportedmediatypeerror.go
+  - tests/mockserver/internal/sdk/types/bigint.go
+  - tests/mockserver/internal/sdk/types/date.go
+  - tests/mockserver/internal/sdk/types/datetime.go
+  - tests/mockserver/internal/sdk/types/decimal.go
+  - tests/mockserver/internal/sdk/types/jsonl/jsonl.go
+  - tests/mockserver/internal/sdk/types/pointers.go
+  - tests/mockserver/internal/sdk/utils/json.go
+  - tests/mockserver/internal/sdk/utils/reflect.go
+  - tests/mockserver/internal/sdk/utils/sort.go
+  - tests/mockserver/internal/server/doc.go
+  - tests/mockserver/internal/server/generated_handlers.go
+  - tests/mockserver/internal/server/internal_handlers.go
+  - tests/mockserver/internal/server/server.go
+  - tests/mockserver/internal/server/server_option.go
+  - tests/mockserver/internal/server/templates/log/index.html.tmpl
+  - tests/mockserver/internal/server/templates/log/operation.html.tmpl
+  - tests/mockserver/internal/server/templates/log/style.css.tmpl
+  - tests/mockserver/internal/tracking/requesttracker.go
+  - tests/mockserver/main.go
   - types/bigint.go
   - types/date.go
   - types/datetime.go
@@ -2809,8 +3447,30 @@ examples:
           application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "group": "foo", "id": "b1f34145-0343-41a4-9602-4c69dec2f269"}]}
         "401":
           application/json: {"message": "<value>", "status": 500789}
+    speakeasy-default-list-acl:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "group": "foo", "id": "b1f34145-0343-41a4-9602-4c69dec2f269"}]}
+        "401":
+          application/json: {"message": "<value>", "status": 500789}
   get-acl:
     "":
+      parameters:
+        path:
+          ACLId: "f28acbfa-c866-4587-b688-0208ac24df21"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "group": "foo", "id": "b1f34145-0343-41a4-9602-4c69dec2f269"}
+        "401":
+          application/json: {"message": "<value>", "status": 468894}
+    speakeasy-default-get-acl:
       parameters:
         path:
           ACLId: "f28acbfa-c866-4587-b688-0208ac24df21"
@@ -2832,8 +3492,29 @@ examples:
       responses:
         "200":
           application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "group": "foo", "id": "b1f34145-0343-41a4-9602-4c69dec2f269"}]}
+    speakeasy-default-list-acl-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "group": "foo", "id": "b1f34145-0343-41a4-9602-4c69dec2f269"}]}
   create-acl-with-consumer:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+      requestBody:
+        application/json: {"group": "foo", "id": "b1f34145-0343-41a4-9602-4c69dec2f269"}
+      responses:
+        "201":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "group": "foo", "id": "b1f34145-0343-41a4-9602-4c69dec2f269"}
+    speakeasy-default-create-acl-with-consumer:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -2850,6 +3531,12 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           ACLId: "f28acbfa-c866-4587-b688-0208ac24df21"
+    speakeasy-default-delete-acl-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          ACLId: "f28acbfa-c866-4587-b688-0208ac24df21"
   get-acl-with-consumer:
     "":
       parameters:
@@ -2860,8 +3547,28 @@ examples:
       responses:
         "200":
           application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "group": "foo", "id": "b1f34145-0343-41a4-9602-4c69dec2f269"}
+    speakeasy-default-get-acl-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          ACLId: "f28acbfa-c866-4587-b688-0208ac24df21"
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "group": "foo", "id": "b1f34145-0343-41a4-9602-4c69dec2f269"}
   upsert-acl-with-consumer:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          ACLId: "f28acbfa-c866-4587-b688-0208ac24df21"
+      requestBody:
+        application/json: {"group": "foo", "id": "b1f34145-0343-41a4-9602-4c69dec2f269"}
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "group": "foo", "id": "b1f34145-0343-41a4-9602-4c69dec2f269"}
+    speakeasy-default-upsert-acl-with-consumer:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -2885,8 +3592,30 @@ examples:
           application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}]}
         "401":
           application/json: {"message": "<value>", "status": 101752}
+    speakeasy-default-list-basic-auth:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}]}
+        "401":
+          application/json: {"message": "<value>", "status": 101752}
   get-basic-auth:
     "":
+      parameters:
+        path:
+          BasicAuthId: "80db1b58-ca7c-4d21-b92a-64eb07725872"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}
+        "401":
+          application/json: {"message": "<value>", "status": 944690}
+    speakeasy-default-get-basic-auth:
       parameters:
         path:
           BasicAuthId: "80db1b58-ca7c-4d21-b92a-64eb07725872"
@@ -2908,8 +3637,29 @@ examples:
       responses:
         "200":
           application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}]}
+    speakeasy-default-list-basic-auth-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}]}
   create-basic-auth-with-consumer:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+      requestBody:
+        application/json: {"id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}
+      responses:
+        "201":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}
+    speakeasy-default-create-basic-auth-with-consumer:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -2926,8 +3676,23 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           BasicAuthId: "80db1b58-ca7c-4d21-b92a-64eb07725872"
+    speakeasy-default-delete-basic-auth-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          BasicAuthId: "80db1b58-ca7c-4d21-b92a-64eb07725872"
   get-basic-auth-with-consumer:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          BasicAuthId: "80db1b58-ca7c-4d21-b92a-64eb07725872"
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}
+    speakeasy-default-get-basic-auth-with-consumer:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -2948,8 +3713,31 @@ examples:
       responses:
         "200":
           application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}
+    speakeasy-default-upsert-basic-auth-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          BasicAuthId: "80db1b58-ca7c-4d21-b92a-64eb07725872"
+      requestBody:
+        application/json: {"id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}
   list-ca_certificate:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f260"}]}
+        "401":
+          application/json: {"message": "<value>", "status": 281078}
+    speakeasy-default-list-ca-certificate:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -2982,8 +3770,26 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 534948}
+    speakeasy-default-delete-ca-certificate:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          CACertificateId: "3c31f18a-f27a-4f9b-8cd4-bf841554612f"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 534948}
   get-ca_certificate:
     "":
+      parameters:
+        path:
+          CACertificateId: "3c31f18a-f27a-4f9b-8cd4-bf841554612f"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f260"}
+        "401":
+          application/json: {"message": "<value>", "status": 897051}
+    speakeasy-default-get-ca-certificate:
       parameters:
         path:
           CACertificateId: "3c31f18a-f27a-4f9b-8cd4-bf841554612f"
@@ -3006,8 +3812,32 @@ examples:
           application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f260"}
         "401":
           application/json: {"message": "<value>", "status": 838404}
+    speakeasy-default-upsert-ca-certificate:
+      parameters:
+        path:
+          CACertificateId: "3c31f18a-f27a-4f9b-8cd4-bf841554612f"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f260"}
+      responses:
+        "200":
+          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f260"}
+        "401":
+          application/json: {"message": "<value>", "status": 838404}
   list-certificate:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----"}]}
+        "401":
+          application/json: {"message": "<value>", "status": 578370}
+    speakeasy-default-list-certificate:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3040,6 +3870,14 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 841627}
+    speakeasy-default-delete-certificate:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          CertificateId: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 841627}
   get-certificate:
     "":
       parameters:
@@ -3051,8 +3889,30 @@ examples:
           application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----"}
         "401":
           application/json: {"message": "<value>", "status": 769994}
+    speakeasy-default-get-certificate:
+      parameters:
+        path:
+          CertificateId: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----"}
+        "401":
+          application/json: {"message": "<value>", "status": 769994}
   upsert-certificate:
     "":
+      parameters:
+        path:
+          CertificateId: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----"}
+      responses:
+        "200":
+          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----"}
+        "401":
+          application/json: {"message": "<value>", "status": 501690}
+    speakeasy-default-upsert-certificate:
       parameters:
         path:
           CertificateId: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7"
@@ -3076,8 +3936,29 @@ examples:
       responses:
         "200":
           application/json: {"data": [{"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}]}
+    speakeasy-default-list-sni-with-certificate:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          CertificateId: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}]}
   create-sni-with-certificate:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          CertificateId: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7"
+      requestBody:
+        application/json: {"id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}
+      responses:
+        "201":
+          application/json: {"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}
+    speakeasy-default-create-sni-with-certificate:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3094,8 +3975,23 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           CertificateId: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7"
           SNIId: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f"
+    speakeasy-default-delete-sni-with-certificate:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          CertificateId: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7"
+          SNIId: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f"
   get-sni-with-certificate:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          CertificateId: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7"
+          SNIId: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f"
+      responses:
+        "200":
+          application/json: {"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}
+    speakeasy-default-get-sni-with-certificate:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3116,8 +4012,31 @@ examples:
       responses:
         "200":
           application/json: {"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}
+    speakeasy-default-upsert-sni-with-certificate:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          CertificateId: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7"
+          SNIId: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f"
+      requestBody:
+        application/json: {"id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}
+      responses:
+        "200":
+          application/json: {"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}
   list-sni:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}]}
+        "401":
+          application/json: {"message": "<value>", "status": 842632}
+    speakeasy-default-list-sni:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3150,8 +4069,26 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 880922}
+    speakeasy-default-delete-sni:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          SNIId: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 880922}
   get-sni:
     "":
+      parameters:
+        path:
+          SNIId: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}
+        "401":
+          application/json: {"message": "<value>", "status": 464092}
+    speakeasy-default-get-sni:
       parameters:
         path:
           SNIId: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f"
@@ -3174,8 +4111,32 @@ examples:
           application/json: {"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}
         "401":
           application/json: {"message": "<value>", "status": 361528}
+    speakeasy-default-upsert-sni:
+      parameters:
+        path:
+          SNIId: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}
+      responses:
+        "200":
+          application/json: {"certificate": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "id": "36c4566c-14cc-4132-9011-4139fcbbe50a", "name": "some.example.org"}
+        "401":
+          application/json: {"message": "<value>", "status": 361528}
   list-consumer_group:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/json: {"message": "<value>", "status": 256390}
+    speakeasy-default-list-consumer-group:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3208,8 +4169,26 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 915587}
+    speakeasy-default-delete-consumer-group:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerGroupId: ""
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 915587}
   get-consumer_group:
     "":
+      parameters:
+        path:
+          ConsumerGroupId: ""
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/json: {"message": "<value>", "status": 522065}
+    speakeasy-default-get-consumer-group:
       parameters:
         path:
           ConsumerGroupId: ""
@@ -3232,6 +4211,18 @@ examples:
           application/json: {"name": "<value>"}
         "401":
           application/json: {"message": "<value>", "status": 310688}
+    speakeasy-default-upsert-consumer-group:
+      parameters:
+        path:
+          ConsumerGroupId: ""
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"name": "<value>"}
+      responses:
+        "200":
+          application/json: {"name": "<value>"}
+        "401":
+          application/json: {"message": "<value>", "status": 310688}
   remove-all-consumers-from-consumer-group:
     speakeasy-default-remove-all-consumers-from-consumer-group:
       parameters:
@@ -3240,6 +4231,17 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
   list-consumers-for-consumer-group:
     "":
+      parameters:
+        path:
+          ConsumerGroupId: "<id>"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"custom_id": "4200", "id": "8a388226-80e8-4027-a486-25e4f7db5d21", "tags": ["silver-tier"], "username": "bob-the-builder"}]}
+    speakeasy-default-list-consumers-for-consumer-group:
       parameters:
         path:
           ConsumerGroupId: "<id>"
@@ -3274,8 +4276,24 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
+    speakeasy-default-remove-consumer-from-all-consumer-groups:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
   list-consumer-groups-for-consumer:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {}
+    speakeasy-default-list-consumer-groups-for-consumer:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3297,6 +4315,16 @@ examples:
       responses:
         "201":
           application/json: {"consumer": {"custom_id": "4200", "id": "8a388226-80e8-4027-a486-25e4f7db5d21", "tags": ["silver-tier"], "username": "bob-the-builder"}}
+    speakeasy-default-add-consumer-to-specific-consumer-group:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
+      requestBody:
+        application/json: {"group": "fedee695-2ae2-4e45-877a-776d9b2fc793"}
+      responses:
+        "201":
+          application/json: {"consumer": {"custom_id": "4200", "id": "8a388226-80e8-4027-a486-25e4f7db5d21", "tags": ["silver-tier"], "username": "bob-the-builder"}}
   remove-consumer-from-consumer-group:
     "":
       parameters:
@@ -3304,8 +4332,25 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
           ConsumerGroupId: ""
+    speakeasy-default-remove-consumer-from-consumer-group:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
+          ConsumerGroupId: ""
   list-plugin-with-consumer_group:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerGroupId: ""
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}]}
+    speakeasy-default-list-plugin-with-consumer-group:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3327,8 +4372,24 @@ examples:
       responses:
         "201":
           application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+    speakeasy-default-create-plugin-with-consumer-group:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerGroupId: ""
+      requestBody:
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+      responses:
+        "201":
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   delete-plugin-with-consumer_group:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerGroupId: ""
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+    speakeasy-default-delete-plugin-with-consumer-group:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3344,8 +4405,28 @@ examples:
       responses:
         "200":
           application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+    speakeasy-default-get-plugin-with-consumer-group:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerGroupId: ""
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+      responses:
+        "200":
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   upsert-plugin-with-consumer_group:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerGroupId: ""
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+      requestBody:
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+      responses:
+        "200":
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+    speakeasy-default-upsert-plugin-with-consumer-group:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3368,8 +4449,29 @@ examples:
       responses:
         "200":
           application/json: {"data": [{"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}]}
+    speakeasy-default-list-plugin-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}]}
   create-plugin-with-consumer:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+      requestBody:
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+      responses:
+        "201":
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+    speakeasy-default-create-plugin-with-consumer:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3386,8 +4488,23 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+    speakeasy-default-delete-plugin-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
   get-plugin-with-consumer:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+      responses:
+        "200":
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+    speakeasy-default-get-plugin-with-consumer:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3408,8 +4525,31 @@ examples:
       responses:
         "200":
           application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+    speakeasy-default-upsert-plugin-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+      requestBody:
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+      responses:
+        "200":
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   list-plugin:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}]}
+        "401":
+          application/json: {"message": "<value>", "status": 240713}
+    speakeasy-default-list-plugin:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3442,6 +4582,14 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 228522}
+    speakeasy-default-delete-plugin:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 228522}
   get-plugin:
     "":
       parameters:
@@ -3453,8 +4601,30 @@ examples:
           application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
         "401":
           application/json: {"message": "<value>", "status": 939243}
+    speakeasy-default-get-plugin:
+      parameters:
+        path:
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        "401":
+          application/json: {"message": "<value>", "status": 939243}
   upsert-plugin:
     "":
+      parameters:
+        path:
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+      responses:
+        "200":
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        "401":
+          application/json: {"message": "<value>", "status": 294960}
+    speakeasy-default-upsert-plugin:
       parameters:
         path:
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
@@ -3478,8 +4648,29 @@ examples:
       responses:
         "200":
           application/json: {"data": [{"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}]}
+    speakeasy-default-list-plugin-with-route:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}]}
   create-plugin-with-route:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
+      requestBody:
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+      responses:
+        "201":
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+    speakeasy-default-create-plugin-with-route:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3496,6 +4687,12 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+    speakeasy-default-delete-plugin-with-route:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
   get-plugin-with-route:
     "":
       parameters:
@@ -3506,8 +4703,28 @@ examples:
       responses:
         "200":
           application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+    speakeasy-default-get-plugin-with-route:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+      responses:
+        "200":
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   upsert-plugin-with-route:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+      requestBody:
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+      responses:
+        "200":
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+    speakeasy-default-upsert-plugin-with-route:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3539,8 +4756,29 @@ examples:
       responses:
         "200":
           application/json: {"data": [{"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}]}
+    speakeasy-default-list-plugin-with-service:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}]}
   create-plugin-with-service:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+      requestBody:
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+      responses:
+        "201":
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+    speakeasy-default-create-plugin-with-service:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3557,8 +4795,23 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+    speakeasy-default-delete-plugin-with-service:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
   get-plugin-with-service:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+      responses:
+        "200":
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+    speakeasy-default-get-plugin-with-service:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3579,8 +4832,31 @@ examples:
       responses:
         "200":
           application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+    speakeasy-default-upsert-plugin-with-service:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+          PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
+      requestBody:
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+      responses:
+        "200":
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   list-consumer:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"custom_id": "4200", "id": "8a388226-80e8-4027-a486-25e4f7db5d21", "tags": ["silver-tier"], "username": "bob-the-builder"}]}
+        "401":
+          application/json: {"message": "<value>", "status": 929834}
+    speakeasy-default-list-consumer:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3613,6 +4889,14 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 128133}
+    speakeasy-default-delete-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 128133}
   get-consumer:
     "":
       parameters:
@@ -3624,8 +4908,30 @@ examples:
           application/json: {"custom_id": "4200", "id": "8a388226-80e8-4027-a486-25e4f7db5d21", "tags": ["silver-tier"], "username": "bob-the-builder"}
         "401":
           application/json: {"message": "<value>", "status": 441110}
+    speakeasy-default-get-consumer:
+      parameters:
+        path:
+          ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"custom_id": "4200", "id": "8a388226-80e8-4027-a486-25e4f7db5d21", "tags": ["silver-tier"], "username": "bob-the-builder"}
+        "401":
+          application/json: {"message": "<value>", "status": 441110}
   upsert-consumer:
     "":
+      parameters:
+        path:
+          ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"custom_id": "4200", "id": "8a388226-80e8-4027-a486-25e4f7db5d21", "tags": ["silver-tier"], "username": "bob-the-builder"}
+      responses:
+        "200":
+          application/json: {"custom_id": "4200", "id": "8a388226-80e8-4027-a486-25e4f7db5d21", "tags": ["silver-tier"], "username": "bob-the-builder"}
+        "401":
+          application/json: {"message": "<value>", "status": 653018}
+    speakeasy-default-upsert-consumer:
       parameters:
         path:
           ConsumerId: "c1059869-6fa7-4329-a5f5-5946d14ca2c5"
@@ -3649,8 +4955,29 @@ examples:
       responses:
         "200":
           application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "secret": "wQazJ304DW5huJklHgUfjfiSyCyTAEDZ", "username": "xerxes"}]}
+    speakeasy-default-list-hmac-auth-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "secret": "wQazJ304DW5huJklHgUfjfiSyCyTAEDZ", "username": "xerxes"}]}
   create-hmac-auth-with-consumer:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+      requestBody:
+        application/json: {"id": "75695322-e8a0-4109-aed4-5416b0308d85", "secret": "wQazJ304DW5huJklHgUfjfiSyCyTAEDZ", "username": "xerxes"}
+      responses:
+        "201":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "secret": "wQazJ304DW5huJklHgUfjfiSyCyTAEDZ", "username": "xerxes"}
+    speakeasy-default-create-hmac-auth-with-consumer:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3667,6 +4994,12 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           HMACAuthId: "70e7b00b-72f2-471b-a5ce-9c4171775360"
+    speakeasy-default-delete-hmac-auth-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          HMACAuthId: "70e7b00b-72f2-471b-a5ce-9c4171775360"
   get-hmac-auth-with-consumer:
     "":
       parameters:
@@ -3677,8 +5010,28 @@ examples:
       responses:
         "200":
           application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "secret": "wQazJ304DW5huJklHgUfjfiSyCyTAEDZ", "username": "xerxes"}
+    speakeasy-default-get-hmac-auth-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          HMACAuthId: "70e7b00b-72f2-471b-a5ce-9c4171775360"
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "secret": "wQazJ304DW5huJklHgUfjfiSyCyTAEDZ", "username": "xerxes"}
   upsert-hmac-auth-with-consumer:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          HMACAuthId: "70e7b00b-72f2-471b-a5ce-9c4171775360"
+      requestBody:
+        application/json: {"id": "75695322-e8a0-4109-aed4-5416b0308d85", "secret": "wQazJ304DW5huJklHgUfjfiSyCyTAEDZ", "username": "xerxes"}
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "secret": "wQazJ304DW5huJklHgUfjfiSyCyTAEDZ", "username": "xerxes"}
+    speakeasy-default-upsert-hmac-auth-with-consumer:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3702,8 +5055,30 @@ examples:
           application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "secret": "wQazJ304DW5huJklHgUfjfiSyCyTAEDZ", "username": "xerxes"}]}
         "401":
           application/json: {"message": "<value>", "status": 449721}
+    speakeasy-default-list-hmac-auth:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "secret": "wQazJ304DW5huJklHgUfjfiSyCyTAEDZ", "username": "xerxes"}]}
+        "401":
+          application/json: {"message": "<value>", "status": 449721}
   get-hmac-auth:
     "":
+      parameters:
+        path:
+          HMACAuthId: "70e7b00b-72f2-471b-a5ce-9c4171775360"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "secret": "wQazJ304DW5huJklHgUfjfiSyCyTAEDZ", "username": "xerxes"}
+        "401":
+          application/json: {"message": "<value>", "status": 97799}
+    speakeasy-default-get-hmac-auth:
       parameters:
         path:
           HMACAuthId: "70e7b00b-72f2-471b-a5ce-9c4171775360"
@@ -3725,8 +5100,29 @@ examples:
       responses:
         "200":
           application/json: {"data": [{"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}]}
+    speakeasy-default-list-jwt-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}]}
   create-jwt-with-consumer:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+      requestBody:
+        application/json: {"algorithm": "HS256", "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
+      responses:
+        "201":
+          application/json: {"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
+    speakeasy-default-create-jwt-with-consumer:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3743,6 +5139,12 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           JWTId: "4a7f5faa-8c96-46d6-8214-c87573ef2ac4"
+    speakeasy-default-delete-jwt-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          JWTId: "4a7f5faa-8c96-46d6-8214-c87573ef2ac4"
   get-jwt-with-consumer:
     "":
       parameters:
@@ -3753,8 +5155,28 @@ examples:
       responses:
         "200":
           application/json: {"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
+    speakeasy-default-get-jwt-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          JWTId: "4a7f5faa-8c96-46d6-8214-c87573ef2ac4"
+      responses:
+        "200":
+          application/json: {"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
   upsert-jwt-with-consumer:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          JWTId: "4a7f5faa-8c96-46d6-8214-c87573ef2ac4"
+      requestBody:
+        application/json: {"algorithm": "HS256", "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
+      responses:
+        "200":
+          application/json: {"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
+    speakeasy-default-upsert-jwt-with-consumer:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3778,8 +5200,30 @@ examples:
           application/json: {"data": [{"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}]}
         "401":
           application/json: {"message": "<value>", "status": 85274}
+    speakeasy-default-list-jwt:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}]}
+        "401":
+          application/json: {"message": "<value>", "status": 85274}
   get-jwt:
     "":
+      parameters:
+        path:
+          JWTId: "4a7f5faa-8c96-46d6-8214-c87573ef2ac4"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
+        "401":
+          application/json: {"message": "<value>", "status": 328558}
+    speakeasy-default-get-jwt:
       parameters:
         path:
           JWTId: "4a7f5faa-8c96-46d6-8214-c87573ef2ac4"
@@ -3801,8 +5245,29 @@ examples:
       responses:
         "200":
           application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}]}
+    speakeasy-default-list-key-auth-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}]}
   create-key-auth-with-consumer:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+      requestBody:
+        application/json: {"id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}
+      responses:
+        "201":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}
+    speakeasy-default-create-key-auth-with-consumer:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3819,6 +5284,12 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           KeyAuthId: ""
+    speakeasy-default-delete-key-auth-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          KeyAuthId: ""
   get-key-auth-with-consumer:
     "":
       parameters:
@@ -3829,8 +5300,28 @@ examples:
       responses:
         "200":
           application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}
+    speakeasy-default-get-key-auth-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          KeyAuthId: ""
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}
   upsert-key-auth-with-consumer:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          KeyAuthId: ""
+      requestBody:
+        application/json: {"id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}
+    speakeasy-default-upsert-key-auth-with-consumer:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3854,8 +5345,30 @@ examples:
           application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}]}
         "401":
           application/json: {"message": "<value>", "status": 456570}
+    speakeasy-default-list-key-auth:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}]}
+        "401":
+          application/json: {"message": "<value>", "status": 456570}
   get-key-auth:
     "":
+      parameters:
+        path:
+          KeyAuthId: ""
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}
+        "401":
+          application/json: {"message": "<value>", "status": 857754}
+    speakeasy-default-get-key-auth:
       parameters:
         path:
           KeyAuthId: ""
@@ -3877,8 +5390,29 @@ examples:
       responses:
         "200":
           application/json: {"data": [{"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}]}
+    speakeasy-default-list-mtls-auth-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}]}
   create-mtls-auth-with-consumer:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+      requestBody:
+        application/json: {"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}
+      responses:
+        "201":
+          application/json: {"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}
+    speakeasy-default-create-mtls-auth-with-consumer:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3895,6 +5429,12 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           MTLSAuthId: ""
+    speakeasy-default-delete-mtls-auth-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          MTLSAuthId: ""
   get-mtls-auth-with-consumer:
     "":
       parameters:
@@ -3905,8 +5445,28 @@ examples:
       responses:
         "200":
           application/json: {"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}
+    speakeasy-default-get-mtls-auth-with-consumer:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          MTLSAuthId: ""
+      responses:
+        "200":
+          application/json: {"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}
   upsert-mtls-auth-with-consumer:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
+          MTLSAuthId: ""
+      requestBody:
+        application/json: {"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}
+      responses:
+        "200":
+          application/json: {"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}
+    speakeasy-default-upsert-mtls-auth-with-consumer:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3930,6 +5490,18 @@ examples:
           application/json: {"data": [{"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}]}
         "401":
           application/json: {"message": "<value>", "status": 833347}
+    speakeasy-default-list-mtls-auth:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}]}
+        "401":
+          application/json: {"message": "<value>", "status": 833347}
   get-mtls-auth:
     "":
       parameters:
@@ -3941,8 +5513,30 @@ examples:
           application/json: {"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}
         "401":
           application/json: {"message": "<value>", "status": 965636}
+    speakeasy-default-get-mtls-auth:
+      parameters:
+        path:
+          MTLSAuthId: ""
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"ca_certificate": {"id": "b2f34145-0343-41a4-9602-4c69dec2f260"}, "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "subject_name": "CA_Subject_Name"}
+        "401":
+          application/json: {"message": "<value>", "status": 965636}
   list-custom-plugin:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"handler": "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }", "id": "868346aa-1105-4b77-8346-aa1105fb77c4", "name": "set-header", "schema": "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }"}]}
+        "401":
+          application/json: {"message": "<value>", "status": 593347}
+    speakeasy-default-list-custom-plugin:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -3975,6 +5569,14 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 907684}
+    speakeasy-default-delete-custom-plugin:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          CustomPluginId: ""
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 907684}
   get-custom-plugin:
     "":
       parameters:
@@ -3986,8 +5588,30 @@ examples:
           application/json: {"handler": "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }", "id": "868346aa-1105-4b77-8346-aa1105fb77c4", "name": "set-header", "schema": "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }"}
         "401":
           application/json: {"message": "<value>", "status": 233734}
+    speakeasy-default-get-custom-plugin:
+      parameters:
+        path:
+          CustomPluginId: ""
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"handler": "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }", "id": "868346aa-1105-4b77-8346-aa1105fb77c4", "name": "set-header", "schema": "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }"}
+        "401":
+          application/json: {"message": "<value>", "status": 233734}
   upsert-custom-plugin:
     "":
+      parameters:
+        path:
+          CustomPluginId: ""
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"handler": "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }", "id": "868346aa-1105-4b77-8346-aa1105fb77c4", "name": "set-header", "schema": "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }"}
+      responses:
+        "200":
+          application/json: {"handler": "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }", "id": "868346aa-1105-4b77-8346-aa1105fb77c4", "name": "set-header", "schema": "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }"}
+        "401":
+          application/json: {"message": "<value>", "status": 408156}
+    speakeasy-default-upsert-custom-plugin:
       parameters:
         path:
           CustomPluginId: ""
@@ -4012,8 +5636,30 @@ examples:
           application/json: {"data": [{"id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "query": "query{ user { email } }", "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "uri": "/users"}]}
         "401":
           application/json: {"message": "<value>", "status": 278214}
+    speakeasy-default-list-degraphql-route:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "query": "query{ user { email } }", "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "uri": "/users"}]}
+        "401":
+          application/json: {"message": "<value>", "status": 278214}
   get-degraphql_route:
     "":
+      parameters:
+        path:
+          Degraphql_routeId: ""
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "query": "query{ user { email } }", "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "uri": "/users"}
+        "401":
+          application/json: {"message": "<value>", "status": 588326}
+    speakeasy-default-get-degraphql-route:
       parameters:
         path:
           Degraphql_routeId: ""
@@ -4035,8 +5681,29 @@ examples:
       responses:
         "200":
           application/json: {"data": [{"id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "query": "query{ user { email } }", "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "uri": "/users"}]}
+    speakeasy-default-list-degraphql-route-with-service:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "query": "query{ user { email } }", "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "uri": "/users"}]}
   create-degraphql_route-with-service:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+      requestBody:
+        application/json: {"id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "query": "query{ user { email } }", "uri": "/users"}
+      responses:
+        "201":
+          application/json: {"id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "query": "query{ user { email } }", "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "uri": "/users"}
+    speakeasy-default-create-degraphql-route-with-service:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -4053,8 +5720,23 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
           Degraphql_routeId: ""
+    speakeasy-default-delete-degraphql-route-with-service:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+          Degraphql_routeId: ""
   get-degraphql_route-with-service:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+          Degraphql_routeId: ""
+      responses:
+        "200":
+          application/json: {"id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "query": "query{ user { email } }", "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "uri": "/users"}
+    speakeasy-default-get-degraphql-route-with-service:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -4075,8 +5757,31 @@ examples:
       responses:
         "200":
           application/json: {"id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "query": "query{ user { email } }", "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "uri": "/users"}
+    speakeasy-default-upsert-degraphql-route-with-service:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+          Degraphql_routeId: ""
+      requestBody:
+        application/json: {"id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "query": "query{ user { email } }", "uri": "/users"}
+      responses:
+        "200":
+          application/json: {"id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "query": "query{ user { email } }", "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "uri": "/users"}
   list-key-set:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "b58c7d9d-e54f-444c-b24d-cdfc4159f61e", "name": "example-key-set", "tags": ["idp-keys"]}]}
+        "401":
+          application/json: {"message": "<value>", "status": 364189}
+    speakeasy-default-list-key-set:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -4109,6 +5814,14 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 925820}
+    speakeasy-default-delete-key-set:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          KeySetId: "6cc34248-50b4-4a81-9201-3bdf7a83f712"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 925820}
   get-key-set:
     "":
       parameters:
@@ -4120,8 +5833,30 @@ examples:
           application/json: {"id": "b58c7d9d-e54f-444c-b24d-cdfc4159f61e", "name": "example-key-set", "tags": ["idp-keys"]}
         "401":
           application/json: {"message": "<value>", "status": 260853}
+    speakeasy-default-get-key-set:
+      parameters:
+        path:
+          KeySetId: "6cc34248-50b4-4a81-9201-3bdf7a83f712"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"id": "b58c7d9d-e54f-444c-b24d-cdfc4159f61e", "name": "example-key-set", "tags": ["idp-keys"]}
+        "401":
+          application/json: {"message": "<value>", "status": 260853}
   upsert-key-set:
     "":
+      parameters:
+        path:
+          KeySetId: "6cc34248-50b4-4a81-9201-3bdf7a83f712"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"id": "b58c7d9d-e54f-444c-b24d-cdfc4159f61e", "name": "example-key-set", "tags": ["idp-keys"]}
+      responses:
+        "200":
+          application/json: {"id": "b58c7d9d-e54f-444c-b24d-cdfc4159f61e", "name": "example-key-set", "tags": ["idp-keys"]}
+        "401":
+          application/json: {"message": "<value>", "status": 792318}
+    speakeasy-default-upsert-key-set:
       parameters:
         path:
           KeySetId: "6cc34248-50b4-4a81-9201-3bdf7a83f712"
@@ -4145,8 +5880,29 @@ examples:
       responses:
         "200":
           application/json: {"data": [{"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}]}
+    speakeasy-default-list-key-with-key-set:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          KeySetId: "6cc34248-50b4-4a81-9201-3bdf7a83f712"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}]}
   create-key-with-key-set:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          KeySetId: "6cc34248-50b4-4a81-9201-3bdf7a83f712"
+      requestBody:
+        application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
+      responses:
+        "201":
+          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
+    speakeasy-default-create-key-with-key-set:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -4163,8 +5919,23 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           KeySetId: "6cc34248-50b4-4a81-9201-3bdf7a83f712"
           KeyId: "bba22c06-a632-42be-a018-1b9ff357b5b9"
+    speakeasy-default-delete-key-with-key-set:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          KeySetId: "6cc34248-50b4-4a81-9201-3bdf7a83f712"
+          KeyId: "bba22c06-a632-42be-a018-1b9ff357b5b9"
   get-key-with-key-set:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          KeySetId: "6cc34248-50b4-4a81-9201-3bdf7a83f712"
+          KeyId: "bba22c06-a632-42be-a018-1b9ff357b5b9"
+      responses:
+        "200":
+          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
+    speakeasy-default-get-key-with-key-set:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -4185,8 +5956,31 @@ examples:
       responses:
         "200":
           application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
+    speakeasy-default-upsert-key-with-key-set:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          KeySetId: "6cc34248-50b4-4a81-9201-3bdf7a83f712"
+          KeyId: "bba22c06-a632-42be-a018-1b9ff357b5b9"
+      requestBody:
+        application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
+      responses:
+        "200":
+          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
   list-key:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}]}
+        "401":
+          application/json: {"message": "<value>", "status": 316138}
+    speakeasy-default-list-key:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -4219,8 +6013,26 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 803172}
+    speakeasy-default-delete-key:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          KeyId: "bba22c06-a632-42be-a018-1b9ff357b5b9"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 803172}
   get-key:
     "":
+      parameters:
+        path:
+          KeyId: "bba22c06-a632-42be-a018-1b9ff357b5b9"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
+        "401":
+          application/json: {"message": "<value>", "status": 647780}
+    speakeasy-default-get-key:
       parameters:
         path:
           KeyId: "bba22c06-a632-42be-a018-1b9ff357b5b9"
@@ -4243,8 +6055,32 @@ examples:
           application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
         "401":
           application/json: {"message": "<value>", "status": 849792}
+    speakeasy-default-upsert-key:
+      parameters:
+        path:
+          KeyId: "bba22c06-a632-42be-a018-1b9ff357b5b9"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
+      responses:
+        "200":
+          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
+        "401":
+          application/json: {"message": "<value>", "status": 849792}
   list-partial:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/json: {"message": "<value>", "status": 707684}
+    speakeasy-default-list-partial:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -4277,8 +6113,26 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 63304}
+    speakeasy-default-delete-partial:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          PartialId: ""
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 63304}
   get-partial:
     "":
+      parameters:
+        path:
+          PartialId: ""
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"config": {"key": "<value>", "key1": "<value>"}, "type": "<value>"}
+        "401":
+          application/json: {"message": "<value>", "status": 629733}
+    speakeasy-default-get-partial:
       parameters:
         path:
           PartialId: ""
@@ -4301,8 +6155,31 @@ examples:
           application/json: {"config": {}, "type": "<value>"}
         "401":
           application/json: {"message": "<value>", "status": 445128}
+    speakeasy-default-upsert-partial:
+      parameters:
+        path:
+          PartialId: ""
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"config": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "type": "<value>"}
+      responses:
+        "200":
+          application/json: {"config": {}, "type": "<value>"}
+        "401":
+          application/json: {"message": "<value>", "status": 445128}
   list-partial-link:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          PartialId: ""
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"count": 10}
+    speakeasy-default-list-partial-link:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -4406,6 +6283,18 @@ examples:
           application/json: {"data": [{"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}, {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}, {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}]}
         "401":
           application/json: {"message": "<value>", "status": 9867}
+    speakeasy-default-list-route:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}]}
+        "401":
+          application/json: {"message": "<value>", "status": 736426}
   create-route:
     speakeasy-default-create-route:
       parameters:
@@ -4427,6 +6316,14 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 665842}
+    speakeasy-default-delete-route:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 665842}
   get-route:
     "":
       parameters:
@@ -4438,8 +6335,30 @@ examples:
           application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
         "401":
           application/json: {"message": "<value>", "status": 591882}
+    speakeasy-default-get-route:
+      parameters:
+        path:
+          RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
+        "401":
+          application/json: {"message": "<value>", "status": 591882}
   upsert-route:
     "":
+      parameters:
+        path:
+          RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
+      responses:
+        "200":
+          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
+        "401":
+          application/json: {"message": "<value>", "status": 535322}
+    speakeasy-default-upsert-route:
       parameters:
         path:
           RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
@@ -4463,8 +6382,29 @@ examples:
       responses:
         "200":
           application/json: {"data": [{"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}, {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}]}
+    speakeasy-default-list-route-with-service:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}]}
   create-route-with-service:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+      requestBody:
+        application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
+      responses:
+        "201":
+          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
+    speakeasy-default-create-route-with-service:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -4481,8 +6421,23 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
           RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
+    speakeasy-default-delete-route-with-service:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+          RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
   get-route-with-service:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+          RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
+      responses:
+        "200":
+          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
+    speakeasy-default-get-route-with-service:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -4503,8 +6458,31 @@ examples:
       responses:
         "200":
           application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
+    speakeasy-default-upsert-route-with-service:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+          RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
+      requestBody:
+        application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
+      responses:
+        "200":
+          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
   list-service:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http"}]}
+        "401":
+          application/json: {"message": "<value>", "status": 460889}
+    speakeasy-default-list-service:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -4537,8 +6515,26 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 748444}
+    speakeasy-default-delete-service:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 748444}
   get-service:
     "":
+      parameters:
+        path:
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http"}
+        "401":
+          application/json: {"message": "<value>", "status": 416010}
+    speakeasy-default-get-service:
       parameters:
         path:
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
@@ -4561,8 +6557,32 @@ examples:
           application/json: {"host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http"}
         "401":
           application/json: {"message": "<value>", "status": 715531}
+    speakeasy-default-upsert-service:
+      parameters:
+        path:
+          ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http"}
+      responses:
+        "200":
+          application/json: {"host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http"}
+        "401":
+          application/json: {"message": "<value>", "status": 715531}
   list-upstream:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000}]}
+        "401":
+          application/json: {"message": "<value>", "status": 235016}
+    speakeasy-default-list-upstream:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -4595,6 +6615,14 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 561527}
+    speakeasy-default-delete-upstream:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          UpstreamId: "426d620c-7058-4ae6-aacc-f85a3204a2c5"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 561527}
   get-upstream:
     "":
       parameters:
@@ -4606,8 +6634,30 @@ examples:
           application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000}
         "401":
           application/json: {"message": "<value>", "status": 768603}
+    speakeasy-default-get-upstream:
+      parameters:
+        path:
+          UpstreamId: "426d620c-7058-4ae6-aacc-f85a3204a2c5"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000}
+        "401":
+          application/json: {"message": "<value>", "status": 768603}
   upsert-upstream:
     "":
+      parameters:
+        path:
+          UpstreamId: "426d620c-7058-4ae6-aacc-f85a3204a2c5"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000}
+      responses:
+        "200":
+          application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000}
+        "401":
+          application/json: {"message": "<value>", "status": 414556}
+    speakeasy-default-upsert-upstream:
       parameters:
         path:
           UpstreamId: "426d620c-7058-4ae6-aacc-f85a3204a2c5"
@@ -4631,8 +6681,29 @@ examples:
       responses:
         "200":
           application/json: {"data": [{"id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "upstream": {"id": "5f1d7e76-2fed-4806-a6af-869984f025cb"}, "weight": 100}]}
+    speakeasy-default-list-target-with-upstream:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          UpstreamIdForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "upstream": {"id": "5f1d7e76-2fed-4806-a6af-869984f025cb"}, "weight": 100}]}
   create-target-with-upstream:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          UpstreamIdForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
+      requestBody:
+        application/json: {"id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "weight": 100}
+      responses:
+        "201":
+          application/json: {"id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "upstream": {"id": "5f1d7e76-2fed-4806-a6af-869984f025cb"}, "weight": 100}
+    speakeasy-default-create-target-with-upstream:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -4649,8 +6720,23 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           UpstreamIdForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
           TargetId: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
+    speakeasy-default-delete-target-with-upstream:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          UpstreamIdForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
+          TargetId: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
   get-target-with-upstream:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          UpstreamIdForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
+          TargetId: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
+      responses:
+        "200":
+          application/json: {"id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "upstream": {"id": "5f1d7e76-2fed-4806-a6af-869984f025cb"}, "weight": 100}
+    speakeasy-default-get-target-with-upstream:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -4671,8 +6757,31 @@ examples:
       responses:
         "200":
           application/json: {"id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "upstream": {"id": "5f1d7e76-2fed-4806-a6af-869984f025cb"}, "weight": 100}
+    speakeasy-default-upsert-target-with-upstream:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          UpstreamIdForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
+          TargetId: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
+      requestBody:
+        application/json: {"id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "weight": 100}
+      responses:
+        "200":
+          application/json: {"id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "upstream": {"id": "5f1d7e76-2fed-4806-a6af-869984f025cb"}, "weight": 100}
   list-vault:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {"data": [{"config": {"prefix": "ENV_PREFIX"}, "description": "environment variable based vault", "id": "2747d1e5-8246-4f65-a939-b392f1ee17f8", "name": "env", "prefix": "env", "tags": ["foo", "bar"]}]}
+        "401":
+          application/json: {"message": "<value>", "status": 957540}
+    speakeasy-default-list-vault:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
@@ -4705,6 +6814,14 @@ examples:
       responses:
         "401":
           application/json: {"message": "<value>", "status": 74301}
+    speakeasy-default-delete-vault:
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          VaultId: "9d4d6d19-77c6-428e-a965-9bc9647633e9"
+      responses:
+        "401":
+          application/json: {"message": "<value>", "status": 74301}
   get-vault:
     "":
       parameters:
@@ -4716,8 +6833,30 @@ examples:
           application/json: {"config": {"prefix": "ENV_PREFIX"}, "description": "environment variable based vault", "id": "2747d1e5-8246-4f65-a939-b392f1ee17f8", "name": "env", "prefix": "env", "tags": ["foo", "bar"]}
         "401":
           application/json: {"message": "<value>", "status": 357221}
+    speakeasy-default-get-vault:
+      parameters:
+        path:
+          VaultId: "9d4d6d19-77c6-428e-a965-9bc9647633e9"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"config": {"prefix": "ENV_PREFIX"}, "description": "environment variable based vault", "id": "2747d1e5-8246-4f65-a939-b392f1ee17f8", "name": "env", "prefix": "env", "tags": ["foo", "bar"]}
+        "401":
+          application/json: {"message": "<value>", "status": 357221}
   upsert-vault:
     "":
+      parameters:
+        path:
+          VaultId: "9d4d6d19-77c6-428e-a965-9bc9647633e9"
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"config": {"prefix": "ENV_PREFIX"}, "description": "environment variable based vault", "id": "2747d1e5-8246-4f65-a939-b392f1ee17f8", "name": "env", "prefix": "env", "tags": ["foo", "bar"]}
+      responses:
+        "200":
+          application/json: {"config": {"prefix": "ENV_PREFIX"}, "description": "environment variable based vault", "id": "2747d1e5-8246-4f65-a939-b392f1ee17f8", "name": "env", "prefix": "env", "tags": ["foo", "bar"]}
+        "401":
+          application/json: {"message": "<value>", "status": 808712}
+    speakeasy-default-upsert-vault:
       parameters:
         path:
           VaultId: "9d4d6d19-77c6-428e-a965-9bc9647633e9"
@@ -4781,6 +6920,17 @@ examples:
           application/json: {}
   get-nodes-node_id:
     "":
+      parameters:
+        path:
+          controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          nodeId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+        query:
+          size: 100
+          tags: "tag1,tag2"
+      responses:
+        "200":
+          application/json: {}
+    speakeasy-default-get-nodes-node-id:
       parameters:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
