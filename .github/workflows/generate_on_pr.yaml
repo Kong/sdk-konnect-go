@@ -68,6 +68,9 @@ jobs:
       - name: Generate SDK
         run: make generate.sdk
 
+      - name: Generate deepcopy
+        run: make generate.deepcopy
+
       - name: Commit SDK changes to the PR
         uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9.1.4
         with:
