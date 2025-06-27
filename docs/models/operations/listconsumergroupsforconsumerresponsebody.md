@@ -1,6 +1,6 @@
 # ListConsumerGroupsForConsumerResponseBody
 
-A successful response listing consumer groups
+A successful response listing Consumer Groups
 
 
 ## Fields

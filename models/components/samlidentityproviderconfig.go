@@ -9,13 +9,6 @@ type SAMLIdentityProviderConfig struct {
 	// The identity provider's SAML metadata. If the identity provider supports a metadata URL, you can use the `idp_metadata_url` field instead.
 	//
 	IdpMetadataXML *string `json:"idp_metadata_xml,omitempty"`
-	SpMetadataURL  *string `json:"sp_metadata_url,omitempty"`
-	// The entity ID of the service provider (SP).
-	SpEntityID *string `json:"sp_entity_id,omitempty"`
-	// The URL to redirect users to for initiating login with the identity provider.
-	LoginURL *string `json:"login_url,omitempty"`
-	// The URL where the SAML identity provider sends authentication responses after successful login attempts.
-	CallbackURL *string `json:"callback_url,omitempty"`
 }
 
 func (o *SAMLIdentityProviderConfig) GetIdpMetadataURL() *string {
@@ -30,32 +23,4 @@ func (o *SAMLIdentityProviderConfig) GetIdpMetadataXML() *string {
 		return nil
 	}
 	return o.IdpMetadataXML
-}
-
-func (o *SAMLIdentityProviderConfig) GetSpMetadataURL() *string {
-	if o == nil {
-		return nil
-	}
-	return o.SpMetadataURL
-}
-
-func (o *SAMLIdentityProviderConfig) GetSpEntityID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.SpEntityID
-}
-
-func (o *SAMLIdentityProviderConfig) GetLoginURL() *string {
-	if o == nil {
-		return nil
-	}
-	return o.LoginURL
-}
-
-func (o *SAMLIdentityProviderConfig) GetCallbackURL() *string {
-	if o == nil {
-		return nil
-	}
-	return o.CallbackURL
 }

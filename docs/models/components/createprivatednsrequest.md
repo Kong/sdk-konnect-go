@@ -1,0 +1,11 @@
+# CreatePrivateDNSRequest
+
+Request schema for creating a Private DNS.
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     | Example                                                                                         |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `Name`                                                                                          | **string*                                                                                       | :heavy_minus_sign:                                                                              | Human-readable name of the Private DNS.                                                         | us-east-2 private dns                                                                           |
+| `PrivateDNSAttachmentConfig`                                                                    | [*components.PrivateDNSAttachmentConfig](../../models/components/privatednsattachmentconfig.md) | :heavy_minus_sign:                                                                              | N/A                                                                                             |                                                                                                 |

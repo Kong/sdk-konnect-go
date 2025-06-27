@@ -27,22 +27,10 @@ func (o *FetchPluginSchemaRequest) GetControlPlaneID() string {
 	return o.ControlPlaneID
 }
 
-// FetchPluginSchemaResponseBody - The schema for the plugin
-type FetchPluginSchemaResponseBody struct {
-	Fields []map[string]any `json:"fields,omitempty"`
-}
-
-func (o *FetchPluginSchemaResponseBody) GetFields() []map[string]any {
-	if o == nil {
-		return nil
-	}
-	return o.Fields
-}
-
 type FetchPluginSchemaResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// The schema for the plugin
-	Object *FetchPluginSchemaResponseBody
+	GetPluginSchemaResponse *components.GetPluginSchemaResponse
 }
 
 func (o *FetchPluginSchemaResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -52,9 +40,9 @@ func (o *FetchPluginSchemaResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *FetchPluginSchemaResponse) GetObject() *FetchPluginSchemaResponseBody {
+func (o *FetchPluginSchemaResponse) GetGetPluginSchemaResponse() *components.GetPluginSchemaResponse {
 	if o == nil {
 		return nil
 	}
-	return o.Object
+	return o.GetPluginSchemaResponse
 }

@@ -13,7 +13,7 @@ type Details struct {
 
 // Notification - Properties of a notification.
 type Notification struct {
-	// Contains a unique identifier used by the API for this resource.
+	// Contains a unique identifier used for this resource.
 	ID          string `json:"id"`
 	Title       string `json:"title"`
 	Description string `json:"description"`

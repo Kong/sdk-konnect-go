@@ -3,6 +3,7 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
 
@@ -27,18 +28,6 @@ func (o *FetchPluginSchemaRequest) GetControlPlaneID() string {
 	return o.ControlPlaneID
 }
 
-// FetchPluginSchemaResponseBody - The schema for the plugin
-type FetchPluginSchemaResponseBody struct {
-	Fields []map[string]any `json:"fields,omitempty"`
-}
-
-func (o *FetchPluginSchemaResponseBody) GetFields() []map[string]any {
-	if o == nil {
-		return nil
-	}
-	return o.Fields
-}
-
 type FetchPluginSchemaResponse struct {
 	// HTTP response content type for this operation
 	ContentType string
@@ -47,7 +36,7 @@ type FetchPluginSchemaResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// The schema for the plugin
-	Object *FetchPluginSchemaResponseBody
+	GetPluginSchemaResponse *components.GetPluginSchemaResponse
 }
 
 func (o *FetchPluginSchemaResponse) GetContentType() string {
@@ -71,9 +60,9 @@ func (o *FetchPluginSchemaResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *FetchPluginSchemaResponse) GetObject() *FetchPluginSchemaResponseBody {
+func (o *FetchPluginSchemaResponse) GetGetPluginSchemaResponse() *components.GetPluginSchemaResponse {
 	if o == nil {
 		return nil
 	}
-	return o.Object
+	return o.GetPluginSchemaResponse
 }

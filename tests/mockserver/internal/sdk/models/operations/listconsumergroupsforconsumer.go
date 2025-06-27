@@ -66,7 +66,7 @@ func (o *ListConsumerGroupsForConsumerRequest) GetTags() *string {
 	return o.Tags
 }
 
-// ListConsumerGroupsForConsumerResponseBody - A successful response listing consumer groups
+// ListConsumerGroupsForConsumerResponseBody - A successful response listing Consumer Groups
 type ListConsumerGroupsForConsumerResponseBody struct {
 	Data []components.ConsumerGroup `json:"data,omitempty"`
 	// URI to the next page (may be null)
@@ -98,7 +98,7 @@ func (o *ListConsumerGroupsForConsumerResponseBody) GetOffset() *string {
 
 type ListConsumerGroupsForConsumerResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
-	// A successful response listing consumer groups
+	// A successful response listing Consumer Groups
 	Object *ListConsumerGroupsForConsumerResponseBody
 }
 

@@ -36,6 +36,14 @@ func (o *UpsertPartialRequest) GetPartial() components.Partial {
 	return o.Partial
 }
 
+func (o *UpsertPartialRequest) GetPartialRedisCe() *components.PartialRedisCE {
+	return o.GetPartial().PartialRedisCE
+}
+
+func (o *UpsertPartialRequest) GetPartialRedisEe() *components.PartialRedisEE {
+	return o.GetPartial().PartialRedisEE
+}
+
 type UpsertPartialResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Successfully upserted Partial
@@ -54,4 +62,18 @@ func (o *UpsertPartialResponse) GetPartial() *components.Partial {
 		return nil
 	}
 	return o.Partial
+}
+
+func (o *UpsertPartialResponse) GetPartialRedisCe() *components.PartialRedisCE {
+	if v := o.GetPartial(); v != nil {
+		return v.PartialRedisCE
+	}
+	return nil
+}
+
+func (o *UpsertPartialResponse) GetPartialRedisEe() *components.PartialRedisEE {
+	if v := o.GetPartial(); v != nil {
+		return v.PartialRedisEE
+	}
+	return nil
 }

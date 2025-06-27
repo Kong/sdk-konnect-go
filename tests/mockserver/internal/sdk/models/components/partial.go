@@ -2,63 +2,94 @@
 
 package components
 
+import (
+	"encoding/json"
+	"errors"
+	"fmt"
+	"mockserver/internal/sdk/utils"
+)
+
+type PartialType string
+
+const (
+	PartialTypeRedisCe PartialType = "redis-ce"
+	PartialTypeRedisEe PartialType = "redis-ee"
+)
+
 type Partial struct {
-	Config map[string]any `json:"config"`
-	// Unix epoch when the resource was created.
-	CreatedAt *int64   `json:"created_at,omitempty"`
-	ID        *string  `json:"id,omitempty"`
-	Name      *string  `json:"name,omitempty"`
-	Tags      []string `json:"tags,omitempty"`
-	Type      string   `json:"type"`
-	// Unix epoch when the resource was last updated.
-	UpdatedAt *int64 `json:"updated_at,omitempty"`
+	PartialRedisCE *PartialRedisCE `queryParam:"inline"`
+	PartialRedisEE *PartialRedisEE `queryParam:"inline"`
+
+	Type PartialType
 }
 
-func (o *Partial) GetConfig() map[string]any {
-	if o == nil {
-		return map[string]any{}
+func CreatePartialRedisCe(redisCe PartialRedisCE) Partial {
+	typ := PartialTypeRedisCe
+
+	typStr := PartialRedisCEType(typ)
+	redisCe.Type = typStr
+
+	return Partial{
+		PartialRedisCE: &redisCe,
+		Type:           typ,
 	}
-	return o.Config
 }
 
-func (o *Partial) GetCreatedAt() *int64 {
-	if o == nil {
+func CreatePartialRedisEe(redisEe PartialRedisEE) Partial {
+	typ := PartialTypeRedisEe
+
+	typStr := PartialRedisEEType(typ)
+	redisEe.Type = typStr
+
+	return Partial{
+		PartialRedisEE: &redisEe,
+		Type:           typ,
+	}
+}
+
+func (u *Partial) UnmarshalJSON(data []byte) error {
+
+	type discriminator struct {
+		Type string `json:"type"`
+	}
+
+	dis := new(discriminator)
+	if err := json.Unmarshal(data, &dis); err != nil {
+		return fmt.Errorf("could not unmarshal discriminator: %w", err)
+	}
+
+	switch dis.Type {
+	case "redis-ce":
+		partialRedisCE := new(PartialRedisCE)
+		if err := utils.UnmarshalJSON(data, &partialRedisCE, "", true, false); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-ce) type PartialRedisCE within Partial: %w", string(data), err)
+		}
+
+		u.PartialRedisCE = partialRedisCE
+		u.Type = PartialTypeRedisCe
+		return nil
+	case "redis-ee":
+		partialRedisEE := new(PartialRedisEE)
+		if err := utils.UnmarshalJSON(data, &partialRedisEE, "", true, false); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-ee) type PartialRedisEE within Partial: %w", string(data), err)
+		}
+
+		u.PartialRedisEE = partialRedisEE
+		u.Type = PartialTypeRedisEe
 		return nil
 	}
-	return o.CreatedAt
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Partial", string(data))
 }
 
-func (o *Partial) GetID() *string {
-	if o == nil {
-		return nil
+func (u Partial) MarshalJSON() ([]byte, error) {
+	if u.PartialRedisCE != nil {
+		return utils.MarshalJSON(u.PartialRedisCE, "", true)
 	}
-	return o.ID
-}
 
-func (o *Partial) GetName() *string {
-	if o == nil {
-		return nil
+	if u.PartialRedisEE != nil {
+		return utils.MarshalJSON(u.PartialRedisEE, "", true)
 	}
-	return o.Name
-}
 
-func (o *Partial) GetTags() []string {
-	if o == nil {
-		return nil
-	}
-	return o.Tags
-}
-
-func (o *Partial) GetType() string {
-	if o == nil {
-		return ""
-	}
-	return o.Type
-}
-
-func (o *Partial) GetUpdatedAt() *int64 {
-	if o == nil {
-		return nil
-	}
-	return o.UpdatedAt
+	return nil, errors.New("could not marshal union type Partial: all fields are null")
 }

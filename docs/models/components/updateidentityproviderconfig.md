@@ -9,9 +9,9 @@
 updateIdentityProviderConfig := components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(components.ConfigureOIDCIdentityProviderConfig{/* values here */})
 ```
 
-### SAMLIdentityProviderConfigInput
+### SAMLIdentityProviderConfig
 
 ```go
-updateIdentityProviderConfig := components.CreateUpdateIdentityProviderConfigSAMLIdentityProviderConfigInput(components.SAMLIdentityProviderConfigInput{/* values here */})
+updateIdentityProviderConfig := components.CreateUpdateIdentityProviderConfigSAMLIdentityProviderConfig(components.SAMLIdentityProviderConfig{/* values here */})
 ```
 

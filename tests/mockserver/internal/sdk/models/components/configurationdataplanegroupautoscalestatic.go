@@ -30,7 +30,9 @@ func (e *ConfigurationDataPlaneGroupAutoscaleStaticKind) UnmarshalJSON(data []by
 	}
 }
 
-// ConfigurationDataPlaneGroupAutoscaleStatic - Object that describes the static autoscaling strategy.
+// ConfigurationDataPlaneGroupAutoscaleStatic - Object that describes the static autoscaling strategy. Deprecated in favor of the autopilot autoscaling strategy. Static autoscaling will be removed in a future version.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 type ConfigurationDataPlaneGroupAutoscaleStatic struct {
 	Kind ConfigurationDataPlaneGroupAutoscaleStaticKind `json:"kind"`
 	// Instance type name to indicate capacity.

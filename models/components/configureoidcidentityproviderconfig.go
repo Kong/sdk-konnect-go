@@ -15,7 +15,7 @@ type ConfigureOIDCIdentityProviderConfig struct {
 	// Defines the mappings between OpenID Connect (OIDC) claims and local claims used by your application for
 	// authentication.
 	//
-	ClaimMappings *OIDCIdentityProviderClaimMappings `json:"claim_mappings,omitempty"`
+	ClaimMappings *SchemasOIDCIdentityProviderClaimMappings `json:"claim_mappings,omitempty"`
 }
 
 func (o *ConfigureOIDCIdentityProviderConfig) GetIssuerURL() string {
@@ -46,7 +46,7 @@ func (o *ConfigureOIDCIdentityProviderConfig) GetScopes() []string {
 	return o.Scopes
 }
 
-func (o *ConfigureOIDCIdentityProviderConfig) GetClaimMappings() *OIDCIdentityProviderClaimMappings {
+func (o *ConfigureOIDCIdentityProviderConfig) GetClaimMappings() *SchemasOIDCIdentityProviderClaimMappings {
 	if o == nil {
 		return nil
 	}

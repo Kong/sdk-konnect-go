@@ -33,6 +33,8 @@ The desired role.
 | `RoleNamePublisher`                 | Publisher                           |
 | `RoleNameRouteAdmin`                | Route Admin                         |
 | `RoleNameSniAdmin`                  | SNI Admin                           |
+| `RoleNameScorecardAdmin`            | Scorecard Admin                     |
+| `RoleNameScorecardViewer`           | Scorecard Viewer                    |
 | `RoleNameServiceAdmin`              | Service Admin                       |
 | `RoleNameServiceCreator`            | Service Creator                     |
 | `RoleNameServiceViewer`             | Service Viewer                      |
