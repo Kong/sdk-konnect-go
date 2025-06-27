@@ -7,22 +7,22 @@ import (
 	"fmt"
 )
 
-// EntityRegion - Region of the entity.
-type EntityRegion string
+// AssignedRoleEntityRegion - Region of the entity.
+type AssignedRoleEntityRegion string
 
 const (
-	EntityRegionUs       EntityRegion = "us"
-	EntityRegionEu       EntityRegion = "eu"
-	EntityRegionAu       EntityRegion = "au"
-	EntityRegionMe       EntityRegion = "me"
-	EntityRegionIn       EntityRegion = "in"
-	EntityRegionWildcard EntityRegion = "*"
+	AssignedRoleEntityRegionUs       AssignedRoleEntityRegion = "us"
+	AssignedRoleEntityRegionEu       AssignedRoleEntityRegion = "eu"
+	AssignedRoleEntityRegionAu       AssignedRoleEntityRegion = "au"
+	AssignedRoleEntityRegionMe       AssignedRoleEntityRegion = "me"
+	AssignedRoleEntityRegionIn       AssignedRoleEntityRegion = "in"
+	AssignedRoleEntityRegionWildcard AssignedRoleEntityRegion = "*"
 )
 
-func (e EntityRegion) ToPointer() *EntityRegion {
+func (e AssignedRoleEntityRegion) ToPointer() *AssignedRoleEntityRegion {
 	return &e
 }
-func (e *EntityRegion) UnmarshalJSON(data []byte) error {
+func (e *AssignedRoleEntityRegion) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -39,10 +39,10 @@ func (e *EntityRegion) UnmarshalJSON(data []byte) error {
 	case "in":
 		fallthrough
 	case "*":
-		*e = EntityRegion(v)
+		*e = AssignedRoleEntityRegion(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EntityRegion: %v", v)
+		return fmt.Errorf("invalid value for AssignedRoleEntityRegion: %v", v)
 	}
 }
 
@@ -57,7 +57,7 @@ type AssignedRole struct {
 	// Name of the entity type the role is being assigned to.
 	EntityTypeName *string `json:"entity_type_name,omitempty"`
 	// Region of the entity.
-	EntityRegion *EntityRegion `json:"entity_region,omitempty"`
+	EntityRegion *AssignedRoleEntityRegion `json:"entity_region,omitempty"`
 }
 
 func (o *AssignedRole) GetID() *string {
@@ -88,7 +88,7 @@ func (o *AssignedRole) GetEntityTypeName() *string {
 	return o.EntityTypeName
 }
 
-func (o *AssignedRole) GetEntityRegion() *EntityRegion {
+func (o *AssignedRole) GetEntityRegion() *AssignedRoleEntityRegion {
 	if o == nil {
 		return nil
 	}

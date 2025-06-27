@@ -45,7 +45,7 @@ type GetIdentityProvidersResponse struct {
 	RawResponse *http.Response
 	// A collection of identity providers. This response contains a collection of identity providers, which may  include both OIDC and SAML identity providers.
 	//
-	IdentityProviders []components.SchemasIdentityProvider
+	IdentityProviders []components.IdentityProvider
 }
 
 func (o *GetIdentityProvidersResponse) GetContentType() string {
@@ -69,7 +69,7 @@ func (o *GetIdentityProvidersResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *GetIdentityProvidersResponse) GetIdentityProviders() []components.SchemasIdentityProvider {
+func (o *GetIdentityProvidersResponse) GetIdentityProviders() []components.IdentityProvider {
 	if o == nil {
 		return nil
 	}

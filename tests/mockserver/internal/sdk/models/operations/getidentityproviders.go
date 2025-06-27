@@ -35,7 +35,7 @@ type GetIdentityProvidersResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// A collection of identity providers. This response contains a collection of identity providers, which may  include both OIDC and SAML identity providers.
 	//
-	IdentityProviders []components.SchemasIdentityProvider
+	IdentityProviders []components.IdentityProvider
 }
 
 func (o *GetIdentityProvidersResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -45,7 +45,7 @@ func (o *GetIdentityProvidersResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *GetIdentityProvidersResponse) GetIdentityProviders() []components.SchemasIdentityProvider {
+func (o *GetIdentityProvidersResponse) GetIdentityProviders() []components.IdentityProvider {
 	if o == nil {
 		return nil
 	}

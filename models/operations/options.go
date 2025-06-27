@@ -24,6 +24,9 @@ const (
 	AcceptHeaderEnumApplicationJson            AcceptHeaderEnum = "application/json"
 	AcceptHeaderEnumApplicationProblemPlusJson AcceptHeaderEnum = "application/problem+json"
 	AcceptHeaderEnumWildcardRootWildcard       AcceptHeaderEnum = "*/*"
+	AcceptHeaderEnumImageJpeg                  AcceptHeaderEnum = "image/jpeg"
+	AcceptHeaderEnumImagePng                   AcceptHeaderEnum = "image/png"
+	AcceptHeaderEnumImageSvgPlusXml            AcceptHeaderEnum = "image/svg+xml"
 )
 
 func (e AcceptHeaderEnum) ToPointer() *AcceptHeaderEnum {

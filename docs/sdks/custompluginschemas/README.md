@@ -306,6 +306,7 @@ func main() {
 
 | Error Type                                 | Status Code                                | Content Type                               |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| sdkerrors.KonnectCPLegacyBadRequestError   | 400                                        | application/json                           |
 | sdkerrors.KonnectCPLegacyUnauthorizedError | 401                                        | application/json                           |
 | sdkerrors.KonnectCPLegacyForbiddenError    | 403                                        | application/json                           |
 | sdkerrors.KonnectCPLegacyNotFoundError     | 404                                        | application/json                           |
