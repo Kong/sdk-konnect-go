@@ -9,7 +9,7 @@ import (
 
 // EventSubscriptionResponse - Properties associated with an event subscription.
 type EventSubscriptionResponse struct {
-	// Contains a unique identifier used by the API for this resource.
+	// Contains a unique identifier used for this resource.
 	ID         string      `json:"id"`
 	EntityType EntityTypes `json:"entity_type"`
 	// An ISO-8601 timestamp representation of entity creation date.

@@ -344,7 +344,12 @@ func main() {
 
     res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
         Data: []components.Data{
-            components.Data{},
+            components.Data{
+                TeamID: sdkkonnectgo.String("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
+                Groups: []string{
+                    "Service Developers",
+                },
+            },
         },
     })
     if err != nil {
@@ -585,11 +590,11 @@ func main() {
         }),
     )
 
-    res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
+    res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.SchemasCreateIdentityProvider{
+        Enabled: sdkkonnectgo.Bool(true),
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.String("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
-            components.SAMLIdentityProviderConfigInput{
+        Config: sdkkonnectgo.Pointer(components.CreateSchemasCreateIdentityProviderConfigSchemasSAMLIdentityProviderConfigInput(
+            components.SchemasSAMLIdentityProviderConfigInput{
                 IdpMetadataURL: sdkkonnectgo.String("https://mocksaml.com/api/saml/metadata"),
                 IdpMetadataXML: sdkkonnectgo.String("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n" +
@@ -602,7 +607,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.IdentityProvider != nil {
+    if res.SchemasIdentityProvider != nil {
         // handle response
     }
 }
@@ -610,11 +615,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |
-| `request`                                                                              | [components.CreateIdentityProvider](../../models/components/createidentityprovider.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `opts`                                                                                 | [][operations.Option](../../models/operations/option.md)                               | :heavy_minus_sign:                                                                     | The options for this request.                                                          |
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                | :heavy_check_mark:                                                                                   | The context to use for the request.                                                                  |
+| `request`                                                                                            | [components.SchemasCreateIdentityProvider](../../models/components/schemascreateidentityprovider.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `opts`                                                                                               | [][operations.Option](../../models/operations/option.md)                                             | :heavy_minus_sign:                                                                                   | The options for this request.                                                                        |
 
 ### Response
 
@@ -627,6 +632,7 @@ func main() {
 | sdkerrors.BadRequestError   | 400                         | application/problem+json    |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## GetIdentityProvider
@@ -660,7 +666,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.IdentityProvider != nil {
+    if res.SchemasIdentityProvider != nil {
         // handle response
     }
 }
@@ -723,7 +729,7 @@ func main() {
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.String("YOUR_CLIENT_SECRET"),
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                ClaimMappings: &components.SchemasOIDCIdentityProviderClaimMappings{
                     Name: sdkkonnectgo.String("name"),
                     Email: sdkkonnectgo.String("email"),
                     Groups: sdkkonnectgo.String("groups"),
@@ -734,7 +740,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.IdentityProvider != nil {
+    if res.SchemasIdentityProvider != nil {
         // handle response
     }
 }
@@ -761,6 +767,7 @@ func main() {
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## DeleteIdentityProvider

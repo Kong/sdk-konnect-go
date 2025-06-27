@@ -48,7 +48,7 @@ func (in *Active) DeepCopyInto(out *Active) {
 	}
 	if in.Type != nil {
 		in, out := &in.Type, &out.Type
-		*out = new(Type)
+		*out = new(UpstreamType)
 		**out = **in
 	}
 	if in.Unhealthy != nil {
@@ -235,7 +235,7 @@ func (in *Passive) DeepCopyInto(out *Passive) {
 	}
 	if in.Type != nil {
 		in, out := &in.Type, &out.Type
-		*out = new(UpstreamType)
+		*out = new(UpstreamHealthchecksType)
 		**out = **in
 	}
 	if in.Unhealthy != nil {

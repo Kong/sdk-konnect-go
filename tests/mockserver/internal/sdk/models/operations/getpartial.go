@@ -46,3 +46,17 @@ func (o *GetPartialResponse) GetPartial() *components.Partial {
 	}
 	return o.Partial
 }
+
+func (o *GetPartialResponse) GetPartialRedisCe() *components.PartialRedisCE {
+	if v := o.GetPartial(); v != nil {
+		return v.PartialRedisCE
+	}
+	return nil
+}
+
+func (o *GetPartialResponse) GetPartialRedisEe() *components.PartialRedisEE {
+	if v := o.GetPartial(); v != nil {
+		return v.PartialRedisEE
+	}
+	return nil
+}

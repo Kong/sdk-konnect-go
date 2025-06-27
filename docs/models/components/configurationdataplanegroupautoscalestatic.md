@@ -1,6 +1,8 @@
-# ConfigurationDataPlaneGroupAutoscaleStatic
+# ~~ConfigurationDataPlaneGroupAutoscaleStatic~~
 
-Object that describes the static autoscaling strategy.
+Object that describes the static autoscaling strategy. Deprecated in favor of the autopilot autoscaling strategy. Static autoscaling will be removed in a future version.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 
 ## Fields

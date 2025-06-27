@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 900e219fd377dba982105df7e07317a6
+  docChecksum: 8d1f0a5f01a205e1c8c2535b5b0836cd
   docVersion: 0.0.1
   speakeasyVersion: 1.570.2
   generationVersion: 2.638.5
-  releaseVersion: 0.3.2
-  configChecksum: e74101dd3c5f1676567c207d553a68a3
+  releaseVersion: 0.4.0
+  configChecksum: e93287ac2fff8b7013d595dbc89e4f1f
 features:
   go:
     additionalDependencies: 0.1.0
@@ -47,6 +47,10 @@ generatedFiles:
   - /models/components/assignrole.go
   - /models/components/authenticationsettings.go
   - /models/components/availabilitydocument.go
+  - /models/components/awsprivatednsresolverattachmentconfig.go
+  - /models/components/awsprivatednsresolverresponse.go
+  - /models/components/awsprivatehostedzoneattachmentconfig.go
+  - /models/components/awsprivatehostedzoneresponse.go
   - /models/components/awstransitgateway.go
   - /models/components/awstransitgatewayattachmentconfig.go
   - /models/components/awstransitgatewayresponse.go
@@ -105,9 +109,9 @@ generatedFiles:
   - /models/components/createdcrproviderrequesthttp.go
   - /models/components/createdcrproviderrequestokta.go
   - /models/components/createdcrproviderresponse.go
-  - /models/components/createidentityprovider.go
   - /models/components/createnetworkrequest.go
   - /models/components/createpluginschemas.go
+  - /models/components/createprivatednsrequest.go
   - /models/components/createsystemaccount.go
   - /models/components/createsystemaccountaccesstoken.go
   - /models/components/createteam.go
@@ -144,14 +148,17 @@ generatedFiles:
   - /models/components/getgroupstatus.go
   - /models/components/getimpersonationsettingsresponse.go
   - /models/components/getnode.go
+  - /models/components/getpluginschemaresponse.go
   - /models/components/groupconflict.go
   - /models/components/groupconflictresource.go
   - /models/components/groupmembership.go
   - /models/components/groupmemberstatus.go
   - /models/components/groupstatus.go
+  - /models/components/highvelocitycloudgatewaysprovidername.go
+  - /models/components/highvelocityprovider.go
+  - /models/components/highvelocityproviderregion.go
   - /models/components/hmacauth.go
   - /models/components/hmacauthwithoutparents.go
-  - /models/components/identityprovider.go
   - /models/components/identityprovidertype.go
   - /models/components/idfieldfilter.go
   - /models/components/idp.go
@@ -188,6 +195,7 @@ generatedFiles:
   - /models/components/listnodes.go
   - /models/components/listnodeseol.go
   - /models/components/listpluginschemas.go
+  - /models/components/listprivatednsresponse.go
   - /models/components/listprovideraccountsresponse.go
   - /models/components/listresourceconfigurationsresponse.go
   - /models/components/listresourcequotasresponse.go
@@ -215,18 +223,27 @@ generatedFiles:
   - /models/components/notificationregion.go
   - /models/components/notificationstatus.go
   - /models/components/notificationupdatepayload.go
-  - /models/components/oidcidentityproviderclaimmappings.go
-  - /models/components/oidcidentityproviderconfig.go
   - /models/components/pagemeta.go
   - /models/components/paginatedmeta.go
   - /models/components/partial.go
   - /models/components/partialappauthstrategyconfigopenidconnect.go
   - /models/components/partiallink.go
+  - /models/components/partialredisce.go
+  - /models/components/partialredisee.go
   - /models/components/patchnetworkrequest.go
+  - /models/components/patchprivatednsrequest.go
   - /models/components/patchteamgroupmappings.go
   - /models/components/plugin.go
   - /models/components/pluginschemas.go
   - /models/components/pluginwithoutparents.go
+  - /models/components/privatednsfilterparameters.go
+  - /models/components/privatednsresolverconfig.go
+  - /models/components/privatednsresponse.go
+  - /models/components/privatednsstate.go
+  - /models/components/privatednsstatefieldequalsfilter.go
+  - /models/components/privatednsstatefieldfilter.go
+  - /models/components/privatednsstatefieldnotequalsfilter.go
+  - /models/components/privatednsstatefieldorequalityfilter.go
   - /models/components/provider.go
   - /models/components/provideraccount.go
   - /models/components/provideraccountsfilterparameters.go
@@ -243,7 +260,12 @@ generatedFiles:
   - /models/components/routejson.go
   - /models/components/routewithoutparents.go
   - /models/components/samlidentityproviderconfig.go
-  - /models/components/samlidentityproviderconfiginput.go
+  - /models/components/schemascreateidentityprovider.go
+  - /models/components/schemasidentityprovider.go
+  - /models/components/schemasoidcidentityproviderclaimmappings.go
+  - /models/components/schemasoidcidentityproviderconfig.go
+  - /models/components/schemassamlidentityproviderconfig.go
+  - /models/components/schemassamlidentityproviderconfiginput.go
   - /models/components/security.go
   - /models/components/serviceoutput.go
   - /models/components/sni.go
@@ -341,6 +363,7 @@ generatedFiles:
   - /models/operations/createpluginwithconsumergroup.go
   - /models/operations/createpluginwithroute.go
   - /models/operations/createpluginwithservice.go
+  - /models/operations/createprivatedns.go
   - /models/operations/createroute.go
   - /models/operations/createroutewithservice.go
   - /models/operations/createservice.go
@@ -385,6 +408,7 @@ generatedFiles:
   - /models/operations/deletepluginwithconsumergroup.go
   - /models/operations/deletepluginwithroute.go
   - /models/operations/deletepluginwithservice.go
+  - /models/operations/deleteprivatedns.go
   - /models/operations/deleteroute.go
   - /models/operations/deleteroutewithservice.go
   - /models/operations/deleteservice.go
@@ -457,6 +481,7 @@ generatedFiles:
   - /models/operations/getpluginwithroute.go
   - /models/operations/getpluginwithservice.go
   - /models/operations/getpredefinedroles.go
+  - /models/operations/getprivatedns.go
   - /models/operations/getprovideraccount.go
   - /models/operations/getresourceconfiguration.go
   - /models/operations/getresourcequota.go
@@ -528,6 +553,7 @@ generatedFiles:
   - /models/operations/listpluginwithconsumergroup.go
   - /models/operations/listpluginwithroute.go
   - /models/operations/listpluginwithservice.go
+  - /models/operations/listprivatedns.go
   - /models/operations/listprovideraccounts.go
   - /models/operations/listresourceconfigurations.go
   - /models/operations/listresourcequotas.go
@@ -579,6 +605,7 @@ generatedFiles:
   - /models/operations/updatenetwork.go
   - /models/operations/updatenotification.go
   - /models/operations/updatepluginschemas.go
+  - /models/operations/updateprivatedns.go
   - /models/operations/updateteam.go
   - /models/operations/updateuser.go
   - /models/operations/upsertaclwithconsumer.go
@@ -619,6 +646,11 @@ generatedFiles:
   - /models/sdkerrors/forbiddenerror.go
   - /models/sdkerrors/gatewayunauthorizederror.go
   - /models/sdkerrors/internalservererror.go
+  - /models/sdkerrors/konnectcplegacybadrequesterror.go
+  - /models/sdkerrors/konnectcplegacyconflicterror.go
+  - /models/sdkerrors/konnectcplegacyforbiddenerror.go
+  - /models/sdkerrors/konnectcplegacynotfounderror.go
+  - /models/sdkerrors/konnectcplegacyunauthorizederror.go
   - /models/sdkerrors/notfounderror.go
   - /models/sdkerrors/preconditionfailed.go
   - /models/sdkerrors/ratelimited.go
@@ -689,6 +721,13 @@ generatedFiles:
   - docs/models/components/authenticationsettings.md
   - docs/models/components/authtype.md
   - docs/models/components/availabilitydocument.md
+  - docs/models/components/awsprivatednsresolverattachmentconfig.md
+  - docs/models/components/awsprivatednsresolverresponse.md
+  - docs/models/components/awsprivatednsresolverresponseprivatednsstatemetadata.md
+  - docs/models/components/awsprivatednsresolvertype.md
+  - docs/models/components/awsprivatehostedzoneattachmentconfig.md
+  - docs/models/components/awsprivatehostedzoneresponse.md
+  - docs/models/components/awsprivatehostedzonetype.md
   - docs/models/components/awstransitgateway.md
   - docs/models/components/awstransitgatewayattachmentconfig.md
   - docs/models/components/awstransitgatewayattachmenttype.md
@@ -716,6 +755,7 @@ generatedFiles:
   - docs/models/components/clientcertificate.md
   - docs/models/components/cloudgatewaysstringfieldequalsfilteroverride.md
   - docs/models/components/cloudgatewaysstringfieldfilteroverride.md
+  - docs/models/components/clusternodes.md
   - docs/models/components/clustertype.md
   - docs/models/components/compatibilitystatus.md
   - docs/models/components/config.md
@@ -774,10 +814,9 @@ generatedFiles:
   - docs/models/components/createdcrproviderrequestokta.md
   - docs/models/components/createdcrproviderrequestoktaprovidertype.md
   - docs/models/components/createdcrproviderresponse.md
-  - docs/models/components/createidentityprovider.md
-  - docs/models/components/createidentityproviderconfig.md
   - docs/models/components/createnetworkrequest.md
   - docs/models/components/createpluginschemas.md
+  - docs/models/components/createprivatednsrequest.md
   - docs/models/components/createsystemaccount.md
   - docs/models/components/createsystemaccountaccesstoken.md
   - docs/models/components/createteam.md
@@ -851,6 +890,7 @@ generatedFiles:
   - docs/models/components/getnode.md
   - docs/models/components/getnodecompatibilitystatus.md
   - docs/models/components/getnodeitem.md
+  - docs/models/components/getpluginschemaresponse.md
   - docs/models/components/groupconflict.md
   - docs/models/components/groupconflictresource.md
   - docs/models/components/groupmembership.md
@@ -861,6 +901,9 @@ generatedFiles:
   - docs/models/components/hashon.md
   - docs/models/components/healthchecks.md
   - docs/models/components/healthy.md
+  - docs/models/components/highvelocitycloudgatewaysprovidername.md
+  - docs/models/components/highvelocityprovider.md
+  - docs/models/components/highvelocityproviderregion.md
   - docs/models/components/hmacauth.md
   - docs/models/components/hmacauthconsumer.md
   - docs/models/components/hmacauthwithoutparents.md
@@ -868,8 +911,6 @@ generatedFiles:
   - docs/models/components/httpsredirectstatuscode.md
   - docs/models/components/id.md
   - docs/models/components/identity.md
-  - docs/models/components/identityprovider.md
-  - docs/models/components/identityproviderconfig.md
   - docs/models/components/identityprovidertype.md
   - docs/models/components/idfieldfilter.md
   - docs/models/components/idp.md
@@ -924,6 +965,7 @@ generatedFiles:
   - docs/models/components/listnodesitems.md
   - docs/models/components/listnodespage.md
   - docs/models/components/listpluginschemas.md
+  - docs/models/components/listprivatednsresponse.md
   - docs/models/components/listprovideraccountsresponse.md
   - docs/models/components/listresourceconfigurationsresponse.md
   - docs/models/components/listresourcequotasresponse.md
@@ -963,8 +1005,6 @@ generatedFiles:
   - docs/models/components/notificationregion.md
   - docs/models/components/notificationstatus.md
   - docs/models/components/notificationupdatepayload.md
-  - docs/models/components/oidcidentityproviderclaimmappings.md
-  - docs/models/components/oidcidentityproviderconfig.md
   - docs/models/components/one.md
   - docs/models/components/ordering.md
   - docs/models/components/page.md
@@ -973,9 +1013,16 @@ generatedFiles:
   - docs/models/components/partial.md
   - docs/models/components/partialappauthstrategyconfigopenidconnect.md
   - docs/models/components/partiallink.md
+  - docs/models/components/partialredisce.md
+  - docs/models/components/partialredisceconfig.md
+  - docs/models/components/partialredisee.md
+  - docs/models/components/partialrediseeconfig.md
+  - docs/models/components/partialrediseetype.md
   - docs/models/components/partials.md
   - docs/models/components/passive.md
+  - docs/models/components/patchawsprivatednsresolver.md
   - docs/models/components/patchnetworkrequest.md
+  - docs/models/components/patchprivatednsrequest.md
   - docs/models/components/patchteamgroupmappings.md
   - docs/models/components/pathhandling.md
   - docs/models/components/pem.md
@@ -997,6 +1044,17 @@ generatedFiles:
   - docs/models/components/pluginwithoutparentsprotocols.md
   - docs/models/components/pluginwithoutparentsroute.md
   - docs/models/components/pluginwithoutparentsservice.md
+  - docs/models/components/privatednsattachmentconfig.md
+  - docs/models/components/privatednsfilterparameters.md
+  - docs/models/components/privatednsresolverconfig.md
+  - docs/models/components/privatednsresponse.md
+  - docs/models/components/privatednsstate.md
+  - docs/models/components/privatednsstatefieldequalscomparison.md
+  - docs/models/components/privatednsstatefieldequalsfilter.md
+  - docs/models/components/privatednsstatefieldfilter.md
+  - docs/models/components/privatednsstatefieldnotequalsfilter.md
+  - docs/models/components/privatednsstatefieldorequalityfilter.md
+  - docs/models/components/privatednsstatemetadata.md
   - docs/models/components/protocol.md
   - docs/models/components/protocols.md
   - docs/models/components/provider.md
@@ -1094,8 +1152,16 @@ generatedFiles:
   - docs/models/components/routewithoutparents.md
   - docs/models/components/rule.md
   - docs/models/components/samlidentityproviderconfig.md
-  - docs/models/components/samlidentityproviderconfiginput.md
+  - docs/models/components/schemascreateidentityprovider.md
+  - docs/models/components/schemascreateidentityproviderconfig.md
+  - docs/models/components/schemasidentityprovider.md
+  - docs/models/components/schemasidentityproviderconfig.md
+  - docs/models/components/schemasoidcidentityproviderclaimmappings.md
+  - docs/models/components/schemasoidcidentityproviderconfig.md
+  - docs/models/components/schemassamlidentityproviderconfig.md
+  - docs/models/components/schemassamlidentityproviderconfiginput.md
   - docs/models/components/security.md
+  - docs/models/components/sentinelnodes.md
   - docs/models/components/service.md
   - docs/models/components/serviceoutput.md
   - docs/models/components/set.md
@@ -1173,6 +1239,7 @@ generatedFiles:
   - docs/models/components/upstreamadmin.md
   - docs/models/components/upstreamalgorithm.md
   - docs/models/components/upstreamclientcertificate.md
+  - docs/models/components/upstreamhealthcheckstype.md
   - docs/models/components/upstreamhealthy.md
   - docs/models/components/upstreamtype.md
   - docs/models/components/upstreamunhealthy.md
@@ -1256,6 +1323,8 @@ generatedFiles:
   - docs/models/operations/createpluginwithrouteresponse.md
   - docs/models/operations/createpluginwithservicerequest.md
   - docs/models/operations/createpluginwithserviceresponse.md
+  - docs/models/operations/createprivatednsrequest.md
+  - docs/models/operations/createprivatednsresponse.md
   - docs/models/operations/createrouterequest.md
   - docs/models/operations/createrouteresponse.md
   - docs/models/operations/createroutewithservicerequest.md
@@ -1343,6 +1412,8 @@ generatedFiles:
   - docs/models/operations/deletepluginwithrouteresponse.md
   - docs/models/operations/deletepluginwithservicerequest.md
   - docs/models/operations/deletepluginwithserviceresponse.md
+  - docs/models/operations/deleteprivatednsrequest.md
+  - docs/models/operations/deleteprivatednsresponse.md
   - docs/models/operations/deleterouterequest.md
   - docs/models/operations/deleterouteresponse.md
   - docs/models/operations/deleteroutewithservicerequest.md
@@ -1375,7 +1446,6 @@ generatedFiles:
   - docs/models/operations/deletevaultresponse.md
   - docs/models/operations/fetchpluginschemarequest.md
   - docs/models/operations/fetchpluginschemaresponse.md
-  - docs/models/operations/fetchpluginschemaresponsebody.md
   - docs/models/operations/filter.md
   - docs/models/operations/force.md
   - docs/models/operations/getaclrequest.md
@@ -1484,6 +1554,8 @@ generatedFiles:
   - docs/models/operations/getpluginwithservicerequest.md
   - docs/models/operations/getpluginwithserviceresponse.md
   - docs/models/operations/getpredefinedrolesresponse.md
+  - docs/models/operations/getprivatednsrequest.md
+  - docs/models/operations/getprivatednsresponse.md
   - docs/models/operations/getprovideraccountrequest.md
   - docs/models/operations/getprovideraccountresponse.md
   - docs/models/operations/getresourceconfigurationrequest.md
@@ -1660,6 +1732,8 @@ generatedFiles:
   - docs/models/operations/listpluginwithservicerequest.md
   - docs/models/operations/listpluginwithserviceresponse.md
   - docs/models/operations/listpluginwithserviceresponsebody.md
+  - docs/models/operations/listprivatednsrequest.md
+  - docs/models/operations/listprivatednsresponse.md
   - docs/models/operations/listprovideraccountsrequest.md
   - docs/models/operations/listprovideraccountsresponse.md
   - docs/models/operations/listresourceconfigurationsrequest.md
@@ -1772,6 +1846,8 @@ generatedFiles:
   - docs/models/operations/updatenotificationresponse.md
   - docs/models/operations/updatepluginschemasrequest.md
   - docs/models/operations/updatepluginschemasresponse.md
+  - docs/models/operations/updateprivatednsrequest.md
+  - docs/models/operations/updateprivatednsresponse.md
   - docs/models/operations/updateteamrequest.md
   - docs/models/operations/updateteamresponse.md
   - docs/models/operations/updateuserrequest.md
@@ -1847,6 +1923,11 @@ generatedFiles:
   - docs/models/sdkerrors/gatewayunauthorizederror.md
   - docs/models/sdkerrors/internalservererror.md
   - docs/models/sdkerrors/internalservererrorstatus.md
+  - docs/models/sdkerrors/konnectcplegacybadrequesterror.md
+  - docs/models/sdkerrors/konnectcplegacyconflicterror.md
+  - docs/models/sdkerrors/konnectcplegacyforbiddenerror.md
+  - docs/models/sdkerrors/konnectcplegacynotfounderror.md
+  - docs/models/sdkerrors/konnectcplegacyunauthorizederror.md
   - docs/models/sdkerrors/notfounderror.md
   - docs/models/sdkerrors/preconditionfailed.md
   - docs/models/sdkerrors/ratelimited.md
@@ -1981,6 +2062,10 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/assignrole.go
   - tests/mockserver/internal/sdk/models/components/authenticationsettings.go
   - tests/mockserver/internal/sdk/models/components/availabilitydocument.go
+  - tests/mockserver/internal/sdk/models/components/awsprivatednsresolverattachmentconfig.go
+  - tests/mockserver/internal/sdk/models/components/awsprivatednsresolverresponse.go
+  - tests/mockserver/internal/sdk/models/components/awsprivatehostedzoneattachmentconfig.go
+  - tests/mockserver/internal/sdk/models/components/awsprivatehostedzoneresponse.go
   - tests/mockserver/internal/sdk/models/components/awstransitgateway.go
   - tests/mockserver/internal/sdk/models/components/awstransitgatewayattachmentconfig.go
   - tests/mockserver/internal/sdk/models/components/awstransitgatewayresponse.go
@@ -2039,9 +2124,9 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/createdcrproviderrequesthttp.go
   - tests/mockserver/internal/sdk/models/components/createdcrproviderrequestokta.go
   - tests/mockserver/internal/sdk/models/components/createdcrproviderresponse.go
-  - tests/mockserver/internal/sdk/models/components/createidentityprovider.go
   - tests/mockserver/internal/sdk/models/components/createnetworkrequest.go
   - tests/mockserver/internal/sdk/models/components/createpluginschemas.go
+  - tests/mockserver/internal/sdk/models/components/createprivatednsrequest.go
   - tests/mockserver/internal/sdk/models/components/createsystemaccount.go
   - tests/mockserver/internal/sdk/models/components/createsystemaccountaccesstoken.go
   - tests/mockserver/internal/sdk/models/components/createteam.go
@@ -2078,15 +2163,18 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/getgroupstatus.go
   - tests/mockserver/internal/sdk/models/components/getimpersonationsettingsresponse.go
   - tests/mockserver/internal/sdk/models/components/getnode.go
+  - tests/mockserver/internal/sdk/models/components/getpluginschemaresponse.go
   - tests/mockserver/internal/sdk/models/components/groupconflict.go
   - tests/mockserver/internal/sdk/models/components/groupconflictresource.go
   - tests/mockserver/internal/sdk/models/components/groupmembership.go
   - tests/mockserver/internal/sdk/models/components/groupmemberstatus.go
   - tests/mockserver/internal/sdk/models/components/groupstatus.go
+  - tests/mockserver/internal/sdk/models/components/highvelocitycloudgatewaysprovidername.go
+  - tests/mockserver/internal/sdk/models/components/highvelocityprovider.go
+  - tests/mockserver/internal/sdk/models/components/highvelocityproviderregion.go
   - tests/mockserver/internal/sdk/models/components/hmacauth.go
   - tests/mockserver/internal/sdk/models/components/hmacauthwithoutparents.go
   - tests/mockserver/internal/sdk/models/components/httpmetadata.go
-  - tests/mockserver/internal/sdk/models/components/identityprovider.go
   - tests/mockserver/internal/sdk/models/components/identityprovidertype.go
   - tests/mockserver/internal/sdk/models/components/idfieldfilter.go
   - tests/mockserver/internal/sdk/models/components/idp.go
@@ -2124,6 +2212,7 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/listnodes.go
   - tests/mockserver/internal/sdk/models/components/listnodeseol.go
   - tests/mockserver/internal/sdk/models/components/listpluginschemas.go
+  - tests/mockserver/internal/sdk/models/components/listprivatednsresponse.go
   - tests/mockserver/internal/sdk/models/components/listprovideraccountsresponse.go
   - tests/mockserver/internal/sdk/models/components/listresourceconfigurationsresponse.go
   - tests/mockserver/internal/sdk/models/components/listresourcequotasresponse.go
@@ -2151,18 +2240,27 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/notificationregion.go
   - tests/mockserver/internal/sdk/models/components/notificationstatus.go
   - tests/mockserver/internal/sdk/models/components/notificationupdatepayload.go
-  - tests/mockserver/internal/sdk/models/components/oidcidentityproviderclaimmappings.go
-  - tests/mockserver/internal/sdk/models/components/oidcidentityproviderconfig.go
   - tests/mockserver/internal/sdk/models/components/pagemeta.go
   - tests/mockserver/internal/sdk/models/components/paginatedmeta.go
   - tests/mockserver/internal/sdk/models/components/partial.go
   - tests/mockserver/internal/sdk/models/components/partialappauthstrategyconfigopenidconnect.go
   - tests/mockserver/internal/sdk/models/components/partiallink.go
+  - tests/mockserver/internal/sdk/models/components/partialredisce.go
+  - tests/mockserver/internal/sdk/models/components/partialredisee.go
   - tests/mockserver/internal/sdk/models/components/patchnetworkrequest.go
+  - tests/mockserver/internal/sdk/models/components/patchprivatednsrequest.go
   - tests/mockserver/internal/sdk/models/components/patchteamgroupmappings.go
   - tests/mockserver/internal/sdk/models/components/plugin.go
   - tests/mockserver/internal/sdk/models/components/pluginschemas.go
   - tests/mockserver/internal/sdk/models/components/pluginwithoutparents.go
+  - tests/mockserver/internal/sdk/models/components/privatednsfilterparameters.go
+  - tests/mockserver/internal/sdk/models/components/privatednsresolverconfig.go
+  - tests/mockserver/internal/sdk/models/components/privatednsresponse.go
+  - tests/mockserver/internal/sdk/models/components/privatednsstate.go
+  - tests/mockserver/internal/sdk/models/components/privatednsstatefieldequalsfilter.go
+  - tests/mockserver/internal/sdk/models/components/privatednsstatefieldfilter.go
+  - tests/mockserver/internal/sdk/models/components/privatednsstatefieldnotequalsfilter.go
+  - tests/mockserver/internal/sdk/models/components/privatednsstatefieldorequalityfilter.go
   - tests/mockserver/internal/sdk/models/components/provider.go
   - tests/mockserver/internal/sdk/models/components/provideraccount.go
   - tests/mockserver/internal/sdk/models/components/provideraccountsfilterparameters.go
@@ -2179,7 +2277,12 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/routejson.go
   - tests/mockserver/internal/sdk/models/components/routewithoutparents.go
   - tests/mockserver/internal/sdk/models/components/samlidentityproviderconfig.go
-  - tests/mockserver/internal/sdk/models/components/samlidentityproviderconfiginput.go
+  - tests/mockserver/internal/sdk/models/components/schemascreateidentityprovider.go
+  - tests/mockserver/internal/sdk/models/components/schemasidentityprovider.go
+  - tests/mockserver/internal/sdk/models/components/schemasoidcidentityproviderclaimmappings.go
+  - tests/mockserver/internal/sdk/models/components/schemasoidcidentityproviderconfig.go
+  - tests/mockserver/internal/sdk/models/components/schemassamlidentityproviderconfig.go
+  - tests/mockserver/internal/sdk/models/components/schemassamlidentityproviderconfiginput.go
   - tests/mockserver/internal/sdk/models/components/security.go
   - tests/mockserver/internal/sdk/models/components/serviceoutput.go
   - tests/mockserver/internal/sdk/models/components/serviceunavailableerror.go
@@ -2278,6 +2381,7 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/operations/createpluginwithconsumergroup.go
   - tests/mockserver/internal/sdk/models/operations/createpluginwithroute.go
   - tests/mockserver/internal/sdk/models/operations/createpluginwithservice.go
+  - tests/mockserver/internal/sdk/models/operations/createprivatedns.go
   - tests/mockserver/internal/sdk/models/operations/createroute.go
   - tests/mockserver/internal/sdk/models/operations/createroutewithservice.go
   - tests/mockserver/internal/sdk/models/operations/createservice.go
@@ -2322,6 +2426,7 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/operations/deletepluginwithconsumergroup.go
   - tests/mockserver/internal/sdk/models/operations/deletepluginwithroute.go
   - tests/mockserver/internal/sdk/models/operations/deletepluginwithservice.go
+  - tests/mockserver/internal/sdk/models/operations/deleteprivatedns.go
   - tests/mockserver/internal/sdk/models/operations/deleteroute.go
   - tests/mockserver/internal/sdk/models/operations/deleteroutewithservice.go
   - tests/mockserver/internal/sdk/models/operations/deleteservice.go
@@ -2394,6 +2499,7 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/operations/getpluginwithroute.go
   - tests/mockserver/internal/sdk/models/operations/getpluginwithservice.go
   - tests/mockserver/internal/sdk/models/operations/getpredefinedroles.go
+  - tests/mockserver/internal/sdk/models/operations/getprivatedns.go
   - tests/mockserver/internal/sdk/models/operations/getprovideraccount.go
   - tests/mockserver/internal/sdk/models/operations/getresourceconfiguration.go
   - tests/mockserver/internal/sdk/models/operations/getresourcequota.go
@@ -2465,6 +2571,7 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/operations/listpluginwithconsumergroup.go
   - tests/mockserver/internal/sdk/models/operations/listpluginwithroute.go
   - tests/mockserver/internal/sdk/models/operations/listpluginwithservice.go
+  - tests/mockserver/internal/sdk/models/operations/listprivatedns.go
   - tests/mockserver/internal/sdk/models/operations/listprovideraccounts.go
   - tests/mockserver/internal/sdk/models/operations/listresourceconfigurations.go
   - tests/mockserver/internal/sdk/models/operations/listresourcequotas.go
@@ -2516,6 +2623,7 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/operations/updatenetwork.go
   - tests/mockserver/internal/sdk/models/operations/updatenotification.go
   - tests/mockserver/internal/sdk/models/operations/updatepluginschemas.go
+  - tests/mockserver/internal/sdk/models/operations/updateprivatedns.go
   - tests/mockserver/internal/sdk/models/operations/updateteam.go
   - tests/mockserver/internal/sdk/models/operations/updateuser.go
   - tests/mockserver/internal/sdk/models/operations/upsertaclwithconsumer.go
@@ -2556,6 +2664,11 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/sdkerrors/forbiddenerror.go
   - tests/mockserver/internal/sdk/models/sdkerrors/gatewayunauthorizederror.go
   - tests/mockserver/internal/sdk/models/sdkerrors/internalservererror.go
+  - tests/mockserver/internal/sdk/models/sdkerrors/konnectcplegacybadrequesterror.go
+  - tests/mockserver/internal/sdk/models/sdkerrors/konnectcplegacyconflicterror.go
+  - tests/mockserver/internal/sdk/models/sdkerrors/konnectcplegacyforbiddenerror.go
+  - tests/mockserver/internal/sdk/models/sdkerrors/konnectcplegacynotfounderror.go
+  - tests/mockserver/internal/sdk/models/sdkerrors/konnectcplegacyunauthorizederror.go
   - tests/mockserver/internal/sdk/models/sdkerrors/notfounderror.go
   - tests/mockserver/internal/sdk/models/sdkerrors/preconditionfailederror.go
   - tests/mockserver/internal/sdk/models/sdkerrors/ratelimitederror.go
@@ -2750,7 +2863,7 @@ examples:
     speakeasy-default-get-availability-json:
       responses:
         "200":
-          application/json: {"versions": ["3.2"], "instance_types": [{"name": "large", "hourly_cost": "1.00", "v_cpu": "2", "gb_memory": "2"}, {"name": "large", "hourly_cost": "1.00", "v_cpu": "2", "gb_memory": "2"}], "providers": [{"provider": "aws", "regions": []}, {"provider": "aws", "regions": []}]}
+          application/json: {"versions": ["3.2"], "instance_types": [{"name": "large", "hourly_cost": "1.00", "v_cpu": "2", "gb_memory": "2"}, {"name": "large", "hourly_cost": "1.00", "v_cpu": "2", "gb_memory": "2"}], "providers": [{"provider": "aws", "regions": []}, {"provider": "aws", "regions": []}], "high_velocity_providers": [{"provider": "aws", "regions": [{"region": "us-east-2"}]}]}
   list-configurations:
     speakeasy-default-list-configurations:
       parameters:
@@ -3755,10 +3868,10 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f260"}
+        application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "cert_digest": "9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f", "created_at": 1706598432, "id": "b2f34145-0343-41a4-9602-4c69dec2f260", "tags": ["trusted", "api"]}
       responses:
         "201":
-          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f260"}
+          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "cert_digest": "9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f", "created_at": 1706598432, "id": "b2f34145-0343-41a4-9602-4c69dec2f260", "tags": ["trusted", "api"]}
         "401":
           application/json: {"message": "<value>", "status": 400673}
   delete-ca_certificate:
@@ -3796,7 +3909,7 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       responses:
         "200":
-          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f260"}
+          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "cert_digest": "9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f", "created_at": 1706598432, "id": "b2f34145-0343-41a4-9602-4c69dec2f260", "tags": ["trusted", "api"]}
         "401":
           application/json: {"message": "<value>", "status": 897051}
   upsert-ca_certificate:
@@ -3818,10 +3931,10 @@ examples:
           CACertificateId: "3c31f18a-f27a-4f9b-8cd4-bf841554612f"
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f260"}
+        application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "cert_digest": "9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f", "created_at": 1706598432, "id": "b2f34145-0343-41a4-9602-4c69dec2f260", "tags": ["trusted", "api"]}
       responses:
         "200":
-          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f260"}
+          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "cert_digest": "9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f", "created_at": 1706598432, "id": "b2f34145-0343-41a4-9602-4c69dec2f260", "tags": ["trusted", "api"]}
         "401":
           application/json: {"message": "<value>", "status": 838404}
   list-certificate:
@@ -6089,7 +6202,7 @@ examples:
           tags: "tag1,tag2"
       responses:
         "200":
-          application/json: {}
+          application/json: {"data": [{"config": {"cluster_nodes": [{"ip": "192.168.1.10", "port": 6380}], "connect_timeout": 2000, "database": 0, "host": "localhost", "keepalive_pool_size": 256, "password": "password", "port": 6379, "read_timeout": 1000, "send_timeout": 1000, "sentinel_nodes": [{"host": "sentinel1.redis.server", "port": 26379}], "server_name": "redis-ee", "ssl": false, "ssl_verify": false, "username": "username"}, "type": "redis-ee"}]}
         "401":
           application/json: {"message": "<value>", "status": 707684}
   create-partial:
@@ -6098,10 +6211,10 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"config": {"key": "<value>"}, "type": "<value>"}
+        application/json: {"config": {"database": 0, "host": "localhost", "password": "password", "port": 6379, "server_name": "redis", "ssl": false, "ssl_verify": false, "timeout": 2000, "username": "username"}, "type": "redis-ce"}
       responses:
         "201":
-          application/json: {"config": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "type": "<value>"}
+          application/json: {"config": {"cluster_nodes": [{"ip": "192.168.1.10", "port": 6380}], "connect_timeout": 2000, "database": 0, "host": "localhost", "keepalive_pool_size": 256, "password": "password", "port": 6379, "read_timeout": 1000, "send_timeout": 1000, "sentinel_nodes": [{"host": "sentinel1.redis.server", "port": 26379}], "server_name": "redis-ee", "ssl": false, "ssl_verify": false, "username": "username"}, "type": "redis-ee"}
         "401":
           application/json: {"message": "<value>", "status": 415811}
   delete-partial:
@@ -6139,7 +6252,7 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       responses:
         "200":
-          application/json: {"config": {"key": "<value>", "key1": "<value>"}, "type": "<value>"}
+          application/json: {"config": {"cluster_nodes": [{"ip": "192.168.1.10", "port": 6380}], "connect_timeout": 2000, "database": 0, "host": "localhost", "keepalive_pool_size": 256, "password": "password", "port": 6379, "read_timeout": 1000, "send_timeout": 1000, "sentinel_nodes": [{"host": "sentinel1.redis.server", "port": 26379}], "server_name": "redis-ee", "ssl": false, "ssl_verify": false, "username": "username"}, "type": "redis-ee"}
         "401":
           application/json: {"message": "<value>", "status": 629733}
   upsert-partial:
@@ -6161,10 +6274,10 @@ examples:
           PartialId: ""
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"config": {"key": "<value>", "key1": "<value>", "key2": "<value>"}, "type": "<value>"}
+        application/json: {"config": {"cluster_nodes": [{"ip": "192.168.1.10", "port": 6380}], "connect_timeout": 2000, "database": 0, "host": "localhost", "keepalive_pool_size": 256, "password": "password", "port": 6379, "read_timeout": 1000, "send_timeout": 1000, "sentinel_nodes": [{"host": "sentinel1.redis.server", "port": 26379}], "server_name": "redis-ee", "ssl": false, "ssl_verify": false, "username": "username"}, "type": "redis-ee"}
       responses:
         "200":
-          application/json: {"config": {}, "type": "<value>"}
+          application/json: {"config": {"database": 0, "host": "localhost", "password": "password", "port": 6379, "server_name": "redis", "ssl": false, "ssl_verify": false, "timeout": 2000, "username": "username"}, "type": "redis-ce"}
         "401":
           application/json: {"message": "<value>", "status": 445128}
   list-partial-link:
@@ -6213,18 +6326,22 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"lua_schema": "return { name = \\\"myplugin\\\", fields = { { config = { type = \\\"record\\\", fields = { } } } } }"}
+        application/json: {"lua_schema": "return { name = \"myplugin\", fields = { { config = { type = \"record\", fields = { } } } } }"}
       responses:
         "201":
           application/json: {"item": {"lua_schema": "return { name = \\\"myplugin\\\", fields = { { config = { type = \\\"record\\\", fields = { } } } } }", "name": "myplugin", "created_at": 1422386534, "updated_at": 1422412345}}
         "400":
           application/problem+json: {"status": 625309, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+          application/json: {"message": "Bad Request"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+          application/json: {"message": "Unauthorized"}
         "403":
           application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+          application/json: {"message": "Forbidden"}
         "409":
           application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
+          application/json: {"message": "Conflict"}
   get-plugin-schema:
     speakeasy-default-get-plugin-schema:
       parameters:
@@ -6236,10 +6353,13 @@ examples:
           application/json: {"item": {"lua_schema": "return { name = \\\"myplugin\\\", fields = { { config = { type = \\\"record\\\", fields = { } } } } }", "name": "myplugin", "created_at": 1422386534, "updated_at": 1422412345}}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+          application/json: {"message": "Unauthorized"}
         "403":
           application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+          application/json: {"message": "Forbidden"}
         "404":
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+          application/json: {"message": "Not Found"}
   delete-plugin-schemas:
     speakeasy-default-delete-plugin-schemas:
       parameters:
@@ -6249,10 +6369,13 @@ examples:
       responses:
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+          application/json: {"message": "Unauthorized"}
         "403":
           application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+          application/json: {"message": "Forbidden"}
         "404":
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+          application/json: {"message": "Not Found"}
   update-plugin-schemas:
     speakeasy-default-update-plugin-schemas:
       parameters:
@@ -6260,16 +6383,19 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           name: "myplugin"
       requestBody:
-        application/json: {"lua_schema": "return { name = \\\"myplugin\\\", fields = { { config = { type = \\\"record\\\", fields = { } } } } }"}
+        application/json: {"lua_schema": "return { name = \"myplugin\", fields = { { config = { type = \"record\", fields = { } } } } }"}
       responses:
         "200":
           application/json: {"item": {"lua_schema": "return { name = \\\"myplugin\\\", fields = { { config = { type = \\\"record\\\", fields = { } } } } }", "name": "myplugin", "created_at": 1422386534, "updated_at": 1422412345}}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+          application/json: {"message": "Unauthorized"}
         "403":
           application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+          application/json: {"message": "Forbidden"}
         "404":
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+          application/json: {"message": "Not Found"}
   list-route:
     "":
       parameters:
@@ -7145,7 +7271,7 @@ examples:
   patch-team-group-mappings:
     speakeasy-default-patch-team-group-mappings:
       requestBody:
-        application/json: {"data": [{}]}
+        application/json: {"data": [{"team_id": "af91db4c-6e51-403e-a2bf-33d27ae50c0a", "groups": ["Service Developers"]}]}
       responses:
         "200":
           application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"team_id": "6801e673-cc10-498a-94cd-4271de07a0d3", "groups": ["Tech Leads", "API Engineers"]}]}
@@ -7191,7 +7317,7 @@ examples:
     speakeasy-default-get-identity-providers:
       responses:
         "200":
-          application/json: [{"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "type": "oidc", "enabled": true, "login_path": "myapp", "config": {"idp_metadata_url": "https://mocksaml.com/api/saml/metadata", "idp_metadata_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n", "sp_metadata_url": "https://cloud.konghq.com/v2/authenticate/the-saml-konnect-org/saml/metadata", "sp_entity_id": "https://cloud.konghq.com/sp/00000000-0000-0000-0000-000000000000", "login_url": "https://cloud.konghq.com/login/the-saml-konnect-org", "callback_url": "https://cloud.konghq.com/v2/authenticate/the-saml-konnect-org/saml/acs"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]
+          application/json: [{"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "type": "oidc", "enabled": true, "config": {"issuer_url": "https://konghq.okta.com/oauth2/default", "client_id": "YOUR_CLIENT_ID", "claim_mappings": {"name": "name", "email": "email", "groups": "groups"}}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -7199,16 +7325,18 @@ examples:
   create-identity-provider:
     speakeasy-default-create-identity-provider:
       requestBody:
-        application/json: {"type": "oidc", "login_path": "myapp", "config": {"idp_metadata_url": "https://mocksaml.com/api/saml/metadata", "idp_metadata_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"}}
+        application/json: {"enabled": true, "type": "oidc", "config": {"idp_metadata_url": "https://mocksaml.com/api/saml/metadata", "idp_metadata_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"}}
       responses:
         "201":
-          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "type": "oidc", "enabled": true, "login_path": "myapp", "config": {"issuer_url": "https://konghq.okta.com/oauth2/default", "client_id": "YOUR_CLIENT_ID", "claim_mappings": {"name": "name", "email": "email", "groups": "groups"}}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "type": "oidc", "enabled": true, "config": {"issuer_url": "https://konghq.okta.com/oauth2/default", "client_id": "YOUR_CLIENT_ID", "claim_mappings": {"name": "name", "email": "email", "groups": "groups"}}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 824534, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value 1>", "<value 2>"], "source": "body"}, {"field": "name", "rule": "min_lowercase", "minimum": 8, "source": "body", "reason": "must have at least 8 characters"}, {"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value 1>", "<value 2>"], "source": "body"}]}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
           application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "409":
+          application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
   get-identity-provider:
     speakeasy-default-get-identity-provider:
       parameters:
@@ -7216,7 +7344,7 @@ examples:
           id: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
       responses:
         "200":
-          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "type": "oidc", "enabled": true, "login_path": "myapp", "config": {"idp_metadata_url": "https://mocksaml.com/api/saml/metadata", "idp_metadata_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n", "sp_metadata_url": "https://cloud.konghq.com/v2/authenticate/the-saml-konnect-org/saml/metadata", "sp_entity_id": "https://cloud.konghq.com/sp/00000000-0000-0000-0000-000000000000", "login_url": "https://cloud.konghq.com/login/the-saml-konnect-org", "callback_url": "https://cloud.konghq.com/v2/authenticate/the-saml-konnect-org/saml/acs"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "type": "oidc", "enabled": true, "config": {"idp_metadata_url": "https://mocksaml.com/api/saml/metadata", "idp_metadata_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n", "sp_metadata_url": "/api/v2/developer/authenticate/saml/metadata", "sp_entity_id": "https://cloud.konghq.com/sp/00000000-0000-0000-0000-000000000000", "callback_url": "/api/v2/developer/authenticate/saml/acs"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 381490, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -7234,7 +7362,7 @@ examples:
         application/json: {"enabled": true, "login_path": "myapp", "config": {"issuer_url": "https://konghq.okta.com/oauth2/default", "client_id": "YOUR_CLIENT_ID", "client_secret": "YOUR_CLIENT_SECRET", "claim_mappings": {"name": "name", "email": "email", "groups": "groups"}}}
       responses:
         "200":
-          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "type": "oidc", "enabled": true, "login_path": "myapp", "config": {"issuer_url": "https://konghq.okta.com/oauth2/default", "client_id": "YOUR_CLIENT_ID", "claim_mappings": {"name": "name", "email": "email", "groups": "groups"}}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "type": "oidc", "enabled": true, "config": {"issuer_url": "https://konghq.okta.com/oauth2/default", "client_id": "YOUR_CLIENT_ID", "claim_mappings": {"name": "name", "email": "email", "groups": "groups"}}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 67521, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "enum", "reason": "is a required field", "choices": [], "source": "body"}]}
         "401":
@@ -7243,6 +7371,8 @@ examples:
           application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
         "404":
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "409":
+          application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
   delete-identity-provider:
     speakeasy-default-delete-identity-provider:
       parameters:
@@ -7964,6 +8094,96 @@ examples:
       responses:
         "200":
           application/json: {"status": "success", "errors": ["<value 1>", "<value 2>"]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  list-private-dns:
+    speakeasy-default-list-private-dns:
+      parameters:
+        path:
+          networkId: "36ae63d3-efd1-4bec-b246-62aa5d3f5695"
+        query:
+          page[size]: 10
+          page[number]: 1
+      responses:
+        "200":
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": []}
+        "400":
+          application/problem+json: {"status": 171910, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "max_items", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  create-private-dns:
+    speakeasy-default-create-private-dns:
+      parameters:
+        path:
+          networkId: "36ae63d3-efd1-4bec-b246-62aa5d3f5695"
+      requestBody:
+        application/json: {"name": "us-east-2 private dns", "private_dns_attachment_config": {"kind": "aws-private-hosted-zone-attachment", "hosted_zone_id": "<id>"}}
+      responses:
+        "201":
+          application/json: {"id": "1850820b-c69f-4a2a-b9be-bbcdbc5cd618", "state": "error", "state_metadata": {"reported_status": "ERROR", "reason": "Failed to create Private Dns due to invalid Cloud Provider configuration.\n"}, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "name": "us-east-2 private dns", "private_dns_attachment_config": {"kind": "aws-private-hosted-zone-attachment", "hosted_zone_id": "<id>"}}
+        "400":
+          application/problem+json: {"status": 709476, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value 1>", "<value 2>"], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "409":
+          application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
+  get-private-dns:
+    speakeasy-default-get-private-dns:
+      parameters:
+        path:
+          networkId: "36ae63d3-efd1-4bec-b246-62aa5d3f5695"
+          privateDnsId: "1850820b-c69f-4a2a-b9be-bbcdbc5cd618"
+      responses:
+        "200":
+          application/json: {"id": "1850820b-c69f-4a2a-b9be-bbcdbc5cd618", "state": "terminating", "state_metadata": {"reported_status": "ERROR", "reason": "Failed to create Private Dns due to invalid Cloud Provider configuration.\n"}, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "name": "us-east-2 private dns", "private_dns_attachment_config": {"kind": "aws-outbound-resolver", "dns_config": {"global.api.konghq.com": {"remote_dns_server_ip_addresses": ["10.0.0.2"]}, "us.api.konghq.dev": {"remote_dns_server_ip_addresses": ["10.0.0.8"]}}}}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  update-private-dns:
+    speakeasy-default-update-private-dns:
+      parameters:
+        path:
+          networkId: "36ae63d3-efd1-4bec-b246-62aa5d3f5695"
+          privateDnsId: "1850820b-c69f-4a2a-b9be-bbcdbc5cd618"
+      requestBody:
+        application/json: {"name": "us-east-2 private dns", "private_dns_attachment_config": {"kind": "aws-outbound-resolver", "dns_config": {"global.api.konghq.com": {"remote_dns_server_ip_addresses": ["10.0.0.2"]}, "us.api.konghq.dev": {"remote_dns_server_ip_addresses": ["10.0.0.8"]}}}}
+      responses:
+        "200":
+          application/json: {"id": "1850820b-c69f-4a2a-b9be-bbcdbc5cd618", "state": "ready", "state_metadata": {"reported_status": "ERROR", "reason": "Failed to create Private Dns due to invalid Cloud Provider configuration.\n"}, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "name": "us-east-2 private dns", "private_dns_attachment_config": {"kind": "aws-private-hosted-zone-attachment", "hosted_zone_id": "<id>"}}
+        "400":
+          application/problem+json: {"status": 473178, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "source": "body", "reason": "is a required field"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "409":
+          application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
+  delete-private-dns:
+    speakeasy-default-delete-private-dns:
+      parameters:
+        path:
+          networkId: "36ae63d3-efd1-4bec-b246-62aa5d3f5695"
+          privateDnsId: "1850820b-c69f-4a2a-b9be-bbcdbc5cd618"
+      responses:
+        "400":
+          application/problem+json: {"status": 837834, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value 1>", "<value 2>"], "source": "body"}]}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":

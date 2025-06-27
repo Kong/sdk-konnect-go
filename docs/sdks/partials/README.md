@@ -3,6 +3,8 @@
 
 ## Overview
 
+Some entities in Kong Gateway share common configuration settings that often need to be repeated. For example, multiple plugins that connect to Redis may require the same connection settings. Without Partials, you would need to replicate this configuration across all plugins. If the settings change, you would need to update each plugin individually.
+
 ### Available Operations
 
 * [ListPartial](#listpartial) - List all Partials
@@ -94,12 +96,22 @@ func main() {
         }),
     )
 
-    res, err := s.Partials.CreatePartial(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Partial{
-        Config: map[string]any{
-            "key": "<value>",
+    res, err := s.Partials.CreatePartial(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreatePartialRedisCe(
+        components.PartialRedisCE{
+            Config: components.PartialRedisCEConfig{
+                Database: sdkkonnectgo.Int64(0),
+                Host: sdkkonnectgo.String("localhost"),
+                Password: sdkkonnectgo.String("password"),
+                Port: sdkkonnectgo.Int64(6379),
+                ServerName: sdkkonnectgo.String("redis"),
+                Ssl: sdkkonnectgo.Bool(false),
+                SslVerify: sdkkonnectgo.Bool(false),
+                Timeout: sdkkonnectgo.Int64(2000),
+                Username: sdkkonnectgo.String("username"),
+            },
+            Type: components.TypeRedisCe,
         },
-        Type: "<value>",
-    })
+    ))
     if err != nil {
         log.Fatal(err)
     }
@@ -268,14 +280,11 @@ func main() {
     res, err := s.Partials.UpsertPartial(ctx, operations.UpsertPartialRequest{
         PartialID: "",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        Partial: components.Partial{
-            Config: map[string]any{
-                "key": "<value>",
-                "key1": "<value>",
-                "key2": "<value>",
+        Partial: components.CreatePartialRedisEe(
+            components.PartialRedisEE{
+                Type: components.PartialRedisEETypeRedisEe,
             },
-            Type: "<value>",
-        },
+        ),
     })
     if err != nil {
         log.Fatal(err)

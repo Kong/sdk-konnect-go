@@ -32,7 +32,7 @@ type UpdateIdentityProviderResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// An identity provider configuration. This response represents the configuration of a specific identity provider, which can be either OIDC or SAML.
 	//
-	IdentityProvider *components.IdentityProvider
+	SchemasIdentityProvider *components.SchemasIdentityProvider
 }
 
 func (o *UpdateIdentityProviderResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -42,9 +42,9 @@ func (o *UpdateIdentityProviderResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *UpdateIdentityProviderResponse) GetIdentityProvider() *components.IdentityProvider {
+func (o *UpdateIdentityProviderResponse) GetSchemasIdentityProvider() *components.SchemasIdentityProvider {
 	if o == nil {
 		return nil
 	}
-	return o.IdentityProvider
+	return o.SchemasIdentityProvider
 }

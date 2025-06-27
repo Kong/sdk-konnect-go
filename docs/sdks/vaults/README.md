@@ -3,13 +3,13 @@
 
 ## Overview
 
-Vault objects are used to configure different vault connectors for [managing secrets](https://docs.konghq.com/gateway/latest/kong-enterprise/secrets-management/).
+Vault objects are used to configure different vault connectors for [managing secrets](https://developer.konghq.com/gateway/secrets-management/).
 Configuring a vault lets you reference secrets from other entities.
 This allows for a proper separation of secrets and configuration and prevents secret sprawl.
 <br><br>
 For example, you could store a certificate and a key in a vault, then reference them from a certificate entity. This way, the certificate and key are not stored in the entity directly and are more secure.
 <br><br>
-Secrets rotation can be managed using [TTLs](https://docs.konghq.com/gateway/latest/kong-enterprise/secrets-management/advanced-usage/).
+Secrets rotation can be managed using [TTLs](https://developer.konghq.com/gateway/entities/vault/).
 
 
 ### Available Operations

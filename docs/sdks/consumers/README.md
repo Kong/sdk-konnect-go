@@ -14,6 +14,10 @@ You can either rely on Kong Gateway as the primary datastore, or you can map the
 * [DeleteConsumer](#deleteconsumer) - Delete a Consumer
 * [GetConsumer](#getconsumer) - Fetch a Consumer
 * [UpsertConsumer](#upsertconsumer) - Upsert a Consumer
+* [RemoveConsumerFromAllConsumerGroups](#removeconsumerfromallconsumergroups) - Remove consumer from all consumer groups
+* [ListConsumerGroupsForConsumer](#listconsumergroupsforconsumer) - List all Consumer Groups a Consumer belongs to
+* [AddConsumerToSpecificConsumerGroup](#addconsumertospecificconsumergroup) - Add consumer to a specific consumer group
+* [RemoveConsumerFromConsumerGroup](#removeconsumerfromconsumergroup) - Remove consumer from consumer group
 
 ## ListConsumer
 
@@ -310,3 +314,233 @@ func main() {
 | ---------------------------------- | ---------------------------------- | ---------------------------------- |
 | sdkerrors.GatewayUnauthorizedError | 401                                | application/json                   |
 | sdkerrors.SDKError                 | 4XX, 5XX                           | \*/\*                              |
+
+## RemoveConsumerFromAllConsumerGroups
+
+Removes a consumer from all Consumer Groups. This operation does not delete the consumer group.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Consumers.RemoveConsumerFromAllConsumerGroups(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "c1059869-6fa7-4329-a5f5-5946d14ca2c5")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
+| `controlPlaneID`                                                                   | *string*                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
+| `consumerID`                                                                       | *string*                                                                           | :heavy_check_mark:                                                                 | ID of the Consumer to lookup                                                       | c1059869-6fa7-4329-a5f5-5946d14ca2c5                                               |
+| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+
+### Response
+
+**[*operations.RemoveConsumerFromAllConsumerGroupsResponse](../../models/operations/removeconsumerfromallconsumergroupsresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## ListConsumerGroupsForConsumer
+
+List all Consumer Groups a Consumer belongs to
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Consumers.ListConsumerGroupsForConsumer(ctx, operations.ListConsumerGroupsForConsumerRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
+        Tags: sdkkonnectgo.String("tag1,tag2"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                                              | :heavy_check_mark:                                                                                                 | The context to use for the request.                                                                                |
+| `request`                                                                                                          | [operations.ListConsumerGroupsForConsumerRequest](../../models/operations/listconsumergroupsforconsumerrequest.md) | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
+| `opts`                                                                                                             | [][operations.Option](../../models/operations/option.md)                                                           | :heavy_minus_sign:                                                                                                 | The options for this request.                                                                                      |
+
+### Response
+
+**[*operations.ListConsumerGroupsForConsumerResponse](../../models/operations/listconsumergroupsforconsumerresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## AddConsumerToSpecificConsumerGroup
+
+Add a consumer to a consumer group
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Consumers.AddConsumerToSpecificConsumerGroup(ctx, operations.AddConsumerToSpecificConsumerGroupRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
+        RequestBody: &operations.AddConsumerToSpecificConsumerGroupRequestBody{
+            Group: sdkkonnectgo.String("fedee695-2ae2-4e45-877a-776d9b2fc793"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                                        | :heavy_check_mark:                                                                                                           | The context to use for the request.                                                                                          |
+| `request`                                                                                                                    | [operations.AddConsumerToSpecificConsumerGroupRequest](../../models/operations/addconsumertospecificconsumergrouprequest.md) | :heavy_check_mark:                                                                                                           | The request object to use for the request.                                                                                   |
+| `opts`                                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                                     | :heavy_minus_sign:                                                                                                           | The options for this request.                                                                                                |
+
+### Response
+
+**[*operations.AddConsumerToSpecificConsumerGroupResponse](../../models/operations/addconsumertospecificconsumergroupresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## RemoveConsumerFromConsumerGroup
+
+Removes a consumer from a Consumer Group. This operation does not delete the consumer group.
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Consumers.RemoveConsumerFromConsumerGroup(ctx, operations.RemoveConsumerFromConsumerGroupRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
+        ConsumerGroupID: "",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                                  | :heavy_check_mark:                                                                                                     | The context to use for the request.                                                                                    |
+| `request`                                                                                                              | [operations.RemoveConsumerFromConsumerGroupRequest](../../models/operations/removeconsumerfromconsumergrouprequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
+| `opts`                                                                                                                 | [][operations.Option](../../models/operations/option.md)                                                               | :heavy_minus_sign:                                                                                                     | The options for this request.                                                                                          |
+
+### Response
+
+**[*operations.RemoveConsumerFromConsumerGroupResponse](../../models/operations/removeconsumerfromconsumergroupresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |

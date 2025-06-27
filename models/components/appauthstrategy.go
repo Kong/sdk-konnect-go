@@ -51,7 +51,7 @@ func (o *AppAuthStrategyOpenIDConnectResponseAppAuthStrategyConfigs) GetOpenidCo
 }
 
 type AppAuthStrategyOpenIDConnectResponseAppAuthStrategyDcrProvider struct {
-	// Contains a unique identifier used by the API for this resource.
+	// Contains a unique identifier used for this resource.
 	ID   string `json:"id"`
 	Name string `json:"name"`
 	// The display name of the DCR provider. This is used to identify the DCR provider in the Portal UI.
@@ -91,7 +91,7 @@ func (o *AppAuthStrategyOpenIDConnectResponseAppAuthStrategyDcrProvider) GetProv
 
 // AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectResponse - Response payload from creating an OIDC Application Auth Strategy
 type AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectResponse struct {
-	// Contains a unique identifier used by the API for this resource.
+	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// The name of the auth strategy. This is used to identify the auth strategy in the Konnect UI.
 	//
@@ -102,7 +102,7 @@ type AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectResponse st
 	StrategyType AppAuthStrategyOpenIDConnectResponseAppAuthStrategyStrategyType `json:"strategy_type"`
 	// JSON-B object containing the configuration for the OIDC strategy
 	Configs AppAuthStrategyOpenIDConnectResponseAppAuthStrategyConfigs `json:"configs"`
-	// At least one published product version is using this auth strategy.
+	// At least one published entity is using this auth strategy.
 	Active      bool                                                            `json:"active"`
 	DcrProvider *AppAuthStrategyOpenIDConnectResponseAppAuthStrategyDcrProvider `json:"dcr_provider"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
@@ -237,7 +237,7 @@ func (o *AppAuthStrategyKeyAuthResponseAppAuthStrategyConfigs) GetKeyAuth() AppA
 }
 
 type AppAuthStrategyKeyAuthResponseDcrProvider struct {
-	// Contains a unique identifier used by the API for this resource.
+	// Contains a unique identifier used for this resource.
 	ID   string `json:"id"`
 	Name string `json:"name"`
 	// The display name of the DCR provider. This is used to identify the DCR provider in the Portal UI.
@@ -277,7 +277,7 @@ func (o *AppAuthStrategyKeyAuthResponseDcrProvider) GetProviderType() DcrProvide
 
 // AppAuthStrategyKeyAuthResponseAppAuthStrategyKeyAuthResponse - Response payload from creating or updating a Key Auth Application Auth Strategy
 type AppAuthStrategyKeyAuthResponseAppAuthStrategyKeyAuthResponse struct {
-	// Contains a unique identifier used by the API for this resource.
+	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// The name of the auth strategy. This is used to identify the auth strategy in the Konnect UI.
 	//
@@ -288,7 +288,7 @@ type AppAuthStrategyKeyAuthResponseAppAuthStrategyKeyAuthResponse struct {
 	StrategyType AppAuthStrategyKeyAuthResponseAppAuthStrategyStrategyType `json:"strategy_type"`
 	// JSON-B object containing the configuration for the Key Auth strategy
 	Configs AppAuthStrategyKeyAuthResponseAppAuthStrategyConfigs `json:"configs"`
-	// At least one published product version is using this auth strategy.
+	// At least one published entity is using this auth strategy.
 	Active      bool                                       `json:"active"`
 	DcrProvider *AppAuthStrategyKeyAuthResponseDcrProvider `json:"dcr_provider"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.

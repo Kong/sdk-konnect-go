@@ -27,6 +27,14 @@ func (o *CreatePartialRequest) GetPartial() components.Partial {
 	return o.Partial
 }
 
+func (o *CreatePartialRequest) GetPartialRedisCe() *components.PartialRedisCE {
+	return o.GetPartial().PartialRedisCE
+}
+
+func (o *CreatePartialRequest) GetPartialRedisEe() *components.PartialRedisEE {
+	return o.GetPartial().PartialRedisEE
+}
+
 type CreatePartialResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Successfully created Partial
@@ -45,4 +53,18 @@ func (o *CreatePartialResponse) GetPartial() *components.Partial {
 		return nil
 	}
 	return o.Partial
+}
+
+func (o *CreatePartialResponse) GetPartialRedisCe() *components.PartialRedisCE {
+	if v := o.GetPartial(); v != nil {
+		return v.PartialRedisCE
+	}
+	return nil
+}
+
+func (o *CreatePartialResponse) GetPartialRedisEe() *components.PartialRedisEE {
+	if v := o.GetPartial(); v != nil {
+		return v.PartialRedisEE
+	}
+	return nil
 }
