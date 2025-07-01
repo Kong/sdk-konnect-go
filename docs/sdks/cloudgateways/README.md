@@ -21,8 +21,7 @@
 * [GetNetwork](#getnetwork) - Get Network
 * [UpdateNetwork](#updatenetwork) - Update Network
 * [DeleteNetwork](#deletenetwork) - Delete Network
-* [ListNetworkConfigurations](#listnetworkconfigurations) - Returns a paginated collection of configurations that reference a network.
-
+* [ListNetworkConfigurations](#listnetworkconfigurations) - List Network Configuration References
 * [ListPrivateDNS](#listprivatedns) - List Private DNS
 * [CreatePrivateDNS](#createprivatedns) - Create Private DNS
 * [GetPrivateDNS](#getprivatedns) - Get Private DNS
@@ -1039,7 +1038,8 @@ func main() {
 
 ## ListNetworkConfigurations
 
-List Network Configuration References
+Returns a paginated collection of configurations that reference a network.
+
 
 ### Example Usage
 

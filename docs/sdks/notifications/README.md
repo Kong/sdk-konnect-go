@@ -7,17 +7,17 @@ Operations related to notifications
 
 ### Available Operations
 
-* [ListUserConfigurations](#listuserconfigurations) - List available user configurations.
-* [ListEventSubscriptions](#listeventsubscriptions) - List event subscriptions.
-* [CreateEventSubscription](#createeventsubscription) - Create a new subscription for an event.
-* [GetEventSubscription](#geteventsubscription) - Get subscription for an event.
-* [UpdateEventSubscription](#updateeventsubscription) - Update subscription for an event.
-* [DeleteEventSubscription](#deleteeventsubscription) - Delete subscription associated with event.
-* [ListNotifications](#listnotifications) - List available notifications.
-* [GetNotificationDetails](#getnotificationdetails) - Get notification details.
-* [UpdateNotification](#updatenotification) - Update notification.
-* [DeleteNotification](#deletenotification) - Delete notification.
-* [BulkNotifications](#bulknotifications) - Mark a list of notifications to a status.
+* [ListUserConfigurations](#listuserconfigurations) - List available user configurations
+* [ListEventSubscriptions](#listeventsubscriptions) - List event subscriptions
+* [CreateEventSubscription](#createeventsubscription) - Create a new subscription for an event
+* [GetEventSubscription](#geteventsubscription) - Get subscription for an event
+* [UpdateEventSubscription](#updateeventsubscription) - Update subscription for an event
+* [DeleteEventSubscription](#deleteeventsubscription) - Delete subscription associated with event
+* [ListNotifications](#listnotifications) - List available notifications
+* [GetNotificationDetails](#getnotificationdetails) - Get notification details
+* [UpdateNotification](#updatenotification) - Update notification
+* [DeleteNotification](#deletenotification) - Delete notification
+* [BulkNotifications](#bulknotifications) - Mark a list of notifications to a status
 
 ## ListUserConfigurations
 

@@ -20,7 +20,7 @@ type CreateIdentityProviderResponse struct {
 	RawResponse *http.Response
 	// An identity provider configuration. This response represents the configuration of a specific identity provider, which can be either OIDC or SAML.
 	//
-	SchemasIdentityProvider *components.SchemasIdentityProvider
+	IdentityProvider *components.IdentityProvider
 }
 
 func (o *CreateIdentityProviderResponse) GetContentType() string {
@@ -44,9 +44,9 @@ func (o *CreateIdentityProviderResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *CreateIdentityProviderResponse) GetSchemasIdentityProvider() *components.SchemasIdentityProvider {
+func (o *CreateIdentityProviderResponse) GetIdentityProvider() *components.IdentityProvider {
 	if o == nil {
 		return nil
 	}
-	return o.SchemasIdentityProvider
+	return o.IdentityProvider
 }

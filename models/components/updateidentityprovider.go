@@ -12,12 +12,12 @@ type UpdateIdentityProviderConfigType string
 
 const (
 	UpdateIdentityProviderConfigTypeConfigureOIDCIdentityProviderConfig UpdateIdentityProviderConfigType = "ConfigureOIDCIdentityProviderConfig"
-	UpdateIdentityProviderConfigTypeSAMLIdentityProviderConfig          UpdateIdentityProviderConfigType = "SAMLIdentityProviderConfig"
+	UpdateIdentityProviderConfigTypeSAMLIdentityProviderConfigInput     UpdateIdentityProviderConfigType = "SAMLIdentityProviderConfig_input"
 )
 
 type UpdateIdentityProviderConfig struct {
 	ConfigureOIDCIdentityProviderConfig *ConfigureOIDCIdentityProviderConfig `queryParam:"inline"`
-	SAMLIdentityProviderConfig          *SAMLIdentityProviderConfig          `queryParam:"inline"`
+	SAMLIdentityProviderConfigInput     *SAMLIdentityProviderConfigInput     `queryParam:"inline"`
 
 	Type UpdateIdentityProviderConfigType
 }
@@ -31,21 +31,21 @@ func CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(confi
 	}
 }
 
-func CreateUpdateIdentityProviderConfigSAMLIdentityProviderConfig(samlIdentityProviderConfig SAMLIdentityProviderConfig) UpdateIdentityProviderConfig {
-	typ := UpdateIdentityProviderConfigTypeSAMLIdentityProviderConfig
+func CreateUpdateIdentityProviderConfigSAMLIdentityProviderConfigInput(samlIdentityProviderConfigInput SAMLIdentityProviderConfigInput) UpdateIdentityProviderConfig {
+	typ := UpdateIdentityProviderConfigTypeSAMLIdentityProviderConfigInput
 
 	return UpdateIdentityProviderConfig{
-		SAMLIdentityProviderConfig: &samlIdentityProviderConfig,
-		Type:                       typ,
+		SAMLIdentityProviderConfigInput: &samlIdentityProviderConfigInput,
+		Type:                            typ,
 	}
 }
 
 func (u *UpdateIdentityProviderConfig) UnmarshalJSON(data []byte) error {
 
-	var samlIdentityProviderConfig SAMLIdentityProviderConfig = SAMLIdentityProviderConfig{}
-	if err := utils.UnmarshalJSON(data, &samlIdentityProviderConfig, "", true, true); err == nil {
-		u.SAMLIdentityProviderConfig = &samlIdentityProviderConfig
-		u.Type = UpdateIdentityProviderConfigTypeSAMLIdentityProviderConfig
+	var samlIdentityProviderConfigInput SAMLIdentityProviderConfigInput = SAMLIdentityProviderConfigInput{}
+	if err := utils.UnmarshalJSON(data, &samlIdentityProviderConfigInput, "", true, true); err == nil {
+		u.SAMLIdentityProviderConfigInput = &samlIdentityProviderConfigInput
+		u.Type = UpdateIdentityProviderConfigTypeSAMLIdentityProviderConfigInput
 		return nil
 	}
 
@@ -64,8 +64,8 @@ func (u UpdateIdentityProviderConfig) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.ConfigureOIDCIdentityProviderConfig, "", true)
 	}
 
-	if u.SAMLIdentityProviderConfig != nil {
-		return utils.MarshalJSON(u.SAMLIdentityProviderConfig, "", true)
+	if u.SAMLIdentityProviderConfigInput != nil {
+		return utils.MarshalJSON(u.SAMLIdentityProviderConfigInput, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type UpdateIdentityProviderConfig: all fields are null")

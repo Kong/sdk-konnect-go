@@ -7,7 +7,7 @@ Custom Plugin Schemas
 
 ### Available Operations
 
-* [ListPluginSchemas](#listpluginschemas) - List custom plugin schemas associated with a control plane
+* [ListPluginSchemas](#listpluginschemas) - List Custom Plugin Schemas
 * [CreatePluginSchemas](#createpluginschemas) - Upload custom plugin schema
 * [GetPluginSchema](#getpluginschema) - Fetch custom plugin schema
 * [DeletePluginSchemas](#deletepluginschemas) - Delete custom plugin schema
@@ -306,6 +306,7 @@ func main() {
 
 | Error Type                                 | Status Code                                | Content Type                               |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| sdkerrors.KonnectCPLegacyBadRequestError   | 400                                        | application/json                           |
 | sdkerrors.KonnectCPLegacyUnauthorizedError | 401                                        | application/json                           |
 | sdkerrors.KonnectCPLegacyForbiddenError    | 403                                        | application/json                           |
 | sdkerrors.KonnectCPLegacyNotFoundError     | 404                                        | application/json                           |

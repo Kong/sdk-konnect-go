@@ -1406,7 +1406,7 @@ func (s *DCRProviders) DeleteDcrProvider(ctx context.Context, dcrProviderID stri
 
 }
 
-// VerifyDcrProvider - Verify DCR provider configuration.
+// VerifyDcrProvider - Verify DCR provider configuration
 // Verifies if a DCR provider is configured properly. Returns 200 for success, 4xx for failure.
 func (s *DCRProviders) VerifyDcrProvider(ctx context.Context, dcrProviderID string, opts ...operations.Option) (*operations.VerifyDcrProviderResponse, error) {
 	request := operations.VerifyDcrProviderRequest{

@@ -1,0 +1,9 @@
+# CreatePortalTeamRequest
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               | Example                                                                                   |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `PortalID`                                                                                | *string*                                                                                  | :heavy_check_mark:                                                                        | ID of the portal.                                                                         | f32d905a-ed33-46a3-a093-d8f536af9a8a                                                      |
+| `PortalCreateTeamRequest`                                                                 | [*components.PortalCreateTeamRequest](../../models/components/portalcreateteamrequest.md) | :heavy_minus_sign:                                                                        | Create a team in a portal.                                                                | {<br/>"name": "IDM - Developers",<br/>"description": "The Identity Management (IDM) team."<br/>} |

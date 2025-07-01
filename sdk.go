@@ -2,7 +2,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 0.0.1 and generator version 2.638.5
+// Generated from OpenAPI doc version 3.0.22 and generator version 2.644.1
 
 import (
 	"context"
@@ -176,12 +176,48 @@ type SDK struct {
 	// For instance, they will be able to perform dynamic client registration (DCR) with the provider.
 	// The DCR provider provides credentials to each DCR-enabled application in Konnect that can be used to access Product Versions that the app is registered for.
 	//
-	DCRProviders                 *DCRProviders
-	Authentication               *Authentication
-	AuthSettings                 *AuthSettings
-	Invites                      *Invites
-	ImpersonationSettings        *ImpersonationSettings
-	Me                           *Me
+	DCRProviders      *DCRProviders
+	APIAttributes     *APIAttributes
+	APIImplementation *APIImplementation
+	APIPublication    *APIPublication
+	API               *API
+	APIDocumentation  *APIDocumentation
+	APISpecification  *APISpecification
+	APIVersion        *APIVersion
+	// APIs related to Konnect Developer Portal Applications.
+	Applications          *Applications
+	Authentication        *Authentication
+	AuthSettings          *AuthSettings
+	Invites               *Invites
+	ImpersonationSettings *ImpersonationSettings
+	Me                    *Me
+	// APIs related to Konnect Developer Portal developer team roles.
+	PortalTeamRoles *PortalTeamRoles
+	// APIs related to configuration of Konnect Developer Portals.
+	Portals *Portals
+	// APIs related to Konnect Developer Portal Application Registrations.
+	ApplicationRegistrations *ApplicationRegistrations
+	// APIs for managing static assets for Konnect Developer Portals.
+	Assets          *Assets
+	PortalAuditLogs *PortalAuditLogs
+	// APIs related to configuration of Konnect Developer Portal auth settings.
+	PortalAuthSettings *PortalAuthSettings
+	// APIs related to configuration of Konnect Developer Portals custom domains.
+	PortalCustomDomains *PortalCustomDomains
+	// APIs related to customization of Konnect Developer Portals.
+	PortalCustomization *PortalCustomization
+	// APIs related to Konnect Developer Portal Custom Pages.
+	Pages *Pages
+	// APIs related to Konnect Developer Portal developers.
+	PortalDevelopers *PortalDevelopers
+	// APIs related to Konnect Developer Portal developer team membership.
+	PortalTeamMembership *PortalTeamMembership
+	// APIs related to Konnect Developer Portal Emails.
+	PortalEmails *PortalEmails
+	// APIs related to Konnect Developer Portal Custom Snippets.
+	Snippets *Snippets
+	// APIs related to configuration of Konnect Developer Portal developer teams.
+	PortalTeams                  *PortalTeams
 	Roles                        *Roles
 	SystemAccounts               *SystemAccounts
 	SystemAccountsAccessTokens   *SystemAccountsAccessTokens
@@ -265,9 +301,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.4.0",
+		SDKVersion: "0.5.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.4.0 2.638.5 0.0.1 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.5.0 2.644.1 3.0.22 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -322,11 +358,33 @@ func New(opts ...SDKOption) *SDK {
 	sdk.DPNodes = newDPNodes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ControlPlaneGroups = newControlPlaneGroups(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.DCRProviders = newDCRProviders(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIAttributes = newAPIAttributes(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIImplementation = newAPIImplementation(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIPublication = newAPIPublication(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.API = newAPI(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIDocumentation = newAPIDocumentation(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APISpecification = newAPISpecification(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIVersion = newAPIVersion(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Applications = newApplications(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Authentication = newAuthentication(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AuthSettings = newAuthSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Invites = newInvites(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ImpersonationSettings = newImpersonationSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Me = newMe(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalTeamRoles = newPortalTeamRoles(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Portals = newPortals(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ApplicationRegistrations = newApplicationRegistrations(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Assets = newAssets(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalAuditLogs = newPortalAuditLogs(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalAuthSettings = newPortalAuthSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalCustomDomains = newPortalCustomDomains(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalCustomization = newPortalCustomization(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Pages = newPages(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalDevelopers = newPortalDevelopers(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalTeamMembership = newPortalTeamMembership(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalEmails = newPortalEmails(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Snippets = newSnippets(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalTeams = newPortalTeams(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Roles = newRoles(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.SystemAccounts = newSystemAccounts(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.SystemAccountsAccessTokens = newSystemAccountsAccessTokens(sdk, sdk.sdkConfiguration, sdk.hooks)
