@@ -3,6 +3,6 @@
 
 ## Values
 
-| Name                                                                                                                            | Value                                                                                                                           |
-| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `RolesControlPlanesRolesDescriptionCreatesANewControlPlaneInAnOrganizationTheCreatorBecomesTheOwnerOfTheControlPlaneTheyCreate` | Creates a new Control Plane in an organization. The creator becomes the owner of the Control Plane they create.                 |
+| Name                                                                                   | Value                                                                                  |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `RolesControlPlanesRolesDescriptionThisRoleGrantsFullWriteAccessToAdministerConsumers` | This role grants full write access to administer consumers.                            |

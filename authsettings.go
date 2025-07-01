@@ -2378,7 +2378,7 @@ func (s *AuthSettings) GetIdentityProviders(ctx context.Context, filter *operati
 				return nil, err
 			}
 
-			var out []components.SchemasIdentityProvider
+			var out []components.IdentityProvider
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -2460,7 +2460,7 @@ func (s *AuthSettings) GetIdentityProviders(ctx context.Context, filter *operati
 // CreateIdentityProvider - Create Identity Provider
 // Creates a new identity provider. This operation allows the creation of a new identity provider for
 // authentication purposes.
-func (s *AuthSettings) CreateIdentityProvider(ctx context.Context, request components.SchemasCreateIdentityProvider, opts ...operations.Option) (*operations.CreateIdentityProviderResponse, error) {
+func (s *AuthSettings) CreateIdentityProvider(ctx context.Context, request components.CreateIdentityProvider, opts ...operations.Option) (*operations.CreateIdentityProviderResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -2632,12 +2632,12 @@ func (s *AuthSettings) CreateIdentityProvider(ctx context.Context, request compo
 				return nil, err
 			}
 
-			var out components.SchemasIdentityProvider
+			var out components.IdentityProvider
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.SchemasIdentityProvider = &out
+			res.IdentityProvider = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -2925,12 +2925,12 @@ func (s *AuthSettings) GetIdentityProvider(ctx context.Context, id string, opts 
 				return nil, err
 			}
 
-			var out components.SchemasIdentityProvider
+			var out components.IdentityProvider
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.SchemasIdentityProvider = &out
+			res.IdentityProvider = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -3226,12 +3226,12 @@ func (s *AuthSettings) UpdateIdentityProvider(ctx context.Context, id string, up
 				return nil, err
 			}
 
-			var out components.SchemasIdentityProvider
+			var out components.IdentityProvider
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.SchemasIdentityProvider = &out
+			res.IdentityProvider = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {

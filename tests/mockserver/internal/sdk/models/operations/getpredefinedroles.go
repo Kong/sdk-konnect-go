@@ -9,7 +9,7 @@ import (
 type GetPredefinedRolesResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// The predefined, or system managed, roles.
-	Roles *components.Roles
+	Roles *components.RolesResponse
 }
 
 func (o *GetPredefinedRolesResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -19,7 +19,7 @@ func (o *GetPredefinedRolesResponse) GetHTTPMeta() components.HTTPMetadata {
 	return o.HTTPMeta
 }
 
-func (o *GetPredefinedRolesResponse) GetRoles() *components.Roles {
+func (o *GetPredefinedRolesResponse) GetRoles() *components.RolesResponse {
 	if o == nil {
 		return nil
 	}

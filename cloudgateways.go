@@ -4518,9 +4518,8 @@ func (s *CloudGateways) DeleteNetwork(ctx context.Context, networkID string, opt
 
 }
 
-// ListNetworkConfigurations - Returns a paginated collection of configurations that reference a network.
-//
-// List Network Configuration References
+// ListNetworkConfigurations - List Network Configuration References
+// Returns a paginated collection of configurations that reference a network.
 func (s *CloudGateways) ListNetworkConfigurations(ctx context.Context, request operations.ListNetworkConfigurationsRequest, opts ...operations.Option) (*operations.ListNetworkConfigurationsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{

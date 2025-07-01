@@ -3,6 +3,6 @@
 
 ## Values
 
-| Name                                                                              | Value                                                                             |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `RolesControlPlanesDescriptionThisRoleGrantsFullWriteAccessToAdministerConsumers` | This role grants full write access to administer consumers.                       |
+| Name                                                                                 | Value                                                                                |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `RolesControlPlanesDescriptionThisRoleGrantsFullWriteAccessToAdministerCertificates` | This role grants full write access to administer certificates.                       |

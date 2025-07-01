@@ -1,0 +1,9 @@
+# CreatePortalEmailConfigRequest
+
+
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          | Example                                                                              |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `PortalID`                                                                           | *string*                                                                             | :heavy_check_mark:                                                                   | ID of the portal.                                                                    | f32d905a-ed33-46a3-a093-d8f536af9a8a                                                 |
+| `PostPortalEmailConfig`                                                              | [components.PostPortalEmailConfig](../../models/components/postportalemailconfig.md) | :heavy_check_mark:                                                                   | Create a portal email configuration.                                                 |                                                                                      |

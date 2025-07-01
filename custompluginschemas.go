@@ -31,7 +31,7 @@ func newCustomPluginSchemas(rootSDK *SDK, sdkConfig config.SDKConfiguration, hoo
 	}
 }
 
-// ListPluginSchemas - List custom plugin schemas associated with a control plane
+// ListPluginSchemas - List Custom Plugin Schemas
 // Returns an array of custom plugins schemas associated with a control plane.
 func (s *CustomPluginSchemas) ListPluginSchemas(ctx context.Context, request operations.ListPluginSchemasRequest, opts ...operations.Option) (*operations.ListPluginSchemasResponse, error) {
 	o := operations.Options{}
@@ -1275,7 +1275,7 @@ func (s *CustomPluginSchemas) UpdatePluginSchemas(ctx context.Context, request o
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"401", "403", "404", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1311,6 +1311,27 @@ func (s *CustomPluginSchemas) UpdatePluginSchemas(ctx context.Context, request o
 			}
 
 			res.PluginSchemas = &out
+		default:
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode == 400:
+		switch {
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+
+			var out sdkerrors.KonnectCPLegacyBadRequestError
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
+
+			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {

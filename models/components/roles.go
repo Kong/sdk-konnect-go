@@ -53,32 +53,32 @@ func (e *RolesControlPlanesName) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type Description string
+type RolesDescription string
 
 const (
-	DescriptionThisRoleGrantsFullWriteAccessToAllEntitiesWithinAControlPlane Description = "This role grants full write access to all entities within a control plane."
+	RolesDescriptionThisRoleGrantsFullWriteAccessToAllEntitiesWithinAControlPlane RolesDescription = "This role grants full write access to all entities within a control plane."
 )
 
-func (e Description) ToPointer() *Description {
+func (e RolesDescription) ToPointer() *RolesDescription {
 	return &e
 }
-func (e *Description) UnmarshalJSON(data []byte) error {
+func (e *RolesDescription) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "This role grants full write access to all entities within a control plane.":
-		*e = Description(v)
+		*e = RolesDescription(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Description: %v", v)
+		return fmt.Errorf("invalid value for RolesDescription: %v", v)
 	}
 }
 
 type Admin struct {
 	Name        RolesControlPlanesName `json:"name"`
-	Description Description            `json:"description"`
+	Description RolesDescription       `json:"description"`
 }
 
 func (o *Admin) GetName() RolesControlPlanesName {
@@ -88,9 +88,9 @@ func (o *Admin) GetName() RolesControlPlanesName {
 	return o.Name
 }
 
-func (o *Admin) GetDescription() Description {
+func (o *Admin) GetDescription() RolesDescription {
 	if o == nil {
-		return Description("")
+		return RolesDescription("")
 	}
 	return o.Description
 }
@@ -118,32 +118,32 @@ func (e *RolesControlPlanesRolesName) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type RolesDescription string
+type RolesControlPlanesDescription string
 
 const (
-	RolesDescriptionThisRoleGrantsFullWriteAccessToAdministerCertificates RolesDescription = "This role grants full write access to administer certificates."
+	RolesControlPlanesDescriptionThisRoleGrantsFullWriteAccessToAdministerCertificates RolesControlPlanesDescription = "This role grants full write access to administer certificates."
 )
 
-func (e RolesDescription) ToPointer() *RolesDescription {
+func (e RolesControlPlanesDescription) ToPointer() *RolesControlPlanesDescription {
 	return &e
 }
-func (e *RolesDescription) UnmarshalJSON(data []byte) error {
+func (e *RolesControlPlanesDescription) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "This role grants full write access to administer certificates.":
-		*e = RolesDescription(v)
+		*e = RolesControlPlanesDescription(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RolesDescription: %v", v)
+		return fmt.Errorf("invalid value for RolesControlPlanesDescription: %v", v)
 	}
 }
 
 type CertificateAdmin struct {
-	Name        RolesControlPlanesRolesName `json:"name"`
-	Description RolesDescription            `json:"description"`
+	Name        RolesControlPlanesRolesName   `json:"name"`
+	Description RolesControlPlanesDescription `json:"description"`
 }
 
 func (o *CertificateAdmin) GetName() RolesControlPlanesRolesName {
@@ -153,9 +153,9 @@ func (o *CertificateAdmin) GetName() RolesControlPlanesRolesName {
 	return o.Name
 }
 
-func (o *CertificateAdmin) GetDescription() RolesDescription {
+func (o *CertificateAdmin) GetDescription() RolesControlPlanesDescription {
 	if o == nil {
-		return RolesDescription("")
+		return RolesControlPlanesDescription("")
 	}
 	return o.Description
 }
@@ -183,32 +183,32 @@ func (e *RolesControlPlanesRolesConsumerAdminName) UnmarshalJSON(data []byte) er
 	}
 }
 
-type RolesControlPlanesDescription string
+type RolesControlPlanesRolesDescription string
 
 const (
-	RolesControlPlanesDescriptionThisRoleGrantsFullWriteAccessToAdministerConsumers RolesControlPlanesDescription = "This role grants full write access to administer consumers."
+	RolesControlPlanesRolesDescriptionThisRoleGrantsFullWriteAccessToAdministerConsumers RolesControlPlanesRolesDescription = "This role grants full write access to administer consumers."
 )
 
-func (e RolesControlPlanesDescription) ToPointer() *RolesControlPlanesDescription {
+func (e RolesControlPlanesRolesDescription) ToPointer() *RolesControlPlanesRolesDescription {
 	return &e
 }
-func (e *RolesControlPlanesDescription) UnmarshalJSON(data []byte) error {
+func (e *RolesControlPlanesRolesDescription) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "This role grants full write access to administer consumers.":
-		*e = RolesControlPlanesDescription(v)
+		*e = RolesControlPlanesRolesDescription(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RolesControlPlanesDescription: %v", v)
+		return fmt.Errorf("invalid value for RolesControlPlanesRolesDescription: %v", v)
 	}
 }
 
 type ConsumerAdmin struct {
 	Name        RolesControlPlanesRolesConsumerAdminName `json:"name"`
-	Description RolesControlPlanesDescription            `json:"description"`
+	Description RolesControlPlanesRolesDescription       `json:"description"`
 }
 
 func (o *ConsumerAdmin) GetName() RolesControlPlanesRolesConsumerAdminName {
@@ -218,9 +218,9 @@ func (o *ConsumerAdmin) GetName() RolesControlPlanesRolesConsumerAdminName {
 	return o.Name
 }
 
-func (o *ConsumerAdmin) GetDescription() RolesControlPlanesDescription {
+func (o *ConsumerAdmin) GetDescription() RolesControlPlanesRolesDescription {
 	if o == nil {
-		return RolesControlPlanesDescription("")
+		return RolesControlPlanesRolesDescription("")
 	}
 	return o.Description
 }
@@ -248,32 +248,32 @@ func (e *RolesControlPlanesRolesCreatorName) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type RolesControlPlanesRolesDescription string
+type RolesControlPlanesRolesCreatorDescription string
 
 const (
-	RolesControlPlanesRolesDescriptionCreatesANewControlPlaneInAnOrganizationTheCreatorBecomesTheOwnerOfTheControlPlaneTheyCreate RolesControlPlanesRolesDescription = "Creates a new Control Plane in an organization. The creator becomes the owner of the Control Plane they create."
+	RolesControlPlanesRolesCreatorDescriptionCreatesANewControlPlaneInAnOrganizationTheCreatorBecomesTheOwnerOfTheControlPlaneTheyCreate RolesControlPlanesRolesCreatorDescription = "Creates a new Control Plane in an organization. The creator becomes the owner of the Control Plane they create."
 )
 
-func (e RolesControlPlanesRolesDescription) ToPointer() *RolesControlPlanesRolesDescription {
+func (e RolesControlPlanesRolesCreatorDescription) ToPointer() *RolesControlPlanesRolesCreatorDescription {
 	return &e
 }
-func (e *RolesControlPlanesRolesDescription) UnmarshalJSON(data []byte) error {
+func (e *RolesControlPlanesRolesCreatorDescription) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "Creates a new Control Plane in an organization. The creator becomes the owner of the Control Plane they create.":
-		*e = RolesControlPlanesRolesDescription(v)
+		*e = RolesControlPlanesRolesCreatorDescription(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RolesControlPlanesRolesDescription: %v", v)
+		return fmt.Errorf("invalid value for RolesControlPlanesRolesCreatorDescription: %v", v)
 	}
 }
 
 type Creator struct {
-	Name        RolesControlPlanesRolesCreatorName `json:"name"`
-	Description RolesControlPlanesRolesDescription `json:"description"`
+	Name        RolesControlPlanesRolesCreatorName        `json:"name"`
+	Description RolesControlPlanesRolesCreatorDescription `json:"description"`
 }
 
 func (o *Creator) GetName() RolesControlPlanesRolesCreatorName {
@@ -283,9 +283,9 @@ func (o *Creator) GetName() RolesControlPlanesRolesCreatorName {
 	return o.Name
 }
 
-func (o *Creator) GetDescription() RolesControlPlanesRolesDescription {
+func (o *Creator) GetDescription() RolesControlPlanesRolesCreatorDescription {
 	if o == nil {
-		return RolesControlPlanesRolesDescription("")
+		return RolesControlPlanesRolesCreatorDescription("")
 	}
 	return o.Description
 }
@@ -745,7 +745,7 @@ func (o *Viewer) GetDescription() RolesControlPlanesRolesViewerDescription {
 	return o.Description
 }
 
-type RolesControlPlanesRoles struct {
+type RolesRoles struct {
 	Admin               *Admin               `json:"admin,omitempty"`
 	CertificateAdmin    *CertificateAdmin    `json:"certificate_admin,omitempty"`
 	ConsumerAdmin       *ConsumerAdmin       `json:"consumer_admin,omitempty"`
@@ -759,77 +759,77 @@ type RolesControlPlanesRoles struct {
 	Viewer              *Viewer              `json:"viewer,omitempty"`
 }
 
-func (o *RolesControlPlanesRoles) GetAdmin() *Admin {
+func (o *RolesRoles) GetAdmin() *Admin {
 	if o == nil {
 		return nil
 	}
 	return o.Admin
 }
 
-func (o *RolesControlPlanesRoles) GetCertificateAdmin() *CertificateAdmin {
+func (o *RolesRoles) GetCertificateAdmin() *CertificateAdmin {
 	if o == nil {
 		return nil
 	}
 	return o.CertificateAdmin
 }
 
-func (o *RolesControlPlanesRoles) GetConsumerAdmin() *ConsumerAdmin {
+func (o *RolesRoles) GetConsumerAdmin() *ConsumerAdmin {
 	if o == nil {
 		return nil
 	}
 	return o.ConsumerAdmin
 }
 
-func (o *RolesControlPlanesRoles) GetCreator() *Creator {
+func (o *RolesRoles) GetCreator() *Creator {
 	if o == nil {
 		return nil
 	}
 	return o.Creator
 }
 
-func (o *RolesControlPlanesRoles) GetDeployer() *Deployer {
+func (o *RolesRoles) GetDeployer() *Deployer {
 	if o == nil {
 		return nil
 	}
 	return o.Deployer
 }
 
-func (o *RolesControlPlanesRoles) GetGatewayServiceAdmin() *GatewayServiceAdmin {
+func (o *RolesRoles) GetGatewayServiceAdmin() *GatewayServiceAdmin {
 	if o == nil {
 		return nil
 	}
 	return o.GatewayServiceAdmin
 }
 
-func (o *RolesControlPlanesRoles) GetPluginAdmin() *PluginAdmin {
+func (o *RolesRoles) GetPluginAdmin() *PluginAdmin {
 	if o == nil {
 		return nil
 	}
 	return o.PluginAdmin
 }
 
-func (o *RolesControlPlanesRoles) GetRouteAdmin() *RouteAdmin {
+func (o *RolesRoles) GetRouteAdmin() *RouteAdmin {
 	if o == nil {
 		return nil
 	}
 	return o.RouteAdmin
 }
 
-func (o *RolesControlPlanesRoles) GetSniAdmin() *SniAdmin {
+func (o *RolesRoles) GetSniAdmin() *SniAdmin {
 	if o == nil {
 		return nil
 	}
 	return o.SniAdmin
 }
 
-func (o *RolesControlPlanesRoles) GetUpstreamAdmin() *UpstreamAdmin {
+func (o *RolesRoles) GetUpstreamAdmin() *UpstreamAdmin {
 	if o == nil {
 		return nil
 	}
 	return o.UpstreamAdmin
 }
 
-func (o *RolesControlPlanesRoles) GetViewer() *Viewer {
+func (o *RolesRoles) GetViewer() *Viewer {
 	if o == nil {
 		return nil
 	}
@@ -837,8 +837,8 @@ func (o *RolesControlPlanesRoles) GetViewer() *Viewer {
 }
 
 type ControlPlanes struct {
-	Name  RolesName               `json:"name"`
-	Roles RolesControlPlanesRoles `json:"roles"`
+	Name  RolesName  `json:"name"`
+	Roles RolesRoles `json:"roles"`
 }
 
 func (o *ControlPlanes) GetName() RolesName {
@@ -848,9 +848,9 @@ func (o *ControlPlanes) GetName() RolesName {
 	return o.Name
 }
 
-func (o *ControlPlanes) GetRoles() RolesControlPlanesRoles {
+func (o *ControlPlanes) GetRoles() RolesRoles {
 	if o == nil {
-		return RolesControlPlanesRoles{}
+		return RolesRoles{}
 	}
 	return o.Roles
 }
@@ -989,19 +989,19 @@ func (e *RolesAPIProductsRolesDescription) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type ApplicationRegistration struct {
+type RolesApplicationRegistration struct {
 	Name        RolesAPIProductsRolesApplicationRegistrationName `json:"name"`
 	Description RolesAPIProductsRolesDescription                 `json:"description"`
 }
 
-func (o *ApplicationRegistration) GetName() RolesAPIProductsRolesApplicationRegistrationName {
+func (o *RolesApplicationRegistration) GetName() RolesAPIProductsRolesApplicationRegistrationName {
 	if o == nil {
 		return RolesAPIProductsRolesApplicationRegistrationName("")
 	}
 	return o.Name
 }
 
-func (o *ApplicationRegistration) GetDescription() RolesAPIProductsRolesDescription {
+func (o *RolesApplicationRegistration) GetDescription() RolesAPIProductsRolesDescription {
 	if o == nil {
 		return RolesAPIProductsRolesDescription("")
 	}
@@ -1398,67 +1398,67 @@ func (o *RolesViewer) GetDescription() RolesAPIProductsRolesViewerDescription {
 	return o.Description
 }
 
-type RolesRoles struct {
-	Admin                   *RolesAdmin              `json:"admin,omitempty"`
-	ApplicationRegistration *ApplicationRegistration `json:"application_registration,omitempty"`
-	Creator                 *RolesCreator            `json:"creator,omitempty"`
-	Deployer                *RolesDeployer           `json:"deployer,omitempty"`
-	Maintainer              *Maintainer              `json:"maintainer,omitempty"`
-	PluginsAdmin            *PluginsAdmin            `json:"plugins_admin,omitempty"`
-	Publisher               *Publisher               `json:"publisher,omitempty"`
-	Viewer                  *RolesViewer             `json:"viewer,omitempty"`
+type RolesAPIProductsRoles struct {
+	Admin                   *RolesAdmin                   `json:"admin,omitempty"`
+	ApplicationRegistration *RolesApplicationRegistration `json:"application_registration,omitempty"`
+	Creator                 *RolesCreator                 `json:"creator,omitempty"`
+	Deployer                *RolesDeployer                `json:"deployer,omitempty"`
+	Maintainer              *Maintainer                   `json:"maintainer,omitempty"`
+	PluginsAdmin            *PluginsAdmin                 `json:"plugins_admin,omitempty"`
+	Publisher               *Publisher                    `json:"publisher,omitempty"`
+	Viewer                  *RolesViewer                  `json:"viewer,omitempty"`
 }
 
-func (o *RolesRoles) GetAdmin() *RolesAdmin {
+func (o *RolesAPIProductsRoles) GetAdmin() *RolesAdmin {
 	if o == nil {
 		return nil
 	}
 	return o.Admin
 }
 
-func (o *RolesRoles) GetApplicationRegistration() *ApplicationRegistration {
+func (o *RolesAPIProductsRoles) GetApplicationRegistration() *RolesApplicationRegistration {
 	if o == nil {
 		return nil
 	}
 	return o.ApplicationRegistration
 }
 
-func (o *RolesRoles) GetCreator() *RolesCreator {
+func (o *RolesAPIProductsRoles) GetCreator() *RolesCreator {
 	if o == nil {
 		return nil
 	}
 	return o.Creator
 }
 
-func (o *RolesRoles) GetDeployer() *RolesDeployer {
+func (o *RolesAPIProductsRoles) GetDeployer() *RolesDeployer {
 	if o == nil {
 		return nil
 	}
 	return o.Deployer
 }
 
-func (o *RolesRoles) GetMaintainer() *Maintainer {
+func (o *RolesAPIProductsRoles) GetMaintainer() *Maintainer {
 	if o == nil {
 		return nil
 	}
 	return o.Maintainer
 }
 
-func (o *RolesRoles) GetPluginsAdmin() *PluginsAdmin {
+func (o *RolesAPIProductsRoles) GetPluginsAdmin() *PluginsAdmin {
 	if o == nil {
 		return nil
 	}
 	return o.PluginsAdmin
 }
 
-func (o *RolesRoles) GetPublisher() *Publisher {
+func (o *RolesAPIProductsRoles) GetPublisher() *Publisher {
 	if o == nil {
 		return nil
 	}
 	return o.Publisher
 }
 
-func (o *RolesRoles) GetViewer() *RolesViewer {
+func (o *RolesAPIProductsRoles) GetViewer() *RolesViewer {
 	if o == nil {
 		return nil
 	}
@@ -1466,8 +1466,8 @@ func (o *RolesRoles) GetViewer() *RolesViewer {
 }
 
 type APIProducts struct {
-	Name  RolesAPIProductsName `json:"name"`
-	Roles RolesRoles           `json:"roles"`
+	Name  RolesAPIProductsName  `json:"name"`
+	Roles RolesAPIProductsRoles `json:"roles"`
 }
 
 func (o *APIProducts) GetName() RolesAPIProductsName {
@@ -1477,9 +1477,9 @@ func (o *APIProducts) GetName() RolesAPIProductsName {
 	return o.Name
 }
 
-func (o *APIProducts) GetRoles() RolesRoles {
+func (o *APIProducts) GetRoles() RolesAPIProductsRoles {
 	if o == nil {
-		return RolesRoles{}
+		return RolesAPIProductsRoles{}
 	}
 	return o.Roles
 }

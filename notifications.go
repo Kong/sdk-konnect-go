@@ -32,7 +32,7 @@ func newNotifications(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *ho
 	}
 }
 
-// ListUserConfigurations - List available user configurations.
+// ListUserConfigurations - List available user configurations
 // List available user configurations.
 func (s *Notifications) ListUserConfigurations(ctx context.Context, filter *components.ConfigurationFilterParameters, opts ...operations.Option) (*operations.ListUserConfigurationsResponse, error) {
 	request := operations.ListUserConfigurationsRequest{
@@ -308,7 +308,7 @@ func (s *Notifications) ListUserConfigurations(ctx context.Context, filter *comp
 
 }
 
-// ListEventSubscriptions - List event subscriptions.
+// ListEventSubscriptions - List event subscriptions
 // List event subscriptions.
 func (s *Notifications) ListEventSubscriptions(ctx context.Context, eventID string, opts ...operations.Option) (*operations.ListEventSubscriptionsResponse, error) {
 	request := operations.ListEventSubscriptionsRequest{
@@ -580,7 +580,7 @@ func (s *Notifications) ListEventSubscriptions(ctx context.Context, eventID stri
 
 }
 
-// CreateEventSubscription - Create a new subscription for an event.
+// CreateEventSubscription - Create a new subscription for an event
 // Create a new subscription for an event.
 func (s *Notifications) CreateEventSubscription(ctx context.Context, eventID string, eventSubscription *components.EventSubscription, opts ...operations.Option) (*operations.CreateEventSubscriptionResponse, error) {
 	request := operations.CreateEventSubscriptionRequest{
@@ -881,7 +881,7 @@ func (s *Notifications) CreateEventSubscription(ctx context.Context, eventID str
 
 }
 
-// GetEventSubscription - Get subscription for an event.
+// GetEventSubscription - Get subscription for an event
 // Get subscription for an event.
 func (s *Notifications) GetEventSubscription(ctx context.Context, eventID string, subscriptionID string, opts ...operations.Option) (*operations.GetEventSubscriptionResponse, error) {
 	request := operations.GetEventSubscriptionRequest{
@@ -1175,7 +1175,7 @@ func (s *Notifications) GetEventSubscription(ctx context.Context, eventID string
 
 }
 
-// UpdateEventSubscription - Update subscription for an event.
+// UpdateEventSubscription - Update subscription for an event
 // Update subscription for an event.
 func (s *Notifications) UpdateEventSubscription(ctx context.Context, request operations.UpdateEventSubscriptionRequest, opts ...operations.Option) (*operations.UpdateEventSubscriptionResponse, error) {
 	o := operations.Options{}
@@ -1471,7 +1471,7 @@ func (s *Notifications) UpdateEventSubscription(ctx context.Context, request ope
 
 }
 
-// DeleteEventSubscription - Delete subscription associated with event.
+// DeleteEventSubscription - Delete subscription associated with event
 // Delete subscription associated with event.
 func (s *Notifications) DeleteEventSubscription(ctx context.Context, eventID string, subscriptionID string, opts ...operations.Option) (*operations.DeleteEventSubscriptionResponse, error) {
 	request := operations.DeleteEventSubscriptionRequest{
@@ -1724,7 +1724,7 @@ func (s *Notifications) DeleteEventSubscription(ctx context.Context, eventID str
 
 }
 
-// ListNotifications - List available notifications.
+// ListNotifications - List available notifications
 // List available notifications.
 func (s *Notifications) ListNotifications(ctx context.Context, request operations.ListNotificationsRequest, opts ...operations.Option) (*operations.ListNotificationsResponse, error) {
 	o := operations.Options{}
@@ -1996,7 +1996,7 @@ func (s *Notifications) ListNotifications(ctx context.Context, request operation
 
 }
 
-// GetNotificationDetails - Get notification details.
+// GetNotificationDetails - Get notification details
 // Get notification details.
 func (s *Notifications) GetNotificationDetails(ctx context.Context, notificationID string, opts ...operations.Option) (*operations.GetNotificationDetailsResponse, error) {
 	request := operations.GetNotificationDetailsRequest{
@@ -2268,7 +2268,7 @@ func (s *Notifications) GetNotificationDetails(ctx context.Context, notification
 
 }
 
-// UpdateNotification - Update notification.
+// UpdateNotification - Update notification
 // Update notification.
 func (s *Notifications) UpdateNotification(ctx context.Context, notificationID string, notificationUpdatePayload *components.NotificationUpdatePayload, opts ...operations.Option) (*operations.UpdateNotificationResponse, error) {
 	request := operations.UpdateNotificationRequest{
@@ -2569,7 +2569,7 @@ func (s *Notifications) UpdateNotification(ctx context.Context, notificationID s
 
 }
 
-// DeleteNotification - Delete notification.
+// DeleteNotification - Delete notification
 // Delete notification.
 func (s *Notifications) DeleteNotification(ctx context.Context, notificationID string, opts ...operations.Option) (*operations.DeleteNotificationResponse, error) {
 	request := operations.DeleteNotificationRequest{
@@ -2821,7 +2821,7 @@ func (s *Notifications) DeleteNotification(ctx context.Context, notificationID s
 
 }
 
-// BulkNotifications - Mark a list of notifications to a status.
+// BulkNotifications - Mark a list of notifications to a status
 // Mark a list of notifications to a status.
 func (s *Notifications) BulkNotifications(ctx context.Context, request *components.BulkPayload, opts ...operations.Option) (*operations.BulkNotificationsResponse, error) {
 	o := operations.Options{}
