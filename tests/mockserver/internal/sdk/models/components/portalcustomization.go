@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"mockserver/internal/sdk/utils"
 )
 
 type Mode string
@@ -102,10 +103,21 @@ func (o *Menu) GetFooterBottom() []PortalMenuItem {
 }
 
 type SpecRenderer struct {
-	TryItUI        *bool `json:"try_it_ui,omitempty"`
-	TryItInsomnia  *bool `json:"try_it_insomnia,omitempty"`
-	InfiniteScroll *bool `json:"infinite_scroll,omitempty"`
-	ShowSchemas    *bool `json:"show_schemas,omitempty"`
+	TryItUI        *bool `default:"true" json:"try_it_ui"`
+	TryItInsomnia  *bool `default:"true" json:"try_it_insomnia"`
+	InfiniteScroll *bool `default:"true" json:"infinite_scroll"`
+	ShowSchemas    *bool `default:"true" json:"show_schemas"`
+}
+
+func (s SpecRenderer) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SpecRenderer) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *SpecRenderer) GetTryItUI() *bool {

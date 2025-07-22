@@ -5,28 +5,40 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 // PartialRedisCEConfig - Redis-CE configuration
 type PartialRedisCEConfig struct {
 	// Database to use for the Redis connection when using the `redis` strategy
-	Database *int64 `json:"database,omitempty"`
+	Database *int64 `default:"0" json:"database"`
 	// Redis host.
 	Host *string `json:"host,omitempty"`
 	// Password to use for Redis connections. If undefined, no AUTH commands are sent to Redis.
 	Password *string `json:"password,omitempty"`
 	// Redis port.
-	Port *int64 `json:"port,omitempty"`
+	Port *int64 `default:"6379" json:"port"`
 	// Server name for SSL verification.
 	ServerName *string `json:"server_name,omitempty"`
 	// If set to true, uses SSL to connect to Redis.
-	Ssl *bool `json:"ssl,omitempty"`
+	Ssl *bool `default:"false" json:"ssl"`
 	// If set to true, verifies the validity of the server SSL certificate.
-	SslVerify *bool `json:"ssl_verify,omitempty"`
+	SslVerify *bool `default:"false" json:"ssl_verify"`
 	// Connection timeout.
-	Timeout *int64 `json:"timeout,omitempty"`
+	Timeout *int64 `default:"1000" json:"timeout"`
 	// Username to use for Redis connections. If undefined, ACL authentication won't be performed. Requires Redis v6.0.0+.
 	Username *string `json:"username,omitempty"`
+}
+
+func (p PartialRedisCEConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PartialRedisCEConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PartialRedisCEConfig) GetDatabase() *int64 {

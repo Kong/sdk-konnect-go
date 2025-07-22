@@ -2,57 +2,12 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
-// PortalAssignRoleRequestEntityRegion - Region of the entity.
-type PortalAssignRoleRequestEntityRegion string
-
-const (
-	PortalAssignRoleRequestEntityRegionUs       PortalAssignRoleRequestEntityRegion = "us"
-	PortalAssignRoleRequestEntityRegionEu       PortalAssignRoleRequestEntityRegion = "eu"
-	PortalAssignRoleRequestEntityRegionAu       PortalAssignRoleRequestEntityRegion = "au"
-	PortalAssignRoleRequestEntityRegionMe       PortalAssignRoleRequestEntityRegion = "me"
-	PortalAssignRoleRequestEntityRegionIn       PortalAssignRoleRequestEntityRegion = "in"
-	PortalAssignRoleRequestEntityRegionWildcard PortalAssignRoleRequestEntityRegion = "*"
-)
-
-func (e PortalAssignRoleRequestEntityRegion) ToPointer() *PortalAssignRoleRequestEntityRegion {
-	return &e
-}
-func (e *PortalAssignRoleRequestEntityRegion) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "us":
-		fallthrough
-	case "eu":
-		fallthrough
-	case "au":
-		fallthrough
-	case "me":
-		fallthrough
-	case "in":
-		fallthrough
-	case "*":
-		*e = PortalAssignRoleRequestEntityRegion(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for PortalAssignRoleRequestEntityRegion: %v", v)
-	}
-}
-
 // PortalAssignRoleRequest - An assigned role associates a service and an action to a team.
 type PortalAssignRoleRequest struct {
-	RoleName       *string `json:"role_name,omitempty"`
-	EntityID       *string `json:"entity_id,omitempty"`
-	EntityTypeName *string `json:"entity_type_name,omitempty"`
-	// Region of the entity.
-	EntityRegion *PortalAssignRoleRequestEntityRegion `json:"entity_region,omitempty"`
+	RoleName       *string       `json:"role_name,omitempty"`
+	EntityID       *string       `json:"entity_id,omitempty"`
+	EntityTypeName *string       `json:"entity_type_name,omitempty"`
+	EntityRegion   *EntityRegion `json:"entity_region,omitempty"`
 }
 
 func (o *PortalAssignRoleRequest) GetRoleName() *string {
@@ -76,7 +31,7 @@ func (o *PortalAssignRoleRequest) GetEntityTypeName() *string {
 	return o.EntityTypeName
 }
 
-func (o *PortalAssignRoleRequest) GetEntityRegion() *PortalAssignRoleRequestEntityRegion {
+func (o *PortalAssignRoleRequest) GetEntityRegion() *EntityRegion {
 	if o == nil {
 		return nil
 	}

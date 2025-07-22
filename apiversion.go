@@ -32,10 +32,10 @@ func newAPIVersion(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hooks
 
 // CreateAPIVersion - Create API Version
 // Creates a version (OpenAPI or AsyncAPI) for an API.
-func (s *APIVersion) CreateAPIVersion(ctx context.Context, apiID string, createAPIVersionRequest components.CreateAPIVersionRequest, opts ...operations.Option) (*operations.CreateAPIVersionResponse, error) {
+func (s *APIVersion) CreateAPIVersion(ctx context.Context, apiID string, apiVersion components.APIVersion, opts ...operations.Option) (*operations.CreateAPIVersionResponse, error) {
 	request := operations.CreateAPIVersionRequest{
-		APIID:                   apiID,
-		CreateAPIVersionRequest: createAPIVersionRequest,
+		APIID:      apiID,
+		APIVersion: apiVersion,
 	}
 
 	o := operations.Options{}
@@ -70,7 +70,7 @@ func (s *APIVersion) CreateAPIVersion(ctx context.Context, apiID string, createA
 		OAuth2Scopes:     []string{},
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateAPIVersionRequest", "json", `request:"mediaType=application/json"`)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "APIVersion", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
 	}
@@ -373,7 +373,7 @@ func (s *APIVersion) CreateAPIVersion(ctx context.Context, apiID string, createA
 
 }
 
-// ListAPIVersions - List API Specifications
+// ListAPIVersions - List API Versions
 // Returns a list of versions for an API. The version can be of type OpenAPI or AsyncAPI.
 // **Note:** You can only have one version for an API.
 func (s *APIVersion) ListAPIVersions(ctx context.Context, request operations.ListAPIVersionsRequest, opts ...operations.Option) (*operations.ListAPIVersionsResponse, error) {
@@ -648,10 +648,10 @@ func (s *APIVersion) ListAPIVersions(ctx context.Context, request operations.Lis
 
 // FetchAPIVersion - Fetch API Version
 // Fetches the version (OpenAPI or AsyncAPI) of an API.
-func (s *APIVersion) FetchAPIVersion(ctx context.Context, apiID string, specID string, opts ...operations.Option) (*operations.FetchAPIVersionResponse, error) {
+func (s *APIVersion) FetchAPIVersion(ctx context.Context, apiID string, versionID string, opts ...operations.Option) (*operations.FetchAPIVersionResponse, error) {
 	request := operations.FetchAPIVersionRequest{
-		APIID:  apiID,
-		SpecID: specID,
+		APIID:     apiID,
+		VersionID: versionID,
 	}
 
 	o := operations.Options{}
@@ -672,7 +672,7 @@ func (s *APIVersion) FetchAPIVersion(ctx context.Context, apiID string, specID s
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/apis/{apiId}/versions/{specId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/apis/{apiId}/versions/{versionId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -940,7 +940,7 @@ func (s *APIVersion) UpdateAPIVersion(ctx context.Context, request operations.Up
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/apis/{apiId}/versions/{specId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/apis/{apiId}/versions/{versionId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1259,10 +1259,10 @@ func (s *APIVersion) UpdateAPIVersion(ctx context.Context, request operations.Up
 
 // DeleteAPIVersion - Delete API Version
 // Deletes the version (OpenAPI or AsyncAPI) of an API.
-func (s *APIVersion) DeleteAPIVersion(ctx context.Context, apiID string, specID string, opts ...operations.Option) (*operations.DeleteAPIVersionResponse, error) {
+func (s *APIVersion) DeleteAPIVersion(ctx context.Context, apiID string, versionID string, opts ...operations.Option) (*operations.DeleteAPIVersionResponse, error) {
 	request := operations.DeleteAPIVersionRequest{
-		APIID:  apiID,
-		SpecID: specID,
+		APIID:     apiID,
+		VersionID: versionID,
 	}
 
 	o := operations.Options{}
@@ -1283,7 +1283,7 @@ func (s *APIVersion) DeleteAPIVersion(ctx context.Context, apiID string, specID 
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/apis/{apiId}/versions/{specId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/apis/{apiId}/versions/{versionId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

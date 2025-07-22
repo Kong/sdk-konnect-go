@@ -9,11 +9,11 @@ import (
 
 // ListPortalDevelopersQueryParamFilter - Filter developers returned in the response.
 type ListPortalDevelopersQueryParamFilter struct {
-	// Filters on the given string field value by exact match inequality.
+	// Filters on the given string field value by either exact or fuzzy match.
 	Name *components.StringFieldFilter `queryParam:"name=name"`
-	// Filters on the given string field value by exact match inequality.
+	// Filters on the given string field value by either exact or fuzzy match.
 	Status *components.StringFieldFilter `queryParam:"name=status"`
-	// Filters on the given string field value by exact match inequality.
+	// Filters on the given string field value by either exact or fuzzy match.
 	Email *components.StringFieldFilter `queryParam:"name=email"`
 }
 

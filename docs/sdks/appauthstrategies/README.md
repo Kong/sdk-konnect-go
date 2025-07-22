@@ -44,11 +44,17 @@ func main() {
 
     res, err := s.AppAuthStrategies.CreateAppAuthStrategy(ctx, components.CreateCreateAppAuthStrategyRequestKeyAuth(
         components.AppAuthStrategyKeyAuthRequest{
-            Name: "<value>",
-            DisplayName: "Theo_Boyer",
+            Name: "auth strategy 1",
+            DisplayName: "API Key Auth",
             StrategyType: components.StrategyTypeKeyAuth,
             Configs: components.AppAuthStrategyKeyAuthRequestConfigs{
-                KeyAuth: components.AppAuthStrategyConfigKeyAuth{},
+                KeyAuth: components.AppAuthStrategyConfigKeyAuth{
+                    KeyNames: []string{
+                        "apikey",
+                        "api-key",
+                        "x-api-key",
+                    },
+                },
             },
         },
     ))
@@ -223,25 +229,17 @@ func main() {
         }),
     )
 
-    res, err := s.AppAuthStrategies.ReplaceAppAuthStrategy(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.CreateCreateAppAuthStrategyRequestOpenidConnect(
-        components.AppAuthStrategyOpenIDConnectRequest{
-            Name: "<value>",
-            DisplayName: "Dannie77",
-            StrategyType: components.AppAuthStrategyOpenIDConnectRequestStrategyTypeOpenidConnect,
-            Configs: components.AppAuthStrategyOpenIDConnectRequestConfigs{
-                OpenidConnect: components.AppAuthStrategyConfigOpenIDConnect{
-                    Issuer: "https://tedious-tinderbox.org/",
-                    CredentialClaim: []string{
-                        "<value 1>",
-                        "<value 2>",
-                        "<value 3>",
-                    },
-                    Scopes: []string{},
-                    AuthMethods: []string{},
-                    AdditionalProperties: map[string]any{
-                        "labels": map[string]any{
-                            "env": "test",
-                        },
+    res, err := s.AppAuthStrategies.ReplaceAppAuthStrategy(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.CreateCreateAppAuthStrategyRequestKeyAuth(
+        components.AppAuthStrategyKeyAuthRequest{
+            Name: "auth strategy 1",
+            DisplayName: "API Key Auth",
+            StrategyType: components.StrategyTypeKeyAuth,
+            Configs: components.AppAuthStrategyKeyAuthRequestConfigs{
+                KeyAuth: components.AppAuthStrategyConfigKeyAuth{
+                    KeyNames: []string{
+                        "apikey",
+                        "api-key",
+                        "x-api-key",
                     },
                 },
             },
@@ -304,9 +302,7 @@ func main() {
     )
 
     res, err := s.AppAuthStrategies.UpdateAppAuthStrategy(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.UpdateAppAuthStrategyRequest{
-        Labels: map[string]*string{
-            "env": sdkkonnectgo.String("test"),
-        },
+        DisplayName: sdkkonnectgo.String("API Key"),
     })
     if err != nil {
         log.Fatal(err)

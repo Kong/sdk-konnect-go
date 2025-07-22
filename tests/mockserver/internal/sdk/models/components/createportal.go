@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"mockserver/internal/sdk/utils"
 )
 
 // CreatePortalDefaultAPIVisibility - The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.
@@ -61,7 +62,6 @@ func (e *CreatePortalDefaultPageVisibility) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// CreatePortal - Create a portal.
 type CreatePortal struct {
 	// The name of the portal, used to distinguish it from other portals. Name must be unique.
 	Name string `json:"name"`
@@ -70,9 +70,9 @@ type CreatePortal struct {
 	// A description of the portal.
 	Description *string `json:"description,omitempty"`
 	// Whether the portal supports developer authentication. If disabled, developers cannot register for accounts or create applications.
-	AuthenticationEnabled *bool `json:"authentication_enabled,omitempty"`
+	AuthenticationEnabled *bool `default:"true" json:"authentication_enabled"`
 	// Whether the portal resources are protected by Role Based Access Control (RBAC). If enabled, developers view or register for APIs until unless assigned to teams with access to view and consume specific APIs. Authentication must be enabled to use RBAC.
-	RbacEnabled *bool `json:"rbac_enabled,omitempty"`
+	RbacEnabled *bool `default:"false" json:"rbac_enabled"`
 	// The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.
 	DefaultAPIVisibility *CreatePortalDefaultAPIVisibility `json:"default_api_visibility,omitempty"`
 	// The default visibility of pages in the portal. If set to `public`, newly created pages are visible to unauthenticated developers. If set to `private`, newly created pages are hidden from unauthenticated developers.
@@ -80,9 +80,9 @@ type CreatePortal struct {
 	// The default authentication strategy for APIs published to the portal. Newly published APIs will use this authentication strategy unless overridden during publication. If set to `null`, API publications will not use an authentication strategy unless set during publication.
 	DefaultApplicationAuthStrategyID *string `json:"default_application_auth_strategy_id,omitempty"`
 	// Whether developer account registrations will be automatically approved, or if they will be set to pending until approved by an admin.
-	AutoApproveDevelopers *bool `json:"auto_approve_developers,omitempty"`
+	AutoApproveDevelopers *bool `default:"false" json:"auto_approve_developers"`
 	// Whether requests from applications to register for APIs will be automatically approved, or if they will be set to pending until approved by an admin.
-	AutoApproveApplications *bool `json:"auto_approve_applications,omitempty"`
+	AutoApproveApplications *bool `default:"false" json:"auto_approve_applications"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Labels are intended to store **INTERNAL** metadata.
@@ -90,6 +90,17 @@ type CreatePortal struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]*string `json:"labels,omitempty"`
+}
+
+func (c CreatePortal) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreatePortal) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreatePortal) GetName() string {

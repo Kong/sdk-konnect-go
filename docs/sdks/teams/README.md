@@ -100,6 +100,7 @@ func main() {
         Description: sdkkonnectgo.String("The Identity Management (IDM) team."),
         Labels: map[string]string{
             "env": "test",
+            "service": "test",
         },
     })
     if err != nil {
@@ -215,7 +216,7 @@ func main() {
         Name: sdkkonnectgo.String("IDM - Developers"),
         Description: sdkkonnectgo.String("The Identity Management (IDM) API team."),
         Labels: map[string]*string{
-            "env": sdkkonnectgo.String("test"),
+            "env": sdkkonnectgo.String("prod"),
         },
     })
     if err != nil {

@@ -220,7 +220,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         UpdateConfigStore: components.UpdateConfigStore{
-            Name: sdkkonnectgo.String("Config Store"),
+            Name: sdkkonnectgo.String("Config Store with Updated Name"),
         },
     })
     if err != nil {

@@ -152,7 +152,7 @@ func main() {
     )
 
     res, err := s.Users.UpdateUser(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateUser{
-        FullName: sdkkonnectgo.String("James C. Woods"),
+        FullName: sdkkonnectgo.String("James C Woods"),
         PreferredName: sdkkonnectgo.String("Jimmy"),
     })
     if err != nil {

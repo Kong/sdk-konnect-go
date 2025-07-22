@@ -401,7 +401,7 @@ func main() {
     )
 
     res, err := s.SNIs.CreateSni(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Sni{
-        Certificate: &components.SNICertificate{
+        Certificate: components.SNICertificate{
             ID: sdkkonnectgo.String("bd380f99-659d-415e-b0e7-72ea05df3218"),
         },
         ID: sdkkonnectgo.String("36c4566c-14cc-4132-9011-4139fcbbe50a"),
@@ -576,7 +576,7 @@ func main() {
         SNIID: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Sni: components.Sni{
-            Certificate: &components.SNICertificate{
+            Certificate: components.SNICertificate{
                 ID: sdkkonnectgo.String("bd380f99-659d-415e-b0e7-72ea05df3218"),
             },
             ID: sdkkonnectgo.String("36c4566c-14cc-4132-9011-4139fcbbe50a"),

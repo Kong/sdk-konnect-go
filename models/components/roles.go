@@ -183,6 +183,7 @@ func (e *RolesControlPlanesRolesConsumerAdminName) UnmarshalJSON(data []byte) er
 	}
 }
 
+// RolesControlPlanesRolesDescription - This role grants full write access to administer Consumers. Can configure plugins and view plugin partials for Consumers they have access to. Cannot create or modify global plugins or plugins outside their scope.
 type RolesControlPlanesRolesDescription string
 
 const (
@@ -207,8 +208,9 @@ func (e *RolesControlPlanesRolesDescription) UnmarshalJSON(data []byte) error {
 }
 
 type ConsumerAdmin struct {
-	Name        RolesControlPlanesRolesConsumerAdminName `json:"name"`
-	Description RolesControlPlanesRolesDescription       `json:"description"`
+	Name RolesControlPlanesRolesConsumerAdminName `json:"name"`
+	// This role grants full write access to administer Consumers. Can configure plugins and view plugin partials for Consumers they have access to. Cannot create or modify global plugins or plugins outside their scope.
+	Description RolesControlPlanesRolesDescription `json:"description"`
 }
 
 func (o *ConsumerAdmin) GetName() RolesControlPlanesRolesConsumerAdminName {
@@ -378,6 +380,7 @@ func (e *RolesControlPlanesRolesGatewayServiceAdminName) UnmarshalJSON(data []by
 	}
 }
 
+// RolesControlPlanesRolesGatewayServiceAdminDescription - This role grants full write access to administer Gateway Services. Can configure plugins and view plugin partials for Services they have access to. Cannot create or modify global plugins or plugins outside their scope.
 type RolesControlPlanesRolesGatewayServiceAdminDescription string
 
 const (
@@ -402,7 +405,8 @@ func (e *RolesControlPlanesRolesGatewayServiceAdminDescription) UnmarshalJSON(da
 }
 
 type GatewayServiceAdmin struct {
-	Name        RolesControlPlanesRolesGatewayServiceAdminName        `json:"name"`
+	Name RolesControlPlanesRolesGatewayServiceAdminName `json:"name"`
+	// This role grants full write access to administer Gateway Services. Can configure plugins and view plugin partials for Services they have access to. Cannot create or modify global plugins or plugins outside their scope.
 	Description RolesControlPlanesRolesGatewayServiceAdminDescription `json:"description"`
 }
 
@@ -443,6 +447,7 @@ func (e *RolesControlPlanesRolesPluginAdminName) UnmarshalJSON(data []byte) erro
 	}
 }
 
+// RolesControlPlanesRolesPluginAdminDescription - Can configure plugins at any scope (global, Service, Route, or Consumer) within a Control Plane Group. Also has write access to plugin partials.
 type RolesControlPlanesRolesPluginAdminDescription string
 
 const (
@@ -467,7 +472,8 @@ func (e *RolesControlPlanesRolesPluginAdminDescription) UnmarshalJSON(data []byt
 }
 
 type PluginAdmin struct {
-	Name        RolesControlPlanesRolesPluginAdminName        `json:"name"`
+	Name RolesControlPlanesRolesPluginAdminName `json:"name"`
+	// Can configure plugins at any scope (global, Service, Route, or Consumer) within a Control Plane Group. Also has write access to plugin partials.
 	Description RolesControlPlanesRolesPluginAdminDescription `json:"description"`
 }
 
@@ -508,6 +514,7 @@ func (e *RolesControlPlanesRolesRouteAdminName) UnmarshalJSON(data []byte) error
 	}
 }
 
+// RolesControlPlanesRolesRouteAdminDescription - This role grants full write access to administer Routes. Can configure plugins and view plugin partials for Routes they have access to. Cannot create or modify global plugins or plugins outside their scope.
 type RolesControlPlanesRolesRouteAdminDescription string
 
 const (
@@ -532,7 +539,8 @@ func (e *RolesControlPlanesRolesRouteAdminDescription) UnmarshalJSON(data []byte
 }
 
 type RouteAdmin struct {
-	Name        RolesControlPlanesRolesRouteAdminName        `json:"name"`
+	Name RolesControlPlanesRolesRouteAdminName `json:"name"`
+	// This role grants full write access to administer Routes. Can configure plugins and view plugin partials for Routes they have access to. Cannot create or modify global plugins or plugins outside their scope.
 	Description RolesControlPlanesRolesRouteAdminDescription `json:"description"`
 }
 
@@ -703,6 +711,7 @@ func (e *RolesControlPlanesRolesViewerName) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// RolesControlPlanesRolesViewerDescription - This role grants read-only access to all the configurations of a Control Plane Group and corresponding Data Plane nodes. Includes read-only access to plugin partials within accessible scopes.
 type RolesControlPlanesRolesViewerDescription string
 
 const (
@@ -727,7 +736,8 @@ func (e *RolesControlPlanesRolesViewerDescription) UnmarshalJSON(data []byte) er
 }
 
 type Viewer struct {
-	Name        RolesControlPlanesRolesViewerName        `json:"name"`
+	Name RolesControlPlanesRolesViewerName `json:"name"`
+	// This role grants read-only access to all the configurations of a Control Plane Group and corresponding Data Plane nodes. Includes read-only access to plugin partials within accessible scopes.
 	Description RolesControlPlanesRolesViewerDescription `json:"description"`
 }
 

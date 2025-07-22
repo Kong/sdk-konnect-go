@@ -3,12 +3,11 @@
 An entity that implements an API
 
 
-## Fields
+## Supported Types
 
-| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 | Example                                                                                     |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `ID`                                                                                        | *string*                                                                                    | :heavy_check_mark:                                                                          | Contains a unique identifier used for this resource.                                        | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                                                        |
-| `CreatedAt`                                                                                 | [time.Time](https://pkg.go.dev/time#Time)                                                   | :heavy_check_mark:                                                                          | An ISO-8601 timestamp representation of entity creation date.                               | 2022-11-04T20:10:06.927Z                                                                    |
-| `UpdatedAt`                                                                                 | [time.Time](https://pkg.go.dev/time#Time)                                                   | :heavy_check_mark:                                                                          | An ISO-8601 timestamp representation of entity update date.                                 | 2022-11-04T20:10:06.927Z                                                                    |
-| `APIID`                                                                                     | *string*                                                                                    | :heavy_check_mark:                                                                          | The API identifier.                                                                         | 9f5061ce-78f6-4452-9108-ad7c02821fd5                                                        |
-| `Service`                                                                                   | [*components.APIImplementationService](../../models/components/apiimplementationservice.md) | :heavy_minus_sign:                                                                          | A Gateway service that implements an API                                                    |                                                                                             |
+### APIImplementationListItemGatewayServiceEntity
+
+```go
+apiImplementationListItem := components.CreateAPIImplementationListItemAPIImplementationListItemGatewayServiceEntity(components.APIImplementationListItemGatewayServiceEntity{/* values here */})
+```
+

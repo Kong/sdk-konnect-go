@@ -2,10 +2,46 @@
 
 package components
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
+// APIVersionAPISpecType - The type of specification being stored. This allows us to render the specification correctly.
+type APIVersionAPISpecType string
+
+const (
+	APIVersionAPISpecTypeOas2     APIVersionAPISpecType = "oas2"
+	APIVersionAPISpecTypeOas3     APIVersionAPISpecType = "oas3"
+	APIVersionAPISpecTypeAsyncapi APIVersionAPISpecType = "asyncapi"
+)
+
+func (e APIVersionAPISpecType) ToPointer() *APIVersionAPISpecType {
+	return &e
+}
+func (e *APIVersionAPISpecType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "oas2":
+		fallthrough
+	case "oas3":
+		fallthrough
+	case "asyncapi":
+		*e = APIVersionAPISpecType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for APIVersionAPISpecType: %v", v)
+	}
+}
+
 type APIVersionSpec struct {
 	// The raw content of your API spec, in json or yaml format (OpenAPI or AsyncAPI).
 	//
-	Content *string `json:"content,omitempty"`
+	Content *string                `json:"content,omitempty"`
+	Type    *APIVersionAPISpecType `json:"type,omitempty"`
 }
 
 func (o *APIVersionSpec) GetContent() *string {
@@ -13,6 +49,13 @@ func (o *APIVersionSpec) GetContent() *string {
 		return nil
 	}
 	return o.Content
+}
+
+func (o *APIVersionSpec) GetType() *APIVersionAPISpecType {
+	if o == nil {
+		return nil
+	}
+	return o.Type
 }
 
 type APIVersion struct {

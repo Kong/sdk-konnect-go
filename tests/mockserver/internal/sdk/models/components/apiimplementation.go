@@ -2,15 +2,50 @@
 
 package components
 
+import (
+	"errors"
+	"fmt"
+	"mockserver/internal/sdk/utils"
+)
+
+type APIImplementationType string
+
+const (
+	APIImplementationTypeAPIImplementationGatewayServiceEntityInput APIImplementationType = "ApiImplementationGatewayServiceEntity_input"
+)
+
 // APIImplementation - An entity that implements an API
 type APIImplementation struct {
-	// A Gateway service that implements an API
-	Service *APIImplementationService `json:"service,omitempty"`
+	APIImplementationGatewayServiceEntityInput *APIImplementationGatewayServiceEntityInput `queryParam:"inline"`
+
+	Type APIImplementationType
 }
 
-func (o *APIImplementation) GetService() *APIImplementationService {
-	if o == nil {
+func CreateAPIImplementationAPIImplementationGatewayServiceEntityInput(apiImplementationGatewayServiceEntityInput APIImplementationGatewayServiceEntityInput) APIImplementation {
+	typ := APIImplementationTypeAPIImplementationGatewayServiceEntityInput
+
+	return APIImplementation{
+		APIImplementationGatewayServiceEntityInput: &apiImplementationGatewayServiceEntityInput,
+		Type: typ,
+	}
+}
+
+func (u *APIImplementation) UnmarshalJSON(data []byte) error {
+
+	var apiImplementationGatewayServiceEntityInput APIImplementationGatewayServiceEntityInput = APIImplementationGatewayServiceEntityInput{}
+	if err := utils.UnmarshalJSON(data, &apiImplementationGatewayServiceEntityInput, "", true, true); err == nil {
+		u.APIImplementationGatewayServiceEntityInput = &apiImplementationGatewayServiceEntityInput
+		u.Type = APIImplementationTypeAPIImplementationGatewayServiceEntityInput
 		return nil
 	}
-	return o.Service
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for APIImplementation", string(data))
+}
+
+func (u APIImplementation) MarshalJSON() ([]byte, error) {
+	if u.APIImplementationGatewayServiceEntityInput != nil {
+		return utils.MarshalJSON(u.APIImplementationGatewayServiceEntityInput, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type APIImplementation: all fields are null")
 }

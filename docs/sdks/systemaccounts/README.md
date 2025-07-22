@@ -98,7 +98,11 @@ func main() {
         }),
     )
 
-    res, err := s.SystemAccounts.PostSystemAccounts(ctx, nil)
+    res, err := s.SystemAccounts.PostSystemAccounts(ctx, &components.CreateSystemAccount{
+        Name: "Sample System Account",
+        Description: "This is a sample system account description.",
+        KonnectManaged: sdkkonnectgo.Bool(false),
+    })
     if err != nil {
         log.Fatal(err)
     }

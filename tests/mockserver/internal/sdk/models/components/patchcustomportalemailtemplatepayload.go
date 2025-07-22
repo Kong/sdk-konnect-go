@@ -2,11 +2,26 @@
 
 package components
 
+import (
+	"mockserver/internal/sdk/utils"
+)
+
 // PatchCustomPortalEmailTemplatePayload - Update a custom portal email template.
 type PatchCustomPortalEmailTemplatePayload struct {
 	Content *EmailTemplateContent `json:"content,omitempty"`
 	// Whether the email template is enabled or disabled for a portal
-	Enabled *bool `json:"enabled,omitempty"`
+	Enabled *bool `default:"true" json:"enabled"`
+}
+
+func (p PatchCustomPortalEmailTemplatePayload) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchCustomPortalEmailTemplatePayload) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PatchCustomPortalEmailTemplatePayload) GetContent() *EmailTemplateContent {

@@ -3,8 +3,11 @@
 An entity that implements an API
 
 
-## Fields
+## Supported Types
 
-| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `Service`                                                                                   | [*components.APIImplementationService](../../models/components/apiimplementationservice.md) | :heavy_minus_sign:                                                                          | A Gateway service that implements an API                                                    |
+### APIImplementationGatewayServiceEntity
+
+```go
+apiImplementation := components.CreateAPIImplementationAPIImplementationGatewayServiceEntity(components.APIImplementationGatewayServiceEntity{/* values here */})
+```
+

@@ -11,7 +11,7 @@ type FetchAPIVersionRequest struct {
 	// The UUID API identifier
 	APIID string `pathParam:"style=simple,explode=false,name=apiId"`
 	// The API version identifier
-	SpecID string `pathParam:"style=simple,explode=false,name=specId"`
+	VersionID string `pathParam:"style=simple,explode=false,name=versionId"`
 }
 
 func (o *FetchAPIVersionRequest) GetAPIID() string {
@@ -21,11 +21,11 @@ func (o *FetchAPIVersionRequest) GetAPIID() string {
 	return o.APIID
 }
 
-func (o *FetchAPIVersionRequest) GetSpecID() string {
+func (o *FetchAPIVersionRequest) GetVersionID() string {
 	if o == nil {
 		return ""
 	}
-	return o.SpecID
+	return o.VersionID
 }
 
 type FetchAPIVersionResponse struct {

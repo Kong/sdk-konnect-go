@@ -95,7 +95,7 @@ func main() {
     )
 
     res, err := s.Assets.ReplacePortalAssetFavicon(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.ReplacePortalImageAsset{
-        Data: "data:image/jpeg;base64,bmljZV9sb29raW5nX3BpY3R1cmU=",
+        Data: "data:image/png;base64,bmljZV9sb29raW5nX3BpY3R1cmU=",
     })
     if err != nil {
         log.Fatal(err)
@@ -264,7 +264,7 @@ func main() {
     )
 
     res, err := s.Assets.ReplacePortalAssetLogo(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.ReplacePortalImageAsset{
-        Data: "data:image/jpeg;base64,bmljZV9sb29raW5nX3BpY3R1cmU=",
+        Data: "data:image/png;base64,bmljZV9sb29raW5nX3BpY3R1cmU=",
     })
     if err != nil {
         log.Fatal(err)

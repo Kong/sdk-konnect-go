@@ -11,3 +11,4 @@ Which load balancing algorithm to use.
 | `UpstreamAlgorithmLeastConnections`  | least-connections                    |
 | `UpstreamAlgorithmRoundRobin`        | round-robin                          |
 | `UpstreamAlgorithmLatency`           | latency                              |
+| `UpstreamAlgorithmStickySessions`    | sticky-sessions                      |

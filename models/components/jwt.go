@@ -5,24 +5,35 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type Algorithm string
 
 const (
-	AlgorithmHs256 Algorithm = "HS256"
-	AlgorithmHs384 Algorithm = "HS384"
-	AlgorithmHs512 Algorithm = "HS512"
-	AlgorithmRs256 Algorithm = "RS256"
-	AlgorithmRs384 Algorithm = "RS384"
-	AlgorithmRs512 Algorithm = "RS512"
-	AlgorithmEs256 Algorithm = "ES256"
-	AlgorithmEs384 Algorithm = "ES384"
-	AlgorithmEs512 Algorithm = "ES512"
-	AlgorithmPs256 Algorithm = "PS256"
-	AlgorithmPs384 Algorithm = "PS384"
-	AlgorithmPs512 Algorithm = "PS512"
-	AlgorithmEdDsa Algorithm = "EdDSA"
+	AlgorithmHs256   Algorithm = "HS256"
+	AlgorithmHs384   Algorithm = "HS384"
+	AlgorithmHs512   Algorithm = "HS512"
+	AlgorithmRs256   Algorithm = "RS256"
+	AlgorithmRs384   Algorithm = "RS384"
+	AlgorithmRs512   Algorithm = "RS512"
+	AlgorithmPs256   Algorithm = "PS256"
+	AlgorithmPs384   Algorithm = "PS384"
+	AlgorithmPs512   Algorithm = "PS512"
+	AlgorithmEs256   Algorithm = "ES256"
+	AlgorithmEs384   Algorithm = "ES384"
+	AlgorithmEs512   Algorithm = "ES512"
+	AlgorithmEsp256  Algorithm = "ESP256"
+	AlgorithmEsp384  Algorithm = "ESP384"
+	AlgorithmEsp512  Algorithm = "ESP512"
+	AlgorithmEsb256  Algorithm = "ESB256"
+	AlgorithmEsb320  Algorithm = "ESB320"
+	AlgorithmEsb384  Algorithm = "ESB384"
+	AlgorithmEsb512  Algorithm = "ESB512"
+	AlgorithmEs256K  Algorithm = "ES256K"
+	AlgorithmEdDsa   Algorithm = "EdDSA"
+	AlgorithmEd25519 Algorithm = "Ed25519"
+	AlgorithmEd448   Algorithm = "Ed448"
 )
 
 func (e Algorithm) ToPointer() *Algorithm {
@@ -46,19 +57,39 @@ func (e *Algorithm) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "RS512":
 		fallthrough
-	case "ES256":
-		fallthrough
-	case "ES384":
-		fallthrough
-	case "ES512":
-		fallthrough
 	case "PS256":
 		fallthrough
 	case "PS384":
 		fallthrough
 	case "PS512":
 		fallthrough
+	case "ES256":
+		fallthrough
+	case "ES384":
+		fallthrough
+	case "ES512":
+		fallthrough
+	case "ESP256":
+		fallthrough
+	case "ESP384":
+		fallthrough
+	case "ESP512":
+		fallthrough
+	case "ESB256":
+		fallthrough
+	case "ESB320":
+		fallthrough
+	case "ESB384":
+		fallthrough
+	case "ESB512":
+		fallthrough
+	case "ES256K":
+		fallthrough
 	case "EdDSA":
+		fallthrough
+	case "Ed25519":
+		fallthrough
+	case "Ed448":
 		*e = Algorithm(v)
 		return nil
 	default:
@@ -78,7 +109,7 @@ func (o *JWTConsumer) GetID() *string {
 }
 
 type Jwt struct {
-	Algorithm *Algorithm   `json:"algorithm,omitempty"`
+	Algorithm *Algorithm   `default:"HS256" json:"algorithm"`
 	Consumer  *JWTConsumer `json:"consumer,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt    *int64   `json:"created_at,omitempty"`
@@ -87,6 +118,17 @@ type Jwt struct {
 	RsaPublicKey *string  `json:"rsa_public_key,omitempty"`
 	Secret       *string  `json:"secret,omitempty"`
 	Tags         []string `json:"tags,omitempty"`
+}
+
+func (j Jwt) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(j, "", false)
+}
+
+func (j *Jwt) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &j, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Jwt) GetAlgorithm() *Algorithm {

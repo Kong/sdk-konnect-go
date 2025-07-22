@@ -105,8 +105,10 @@ func main() {
     res, err := s.PortalAuthSettings.UpdatePortalAuthenticationSettings(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalAuthenticationSettingsUpdateRequest{
         BasicAuthEnabled: sdkkonnectgo.Bool(true),
         OidcAuthEnabled: sdkkonnectgo.Bool(true),
+        SamlAuthEnabled: sdkkonnectgo.Bool(true),
         OidcTeamMappingEnabled: sdkkonnectgo.Bool(true),
         KonnectMappingEnabled: sdkkonnectgo.Bool(false),
+        IdpMappingEnabled: sdkkonnectgo.Bool(true),
         OidcIssuer: sdkkonnectgo.String("https://identity.example.com/v2"),
         OidcClientID: sdkkonnectgo.String("x7id0o42lklas0blidl2"),
         OidcScopes: []string{
@@ -115,8 +117,6 @@ func main() {
             "profile",
         },
         OidcClaimMappings: &components.PortalClaimMappings{
-            Name: sdkkonnectgo.String("name"),
-            Email: sdkkonnectgo.String("email"),
             Groups: sdkkonnectgo.String("custom-group-claim"),
         },
     })
@@ -252,6 +252,12 @@ func main() {
                     "Service Developer",
                 },
             },
+            components.PortalTeamGroupMappingsUpdateRequestData{
+                TeamID: sdkkonnectgo.String("bc11db4c-6e51-403e-a2bf-33d27ae50c0a"),
+                Groups: []string{
+                    "Service Owner",
+                },
+            },
         },
     })
     if err != nil {
@@ -376,16 +382,19 @@ func main() {
 
     res, err := s.PortalAuthSettings.CreatePortalIdentityProvider(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.String("myapp"),
+        LoginPath: sdkkonnectgo.String("the-oidc-konnect-org"),
         Enabled: sdkkonnectgo.Bool(true),
-        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
-            components.SAMLIdentityProviderConfigInput{
-                IdpMetadataURL: sdkkonnectgo.String("https://mocksaml.com/api/saml/metadata"),
-                IdpMetadataXML: sdkkonnectgo.String("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                "<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n" +
-                "  <!-- SAML metadata content here -->\n" +
-                "</EntityDescriptor>\n" +
-                ""),
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "0oaqhb43ckTZ02j1F357",
+                ClientSecret: sdkkonnectgo.String("BbqwI8xP9E4evOK"),
+                Scopes: []string{
+                    "openid",
+                    "email",
+                    "profile",
+                },
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
             },
         )),
     })
@@ -518,15 +527,18 @@ func main() {
         ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         UpdateIdentityProvider: components.UpdateIdentityProvider{
             Enabled: sdkkonnectgo.Bool(true),
-            LoginPath: sdkkonnectgo.String("myapp"),
-            Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigSAMLIdentityProviderConfigInput(
-                components.SAMLIdentityProviderConfigInput{
-                    IdpMetadataURL: sdkkonnectgo.String("https://mocksaml.com/api/saml/metadata"),
-                    IdpMetadataXML: sdkkonnectgo.String("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                    "<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n" +
-                    "  <!-- SAML metadata content here -->\n" +
-                    "</EntityDescriptor>\n" +
-                    ""),
+            LoginPath: sdkkonnectgo.String("the-oidc-konnect-org"),
+            Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+                components.ConfigureOIDCIdentityProviderConfig{
+                    IssuerURL: "https://konghq.okta.com/oauth2/default",
+                    ClientID: "0oaqhb43ckTZ02j1F357",
+                    ClientSecret: sdkkonnectgo.String("BbqwI8xP9E4evOK"),
+                    Scopes: []string{
+                        "openid",
+                        "email",
+                        "profile",
+                    },
+                    ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
                 },
             )),
         },
