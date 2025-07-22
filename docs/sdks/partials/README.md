@@ -282,6 +282,32 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Partial: components.CreatePartialRedisEe(
             components.PartialRedisEE{
+                Config: components.PartialRedisEEConfig{
+                    ClusterNodes: []components.ClusterNodes{
+                        components.ClusterNodes{
+                            IP: sdkkonnectgo.String("192.168.1.10"),
+                            Port: sdkkonnectgo.Int64(6380),
+                        },
+                    },
+                    ConnectTimeout: sdkkonnectgo.Int64(2000),
+                    Database: sdkkonnectgo.Int64(0),
+                    Host: sdkkonnectgo.String("localhost"),
+                    KeepalivePoolSize: sdkkonnectgo.Int64(256),
+                    Password: sdkkonnectgo.String("password"),
+                    Port: sdkkonnectgo.Int64(6379),
+                    ReadTimeout: sdkkonnectgo.Int64(1000),
+                    SendTimeout: sdkkonnectgo.Int64(1000),
+                    SentinelNodes: []components.SentinelNodes{
+                        components.SentinelNodes{
+                            Host: sdkkonnectgo.String("sentinel1.redis.server"),
+                            Port: sdkkonnectgo.Int64(26379),
+                        },
+                    },
+                    ServerName: sdkkonnectgo.String("redis-ee"),
+                    Ssl: sdkkonnectgo.Bool(false),
+                    SslVerify: sdkkonnectgo.Bool(false),
+                    Username: sdkkonnectgo.String("username"),
+                },
                 Type: components.PartialRedisEETypeRedisEe,
             },
         ),
