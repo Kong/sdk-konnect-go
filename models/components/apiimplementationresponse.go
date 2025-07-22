@@ -3,12 +3,14 @@
 package components
 
 import (
+	"errors"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
 
-// APIImplementationResponse - An entity that implements an API
-type APIImplementationResponse struct {
+// APIImplementationResponseAPIImplementationGatewayServiceEntity - A gateway service that implements an API
+type APIImplementationResponseAPIImplementationGatewayServiceEntity struct {
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -19,41 +21,83 @@ type APIImplementationResponse struct {
 	Service *APIImplementationService `json:"service,omitempty"`
 }
 
-func (a APIImplementationResponse) MarshalJSON() ([]byte, error) {
+func (a APIImplementationResponseAPIImplementationGatewayServiceEntity) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(a, "", false)
 }
 
-func (a *APIImplementationResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+func (a *APIImplementationResponseAPIImplementationGatewayServiceEntity) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, true); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *APIImplementationResponse) GetID() string {
+func (o *APIImplementationResponseAPIImplementationGatewayServiceEntity) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *APIImplementationResponse) GetCreatedAt() time.Time {
+func (o *APIImplementationResponseAPIImplementationGatewayServiceEntity) GetCreatedAt() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
 	return o.CreatedAt
 }
 
-func (o *APIImplementationResponse) GetUpdatedAt() time.Time {
+func (o *APIImplementationResponseAPIImplementationGatewayServiceEntity) GetUpdatedAt() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
 	return o.UpdatedAt
 }
 
-func (o *APIImplementationResponse) GetService() *APIImplementationService {
+func (o *APIImplementationResponseAPIImplementationGatewayServiceEntity) GetService() *APIImplementationService {
 	if o == nil {
 		return nil
 	}
 	return o.Service
+}
+
+type APIImplementationResponseType string
+
+const (
+	APIImplementationResponseTypeAPIImplementationResponseAPIImplementationGatewayServiceEntity APIImplementationResponseType = "ApiImplementationResponse_ApiImplementationGatewayServiceEntity"
+)
+
+// APIImplementationResponse - An entity that implements an API
+type APIImplementationResponse struct {
+	APIImplementationResponseAPIImplementationGatewayServiceEntity *APIImplementationResponseAPIImplementationGatewayServiceEntity `queryParam:"inline"`
+
+	Type APIImplementationResponseType
+}
+
+func CreateAPIImplementationResponseAPIImplementationResponseAPIImplementationGatewayServiceEntity(apiImplementationResponseAPIImplementationGatewayServiceEntity APIImplementationResponseAPIImplementationGatewayServiceEntity) APIImplementationResponse {
+	typ := APIImplementationResponseTypeAPIImplementationResponseAPIImplementationGatewayServiceEntity
+
+	return APIImplementationResponse{
+		APIImplementationResponseAPIImplementationGatewayServiceEntity: &apiImplementationResponseAPIImplementationGatewayServiceEntity,
+		Type: typ,
+	}
+}
+
+func (u *APIImplementationResponse) UnmarshalJSON(data []byte) error {
+
+	var apiImplementationResponseAPIImplementationGatewayServiceEntity APIImplementationResponseAPIImplementationGatewayServiceEntity = APIImplementationResponseAPIImplementationGatewayServiceEntity{}
+	if err := utils.UnmarshalJSON(data, &apiImplementationResponseAPIImplementationGatewayServiceEntity, "", true, true); err == nil {
+		u.APIImplementationResponseAPIImplementationGatewayServiceEntity = &apiImplementationResponseAPIImplementationGatewayServiceEntity
+		u.Type = APIImplementationResponseTypeAPIImplementationResponseAPIImplementationGatewayServiceEntity
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for APIImplementationResponse", string(data))
+}
+
+func (u APIImplementationResponse) MarshalJSON() ([]byte, error) {
+	if u.APIImplementationResponseAPIImplementationGatewayServiceEntity != nil {
+		return utils.MarshalJSON(u.APIImplementationResponseAPIImplementationGatewayServiceEntity, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type APIImplementationResponse: all fields are null")
 }

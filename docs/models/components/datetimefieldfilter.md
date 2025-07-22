@@ -5,6 +5,12 @@ Filters on the given datetime (RFC-3339) field value.
 
 ## Supported Types
 
+### 
+
+```go
+dateTimeFieldFilter := components.CreateDateTimeFieldFilterDateTime(time.Time{/* values here */})
+```
+
 ### DateTimeFieldEqualsFilter
 
 ```go

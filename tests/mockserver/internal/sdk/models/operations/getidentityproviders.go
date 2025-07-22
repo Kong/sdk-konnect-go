@@ -9,10 +9,10 @@ import (
 // GetIdentityProvidersFilter - Filter identity providers returned in the response.
 type GetIdentityProvidersFilter struct {
 	// Filters on the given string field value by exact match.
-	Type *string `queryParam:"name=type"`
+	Type *components.StringFieldEqualsFilterUnion `queryParam:"name=type"`
 }
 
-func (o *GetIdentityProvidersFilter) GetType() *string {
+func (o *GetIdentityProvidersFilter) GetType() *components.StringFieldEqualsFilterUnion {
 	if o == nil {
 		return nil
 	}

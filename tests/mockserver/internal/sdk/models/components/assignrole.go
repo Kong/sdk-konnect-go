@@ -184,45 +184,6 @@ func (e *EntityTypeName) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// EntityRegionRequestBody - Region of the team.
-type EntityRegionRequestBody string
-
-const (
-	EntityRegionRequestBodyUs       EntityRegionRequestBody = "us"
-	EntityRegionRequestBodyEu       EntityRegionRequestBody = "eu"
-	EntityRegionRequestBodyAu       EntityRegionRequestBody = "au"
-	EntityRegionRequestBodyMe       EntityRegionRequestBody = "me"
-	EntityRegionRequestBodyIn       EntityRegionRequestBody = "in"
-	EntityRegionRequestBodyWildcard EntityRegionRequestBody = "*"
-)
-
-func (e EntityRegionRequestBody) ToPointer() *EntityRegionRequestBody {
-	return &e
-}
-func (e *EntityRegionRequestBody) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "us":
-		fallthrough
-	case "eu":
-		fallthrough
-	case "au":
-		fallthrough
-	case "me":
-		fallthrough
-	case "in":
-		fallthrough
-	case "*":
-		*e = EntityRegionRequestBody(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for EntityRegionRequestBody: %v", v)
-	}
-}
-
 // AssignRole - An assigned role is a role that has been assigned to a user or team.
 type AssignRole struct {
 	// The desired role.
@@ -231,8 +192,7 @@ type AssignRole struct {
 	EntityID *string `json:"entity_id,omitempty"`
 	// The type of entity.
 	EntityTypeName *EntityTypeName `json:"entity_type_name,omitempty"`
-	// Region of the team.
-	EntityRegion *EntityRegionRequestBody `json:"entity_region,omitempty"`
+	EntityRegion   *EntityRegion   `json:"entity_region,omitempty"`
 }
 
 func (o *AssignRole) GetRoleName() *RoleName {
@@ -256,7 +216,7 @@ func (o *AssignRole) GetEntityTypeName() *EntityTypeName {
 	return o.EntityTypeName
 }
 
-func (o *AssignRole) GetEntityRegion() *EntityRegionRequestBody {
+func (o *AssignRole) GetEntityRegion() *EntityRegion {
 	if o == nil {
 		return nil
 	}

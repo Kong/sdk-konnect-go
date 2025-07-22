@@ -127,6 +127,7 @@ func (o *DateTimeFieldEqualsFilter) GetEq() time.Time {
 type DateTimeFieldFilterType string
 
 const (
+	DateTimeFieldFilterTypeDateTime                  DateTimeFieldFilterType = "date-time"
 	DateTimeFieldFilterTypeDateTimeFieldEqualsFilter DateTimeFieldFilterType = "DateTimeFieldEqualsFilter"
 	DateTimeFieldFilterTypeDateTimeFieldLTFilter     DateTimeFieldFilterType = "DateTimeFieldLTFilter"
 	DateTimeFieldFilterTypeDateTimeFieldLTEFilter    DateTimeFieldFilterType = "DateTimeFieldLTEFilter"
@@ -136,6 +137,7 @@ const (
 
 // DateTimeFieldFilter - Filters on the given datetime (RFC-3339) field value.
 type DateTimeFieldFilter struct {
+	DateTime                  *time.Time                 `queryParam:"inline"`
 	DateTimeFieldEqualsFilter *DateTimeFieldEqualsFilter `queryParam:"inline"`
 	DateTimeFieldLTFilter     *DateTimeFieldLTFilter     `queryParam:"inline"`
 	DateTimeFieldLTEFilter    *DateTimeFieldLTEFilter    `queryParam:"inline"`
@@ -143,6 +145,15 @@ type DateTimeFieldFilter struct {
 	DateTimeFieldGTEFilter    *DateTimeFieldGTEFilter    `queryParam:"inline"`
 
 	Type DateTimeFieldFilterType
+}
+
+func CreateDateTimeFieldFilterDateTime(dateTime time.Time) DateTimeFieldFilter {
+	typ := DateTimeFieldFilterTypeDateTime
+
+	return DateTimeFieldFilter{
+		DateTime: &dateTime,
+		Type:     typ,
+	}
 }
 
 func CreateDateTimeFieldFilterDateTimeFieldEqualsFilter(dateTimeFieldEqualsFilter DateTimeFieldEqualsFilter) DateTimeFieldFilter {
@@ -227,10 +238,21 @@ func (u *DateTimeFieldFilter) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var dateTime time.Time = time.Time{}
+	if err := utils.UnmarshalJSON(data, &dateTime, "", true, true); err == nil {
+		u.DateTime = &dateTime
+		u.Type = DateTimeFieldFilterTypeDateTime
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DateTimeFieldFilter", string(data))
 }
 
 func (u DateTimeFieldFilter) MarshalJSON() ([]byte, error) {
+	if u.DateTime != nil {
+		return utils.MarshalJSON(u.DateTime, "", true)
+	}
+
 	if u.DateTimeFieldEqualsFilter != nil {
 		return utils.MarshalJSON(u.DateTimeFieldEqualsFilter, "", true)
 	}

@@ -85,6 +85,7 @@ import(
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/types"
 	"log"
 )
 
@@ -97,7 +98,10 @@ func main() {
         }),
     )
 
-    res, err := s.SystemAccountsAccessTokens.PostSystemAccountsIDAccessTokens(ctx, "<id>", nil)
+    res, err := s.SystemAccountsAccessTokens.PostSystemAccountsIDAccessTokens(ctx, "<id>", &components.CreateSystemAccountAccessToken{
+        Name: sdkkonnectgo.String("Sample Access Token"),
+        ExpiresAt: types.MustNewTimeFromString("2019-08-24T14:15:22Z"),
+    })
     if err != nil {
         log.Fatal(err)
     }

@@ -38,11 +38,7 @@ func main() {
     )
 
     res, err := s.API.CreateAPI(ctx, components.CreateAPIRequest{
-        Name: "MyAPI",
-        Slug: sdkkonnectgo.String("my-api-v1"),
-        Labels: map[string]string{
-            "env": "test",
-        },
+        Name: "myAPI",
     })
     if err != nil {
         log.Fatal(err)
@@ -308,11 +304,7 @@ func main() {
     )
 
     res, err := s.API.UpdateAPI(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.UpdateAPIRequest{
-        Name: sdkkonnectgo.String("MyAPI"),
-        Slug: sdkkonnectgo.String("my-api-v1"),
-        Labels: map[string]*string{
-            "env": sdkkonnectgo.String("test"),
-        },
+        Name: sdkkonnectgo.String("new API name"),
     })
     if err != nil {
         log.Fatal(err)

@@ -15,8 +15,7 @@ type CreateAPIDocumentRequest struct {
 	//
 	// Defaults to `slugify(title)`
 	//
-	Slug *string `json:"slug,omitempty"`
-	// If `status=published` the document will be visible in your live portal
+	Slug   *string            `json:"slug,omitempty"`
 	Status *APIDocumentStatus `default:"unpublished" json:"status"`
 	// API Documents may be rendered as a tree of files.
 	//

@@ -5,24 +5,35 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"mockserver/internal/sdk/utils"
 )
 
 type JWTWithoutParentsAlgorithm string
 
 const (
-	JWTWithoutParentsAlgorithmHs256 JWTWithoutParentsAlgorithm = "HS256"
-	JWTWithoutParentsAlgorithmHs384 JWTWithoutParentsAlgorithm = "HS384"
-	JWTWithoutParentsAlgorithmHs512 JWTWithoutParentsAlgorithm = "HS512"
-	JWTWithoutParentsAlgorithmRs256 JWTWithoutParentsAlgorithm = "RS256"
-	JWTWithoutParentsAlgorithmRs384 JWTWithoutParentsAlgorithm = "RS384"
-	JWTWithoutParentsAlgorithmRs512 JWTWithoutParentsAlgorithm = "RS512"
-	JWTWithoutParentsAlgorithmEs256 JWTWithoutParentsAlgorithm = "ES256"
-	JWTWithoutParentsAlgorithmEs384 JWTWithoutParentsAlgorithm = "ES384"
-	JWTWithoutParentsAlgorithmEs512 JWTWithoutParentsAlgorithm = "ES512"
-	JWTWithoutParentsAlgorithmPs256 JWTWithoutParentsAlgorithm = "PS256"
-	JWTWithoutParentsAlgorithmPs384 JWTWithoutParentsAlgorithm = "PS384"
-	JWTWithoutParentsAlgorithmPs512 JWTWithoutParentsAlgorithm = "PS512"
-	JWTWithoutParentsAlgorithmEdDsa JWTWithoutParentsAlgorithm = "EdDSA"
+	JWTWithoutParentsAlgorithmHs256   JWTWithoutParentsAlgorithm = "HS256"
+	JWTWithoutParentsAlgorithmHs384   JWTWithoutParentsAlgorithm = "HS384"
+	JWTWithoutParentsAlgorithmHs512   JWTWithoutParentsAlgorithm = "HS512"
+	JWTWithoutParentsAlgorithmRs256   JWTWithoutParentsAlgorithm = "RS256"
+	JWTWithoutParentsAlgorithmRs384   JWTWithoutParentsAlgorithm = "RS384"
+	JWTWithoutParentsAlgorithmRs512   JWTWithoutParentsAlgorithm = "RS512"
+	JWTWithoutParentsAlgorithmPs256   JWTWithoutParentsAlgorithm = "PS256"
+	JWTWithoutParentsAlgorithmPs384   JWTWithoutParentsAlgorithm = "PS384"
+	JWTWithoutParentsAlgorithmPs512   JWTWithoutParentsAlgorithm = "PS512"
+	JWTWithoutParentsAlgorithmEs256   JWTWithoutParentsAlgorithm = "ES256"
+	JWTWithoutParentsAlgorithmEs384   JWTWithoutParentsAlgorithm = "ES384"
+	JWTWithoutParentsAlgorithmEs512   JWTWithoutParentsAlgorithm = "ES512"
+	JWTWithoutParentsAlgorithmEsp256  JWTWithoutParentsAlgorithm = "ESP256"
+	JWTWithoutParentsAlgorithmEsp384  JWTWithoutParentsAlgorithm = "ESP384"
+	JWTWithoutParentsAlgorithmEsp512  JWTWithoutParentsAlgorithm = "ESP512"
+	JWTWithoutParentsAlgorithmEsb256  JWTWithoutParentsAlgorithm = "ESB256"
+	JWTWithoutParentsAlgorithmEsb320  JWTWithoutParentsAlgorithm = "ESB320"
+	JWTWithoutParentsAlgorithmEsb384  JWTWithoutParentsAlgorithm = "ESB384"
+	JWTWithoutParentsAlgorithmEsb512  JWTWithoutParentsAlgorithm = "ESB512"
+	JWTWithoutParentsAlgorithmEs256K  JWTWithoutParentsAlgorithm = "ES256K"
+	JWTWithoutParentsAlgorithmEdDsa   JWTWithoutParentsAlgorithm = "EdDSA"
+	JWTWithoutParentsAlgorithmEd25519 JWTWithoutParentsAlgorithm = "Ed25519"
+	JWTWithoutParentsAlgorithmEd448   JWTWithoutParentsAlgorithm = "Ed448"
 )
 
 func (e JWTWithoutParentsAlgorithm) ToPointer() *JWTWithoutParentsAlgorithm {
@@ -46,19 +57,39 @@ func (e *JWTWithoutParentsAlgorithm) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "RS512":
 		fallthrough
-	case "ES256":
-		fallthrough
-	case "ES384":
-		fallthrough
-	case "ES512":
-		fallthrough
 	case "PS256":
 		fallthrough
 	case "PS384":
 		fallthrough
 	case "PS512":
 		fallthrough
+	case "ES256":
+		fallthrough
+	case "ES384":
+		fallthrough
+	case "ES512":
+		fallthrough
+	case "ESP256":
+		fallthrough
+	case "ESP384":
+		fallthrough
+	case "ESP512":
+		fallthrough
+	case "ESB256":
+		fallthrough
+	case "ESB320":
+		fallthrough
+	case "ESB384":
+		fallthrough
+	case "ESB512":
+		fallthrough
+	case "ES256K":
+		fallthrough
 	case "EdDSA":
+		fallthrough
+	case "Ed25519":
+		fallthrough
+	case "Ed448":
 		*e = JWTWithoutParentsAlgorithm(v)
 		return nil
 	default:
@@ -78,7 +109,7 @@ func (o *JWTWithoutParentsConsumer) GetID() *string {
 }
 
 type JWTWithoutParents struct {
-	Algorithm *JWTWithoutParentsAlgorithm `json:"algorithm,omitempty"`
+	Algorithm *JWTWithoutParentsAlgorithm `default:"HS256" json:"algorithm"`
 	Consumer  *JWTWithoutParentsConsumer  `json:"consumer,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt    *int64   `json:"created_at,omitempty"`
@@ -87,6 +118,17 @@ type JWTWithoutParents struct {
 	RsaPublicKey *string  `json:"rsa_public_key,omitempty"`
 	Secret       *string  `json:"secret,omitempty"`
 	Tags         []string `json:"tags,omitempty"`
+}
+
+func (j JWTWithoutParents) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(j, "", false)
+}
+
+func (j *JWTWithoutParents) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &j, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *JWTWithoutParents) GetAlgorithm() *JWTWithoutParentsAlgorithm {

@@ -108,8 +108,6 @@ func main() {
         ID: sdkkonnectgo.String("49fd316e-c457-481c-9fc7-8079153e4f3c"),
         Name: sdkkonnectgo.String("example-service"),
         Path: sdkkonnectgo.String("/"),
-        Port: sdkkonnectgo.Int64(80),
-        Protocol: components.ProtocolHTTP.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)
@@ -284,8 +282,6 @@ func main() {
             ID: sdkkonnectgo.String("49fd316e-c457-481c-9fc7-8079153e4f3c"),
             Name: sdkkonnectgo.String("example-service"),
             Path: sdkkonnectgo.String("/"),
-            Port: sdkkonnectgo.Int64(80),
-            Protocol: components.ProtocolHTTP.ToPointer(),
         },
     })
     if err != nil {

@@ -1,7 +1,5 @@
 # APIResponseSchema
 
-API
-
 
 ## Fields
 

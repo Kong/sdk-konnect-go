@@ -156,7 +156,28 @@ func main() {
         }),
     )
 
-    res, err := s.Notifications.CreateEventSubscription(ctx, "invoice-ready", nil)
+    res, err := s.Notifications.CreateEventSubscription(ctx, "invoice-ready", &components.EventSubscription{
+        Regions: []components.NotificationRegion{
+            components.NotificationRegionUs,
+            components.NotificationRegionEu,
+        },
+        Entities: []string{
+            "control-plane-1",
+            "control-plane-2",
+        },
+        Channels: []components.NotificationChannel{
+            components.NotificationChannel{
+                Type: components.NotificationChannelTypeInApp,
+                Enabled: true,
+            },
+            components.NotificationChannel{
+                Type: components.NotificationChannelTypeEmail,
+                Enabled: true,
+            },
+        },
+        Enabled: true,
+        Name: "Control Plane Global",
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -276,6 +297,28 @@ func main() {
     res, err := s.Notifications.UpdateEventSubscription(ctx, operations.UpdateEventSubscriptionRequest{
         EventID: "invoice-ready",
         SubscriptionID: "<id>",
+        EventSubscription: &components.EventSubscription{
+            Regions: []components.NotificationRegion{
+                components.NotificationRegionUs,
+                components.NotificationRegionEu,
+            },
+            Entities: []string{
+                "control-plane-1",
+                "control-plane-2",
+            },
+            Channels: []components.NotificationChannel{
+                components.NotificationChannel{
+                    Type: components.NotificationChannelTypeInApp,
+                    Enabled: true,
+                },
+                components.NotificationChannel{
+                    Type: components.NotificationChannelTypeEmail,
+                    Enabled: true,
+                },
+            },
+            Enabled: true,
+            Name: "Control Plane Global",
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -506,7 +549,9 @@ func main() {
         }),
     )
 
-    res, err := s.Notifications.UpdateNotification(ctx, "<id>", nil)
+    res, err := s.Notifications.UpdateNotification(ctx, "<id>", &components.NotificationUpdatePayload{
+        Status: components.NotificationStatusRead,
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -620,7 +665,13 @@ func main() {
         }),
     )
 
-    res, err := s.Notifications.BulkNotifications(ctx, nil)
+    res, err := s.Notifications.BulkNotifications(ctx, &components.BulkPayload{
+        Ids: []string{
+            "93f8380e-7798-4566-99e3-2edf2b57d289",
+            "93f8380e-7798-4566-99e3-2edf2b57d290",
+        },
+        Status: components.NotificationStatusRead,
+    })
     if err != nil {
         log.Fatal(err)
     }

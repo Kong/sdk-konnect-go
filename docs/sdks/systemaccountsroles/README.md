@@ -93,9 +93,9 @@ func main() {
 
     res, err := s.SystemAccountsRoles.PostSystemAccountsAccountIDAssignedRoles(ctx, "<id>", &components.AssignRole{
         RoleName: components.RoleNameViewer.ToPointer(),
-        EntityID: sdkkonnectgo.String("e67490ce-44dc-4cbd-b65e-b52c746fc26a"),
+        EntityID: sdkkonnectgo.String("18ee2573-dec0-4b83-be99-fa7700bcdc61"),
         EntityTypeName: components.EntityTypeNameControlPlanes.ToPointer(),
-        EntityRegion: components.AssignRoleEntityRegionEu.ToPointer(),
+        EntityRegion: components.EntityRegionUs.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)

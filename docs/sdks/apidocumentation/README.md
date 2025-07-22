@@ -41,10 +41,10 @@ func main() {
     )
 
     res, err := s.APIDocumentation.CreateAPIDocument(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.CreateAPIDocumentRequest{
-        Content: "<value>",
+        Content: "# API Document Header",
         Title: sdkkonnectgo.String("API Document"),
         Slug: sdkkonnectgo.String("api-document"),
-        ParentDocumentID: nil,
+        Status: components.APIDocumentStatusPublished.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)
@@ -227,7 +227,8 @@ func main() {
         APIDocument: components.APIDocument{
             Title: sdkkonnectgo.String("API Document"),
             Slug: sdkkonnectgo.String("api-document"),
-            ParentDocumentID: nil,
+            Status: components.APIDocumentStatusPublished.ToPointer(),
+            ParentDocumentID: sdkkonnectgo.String("dd4e1b98-3629-4dd3-acc0-759a726ffee2"),
         },
     })
     if err != nil {

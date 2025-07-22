@@ -2,10 +2,25 @@
 
 package components
 
+import (
+	"mockserver/internal/sdk/utils"
+)
+
 type IDPClaimMappings struct {
-	Name   *string `json:"name,omitempty"`
-	Email  *string `json:"email,omitempty"`
-	Groups *string `json:"groups,omitempty"`
+	Name   *string `default:"name" json:"name"`
+	Email  *string `default:"email" json:"email"`
+	Groups *string `default:"groups" json:"groups"`
+}
+
+func (i IDPClaimMappings) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *IDPClaimMappings) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *IDPClaimMappings) GetName() *string {

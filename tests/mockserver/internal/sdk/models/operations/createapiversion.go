@@ -8,8 +8,8 @@ import (
 
 type CreateAPIVersionRequest struct {
 	// The UUID API identifier
-	APIID                   string                             `pathParam:"style=simple,explode=false,name=apiId"`
-	CreateAPIVersionRequest components.CreateAPIVersionRequest `request:"mediaType=application/json"`
+	APIID      string                `pathParam:"style=simple,explode=false,name=apiId"`
+	APIVersion components.APIVersion `request:"mediaType=application/json"`
 }
 
 func (o *CreateAPIVersionRequest) GetAPIID() string {
@@ -19,11 +19,11 @@ func (o *CreateAPIVersionRequest) GetAPIID() string {
 	return o.APIID
 }
 
-func (o *CreateAPIVersionRequest) GetCreateAPIVersionRequest() components.CreateAPIVersionRequest {
+func (o *CreateAPIVersionRequest) GetAPIVersion() components.APIVersion {
 	if o == nil {
-		return components.CreateAPIVersionRequest{}
+		return components.APIVersion{}
 	}
-	return o.CreateAPIVersionRequest
+	return o.APIVersion
 }
 
 type CreateAPIVersionResponse struct {

@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"mockserver/internal/sdk/utils"
 )
 
 // ServiceClientCertificate - Certificate to be used as client certificate while TLS handshaking to the upstream server.
@@ -70,6 +71,25 @@ func (e *ServiceProtocol) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type TLSSans struct {
+	Dnsnames []string `json:"dnsnames,omitempty"`
+	Uris     []string `json:"uris,omitempty"`
+}
+
+func (o *TLSSans) GetDnsnames() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Dnsnames
+}
+
+func (o *TLSSans) GetUris() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Uris
+}
+
 // ServiceOutput - Service entities, as the name implies, are abstractions of each of your own upstream services. Examples of Services would be a data transformation microservice, a billing API, etc. The main attribute of a Service is its URL (where Kong should proxy traffic to), which can be set as a single string or by specifying its `protocol`, `host`, `port` and `path` individually. Services are associated to Routes (a Service can have many Routes associated with it). Routes are entry-points in Kong and define rules to match client requests. Once a Route is matched, Kong proxies the request to its associated Service. See the [Proxy Reference][proxy-reference] for a detailed explanation of how Kong proxies traffic.
 type ServiceOutput struct {
 	// Array of `CA Certificate` object UUIDs that are used to build the trust store while verifying upstream server's TLS certificate. If set to `null` when Nginx default is respected. If default CA list in Nginx are not specified and TLS verification is enabled, then handshake with upstream server will always fail (because no CA are trusted).
@@ -77,11 +97,11 @@ type ServiceOutput struct {
 	// Certificate to be used as client certificate while TLS handshaking to the upstream server.
 	ClientCertificate *ServiceClientCertificate `json:"client_certificate,omitempty"`
 	// The timeout in milliseconds for establishing a connection to the upstream server.
-	ConnectTimeout *int64 `json:"connect_timeout,omitempty"`
+	ConnectTimeout *int64 `default:"60000" json:"connect_timeout"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
 	// Whether the Service is active. If set to `false`, the proxy behavior will be as if any routes attached to it do not exist (404). Default: `true`.
-	Enabled *bool `json:"enabled,omitempty"`
+	Enabled *bool `default:"true" json:"enabled"`
 	// The host of the upstream server. Note that the host value is case sensitive.
 	Host string  `json:"host"`
 	ID   *string `json:"id,omitempty"`
@@ -90,15 +110,16 @@ type ServiceOutput struct {
 	// The path to be used in requests to the upstream server.
 	Path *string `json:"path,omitempty"`
 	// The upstream server port.
-	Port *int64 `json:"port,omitempty"`
+	Port *int64 `default:"80" json:"port"`
 	// The protocol used to communicate with the upstream.
-	Protocol *ServiceProtocol `json:"protocol,omitempty"`
+	Protocol *ServiceProtocol `default:"http" json:"protocol"`
 	// The timeout in milliseconds between two successive read operations for transmitting a request to the upstream server.
-	ReadTimeout *int64 `json:"read_timeout,omitempty"`
+	ReadTimeout *int64 `default:"60000" json:"read_timeout"`
 	// The number of retries to execute upon failure to proxy.
-	Retries *int64 `json:"retries,omitempty"`
+	Retries *int64 `default:"5" json:"retries"`
 	// An optional set of strings associated with the Service for grouping and filtering.
-	Tags []string `json:"tags,omitempty"`
+	Tags    []string `json:"tags,omitempty"`
+	TLSSans *TLSSans `json:"tls_sans,omitempty"`
 	// Whether to enable verification of upstream server TLS certificate. If set to `null`, then the Nginx default is respected.
 	TLSVerify *bool `json:"tls_verify,omitempty"`
 	// Maximum depth of chain while verifying Upstream server's TLS certificate. If set to `null`, then the Nginx default is respected.
@@ -106,7 +127,18 @@ type ServiceOutput struct {
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 	// The timeout in milliseconds between two successive write operations for transmitting a request to the upstream server.
-	WriteTimeout *int64 `json:"write_timeout,omitempty"`
+	WriteTimeout *int64 `default:"60000" json:"write_timeout"`
+}
+
+func (s ServiceOutput) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *ServiceOutput) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ServiceOutput) GetCaCertificates() []string {
@@ -207,6 +239,13 @@ func (o *ServiceOutput) GetTags() []string {
 	return o.Tags
 }
 
+func (o *ServiceOutput) GetTLSSans() *TLSSans {
+	if o == nil {
+		return nil
+	}
+	return o.TLSSans
+}
+
 func (o *ServiceOutput) GetTLSVerify() *bool {
 	if o == nil {
 		return nil
@@ -242,11 +281,11 @@ type Service struct {
 	// Certificate to be used as client certificate while TLS handshaking to the upstream server.
 	ClientCertificate *ServiceClientCertificate `json:"client_certificate,omitempty"`
 	// The timeout in milliseconds for establishing a connection to the upstream server.
-	ConnectTimeout *int64 `json:"connect_timeout,omitempty"`
+	ConnectTimeout *int64 `default:"60000" json:"connect_timeout"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
 	// Whether the Service is active. If set to `false`, the proxy behavior will be as if any routes attached to it do not exist (404). Default: `true`.
-	Enabled *bool `json:"enabled,omitempty"`
+	Enabled *bool `default:"true" json:"enabled"`
 	// The host of the upstream server. Note that the host value is case sensitive.
 	Host string  `json:"host"`
 	ID   *string `json:"id,omitempty"`
@@ -255,15 +294,16 @@ type Service struct {
 	// The path to be used in requests to the upstream server.
 	Path *string `json:"path,omitempty"`
 	// The upstream server port.
-	Port *int64 `json:"port,omitempty"`
+	Port *int64 `default:"80" json:"port"`
 	// The protocol used to communicate with the upstream.
-	Protocol *ServiceProtocol `json:"protocol,omitempty"`
+	Protocol *ServiceProtocol `default:"http" json:"protocol"`
 	// The timeout in milliseconds between two successive read operations for transmitting a request to the upstream server.
-	ReadTimeout *int64 `json:"read_timeout,omitempty"`
+	ReadTimeout *int64 `default:"60000" json:"read_timeout"`
 	// The number of retries to execute upon failure to proxy.
-	Retries *int64 `json:"retries,omitempty"`
+	Retries *int64 `default:"5" json:"retries"`
 	// An optional set of strings associated with the Service for grouping and filtering.
-	Tags []string `json:"tags,omitempty"`
+	Tags    []string `json:"tags,omitempty"`
+	TLSSans *TLSSans `json:"tls_sans,omitempty"`
 	// Whether to enable verification of upstream server TLS certificate. If set to `null`, then the Nginx default is respected.
 	TLSVerify *bool `json:"tls_verify,omitempty"`
 	// Maximum depth of chain while verifying Upstream server's TLS certificate. If set to `null`, then the Nginx default is respected.
@@ -273,7 +313,18 @@ type Service struct {
 	// Helper field to set `protocol`, `host`, `port` and `path` using a URL. This field is write-only and is not returned in responses.
 	URL *string `json:"url,omitempty"`
 	// The timeout in milliseconds between two successive write operations for transmitting a request to the upstream server.
-	WriteTimeout *int64 `json:"write_timeout,omitempty"`
+	WriteTimeout *int64 `default:"60000" json:"write_timeout"`
+}
+
+func (s Service) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *Service) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Service) GetCaCertificates() []string {
@@ -372,6 +423,13 @@ func (o *Service) GetTags() []string {
 		return nil
 	}
 	return o.Tags
+}
+
+func (o *Service) GetTLSSans() *TLSSans {
+	if o == nil {
+		return nil
+	}
+	return o.TLSSans
 }
 
 func (o *Service) GetTLSVerify() *bool {

@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 // PluginWithoutParentsConsumer - If set, the plugin will activate only for requests where the specified has been authenticated. (Note that some plugins can not be restricted to consumers this way.). Leave unset for the plugin to activate regardless of the authenticated Consumer.
@@ -182,7 +183,7 @@ type PluginWithoutParents struct {
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
 	// Whether the plugin is applied.
-	Enabled      *bool   `json:"enabled,omitempty"`
+	Enabled      *bool   `default:"true" json:"enabled"`
 	ID           *string `json:"id,omitempty"`
 	InstanceName *string `json:"instance_name,omitempty"`
 	// The name of the Plugin that's going to be added. Currently, the Plugin must be installed in every Kong instance separately.
@@ -199,6 +200,17 @@ type PluginWithoutParents struct {
 	Tags []string `json:"tags,omitempty"`
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
+}
+
+func (p PluginWithoutParents) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PluginWithoutParents) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PluginWithoutParents) GetConfig() map[string]any {

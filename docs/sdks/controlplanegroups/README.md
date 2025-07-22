@@ -160,7 +160,19 @@ func main() {
         }),
     )
 
-    res, err := s.ControlPlaneGroups.PutControlPlanesIDGroupMemberships(ctx, "<id>", nil)
+    res, err := s.ControlPlaneGroups.PutControlPlanesIDGroupMemberships(ctx, "<id>", &components.GroupMembership{
+        Members: []components.Members{
+            components.Members{
+                ID: "1beb9ad3-d21b-4090-b6e3-574784d1166d",
+            },
+            components.Members{
+                ID: "778a0474-687d-41af-8e51-a0488d790586",
+            },
+            components.Members{
+                ID: "fa85f8e8-2e5a-496e-b6d0-4e534eaab459",
+            },
+        },
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -220,7 +232,19 @@ func main() {
         }),
     )
 
-    res, err := s.ControlPlaneGroups.PostControlPlanesIDGroupMembershipsAdd(ctx, "<id>", nil)
+    res, err := s.ControlPlaneGroups.PostControlPlanesIDGroupMembershipsAdd(ctx, "<id>", &components.GroupMembership{
+        Members: []components.Members{
+            components.Members{
+                ID: "1beb9ad3-d21b-4090-b6e3-574784d1166d",
+            },
+            components.Members{
+                ID: "778a0474-687d-41af-8e51-a0488d790586",
+            },
+            components.Members{
+                ID: "fa85f8e8-2e5a-496e-b6d0-4e534eaab459",
+            },
+        },
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -280,7 +304,19 @@ func main() {
         }),
     )
 
-    res, err := s.ControlPlaneGroups.PostControlPlanesIDGroupMembershipsRemove(ctx, "<id>", nil)
+    res, err := s.ControlPlaneGroups.PostControlPlanesIDGroupMembershipsRemove(ctx, "<id>", &components.GroupMembership{
+        Members: []components.Members{
+            components.Members{
+                ID: "1beb9ad3-d21b-4090-b6e3-574784d1166d",
+            },
+            components.Members{
+                ID: "778a0474-687d-41af-8e51-a0488d790586",
+            },
+            components.Members{
+                ID: "fa85f8e8-2e5a-496e-b6d0-4e534eaab459",
+            },
+        },
+    })
     if err != nil {
         log.Fatal(err)
     }

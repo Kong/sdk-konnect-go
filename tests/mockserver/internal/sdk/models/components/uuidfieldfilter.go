@@ -2,30 +2,94 @@
 
 package components
 
-// UUIDFieldFilter - Filters on the given string field value by exact match inequality.
+import (
+	"errors"
+	"fmt"
+	"mockserver/internal/sdk/utils"
+)
+
+type UUIDFieldFilterType string
+
+const (
+	UUIDFieldFilterTypeStringFieldEqualsFilterUnion UUIDFieldFilterType = "StringFieldEqualsFilter_union"
+	UUIDFieldFilterTypeStringFieldOEQFilter         UUIDFieldFilterType = "StringFieldOEQFilter"
+	UUIDFieldFilterTypeStringFieldNEQFilter         UUIDFieldFilterType = "StringFieldNEQFilter"
+)
+
+// UUIDFieldFilter - Filters on the given UUID field value by exact match.
 type UUIDFieldFilter struct {
-	Eq  *string `queryParam:"name=eq"`
-	Oeq *string `queryParam:"name=oeq"`
-	Neq *string `queryParam:"name=neq"`
+	StringFieldEqualsFilterUnion *StringFieldEqualsFilterUnion `queryParam:"inline"`
+	StringFieldOEQFilter         *StringFieldOEQFilter         `queryParam:"inline"`
+	StringFieldNEQFilter         *StringFieldNEQFilter         `queryParam:"inline"`
+
+	Type UUIDFieldFilterType
 }
 
-func (o *UUIDFieldFilter) GetEq() *string {
-	if o == nil {
-		return nil
+func CreateUUIDFieldFilterStringFieldEqualsFilterUnion(stringFieldEqualsFilterUnion StringFieldEqualsFilterUnion) UUIDFieldFilter {
+	typ := UUIDFieldFilterTypeStringFieldEqualsFilterUnion
+
+	return UUIDFieldFilter{
+		StringFieldEqualsFilterUnion: &stringFieldEqualsFilterUnion,
+		Type:                         typ,
 	}
-	return o.Eq
 }
 
-func (o *UUIDFieldFilter) GetOeq() *string {
-	if o == nil {
-		return nil
+func CreateUUIDFieldFilterStringFieldOEQFilter(stringFieldOEQFilter StringFieldOEQFilter) UUIDFieldFilter {
+	typ := UUIDFieldFilterTypeStringFieldOEQFilter
+
+	return UUIDFieldFilter{
+		StringFieldOEQFilter: &stringFieldOEQFilter,
+		Type:                 typ,
 	}
-	return o.Oeq
 }
 
-func (o *UUIDFieldFilter) GetNeq() *string {
-	if o == nil {
+func CreateUUIDFieldFilterStringFieldNEQFilter(stringFieldNEQFilter StringFieldNEQFilter) UUIDFieldFilter {
+	typ := UUIDFieldFilterTypeStringFieldNEQFilter
+
+	return UUIDFieldFilter{
+		StringFieldNEQFilter: &stringFieldNEQFilter,
+		Type:                 typ,
+	}
+}
+
+func (u *UUIDFieldFilter) UnmarshalJSON(data []byte) error {
+
+	var stringFieldOEQFilter StringFieldOEQFilter = StringFieldOEQFilter{}
+	if err := utils.UnmarshalJSON(data, &stringFieldOEQFilter, "", true, true); err == nil {
+		u.StringFieldOEQFilter = &stringFieldOEQFilter
+		u.Type = UUIDFieldFilterTypeStringFieldOEQFilter
 		return nil
 	}
-	return o.Neq
+
+	var stringFieldNEQFilter StringFieldNEQFilter = StringFieldNEQFilter{}
+	if err := utils.UnmarshalJSON(data, &stringFieldNEQFilter, "", true, true); err == nil {
+		u.StringFieldNEQFilter = &stringFieldNEQFilter
+		u.Type = UUIDFieldFilterTypeStringFieldNEQFilter
+		return nil
+	}
+
+	var stringFieldEqualsFilterUnion StringFieldEqualsFilterUnion = StringFieldEqualsFilterUnion{}
+	if err := utils.UnmarshalJSON(data, &stringFieldEqualsFilterUnion, "", true, true); err == nil {
+		u.StringFieldEqualsFilterUnion = &stringFieldEqualsFilterUnion
+		u.Type = UUIDFieldFilterTypeStringFieldEqualsFilterUnion
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for UUIDFieldFilter", string(data))
+}
+
+func (u UUIDFieldFilter) MarshalJSON() ([]byte, error) {
+	if u.StringFieldEqualsFilterUnion != nil {
+		return utils.MarshalJSON(u.StringFieldEqualsFilterUnion, "", true)
+	}
+
+	if u.StringFieldOEQFilter != nil {
+		return utils.MarshalJSON(u.StringFieldOEQFilter, "", true)
+	}
+
+	if u.StringFieldNEQFilter != nil {
+		return utils.MarshalJSON(u.StringFieldNEQFilter, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type UUIDFieldFilter: all fields are null")
 }

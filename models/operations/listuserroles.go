@@ -14,19 +14,19 @@ var ListUserRolesServerList = []string{
 // ListUserRolesQueryParamFilter - Filter roles returned in the response.
 type ListUserRolesQueryParamFilter struct {
 	// Filters on the given string field value by exact match.
-	RoleName *string `queryParam:"name=role_name"`
+	RoleName *components.StringFieldEqualsFilter `queryParam:"name=role_name"`
 	// Filters on the given string field value by exact match.
-	EntityTypeName *string `queryParam:"name=entity_type_name"`
+	EntityTypeName *components.StringFieldEqualsFilter `queryParam:"name=entity_type_name"`
 }
 
-func (o *ListUserRolesQueryParamFilter) GetRoleName() *string {
+func (o *ListUserRolesQueryParamFilter) GetRoleName() *components.StringFieldEqualsFilter {
 	if o == nil {
 		return nil
 	}
 	return o.RoleName
 }
 
-func (o *ListUserRolesQueryParamFilter) GetEntityTypeName() *string {
+func (o *ListUserRolesQueryParamFilter) GetEntityTypeName() *components.StringFieldEqualsFilter {
 	if o == nil {
 		return nil
 	}

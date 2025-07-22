@@ -9,16 +9,16 @@ import (
 // ListUsersFilter - Filter users returned in the response.
 type ListUsersFilter struct {
 	// Filters on the given string field value by exact match.
-	ID *string `queryParam:"name=id"`
-	// Filters on the given string field value by exact match inequality.
+	ID *components.StringFieldEqualsFilterUnion `queryParam:"name=id"`
+	// Filters on the given string field value by either exact or fuzzy match.
 	Email *components.StringFieldFilter `queryParam:"name=email"`
-	// Filters on the given string field value by exact match inequality.
+	// Filters on the given string field value by either exact or fuzzy match.
 	FullName *components.StringFieldFilter `queryParam:"name=full_name"`
 	// Filter by a boolean value (true/false).
 	Active *bool `queryParam:"name=active"`
 }
 
-func (o *ListUsersFilter) GetID() *string {
+func (o *ListUsersFilter) GetID() *components.StringFieldEqualsFilterUnion {
 	if o == nil {
 		return nil
 	}

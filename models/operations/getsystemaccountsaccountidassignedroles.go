@@ -14,19 +14,19 @@ var GetSystemAccountsAccountIDAssignedRolesServerList = []string{
 // GetSystemAccountsAccountIDAssignedRolesQueryParamFilter - Filter roles returned in the response.
 type GetSystemAccountsAccountIDAssignedRolesQueryParamFilter struct {
 	// Filters on the given string field value by exact match.
-	RoleName *string `queryParam:"name=role_name"`
+	RoleName *components.StringFieldEqualsFilter `queryParam:"name=role_name"`
 	// Filters on the given string field value by exact match.
-	EntityTypeName *string `queryParam:"name=entity_type_name"`
+	EntityTypeName *components.StringFieldEqualsFilter `queryParam:"name=entity_type_name"`
 }
 
-func (o *GetSystemAccountsAccountIDAssignedRolesQueryParamFilter) GetRoleName() *string {
+func (o *GetSystemAccountsAccountIDAssignedRolesQueryParamFilter) GetRoleName() *components.StringFieldEqualsFilter {
 	if o == nil {
 		return nil
 	}
 	return o.RoleName
 }
 
-func (o *GetSystemAccountsAccountIDAssignedRolesQueryParamFilter) GetEntityTypeName() *string {
+func (o *GetSystemAccountsAccountIDAssignedRolesQueryParamFilter) GetEntityTypeName() *components.StringFieldEqualsFilter {
 	if o == nil {
 		return nil
 	}

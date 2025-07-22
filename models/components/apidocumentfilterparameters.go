@@ -3,7 +3,7 @@
 package components
 
 type APIDocumentFilterParameters struct {
-	// Filters on the given string field value by exact match inequality.
+	// Filters on the given string field value by either exact or fuzzy match.
 	Status *StringFieldFilter `queryParam:"name=status"`
 }
 

@@ -2,15 +2,50 @@
 
 package components
 
+import (
+	"errors"
+	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
+type APIImplementationType string
+
+const (
+	APIImplementationTypeAPIImplementationGatewayServiceEntity APIImplementationType = "ApiImplementationGatewayServiceEntity"
+)
+
 // APIImplementation - An entity that implements an API
 type APIImplementation struct {
-	// A Gateway service that implements an API
-	Service *APIImplementationService `json:"service,omitempty"`
+	APIImplementationGatewayServiceEntity *APIImplementationGatewayServiceEntity `queryParam:"inline"`
+
+	Type APIImplementationType
 }
 
-func (o *APIImplementation) GetService() *APIImplementationService {
-	if o == nil {
+func CreateAPIImplementationAPIImplementationGatewayServiceEntity(apiImplementationGatewayServiceEntity APIImplementationGatewayServiceEntity) APIImplementation {
+	typ := APIImplementationTypeAPIImplementationGatewayServiceEntity
+
+	return APIImplementation{
+		APIImplementationGatewayServiceEntity: &apiImplementationGatewayServiceEntity,
+		Type:                                  typ,
+	}
+}
+
+func (u *APIImplementation) UnmarshalJSON(data []byte) error {
+
+	var apiImplementationGatewayServiceEntity APIImplementationGatewayServiceEntity = APIImplementationGatewayServiceEntity{}
+	if err := utils.UnmarshalJSON(data, &apiImplementationGatewayServiceEntity, "", true, true); err == nil {
+		u.APIImplementationGatewayServiceEntity = &apiImplementationGatewayServiceEntity
+		u.Type = APIImplementationTypeAPIImplementationGatewayServiceEntity
 		return nil
 	}
-	return o.Service
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for APIImplementation", string(data))
+}
+
+func (u APIImplementation) MarshalJSON() ([]byte, error) {
+	if u.APIImplementationGatewayServiceEntity != nil {
+		return utils.MarshalJSON(u.APIImplementationGatewayServiceEntity, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type APIImplementation: all fields are null")
 }

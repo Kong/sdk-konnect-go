@@ -230,7 +230,7 @@ func main() {
         ApplicationID: "8531a3ec-718e-40e8-b5ec-e12e6e00b6e1",
         RegistrationID: "f7e27313-022a-404f-b641-ad7fca249f28",
         UpdateApplicationRegistrationRequest: components.UpdateApplicationRegistrationRequest{
-            Status: components.ApplicationRegistrationStatusRejected.ToPointer(),
+            Status: components.ApplicationRegistrationStatusApproved.ToPointer(),
         },
     })
     if err != nil {

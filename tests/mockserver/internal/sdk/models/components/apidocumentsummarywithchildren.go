@@ -16,8 +16,7 @@ type APIDocumentSummaryWithChildren struct {
 	//
 	// Defaults to `slugify(title)`
 	//
-	Slug string `json:"slug"`
-	// If `status=published` the document will be visible in your live portal
+	Slug   string             `json:"slug"`
 	Status *APIDocumentStatus `default:"unpublished" json:"status"`
 	// API Documents may be rendered as a tree of files.
 	//

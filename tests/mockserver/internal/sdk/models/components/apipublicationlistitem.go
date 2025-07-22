@@ -13,6 +13,8 @@ type APIPublicationListItem struct {
 	APIID string `json:"api_id"`
 	// The portal identifier.
 	PortalID string `json:"portal_id"`
+	// Whether the application registration auto approval on this portal for the api is enabled. If set to false, fallbacks on portal's auto_approve_applications value.
+	AutoApproveRegistrations bool `json:"auto_approve_registrations"`
 	// The visibility of the API in the portal.
 	// Public API publications do not require authentication to view and retrieve information about them.
 	// Private API publications require authentication to retrieve information about them.
@@ -53,6 +55,13 @@ func (o *APIPublicationListItem) GetPortalID() string {
 		return ""
 	}
 	return o.PortalID
+}
+
+func (o *APIPublicationListItem) GetAutoApproveRegistrations() bool {
+	if o == nil {
+		return false
+	}
+	return o.AutoApproveRegistrations
 }
 
 func (o *APIPublicationListItem) GetVisibility() *APIPublicationVisibility {

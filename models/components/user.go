@@ -18,7 +18,7 @@ type User struct {
 	// The User's preferred name.
 	PreferredName *string `json:"preferred_name,omitempty"`
 	// Returns True if a user has verified their email address.
-	Active *bool `json:"active,omitempty"`
+	Active *bool `default:"true" json:"active"`
 	// The Konnect region closest to the user's IP address. This property might only be set for users on signup through Konnect’s build-in native authentication.
 	InferredRegion *string `json:"inferred_region,omitempty"`
 	// The time stamp for the date the account was registered.

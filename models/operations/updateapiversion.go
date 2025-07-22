@@ -11,7 +11,7 @@ type UpdateAPIVersionRequest struct {
 	// The UUID API identifier
 	APIID string `pathParam:"style=simple,explode=false,name=apiId"`
 	// The API version identifier
-	SpecID     string                `pathParam:"style=simple,explode=false,name=specId"`
+	VersionID  string                `pathParam:"style=simple,explode=false,name=versionId"`
 	APIVersion components.APIVersion `request:"mediaType=application/json"`
 }
 
@@ -22,11 +22,11 @@ func (o *UpdateAPIVersionRequest) GetAPIID() string {
 	return o.APIID
 }
 
-func (o *UpdateAPIVersionRequest) GetSpecID() string {
+func (o *UpdateAPIVersionRequest) GetVersionID() string {
 	if o == nil {
 		return ""
 	}
-	return o.SpecID
+	return o.VersionID
 }
 
 func (o *UpdateAPIVersionRequest) GetAPIVersion() components.APIVersion {

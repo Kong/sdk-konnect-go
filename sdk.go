@@ -138,7 +138,8 @@ type SDK struct {
 	//   Learn more about the router:
 	// - [Configure routes using expressions](https://developer.konghq.com/gateway/routing/expressions/)
 	//
-	Routes *Routes
+	Routes  *Routes
+	Schemas *Schemas
 	// Service entities are abstractions of your microservice interfaces or formal APIs. For example, a service could be a data transformation microservice or a billing API.
 	// <br><br>
 	// The main attribute of a service is the destination URL for proxying traffic. This URL can be set as a single string or by specifying its protocol, host, port and path individually.
@@ -301,9 +302,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.6.0",
+		SDKVersion: "0.7.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.6.0 2.638.5 3.0.22 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.7.0 2.638.5 3.0.22 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -350,6 +351,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.PartialLinks = newPartialLinks(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CustomPluginSchemas = newCustomPluginSchemas(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Routes = newRoutes(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Schemas = newSchemas(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Services = newServices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Upstreams = newUpstreams(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Targets = newTargets(sdk, sdk.sdkConfiguration, sdk.hooks)

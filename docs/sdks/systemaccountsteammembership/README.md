@@ -155,7 +155,9 @@ func main() {
         }),
     )
 
-    res, err := s.SystemAccountsTeamMembership.PostTeamsTeamIDSystemAccounts(ctx, "<id>", nil)
+    res, err := s.SystemAccountsTeamMembership.PostTeamsTeamIDSystemAccounts(ctx, "<id>", &components.AddSystemAccountToTeam{
+        AccountID: sdkkonnectgo.String("497f6eca-6276-4993-bfeb-53cbbbba6f08"),
+    })
     if err != nil {
         log.Fatal(err)
     }

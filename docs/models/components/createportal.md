@@ -1,7 +1,5 @@
 # CreatePortal
 
-Create a portal.
-
 
 ## Fields
 

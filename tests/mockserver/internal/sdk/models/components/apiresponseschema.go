@@ -37,7 +37,6 @@ func (o *APIResponseSchemaPortal) GetDisplayName() string {
 	return o.DisplayName
 }
 
-// APIResponseSchema - API
 type APIResponseSchema struct {
 	// The API identifier.
 	ID string `json:"id"`
