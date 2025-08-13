@@ -12,8 +12,6 @@ permissions:
   contents: read
 
 jobs:
-  # NOTE: This is a poor man's way of checking if the last commit was made by
-  # this workflow. If it was then we don't want to generate the SDK again.
   should-generate:
     runs-on:
       - ubuntu-latest
@@ -24,17 +22,21 @@ jobs:
         uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
         with:
           egress-policy: audit
+
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           token: ${{ secrets.PAT }}
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@ed68ef82c095e0d48ec87eccea555d944a631a4c # v46.0.5
+        with:
+          since_last_remote_commit: "true"
+      
       - id: decision
         run: |
-            if [[ "$(git show -s --format=%B HEAD)" == "Update provider based on openapi.yaml changes" ]]; then
-              echo "result=false" >> "$GITHUB_OUTPUT"
-            else
-              echo "result=true" >> "$GITHUB_OUTPUT"
-            fi
+          echo "result=${{ contains(steps.changed-files.outputs.modified_files, '.speakeasy/gen.yaml') }}" >> "$GITHUB_OUTPUT"
 
   generate:
     needs:
@@ -49,6 +51,7 @@ jobs:
         uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
         with:
           egress-policy: audit
+
       - name: Install Speakeasy
         uses: mheap/setup-go-cli@fa9b01cdd4115eac636164f0de43bf7d51c82697 # v1.2.2
         with:
