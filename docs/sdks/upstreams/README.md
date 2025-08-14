@@ -100,15 +100,27 @@ func main() {
     )
 
     res, err := s.Upstreams.CreateUpstream(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Upstream{
+        Algorithm: components.UpstreamAlgorithmRoundRobin.ToPointer(),
+        HashFallback: components.HashFallbackNone.ToPointer(),
+        HashOn: components.HashOnNone.ToPointer(),
+        HashOnCookiePath: sdkkonnectgo.String("/"),
         Healthchecks: &components.Healthchecks{
             Active: &components.Active{
+                Concurrency: sdkkonnectgo.Int64(10),
                 Healthy: &components.Healthy{
                     HTTPStatuses: []int64{
                         200,
                         302,
                     },
+                    Interval: sdkkonnectgo.Float64(0),
+                    Successes: sdkkonnectgo.Int64(0),
                 },
+                HTTPPath: sdkkonnectgo.String("/"),
+                HTTPSVerifyCertificate: sdkkonnectgo.Bool(true),
+                Timeout: sdkkonnectgo.Float64(1),
+                Type: components.UpstreamTypeHTTP.ToPointer(),
                 Unhealthy: &components.Unhealthy{
+                    HTTPFailures: sdkkonnectgo.Int64(0),
                     HTTPStatuses: []int64{
                         429,
                         404,
@@ -119,6 +131,9 @@ func main() {
                         504,
                         505,
                     },
+                    Interval: sdkkonnectgo.Float64(0),
+                    TCPFailures: sdkkonnectgo.Int64(0),
+                    Timeouts: sdkkonnectgo.Int64(0),
                 },
             },
             Passive: &components.Passive{
@@ -144,18 +159,25 @@ func main() {
                         307,
                         308,
                     },
+                    Successes: sdkkonnectgo.Int64(0),
                 },
+                Type: components.UpstreamHealthchecksTypeHTTP.ToPointer(),
                 Unhealthy: &components.UpstreamUnhealthy{
+                    HTTPFailures: sdkkonnectgo.Int64(0),
                     HTTPStatuses: []int64{
                         429,
                         500,
                         503,
                     },
+                    TCPFailures: sdkkonnectgo.Int64(0),
+                    Timeouts: sdkkonnectgo.Int64(0),
                 },
             },
+            Threshold: sdkkonnectgo.Float64(0),
         },
         ID: sdkkonnectgo.String("6eed5e9c-5398-4026-9a4c-d48f18a2431e"),
         Name: "api.example.internal",
+        Slots: sdkkonnectgo.Int64(10000),
     })
     if err != nil {
         log.Fatal(err)
@@ -326,15 +348,27 @@ func main() {
         UpstreamID: "426d620c-7058-4ae6-aacc-f85a3204a2c5",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Upstream: components.Upstream{
+            Algorithm: components.UpstreamAlgorithmRoundRobin.ToPointer(),
+            HashFallback: components.HashFallbackNone.ToPointer(),
+            HashOn: components.HashOnNone.ToPointer(),
+            HashOnCookiePath: sdkkonnectgo.String("/"),
             Healthchecks: &components.Healthchecks{
                 Active: &components.Active{
+                    Concurrency: sdkkonnectgo.Int64(10),
                     Healthy: &components.Healthy{
                         HTTPStatuses: []int64{
                             200,
                             302,
                         },
+                        Interval: sdkkonnectgo.Float64(0),
+                        Successes: sdkkonnectgo.Int64(0),
                     },
+                    HTTPPath: sdkkonnectgo.String("/"),
+                    HTTPSVerifyCertificate: sdkkonnectgo.Bool(true),
+                    Timeout: sdkkonnectgo.Float64(1),
+                    Type: components.UpstreamTypeHTTP.ToPointer(),
                     Unhealthy: &components.Unhealthy{
+                        HTTPFailures: sdkkonnectgo.Int64(0),
                         HTTPStatuses: []int64{
                             429,
                             404,
@@ -345,6 +379,9 @@ func main() {
                             504,
                             505,
                         },
+                        Interval: sdkkonnectgo.Float64(0),
+                        TCPFailures: sdkkonnectgo.Int64(0),
+                        Timeouts: sdkkonnectgo.Int64(0),
                     },
                 },
                 Passive: &components.Passive{
@@ -370,18 +407,25 @@ func main() {
                             307,
                             308,
                         },
+                        Successes: sdkkonnectgo.Int64(0),
                     },
+                    Type: components.UpstreamHealthchecksTypeHTTP.ToPointer(),
                     Unhealthy: &components.UpstreamUnhealthy{
+                        HTTPFailures: sdkkonnectgo.Int64(0),
                         HTTPStatuses: []int64{
                             429,
                             500,
                             503,
                         },
+                        TCPFailures: sdkkonnectgo.Int64(0),
+                        Timeouts: sdkkonnectgo.Int64(0),
                     },
                 },
+                Threshold: sdkkonnectgo.Float64(0),
             },
             ID: sdkkonnectgo.String("6eed5e9c-5398-4026-9a4c-d48f18a2431e"),
             Name: "api.example.internal",
+            Slots: sdkkonnectgo.Int64(10000),
         },
     })
     if err != nil {

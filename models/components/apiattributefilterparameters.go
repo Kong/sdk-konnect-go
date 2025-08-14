@@ -3,9 +3,9 @@
 package components
 
 type APIAttributeFilterParameters struct {
-	// Filters on the given UUID field value by exact match.
+	// Filters on the given string field value by exact match inequality.
 	ID *UUIDFieldFilter `queryParam:"name=id"`
-	// Filters on the given UUID field value by exact match.
+	// Filters on the given string field value by exact match inequality.
 	Key *UUIDFieldFilter `queryParam:"name=key"`
 	// Filters on the given datetime (RFC-3339) field value.
 	CreatedAt *DateTimeFieldFilter `queryParam:"name=created_at"`

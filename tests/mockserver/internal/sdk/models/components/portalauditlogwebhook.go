@@ -2,27 +2,12 @@
 
 package components
 
-import (
-	"mockserver/internal/sdk/utils"
-)
-
 // PortalAuditLogWebhook - Portal audit log webhook response
 type PortalAuditLogWebhook struct {
 	// Indicates if the data should be sent to the configured audit log destination.
-	Enabled *bool `default:"false" json:"enabled"`
+	Enabled *bool `json:"enabled,omitempty"`
 	// ID of the audit log destination.
 	AuditLogDestinationID *string `json:"audit_log_destination_id,omitempty"`
-}
-
-func (p PortalAuditLogWebhook) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PortalAuditLogWebhook) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (o *PortalAuditLogWebhook) GetEnabled() *bool {

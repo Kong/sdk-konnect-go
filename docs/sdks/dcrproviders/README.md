@@ -46,10 +46,10 @@ func main() {
         components.CreateDcrProviderRequestOkta{
             ProviderType: components.CreateDcrProviderRequestOktaProviderTypeOkta,
             DcrConfig: components.CreateDcrConfigOktaInRequest{
-                DcrToken: "abc123xyz098!",
+                DcrToken: "<value>",
             },
-            Name: "DCR Okta 1 - Segment A",
-            Issuer: "https://my-issuer.okta.com/default",
+            Name: "<value>",
+            Issuer: "https://growing-meadow.biz/",
         },
     ))
     if err != nil {
@@ -224,8 +224,9 @@ func main() {
     )
 
     res, err := s.DCRProviders.UpdateDcrProvider(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.UpdateDcrProviderRequest{
-        Name: sdkkonnectgo.String("DCR Okta 1 - Segment A"),
-        Issuer: sdkkonnectgo.String("https://my-issuer.okta.com/default"),
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.String("test"),
+        },
     })
     if err != nil {
         log.Fatal(err)

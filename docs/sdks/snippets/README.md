@@ -114,11 +114,12 @@ func main() {
     )
 
     res, err := s.Snippets.CreatePortalSnippet(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.CreatePortalSnippetRequest{
-        Name: "getting-started",
-        Title: sdkkonnectgo.String("Getting Started"),
-        Content: "Welcome to the Getting Started page. This is where you can learn how to use our APIs.",
+        Name: "my-snippet",
+        Title: sdkkonnectgo.String("My Snippet"),
+        Content: "# Welcome to My Snippet",
         Visibility: components.SnippetVisibilityStatusPublic.ToPointer(),
         Status: components.PublishedStatusPublished.ToPointer(),
+        Description: sdkkonnectgo.String("A custom page about developer portals"),
     })
     if err != nil {
         log.Fatal(err)
@@ -239,9 +240,12 @@ func main() {
         PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
         SnippetID: "ebbac5b0-ac89-45c3-9d2e-c4542c657e79",
         UpdatePortalSnippetRequest: components.UpdatePortalSnippetRequest{
-            Name: sdkkonnectgo.String("about-us"),
-            Title: sdkkonnectgo.String("About Us"),
-            Content: sdkkonnectgo.String("Welcome to the About Us page. This is where you can learn about our company."),
+            Name: sdkkonnectgo.String("my-snippet"),
+            Title: sdkkonnectgo.String("My Snippet"),
+            Content: sdkkonnectgo.String("# Welcome to My Snippet"),
+            Visibility: components.VisibilityStatusPublic.ToPointer(),
+            Status: components.PublishedStatusPublished.ToPointer(),
+            Description: sdkkonnectgo.String("A custom page about developer portals"),
         },
     })
     if err != nil {

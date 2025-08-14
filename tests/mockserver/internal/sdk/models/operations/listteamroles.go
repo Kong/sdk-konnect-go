@@ -9,19 +9,19 @@ import (
 // ListTeamRolesFilter - Filter roles returned in the response.
 type ListTeamRolesFilter struct {
 	// Filters on the given string field value by exact match.
-	RoleName *components.StringFieldEqualsFilterUnion `queryParam:"name=role_name"`
+	RoleName *string `queryParam:"name=role_name"`
 	// Filters on the given string field value by exact match.
-	EntityTypeName *components.StringFieldEqualsFilterUnion `queryParam:"name=entity_type_name"`
+	EntityTypeName *string `queryParam:"name=entity_type_name"`
 }
 
-func (o *ListTeamRolesFilter) GetRoleName() *components.StringFieldEqualsFilterUnion {
+func (o *ListTeamRolesFilter) GetRoleName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.RoleName
 }
 
-func (o *ListTeamRolesFilter) GetEntityTypeName() *components.StringFieldEqualsFilterUnion {
+func (o *ListTeamRolesFilter) GetEntityTypeName() *string {
 	if o == nil {
 		return nil
 	}

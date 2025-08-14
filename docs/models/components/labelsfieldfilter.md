@@ -1,37 +1,14 @@
 # LabelsFieldFilter
 
-Filters on the given string field value by either exact or fuzzy match.
+Filters on the given string field value by exact match inequality.
 
 
-## Supported Types
+## Fields
 
-### StringFieldEqualsFilter
-
-```go
-labelsFieldFilter := components.CreateLabelsFieldFilterStringFieldEqualsFilter(components.StringFieldEqualsFilter{/* values here */})
-```
-
-### StringFieldContainsFilter
-
-```go
-labelsFieldFilter := components.CreateLabelsFieldFilterStringFieldContainsFilter(components.StringFieldContainsFilter{/* values here */})
-```
-
-### StringFieldOContainsFilter
-
-```go
-labelsFieldFilter := components.CreateLabelsFieldFilterStringFieldOContainsFilter(components.StringFieldOContainsFilter{/* values here */})
-```
-
-### StringFieldOEQFilter
-
-```go
-labelsFieldFilter := components.CreateLabelsFieldFilterStringFieldOEQFilter(components.StringFieldOEQFilter{/* values here */})
-```
-
-### StringFieldNEQFilter
-
-```go
-labelsFieldFilter := components.CreateLabelsFieldFilterStringFieldNEQFilter(components.StringFieldNEQFilter{/* values here */})
-```
-
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `Eq`               | **string*          | :heavy_minus_sign: | N/A                |
+| `Contains`         | **string*          | :heavy_minus_sign: | N/A                |
+| `Ocontains`        | **string*          | :heavy_minus_sign: | N/A                |
+| `Oeq`              | **string*          | :heavy_minus_sign: | N/A                |
+| `Neq`              | **string*          | :heavy_minus_sign: | N/A                |

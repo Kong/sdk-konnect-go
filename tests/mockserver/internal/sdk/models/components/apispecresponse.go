@@ -3,6 +3,8 @@
 package components
 
 import (
+	"encoding/json"
+	"fmt"
 	"mockserver/internal/sdk/utils"
 	"time"
 )
@@ -18,6 +20,36 @@ func (o *APISpecResponseValidationMessage) GetMessage() string {
 	return o.Message
 }
 
+// APISpecResponseAPISpecType - The type of specification being stored. This allows us to render the specification correctly.
+type APISpecResponseAPISpecType string
+
+const (
+	APISpecResponseAPISpecTypeOas2     APISpecResponseAPISpecType = "oas2"
+	APISpecResponseAPISpecTypeOas3     APISpecResponseAPISpecType = "oas3"
+	APISpecResponseAPISpecTypeAsyncapi APISpecResponseAPISpecType = "asyncapi"
+)
+
+func (e APISpecResponseAPISpecType) ToPointer() *APISpecResponseAPISpecType {
+	return &e
+}
+func (e *APISpecResponseAPISpecType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "oas2":
+		fallthrough
+	case "oas3":
+		fallthrough
+	case "asyncapi":
+		*e = APISpecResponseAPISpecType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for APISpecResponseAPISpecType: %v", v)
+	}
+}
+
 // APISpecResponse - API specification (OpenAPI or AsyncAPI)
 type APISpecResponse struct {
 	// The API specification identifier.
@@ -27,7 +59,9 @@ type APISpecResponse struct {
 	Content string `json:"content"`
 	// The errors that occurred while parsing the API specification.
 	ValidationMessages []APISpecResponseValidationMessage `json:"validation_messages"`
-	Type               APISpecType                        `json:"type"`
+	// The type of specification being stored. This allows us to render the specification correctly.
+	//
+	Type APISpecResponseAPISpecType `json:"type"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
@@ -66,9 +100,9 @@ func (o *APISpecResponse) GetValidationMessages() []APISpecResponseValidationMes
 	return o.ValidationMessages
 }
 
-func (o *APISpecResponse) GetType() APISpecType {
+func (o *APISpecResponse) GetType() APISpecResponseAPISpecType {
 	if o == nil {
-		return APISpecType("")
+		return APISpecResponseAPISpecType("")
 	}
 	return o.Type
 }

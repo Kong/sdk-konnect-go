@@ -1,0 +1,10 @@
+# GCPVPCPeeringAttachmentConfig
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `Kind`                                                                                           | [components.GCPVPCPeeringAttachmentType](../../models/components/gcpvpcpeeringattachmenttype.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `PeerProjectID`                                                                                  | *string*                                                                                         | :heavy_check_mark:                                                                               | GCP Project ID of the peer account to create attachment to.                                      |
+| `PeerVpcName`                                                                                    | *string*                                                                                         | :heavy_check_mark:                                                                               | GCP VPC Name of the peer account to create attachment to.                                        |

@@ -3,15 +3,15 @@
 package components
 
 type NotificationFilterParameters struct {
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	Title *StringFieldFilter `queryParam:"name=title"`
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	Description *StringFieldFilter `queryParam:"name=description"`
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	Namespace *StringFieldFilter `queryParam:"name=namespace"`
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	Region *StringFieldFilter `queryParam:"name=region"`
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	Status *StringFieldFilter `queryParam:"name=status"`
 }
 

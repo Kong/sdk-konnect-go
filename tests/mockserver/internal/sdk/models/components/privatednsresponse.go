@@ -11,13 +11,17 @@ import (
 type PrivateDNSResponseType string
 
 const (
-	PrivateDNSResponseTypeAwsPrivateHostedZoneResponse  PrivateDNSResponseType = "AwsPrivateHostedZoneResponse"
-	PrivateDNSResponseTypeAwsPrivateDNSResolverResponse PrivateDNSResponseType = "AwsPrivateDnsResolverResponse"
+	PrivateDNSResponseTypeAwsPrivateHostedZoneResponse   PrivateDNSResponseType = "AwsPrivateHostedZoneResponse"
+	PrivateDNSResponseTypeAwsPrivateDNSResolverResponse  PrivateDNSResponseType = "AwsPrivateDnsResolverResponse"
+	PrivateDNSResponseTypeGcpPrivateHostedZoneResponse   PrivateDNSResponseType = "GcpPrivateHostedZoneResponse"
+	PrivateDNSResponseTypeAzurePrivateHostedZoneResponse PrivateDNSResponseType = "AzurePrivateHostedZoneResponse"
 )
 
 type PrivateDNSResponse struct {
-	AwsPrivateHostedZoneResponse  *AwsPrivateHostedZoneResponse  `queryParam:"inline"`
-	AwsPrivateDNSResolverResponse *AwsPrivateDNSResolverResponse `queryParam:"inline"`
+	AwsPrivateHostedZoneResponse   *AwsPrivateHostedZoneResponse   `queryParam:"inline"`
+	AwsPrivateDNSResolverResponse  *AwsPrivateDNSResolverResponse  `queryParam:"inline"`
+	GcpPrivateHostedZoneResponse   *GcpPrivateHostedZoneResponse   `queryParam:"inline"`
+	AzurePrivateHostedZoneResponse *AzurePrivateHostedZoneResponse `queryParam:"inline"`
 
 	Type PrivateDNSResponseType
 }
@@ -40,7 +44,39 @@ func CreatePrivateDNSResponseAwsPrivateDNSResolverResponse(awsPrivateDNSResolver
 	}
 }
 
+func CreatePrivateDNSResponseGcpPrivateHostedZoneResponse(gcpPrivateHostedZoneResponse GcpPrivateHostedZoneResponse) PrivateDNSResponse {
+	typ := PrivateDNSResponseTypeGcpPrivateHostedZoneResponse
+
+	return PrivateDNSResponse{
+		GcpPrivateHostedZoneResponse: &gcpPrivateHostedZoneResponse,
+		Type:                         typ,
+	}
+}
+
+func CreatePrivateDNSResponseAzurePrivateHostedZoneResponse(azurePrivateHostedZoneResponse AzurePrivateHostedZoneResponse) PrivateDNSResponse {
+	typ := PrivateDNSResponseTypeAzurePrivateHostedZoneResponse
+
+	return PrivateDNSResponse{
+		AzurePrivateHostedZoneResponse: &azurePrivateHostedZoneResponse,
+		Type:                           typ,
+	}
+}
+
 func (u *PrivateDNSResponse) UnmarshalJSON(data []byte) error {
+
+	var gcpPrivateHostedZoneResponse GcpPrivateHostedZoneResponse = GcpPrivateHostedZoneResponse{}
+	if err := utils.UnmarshalJSON(data, &gcpPrivateHostedZoneResponse, "", true, true); err == nil {
+		u.GcpPrivateHostedZoneResponse = &gcpPrivateHostedZoneResponse
+		u.Type = PrivateDNSResponseTypeGcpPrivateHostedZoneResponse
+		return nil
+	}
+
+	var azurePrivateHostedZoneResponse AzurePrivateHostedZoneResponse = AzurePrivateHostedZoneResponse{}
+	if err := utils.UnmarshalJSON(data, &azurePrivateHostedZoneResponse, "", true, true); err == nil {
+		u.AzurePrivateHostedZoneResponse = &azurePrivateHostedZoneResponse
+		u.Type = PrivateDNSResponseTypeAzurePrivateHostedZoneResponse
+		return nil
+	}
 
 	var awsPrivateHostedZoneResponse AwsPrivateHostedZoneResponse = AwsPrivateHostedZoneResponse{}
 	if err := utils.UnmarshalJSON(data, &awsPrivateHostedZoneResponse, "", true, true); err == nil {
@@ -66,6 +102,14 @@ func (u PrivateDNSResponse) MarshalJSON() ([]byte, error) {
 
 	if u.AwsPrivateDNSResolverResponse != nil {
 		return utils.MarshalJSON(u.AwsPrivateDNSResolverResponse, "", true)
+	}
+
+	if u.GcpPrivateHostedZoneResponse != nil {
+		return utils.MarshalJSON(u.GcpPrivateHostedZoneResponse, "", true)
+	}
+
+	if u.AzurePrivateHostedZoneResponse != nil {
+		return utils.MarshalJSON(u.AzurePrivateHostedZoneResponse, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type PrivateDNSResponse: all fields are null")

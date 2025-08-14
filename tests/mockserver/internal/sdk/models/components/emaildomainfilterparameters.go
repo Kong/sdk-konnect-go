@@ -3,9 +3,9 @@
 package components
 
 type EmailDomainFilterParameters struct {
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	Domain *StringFieldFilter `queryParam:"name=domain"`
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	VerificationStatus *StringFieldFilter `queryParam:"name=verification_status"`
 }
 

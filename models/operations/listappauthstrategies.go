@@ -9,17 +9,17 @@ import (
 
 // Filter application auth strategies returned in the response.
 type Filter struct {
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	StrategyType *components.StringFieldFilter `queryParam:"name=strategy_type"`
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	Name *components.StringFieldFilter `queryParam:"name=name"`
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	DisplayName *components.StringFieldFilter `queryParam:"name=display_name"`
-	// Filters on the given UUID field value by exact match.
+	// Filters on the given string field value by exact match inequality.
 	DcrProviderID *components.UUIDFieldFilter `queryParam:"name=dcr_provider_id"`
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	DcrProviderName *components.StringFieldFilter `queryParam:"name=dcr_provider_name"`
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	DcrProviderType *components.StringFieldFilter `queryParam:"name=dcr_provider_type"`
 }
 

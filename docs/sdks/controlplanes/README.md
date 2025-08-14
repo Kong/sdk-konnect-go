@@ -106,7 +106,8 @@ func main() {
     res, err := s.ControlPlanes.CreateControlPlane(ctx, components.CreateControlPlaneRequest{
         Name: "Test Control Plane",
         Description: sdkkonnectgo.String("A test control plane for exploration."),
-        ClusterType: components.CreateControlPlaneRequestClusterTypeClusterTypeK8SIngressController.ToPointer(),
+        ClusterType: components.CreateControlPlaneRequestClusterTypeClusterTypeControlPlane.ToPointer(),
+        AuthType: components.AuthTypePinnedClientCerts.ToPointer(),
         CloudGateway: sdkkonnectgo.Bool(false),
         ProxyUrls: []components.ProxyURL{
             components.ProxyURL{
@@ -239,6 +240,7 @@ func main() {
     res, err := s.ControlPlanes.UpdateControlPlane(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateControlPlaneRequest{
         Name: sdkkonnectgo.String("Test Control Plane"),
         Description: sdkkonnectgo.String("A test control plane for exploration."),
+        AuthType: components.UpdateControlPlaneRequestAuthTypePinnedClientCerts.ToPointer(),
         ProxyUrls: []components.ProxyURL{
             components.ProxyURL{
                 Host: "example.com",
@@ -247,7 +249,7 @@ func main() {
             },
         },
         Labels: map[string]string{
-            "env": "development",
+            "env": "test",
         },
     })
     if err != nil {

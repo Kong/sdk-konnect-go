@@ -2,25 +2,10 @@
 
 package components
 
-import (
-	"mockserver/internal/sdk/utils"
-)
-
 type ClaimMappingsRequestBody struct {
-	Name   *string `default:"name" json:"name"`
-	Email  *string `default:"email" json:"email"`
-	Groups *string `default:"groups" json:"groups"`
-}
-
-func (c ClaimMappingsRequestBody) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *ClaimMappingsRequestBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
-		return err
-	}
-	return nil
+	Name   *string `json:"name,omitempty"`
+	Email  *string `json:"email,omitempty"`
+	Groups *string `json:"groups,omitempty"`
 }
 
 func (o *ClaimMappingsRequestBody) GetName() *string {

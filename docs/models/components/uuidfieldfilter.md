@@ -1,25 +1,12 @@
 # UUIDFieldFilter
 
-Filters on the given UUID field value by exact match.
+Filters on the given string field value by exact match inequality.
 
 
-## Supported Types
+## Fields
 
-### StringFieldEqualsFilter
-
-```go
-uuidFieldFilter := components.CreateUUIDFieldFilterStringFieldEqualsFilter(components.StringFieldEqualsFilter{/* values here */})
-```
-
-### StringFieldOEQFilter
-
-```go
-uuidFieldFilter := components.CreateUUIDFieldFilterStringFieldOEQFilter(components.StringFieldOEQFilter{/* values here */})
-```
-
-### StringFieldNEQFilter
-
-```go
-uuidFieldFilter := components.CreateUUIDFieldFilterStringFieldNEQFilter(components.StringFieldNEQFilter{/* values here */})
-```
-
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `Eq`               | **string*          | :heavy_minus_sign: | N/A                |
+| `Oeq`              | **string*          | :heavy_minus_sign: | N/A                |
+| `Neq`              | **string*          | :heavy_minus_sign: | N/A                |

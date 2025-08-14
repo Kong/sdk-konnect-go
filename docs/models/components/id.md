@@ -1,17 +1,11 @@
 # ID
 
+Returns entities that exact match any of the comma-delimited phrases in the filter string.
 
-## Supported Types
 
-### StringFieldEqualsFilter
+## Fields
 
-```go
-id := components.CreateIDStringFieldEqualsFilter(components.StringFieldEqualsFilter{/* values here */})
-```
-
-### StringFieldOEQFilter
-
-```go
-id := components.CreateIDStringFieldOEQFilter(components.StringFieldOEQFilter{/* values here */})
-```
-
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `Eq`               | **string*          | :heavy_minus_sign: | N/A                |
+| `Oeq`              | **string*          | :heavy_minus_sign: | N/A                |

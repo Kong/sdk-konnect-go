@@ -13,7 +13,7 @@ var GetTeamsTeamIDSystemAccountsServerList = []string{
 
 // GetTeamsTeamIDSystemAccountsQueryParamFilter - Filter system accounts returned in the response.
 type GetTeamsTeamIDSystemAccountsQueryParamFilter struct {
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	Name *components.StringFieldFilter `queryParam:"name=name"`
 }
 

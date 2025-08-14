@@ -3,13 +3,13 @@
 package components
 
 type ConfigurationFilterParameters struct {
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	EventTitle *StringFieldFilter `queryParam:"name=event_title"`
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	EventDescription *StringFieldFilter `queryParam:"name=event_description"`
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	EventNamespace *StringFieldFilter `queryParam:"name=event_namespace"`
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	Region *StringFieldFilter `queryParam:"name=region"`
 }
 

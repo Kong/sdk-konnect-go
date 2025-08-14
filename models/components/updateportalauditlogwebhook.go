@@ -2,27 +2,12 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // UpdatePortalAuditLogWebhook - The request schema to modify an portal audit log webhook.
 type UpdatePortalAuditLogWebhook struct {
 	// Indicates if the data should be sent to the configured destination.
-	Enabled *bool `default:"false" json:"enabled"`
+	Enabled *bool `json:"enabled,omitempty"`
 	// ID of the audit log destination.
 	AuditLogDestinationID *string `json:"audit_log_destination_id,omitempty"`
-}
-
-func (u UpdatePortalAuditLogWebhook) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdatePortalAuditLogWebhook) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (o *UpdatePortalAuditLogWebhook) GetEnabled() *bool {

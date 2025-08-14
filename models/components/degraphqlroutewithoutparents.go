@@ -15,11 +15,12 @@ func (o *DegraphqlRouteWithoutParentsService) GetID() *string {
 
 type DegraphqlRouteWithoutParents struct {
 	// Unix epoch when the resource was created.
-	CreatedAt *int64                               `json:"created_at,omitempty"`
-	ID        *string                              `json:"id,omitempty"`
-	Methods   []string                             `json:"methods,omitempty"`
-	Query     string                               `json:"query"`
-	Service   *DegraphqlRouteWithoutParentsService `json:"service,omitempty"`
+	CreatedAt *int64 `json:"created_at,omitempty"`
+	// A string representing a UUID (universally unique identifier).
+	ID      *string                              `json:"id,omitempty"`
+	Methods []string                             `json:"methods,omitempty"`
+	Query   string                               `json:"query"`
+	Service *DegraphqlRouteWithoutParentsService `json:"service,omitempty"`
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 	URI       string `json:"uri"`

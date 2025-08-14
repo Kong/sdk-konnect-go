@@ -17,9 +17,21 @@ createTransitGatewayRequest := components.CreateCreateTransitGatewayRequestAWSTr
 createTransitGatewayRequest := components.CreateCreateTransitGatewayRequestAWSVpcPeeringGateway(components.AWSVpcPeeringGateway{/* values here */})
 ```
 
+### AWSResourceEndpointGateway
+
+```go
+createTransitGatewayRequest := components.CreateCreateTransitGatewayRequestAWSResourceEndpointGateway(components.AWSResourceEndpointGateway{/* values here */})
+```
+
 ### AzureTransitGateway
 
 ```go
 createTransitGatewayRequest := components.CreateCreateTransitGatewayRequestAzureTransitGateway(components.AzureTransitGateway{/* values here */})
+```
+
+### GcpVpcPeeringTransitGateway
+
+```go
+createTransitGatewayRequest := components.CreateCreateTransitGatewayRequestGcpVpcPeeringTransitGateway(components.GcpVpcPeeringTransitGateway{/* values here */})
 ```
 

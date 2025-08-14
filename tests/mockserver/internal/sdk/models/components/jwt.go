@@ -5,7 +5,6 @@ package components
 import (
 	"encoding/json"
 	"fmt"
-	"mockserver/internal/sdk/utils"
 )
 
 type JWTAlgorithm string
@@ -109,26 +108,17 @@ func (o *JWTConsumer) GetID() *string {
 }
 
 type Jwt struct {
-	Algorithm *JWTAlgorithm `default:"HS256" json:"algorithm"`
+	Algorithm *JWTAlgorithm `json:"algorithm,omitempty"`
 	Consumer  *JWTConsumer  `json:"consumer,omitempty"`
 	// Unix epoch when the resource was created.
-	CreatedAt    *int64   `json:"created_at,omitempty"`
-	ID           *string  `json:"id,omitempty"`
-	Key          *string  `json:"key,omitempty"`
-	RsaPublicKey *string  `json:"rsa_public_key,omitempty"`
-	Secret       *string  `json:"secret,omitempty"`
-	Tags         []string `json:"tags,omitempty"`
-}
-
-func (j Jwt) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(j, "", false)
-}
-
-func (j *Jwt) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &j, "", false, false); err != nil {
-		return err
-	}
-	return nil
+	CreatedAt *int64 `json:"created_at,omitempty"`
+	// A string representing a UUID (universally unique identifier).
+	ID           *string `json:"id,omitempty"`
+	Key          *string `json:"key,omitempty"`
+	RsaPublicKey *string `json:"rsa_public_key,omitempty"`
+	Secret       *string `json:"secret,omitempty"`
+	// A set of strings representing tags.
+	Tags []string `json:"tags,omitempty"`
 }
 
 func (o *Jwt) GetAlgorithm() *JWTAlgorithm {

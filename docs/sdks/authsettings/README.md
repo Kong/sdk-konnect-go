@@ -101,8 +101,8 @@ func main() {
         BasicAuthEnabled: sdkkonnectgo.Bool(true),
         OidcAuthEnabled: sdkkonnectgo.Bool(false),
         SamlAuthEnabled: sdkkonnectgo.Bool(false),
-        IdpMappingEnabled: sdkkonnectgo.Bool(false),
-        KonnectMappingEnabled: sdkkonnectgo.Bool(true),
+        IdpMappingEnabled: sdkkonnectgo.Bool(true),
+        KonnectMappingEnabled: sdkkonnectgo.Bool(false),
     })
     if err != nil {
         log.Fatal(err)
@@ -220,6 +220,8 @@ func main() {
         ClientID: sdkkonnectgo.String("YOUR_CLIENT_ID"),
         ClientSecret: sdkkonnectgo.String("YOUR_CLIENT_SECRET"),
         ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Name: sdkkonnectgo.String("name"),
+            Email: sdkkonnectgo.String("email"),
             Groups: sdkkonnectgo.String("custom-group-claim"),
         },
     })
@@ -345,8 +347,7 @@ func main() {
             components.Data{
                 TeamID: sdkkonnectgo.String("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
                 Groups: []string{
-                    "Team Leads",
-                    "API Engineers",
+                    "Service Developers",
                 },
             },
         },
@@ -409,7 +410,7 @@ func main() {
     res, err := s.AuthSettings.UpdateIdpTeamMappings(ctx, &components.UpdateTeamMappings{
         Mappings: []components.Mappings{
             components.Mappings{
-                Group: sdkkonnectgo.String("API Engineers"),
+                Group: sdkkonnectgo.String("Service Developers"),
                 TeamIds: []string{
                     "af91db4c-6e51-403e-a2bf-33d27ae50c0a",
                 },
@@ -591,19 +592,16 @@ func main() {
 
     res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.String("the-oidc-konnect-org"),
+        LoginPath: sdkkonnectgo.String("myapp"),
         Enabled: sdkkonnectgo.Bool(true),
-        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
-                IssuerURL: "https://konghq.okta.com/oauth2/default",
-                ClientID: "0oaqhb43ckTZ02j1F357",
-                ClientSecret: sdkkonnectgo.String("BbqwI8xP9E4evOK"),
-                Scopes: []string{
-                    "openid",
-                    "email",
-                    "profile",
-                },
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
+            components.SAMLIdentityProviderConfigInput{
+                IdpMetadataURL: sdkkonnectgo.String("https://mocksaml.com/api/saml/metadata"),
+                IdpMetadataXML: sdkkonnectgo.String("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n" +
+                "  <!-- SAML metadata content here -->\n" +
+                "</EntityDescriptor>\n" +
+                ""),
             },
         )),
     })
@@ -726,18 +724,17 @@ func main() {
 
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Bool(true),
-        LoginPath: sdkkonnectgo.String("the-oidc-konnect-org"),
+        LoginPath: sdkkonnectgo.String("myapp"),
         Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
             components.ConfigureOIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
-                ClientID: "0oaqhb43ckTZ02j1F357",
-                ClientSecret: sdkkonnectgo.String("BbqwI8xP9E4evOK"),
-                Scopes: []string{
-                    "openid",
-                    "email",
-                    "profile",
+                ClientID: "YOUR_CLIENT_ID",
+                ClientSecret: sdkkonnectgo.String("YOUR_CLIENT_SECRET"),
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
+                    Name: sdkkonnectgo.String("name"),
+                    Email: sdkkonnectgo.String("email"),
+                    Groups: sdkkonnectgo.String("groups"),
                 },
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
             },
         )),
     })

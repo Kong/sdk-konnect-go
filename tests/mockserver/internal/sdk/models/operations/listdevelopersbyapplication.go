@@ -8,7 +8,7 @@ import (
 
 // ListDevelopersByApplicationFilter - Filter application developers returned in the response.
 type ListDevelopersByApplicationFilter struct {
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	ID *components.StringFieldFilter `queryParam:"name=id"`
 }
 

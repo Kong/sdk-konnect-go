@@ -53,8 +53,10 @@ func (o *APIVersionResponseValidationMessages) GetMessage() string {
 type APIVersionResponseSpec struct {
 	// The raw content of your API spec, in json or yaml format (OpenAPI or AsyncAPI).
 	//
-	Content *string                        `json:"content,omitempty"`
-	Type    *APIVersionResponseAPISpecType `json:"type,omitempty"`
+	Content *string `json:"content,omitempty"`
+	// The type of specification being stored. This allows us to render the specification correctly.
+	//
+	Type *APIVersionResponseAPISpecType `json:"type,omitempty"`
 	// The errors that occurred while parsing the API version spec.
 	ValidationMessages []APIVersionResponseValidationMessages `json:"validation_messages,omitempty"`
 }

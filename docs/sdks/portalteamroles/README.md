@@ -163,7 +163,7 @@ func main() {
             RoleName: sdkkonnectgo.String("API Viewer"),
             EntityID: sdkkonnectgo.String("18ee2573-dec0-4b83-be99-fa7700bcdc61"),
             EntityTypeName: sdkkonnectgo.String("Services"),
-            EntityRegion: components.EntityRegionUs.ToPointer(),
+            EntityRegion: components.PortalAssignRoleRequestEntityRegionUs.ToPointer(),
         },
     })
     if err != nil {

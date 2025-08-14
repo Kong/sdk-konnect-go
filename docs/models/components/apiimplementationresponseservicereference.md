@@ -1,4 +1,4 @@
-# APIImplementationResponseAPIImplementationGatewayServiceEntity
+# APIImplementationResponseServiceReference
 
 A gateway service that implements an API
 

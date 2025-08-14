@@ -3,6 +3,7 @@
 
 ## Values
 
-| Name                                       | Value                                      |
-| ------------------------------------------ | ------------------------------------------ |
-| `PortalCustomDomainVerificationMethodHTTP` | http                                       |
+| Name                                                    | Value                                                   |
+| ------------------------------------------------------- | ------------------------------------------------------- |
+| `PortalCustomDomainVerificationMethodHTTP`              | http                                                    |
+| `PortalCustomDomainVerificationMethodCustomCertificate` | custom_certificate                                      |

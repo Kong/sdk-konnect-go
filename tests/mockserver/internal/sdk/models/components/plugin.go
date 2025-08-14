@@ -5,7 +5,6 @@ package components
 import (
 	"encoding/json"
 	"fmt"
-	"mockserver/internal/sdk/utils"
 )
 
 // PluginConsumer - If set, the plugin will activate only for requests where the specified has been authenticated. (Note that some plugins can not be restricted to consumers this way.). Leave unset for the plugin to activate regardless of the authenticated Consumer.
@@ -20,6 +19,7 @@ func (o *PluginConsumer) GetID() *string {
 	return o.ID
 }
 
+// PluginConsumerGroup - If set, the plugin will activate only for requests where the specified group has been authenticated
 type PluginConsumerGroup struct {
 	ID *string `json:"id,omitempty"`
 }
@@ -73,7 +73,9 @@ func (o *PluginOrdering) GetBefore() *PluginBefore {
 }
 
 type PluginPartial struct {
-	ID   *string `json:"id,omitempty"`
+	// A string representing a UUID (universally unique identifier).
+	ID *string `json:"id,omitempty"`
+	// A unique string representing a UTF-8 encoded name.
 	Name *string `json:"name,omitempty"`
 	Path *string `json:"path,omitempty"`
 }
@@ -99,6 +101,7 @@ func (o *PluginPartial) GetPath() *string {
 	return o.Path
 }
 
+// PluginProtocol - A string representing a protocol, such as HTTP or HTTPS.
 type PluginProtocol string
 
 const (
@@ -178,17 +181,21 @@ type Plugin struct {
 	// The configuration properties for the Plugin which can be found on the plugins documentation page in the [Kong Hub](https://docs.konghq.com/hub/).
 	Config map[string]any `json:"config,omitempty"`
 	// If set, the plugin will activate only for requests where the specified has been authenticated. (Note that some plugins can not be restricted to consumers this way.). Leave unset for the plugin to activate regardless of the authenticated Consumer.
-	Consumer      *PluginConsumer      `json:"consumer,omitempty"`
+	Consumer *PluginConsumer `json:"consumer,omitempty"`
+	// If set, the plugin will activate only for requests where the specified group has been authenticated
 	ConsumerGroup *PluginConsumerGroup `json:"consumer_group,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
 	// Whether the plugin is applied.
-	Enabled      *bool   `default:"true" json:"enabled"`
-	ID           *string `json:"id,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
+	// A string representing a UUID (universally unique identifier).
+	ID *string `json:"id,omitempty"`
+	// A unique string representing a UTF-8 encoded name.
 	InstanceName *string `json:"instance_name,omitempty"`
 	// The name of the Plugin that's going to be added. Currently, the Plugin must be installed in every Kong instance separately.
 	Name     string          `json:"name"`
 	Ordering *PluginOrdering `json:"ordering,omitempty"`
+	// A list of partials to be used by the plugin.
 	Partials []PluginPartial `json:"partials,omitempty"`
 	// A list of the request protocols that will trigger this plugin. The default value, as well as the possible values allowed on this field, may change depending on the plugin type. For example, plugins that only work in stream mode will only support `"tcp"` and `"tls"`.
 	Protocols []PluginProtocol `json:"protocols,omitempty"`
@@ -200,17 +207,6 @@ type Plugin struct {
 	Tags []string `json:"tags,omitempty"`
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
-}
-
-func (p Plugin) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Plugin) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (o *Plugin) GetConfig() map[string]any {

@@ -2,30 +2,15 @@
 
 package components
 
-import (
-	"mockserver/internal/sdk/utils"
-)
-
 // OIDCIdentityProviderClaimMappings - Defines the mappings between OpenID Connect (OIDC) claims and local claims used by your application for
 // authentication.
 type OIDCIdentityProviderClaimMappings struct {
 	// The claim mapping for the user's name.
-	Name *string `default:"name" json:"name"`
+	Name *string `json:"name,omitempty"`
 	// The claim mapping for the user's email address.
-	Email *string `default:"email" json:"email"`
+	Email *string `json:"email,omitempty"`
 	// The claim mapping for the user's group membership information.
-	Groups *string `default:"groups" json:"groups"`
-}
-
-func (o OIDCIdentityProviderClaimMappings) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(o, "", false)
-}
-
-func (o *OIDCIdentityProviderClaimMappings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &o, "", false, false); err != nil {
-		return err
-	}
-	return nil
+	Groups *string `json:"groups,omitempty"`
 }
 
 func (o *OIDCIdentityProviderClaimMappings) GetName() *string {

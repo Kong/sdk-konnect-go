@@ -9,19 +9,19 @@ import (
 // GetSystemAccountsAccountIDAssignedRolesFilter - Filter roles returned in the response.
 type GetSystemAccountsAccountIDAssignedRolesFilter struct {
 	// Filters on the given string field value by exact match.
-	RoleName *components.StringFieldEqualsFilterUnion `queryParam:"name=role_name"`
+	RoleName *string `queryParam:"name=role_name"`
 	// Filters on the given string field value by exact match.
-	EntityTypeName *components.StringFieldEqualsFilterUnion `queryParam:"name=entity_type_name"`
+	EntityTypeName *string `queryParam:"name=entity_type_name"`
 }
 
-func (o *GetSystemAccountsAccountIDAssignedRolesFilter) GetRoleName() *components.StringFieldEqualsFilterUnion {
+func (o *GetSystemAccountsAccountIDAssignedRolesFilter) GetRoleName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.RoleName
 }
 
-func (o *GetSystemAccountsAccountIDAssignedRolesFilter) GetEntityTypeName() *components.StringFieldEqualsFilterUnion {
+func (o *GetSystemAccountsAccountIDAssignedRolesFilter) GetEntityTypeName() *string {
 	if o == nil {
 		return nil
 	}

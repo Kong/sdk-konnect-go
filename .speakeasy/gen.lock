@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: e484a253f91775373c6b87608b83fb60
-  docVersion: 3.0.22
+  docChecksum: 8cfcb6d199e5ed8dade9f1f79bf63e9f
+  docVersion: 3.0.24
   speakeasyVersion: 1.570.2
   generationVersion: 2.638.5
-  releaseVersion: 0.7.1
-  configChecksum: 08093f597da8311512fb8831e4af03c9
+  releaseVersion: 0.8.0
+  configChecksum: d91a1c774a65d378d0b867cd1ff26f95
 features:
   go:
     acceptHeaders: 2.81.2
@@ -55,7 +55,6 @@ generatedFiles:
   - /models/components/apifilterparameters.go
   - /models/components/apiimplementation.go
   - /models/components/apiimplementationfilterparameters.go
-  - /models/components/apiimplementationgatewayserviceentity.go
   - /models/components/apiimplementationlistitem.go
   - /models/components/apiimplementationlistitemgatewayserviceentity.go
   - /models/components/apiimplementationresponse.go
@@ -94,10 +93,21 @@ generatedFiles:
   - /models/components/awsprivatednsresolverresponse.go
   - /models/components/awsprivatehostedzoneattachmentconfig.go
   - /models/components/awsprivatehostedzoneresponse.go
+  - /models/components/awsresourceendpointattachmentconfig.go
+  - /models/components/awsresourceendpointattachmentconfigresponse.go
+  - /models/components/awsresourceendpointconfig.go
+  - /models/components/awsresourceendpointconfigresponse.go
+  - /models/components/awsresourceendpointconfigstate.go
+  - /models/components/awsresourceendpointgateway.go
+  - /models/components/awsresourceendpointgatewayresponse.go
+  - /models/components/awstransitgateway.go
   - /models/components/awstransitgatewayattachmentconfig.go
   - /models/components/awstransitgatewayresponse.go
+  - /models/components/awsvpcpeeringgateway.go
   - /models/components/awsvpcpeeringgatewayattachmentconfig.go
   - /models/components/awsvpcpeeringgatewayresponse.go
+  - /models/components/azureprivatehostedzoneresponse.go
+  - /models/components/azuretransitgateway.go
   - /models/components/azuretransitgatewayresponse.go
   - /models/components/azurevnetpeeringattachmentconfig.go
   - /models/components/basicauth.go
@@ -133,6 +143,7 @@ generatedFiles:
   - /models/components/createapidocumentrequest.go
   - /models/components/createapirequest.go
   - /models/components/createapispecrequest.go
+  - /models/components/createapiversionrequest.go
   - /models/components/createappauthstrategyrequest.go
   - /models/components/createappauthstrategyresponse.go
   - /models/components/createconfigstore.go
@@ -209,11 +220,14 @@ generatedFiles:
   - /models/components/emailtemplatevariablename.go
   - /models/components/emailtemplatevariableslist.go
   - /models/components/emailverificationstatus.go
-  - /models/components/entityregion.go
   - /models/components/entitytypes.go
   - /models/components/eventsubscription.go
   - /models/components/eventsubscriptionlistresponse.go
   - /models/components/eventsubscriptionresponse.go
+  - /models/components/gcpprivatehostedzoneresponse.go
+  - /models/components/gcpvpcpeeringattachmentconfig.go
+  - /models/components/gcpvpcpeeringgatewayresponse.go
+  - /models/components/gcpvpcpeeringtransitgateway.go
   - /models/components/getapplicationregistrationresponse.go
   - /models/components/getapplicationresponse.go
   - /models/components/getexpectedconfighashresponse.go
@@ -406,11 +420,11 @@ generatedFiles:
   - /models/components/security.go
   - /models/components/sendtestemailtemplatecontent.go
   - /models/components/serviceoutput.go
+  - /models/components/servicereference.go
   - /models/components/sni.go
   - /models/components/snippetvisibilitystatus.go
   - /models/components/sniwithoutparents.go
   - /models/components/stringfieldcontainsfilter.go
-  - /models/components/stringfieldequalsfilter.go
   - /models/components/stringfieldfilter.go
   - /models/components/stringfieldneqfilter.go
   - /models/components/stringfieldocontainsfilter.go
@@ -989,11 +1003,10 @@ generatedFiles:
   - docs/models/components/apifilterparameters.md
   - docs/models/components/apiimplementation.md
   - docs/models/components/apiimplementationfilterparameters.md
-  - docs/models/components/apiimplementationgatewayserviceentity.md
   - docs/models/components/apiimplementationlistitem.md
   - docs/models/components/apiimplementationlistitemgatewayserviceentity.md
   - docs/models/components/apiimplementationresponse.md
-  - docs/models/components/apiimplementationresponseapiimplementationgatewayserviceentity.md
+  - docs/models/components/apiimplementationresponseservicereference.md
   - docs/models/components/apiimplementationservice.md
   - docs/models/components/apiproducts.md
   - docs/models/components/apipublication.md
@@ -1003,12 +1016,13 @@ generatedFiles:
   - docs/models/components/apipublicationvisibility.md
   - docs/models/components/apiresponseschema.md
   - docs/models/components/apispec.md
+  - docs/models/components/apispecapispectype.md
   - docs/models/components/apispecfilterparameters.md
   - docs/models/components/apispecificationsummary.md
   - docs/models/components/apispecresponse.md
+  - docs/models/components/apispecresponseapispectype.md
   - docs/models/components/apispectype.md
   - docs/models/components/apiversion.md
-  - docs/models/components/apiversionapispectype.md
   - docs/models/components/apiversionfilterparameters.md
   - docs/models/components/apiversionresponse.md
   - docs/models/components/apiversionresponseapispectype.md
@@ -1053,7 +1067,9 @@ generatedFiles:
   - docs/models/components/assignedportalrolecollectionresponse.md
   - docs/models/components/assignedrole.md
   - docs/models/components/assignedrolecollection.md
+  - docs/models/components/assignedroleentityregion.md
   - docs/models/components/assignrole.md
+  - docs/models/components/assignroleentityregion.md
   - docs/models/components/attributesfieldfilter.md
   - docs/models/components/auditlogs.md
   - docs/models/components/authenticationsettings.md
@@ -1069,6 +1085,16 @@ generatedFiles:
   - docs/models/components/awsprivatehostedzoneattachmentconfig.md
   - docs/models/components/awsprivatehostedzoneresponse.md
   - docs/models/components/awsprivatehostedzonetype.md
+  - docs/models/components/awsresourceendpointattachmentconfig.md
+  - docs/models/components/awsresourceendpointattachmentconfigawsresourceendpointattachmenttype.md
+  - docs/models/components/awsresourceendpointattachmentconfigresponse.md
+  - docs/models/components/awsresourceendpointattachmenttype.md
+  - docs/models/components/awsresourceendpointconfig.md
+  - docs/models/components/awsresourceendpointconfigresponse.md
+  - docs/models/components/awsresourceendpointconfigstate.md
+  - docs/models/components/awsresourceendpointgateway.md
+  - docs/models/components/awsresourceendpointgatewayresponse.md
+  - docs/models/components/awsresourceendpointgatewayresponsetransitgatewaystatemetadata.md
   - docs/models/components/awstransitgateway.md
   - docs/models/components/awstransitgatewayattachmentconfig.md
   - docs/models/components/awstransitgatewayattachmenttype.md
@@ -1078,6 +1104,8 @@ generatedFiles:
   - docs/models/components/awsvpcpeeringgatewayattachmentconfig.md
   - docs/models/components/awsvpcpeeringgatewayresponse.md
   - docs/models/components/awsvpcpeeringgatewayresponsetransitgatewaystatemetadata.md
+  - docs/models/components/azureprivatehostedzoneresponse.md
+  - docs/models/components/azureprivatehostedzoneresponseprivatednsstatemetadata.md
   - docs/models/components/azuretransitgateway.md
   - docs/models/components/azuretransitgatewayresponse.md
   - docs/models/components/azuretransitgatewayresponsetransitgatewaystatemetadata.md
@@ -1136,6 +1164,9 @@ generatedFiles:
   - docs/models/components/createapidocumentrequest.md
   - docs/models/components/createapirequest.md
   - docs/models/components/createapispecrequest.md
+  - docs/models/components/createapispecrequestapispectype.md
+  - docs/models/components/createapiversionrequest.md
+  - docs/models/components/createapiversionrequestspec.md
   - docs/models/components/createappauthstrategyrequest.md
   - docs/models/components/createappauthstrategyresponse.md
   - docs/models/components/createconfigstore.md
@@ -1181,6 +1212,7 @@ generatedFiles:
   - docs/models/components/cursormetapage.md
   - docs/models/components/cursormetawithsizeandtotal.md
   - docs/models/components/cursorpaginatedmetawithsizeandtotal.md
+  - docs/models/components/customcertificate.md
   - docs/models/components/customdomain.md
   - docs/models/components/customdomainonlinepropertystatus.md
   - docs/models/components/customdomainonlinestatus.md
@@ -1193,6 +1225,7 @@ generatedFiles:
   - docs/models/components/customdomainstatefieldorequalityfilter.md
   - docs/models/components/customdomainstatemetadata.md
   - docs/models/components/customplugin.md
+  - docs/models/components/dashboards.md
   - docs/models/components/data.md
   - docs/models/components/dataplaneclientcertificate.md
   - docs/models/components/dataplaneclientcertificaterequest.md
@@ -1265,6 +1298,13 @@ generatedFiles:
   - docs/models/components/eventsubscriptionlistresponse.md
   - docs/models/components/eventsubscriptionresponse.md
   - docs/models/components/gatewayserviceadmin.md
+  - docs/models/components/gcpprivatehostedzoneresponse.md
+  - docs/models/components/gcpprivatehostedzoneresponseprivatednsstatemetadata.md
+  - docs/models/components/gcpvpcpeeringattachmentconfig.md
+  - docs/models/components/gcpvpcpeeringattachmenttype.md
+  - docs/models/components/gcpvpcpeeringgatewayresponse.md
+  - docs/models/components/gcpvpcpeeringgatewayresponsetransitgatewaystatemetadata.md
+  - docs/models/components/gcpvpcpeeringtransitgateway.md
   - docs/models/components/getapplicationregistrationresponse.md
   - docs/models/components/getapplicationregistrationresponseapi.md
   - docs/models/components/getapplicationregistrationresponseapplication.md
@@ -1297,6 +1337,7 @@ generatedFiles:
   - docs/models/components/hmacauthconsumer.md
   - docs/models/components/hmacauthwithoutparents.md
   - docs/models/components/hmacauthwithoutparentsconsumer.md
+  - docs/models/components/http.md
   - docs/models/components/httpsredirectstatuscode.md
   - docs/models/components/id.md
   - docs/models/components/identity.md
@@ -1480,6 +1521,7 @@ generatedFiles:
   - docs/models/components/portalassetresponse.md
   - docs/models/components/portalassignedroleresponse.md
   - docs/models/components/portalassignrolerequest.md
+  - docs/models/components/portalassignrolerequestentityregion.md
   - docs/models/components/portalauditlogreplayjob.md
   - docs/models/components/portalauditlogreplayjobstatus.md
   - docs/models/components/portalauditlogwebhook.md
@@ -1595,6 +1637,11 @@ generatedFiles:
   - docs/models/components/rolescontrolplanesrolesviewerdescription.md
   - docs/models/components/rolescontrolplanesrolesviewername.md
   - docs/models/components/rolescreator.md
+  - docs/models/components/rolesdashboardsdescription.md
+  - docs/models/components/rolesdashboardsname.md
+  - docs/models/components/rolesdashboardsroles.md
+  - docs/models/components/rolesdashboardsrolesname.md
+  - docs/models/components/rolesdashboardsviewer.md
   - docs/models/components/rolesdeployer.md
   - docs/models/components/rolesdescription.md
   - docs/models/components/rolesidentityadmin.md
@@ -1635,8 +1682,10 @@ generatedFiles:
   - docs/models/components/security.md
   - docs/models/components/sendtestemailtemplatecontent.md
   - docs/models/components/sentinelnodes.md
+  - docs/models/components/sentinelrole.md
   - docs/models/components/service.md
   - docs/models/components/serviceoutput.md
+  - docs/models/components/servicereference.md
   - docs/models/components/services.md
   - docs/models/components/set.md
   - docs/models/components/sni.md
@@ -1654,8 +1703,6 @@ generatedFiles:
   - docs/models/components/strategytype.md
   - docs/models/components/stringfieldcontainsfilter.md
   - docs/models/components/stringfieldequalscomparison.md
-  - docs/models/components/stringfieldequalsfilter.md
-  - docs/models/components/stringfieldequalsfilter2.md
   - docs/models/components/stringfieldfilter.md
   - docs/models/components/stringfieldneqfilter.md
   - docs/models/components/stringfieldocontainsfilter.md
@@ -1691,7 +1738,6 @@ generatedFiles:
   - docs/models/components/transitgatewaystatefieldorequalityfilter.md
   - docs/models/components/transitgatewaystatemetadata.md
   - docs/models/components/two.md
-  - docs/models/components/two1.md
   - docs/models/components/type.md
   - docs/models/components/unhealthy.md
   - docs/models/components/updateapirequest.md
@@ -2854,7 +2900,6 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/apifilterparameters.go
   - tests/mockserver/internal/sdk/models/components/apiimplementation.go
   - tests/mockserver/internal/sdk/models/components/apiimplementationfilterparameters.go
-  - tests/mockserver/internal/sdk/models/components/apiimplementationgatewayserviceentityinput.go
   - tests/mockserver/internal/sdk/models/components/apiimplementationlistitem.go
   - tests/mockserver/internal/sdk/models/components/apiimplementationlistitemgatewayserviceentity.go
   - tests/mockserver/internal/sdk/models/components/apiimplementationresponse.go
@@ -2893,10 +2938,21 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/awsprivatednsresolverresponse.go
   - tests/mockserver/internal/sdk/models/components/awsprivatehostedzoneattachmentconfig.go
   - tests/mockserver/internal/sdk/models/components/awsprivatehostedzoneresponse.go
+  - tests/mockserver/internal/sdk/models/components/awsresourceendpointattachmentconfig.go
+  - tests/mockserver/internal/sdk/models/components/awsresourceendpointattachmentconfigresponse.go
+  - tests/mockserver/internal/sdk/models/components/awsresourceendpointconfig.go
+  - tests/mockserver/internal/sdk/models/components/awsresourceendpointconfigresponse.go
+  - tests/mockserver/internal/sdk/models/components/awsresourceendpointconfigstate.go
+  - tests/mockserver/internal/sdk/models/components/awsresourceendpointgateway.go
+  - tests/mockserver/internal/sdk/models/components/awsresourceendpointgatewayresponse.go
+  - tests/mockserver/internal/sdk/models/components/awstransitgateway.go
   - tests/mockserver/internal/sdk/models/components/awstransitgatewayattachmentconfig.go
   - tests/mockserver/internal/sdk/models/components/awstransitgatewayresponse.go
+  - tests/mockserver/internal/sdk/models/components/awsvpcpeeringgateway.go
   - tests/mockserver/internal/sdk/models/components/awsvpcpeeringgatewayattachmentconfig.go
   - tests/mockserver/internal/sdk/models/components/awsvpcpeeringgatewayresponse.go
+  - tests/mockserver/internal/sdk/models/components/azureprivatehostedzoneresponse.go
+  - tests/mockserver/internal/sdk/models/components/azuretransitgateway.go
   - tests/mockserver/internal/sdk/models/components/azuretransitgatewayresponse.go
   - tests/mockserver/internal/sdk/models/components/azurevnetpeeringattachmentconfig.go
   - tests/mockserver/internal/sdk/models/components/basicauth.go
@@ -2932,6 +2988,7 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/createapidocumentrequest.go
   - tests/mockserver/internal/sdk/models/components/createapirequest.go
   - tests/mockserver/internal/sdk/models/components/createapispecrequest.go
+  - tests/mockserver/internal/sdk/models/components/createapiversionrequest.go
   - tests/mockserver/internal/sdk/models/components/createappauthstrategyrequest.go
   - tests/mockserver/internal/sdk/models/components/createappauthstrategyresponse.go
   - tests/mockserver/internal/sdk/models/components/createconfigstore.go
@@ -3008,11 +3065,14 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/emailtemplatevariablename.go
   - tests/mockserver/internal/sdk/models/components/emailtemplatevariableslist.go
   - tests/mockserver/internal/sdk/models/components/emailverificationstatus.go
-  - tests/mockserver/internal/sdk/models/components/entityregion.go
   - tests/mockserver/internal/sdk/models/components/entitytypes.go
   - tests/mockserver/internal/sdk/models/components/eventsubscription.go
   - tests/mockserver/internal/sdk/models/components/eventsubscriptionlistresponse.go
   - tests/mockserver/internal/sdk/models/components/eventsubscriptionresponse.go
+  - tests/mockserver/internal/sdk/models/components/gcpprivatehostedzoneresponse.go
+  - tests/mockserver/internal/sdk/models/components/gcpvpcpeeringattachmentconfig.go
+  - tests/mockserver/internal/sdk/models/components/gcpvpcpeeringgatewayresponse.go
+  - tests/mockserver/internal/sdk/models/components/gcpvpcpeeringtransitgateway.go
   - tests/mockserver/internal/sdk/models/components/getapplicationregistrationresponse.go
   - tests/mockserver/internal/sdk/models/components/getapplicationresponse.go
   - tests/mockserver/internal/sdk/models/components/getexpectedconfighashresponse.go
@@ -3207,12 +3267,12 @@ generatedFiles:
   - tests/mockserver/internal/sdk/models/components/security.go
   - tests/mockserver/internal/sdk/models/components/sendtestemailtemplatecontent.go
   - tests/mockserver/internal/sdk/models/components/serviceoutput.go
+  - tests/mockserver/internal/sdk/models/components/servicereferenceinput.go
   - tests/mockserver/internal/sdk/models/components/serviceunavailableerror.go
   - tests/mockserver/internal/sdk/models/components/sni.go
   - tests/mockserver/internal/sdk/models/components/snippetvisibilitystatus.go
   - tests/mockserver/internal/sdk/models/components/sniwithoutparents.go
   - tests/mockserver/internal/sdk/models/components/stringfieldcontainsfilter.go
-  - tests/mockserver/internal/sdk/models/components/stringfieldequalsfilterunion.go
   - tests/mockserver/internal/sdk/models/components/stringfieldfilter.go
   - tests/mockserver/internal/sdk/models/components/stringfieldneqfilter.go
   - tests/mockserver/internal/sdk/models/components/stringfieldocontainsfilter.go
@@ -8733,7 +8793,7 @@ examples:
     speakeasy-default-remove-all-consumers-from-consumer-group:
       parameters:
         path:
-          ConsumerGroupId: "<id>"
+          ConsumerGroupId: "cf4c7e60-11db-49dd-b300-7c7e5f0f7e6b"
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
   list-consumers-for-consumer-group:
     "":
@@ -8750,7 +8810,7 @@ examples:
     speakeasy-default-list-consumers-for-consumer-group:
       parameters:
         path:
-          ConsumerGroupId: "<id>"
+          ConsumerGroupId: "cf4c7e60-11db-49dd-b300-7c7e5f0f7e6b"
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
         query:
           size: 100
@@ -8762,7 +8822,7 @@ examples:
     speakeasy-default-add-consumer-to-group:
       parameters:
         path:
-          ConsumerGroupId: "<id>"
+          ConsumerGroupId: "cf4c7e60-11db-49dd-b300-7c7e5f0f7e6b"
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
         application/json: {"consumer": "cf4c7e60-11db-49dd-b300-7c7e5f0f7e6b"}
@@ -8773,7 +8833,7 @@ examples:
     speakeasy-default-remove-consumer-from-group:
       parameters:
         path:
-          ConsumerGroupId: "<id>"
+          ConsumerGroupId: "cf4c7e60-11db-49dd-b300-7c7e5f0f7e6b"
           ConsumerId: "<id>"
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
   remove-consumer-from-all-consumer-groups:
@@ -11582,7 +11642,7 @@ examples:
         application/json: {"config": {"database": 0, "host": "localhost", "password": "password", "port": 6379, "server_name": "redis", "ssl": false, "ssl_verify": false, "timeout": 2000, "username": "username"}, "type": "redis-ce"}
       responses:
         "201":
-          application/json: {"config": {"cluster_nodes": [{"ip": "192.168.1.10", "port": 6380}], "connect_timeout": 2000, "database": 0, "host": "localhost", "keepalive_pool_size": 256, "password": "password", "port": 6379, "read_timeout": 1000, "send_timeout": 1000, "sentinel_nodes": [{"host": "sentinel1.redis.server", "port": 26379}], "server_name": "redis-ee", "ssl": false, "ssl_verify": false, "username": "username"}, "type": "redis-ee"}
+          application/json: {"config": {"database": 0, "host": "localhost", "password": "password", "port": 6379, "server_name": "redis", "ssl": false, "ssl_verify": false, "timeout": 2000, "username": "username"}, "type": "redis-ce"}
         "401":
           application/json: {"message": "<value>", "status": 415811}
     DuplicateApiKey:
@@ -11671,7 +11731,7 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       responses:
         "200":
-          application/json: {"config": {"cluster_max_redirections": 5, "cluster_nodes": [{"ip": "192.168.1.10", "port": 6380}], "connect_timeout": 2000, "connection_is_proxied": false, "database": 0, "host": "localhost", "keepalive_pool_size": 256, "password": "password", "port": 6379, "read_timeout": 1000, "send_timeout": 1000, "sentinel_nodes": [{"host": "sentinel1.redis.server", "port": 26379}], "server_name": "redis-ee", "ssl": false, "ssl_verify": false, "username": "username"}, "type": "redis-ee"}
+          application/json: {"config": {"database": 0, "host": "localhost", "password": "password", "port": 6379, "server_name": "redis", "ssl": false, "ssl_verify": false, "timeout": 2000, "username": "username"}, "type": "redis-ce"}
         "401":
           application/json: {"message": "<value>", "status": 629733}
     DuplicateApiKey:
@@ -11717,7 +11777,7 @@ examples:
           PartialId: ""
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"config": {"cluster_max_redirections": 5, "cluster_nodes": [{"ip": "192.168.1.10", "port": 6380}], "connect_timeout": 2000, "connection_is_proxied": false, "database": 0, "host": "localhost", "keepalive_pool_size": 256, "password": "password", "port": 6379, "read_timeout": 1000, "send_timeout": 1000, "sentinel_nodes": [{"host": "sentinel1.redis.server", "port": 26379}], "server_name": "redis-ee", "ssl": false, "ssl_verify": false, "username": "username"}, "type": "redis-ee"}
+        application/json: {"config": {"database": 0, "host": "localhost", "password": "password", "port": 6379, "server_name": "redis", "ssl": false, "ssl_verify": false, "timeout": 2000, "username": "username"}, "type": "redis-ce"}
       responses:
         "200":
           application/json: {"config": {"database": 0, "host": "localhost", "password": "password", "port": 6379, "server_name": "redis", "ssl": false, "ssl_verify": false, "timeout": 2000, "username": "username"}, "type": "redis-ce"}
@@ -12101,7 +12161,7 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       responses:
         "200":
-          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "https_redirect_status_code": 426, "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "path_handling": "v0", "paths": ["/v1", "/v2"], "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "strip_path": true}
+          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
         "401":
           application/json: {"message": "<value>", "status": 591882}
     DuplicateApiKey:
@@ -12147,10 +12207,10 @@ examples:
           RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"hosts": ["foo.example.com", "foo.example.us"], "https_redirect_status_code": 426, "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "path_handling": "v0", "paths": ["/v1", "/v2"], "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "strip_path": true}
+        application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
       responses:
         "200":
-          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "https_redirect_status_code": 426, "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "path_handling": "v0", "paths": ["/v1", "/v2"], "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "strip_path": true}
+          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
         "401":
           application/json: {"message": "<value>", "status": 535322}
     DuplicateApiKey:
@@ -12223,10 +12283,10 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
       requestBody:
-        application/json: {"hosts": ["foo.example.com", "foo.example.us"], "https_redirect_status_code": 426, "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "path_handling": "v0", "paths": ["/v1", "/v2"], "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "strip_path": true}
+        application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
       responses:
         "201":
-          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "https_redirect_status_code": 426, "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "path_handling": "v0", "paths": ["/v1", "/v2"], "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "strip_path": true}
+          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
   delete-route-with-service:
     "":
       parameters:
@@ -12258,7 +12318,7 @@ examples:
           RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
       responses:
         "200":
-          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "https_redirect_status_code": 426, "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "path_handling": "v0", "paths": ["/v1", "/v2"], "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "strip_path": true}
+          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
   upsert-route-with-service:
     "":
       parameters:
@@ -12278,10 +12338,10 @@ examples:
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
           RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
       requestBody:
-        application/json: {"hosts": ["foo.example.com", "foo.example.us"], "https_redirect_status_code": 426, "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "path_handling": "v0", "paths": ["/v1", "/v2"], "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "strip_path": true}
+        application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
       responses:
         "200":
-          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "https_redirect_status_code": 426, "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "path_handling": "v0", "paths": ["/v1", "/v2"], "preserve_host": false, "regex_priority": 0, "request_buffering": true, "response_buffering": true, "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}, "strip_path": true}
+          application/json: {"hosts": ["foo.example.com", "foo.example.us"], "id": "56c4566c-14cc-4132-9011-4139fcbbe50a", "name": "example-route", "paths": ["/v1", "/v2"], "service": {"id": "bd380f99-659d-415e-b0e7-72ea05df3218"}}
   list-service:
     "":
       parameters:
@@ -12435,7 +12495,7 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       responses:
         "200":
-          application/json: {"connect_timeout": 60000, "enabled": true, "host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http", "read_timeout": 60000, "retries": 5, "write_timeout": 60000}
+          application/json: {"host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http"}
         "401":
           application/json: {"message": "<value>", "status": 416010}
     DuplicateApiKey:
@@ -12481,10 +12541,10 @@ examples:
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"connect_timeout": 60000, "enabled": true, "host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http", "read_timeout": 60000, "retries": 5, "write_timeout": 60000}
+        application/json: {"host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http"}
       responses:
         "200":
-          application/json: {"connect_timeout": 60000, "enabled": true, "host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http", "read_timeout": 60000, "retries": 5, "write_timeout": 60000}
+          application/json: {"host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http"}
         "401":
           application/json: {"message": "<value>", "status": 715531}
     DuplicateApiKey:
@@ -12670,7 +12730,7 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       responses:
         "200":
-          application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000, "sticky_sessions_cookie_path": "/", "use_srv_name": false}
+          application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000}
         "401":
           application/json: {"message": "<value>", "status": 768603}
     DuplicateApiKey:
@@ -12716,10 +12776,10 @@ examples:
           UpstreamId: "426d620c-7058-4ae6-aacc-f85a3204a2c5"
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000, "sticky_sessions_cookie_path": "/", "use_srv_name": false}
+        application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000}
       responses:
         "200":
-          application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000, "sticky_sessions_cookie_path": "/", "use_srv_name": false}
+          application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000}
         "401":
           application/json: {"message": "<value>", "status": 414556}
     DuplicateApiKey:
@@ -15356,7 +15416,7 @@ examples:
     speakeasy-default-get-predefined-roles:
       responses:
         "200":
-          application/json: {"control_planes": {"name": "Control Planes", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to all entities within a control plane."}, "certificate_admin": {"name": "Certificate Admin", "description": "This role grants full write access to administer certificates."}, "consumer_admin": {"name": "Consumer Admin", "description": "This role grants full write access to administer consumers."}, "creator": {"name": "Creator", "description": "Creates a new Control Plane in an organization. The creator becomes the owner of the Control Plane they create."}, "deployer": {"name": "Deployer", "description": "This role grants full write access to administer services, routes and plugins necessary to deploy services in Service Hub."}, "gateway_service_admin": {"name": "Gateway Service Admin", "description": "This role grants full write access to administer gateway services."}, "plugin_admin": {"name": "Plugin Admin", "description": "This role grants full write access to administer plugins."}, "route_admin": {"name": "Route Admin", "description": "This role grants full write access to administer routes."}, "sni_admin": {"name": "SNI Admin", "description": "This role grants full write access to administer SNIs."}, "upstream_admin": {"name": "Upstream Admin", "description": "This role grants full write access to administer upstreams."}, "viewer": {"name": "Viewer", "description": "This role grants read only access to all entities within a control plane."}}}, "api_products": {"name": "API Products", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to an API product and its versions."}, "application_registration": {"name": "Application Registration", "description": "This role grants permission to enable and disable application registration on an API product."}, "creator": {"name": "Creator", "description": "This access is required to create API products. This access is not for creating sub-entities such as versions, API specs, etc."}, "deployer": {"name": "Deployer", "description": "This role grants permission to deploy and remove an API product from a control plane."}, "maintainer": {"name": "Maintainer", "description": "This role grants all write permission to manage an API product and to administer plugins."}, "plugins_admin": {"name": "Plugins Admin", "description": "This role grants full write permission to administer plugins."}, "publisher": {"name": "Publisher", "description": "This role grants permission to publish an API product to one or more portals."}, "viewer": {"name": "Viewer", "description": "Viewer has read-only access to an API product and its sub-entities."}}}, "audit_logs": {"name": "Audit Logs", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to the Audit log configuration."}}}, "identity": {"name": "Identity", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to the Identity configuration."}}}, "mesh_control_planes": {"name": "Mesh Control Plane", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to the related to Mesh control planes."}, "connector": {"name": "Connector", "description": "This role grants a mesh zone to connect to the mesh control plane in Konnect."}, "creator": {"name": "Creator", "description": "This role grants access to create new Mesh control planes."}, "viewer": {"name": "Viewer", "description": "This role grants access to read-only permissions to Mesh control planes."}}}}
+          application/json: {"control_planes": {"name": "Control Planes", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to all entities within a control plane."}, "certificate_admin": {"name": "Certificate Admin", "description": "This role grants full write access to administer certificates."}, "consumer_admin": {"name": "Consumer Admin", "description": "This role grants full write access to administer consumers."}, "creator": {"name": "Creator", "description": "Creates a new Control Plane in an organization. The creator becomes the owner of the Control Plane they create."}, "deployer": {"name": "Deployer", "description": "This role grants full write access to administer services, routes and plugins necessary to deploy services in Service Hub."}, "gateway_service_admin": {"name": "Gateway Service Admin", "description": "This role grants full write access to administer gateway services."}, "plugin_admin": {"name": "Plugin Admin", "description": "This role grants full write access to administer plugins."}, "route_admin": {"name": "Route Admin", "description": "This role grants full write access to administer routes."}, "sni_admin": {"name": "SNI Admin", "description": "This role grants full write access to administer SNIs."}, "upstream_admin": {"name": "Upstream Admin", "description": "This role grants full write access to administer upstreams."}, "viewer": {"name": "Viewer", "description": "This role grants read only access to all entities within a control plane."}}}, "api_products": {"name": "API Products", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to an API product and its versions."}, "application_registration": {"name": "Application Registration", "description": "This role grants permission to enable and disable application registration on an API product."}, "creator": {"name": "Creator", "description": "This access is required to create API products. This access is not for creating sub-entities such as versions, API specs, etc."}, "deployer": {"name": "Deployer", "description": "This role grants permission to deploy and remove an API product from a control plane."}, "maintainer": {"name": "Maintainer", "description": "This role grants all write permission to manage an API product and to administer plugins."}, "plugins_admin": {"name": "Plugins Admin", "description": "This role grants full write permission to administer plugins."}, "publisher": {"name": "Publisher", "description": "This role grants permission to publish an API product to one or more portals."}, "viewer": {"name": "Viewer", "description": "Viewer has read-only access to an API product and its sub-entities."}}}, "audit_logs": {"name": "Audit Logs", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to the Audit log configuration."}}}, "identity": {"name": "Identity", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to the Identity configuration."}}}, "mesh_control_planes": {"name": "Mesh Control Plane", "roles": {"admin": {"name": "Admin", "description": "This role grants full write access to the related to Mesh control planes."}, "connector": {"name": "Connector", "description": "This role grants a mesh zone to connect to the mesh control plane in Konnect."}, "creator": {"name": "Creator", "description": "This role grants access to create new Mesh control planes."}, "viewer": {"name": "Viewer", "description": "This role grants access to read-only permissions to Mesh control planes."}}}, "dashboards": {"name": "Dashboards", "roles": {"viewer": {"name": "Viewer", "description": "Allows users to view any Dashboards content in Konnect Analytics."}}}}
         "400":
           application/problem+json: {"status": 232000, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "min_uppercase", "minimum": 8, "source": "body", "reason": "must have at least 8 characters"}, {"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value 1>"], "source": "body"}]}
         "401":
@@ -20001,7 +20061,7 @@ examples:
           sort: "created_at desc"
       responses:
         "200":
-          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"api_id": "9f5061ce-78f6-4452-9108-ad7c02821fd5", "portal_id": "7710d5c4-d902-410b-992f-18b814155b53", "visibility": "private", "auth_strategy_ids": ["5b90e68b-5e15-4860-8d45-7776eb981e29", "73826965-7036-44f1-a6f1-15ca57a33131"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"api_id": "9f5061ce-78f6-4452-9108-ad7c02821fd5", "portal_id": "7710d5c4-d902-410b-992f-18b814155b53", "auto_approve_registrations": false, "visibility": "private", "auth_strategy_ids": ["5b90e68b-5e15-4860-8d45-7776eb981e29", "73826965-7036-44f1-a6f1-15ca57a33131"], "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
         "400":
           application/problem+json: {"status": 461899, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "source": "body", "reason": "is a required field"}]}
         "401":
@@ -21815,6 +21875,7 @@ examples:
         path:
           apiId: "9f5061ce-78f6-4452-9108-ad7c02821fd5"
           specId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+          versionId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
       responses:
         "200":
           application/json: {"id": "7710d5c4-d902-410b-992f-18b814155b53", "version": "1.0.0", "spec": {"content": "{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Example API\",\"version\":\"1.0.0\"},\"paths\":{\"/example\":{\"get\":{\"summary\":\"Example endpoint\",\"responses\":{\"200\":{\"description\":\"Successful response\"}}}}}}", "type": "oas3"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
@@ -21870,6 +21931,7 @@ examples:
         path:
           apiId: "9f5061ce-78f6-4452-9108-ad7c02821fd5"
           specId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+          versionId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
       requestBody:
         application/json: {"version": "1.0.0", "spec": {"content": "{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Example API\",\"version\":\"1.0.0\"},\"paths\":{\"/example\":{\"get\":{\"summary\":\"Example endpoint\",\"responses\":{\"200\":{\"description\":\"Successful response\"}}}}}}"}}
       responses:
@@ -22017,6 +22079,7 @@ examples:
         path:
           apiId: "9f5061ce-78f6-4452-9108-ad7c02821fd5"
           specId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
+          versionId: "d32d905a-ed33-46a3-a093-d8f536af9a8a"
       responses:
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}

@@ -5,7 +5,6 @@ package components
 import (
 	"encoding/json"
 	"fmt"
-	"mockserver/internal/sdk/utils"
 )
 
 type Mode string
@@ -103,21 +102,12 @@ func (o *Menu) GetFooterBottom() []PortalMenuItem {
 }
 
 type SpecRenderer struct {
-	TryItUI        *bool `default:"true" json:"try_it_ui"`
-	TryItInsomnia  *bool `default:"true" json:"try_it_insomnia"`
-	InfiniteScroll *bool `default:"true" json:"infinite_scroll"`
-	ShowSchemas    *bool `default:"true" json:"show_schemas"`
-}
-
-func (s SpecRenderer) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(s, "", false)
-}
-
-func (s *SpecRenderer) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
-		return err
-	}
-	return nil
+	TryItUI        *bool `json:"try_it_ui,omitempty"`
+	TryItInsomnia  *bool `json:"try_it_insomnia,omitempty"`
+	InfiniteScroll *bool `json:"infinite_scroll,omitempty"`
+	ShowSchemas    *bool `json:"show_schemas,omitempty"`
+	HideInternal   *bool `json:"hide_internal,omitempty"`
+	HideDeprecated *bool `json:"hide_deprecated,omitempty"`
 }
 
 func (o *SpecRenderer) GetTryItUI() *bool {
@@ -146,6 +136,20 @@ func (o *SpecRenderer) GetShowSchemas() *bool {
 		return nil
 	}
 	return o.ShowSchemas
+}
+
+func (o *SpecRenderer) GetHideInternal() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HideInternal
+}
+
+func (o *SpecRenderer) GetHideDeprecated() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.HideDeprecated
 }
 
 // PortalCustomization - The custom settings of this portal

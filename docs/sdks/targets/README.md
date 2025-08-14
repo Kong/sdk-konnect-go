@@ -106,6 +106,7 @@ func main() {
         TargetWithoutParents: components.TargetWithoutParents{
             ID: sdkkonnectgo.String("089292a7-ba3d-4d88-acf0-97b4b2e2621a"),
             Target: sdkkonnectgo.String("203.0.113.42"),
+            Weight: sdkkonnectgo.Int64(100),
         },
     })
     if err != nil {
@@ -284,6 +285,7 @@ func main() {
         TargetWithoutParents: components.TargetWithoutParents{
             ID: sdkkonnectgo.String("089292a7-ba3d-4d88-acf0-97b4b2e2621a"),
             Target: sdkkonnectgo.String("203.0.113.42"),
+            Weight: sdkkonnectgo.Int64(100),
         },
     })
     if err != nil {

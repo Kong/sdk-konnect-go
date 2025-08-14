@@ -37,9 +37,9 @@ func main() {
         }),
     )
 
-    res, err := s.APIVersion.CreateAPIVersion(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.APIVersion{
+    res, err := s.APIVersion.CreateAPIVersion(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.CreateAPIVersionRequest{
         Version: sdkkonnectgo.String("1.0.0"),
-        Spec: &components.APIVersionSpec{
+        Spec: components.CreateAPIVersionRequestSpec{
             Content: sdkkonnectgo.String("{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Example API\",\"version\":\"1.0.0\"},\"paths\":{\"/example\":{\"get\":{\"summary\":\"Example endpoint\",\"responses\":{\"200\":{\"description\":\"Successful response\"}}}}}}"),
         },
     })
@@ -54,12 +54,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    | Example                                                        |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `ctx`                                                          | [context.Context](https://pkg.go.dev/context#Context)          | :heavy_check_mark:                                             | The context to use for the request.                            |                                                                |
-| `apiID`                                                        | *string*                                                       | :heavy_check_mark:                                             | The UUID API identifier                                        | 9f5061ce-78f6-4452-9108-ad7c02821fd5                           |
-| `apiVersion`                                                   | [components.APIVersion](../../models/components/apiversion.md) | :heavy_check_mark:                                             | N/A                                                            |                                                                |
-| `opts`                                                         | [][operations.Option](../../models/operations/option.md)       | :heavy_minus_sign:                                             | The options for this request.                                  |                                                                |
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              | Example                                                                                  |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |                                                                                          |
+| `apiID`                                                                                  | *string*                                                                                 | :heavy_check_mark:                                                                       | The UUID API identifier                                                                  | 9f5061ce-78f6-4452-9108-ad7c02821fd5                                                     |
+| `createAPIVersionRequest`                                                                | [components.CreateAPIVersionRequest](../../models/components/createapiversionrequest.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |                                                                                          |
+| `opts`                                                                                   | [][operations.Option](../../models/operations/option.md)                                 | :heavy_minus_sign:                                                                       | The options for this request.                                                            |                                                                                          |
 
 ### Response
 
@@ -227,9 +227,9 @@ func main() {
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         VersionID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         APIVersion: components.APIVersion{
-            Version: sdkkonnectgo.String("1.0.1"),
+            Version: sdkkonnectgo.String("1.0.0"),
             Spec: &components.APIVersionSpec{
-                Content: sdkkonnectgo.String("{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Example API\",\"version\":\"1.0.1\"},\"paths\":{\"/example\":{\"get\":{\"summary\":\"Example endpoint\",\"responses\":{\"200\":{\"description\":\"Successful response\"}}}}}}"),
+                Content: sdkkonnectgo.String("{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Example API\",\"version\":\"1.0.0\"},\"paths\":{\"/example\":{\"get\":{\"summary\":\"Example endpoint\",\"responses\":{\"200\":{\"description\":\"Successful response\"}}}}}}"),
             },
         },
     })

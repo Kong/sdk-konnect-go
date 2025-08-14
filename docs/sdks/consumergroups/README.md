@@ -332,7 +332,7 @@ func main() {
         }),
     )
 
-    res, err := s.ConsumerGroups.RemoveAllConsumersFromConsumerGroup(ctx, "<id>", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
+    res, err := s.ConsumerGroups.RemoveAllConsumersFromConsumerGroup(ctx, "cf4c7e60-11db-49dd-b300-7c7e5f0f7e6b", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
     if err != nil {
         log.Fatal(err)
     }
@@ -347,7 +347,7 @@ func main() {
 | Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `consumerGroupID`                                                                  | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |                                                                                    |
+| `consumerGroupID`                                                                  | *string*                                                                           | :heavy_check_mark:                                                                 | The UUID or name of the consumer group                                             | cf4c7e60-11db-49dd-b300-7c7e5f0f7e6b                                               |
 | `controlPlaneID`                                                                   | *string*                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
 | `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
 
@@ -446,7 +446,7 @@ func main() {
     )
 
     res, err := s.ConsumerGroups.AddConsumerToGroup(ctx, operations.AddConsumerToGroupRequest{
-        ConsumerGroupID: "<id>",
+        ConsumerGroupID: "cf4c7e60-11db-49dd-b300-7c7e5f0f7e6b",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         RequestBody: &operations.AddConsumerToGroupRequestBody{
             ConsumerID: sdkkonnectgo.String("cf4c7e60-11db-49dd-b300-7c7e5f0f7e6b"),
@@ -506,7 +506,7 @@ func main() {
     )
 
     res, err := s.ConsumerGroups.RemoveConsumerFromGroup(ctx, operations.RemoveConsumerFromGroupRequest{
-        ConsumerGroupID: "<id>",
+        ConsumerGroupID: "cf4c7e60-11db-49dd-b300-7c7e5f0f7e6b",
         ConsumerID: "<id>",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
     })

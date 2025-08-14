@@ -1,8 +1,17 @@
 # CreatePortalCustomDomainSSL
 
 
-## Fields
+## Supported Types
 
-| Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `DomainVerificationMethod`                                                                                         | [components.PortalCustomDomainVerificationMethod](../../models/components/portalcustomdomainverificationmethod.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+### CustomCertificate
+
+```go
+createPortalCustomDomainSSL := components.CreateCreatePortalCustomDomainSSLCustomCertificate(components.CustomCertificate{/* values here */})
+```
+
+### HTTP
+
+```go
+createPortalCustomDomainSSL := components.CreateCreatePortalCustomDomainSSLHTTP(components.HTTP{/* values here */})
+```
+

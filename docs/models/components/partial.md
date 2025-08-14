@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### PartialRedisCE
+### PartialRedisCe
 
 ```go
-partial := components.CreatePartialRedisCe(components.PartialRedisCE{/* values here */})
+partial := components.CreatePartialRedisCe(components.PartialRedisCe{/* values here */})
 ```
 
-### PartialRedisEE
+### PartialRedisEe
 
 ```go
-partial := components.CreatePartialRedisEe(components.PartialRedisEE{/* values here */})
+partial := components.CreatePartialRedisEe(components.PartialRedisEe{/* values here */})
 ```
 
