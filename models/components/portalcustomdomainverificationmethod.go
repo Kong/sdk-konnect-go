@@ -10,7 +10,8 @@ import (
 type PortalCustomDomainVerificationMethod string
 
 const (
-	PortalCustomDomainVerificationMethodHTTP PortalCustomDomainVerificationMethod = "http"
+	PortalCustomDomainVerificationMethodHTTP              PortalCustomDomainVerificationMethod = "http"
+	PortalCustomDomainVerificationMethodCustomCertificate PortalCustomDomainVerificationMethod = "custom_certificate"
 )
 
 func (e PortalCustomDomainVerificationMethod) ToPointer() *PortalCustomDomainVerificationMethod {
@@ -23,6 +24,8 @@ func (e *PortalCustomDomainVerificationMethod) UnmarshalJSON(data []byte) error 
 	}
 	switch v {
 	case "http":
+		fallthrough
+	case "custom_certificate":
 		*e = PortalCustomDomainVerificationMethod(v)
 		return nil
 	default:

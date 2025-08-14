@@ -1,5 +1,7 @@
 # PluginConsumerGroup
 
+If set, the plugin will activate only for requests where the specified group has been authenticated
+
 
 ## Fields
 

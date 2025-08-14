@@ -96,9 +96,9 @@ func main() {
     res, err := s.PortalCustomDomains.CreatePortalCustomDomain(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.CreatePortalCustomDomainRequest{
         Hostname: "lavish-custody.org",
         Enabled: true,
-        Ssl: components.CreatePortalCustomDomainSSL{
-            DomainVerificationMethod: components.PortalCustomDomainVerificationMethodHTTP,
-        },
+        Ssl: components.CreateCreatePortalCustomDomainSSLHTTP(
+            components.HTTP{},
+        ),
     })
     if err != nil {
         log.Fatal(err)

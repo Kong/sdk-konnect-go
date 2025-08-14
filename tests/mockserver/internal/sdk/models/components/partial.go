@@ -17,32 +17,32 @@ const (
 )
 
 type Partial struct {
-	PartialRedisCE *PartialRedisCE `queryParam:"inline"`
-	PartialRedisEE *PartialRedisEE `queryParam:"inline"`
+	PartialRedisCe *PartialRedisCe `queryParam:"inline"`
+	PartialRedisEe *PartialRedisEe `queryParam:"inline"`
 
 	Type PartialType
 }
 
-func CreatePartialRedisCe(redisCe PartialRedisCE) Partial {
+func CreatePartialRedisCe(redisCe PartialRedisCe) Partial {
 	typ := PartialTypeRedisCe
 
-	typStr := PartialRedisCEType(typ)
+	typStr := PartialRedisCeType(typ)
 	redisCe.Type = typStr
 
 	return Partial{
-		PartialRedisCE: &redisCe,
+		PartialRedisCe: &redisCe,
 		Type:           typ,
 	}
 }
 
-func CreatePartialRedisEe(redisEe PartialRedisEE) Partial {
+func CreatePartialRedisEe(redisEe PartialRedisEe) Partial {
 	typ := PartialTypeRedisEe
 
-	typStr := PartialRedisEEType(typ)
+	typStr := PartialRedisEeType(typ)
 	redisEe.Type = typStr
 
 	return Partial{
-		PartialRedisEE: &redisEe,
+		PartialRedisEe: &redisEe,
 		Type:           typ,
 	}
 }
@@ -60,21 +60,21 @@ func (u *Partial) UnmarshalJSON(data []byte) error {
 
 	switch dis.Type {
 	case "redis-ce":
-		partialRedisCE := new(PartialRedisCE)
-		if err := utils.UnmarshalJSON(data, &partialRedisCE, "", true, false); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-ce) type PartialRedisCE within Partial: %w", string(data), err)
+		partialRedisCe := new(PartialRedisCe)
+		if err := utils.UnmarshalJSON(data, &partialRedisCe, "", true, false); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-ce) type PartialRedisCe within Partial: %w", string(data), err)
 		}
 
-		u.PartialRedisCE = partialRedisCE
+		u.PartialRedisCe = partialRedisCe
 		u.Type = PartialTypeRedisCe
 		return nil
 	case "redis-ee":
-		partialRedisEE := new(PartialRedisEE)
-		if err := utils.UnmarshalJSON(data, &partialRedisEE, "", true, false); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-ee) type PartialRedisEE within Partial: %w", string(data), err)
+		partialRedisEe := new(PartialRedisEe)
+		if err := utils.UnmarshalJSON(data, &partialRedisEe, "", true, false); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-ee) type PartialRedisEe within Partial: %w", string(data), err)
 		}
 
-		u.PartialRedisEE = partialRedisEE
+		u.PartialRedisEe = partialRedisEe
 		u.Type = PartialTypeRedisEe
 		return nil
 	}
@@ -83,12 +83,12 @@ func (u *Partial) UnmarshalJSON(data []byte) error {
 }
 
 func (u Partial) MarshalJSON() ([]byte, error) {
-	if u.PartialRedisCE != nil {
-		return utils.MarshalJSON(u.PartialRedisCE, "", true)
+	if u.PartialRedisCe != nil {
+		return utils.MarshalJSON(u.PartialRedisCe, "", true)
 	}
 
-	if u.PartialRedisEE != nil {
-		return utils.MarshalJSON(u.PartialRedisEE, "", true)
+	if u.PartialRedisEe != nil {
+		return utils.MarshalJSON(u.PartialRedisEe, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type Partial: all fields are null")

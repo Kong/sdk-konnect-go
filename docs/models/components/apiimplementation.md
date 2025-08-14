@@ -5,9 +5,9 @@ An entity that implements an API
 
 ## Supported Types
 
-### APIImplementationGatewayServiceEntity
+### ServiceReference
 
 ```go
-apiImplementation := components.CreateAPIImplementationAPIImplementationGatewayServiceEntity(components.APIImplementationGatewayServiceEntity{/* values here */})
+apiImplementation := components.CreateAPIImplementationServiceReference(components.ServiceReference{/* values here */})
 ```
 

@@ -5,7 +5,6 @@ package components
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type AuthStrategyKeyAuthCredentialType string
@@ -35,20 +34,9 @@ func (e *AuthStrategyKeyAuthCredentialType) UnmarshalJSON(data []byte) error {
 type AuthStrategyKeyAuth struct {
 	// The Application Auth Strategy ID.
 	ID             string                            `json:"id"`
-	Name           *string                           `default:"name" json:"name"`
+	Name           string                            `json:"name"`
 	CredentialType AuthStrategyKeyAuthCredentialType `json:"credential_type"`
 	KeyNames       []string                          `json:"key_names"`
-}
-
-func (a AuthStrategyKeyAuth) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AuthStrategyKeyAuth) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (o *AuthStrategyKeyAuth) GetID() string {
@@ -58,9 +46,9 @@ func (o *AuthStrategyKeyAuth) GetID() string {
 	return o.ID
 }
 
-func (o *AuthStrategyKeyAuth) GetName() *string {
+func (o *AuthStrategyKeyAuth) GetName() string {
 	if o == nil {
-		return nil
+		return ""
 	}
 	return o.Name
 }

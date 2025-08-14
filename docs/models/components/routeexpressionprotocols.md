@@ -1,5 +1,7 @@
 # RouteExpressionProtocols
 
+A string representing a protocol, such as HTTP or HTTPS.
+
 
 ## Values
 

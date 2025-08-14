@@ -8,9 +8,9 @@ import (
 
 // GetSystemAccountsFilter - Filter system accounts returned in the response.
 type GetSystemAccountsFilter struct {
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	Name *components.StringFieldFilter `queryParam:"name=name"`
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	Description *components.StringFieldFilter `queryParam:"name=description"`
 	// Filter by a boolean value (true/false).
 	KonnectManaged *bool `queryParam:"name=konnect_managed"`

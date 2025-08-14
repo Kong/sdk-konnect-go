@@ -2067,6 +2067,124 @@ func (o *MeshControlPlanes) GetRoles() RolesMeshControlPlanesRoles {
 	return o.Roles
 }
 
+type RolesDashboardsName string
+
+const (
+	RolesDashboardsNameDashboards RolesDashboardsName = "Dashboards"
+)
+
+func (e RolesDashboardsName) ToPointer() *RolesDashboardsName {
+	return &e
+}
+func (e *RolesDashboardsName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Dashboards":
+		*e = RolesDashboardsName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesDashboardsName: %v", v)
+	}
+}
+
+type RolesDashboardsRolesName string
+
+const (
+	RolesDashboardsRolesNameViewer RolesDashboardsRolesName = "Viewer"
+)
+
+func (e RolesDashboardsRolesName) ToPointer() *RolesDashboardsRolesName {
+	return &e
+}
+func (e *RolesDashboardsRolesName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Viewer":
+		*e = RolesDashboardsRolesName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesDashboardsRolesName: %v", v)
+	}
+}
+
+type RolesDashboardsDescription string
+
+const (
+	RolesDashboardsDescriptionAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics RolesDashboardsDescription = "Allows users to view any Dashboards content in Konnect Analytics."
+)
+
+func (e RolesDashboardsDescription) ToPointer() *RolesDashboardsDescription {
+	return &e
+}
+func (e *RolesDashboardsDescription) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Allows users to view any Dashboards content in Konnect Analytics.":
+		*e = RolesDashboardsDescription(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesDashboardsDescription: %v", v)
+	}
+}
+
+type RolesDashboardsViewer struct {
+	Name        RolesDashboardsRolesName   `json:"name"`
+	Description RolesDashboardsDescription `json:"description"`
+}
+
+func (o *RolesDashboardsViewer) GetName() RolesDashboardsRolesName {
+	if o == nil {
+		return RolesDashboardsRolesName("")
+	}
+	return o.Name
+}
+
+func (o *RolesDashboardsViewer) GetDescription() RolesDashboardsDescription {
+	if o == nil {
+		return RolesDashboardsDescription("")
+	}
+	return o.Description
+}
+
+type RolesDashboardsRoles struct {
+	Viewer *RolesDashboardsViewer `json:"viewer,omitempty"`
+}
+
+func (o *RolesDashboardsRoles) GetViewer() *RolesDashboardsViewer {
+	if o == nil {
+		return nil
+	}
+	return o.Viewer
+}
+
+type Dashboards struct {
+	Name  RolesDashboardsName  `json:"name"`
+	Roles RolesDashboardsRoles `json:"roles"`
+}
+
+func (o *Dashboards) GetName() RolesDashboardsName {
+	if o == nil {
+		return RolesDashboardsName("")
+	}
+	return o.Name
+}
+
+func (o *Dashboards) GetRoles() RolesDashboardsRoles {
+	if o == nil {
+		return RolesDashboardsRoles{}
+	}
+	return o.Roles
+}
+
 // Roles - The predefined, or system managed, roles.
 type Roles struct {
 	ControlPlanes     *ControlPlanes     `json:"control_planes,omitempty"`
@@ -2074,6 +2192,7 @@ type Roles struct {
 	AuditLogs         *AuditLogs         `json:"audit_logs,omitempty"`
 	Identity          *Identity          `json:"identity,omitempty"`
 	MeshControlPlanes *MeshControlPlanes `json:"mesh_control_planes,omitempty"`
+	Dashboards        *Dashboards        `json:"dashboards,omitempty"`
 }
 
 func (o *Roles) GetControlPlanes() *ControlPlanes {
@@ -2109,4 +2228,11 @@ func (o *Roles) GetMeshControlPlanes() *MeshControlPlanes {
 		return nil
 	}
 	return o.MeshControlPlanes
+}
+
+func (o *Roles) GetDashboards() *Dashboards {
+	if o == nil {
+		return nil
+	}
+	return o.Dashboards
 }

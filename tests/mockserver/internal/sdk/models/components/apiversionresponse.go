@@ -9,19 +9,19 @@ import (
 	"time"
 )
 
-// APISpecTypeResponse - The type of specification being stored. This allows us to render the specification correctly.
-type APISpecTypeResponse string
+// APIVersionResponseAPISpecType - The type of specification being stored. This allows us to render the specification correctly.
+type APIVersionResponseAPISpecType string
 
 const (
-	APISpecTypeResponseOas2     APISpecTypeResponse = "oas2"
-	APISpecTypeResponseOas3     APISpecTypeResponse = "oas3"
-	APISpecTypeResponseAsyncapi APISpecTypeResponse = "asyncapi"
+	APIVersionResponseAPISpecTypeOas2     APIVersionResponseAPISpecType = "oas2"
+	APIVersionResponseAPISpecTypeOas3     APIVersionResponseAPISpecType = "oas3"
+	APIVersionResponseAPISpecTypeAsyncapi APIVersionResponseAPISpecType = "asyncapi"
 )
 
-func (e APISpecTypeResponse) ToPointer() *APISpecTypeResponse {
+func (e APIVersionResponseAPISpecType) ToPointer() *APIVersionResponseAPISpecType {
 	return &e
 }
-func (e *APISpecTypeResponse) UnmarshalJSON(data []byte) error {
+func (e *APIVersionResponseAPISpecType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -32,10 +32,10 @@ func (e *APISpecTypeResponse) UnmarshalJSON(data []byte) error {
 	case "oas3":
 		fallthrough
 	case "asyncapi":
-		*e = APISpecTypeResponse(v)
+		*e = APIVersionResponseAPISpecType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for APISpecTypeResponse: %v", v)
+		return fmt.Errorf("invalid value for APIVersionResponseAPISpecType: %v", v)
 	}
 }
 
@@ -53,8 +53,10 @@ func (o *APIVersionResponseValidationMessage) GetMessage() string {
 type APIVersionResponseSpec struct {
 	// The raw content of your API spec, in json or yaml format (OpenAPI or AsyncAPI).
 	//
-	Content *string              `json:"content,omitempty"`
-	Type    *APISpecTypeResponse `json:"type,omitempty"`
+	Content *string `json:"content,omitempty"`
+	// The type of specification being stored. This allows us to render the specification correctly.
+	//
+	Type *APIVersionResponseAPISpecType `json:"type,omitempty"`
 	// The errors that occurred while parsing the API version spec.
 	ValidationMessages []APIVersionResponseValidationMessage `json:"validation_messages,omitempty"`
 }
@@ -66,7 +68,7 @@ func (o *APIVersionResponseSpec) GetContent() *string {
 	return o.Content
 }
 
-func (o *APIVersionResponseSpec) GetType() *APISpecTypeResponse {
+func (o *APIVersionResponseSpec) GetType() *APIVersionResponseAPISpecType {
 	if o == nil {
 		return nil
 	}

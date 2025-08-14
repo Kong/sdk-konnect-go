@@ -2,93 +2,30 @@
 
 package components
 
-import (
-	"errors"
-	"fmt"
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
-type IDFieldFilterType string
-
-const (
-	IDFieldFilterTypeStringFieldEqualsFilter IDFieldFilterType = "StringFieldEqualsFilter"
-	IDFieldFilterTypeStringFieldNEQFilter    IDFieldFilterType = "StringFieldNEQFilter"
-	IDFieldFilterTypeStringFieldOEQFilter    IDFieldFilterType = "StringFieldOEQFilter"
-)
-
+// IDFieldFilter - Returns entities that exact match any of the comma-delimited phrases in the filter string.
 type IDFieldFilter struct {
-	StringFieldEqualsFilter *StringFieldEqualsFilter `queryParam:"inline"`
-	StringFieldNEQFilter    *StringFieldNEQFilter    `queryParam:"inline"`
-	StringFieldOEQFilter    *StringFieldOEQFilter    `queryParam:"inline"`
-
-	Type IDFieldFilterType
+	Eq  *string `queryParam:"name=eq"`
+	Neq *string `queryParam:"name=neq"`
+	Oeq *string `queryParam:"name=oeq"`
 }
 
-func CreateIDFieldFilterStringFieldEqualsFilter(stringFieldEqualsFilter StringFieldEqualsFilter) IDFieldFilter {
-	typ := IDFieldFilterTypeStringFieldEqualsFilter
-
-	return IDFieldFilter{
-		StringFieldEqualsFilter: &stringFieldEqualsFilter,
-		Type:                    typ,
-	}
-}
-
-func CreateIDFieldFilterStringFieldNEQFilter(stringFieldNEQFilter StringFieldNEQFilter) IDFieldFilter {
-	typ := IDFieldFilterTypeStringFieldNEQFilter
-
-	return IDFieldFilter{
-		StringFieldNEQFilter: &stringFieldNEQFilter,
-		Type:                 typ,
-	}
-}
-
-func CreateIDFieldFilterStringFieldOEQFilter(stringFieldOEQFilter StringFieldOEQFilter) IDFieldFilter {
-	typ := IDFieldFilterTypeStringFieldOEQFilter
-
-	return IDFieldFilter{
-		StringFieldOEQFilter: &stringFieldOEQFilter,
-		Type:                 typ,
-	}
-}
-
-func (u *IDFieldFilter) UnmarshalJSON(data []byte) error {
-
-	var stringFieldNEQFilter StringFieldNEQFilter = StringFieldNEQFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldNEQFilter, "", true, true); err == nil {
-		u.StringFieldNEQFilter = &stringFieldNEQFilter
-		u.Type = IDFieldFilterTypeStringFieldNEQFilter
+func (o *IDFieldFilter) GetEq() *string {
+	if o == nil {
 		return nil
 	}
-
-	var stringFieldOEQFilter StringFieldOEQFilter = StringFieldOEQFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldOEQFilter, "", true, true); err == nil {
-		u.StringFieldOEQFilter = &stringFieldOEQFilter
-		u.Type = IDFieldFilterTypeStringFieldOEQFilter
-		return nil
-	}
-
-	var stringFieldEqualsFilter StringFieldEqualsFilter = StringFieldEqualsFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldEqualsFilter, "", true, true); err == nil {
-		u.StringFieldEqualsFilter = &stringFieldEqualsFilter
-		u.Type = IDFieldFilterTypeStringFieldEqualsFilter
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for IDFieldFilter", string(data))
+	return o.Eq
 }
 
-func (u IDFieldFilter) MarshalJSON() ([]byte, error) {
-	if u.StringFieldEqualsFilter != nil {
-		return utils.MarshalJSON(u.StringFieldEqualsFilter, "", true)
+func (o *IDFieldFilter) GetNeq() *string {
+	if o == nil {
+		return nil
 	}
+	return o.Neq
+}
 
-	if u.StringFieldNEQFilter != nil {
-		return utils.MarshalJSON(u.StringFieldNEQFilter, "", true)
+func (o *IDFieldFilter) GetOeq() *string {
+	if o == nil {
+		return nil
 	}
-
-	if u.StringFieldOEQFilter != nil {
-		return utils.MarshalJSON(u.StringFieldOEQFilter, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type IDFieldFilter: all fields are null")
+	return o.Oeq
 }

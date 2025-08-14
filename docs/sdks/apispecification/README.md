@@ -43,7 +43,7 @@ func main() {
 
     res, err := s.APISpecification.CreateAPISpec(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.CreateAPISpecRequest{
         Content: "{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Example API\",\"version\":\"1.0.0\"},\"paths\":{\"/example\":{\"get\":{\"summary\":\"Example endpoint\",\"responses\":{\"200\":{\"description\":\"Successful response\"}}}}}}",
-        Type: components.APISpecTypeOas3.ToPointer(),
+        Type: components.CreateAPISpecRequestAPISpecTypeOas3.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)
@@ -239,7 +239,8 @@ func main() {
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         SpecID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         APISpec: components.APISpec{
-            Content: sdkkonnectgo.String("{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Example API\",\"version\":\"1.0.1\"},\"paths\":{\"/example\":{\"get\":{\"summary\":\"Example endpoint\",\"responses\":{\"200\":{\"description\":\"Successful response\"}}}}}}"),
+            Content: sdkkonnectgo.String("{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Example API\",\"version\":\"1.0.0\"},\"paths\":{\"/example\":{\"get\":{\"summary\":\"Example endpoint\",\"responses\":{\"200\":{\"description\":\"Successful response\"}}}}}}"),
+            Type: components.APISpecAPISpecTypeOas3.ToPointer(),
         },
     })
     if err != nil {
@@ -362,7 +363,7 @@ func main() {
     )
 
     res, err := s.APISpecification.ValidateSpecification(ctx, components.ValidateAPISpecRequestPayload{
-        Content: "{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Valid API\",\"version\":\"1.0.0\"},\"paths\":{\"/health\":{\"get\":{\"summary\":\"Health check\",\"responses\":{\"200\":{\"description\":\"OK\"}}}}}}",
+        Content: "<value>",
     })
     if err != nil {
         log.Fatal(err)

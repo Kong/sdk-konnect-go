@@ -105,8 +105,10 @@ func main() {
     )
 
     res, err := s.Portals.CreatePortal(ctx, components.CreatePortal{
-        Name: "MyDevPortal",
-        RbacEnabled: sdkkonnectgo.Bool(true),
+        Name: "<value>",
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.String("test"),
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -220,7 +222,9 @@ func main() {
     )
 
     res, err := s.Portals.UpdatePortal(ctx, "efe853b6-a55c-4929-9b80-c39a22b01c7a", components.UpdatePortal{
-        AuthenticationEnabled: sdkkonnectgo.Bool(false),
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.String("test"),
+        },
     })
     if err != nil {
         log.Fatal(err)

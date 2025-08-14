@@ -3,9 +3,9 @@
 package components
 
 type APIVersionFilterParameters struct {
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	Type *StringFieldFilter `queryParam:"name=type"`
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	Version *StringFieldFilter `queryParam:"name=version"`
 }
 

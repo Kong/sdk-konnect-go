@@ -2067,6 +2067,124 @@ func (o *MeshControlPlanes) GetRoles() RolesMeshControlPlane {
 	return o.Roles
 }
 
+type NameDashboards string
+
+const (
+	NameDashboardsDashboards NameDashboards = "Dashboards"
+)
+
+func (e NameDashboards) ToPointer() *NameDashboards {
+	return &e
+}
+func (e *NameDashboards) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Dashboards":
+		*e = NameDashboards(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for NameDashboards: %v", v)
+	}
+}
+
+type NameDashboardsViewer string
+
+const (
+	NameDashboardsViewerViewer NameDashboardsViewer = "Viewer"
+)
+
+func (e NameDashboardsViewer) ToPointer() *NameDashboardsViewer {
+	return &e
+}
+func (e *NameDashboardsViewer) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Viewer":
+		*e = NameDashboardsViewer(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for NameDashboardsViewer: %v", v)
+	}
+}
+
+type DescriptionAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics string
+
+const (
+	DescriptionAllowsUsersToViewAnyDashboardsContentInKonnectAnalyticsAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics DescriptionAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics = "Allows users to view any Dashboards content in Konnect Analytics."
+)
+
+func (e DescriptionAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics) ToPointer() *DescriptionAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics {
+	return &e
+}
+func (e *DescriptionAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Allows users to view any Dashboards content in Konnect Analytics.":
+		*e = DescriptionAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DescriptionAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics: %v", v)
+	}
+}
+
+type ViewerAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics struct {
+	Name        NameDashboardsViewer                                               `json:"name"`
+	Description DescriptionAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics `json:"description"`
+}
+
+func (o *ViewerAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics) GetName() NameDashboardsViewer {
+	if o == nil {
+		return NameDashboardsViewer("")
+	}
+	return o.Name
+}
+
+func (o *ViewerAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics) GetDescription() DescriptionAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics {
+	if o == nil {
+		return DescriptionAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics("")
+	}
+	return o.Description
+}
+
+type RolesDashboards struct {
+	Viewer *ViewerAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics `json:"viewer,omitempty"`
+}
+
+func (o *RolesDashboards) GetViewer() *ViewerAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics {
+	if o == nil {
+		return nil
+	}
+	return o.Viewer
+}
+
+type Dashboards struct {
+	Name  NameDashboards  `json:"name"`
+	Roles RolesDashboards `json:"roles"`
+}
+
+func (o *Dashboards) GetName() NameDashboards {
+	if o == nil {
+		return NameDashboards("")
+	}
+	return o.Name
+}
+
+func (o *Dashboards) GetRoles() RolesDashboards {
+	if o == nil {
+		return RolesDashboards{}
+	}
+	return o.Roles
+}
+
 // RolesResponse - The predefined, or system managed, roles.
 type RolesResponse struct {
 	ControlPlanes     *ControlPlanes     `json:"control_planes,omitempty"`
@@ -2074,6 +2192,7 @@ type RolesResponse struct {
 	AuditLogs         *AuditLogs         `json:"audit_logs,omitempty"`
 	Identity          *Identity          `json:"identity,omitempty"`
 	MeshControlPlanes *MeshControlPlanes `json:"mesh_control_planes,omitempty"`
+	Dashboards        *Dashboards        `json:"dashboards,omitempty"`
 }
 
 func (o *RolesResponse) GetControlPlanes() *ControlPlanes {
@@ -2109,4 +2228,11 @@ func (o *RolesResponse) GetMeshControlPlanes() *MeshControlPlanes {
 		return nil
 	}
 	return o.MeshControlPlanes
+}
+
+func (o *RolesResponse) GetDashboards() *Dashboards {
+	if o == nil {
+		return nil
+	}
+	return o.Dashboards
 }

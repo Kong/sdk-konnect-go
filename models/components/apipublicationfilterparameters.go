@@ -3,15 +3,15 @@
 package components
 
 type APIPublicationFilterParameters struct {
-	// Filters on the given UUID field value by exact match.
+	// Filters on the given string field value by exact match inequality.
 	PortalID *UUIDFieldFilter `queryParam:"name=portal_id"`
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	PortalName *StringFieldFilter `queryParam:"name=portal_name"`
-	// Filters on the given UUID field value by exact match.
+	// Filters on the given string field value by exact match inequality.
 	APIID *UUIDFieldFilter `queryParam:"name=api_id"`
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	APIName *StringFieldFilter `queryParam:"name=api_name"`
-	// Filters on the given UUID field value by exact match.
+	// Filters on the given string field value by exact match inequality.
 	AuthStrategyID *UUIDFieldFilter `queryParam:"name=auth_strategy_id"`
 }
 

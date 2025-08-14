@@ -111,11 +111,11 @@ func main() {
         }),
     )
 
-    res, err := s.APIImplementation.CreateAPIImplementation(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.CreateAPIImplementationAPIImplementationGatewayServiceEntity(
-        components.APIImplementationGatewayServiceEntity{
+    res, err := s.APIImplementation.CreateAPIImplementation(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.CreateAPIImplementationServiceReference(
+        components.ServiceReference{
             Service: &components.APIImplementationService{
-                ControlPlaneID: "fd4e1b98-3629-4dd3-acc0-759a726ffee2",
-                ID: "dd4e1b98-3629-4dd3-acc0-759a726ffee2",
+                ControlPlaneID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+                ID: "7710d5c4-d902-410b-992f-18b814155b53",
             },
         },
     ))

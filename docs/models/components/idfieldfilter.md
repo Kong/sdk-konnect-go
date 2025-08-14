@@ -1,23 +1,12 @@
 # IDFieldFilter
 
+Returns entities that exact match any of the comma-delimited phrases in the filter string.
 
-## Supported Types
 
-### StringFieldEqualsFilter
+## Fields
 
-```go
-idFieldFilter := components.CreateIDFieldFilterStringFieldEqualsFilter(components.StringFieldEqualsFilter{/* values here */})
-```
-
-### StringFieldNEQFilter
-
-```go
-idFieldFilter := components.CreateIDFieldFilterStringFieldNEQFilter(components.StringFieldNEQFilter{/* values here */})
-```
-
-### StringFieldOEQFilter
-
-```go
-idFieldFilter := components.CreateIDFieldFilterStringFieldOEQFilter(components.StringFieldOEQFilter{/* values here */})
-```
-
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `Eq`               | **string*          | :heavy_minus_sign: | N/A                |
+| `Neq`              | **string*          | :heavy_minus_sign: | N/A                |
+| `Oeq`              | **string*          | :heavy_minus_sign: | N/A                |

@@ -12,6 +12,7 @@ The type of entity.
 | `EntityTypeNameApplicationAuthStrategies` | Application Auth Strategies               |
 | `EntityTypeNameAuditLogs`                 | Audit Logs                                |
 | `EntityTypeNameControlPlanes`             | Control Planes                            |
+| `EntityTypeNameDashboards`                | Dashboards                                |
 | `EntityTypeNameDcrProviders`              | DCR Providers                             |
 | `EntityTypeNameIdentity`                  | Identity                                  |
 | `EntityTypeNameMeshControlPlanes`         | Mesh Control Planes                       |

@@ -8,11 +8,11 @@ import (
 
 // ListPortalTeamDevelopersFilter - Filter developers returned in the response.
 type ListPortalTeamDevelopersFilter struct {
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	Email *components.StringFieldFilter `queryParam:"name=email"`
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	FullName *components.StringFieldFilter `queryParam:"name=full_name"`
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	Attributes *components.StringFieldFilter `queryParam:"name=attributes"`
 	// Filter by a boolean value (true/false).
 	Active *bool `queryParam:"name=active"`

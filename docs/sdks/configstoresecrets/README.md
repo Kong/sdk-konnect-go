@@ -43,8 +43,8 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         CreateConfigStoreSecret: components.CreateConfigStoreSecret{
-            Key: "ConfigStoreSecretKey",
-            Value: "ConfigStoreSecretValue",
+            Key: "<key>",
+            Value: "<value>",
         },
     })
     if err != nil {
@@ -234,7 +234,7 @@ func main() {
         ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         Key: "ConfigStoreSecretKey",
         UpdateConfigStoreSecret: components.UpdateConfigStoreSecret{
-            Value: "ConfigStoreSecretValue",
+            Value: "<value>",
         },
     })
     if err != nil {

@@ -1,5 +1,7 @@
 # TargetWithoutParentsUpstream
 
+The unique identifier or the name of the upstream for which to update the target.
+
 
 ## Fields
 

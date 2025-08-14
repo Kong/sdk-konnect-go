@@ -101,7 +101,7 @@ func main() {
 
     res, err := s.PortalTeams.CreatePortalTeam(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalCreateTeamRequest{
         Name: "IDM - Developers",
-        Description: sdkkonnectgo.String("The Identity Management (IDM) API team."),
+        Description: sdkkonnectgo.String("The Identity Management (IDM) team."),
     })
     if err != nil {
         log.Fatal(err)

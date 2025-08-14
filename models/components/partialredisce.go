@@ -5,99 +5,86 @@ package components
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// PartialRedisCEConfig - Redis-CE configuration
-type PartialRedisCEConfig struct {
+type PartialRedisCeConfig struct {
 	// Database to use for the Redis connection when using the `redis` strategy
-	Database *int64 `default:"0" json:"database"`
-	// Redis host.
+	Database *int64 `json:"database,omitempty"`
+	// A string representing a host name, such as example.com.
 	Host *string `json:"host,omitempty"`
 	// Password to use for Redis connections. If undefined, no AUTH commands are sent to Redis.
 	Password *string `json:"password,omitempty"`
-	// Redis port.
-	Port *int64 `default:"6379" json:"port"`
-	// Server name for SSL verification.
+	// An integer representing a port number between 0 and 65535, inclusive.
+	Port *int64 `json:"port,omitempty"`
+	// A string representing an SNI (server name indication) value for TLS.
 	ServerName *string `json:"server_name,omitempty"`
 	// If set to true, uses SSL to connect to Redis.
-	Ssl *bool `default:"false" json:"ssl"`
-	// If set to true, verifies the validity of the server SSL certificate.
-	SslVerify *bool `default:"false" json:"ssl_verify"`
-	// Connection timeout.
-	Timeout *int64 `default:"1000" json:"timeout"`
-	// Username to use for Redis connections. If undefined, ACL authentication won't be performed. Requires Redis v6.0.0+.
+	Ssl *bool `json:"ssl,omitempty"`
+	// If set to true, verifies the validity of the server SSL certificate. If setting this parameter, also configure `lua_ssl_trusted_certificate` in `kong.conf` to specify the CA (or server) certificate used by your Redis server. You may also need to configure `lua_ssl_verify_depth` accordingly.
+	SslVerify *bool `json:"ssl_verify,omitempty"`
+	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
+	Timeout *int64 `json:"timeout,omitempty"`
+	// Username to use for Redis connections. If undefined, ACL authentication won't be performed. This requires Redis v6.0.0+. To be compatible with Redis v5.x.y, you can set it to `default`.
 	Username *string `json:"username,omitempty"`
 }
 
-func (p PartialRedisCEConfig) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PartialRedisCEConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *PartialRedisCEConfig) GetDatabase() *int64 {
+func (o *PartialRedisCeConfig) GetDatabase() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.Database
 }
 
-func (o *PartialRedisCEConfig) GetHost() *string {
+func (o *PartialRedisCeConfig) GetHost() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Host
 }
 
-func (o *PartialRedisCEConfig) GetPassword() *string {
+func (o *PartialRedisCeConfig) GetPassword() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Password
 }
 
-func (o *PartialRedisCEConfig) GetPort() *int64 {
+func (o *PartialRedisCeConfig) GetPort() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.Port
 }
 
-func (o *PartialRedisCEConfig) GetServerName() *string {
+func (o *PartialRedisCeConfig) GetServerName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ServerName
 }
 
-func (o *PartialRedisCEConfig) GetSsl() *bool {
+func (o *PartialRedisCeConfig) GetSsl() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Ssl
 }
 
-func (o *PartialRedisCEConfig) GetSslVerify() *bool {
+func (o *PartialRedisCeConfig) GetSslVerify() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.SslVerify
 }
 
-func (o *PartialRedisCEConfig) GetTimeout() *int64 {
+func (o *PartialRedisCeConfig) GetTimeout() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.Timeout
 }
 
-func (o *PartialRedisCEConfig) GetUsername() *string {
+func (o *PartialRedisCeConfig) GetUsername() *string {
 	if o == nil {
 		return nil
 	}
@@ -127,62 +114,64 @@ func (e *Type) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type PartialRedisCE struct {
-	// Redis-CE configuration
-	Config PartialRedisCEConfig `json:"config"`
+type PartialRedisCe struct {
+	Config PartialRedisCeConfig `json:"config"`
 	// Unix epoch when the resource was created.
-	CreatedAt *int64   `json:"created_at,omitempty"`
-	ID        *string  `json:"id,omitempty"`
-	Name      *string  `json:"name,omitempty"`
-	Tags      []string `json:"tags,omitempty"`
-	Type      Type     `json:"type"`
+	CreatedAt *int64 `json:"created_at,omitempty"`
+	// A string representing a UUID (universally unique identifier).
+	ID *string `json:"id,omitempty"`
+	// A unique string representing a UTF-8 encoded name.
+	Name *string `json:"name,omitempty"`
+	// A set of strings representing tags.
+	Tags []string `json:"tags,omitempty"`
+	Type Type     `json:"type"`
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 }
 
-func (o *PartialRedisCE) GetConfig() PartialRedisCEConfig {
+func (o *PartialRedisCe) GetConfig() PartialRedisCeConfig {
 	if o == nil {
-		return PartialRedisCEConfig{}
+		return PartialRedisCeConfig{}
 	}
 	return o.Config
 }
 
-func (o *PartialRedisCE) GetCreatedAt() *int64 {
+func (o *PartialRedisCe) GetCreatedAt() *int64 {
 	if o == nil {
 		return nil
 	}
 	return o.CreatedAt
 }
 
-func (o *PartialRedisCE) GetID() *string {
+func (o *PartialRedisCe) GetID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *PartialRedisCE) GetName() *string {
+func (o *PartialRedisCe) GetName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *PartialRedisCE) GetTags() []string {
+func (o *PartialRedisCe) GetTags() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Tags
 }
 
-func (o *PartialRedisCE) GetType() Type {
+func (o *PartialRedisCe) GetType() Type {
 	if o == nil {
 		return Type("")
 	}
 	return o.Type
 }
 
-func (o *PartialRedisCE) GetUpdatedAt() *int64 {
+func (o *PartialRedisCe) GetUpdatedAt() *int64 {
 	if o == nil {
 		return nil
 	}

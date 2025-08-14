@@ -88,7 +88,7 @@ func main() {
     )
 
     res, err := s.ImpersonationSettings.UpdateImpersonationSettings(ctx, &components.UpdateImpersonationSettingsRequest{
-        Enabled: sdkkonnectgo.Bool(false),
+        Enabled: sdkkonnectgo.Bool(true),
     })
     if err != nil {
         log.Fatal(err)

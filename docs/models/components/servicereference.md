@@ -1,4 +1,4 @@
-# APIImplementationGatewayServiceEntity
+# ServiceReference
 
 A gateway service that implements an API
 

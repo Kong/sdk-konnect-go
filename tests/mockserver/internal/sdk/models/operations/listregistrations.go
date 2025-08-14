@@ -8,11 +8,11 @@ import (
 
 // ListRegistrationsFilter - Filter application registrations returned in the response.
 type ListRegistrationsFilter struct {
-	// Filters on the given UUID field value by exact match.
+	// Filters on the given string field value by exact match inequality.
 	DeveloperID *components.UUIDFieldFilter `queryParam:"name=developer_id"`
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	ApplicationName *components.StringFieldFilter `queryParam:"name=application_name"`
-	// Filters on the given string field value by either exact or fuzzy match.
+	// Filters on the given string field value by exact match inequality.
 	Status *components.StringFieldFilter `queryParam:"name=status"`
 }
 

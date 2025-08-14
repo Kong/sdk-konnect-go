@@ -108,12 +108,7 @@ func main() {
         }),
     )
 
-    res, err := s.PortalEmails.CreatePortalEmailConfig(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.PostPortalEmailConfig{
-        DomainName: sdkkonnectgo.String("example.com"),
-        FromName: sdkkonnectgo.String("Gandalf"),
-        FromEmail: sdkkonnectgo.String("user@example.com"),
-        ReplyToEmail: sdkkonnectgo.String("admin@example.com"),
-    })
+    res, err := s.PortalEmails.CreatePortalEmailConfig(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.PostPortalEmailConfig{})
     if err != nil {
         log.Fatal(err)
     }
@@ -706,10 +701,9 @@ func main() {
         TemplateName: components.EmailTemplateNameResetPassword,
         PostSendTestEmailPayload: components.PostSendTestEmailPayload{
             Content: components.SendTestEmailTemplateContent{
-                Subject: "{{developer_fullname}}, Your registration has been revoked",
-                Title: "Revoked registration",
-                Body: "Hello {{ developer_fullname }},\n\your registration has been **revoked**.",
-                ButtonLabel: sdkkonnectgo.String("Acknowledge"),
+                Subject: "<value>",
+                Title: "<value>",
+                Body: "<value>",
             },
         },
     })

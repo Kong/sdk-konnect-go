@@ -2,138 +2,46 @@
 
 package components
 
-import (
-	"errors"
-	"fmt"
-	"mockserver/internal/sdk/utils"
-)
-
-type AttributesFieldFilterType string
-
-const (
-	AttributesFieldFilterTypeStringFieldEqualsFilterUnion AttributesFieldFilterType = "StringFieldEqualsFilter_union"
-	AttributesFieldFilterTypeStringFieldContainsFilter    AttributesFieldFilterType = "StringFieldContainsFilter"
-	AttributesFieldFilterTypeStringFieldOContainsFilter   AttributesFieldFilterType = "StringFieldOContainsFilter"
-	AttributesFieldFilterTypeStringFieldOEQFilter         AttributesFieldFilterType = "StringFieldOEQFilter"
-	AttributesFieldFilterTypeStringFieldNEQFilter         AttributesFieldFilterType = "StringFieldNEQFilter"
-)
-
-// AttributesFieldFilter - Filters on the given string field value by either exact or fuzzy match.
+// AttributesFieldFilter - Filters on the given string field value by exact match inequality.
 type AttributesFieldFilter struct {
-	StringFieldEqualsFilterUnion *StringFieldEqualsFilterUnion `queryParam:"inline"`
-	StringFieldContainsFilter    *StringFieldContainsFilter    `queryParam:"inline"`
-	StringFieldOContainsFilter   *StringFieldOContainsFilter   `queryParam:"inline"`
-	StringFieldOEQFilter         *StringFieldOEQFilter         `queryParam:"inline"`
-	StringFieldNEQFilter         *StringFieldNEQFilter         `queryParam:"inline"`
-
-	Type AttributesFieldFilterType
+	Eq        *string `queryParam:"name=eq"`
+	Contains  *string `queryParam:"name=contains"`
+	Ocontains *string `queryParam:"name=ocontains"`
+	Oeq       *string `queryParam:"name=oeq"`
+	Neq       *string `queryParam:"name=neq"`
 }
 
-func CreateAttributesFieldFilterStringFieldEqualsFilterUnion(stringFieldEqualsFilterUnion StringFieldEqualsFilterUnion) AttributesFieldFilter {
-	typ := AttributesFieldFilterTypeStringFieldEqualsFilterUnion
-
-	return AttributesFieldFilter{
-		StringFieldEqualsFilterUnion: &stringFieldEqualsFilterUnion,
-		Type:                         typ,
-	}
-}
-
-func CreateAttributesFieldFilterStringFieldContainsFilter(stringFieldContainsFilter StringFieldContainsFilter) AttributesFieldFilter {
-	typ := AttributesFieldFilterTypeStringFieldContainsFilter
-
-	return AttributesFieldFilter{
-		StringFieldContainsFilter: &stringFieldContainsFilter,
-		Type:                      typ,
-	}
-}
-
-func CreateAttributesFieldFilterStringFieldOContainsFilter(stringFieldOContainsFilter StringFieldOContainsFilter) AttributesFieldFilter {
-	typ := AttributesFieldFilterTypeStringFieldOContainsFilter
-
-	return AttributesFieldFilter{
-		StringFieldOContainsFilter: &stringFieldOContainsFilter,
-		Type:                       typ,
-	}
-}
-
-func CreateAttributesFieldFilterStringFieldOEQFilter(stringFieldOEQFilter StringFieldOEQFilter) AttributesFieldFilter {
-	typ := AttributesFieldFilterTypeStringFieldOEQFilter
-
-	return AttributesFieldFilter{
-		StringFieldOEQFilter: &stringFieldOEQFilter,
-		Type:                 typ,
-	}
-}
-
-func CreateAttributesFieldFilterStringFieldNEQFilter(stringFieldNEQFilter StringFieldNEQFilter) AttributesFieldFilter {
-	typ := AttributesFieldFilterTypeStringFieldNEQFilter
-
-	return AttributesFieldFilter{
-		StringFieldNEQFilter: &stringFieldNEQFilter,
-		Type:                 typ,
-	}
-}
-
-func (u *AttributesFieldFilter) UnmarshalJSON(data []byte) error {
-
-	var stringFieldContainsFilter StringFieldContainsFilter = StringFieldContainsFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldContainsFilter, "", true, true); err == nil {
-		u.StringFieldContainsFilter = &stringFieldContainsFilter
-		u.Type = AttributesFieldFilterTypeStringFieldContainsFilter
+func (o *AttributesFieldFilter) GetEq() *string {
+	if o == nil {
 		return nil
 	}
-
-	var stringFieldOContainsFilter StringFieldOContainsFilter = StringFieldOContainsFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldOContainsFilter, "", true, true); err == nil {
-		u.StringFieldOContainsFilter = &stringFieldOContainsFilter
-		u.Type = AttributesFieldFilterTypeStringFieldOContainsFilter
-		return nil
-	}
-
-	var stringFieldOEQFilter StringFieldOEQFilter = StringFieldOEQFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldOEQFilter, "", true, true); err == nil {
-		u.StringFieldOEQFilter = &stringFieldOEQFilter
-		u.Type = AttributesFieldFilterTypeStringFieldOEQFilter
-		return nil
-	}
-
-	var stringFieldNEQFilter StringFieldNEQFilter = StringFieldNEQFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldNEQFilter, "", true, true); err == nil {
-		u.StringFieldNEQFilter = &stringFieldNEQFilter
-		u.Type = AttributesFieldFilterTypeStringFieldNEQFilter
-		return nil
-	}
-
-	var stringFieldEqualsFilterUnion StringFieldEqualsFilterUnion = StringFieldEqualsFilterUnion{}
-	if err := utils.UnmarshalJSON(data, &stringFieldEqualsFilterUnion, "", true, true); err == nil {
-		u.StringFieldEqualsFilterUnion = &stringFieldEqualsFilterUnion
-		u.Type = AttributesFieldFilterTypeStringFieldEqualsFilterUnion
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for AttributesFieldFilter", string(data))
+	return o.Eq
 }
 
-func (u AttributesFieldFilter) MarshalJSON() ([]byte, error) {
-	if u.StringFieldEqualsFilterUnion != nil {
-		return utils.MarshalJSON(u.StringFieldEqualsFilterUnion, "", true)
+func (o *AttributesFieldFilter) GetContains() *string {
+	if o == nil {
+		return nil
 	}
+	return o.Contains
+}
 
-	if u.StringFieldContainsFilter != nil {
-		return utils.MarshalJSON(u.StringFieldContainsFilter, "", true)
+func (o *AttributesFieldFilter) GetOcontains() *string {
+	if o == nil {
+		return nil
 	}
+	return o.Ocontains
+}
 
-	if u.StringFieldOContainsFilter != nil {
-		return utils.MarshalJSON(u.StringFieldOContainsFilter, "", true)
+func (o *AttributesFieldFilter) GetOeq() *string {
+	if o == nil {
+		return nil
 	}
+	return o.Oeq
+}
 
-	if u.StringFieldOEQFilter != nil {
-		return utils.MarshalJSON(u.StringFieldOEQFilter, "", true)
+func (o *AttributesFieldFilter) GetNeq() *string {
+	if o == nil {
+		return nil
 	}
-
-	if u.StringFieldNEQFilter != nil {
-		return utils.MarshalJSON(u.StringFieldNEQFilter, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type AttributesFieldFilter: all fields are null")
+	return o.Neq
 }

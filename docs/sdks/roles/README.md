@@ -152,9 +152,9 @@ func main() {
 
     res, err := s.Roles.TeamsAssignRole(ctx, "e81bc3e5-e9db-4764-b7dd-e81e39072cbe", &components.AssignRole{
         RoleName: components.RoleNameViewer.ToPointer(),
-        EntityID: sdkkonnectgo.String("18ee2573-dec0-4b83-be99-fa7700bcdc61"),
+        EntityID: sdkkonnectgo.String("e67490ce-44dc-4cbd-b65e-b52c746fc26a"),
         EntityTypeName: components.EntityTypeNameControlPlanes.ToPointer(),
-        EntityRegion: components.EntityRegionUs.ToPointer(),
+        EntityRegion: components.AssignRoleEntityRegionEu.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)
@@ -330,9 +330,9 @@ func main() {
 
     res, err := s.Roles.UsersAssignRole(ctx, "e81bc3e5-e9db-4764-b7dd-e81e39072cbe", &components.AssignRole{
         RoleName: components.RoleNameViewer.ToPointer(),
-        EntityID: sdkkonnectgo.String("18ee2573-dec0-4b83-be99-fa7700bcdc61"),
+        EntityID: sdkkonnectgo.String("e67490ce-44dc-4cbd-b65e-b52c746fc26a"),
         EntityTypeName: components.EntityTypeNameControlPlanes.ToPointer(),
-        EntityRegion: components.EntityRegionUs.ToPointer(),
+        EntityRegion: components.AssignRoleEntityRegionEu.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)

@@ -1,0 +1,20 @@
+# AwsResourceEndpointConfigState
+
+The current state of the resource config in AWS Resource Endpoint. Possible values:
+- `initializing` - The config is in the process of being initialized and is setting up necessary resources.
+- `missing` - The config is missing and is no longer accepting new traffic.
+- `ready` - The config is fully operational and can route traffic as configured.
+- `error` - The config is in an error state, and is not operational.
+- `terminating` - The config is in the process of being deleted and is no longer accepting new traffic.
+
+
+
+## Values
+
+| Name                                         | Value                                        |
+| -------------------------------------------- | -------------------------------------------- |
+| `AwsResourceEndpointConfigStateInitializing` | initializing                                 |
+| `AwsResourceEndpointConfigStateMissing`      | missing                                      |
+| `AwsResourceEndpointConfigStateReady`        | ready                                        |
+| `AwsResourceEndpointConfigStateError`        | error                                        |
+| `AwsResourceEndpointConfigStateTerminating`  | terminating                                  |

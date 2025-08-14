@@ -1,8 +1,8 @@
-# PartialRedisEEType
+# PartialRedisEeType
 
 
 ## Values
 
 | Name                        | Value                       |
 | --------------------------- | --------------------------- |
-| `PartialRedisEETypeRedisEe` | redis-ee                    |
+| `PartialRedisEeTypeRedisEe` | redis-ee                    |

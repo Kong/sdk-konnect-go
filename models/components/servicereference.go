@@ -2,13 +2,13 @@
 
 package components
 
-// APIImplementationGatewayServiceEntity - A gateway service that implements an API
-type APIImplementationGatewayServiceEntity struct {
+// ServiceReference - A gateway service that implements an API
+type ServiceReference struct {
 	// A Gateway service that implements an API
 	Service *APIImplementationService `json:"service,omitempty"`
 }
 
-func (o *APIImplementationGatewayServiceEntity) GetService() *APIImplementationService {
+func (o *ServiceReference) GetService() *APIImplementationService {
 	if o == nil {
 		return nil
 	}

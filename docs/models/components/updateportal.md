@@ -1,5 +1,7 @@
 # UpdatePortal
 
+Update a portal's settings.
+
 
 ## Fields
 

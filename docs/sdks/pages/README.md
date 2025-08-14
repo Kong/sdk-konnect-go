@@ -169,11 +169,13 @@ func main() {
     )
 
     res, err := s.Pages.CreatePortalPage(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.CreatePortalPageRequest{
-        Slug: "/getting-started",
-        Title: sdkkonnectgo.String("Getting Started"),
-        Content: "Welcome to the Getting Started page. This is where you can learn how to use our APIs.",
+        Slug: "/my-page",
+        Title: sdkkonnectgo.String("My Page"),
+        Content: "# Welcome to My Page",
         Visibility: components.PageVisibilityStatusPublic.ToPointer(),
         Status: components.PublishedStatusPublished.ToPointer(),
+        Description: sdkkonnectgo.String("A custom page about developer portals"),
+        ParentPageID: nil,
     })
     if err != nil {
         log.Fatal(err)
@@ -293,9 +295,13 @@ func main() {
         PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
         PageID: "ebbac5b0-ac89-45c3-9d2e-c4542c657e79",
         UpdatePortalPageRequest: components.UpdatePortalPageRequest{
-            Slug: sdkkonnectgo.String("/about-us"),
-            Title: sdkkonnectgo.String("About Us"),
-            Content: sdkkonnectgo.String("Welcome to the About Us page. This is where you can learn about our company."),
+            Slug: sdkkonnectgo.String("/my-page"),
+            Title: sdkkonnectgo.String("My Page"),
+            Content: sdkkonnectgo.String("# Welcome to My Page"),
+            Visibility: components.VisibilityStatusPublic.ToPointer(),
+            Status: components.PublishedStatusPublished.ToPointer(),
+            Description: sdkkonnectgo.String("A custom page about developer portals"),
+            ParentPageID: nil,
         },
     })
     if err != nil {

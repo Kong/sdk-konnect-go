@@ -11,31 +11,31 @@ import (
 type APIImplementationType string
 
 const (
-	APIImplementationTypeAPIImplementationGatewayServiceEntityInput APIImplementationType = "ApiImplementationGatewayServiceEntity_input"
+	APIImplementationTypeServiceReferenceInput APIImplementationType = "Service Reference_input"
 )
 
 // APIImplementation - An entity that implements an API
 type APIImplementation struct {
-	APIImplementationGatewayServiceEntityInput *APIImplementationGatewayServiceEntityInput `queryParam:"inline"`
+	ServiceReferenceInput *ServiceReferenceInput `queryParam:"inline"`
 
 	Type APIImplementationType
 }
 
-func CreateAPIImplementationAPIImplementationGatewayServiceEntityInput(apiImplementationGatewayServiceEntityInput APIImplementationGatewayServiceEntityInput) APIImplementation {
-	typ := APIImplementationTypeAPIImplementationGatewayServiceEntityInput
+func CreateAPIImplementationServiceReferenceInput(serviceReferenceInput ServiceReferenceInput) APIImplementation {
+	typ := APIImplementationTypeServiceReferenceInput
 
 	return APIImplementation{
-		APIImplementationGatewayServiceEntityInput: &apiImplementationGatewayServiceEntityInput,
-		Type: typ,
+		ServiceReferenceInput: &serviceReferenceInput,
+		Type:                  typ,
 	}
 }
 
 func (u *APIImplementation) UnmarshalJSON(data []byte) error {
 
-	var apiImplementationGatewayServiceEntityInput APIImplementationGatewayServiceEntityInput = APIImplementationGatewayServiceEntityInput{}
-	if err := utils.UnmarshalJSON(data, &apiImplementationGatewayServiceEntityInput, "", true, true); err == nil {
-		u.APIImplementationGatewayServiceEntityInput = &apiImplementationGatewayServiceEntityInput
-		u.Type = APIImplementationTypeAPIImplementationGatewayServiceEntityInput
+	var serviceReferenceInput ServiceReferenceInput = ServiceReferenceInput{}
+	if err := utils.UnmarshalJSON(data, &serviceReferenceInput, "", true, true); err == nil {
+		u.ServiceReferenceInput = &serviceReferenceInput
+		u.Type = APIImplementationTypeServiceReferenceInput
 		return nil
 	}
 
@@ -43,8 +43,8 @@ func (u *APIImplementation) UnmarshalJSON(data []byte) error {
 }
 
 func (u APIImplementation) MarshalJSON() ([]byte, error) {
-	if u.APIImplementationGatewayServiceEntityInput != nil {
-		return utils.MarshalJSON(u.APIImplementationGatewayServiceEntityInput, "", true)
+	if u.ServiceReferenceInput != nil {
+		return utils.MarshalJSON(u.ServiceReferenceInput, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type APIImplementation: all fields are null")

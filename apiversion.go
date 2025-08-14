@@ -32,10 +32,10 @@ func newAPIVersion(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hooks
 
 // CreateAPIVersion - Create API Version
 // Creates a version (OpenAPI or AsyncAPI) for an API.
-func (s *APIVersion) CreateAPIVersion(ctx context.Context, apiID string, apiVersion components.APIVersion, opts ...operations.Option) (*operations.CreateAPIVersionResponse, error) {
+func (s *APIVersion) CreateAPIVersion(ctx context.Context, apiID string, createAPIVersionRequest components.CreateAPIVersionRequest, opts ...operations.Option) (*operations.CreateAPIVersionResponse, error) {
 	request := operations.CreateAPIVersionRequest{
-		APIID:      apiID,
-		APIVersion: apiVersion,
+		APIID:                   apiID,
+		CreateAPIVersionRequest: createAPIVersionRequest,
 	}
 
 	o := operations.Options{}
@@ -70,7 +70,7 @@ func (s *APIVersion) CreateAPIVersion(ctx context.Context, apiID string, apiVers
 		OAuth2Scopes:     []string{},
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "APIVersion", "json", `request:"mediaType=application/json"`)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateAPIVersionRequest", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
 	}

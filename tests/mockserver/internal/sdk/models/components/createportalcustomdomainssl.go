@@ -2,13 +2,127 @@
 
 package components
 
-type CreatePortalCustomDomainSSL struct {
-	DomainVerificationMethod PortalCustomDomainVerificationMethod `json:"domain_verification_method"`
+import (
+	"errors"
+	"fmt"
+	"mockserver/internal/sdk/utils"
+)
+
+type HTTP struct {
+	domainVerificationMethod string `const:"http" json:"domain_verification_method"`
 }
 
-func (o *CreatePortalCustomDomainSSL) GetDomainVerificationMethod() PortalCustomDomainVerificationMethod {
-	if o == nil {
-		return PortalCustomDomainVerificationMethod("")
+func (h HTTP) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(h, "", false)
+}
+
+func (h *HTTP) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &h, "", false, true); err != nil {
+		return err
 	}
-	return o.DomainVerificationMethod
+	return nil
+}
+
+func (o *HTTP) GetDomainVerificationMethod() string {
+	return "http"
+}
+
+type CustomCertificate struct {
+	domainVerificationMethod string `const:"custom_certificate" json:"domain_verification_method"`
+	// Custom certificate to be used for the SSL termination.
+	CustomCertificate string `json:"custom_certificate"`
+	// Custom certificate private key to be used for the SSL termination.
+	CustomPrivateKey string `json:"custom_private_key"`
+}
+
+func (c CustomCertificate) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CustomCertificate) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CustomCertificate) GetDomainVerificationMethod() string {
+	return "custom_certificate"
+}
+
+func (o *CustomCertificate) GetCustomCertificate() string {
+	if o == nil {
+		return ""
+	}
+	return o.CustomCertificate
+}
+
+func (o *CustomCertificate) GetCustomPrivateKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.CustomPrivateKey
+}
+
+type CreatePortalCustomDomainSSLType string
+
+const (
+	CreatePortalCustomDomainSSLTypeCustomCertificate CreatePortalCustomDomainSSLType = "custom_certificate"
+	CreatePortalCustomDomainSSLTypeHTTP              CreatePortalCustomDomainSSLType = "http"
+)
+
+type CreatePortalCustomDomainSSL struct {
+	CustomCertificate *CustomCertificate `queryParam:"inline"`
+	HTTP              *HTTP              `queryParam:"inline"`
+
+	Type CreatePortalCustomDomainSSLType
+}
+
+func CreateCreatePortalCustomDomainSSLCustomCertificate(customCertificate CustomCertificate) CreatePortalCustomDomainSSL {
+	typ := CreatePortalCustomDomainSSLTypeCustomCertificate
+
+	return CreatePortalCustomDomainSSL{
+		CustomCertificate: &customCertificate,
+		Type:              typ,
+	}
+}
+
+func CreateCreatePortalCustomDomainSSLHTTP(http HTTP) CreatePortalCustomDomainSSL {
+	typ := CreatePortalCustomDomainSSLTypeHTTP
+
+	return CreatePortalCustomDomainSSL{
+		HTTP: &http,
+		Type: typ,
+	}
+}
+
+func (u *CreatePortalCustomDomainSSL) UnmarshalJSON(data []byte) error {
+
+	var http HTTP = HTTP{}
+	if err := utils.UnmarshalJSON(data, &http, "", true, true); err == nil {
+		u.HTTP = &http
+		u.Type = CreatePortalCustomDomainSSLTypeHTTP
+		return nil
+	}
+
+	var customCertificate CustomCertificate = CustomCertificate{}
+	if err := utils.UnmarshalJSON(data, &customCertificate, "", true, true); err == nil {
+		u.CustomCertificate = &customCertificate
+		u.Type = CreatePortalCustomDomainSSLTypeCustomCertificate
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreatePortalCustomDomainSSL", string(data))
+}
+
+func (u CreatePortalCustomDomainSSL) MarshalJSON() ([]byte, error) {
+	if u.CustomCertificate != nil {
+		return utils.MarshalJSON(u.CustomCertificate, "", true)
+	}
+
+	if u.HTTP != nil {
+		return utils.MarshalJSON(u.HTTP, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type CreatePortalCustomDomainSSL: all fields are null")
 }
