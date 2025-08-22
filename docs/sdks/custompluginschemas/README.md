@@ -19,6 +19,7 @@ Returns an array of custom plugins schemas associated with a control plane.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-plugin-schemas" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/plugin-schemas" -->
 ```go
 package main
 
@@ -80,6 +81,7 @@ Upload a custom plugin schema associated with a control plane.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-plugin-schemas" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/plugin-schemas" -->
 ```go
 package main
 
@@ -140,6 +142,7 @@ Returns information about a custom plugin from a given name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-plugin-schema" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/plugin-schemas/{name}" -->
 ```go
 package main
 
@@ -197,6 +200,7 @@ Delete an individual custom plugin schema.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-plugin-schemas" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/plugin-schemas/{name}" -->
 ```go
 package main
 
@@ -254,6 +258,7 @@ Create or update an individual custom plugin schema.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-plugin-schemas" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/plugin-schemas/{name}" -->
 ```go
 package main
 

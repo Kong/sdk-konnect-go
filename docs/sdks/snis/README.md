@@ -26,6 +26,7 @@ List all SNIs associated with a Certificate
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-sni-with-certificate" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates/{CertificateId}/snis" -->
 ```go
 package main
 
@@ -84,6 +85,7 @@ Create a new SNI associated with a Certificate
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-sni-with-certificate" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates/{CertificateId}/snis" -->
 ```go
 package main
 
@@ -145,6 +147,7 @@ Delete a an SNI associated with a Certificate using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-sni-with-certificate" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates/{CertificateId}/snis/{SNIId}" -->
 ```go
 package main
 
@@ -203,6 +206,7 @@ Get an SNI associated with a Certificate using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-sni-with-certificate" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates/{CertificateId}/snis/{SNIId}" -->
 ```go
 package main
 
@@ -261,6 +265,7 @@ Create or Update an SNI associated with a Certificate using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-sni-with-certificate" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates/{CertificateId}/snis/{SNIId}" -->
 ```go
 package main
 
@@ -323,6 +328,7 @@ List all SNIs
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-sni" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/snis" -->
 ```go
 package main
 
@@ -381,6 +387,7 @@ Create a new SNI
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-sni" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/snis" -->
 ```go
 package main
 
@@ -442,6 +449,7 @@ Delete an SNI
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-sni" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/snis/{SNIId}" -->
 ```go
 package main
 
@@ -497,6 +505,7 @@ Get an SNI using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-sni" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/snis/{SNIId}" -->
 ```go
 package main
 
@@ -552,6 +561,7 @@ Create or Update SNI using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-sni" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/snis/{SNIId}" -->
 ```go
 package main
 

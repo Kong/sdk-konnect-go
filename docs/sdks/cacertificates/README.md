@@ -20,6 +20,7 @@ List all CA Certificates
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-ca_certificate" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/ca_certificates" -->
 ```go
 package main
 
@@ -78,6 +79,7 @@ Create a new CA Certificate
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-ca_certificate" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/ca_certificates" -->
 ```go
 package main
 
@@ -144,6 +146,7 @@ Delete a CA Certificate
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-ca_certificate" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/ca_certificates/{CACertificateId}" -->
 ```go
 package main
 
@@ -199,6 +202,7 @@ Get a CA Certificate using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-ca_certificate" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/ca_certificates/{CACertificateId}" -->
 ```go
 package main
 
@@ -254,6 +258,7 @@ Create or Update CA Certificate using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-ca_certificate" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/ca_certificates/{CACertificateId}" -->
 ```go
 package main
 

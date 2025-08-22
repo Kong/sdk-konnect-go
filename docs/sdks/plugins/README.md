@@ -43,6 +43,7 @@ List all Plugins associated with a Consumer Group
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-plugin-with-consumer_group" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins" -->
 ```go
 package main
 
@@ -101,6 +102,7 @@ Create a new Plugin associated with a Consumer Group
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-plugin-with-consumer_group" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins" -->
 ```go
 package main
 
@@ -192,6 +194,7 @@ Delete a a Plugin associated with a Consumer Group using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-plugin-with-consumer_group" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -250,6 +253,7 @@ Get a Plugin associated with a Consumer Group using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-plugin-with-consumer_group" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -308,6 +312,7 @@ Create or Update a Plugin associated with a Consumer Group using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-plugin-with-consumer_group" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -400,6 +405,7 @@ List all Plugins associated with a Consumer
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-plugin-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/plugins" -->
 ```go
 package main
 
@@ -458,6 +464,7 @@ Create a new Plugin associated with a Consumer
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-plugin-with-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/plugins" -->
 ```go
 package main
 
@@ -549,6 +556,7 @@ Delete a a Plugin associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-plugin-with-consumer" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -607,6 +615,7 @@ Get a Plugin associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-plugin-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -665,6 +674,7 @@ Create or Update a Plugin associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-plugin-with-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -757,6 +767,7 @@ List all Plugins
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-plugin" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins" -->
 ```go
 package main
 
@@ -815,6 +826,7 @@ Create a new Plugin
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-plugin" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins" -->
 ```go
 package main
 
@@ -903,6 +915,7 @@ Delete a Plugin
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-plugin" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -958,6 +971,7 @@ Get a Plugin using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-plugin" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -1013,6 +1027,7 @@ Create or Update Plugin using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-plugin" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -1105,6 +1120,7 @@ List all Plugins associated with a Route
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-plugin-with-route" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}/plugins" -->
 ```go
 package main
 
@@ -1163,6 +1179,7 @@ Create a new Plugin associated with a Route
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-plugin-with-route" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}/plugins" -->
 ```go
 package main
 
@@ -1254,6 +1271,7 @@ Delete a a Plugin associated with a Route using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-plugin-with-route" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -1312,6 +1330,7 @@ Get a Plugin associated with a Route using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-plugin-with-route" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -1370,6 +1389,7 @@ Create or Update a Plugin associated with a Route using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-plugin-with-route" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -1462,6 +1482,7 @@ Get the schema for a plugin
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="fetch-plugin-schema" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/schemas/plugins/{pluginName}" -->
 ```go
 package main
 
@@ -1516,6 +1537,7 @@ List all Plugins associated with a Service
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-plugin-with-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/plugins" -->
 ```go
 package main
 
@@ -1574,6 +1596,7 @@ Create a new Plugin associated with a Service
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-plugin-with-service" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/plugins" -->
 ```go
 package main
 
@@ -1665,6 +1688,7 @@ Delete a a Plugin associated with a Service using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-plugin-with-service" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -1723,6 +1747,7 @@ Get a Plugin associated with a Service using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-plugin-with-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/plugins/{PluginId}" -->
 ```go
 package main
 
@@ -1781,6 +1806,7 @@ Create or Update a Plugin associated with a Service using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-plugin-with-service" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/plugins/{PluginId}" -->
 ```go
 package main
 

@@ -46,6 +46,7 @@ gateway version availability, and instance type information.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-availability-json" method="get" path="/v2/cloud-gateways/availability.json" -->
 ```go
 package main
 
@@ -95,6 +96,7 @@ permitted control-plane reads).
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-configurations" method="get" path="/v2/cloud-gateways/configurations" -->
 ```go
 package main
 
@@ -161,6 +163,7 @@ are in an offline state will automatically initialize (i.e. move to an initializ
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-configuration" method="put" path="/v2/cloud-gateways/configurations" -->
 ```go
 package main
 
@@ -269,6 +272,7 @@ Retrieves a configuration by ID (restricted by permitted control-plane read).
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-configuration" method="get" path="/v2/cloud-gateways/configurations/{configurationId}" -->
 ```go
 package main
 
@@ -327,6 +331,7 @@ permitted control-plane reads).
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-custom-domains" method="get" path="/v2/cloud-gateways/custom-domains" -->
 ```go
 package main
 
@@ -390,6 +395,7 @@ action).
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-custom-domains" method="post" path="/v2/cloud-gateways/custom-domains" -->
 ```go
 package main
 
@@ -452,6 +458,7 @@ Retrieves a custom domain by ID (restricted by permitted control-plane reads).
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-custom-domain" method="get" path="/v2/cloud-gateways/custom-domains/{customDomainId}" -->
 ```go
 package main
 
@@ -508,6 +515,7 @@ Deletes a custom domain by ID (restricted by permitted control-plane reads).
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-custom-domain" method="delete" path="/v2/cloud-gateways/custom-domains/{customDomainId}" -->
 ```go
 package main
 
@@ -565,6 +573,7 @@ Retrieves the CNAME and SSL status of a custom domain.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-custom-domain-online-status" method="get" path="/v2/cloud-gateways/custom-domains/{customDomainId}/online-status" -->
 ```go
 package main
 
@@ -625,6 +634,7 @@ For example, the "data-plane-group-idle-timeout-minutes" resource configuration 
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-default-resource-configurations" method="get" path="/v2/cloud-gateways/default-resource-configurations" -->
 ```go
 package main
 
@@ -684,6 +694,7 @@ organizationally-defined overrides for those resource quotas.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-default-resource-quotas" method="get" path="/v2/cloud-gateways/default-resource-quotas" -->
 ```go
 package main
 
@@ -741,6 +752,7 @@ Returns a paginated list of networks.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-networks" method="get" path="/v2/cloud-gateways/networks" -->
 ```go
 package main
 
@@ -801,6 +813,7 @@ Creates a new network for a given provider account.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-network" method="post" path="/v2/cloud-gateways/networks" -->
 ```go
 package main
 
@@ -868,6 +881,7 @@ Retrieves a network by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-network" method="get" path="/v2/cloud-gateways/networks/{networkId}" -->
 ```go
 package main
 
@@ -924,6 +938,7 @@ Updates a network by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-network" method="patch" path="/v2/cloud-gateways/networks/{networkId}" -->
 ```go
 package main
 
@@ -985,6 +1000,7 @@ Deletes a network by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-network" method="delete" path="/v2/cloud-gateways/networks/{networkId}" -->
 ```go
 package main
 
@@ -1043,6 +1059,7 @@ Returns a paginated collection of configurations that reference a network.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-network-configurations" method="get" path="/v2/cloud-gateways/networks/{networkId}/configuration-references" -->
 ```go
 package main
 
@@ -1105,6 +1122,7 @@ Returns a paginated collection of Private DNS for a given network.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-private-dns" method="get" path="/v2/cloud-gateways/networks/{networkId}/private-dns" -->
 ```go
 package main
 
@@ -1167,6 +1185,7 @@ Creates a new Private DNS for a given network.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-private-dns" method="post" path="/v2/cloud-gateways/networks/{networkId}/private-dns" -->
 ```go
 package main
 
@@ -1234,6 +1253,7 @@ Retrieves a Private DNS by ID for a given network.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-private-dns" method="get" path="/v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}" -->
 ```go
 package main
 
@@ -1291,6 +1311,7 @@ Updates a Private DNS by ID for a given network.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-private-dns" method="patch" path="/v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}" -->
 ```go
 package main
 
@@ -1373,6 +1394,7 @@ Deletes a Private DNS by ID for a given network.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-private-dns" method="delete" path="/v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}" -->
 ```go
 package main
 
@@ -1431,6 +1453,7 @@ Returns a paginated collection of transit gateways for a given network.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-transit-gateways" method="get" path="/v2/cloud-gateways/networks/{networkId}/transit-gateways" -->
 ```go
 package main
 
@@ -1493,6 +1516,7 @@ Creates a new transit gateway for a given network.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-transit-gateway" method="post" path="/v2/cloud-gateways/networks/{networkId}/transit-gateways" -->
 ```go
 package main
 
@@ -1585,6 +1609,7 @@ Retrieves a transit gateway by ID for a given network.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-transit-gateway" method="get" path="/v2/cloud-gateways/networks/{networkId}/transit-gateways/{transitGatewayId}" -->
 ```go
 package main
 
@@ -1642,6 +1667,7 @@ Deletes a transit gateway by ID for a given network.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-transit-gateway" method="delete" path="/v2/cloud-gateways/networks/{networkId}/transit-gateways/{transitGatewayId}" -->
 ```go
 package main
 
@@ -1700,6 +1726,7 @@ Returns a a paginated collection of provider accounts for an organization.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-provider-accounts" method="get" path="/v2/cloud-gateways/provider-accounts" -->
 ```go
 package main
 
@@ -1760,6 +1787,7 @@ Retrieves a provider account by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-provider-account" method="get" path="/v2/cloud-gateways/provider-accounts/{providerAccountId}" -->
 ```go
 package main
 
@@ -1819,6 +1847,7 @@ For example, the "data-plane-group-idle-timeout-minutes" resource configuration 
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-resource-configurations" method="get" path="/v2/cloud-gateways/resource-configurations" -->
 ```go
 package main
 
@@ -1876,6 +1905,7 @@ Retrieves a resource configuration by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-resource-configuration" method="get" path="/v2/cloud-gateways/resource-configurations/{resourceConfigurationId}" -->
 ```go
 package main
 
@@ -1933,6 +1963,7 @@ Returns a paginated collection of resource quotas for an organization.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-resource-quotas" method="get" path="/v2/cloud-gateways/resource-quotas" -->
 ```go
 package main
 
@@ -1990,6 +2021,7 @@ Retrieves a resource quota by ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-resource-quota" method="get" path="/v2/cloud-gateways/resource-quotas/{resourceQuotaId}" -->
 ```go
 package main
 

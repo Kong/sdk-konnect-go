@@ -19,6 +19,7 @@ Lists the developer teams in a portal. Each team can contain any developer and d
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-portal-teams" method="get" path="/v3/portals/{portalId}/teams" -->
 ```go
 package main
 
@@ -80,6 +81,7 @@ Creates a developer team in a portal. Developers can be added to teams to provid
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-portal-team" method="post" path="/v3/portals/{portalId}/teams" -->
 ```go
 package main
 
@@ -141,6 +143,7 @@ Get an individual team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-portal-team" method="get" path="/v3/portals/{portalId}/teams/{teamId}" -->
 ```go
 package main
 
@@ -198,6 +201,7 @@ Updates an individual developer team for a portal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-portal-team" method="patch" path="/v3/portals/{portalId}/teams/{teamId}" -->
 ```go
 package main
 
@@ -262,6 +266,7 @@ Deletes a developer team from a portal. Deleting a team also deletes its assigne
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-portal-team" method="delete" path="/v3/portals/{portalId}/teams/{teamId}" -->
 ```go
 package main
 

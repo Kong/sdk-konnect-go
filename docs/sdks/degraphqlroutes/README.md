@@ -19,6 +19,7 @@ List all Degraphql_routes
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-degraphql_route" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/degraphql_routes" -->
 ```go
 package main
 
@@ -77,6 +78,7 @@ Get a Degraphql_route using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-degraphql_route" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/degraphql_routes/{Degraphql_routeId}" -->
 ```go
 package main
 
@@ -132,6 +134,7 @@ List all Degraphql_routes associated with a Service
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-degraphql_route-with-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/degraphql/routes" -->
 ```go
 package main
 
@@ -190,6 +193,7 @@ Create a new Degraphql_route associated with a Service
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-degraphql_route-with-service" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/degraphql/routes" -->
 ```go
 package main
 
@@ -252,6 +256,7 @@ Delete a a Degraphql_route associated with a Service using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-degraphql_route-with-service" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/degraphql/routes/{Degraphql_routeId}" -->
 ```go
 package main
 
@@ -310,6 +315,7 @@ Get a Degraphql_route associated with a Service using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-degraphql_route-with-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/degraphql/routes/{Degraphql_routeId}" -->
 ```go
 package main
 
@@ -368,6 +374,7 @@ Create or Update a Degraphql_route associated with a Service using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-degraphql_route-with-service" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/degraphql/routes/{Degraphql_routeId}" -->
 ```go
 package main
 

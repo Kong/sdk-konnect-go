@@ -19,6 +19,7 @@ Lists all of the application registrations and their current status (e.g., appro
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-registrations" method="get" path="/v3/portals/{portalId}/application-registrations" -->
 ```go
 package main
 
@@ -81,6 +82,7 @@ Lists each API that this application is registered for and their current status 
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-registrations-by-application" method="get" path="/v3/portals/{portalId}/applications/{applicationId}/registrations" -->
 ```go
 package main
 
@@ -144,6 +146,7 @@ Returns information about an application's registration status for a particular 
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-application-registration" method="get" path="/v3/portals/{portalId}/applications/{applicationId}/registrations/{registrationId}" -->
 ```go
 package main
 
@@ -205,6 +208,7 @@ Updates the status of a particular application registration to an API. Approved 
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-application-registration" method="patch" path="/v3/portals/{portalId}/applications/{applicationId}/registrations/{registrationId}" -->
 ```go
 package main
 
@@ -271,6 +275,7 @@ Note: Developers can request a new application registration for the given API as
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-application-registration" method="delete" path="/v3/portals/{portalId}/applications/{applicationId}/registrations/{registrationId}" -->
 ```go
 package main
 

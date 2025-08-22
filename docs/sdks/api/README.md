@@ -18,6 +18,7 @@ Creates an API.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-api" method="post" path="/v3/apis" -->
 ```go
 package main
 
@@ -82,6 +83,7 @@ Returns a collection of all APIs.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-apis" method="get" path="/v3/apis" -->
 ```go
 package main
 
@@ -157,6 +159,7 @@ Returns a collection of all APIs with computed fields.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-apis-computed" method="get" path="/v3/apis/_computed" -->
 ```go
 package main
 
@@ -232,6 +235,7 @@ Fetches an API.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="fetch-api" method="get" path="/v3/apis/{apiId}" -->
 ```go
 package main
 
@@ -288,6 +292,7 @@ Updates an API.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-api" method="patch" path="/v3/apis/{apiId}" -->
 ```go
 package main
 
@@ -353,6 +358,7 @@ Deletes an API.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-api" method="delete" path="/v3/apis/{apiId}" -->
 ```go
 package main
 

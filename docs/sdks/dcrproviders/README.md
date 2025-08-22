@@ -23,6 +23,7 @@ Creates a DCR provider.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-dcr-provider" method="post" path="/v2/dcr-providers" -->
 ```go
 package main
 
@@ -88,6 +89,7 @@ Returns a paginated collection of DCR providers.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-dcr-providers" method="get" path="/v2/dcr-providers" -->
 ```go
 package main
 
@@ -148,6 +150,7 @@ Returns a DCR provider.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-dcr-provider" method="get" path="/v2/dcr-providers/{dcrProviderId}" -->
 ```go
 package main
 
@@ -204,6 +207,7 @@ Updates a DCR provider.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-dcr-provider" method="patch" path="/v2/dcr-providers/{dcrProviderId}" -->
 ```go
 package main
 
@@ -266,6 +270,7 @@ Deletes a DCR provider.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-dcr-provider" method="delete" path="/v2/dcr-providers/{dcrProviderId}" -->
 ```go
 package main
 
@@ -322,6 +327,7 @@ Verifies if a DCR provider is configured properly. Returns 200 for success, 4xx 
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="verify-dcr-provider" method="post" path="/v2/dcr-providers/{dcrProviderId}/verify" -->
 ```go
 package main
 

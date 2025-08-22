@@ -13,6 +13,7 @@ List attributes across all apis
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-api-attributes" method="get" path="/v3/api-attributes" -->
 ```go
 package main
 

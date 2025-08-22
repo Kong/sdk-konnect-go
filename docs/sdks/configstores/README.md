@@ -19,6 +19,7 @@ List all config stores for a control plane
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-config-stores" method="get" path="/v2/control-planes/{controlPlaneId}/config-stores" -->
 ```go
 package main
 
@@ -80,6 +81,7 @@ Create a Config Store
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-config-store" method="post" path="/v2/control-planes/{controlPlaneId}/config-stores" -->
 ```go
 package main
 
@@ -140,6 +142,7 @@ Returns a Config Store
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-config-store" method="get" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}" -->
 ```go
 package main
 
@@ -196,6 +199,7 @@ Updates a Config Store
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-config-store" method="put" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}" -->
 ```go
 package main
 
@@ -261,6 +265,7 @@ Removes a config store
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-config-store" method="delete" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}" -->
 ```go
 package main
 

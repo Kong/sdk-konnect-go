@@ -16,6 +16,7 @@ Returns a paginated list of users that belong to the team specified in the path 
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-team-users" method="get" path="/v3/teams/{teamId}/users" -->
 ```go
 package main
 
@@ -79,6 +80,7 @@ Adds a user to a team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="add-user-to-team" method="post" path="/v3/teams/{teamId}/users" -->
 ```go
 package main
 
@@ -139,6 +141,7 @@ If the user was removed, returns a 204 empty response. Returns 404 if the user o
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="remove-user-from-team" method="delete" path="/v3/teams/{teamId}/users/{userId}" -->
 ```go
 package main
 
@@ -195,6 +198,7 @@ Returns a paginated list of a teams that the user belongs to.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-user-teams" method="get" path="/v3/users/{userId}/teams" -->
 ```go
 package main
 

@@ -21,6 +21,7 @@ Creates the default pages for a portal if they do not already exists.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-default-content" method="post" path="/v3/portals/{portalId}/default-content" -->
 ```go
 package main
 
@@ -77,6 +78,7 @@ Returns the tree view of custom pages that have been created for this portal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-portal-pages" method="get" path="/v3/portals/{portalId}/pages" -->
 ```go
 package main
 
@@ -149,6 +151,7 @@ Creates a new custom page for this portal. Custom pages can be used to display s
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-portal-page" method="post" path="/v3/portals/{portalId}/pages" -->
 ```go
 package main
 
@@ -215,6 +218,7 @@ Returns the configuration of a single custom page for this portal. Custom pages 
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-portal-page" method="get" path="/v3/portals/{portalId}/pages/{pageId}" -->
 ```go
 package main
 
@@ -271,6 +275,7 @@ Updates the configuration of a single custom page for this portal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-portal-page" method="patch" path="/v3/portals/{portalId}/pages/{pageId}" -->
 ```go
 package main
 
@@ -341,6 +346,7 @@ Deletes a single custom page for this portal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-portal-page" method="delete" path="/v3/portals/{portalId}/pages/{pageId}" -->
 ```go
 package main
 
@@ -398,6 +404,7 @@ This api allows the user to move a page within the page tree using the parameter
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="move-portal-pages" method="post" path="/v3/portals/{portalId}/pages/{pageId}/move" -->
 ```go
 package main
 

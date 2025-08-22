@@ -19,6 +19,7 @@ Returns the paginated list of custom snippets that have been created for this po
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-portal-snippets" method="get" path="/v3/portals/{portalId}/snippets" -->
 ```go
 package main
 
@@ -94,6 +95,7 @@ Creates a new custom snippet for this portal. Custom snippets can be used to dis
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-portal-snippet" method="post" path="/v3/portals/{portalId}/snippets" -->
 ```go
 package main
 
@@ -159,6 +161,7 @@ Returns the configuration of a single custom snippet for this portal. Custom sni
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-portal-snippet" method="get" path="/v3/portals/{portalId}/snippets/{snippetId}" -->
 ```go
 package main
 
@@ -216,6 +219,7 @@ Updates the configuration of a single custom snippet for this portal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-portal-snippet" method="patch" path="/v3/portals/{portalId}/snippets/{snippetId}" -->
 ```go
 package main
 
@@ -285,6 +289,7 @@ Deletes a single custom snippet for this portal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-portal-snippet" method="delete" path="/v3/portals/{portalId}/snippets/{snippetId}" -->
 ```go
 package main
 

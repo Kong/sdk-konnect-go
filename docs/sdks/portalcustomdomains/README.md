@@ -18,6 +18,7 @@ Get the custom domain associated to the portal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-portal-custom-domain" method="get" path="/v3/portals/{portalId}/custom-domain" -->
 ```go
 package main
 
@@ -74,6 +75,7 @@ Creates the custom domain associated with the portal. Only one custom domain can
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-portal-custom-domain" method="post" path="/v3/portals/{portalId}/custom-domain" -->
 ```go
 package main
 
@@ -138,6 +140,7 @@ Updates the portal domain associated with the portal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-portal-custom-domain" method="patch" path="/v3/portals/{portalId}/custom-domain" -->
 ```go
 package main
 
@@ -195,6 +198,7 @@ Deletes the custom domain associated with the portal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-portal-custom-domain" method="delete" path="/v3/portals/{portalId}/custom-domain" -->
 ```go
 package main
 

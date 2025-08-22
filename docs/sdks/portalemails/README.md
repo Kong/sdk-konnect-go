@@ -33,6 +33,7 @@ Retrieve the email config for the portal
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-email-config" method="get" path="/v3/portals/{portalId}/email-config" -->
 ```go
 package main
 
@@ -89,6 +90,7 @@ Create the email config for a portal
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-portal-email-config" method="post" path="/v3/portals/{portalId}/email-config" -->
 ```go
 package main
 
@@ -148,6 +150,7 @@ Setup the email config for a portal
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-portal-email-config" method="patch" path="/v3/portals/{portalId}/email-config" -->
 ```go
 package main
 
@@ -211,6 +214,7 @@ Delete portal email config
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-portal-email-config" method="delete" path="/v3/portals/{portalId}/email-config" -->
 ```go
 package main
 
@@ -269,6 +273,7 @@ Retrieve the email delivery for the portal
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-email-delivery" method="get" path="/v3/portals/{portalId}/email-delivery" -->
 ```go
 package main
 
@@ -327,6 +332,7 @@ Setup the email delivery for a portal
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-email-delivery" method="patch" path="/v3/portals/{portalId}/email-delivery" -->
 ```go
 package main
 
@@ -387,6 +393,7 @@ Delete email delivery
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-email-delivery" method="delete" path="/v3/portals/{portalId}/email-delivery" -->
 ```go
 package main
 
@@ -443,6 +450,7 @@ List custom email templates
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-portal-custom-email-templates" method="get" path="/v3/portals/{portalId}/email-templates" -->
 ```go
 package main
 
@@ -499,6 +507,7 @@ Get custom email template
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-portal-custom-email-template" method="get" path="/v3/portals/{portalId}/email-templates/{templateName}" -->
 ```go
 package main
 
@@ -556,6 +565,7 @@ Update custom email template
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-portal-custom-email-template" method="patch" path="/v3/portals/{portalId}/email-templates/{templateName}" -->
 ```go
 package main
 
@@ -618,6 +628,7 @@ Delete custom email template for a portal. This will revert to using the default
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-portal-custom-email-template" method="delete" path="/v3/portals/{portalId}/email-templates/{templateName}" -->
 ```go
 package main
 
@@ -676,6 +687,7 @@ The email will be sent to the Konnect user who triggered the test.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="post-portal-custom-email-test-send" method="post" path="/v3/portals/{portalId}/email-templates/{templateName}/send-test-email" -->
 ```go
 package main
 
@@ -744,6 +756,7 @@ List email domains
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-email-domains" method="get" path="/v3/portals/email-domains" -->
 ```go
 package main
 
@@ -803,6 +816,7 @@ Create an email domain
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-email-domain" method="post" path="/v3/portals/email-domains" -->
 ```go
 package main
 
@@ -862,6 +876,7 @@ Get an email domain
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-email-domain" method="get" path="/v3/portals/email-domains/{emailDomain}" -->
 ```go
 package main
 
@@ -918,6 +933,7 @@ Delete an email domain
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-email-domain" method="delete" path="/v3/portals/email-domains/{emailDomain}" -->
 ```go
 package main
 
@@ -974,6 +990,7 @@ List default email templates
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-default-email-templates" method="get" path="/v3/portals/email-templates" -->
 ```go
 package main
 
@@ -1029,6 +1046,7 @@ Get default email template
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-default-email-template" method="get" path="/v3/portals/email-templates/{templateName}" -->
 ```go
 package main
 
@@ -1085,6 +1103,7 @@ List email template variables
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-email-template-variables" method="get" path="/v3/portals/email-templates/variables" -->
 ```go
 package main
 

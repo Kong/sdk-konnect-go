@@ -18,6 +18,7 @@ Lists the teams to which a developer belongs. Each team a developer is a member 
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-portal-developer-teams" method="get" path="/v3/portals/{portalId}/developers/{developerId}/teams" -->
 ```go
 package main
 
@@ -80,6 +81,7 @@ List a team's developers.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-portal-team-developers" method="get" path="/v3/portals/{portalId}/teams/{teamId}/developers" -->
 ```go
 package main
 
@@ -145,6 +147,7 @@ Adds a developer to a team. This associates them with all of the roles that have
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="add-developer-to-portal-team" method="post" path="/v3/portals/{portalId}/teams/{teamId}/developers" -->
 ```go
 package main
 
@@ -210,6 +213,7 @@ Removes a developer from a team. This removes the association of the team's role
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="remove-developer-from-portal-team" method="delete" path="/v3/portals/{portalId}/teams/{teamId}/developers/{developerId}" -->
 ```go
 package main
 

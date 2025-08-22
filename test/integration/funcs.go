@@ -11,10 +11,7 @@ func NamePrefix(t *testing.T) string {
 	if len(ret) > 63 {
 		ret = ret[:63]
 	}
-	if strings.HasSuffix(ret, "_") {
-		ret = ret[:len(ret)-1]
-	}
-	return ret
+	return strings.TrimSuffix(ret, "_")
 }
 
 func Labels(t *testing.T) map[string]string {

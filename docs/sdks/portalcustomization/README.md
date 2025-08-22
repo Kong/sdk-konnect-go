@@ -17,6 +17,7 @@ Returns the portal customization options.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-portal-customization" method="get" path="/v3/portals/{portalId}/customization" -->
 ```go
 package main
 
@@ -73,6 +74,7 @@ Replace the portal customization options.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="replace-portal-customization" method="put" path="/v3/portals/{portalId}/customization" -->
 ```go
 package main
 
@@ -161,6 +163,7 @@ Update the portal customization options, merging properties.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-portal-customization" method="patch" path="/v3/portals/{portalId}/customization" -->
 ```go
 package main
 

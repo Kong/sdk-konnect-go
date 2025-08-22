@@ -19,6 +19,7 @@ List all MTLS-auth credentials associated with a Consumer
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-mtls-auth-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/mtls-auth" -->
 ```go
 package main
 
@@ -77,6 +78,7 @@ Create a new MTLS-auth credential associated with a Consumer
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-mtls-auth-with-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/mtls-auth" -->
 ```go
 package main
 
@@ -141,6 +143,7 @@ Delete a a MTLS-auth credential associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-mtls-auth-with-consumer" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/mtls-auth/{MTLSAuthId}" -->
 ```go
 package main
 
@@ -199,6 +202,7 @@ Get a MTLS-auth credential associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-mtls-auth-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/mtls-auth/{MTLSAuthId}" -->
 ```go
 package main
 
@@ -257,6 +261,7 @@ Create or Update a MTLS-auth credential associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-mtls-auth-with-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/mtls-auth/{MTLSAuthId}" -->
 ```go
 package main
 
@@ -322,6 +327,7 @@ List all MTLS-auth credentials
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-mtls-auth" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/mtls-auths" -->
 ```go
 package main
 
@@ -380,6 +386,7 @@ Get a MTLS-auth credential using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-mtls-auth" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/mtls-auths/{MTLSAuthId}" -->
 ```go
 package main
 

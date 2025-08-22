@@ -26,6 +26,7 @@ Returns the developer authentication configuration for a portal, which determine
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-portal-authentication-settings" method="get" path="/v3/portals/{portalId}/authentication-settings" -->
 ```go
 package main
 
@@ -83,6 +84,7 @@ Updates the developer authentication configuration for a portal. Developers can 
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-portal-authentication-settings" method="patch" path="/v3/portals/{portalId}/authentication-settings" -->
 ```go
 package main
 
@@ -160,6 +162,7 @@ Lists mappings between Konnect portal teams and Identity Provider (IdP) groups. 
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-portal-team-group-mappings" method="get" path="/v3/portals/{portalId}/identity-provider/team-group-mappings" -->
 ```go
 package main
 
@@ -225,6 +228,7 @@ Returns a 400 error if an IdP has not yet been configured, or if a team ID in th
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-portal-team-group-mappings" method="patch" path="/v3/portals/{portalId}/identity-provider/team-group-mappings" -->
 ```go
 package main
 
@@ -295,6 +299,7 @@ various identity providers for SAML or OIDC authentication integrations.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-portal-identity-providers" method="get" path="/v3/portals/{portalId}/identity-providers" -->
 ```go
 package main
 
@@ -355,6 +360,7 @@ authentication purposes.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-portal-identity-provider" method="post" path="/v3/portals/{portalId}/identity-providers" -->
 ```go
 package main
 
@@ -431,6 +437,7 @@ specific identity provider's settings and authentication integration details.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-portal-identity-provider" method="get" path="/v3/portals/{portalId}/identity-providers/{id}" -->
 ```go
 package main
 
@@ -493,6 +500,7 @@ to an existing identity provider's configuration.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-portal-identity-provider" method="patch" path="/v3/portals/{portalId}/identity-providers/{id}" -->
 ```go
 package main
 
@@ -573,6 +581,7 @@ from the portal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-portal-identity-provider" method="delete" path="/v3/portals/{portalId}/identity-providers/{id}" -->
 ```go
 package main
 

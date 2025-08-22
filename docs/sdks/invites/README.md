@@ -13,6 +13,7 @@ Sends an invitation email to invite a user to the Konnect organization. The emai
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="invite-user" method="post" path="/v3/invites" -->
 ```go
 package main
 

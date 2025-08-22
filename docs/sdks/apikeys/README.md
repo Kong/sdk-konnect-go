@@ -19,6 +19,7 @@ List all API-keys associated with a Consumer
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-key-auth-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/key-auth" -->
 ```go
 package main
 
@@ -77,6 +78,7 @@ Create a new API-key associated with a Consumer
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-key-auth-with-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/key-auth" -->
 ```go
 package main
 
@@ -138,6 +140,7 @@ Delete a an API-key associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-key-auth-with-consumer" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/key-auth/{KeyAuthId}" -->
 ```go
 package main
 
@@ -196,6 +199,7 @@ Get an API-key associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-key-auth-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/key-auth/{KeyAuthId}" -->
 ```go
 package main
 
@@ -254,6 +258,7 @@ Create or Update an API-key associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-key-auth-with-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/key-auth/{KeyAuthId}" -->
 ```go
 package main
 
@@ -316,6 +321,7 @@ List all API-keys
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-key-auth" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/key-auths" -->
 ```go
 package main
 
@@ -374,6 +380,7 @@ Get an API-key using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-key-auth" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/key-auths/{KeyAuthId}" -->
 ```go
 package main
 
