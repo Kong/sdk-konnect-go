@@ -5,8 +5,8 @@ management:
   docVersion: 3.0.24
   speakeasyVersion: 1.606.2
   generationVersion: 2.687.1
-  releaseVersion: 0.8.2
-  configChecksum: fe75a0395e0bcb9899d74957dbed300d
+  releaseVersion: 0.8.3
+  configChecksum: c51e4fa815aa3cec1e5bf98a4567772d
 features:
   go:
     acceptHeaders: 2.81.2
