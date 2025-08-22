@@ -20,6 +20,7 @@ List all CustomPlugins
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-custom-plugin" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/custom-plugins" -->
 ```go
 package main
 
@@ -81,6 +82,7 @@ Create a new CustomPlugin
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-custom-plugin" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/custom-plugins" -->
 ```go
 package main
 
@@ -144,6 +146,7 @@ Delete a CustomPlugin
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-custom-plugin" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/custom-plugins/{CustomPluginId}" -->
 ```go
 package main
 
@@ -202,6 +205,7 @@ Get a CustomPlugin using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-custom-plugin" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/custom-plugins/{CustomPluginId}" -->
 ```go
 package main
 
@@ -260,6 +264,7 @@ Create or Update CustomPlugin using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-custom-plugin" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/custom-plugins/{CustomPluginId}" -->
 ```go
 package main
 

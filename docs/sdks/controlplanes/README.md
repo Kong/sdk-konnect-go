@@ -17,6 +17,7 @@ Returns an array of control plane objects containing information about the Konne
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-control-planes" method="get" path="/v2/control-planes" -->
 ```go
 package main
 
@@ -84,6 +85,7 @@ Create a control plane in the Konnect Organization.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-control-plane" method="post" path="/v2/control-planes" -->
 ```go
 package main
 
@@ -159,6 +161,7 @@ Returns information about an individual control plane.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-control-plane" method="get" path="/v2/control-planes/{id}" -->
 ```go
 package main
 
@@ -218,6 +221,7 @@ Update an individual control plane.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{id}" -->
 ```go
 package main
 
@@ -292,6 +296,7 @@ Delete an individual control plane.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-control-plane" method="delete" path="/v2/control-planes/{id}" -->
 ```go
 package main
 

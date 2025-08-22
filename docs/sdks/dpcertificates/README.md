@@ -18,6 +18,7 @@ Returns a list of pinned dataplane client certificates that are associated to th
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-dp-client-certificates" method="get" path="/v2/control-planes/{controlPlaneId}/dp-client-certificates" -->
 ```go
 package main
 
@@ -74,6 +75,7 @@ Pin a new DP Client Certificate to this control plane. A pinned dataplane certif
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-dataplane-certificate" method="post" path="/v2/control-planes/{controlPlaneId}/dp-client-certificates" -->
 ```go
 package main
 
@@ -137,6 +139,7 @@ Retrieve a pinned dataplane client certificate associated to this control plane.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-dataplane-certificate" method="get" path="/v2/control-planes/{controlPlaneId}/dp-client-certificates/{certificateId}" -->
 ```go
 package main
 
@@ -194,6 +197,7 @@ Remove a pinned dataplane client certificate associated to this control plane. R
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-dataplane-certificate" method="delete" path="/v2/control-planes/{controlPlaneId}/dp-client-certificates/{certificateId}" -->
 ```go
 package main
 

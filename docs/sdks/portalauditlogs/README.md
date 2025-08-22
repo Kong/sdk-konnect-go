@@ -17,6 +17,7 @@ Updates a job to re-send audit logs to an portal's webhook.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-portal-audit-log-replay-job" method="put" path="/v3/portals/{portalId}/audit-log-replay-job" -->
 ```go
 package main
 
@@ -76,6 +77,7 @@ Returns the audit log replay job's configuration and status.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-portal-audit-log-replay-job" method="get" path="/v3/portals/{portalId}/audit-log-replay-job" -->
 ```go
 package main
 
@@ -132,6 +134,7 @@ Updates the configuration for a webhook to receive audit logs.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-portal-audit-log-webhook" method="patch" path="/v3/portals/{portalId}/audit-log-webhook" -->
 ```go
 package main
 
@@ -192,6 +195,7 @@ Returns configuration for the audit log webhook.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-portal-audit-log-webhook" method="get" path="/v3/portals/{portalId}/audit-log-webhook" -->
 ```go
 package main
 
@@ -248,6 +252,7 @@ Returns status of the audit log webhook.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-portal-audit-log-webhook-status" method="get" path="/v3/portals/{portalId}/audit-log-webhook/status" -->
 ```go
 package main
 

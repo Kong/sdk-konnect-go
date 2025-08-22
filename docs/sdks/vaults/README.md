@@ -26,6 +26,7 @@ List all Vaults
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-vault" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/vaults" -->
 ```go
 package main
 
@@ -84,6 +85,7 @@ Create a new Vault
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-vault" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/vaults" -->
 ```go
 package main
 
@@ -151,6 +153,7 @@ Delete a Vault
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-vault" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/vaults/{VaultId}" -->
 ```go
 package main
 
@@ -206,6 +209,7 @@ Get a Vault using ID or prefix.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-vault" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/vaults/{VaultId}" -->
 ```go
 package main
 
@@ -261,6 +265,7 @@ Create or Update Vault using ID or prefix.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-vault" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/vaults/{VaultId}" -->
 ```go
 package main
 

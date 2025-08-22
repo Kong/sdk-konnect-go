@@ -19,6 +19,7 @@ List all Basic-auth credentials
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-basic-auth" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/basic-auths" -->
 ```go
 package main
 
@@ -77,6 +78,7 @@ Get a Basic-auth credential using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-basic-auth" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/basic-auths/{BasicAuthId}" -->
 ```go
 package main
 
@@ -132,6 +134,7 @@ List all Basic-auth credentials associated with a Consumer
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-basic-auth-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/basic-auth" -->
 ```go
 package main
 
@@ -190,6 +193,7 @@ Create a new Basic-auth credential associated with a Consumer
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-basic-auth-with-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/basic-auth" -->
 ```go
 package main
 
@@ -252,6 +256,7 @@ Delete a a Basic-auth credential associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-basic-auth-with-consumer" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/basic-auth/{BasicAuthId}" -->
 ```go
 package main
 
@@ -310,6 +315,7 @@ Get a Basic-auth credential associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-basic-auth-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/basic-auth/{BasicAuthId}" -->
 ```go
 package main
 
@@ -368,6 +374,7 @@ Create or Update a Basic-auth credential associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-basic-auth-with-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/basic-auth/{BasicAuthId}" -->
 ```go
 package main
 

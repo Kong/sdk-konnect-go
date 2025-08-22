@@ -13,6 +13,7 @@ Callback for authenticating via an organization's IdP
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="authenticate-sso" method="get" path="/v3/authenticate/{organizationLoginPath}" -->
 ```go
 package main
 

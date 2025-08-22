@@ -16,6 +16,7 @@ Returns a paginated list of user objects.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-users" method="get" path="/v3/users" -->
 ```go
 package main
 
@@ -77,6 +78,7 @@ Returns the user object for the user ID specified as a path parameter.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-user" method="get" path="/v3/users/{userId}" -->
 ```go
 package main
 
@@ -132,6 +134,7 @@ Update an individual user.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-user" method="patch" path="/v3/users/{userId}" -->
 ```go
 package main
 
@@ -192,6 +195,7 @@ Deletes an individual user. Returns 404 if the requested user was not found.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-user" method="delete" path="/v3/users/{userId}" -->
 ```go
 package main
 

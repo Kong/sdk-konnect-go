@@ -14,6 +14,7 @@ Validate schema for an entity
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="validate-entity-schema" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/schemas/{entityName}/validate" -->
 ```go
 package main
 
@@ -71,6 +72,7 @@ Get the schema for a partial
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="fetch-partial-schema" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/schemas/partials/{partialType}" -->
 ```go
 package main
 

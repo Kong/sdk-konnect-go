@@ -19,6 +19,7 @@ Returns the configuration of a single application in any portal. If an applicati
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-application-unscoped" method="get" path="/v3/applications/{applicationId}" -->
 ```go
 package main
 
@@ -75,6 +76,7 @@ Lists applications in this portal. Each application can be registered for variou
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-applications" method="get" path="/v3/portals/{portalId}/applications" -->
 ```go
 package main
 
@@ -137,6 +139,7 @@ Returns the configuration of a single application in this portal. If an applicat
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-application" method="get" path="/v3/portals/{portalId}/applications/{applicationId}" -->
 ```go
 package main
 
@@ -194,6 +197,7 @@ Delete a single application in this portal, along with its registrations and cre
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-application" method="delete" path="/v3/portals/{portalId}/applications/{applicationId}" -->
 ```go
 package main
 
@@ -251,6 +255,7 @@ Lists each developer that can access the given application for this portal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-developers-by-application" method="get" path="/v3/portals/{portalId}/applications/{applicationId}/developers" -->
 ```go
 package main
 

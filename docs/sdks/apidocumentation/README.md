@@ -21,6 +21,7 @@ All configuration options may be provided in the frontmatter section of `content
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-api-document" method="post" path="/v3/apis/{apiId}/documents" -->
 ```go
 package main
 
@@ -86,6 +87,7 @@ Returns a collection of all documents for an API.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-api-documents" method="get" path="/v3/apis/{apiId}/documents" -->
 ```go
 package main
 
@@ -144,6 +146,7 @@ Returns a document for the API.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="fetch-api-document" method="get" path="/v3/apis/{apiId}/documents/{documentId}" -->
 ```go
 package main
 
@@ -201,6 +204,7 @@ Updates a document for an API.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-api-document" method="patch" path="/v3/apis/{apiId}/documents/{documentId}" -->
 ```go
 package main
 
@@ -269,6 +273,7 @@ Removes a document from an API.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-api-document" method="delete" path="/v3/apis/{apiId}/documents/{documentId}" -->
 ```go
 package main
 
@@ -326,6 +331,7 @@ This api allows the user to move a document within the document tree using the p
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="move-api-document" method="post" path="/v3/apis/{apiId}/documents/{documentId}/move" -->
 ```go
 package main
 

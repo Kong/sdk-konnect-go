@@ -19,6 +19,7 @@ Creates a secret for a Config Store.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-config-store-secret" method="post" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets" -->
 ```go
 package main
 
@@ -85,6 +86,7 @@ Returns a collection of all secrets for a Config Store.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-config-store-secrets" method="get" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets" -->
 ```go
 package main
 
@@ -148,6 +150,7 @@ Returns a secret for the Config Store.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-config-store-secret" method="get" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets/{key}" -->
 ```go
 package main
 
@@ -209,6 +212,7 @@ Updates a secret for a Config Store.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-config-store-secret" method="put" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets/{key}" -->
 ```go
 package main
 
@@ -275,6 +279,7 @@ Removes a secret from a Config Store.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-config-store-secret" method="delete" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets/{key}" -->
 ```go
 package main
 

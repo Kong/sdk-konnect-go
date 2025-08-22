@@ -16,6 +16,7 @@ List gateway implementations for this API
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-api-implementations" method="get" path="/v3/api-implementations" -->
 ```go
 package main
 
@@ -92,6 +93,7 @@ An API can be implemented by a single Gateway Service.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-api-implementation" method="post" path="/v3/apis/{apiId}/implementations" -->
 ```go
 package main
 
@@ -158,6 +160,7 @@ Retrieve a gateway implementation for this API
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="fetch-api-implementation" method="get" path="/v3/apis/{apiId}/implementations/{implementationId}" -->
 ```go
 package main
 
@@ -215,6 +218,7 @@ Unlink a gateway implementation from this API
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-api-implementation" method="delete" path="/v3/apis/{apiId}/implementations/{implementationId}" -->
 ```go
 package main
 

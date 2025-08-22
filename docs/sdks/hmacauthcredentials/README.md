@@ -19,6 +19,7 @@ List all HMAC-auth credentials associated with a Consumer
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-hmac-auth-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/hmac-auth" -->
 ```go
 package main
 
@@ -77,6 +78,7 @@ Create a new HMAC-auth credential associated with a Consumer
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-hmac-auth-with-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/hmac-auth" -->
 ```go
 package main
 
@@ -139,6 +141,7 @@ Delete a a HMAC-auth credential associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-hmac-auth-with-consumer" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/hmac-auth/{HMACAuthId}" -->
 ```go
 package main
 
@@ -197,6 +200,7 @@ Get a HMAC-auth credential associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-hmac-auth-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/hmac-auth/{HMACAuthId}" -->
 ```go
 package main
 
@@ -255,6 +259,7 @@ Create or Update a HMAC-auth credential associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-hmac-auth-with-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/hmac-auth/{HMACAuthId}" -->
 ```go
 package main
 
@@ -318,6 +323,7 @@ List all HMAC-auth credentials
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-hmac-auth" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/hmac-auths" -->
 ```go
 package main
 
@@ -376,6 +382,7 @@ Get a HMAC-auth credential using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-hmac-auth" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/hmac-auths/{HMACAuthId}" -->
 ```go
 package main
 

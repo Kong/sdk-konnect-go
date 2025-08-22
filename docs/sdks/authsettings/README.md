@@ -25,6 +25,7 @@ Returns authentication configuration, which determines how users can log in and 
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-authentication-settings" method="get" path="/v3/authentication-settings" -->
 ```go
 package main
 
@@ -78,6 +79,7 @@ Updates authentication configuration.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-authentication-settings" method="patch" path="/v3/authentication-settings" -->
 ```go
 package main
 
@@ -139,6 +141,7 @@ Fetch the IdP configuration.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-idp-configuration" method="get" path="/v3/identity-provider" -->
 ```go
 package main
 
@@ -195,6 +198,7 @@ Update the IdP configuration.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-idp-configuration" method="patch" path="/v3/identity-provider" -->
 ```go
 package main
 
@@ -261,6 +265,7 @@ Returns a 400 error if an Identity Provider has not yet been configured.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-team-group-mappings" method="get" path="/v3/identity-provider/team-group-mappings" -->
 ```go
 package main
 
@@ -323,6 +328,7 @@ the request body is not found or is not a UUID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="patch-team-group-mappings" method="patch" path="/v3/identity-provider/team-group-mappings" -->
 ```go
 package main
 
@@ -388,6 +394,7 @@ Updates the IdP group to Konnect team mapping.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-idp-team-mappings" method="put" path="/v3/identity-provider/team-mappings" -->
 ```go
 package main
 
@@ -454,6 +461,7 @@ Fetch the IdP group to Konnect team mapping.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-idp-team-mappings" method="get" path="/v3/identity-provider/team-mappings" -->
 ```go
 package main
 
@@ -514,6 +522,7 @@ various identity providers for SAML or OIDC authentication integrations.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-identity-providers" method="get" path="/v3/identity-providers" -->
 ```go
 package main
 
@@ -571,6 +580,7 @@ authentication purposes.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-identity-provider" method="post" path="/v3/identity-providers" -->
 ```go
 package main
 
@@ -644,6 +654,7 @@ specific identity provider's settings and authentication integration details.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-identity-provider" method="get" path="/v3/identity-providers/{id}" -->
 ```go
 package main
 
@@ -703,6 +714,7 @@ to an existing identity provider's configuration.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" -->
 ```go
 package main
 
@@ -779,6 +791,7 @@ from the organization.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-identity-provider" method="delete" path="/v3/identity-providers/{id}" -->
 ```go
 package main
 

@@ -18,6 +18,7 @@ List roles that can be assigned to teams in a portal. Each role provides a set o
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-portal-roles" method="get" path="/v3/portal-roles" -->
 ```go
 package main
 
@@ -72,6 +73,7 @@ Lists the roles belonging to a developer team. Each role provides permissions to
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-portal-team-roles" method="get" path="/v3/portals/{portalId}/teams/{teamId}/assigned-roles" -->
 ```go
 package main
 
@@ -134,6 +136,7 @@ Assign a role to a developer team. This associates the set of permissions in a r
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="assign-role-to-portal-teams" method="post" path="/v3/portals/{portalId}/teams/{teamId}/assigned-roles" -->
 ```go
 package main
 
@@ -204,6 +207,7 @@ Removes an assigned role from a developer team. This deletes the association of 
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="remove-role-from-portal-team" method="delete" path="/v3/portals/{portalId}/teams/{teamId}/assigned-roles/{roleId}" -->
 ```go
 package main
 

@@ -19,6 +19,7 @@ List all ACLs
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-acl" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/acls" -->
 ```go
 package main
 
@@ -77,6 +78,7 @@ Get an ACL using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-acl" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/acls/{ACLId}" -->
 ```go
 package main
 
@@ -132,6 +134,7 @@ List all ACLs associated with a Consumer
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-acl-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/acls" -->
 ```go
 package main
 
@@ -190,6 +193,7 @@ Create a new ACL associated with a Consumer
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-acl-with-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/acls" -->
 ```go
 package main
 
@@ -251,6 +255,7 @@ Delete a an ACL associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-acl-with-consumer" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/acls/{ACLId}" -->
 ```go
 package main
 
@@ -309,6 +314,7 @@ Get an ACL associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-acl-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/acls/{ACLId}" -->
 ```go
 package main
 
@@ -367,6 +373,7 @@ Create or Update an ACL associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-acl-with-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/acls/{ACLId}" -->
 ```go
 package main
 

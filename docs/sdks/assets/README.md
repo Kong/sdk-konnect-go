@@ -20,6 +20,7 @@ Returns the favicon of the portal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-portal-asset-favicon" method="get" path="/v3/portals/{portalId}/assets/favicon" -->
 ```go
 package main
 
@@ -75,6 +76,7 @@ Replaces the favicon of the portal. The favicon is used in the browser tab of th
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="replace-portal-asset-favicon" method="put" path="/v3/portals/{portalId}/assets/favicon" -->
 ```go
 package main
 
@@ -134,6 +136,7 @@ Returns the raw favicon of the portal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-portal-asset-favicon-raw" method="get" path="/v3/portals/{portalId}/assets/favicon/raw" -->
 ```go
 package main
 
@@ -189,6 +192,7 @@ Returns the logo of the portal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-portal-asset-logo" method="get" path="/v3/portals/{portalId}/assets/logo" -->
 ```go
 package main
 
@@ -244,6 +248,7 @@ Replaces the logo of the portal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="replace-portal-asset-logo" method="put" path="/v3/portals/{portalId}/assets/logo" -->
 ```go
 package main
 
@@ -303,6 +308,7 @@ Returns the raw logo of the portal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-portal-asset-logo-raw" method="get" path="/v3/portals/{portalId}/assets/logo/raw" -->
 ```go
 package main
 

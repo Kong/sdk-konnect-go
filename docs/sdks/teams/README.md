@@ -17,6 +17,7 @@ Returns an array of team objects containing information about the Konnect Teams.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-teams" method="get" path="/v3/teams" -->
 ```go
 package main
 
@@ -76,6 +77,7 @@ Creates a team in the Konnect Organization.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-team" method="post" path="/v3/teams" -->
 ```go
 package main
 
@@ -137,6 +139,7 @@ Returns information about a team from a given team ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-team" method="get" path="/v3/teams/{teamId}" -->
 ```go
 package main
 
@@ -192,6 +195,7 @@ Updates an individual team.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-team" method="patch" path="/v3/teams/{teamId}" -->
 ```go
 package main
 
@@ -254,6 +258,7 @@ Deletes an individual team. Returns 404 if the team is not found.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-team" method="delete" path="/v3/teams/{teamId}" -->
 ```go
 package main
 

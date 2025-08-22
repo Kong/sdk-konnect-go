@@ -22,6 +22,7 @@ List all Targets associated with an Upstream
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-target-with-upstream" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamIdForTarget}/targets" -->
 ```go
 package main
 
@@ -80,6 +81,7 @@ Create a new Target associated with an Upstream
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-target-with-upstream" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamIdForTarget}/targets" -->
 ```go
 package main
 
@@ -142,6 +144,7 @@ Delete a a Target associated with an Upstream using ID or target.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-target-with-upstream" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamIdForTarget}/targets/{TargetId}" -->
 ```go
 package main
 
@@ -200,6 +203,7 @@ Get a Target associated with an Upstream using ID or target.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-target-with-upstream" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamIdForTarget}/targets/{TargetId}" -->
 ```go
 package main
 
@@ -258,6 +262,7 @@ Create or Update a Target associated with an Upstream using ID or target.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-target-with-upstream" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamIdForTarget}/targets/{TargetId}" -->
 ```go
 package main
 

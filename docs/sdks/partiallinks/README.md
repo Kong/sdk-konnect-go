@@ -13,6 +13,7 @@ List all plugins linked to the partial
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-partial-link" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/partials/{PartialId}/links" -->
 ```go
 package main
 

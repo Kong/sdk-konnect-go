@@ -18,6 +18,7 @@ Creates a version (OpenAPI or AsyncAPI) for an API.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-api-version" method="post" path="/v3/apis/{apiId}/versions" -->
 ```go
 package main
 
@@ -85,6 +86,7 @@ Returns a list of versions for an API. The version can be of type OpenAPI or Asy
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-api-versions" method="get" path="/v3/apis/{apiId}/versions" -->
 ```go
 package main
 
@@ -146,6 +148,7 @@ Fetches the version (OpenAPI or AsyncAPI) of an API.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="fetch-api-version" method="get" path="/v3/apis/{apiId}/versions/{versionId}" -->
 ```go
 package main
 
@@ -203,6 +206,7 @@ Updates the version (OpenAPI or AsyncAPI) of an API.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-api-version" method="patch" path="/v3/apis/{apiId}/versions/{versionId}" -->
 ```go
 package main
 
@@ -272,6 +276,7 @@ Deletes the version (OpenAPI or AsyncAPI) of an API.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-api-version" method="delete" path="/v3/apis/{apiId}/versions/{versionId}" -->
 ```go
 package main
 

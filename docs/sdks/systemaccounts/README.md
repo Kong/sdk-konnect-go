@@ -17,6 +17,7 @@ Returns an array of system accounts (SA) in the organization. Returns 400 if any
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-system-accounts" method="get" path="/v3/system-accounts" -->
 ```go
 package main
 
@@ -79,6 +80,7 @@ Creates a system account. Returns a 409 if a system account with the same name a
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="post-system-accounts" method="post" path="/v3/system-accounts" -->
 ```go
 package main
 
@@ -138,6 +140,7 @@ Returns the system account (SA) for the SA ID specified as a path parameter.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-system-accounts-id" method="get" path="/v3/system-accounts/{accountId}" -->
 ```go
 package main
 
@@ -193,6 +196,7 @@ Updates the specified system account. Returns a 409 if the updated name is the s
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="patch-system-accounts-id" method="patch" path="/v3/system-accounts/{accountId}" -->
 ```go
 package main
 
@@ -250,6 +254,7 @@ Deletes the specified system account. Returns 404 if the requested account was n
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-system-accounts-id" method="delete" path="/v3/system-accounts/{accountId}" -->
 ```go
 package main
 

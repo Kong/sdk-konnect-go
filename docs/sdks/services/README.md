@@ -26,6 +26,7 @@ List all Services
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/services" -->
 ```go
 package main
 
@@ -84,6 +85,7 @@ Create a new Service
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-service" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/services" -->
 ```go
 package main
 
@@ -146,6 +148,7 @@ Delete a Service
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-service" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}" -->
 ```go
 package main
 
@@ -201,6 +204,7 @@ Get a Service using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}" -->
 ```go
 package main
 
@@ -256,6 +260,7 @@ Create or Update Service using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-service" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}" -->
 ```go
 package main
 
