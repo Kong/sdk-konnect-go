@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type Mode string
@@ -102,12 +103,23 @@ func (o *Menu) GetFooterBottom() []PortalMenuItem {
 }
 
 type SpecRenderer struct {
-	TryItUI        *bool `json:"try_it_ui,omitempty"`
-	TryItInsomnia  *bool `json:"try_it_insomnia,omitempty"`
-	InfiniteScroll *bool `json:"infinite_scroll,omitempty"`
-	ShowSchemas    *bool `json:"show_schemas,omitempty"`
-	HideInternal   *bool `json:"hide_internal,omitempty"`
-	HideDeprecated *bool `json:"hide_deprecated,omitempty"`
+	TryItUI        *bool `default:"true" json:"try_it_ui"`
+	TryItInsomnia  *bool `default:"true" json:"try_it_insomnia"`
+	InfiniteScroll *bool `default:"true" json:"infinite_scroll"`
+	ShowSchemas    *bool `default:"true" json:"show_schemas"`
+	HideInternal   *bool `default:"false" json:"hide_internal"`
+	HideDeprecated *bool `default:"false" json:"hide_deprecated"`
+}
+
+func (s SpecRenderer) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SpecRenderer) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *SpecRenderer) GetTryItUI() *bool {
@@ -156,10 +168,21 @@ func (o *SpecRenderer) GetHideDeprecated() *bool {
 type PortalCustomization struct {
 	Theme        *Theme        `json:"theme,omitempty"`
 	Layout       *string       `json:"layout,omitempty"`
-	CSS          *string       `json:"css,omitempty"`
+	CSS          *string       `default:"null" json:"css"`
 	Menu         *Menu         `json:"menu,omitempty"`
 	SpecRenderer *SpecRenderer `json:"spec_renderer,omitempty"`
-	Robots       *string       `json:"robots,omitempty"`
+	Robots       *string       `default:"null" json:"robots"`
+}
+
+func (p PortalCustomization) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PortalCustomization) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PortalCustomization) GetTheme() *Theme {

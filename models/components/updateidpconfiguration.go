@@ -2,10 +2,25 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type UpdateIDPConfigurationClaimMappings struct {
-	Name   *string `json:"name,omitempty"`
-	Email  *string `json:"email,omitempty"`
-	Groups *string `json:"groups,omitempty"`
+	Name   *string `default:"name" json:"name"`
+	Email  *string `default:"email" json:"email"`
+	Groups *string `default:"groups" json:"groups"`
+}
+
+func (u UpdateIDPConfigurationClaimMappings) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateIDPConfigurationClaimMappings) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateIDPConfigurationClaimMappings) GetName() *string {
@@ -31,12 +46,23 @@ func (o *UpdateIDPConfigurationClaimMappings) GetGroups() *string {
 
 // UpdateIDPConfiguration - The request schema for the update IdP configuration request.
 type UpdateIDPConfiguration struct {
-	Issuer        *string                              `json:"issuer,omitempty"`
-	LoginPath     *string                              `json:"login_path,omitempty"`
-	ClientID      *string                              `json:"client_id,omitempty"`
-	ClientSecret  *string                              `json:"client_secret,omitempty"`
+	Issuer        *string                              `default:"null" json:"issuer"`
+	LoginPath     *string                              `default:"null" json:"login_path"`
+	ClientID      *string                              `default:"null" json:"client_id"`
+	ClientSecret  *string                              `default:"null" json:"client_secret"`
 	Scopes        []string                             `json:"scopes,omitempty"`
 	ClaimMappings *UpdateIDPConfigurationClaimMappings `json:"claim_mappings,omitempty"`
+}
+
+func (u UpdateIDPConfiguration) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateIDPConfiguration) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateIDPConfiguration) GetIssuer() *string {

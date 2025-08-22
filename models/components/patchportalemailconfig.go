@@ -2,16 +2,31 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // PatchPortalEmailConfig - Update a portal email configured.
 type PatchPortalEmailConfig struct {
 	// The domain name to use for sending emails. Null means default.
-	DomainName *string `json:"domain_name,omitempty"`
+	DomainName *string `default:"null" json:"domain_name"`
 	// The name to display in the 'From' field of emails.
-	FromName *string `json:"from_name,omitempty"`
+	FromName *string `default:"null" json:"from_name"`
 	// The email address to use in the 'From' field.
-	FromEmail *string `json:"from_email,omitempty"`
+	FromEmail *string `default:"null" json:"from_email"`
 	// The email address to use in the 'Reply-To' field.
-	ReplyToEmail *string `json:"reply_to_email,omitempty"`
+	ReplyToEmail *string `default:"null" json:"reply_to_email"`
+}
+
+func (p PatchPortalEmailConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchPortalEmailConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PatchPortalEmailConfig) GetDomainName() *string {

@@ -2,15 +2,30 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type Items struct {
 	// The custom plugin schema; `jq -Rs '.' schema.lua`.
-	LuaSchema *string `json:"lua_schema,omitempty"`
+	LuaSchema *string `default:"null" json:"lua_schema"`
 	// The custom plugin name determined by the custom plugin schema.
-	Name *string `json:"name,omitempty"`
+	Name *string `default:"null" json:"name"`
 	// An ISO-8604 timestamp representation of custom plugin schema creation date.
 	CreatedAt *int64 `json:"created_at,omitempty"`
 	// An ISO-8604 timestamp representation of custom plugin schema update date.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
+}
+
+func (i Items) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *Items) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Items) GetLuaSchema() *string {
@@ -42,7 +57,18 @@ func (o *Items) GetUpdatedAt() *int64 {
 }
 
 type Page struct {
-	Total *int64 `json:"total,omitempty"`
+	Total *int64 `default:"null" json:"total"`
+}
+
+func (p Page) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Page) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Page) GetTotal() *int64 {

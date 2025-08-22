@@ -1,4 +1,4 @@
-# One
+# UpdateAppAuthStrategyRequestOpenIDConnect
 
 
 ## Fields

@@ -12,13 +12,13 @@ type User struct {
 	// The User ID.
 	ID *string `json:"id,omitempty"`
 	// The email registered to the user.
-	Email *string `json:"email,omitempty"`
+	Email *string `default:"null" json:"email"`
 	// The User's full name.
-	FullName *string `json:"full_name,omitempty"`
+	FullName *string `default:"null" json:"full_name"`
 	// The User's preferred name.
-	PreferredName *string `json:"preferred_name,omitempty"`
+	PreferredName *string `default:"null" json:"preferred_name"`
 	// Returns True if a user has verified their email address.
-	Active *bool `json:"active,omitempty"`
+	Active *bool `default:"true" json:"active"`
 	// The Konnect region closest to the user's IP address. This property might only be set for users on signup through Konnect’s build-in native authentication.
 	InferredRegion *string `json:"inferred_region,omitempty"`
 	// The time stamp for the date the account was registered.

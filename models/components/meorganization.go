@@ -47,11 +47,11 @@ type MeOrganization struct {
 	// UUID of the organization.
 	ID *string `json:"id,omitempty"`
 	// Name of the organization.
-	Name *string `json:"name,omitempty"`
+	Name *string `default:"null" json:"name"`
 	// Owner ID of the organization.
-	OwnerID *string `json:"owner_id,omitempty"`
+	OwnerID *string `default:"null" json:"owner_id"`
 	// Path to organization-specific login when single sign on (SSO) is enabled. Blank otherwise.
-	LoginPath *string `json:"login_path,omitempty"`
+	LoginPath *string `default:"null" json:"login_path"`
 	// Date the organization was created.
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	// Date the organization was last updated.
@@ -59,7 +59,7 @@ type MeOrganization struct {
 	// State of the organization
 	State *MeOrganizationState `json:"state,omitempty"`
 	// The number of days an organization spends inactive before being deleted.
-	RetentionPeriodDays *int64 `json:"retention_period_days,omitempty"`
+	RetentionPeriodDays *int64 `default:"null" json:"retention_period_days"`
 }
 
 func (m MeOrganization) MarshalJSON() ([]byte, error) {

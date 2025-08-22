@@ -2,18 +2,33 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // UpdateAuthenticationSettings - The request schema to update an organization's authentication settings.
 type UpdateAuthenticationSettings struct {
 	// The organization has basic auth enabled.
-	BasicAuthEnabled *bool `json:"basic_auth_enabled,omitempty"`
+	BasicAuthEnabled *bool `default:"null" json:"basic_auth_enabled"`
 	// The organization has OIDC disabled.
-	OidcAuthEnabled *bool `json:"oidc_auth_enabled,omitempty"`
+	OidcAuthEnabled *bool `default:"null" json:"oidc_auth_enabled"`
 	// The organization has SAML disabled.
-	SamlAuthEnabled *bool `json:"saml_auth_enabled,omitempty"`
+	SamlAuthEnabled *bool `default:"null" json:"saml_auth_enabled"`
 	// Whether IdP groups determine the Konnect teams a user has.
-	IdpMappingEnabled *bool `json:"idp_mapping_enabled,omitempty"`
+	IdpMappingEnabled *bool `default:"null" json:"idp_mapping_enabled"`
 	// Whether a Konnect Identity Admin assigns teams to a user.
-	KonnectMappingEnabled *bool `json:"konnect_mapping_enabled,omitempty"`
+	KonnectMappingEnabled *bool `default:"null" json:"konnect_mapping_enabled"`
+}
+
+func (u UpdateAuthenticationSettings) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateAuthenticationSettings) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateAuthenticationSettings) GetBasicAuthEnabled() *bool {

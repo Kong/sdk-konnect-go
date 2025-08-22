@@ -1,4 +1,4 @@
-# GetApplicationResponsePortal
+# KeyAuthApplicationPortal
 
 Information about the portal the application is in.
 

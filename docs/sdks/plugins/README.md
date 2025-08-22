@@ -138,7 +138,6 @@ func main() {
                 },
                 "run_on_preflight": true,
             },
-            Enabled: sdkkonnectgo.Bool(true),
             ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
             Partials: []components.PluginWithoutParentsPartials{
@@ -349,7 +348,6 @@ func main() {
                 },
                 "run_on_preflight": true,
             },
-            Enabled: sdkkonnectgo.Bool(true),
             ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
             Partials: []components.PluginWithoutParentsPartials{
@@ -500,7 +498,6 @@ func main() {
                 },
                 "run_on_preflight": true,
             },
-            Enabled: sdkkonnectgo.Bool(true),
             ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
             Partials: []components.PluginWithoutParentsPartials{
@@ -711,7 +708,6 @@ func main() {
                 },
                 "run_on_preflight": true,
             },
-            Enabled: sdkkonnectgo.Bool(true),
             ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
             Partials: []components.PluginWithoutParentsPartials{
@@ -858,7 +854,6 @@ func main() {
             },
             "run_on_preflight": true,
         },
-        Enabled: sdkkonnectgo.Bool(true),
         ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
         Name: "key-auth",
         Partials: []components.Partials{
@@ -1063,7 +1058,6 @@ func main() {
                 },
                 "run_on_preflight": true,
             },
-            Enabled: sdkkonnectgo.Bool(true),
             ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
             Partials: []components.Partials{
@@ -1215,7 +1209,6 @@ func main() {
                 },
                 "run_on_preflight": true,
             },
-            Enabled: sdkkonnectgo.Bool(true),
             ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
             Partials: []components.PluginWithoutParentsPartials{
@@ -1426,7 +1419,6 @@ func main() {
                 },
                 "run_on_preflight": true,
             },
-            Enabled: sdkkonnectgo.Bool(true),
             ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
             Partials: []components.PluginWithoutParentsPartials{
@@ -1632,7 +1624,6 @@ func main() {
                 },
                 "run_on_preflight": true,
             },
-            Enabled: sdkkonnectgo.Bool(true),
             ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
             Partials: []components.PluginWithoutParentsPartials{
@@ -1843,7 +1834,6 @@ func main() {
                 },
                 "run_on_preflight": true,
             },
-            Enabled: sdkkonnectgo.Bool(true),
             ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
             Partials: []components.PluginWithoutParentsPartials{

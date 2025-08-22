@@ -11,7 +11,7 @@ import (
 type PortalEmailConfig struct {
 	ID string `json:"id"`
 	// The domain name used for sending emails. Null means default.
-	DomainName *string `json:"domain_name,omitempty"`
+	DomainName *string `default:"null" json:"domain_name"`
 	// The name displayed in the 'From' field of emails.
 	FromName string `json:"from_name"`
 	// The email address used in the 'From' field.

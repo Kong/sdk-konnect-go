@@ -9,8 +9,8 @@ import (
 
 // ConfigStoreSecret - Config Store Secret
 type ConfigStoreSecret struct {
-	Key   *string `json:"key,omitempty"`
-	Value *string `json:"value,omitempty"`
+	Key   *string `default:"null" json:"key"`
+	Value *string `default:"null" json:"value"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	// An ISO-8601 timestamp representation of entity update date.

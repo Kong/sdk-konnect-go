@@ -17,10 +17,10 @@ type DegraphqlRoute struct {
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
 	// A string representing a UUID (universally unique identifier).
-	ID      *string                `json:"id,omitempty"`
-	Methods []string               `json:"methods,omitempty"`
-	Query   string                 `json:"query"`
-	Service *DegraphqlRouteService `json:"service"`
+	ID      *string               `json:"id,omitempty"`
+	Methods []string              `json:"methods,omitempty"`
+	Query   string                `json:"query"`
+	Service DegraphqlRouteService `json:"service"`
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 	URI       string `json:"uri"`
@@ -54,9 +54,9 @@ func (o *DegraphqlRoute) GetQuery() string {
 	return o.Query
 }
 
-func (o *DegraphqlRoute) GetService() *DegraphqlRouteService {
+func (o *DegraphqlRoute) GetService() DegraphqlRouteService {
 	if o == nil {
-		return nil
+		return DegraphqlRouteService{}
 	}
 	return o.Service
 }

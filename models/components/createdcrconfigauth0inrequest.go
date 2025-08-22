@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // CreateDcrConfigAuth0InRequest - Payload to create an Auth0 DCR provider.
 type CreateDcrConfigAuth0InRequest struct {
 	// This ID should be copied from your identity provider's settings after you create a client
@@ -16,8 +20,19 @@ type CreateDcrConfigAuth0InRequest struct {
 	// If using a custom domain on Auth0, this must be set as to the Auth0 Management API audience value.
 	// If left blank, the issuer will be used instead.
 	//
-	InitialClientAudience     *string `json:"initial_client_audience,omitempty"`
-	UseDeveloperManagedScopes *bool   `json:"use_developer_managed_scopes,omitempty"`
+	InitialClientAudience     *string `default:"null" json:"initial_client_audience"`
+	UseDeveloperManagedScopes *bool   `default:"null" json:"use_developer_managed_scopes"`
+}
+
+func (c CreateDcrConfigAuth0InRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateDcrConfigAuth0InRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateDcrConfigAuth0InRequest) GetInitialClientID() string {

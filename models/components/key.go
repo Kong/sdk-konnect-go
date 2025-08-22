@@ -2,10 +2,25 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // Pem - A keypair in PEM format.
 type Pem struct {
-	PrivateKey *string `json:"private_key,omitempty"`
-	PublicKey  *string `json:"public_key,omitempty"`
+	PrivateKey *string `default:"null" json:"private_key"`
+	PublicKey  *string `default:"null" json:"public_key"`
+}
+
+func (p Pem) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Pem) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Pem) GetPrivateKey() *string {
@@ -41,11 +56,11 @@ type Key struct {
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
 	// A JSON Web Key represented as a string.
-	Jwk *string `json:"jwk,omitempty"`
+	Jwk *string `default:"null" json:"jwk"`
 	// A unique identifier for a key.
 	Kid string `json:"kid"`
 	// The name to associate with the given keys.
-	Name *string `json:"name,omitempty"`
+	Name *string `default:"null" json:"name"`
 	// A keypair in PEM format.
 	Pem *Pem `json:"pem,omitempty"`
 	// The id (an UUID) of the key-set with which to associate the key.
@@ -55,7 +70,18 @@ type Key struct {
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 	// X.509 certificate SHA-1 thumbprint.
-	X5t *string `json:"x5t,omitempty"`
+	X5t *string `default:"null" json:"x5t"`
+}
+
+func (k Key) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(k, "", false)
+}
+
+func (k *Key) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &k, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Key) GetCreatedAt() *int64 {

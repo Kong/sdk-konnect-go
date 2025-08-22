@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type HMACAuthConsumer struct {
 	ID *string `json:"id,omitempty"`
 }
@@ -19,10 +23,21 @@ type HMACAuth struct {
 	CreatedAt *int64 `json:"created_at,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID     *string `json:"id,omitempty"`
-	Secret *string `json:"secret,omitempty"`
+	Secret *string `default:"null" json:"secret"`
 	// A set of strings representing tags.
 	Tags     []string `json:"tags,omitempty"`
 	Username string   `json:"username"`
+}
+
+func (h HMACAuth) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(h, "", false)
+}
+
+func (h *HMACAuth) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &h, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *HMACAuth) GetConsumer() *HMACAuthConsumer {

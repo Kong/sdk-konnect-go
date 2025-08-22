@@ -145,7 +145,7 @@ type UpdateDcrProviderRequest struct {
 	// The display name of the DCR provider. This is used to identify the DCR provider in the Portal UI.
 	//
 	DisplayName *string `json:"display_name,omitempty"`
-	Issuer      *string `json:"issuer,omitempty"`
+	Issuer      *string `default:"null" json:"issuer"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Labels are intended to store **INTERNAL** metadata.
@@ -154,6 +154,17 @@ type UpdateDcrProviderRequest struct {
 	//
 	Labels    map[string]*string `json:"labels,omitempty"`
 	DcrConfig *DcrConfig         `json:"dcr_config,omitempty"`
+}
+
+func (u UpdateDcrProviderRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateDcrProviderRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateDcrProviderRequest) GetName() *string {

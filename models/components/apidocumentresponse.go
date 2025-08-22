@@ -26,7 +26,7 @@ type APIDocumentResponse struct {
 	//
 	// Specify the `id` of another API Document as the `parent_document_id` to add some heirarchy do your documents.
 	//
-	ParentDocumentID *string `json:"parent_document_id"`
+	ParentDocumentID *string `default:"null" json:"parent_document_id"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.

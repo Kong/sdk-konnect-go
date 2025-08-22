@@ -2,9 +2,24 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type UpdateSystemAccountAccessToken struct {
 	// Name of the system account access token.
-	Name *string `json:"name,omitempty"`
+	Name *string `default:"null" json:"name"`
+}
+
+func (u UpdateSystemAccountAccessToken) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateSystemAccountAccessToken) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateSystemAccountAccessToken) GetName() *string {

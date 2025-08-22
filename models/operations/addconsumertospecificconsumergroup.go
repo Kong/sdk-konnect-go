@@ -3,12 +3,24 @@
 package operations
 
 import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
 
 type AddConsumerToSpecificConsumerGroupRequestBody struct {
-	Group *string `json:"group,omitempty"`
+	Group *string `default:"null" json:"group"`
+}
+
+func (a AddConsumerToSpecificConsumerGroupRequestBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AddConsumerToSpecificConsumerGroupRequestBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AddConsumerToSpecificConsumerGroupRequestBody) GetGroup() *string {
