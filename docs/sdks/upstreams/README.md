@@ -22,6 +22,7 @@ List all Upstreams
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-upstream" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams" -->
 ```go
 package main
 
@@ -80,6 +81,7 @@ Create a new Upstream
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-upstream" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams" -->
 ```go
 package main
 
@@ -214,6 +216,7 @@ Delete an Upstream
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-upstream" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamId}" -->
 ```go
 package main
 
@@ -269,6 +272,7 @@ Get an Upstream using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-upstream" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamId}" -->
 ```go
 package main
 
@@ -324,6 +328,7 @@ Create or Update Upstream using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-upstream" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamId}" -->
 ```go
 package main
 

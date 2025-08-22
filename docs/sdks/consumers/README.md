@@ -25,6 +25,7 @@ List all Consumers
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers" -->
 ```go
 package main
 
@@ -83,6 +84,7 @@ Create a new Consumer
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers" -->
 ```go
 package main
 
@@ -145,6 +147,7 @@ Delete a Consumer
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-consumer" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}" -->
 ```go
 package main
 
@@ -200,6 +203,7 @@ Get a Consumer using ID or username.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}" -->
 ```go
 package main
 
@@ -255,6 +259,7 @@ Create or Update Consumer using ID or username.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}" -->
 ```go
 package main
 
@@ -321,6 +326,7 @@ Removes a consumer from all Consumer Groups. This operation does not delete the 
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="remove-consumer-from-all-consumer-groups" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups" -->
 ```go
 package main
 
@@ -375,6 +381,7 @@ List all Consumer Groups a Consumer belongs to
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-consumer-groups-for-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups" -->
 ```go
 package main
 
@@ -433,6 +440,7 @@ Add a consumer to a consumer group
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="add-consumer-to-specific-consumer-group" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups" -->
 ```go
 package main
 
@@ -493,6 +501,7 @@ Removes a consumer from a Consumer Group. This operation does not delete the con
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="remove-consumer-from-consumer-group" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}/consumer_groups/{ConsumerGroupId}" -->
 ```go
 package main
 

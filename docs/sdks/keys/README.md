@@ -25,6 +25,7 @@ List all Keys associated with a KeySet
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-key-with-key-set" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets/{KeySetId}/keys" -->
 ```go
 package main
 
@@ -83,6 +84,7 @@ Create a new Key associated with a KeySet
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-key-with-key-set" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets/{KeySetId}/keys" -->
 ```go
 package main
 
@@ -153,6 +155,7 @@ Delete a a Key associated with a KeySet using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-key-with-key-set" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets/{KeySetId}/keys/{KeyId}" -->
 ```go
 package main
 
@@ -211,6 +214,7 @@ Get a Key associated with a KeySet using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-key-with-key-set" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets/{KeySetId}/keys/{KeyId}" -->
 ```go
 package main
 
@@ -269,6 +273,7 @@ Create or Update a Key associated with a KeySet using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-key-with-key-set" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets/{KeySetId}/keys/{KeyId}" -->
 ```go
 package main
 
@@ -340,6 +345,7 @@ List all Keys
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-key" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/keys" -->
 ```go
 package main
 
@@ -398,6 +404,7 @@ Create a new Key
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-key" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/keys" -->
 ```go
 package main
 
@@ -465,6 +472,7 @@ Delete a Key
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-key" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/keys/{KeyId}" -->
 ```go
 package main
 
@@ -520,6 +528,7 @@ Get a Key using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-key" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/keys/{KeyId}" -->
 ```go
 package main
 
@@ -575,6 +584,7 @@ Create or Update Key using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-key" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/keys/{KeyId}" -->
 ```go
 package main
 

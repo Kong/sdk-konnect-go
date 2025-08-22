@@ -19,6 +19,7 @@ Retrieve the expected config hash for this control plane. The expected config ha
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-expected-config-hash" method="get" path="/v2/control-planes/{controlPlaneId}/expected-config-hash" -->
 ```go
 package main
 
@@ -72,6 +73,7 @@ Returns a list of data plane node records that are associated to this control pl
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-dataplane-nodes" method="get" path="/v2/control-planes/{controlPlaneId}/nodes" -->
 ```go
 package main
 
@@ -130,6 +132,7 @@ Retrieve a specific data plane node record associated to this control plane. A d
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-nodes-node_id" method="get" path="/v2/control-planes/{controlPlaneId}/nodes/{nodeId}" -->
 ```go
 package main
 
@@ -188,6 +191,7 @@ Remove a specific data plane node record associated to this control plane. Delet
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-nodes-node_id" method="delete" path="/v2/control-planes/{controlPlaneId}/nodes/{nodeId}" -->
 ```go
 package main
 
@@ -242,6 +246,7 @@ Returns a list of records of data plane nodes, whose versions are approaching En
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-nodes-eol" method="get" path="/v2/control-planes/{controlPlaneId}/nodes/eol" -->
 ```go
 package main
 

@@ -18,6 +18,7 @@ Determines the group membership status of a control plane.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-control-planes-id-group-member-status" method="get" path="/v2/control-planes/{id}/group-member-status" -->
 ```go
 package main
 
@@ -77,6 +78,7 @@ Returns an array of control planes that are a member of this control plane group
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-control-planes-id-group-memberships" method="get" path="/v2/control-planes/{id}/group-memberships" -->
 ```go
 package main
 
@@ -141,6 +143,7 @@ Adds one or more control planes as a member of a control plane group.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="put-control-planes-id-group-memberships" method="put" path="/v2/control-planes/{id}/group-memberships" -->
 ```go
 package main
 
@@ -213,6 +216,7 @@ Adds one or more control planes as a member of a control plane group.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="post-control-planes-id-group-memberships-add" method="post" path="/v2/control-planes/{id}/group-memberships/add" -->
 ```go
 package main
 
@@ -285,6 +289,7 @@ Removes one or more control planes from the members of a control plane group.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="post-control-planes-id-group-memberships-remove" method="post" path="/v2/control-planes/{id}/group-memberships/remove" -->
 ```go
 package main
 
@@ -357,6 +362,7 @@ Returns the status of a control plane group, including existing conflicts.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-control-planes-id-group-status" method="get" path="/v2/control-planes/{id}/group-status" -->
 ```go
 package main
 

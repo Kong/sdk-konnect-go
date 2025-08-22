@@ -16,6 +16,7 @@ Returns a collection of all API Publications.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-api-publications" method="get" path="/v3/api-publications" -->
 ```go
 package main
 
@@ -79,6 +80,7 @@ Publish an API to a portal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="publish-api-to-portal" method="put" path="/v3/apis/{apiId}/publications/{portalId}" -->
 ```go
 package main
 
@@ -143,6 +145,7 @@ If the API is not published to the portal, a 404 response is returned.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="fetch-publication" method="get" path="/v3/apis/{apiId}/publications/{portalId}" -->
 ```go
 package main
 
@@ -200,6 +203,7 @@ Unpublish an API from a portal.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-publication" method="delete" path="/v3/apis/{apiId}/publications/{portalId}" -->
 ```go
 package main
 

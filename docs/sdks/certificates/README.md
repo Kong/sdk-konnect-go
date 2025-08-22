@@ -24,6 +24,7 @@ List all Certificates
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-certificate" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates" -->
 ```go
 package main
 
@@ -82,6 +83,7 @@ Create a new Certificate
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-certificate" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates" -->
 ```go
 package main
 
@@ -145,6 +147,7 @@ Delete a Certificate
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-certificate" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates/{CertificateId}" -->
 ```go
 package main
 
@@ -200,6 +203,7 @@ Get a Certificate using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-certificate" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates/{CertificateId}" -->
 ```go
 package main
 
@@ -255,6 +259,7 @@ Create or Update Certificate using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-certificate" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/certificates/{CertificateId}" -->
 ```go
 package main
 

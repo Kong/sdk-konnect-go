@@ -23,6 +23,7 @@ Creates an application auth strategy.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-app-auth-strategy" method="post" path="/v2/application-auth-strategies" -->
 ```go
 package main
 
@@ -88,6 +89,7 @@ Returns a paginated collection of application auth strategies.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-app-auth-strategies" method="get" path="/v2/application-auth-strategies" -->
 ```go
 package main
 
@@ -148,6 +150,7 @@ Returns an application auth strategy.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-app-auth-strategy" method="get" path="/v2/application-auth-strategies/{authStrategyId}" -->
 ```go
 package main
 
@@ -204,6 +207,7 @@ Replaces an application auth strategy.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="replace-app-auth-strategy" method="put" path="/v2/application-auth-strategies/{authStrategyId}" -->
 ```go
 package main
 
@@ -284,6 +288,7 @@ Updates an application auth strategy.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-app-auth-strategy" method="patch" path="/v2/application-auth-strategies/{authStrategyId}" -->
 ```go
 package main
 
@@ -346,6 +351,7 @@ Deletes an application auth strategy. An application auth strategy can be delete
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-app-auth-strategy" method="delete" path="/v2/application-auth-strategies/{authStrategyId}" -->
 ```go
 package main
 

@@ -19,6 +19,7 @@ List all JWTs associated with a Consumer
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-jwt-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/jwt" -->
 ```go
 package main
 
@@ -77,6 +78,7 @@ Create a new JWT associated with a Consumer
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-jwt-with-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/jwt" -->
 ```go
 package main
 
@@ -140,6 +142,7 @@ Delete a a JWT associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-jwt-with-consumer" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/jwt/{JWTId}" -->
 ```go
 package main
 
@@ -198,6 +201,7 @@ Get a JWT associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-jwt-with-consumer" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/jwt/{JWTId}" -->
 ```go
 package main
 
@@ -256,6 +260,7 @@ Create or Update a JWT associated with a Consumer using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-jwt-with-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerIdForNestedEntities}/jwt/{JWTId}" -->
 ```go
 package main
 
@@ -320,6 +325,7 @@ List all JWTs
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-jwt" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/jwts" -->
 ```go
 package main
 
@@ -378,6 +384,7 @@ Get a JWT using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-jwt" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/jwts/{JWTId}" -->
 ```go
 package main
 

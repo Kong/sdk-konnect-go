@@ -17,6 +17,7 @@ Returns the access tokens for the specified system account. Returns 400 if any f
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-system-account-id-access-tokens" method="get" path="/v3/system-accounts/{accountId}/access-tokens" -->
 ```go
 package main
 
@@ -78,6 +79,7 @@ Creates an access token for the specified system account (SA). The access token 
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="post-system-accounts-id-access-tokens" method="post" path="/v3/system-accounts/{accountId}/access-tokens" -->
 ```go
 package main
 
@@ -139,6 +141,7 @@ Returns the system account (SA) access token for the SA Access Token ID specifie
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-system-accounts-id-access-tokens-id" method="get" path="/v3/system-accounts/{accountId}/access-tokens/{tokenId}" -->
 ```go
 package main
 
@@ -195,6 +198,7 @@ Updates the specified access token. Returns a 409 if the updated name is the sam
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="patch-system-accounts-id-access-tokens-id" method="patch" path="/v3/system-accounts/{accountId}/access-tokens/{tokenId}" -->
 ```go
 package main
 
@@ -255,6 +259,7 @@ Deletes the specified token. Returns 404 if the token was not found.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-system-accounts-id-access-tokens-id" method="delete" path="/v3/system-accounts/{accountId}/access-tokens/{tokenId}" -->
 ```go
 package main
 

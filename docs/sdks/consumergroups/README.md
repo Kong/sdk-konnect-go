@@ -24,6 +24,7 @@ List all Consumer Groups
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-consumer_group" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups" -->
 ```go
 package main
 
@@ -82,6 +83,7 @@ Create a new Consumer Group
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-consumer_group" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups" -->
 ```go
 package main
 
@@ -139,6 +141,7 @@ Delete a Consumer Group
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-consumer_group" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}" -->
 ```go
 package main
 
@@ -194,6 +197,7 @@ Get a Consumer Group using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-consumer_group" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}" -->
 ```go
 package main
 
@@ -249,6 +253,7 @@ Create or Update Consumer Group using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-consumer_group" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}" -->
 ```go
 package main
 
@@ -313,6 +318,7 @@ Removes all consumers from a Consumer Groups. This operation does not delete the
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="remove-all-consumers-from-consumer-group" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/consumers" -->
 ```go
 package main
 
@@ -367,6 +373,7 @@ List all consumers in a consumer group
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-consumers-for-consumer-group" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/consumers" -->
 ```go
 package main
 
@@ -425,6 +432,7 @@ Add a consumer to a consumer group
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="add-consumer-to-group" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/consumers" -->
 ```go
 package main
 
@@ -485,6 +493,7 @@ Remove a consumer from a consumer group
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="remove-consumer-from-group" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/consumers/{ConsumerId}" -->
 ```go
 package main
 

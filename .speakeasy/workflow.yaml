@@ -11,3 +11,9 @@ targets:
         target: go
         source: konnect
         output: .
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/kong/kong/konnect-go-code-samples
+            labelOverride:
+                fixedValue: Go (SDK)
+            blocking: false

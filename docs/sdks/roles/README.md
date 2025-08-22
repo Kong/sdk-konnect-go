@@ -19,6 +19,7 @@ Retrieves the predefined, or system managed, roles.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-predefined-roles" method="get" path="/v3/roles" -->
 ```go
 package main
 
@@ -73,6 +74,7 @@ Lists the roles belonging to a team. Returns 400 if any filter parameters are in
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-team-roles" method="get" path="/v3/teams/{teamId}/assigned-roles" -->
 ```go
 package main
 
@@ -131,6 +133,7 @@ Assigns a role to a team. Returns 409 if role is already assigned.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="teams-assign-role" method="post" path="/v3/teams/{teamId}/assigned-roles" -->
 ```go
 package main
 
@@ -195,6 +198,7 @@ Removes an assigned role from a team. Returns 404 if the requested team or assig
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="teams-remove-role" method="delete" path="/v3/teams/{teamId}/assigned-roles/{roleId}" -->
 ```go
 package main
 
@@ -253,6 +257,7 @@ Lists the roles assigned to a user.  Returns 400 if any filter parameters are in
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-user-roles" method="get" path="/v3/users/{userId}/assigned-roles" -->
 ```go
 package main
 
@@ -309,6 +314,7 @@ Assigns a role to a user. Returns 409 if role is already assigned.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="users-assign-role" method="post" path="/v3/users/{userId}/assigned-roles" -->
 ```go
 package main
 
@@ -373,6 +379,7 @@ Removes an assigned role from a user. Returns 404 if the requested user or assig
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="users-remove-role" method="delete" path="/v3/users/{userId}/assigned-roles/{roleId}" -->
 ```go
 package main
 

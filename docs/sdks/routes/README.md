@@ -48,6 +48,7 @@ List all Routes
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-route" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/routes" -->
 ```go
 package main
 
@@ -106,6 +107,7 @@ Create a new Route
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-route" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/routes" -->
 ```go
 package main
 
@@ -177,6 +179,7 @@ Delete a Route
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-route" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}" -->
 ```go
 package main
 
@@ -232,6 +235,7 @@ Get a Route using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-route" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}" -->
 ```go
 package main
 
@@ -287,6 +291,7 @@ Create or Update Route using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-route" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}" -->
 ```go
 package main
 
@@ -362,6 +367,7 @@ List all Routes associated with a Service
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-route-with-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/routes" -->
 ```go
 package main
 
@@ -420,6 +426,7 @@ Create a new Route associated with a Service
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-route-with-service" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/routes" -->
 ```go
 package main
 
@@ -494,6 +501,7 @@ Delete a a Route associated with a Service using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-route-with-service" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/routes/{RouteId}" -->
 ```go
 package main
 
@@ -552,6 +560,7 @@ Get a Route associated with a Service using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-route-with-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/routes/{RouteId}" -->
 ```go
 package main
 
@@ -610,6 +619,7 @@ Create or Update a Route associated with a Service using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-route-with-service" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/routes/{RouteId}" -->
 ```go
 package main
 

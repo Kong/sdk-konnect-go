@@ -19,6 +19,7 @@ List all Partials
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-partial" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/partials" -->
 ```go
 package main
 
@@ -77,6 +78,7 @@ Create a new Partial
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-partial" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/partials" -->
 ```go
 package main
 
@@ -147,6 +149,7 @@ Delete a Partial
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-partial" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/partials/{PartialId}" -->
 ```go
 package main
 
@@ -202,6 +205,7 @@ Get a Partial using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-partial" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/partials/{PartialId}" -->
 ```go
 package main
 
@@ -257,6 +261,7 @@ Create or Update Partial using ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-partial" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/partials/{PartialId}" -->
 ```go
 package main
 
@@ -282,6 +287,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Partial: components.CreatePartialRedisEe(
             components.PartialRedisEe{
+                Config: components.PartialRedisEeConfig{},
                 Type: components.PartialRedisEeTypeRedisEe,
             },
         ),

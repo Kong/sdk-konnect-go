@@ -18,6 +18,7 @@ Lists the developers that have registered for this portal. Each developer can be
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-portal-developers" method="get" path="/v3/portals/{portalId}/developers" -->
 ```go
 package main
 
@@ -80,6 +81,7 @@ Returns information about a single developer in this portal. Each developer mana
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-developer" method="get" path="/v3/portals/{portalId}/developers/{developerId}" -->
 ```go
 package main
 
@@ -137,6 +139,7 @@ Updates the status of a particular developer. Approved developers have access to
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-developer" method="patch" path="/v3/portals/{portalId}/developers/{developerId}" -->
 ```go
 package main
 
@@ -201,6 +204,7 @@ Deletes a developer, which will discontinue their ability to login, view any non
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-developer" method="delete" path="/v3/portals/{portalId}/developers/{developerId}" -->
 ```go
 package main
 

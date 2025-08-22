@@ -15,6 +15,7 @@ Lists the roles belonging to a system account. Returns 400 if any filter paramet
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-system-accounts-accountId-assigned-roles" method="get" path="/v3/system-accounts/{accountId}/assigned-roles" -->
 ```go
 package main
 
@@ -72,6 +73,7 @@ Assigns a role to a system account. Returns 409 if role is already assigned.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="post-system-accounts-accountId-assigned-roles" method="post" path="/v3/system-accounts/{accountId}/assigned-roles" -->
 ```go
 package main
 
@@ -134,6 +136,7 @@ Removes an assigned role from a system account. Returns 404 if the system accoun
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-system-accounts-accountId-assigned-roles-roleId" method="delete" path="/v3/system-accounts/{accountId}/assigned-roles/{roleId}" -->
 ```go
 package main
 

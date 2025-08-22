@@ -16,6 +16,7 @@ Returns a paginated list of a teams that the system account belongs to.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-system-accounts-accountId-teams" method="get" path="/v3/system-accounts/{accountId}/teams" -->
 ```go
 package main
 
@@ -76,6 +77,7 @@ Returns a paginated list of system accounts that belong to the team specified in
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-teams-teamId-system-accounts" method="get" path="/v3/teams/{teamId}/system-accounts" -->
 ```go
 package main
 
@@ -136,6 +138,7 @@ Adds a system account to a team. Returns a 409 if the system account is already 
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="post-teams-teamId-system-accounts" method="post" path="/v3/teams/{teamId}/system-accounts" -->
 ```go
 package main
 
@@ -195,6 +198,7 @@ Removes a system account from a team. Returns 404 if the team or system account 
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-teams-teamId-system-accounts-accountId" method="delete" path="/v3/teams/{teamId}/system-accounts/{accountId}" -->
 ```go
 package main
 

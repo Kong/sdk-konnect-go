@@ -22,6 +22,7 @@ Creates a specification (OpenAPI or AsyncAPI) for an API.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-api-spec" method="post" path="/v3/apis/{apiId}/specifications" -->
 ```go
 package main
 
@@ -89,6 +90,7 @@ Returns a list of specifications for an API. The specification can be of type Op
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-api-specs" method="get" path="/v3/apis/{apiId}/specifications" -->
 ```go
 package main
 
@@ -154,6 +156,7 @@ Fetches the specification (OpenAPI or AsyncAPI) of an API.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="fetch-api-spec" method="get" path="/v3/apis/{apiId}/specifications/{specId}" -->
 ```go
 package main
 
@@ -215,6 +218,7 @@ Updates the specification (OpenAPI or AsyncAPI) of an API.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-api-spec" method="patch" path="/v3/apis/{apiId}/specifications/{specId}" -->
 ```go
 package main
 
@@ -286,6 +290,7 @@ Deletes the specification (OpenAPI or AsyncAPI) of an API.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-api-spec" method="delete" path="/v3/apis/{apiId}/specifications/{specId}" -->
 ```go
 package main
 
@@ -343,6 +348,7 @@ Validates the content and type (OpenAPI or AsyncAPI) of a potential API specific
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="validate-specification" method="post" path="/v3/apis/validate-specification" -->
 ```go
 package main
 

@@ -120,7 +120,7 @@ generate.deepcopy: controller-gen
 .PHONY: generate.sdk
 generate.sdk:
 	$(MAKE) generate.deepcopy
-	speakeasy generate sdk --lang go --out . --schema ./$(OPENAPI_FILE)
+	speakeasy run --skip-versioning --skip-testing --minimal --skip-upload-spec
 	$(MAKE) _generate.omitempty
 	go mod tidy
 

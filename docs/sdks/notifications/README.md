@@ -25,6 +25,7 @@ List available user configurations.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-user-configurations" method="get" path="/v1/notifications/configurations" -->
 ```go
 package main
 
@@ -81,6 +82,7 @@ List event subscriptions.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-event-subscriptions" method="get" path="/v1/notifications/configurations/{eventId}/subscriptions" -->
 ```go
 package main
 
@@ -137,6 +139,7 @@ Create a new subscription for an event.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-event-subscription" method="post" path="/v1/notifications/configurations/{eventId}/subscriptions" -->
 ```go
 package main
 
@@ -216,6 +219,7 @@ Get subscription for an event.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-event-subscription" method="get" path="/v1/notifications/configurations/{eventId}/subscriptions/{subscriptionId}" -->
 ```go
 package main
 
@@ -274,6 +278,7 @@ Update subscription for an event.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-event-subscription" method="patch" path="/v1/notifications/configurations/{eventId}/subscriptions/{subscriptionId}" -->
 ```go
 package main
 
@@ -357,6 +362,7 @@ Delete subscription associated with event.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-event-subscription" method="delete" path="/v1/notifications/configurations/{eventId}/subscriptions/{subscriptionId}" -->
 ```go
 package main
 
@@ -414,6 +420,7 @@ List available notifications.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-notifications" method="get" path="/v1/notifications/inbox" -->
 ```go
 package main
 
@@ -474,6 +481,7 @@ Get notification details.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-notification-details" method="get" path="/v1/notifications/inbox/{notificationId}" -->
 ```go
 package main
 
@@ -530,6 +538,7 @@ Update notification.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-notification" method="patch" path="/v1/notifications/inbox/{notificationId}" -->
 ```go
 package main
 
@@ -590,6 +599,7 @@ Delete notification.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-notification" method="delete" path="/v1/notifications/inbox/{notificationId}" -->
 ```go
 package main
 
@@ -646,6 +656,7 @@ Mark a list of notifications to a status.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="bulk-notifications" method="post" path="/v1/notifications/inbox/bulk" -->
 ```go
 package main
 

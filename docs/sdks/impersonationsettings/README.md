@@ -14,6 +14,7 @@ Returns Impersonation Settings, which determines if user impersonation is allowe
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-impersonation-settings" method="get" path="/v3/organizations/impersonation" -->
 ```go
 package main
 
@@ -68,6 +69,7 @@ Updates Impersonation Settings.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-impersonation-settings" method="patch" path="/v3/organizations/impersonation" -->
 ```go
 package main
 

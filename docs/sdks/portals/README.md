@@ -19,6 +19,7 @@ Lists developer portals defined in this region for this organization. Each devel
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-portals" method="get" path="/v3/portals" -->
 ```go
 package main
 
@@ -85,6 +86,7 @@ Creates a new developer portal scoped in this region for this organization.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-portal" method="post" path="/v3/portals" -->
 ```go
 package main
 
@@ -146,6 +148,7 @@ Returns the configuration for a single developer portal, including the current v
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-portal" method="get" path="/v3/portals/{portalId}" -->
 ```go
 package main
 
@@ -202,6 +205,7 @@ Updates the configuration for a single portal including the visibility, access, 
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-portal" method="patch" path="/v3/portals/{portalId}" -->
 ```go
 package main
 
@@ -265,6 +269,7 @@ Deletes a single portal, along with all related entities.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-portal" method="delete" path="/v3/portals/{portalId}" -->
 ```go
 package main
 

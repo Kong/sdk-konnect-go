@@ -20,6 +20,7 @@ List all KeySets
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-key-set" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets" -->
 ```go
 package main
 
@@ -78,6 +79,7 @@ Create a new KeySet
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-key-set" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets" -->
 ```go
 package main
 
@@ -139,6 +141,7 @@ Delete a KeySet
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-key-set" method="delete" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets/{KeySetId}" -->
 ```go
 package main
 
@@ -194,6 +197,7 @@ Get a KeySet using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-key-set" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets/{KeySetId}" -->
 ```go
 package main
 
@@ -249,6 +253,7 @@ Create or Update KeySet using ID or name.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="upsert-key-set" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets/{KeySetId}" -->
 ```go
 package main
 
