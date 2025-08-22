@@ -70,12 +70,23 @@ func (o *ListPartialLinkRequest) GetTags() *string {
 // ListPartialLinkResponseBody - The plugins linked to the partial
 type ListPartialLinkResponseBody struct {
 	// The total number of plugins linked to the partial
-	Count *int64                   `json:"count,omitempty"`
+	Count *int64                   `default:"null" json:"count"`
 	Data  []components.PartialLink `json:"data,omitempty"`
 	// URI to the next page (may be null)
 	Next *string `json:"next,omitempty"`
 	// Offset is used to paginate through the API. Provide this value to the next list operation to fetch the next page
 	Offset *string `json:"offset,omitempty"`
+}
+
+func (l ListPartialLinkResponseBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListPartialLinkResponseBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ListPartialLinkResponseBody) GetCount() *int64 {

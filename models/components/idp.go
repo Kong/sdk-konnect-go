@@ -2,10 +2,25 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type ClaimMappings struct {
-	Name   *string `json:"name,omitempty"`
-	Email  *string `json:"email,omitempty"`
-	Groups *string `json:"groups,omitempty"`
+	Name   *string `default:"name" json:"name"`
+	Email  *string `default:"email" json:"email"`
+	Groups *string `default:"groups" json:"groups"`
+}
+
+func (c ClaimMappings) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ClaimMappings) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ClaimMappings) GetName() *string {
@@ -33,11 +48,22 @@ func (o *ClaimMappings) GetGroups() *string {
 //
 // NOTE: The `openid` scope is required. Removing it could break the OIDC integration.
 type IDP struct {
-	Issuer        *string        `json:"issuer,omitempty"`
-	LoginPath     *string        `json:"login_path,omitempty"`
-	ClientID      *string        `json:"client_id,omitempty"`
+	Issuer        *string        `default:"null" json:"issuer"`
+	LoginPath     *string        `default:"null" json:"login_path"`
+	ClientID      *string        `default:"null" json:"client_id"`
 	Scopes        []string       `json:"scopes,omitempty"`
 	ClaimMappings *ClaimMappings `json:"claim_mappings,omitempty"`
+}
+
+func (i IDP) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *IDP) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *IDP) GetIssuer() *string {

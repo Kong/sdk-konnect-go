@@ -107,8 +107,10 @@ func main() {
     res, err := s.PortalAuthSettings.UpdatePortalAuthenticationSettings(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalAuthenticationSettingsUpdateRequest{
         BasicAuthEnabled: sdkkonnectgo.Bool(true),
         OidcAuthEnabled: sdkkonnectgo.Bool(true),
+        SamlAuthEnabled: sdkkonnectgo.Bool(false),
         OidcTeamMappingEnabled: sdkkonnectgo.Bool(true),
         KonnectMappingEnabled: sdkkonnectgo.Bool(false),
+        IdpMappingEnabled: sdkkonnectgo.Bool(true),
         OidcIssuer: sdkkonnectgo.String("https://identity.example.com/v2"),
         OidcClientID: sdkkonnectgo.String("x7id0o42lklas0blidl2"),
         OidcScopes: []string{
@@ -117,8 +119,6 @@ func main() {
             "profile",
         },
         OidcClaimMappings: &components.PortalClaimMappings{
-            Name: sdkkonnectgo.String("name"),
-            Email: sdkkonnectgo.String("email"),
             Groups: sdkkonnectgo.String("custom-group-claim"),
         },
     })

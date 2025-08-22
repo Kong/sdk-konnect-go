@@ -2,10 +2,25 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // UpdateImpersonationSettingsRequest - The request schema for adding a system account to a team.
 type UpdateImpersonationSettingsRequest struct {
 	// Indicates if user impersonation is allowed for the organization.
-	Enabled *bool `json:"enabled,omitempty"`
+	Enabled *bool `default:"null" json:"enabled"`
+}
+
+func (u UpdateImpersonationSettingsRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateImpersonationSettingsRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateImpersonationSettingsRequest) GetEnabled() *bool {

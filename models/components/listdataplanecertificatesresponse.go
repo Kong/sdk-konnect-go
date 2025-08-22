@@ -2,8 +2,23 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type ListDataPlaneCertificatesResponsePage struct {
-	Total *int64 `json:"total,omitempty"`
+	Total *int64 `default:"null" json:"total"`
+}
+
+func (l ListDataPlaneCertificatesResponsePage) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
+}
+
+func (l *ListDataPlaneCertificatesResponsePage) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ListDataPlaneCertificatesResponsePage) GetTotal() *int64 {

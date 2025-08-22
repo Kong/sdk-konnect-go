@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### ApplicationClientCredentialsApplication
+### ClientCredentialsApplication
 
 ```go
-application := components.CreateApplicationApplicationClientCredentialsApplication(components.ApplicationClientCredentialsApplication{/* values here */})
+application := components.CreateApplicationClientCredentialsApplication(components.ClientCredentialsApplication{/* values here */})
 ```
 
-### ApplicationKeyAuthApplication
+### KeyAuthApplication
 
 ```go
-application := components.CreateApplicationApplicationKeyAuthApplication(components.ApplicationKeyAuthApplication{/* values here */})
+application := components.CreateApplicationKeyAuthApplication(components.KeyAuthApplication{/* values here */})
 ```
 

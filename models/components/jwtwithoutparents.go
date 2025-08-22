@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type JWTWithoutParentsAlgorithm string
@@ -108,17 +109,28 @@ func (o *JWTWithoutParentsConsumer) GetID() *string {
 }
 
 type JWTWithoutParents struct {
-	Algorithm *JWTWithoutParentsAlgorithm `json:"algorithm,omitempty"`
+	Algorithm *JWTWithoutParentsAlgorithm `default:"HS256" json:"algorithm"`
 	Consumer  *JWTWithoutParentsConsumer  `json:"consumer,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID           *string `json:"id,omitempty"`
-	Key          *string `json:"key,omitempty"`
-	RsaPublicKey *string `json:"rsa_public_key,omitempty"`
-	Secret       *string `json:"secret,omitempty"`
+	Key          *string `default:"null" json:"key"`
+	RsaPublicKey *string `default:"null" json:"rsa_public_key"`
+	Secret       *string `default:"null" json:"secret"`
 	// A set of strings representing tags.
 	Tags []string `json:"tags,omitempty"`
+}
+
+func (j JWTWithoutParents) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(j, "", false)
+}
+
+func (j *JWTWithoutParents) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &j, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *JWTWithoutParents) GetAlgorithm() *JWTWithoutParentsAlgorithm {

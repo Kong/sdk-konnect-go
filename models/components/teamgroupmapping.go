@@ -2,12 +2,27 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // TeamGroupMapping - A map of Konnect Team to IdP groups.
 type TeamGroupMapping struct {
 	// The Konnect team ID.
-	TeamID *string `json:"team_id,omitempty"`
+	TeamID *string `default:"null" json:"team_id"`
 	// The IdP groups that are mapped to the specified team.
 	Groups []string `json:"groups,omitempty"`
+}
+
+func (t TeamGroupMapping) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamGroupMapping) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TeamGroupMapping) GetTeamID() *string {

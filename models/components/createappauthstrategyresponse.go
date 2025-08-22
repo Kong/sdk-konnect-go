@@ -236,7 +236,7 @@ func (o *AppAuthStrategyKeyAuthResponseConfigs) GetKeyAuth() AppAuthStrategyConf
 	return o.KeyAuth
 }
 
-type DcrProvider struct {
+type AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider struct {
 	// Contains a unique identifier used for this resource.
 	ID   string `json:"id"`
 	Name string `json:"name"`
@@ -247,28 +247,28 @@ type DcrProvider struct {
 	ProviderType DcrProviderType `json:"provider_type"`
 }
 
-func (o *DcrProvider) GetID() string {
+func (o *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *DcrProvider) GetName() string {
+func (o *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *DcrProvider) GetDisplayName() *string {
+func (o *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider) GetDisplayName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DisplayName
 }
 
-func (o *DcrProvider) GetProviderType() DcrProviderType {
+func (o *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider) GetProviderType() DcrProviderType {
 	if o == nil {
 		return DcrProviderType("")
 	}
@@ -289,8 +289,8 @@ type AppAuthStrategyKeyAuthResponse struct {
 	// JSON-B object containing the configuration for the Key Auth strategy
 	Configs AppAuthStrategyKeyAuthResponseConfigs `json:"configs"`
 	// At least one published entity is using this auth strategy.
-	Active      bool         `json:"active"`
-	DcrProvider *DcrProvider `json:"dcr_provider"`
+	Active      bool                                                                    `json:"active"`
+	DcrProvider *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider `json:"dcr_provider"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
@@ -355,7 +355,7 @@ func (o *AppAuthStrategyKeyAuthResponse) GetActive() bool {
 	return o.Active
 }
 
-func (o *AppAuthStrategyKeyAuthResponse) GetDcrProvider() *DcrProvider {
+func (o *AppAuthStrategyKeyAuthResponse) GetDcrProvider() *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider {
 	if o == nil {
 		return nil
 	}

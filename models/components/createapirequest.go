@@ -2,19 +2,23 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type CreateAPIRequest struct {
 	// The name of your API. The `name + version` combination must be unique for each API you publish.
 	//
-	Name string `json:"name"`
+	Name *string `default:"null" json:"name"`
 	// A description of your API. Will be visible on your live Portal.
-	Description *string `json:"description,omitempty"`
+	Description *string `default:"null" json:"description"`
 	// An optional version for your API. Leave this empty if your API is unversioned.
-	Version *string `json:"version,omitempty"`
+	Version *string `default:"null" json:"version"`
 	// The `slug` is used in generated URLs to provide human readable paths.
 	//
 	// Defaults to `slugify(name + version)`
 	//
-	Slug *string `json:"slug,omitempty"`
+	Slug *string `default:"null" json:"slug"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
@@ -26,9 +30,20 @@ type CreateAPIRequest struct {
 	SpecContent *string `json:"spec_content,omitempty"`
 }
 
-func (o *CreateAPIRequest) GetName() string {
+func (c CreateAPIRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateAPIRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *CreateAPIRequest) GetName() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Name
 }

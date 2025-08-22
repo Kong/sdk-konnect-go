@@ -50,9 +50,9 @@ func (e *PortalAuditLogReplayJobStatus) UnmarshalJSON(data []byte) error {
 // PortalAuditLogReplayJob - Response from fetching or updating an portal audit log replay job
 type PortalAuditLogReplayJob struct {
 	// The start of a date-time range. Initial value is 0001-01-01T00:00:0Z.
-	StartAt *time.Time `json:"start_at,omitempty"`
+	StartAt *time.Time `default:"null" json:"start_at"`
 	// The end of a date-time range. Initial value is 0001-01-01T00:00:0Z.
-	EndAt  *time.Time                     `json:"end_at,omitempty"`
+	EndAt  *time.Time                     `default:"null" json:"end_at"`
 	Status *PortalAuditLogReplayJobStatus `json:"status,omitempty"`
 	// Timestamp when this job was last updated. Initial value is 0001-01-01T00:00:0Z.
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`

@@ -2,15 +2,30 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // OIDCIdentityProviderClaimMappings - Defines the mappings between OpenID Connect (OIDC) claims and local claims used by your application for
 // authentication.
 type OIDCIdentityProviderClaimMappings struct {
 	// The claim mapping for the user's name.
-	Name *string `json:"name,omitempty"`
+	Name *string `default:"name" json:"name"`
 	// The claim mapping for the user's email address.
-	Email *string `json:"email,omitempty"`
+	Email *string `default:"email" json:"email"`
 	// The claim mapping for the user's group membership information.
-	Groups *string `json:"groups,omitempty"`
+	Groups *string `default:"groups" json:"groups"`
+}
+
+func (o OIDCIdentityProviderClaimMappings) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(o, "", false)
+}
+
+func (o *OIDCIdentityProviderClaimMappings) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &o, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *OIDCIdentityProviderClaimMappings) GetName() *string {
