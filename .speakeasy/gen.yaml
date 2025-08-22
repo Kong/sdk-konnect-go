@@ -21,7 +21,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 go:
-  version: 0.8.0
+  version: 0.9.0
   additionalDependencies: {}
   allowUnknownFieldsInWeakUnions: false
   baseErrorName: SDKBaseError
@@ -39,8 +39,6 @@ go:
   inputModelSuffix: input
   maxMethodParams: 2
   methodArguments: require-security-and-request
-  modulePath: ""
   outputModelSuffix: output
   packageName: github.com/Kong/sdk-konnect-go
   responseFormat: envelope
-  sdkPackageName: ""
