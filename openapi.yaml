@@ -1617,7 +1617,10 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/control-planes:
     get:
-      x-speakeasy-entity-operation: GatewayControlPlaneList#read
+      x-speakeasy-entity-operation:
+        terraform-resource: null
+        terraform-datasource:
+          - GatewayControlPlane#read
       summary: List Control Planes
       responses:
         '200':
@@ -11286,6 +11289,7 @@ components:
         $ref: '#/components/schemas/ControlPlaneFilterParameters'
       style: deepObject
     FilterByLabels:
+      x-speakeasy-name-override: filter_labels
       name: labels
       description: Filter control planes in the response by associated labels.
       in: query
