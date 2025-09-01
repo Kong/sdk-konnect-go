@@ -37,8 +37,8 @@ jobs:
       with:
         go-version-file: go.mod
 
-    - name: run integration tests
-      run: make test.integration
+    - name: run Konnect cleanup ( remove test left overs )
+      run: make cleanup.konnect
       env:
         KONNECT_API_URL: ${{ matrix.konnect-api-url }}
         KONNECT_API_PAT: ${{ secrets.KONNECT_API_PAT }}
