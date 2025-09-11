@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: fd76c26f0f05fb50afadad8a065282d0
-  docVersion: 3.0.24
+  docChecksum: b7e55e32a04cd67151020d743a83c0a7
+  docVersion: 3.0.26
   speakeasyVersion: 1.615.2
   generationVersion: 2.698.4
-  releaseVersion: 0.9.1
-  configChecksum: 85b671c884fc1ae73c7ebed5635f5884
+  releaseVersion: 0.10.0
+  configChecksum: e13d7f18ecceb1426065a848ea388f9a
 features:
   go:
     acceptHeaders: 2.81.2
@@ -220,10 +220,12 @@ generatedFiles:
   - /models/components/emailtemplatevariablename.go
   - /models/components/emailtemplatevariableslist.go
   - /models/components/emailverificationstatus.go
+  - /models/components/entitytype.go
   - /models/components/entitytypes.go
   - /models/components/eventsubscription.go
   - /models/components/eventsubscriptionlistresponse.go
   - /models/components/eventsubscriptionresponse.go
+  - /models/components/gcpprivatehostedzoneattachmentconfig.go
   - /models/components/gcpprivatehostedzoneresponse.go
   - /models/components/gcpvpcpeeringattachmentconfig.go
   - /models/components/gcpvpcpeeringgatewayresponse.go
@@ -241,9 +243,6 @@ generatedFiles:
   - /models/components/groupmembership.go
   - /models/components/groupmemberstatus.go
   - /models/components/groupstatus.go
-  - /models/components/highvelocitycloudgatewaysprovidername.go
-  - /models/components/highvelocityprovider.go
-  - /models/components/highvelocityproviderregion.go
   - /models/components/hmacauth.go
   - /models/components/hmacauthwithoutparents.go
   - /models/components/identityprovider.go
@@ -269,6 +268,7 @@ generatedFiles:
   - /models/components/keyset.go
   - /models/components/keywithoutparents.go
   - /models/components/labelsfieldfilter.go
+  - /models/components/legacystringfieldfilter.go
   - /models/components/listapiattributesresponse.go
   - /models/components/listapicomputedresponse.go
   - /models/components/listapidocumentresponse.go
@@ -351,6 +351,8 @@ generatedFiles:
   - /models/components/patchportalemailconfig.go
   - /models/components/patchprivatednsrequest.go
   - /models/components/patchteamgroupmappings.go
+  - /models/components/patchtransitgatewayrequest.go
+  - /models/components/patchtransitgatewayresponse.go
   - /models/components/plugin.go
   - /models/components/pluginschemas.go
   - /models/components/pluginwithoutparents.go
@@ -420,12 +422,16 @@ generatedFiles:
   - /models/components/samlidentityproviderconfiginput.go
   - /models/components/security.go
   - /models/components/sendtestemailtemplatecontent.go
+  - /models/components/serverlessv1provider.go
+  - /models/components/serverlessv1providername.go
+  - /models/components/serverlessv1providerregion.go
   - /models/components/serviceoutput.go
   - /models/components/servicereference.go
   - /models/components/sni.go
   - /models/components/snippetvisibilitystatus.go
   - /models/components/sniwithoutparents.go
   - /models/components/stringfieldcontainsfilter.go
+  - /models/components/stringfieldequalsfilter.go
   - /models/components/stringfieldfilter.go
   - /models/components/stringfieldneqfilter.go
   - /models/components/stringfieldocontainsfilter.go
@@ -898,6 +904,7 @@ generatedFiles:
   - /models/operations/updateportalteamgroupmappings.go
   - /models/operations/updateprivatedns.go
   - /models/operations/updateteam.go
+  - /models/operations/updatetransitgateway.go
   - /models/operations/updateuser.go
   - /models/operations/upsertaclwithconsumer.go
   - /models/operations/upsertbasicauthwithconsumer.go
@@ -1291,14 +1298,17 @@ generatedFiles:
   - docs/models/components/emailtemplatevariableslist.md
   - docs/models/components/emailverificationstatus.md
   - docs/models/components/entityregion.md
+  - docs/models/components/entitytype.md
   - docs/models/components/entitytypename.md
   - docs/models/components/entitytypes.md
   - docs/models/components/eventsubscription.md
   - docs/models/components/eventsubscriptionlistresponse.md
   - docs/models/components/eventsubscriptionresponse.md
   - docs/models/components/gatewayserviceadmin.md
+  - docs/models/components/gcpprivatehostedzoneattachmentconfig.md
   - docs/models/components/gcpprivatehostedzoneresponse.md
   - docs/models/components/gcpprivatehostedzoneresponseprivatednsstatemetadata.md
+  - docs/models/components/gcpprivatehostedzonetype.md
   - docs/models/components/gcpvpcpeeringattachmentconfig.md
   - docs/models/components/gcpvpcpeeringattachmenttype.md
   - docs/models/components/gcpvpcpeeringgatewayresponse.md
@@ -1326,9 +1336,6 @@ generatedFiles:
   - docs/models/components/hashon.md
   - docs/models/components/healthchecks.md
   - docs/models/components/healthy.md
-  - docs/models/components/highvelocitycloudgatewaysprovidername.md
-  - docs/models/components/highvelocityprovider.md
-  - docs/models/components/highvelocityproviderregion.md
   - docs/models/components/hmacauth.md
   - docs/models/components/hmacauthconsumer.md
   - docs/models/components/hmacauthwithoutparents.md
@@ -1375,6 +1382,7 @@ generatedFiles:
   - docs/models/components/keywithoutparentsset.md
   - docs/models/components/kind.md
   - docs/models/components/labelsfieldfilter.md
+  - docs/models/components/legacystringfieldfilter.md
   - docs/models/components/listapiattributesresponse.md
   - docs/models/components/listapicomputedresponse.md
   - docs/models/components/listapidocumentresponse.md
@@ -1489,11 +1497,15 @@ generatedFiles:
   - docs/models/components/partials.md
   - docs/models/components/passive.md
   - docs/models/components/patchawsprivatednsresolver.md
+  - docs/models/components/patchawsresourceendpointgateway.md
+  - docs/models/components/patchawsresourceendpointgatewayawsresourceendpointattachmenttype.md
   - docs/models/components/patchcustomportalemailtemplatepayload.md
   - docs/models/components/patchnetworkrequest.md
   - docs/models/components/patchportalemailconfig.md
   - docs/models/components/patchprivatednsrequest.md
   - docs/models/components/patchteamgroupmappings.md
+  - docs/models/components/patchtransitgatewayrequest.md
+  - docs/models/components/patchtransitgatewayresponse.md
   - docs/models/components/pathhandling.md
   - docs/models/components/pem.md
   - docs/models/components/plugin.md
@@ -1680,6 +1692,9 @@ generatedFiles:
   - docs/models/components/sendtestemailtemplatecontent.md
   - docs/models/components/sentinelnodes.md
   - docs/models/components/sentinelrole.md
+  - docs/models/components/serverlessv1provider.md
+  - docs/models/components/serverlessv1providername.md
+  - docs/models/components/serverlessv1providerregion.md
   - docs/models/components/service.md
   - docs/models/components/serviceoutput.md
   - docs/models/components/servicereference.md
@@ -1700,6 +1715,7 @@ generatedFiles:
   - docs/models/components/strategytype.md
   - docs/models/components/stringfieldcontainsfilter.md
   - docs/models/components/stringfieldequalscomparison.md
+  - docs/models/components/stringfieldequalsfilter.md
   - docs/models/components/stringfieldfilter.md
   - docs/models/components/stringfieldneqfilter.md
   - docs/models/components/stringfieldocontainsfilter.md
@@ -1724,6 +1740,7 @@ generatedFiles:
   - docs/models/components/teammappingresponsepage.md
   - docs/models/components/theme.md
   - docs/models/components/tlssans.md
+  - docs/models/components/transitgatewayattachmentconfig.md
   - docs/models/components/transitgatewaydnsconfig.md
   - docs/models/components/transitgatewayresponse.md
   - docs/models/components/transitgatewaysfilterparameters.md
@@ -2642,6 +2659,8 @@ generatedFiles:
   - docs/models/operations/updateprivatednsresponse.md
   - docs/models/operations/updateteamrequest.md
   - docs/models/operations/updateteamresponse.md
+  - docs/models/operations/updatetransitgatewayrequest.md
+  - docs/models/operations/updatetransitgatewayresponse.md
   - docs/models/operations/updateuserrequest.md
   - docs/models/operations/updateuserresponse.md
   - docs/models/operations/upsertaclwithconsumerrequest.md
@@ -3375,7 +3394,7 @@ examples:
     speakeasy-default-get-availability-json:
       responses:
         "200":
-          application/json: {"versions": ["3.2"], "instance_types": [{"name": "large", "hourly_cost": "1.00", "v_cpu": "2", "gb_memory": "2"}, {"name": "large", "hourly_cost": "1.00", "v_cpu": "2", "gb_memory": "2"}], "providers": [{"provider": "aws", "regions": []}, {"provider": "aws", "regions": []}], "high_velocity_providers": [{"provider": "aws", "regions": [{"region": "us-east-2"}]}]}
+          application/json: {"versions": ["3.2"], "instance_types": [{"name": "large", "hourly_cost": "1.00", "v_cpu": "2", "gb_memory": "2"}, {"name": "large", "hourly_cost": "1.00", "v_cpu": "2", "gb_memory": "2"}], "providers": [{"provider": "aws", "regions": []}, {"provider": "aws", "regions": []}], "serverless_v1_providers": [{"provider": "aws", "regions": [{"region": "us"}]}]}
   list-configurations:
     speakeasy-default-list-configurations:
       parameters:
@@ -6078,7 +6097,7 @@ examples:
         application/json: {"key": "<key>", "value": "<value>"}
       responses:
         "201":
-          application/json: {"key": null, "value": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"key": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 189970, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -6172,7 +6191,7 @@ examples:
           page[after]: "ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"
       responses:
         "200":
-          application/json: {"meta": {"page": {"first": null, "last": null, "next": null, "previous": null, "size": 10}}, "data": [{"key": null, "value": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+          application/json: {"meta": {"page": {"first": null, "last": null, "next": null, "previous": null, "size": 10}}, "data": [{"key": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
         "400":
           application/problem+json: {"status": 710250, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "source": "body", "reason": "is a required field"}]}
         "401":
@@ -6225,7 +6244,7 @@ examples:
           key: "ConfigStoreSecretKey"
       responses:
         "200":
-          application/json: {"key": null, "value": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"key": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -6272,7 +6291,7 @@ examples:
         application/json: {"value": "<value>"}
       responses:
         "200":
-          application/json: {"key": null, "value": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"key": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 681242, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value 1>", "<value 2>", "<value 3>"], "source": "body"}, {"field": "name", "rule": "min", "minimum": 8, "source": "body", "reason": "must have at least 8 characters"}, {"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value 1>"], "source": "body"}]}
         "401":
@@ -19268,7 +19287,7 @@ examples:
   create-api:
     speakeasy-default-create-api:
       requestBody:
-        application/json: {"name": "MyAPI", "description": null, "version": null, "slug": "my-api-v1", "labels": {"env": "test"}}
+        application/json: {"name": "MyAPI", "description": null, "slug": "my-api-v1", "labels": {"env": "test"}}
       responses:
         "201":
           application/json: {"id": "9f5061ce-78f6-4452-9108-ad7c02821fd5", "name": "MyAPI", "description": null, "version": null, "current_version_summary": {"id": "7710d5c4-d902-410b-992f-18b814155b53", "version": null, "spec": {"type": "oas3"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, "slug": "my-api-v1", "api_spec_ids": ["123e4567-e89b-12d3-a456-426614174000"], "portals": [], "labels": {"env": "test"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
@@ -19526,7 +19545,7 @@ examples:
         path:
           apiId: "9f5061ce-78f6-4452-9108-ad7c02821fd5"
       requestBody:
-        application/json: {"name": "MyAPI", "description": null, "version": null, "slug": "my-api-v1", "labels": {"env": "test"}}
+        application/json: {"name": "MyAPI", "description": null, "slug": "my-api-v1", "labels": {"env": "test"}}
       responses:
         "200":
           application/json: {"id": "9f5061ce-78f6-4452-9108-ad7c02821fd5", "name": "MyAPI", "description": null, "version": null, "current_version_summary": {"id": "7710d5c4-d902-410b-992f-18b814155b53", "version": null, "spec": {"type": "oas3"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, "slug": "my-api-v1", "api_spec_ids": ["123e4567-e89b-12d3-a456-426614174000"], "portals": [], "labels": {"env": "test"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
@@ -19540,6 +19559,8 @@ examples:
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
         "415":
           application/problem+json: {"status": 415, "title": "UnsupportedMediaType", "type": "https://httpstatuses.com/415", "instance": "kong:trace:1234567890", "detail": "UnsupportedMediaType"}
+        "409":
+          application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
     UpdateApiName:
       parameters:
         path:
@@ -22274,7 +22295,7 @@ examples:
           page[number]: 1
       responses:
         "200":
-          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 2}}, "data": [{"id": "c200cc33-2d33-4754-b086-a98e0fcd36fb", "created_at": "2022-12-22T20:13:07.305Z", "updated_at": "2022-12-22T20:13:36.710Z", "status": "approved", "api": {"id": "56f637b7-cd95-478b-9b02-d770618f641c", "name": "Great Stuff", "version": "v1"}, "application": {"id": "e15e2460-ba40-431d-9df0-4957fcff7cda", "name": "App 1"}}, {"id": "d200cc33-2d33-4754-b086-a98e0fcd36fb", "created_at": "2022-12-22T20:13:07.305Z", "updated_at": "2022-12-22T20:13:36.710Z", "status": "rejected", "api": {"id": "56f637b7-cd95-478b-9b02-d770618f641c", "name": "Great Stuff", "version": "v2"}, "application": {"id": "e15e2460-ba40-431d-9df0-4957fcff7cda", "name": "App 2"}}, {"id": "d300cc33-2d33-4754-b086-a98e0fcd36fb", "created_at": "2022-12-22T20:13:07.305Z", "updated_at": "2022-12-22T20:13:36.710Z", "status": "pending", "api": {"id": "56f637b7-cd95-478b-9b02-d770618f641c", "name": "Good Stuff", "version": "v2"}, "application": {"id": "e15e2460-ba40-431d-9df0-4957fcff7cda", "name": "App 3"}}, {"id": "d300cc33-2d33-4754-b086-a98e0fcd36fb", "created_at": "2022-12-22T20:13:07.305Z", "updated_at": "2022-12-22T20:13:36.710Z", "status": "revoked", "api": {"id": "56f637b7-cd95-478b-9b02-d770618f641c", "name": "Good Stuff", "version": "v1"}, "application": {"id": "e15e2460-ba40-431d-9df0-4957fcff7cda", "name": "App 3"}}]}
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 2}}, "data": [{"id": "c200cc33-2d33-4754-b086-a98e0fcd36fb", "created_at": "2022-12-22T20:13:07.305Z", "updated_at": "2022-12-22T20:13:36.710Z", "status": "approved", "api": {"id": "56f637b7-cd95-478b-9b02-d770618f641c", "name": "Great Stuff", "version": "v1", "entity_type": "api"}, "application": {"id": "e15e2460-ba40-431d-9df0-4957fcff7cda", "name": "App 1"}}, {"id": "d200cc33-2d33-4754-b086-a98e0fcd36fb", "created_at": "2022-12-22T20:13:07.305Z", "updated_at": "2022-12-22T20:13:36.710Z", "status": "rejected", "api": {"id": "56f637b7-cd95-478b-9b02-d770618f641c", "name": "Great Stuff", "version": "v2", "entity_type": "api"}, "application": {"id": "e15e2460-ba40-431d-9df0-4957fcff7cda", "name": "App 2"}}, {"id": "d300cc33-2d33-4754-b086-a98e0fcd36fb", "created_at": "2022-12-22T20:13:07.305Z", "updated_at": "2022-12-22T20:13:36.710Z", "status": "pending", "api": {"id": "56f637b7-cd95-478b-9b02-d770618f641c", "name": "Good Stuff", "version": "v2", "entity_type": "api"}, "application": {"id": "e15e2460-ba40-431d-9df0-4957fcff7cda", "name": "App 3"}}, {"id": "d300cc33-2d33-4754-b086-a98e0fcd36fb", "created_at": "2022-12-22T20:13:07.305Z", "updated_at": "2022-12-22T20:13:36.710Z", "status": "revoked", "api": {"id": "56f637b7-cd95-478b-9b02-d770618f641c", "name": "Good Stuff", "version": "v1", "entity_type": "api"}, "application": {"id": "e15e2460-ba40-431d-9df0-4957fcff7cda", "name": "App 3"}}]}
         "400":
           application/problem+json: {"status": 372786, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -22376,7 +22397,7 @@ examples:
           page[number]: 1
       responses:
         "200":
-          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 2}}, "data": [{"id": "c200cc33-2d33-4754-b086-a98e0fcd36fb", "created_at": "2022-12-22T20:13:07.305Z", "updated_at": "2022-12-22T20:13:36.710Z", "status": "approved", "api": {"id": "56f637b7-cd95-478b-9b02-d770618f641c", "name": "Great Stuff", "version": "v1"}, "application": {"id": "e15e2460-ba40-431d-9df0-4957fcff7cda", "name": "App 1"}}, {"id": "d200cc33-2d33-4754-b086-a98e0fcd36fb", "created_at": "2022-12-22T20:13:07.305Z", "updated_at": "2022-12-22T20:13:36.710Z", "status": "rejected", "api": {"id": "56f637b7-cd95-478b-9b02-d770618f641c", "name": "Great Stuff", "version": "v2"}, "application": {"id": "e15e2460-ba40-431d-9df0-4957fcff7cda", "name": "App 2"}}, {"id": "d300cc33-2d33-4754-b086-a98e0fcd36fb", "created_at": "2022-12-22T20:13:07.305Z", "updated_at": "2022-12-22T20:13:36.710Z", "status": "pending", "api": {"id": "56f637b7-cd95-478b-9b02-d770618f641c", "name": "Good Stuff", "version": "v2"}, "application": {"id": "e15e2460-ba40-431d-9df0-4957fcff7cda", "name": "App 3"}}, {"id": "d300cc33-2d33-4754-b086-a98e0fcd36fb", "created_at": "2022-12-22T20:13:07.305Z", "updated_at": "2022-12-22T20:13:36.710Z", "status": "revoked", "api": {"id": "56f637b7-cd95-478b-9b02-d770618f641c", "name": "Good Stuff", "version": "v1"}, "application": {"id": "e15e2460-ba40-431d-9df0-4957fcff7cda", "name": "App 3"}}]}
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 2}}, "data": [{"id": "c200cc33-2d33-4754-b086-a98e0fcd36fb", "created_at": "2022-12-22T20:13:07.305Z", "updated_at": "2022-12-22T20:13:36.710Z", "status": "approved", "api": {"id": "56f637b7-cd95-478b-9b02-d770618f641c", "name": "Great Stuff", "version": "v1", "entity_type": "api"}, "application": {"id": "e15e2460-ba40-431d-9df0-4957fcff7cda", "name": "App 1"}}, {"id": "d200cc33-2d33-4754-b086-a98e0fcd36fb", "created_at": "2022-12-22T20:13:07.305Z", "updated_at": "2022-12-22T20:13:36.710Z", "status": "rejected", "api": {"id": "56f637b7-cd95-478b-9b02-d770618f641c", "name": "Great Stuff", "version": "v2", "entity_type": "api"}, "application": {"id": "e15e2460-ba40-431d-9df0-4957fcff7cda", "name": "App 2"}}, {"id": "d300cc33-2d33-4754-b086-a98e0fcd36fb", "created_at": "2022-12-22T20:13:07.305Z", "updated_at": "2022-12-22T20:13:36.710Z", "status": "pending", "api": {"id": "56f637b7-cd95-478b-9b02-d770618f641c", "name": "Good Stuff", "version": "v2", "entity_type": "api"}, "application": {"id": "e15e2460-ba40-431d-9df0-4957fcff7cda", "name": "App 3"}}, {"id": "d300cc33-2d33-4754-b086-a98e0fcd36fb", "created_at": "2022-12-22T20:13:07.305Z", "updated_at": "2022-12-22T20:13:36.710Z", "status": "revoked", "api": {"id": "56f637b7-cd95-478b-9b02-d770618f641c", "name": "Good Stuff", "version": "v1", "entity_type": "api"}, "application": {"id": "e15e2460-ba40-431d-9df0-4957fcff7cda", "name": "App 3"}}]}
         "400":
           application/problem+json: {"status": 660786, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "min_digits", "minimum": 8, "source": "body", "reason": "must have at least 8 characters"}]}
         "401":
@@ -22484,7 +22505,7 @@ examples:
           registrationId: "4f131ab6-5c14-41b9-b22c-347366ac1ac0"
       responses:
         "200":
-          application/json: {"id": "c300cc33-2d33-4754-b086-a98e0fcd36fb", "created_at": "2022-12-22T20:13:07.305Z", "updated_at": "2022-12-22T20:13:36.710Z", "status": "approved", "api": {"id": "86f637b7-cd95-478b-9b02-d770618f641c", "name": "Great Stuff", "version": "v1"}, "application": {"id": "c15e2460-ba40-431d-9df0-4957fcff7cda", "name": "App 1"}}
+          application/json: {"id": "c300cc33-2d33-4754-b086-a98e0fcd36fb", "created_at": "2022-12-22T20:13:07.305Z", "updated_at": "2022-12-22T20:13:36.710Z", "status": "approved", "api": {"id": "86f637b7-cd95-478b-9b02-d770618f641c", "name": "Great Stuff", "version": "v1", "entity_type": "api"}, "application": {"id": "c15e2460-ba40-431d-9df0-4957fcff7cda", "name": "App 1"}}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -22540,7 +22561,7 @@ examples:
         application/json: {"status": "rejected"}
       responses:
         "200":
-          application/json: {"id": "c300cc33-2d33-4754-b086-a98e0fcd36fb", "created_at": "2022-12-22T20:13:07.305Z", "updated_at": "2022-12-22T20:13:36.710Z", "status": "approved", "api": {"id": "86f637b7-cd95-478b-9b02-d770618f641c", "name": "Great Stuff", "version": "v1"}, "application": {"id": "c15e2460-ba40-431d-9df0-4957fcff7cda", "name": "App 1"}}
+          application/json: {"id": "c300cc33-2d33-4754-b086-a98e0fcd36fb", "created_at": "2022-12-22T20:13:07.305Z", "updated_at": "2022-12-22T20:13:36.710Z", "status": "approved", "api": {"id": "86f637b7-cd95-478b-9b02-d770618f641c", "name": "Great Stuff", "version": "v1", "entity_type": "api"}, "application": {"id": "c15e2460-ba40-431d-9df0-4957fcff7cda", "name": "App 1"}}
         "400":
           application/problem+json: {"status": 894561, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -26848,5 +26869,26 @@ examples:
       responses:
         "200":
           application/json: {}
+  update-transit-gateway:
+    speakeasy-default-update-transit-gateway:
+      parameters:
+        path:
+          networkId: "36ae63d3-efd1-4bec-b246-62aa5d3f5695"
+          transitGatewayId: "0850820b-d153-4a2a-b9be-7d2204779139"
+      requestBody:
+        application/json: {"transit_gateway_attachment_config": {"kind": "aws-resource-endpoint-attachment", "resource_config": [{"resource_config_id": "<id>", "domain_name": "delectable-molasses.com"}]}}
+      responses:
+        "200":
+          application/json: {"name": "us-east-2 transit gateway", "dns_config": [{"remote_dns_server_ip_addresses": ["10.0.0.2"], "domain_proxy_list": ["foobar.com"]}], "transit_gateway_attachment_config": {"kind": "aws-resource-endpoint-attachment", "ram_share_arn": "<value>", "resource_config": []}, "id": "0850820b-d153-4a2a-b9be-7d2204779139", "state": "pending-acceptance", "state_metadata": {"reported_status": "ERROR", "reason": "Transit Gateway Attachment configuration could not find a resource with the provided ram share arn.\n"}, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 818089, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "409":
+          application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
 examplesVersion: 1.0.2
 generatedTests: {}

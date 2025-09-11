@@ -17,9 +17,9 @@ const (
 )
 
 type NetworkStateFieldFilter struct {
-	NetworkStateFieldEqualsFilter     *NetworkStateFieldEqualsFilter     `queryParam:"inline"`
-	NetworkStateFieldNotEqualsFilter  *NetworkStateFieldNotEqualsFilter  `queryParam:"inline"`
-	NetworkStateFieldOrEqualityFilter *NetworkStateFieldOrEqualityFilter `queryParam:"inline"`
+	NetworkStateFieldEqualsFilter     *NetworkStateFieldEqualsFilter     `queryParam:"inline" name:"NetworkStateFieldFilter"`
+	NetworkStateFieldNotEqualsFilter  *NetworkStateFieldNotEqualsFilter  `queryParam:"inline" name:"NetworkStateFieldFilter"`
+	NetworkStateFieldOrEqualityFilter *NetworkStateFieldOrEqualityFilter `queryParam:"inline" name:"NetworkStateFieldFilter"`
 
 	Type NetworkStateFieldFilterType
 }
@@ -53,22 +53,22 @@ func CreateNetworkStateFieldFilterNetworkStateFieldOrEqualityFilter(networkState
 
 func (u *NetworkStateFieldFilter) UnmarshalJSON(data []byte) error {
 
-	var networkStateFieldNotEqualsFilter NetworkStateFieldNotEqualsFilter = NetworkStateFieldNotEqualsFilter{}
-	if err := utils.UnmarshalJSON(data, &networkStateFieldNotEqualsFilter, "", true, true); err == nil {
-		u.NetworkStateFieldNotEqualsFilter = &networkStateFieldNotEqualsFilter
-		u.Type = NetworkStateFieldFilterTypeNetworkStateFieldNotEqualsFilter
-		return nil
-	}
-
 	var networkStateFieldOrEqualityFilter NetworkStateFieldOrEqualityFilter = NetworkStateFieldOrEqualityFilter{}
-	if err := utils.UnmarshalJSON(data, &networkStateFieldOrEqualityFilter, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &networkStateFieldOrEqualityFilter, "", true, nil); err == nil {
 		u.NetworkStateFieldOrEqualityFilter = &networkStateFieldOrEqualityFilter
 		u.Type = NetworkStateFieldFilterTypeNetworkStateFieldOrEqualityFilter
 		return nil
 	}
 
+	var networkStateFieldNotEqualsFilter NetworkStateFieldNotEqualsFilter = NetworkStateFieldNotEqualsFilter{}
+	if err := utils.UnmarshalJSON(data, &networkStateFieldNotEqualsFilter, "", true, nil); err == nil {
+		u.NetworkStateFieldNotEqualsFilter = &networkStateFieldNotEqualsFilter
+		u.Type = NetworkStateFieldFilterTypeNetworkStateFieldNotEqualsFilter
+		return nil
+	}
+
 	var networkStateFieldEqualsFilter NetworkStateFieldEqualsFilter = NetworkStateFieldEqualsFilter{}
-	if err := utils.UnmarshalJSON(data, &networkStateFieldEqualsFilter, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &networkStateFieldEqualsFilter, "", true, nil); err == nil {
 		u.NetworkStateFieldEqualsFilter = &networkStateFieldEqualsFilter
 		u.Type = NetworkStateFieldFilterTypeNetworkStateFieldEqualsFilter
 		return nil

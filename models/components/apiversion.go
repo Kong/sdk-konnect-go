@@ -17,7 +17,7 @@ func (a APIVersionSpec) MarshalJSON() ([]byte, error) {
 }
 
 func (a *APIVersionSpec) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -41,7 +41,7 @@ func (a APIVersion) MarshalJSON() ([]byte, error) {
 }
 
 func (a *APIVersion) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil

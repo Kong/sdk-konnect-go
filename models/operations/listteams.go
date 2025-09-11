@@ -13,11 +13,11 @@ var ListTeamsServerList = []string{
 
 // ListTeamsQueryParamFilter - Filter teams returned in the response.
 type ListTeamsQueryParamFilter struct {
-	// Filters on the given string field value by exact match inequality.
-	Name *components.StringFieldFilter `queryParam:"name=name"`
+	// Filters on the given string field value by fuzzy match.
+	Name *components.LegacyStringFieldFilter `queryParam:"name=name"`
 }
 
-func (o *ListTeamsQueryParamFilter) GetName() *components.StringFieldFilter {
+func (o *ListTeamsQueryParamFilter) GetName() *components.LegacyStringFieldFilter {
 	if o == nil {
 		return nil
 	}

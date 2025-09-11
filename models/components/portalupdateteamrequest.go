@@ -17,7 +17,7 @@ func (p PortalUpdateTeamRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PortalUpdateTeamRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil

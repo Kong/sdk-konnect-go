@@ -9,8 +9,7 @@ import (
 
 // ConfigStoreSecret - Config Store Secret
 type ConfigStoreSecret struct {
-	Key   *string `default:"null" json:"key"`
-	Value *string `default:"null" json:"value"`
+	Key *string `default:"null" json:"key"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	// An ISO-8601 timestamp representation of entity update date.
@@ -22,7 +21,7 @@ func (c ConfigStoreSecret) MarshalJSON() ([]byte, error) {
 }
 
 func (c *ConfigStoreSecret) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -33,13 +32,6 @@ func (o *ConfigStoreSecret) GetKey() *string {
 		return nil
 	}
 	return o.Key
-}
-
-func (o *ConfigStoreSecret) GetValue() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Value
 }
 
 func (o *ConfigStoreSecret) GetCreatedAt() *time.Time {

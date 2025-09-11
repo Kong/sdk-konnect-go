@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type AWSPrivateDNSResolverType string
@@ -35,6 +36,17 @@ type AwsPrivateDNSResolverAttachmentConfig struct {
 	// Object that contains mappings from proxied internal domains to remote DNS server IP address for a Private DNS Resolver.
 	//
 	DNSConfig map[string]PrivateDNSResolverConfig `json:"dns_config"`
+}
+
+func (a AwsPrivateDNSResolverAttachmentConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AwsPrivateDNSResolverAttachmentConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"kind", "dns_config"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AwsPrivateDNSResolverAttachmentConfig) GetKind() AWSPrivateDNSResolverType {

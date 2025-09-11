@@ -16,7 +16,7 @@ const (
 
 // APIImplementationListItem - An entity that implements an API
 type APIImplementationListItem struct {
-	APIImplementationListItemGatewayServiceEntity *APIImplementationListItemGatewayServiceEntity `queryParam:"inline"`
+	APIImplementationListItemGatewayServiceEntity *APIImplementationListItemGatewayServiceEntity `queryParam:"inline" name:"ApiImplementationListItem"`
 
 	Type APIImplementationListItemType
 }
@@ -33,7 +33,7 @@ func CreateAPIImplementationListItemAPIImplementationListItemGatewayServiceEntit
 func (u *APIImplementationListItem) UnmarshalJSON(data []byte) error {
 
 	var apiImplementationListItemGatewayServiceEntity APIImplementationListItemGatewayServiceEntity = APIImplementationListItemGatewayServiceEntity{}
-	if err := utils.UnmarshalJSON(data, &apiImplementationListItemGatewayServiceEntity, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &apiImplementationListItemGatewayServiceEntity, "", true, nil); err == nil {
 		u.APIImplementationListItemGatewayServiceEntity = &apiImplementationListItemGatewayServiceEntity
 		u.Type = APIImplementationListItemTypeAPIImplementationListItemGatewayServiceEntity
 		return nil

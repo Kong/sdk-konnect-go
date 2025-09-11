@@ -36,7 +36,7 @@ func (a APIDocumentSummaryWithChildren) MarshalJSON() ([]byte, error) {
 }
 
 func (a *APIDocumentSummaryWithChildren) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "title", "slug", "created_at", "updated_at", "children"}); err != nil {
 		return err
 	}
 	return nil

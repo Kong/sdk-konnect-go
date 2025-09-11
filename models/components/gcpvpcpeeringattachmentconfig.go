@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type GCPVPCPeeringAttachmentType string
@@ -36,6 +37,17 @@ type GCPVPCPeeringAttachmentConfig struct {
 	PeerProjectID string `json:"peer_project_id"`
 	// GCP VPC Name of the peer account to create attachment to.
 	PeerVpcName string `json:"peer_vpc_name"`
+}
+
+func (g GCPVPCPeeringAttachmentConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GCPVPCPeeringAttachmentConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"kind", "peer_project_id", "peer_vpc_name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GCPVPCPeeringAttachmentConfig) GetKind() GCPVPCPeeringAttachmentType {

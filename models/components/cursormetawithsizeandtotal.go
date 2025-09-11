@@ -20,7 +20,7 @@ func (c CursorMetaWithSizeAndTotal) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CursorMetaWithSizeAndTotal) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"size"}); err != nil {
 		return err
 	}
 	return nil

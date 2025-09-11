@@ -107,7 +107,7 @@ func (p PortalResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PortalResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "created_at", "updated_at", "default_api_visibility", "default_page_visibility", "default_domain", "canonical_domain"}); err != nil {
 		return err
 	}
 	return nil

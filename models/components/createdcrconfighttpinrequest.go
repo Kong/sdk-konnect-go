@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // CreateDcrConfigHTTPInRequest - Payload to create an HTTP DCR provider.
 type CreateDcrConfigHTTPInRequest struct {
 	// The base URL of the DCR server. This is the URL that will be used to make the HTTP requests from Konnect to the DCR provider.
@@ -16,6 +20,17 @@ type CreateDcrConfigHTTPInRequest struct {
 	DisableEventHooks *bool `json:"disable_event_hooks,omitempty"`
 	// This flag disable the refresh-secret endpoint on the application flow for the DCR provider.
 	DisableRefreshSecret *bool `json:"disable_refresh_secret,omitempty"`
+}
+
+func (c CreateDcrConfigHTTPInRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateDcrConfigHTTPInRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"dcr_base_url", "api_key"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateDcrConfigHTTPInRequest) GetDcrBaseURL() string {

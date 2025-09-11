@@ -31,7 +31,7 @@ func (p PortalSnippetInfo) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PortalSnippetInfo) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "name", "title", "visibility", "status", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil

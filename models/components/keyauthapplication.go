@@ -13,6 +13,17 @@ type KeyAuthApplicationPortal struct {
 	ID string `json:"id"`
 }
 
+func (k KeyAuthApplicationPortal) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(k, "", false)
+}
+
+func (k *KeyAuthApplicationPortal) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &k, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *KeyAuthApplicationPortal) GetID() string {
 	if o == nil {
 		return ""
@@ -44,7 +55,7 @@ func (k KeyAuthApplication) MarshalJSON() ([]byte, error) {
 }
 
 func (k *KeyAuthApplication) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &k, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &k, "", false, []string{"id", "created_at", "updated_at", "name", "auth_strategy", "portal", "registration_count"}); err != nil {
 		return err
 	}
 	return nil

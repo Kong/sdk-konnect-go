@@ -15,3 +15,9 @@ privateDNSAttachmentConfig := components.CreatePrivateDNSAttachmentConfigAwsPriv
 privateDNSAttachmentConfig := components.CreatePrivateDNSAttachmentConfigAwsPrivateDNSResolverAttachmentConfig(components.AwsPrivateDNSResolverAttachmentConfig{/* values here */})
 ```
 
+### GcpPrivateHostedZoneAttachmentConfig
+
+```go
+privateDNSAttachmentConfig := components.CreatePrivateDNSAttachmentConfigGcpPrivateHostedZoneAttachmentConfig(components.GcpPrivateHostedZoneAttachmentConfig{/* values here */})
+```
+

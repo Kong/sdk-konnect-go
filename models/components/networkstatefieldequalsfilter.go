@@ -11,6 +11,17 @@ import (
 type NetworkStateFieldEqualsComparison struct {
 }
 
+func (n NetworkStateFieldEqualsComparison) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NetworkStateFieldEqualsComparison) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 type NetworkStateFieldEqualsFilterType string
 
 const (
@@ -20,8 +31,8 @@ const (
 
 // NetworkStateFieldEqualsFilter - Filter a network state by exact match.
 type NetworkStateFieldEqualsFilter struct {
-	NetworkState                      *NetworkState                      `queryParam:"inline"`
-	NetworkStateFieldEqualsComparison *NetworkStateFieldEqualsComparison `queryParam:"inline"`
+	NetworkState                      *NetworkState                      `queryParam:"inline" name:"NetworkStateFieldEqualsFilter"`
+	NetworkStateFieldEqualsComparison *NetworkStateFieldEqualsComparison `queryParam:"inline" name:"NetworkStateFieldEqualsFilter"`
 
 	Type NetworkStateFieldEqualsFilterType
 }
@@ -47,14 +58,14 @@ func CreateNetworkStateFieldEqualsFilterNetworkStateFieldEqualsComparison(networ
 func (u *NetworkStateFieldEqualsFilter) UnmarshalJSON(data []byte) error {
 
 	var networkStateFieldEqualsComparison NetworkStateFieldEqualsComparison = NetworkStateFieldEqualsComparison{}
-	if err := utils.UnmarshalJSON(data, &networkStateFieldEqualsComparison, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &networkStateFieldEqualsComparison, "", true, nil); err == nil {
 		u.NetworkStateFieldEqualsComparison = &networkStateFieldEqualsComparison
 		u.Type = NetworkStateFieldEqualsFilterTypeNetworkStateFieldEqualsComparison
 		return nil
 	}
 
 	var networkState NetworkState = NetworkState("")
-	if err := utils.UnmarshalJSON(data, &networkState, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &networkState, "", true, nil); err == nil {
 		u.NetworkState = &networkState
 		u.Type = NetworkStateFieldEqualsFilterTypeNetworkState
 		return nil

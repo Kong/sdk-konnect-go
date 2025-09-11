@@ -10,8 +10,8 @@ type AvailabilityDocument struct {
 	InstanceTypes []InstanceType `json:"instance_types"`
 	// List of supported cloud providers that run cloud gateway instances.
 	Providers []Provider `json:"providers"`
-	// List of supported cloud providers that run high velocity cloud gateway instances.
-	HighVelocityProviders []HighVelocityProvider `json:"high_velocity_providers"`
+	// List of supported cloud providers that run serverless v1 cloud gateway instances.
+	ServerlessV1Providers []ServerlessV1Provider `json:"serverless_v1_providers"`
 }
 
 func (o *AvailabilityDocument) GetVersions() []string {
@@ -35,9 +35,9 @@ func (o *AvailabilityDocument) GetProviders() []Provider {
 	return o.Providers
 }
 
-func (o *AvailabilityDocument) GetHighVelocityProviders() []HighVelocityProvider {
+func (o *AvailabilityDocument) GetServerlessV1Providers() []ServerlessV1Provider {
 	if o == nil {
-		return []HighVelocityProvider{}
+		return []ServerlessV1Provider{}
 	}
-	return o.HighVelocityProviders
+	return o.ServerlessV1Providers
 }

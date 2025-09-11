@@ -52,7 +52,7 @@ func (c CreateAPISpecRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateAPISpecRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil

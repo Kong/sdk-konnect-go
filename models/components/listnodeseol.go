@@ -17,7 +17,7 @@ func (l ListNodesEolItems) MarshalJSON() ([]byte, error) {
 }
 
 func (l *ListNodesEolItems) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -53,7 +53,7 @@ func (l ListNodesEolPage) MarshalJSON() ([]byte, error) {
 }
 
 func (l *ListNodesEolPage) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
 		return err
 	}
 	return nil

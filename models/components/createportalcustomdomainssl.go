@@ -17,7 +17,7 @@ func (h HTTP) MarshalJSON() ([]byte, error) {
 }
 
 func (h *HTTP) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &h, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &h, "", false, []string{"domain_verification_method"}); err != nil {
 		return err
 	}
 	return nil
@@ -40,7 +40,7 @@ func (c CustomCertificate) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CustomCertificate) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"domain_verification_method", "custom_certificate", "custom_private_key"}); err != nil {
 		return err
 	}
 	return nil
@@ -72,8 +72,8 @@ const (
 )
 
 type CreatePortalCustomDomainSSL struct {
-	CustomCertificate *CustomCertificate `queryParam:"inline"`
-	HTTP              *HTTP              `queryParam:"inline"`
+	CustomCertificate *CustomCertificate `queryParam:"inline" name:"CreatePortalCustomDomainSSL"`
+	HTTP              *HTTP              `queryParam:"inline" name:"CreatePortalCustomDomainSSL"`
 
 	Type CreatePortalCustomDomainSSLType
 }
@@ -98,17 +98,17 @@ func CreateCreatePortalCustomDomainSSLHTTP(http HTTP) CreatePortalCustomDomainSS
 
 func (u *CreatePortalCustomDomainSSL) UnmarshalJSON(data []byte) error {
 
-	var http HTTP = HTTP{}
-	if err := utils.UnmarshalJSON(data, &http, "", true, true); err == nil {
-		u.HTTP = &http
-		u.Type = CreatePortalCustomDomainSSLTypeHTTP
+	var customCertificate CustomCertificate = CustomCertificate{}
+	if err := utils.UnmarshalJSON(data, &customCertificate, "", true, nil); err == nil {
+		u.CustomCertificate = &customCertificate
+		u.Type = CreatePortalCustomDomainSSLTypeCustomCertificate
 		return nil
 	}
 
-	var customCertificate CustomCertificate = CustomCertificate{}
-	if err := utils.UnmarshalJSON(data, &customCertificate, "", true, true); err == nil {
-		u.CustomCertificate = &customCertificate
-		u.Type = CreatePortalCustomDomainSSLTypeCustomCertificate
+	var http HTTP = HTTP{}
+	if err := utils.UnmarshalJSON(data, &http, "", true, nil); err == nil {
+		u.HTTP = &http
+		u.Type = CreatePortalCustomDomainSSLTypeHTTP
 		return nil
 	}
 

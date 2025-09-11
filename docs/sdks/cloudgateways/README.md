@@ -30,6 +30,7 @@
 * [ListTransitGateways](#listtransitgateways) - List Transit Gateways
 * [CreateTransitGateway](#createtransitgateway) - Create Transit Gateway
 * [GetTransitGateway](#gettransitgateway) - Get Transit Gateway
+* [UpdateTransitGateway](#updatetransitgateway) - Update Transit Gateway
 * [DeleteTransitGateway](#deletetransitgateway) - Delete Transit Gateway
 * [ListProviderAccounts](#listprovideraccounts) - List Provider Accounts
 * [GetProviderAccount](#getprovideraccount) - Get Provider Account
@@ -1659,6 +1660,82 @@ func main() {
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## UpdateTransitGateway
+
+Updates a transit gateway by ID for a given network.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="update-transit-gateway" method="patch" path="/v2/cloud-gateways/networks/{networkId}/transit-gateways/{transitGatewayId}" -->
+```go
+package main
+
+import(
+	"context"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdateTransitGateway(ctx, operations.UpdateTransitGatewayRequest{
+        NetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
+        TransitGatewayID: "0850820b-d153-4a2a-b9be-7d2204779139",
+        PatchTransitGatewayRequest: components.CreatePatchTransitGatewayRequestPatchAwsResourceEndpointGateway(
+            components.PatchAwsResourceEndpointGateway{
+                TransitGatewayAttachmentConfig: components.TransitGatewayAttachmentConfig{
+                    Kind: components.PatchAWSResourceEndpointGatewayAWSResourceEndpointAttachmentTypeAwsResourceEndpointAttachment,
+                    ResourceConfig: []components.AwsResourceEndpointConfig{
+                        components.AwsResourceEndpointConfig{
+                            ResourceConfigID: "<id>",
+                            DomainName: "delectable-molasses.com",
+                        },
+                    },
+                },
+            },
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PatchTransitGatewayResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                            | :heavy_check_mark:                                                                               | The context to use for the request.                                                              |
+| `request`                                                                                        | [operations.UpdateTransitGatewayRequest](../../models/operations/updatetransitgatewayrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `opts`                                                                                           | [][operations.Option](../../models/operations/option.md)                                         | :heavy_minus_sign:                                                                               | The options for this request.                                                                    |
+
+### Response
+
+**[*operations.UpdateTransitGatewayResponse](../../models/operations/updatetransitgatewayresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## DeleteTransitGateway

@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // PrivateDNSStateFieldNotEqualsFilter - Filter private-dns state by inequality match.
 type PrivateDNSStateFieldNotEqualsFilter struct {
 	// The current state of the Private DNS attachment. Possible values:
@@ -14,6 +18,17 @@ type PrivateDNSStateFieldNotEqualsFilter struct {
 	// - `terminated` - The attachment has been fully deleted and is no longer available.
 	//
 	Neq PrivateDNSState `queryParam:"name=neq"`
+}
+
+func (p PrivateDNSStateFieldNotEqualsFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PrivateDNSStateFieldNotEqualsFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"neq"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PrivateDNSStateFieldNotEqualsFilter) GetNeq() PrivateDNSState {

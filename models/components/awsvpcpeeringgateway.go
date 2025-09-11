@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type AWSVpcPeeringGateway struct {
 	// Human-readable name of the transit gateway.
 	Name string `json:"name"`
@@ -14,6 +18,17 @@ type AWSVpcPeeringGateway struct {
 	//
 	CidrBlocks                     []string                             `json:"cidr_blocks"`
 	TransitGatewayAttachmentConfig AwsVpcPeeringGatewayAttachmentConfig `json:"transit_gateway_attachment_config"`
+}
+
+func (a AWSVpcPeeringGateway) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AWSVpcPeeringGateway) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"name", "cidr_blocks", "transit_gateway_attachment_config"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AWSVpcPeeringGateway) GetName() string {

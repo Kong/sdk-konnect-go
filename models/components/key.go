@@ -17,7 +17,7 @@ func (p Pem) MarshalJSON() ([]byte, error) {
 }
 
 func (p *Pem) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -78,7 +78,7 @@ func (k Key) MarshalJSON() ([]byte, error) {
 }
 
 func (k *Key) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &k, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &k, "", false, []string{"kid"}); err != nil {
 		return err
 	}
 	return nil

@@ -103,12 +103,20 @@ func (o *Menu) GetFooterBottom() []PortalMenuItem {
 }
 
 type SpecRenderer struct {
-	TryItUI        *bool `default:"true" json:"try_it_ui"`
-	TryItInsomnia  *bool `default:"true" json:"try_it_insomnia"`
+	// Enable in-browser testing for your APIs. All linked gateways must have the CORS plugin configured.
+	TryItUI *bool `default:"true" json:"try_it_ui"`
+	// Enables users to open the API spec in Insomnia to explore and send requests with the native client.
+	TryItInsomnia *bool `default:"true" json:"try_it_insomnia"`
+	// Display the full spec on a single, scrollable page. If disabled, documentation, endpoints, and schemas appear on separate pages.
 	InfiniteScroll *bool `default:"true" json:"infinite_scroll"`
-	ShowSchemas    *bool `default:"true" json:"show_schemas"`
-	HideInternal   *bool `default:"false" json:"hide_internal"`
+	// Control whether schemas are visible in your API specs. When enabled, schemas appear in the side navigation below the endpoints.
+	ShowSchemas *bool `default:"true" json:"show_schemas"`
+	// Manage visibility of internal endpoints and models.
+	HideInternal *bool `default:"false" json:"hide_internal"`
+	// Manage visibility of deprecated endpoints and models.
 	HideDeprecated *bool `default:"false" json:"hide_deprecated"`
+	// Let users define a custom server URL for endpoints. This will be used to generate code snippets and to test the API. The URL is client-side only and is not saved.
+	AllowCustomServerUrls *bool `default:"true" json:"allow_custom_server_urls"`
 }
 
 func (s SpecRenderer) MarshalJSON() ([]byte, error) {
@@ -116,7 +124,7 @@ func (s SpecRenderer) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SpecRenderer) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -164,6 +172,13 @@ func (o *SpecRenderer) GetHideDeprecated() *bool {
 	return o.HideDeprecated
 }
 
+func (o *SpecRenderer) GetAllowCustomServerUrls() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AllowCustomServerUrls
+}
+
 // PortalCustomization - The custom settings of this portal
 type PortalCustomization struct {
 	Theme        *Theme        `json:"theme,omitempty"`
@@ -179,7 +194,7 @@ func (p PortalCustomization) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PortalCustomization) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil

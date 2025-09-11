@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type AWSResourceEndpointGateway struct {
 	// Human-readable name of the transit gateway.
 	Name string `json:"name"`
@@ -10,6 +14,17 @@ type AWSResourceEndpointGateway struct {
 	//
 	DNSConfig                      []TransitGatewayDNSConfig           `json:"dns_config,omitempty"`
 	TransitGatewayAttachmentConfig AwsResourceEndpointAttachmentConfig `json:"transit_gateway_attachment_config"`
+}
+
+func (a AWSResourceEndpointGateway) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AWSResourceEndpointGateway) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"name", "transit_gateway_attachment_config"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AWSResourceEndpointGateway) GetName() string {

@@ -14,6 +14,17 @@ import (
 type DcrProviderHTTPDcrConfig struct {
 }
 
+func (d DcrProviderHTTPDcrConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DcrProviderHTTPDcrConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 // DCRProviderHTTP - A DCR provider for HTTP -- only properties not included in DcrProviderBase
 type DCRProviderHTTP struct {
 	// The type of DCR provider. Can be one of the following - auth0, azureAd, curity, okta, http
@@ -48,7 +59,7 @@ func (d DCRProviderHTTP) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DCRProviderHTTP) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"provider_type", "dcr_config", "id", "name", "issuer", "active", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -128,6 +139,17 @@ func (o *DCRProviderHTTP) GetUpdatedAt() time.Time {
 type DcrProviderOktaDcrConfig struct {
 }
 
+func (d DcrProviderOktaDcrConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DcrProviderOktaDcrConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 // DCRProviderOKTA - A DCR provider for Okta -- only properties not included in DcrProviderBase
 type DCRProviderOKTA struct {
 	// The type of DCR provider. Can be one of the following - auth0, azureAd, curity, okta, http
@@ -162,7 +184,7 @@ func (d DCRProviderOKTA) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DCRProviderOKTA) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"provider_type", "dcr_config", "id", "name", "issuer", "active", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -242,6 +264,17 @@ func (o *DCRProviderOKTA) GetUpdatedAt() time.Time {
 type DcrProviderCurityDcrConfig struct {
 }
 
+func (d DcrProviderCurityDcrConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DcrProviderCurityDcrConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 // DCRProviderCurity - A DCR provider for Curity -- only properties not included in DcrProviderBase
 type DCRProviderCurity struct {
 	// The type of DCR provider. Can be one of the following - auth0, azureAd, curity, okta, http
@@ -276,7 +309,7 @@ func (d DCRProviderCurity) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DCRProviderCurity) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"provider_type", "dcr_config", "id", "name", "issuer", "active", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -356,6 +389,17 @@ func (o *DCRProviderCurity) GetUpdatedAt() time.Time {
 type DcrProviderAzureAdDcrConfig struct {
 }
 
+func (d DcrProviderAzureAdDcrConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DcrProviderAzureAdDcrConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 // DCRProviderAzureAD - A DCR provider for Azure AD -- only properties not included in DcrProviderBase
 type DCRProviderAzureAD struct {
 	// The type of DCR provider. Can be one of the following - auth0, azureAd, curity, okta, http
@@ -390,7 +434,7 @@ func (d DCRProviderAzureAD) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DCRProviderAzureAD) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"provider_type", "dcr_config", "id", "name", "issuer", "active", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -470,6 +514,17 @@ func (o *DCRProviderAzureAD) GetUpdatedAt() time.Time {
 type DcrProviderAuth0CreateDcrProviderResponseDcrConfig struct {
 }
 
+func (d DcrProviderAuth0CreateDcrProviderResponseDcrConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DcrProviderAuth0CreateDcrProviderResponseDcrConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 // DCRProviderAuth0 - A DCR provider for Auth0 -- only properties not included in DcrProviderBase
 type DCRProviderAuth0 struct {
 	// The type of DCR provider. Can be one of the following - auth0, azureAd, curity, okta, http
@@ -504,7 +559,7 @@ func (d DCRProviderAuth0) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DCRProviderAuth0) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"provider_type", "dcr_config", "id", "name", "issuer", "active", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -592,11 +647,11 @@ const (
 
 // CreateDcrProviderResponse - A response containing the newly created DCR provider object.
 type CreateDcrProviderResponse struct {
-	DCRProviderAuth0   *DCRProviderAuth0   `queryParam:"inline"`
-	DCRProviderAzureAD *DCRProviderAzureAD `queryParam:"inline"`
-	DCRProviderCurity  *DCRProviderCurity  `queryParam:"inline"`
-	DCRProviderOKTA    *DCRProviderOKTA    `queryParam:"inline"`
-	DCRProviderHTTP    *DCRProviderHTTP    `queryParam:"inline"`
+	DCRProviderAuth0   *DCRProviderAuth0   `queryParam:"inline" name:"CreateDcrProviderResponse"`
+	DCRProviderAzureAD *DCRProviderAzureAD `queryParam:"inline" name:"CreateDcrProviderResponse"`
+	DCRProviderCurity  *DCRProviderCurity  `queryParam:"inline" name:"CreateDcrProviderResponse"`
+	DCRProviderOKTA    *DCRProviderOKTA    `queryParam:"inline" name:"CreateDcrProviderResponse"`
+	DCRProviderHTTP    *DCRProviderHTTP    `queryParam:"inline" name:"CreateDcrProviderResponse"`
 
 	Type CreateDcrProviderResponseType
 }
@@ -675,7 +730,7 @@ func (u *CreateDcrProviderResponse) UnmarshalJSON(data []byte) error {
 	switch dis.ProviderType {
 	case "DcrProviderAuth0":
 		dcrProviderAuth0 := new(DCRProviderAuth0)
-		if err := utils.UnmarshalJSON(data, &dcrProviderAuth0, "", true, false); err != nil {
+		if err := utils.UnmarshalJSON(data, &dcrProviderAuth0, "", true, nil); err != nil {
 			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == DcrProviderAuth0) type DCRProviderAuth0 within CreateDcrProviderResponse: %w", string(data), err)
 		}
 
@@ -684,7 +739,7 @@ func (u *CreateDcrProviderResponse) UnmarshalJSON(data []byte) error {
 		return nil
 	case "DcrProviderAzureAd":
 		dcrProviderAzureAD := new(DCRProviderAzureAD)
-		if err := utils.UnmarshalJSON(data, &dcrProviderAzureAD, "", true, false); err != nil {
+		if err := utils.UnmarshalJSON(data, &dcrProviderAzureAD, "", true, nil); err != nil {
 			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == DcrProviderAzureAd) type DCRProviderAzureAD within CreateDcrProviderResponse: %w", string(data), err)
 		}
 
@@ -693,7 +748,7 @@ func (u *CreateDcrProviderResponse) UnmarshalJSON(data []byte) error {
 		return nil
 	case "DcrProviderCurity":
 		dcrProviderCurity := new(DCRProviderCurity)
-		if err := utils.UnmarshalJSON(data, &dcrProviderCurity, "", true, false); err != nil {
+		if err := utils.UnmarshalJSON(data, &dcrProviderCurity, "", true, nil); err != nil {
 			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == DcrProviderCurity) type DCRProviderCurity within CreateDcrProviderResponse: %w", string(data), err)
 		}
 
@@ -702,7 +757,7 @@ func (u *CreateDcrProviderResponse) UnmarshalJSON(data []byte) error {
 		return nil
 	case "DcrProviderOkta":
 		dcrProviderOKTA := new(DCRProviderOKTA)
-		if err := utils.UnmarshalJSON(data, &dcrProviderOKTA, "", true, false); err != nil {
+		if err := utils.UnmarshalJSON(data, &dcrProviderOKTA, "", true, nil); err != nil {
 			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == DcrProviderOkta) type DCRProviderOKTA within CreateDcrProviderResponse: %w", string(data), err)
 		}
 
@@ -711,7 +766,7 @@ func (u *CreateDcrProviderResponse) UnmarshalJSON(data []byte) error {
 		return nil
 	case "DcrProviderHttp":
 		dcrProviderHTTP := new(DCRProviderHTTP)
-		if err := utils.UnmarshalJSON(data, &dcrProviderHTTP, "", true, false); err != nil {
+		if err := utils.UnmarshalJSON(data, &dcrProviderHTTP, "", true, nil); err != nil {
 			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == DcrProviderHttp) type DCRProviderHTTP within CreateDcrProviderResponse: %w", string(data), err)
 		}
 

@@ -21,7 +21,7 @@ func (u UserConfiguration) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UserConfiguration) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"event_id", "event_title", "event_description", "event_namespace", "default_subscription"}); err != nil {
 		return err
 	}
 	return nil

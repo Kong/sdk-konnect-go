@@ -19,7 +19,7 @@ func (t TeamGroupMapping) MarshalJSON() ([]byte, error) {
 }
 
 func (t *TeamGroupMapping) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
 		return err
 	}
 	return nil

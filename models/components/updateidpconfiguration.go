@@ -17,7 +17,7 @@ func (u UpdateIDPConfigurationClaimMappings) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UpdateIDPConfigurationClaimMappings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -59,7 +59,7 @@ func (u UpdateIDPConfiguration) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UpdateIDPConfiguration) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil

@@ -17,8 +17,8 @@ const (
 
 // Configs - JSON-B object containing the configuration for the OIDC strategy under the key 'openid-connect' or the configuration for the Key Auth strategy under the key 'key-auth'
 type Configs struct {
-	UpdateAppAuthStrategyRequestOpenIDConnect *UpdateAppAuthStrategyRequestOpenIDConnect `queryParam:"inline"`
-	UpdateAppAuthStrategyRequestKeyAuth       *UpdateAppAuthStrategyRequestKeyAuth       `queryParam:"inline"`
+	UpdateAppAuthStrategyRequestOpenIDConnect *UpdateAppAuthStrategyRequestOpenIDConnect `queryParam:"inline" name:"configs"`
+	UpdateAppAuthStrategyRequestKeyAuth       *UpdateAppAuthStrategyRequestKeyAuth       `queryParam:"inline" name:"configs"`
 
 	Type ConfigsType
 }
@@ -44,14 +44,14 @@ func CreateConfigsUpdateAppAuthStrategyRequestKeyAuth(updateAppAuthStrategyReque
 func (u *Configs) UnmarshalJSON(data []byte) error {
 
 	var updateAppAuthStrategyRequestOpenIDConnect UpdateAppAuthStrategyRequestOpenIDConnect = UpdateAppAuthStrategyRequestOpenIDConnect{}
-	if err := utils.UnmarshalJSON(data, &updateAppAuthStrategyRequestOpenIDConnect, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateAppAuthStrategyRequestOpenIDConnect, "", true, nil); err == nil {
 		u.UpdateAppAuthStrategyRequestOpenIDConnect = &updateAppAuthStrategyRequestOpenIDConnect
 		u.Type = ConfigsTypeUpdateAppAuthStrategyRequestOpenIDConnect
 		return nil
 	}
 
 	var updateAppAuthStrategyRequestKeyAuth UpdateAppAuthStrategyRequestKeyAuth = UpdateAppAuthStrategyRequestKeyAuth{}
-	if err := utils.UnmarshalJSON(data, &updateAppAuthStrategyRequestKeyAuth, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateAppAuthStrategyRequestKeyAuth, "", true, nil); err == nil {
 		u.UpdateAppAuthStrategyRequestKeyAuth = &updateAppAuthStrategyRequestKeyAuth
 		u.Type = ConfigsTypeUpdateAppAuthStrategyRequestKeyAuth
 		return nil
@@ -97,7 +97,7 @@ func (u UpdateAppAuthStrategyRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UpdateAppAuthStrategyRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil

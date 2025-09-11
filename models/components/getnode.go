@@ -15,7 +15,7 @@ func (g GetNodeCompatibilityStatus) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetNodeCompatibilityStatus) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -45,7 +45,7 @@ func (g GetNodeItem) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetNodeItem) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
 		return err
 	}
 	return nil

@@ -3,38 +3,38 @@
 package components
 
 type ConfigurationFilterParameters struct {
-	// Filters on the given string field value by exact match inequality.
-	EventTitle *StringFieldFilter `queryParam:"name=event_title"`
-	// Filters on the given string field value by exact match inequality.
-	EventDescription *StringFieldFilter `queryParam:"name=event_description"`
-	// Filters on the given string field value by exact match inequality.
-	EventNamespace *StringFieldFilter `queryParam:"name=event_namespace"`
-	// Filters on the given string field value by exact match inequality.
-	Region *StringFieldFilter `queryParam:"name=region"`
+	// Filters on the given string field value by fuzzy match.
+	EventTitle *LegacyStringFieldFilter `queryParam:"name=event_title"`
+	// Filters on the given string field value by fuzzy match.
+	EventDescription *LegacyStringFieldFilter `queryParam:"name=event_description"`
+	// Filters on the given string field value by fuzzy match.
+	EventNamespace *LegacyStringFieldFilter `queryParam:"name=event_namespace"`
+	// Filters on the given string field value by fuzzy match.
+	Region *LegacyStringFieldFilter `queryParam:"name=region"`
 }
 
-func (o *ConfigurationFilterParameters) GetEventTitle() *StringFieldFilter {
+func (o *ConfigurationFilterParameters) GetEventTitle() *LegacyStringFieldFilter {
 	if o == nil {
 		return nil
 	}
 	return o.EventTitle
 }
 
-func (o *ConfigurationFilterParameters) GetEventDescription() *StringFieldFilter {
+func (o *ConfigurationFilterParameters) GetEventDescription() *LegacyStringFieldFilter {
 	if o == nil {
 		return nil
 	}
 	return o.EventDescription
 }
 
-func (o *ConfigurationFilterParameters) GetEventNamespace() *StringFieldFilter {
+func (o *ConfigurationFilterParameters) GetEventNamespace() *LegacyStringFieldFilter {
 	if o == nil {
 		return nil
 	}
 	return o.EventNamespace
 }
 
-func (o *ConfigurationFilterParameters) GetRegion() *StringFieldFilter {
+func (o *ConfigurationFilterParameters) GetRegion() *LegacyStringFieldFilter {
 	if o == nil {
 		return nil
 	}

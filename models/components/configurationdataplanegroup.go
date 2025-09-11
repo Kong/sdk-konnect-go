@@ -59,7 +59,7 @@ func (s StateMetadata) MarshalJSON() ([]byte, error) {
 }
 
 func (s *StateMetadata) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -113,7 +113,7 @@ func (c ConfigurationDataPlaneGroup) MarshalJSON() ([]byte, error) {
 }
 
 func (c *ConfigurationDataPlaneGroup) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "provider", "region", "autoscale", "cloud_gateway_network_id", "state", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil

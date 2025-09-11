@@ -2,10 +2,25 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // APIImplementationService - A Gateway service that implements an API
 type APIImplementationService struct {
 	ControlPlaneID string `json:"control_plane_id"`
 	ID             string `json:"id"`
+}
+
+func (a APIImplementationService) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *APIImplementationService) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"control_plane_id", "id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *APIImplementationService) GetControlPlaneID() string {

@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type AwsResourceEndpointConfigResponse struct {
 	// Resource Config ID to uniquely identify a resource configuration.
 	ResourceConfigID string `json:"resource_config_id"`
@@ -15,6 +19,17 @@ type AwsResourceEndpointConfigResponse struct {
 	// - `terminating` - The config is in the process of being deleted and is no longer accepting new traffic.
 	//
 	State AwsResourceEndpointConfigState `json:"state"`
+}
+
+func (a AwsResourceEndpointConfigResponse) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AwsResourceEndpointConfigResponse) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"resource_config_id", "domain_name", "state"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AwsResourceEndpointConfigResponse) GetResourceConfigID() string {

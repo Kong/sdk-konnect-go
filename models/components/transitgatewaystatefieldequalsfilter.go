@@ -11,6 +11,17 @@ import (
 type TransitGatewayStateFieldEqualsComparison struct {
 }
 
+func (t TransitGatewayStateFieldEqualsComparison) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TransitGatewayStateFieldEqualsComparison) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 type TransitGatewayStateFieldEqualsFilterType string
 
 const (
@@ -20,8 +31,8 @@ const (
 
 // TransitGatewayStateFieldEqualsFilter - Filter transit-gateway state by exact match.
 type TransitGatewayStateFieldEqualsFilter struct {
-	TransitGatewayState                      *TransitGatewayState                      `queryParam:"inline"`
-	TransitGatewayStateFieldEqualsComparison *TransitGatewayStateFieldEqualsComparison `queryParam:"inline"`
+	TransitGatewayState                      *TransitGatewayState                      `queryParam:"inline" name:"TransitGatewayStateFieldEqualsFilter"`
+	TransitGatewayStateFieldEqualsComparison *TransitGatewayStateFieldEqualsComparison `queryParam:"inline" name:"TransitGatewayStateFieldEqualsFilter"`
 
 	Type TransitGatewayStateFieldEqualsFilterType
 }
@@ -47,14 +58,14 @@ func CreateTransitGatewayStateFieldEqualsFilterTransitGatewayStateFieldEqualsCom
 func (u *TransitGatewayStateFieldEqualsFilter) UnmarshalJSON(data []byte) error {
 
 	var transitGatewayStateFieldEqualsComparison TransitGatewayStateFieldEqualsComparison = TransitGatewayStateFieldEqualsComparison{}
-	if err := utils.UnmarshalJSON(data, &transitGatewayStateFieldEqualsComparison, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &transitGatewayStateFieldEqualsComparison, "", true, nil); err == nil {
 		u.TransitGatewayStateFieldEqualsComparison = &transitGatewayStateFieldEqualsComparison
 		u.Type = TransitGatewayStateFieldEqualsFilterTypeTransitGatewayStateFieldEqualsComparison
 		return nil
 	}
 
 	var transitGatewayState TransitGatewayState = TransitGatewayState("")
-	if err := utils.UnmarshalJSON(data, &transitGatewayState, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &transitGatewayState, "", true, nil); err == nil {
 		u.TransitGatewayState = &transitGatewayState
 		u.Type = TransitGatewayStateFieldEqualsFilterTypeTransitGatewayState
 		return nil

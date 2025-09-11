@@ -17,9 +17,9 @@ const (
 )
 
 type ControlPlaneGeoFieldFilter struct {
-	ControlPlaneGeoFieldEqualsFilter     *ControlPlaneGeoFieldEqualsFilter     `queryParam:"inline"`
-	ControlPlaneGeoFieldNotEqualsFilter  *ControlPlaneGeoFieldNotEqualsFilter  `queryParam:"inline"`
-	ControlPlaneGeoFieldOrEqualityFilter *ControlPlaneGeoFieldOrEqualityFilter `queryParam:"inline"`
+	ControlPlaneGeoFieldEqualsFilter     *ControlPlaneGeoFieldEqualsFilter     `queryParam:"inline" name:"ControlPlaneGeoFieldFilter"`
+	ControlPlaneGeoFieldNotEqualsFilter  *ControlPlaneGeoFieldNotEqualsFilter  `queryParam:"inline" name:"ControlPlaneGeoFieldFilter"`
+	ControlPlaneGeoFieldOrEqualityFilter *ControlPlaneGeoFieldOrEqualityFilter `queryParam:"inline" name:"ControlPlaneGeoFieldFilter"`
 
 	Type ControlPlaneGeoFieldFilterType
 }
@@ -54,21 +54,21 @@ func CreateControlPlaneGeoFieldFilterControlPlaneGeoFieldOrEqualityFilter(contro
 func (u *ControlPlaneGeoFieldFilter) UnmarshalJSON(data []byte) error {
 
 	var controlPlaneGeoFieldNotEqualsFilter ControlPlaneGeoFieldNotEqualsFilter = ControlPlaneGeoFieldNotEqualsFilter{}
-	if err := utils.UnmarshalJSON(data, &controlPlaneGeoFieldNotEqualsFilter, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &controlPlaneGeoFieldNotEqualsFilter, "", true, nil); err == nil {
 		u.ControlPlaneGeoFieldNotEqualsFilter = &controlPlaneGeoFieldNotEqualsFilter
 		u.Type = ControlPlaneGeoFieldFilterTypeControlPlaneGeoFieldNotEqualsFilter
 		return nil
 	}
 
 	var controlPlaneGeoFieldOrEqualityFilter ControlPlaneGeoFieldOrEqualityFilter = ControlPlaneGeoFieldOrEqualityFilter{}
-	if err := utils.UnmarshalJSON(data, &controlPlaneGeoFieldOrEqualityFilter, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &controlPlaneGeoFieldOrEqualityFilter, "", true, nil); err == nil {
 		u.ControlPlaneGeoFieldOrEqualityFilter = &controlPlaneGeoFieldOrEqualityFilter
 		u.Type = ControlPlaneGeoFieldFilterTypeControlPlaneGeoFieldOrEqualityFilter
 		return nil
 	}
 
 	var controlPlaneGeoFieldEqualsFilter ControlPlaneGeoFieldEqualsFilter = ControlPlaneGeoFieldEqualsFilter{}
-	if err := utils.UnmarshalJSON(data, &controlPlaneGeoFieldEqualsFilter, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &controlPlaneGeoFieldEqualsFilter, "", true, nil); err == nil {
 		u.ControlPlaneGeoFieldEqualsFilter = &controlPlaneGeoFieldEqualsFilter
 		u.Type = ControlPlaneGeoFieldFilterTypeControlPlaneGeoFieldEqualsFilter
 		return nil

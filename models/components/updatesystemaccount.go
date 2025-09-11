@@ -19,7 +19,7 @@ func (u UpdateSystemAccount) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UpdateSystemAccount) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil

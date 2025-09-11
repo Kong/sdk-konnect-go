@@ -2,10 +2,25 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // CustomDomainStateFieldOrEqualityFilter - Filter custom domain state by determining if the value is equal to any in a set of values, where the set is a
 // comma-delimited list.
 type CustomDomainStateFieldOrEqualityFilter struct {
 	Oeq string `queryParam:"name=oeq"`
+}
+
+func (c CustomDomainStateFieldOrEqualityFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CustomDomainStateFieldOrEqualityFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"oeq"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CustomDomainStateFieldOrEqualityFilter) GetOeq() string {

@@ -20,7 +20,7 @@ func (p PartialLink) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PartialLink) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "name"}); err != nil {
 		return err
 	}
 	return nil

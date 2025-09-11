@@ -21,7 +21,7 @@ func (g GcpPrivateHostedZoneResponsePrivateDNSStateMetadata) MarshalJSON() ([]by
 }
 
 func (g *GcpPrivateHostedZoneResponsePrivateDNSStateMetadata) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -65,7 +65,8 @@ type GcpPrivateHostedZoneResponse struct {
 	// An RFC-3339 timestamp representation of Private DNS update date.
 	UpdatedAt time.Time `json:"updated_at"`
 	// Human-readable name of the Private DNS.
-	Name string `json:"name"`
+	Name                       string                               `json:"name"`
+	PrivateDNSAttachmentConfig GcpPrivateHostedZoneAttachmentConfig `json:"private_dns_attachment_config"`
 }
 
 func (g GcpPrivateHostedZoneResponse) MarshalJSON() ([]byte, error) {
@@ -73,7 +74,7 @@ func (g GcpPrivateHostedZoneResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GcpPrivateHostedZoneResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "state", "state_metadata", "entity_version", "created_at", "updated_at", "name", "private_dns_attachment_config"}); err != nil {
 		return err
 	}
 	return nil
@@ -126,4 +127,11 @@ func (o *GcpPrivateHostedZoneResponse) GetName() string {
 		return ""
 	}
 	return o.Name
+}
+
+func (o *GcpPrivateHostedZoneResponse) GetPrivateDNSAttachmentConfig() GcpPrivateHostedZoneAttachmentConfig {
+	if o == nil {
+		return GcpPrivateHostedZoneAttachmentConfig{}
+	}
+	return o.PrivateDNSAttachmentConfig
 }

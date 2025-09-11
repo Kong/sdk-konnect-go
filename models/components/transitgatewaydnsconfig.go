@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type TransitGatewayDNSConfig struct {
 	// Remote DNS Server IP Addresses to connect to for resolving internal DNS via a transit gateway.
 	RemoteDNSServerIPAddresses []string `json:"remote_dns_server_ip_addresses"`
@@ -9,6 +13,17 @@ type TransitGatewayDNSConfig struct {
 	// for a transit gateway.
 	//
 	DomainProxyList []string `json:"domain_proxy_list"`
+}
+
+func (t TransitGatewayDNSConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TransitGatewayDNSConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"remote_dns_server_ip_addresses", "domain_proxy_list"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TransitGatewayDNSConfig) GetRemoteDNSServerIPAddresses() []string {

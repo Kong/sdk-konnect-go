@@ -16,8 +16,8 @@ const (
 )
 
 type CreateIdentityProviderConfig struct {
-	ConfigureOIDCIdentityProviderConfig *ConfigureOIDCIdentityProviderConfig `queryParam:"inline"`
-	SAMLIdentityProviderConfigInput     *SAMLIdentityProviderConfigInput     `queryParam:"inline"`
+	ConfigureOIDCIdentityProviderConfig *ConfigureOIDCIdentityProviderConfig `queryParam:"inline" name:"config"`
+	SAMLIdentityProviderConfigInput     *SAMLIdentityProviderConfigInput     `queryParam:"inline" name:"config"`
 
 	Type CreateIdentityProviderConfigType
 }
@@ -42,17 +42,17 @@ func CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(samlIdent
 
 func (u *CreateIdentityProviderConfig) UnmarshalJSON(data []byte) error {
 
-	var samlIdentityProviderConfigInput SAMLIdentityProviderConfigInput = SAMLIdentityProviderConfigInput{}
-	if err := utils.UnmarshalJSON(data, &samlIdentityProviderConfigInput, "", true, true); err == nil {
-		u.SAMLIdentityProviderConfigInput = &samlIdentityProviderConfigInput
-		u.Type = CreateIdentityProviderConfigTypeSAMLIdentityProviderConfigInput
+	var configureOIDCIdentityProviderConfig ConfigureOIDCIdentityProviderConfig = ConfigureOIDCIdentityProviderConfig{}
+	if err := utils.UnmarshalJSON(data, &configureOIDCIdentityProviderConfig, "", true, nil); err == nil {
+		u.ConfigureOIDCIdentityProviderConfig = &configureOIDCIdentityProviderConfig
+		u.Type = CreateIdentityProviderConfigTypeConfigureOIDCIdentityProviderConfig
 		return nil
 	}
 
-	var configureOIDCIdentityProviderConfig ConfigureOIDCIdentityProviderConfig = ConfigureOIDCIdentityProviderConfig{}
-	if err := utils.UnmarshalJSON(data, &configureOIDCIdentityProviderConfig, "", true, true); err == nil {
-		u.ConfigureOIDCIdentityProviderConfig = &configureOIDCIdentityProviderConfig
-		u.Type = CreateIdentityProviderConfigTypeConfigureOIDCIdentityProviderConfig
+	var samlIdentityProviderConfigInput SAMLIdentityProviderConfigInput = SAMLIdentityProviderConfigInput{}
+	if err := utils.UnmarshalJSON(data, &samlIdentityProviderConfigInput, "", true, nil); err == nil {
+		u.SAMLIdentityProviderConfigInput = &samlIdentityProviderConfigInput
+		u.Type = CreateIdentityProviderConfigTypeSAMLIdentityProviderConfigInput
 		return nil
 	}
 
@@ -89,7 +89,7 @@ func (c CreateIdentityProvider) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateIdentityProvider) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil

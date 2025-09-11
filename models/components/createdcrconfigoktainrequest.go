@@ -2,12 +2,27 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // CreateDcrConfigOktaInRequest - Payload to create an Okta DCR provider.
 type CreateDcrConfigOktaInRequest struct {
 	// This secret should be copied from your identity provider's settings after you create a client
 	// and assign it as the management client for DCR for this developer portal
 	//
 	DcrToken string `json:"dcr_token"`
+}
+
+func (c CreateDcrConfigOktaInRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateDcrConfigOktaInRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"dcr_token"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateDcrConfigOktaInRequest) GetDcrToken() string {

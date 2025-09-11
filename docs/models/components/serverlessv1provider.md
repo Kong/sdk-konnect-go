@@ -1,0 +1,11 @@
+# ServerlessV1Provider
+
+Description of cloud provider that runs serverless v1 cloud gateway instances.
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            | Example                                                                                                |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `Provider`                                                                                             | [components.ServerlessV1ProviderName](../../models/components/serverlessv1providername.md)             | :heavy_check_mark:                                                                                     | Name of cloud provider.                                                                                | aws                                                                                                    |
+| `Regions`                                                                                              | [][components.ServerlessV1ProviderRegion](../../models/components/serverlessv1providerregion.md)       | :heavy_check_mark:                                                                                     | List of available regions to run serverless v1 cloud gateway instances  on for a given cloud provider. |                                                                                                        |

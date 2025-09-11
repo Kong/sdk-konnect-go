@@ -29,7 +29,7 @@ func (p PortalAuthenticationSettingsResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PortalAuthenticationSettingsResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"basic_auth_enabled", "oidc_auth_enabled", "oidc_team_mapping_enabled", "konnect_mapping_enabled"}); err != nil {
 		return err
 	}
 	return nil

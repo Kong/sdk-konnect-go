@@ -39,7 +39,7 @@ type ConfigurationDataPlaneGroupAutoscaleAutopilot struct {
 	// Max number of requests per second that the deployment target should support. If not set, this defaults to 10x base_rps. This field is deprecated and shouldn't be used in new configurations as it will be removed in a future version. max_rps is now calculated as 10x base_rps.
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
-	MaxRps *int64 `default:"null" json:"max_rps"`
+	MaxRps *int64 `json:"max_rps,omitempty"`
 }
 
 func (c ConfigurationDataPlaneGroupAutoscaleAutopilot) MarshalJSON() ([]byte, error) {
@@ -47,7 +47,7 @@ func (c ConfigurationDataPlaneGroupAutoscaleAutopilot) MarshalJSON() ([]byte, er
 }
 
 func (c *ConfigurationDataPlaneGroupAutoscaleAutopilot) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"kind", "base_rps"}); err != nil {
 		return err
 	}
 	return nil

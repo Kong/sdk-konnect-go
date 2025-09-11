@@ -34,7 +34,7 @@ func (h HMACAuth) MarshalJSON() ([]byte, error) {
 }
 
 func (h *HMACAuth) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &h, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &h, "", false, []string{"username"}); err != nil {
 		return err
 	}
 	return nil
