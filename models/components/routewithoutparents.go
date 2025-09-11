@@ -16,8 +16,8 @@ const (
 )
 
 type RouteWithoutParents struct {
-	RouteJSON       *RouteJSON       `queryParam:"inline"`
-	RouteExpression *RouteExpression `queryParam:"inline"`
+	RouteJSON       *RouteJSON       `queryParam:"inline" name:"RouteWithoutParents"`
+	RouteExpression *RouteExpression `queryParam:"inline" name:"RouteWithoutParents"`
 
 	Type RouteWithoutParentsType
 }
@@ -42,17 +42,17 @@ func CreateRouteWithoutParentsRouteExpression(routeExpression RouteExpression) R
 
 func (u *RouteWithoutParents) UnmarshalJSON(data []byte) error {
 
-	var routeExpression RouteExpression = RouteExpression{}
-	if err := utils.UnmarshalJSON(data, &routeExpression, "", true, true); err == nil {
-		u.RouteExpression = &routeExpression
-		u.Type = RouteWithoutParentsTypeRouteExpression
+	var routeJSON RouteJSON = RouteJSON{}
+	if err := utils.UnmarshalJSON(data, &routeJSON, "", true, nil); err == nil {
+		u.RouteJSON = &routeJSON
+		u.Type = RouteWithoutParentsTypeRouteJSON
 		return nil
 	}
 
-	var routeJSON RouteJSON = RouteJSON{}
-	if err := utils.UnmarshalJSON(data, &routeJSON, "", true, true); err == nil {
-		u.RouteJSON = &routeJSON
-		u.Type = RouteWithoutParentsTypeRouteJSON
+	var routeExpression RouteExpression = RouteExpression{}
+	if err := utils.UnmarshalJSON(data, &routeExpression, "", true, nil); err == nil {
+		u.RouteExpression = &routeExpression
+		u.Type = RouteWithoutParentsTypeRouteExpression
 		return nil
 	}
 

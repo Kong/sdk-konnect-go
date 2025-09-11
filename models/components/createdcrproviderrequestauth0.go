@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type ProviderType string
@@ -47,6 +48,17 @@ type CreateDcrProviderRequestAuth0 struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels,omitempty"`
+}
+
+func (c CreateDcrProviderRequestAuth0) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateDcrProviderRequestAuth0) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"provider_type", "dcr_config", "name", "issuer"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CreateDcrProviderRequestAuth0) GetProviderType() ProviderType {

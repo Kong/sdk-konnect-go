@@ -21,7 +21,7 @@ func (a AzureTransitGatewayResponseTransitGatewayStateMetadata) MarshalJSON() ([
 }
 
 func (a *AzureTransitGatewayResponseTransitGatewayStateMetadata) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -78,7 +78,7 @@ func (a AzureTransitGatewayResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AzureTransitGatewayResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"name", "dns_config", "transit_gateway_attachment_config", "id", "state", "entity_version", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil

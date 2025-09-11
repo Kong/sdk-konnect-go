@@ -16,8 +16,8 @@ const (
 )
 
 type Route struct {
-	RouteJSON       *RouteJSON       `queryParam:"inline"`
-	RouteExpression *RouteExpression `queryParam:"inline"`
+	RouteJSON       *RouteJSON       `queryParam:"inline" name:"Route"`
+	RouteExpression *RouteExpression `queryParam:"inline" name:"Route"`
 
 	Type RouteType
 }
@@ -42,17 +42,17 @@ func CreateRouteRouteExpression(routeExpression RouteExpression) Route {
 
 func (u *Route) UnmarshalJSON(data []byte) error {
 
-	var routeExpression RouteExpression = RouteExpression{}
-	if err := utils.UnmarshalJSON(data, &routeExpression, "", true, true); err == nil {
-		u.RouteExpression = &routeExpression
-		u.Type = RouteTypeRouteExpression
+	var routeJSON RouteJSON = RouteJSON{}
+	if err := utils.UnmarshalJSON(data, &routeJSON, "", true, nil); err == nil {
+		u.RouteJSON = &routeJSON
+		u.Type = RouteTypeRouteJSON
 		return nil
 	}
 
-	var routeJSON RouteJSON = RouteJSON{}
-	if err := utils.UnmarshalJSON(data, &routeJSON, "", true, true); err == nil {
-		u.RouteJSON = &routeJSON
-		u.Type = RouteTypeRouteJSON
+	var routeExpression RouteExpression = RouteExpression{}
+	if err := utils.UnmarshalJSON(data, &routeExpression, "", true, nil); err == nil {
+		u.RouteExpression = &routeExpression
+		u.Type = RouteTypeRouteExpression
 		return nil
 	}
 

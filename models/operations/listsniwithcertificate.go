@@ -26,7 +26,7 @@ func (l ListSniWithCertificateRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (l *ListSniWithCertificateRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"controlPlaneId", "CertificateId"}); err != nil {
 		return err
 	}
 	return nil

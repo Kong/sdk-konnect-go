@@ -12,6 +12,17 @@ type StringFieldEqualsComparison struct {
 	Eq string `queryParam:"name=eq"`
 }
 
+func (s StringFieldEqualsComparison) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *StringFieldEqualsComparison) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"eq"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *StringFieldEqualsComparison) GetEq() string {
 	if o == nil {
 		return ""
@@ -28,8 +39,8 @@ const (
 
 // CloudGatewaysStringFieldEqualsFilterOverride - Filters on the given string field value by exact match.
 type CloudGatewaysStringFieldEqualsFilterOverride struct {
-	Str                         *string                      `queryParam:"inline"`
-	StringFieldEqualsComparison *StringFieldEqualsComparison `queryParam:"inline"`
+	Str                         *string                      `queryParam:"inline" name:"CloudGatewaysStringFieldEqualsFilterOverride"`
+	StringFieldEqualsComparison *StringFieldEqualsComparison `queryParam:"inline" name:"CloudGatewaysStringFieldEqualsFilterOverride"`
 
 	Type CloudGatewaysStringFieldEqualsFilterOverrideType
 }
@@ -55,14 +66,14 @@ func CreateCloudGatewaysStringFieldEqualsFilterOverrideStringFieldEqualsComparis
 func (u *CloudGatewaysStringFieldEqualsFilterOverride) UnmarshalJSON(data []byte) error {
 
 	var stringFieldEqualsComparison StringFieldEqualsComparison = StringFieldEqualsComparison{}
-	if err := utils.UnmarshalJSON(data, &stringFieldEqualsComparison, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &stringFieldEqualsComparison, "", true, nil); err == nil {
 		u.StringFieldEqualsComparison = &stringFieldEqualsComparison
 		u.Type = CloudGatewaysStringFieldEqualsFilterOverrideTypeStringFieldEqualsComparison
 		return nil
 	}
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = CloudGatewaysStringFieldEqualsFilterOverrideTypeStr
 		return nil

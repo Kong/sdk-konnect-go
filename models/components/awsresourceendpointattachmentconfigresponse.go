@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type AWSResourceEndpointAttachmentType string
@@ -37,6 +38,17 @@ type AwsResourceEndpointAttachmentConfigResponse struct {
 	// List of unique resource config mapping for aws resource endpoint.
 	//
 	ResourceConfig []AwsResourceEndpointConfigResponse `json:"resource_config"`
+}
+
+func (a AwsResourceEndpointAttachmentConfigResponse) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AwsResourceEndpointAttachmentConfigResponse) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"kind", "ram_share_arn", "resource_config"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AwsResourceEndpointAttachmentConfigResponse) GetKind() AWSResourceEndpointAttachmentType {

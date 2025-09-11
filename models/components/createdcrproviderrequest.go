@@ -21,11 +21,11 @@ const (
 
 // CreateDcrProviderRequest - Request body for creating a DCR provider. The provider_type cannot be updated after creation.
 type CreateDcrProviderRequest struct {
-	CreateDcrProviderRequestAuth0   *CreateDcrProviderRequestAuth0   `queryParam:"inline"`
-	CreateDcrProviderRequestAzureAd *CreateDcrProviderRequestAzureAd `queryParam:"inline"`
-	CreateDcrProviderRequestCurity  *CreateDcrProviderRequestCurity  `queryParam:"inline"`
-	CreateDcrProviderRequestOkta    *CreateDcrProviderRequestOkta    `queryParam:"inline"`
-	CreateDcrProviderRequestHTTP    *CreateDcrProviderRequestHTTP    `queryParam:"inline"`
+	CreateDcrProviderRequestAuth0   *CreateDcrProviderRequestAuth0   `queryParam:"inline" name:"CreateDcrProviderRequest"`
+	CreateDcrProviderRequestAzureAd *CreateDcrProviderRequestAzureAd `queryParam:"inline" name:"CreateDcrProviderRequest"`
+	CreateDcrProviderRequestCurity  *CreateDcrProviderRequestCurity  `queryParam:"inline" name:"CreateDcrProviderRequest"`
+	CreateDcrProviderRequestOkta    *CreateDcrProviderRequestOkta    `queryParam:"inline" name:"CreateDcrProviderRequest"`
+	CreateDcrProviderRequestHTTP    *CreateDcrProviderRequestHTTP    `queryParam:"inline" name:"CreateDcrProviderRequest"`
 
 	Type CreateDcrProviderRequestType
 }
@@ -104,7 +104,7 @@ func (u *CreateDcrProviderRequest) UnmarshalJSON(data []byte) error {
 	switch dis.ProviderType {
 	case "auth0":
 		createDcrProviderRequestAuth0 := new(CreateDcrProviderRequestAuth0)
-		if err := utils.UnmarshalJSON(data, &createDcrProviderRequestAuth0, "", true, false); err != nil {
+		if err := utils.UnmarshalJSON(data, &createDcrProviderRequestAuth0, "", true, nil); err != nil {
 			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == auth0) type CreateDcrProviderRequestAuth0 within CreateDcrProviderRequest: %w", string(data), err)
 		}
 
@@ -113,7 +113,7 @@ func (u *CreateDcrProviderRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	case "azureAd":
 		createDcrProviderRequestAzureAd := new(CreateDcrProviderRequestAzureAd)
-		if err := utils.UnmarshalJSON(data, &createDcrProviderRequestAzureAd, "", true, false); err != nil {
+		if err := utils.UnmarshalJSON(data, &createDcrProviderRequestAzureAd, "", true, nil); err != nil {
 			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == azureAd) type CreateDcrProviderRequestAzureAd within CreateDcrProviderRequest: %w", string(data), err)
 		}
 
@@ -122,7 +122,7 @@ func (u *CreateDcrProviderRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	case "curity":
 		createDcrProviderRequestCurity := new(CreateDcrProviderRequestCurity)
-		if err := utils.UnmarshalJSON(data, &createDcrProviderRequestCurity, "", true, false); err != nil {
+		if err := utils.UnmarshalJSON(data, &createDcrProviderRequestCurity, "", true, nil); err != nil {
 			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == curity) type CreateDcrProviderRequestCurity within CreateDcrProviderRequest: %w", string(data), err)
 		}
 
@@ -131,7 +131,7 @@ func (u *CreateDcrProviderRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	case "okta":
 		createDcrProviderRequestOkta := new(CreateDcrProviderRequestOkta)
-		if err := utils.UnmarshalJSON(data, &createDcrProviderRequestOkta, "", true, false); err != nil {
+		if err := utils.UnmarshalJSON(data, &createDcrProviderRequestOkta, "", true, nil); err != nil {
 			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == okta) type CreateDcrProviderRequestOkta within CreateDcrProviderRequest: %w", string(data), err)
 		}
 
@@ -140,7 +140,7 @@ func (u *CreateDcrProviderRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	case "http":
 		createDcrProviderRequestHTTP := new(CreateDcrProviderRequestHTTP)
-		if err := utils.UnmarshalJSON(data, &createDcrProviderRequestHTTP, "", true, false); err != nil {
+		if err := utils.UnmarshalJSON(data, &createDcrProviderRequestHTTP, "", true, nil); err != nil {
 			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == http) type CreateDcrProviderRequestHTTP within CreateDcrProviderRequest: %w", string(data), err)
 		}
 

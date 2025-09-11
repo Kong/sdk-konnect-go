@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type Kind string
@@ -39,6 +40,17 @@ type ConfigurationDataPlaneGroupAutoscaleStatic struct {
 	InstanceType InstanceTypeName `json:"instance_type"`
 	// Number of data-planes the deployment target will contain.
 	RequestedInstances int64 `json:"requested_instances"`
+}
+
+func (c ConfigurationDataPlaneGroupAutoscaleStatic) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ConfigurationDataPlaneGroupAutoscaleStatic) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"kind", "instance_type", "requested_instances"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ConfigurationDataPlaneGroupAutoscaleStatic) GetKind() Kind {

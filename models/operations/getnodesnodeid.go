@@ -24,7 +24,7 @@ func (g GetNodesNodeIDRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GetNodesNodeIDRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"controlPlaneId", "nodeId"}); err != nil {
 		return err
 	}
 	return nil

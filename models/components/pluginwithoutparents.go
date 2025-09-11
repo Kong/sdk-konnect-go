@@ -86,7 +86,7 @@ func (p PluginWithoutParentsPartials) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PluginWithoutParentsPartials) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -226,7 +226,7 @@ func (p PluginWithoutParents) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PluginWithoutParents) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name"}); err != nil {
 		return err
 	}
 	return nil

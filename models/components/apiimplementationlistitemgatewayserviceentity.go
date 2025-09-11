@@ -26,7 +26,7 @@ func (a APIImplementationListItemGatewayServiceEntity) MarshalJSON() ([]byte, er
 }
 
 func (a *APIImplementationListItemGatewayServiceEntity) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "created_at", "updated_at", "api_id"}); err != nil {
 		return err
 	}
 	return nil

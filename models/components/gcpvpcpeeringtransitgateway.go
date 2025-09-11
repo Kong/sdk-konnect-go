@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type GcpVpcPeeringTransitGateway struct {
 	// Human-readable name of the transit gateway.
 	Name string `json:"name"`
@@ -10,6 +14,17 @@ type GcpVpcPeeringTransitGateway struct {
 	//
 	DNSConfig                      []TransitGatewayDNSConfig     `json:"dns_config,omitempty"`
 	TransitGatewayAttachmentConfig GCPVPCPeeringAttachmentConfig `json:"transit_gateway_attachment_config"`
+}
+
+func (g GcpVpcPeeringTransitGateway) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GcpVpcPeeringTransitGateway) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"name", "transit_gateway_attachment_config"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GcpVpcPeeringTransitGateway) GetName() string {

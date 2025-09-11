@@ -2,10 +2,25 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // NetworkStateFieldOrEqualityFilter - Filter a network state by determining if the value is equal to any in a set of values, where the set is a
 // comma-delimited list.
 type NetworkStateFieldOrEqualityFilter struct {
 	Oeq string `queryParam:"name=oeq"`
+}
+
+func (n NetworkStateFieldOrEqualityFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NetworkStateFieldOrEqualityFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"oeq"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *NetworkStateFieldOrEqualityFilter) GetOeq() string {

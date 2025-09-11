@@ -21,7 +21,7 @@ func (t TeamMappingResponsePage) MarshalJSON() ([]byte, error) {
 }
 
 func (t *TeamMappingResponsePage) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -73,7 +73,7 @@ func (t TeamMappingResponseData) MarshalJSON() ([]byte, error) {
 }
 
 func (t *TeamMappingResponseData) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
 		return err
 	}
 	return nil

@@ -18,7 +18,7 @@ func (e EmailTemplateContent) MarshalJSON() ([]byte, error) {
 }
 
 func (e *EmailTemplateContent) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
 		return err
 	}
 	return nil

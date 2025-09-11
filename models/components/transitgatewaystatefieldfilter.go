@@ -17,9 +17,9 @@ const (
 )
 
 type TransitGatewayStateFieldFilter struct {
-	TransitGatewayStateFieldEqualsFilter     *TransitGatewayStateFieldEqualsFilter     `queryParam:"inline"`
-	TransitGatewayStateFieldNotEqualsFilter  *TransitGatewayStateFieldNotEqualsFilter  `queryParam:"inline"`
-	TransitGatewayStateFieldOrEqualityFilter *TransitGatewayStateFieldOrEqualityFilter `queryParam:"inline"`
+	TransitGatewayStateFieldEqualsFilter     *TransitGatewayStateFieldEqualsFilter     `queryParam:"inline" name:"TransitGatewayStateFieldFilter"`
+	TransitGatewayStateFieldNotEqualsFilter  *TransitGatewayStateFieldNotEqualsFilter  `queryParam:"inline" name:"TransitGatewayStateFieldFilter"`
+	TransitGatewayStateFieldOrEqualityFilter *TransitGatewayStateFieldOrEqualityFilter `queryParam:"inline" name:"TransitGatewayStateFieldFilter"`
 
 	Type TransitGatewayStateFieldFilterType
 }
@@ -53,22 +53,22 @@ func CreateTransitGatewayStateFieldFilterTransitGatewayStateFieldOrEqualityFilte
 
 func (u *TransitGatewayStateFieldFilter) UnmarshalJSON(data []byte) error {
 
-	var transitGatewayStateFieldNotEqualsFilter TransitGatewayStateFieldNotEqualsFilter = TransitGatewayStateFieldNotEqualsFilter{}
-	if err := utils.UnmarshalJSON(data, &transitGatewayStateFieldNotEqualsFilter, "", true, true); err == nil {
-		u.TransitGatewayStateFieldNotEqualsFilter = &transitGatewayStateFieldNotEqualsFilter
-		u.Type = TransitGatewayStateFieldFilterTypeTransitGatewayStateFieldNotEqualsFilter
-		return nil
-	}
-
 	var transitGatewayStateFieldOrEqualityFilter TransitGatewayStateFieldOrEqualityFilter = TransitGatewayStateFieldOrEqualityFilter{}
-	if err := utils.UnmarshalJSON(data, &transitGatewayStateFieldOrEqualityFilter, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &transitGatewayStateFieldOrEqualityFilter, "", true, nil); err == nil {
 		u.TransitGatewayStateFieldOrEqualityFilter = &transitGatewayStateFieldOrEqualityFilter
 		u.Type = TransitGatewayStateFieldFilterTypeTransitGatewayStateFieldOrEqualityFilter
 		return nil
 	}
 
+	var transitGatewayStateFieldNotEqualsFilter TransitGatewayStateFieldNotEqualsFilter = TransitGatewayStateFieldNotEqualsFilter{}
+	if err := utils.UnmarshalJSON(data, &transitGatewayStateFieldNotEqualsFilter, "", true, nil); err == nil {
+		u.TransitGatewayStateFieldNotEqualsFilter = &transitGatewayStateFieldNotEqualsFilter
+		u.Type = TransitGatewayStateFieldFilterTypeTransitGatewayStateFieldNotEqualsFilter
+		return nil
+	}
+
 	var transitGatewayStateFieldEqualsFilter TransitGatewayStateFieldEqualsFilter = TransitGatewayStateFieldEqualsFilter{}
-	if err := utils.UnmarshalJSON(data, &transitGatewayStateFieldEqualsFilter, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &transitGatewayStateFieldEqualsFilter, "", true, nil); err == nil {
 		u.TransitGatewayStateFieldEqualsFilter = &transitGatewayStateFieldEqualsFilter
 		u.Type = TransitGatewayStateFieldFilterTypeTransitGatewayStateFieldEqualsFilter
 		return nil

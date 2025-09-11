@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type AWSVPCPeeringAttachmentConfig string
@@ -35,6 +36,17 @@ type AwsVpcPeeringGatewayAttachmentConfig struct {
 	PeerAccountID string                        `json:"peer_account_id"`
 	PeerVpcID     string                        `json:"peer_vpc_id"`
 	PeerVpcRegion string                        `json:"peer_vpc_region"`
+}
+
+func (a AwsVpcPeeringGatewayAttachmentConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AwsVpcPeeringGatewayAttachmentConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"kind", "peer_account_id", "peer_vpc_id", "peer_vpc_region"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AwsVpcPeeringGatewayAttachmentConfig) GetKind() AWSVPCPeeringAttachmentConfig {

@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // SAMLIdentityProviderConfig - The identity provider that contains configuration data for the SAML authentication integration.
 type SAMLIdentityProviderConfig struct {
 	// The identity provider's metadata URL where the identity provider's metadata can be obtained.
@@ -16,6 +20,17 @@ type SAMLIdentityProviderConfig struct {
 	LoginURL *string `json:"login_url,omitempty"`
 	// The path URL where the SAML identity provider sends authentication responses after successful login attempts.
 	CallbackURL *string `json:"callback_url,omitempty"`
+}
+
+func (s SAMLIdentityProviderConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SAMLIdentityProviderConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *SAMLIdentityProviderConfig) GetIdpMetadataURL() *string {

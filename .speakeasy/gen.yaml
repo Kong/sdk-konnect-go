@@ -16,6 +16,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
+    hoistGlobalSecurity: true
   tests:
     generateTests: true
     generateNewTests: false
@@ -42,5 +43,6 @@ go:
   modulePath: ""
   outputModelSuffix: output
   packageName: github.com/Kong/sdk-konnect-go
+  respectRequiredFields: false
   responseFormat: envelope
   sdkPackageName: ""

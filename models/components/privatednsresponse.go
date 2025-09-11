@@ -18,10 +18,10 @@ const (
 )
 
 type PrivateDNSResponse struct {
-	AwsPrivateHostedZoneResponse   *AwsPrivateHostedZoneResponse   `queryParam:"inline"`
-	AwsPrivateDNSResolverResponse  *AwsPrivateDNSResolverResponse  `queryParam:"inline"`
-	GcpPrivateHostedZoneResponse   *GcpPrivateHostedZoneResponse   `queryParam:"inline"`
-	AzurePrivateHostedZoneResponse *AzurePrivateHostedZoneResponse `queryParam:"inline"`
+	AwsPrivateHostedZoneResponse   *AwsPrivateHostedZoneResponse   `queryParam:"inline" name:"PrivateDnsResponse"`
+	AwsPrivateDNSResolverResponse  *AwsPrivateDNSResolverResponse  `queryParam:"inline" name:"PrivateDnsResponse"`
+	GcpPrivateHostedZoneResponse   *GcpPrivateHostedZoneResponse   `queryParam:"inline" name:"PrivateDnsResponse"`
+	AzurePrivateHostedZoneResponse *AzurePrivateHostedZoneResponse `queryParam:"inline" name:"PrivateDnsResponse"`
 
 	Type PrivateDNSResponseType
 }
@@ -64,31 +64,31 @@ func CreatePrivateDNSResponseAzurePrivateHostedZoneResponse(azurePrivateHostedZo
 
 func (u *PrivateDNSResponse) UnmarshalJSON(data []byte) error {
 
-	var gcpPrivateHostedZoneResponse GcpPrivateHostedZoneResponse = GcpPrivateHostedZoneResponse{}
-	if err := utils.UnmarshalJSON(data, &gcpPrivateHostedZoneResponse, "", true, true); err == nil {
-		u.GcpPrivateHostedZoneResponse = &gcpPrivateHostedZoneResponse
-		u.Type = PrivateDNSResponseTypeGcpPrivateHostedZoneResponse
-		return nil
-	}
-
-	var azurePrivateHostedZoneResponse AzurePrivateHostedZoneResponse = AzurePrivateHostedZoneResponse{}
-	if err := utils.UnmarshalJSON(data, &azurePrivateHostedZoneResponse, "", true, true); err == nil {
-		u.AzurePrivateHostedZoneResponse = &azurePrivateHostedZoneResponse
-		u.Type = PrivateDNSResponseTypeAzurePrivateHostedZoneResponse
-		return nil
-	}
-
 	var awsPrivateHostedZoneResponse AwsPrivateHostedZoneResponse = AwsPrivateHostedZoneResponse{}
-	if err := utils.UnmarshalJSON(data, &awsPrivateHostedZoneResponse, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &awsPrivateHostedZoneResponse, "", true, nil); err == nil {
 		u.AwsPrivateHostedZoneResponse = &awsPrivateHostedZoneResponse
 		u.Type = PrivateDNSResponseTypeAwsPrivateHostedZoneResponse
 		return nil
 	}
 
 	var awsPrivateDNSResolverResponse AwsPrivateDNSResolverResponse = AwsPrivateDNSResolverResponse{}
-	if err := utils.UnmarshalJSON(data, &awsPrivateDNSResolverResponse, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &awsPrivateDNSResolverResponse, "", true, nil); err == nil {
 		u.AwsPrivateDNSResolverResponse = &awsPrivateDNSResolverResponse
 		u.Type = PrivateDNSResponseTypeAwsPrivateDNSResolverResponse
+		return nil
+	}
+
+	var gcpPrivateHostedZoneResponse GcpPrivateHostedZoneResponse = GcpPrivateHostedZoneResponse{}
+	if err := utils.UnmarshalJSON(data, &gcpPrivateHostedZoneResponse, "", true, nil); err == nil {
+		u.GcpPrivateHostedZoneResponse = &gcpPrivateHostedZoneResponse
+		u.Type = PrivateDNSResponseTypeGcpPrivateHostedZoneResponse
+		return nil
+	}
+
+	var azurePrivateHostedZoneResponse AzurePrivateHostedZoneResponse = AzurePrivateHostedZoneResponse{}
+	if err := utils.UnmarshalJSON(data, &azurePrivateHostedZoneResponse, "", true, nil); err == nil {
+		u.AzurePrivateHostedZoneResponse = &azurePrivateHostedZoneResponse
+		u.Type = PrivateDNSResponseTypeAzurePrivateHostedZoneResponse
 		return nil
 	}
 

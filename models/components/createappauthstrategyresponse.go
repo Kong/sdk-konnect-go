@@ -43,6 +43,17 @@ type AppAuthStrategyOpenIDConnectResponseConfigs struct {
 	OpenidConnect AppAuthStrategyConfigOpenIDConnect `json:"openid-connect"`
 }
 
+func (a AppAuthStrategyOpenIDConnectResponseConfigs) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AppAuthStrategyOpenIDConnectResponseConfigs) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"openid-connect"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AppAuthStrategyOpenIDConnectResponseConfigs) GetOpenidConnect() AppAuthStrategyConfigOpenIDConnect {
 	if o == nil {
 		return AppAuthStrategyConfigOpenIDConnect{}
@@ -59,6 +70,17 @@ type AppAuthStrategyOpenIDConnectResponseDcrProvider struct {
 	DisplayName *string `json:"display_name,omitempty"`
 	// The type of DCR provider. Can be one of the following - auth0, azureAd, curity, okta, http
 	ProviderType DcrProviderType `json:"provider_type"`
+}
+
+func (a AppAuthStrategyOpenIDConnectResponseDcrProvider) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AppAuthStrategyOpenIDConnectResponseDcrProvider) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name", "provider_type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AppAuthStrategyOpenIDConnectResponseDcrProvider) GetID() string {
@@ -121,7 +143,7 @@ func (a AppAuthStrategyOpenIDConnectResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AppAuthStrategyOpenIDConnectResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name", "display_name", "strategy_type", "configs", "active", "dcr_provider", "labels", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -229,6 +251,17 @@ type AppAuthStrategyKeyAuthResponseConfigs struct {
 	KeyAuth AppAuthStrategyConfigKeyAuth `json:"key-auth"`
 }
 
+func (a AppAuthStrategyKeyAuthResponseConfigs) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AppAuthStrategyKeyAuthResponseConfigs) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"key-auth"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AppAuthStrategyKeyAuthResponseConfigs) GetKeyAuth() AppAuthStrategyConfigKeyAuth {
 	if o == nil {
 		return AppAuthStrategyConfigKeyAuth{}
@@ -245,6 +278,17 @@ type AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider stru
 	DisplayName *string `json:"display_name,omitempty"`
 	// The type of DCR provider. Can be one of the following - auth0, azureAd, curity, okta, http
 	ProviderType DcrProviderType `json:"provider_type"`
+}
+
+func (a AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name", "provider_type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider) GetID() string {
@@ -307,7 +351,7 @@ func (a AppAuthStrategyKeyAuthResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AppAuthStrategyKeyAuthResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name", "display_name", "strategy_type", "configs", "active", "dcr_provider", "labels", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -392,8 +436,8 @@ const (
 
 // CreateAppAuthStrategyResponse - A set of plugin configurations that represent how the gateway will perform authentication and authorization for a Product Version. Called “Auth Strategy” for short in the context of portals/applications. The plugins are synced to any Gateway Service that is currently linked or becomes linked to the Product Version.
 type CreateAppAuthStrategyResponse struct {
-	AppAuthStrategyKeyAuthResponse       *AppAuthStrategyKeyAuthResponse       `queryParam:"inline"`
-	AppAuthStrategyOpenIDConnectResponse *AppAuthStrategyOpenIDConnectResponse `queryParam:"inline"`
+	AppAuthStrategyKeyAuthResponse       *AppAuthStrategyKeyAuthResponse       `queryParam:"inline" name:"CreateAppAuthStrategyResponse"`
+	AppAuthStrategyOpenIDConnectResponse *AppAuthStrategyOpenIDConnectResponse `queryParam:"inline" name:"CreateAppAuthStrategyResponse"`
 
 	Type CreateAppAuthStrategyResponseType
 }
@@ -436,7 +480,7 @@ func (u *CreateAppAuthStrategyResponse) UnmarshalJSON(data []byte) error {
 	switch dis.StrategyType {
 	case "key_auth":
 		appAuthStrategyKeyAuthResponse := new(AppAuthStrategyKeyAuthResponse)
-		if err := utils.UnmarshalJSON(data, &appAuthStrategyKeyAuthResponse, "", true, false); err != nil {
+		if err := utils.UnmarshalJSON(data, &appAuthStrategyKeyAuthResponse, "", true, nil); err != nil {
 			return fmt.Errorf("could not unmarshal `%s` into expected (StrategyType == key_auth) type AppAuthStrategyKeyAuthResponse within CreateAppAuthStrategyResponse: %w", string(data), err)
 		}
 
@@ -445,7 +489,7 @@ func (u *CreateAppAuthStrategyResponse) UnmarshalJSON(data []byte) error {
 		return nil
 	case "openid_connect":
 		appAuthStrategyOpenIDConnectResponse := new(AppAuthStrategyOpenIDConnectResponse)
-		if err := utils.UnmarshalJSON(data, &appAuthStrategyOpenIDConnectResponse, "", true, false); err != nil {
+		if err := utils.UnmarshalJSON(data, &appAuthStrategyOpenIDConnectResponse, "", true, nil); err != nil {
 			return fmt.Errorf("could not unmarshal `%s` into expected (StrategyType == openid_connect) type AppAuthStrategyOpenIDConnectResponse within CreateAppAuthStrategyResponse: %w", string(data), err)
 		}
 

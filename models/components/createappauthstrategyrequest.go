@@ -42,6 +42,17 @@ type AppAuthStrategyOpenIDConnectRequestConfigs struct {
 	OpenidConnect AppAuthStrategyConfigOpenIDConnect `json:"openid-connect"`
 }
 
+func (a AppAuthStrategyOpenIDConnectRequestConfigs) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AppAuthStrategyOpenIDConnectRequestConfigs) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"openid-connect"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AppAuthStrategyOpenIDConnectRequestConfigs) GetOpenidConnect() AppAuthStrategyConfigOpenIDConnect {
 	if o == nil {
 		return AppAuthStrategyConfigOpenIDConnect{}
@@ -73,7 +84,7 @@ func (a AppAuthStrategyOpenIDConnectRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AppAuthStrategyOpenIDConnectRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"name", "display_name", "strategy_type", "configs"}); err != nil {
 		return err
 	}
 	return nil
@@ -153,6 +164,17 @@ type AppAuthStrategyKeyAuthRequestConfigs struct {
 	KeyAuth AppAuthStrategyConfigKeyAuth `json:"key-auth"`
 }
 
+func (a AppAuthStrategyKeyAuthRequestConfigs) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AppAuthStrategyKeyAuthRequestConfigs) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"key-auth"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *AppAuthStrategyKeyAuthRequestConfigs) GetKeyAuth() AppAuthStrategyConfigKeyAuth {
 	if o == nil {
 		return AppAuthStrategyConfigKeyAuth{}
@@ -176,6 +198,17 @@ type AppAuthStrategyKeyAuthRequest struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels,omitempty"`
+}
+
+func (a AppAuthStrategyKeyAuthRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AppAuthStrategyKeyAuthRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"name", "display_name", "strategy_type", "configs"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AppAuthStrategyKeyAuthRequest) GetName() string {
@@ -222,8 +255,8 @@ const (
 
 // CreateAppAuthStrategyRequest - Request body for creating an Application Auth Strategy
 type CreateAppAuthStrategyRequest struct {
-	AppAuthStrategyKeyAuthRequest       *AppAuthStrategyKeyAuthRequest       `queryParam:"inline"`
-	AppAuthStrategyOpenIDConnectRequest *AppAuthStrategyOpenIDConnectRequest `queryParam:"inline"`
+	AppAuthStrategyKeyAuthRequest       *AppAuthStrategyKeyAuthRequest       `queryParam:"inline" name:"CreateAppAuthStrategyRequest"`
+	AppAuthStrategyOpenIDConnectRequest *AppAuthStrategyOpenIDConnectRequest `queryParam:"inline" name:"CreateAppAuthStrategyRequest"`
 
 	Type CreateAppAuthStrategyRequestType
 }
@@ -266,7 +299,7 @@ func (u *CreateAppAuthStrategyRequest) UnmarshalJSON(data []byte) error {
 	switch dis.StrategyType {
 	case "key_auth":
 		appAuthStrategyKeyAuthRequest := new(AppAuthStrategyKeyAuthRequest)
-		if err := utils.UnmarshalJSON(data, &appAuthStrategyKeyAuthRequest, "", true, false); err != nil {
+		if err := utils.UnmarshalJSON(data, &appAuthStrategyKeyAuthRequest, "", true, nil); err != nil {
 			return fmt.Errorf("could not unmarshal `%s` into expected (StrategyType == key_auth) type AppAuthStrategyKeyAuthRequest within CreateAppAuthStrategyRequest: %w", string(data), err)
 		}
 
@@ -275,7 +308,7 @@ func (u *CreateAppAuthStrategyRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	case "openid_connect":
 		appAuthStrategyOpenIDConnectRequest := new(AppAuthStrategyOpenIDConnectRequest)
-		if err := utils.UnmarshalJSON(data, &appAuthStrategyOpenIDConnectRequest, "", true, false); err != nil {
+		if err := utils.UnmarshalJSON(data, &appAuthStrategyOpenIDConnectRequest, "", true, nil); err != nil {
 			return fmt.Errorf("could not unmarshal `%s` into expected (StrategyType == openid_connect) type AppAuthStrategyOpenIDConnectRequest within CreateAppAuthStrategyRequest: %w", string(data), err)
 		}
 

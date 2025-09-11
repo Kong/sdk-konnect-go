@@ -2,9 +2,24 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // StringFieldNEQFilter - Filters on the given string field value by exact match inequality.
 type StringFieldNEQFilter struct {
 	Neq string `queryParam:"name=neq"`
+}
+
+func (s StringFieldNEQFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *StringFieldNEQFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"neq"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *StringFieldNEQFilter) GetNeq() string {

@@ -35,7 +35,7 @@ func (k KeyAuth) MarshalJSON() ([]byte, error) {
 }
 
 func (k *KeyAuth) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &k, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &k, "", false, nil); err != nil {
 		return err
 	}
 	return nil

@@ -20,7 +20,7 @@ func (d Destinations) MarshalJSON() ([]byte, error) {
 }
 
 func (d *Destinations) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -159,6 +159,17 @@ type RouteJSONService struct {
 	ID *string `json:"id,omitempty"`
 }
 
+func (r RouteJSONService) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RouteJSONService) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RouteJSONService) GetID() *string {
 	if o == nil {
 		return nil
@@ -178,7 +189,7 @@ func (s Sources) MarshalJSON() ([]byte, error) {
 }
 
 func (s *Sources) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -249,7 +260,7 @@ func (r RouteJSON) MarshalJSON() ([]byte, error) {
 }
 
 func (r *RouteJSON) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
 		return err
 	}
 	return nil

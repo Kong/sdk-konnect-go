@@ -116,7 +116,7 @@ func (s SpecRenderer) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SpecRenderer) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -179,7 +179,7 @@ func (p PortalCustomization) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PortalCustomization) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil

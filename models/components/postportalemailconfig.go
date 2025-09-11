@@ -23,7 +23,7 @@ func (p PostPortalEmailConfig) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PostPortalEmailConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil

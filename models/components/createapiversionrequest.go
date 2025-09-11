@@ -17,7 +17,7 @@ func (c CreateAPIVersionRequestSpec) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateAPIVersionRequestSpec) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -41,7 +41,7 @@ func (c CreateAPIVersionRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateAPIVersionRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"spec"}); err != nil {
 		return err
 	}
 	return nil

@@ -2,10 +2,25 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // TransitGatewayStateFieldOrEqualityFilter - Filter transit-gateway state by determining if the value is equal to any in a set of values, where the set is a
 // comma-delimited list.
 type TransitGatewayStateFieldOrEqualityFilter struct {
 	Oeq string `queryParam:"name=oeq"`
+}
+
+func (t TransitGatewayStateFieldOrEqualityFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TransitGatewayStateFieldOrEqualityFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"oeq"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TransitGatewayStateFieldOrEqualityFilter) GetOeq() string {

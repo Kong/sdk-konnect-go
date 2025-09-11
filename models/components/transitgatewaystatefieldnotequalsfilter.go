@@ -2,6 +2,21 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // TransitGatewayStateFieldNotEqualsFilter - Filter transit-gateway state by inequality match.
 type TransitGatewayStateFieldNotEqualsFilter struct {
+}
+
+func (t TransitGatewayStateFieldNotEqualsFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TransitGatewayStateFieldNotEqualsFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }

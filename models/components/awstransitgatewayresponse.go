@@ -21,7 +21,7 @@ func (t TransitGatewayStateMetadata) MarshalJSON() ([]byte, error) {
 }
 
 func (t *TransitGatewayStateMetadata) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -82,7 +82,7 @@ func (a AwsTransitGatewayResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AwsTransitGatewayResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"name", "dns_config", "cidr_blocks", "transit_gateway_attachment_config", "id", "state", "entity_version", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil

@@ -30,7 +30,7 @@ func (e EventSubscriptionResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (e *EventSubscriptionResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"id", "entity_type", "created_at", "updated_at", "regions", "entities", "channels", "enabled", "name"}); err != nil {
 		return err
 	}
 	return nil

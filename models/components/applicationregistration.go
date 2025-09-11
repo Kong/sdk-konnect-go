@@ -22,7 +22,7 @@ func (a API) MarshalJSON() ([]byte, error) {
 }
 
 func (a *API) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name"}); err != nil {
 		return err
 	}
 	return nil
@@ -93,7 +93,7 @@ func (a ApplicationRegistration) MarshalJSON() ([]byte, error) {
 }
 
 func (a *ApplicationRegistration) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "created_at", "updated_at", "status", "api", "application"}); err != nil {
 		return err
 	}
 	return nil

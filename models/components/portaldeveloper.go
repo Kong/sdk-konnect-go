@@ -25,7 +25,7 @@ func (p PortalDeveloper) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PortalDeveloper) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "created_at", "updated_at", "email", "full_name", "status"}); err != nil {
 		return err
 	}
 	return nil

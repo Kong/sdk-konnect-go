@@ -19,11 +19,11 @@ const (
 )
 
 type CloudGatewaysStringFieldFilterOverride struct {
-	CloudGatewaysStringFieldEqualsFilterOverride *CloudGatewaysStringFieldEqualsFilterOverride `queryParam:"inline"`
-	StringFieldContainsFilter                    *StringFieldContainsFilter                    `queryParam:"inline"`
-	StringFieldNEQFilter                         *StringFieldNEQFilter                         `queryParam:"inline"`
-	StringFieldOEQFilter                         *StringFieldOEQFilter                         `queryParam:"inline"`
-	StringFieldOContainsFilter                   *StringFieldOContainsFilter                   `queryParam:"inline"`
+	CloudGatewaysStringFieldEqualsFilterOverride *CloudGatewaysStringFieldEqualsFilterOverride `queryParam:"inline" name:"CloudGatewaysStringFieldFilterOverride"`
+	StringFieldContainsFilter                    *StringFieldContainsFilter                    `queryParam:"inline" name:"CloudGatewaysStringFieldFilterOverride"`
+	StringFieldNEQFilter                         *StringFieldNEQFilter                         `queryParam:"inline" name:"CloudGatewaysStringFieldFilterOverride"`
+	StringFieldOEQFilter                         *StringFieldOEQFilter                         `queryParam:"inline" name:"CloudGatewaysStringFieldFilterOverride"`
+	StringFieldOContainsFilter                   *StringFieldOContainsFilter                   `queryParam:"inline" name:"CloudGatewaysStringFieldFilterOverride"`
 
 	Type CloudGatewaysStringFieldFilterOverrideType
 }
@@ -76,35 +76,35 @@ func CreateCloudGatewaysStringFieldFilterOverrideStringFieldOContainsFilter(stri
 func (u *CloudGatewaysStringFieldFilterOverride) UnmarshalJSON(data []byte) error {
 
 	var stringFieldContainsFilter StringFieldContainsFilter = StringFieldContainsFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldContainsFilter, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &stringFieldContainsFilter, "", true, nil); err == nil {
 		u.StringFieldContainsFilter = &stringFieldContainsFilter
 		u.Type = CloudGatewaysStringFieldFilterOverrideTypeStringFieldContainsFilter
 		return nil
 	}
 
 	var stringFieldNEQFilter StringFieldNEQFilter = StringFieldNEQFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldNEQFilter, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &stringFieldNEQFilter, "", true, nil); err == nil {
 		u.StringFieldNEQFilter = &stringFieldNEQFilter
 		u.Type = CloudGatewaysStringFieldFilterOverrideTypeStringFieldNEQFilter
 		return nil
 	}
 
 	var stringFieldOEQFilter StringFieldOEQFilter = StringFieldOEQFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldOEQFilter, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &stringFieldOEQFilter, "", true, nil); err == nil {
 		u.StringFieldOEQFilter = &stringFieldOEQFilter
 		u.Type = CloudGatewaysStringFieldFilterOverrideTypeStringFieldOEQFilter
 		return nil
 	}
 
 	var stringFieldOContainsFilter StringFieldOContainsFilter = StringFieldOContainsFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldOContainsFilter, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &stringFieldOContainsFilter, "", true, nil); err == nil {
 		u.StringFieldOContainsFilter = &stringFieldOContainsFilter
 		u.Type = CloudGatewaysStringFieldFilterOverrideTypeStringFieldOContainsFilter
 		return nil
 	}
 
 	var cloudGatewaysStringFieldEqualsFilterOverride CloudGatewaysStringFieldEqualsFilterOverride = CloudGatewaysStringFieldEqualsFilterOverride{}
-	if err := utils.UnmarshalJSON(data, &cloudGatewaysStringFieldEqualsFilterOverride, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &cloudGatewaysStringFieldEqualsFilterOverride, "", true, nil); err == nil {
 		u.CloudGatewaysStringFieldEqualsFilterOverride = &cloudGatewaysStringFieldEqualsFilterOverride
 		u.Type = CloudGatewaysStringFieldFilterOverrideTypeCloudGatewaysStringFieldEqualsFilterOverride
 		return nil

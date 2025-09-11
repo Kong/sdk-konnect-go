@@ -2,12 +2,27 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // AppAuthStrategyConfigKeyAuth - The most basic mode to configure an Application Auth Strategy for an API Product Version.
 // Using this mode will allow developers to generate API keys that will authenticate their application requests.
 // Once authenticated, an application will be granted access to any Product Version it is registered for that is configured for Key Auth.
 type AppAuthStrategyConfigKeyAuth struct {
 	// The names of the headers containing the API key. You can specify multiple header names.
 	KeyNames []string `json:"key_names,omitempty"`
+}
+
+func (a AppAuthStrategyConfigKeyAuth) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AppAuthStrategyConfigKeyAuth) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AppAuthStrategyConfigKeyAuth) GetKeyNames() []string {

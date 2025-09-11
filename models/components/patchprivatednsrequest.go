@@ -15,6 +15,17 @@ type PatchAwsPrivateDNSResolver struct {
 	PrivateDNSAttachmentConfig *AwsPrivateDNSResolverAttachmentConfig `json:"private_dns_attachment_config,omitempty"`
 }
 
+func (p PatchAwsPrivateDNSResolver) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchAwsPrivateDNSResolver) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *PatchAwsPrivateDNSResolver) GetName() *string {
 	if o == nil {
 		return nil
@@ -37,7 +48,7 @@ const (
 
 // PatchPrivateDNSRequest - Request schema for updating a Private DNS.
 type PatchPrivateDNSRequest struct {
-	PatchAwsPrivateDNSResolver *PatchAwsPrivateDNSResolver `queryParam:"inline"`
+	PatchAwsPrivateDNSResolver *PatchAwsPrivateDNSResolver `queryParam:"inline" name:"PatchPrivateDnsRequest"`
 
 	Type PatchPrivateDNSRequestType
 }
@@ -54,7 +65,7 @@ func CreatePatchPrivateDNSRequestPatchAwsPrivateDNSResolver(patchAwsPrivateDNSRe
 func (u *PatchPrivateDNSRequest) UnmarshalJSON(data []byte) error {
 
 	var patchAwsPrivateDNSResolver PatchAwsPrivateDNSResolver = PatchAwsPrivateDNSResolver{}
-	if err := utils.UnmarshalJSON(data, &patchAwsPrivateDNSResolver, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &patchAwsPrivateDNSResolver, "", true, nil); err == nil {
 		u.PatchAwsPrivateDNSResolver = &patchAwsPrivateDNSResolver
 		u.Type = PatchPrivateDNSRequestTypePatchAwsPrivateDNSResolver
 		return nil

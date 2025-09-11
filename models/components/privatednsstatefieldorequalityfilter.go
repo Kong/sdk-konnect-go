@@ -2,10 +2,25 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // PrivateDNSStateFieldOrEqualityFilter - Filter Private DNS state by determining if the value is equal to any in a set of values, where the set is a
 // comma-delimited list.
 type PrivateDNSStateFieldOrEqualityFilter struct {
 	Oeq string `queryParam:"name=oeq"`
+}
+
+func (p PrivateDNSStateFieldOrEqualityFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PrivateDNSStateFieldOrEqualityFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"oeq"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PrivateDNSStateFieldOrEqualityFilter) GetOeq() string {

@@ -15,7 +15,7 @@ func (c CompatibilityStatus) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CompatibilityStatus) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -45,7 +45,7 @@ func (l ListNodesItems) MarshalJSON() ([]byte, error) {
 }
 
 func (l *ListNodesItems) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -124,7 +124,7 @@ func (l ListNodesPage) MarshalJSON() ([]byte, error) {
 }
 
 func (l *ListNodesPage) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
 		return err
 	}
 	return nil

@@ -34,7 +34,7 @@ func (t Team) MarshalJSON() ([]byte, error) {
 }
 
 func (t *Team) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
 		return err
 	}
 	return nil

@@ -2,6 +2,21 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // CustomDomainStateFieldNotEqualsFilter - Filter custom domain state by inequality match.
 type CustomDomainStateFieldNotEqualsFilter struct {
+}
+
+func (c CustomDomainStateFieldNotEqualsFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CustomDomainStateFieldNotEqualsFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }

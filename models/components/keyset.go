@@ -24,7 +24,7 @@ func (k KeySet) MarshalJSON() ([]byte, error) {
 }
 
 func (k *KeySet) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &k, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &k, "", false, nil); err != nil {
 		return err
 	}
 	return nil

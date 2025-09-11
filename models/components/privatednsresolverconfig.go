@@ -2,9 +2,24 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type PrivateDNSResolverConfig struct {
 	// IP addresses of remote DNS servers used by the Private DNS Resolver for DNS resolution.
 	RemoteDNSServerIPAddresses []string `json:"remote_dns_server_ip_addresses"`
+}
+
+func (p PrivateDNSResolverConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PrivateDNSResolverConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"remote_dns_server_ip_addresses"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PrivateDNSResolverConfig) GetRemoteDNSServerIPAddresses() []string {

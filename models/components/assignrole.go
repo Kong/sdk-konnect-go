@@ -244,7 +244,7 @@ func (a AssignRole) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AssignRole) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil

@@ -29,7 +29,7 @@ func (e EmailTemplate) MarshalJSON() ([]byte, error) {
 }
 
 func (e *EmailTemplate) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"label", "name", "default_content", "variables", "enabled", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil

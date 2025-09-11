@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type UpdateAppAuthStrategyRequestOpenIDConnect struct {
 	// A more advanced mode to configure an API Product Version’s Application Auth Strategy.
 	// Using this mode will allow developers to use API credentials issued from an external IdP that will authenticate their application requests.
@@ -9,6 +13,17 @@ type UpdateAppAuthStrategyRequestOpenIDConnect struct {
 	// An OIDC strategy may be used in conjunction with a DCR provider to automatically create the IdP application.
 	//
 	OpenidConnect PartialAppAuthStrategyConfigOpenIDConnect `json:"openid-connect"`
+}
+
+func (u UpdateAppAuthStrategyRequestOpenIDConnect) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateAppAuthStrategyRequestOpenIDConnect) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"openid-connect"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateAppAuthStrategyRequestOpenIDConnect) GetOpenidConnect() PartialAppAuthStrategyConfigOpenIDConnect {
