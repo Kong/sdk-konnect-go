@@ -29,7 +29,7 @@ func main() {
 		ControlPlanes.
 		ListControlPlanes(ctx,
 			sdkkonnectops.ListControlPlanesRequest{
-				Labels: sdkkonnectpkg.Ptr("test_name,test_run_id,sdk-konnect-go:true"),
+				FilterLabels: sdkkonnectpkg.Ptr("test_name,test_run_id,sdk-konnect-go:true"),
 			},
 		)
 	if err != nil {
