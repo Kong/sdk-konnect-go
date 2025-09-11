@@ -72,18 +72,14 @@ jobs:
           mkdir -p ~/.speakeasy
           echo 'speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}' > ~/.speakeasy/config.yaml
 
-      - uses: jdx/mise-action@ca0c5fc9c8a8386dae8ba5d37608a083a307991c # v3.1.0
+      - uses: jdx/mise-action@5ac50f778e26fac95da98d50503682459e86d566 # v3.2.0
         with:
           install: false
 
       - name: Generate SDK
-        run: make generate.sdk
-
-      - name: Add generated SDK files to git (subsquent step manipulates git index so we need to add them)
-        run: git add .
-
-      - name: Generate deepcopy
-        run: make generate.deepcopy
+        run: |
+          export PATH=${PATH}:$(go env GOPATH)/bin
+          make generate.sdk
 
       - name: Commit deepcopy changes to the PR
         uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9.1.4

@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 // InvalidParameterChoiceItemRule - invalid parameters rules
@@ -37,7 +38,18 @@ type InvalidParameterChoiceItem struct {
 	Rule    InvalidParameterChoiceItemRule `json:"rule"`
 	Reason  string                         `json:"reason"`
 	Choices []any                          `json:"choices"`
-	Source  *string                        `json:"source,omitempty"`
+	Source  *string                        `default:"null" json:"source"`
+}
+
+func (i InvalidParameterChoiceItem) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *InvalidParameterChoiceItem) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *InvalidParameterChoiceItem) GetField() string {

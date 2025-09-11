@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 // APISpecAPISpecType - The type of specification being stored. This allows us to render the specification correctly.
@@ -40,10 +41,21 @@ func (e *APISpecAPISpecType) UnmarshalJSON(data []byte) error {
 type APISpec struct {
 	// The raw content of your API specification, in json or yaml format (OpenAPI or AsyncAPI).
 	//
-	Content *string `json:"content,omitempty"`
+	Content *string `default:"null" json:"content"`
 	// The type of specification being stored. This allows us to render the specification correctly.
 	//
 	Type *APISpecAPISpecType `json:"type,omitempty"`
+}
+
+func (a APISpec) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *APISpec) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *APISpec) GetContent() *string {

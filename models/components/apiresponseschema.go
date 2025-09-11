@@ -43,17 +43,17 @@ type APIResponseSchema struct {
 	ID string `json:"id"`
 	// The name of your API. The `name + version` combination must be unique for each API you publish.
 	//
-	Name string `json:"name"`
+	Name *string `default:"null" json:"name"`
 	// A description of your API. Will be visible on your live Portal.
-	Description *string `json:"description,omitempty"`
+	Description *string `default:"null" json:"description"`
 	// An optional version for your API. Leave this empty if your API is unversioned.
-	Version               *string            `json:"version"`
+	Version               *string            `default:"null" json:"version"`
 	CurrentVersionSummary *APIVersionSummary `json:"current_version_summary"`
 	// The `slug` is used in generated URLs to provide human readable paths.
 	//
 	// Defaults to `slugify(name + version)`
 	//
-	Slug *string `json:"slug"`
+	Slug *string `default:"null" json:"slug"`
 	// The list of API specification ids for the API.
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -91,9 +91,9 @@ func (o *APIResponseSchema) GetID() string {
 	return o.ID
 }
 
-func (o *APIResponseSchema) GetName() string {
+func (o *APIResponseSchema) GetName() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Name
 }

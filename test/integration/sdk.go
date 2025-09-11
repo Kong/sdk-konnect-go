@@ -27,6 +27,12 @@ const (
 func SDK(t *testing.T, apiType APIType, opts ...func(*sdkkonnectgo.SDK)) *sdkkonnectgo.SDK {
 	pat := KonnectPersonalAccessToken(t)
 	url := KonnectURL(t)
+	if apiType == GlobalAPI {
+		var err error
+		url, err = replaceFirstSegmentWithGlobal(url)
+		require.NoError(t, err)
+	}
+
 	sdk := sdkkonnectgo.New(
 		sdkkonnectgo.WithSecurity(
 			sdkkonnectcomp.Security{
@@ -37,12 +43,6 @@ func SDK(t *testing.T, apiType APIType, opts ...func(*sdkkonnectgo.SDK)) *sdkkon
 	)
 	for _, opt := range opts {
 		opt(sdk)
-	}
-
-	if apiType == GlobalAPI {
-		var err error
-		url, err = replaceFirstSegmentWithGlobal(url)
-		require.NoError(t, err)
 	}
 
 	require.NotNil(t, sdk)

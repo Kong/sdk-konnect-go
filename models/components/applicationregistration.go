@@ -14,7 +14,18 @@ type API struct {
 	// The name of the API the application is registered to.
 	Name string `json:"name"`
 	// The version of the API the application is registered to.
-	Version *string `json:"version"`
+	Version *string `default:"null" json:"version"`
+}
+
+func (a API) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *API) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *API) GetID() string {

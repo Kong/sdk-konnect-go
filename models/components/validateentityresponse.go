@@ -2,9 +2,24 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // ValidateEntityResponse - Validation result of the request against a schema
 type ValidateEntityResponse struct {
-	Message *string `json:"message,omitempty"`
+	Message *string `default:"null" json:"message"`
+}
+
+func (v ValidateEntityResponse) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(v, "", false)
+}
+
+func (v *ValidateEntityResponse) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &v, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ValidateEntityResponse) GetMessage() *string {

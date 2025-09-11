@@ -9,13 +9,13 @@ import (
 // RateLimited - The error object
 type RateLimited struct {
 	// The HTTP response code
-	Status *int64 `json:"status,omitempty"`
+	Status *int64 `default:"null" json:"status"`
 	// The Error response
-	Title *string `json:"title,omitempty"`
+	Title *string `default:"null" json:"title"`
 	// The Konnect traceback ID.
-	Instance *string `json:"instance,omitempty"`
+	Instance *string `default:"null" json:"instance"`
 	// Detailed explanation of the error response.
-	Detail *string `json:"detail,omitempty"`
+	Detail *string `default:"null" json:"detail"`
 }
 
 var _ error = &RateLimited{}

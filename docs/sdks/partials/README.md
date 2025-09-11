@@ -101,14 +101,9 @@ func main() {
     res, err := s.Partials.CreatePartial(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreatePartialRedisCe(
         components.PartialRedisCe{
             Config: components.PartialRedisCeConfig{
-                Database: sdkkonnectgo.Int64(0),
                 Host: sdkkonnectgo.String("localhost"),
                 Password: sdkkonnectgo.String("password"),
-                Port: sdkkonnectgo.Int64(6379),
                 ServerName: sdkkonnectgo.String("redis"),
-                Ssl: sdkkonnectgo.Bool(false),
-                SslVerify: sdkkonnectgo.Bool(false),
-                Timeout: sdkkonnectgo.Int64(2000),
                 Username: sdkkonnectgo.String("username"),
             },
             Type: components.TypeRedisCe,

@@ -5,13 +5,25 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type ClusterNodes struct {
 	// A string representing a host name, such as example.com.
-	IP *string `json:"ip,omitempty"`
+	IP *string `default:"127.0.0.1" json:"ip"`
 	// An integer representing a port number between 0 and 65535, inclusive.
-	Port *int64 `json:"port,omitempty"`
+	Port *int64 `default:"6379" json:"port"`
+}
+
+func (c ClusterNodes) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ClusterNodes) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ClusterNodes) GetIP() *string {
@@ -30,9 +42,20 @@ func (o *ClusterNodes) GetPort() *int64 {
 
 type SentinelNodes struct {
 	// A string representing a host name, such as example.com.
-	Host *string `json:"host,omitempty"`
+	Host *string `default:"127.0.0.1" json:"host"`
 	// An integer representing a port number between 0 and 65535, inclusive.
-	Port *int64 `json:"port,omitempty"`
+	Port *int64 `default:"6379" json:"port"`
+}
+
+func (s SentinelNodes) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SentinelNodes) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *SentinelNodes) GetHost() *string {
@@ -81,47 +104,58 @@ func (e *SentinelRole) UnmarshalJSON(data []byte) error {
 
 type PartialRedisEeConfig struct {
 	// Maximum retry attempts for redirection.
-	ClusterMaxRedirections *int64 `json:"cluster_max_redirections,omitempty"`
+	ClusterMaxRedirections *int64 `default:"5" json:"cluster_max_redirections"`
 	// Cluster addresses to use for Redis connections when the `redis` strategy is defined. Defining this field implies using a Redis Cluster. The minimum length of the array is 1 element.
 	ClusterNodes []ClusterNodes `json:"cluster_nodes,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
-	ConnectTimeout *int64 `json:"connect_timeout,omitempty"`
+	ConnectTimeout *int64 `default:"2000" json:"connect_timeout"`
 	// If the connection to Redis is proxied (e.g. Envoy), set it `true`. Set the `host` and `port` to point to the proxy address.
-	ConnectionIsProxied *bool `json:"connection_is_proxied,omitempty"`
+	ConnectionIsProxied *bool `default:"false" json:"connection_is_proxied"`
 	// Database to use for the Redis connection when using the `redis` strategy
-	Database *int64 `json:"database,omitempty"`
+	Database *int64 `default:"0" json:"database"`
 	// A string representing a host name, such as example.com.
-	Host *string `json:"host,omitempty"`
+	Host *string `default:"127.0.0.1" json:"host"`
 	// Limits the total number of opened connections for a pool. If the connection pool is full, connection queues above the limit go into the backlog queue. If the backlog queue is full, subsequent connect operations fail and return `nil`. Queued operations (subject to set timeouts) resume once the number of connections in the pool is less than `keepalive_pool_size`. If latency is high or throughput is low, try increasing this value. Empirically, this value is larger than `keepalive_pool_size`.
-	KeepaliveBacklog *int64 `json:"keepalive_backlog,omitempty"`
+	KeepaliveBacklog *int64 `default:"null" json:"keepalive_backlog"`
 	// The size limit for every cosocket connection pool associated with every remote server, per worker process. If neither `keepalive_pool_size` nor `keepalive_backlog` is specified, no pool is created. If `keepalive_pool_size` isn't specified but `keepalive_backlog` is specified, then the pool uses the default value. Try to increase (e.g. 512) this value if latency is high or throughput is low.
-	KeepalivePoolSize *int64 `json:"keepalive_pool_size,omitempty"`
+	KeepalivePoolSize *int64 `default:"256" json:"keepalive_pool_size"`
 	// Password to use for Redis connections. If undefined, no AUTH commands are sent to Redis.
-	Password *string `json:"password,omitempty"`
+	Password *string `default:"null" json:"password"`
 	// An integer representing a port number between 0 and 65535, inclusive.
-	Port *int64 `json:"port,omitempty"`
+	Port *int64 `default:"6379" json:"port"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
-	ReadTimeout *int64 `json:"read_timeout,omitempty"`
+	ReadTimeout *int64 `default:"2000" json:"read_timeout"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
-	SendTimeout *int64 `json:"send_timeout,omitempty"`
+	SendTimeout *int64 `default:"2000" json:"send_timeout"`
 	// Sentinel master to use for Redis connections. Defining this value implies using Redis Sentinel.
-	SentinelMaster *string `json:"sentinel_master,omitempty"`
+	SentinelMaster *string `default:"null" json:"sentinel_master"`
 	// Sentinel node addresses to use for Redis connections when the `redis` strategy is defined. Defining this field implies using a Redis Sentinel. The minimum length of the array is 1 element.
 	SentinelNodes []SentinelNodes `json:"sentinel_nodes,omitempty"`
 	// Sentinel password to authenticate with a Redis Sentinel instance. If undefined, no AUTH commands are sent to Redis Sentinels.
-	SentinelPassword *string `json:"sentinel_password,omitempty"`
+	SentinelPassword *string `default:"null" json:"sentinel_password"`
 	// Sentinel role to use for Redis connections when the `redis` strategy is defined. Defining this value implies using Redis Sentinel.
 	SentinelRole *SentinelRole `json:"sentinel_role,omitempty"`
 	// Sentinel username to authenticate with a Redis Sentinel instance. If undefined, ACL authentication won't be performed. This requires Redis v6.2.0+.
-	SentinelUsername *string `json:"sentinel_username,omitempty"`
+	SentinelUsername *string `default:"null" json:"sentinel_username"`
 	// A string representing an SNI (server name indication) value for TLS.
-	ServerName *string `json:"server_name,omitempty"`
+	ServerName *string `default:"null" json:"server_name"`
 	// If set to true, uses SSL to connect to Redis.
-	Ssl *bool `json:"ssl,omitempty"`
+	Ssl *bool `default:"false" json:"ssl"`
 	// If set to true, verifies the validity of the server SSL certificate. If setting this parameter, also configure `lua_ssl_trusted_certificate` in `kong.conf` to specify the CA (or server) certificate used by your Redis server. You may also need to configure `lua_ssl_verify_depth` accordingly.
-	SslVerify *bool `json:"ssl_verify,omitempty"`
+	SslVerify *bool `default:"false" json:"ssl_verify"`
 	// Username to use for Redis connections. If undefined, ACL authentication won't be performed. This requires Redis v6.0.0+. To be compatible with Redis v5.x.y, you can set it to `default`.
-	Username *string `json:"username,omitempty"`
+	Username *string `default:"null" json:"username"`
+}
+
+func (p PartialRedisEeConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PartialRedisEeConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PartialRedisEeConfig) GetClusterMaxRedirections() *int64 {
@@ -301,12 +335,23 @@ type PartialRedisEe struct {
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
 	// A unique string representing a UTF-8 encoded name.
-	Name *string `json:"name,omitempty"`
+	Name *string `default:"null" json:"name"`
 	// A set of strings representing tags.
 	Tags []string           `json:"tags,omitempty"`
 	Type PartialRedisEeType `json:"type"`
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
+}
+
+func (p PartialRedisEe) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PartialRedisEe) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *PartialRedisEe) GetConfig() PartialRedisEeConfig {

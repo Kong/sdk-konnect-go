@@ -2,10 +2,25 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type EmailDeliveryUpdatePayload struct {
-	Enabled      *bool   `json:"enabled,omitempty"`
-	FromEmail    *string `json:"from_email,omitempty"`
-	ReplyToEmail *string `json:"reply_to_email,omitempty"`
+	Enabled      *bool   `default:"null" json:"enabled"`
+	FromEmail    *string `default:"null" json:"from_email"`
+	ReplyToEmail *string `default:"null" json:"reply_to_email"`
+}
+
+func (e EmailDeliveryUpdatePayload) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EmailDeliveryUpdatePayload) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *EmailDeliveryUpdatePayload) GetEnabled() *bool {

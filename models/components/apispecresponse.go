@@ -56,7 +56,7 @@ type APISpecResponse struct {
 	ID string `json:"id"`
 	// The raw content of your API specification, in json or yaml format (OpenAPI or AsyncAPI).
 	//
-	Content string `json:"content"`
+	Content *string `default:"null" json:"content"`
 	// The errors that occurred while parsing the API specification.
 	ValidationMessages []ValidationMessages `json:"validation_messages"`
 	// The type of specification being stored. This allows us to render the specification correctly.
@@ -86,9 +86,9 @@ func (o *APISpecResponse) GetID() string {
 	return o.ID
 }
 
-func (o *APISpecResponse) GetContent() string {
+func (o *APISpecResponse) GetContent() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Content
 }

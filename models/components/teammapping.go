@@ -2,12 +2,27 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // TeamMapping - A team assignment is a mapping of an IdP group to a Konnect Team.
 type TeamMapping struct {
 	// The IdP group.
-	Group *string `json:"group,omitempty"`
+	Group *string `default:"null" json:"group"`
 	// An array of ID's that are mapped to the specified group.
 	TeamIds []string `json:"team_ids,omitempty"`
+}
+
+func (t TeamMapping) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TeamMapping) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TeamMapping) GetGroup() *string {

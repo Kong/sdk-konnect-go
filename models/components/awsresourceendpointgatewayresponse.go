@@ -10,10 +10,21 @@ import (
 // AwsResourceEndpointGatewayResponseTransitGatewayStateMetadata - Metadata describing the backing state of the transit gateway and why it may be in an erroneous state.
 type AwsResourceEndpointGatewayResponseTransitGatewayStateMetadata struct {
 	// Reported status of the transit gateway from backing infrastructure.
-	ReportedStatus *string `json:"reported_status,omitempty"`
+	ReportedStatus *string `default:"null" json:"reported_status"`
 	// Reason why the transit gateway may be in an erroneous state, reported from backing infrastructure.
 	//
-	Reason *string `json:"reason,omitempty"`
+	Reason *string `default:"null" json:"reason"`
+}
+
+func (a AwsResourceEndpointGatewayResponseTransitGatewayStateMetadata) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AwsResourceEndpointGatewayResponseTransitGatewayStateMetadata) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AwsResourceEndpointGatewayResponseTransitGatewayStateMetadata) GetReportedStatus() *string {

@@ -2,19 +2,23 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type UpdateAPIRequest struct {
 	// The name of your API. The `name + version` combination must be unique for each API you publish.
 	//
-	Name *string `json:"name,omitempty"`
+	Name *string `default:"null" json:"name"`
 	// A description of your API. Will be visible on your live Portal.
-	Description *string `json:"description,omitempty"`
+	Description *string `default:"null" json:"description"`
 	// An optional version for your API. Leave this empty if your API is unversioned.
-	Version *string `json:"version,omitempty"`
+	Version *string `default:"null" json:"version"`
 	// The `slug` is used in generated URLs to provide human readable paths.
 	//
 	// Defaults to `slugify(name + version)`
 	//
-	Slug *string `json:"slug,omitempty"`
+	Slug *string `default:"null" json:"slug"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Labels are intended to store **INTERNAL** metadata.
@@ -24,6 +28,17 @@ type UpdateAPIRequest struct {
 	Labels map[string]*string `json:"labels,omitempty"`
 	// A set of attributes that describe the API
 	Attributes any `json:"attributes,omitempty"`
+}
+
+func (u UpdateAPIRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateAPIRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateAPIRequest) GetName() *string {

@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 // Rule - invalid parameters rules
@@ -54,8 +55,19 @@ type InvalidParameterMinimumLength struct {
 	// invalid parameters rules
 	Rule    Rule    `json:"rule"`
 	Minimum int64   `json:"minimum"`
-	Source  *string `json:"source,omitempty"`
+	Source  *string `default:"null" json:"source"`
 	Reason  string  `json:"reason"`
+}
+
+func (i InvalidParameterMinimumLength) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *InvalidParameterMinimumLength) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, true); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *InvalidParameterMinimumLength) GetField() string {

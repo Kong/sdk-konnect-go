@@ -2,13 +2,28 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type CursorMetaWithSizeAndTotal struct {
 	// URI to the next page
-	Next *string `json:"next"`
+	Next *string `default:"null" json:"next"`
 	// Requested page size
 	Size float64 `json:"size"`
 	// Total number of objects in the collection; will only be present on the first page
-	Total *float64 `json:"total"`
+	Total *float64 `default:"null" json:"total"`
+}
+
+func (c CursorMetaWithSizeAndTotal) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CursorMetaWithSizeAndTotal) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *CursorMetaWithSizeAndTotal) GetNext() *string {

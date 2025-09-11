@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type KeyAuthWithoutParentsConsumer struct {
 	ID *string `json:"id,omitempty"`
 }
@@ -19,11 +23,22 @@ type KeyAuthWithoutParents struct {
 	CreatedAt *int64 `json:"created_at,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID  *string `json:"id,omitempty"`
-	Key *string `json:"key,omitempty"`
+	Key *string `default:"null" json:"key"`
 	// A set of strings representing tags.
 	Tags []string `json:"tags,omitempty"`
 	// key-auth ttl in seconds
-	TTL *int64 `json:"ttl,omitempty"`
+	TTL *int64 `default:"null" json:"ttl"`
+}
+
+func (k KeyAuthWithoutParents) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(k, "", false)
+}
+
+func (k *KeyAuthWithoutParents) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &k, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *KeyAuthWithoutParents) GetConsumer() *KeyAuthWithoutParentsConsumer {

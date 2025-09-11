@@ -2,11 +2,26 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type APIComputedSchema struct {
 	// The API identifier.
 	ID *string `json:"id,omitempty"`
 	// The number of validation messages for the API specification attached to the API. If there are no validation messages, the value will be 0, or if there are no API specifications, the value will be 0.
-	APISpecValidationMessagesCount *int64 `json:"api_spec_validation_messages_count,omitempty"`
+	APISpecValidationMessagesCount *int64 `default:"null" json:"api_spec_validation_messages_count"`
+}
+
+func (a APIComputedSchema) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *APIComputedSchema) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *APIComputedSchema) GetID() *string {

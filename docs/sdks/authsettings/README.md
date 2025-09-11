@@ -224,8 +224,6 @@ func main() {
         ClientID: sdkkonnectgo.String("YOUR_CLIENT_ID"),
         ClientSecret: sdkkonnectgo.String("YOUR_CLIENT_SECRET"),
         ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
-            Name: sdkkonnectgo.String("name"),
-            Email: sdkkonnectgo.String("email"),
             Groups: sdkkonnectgo.String("custom-group-claim"),
         },
     })
@@ -742,11 +740,7 @@ func main() {
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.String("YOUR_CLIENT_SECRET"),
-                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{
-                    Name: sdkkonnectgo.String("name"),
-                    Email: sdkkonnectgo.String("email"),
-                    Groups: sdkkonnectgo.String("groups"),
-                },
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
             },
         )),
     })

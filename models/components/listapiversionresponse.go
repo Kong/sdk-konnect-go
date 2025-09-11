@@ -24,7 +24,7 @@ type ListAPIVersionResponseAPIVersionSummary struct {
 	// The API version identifier.
 	ID string `json:"id"`
 	// The version of this api spec.
-	Version string                      `json:"version"`
+	Version *string                     `default:"null" json:"version"`
 	Spec    *ListAPIVersionResponseSpec `json:"spec,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
@@ -50,9 +50,9 @@ func (o *ListAPIVersionResponseAPIVersionSummary) GetID() string {
 	return o.ID
 }
 
-func (o *ListAPIVersionResponseAPIVersionSummary) GetVersion() string {
+func (o *ListAPIVersionResponseAPIVersionSummary) GetVersion() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Version
 }

@@ -63,7 +63,7 @@ func (e *ListPortalsResponseDefaultPageVisibility) UnmarshalJSON(data []byte) er
 	}
 }
 
-type Portal struct {
+type ListPortalsResponsePortal struct {
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -71,25 +71,25 @@ type Portal struct {
 	// An ISO-8601 timestamp representation of entity update date.
 	UpdatedAt time.Time `json:"updated_at"`
 	// The name of the portal, used to distinguish it from other portals. Name must be unique.
-	Name string `json:"name"`
+	Name *string `default:"null" json:"name"`
 	// The display name of the portal. This value will be the portal's `name` in Portal API.
-	DisplayName string `json:"display_name"`
+	DisplayName *string `default:"null" json:"display_name"`
 	// A description of the portal.
-	Description *string `json:"description"`
+	Description *string `default:"null" json:"description"`
 	// Whether the portal supports developer authentication. If disabled, developers cannot register for accounts or create applications.
-	AuthenticationEnabled bool `json:"authentication_enabled"`
+	AuthenticationEnabled *bool `default:"true" json:"authentication_enabled"`
 	// Whether the portal resources are protected by Role Based Access Control (RBAC). If enabled, developers view or register for APIs until unless assigned to teams with access to view and consume specific APIs. Authentication must be enabled to use RBAC.
-	RbacEnabled bool `json:"rbac_enabled"`
+	RbacEnabled *bool `default:"false" json:"rbac_enabled"`
 	// The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.
 	DefaultAPIVisibility ListPortalsResponseDefaultAPIVisibility `json:"default_api_visibility"`
 	// The default visibility of pages in the portal. If set to `public`, newly created pages are visible to unauthenticated developers. If set to `private`, newly created pages are hidden from unauthenticated developers.
 	DefaultPageVisibility ListPortalsResponseDefaultPageVisibility `json:"default_page_visibility"`
 	// The default authentication strategy for APIs published to the portal. Newly published APIs will use this authentication strategy unless overridden during publication. If set to `null`, API publications will not use an authentication strategy unless set during publication.
-	DefaultApplicationAuthStrategyID *string `json:"default_application_auth_strategy_id"`
+	DefaultApplicationAuthStrategyID *string `default:"null" json:"default_application_auth_strategy_id"`
 	// Whether developer account registrations will be automatically approved, or if they will be set to pending until approved by an admin.
-	AutoApproveDevelopers bool `json:"auto_approve_developers"`
+	AutoApproveDevelopers *bool `default:"false" json:"auto_approve_developers"`
 	// Whether requests from applications to register for APIs will be automatically approved, or if they will be set to pending until approved by an admin.
-	AutoApproveApplications bool `json:"auto_approve_applications"`
+	AutoApproveApplications *bool `default:"false" json:"auto_approve_applications"`
 	// The domain assigned to the portal by Konnect. This is the default place to access the portal and its API if not using a `custom_domain``.
 	DefaultDomain string `json:"default_domain"`
 	// The canonical domain of the developer portal
@@ -101,123 +101,123 @@ type Portal struct {
 	Labels map[string]string `json:"labels,omitempty"`
 }
 
-func (p Portal) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
+func (l ListPortalsResponsePortal) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(l, "", false)
 }
 
-func (p *Portal) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+func (l *ListPortalsResponsePortal) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *Portal) GetID() string {
+func (o *ListPortalsResponsePortal) GetID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ID
 }
 
-func (o *Portal) GetCreatedAt() time.Time {
+func (o *ListPortalsResponsePortal) GetCreatedAt() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
 	return o.CreatedAt
 }
 
-func (o *Portal) GetUpdatedAt() time.Time {
+func (o *ListPortalsResponsePortal) GetUpdatedAt() time.Time {
 	if o == nil {
 		return time.Time{}
 	}
 	return o.UpdatedAt
 }
 
-func (o *Portal) GetName() string {
+func (o *ListPortalsResponsePortal) GetName() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.Name
 }
 
-func (o *Portal) GetDisplayName() string {
+func (o *ListPortalsResponsePortal) GetDisplayName() *string {
 	if o == nil {
-		return ""
+		return nil
 	}
 	return o.DisplayName
 }
 
-func (o *Portal) GetDescription() *string {
+func (o *ListPortalsResponsePortal) GetDescription() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *Portal) GetAuthenticationEnabled() bool {
+func (o *ListPortalsResponsePortal) GetAuthenticationEnabled() *bool {
 	if o == nil {
-		return false
+		return nil
 	}
 	return o.AuthenticationEnabled
 }
 
-func (o *Portal) GetRbacEnabled() bool {
+func (o *ListPortalsResponsePortal) GetRbacEnabled() *bool {
 	if o == nil {
-		return false
+		return nil
 	}
 	return o.RbacEnabled
 }
 
-func (o *Portal) GetDefaultAPIVisibility() ListPortalsResponseDefaultAPIVisibility {
+func (o *ListPortalsResponsePortal) GetDefaultAPIVisibility() ListPortalsResponseDefaultAPIVisibility {
 	if o == nil {
 		return ListPortalsResponseDefaultAPIVisibility("")
 	}
 	return o.DefaultAPIVisibility
 }
 
-func (o *Portal) GetDefaultPageVisibility() ListPortalsResponseDefaultPageVisibility {
+func (o *ListPortalsResponsePortal) GetDefaultPageVisibility() ListPortalsResponseDefaultPageVisibility {
 	if o == nil {
 		return ListPortalsResponseDefaultPageVisibility("")
 	}
 	return o.DefaultPageVisibility
 }
 
-func (o *Portal) GetDefaultApplicationAuthStrategyID() *string {
+func (o *ListPortalsResponsePortal) GetDefaultApplicationAuthStrategyID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DefaultApplicationAuthStrategyID
 }
 
-func (o *Portal) GetAutoApproveDevelopers() bool {
+func (o *ListPortalsResponsePortal) GetAutoApproveDevelopers() *bool {
 	if o == nil {
-		return false
+		return nil
 	}
 	return o.AutoApproveDevelopers
 }
 
-func (o *Portal) GetAutoApproveApplications() bool {
+func (o *ListPortalsResponsePortal) GetAutoApproveApplications() *bool {
 	if o == nil {
-		return false
+		return nil
 	}
 	return o.AutoApproveApplications
 }
 
-func (o *Portal) GetDefaultDomain() string {
+func (o *ListPortalsResponsePortal) GetDefaultDomain() string {
 	if o == nil {
 		return ""
 	}
 	return o.DefaultDomain
 }
 
-func (o *Portal) GetCanonicalDomain() string {
+func (o *ListPortalsResponsePortal) GetCanonicalDomain() string {
 	if o == nil {
 		return ""
 	}
 	return o.CanonicalDomain
 }
 
-func (o *Portal) GetLabels() map[string]string {
+func (o *ListPortalsResponsePortal) GetLabels() map[string]string {
 	if o == nil {
 		return nil
 	}
@@ -226,14 +226,14 @@ func (o *Portal) GetLabels() map[string]string {
 
 // ListPortalsResponse - A paginated list of portals in the current region of an organization.
 type ListPortalsResponse struct {
-	Data []Portal `json:"data"`
+	Data []ListPortalsResponsePortal `json:"data"`
 	// returns the pagination information
 	Meta PaginatedMeta `json:"meta"`
 }
 
-func (o *ListPortalsResponse) GetData() []Portal {
+func (o *ListPortalsResponse) GetData() []ListPortalsResponsePortal {
 	if o == nil {
-		return []Portal{}
+		return []ListPortalsResponsePortal{}
 	}
 	return o.Data
 }

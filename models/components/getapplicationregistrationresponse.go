@@ -14,7 +14,18 @@ type GetApplicationRegistrationResponseAPI struct {
 	// The name of the API the application is registered to.
 	Name string `json:"name"`
 	// The version of the API the application is registered to.
-	Version *string `json:"version"`
+	Version *string `default:"null" json:"version"`
+}
+
+func (g GetApplicationRegistrationResponseAPI) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(g, "", false)
+}
+
+func (g *GetApplicationRegistrationResponseAPI) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *GetApplicationRegistrationResponseAPI) GetID() string {

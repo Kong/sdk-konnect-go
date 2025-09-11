@@ -7,13 +7,14 @@ package sdkkonnectgo
 import (
 	"context"
 	"fmt"
+	"net/http"
+	"time"
+
 	"github.com/Kong/sdk-konnect-go/internal/config"
 	"github.com/Kong/sdk-konnect-go/internal/hooks"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/retry"
-	"net/http"
-	"time"
 )
 
 // ServerList contains the list of servers available to the SDK
@@ -302,9 +303,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.8.26",
+		SDKVersion: "0.9.1",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.8.26 2.687.1 3.0.24 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.9.1 2.687.1 3.0.24 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),

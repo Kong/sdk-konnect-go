@@ -5,15 +5,15 @@ JSON-B object containing the configuration for the OIDC strategy under the key '
 
 ## Supported Types
 
-### One
+### UpdateAppAuthStrategyRequestOpenIDConnect
 
 ```go
-configs := components.CreateConfigsOne(components.One{/* values here */})
+configs := components.CreateConfigsUpdateAppAuthStrategyRequestOpenIDConnect(components.UpdateAppAuthStrategyRequestOpenIDConnect{/* values here */})
 ```
 
-### Two
+### UpdateAppAuthStrategyRequestKeyAuth
 
 ```go
-configs := components.CreateConfigsTwo(components.Two{/* values here */})
+configs := components.CreateConfigsUpdateAppAuthStrategyRequestKeyAuth(components.UpdateAppAuthStrategyRequestKeyAuth{/* values here */})
 ```
 

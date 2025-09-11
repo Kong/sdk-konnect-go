@@ -2,10 +2,25 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type APIVersionSpec struct {
 	// The raw content of your API spec, in json or yaml format (OpenAPI or AsyncAPI).
 	//
-	Content *string `json:"content,omitempty"`
+	Content *string `default:"null" json:"content"`
+}
+
+func (a APIVersionSpec) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *APIVersionSpec) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *APIVersionSpec) GetContent() *string {
@@ -17,8 +32,19 @@ func (o *APIVersionSpec) GetContent() *string {
 
 type APIVersion struct {
 	// The version of the api.
-	Version *string         `json:"version,omitempty"`
+	Version *string         `default:"null" json:"version"`
 	Spec    *APIVersionSpec `json:"spec,omitempty"`
+}
+
+func (a APIVersion) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *APIVersion) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *APIVersion) GetVersion() *string {

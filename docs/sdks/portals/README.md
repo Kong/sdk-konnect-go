@@ -107,7 +107,6 @@ func main() {
     )
 
     res, err := s.Portals.CreatePortal(ctx, components.CreatePortal{
-        Name: "<value>",
         Labels: map[string]*string{
             "env": sdkkonnectgo.String("test"),
         },
