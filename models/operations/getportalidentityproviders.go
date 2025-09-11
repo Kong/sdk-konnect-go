@@ -9,11 +9,11 @@ import (
 
 // GetPortalIdentityProvidersQueryParamFilter - Filter identity providers returned in the response.
 type GetPortalIdentityProvidersQueryParamFilter struct {
-	// Filter a string value by exact match.
-	Type *string `queryParam:"name=type"`
+	// Filters on the given string field value by exact match.
+	Type *components.StringFieldEqualsFilter `queryParam:"name=type"`
 }
 
-func (o *GetPortalIdentityProvidersQueryParamFilter) GetType() *string {
+func (o *GetPortalIdentityProvidersQueryParamFilter) GetType() *components.StringFieldEqualsFilter {
 	if o == nil {
 		return nil
 	}

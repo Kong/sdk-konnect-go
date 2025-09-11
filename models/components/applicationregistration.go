@@ -3,8 +3,9 @@
 package components
 
 import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
+
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 // API - Details about the API the application is registered to.
@@ -15,6 +16,8 @@ type API struct {
 	Name string `json:"name"`
 	// The version of the API the application is registered to.
 	Version *string `default:"null" json:"version"`
+	// The type of entity that is being published. Can be either an API or an API Package.
+	EntityType EntityType `json:"entity_type"`
 }
 
 func (a API) MarshalJSON() ([]byte, error) {
@@ -22,7 +25,7 @@ func (a API) MarshalJSON() ([]byte, error) {
 }
 
 func (a *API) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name", "entity_type"}); err != nil {
 		return err
 	}
 	return nil
@@ -47,6 +50,13 @@ func (o *API) GetVersion() *string {
 		return nil
 	}
 	return o.Version
+}
+
+func (o *API) GetEntityType() EntityType {
+	if o == nil {
+		return EntityType("")
+	}
+	return o.EntityType
 }
 
 // ApplicationRegistrationApplication - Details about the application the registration is part of.

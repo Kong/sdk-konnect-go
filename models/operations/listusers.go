@@ -14,30 +14,30 @@ var ListUsersServerList = []string{
 // ListUsersQueryParamFilter - Filter users returned in the response.
 type ListUsersQueryParamFilter struct {
 	// Filters on the given string field value by exact match.
-	ID *string `queryParam:"name=id"`
-	// Filters on the given string field value by exact match inequality.
-	Email *components.StringFieldFilter `queryParam:"name=email"`
-	// Filters on the given string field value by exact match inequality.
-	FullName *components.StringFieldFilter `queryParam:"name=full_name"`
+	ID *components.StringFieldEqualsFilter `queryParam:"name=id"`
+	// Filters on the given string field value by fuzzy match.
+	Email *components.LegacyStringFieldFilter `queryParam:"name=email"`
+	// Filters on the given string field value by fuzzy match.
+	FullName *components.LegacyStringFieldFilter `queryParam:"name=full_name"`
 	// Filter by a boolean value (true/false).
 	Active *bool `queryParam:"name=active"`
 }
 
-func (o *ListUsersQueryParamFilter) GetID() *string {
+func (o *ListUsersQueryParamFilter) GetID() *components.StringFieldEqualsFilter {
 	if o == nil {
 		return nil
 	}
 	return o.ID
 }
 
-func (o *ListUsersQueryParamFilter) GetEmail() *components.StringFieldFilter {
+func (o *ListUsersQueryParamFilter) GetEmail() *components.LegacyStringFieldFilter {
 	if o == nil {
 		return nil
 	}
 	return o.Email
 }
 
-func (o *ListUsersQueryParamFilter) GetFullName() *components.StringFieldFilter {
+func (o *ListUsersQueryParamFilter) GetFullName() *components.LegacyStringFieldFilter {
 	if o == nil {
 		return nil
 	}

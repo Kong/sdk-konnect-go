@@ -13,22 +13,22 @@ var GetSystemAccountsServerList = []string{
 
 // GetSystemAccountsQueryParamFilter - Filter system accounts returned in the response.
 type GetSystemAccountsQueryParamFilter struct {
-	// Filters on the given string field value by exact match inequality.
-	Name *components.StringFieldFilter `queryParam:"name=name"`
-	// Filters on the given string field value by exact match inequality.
-	Description *components.StringFieldFilter `queryParam:"name=description"`
+	// Filters on the given string field value by fuzzy match.
+	Name *components.LegacyStringFieldFilter `queryParam:"name=name"`
+	// Filters on the given string field value by fuzzy match.
+	Description *components.LegacyStringFieldFilter `queryParam:"name=description"`
 	// Filter by a boolean value (true/false).
 	KonnectManaged *bool `queryParam:"name=konnect_managed"`
 }
 
-func (o *GetSystemAccountsQueryParamFilter) GetName() *components.StringFieldFilter {
+func (o *GetSystemAccountsQueryParamFilter) GetName() *components.LegacyStringFieldFilter {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *GetSystemAccountsQueryParamFilter) GetDescription() *components.StringFieldFilter {
+func (o *GetSystemAccountsQueryParamFilter) GetDescription() *components.LegacyStringFieldFilter {
 	if o == nil {
 		return nil
 	}

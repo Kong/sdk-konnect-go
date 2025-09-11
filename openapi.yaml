@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Konnect API - Go SDK
-  version: 3.0.24
+  version: 3.0.26
   description: The Konnect platform API
   contact:
     name: Kong Inc
@@ -1436,6 +1436,40 @@ paths:
         - Transit Gateways
       servers:
         - url: https://global.api.konghq.com/
+    patch:
+      x-speakeasy-group: CloudGateways
+      x-speakeasy-entity-operation:
+        terraform-resource: CloudGatewayTransitGateway#update
+        terraform-datasource: null
+      summary: Update Transit Gateway
+      description: Updates a transit gateway by ID for a given network.
+      operationId: update-transit-gateway
+      parameters:
+        - $ref: '#/components/parameters/NetworkId'
+        - $ref: '#/components/parameters/TransitGatewayId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchTransitGatewayRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/PatchTransitGatewayResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Transit Gateways
+      servers:
+        - url: https://global.api.konghq.com/
     delete:
       x-speakeasy-group: CloudGateways
       x-speakeasy-entity-operation:
@@ -1617,7 +1651,10 @@ paths:
         - url: https://global.api.konghq.com/
   /v2/control-planes:
     get:
-      x-speakeasy-entity-operation: GatewayControlPlaneList#read
+      x-speakeasy-entity-operation:
+        terraform-resource: null
+        terraform-datasource:
+          - GatewayControlPlane#read
       summary: List Control Planes
       responses:
         '200':
@@ -1644,7 +1681,6 @@ paths:
         - $ref: '#/components/parameters/ControlPlaneSort'
       tags:
         - Control Planes
-    parameters: []
     post:
       x-speakeasy-entity-operation:
         terraform-resource: GatewayControlPlane#create
@@ -1814,6 +1850,7 @@ paths:
       - $ref: '#/components/parameters/controlPlaneId'
       - $ref: '#/components/parameters/configStoreId'
     post:
+      x-speakeasy-entity-operation: GatewayConfigStoreSecret#create
       summary: Create Config Store Secret
       description: Creates a secret for a Config Store.
       operationId: create-config-store-secret
@@ -1874,6 +1911,9 @@ paths:
         required: true
         description: Config Store Secret key
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: GatewayConfigStoreSecret#read
+        terraform-datasource: null
       summary: Fetch Config Store Secret
       description: Returns a secret for the Config Store.
       operationId: get-config-store-secret
@@ -1889,6 +1929,7 @@ paths:
       tags:
         - Config Store Secrets
     put:
+      x-speakeasy-entity-operation: GatewayConfigStoreSecret#update
       summary: Update Config Store Secret
       description: Updates a secret for a Config Store.
       operationId: update-config-store-secret
@@ -1914,6 +1955,7 @@ paths:
       tags:
         - Config Store Secrets
     delete:
+      x-speakeasy-entity-operation: GatewayConfigStoreSecret#delete
       summary: Delete Config Store Secret
       description: Removes a secret from a Config Store.
       operationId: delete-config-store-secret
@@ -6786,6 +6828,8 @@ paths:
           $ref: '#/components/responses/ApiForbidden'
         '404':
           $ref: '#/components/responses/ApiNotFound'
+        '409':
+          $ref: '#/components/responses/ApiVersionPatchConflict'
         '415':
           $ref: '#/components/responses/UnsupportedMediaType'
       tags:
@@ -7363,7 +7407,7 @@ paths:
         '404':
           $ref: '#/components/responses/ApiNotFound'
         '409':
-          $ref: '#/components/responses/ApiSpecHiddenConflict'
+          $ref: '#/components/responses/ApiVersionPatchConflict'
         '415':
           $ref: '#/components/responses/UnsupportedMediaType'
       tags:
@@ -7521,7 +7565,6 @@ paths:
       description: Fetch the IdP configuration.
       servers:
         - url: https://global.api.konghq.com/
-    parameters: []
     patch:
       summary: Update IdP Configuration
       operationId: update-idp-configuration
@@ -7880,6 +7923,10 @@ paths:
         - Portal Team Roles
   /v3/portals:
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: null
+        terraform-datasource:
+          - Portal#read
       summary: List Portals
       description: >-
         Lists developer portals defined in this region for this organization.
@@ -9252,7 +9299,7 @@ paths:
             type: object
             properties:
               type:
-                $ref: '#/components/schemas/schemas-StringFieldEqualsFilter'
+                $ref: '#/components/schemas/StringFieldEqualsFilter'
           in: query
           name: filter
           description: Filter identity providers returned in the response.
@@ -10174,9 +10221,9 @@ paths:
             type: object
             properties:
               name:
-                $ref: '#/components/schemas/StringFieldFilter'
+                $ref: '#/components/schemas/LegacyStringFieldFilter'
               description:
-                $ref: '#/components/schemas/StringFieldFilter'
+                $ref: '#/components/schemas/LegacyStringFieldFilter'
               konnect_managed:
                 $ref: '#/components/schemas/BooleanFieldFilter'
           in: query
@@ -10316,7 +10363,7 @@ paths:
             type: object
             properties:
               name:
-                $ref: '#/components/schemas/StringFieldFilter'
+                $ref: '#/components/schemas/LegacyStringFieldFilter'
           in: query
           name: filter
           description: Filter access tokens returned in the response.
@@ -10378,7 +10425,6 @@ paths:
       description: >-
         Returns the system account (SA) access token for the SA Access Token ID
         specified as a path parameter.
-      parameters: []
       tags:
         - System Accounts - Access Tokens
       servers:
@@ -10576,7 +10622,7 @@ paths:
             type: object
             properties:
               name:
-                $ref: '#/components/schemas/StringFieldFilter'
+                $ref: '#/components/schemas/LegacyStringFieldFilter'
           in: query
           name: filter
           description: Filter teams returned in the response.
@@ -10607,7 +10653,7 @@ paths:
             type: object
             properties:
               name:
-                $ref: '#/components/schemas/StringFieldFilter'
+                $ref: '#/components/schemas/LegacyStringFieldFilter'
           in: query
           name: filter
           description: Filter teams returned in the response.
@@ -10617,7 +10663,6 @@ paths:
         - Teams
       servers:
         - url: https://global.api.konghq.com/
-    parameters: []
     post:
       x-speakeasy-entity-operation:
         terraform-resource: Team#create
@@ -10848,7 +10893,7 @@ paths:
             type: object
             properties:
               name:
-                $ref: '#/components/schemas/StringFieldFilter'
+                $ref: '#/components/schemas/LegacyStringFieldFilter'
           in: query
           name: filter
           description: Filter system accounts returned in the response.
@@ -10952,9 +10997,9 @@ paths:
               id:
                 $ref: '#/components/schemas/StringFieldEqualsFilter'
               email:
-                $ref: '#/components/schemas/StringFieldFilter'
+                $ref: '#/components/schemas/LegacyStringFieldFilter'
               full_name:
-                $ref: '#/components/schemas/StringFieldFilter'
+                $ref: '#/components/schemas/LegacyStringFieldFilter'
               active:
                 $ref: '#/components/schemas/BooleanFieldFilter'
           in: query
@@ -11049,9 +11094,9 @@ paths:
               id:
                 $ref: '#/components/schemas/StringFieldEqualsFilter'
               email:
-                $ref: '#/components/schemas/StringFieldFilter'
+                $ref: '#/components/schemas/LegacyStringFieldFilter'
               full_name:
-                $ref: '#/components/schemas/StringFieldFilter'
+                $ref: '#/components/schemas/LegacyStringFieldFilter'
               active:
                 $ref: '#/components/schemas/BooleanFieldFilter'
           in: query
@@ -11246,7 +11291,7 @@ paths:
             type: object
             properties:
               name:
-                $ref: '#/components/schemas/StringFieldFilter'
+                $ref: '#/components/schemas/LegacyStringFieldFilter'
           in: query
           name: filter
           description: Filter teams returned in the response.
@@ -11286,6 +11331,7 @@ components:
         $ref: '#/components/schemas/ControlPlaneFilterParameters'
       style: deepObject
     FilterByLabels:
+      x-speakeasy-name-override: filter_labels
       name: labels
       description: Filter control planes in the response by associated labels.
       in: query
@@ -14005,6 +14051,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/TransitGatewayResponse'
+    PatchTransitGatewayResponse:
+      description: Response format for updating a transit gateway.
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/AwsResourceEndpointGatewayResponse'
     ListTransitGatewaysResponse:
       description: A paginated list for a collection of transit gateways for a network.
       content:
@@ -14347,6 +14400,12 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/ConflictError'
+    ApiVersionPatchConflict:
+      description: Conflict - May occur when constraints are violated
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ConflictError'
     ApiImplementationConflict:
       description: Conflict - A gateway service can only be linked to a single API
       content:
@@ -14665,6 +14724,7 @@ components:
                   type: object
                   additionalProperties: false
                   readOnly: true
+                  x-speakeasy-terraform-ignore: true
                   nullable: false
                   properties:
                     id:
@@ -14692,8 +14752,6 @@ components:
                       $ref: '#/components/schemas/CreatedAt'
                     updated_at:
                       $ref: '#/components/schemas/UpdatedAt'
-                  x-speakeasy-param-computed: false
-                  default: null
                   required:
                     - id
                     - version
@@ -14890,6 +14948,7 @@ components:
               data:
                 type: array
                 items:
+                  x-speakeasy-entity: Portal
                   title: Portal
                   type: object
                   additionalProperties: false
@@ -15031,6 +15090,7 @@ components:
       content:
         application/json:
           schema:
+            x-speakeasy-entity: Portal
             title: Portal
             type: object
             additionalProperties: false
@@ -16305,16 +16365,15 @@ components:
           description: >-
             Returns entities that exact match any of the comma-delimited phrases
             in the filter string.
-          type: object
           properties:
             eq:
               type: string
             oeq:
               type: string
+          type: object
           additionalProperties: false
         name:
           description: Filters on the given string field value by exact match inequality.
-          type: object
           properties:
             eq:
               type: string
@@ -16322,22 +16381,22 @@ components:
               type: string
             neq:
               type: string
+          type: object
           additionalProperties: false
         cluster_type:
           description: Filters on the given string field value by exact match inequality.
-          type: object
           properties:
             eq:
               type: string
             neq:
               type: string
+          type: object
           additionalProperties: false
         cloud_gateway:
           $ref: '#/components/schemas/BooleanFieldFilter'
     StringFieldEqualsFilter:
       title: StringFieldEqualsFilter
       description: Filters on the given string field value by exact match.
-      type: string
       properties:
         eq:
           type: string
@@ -16377,7 +16436,6 @@ components:
       title: BooleanFieldFilter
       description: Filter by a boolean value (true/false).
       type: boolean
-      example: true
     SortQuery:
       title: SortQuery
       type: string
@@ -17426,20 +17484,14 @@ components:
       example: 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7
       description: Contains a unique identifier used for this resource.
       readOnly: true
-    StringFieldFilter:
-      description: Filters on the given string field value by exact match inequality.
-      type: object
+    LegacyStringFieldFilter:
+      description: Filters on the given string field value by fuzzy match.
       properties:
         eq:
           type: string
         contains:
           type: string
-        ocontains:
-          type: string
-        oeq:
-          type: string
-        neq:
-          type: string
+      type: object
       additionalProperties: false
     LabelsUpdate:
       type: object
@@ -17566,6 +17618,7 @@ components:
         - private+public
       description: Type of API access data-plane groups will support for a configuration.
       default: private+public
+      example: private+public
     InstanceType:
       title: Instance Type
       description: Resource parameters and pricing of a given supported instance type.
@@ -17623,6 +17676,11 @@ components:
       description: Region ID for cloud provider region.
       type: string
       example: us-east-2
+    ServerlessV1ProviderRegionId:
+      title: Serverless V1 Provider Region ID
+      description: Region ID for serverless v1 cloud provider region.
+      type: string
+      example: us
     ProviderRegion:
       title: Provider Region
       description: Region ID and human-readable name for a cloud provider region.
@@ -17675,14 +17733,14 @@ components:
         - availability_zones
         - cidr_blocks
         - reserved_cidr_blocks
-    HighVelocityProviderRegion:
-      title: HighVelocity Provider Region
+    ServerlessV1ProviderRegion:
+      title: Serverless V1 Provider Region
       description: Region ID and human-readable name for a cloud provider region.
       type: object
       additionalProperties: false
       properties:
         region:
-          $ref: '#/components/schemas/ProviderRegionId'
+          $ref: '#/components/schemas/ServerlessV1ProviderRegionId'
       required:
         - region
     ProviderRegions:
@@ -17693,14 +17751,14 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/ProviderRegion'
-    HighVelocityProviderRegions:
-      title: High Velocity Provider Regions
+    ServerlessV1ProviderRegions:
+      title: Serverless V1 Provider Regions
       description: >-
-        List of available regions to run high velocity cloud gateway instances 
+        List of available regions to run serverless v1 cloud gateway instances 
         on for a given cloud provider.
       type: array
       items:
-        $ref: '#/components/schemas/HighVelocityProviderRegion'
+        $ref: '#/components/schemas/ServerlessV1ProviderRegion'
     ProviderName:
       title: Provider Name
       description: Name of cloud provider.
@@ -17709,7 +17767,7 @@ components:
         - aws
         - azure
       example: aws
-    HighVelocityCloudGatewaysProviderName:
+    ServerlessV1ProviderName:
       description: Name of cloud provider.
       type: string
       enum:
@@ -17728,18 +17786,18 @@ components:
       required:
         - provider
         - regions
-    HighVelocityProvider:
-      title: High Velocity Provider
+    ServerlessV1Provider:
+      title: Serverless V1 Provider
       description: >-
-        Description of cloud provider that runs high velocity cloud gateway
+        Description of cloud provider that runs serverless v1 cloud gateway
         instances.
       type: object
       additionalProperties: false
       properties:
         provider:
-          $ref: '#/components/schemas/HighVelocityCloudGatewaysProviderName'
+          $ref: '#/components/schemas/ServerlessV1ProviderName'
         regions:
-          $ref: '#/components/schemas/HighVelocityProviderRegions'
+          $ref: '#/components/schemas/ServerlessV1ProviderRegions'
       required:
         - provider
         - regions
@@ -17749,14 +17807,14 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Provider'
-    HighVelocityProviders:
-      title: High Velocity Providers
+    ServerlessV1Providers:
+      title: Serverless V1 Providers
       description: >-
-        List of supported cloud providers that run high velocity cloud gateway
+        List of supported cloud providers that run serverless v1 cloud gateway
         instances.
       type: array
       items:
-        $ref: '#/components/schemas/HighVelocityProvider'
+        $ref: '#/components/schemas/ServerlessV1Provider'
     AvailabilityDocument:
       title: Availability Document
       description: Document containing availability information for configurations.
@@ -17769,13 +17827,13 @@ components:
           $ref: '#/components/schemas/InstanceTypes'
         providers:
           $ref: '#/components/schemas/Providers'
-        high_velocity_providers:
-          $ref: '#/components/schemas/HighVelocityProviders'
+        serverless_v1_providers:
+          $ref: '#/components/schemas/ServerlessV1Providers'
       required:
         - versions
         - instance_types
         - providers
-        - high_velocity_providers
+        - serverless_v1_providers
     ConfigurationDataPlaneGroupAutoscale:
       oneOf:
         - $ref: '#/components/schemas/ConfigurationDataPlaneGroupAutoscaleStatic'
@@ -17823,15 +17881,13 @@ components:
           type: integer
           deprecated: true
           example: 1000
+          x-speakeasy-param-computed: true
           description: >-
             Max number of requests per second that the deployment target should
             support. If not set, this defaults to 10x base_rps. This field is
             deprecated and shouldn't be used in new configurations as it will be
             removed in a future version. max_rps is now calculated as 10x
             base_rps.
-          x-speakeasy-param-computed: false
-          nullable: true
-          default: null
       required:
         - kind
         - base_rps
@@ -18723,6 +18779,32 @@ components:
       required:
         - kind
         - hosted_zone_id
+    GcpPrivateHostedZoneAttachmentConfig:
+      title: GCP Private Hosted Zone Attachment Config
+      type: object
+      additionalProperties: false
+      properties:
+        kind:
+          title: GCP Private Hosted Zone Type
+          enum:
+            - gcp-private-hosted-zone-attachment
+        domain_name:
+          title: Domain Name
+          description: Domain name to create attachment to.
+          type: string
+        peer_project_id:
+          title: Peer Project Id
+          description: Customer's GCP Project ID.
+          type: string
+        peer_vpc_name:
+          title: Peer VPC Name
+          description: Customer's GCP VPC ID.
+          type: string
+      required:
+        - kind
+        - domain_name
+        - peer_project_id
+        - peer_vpc_name
     GcpPrivateHostedZoneResponse:
       type: object
       properties:
@@ -18779,6 +18861,8 @@ components:
           readOnly: true
         name:
           $ref: '#/components/schemas/PrivateDnsName'
+        private_dns_attachment_config:
+          $ref: '#/components/schemas/GcpPrivateHostedZoneAttachmentConfig'
       required:
         - id
         - state
@@ -19017,6 +19101,7 @@ components:
           oneOf:
             - $ref: '#/components/schemas/AwsPrivateHostedZoneAttachmentConfig'
             - $ref: '#/components/schemas/AwsPrivateDnsResolverAttachmentConfig'
+            - $ref: '#/components/schemas/GcpPrivateHostedZoneAttachmentConfig'
     PatchPrivateDnsRequest:
       title: PatchPrivateDnsRequest
       description: Request schema for updating a Private DNS.
@@ -19497,6 +19582,30 @@ components:
         - $ref: '#/components/schemas/CreateAwsResourceEndpointGateway'
         - $ref: '#/components/schemas/CreateAzureTransitGateway'
         - $ref: '#/components/schemas/CreateGCPVPCPeeringTransitGateway'
+    PatchAwsResourceEndpointGateway:
+      description: Request schema for updating AWS Resource Endpoint.
+      properties:
+        transit_gateway_attachment_config:
+          type: object
+          additionalProperties: false
+          properties:
+            kind:
+              title: AWS Resource Endpoint Attachment Type
+              enum:
+                - aws-resource-endpoint-attachment
+            resource_config:
+              $ref: '#/components/schemas/AwsResourceEndpointConfig'
+          required:
+            - kind
+            - resource_config
+      required:
+        - transit_gateway_attachment_config
+    PatchTransitGatewayRequest:
+      title: PatchTransitGatewayRequest
+      description: Request schema for updating a transit gateway.
+      type: object
+      oneOf:
+        - $ref: '#/components/schemas/PatchAwsResourceEndpointGateway'
     CustomDomainState:
       title: Custom Domain State
       type: string
@@ -20058,7 +20167,6 @@ components:
       description: >-
         Returns entities that exact match any of the comma-delimited phrases in
         the filter string.
-      type: object
       properties:
         eq:
           type: string
@@ -20066,6 +20174,7 @@ components:
           type: string
         oeq:
           type: string
+      type: object
       additionalProperties: false
     ControlPlaneGeoFieldFilter:
       title: ControlPlaneGeoFieldFilter
@@ -20187,28 +20296,28 @@ components:
       additionalProperties: false
       properties:
         title:
-          $ref: '#/components/schemas/StringFieldFilter'
+          $ref: '#/components/schemas/LegacyStringFieldFilter'
         description:
-          $ref: '#/components/schemas/StringFieldFilter'
+          $ref: '#/components/schemas/LegacyStringFieldFilter'
         namespace:
-          $ref: '#/components/schemas/StringFieldFilter'
+          $ref: '#/components/schemas/LegacyStringFieldFilter'
         region:
-          $ref: '#/components/schemas/StringFieldFilter'
+          $ref: '#/components/schemas/LegacyStringFieldFilter'
         status:
-          $ref: '#/components/schemas/StringFieldFilter'
+          $ref: '#/components/schemas/LegacyStringFieldFilter'
     ConfigurationFilterParameters:
       title: ConfigurationFilterParameters
       type: object
       additionalProperties: false
       properties:
         event_title:
-          $ref: '#/components/schemas/StringFieldFilter'
+          $ref: '#/components/schemas/LegacyStringFieldFilter'
         event_description:
-          $ref: '#/components/schemas/StringFieldFilter'
+          $ref: '#/components/schemas/LegacyStringFieldFilter'
         event_namespace:
-          $ref: '#/components/schemas/StringFieldFilter'
+          $ref: '#/components/schemas/LegacyStringFieldFilter'
         region:
-          $ref: '#/components/schemas/StringFieldFilter'
+          $ref: '#/components/schemas/LegacyStringFieldFilter'
     Notification:
       type: object
       description: Properties of a notification.
@@ -21555,9 +21664,23 @@ components:
         The display name of the Auth strategy. This is used to identify the Auth
         strategy in the Portal UI.
       maxLength: 256
+    StringFieldFilter:
+      description: Filters on the given string field value by exact match inequality.
+      properties:
+        eq:
+          type: string
+        contains:
+          type: string
+        ocontains:
+          type: string
+        oeq:
+          type: string
+        neq:
+          type: string
+      type: object
+      additionalProperties: false
     UuidFieldFilter:
       description: Filters on the given string field value by exact match inequality.
-      type: object
       properties:
         eq:
           type: string
@@ -21565,6 +21688,7 @@ components:
           type: string
         neq:
           type: string
+      type: object
       additionalProperties: false
     ApiResponseSchema:
       title: API
@@ -21602,8 +21726,7 @@ components:
             An optional version for your API. Leave this empty if your API is
             unversioned.
           nullable: true
-          x-speakeasy-param-computed: false
-          default: null
+          x-speakeasy-param-computed: true
         current_version_summary:
           $ref: '#/components/schemas/ApiVersionSummary'
         slug:
@@ -21617,8 +21740,7 @@ components:
             Defaults to `slugify(name + version)`
           example: my-api-v1
           nullable: true
-          x-speakeasy-param-computed: false
-          default: null
+          x-speakeasy-param-computed: true
         api_spec_ids:
           readOnly: true
           type: array
@@ -21929,6 +22051,7 @@ components:
       type: object
       additionalProperties: false
       readOnly: true
+      x-speakeasy-terraform-ignore: true
       nullable: true
       properties:
         id:
@@ -21956,8 +22079,6 @@ components:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
           $ref: '#/components/schemas/UpdatedAt'
-      x-speakeasy-param-computed: false
-      default: null
     ApiSpec:
       title: API Specification
       type: object
@@ -22490,6 +22611,16 @@ components:
               example: kong:trace:1234567890
             detail:
               example: UnsupportedMediaType
+    EntityType:
+      title: Entity Type
+      type: string
+      enum:
+        - api
+        - api_package
+      description: >-
+        The type of entity that is being published. Can be either an API or an
+        API Package.
+      example: api
     PortalImageDataUri:
       title: PortalImageDataUri
       type: string
@@ -23226,6 +23357,7 @@ components:
               id: 56f637b7-cd95-478b-9b02-d770618f641c
               name: Great Stuff
               version: v1
+              entity_type: api
             created_at: '2022-12-22T20:13:07.305Z'
             updated_at: '2022-12-22T20:13:36.710Z'
           - id: d200cc33-2d33-4754-b086-a98e0fcd36fb
@@ -23237,6 +23369,7 @@ components:
               id: 56f637b7-cd95-478b-9b02-d770618f641c
               name: Great Stuff
               version: v2
+              entity_type: api
             created_at: '2022-12-22T20:13:07.305Z'
             updated_at: '2022-12-22T20:13:36.710Z'
           - id: d300cc33-2d33-4754-b086-a98e0fcd36fb
@@ -23248,6 +23381,7 @@ components:
               id: 56f637b7-cd95-478b-9b02-d770618f641c
               name: Good Stuff
               version: v2
+              entity_type: api
             created_at: '2022-12-22T20:13:07.305Z'
             updated_at: '2022-12-22T20:13:36.710Z'
           - id: d300cc33-2d33-4754-b086-a98e0fcd36fb
@@ -23259,6 +23393,7 @@ components:
               id: 56f637b7-cd95-478b-9b02-d770618f641c
               name: Good Stuff
               version: v1
+              entity_type: api
             created_at: '2022-12-22T20:13:07.305Z'
             updated_at: '2022-12-22T20:13:36.710Z'
     GetApplicationRegistrationResponse:
@@ -23497,6 +23632,7 @@ components:
             - id
             - name
             - version
+            - entity_type
           properties:
             id:
               $ref: '#/components/schemas/UUID'
@@ -23509,6 +23645,8 @@ components:
               nullable: true
               x-speakeasy-param-computed: false
               default: null
+            entity_type:
+              $ref: '#/components/schemas/EntityType'
         application:
           description: Details about the application the registration is part of.
           type: object
@@ -23532,6 +23670,7 @@ components:
           id: 86f637b7-cd95-478b-9b02-d770618f641c
           name: Great Stuff
           version: v1
+          entity_type: api
         created_at: '2022-12-22T20:13:07.305Z'
         updated_at: '2022-12-22T20:13:36.710Z'
     ApplicationRegistrationStatus:
@@ -24966,23 +25105,45 @@ components:
           additionalProperties: false
           properties:
             try_it_ui:
+              description: >-
+                Enable in-browser testing for your APIs. All linked gateways
+                must have the CORS plugin configured.
               type: boolean
               default: true
             try_it_insomnia:
+              description: >-
+                Enables users to open the API spec in Insomnia to explore and
+                send requests with the native client.
               type: boolean
               default: true
             infinite_scroll:
+              description: >-
+                Display the full spec on a single, scrollable page. If disabled,
+                documentation, endpoints, and schemas appear on separate pages.
               type: boolean
               default: true
             show_schemas:
+              description: >-
+                Control whether schemas are visible in your API specs. When
+                enabled, schemas appear in the side navigation below the
+                endpoints.
               type: boolean
               default: true
             hide_internal:
+              description: Manage visibility of internal endpoints and models.
               type: boolean
               default: false
             hide_deprecated:
+              description: Manage visibility of deprecated endpoints and models.
               type: boolean
               default: false
+            allow_custom_server_urls:
+              description: >-
+                Let users define a custom server URL for endpoints. This will be
+                used to generate code snippets and to test the API. The URL is
+                client-side only and is not saved.
+              type: boolean
+              default: true
           x-speakeasy-param-computed: false
           nullable: true
           default: null
@@ -25065,10 +25226,6 @@ components:
           type: array
           items:
             type: string
-    schemas-StringFieldEqualsFilter:
-      title: StringFieldEqualsFilter
-      description: Filter a string value by exact match.
-      type: string
     DataPlaneClientCertificate:
       x-speakeasy-entity: GatewayDataPlaneClientCertificate
       type: object
@@ -25141,11 +25298,14 @@ components:
       properties:
         key:
           type: string
+          x-speakeasy-param-force-new: true
           x-speakeasy-param-computed: false
           nullable: true
           default: null
         value:
           type: string
+          writeOnly: true
+          x-speakeasy-param-sensitive: true
           x-speakeasy-param-computed: false
           nullable: true
           default: null
@@ -25163,10 +25323,13 @@ components:
           type: string
           minLength: 1
           maxLength: 512
+          x-speakeasy-param-force-new: true
         value:
           type: string
           minLength: 1
           maxLength: 5120
+          writeOnly: true
+          x-speakeasy-param-sensitive: true
     UpdateConfigStoreSecret:
       type: object
       required:
@@ -25176,6 +25339,8 @@ components:
           type: string
           minLength: 1
           maxLength: 5120
+          writeOnly: true
+          x-speakeasy-param-sensitive: true
     ACL:
       type: object
       properties:
@@ -29363,8 +29528,7 @@ components:
                   An optional version for your API. Leave this empty if your API
                   is unversioned.
                 nullable: true
-                x-speakeasy-param-computed: false
-                default: null
+                x-speakeasy-param-computed: true
               current_version_summary:
                 $ref: '#/components/schemas/ApiVersionSummary'
               slug:
@@ -29378,8 +29542,7 @@ components:
                   Defaults to `slugify(name + version)`
                 example: my-api-v1
                 nullable: true
-                x-speakeasy-param-computed: false
-                default: null
+                x-speakeasy-param-computed: true
               api_spec_ids:
                 readOnly: true
                 type: array
@@ -29640,8 +29803,7 @@ components:
                   An optional version for your API. Leave this empty if your API
                   is unversioned.
                 nullable: true
-                x-speakeasy-param-computed: false
-                default: null
+                x-speakeasy-param-computed: true
               current_version_summary:
                 $ref: '#/components/schemas/ApiVersionSummary'
               slug:
@@ -29655,8 +29817,7 @@ components:
                   Defaults to `slugify(name + version)`
                 example: my-api-v1
                 nullable: true
-                x-speakeasy-param-computed: false
-                default: null
+                x-speakeasy-param-computed: true
               api_spec_ids:
                 readOnly: true
                 type: array
@@ -29770,6 +29931,7 @@ components:
       content:
         application/json:
           schema:
+            x-speakeasy-entity: Portal
             title: Portal
             type: object
             additionalProperties: false
@@ -29893,6 +30055,7 @@ components:
       content:
         application/json:
           schema:
+            x-speakeasy-entity: Portal
             title: Portal
             type: object
             additionalProperties: false

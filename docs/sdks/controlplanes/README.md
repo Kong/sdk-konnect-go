@@ -44,7 +44,7 @@ func main() {
         Filter: &components.ControlPlaneFilterParameters{
             CloudGateway: sdkkonnectgo.Bool(true),
         },
-        Labels: sdkkonnectgo.String("key:value,existCheck"),
+        FilterLabels: sdkkonnectgo.String("key:value,existCheck"),
         Sort: sdkkonnectgo.String("created_at desc"),
     })
     if err != nil {

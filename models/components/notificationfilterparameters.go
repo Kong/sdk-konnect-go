@@ -3,47 +3,47 @@
 package components
 
 type NotificationFilterParameters struct {
-	// Filters on the given string field value by exact match inequality.
-	Title *StringFieldFilter `queryParam:"name=title"`
-	// Filters on the given string field value by exact match inequality.
-	Description *StringFieldFilter `queryParam:"name=description"`
-	// Filters on the given string field value by exact match inequality.
-	Namespace *StringFieldFilter `queryParam:"name=namespace"`
-	// Filters on the given string field value by exact match inequality.
-	Region *StringFieldFilter `queryParam:"name=region"`
-	// Filters on the given string field value by exact match inequality.
-	Status *StringFieldFilter `queryParam:"name=status"`
+	// Filters on the given string field value by fuzzy match.
+	Title *LegacyStringFieldFilter `queryParam:"name=title"`
+	// Filters on the given string field value by fuzzy match.
+	Description *LegacyStringFieldFilter `queryParam:"name=description"`
+	// Filters on the given string field value by fuzzy match.
+	Namespace *LegacyStringFieldFilter `queryParam:"name=namespace"`
+	// Filters on the given string field value by fuzzy match.
+	Region *LegacyStringFieldFilter `queryParam:"name=region"`
+	// Filters on the given string field value by fuzzy match.
+	Status *LegacyStringFieldFilter `queryParam:"name=status"`
 }
 
-func (o *NotificationFilterParameters) GetTitle() *StringFieldFilter {
+func (o *NotificationFilterParameters) GetTitle() *LegacyStringFieldFilter {
 	if o == nil {
 		return nil
 	}
 	return o.Title
 }
 
-func (o *NotificationFilterParameters) GetDescription() *StringFieldFilter {
+func (o *NotificationFilterParameters) GetDescription() *LegacyStringFieldFilter {
 	if o == nil {
 		return nil
 	}
 	return o.Description
 }
 
-func (o *NotificationFilterParameters) GetNamespace() *StringFieldFilter {
+func (o *NotificationFilterParameters) GetNamespace() *LegacyStringFieldFilter {
 	if o == nil {
 		return nil
 	}
 	return o.Namespace
 }
 
-func (o *NotificationFilterParameters) GetRegion() *StringFieldFilter {
+func (o *NotificationFilterParameters) GetRegion() *LegacyStringFieldFilter {
 	if o == nil {
 		return nil
 	}
 	return o.Region
 }
 
-func (o *NotificationFilterParameters) GetStatus() *StringFieldFilter {
+func (o *NotificationFilterParameters) GetStatus() *LegacyStringFieldFilter {
 	if o == nil {
 		return nil
 	}
