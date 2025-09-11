@@ -3,8 +3,9 @@
 package components
 
 import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
+
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type Portals struct {

@@ -7,13 +7,14 @@ package sdkkonnectgo
 import (
 	"context"
 	"fmt"
+	"net/http"
+	"time"
+
 	"github.com/Kong/sdk-konnect-go/internal/config"
 	"github.com/Kong/sdk-konnect-go/internal/hooks"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/retry"
-	"net/http"
-	"time"
 )
 
 // ServerList contains the list of servers available to the SDK
