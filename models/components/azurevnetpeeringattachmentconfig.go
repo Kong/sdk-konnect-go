@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type AzureVNETPeeringAttachmentType string
@@ -40,6 +41,17 @@ type AzureVNETPeeringAttachmentConfig struct {
 	ResourceGroupName string `json:"resource_group_name"`
 	// VNET Name for the Azure VNET Peering attachment.
 	VnetName string `json:"vnet_name"`
+}
+
+func (a AzureVNETPeeringAttachmentConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AzureVNETPeeringAttachmentConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"kind", "tenant_id", "subscription_id", "resource_group_name", "vnet_name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AzureVNETPeeringAttachmentConfig) GetKind() AzureVNETPeeringAttachmentType {

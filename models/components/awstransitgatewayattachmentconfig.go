@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type AWSTransitGatewayAttachmentType string
@@ -36,6 +37,17 @@ type AwsTransitGatewayAttachmentConfig struct {
 	TransitGatewayID string `json:"transit_gateway_id"`
 	// Resource Share ARN to verify request to create transit gateway attachment.
 	RAMShareArn string `json:"ram_share_arn"`
+}
+
+func (a AwsTransitGatewayAttachmentConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AwsTransitGatewayAttachmentConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"kind", "transit_gateway_id", "ram_share_arn"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AwsTransitGatewayAttachmentConfig) GetKind() AWSTransitGatewayAttachmentType {

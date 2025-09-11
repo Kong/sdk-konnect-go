@@ -21,7 +21,7 @@ func (g GcpPrivateHostedZoneResponsePrivateDNSStateMetadata) MarshalJSON() ([]by
 }
 
 func (g *GcpPrivateHostedZoneResponsePrivateDNSStateMetadata) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -73,7 +73,7 @@ func (g GcpPrivateHostedZoneResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GcpPrivateHostedZoneResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "state", "state_metadata", "entity_version", "created_at", "updated_at", "name"}); err != nil {
 		return err
 	}
 	return nil

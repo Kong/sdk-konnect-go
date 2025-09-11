@@ -2,11 +2,26 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 type AwsResourceEndpointConfig struct {
 	// Resource Config ID to uniquely identify a resource configuration.
 	ResourceConfigID string `json:"resource_config_id"`
 	// Domain Name to uniquely identify a resource configuration.
 	DomainName string `json:"domain_name"`
+}
+
+func (a AwsResourceEndpointConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AwsResourceEndpointConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"resource_config_id", "domain_name"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AwsResourceEndpointConfig) GetResourceConfigID() string {

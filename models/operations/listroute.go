@@ -24,7 +24,7 @@ func (l ListRouteRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (l *ListRouteRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"controlPlaneId"}); err != nil {
 		return err
 	}
 	return nil

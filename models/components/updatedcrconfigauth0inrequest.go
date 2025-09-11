@@ -29,7 +29,7 @@ func (u UpdateDcrConfigAuth0InRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UpdateDcrConfigAuth0InRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil

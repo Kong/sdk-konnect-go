@@ -21,7 +21,7 @@ func (a AzurePrivateHostedZoneResponsePrivateDNSStateMetadata) MarshalJSON() ([]
 }
 
 func (a *AzurePrivateHostedZoneResponsePrivateDNSStateMetadata) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -73,7 +73,7 @@ func (a AzurePrivateHostedZoneResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AzurePrivateHostedZoneResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "state", "state_metadata", "entity_version", "created_at", "updated_at", "name"}); err != nil {
 		return err
 	}
 	return nil

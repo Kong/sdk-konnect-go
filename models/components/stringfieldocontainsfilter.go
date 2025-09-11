@@ -2,9 +2,24 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // StringFieldOContainsFilter - Returns entities that fuzzy-match any of the comma-delimited phrases in the filter string.
 type StringFieldOContainsFilter struct {
 	Ocontains string `queryParam:"name=ocontains"`
+}
+
+func (s StringFieldOContainsFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *StringFieldOContainsFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"ocontains"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *StringFieldOContainsFilter) GetOcontains() string {

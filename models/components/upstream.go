@@ -157,7 +157,7 @@ func (h Healthy) MarshalJSON() ([]byte, error) {
 }
 
 func (h *Healthy) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &h, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &h, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -232,7 +232,7 @@ func (u Unhealthy) MarshalJSON() ([]byte, error) {
 }
 
 func (u *Unhealthy) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -293,7 +293,7 @@ func (a Active) MarshalJSON() ([]byte, error) {
 }
 
 func (a *Active) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -372,7 +372,7 @@ func (u UpstreamHealthy) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UpstreamHealthy) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -439,7 +439,7 @@ func (u UpstreamUnhealthy) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UpstreamUnhealthy) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -484,7 +484,7 @@ func (p Passive) MarshalJSON() ([]byte, error) {
 }
 
 func (p *Passive) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -522,7 +522,7 @@ func (h Healthchecks) MarshalJSON() ([]byte, error) {
 }
 
 func (h *Healthchecks) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &h, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &h, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -603,7 +603,7 @@ func (u Upstream) MarshalJSON() ([]byte, error) {
 }
 
 func (u *Upstream) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"name"}); err != nil {
 		return err
 	}
 	return nil

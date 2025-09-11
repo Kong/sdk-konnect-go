@@ -13,6 +13,17 @@ type DcrProvider struct {
 	ID string `json:"id"`
 }
 
+func (d DcrProvider) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DcrProvider) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *DcrProvider) GetID() string {
 	if o == nil {
 		return ""
@@ -24,6 +35,17 @@ func (o *DcrProvider) GetID() string {
 type Portal struct {
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
+}
+
+func (p Portal) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *Portal) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *Portal) GetID() string {
@@ -63,7 +85,7 @@ func (c ClientCredentialsApplication) MarshalJSON() ([]byte, error) {
 }
 
 func (c *ClientCredentialsApplication) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "created_at", "updated_at", "name", "client_id", "registration_count", "dcr_provider", "portal", "auth_strategy", "granted_scopes"}); err != nil {
 		return err
 	}
 	return nil

@@ -18,7 +18,7 @@ func (c CreateSystemAccountAccessToken) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateSystemAccountAccessToken) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil

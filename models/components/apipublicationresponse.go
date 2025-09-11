@@ -33,7 +33,7 @@ func (a APIPublicationResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (a *APIPublicationResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"auth_strategy_ids", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil

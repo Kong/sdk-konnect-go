@@ -22,7 +22,7 @@ func (i Items) MarshalJSON() ([]byte, error) {
 }
 
 func (i *Items) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &i, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -65,7 +65,7 @@ func (p Page) MarshalJSON() ([]byte, error) {
 }
 
 func (p *Page) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil

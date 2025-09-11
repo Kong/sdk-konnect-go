@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
 type AWSPrivateHostedZoneType string
@@ -34,6 +35,17 @@ type AwsPrivateHostedZoneAttachmentConfig struct {
 	Kind AWSPrivateHostedZoneType `json:"kind"`
 	// AWS Hosted Zone to create attachment to.
 	HostedZoneID string `json:"hosted_zone_id"`
+}
+
+func (a AwsPrivateHostedZoneAttachmentConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AwsPrivateHostedZoneAttachmentConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"kind", "hosted_zone_id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *AwsPrivateHostedZoneAttachmentConfig) GetKind() AWSPrivateHostedZoneType {

@@ -19,7 +19,7 @@ func (d DateTimeFieldGTEFilter) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DateTimeFieldGTEFilter) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -42,7 +42,7 @@ func (d DateTimeFieldGTFilter) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DateTimeFieldGTFilter) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -65,7 +65,7 @@ func (d DateTimeFieldLTEFilter) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DateTimeFieldLTEFilter) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"lte"}); err != nil {
 		return err
 	}
 	return nil
@@ -88,7 +88,7 @@ func (d DateTimeFieldLTFilter) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DateTimeFieldLTFilter) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"lt"}); err != nil {
 		return err
 	}
 	return nil
@@ -111,7 +111,7 @@ func (d DateTimeFieldEqualsFilter) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DateTimeFieldEqualsFilter) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"eq"}); err != nil {
 		return err
 	}
 	return nil
@@ -136,11 +136,11 @@ const (
 
 // DateTimeFieldFilter - Filters on the given datetime (RFC-3339) field value.
 type DateTimeFieldFilter struct {
-	DateTimeFieldEqualsFilter *DateTimeFieldEqualsFilter `queryParam:"inline"`
-	DateTimeFieldLTFilter     *DateTimeFieldLTFilter     `queryParam:"inline"`
-	DateTimeFieldLTEFilter    *DateTimeFieldLTEFilter    `queryParam:"inline"`
-	DateTimeFieldGTFilter     *DateTimeFieldGTFilter     `queryParam:"inline"`
-	DateTimeFieldGTEFilter    *DateTimeFieldGTEFilter    `queryParam:"inline"`
+	DateTimeFieldEqualsFilter *DateTimeFieldEqualsFilter `queryParam:"inline" name:"DateTimeFieldFilter"`
+	DateTimeFieldLTFilter     *DateTimeFieldLTFilter     `queryParam:"inline" name:"DateTimeFieldFilter"`
+	DateTimeFieldLTEFilter    *DateTimeFieldLTEFilter    `queryParam:"inline" name:"DateTimeFieldFilter"`
+	DateTimeFieldGTFilter     *DateTimeFieldGTFilter     `queryParam:"inline" name:"DateTimeFieldFilter"`
+	DateTimeFieldGTEFilter    *DateTimeFieldGTEFilter    `queryParam:"inline" name:"DateTimeFieldFilter"`
 
 	Type DateTimeFieldFilterType
 }
@@ -193,35 +193,35 @@ func CreateDateTimeFieldFilterDateTimeFieldGTEFilter(dateTimeFieldGTEFilter Date
 func (u *DateTimeFieldFilter) UnmarshalJSON(data []byte) error {
 
 	var dateTimeFieldEqualsFilter DateTimeFieldEqualsFilter = DateTimeFieldEqualsFilter{}
-	if err := utils.UnmarshalJSON(data, &dateTimeFieldEqualsFilter, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &dateTimeFieldEqualsFilter, "", true, nil); err == nil {
 		u.DateTimeFieldEqualsFilter = &dateTimeFieldEqualsFilter
 		u.Type = DateTimeFieldFilterTypeDateTimeFieldEqualsFilter
 		return nil
 	}
 
 	var dateTimeFieldLTFilter DateTimeFieldLTFilter = DateTimeFieldLTFilter{}
-	if err := utils.UnmarshalJSON(data, &dateTimeFieldLTFilter, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &dateTimeFieldLTFilter, "", true, nil); err == nil {
 		u.DateTimeFieldLTFilter = &dateTimeFieldLTFilter
 		u.Type = DateTimeFieldFilterTypeDateTimeFieldLTFilter
 		return nil
 	}
 
 	var dateTimeFieldLTEFilter DateTimeFieldLTEFilter = DateTimeFieldLTEFilter{}
-	if err := utils.UnmarshalJSON(data, &dateTimeFieldLTEFilter, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &dateTimeFieldLTEFilter, "", true, nil); err == nil {
 		u.DateTimeFieldLTEFilter = &dateTimeFieldLTEFilter
 		u.Type = DateTimeFieldFilterTypeDateTimeFieldLTEFilter
 		return nil
 	}
 
 	var dateTimeFieldGTFilter DateTimeFieldGTFilter = DateTimeFieldGTFilter{}
-	if err := utils.UnmarshalJSON(data, &dateTimeFieldGTFilter, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &dateTimeFieldGTFilter, "", true, nil); err == nil {
 		u.DateTimeFieldGTFilter = &dateTimeFieldGTFilter
 		u.Type = DateTimeFieldFilterTypeDateTimeFieldGTFilter
 		return nil
 	}
 
 	var dateTimeFieldGTEFilter DateTimeFieldGTEFilter = DateTimeFieldGTEFilter{}
-	if err := utils.UnmarshalJSON(data, &dateTimeFieldGTEFilter, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &dateTimeFieldGTEFilter, "", true, nil); err == nil {
 		u.DateTimeFieldGTEFilter = &dateTimeFieldGTEFilter
 		u.Type = DateTimeFieldFilterTypeDateTimeFieldGTEFilter
 		return nil

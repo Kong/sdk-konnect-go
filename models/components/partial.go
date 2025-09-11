@@ -17,8 +17,8 @@ const (
 )
 
 type Partial struct {
-	PartialRedisCe *PartialRedisCe `queryParam:"inline"`
-	PartialRedisEe *PartialRedisEe `queryParam:"inline"`
+	PartialRedisCe *PartialRedisCe `queryParam:"inline" name:"Partial"`
+	PartialRedisEe *PartialRedisEe `queryParam:"inline" name:"Partial"`
 
 	Type PartialType
 }
@@ -61,7 +61,7 @@ func (u *Partial) UnmarshalJSON(data []byte) error {
 	switch dis.Type {
 	case "redis-ce":
 		partialRedisCe := new(PartialRedisCe)
-		if err := utils.UnmarshalJSON(data, &partialRedisCe, "", true, false); err != nil {
+		if err := utils.UnmarshalJSON(data, &partialRedisCe, "", true, nil); err != nil {
 			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-ce) type PartialRedisCe within Partial: %w", string(data), err)
 		}
 
@@ -70,7 +70,7 @@ func (u *Partial) UnmarshalJSON(data []byte) error {
 		return nil
 	case "redis-ee":
 		partialRedisEe := new(PartialRedisEe)
-		if err := utils.UnmarshalJSON(data, &partialRedisEe, "", true, false); err != nil {
+		if err := utils.UnmarshalJSON(data, &partialRedisEe, "", true, nil); err != nil {
 			return fmt.Errorf("could not unmarshal `%s` into expected (Type == redis-ee) type PartialRedisEe within Partial: %w", string(data), err)
 		}
 

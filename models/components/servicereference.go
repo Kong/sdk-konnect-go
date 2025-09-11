@@ -2,10 +2,25 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // ServiceReference - A gateway service that implements an API
 type ServiceReference struct {
 	// A Gateway service that implements an API
 	Service *APIImplementationService `json:"service,omitempty"`
+}
+
+func (s ServiceReference) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *ServiceReference) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ServiceReference) GetService() *APIImplementationService {

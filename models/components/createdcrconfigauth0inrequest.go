@@ -29,7 +29,7 @@ func (c CreateDcrConfigAuth0InRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateDcrConfigAuth0InRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"initial_client_id", "initial_client_secret"}); err != nil {
 		return err
 	}
 	return nil

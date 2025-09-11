@@ -26,7 +26,7 @@ func (a APIImplementationResponseServiceReference) MarshalJSON() ([]byte, error)
 }
 
 func (a *APIImplementationResponseServiceReference) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -68,7 +68,7 @@ const (
 
 // APIImplementationResponse - An entity that implements an API
 type APIImplementationResponse struct {
-	APIImplementationResponseServiceReference *APIImplementationResponseServiceReference `queryParam:"inline"`
+	APIImplementationResponseServiceReference *APIImplementationResponseServiceReference `queryParam:"inline" name:"ApiImplementationResponse"`
 
 	Type APIImplementationResponseType
 }
@@ -85,7 +85,7 @@ func CreateAPIImplementationResponseAPIImplementationResponseServiceReference(ap
 func (u *APIImplementationResponse) UnmarshalJSON(data []byte) error {
 
 	var apiImplementationResponseServiceReference APIImplementationResponseServiceReference = APIImplementationResponseServiceReference{}
-	if err := utils.UnmarshalJSON(data, &apiImplementationResponseServiceReference, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &apiImplementationResponseServiceReference, "", true, nil); err == nil {
 		u.APIImplementationResponseServiceReference = &apiImplementationResponseServiceReference
 		u.Type = APIImplementationResponseTypeAPIImplementationResponseServiceReference
 		return nil

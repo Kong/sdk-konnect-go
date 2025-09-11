@@ -86,7 +86,7 @@ func (p Partials) MarshalJSON() ([]byte, error) {
 }
 
 func (p *Partials) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -226,7 +226,7 @@ func (p Plugin) MarshalJSON() ([]byte, error) {
 }
 
 func (p *Plugin) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name"}); err != nil {
 		return err
 	}
 	return nil

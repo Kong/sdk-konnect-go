@@ -106,7 +106,7 @@ func (l ListPortalsResponsePortal) MarshalJSON() ([]byte, error) {
 }
 
 func (l *ListPortalsResponsePortal) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"id", "created_at", "updated_at", "default_api_visibility", "default_page_visibility", "default_domain", "canonical_domain"}); err != nil {
 		return err
 	}
 	return nil

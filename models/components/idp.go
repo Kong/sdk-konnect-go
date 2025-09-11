@@ -17,7 +17,7 @@ func (c ClaimMappings) MarshalJSON() ([]byte, error) {
 }
 
 func (c *ClaimMappings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -60,7 +60,7 @@ func (i IDP) MarshalJSON() ([]byte, error) {
 }
 
 func (i *IDP) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &i, "", false, nil); err != nil {
 		return err
 	}
 	return nil

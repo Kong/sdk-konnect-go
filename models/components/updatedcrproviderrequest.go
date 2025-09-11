@@ -19,11 +19,11 @@ const (
 )
 
 type DcrConfig struct {
-	UpdateDcrConfigAuth0InRequest   *UpdateDcrConfigAuth0InRequest   `queryParam:"inline"`
-	UpdateDcrConfigAzureAdInRequest *UpdateDcrConfigAzureAdInRequest `queryParam:"inline"`
-	UpdateDcrConfigCurityInRequest  *UpdateDcrConfigCurityInRequest  `queryParam:"inline"`
-	UpdateDcrConfigOktaInRequest    *UpdateDcrConfigOktaInRequest    `queryParam:"inline"`
-	UpdateDcrConfigHTTPInRequest    *UpdateDcrConfigHTTPInRequest    `queryParam:"inline"`
+	UpdateDcrConfigAuth0InRequest   *UpdateDcrConfigAuth0InRequest   `queryParam:"inline" name:"dcr_config"`
+	UpdateDcrConfigAzureAdInRequest *UpdateDcrConfigAzureAdInRequest `queryParam:"inline" name:"dcr_config"`
+	UpdateDcrConfigCurityInRequest  *UpdateDcrConfigCurityInRequest  `queryParam:"inline" name:"dcr_config"`
+	UpdateDcrConfigOktaInRequest    *UpdateDcrConfigOktaInRequest    `queryParam:"inline" name:"dcr_config"`
+	UpdateDcrConfigHTTPInRequest    *UpdateDcrConfigHTTPInRequest    `queryParam:"inline" name:"dcr_config"`
 
 	Type DcrConfigType
 }
@@ -75,36 +75,36 @@ func CreateDcrConfigUpdateDcrConfigHTTPInRequest(updateDcrConfigHTTPInRequest Up
 
 func (u *DcrConfig) UnmarshalJSON(data []byte) error {
 
-	var updateDcrConfigOktaInRequest UpdateDcrConfigOktaInRequest = UpdateDcrConfigOktaInRequest{}
-	if err := utils.UnmarshalJSON(data, &updateDcrConfigOktaInRequest, "", true, true); err == nil {
-		u.UpdateDcrConfigOktaInRequest = &updateDcrConfigOktaInRequest
-		u.Type = DcrConfigTypeUpdateDcrConfigOktaInRequest
+	var updateDcrConfigAuth0InRequest UpdateDcrConfigAuth0InRequest = UpdateDcrConfigAuth0InRequest{}
+	if err := utils.UnmarshalJSON(data, &updateDcrConfigAuth0InRequest, "", true, nil); err == nil {
+		u.UpdateDcrConfigAuth0InRequest = &updateDcrConfigAuth0InRequest
+		u.Type = DcrConfigTypeUpdateDcrConfigAuth0InRequest
 		return nil
 	}
 
 	var updateDcrConfigAzureAdInRequest UpdateDcrConfigAzureAdInRequest = UpdateDcrConfigAzureAdInRequest{}
-	if err := utils.UnmarshalJSON(data, &updateDcrConfigAzureAdInRequest, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateDcrConfigAzureAdInRequest, "", true, nil); err == nil {
 		u.UpdateDcrConfigAzureAdInRequest = &updateDcrConfigAzureAdInRequest
 		u.Type = DcrConfigTypeUpdateDcrConfigAzureAdInRequest
 		return nil
 	}
 
 	var updateDcrConfigCurityInRequest UpdateDcrConfigCurityInRequest = UpdateDcrConfigCurityInRequest{}
-	if err := utils.UnmarshalJSON(data, &updateDcrConfigCurityInRequest, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateDcrConfigCurityInRequest, "", true, nil); err == nil {
 		u.UpdateDcrConfigCurityInRequest = &updateDcrConfigCurityInRequest
 		u.Type = DcrConfigTypeUpdateDcrConfigCurityInRequest
 		return nil
 	}
 
-	var updateDcrConfigAuth0InRequest UpdateDcrConfigAuth0InRequest = UpdateDcrConfigAuth0InRequest{}
-	if err := utils.UnmarshalJSON(data, &updateDcrConfigAuth0InRequest, "", true, true); err == nil {
-		u.UpdateDcrConfigAuth0InRequest = &updateDcrConfigAuth0InRequest
-		u.Type = DcrConfigTypeUpdateDcrConfigAuth0InRequest
+	var updateDcrConfigOktaInRequest UpdateDcrConfigOktaInRequest = UpdateDcrConfigOktaInRequest{}
+	if err := utils.UnmarshalJSON(data, &updateDcrConfigOktaInRequest, "", true, nil); err == nil {
+		u.UpdateDcrConfigOktaInRequest = &updateDcrConfigOktaInRequest
+		u.Type = DcrConfigTypeUpdateDcrConfigOktaInRequest
 		return nil
 	}
 
 	var updateDcrConfigHTTPInRequest UpdateDcrConfigHTTPInRequest = UpdateDcrConfigHTTPInRequest{}
-	if err := utils.UnmarshalJSON(data, &updateDcrConfigHTTPInRequest, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &updateDcrConfigHTTPInRequest, "", true, nil); err == nil {
 		u.UpdateDcrConfigHTTPInRequest = &updateDcrConfigHTTPInRequest
 		u.Type = DcrConfigTypeUpdateDcrConfigHTTPInRequest
 		return nil
@@ -161,7 +161,7 @@ func (u UpdateDcrProviderRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UpdateDcrProviderRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil

@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // ConfigureOIDCIdentityProviderConfig - The identity provider that contains configuration data for the OIDC authentication integration.
 type ConfigureOIDCIdentityProviderConfig struct {
 	// The issuer URI of the identity provider. This is the URL where the provider's metadata can be obtained.
@@ -16,6 +20,17 @@ type ConfigureOIDCIdentityProviderConfig struct {
 	// authentication.
 	//
 	ClaimMappings *OIDCIdentityProviderClaimMappings `json:"claim_mappings,omitempty"`
+}
+
+func (c ConfigureOIDCIdentityProviderConfig) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ConfigureOIDCIdentityProviderConfig) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"issuer_url", "client_id"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ConfigureOIDCIdentityProviderConfig) GetIssuerURL() string {

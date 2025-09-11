@@ -2,10 +2,25 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // ControlPlaneGeoFieldNotEqualsFilter - Filter a control-plane geo by inequality match.
 type ControlPlaneGeoFieldNotEqualsFilter struct {
 	// Set of control-plane geos supported for deploying cloud-gateways configurations.
 	Neq ControlPlaneGeo `queryParam:"name=neq"`
+}
+
+func (c ControlPlaneGeoFieldNotEqualsFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ControlPlaneGeoFieldNotEqualsFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"neq"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ControlPlaneGeoFieldNotEqualsFilter) GetNeq() ControlPlaneGeo {

@@ -29,7 +29,7 @@ func (p PortalEmailConfig) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PortalEmailConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "from_name", "from_email", "reply_to_email", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil

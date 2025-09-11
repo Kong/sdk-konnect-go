@@ -47,7 +47,7 @@ func (c ConfigurationDataPlaneGroupAutoscaleAutopilot) MarshalJSON() ([]byte, er
 }
 
 func (c *ConfigurationDataPlaneGroupAutoscaleAutopilot) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"kind", "base_rps"}); err != nil {
 		return err
 	}
 	return nil

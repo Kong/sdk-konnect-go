@@ -156,7 +156,7 @@ func (c ControlPlane) MarshalJSON() ([]byte, error) {
 }
 
 func (c *ControlPlane) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "name", "config", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil

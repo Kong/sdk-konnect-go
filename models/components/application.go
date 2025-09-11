@@ -16,8 +16,8 @@ const (
 )
 
 type Application struct {
-	ClientCredentialsApplication *ClientCredentialsApplication `queryParam:"inline"`
-	KeyAuthApplication           *KeyAuthApplication           `queryParam:"inline"`
+	ClientCredentialsApplication *ClientCredentialsApplication `queryParam:"inline" name:"Application"`
+	KeyAuthApplication           *KeyAuthApplication           `queryParam:"inline" name:"Application"`
 
 	Type ApplicationType
 }
@@ -42,17 +42,17 @@ func CreateApplicationKeyAuthApplication(keyAuthApplication KeyAuthApplication) 
 
 func (u *Application) UnmarshalJSON(data []byte) error {
 
-	var keyAuthApplication KeyAuthApplication = KeyAuthApplication{}
-	if err := utils.UnmarshalJSON(data, &keyAuthApplication, "", true, true); err == nil {
-		u.KeyAuthApplication = &keyAuthApplication
-		u.Type = ApplicationTypeKeyAuthApplication
+	var clientCredentialsApplication ClientCredentialsApplication = ClientCredentialsApplication{}
+	if err := utils.UnmarshalJSON(data, &clientCredentialsApplication, "", true, nil); err == nil {
+		u.ClientCredentialsApplication = &clientCredentialsApplication
+		u.Type = ApplicationTypeClientCredentialsApplication
 		return nil
 	}
 
-	var clientCredentialsApplication ClientCredentialsApplication = ClientCredentialsApplication{}
-	if err := utils.UnmarshalJSON(data, &clientCredentialsApplication, "", true, true); err == nil {
-		u.ClientCredentialsApplication = &clientCredentialsApplication
-		u.Type = ApplicationTypeClientCredentialsApplication
+	var keyAuthApplication KeyAuthApplication = KeyAuthApplication{}
+	if err := utils.UnmarshalJSON(data, &keyAuthApplication, "", true, nil); err == nil {
+		u.KeyAuthApplication = &keyAuthApplication
+		u.Type = ApplicationTypeKeyAuthApplication
 		return nil
 	}
 

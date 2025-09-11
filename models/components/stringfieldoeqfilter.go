@@ -2,9 +2,24 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // StringFieldOEQFilter - Returns entities that exact match any of the comma-delimited phrases in the filter string.
 type StringFieldOEQFilter struct {
 	Oeq string `queryParam:"name=oeq"`
+}
+
+func (s StringFieldOEQFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *StringFieldOEQFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"oeq"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *StringFieldOEQFilter) GetOeq() string {

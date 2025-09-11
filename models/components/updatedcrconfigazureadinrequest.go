@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // UpdateDcrConfigAzureAdInRequest - Payload to update an Azure AD DCR provider.
 type UpdateDcrConfigAzureAdInRequest struct {
 	// This ID should be copied from your identity provider's settings after you create a client
@@ -12,6 +16,17 @@ type UpdateDcrConfigAzureAdInRequest struct {
 	// and assign it as the management client for DCR for this developer portal
 	//
 	InitialClientSecret *string `json:"initial_client_secret,omitempty"`
+}
+
+func (u UpdateDcrConfigAzureAdInRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateDcrConfigAzureAdInRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateDcrConfigAzureAdInRequest) GetInitialClientID() *string {

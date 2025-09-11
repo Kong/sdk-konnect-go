@@ -67,7 +67,7 @@ func (m MeOrganization) MarshalJSON() ([]byte, error) {
 }
 
 func (m *MeOrganization) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &m, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
 		return err
 	}
 	return nil

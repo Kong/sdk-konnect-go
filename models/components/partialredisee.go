@@ -20,7 +20,7 @@ func (c ClusterNodes) MarshalJSON() ([]byte, error) {
 }
 
 func (c *ClusterNodes) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -52,7 +52,7 @@ func (s SentinelNodes) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SentinelNodes) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -152,7 +152,7 @@ func (p PartialRedisEeConfig) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PartialRedisEeConfig) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -348,7 +348,7 @@ func (p PartialRedisEe) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PartialRedisEe) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"config", "type"}); err != nil {
 		return err
 	}
 	return nil

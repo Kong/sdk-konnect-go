@@ -21,7 +21,7 @@ func (p PrivateDNSStateMetadata) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PrivateDNSStateMetadata) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -74,7 +74,7 @@ func (a AwsPrivateHostedZoneResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AwsPrivateHostedZoneResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "state", "state_metadata", "entity_version", "created_at", "updated_at", "name", "private_dns_attachment_config"}); err != nil {
 		return err
 	}
 	return nil

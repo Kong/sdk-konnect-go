@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // UpdateDcrConfigCurityInRequest - Payload to update a Curity DCR provider.
 type UpdateDcrConfigCurityInRequest struct {
 	// This ID should be copied from your identity provider's settings after you create a client
@@ -12,6 +16,17 @@ type UpdateDcrConfigCurityInRequest struct {
 	// and assign it as the management client for DCR for this developer portal
 	//
 	InitialClientSecret *string `json:"initial_client_secret,omitempty"`
+}
+
+func (u UpdateDcrConfigCurityInRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateDcrConfigCurityInRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *UpdateDcrConfigCurityInRequest) GetInitialClientID() *string {

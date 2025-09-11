@@ -2,6 +2,21 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // NetworkStateFieldNotEqualsFilter - Filter a network state by inequality match.
 type NetworkStateFieldNotEqualsFilter struct {
+}
+
+func (n NetworkStateFieldNotEqualsFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(n, "", false)
+}
+
+func (n *NetworkStateFieldNotEqualsFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &n, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }

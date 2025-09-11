@@ -21,6 +21,17 @@ type PrivateDNSStateFieldEqualsComparison struct {
 	Eq PrivateDNSState `queryParam:"name=eq"`
 }
 
+func (p PrivateDNSStateFieldEqualsComparison) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PrivateDNSStateFieldEqualsComparison) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"eq"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *PrivateDNSStateFieldEqualsComparison) GetEq() PrivateDNSState {
 	if o == nil {
 		return PrivateDNSState("")
@@ -37,8 +48,8 @@ const (
 
 // PrivateDNSStateFieldEqualsFilter - Filter Private DNS state by exact match.
 type PrivateDNSStateFieldEqualsFilter struct {
-	PrivateDNSState                      *PrivateDNSState                      `queryParam:"inline"`
-	PrivateDNSStateFieldEqualsComparison *PrivateDNSStateFieldEqualsComparison `queryParam:"inline"`
+	PrivateDNSState                      *PrivateDNSState                      `queryParam:"inline" name:"PrivateDnsStateFieldEqualsFilter"`
+	PrivateDNSStateFieldEqualsComparison *PrivateDNSStateFieldEqualsComparison `queryParam:"inline" name:"PrivateDnsStateFieldEqualsFilter"`
 
 	Type PrivateDNSStateFieldEqualsFilterType
 }
@@ -64,14 +75,14 @@ func CreatePrivateDNSStateFieldEqualsFilterPrivateDNSStateFieldEqualsComparison(
 func (u *PrivateDNSStateFieldEqualsFilter) UnmarshalJSON(data []byte) error {
 
 	var privateDNSStateFieldEqualsComparison PrivateDNSStateFieldEqualsComparison = PrivateDNSStateFieldEqualsComparison{}
-	if err := utils.UnmarshalJSON(data, &privateDNSStateFieldEqualsComparison, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &privateDNSStateFieldEqualsComparison, "", true, nil); err == nil {
 		u.PrivateDNSStateFieldEqualsComparison = &privateDNSStateFieldEqualsComparison
 		u.Type = PrivateDNSStateFieldEqualsFilterTypePrivateDNSStateFieldEqualsComparison
 		return nil
 	}
 
 	var privateDNSState PrivateDNSState = PrivateDNSState("")
-	if err := utils.UnmarshalJSON(data, &privateDNSState, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &privateDNSState, "", true, nil); err == nil {
 		u.PrivateDNSState = &privateDNSState
 		u.Type = PrivateDNSStateFieldEqualsFilterTypePrivateDNSState
 		return nil

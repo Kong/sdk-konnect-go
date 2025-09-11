@@ -32,7 +32,7 @@ func (d DefaultResourceQuota) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DefaultResourceQuota) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"id", "resource", "name", "description", "value", "overrides", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil

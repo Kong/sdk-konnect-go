@@ -2,10 +2,25 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // ControlPlaneGeoFieldOrEqualityFilter - Filter a control-plane geo by determining if the value is equal to any in a set of values, where the set is a
 // comma-delimited list.
 type ControlPlaneGeoFieldOrEqualityFilter struct {
 	Oeq string `queryParam:"name=oeq"`
+}
+
+func (c ControlPlaneGeoFieldOrEqualityFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ControlPlaneGeoFieldOrEqualityFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"oeq"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ControlPlaneGeoFieldOrEqualityFilter) GetOeq() string {

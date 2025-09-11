@@ -127,7 +127,7 @@ func (j JWTWithoutParents) MarshalJSON() ([]byte, error) {
 }
 
 func (j *JWTWithoutParents) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &j, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &j, "", false, nil); err != nil {
 		return err
 	}
 	return nil
