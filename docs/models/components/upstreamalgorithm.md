@@ -8,7 +8,7 @@ Which load balancing algorithm to use.
 | Name                                 | Value                                |
 | ------------------------------------ | ------------------------------------ |
 | `UpstreamAlgorithmConsistentHashing` | consistent-hashing                   |
+| `UpstreamAlgorithmLatency`           | latency                              |
 | `UpstreamAlgorithmLeastConnections`  | least-connections                    |
 | `UpstreamAlgorithmRoundRobin`        | round-robin                          |
-| `UpstreamAlgorithmLatency`           | latency                              |
 | `UpstreamAlgorithmStickySessions`    | sticky-sessions                      |

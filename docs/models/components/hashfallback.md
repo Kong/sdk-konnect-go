@@ -7,11 +7,11 @@ What to use as hashing input if the primary `hash_on` does not return a hash (eg
 
 | Name                     | Value                    |
 | ------------------------ | ------------------------ |
-| `HashFallbackNone`       | none                     |
 | `HashFallbackConsumer`   | consumer                 |
-| `HashFallbackIP`         | ip                       |
-| `HashFallbackHeader`     | header                   |
 | `HashFallbackCookie`     | cookie                   |
+| `HashFallbackHeader`     | header                   |
+| `HashFallbackIP`         | ip                       |
+| `HashFallbackNone`       | none                     |
 | `HashFallbackPath`       | path                     |
 | `HashFallbackQueryArg`   | query_arg                |
 | `HashFallbackURICapture` | uri_capture              |

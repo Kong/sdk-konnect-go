@@ -5,8 +5,8 @@
 
 | Name                            | Value                           |
 | ------------------------------- | ------------------------------- |
-| `UpstreamHealthchecksTypeTCP`   | tcp                             |
-| `UpstreamHealthchecksTypeHTTP`  | http                            |
-| `UpstreamHealthchecksTypeHTTPS` | https                           |
 | `UpstreamHealthchecksTypeGrpc`  | grpc                            |
 | `UpstreamHealthchecksTypeGrpcs` | grpcs                           |
+| `UpstreamHealthchecksTypeHTTP`  | http                            |
+| `UpstreamHealthchecksTypeHTTPS` | https                           |
+| `UpstreamHealthchecksTypeTCP`   | tcp                             |

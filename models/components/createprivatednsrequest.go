@@ -5,7 +5,6 @@ package components
 import (
 	"errors"
 	"fmt"
-
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -53,6 +52,7 @@ func CreatePrivateDNSAttachmentConfigGcpPrivateHostedZoneAttachmentConfig(gcpPri
 }
 
 func (u *PrivateDNSAttachmentConfig) UnmarshalJSON(data []byte) error {
+
 	var gcpPrivateHostedZoneAttachmentConfig GcpPrivateHostedZoneAttachmentConfig = GcpPrivateHostedZoneAttachmentConfig{}
 	if err := utils.UnmarshalJSON(data, &gcpPrivateHostedZoneAttachmentConfig, "", true, nil); err == nil {
 		u.GcpPrivateHostedZoneAttachmentConfig = &gcpPrivateHostedZoneAttachmentConfig

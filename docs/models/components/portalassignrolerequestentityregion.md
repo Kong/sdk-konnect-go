@@ -12,4 +12,5 @@ Region of the entity.
 | `PortalAssignRoleRequestEntityRegionAu`       | au                                            |
 | `PortalAssignRoleRequestEntityRegionMe`       | me                                            |
 | `PortalAssignRoleRequestEntityRegionIn`       | in                                            |
+| `PortalAssignRoleRequestEntityRegionSg`       | sg                                            |
 | `PortalAssignRoleRequestEntityRegionWildcard` | *                                             |

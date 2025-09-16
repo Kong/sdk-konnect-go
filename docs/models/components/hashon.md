@@ -7,11 +7,11 @@ What to use as hashing input. Using `none` results in a weighted-round-robin sch
 
 | Name               | Value              |
 | ------------------ | ------------------ |
-| `HashOnNone`       | none               |
 | `HashOnConsumer`   | consumer           |
-| `HashOnIP`         | ip                 |
-| `HashOnHeader`     | header             |
 | `HashOnCookie`     | cookie             |
+| `HashOnHeader`     | header             |
+| `HashOnIP`         | ip                 |
+| `HashOnNone`       | none               |
 | `HashOnPath`       | path               |
 | `HashOnQueryArg`   | query_arg          |
 | `HashOnURICapture` | uri_capture        |

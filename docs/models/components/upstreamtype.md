@@ -5,8 +5,8 @@
 
 | Name                | Value               |
 | ------------------- | ------------------- |
-| `UpstreamTypeTCP`   | tcp                 |
-| `UpstreamTypeHTTP`  | http                |
-| `UpstreamTypeHTTPS` | https               |
 | `UpstreamTypeGrpc`  | grpc                |
 | `UpstreamTypeGrpcs` | grpcs               |
+| `UpstreamTypeHTTP`  | http                |
+| `UpstreamTypeHTTPS` | https               |
+| `UpstreamTypeTCP`   | tcp                 |

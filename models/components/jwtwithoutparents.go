@@ -11,29 +11,29 @@ import (
 type JWTWithoutParentsAlgorithm string
 
 const (
-	JWTWithoutParentsAlgorithmHs256   JWTWithoutParentsAlgorithm = "HS256"
-	JWTWithoutParentsAlgorithmHs384   JWTWithoutParentsAlgorithm = "HS384"
-	JWTWithoutParentsAlgorithmHs512   JWTWithoutParentsAlgorithm = "HS512"
-	JWTWithoutParentsAlgorithmRs256   JWTWithoutParentsAlgorithm = "RS256"
-	JWTWithoutParentsAlgorithmRs384   JWTWithoutParentsAlgorithm = "RS384"
-	JWTWithoutParentsAlgorithmRs512   JWTWithoutParentsAlgorithm = "RS512"
-	JWTWithoutParentsAlgorithmPs256   JWTWithoutParentsAlgorithm = "PS256"
-	JWTWithoutParentsAlgorithmPs384   JWTWithoutParentsAlgorithm = "PS384"
-	JWTWithoutParentsAlgorithmPs512   JWTWithoutParentsAlgorithm = "PS512"
 	JWTWithoutParentsAlgorithmEs256   JWTWithoutParentsAlgorithm = "ES256"
+	JWTWithoutParentsAlgorithmEs256K  JWTWithoutParentsAlgorithm = "ES256K"
 	JWTWithoutParentsAlgorithmEs384   JWTWithoutParentsAlgorithm = "ES384"
 	JWTWithoutParentsAlgorithmEs512   JWTWithoutParentsAlgorithm = "ES512"
-	JWTWithoutParentsAlgorithmEsp256  JWTWithoutParentsAlgorithm = "ESP256"
-	JWTWithoutParentsAlgorithmEsp384  JWTWithoutParentsAlgorithm = "ESP384"
-	JWTWithoutParentsAlgorithmEsp512  JWTWithoutParentsAlgorithm = "ESP512"
 	JWTWithoutParentsAlgorithmEsb256  JWTWithoutParentsAlgorithm = "ESB256"
 	JWTWithoutParentsAlgorithmEsb320  JWTWithoutParentsAlgorithm = "ESB320"
 	JWTWithoutParentsAlgorithmEsb384  JWTWithoutParentsAlgorithm = "ESB384"
 	JWTWithoutParentsAlgorithmEsb512  JWTWithoutParentsAlgorithm = "ESB512"
-	JWTWithoutParentsAlgorithmEs256K  JWTWithoutParentsAlgorithm = "ES256K"
-	JWTWithoutParentsAlgorithmEdDsa   JWTWithoutParentsAlgorithm = "EdDSA"
+	JWTWithoutParentsAlgorithmEsp256  JWTWithoutParentsAlgorithm = "ESP256"
+	JWTWithoutParentsAlgorithmEsp384  JWTWithoutParentsAlgorithm = "ESP384"
+	JWTWithoutParentsAlgorithmEsp512  JWTWithoutParentsAlgorithm = "ESP512"
 	JWTWithoutParentsAlgorithmEd25519 JWTWithoutParentsAlgorithm = "Ed25519"
 	JWTWithoutParentsAlgorithmEd448   JWTWithoutParentsAlgorithm = "Ed448"
+	JWTWithoutParentsAlgorithmEdDsa   JWTWithoutParentsAlgorithm = "EdDSA"
+	JWTWithoutParentsAlgorithmHs256   JWTWithoutParentsAlgorithm = "HS256"
+	JWTWithoutParentsAlgorithmHs384   JWTWithoutParentsAlgorithm = "HS384"
+	JWTWithoutParentsAlgorithmHs512   JWTWithoutParentsAlgorithm = "HS512"
+	JWTWithoutParentsAlgorithmPs256   JWTWithoutParentsAlgorithm = "PS256"
+	JWTWithoutParentsAlgorithmPs384   JWTWithoutParentsAlgorithm = "PS384"
+	JWTWithoutParentsAlgorithmPs512   JWTWithoutParentsAlgorithm = "PS512"
+	JWTWithoutParentsAlgorithmRs256   JWTWithoutParentsAlgorithm = "RS256"
+	JWTWithoutParentsAlgorithmRs384   JWTWithoutParentsAlgorithm = "RS384"
+	JWTWithoutParentsAlgorithmRs512   JWTWithoutParentsAlgorithm = "RS512"
 )
 
 func (e JWTWithoutParentsAlgorithm) ToPointer() *JWTWithoutParentsAlgorithm {
@@ -45,35 +45,13 @@ func (e *JWTWithoutParentsAlgorithm) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "HS256":
-		fallthrough
-	case "HS384":
-		fallthrough
-	case "HS512":
-		fallthrough
-	case "RS256":
-		fallthrough
-	case "RS384":
-		fallthrough
-	case "RS512":
-		fallthrough
-	case "PS256":
-		fallthrough
-	case "PS384":
-		fallthrough
-	case "PS512":
-		fallthrough
 	case "ES256":
+		fallthrough
+	case "ES256K":
 		fallthrough
 	case "ES384":
 		fallthrough
 	case "ES512":
-		fallthrough
-	case "ESP256":
-		fallthrough
-	case "ESP384":
-		fallthrough
-	case "ESP512":
 		fallthrough
 	case "ESB256":
 		fallthrough
@@ -83,13 +61,35 @@ func (e *JWTWithoutParentsAlgorithm) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "ESB512":
 		fallthrough
-	case "ES256K":
+	case "ESP256":
 		fallthrough
-	case "EdDSA":
+	case "ESP384":
+		fallthrough
+	case "ESP512":
 		fallthrough
 	case "Ed25519":
 		fallthrough
 	case "Ed448":
+		fallthrough
+	case "EdDSA":
+		fallthrough
+	case "HS256":
+		fallthrough
+	case "HS384":
+		fallthrough
+	case "HS512":
+		fallthrough
+	case "PS256":
+		fallthrough
+	case "PS384":
+		fallthrough
+	case "PS512":
+		fallthrough
+	case "RS256":
+		fallthrough
+	case "RS384":
+		fallthrough
+	case "RS512":
 		*e = JWTWithoutParentsAlgorithm(v)
 		return nil
 	default:

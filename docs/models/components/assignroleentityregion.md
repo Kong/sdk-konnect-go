@@ -12,4 +12,5 @@ Region of the team.
 | `AssignRoleEntityRegionAu`       | au                               |
 | `AssignRoleEntityRegionMe`       | me                               |
 | `AssignRoleEntityRegionIn`       | in                               |
+| `AssignRoleEntityRegionSg`       | sg                               |
 | `AssignRoleEntityRegionWildcard` | *                                |
