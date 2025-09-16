@@ -255,6 +255,7 @@ tags:
       to look up the certificate object based on the SNI associated with the
       certificate.
     name: SNIs
+  - name: Schemas
   - description: >
       Service entities are abstractions of your microservice interfaces or
       formal APIs. For example, a service could be a data transformation
@@ -1935,6 +1936,8 @@ paths:
       operationId: update-config-store-secret
       responses:
         '200':
+          $ref: '#/components/responses/ConfigStoreSecretResponse'
+        '201':
           $ref: '#/components/responses/ConfigStoreSecretResponse'
         '400':
           description: Bad Request
@@ -16123,7 +16126,7 @@ components:
             control_plane_endpoint:
               type: string
               format: url
-              example: https://acfe5f253f.cp0.konghq.com
+              example: https://acfe5f253f.cp.konghq.com
               description: Control Plane Endpoint.
               readOnly: true
             telemetry_endpoint:
@@ -17383,6 +17386,7 @@ components:
             - au
             - me
             - in
+            - sg
             - '*'
           example: eu
           description: Region of the entity.
@@ -17591,6 +17595,7 @@ components:
         - au
         - me
         - in
+        - sg
     GatewayVersion:
       title: Gateway Version
       description: Supported gateway version.
@@ -17754,7 +17759,7 @@ components:
     ServerlessV1ProviderRegions:
       title: Serverless V1 Provider Regions
       description: >-
-        List of available regions to run serverless v1 cloud gateway instances 
+        List of available regions to run serverless v1 cloud gateway instances
         on for a given cloud provider.
       type: array
       items:
@@ -24225,6 +24230,7 @@ components:
             - au
             - me
             - in
+            - sg
             - '*'
           example: eu
           description: Region of the entity.
@@ -24540,6 +24546,7 @@ components:
             - au
             - me
             - in
+            - sg
             - '*'
           example: eu
           description: Region of the entity.
@@ -25458,8 +25465,8 @@ components:
         username: darius
       additionalProperties: false
       required:
-        - username
         - password
+        - username
     BasicAuthWithoutParents:
       type: object
       properties:
@@ -25499,8 +25506,8 @@ components:
         username: darius
       additionalProperties: false
       required:
-        - username
         - password
+        - username
     CACertificate:
       description: >-
         A CA certificate object represents a trusted CA. These objects are used
@@ -25798,9 +25805,9 @@ components:
           true } } } } } } }
       additionalProperties: false
       required:
+        - handler
         - name
         - schema
-        - handler
     Degraphql_route:
       type: object
       properties:
@@ -25844,9 +25851,9 @@ components:
         uri: /users
       additionalProperties: false
       required:
-        - service
-        - uri
         - query
+        - uri
+        - service
     Degraphql_routeWithoutParents:
       type: object
       properties:
@@ -25891,8 +25898,8 @@ components:
         uri: /users
       additionalProperties: false
       required:
-        - uri
         - query
+        - uri
     GatewayUnauthorizedError:
       type: object
       properties:
@@ -25998,29 +26005,29 @@ components:
           type: string
           default: HS256
           enum:
-            - HS256
-            - HS384
-            - HS512
-            - RS256
-            - RS384
-            - RS512
-            - PS256
-            - PS384
-            - PS512
             - ES256
+            - ES256K
             - ES384
             - ES512
-            - ESP256
-            - ESP384
-            - ESP512
             - ESB256
             - ESB320
             - ESB384
             - ESB512
-            - ES256K
-            - EdDSA
+            - ESP256
+            - ESP384
+            - ESP512
             - Ed25519
             - Ed448
+            - EdDSA
+            - HS256
+            - HS384
+            - HS512
+            - PS256
+            - PS384
+            - PS512
+            - RS256
+            - RS384
+            - RS512
           nullable: true
         consumer:
           type: object
@@ -26078,29 +26085,29 @@ components:
           type: string
           default: HS256
           enum:
-            - HS256
-            - HS384
-            - HS512
-            - RS256
-            - RS384
-            - RS512
-            - PS256
-            - PS384
-            - PS512
             - ES256
+            - ES256K
             - ES384
             - ES512
-            - ESP256
-            - ESP384
-            - ESP512
             - ESB256
             - ESB320
             - ESB384
             - ESB512
-            - ES256K
-            - EdDSA
+            - ESP256
+            - ESP384
+            - ESP512
             - Ed25519
             - Ed448
+            - EdDSA
+            - HS256
+            - HS384
+            - HS512
+            - PS256
+            - PS384
+            - PS512
+            - RS256
+            - RS384
+            - RS512
           nullable: true
         consumer:
           type: object
@@ -26623,6 +26630,8 @@ components:
                 inclusive.
               type: integer
               default: 6379
+              maximum: 65535
+              minimum: 0
             server_name:
               description: >-
                 A string representing an SNI (server name indication) value for
@@ -26650,6 +26659,8 @@ components:
                 between 0 and 2^31-2.
               type: integer
               default: 2000
+              maximum: 2147483646
+              minimum: 0
             username:
               description: >-
                 Username to use for Redis connections. If undefined, ACL
@@ -26734,7 +26745,10 @@ components:
                       inclusive.
                     type: integer
                     default: 6379
+                    maximum: 65535
+                    minimum: 0
                 type: object
+              minLength: 1
               x-speakeasy-param-computed: false
               nullable: true
               default: null
@@ -26744,6 +26758,8 @@ components:
                 between 0 and 2^31-2.
               type: integer
               default: 2000
+              maximum: 2147483646
+              minimum: 0
             connection_is_proxied:
               description: >-
                 If the connection to Redis is proxied (e.g. Envoy), set it
@@ -26771,6 +26787,8 @@ components:
                 high or throughput is low, try increasing this value.
                 Empirically, this value is larger than `keepalive_pool_size`.
               type: integer
+              maximum: 2147483646
+              minimum: 0
               x-speakeasy-param-computed: false
               nullable: true
               default: null
@@ -26785,6 +26803,8 @@ components:
                 or throughput is low.
               type: integer
               default: 256
+              maximum: 2147483646
+              minimum: 1
             password:
               description: >-
                 Password to use for Redis connections. If undefined, no AUTH
@@ -26799,18 +26819,24 @@ components:
                 inclusive.
               type: integer
               default: 6379
+              maximum: 65535
+              minimum: 0
             read_timeout:
               description: >-
                 An integer representing a timeout in milliseconds. Must be
                 between 0 and 2^31-2.
               type: integer
               default: 2000
+              maximum: 2147483646
+              minimum: 0
             send_timeout:
               description: >-
                 An integer representing a timeout in milliseconds. Must be
                 between 0 and 2^31-2.
               type: integer
               default: 2000
+              maximum: 2147483646
+              minimum: 0
             sentinel_master:
               description: >-
                 Sentinel master to use for Redis connections. Defining this
@@ -26837,7 +26863,10 @@ components:
                       inclusive.
                     type: integer
                     default: 6379
+                    maximum: 65535
+                    minimum: 0
                 type: object
+              minLength: 1
               x-speakeasy-param-computed: false
               nullable: true
               default: null
@@ -26857,9 +26886,9 @@ components:
                 Sentinel.
               type: string
               enum:
+                - any
                 - master
                 - slave
-                - any
             sentinel_username:
               description: >-
                 Sentinel username to authenticate with a Redis Sentinel
@@ -27018,6 +27047,7 @@ components:
         id:
           description: A string representing a UUID (universally unique identifier).
           type: string
+          minLength: 1
           nullable: true
         instance_name:
           description: A unique string representing a UTF-8 encoded name.
@@ -27030,6 +27060,7 @@ components:
             The name of the Plugin that's going to be added. Currently, the
             Plugin must be installed in every Kong instance separately.
           type: string
+          minLength: 1
         ordering:
           type: object
           nullable: true
@@ -27070,6 +27101,7 @@ components:
               id:
                 description: A string representing a UUID (universally unique identifier).
                 type: string
+                minLength: 1
               name:
                 description: A unique string representing a UTF-8 encoded name.
                 type: string
@@ -27244,6 +27276,7 @@ components:
         id:
           description: A string representing a UUID (universally unique identifier).
           type: string
+          minLength: 1
           nullable: true
         instance_name:
           description: A unique string representing a UTF-8 encoded name.
@@ -27256,6 +27289,7 @@ components:
             The name of the Plugin that's going to be added. Currently, the
             Plugin must be installed in every Kong instance separately.
           type: string
+          minLength: 1
         ordering:
           type: object
           nullable: true
@@ -27296,6 +27330,7 @@ components:
               id:
                 description: A string representing a UUID (universally unique identifier).
                 type: string
+                minLength: 1
               name:
                 description: A unique string representing a UTF-8 encoded name.
                 type: string
@@ -27446,11 +27481,11 @@ components:
           type: integer
           default: 426
           enum:
-            - 426
             - 301
             - 302
             - 307
             - 308
+            - 426
           nullable: true
         id:
           description: A string representing a UUID (universally unique identifier).
@@ -27492,6 +27527,8 @@ components:
             This field is ignored unless `expression` field is set.
           type: integer
           default: 0
+          maximum: 70368744177663
+          minimum: 0
           nullable: true
         protocols:
           description: >-
@@ -27518,6 +27555,7 @@ components:
           default:
             - http
             - https
+          minLength: 1
           nullable: true
         request_buffering:
           description: >-
@@ -27608,6 +27646,8 @@ components:
                   An integer representing a port number between 0 and 65535,
                   inclusive.
                 type: integer
+                maximum: 65535
+                minimum: 0
                 x-speakeasy-param-computed: false
                 nullable: true
                 default: null
@@ -27651,11 +27691,11 @@ components:
           type: integer
           default: 426
           enum:
-            - 426
             - 301
             - 302
             - 307
             - 308
+            - 426
           nullable: true
         id:
           description: A string representing a UUID (universally unique identifier).
@@ -27738,6 +27778,7 @@ components:
           default:
             - http
             - https
+          minLength: 1
           nullable: true
         regex_priority:
           description: >-
@@ -27808,6 +27849,8 @@ components:
                   An integer representing a port number between 0 and 65535,
                   inclusive.
                 type: integer
+                maximum: 65535
+                minimum: 0
                 x-speakeasy-param-computed: false
                 nullable: true
                 default: null
@@ -28008,6 +28051,8 @@ components:
             upstream server.
           type: integer
           default: 60000
+          maximum: 2147483646
+          minimum: 1
           nullable: true
         created_at:
           description: Unix epoch when the resource was created.
@@ -28029,6 +28074,7 @@ components:
         id:
           description: A string representing a UUID (universally unique identifier).
           type: string
+          minLength: 1
           nullable: true
         name:
           description: The Service name.
@@ -28046,6 +28092,8 @@ components:
           description: The upstream server port.
           type: integer
           default: 80
+          maximum: 65535
+          minimum: 0
           nullable: true
         protocol:
           description: The protocol used to communicate with the upstream.
@@ -28069,11 +28117,15 @@ components:
             for transmitting a request to the upstream server.
           type: integer
           default: 60000
+          maximum: 2147483646
+          minimum: 1
           nullable: true
         retries:
           description: The number of retries to execute upon failure to proxy.
           type: integer
           default: 5
+          maximum: 32767
+          minimum: 0
           nullable: true
         tags:
           description: >-
@@ -28087,6 +28139,9 @@ components:
           x-speakeasy-param-computed: false
           default: null
         tls_sans:
+          description: >-
+            Additional Subject Alternative Names that can be matched on Upstream
+            server's TLS certificate (in addition to `host`).
           type: object
           nullable: true
           properties:
@@ -28127,6 +28182,8 @@ components:
             Maximum depth of chain while verifying Upstream server's TLS
             certificate. If set to `null`, then the Nginx default is respected.
           type: integer
+          maximum: 64
+          minimum: 0
           nullable: true
           x-speakeasy-param-computed: false
           default: null
@@ -28149,6 +28206,8 @@ components:
             for transmitting a request to the upstream server.
           type: integer
           default: 60000
+          maximum: 2147483646
+          minimum: 1
           nullable: true
       example:
         host: example.internal
@@ -28222,6 +28281,8 @@ components:
             `weight` value will be overridden by the value from the DNS record.
           type: integer
           default: 100
+          maximum: 65535
+          minimum: 0
           nullable: true
       example:
         id: 089292a7-ba3d-4d88-acf0-97b4b2e2621a
@@ -28230,6 +28291,8 @@ components:
           id: 5f1d7e76-2fed-4806-a6af-869984f025cb
         weight: 100
       additionalProperties: false
+      required:
+        - target
     TargetWithoutParents:
       description: >-
         A target is an ip address/hostname with a port that identifies an
@@ -28292,12 +28355,16 @@ components:
             `weight` value will be overridden by the value from the DNS record.
           type: integer
           default: 100
+          maximum: 65535
+          minimum: 0
           nullable: true
       example:
         id: 089292a7-ba3d-4d88-acf0-97b4b2e2621a
         target: 203.0.113.42
         weight: 100
       additionalProperties: false
+      required:
+        - target
     Upstream:
       description: >-
         The upstream object represents a virtual hostname and can be used to
@@ -28317,9 +28384,9 @@ components:
           default: round-robin
           enum:
             - consistent-hashing
+            - latency
             - least-connections
             - round-robin
-            - latency
             - sticky-sessions
           nullable: true
         client_certificate:
@@ -28346,11 +28413,11 @@ components:
           type: string
           default: none
           enum:
-            - none
             - consumer
-            - ip
-            - header
             - cookie
+            - header
+            - ip
+            - none
             - path
             - query_arg
             - uri_capture
@@ -28368,6 +28435,7 @@ components:
             The name of the query string argument to take the value from as hash
             input. Only required when `hash_fallback` is set to `query_arg`.
           type: string
+          minLength: 1
           nullable: true
           x-speakeasy-param-computed: false
           default: null
@@ -28376,6 +28444,7 @@ components:
             The name of the route URI capture to take the value from as hash
             input. Only required when `hash_fallback` is set to `uri_capture`.
           type: string
+          minLength: 1
           nullable: true
           x-speakeasy-param-computed: false
           default: null
@@ -28386,11 +28455,11 @@ components:
           type: string
           default: none
           enum:
-            - none
             - consumer
-            - ip
-            - header
             - cookie
+            - header
+            - ip
+            - none
             - path
             - query_arg
             - uri_capture
@@ -28425,6 +28494,7 @@ components:
             The name of the query string argument to take the value from as hash
             input. Only required when `hash_on` is set to `query_arg`.
           type: string
+          minLength: 1
           nullable: true
           x-speakeasy-param-computed: false
           default: null
@@ -28433,10 +28503,12 @@ components:
             The name of the route URI capture to take the value from as hash
             input. Only required when `hash_on` is set to `uri_capture`.
           type: string
+          minLength: 1
           nullable: true
           x-speakeasy-param-computed: false
           default: null
         healthchecks:
+          description: The array of healthchecks.
           type: object
           nullable: true
           properties:
@@ -28446,6 +28518,8 @@ components:
                 concurrency:
                   type: integer
                   default: 10
+                  maximum: 2147483648
+                  minimum: 1
                 headers:
                   description: A map of header names to arrays of header values.
                   type: object
@@ -28462,6 +28536,8 @@ components:
                     http_statuses:
                       type: array
                       items:
+                        maximum: 999
+                        minimum: 100
                         type: integer
                       default:
                         - 200
@@ -28469,9 +28545,13 @@ components:
                     interval:
                       type: number
                       default: 0
+                      maximum: 65535
+                      minimum: 0
                     successes:
                       type: integer
                       default: 0
+                      maximum: 255
+                      minimum: 0
                   x-speakeasy-param-computed: false
                   nullable: true
                   default: null
@@ -28496,24 +28576,30 @@ components:
                 timeout:
                   type: number
                   default: 1
+                  maximum: 65535
+                  minimum: 0
                 type:
                   type: string
                   default: http
                   enum:
-                    - tcp
-                    - http
-                    - https
                     - grpc
                     - grpcs
+                    - http
+                    - https
+                    - tcp
                 unhealthy:
                   type: object
                   properties:
                     http_failures:
                       type: integer
                       default: 0
+                      maximum: 255
+                      minimum: 0
                     http_statuses:
                       type: array
                       items:
+                        maximum: 999
+                        minimum: 100
                         type: integer
                       default:
                         - 429
@@ -28527,12 +28613,18 @@ components:
                     interval:
                       type: number
                       default: 0
+                      maximum: 65535
+                      minimum: 0
                     tcp_failures:
                       type: integer
                       default: 0
+                      maximum: 255
+                      minimum: 0
                     timeouts:
                       type: integer
                       default: 0
+                      maximum: 255
+                      minimum: 0
                   x-speakeasy-param-computed: false
                   nullable: true
                   default: null
@@ -28548,6 +28640,8 @@ components:
                     http_statuses:
                       type: array
                       items:
+                        maximum: 999
+                        minimum: 100
                         type: integer
                       default:
                         - 200
@@ -28572,6 +28666,8 @@ components:
                     successes:
                       type: integer
                       default: 0
+                      maximum: 255
+                      minimum: 0
                   x-speakeasy-param-computed: false
                   nullable: true
                   default: null
@@ -28579,20 +28675,24 @@ components:
                   type: string
                   default: http
                   enum:
-                    - tcp
-                    - http
-                    - https
                     - grpc
                     - grpcs
+                    - http
+                    - https
+                    - tcp
                 unhealthy:
                   type: object
                   properties:
                     http_failures:
                       type: integer
                       default: 0
+                      maximum: 255
+                      minimum: 0
                     http_statuses:
                       type: array
                       items:
+                        maximum: 999
+                        minimum: 100
                         type: integer
                       default:
                         - 429
@@ -28601,9 +28701,13 @@ components:
                     tcp_failures:
                       type: integer
                       default: 0
+                      maximum: 255
+                      minimum: 0
                     timeouts:
                       type: integer
                       default: 0
+                      maximum: 255
+                      minimum: 0
                   x-speakeasy-param-computed: false
                   nullable: true
                   default: null
@@ -28613,6 +28717,8 @@ components:
             threshold:
               type: number
               default: 0
+              maximum: 100
+              minimum: 0
           x-speakeasy-param-computed: false
           default: null
         host_header:
@@ -28639,6 +28745,8 @@ components:
             Accepts an integer in the range `10`-`65536`.
           type: integer
           default: 10000
+          maximum: 65536
+          minimum: 10
           nullable: true
         sticky_sessions_cookie:
           description: The cookie name to keep sticky sessions.
@@ -29207,6 +29315,7 @@ components:
                   - au
                   - me
                   - in
+                  - sg
                   - '*'
                 example: eu
                 description: Region of the team.
