@@ -3,9 +3,8 @@
 package components
 
 import (
-	"time"
-
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"time"
 )
 
 // API - Details about the API the application is registered to.

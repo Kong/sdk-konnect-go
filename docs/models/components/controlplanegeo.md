@@ -12,3 +12,4 @@ Set of control-plane geos supported for deploying cloud-gateways configurations.
 | `ControlPlaneGeoAu` | au                  |
 | `ControlPlaneGeoMe` | me                  |
 | `ControlPlaneGeoIn` | in                  |
+| `ControlPlaneGeoSg` | sg                  |

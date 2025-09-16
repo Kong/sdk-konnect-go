@@ -6,7 +6,7 @@ package components
 type ServerlessV1Provider struct {
 	// Name of cloud provider.
 	Provider ServerlessV1ProviderName `json:"provider"`
-	// List of available regions to run serverless v1 cloud gateway instances  on for a given cloud provider.
+	// List of available regions to run serverless v1 cloud gateway instances on for a given cloud provider.
 	Regions []ServerlessV1ProviderRegion `json:"regions"`
 }
 

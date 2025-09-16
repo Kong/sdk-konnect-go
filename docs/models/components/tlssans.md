@@ -1,5 +1,7 @@
 # TLSSans
 
+Additional Subject Alternative Names that can be matched on Upstream server's TLS certificate (in addition to `host`).
+
 
 ## Fields
 

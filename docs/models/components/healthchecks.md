@@ -1,5 +1,7 @@
 # Healthchecks
 
+The array of healthchecks.
+
 
 ## Fields
 

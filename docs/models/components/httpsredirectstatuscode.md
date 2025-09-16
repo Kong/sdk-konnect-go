@@ -7,8 +7,8 @@ The status code Kong responds with when all properties of a Route match except t
 
 | Name                                             | Value                                            |
 | ------------------------------------------------ | ------------------------------------------------ |
-| `HTTPSRedirectStatusCodeFourHundredAndTwentySix` | 426                                              |
 | `HTTPSRedirectStatusCodeThreeHundredAndOne`      | 301                                              |
 | `HTTPSRedirectStatusCodeThreeHundredAndTwo`      | 302                                              |
 | `HTTPSRedirectStatusCodeThreeHundredAndSeven`    | 307                                              |
 | `HTTPSRedirectStatusCodeThreeHundredAndEight`    | 308                                              |
+| `HTTPSRedirectStatusCodeFourHundredAndTwentySix` | 426                                              |

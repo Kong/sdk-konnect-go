@@ -76,9 +76,9 @@ func (o *SentinelNodes) GetPort() *int64 {
 type SentinelRole string
 
 const (
+	SentinelRoleAny    SentinelRole = "any"
 	SentinelRoleMaster SentinelRole = "master"
 	SentinelRoleSlave  SentinelRole = "slave"
-	SentinelRoleAny    SentinelRole = "any"
 )
 
 func (e SentinelRole) ToPointer() *SentinelRole {
@@ -90,11 +90,11 @@ func (e *SentinelRole) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
+	case "any":
+		fallthrough
 	case "master":
 		fallthrough
 	case "slave":
-		fallthrough
-	case "any":
 		*e = SentinelRole(v)
 		return nil
 	default:

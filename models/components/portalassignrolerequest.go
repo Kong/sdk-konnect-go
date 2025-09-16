@@ -17,6 +17,7 @@ const (
 	PortalAssignRoleRequestEntityRegionAu       PortalAssignRoleRequestEntityRegion = "au"
 	PortalAssignRoleRequestEntityRegionMe       PortalAssignRoleRequestEntityRegion = "me"
 	PortalAssignRoleRequestEntityRegionIn       PortalAssignRoleRequestEntityRegion = "in"
+	PortalAssignRoleRequestEntityRegionSg       PortalAssignRoleRequestEntityRegion = "sg"
 	PortalAssignRoleRequestEntityRegionWildcard PortalAssignRoleRequestEntityRegion = "*"
 )
 
@@ -38,6 +39,8 @@ func (e *PortalAssignRoleRequestEntityRegion) UnmarshalJSON(data []byte) error {
 	case "me":
 		fallthrough
 	case "in":
+		fallthrough
+	case "sg":
 		fallthrough
 	case "*":
 		*e = PortalAssignRoleRequestEntityRegion(v)

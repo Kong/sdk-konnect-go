@@ -3,9 +3,8 @@
 package components
 
 import (
-	"time"
-
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"time"
 )
 
 // GcpPrivateHostedZoneResponsePrivateDNSStateMetadata - Metadata describing the backing state of the Private Dns and why it may be in an erroneous state.

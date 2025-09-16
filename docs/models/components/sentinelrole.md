@@ -7,6 +7,6 @@ Sentinel role to use for Redis connections when the `redis` strategy is defined.
 
 | Name                 | Value                |
 | -------------------- | -------------------- |
+| `SentinelRoleAny`    | any                  |
 | `SentinelRoleMaster` | master               |
 | `SentinelRoleSlave`  | slave                |
-| `SentinelRoleAny`    | any                  |
