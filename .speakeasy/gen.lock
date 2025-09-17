@@ -3,17 +3,17 @@ id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
   docChecksum: 7731586698b0e5043cc997fdd6cce976
   docVersion: 3.0.26
-  speakeasyVersion: 1.615.2
-  generationVersion: 2.698.4
-  releaseVersion: 0.10.1
-  configChecksum: 442ec5a23f89e8977735a50bd9e7ead5
+  speakeasyVersion: 1.617.1
+  generationVersion: 2.701.8
+  releaseVersion: 0.10.2
+  configChecksum: 473f5f65d594d53b8f3d1bd47d271413
 features:
   go:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.2
     constsAndDefaults: 0.1.12
-    core: 3.9.6
+    core: 3.10.0
     deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.3
@@ -29,7 +29,7 @@ features:
     intellisenseMarkdownSupport: 0.1.0
     methodServerURLs: 2.82.1
     nameOverrides: 2.81.2
-    nullables: 0.1.1
+    nullables: 0.2.0
     responseFormat: 0.1.2
     retries: 2.84.2
     sdkHooks: 0.2.0
@@ -2848,6 +2848,8 @@ generatedFiles:
   - models/sdkerrors/sdkerror.go
   - mtlsauthcredentials.go
   - notifications.go
+  - optionalnullable/optionalnullable.go
+  - optionalnullable/optionalnullable_test.go
   - pages.go
   - partiallinks.go
   - partials.go

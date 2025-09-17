@@ -13,18 +13,18 @@ type CreateAPISpecRequest struct {
 	CreateAPISpecRequest components.CreateAPISpecRequest `request:"mediaType=application/json"`
 }
 
-func (o *CreateAPISpecRequest) GetAPIID() string {
-	if o == nil {
+func (c *CreateAPISpecRequest) GetAPIID() string {
+	if c == nil {
 		return ""
 	}
-	return o.APIID
+	return c.APIID
 }
 
-func (o *CreateAPISpecRequest) GetCreateAPISpecRequest() components.CreateAPISpecRequest {
-	if o == nil {
+func (c *CreateAPISpecRequest) GetCreateAPISpecRequest() components.CreateAPISpecRequest {
+	if c == nil {
 		return components.CreateAPISpecRequest{}
 	}
-	return o.CreateAPISpecRequest
+	return c.CreateAPISpecRequest
 }
 
 type CreateAPISpecResponse struct {
@@ -38,30 +38,30 @@ type CreateAPISpecResponse struct {
 	APISpecResponse *components.APISpecResponse
 }
 
-func (o *CreateAPISpecResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateAPISpecResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateAPISpecResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateAPISpecResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateAPISpecResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateAPISpecResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateAPISpecResponse) GetAPISpecResponse() *components.APISpecResponse {
-	if o == nil {
+func (c *CreateAPISpecResponse) GetAPISpecResponse() *components.APISpecResponse {
+	if c == nil {
 		return nil
 	}
-	return o.APISpecResponse
+	return c.APISpecResponse
 }

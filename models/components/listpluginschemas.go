@@ -28,32 +28,32 @@ func (i *Items) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Items) GetLuaSchema() *string {
-	if o == nil {
+func (i *Items) GetLuaSchema() *string {
+	if i == nil {
 		return nil
 	}
-	return o.LuaSchema
+	return i.LuaSchema
 }
 
-func (o *Items) GetName() *string {
-	if o == nil {
+func (i *Items) GetName() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Name
+	return i.Name
 }
 
-func (o *Items) GetCreatedAt() *int64 {
-	if o == nil {
+func (i *Items) GetCreatedAt() *int64 {
+	if i == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return i.CreatedAt
 }
 
-func (o *Items) GetUpdatedAt() *int64 {
-	if o == nil {
+func (i *Items) GetUpdatedAt() *int64 {
+	if i == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return i.UpdatedAt
 }
 
 type Page struct {
@@ -71,11 +71,11 @@ func (p *Page) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Page) GetTotal() *int64 {
-	if o == nil {
+func (p *Page) GetTotal() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Total
+	return p.Total
 }
 
 // ListPluginSchemas - A paginated list response for a collection of custom plugin schemas.
@@ -84,16 +84,16 @@ type ListPluginSchemas struct {
 	Page  *Page   `json:"page,omitempty"`
 }
 
-func (o *ListPluginSchemas) GetItems() []Items {
-	if o == nil {
+func (l *ListPluginSchemas) GetItems() []Items {
+	if l == nil {
 		return nil
 	}
-	return o.Items
+	return l.Items
 }
 
-func (o *ListPluginSchemas) GetPage() *Page {
-	if o == nil {
+func (l *ListPluginSchemas) GetPage() *Page {
+	if l == nil {
 		return nil
 	}
-	return o.Page
+	return l.Page
 }

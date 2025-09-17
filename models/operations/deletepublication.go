@@ -13,18 +13,18 @@ type DeletePublicationRequest struct {
 	PortalID string `pathParam:"style=simple,explode=false,name=portalId"`
 }
 
-func (o *DeletePublicationRequest) GetAPIID() string {
-	if o == nil {
+func (d *DeletePublicationRequest) GetAPIID() string {
+	if d == nil {
 		return ""
 	}
-	return o.APIID
+	return d.APIID
 }
 
-func (o *DeletePublicationRequest) GetPortalID() string {
-	if o == nil {
+func (d *DeletePublicationRequest) GetPortalID() string {
+	if d == nil {
 		return ""
 	}
-	return o.PortalID
+	return d.PortalID
 }
 
 type DeletePublicationResponse struct {
@@ -36,23 +36,23 @@ type DeletePublicationResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeletePublicationResponse) GetContentType() string {
-	if o == nil {
+func (d *DeletePublicationResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeletePublicationResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeletePublicationResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeletePublicationResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeletePublicationResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

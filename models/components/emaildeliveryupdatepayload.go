@@ -23,23 +23,23 @@ func (e *EmailDeliveryUpdatePayload) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EmailDeliveryUpdatePayload) GetEnabled() *bool {
-	if o == nil {
+func (e *EmailDeliveryUpdatePayload) GetEnabled() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.Enabled
+	return e.Enabled
 }
 
-func (o *EmailDeliveryUpdatePayload) GetFromEmail() *string {
-	if o == nil {
+func (e *EmailDeliveryUpdatePayload) GetFromEmail() *string {
+	if e == nil {
 		return nil
 	}
-	return o.FromEmail
+	return e.FromEmail
 }
 
-func (o *EmailDeliveryUpdatePayload) GetReplyToEmail() *string {
-	if o == nil {
+func (e *EmailDeliveryUpdatePayload) GetReplyToEmail() *string {
+	if e == nil {
 		return nil
 	}
-	return o.ReplyToEmail
+	return e.ReplyToEmail
 }

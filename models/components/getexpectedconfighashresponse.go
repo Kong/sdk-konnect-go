@@ -12,23 +12,23 @@ type GetExpectedConfigHashResponse struct {
 	UpdatedAt int64 `json:"updated_at"`
 }
 
-func (o *GetExpectedConfigHashResponse) GetExpectedHash() string {
-	if o == nil {
+func (g *GetExpectedConfigHashResponse) GetExpectedHash() string {
+	if g == nil {
 		return ""
 	}
-	return o.ExpectedHash
+	return g.ExpectedHash
 }
 
-func (o *GetExpectedConfigHashResponse) GetCreatedAt() int64 {
-	if o == nil {
+func (g *GetExpectedConfigHashResponse) GetCreatedAt() int64 {
+	if g == nil {
 		return 0
 	}
-	return o.CreatedAt
+	return g.CreatedAt
 }
 
-func (o *GetExpectedConfigHashResponse) GetUpdatedAt() int64 {
-	if o == nil {
+func (g *GetExpectedConfigHashResponse) GetUpdatedAt() int64 {
+	if g == nil {
 		return 0
 	}
-	return o.UpdatedAt
+	return g.UpdatedAt
 }

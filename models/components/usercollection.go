@@ -9,16 +9,16 @@ type UserCollection struct {
 	Data []User         `json:"data,omitempty"`
 }
 
-func (o *UserCollection) GetMeta() *PaginatedMeta {
-	if o == nil {
+func (u *UserCollection) GetMeta() *PaginatedMeta {
+	if u == nil {
 		return nil
 	}
-	return o.Meta
+	return u.Meta
 }
 
-func (o *UserCollection) GetData() []User {
-	if o == nil {
+func (u *UserCollection) GetData() []User {
+	if u == nil {
 		return nil
 	}
-	return o.Data
+	return u.Data
 }

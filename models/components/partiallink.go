@@ -26,23 +26,23 @@ func (p *PartialLink) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PartialLink) GetID() string {
-	if o == nil {
+func (p *PartialLink) GetID() string {
+	if p == nil {
 		return ""
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PartialLink) GetInstanceName() *string {
-	if o == nil {
+func (p *PartialLink) GetInstanceName() *string {
+	if p == nil {
 		return nil
 	}
-	return o.InstanceName
+	return p.InstanceName
 }
 
-func (o *PartialLink) GetName() string {
-	if o == nil {
+func (p *PartialLink) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }

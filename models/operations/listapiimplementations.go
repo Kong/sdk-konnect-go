@@ -28,32 +28,32 @@ type ListAPIImplementationsRequest struct {
 	Sort *string `queryParam:"style=form,explode=true,name=sort"`
 }
 
-func (o *ListAPIImplementationsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListAPIImplementationsRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListAPIImplementationsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListAPIImplementationsRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListAPIImplementationsRequest) GetFilter() *components.APIImplementationFilterParameters {
-	if o == nil {
+func (l *ListAPIImplementationsRequest) GetFilter() *components.APIImplementationFilterParameters {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
-func (o *ListAPIImplementationsRequest) GetSort() *string {
-	if o == nil {
+func (l *ListAPIImplementationsRequest) GetSort() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Sort
+	return l.Sort
 }
 
 type ListAPIImplementationsResponse struct {
@@ -67,30 +67,30 @@ type ListAPIImplementationsResponse struct {
 	ListAPIImplementationsResponse *components.ListAPIImplementationsResponse
 }
 
-func (o *ListAPIImplementationsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListAPIImplementationsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListAPIImplementationsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListAPIImplementationsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListAPIImplementationsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListAPIImplementationsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListAPIImplementationsResponse) GetListAPIImplementationsResponse() *components.ListAPIImplementationsResponse {
-	if o == nil {
+func (l *ListAPIImplementationsResponse) GetListAPIImplementationsResponse() *components.ListAPIImplementationsResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListAPIImplementationsResponse
+	return l.ListAPIImplementationsResponse
 }

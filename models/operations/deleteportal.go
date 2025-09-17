@@ -54,18 +54,18 @@ func (d *DeletePortalRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DeletePortalRequest) GetPortalID() string {
-	if o == nil {
+func (d *DeletePortalRequest) GetPortalID() string {
+	if d == nil {
 		return ""
 	}
-	return o.PortalID
+	return d.PortalID
 }
 
-func (o *DeletePortalRequest) GetForce() *QueryParamForce {
-	if o == nil {
+func (d *DeletePortalRequest) GetForce() *QueryParamForce {
+	if d == nil {
 		return nil
 	}
-	return o.Force
+	return d.Force
 }
 
 type DeletePortalResponse struct {
@@ -77,23 +77,23 @@ type DeletePortalResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeletePortalResponse) GetContentType() string {
-	if o == nil {
+func (d *DeletePortalResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeletePortalResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeletePortalResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeletePortalResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeletePortalResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

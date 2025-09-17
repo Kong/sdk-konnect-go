@@ -22,9 +22,9 @@ func (s *StringFieldNEQFilter) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *StringFieldNEQFilter) GetNeq() string {
-	if o == nil {
+func (s *StringFieldNEQFilter) GetNeq() string {
+	if s == nil {
 		return ""
 	}
-	return o.Neq
+	return s.Neq
 }

@@ -13,18 +13,18 @@ type CreateAPIVersionRequest struct {
 	CreateAPIVersionRequest components.CreateAPIVersionRequest `request:"mediaType=application/json"`
 }
 
-func (o *CreateAPIVersionRequest) GetAPIID() string {
-	if o == nil {
+func (c *CreateAPIVersionRequest) GetAPIID() string {
+	if c == nil {
 		return ""
 	}
-	return o.APIID
+	return c.APIID
 }
 
-func (o *CreateAPIVersionRequest) GetCreateAPIVersionRequest() components.CreateAPIVersionRequest {
-	if o == nil {
+func (c *CreateAPIVersionRequest) GetCreateAPIVersionRequest() components.CreateAPIVersionRequest {
+	if c == nil {
 		return components.CreateAPIVersionRequest{}
 	}
-	return o.CreateAPIVersionRequest
+	return c.CreateAPIVersionRequest
 }
 
 type CreateAPIVersionResponse struct {
@@ -38,30 +38,30 @@ type CreateAPIVersionResponse struct {
 	APIVersionResponse *components.APIVersionResponse
 }
 
-func (o *CreateAPIVersionResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateAPIVersionResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateAPIVersionResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateAPIVersionResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateAPIVersionResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateAPIVersionResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateAPIVersionResponse) GetAPIVersionResponse() *components.APIVersionResponse {
-	if o == nil {
+func (c *CreateAPIVersionResponse) GetAPIVersionResponse() *components.APIVersionResponse {
+	if c == nil {
 		return nil
 	}
-	return o.APIVersionResponse
+	return c.APIVersionResponse
 }

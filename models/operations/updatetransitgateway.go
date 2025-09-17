@@ -19,25 +19,25 @@ type UpdateTransitGatewayRequest struct {
 	PatchTransitGatewayRequest components.PatchTransitGatewayRequest `request:"mediaType=application/json"`
 }
 
-func (o *UpdateTransitGatewayRequest) GetNetworkID() string {
-	if o == nil {
+func (u *UpdateTransitGatewayRequest) GetNetworkID() string {
+	if u == nil {
 		return ""
 	}
-	return o.NetworkID
+	return u.NetworkID
 }
 
-func (o *UpdateTransitGatewayRequest) GetTransitGatewayID() string {
-	if o == nil {
+func (u *UpdateTransitGatewayRequest) GetTransitGatewayID() string {
+	if u == nil {
 		return ""
 	}
-	return o.TransitGatewayID
+	return u.TransitGatewayID
 }
 
-func (o *UpdateTransitGatewayRequest) GetPatchTransitGatewayRequest() components.PatchTransitGatewayRequest {
-	if o == nil {
+func (u *UpdateTransitGatewayRequest) GetPatchTransitGatewayRequest() components.PatchTransitGatewayRequest {
+	if u == nil {
 		return components.PatchTransitGatewayRequest{}
 	}
-	return o.PatchTransitGatewayRequest
+	return u.PatchTransitGatewayRequest
 }
 
 type UpdateTransitGatewayResponse struct {
@@ -51,30 +51,30 @@ type UpdateTransitGatewayResponse struct {
 	PatchTransitGatewayResponse *components.PatchTransitGatewayResponse
 }
 
-func (o *UpdateTransitGatewayResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateTransitGatewayResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateTransitGatewayResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateTransitGatewayResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateTransitGatewayResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateTransitGatewayResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateTransitGatewayResponse) GetPatchTransitGatewayResponse() *components.PatchTransitGatewayResponse {
-	if o == nil {
+func (u *UpdateTransitGatewayResponse) GetPatchTransitGatewayResponse() *components.PatchTransitGatewayResponse {
+	if u == nil {
 		return nil
 	}
-	return o.PatchTransitGatewayResponse
+	return u.PatchTransitGatewayResponse
 }

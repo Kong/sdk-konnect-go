@@ -14,18 +14,18 @@ type CreateDataplaneCertificateRequest struct {
 	DataPlaneClientCertificateRequest *components.DataPlaneClientCertificateRequest `request:"mediaType=application/json"`
 }
 
-func (o *CreateDataplaneCertificateRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreateDataplaneCertificateRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreateDataplaneCertificateRequest) GetDataPlaneClientCertificateRequest() *components.DataPlaneClientCertificateRequest {
-	if o == nil {
+func (c *CreateDataplaneCertificateRequest) GetDataPlaneClientCertificateRequest() *components.DataPlaneClientCertificateRequest {
+	if c == nil {
 		return nil
 	}
-	return o.DataPlaneClientCertificateRequest
+	return c.DataPlaneClientCertificateRequest
 }
 
 type CreateDataplaneCertificateResponse struct {
@@ -39,30 +39,30 @@ type CreateDataplaneCertificateResponse struct {
 	DataPlaneClientCertificateResponse *components.DataPlaneClientCertificateResponse
 }
 
-func (o *CreateDataplaneCertificateResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateDataplaneCertificateResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateDataplaneCertificateResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateDataplaneCertificateResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateDataplaneCertificateResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateDataplaneCertificateResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateDataplaneCertificateResponse) GetDataPlaneClientCertificateResponse() *components.DataPlaneClientCertificateResponse {
-	if o == nil {
+func (c *CreateDataplaneCertificateResponse) GetDataPlaneClientCertificateResponse() *components.DataPlaneClientCertificateResponse {
+	if c == nil {
 		return nil
 	}
-	return o.DataPlaneClientCertificateResponse
+	return c.DataPlaneClientCertificateResponse
 }

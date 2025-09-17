@@ -100,16 +100,16 @@ type CreatePrivateDNSRequest struct {
 	PrivateDNSAttachmentConfig *PrivateDNSAttachmentConfig `json:"private_dns_attachment_config,omitempty"`
 }
 
-func (o *CreatePrivateDNSRequest) GetName() *string {
-	if o == nil {
+func (c *CreatePrivateDNSRequest) GetName() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *CreatePrivateDNSRequest) GetPrivateDNSAttachmentConfig() *PrivateDNSAttachmentConfig {
-	if o == nil {
+func (c *CreatePrivateDNSRequest) GetPrivateDNSAttachmentConfig() *PrivateDNSAttachmentConfig {
+	if c == nil {
 		return nil
 	}
-	return o.PrivateDNSAttachmentConfig
+	return c.PrivateDNSAttachmentConfig
 }

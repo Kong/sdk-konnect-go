@@ -12,11 +12,11 @@ type GetDefaultEmailTemplateRequest struct {
 	TemplateName components.EmailTemplateName `pathParam:"style=simple,explode=false,name=templateName"`
 }
 
-func (o *GetDefaultEmailTemplateRequest) GetTemplateName() components.EmailTemplateName {
-	if o == nil {
+func (g *GetDefaultEmailTemplateRequest) GetTemplateName() components.EmailTemplateName {
+	if g == nil {
 		return components.EmailTemplateName("")
 	}
-	return o.TemplateName
+	return g.TemplateName
 }
 
 type GetDefaultEmailTemplateResponse struct {
@@ -30,30 +30,30 @@ type GetDefaultEmailTemplateResponse struct {
 	DefaultEmailTemplate *components.DefaultEmailTemplate
 }
 
-func (o *GetDefaultEmailTemplateResponse) GetContentType() string {
-	if o == nil {
+func (g *GetDefaultEmailTemplateResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetDefaultEmailTemplateResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetDefaultEmailTemplateResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetDefaultEmailTemplateResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetDefaultEmailTemplateResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetDefaultEmailTemplateResponse) GetDefaultEmailTemplate() *components.DefaultEmailTemplate {
-	if o == nil {
+func (g *GetDefaultEmailTemplateResponse) GetDefaultEmailTemplate() *components.DefaultEmailTemplate {
+	if g == nil {
 		return nil
 	}
-	return o.DefaultEmailTemplate
+	return g.DefaultEmailTemplate
 }

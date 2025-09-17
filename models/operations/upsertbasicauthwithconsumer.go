@@ -18,32 +18,32 @@ type UpsertBasicAuthWithConsumerRequest struct {
 	BasicAuthWithoutParents components.BasicAuthWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *UpsertBasicAuthWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpsertBasicAuthWithConsumerRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpsertBasicAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (u *UpsertBasicAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if u == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return u.ConsumerIDForNestedEntities
 }
 
-func (o *UpsertBasicAuthWithConsumerRequest) GetBasicAuthID() string {
-	if o == nil {
+func (u *UpsertBasicAuthWithConsumerRequest) GetBasicAuthID() string {
+	if u == nil {
 		return ""
 	}
-	return o.BasicAuthID
+	return u.BasicAuthID
 }
 
-func (o *UpsertBasicAuthWithConsumerRequest) GetBasicAuthWithoutParents() components.BasicAuthWithoutParents {
-	if o == nil {
+func (u *UpsertBasicAuthWithConsumerRequest) GetBasicAuthWithoutParents() components.BasicAuthWithoutParents {
+	if u == nil {
 		return components.BasicAuthWithoutParents{}
 	}
-	return o.BasicAuthWithoutParents
+	return u.BasicAuthWithoutParents
 }
 
 type UpsertBasicAuthWithConsumerResponse struct {
@@ -57,30 +57,30 @@ type UpsertBasicAuthWithConsumerResponse struct {
 	BasicAuth *components.BasicAuth
 }
 
-func (o *UpsertBasicAuthWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (u *UpsertBasicAuthWithConsumerResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpsertBasicAuthWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpsertBasicAuthWithConsumerResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpsertBasicAuthWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpsertBasicAuthWithConsumerResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpsertBasicAuthWithConsumerResponse) GetBasicAuth() *components.BasicAuth {
-	if o == nil {
+func (u *UpsertBasicAuthWithConsumerResponse) GetBasicAuth() *components.BasicAuth {
+	if u == nil {
 		return nil
 	}
-	return o.BasicAuth
+	return u.BasicAuth
 }

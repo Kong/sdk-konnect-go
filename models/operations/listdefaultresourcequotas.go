@@ -18,18 +18,18 @@ type ListDefaultResourceQuotasRequest struct {
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 }
 
-func (o *ListDefaultResourceQuotasRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListDefaultResourceQuotasRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListDefaultResourceQuotasRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListDefaultResourceQuotasRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
 type ListDefaultResourceQuotasResponse struct {
@@ -43,30 +43,30 @@ type ListDefaultResourceQuotasResponse struct {
 	ListDefaultResourceQuotasResponse *components.ListDefaultResourceQuotasResponse
 }
 
-func (o *ListDefaultResourceQuotasResponse) GetContentType() string {
-	if o == nil {
+func (l *ListDefaultResourceQuotasResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListDefaultResourceQuotasResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListDefaultResourceQuotasResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListDefaultResourceQuotasResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListDefaultResourceQuotasResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListDefaultResourceQuotasResponse) GetListDefaultResourceQuotasResponse() *components.ListDefaultResourceQuotasResponse {
-	if o == nil {
+func (l *ListDefaultResourceQuotasResponse) GetListDefaultResourceQuotasResponse() *components.ListDefaultResourceQuotasResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListDefaultResourceQuotasResponse
+	return l.ListDefaultResourceQuotasResponse
 }

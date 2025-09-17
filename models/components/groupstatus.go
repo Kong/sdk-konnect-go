@@ -63,37 +63,37 @@ func (g *GroupStatus) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GroupStatus) GetID() string {
-	if o == nil {
+func (g *GroupStatus) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GroupStatus) GetCreatedAt() time.Time {
-	if o == nil {
+func (g *GroupStatus) GetCreatedAt() time.Time {
+	if g == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return g.CreatedAt
 }
 
-func (o *GroupStatus) GetUpdatedAt() time.Time {
-	if o == nil {
+func (g *GroupStatus) GetUpdatedAt() time.Time {
+	if g == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return g.UpdatedAt
 }
 
-func (o *GroupStatus) GetConflicts() []GroupConflict {
-	if o == nil {
+func (g *GroupStatus) GetConflicts() []GroupConflict {
+	if g == nil {
 		return nil
 	}
-	return o.Conflicts
+	return g.Conflicts
 }
 
-func (o *GroupStatus) GetState() GroupStatusState {
-	if o == nil {
+func (g *GroupStatus) GetState() GroupStatusState {
+	if g == nil {
 		return GroupStatusState("")
 	}
-	return o.State
+	return g.State
 }

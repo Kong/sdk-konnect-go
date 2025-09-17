@@ -7,9 +7,9 @@ type APIDocumentFilterParameters struct {
 	Status *StringFieldFilter `queryParam:"name=status"`
 }
 
-func (o *APIDocumentFilterParameters) GetStatus() *StringFieldFilter {
-	if o == nil {
+func (a *APIDocumentFilterParameters) GetStatus() *StringFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.Status
+	return a.Status
 }

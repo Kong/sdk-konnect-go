@@ -12,11 +12,11 @@ type GetPortalRequest struct {
 	PortalID string `pathParam:"style=simple,explode=false,name=portalId"`
 }
 
-func (o *GetPortalRequest) GetPortalID() string {
-	if o == nil {
+func (g *GetPortalRequest) GetPortalID() string {
+	if g == nil {
 		return ""
 	}
-	return o.PortalID
+	return g.PortalID
 }
 
 type GetPortalResponse struct {
@@ -30,30 +30,30 @@ type GetPortalResponse struct {
 	PortalResponse *components.PortalResponse
 }
 
-func (o *GetPortalResponse) GetContentType() string {
-	if o == nil {
+func (g *GetPortalResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetPortalResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetPortalResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetPortalResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetPortalResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetPortalResponse) GetPortalResponse() *components.PortalResponse {
-	if o == nil {
+func (g *GetPortalResponse) GetPortalResponse() *components.PortalResponse {
+	if g == nil {
 		return nil
 	}
-	return o.PortalResponse
+	return g.PortalResponse
 }

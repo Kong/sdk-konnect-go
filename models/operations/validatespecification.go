@@ -18,30 +18,30 @@ type ValidateSpecificationResponse struct {
 	ValidateAPISpecSuccessResponse *components.ValidateAPISpecSuccessResponse
 }
 
-func (o *ValidateSpecificationResponse) GetContentType() string {
-	if o == nil {
+func (v *ValidateSpecificationResponse) GetContentType() string {
+	if v == nil {
 		return ""
 	}
-	return o.ContentType
+	return v.ContentType
 }
 
-func (o *ValidateSpecificationResponse) GetStatusCode() int {
-	if o == nil {
+func (v *ValidateSpecificationResponse) GetStatusCode() int {
+	if v == nil {
 		return 0
 	}
-	return o.StatusCode
+	return v.StatusCode
 }
 
-func (o *ValidateSpecificationResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (v *ValidateSpecificationResponse) GetRawResponse() *http.Response {
+	if v == nil {
 		return nil
 	}
-	return o.RawResponse
+	return v.RawResponse
 }
 
-func (o *ValidateSpecificationResponse) GetValidateAPISpecSuccessResponse() *components.ValidateAPISpecSuccessResponse {
-	if o == nil {
+func (v *ValidateSpecificationResponse) GetValidateAPISpecSuccessResponse() *components.ValidateAPISpecSuccessResponse {
+	if v == nil {
 		return nil
 	}
-	return o.ValidateAPISpecSuccessResponse
+	return v.ValidateAPISpecSuccessResponse
 }

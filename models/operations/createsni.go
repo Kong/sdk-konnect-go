@@ -14,18 +14,18 @@ type CreateSniRequest struct {
 	Sni components.Sni `request:"mediaType=application/json"`
 }
 
-func (o *CreateSniRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreateSniRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreateSniRequest) GetSni() components.Sni {
-	if o == nil {
+func (c *CreateSniRequest) GetSni() components.Sni {
+	if c == nil {
 		return components.Sni{}
 	}
-	return o.Sni
+	return c.Sni
 }
 
 type CreateSniResponse struct {
@@ -39,30 +39,30 @@ type CreateSniResponse struct {
 	Sni *components.Sni
 }
 
-func (o *CreateSniResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateSniResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateSniResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateSniResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateSniResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateSniResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateSniResponse) GetSni() *components.Sni {
-	if o == nil {
+func (c *CreateSniResponse) GetSni() *components.Sni {
+	if c == nil {
 		return nil
 	}
-	return o.Sni
+	return c.Sni
 }

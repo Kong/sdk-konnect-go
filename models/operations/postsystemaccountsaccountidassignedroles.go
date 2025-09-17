@@ -18,18 +18,18 @@ type PostSystemAccountsAccountIDAssignedRolesRequest struct {
 	AssignRole *components.AssignRole `request:"mediaType=application/json"`
 }
 
-func (o *PostSystemAccountsAccountIDAssignedRolesRequest) GetAccountID() string {
-	if o == nil {
+func (p *PostSystemAccountsAccountIDAssignedRolesRequest) GetAccountID() string {
+	if p == nil {
 		return ""
 	}
-	return o.AccountID
+	return p.AccountID
 }
 
-func (o *PostSystemAccountsAccountIDAssignedRolesRequest) GetAssignRole() *components.AssignRole {
-	if o == nil {
+func (p *PostSystemAccountsAccountIDAssignedRolesRequest) GetAssignRole() *components.AssignRole {
+	if p == nil {
 		return nil
 	}
-	return o.AssignRole
+	return p.AssignRole
 }
 
 type PostSystemAccountsAccountIDAssignedRolesResponse struct {
@@ -43,30 +43,30 @@ type PostSystemAccountsAccountIDAssignedRolesResponse struct {
 	AssignedRole *components.AssignedRole
 }
 
-func (o *PostSystemAccountsAccountIDAssignedRolesResponse) GetContentType() string {
-	if o == nil {
+func (p *PostSystemAccountsAccountIDAssignedRolesResponse) GetContentType() string {
+	if p == nil {
 		return ""
 	}
-	return o.ContentType
+	return p.ContentType
 }
 
-func (o *PostSystemAccountsAccountIDAssignedRolesResponse) GetStatusCode() int {
-	if o == nil {
+func (p *PostSystemAccountsAccountIDAssignedRolesResponse) GetStatusCode() int {
+	if p == nil {
 		return 0
 	}
-	return o.StatusCode
+	return p.StatusCode
 }
 
-func (o *PostSystemAccountsAccountIDAssignedRolesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (p *PostSystemAccountsAccountIDAssignedRolesResponse) GetRawResponse() *http.Response {
+	if p == nil {
 		return nil
 	}
-	return o.RawResponse
+	return p.RawResponse
 }
 
-func (o *PostSystemAccountsAccountIDAssignedRolesResponse) GetAssignedRole() *components.AssignedRole {
-	if o == nil {
+func (p *PostSystemAccountsAccountIDAssignedRolesResponse) GetAssignedRole() *components.AssignedRole {
+	if p == nil {
 		return nil
 	}
-	return o.AssignedRole
+	return p.AssignedRole
 }

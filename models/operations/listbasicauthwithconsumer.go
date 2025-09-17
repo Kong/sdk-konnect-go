@@ -32,39 +32,39 @@ func (l *ListBasicAuthWithConsumerRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListBasicAuthWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListBasicAuthWithConsumerRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListBasicAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (l *ListBasicAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if l == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return l.ConsumerIDForNestedEntities
 }
 
-func (o *ListBasicAuthWithConsumerRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListBasicAuthWithConsumerRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListBasicAuthWithConsumerRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListBasicAuthWithConsumerRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListBasicAuthWithConsumerRequest) GetTags() *string {
-	if o == nil {
+func (l *ListBasicAuthWithConsumerRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListBasicAuthWithConsumerResponseBody - A successful response listing Basic-auth credentials
@@ -76,25 +76,25 @@ type ListBasicAuthWithConsumerResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListBasicAuthWithConsumerResponseBody) GetData() []components.BasicAuth {
-	if o == nil {
+func (l *ListBasicAuthWithConsumerResponseBody) GetData() []components.BasicAuth {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListBasicAuthWithConsumerResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListBasicAuthWithConsumerResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListBasicAuthWithConsumerResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListBasicAuthWithConsumerResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListBasicAuthWithConsumerResponse struct {
@@ -108,30 +108,30 @@ type ListBasicAuthWithConsumerResponse struct {
 	Object *ListBasicAuthWithConsumerResponseBody
 }
 
-func (o *ListBasicAuthWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (l *ListBasicAuthWithConsumerResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListBasicAuthWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListBasicAuthWithConsumerResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListBasicAuthWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListBasicAuthWithConsumerResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListBasicAuthWithConsumerResponse) GetObject() *ListBasicAuthWithConsumerResponseBody {
-	if o == nil {
+func (l *ListBasicAuthWithConsumerResponse) GetObject() *ListBasicAuthWithConsumerResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

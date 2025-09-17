@@ -19,25 +19,25 @@ type PatchSystemAccountsIDAccessTokensIDRequest struct {
 	UpdateSystemAccountAccessToken *components.UpdateSystemAccountAccessToken `request:"mediaType=application/json"`
 }
 
-func (o *PatchSystemAccountsIDAccessTokensIDRequest) GetAccountID() string {
-	if o == nil {
+func (p *PatchSystemAccountsIDAccessTokensIDRequest) GetAccountID() string {
+	if p == nil {
 		return ""
 	}
-	return o.AccountID
+	return p.AccountID
 }
 
-func (o *PatchSystemAccountsIDAccessTokensIDRequest) GetTokenID() string {
-	if o == nil {
+func (p *PatchSystemAccountsIDAccessTokensIDRequest) GetTokenID() string {
+	if p == nil {
 		return ""
 	}
-	return o.TokenID
+	return p.TokenID
 }
 
-func (o *PatchSystemAccountsIDAccessTokensIDRequest) GetUpdateSystemAccountAccessToken() *components.UpdateSystemAccountAccessToken {
-	if o == nil {
+func (p *PatchSystemAccountsIDAccessTokensIDRequest) GetUpdateSystemAccountAccessToken() *components.UpdateSystemAccountAccessToken {
+	if p == nil {
 		return nil
 	}
-	return o.UpdateSystemAccountAccessToken
+	return p.UpdateSystemAccountAccessToken
 }
 
 type PatchSystemAccountsIDAccessTokensIDResponse struct {
@@ -51,30 +51,30 @@ type PatchSystemAccountsIDAccessTokensIDResponse struct {
 	SystemAccountAccessToken *components.SystemAccountAccessToken
 }
 
-func (o *PatchSystemAccountsIDAccessTokensIDResponse) GetContentType() string {
-	if o == nil {
+func (p *PatchSystemAccountsIDAccessTokensIDResponse) GetContentType() string {
+	if p == nil {
 		return ""
 	}
-	return o.ContentType
+	return p.ContentType
 }
 
-func (o *PatchSystemAccountsIDAccessTokensIDResponse) GetStatusCode() int {
-	if o == nil {
+func (p *PatchSystemAccountsIDAccessTokensIDResponse) GetStatusCode() int {
+	if p == nil {
 		return 0
 	}
-	return o.StatusCode
+	return p.StatusCode
 }
 
-func (o *PatchSystemAccountsIDAccessTokensIDResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (p *PatchSystemAccountsIDAccessTokensIDResponse) GetRawResponse() *http.Response {
+	if p == nil {
 		return nil
 	}
-	return o.RawResponse
+	return p.RawResponse
 }
 
-func (o *PatchSystemAccountsIDAccessTokensIDResponse) GetSystemAccountAccessToken() *components.SystemAccountAccessToken {
-	if o == nil {
+func (p *PatchSystemAccountsIDAccessTokensIDResponse) GetSystemAccountAccessToken() *components.SystemAccountAccessToken {
+	if p == nil {
 		return nil
 	}
-	return o.SystemAccountAccessToken
+	return p.SystemAccountAccessToken
 }

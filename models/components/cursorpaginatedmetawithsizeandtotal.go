@@ -7,9 +7,9 @@ type CursorPaginatedMetaWithSizeAndTotal struct {
 	Page CursorMetaWithSizeAndTotal `json:"page"`
 }
 
-func (o *CursorPaginatedMetaWithSizeAndTotal) GetPage() CursorMetaWithSizeAndTotal {
-	if o == nil {
+func (c *CursorPaginatedMetaWithSizeAndTotal) GetPage() CursorMetaWithSizeAndTotal {
+	if c == nil {
 		return CursorMetaWithSizeAndTotal{}
 	}
-	return o.Page
+	return c.Page
 }

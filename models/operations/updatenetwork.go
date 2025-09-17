@@ -17,18 +17,18 @@ type UpdateNetworkRequest struct {
 	PatchNetworkRequest components.PatchNetworkRequest `request:"mediaType=application/json"`
 }
 
-func (o *UpdateNetworkRequest) GetNetworkID() string {
-	if o == nil {
+func (u *UpdateNetworkRequest) GetNetworkID() string {
+	if u == nil {
 		return ""
 	}
-	return o.NetworkID
+	return u.NetworkID
 }
 
-func (o *UpdateNetworkRequest) GetPatchNetworkRequest() components.PatchNetworkRequest {
-	if o == nil {
+func (u *UpdateNetworkRequest) GetPatchNetworkRequest() components.PatchNetworkRequest {
+	if u == nil {
 		return components.PatchNetworkRequest{}
 	}
-	return o.PatchNetworkRequest
+	return u.PatchNetworkRequest
 }
 
 type UpdateNetworkResponse struct {
@@ -42,30 +42,30 @@ type UpdateNetworkResponse struct {
 	Network *components.Network
 }
 
-func (o *UpdateNetworkResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateNetworkResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateNetworkResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateNetworkResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateNetworkResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateNetworkResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateNetworkResponse) GetNetwork() *components.Network {
-	if o == nil {
+func (u *UpdateNetworkResponse) GetNetwork() *components.Network {
+	if u == nil {
 		return nil
 	}
-	return o.Network
+	return u.Network
 }

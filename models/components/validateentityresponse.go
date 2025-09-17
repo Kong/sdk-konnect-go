@@ -22,9 +22,9 @@ func (v *ValidateEntityResponse) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ValidateEntityResponse) GetMessage() *string {
-	if o == nil {
+func (v *ValidateEntityResponse) GetMessage() *string {
+	if v == nil {
 		return nil
 	}
-	return o.Message
+	return v.Message
 }

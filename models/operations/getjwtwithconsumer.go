@@ -16,25 +16,25 @@ type GetJwtWithConsumerRequest struct {
 	JWTID string `pathParam:"style=simple,explode=false,name=JWTId"`
 }
 
-func (o *GetJwtWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetJwtWithConsumerRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
-func (o *GetJwtWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (g *GetJwtWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if g == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return g.ConsumerIDForNestedEntities
 }
 
-func (o *GetJwtWithConsumerRequest) GetJWTID() string {
-	if o == nil {
+func (g *GetJwtWithConsumerRequest) GetJWTID() string {
+	if g == nil {
 		return ""
 	}
-	return o.JWTID
+	return g.JWTID
 }
 
 type GetJwtWithConsumerResponse struct {
@@ -48,30 +48,30 @@ type GetJwtWithConsumerResponse struct {
 	Jwt *components.Jwt
 }
 
-func (o *GetJwtWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (g *GetJwtWithConsumerResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetJwtWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetJwtWithConsumerResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetJwtWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetJwtWithConsumerResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetJwtWithConsumerResponse) GetJwt() *components.Jwt {
-	if o == nil {
+func (g *GetJwtWithConsumerResponse) GetJwt() *components.Jwt {
+	if g == nil {
 		return nil
 	}
-	return o.Jwt
+	return g.Jwt
 }

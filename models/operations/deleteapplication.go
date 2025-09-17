@@ -13,18 +13,18 @@ type DeleteApplicationRequest struct {
 	ApplicationID string `pathParam:"style=simple,explode=false,name=applicationId"`
 }
 
-func (o *DeleteApplicationRequest) GetPortalID() string {
-	if o == nil {
+func (d *DeleteApplicationRequest) GetPortalID() string {
+	if d == nil {
 		return ""
 	}
-	return o.PortalID
+	return d.PortalID
 }
 
-func (o *DeleteApplicationRequest) GetApplicationID() string {
-	if o == nil {
+func (d *DeleteApplicationRequest) GetApplicationID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ApplicationID
+	return d.ApplicationID
 }
 
 type DeleteApplicationResponse struct {
@@ -36,23 +36,23 @@ type DeleteApplicationResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteApplicationResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteApplicationResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteApplicationResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteApplicationResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteApplicationResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteApplicationResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

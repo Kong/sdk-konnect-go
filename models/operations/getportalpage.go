@@ -14,18 +14,18 @@ type GetPortalPageRequest struct {
 	PageID string `pathParam:"style=simple,explode=false,name=pageId"`
 }
 
-func (o *GetPortalPageRequest) GetPortalID() string {
-	if o == nil {
+func (g *GetPortalPageRequest) GetPortalID() string {
+	if g == nil {
 		return ""
 	}
-	return o.PortalID
+	return g.PortalID
 }
 
-func (o *GetPortalPageRequest) GetPageID() string {
-	if o == nil {
+func (g *GetPortalPageRequest) GetPageID() string {
+	if g == nil {
 		return ""
 	}
-	return o.PageID
+	return g.PageID
 }
 
 type GetPortalPageResponse struct {
@@ -39,30 +39,30 @@ type GetPortalPageResponse struct {
 	PortalPageResponse *components.PortalPageResponse
 }
 
-func (o *GetPortalPageResponse) GetContentType() string {
-	if o == nil {
+func (g *GetPortalPageResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetPortalPageResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetPortalPageResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetPortalPageResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetPortalPageResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetPortalPageResponse) GetPortalPageResponse() *components.PortalPageResponse {
-	if o == nil {
+func (g *GetPortalPageResponse) GetPortalPageResponse() *components.PortalPageResponse {
+	if g == nil {
 		return nil
 	}
-	return o.PortalPageResponse
+	return g.PortalPageResponse
 }

@@ -16,25 +16,25 @@ type AddDeveloperToPortalTeamRequest struct {
 	AddDeveloperToTeamRequest *components.AddDeveloperToTeamRequest `request:"mediaType=application/json"`
 }
 
-func (o *AddDeveloperToPortalTeamRequest) GetPortalID() string {
-	if o == nil {
+func (a *AddDeveloperToPortalTeamRequest) GetPortalID() string {
+	if a == nil {
 		return ""
 	}
-	return o.PortalID
+	return a.PortalID
 }
 
-func (o *AddDeveloperToPortalTeamRequest) GetTeamID() string {
-	if o == nil {
+func (a *AddDeveloperToPortalTeamRequest) GetTeamID() string {
+	if a == nil {
 		return ""
 	}
-	return o.TeamID
+	return a.TeamID
 }
 
-func (o *AddDeveloperToPortalTeamRequest) GetAddDeveloperToTeamRequest() *components.AddDeveloperToTeamRequest {
-	if o == nil {
+func (a *AddDeveloperToPortalTeamRequest) GetAddDeveloperToTeamRequest() *components.AddDeveloperToTeamRequest {
+	if a == nil {
 		return nil
 	}
-	return o.AddDeveloperToTeamRequest
+	return a.AddDeveloperToTeamRequest
 }
 
 type AddDeveloperToPortalTeamResponse struct {
@@ -46,23 +46,23 @@ type AddDeveloperToPortalTeamResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *AddDeveloperToPortalTeamResponse) GetContentType() string {
-	if o == nil {
+func (a *AddDeveloperToPortalTeamResponse) GetContentType() string {
+	if a == nil {
 		return ""
 	}
-	return o.ContentType
+	return a.ContentType
 }
 
-func (o *AddDeveloperToPortalTeamResponse) GetStatusCode() int {
-	if o == nil {
+func (a *AddDeveloperToPortalTeamResponse) GetStatusCode() int {
+	if a == nil {
 		return 0
 	}
-	return o.StatusCode
+	return a.StatusCode
 }
 
-func (o *AddDeveloperToPortalTeamResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (a *AddDeveloperToPortalTeamResponse) GetRawResponse() *http.Response {
+	if a == nil {
 		return nil
 	}
-	return o.RawResponse
+	return a.RawResponse
 }

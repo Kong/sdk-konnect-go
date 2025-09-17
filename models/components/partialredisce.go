@@ -40,67 +40,67 @@ func (p *PartialRedisCeConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PartialRedisCeConfig) GetDatabase() *int64 {
-	if o == nil {
+func (p *PartialRedisCeConfig) GetDatabase() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Database
+	return p.Database
 }
 
-func (o *PartialRedisCeConfig) GetHost() *string {
-	if o == nil {
+func (p *PartialRedisCeConfig) GetHost() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Host
+	return p.Host
 }
 
-func (o *PartialRedisCeConfig) GetPassword() *string {
-	if o == nil {
+func (p *PartialRedisCeConfig) GetPassword() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Password
+	return p.Password
 }
 
-func (o *PartialRedisCeConfig) GetPort() *int64 {
-	if o == nil {
+func (p *PartialRedisCeConfig) GetPort() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Port
+	return p.Port
 }
 
-func (o *PartialRedisCeConfig) GetServerName() *string {
-	if o == nil {
+func (p *PartialRedisCeConfig) GetServerName() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ServerName
+	return p.ServerName
 }
 
-func (o *PartialRedisCeConfig) GetSsl() *bool {
-	if o == nil {
+func (p *PartialRedisCeConfig) GetSsl() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Ssl
+	return p.Ssl
 }
 
-func (o *PartialRedisCeConfig) GetSslVerify() *bool {
-	if o == nil {
+func (p *PartialRedisCeConfig) GetSslVerify() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.SslVerify
+	return p.SslVerify
 }
 
-func (o *PartialRedisCeConfig) GetTimeout() *int64 {
-	if o == nil {
+func (p *PartialRedisCeConfig) GetTimeout() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Timeout
+	return p.Timeout
 }
 
-func (o *PartialRedisCeConfig) GetUsername() *string {
-	if o == nil {
+func (p *PartialRedisCeConfig) GetUsername() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Username
+	return p.Username
 }
 
 type Type string
@@ -152,51 +152,51 @@ func (p *PartialRedisCe) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PartialRedisCe) GetConfig() PartialRedisCeConfig {
-	if o == nil {
+func (p *PartialRedisCe) GetConfig() PartialRedisCeConfig {
+	if p == nil {
 		return PartialRedisCeConfig{}
 	}
-	return o.Config
+	return p.Config
 }
 
-func (o *PartialRedisCe) GetCreatedAt() *int64 {
-	if o == nil {
+func (p *PartialRedisCe) GetCreatedAt() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return p.CreatedAt
 }
 
-func (o *PartialRedisCe) GetID() *string {
-	if o == nil {
+func (p *PartialRedisCe) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PartialRedisCe) GetName() *string {
-	if o == nil {
+func (p *PartialRedisCe) GetName() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PartialRedisCe) GetTags() []string {
-	if o == nil {
+func (p *PartialRedisCe) GetTags() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Tags
+	return p.Tags
 }
 
-func (o *PartialRedisCe) GetType() Type {
-	if o == nil {
+func (p *PartialRedisCe) GetType() Type {
+	if p == nil {
 		return Type("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PartialRedisCe) GetUpdatedAt() *int64 {
-	if o == nil {
+func (p *PartialRedisCe) GetUpdatedAt() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return p.UpdatedAt
 }

@@ -56,25 +56,25 @@ func (d *DeleteConfigStoreRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DeleteConfigStoreRequest) GetControlPlaneID() string {
-	if o == nil {
+func (d *DeleteConfigStoreRequest) GetControlPlaneID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return d.ControlPlaneID
 }
 
-func (o *DeleteConfigStoreRequest) GetConfigStoreID() string {
-	if o == nil {
+func (d *DeleteConfigStoreRequest) GetConfigStoreID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ConfigStoreID
+	return d.ConfigStoreID
 }
 
-func (o *DeleteConfigStoreRequest) GetForce() *Force {
-	if o == nil {
+func (d *DeleteConfigStoreRequest) GetForce() *Force {
+	if d == nil {
 		return nil
 	}
-	return o.Force
+	return d.Force
 }
 
 type DeleteConfigStoreResponse struct {
@@ -86,23 +86,23 @@ type DeleteConfigStoreResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteConfigStoreResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteConfigStoreResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteConfigStoreResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteConfigStoreResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteConfigStoreResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteConfigStoreResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

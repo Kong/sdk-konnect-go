@@ -7,9 +7,9 @@ type APISpecFilterParameters struct {
 	Type *StringFieldFilter `queryParam:"name=type"`
 }
 
-func (o *APISpecFilterParameters) GetType() *StringFieldFilter {
-	if o == nil {
+func (a *APISpecFilterParameters) GetType() *StringFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.Type
+	return a.Type
 }

@@ -7,16 +7,16 @@ type PrivateDNSFilterParameters struct {
 	State *PrivateDNSStateFieldFilter             `queryParam:"name=state"`
 }
 
-func (o *PrivateDNSFilterParameters) GetName() *CloudGatewaysStringFieldFilterOverride {
-	if o == nil {
+func (p *PrivateDNSFilterParameters) GetName() *CloudGatewaysStringFieldFilterOverride {
+	if p == nil {
 		return nil
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PrivateDNSFilterParameters) GetState() *PrivateDNSStateFieldFilter {
-	if o == nil {
+func (p *PrivateDNSFilterParameters) GetState() *PrivateDNSStateFieldFilter {
+	if p == nil {
 		return nil
 	}
-	return o.State
+	return p.State
 }

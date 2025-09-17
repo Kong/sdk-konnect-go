@@ -14,18 +14,18 @@ type CreatePortalTeamRequest struct {
 	PortalCreateTeamRequest *components.PortalCreateTeamRequest `request:"mediaType=application/json"`
 }
 
-func (o *CreatePortalTeamRequest) GetPortalID() string {
-	if o == nil {
+func (c *CreatePortalTeamRequest) GetPortalID() string {
+	if c == nil {
 		return ""
 	}
-	return o.PortalID
+	return c.PortalID
 }
 
-func (o *CreatePortalTeamRequest) GetPortalCreateTeamRequest() *components.PortalCreateTeamRequest {
-	if o == nil {
+func (c *CreatePortalTeamRequest) GetPortalCreateTeamRequest() *components.PortalCreateTeamRequest {
+	if c == nil {
 		return nil
 	}
-	return o.PortalCreateTeamRequest
+	return c.PortalCreateTeamRequest
 }
 
 type CreatePortalTeamResponse struct {
@@ -39,30 +39,30 @@ type CreatePortalTeamResponse struct {
 	PortalTeamResponse *components.PortalTeamResponse
 }
 
-func (o *CreatePortalTeamResponse) GetContentType() string {
-	if o == nil {
+func (c *CreatePortalTeamResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreatePortalTeamResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreatePortalTeamResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreatePortalTeamResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreatePortalTeamResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreatePortalTeamResponse) GetPortalTeamResponse() *components.PortalTeamResponse {
-	if o == nil {
+func (c *CreatePortalTeamResponse) GetPortalTeamResponse() *components.PortalTeamResponse {
+	if c == nil {
 		return nil
 	}
-	return o.PortalTeamResponse
+	return c.PortalTeamResponse
 }

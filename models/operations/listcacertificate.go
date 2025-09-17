@@ -30,32 +30,32 @@ func (l *ListCaCertificateRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListCaCertificateRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListCaCertificateRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListCaCertificateRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListCaCertificateRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListCaCertificateRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListCaCertificateRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListCaCertificateRequest) GetTags() *string {
-	if o == nil {
+func (l *ListCaCertificateRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListCaCertificateResponseBody - A successful response listing CA Certificates
@@ -67,25 +67,25 @@ type ListCaCertificateResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListCaCertificateResponseBody) GetData() []components.CACertificate {
-	if o == nil {
+func (l *ListCaCertificateResponseBody) GetData() []components.CACertificate {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListCaCertificateResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListCaCertificateResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListCaCertificateResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListCaCertificateResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListCaCertificateResponse struct {
@@ -99,30 +99,30 @@ type ListCaCertificateResponse struct {
 	Object *ListCaCertificateResponseBody
 }
 
-func (o *ListCaCertificateResponse) GetContentType() string {
-	if o == nil {
+func (l *ListCaCertificateResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListCaCertificateResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListCaCertificateResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListCaCertificateResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListCaCertificateResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListCaCertificateResponse) GetObject() *ListCaCertificateResponseBody {
-	if o == nil {
+func (l *ListCaCertificateResponse) GetObject() *ListCaCertificateResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

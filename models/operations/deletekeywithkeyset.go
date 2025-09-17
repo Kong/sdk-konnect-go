@@ -15,25 +15,25 @@ type DeleteKeyWithKeySetRequest struct {
 	KeyID string `pathParam:"style=simple,explode=false,name=KeyId"`
 }
 
-func (o *DeleteKeyWithKeySetRequest) GetControlPlaneID() string {
-	if o == nil {
+func (d *DeleteKeyWithKeySetRequest) GetControlPlaneID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return d.ControlPlaneID
 }
 
-func (o *DeleteKeyWithKeySetRequest) GetKeySetID() string {
-	if o == nil {
+func (d *DeleteKeyWithKeySetRequest) GetKeySetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.KeySetID
+	return d.KeySetID
 }
 
-func (o *DeleteKeyWithKeySetRequest) GetKeyID() string {
-	if o == nil {
+func (d *DeleteKeyWithKeySetRequest) GetKeyID() string {
+	if d == nil {
 		return ""
 	}
-	return o.KeyID
+	return d.KeyID
 }
 
 type DeleteKeyWithKeySetResponse struct {
@@ -45,23 +45,23 @@ type DeleteKeyWithKeySetResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteKeyWithKeySetResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteKeyWithKeySetResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteKeyWithKeySetResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteKeyWithKeySetResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteKeyWithKeySetResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteKeyWithKeySetResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

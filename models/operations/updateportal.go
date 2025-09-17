@@ -14,18 +14,18 @@ type UpdatePortalRequest struct {
 	UpdatePortal components.UpdatePortal `request:"mediaType=application/json"`
 }
 
-func (o *UpdatePortalRequest) GetPortalID() string {
-	if o == nil {
+func (u *UpdatePortalRequest) GetPortalID() string {
+	if u == nil {
 		return ""
 	}
-	return o.PortalID
+	return u.PortalID
 }
 
-func (o *UpdatePortalRequest) GetUpdatePortal() components.UpdatePortal {
-	if o == nil {
+func (u *UpdatePortalRequest) GetUpdatePortal() components.UpdatePortal {
+	if u == nil {
 		return components.UpdatePortal{}
 	}
-	return o.UpdatePortal
+	return u.UpdatePortal
 }
 
 type UpdatePortalResponse struct {
@@ -39,30 +39,30 @@ type UpdatePortalResponse struct {
 	PortalResponse *components.PortalResponse
 }
 
-func (o *UpdatePortalResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdatePortalResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdatePortalResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdatePortalResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdatePortalResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdatePortalResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdatePortalResponse) GetPortalResponse() *components.PortalResponse {
-	if o == nil {
+func (u *UpdatePortalResponse) GetPortalResponse() *components.PortalResponse {
+	if u == nil {
 		return nil
 	}
-	return o.PortalResponse
+	return u.PortalResponse
 }

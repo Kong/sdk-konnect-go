@@ -18,30 +18,30 @@ type CreateControlPlaneResponse struct {
 	ControlPlane *components.ControlPlane
 }
 
-func (o *CreateControlPlaneResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateControlPlaneResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateControlPlaneResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateControlPlaneResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateControlPlaneResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateControlPlaneResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateControlPlaneResponse) GetControlPlane() *components.ControlPlane {
-	if o == nil {
+func (c *CreateControlPlaneResponse) GetControlPlane() *components.ControlPlane {
+	if c == nil {
 		return nil
 	}
-	return o.ControlPlane
+	return c.ControlPlane
 }

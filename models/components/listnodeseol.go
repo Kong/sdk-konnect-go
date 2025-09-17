@@ -23,25 +23,25 @@ func (l *ListNodesEolItems) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListNodesEolItems) GetNodeID() *string {
-	if o == nil {
+func (l *ListNodesEolItems) GetNodeID() *string {
+	if l == nil {
 		return nil
 	}
-	return o.NodeID
+	return l.NodeID
 }
 
-func (o *ListNodesEolItems) GetNodeVersion() *string {
-	if o == nil {
+func (l *ListNodesEolItems) GetNodeVersion() *string {
+	if l == nil {
 		return nil
 	}
-	return o.NodeVersion
+	return l.NodeVersion
 }
 
-func (o *ListNodesEolItems) GetMessage() *string {
-	if o == nil {
+func (l *ListNodesEolItems) GetMessage() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Message
+	return l.Message
 }
 
 type ListNodesEolPage struct {
@@ -59,11 +59,11 @@ func (l *ListNodesEolPage) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListNodesEolPage) GetTotal() *int64 {
-	if o == nil {
+func (l *ListNodesEolPage) GetTotal() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Total
+	return l.Total
 }
 
 // ListNodesEol - Example response
@@ -72,16 +72,16 @@ type ListNodesEol struct {
 	Page  *ListNodesEolPage   `json:"page,omitempty"`
 }
 
-func (o *ListNodesEol) GetItems() []ListNodesEolItems {
-	if o == nil {
+func (l *ListNodesEol) GetItems() []ListNodesEolItems {
+	if l == nil {
 		return nil
 	}
-	return o.Items
+	return l.Items
 }
 
-func (o *ListNodesEol) GetPage() *ListNodesEolPage {
-	if o == nil {
+func (l *ListNodesEol) GetPage() *ListNodesEolPage {
+	if l == nil {
 		return nil
 	}
-	return o.Page
+	return l.Page
 }

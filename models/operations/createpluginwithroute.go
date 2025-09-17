@@ -16,25 +16,25 @@ type CreatePluginWithRouteRequest struct {
 	PluginWithoutParents components.PluginWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *CreatePluginWithRouteRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreatePluginWithRouteRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreatePluginWithRouteRequest) GetRouteID() string {
-	if o == nil {
+func (c *CreatePluginWithRouteRequest) GetRouteID() string {
+	if c == nil {
 		return ""
 	}
-	return o.RouteID
+	return c.RouteID
 }
 
-func (o *CreatePluginWithRouteRequest) GetPluginWithoutParents() components.PluginWithoutParents {
-	if o == nil {
+func (c *CreatePluginWithRouteRequest) GetPluginWithoutParents() components.PluginWithoutParents {
+	if c == nil {
 		return components.PluginWithoutParents{}
 	}
-	return o.PluginWithoutParents
+	return c.PluginWithoutParents
 }
 
 type CreatePluginWithRouteResponse struct {
@@ -48,30 +48,30 @@ type CreatePluginWithRouteResponse struct {
 	Plugin *components.Plugin
 }
 
-func (o *CreatePluginWithRouteResponse) GetContentType() string {
-	if o == nil {
+func (c *CreatePluginWithRouteResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreatePluginWithRouteResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreatePluginWithRouteResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreatePluginWithRouteResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreatePluginWithRouteResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreatePluginWithRouteResponse) GetPlugin() *components.Plugin {
-	if o == nil {
+func (c *CreatePluginWithRouteResponse) GetPlugin() *components.Plugin {
+	if c == nil {
 		return nil
 	}
-	return o.Plugin
+	return c.Plugin
 }

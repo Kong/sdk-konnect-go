@@ -15,37 +15,37 @@ type NotificationFilterParameters struct {
 	Status *LegacyStringFieldFilter `queryParam:"name=status"`
 }
 
-func (o *NotificationFilterParameters) GetTitle() *LegacyStringFieldFilter {
-	if o == nil {
+func (n *NotificationFilterParameters) GetTitle() *LegacyStringFieldFilter {
+	if n == nil {
 		return nil
 	}
-	return o.Title
+	return n.Title
 }
 
-func (o *NotificationFilterParameters) GetDescription() *LegacyStringFieldFilter {
-	if o == nil {
+func (n *NotificationFilterParameters) GetDescription() *LegacyStringFieldFilter {
+	if n == nil {
 		return nil
 	}
-	return o.Description
+	return n.Description
 }
 
-func (o *NotificationFilterParameters) GetNamespace() *LegacyStringFieldFilter {
-	if o == nil {
+func (n *NotificationFilterParameters) GetNamespace() *LegacyStringFieldFilter {
+	if n == nil {
 		return nil
 	}
-	return o.Namespace
+	return n.Namespace
 }
 
-func (o *NotificationFilterParameters) GetRegion() *LegacyStringFieldFilter {
-	if o == nil {
+func (n *NotificationFilterParameters) GetRegion() *LegacyStringFieldFilter {
+	if n == nil {
 		return nil
 	}
-	return o.Region
+	return n.Region
 }
 
-func (o *NotificationFilterParameters) GetStatus() *LegacyStringFieldFilter {
-	if o == nil {
+func (n *NotificationFilterParameters) GetStatus() *LegacyStringFieldFilter {
+	if n == nil {
 		return nil
 	}
-	return o.Status
+	return n.Status
 }

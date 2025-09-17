@@ -18,18 +18,18 @@ type GetIdpTeamMappingsRequest struct {
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 }
 
-func (o *GetIdpTeamMappingsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (g *GetIdpTeamMappingsRequest) GetPageSize() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.PageSize
+	return g.PageSize
 }
 
-func (o *GetIdpTeamMappingsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (g *GetIdpTeamMappingsRequest) GetPageNumber() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.PageNumber
+	return g.PageNumber
 }
 
 type GetIdpTeamMappingsResponse struct {
@@ -43,30 +43,30 @@ type GetIdpTeamMappingsResponse struct {
 	TeamMappingResponse *components.TeamMappingResponse
 }
 
-func (o *GetIdpTeamMappingsResponse) GetContentType() string {
-	if o == nil {
+func (g *GetIdpTeamMappingsResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetIdpTeamMappingsResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetIdpTeamMappingsResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetIdpTeamMappingsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetIdpTeamMappingsResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetIdpTeamMappingsResponse) GetTeamMappingResponse() *components.TeamMappingResponse {
-	if o == nil {
+func (g *GetIdpTeamMappingsResponse) GetTeamMappingResponse() *components.TeamMappingResponse {
+	if g == nil {
 		return nil
 	}
-	return o.TeamMappingResponse
+	return g.TeamMappingResponse
 }

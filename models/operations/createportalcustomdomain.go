@@ -14,18 +14,18 @@ type CreatePortalCustomDomainRequest struct {
 	CreatePortalCustomDomainRequest components.CreatePortalCustomDomainRequest `request:"mediaType=application/json"`
 }
 
-func (o *CreatePortalCustomDomainRequest) GetPortalID() string {
-	if o == nil {
+func (c *CreatePortalCustomDomainRequest) GetPortalID() string {
+	if c == nil {
 		return ""
 	}
-	return o.PortalID
+	return c.PortalID
 }
 
-func (o *CreatePortalCustomDomainRequest) GetCreatePortalCustomDomainRequest() components.CreatePortalCustomDomainRequest {
-	if o == nil {
+func (c *CreatePortalCustomDomainRequest) GetCreatePortalCustomDomainRequest() components.CreatePortalCustomDomainRequest {
+	if c == nil {
 		return components.CreatePortalCustomDomainRequest{}
 	}
-	return o.CreatePortalCustomDomainRequest
+	return c.CreatePortalCustomDomainRequest
 }
 
 type CreatePortalCustomDomainResponse struct {
@@ -39,30 +39,30 @@ type CreatePortalCustomDomainResponse struct {
 	PortalCustomDomain *components.PortalCustomDomain
 }
 
-func (o *CreatePortalCustomDomainResponse) GetContentType() string {
-	if o == nil {
+func (c *CreatePortalCustomDomainResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreatePortalCustomDomainResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreatePortalCustomDomainResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreatePortalCustomDomainResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreatePortalCustomDomainResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreatePortalCustomDomainResponse) GetPortalCustomDomain() *components.PortalCustomDomain {
-	if o == nil {
+func (c *CreatePortalCustomDomainResponse) GetPortalCustomDomain() *components.PortalCustomDomain {
+	if c == nil {
 		return nil
 	}
-	return o.PortalCustomDomain
+	return c.PortalCustomDomain
 }

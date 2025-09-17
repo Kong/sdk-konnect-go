@@ -18,32 +18,32 @@ type UpsertDegraphqlRouteWithServiceRequest struct {
 	DegraphqlRouteWithoutParents components.DegraphqlRouteWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *UpsertDegraphqlRouteWithServiceRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpsertDegraphqlRouteWithServiceRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpsertDegraphqlRouteWithServiceRequest) GetServiceID() string {
-	if o == nil {
+func (u *UpsertDegraphqlRouteWithServiceRequest) GetServiceID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ServiceID
+	return u.ServiceID
 }
 
-func (o *UpsertDegraphqlRouteWithServiceRequest) GetDegraphqlRouteID() string {
-	if o == nil {
+func (u *UpsertDegraphqlRouteWithServiceRequest) GetDegraphqlRouteID() string {
+	if u == nil {
 		return ""
 	}
-	return o.DegraphqlRouteID
+	return u.DegraphqlRouteID
 }
 
-func (o *UpsertDegraphqlRouteWithServiceRequest) GetDegraphqlRouteWithoutParents() components.DegraphqlRouteWithoutParents {
-	if o == nil {
+func (u *UpsertDegraphqlRouteWithServiceRequest) GetDegraphqlRouteWithoutParents() components.DegraphqlRouteWithoutParents {
+	if u == nil {
 		return components.DegraphqlRouteWithoutParents{}
 	}
-	return o.DegraphqlRouteWithoutParents
+	return u.DegraphqlRouteWithoutParents
 }
 
 type UpsertDegraphqlRouteWithServiceResponse struct {
@@ -57,30 +57,30 @@ type UpsertDegraphqlRouteWithServiceResponse struct {
 	DegraphqlRoute *components.DegraphqlRoute
 }
 
-func (o *UpsertDegraphqlRouteWithServiceResponse) GetContentType() string {
-	if o == nil {
+func (u *UpsertDegraphqlRouteWithServiceResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpsertDegraphqlRouteWithServiceResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpsertDegraphqlRouteWithServiceResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpsertDegraphqlRouteWithServiceResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpsertDegraphqlRouteWithServiceResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpsertDegraphqlRouteWithServiceResponse) GetDegraphqlRoute() *components.DegraphqlRoute {
-	if o == nil {
+func (u *UpsertDegraphqlRouteWithServiceResponse) GetDegraphqlRoute() *components.DegraphqlRoute {
+	if u == nil {
 		return nil
 	}
-	return o.DegraphqlRoute
+	return u.DegraphqlRoute
 }

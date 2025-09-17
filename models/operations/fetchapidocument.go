@@ -14,18 +14,18 @@ type FetchAPIDocumentRequest struct {
 	DocumentID string `pathParam:"style=simple,explode=false,name=documentId"`
 }
 
-func (o *FetchAPIDocumentRequest) GetAPIID() string {
-	if o == nil {
+func (f *FetchAPIDocumentRequest) GetAPIID() string {
+	if f == nil {
 		return ""
 	}
-	return o.APIID
+	return f.APIID
 }
 
-func (o *FetchAPIDocumentRequest) GetDocumentID() string {
-	if o == nil {
+func (f *FetchAPIDocumentRequest) GetDocumentID() string {
+	if f == nil {
 		return ""
 	}
-	return o.DocumentID
+	return f.DocumentID
 }
 
 type FetchAPIDocumentResponse struct {
@@ -39,30 +39,30 @@ type FetchAPIDocumentResponse struct {
 	APIDocumentResponse *components.APIDocumentResponse
 }
 
-func (o *FetchAPIDocumentResponse) GetContentType() string {
-	if o == nil {
+func (f *FetchAPIDocumentResponse) GetContentType() string {
+	if f == nil {
 		return ""
 	}
-	return o.ContentType
+	return f.ContentType
 }
 
-func (o *FetchAPIDocumentResponse) GetStatusCode() int {
-	if o == nil {
+func (f *FetchAPIDocumentResponse) GetStatusCode() int {
+	if f == nil {
 		return 0
 	}
-	return o.StatusCode
+	return f.StatusCode
 }
 
-func (o *FetchAPIDocumentResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (f *FetchAPIDocumentResponse) GetRawResponse() *http.Response {
+	if f == nil {
 		return nil
 	}
-	return o.RawResponse
+	return f.RawResponse
 }
 
-func (o *FetchAPIDocumentResponse) GetAPIDocumentResponse() *components.APIDocumentResponse {
-	if o == nil {
+func (f *FetchAPIDocumentResponse) GetAPIDocumentResponse() *components.APIDocumentResponse {
+	if f == nil {
 		return nil
 	}
-	return o.APIDocumentResponse
+	return f.APIDocumentResponse
 }

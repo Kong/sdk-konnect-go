@@ -30,32 +30,32 @@ func (l *ListHmacAuthRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListHmacAuthRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListHmacAuthRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListHmacAuthRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListHmacAuthRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListHmacAuthRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListHmacAuthRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListHmacAuthRequest) GetTags() *string {
-	if o == nil {
+func (l *ListHmacAuthRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListHmacAuthResponseBody - A successful response listing HMAC-auth credentials
@@ -67,25 +67,25 @@ type ListHmacAuthResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListHmacAuthResponseBody) GetData() []components.HMACAuth {
-	if o == nil {
+func (l *ListHmacAuthResponseBody) GetData() []components.HMACAuth {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListHmacAuthResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListHmacAuthResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListHmacAuthResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListHmacAuthResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListHmacAuthResponse struct {
@@ -99,30 +99,30 @@ type ListHmacAuthResponse struct {
 	Object *ListHmacAuthResponseBody
 }
 
-func (o *ListHmacAuthResponse) GetContentType() string {
-	if o == nil {
+func (l *ListHmacAuthResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListHmacAuthResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListHmacAuthResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListHmacAuthResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListHmacAuthResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListHmacAuthResponse) GetObject() *ListHmacAuthResponseBody {
-	if o == nil {
+func (l *ListHmacAuthResponse) GetObject() *ListHmacAuthResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

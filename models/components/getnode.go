@@ -21,11 +21,11 @@ func (g *GetNodeCompatibilityStatus) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GetNodeCompatibilityStatus) GetState() *string {
-	if o == nil {
+func (g *GetNodeCompatibilityStatus) GetState() *string {
+	if g == nil {
 		return nil
 	}
-	return o.State
+	return g.State
 }
 
 type GetNodeItem struct {
@@ -51,67 +51,67 @@ func (g *GetNodeItem) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GetNodeItem) GetID() *string {
-	if o == nil {
+func (g *GetNodeItem) GetID() *string {
+	if g == nil {
 		return nil
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetNodeItem) GetVersion() *string {
-	if o == nil {
+func (g *GetNodeItem) GetVersion() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Version
+	return g.Version
 }
 
-func (o *GetNodeItem) GetHostname() *string {
-	if o == nil {
+func (g *GetNodeItem) GetHostname() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Hostname
+	return g.Hostname
 }
 
-func (o *GetNodeItem) GetLastPing() *int64 {
-	if o == nil {
+func (g *GetNodeItem) GetLastPing() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.LastPing
+	return g.LastPing
 }
 
-func (o *GetNodeItem) GetType() *string {
-	if o == nil {
+func (g *GetNodeItem) GetType() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Type
+	return g.Type
 }
 
-func (o *GetNodeItem) GetCreatedAt() *int64 {
-	if o == nil {
+func (g *GetNodeItem) GetCreatedAt() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return g.CreatedAt
 }
 
-func (o *GetNodeItem) GetUpdatedAt() *int64 {
-	if o == nil {
+func (g *GetNodeItem) GetUpdatedAt() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return g.UpdatedAt
 }
 
-func (o *GetNodeItem) GetConfigHash() *string {
-	if o == nil {
+func (g *GetNodeItem) GetConfigHash() *string {
+	if g == nil {
 		return nil
 	}
-	return o.ConfigHash
+	return g.ConfigHash
 }
 
-func (o *GetNodeItem) GetCompatibilityStatus() *GetNodeCompatibilityStatus {
-	if o == nil {
+func (g *GetNodeItem) GetCompatibilityStatus() *GetNodeCompatibilityStatus {
+	if g == nil {
 		return nil
 	}
-	return o.CompatibilityStatus
+	return g.CompatibilityStatus
 }
 
 // GetNode - Example response
@@ -119,9 +119,9 @@ type GetNode struct {
 	Item *GetNodeItem `json:"item,omitempty"`
 }
 
-func (o *GetNode) GetItem() *GetNodeItem {
-	if o == nil {
+func (g *GetNode) GetItem() *GetNodeItem {
+	if g == nil {
 		return nil
 	}
-	return o.Item
+	return g.Item
 }

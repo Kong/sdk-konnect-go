@@ -15,11 +15,11 @@ type DeleteCustomDomainRequest struct {
 	CustomDomainID string `pathParam:"style=simple,explode=false,name=customDomainId"`
 }
 
-func (o *DeleteCustomDomainRequest) GetCustomDomainID() string {
-	if o == nil {
+func (d *DeleteCustomDomainRequest) GetCustomDomainID() string {
+	if d == nil {
 		return ""
 	}
-	return o.CustomDomainID
+	return d.CustomDomainID
 }
 
 type DeleteCustomDomainResponse struct {
@@ -31,23 +31,23 @@ type DeleteCustomDomainResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteCustomDomainResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteCustomDomainResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteCustomDomainResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteCustomDomainResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteCustomDomainResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteCustomDomainResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

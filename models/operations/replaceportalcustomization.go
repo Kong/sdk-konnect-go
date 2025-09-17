@@ -13,18 +13,18 @@ type ReplacePortalCustomizationRequest struct {
 	PortalCustomization *components.PortalCustomization `request:"mediaType=application/json"`
 }
 
-func (o *ReplacePortalCustomizationRequest) GetPortalID() string {
-	if o == nil {
+func (r *ReplacePortalCustomizationRequest) GetPortalID() string {
+	if r == nil {
 		return ""
 	}
-	return o.PortalID
+	return r.PortalID
 }
 
-func (o *ReplacePortalCustomizationRequest) GetPortalCustomization() *components.PortalCustomization {
-	if o == nil {
+func (r *ReplacePortalCustomizationRequest) GetPortalCustomization() *components.PortalCustomization {
+	if r == nil {
 		return nil
 	}
-	return o.PortalCustomization
+	return r.PortalCustomization
 }
 
 type ReplacePortalCustomizationResponse struct {
@@ -38,30 +38,30 @@ type ReplacePortalCustomizationResponse struct {
 	PortalCustomization *components.PortalCustomization
 }
 
-func (o *ReplacePortalCustomizationResponse) GetContentType() string {
-	if o == nil {
+func (r *ReplacePortalCustomizationResponse) GetContentType() string {
+	if r == nil {
 		return ""
 	}
-	return o.ContentType
+	return r.ContentType
 }
 
-func (o *ReplacePortalCustomizationResponse) GetStatusCode() int {
-	if o == nil {
+func (r *ReplacePortalCustomizationResponse) GetStatusCode() int {
+	if r == nil {
 		return 0
 	}
-	return o.StatusCode
+	return r.StatusCode
 }
 
-func (o *ReplacePortalCustomizationResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (r *ReplacePortalCustomizationResponse) GetRawResponse() *http.Response {
+	if r == nil {
 		return nil
 	}
-	return o.RawResponse
+	return r.RawResponse
 }
 
-func (o *ReplacePortalCustomizationResponse) GetPortalCustomization() *components.PortalCustomization {
-	if o == nil {
+func (r *ReplacePortalCustomizationResponse) GetPortalCustomization() *components.PortalCustomization {
+	if r == nil {
 		return nil
 	}
-	return o.PortalCustomization
+	return r.PortalCustomization
 }

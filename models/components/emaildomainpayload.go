@@ -6,9 +6,9 @@ type EmailDomainPayload struct {
 	Domain string `json:"domain"`
 }
 
-func (o *EmailDomainPayload) GetDomain() string {
-	if o == nil {
+func (e *EmailDomainPayload) GetDomain() string {
+	if e == nil {
 		return ""
 	}
-	return o.Domain
+	return e.Domain
 }

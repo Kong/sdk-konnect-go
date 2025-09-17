@@ -30,32 +30,32 @@ func (l *ListACLRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListACLRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListACLRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListACLRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListACLRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListACLRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListACLRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListACLRequest) GetTags() *string {
-	if o == nil {
+func (l *ListACLRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListACLResponseBody - A successful response listing ACLs
@@ -67,25 +67,25 @@ type ListACLResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListACLResponseBody) GetData() []components.ACL {
-	if o == nil {
+func (l *ListACLResponseBody) GetData() []components.ACL {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListACLResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListACLResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListACLResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListACLResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListACLResponse struct {
@@ -99,30 +99,30 @@ type ListACLResponse struct {
 	Object *ListACLResponseBody
 }
 
-func (o *ListACLResponse) GetContentType() string {
-	if o == nil {
+func (l *ListACLResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListACLResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListACLResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListACLResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListACLResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListACLResponse) GetObject() *ListACLResponseBody {
-	if o == nil {
+func (l *ListACLResponse) GetObject() *ListACLResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

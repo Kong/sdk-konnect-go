@@ -18,32 +18,32 @@ type UpsertRouteWithServiceRequest struct {
 	RouteWithoutParents components.RouteWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *UpsertRouteWithServiceRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpsertRouteWithServiceRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpsertRouteWithServiceRequest) GetServiceID() string {
-	if o == nil {
+func (u *UpsertRouteWithServiceRequest) GetServiceID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ServiceID
+	return u.ServiceID
 }
 
-func (o *UpsertRouteWithServiceRequest) GetRouteID() string {
-	if o == nil {
+func (u *UpsertRouteWithServiceRequest) GetRouteID() string {
+	if u == nil {
 		return ""
 	}
-	return o.RouteID
+	return u.RouteID
 }
 
-func (o *UpsertRouteWithServiceRequest) GetRouteWithoutParents() components.RouteWithoutParents {
-	if o == nil {
+func (u *UpsertRouteWithServiceRequest) GetRouteWithoutParents() components.RouteWithoutParents {
+	if u == nil {
 		return components.RouteWithoutParents{}
 	}
-	return o.RouteWithoutParents
+	return u.RouteWithoutParents
 }
 
 type UpsertRouteWithServiceResponse struct {
@@ -57,30 +57,30 @@ type UpsertRouteWithServiceResponse struct {
 	Route *components.Route
 }
 
-func (o *UpsertRouteWithServiceResponse) GetContentType() string {
-	if o == nil {
+func (u *UpsertRouteWithServiceResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpsertRouteWithServiceResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpsertRouteWithServiceResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpsertRouteWithServiceResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpsertRouteWithServiceResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpsertRouteWithServiceResponse) GetRoute() *components.Route {
-	if o == nil {
+func (u *UpsertRouteWithServiceResponse) GetRoute() *components.Route {
+	if u == nil {
 		return nil
 	}
-	return o.Route
+	return u.Route
 }

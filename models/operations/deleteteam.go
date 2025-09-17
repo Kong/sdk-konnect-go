@@ -15,11 +15,11 @@ type DeleteTeamRequest struct {
 	TeamID string `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
-func (o *DeleteTeamRequest) GetTeamID() string {
-	if o == nil {
+func (d *DeleteTeamRequest) GetTeamID() string {
+	if d == nil {
 		return ""
 	}
-	return o.TeamID
+	return d.TeamID
 }
 
 type DeleteTeamResponse struct {
@@ -31,23 +31,23 @@ type DeleteTeamResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteTeamResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteTeamResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteTeamResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteTeamResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteTeamResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteTeamResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

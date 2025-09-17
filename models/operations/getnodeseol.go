@@ -16,25 +16,25 @@ type GetNodesEolRequest struct {
 	PageAfter *string `queryParam:"style=form,explode=true,name=page[after]"`
 }
 
-func (o *GetNodesEolRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetNodesEolRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
-func (o *GetNodesEolRequest) GetPageSize() *int64 {
-	if o == nil {
+func (g *GetNodesEolRequest) GetPageSize() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.PageSize
+	return g.PageSize
 }
 
-func (o *GetNodesEolRequest) GetPageAfter() *string {
-	if o == nil {
+func (g *GetNodesEolRequest) GetPageAfter() *string {
+	if g == nil {
 		return nil
 	}
-	return o.PageAfter
+	return g.PageAfter
 }
 
 type GetNodesEolResponse struct {
@@ -48,30 +48,30 @@ type GetNodesEolResponse struct {
 	ListNodesEol *components.ListNodesEol
 }
 
-func (o *GetNodesEolResponse) GetContentType() string {
-	if o == nil {
+func (g *GetNodesEolResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetNodesEolResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetNodesEolResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetNodesEolResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetNodesEolResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetNodesEolResponse) GetListNodesEol() *components.ListNodesEol {
-	if o == nil {
+func (g *GetNodesEolResponse) GetListNodesEol() *components.ListNodesEol {
+	if g == nil {
 		return nil
 	}
-	return o.ListNodesEol
+	return g.ListNodesEol
 }

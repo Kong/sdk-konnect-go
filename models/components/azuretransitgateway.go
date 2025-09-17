@@ -27,23 +27,23 @@ func (a *AzureTransitGateway) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *AzureTransitGateway) GetName() string {
-	if o == nil {
+func (a *AzureTransitGateway) GetName() string {
+	if a == nil {
 		return ""
 	}
-	return o.Name
+	return a.Name
 }
 
-func (o *AzureTransitGateway) GetDNSConfig() []TransitGatewayDNSConfig {
-	if o == nil {
+func (a *AzureTransitGateway) GetDNSConfig() []TransitGatewayDNSConfig {
+	if a == nil {
 		return nil
 	}
-	return o.DNSConfig
+	return a.DNSConfig
 }
 
-func (o *AzureTransitGateway) GetTransitGatewayAttachmentConfig() AzureVNETPeeringAttachmentConfig {
-	if o == nil {
+func (a *AzureTransitGateway) GetTransitGatewayAttachmentConfig() AzureVNETPeeringAttachmentConfig {
+	if a == nil {
 		return AzureVNETPeeringAttachmentConfig{}
 	}
-	return o.TransitGatewayAttachmentConfig
+	return a.TransitGatewayAttachmentConfig
 }

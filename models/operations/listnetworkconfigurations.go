@@ -20,25 +20,25 @@ type ListNetworkConfigurationsRequest struct {
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 }
 
-func (o *ListNetworkConfigurationsRequest) GetNetworkID() string {
-	if o == nil {
+func (l *ListNetworkConfigurationsRequest) GetNetworkID() string {
+	if l == nil {
 		return ""
 	}
-	return o.NetworkID
+	return l.NetworkID
 }
 
-func (o *ListNetworkConfigurationsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListNetworkConfigurationsRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListNetworkConfigurationsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListNetworkConfigurationsRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
 type ListNetworkConfigurationsResponse struct {
@@ -52,30 +52,30 @@ type ListNetworkConfigurationsResponse struct {
 	ListNetworkConfigurationReferencesResponse *components.ListNetworkConfigurationReferencesResponse
 }
 
-func (o *ListNetworkConfigurationsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListNetworkConfigurationsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListNetworkConfigurationsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListNetworkConfigurationsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListNetworkConfigurationsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListNetworkConfigurationsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListNetworkConfigurationsResponse) GetListNetworkConfigurationReferencesResponse() *components.ListNetworkConfigurationReferencesResponse {
-	if o == nil {
+func (l *ListNetworkConfigurationsResponse) GetListNetworkConfigurationReferencesResponse() *components.ListNetworkConfigurationReferencesResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListNetworkConfigurationReferencesResponse
+	return l.ListNetworkConfigurationReferencesResponse
 }

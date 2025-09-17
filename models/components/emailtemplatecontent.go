@@ -24,30 +24,30 @@ func (e *EmailTemplateContent) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EmailTemplateContent) GetSubject() *string {
-	if o == nil {
+func (e *EmailTemplateContent) GetSubject() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Subject
+	return e.Subject
 }
 
-func (o *EmailTemplateContent) GetTitle() *string {
-	if o == nil {
+func (e *EmailTemplateContent) GetTitle() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Title
+	return e.Title
 }
 
-func (o *EmailTemplateContent) GetBody() *string {
-	if o == nil {
+func (e *EmailTemplateContent) GetBody() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Body
+	return e.Body
 }
 
-func (o *EmailTemplateContent) GetButtonLabel() *string {
-	if o == nil {
+func (e *EmailTemplateContent) GetButtonLabel() *string {
+	if e == nil {
 		return nil
 	}
-	return o.ButtonLabel
+	return e.ButtonLabel
 }

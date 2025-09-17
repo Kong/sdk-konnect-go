@@ -17,18 +17,18 @@ type DeleteTransitGatewayRequest struct {
 	TransitGatewayID string `pathParam:"style=simple,explode=false,name=transitGatewayId"`
 }
 
-func (o *DeleteTransitGatewayRequest) GetNetworkID() string {
-	if o == nil {
+func (d *DeleteTransitGatewayRequest) GetNetworkID() string {
+	if d == nil {
 		return ""
 	}
-	return o.NetworkID
+	return d.NetworkID
 }
 
-func (o *DeleteTransitGatewayRequest) GetTransitGatewayID() string {
-	if o == nil {
+func (d *DeleteTransitGatewayRequest) GetTransitGatewayID() string {
+	if d == nil {
 		return ""
 	}
-	return o.TransitGatewayID
+	return d.TransitGatewayID
 }
 
 type DeleteTransitGatewayResponse struct {
@@ -40,23 +40,23 @@ type DeleteTransitGatewayResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteTransitGatewayResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteTransitGatewayResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteTransitGatewayResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteTransitGatewayResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteTransitGatewayResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteTransitGatewayResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

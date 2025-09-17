@@ -22,37 +22,37 @@ type ProviderRegion struct {
 	ReservedCidrBlocks []string `json:"reserved_cidr_blocks"`
 }
 
-func (o *ProviderRegion) GetRegion() string {
-	if o == nil {
+func (p *ProviderRegion) GetRegion() string {
+	if p == nil {
 		return ""
 	}
-	return o.Region
+	return p.Region
 }
 
-func (o *ProviderRegion) GetName() string {
-	if o == nil {
+func (p *ProviderRegion) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *ProviderRegion) GetAvailabilityZones() []string {
-	if o == nil {
+func (p *ProviderRegion) GetAvailabilityZones() []string {
+	if p == nil {
 		return []string{}
 	}
-	return o.AvailabilityZones
+	return p.AvailabilityZones
 }
 
-func (o *ProviderRegion) GetCidrBlocks() []string {
-	if o == nil {
+func (p *ProviderRegion) GetCidrBlocks() []string {
+	if p == nil {
 		return []string{}
 	}
-	return o.CidrBlocks
+	return p.CidrBlocks
 }
 
-func (o *ProviderRegion) GetReservedCidrBlocks() []string {
-	if o == nil {
+func (p *ProviderRegion) GetReservedCidrBlocks() []string {
+	if p == nil {
 		return []string{}
 	}
-	return o.ReservedCidrBlocks
+	return p.ReservedCidrBlocks
 }

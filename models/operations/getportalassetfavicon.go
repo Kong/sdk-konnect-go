@@ -12,11 +12,11 @@ type GetPortalAssetFaviconRequest struct {
 	PortalID string `pathParam:"style=simple,explode=false,name=portalId"`
 }
 
-func (o *GetPortalAssetFaviconRequest) GetPortalID() string {
-	if o == nil {
+func (g *GetPortalAssetFaviconRequest) GetPortalID() string {
+	if g == nil {
 		return ""
 	}
-	return o.PortalID
+	return g.PortalID
 }
 
 type GetPortalAssetFaviconResponse struct {
@@ -30,30 +30,30 @@ type GetPortalAssetFaviconResponse struct {
 	PortalAssetResponse *components.PortalAssetResponse
 }
 
-func (o *GetPortalAssetFaviconResponse) GetContentType() string {
-	if o == nil {
+func (g *GetPortalAssetFaviconResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetPortalAssetFaviconResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetPortalAssetFaviconResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetPortalAssetFaviconResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetPortalAssetFaviconResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetPortalAssetFaviconResponse) GetPortalAssetResponse() *components.PortalAssetResponse {
-	if o == nil {
+func (g *GetPortalAssetFaviconResponse) GetPortalAssetResponse() *components.PortalAssetResponse {
+	if g == nil {
 		return nil
 	}
-	return o.PortalAssetResponse
+	return g.PortalAssetResponse
 }

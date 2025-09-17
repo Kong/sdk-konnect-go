@@ -14,18 +14,18 @@ type FetchAPIVersionRequest struct {
 	VersionID string `pathParam:"style=simple,explode=false,name=versionId"`
 }
 
-func (o *FetchAPIVersionRequest) GetAPIID() string {
-	if o == nil {
+func (f *FetchAPIVersionRequest) GetAPIID() string {
+	if f == nil {
 		return ""
 	}
-	return o.APIID
+	return f.APIID
 }
 
-func (o *FetchAPIVersionRequest) GetVersionID() string {
-	if o == nil {
+func (f *FetchAPIVersionRequest) GetVersionID() string {
+	if f == nil {
 		return ""
 	}
-	return o.VersionID
+	return f.VersionID
 }
 
 type FetchAPIVersionResponse struct {
@@ -39,30 +39,30 @@ type FetchAPIVersionResponse struct {
 	APIVersionResponse *components.APIVersionResponse
 }
 
-func (o *FetchAPIVersionResponse) GetContentType() string {
-	if o == nil {
+func (f *FetchAPIVersionResponse) GetContentType() string {
+	if f == nil {
 		return ""
 	}
-	return o.ContentType
+	return f.ContentType
 }
 
-func (o *FetchAPIVersionResponse) GetStatusCode() int {
-	if o == nil {
+func (f *FetchAPIVersionResponse) GetStatusCode() int {
+	if f == nil {
 		return 0
 	}
-	return o.StatusCode
+	return f.StatusCode
 }
 
-func (o *FetchAPIVersionResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (f *FetchAPIVersionResponse) GetRawResponse() *http.Response {
+	if f == nil {
 		return nil
 	}
-	return o.RawResponse
+	return f.RawResponse
 }
 
-func (o *FetchAPIVersionResponse) GetAPIVersionResponse() *components.APIVersionResponse {
-	if o == nil {
+func (f *FetchAPIVersionResponse) GetAPIVersionResponse() *components.APIVersionResponse {
+	if f == nil {
 		return nil
 	}
-	return o.APIVersionResponse
+	return f.APIVersionResponse
 }

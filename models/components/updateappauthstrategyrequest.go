@@ -103,37 +103,37 @@ func (u *UpdateAppAuthStrategyRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdateAppAuthStrategyRequest) GetName() *string {
-	if o == nil {
+func (u *UpdateAppAuthStrategyRequest) GetName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UpdateAppAuthStrategyRequest) GetDisplayName() *string {
-	if o == nil {
+func (u *UpdateAppAuthStrategyRequest) GetDisplayName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.DisplayName
+	return u.DisplayName
 }
 
-func (o *UpdateAppAuthStrategyRequest) GetLabels() map[string]*string {
-	if o == nil {
+func (u *UpdateAppAuthStrategyRequest) GetLabels() map[string]*string {
+	if u == nil {
 		return nil
 	}
-	return o.Labels
+	return u.Labels
 }
 
-func (o *UpdateAppAuthStrategyRequest) GetDcrProviderID() *string {
-	if o == nil {
+func (u *UpdateAppAuthStrategyRequest) GetDcrProviderID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.DcrProviderID
+	return u.DcrProviderID
 }
 
-func (o *UpdateAppAuthStrategyRequest) GetConfigs() *Configs {
-	if o == nil {
+func (u *UpdateAppAuthStrategyRequest) GetConfigs() *Configs {
+	if u == nil {
 		return nil
 	}
-	return o.Configs
+	return u.Configs
 }

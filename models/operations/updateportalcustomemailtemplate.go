@@ -16,25 +16,25 @@ type UpdatePortalCustomEmailTemplateRequest struct {
 	PatchCustomPortalEmailTemplatePayload components.PatchCustomPortalEmailTemplatePayload `request:"mediaType=application/json"`
 }
 
-func (o *UpdatePortalCustomEmailTemplateRequest) GetPortalID() string {
-	if o == nil {
+func (u *UpdatePortalCustomEmailTemplateRequest) GetPortalID() string {
+	if u == nil {
 		return ""
 	}
-	return o.PortalID
+	return u.PortalID
 }
 
-func (o *UpdatePortalCustomEmailTemplateRequest) GetTemplateName() components.EmailTemplateName {
-	if o == nil {
+func (u *UpdatePortalCustomEmailTemplateRequest) GetTemplateName() components.EmailTemplateName {
+	if u == nil {
 		return components.EmailTemplateName("")
 	}
-	return o.TemplateName
+	return u.TemplateName
 }
 
-func (o *UpdatePortalCustomEmailTemplateRequest) GetPatchCustomPortalEmailTemplatePayload() components.PatchCustomPortalEmailTemplatePayload {
-	if o == nil {
+func (u *UpdatePortalCustomEmailTemplateRequest) GetPatchCustomPortalEmailTemplatePayload() components.PatchCustomPortalEmailTemplatePayload {
+	if u == nil {
 		return components.PatchCustomPortalEmailTemplatePayload{}
 	}
-	return o.PatchCustomPortalEmailTemplatePayload
+	return u.PatchCustomPortalEmailTemplatePayload
 }
 
 type UpdatePortalCustomEmailTemplateResponse struct {
@@ -48,30 +48,30 @@ type UpdatePortalCustomEmailTemplateResponse struct {
 	EmailTemplate *components.EmailTemplate
 }
 
-func (o *UpdatePortalCustomEmailTemplateResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdatePortalCustomEmailTemplateResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdatePortalCustomEmailTemplateResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdatePortalCustomEmailTemplateResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdatePortalCustomEmailTemplateResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdatePortalCustomEmailTemplateResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdatePortalCustomEmailTemplateResponse) GetEmailTemplate() *components.EmailTemplate {
-	if o == nil {
+func (u *UpdatePortalCustomEmailTemplateResponse) GetEmailTemplate() *components.EmailTemplate {
+	if u == nil {
 		return nil
 	}
-	return o.EmailTemplate
+	return u.EmailTemplate
 }

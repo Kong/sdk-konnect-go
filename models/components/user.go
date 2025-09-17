@@ -38,58 +38,58 @@ func (u *User) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *User) GetID() *string {
-	if o == nil {
+func (u *User) GetID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *User) GetEmail() *string {
-	if o == nil {
+func (u *User) GetEmail() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Email
+	return u.Email
 }
 
-func (o *User) GetFullName() *string {
-	if o == nil {
+func (u *User) GetFullName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.FullName
+	return u.FullName
 }
 
-func (o *User) GetPreferredName() *string {
-	if o == nil {
+func (u *User) GetPreferredName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.PreferredName
+	return u.PreferredName
 }
 
-func (o *User) GetActive() *bool {
-	if o == nil {
+func (u *User) GetActive() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Active
+	return u.Active
 }
 
-func (o *User) GetInferredRegion() *string {
-	if o == nil {
+func (u *User) GetInferredRegion() *string {
+	if u == nil {
 		return nil
 	}
-	return o.InferredRegion
+	return u.InferredRegion
 }
 
-func (o *User) GetCreatedAt() *time.Time {
-	if o == nil {
+func (u *User) GetCreatedAt() *time.Time {
+	if u == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return u.CreatedAt
 }
 
-func (o *User) GetUpdatedAt() *time.Time {
-	if o == nil {
+func (u *User) GetUpdatedAt() *time.Time {
+	if u == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return u.UpdatedAt
 }

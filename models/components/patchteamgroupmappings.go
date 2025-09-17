@@ -22,18 +22,18 @@ func (d *Data) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Data) GetTeamID() *string {
-	if o == nil {
+func (d *Data) GetTeamID() *string {
+	if d == nil {
 		return nil
 	}
-	return o.TeamID
+	return d.TeamID
 }
 
-func (o *Data) GetGroups() []string {
-	if o == nil {
+func (d *Data) GetGroups() []string {
+	if d == nil {
 		return nil
 	}
-	return o.Groups
+	return d.Groups
 }
 
 // PatchTeamGroupMappings - The request schema for a partial update of mappings from Konnect Teams to IdP Groups.
@@ -42,9 +42,9 @@ type PatchTeamGroupMappings struct {
 	Data []Data `json:"data,omitempty"`
 }
 
-func (o *PatchTeamGroupMappings) GetData() []Data {
-	if o == nil {
+func (p *PatchTeamGroupMappings) GetData() []Data {
+	if p == nil {
 		return nil
 	}
-	return o.Data
+	return p.Data
 }

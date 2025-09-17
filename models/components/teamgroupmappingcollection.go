@@ -9,16 +9,16 @@ type TeamGroupMappingCollection struct {
 	Data []TeamGroupMapping `json:"data,omitempty"`
 }
 
-func (o *TeamGroupMappingCollection) GetMeta() *PaginatedMeta {
-	if o == nil {
+func (t *TeamGroupMappingCollection) GetMeta() *PaginatedMeta {
+	if t == nil {
 		return nil
 	}
-	return o.Meta
+	return t.Meta
 }
 
-func (o *TeamGroupMappingCollection) GetData() []TeamGroupMapping {
-	if o == nil {
+func (t *TeamGroupMappingCollection) GetData() []TeamGroupMapping {
+	if t == nil {
 		return nil
 	}
-	return o.Data
+	return t.Data
 }

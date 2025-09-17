@@ -7,9 +7,9 @@ type GetPartialSchemaResponse struct {
 	Fields []map[string]any `json:"fields,omitempty"`
 }
 
-func (o *GetPartialSchemaResponse) GetFields() []map[string]any {
-	if o == nil {
+func (g *GetPartialSchemaResponse) GetFields() []map[string]any {
+	if g == nil {
 		return nil
 	}
-	return o.Fields
+	return g.Fields
 }

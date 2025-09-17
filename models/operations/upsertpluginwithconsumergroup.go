@@ -18,32 +18,32 @@ type UpsertPluginWithConsumerGroupRequest struct {
 	PluginWithoutParents components.PluginWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *UpsertPluginWithConsumerGroupRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpsertPluginWithConsumerGroupRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpsertPluginWithConsumerGroupRequest) GetConsumerGroupID() string {
-	if o == nil {
+func (u *UpsertPluginWithConsumerGroupRequest) GetConsumerGroupID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ConsumerGroupID
+	return u.ConsumerGroupID
 }
 
-func (o *UpsertPluginWithConsumerGroupRequest) GetPluginID() string {
-	if o == nil {
+func (u *UpsertPluginWithConsumerGroupRequest) GetPluginID() string {
+	if u == nil {
 		return ""
 	}
-	return o.PluginID
+	return u.PluginID
 }
 
-func (o *UpsertPluginWithConsumerGroupRequest) GetPluginWithoutParents() components.PluginWithoutParents {
-	if o == nil {
+func (u *UpsertPluginWithConsumerGroupRequest) GetPluginWithoutParents() components.PluginWithoutParents {
+	if u == nil {
 		return components.PluginWithoutParents{}
 	}
-	return o.PluginWithoutParents
+	return u.PluginWithoutParents
 }
 
 type UpsertPluginWithConsumerGroupResponse struct {
@@ -57,30 +57,30 @@ type UpsertPluginWithConsumerGroupResponse struct {
 	Plugin *components.Plugin
 }
 
-func (o *UpsertPluginWithConsumerGroupResponse) GetContentType() string {
-	if o == nil {
+func (u *UpsertPluginWithConsumerGroupResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpsertPluginWithConsumerGroupResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpsertPluginWithConsumerGroupResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpsertPluginWithConsumerGroupResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpsertPluginWithConsumerGroupResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpsertPluginWithConsumerGroupResponse) GetPlugin() *components.Plugin {
-	if o == nil {
+func (u *UpsertPluginWithConsumerGroupResponse) GetPlugin() *components.Plugin {
+	if u == nil {
 		return nil
 	}
-	return o.Plugin
+	return u.Plugin
 }

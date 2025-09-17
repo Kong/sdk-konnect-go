@@ -19,18 +19,18 @@ type GetSystemAccountsAccountIDAssignedRolesQueryParamFilter struct {
 	EntityTypeName *components.StringFieldEqualsFilter `queryParam:"name=entity_type_name"`
 }
 
-func (o *GetSystemAccountsAccountIDAssignedRolesQueryParamFilter) GetRoleName() *components.StringFieldEqualsFilter {
-	if o == nil {
+func (g *GetSystemAccountsAccountIDAssignedRolesQueryParamFilter) GetRoleName() *components.StringFieldEqualsFilter {
+	if g == nil {
 		return nil
 	}
-	return o.RoleName
+	return g.RoleName
 }
 
-func (o *GetSystemAccountsAccountIDAssignedRolesQueryParamFilter) GetEntityTypeName() *components.StringFieldEqualsFilter {
-	if o == nil {
+func (g *GetSystemAccountsAccountIDAssignedRolesQueryParamFilter) GetEntityTypeName() *components.StringFieldEqualsFilter {
+	if g == nil {
 		return nil
 	}
-	return o.EntityTypeName
+	return g.EntityTypeName
 }
 
 type GetSystemAccountsAccountIDAssignedRolesRequest struct {
@@ -40,18 +40,18 @@ type GetSystemAccountsAccountIDAssignedRolesRequest struct {
 	Filter *GetSystemAccountsAccountIDAssignedRolesQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *GetSystemAccountsAccountIDAssignedRolesRequest) GetAccountID() string {
-	if o == nil {
+func (g *GetSystemAccountsAccountIDAssignedRolesRequest) GetAccountID() string {
+	if g == nil {
 		return ""
 	}
-	return o.AccountID
+	return g.AccountID
 }
 
-func (o *GetSystemAccountsAccountIDAssignedRolesRequest) GetFilter() *GetSystemAccountsAccountIDAssignedRolesQueryParamFilter {
-	if o == nil {
+func (g *GetSystemAccountsAccountIDAssignedRolesRequest) GetFilter() *GetSystemAccountsAccountIDAssignedRolesQueryParamFilter {
+	if g == nil {
 		return nil
 	}
-	return o.Filter
+	return g.Filter
 }
 
 type GetSystemAccountsAccountIDAssignedRolesResponse struct {
@@ -65,30 +65,30 @@ type GetSystemAccountsAccountIDAssignedRolesResponse struct {
 	AssignedRoleCollection *components.AssignedRoleCollection
 }
 
-func (o *GetSystemAccountsAccountIDAssignedRolesResponse) GetContentType() string {
-	if o == nil {
+func (g *GetSystemAccountsAccountIDAssignedRolesResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetSystemAccountsAccountIDAssignedRolesResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetSystemAccountsAccountIDAssignedRolesResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetSystemAccountsAccountIDAssignedRolesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetSystemAccountsAccountIDAssignedRolesResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetSystemAccountsAccountIDAssignedRolesResponse) GetAssignedRoleCollection() *components.AssignedRoleCollection {
-	if o == nil {
+func (g *GetSystemAccountsAccountIDAssignedRolesResponse) GetAssignedRoleCollection() *components.AssignedRoleCollection {
+	if g == nil {
 		return nil
 	}
-	return o.AssignedRoleCollection
+	return g.AssignedRoleCollection
 }

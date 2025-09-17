@@ -53,23 +53,23 @@ func (c *ConfigurationDataPlaneGroupAutoscaleAutopilot) UnmarshalJSON(data []byt
 	return nil
 }
 
-func (o *ConfigurationDataPlaneGroupAutoscaleAutopilot) GetKind() ConfigurationDataPlaneGroupAutoscaleAutopilotKind {
-	if o == nil {
+func (c *ConfigurationDataPlaneGroupAutoscaleAutopilot) GetKind() ConfigurationDataPlaneGroupAutoscaleAutopilotKind {
+	if c == nil {
 		return ConfigurationDataPlaneGroupAutoscaleAutopilotKind("")
 	}
-	return o.Kind
+	return c.Kind
 }
 
-func (o *ConfigurationDataPlaneGroupAutoscaleAutopilot) GetBaseRps() int64 {
-	if o == nil {
+func (c *ConfigurationDataPlaneGroupAutoscaleAutopilot) GetBaseRps() int64 {
+	if c == nil {
 		return 0
 	}
-	return o.BaseRps
+	return c.BaseRps
 }
 
-func (o *ConfigurationDataPlaneGroupAutoscaleAutopilot) GetMaxRps() *int64 {
-	if o == nil {
+func (c *ConfigurationDataPlaneGroupAutoscaleAutopilot) GetMaxRps() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.MaxRps
+	return c.MaxRps
 }

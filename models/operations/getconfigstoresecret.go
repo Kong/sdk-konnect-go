@@ -16,25 +16,25 @@ type GetConfigStoreSecretRequest struct {
 	Key string `pathParam:"style=simple,explode=false,name=key"`
 }
 
-func (o *GetConfigStoreSecretRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetConfigStoreSecretRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
-func (o *GetConfigStoreSecretRequest) GetConfigStoreID() string {
-	if o == nil {
+func (g *GetConfigStoreSecretRequest) GetConfigStoreID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ConfigStoreID
+	return g.ConfigStoreID
 }
 
-func (o *GetConfigStoreSecretRequest) GetKey() string {
-	if o == nil {
+func (g *GetConfigStoreSecretRequest) GetKey() string {
+	if g == nil {
 		return ""
 	}
-	return o.Key
+	return g.Key
 }
 
 type GetConfigStoreSecretResponse struct {
@@ -48,30 +48,30 @@ type GetConfigStoreSecretResponse struct {
 	ConfigStoreSecret *components.ConfigStoreSecret
 }
 
-func (o *GetConfigStoreSecretResponse) GetContentType() string {
-	if o == nil {
+func (g *GetConfigStoreSecretResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetConfigStoreSecretResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetConfigStoreSecretResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetConfigStoreSecretResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetConfigStoreSecretResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetConfigStoreSecretResponse) GetConfigStoreSecret() *components.ConfigStoreSecret {
-	if o == nil {
+func (g *GetConfigStoreSecretResponse) GetConfigStoreSecret() *components.ConfigStoreSecret {
+	if g == nil {
 		return nil
 	}
-	return o.ConfigStoreSecret
+	return g.ConfigStoreSecret
 }

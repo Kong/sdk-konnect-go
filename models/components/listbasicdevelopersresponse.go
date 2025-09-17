@@ -9,16 +9,16 @@ type ListBasicDevelopersResponse struct {
 	Data []BasicDeveloper `json:"data,omitempty"`
 }
 
-func (o *ListBasicDevelopersResponse) GetMeta() *PaginatedMeta {
-	if o == nil {
+func (l *ListBasicDevelopersResponse) GetMeta() *PaginatedMeta {
+	if l == nil {
 		return nil
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListBasicDevelopersResponse) GetData() []BasicDeveloper {
-	if o == nil {
+func (l *ListBasicDevelopersResponse) GetData() []BasicDeveloper {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }

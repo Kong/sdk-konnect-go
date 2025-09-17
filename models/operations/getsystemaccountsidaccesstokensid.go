@@ -18,18 +18,18 @@ type GetSystemAccountsIDAccessTokensIDRequest struct {
 	TokenID string `pathParam:"style=simple,explode=false,name=tokenId"`
 }
 
-func (o *GetSystemAccountsIDAccessTokensIDRequest) GetAccountID() string {
-	if o == nil {
+func (g *GetSystemAccountsIDAccessTokensIDRequest) GetAccountID() string {
+	if g == nil {
 		return ""
 	}
-	return o.AccountID
+	return g.AccountID
 }
 
-func (o *GetSystemAccountsIDAccessTokensIDRequest) GetTokenID() string {
-	if o == nil {
+func (g *GetSystemAccountsIDAccessTokensIDRequest) GetTokenID() string {
+	if g == nil {
 		return ""
 	}
-	return o.TokenID
+	return g.TokenID
 }
 
 type GetSystemAccountsIDAccessTokensIDResponse struct {
@@ -43,30 +43,30 @@ type GetSystemAccountsIDAccessTokensIDResponse struct {
 	SystemAccountAccessToken *components.SystemAccountAccessToken
 }
 
-func (o *GetSystemAccountsIDAccessTokensIDResponse) GetContentType() string {
-	if o == nil {
+func (g *GetSystemAccountsIDAccessTokensIDResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetSystemAccountsIDAccessTokensIDResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetSystemAccountsIDAccessTokensIDResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetSystemAccountsIDAccessTokensIDResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetSystemAccountsIDAccessTokensIDResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetSystemAccountsIDAccessTokensIDResponse) GetSystemAccountAccessToken() *components.SystemAccountAccessToken {
-	if o == nil {
+func (g *GetSystemAccountsIDAccessTokensIDResponse) GetSystemAccountAccessToken() *components.SystemAccountAccessToken {
+	if g == nil {
 		return nil
 	}
-	return o.SystemAccountAccessToken
+	return g.SystemAccountAccessToken
 }

@@ -17,18 +17,18 @@ type TeamsRemoveRoleRequest struct {
 	RoleID string `pathParam:"style=simple,explode=false,name=roleId"`
 }
 
-func (o *TeamsRemoveRoleRequest) GetTeamID() string {
-	if o == nil {
+func (t *TeamsRemoveRoleRequest) GetTeamID() string {
+	if t == nil {
 		return ""
 	}
-	return o.TeamID
+	return t.TeamID
 }
 
-func (o *TeamsRemoveRoleRequest) GetRoleID() string {
-	if o == nil {
+func (t *TeamsRemoveRoleRequest) GetRoleID() string {
+	if t == nil {
 		return ""
 	}
-	return o.RoleID
+	return t.RoleID
 }
 
 type TeamsRemoveRoleResponse struct {
@@ -40,23 +40,23 @@ type TeamsRemoveRoleResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *TeamsRemoveRoleResponse) GetContentType() string {
-	if o == nil {
+func (t *TeamsRemoveRoleResponse) GetContentType() string {
+	if t == nil {
 		return ""
 	}
-	return o.ContentType
+	return t.ContentType
 }
 
-func (o *TeamsRemoveRoleResponse) GetStatusCode() int {
-	if o == nil {
+func (t *TeamsRemoveRoleResponse) GetStatusCode() int {
+	if t == nil {
 		return 0
 	}
-	return o.StatusCode
+	return t.StatusCode
 }
 
-func (o *TeamsRemoveRoleResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (t *TeamsRemoveRoleResponse) GetRawResponse() *http.Response {
+	if t == nil {
 		return nil
 	}
-	return o.RawResponse
+	return t.RawResponse
 }

@@ -20,39 +20,39 @@ type AssignRoleToPortalTeamsRequest struct {
 	PortalAssignRoleRequest *components.PortalAssignRoleRequest `request:"mediaType=application/json"`
 }
 
-func (o *AssignRoleToPortalTeamsRequest) GetPortalID() string {
-	if o == nil {
+func (a *AssignRoleToPortalTeamsRequest) GetPortalID() string {
+	if a == nil {
 		return ""
 	}
-	return o.PortalID
+	return a.PortalID
 }
 
-func (o *AssignRoleToPortalTeamsRequest) GetTeamID() string {
-	if o == nil {
+func (a *AssignRoleToPortalTeamsRequest) GetTeamID() string {
+	if a == nil {
 		return ""
 	}
-	return o.TeamID
+	return a.TeamID
 }
 
-func (o *AssignRoleToPortalTeamsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (a *AssignRoleToPortalTeamsRequest) GetPageSize() *int64 {
+	if a == nil {
 		return nil
 	}
-	return o.PageSize
+	return a.PageSize
 }
 
-func (o *AssignRoleToPortalTeamsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (a *AssignRoleToPortalTeamsRequest) GetPageNumber() *int64 {
+	if a == nil {
 		return nil
 	}
-	return o.PageNumber
+	return a.PageNumber
 }
 
-func (o *AssignRoleToPortalTeamsRequest) GetPortalAssignRoleRequest() *components.PortalAssignRoleRequest {
-	if o == nil {
+func (a *AssignRoleToPortalTeamsRequest) GetPortalAssignRoleRequest() *components.PortalAssignRoleRequest {
+	if a == nil {
 		return nil
 	}
-	return o.PortalAssignRoleRequest
+	return a.PortalAssignRoleRequest
 }
 
 type AssignRoleToPortalTeamsResponse struct {
@@ -66,30 +66,30 @@ type AssignRoleToPortalTeamsResponse struct {
 	PortalAssignedRoleResponse *components.PortalAssignedRoleResponse
 }
 
-func (o *AssignRoleToPortalTeamsResponse) GetContentType() string {
-	if o == nil {
+func (a *AssignRoleToPortalTeamsResponse) GetContentType() string {
+	if a == nil {
 		return ""
 	}
-	return o.ContentType
+	return a.ContentType
 }
 
-func (o *AssignRoleToPortalTeamsResponse) GetStatusCode() int {
-	if o == nil {
+func (a *AssignRoleToPortalTeamsResponse) GetStatusCode() int {
+	if a == nil {
 		return 0
 	}
-	return o.StatusCode
+	return a.StatusCode
 }
 
-func (o *AssignRoleToPortalTeamsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (a *AssignRoleToPortalTeamsResponse) GetRawResponse() *http.Response {
+	if a == nil {
 		return nil
 	}
-	return o.RawResponse
+	return a.RawResponse
 }
 
-func (o *AssignRoleToPortalTeamsResponse) GetPortalAssignedRoleResponse() *components.PortalAssignedRoleResponse {
-	if o == nil {
+func (a *AssignRoleToPortalTeamsResponse) GetPortalAssignedRoleResponse() *components.PortalAssignedRoleResponse {
+	if a == nil {
 		return nil
 	}
-	return o.PortalAssignedRoleResponse
+	return a.PortalAssignedRoleResponse
 }

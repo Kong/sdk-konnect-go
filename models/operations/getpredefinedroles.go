@@ -22,30 +22,30 @@ type GetPredefinedRolesResponse struct {
 	Roles *components.Roles
 }
 
-func (o *GetPredefinedRolesResponse) GetContentType() string {
-	if o == nil {
+func (g *GetPredefinedRolesResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetPredefinedRolesResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetPredefinedRolesResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetPredefinedRolesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetPredefinedRolesResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetPredefinedRolesResponse) GetRoles() *components.Roles {
-	if o == nil {
+func (g *GetPredefinedRolesResponse) GetRoles() *components.Roles {
+	if g == nil {
 		return nil
 	}
-	return o.Roles
+	return g.Roles
 }

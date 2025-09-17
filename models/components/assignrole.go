@@ -253,30 +253,30 @@ func (a *AssignRole) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *AssignRole) GetRoleName() *RoleName {
-	if o == nil {
+func (a *AssignRole) GetRoleName() *RoleName {
+	if a == nil {
 		return nil
 	}
-	return o.RoleName
+	return a.RoleName
 }
 
-func (o *AssignRole) GetEntityID() *string {
-	if o == nil {
+func (a *AssignRole) GetEntityID() *string {
+	if a == nil {
 		return nil
 	}
-	return o.EntityID
+	return a.EntityID
 }
 
-func (o *AssignRole) GetEntityTypeName() *EntityTypeName {
-	if o == nil {
+func (a *AssignRole) GetEntityTypeName() *EntityTypeName {
+	if a == nil {
 		return nil
 	}
-	return o.EntityTypeName
+	return a.EntityTypeName
 }
 
-func (o *AssignRole) GetEntityRegion() *AssignRoleEntityRegion {
-	if o == nil {
+func (a *AssignRole) GetEntityRegion() *AssignRoleEntityRegion {
+	if a == nil {
 		return nil
 	}
-	return o.EntityRegion
+	return a.EntityRegion
 }

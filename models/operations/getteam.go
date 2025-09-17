@@ -16,11 +16,11 @@ type GetTeamRequest struct {
 	TeamID string `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
-func (o *GetTeamRequest) GetTeamID() string {
-	if o == nil {
+func (g *GetTeamRequest) GetTeamID() string {
+	if g == nil {
 		return ""
 	}
-	return o.TeamID
+	return g.TeamID
 }
 
 type GetTeamResponse struct {
@@ -34,30 +34,30 @@ type GetTeamResponse struct {
 	Team *components.Team
 }
 
-func (o *GetTeamResponse) GetContentType() string {
-	if o == nil {
+func (g *GetTeamResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetTeamResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetTeamResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetTeamResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetTeamResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetTeamResponse) GetTeam() *components.Team {
-	if o == nil {
+func (g *GetTeamResponse) GetTeam() *components.Team {
+	if g == nil {
 		return nil
 	}
-	return o.Team
+	return g.Team
 }

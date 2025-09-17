@@ -18,32 +18,32 @@ type UpsertJwtWithConsumerRequest struct {
 	JWTWithoutParents *components.JWTWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *UpsertJwtWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpsertJwtWithConsumerRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpsertJwtWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (u *UpsertJwtWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if u == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return u.ConsumerIDForNestedEntities
 }
 
-func (o *UpsertJwtWithConsumerRequest) GetJWTID() string {
-	if o == nil {
+func (u *UpsertJwtWithConsumerRequest) GetJWTID() string {
+	if u == nil {
 		return ""
 	}
-	return o.JWTID
+	return u.JWTID
 }
 
-func (o *UpsertJwtWithConsumerRequest) GetJWTWithoutParents() *components.JWTWithoutParents {
-	if o == nil {
+func (u *UpsertJwtWithConsumerRequest) GetJWTWithoutParents() *components.JWTWithoutParents {
+	if u == nil {
 		return nil
 	}
-	return o.JWTWithoutParents
+	return u.JWTWithoutParents
 }
 
 type UpsertJwtWithConsumerResponse struct {
@@ -57,30 +57,30 @@ type UpsertJwtWithConsumerResponse struct {
 	Jwt *components.Jwt
 }
 
-func (o *UpsertJwtWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (u *UpsertJwtWithConsumerResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpsertJwtWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpsertJwtWithConsumerResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpsertJwtWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpsertJwtWithConsumerResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpsertJwtWithConsumerResponse) GetJwt() *components.Jwt {
-	if o == nil {
+func (u *UpsertJwtWithConsumerResponse) GetJwt() *components.Jwt {
+	if u == nil {
 		return nil
 	}
-	return o.Jwt
+	return u.Jwt
 }

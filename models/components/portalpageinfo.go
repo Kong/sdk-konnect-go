@@ -48,72 +48,72 @@ func (p *PortalPageInfo) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PortalPageInfo) GetID() string {
-	if o == nil {
+func (p *PortalPageInfo) GetID() string {
+	if p == nil {
 		return ""
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PortalPageInfo) GetSlug() string {
-	if o == nil {
+func (p *PortalPageInfo) GetSlug() string {
+	if p == nil {
 		return ""
 	}
-	return o.Slug
+	return p.Slug
 }
 
-func (o *PortalPageInfo) GetTitle() string {
-	if o == nil {
+func (p *PortalPageInfo) GetTitle() string {
+	if p == nil {
 		return ""
 	}
-	return o.Title
+	return p.Title
 }
 
-func (o *PortalPageInfo) GetVisibility() VisibilityStatus {
-	if o == nil {
+func (p *PortalPageInfo) GetVisibility() VisibilityStatus {
+	if p == nil {
 		return VisibilityStatus("")
 	}
-	return o.Visibility
+	return p.Visibility
 }
 
-func (o *PortalPageInfo) GetStatus() PublishedStatus {
-	if o == nil {
+func (p *PortalPageInfo) GetStatus() PublishedStatus {
+	if p == nil {
 		return PublishedStatus("")
 	}
-	return o.Status
+	return p.Status
 }
 
-func (o *PortalPageInfo) GetDescription() *string {
-	if o == nil {
+func (p *PortalPageInfo) GetDescription() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Description
+	return p.Description
 }
 
-func (o *PortalPageInfo) GetParentPageID() *string {
-	if o == nil {
+func (p *PortalPageInfo) GetParentPageID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ParentPageID
+	return p.ParentPageID
 }
 
-func (o *PortalPageInfo) GetChildren() []PortalPageInfo {
-	if o == nil {
+func (p *PortalPageInfo) GetChildren() []PortalPageInfo {
+	if p == nil {
 		return []PortalPageInfo{}
 	}
-	return o.Children
+	return p.Children
 }
 
-func (o *PortalPageInfo) GetCreatedAt() time.Time {
-	if o == nil {
+func (p *PortalPageInfo) GetCreatedAt() time.Time {
+	if p == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return p.CreatedAt
 }
 
-func (o *PortalPageInfo) GetUpdatedAt() time.Time {
-	if o == nil {
+func (p *PortalPageInfo) GetUpdatedAt() time.Time {
+	if p == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return p.UpdatedAt
 }

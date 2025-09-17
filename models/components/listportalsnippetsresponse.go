@@ -9,16 +9,16 @@ type ListPortalSnippetsResponse struct {
 	Meta PaginatedMeta `json:"meta"`
 }
 
-func (o *ListPortalSnippetsResponse) GetData() []PortalSnippetInfo {
-	if o == nil {
+func (l *ListPortalSnippetsResponse) GetData() []PortalSnippetInfo {
+	if l == nil {
 		return []PortalSnippetInfo{}
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListPortalSnippetsResponse) GetMeta() PaginatedMeta {
-	if o == nil {
+func (l *ListPortalSnippetsResponse) GetMeta() PaginatedMeta {
+	if l == nil {
 		return PaginatedMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }

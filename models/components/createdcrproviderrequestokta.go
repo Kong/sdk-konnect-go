@@ -61,44 +61,44 @@ func (c *CreateDcrProviderRequestOkta) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CreateDcrProviderRequestOkta) GetProviderType() CreateDcrProviderRequestOktaProviderType {
-	if o == nil {
+func (c *CreateDcrProviderRequestOkta) GetProviderType() CreateDcrProviderRequestOktaProviderType {
+	if c == nil {
 		return CreateDcrProviderRequestOktaProviderType("")
 	}
-	return o.ProviderType
+	return c.ProviderType
 }
 
-func (o *CreateDcrProviderRequestOkta) GetDcrConfig() CreateDcrConfigOktaInRequest {
-	if o == nil {
+func (c *CreateDcrProviderRequestOkta) GetDcrConfig() CreateDcrConfigOktaInRequest {
+	if c == nil {
 		return CreateDcrConfigOktaInRequest{}
 	}
-	return o.DcrConfig
+	return c.DcrConfig
 }
 
-func (o *CreateDcrProviderRequestOkta) GetName() string {
-	if o == nil {
+func (c *CreateDcrProviderRequestOkta) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *CreateDcrProviderRequestOkta) GetDisplayName() *string {
-	if o == nil {
+func (c *CreateDcrProviderRequestOkta) GetDisplayName() *string {
+	if c == nil {
 		return nil
 	}
-	return o.DisplayName
+	return c.DisplayName
 }
 
-func (o *CreateDcrProviderRequestOkta) GetIssuer() string {
-	if o == nil {
+func (c *CreateDcrProviderRequestOkta) GetIssuer() string {
+	if c == nil {
 		return ""
 	}
-	return o.Issuer
+	return c.Issuer
 }
 
-func (o *CreateDcrProviderRequestOkta) GetLabels() map[string]string {
-	if o == nil {
+func (c *CreateDcrProviderRequestOkta) GetLabels() map[string]string {
+	if c == nil {
 		return nil
 	}
-	return o.Labels
+	return c.Labels
 }

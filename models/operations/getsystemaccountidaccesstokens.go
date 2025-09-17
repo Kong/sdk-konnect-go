@@ -17,11 +17,11 @@ type GetSystemAccountIDAccessTokensQueryParamFilter struct {
 	Name *components.LegacyStringFieldFilter `queryParam:"name=name"`
 }
 
-func (o *GetSystemAccountIDAccessTokensQueryParamFilter) GetName() *components.LegacyStringFieldFilter {
-	if o == nil {
+func (g *GetSystemAccountIDAccessTokensQueryParamFilter) GetName() *components.LegacyStringFieldFilter {
+	if g == nil {
 		return nil
 	}
-	return o.Name
+	return g.Name
 }
 
 type GetSystemAccountIDAccessTokensRequest struct {
@@ -35,32 +35,32 @@ type GetSystemAccountIDAccessTokensRequest struct {
 	Filter *GetSystemAccountIDAccessTokensQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *GetSystemAccountIDAccessTokensRequest) GetAccountID() string {
-	if o == nil {
+func (g *GetSystemAccountIDAccessTokensRequest) GetAccountID() string {
+	if g == nil {
 		return ""
 	}
-	return o.AccountID
+	return g.AccountID
 }
 
-func (o *GetSystemAccountIDAccessTokensRequest) GetPageSize() *int64 {
-	if o == nil {
+func (g *GetSystemAccountIDAccessTokensRequest) GetPageSize() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.PageSize
+	return g.PageSize
 }
 
-func (o *GetSystemAccountIDAccessTokensRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (g *GetSystemAccountIDAccessTokensRequest) GetPageNumber() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.PageNumber
+	return g.PageNumber
 }
 
-func (o *GetSystemAccountIDAccessTokensRequest) GetFilter() *GetSystemAccountIDAccessTokensQueryParamFilter {
-	if o == nil {
+func (g *GetSystemAccountIDAccessTokensRequest) GetFilter() *GetSystemAccountIDAccessTokensQueryParamFilter {
+	if g == nil {
 		return nil
 	}
-	return o.Filter
+	return g.Filter
 }
 
 type GetSystemAccountIDAccessTokensResponse struct {
@@ -74,30 +74,30 @@ type GetSystemAccountIDAccessTokensResponse struct {
 	SystemAccountAccessTokenCollection *components.SystemAccountAccessTokenCollection
 }
 
-func (o *GetSystemAccountIDAccessTokensResponse) GetContentType() string {
-	if o == nil {
+func (g *GetSystemAccountIDAccessTokensResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetSystemAccountIDAccessTokensResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetSystemAccountIDAccessTokensResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetSystemAccountIDAccessTokensResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetSystemAccountIDAccessTokensResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetSystemAccountIDAccessTokensResponse) GetSystemAccountAccessTokenCollection() *components.SystemAccountAccessTokenCollection {
-	if o == nil {
+func (g *GetSystemAccountIDAccessTokensResponse) GetSystemAccountAccessTokenCollection() *components.SystemAccountAccessTokenCollection {
+	if g == nil {
 		return nil
 	}
-	return o.SystemAccountAccessTokenCollection
+	return g.SystemAccountAccessTokenCollection
 }

@@ -33,37 +33,37 @@ func (c *ConfigureOIDCIdentityProviderConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ConfigureOIDCIdentityProviderConfig) GetIssuerURL() string {
-	if o == nil {
+func (c *ConfigureOIDCIdentityProviderConfig) GetIssuerURL() string {
+	if c == nil {
 		return ""
 	}
-	return o.IssuerURL
+	return c.IssuerURL
 }
 
-func (o *ConfigureOIDCIdentityProviderConfig) GetClientID() string {
-	if o == nil {
+func (c *ConfigureOIDCIdentityProviderConfig) GetClientID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ClientID
+	return c.ClientID
 }
 
-func (o *ConfigureOIDCIdentityProviderConfig) GetClientSecret() *string {
-	if o == nil {
+func (c *ConfigureOIDCIdentityProviderConfig) GetClientSecret() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ClientSecret
+	return c.ClientSecret
 }
 
-func (o *ConfigureOIDCIdentityProviderConfig) GetScopes() []string {
-	if o == nil {
+func (c *ConfigureOIDCIdentityProviderConfig) GetScopes() []string {
+	if c == nil {
 		return nil
 	}
-	return o.Scopes
+	return c.Scopes
 }
 
-func (o *ConfigureOIDCIdentityProviderConfig) GetClaimMappings() *OIDCIdentityProviderClaimMappings {
-	if o == nil {
+func (c *ConfigureOIDCIdentityProviderConfig) GetClaimMappings() *OIDCIdentityProviderClaimMappings {
+	if c == nil {
 		return nil
 	}
-	return o.ClaimMappings
+	return c.ClaimMappings
 }

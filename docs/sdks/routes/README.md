@@ -65,13 +65,13 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.Routes.ListRoute(ctx, operations.ListRouteRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        Tags: sdkkonnectgo.String("tag1,tag2"),
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
     })
     if err != nil {
         log.Fatal(err)
@@ -123,7 +123,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -133,14 +133,14 @@ func main() {
                 "foo.example.com",
                 "foo.example.us",
             },
-            ID: sdkkonnectgo.String("56c4566c-14cc-4132-9011-4139fcbbe50a"),
-            Name: sdkkonnectgo.String("example-route"),
+            ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
+            Name: sdkkonnectgo.Pointer("example-route"),
             Paths: []string{
                 "/v1",
                 "/v2",
             },
             Service: &components.RouteJSONService{
-                ID: sdkkonnectgo.String("bd380f99-659d-415e-b0e7-72ea05df3218"),
+                ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
             },
         },
     ))
@@ -195,7 +195,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -251,7 +251,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -308,7 +308,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -321,14 +321,14 @@ func main() {
                     "foo.example.com",
                     "foo.example.us",
                 },
-                ID: sdkkonnectgo.String("56c4566c-14cc-4132-9011-4139fcbbe50a"),
-                Name: sdkkonnectgo.String("example-route"),
+                ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
+                Name: sdkkonnectgo.Pointer("example-route"),
                 Paths: []string{
                     "/v1",
                     "/v2",
                 },
                 Service: &components.RouteJSONService{
-                    ID: sdkkonnectgo.String("bd380f99-659d-415e-b0e7-72ea05df3218"),
+                    ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
                 },
             },
         ),
@@ -384,14 +384,14 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.Routes.ListRouteWithService(ctx, operations.ListRouteWithServiceRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
-        Tags: sdkkonnectgo.String("tag1,tag2"),
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
     })
     if err != nil {
         log.Fatal(err)
@@ -443,7 +443,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -456,14 +456,14 @@ func main() {
                     "foo.example.com",
                     "foo.example.us",
                 },
-                ID: sdkkonnectgo.String("56c4566c-14cc-4132-9011-4139fcbbe50a"),
-                Name: sdkkonnectgo.String("example-route"),
+                ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
+                Name: sdkkonnectgo.Pointer("example-route"),
                 Paths: []string{
                     "/v1",
                     "/v2",
                 },
                 Service: &components.RouteJSONService{
-                    ID: sdkkonnectgo.String("bd380f99-659d-415e-b0e7-72ea05df3218"),
+                    ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
                 },
             },
         ),
@@ -518,7 +518,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -577,7 +577,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -636,7 +636,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -650,14 +650,14 @@ func main() {
                     "foo.example.com",
                     "foo.example.us",
                 },
-                ID: sdkkonnectgo.String("56c4566c-14cc-4132-9011-4139fcbbe50a"),
-                Name: sdkkonnectgo.String("example-route"),
+                ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
+                Name: sdkkonnectgo.Pointer("example-route"),
                 Paths: []string{
                     "/v1",
                     "/v2",
                 },
                 Service: &components.RouteJSONService{
-                    ID: sdkkonnectgo.String("bd380f99-659d-415e-b0e7-72ea05df3218"),
+                    ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
                 },
             },
         ),

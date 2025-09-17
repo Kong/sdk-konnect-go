@@ -6,11 +6,11 @@ type DegraphqlRouteWithoutParentsService struct {
 	ID *string `json:"id,omitempty"`
 }
 
-func (o *DegraphqlRouteWithoutParentsService) GetID() *string {
-	if o == nil {
+func (d *DegraphqlRouteWithoutParentsService) GetID() *string {
+	if d == nil {
 		return nil
 	}
-	return o.ID
+	return d.ID
 }
 
 type DegraphqlRouteWithoutParents struct {
@@ -26,51 +26,51 @@ type DegraphqlRouteWithoutParents struct {
 	URI       string `json:"uri"`
 }
 
-func (o *DegraphqlRouteWithoutParents) GetCreatedAt() *int64 {
-	if o == nil {
+func (d *DegraphqlRouteWithoutParents) GetCreatedAt() *int64 {
+	if d == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return d.CreatedAt
 }
 
-func (o *DegraphqlRouteWithoutParents) GetID() *string {
-	if o == nil {
+func (d *DegraphqlRouteWithoutParents) GetID() *string {
+	if d == nil {
 		return nil
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DegraphqlRouteWithoutParents) GetMethods() []string {
-	if o == nil {
+func (d *DegraphqlRouteWithoutParents) GetMethods() []string {
+	if d == nil {
 		return nil
 	}
-	return o.Methods
+	return d.Methods
 }
 
-func (o *DegraphqlRouteWithoutParents) GetQuery() string {
-	if o == nil {
+func (d *DegraphqlRouteWithoutParents) GetQuery() string {
+	if d == nil {
 		return ""
 	}
-	return o.Query
+	return d.Query
 }
 
-func (o *DegraphqlRouteWithoutParents) GetService() *DegraphqlRouteWithoutParentsService {
-	if o == nil {
+func (d *DegraphqlRouteWithoutParents) GetService() *DegraphqlRouteWithoutParentsService {
+	if d == nil {
 		return nil
 	}
-	return o.Service
+	return d.Service
 }
 
-func (o *DegraphqlRouteWithoutParents) GetUpdatedAt() *int64 {
-	if o == nil {
+func (d *DegraphqlRouteWithoutParents) GetUpdatedAt() *int64 {
+	if d == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return d.UpdatedAt
 }
 
-func (o *DegraphqlRouteWithoutParents) GetURI() string {
-	if o == nil {
+func (d *DegraphqlRouteWithoutParents) GetURI() string {
+	if d == nil {
 		return ""
 	}
-	return o.URI
+	return d.URI
 }

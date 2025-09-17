@@ -18,18 +18,18 @@ type GetTeamGroupMappingsRequest struct {
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 }
 
-func (o *GetTeamGroupMappingsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (g *GetTeamGroupMappingsRequest) GetPageSize() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.PageSize
+	return g.PageSize
 }
 
-func (o *GetTeamGroupMappingsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (g *GetTeamGroupMappingsRequest) GetPageNumber() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.PageNumber
+	return g.PageNumber
 }
 
 type GetTeamGroupMappingsResponse struct {
@@ -43,30 +43,30 @@ type GetTeamGroupMappingsResponse struct {
 	TeamGroupMappingCollection *components.TeamGroupMappingCollection
 }
 
-func (o *GetTeamGroupMappingsResponse) GetContentType() string {
-	if o == nil {
+func (g *GetTeamGroupMappingsResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetTeamGroupMappingsResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetTeamGroupMappingsResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetTeamGroupMappingsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetTeamGroupMappingsResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetTeamGroupMappingsResponse) GetTeamGroupMappingCollection() *components.TeamGroupMappingCollection {
-	if o == nil {
+func (g *GetTeamGroupMappingsResponse) GetTeamGroupMappingCollection() *components.TeamGroupMappingCollection {
+	if g == nil {
 		return nil
 	}
-	return o.TeamGroupMappingCollection
+	return g.TeamGroupMappingCollection
 }

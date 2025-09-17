@@ -14,18 +14,18 @@ type UpdatePortalAuditLogReplayJobRequest struct {
 	ReplacePortalAuditLogReplayJob *components.ReplacePortalAuditLogReplayJob `request:"mediaType=application/json"`
 }
 
-func (o *UpdatePortalAuditLogReplayJobRequest) GetPortalID() string {
-	if o == nil {
+func (u *UpdatePortalAuditLogReplayJobRequest) GetPortalID() string {
+	if u == nil {
 		return ""
 	}
-	return o.PortalID
+	return u.PortalID
 }
 
-func (o *UpdatePortalAuditLogReplayJobRequest) GetReplacePortalAuditLogReplayJob() *components.ReplacePortalAuditLogReplayJob {
-	if o == nil {
+func (u *UpdatePortalAuditLogReplayJobRequest) GetReplacePortalAuditLogReplayJob() *components.ReplacePortalAuditLogReplayJob {
+	if u == nil {
 		return nil
 	}
-	return o.ReplacePortalAuditLogReplayJob
+	return u.ReplacePortalAuditLogReplayJob
 }
 
 type UpdatePortalAuditLogReplayJobResponse struct {
@@ -39,30 +39,30 @@ type UpdatePortalAuditLogReplayJobResponse struct {
 	PortalAuditLogReplayJob *components.PortalAuditLogReplayJob
 }
 
-func (o *UpdatePortalAuditLogReplayJobResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdatePortalAuditLogReplayJobResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdatePortalAuditLogReplayJobResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdatePortalAuditLogReplayJobResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdatePortalAuditLogReplayJobResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdatePortalAuditLogReplayJobResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdatePortalAuditLogReplayJobResponse) GetPortalAuditLogReplayJob() *components.PortalAuditLogReplayJob {
-	if o == nil {
+func (u *UpdatePortalAuditLogReplayJobResponse) GetPortalAuditLogReplayJob() *components.PortalAuditLogReplayJob {
+	if u == nil {
 		return nil
 	}
-	return o.PortalAuditLogReplayJob
+	return u.PortalAuditLogReplayJob
 }

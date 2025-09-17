@@ -32,39 +32,39 @@ func (l *ListSniWithCertificateRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListSniWithCertificateRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListSniWithCertificateRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListSniWithCertificateRequest) GetCertificateID() string {
-	if o == nil {
+func (l *ListSniWithCertificateRequest) GetCertificateID() string {
+	if l == nil {
 		return ""
 	}
-	return o.CertificateID
+	return l.CertificateID
 }
 
-func (o *ListSniWithCertificateRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListSniWithCertificateRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListSniWithCertificateRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListSniWithCertificateRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListSniWithCertificateRequest) GetTags() *string {
-	if o == nil {
+func (l *ListSniWithCertificateRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListSniWithCertificateResponseBody - A successful response listing SNIs
@@ -76,25 +76,25 @@ type ListSniWithCertificateResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListSniWithCertificateResponseBody) GetData() []components.Sni {
-	if o == nil {
+func (l *ListSniWithCertificateResponseBody) GetData() []components.Sni {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListSniWithCertificateResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListSniWithCertificateResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListSniWithCertificateResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListSniWithCertificateResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListSniWithCertificateResponse struct {
@@ -108,30 +108,30 @@ type ListSniWithCertificateResponse struct {
 	Object *ListSniWithCertificateResponseBody
 }
 
-func (o *ListSniWithCertificateResponse) GetContentType() string {
-	if o == nil {
+func (l *ListSniWithCertificateResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListSniWithCertificateResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListSniWithCertificateResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListSniWithCertificateResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListSniWithCertificateResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListSniWithCertificateResponse) GetObject() *ListSniWithCertificateResponseBody {
-	if o == nil {
+func (l *ListSniWithCertificateResponse) GetObject() *ListSniWithCertificateResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

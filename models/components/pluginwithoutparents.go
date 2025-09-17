@@ -13,11 +13,11 @@ type PluginWithoutParentsConsumer struct {
 	ID *string `json:"id,omitempty"`
 }
 
-func (o *PluginWithoutParentsConsumer) GetID() *string {
-	if o == nil {
+func (p *PluginWithoutParentsConsumer) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
 // PluginWithoutParentsConsumerGroup - If set, the plugin will activate only for requests where the specified group has been authenticated
@@ -25,33 +25,33 @@ type PluginWithoutParentsConsumerGroup struct {
 	ID *string `json:"id,omitempty"`
 }
 
-func (o *PluginWithoutParentsConsumerGroup) GetID() *string {
-	if o == nil {
+func (p *PluginWithoutParentsConsumerGroup) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
 type PluginWithoutParentsAfter struct {
 	Access []string `json:"access,omitempty"`
 }
 
-func (o *PluginWithoutParentsAfter) GetAccess() []string {
-	if o == nil {
+func (p *PluginWithoutParentsAfter) GetAccess() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Access
+	return p.Access
 }
 
 type PluginWithoutParentsBefore struct {
 	Access []string `json:"access,omitempty"`
 }
 
-func (o *PluginWithoutParentsBefore) GetAccess() []string {
-	if o == nil {
+func (p *PluginWithoutParentsBefore) GetAccess() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Access
+	return p.Access
 }
 
 type PluginWithoutParentsOrdering struct {
@@ -59,18 +59,18 @@ type PluginWithoutParentsOrdering struct {
 	Before *PluginWithoutParentsBefore `json:"before,omitempty"`
 }
 
-func (o *PluginWithoutParentsOrdering) GetAfter() *PluginWithoutParentsAfter {
-	if o == nil {
+func (p *PluginWithoutParentsOrdering) GetAfter() *PluginWithoutParentsAfter {
+	if p == nil {
 		return nil
 	}
-	return o.After
+	return p.After
 }
 
-func (o *PluginWithoutParentsOrdering) GetBefore() *PluginWithoutParentsBefore {
-	if o == nil {
+func (p *PluginWithoutParentsOrdering) GetBefore() *PluginWithoutParentsBefore {
+	if p == nil {
 		return nil
 	}
-	return o.Before
+	return p.Before
 }
 
 type PluginWithoutParentsPartials struct {
@@ -92,25 +92,25 @@ func (p *PluginWithoutParentsPartials) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PluginWithoutParentsPartials) GetID() *string {
-	if o == nil {
+func (p *PluginWithoutParentsPartials) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PluginWithoutParentsPartials) GetName() *string {
-	if o == nil {
+func (p *PluginWithoutParentsPartials) GetName() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PluginWithoutParentsPartials) GetPath() *string {
-	if o == nil {
+func (p *PluginWithoutParentsPartials) GetPath() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Path
+	return p.Path
 }
 
 // PluginWithoutParentsProtocols - A string representing a protocol, such as HTTP or HTTPS.
@@ -169,11 +169,11 @@ type PluginWithoutParentsRoute struct {
 	ID *string `json:"id,omitempty"`
 }
 
-func (o *PluginWithoutParentsRoute) GetID() *string {
-	if o == nil {
+func (p *PluginWithoutParentsRoute) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
 // PluginWithoutParentsService - If set, the plugin will only activate when receiving requests via one of the routes belonging to the specified Service. Leave unset for the plugin to activate regardless of the Service being matched.
@@ -181,11 +181,11 @@ type PluginWithoutParentsService struct {
 	ID *string `json:"id,omitempty"`
 }
 
-func (o *PluginWithoutParentsService) GetID() *string {
-	if o == nil {
+func (p *PluginWithoutParentsService) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
 // PluginWithoutParents - A Plugin entity represents a plugin configuration that will be executed during the HTTP request/response lifecycle. It is how you can add functionalities to Services that run behind Kong, like Authentication or Rate Limiting for example. You can find more information about how to install and what values each plugin takes by visiting the [Kong Hub](https://docs.konghq.com/hub/). When adding a Plugin Configuration to a Service, every request made by a client to that Service will run said Plugin. If a Plugin needs to be tuned to different values for some specific Consumers, you can do so by creating a separate plugin instance that specifies both the Service and the Consumer, through the `service` and `consumer` fields.
@@ -232,107 +232,107 @@ func (p *PluginWithoutParents) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PluginWithoutParents) GetConfig() map[string]any {
-	if o == nil {
+func (p *PluginWithoutParents) GetConfig() map[string]any {
+	if p == nil {
 		return nil
 	}
-	return o.Config
+	return p.Config
 }
 
-func (o *PluginWithoutParents) GetConsumer() *PluginWithoutParentsConsumer {
-	if o == nil {
+func (p *PluginWithoutParents) GetConsumer() *PluginWithoutParentsConsumer {
+	if p == nil {
 		return nil
 	}
-	return o.Consumer
+	return p.Consumer
 }
 
-func (o *PluginWithoutParents) GetConsumerGroup() *PluginWithoutParentsConsumerGroup {
-	if o == nil {
+func (p *PluginWithoutParents) GetConsumerGroup() *PluginWithoutParentsConsumerGroup {
+	if p == nil {
 		return nil
 	}
-	return o.ConsumerGroup
+	return p.ConsumerGroup
 }
 
-func (o *PluginWithoutParents) GetCreatedAt() *int64 {
-	if o == nil {
+func (p *PluginWithoutParents) GetCreatedAt() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return p.CreatedAt
 }
 
-func (o *PluginWithoutParents) GetEnabled() *bool {
-	if o == nil {
+func (p *PluginWithoutParents) GetEnabled() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Enabled
+	return p.Enabled
 }
 
-func (o *PluginWithoutParents) GetID() *string {
-	if o == nil {
+func (p *PluginWithoutParents) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PluginWithoutParents) GetInstanceName() *string {
-	if o == nil {
+func (p *PluginWithoutParents) GetInstanceName() *string {
+	if p == nil {
 		return nil
 	}
-	return o.InstanceName
+	return p.InstanceName
 }
 
-func (o *PluginWithoutParents) GetName() string {
-	if o == nil {
+func (p *PluginWithoutParents) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PluginWithoutParents) GetOrdering() *PluginWithoutParentsOrdering {
-	if o == nil {
+func (p *PluginWithoutParents) GetOrdering() *PluginWithoutParentsOrdering {
+	if p == nil {
 		return nil
 	}
-	return o.Ordering
+	return p.Ordering
 }
 
-func (o *PluginWithoutParents) GetPartials() []PluginWithoutParentsPartials {
-	if o == nil {
+func (p *PluginWithoutParents) GetPartials() []PluginWithoutParentsPartials {
+	if p == nil {
 		return nil
 	}
-	return o.Partials
+	return p.Partials
 }
 
-func (o *PluginWithoutParents) GetProtocols() []PluginWithoutParentsProtocols {
-	if o == nil {
+func (p *PluginWithoutParents) GetProtocols() []PluginWithoutParentsProtocols {
+	if p == nil {
 		return nil
 	}
-	return o.Protocols
+	return p.Protocols
 }
 
-func (o *PluginWithoutParents) GetRoute() *PluginWithoutParentsRoute {
-	if o == nil {
+func (p *PluginWithoutParents) GetRoute() *PluginWithoutParentsRoute {
+	if p == nil {
 		return nil
 	}
-	return o.Route
+	return p.Route
 }
 
-func (o *PluginWithoutParents) GetService() *PluginWithoutParentsService {
-	if o == nil {
+func (p *PluginWithoutParents) GetService() *PluginWithoutParentsService {
+	if p == nil {
 		return nil
 	}
-	return o.Service
+	return p.Service
 }
 
-func (o *PluginWithoutParents) GetTags() []string {
-	if o == nil {
+func (p *PluginWithoutParents) GetTags() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Tags
+	return p.Tags
 }
 
-func (o *PluginWithoutParents) GetUpdatedAt() *int64 {
-	if o == nil {
+func (p *PluginWithoutParents) GetUpdatedAt() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return p.UpdatedAt
 }

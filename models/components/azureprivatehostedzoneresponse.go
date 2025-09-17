@@ -27,18 +27,18 @@ func (a *AzurePrivateHostedZoneResponsePrivateDNSStateMetadata) UnmarshalJSON(da
 	return nil
 }
 
-func (o *AzurePrivateHostedZoneResponsePrivateDNSStateMetadata) GetReportedStatus() *string {
-	if o == nil {
+func (a *AzurePrivateHostedZoneResponsePrivateDNSStateMetadata) GetReportedStatus() *string {
+	if a == nil {
 		return nil
 	}
-	return o.ReportedStatus
+	return a.ReportedStatus
 }
 
-func (o *AzurePrivateHostedZoneResponsePrivateDNSStateMetadata) GetReason() *string {
-	if o == nil {
+func (a *AzurePrivateHostedZoneResponsePrivateDNSStateMetadata) GetReason() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Reason
+	return a.Reason
 }
 
 type AzurePrivateHostedZoneResponse struct {
@@ -79,51 +79,51 @@ func (a *AzurePrivateHostedZoneResponse) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *AzurePrivateHostedZoneResponse) GetID() string {
-	if o == nil {
+func (a *AzurePrivateHostedZoneResponse) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *AzurePrivateHostedZoneResponse) GetState() PrivateDNSState {
-	if o == nil {
+func (a *AzurePrivateHostedZoneResponse) GetState() PrivateDNSState {
+	if a == nil {
 		return PrivateDNSState("")
 	}
-	return o.State
+	return a.State
 }
 
-func (o *AzurePrivateHostedZoneResponse) GetStateMetadata() AzurePrivateHostedZoneResponsePrivateDNSStateMetadata {
-	if o == nil {
+func (a *AzurePrivateHostedZoneResponse) GetStateMetadata() AzurePrivateHostedZoneResponsePrivateDNSStateMetadata {
+	if a == nil {
 		return AzurePrivateHostedZoneResponsePrivateDNSStateMetadata{}
 	}
-	return o.StateMetadata
+	return a.StateMetadata
 }
 
-func (o *AzurePrivateHostedZoneResponse) GetEntityVersion() int64 {
-	if o == nil {
+func (a *AzurePrivateHostedZoneResponse) GetEntityVersion() int64 {
+	if a == nil {
 		return 0
 	}
-	return o.EntityVersion
+	return a.EntityVersion
 }
 
-func (o *AzurePrivateHostedZoneResponse) GetCreatedAt() time.Time {
-	if o == nil {
+func (a *AzurePrivateHostedZoneResponse) GetCreatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return a.CreatedAt
 }
 
-func (o *AzurePrivateHostedZoneResponse) GetUpdatedAt() time.Time {
-	if o == nil {
+func (a *AzurePrivateHostedZoneResponse) GetUpdatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return a.UpdatedAt
 }
 
-func (o *AzurePrivateHostedZoneResponse) GetName() string {
-	if o == nil {
+func (a *AzurePrivateHostedZoneResponse) GetName() string {
+	if a == nil {
 		return ""
 	}
-	return o.Name
+	return a.Name
 }

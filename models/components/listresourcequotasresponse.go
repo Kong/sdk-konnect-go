@@ -9,16 +9,16 @@ type ListResourceQuotasResponse struct {
 	Data []ResourceQuota `json:"data"`
 }
 
-func (o *ListResourceQuotasResponse) GetMeta() PaginatedMeta {
-	if o == nil {
+func (l *ListResourceQuotasResponse) GetMeta() PaginatedMeta {
+	if l == nil {
 		return PaginatedMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListResourceQuotasResponse) GetData() []ResourceQuota {
-	if o == nil {
+func (l *ListResourceQuotasResponse) GetData() []ResourceQuota {
+	if l == nil {
 		return []ResourceQuota{}
 	}
-	return o.Data
+	return l.Data
 }

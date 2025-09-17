@@ -13,18 +13,18 @@ type CreateAPIImplementationRequest struct {
 	APIImplementation components.APIImplementation `request:"mediaType=application/json"`
 }
 
-func (o *CreateAPIImplementationRequest) GetAPIID() string {
-	if o == nil {
+func (c *CreateAPIImplementationRequest) GetAPIID() string {
+	if c == nil {
 		return ""
 	}
-	return o.APIID
+	return c.APIID
 }
 
-func (o *CreateAPIImplementationRequest) GetAPIImplementation() components.APIImplementation {
-	if o == nil {
+func (c *CreateAPIImplementationRequest) GetAPIImplementation() components.APIImplementation {
+	if c == nil {
 		return components.APIImplementation{}
 	}
-	return o.APIImplementation
+	return c.APIImplementation
 }
 
 type CreateAPIImplementationResponse struct {
@@ -38,30 +38,30 @@ type CreateAPIImplementationResponse struct {
 	APIImplementationResponse *components.APIImplementationResponse
 }
 
-func (o *CreateAPIImplementationResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateAPIImplementationResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateAPIImplementationResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateAPIImplementationResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateAPIImplementationResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateAPIImplementationResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateAPIImplementationResponse) GetAPIImplementationResponse() *components.APIImplementationResponse {
-	if o == nil {
+func (c *CreateAPIImplementationResponse) GetAPIImplementationResponse() *components.APIImplementationResponse {
+	if c == nil {
 		return nil
 	}
-	return o.APIImplementationResponse
+	return c.APIImplementationResponse
 }

@@ -7,9 +7,9 @@ type ListEmailTemplates struct {
 	Data []EmailTemplate `json:"data,omitempty"`
 }
 
-func (o *ListEmailTemplates) GetData() []EmailTemplate {
-	if o == nil {
+func (l *ListEmailTemplates) GetData() []EmailTemplate {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }

@@ -28,37 +28,37 @@ func (e *EmailDomain) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EmailDomain) GetDomain() string {
-	if o == nil {
+func (e *EmailDomain) GetDomain() string {
+	if e == nil {
 		return ""
 	}
-	return o.Domain
+	return e.Domain
 }
 
-func (o *EmailDomain) GetVerification() EmailDomainVerification {
-	if o == nil {
+func (e *EmailDomain) GetVerification() EmailDomainVerification {
+	if e == nil {
 		return EmailDomainVerification{}
 	}
-	return o.Verification
+	return e.Verification
 }
 
-func (o *EmailDomain) GetDNSValidationRecords() []DNSRecord {
-	if o == nil {
+func (e *EmailDomain) GetDNSValidationRecords() []DNSRecord {
+	if e == nil {
 		return []DNSRecord{}
 	}
-	return o.DNSValidationRecords
+	return e.DNSValidationRecords
 }
 
-func (o *EmailDomain) GetCreatedAt() time.Time {
-	if o == nil {
+func (e *EmailDomain) GetCreatedAt() time.Time {
+	if e == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return e.CreatedAt
 }
 
-func (o *EmailDomain) GetUpdatedAt() time.Time {
-	if o == nil {
+func (e *EmailDomain) GetUpdatedAt() time.Time {
+	if e == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return e.UpdatedAt
 }

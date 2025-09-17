@@ -7,16 +7,16 @@ type DefaultSubscription struct {
 	Enabled bool                    `json:"enabled"`
 }
 
-func (o *DefaultSubscription) GetChannel() NotificationChannelType {
-	if o == nil {
+func (d *DefaultSubscription) GetChannel() NotificationChannelType {
+	if d == nil {
 		return NotificationChannelType("")
 	}
-	return o.Channel
+	return d.Channel
 }
 
-func (o *DefaultSubscription) GetEnabled() bool {
-	if o == nil {
+func (d *DefaultSubscription) GetEnabled() bool {
+	if d == nil {
 		return false
 	}
-	return o.Enabled
+	return d.Enabled
 }

@@ -12,11 +12,11 @@ type ListPortalCustomEmailTemplatesRequest struct {
 	PortalID string `pathParam:"style=simple,explode=false,name=portalId"`
 }
 
-func (o *ListPortalCustomEmailTemplatesRequest) GetPortalID() string {
-	if o == nil {
+func (l *ListPortalCustomEmailTemplatesRequest) GetPortalID() string {
+	if l == nil {
 		return ""
 	}
-	return o.PortalID
+	return l.PortalID
 }
 
 type ListPortalCustomEmailTemplatesResponse struct {
@@ -30,30 +30,30 @@ type ListPortalCustomEmailTemplatesResponse struct {
 	ListEmailTemplates *components.ListEmailTemplates
 }
 
-func (o *ListPortalCustomEmailTemplatesResponse) GetContentType() string {
-	if o == nil {
+func (l *ListPortalCustomEmailTemplatesResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListPortalCustomEmailTemplatesResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListPortalCustomEmailTemplatesResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListPortalCustomEmailTemplatesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListPortalCustomEmailTemplatesResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListPortalCustomEmailTemplatesResponse) GetListEmailTemplates() *components.ListEmailTemplates {
-	if o == nil {
+func (l *ListPortalCustomEmailTemplatesResponse) GetListEmailTemplates() *components.ListEmailTemplates {
+	if l == nil {
 		return nil
 	}
-	return o.ListEmailTemplates
+	return l.ListEmailTemplates
 }

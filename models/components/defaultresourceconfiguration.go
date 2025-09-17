@@ -37,58 +37,58 @@ func (d *DefaultResourceConfiguration) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DefaultResourceConfiguration) GetID() string {
-	if o == nil {
+func (d *DefaultResourceConfiguration) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DefaultResourceConfiguration) GetQualifier() ResourceConfigurationQualifier {
-	if o == nil {
+func (d *DefaultResourceConfiguration) GetQualifier() ResourceConfigurationQualifier {
+	if d == nil {
 		return ResourceConfigurationQualifier("")
 	}
-	return o.Qualifier
+	return d.Qualifier
 }
 
-func (o *DefaultResourceConfiguration) GetName() string {
-	if o == nil {
+func (d *DefaultResourceConfiguration) GetName() string {
+	if d == nil {
 		return ""
 	}
-	return o.Name
+	return d.Name
 }
 
-func (o *DefaultResourceConfiguration) GetDescription() string {
-	if o == nil {
+func (d *DefaultResourceConfiguration) GetDescription() string {
+	if d == nil {
 		return ""
 	}
-	return o.Description
+	return d.Description
 }
 
-func (o *DefaultResourceConfiguration) GetValue() int64 {
-	if o == nil {
+func (d *DefaultResourceConfiguration) GetValue() int64 {
+	if d == nil {
 		return 0
 	}
-	return o.Value
+	return d.Value
 }
 
-func (o *DefaultResourceConfiguration) GetOverrides() []ResourceConfiguration {
-	if o == nil {
+func (d *DefaultResourceConfiguration) GetOverrides() []ResourceConfiguration {
+	if d == nil {
 		return []ResourceConfiguration{}
 	}
-	return o.Overrides
+	return d.Overrides
 }
 
-func (o *DefaultResourceConfiguration) GetCreatedAt() time.Time {
-	if o == nil {
+func (d *DefaultResourceConfiguration) GetCreatedAt() time.Time {
+	if d == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return d.CreatedAt
 }
 
-func (o *DefaultResourceConfiguration) GetUpdatedAt() time.Time {
-	if o == nil {
+func (d *DefaultResourceConfiguration) GetUpdatedAt() time.Time {
+	if d == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return d.UpdatedAt
 }

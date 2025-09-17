@@ -22,25 +22,25 @@ type ListPortalPagesRequest struct {
 	Filter *components.PortalPagesFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *ListPortalPagesRequest) GetSort() *string {
-	if o == nil {
+func (l *ListPortalPagesRequest) GetSort() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Sort
+	return l.Sort
 }
 
-func (o *ListPortalPagesRequest) GetPortalID() string {
-	if o == nil {
+func (l *ListPortalPagesRequest) GetPortalID() string {
+	if l == nil {
 		return ""
 	}
-	return o.PortalID
+	return l.PortalID
 }
 
-func (o *ListPortalPagesRequest) GetFilter() *components.PortalPagesFilterParameters {
-	if o == nil {
+func (l *ListPortalPagesRequest) GetFilter() *components.PortalPagesFilterParameters {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
 type ListPortalPagesResponse struct {
@@ -54,30 +54,30 @@ type ListPortalPagesResponse struct {
 	ListPortalPagesResponse *components.ListPortalPagesResponse
 }
 
-func (o *ListPortalPagesResponse) GetContentType() string {
-	if o == nil {
+func (l *ListPortalPagesResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListPortalPagesResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListPortalPagesResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListPortalPagesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListPortalPagesResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListPortalPagesResponse) GetListPortalPagesResponse() *components.ListPortalPagesResponse {
-	if o == nil {
+func (l *ListPortalPagesResponse) GetListPortalPagesResponse() *components.ListPortalPagesResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListPortalPagesResponse
+	return l.ListPortalPagesResponse
 }

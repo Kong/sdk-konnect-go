@@ -69,30 +69,30 @@ func (p *PortalAuditLogReplayJob) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PortalAuditLogReplayJob) GetStartAt() *time.Time {
-	if o == nil {
+func (p *PortalAuditLogReplayJob) GetStartAt() *time.Time {
+	if p == nil {
 		return nil
 	}
-	return o.StartAt
+	return p.StartAt
 }
 
-func (o *PortalAuditLogReplayJob) GetEndAt() *time.Time {
-	if o == nil {
+func (p *PortalAuditLogReplayJob) GetEndAt() *time.Time {
+	if p == nil {
 		return nil
 	}
-	return o.EndAt
+	return p.EndAt
 }
 
-func (o *PortalAuditLogReplayJob) GetStatus() *PortalAuditLogReplayJobStatus {
-	if o == nil {
+func (p *PortalAuditLogReplayJob) GetStatus() *PortalAuditLogReplayJobStatus {
+	if p == nil {
 		return nil
 	}
-	return o.Status
+	return p.Status
 }
 
-func (o *PortalAuditLogReplayJob) GetUpdatedAt() *time.Time {
-	if o == nil {
+func (p *PortalAuditLogReplayJob) GetUpdatedAt() *time.Time {
+	if p == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return p.UpdatedAt
 }

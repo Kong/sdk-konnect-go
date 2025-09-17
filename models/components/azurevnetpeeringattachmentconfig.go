@@ -54,37 +54,37 @@ func (a *AzureVNETPeeringAttachmentConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *AzureVNETPeeringAttachmentConfig) GetKind() AzureVNETPeeringAttachmentType {
-	if o == nil {
+func (a *AzureVNETPeeringAttachmentConfig) GetKind() AzureVNETPeeringAttachmentType {
+	if a == nil {
 		return AzureVNETPeeringAttachmentType("")
 	}
-	return o.Kind
+	return a.Kind
 }
 
-func (o *AzureVNETPeeringAttachmentConfig) GetTenantID() string {
-	if o == nil {
+func (a *AzureVNETPeeringAttachmentConfig) GetTenantID() string {
+	if a == nil {
 		return ""
 	}
-	return o.TenantID
+	return a.TenantID
 }
 
-func (o *AzureVNETPeeringAttachmentConfig) GetSubscriptionID() string {
-	if o == nil {
+func (a *AzureVNETPeeringAttachmentConfig) GetSubscriptionID() string {
+	if a == nil {
 		return ""
 	}
-	return o.SubscriptionID
+	return a.SubscriptionID
 }
 
-func (o *AzureVNETPeeringAttachmentConfig) GetResourceGroupName() string {
-	if o == nil {
+func (a *AzureVNETPeeringAttachmentConfig) GetResourceGroupName() string {
+	if a == nil {
 		return ""
 	}
-	return o.ResourceGroupName
+	return a.ResourceGroupName
 }
 
-func (o *AzureVNETPeeringAttachmentConfig) GetVnetName() string {
-	if o == nil {
+func (a *AzureVNETPeeringAttachmentConfig) GetVnetName() string {
+	if a == nil {
 		return ""
 	}
-	return o.VnetName
+	return a.VnetName
 }

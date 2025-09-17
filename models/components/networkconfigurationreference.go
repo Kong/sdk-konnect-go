@@ -43,72 +43,72 @@ func (n *NetworkConfigurationReference) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *NetworkConfigurationReference) GetID() string {
-	if o == nil {
+func (n *NetworkConfigurationReference) GetID() string {
+	if n == nil {
 		return ""
 	}
-	return o.ID
+	return n.ID
 }
 
-func (o *NetworkConfigurationReference) GetVersion() string {
-	if o == nil {
+func (n *NetworkConfigurationReference) GetVersion() string {
+	if n == nil {
 		return ""
 	}
-	return o.Version
+	return n.Version
 }
 
-func (o *NetworkConfigurationReference) GetAPIAccess() *APIAccess {
-	if o == nil {
+func (n *NetworkConfigurationReference) GetAPIAccess() *APIAccess {
+	if n == nil {
 		return nil
 	}
-	return o.APIAccess
+	return n.APIAccess
 }
 
-func (o *NetworkConfigurationReference) GetDataplaneGroupConfig() []ConfigurationDataPlaneGroupConfig {
-	if o == nil {
+func (n *NetworkConfigurationReference) GetDataplaneGroupConfig() []ConfigurationDataPlaneGroupConfig {
+	if n == nil {
 		return []ConfigurationDataPlaneGroupConfig{}
 	}
-	return o.DataplaneGroupConfig
+	return n.DataplaneGroupConfig
 }
 
-func (o *NetworkConfigurationReference) GetDataplaneGroups() []ConfigurationDataPlaneGroup {
-	if o == nil {
+func (n *NetworkConfigurationReference) GetDataplaneGroups() []ConfigurationDataPlaneGroup {
+	if n == nil {
 		return []ConfigurationDataPlaneGroup{}
 	}
-	return o.DataplaneGroups
+	return n.DataplaneGroups
 }
 
-func (o *NetworkConfigurationReference) GetEntityVersion() float64 {
-	if o == nil {
+func (n *NetworkConfigurationReference) GetEntityVersion() float64 {
+	if n == nil {
 		return 0.0
 	}
-	return o.EntityVersion
+	return n.EntityVersion
 }
 
-func (o *NetworkConfigurationReference) GetCreatedAt() time.Time {
-	if o == nil {
+func (n *NetworkConfigurationReference) GetCreatedAt() time.Time {
+	if n == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return n.CreatedAt
 }
 
-func (o *NetworkConfigurationReference) GetUpdatedAt() time.Time {
-	if o == nil {
+func (n *NetworkConfigurationReference) GetUpdatedAt() time.Time {
+	if n == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return n.UpdatedAt
 }
 
-func (o *NetworkConfigurationReference) GetControlPlaneID() string {
-	if o == nil {
+func (n *NetworkConfigurationReference) GetControlPlaneID() string {
+	if n == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return n.ControlPlaneID
 }
 
-func (o *NetworkConfigurationReference) GetControlPlaneGeo() ControlPlaneGeo {
-	if o == nil {
+func (n *NetworkConfigurationReference) GetControlPlaneGeo() ControlPlaneGeo {
+	if n == nil {
 		return ControlPlaneGeo("")
 	}
-	return o.ControlPlaneGeo
+	return n.ControlPlaneGeo
 }

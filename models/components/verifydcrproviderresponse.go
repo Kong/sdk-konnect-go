@@ -39,16 +39,16 @@ type VerifyDcrProviderResponse struct {
 	Errors []string `json:"errors"`
 }
 
-func (o *VerifyDcrProviderResponse) GetStatus() Status {
-	if o == nil {
+func (v *VerifyDcrProviderResponse) GetStatus() Status {
+	if v == nil {
 		return Status("")
 	}
-	return o.Status
+	return v.Status
 }
 
-func (o *VerifyDcrProviderResponse) GetErrors() []string {
-	if o == nil {
+func (v *VerifyDcrProviderResponse) GetErrors() []string {
+	if v == nil {
 		return []string{}
 	}
-	return o.Errors
+	return v.Errors
 }

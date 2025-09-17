@@ -9,16 +9,16 @@ type SystemAccountCollection struct {
 	Data []SystemAccount `json:"data,omitempty"`
 }
 
-func (o *SystemAccountCollection) GetMeta() *PaginatedMeta {
-	if o == nil {
+func (s *SystemAccountCollection) GetMeta() *PaginatedMeta {
+	if s == nil {
 		return nil
 	}
-	return o.Meta
+	return s.Meta
 }
 
-func (o *SystemAccountCollection) GetData() []SystemAccount {
-	if o == nil {
+func (s *SystemAccountCollection) GetData() []SystemAccount {
+	if s == nil {
 		return nil
 	}
-	return o.Data
+	return s.Data
 }

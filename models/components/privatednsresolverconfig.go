@@ -22,9 +22,9 @@ func (p *PrivateDNSResolverConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PrivateDNSResolverConfig) GetRemoteDNSServerIPAddresses() []string {
-	if o == nil {
+func (p *PrivateDNSResolverConfig) GetRemoteDNSServerIPAddresses() []string {
+	if p == nil {
 		return []string{}
 	}
-	return o.RemoteDNSServerIPAddresses
+	return p.RemoteDNSServerIPAddresses
 }

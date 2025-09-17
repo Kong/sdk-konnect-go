@@ -42,58 +42,58 @@ func (a *APIDocumentSummaryWithChildren) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *APIDocumentSummaryWithChildren) GetID() string {
-	if o == nil {
+func (a *APIDocumentSummaryWithChildren) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *APIDocumentSummaryWithChildren) GetTitle() string {
-	if o == nil {
+func (a *APIDocumentSummaryWithChildren) GetTitle() string {
+	if a == nil {
 		return ""
 	}
-	return o.Title
+	return a.Title
 }
 
-func (o *APIDocumentSummaryWithChildren) GetSlug() string {
-	if o == nil {
+func (a *APIDocumentSummaryWithChildren) GetSlug() string {
+	if a == nil {
 		return ""
 	}
-	return o.Slug
+	return a.Slug
 }
 
-func (o *APIDocumentSummaryWithChildren) GetStatus() *APIDocumentStatus {
-	if o == nil {
+func (a *APIDocumentSummaryWithChildren) GetStatus() *APIDocumentStatus {
+	if a == nil {
 		return nil
 	}
-	return o.Status
+	return a.Status
 }
 
-func (o *APIDocumentSummaryWithChildren) GetParentDocumentID() *string {
-	if o == nil {
+func (a *APIDocumentSummaryWithChildren) GetParentDocumentID() *string {
+	if a == nil {
 		return nil
 	}
-	return o.ParentDocumentID
+	return a.ParentDocumentID
 }
 
-func (o *APIDocumentSummaryWithChildren) GetCreatedAt() time.Time {
-	if o == nil {
+func (a *APIDocumentSummaryWithChildren) GetCreatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return a.CreatedAt
 }
 
-func (o *APIDocumentSummaryWithChildren) GetUpdatedAt() time.Time {
-	if o == nil {
+func (a *APIDocumentSummaryWithChildren) GetUpdatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return a.UpdatedAt
 }
 
-func (o *APIDocumentSummaryWithChildren) GetChildren() []APIDocumentSummaryWithChildren {
-	if o == nil {
+func (a *APIDocumentSummaryWithChildren) GetChildren() []APIDocumentSummaryWithChildren {
+	if a == nil {
 		return []APIDocumentSummaryWithChildren{}
 	}
-	return o.Children
+	return a.Children
 }

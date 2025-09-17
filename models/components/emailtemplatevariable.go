@@ -12,30 +12,30 @@ type EmailTemplateVariable struct {
 	Example string `json:"example"`
 }
 
-func (o *EmailTemplateVariable) GetName() EmailTemplateVariableName {
-	if o == nil {
+func (e *EmailTemplateVariable) GetName() EmailTemplateVariableName {
+	if e == nil {
 		return EmailTemplateVariableName("")
 	}
-	return o.Name
+	return e.Name
 }
 
-func (o *EmailTemplateVariable) GetDescription() string {
-	if o == nil {
+func (e *EmailTemplateVariable) GetDescription() string {
+	if e == nil {
 		return ""
 	}
-	return o.Description
+	return e.Description
 }
 
-func (o *EmailTemplateVariable) GetScope() []EmailTemplateName {
-	if o == nil {
+func (e *EmailTemplateVariable) GetScope() []EmailTemplateName {
+	if e == nil {
 		return []EmailTemplateName{}
 	}
-	return o.Scope
+	return e.Scope
 }
 
-func (o *EmailTemplateVariable) GetExample() string {
-	if o == nil {
+func (e *EmailTemplateVariable) GetExample() string {
+	if e == nil {
 		return ""
 	}
-	return o.Example
+	return e.Example
 }

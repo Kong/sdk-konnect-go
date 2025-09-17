@@ -14,18 +14,18 @@ type UpdatePortalEmailConfigRequest struct {
 	PatchPortalEmailConfig *components.PatchPortalEmailConfig `request:"mediaType=application/json"`
 }
 
-func (o *UpdatePortalEmailConfigRequest) GetPortalID() string {
-	if o == nil {
+func (u *UpdatePortalEmailConfigRequest) GetPortalID() string {
+	if u == nil {
 		return ""
 	}
-	return o.PortalID
+	return u.PortalID
 }
 
-func (o *UpdatePortalEmailConfigRequest) GetPatchPortalEmailConfig() *components.PatchPortalEmailConfig {
-	if o == nil {
+func (u *UpdatePortalEmailConfigRequest) GetPatchPortalEmailConfig() *components.PatchPortalEmailConfig {
+	if u == nil {
 		return nil
 	}
-	return o.PatchPortalEmailConfig
+	return u.PatchPortalEmailConfig
 }
 
 type UpdatePortalEmailConfigResponse struct {
@@ -39,30 +39,30 @@ type UpdatePortalEmailConfigResponse struct {
 	PortalEmailConfig *components.PortalEmailConfig
 }
 
-func (o *UpdatePortalEmailConfigResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdatePortalEmailConfigResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdatePortalEmailConfigResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdatePortalEmailConfigResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdatePortalEmailConfigResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdatePortalEmailConfigResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdatePortalEmailConfigResponse) GetPortalEmailConfig() *components.PortalEmailConfig {
-	if o == nil {
+func (u *UpdatePortalEmailConfigResponse) GetPortalEmailConfig() *components.PortalEmailConfig {
+	if u == nil {
 		return nil
 	}
-	return o.PortalEmailConfig
+	return u.PortalEmailConfig
 }

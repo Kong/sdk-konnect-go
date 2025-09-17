@@ -32,39 +32,39 @@ func (l *ListHmacAuthWithConsumerRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListHmacAuthWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListHmacAuthWithConsumerRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListHmacAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (l *ListHmacAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if l == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return l.ConsumerIDForNestedEntities
 }
 
-func (o *ListHmacAuthWithConsumerRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListHmacAuthWithConsumerRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListHmacAuthWithConsumerRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListHmacAuthWithConsumerRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListHmacAuthWithConsumerRequest) GetTags() *string {
-	if o == nil {
+func (l *ListHmacAuthWithConsumerRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListHmacAuthWithConsumerResponseBody - A successful response listing HMAC-auth credentials
@@ -76,25 +76,25 @@ type ListHmacAuthWithConsumerResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListHmacAuthWithConsumerResponseBody) GetData() []components.HMACAuth {
-	if o == nil {
+func (l *ListHmacAuthWithConsumerResponseBody) GetData() []components.HMACAuth {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListHmacAuthWithConsumerResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListHmacAuthWithConsumerResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListHmacAuthWithConsumerResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListHmacAuthWithConsumerResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListHmacAuthWithConsumerResponse struct {
@@ -108,30 +108,30 @@ type ListHmacAuthWithConsumerResponse struct {
 	Object *ListHmacAuthWithConsumerResponseBody
 }
 
-func (o *ListHmacAuthWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (l *ListHmacAuthWithConsumerResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListHmacAuthWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListHmacAuthWithConsumerResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListHmacAuthWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListHmacAuthWithConsumerResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListHmacAuthWithConsumerResponse) GetObject() *ListHmacAuthWithConsumerResponseBody {
-	if o == nil {
+func (l *ListHmacAuthWithConsumerResponse) GetObject() *ListHmacAuthWithConsumerResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

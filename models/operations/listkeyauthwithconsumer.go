@@ -32,39 +32,39 @@ func (l *ListKeyAuthWithConsumerRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListKeyAuthWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListKeyAuthWithConsumerRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListKeyAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (l *ListKeyAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if l == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return l.ConsumerIDForNestedEntities
 }
 
-func (o *ListKeyAuthWithConsumerRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListKeyAuthWithConsumerRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListKeyAuthWithConsumerRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListKeyAuthWithConsumerRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListKeyAuthWithConsumerRequest) GetTags() *string {
-	if o == nil {
+func (l *ListKeyAuthWithConsumerRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListKeyAuthWithConsumerResponseBody - A successful response listing API-keys
@@ -76,25 +76,25 @@ type ListKeyAuthWithConsumerResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListKeyAuthWithConsumerResponseBody) GetData() []components.KeyAuth {
-	if o == nil {
+func (l *ListKeyAuthWithConsumerResponseBody) GetData() []components.KeyAuth {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListKeyAuthWithConsumerResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListKeyAuthWithConsumerResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListKeyAuthWithConsumerResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListKeyAuthWithConsumerResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListKeyAuthWithConsumerResponse struct {
@@ -108,30 +108,30 @@ type ListKeyAuthWithConsumerResponse struct {
 	Object *ListKeyAuthWithConsumerResponseBody
 }
 
-func (o *ListKeyAuthWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (l *ListKeyAuthWithConsumerResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListKeyAuthWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListKeyAuthWithConsumerResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListKeyAuthWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListKeyAuthWithConsumerResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListKeyAuthWithConsumerResponse) GetObject() *ListKeyAuthWithConsumerResponseBody {
-	if o == nil {
+func (l *ListKeyAuthWithConsumerResponse) GetObject() *ListKeyAuthWithConsumerResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

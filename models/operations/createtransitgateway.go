@@ -17,18 +17,18 @@ type CreateTransitGatewayRequest struct {
 	CreateTransitGatewayRequest components.CreateTransitGatewayRequest `request:"mediaType=application/json"`
 }
 
-func (o *CreateTransitGatewayRequest) GetNetworkID() string {
-	if o == nil {
+func (c *CreateTransitGatewayRequest) GetNetworkID() string {
+	if c == nil {
 		return ""
 	}
-	return o.NetworkID
+	return c.NetworkID
 }
 
-func (o *CreateTransitGatewayRequest) GetCreateTransitGatewayRequest() components.CreateTransitGatewayRequest {
-	if o == nil {
+func (c *CreateTransitGatewayRequest) GetCreateTransitGatewayRequest() components.CreateTransitGatewayRequest {
+	if c == nil {
 		return components.CreateTransitGatewayRequest{}
 	}
-	return o.CreateTransitGatewayRequest
+	return c.CreateTransitGatewayRequest
 }
 
 type CreateTransitGatewayResponse struct {
@@ -42,30 +42,30 @@ type CreateTransitGatewayResponse struct {
 	TransitGatewayResponse *components.TransitGatewayResponse
 }
 
-func (o *CreateTransitGatewayResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateTransitGatewayResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateTransitGatewayResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateTransitGatewayResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateTransitGatewayResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateTransitGatewayResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateTransitGatewayResponse) GetTransitGatewayResponse() *components.TransitGatewayResponse {
-	if o == nil {
+func (c *CreateTransitGatewayResponse) GetTransitGatewayResponse() *components.TransitGatewayResponse {
+	if c == nil {
 		return nil
 	}
-	return o.TransitGatewayResponse
+	return c.TransitGatewayResponse
 }

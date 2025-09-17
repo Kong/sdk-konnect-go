@@ -33,7 +33,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -90,14 +90,14 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.PortalCustomization.ReplacePortalCustomization(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalCustomization{
         Theme: &components.Theme{
             Colors: &components.Colors{
-                Primary: sdkkonnectgo.String("#000000"),
+                Primary: sdkkonnectgo.Pointer("#000000"),
             },
         },
         Menu: &components.Menu{
@@ -179,14 +179,14 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.PortalCustomization.UpdatePortalCustomization(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalCustomization{
         Theme: &components.Theme{
             Colors: &components.Colors{
-                Primary: sdkkonnectgo.String("#000000"),
+                Primary: sdkkonnectgo.Pointer("#000000"),
             },
         },
         Menu: &components.Menu{

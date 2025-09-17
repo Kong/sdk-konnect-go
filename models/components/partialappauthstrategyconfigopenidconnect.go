@@ -29,37 +29,37 @@ func (p *PartialAppAuthStrategyConfigOpenIDConnect) UnmarshalJSON(data []byte) e
 	return nil
 }
 
-func (o *PartialAppAuthStrategyConfigOpenIDConnect) GetIssuer() *string {
-	if o == nil {
+func (p *PartialAppAuthStrategyConfigOpenIDConnect) GetIssuer() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Issuer
+	return p.Issuer
 }
 
-func (o *PartialAppAuthStrategyConfigOpenIDConnect) GetCredentialClaim() []string {
-	if o == nil {
+func (p *PartialAppAuthStrategyConfigOpenIDConnect) GetCredentialClaim() []string {
+	if p == nil {
 		return nil
 	}
-	return o.CredentialClaim
+	return p.CredentialClaim
 }
 
-func (o *PartialAppAuthStrategyConfigOpenIDConnect) GetScopes() []string {
-	if o == nil {
+func (p *PartialAppAuthStrategyConfigOpenIDConnect) GetScopes() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Scopes
+	return p.Scopes
 }
 
-func (o *PartialAppAuthStrategyConfigOpenIDConnect) GetAuthMethods() []string {
-	if o == nil {
+func (p *PartialAppAuthStrategyConfigOpenIDConnect) GetAuthMethods() []string {
+	if p == nil {
 		return nil
 	}
-	return o.AuthMethods
+	return p.AuthMethods
 }
 
-func (o *PartialAppAuthStrategyConfigOpenIDConnect) GetAdditionalProperties() map[string]any {
-	if o == nil {
+func (p *PartialAppAuthStrategyConfigOpenIDConnect) GetAdditionalProperties() map[string]any {
+	if p == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return p.AdditionalProperties
 }

@@ -12,11 +12,11 @@ type GetPortalAssetLogoRawRequest struct {
 	PortalID string `pathParam:"style=simple,explode=false,name=portalId"`
 }
 
-func (o *GetPortalAssetLogoRawRequest) GetPortalID() string {
-	if o == nil {
+func (g *GetPortalAssetLogoRawRequest) GetPortalID() string {
+	if g == nil {
 		return ""
 	}
-	return o.PortalID
+	return g.PortalID
 }
 
 type GetPortalAssetLogoRawResponse struct {
@@ -37,44 +37,44 @@ type GetPortalAssetLogoRawResponse struct {
 	TwoHundredImageSvgPlusXMLPortalImageAssetBlob io.ReadCloser
 }
 
-func (o *GetPortalAssetLogoRawResponse) GetContentType() string {
-	if o == nil {
+func (g *GetPortalAssetLogoRawResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetPortalAssetLogoRawResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetPortalAssetLogoRawResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetPortalAssetLogoRawResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetPortalAssetLogoRawResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetPortalAssetLogoRawResponse) GetTwoHundredImagePngPortalImageAssetBlob() io.ReadCloser {
-	if o == nil {
+func (g *GetPortalAssetLogoRawResponse) GetTwoHundredImagePngPortalImageAssetBlob() io.ReadCloser {
+	if g == nil {
 		return nil
 	}
-	return o.TwoHundredImagePngPortalImageAssetBlob
+	return g.TwoHundredImagePngPortalImageAssetBlob
 }
 
-func (o *GetPortalAssetLogoRawResponse) GetTwoHundredImageJpegPortalImageAssetBlob() io.ReadCloser {
-	if o == nil {
+func (g *GetPortalAssetLogoRawResponse) GetTwoHundredImageJpegPortalImageAssetBlob() io.ReadCloser {
+	if g == nil {
 		return nil
 	}
-	return o.TwoHundredImageJpegPortalImageAssetBlob
+	return g.TwoHundredImageJpegPortalImageAssetBlob
 }
 
-func (o *GetPortalAssetLogoRawResponse) GetTwoHundredImageSvgPlusXMLPortalImageAssetBlob() io.ReadCloser {
-	if o == nil {
+func (g *GetPortalAssetLogoRawResponse) GetTwoHundredImageSvgPlusXMLPortalImageAssetBlob() io.ReadCloser {
+	if g == nil {
 		return nil
 	}
-	return o.TwoHundredImageSvgPlusXMLPortalImageAssetBlob
+	return g.TwoHundredImageSvgPlusXMLPortalImageAssetBlob
 }

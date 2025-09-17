@@ -32,37 +32,37 @@ func (a *APIImplementationListItemGatewayServiceEntity) UnmarshalJSON(data []byt
 	return nil
 }
 
-func (o *APIImplementationListItemGatewayServiceEntity) GetID() string {
-	if o == nil {
+func (a *APIImplementationListItemGatewayServiceEntity) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *APIImplementationListItemGatewayServiceEntity) GetCreatedAt() time.Time {
-	if o == nil {
+func (a *APIImplementationListItemGatewayServiceEntity) GetCreatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return a.CreatedAt
 }
 
-func (o *APIImplementationListItemGatewayServiceEntity) GetUpdatedAt() time.Time {
-	if o == nil {
+func (a *APIImplementationListItemGatewayServiceEntity) GetUpdatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return a.UpdatedAt
 }
 
-func (o *APIImplementationListItemGatewayServiceEntity) GetAPIID() string {
-	if o == nil {
+func (a *APIImplementationListItemGatewayServiceEntity) GetAPIID() string {
+	if a == nil {
 		return ""
 	}
-	return o.APIID
+	return a.APIID
 }
 
-func (o *APIImplementationListItemGatewayServiceEntity) GetService() *APIImplementationService {
-	if o == nil {
+func (a *APIImplementationListItemGatewayServiceEntity) GetService() *APIImplementationService {
+	if a == nil {
 		return nil
 	}
-	return o.Service
+	return a.Service
 }

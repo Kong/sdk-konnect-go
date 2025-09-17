@@ -10,30 +10,30 @@ type CustomDomainsFilterParameters struct {
 	State           *CustomDomainStateFieldFilter           `queryParam:"name=state"`
 }
 
-func (o *CustomDomainsFilterParameters) GetControlPlaneID() *IDFieldFilter {
-	if o == nil {
+func (c *CustomDomainsFilterParameters) GetControlPlaneID() *IDFieldFilter {
+	if c == nil {
 		return nil
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CustomDomainsFilterParameters) GetControlPlaneGeo() *ControlPlaneGeoFieldFilter {
-	if o == nil {
+func (c *CustomDomainsFilterParameters) GetControlPlaneGeo() *ControlPlaneGeoFieldFilter {
+	if c == nil {
 		return nil
 	}
-	return o.ControlPlaneGeo
+	return c.ControlPlaneGeo
 }
 
-func (o *CustomDomainsFilterParameters) GetDomain() *CloudGatewaysStringFieldFilterOverride {
-	if o == nil {
+func (c *CustomDomainsFilterParameters) GetDomain() *CloudGatewaysStringFieldFilterOverride {
+	if c == nil {
 		return nil
 	}
-	return o.Domain
+	return c.Domain
 }
 
-func (o *CustomDomainsFilterParameters) GetState() *CustomDomainStateFieldFilter {
-	if o == nil {
+func (c *CustomDomainsFilterParameters) GetState() *CustomDomainStateFieldFilter {
+	if c == nil {
 		return nil
 	}
-	return o.State
+	return c.State
 }

@@ -29,30 +29,30 @@ func (p *PostPortalEmailConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PostPortalEmailConfig) GetDomainName() *string {
-	if o == nil {
+func (p *PostPortalEmailConfig) GetDomainName() *string {
+	if p == nil {
 		return nil
 	}
-	return o.DomainName
+	return p.DomainName
 }
 
-func (o *PostPortalEmailConfig) GetFromName() *string {
-	if o == nil {
+func (p *PostPortalEmailConfig) GetFromName() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FromName
+	return p.FromName
 }
 
-func (o *PostPortalEmailConfig) GetFromEmail() *string {
-	if o == nil {
+func (p *PostPortalEmailConfig) GetFromEmail() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FromEmail
+	return p.FromEmail
 }
 
-func (o *PostPortalEmailConfig) GetReplyToEmail() *string {
-	if o == nil {
+func (p *PostPortalEmailConfig) GetReplyToEmail() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ReplyToEmail
+	return p.ReplyToEmail
 }

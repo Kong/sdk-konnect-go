@@ -21,11 +21,11 @@ func (c *CompatibilityStatus) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CompatibilityStatus) GetState() *string {
-	if o == nil {
+func (c *CompatibilityStatus) GetState() *string {
+	if c == nil {
 		return nil
 	}
-	return o.State
+	return c.State
 }
 
 type ListNodesItems struct {
@@ -51,67 +51,67 @@ func (l *ListNodesItems) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListNodesItems) GetID() *string {
-	if o == nil {
+func (l *ListNodesItems) GetID() *string {
+	if l == nil {
 		return nil
 	}
-	return o.ID
+	return l.ID
 }
 
-func (o *ListNodesItems) GetVersion() *string {
-	if o == nil {
+func (l *ListNodesItems) GetVersion() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Version
+	return l.Version
 }
 
-func (o *ListNodesItems) GetHostname() *string {
-	if o == nil {
+func (l *ListNodesItems) GetHostname() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Hostname
+	return l.Hostname
 }
 
-func (o *ListNodesItems) GetLastPing() *int64 {
-	if o == nil {
+func (l *ListNodesItems) GetLastPing() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.LastPing
+	return l.LastPing
 }
 
-func (o *ListNodesItems) GetType() *string {
-	if o == nil {
+func (l *ListNodesItems) GetType() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Type
+	return l.Type
 }
 
-func (o *ListNodesItems) GetCreatedAt() *int64 {
-	if o == nil {
+func (l *ListNodesItems) GetCreatedAt() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return l.CreatedAt
 }
 
-func (o *ListNodesItems) GetUpdatedAt() *int64 {
-	if o == nil {
+func (l *ListNodesItems) GetUpdatedAt() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return l.UpdatedAt
 }
 
-func (o *ListNodesItems) GetConfigHash() *string {
-	if o == nil {
+func (l *ListNodesItems) GetConfigHash() *string {
+	if l == nil {
 		return nil
 	}
-	return o.ConfigHash
+	return l.ConfigHash
 }
 
-func (o *ListNodesItems) GetCompatibilityStatus() *CompatibilityStatus {
-	if o == nil {
+func (l *ListNodesItems) GetCompatibilityStatus() *CompatibilityStatus {
+	if l == nil {
 		return nil
 	}
-	return o.CompatibilityStatus
+	return l.CompatibilityStatus
 }
 
 type ListNodesPage struct {
@@ -130,18 +130,18 @@ func (l *ListNodesPage) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListNodesPage) GetTotal() *int64 {
-	if o == nil {
+func (l *ListNodesPage) GetTotal() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Total
+	return l.Total
 }
 
-func (o *ListNodesPage) GetNext() *string {
-	if o == nil {
+func (l *ListNodesPage) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
 // ListNodes - Example response
@@ -150,16 +150,16 @@ type ListNodes struct {
 	Page  *ListNodesPage   `json:"page,omitempty"`
 }
 
-func (o *ListNodes) GetItems() []ListNodesItems {
-	if o == nil {
+func (l *ListNodes) GetItems() []ListNodesItems {
+	if l == nil {
 		return nil
 	}
-	return o.Items
+	return l.Items
 }
 
-func (o *ListNodes) GetPage() *ListNodesPage {
-	if o == nil {
+func (l *ListNodes) GetPage() *ListNodesPage {
+	if l == nil {
 		return nil
 	}
-	return o.Page
+	return l.Page
 }

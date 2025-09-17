@@ -7,9 +7,9 @@ type StringFieldEqualsFilter struct {
 	Eq *string `queryParam:"name=eq"`
 }
 
-func (o *StringFieldEqualsFilter) GetEq() *string {
-	if o == nil {
+func (s *StringFieldEqualsFilter) GetEq() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Eq
+	return s.Eq
 }

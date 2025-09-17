@@ -7,9 +7,9 @@ type AddDeveloperToTeamRequest struct {
 	ID string `json:"id"`
 }
 
-func (o *AddDeveloperToTeamRequest) GetID() string {
-	if o == nil {
+func (a *AddDeveloperToTeamRequest) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }

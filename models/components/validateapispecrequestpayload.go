@@ -9,9 +9,9 @@ type ValidateAPISpecRequestPayload struct {
 	Content string `json:"content"`
 }
 
-func (o *ValidateAPISpecRequestPayload) GetContent() string {
-	if o == nil {
+func (v *ValidateAPISpecRequestPayload) GetContent() string {
+	if v == nil {
 		return ""
 	}
-	return o.Content
+	return v.Content
 }

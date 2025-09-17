@@ -16,25 +16,25 @@ type CreateJwtWithConsumerRequest struct {
 	JWTWithoutParents *components.JWTWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *CreateJwtWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreateJwtWithConsumerRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreateJwtWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (c *CreateJwtWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if c == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return c.ConsumerIDForNestedEntities
 }
 
-func (o *CreateJwtWithConsumerRequest) GetJWTWithoutParents() *components.JWTWithoutParents {
-	if o == nil {
+func (c *CreateJwtWithConsumerRequest) GetJWTWithoutParents() *components.JWTWithoutParents {
+	if c == nil {
 		return nil
 	}
-	return o.JWTWithoutParents
+	return c.JWTWithoutParents
 }
 
 type CreateJwtWithConsumerResponse struct {
@@ -48,30 +48,30 @@ type CreateJwtWithConsumerResponse struct {
 	Jwt *components.Jwt
 }
 
-func (o *CreateJwtWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateJwtWithConsumerResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateJwtWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateJwtWithConsumerResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateJwtWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateJwtWithConsumerResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateJwtWithConsumerResponse) GetJwt() *components.Jwt {
-	if o == nil {
+func (c *CreateJwtWithConsumerResponse) GetJwt() *components.Jwt {
+	if c == nil {
 		return nil
 	}
-	return o.Jwt
+	return c.Jwt
 }

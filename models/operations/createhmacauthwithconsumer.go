@@ -16,25 +16,25 @@ type CreateHmacAuthWithConsumerRequest struct {
 	HMACAuthWithoutParents components.HMACAuthWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *CreateHmacAuthWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreateHmacAuthWithConsumerRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreateHmacAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (c *CreateHmacAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if c == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return c.ConsumerIDForNestedEntities
 }
 
-func (o *CreateHmacAuthWithConsumerRequest) GetHMACAuthWithoutParents() components.HMACAuthWithoutParents {
-	if o == nil {
+func (c *CreateHmacAuthWithConsumerRequest) GetHMACAuthWithoutParents() components.HMACAuthWithoutParents {
+	if c == nil {
 		return components.HMACAuthWithoutParents{}
 	}
-	return o.HMACAuthWithoutParents
+	return c.HMACAuthWithoutParents
 }
 
 type CreateHmacAuthWithConsumerResponse struct {
@@ -48,30 +48,30 @@ type CreateHmacAuthWithConsumerResponse struct {
 	HMACAuth *components.HMACAuth
 }
 
-func (o *CreateHmacAuthWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateHmacAuthWithConsumerResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateHmacAuthWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateHmacAuthWithConsumerResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateHmacAuthWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateHmacAuthWithConsumerResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateHmacAuthWithConsumerResponse) GetHMACAuth() *components.HMACAuth {
-	if o == nil {
+func (c *CreateHmacAuthWithConsumerResponse) GetHMACAuth() *components.HMACAuth {
+	if c == nil {
 		return nil
 	}
-	return o.HMACAuth
+	return c.HMACAuth
 }

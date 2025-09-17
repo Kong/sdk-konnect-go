@@ -14,18 +14,18 @@ type GetPartialRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 }
 
-func (o *GetPartialRequest) GetPartialID() string {
-	if o == nil {
+func (g *GetPartialRequest) GetPartialID() string {
+	if g == nil {
 		return ""
 	}
-	return o.PartialID
+	return g.PartialID
 }
 
-func (o *GetPartialRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetPartialRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
 type GetPartialResponse struct {
@@ -39,43 +39,43 @@ type GetPartialResponse struct {
 	Partial *components.Partial
 }
 
-func (o *GetPartialResponse) GetContentType() string {
-	if o == nil {
+func (g *GetPartialResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetPartialResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetPartialResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetPartialResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetPartialResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetPartialResponse) GetPartial() *components.Partial {
-	if o == nil {
+func (g *GetPartialResponse) GetPartial() *components.Partial {
+	if g == nil {
 		return nil
 	}
-	return o.Partial
+	return g.Partial
 }
 
-func (o *GetPartialResponse) GetPartialRedisCe() *components.PartialRedisCe {
-	if v := o.GetPartial(); v != nil {
+func (g *GetPartialResponse) GetPartialRedisCe() *components.PartialRedisCe {
+	if v := g.GetPartial(); v != nil {
 		return v.PartialRedisCe
 	}
 	return nil
 }
 
-func (o *GetPartialResponse) GetPartialRedisEe() *components.PartialRedisEe {
-	if v := o.GetPartial(); v != nil {
+func (g *GetPartialResponse) GetPartialRedisEe() *components.PartialRedisEe {
+	if v := g.GetPartial(); v != nil {
 		return v.PartialRedisEe
 	}
 	return nil

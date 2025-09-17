@@ -22,30 +22,30 @@ type GetUsersMeResponse struct {
 	User *components.User
 }
 
-func (o *GetUsersMeResponse) GetContentType() string {
-	if o == nil {
+func (g *GetUsersMeResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetUsersMeResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetUsersMeResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetUsersMeResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetUsersMeResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetUsersMeResponse) GetUser() *components.User {
-	if o == nil {
+func (g *GetUsersMeResponse) GetUser() *components.User {
+	if g == nil {
 		return nil
 	}
-	return o.User
+	return g.User
 }

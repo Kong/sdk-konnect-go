@@ -32,39 +32,39 @@ func (l *ListMtlsAuthWithConsumerRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListMtlsAuthWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListMtlsAuthWithConsumerRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListMtlsAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (l *ListMtlsAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if l == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return l.ConsumerIDForNestedEntities
 }
 
-func (o *ListMtlsAuthWithConsumerRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListMtlsAuthWithConsumerRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListMtlsAuthWithConsumerRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListMtlsAuthWithConsumerRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListMtlsAuthWithConsumerRequest) GetTags() *string {
-	if o == nil {
+func (l *ListMtlsAuthWithConsumerRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListMtlsAuthWithConsumerResponseBody - A successful response listing MTLS-auth credentials
@@ -76,25 +76,25 @@ type ListMtlsAuthWithConsumerResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListMtlsAuthWithConsumerResponseBody) GetData() []components.MTLSAuth {
-	if o == nil {
+func (l *ListMtlsAuthWithConsumerResponseBody) GetData() []components.MTLSAuth {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListMtlsAuthWithConsumerResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListMtlsAuthWithConsumerResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListMtlsAuthWithConsumerResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListMtlsAuthWithConsumerResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListMtlsAuthWithConsumerResponse struct {
@@ -108,30 +108,30 @@ type ListMtlsAuthWithConsumerResponse struct {
 	Object *ListMtlsAuthWithConsumerResponseBody
 }
 
-func (o *ListMtlsAuthWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (l *ListMtlsAuthWithConsumerResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListMtlsAuthWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListMtlsAuthWithConsumerResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListMtlsAuthWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListMtlsAuthWithConsumerResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListMtlsAuthWithConsumerResponse) GetObject() *ListMtlsAuthWithConsumerResponseBody {
-	if o == nil {
+func (l *ListMtlsAuthWithConsumerResponse) GetObject() *ListMtlsAuthWithConsumerResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

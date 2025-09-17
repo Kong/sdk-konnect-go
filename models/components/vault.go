@@ -37,58 +37,58 @@ func (v *Vault) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Vault) GetConfig() map[string]any {
-	if o == nil {
+func (v *Vault) GetConfig() map[string]any {
+	if v == nil {
 		return nil
 	}
-	return o.Config
+	return v.Config
 }
 
-func (o *Vault) GetCreatedAt() *int64 {
-	if o == nil {
+func (v *Vault) GetCreatedAt() *int64 {
+	if v == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return v.CreatedAt
 }
 
-func (o *Vault) GetDescription() *string {
-	if o == nil {
+func (v *Vault) GetDescription() *string {
+	if v == nil {
 		return nil
 	}
-	return o.Description
+	return v.Description
 }
 
-func (o *Vault) GetID() *string {
-	if o == nil {
+func (v *Vault) GetID() *string {
+	if v == nil {
 		return nil
 	}
-	return o.ID
+	return v.ID
 }
 
-func (o *Vault) GetName() string {
-	if o == nil {
+func (v *Vault) GetName() string {
+	if v == nil {
 		return ""
 	}
-	return o.Name
+	return v.Name
 }
 
-func (o *Vault) GetPrefix() string {
-	if o == nil {
+func (v *Vault) GetPrefix() string {
+	if v == nil {
 		return ""
 	}
-	return o.Prefix
+	return v.Prefix
 }
 
-func (o *Vault) GetTags() []string {
-	if o == nil {
+func (v *Vault) GetTags() []string {
+	if v == nil {
 		return nil
 	}
-	return o.Tags
+	return v.Tags
 }
 
-func (o *Vault) GetUpdatedAt() *int64 {
-	if o == nil {
+func (v *Vault) GetUpdatedAt() *int64 {
+	if v == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return v.UpdatedAt
 }

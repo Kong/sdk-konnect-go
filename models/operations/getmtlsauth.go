@@ -14,18 +14,18 @@ type GetMtlsAuthRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 }
 
-func (o *GetMtlsAuthRequest) GetMTLSAuthID() string {
-	if o == nil {
+func (g *GetMtlsAuthRequest) GetMTLSAuthID() string {
+	if g == nil {
 		return ""
 	}
-	return o.MTLSAuthID
+	return g.MTLSAuthID
 }
 
-func (o *GetMtlsAuthRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetMtlsAuthRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
 type GetMtlsAuthResponse struct {
@@ -39,30 +39,30 @@ type GetMtlsAuthResponse struct {
 	MTLSAuth *components.MTLSAuth
 }
 
-func (o *GetMtlsAuthResponse) GetContentType() string {
-	if o == nil {
+func (g *GetMtlsAuthResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetMtlsAuthResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetMtlsAuthResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetMtlsAuthResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetMtlsAuthResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetMtlsAuthResponse) GetMTLSAuth() *components.MTLSAuth {
-	if o == nil {
+func (g *GetMtlsAuthResponse) GetMTLSAuth() *components.MTLSAuth {
+	if g == nil {
 		return nil
 	}
-	return o.MTLSAuth
+	return g.MTLSAuth
 }

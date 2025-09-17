@@ -17,32 +17,32 @@ type UpdateConfigStoreSecretRequest struct {
 	UpdateConfigStoreSecret components.UpdateConfigStoreSecret `request:"mediaType=application/json"`
 }
 
-func (o *UpdateConfigStoreSecretRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpdateConfigStoreSecretRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpdateConfigStoreSecretRequest) GetConfigStoreID() string {
-	if o == nil {
+func (u *UpdateConfigStoreSecretRequest) GetConfigStoreID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ConfigStoreID
+	return u.ConfigStoreID
 }
 
-func (o *UpdateConfigStoreSecretRequest) GetKey() string {
-	if o == nil {
+func (u *UpdateConfigStoreSecretRequest) GetKey() string {
+	if u == nil {
 		return ""
 	}
-	return o.Key
+	return u.Key
 }
 
-func (o *UpdateConfigStoreSecretRequest) GetUpdateConfigStoreSecret() components.UpdateConfigStoreSecret {
-	if o == nil {
+func (u *UpdateConfigStoreSecretRequest) GetUpdateConfigStoreSecret() components.UpdateConfigStoreSecret {
+	if u == nil {
 		return components.UpdateConfigStoreSecret{}
 	}
-	return o.UpdateConfigStoreSecret
+	return u.UpdateConfigStoreSecret
 }
 
 type UpdateConfigStoreSecretResponse struct {
@@ -56,30 +56,30 @@ type UpdateConfigStoreSecretResponse struct {
 	ConfigStoreSecret *components.ConfigStoreSecret
 }
 
-func (o *UpdateConfigStoreSecretResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateConfigStoreSecretResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateConfigStoreSecretResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateConfigStoreSecretResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateConfigStoreSecretResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateConfigStoreSecretResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateConfigStoreSecretResponse) GetConfigStoreSecret() *components.ConfigStoreSecret {
-	if o == nil {
+func (u *UpdateConfigStoreSecretResponse) GetConfigStoreSecret() *components.ConfigStoreSecret {
+	if u == nil {
 		return nil
 	}
-	return o.ConfigStoreSecret
+	return u.ConfigStoreSecret
 }

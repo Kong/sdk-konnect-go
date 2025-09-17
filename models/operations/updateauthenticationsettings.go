@@ -22,30 +22,30 @@ type UpdateAuthenticationSettingsResponse struct {
 	AuthenticationSettings *components.AuthenticationSettings
 }
 
-func (o *UpdateAuthenticationSettingsResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateAuthenticationSettingsResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateAuthenticationSettingsResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateAuthenticationSettingsResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateAuthenticationSettingsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateAuthenticationSettingsResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateAuthenticationSettingsResponse) GetAuthenticationSettings() *components.AuthenticationSettings {
-	if o == nil {
+func (u *UpdateAuthenticationSettingsResponse) GetAuthenticationSettings() *components.AuthenticationSettings {
+	if u == nil {
 		return nil
 	}
-	return o.AuthenticationSettings
+	return u.AuthenticationSettings
 }

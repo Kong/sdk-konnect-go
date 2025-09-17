@@ -21,25 +21,25 @@ type GetSystemAccountsQueryParamFilter struct {
 	KonnectManaged *bool `queryParam:"name=konnect_managed"`
 }
 
-func (o *GetSystemAccountsQueryParamFilter) GetName() *components.LegacyStringFieldFilter {
-	if o == nil {
+func (g *GetSystemAccountsQueryParamFilter) GetName() *components.LegacyStringFieldFilter {
+	if g == nil {
 		return nil
 	}
-	return o.Name
+	return g.Name
 }
 
-func (o *GetSystemAccountsQueryParamFilter) GetDescription() *components.LegacyStringFieldFilter {
-	if o == nil {
+func (g *GetSystemAccountsQueryParamFilter) GetDescription() *components.LegacyStringFieldFilter {
+	if g == nil {
 		return nil
 	}
-	return o.Description
+	return g.Description
 }
 
-func (o *GetSystemAccountsQueryParamFilter) GetKonnectManaged() *bool {
-	if o == nil {
+func (g *GetSystemAccountsQueryParamFilter) GetKonnectManaged() *bool {
+	if g == nil {
 		return nil
 	}
-	return o.KonnectManaged
+	return g.KonnectManaged
 }
 
 type GetSystemAccountsRequest struct {
@@ -51,25 +51,25 @@ type GetSystemAccountsRequest struct {
 	Filter *GetSystemAccountsQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *GetSystemAccountsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (g *GetSystemAccountsRequest) GetPageSize() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.PageSize
+	return g.PageSize
 }
 
-func (o *GetSystemAccountsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (g *GetSystemAccountsRequest) GetPageNumber() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.PageNumber
+	return g.PageNumber
 }
 
-func (o *GetSystemAccountsRequest) GetFilter() *GetSystemAccountsQueryParamFilter {
-	if o == nil {
+func (g *GetSystemAccountsRequest) GetFilter() *GetSystemAccountsQueryParamFilter {
+	if g == nil {
 		return nil
 	}
-	return o.Filter
+	return g.Filter
 }
 
 type GetSystemAccountsResponse struct {
@@ -83,30 +83,30 @@ type GetSystemAccountsResponse struct {
 	SystemAccountCollection *components.SystemAccountCollection
 }
 
-func (o *GetSystemAccountsResponse) GetContentType() string {
-	if o == nil {
+func (g *GetSystemAccountsResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetSystemAccountsResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetSystemAccountsResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetSystemAccountsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetSystemAccountsResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetSystemAccountsResponse) GetSystemAccountCollection() *components.SystemAccountCollection {
-	if o == nil {
+func (g *GetSystemAccountsResponse) GetSystemAccountCollection() *components.SystemAccountCollection {
+	if g == nil {
 		return nil
 	}
-	return o.SystemAccountCollection
+	return g.SystemAccountCollection
 }

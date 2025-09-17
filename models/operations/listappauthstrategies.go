@@ -23,46 +23,46 @@ type Filter struct {
 	DcrProviderType *components.StringFieldFilter `queryParam:"name=dcr_provider_type"`
 }
 
-func (o *Filter) GetStrategyType() *components.StringFieldFilter {
-	if o == nil {
+func (f *Filter) GetStrategyType() *components.StringFieldFilter {
+	if f == nil {
 		return nil
 	}
-	return o.StrategyType
+	return f.StrategyType
 }
 
-func (o *Filter) GetName() *components.StringFieldFilter {
-	if o == nil {
+func (f *Filter) GetName() *components.StringFieldFilter {
+	if f == nil {
 		return nil
 	}
-	return o.Name
+	return f.Name
 }
 
-func (o *Filter) GetDisplayName() *components.StringFieldFilter {
-	if o == nil {
+func (f *Filter) GetDisplayName() *components.StringFieldFilter {
+	if f == nil {
 		return nil
 	}
-	return o.DisplayName
+	return f.DisplayName
 }
 
-func (o *Filter) GetDcrProviderID() *components.UUIDFieldFilter {
-	if o == nil {
+func (f *Filter) GetDcrProviderID() *components.UUIDFieldFilter {
+	if f == nil {
 		return nil
 	}
-	return o.DcrProviderID
+	return f.DcrProviderID
 }
 
-func (o *Filter) GetDcrProviderName() *components.StringFieldFilter {
-	if o == nil {
+func (f *Filter) GetDcrProviderName() *components.StringFieldFilter {
+	if f == nil {
 		return nil
 	}
-	return o.DcrProviderName
+	return f.DcrProviderName
 }
 
-func (o *Filter) GetDcrProviderType() *components.StringFieldFilter {
-	if o == nil {
+func (f *Filter) GetDcrProviderType() *components.StringFieldFilter {
+	if f == nil {
 		return nil
 	}
-	return o.DcrProviderType
+	return f.DcrProviderType
 }
 
 type ListAppAuthStrategiesRequest struct {
@@ -88,32 +88,32 @@ type ListAppAuthStrategiesRequest struct {
 	Filter *Filter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *ListAppAuthStrategiesRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListAppAuthStrategiesRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListAppAuthStrategiesRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListAppAuthStrategiesRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListAppAuthStrategiesRequest) GetSort() *string {
-	if o == nil {
+func (l *ListAppAuthStrategiesRequest) GetSort() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Sort
+	return l.Sort
 }
 
-func (o *ListAppAuthStrategiesRequest) GetFilter() *Filter {
-	if o == nil {
+func (l *ListAppAuthStrategiesRequest) GetFilter() *Filter {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
 type ListAppAuthStrategiesResponse struct {
@@ -127,30 +127,30 @@ type ListAppAuthStrategiesResponse struct {
 	ListAppAuthStrategiesResponse *components.ListAppAuthStrategiesResponse
 }
 
-func (o *ListAppAuthStrategiesResponse) GetContentType() string {
-	if o == nil {
+func (l *ListAppAuthStrategiesResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListAppAuthStrategiesResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListAppAuthStrategiesResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListAppAuthStrategiesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListAppAuthStrategiesResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListAppAuthStrategiesResponse) GetListAppAuthStrategiesResponse() *components.ListAppAuthStrategiesResponse {
-	if o == nil {
+func (l *ListAppAuthStrategiesResponse) GetListAppAuthStrategiesResponse() *components.ListAppAuthStrategiesResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListAppAuthStrategiesResponse
+	return l.ListAppAuthStrategiesResponse
 }

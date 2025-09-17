@@ -73,58 +73,58 @@ func (m *MeOrganization) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *MeOrganization) GetID() *string {
-	if o == nil {
+func (m *MeOrganization) GetID() *string {
+	if m == nil {
 		return nil
 	}
-	return o.ID
+	return m.ID
 }
 
-func (o *MeOrganization) GetName() *string {
-	if o == nil {
+func (m *MeOrganization) GetName() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Name
+	return m.Name
 }
 
-func (o *MeOrganization) GetOwnerID() *string {
-	if o == nil {
+func (m *MeOrganization) GetOwnerID() *string {
+	if m == nil {
 		return nil
 	}
-	return o.OwnerID
+	return m.OwnerID
 }
 
-func (o *MeOrganization) GetLoginPath() *string {
-	if o == nil {
+func (m *MeOrganization) GetLoginPath() *string {
+	if m == nil {
 		return nil
 	}
-	return o.LoginPath
+	return m.LoginPath
 }
 
-func (o *MeOrganization) GetCreatedAt() *time.Time {
-	if o == nil {
+func (m *MeOrganization) GetCreatedAt() *time.Time {
+	if m == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return m.CreatedAt
 }
 
-func (o *MeOrganization) GetUpdatedAt() *time.Time {
-	if o == nil {
+func (m *MeOrganization) GetUpdatedAt() *time.Time {
+	if m == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return m.UpdatedAt
 }
 
-func (o *MeOrganization) GetState() *MeOrganizationState {
-	if o == nil {
+func (m *MeOrganization) GetState() *MeOrganizationState {
+	if m == nil {
 		return nil
 	}
-	return o.State
+	return m.State
 }
 
-func (o *MeOrganization) GetRetentionPeriodDays() *int64 {
-	if o == nil {
+func (m *MeOrganization) GetRetentionPeriodDays() *int64 {
+	if m == nil {
 		return nil
 	}
-	return o.RetentionPeriodDays
+	return m.RetentionPeriodDays
 }

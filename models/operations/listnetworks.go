@@ -20,25 +20,25 @@ type ListNetworksRequest struct {
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 }
 
-func (o *ListNetworksRequest) GetFilter() *components.NetworksFilterParameters {
-	if o == nil {
+func (l *ListNetworksRequest) GetFilter() *components.NetworksFilterParameters {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
-func (o *ListNetworksRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListNetworksRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListNetworksRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListNetworksRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
 type ListNetworksResponse struct {
@@ -52,30 +52,30 @@ type ListNetworksResponse struct {
 	ListNetworksResponse *components.ListNetworksResponse
 }
 
-func (o *ListNetworksResponse) GetContentType() string {
-	if o == nil {
+func (l *ListNetworksResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListNetworksResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListNetworksResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListNetworksResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListNetworksResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListNetworksResponse) GetListNetworksResponse() *components.ListNetworksResponse {
-	if o == nil {
+func (l *ListNetworksResponse) GetListNetworksResponse() *components.ListNetworksResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListNetworksResponse
+	return l.ListNetworksResponse
 }

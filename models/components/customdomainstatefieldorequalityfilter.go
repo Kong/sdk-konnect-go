@@ -23,9 +23,9 @@ func (c *CustomDomainStateFieldOrEqualityFilter) UnmarshalJSON(data []byte) erro
 	return nil
 }
 
-func (o *CustomDomainStateFieldOrEqualityFilter) GetOeq() string {
-	if o == nil {
+func (c *CustomDomainStateFieldOrEqualityFilter) GetOeq() string {
+	if c == nil {
 		return ""
 	}
-	return o.Oeq
+	return c.Oeq
 }

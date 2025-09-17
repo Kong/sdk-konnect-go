@@ -15,25 +15,25 @@ type DeletePluginWithServiceRequest struct {
 	PluginID string `pathParam:"style=simple,explode=false,name=PluginId"`
 }
 
-func (o *DeletePluginWithServiceRequest) GetControlPlaneID() string {
-	if o == nil {
+func (d *DeletePluginWithServiceRequest) GetControlPlaneID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return d.ControlPlaneID
 }
 
-func (o *DeletePluginWithServiceRequest) GetServiceID() string {
-	if o == nil {
+func (d *DeletePluginWithServiceRequest) GetServiceID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ServiceID
+	return d.ServiceID
 }
 
-func (o *DeletePluginWithServiceRequest) GetPluginID() string {
-	if o == nil {
+func (d *DeletePluginWithServiceRequest) GetPluginID() string {
+	if d == nil {
 		return ""
 	}
-	return o.PluginID
+	return d.PluginID
 }
 
 type DeletePluginWithServiceResponse struct {
@@ -45,23 +45,23 @@ type DeletePluginWithServiceResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeletePluginWithServiceResponse) GetContentType() string {
-	if o == nil {
+func (d *DeletePluginWithServiceResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeletePluginWithServiceResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeletePluginWithServiceResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeletePluginWithServiceResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeletePluginWithServiceResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

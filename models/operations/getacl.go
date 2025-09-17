@@ -14,18 +14,18 @@ type GetACLRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 }
 
-func (o *GetACLRequest) GetACLID() string {
-	if o == nil {
+func (g *GetACLRequest) GetACLID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ACLID
+	return g.ACLID
 }
 
-func (o *GetACLRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetACLRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
 type GetACLResponse struct {
@@ -39,30 +39,30 @@ type GetACLResponse struct {
 	ACL *components.ACL
 }
 
-func (o *GetACLResponse) GetContentType() string {
-	if o == nil {
+func (g *GetACLResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetACLResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetACLResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetACLResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetACLResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetACLResponse) GetACL() *components.ACL {
-	if o == nil {
+func (g *GetACLResponse) GetACL() *components.ACL {
+	if g == nil {
 		return nil
 	}
-	return o.ACL
+	return g.ACL
 }

@@ -23,11 +23,11 @@ func (s *StringFieldEqualsComparison) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *StringFieldEqualsComparison) GetEq() string {
-	if o == nil {
+func (s *StringFieldEqualsComparison) GetEq() string {
+	if s == nil {
 		return ""
 	}
-	return o.Eq
+	return s.Eq
 }
 
 type CloudGatewaysStringFieldEqualsFilterOverrideType string

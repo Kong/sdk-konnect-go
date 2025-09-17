@@ -16,25 +16,25 @@ type GetRouteWithServiceRequest struct {
 	RouteID string `pathParam:"style=simple,explode=false,name=RouteId"`
 }
 
-func (o *GetRouteWithServiceRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetRouteWithServiceRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
-func (o *GetRouteWithServiceRequest) GetServiceID() string {
-	if o == nil {
+func (g *GetRouteWithServiceRequest) GetServiceID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ServiceID
+	return g.ServiceID
 }
 
-func (o *GetRouteWithServiceRequest) GetRouteID() string {
-	if o == nil {
+func (g *GetRouteWithServiceRequest) GetRouteID() string {
+	if g == nil {
 		return ""
 	}
-	return o.RouteID
+	return g.RouteID
 }
 
 type GetRouteWithServiceResponse struct {
@@ -48,30 +48,30 @@ type GetRouteWithServiceResponse struct {
 	Route *components.Route
 }
 
-func (o *GetRouteWithServiceResponse) GetContentType() string {
-	if o == nil {
+func (g *GetRouteWithServiceResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetRouteWithServiceResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetRouteWithServiceResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetRouteWithServiceResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetRouteWithServiceResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetRouteWithServiceResponse) GetRoute() *components.Route {
-	if o == nil {
+func (g *GetRouteWithServiceResponse) GetRoute() *components.Route {
+	if g == nil {
 		return nil
 	}
-	return o.Route
+	return g.Route
 }

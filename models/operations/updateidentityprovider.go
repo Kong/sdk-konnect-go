@@ -19,18 +19,18 @@ type UpdateIdentityProviderRequest struct {
 	UpdateIdentityProvider components.UpdateIdentityProvider `request:"mediaType=application/json"`
 }
 
-func (o *UpdateIdentityProviderRequest) GetID() string {
-	if o == nil {
+func (u *UpdateIdentityProviderRequest) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateIdentityProviderRequest) GetUpdateIdentityProvider() components.UpdateIdentityProvider {
-	if o == nil {
+func (u *UpdateIdentityProviderRequest) GetUpdateIdentityProvider() components.UpdateIdentityProvider {
+	if u == nil {
 		return components.UpdateIdentityProvider{}
 	}
-	return o.UpdateIdentityProvider
+	return u.UpdateIdentityProvider
 }
 
 type UpdateIdentityProviderResponse struct {
@@ -45,30 +45,30 @@ type UpdateIdentityProviderResponse struct {
 	IdentityProvider *components.IdentityProvider
 }
 
-func (o *UpdateIdentityProviderResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateIdentityProviderResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateIdentityProviderResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateIdentityProviderResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateIdentityProviderResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateIdentityProviderResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateIdentityProviderResponse) GetIdentityProvider() *components.IdentityProvider {
-	if o == nil {
+func (u *UpdateIdentityProviderResponse) GetIdentityProvider() *components.IdentityProvider {
+	if u == nil {
 		return nil
 	}
-	return o.IdentityProvider
+	return u.IdentityProvider
 }

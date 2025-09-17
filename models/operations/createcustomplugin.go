@@ -14,18 +14,18 @@ type CreateCustomPluginRequest struct {
 	CustomPlugin components.CustomPlugin `request:"mediaType=application/json"`
 }
 
-func (o *CreateCustomPluginRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreateCustomPluginRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreateCustomPluginRequest) GetCustomPlugin() components.CustomPlugin {
-	if o == nil {
+func (c *CreateCustomPluginRequest) GetCustomPlugin() components.CustomPlugin {
+	if c == nil {
 		return components.CustomPlugin{}
 	}
-	return o.CustomPlugin
+	return c.CustomPlugin
 }
 
 type CreateCustomPluginResponse struct {
@@ -39,30 +39,30 @@ type CreateCustomPluginResponse struct {
 	CustomPlugin *components.CustomPlugin
 }
 
-func (o *CreateCustomPluginResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateCustomPluginResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateCustomPluginResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateCustomPluginResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateCustomPluginResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateCustomPluginResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateCustomPluginResponse) GetCustomPlugin() *components.CustomPlugin {
-	if o == nil {
+func (c *CreateCustomPluginResponse) GetCustomPlugin() *components.CustomPlugin {
+	if c == nil {
 		return nil
 	}
-	return o.CustomPlugin
+	return c.CustomPlugin
 }

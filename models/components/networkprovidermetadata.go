@@ -23,16 +23,16 @@ func (n *NetworkProviderMetadata) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *NetworkProviderMetadata) GetVpcID() *string {
-	if o == nil {
+func (n *NetworkProviderMetadata) GetVpcID() *string {
+	if n == nil {
 		return nil
 	}
-	return o.VpcID
+	return n.VpcID
 }
 
-func (o *NetworkProviderMetadata) GetSubnetIds() []string {
-	if o == nil {
+func (n *NetworkProviderMetadata) GetSubnetIds() []string {
+	if n == nil {
 		return nil
 	}
-	return o.SubnetIds
+	return n.SubnetIds
 }

@@ -9,16 +9,16 @@ type EmailDomainFilterParameters struct {
 	VerificationStatus *StringFieldFilter `queryParam:"name=verification_status"`
 }
 
-func (o *EmailDomainFilterParameters) GetDomain() *StringFieldFilter {
-	if o == nil {
+func (e *EmailDomainFilterParameters) GetDomain() *StringFieldFilter {
+	if e == nil {
 		return nil
 	}
-	return o.Domain
+	return e.Domain
 }
 
-func (o *EmailDomainFilterParameters) GetVerificationStatus() *StringFieldFilter {
-	if o == nil {
+func (e *EmailDomainFilterParameters) GetVerificationStatus() *StringFieldFilter {
+	if e == nil {
 		return nil
 	}
-	return o.VerificationStatus
+	return e.VerificationStatus
 }

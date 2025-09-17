@@ -30,32 +30,32 @@ func (g *GetApplicationRegistrationResponseAPI) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (o *GetApplicationRegistrationResponseAPI) GetID() string {
-	if o == nil {
+func (g *GetApplicationRegistrationResponseAPI) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetApplicationRegistrationResponseAPI) GetName() string {
-	if o == nil {
+func (g *GetApplicationRegistrationResponseAPI) GetName() string {
+	if g == nil {
 		return ""
 	}
-	return o.Name
+	return g.Name
 }
 
-func (o *GetApplicationRegistrationResponseAPI) GetVersion() *string {
-	if o == nil {
+func (g *GetApplicationRegistrationResponseAPI) GetVersion() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Version
+	return g.Version
 }
 
-func (o *GetApplicationRegistrationResponseAPI) GetEntityType() EntityType {
-	if o == nil {
+func (g *GetApplicationRegistrationResponseAPI) GetEntityType() EntityType {
+	if g == nil {
 		return EntityType("")
 	}
-	return o.EntityType
+	return g.EntityType
 }
 
 // GetApplicationRegistrationResponseApplication - Details about the application the registration is part of.
@@ -66,18 +66,18 @@ type GetApplicationRegistrationResponseApplication struct {
 	Name string `json:"name"`
 }
 
-func (o *GetApplicationRegistrationResponseApplication) GetID() string {
-	if o == nil {
+func (g *GetApplicationRegistrationResponseApplication) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetApplicationRegistrationResponseApplication) GetName() string {
-	if o == nil {
+func (g *GetApplicationRegistrationResponseApplication) GetName() string {
+	if g == nil {
 		return ""
 	}
-	return o.Name
+	return g.Name
 }
 
 // GetApplicationRegistrationResponse - A application's registration for a specific version of an API.
@@ -108,44 +108,44 @@ func (g *GetApplicationRegistrationResponse) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GetApplicationRegistrationResponse) GetID() string {
-	if o == nil {
+func (g *GetApplicationRegistrationResponse) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetApplicationRegistrationResponse) GetCreatedAt() time.Time {
-	if o == nil {
+func (g *GetApplicationRegistrationResponse) GetCreatedAt() time.Time {
+	if g == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return g.CreatedAt
 }
 
-func (o *GetApplicationRegistrationResponse) GetUpdatedAt() time.Time {
-	if o == nil {
+func (g *GetApplicationRegistrationResponse) GetUpdatedAt() time.Time {
+	if g == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return g.UpdatedAt
 }
 
-func (o *GetApplicationRegistrationResponse) GetStatus() ApplicationRegistrationStatus {
-	if o == nil {
+func (g *GetApplicationRegistrationResponse) GetStatus() ApplicationRegistrationStatus {
+	if g == nil {
 		return ApplicationRegistrationStatus("")
 	}
-	return o.Status
+	return g.Status
 }
 
-func (o *GetApplicationRegistrationResponse) GetAPI() GetApplicationRegistrationResponseAPI {
-	if o == nil {
+func (g *GetApplicationRegistrationResponse) GetAPI() GetApplicationRegistrationResponseAPI {
+	if g == nil {
 		return GetApplicationRegistrationResponseAPI{}
 	}
-	return o.API
+	return g.API
 }
 
-func (o *GetApplicationRegistrationResponse) GetApplication() GetApplicationRegistrationResponseApplication {
-	if o == nil {
+func (g *GetApplicationRegistrationResponse) GetApplication() GetApplicationRegistrationResponseApplication {
+	if g == nil {
 		return GetApplicationRegistrationResponseApplication{}
 	}
-	return o.Application
+	return g.Application
 }

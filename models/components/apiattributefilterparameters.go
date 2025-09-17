@@ -13,30 +13,30 @@ type APIAttributeFilterParameters struct {
 	UpdatedAt *DateTimeFieldFilter `queryParam:"name=updated_at"`
 }
 
-func (o *APIAttributeFilterParameters) GetID() *UUIDFieldFilter {
-	if o == nil {
+func (a *APIAttributeFilterParameters) GetID() *UUIDFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *APIAttributeFilterParameters) GetKey() *UUIDFieldFilter {
-	if o == nil {
+func (a *APIAttributeFilterParameters) GetKey() *UUIDFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.Key
+	return a.Key
 }
 
-func (o *APIAttributeFilterParameters) GetCreatedAt() *DateTimeFieldFilter {
-	if o == nil {
+func (a *APIAttributeFilterParameters) GetCreatedAt() *DateTimeFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return a.CreatedAt
 }
 
-func (o *APIAttributeFilterParameters) GetUpdatedAt() *DateTimeFieldFilter {
-	if o == nil {
+func (a *APIAttributeFilterParameters) GetUpdatedAt() *DateTimeFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return a.UpdatedAt
 }
