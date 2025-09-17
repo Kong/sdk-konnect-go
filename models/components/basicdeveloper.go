@@ -28,44 +28,44 @@ func (b *BasicDeveloper) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *BasicDeveloper) GetID() *string {
-	if o == nil {
+func (b *BasicDeveloper) GetID() *string {
+	if b == nil {
 		return nil
 	}
-	return o.ID
+	return b.ID
 }
 
-func (o *BasicDeveloper) GetEmail() *string {
-	if o == nil {
+func (b *BasicDeveloper) GetEmail() *string {
+	if b == nil {
 		return nil
 	}
-	return o.Email
+	return b.Email
 }
 
-func (o *BasicDeveloper) GetFullName() *string {
-	if o == nil {
+func (b *BasicDeveloper) GetFullName() *string {
+	if b == nil {
 		return nil
 	}
-	return o.FullName
+	return b.FullName
 }
 
-func (o *BasicDeveloper) GetActive() *bool {
-	if o == nil {
+func (b *BasicDeveloper) GetActive() *bool {
+	if b == nil {
 		return nil
 	}
-	return o.Active
+	return b.Active
 }
 
-func (o *BasicDeveloper) GetCreatedAt() *time.Time {
-	if o == nil {
+func (b *BasicDeveloper) GetCreatedAt() *time.Time {
+	if b == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return b.CreatedAt
 }
 
-func (o *BasicDeveloper) GetUpdatedAt() *time.Time {
-	if o == nil {
+func (b *BasicDeveloper) GetUpdatedAt() *time.Time {
+	if b == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return b.UpdatedAt
 }

@@ -28,16 +28,16 @@ func (r *ReplacePortalAuditLogReplayJob) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ReplacePortalAuditLogReplayJob) GetStartAt() time.Time {
-	if o == nil {
+func (r *ReplacePortalAuditLogReplayJob) GetStartAt() time.Time {
+	if r == nil {
 		return time.Time{}
 	}
-	return o.StartAt
+	return r.StartAt
 }
 
-func (o *ReplacePortalAuditLogReplayJob) GetEndAt() time.Time {
-	if o == nil {
+func (r *ReplacePortalAuditLogReplayJob) GetEndAt() time.Time {
+	if r == nil {
 		return time.Time{}
 	}
-	return o.EndAt
+	return r.EndAt
 }

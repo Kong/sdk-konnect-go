@@ -13,18 +13,18 @@ type DeleteAPIVersionRequest struct {
 	VersionID string `pathParam:"style=simple,explode=false,name=versionId"`
 }
 
-func (o *DeleteAPIVersionRequest) GetAPIID() string {
-	if o == nil {
+func (d *DeleteAPIVersionRequest) GetAPIID() string {
+	if d == nil {
 		return ""
 	}
-	return o.APIID
+	return d.APIID
 }
 
-func (o *DeleteAPIVersionRequest) GetVersionID() string {
-	if o == nil {
+func (d *DeleteAPIVersionRequest) GetVersionID() string {
+	if d == nil {
 		return ""
 	}
-	return o.VersionID
+	return d.VersionID
 }
 
 type DeleteAPIVersionResponse struct {
@@ -36,23 +36,23 @@ type DeleteAPIVersionResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteAPIVersionResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteAPIVersionResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteAPIVersionResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteAPIVersionResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteAPIVersionResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteAPIVersionResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

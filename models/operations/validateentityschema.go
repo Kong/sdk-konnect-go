@@ -16,25 +16,25 @@ type ValidateEntitySchemaRequest struct {
 	RequestBody map[string]any `request:"mediaType=application/json"`
 }
 
-func (o *ValidateEntitySchemaRequest) GetEntityName() string {
-	if o == nil {
+func (v *ValidateEntitySchemaRequest) GetEntityName() string {
+	if v == nil {
 		return ""
 	}
-	return o.EntityName
+	return v.EntityName
 }
 
-func (o *ValidateEntitySchemaRequest) GetControlPlaneID() string {
-	if o == nil {
+func (v *ValidateEntitySchemaRequest) GetControlPlaneID() string {
+	if v == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return v.ControlPlaneID
 }
 
-func (o *ValidateEntitySchemaRequest) GetRequestBody() map[string]any {
-	if o == nil {
+func (v *ValidateEntitySchemaRequest) GetRequestBody() map[string]any {
+	if v == nil {
 		return nil
 	}
-	return o.RequestBody
+	return v.RequestBody
 }
 
 type ValidateEntitySchemaResponse struct {
@@ -48,30 +48,30 @@ type ValidateEntitySchemaResponse struct {
 	ValidateEntityResponse *components.ValidateEntityResponse
 }
 
-func (o *ValidateEntitySchemaResponse) GetContentType() string {
-	if o == nil {
+func (v *ValidateEntitySchemaResponse) GetContentType() string {
+	if v == nil {
 		return ""
 	}
-	return o.ContentType
+	return v.ContentType
 }
 
-func (o *ValidateEntitySchemaResponse) GetStatusCode() int {
-	if o == nil {
+func (v *ValidateEntitySchemaResponse) GetStatusCode() int {
+	if v == nil {
 		return 0
 	}
-	return o.StatusCode
+	return v.StatusCode
 }
 
-func (o *ValidateEntitySchemaResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (v *ValidateEntitySchemaResponse) GetRawResponse() *http.Response {
+	if v == nil {
 		return nil
 	}
-	return o.RawResponse
+	return v.RawResponse
 }
 
-func (o *ValidateEntitySchemaResponse) GetValidateEntityResponse() *components.ValidateEntityResponse {
-	if o == nil {
+func (v *ValidateEntitySchemaResponse) GetValidateEntityResponse() *components.ValidateEntityResponse {
+	if v == nil {
 		return nil
 	}
-	return o.ValidateEntityResponse
+	return v.ValidateEntityResponse
 }

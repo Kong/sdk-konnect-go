@@ -12,11 +12,11 @@ type GetPortalAuditLogReplayJobRequest struct {
 	PortalID string `pathParam:"style=simple,explode=false,name=portalId"`
 }
 
-func (o *GetPortalAuditLogReplayJobRequest) GetPortalID() string {
-	if o == nil {
+func (g *GetPortalAuditLogReplayJobRequest) GetPortalID() string {
+	if g == nil {
 		return ""
 	}
-	return o.PortalID
+	return g.PortalID
 }
 
 type GetPortalAuditLogReplayJobResponse struct {
@@ -30,30 +30,30 @@ type GetPortalAuditLogReplayJobResponse struct {
 	PortalAuditLogReplayJob *components.PortalAuditLogReplayJob
 }
 
-func (o *GetPortalAuditLogReplayJobResponse) GetContentType() string {
-	if o == nil {
+func (g *GetPortalAuditLogReplayJobResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetPortalAuditLogReplayJobResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetPortalAuditLogReplayJobResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetPortalAuditLogReplayJobResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetPortalAuditLogReplayJobResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetPortalAuditLogReplayJobResponse) GetPortalAuditLogReplayJob() *components.PortalAuditLogReplayJob {
-	if o == nil {
+func (g *GetPortalAuditLogReplayJobResponse) GetPortalAuditLogReplayJob() *components.PortalAuditLogReplayJob {
+	if g == nil {
 		return nil
 	}
-	return o.PortalAuditLogReplayJob
+	return g.PortalAuditLogReplayJob
 }

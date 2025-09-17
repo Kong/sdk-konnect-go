@@ -23,9 +23,9 @@ func (c *ControlPlaneGeoFieldOrEqualityFilter) UnmarshalJSON(data []byte) error 
 	return nil
 }
 
-func (o *ControlPlaneGeoFieldOrEqualityFilter) GetOeq() string {
-	if o == nil {
+func (c *ControlPlaneGeoFieldOrEqualityFilter) GetOeq() string {
+	if c == nil {
 		return ""
 	}
-	return o.Oeq
+	return c.Oeq
 }

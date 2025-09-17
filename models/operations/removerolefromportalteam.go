@@ -14,25 +14,25 @@ type RemoveRoleFromPortalTeamRequest struct {
 	TeamID string `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
-func (o *RemoveRoleFromPortalTeamRequest) GetRoleID() string {
-	if o == nil {
+func (r *RemoveRoleFromPortalTeamRequest) GetRoleID() string {
+	if r == nil {
 		return ""
 	}
-	return o.RoleID
+	return r.RoleID
 }
 
-func (o *RemoveRoleFromPortalTeamRequest) GetPortalID() string {
-	if o == nil {
+func (r *RemoveRoleFromPortalTeamRequest) GetPortalID() string {
+	if r == nil {
 		return ""
 	}
-	return o.PortalID
+	return r.PortalID
 }
 
-func (o *RemoveRoleFromPortalTeamRequest) GetTeamID() string {
-	if o == nil {
+func (r *RemoveRoleFromPortalTeamRequest) GetTeamID() string {
+	if r == nil {
 		return ""
 	}
-	return o.TeamID
+	return r.TeamID
 }
 
 type RemoveRoleFromPortalTeamResponse struct {
@@ -44,23 +44,23 @@ type RemoveRoleFromPortalTeamResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *RemoveRoleFromPortalTeamResponse) GetContentType() string {
-	if o == nil {
+func (r *RemoveRoleFromPortalTeamResponse) GetContentType() string {
+	if r == nil {
 		return ""
 	}
-	return o.ContentType
+	return r.ContentType
 }
 
-func (o *RemoveRoleFromPortalTeamResponse) GetStatusCode() int {
-	if o == nil {
+func (r *RemoveRoleFromPortalTeamResponse) GetStatusCode() int {
+	if r == nil {
 		return 0
 	}
-	return o.StatusCode
+	return r.StatusCode
 }
 
-func (o *RemoveRoleFromPortalTeamResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (r *RemoveRoleFromPortalTeamResponse) GetRawResponse() *http.Response {
+	if r == nil {
 		return nil
 	}
-	return o.RawResponse
+	return r.RawResponse
 }

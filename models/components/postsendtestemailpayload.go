@@ -7,9 +7,9 @@ type PostSendTestEmailPayload struct {
 	Content SendTestEmailTemplateContent `json:"content"`
 }
 
-func (o *PostSendTestEmailPayload) GetContent() SendTestEmailTemplateContent {
-	if o == nil {
+func (p *PostSendTestEmailPayload) GetContent() SendTestEmailTemplateContent {
+	if p == nil {
 		return SendTestEmailTemplateContent{}
 	}
-	return o.Content
+	return p.Content
 }

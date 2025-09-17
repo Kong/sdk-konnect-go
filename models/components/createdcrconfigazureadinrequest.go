@@ -29,16 +29,16 @@ func (c *CreateDcrConfigAzureAdInRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CreateDcrConfigAzureAdInRequest) GetInitialClientID() string {
-	if o == nil {
+func (c *CreateDcrConfigAzureAdInRequest) GetInitialClientID() string {
+	if c == nil {
 		return ""
 	}
-	return o.InitialClientID
+	return c.InitialClientID
 }
 
-func (o *CreateDcrConfigAzureAdInRequest) GetInitialClientSecret() string {
-	if o == nil {
+func (c *CreateDcrConfigAzureAdInRequest) GetInitialClientSecret() string {
+	if c == nil {
 		return ""
 	}
-	return o.InitialClientSecret
+	return c.InitialClientSecret
 }

@@ -14,18 +14,18 @@ type UpdatePortalAuthenticationSettingsRequest struct {
 	PortalAuthenticationSettingsUpdateRequest *components.PortalAuthenticationSettingsUpdateRequest `request:"mediaType=application/json"`
 }
 
-func (o *UpdatePortalAuthenticationSettingsRequest) GetPortalID() string {
-	if o == nil {
+func (u *UpdatePortalAuthenticationSettingsRequest) GetPortalID() string {
+	if u == nil {
 		return ""
 	}
-	return o.PortalID
+	return u.PortalID
 }
 
-func (o *UpdatePortalAuthenticationSettingsRequest) GetPortalAuthenticationSettingsUpdateRequest() *components.PortalAuthenticationSettingsUpdateRequest {
-	if o == nil {
+func (u *UpdatePortalAuthenticationSettingsRequest) GetPortalAuthenticationSettingsUpdateRequest() *components.PortalAuthenticationSettingsUpdateRequest {
+	if u == nil {
 		return nil
 	}
-	return o.PortalAuthenticationSettingsUpdateRequest
+	return u.PortalAuthenticationSettingsUpdateRequest
 }
 
 type UpdatePortalAuthenticationSettingsResponse struct {
@@ -39,30 +39,30 @@ type UpdatePortalAuthenticationSettingsResponse struct {
 	PortalAuthenticationSettingsResponse *components.PortalAuthenticationSettingsResponse
 }
 
-func (o *UpdatePortalAuthenticationSettingsResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdatePortalAuthenticationSettingsResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdatePortalAuthenticationSettingsResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdatePortalAuthenticationSettingsResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdatePortalAuthenticationSettingsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdatePortalAuthenticationSettingsResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdatePortalAuthenticationSettingsResponse) GetPortalAuthenticationSettingsResponse() *components.PortalAuthenticationSettingsResponse {
-	if o == nil {
+func (u *UpdatePortalAuthenticationSettingsResponse) GetPortalAuthenticationSettingsResponse() *components.PortalAuthenticationSettingsResponse {
+	if u == nil {
 		return nil
 	}
-	return o.PortalAuthenticationSettingsResponse
+	return u.PortalAuthenticationSettingsResponse
 }

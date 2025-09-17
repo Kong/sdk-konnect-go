@@ -30,32 +30,32 @@ func (l *ListBasicAuthRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListBasicAuthRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListBasicAuthRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListBasicAuthRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListBasicAuthRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListBasicAuthRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListBasicAuthRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListBasicAuthRequest) GetTags() *string {
-	if o == nil {
+func (l *ListBasicAuthRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListBasicAuthResponseBody - A successful response listing Basic-auth credentials
@@ -67,25 +67,25 @@ type ListBasicAuthResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListBasicAuthResponseBody) GetData() []components.BasicAuth {
-	if o == nil {
+func (l *ListBasicAuthResponseBody) GetData() []components.BasicAuth {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListBasicAuthResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListBasicAuthResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListBasicAuthResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListBasicAuthResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListBasicAuthResponse struct {
@@ -99,30 +99,30 @@ type ListBasicAuthResponse struct {
 	Object *ListBasicAuthResponseBody
 }
 
-func (o *ListBasicAuthResponse) GetContentType() string {
-	if o == nil {
+func (l *ListBasicAuthResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListBasicAuthResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListBasicAuthResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListBasicAuthResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListBasicAuthResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListBasicAuthResponse) GetObject() *ListBasicAuthResponseBody {
-	if o == nil {
+func (l *ListBasicAuthResponse) GetObject() *ListBasicAuthResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

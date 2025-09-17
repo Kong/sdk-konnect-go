@@ -16,25 +16,25 @@ type CreateSniWithCertificateRequest struct {
 	SNIWithoutParents components.SNIWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *CreateSniWithCertificateRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreateSniWithCertificateRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreateSniWithCertificateRequest) GetCertificateID() string {
-	if o == nil {
+func (c *CreateSniWithCertificateRequest) GetCertificateID() string {
+	if c == nil {
 		return ""
 	}
-	return o.CertificateID
+	return c.CertificateID
 }
 
-func (o *CreateSniWithCertificateRequest) GetSNIWithoutParents() components.SNIWithoutParents {
-	if o == nil {
+func (c *CreateSniWithCertificateRequest) GetSNIWithoutParents() components.SNIWithoutParents {
+	if c == nil {
 		return components.SNIWithoutParents{}
 	}
-	return o.SNIWithoutParents
+	return c.SNIWithoutParents
 }
 
 type CreateSniWithCertificateResponse struct {
@@ -48,30 +48,30 @@ type CreateSniWithCertificateResponse struct {
 	Sni *components.Sni
 }
 
-func (o *CreateSniWithCertificateResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateSniWithCertificateResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateSniWithCertificateResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateSniWithCertificateResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateSniWithCertificateResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateSniWithCertificateResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateSniWithCertificateResponse) GetSni() *components.Sni {
-	if o == nil {
+func (c *CreateSniWithCertificateResponse) GetSni() *components.Sni {
+	if c == nil {
 		return nil
 	}
-	return o.Sni
+	return c.Sni
 }

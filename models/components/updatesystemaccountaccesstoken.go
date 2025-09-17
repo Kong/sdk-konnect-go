@@ -22,9 +22,9 @@ func (u *UpdateSystemAccountAccessToken) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdateSystemAccountAccessToken) GetName() *string {
-	if o == nil {
+func (u *UpdateSystemAccountAccessToken) GetName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Name
+	return u.Name
 }

@@ -16,25 +16,25 @@ type ListPluginSchemasRequest struct {
 	PageAfter *string `queryParam:"style=form,explode=true,name=page[after]"`
 }
 
-func (o *ListPluginSchemasRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListPluginSchemasRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListPluginSchemasRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListPluginSchemasRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListPluginSchemasRequest) GetPageAfter() *string {
-	if o == nil {
+func (l *ListPluginSchemasRequest) GetPageAfter() *string {
+	if l == nil {
 		return nil
 	}
-	return o.PageAfter
+	return l.PageAfter
 }
 
 type ListPluginSchemasResponse struct {
@@ -48,30 +48,30 @@ type ListPluginSchemasResponse struct {
 	ListPluginSchemas *components.ListPluginSchemas
 }
 
-func (o *ListPluginSchemasResponse) GetContentType() string {
-	if o == nil {
+func (l *ListPluginSchemasResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListPluginSchemasResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListPluginSchemasResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListPluginSchemasResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListPluginSchemasResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListPluginSchemasResponse) GetListPluginSchemas() *components.ListPluginSchemas {
-	if o == nil {
+func (l *ListPluginSchemasResponse) GetListPluginSchemas() *components.ListPluginSchemas {
+	if l == nil {
 		return nil
 	}
-	return o.ListPluginSchemas
+	return l.ListPluginSchemas
 }

@@ -18,32 +18,32 @@ type UpsertACLWithConsumerRequest struct {
 	ACLWithoutParents components.ACLWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *UpsertACLWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpsertACLWithConsumerRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpsertACLWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (u *UpsertACLWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if u == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return u.ConsumerIDForNestedEntities
 }
 
-func (o *UpsertACLWithConsumerRequest) GetACLID() string {
-	if o == nil {
+func (u *UpsertACLWithConsumerRequest) GetACLID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ACLID
+	return u.ACLID
 }
 
-func (o *UpsertACLWithConsumerRequest) GetACLWithoutParents() components.ACLWithoutParents {
-	if o == nil {
+func (u *UpsertACLWithConsumerRequest) GetACLWithoutParents() components.ACLWithoutParents {
+	if u == nil {
 		return components.ACLWithoutParents{}
 	}
-	return o.ACLWithoutParents
+	return u.ACLWithoutParents
 }
 
 type UpsertACLWithConsumerResponse struct {
@@ -57,30 +57,30 @@ type UpsertACLWithConsumerResponse struct {
 	ACL *components.ACL
 }
 
-func (o *UpsertACLWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (u *UpsertACLWithConsumerResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpsertACLWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpsertACLWithConsumerResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpsertACLWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpsertACLWithConsumerResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpsertACLWithConsumerResponse) GetACL() *components.ACL {
-	if o == nil {
+func (u *UpsertACLWithConsumerResponse) GetACL() *components.ACL {
+	if u == nil {
 		return nil
 	}
-	return o.ACL
+	return u.ACL
 }

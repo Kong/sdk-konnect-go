@@ -7,9 +7,9 @@ type CursorMeta struct {
 	Page CursorMetaPage `json:"page"`
 }
 
-func (o *CursorMeta) GetPage() CursorMetaPage {
-	if o == nil {
+func (c *CursorMeta) GetPage() CursorMetaPage {
+	if c == nil {
 		return CursorMetaPage{}
 	}
-	return o.Page
+	return c.Page
 }

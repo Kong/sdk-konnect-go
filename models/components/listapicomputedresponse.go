@@ -9,16 +9,16 @@ type ListAPIComputedResponse struct {
 	Data []APIComputedSchema `json:"data"`
 }
 
-func (o *ListAPIComputedResponse) GetMeta() PaginatedMeta {
-	if o == nil {
+func (l *ListAPIComputedResponse) GetMeta() PaginatedMeta {
+	if l == nil {
 		return PaginatedMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListAPIComputedResponse) GetData() []APIComputedSchema {
-	if o == nil {
+func (l *ListAPIComputedResponse) GetData() []APIComputedSchema {
+	if l == nil {
 		return []APIComputedSchema{}
 	}
-	return o.Data
+	return l.Data
 }

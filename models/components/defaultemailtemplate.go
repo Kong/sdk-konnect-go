@@ -12,30 +12,30 @@ type DefaultEmailTemplate struct {
 	Label string `json:"label"`
 }
 
-func (o *DefaultEmailTemplate) GetDefaultContent() DefaultEmailTemplateContent {
-	if o == nil {
+func (d *DefaultEmailTemplate) GetDefaultContent() DefaultEmailTemplateContent {
+	if d == nil {
 		return DefaultEmailTemplateContent{}
 	}
-	return o.DefaultContent
+	return d.DefaultContent
 }
 
-func (o *DefaultEmailTemplate) GetVariables() []EmailTemplateVariableName {
-	if o == nil {
+func (d *DefaultEmailTemplate) GetVariables() []EmailTemplateVariableName {
+	if d == nil {
 		return []EmailTemplateVariableName{}
 	}
-	return o.Variables
+	return d.Variables
 }
 
-func (o *DefaultEmailTemplate) GetName() EmailTemplateName {
-	if o == nil {
+func (d *DefaultEmailTemplate) GetName() EmailTemplateName {
+	if d == nil {
 		return EmailTemplateName("")
 	}
-	return o.Name
+	return d.Name
 }
 
-func (o *DefaultEmailTemplate) GetLabel() string {
-	if o == nil {
+func (d *DefaultEmailTemplate) GetLabel() string {
+	if d == nil {
 		return ""
 	}
-	return o.Label
+	return d.Label
 }

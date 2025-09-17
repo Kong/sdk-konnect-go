@@ -32,39 +32,39 @@ func (l *ListPartialLinkRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListPartialLinkRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListPartialLinkRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListPartialLinkRequest) GetPartialID() string {
-	if o == nil {
+func (l *ListPartialLinkRequest) GetPartialID() string {
+	if l == nil {
 		return ""
 	}
-	return o.PartialID
+	return l.PartialID
 }
 
-func (o *ListPartialLinkRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListPartialLinkRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListPartialLinkRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListPartialLinkRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListPartialLinkRequest) GetTags() *string {
-	if o == nil {
+func (l *ListPartialLinkRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListPartialLinkResponseBody - The plugins linked to the partial
@@ -89,32 +89,32 @@ func (l *ListPartialLinkResponseBody) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListPartialLinkResponseBody) GetCount() *int64 {
-	if o == nil {
+func (l *ListPartialLinkResponseBody) GetCount() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Count
+	return l.Count
 }
 
-func (o *ListPartialLinkResponseBody) GetData() []components.PartialLink {
-	if o == nil {
+func (l *ListPartialLinkResponseBody) GetData() []components.PartialLink {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListPartialLinkResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListPartialLinkResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListPartialLinkResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListPartialLinkResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListPartialLinkResponse struct {
@@ -128,30 +128,30 @@ type ListPartialLinkResponse struct {
 	Object *ListPartialLinkResponseBody
 }
 
-func (o *ListPartialLinkResponse) GetContentType() string {
-	if o == nil {
+func (l *ListPartialLinkResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListPartialLinkResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListPartialLinkResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListPartialLinkResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListPartialLinkResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListPartialLinkResponse) GetObject() *ListPartialLinkResponseBody {
-	if o == nil {
+func (l *ListPartialLinkResponse) GetObject() *ListPartialLinkResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

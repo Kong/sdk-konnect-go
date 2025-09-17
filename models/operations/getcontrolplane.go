@@ -12,11 +12,11 @@ type GetControlPlaneRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *GetControlPlaneRequest) GetID() string {
-	if o == nil {
+func (g *GetControlPlaneRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
 type GetControlPlaneResponse struct {
@@ -30,30 +30,30 @@ type GetControlPlaneResponse struct {
 	ControlPlane *components.ControlPlane
 }
 
-func (o *GetControlPlaneResponse) GetContentType() string {
-	if o == nil {
+func (g *GetControlPlaneResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetControlPlaneResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetControlPlaneResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetControlPlaneResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetControlPlaneResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetControlPlaneResponse) GetControlPlane() *components.ControlPlane {
-	if o == nil {
+func (g *GetControlPlaneResponse) GetControlPlane() *components.ControlPlane {
+	if g == nil {
 		return nil
 	}
-	return o.ControlPlane
+	return g.ControlPlane
 }

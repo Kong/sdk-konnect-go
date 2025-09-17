@@ -18,32 +18,32 @@ type UpsertPluginWithRouteRequest struct {
 	PluginWithoutParents components.PluginWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *UpsertPluginWithRouteRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpsertPluginWithRouteRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpsertPluginWithRouteRequest) GetRouteID() string {
-	if o == nil {
+func (u *UpsertPluginWithRouteRequest) GetRouteID() string {
+	if u == nil {
 		return ""
 	}
-	return o.RouteID
+	return u.RouteID
 }
 
-func (o *UpsertPluginWithRouteRequest) GetPluginID() string {
-	if o == nil {
+func (u *UpsertPluginWithRouteRequest) GetPluginID() string {
+	if u == nil {
 		return ""
 	}
-	return o.PluginID
+	return u.PluginID
 }
 
-func (o *UpsertPluginWithRouteRequest) GetPluginWithoutParents() components.PluginWithoutParents {
-	if o == nil {
+func (u *UpsertPluginWithRouteRequest) GetPluginWithoutParents() components.PluginWithoutParents {
+	if u == nil {
 		return components.PluginWithoutParents{}
 	}
-	return o.PluginWithoutParents
+	return u.PluginWithoutParents
 }
 
 type UpsertPluginWithRouteResponse struct {
@@ -57,30 +57,30 @@ type UpsertPluginWithRouteResponse struct {
 	Plugin *components.Plugin
 }
 
-func (o *UpsertPluginWithRouteResponse) GetContentType() string {
-	if o == nil {
+func (u *UpsertPluginWithRouteResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpsertPluginWithRouteResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpsertPluginWithRouteResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpsertPluginWithRouteResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpsertPluginWithRouteResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpsertPluginWithRouteResponse) GetPlugin() *components.Plugin {
-	if o == nil {
+func (u *UpsertPluginWithRouteResponse) GetPlugin() *components.Plugin {
+	if u == nil {
 		return nil
 	}
-	return o.Plugin
+	return u.Plugin
 }

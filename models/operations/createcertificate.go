@@ -14,18 +14,18 @@ type CreateCertificateRequest struct {
 	Certificate components.Certificate `request:"mediaType=application/json"`
 }
 
-func (o *CreateCertificateRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreateCertificateRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreateCertificateRequest) GetCertificate() components.Certificate {
-	if o == nil {
+func (c *CreateCertificateRequest) GetCertificate() components.Certificate {
+	if c == nil {
 		return components.Certificate{}
 	}
-	return o.Certificate
+	return c.Certificate
 }
 
 type CreateCertificateResponse struct {
@@ -39,30 +39,30 @@ type CreateCertificateResponse struct {
 	Certificate *components.Certificate
 }
 
-func (o *CreateCertificateResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateCertificateResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateCertificateResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateCertificateResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateCertificateResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateCertificateResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateCertificateResponse) GetCertificate() *components.Certificate {
-	if o == nil {
+func (c *CreateCertificateResponse) GetCertificate() *components.Certificate {
+	if c == nil {
 		return nil
 	}
-	return o.Certificate
+	return c.Certificate
 }

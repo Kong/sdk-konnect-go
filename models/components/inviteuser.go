@@ -9,9 +9,9 @@ type InviteUser struct {
 	Email string `json:"email"`
 }
 
-func (o *InviteUser) GetEmail() string {
-	if o == nil {
+func (i *InviteUser) GetEmail() string {
+	if i == nil {
 		return ""
 	}
-	return o.Email
+	return i.Email
 }

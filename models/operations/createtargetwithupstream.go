@@ -16,25 +16,25 @@ type CreateTargetWithUpstreamRequest struct {
 	TargetWithoutParents components.TargetWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *CreateTargetWithUpstreamRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreateTargetWithUpstreamRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreateTargetWithUpstreamRequest) GetUpstreamIDForTarget() string {
-	if o == nil {
+func (c *CreateTargetWithUpstreamRequest) GetUpstreamIDForTarget() string {
+	if c == nil {
 		return ""
 	}
-	return o.UpstreamIDForTarget
+	return c.UpstreamIDForTarget
 }
 
-func (o *CreateTargetWithUpstreamRequest) GetTargetWithoutParents() components.TargetWithoutParents {
-	if o == nil {
+func (c *CreateTargetWithUpstreamRequest) GetTargetWithoutParents() components.TargetWithoutParents {
+	if c == nil {
 		return components.TargetWithoutParents{}
 	}
-	return o.TargetWithoutParents
+	return c.TargetWithoutParents
 }
 
 type CreateTargetWithUpstreamResponse struct {
@@ -48,30 +48,30 @@ type CreateTargetWithUpstreamResponse struct {
 	Target *components.Target
 }
 
-func (o *CreateTargetWithUpstreamResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateTargetWithUpstreamResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateTargetWithUpstreamResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateTargetWithUpstreamResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateTargetWithUpstreamResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateTargetWithUpstreamResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateTargetWithUpstreamResponse) GetTarget() *components.Target {
-	if o == nil {
+func (c *CreateTargetWithUpstreamResponse) GetTarget() *components.Target {
+	if c == nil {
 		return nil
 	}
-	return o.Target
+	return c.Target
 }

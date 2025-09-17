@@ -15,25 +15,25 @@ type UpdateAPIDocumentRequest struct {
 	APIDocument components.APIDocument `request:"mediaType=application/json"`
 }
 
-func (o *UpdateAPIDocumentRequest) GetAPIID() string {
-	if o == nil {
+func (u *UpdateAPIDocumentRequest) GetAPIID() string {
+	if u == nil {
 		return ""
 	}
-	return o.APIID
+	return u.APIID
 }
 
-func (o *UpdateAPIDocumentRequest) GetDocumentID() string {
-	if o == nil {
+func (u *UpdateAPIDocumentRequest) GetDocumentID() string {
+	if u == nil {
 		return ""
 	}
-	return o.DocumentID
+	return u.DocumentID
 }
 
-func (o *UpdateAPIDocumentRequest) GetAPIDocument() components.APIDocument {
-	if o == nil {
+func (u *UpdateAPIDocumentRequest) GetAPIDocument() components.APIDocument {
+	if u == nil {
 		return components.APIDocument{}
 	}
-	return o.APIDocument
+	return u.APIDocument
 }
 
 type UpdateAPIDocumentResponse struct {
@@ -47,30 +47,30 @@ type UpdateAPIDocumentResponse struct {
 	APIDocumentResponse *components.APIDocumentResponse
 }
 
-func (o *UpdateAPIDocumentResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateAPIDocumentResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateAPIDocumentResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateAPIDocumentResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateAPIDocumentResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateAPIDocumentResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateAPIDocumentResponse) GetAPIDocumentResponse() *components.APIDocumentResponse {
-	if o == nil {
+func (u *UpdateAPIDocumentResponse) GetAPIDocumentResponse() *components.APIDocumentResponse {
+	if u == nil {
 		return nil
 	}
-	return o.APIDocumentResponse
+	return u.APIDocumentResponse
 }

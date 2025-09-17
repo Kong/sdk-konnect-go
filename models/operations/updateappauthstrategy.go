@@ -13,18 +13,18 @@ type UpdateAppAuthStrategyRequest struct {
 	UpdateAppAuthStrategyRequest components.UpdateAppAuthStrategyRequest `request:"mediaType=application/json"`
 }
 
-func (o *UpdateAppAuthStrategyRequest) GetAuthStrategyID() string {
-	if o == nil {
+func (u *UpdateAppAuthStrategyRequest) GetAuthStrategyID() string {
+	if u == nil {
 		return ""
 	}
-	return o.AuthStrategyID
+	return u.AuthStrategyID
 }
 
-func (o *UpdateAppAuthStrategyRequest) GetUpdateAppAuthStrategyRequest() components.UpdateAppAuthStrategyRequest {
-	if o == nil {
+func (u *UpdateAppAuthStrategyRequest) GetUpdateAppAuthStrategyRequest() components.UpdateAppAuthStrategyRequest {
+	if u == nil {
 		return components.UpdateAppAuthStrategyRequest{}
 	}
-	return o.UpdateAppAuthStrategyRequest
+	return u.UpdateAppAuthStrategyRequest
 }
 
 type UpdateAppAuthStrategyResponse struct {
@@ -38,43 +38,43 @@ type UpdateAppAuthStrategyResponse struct {
 	CreateAppAuthStrategyResponse *components.CreateAppAuthStrategyResponse
 }
 
-func (o *UpdateAppAuthStrategyResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateAppAuthStrategyResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateAppAuthStrategyResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateAppAuthStrategyResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateAppAuthStrategyResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateAppAuthStrategyResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateAppAuthStrategyResponse) GetCreateAppAuthStrategyResponse() *components.CreateAppAuthStrategyResponse {
-	if o == nil {
+func (u *UpdateAppAuthStrategyResponse) GetCreateAppAuthStrategyResponse() *components.CreateAppAuthStrategyResponse {
+	if u == nil {
 		return nil
 	}
-	return o.CreateAppAuthStrategyResponse
+	return u.CreateAppAuthStrategyResponse
 }
 
-func (o *UpdateAppAuthStrategyResponse) GetCreateAppAuthStrategyResponseKeyAuth() *components.AppAuthStrategyKeyAuthResponse {
-	if v := o.GetCreateAppAuthStrategyResponse(); v != nil {
+func (u *UpdateAppAuthStrategyResponse) GetCreateAppAuthStrategyResponseKeyAuth() *components.AppAuthStrategyKeyAuthResponse {
+	if v := u.GetCreateAppAuthStrategyResponse(); v != nil {
 		return v.AppAuthStrategyKeyAuthResponse
 	}
 	return nil
 }
 
-func (o *UpdateAppAuthStrategyResponse) GetCreateAppAuthStrategyResponseOpenidConnect() *components.AppAuthStrategyOpenIDConnectResponse {
-	if v := o.GetCreateAppAuthStrategyResponse(); v != nil {
+func (u *UpdateAppAuthStrategyResponse) GetCreateAppAuthStrategyResponseOpenidConnect() *components.AppAuthStrategyOpenIDConnectResponse {
+	if v := u.GetCreateAppAuthStrategyResponse(); v != nil {
 		return v.AppAuthStrategyOpenIDConnectResponse
 	}
 	return nil

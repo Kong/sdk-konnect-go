@@ -32,39 +32,39 @@ func (l *ListACLWithConsumerRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListACLWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListACLWithConsumerRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListACLWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (l *ListACLWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if l == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return l.ConsumerIDForNestedEntities
 }
 
-func (o *ListACLWithConsumerRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListACLWithConsumerRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListACLWithConsumerRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListACLWithConsumerRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListACLWithConsumerRequest) GetTags() *string {
-	if o == nil {
+func (l *ListACLWithConsumerRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListACLWithConsumerResponseBody - A successful response listing ACLs
@@ -76,25 +76,25 @@ type ListACLWithConsumerResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListACLWithConsumerResponseBody) GetData() []components.ACL {
-	if o == nil {
+func (l *ListACLWithConsumerResponseBody) GetData() []components.ACL {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListACLWithConsumerResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListACLWithConsumerResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListACLWithConsumerResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListACLWithConsumerResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListACLWithConsumerResponse struct {
@@ -108,30 +108,30 @@ type ListACLWithConsumerResponse struct {
 	Object *ListACLWithConsumerResponseBody
 }
 
-func (o *ListACLWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (l *ListACLWithConsumerResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListACLWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListACLWithConsumerResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListACLWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListACLWithConsumerResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListACLWithConsumerResponse) GetObject() *ListACLWithConsumerResponseBody {
-	if o == nil {
+func (l *ListACLWithConsumerResponse) GetObject() *ListACLWithConsumerResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

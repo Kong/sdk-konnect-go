@@ -13,37 +13,37 @@ type EventSubscription struct {
 	Name string `json:"name"`
 }
 
-func (o *EventSubscription) GetRegions() []NotificationRegion {
-	if o == nil {
+func (e *EventSubscription) GetRegions() []NotificationRegion {
+	if e == nil {
 		return []NotificationRegion{}
 	}
-	return o.Regions
+	return e.Regions
 }
 
-func (o *EventSubscription) GetEntities() []string {
-	if o == nil {
+func (e *EventSubscription) GetEntities() []string {
+	if e == nil {
 		return []string{}
 	}
-	return o.Entities
+	return e.Entities
 }
 
-func (o *EventSubscription) GetChannels() []NotificationChannel {
-	if o == nil {
+func (e *EventSubscription) GetChannels() []NotificationChannel {
+	if e == nil {
 		return []NotificationChannel{}
 	}
-	return o.Channels
+	return e.Channels
 }
 
-func (o *EventSubscription) GetEnabled() bool {
-	if o == nil {
+func (e *EventSubscription) GetEnabled() bool {
+	if e == nil {
 		return false
 	}
-	return o.Enabled
+	return e.Enabled
 }
 
-func (o *EventSubscription) GetName() string {
-	if o == nil {
+func (e *EventSubscription) GetName() string {
+	if e == nil {
 		return ""
 	}
-	return o.Name
+	return e.Name
 }

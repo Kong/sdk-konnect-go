@@ -15,11 +15,11 @@ type DeleteNetworkRequest struct {
 	NetworkID string `pathParam:"style=simple,explode=false,name=networkId"`
 }
 
-func (o *DeleteNetworkRequest) GetNetworkID() string {
-	if o == nil {
+func (d *DeleteNetworkRequest) GetNetworkID() string {
+	if d == nil {
 		return ""
 	}
-	return o.NetworkID
+	return d.NetworkID
 }
 
 type DeleteNetworkResponse struct {
@@ -31,23 +31,23 @@ type DeleteNetworkResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteNetworkResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteNetworkResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteNetworkResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteNetworkResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteNetworkResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteNetworkResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

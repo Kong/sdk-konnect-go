@@ -29,37 +29,37 @@ func (a *AppAuthStrategyConfigOpenIDConnect) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *AppAuthStrategyConfigOpenIDConnect) GetIssuer() string {
-	if o == nil {
+func (a *AppAuthStrategyConfigOpenIDConnect) GetIssuer() string {
+	if a == nil {
 		return ""
 	}
-	return o.Issuer
+	return a.Issuer
 }
 
-func (o *AppAuthStrategyConfigOpenIDConnect) GetCredentialClaim() []string {
-	if o == nil {
+func (a *AppAuthStrategyConfigOpenIDConnect) GetCredentialClaim() []string {
+	if a == nil {
 		return []string{}
 	}
-	return o.CredentialClaim
+	return a.CredentialClaim
 }
 
-func (o *AppAuthStrategyConfigOpenIDConnect) GetScopes() []string {
-	if o == nil {
+func (a *AppAuthStrategyConfigOpenIDConnect) GetScopes() []string {
+	if a == nil {
 		return []string{}
 	}
-	return o.Scopes
+	return a.Scopes
 }
 
-func (o *AppAuthStrategyConfigOpenIDConnect) GetAuthMethods() []string {
-	if o == nil {
+func (a *AppAuthStrategyConfigOpenIDConnect) GetAuthMethods() []string {
+	if a == nil {
 		return []string{}
 	}
-	return o.AuthMethods
+	return a.AuthMethods
 }
 
-func (o *AppAuthStrategyConfigOpenIDConnect) GetAdditionalProperties() map[string]any {
-	if o == nil {
+func (a *AppAuthStrategyConfigOpenIDConnect) GetAdditionalProperties() map[string]any {
+	if a == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return a.AdditionalProperties
 }

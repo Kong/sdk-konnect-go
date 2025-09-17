@@ -16,25 +16,25 @@ type GetSniWithCertificateRequest struct {
 	SNIID string `pathParam:"style=simple,explode=false,name=SNIId"`
 }
 
-func (o *GetSniWithCertificateRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetSniWithCertificateRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
-func (o *GetSniWithCertificateRequest) GetCertificateID() string {
-	if o == nil {
+func (g *GetSniWithCertificateRequest) GetCertificateID() string {
+	if g == nil {
 		return ""
 	}
-	return o.CertificateID
+	return g.CertificateID
 }
 
-func (o *GetSniWithCertificateRequest) GetSNIID() string {
-	if o == nil {
+func (g *GetSniWithCertificateRequest) GetSNIID() string {
+	if g == nil {
 		return ""
 	}
-	return o.SNIID
+	return g.SNIID
 }
 
 type GetSniWithCertificateResponse struct {
@@ -48,30 +48,30 @@ type GetSniWithCertificateResponse struct {
 	Sni *components.Sni
 }
 
-func (o *GetSniWithCertificateResponse) GetContentType() string {
-	if o == nil {
+func (g *GetSniWithCertificateResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetSniWithCertificateResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetSniWithCertificateResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetSniWithCertificateResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetSniWithCertificateResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetSniWithCertificateResponse) GetSni() *components.Sni {
-	if o == nil {
+func (g *GetSniWithCertificateResponse) GetSni() *components.Sni {
+	if g == nil {
 		return nil
 	}
-	return o.Sni
+	return g.Sni
 }

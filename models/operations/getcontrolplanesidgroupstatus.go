@@ -12,11 +12,11 @@ type GetControlPlanesIDGroupStatusRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *GetControlPlanesIDGroupStatusRequest) GetID() string {
-	if o == nil {
+func (g *GetControlPlanesIDGroupStatusRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
 type GetControlPlanesIDGroupStatusResponse struct {
@@ -30,30 +30,30 @@ type GetControlPlanesIDGroupStatusResponse struct {
 	GetGroupStatus *components.GetGroupStatus
 }
 
-func (o *GetControlPlanesIDGroupStatusResponse) GetContentType() string {
-	if o == nil {
+func (g *GetControlPlanesIDGroupStatusResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetControlPlanesIDGroupStatusResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetControlPlanesIDGroupStatusResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetControlPlanesIDGroupStatusResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetControlPlanesIDGroupStatusResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetControlPlanesIDGroupStatusResponse) GetGetGroupStatus() *components.GetGroupStatus {
-	if o == nil {
+func (g *GetControlPlanesIDGroupStatusResponse) GetGetGroupStatus() *components.GetGroupStatus {
+	if g == nil {
 		return nil
 	}
-	return o.GetGroupStatus
+	return g.GetGroupStatus
 }

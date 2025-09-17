@@ -9,16 +9,16 @@ type TeamCollection struct {
 	Data []Team         `json:"data,omitempty"`
 }
 
-func (o *TeamCollection) GetMeta() *PaginatedMeta {
-	if o == nil {
+func (t *TeamCollection) GetMeta() *PaginatedMeta {
+	if t == nil {
 		return nil
 	}
-	return o.Meta
+	return t.Meta
 }
 
-func (o *TeamCollection) GetData() []Team {
-	if o == nil {
+func (t *TeamCollection) GetData() []Team {
+	if t == nil {
 		return nil
 	}
-	return o.Data
+	return t.Data
 }

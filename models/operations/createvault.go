@@ -14,18 +14,18 @@ type CreateVaultRequest struct {
 	Vault components.Vault `request:"mediaType=application/json"`
 }
 
-func (o *CreateVaultRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreateVaultRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreateVaultRequest) GetVault() components.Vault {
-	if o == nil {
+func (c *CreateVaultRequest) GetVault() components.Vault {
+	if c == nil {
 		return components.Vault{}
 	}
-	return o.Vault
+	return c.Vault
 }
 
 type CreateVaultResponse struct {
@@ -39,30 +39,30 @@ type CreateVaultResponse struct {
 	Vault *components.Vault
 }
 
-func (o *CreateVaultResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateVaultResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateVaultResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateVaultResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateVaultResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateVaultResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateVaultResponse) GetVault() *components.Vault {
-	if o == nil {
+func (c *CreateVaultResponse) GetVault() *components.Vault {
+	if c == nil {
 		return nil
 	}
-	return o.Vault
+	return c.Vault
 }

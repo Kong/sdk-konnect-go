@@ -35,30 +35,30 @@ func (c *CreateDcrConfigAuth0InRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CreateDcrConfigAuth0InRequest) GetInitialClientID() string {
-	if o == nil {
+func (c *CreateDcrConfigAuth0InRequest) GetInitialClientID() string {
+	if c == nil {
 		return ""
 	}
-	return o.InitialClientID
+	return c.InitialClientID
 }
 
-func (o *CreateDcrConfigAuth0InRequest) GetInitialClientSecret() string {
-	if o == nil {
+func (c *CreateDcrConfigAuth0InRequest) GetInitialClientSecret() string {
+	if c == nil {
 		return ""
 	}
-	return o.InitialClientSecret
+	return c.InitialClientSecret
 }
 
-func (o *CreateDcrConfigAuth0InRequest) GetInitialClientAudience() *string {
-	if o == nil {
+func (c *CreateDcrConfigAuth0InRequest) GetInitialClientAudience() *string {
+	if c == nil {
 		return nil
 	}
-	return o.InitialClientAudience
+	return c.InitialClientAudience
 }
 
-func (o *CreateDcrConfigAuth0InRequest) GetUseDeveloperManagedScopes() *bool {
-	if o == nil {
+func (c *CreateDcrConfigAuth0InRequest) GetUseDeveloperManagedScopes() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.UseDeveloperManagedScopes
+	return c.UseDeveloperManagedScopes
 }

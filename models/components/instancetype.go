@@ -14,30 +14,30 @@ type InstanceType struct {
 	GbMemory string `json:"gb_memory"`
 }
 
-func (o *InstanceType) GetName() InstanceTypeName {
-	if o == nil {
+func (i *InstanceType) GetName() InstanceTypeName {
+	if i == nil {
 		return InstanceTypeName("")
 	}
-	return o.Name
+	return i.Name
 }
 
-func (o *InstanceType) GetHourlyCost() string {
-	if o == nil {
+func (i *InstanceType) GetHourlyCost() string {
+	if i == nil {
 		return ""
 	}
-	return o.HourlyCost
+	return i.HourlyCost
 }
 
-func (o *InstanceType) GetVCPU() string {
-	if o == nil {
+func (i *InstanceType) GetVCPU() string {
+	if i == nil {
 		return ""
 	}
-	return o.VCPU
+	return i.VCPU
 }
 
-func (o *InstanceType) GetGbMemory() string {
-	if o == nil {
+func (i *InstanceType) GetGbMemory() string {
+	if i == nil {
 		return ""
 	}
-	return o.GbMemory
+	return i.GbMemory
 }

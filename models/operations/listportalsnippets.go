@@ -26,39 +26,39 @@ type ListPortalSnippetsRequest struct {
 	Filter *components.PortalSnippetsFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *ListPortalSnippetsRequest) GetSort() *string {
-	if o == nil {
+func (l *ListPortalSnippetsRequest) GetSort() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Sort
+	return l.Sort
 }
 
-func (o *ListPortalSnippetsRequest) GetPortalID() string {
-	if o == nil {
+func (l *ListPortalSnippetsRequest) GetPortalID() string {
+	if l == nil {
 		return ""
 	}
-	return o.PortalID
+	return l.PortalID
 }
 
-func (o *ListPortalSnippetsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListPortalSnippetsRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListPortalSnippetsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListPortalSnippetsRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListPortalSnippetsRequest) GetFilter() *components.PortalSnippetsFilterParameters {
-	if o == nil {
+func (l *ListPortalSnippetsRequest) GetFilter() *components.PortalSnippetsFilterParameters {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
 type ListPortalSnippetsResponse struct {
@@ -72,30 +72,30 @@ type ListPortalSnippetsResponse struct {
 	ListPortalSnippetsResponse *components.ListPortalSnippetsResponse
 }
 
-func (o *ListPortalSnippetsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListPortalSnippetsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListPortalSnippetsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListPortalSnippetsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListPortalSnippetsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListPortalSnippetsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListPortalSnippetsResponse) GetListPortalSnippetsResponse() *components.ListPortalSnippetsResponse {
-	if o == nil {
+func (l *ListPortalSnippetsResponse) GetListPortalSnippetsResponse() *components.ListPortalSnippetsResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListPortalSnippetsResponse
+	return l.ListPortalSnippetsResponse
 }

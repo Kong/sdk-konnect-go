@@ -6,11 +6,11 @@ type ValidateAPISpecSuccessResponseValidationMessages struct {
 	Message string `json:"message"`
 }
 
-func (o *ValidateAPISpecSuccessResponseValidationMessages) GetMessage() string {
-	if o == nil {
+func (v *ValidateAPISpecSuccessResponseValidationMessages) GetMessage() string {
+	if v == nil {
 		return ""
 	}
-	return o.Message
+	return v.Message
 }
 
 // ValidateAPISpecSuccessResponse - API specification (OpenAPI or AsyncAPI) validation successful
@@ -19,9 +19,9 @@ type ValidateAPISpecSuccessResponse struct {
 	ValidationMessages []ValidateAPISpecSuccessResponseValidationMessages `json:"validation_messages"`
 }
 
-func (o *ValidateAPISpecSuccessResponse) GetValidationMessages() []ValidateAPISpecSuccessResponseValidationMessages {
-	if o == nil {
+func (v *ValidateAPISpecSuccessResponse) GetValidationMessages() []ValidateAPISpecSuccessResponseValidationMessages {
+	if v == nil {
 		return []ValidateAPISpecSuccessResponseValidationMessages{}
 	}
-	return o.ValidationMessages
+	return v.ValidationMessages
 }

@@ -30,32 +30,32 @@ func (l *ListPluginRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListPluginRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListPluginRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListPluginRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListPluginRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListPluginRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListPluginRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListPluginRequest) GetTags() *string {
-	if o == nil {
+func (l *ListPluginRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListPluginResponseBody - A successful response listing Plugins
@@ -67,25 +67,25 @@ type ListPluginResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListPluginResponseBody) GetData() []components.Plugin {
-	if o == nil {
+func (l *ListPluginResponseBody) GetData() []components.Plugin {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListPluginResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListPluginResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListPluginResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListPluginResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListPluginResponse struct {
@@ -99,30 +99,30 @@ type ListPluginResponse struct {
 	Object *ListPluginResponseBody
 }
 
-func (o *ListPluginResponse) GetContentType() string {
-	if o == nil {
+func (l *ListPluginResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListPluginResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListPluginResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListPluginResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListPluginResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListPluginResponse) GetObject() *ListPluginResponseBody {
-	if o == nil {
+func (l *ListPluginResponse) GetObject() *ListPluginResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

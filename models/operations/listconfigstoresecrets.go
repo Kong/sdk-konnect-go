@@ -18,32 +18,32 @@ type ListConfigStoreSecretsRequest struct {
 	PageAfter *string `queryParam:"style=form,explode=true,name=page[after]"`
 }
 
-func (o *ListConfigStoreSecretsRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListConfigStoreSecretsRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListConfigStoreSecretsRequest) GetConfigStoreID() string {
-	if o == nil {
+func (l *ListConfigStoreSecretsRequest) GetConfigStoreID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ConfigStoreID
+	return l.ConfigStoreID
 }
 
-func (o *ListConfigStoreSecretsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListConfigStoreSecretsRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListConfigStoreSecretsRequest) GetPageAfter() *string {
-	if o == nil {
+func (l *ListConfigStoreSecretsRequest) GetPageAfter() *string {
+	if l == nil {
 		return nil
 	}
-	return o.PageAfter
+	return l.PageAfter
 }
 
 type ListConfigStoreSecretsResponse struct {
@@ -57,30 +57,30 @@ type ListConfigStoreSecretsResponse struct {
 	ListConfigStoreSecretsResponse *components.ListConfigStoreSecretsResponse
 }
 
-func (o *ListConfigStoreSecretsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListConfigStoreSecretsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListConfigStoreSecretsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListConfigStoreSecretsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListConfigStoreSecretsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListConfigStoreSecretsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListConfigStoreSecretsResponse) GetListConfigStoreSecretsResponse() *components.ListConfigStoreSecretsResponse {
-	if o == nil {
+func (l *ListConfigStoreSecretsResponse) GetListConfigStoreSecretsResponse() *components.ListConfigStoreSecretsResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListConfigStoreSecretsResponse
+	return l.ListConfigStoreSecretsResponse
 }

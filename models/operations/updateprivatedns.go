@@ -19,25 +19,25 @@ type UpdatePrivateDNSRequest struct {
 	PatchPrivateDNSRequest components.PatchPrivateDNSRequest `request:"mediaType=application/json"`
 }
 
-func (o *UpdatePrivateDNSRequest) GetNetworkID() string {
-	if o == nil {
+func (u *UpdatePrivateDNSRequest) GetNetworkID() string {
+	if u == nil {
 		return ""
 	}
-	return o.NetworkID
+	return u.NetworkID
 }
 
-func (o *UpdatePrivateDNSRequest) GetPrivateDNSID() string {
-	if o == nil {
+func (u *UpdatePrivateDNSRequest) GetPrivateDNSID() string {
+	if u == nil {
 		return ""
 	}
-	return o.PrivateDNSID
+	return u.PrivateDNSID
 }
 
-func (o *UpdatePrivateDNSRequest) GetPatchPrivateDNSRequest() components.PatchPrivateDNSRequest {
-	if o == nil {
+func (u *UpdatePrivateDNSRequest) GetPatchPrivateDNSRequest() components.PatchPrivateDNSRequest {
+	if u == nil {
 		return components.PatchPrivateDNSRequest{}
 	}
-	return o.PatchPrivateDNSRequest
+	return u.PatchPrivateDNSRequest
 }
 
 type UpdatePrivateDNSResponse struct {
@@ -51,30 +51,30 @@ type UpdatePrivateDNSResponse struct {
 	PrivateDNSResponse *components.PrivateDNSResponse
 }
 
-func (o *UpdatePrivateDNSResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdatePrivateDNSResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdatePrivateDNSResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdatePrivateDNSResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdatePrivateDNSResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdatePrivateDNSResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdatePrivateDNSResponse) GetPrivateDNSResponse() *components.PrivateDNSResponse {
-	if o == nil {
+func (u *UpdatePrivateDNSResponse) GetPrivateDNSResponse() *components.PrivateDNSResponse {
+	if u == nil {
 		return nil
 	}
-	return o.PrivateDNSResponse
+	return u.PrivateDNSResponse
 }

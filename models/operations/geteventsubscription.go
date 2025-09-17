@@ -14,18 +14,18 @@ type GetEventSubscriptionRequest struct {
 	SubscriptionID string `pathParam:"style=simple,explode=false,name=subscriptionId"`
 }
 
-func (o *GetEventSubscriptionRequest) GetEventID() string {
-	if o == nil {
+func (g *GetEventSubscriptionRequest) GetEventID() string {
+	if g == nil {
 		return ""
 	}
-	return o.EventID
+	return g.EventID
 }
 
-func (o *GetEventSubscriptionRequest) GetSubscriptionID() string {
-	if o == nil {
+func (g *GetEventSubscriptionRequest) GetSubscriptionID() string {
+	if g == nil {
 		return ""
 	}
-	return o.SubscriptionID
+	return g.SubscriptionID
 }
 
 type GetEventSubscriptionResponse struct {
@@ -39,30 +39,30 @@ type GetEventSubscriptionResponse struct {
 	EventSubscriptionResponse *components.EventSubscriptionResponse
 }
 
-func (o *GetEventSubscriptionResponse) GetContentType() string {
-	if o == nil {
+func (g *GetEventSubscriptionResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetEventSubscriptionResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetEventSubscriptionResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetEventSubscriptionResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetEventSubscriptionResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetEventSubscriptionResponse) GetEventSubscriptionResponse() *components.EventSubscriptionResponse {
-	if o == nil {
+func (g *GetEventSubscriptionResponse) GetEventSubscriptionResponse() *components.EventSubscriptionResponse {
+	if g == nil {
 		return nil
 	}
-	return o.EventSubscriptionResponse
+	return g.EventSubscriptionResponse
 }

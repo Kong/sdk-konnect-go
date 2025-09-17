@@ -23,9 +23,9 @@ func (s *ServiceReference) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ServiceReference) GetService() *APIImplementationService {
-	if o == nil {
+func (s *ServiceReference) GetService() *APIImplementationService {
+	if s == nil {
 		return nil
 	}
-	return o.Service
+	return s.Service
 }

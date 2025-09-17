@@ -17,44 +17,44 @@ type PortalPagesFilterParameters struct {
 	UpdatedAt *DateTimeFieldFilter `queryParam:"name=updated_at"`
 }
 
-func (o *PortalPagesFilterParameters) GetID() *UUIDFieldFilter {
-	if o == nil {
+func (p *PortalPagesFilterParameters) GetID() *UUIDFieldFilter {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PortalPagesFilterParameters) GetSlug() *StringFieldFilter {
-	if o == nil {
+func (p *PortalPagesFilterParameters) GetSlug() *StringFieldFilter {
+	if p == nil {
 		return nil
 	}
-	return o.Slug
+	return p.Slug
 }
 
-func (o *PortalPagesFilterParameters) GetTitle() *StringFieldFilter {
-	if o == nil {
+func (p *PortalPagesFilterParameters) GetTitle() *StringFieldFilter {
+	if p == nil {
 		return nil
 	}
-	return o.Title
+	return p.Title
 }
 
-func (o *PortalPagesFilterParameters) GetVisibility() *StringFieldFilter {
-	if o == nil {
+func (p *PortalPagesFilterParameters) GetVisibility() *StringFieldFilter {
+	if p == nil {
 		return nil
 	}
-	return o.Visibility
+	return p.Visibility
 }
 
-func (o *PortalPagesFilterParameters) GetCreatedAt() *DateTimeFieldFilter {
-	if o == nil {
+func (p *PortalPagesFilterParameters) GetCreatedAt() *DateTimeFieldFilter {
+	if p == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return p.CreatedAt
 }
 
-func (o *PortalPagesFilterParameters) GetUpdatedAt() *DateTimeFieldFilter {
-	if o == nil {
+func (p *PortalPagesFilterParameters) GetUpdatedAt() *DateTimeFieldFilter {
+	if p == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return p.UpdatedAt
 }

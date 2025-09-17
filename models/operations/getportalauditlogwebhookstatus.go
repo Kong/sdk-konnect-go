@@ -12,11 +12,11 @@ type GetPortalAuditLogWebhookStatusRequest struct {
 	PortalID string `pathParam:"style=simple,explode=false,name=portalId"`
 }
 
-func (o *GetPortalAuditLogWebhookStatusRequest) GetPortalID() string {
-	if o == nil {
+func (g *GetPortalAuditLogWebhookStatusRequest) GetPortalID() string {
+	if g == nil {
 		return ""
 	}
-	return o.PortalID
+	return g.PortalID
 }
 
 type GetPortalAuditLogWebhookStatusResponse struct {
@@ -30,30 +30,30 @@ type GetPortalAuditLogWebhookStatusResponse struct {
 	PortalAuditLogWebhookStatus *components.PortalAuditLogWebhookStatus
 }
 
-func (o *GetPortalAuditLogWebhookStatusResponse) GetContentType() string {
-	if o == nil {
+func (g *GetPortalAuditLogWebhookStatusResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetPortalAuditLogWebhookStatusResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetPortalAuditLogWebhookStatusResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetPortalAuditLogWebhookStatusResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetPortalAuditLogWebhookStatusResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetPortalAuditLogWebhookStatusResponse) GetPortalAuditLogWebhookStatus() *components.PortalAuditLogWebhookStatus {
-	if o == nil {
+func (g *GetPortalAuditLogWebhookStatusResponse) GetPortalAuditLogWebhookStatus() *components.PortalAuditLogWebhookStatus {
+	if g == nil {
 		return nil
 	}
-	return o.PortalAuditLogWebhookStatus
+	return g.PortalAuditLogWebhookStatus
 }

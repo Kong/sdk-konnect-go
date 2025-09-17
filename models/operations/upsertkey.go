@@ -16,25 +16,25 @@ type UpsertKeyRequest struct {
 	Key components.Key `request:"mediaType=application/json"`
 }
 
-func (o *UpsertKeyRequest) GetKeyID() string {
-	if o == nil {
+func (u *UpsertKeyRequest) GetKeyID() string {
+	if u == nil {
 		return ""
 	}
-	return o.KeyID
+	return u.KeyID
 }
 
-func (o *UpsertKeyRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpsertKeyRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpsertKeyRequest) GetKey() components.Key {
-	if o == nil {
+func (u *UpsertKeyRequest) GetKey() components.Key {
+	if u == nil {
 		return components.Key{}
 	}
-	return o.Key
+	return u.Key
 }
 
 type UpsertKeyResponse struct {
@@ -48,30 +48,30 @@ type UpsertKeyResponse struct {
 	Key *components.Key
 }
 
-func (o *UpsertKeyResponse) GetContentType() string {
-	if o == nil {
+func (u *UpsertKeyResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpsertKeyResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpsertKeyResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpsertKeyResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpsertKeyResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpsertKeyResponse) GetKey() *components.Key {
-	if o == nil {
+func (u *UpsertKeyResponse) GetKey() *components.Key {
+	if u == nil {
 		return nil
 	}
-	return o.Key
+	return u.Key
 }

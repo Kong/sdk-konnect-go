@@ -12,11 +12,11 @@ type GetAppAuthStrategyRequest struct {
 	AuthStrategyID string `pathParam:"style=simple,explode=false,name=authStrategyId"`
 }
 
-func (o *GetAppAuthStrategyRequest) GetAuthStrategyID() string {
-	if o == nil {
+func (g *GetAppAuthStrategyRequest) GetAuthStrategyID() string {
+	if g == nil {
 		return ""
 	}
-	return o.AuthStrategyID
+	return g.AuthStrategyID
 }
 
 type GetAppAuthStrategyResponse struct {
@@ -30,43 +30,43 @@ type GetAppAuthStrategyResponse struct {
 	CreateAppAuthStrategyResponse *components.CreateAppAuthStrategyResponse
 }
 
-func (o *GetAppAuthStrategyResponse) GetContentType() string {
-	if o == nil {
+func (g *GetAppAuthStrategyResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetAppAuthStrategyResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetAppAuthStrategyResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetAppAuthStrategyResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetAppAuthStrategyResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetAppAuthStrategyResponse) GetCreateAppAuthStrategyResponse() *components.CreateAppAuthStrategyResponse {
-	if o == nil {
+func (g *GetAppAuthStrategyResponse) GetCreateAppAuthStrategyResponse() *components.CreateAppAuthStrategyResponse {
+	if g == nil {
 		return nil
 	}
-	return o.CreateAppAuthStrategyResponse
+	return g.CreateAppAuthStrategyResponse
 }
 
-func (o *GetAppAuthStrategyResponse) GetCreateAppAuthStrategyResponseKeyAuth() *components.AppAuthStrategyKeyAuthResponse {
-	if v := o.GetCreateAppAuthStrategyResponse(); v != nil {
+func (g *GetAppAuthStrategyResponse) GetCreateAppAuthStrategyResponseKeyAuth() *components.AppAuthStrategyKeyAuthResponse {
+	if v := g.GetCreateAppAuthStrategyResponse(); v != nil {
 		return v.AppAuthStrategyKeyAuthResponse
 	}
 	return nil
 }
 
-func (o *GetAppAuthStrategyResponse) GetCreateAppAuthStrategyResponseOpenidConnect() *components.AppAuthStrategyOpenIDConnectResponse {
-	if v := o.GetCreateAppAuthStrategyResponse(); v != nil {
+func (g *GetAppAuthStrategyResponse) GetCreateAppAuthStrategyResponseOpenidConnect() *components.AppAuthStrategyOpenIDConnectResponse {
+	if v := g.GetCreateAppAuthStrategyResponse(); v != nil {
 		return v.AppAuthStrategyOpenIDConnectResponse
 	}
 	return nil

@@ -43,51 +43,51 @@ func (a *APIPublicationListItem) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *APIPublicationListItem) GetAPIID() string {
-	if o == nil {
+func (a *APIPublicationListItem) GetAPIID() string {
+	if a == nil {
 		return ""
 	}
-	return o.APIID
+	return a.APIID
 }
 
-func (o *APIPublicationListItem) GetPortalID() string {
-	if o == nil {
+func (a *APIPublicationListItem) GetPortalID() string {
+	if a == nil {
 		return ""
 	}
-	return o.PortalID
+	return a.PortalID
 }
 
-func (o *APIPublicationListItem) GetAutoApproveRegistrations() bool {
-	if o == nil {
+func (a *APIPublicationListItem) GetAutoApproveRegistrations() bool {
+	if a == nil {
 		return false
 	}
-	return o.AutoApproveRegistrations
+	return a.AutoApproveRegistrations
 }
 
-func (o *APIPublicationListItem) GetVisibility() *APIPublicationVisibility {
-	if o == nil {
+func (a *APIPublicationListItem) GetVisibility() *APIPublicationVisibility {
+	if a == nil {
 		return nil
 	}
-	return o.Visibility
+	return a.Visibility
 }
 
-func (o *APIPublicationListItem) GetAuthStrategyIds() []string {
-	if o == nil {
+func (a *APIPublicationListItem) GetAuthStrategyIds() []string {
+	if a == nil {
 		return nil
 	}
-	return o.AuthStrategyIds
+	return a.AuthStrategyIds
 }
 
-func (o *APIPublicationListItem) GetCreatedAt() time.Time {
-	if o == nil {
+func (a *APIPublicationListItem) GetCreatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return a.CreatedAt
 }
 
-func (o *APIPublicationListItem) GetUpdatedAt() time.Time {
-	if o == nil {
+func (a *APIPublicationListItem) GetUpdatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return a.UpdatedAt
 }

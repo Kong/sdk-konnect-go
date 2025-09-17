@@ -16,25 +16,25 @@ type GetTargetWithUpstreamRequest struct {
 	TargetID string `pathParam:"style=simple,explode=false,name=TargetId"`
 }
 
-func (o *GetTargetWithUpstreamRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetTargetWithUpstreamRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
-func (o *GetTargetWithUpstreamRequest) GetUpstreamIDForTarget() string {
-	if o == nil {
+func (g *GetTargetWithUpstreamRequest) GetUpstreamIDForTarget() string {
+	if g == nil {
 		return ""
 	}
-	return o.UpstreamIDForTarget
+	return g.UpstreamIDForTarget
 }
 
-func (o *GetTargetWithUpstreamRequest) GetTargetID() string {
-	if o == nil {
+func (g *GetTargetWithUpstreamRequest) GetTargetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.TargetID
+	return g.TargetID
 }
 
 type GetTargetWithUpstreamResponse struct {
@@ -48,30 +48,30 @@ type GetTargetWithUpstreamResponse struct {
 	Target *components.Target
 }
 
-func (o *GetTargetWithUpstreamResponse) GetContentType() string {
-	if o == nil {
+func (g *GetTargetWithUpstreamResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetTargetWithUpstreamResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetTargetWithUpstreamResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetTargetWithUpstreamResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetTargetWithUpstreamResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetTargetWithUpstreamResponse) GetTarget() *components.Target {
-	if o == nil {
+func (g *GetTargetWithUpstreamResponse) GetTarget() *components.Target {
+	if g == nil {
 		return nil
 	}
-	return o.Target
+	return g.Target
 }

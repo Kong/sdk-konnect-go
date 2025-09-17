@@ -16,25 +16,25 @@ type ListNotificationsRequest struct {
 	Filter *components.NotificationFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *ListNotificationsRequest) GetPageBefore() *string {
-	if o == nil {
+func (l *ListNotificationsRequest) GetPageBefore() *string {
+	if l == nil {
 		return nil
 	}
-	return o.PageBefore
+	return l.PageBefore
 }
 
-func (o *ListNotificationsRequest) GetPageAfter() *string {
-	if o == nil {
+func (l *ListNotificationsRequest) GetPageAfter() *string {
+	if l == nil {
 		return nil
 	}
-	return o.PageAfter
+	return l.PageAfter
 }
 
-func (o *ListNotificationsRequest) GetFilter() *components.NotificationFilterParameters {
-	if o == nil {
+func (l *ListNotificationsRequest) GetFilter() *components.NotificationFilterParameters {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
 type ListNotificationsResponse struct {
@@ -48,30 +48,30 @@ type ListNotificationsResponse struct {
 	NotificationListResponse *components.NotificationListResponse
 }
 
-func (o *ListNotificationsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListNotificationsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListNotificationsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListNotificationsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListNotificationsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListNotificationsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListNotificationsResponse) GetNotificationListResponse() *components.NotificationListResponse {
-	if o == nil {
+func (l *ListNotificationsResponse) GetNotificationListResponse() *components.NotificationListResponse {
+	if l == nil {
 		return nil
 	}
-	return o.NotificationListResponse
+	return l.NotificationListResponse
 }

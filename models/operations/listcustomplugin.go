@@ -30,32 +30,32 @@ func (l *ListCustomPluginRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListCustomPluginRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListCustomPluginRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListCustomPluginRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListCustomPluginRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListCustomPluginRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListCustomPluginRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListCustomPluginRequest) GetTags() *string {
-	if o == nil {
+func (l *ListCustomPluginRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListCustomPluginResponseBody - A successful response listing CustomPlugins
@@ -67,25 +67,25 @@ type ListCustomPluginResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListCustomPluginResponseBody) GetData() []components.CustomPlugin {
-	if o == nil {
+func (l *ListCustomPluginResponseBody) GetData() []components.CustomPlugin {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListCustomPluginResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListCustomPluginResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListCustomPluginResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListCustomPluginResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListCustomPluginResponse struct {
@@ -99,30 +99,30 @@ type ListCustomPluginResponse struct {
 	Object *ListCustomPluginResponseBody
 }
 
-func (o *ListCustomPluginResponse) GetContentType() string {
-	if o == nil {
+func (l *ListCustomPluginResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListCustomPluginResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListCustomPluginResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListCustomPluginResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListCustomPluginResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListCustomPluginResponse) GetObject() *ListCustomPluginResponseBody {
-	if o == nil {
+func (l *ListCustomPluginResponse) GetObject() *ListCustomPluginResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

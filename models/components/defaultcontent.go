@@ -8,16 +8,16 @@ type DefaultContent struct {
 	Snippets []string `json:"snippets"`
 }
 
-func (o *DefaultContent) GetPages() []string {
-	if o == nil {
+func (d *DefaultContent) GetPages() []string {
+	if d == nil {
 		return []string{}
 	}
-	return o.Pages
+	return d.Pages
 }
 
-func (o *DefaultContent) GetSnippets() []string {
-	if o == nil {
+func (d *DefaultContent) GetSnippets() []string {
+	if d == nil {
 		return []string{}
 	}
-	return o.Snippets
+	return d.Snippets
 }

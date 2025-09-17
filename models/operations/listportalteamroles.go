@@ -18,32 +18,32 @@ type ListPortalTeamRolesRequest struct {
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 }
 
-func (o *ListPortalTeamRolesRequest) GetPortalID() string {
-	if o == nil {
+func (l *ListPortalTeamRolesRequest) GetPortalID() string {
+	if l == nil {
 		return ""
 	}
-	return o.PortalID
+	return l.PortalID
 }
 
-func (o *ListPortalTeamRolesRequest) GetTeamID() string {
-	if o == nil {
+func (l *ListPortalTeamRolesRequest) GetTeamID() string {
+	if l == nil {
 		return ""
 	}
-	return o.TeamID
+	return l.TeamID
 }
 
-func (o *ListPortalTeamRolesRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListPortalTeamRolesRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListPortalTeamRolesRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListPortalTeamRolesRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
 type ListPortalTeamRolesResponse struct {
@@ -57,30 +57,30 @@ type ListPortalTeamRolesResponse struct {
 	AssignedPortalRoleCollectionResponse *components.AssignedPortalRoleCollectionResponse
 }
 
-func (o *ListPortalTeamRolesResponse) GetContentType() string {
-	if o == nil {
+func (l *ListPortalTeamRolesResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListPortalTeamRolesResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListPortalTeamRolesResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListPortalTeamRolesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListPortalTeamRolesResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListPortalTeamRolesResponse) GetAssignedPortalRoleCollectionResponse() *components.AssignedPortalRoleCollectionResponse {
-	if o == nil {
+func (l *ListPortalTeamRolesResponse) GetAssignedPortalRoleCollectionResponse() *components.AssignedPortalRoleCollectionResponse {
+	if l == nil {
 		return nil
 	}
-	return o.AssignedPortalRoleCollectionResponse
+	return l.AssignedPortalRoleCollectionResponse
 }

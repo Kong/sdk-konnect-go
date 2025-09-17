@@ -14,18 +14,18 @@ type GetPortalIdentityProviderRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *GetPortalIdentityProviderRequest) GetPortalID() string {
-	if o == nil {
+func (g *GetPortalIdentityProviderRequest) GetPortalID() string {
+	if g == nil {
 		return ""
 	}
-	return o.PortalID
+	return g.PortalID
 }
 
-func (o *GetPortalIdentityProviderRequest) GetID() string {
-	if o == nil {
+func (g *GetPortalIdentityProviderRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
 type GetPortalIdentityProviderResponse struct {
@@ -40,30 +40,30 @@ type GetPortalIdentityProviderResponse struct {
 	IdentityProvider *components.IdentityProvider
 }
 
-func (o *GetPortalIdentityProviderResponse) GetContentType() string {
-	if o == nil {
+func (g *GetPortalIdentityProviderResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetPortalIdentityProviderResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetPortalIdentityProviderResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetPortalIdentityProviderResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetPortalIdentityProviderResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetPortalIdentityProviderResponse) GetIdentityProvider() *components.IdentityProvider {
-	if o == nil {
+func (g *GetPortalIdentityProviderResponse) GetIdentityProvider() *components.IdentityProvider {
+	if g == nil {
 		return nil
 	}
-	return o.IdentityProvider
+	return g.IdentityProvider
 }

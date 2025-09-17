@@ -15,25 +15,25 @@ type CreateConfigStoreSecretRequest struct {
 	CreateConfigStoreSecret components.CreateConfigStoreSecret `request:"mediaType=application/json"`
 }
 
-func (o *CreateConfigStoreSecretRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreateConfigStoreSecretRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreateConfigStoreSecretRequest) GetConfigStoreID() string {
-	if o == nil {
+func (c *CreateConfigStoreSecretRequest) GetConfigStoreID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ConfigStoreID
+	return c.ConfigStoreID
 }
 
-func (o *CreateConfigStoreSecretRequest) GetCreateConfigStoreSecret() components.CreateConfigStoreSecret {
-	if o == nil {
+func (c *CreateConfigStoreSecretRequest) GetCreateConfigStoreSecret() components.CreateConfigStoreSecret {
+	if c == nil {
 		return components.CreateConfigStoreSecret{}
 	}
-	return o.CreateConfigStoreSecret
+	return c.CreateConfigStoreSecret
 }
 
 type CreateConfigStoreSecretResponse struct {
@@ -47,30 +47,30 @@ type CreateConfigStoreSecretResponse struct {
 	ConfigStoreSecret *components.ConfigStoreSecret
 }
 
-func (o *CreateConfigStoreSecretResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateConfigStoreSecretResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateConfigStoreSecretResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateConfigStoreSecretResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateConfigStoreSecretResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateConfigStoreSecretResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateConfigStoreSecretResponse) GetConfigStoreSecret() *components.ConfigStoreSecret {
-	if o == nil {
+func (c *CreateConfigStoreSecretResponse) GetConfigStoreSecret() *components.ConfigStoreSecret {
+	if c == nil {
 		return nil
 	}
-	return o.ConfigStoreSecret
+	return c.ConfigStoreSecret
 }

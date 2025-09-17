@@ -12,11 +12,11 @@ type GetApplicationUnscopedRequest struct {
 	ApplicationID string `pathParam:"style=simple,explode=false,name=applicationId"`
 }
 
-func (o *GetApplicationUnscopedRequest) GetApplicationID() string {
-	if o == nil {
+func (g *GetApplicationUnscopedRequest) GetApplicationID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ApplicationID
+	return g.ApplicationID
 }
 
 type GetApplicationUnscopedResponse struct {
@@ -30,30 +30,30 @@ type GetApplicationUnscopedResponse struct {
 	GetApplicationResponse *components.GetApplicationResponse
 }
 
-func (o *GetApplicationUnscopedResponse) GetContentType() string {
-	if o == nil {
+func (g *GetApplicationUnscopedResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetApplicationUnscopedResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetApplicationUnscopedResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetApplicationUnscopedResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetApplicationUnscopedResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetApplicationUnscopedResponse) GetGetApplicationResponse() *components.GetApplicationResponse {
-	if o == nil {
+func (g *GetApplicationUnscopedResponse) GetGetApplicationResponse() *components.GetApplicationResponse {
+	if g == nil {
 		return nil
 	}
-	return o.GetApplicationResponse
+	return g.GetApplicationResponse
 }

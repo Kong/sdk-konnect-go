@@ -50,23 +50,23 @@ func (a *AwsTransitGatewayAttachmentConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *AwsTransitGatewayAttachmentConfig) GetKind() AWSTransitGatewayAttachmentType {
-	if o == nil {
+func (a *AwsTransitGatewayAttachmentConfig) GetKind() AWSTransitGatewayAttachmentType {
+	if a == nil {
 		return AWSTransitGatewayAttachmentType("")
 	}
-	return o.Kind
+	return a.Kind
 }
 
-func (o *AwsTransitGatewayAttachmentConfig) GetTransitGatewayID() string {
-	if o == nil {
+func (a *AwsTransitGatewayAttachmentConfig) GetTransitGatewayID() string {
+	if a == nil {
 		return ""
 	}
-	return o.TransitGatewayID
+	return a.TransitGatewayID
 }
 
-func (o *AwsTransitGatewayAttachmentConfig) GetRAMShareArn() string {
-	if o == nil {
+func (a *AwsTransitGatewayAttachmentConfig) GetRAMShareArn() string {
+	if a == nil {
 		return ""
 	}
-	return o.RAMShareArn
+	return a.RAMShareArn
 }

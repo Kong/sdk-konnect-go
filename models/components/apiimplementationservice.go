@@ -23,16 +23,16 @@ func (a *APIImplementationService) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *APIImplementationService) GetControlPlaneID() string {
-	if o == nil {
+func (a *APIImplementationService) GetControlPlaneID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return a.ControlPlaneID
 }
 
-func (o *APIImplementationService) GetID() string {
-	if o == nil {
+func (a *APIImplementationService) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }

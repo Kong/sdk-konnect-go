@@ -22,30 +22,30 @@ type UpdateImpersonationSettingsResponse struct {
 	UpdateImpersonationSettingsResponse *components.UpdateImpersonationSettingsResponse
 }
 
-func (o *UpdateImpersonationSettingsResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateImpersonationSettingsResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateImpersonationSettingsResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateImpersonationSettingsResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateImpersonationSettingsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateImpersonationSettingsResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateImpersonationSettingsResponse) GetUpdateImpersonationSettingsResponse() *components.UpdateImpersonationSettingsResponse {
-	if o == nil {
+func (u *UpdateImpersonationSettingsResponse) GetUpdateImpersonationSettingsResponse() *components.UpdateImpersonationSettingsResponse {
+	if u == nil {
 		return nil
 	}
-	return o.UpdateImpersonationSettingsResponse
+	return u.UpdateImpersonationSettingsResponse
 }

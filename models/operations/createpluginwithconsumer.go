@@ -16,25 +16,25 @@ type CreatePluginWithConsumerRequest struct {
 	PluginWithoutParents components.PluginWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *CreatePluginWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreatePluginWithConsumerRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreatePluginWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (c *CreatePluginWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if c == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return c.ConsumerIDForNestedEntities
 }
 
-func (o *CreatePluginWithConsumerRequest) GetPluginWithoutParents() components.PluginWithoutParents {
-	if o == nil {
+func (c *CreatePluginWithConsumerRequest) GetPluginWithoutParents() components.PluginWithoutParents {
+	if c == nil {
 		return components.PluginWithoutParents{}
 	}
-	return o.PluginWithoutParents
+	return c.PluginWithoutParents
 }
 
 type CreatePluginWithConsumerResponse struct {
@@ -48,30 +48,30 @@ type CreatePluginWithConsumerResponse struct {
 	Plugin *components.Plugin
 }
 
-func (o *CreatePluginWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (c *CreatePluginWithConsumerResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreatePluginWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreatePluginWithConsumerResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreatePluginWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreatePluginWithConsumerResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreatePluginWithConsumerResponse) GetPlugin() *components.Plugin {
-	if o == nil {
+func (c *CreatePluginWithConsumerResponse) GetPlugin() *components.Plugin {
+	if c == nil {
 		return nil
 	}
-	return o.Plugin
+	return c.Plugin
 }

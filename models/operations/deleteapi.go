@@ -11,11 +11,11 @@ type DeleteAPIRequest struct {
 	APIID string `pathParam:"style=simple,explode=false,name=apiId"`
 }
 
-func (o *DeleteAPIRequest) GetAPIID() string {
-	if o == nil {
+func (d *DeleteAPIRequest) GetAPIID() string {
+	if d == nil {
 		return ""
 	}
-	return o.APIID
+	return d.APIID
 }
 
 type DeleteAPIResponse struct {
@@ -27,23 +27,23 @@ type DeleteAPIResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteAPIResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteAPIResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteAPIResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteAPIResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteAPIResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteAPIResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

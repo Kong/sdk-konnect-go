@@ -23,30 +23,30 @@ type CreateIdentityProviderResponse struct {
 	IdentityProvider *components.IdentityProvider
 }
 
-func (o *CreateIdentityProviderResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateIdentityProviderResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateIdentityProviderResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateIdentityProviderResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateIdentityProviderResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateIdentityProviderResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateIdentityProviderResponse) GetIdentityProvider() *components.IdentityProvider {
-	if o == nil {
+func (c *CreateIdentityProviderResponse) GetIdentityProvider() *components.IdentityProvider {
+	if c == nil {
 		return nil
 	}
-	return o.IdentityProvider
+	return c.IdentityProvider
 }

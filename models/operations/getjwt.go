@@ -14,18 +14,18 @@ type GetJwtRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 }
 
-func (o *GetJwtRequest) GetJWTID() string {
-	if o == nil {
+func (g *GetJwtRequest) GetJWTID() string {
+	if g == nil {
 		return ""
 	}
-	return o.JWTID
+	return g.JWTID
 }
 
-func (o *GetJwtRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetJwtRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
 type GetJwtResponse struct {
@@ -39,30 +39,30 @@ type GetJwtResponse struct {
 	Jwt *components.Jwt
 }
 
-func (o *GetJwtResponse) GetContentType() string {
-	if o == nil {
+func (g *GetJwtResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetJwtResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetJwtResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetJwtResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetJwtResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetJwtResponse) GetJwt() *components.Jwt {
-	if o == nil {
+func (g *GetJwtResponse) GetJwt() *components.Jwt {
+	if g == nil {
 		return nil
 	}
-	return o.Jwt
+	return g.Jwt
 }

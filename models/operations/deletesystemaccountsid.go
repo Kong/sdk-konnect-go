@@ -15,11 +15,11 @@ type DeleteSystemAccountsIDRequest struct {
 	AccountID string `pathParam:"style=simple,explode=false,name=accountId"`
 }
 
-func (o *DeleteSystemAccountsIDRequest) GetAccountID() string {
-	if o == nil {
+func (d *DeleteSystemAccountsIDRequest) GetAccountID() string {
+	if d == nil {
 		return ""
 	}
-	return o.AccountID
+	return d.AccountID
 }
 
 type DeleteSystemAccountsIDResponse struct {
@@ -31,23 +31,23 @@ type DeleteSystemAccountsIDResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteSystemAccountsIDResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteSystemAccountsIDResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteSystemAccountsIDResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteSystemAccountsIDResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteSystemAccountsIDResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteSystemAccountsIDResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

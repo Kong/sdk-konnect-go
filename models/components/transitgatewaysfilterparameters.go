@@ -7,16 +7,16 @@ type TransitGatewaysFilterParameters struct {
 	State *TransitGatewayStateFieldFilter         `queryParam:"name=state"`
 }
 
-func (o *TransitGatewaysFilterParameters) GetName() *CloudGatewaysStringFieldFilterOverride {
-	if o == nil {
+func (t *TransitGatewaysFilterParameters) GetName() *CloudGatewaysStringFieldFilterOverride {
+	if t == nil {
 		return nil
 	}
-	return o.Name
+	return t.Name
 }
 
-func (o *TransitGatewaysFilterParameters) GetState() *TransitGatewayStateFieldFilter {
-	if o == nil {
+func (t *TransitGatewaysFilterParameters) GetState() *TransitGatewayStateFieldFilter {
+	if t == nil {
 		return nil
 	}
-	return o.State
+	return t.State
 }

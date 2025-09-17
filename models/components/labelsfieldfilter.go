@@ -11,37 +11,37 @@ type LabelsFieldFilter struct {
 	Neq       *string `queryParam:"name=neq"`
 }
 
-func (o *LabelsFieldFilter) GetEq() *string {
-	if o == nil {
+func (l *LabelsFieldFilter) GetEq() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Eq
+	return l.Eq
 }
 
-func (o *LabelsFieldFilter) GetContains() *string {
-	if o == nil {
+func (l *LabelsFieldFilter) GetContains() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Contains
+	return l.Contains
 }
 
-func (o *LabelsFieldFilter) GetOcontains() *string {
-	if o == nil {
+func (l *LabelsFieldFilter) GetOcontains() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Ocontains
+	return l.Ocontains
 }
 
-func (o *LabelsFieldFilter) GetOeq() *string {
-	if o == nil {
+func (l *LabelsFieldFilter) GetOeq() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Oeq
+	return l.Oeq
 }
 
-func (o *LabelsFieldFilter) GetNeq() *string {
-	if o == nil {
+func (l *LabelsFieldFilter) GetNeq() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Neq
+	return l.Neq
 }

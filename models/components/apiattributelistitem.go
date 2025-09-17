@@ -13,18 +13,18 @@ type Values struct {
 	APICount int64  `json:"api_count"`
 }
 
-func (o *Values) GetValue() string {
-	if o == nil {
+func (v *Values) GetValue() string {
+	if v == nil {
 		return ""
 	}
-	return o.Value
+	return v.Value
 }
 
-func (o *Values) GetAPICount() int64 {
-	if o == nil {
+func (v *Values) GetAPICount() int64 {
+	if v == nil {
 		return 0
 	}
-	return o.APICount
+	return v.APICount
 }
 
 // APIAttributeListItem - Entities that describe APIs
@@ -51,37 +51,37 @@ func (a *APIAttributeListItem) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *APIAttributeListItem) GetID() string {
-	if o == nil {
+func (a *APIAttributeListItem) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *APIAttributeListItem) GetCreatedAt() time.Time {
-	if o == nil {
+func (a *APIAttributeListItem) GetCreatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return a.CreatedAt
 }
 
-func (o *APIAttributeListItem) GetUpdatedAt() time.Time {
-	if o == nil {
+func (a *APIAttributeListItem) GetUpdatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return a.UpdatedAt
 }
 
-func (o *APIAttributeListItem) GetKey() string {
-	if o == nil {
+func (a *APIAttributeListItem) GetKey() string {
+	if a == nil {
 		return ""
 	}
-	return o.Key
+	return a.Key
 }
 
-func (o *APIAttributeListItem) GetValues() []Values {
-	if o == nil {
+func (a *APIAttributeListItem) GetValues() []Values {
+	if a == nil {
 		return []Values{}
 	}
-	return o.Values
+	return a.Values
 }

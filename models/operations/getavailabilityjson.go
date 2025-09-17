@@ -22,30 +22,30 @@ type GetAvailabilityJSONResponse struct {
 	AvailabilityDocument *components.AvailabilityDocument
 }
 
-func (o *GetAvailabilityJSONResponse) GetContentType() string {
-	if o == nil {
+func (g *GetAvailabilityJSONResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetAvailabilityJSONResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetAvailabilityJSONResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetAvailabilityJSONResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetAvailabilityJSONResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetAvailabilityJSONResponse) GetAvailabilityDocument() *components.AvailabilityDocument {
-	if o == nil {
+func (g *GetAvailabilityJSONResponse) GetAvailabilityDocument() *components.AvailabilityDocument {
+	if g == nil {
 		return nil
 	}
-	return o.AvailabilityDocument
+	return g.AvailabilityDocument
 }

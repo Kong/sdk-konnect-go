@@ -8,9 +8,9 @@ type NotificationUpdatePayload struct {
 	Status NotificationStatus `json:"status"`
 }
 
-func (o *NotificationUpdatePayload) GetStatus() NotificationStatus {
-	if o == nil {
+func (n *NotificationUpdatePayload) GetStatus() NotificationStatus {
+	if n == nil {
 		return NotificationStatus("")
 	}
-	return o.Status
+	return n.Status
 }

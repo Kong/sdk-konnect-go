@@ -22,30 +22,30 @@ type UpdateIdpConfigurationResponse struct {
 	IDP *components.IDP
 }
 
-func (o *UpdateIdpConfigurationResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateIdpConfigurationResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateIdpConfigurationResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateIdpConfigurationResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateIdpConfigurationResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateIdpConfigurationResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateIdpConfigurationResponse) GetIDP() *components.IDP {
-	if o == nil {
+func (u *UpdateIdpConfigurationResponse) GetIDP() *components.IDP {
+	if u == nil {
 		return nil
 	}
-	return o.IDP
+	return u.IDP
 }

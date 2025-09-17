@@ -10,16 +10,16 @@ type ServerlessV1Provider struct {
 	Regions []ServerlessV1ProviderRegion `json:"regions"`
 }
 
-func (o *ServerlessV1Provider) GetProvider() ServerlessV1ProviderName {
-	if o == nil {
+func (s *ServerlessV1Provider) GetProvider() ServerlessV1ProviderName {
+	if s == nil {
 		return ServerlessV1ProviderName("")
 	}
-	return o.Provider
+	return s.Provider
 }
 
-func (o *ServerlessV1Provider) GetRegions() []ServerlessV1ProviderRegion {
-	if o == nil {
+func (s *ServerlessV1Provider) GetRegions() []ServerlessV1ProviderRegion {
+	if s == nil {
 		return []ServerlessV1ProviderRegion{}
 	}
-	return o.Regions
+	return s.Regions
 }

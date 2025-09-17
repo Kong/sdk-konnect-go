@@ -24,11 +24,11 @@ func (c *ControlPlaneGeoFieldEqualsComparison) UnmarshalJSON(data []byte) error 
 	return nil
 }
 
-func (o *ControlPlaneGeoFieldEqualsComparison) GetEq() ControlPlaneGeo {
-	if o == nil {
+func (c *ControlPlaneGeoFieldEqualsComparison) GetEq() ControlPlaneGeo {
+	if c == nil {
 		return ControlPlaneGeo("")
 	}
-	return o.Eq
+	return c.Eq
 }
 
 type ControlPlaneGeoFieldEqualsFilterType string

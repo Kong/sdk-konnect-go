@@ -7,16 +7,16 @@ type NetworksFilterParameters struct {
 	State *NetworkStateFieldFilter                `queryParam:"name=state"`
 }
 
-func (o *NetworksFilterParameters) GetName() *CloudGatewaysStringFieldFilterOverride {
-	if o == nil {
+func (n *NetworksFilterParameters) GetName() *CloudGatewaysStringFieldFilterOverride {
+	if n == nil {
 		return nil
 	}
-	return o.Name
+	return n.Name
 }
 
-func (o *NetworksFilterParameters) GetState() *NetworkStateFieldFilter {
-	if o == nil {
+func (n *NetworksFilterParameters) GetState() *NetworkStateFieldFilter {
+	if n == nil {
 		return nil
 	}
-	return o.State
+	return n.State
 }

@@ -13,18 +13,18 @@ type DeleteAPIDocumentRequest struct {
 	DocumentID string `pathParam:"style=simple,explode=false,name=documentId"`
 }
 
-func (o *DeleteAPIDocumentRequest) GetAPIID() string {
-	if o == nil {
+func (d *DeleteAPIDocumentRequest) GetAPIID() string {
+	if d == nil {
 		return ""
 	}
-	return o.APIID
+	return d.APIID
 }
 
-func (o *DeleteAPIDocumentRequest) GetDocumentID() string {
-	if o == nil {
+func (d *DeleteAPIDocumentRequest) GetDocumentID() string {
+	if d == nil {
 		return ""
 	}
-	return o.DocumentID
+	return d.DocumentID
 }
 
 type DeleteAPIDocumentResponse struct {
@@ -36,23 +36,23 @@ type DeleteAPIDocumentResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteAPIDocumentResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteAPIDocumentResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteAPIDocumentResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteAPIDocumentResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteAPIDocumentResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteAPIDocumentResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

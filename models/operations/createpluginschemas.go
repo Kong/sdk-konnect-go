@@ -13,18 +13,18 @@ type CreatePluginSchemasRequest struct {
 	CreatePluginSchemas *components.CreatePluginSchemas `request:"mediaType=application/json"`
 }
 
-func (o *CreatePluginSchemasRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreatePluginSchemasRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreatePluginSchemasRequest) GetCreatePluginSchemas() *components.CreatePluginSchemas {
-	if o == nil {
+func (c *CreatePluginSchemasRequest) GetCreatePluginSchemas() *components.CreatePluginSchemas {
+	if c == nil {
 		return nil
 	}
-	return o.CreatePluginSchemas
+	return c.CreatePluginSchemas
 }
 
 type CreatePluginSchemasResponse struct {
@@ -38,30 +38,30 @@ type CreatePluginSchemasResponse struct {
 	PluginSchemas *components.PluginSchemas
 }
 
-func (o *CreatePluginSchemasResponse) GetContentType() string {
-	if o == nil {
+func (c *CreatePluginSchemasResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreatePluginSchemasResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreatePluginSchemasResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreatePluginSchemasResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreatePluginSchemasResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreatePluginSchemasResponse) GetPluginSchemas() *components.PluginSchemas {
-	if o == nil {
+func (c *CreatePluginSchemasResponse) GetPluginSchemas() *components.PluginSchemas {
+	if c == nil {
 		return nil
 	}
-	return o.PluginSchemas
+	return c.PluginSchemas
 }

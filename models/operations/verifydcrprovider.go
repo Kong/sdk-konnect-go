@@ -12,11 +12,11 @@ type VerifyDcrProviderRequest struct {
 	DcrProviderID string `pathParam:"style=simple,explode=false,name=dcrProviderId"`
 }
 
-func (o *VerifyDcrProviderRequest) GetDcrProviderID() string {
-	if o == nil {
+func (v *VerifyDcrProviderRequest) GetDcrProviderID() string {
+	if v == nil {
 		return ""
 	}
-	return o.DcrProviderID
+	return v.DcrProviderID
 }
 
 type VerifyDcrProviderResponse struct {
@@ -30,30 +30,30 @@ type VerifyDcrProviderResponse struct {
 	VerifyDcrProviderResponse *components.VerifyDcrProviderResponse
 }
 
-func (o *VerifyDcrProviderResponse) GetContentType() string {
-	if o == nil {
+func (v *VerifyDcrProviderResponse) GetContentType() string {
+	if v == nil {
 		return ""
 	}
-	return o.ContentType
+	return v.ContentType
 }
 
-func (o *VerifyDcrProviderResponse) GetStatusCode() int {
-	if o == nil {
+func (v *VerifyDcrProviderResponse) GetStatusCode() int {
+	if v == nil {
 		return 0
 	}
-	return o.StatusCode
+	return v.StatusCode
 }
 
-func (o *VerifyDcrProviderResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (v *VerifyDcrProviderResponse) GetRawResponse() *http.Response {
+	if v == nil {
 		return nil
 	}
-	return o.RawResponse
+	return v.RawResponse
 }
 
-func (o *VerifyDcrProviderResponse) GetVerifyDcrProviderResponse() *components.VerifyDcrProviderResponse {
-	if o == nil {
+func (v *VerifyDcrProviderResponse) GetVerifyDcrProviderResponse() *components.VerifyDcrProviderResponse {
+	if v == nil {
 		return nil
 	}
-	return o.VerifyDcrProviderResponse
+	return v.VerifyDcrProviderResponse
 }

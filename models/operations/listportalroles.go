@@ -18,30 +18,30 @@ type ListPortalRolesResponse struct {
 	ListRolesResponse *components.ListRolesResponse
 }
 
-func (o *ListPortalRolesResponse) GetContentType() string {
-	if o == nil {
+func (l *ListPortalRolesResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListPortalRolesResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListPortalRolesResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListPortalRolesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListPortalRolesResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListPortalRolesResponse) GetListRolesResponse() *components.ListRolesResponse {
-	if o == nil {
+func (l *ListPortalRolesResponse) GetListRolesResponse() *components.ListRolesResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListRolesResponse
+	return l.ListRolesResponse
 }

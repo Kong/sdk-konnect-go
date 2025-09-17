@@ -14,18 +14,18 @@ type CreateKeySetRequest struct {
 	KeySet *components.KeySet `request:"mediaType=application/json"`
 }
 
-func (o *CreateKeySetRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreateKeySetRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreateKeySetRequest) GetKeySet() *components.KeySet {
-	if o == nil {
+func (c *CreateKeySetRequest) GetKeySet() *components.KeySet {
+	if c == nil {
 		return nil
 	}
-	return o.KeySet
+	return c.KeySet
 }
 
 type CreateKeySetResponse struct {
@@ -39,30 +39,30 @@ type CreateKeySetResponse struct {
 	KeySet *components.KeySet
 }
 
-func (o *CreateKeySetResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateKeySetResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateKeySetResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateKeySetResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateKeySetResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateKeySetResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateKeySetResponse) GetKeySet() *components.KeySet {
-	if o == nil {
+func (c *CreateKeySetResponse) GetKeySet() *components.KeySet {
+	if c == nil {
 		return nil
 	}
-	return o.KeySet
+	return c.KeySet
 }

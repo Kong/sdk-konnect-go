@@ -17,18 +17,18 @@ type CreatePrivateDNSRequest struct {
 	CreatePrivateDNSRequest components.CreatePrivateDNSRequest `request:"mediaType=application/json"`
 }
 
-func (o *CreatePrivateDNSRequest) GetNetworkID() string {
-	if o == nil {
+func (c *CreatePrivateDNSRequest) GetNetworkID() string {
+	if c == nil {
 		return ""
 	}
-	return o.NetworkID
+	return c.NetworkID
 }
 
-func (o *CreatePrivateDNSRequest) GetCreatePrivateDNSRequest() components.CreatePrivateDNSRequest {
-	if o == nil {
+func (c *CreatePrivateDNSRequest) GetCreatePrivateDNSRequest() components.CreatePrivateDNSRequest {
+	if c == nil {
 		return components.CreatePrivateDNSRequest{}
 	}
-	return o.CreatePrivateDNSRequest
+	return c.CreatePrivateDNSRequest
 }
 
 type CreatePrivateDNSResponse struct {
@@ -42,30 +42,30 @@ type CreatePrivateDNSResponse struct {
 	PrivateDNSResponse *components.PrivateDNSResponse
 }
 
-func (o *CreatePrivateDNSResponse) GetContentType() string {
-	if o == nil {
+func (c *CreatePrivateDNSResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreatePrivateDNSResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreatePrivateDNSResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreatePrivateDNSResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreatePrivateDNSResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreatePrivateDNSResponse) GetPrivateDNSResponse() *components.PrivateDNSResponse {
-	if o == nil {
+func (c *CreatePrivateDNSResponse) GetPrivateDNSResponse() *components.PrivateDNSResponse {
+	if c == nil {
 		return nil
 	}
-	return o.PrivateDNSResponse
+	return c.PrivateDNSResponse
 }

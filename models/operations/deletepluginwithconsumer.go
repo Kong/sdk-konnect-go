@@ -15,25 +15,25 @@ type DeletePluginWithConsumerRequest struct {
 	PluginID string `pathParam:"style=simple,explode=false,name=PluginId"`
 }
 
-func (o *DeletePluginWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (d *DeletePluginWithConsumerRequest) GetControlPlaneID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return d.ControlPlaneID
 }
 
-func (o *DeletePluginWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (d *DeletePluginWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if d == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return d.ConsumerIDForNestedEntities
 }
 
-func (o *DeletePluginWithConsumerRequest) GetPluginID() string {
-	if o == nil {
+func (d *DeletePluginWithConsumerRequest) GetPluginID() string {
+	if d == nil {
 		return ""
 	}
-	return o.PluginID
+	return d.PluginID
 }
 
 type DeletePluginWithConsumerResponse struct {
@@ -45,23 +45,23 @@ type DeletePluginWithConsumerResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeletePluginWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (d *DeletePluginWithConsumerResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeletePluginWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeletePluginWithConsumerResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeletePluginWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeletePluginWithConsumerResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

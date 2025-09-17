@@ -13,11 +13,11 @@ type ListRegistrationsByApplicationQueryParamFilter struct {
 	Status *components.StringFieldFilter `queryParam:"name=status"`
 }
 
-func (o *ListRegistrationsByApplicationQueryParamFilter) GetStatus() *components.StringFieldFilter {
-	if o == nil {
+func (l *ListRegistrationsByApplicationQueryParamFilter) GetStatus() *components.StringFieldFilter {
+	if l == nil {
 		return nil
 	}
-	return o.Status
+	return l.Status
 }
 
 type ListRegistrationsByApplicationRequest struct {
@@ -42,46 +42,46 @@ type ListRegistrationsByApplicationRequest struct {
 	Filter *ListRegistrationsByApplicationQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *ListRegistrationsByApplicationRequest) GetPortalID() string {
-	if o == nil {
+func (l *ListRegistrationsByApplicationRequest) GetPortalID() string {
+	if l == nil {
 		return ""
 	}
-	return o.PortalID
+	return l.PortalID
 }
 
-func (o *ListRegistrationsByApplicationRequest) GetApplicationID() string {
-	if o == nil {
+func (l *ListRegistrationsByApplicationRequest) GetApplicationID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ApplicationID
+	return l.ApplicationID
 }
 
-func (o *ListRegistrationsByApplicationRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListRegistrationsByApplicationRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListRegistrationsByApplicationRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListRegistrationsByApplicationRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListRegistrationsByApplicationRequest) GetSort() *string {
-	if o == nil {
+func (l *ListRegistrationsByApplicationRequest) GetSort() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Sort
+	return l.Sort
 }
 
-func (o *ListRegistrationsByApplicationRequest) GetFilter() *ListRegistrationsByApplicationQueryParamFilter {
-	if o == nil {
+func (l *ListRegistrationsByApplicationRequest) GetFilter() *ListRegistrationsByApplicationQueryParamFilter {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
 type ListRegistrationsByApplicationResponse struct {
@@ -95,30 +95,30 @@ type ListRegistrationsByApplicationResponse struct {
 	ListApplicationRegistrationsResponse *components.ListApplicationRegistrationsResponse
 }
 
-func (o *ListRegistrationsByApplicationResponse) GetContentType() string {
-	if o == nil {
+func (l *ListRegistrationsByApplicationResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListRegistrationsByApplicationResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListRegistrationsByApplicationResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListRegistrationsByApplicationResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListRegistrationsByApplicationResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListRegistrationsByApplicationResponse) GetListApplicationRegistrationsResponse() *components.ListApplicationRegistrationsResponse {
-	if o == nil {
+func (l *ListRegistrationsByApplicationResponse) GetListApplicationRegistrationsResponse() *components.ListApplicationRegistrationsResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListApplicationRegistrationsResponse
+	return l.ListApplicationRegistrationsResponse
 }

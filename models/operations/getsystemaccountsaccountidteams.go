@@ -17,11 +17,11 @@ type GetSystemAccountsAccountIDTeamsQueryParamFilter struct {
 	Name *components.LegacyStringFieldFilter `queryParam:"name=name"`
 }
 
-func (o *GetSystemAccountsAccountIDTeamsQueryParamFilter) GetName() *components.LegacyStringFieldFilter {
-	if o == nil {
+func (g *GetSystemAccountsAccountIDTeamsQueryParamFilter) GetName() *components.LegacyStringFieldFilter {
+	if g == nil {
 		return nil
 	}
-	return o.Name
+	return g.Name
 }
 
 type GetSystemAccountsAccountIDTeamsRequest struct {
@@ -35,32 +35,32 @@ type GetSystemAccountsAccountIDTeamsRequest struct {
 	Filter *GetSystemAccountsAccountIDTeamsQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *GetSystemAccountsAccountIDTeamsRequest) GetAccountID() string {
-	if o == nil {
+func (g *GetSystemAccountsAccountIDTeamsRequest) GetAccountID() string {
+	if g == nil {
 		return ""
 	}
-	return o.AccountID
+	return g.AccountID
 }
 
-func (o *GetSystemAccountsAccountIDTeamsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (g *GetSystemAccountsAccountIDTeamsRequest) GetPageSize() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.PageSize
+	return g.PageSize
 }
 
-func (o *GetSystemAccountsAccountIDTeamsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (g *GetSystemAccountsAccountIDTeamsRequest) GetPageNumber() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.PageNumber
+	return g.PageNumber
 }
 
-func (o *GetSystemAccountsAccountIDTeamsRequest) GetFilter() *GetSystemAccountsAccountIDTeamsQueryParamFilter {
-	if o == nil {
+func (g *GetSystemAccountsAccountIDTeamsRequest) GetFilter() *GetSystemAccountsAccountIDTeamsQueryParamFilter {
+	if g == nil {
 		return nil
 	}
-	return o.Filter
+	return g.Filter
 }
 
 type GetSystemAccountsAccountIDTeamsResponse struct {
@@ -74,30 +74,30 @@ type GetSystemAccountsAccountIDTeamsResponse struct {
 	TeamCollection *components.TeamCollection
 }
 
-func (o *GetSystemAccountsAccountIDTeamsResponse) GetContentType() string {
-	if o == nil {
+func (g *GetSystemAccountsAccountIDTeamsResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetSystemAccountsAccountIDTeamsResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetSystemAccountsAccountIDTeamsResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetSystemAccountsAccountIDTeamsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetSystemAccountsAccountIDTeamsResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetSystemAccountsAccountIDTeamsResponse) GetTeamCollection() *components.TeamCollection {
-	if o == nil {
+func (g *GetSystemAccountsAccountIDTeamsResponse) GetTeamCollection() *components.TeamCollection {
+	if g == nil {
 		return nil
 	}
-	return o.TeamCollection
+	return g.TeamCollection
 }

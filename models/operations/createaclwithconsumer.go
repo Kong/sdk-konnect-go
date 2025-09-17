@@ -16,25 +16,25 @@ type CreateACLWithConsumerRequest struct {
 	ACLWithoutParents components.ACLWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *CreateACLWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreateACLWithConsumerRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreateACLWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (c *CreateACLWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if c == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return c.ConsumerIDForNestedEntities
 }
 
-func (o *CreateACLWithConsumerRequest) GetACLWithoutParents() components.ACLWithoutParents {
-	if o == nil {
+func (c *CreateACLWithConsumerRequest) GetACLWithoutParents() components.ACLWithoutParents {
+	if c == nil {
 		return components.ACLWithoutParents{}
 	}
-	return o.ACLWithoutParents
+	return c.ACLWithoutParents
 }
 
 type CreateACLWithConsumerResponse struct {
@@ -48,30 +48,30 @@ type CreateACLWithConsumerResponse struct {
 	ACL *components.ACL
 }
 
-func (o *CreateACLWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateACLWithConsumerResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateACLWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateACLWithConsumerResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateACLWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateACLWithConsumerResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateACLWithConsumerResponse) GetACL() *components.ACL {
-	if o == nil {
+func (c *CreateACLWithConsumerResponse) GetACL() *components.ACL {
+	if c == nil {
 		return nil
 	}
-	return o.ACL
+	return c.ACL
 }

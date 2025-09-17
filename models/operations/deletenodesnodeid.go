@@ -13,18 +13,18 @@ type DeleteNodesNodeIDRequest struct {
 	NodeID string `pathParam:"style=simple,explode=false,name=nodeId"`
 }
 
-func (o *DeleteNodesNodeIDRequest) GetControlPlaneID() string {
-	if o == nil {
+func (d *DeleteNodesNodeIDRequest) GetControlPlaneID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return d.ControlPlaneID
 }
 
-func (o *DeleteNodesNodeIDRequest) GetNodeID() string {
-	if o == nil {
+func (d *DeleteNodesNodeIDRequest) GetNodeID() string {
+	if d == nil {
 		return ""
 	}
-	return o.NodeID
+	return d.NodeID
 }
 
 type DeleteNodesNodeIDResponse struct {
@@ -36,23 +36,23 @@ type DeleteNodesNodeIDResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteNodesNodeIDResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteNodesNodeIDResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteNodesNodeIDResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteNodesNodeIDResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteNodesNodeIDResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteNodesNodeIDResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

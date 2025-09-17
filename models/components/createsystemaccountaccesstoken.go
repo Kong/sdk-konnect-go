@@ -24,16 +24,16 @@ func (c *CreateSystemAccountAccessToken) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CreateSystemAccountAccessToken) GetName() *string {
-	if o == nil {
+func (c *CreateSystemAccountAccessToken) GetName() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *CreateSystemAccountAccessToken) GetExpiresAt() *time.Time {
-	if o == nil {
+func (c *CreateSystemAccountAccessToken) GetExpiresAt() *time.Time {
+	if c == nil {
 		return nil
 	}
-	return o.ExpiresAt
+	return c.ExpiresAt
 }

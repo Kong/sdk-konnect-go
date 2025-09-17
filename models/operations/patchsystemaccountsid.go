@@ -18,18 +18,18 @@ type PatchSystemAccountsIDRequest struct {
 	UpdateSystemAccount *components.UpdateSystemAccount `request:"mediaType=application/json"`
 }
 
-func (o *PatchSystemAccountsIDRequest) GetAccountID() string {
-	if o == nil {
+func (p *PatchSystemAccountsIDRequest) GetAccountID() string {
+	if p == nil {
 		return ""
 	}
-	return o.AccountID
+	return p.AccountID
 }
 
-func (o *PatchSystemAccountsIDRequest) GetUpdateSystemAccount() *components.UpdateSystemAccount {
-	if o == nil {
+func (p *PatchSystemAccountsIDRequest) GetUpdateSystemAccount() *components.UpdateSystemAccount {
+	if p == nil {
 		return nil
 	}
-	return o.UpdateSystemAccount
+	return p.UpdateSystemAccount
 }
 
 type PatchSystemAccountsIDResponse struct {
@@ -43,30 +43,30 @@ type PatchSystemAccountsIDResponse struct {
 	SystemAccount *components.SystemAccount
 }
 
-func (o *PatchSystemAccountsIDResponse) GetContentType() string {
-	if o == nil {
+func (p *PatchSystemAccountsIDResponse) GetContentType() string {
+	if p == nil {
 		return ""
 	}
-	return o.ContentType
+	return p.ContentType
 }
 
-func (o *PatchSystemAccountsIDResponse) GetStatusCode() int {
-	if o == nil {
+func (p *PatchSystemAccountsIDResponse) GetStatusCode() int {
+	if p == nil {
 		return 0
 	}
-	return o.StatusCode
+	return p.StatusCode
 }
 
-func (o *PatchSystemAccountsIDResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (p *PatchSystemAccountsIDResponse) GetRawResponse() *http.Response {
+	if p == nil {
 		return nil
 	}
-	return o.RawResponse
+	return p.RawResponse
 }
 
-func (o *PatchSystemAccountsIDResponse) GetSystemAccount() *components.SystemAccount {
-	if o == nil {
+func (p *PatchSystemAccountsIDResponse) GetSystemAccount() *components.SystemAccount {
+	if p == nil {
 		return nil
 	}
-	return o.SystemAccount
+	return p.SystemAccount
 }

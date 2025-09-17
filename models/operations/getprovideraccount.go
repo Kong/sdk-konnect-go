@@ -16,11 +16,11 @@ type GetProviderAccountRequest struct {
 	ProviderAccountID string `pathParam:"style=simple,explode=false,name=providerAccountId"`
 }
 
-func (o *GetProviderAccountRequest) GetProviderAccountID() string {
-	if o == nil {
+func (g *GetProviderAccountRequest) GetProviderAccountID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ProviderAccountID
+	return g.ProviderAccountID
 }
 
 type GetProviderAccountResponse struct {
@@ -34,30 +34,30 @@ type GetProviderAccountResponse struct {
 	ProviderAccount *components.ProviderAccount
 }
 
-func (o *GetProviderAccountResponse) GetContentType() string {
-	if o == nil {
+func (g *GetProviderAccountResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetProviderAccountResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetProviderAccountResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetProviderAccountResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetProviderAccountResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetProviderAccountResponse) GetProviderAccount() *components.ProviderAccount {
-	if o == nil {
+func (g *GetProviderAccountResponse) GetProviderAccount() *components.ProviderAccount {
+	if g == nil {
 		return nil
 	}
-	return o.ProviderAccount
+	return g.ProviderAccount
 }

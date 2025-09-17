@@ -20,25 +20,25 @@ type ListConfigurationsRequest struct {
 	Filter *components.ConfigurationsFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *ListConfigurationsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListConfigurationsRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListConfigurationsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListConfigurationsRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListConfigurationsRequest) GetFilter() *components.ConfigurationsFilterParameters {
-	if o == nil {
+func (l *ListConfigurationsRequest) GetFilter() *components.ConfigurationsFilterParameters {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
 type ListConfigurationsResponse struct {
@@ -52,30 +52,30 @@ type ListConfigurationsResponse struct {
 	ListConfigurationsResponse *components.ListConfigurationsResponse
 }
 
-func (o *ListConfigurationsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListConfigurationsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListConfigurationsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListConfigurationsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListConfigurationsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListConfigurationsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListConfigurationsResponse) GetListConfigurationsResponse() *components.ListConfigurationsResponse {
-	if o == nil {
+func (l *ListConfigurationsResponse) GetListConfigurationsResponse() *components.ListConfigurationsResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListConfigurationsResponse
+	return l.ListConfigurationsResponse
 }

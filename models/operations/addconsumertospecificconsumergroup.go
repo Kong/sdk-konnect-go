@@ -23,11 +23,11 @@ func (a *AddConsumerToSpecificConsumerGroupRequestBody) UnmarshalJSON(data []byt
 	return nil
 }
 
-func (o *AddConsumerToSpecificConsumerGroupRequestBody) GetGroup() *string {
-	if o == nil {
+func (a *AddConsumerToSpecificConsumerGroupRequestBody) GetGroup() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Group
+	return a.Group
 }
 
 type AddConsumerToSpecificConsumerGroupRequest struct {
@@ -38,25 +38,25 @@ type AddConsumerToSpecificConsumerGroupRequest struct {
 	RequestBody *AddConsumerToSpecificConsumerGroupRequestBody `request:"mediaType=application/json"`
 }
 
-func (o *AddConsumerToSpecificConsumerGroupRequest) GetControlPlaneID() string {
-	if o == nil {
+func (a *AddConsumerToSpecificConsumerGroupRequest) GetControlPlaneID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return a.ControlPlaneID
 }
 
-func (o *AddConsumerToSpecificConsumerGroupRequest) GetConsumerID() string {
-	if o == nil {
+func (a *AddConsumerToSpecificConsumerGroupRequest) GetConsumerID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ConsumerID
+	return a.ConsumerID
 }
 
-func (o *AddConsumerToSpecificConsumerGroupRequest) GetRequestBody() *AddConsumerToSpecificConsumerGroupRequestBody {
-	if o == nil {
+func (a *AddConsumerToSpecificConsumerGroupRequest) GetRequestBody() *AddConsumerToSpecificConsumerGroupRequestBody {
+	if a == nil {
 		return nil
 	}
-	return o.RequestBody
+	return a.RequestBody
 }
 
 // AddConsumerToSpecificConsumerGroupResponseBody - Consumer added to a specific group
@@ -66,18 +66,18 @@ type AddConsumerToSpecificConsumerGroupResponseBody struct {
 	ConsumerGroups []components.ConsumerGroup `json:"consumer_groups,omitempty"`
 }
 
-func (o *AddConsumerToSpecificConsumerGroupResponseBody) GetConsumer() *components.Consumer {
-	if o == nil {
+func (a *AddConsumerToSpecificConsumerGroupResponseBody) GetConsumer() *components.Consumer {
+	if a == nil {
 		return nil
 	}
-	return o.Consumer
+	return a.Consumer
 }
 
-func (o *AddConsumerToSpecificConsumerGroupResponseBody) GetConsumerGroups() []components.ConsumerGroup {
-	if o == nil {
+func (a *AddConsumerToSpecificConsumerGroupResponseBody) GetConsumerGroups() []components.ConsumerGroup {
+	if a == nil {
 		return nil
 	}
-	return o.ConsumerGroups
+	return a.ConsumerGroups
 }
 
 type AddConsumerToSpecificConsumerGroupResponse struct {
@@ -91,30 +91,30 @@ type AddConsumerToSpecificConsumerGroupResponse struct {
 	Object *AddConsumerToSpecificConsumerGroupResponseBody
 }
 
-func (o *AddConsumerToSpecificConsumerGroupResponse) GetContentType() string {
-	if o == nil {
+func (a *AddConsumerToSpecificConsumerGroupResponse) GetContentType() string {
+	if a == nil {
 		return ""
 	}
-	return o.ContentType
+	return a.ContentType
 }
 
-func (o *AddConsumerToSpecificConsumerGroupResponse) GetStatusCode() int {
-	if o == nil {
+func (a *AddConsumerToSpecificConsumerGroupResponse) GetStatusCode() int {
+	if a == nil {
 		return 0
 	}
-	return o.StatusCode
+	return a.StatusCode
 }
 
-func (o *AddConsumerToSpecificConsumerGroupResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (a *AddConsumerToSpecificConsumerGroupResponse) GetRawResponse() *http.Response {
+	if a == nil {
 		return nil
 	}
-	return o.RawResponse
+	return a.RawResponse
 }
 
-func (o *AddConsumerToSpecificConsumerGroupResponse) GetObject() *AddConsumerToSpecificConsumerGroupResponseBody {
-	if o == nil {
+func (a *AddConsumerToSpecificConsumerGroupResponse) GetObject() *AddConsumerToSpecificConsumerGroupResponseBody {
+	if a == nil {
 		return nil
 	}
-	return o.Object
+	return a.Object
 }

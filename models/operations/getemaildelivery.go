@@ -12,11 +12,11 @@ type GetEmailDeliveryRequest struct {
 	PortalID string `pathParam:"style=simple,explode=false,name=portalId"`
 }
 
-func (o *GetEmailDeliveryRequest) GetPortalID() string {
-	if o == nil {
+func (g *GetEmailDeliveryRequest) GetPortalID() string {
+	if g == nil {
 		return ""
 	}
-	return o.PortalID
+	return g.PortalID
 }
 
 type GetEmailDeliveryResponse struct {
@@ -30,30 +30,30 @@ type GetEmailDeliveryResponse struct {
 	EmailDelivery *components.EmailDelivery
 }
 
-func (o *GetEmailDeliveryResponse) GetContentType() string {
-	if o == nil {
+func (g *GetEmailDeliveryResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetEmailDeliveryResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetEmailDeliveryResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetEmailDeliveryResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetEmailDeliveryResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetEmailDeliveryResponse) GetEmailDelivery() *components.EmailDelivery {
-	if o == nil {
+func (g *GetEmailDeliveryResponse) GetEmailDelivery() *components.EmailDelivery {
+	if g == nil {
 		return nil
 	}
-	return o.EmailDelivery
+	return g.EmailDelivery
 }

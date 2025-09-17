@@ -48,16 +48,16 @@ func (a *AwsPrivateHostedZoneAttachmentConfig) UnmarshalJSON(data []byte) error 
 	return nil
 }
 
-func (o *AwsPrivateHostedZoneAttachmentConfig) GetKind() AWSPrivateHostedZoneType {
-	if o == nil {
+func (a *AwsPrivateHostedZoneAttachmentConfig) GetKind() AWSPrivateHostedZoneType {
+	if a == nil {
 		return AWSPrivateHostedZoneType("")
 	}
-	return o.Kind
+	return a.Kind
 }
 
-func (o *AwsPrivateHostedZoneAttachmentConfig) GetHostedZoneID() string {
-	if o == nil {
+func (a *AwsPrivateHostedZoneAttachmentConfig) GetHostedZoneID() string {
+	if a == nil {
 		return ""
 	}
-	return o.HostedZoneID
+	return a.HostedZoneID
 }

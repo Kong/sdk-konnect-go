@@ -9,16 +9,16 @@ type AssignedPortalRoleCollectionResponse struct {
 	Data []PortalAssignedRoleResponse `json:"data"`
 }
 
-func (o *AssignedPortalRoleCollectionResponse) GetMeta() PaginatedMeta {
-	if o == nil {
+func (a *AssignedPortalRoleCollectionResponse) GetMeta() PaginatedMeta {
+	if a == nil {
 		return PaginatedMeta{}
 	}
-	return o.Meta
+	return a.Meta
 }
 
-func (o *AssignedPortalRoleCollectionResponse) GetData() []PortalAssignedRoleResponse {
-	if o == nil {
+func (a *AssignedPortalRoleCollectionResponse) GetData() []PortalAssignedRoleResponse {
+	if a == nil {
 		return []PortalAssignedRoleResponse{}
 	}
-	return o.Data
+	return a.Data
 }

@@ -9,16 +9,16 @@ type ListDcrProvidersResponse struct {
 	Meta PaginatedMeta `json:"meta"`
 }
 
-func (o *ListDcrProvidersResponse) GetData() []DcrProviderResponse {
-	if o == nil {
+func (l *ListDcrProvidersResponse) GetData() []DcrProviderResponse {
+	if l == nil {
 		return []DcrProviderResponse{}
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListDcrProvidersResponse) GetMeta() PaginatedMeta {
-	if o == nil {
+func (l *ListDcrProvidersResponse) GetMeta() PaginatedMeta {
+	if l == nil {
 		return PaginatedMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }

@@ -7,9 +7,9 @@ type UserConfigurationListResponse struct {
 	Data []UserConfiguration `json:"data"`
 }
 
-func (o *UserConfigurationListResponse) GetData() []UserConfiguration {
-	if o == nil {
+func (u *UserConfigurationListResponse) GetData() []UserConfiguration {
+	if u == nil {
 		return []UserConfiguration{}
 	}
-	return o.Data
+	return u.Data
 }

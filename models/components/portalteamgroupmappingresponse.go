@@ -9,16 +9,16 @@ type PortalTeamGroupMappingResponse struct {
 	Data []PortalTeamGroupMapping `json:"data,omitempty"`
 }
 
-func (o *PortalTeamGroupMappingResponse) GetMeta() *PaginatedMeta {
-	if o == nil {
+func (p *PortalTeamGroupMappingResponse) GetMeta() *PaginatedMeta {
+	if p == nil {
 		return nil
 	}
-	return o.Meta
+	return p.Meta
 }
 
-func (o *PortalTeamGroupMappingResponse) GetData() []PortalTeamGroupMapping {
-	if o == nil {
+func (p *PortalTeamGroupMappingResponse) GetData() []PortalTeamGroupMapping {
+	if p == nil {
 		return nil
 	}
-	return o.Data
+	return p.Data
 }

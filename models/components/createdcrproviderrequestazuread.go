@@ -61,44 +61,44 @@ func (c *CreateDcrProviderRequestAzureAd) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CreateDcrProviderRequestAzureAd) GetProviderType() CreateDcrProviderRequestAzureAdProviderType {
-	if o == nil {
+func (c *CreateDcrProviderRequestAzureAd) GetProviderType() CreateDcrProviderRequestAzureAdProviderType {
+	if c == nil {
 		return CreateDcrProviderRequestAzureAdProviderType("")
 	}
-	return o.ProviderType
+	return c.ProviderType
 }
 
-func (o *CreateDcrProviderRequestAzureAd) GetDcrConfig() CreateDcrConfigAzureAdInRequest {
-	if o == nil {
+func (c *CreateDcrProviderRequestAzureAd) GetDcrConfig() CreateDcrConfigAzureAdInRequest {
+	if c == nil {
 		return CreateDcrConfigAzureAdInRequest{}
 	}
-	return o.DcrConfig
+	return c.DcrConfig
 }
 
-func (o *CreateDcrProviderRequestAzureAd) GetName() string {
-	if o == nil {
+func (c *CreateDcrProviderRequestAzureAd) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *CreateDcrProviderRequestAzureAd) GetDisplayName() *string {
-	if o == nil {
+func (c *CreateDcrProviderRequestAzureAd) GetDisplayName() *string {
+	if c == nil {
 		return nil
 	}
-	return o.DisplayName
+	return c.DisplayName
 }
 
-func (o *CreateDcrProviderRequestAzureAd) GetIssuer() string {
-	if o == nil {
+func (c *CreateDcrProviderRequestAzureAd) GetIssuer() string {
+	if c == nil {
 		return ""
 	}
-	return o.Issuer
+	return c.Issuer
 }
 
-func (o *CreateDcrProviderRequestAzureAd) GetLabels() map[string]string {
-	if o == nil {
+func (c *CreateDcrProviderRequestAzureAd) GetLabels() map[string]string {
+	if c == nil {
 		return nil
 	}
-	return o.Labels
+	return c.Labels
 }

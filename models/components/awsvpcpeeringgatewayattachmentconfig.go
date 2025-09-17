@@ -49,30 +49,30 @@ func (a *AwsVpcPeeringGatewayAttachmentConfig) UnmarshalJSON(data []byte) error 
 	return nil
 }
 
-func (o *AwsVpcPeeringGatewayAttachmentConfig) GetKind() AWSVPCPeeringAttachmentConfig {
-	if o == nil {
+func (a *AwsVpcPeeringGatewayAttachmentConfig) GetKind() AWSVPCPeeringAttachmentConfig {
+	if a == nil {
 		return AWSVPCPeeringAttachmentConfig("")
 	}
-	return o.Kind
+	return a.Kind
 }
 
-func (o *AwsVpcPeeringGatewayAttachmentConfig) GetPeerAccountID() string {
-	if o == nil {
+func (a *AwsVpcPeeringGatewayAttachmentConfig) GetPeerAccountID() string {
+	if a == nil {
 		return ""
 	}
-	return o.PeerAccountID
+	return a.PeerAccountID
 }
 
-func (o *AwsVpcPeeringGatewayAttachmentConfig) GetPeerVpcID() string {
-	if o == nil {
+func (a *AwsVpcPeeringGatewayAttachmentConfig) GetPeerVpcID() string {
+	if a == nil {
 		return ""
 	}
-	return o.PeerVpcID
+	return a.PeerVpcID
 }
 
-func (o *AwsVpcPeeringGatewayAttachmentConfig) GetPeerVpcRegion() string {
-	if o == nil {
+func (a *AwsVpcPeeringGatewayAttachmentConfig) GetPeerVpcRegion() string {
+	if a == nil {
 		return ""
 	}
-	return o.PeerVpcRegion
+	return a.PeerVpcRegion
 }

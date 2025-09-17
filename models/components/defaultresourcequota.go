@@ -38,58 +38,58 @@ func (d *DefaultResourceQuota) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DefaultResourceQuota) GetID() string {
-	if o == nil {
+func (d *DefaultResourceQuota) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DefaultResourceQuota) GetResource() ResourceQuotaQualifier {
-	if o == nil {
+func (d *DefaultResourceQuota) GetResource() ResourceQuotaQualifier {
+	if d == nil {
 		return ResourceQuotaQualifier("")
 	}
-	return o.Resource
+	return d.Resource
 }
 
-func (o *DefaultResourceQuota) GetName() string {
-	if o == nil {
+func (d *DefaultResourceQuota) GetName() string {
+	if d == nil {
 		return ""
 	}
-	return o.Name
+	return d.Name
 }
 
-func (o *DefaultResourceQuota) GetDescription() string {
-	if o == nil {
+func (d *DefaultResourceQuota) GetDescription() string {
+	if d == nil {
 		return ""
 	}
-	return o.Description
+	return d.Description
 }
 
-func (o *DefaultResourceQuota) GetValue() int64 {
-	if o == nil {
+func (d *DefaultResourceQuota) GetValue() int64 {
+	if d == nil {
 		return 0
 	}
-	return o.Value
+	return d.Value
 }
 
-func (o *DefaultResourceQuota) GetOverrides() []ResourceQuota {
-	if o == nil {
+func (d *DefaultResourceQuota) GetOverrides() []ResourceQuota {
+	if d == nil {
 		return []ResourceQuota{}
 	}
-	return o.Overrides
+	return d.Overrides
 }
 
-func (o *DefaultResourceQuota) GetCreatedAt() time.Time {
-	if o == nil {
+func (d *DefaultResourceQuota) GetCreatedAt() time.Time {
+	if d == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return d.CreatedAt
 }
 
-func (o *DefaultResourceQuota) GetUpdatedAt() time.Time {
-	if o == nil {
+func (d *DefaultResourceQuota) GetUpdatedAt() time.Time {
+	if d == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return d.UpdatedAt
 }

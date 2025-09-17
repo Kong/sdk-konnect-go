@@ -14,18 +14,18 @@ type CreateEventSubscriptionRequest struct {
 	EventSubscription *components.EventSubscription `request:"mediaType=application/json"`
 }
 
-func (o *CreateEventSubscriptionRequest) GetEventID() string {
-	if o == nil {
+func (c *CreateEventSubscriptionRequest) GetEventID() string {
+	if c == nil {
 		return ""
 	}
-	return o.EventID
+	return c.EventID
 }
 
-func (o *CreateEventSubscriptionRequest) GetEventSubscription() *components.EventSubscription {
-	if o == nil {
+func (c *CreateEventSubscriptionRequest) GetEventSubscription() *components.EventSubscription {
+	if c == nil {
 		return nil
 	}
-	return o.EventSubscription
+	return c.EventSubscription
 }
 
 type CreateEventSubscriptionResponse struct {
@@ -39,30 +39,30 @@ type CreateEventSubscriptionResponse struct {
 	EventSubscriptionResponse *components.EventSubscriptionResponse
 }
 
-func (o *CreateEventSubscriptionResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateEventSubscriptionResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateEventSubscriptionResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateEventSubscriptionResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateEventSubscriptionResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateEventSubscriptionResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateEventSubscriptionResponse) GetEventSubscriptionResponse() *components.EventSubscriptionResponse {
-	if o == nil {
+func (c *CreateEventSubscriptionResponse) GetEventSubscriptionResponse() *components.EventSubscriptionResponse {
+	if c == nil {
 		return nil
 	}
-	return o.EventSubscriptionResponse
+	return c.EventSubscriptionResponse
 }

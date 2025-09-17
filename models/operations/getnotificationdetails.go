@@ -12,11 +12,11 @@ type GetNotificationDetailsRequest struct {
 	NotificationID string `pathParam:"style=simple,explode=false,name=notificationId"`
 }
 
-func (o *GetNotificationDetailsRequest) GetNotificationID() string {
-	if o == nil {
+func (g *GetNotificationDetailsRequest) GetNotificationID() string {
+	if g == nil {
 		return ""
 	}
-	return o.NotificationID
+	return g.NotificationID
 }
 
 type GetNotificationDetailsResponse struct {
@@ -30,30 +30,30 @@ type GetNotificationDetailsResponse struct {
 	Notification *components.Notification
 }
 
-func (o *GetNotificationDetailsResponse) GetContentType() string {
-	if o == nil {
+func (g *GetNotificationDetailsResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetNotificationDetailsResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetNotificationDetailsResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetNotificationDetailsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetNotificationDetailsResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetNotificationDetailsResponse) GetNotification() *components.Notification {
-	if o == nil {
+func (g *GetNotificationDetailsResponse) GetNotification() *components.Notification {
+	if g == nil {
 		return nil
 	}
-	return o.Notification
+	return g.Notification
 }

@@ -23,32 +23,32 @@ type ListApisRequest struct {
 	Sort *string `queryParam:"style=form,explode=true,name=sort"`
 }
 
-func (o *ListApisRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListApisRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListApisRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListApisRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListApisRequest) GetFilter() *components.APIFilterParameters {
-	if o == nil {
+func (l *ListApisRequest) GetFilter() *components.APIFilterParameters {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
-func (o *ListApisRequest) GetSort() *string {
-	if o == nil {
+func (l *ListApisRequest) GetSort() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Sort
+	return l.Sort
 }
 
 type ListApisResponse struct {
@@ -62,30 +62,30 @@ type ListApisResponse struct {
 	ListAPIResponse *components.ListAPIResponse
 }
 
-func (o *ListApisResponse) GetContentType() string {
-	if o == nil {
+func (l *ListApisResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListApisResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListApisResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListApisResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListApisResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListApisResponse) GetListAPIResponse() *components.ListAPIResponse {
-	if o == nil {
+func (l *ListApisResponse) GetListAPIResponse() *components.ListAPIResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListAPIResponse
+	return l.ListAPIResponse
 }

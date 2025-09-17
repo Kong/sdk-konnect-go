@@ -8,9 +8,9 @@ type GetGroupStatus struct {
 	Item *GroupStatus `json:"item,omitempty"`
 }
 
-func (o *GetGroupStatus) GetItem() *GroupStatus {
-	if o == nil {
+func (g *GetGroupStatus) GetItem() *GroupStatus {
+	if g == nil {
 		return nil
 	}
-	return o.Item
+	return g.Item
 }

@@ -14,30 +14,30 @@ type AvailabilityDocument struct {
 	ServerlessV1Providers []ServerlessV1Provider `json:"serverless_v1_providers"`
 }
 
-func (o *AvailabilityDocument) GetVersions() []string {
-	if o == nil {
+func (a *AvailabilityDocument) GetVersions() []string {
+	if a == nil {
 		return []string{}
 	}
-	return o.Versions
+	return a.Versions
 }
 
-func (o *AvailabilityDocument) GetInstanceTypes() []InstanceType {
-	if o == nil {
+func (a *AvailabilityDocument) GetInstanceTypes() []InstanceType {
+	if a == nil {
 		return []InstanceType{}
 	}
-	return o.InstanceTypes
+	return a.InstanceTypes
 }
 
-func (o *AvailabilityDocument) GetProviders() []Provider {
-	if o == nil {
+func (a *AvailabilityDocument) GetProviders() []Provider {
+	if a == nil {
 		return []Provider{}
 	}
-	return o.Providers
+	return a.Providers
 }
 
-func (o *AvailabilityDocument) GetServerlessV1Providers() []ServerlessV1Provider {
-	if o == nil {
+func (a *AvailabilityDocument) GetServerlessV1Providers() []ServerlessV1Provider {
+	if a == nil {
 		return []ServerlessV1Provider{}
 	}
-	return o.ServerlessV1Providers
+	return a.ServerlessV1Providers
 }

@@ -21,11 +21,11 @@ func (l *ListDataPlaneCertificatesResponsePage) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (o *ListDataPlaneCertificatesResponsePage) GetTotal() *int64 {
-	if o == nil {
+func (l *ListDataPlaneCertificatesResponsePage) GetTotal() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Total
+	return l.Total
 }
 
 // ListDataPlaneCertificatesResponse - Example response
@@ -34,16 +34,16 @@ type ListDataPlaneCertificatesResponse struct {
 	Page  *ListDataPlaneCertificatesResponsePage `json:"page,omitempty"`
 }
 
-func (o *ListDataPlaneCertificatesResponse) GetItems() []DataPlaneClientCertificate {
-	if o == nil {
+func (l *ListDataPlaneCertificatesResponse) GetItems() []DataPlaneClientCertificate {
+	if l == nil {
 		return nil
 	}
-	return o.Items
+	return l.Items
 }
 
-func (o *ListDataPlaneCertificatesResponse) GetPage() *ListDataPlaneCertificatesResponsePage {
-	if o == nil {
+func (l *ListDataPlaneCertificatesResponse) GetPage() *ListDataPlaneCertificatesResponsePage {
+	if l == nil {
 		return nil
 	}
-	return o.Page
+	return l.Page
 }

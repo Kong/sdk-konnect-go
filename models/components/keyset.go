@@ -30,37 +30,37 @@ func (k *KeySet) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *KeySet) GetCreatedAt() *int64 {
-	if o == nil {
+func (k *KeySet) GetCreatedAt() *int64 {
+	if k == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return k.CreatedAt
 }
 
-func (o *KeySet) GetID() *string {
-	if o == nil {
+func (k *KeySet) GetID() *string {
+	if k == nil {
 		return nil
 	}
-	return o.ID
+	return k.ID
 }
 
-func (o *KeySet) GetName() *string {
-	if o == nil {
+func (k *KeySet) GetName() *string {
+	if k == nil {
 		return nil
 	}
-	return o.Name
+	return k.Name
 }
 
-func (o *KeySet) GetTags() []string {
-	if o == nil {
+func (k *KeySet) GetTags() []string {
+	if k == nil {
 		return nil
 	}
-	return o.Tags
+	return k.Tags
 }
 
-func (o *KeySet) GetUpdatedAt() *int64 {
-	if o == nil {
+func (k *KeySet) GetUpdatedAt() *int64 {
+	if k == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return k.UpdatedAt
 }

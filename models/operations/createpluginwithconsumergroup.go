@@ -16,25 +16,25 @@ type CreatePluginWithConsumerGroupRequest struct {
 	PluginWithoutParents components.PluginWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *CreatePluginWithConsumerGroupRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreatePluginWithConsumerGroupRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreatePluginWithConsumerGroupRequest) GetConsumerGroupID() string {
-	if o == nil {
+func (c *CreatePluginWithConsumerGroupRequest) GetConsumerGroupID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ConsumerGroupID
+	return c.ConsumerGroupID
 }
 
-func (o *CreatePluginWithConsumerGroupRequest) GetPluginWithoutParents() components.PluginWithoutParents {
-	if o == nil {
+func (c *CreatePluginWithConsumerGroupRequest) GetPluginWithoutParents() components.PluginWithoutParents {
+	if c == nil {
 		return components.PluginWithoutParents{}
 	}
-	return o.PluginWithoutParents
+	return c.PluginWithoutParents
 }
 
 type CreatePluginWithConsumerGroupResponse struct {
@@ -48,30 +48,30 @@ type CreatePluginWithConsumerGroupResponse struct {
 	Plugin *components.Plugin
 }
 
-func (o *CreatePluginWithConsumerGroupResponse) GetContentType() string {
-	if o == nil {
+func (c *CreatePluginWithConsumerGroupResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreatePluginWithConsumerGroupResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreatePluginWithConsumerGroupResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreatePluginWithConsumerGroupResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreatePluginWithConsumerGroupResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreatePluginWithConsumerGroupResponse) GetPlugin() *components.Plugin {
-	if o == nil {
+func (c *CreatePluginWithConsumerGroupResponse) GetPlugin() *components.Plugin {
+	if c == nil {
 		return nil
 	}
-	return o.Plugin
+	return c.Plugin
 }

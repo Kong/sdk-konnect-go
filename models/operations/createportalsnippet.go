@@ -14,18 +14,18 @@ type CreatePortalSnippetRequest struct {
 	CreatePortalSnippetRequest components.CreatePortalSnippetRequest `request:"mediaType=application/json"`
 }
 
-func (o *CreatePortalSnippetRequest) GetPortalID() string {
-	if o == nil {
+func (c *CreatePortalSnippetRequest) GetPortalID() string {
+	if c == nil {
 		return ""
 	}
-	return o.PortalID
+	return c.PortalID
 }
 
-func (o *CreatePortalSnippetRequest) GetCreatePortalSnippetRequest() components.CreatePortalSnippetRequest {
-	if o == nil {
+func (c *CreatePortalSnippetRequest) GetCreatePortalSnippetRequest() components.CreatePortalSnippetRequest {
+	if c == nil {
 		return components.CreatePortalSnippetRequest{}
 	}
-	return o.CreatePortalSnippetRequest
+	return c.CreatePortalSnippetRequest
 }
 
 type CreatePortalSnippetResponse struct {
@@ -39,30 +39,30 @@ type CreatePortalSnippetResponse struct {
 	PortalSnippetResponse *components.PortalSnippetResponse
 }
 
-func (o *CreatePortalSnippetResponse) GetContentType() string {
-	if o == nil {
+func (c *CreatePortalSnippetResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreatePortalSnippetResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreatePortalSnippetResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreatePortalSnippetResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreatePortalSnippetResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreatePortalSnippetResponse) GetPortalSnippetResponse() *components.PortalSnippetResponse {
-	if o == nil {
+func (c *CreatePortalSnippetResponse) GetPortalSnippetResponse() *components.PortalSnippetResponse {
+	if c == nil {
 		return nil
 	}
-	return o.PortalSnippetResponse
+	return c.PortalSnippetResponse
 }

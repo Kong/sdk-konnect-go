@@ -13,11 +13,11 @@ type ValidationMessages struct {
 	Message string `json:"message"`
 }
 
-func (o *ValidationMessages) GetMessage() string {
-	if o == nil {
+func (v *ValidationMessages) GetMessage() string {
+	if v == nil {
 		return ""
 	}
-	return o.Message
+	return v.Message
 }
 
 // APISpecResponseAPISpecType - The type of specification being stored. This allows us to render the specification correctly.
@@ -79,44 +79,44 @@ func (a *APISpecResponse) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *APISpecResponse) GetID() string {
-	if o == nil {
+func (a *APISpecResponse) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *APISpecResponse) GetContent() *string {
-	if o == nil {
+func (a *APISpecResponse) GetContent() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Content
+	return a.Content
 }
 
-func (o *APISpecResponse) GetValidationMessages() []ValidationMessages {
-	if o == nil {
+func (a *APISpecResponse) GetValidationMessages() []ValidationMessages {
+	if a == nil {
 		return []ValidationMessages{}
 	}
-	return o.ValidationMessages
+	return a.ValidationMessages
 }
 
-func (o *APISpecResponse) GetType() APISpecResponseAPISpecType {
-	if o == nil {
+func (a *APISpecResponse) GetType() APISpecResponseAPISpecType {
+	if a == nil {
 		return APISpecResponseAPISpecType("")
 	}
-	return o.Type
+	return a.Type
 }
 
-func (o *APISpecResponse) GetCreatedAt() time.Time {
-	if o == nil {
+func (a *APISpecResponse) GetCreatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return a.CreatedAt
 }
 
-func (o *APISpecResponse) GetUpdatedAt() time.Time {
-	if o == nil {
+func (a *APISpecResponse) GetUpdatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return a.UpdatedAt
 }

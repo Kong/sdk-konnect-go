@@ -22,32 +22,32 @@ type ListEmailDomainsRequest struct {
 	Filter *components.EmailDomainFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *ListEmailDomainsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListEmailDomainsRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListEmailDomainsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListEmailDomainsRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListEmailDomainsRequest) GetSort() *string {
-	if o == nil {
+func (l *ListEmailDomainsRequest) GetSort() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Sort
+	return l.Sort
 }
 
-func (o *ListEmailDomainsRequest) GetFilter() *components.EmailDomainFilterParameters {
-	if o == nil {
+func (l *ListEmailDomainsRequest) GetFilter() *components.EmailDomainFilterParameters {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
 type ListEmailDomainsResponse struct {
@@ -61,30 +61,30 @@ type ListEmailDomainsResponse struct {
 	ListDomains *components.ListDomains
 }
 
-func (o *ListEmailDomainsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListEmailDomainsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListEmailDomainsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListEmailDomainsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListEmailDomainsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListEmailDomainsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListEmailDomainsResponse) GetListDomains() *components.ListDomains {
-	if o == nil {
+func (l *ListEmailDomainsResponse) GetListDomains() *components.ListDomains {
+	if l == nil {
 		return nil
 	}
-	return o.ListDomains
+	return l.ListDomains
 }

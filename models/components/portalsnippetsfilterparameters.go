@@ -17,44 +17,44 @@ type PortalSnippetsFilterParameters struct {
 	UpdatedAt *DateTimeFieldFilter `queryParam:"name=updated_at"`
 }
 
-func (o *PortalSnippetsFilterParameters) GetID() *UUIDFieldFilter {
-	if o == nil {
+func (p *PortalSnippetsFilterParameters) GetID() *UUIDFieldFilter {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PortalSnippetsFilterParameters) GetName() *StringFieldFilter {
-	if o == nil {
+func (p *PortalSnippetsFilterParameters) GetName() *StringFieldFilter {
+	if p == nil {
 		return nil
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PortalSnippetsFilterParameters) GetTitle() *StringFieldFilter {
-	if o == nil {
+func (p *PortalSnippetsFilterParameters) GetTitle() *StringFieldFilter {
+	if p == nil {
 		return nil
 	}
-	return o.Title
+	return p.Title
 }
 
-func (o *PortalSnippetsFilterParameters) GetVisibility() *StringFieldFilter {
-	if o == nil {
+func (p *PortalSnippetsFilterParameters) GetVisibility() *StringFieldFilter {
+	if p == nil {
 		return nil
 	}
-	return o.Visibility
+	return p.Visibility
 }
 
-func (o *PortalSnippetsFilterParameters) GetCreatedAt() *DateTimeFieldFilter {
-	if o == nil {
+func (p *PortalSnippetsFilterParameters) GetCreatedAt() *DateTimeFieldFilter {
+	if p == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return p.CreatedAt
 }
 
-func (o *PortalSnippetsFilterParameters) GetUpdatedAt() *DateTimeFieldFilter {
-	if o == nil {
+func (p *PortalSnippetsFilterParameters) GetUpdatedAt() *DateTimeFieldFilter {
+	if p == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return p.UpdatedAt
 }

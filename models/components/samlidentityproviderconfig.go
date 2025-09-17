@@ -33,44 +33,44 @@ func (s *SAMLIdentityProviderConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SAMLIdentityProviderConfig) GetIdpMetadataURL() *string {
-	if o == nil {
+func (s *SAMLIdentityProviderConfig) GetIdpMetadataURL() *string {
+	if s == nil {
 		return nil
 	}
-	return o.IdpMetadataURL
+	return s.IdpMetadataURL
 }
 
-func (o *SAMLIdentityProviderConfig) GetIdpMetadataXML() *string {
-	if o == nil {
+func (s *SAMLIdentityProviderConfig) GetIdpMetadataXML() *string {
+	if s == nil {
 		return nil
 	}
-	return o.IdpMetadataXML
+	return s.IdpMetadataXML
 }
 
-func (o *SAMLIdentityProviderConfig) GetSpMetadataURL() *string {
-	if o == nil {
+func (s *SAMLIdentityProviderConfig) GetSpMetadataURL() *string {
+	if s == nil {
 		return nil
 	}
-	return o.SpMetadataURL
+	return s.SpMetadataURL
 }
 
-func (o *SAMLIdentityProviderConfig) GetSpEntityID() *string {
-	if o == nil {
+func (s *SAMLIdentityProviderConfig) GetSpEntityID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.SpEntityID
+	return s.SpEntityID
 }
 
-func (o *SAMLIdentityProviderConfig) GetLoginURL() *string {
-	if o == nil {
+func (s *SAMLIdentityProviderConfig) GetLoginURL() *string {
+	if s == nil {
 		return nil
 	}
-	return o.LoginURL
+	return s.LoginURL
 }
 
-func (o *SAMLIdentityProviderConfig) GetCallbackURL() *string {
-	if o == nil {
+func (s *SAMLIdentityProviderConfig) GetCallbackURL() *string {
+	if s == nil {
 		return nil
 	}
-	return o.CallbackURL
+	return s.CallbackURL
 }

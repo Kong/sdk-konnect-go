@@ -50,23 +50,23 @@ func (g *GCPVPCPeeringAttachmentConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GCPVPCPeeringAttachmentConfig) GetKind() GCPVPCPeeringAttachmentType {
-	if o == nil {
+func (g *GCPVPCPeeringAttachmentConfig) GetKind() GCPVPCPeeringAttachmentType {
+	if g == nil {
 		return GCPVPCPeeringAttachmentType("")
 	}
-	return o.Kind
+	return g.Kind
 }
 
-func (o *GCPVPCPeeringAttachmentConfig) GetPeerProjectID() string {
-	if o == nil {
+func (g *GCPVPCPeeringAttachmentConfig) GetPeerProjectID() string {
+	if g == nil {
 		return ""
 	}
-	return o.PeerProjectID
+	return g.PeerProjectID
 }
 
-func (o *GCPVPCPeeringAttachmentConfig) GetPeerVpcName() string {
-	if o == nil {
+func (g *GCPVPCPeeringAttachmentConfig) GetPeerVpcName() string {
+	if g == nil {
 		return ""
 	}
-	return o.PeerVpcName
+	return g.PeerVpcName
 }

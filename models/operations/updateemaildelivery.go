@@ -13,18 +13,18 @@ type UpdateEmailDeliveryRequest struct {
 	EmailDeliveryUpdatePayload components.EmailDeliveryUpdatePayload `request:"mediaType=application/json"`
 }
 
-func (o *UpdateEmailDeliveryRequest) GetPortalID() string {
-	if o == nil {
+func (u *UpdateEmailDeliveryRequest) GetPortalID() string {
+	if u == nil {
 		return ""
 	}
-	return o.PortalID
+	return u.PortalID
 }
 
-func (o *UpdateEmailDeliveryRequest) GetEmailDeliveryUpdatePayload() components.EmailDeliveryUpdatePayload {
-	if o == nil {
+func (u *UpdateEmailDeliveryRequest) GetEmailDeliveryUpdatePayload() components.EmailDeliveryUpdatePayload {
+	if u == nil {
 		return components.EmailDeliveryUpdatePayload{}
 	}
-	return o.EmailDeliveryUpdatePayload
+	return u.EmailDeliveryUpdatePayload
 }
 
 type UpdateEmailDeliveryResponse struct {
@@ -38,30 +38,30 @@ type UpdateEmailDeliveryResponse struct {
 	EmailDelivery *components.EmailDelivery
 }
 
-func (o *UpdateEmailDeliveryResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateEmailDeliveryResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateEmailDeliveryResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateEmailDeliveryResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateEmailDeliveryResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateEmailDeliveryResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateEmailDeliveryResponse) GetEmailDelivery() *components.EmailDelivery {
-	if o == nil {
+func (u *UpdateEmailDeliveryResponse) GetEmailDelivery() *components.EmailDelivery {
+	if u == nil {
 		return nil
 	}
-	return o.EmailDelivery
+	return u.EmailDelivery
 }

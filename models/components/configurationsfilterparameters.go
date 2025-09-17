@@ -8,16 +8,16 @@ type ConfigurationsFilterParameters struct {
 	ControlPlaneGeo *ControlPlaneGeoFieldFilter `queryParam:"name=control_plane_geo"`
 }
 
-func (o *ConfigurationsFilterParameters) GetControlPlaneID() *IDFieldFilter {
-	if o == nil {
+func (c *ConfigurationsFilterParameters) GetControlPlaneID() *IDFieldFilter {
+	if c == nil {
 		return nil
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *ConfigurationsFilterParameters) GetControlPlaneGeo() *ControlPlaneGeoFieldFilter {
-	if o == nil {
+func (c *ConfigurationsFilterParameters) GetControlPlaneGeo() *ControlPlaneGeoFieldFilter {
+	if c == nil {
 		return nil
 	}
-	return o.ControlPlaneGeo
+	return c.ControlPlaneGeo
 }

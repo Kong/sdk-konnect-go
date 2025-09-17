@@ -16,25 +16,25 @@ type MoveAPIDocumentRequest struct {
 	MoveDocumentRequestPayload components.MoveDocumentRequestPayload `request:"mediaType=application/json"`
 }
 
-func (o *MoveAPIDocumentRequest) GetAPIID() string {
-	if o == nil {
+func (m *MoveAPIDocumentRequest) GetAPIID() string {
+	if m == nil {
 		return ""
 	}
-	return o.APIID
+	return m.APIID
 }
 
-func (o *MoveAPIDocumentRequest) GetDocumentID() string {
-	if o == nil {
+func (m *MoveAPIDocumentRequest) GetDocumentID() string {
+	if m == nil {
 		return ""
 	}
-	return o.DocumentID
+	return m.DocumentID
 }
 
-func (o *MoveAPIDocumentRequest) GetMoveDocumentRequestPayload() components.MoveDocumentRequestPayload {
-	if o == nil {
+func (m *MoveAPIDocumentRequest) GetMoveDocumentRequestPayload() components.MoveDocumentRequestPayload {
+	if m == nil {
 		return components.MoveDocumentRequestPayload{}
 	}
-	return o.MoveDocumentRequestPayload
+	return m.MoveDocumentRequestPayload
 }
 
 type MoveAPIDocumentResponse struct {
@@ -46,23 +46,23 @@ type MoveAPIDocumentResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *MoveAPIDocumentResponse) GetContentType() string {
-	if o == nil {
+func (m *MoveAPIDocumentResponse) GetContentType() string {
+	if m == nil {
 		return ""
 	}
-	return o.ContentType
+	return m.ContentType
 }
 
-func (o *MoveAPIDocumentResponse) GetStatusCode() int {
-	if o == nil {
+func (m *MoveAPIDocumentResponse) GetStatusCode() int {
+	if m == nil {
 		return 0
 	}
-	return o.StatusCode
+	return m.StatusCode
 }
 
-func (o *MoveAPIDocumentResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (m *MoveAPIDocumentResponse) GetRawResponse() *http.Response {
+	if m == nil {
 		return nil
 	}
-	return o.RawResponse
+	return m.RawResponse
 }

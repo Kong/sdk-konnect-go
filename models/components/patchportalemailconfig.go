@@ -29,30 +29,30 @@ func (p *PatchPortalEmailConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PatchPortalEmailConfig) GetDomainName() *string {
-	if o == nil {
+func (p *PatchPortalEmailConfig) GetDomainName() *string {
+	if p == nil {
 		return nil
 	}
-	return o.DomainName
+	return p.DomainName
 }
 
-func (o *PatchPortalEmailConfig) GetFromName() *string {
-	if o == nil {
+func (p *PatchPortalEmailConfig) GetFromName() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FromName
+	return p.FromName
 }
 
-func (o *PatchPortalEmailConfig) GetFromEmail() *string {
-	if o == nil {
+func (p *PatchPortalEmailConfig) GetFromEmail() *string {
+	if p == nil {
 		return nil
 	}
-	return o.FromEmail
+	return p.FromEmail
 }
 
-func (o *PatchPortalEmailConfig) GetReplyToEmail() *string {
-	if o == nil {
+func (p *PatchPortalEmailConfig) GetReplyToEmail() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ReplyToEmail
+	return p.ReplyToEmail
 }

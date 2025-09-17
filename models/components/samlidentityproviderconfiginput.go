@@ -26,16 +26,16 @@ func (s *SAMLIdentityProviderConfigInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SAMLIdentityProviderConfigInput) GetIdpMetadataURL() *string {
-	if o == nil {
+func (s *SAMLIdentityProviderConfigInput) GetIdpMetadataURL() *string {
+	if s == nil {
 		return nil
 	}
-	return o.IdpMetadataURL
+	return s.IdpMetadataURL
 }
 
-func (o *SAMLIdentityProviderConfigInput) GetIdpMetadataXML() *string {
-	if o == nil {
+func (s *SAMLIdentityProviderConfigInput) GetIdpMetadataXML() *string {
+	if s == nil {
 		return nil
 	}
-	return o.IdpMetadataXML
+	return s.IdpMetadataXML
 }

@@ -11,11 +11,11 @@ type DeleteDcrProviderRequest struct {
 	DcrProviderID string `pathParam:"style=simple,explode=false,name=dcrProviderId"`
 }
 
-func (o *DeleteDcrProviderRequest) GetDcrProviderID() string {
-	if o == nil {
+func (d *DeleteDcrProviderRequest) GetDcrProviderID() string {
+	if d == nil {
 		return ""
 	}
-	return o.DcrProviderID
+	return d.DcrProviderID
 }
 
 type DeleteDcrProviderResponse struct {
@@ -27,23 +27,23 @@ type DeleteDcrProviderResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteDcrProviderResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteDcrProviderResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteDcrProviderResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteDcrProviderResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteDcrProviderResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteDcrProviderResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

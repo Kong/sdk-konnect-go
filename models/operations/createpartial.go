@@ -14,26 +14,26 @@ type CreatePartialRequest struct {
 	Partial components.Partial `request:"mediaType=application/json"`
 }
 
-func (o *CreatePartialRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreatePartialRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreatePartialRequest) GetPartial() components.Partial {
-	if o == nil {
+func (c *CreatePartialRequest) GetPartial() components.Partial {
+	if c == nil {
 		return components.Partial{}
 	}
-	return o.Partial
+	return c.Partial
 }
 
-func (o *CreatePartialRequest) GetPartialRedisCe() *components.PartialRedisCe {
-	return o.GetPartial().PartialRedisCe
+func (c *CreatePartialRequest) GetPartialRedisCe() *components.PartialRedisCe {
+	return c.GetPartial().PartialRedisCe
 }
 
-func (o *CreatePartialRequest) GetPartialRedisEe() *components.PartialRedisEe {
-	return o.GetPartial().PartialRedisEe
+func (c *CreatePartialRequest) GetPartialRedisEe() *components.PartialRedisEe {
+	return c.GetPartial().PartialRedisEe
 }
 
 type CreatePartialResponse struct {
@@ -47,43 +47,43 @@ type CreatePartialResponse struct {
 	Partial *components.Partial
 }
 
-func (o *CreatePartialResponse) GetContentType() string {
-	if o == nil {
+func (c *CreatePartialResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreatePartialResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreatePartialResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreatePartialResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreatePartialResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreatePartialResponse) GetPartial() *components.Partial {
-	if o == nil {
+func (c *CreatePartialResponse) GetPartial() *components.Partial {
+	if c == nil {
 		return nil
 	}
-	return o.Partial
+	return c.Partial
 }
 
-func (o *CreatePartialResponse) GetPartialRedisCe() *components.PartialRedisCe {
-	if v := o.GetPartial(); v != nil {
+func (c *CreatePartialResponse) GetPartialRedisCe() *components.PartialRedisCe {
+	if v := c.GetPartial(); v != nil {
 		return v.PartialRedisCe
 	}
 	return nil
 }
 
-func (o *CreatePartialResponse) GetPartialRedisEe() *components.PartialRedisEe {
-	if v := o.GetPartial(); v != nil {
+func (c *CreatePartialResponse) GetPartialRedisEe() *components.PartialRedisEe {
+	if v := c.GetPartial(); v != nil {
 		return v.PartialRedisEe
 	}
 	return nil

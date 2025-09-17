@@ -24,16 +24,16 @@ func (a *APIComputedSchema) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *APIComputedSchema) GetID() *string {
-	if o == nil {
+func (a *APIComputedSchema) GetID() *string {
+	if a == nil {
 		return nil
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *APIComputedSchema) GetAPISpecValidationMessagesCount() *int64 {
-	if o == nil {
+func (a *APIComputedSchema) GetAPISpecValidationMessagesCount() *int64 {
+	if a == nil {
 		return nil
 	}
-	return o.APISpecValidationMessagesCount
+	return a.APISpecValidationMessagesCount
 }

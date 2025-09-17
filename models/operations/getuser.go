@@ -16,11 +16,11 @@ type GetUserRequest struct {
 	UserID string `pathParam:"style=simple,explode=false,name=userId"`
 }
 
-func (o *GetUserRequest) GetUserID() string {
-	if o == nil {
+func (g *GetUserRequest) GetUserID() string {
+	if g == nil {
 		return ""
 	}
-	return o.UserID
+	return g.UserID
 }
 
 type GetUserResponse struct {
@@ -34,30 +34,30 @@ type GetUserResponse struct {
 	User *components.User
 }
 
-func (o *GetUserResponse) GetContentType() string {
-	if o == nil {
+func (g *GetUserResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetUserResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetUserResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetUserResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetUserResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetUserResponse) GetUser() *components.User {
-	if o == nil {
+func (g *GetUserResponse) GetUser() *components.User {
+	if g == nil {
 		return nil
 	}
-	return o.User
+	return g.User
 }

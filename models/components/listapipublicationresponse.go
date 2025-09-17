@@ -9,16 +9,16 @@ type ListAPIPublicationResponse struct {
 	Data []APIPublicationListItem `json:"data"`
 }
 
-func (o *ListAPIPublicationResponse) GetMeta() PaginatedMeta {
-	if o == nil {
+func (l *ListAPIPublicationResponse) GetMeta() PaginatedMeta {
+	if l == nil {
 		return PaginatedMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListAPIPublicationResponse) GetData() []APIPublicationListItem {
-	if o == nil {
+func (l *ListAPIPublicationResponse) GetData() []APIPublicationListItem {
+	if l == nil {
 		return []APIPublicationListItem{}
 	}
-	return o.Data
+	return l.Data
 }

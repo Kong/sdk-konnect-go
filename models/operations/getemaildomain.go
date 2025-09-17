@@ -12,11 +12,11 @@ type GetEmailDomainRequest struct {
 	EmailDomain string `pathParam:"style=simple,explode=false,name=emailDomain"`
 }
 
-func (o *GetEmailDomainRequest) GetEmailDomain() string {
-	if o == nil {
+func (g *GetEmailDomainRequest) GetEmailDomain() string {
+	if g == nil {
 		return ""
 	}
-	return o.EmailDomain
+	return g.EmailDomain
 }
 
 type GetEmailDomainResponse struct {
@@ -30,30 +30,30 @@ type GetEmailDomainResponse struct {
 	EmailDomain *components.EmailDomain
 }
 
-func (o *GetEmailDomainResponse) GetContentType() string {
-	if o == nil {
+func (g *GetEmailDomainResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetEmailDomainResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetEmailDomainResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetEmailDomainResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetEmailDomainResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetEmailDomainResponse) GetEmailDomain() *components.EmailDomain {
-	if o == nil {
+func (g *GetEmailDomainResponse) GetEmailDomain() *components.EmailDomain {
+	if g == nil {
 		return nil
 	}
-	return o.EmailDomain
+	return g.EmailDomain
 }

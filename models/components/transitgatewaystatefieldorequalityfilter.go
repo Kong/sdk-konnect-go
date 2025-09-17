@@ -23,9 +23,9 @@ func (t *TransitGatewayStateFieldOrEqualityFilter) UnmarshalJSON(data []byte) er
 	return nil
 }
 
-func (o *TransitGatewayStateFieldOrEqualityFilter) GetOeq() string {
-	if o == nil {
+func (t *TransitGatewayStateFieldOrEqualityFilter) GetOeq() string {
+	if t == nil {
 		return ""
 	}
-	return o.Oeq
+	return t.Oeq
 }

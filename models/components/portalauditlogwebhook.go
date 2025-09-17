@@ -25,16 +25,16 @@ func (p *PortalAuditLogWebhook) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PortalAuditLogWebhook) GetEnabled() *bool {
-	if o == nil {
+func (p *PortalAuditLogWebhook) GetEnabled() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Enabled
+	return p.Enabled
 }
 
-func (o *PortalAuditLogWebhook) GetAuditLogDestinationID() *string {
-	if o == nil {
+func (p *PortalAuditLogWebhook) GetAuditLogDestinationID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.AuditLogDestinationID
+	return p.AuditLogDestinationID
 }

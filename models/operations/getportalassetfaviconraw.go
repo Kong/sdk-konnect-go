@@ -12,11 +12,11 @@ type GetPortalAssetFaviconRawRequest struct {
 	PortalID string `pathParam:"style=simple,explode=false,name=portalId"`
 }
 
-func (o *GetPortalAssetFaviconRawRequest) GetPortalID() string {
-	if o == nil {
+func (g *GetPortalAssetFaviconRawRequest) GetPortalID() string {
+	if g == nil {
 		return ""
 	}
-	return o.PortalID
+	return g.PortalID
 }
 
 type GetPortalAssetFaviconRawResponse struct {
@@ -37,44 +37,44 @@ type GetPortalAssetFaviconRawResponse struct {
 	TwoHundredImageSvgPlusXMLPortalImageAssetBlob io.ReadCloser
 }
 
-func (o *GetPortalAssetFaviconRawResponse) GetContentType() string {
-	if o == nil {
+func (g *GetPortalAssetFaviconRawResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetPortalAssetFaviconRawResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetPortalAssetFaviconRawResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetPortalAssetFaviconRawResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetPortalAssetFaviconRawResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetPortalAssetFaviconRawResponse) GetTwoHundredImagePngPortalImageAssetBlob() io.ReadCloser {
-	if o == nil {
+func (g *GetPortalAssetFaviconRawResponse) GetTwoHundredImagePngPortalImageAssetBlob() io.ReadCloser {
+	if g == nil {
 		return nil
 	}
-	return o.TwoHundredImagePngPortalImageAssetBlob
+	return g.TwoHundredImagePngPortalImageAssetBlob
 }
 
-func (o *GetPortalAssetFaviconRawResponse) GetTwoHundredImageJpegPortalImageAssetBlob() io.ReadCloser {
-	if o == nil {
+func (g *GetPortalAssetFaviconRawResponse) GetTwoHundredImageJpegPortalImageAssetBlob() io.ReadCloser {
+	if g == nil {
 		return nil
 	}
-	return o.TwoHundredImageJpegPortalImageAssetBlob
+	return g.TwoHundredImageJpegPortalImageAssetBlob
 }
 
-func (o *GetPortalAssetFaviconRawResponse) GetTwoHundredImageSvgPlusXMLPortalImageAssetBlob() io.ReadCloser {
-	if o == nil {
+func (g *GetPortalAssetFaviconRawResponse) GetTwoHundredImageSvgPlusXMLPortalImageAssetBlob() io.ReadCloser {
+	if g == nil {
 		return nil
 	}
-	return o.TwoHundredImageSvgPlusXMLPortalImageAssetBlob
+	return g.TwoHundredImageSvgPlusXMLPortalImageAssetBlob
 }

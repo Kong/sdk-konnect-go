@@ -18,32 +18,32 @@ type UpdateApplicationRegistrationRequest struct {
 	UpdateApplicationRegistrationRequest components.UpdateApplicationRegistrationRequest `request:"mediaType=application/json"`
 }
 
-func (o *UpdateApplicationRegistrationRequest) GetPortalID() string {
-	if o == nil {
+func (u *UpdateApplicationRegistrationRequest) GetPortalID() string {
+	if u == nil {
 		return ""
 	}
-	return o.PortalID
+	return u.PortalID
 }
 
-func (o *UpdateApplicationRegistrationRequest) GetApplicationID() string {
-	if o == nil {
+func (u *UpdateApplicationRegistrationRequest) GetApplicationID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ApplicationID
+	return u.ApplicationID
 }
 
-func (o *UpdateApplicationRegistrationRequest) GetRegistrationID() string {
-	if o == nil {
+func (u *UpdateApplicationRegistrationRequest) GetRegistrationID() string {
+	if u == nil {
 		return ""
 	}
-	return o.RegistrationID
+	return u.RegistrationID
 }
 
-func (o *UpdateApplicationRegistrationRequest) GetUpdateApplicationRegistrationRequest() components.UpdateApplicationRegistrationRequest {
-	if o == nil {
+func (u *UpdateApplicationRegistrationRequest) GetUpdateApplicationRegistrationRequest() components.UpdateApplicationRegistrationRequest {
+	if u == nil {
 		return components.UpdateApplicationRegistrationRequest{}
 	}
-	return o.UpdateApplicationRegistrationRequest
+	return u.UpdateApplicationRegistrationRequest
 }
 
 type UpdateApplicationRegistrationResponse struct {
@@ -57,30 +57,30 @@ type UpdateApplicationRegistrationResponse struct {
 	GetApplicationRegistrationResponse *components.GetApplicationRegistrationResponse
 }
 
-func (o *UpdateApplicationRegistrationResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateApplicationRegistrationResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateApplicationRegistrationResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateApplicationRegistrationResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateApplicationRegistrationResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateApplicationRegistrationResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateApplicationRegistrationResponse) GetGetApplicationRegistrationResponse() *components.GetApplicationRegistrationResponse {
-	if o == nil {
+func (u *UpdateApplicationRegistrationResponse) GetGetApplicationRegistrationResponse() *components.GetApplicationRegistrationResponse {
+	if u == nil {
 		return nil
 	}
-	return o.GetApplicationRegistrationResponse
+	return u.GetApplicationRegistrationResponse
 }

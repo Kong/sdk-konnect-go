@@ -23,25 +23,25 @@ func (c *ClaimMappings) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ClaimMappings) GetName() *string {
-	if o == nil {
+func (c *ClaimMappings) GetName() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *ClaimMappings) GetEmail() *string {
-	if o == nil {
+func (c *ClaimMappings) GetEmail() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Email
+	return c.Email
 }
 
-func (o *ClaimMappings) GetGroups() *string {
-	if o == nil {
+func (c *ClaimMappings) GetGroups() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Groups
+	return c.Groups
 }
 
 // IDP - The IdP object contains the configuration data for the OIDC authentication integration.
@@ -66,37 +66,37 @@ func (i *IDP) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *IDP) GetIssuer() *string {
-	if o == nil {
+func (i *IDP) GetIssuer() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Issuer
+	return i.Issuer
 }
 
-func (o *IDP) GetLoginPath() *string {
-	if o == nil {
+func (i *IDP) GetLoginPath() *string {
+	if i == nil {
 		return nil
 	}
-	return o.LoginPath
+	return i.LoginPath
 }
 
-func (o *IDP) GetClientID() *string {
-	if o == nil {
+func (i *IDP) GetClientID() *string {
+	if i == nil {
 		return nil
 	}
-	return o.ClientID
+	return i.ClientID
 }
 
-func (o *IDP) GetScopes() []string {
-	if o == nil {
+func (i *IDP) GetScopes() []string {
+	if i == nil {
 		return nil
 	}
-	return o.Scopes
+	return i.Scopes
 }
 
-func (o *IDP) GetClaimMappings() *ClaimMappings {
-	if o == nil {
+func (i *IDP) GetClaimMappings() *ClaimMappings {
+	if i == nil {
 		return nil
 	}
-	return o.ClaimMappings
+	return i.ClaimMappings
 }

@@ -12,23 +12,23 @@ type GroupConflict struct {
 	Resource GroupConflictResource `json:"resource"`
 }
 
-func (o *GroupConflict) GetClusterID() string {
-	if o == nil {
+func (g *GroupConflict) GetClusterID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ClusterID
+	return g.ClusterID
 }
 
-func (o *GroupConflict) GetDescription() string {
-	if o == nil {
+func (g *GroupConflict) GetDescription() string {
+	if g == nil {
 		return ""
 	}
-	return o.Description
+	return g.Description
 }
 
-func (o *GroupConflict) GetResource() GroupConflictResource {
-	if o == nil {
+func (g *GroupConflict) GetResource() GroupConflictResource {
+	if g == nil {
 		return GroupConflictResource{}
 	}
-	return o.Resource
+	return g.Resource
 }

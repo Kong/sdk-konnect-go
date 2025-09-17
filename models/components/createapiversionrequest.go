@@ -23,11 +23,11 @@ func (c *CreateAPIVersionRequestSpec) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CreateAPIVersionRequestSpec) GetContent() *string {
-	if o == nil {
+func (c *CreateAPIVersionRequestSpec) GetContent() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Content
+	return c.Content
 }
 
 type CreateAPIVersionRequest struct {
@@ -47,16 +47,16 @@ func (c *CreateAPIVersionRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CreateAPIVersionRequest) GetVersion() *string {
-	if o == nil {
+func (c *CreateAPIVersionRequest) GetVersion() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Version
+	return c.Version
 }
 
-func (o *CreateAPIVersionRequest) GetSpec() *CreateAPIVersionRequestSpec {
-	if o == nil {
+func (c *CreateAPIVersionRequest) GetSpec() *CreateAPIVersionRequestSpec {
+	if c == nil {
 		return nil
 	}
-	return o.Spec
+	return c.Spec
 }

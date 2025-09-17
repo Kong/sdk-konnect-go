@@ -16,25 +16,25 @@ type MovePortalPagesRequest struct {
 	MovePageRequestPayload *components.MovePageRequestPayload `request:"mediaType=application/json"`
 }
 
-func (o *MovePortalPagesRequest) GetPortalID() string {
-	if o == nil {
+func (m *MovePortalPagesRequest) GetPortalID() string {
+	if m == nil {
 		return ""
 	}
-	return o.PortalID
+	return m.PortalID
 }
 
-func (o *MovePortalPagesRequest) GetPageID() string {
-	if o == nil {
+func (m *MovePortalPagesRequest) GetPageID() string {
+	if m == nil {
 		return ""
 	}
-	return o.PageID
+	return m.PageID
 }
 
-func (o *MovePortalPagesRequest) GetMovePageRequestPayload() *components.MovePageRequestPayload {
-	if o == nil {
+func (m *MovePortalPagesRequest) GetMovePageRequestPayload() *components.MovePageRequestPayload {
+	if m == nil {
 		return nil
 	}
-	return o.MovePageRequestPayload
+	return m.MovePageRequestPayload
 }
 
 type MovePortalPagesResponse struct {
@@ -46,23 +46,23 @@ type MovePortalPagesResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *MovePortalPagesResponse) GetContentType() string {
-	if o == nil {
+func (m *MovePortalPagesResponse) GetContentType() string {
+	if m == nil {
 		return ""
 	}
-	return o.ContentType
+	return m.ContentType
 }
 
-func (o *MovePortalPagesResponse) GetStatusCode() int {
-	if o == nil {
+func (m *MovePortalPagesResponse) GetStatusCode() int {
+	if m == nil {
 		return 0
 	}
-	return o.StatusCode
+	return m.StatusCode
 }
 
-func (o *MovePortalPagesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (m *MovePortalPagesResponse) GetRawResponse() *http.Response {
+	if m == nil {
 		return nil
 	}
-	return o.RawResponse
+	return m.RawResponse
 }

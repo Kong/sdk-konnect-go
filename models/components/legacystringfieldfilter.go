@@ -8,16 +8,16 @@ type LegacyStringFieldFilter struct {
 	Contains *string `queryParam:"name=contains"`
 }
 
-func (o *LegacyStringFieldFilter) GetEq() *string {
-	if o == nil {
+func (l *LegacyStringFieldFilter) GetEq() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Eq
+	return l.Eq
 }
 
-func (o *LegacyStringFieldFilter) GetContains() *string {
-	if o == nil {
+func (l *LegacyStringFieldFilter) GetContains() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Contains
+	return l.Contains
 }
