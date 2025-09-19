@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Konnect API - Go SDK
-  version: 3.0.26
+  version: 3.0.27
   description: The Konnect platform API
   contact:
     name: Kong Inc
@@ -8555,6 +8555,25 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
+    delete:
+      summary: Delete Portal Audit Log Webhook
+      description: >-
+        Removes configuration for the audit log webhook. The destination ID is
+        set to empty, and the webhook enabled field is set to false
+      operationId: delete-portal-audit-log-webhook
+      tags:
+        - Portal Audit Logs
+      responses:
+        '204':
+          description: No Content
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
   /v3/portals/{portalId}/audit-log-webhook/status:
     parameters:
       - $ref: '#/components/parameters/PortalId'
@@ -16861,16 +16880,6 @@ components:
       description: An ISO-8601 timestamp representation of entity update date.
       readOnly: true
       x-speakeasy-param-suppress-computed-diff: true
-    IdentityProviderEnabled:
-      title: Identity Provider Enabled Property
-      type: boolean
-      description: >
-        Indicates whether the identity provider is enabled. 
-
-        Only one identity provider can be active at a time, such as SAML or
-        OIDC.
-      default: false
-      example: true
     IdentityProviderType:
       type: string
       enum:
@@ -17488,6 +17497,16 @@ components:
       example: 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7
       description: Contains a unique identifier used for this resource.
       readOnly: true
+    IdentityProviderEnabled:
+      title: Identity Provider Enabled Property
+      type: boolean
+      description: >
+        Indicates whether the identity provider is enabled.
+
+        Only one identity provider can be active at a time, such as SAML or
+        OIDC.
+      default: false
+      example: true
     LegacyStringFieldFilter:
       description: Filters on the given string field value by fuzzy match.
       properties:
