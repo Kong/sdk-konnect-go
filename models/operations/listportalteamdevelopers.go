@@ -19,32 +19,32 @@ type ListPortalTeamDevelopersQueryParamFilter struct {
 	Active *bool `queryParam:"name=active"`
 }
 
-func (o *ListPortalTeamDevelopersQueryParamFilter) GetEmail() *components.StringFieldFilter {
-	if o == nil {
+func (l *ListPortalTeamDevelopersQueryParamFilter) GetEmail() *components.StringFieldFilter {
+	if l == nil {
 		return nil
 	}
-	return o.Email
+	return l.Email
 }
 
-func (o *ListPortalTeamDevelopersQueryParamFilter) GetFullName() *components.StringFieldFilter {
-	if o == nil {
+func (l *ListPortalTeamDevelopersQueryParamFilter) GetFullName() *components.StringFieldFilter {
+	if l == nil {
 		return nil
 	}
-	return o.FullName
+	return l.FullName
 }
 
-func (o *ListPortalTeamDevelopersQueryParamFilter) GetAttributes() *components.StringFieldFilter {
-	if o == nil {
+func (l *ListPortalTeamDevelopersQueryParamFilter) GetAttributes() *components.StringFieldFilter {
+	if l == nil {
 		return nil
 	}
-	return o.Attributes
+	return l.Attributes
 }
 
-func (o *ListPortalTeamDevelopersQueryParamFilter) GetActive() *bool {
-	if o == nil {
+func (l *ListPortalTeamDevelopersQueryParamFilter) GetActive() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Active
+	return l.Active
 }
 
 type ListPortalTeamDevelopersRequest struct {
@@ -60,39 +60,39 @@ type ListPortalTeamDevelopersRequest struct {
 	Filter *ListPortalTeamDevelopersQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *ListPortalTeamDevelopersRequest) GetPortalID() string {
-	if o == nil {
+func (l *ListPortalTeamDevelopersRequest) GetPortalID() string {
+	if l == nil {
 		return ""
 	}
-	return o.PortalID
+	return l.PortalID
 }
 
-func (o *ListPortalTeamDevelopersRequest) GetTeamID() string {
-	if o == nil {
+func (l *ListPortalTeamDevelopersRequest) GetTeamID() string {
+	if l == nil {
 		return ""
 	}
-	return o.TeamID
+	return l.TeamID
 }
 
-func (o *ListPortalTeamDevelopersRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListPortalTeamDevelopersRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListPortalTeamDevelopersRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListPortalTeamDevelopersRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListPortalTeamDevelopersRequest) GetFilter() *ListPortalTeamDevelopersQueryParamFilter {
-	if o == nil {
+func (l *ListPortalTeamDevelopersRequest) GetFilter() *ListPortalTeamDevelopersQueryParamFilter {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
 type ListPortalTeamDevelopersResponse struct {
@@ -106,30 +106,30 @@ type ListPortalTeamDevelopersResponse struct {
 	ListBasicDevelopersResponse *components.ListBasicDevelopersResponse
 }
 
-func (o *ListPortalTeamDevelopersResponse) GetContentType() string {
-	if o == nil {
+func (l *ListPortalTeamDevelopersResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListPortalTeamDevelopersResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListPortalTeamDevelopersResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListPortalTeamDevelopersResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListPortalTeamDevelopersResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListPortalTeamDevelopersResponse) GetListBasicDevelopersResponse() *components.ListBasicDevelopersResponse {
-	if o == nil {
+func (l *ListPortalTeamDevelopersResponse) GetListBasicDevelopersResponse() *components.ListBasicDevelopersResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListBasicDevelopersResponse
+	return l.ListBasicDevelopersResponse
 }

@@ -16,11 +16,11 @@ type GetNetworkRequest struct {
 	NetworkID string `pathParam:"style=simple,explode=false,name=networkId"`
 }
 
-func (o *GetNetworkRequest) GetNetworkID() string {
-	if o == nil {
+func (g *GetNetworkRequest) GetNetworkID() string {
+	if g == nil {
 		return ""
 	}
-	return o.NetworkID
+	return g.NetworkID
 }
 
 type GetNetworkResponse struct {
@@ -34,30 +34,30 @@ type GetNetworkResponse struct {
 	Network *components.Network
 }
 
-func (o *GetNetworkResponse) GetContentType() string {
-	if o == nil {
+func (g *GetNetworkResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetNetworkResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetNetworkResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetNetworkResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetNetworkResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetNetworkResponse) GetNetwork() *components.Network {
-	if o == nil {
+func (g *GetNetworkResponse) GetNetwork() *components.Network {
+	if g == nil {
 		return nil
 	}
-	return o.Network
+	return g.Network
 }

@@ -13,11 +13,11 @@ type ListPortalTeamsQueryParamFilter struct {
 	Name *components.StringFieldFilter `queryParam:"name=name"`
 }
 
-func (o *ListPortalTeamsQueryParamFilter) GetName() *components.StringFieldFilter {
-	if o == nil {
+func (l *ListPortalTeamsQueryParamFilter) GetName() *components.StringFieldFilter {
+	if l == nil {
 		return nil
 	}
-	return o.Name
+	return l.Name
 }
 
 type ListPortalTeamsRequest struct {
@@ -31,32 +31,32 @@ type ListPortalTeamsRequest struct {
 	Filter *ListPortalTeamsQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *ListPortalTeamsRequest) GetPortalID() string {
-	if o == nil {
+func (l *ListPortalTeamsRequest) GetPortalID() string {
+	if l == nil {
 		return ""
 	}
-	return o.PortalID
+	return l.PortalID
 }
 
-func (o *ListPortalTeamsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListPortalTeamsRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListPortalTeamsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListPortalTeamsRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListPortalTeamsRequest) GetFilter() *ListPortalTeamsQueryParamFilter {
-	if o == nil {
+func (l *ListPortalTeamsRequest) GetFilter() *ListPortalTeamsQueryParamFilter {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
 type ListPortalTeamsResponse struct {
@@ -70,30 +70,30 @@ type ListPortalTeamsResponse struct {
 	ListPortalTeamsResponse *components.ListPortalTeamsResponse
 }
 
-func (o *ListPortalTeamsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListPortalTeamsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListPortalTeamsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListPortalTeamsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListPortalTeamsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListPortalTeamsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListPortalTeamsResponse) GetListPortalTeamsResponse() *components.ListPortalTeamsResponse {
-	if o == nil {
+func (l *ListPortalTeamsResponse) GetListPortalTeamsResponse() *components.ListPortalTeamsResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListPortalTeamsResponse
+	return l.ListPortalTeamsResponse
 }

@@ -27,23 +27,23 @@ func (a *AWSResourceEndpointGateway) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *AWSResourceEndpointGateway) GetName() string {
-	if o == nil {
+func (a *AWSResourceEndpointGateway) GetName() string {
+	if a == nil {
 		return ""
 	}
-	return o.Name
+	return a.Name
 }
 
-func (o *AWSResourceEndpointGateway) GetDNSConfig() []TransitGatewayDNSConfig {
-	if o == nil {
+func (a *AWSResourceEndpointGateway) GetDNSConfig() []TransitGatewayDNSConfig {
+	if a == nil {
 		return nil
 	}
-	return o.DNSConfig
+	return a.DNSConfig
 }
 
-func (o *AWSResourceEndpointGateway) GetTransitGatewayAttachmentConfig() AwsResourceEndpointAttachmentConfig {
-	if o == nil {
+func (a *AWSResourceEndpointGateway) GetTransitGatewayAttachmentConfig() AwsResourceEndpointAttachmentConfig {
+	if a == nil {
 		return AwsResourceEndpointAttachmentConfig{}
 	}
-	return o.TransitGatewayAttachmentConfig
+	return a.TransitGatewayAttachmentConfig
 }

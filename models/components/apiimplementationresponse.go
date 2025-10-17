@@ -32,32 +32,32 @@ func (a *APIImplementationResponseServiceReference) UnmarshalJSON(data []byte) e
 	return nil
 }
 
-func (o *APIImplementationResponseServiceReference) GetID() string {
-	if o == nil {
+func (a *APIImplementationResponseServiceReference) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *APIImplementationResponseServiceReference) GetCreatedAt() time.Time {
-	if o == nil {
+func (a *APIImplementationResponseServiceReference) GetCreatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return a.CreatedAt
 }
 
-func (o *APIImplementationResponseServiceReference) GetUpdatedAt() time.Time {
-	if o == nil {
+func (a *APIImplementationResponseServiceReference) GetUpdatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return a.UpdatedAt
 }
 
-func (o *APIImplementationResponseServiceReference) GetService() *APIImplementationService {
-	if o == nil {
+func (a *APIImplementationResponseServiceReference) GetService() *APIImplementationService {
+	if a == nil {
 		return nil
 	}
-	return o.Service
+	return a.Service
 }
 
 type APIImplementationResponseType string
@@ -68,7 +68,7 @@ const (
 
 // APIImplementationResponse - An entity that implements an API
 type APIImplementationResponse struct {
-	APIImplementationResponseServiceReference *APIImplementationResponseServiceReference `queryParam:"inline" name:"ApiImplementationResponse"`
+	APIImplementationResponseServiceReference *APIImplementationResponseServiceReference `queryParam:"inline,name=ApiImplementationResponse"`
 
 	Type APIImplementationResponseType
 }

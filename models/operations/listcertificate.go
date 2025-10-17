@@ -30,32 +30,32 @@ func (l *ListCertificateRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListCertificateRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListCertificateRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListCertificateRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListCertificateRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListCertificateRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListCertificateRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListCertificateRequest) GetTags() *string {
-	if o == nil {
+func (l *ListCertificateRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListCertificateResponseBody - A successful response listing Certificates
@@ -67,25 +67,25 @@ type ListCertificateResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListCertificateResponseBody) GetData() []components.Certificate {
-	if o == nil {
+func (l *ListCertificateResponseBody) GetData() []components.Certificate {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListCertificateResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListCertificateResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListCertificateResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListCertificateResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListCertificateResponse struct {
@@ -99,30 +99,30 @@ type ListCertificateResponse struct {
 	Object *ListCertificateResponseBody
 }
 
-func (o *ListCertificateResponse) GetContentType() string {
-	if o == nil {
+func (l *ListCertificateResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListCertificateResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListCertificateResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListCertificateResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListCertificateResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListCertificateResponse) GetObject() *ListCertificateResponseBody {
-	if o == nil {
+func (l *ListCertificateResponse) GetObject() *ListCertificateResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

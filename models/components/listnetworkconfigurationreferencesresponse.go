@@ -9,16 +9,16 @@ type ListNetworkConfigurationReferencesResponse struct {
 	Data []NetworkConfigurationReference `json:"data"`
 }
 
-func (o *ListNetworkConfigurationReferencesResponse) GetMeta() PaginatedMeta {
-	if o == nil {
+func (l *ListNetworkConfigurationReferencesResponse) GetMeta() PaginatedMeta {
+	if l == nil {
 		return PaginatedMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListNetworkConfigurationReferencesResponse) GetData() []NetworkConfigurationReference {
-	if o == nil {
+func (l *ListNetworkConfigurationReferencesResponse) GetData() []NetworkConfigurationReference {
+	if l == nil {
 		return []NetworkConfigurationReference{}
 	}
-	return o.Data
+	return l.Data
 }

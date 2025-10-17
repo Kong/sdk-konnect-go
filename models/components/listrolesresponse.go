@@ -81,18 +81,18 @@ type Apiviewer struct {
 	Description Description                   `json:"description"`
 }
 
-func (o *Apiviewer) GetName() ListRolesResponseServicesName {
-	if o == nil {
+func (a *Apiviewer) GetName() ListRolesResponseServicesName {
+	if a == nil {
 		return ListRolesResponseServicesName("")
 	}
-	return o.Name
+	return a.Name
 }
 
-func (o *Apiviewer) GetDescription() Description {
-	if o == nil {
+func (a *Apiviewer) GetDescription() Description {
+	if a == nil {
 		return Description("")
 	}
-	return o.Description
+	return a.Description
 }
 
 type ListRolesResponseServicesRolesName string
@@ -146,18 +146,18 @@ type Apiconsumer struct {
 	Description ListRolesResponseDescription       `json:"description"`
 }
 
-func (o *Apiconsumer) GetName() ListRolesResponseServicesRolesName {
-	if o == nil {
+func (a *Apiconsumer) GetName() ListRolesResponseServicesRolesName {
+	if a == nil {
 		return ListRolesResponseServicesRolesName("")
 	}
-	return o.Name
+	return a.Name
 }
 
-func (o *Apiconsumer) GetDescription() ListRolesResponseDescription {
-	if o == nil {
+func (a *Apiconsumer) GetDescription() ListRolesResponseDescription {
+	if a == nil {
 		return ListRolesResponseDescription("")
 	}
-	return o.Description
+	return a.Description
 }
 
 type ListRolesResponseRoles struct {
@@ -165,18 +165,18 @@ type ListRolesResponseRoles struct {
 	Apiconsumer Apiconsumer `json:"apiconsumer"`
 }
 
-func (o *ListRolesResponseRoles) GetApiviewer() Apiviewer {
-	if o == nil {
+func (l *ListRolesResponseRoles) GetApiviewer() Apiviewer {
+	if l == nil {
 		return Apiviewer{}
 	}
-	return o.Apiviewer
+	return l.Apiviewer
 }
 
-func (o *ListRolesResponseRoles) GetApiconsumer() Apiconsumer {
-	if o == nil {
+func (l *ListRolesResponseRoles) GetApiconsumer() Apiconsumer {
+	if l == nil {
 		return Apiconsumer{}
 	}
-	return o.Apiconsumer
+	return l.Apiconsumer
 }
 
 type Services struct {
@@ -184,18 +184,18 @@ type Services struct {
 	Roles ListRolesResponseRoles `json:"roles"`
 }
 
-func (o *Services) GetName() ListRolesResponseName {
-	if o == nil {
+func (s *Services) GetName() ListRolesResponseName {
+	if s == nil {
 		return ListRolesResponseName("")
 	}
-	return o.Name
+	return s.Name
 }
 
-func (o *Services) GetRoles() ListRolesResponseRoles {
-	if o == nil {
+func (s *Services) GetRoles() ListRolesResponseRoles {
+	if s == nil {
 		return ListRolesResponseRoles{}
 	}
-	return o.Roles
+	return s.Roles
 }
 
 // ListRolesResponse - The set of roles available to associate with resources and assign to teams.
@@ -203,9 +203,9 @@ type ListRolesResponse struct {
 	Services Services `json:"services"`
 }
 
-func (o *ListRolesResponse) GetServices() Services {
-	if o == nil {
+func (l *ListRolesResponse) GetServices() Services {
+	if l == nil {
 		return Services{}
 	}
-	return o.Services
+	return l.Services
 }

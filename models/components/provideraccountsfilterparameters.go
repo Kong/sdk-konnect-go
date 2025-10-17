@@ -6,9 +6,9 @@ type ProviderAccountsFilterParameters struct {
 	Provider *CloudGatewaysStringFieldFilterOverride `queryParam:"name=provider"`
 }
 
-func (o *ProviderAccountsFilterParameters) GetProvider() *CloudGatewaysStringFieldFilterOverride {
-	if o == nil {
+func (p *ProviderAccountsFilterParameters) GetProvider() *CloudGatewaysStringFieldFilterOverride {
+	if p == nil {
 		return nil
 	}
-	return o.Provider
+	return p.Provider
 }

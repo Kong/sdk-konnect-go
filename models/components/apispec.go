@@ -58,16 +58,16 @@ func (a *APISpec) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *APISpec) GetContent() *string {
-	if o == nil {
+func (a *APISpec) GetContent() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Content
+	return a.Content
 }
 
-func (o *APISpec) GetType() *APISpecAPISpecType {
-	if o == nil {
+func (a *APISpec) GetType() *APISpecAPISpecType {
+	if a == nil {
 		return nil
 	}
-	return o.Type
+	return a.Type
 }

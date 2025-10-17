@@ -14,18 +14,18 @@ type UpdatePortalAuditLogWebhookRequest struct {
 	UpdatePortalAuditLogWebhook *components.UpdatePortalAuditLogWebhook `request:"mediaType=application/json"`
 }
 
-func (o *UpdatePortalAuditLogWebhookRequest) GetPortalID() string {
-	if o == nil {
+func (u *UpdatePortalAuditLogWebhookRequest) GetPortalID() string {
+	if u == nil {
 		return ""
 	}
-	return o.PortalID
+	return u.PortalID
 }
 
-func (o *UpdatePortalAuditLogWebhookRequest) GetUpdatePortalAuditLogWebhook() *components.UpdatePortalAuditLogWebhook {
-	if o == nil {
+func (u *UpdatePortalAuditLogWebhookRequest) GetUpdatePortalAuditLogWebhook() *components.UpdatePortalAuditLogWebhook {
+	if u == nil {
 		return nil
 	}
-	return o.UpdatePortalAuditLogWebhook
+	return u.UpdatePortalAuditLogWebhook
 }
 
 type UpdatePortalAuditLogWebhookResponse struct {
@@ -39,30 +39,30 @@ type UpdatePortalAuditLogWebhookResponse struct {
 	PortalAuditLogWebhook *components.PortalAuditLogWebhook
 }
 
-func (o *UpdatePortalAuditLogWebhookResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdatePortalAuditLogWebhookResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdatePortalAuditLogWebhookResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdatePortalAuditLogWebhookResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdatePortalAuditLogWebhookResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdatePortalAuditLogWebhookResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdatePortalAuditLogWebhookResponse) GetPortalAuditLogWebhook() *components.PortalAuditLogWebhook {
-	if o == nil {
+func (u *UpdatePortalAuditLogWebhookResponse) GetPortalAuditLogWebhook() *components.PortalAuditLogWebhook {
+	if u == nil {
 		return nil
 	}
-	return o.PortalAuditLogWebhook
+	return u.PortalAuditLogWebhook
 }

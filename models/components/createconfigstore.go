@@ -22,9 +22,9 @@ func (c *CreateConfigStore) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CreateConfigStore) GetName() *string {
-	if o == nil {
+func (c *CreateConfigStore) GetName() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Name
+	return c.Name
 }

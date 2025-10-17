@@ -8,9 +8,9 @@ type UpdateDeveloperRequest struct {
 	Status *DeveloperStatus `json:"status,omitempty"`
 }
 
-func (o *UpdateDeveloperRequest) GetStatus() *DeveloperStatus {
-	if o == nil {
+func (u *UpdateDeveloperRequest) GetStatus() *DeveloperStatus {
+	if u == nil {
 		return nil
 	}
-	return o.Status
+	return u.Status
 }

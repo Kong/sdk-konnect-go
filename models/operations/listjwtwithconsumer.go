@@ -32,39 +32,39 @@ func (l *ListJwtWithConsumerRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListJwtWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListJwtWithConsumerRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListJwtWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (l *ListJwtWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if l == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return l.ConsumerIDForNestedEntities
 }
 
-func (o *ListJwtWithConsumerRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListJwtWithConsumerRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListJwtWithConsumerRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListJwtWithConsumerRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListJwtWithConsumerRequest) GetTags() *string {
-	if o == nil {
+func (l *ListJwtWithConsumerRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListJwtWithConsumerResponseBody - A successful response listing JWTs
@@ -76,25 +76,25 @@ type ListJwtWithConsumerResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListJwtWithConsumerResponseBody) GetData() []components.Jwt {
-	if o == nil {
+func (l *ListJwtWithConsumerResponseBody) GetData() []components.Jwt {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListJwtWithConsumerResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListJwtWithConsumerResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListJwtWithConsumerResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListJwtWithConsumerResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListJwtWithConsumerResponse struct {
@@ -108,30 +108,30 @@ type ListJwtWithConsumerResponse struct {
 	Object *ListJwtWithConsumerResponseBody
 }
 
-func (o *ListJwtWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (l *ListJwtWithConsumerResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListJwtWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListJwtWithConsumerResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListJwtWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListJwtWithConsumerResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListJwtWithConsumerResponse) GetObject() *ListJwtWithConsumerResponseBody {
-	if o == nil {
+func (l *ListJwtWithConsumerResponse) GetObject() *ListJwtWithConsumerResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

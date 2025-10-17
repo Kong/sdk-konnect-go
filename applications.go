@@ -67,7 +67,7 @@ func (s *Applications) GetApplicationUnscoped(ctx context.Context, applicationID
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-application-unscoped",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -335,7 +335,7 @@ func (s *Applications) ListApplications(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-applications",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -633,7 +633,7 @@ func (s *Applications) GetApplication(ctx context.Context, portalID string, appl
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-application",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -906,7 +906,7 @@ func (s *Applications) DeleteApplication(ctx context.Context, portalID string, a
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-application",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1154,7 +1154,7 @@ func (s *Applications) ListDevelopersByApplication(ctx context.Context, request 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-developers-by-application",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

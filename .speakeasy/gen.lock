@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 7731586698b0e5043cc997fdd6cce976
-  docVersion: 3.0.26
-  speakeasyVersion: 1.615.2
-  generationVersion: 2.698.4
-  releaseVersion: 0.10.1
-  configChecksum: 442ec5a23f89e8977735a50bd9e7ead5
+  docChecksum: 1e20553d7927f3106cafdcde5f942a5e
+  docVersion: 3.0.28
+  speakeasyVersion: 1.637.0
+  generationVersion: 2.727.4
+  releaseVersion: 0.11.0
+  configChecksum: 4377dbfe8a77411687db6b69707753f0
 features:
   go:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.2
     constsAndDefaults: 0.1.12
-    core: 3.9.6
+    core: 3.12.0
     deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.3
@@ -23,18 +23,19 @@ features:
     globalSecurity: 2.82.12
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.3
-    groups: 2.81.2
+    groups: 2.81.3
     ignores: 2.81.1
     inputOutputModels: 2.83.0
     intellisenseMarkdownSupport: 0.1.0
     methodServerURLs: 2.82.1
     nameOverrides: 2.81.2
-    nullables: 0.1.1
+    nullables: 0.2.1
+    pagination: 2.82.4
     responseFormat: 0.1.2
     retries: 2.84.2
     sdkHooks: 0.2.0
     typeOverrides: 2.81.1
-    unions: 2.85.14
+    unions: 2.86.0
 generatedFiles:
   - .gitattributes
   - /models/components/acl.go
@@ -610,6 +611,7 @@ generatedFiles:
   - /models/operations/deletepluginwithroute.go
   - /models/operations/deletepluginwithservice.go
   - /models/operations/deleteportal.go
+  - /models/operations/deleteportalauditlogwebhook.go
   - /models/operations/deleteportalcustomdomain.go
   - /models/operations/deleteportalcustomemailtemplate.go
   - /models/operations/deleteportalemailconfig.go
@@ -2023,6 +2025,8 @@ generatedFiles:
   - docs/models/operations/deletepluginwithrouteresponse.md
   - docs/models/operations/deletepluginwithservicerequest.md
   - docs/models/operations/deletepluginwithserviceresponse.md
+  - docs/models/operations/deleteportalauditlogwebhookrequest.md
+  - docs/models/operations/deleteportalauditlogwebhookresponse.md
   - docs/models/operations/deleteportalcustomdomainrequest.md
   - docs/models/operations/deleteportalcustomdomainresponse.md
   - docs/models/operations/deleteportalcustomemailtemplaterequest.md
@@ -2807,7 +2811,6 @@ generatedFiles:
   - docs/sdks/roles/README.md
   - docs/sdks/routes/README.md
   - docs/sdks/schemas/README.md
-  - docs/sdks/sdk/README.md
   - docs/sdks/services/README.md
   - docs/sdks/snippets/README.md
   - docs/sdks/snis/README.md
@@ -2848,6 +2851,8 @@ generatedFiles:
   - models/sdkerrors/sdkerror.go
   - mtlsauthcredentials.go
   - notifications.go
+  - optionalnullable/optionalnullable.go
+  - optionalnullable/optionalnullable_test.go
   - pages.go
   - partiallinks.go
   - partials.go
@@ -2880,7 +2885,6 @@ generatedFiles:
   - types/bigint.go
   - types/date.go
   - types/datetime.go
-  - types/decimal.go
   - types/pointers.go
   - upstreams.go
   - users.go
@@ -11896,7 +11900,7 @@ examples:
           tags: "tag1,tag2"
       responses:
         "200":
-          application/json: {"data": [{"id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "upstream": {"id": "5f1d7e76-2fed-4806-a6af-869984f025cb"}, "weight": 100}]}
+          application/json: {"data": [{"failover": false, "id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "upstream": {"id": "5f1d7e76-2fed-4806-a6af-869984f025cb"}, "weight": 100}]}
   create-target-with-upstream:
     "":
       parameters:
@@ -11914,10 +11918,10 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           UpstreamIdForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
       requestBody:
-        application/json: {"id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "weight": 100}
+        application/json: {"failover": true, "id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "weight": 100}
       responses:
         "201":
-          application/json: {"id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "upstream": {"id": "5f1d7e76-2fed-4806-a6af-869984f025cb"}, "weight": 100}
+          application/json: {"failover": false, "id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "upstream": {"id": "5f1d7e76-2fed-4806-a6af-869984f025cb"}, "weight": 100}
   delete-target-with-upstream:
     "":
       parameters:
@@ -11949,7 +11953,7 @@ examples:
           TargetId: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
       responses:
         "200":
-          application/json: {"id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "upstream": {"id": "5f1d7e76-2fed-4806-a6af-869984f025cb"}, "weight": 100}
+          application/json: {"failover": false, "id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "upstream": {"id": "5f1d7e76-2fed-4806-a6af-869984f025cb"}, "weight": 100}
   upsert-target-with-upstream:
     "":
       parameters:
@@ -11969,10 +11973,10 @@ examples:
           UpstreamIdForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
           TargetId: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
       requestBody:
-        application/json: {"id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "weight": 100}
+        application/json: {"failover": true, "id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "weight": 100}
       responses:
         "200":
-          application/json: {"id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "upstream": {"id": "5f1d7e76-2fed-4806-a6af-869984f025cb"}, "weight": 100}
+          application/json: {"failover": false, "id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "upstream": {"id": "5f1d7e76-2fed-4806-a6af-869984f025cb"}, "weight": 100}
   list-vault:
     "":
       parameters:
@@ -21449,7 +21453,7 @@ examples:
           page[number]: 1
       responses:
         "200":
-          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 4}}, "data": [{"id": "8cd9feff-b4da-4a9f-ba49-cbe83c75ff22", "email": "jane.developer@example.com", "full_name": "Jane Dev"}, {"id": "4cd9feff-b4da-4a9f-ba49-cbe83c75ff22", "email": "john.developer@example.com", "full_name": "John Dev"}, {"id": "6cd9feff-b4da-4a9f-ba49-cbe83c75ff22", "email": "john.developer@example.com", "full_name": "Jim Dev"}, {"id": "7cd9feff-b4da-4a9f-ba49-cbe83c75ff22", "email": "john.developer@example.com", "full_name": "Jan Dev"}]}
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 4}}, "data": [{"id": "8cd9feff-b4da-4a9f-ba49-cbe83c75ff22", "email": "jane.developer@example.com", "full_name": "Jane Dev"}, {"id": "4cd9feff-b4da-4a9f-ba49-cbe83c75ff22", "email": "john.developer@example.com", "full_name": "John Dev"}, {"id": "6cd9feff-b4da-4a9f-ba49-cbe83c75ff22", "email": "jim.developer@example.com", "full_name": "Jim Dev"}, {"id": "7cd9feff-b4da-4a9f-ba49-cbe83c75ff22", "email": "jan.developer@example.com", "full_name": "Jan Dev"}]}
         "400":
           application/problem+json: {"status": 353529, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -26882,6 +26886,20 @@ examples:
           application/json: {"name": "us-east-2 transit gateway", "dns_config": [{"remote_dns_server_ip_addresses": ["10.0.0.2"], "domain_proxy_list": ["foobar.com"]}], "transit_gateway_attachment_config": {"kind": "aws-resource-endpoint-attachment", "ram_share_arn": "<value>", "resource_config": []}, "id": "0850820b-d153-4a2a-b9be-7d2204779139", "state": "pending-acceptance", "state_metadata": {"reported_status": "ERROR", "reason": "Transit Gateway Attachment configuration could not find a resource with the provided ram share arn.\n"}, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 818089, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "409":
+          application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
+  delete-portal-audit-log-webhook:
+    speakeasy-default-delete-portal-audit-log-webhook:
+      parameters:
+        path:
+          portalId: "f32d905a-ed33-46a3-a093-d8f536af9a8a"
+      responses:
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":

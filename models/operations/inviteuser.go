@@ -19,23 +19,23 @@ type InviteUserResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *InviteUserResponse) GetContentType() string {
-	if o == nil {
+func (i *InviteUserResponse) GetContentType() string {
+	if i == nil {
 		return ""
 	}
-	return o.ContentType
+	return i.ContentType
 }
 
-func (o *InviteUserResponse) GetStatusCode() int {
-	if o == nil {
+func (i *InviteUserResponse) GetStatusCode() int {
+	if i == nil {
 		return 0
 	}
-	return o.StatusCode
+	return i.StatusCode
 }
 
-func (o *InviteUserResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (i *InviteUserResponse) GetRawResponse() *http.Response {
+	if i == nil {
 		return nil
 	}
-	return o.RawResponse
+	return i.RawResponse
 }

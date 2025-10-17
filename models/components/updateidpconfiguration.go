@@ -23,25 +23,25 @@ func (u *UpdateIDPConfigurationClaimMappings) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdateIDPConfigurationClaimMappings) GetName() *string {
-	if o == nil {
+func (u *UpdateIDPConfigurationClaimMappings) GetName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UpdateIDPConfigurationClaimMappings) GetEmail() *string {
-	if o == nil {
+func (u *UpdateIDPConfigurationClaimMappings) GetEmail() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Email
+	return u.Email
 }
 
-func (o *UpdateIDPConfigurationClaimMappings) GetGroups() *string {
-	if o == nil {
+func (u *UpdateIDPConfigurationClaimMappings) GetGroups() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Groups
+	return u.Groups
 }
 
 // UpdateIDPConfiguration - The request schema for the update IdP configuration request.
@@ -65,44 +65,44 @@ func (u *UpdateIDPConfiguration) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdateIDPConfiguration) GetIssuer() *string {
-	if o == nil {
+func (u *UpdateIDPConfiguration) GetIssuer() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Issuer
+	return u.Issuer
 }
 
-func (o *UpdateIDPConfiguration) GetLoginPath() *string {
-	if o == nil {
+func (u *UpdateIDPConfiguration) GetLoginPath() *string {
+	if u == nil {
 		return nil
 	}
-	return o.LoginPath
+	return u.LoginPath
 }
 
-func (o *UpdateIDPConfiguration) GetClientID() *string {
-	if o == nil {
+func (u *UpdateIDPConfiguration) GetClientID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.ClientID
+	return u.ClientID
 }
 
-func (o *UpdateIDPConfiguration) GetClientSecret() *string {
-	if o == nil {
+func (u *UpdateIDPConfiguration) GetClientSecret() *string {
+	if u == nil {
 		return nil
 	}
-	return o.ClientSecret
+	return u.ClientSecret
 }
 
-func (o *UpdateIDPConfiguration) GetScopes() []string {
-	if o == nil {
+func (u *UpdateIDPConfiguration) GetScopes() []string {
+	if u == nil {
 		return nil
 	}
-	return o.Scopes
+	return u.Scopes
 }
 
-func (o *UpdateIDPConfiguration) GetClaimMappings() *UpdateIDPConfigurationClaimMappings {
-	if o == nil {
+func (u *UpdateIDPConfiguration) GetClaimMappings() *UpdateIDPConfigurationClaimMappings {
+	if u == nil {
 		return nil
 	}
-	return o.ClaimMappings
+	return u.ClaimMappings
 }

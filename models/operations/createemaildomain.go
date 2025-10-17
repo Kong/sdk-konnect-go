@@ -18,30 +18,30 @@ type CreateEmailDomainResponse struct {
 	EmailDomain *components.EmailDomain
 }
 
-func (o *CreateEmailDomainResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateEmailDomainResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateEmailDomainResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateEmailDomainResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateEmailDomainResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateEmailDomainResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateEmailDomainResponse) GetEmailDomain() *components.EmailDomain {
-	if o == nil {
+func (c *CreateEmailDomainResponse) GetEmailDomain() *components.EmailDomain {
+	if c == nil {
 		return nil
 	}
-	return o.EmailDomain
+	return c.EmailDomain
 }

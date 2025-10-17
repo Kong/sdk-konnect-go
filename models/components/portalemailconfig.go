@@ -35,51 +35,51 @@ func (p *PortalEmailConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PortalEmailConfig) GetID() string {
-	if o == nil {
+func (p *PortalEmailConfig) GetID() string {
+	if p == nil {
 		return ""
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PortalEmailConfig) GetDomainName() *string {
-	if o == nil {
+func (p *PortalEmailConfig) GetDomainName() *string {
+	if p == nil {
 		return nil
 	}
-	return o.DomainName
+	return p.DomainName
 }
 
-func (o *PortalEmailConfig) GetFromName() string {
-	if o == nil {
+func (p *PortalEmailConfig) GetFromName() string {
+	if p == nil {
 		return ""
 	}
-	return o.FromName
+	return p.FromName
 }
 
-func (o *PortalEmailConfig) GetFromEmail() string {
-	if o == nil {
+func (p *PortalEmailConfig) GetFromEmail() string {
+	if p == nil {
 		return ""
 	}
-	return o.FromEmail
+	return p.FromEmail
 }
 
-func (o *PortalEmailConfig) GetReplyToEmail() string {
-	if o == nil {
+func (p *PortalEmailConfig) GetReplyToEmail() string {
+	if p == nil {
 		return ""
 	}
-	return o.ReplyToEmail
+	return p.ReplyToEmail
 }
 
-func (o *PortalEmailConfig) GetCreatedAt() time.Time {
-	if o == nil {
+func (p *PortalEmailConfig) GetCreatedAt() time.Time {
+	if p == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return p.CreatedAt
 }
 
-func (o *PortalEmailConfig) GetUpdatedAt() time.Time {
-	if o == nil {
+func (p *PortalEmailConfig) GetUpdatedAt() time.Time {
+	if p == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return p.UpdatedAt
 }

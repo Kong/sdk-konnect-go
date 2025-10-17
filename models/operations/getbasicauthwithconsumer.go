@@ -16,25 +16,25 @@ type GetBasicAuthWithConsumerRequest struct {
 	BasicAuthID string `pathParam:"style=simple,explode=false,name=BasicAuthId"`
 }
 
-func (o *GetBasicAuthWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetBasicAuthWithConsumerRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
-func (o *GetBasicAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (g *GetBasicAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if g == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return g.ConsumerIDForNestedEntities
 }
 
-func (o *GetBasicAuthWithConsumerRequest) GetBasicAuthID() string {
-	if o == nil {
+func (g *GetBasicAuthWithConsumerRequest) GetBasicAuthID() string {
+	if g == nil {
 		return ""
 	}
-	return o.BasicAuthID
+	return g.BasicAuthID
 }
 
 type GetBasicAuthWithConsumerResponse struct {
@@ -48,30 +48,30 @@ type GetBasicAuthWithConsumerResponse struct {
 	BasicAuth *components.BasicAuth
 }
 
-func (o *GetBasicAuthWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (g *GetBasicAuthWithConsumerResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetBasicAuthWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetBasicAuthWithConsumerResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetBasicAuthWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetBasicAuthWithConsumerResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetBasicAuthWithConsumerResponse) GetBasicAuth() *components.BasicAuth {
-	if o == nil {
+func (g *GetBasicAuthWithConsumerResponse) GetBasicAuth() *components.BasicAuth {
+	if g == nil {
 		return nil
 	}
-	return o.BasicAuth
+	return g.BasicAuth
 }

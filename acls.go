@@ -62,7 +62,7 @@ func (s *ACLs) ListACL(ctx context.Context, request operations.ListACLRequest, o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-acl",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -297,7 +297,7 @@ func (s *ACLs) GetACL(ctx context.Context, aclID string, controlPlaneID string, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-acl",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -525,7 +525,7 @@ func (s *ACLs) ListACLWithConsumer(ctx context.Context, request operations.ListA
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-acl-with-consumer",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -734,7 +734,7 @@ func (s *ACLs) CreateACLWithConsumer(ctx context.Context, request operations.Cre
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-acl-with-consumer",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "ACLWithoutParents", "json", `request:"mediaType=application/json"`)
@@ -946,7 +946,7 @@ func (s *ACLs) DeleteACLWithConsumer(ctx context.Context, request operations.Del
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-acl-with-consumer",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1131,7 +1131,7 @@ func (s *ACLs) GetACLWithConsumer(ctx context.Context, request operations.GetACL
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-acl-with-consumer",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1338,7 +1338,7 @@ func (s *ACLs) UpsertACLWithConsumer(ctx context.Context, request operations.Ups
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-acl-with-consumer",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "ACLWithoutParents", "json", `request:"mediaType=application/json"`)

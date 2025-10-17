@@ -65,7 +65,7 @@ func (s *Authentication) AuthenticateSso(ctx context.Context, organizationLoginP
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "authenticate-sso",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

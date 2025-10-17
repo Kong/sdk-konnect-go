@@ -18,30 +18,30 @@ type ListDefaultEmailTemplatesResponse struct {
 	ListDefaultEmailTemplates *components.ListDefaultEmailTemplates
 }
 
-func (o *ListDefaultEmailTemplatesResponse) GetContentType() string {
-	if o == nil {
+func (l *ListDefaultEmailTemplatesResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListDefaultEmailTemplatesResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListDefaultEmailTemplatesResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListDefaultEmailTemplatesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListDefaultEmailTemplatesResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListDefaultEmailTemplatesResponse) GetListDefaultEmailTemplates() *components.ListDefaultEmailTemplates {
-	if o == nil {
+func (l *ListDefaultEmailTemplatesResponse) GetListDefaultEmailTemplates() *components.ListDefaultEmailTemplates {
+	if l == nil {
 		return nil
 	}
-	return o.ListDefaultEmailTemplates
+	return l.ListDefaultEmailTemplates
 }

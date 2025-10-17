@@ -18,18 +18,18 @@ type PostTeamsTeamIDSystemAccountsRequest struct {
 	AddSystemAccountToTeam *components.AddSystemAccountToTeam `request:"mediaType=application/json"`
 }
 
-func (o *PostTeamsTeamIDSystemAccountsRequest) GetTeamID() string {
-	if o == nil {
+func (p *PostTeamsTeamIDSystemAccountsRequest) GetTeamID() string {
+	if p == nil {
 		return ""
 	}
-	return o.TeamID
+	return p.TeamID
 }
 
-func (o *PostTeamsTeamIDSystemAccountsRequest) GetAddSystemAccountToTeam() *components.AddSystemAccountToTeam {
-	if o == nil {
+func (p *PostTeamsTeamIDSystemAccountsRequest) GetAddSystemAccountToTeam() *components.AddSystemAccountToTeam {
+	if p == nil {
 		return nil
 	}
-	return o.AddSystemAccountToTeam
+	return p.AddSystemAccountToTeam
 }
 
 type PostTeamsTeamIDSystemAccountsResponse struct {
@@ -41,23 +41,23 @@ type PostTeamsTeamIDSystemAccountsResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *PostTeamsTeamIDSystemAccountsResponse) GetContentType() string {
-	if o == nil {
+func (p *PostTeamsTeamIDSystemAccountsResponse) GetContentType() string {
+	if p == nil {
 		return ""
 	}
-	return o.ContentType
+	return p.ContentType
 }
 
-func (o *PostTeamsTeamIDSystemAccountsResponse) GetStatusCode() int {
-	if o == nil {
+func (p *PostTeamsTeamIDSystemAccountsResponse) GetStatusCode() int {
+	if p == nil {
 		return 0
 	}
-	return o.StatusCode
+	return p.StatusCode
 }
 
-func (o *PostTeamsTeamIDSystemAccountsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (p *PostTeamsTeamIDSystemAccountsResponse) GetRawResponse() *http.Response {
+	if p == nil {
 		return nil
 	}
-	return o.RawResponse
+	return p.RawResponse
 }

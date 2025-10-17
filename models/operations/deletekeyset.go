@@ -13,18 +13,18 @@ type DeleteKeySetRequest struct {
 	KeySetID string `pathParam:"style=simple,explode=false,name=KeySetId"`
 }
 
-func (o *DeleteKeySetRequest) GetControlPlaneID() string {
-	if o == nil {
+func (d *DeleteKeySetRequest) GetControlPlaneID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return d.ControlPlaneID
 }
 
-func (o *DeleteKeySetRequest) GetKeySetID() string {
-	if o == nil {
+func (d *DeleteKeySetRequest) GetKeySetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.KeySetID
+	return d.KeySetID
 }
 
 type DeleteKeySetResponse struct {
@@ -36,23 +36,23 @@ type DeleteKeySetResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteKeySetResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteKeySetResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteKeySetResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteKeySetResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteKeySetResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteKeySetResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

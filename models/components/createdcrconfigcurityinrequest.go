@@ -29,16 +29,16 @@ func (c *CreateDcrConfigCurityInRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CreateDcrConfigCurityInRequest) GetInitialClientID() string {
-	if o == nil {
+func (c *CreateDcrConfigCurityInRequest) GetInitialClientID() string {
+	if c == nil {
 		return ""
 	}
-	return o.InitialClientID
+	return c.InitialClientID
 }
 
-func (o *CreateDcrConfigCurityInRequest) GetInitialClientSecret() string {
-	if o == nil {
+func (c *CreateDcrConfigCurityInRequest) GetInitialClientSecret() string {
+	if c == nil {
 		return ""
 	}
-	return o.InitialClientSecret
+	return c.InitialClientSecret
 }

@@ -14,18 +14,18 @@ type GetBasicAuthRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 }
 
-func (o *GetBasicAuthRequest) GetBasicAuthID() string {
-	if o == nil {
+func (g *GetBasicAuthRequest) GetBasicAuthID() string {
+	if g == nil {
 		return ""
 	}
-	return o.BasicAuthID
+	return g.BasicAuthID
 }
 
-func (o *GetBasicAuthRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetBasicAuthRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
 type GetBasicAuthResponse struct {
@@ -39,30 +39,30 @@ type GetBasicAuthResponse struct {
 	BasicAuth *components.BasicAuth
 }
 
-func (o *GetBasicAuthResponse) GetContentType() string {
-	if o == nil {
+func (g *GetBasicAuthResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetBasicAuthResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetBasicAuthResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetBasicAuthResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetBasicAuthResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetBasicAuthResponse) GetBasicAuth() *components.BasicAuth {
-	if o == nil {
+func (g *GetBasicAuthResponse) GetBasicAuth() *components.BasicAuth {
+	if g == nil {
 		return nil
 	}
-	return o.BasicAuth
+	return g.BasicAuth
 }

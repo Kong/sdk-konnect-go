@@ -23,11 +23,11 @@ func (s *StringFieldEqualsComparison) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *StringFieldEqualsComparison) GetEq() string {
-	if o == nil {
+func (s *StringFieldEqualsComparison) GetEq() string {
+	if s == nil {
 		return ""
 	}
-	return o.Eq
+	return s.Eq
 }
 
 type CloudGatewaysStringFieldEqualsFilterOverrideType string
@@ -39,8 +39,8 @@ const (
 
 // CloudGatewaysStringFieldEqualsFilterOverride - Filters on the given string field value by exact match.
 type CloudGatewaysStringFieldEqualsFilterOverride struct {
-	Str                         *string                      `queryParam:"inline" name:"CloudGatewaysStringFieldEqualsFilterOverride"`
-	StringFieldEqualsComparison *StringFieldEqualsComparison `queryParam:"inline" name:"CloudGatewaysStringFieldEqualsFilterOverride"`
+	Str                         *string                      `queryParam:"inline,name=CloudGatewaysStringFieldEqualsFilterOverride"`
+	StringFieldEqualsComparison *StringFieldEqualsComparison `queryParam:"inline,name=CloudGatewaysStringFieldEqualsFilterOverride"`
 
 	Type CloudGatewaysStringFieldEqualsFilterOverrideType
 }

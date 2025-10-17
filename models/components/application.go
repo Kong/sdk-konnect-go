@@ -16,8 +16,8 @@ const (
 )
 
 type Application struct {
-	ClientCredentialsApplication *ClientCredentialsApplication `queryParam:"inline" name:"Application"`
-	KeyAuthApplication           *KeyAuthApplication           `queryParam:"inline" name:"Application"`
+	ClientCredentialsApplication *ClientCredentialsApplication `queryParam:"inline,name=Application"`
+	KeyAuthApplication           *KeyAuthApplication           `queryParam:"inline,name=Application"`
 
 	Type ApplicationType
 }

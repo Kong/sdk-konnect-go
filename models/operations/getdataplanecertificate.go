@@ -13,18 +13,18 @@ type GetDataplaneCertificateRequest struct {
 	CertificateID  string `pathParam:"style=simple,explode=false,name=certificateId"`
 }
 
-func (o *GetDataplaneCertificateRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetDataplaneCertificateRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
-func (o *GetDataplaneCertificateRequest) GetCertificateID() string {
-	if o == nil {
+func (g *GetDataplaneCertificateRequest) GetCertificateID() string {
+	if g == nil {
 		return ""
 	}
-	return o.CertificateID
+	return g.CertificateID
 }
 
 type GetDataplaneCertificateResponse struct {
@@ -38,30 +38,30 @@ type GetDataplaneCertificateResponse struct {
 	DataPlaneClientCertificateResponse *components.DataPlaneClientCertificateResponse
 }
 
-func (o *GetDataplaneCertificateResponse) GetContentType() string {
-	if o == nil {
+func (g *GetDataplaneCertificateResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetDataplaneCertificateResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetDataplaneCertificateResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetDataplaneCertificateResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetDataplaneCertificateResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetDataplaneCertificateResponse) GetDataPlaneClientCertificateResponse() *components.DataPlaneClientCertificateResponse {
-	if o == nil {
+func (g *GetDataplaneCertificateResponse) GetDataPlaneClientCertificateResponse() *components.DataPlaneClientCertificateResponse {
+	if g == nil {
 		return nil
 	}
-	return o.DataPlaneClientCertificateResponse
+	return g.DataPlaneClientCertificateResponse
 }

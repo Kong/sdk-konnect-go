@@ -11,17 +11,19 @@ type TargetWithoutParentsUpstream struct {
 	ID *string `json:"id,omitempty"`
 }
 
-func (o *TargetWithoutParentsUpstream) GetID() *string {
-	if o == nil {
+func (t *TargetWithoutParentsUpstream) GetID() *string {
+	if t == nil {
 		return nil
 	}
-	return o.ID
+	return t.ID
 }
 
 // TargetWithoutParents - A target is an ip address/hostname with a port that identifies an instance of a backend service. Every upstream can have many targets, and the targets can be dynamically added, modified, or deleted. Changes take effect on the fly. To disable a target, post a new one with `weight=0`; alternatively, use the `DELETE` convenience method to accomplish the same. The current target object definition is the one with the latest `created_at`.
 type TargetWithoutParents struct {
 	// Unix epoch when the resource was created.
 	CreatedAt *float64 `json:"created_at,omitempty"`
+	// Whether to use this target only as backup or not.
+	Failover *bool `default:"false" json:"failover"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
 	// An optional set of strings associated with the Target for grouping and filtering.
@@ -47,51 +49,58 @@ func (t *TargetWithoutParents) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *TargetWithoutParents) GetCreatedAt() *float64 {
-	if o == nil {
+func (t *TargetWithoutParents) GetCreatedAt() *float64 {
+	if t == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return t.CreatedAt
 }
 
-func (o *TargetWithoutParents) GetID() *string {
-	if o == nil {
+func (t *TargetWithoutParents) GetFailover() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.ID
+	return t.Failover
 }
 
-func (o *TargetWithoutParents) GetTags() []string {
-	if o == nil {
+func (t *TargetWithoutParents) GetID() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Tags
+	return t.ID
 }
 
-func (o *TargetWithoutParents) GetTarget() *string {
-	if o == nil {
+func (t *TargetWithoutParents) GetTags() []string {
+	if t == nil {
 		return nil
 	}
-	return o.Target
+	return t.Tags
 }
 
-func (o *TargetWithoutParents) GetUpdatedAt() *float64 {
-	if o == nil {
+func (t *TargetWithoutParents) GetTarget() *string {
+	if t == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return t.Target
 }
 
-func (o *TargetWithoutParents) GetUpstream() *TargetWithoutParentsUpstream {
-	if o == nil {
+func (t *TargetWithoutParents) GetUpdatedAt() *float64 {
+	if t == nil {
 		return nil
 	}
-	return o.Upstream
+	return t.UpdatedAt
 }
 
-func (o *TargetWithoutParents) GetWeight() *int64 {
-	if o == nil {
+func (t *TargetWithoutParents) GetUpstream() *TargetWithoutParentsUpstream {
+	if t == nil {
 		return nil
 	}
-	return o.Weight
+	return t.Upstream
+}
+
+func (t *TargetWithoutParents) GetWeight() *int64 {
+	if t == nil {
+		return nil
+	}
+	return t.Weight
 }

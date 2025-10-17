@@ -30,32 +30,32 @@ func (l *ListVaultRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListVaultRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListVaultRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListVaultRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListVaultRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListVaultRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListVaultRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListVaultRequest) GetTags() *string {
-	if o == nil {
+func (l *ListVaultRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListVaultResponseBody - A successful response listing Vaults
@@ -67,25 +67,25 @@ type ListVaultResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListVaultResponseBody) GetData() []components.Vault {
-	if o == nil {
+func (l *ListVaultResponseBody) GetData() []components.Vault {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListVaultResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListVaultResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListVaultResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListVaultResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListVaultResponse struct {
@@ -99,30 +99,30 @@ type ListVaultResponse struct {
 	Object *ListVaultResponseBody
 }
 
-func (o *ListVaultResponse) GetContentType() string {
-	if o == nil {
+func (l *ListVaultResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListVaultResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListVaultResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListVaultResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListVaultResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListVaultResponse) GetObject() *ListVaultResponseBody {
-	if o == nil {
+func (l *ListVaultResponse) GetObject() *ListVaultResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

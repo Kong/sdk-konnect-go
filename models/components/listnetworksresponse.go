@@ -9,16 +9,16 @@ type ListNetworksResponse struct {
 	Data []Network     `json:"data"`
 }
 
-func (o *ListNetworksResponse) GetMeta() PaginatedMeta {
-	if o == nil {
+func (l *ListNetworksResponse) GetMeta() PaginatedMeta {
+	if l == nil {
 		return PaginatedMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListNetworksResponse) GetData() []Network {
-	if o == nil {
+func (l *ListNetworksResponse) GetData() []Network {
+	if l == nil {
 		return []Network{}
 	}
-	return o.Data
+	return l.Data
 }

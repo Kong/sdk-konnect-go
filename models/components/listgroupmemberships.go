@@ -10,16 +10,16 @@ type ListGroupMemberships struct {
 	Data []ControlPlane `json:"data"`
 }
 
-func (o *ListGroupMemberships) GetMeta() CursorPaginatedMetaWithSizeAndTotal {
-	if o == nil {
+func (l *ListGroupMemberships) GetMeta() CursorPaginatedMetaWithSizeAndTotal {
+	if l == nil {
 		return CursorPaginatedMetaWithSizeAndTotal{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListGroupMemberships) GetData() []ControlPlane {
-	if o == nil {
+func (l *ListGroupMemberships) GetData() []ControlPlane {
+	if l == nil {
 		return []ControlPlane{}
 	}
-	return o.Data
+	return l.Data
 }

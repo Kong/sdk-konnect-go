@@ -16,25 +16,25 @@ type GetKeyWithKeySetRequest struct {
 	KeyID string `pathParam:"style=simple,explode=false,name=KeyId"`
 }
 
-func (o *GetKeyWithKeySetRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetKeyWithKeySetRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
-func (o *GetKeyWithKeySetRequest) GetKeySetID() string {
-	if o == nil {
+func (g *GetKeyWithKeySetRequest) GetKeySetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.KeySetID
+	return g.KeySetID
 }
 
-func (o *GetKeyWithKeySetRequest) GetKeyID() string {
-	if o == nil {
+func (g *GetKeyWithKeySetRequest) GetKeyID() string {
+	if g == nil {
 		return ""
 	}
-	return o.KeyID
+	return g.KeyID
 }
 
 type GetKeyWithKeySetResponse struct {
@@ -48,30 +48,30 @@ type GetKeyWithKeySetResponse struct {
 	Key *components.Key
 }
 
-func (o *GetKeyWithKeySetResponse) GetContentType() string {
-	if o == nil {
+func (g *GetKeyWithKeySetResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetKeyWithKeySetResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetKeyWithKeySetResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetKeyWithKeySetResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetKeyWithKeySetResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetKeyWithKeySetResponse) GetKey() *components.Key {
-	if o == nil {
+func (g *GetKeyWithKeySetResponse) GetKey() *components.Key {
+	if g == nil {
 		return nil
 	}
-	return o.Key
+	return g.Key
 }

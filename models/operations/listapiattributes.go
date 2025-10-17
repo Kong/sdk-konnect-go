@@ -23,32 +23,32 @@ type ListAPIAttributesRequest struct {
 	Sort *string `queryParam:"style=form,explode=true,name=sort"`
 }
 
-func (o *ListAPIAttributesRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListAPIAttributesRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListAPIAttributesRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListAPIAttributesRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListAPIAttributesRequest) GetFilter() *components.APIAttributeFilterParameters {
-	if o == nil {
+func (l *ListAPIAttributesRequest) GetFilter() *components.APIAttributeFilterParameters {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
-func (o *ListAPIAttributesRequest) GetSort() *string {
-	if o == nil {
+func (l *ListAPIAttributesRequest) GetSort() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Sort
+	return l.Sort
 }
 
 type ListAPIAttributesResponse struct {
@@ -62,30 +62,30 @@ type ListAPIAttributesResponse struct {
 	ListAPIAttributesResponse *components.ListAPIAttributesResponse
 }
 
-func (o *ListAPIAttributesResponse) GetContentType() string {
-	if o == nil {
+func (l *ListAPIAttributesResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListAPIAttributesResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListAPIAttributesResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListAPIAttributesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListAPIAttributesResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListAPIAttributesResponse) GetListAPIAttributesResponse() *components.ListAPIAttributesResponse {
-	if o == nil {
+func (l *ListAPIAttributesResponse) GetListAPIAttributesResponse() *components.ListAPIAttributesResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListAPIAttributesResponse
+	return l.ListAPIAttributesResponse
 }

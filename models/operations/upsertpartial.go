@@ -16,33 +16,33 @@ type UpsertPartialRequest struct {
 	Partial components.Partial `request:"mediaType=application/json"`
 }
 
-func (o *UpsertPartialRequest) GetPartialID() string {
-	if o == nil {
+func (u *UpsertPartialRequest) GetPartialID() string {
+	if u == nil {
 		return ""
 	}
-	return o.PartialID
+	return u.PartialID
 }
 
-func (o *UpsertPartialRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpsertPartialRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpsertPartialRequest) GetPartial() components.Partial {
-	if o == nil {
+func (u *UpsertPartialRequest) GetPartial() components.Partial {
+	if u == nil {
 		return components.Partial{}
 	}
-	return o.Partial
+	return u.Partial
 }
 
-func (o *UpsertPartialRequest) GetPartialRedisCe() *components.PartialRedisCe {
-	return o.GetPartial().PartialRedisCe
+func (u *UpsertPartialRequest) GetPartialRedisCe() *components.PartialRedisCe {
+	return u.GetPartial().PartialRedisCe
 }
 
-func (o *UpsertPartialRequest) GetPartialRedisEe() *components.PartialRedisEe {
-	return o.GetPartial().PartialRedisEe
+func (u *UpsertPartialRequest) GetPartialRedisEe() *components.PartialRedisEe {
+	return u.GetPartial().PartialRedisEe
 }
 
 type UpsertPartialResponse struct {
@@ -56,43 +56,43 @@ type UpsertPartialResponse struct {
 	Partial *components.Partial
 }
 
-func (o *UpsertPartialResponse) GetContentType() string {
-	if o == nil {
+func (u *UpsertPartialResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpsertPartialResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpsertPartialResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpsertPartialResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpsertPartialResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpsertPartialResponse) GetPartial() *components.Partial {
-	if o == nil {
+func (u *UpsertPartialResponse) GetPartial() *components.Partial {
+	if u == nil {
 		return nil
 	}
-	return o.Partial
+	return u.Partial
 }
 
-func (o *UpsertPartialResponse) GetPartialRedisCe() *components.PartialRedisCe {
-	if v := o.GetPartial(); v != nil {
+func (u *UpsertPartialResponse) GetPartialRedisCe() *components.PartialRedisCe {
+	if v := u.GetPartial(); v != nil {
 		return v.PartialRedisCe
 	}
 	return nil
 }
 
-func (o *UpsertPartialResponse) GetPartialRedisEe() *components.PartialRedisEe {
-	if v := o.GetPartial(); v != nil {
+func (u *UpsertPartialResponse) GetPartialRedisEe() *components.PartialRedisEe {
+	if v := u.GetPartial(); v != nil {
 		return v.PartialRedisEe
 	}
 	return nil

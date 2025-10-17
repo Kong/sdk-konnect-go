@@ -22,30 +22,30 @@ type CreateCustomDomainsResponse struct {
 	CustomDomain *components.CustomDomain
 }
 
-func (o *CreateCustomDomainsResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateCustomDomainsResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateCustomDomainsResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateCustomDomainsResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateCustomDomainsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateCustomDomainsResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateCustomDomainsResponse) GetCustomDomain() *components.CustomDomain {
-	if o == nil {
+func (c *CreateCustomDomainsResponse) GetCustomDomain() *components.CustomDomain {
+	if c == nil {
 		return nil
 	}
-	return o.CustomDomain
+	return c.CustomDomain
 }

@@ -25,16 +25,16 @@ func (m *MovePageRequestPayload) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *MovePageRequestPayload) GetParentPageID() *string {
-	if o == nil {
+func (m *MovePageRequestPayload) GetParentPageID() *string {
+	if m == nil {
 		return nil
 	}
-	return o.ParentPageID
+	return m.ParentPageID
 }
 
-func (o *MovePageRequestPayload) GetIndex() *int64 {
-	if o == nil {
+func (m *MovePageRequestPayload) GetIndex() *int64 {
+	if m == nil {
 		return nil
 	}
-	return o.Index
+	return m.Index
 }

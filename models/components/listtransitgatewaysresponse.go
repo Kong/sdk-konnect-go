@@ -9,16 +9,16 @@ type ListTransitGatewaysResponse struct {
 	Data []TransitGatewayResponse `json:"data"`
 }
 
-func (o *ListTransitGatewaysResponse) GetMeta() PaginatedMeta {
-	if o == nil {
+func (l *ListTransitGatewaysResponse) GetMeta() PaginatedMeta {
+	if l == nil {
 		return PaginatedMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListTransitGatewaysResponse) GetData() []TransitGatewayResponse {
-	if o == nil {
+func (l *ListTransitGatewaysResponse) GetData() []TransitGatewayResponse {
+	if l == nil {
 		return []TransitGatewayResponse{}
 	}
-	return o.Data
+	return l.Data
 }

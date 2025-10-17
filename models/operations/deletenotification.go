@@ -11,11 +11,11 @@ type DeleteNotificationRequest struct {
 	NotificationID string `pathParam:"style=simple,explode=false,name=notificationId"`
 }
 
-func (o *DeleteNotificationRequest) GetNotificationID() string {
-	if o == nil {
+func (d *DeleteNotificationRequest) GetNotificationID() string {
+	if d == nil {
 		return ""
 	}
-	return o.NotificationID
+	return d.NotificationID
 }
 
 type DeleteNotificationResponse struct {
@@ -27,23 +27,23 @@ type DeleteNotificationResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteNotificationResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteNotificationResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteNotificationResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteNotificationResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteNotificationResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteNotificationResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

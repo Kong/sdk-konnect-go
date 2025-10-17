@@ -39,65 +39,65 @@ func (p *PortalSnippetResponse) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PortalSnippetResponse) GetID() string {
-	if o == nil {
+func (p *PortalSnippetResponse) GetID() string {
+	if p == nil {
 		return ""
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PortalSnippetResponse) GetName() string {
-	if o == nil {
+func (p *PortalSnippetResponse) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PortalSnippetResponse) GetTitle() *string {
-	if o == nil {
+func (p *PortalSnippetResponse) GetTitle() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Title
+	return p.Title
 }
 
-func (o *PortalSnippetResponse) GetContent() string {
-	if o == nil {
+func (p *PortalSnippetResponse) GetContent() string {
+	if p == nil {
 		return ""
 	}
-	return o.Content
+	return p.Content
 }
 
-func (o *PortalSnippetResponse) GetVisibility() VisibilityStatus {
-	if o == nil {
+func (p *PortalSnippetResponse) GetVisibility() VisibilityStatus {
+	if p == nil {
 		return VisibilityStatus("")
 	}
-	return o.Visibility
+	return p.Visibility
 }
 
-func (o *PortalSnippetResponse) GetStatus() PublishedStatus {
-	if o == nil {
+func (p *PortalSnippetResponse) GetStatus() PublishedStatus {
+	if p == nil {
 		return PublishedStatus("")
 	}
-	return o.Status
+	return p.Status
 }
 
-func (o *PortalSnippetResponse) GetDescription() *string {
-	if o == nil {
+func (p *PortalSnippetResponse) GetDescription() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Description
+	return p.Description
 }
 
-func (o *PortalSnippetResponse) GetCreatedAt() time.Time {
-	if o == nil {
+func (p *PortalSnippetResponse) GetCreatedAt() time.Time {
+	if p == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return p.CreatedAt
 }
 
-func (o *PortalSnippetResponse) GetUpdatedAt() time.Time {
-	if o == nil {
+func (p *PortalSnippetResponse) GetUpdatedAt() time.Time {
+	if p == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return p.UpdatedAt
 }

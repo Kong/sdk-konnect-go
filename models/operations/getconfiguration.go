@@ -16,11 +16,11 @@ type GetConfigurationRequest struct {
 	ConfigurationID string `pathParam:"style=simple,explode=false,name=configurationId"`
 }
 
-func (o *GetConfigurationRequest) GetConfigurationID() string {
-	if o == nil {
+func (g *GetConfigurationRequest) GetConfigurationID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ConfigurationID
+	return g.ConfigurationID
 }
 
 type GetConfigurationResponse struct {
@@ -34,30 +34,30 @@ type GetConfigurationResponse struct {
 	ConfigurationManifest *components.ConfigurationManifest
 }
 
-func (o *GetConfigurationResponse) GetContentType() string {
-	if o == nil {
+func (g *GetConfigurationResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetConfigurationResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetConfigurationResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetConfigurationResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetConfigurationResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetConfigurationResponse) GetConfigurationManifest() *components.ConfigurationManifest {
-	if o == nil {
+func (g *GetConfigurationResponse) GetConfigurationManifest() *components.ConfigurationManifest {
+	if g == nil {
 		return nil
 	}
-	return o.ConfigurationManifest
+	return g.ConfigurationManifest
 }

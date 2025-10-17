@@ -25,9 +25,9 @@ func (c *CreateDcrConfigOktaInRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CreateDcrConfigOktaInRequest) GetDcrToken() string {
-	if o == nil {
+func (c *CreateDcrConfigOktaInRequest) GetDcrToken() string {
+	if c == nil {
 		return ""
 	}
-	return o.DcrToken
+	return c.DcrToken
 }

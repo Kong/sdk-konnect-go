@@ -63,7 +63,7 @@ func (s *Snippets) ListPortalSnippets(ctx context.Context, request operations.Li
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-portal-snippets",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -361,7 +361,7 @@ func (s *Snippets) CreatePortalSnippet(ctx context.Context, portalID string, cre
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-portal-snippet",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreatePortalSnippetRequest", "json", `request:"mediaType=application/json"`)
@@ -662,7 +662,7 @@ func (s *Snippets) GetPortalSnippet(ctx context.Context, portalID string, snippe
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-snippet",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -930,7 +930,7 @@ func (s *Snippets) UpdatePortalSnippet(ctx context.Context, request operations.U
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-portal-snippet",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdatePortalSnippetRequest", "json", `request:"mediaType=application/json"`)
@@ -1231,7 +1231,7 @@ func (s *Snippets) DeletePortalSnippet(ctx context.Context, portalID string, sni
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-portal-snippet",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

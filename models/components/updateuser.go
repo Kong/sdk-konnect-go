@@ -25,16 +25,16 @@ func (u *UpdateUser) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdateUser) GetFullName() *string {
-	if o == nil {
+func (u *UpdateUser) GetFullName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.FullName
+	return u.FullName
 }
 
-func (o *UpdateUser) GetPreferredName() *string {
-	if o == nil {
+func (u *UpdateUser) GetPreferredName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.PreferredName
+	return u.PreferredName
 }

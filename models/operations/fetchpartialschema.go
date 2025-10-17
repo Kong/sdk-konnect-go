@@ -14,18 +14,18 @@ type FetchPartialSchemaRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 }
 
-func (o *FetchPartialSchemaRequest) GetPartialType() string {
-	if o == nil {
+func (f *FetchPartialSchemaRequest) GetPartialType() string {
+	if f == nil {
 		return ""
 	}
-	return o.PartialType
+	return f.PartialType
 }
 
-func (o *FetchPartialSchemaRequest) GetControlPlaneID() string {
-	if o == nil {
+func (f *FetchPartialSchemaRequest) GetControlPlaneID() string {
+	if f == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return f.ControlPlaneID
 }
 
 type FetchPartialSchemaResponse struct {
@@ -39,30 +39,30 @@ type FetchPartialSchemaResponse struct {
 	GetPartialSchemaResponse *components.GetPartialSchemaResponse
 }
 
-func (o *FetchPartialSchemaResponse) GetContentType() string {
-	if o == nil {
+func (f *FetchPartialSchemaResponse) GetContentType() string {
+	if f == nil {
 		return ""
 	}
-	return o.ContentType
+	return f.ContentType
 }
 
-func (o *FetchPartialSchemaResponse) GetStatusCode() int {
-	if o == nil {
+func (f *FetchPartialSchemaResponse) GetStatusCode() int {
+	if f == nil {
 		return 0
 	}
-	return o.StatusCode
+	return f.StatusCode
 }
 
-func (o *FetchPartialSchemaResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (f *FetchPartialSchemaResponse) GetRawResponse() *http.Response {
+	if f == nil {
 		return nil
 	}
-	return o.RawResponse
+	return f.RawResponse
 }
 
-func (o *FetchPartialSchemaResponse) GetGetPartialSchemaResponse() *components.GetPartialSchemaResponse {
-	if o == nil {
+func (f *FetchPartialSchemaResponse) GetGetPartialSchemaResponse() *components.GetPartialSchemaResponse {
+	if f == nil {
 		return nil
 	}
-	return o.GetPartialSchemaResponse
+	return f.GetPartialSchemaResponse
 }

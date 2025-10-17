@@ -12,11 +12,11 @@ type ListDpClientCertificatesRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 }
 
-func (o *ListDpClientCertificatesRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListDpClientCertificatesRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
 type ListDpClientCertificatesResponse struct {
@@ -30,30 +30,30 @@ type ListDpClientCertificatesResponse struct {
 	ListDataPlaneCertificatesResponse *components.ListDataPlaneCertificatesResponse
 }
 
-func (o *ListDpClientCertificatesResponse) GetContentType() string {
-	if o == nil {
+func (l *ListDpClientCertificatesResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListDpClientCertificatesResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListDpClientCertificatesResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListDpClientCertificatesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListDpClientCertificatesResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListDpClientCertificatesResponse) GetListDataPlaneCertificatesResponse() *components.ListDataPlaneCertificatesResponse {
-	if o == nil {
+func (l *ListDpClientCertificatesResponse) GetListDataPlaneCertificatesResponse() *components.ListDataPlaneCertificatesResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListDataPlaneCertificatesResponse
+	return l.ListDataPlaneCertificatesResponse
 }

@@ -53,23 +53,23 @@ func (c *ConfigurationDataPlaneGroupAutoscaleStatic) UnmarshalJSON(data []byte) 
 	return nil
 }
 
-func (o *ConfigurationDataPlaneGroupAutoscaleStatic) GetKind() Kind {
-	if o == nil {
+func (c *ConfigurationDataPlaneGroupAutoscaleStatic) GetKind() Kind {
+	if c == nil {
 		return Kind("")
 	}
-	return o.Kind
+	return c.Kind
 }
 
-func (o *ConfigurationDataPlaneGroupAutoscaleStatic) GetInstanceType() InstanceTypeName {
-	if o == nil {
+func (c *ConfigurationDataPlaneGroupAutoscaleStatic) GetInstanceType() InstanceTypeName {
+	if c == nil {
 		return InstanceTypeName("")
 	}
-	return o.InstanceType
+	return c.InstanceType
 }
 
-func (o *ConfigurationDataPlaneGroupAutoscaleStatic) GetRequestedInstances() int64 {
-	if o == nil {
+func (c *ConfigurationDataPlaneGroupAutoscaleStatic) GetRequestedInstances() int64 {
+	if c == nil {
 		return 0
 	}
-	return o.RequestedInstances
+	return c.RequestedInstances
 }

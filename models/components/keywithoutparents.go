@@ -23,18 +23,18 @@ func (k *KeyWithoutParentsPem) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *KeyWithoutParentsPem) GetPrivateKey() *string {
-	if o == nil {
+func (k *KeyWithoutParentsPem) GetPrivateKey() *string {
+	if k == nil {
 		return nil
 	}
-	return o.PrivateKey
+	return k.PrivateKey
 }
 
-func (o *KeyWithoutParentsPem) GetPublicKey() *string {
-	if o == nil {
+func (k *KeyWithoutParentsPem) GetPublicKey() *string {
+	if k == nil {
 		return nil
 	}
-	return o.PublicKey
+	return k.PublicKey
 }
 
 // KeyWithoutParentsSet - The id (an UUID) of the key-set with which to associate the key.
@@ -42,11 +42,11 @@ type KeyWithoutParentsSet struct {
 	ID *string `json:"id,omitempty"`
 }
 
-func (o *KeyWithoutParentsSet) GetID() *string {
-	if o == nil {
+func (k *KeyWithoutParentsSet) GetID() *string {
+	if k == nil {
 		return nil
 	}
-	return o.ID
+	return k.ID
 }
 
 // KeyWithoutParents - A Key object holds a representation of asymmetric keys in various formats. When Kong or a Kong plugin requires a specific public or private key to perform certain operations, it can use this entity.
@@ -84,72 +84,72 @@ func (k *KeyWithoutParents) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *KeyWithoutParents) GetCreatedAt() *int64 {
-	if o == nil {
+func (k *KeyWithoutParents) GetCreatedAt() *int64 {
+	if k == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return k.CreatedAt
 }
 
-func (o *KeyWithoutParents) GetID() *string {
-	if o == nil {
+func (k *KeyWithoutParents) GetID() *string {
+	if k == nil {
 		return nil
 	}
-	return o.ID
+	return k.ID
 }
 
-func (o *KeyWithoutParents) GetJwk() *string {
-	if o == nil {
+func (k *KeyWithoutParents) GetJwk() *string {
+	if k == nil {
 		return nil
 	}
-	return o.Jwk
+	return k.Jwk
 }
 
-func (o *KeyWithoutParents) GetKid() string {
-	if o == nil {
+func (k *KeyWithoutParents) GetKid() string {
+	if k == nil {
 		return ""
 	}
-	return o.Kid
+	return k.Kid
 }
 
-func (o *KeyWithoutParents) GetName() *string {
-	if o == nil {
+func (k *KeyWithoutParents) GetName() *string {
+	if k == nil {
 		return nil
 	}
-	return o.Name
+	return k.Name
 }
 
-func (o *KeyWithoutParents) GetPem() *KeyWithoutParentsPem {
-	if o == nil {
+func (k *KeyWithoutParents) GetPem() *KeyWithoutParentsPem {
+	if k == nil {
 		return nil
 	}
-	return o.Pem
+	return k.Pem
 }
 
-func (o *KeyWithoutParents) GetSet() *KeyWithoutParentsSet {
-	if o == nil {
+func (k *KeyWithoutParents) GetSet() *KeyWithoutParentsSet {
+	if k == nil {
 		return nil
 	}
-	return o.Set
+	return k.Set
 }
 
-func (o *KeyWithoutParents) GetTags() []string {
-	if o == nil {
+func (k *KeyWithoutParents) GetTags() []string {
+	if k == nil {
 		return nil
 	}
-	return o.Tags
+	return k.Tags
 }
 
-func (o *KeyWithoutParents) GetUpdatedAt() *int64 {
-	if o == nil {
+func (k *KeyWithoutParents) GetUpdatedAt() *int64 {
+	if k == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return k.UpdatedAt
 }
 
-func (o *KeyWithoutParents) GetX5t() *string {
-	if o == nil {
+func (k *KeyWithoutParents) GetX5t() *string {
+	if k == nil {
 		return nil
 	}
-	return o.X5t
+	return k.X5t
 }

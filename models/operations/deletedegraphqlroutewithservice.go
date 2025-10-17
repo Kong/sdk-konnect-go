@@ -15,25 +15,25 @@ type DeleteDegraphqlRouteWithServiceRequest struct {
 	DegraphqlRouteID string `pathParam:"style=simple,explode=false,name=Degraphql_routeId"`
 }
 
-func (o *DeleteDegraphqlRouteWithServiceRequest) GetControlPlaneID() string {
-	if o == nil {
+func (d *DeleteDegraphqlRouteWithServiceRequest) GetControlPlaneID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return d.ControlPlaneID
 }
 
-func (o *DeleteDegraphqlRouteWithServiceRequest) GetServiceID() string {
-	if o == nil {
+func (d *DeleteDegraphqlRouteWithServiceRequest) GetServiceID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ServiceID
+	return d.ServiceID
 }
 
-func (o *DeleteDegraphqlRouteWithServiceRequest) GetDegraphqlRouteID() string {
-	if o == nil {
+func (d *DeleteDegraphqlRouteWithServiceRequest) GetDegraphqlRouteID() string {
+	if d == nil {
 		return ""
 	}
-	return o.DegraphqlRouteID
+	return d.DegraphqlRouteID
 }
 
 type DeleteDegraphqlRouteWithServiceResponse struct {
@@ -45,23 +45,23 @@ type DeleteDegraphqlRouteWithServiceResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteDegraphqlRouteWithServiceResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteDegraphqlRouteWithServiceResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteDegraphqlRouteWithServiceResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteDegraphqlRouteWithServiceResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteDegraphqlRouteWithServiceResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteDegraphqlRouteWithServiceResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

@@ -8,16 +8,16 @@ type EventSubscriptionListResponse struct {
 	Meta CursorMetaPage              `json:"meta"`
 }
 
-func (o *EventSubscriptionListResponse) GetData() []EventSubscriptionResponse {
-	if o == nil {
+func (e *EventSubscriptionListResponse) GetData() []EventSubscriptionResponse {
+	if e == nil {
 		return []EventSubscriptionResponse{}
 	}
-	return o.Data
+	return e.Data
 }
 
-func (o *EventSubscriptionListResponse) GetMeta() CursorMetaPage {
-	if o == nil {
+func (e *EventSubscriptionListResponse) GetMeta() CursorMetaPage {
+	if e == nil {
 		return CursorMetaPage{}
 	}
-	return o.Meta
+	return e.Meta
 }

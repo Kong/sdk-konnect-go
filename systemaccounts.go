@@ -62,7 +62,7 @@ func (s *SystemAccounts) GetSystemAccounts(ctx context.Context, request operatio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-system-accounts",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -314,7 +314,7 @@ func (s *SystemAccounts) PostSystemAccounts(ctx context.Context, request *compon
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "post-system-accounts",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -573,7 +573,7 @@ func (s *SystemAccounts) GetSystemAccountsID(ctx context.Context, accountID stri
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-system-accounts-id",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -826,7 +826,7 @@ func (s *SystemAccounts) PatchSystemAccountsID(ctx context.Context, accountID st
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "patch-system-accounts-id",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "UpdateSystemAccount", "json", `request:"mediaType=application/json"`)
@@ -1106,7 +1106,7 @@ func (s *SystemAccounts) DeleteSystemAccountsID(ctx context.Context, accountID s
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-system-accounts-id",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

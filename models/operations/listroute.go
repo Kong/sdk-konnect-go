@@ -30,32 +30,32 @@ func (l *ListRouteRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListRouteRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListRouteRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListRouteRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListRouteRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListRouteRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListRouteRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListRouteRequest) GetTags() *string {
-	if o == nil {
+func (l *ListRouteRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListRouteResponseBody - A successful response listing Routes
@@ -67,25 +67,25 @@ type ListRouteResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListRouteResponseBody) GetData() []components.Route {
-	if o == nil {
+func (l *ListRouteResponseBody) GetData() []components.Route {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListRouteResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListRouteResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListRouteResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListRouteResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListRouteResponse struct {
@@ -99,30 +99,30 @@ type ListRouteResponse struct {
 	Object *ListRouteResponseBody
 }
 
-func (o *ListRouteResponse) GetContentType() string {
-	if o == nil {
+func (l *ListRouteResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListRouteResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListRouteResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListRouteResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListRouteResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListRouteResponse) GetObject() *ListRouteResponseBody {
-	if o == nil {
+func (l *ListRouteResponse) GetObject() *ListRouteResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

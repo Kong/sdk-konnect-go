@@ -9,9 +9,9 @@ type UpdateApplicationRegistrationRequest struct {
 	Status *ApplicationRegistrationStatus `json:"status,omitempty"`
 }
 
-func (o *UpdateApplicationRegistrationRequest) GetStatus() *ApplicationRegistrationStatus {
-	if o == nil {
+func (u *UpdateApplicationRegistrationRequest) GetStatus() *ApplicationRegistrationStatus {
+	if u == nil {
 		return nil
 	}
-	return o.Status
+	return u.Status
 }

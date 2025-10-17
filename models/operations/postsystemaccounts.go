@@ -22,30 +22,30 @@ type PostSystemAccountsResponse struct {
 	SystemAccount *components.SystemAccount
 }
 
-func (o *PostSystemAccountsResponse) GetContentType() string {
-	if o == nil {
+func (p *PostSystemAccountsResponse) GetContentType() string {
+	if p == nil {
 		return ""
 	}
-	return o.ContentType
+	return p.ContentType
 }
 
-func (o *PostSystemAccountsResponse) GetStatusCode() int {
-	if o == nil {
+func (p *PostSystemAccountsResponse) GetStatusCode() int {
+	if p == nil {
 		return 0
 	}
-	return o.StatusCode
+	return p.StatusCode
 }
 
-func (o *PostSystemAccountsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (p *PostSystemAccountsResponse) GetRawResponse() *http.Response {
+	if p == nil {
 		return nil
 	}
-	return o.RawResponse
+	return p.RawResponse
 }
 
-func (o *PostSystemAccountsResponse) GetSystemAccount() *components.SystemAccount {
-	if o == nil {
+func (p *PostSystemAccountsResponse) GetSystemAccount() *components.SystemAccount {
+	if p == nil {
 		return nil
 	}
-	return o.SystemAccount
+	return p.SystemAccount
 }

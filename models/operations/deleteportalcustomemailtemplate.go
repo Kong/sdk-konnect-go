@@ -14,18 +14,18 @@ type DeletePortalCustomEmailTemplateRequest struct {
 	TemplateName components.EmailTemplateName `pathParam:"style=simple,explode=false,name=templateName"`
 }
 
-func (o *DeletePortalCustomEmailTemplateRequest) GetPortalID() string {
-	if o == nil {
+func (d *DeletePortalCustomEmailTemplateRequest) GetPortalID() string {
+	if d == nil {
 		return ""
 	}
-	return o.PortalID
+	return d.PortalID
 }
 
-func (o *DeletePortalCustomEmailTemplateRequest) GetTemplateName() components.EmailTemplateName {
-	if o == nil {
+func (d *DeletePortalCustomEmailTemplateRequest) GetTemplateName() components.EmailTemplateName {
+	if d == nil {
 		return components.EmailTemplateName("")
 	}
-	return o.TemplateName
+	return d.TemplateName
 }
 
 type DeletePortalCustomEmailTemplateResponse struct {
@@ -37,23 +37,23 @@ type DeletePortalCustomEmailTemplateResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeletePortalCustomEmailTemplateResponse) GetContentType() string {
-	if o == nil {
+func (d *DeletePortalCustomEmailTemplateResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeletePortalCustomEmailTemplateResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeletePortalCustomEmailTemplateResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeletePortalCustomEmailTemplateResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeletePortalCustomEmailTemplateResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

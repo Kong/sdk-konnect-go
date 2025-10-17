@@ -16,25 +16,25 @@ type ListDataplaneNodesRequest struct {
 	PageAfter *string `queryParam:"style=form,explode=true,name=page[after]"`
 }
 
-func (o *ListDataplaneNodesRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListDataplaneNodesRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListDataplaneNodesRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListDataplaneNodesRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListDataplaneNodesRequest) GetPageAfter() *string {
-	if o == nil {
+func (l *ListDataplaneNodesRequest) GetPageAfter() *string {
+	if l == nil {
 		return nil
 	}
-	return o.PageAfter
+	return l.PageAfter
 }
 
 type ListDataplaneNodesResponse struct {
@@ -48,30 +48,30 @@ type ListDataplaneNodesResponse struct {
 	ListNodes *components.ListNodes
 }
 
-func (o *ListDataplaneNodesResponse) GetContentType() string {
-	if o == nil {
+func (l *ListDataplaneNodesResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListDataplaneNodesResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListDataplaneNodesResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListDataplaneNodesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListDataplaneNodesResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListDataplaneNodesResponse) GetListNodes() *components.ListNodes {
-	if o == nil {
+func (l *ListDataplaneNodesResponse) GetListNodes() *components.ListNodes {
+	if l == nil {
 		return nil
 	}
-	return o.ListNodes
+	return l.ListNodes
 }

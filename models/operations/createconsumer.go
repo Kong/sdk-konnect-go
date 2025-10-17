@@ -14,18 +14,18 @@ type CreateConsumerRequest struct {
 	Consumer components.Consumer `request:"mediaType=application/json"`
 }
 
-func (o *CreateConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreateConsumerRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreateConsumerRequest) GetConsumer() components.Consumer {
-	if o == nil {
+func (c *CreateConsumerRequest) GetConsumer() components.Consumer {
+	if c == nil {
 		return components.Consumer{}
 	}
-	return o.Consumer
+	return c.Consumer
 }
 
 type CreateConsumerResponse struct {
@@ -39,30 +39,30 @@ type CreateConsumerResponse struct {
 	Consumer *components.Consumer
 }
 
-func (o *CreateConsumerResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateConsumerResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateConsumerResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateConsumerResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateConsumerResponse) GetConsumer() *components.Consumer {
-	if o == nil {
+func (c *CreateConsumerResponse) GetConsumer() *components.Consumer {
+	if c == nil {
 		return nil
 	}
-	return o.Consumer
+	return c.Consumer
 }

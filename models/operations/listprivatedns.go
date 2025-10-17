@@ -22,32 +22,32 @@ type ListPrivateDNSRequest struct {
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 }
 
-func (o *ListPrivateDNSRequest) GetNetworkID() string {
-	if o == nil {
+func (l *ListPrivateDNSRequest) GetNetworkID() string {
+	if l == nil {
 		return ""
 	}
-	return o.NetworkID
+	return l.NetworkID
 }
 
-func (o *ListPrivateDNSRequest) GetFilter() *components.PrivateDNSFilterParameters {
-	if o == nil {
+func (l *ListPrivateDNSRequest) GetFilter() *components.PrivateDNSFilterParameters {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
-func (o *ListPrivateDNSRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListPrivateDNSRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListPrivateDNSRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListPrivateDNSRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
 type ListPrivateDNSResponse struct {
@@ -61,30 +61,30 @@ type ListPrivateDNSResponse struct {
 	ListPrivateDNSResponse *components.ListPrivateDNSResponse
 }
 
-func (o *ListPrivateDNSResponse) GetContentType() string {
-	if o == nil {
+func (l *ListPrivateDNSResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListPrivateDNSResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListPrivateDNSResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListPrivateDNSResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListPrivateDNSResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListPrivateDNSResponse) GetListPrivateDNSResponse() *components.ListPrivateDNSResponse {
-	if o == nil {
+func (l *ListPrivateDNSResponse) GetListPrivateDNSResponse() *components.ListPrivateDNSResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListPrivateDNSResponse
+	return l.ListPrivateDNSResponse
 }

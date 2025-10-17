@@ -18,32 +18,32 @@ type UpsertTargetWithUpstreamRequest struct {
 	TargetWithoutParents components.TargetWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *UpsertTargetWithUpstreamRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpsertTargetWithUpstreamRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpsertTargetWithUpstreamRequest) GetUpstreamIDForTarget() string {
-	if o == nil {
+func (u *UpsertTargetWithUpstreamRequest) GetUpstreamIDForTarget() string {
+	if u == nil {
 		return ""
 	}
-	return o.UpstreamIDForTarget
+	return u.UpstreamIDForTarget
 }
 
-func (o *UpsertTargetWithUpstreamRequest) GetTargetID() string {
-	if o == nil {
+func (u *UpsertTargetWithUpstreamRequest) GetTargetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.TargetID
+	return u.TargetID
 }
 
-func (o *UpsertTargetWithUpstreamRequest) GetTargetWithoutParents() components.TargetWithoutParents {
-	if o == nil {
+func (u *UpsertTargetWithUpstreamRequest) GetTargetWithoutParents() components.TargetWithoutParents {
+	if u == nil {
 		return components.TargetWithoutParents{}
 	}
-	return o.TargetWithoutParents
+	return u.TargetWithoutParents
 }
 
 type UpsertTargetWithUpstreamResponse struct {
@@ -57,30 +57,30 @@ type UpsertTargetWithUpstreamResponse struct {
 	Target *components.Target
 }
 
-func (o *UpsertTargetWithUpstreamResponse) GetContentType() string {
-	if o == nil {
+func (u *UpsertTargetWithUpstreamResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpsertTargetWithUpstreamResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpsertTargetWithUpstreamResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpsertTargetWithUpstreamResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpsertTargetWithUpstreamResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpsertTargetWithUpstreamResponse) GetTarget() *components.Target {
-	if o == nil {
+func (u *UpsertTargetWithUpstreamResponse) GetTarget() *components.Target {
+	if u == nil {
 		return nil
 	}
-	return o.Target
+	return u.Target
 }

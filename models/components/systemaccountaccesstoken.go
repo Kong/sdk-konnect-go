@@ -34,44 +34,44 @@ func (s *SystemAccountAccessToken) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SystemAccountAccessToken) GetID() *string {
-	if o == nil {
+func (s *SystemAccountAccessToken) GetID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *SystemAccountAccessToken) GetName() *string {
-	if o == nil {
+func (s *SystemAccountAccessToken) GetName() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Name
+	return s.Name
 }
 
-func (o *SystemAccountAccessToken) GetCreatedAt() *time.Time {
-	if o == nil {
+func (s *SystemAccountAccessToken) GetCreatedAt() *time.Time {
+	if s == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return s.CreatedAt
 }
 
-func (o *SystemAccountAccessToken) GetUpdatedAt() *time.Time {
-	if o == nil {
+func (s *SystemAccountAccessToken) GetUpdatedAt() *time.Time {
+	if s == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return s.UpdatedAt
 }
 
-func (o *SystemAccountAccessToken) GetExpiresAt() *time.Time {
-	if o == nil {
+func (s *SystemAccountAccessToken) GetExpiresAt() *time.Time {
+	if s == nil {
 		return nil
 	}
-	return o.ExpiresAt
+	return s.ExpiresAt
 }
 
-func (o *SystemAccountAccessToken) GetLastUsedAt() *time.Time {
-	if o == nil {
+func (s *SystemAccountAccessToken) GetLastUsedAt() *time.Time {
+	if s == nil {
 		return nil
 	}
-	return o.LastUsedAt
+	return s.LastUsedAt
 }

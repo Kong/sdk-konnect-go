@@ -16,25 +16,25 @@ type GetMtlsAuthWithConsumerRequest struct {
 	MTLSAuthID string `pathParam:"style=simple,explode=false,name=MTLSAuthId"`
 }
 
-func (o *GetMtlsAuthWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetMtlsAuthWithConsumerRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
-func (o *GetMtlsAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (g *GetMtlsAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if g == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return g.ConsumerIDForNestedEntities
 }
 
-func (o *GetMtlsAuthWithConsumerRequest) GetMTLSAuthID() string {
-	if o == nil {
+func (g *GetMtlsAuthWithConsumerRequest) GetMTLSAuthID() string {
+	if g == nil {
 		return ""
 	}
-	return o.MTLSAuthID
+	return g.MTLSAuthID
 }
 
 type GetMtlsAuthWithConsumerResponse struct {
@@ -48,30 +48,30 @@ type GetMtlsAuthWithConsumerResponse struct {
 	MTLSAuth *components.MTLSAuth
 }
 
-func (o *GetMtlsAuthWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (g *GetMtlsAuthWithConsumerResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetMtlsAuthWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetMtlsAuthWithConsumerResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetMtlsAuthWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetMtlsAuthWithConsumerResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetMtlsAuthWithConsumerResponse) GetMTLSAuth() *components.MTLSAuth {
-	if o == nil {
+func (g *GetMtlsAuthWithConsumerResponse) GetMTLSAuth() *components.MTLSAuth {
+	if g == nil {
 		return nil
 	}
-	return o.MTLSAuth
+	return g.MTLSAuth
 }

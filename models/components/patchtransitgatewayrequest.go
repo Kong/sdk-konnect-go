@@ -50,18 +50,18 @@ func (t *TransitGatewayAttachmentConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *TransitGatewayAttachmentConfig) GetKind() PatchAWSResourceEndpointGatewayAWSResourceEndpointAttachmentType {
-	if o == nil {
+func (t *TransitGatewayAttachmentConfig) GetKind() PatchAWSResourceEndpointGatewayAWSResourceEndpointAttachmentType {
+	if t == nil {
 		return PatchAWSResourceEndpointGatewayAWSResourceEndpointAttachmentType("")
 	}
-	return o.Kind
+	return t.Kind
 }
 
-func (o *TransitGatewayAttachmentConfig) GetResourceConfig() []AwsResourceEndpointConfig {
-	if o == nil {
+func (t *TransitGatewayAttachmentConfig) GetResourceConfig() []AwsResourceEndpointConfig {
+	if t == nil {
 		return []AwsResourceEndpointConfig{}
 	}
-	return o.ResourceConfig
+	return t.ResourceConfig
 }
 
 // PatchAwsResourceEndpointGateway - Request schema for updating AWS Resource Endpoint.
@@ -80,11 +80,11 @@ func (p *PatchAwsResourceEndpointGateway) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PatchAwsResourceEndpointGateway) GetTransitGatewayAttachmentConfig() TransitGatewayAttachmentConfig {
-	if o == nil {
+func (p *PatchAwsResourceEndpointGateway) GetTransitGatewayAttachmentConfig() TransitGatewayAttachmentConfig {
+	if p == nil {
 		return TransitGatewayAttachmentConfig{}
 	}
-	return o.TransitGatewayAttachmentConfig
+	return p.TransitGatewayAttachmentConfig
 }
 
 type PatchTransitGatewayRequestType string
@@ -95,7 +95,7 @@ const (
 
 // PatchTransitGatewayRequest - Request schema for updating a transit gateway.
 type PatchTransitGatewayRequest struct {
-	PatchAwsResourceEndpointGateway *PatchAwsResourceEndpointGateway `queryParam:"inline" name:"PatchTransitGatewayRequest"`
+	PatchAwsResourceEndpointGateway *PatchAwsResourceEndpointGateway `queryParam:"inline,name=PatchTransitGatewayRequest"`
 
 	Type PatchTransitGatewayRequestType
 }

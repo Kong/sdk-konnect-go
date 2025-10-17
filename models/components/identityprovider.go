@@ -17,8 +17,8 @@ const (
 )
 
 type IdentityProviderConfig struct {
-	OIDCIdentityProviderConfig *OIDCIdentityProviderConfig `queryParam:"inline" name:"config"`
-	SAMLIdentityProviderConfig *SAMLIdentityProviderConfig `queryParam:"inline" name:"config"`
+	OIDCIdentityProviderConfig *OIDCIdentityProviderConfig `queryParam:"inline,name=config"`
+	SAMLIdentityProviderConfig *SAMLIdentityProviderConfig `queryParam:"inline,name=config"`
 
 	Type IdentityProviderConfigType
 }
@@ -102,51 +102,51 @@ func (i *IdentityProvider) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *IdentityProvider) GetID() *string {
-	if o == nil {
+func (i *IdentityProvider) GetID() *string {
+	if i == nil {
 		return nil
 	}
-	return o.ID
+	return i.ID
 }
 
-func (o *IdentityProvider) GetType() *IdentityProviderType {
-	if o == nil {
+func (i *IdentityProvider) GetType() *IdentityProviderType {
+	if i == nil {
 		return nil
 	}
-	return o.Type
+	return i.Type
 }
 
-func (o *IdentityProvider) GetEnabled() *bool {
-	if o == nil {
+func (i *IdentityProvider) GetEnabled() *bool {
+	if i == nil {
 		return nil
 	}
-	return o.Enabled
+	return i.Enabled
 }
 
-func (o *IdentityProvider) GetLoginPath() *string {
-	if o == nil {
+func (i *IdentityProvider) GetLoginPath() *string {
+	if i == nil {
 		return nil
 	}
-	return o.LoginPath
+	return i.LoginPath
 }
 
-func (o *IdentityProvider) GetConfig() *IdentityProviderConfig {
-	if o == nil {
+func (i *IdentityProvider) GetConfig() *IdentityProviderConfig {
+	if i == nil {
 		return nil
 	}
-	return o.Config
+	return i.Config
 }
 
-func (o *IdentityProvider) GetCreatedAt() *time.Time {
-	if o == nil {
+func (i *IdentityProvider) GetCreatedAt() *time.Time {
+	if i == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return i.CreatedAt
 }
 
-func (o *IdentityProvider) GetUpdatedAt() *time.Time {
-	if o == nil {
+func (i *IdentityProvider) GetUpdatedAt() *time.Time {
+	if i == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return i.UpdatedAt
 }

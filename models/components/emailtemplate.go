@@ -35,58 +35,58 @@ func (e *EmailTemplate) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EmailTemplate) GetLabel() string {
-	if o == nil {
+func (e *EmailTemplate) GetLabel() string {
+	if e == nil {
 		return ""
 	}
-	return o.Label
+	return e.Label
 }
 
-func (o *EmailTemplate) GetName() EmailTemplateName {
-	if o == nil {
+func (e *EmailTemplate) GetName() EmailTemplateName {
+	if e == nil {
 		return EmailTemplateName("")
 	}
-	return o.Name
+	return e.Name
 }
 
-func (o *EmailTemplate) GetDefaultContent() DefaultEmailTemplateContent {
-	if o == nil {
+func (e *EmailTemplate) GetDefaultContent() DefaultEmailTemplateContent {
+	if e == nil {
 		return DefaultEmailTemplateContent{}
 	}
-	return o.DefaultContent
+	return e.DefaultContent
 }
 
-func (o *EmailTemplate) GetContent() *EmailTemplateContent {
-	if o == nil {
+func (e *EmailTemplate) GetContent() *EmailTemplateContent {
+	if e == nil {
 		return nil
 	}
-	return o.Content
+	return e.Content
 }
 
-func (o *EmailTemplate) GetVariables() []EmailTemplateVariableName {
-	if o == nil {
+func (e *EmailTemplate) GetVariables() []EmailTemplateVariableName {
+	if e == nil {
 		return []EmailTemplateVariableName{}
 	}
-	return o.Variables
+	return e.Variables
 }
 
-func (o *EmailTemplate) GetEnabled() bool {
-	if o == nil {
+func (e *EmailTemplate) GetEnabled() bool {
+	if e == nil {
 		return false
 	}
-	return o.Enabled
+	return e.Enabled
 }
 
-func (o *EmailTemplate) GetCreatedAt() time.Time {
-	if o == nil {
+func (e *EmailTemplate) GetCreatedAt() time.Time {
+	if e == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return e.CreatedAt
 }
 
-func (o *EmailTemplate) GetUpdatedAt() time.Time {
-	if o == nil {
+func (e *EmailTemplate) GetUpdatedAt() time.Time {
+	if e == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return e.UpdatedAt
 }

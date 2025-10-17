@@ -13,11 +13,11 @@ type ListDevelopersByApplicationQueryParamFilter struct {
 	ID *components.StringFieldFilter `queryParam:"name=id"`
 }
 
-func (o *ListDevelopersByApplicationQueryParamFilter) GetID() *components.StringFieldFilter {
-	if o == nil {
+func (l *ListDevelopersByApplicationQueryParamFilter) GetID() *components.StringFieldFilter {
+	if l == nil {
 		return nil
 	}
-	return o.ID
+	return l.ID
 }
 
 type ListDevelopersByApplicationRequest struct {
@@ -40,46 +40,46 @@ type ListDevelopersByApplicationRequest struct {
 	Filter *ListDevelopersByApplicationQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *ListDevelopersByApplicationRequest) GetPortalID() string {
-	if o == nil {
+func (l *ListDevelopersByApplicationRequest) GetPortalID() string {
+	if l == nil {
 		return ""
 	}
-	return o.PortalID
+	return l.PortalID
 }
 
-func (o *ListDevelopersByApplicationRequest) GetApplicationID() string {
-	if o == nil {
+func (l *ListDevelopersByApplicationRequest) GetApplicationID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ApplicationID
+	return l.ApplicationID
 }
 
-func (o *ListDevelopersByApplicationRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListDevelopersByApplicationRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListDevelopersByApplicationRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListDevelopersByApplicationRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListDevelopersByApplicationRequest) GetSort() *string {
-	if o == nil {
+func (l *ListDevelopersByApplicationRequest) GetSort() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Sort
+	return l.Sort
 }
 
-func (o *ListDevelopersByApplicationRequest) GetFilter() *ListDevelopersByApplicationQueryParamFilter {
-	if o == nil {
+func (l *ListDevelopersByApplicationRequest) GetFilter() *ListDevelopersByApplicationQueryParamFilter {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
 type ListDevelopersByApplicationResponse struct {
@@ -93,30 +93,30 @@ type ListDevelopersByApplicationResponse struct {
 	ListApplicationDevelopersResponse *components.ListApplicationDevelopersResponse
 }
 
-func (o *ListDevelopersByApplicationResponse) GetContentType() string {
-	if o == nil {
+func (l *ListDevelopersByApplicationResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListDevelopersByApplicationResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListDevelopersByApplicationResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListDevelopersByApplicationResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListDevelopersByApplicationResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListDevelopersByApplicationResponse) GetListApplicationDevelopersResponse() *components.ListApplicationDevelopersResponse {
-	if o == nil {
+func (l *ListDevelopersByApplicationResponse) GetListApplicationDevelopersResponse() *components.ListApplicationDevelopersResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListApplicationDevelopersResponse
+	return l.ListApplicationDevelopersResponse
 }

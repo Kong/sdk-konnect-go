@@ -30,32 +30,32 @@ func (l *ListJwtRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListJwtRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListJwtRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListJwtRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListJwtRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListJwtRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListJwtRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListJwtRequest) GetTags() *string {
-	if o == nil {
+func (l *ListJwtRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListJwtResponseBody - A successful response listing JWTs
@@ -67,25 +67,25 @@ type ListJwtResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListJwtResponseBody) GetData() []components.Jwt {
-	if o == nil {
+func (l *ListJwtResponseBody) GetData() []components.Jwt {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListJwtResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListJwtResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListJwtResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListJwtResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListJwtResponse struct {
@@ -99,30 +99,30 @@ type ListJwtResponse struct {
 	Object *ListJwtResponseBody
 }
 
-func (o *ListJwtResponse) GetContentType() string {
-	if o == nil {
+func (l *ListJwtResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListJwtResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListJwtResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListJwtResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListJwtResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListJwtResponse) GetObject() *ListJwtResponseBody {
-	if o == nil {
+func (l *ListJwtResponse) GetObject() *ListJwtResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

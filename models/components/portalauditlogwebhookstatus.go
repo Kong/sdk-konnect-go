@@ -64,37 +64,37 @@ func (p *PortalAuditLogWebhookStatus) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PortalAuditLogWebhookStatus) GetWebhookStatus() *WebhookStatus {
-	if o == nil {
+func (p *PortalAuditLogWebhookStatus) GetWebhookStatus() *WebhookStatus {
+	if p == nil {
 		return nil
 	}
-	return o.WebhookStatus
+	return p.WebhookStatus
 }
 
-func (o *PortalAuditLogWebhookStatus) GetWebhookEnabled() *bool {
-	if o == nil {
+func (p *PortalAuditLogWebhookStatus) GetWebhookEnabled() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.WebhookEnabled
+	return p.WebhookEnabled
 }
 
-func (o *PortalAuditLogWebhookStatus) GetLastAttemptAt() *time.Time {
-	if o == nil {
+func (p *PortalAuditLogWebhookStatus) GetLastAttemptAt() *time.Time {
+	if p == nil {
 		return nil
 	}
-	return o.LastAttemptAt
+	return p.LastAttemptAt
 }
 
-func (o *PortalAuditLogWebhookStatus) GetLastResponseCode() *int64 {
-	if o == nil {
+func (p *PortalAuditLogWebhookStatus) GetLastResponseCode() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.LastResponseCode
+	return p.LastResponseCode
 }
 
-func (o *PortalAuditLogWebhookStatus) GetLastResponseMessage() *string {
-	if o == nil {
+func (p *PortalAuditLogWebhookStatus) GetLastResponseMessage() *string {
+	if p == nil {
 		return nil
 	}
-	return o.LastResponseMessage
+	return p.LastResponseMessage
 }

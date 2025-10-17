@@ -23,9 +23,9 @@ func (n *NetworkStateFieldOrEqualityFilter) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *NetworkStateFieldOrEqualityFilter) GetOeq() string {
-	if o == nil {
+func (n *NetworkStateFieldOrEqualityFilter) GetOeq() string {
+	if n == nil {
 		return ""
 	}
-	return o.Oeq
+	return n.Oeq
 }

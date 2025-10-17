@@ -16,25 +16,25 @@ type ListPortalTeamGroupMappingsRequest struct {
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 }
 
-func (o *ListPortalTeamGroupMappingsRequest) GetPortalID() string {
-	if o == nil {
+func (l *ListPortalTeamGroupMappingsRequest) GetPortalID() string {
+	if l == nil {
 		return ""
 	}
-	return o.PortalID
+	return l.PortalID
 }
 
-func (o *ListPortalTeamGroupMappingsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListPortalTeamGroupMappingsRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListPortalTeamGroupMappingsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListPortalTeamGroupMappingsRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
 type ListPortalTeamGroupMappingsResponse struct {
@@ -48,30 +48,30 @@ type ListPortalTeamGroupMappingsResponse struct {
 	PortalTeamGroupMappingResponse *components.PortalTeamGroupMappingResponse
 }
 
-func (o *ListPortalTeamGroupMappingsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListPortalTeamGroupMappingsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListPortalTeamGroupMappingsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListPortalTeamGroupMappingsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListPortalTeamGroupMappingsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListPortalTeamGroupMappingsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListPortalTeamGroupMappingsResponse) GetPortalTeamGroupMappingResponse() *components.PortalTeamGroupMappingResponse {
-	if o == nil {
+func (l *ListPortalTeamGroupMappingsResponse) GetPortalTeamGroupMappingResponse() *components.PortalTeamGroupMappingResponse {
+	if l == nil {
 		return nil
 	}
-	return o.PortalTeamGroupMappingResponse
+	return l.PortalTeamGroupMappingResponse
 }

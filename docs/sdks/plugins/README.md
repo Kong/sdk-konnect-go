@@ -49,8 +49,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -60,14 +60,14 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.Plugins.ListPluginWithConsumerGroup(ctx, operations.ListPluginWithConsumerGroupRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerGroupID: "",
-        Tags: sdkkonnectgo.String("tag1,tag2"),
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
     })
     if err != nil {
         log.Fatal(err)
@@ -108,8 +108,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -119,7 +119,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -138,18 +138,18 @@ func main() {
                 },
                 "run_on_preflight": true,
             },
-            ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
             Partials: []components.PluginWithoutParentsPartials{
                 components.PluginWithoutParentsPartials{
-                    ID: sdkkonnectgo.String("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
-                    Name: sdkkonnectgo.String("foo-partial"),
-                    Path: sdkkonnectgo.String("config.redis"),
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
                 },
                 components.PluginWithoutParentsPartials{
-                    ID: sdkkonnectgo.String("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
-                    Name: sdkkonnectgo.String("bar-partial"),
-                    Path: sdkkonnectgo.String("config.redis"),
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
                 },
             },
             Protocols: []components.PluginWithoutParentsProtocols{
@@ -199,8 +199,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -210,7 +210,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -258,8 +258,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -269,7 +269,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -317,8 +317,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -328,7 +328,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -348,18 +348,18 @@ func main() {
                 },
                 "run_on_preflight": true,
             },
-            ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
             Partials: []components.PluginWithoutParentsPartials{
                 components.PluginWithoutParentsPartials{
-                    ID: sdkkonnectgo.String("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
-                    Name: sdkkonnectgo.String("foo-partial"),
-                    Path: sdkkonnectgo.String("config.redis"),
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
                 },
                 components.PluginWithoutParentsPartials{
-                    ID: sdkkonnectgo.String("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
-                    Name: sdkkonnectgo.String("bar-partial"),
-                    Path: sdkkonnectgo.String("config.redis"),
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
                 },
             },
             Protocols: []components.PluginWithoutParentsProtocols{
@@ -409,8 +409,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -420,14 +420,14 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.Plugins.ListPluginWithConsumer(ctx, operations.ListPluginWithConsumerRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
-        Tags: sdkkonnectgo.String("tag1,tag2"),
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
     })
     if err != nil {
         log.Fatal(err)
@@ -468,8 +468,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -479,7 +479,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -498,18 +498,18 @@ func main() {
                 },
                 "run_on_preflight": true,
             },
-            ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
             Partials: []components.PluginWithoutParentsPartials{
                 components.PluginWithoutParentsPartials{
-                    ID: sdkkonnectgo.String("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
-                    Name: sdkkonnectgo.String("foo-partial"),
-                    Path: sdkkonnectgo.String("config.redis"),
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
                 },
                 components.PluginWithoutParentsPartials{
-                    ID: sdkkonnectgo.String("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
-                    Name: sdkkonnectgo.String("bar-partial"),
-                    Path: sdkkonnectgo.String("config.redis"),
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
                 },
             },
             Protocols: []components.PluginWithoutParentsProtocols{
@@ -559,8 +559,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -570,7 +570,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -618,8 +618,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -629,7 +629,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -677,8 +677,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -688,7 +688,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -708,18 +708,18 @@ func main() {
                 },
                 "run_on_preflight": true,
             },
-            ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
             Partials: []components.PluginWithoutParentsPartials{
                 components.PluginWithoutParentsPartials{
-                    ID: sdkkonnectgo.String("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
-                    Name: sdkkonnectgo.String("foo-partial"),
-                    Path: sdkkonnectgo.String("config.redis"),
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
                 },
                 components.PluginWithoutParentsPartials{
-                    ID: sdkkonnectgo.String("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
-                    Name: sdkkonnectgo.String("bar-partial"),
-                    Path: sdkkonnectgo.String("config.redis"),
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
                 },
             },
             Protocols: []components.PluginWithoutParentsProtocols{
@@ -769,8 +769,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -780,13 +780,13 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.Plugins.ListPlugin(ctx, operations.ListPluginRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        Tags: sdkkonnectgo.String("tag1,tag2"),
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
     })
     if err != nil {
         log.Fatal(err)
@@ -828,8 +828,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -838,7 +838,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -854,18 +854,18 @@ func main() {
             },
             "run_on_preflight": true,
         },
-        ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
+        ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
         Name: "key-auth",
         Partials: []components.Partials{
             components.Partials{
-                ID: sdkkonnectgo.String("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
-                Name: sdkkonnectgo.String("foo-partial"),
-                Path: sdkkonnectgo.String("config.redis"),
+                ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                Name: sdkkonnectgo.Pointer("foo-partial"),
+                Path: sdkkonnectgo.Pointer("config.redis"),
             },
             components.Partials{
-                ID: sdkkonnectgo.String("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
-                Name: sdkkonnectgo.String("bar-partial"),
-                Path: sdkkonnectgo.String("config.redis"),
+                ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                Name: sdkkonnectgo.Pointer("bar-partial"),
+                Path: sdkkonnectgo.Pointer("config.redis"),
             },
         },
         Protocols: []components.Protocols{
@@ -916,8 +916,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -926,7 +926,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -972,8 +972,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -982,7 +982,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -1028,8 +1028,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -1039,7 +1039,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -1058,18 +1058,18 @@ func main() {
                 },
                 "run_on_preflight": true,
             },
-            ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
             Partials: []components.Partials{
                 components.Partials{
-                    ID: sdkkonnectgo.String("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
-                    Name: sdkkonnectgo.String("foo-partial"),
-                    Path: sdkkonnectgo.String("config.redis"),
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
                 },
                 components.Partials{
-                    ID: sdkkonnectgo.String("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
-                    Name: sdkkonnectgo.String("bar-partial"),
-                    Path: sdkkonnectgo.String("config.redis"),
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
                 },
             },
             Protocols: []components.Protocols{
@@ -1120,8 +1120,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -1131,14 +1131,14 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.Plugins.ListPluginWithRoute(ctx, operations.ListPluginWithRouteRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
-        Tags: sdkkonnectgo.String("tag1,tag2"),
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
     })
     if err != nil {
         log.Fatal(err)
@@ -1179,8 +1179,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -1190,7 +1190,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -1209,18 +1209,18 @@ func main() {
                 },
                 "run_on_preflight": true,
             },
-            ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
             Partials: []components.PluginWithoutParentsPartials{
                 components.PluginWithoutParentsPartials{
-                    ID: sdkkonnectgo.String("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
-                    Name: sdkkonnectgo.String("foo-partial"),
-                    Path: sdkkonnectgo.String("config.redis"),
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
                 },
                 components.PluginWithoutParentsPartials{
-                    ID: sdkkonnectgo.String("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
-                    Name: sdkkonnectgo.String("bar-partial"),
-                    Path: sdkkonnectgo.String("config.redis"),
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
                 },
             },
             Protocols: []components.PluginWithoutParentsProtocols{
@@ -1270,8 +1270,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -1281,7 +1281,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -1329,8 +1329,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -1340,7 +1340,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -1388,8 +1388,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -1399,7 +1399,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -1419,18 +1419,18 @@ func main() {
                 },
                 "run_on_preflight": true,
             },
-            ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
             Partials: []components.PluginWithoutParentsPartials{
                 components.PluginWithoutParentsPartials{
-                    ID: sdkkonnectgo.String("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
-                    Name: sdkkonnectgo.String("foo-partial"),
-                    Path: sdkkonnectgo.String("config.redis"),
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
                 },
                 components.PluginWithoutParentsPartials{
-                    ID: sdkkonnectgo.String("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
-                    Name: sdkkonnectgo.String("bar-partial"),
-                    Path: sdkkonnectgo.String("config.redis"),
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
                 },
             },
             Protocols: []components.PluginWithoutParentsProtocols{
@@ -1480,8 +1480,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -1490,7 +1490,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -1535,8 +1535,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -1546,14 +1546,14 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.Plugins.ListPluginWithService(ctx, operations.ListPluginWithServiceRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
-        Tags: sdkkonnectgo.String("tag1,tag2"),
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
     })
     if err != nil {
         log.Fatal(err)
@@ -1594,8 +1594,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -1605,7 +1605,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -1624,18 +1624,18 @@ func main() {
                 },
                 "run_on_preflight": true,
             },
-            ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
             Partials: []components.PluginWithoutParentsPartials{
                 components.PluginWithoutParentsPartials{
-                    ID: sdkkonnectgo.String("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
-                    Name: sdkkonnectgo.String("foo-partial"),
-                    Path: sdkkonnectgo.String("config.redis"),
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
                 },
                 components.PluginWithoutParentsPartials{
-                    ID: sdkkonnectgo.String("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
-                    Name: sdkkonnectgo.String("bar-partial"),
-                    Path: sdkkonnectgo.String("config.redis"),
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
                 },
             },
             Protocols: []components.PluginWithoutParentsProtocols{
@@ -1685,8 +1685,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -1696,7 +1696,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -1744,8 +1744,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -1755,7 +1755,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -1803,8 +1803,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -1814,7 +1814,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -1834,18 +1834,18 @@ func main() {
                 },
                 "run_on_preflight": true,
             },
-            ID: sdkkonnectgo.String("3fd1eea1-885a-4011-b986-289943ff8177"),
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
             Name: "key-auth",
             Partials: []components.PluginWithoutParentsPartials{
                 components.PluginWithoutParentsPartials{
-                    ID: sdkkonnectgo.String("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
-                    Name: sdkkonnectgo.String("foo-partial"),
-                    Path: sdkkonnectgo.String("config.redis"),
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
                 },
                 components.PluginWithoutParentsPartials{
-                    ID: sdkkonnectgo.String("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
-                    Name: sdkkonnectgo.String("bar-partial"),
-                    Path: sdkkonnectgo.String("config.redis"),
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
                 },
             },
             Protocols: []components.PluginWithoutParentsProtocols{

@@ -32,39 +32,39 @@ func (l *ListTargetWithUpstreamRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListTargetWithUpstreamRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListTargetWithUpstreamRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListTargetWithUpstreamRequest) GetUpstreamIDForTarget() string {
-	if o == nil {
+func (l *ListTargetWithUpstreamRequest) GetUpstreamIDForTarget() string {
+	if l == nil {
 		return ""
 	}
-	return o.UpstreamIDForTarget
+	return l.UpstreamIDForTarget
 }
 
-func (o *ListTargetWithUpstreamRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListTargetWithUpstreamRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListTargetWithUpstreamRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListTargetWithUpstreamRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListTargetWithUpstreamRequest) GetTags() *string {
-	if o == nil {
+func (l *ListTargetWithUpstreamRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListTargetWithUpstreamResponseBody - A successful response listing Targets
@@ -76,25 +76,25 @@ type ListTargetWithUpstreamResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListTargetWithUpstreamResponseBody) GetData() []components.Target {
-	if o == nil {
+func (l *ListTargetWithUpstreamResponseBody) GetData() []components.Target {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListTargetWithUpstreamResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListTargetWithUpstreamResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListTargetWithUpstreamResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListTargetWithUpstreamResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListTargetWithUpstreamResponse struct {
@@ -108,30 +108,30 @@ type ListTargetWithUpstreamResponse struct {
 	Object *ListTargetWithUpstreamResponseBody
 }
 
-func (o *ListTargetWithUpstreamResponse) GetContentType() string {
-	if o == nil {
+func (l *ListTargetWithUpstreamResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListTargetWithUpstreamResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListTargetWithUpstreamResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListTargetWithUpstreamResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListTargetWithUpstreamResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListTargetWithUpstreamResponse) GetObject() *ListTargetWithUpstreamResponseBody {
-	if o == nil {
+func (l *ListTargetWithUpstreamResponse) GetObject() *ListTargetWithUpstreamResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

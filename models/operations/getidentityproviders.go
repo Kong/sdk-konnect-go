@@ -17,11 +17,11 @@ type QueryParamFilter struct {
 	Type *components.StringFieldEqualsFilter `queryParam:"name=type"`
 }
 
-func (o *QueryParamFilter) GetType() *components.StringFieldEqualsFilter {
-	if o == nil {
+func (q *QueryParamFilter) GetType() *components.StringFieldEqualsFilter {
+	if q == nil {
 		return nil
 	}
-	return o.Type
+	return q.Type
 }
 
 type GetIdentityProvidersRequest struct {
@@ -29,11 +29,11 @@ type GetIdentityProvidersRequest struct {
 	Filter *QueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *GetIdentityProvidersRequest) GetFilter() *QueryParamFilter {
-	if o == nil {
+func (g *GetIdentityProvidersRequest) GetFilter() *QueryParamFilter {
+	if g == nil {
 		return nil
 	}
-	return o.Filter
+	return g.Filter
 }
 
 type GetIdentityProvidersResponse struct {
@@ -48,30 +48,30 @@ type GetIdentityProvidersResponse struct {
 	IdentityProviders []components.IdentityProvider
 }
 
-func (o *GetIdentityProvidersResponse) GetContentType() string {
-	if o == nil {
+func (g *GetIdentityProvidersResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetIdentityProvidersResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetIdentityProvidersResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetIdentityProvidersResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetIdentityProvidersResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetIdentityProvidersResponse) GetIdentityProviders() []components.IdentityProvider {
-	if o == nil {
+func (g *GetIdentityProvidersResponse) GetIdentityProviders() []components.IdentityProvider {
+	if g == nil {
 		return nil
 	}
-	return o.IdentityProviders
+	return g.IdentityProviders
 }

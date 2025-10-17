@@ -22,30 +22,30 @@ type GetImpersonationSettingsResponse struct {
 	GetImpersonationSettingsResponse *components.GetImpersonationSettingsResponse
 }
 
-func (o *GetImpersonationSettingsResponse) GetContentType() string {
-	if o == nil {
+func (g *GetImpersonationSettingsResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetImpersonationSettingsResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetImpersonationSettingsResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetImpersonationSettingsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetImpersonationSettingsResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetImpersonationSettingsResponse) GetGetImpersonationSettingsResponse() *components.GetImpersonationSettingsResponse {
-	if o == nil {
+func (g *GetImpersonationSettingsResponse) GetGetImpersonationSettingsResponse() *components.GetImpersonationSettingsResponse {
+	if g == nil {
 		return nil
 	}
-	return o.GetImpersonationSettingsResponse
+	return g.GetImpersonationSettingsResponse
 }

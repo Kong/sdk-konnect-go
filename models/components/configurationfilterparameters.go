@@ -13,30 +13,30 @@ type ConfigurationFilterParameters struct {
 	Region *LegacyStringFieldFilter `queryParam:"name=region"`
 }
 
-func (o *ConfigurationFilterParameters) GetEventTitle() *LegacyStringFieldFilter {
-	if o == nil {
+func (c *ConfigurationFilterParameters) GetEventTitle() *LegacyStringFieldFilter {
+	if c == nil {
 		return nil
 	}
-	return o.EventTitle
+	return c.EventTitle
 }
 
-func (o *ConfigurationFilterParameters) GetEventDescription() *LegacyStringFieldFilter {
-	if o == nil {
+func (c *ConfigurationFilterParameters) GetEventDescription() *LegacyStringFieldFilter {
+	if c == nil {
 		return nil
 	}
-	return o.EventDescription
+	return c.EventDescription
 }
 
-func (o *ConfigurationFilterParameters) GetEventNamespace() *LegacyStringFieldFilter {
-	if o == nil {
+func (c *ConfigurationFilterParameters) GetEventNamespace() *LegacyStringFieldFilter {
+	if c == nil {
 		return nil
 	}
-	return o.EventNamespace
+	return c.EventNamespace
 }
 
-func (o *ConfigurationFilterParameters) GetRegion() *LegacyStringFieldFilter {
-	if o == nil {
+func (c *ConfigurationFilterParameters) GetRegion() *LegacyStringFieldFilter {
+	if c == nil {
 		return nil
 	}
-	return o.Region
+	return c.Region
 }

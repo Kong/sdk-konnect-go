@@ -24,11 +24,11 @@ func (d *DcrProvider) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DcrProvider) GetID() string {
-	if o == nil {
+func (d *DcrProvider) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
 // Portal - Information about the portal the application is in.
@@ -48,11 +48,11 @@ func (p *Portal) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Portal) GetID() string {
-	if o == nil {
+func (p *Portal) GetID() string {
+	if p == nil {
 		return ""
 	}
-	return o.ID
+	return p.ID
 }
 
 type ClientCredentialsApplication struct {
@@ -85,85 +85,85 @@ func (c ClientCredentialsApplication) MarshalJSON() ([]byte, error) {
 }
 
 func (c *ClientCredentialsApplication) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "created_at", "updated_at", "name", "client_id", "registration_count", "dcr_provider", "portal", "auth_strategy", "granted_scopes"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "created_at", "updated_at", "name", "client_id", "registration_count", "portal", "auth_strategy"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ClientCredentialsApplication) GetID() string {
-	if o == nil {
+func (c *ClientCredentialsApplication) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *ClientCredentialsApplication) GetCreatedAt() time.Time {
-	if o == nil {
+func (c *ClientCredentialsApplication) GetCreatedAt() time.Time {
+	if c == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return c.CreatedAt
 }
 
-func (o *ClientCredentialsApplication) GetUpdatedAt() time.Time {
-	if o == nil {
+func (c *ClientCredentialsApplication) GetUpdatedAt() time.Time {
+	if c == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return c.UpdatedAt
 }
 
-func (o *ClientCredentialsApplication) GetName() string {
-	if o == nil {
+func (c *ClientCredentialsApplication) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *ClientCredentialsApplication) GetDescription() *string {
-	if o == nil {
+func (c *ClientCredentialsApplication) GetDescription() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Description
+	return c.Description
 }
 
-func (o *ClientCredentialsApplication) GetClientID() string {
-	if o == nil {
+func (c *ClientCredentialsApplication) GetClientID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ClientID
+	return c.ClientID
 }
 
-func (o *ClientCredentialsApplication) GetRegistrationCount() float64 {
-	if o == nil {
+func (c *ClientCredentialsApplication) GetRegistrationCount() float64 {
+	if c == nil {
 		return 0.0
 	}
-	return o.RegistrationCount
+	return c.RegistrationCount
 }
 
-func (o *ClientCredentialsApplication) GetDcrProvider() *DcrProvider {
-	if o == nil {
+func (c *ClientCredentialsApplication) GetDcrProvider() *DcrProvider {
+	if c == nil {
 		return nil
 	}
-	return o.DcrProvider
+	return c.DcrProvider
 }
 
-func (o *ClientCredentialsApplication) GetPortal() Portal {
-	if o == nil {
+func (c *ClientCredentialsApplication) GetPortal() Portal {
+	if c == nil {
 		return Portal{}
 	}
-	return o.Portal
+	return c.Portal
 }
 
-func (o *ClientCredentialsApplication) GetAuthStrategy() AuthStrategyClientCredentials {
-	if o == nil {
+func (c *ClientCredentialsApplication) GetAuthStrategy() AuthStrategyClientCredentials {
+	if c == nil {
 		return AuthStrategyClientCredentials{}
 	}
-	return o.AuthStrategy
+	return c.AuthStrategy
 }
 
-func (o *ClientCredentialsApplication) GetGrantedScopes() []string {
-	if o == nil {
+func (c *ClientCredentialsApplication) GetGrantedScopes() []string {
+	if c == nil {
 		return nil
 	}
-	return o.GrantedScopes
+	return c.GrantedScopes
 }

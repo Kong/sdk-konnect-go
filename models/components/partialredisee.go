@@ -26,18 +26,18 @@ func (c *ClusterNodes) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ClusterNodes) GetIP() *string {
-	if o == nil {
+func (c *ClusterNodes) GetIP() *string {
+	if c == nil {
 		return nil
 	}
-	return o.IP
+	return c.IP
 }
 
-func (o *ClusterNodes) GetPort() *int64 {
-	if o == nil {
+func (c *ClusterNodes) GetPort() *int64 {
+	if c == nil {
 		return nil
 	}
-	return o.Port
+	return c.Port
 }
 
 type SentinelNodes struct {
@@ -58,18 +58,18 @@ func (s *SentinelNodes) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SentinelNodes) GetHost() *string {
-	if o == nil {
+func (s *SentinelNodes) GetHost() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Host
+	return s.Host
 }
 
-func (o *SentinelNodes) GetPort() *int64 {
-	if o == nil {
+func (s *SentinelNodes) GetPort() *int64 {
+	if s == nil {
 		return nil
 	}
-	return o.Port
+	return s.Port
 }
 
 // SentinelRole - Sentinel role to use for Redis connections when the `redis` strategy is defined. Defining this value implies using Redis Sentinel.
@@ -158,151 +158,151 @@ func (p *PartialRedisEeConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PartialRedisEeConfig) GetClusterMaxRedirections() *int64 {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetClusterMaxRedirections() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.ClusterMaxRedirections
+	return p.ClusterMaxRedirections
 }
 
-func (o *PartialRedisEeConfig) GetClusterNodes() []ClusterNodes {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetClusterNodes() []ClusterNodes {
+	if p == nil {
 		return nil
 	}
-	return o.ClusterNodes
+	return p.ClusterNodes
 }
 
-func (o *PartialRedisEeConfig) GetConnectTimeout() *int64 {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetConnectTimeout() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.ConnectTimeout
+	return p.ConnectTimeout
 }
 
-func (o *PartialRedisEeConfig) GetConnectionIsProxied() *bool {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetConnectionIsProxied() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.ConnectionIsProxied
+	return p.ConnectionIsProxied
 }
 
-func (o *PartialRedisEeConfig) GetDatabase() *int64 {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetDatabase() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Database
+	return p.Database
 }
 
-func (o *PartialRedisEeConfig) GetHost() *string {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetHost() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Host
+	return p.Host
 }
 
-func (o *PartialRedisEeConfig) GetKeepaliveBacklog() *int64 {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetKeepaliveBacklog() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.KeepaliveBacklog
+	return p.KeepaliveBacklog
 }
 
-func (o *PartialRedisEeConfig) GetKeepalivePoolSize() *int64 {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetKeepalivePoolSize() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.KeepalivePoolSize
+	return p.KeepalivePoolSize
 }
 
-func (o *PartialRedisEeConfig) GetPassword() *string {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetPassword() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Password
+	return p.Password
 }
 
-func (o *PartialRedisEeConfig) GetPort() *int64 {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetPort() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.Port
+	return p.Port
 }
 
-func (o *PartialRedisEeConfig) GetReadTimeout() *int64 {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetReadTimeout() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.ReadTimeout
+	return p.ReadTimeout
 }
 
-func (o *PartialRedisEeConfig) GetSendTimeout() *int64 {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetSendTimeout() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.SendTimeout
+	return p.SendTimeout
 }
 
-func (o *PartialRedisEeConfig) GetSentinelMaster() *string {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetSentinelMaster() *string {
+	if p == nil {
 		return nil
 	}
-	return o.SentinelMaster
+	return p.SentinelMaster
 }
 
-func (o *PartialRedisEeConfig) GetSentinelNodes() []SentinelNodes {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetSentinelNodes() []SentinelNodes {
+	if p == nil {
 		return nil
 	}
-	return o.SentinelNodes
+	return p.SentinelNodes
 }
 
-func (o *PartialRedisEeConfig) GetSentinelPassword() *string {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetSentinelPassword() *string {
+	if p == nil {
 		return nil
 	}
-	return o.SentinelPassword
+	return p.SentinelPassword
 }
 
-func (o *PartialRedisEeConfig) GetSentinelRole() *SentinelRole {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetSentinelRole() *SentinelRole {
+	if p == nil {
 		return nil
 	}
-	return o.SentinelRole
+	return p.SentinelRole
 }
 
-func (o *PartialRedisEeConfig) GetSentinelUsername() *string {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetSentinelUsername() *string {
+	if p == nil {
 		return nil
 	}
-	return o.SentinelUsername
+	return p.SentinelUsername
 }
 
-func (o *PartialRedisEeConfig) GetServerName() *string {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetServerName() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ServerName
+	return p.ServerName
 }
 
-func (o *PartialRedisEeConfig) GetSsl() *bool {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetSsl() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Ssl
+	return p.Ssl
 }
 
-func (o *PartialRedisEeConfig) GetSslVerify() *bool {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetSslVerify() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.SslVerify
+	return p.SslVerify
 }
 
-func (o *PartialRedisEeConfig) GetUsername() *string {
-	if o == nil {
+func (p *PartialRedisEeConfig) GetUsername() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Username
+	return p.Username
 }
 
 type PartialRedisEeType string
@@ -354,51 +354,51 @@ func (p *PartialRedisEe) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PartialRedisEe) GetConfig() PartialRedisEeConfig {
-	if o == nil {
+func (p *PartialRedisEe) GetConfig() PartialRedisEeConfig {
+	if p == nil {
 		return PartialRedisEeConfig{}
 	}
-	return o.Config
+	return p.Config
 }
 
-func (o *PartialRedisEe) GetCreatedAt() *int64 {
-	if o == nil {
+func (p *PartialRedisEe) GetCreatedAt() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return p.CreatedAt
 }
 
-func (o *PartialRedisEe) GetID() *string {
-	if o == nil {
+func (p *PartialRedisEe) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PartialRedisEe) GetName() *string {
-	if o == nil {
+func (p *PartialRedisEe) GetName() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PartialRedisEe) GetTags() []string {
-	if o == nil {
+func (p *PartialRedisEe) GetTags() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Tags
+	return p.Tags
 }
 
-func (o *PartialRedisEe) GetType() PartialRedisEeType {
-	if o == nil {
+func (p *PartialRedisEe) GetType() PartialRedisEeType {
+	if p == nil {
 		return PartialRedisEeType("")
 	}
-	return o.Type
+	return p.Type
 }
 
-func (o *PartialRedisEe) GetUpdatedAt() *int64 {
-	if o == nil {
+func (p *PartialRedisEe) GetUpdatedAt() *int64 {
+	if p == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return p.UpdatedAt
 }

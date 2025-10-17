@@ -18,32 +18,32 @@ type ListPortalDeveloperTeamsRequest struct {
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 }
 
-func (o *ListPortalDeveloperTeamsRequest) GetDeveloperID() string {
-	if o == nil {
+func (l *ListPortalDeveloperTeamsRequest) GetDeveloperID() string {
+	if l == nil {
 		return ""
 	}
-	return o.DeveloperID
+	return l.DeveloperID
 }
 
-func (o *ListPortalDeveloperTeamsRequest) GetPortalID() string {
-	if o == nil {
+func (l *ListPortalDeveloperTeamsRequest) GetPortalID() string {
+	if l == nil {
 		return ""
 	}
-	return o.PortalID
+	return l.PortalID
 }
 
-func (o *ListPortalDeveloperTeamsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListPortalDeveloperTeamsRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListPortalDeveloperTeamsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListPortalDeveloperTeamsRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
 type ListPortalDeveloperTeamsResponse struct {
@@ -57,30 +57,30 @@ type ListPortalDeveloperTeamsResponse struct {
 	ListPortalTeamsResponse *components.ListPortalTeamsResponse
 }
 
-func (o *ListPortalDeveloperTeamsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListPortalDeveloperTeamsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListPortalDeveloperTeamsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListPortalDeveloperTeamsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListPortalDeveloperTeamsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListPortalDeveloperTeamsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListPortalDeveloperTeamsResponse) GetListPortalTeamsResponse() *components.ListPortalTeamsResponse {
-	if o == nil {
+func (l *ListPortalDeveloperTeamsResponse) GetListPortalTeamsResponse() *components.ListPortalTeamsResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListPortalTeamsResponse
+	return l.ListPortalTeamsResponse
 }

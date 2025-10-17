@@ -67,7 +67,7 @@ func (s *Pages) CreateDefaultContent(ctx context.Context, portalID string, opts 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-default-content",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -335,7 +335,7 @@ func (s *Pages) ListPortalPages(ctx context.Context, request operations.ListPort
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-portal-pages",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -612,7 +612,7 @@ func (s *Pages) CreatePortalPage(ctx context.Context, portalID string, createPor
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-portal-page",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreatePortalPageRequest", "json", `request:"mediaType=application/json"`)
@@ -913,7 +913,7 @@ func (s *Pages) GetPortalPage(ctx context.Context, portalID string, pageID strin
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-page",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1160,7 +1160,7 @@ func (s *Pages) UpdatePortalPage(ctx context.Context, request operations.UpdateP
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-portal-page",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdatePortalPageRequest", "json", `request:"mediaType=application/json"`)
@@ -1461,7 +1461,7 @@ func (s *Pages) DeletePortalPage(ctx context.Context, portalID string, pageID st
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-portal-page",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1709,7 +1709,7 @@ func (s *Pages) MovePortalPages(ctx context.Context, request operations.MovePort
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "move-portal-pages",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "MovePageRequestPayload", "json", `request:"mediaType=application/json"`)

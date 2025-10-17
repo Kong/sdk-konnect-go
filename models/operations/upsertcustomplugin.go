@@ -16,25 +16,25 @@ type UpsertCustomPluginRequest struct {
 	CustomPlugin components.CustomPlugin `request:"mediaType=application/json"`
 }
 
-func (o *UpsertCustomPluginRequest) GetCustomPluginID() string {
-	if o == nil {
+func (u *UpsertCustomPluginRequest) GetCustomPluginID() string {
+	if u == nil {
 		return ""
 	}
-	return o.CustomPluginID
+	return u.CustomPluginID
 }
 
-func (o *UpsertCustomPluginRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpsertCustomPluginRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpsertCustomPluginRequest) GetCustomPlugin() components.CustomPlugin {
-	if o == nil {
+func (u *UpsertCustomPluginRequest) GetCustomPlugin() components.CustomPlugin {
+	if u == nil {
 		return components.CustomPlugin{}
 	}
-	return o.CustomPlugin
+	return u.CustomPlugin
 }
 
 type UpsertCustomPluginResponse struct {
@@ -48,30 +48,30 @@ type UpsertCustomPluginResponse struct {
 	CustomPlugin *components.CustomPlugin
 }
 
-func (o *UpsertCustomPluginResponse) GetContentType() string {
-	if o == nil {
+func (u *UpsertCustomPluginResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpsertCustomPluginResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpsertCustomPluginResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpsertCustomPluginResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpsertCustomPluginResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpsertCustomPluginResponse) GetCustomPlugin() *components.CustomPlugin {
-	if o == nil {
+func (u *UpsertCustomPluginResponse) GetCustomPlugin() *components.CustomPlugin {
+	if u == nil {
 		return nil
 	}
-	return o.CustomPlugin
+	return u.CustomPlugin
 }

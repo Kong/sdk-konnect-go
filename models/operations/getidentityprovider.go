@@ -16,11 +16,11 @@ type GetIdentityProviderRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *GetIdentityProviderRequest) GetID() string {
-	if o == nil {
+func (g *GetIdentityProviderRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
 type GetIdentityProviderResponse struct {
@@ -35,30 +35,30 @@ type GetIdentityProviderResponse struct {
 	IdentityProvider *components.IdentityProvider
 }
 
-func (o *GetIdentityProviderResponse) GetContentType() string {
-	if o == nil {
+func (g *GetIdentityProviderResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetIdentityProviderResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetIdentityProviderResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetIdentityProviderResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetIdentityProviderResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetIdentityProviderResponse) GetIdentityProvider() *components.IdentityProvider {
-	if o == nil {
+func (g *GetIdentityProviderResponse) GetIdentityProvider() *components.IdentityProvider {
+	if g == nil {
 		return nil
 	}
-	return o.IdentityProvider
+	return g.IdentityProvider
 }

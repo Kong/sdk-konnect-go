@@ -31,37 +31,37 @@ func (u *UpdateAuthenticationSettings) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdateAuthenticationSettings) GetBasicAuthEnabled() *bool {
-	if o == nil {
+func (u *UpdateAuthenticationSettings) GetBasicAuthEnabled() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.BasicAuthEnabled
+	return u.BasicAuthEnabled
 }
 
-func (o *UpdateAuthenticationSettings) GetOidcAuthEnabled() *bool {
-	if o == nil {
+func (u *UpdateAuthenticationSettings) GetOidcAuthEnabled() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.OidcAuthEnabled
+	return u.OidcAuthEnabled
 }
 
-func (o *UpdateAuthenticationSettings) GetSamlAuthEnabled() *bool {
-	if o == nil {
+func (u *UpdateAuthenticationSettings) GetSamlAuthEnabled() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.SamlAuthEnabled
+	return u.SamlAuthEnabled
 }
 
-func (o *UpdateAuthenticationSettings) GetIdpMappingEnabled() *bool {
-	if o == nil {
+func (u *UpdateAuthenticationSettings) GetIdpMappingEnabled() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.IdpMappingEnabled
+	return u.IdpMappingEnabled
 }
 
-func (o *UpdateAuthenticationSettings) GetKonnectMappingEnabled() *bool {
-	if o == nil {
+func (u *UpdateAuthenticationSettings) GetKonnectMappingEnabled() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.KonnectMappingEnabled
+	return u.KonnectMappingEnabled
 }

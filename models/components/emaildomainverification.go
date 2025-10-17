@@ -27,23 +27,23 @@ func (e *EmailDomainVerification) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EmailDomainVerification) GetStatus() EmailVerificationStatus {
-	if o == nil {
+func (e *EmailDomainVerification) GetStatus() EmailVerificationStatus {
+	if e == nil {
 		return EmailVerificationStatus("")
 	}
-	return o.Status
+	return e.Status
 }
 
-func (o *EmailDomainVerification) GetLastTimeChecked() time.Time {
-	if o == nil {
+func (e *EmailDomainVerification) GetLastTimeChecked() time.Time {
+	if e == nil {
 		return time.Time{}
 	}
-	return o.LastTimeChecked
+	return e.LastTimeChecked
 }
 
-func (o *EmailDomainVerification) GetLastTimeSuccess() time.Time {
-	if o == nil {
+func (e *EmailDomainVerification) GetLastTimeSuccess() time.Time {
+	if e == nil {
 		return time.Time{}
 	}
-	return o.LastTimeSuccess
+	return e.LastTimeSuccess
 }

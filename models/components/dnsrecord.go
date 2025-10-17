@@ -8,23 +8,23 @@ type DNSRecord struct {
 	Value string `json:"value"`
 }
 
-func (o *DNSRecord) GetType() string {
-	if o == nil {
+func (d *DNSRecord) GetType() string {
+	if d == nil {
 		return ""
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DNSRecord) GetName() string {
-	if o == nil {
+func (d *DNSRecord) GetName() string {
+	if d == nil {
 		return ""
 	}
-	return o.Name
+	return d.Name
 }
 
-func (o *DNSRecord) GetValue() string {
-	if o == nil {
+func (d *DNSRecord) GetValue() string {
+	if d == nil {
 		return ""
 	}
-	return o.Value
+	return d.Value
 }

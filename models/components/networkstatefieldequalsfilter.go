@@ -31,8 +31,8 @@ const (
 
 // NetworkStateFieldEqualsFilter - Filter a network state by exact match.
 type NetworkStateFieldEqualsFilter struct {
-	NetworkState                      *NetworkState                      `queryParam:"inline" name:"NetworkStateFieldEqualsFilter"`
-	NetworkStateFieldEqualsComparison *NetworkStateFieldEqualsComparison `queryParam:"inline" name:"NetworkStateFieldEqualsFilter"`
+	NetworkState                      *NetworkState                      `queryParam:"inline,name=NetworkStateFieldEqualsFilter"`
+	NetworkStateFieldEqualsComparison *NetworkStateFieldEqualsComparison `queryParam:"inline,name=NetworkStateFieldEqualsFilter"`
 
 	Type NetworkStateFieldEqualsFilterType
 }
@@ -57,17 +57,17 @@ func CreateNetworkStateFieldEqualsFilterNetworkStateFieldEqualsComparison(networ
 
 func (u *NetworkStateFieldEqualsFilter) UnmarshalJSON(data []byte) error {
 
-	var networkStateFieldEqualsComparison NetworkStateFieldEqualsComparison = NetworkStateFieldEqualsComparison{}
-	if err := utils.UnmarshalJSON(data, &networkStateFieldEqualsComparison, "", true, nil); err == nil {
-		u.NetworkStateFieldEqualsComparison = &networkStateFieldEqualsComparison
-		u.Type = NetworkStateFieldEqualsFilterTypeNetworkStateFieldEqualsComparison
-		return nil
-	}
-
 	var networkState NetworkState = NetworkState("")
 	if err := utils.UnmarshalJSON(data, &networkState, "", true, nil); err == nil {
 		u.NetworkState = &networkState
 		u.Type = NetworkStateFieldEqualsFilterTypeNetworkState
+		return nil
+	}
+
+	var networkStateFieldEqualsComparison NetworkStateFieldEqualsComparison = NetworkStateFieldEqualsComparison{}
+	if err := utils.UnmarshalJSON(data, &networkStateFieldEqualsComparison, "", true, nil); err == nil {
+		u.NetworkStateFieldEqualsComparison = &networkStateFieldEqualsComparison
+		u.Type = NetworkStateFieldEqualsFilterTypeNetworkStateFieldEqualsComparison
 		return nil
 	}
 

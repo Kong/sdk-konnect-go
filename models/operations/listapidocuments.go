@@ -14,18 +14,18 @@ type ListAPIDocumentsRequest struct {
 	Filter *components.APIDocumentFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *ListAPIDocumentsRequest) GetAPIID() string {
-	if o == nil {
+func (l *ListAPIDocumentsRequest) GetAPIID() string {
+	if l == nil {
 		return ""
 	}
-	return o.APIID
+	return l.APIID
 }
 
-func (o *ListAPIDocumentsRequest) GetFilter() *components.APIDocumentFilterParameters {
-	if o == nil {
+func (l *ListAPIDocumentsRequest) GetFilter() *components.APIDocumentFilterParameters {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
 type ListAPIDocumentsResponse struct {
@@ -39,30 +39,30 @@ type ListAPIDocumentsResponse struct {
 	ListAPIDocumentResponse *components.ListAPIDocumentResponse
 }
 
-func (o *ListAPIDocumentsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListAPIDocumentsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListAPIDocumentsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListAPIDocumentsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListAPIDocumentsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListAPIDocumentsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListAPIDocumentsResponse) GetListAPIDocumentResponse() *components.ListAPIDocumentResponse {
-	if o == nil {
+func (l *ListAPIDocumentsResponse) GetListAPIDocumentResponse() *components.ListAPIDocumentResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListAPIDocumentResponse
+	return l.ListAPIDocumentResponse
 }

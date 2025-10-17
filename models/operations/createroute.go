@@ -14,18 +14,18 @@ type CreateRouteRequest struct {
 	Route components.Route `request:"mediaType=application/json"`
 }
 
-func (o *CreateRouteRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreateRouteRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreateRouteRequest) GetRoute() components.Route {
-	if o == nil {
+func (c *CreateRouteRequest) GetRoute() components.Route {
+	if c == nil {
 		return components.Route{}
 	}
-	return o.Route
+	return c.Route
 }
 
 type CreateRouteResponse struct {
@@ -39,30 +39,30 @@ type CreateRouteResponse struct {
 	Route *components.Route
 }
 
-func (o *CreateRouteResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateRouteResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateRouteResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateRouteResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateRouteResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateRouteResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateRouteResponse) GetRoute() *components.Route {
-	if o == nil {
+func (c *CreateRouteResponse) GetRoute() *components.Route {
+	if c == nil {
 		return nil
 	}
-	return o.Route
+	return c.Route
 }

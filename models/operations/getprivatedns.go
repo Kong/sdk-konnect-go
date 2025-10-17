@@ -18,18 +18,18 @@ type GetPrivateDNSRequest struct {
 	PrivateDNSID string `pathParam:"style=simple,explode=false,name=privateDnsId"`
 }
 
-func (o *GetPrivateDNSRequest) GetNetworkID() string {
-	if o == nil {
+func (g *GetPrivateDNSRequest) GetNetworkID() string {
+	if g == nil {
 		return ""
 	}
-	return o.NetworkID
+	return g.NetworkID
 }
 
-func (o *GetPrivateDNSRequest) GetPrivateDNSID() string {
-	if o == nil {
+func (g *GetPrivateDNSRequest) GetPrivateDNSID() string {
+	if g == nil {
 		return ""
 	}
-	return o.PrivateDNSID
+	return g.PrivateDNSID
 }
 
 type GetPrivateDNSResponse struct {
@@ -43,30 +43,30 @@ type GetPrivateDNSResponse struct {
 	PrivateDNSResponse *components.PrivateDNSResponse
 }
 
-func (o *GetPrivateDNSResponse) GetContentType() string {
-	if o == nil {
+func (g *GetPrivateDNSResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetPrivateDNSResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetPrivateDNSResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetPrivateDNSResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetPrivateDNSResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetPrivateDNSResponse) GetPrivateDNSResponse() *components.PrivateDNSResponse {
-	if o == nil {
+func (g *GetPrivateDNSResponse) GetPrivateDNSResponse() *components.PrivateDNSResponse {
+	if g == nil {
 		return nil
 	}
-	return o.PrivateDNSResponse
+	return g.PrivateDNSResponse
 }

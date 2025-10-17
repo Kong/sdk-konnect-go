@@ -30,32 +30,32 @@ func (l *ListKeySetRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListKeySetRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListKeySetRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListKeySetRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListKeySetRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListKeySetRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListKeySetRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListKeySetRequest) GetTags() *string {
-	if o == nil {
+func (l *ListKeySetRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListKeySetResponseBody - A successful response listing KeySets
@@ -67,25 +67,25 @@ type ListKeySetResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListKeySetResponseBody) GetData() []components.KeySet {
-	if o == nil {
+func (l *ListKeySetResponseBody) GetData() []components.KeySet {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListKeySetResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListKeySetResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListKeySetResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListKeySetResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListKeySetResponse struct {
@@ -99,30 +99,30 @@ type ListKeySetResponse struct {
 	Object *ListKeySetResponseBody
 }
 
-func (o *ListKeySetResponse) GetContentType() string {
-	if o == nil {
+func (l *ListKeySetResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListKeySetResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListKeySetResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListKeySetResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListKeySetResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListKeySetResponse) GetObject() *ListKeySetResponseBody {
-	if o == nil {
+func (l *ListKeySetResponse) GetObject() *ListKeySetResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

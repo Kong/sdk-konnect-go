@@ -13,18 +13,18 @@ type DeletePortalSnippetRequest struct {
 	SnippetID string `pathParam:"style=simple,explode=false,name=snippetId"`
 }
 
-func (o *DeletePortalSnippetRequest) GetPortalID() string {
-	if o == nil {
+func (d *DeletePortalSnippetRequest) GetPortalID() string {
+	if d == nil {
 		return ""
 	}
-	return o.PortalID
+	return d.PortalID
 }
 
-func (o *DeletePortalSnippetRequest) GetSnippetID() string {
-	if o == nil {
+func (d *DeletePortalSnippetRequest) GetSnippetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.SnippetID
+	return d.SnippetID
 }
 
 type DeletePortalSnippetResponse struct {
@@ -36,23 +36,23 @@ type DeletePortalSnippetResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeletePortalSnippetResponse) GetContentType() string {
-	if o == nil {
+func (d *DeletePortalSnippetResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeletePortalSnippetResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeletePortalSnippetResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeletePortalSnippetResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeletePortalSnippetResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

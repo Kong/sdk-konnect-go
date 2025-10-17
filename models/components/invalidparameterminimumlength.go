@@ -70,37 +70,37 @@ func (i *InvalidParameterMinimumLength) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *InvalidParameterMinimumLength) GetField() string {
-	if o == nil {
+func (i *InvalidParameterMinimumLength) GetField() string {
+	if i == nil {
 		return ""
 	}
-	return o.Field
+	return i.Field
 }
 
-func (o *InvalidParameterMinimumLength) GetRule() Rule {
-	if o == nil {
+func (i *InvalidParameterMinimumLength) GetRule() Rule {
+	if i == nil {
 		return Rule("")
 	}
-	return o.Rule
+	return i.Rule
 }
 
-func (o *InvalidParameterMinimumLength) GetMinimum() int64 {
-	if o == nil {
+func (i *InvalidParameterMinimumLength) GetMinimum() int64 {
+	if i == nil {
 		return 0
 	}
-	return o.Minimum
+	return i.Minimum
 }
 
-func (o *InvalidParameterMinimumLength) GetSource() *string {
-	if o == nil {
+func (i *InvalidParameterMinimumLength) GetSource() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Source
+	return i.Source
 }
 
-func (o *InvalidParameterMinimumLength) GetReason() string {
-	if o == nil {
+func (i *InvalidParameterMinimumLength) GetReason() string {
+	if i == nil {
 		return ""
 	}
-	return o.Reason
+	return i.Reason
 }

@@ -13,11 +13,11 @@ type ListAPIVersionResponseSpec struct {
 	Type *APISpecType `json:"type,omitempty"`
 }
 
-func (o *ListAPIVersionResponseSpec) GetType() *APISpecType {
-	if o == nil {
+func (l *ListAPIVersionResponseSpec) GetType() *APISpecType {
+	if l == nil {
 		return nil
 	}
-	return o.Type
+	return l.Type
 }
 
 type ListAPIVersionResponseAPIVersionSummary struct {
@@ -43,39 +43,39 @@ func (l *ListAPIVersionResponseAPIVersionSummary) UnmarshalJSON(data []byte) err
 	return nil
 }
 
-func (o *ListAPIVersionResponseAPIVersionSummary) GetID() string {
-	if o == nil {
+func (l *ListAPIVersionResponseAPIVersionSummary) GetID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ID
+	return l.ID
 }
 
-func (o *ListAPIVersionResponseAPIVersionSummary) GetVersion() *string {
-	if o == nil {
+func (l *ListAPIVersionResponseAPIVersionSummary) GetVersion() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Version
+	return l.Version
 }
 
-func (o *ListAPIVersionResponseAPIVersionSummary) GetSpec() *ListAPIVersionResponseSpec {
-	if o == nil {
+func (l *ListAPIVersionResponseAPIVersionSummary) GetSpec() *ListAPIVersionResponseSpec {
+	if l == nil {
 		return nil
 	}
-	return o.Spec
+	return l.Spec
 }
 
-func (o *ListAPIVersionResponseAPIVersionSummary) GetCreatedAt() time.Time {
-	if o == nil {
+func (l *ListAPIVersionResponseAPIVersionSummary) GetCreatedAt() time.Time {
+	if l == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return l.CreatedAt
 }
 
-func (o *ListAPIVersionResponseAPIVersionSummary) GetUpdatedAt() time.Time {
-	if o == nil {
+func (l *ListAPIVersionResponseAPIVersionSummary) GetUpdatedAt() time.Time {
+	if l == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return l.UpdatedAt
 }
 
 // ListAPIVersionResponse - List of API specifications (OpenAPI or AsyncAPI)
@@ -85,16 +85,16 @@ type ListAPIVersionResponse struct {
 	Data []ListAPIVersionResponseAPIVersionSummary `json:"data"`
 }
 
-func (o *ListAPIVersionResponse) GetMeta() PaginatedMeta {
-	if o == nil {
+func (l *ListAPIVersionResponse) GetMeta() PaginatedMeta {
+	if l == nil {
 		return PaginatedMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListAPIVersionResponse) GetData() []ListAPIVersionResponseAPIVersionSummary {
-	if o == nil {
+func (l *ListAPIVersionResponse) GetData() []ListAPIVersionResponseAPIVersionSummary {
+	if l == nil {
 		return []ListAPIVersionResponseAPIVersionSummary{}
 	}
-	return o.Data
+	return l.Data
 }

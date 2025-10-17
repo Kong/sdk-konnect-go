@@ -54,11 +54,11 @@ func (a *AppAuthStrategyOpenIDConnectResponseConfigs) UnmarshalJSON(data []byte)
 	return nil
 }
 
-func (o *AppAuthStrategyOpenIDConnectResponseConfigs) GetOpenidConnect() AppAuthStrategyConfigOpenIDConnect {
-	if o == nil {
+func (a *AppAuthStrategyOpenIDConnectResponseConfigs) GetOpenidConnect() AppAuthStrategyConfigOpenIDConnect {
+	if a == nil {
 		return AppAuthStrategyConfigOpenIDConnect{}
 	}
-	return o.OpenidConnect
+	return a.OpenidConnect
 }
 
 type AppAuthStrategyOpenIDConnectResponseDcrProvider struct {
@@ -83,32 +83,32 @@ func (a *AppAuthStrategyOpenIDConnectResponseDcrProvider) UnmarshalJSON(data []b
 	return nil
 }
 
-func (o *AppAuthStrategyOpenIDConnectResponseDcrProvider) GetID() string {
-	if o == nil {
+func (a *AppAuthStrategyOpenIDConnectResponseDcrProvider) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *AppAuthStrategyOpenIDConnectResponseDcrProvider) GetName() string {
-	if o == nil {
+func (a *AppAuthStrategyOpenIDConnectResponseDcrProvider) GetName() string {
+	if a == nil {
 		return ""
 	}
-	return o.Name
+	return a.Name
 }
 
-func (o *AppAuthStrategyOpenIDConnectResponseDcrProvider) GetDisplayName() *string {
-	if o == nil {
+func (a *AppAuthStrategyOpenIDConnectResponseDcrProvider) GetDisplayName() *string {
+	if a == nil {
 		return nil
 	}
-	return o.DisplayName
+	return a.DisplayName
 }
 
-func (o *AppAuthStrategyOpenIDConnectResponseDcrProvider) GetProviderType() DcrProviderType {
-	if o == nil {
+func (a *AppAuthStrategyOpenIDConnectResponseDcrProvider) GetProviderType() DcrProviderType {
+	if a == nil {
 		return DcrProviderType("")
 	}
-	return o.ProviderType
+	return a.ProviderType
 }
 
 // AppAuthStrategyOpenIDConnectResponse - Response payload from creating an OIDC Application Auth Strategy
@@ -143,80 +143,80 @@ func (a AppAuthStrategyOpenIDConnectResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AppAuthStrategyOpenIDConnectResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name", "display_name", "strategy_type", "configs", "active", "dcr_provider", "labels", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name", "display_name", "strategy_type", "configs", "active", "labels", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *AppAuthStrategyOpenIDConnectResponse) GetID() string {
-	if o == nil {
+func (a *AppAuthStrategyOpenIDConnectResponse) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *AppAuthStrategyOpenIDConnectResponse) GetName() string {
-	if o == nil {
+func (a *AppAuthStrategyOpenIDConnectResponse) GetName() string {
+	if a == nil {
 		return ""
 	}
-	return o.Name
+	return a.Name
 }
 
-func (o *AppAuthStrategyOpenIDConnectResponse) GetDisplayName() string {
-	if o == nil {
+func (a *AppAuthStrategyOpenIDConnectResponse) GetDisplayName() string {
+	if a == nil {
 		return ""
 	}
-	return o.DisplayName
+	return a.DisplayName
 }
 
-func (o *AppAuthStrategyOpenIDConnectResponse) GetStrategyType() AppAuthStrategyOpenIDConnectResponseStrategyType {
-	if o == nil {
+func (a *AppAuthStrategyOpenIDConnectResponse) GetStrategyType() AppAuthStrategyOpenIDConnectResponseStrategyType {
+	if a == nil {
 		return AppAuthStrategyOpenIDConnectResponseStrategyType("")
 	}
-	return o.StrategyType
+	return a.StrategyType
 }
 
-func (o *AppAuthStrategyOpenIDConnectResponse) GetConfigs() AppAuthStrategyOpenIDConnectResponseConfigs {
-	if o == nil {
+func (a *AppAuthStrategyOpenIDConnectResponse) GetConfigs() AppAuthStrategyOpenIDConnectResponseConfigs {
+	if a == nil {
 		return AppAuthStrategyOpenIDConnectResponseConfigs{}
 	}
-	return o.Configs
+	return a.Configs
 }
 
-func (o *AppAuthStrategyOpenIDConnectResponse) GetActive() bool {
-	if o == nil {
+func (a *AppAuthStrategyOpenIDConnectResponse) GetActive() bool {
+	if a == nil {
 		return false
 	}
-	return o.Active
+	return a.Active
 }
 
-func (o *AppAuthStrategyOpenIDConnectResponse) GetDcrProvider() *AppAuthStrategyOpenIDConnectResponseDcrProvider {
-	if o == nil {
+func (a *AppAuthStrategyOpenIDConnectResponse) GetDcrProvider() *AppAuthStrategyOpenIDConnectResponseDcrProvider {
+	if a == nil {
 		return nil
 	}
-	return o.DcrProvider
+	return a.DcrProvider
 }
 
-func (o *AppAuthStrategyOpenIDConnectResponse) GetLabels() map[string]string {
-	if o == nil {
+func (a *AppAuthStrategyOpenIDConnectResponse) GetLabels() map[string]string {
+	if a == nil {
 		return map[string]string{}
 	}
-	return o.Labels
+	return a.Labels
 }
 
-func (o *AppAuthStrategyOpenIDConnectResponse) GetCreatedAt() time.Time {
-	if o == nil {
+func (a *AppAuthStrategyOpenIDConnectResponse) GetCreatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return a.CreatedAt
 }
 
-func (o *AppAuthStrategyOpenIDConnectResponse) GetUpdatedAt() time.Time {
-	if o == nil {
+func (a *AppAuthStrategyOpenIDConnectResponse) GetUpdatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return a.UpdatedAt
 }
 
 type AppAuthStrategyKeyAuthResponseStrategyType string
@@ -262,11 +262,11 @@ func (a *AppAuthStrategyKeyAuthResponseConfigs) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (o *AppAuthStrategyKeyAuthResponseConfigs) GetKeyAuth() AppAuthStrategyConfigKeyAuth {
-	if o == nil {
+func (a *AppAuthStrategyKeyAuthResponseConfigs) GetKeyAuth() AppAuthStrategyConfigKeyAuth {
+	if a == nil {
 		return AppAuthStrategyConfigKeyAuth{}
 	}
-	return o.KeyAuth
+	return a.KeyAuth
 }
 
 type AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider struct {
@@ -291,32 +291,32 @@ func (a *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider)
 	return nil
 }
 
-func (o *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider) GetID() string {
-	if o == nil {
+func (a *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider) GetName() string {
-	if o == nil {
+func (a *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider) GetName() string {
+	if a == nil {
 		return ""
 	}
-	return o.Name
+	return a.Name
 }
 
-func (o *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider) GetDisplayName() *string {
-	if o == nil {
+func (a *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider) GetDisplayName() *string {
+	if a == nil {
 		return nil
 	}
-	return o.DisplayName
+	return a.DisplayName
 }
 
-func (o *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider) GetProviderType() DcrProviderType {
-	if o == nil {
+func (a *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider) GetProviderType() DcrProviderType {
+	if a == nil {
 		return DcrProviderType("")
 	}
-	return o.ProviderType
+	return a.ProviderType
 }
 
 // AppAuthStrategyKeyAuthResponse - Response payload from creating or updating a Key Auth Application Auth Strategy
@@ -351,80 +351,80 @@ func (a AppAuthStrategyKeyAuthResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AppAuthStrategyKeyAuthResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name", "display_name", "strategy_type", "configs", "active", "dcr_provider", "labels", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name", "display_name", "strategy_type", "configs", "active", "labels", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *AppAuthStrategyKeyAuthResponse) GetID() string {
-	if o == nil {
+func (a *AppAuthStrategyKeyAuthResponse) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *AppAuthStrategyKeyAuthResponse) GetName() string {
-	if o == nil {
+func (a *AppAuthStrategyKeyAuthResponse) GetName() string {
+	if a == nil {
 		return ""
 	}
-	return o.Name
+	return a.Name
 }
 
-func (o *AppAuthStrategyKeyAuthResponse) GetDisplayName() string {
-	if o == nil {
+func (a *AppAuthStrategyKeyAuthResponse) GetDisplayName() string {
+	if a == nil {
 		return ""
 	}
-	return o.DisplayName
+	return a.DisplayName
 }
 
-func (o *AppAuthStrategyKeyAuthResponse) GetStrategyType() AppAuthStrategyKeyAuthResponseStrategyType {
-	if o == nil {
+func (a *AppAuthStrategyKeyAuthResponse) GetStrategyType() AppAuthStrategyKeyAuthResponseStrategyType {
+	if a == nil {
 		return AppAuthStrategyKeyAuthResponseStrategyType("")
 	}
-	return o.StrategyType
+	return a.StrategyType
 }
 
-func (o *AppAuthStrategyKeyAuthResponse) GetConfigs() AppAuthStrategyKeyAuthResponseConfigs {
-	if o == nil {
+func (a *AppAuthStrategyKeyAuthResponse) GetConfigs() AppAuthStrategyKeyAuthResponseConfigs {
+	if a == nil {
 		return AppAuthStrategyKeyAuthResponseConfigs{}
 	}
-	return o.Configs
+	return a.Configs
 }
 
-func (o *AppAuthStrategyKeyAuthResponse) GetActive() bool {
-	if o == nil {
+func (a *AppAuthStrategyKeyAuthResponse) GetActive() bool {
+	if a == nil {
 		return false
 	}
-	return o.Active
+	return a.Active
 }
 
-func (o *AppAuthStrategyKeyAuthResponse) GetDcrProvider() *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider {
-	if o == nil {
+func (a *AppAuthStrategyKeyAuthResponse) GetDcrProvider() *AppAuthStrategyKeyAuthResponseCreateAppAuthStrategyResponseDcrProvider {
+	if a == nil {
 		return nil
 	}
-	return o.DcrProvider
+	return a.DcrProvider
 }
 
-func (o *AppAuthStrategyKeyAuthResponse) GetLabels() map[string]string {
-	if o == nil {
+func (a *AppAuthStrategyKeyAuthResponse) GetLabels() map[string]string {
+	if a == nil {
 		return map[string]string{}
 	}
-	return o.Labels
+	return a.Labels
 }
 
-func (o *AppAuthStrategyKeyAuthResponse) GetCreatedAt() time.Time {
-	if o == nil {
+func (a *AppAuthStrategyKeyAuthResponse) GetCreatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return a.CreatedAt
 }
 
-func (o *AppAuthStrategyKeyAuthResponse) GetUpdatedAt() time.Time {
-	if o == nil {
+func (a *AppAuthStrategyKeyAuthResponse) GetUpdatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return a.UpdatedAt
 }
 
 type CreateAppAuthStrategyResponseType string
@@ -436,8 +436,8 @@ const (
 
 // CreateAppAuthStrategyResponse - A set of plugin configurations that represent how the gateway will perform authentication and authorization for a Product Version. Called “Auth Strategy” for short in the context of portals/applications. The plugins are synced to any Gateway Service that is currently linked or becomes linked to the Product Version.
 type CreateAppAuthStrategyResponse struct {
-	AppAuthStrategyKeyAuthResponse       *AppAuthStrategyKeyAuthResponse       `queryParam:"inline" name:"CreateAppAuthStrategyResponse"`
-	AppAuthStrategyOpenIDConnectResponse *AppAuthStrategyOpenIDConnectResponse `queryParam:"inline" name:"CreateAppAuthStrategyResponse"`
+	AppAuthStrategyKeyAuthResponse       *AppAuthStrategyKeyAuthResponse       `queryParam:"inline,name=CreateAppAuthStrategyResponse"`
+	AppAuthStrategyOpenIDConnectResponse *AppAuthStrategyOpenIDConnectResponse `queryParam:"inline,name=CreateAppAuthStrategyResponse"`
 
 	Type CreateAppAuthStrategyResponseType
 }

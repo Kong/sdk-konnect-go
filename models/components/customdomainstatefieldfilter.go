@@ -17,9 +17,9 @@ const (
 )
 
 type CustomDomainStateFieldFilter struct {
-	CustomDomainStateFieldEqualsFilter     *CustomDomainStateFieldEqualsFilter     `queryParam:"inline" name:"CustomDomainStateFieldFilter"`
-	CustomDomainStateFieldNotEqualsFilter  *CustomDomainStateFieldNotEqualsFilter  `queryParam:"inline" name:"CustomDomainStateFieldFilter"`
-	CustomDomainStateFieldOrEqualityFilter *CustomDomainStateFieldOrEqualityFilter `queryParam:"inline" name:"CustomDomainStateFieldFilter"`
+	CustomDomainStateFieldEqualsFilter     *CustomDomainStateFieldEqualsFilter     `queryParam:"inline,name=CustomDomainStateFieldFilter"`
+	CustomDomainStateFieldNotEqualsFilter  *CustomDomainStateFieldNotEqualsFilter  `queryParam:"inline,name=CustomDomainStateFieldFilter"`
+	CustomDomainStateFieldOrEqualityFilter *CustomDomainStateFieldOrEqualityFilter `queryParam:"inline,name=CustomDomainStateFieldFilter"`
 
 	Type CustomDomainStateFieldFilterType
 }
@@ -60,17 +60,17 @@ func (u *CustomDomainStateFieldFilter) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var customDomainStateFieldNotEqualsFilter CustomDomainStateFieldNotEqualsFilter = CustomDomainStateFieldNotEqualsFilter{}
-	if err := utils.UnmarshalJSON(data, &customDomainStateFieldNotEqualsFilter, "", true, nil); err == nil {
-		u.CustomDomainStateFieldNotEqualsFilter = &customDomainStateFieldNotEqualsFilter
-		u.Type = CustomDomainStateFieldFilterTypeCustomDomainStateFieldNotEqualsFilter
-		return nil
-	}
-
 	var customDomainStateFieldEqualsFilter CustomDomainStateFieldEqualsFilter = CustomDomainStateFieldEqualsFilter{}
 	if err := utils.UnmarshalJSON(data, &customDomainStateFieldEqualsFilter, "", true, nil); err == nil {
 		u.CustomDomainStateFieldEqualsFilter = &customDomainStateFieldEqualsFilter
 		u.Type = CustomDomainStateFieldFilterTypeCustomDomainStateFieldEqualsFilter
+		return nil
+	}
+
+	var customDomainStateFieldNotEqualsFilter CustomDomainStateFieldNotEqualsFilter = CustomDomainStateFieldNotEqualsFilter{}
+	if err := utils.UnmarshalJSON(data, &customDomainStateFieldNotEqualsFilter, "", true, nil); err == nil {
+		u.CustomDomainStateFieldNotEqualsFilter = &customDomainStateFieldNotEqualsFilter
+		u.Type = CustomDomainStateFieldFilterTypeCustomDomainStateFieldNotEqualsFilter
 		return nil
 	}
 
