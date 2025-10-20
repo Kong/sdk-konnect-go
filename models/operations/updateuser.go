@@ -18,18 +18,18 @@ type UpdateUserRequest struct {
 	UpdateUser *components.UpdateUser `request:"mediaType=application/json"`
 }
 
-func (o *UpdateUserRequest) GetUserID() string {
-	if o == nil {
+func (u *UpdateUserRequest) GetUserID() string {
+	if u == nil {
 		return ""
 	}
-	return o.UserID
+	return u.UserID
 }
 
-func (o *UpdateUserRequest) GetUpdateUser() *components.UpdateUser {
-	if o == nil {
+func (u *UpdateUserRequest) GetUpdateUser() *components.UpdateUser {
+	if u == nil {
 		return nil
 	}
-	return o.UpdateUser
+	return u.UpdateUser
 }
 
 type UpdateUserResponse struct {
@@ -43,30 +43,30 @@ type UpdateUserResponse struct {
 	User *components.User
 }
 
-func (o *UpdateUserResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateUserResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateUserResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateUserResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateUserResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateUserResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateUserResponse) GetUser() *components.User {
-	if o == nil {
+func (u *UpdateUserResponse) GetUser() *components.User {
+	if u == nil {
 		return nil
 	}
-	return o.User
+	return u.User
 }

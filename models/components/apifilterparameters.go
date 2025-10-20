@@ -17,51 +17,51 @@ type APIFilterParameters struct {
 	UpdatedAt *DateTimeFieldFilter `queryParam:"name=updated_at"`
 }
 
-func (o *APIFilterParameters) GetID() *UUIDFieldFilter {
-	if o == nil {
+func (a *APIFilterParameters) GetID() *UUIDFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *APIFilterParameters) GetName() *StringFieldFilter {
-	if o == nil {
+func (a *APIFilterParameters) GetName() *StringFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.Name
+	return a.Name
 }
 
-func (o *APIFilterParameters) GetVersion() *StringFieldFilter {
-	if o == nil {
+func (a *APIFilterParameters) GetVersion() *StringFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.Version
+	return a.Version
 }
 
-func (o *APIFilterParameters) GetLabels() *LabelsFieldFilter {
-	if o == nil {
+func (a *APIFilterParameters) GetLabels() *LabelsFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.Labels
+	return a.Labels
 }
 
-func (o *APIFilterParameters) GetAttributes() *AttributesFieldFilter {
-	if o == nil {
+func (a *APIFilterParameters) GetAttributes() *AttributesFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.Attributes
+	return a.Attributes
 }
 
-func (o *APIFilterParameters) GetCreatedAt() *DateTimeFieldFilter {
-	if o == nil {
+func (a *APIFilterParameters) GetCreatedAt() *DateTimeFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return a.CreatedAt
 }
 
-func (o *APIFilterParameters) GetUpdatedAt() *DateTimeFieldFilter {
-	if o == nil {
+func (a *APIFilterParameters) GetUpdatedAt() *DateTimeFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return a.UpdatedAt
 }

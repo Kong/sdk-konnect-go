@@ -17,11 +17,11 @@ type ListTeamsQueryParamFilter struct {
 	Name *components.LegacyStringFieldFilter `queryParam:"name=name"`
 }
 
-func (o *ListTeamsQueryParamFilter) GetName() *components.LegacyStringFieldFilter {
-	if o == nil {
+func (l *ListTeamsQueryParamFilter) GetName() *components.LegacyStringFieldFilter {
+	if l == nil {
 		return nil
 	}
-	return o.Name
+	return l.Name
 }
 
 type ListTeamsRequest struct {
@@ -33,25 +33,25 @@ type ListTeamsRequest struct {
 	Filter *ListTeamsQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *ListTeamsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListTeamsRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListTeamsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListTeamsRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListTeamsRequest) GetFilter() *ListTeamsQueryParamFilter {
-	if o == nil {
+func (l *ListTeamsRequest) GetFilter() *ListTeamsQueryParamFilter {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
 type ListTeamsResponse struct {
@@ -65,30 +65,30 @@ type ListTeamsResponse struct {
 	TeamCollection *components.TeamCollection
 }
 
-func (o *ListTeamsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListTeamsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListTeamsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListTeamsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListTeamsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListTeamsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListTeamsResponse) GetTeamCollection() *components.TeamCollection {
-	if o == nil {
+func (l *ListTeamsResponse) GetTeamCollection() *components.TeamCollection {
+	if l == nil {
 		return nil
 	}
-	return o.TeamCollection
+	return l.TeamCollection
 }

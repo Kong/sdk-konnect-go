@@ -23,9 +23,9 @@ func (u *UpdateImpersonationSettingsRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdateImpersonationSettingsRequest) GetEnabled() *bool {
-	if o == nil {
+func (u *UpdateImpersonationSettingsRequest) GetEnabled() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Enabled
+	return u.Enabled
 }

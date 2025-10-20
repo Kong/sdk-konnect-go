@@ -16,25 +16,25 @@ type GetPluginWithConsumerRequest struct {
 	PluginID string `pathParam:"style=simple,explode=false,name=PluginId"`
 }
 
-func (o *GetPluginWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetPluginWithConsumerRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
-func (o *GetPluginWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (g *GetPluginWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if g == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return g.ConsumerIDForNestedEntities
 }
 
-func (o *GetPluginWithConsumerRequest) GetPluginID() string {
-	if o == nil {
+func (g *GetPluginWithConsumerRequest) GetPluginID() string {
+	if g == nil {
 		return ""
 	}
-	return o.PluginID
+	return g.PluginID
 }
 
 type GetPluginWithConsumerResponse struct {
@@ -48,30 +48,30 @@ type GetPluginWithConsumerResponse struct {
 	Plugin *components.Plugin
 }
 
-func (o *GetPluginWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (g *GetPluginWithConsumerResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetPluginWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetPluginWithConsumerResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetPluginWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetPluginWithConsumerResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetPluginWithConsumerResponse) GetPlugin() *components.Plugin {
-	if o == nil {
+func (g *GetPluginWithConsumerResponse) GetPlugin() *components.Plugin {
+	if g == nil {
 		return nil
 	}
-	return o.Plugin
+	return g.Plugin
 }

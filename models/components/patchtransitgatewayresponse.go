@@ -16,7 +16,7 @@ const (
 
 // PatchTransitGatewayResponse - Response format for updating a transit gateway.
 type PatchTransitGatewayResponse struct {
-	AwsResourceEndpointGatewayResponse *AwsResourceEndpointGatewayResponse `queryParam:"inline" name:"PatchTransitGatewayResponse"`
+	AwsResourceEndpointGatewayResponse *AwsResourceEndpointGatewayResponse `queryParam:"inline,name=PatchTransitGatewayResponse"`
 
 	Type PatchTransitGatewayResponseType
 }

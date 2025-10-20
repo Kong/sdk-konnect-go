@@ -15,25 +15,25 @@ type DeleteConfigStoreSecretRequest struct {
 	Key string `pathParam:"style=simple,explode=false,name=key"`
 }
 
-func (o *DeleteConfigStoreSecretRequest) GetControlPlaneID() string {
-	if o == nil {
+func (d *DeleteConfigStoreSecretRequest) GetControlPlaneID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return d.ControlPlaneID
 }
 
-func (o *DeleteConfigStoreSecretRequest) GetConfigStoreID() string {
-	if o == nil {
+func (d *DeleteConfigStoreSecretRequest) GetConfigStoreID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ConfigStoreID
+	return d.ConfigStoreID
 }
 
-func (o *DeleteConfigStoreSecretRequest) GetKey() string {
-	if o == nil {
+func (d *DeleteConfigStoreSecretRequest) GetKey() string {
+	if d == nil {
 		return ""
 	}
-	return o.Key
+	return d.Key
 }
 
 type DeleteConfigStoreSecretResponse struct {
@@ -45,23 +45,23 @@ type DeleteConfigStoreSecretResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteConfigStoreSecretResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteConfigStoreSecretResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteConfigStoreSecretResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteConfigStoreSecretResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteConfigStoreSecretResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteConfigStoreSecretResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

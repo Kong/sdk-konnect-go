@@ -40,7 +40,7 @@ func main() {
 
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithSecurity(components.Security{
-			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+			PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
 
@@ -108,7 +108,7 @@ func main() {
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithServerIndex(3),
 		sdkkonnectgo.WithSecurity(components.Security{
-			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+			PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
 
@@ -142,7 +142,7 @@ func main() {
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithServerURL("https://au.api.konghq.com"),
 		sdkkonnectgo.WithSecurity(components.Security{
-			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+			PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
 
@@ -247,7 +247,7 @@ func main() {
 
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithSecurity(components.Security{
-			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+			PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
 
@@ -279,9 +279,70 @@ For more information about the API: [Documentation for Kong Gateway and its APIs
   * [Server Selection](#server-selection)
   * [Custom HTTP Client](#custom-http-client)
   * [Authentication](#authentication)
+  * [Pagination](#pagination)
   * [Retries](#retries)
 
 <!-- End Table of Contents [toc] -->
+
+<!-- Start Pagination [pagination] -->
+## Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
+returned response object will have a `Next` method that can be called to pull down the next group of results. If the
+return value of `Next` is `nil`, then there are no more pages to be fetched.
+
+Here's an example of one such pagination call:
+```go
+package main
+
+import (
+	"context"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+	ctx := context.Background()
+
+	s := sdkkonnectgo.New(
+		sdkkonnectgo.WithSecurity(components.Security{
+			PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+		}),
+	)
+
+	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
+		PageSize:   sdkkonnectgo.Pointer[int64](10),
+		PageNumber: sdkkonnectgo.Pointer[int64](1),
+		Filter: &components.ControlPlaneFilterParameters{
+			CloudGateway: sdkkonnectgo.Pointer(true),
+		},
+		FilterLabels: sdkkonnectgo.Pointer("key:value,existCheck"),
+		Sort:         sdkkonnectgo.Pointer("created_at desc"),
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+	if res.ListControlPlanesResponse != nil {
+		for {
+			// handle items
+
+			res, err = res.Next()
+
+			if err != nil {
+				// handle error
+			}
+
+			if res == nil {
+				break
+			}
+		}
+	}
+}
+
+```
+<!-- End Pagination [pagination] -->
 
 <!-- Start Retries [retries] -->
 ## Retries
@@ -306,7 +367,7 @@ func main() {
 
 	s := sdkkonnectgo.New(
 		sdkkonnectgo.WithSecurity(components.Security{
-			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+			PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
 
@@ -359,7 +420,7 @@ func main() {
 				RetryConnectionErrors: false,
 			}),
 		sdkkonnectgo.WithSecurity(components.Security{
-			PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+			PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
 		}),
 	)
 

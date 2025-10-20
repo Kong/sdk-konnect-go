@@ -8,16 +8,16 @@ type ListDomains struct {
 	Meta PaginatedMeta `json:"meta"`
 }
 
-func (o *ListDomains) GetData() []EmailDomain {
-	if o == nil {
+func (l *ListDomains) GetData() []EmailDomain {
+	if l == nil {
 		return []EmailDomain{}
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListDomains) GetMeta() PaginatedMeta {
-	if o == nil {
+func (l *ListDomains) GetMeta() PaginatedMeta {
+	if l == nil {
 		return PaginatedMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }

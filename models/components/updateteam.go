@@ -32,23 +32,23 @@ func (u *UpdateTeam) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdateTeam) GetName() *string {
-	if o == nil {
+func (u *UpdateTeam) GetName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UpdateTeam) GetDescription() *string {
-	if o == nil {
+func (u *UpdateTeam) GetDescription() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Description
+	return u.Description
 }
 
-func (o *UpdateTeam) GetLabels() map[string]*string {
-	if o == nil {
+func (u *UpdateTeam) GetLabels() map[string]*string {
+	if u == nil {
 		return nil
 	}
-	return o.Labels
+	return u.Labels
 }

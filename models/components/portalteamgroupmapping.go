@@ -25,16 +25,16 @@ func (p *PortalTeamGroupMapping) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PortalTeamGroupMapping) GetTeamID() *string {
-	if o == nil {
+func (p *PortalTeamGroupMapping) GetTeamID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.TeamID
+	return p.TeamID
 }
 
-func (o *PortalTeamGroupMapping) GetGroups() []string {
-	if o == nil {
+func (p *PortalTeamGroupMapping) GetGroups() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Groups
+	return p.Groups
 }

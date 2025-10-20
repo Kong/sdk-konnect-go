@@ -17,18 +17,18 @@ type DeleteTeamsTeamIDSystemAccountsAccountIDRequest struct {
 	AccountID string `pathParam:"style=simple,explode=false,name=accountId"`
 }
 
-func (o *DeleteTeamsTeamIDSystemAccountsAccountIDRequest) GetTeamID() string {
-	if o == nil {
+func (d *DeleteTeamsTeamIDSystemAccountsAccountIDRequest) GetTeamID() string {
+	if d == nil {
 		return ""
 	}
-	return o.TeamID
+	return d.TeamID
 }
 
-func (o *DeleteTeamsTeamIDSystemAccountsAccountIDRequest) GetAccountID() string {
-	if o == nil {
+func (d *DeleteTeamsTeamIDSystemAccountsAccountIDRequest) GetAccountID() string {
+	if d == nil {
 		return ""
 	}
-	return o.AccountID
+	return d.AccountID
 }
 
 type DeleteTeamsTeamIDSystemAccountsAccountIDResponse struct {
@@ -40,23 +40,23 @@ type DeleteTeamsTeamIDSystemAccountsAccountIDResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteTeamsTeamIDSystemAccountsAccountIDResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteTeamsTeamIDSystemAccountsAccountIDResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteTeamsTeamIDSystemAccountsAccountIDResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteTeamsTeamIDSystemAccountsAccountIDResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteTeamsTeamIDSystemAccountsAccountIDResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteTeamsTeamIDSystemAccountsAccountIDResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

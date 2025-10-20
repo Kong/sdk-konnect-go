@@ -32,39 +32,39 @@ func (l *ListConsumersForConsumerGroupRequest) UnmarshalJSON(data []byte) error 
 	return nil
 }
 
-func (o *ListConsumersForConsumerGroupRequest) GetConsumerGroupID() string {
-	if o == nil {
+func (l *ListConsumersForConsumerGroupRequest) GetConsumerGroupID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ConsumerGroupID
+	return l.ConsumerGroupID
 }
 
-func (o *ListConsumersForConsumerGroupRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListConsumersForConsumerGroupRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListConsumersForConsumerGroupRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListConsumersForConsumerGroupRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListConsumersForConsumerGroupRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListConsumersForConsumerGroupRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListConsumersForConsumerGroupRequest) GetTags() *string {
-	if o == nil {
+func (l *ListConsumersForConsumerGroupRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListConsumersForConsumerGroupResponseBody - A successful response listing of consumers
@@ -76,25 +76,25 @@ type ListConsumersForConsumerGroupResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListConsumersForConsumerGroupResponseBody) GetData() []components.Consumer {
-	if o == nil {
+func (l *ListConsumersForConsumerGroupResponseBody) GetData() []components.Consumer {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListConsumersForConsumerGroupResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListConsumersForConsumerGroupResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListConsumersForConsumerGroupResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListConsumersForConsumerGroupResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListConsumersForConsumerGroupResponse struct {
@@ -108,30 +108,30 @@ type ListConsumersForConsumerGroupResponse struct {
 	Object *ListConsumersForConsumerGroupResponseBody
 }
 
-func (o *ListConsumersForConsumerGroupResponse) GetContentType() string {
-	if o == nil {
+func (l *ListConsumersForConsumerGroupResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListConsumersForConsumerGroupResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListConsumersForConsumerGroupResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListConsumersForConsumerGroupResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListConsumersForConsumerGroupResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListConsumersForConsumerGroupResponse) GetObject() *ListConsumersForConsumerGroupResponseBody {
-	if o == nil {
+func (l *ListConsumersForConsumerGroupResponse) GetObject() *ListConsumersForConsumerGroupResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

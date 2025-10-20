@@ -17,8 +17,8 @@ const (
 
 // Configs - JSON-B object containing the configuration for the OIDC strategy under the key 'openid-connect' or the configuration for the Key Auth strategy under the key 'key-auth'
 type Configs struct {
-	UpdateAppAuthStrategyRequestOpenIDConnect *UpdateAppAuthStrategyRequestOpenIDConnect `queryParam:"inline" name:"configs"`
-	UpdateAppAuthStrategyRequestKeyAuth       *UpdateAppAuthStrategyRequestKeyAuth       `queryParam:"inline" name:"configs"`
+	UpdateAppAuthStrategyRequestOpenIDConnect *UpdateAppAuthStrategyRequestOpenIDConnect `queryParam:"inline,name=configs"`
+	UpdateAppAuthStrategyRequestKeyAuth       *UpdateAppAuthStrategyRequestKeyAuth       `queryParam:"inline,name=configs"`
 
 	Type ConfigsType
 }
@@ -103,37 +103,37 @@ func (u *UpdateAppAuthStrategyRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdateAppAuthStrategyRequest) GetName() *string {
-	if o == nil {
+func (u *UpdateAppAuthStrategyRequest) GetName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UpdateAppAuthStrategyRequest) GetDisplayName() *string {
-	if o == nil {
+func (u *UpdateAppAuthStrategyRequest) GetDisplayName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.DisplayName
+	return u.DisplayName
 }
 
-func (o *UpdateAppAuthStrategyRequest) GetLabels() map[string]*string {
-	if o == nil {
+func (u *UpdateAppAuthStrategyRequest) GetLabels() map[string]*string {
+	if u == nil {
 		return nil
 	}
-	return o.Labels
+	return u.Labels
 }
 
-func (o *UpdateAppAuthStrategyRequest) GetDcrProviderID() *string {
-	if o == nil {
+func (u *UpdateAppAuthStrategyRequest) GetDcrProviderID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.DcrProviderID
+	return u.DcrProviderID
 }
 
-func (o *UpdateAppAuthStrategyRequest) GetConfigs() *Configs {
-	if o == nil {
+func (u *UpdateAppAuthStrategyRequest) GetConfigs() *Configs {
+	if u == nil {
 		return nil
 	}
-	return o.Configs
+	return u.Configs
 }

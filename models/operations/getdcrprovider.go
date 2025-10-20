@@ -12,11 +12,11 @@ type GetDcrProviderRequest struct {
 	DcrProviderID string `pathParam:"style=simple,explode=false,name=dcrProviderId"`
 }
 
-func (o *GetDcrProviderRequest) GetDcrProviderID() string {
-	if o == nil {
+func (g *GetDcrProviderRequest) GetDcrProviderID() string {
+	if g == nil {
 		return ""
 	}
-	return o.DcrProviderID
+	return g.DcrProviderID
 }
 
 type GetDcrProviderResponse struct {
@@ -30,64 +30,64 @@ type GetDcrProviderResponse struct {
 	DcrProviderResponse *components.DcrProviderResponse
 }
 
-func (o *GetDcrProviderResponse) GetContentType() string {
-	if o == nil {
+func (g *GetDcrProviderResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetDcrProviderResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetDcrProviderResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetDcrProviderResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetDcrProviderResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetDcrProviderResponse) GetDcrProviderResponse() *components.DcrProviderResponse {
-	if o == nil {
+func (g *GetDcrProviderResponse) GetDcrProviderResponse() *components.DcrProviderResponse {
+	if g == nil {
 		return nil
 	}
-	return o.DcrProviderResponse
+	return g.DcrProviderResponse
 }
 
-func (o *GetDcrProviderResponse) GetDcrProviderResponseDcrProviderAuth0() *components.DCRProviderAuth0DCRProviderAuth0 {
-	if v := o.GetDcrProviderResponse(); v != nil {
+func (g *GetDcrProviderResponse) GetDcrProviderResponseDcrProviderAuth0() *components.DCRProviderAuth0DCRProviderAuth0 {
+	if v := g.GetDcrProviderResponse(); v != nil {
 		return v.DCRProviderAuth0DCRProviderAuth0
 	}
 	return nil
 }
 
-func (o *GetDcrProviderResponse) GetDcrProviderResponseDcrProviderAzureAd() *components.DCRProviderAzureADDCRProviderAzureAD {
-	if v := o.GetDcrProviderResponse(); v != nil {
+func (g *GetDcrProviderResponse) GetDcrProviderResponseDcrProviderAzureAd() *components.DCRProviderAzureADDCRProviderAzureAD {
+	if v := g.GetDcrProviderResponse(); v != nil {
 		return v.DCRProviderAzureADDCRProviderAzureAD
 	}
 	return nil
 }
 
-func (o *GetDcrProviderResponse) GetDcrProviderResponseDcrProviderCurity() *components.DCRProviderCurityDCRProviderCurity {
-	if v := o.GetDcrProviderResponse(); v != nil {
+func (g *GetDcrProviderResponse) GetDcrProviderResponseDcrProviderCurity() *components.DCRProviderCurityDCRProviderCurity {
+	if v := g.GetDcrProviderResponse(); v != nil {
 		return v.DCRProviderCurityDCRProviderCurity
 	}
 	return nil
 }
 
-func (o *GetDcrProviderResponse) GetDcrProviderResponseDcrProviderOkta() *components.DCRProviderOKTADCRProviderOKTA {
-	if v := o.GetDcrProviderResponse(); v != nil {
+func (g *GetDcrProviderResponse) GetDcrProviderResponseDcrProviderOkta() *components.DCRProviderOKTADCRProviderOKTA {
+	if v := g.GetDcrProviderResponse(); v != nil {
 		return v.DCRProviderOKTADCRProviderOKTA
 	}
 	return nil
 }
 
-func (o *GetDcrProviderResponse) GetDcrProviderResponseDcrProviderHTTP() *components.DCRProviderHTTPDCRProviderHTTP {
-	if v := o.GetDcrProviderResponse(); v != nil {
+func (g *GetDcrProviderResponse) GetDcrProviderResponseDcrProviderHTTP() *components.DCRProviderHTTPDCRProviderHTTP {
+	if v := g.GetDcrProviderResponse(); v != nil {
 		return v.DCRProviderHTTPDCRProviderHTTP
 	}
 	return nil

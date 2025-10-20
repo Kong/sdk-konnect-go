@@ -30,32 +30,32 @@ func (g *GetNodesNodeIDRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *GetNodesNodeIDRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetNodesNodeIDRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
-func (o *GetNodesNodeIDRequest) GetNodeID() string {
-	if o == nil {
+func (g *GetNodesNodeIDRequest) GetNodeID() string {
+	if g == nil {
 		return ""
 	}
-	return o.NodeID
+	return g.NodeID
 }
 
-func (o *GetNodesNodeIDRequest) GetSize() *int64 {
-	if o == nil {
+func (g *GetNodesNodeIDRequest) GetSize() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.Size
+	return g.Size
 }
 
-func (o *GetNodesNodeIDRequest) GetTags() *string {
-	if o == nil {
+func (g *GetNodesNodeIDRequest) GetTags() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Tags
+	return g.Tags
 }
 
 type GetNodesNodeIDResponse struct {
@@ -69,30 +69,30 @@ type GetNodesNodeIDResponse struct {
 	GetNode *components.GetNode
 }
 
-func (o *GetNodesNodeIDResponse) GetContentType() string {
-	if o == nil {
+func (g *GetNodesNodeIDResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetNodesNodeIDResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetNodesNodeIDResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetNodesNodeIDResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetNodesNodeIDResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetNodesNodeIDResponse) GetGetNode() *components.GetNode {
-	if o == nil {
+func (g *GetNodesNodeIDResponse) GetGetNode() *components.GetNode {
+	if g == nil {
 		return nil
 	}
-	return o.GetNode
+	return g.GetNode
 }

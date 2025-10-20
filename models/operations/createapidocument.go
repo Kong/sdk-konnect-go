@@ -13,18 +13,18 @@ type CreateAPIDocumentRequest struct {
 	CreateAPIDocumentRequest components.CreateAPIDocumentRequest `request:"mediaType=application/json"`
 }
 
-func (o *CreateAPIDocumentRequest) GetAPIID() string {
-	if o == nil {
+func (c *CreateAPIDocumentRequest) GetAPIID() string {
+	if c == nil {
 		return ""
 	}
-	return o.APIID
+	return c.APIID
 }
 
-func (o *CreateAPIDocumentRequest) GetCreateAPIDocumentRequest() components.CreateAPIDocumentRequest {
-	if o == nil {
+func (c *CreateAPIDocumentRequest) GetCreateAPIDocumentRequest() components.CreateAPIDocumentRequest {
+	if c == nil {
 		return components.CreateAPIDocumentRequest{}
 	}
-	return o.CreateAPIDocumentRequest
+	return c.CreateAPIDocumentRequest
 }
 
 type CreateAPIDocumentResponse struct {
@@ -38,30 +38,30 @@ type CreateAPIDocumentResponse struct {
 	APIDocumentResponse *components.APIDocumentResponse
 }
 
-func (o *CreateAPIDocumentResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateAPIDocumentResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateAPIDocumentResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateAPIDocumentResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateAPIDocumentResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateAPIDocumentResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateAPIDocumentResponse) GetAPIDocumentResponse() *components.APIDocumentResponse {
-	if o == nil {
+func (c *CreateAPIDocumentResponse) GetAPIDocumentResponse() *components.APIDocumentResponse {
+	if c == nil {
 		return nil
 	}
-	return o.APIDocumentResponse
+	return c.APIDocumentResponse
 }

@@ -32,8 +32,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -42,7 +42,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -90,8 +90,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -100,26 +100,26 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.PortalAuthSettings.UpdatePortalAuthenticationSettings(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalAuthenticationSettingsUpdateRequest{
-        BasicAuthEnabled: sdkkonnectgo.Bool(true),
-        OidcAuthEnabled: sdkkonnectgo.Bool(true),
-        SamlAuthEnabled: sdkkonnectgo.Bool(false),
-        OidcTeamMappingEnabled: sdkkonnectgo.Bool(true),
-        KonnectMappingEnabled: sdkkonnectgo.Bool(false),
-        IdpMappingEnabled: sdkkonnectgo.Bool(true),
-        OidcIssuer: sdkkonnectgo.String("https://identity.example.com/v2"),
-        OidcClientID: sdkkonnectgo.String("x7id0o42lklas0blidl2"),
+        BasicAuthEnabled: sdkkonnectgo.Pointer(true),
+        OidcAuthEnabled: sdkkonnectgo.Pointer(true),
+        SamlAuthEnabled: sdkkonnectgo.Pointer(false),
+        OidcTeamMappingEnabled: sdkkonnectgo.Pointer(true),
+        KonnectMappingEnabled: sdkkonnectgo.Pointer(false),
+        IdpMappingEnabled: sdkkonnectgo.Pointer(true),
+        OidcIssuer: sdkkonnectgo.Pointer("https://identity.example.com/v2"),
+        OidcClientID: sdkkonnectgo.Pointer("x7id0o42lklas0blidl2"),
         OidcScopes: []string{
             "email",
             "openid",
             "profile",
         },
         OidcClaimMappings: &components.PortalClaimMappings{
-            Groups: sdkkonnectgo.String("custom-group-claim"),
+            Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })
     if err != nil {
@@ -168,8 +168,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -179,14 +179,14 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.PortalAuthSettings.ListPortalTeamGroupMappings(ctx, operations.ListPortalTeamGroupMappingsRequest{
         PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
-        PageSize: sdkkonnectgo.Int64(10),
-        PageNumber: sdkkonnectgo.Int64(1),
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
     })
     if err != nil {
         log.Fatal(err)
@@ -234,8 +234,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -244,14 +244,14 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.PortalAuthSettings.UpdatePortalTeamGroupMappings(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalTeamGroupMappingsUpdateRequest{
         Data: []components.PortalTeamGroupMappingsUpdateRequestData{
             components.PortalTeamGroupMappingsUpdateRequestData{
-                TeamID: sdkkonnectgo.String("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
+                TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
                 Groups: []string{
                     "Service Developer",
                 },
@@ -305,8 +305,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -315,7 +315,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -366,8 +366,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -376,18 +376,18 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.PortalAuthSettings.CreatePortalIdentityProvider(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.String("myapp"),
-        Enabled: sdkkonnectgo.Bool(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Enabled: sdkkonnectgo.Pointer(true),
         Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
-                IdpMetadataURL: sdkkonnectgo.String("https://mocksaml.com/api/saml/metadata"),
-                IdpMetadataXML: sdkkonnectgo.String("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
+                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n" +
                 "  <!-- SAML metadata content here -->\n" +
                 "</EntityDescriptor>\n" +
@@ -443,8 +443,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -453,7 +453,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -506,8 +506,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -517,7 +517,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -525,12 +525,12 @@ func main() {
         PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
         ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         UpdateIdentityProvider: components.UpdateIdentityProvider{
-            Enabled: sdkkonnectgo.Bool(true),
-            LoginPath: sdkkonnectgo.String("myapp"),
+            Enabled: sdkkonnectgo.Pointer(true),
+            LoginPath: sdkkonnectgo.Pointer("myapp"),
             Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigSAMLIdentityProviderConfigInput(
                 components.SAMLIdentityProviderConfigInput{
-                    IdpMetadataURL: sdkkonnectgo.String("https://mocksaml.com/api/saml/metadata"),
-                    IdpMetadataXML: sdkkonnectgo.String("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                    IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
+                    IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                     "<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n" +
                     "  <!-- SAML metadata content here -->\n" +
                     "</EntityDescriptor>\n" +
@@ -587,8 +587,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -597,7 +597,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 

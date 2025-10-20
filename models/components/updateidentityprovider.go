@@ -16,8 +16,8 @@ const (
 )
 
 type UpdateIdentityProviderConfig struct {
-	ConfigureOIDCIdentityProviderConfig *ConfigureOIDCIdentityProviderConfig `queryParam:"inline" name:"config"`
-	SAMLIdentityProviderConfigInput     *SAMLIdentityProviderConfigInput     `queryParam:"inline" name:"config"`
+	ConfigureOIDCIdentityProviderConfig *ConfigureOIDCIdentityProviderConfig `queryParam:"inline,name=config"`
+	SAMLIdentityProviderConfigInput     *SAMLIdentityProviderConfigInput     `queryParam:"inline,name=config"`
 
 	Type UpdateIdentityProviderConfigType
 }
@@ -93,23 +93,23 @@ func (u *UpdateIdentityProvider) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdateIdentityProvider) GetEnabled() *bool {
-	if o == nil {
+func (u *UpdateIdentityProvider) GetEnabled() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Enabled
+	return u.Enabled
 }
 
-func (o *UpdateIdentityProvider) GetLoginPath() *string {
-	if o == nil {
+func (u *UpdateIdentityProvider) GetLoginPath() *string {
+	if u == nil {
 		return nil
 	}
-	return o.LoginPath
+	return u.LoginPath
 }
 
-func (o *UpdateIdentityProvider) GetConfig() *UpdateIdentityProviderConfig {
-	if o == nil {
+func (u *UpdateIdentityProvider) GetConfig() *UpdateIdentityProviderConfig {
+	if u == nil {
 		return nil
 	}
-	return o.Config
+	return u.Config
 }

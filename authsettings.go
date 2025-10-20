@@ -62,7 +62,7 @@ func (s *AuthSettings) GetAuthenticationSettings(ctx context.Context, opts ...op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-authentication-settings",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -287,7 +287,7 @@ func (s *AuthSettings) UpdateAuthenticationSettings(ctx context.Context, request
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-authentication-settings",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -542,7 +542,7 @@ func (s *AuthSettings) GetIdpConfiguration(ctx context.Context, opts ...operatio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-idp-configuration",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -830,7 +830,7 @@ func (s *AuthSettings) UpdateIdpConfiguration(ctx context.Context, request *comp
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-idp-configuration",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -1091,7 +1091,7 @@ func (s *AuthSettings) GetTeamGroupMappings(ctx context.Context, pageSize *int64
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-team-group-mappings",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1367,7 +1367,7 @@ func (s *AuthSettings) PatchTeamGroupMappings(ctx context.Context, request *comp
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "patch-team-group-mappings",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -1641,7 +1641,7 @@ func (s *AuthSettings) UpdateIdpTeamMappings(ctx context.Context, request *compo
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-idp-team-mappings",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -1941,7 +1941,7 @@ func (s *AuthSettings) GetIdpTeamMappings(ctx context.Context, pageSize *int64, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-idp-team-mappings",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2238,7 +2238,7 @@ func (s *AuthSettings) GetIdentityProviders(ctx context.Context, filter *operati
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-identity-providers",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -2489,7 +2489,7 @@ func (s *AuthSettings) CreateIdentityProvider(ctx context.Context, request compo
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-identity-provider",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -2789,7 +2789,7 @@ func (s *AuthSettings) GetIdentityProvider(ctx context.Context, id string, opts 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-identity-provider",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -3083,7 +3083,7 @@ func (s *AuthSettings) UpdateIdentityProvider(ctx context.Context, id string, up
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-identity-provider",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateIdentityProvider", "json", `request:"mediaType=application/json"`)
@@ -3404,7 +3404,7 @@ func (s *AuthSettings) DeleteIdentityProvider(ctx context.Context, id string, op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-identity-provider",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

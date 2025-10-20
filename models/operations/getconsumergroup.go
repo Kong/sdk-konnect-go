@@ -14,18 +14,18 @@ type GetConsumerGroupRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 }
 
-func (o *GetConsumerGroupRequest) GetConsumerGroupID() string {
-	if o == nil {
+func (g *GetConsumerGroupRequest) GetConsumerGroupID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ConsumerGroupID
+	return g.ConsumerGroupID
 }
 
-func (o *GetConsumerGroupRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetConsumerGroupRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
 type GetConsumerGroupResponse struct {
@@ -39,30 +39,30 @@ type GetConsumerGroupResponse struct {
 	ConsumerGroupInsideWrapper *components.ConsumerGroupInsideWrapper
 }
 
-func (o *GetConsumerGroupResponse) GetContentType() string {
-	if o == nil {
+func (g *GetConsumerGroupResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetConsumerGroupResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetConsumerGroupResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetConsumerGroupResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetConsumerGroupResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetConsumerGroupResponse) GetConsumerGroupInsideWrapper() *components.ConsumerGroupInsideWrapper {
-	if o == nil {
+func (g *GetConsumerGroupResponse) GetConsumerGroupInsideWrapper() *components.ConsumerGroupInsideWrapper {
+	if g == nil {
 		return nil
 	}
-	return o.ConsumerGroupInsideWrapper
+	return g.ConsumerGroupInsideWrapper
 }

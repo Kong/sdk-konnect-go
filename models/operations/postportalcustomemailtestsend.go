@@ -16,25 +16,25 @@ type PostPortalCustomEmailTestSendRequest struct {
 	PostSendTestEmailPayload components.PostSendTestEmailPayload `request:"mediaType=application/json"`
 }
 
-func (o *PostPortalCustomEmailTestSendRequest) GetPortalID() string {
-	if o == nil {
+func (p *PostPortalCustomEmailTestSendRequest) GetPortalID() string {
+	if p == nil {
 		return ""
 	}
-	return o.PortalID
+	return p.PortalID
 }
 
-func (o *PostPortalCustomEmailTestSendRequest) GetTemplateName() components.EmailTemplateName {
-	if o == nil {
+func (p *PostPortalCustomEmailTestSendRequest) GetTemplateName() components.EmailTemplateName {
+	if p == nil {
 		return components.EmailTemplateName("")
 	}
-	return o.TemplateName
+	return p.TemplateName
 }
 
-func (o *PostPortalCustomEmailTestSendRequest) GetPostSendTestEmailPayload() components.PostSendTestEmailPayload {
-	if o == nil {
+func (p *PostPortalCustomEmailTestSendRequest) GetPostSendTestEmailPayload() components.PostSendTestEmailPayload {
+	if p == nil {
 		return components.PostSendTestEmailPayload{}
 	}
-	return o.PostSendTestEmailPayload
+	return p.PostSendTestEmailPayload
 }
 
 type PostPortalCustomEmailTestSendResponse struct {
@@ -46,23 +46,23 @@ type PostPortalCustomEmailTestSendResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *PostPortalCustomEmailTestSendResponse) GetContentType() string {
-	if o == nil {
+func (p *PostPortalCustomEmailTestSendResponse) GetContentType() string {
+	if p == nil {
 		return ""
 	}
-	return o.ContentType
+	return p.ContentType
 }
 
-func (o *PostPortalCustomEmailTestSendResponse) GetStatusCode() int {
-	if o == nil {
+func (p *PostPortalCustomEmailTestSendResponse) GetStatusCode() int {
+	if p == nil {
 		return 0
 	}
-	return o.StatusCode
+	return p.StatusCode
 }
 
-func (o *PostPortalCustomEmailTestSendResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (p *PostPortalCustomEmailTestSendResponse) GetRawResponse() *http.Response {
+	if p == nil {
 		return nil
 	}
-	return o.RawResponse
+	return p.RawResponse
 }

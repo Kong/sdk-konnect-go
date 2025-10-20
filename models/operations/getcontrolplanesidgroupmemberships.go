@@ -16,25 +16,25 @@ type GetControlPlanesIDGroupMembershipsRequest struct {
 	PageAfter *string `queryParam:"style=form,explode=true,name=page[after]"`
 }
 
-func (o *GetControlPlanesIDGroupMembershipsRequest) GetID() string {
-	if o == nil {
+func (g *GetControlPlanesIDGroupMembershipsRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetControlPlanesIDGroupMembershipsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (g *GetControlPlanesIDGroupMembershipsRequest) GetPageSize() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.PageSize
+	return g.PageSize
 }
 
-func (o *GetControlPlanesIDGroupMembershipsRequest) GetPageAfter() *string {
-	if o == nil {
+func (g *GetControlPlanesIDGroupMembershipsRequest) GetPageAfter() *string {
+	if g == nil {
 		return nil
 	}
-	return o.PageAfter
+	return g.PageAfter
 }
 
 type GetControlPlanesIDGroupMembershipsResponse struct {
@@ -48,30 +48,30 @@ type GetControlPlanesIDGroupMembershipsResponse struct {
 	ListGroupMemberships *components.ListGroupMemberships
 }
 
-func (o *GetControlPlanesIDGroupMembershipsResponse) GetContentType() string {
-	if o == nil {
+func (g *GetControlPlanesIDGroupMembershipsResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetControlPlanesIDGroupMembershipsResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetControlPlanesIDGroupMembershipsResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetControlPlanesIDGroupMembershipsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetControlPlanesIDGroupMembershipsResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetControlPlanesIDGroupMembershipsResponse) GetListGroupMemberships() *components.ListGroupMemberships {
-	if o == nil {
+func (g *GetControlPlanesIDGroupMembershipsResponse) GetListGroupMemberships() *components.ListGroupMemberships {
+	if g == nil {
 		return nil
 	}
-	return o.ListGroupMemberships
+	return g.ListGroupMemberships
 }

@@ -19,11 +19,11 @@ const (
 )
 
 type DcrConfig struct {
-	UpdateDcrConfigAuth0InRequest   *UpdateDcrConfigAuth0InRequest   `queryParam:"inline" name:"dcr_config"`
-	UpdateDcrConfigAzureAdInRequest *UpdateDcrConfigAzureAdInRequest `queryParam:"inline" name:"dcr_config"`
-	UpdateDcrConfigCurityInRequest  *UpdateDcrConfigCurityInRequest  `queryParam:"inline" name:"dcr_config"`
-	UpdateDcrConfigOktaInRequest    *UpdateDcrConfigOktaInRequest    `queryParam:"inline" name:"dcr_config"`
-	UpdateDcrConfigHTTPInRequest    *UpdateDcrConfigHTTPInRequest    `queryParam:"inline" name:"dcr_config"`
+	UpdateDcrConfigAuth0InRequest   *UpdateDcrConfigAuth0InRequest   `queryParam:"inline,name=dcr_config"`
+	UpdateDcrConfigAzureAdInRequest *UpdateDcrConfigAzureAdInRequest `queryParam:"inline,name=dcr_config"`
+	UpdateDcrConfigCurityInRequest  *UpdateDcrConfigCurityInRequest  `queryParam:"inline,name=dcr_config"`
+	UpdateDcrConfigOktaInRequest    *UpdateDcrConfigOktaInRequest    `queryParam:"inline,name=dcr_config"`
+	UpdateDcrConfigHTTPInRequest    *UpdateDcrConfigHTTPInRequest    `queryParam:"inline,name=dcr_config"`
 
 	Type DcrConfigType
 }
@@ -167,37 +167,37 @@ func (u *UpdateDcrProviderRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdateDcrProviderRequest) GetName() *string {
-	if o == nil {
+func (u *UpdateDcrProviderRequest) GetName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UpdateDcrProviderRequest) GetDisplayName() *string {
-	if o == nil {
+func (u *UpdateDcrProviderRequest) GetDisplayName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.DisplayName
+	return u.DisplayName
 }
 
-func (o *UpdateDcrProviderRequest) GetIssuer() *string {
-	if o == nil {
+func (u *UpdateDcrProviderRequest) GetIssuer() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Issuer
+	return u.Issuer
 }
 
-func (o *UpdateDcrProviderRequest) GetLabels() map[string]*string {
-	if o == nil {
+func (u *UpdateDcrProviderRequest) GetLabels() map[string]*string {
+	if u == nil {
 		return nil
 	}
-	return o.Labels
+	return u.Labels
 }
 
-func (o *UpdateDcrProviderRequest) GetDcrConfig() *DcrConfig {
-	if o == nil {
+func (u *UpdateDcrProviderRequest) GetDcrConfig() *DcrConfig {
+	if u == nil {
 		return nil
 	}
-	return o.DcrConfig
+	return u.DcrConfig
 }

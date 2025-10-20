@@ -16,25 +16,25 @@ type ListConfigStoresRequest struct {
 	PageAfter *string `queryParam:"style=form,explode=true,name=page[after]"`
 }
 
-func (o *ListConfigStoresRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListConfigStoresRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListConfigStoresRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListConfigStoresRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListConfigStoresRequest) GetPageAfter() *string {
-	if o == nil {
+func (l *ListConfigStoresRequest) GetPageAfter() *string {
+	if l == nil {
 		return nil
 	}
-	return o.PageAfter
+	return l.PageAfter
 }
 
 type ListConfigStoresResponse struct {
@@ -48,30 +48,30 @@ type ListConfigStoresResponse struct {
 	ListConfigStoresResponse *components.ListConfigStoresResponse
 }
 
-func (o *ListConfigStoresResponse) GetContentType() string {
-	if o == nil {
+func (l *ListConfigStoresResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListConfigStoresResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListConfigStoresResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListConfigStoresResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListConfigStoresResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListConfigStoresResponse) GetListConfigStoresResponse() *components.ListConfigStoresResponse {
-	if o == nil {
+func (l *ListConfigStoresResponse) GetListConfigStoresResponse() *components.ListConfigStoresResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListConfigStoresResponse
+	return l.ListConfigStoresResponse
 }

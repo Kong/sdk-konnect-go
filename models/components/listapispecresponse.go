@@ -30,32 +30,32 @@ func (a *APISpecificationSummary) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *APISpecificationSummary) GetID() string {
-	if o == nil {
+func (a *APISpecificationSummary) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *APISpecificationSummary) GetType() APISpecType {
-	if o == nil {
+func (a *APISpecificationSummary) GetType() APISpecType {
+	if a == nil {
 		return APISpecType("")
 	}
-	return o.Type
+	return a.Type
 }
 
-func (o *APISpecificationSummary) GetCreatedAt() time.Time {
-	if o == nil {
+func (a *APISpecificationSummary) GetCreatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return a.CreatedAt
 }
 
-func (o *APISpecificationSummary) GetUpdatedAt() time.Time {
-	if o == nil {
+func (a *APISpecificationSummary) GetUpdatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return a.UpdatedAt
 }
 
 // ListAPISpecResponse - List of API specifications (OpenAPI or AsyncAPI)
@@ -65,16 +65,16 @@ type ListAPISpecResponse struct {
 	Data []APISpecificationSummary `json:"data"`
 }
 
-func (o *ListAPISpecResponse) GetMeta() PaginatedMeta {
-	if o == nil {
+func (l *ListAPISpecResponse) GetMeta() PaginatedMeta {
+	if l == nil {
 		return PaginatedMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListAPISpecResponse) GetData() []APISpecificationSummary {
-	if o == nil {
+func (l *ListAPISpecResponse) GetData() []APISpecificationSummary {
+	if l == nil {
 		return []APISpecificationSummary{}
 	}
-	return o.Data
+	return l.Data
 }

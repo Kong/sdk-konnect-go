@@ -36,37 +36,37 @@ func (c *CreateAPIDocumentRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CreateAPIDocumentRequest) GetContent() string {
-	if o == nil {
+func (c *CreateAPIDocumentRequest) GetContent() string {
+	if c == nil {
 		return ""
 	}
-	return o.Content
+	return c.Content
 }
 
-func (o *CreateAPIDocumentRequest) GetTitle() *string {
-	if o == nil {
+func (c *CreateAPIDocumentRequest) GetTitle() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Title
+	return c.Title
 }
 
-func (o *CreateAPIDocumentRequest) GetSlug() *string {
-	if o == nil {
+func (c *CreateAPIDocumentRequest) GetSlug() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Slug
+	return c.Slug
 }
 
-func (o *CreateAPIDocumentRequest) GetStatus() *APIDocumentStatus {
-	if o == nil {
+func (c *CreateAPIDocumentRequest) GetStatus() *APIDocumentStatus {
+	if c == nil {
 		return nil
 	}
-	return o.Status
+	return c.Status
 }
 
-func (o *CreateAPIDocumentRequest) GetParentDocumentID() *string {
-	if o == nil {
+func (c *CreateAPIDocumentRequest) GetParentDocumentID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.ParentDocumentID
+	return c.ParentDocumentID
 }

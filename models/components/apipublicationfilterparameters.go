@@ -15,37 +15,37 @@ type APIPublicationFilterParameters struct {
 	AuthStrategyID *UUIDFieldFilter `queryParam:"name=auth_strategy_id"`
 }
 
-func (o *APIPublicationFilterParameters) GetPortalID() *UUIDFieldFilter {
-	if o == nil {
+func (a *APIPublicationFilterParameters) GetPortalID() *UUIDFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.PortalID
+	return a.PortalID
 }
 
-func (o *APIPublicationFilterParameters) GetPortalName() *StringFieldFilter {
-	if o == nil {
+func (a *APIPublicationFilterParameters) GetPortalName() *StringFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.PortalName
+	return a.PortalName
 }
 
-func (o *APIPublicationFilterParameters) GetAPIID() *UUIDFieldFilter {
-	if o == nil {
+func (a *APIPublicationFilterParameters) GetAPIID() *UUIDFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.APIID
+	return a.APIID
 }
 
-func (o *APIPublicationFilterParameters) GetAPIName() *StringFieldFilter {
-	if o == nil {
+func (a *APIPublicationFilterParameters) GetAPIName() *StringFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.APIName
+	return a.APIName
 }
 
-func (o *APIPublicationFilterParameters) GetAuthStrategyID() *UUIDFieldFilter {
-	if o == nil {
+func (a *APIPublicationFilterParameters) GetAuthStrategyID() *UUIDFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.AuthStrategyID
+	return a.AuthStrategyID
 }

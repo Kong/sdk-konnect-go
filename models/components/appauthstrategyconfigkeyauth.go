@@ -25,9 +25,9 @@ func (a *AppAuthStrategyConfigKeyAuth) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *AppAuthStrategyConfigKeyAuth) GetKeyNames() []string {
-	if o == nil {
+func (a *AppAuthStrategyConfigKeyAuth) GetKeyNames() []string {
+	if a == nil {
 		return nil
 	}
-	return o.KeyNames
+	return a.KeyNames
 }

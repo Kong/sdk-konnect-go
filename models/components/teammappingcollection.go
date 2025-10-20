@@ -7,9 +7,9 @@ type TeamMappingCollection struct {
 	Data []TeamMapping `json:"data,omitempty"`
 }
 
-func (o *TeamMappingCollection) GetData() []TeamMapping {
-	if o == nil {
+func (t *TeamMappingCollection) GetData() []TeamMapping {
+	if t == nil {
 		return nil
 	}
-	return o.Data
+	return t.Data
 }

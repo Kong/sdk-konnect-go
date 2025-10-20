@@ -22,9 +22,9 @@ func (u *UpdatePortalCustomDomainRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdatePortalCustomDomainRequest) GetEnabled() *bool {
-	if o == nil {
+func (u *UpdatePortalCustomDomainRequest) GetEnabled() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Enabled
+	return u.Enabled
 }

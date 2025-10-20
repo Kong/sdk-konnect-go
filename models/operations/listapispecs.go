@@ -18,32 +18,32 @@ type ListAPISpecsRequest struct {
 	Filter *components.APISpecFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *ListAPISpecsRequest) GetAPIID() string {
-	if o == nil {
+func (l *ListAPISpecsRequest) GetAPIID() string {
+	if l == nil {
 		return ""
 	}
-	return o.APIID
+	return l.APIID
 }
 
-func (o *ListAPISpecsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListAPISpecsRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListAPISpecsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListAPISpecsRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListAPISpecsRequest) GetFilter() *components.APISpecFilterParameters {
-	if o == nil {
+func (l *ListAPISpecsRequest) GetFilter() *components.APISpecFilterParameters {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
 type ListAPISpecsResponse struct {
@@ -57,30 +57,30 @@ type ListAPISpecsResponse struct {
 	ListAPISpecResponse *components.ListAPISpecResponse
 }
 
-func (o *ListAPISpecsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListAPISpecsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListAPISpecsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListAPISpecsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListAPISpecsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListAPISpecsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListAPISpecsResponse) GetListAPISpecResponse() *components.ListAPISpecResponse {
-	if o == nil {
+func (l *ListAPISpecsResponse) GetListAPISpecResponse() *components.ListAPISpecResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListAPISpecResponse
+	return l.ListAPISpecResponse
 }

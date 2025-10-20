@@ -18,30 +18,30 @@ type CreateAPIResponse struct {
 	APIResponseSchema *components.APIResponseSchema
 }
 
-func (o *CreateAPIResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateAPIResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateAPIResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateAPIResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateAPIResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateAPIResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateAPIResponse) GetAPIResponseSchema() *components.APIResponseSchema {
-	if o == nil {
+func (c *CreateAPIResponse) GetAPIResponseSchema() *components.APIResponseSchema {
+	if c == nil {
 		return nil
 	}
-	return o.APIResponseSchema
+	return c.APIResponseSchema
 }

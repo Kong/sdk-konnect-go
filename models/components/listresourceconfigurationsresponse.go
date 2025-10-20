@@ -9,16 +9,16 @@ type ListResourceConfigurationsResponse struct {
 	Data []ResourceConfiguration `json:"data"`
 }
 
-func (o *ListResourceConfigurationsResponse) GetMeta() PaginatedMeta {
-	if o == nil {
+func (l *ListResourceConfigurationsResponse) GetMeta() PaginatedMeta {
+	if l == nil {
 		return PaginatedMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListResourceConfigurationsResponse) GetData() []ResourceConfiguration {
-	if o == nil {
+func (l *ListResourceConfigurationsResponse) GetData() []ResourceConfiguration {
+	if l == nil {
 		return []ResourceConfiguration{}
 	}
-	return o.Data
+	return l.Data
 }

@@ -22,9 +22,9 @@ func (s *StringFieldOContainsFilter) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *StringFieldOContainsFilter) GetOcontains() string {
-	if o == nil {
+func (s *StringFieldOContainsFilter) GetOcontains() string {
+	if s == nil {
 		return ""
 	}
-	return o.Ocontains
+	return s.Ocontains
 }

@@ -14,18 +14,18 @@ type CreatePortalPageRequest struct {
 	CreatePortalPageRequest components.CreatePortalPageRequest `request:"mediaType=application/json"`
 }
 
-func (o *CreatePortalPageRequest) GetPortalID() string {
-	if o == nil {
+func (c *CreatePortalPageRequest) GetPortalID() string {
+	if c == nil {
 		return ""
 	}
-	return o.PortalID
+	return c.PortalID
 }
 
-func (o *CreatePortalPageRequest) GetCreatePortalPageRequest() components.CreatePortalPageRequest {
-	if o == nil {
+func (c *CreatePortalPageRequest) GetCreatePortalPageRequest() components.CreatePortalPageRequest {
+	if c == nil {
 		return components.CreatePortalPageRequest{}
 	}
-	return o.CreatePortalPageRequest
+	return c.CreatePortalPageRequest
 }
 
 type CreatePortalPageResponse struct {
@@ -39,30 +39,30 @@ type CreatePortalPageResponse struct {
 	PortalPageResponse *components.PortalPageResponse
 }
 
-func (o *CreatePortalPageResponse) GetContentType() string {
-	if o == nil {
+func (c *CreatePortalPageResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreatePortalPageResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreatePortalPageResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreatePortalPageResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreatePortalPageResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreatePortalPageResponse) GetPortalPageResponse() *components.PortalPageResponse {
-	if o == nil {
+func (c *CreatePortalPageResponse) GetPortalPageResponse() *components.PortalPageResponse {
+	if c == nil {
 		return nil
 	}
-	return o.PortalPageResponse
+	return c.PortalPageResponse
 }

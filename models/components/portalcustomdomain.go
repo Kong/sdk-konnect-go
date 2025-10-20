@@ -30,44 +30,44 @@ func (p *PortalCustomDomain) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PortalCustomDomain) GetHostname() string {
-	if o == nil {
+func (p *PortalCustomDomain) GetHostname() string {
+	if p == nil {
 		return ""
 	}
-	return o.Hostname
+	return p.Hostname
 }
 
-func (o *PortalCustomDomain) GetEnabled() bool {
-	if o == nil {
+func (p *PortalCustomDomain) GetEnabled() bool {
+	if p == nil {
 		return false
 	}
-	return o.Enabled
+	return p.Enabled
 }
 
-func (o *PortalCustomDomain) GetSsl() PortalCustomDomainSSL {
-	if o == nil {
+func (p *PortalCustomDomain) GetSsl() PortalCustomDomainSSL {
+	if p == nil {
 		return PortalCustomDomainSSL{}
 	}
-	return o.Ssl
+	return p.Ssl
 }
 
-func (o *PortalCustomDomain) GetCnameStatus() PortalCustomDomainCnameStatus {
-	if o == nil {
+func (p *PortalCustomDomain) GetCnameStatus() PortalCustomDomainCnameStatus {
+	if p == nil {
 		return PortalCustomDomainCnameStatus("")
 	}
-	return o.CnameStatus
+	return p.CnameStatus
 }
 
-func (o *PortalCustomDomain) GetCreatedAt() time.Time {
-	if o == nil {
+func (p *PortalCustomDomain) GetCreatedAt() time.Time {
+	if p == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return p.CreatedAt
 }
 
-func (o *PortalCustomDomain) GetUpdatedAt() time.Time {
-	if o == nil {
+func (p *PortalCustomDomain) GetUpdatedAt() time.Time {
+	if p == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return p.UpdatedAt
 }

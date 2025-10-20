@@ -22,9 +22,9 @@ func (s *StringFieldOEQFilter) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *StringFieldOEQFilter) GetOeq() string {
-	if o == nil {
+func (s *StringFieldOEQFilter) GetOeq() string {
+	if s == nil {
 		return ""
 	}
-	return o.Oeq
+	return s.Oeq
 }

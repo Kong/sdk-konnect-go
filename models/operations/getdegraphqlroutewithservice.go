@@ -16,25 +16,25 @@ type GetDegraphqlRouteWithServiceRequest struct {
 	DegraphqlRouteID string `pathParam:"style=simple,explode=false,name=Degraphql_routeId"`
 }
 
-func (o *GetDegraphqlRouteWithServiceRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetDegraphqlRouteWithServiceRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
-func (o *GetDegraphqlRouteWithServiceRequest) GetServiceID() string {
-	if o == nil {
+func (g *GetDegraphqlRouteWithServiceRequest) GetServiceID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ServiceID
+	return g.ServiceID
 }
 
-func (o *GetDegraphqlRouteWithServiceRequest) GetDegraphqlRouteID() string {
-	if o == nil {
+func (g *GetDegraphqlRouteWithServiceRequest) GetDegraphqlRouteID() string {
+	if g == nil {
 		return ""
 	}
-	return o.DegraphqlRouteID
+	return g.DegraphqlRouteID
 }
 
 type GetDegraphqlRouteWithServiceResponse struct {
@@ -48,30 +48,30 @@ type GetDegraphqlRouteWithServiceResponse struct {
 	DegraphqlRoute *components.DegraphqlRoute
 }
 
-func (o *GetDegraphqlRouteWithServiceResponse) GetContentType() string {
-	if o == nil {
+func (g *GetDegraphqlRouteWithServiceResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetDegraphqlRouteWithServiceResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetDegraphqlRouteWithServiceResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetDegraphqlRouteWithServiceResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetDegraphqlRouteWithServiceResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetDegraphqlRouteWithServiceResponse) GetDegraphqlRoute() *components.DegraphqlRoute {
-	if o == nil {
+func (g *GetDegraphqlRouteWithServiceResponse) GetDegraphqlRoute() *components.DegraphqlRoute {
+	if g == nil {
 		return nil
 	}
-	return o.DegraphqlRoute
+	return g.DegraphqlRoute
 }

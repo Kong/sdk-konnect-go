@@ -23,9 +23,9 @@ func (c *ControlPlaneGeoFieldNotEqualsFilter) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ControlPlaneGeoFieldNotEqualsFilter) GetNeq() ControlPlaneGeo {
-	if o == nil {
+func (c *ControlPlaneGeoFieldNotEqualsFilter) GetNeq() ControlPlaneGeo {
+	if c == nil {
 		return ControlPlaneGeo("")
 	}
-	return o.Neq
+	return c.Neq
 }

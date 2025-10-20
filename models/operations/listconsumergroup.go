@@ -30,32 +30,32 @@ func (l *ListConsumerGroupRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListConsumerGroupRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListConsumerGroupRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListConsumerGroupRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListConsumerGroupRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListConsumerGroupRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListConsumerGroupRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListConsumerGroupRequest) GetTags() *string {
-	if o == nil {
+func (l *ListConsumerGroupRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListConsumerGroupResponseBody - A successful response listing Consumer Groups
@@ -67,25 +67,25 @@ type ListConsumerGroupResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListConsumerGroupResponseBody) GetData() []components.ConsumerGroup {
-	if o == nil {
+func (l *ListConsumerGroupResponseBody) GetData() []components.ConsumerGroup {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListConsumerGroupResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListConsumerGroupResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListConsumerGroupResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListConsumerGroupResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListConsumerGroupResponse struct {
@@ -99,30 +99,30 @@ type ListConsumerGroupResponse struct {
 	Object *ListConsumerGroupResponseBody
 }
 
-func (o *ListConsumerGroupResponse) GetContentType() string {
-	if o == nil {
+func (l *ListConsumerGroupResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListConsumerGroupResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListConsumerGroupResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListConsumerGroupResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListConsumerGroupResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListConsumerGroupResponse) GetObject() *ListConsumerGroupResponseBody {
-	if o == nil {
+func (l *ListConsumerGroupResponse) GetObject() *ListConsumerGroupResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

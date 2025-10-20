@@ -51,23 +51,23 @@ func (a *AwsResourceEndpointAttachmentConfigResponse) UnmarshalJSON(data []byte)
 	return nil
 }
 
-func (o *AwsResourceEndpointAttachmentConfigResponse) GetKind() AWSResourceEndpointAttachmentType {
-	if o == nil {
+func (a *AwsResourceEndpointAttachmentConfigResponse) GetKind() AWSResourceEndpointAttachmentType {
+	if a == nil {
 		return AWSResourceEndpointAttachmentType("")
 	}
-	return o.Kind
+	return a.Kind
 }
 
-func (o *AwsResourceEndpointAttachmentConfigResponse) GetRAMShareArn() string {
-	if o == nil {
+func (a *AwsResourceEndpointAttachmentConfigResponse) GetRAMShareArn() string {
+	if a == nil {
 		return ""
 	}
-	return o.RAMShareArn
+	return a.RAMShareArn
 }
 
-func (o *AwsResourceEndpointAttachmentConfigResponse) GetResourceConfig() []AwsResourceEndpointConfigResponse {
-	if o == nil {
+func (a *AwsResourceEndpointAttachmentConfigResponse) GetResourceConfig() []AwsResourceEndpointConfigResponse {
+	if a == nil {
 		return []AwsResourceEndpointConfigResponse{}
 	}
-	return o.ResourceConfig
+	return a.ResourceConfig
 }

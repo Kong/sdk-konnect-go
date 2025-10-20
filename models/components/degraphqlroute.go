@@ -6,11 +6,11 @@ type DegraphqlRouteService struct {
 	ID *string `json:"id,omitempty"`
 }
 
-func (o *DegraphqlRouteService) GetID() *string {
-	if o == nil {
+func (d *DegraphqlRouteService) GetID() *string {
+	if d == nil {
 		return nil
 	}
-	return o.ID
+	return d.ID
 }
 
 type DegraphqlRoute struct {
@@ -26,51 +26,51 @@ type DegraphqlRoute struct {
 	URI       string `json:"uri"`
 }
 
-func (o *DegraphqlRoute) GetCreatedAt() *int64 {
-	if o == nil {
+func (d *DegraphqlRoute) GetCreatedAt() *int64 {
+	if d == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return d.CreatedAt
 }
 
-func (o *DegraphqlRoute) GetID() *string {
-	if o == nil {
+func (d *DegraphqlRoute) GetID() *string {
+	if d == nil {
 		return nil
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DegraphqlRoute) GetMethods() []string {
-	if o == nil {
+func (d *DegraphqlRoute) GetMethods() []string {
+	if d == nil {
 		return nil
 	}
-	return o.Methods
+	return d.Methods
 }
 
-func (o *DegraphqlRoute) GetQuery() string {
-	if o == nil {
+func (d *DegraphqlRoute) GetQuery() string {
+	if d == nil {
 		return ""
 	}
-	return o.Query
+	return d.Query
 }
 
-func (o *DegraphqlRoute) GetService() DegraphqlRouteService {
-	if o == nil {
+func (d *DegraphqlRoute) GetService() DegraphqlRouteService {
+	if d == nil {
 		return DegraphqlRouteService{}
 	}
-	return o.Service
+	return d.Service
 }
 
-func (o *DegraphqlRoute) GetUpdatedAt() *int64 {
-	if o == nil {
+func (d *DegraphqlRoute) GetUpdatedAt() *int64 {
+	if d == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return d.UpdatedAt
 }
 
-func (o *DegraphqlRoute) GetURI() string {
-	if o == nil {
+func (d *DegraphqlRoute) GetURI() string {
+	if d == nil {
 		return ""
 	}
-	return o.URI
+	return d.URI
 }

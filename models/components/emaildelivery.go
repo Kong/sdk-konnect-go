@@ -28,37 +28,37 @@ func (e *EmailDelivery) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EmailDelivery) GetEnabled() bool {
-	if o == nil {
+func (e *EmailDelivery) GetEnabled() bool {
+	if e == nil {
 		return false
 	}
-	return o.Enabled
+	return e.Enabled
 }
 
-func (o *EmailDelivery) GetFromEmail() *string {
-	if o == nil {
+func (e *EmailDelivery) GetFromEmail() *string {
+	if e == nil {
 		return nil
 	}
-	return o.FromEmail
+	return e.FromEmail
 }
 
-func (o *EmailDelivery) GetReplyToEmail() *string {
-	if o == nil {
+func (e *EmailDelivery) GetReplyToEmail() *string {
+	if e == nil {
 		return nil
 	}
-	return o.ReplyToEmail
+	return e.ReplyToEmail
 }
 
-func (o *EmailDelivery) GetCreatedAt() time.Time {
-	if o == nil {
+func (e *EmailDelivery) GetCreatedAt() time.Time {
+	if e == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return e.CreatedAt
 }
 
-func (o *EmailDelivery) GetUpdatedAt() time.Time {
-	if o == nil {
+func (e *EmailDelivery) GetUpdatedAt() time.Time {
+	if e == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return e.UpdatedAt
 }

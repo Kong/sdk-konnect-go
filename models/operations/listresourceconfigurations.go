@@ -18,18 +18,18 @@ type ListResourceConfigurationsRequest struct {
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 }
 
-func (o *ListResourceConfigurationsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListResourceConfigurationsRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListResourceConfigurationsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListResourceConfigurationsRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
 type ListResourceConfigurationsResponse struct {
@@ -43,30 +43,30 @@ type ListResourceConfigurationsResponse struct {
 	ListResourceConfigurationsResponse *components.ListResourceConfigurationsResponse
 }
 
-func (o *ListResourceConfigurationsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListResourceConfigurationsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListResourceConfigurationsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListResourceConfigurationsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListResourceConfigurationsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListResourceConfigurationsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListResourceConfigurationsResponse) GetListResourceConfigurationsResponse() *components.ListResourceConfigurationsResponse {
-	if o == nil {
+func (l *ListResourceConfigurationsResponse) GetListResourceConfigurationsResponse() *components.ListResourceConfigurationsResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListResourceConfigurationsResponse
+	return l.ListResourceConfigurationsResponse
 }

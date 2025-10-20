@@ -25,32 +25,32 @@ type ListAPIPublicationsRequest struct {
 	Sort *string `queryParam:"style=form,explode=true,name=sort"`
 }
 
-func (o *ListAPIPublicationsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListAPIPublicationsRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListAPIPublicationsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListAPIPublicationsRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListAPIPublicationsRequest) GetFilter() *components.APIPublicationFilterParameters {
-	if o == nil {
+func (l *ListAPIPublicationsRequest) GetFilter() *components.APIPublicationFilterParameters {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
-func (o *ListAPIPublicationsRequest) GetSort() *string {
-	if o == nil {
+func (l *ListAPIPublicationsRequest) GetSort() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Sort
+	return l.Sort
 }
 
 type ListAPIPublicationsResponse struct {
@@ -64,30 +64,30 @@ type ListAPIPublicationsResponse struct {
 	ListAPIPublicationResponse *components.ListAPIPublicationResponse
 }
 
-func (o *ListAPIPublicationsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListAPIPublicationsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListAPIPublicationsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListAPIPublicationsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListAPIPublicationsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListAPIPublicationsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListAPIPublicationsResponse) GetListAPIPublicationResponse() *components.ListAPIPublicationResponse {
-	if o == nil {
+func (l *ListAPIPublicationsResponse) GetListAPIPublicationResponse() *components.ListAPIPublicationResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListAPIPublicationResponse
+	return l.ListAPIPublicationResponse
 }

@@ -14,18 +14,18 @@ type ReplacePortalAssetLogoRequest struct {
 	ReplacePortalImageAsset *components.ReplacePortalImageAsset `request:"mediaType=application/json"`
 }
 
-func (o *ReplacePortalAssetLogoRequest) GetPortalID() string {
-	if o == nil {
+func (r *ReplacePortalAssetLogoRequest) GetPortalID() string {
+	if r == nil {
 		return ""
 	}
-	return o.PortalID
+	return r.PortalID
 }
 
-func (o *ReplacePortalAssetLogoRequest) GetReplacePortalImageAsset() *components.ReplacePortalImageAsset {
-	if o == nil {
+func (r *ReplacePortalAssetLogoRequest) GetReplacePortalImageAsset() *components.ReplacePortalImageAsset {
+	if r == nil {
 		return nil
 	}
-	return o.ReplacePortalImageAsset
+	return r.ReplacePortalImageAsset
 }
 
 type ReplacePortalAssetLogoResponse struct {
@@ -39,30 +39,30 @@ type ReplacePortalAssetLogoResponse struct {
 	PortalAssetResponse *components.PortalAssetResponse
 }
 
-func (o *ReplacePortalAssetLogoResponse) GetContentType() string {
-	if o == nil {
+func (r *ReplacePortalAssetLogoResponse) GetContentType() string {
+	if r == nil {
 		return ""
 	}
-	return o.ContentType
+	return r.ContentType
 }
 
-func (o *ReplacePortalAssetLogoResponse) GetStatusCode() int {
-	if o == nil {
+func (r *ReplacePortalAssetLogoResponse) GetStatusCode() int {
+	if r == nil {
 		return 0
 	}
-	return o.StatusCode
+	return r.StatusCode
 }
 
-func (o *ReplacePortalAssetLogoResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (r *ReplacePortalAssetLogoResponse) GetRawResponse() *http.Response {
+	if r == nil {
 		return nil
 	}
-	return o.RawResponse
+	return r.RawResponse
 }
 
-func (o *ReplacePortalAssetLogoResponse) GetPortalAssetResponse() *components.PortalAssetResponse {
-	if o == nil {
+func (r *ReplacePortalAssetLogoResponse) GetPortalAssetResponse() *components.PortalAssetResponse {
+	if r == nil {
 		return nil
 	}
-	return o.PortalAssetResponse
+	return r.PortalAssetResponse
 }

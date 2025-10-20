@@ -19,18 +19,18 @@ type ListUserRolesQueryParamFilter struct {
 	EntityTypeName *components.StringFieldEqualsFilter `queryParam:"name=entity_type_name"`
 }
 
-func (o *ListUserRolesQueryParamFilter) GetRoleName() *components.StringFieldEqualsFilter {
-	if o == nil {
+func (l *ListUserRolesQueryParamFilter) GetRoleName() *components.StringFieldEqualsFilter {
+	if l == nil {
 		return nil
 	}
-	return o.RoleName
+	return l.RoleName
 }
 
-func (o *ListUserRolesQueryParamFilter) GetEntityTypeName() *components.StringFieldEqualsFilter {
-	if o == nil {
+func (l *ListUserRolesQueryParamFilter) GetEntityTypeName() *components.StringFieldEqualsFilter {
+	if l == nil {
 		return nil
 	}
-	return o.EntityTypeName
+	return l.EntityTypeName
 }
 
 type ListUserRolesRequest struct {
@@ -40,18 +40,18 @@ type ListUserRolesRequest struct {
 	Filter *ListUserRolesQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *ListUserRolesRequest) GetUserID() string {
-	if o == nil {
+func (l *ListUserRolesRequest) GetUserID() string {
+	if l == nil {
 		return ""
 	}
-	return o.UserID
+	return l.UserID
 }
 
-func (o *ListUserRolesRequest) GetFilter() *ListUserRolesQueryParamFilter {
-	if o == nil {
+func (l *ListUserRolesRequest) GetFilter() *ListUserRolesQueryParamFilter {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
 type ListUserRolesResponse struct {
@@ -65,30 +65,30 @@ type ListUserRolesResponse struct {
 	AssignedRoleCollection *components.AssignedRoleCollection
 }
 
-func (o *ListUserRolesResponse) GetContentType() string {
-	if o == nil {
+func (l *ListUserRolesResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListUserRolesResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListUserRolesResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListUserRolesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListUserRolesResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListUserRolesResponse) GetAssignedRoleCollection() *components.AssignedRoleCollection {
-	if o == nil {
+func (l *ListUserRolesResponse) GetAssignedRoleCollection() *components.AssignedRoleCollection {
+	if l == nil {
 		return nil
 	}
-	return o.AssignedRoleCollection
+	return l.AssignedRoleCollection
 }

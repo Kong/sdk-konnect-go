@@ -66,7 +66,7 @@ func (s *AppAuthStrategies) CreateAppAuthStrategy(ctx context.Context, request c
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-app-auth-strategy",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -341,7 +341,7 @@ func (s *AppAuthStrategies) ListAppAuthStrategies(ctx context.Context, request o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-app-auth-strategies",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -617,7 +617,7 @@ func (s *AppAuthStrategies) GetAppAuthStrategy(ctx context.Context, authStrategy
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-app-auth-strategy",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -890,7 +890,7 @@ func (s *AppAuthStrategies) ReplaceAppAuthStrategy(ctx context.Context, authStra
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "replace-app-auth-strategy",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateAppAuthStrategyRequest", "json", `request:"mediaType=application/json"`)
@@ -1170,7 +1170,7 @@ func (s *AppAuthStrategies) UpdateAppAuthStrategy(ctx context.Context, authStrat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-app-auth-strategy",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateAppAuthStrategyRequest", "json", `request:"mediaType=application/json"`)
@@ -1470,7 +1470,7 @@ func (s *AppAuthStrategies) DeleteAppAuthStrategy(ctx context.Context, authStrat
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-app-auth-strategy",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

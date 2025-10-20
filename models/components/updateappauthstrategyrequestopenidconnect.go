@@ -26,9 +26,9 @@ func (u *UpdateAppAuthStrategyRequestOpenIDConnect) UnmarshalJSON(data []byte) e
 	return nil
 }
 
-func (o *UpdateAppAuthStrategyRequestOpenIDConnect) GetOpenidConnect() PartialAppAuthStrategyConfigOpenIDConnect {
-	if o == nil {
+func (u *UpdateAppAuthStrategyRequestOpenIDConnect) GetOpenidConnect() PartialAppAuthStrategyConfigOpenIDConnect {
+	if u == nil {
 		return PartialAppAuthStrategyConfigOpenIDConnect{}
 	}
-	return o.OpenidConnect
+	return u.OpenidConnect
 }

@@ -16,25 +16,25 @@ type GetApplicationRegistrationRequest struct {
 	RegistrationID string `pathParam:"style=simple,explode=false,name=registrationId"`
 }
 
-func (o *GetApplicationRegistrationRequest) GetPortalID() string {
-	if o == nil {
+func (g *GetApplicationRegistrationRequest) GetPortalID() string {
+	if g == nil {
 		return ""
 	}
-	return o.PortalID
+	return g.PortalID
 }
 
-func (o *GetApplicationRegistrationRequest) GetApplicationID() string {
-	if o == nil {
+func (g *GetApplicationRegistrationRequest) GetApplicationID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ApplicationID
+	return g.ApplicationID
 }
 
-func (o *GetApplicationRegistrationRequest) GetRegistrationID() string {
-	if o == nil {
+func (g *GetApplicationRegistrationRequest) GetRegistrationID() string {
+	if g == nil {
 		return ""
 	}
-	return o.RegistrationID
+	return g.RegistrationID
 }
 
 type GetApplicationRegistrationResponse struct {
@@ -48,30 +48,30 @@ type GetApplicationRegistrationResponse struct {
 	GetApplicationRegistrationResponse *components.GetApplicationRegistrationResponse
 }
 
-func (o *GetApplicationRegistrationResponse) GetContentType() string {
-	if o == nil {
+func (g *GetApplicationRegistrationResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetApplicationRegistrationResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetApplicationRegistrationResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetApplicationRegistrationResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetApplicationRegistrationResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetApplicationRegistrationResponse) GetGetApplicationRegistrationResponse() *components.GetApplicationRegistrationResponse {
-	if o == nil {
+func (g *GetApplicationRegistrationResponse) GetGetApplicationRegistrationResponse() *components.GetApplicationRegistrationResponse {
+	if g == nil {
 		return nil
 	}
-	return o.GetApplicationRegistrationResponse
+	return g.GetApplicationRegistrationResponse
 }

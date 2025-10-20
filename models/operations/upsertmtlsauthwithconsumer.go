@@ -18,32 +18,32 @@ type UpsertMtlsAuthWithConsumerRequest struct {
 	MTLSAuthWithoutParents components.MTLSAuthWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *UpsertMtlsAuthWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpsertMtlsAuthWithConsumerRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpsertMtlsAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (u *UpsertMtlsAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if u == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return u.ConsumerIDForNestedEntities
 }
 
-func (o *UpsertMtlsAuthWithConsumerRequest) GetMTLSAuthID() string {
-	if o == nil {
+func (u *UpsertMtlsAuthWithConsumerRequest) GetMTLSAuthID() string {
+	if u == nil {
 		return ""
 	}
-	return o.MTLSAuthID
+	return u.MTLSAuthID
 }
 
-func (o *UpsertMtlsAuthWithConsumerRequest) GetMTLSAuthWithoutParents() components.MTLSAuthWithoutParents {
-	if o == nil {
+func (u *UpsertMtlsAuthWithConsumerRequest) GetMTLSAuthWithoutParents() components.MTLSAuthWithoutParents {
+	if u == nil {
 		return components.MTLSAuthWithoutParents{}
 	}
-	return o.MTLSAuthWithoutParents
+	return u.MTLSAuthWithoutParents
 }
 
 type UpsertMtlsAuthWithConsumerResponse struct {
@@ -57,30 +57,30 @@ type UpsertMtlsAuthWithConsumerResponse struct {
 	MTLSAuth *components.MTLSAuth
 }
 
-func (o *UpsertMtlsAuthWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (u *UpsertMtlsAuthWithConsumerResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpsertMtlsAuthWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpsertMtlsAuthWithConsumerResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpsertMtlsAuthWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpsertMtlsAuthWithConsumerResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpsertMtlsAuthWithConsumerResponse) GetMTLSAuth() *components.MTLSAuth {
-	if o == nil {
+func (u *UpsertMtlsAuthWithConsumerResponse) GetMTLSAuth() *components.MTLSAuth {
+	if u == nil {
 		return nil
 	}
-	return o.MTLSAuth
+	return u.MTLSAuth
 }

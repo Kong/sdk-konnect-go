@@ -15,25 +15,25 @@ type UpdateAPIVersionRequest struct {
 	APIVersion components.APIVersion `request:"mediaType=application/json"`
 }
 
-func (o *UpdateAPIVersionRequest) GetAPIID() string {
-	if o == nil {
+func (u *UpdateAPIVersionRequest) GetAPIID() string {
+	if u == nil {
 		return ""
 	}
-	return o.APIID
+	return u.APIID
 }
 
-func (o *UpdateAPIVersionRequest) GetVersionID() string {
-	if o == nil {
+func (u *UpdateAPIVersionRequest) GetVersionID() string {
+	if u == nil {
 		return ""
 	}
-	return o.VersionID
+	return u.VersionID
 }
 
-func (o *UpdateAPIVersionRequest) GetAPIVersion() components.APIVersion {
-	if o == nil {
+func (u *UpdateAPIVersionRequest) GetAPIVersion() components.APIVersion {
+	if u == nil {
 		return components.APIVersion{}
 	}
-	return o.APIVersion
+	return u.APIVersion
 }
 
 type UpdateAPIVersionResponse struct {
@@ -47,30 +47,30 @@ type UpdateAPIVersionResponse struct {
 	APIVersionResponse *components.APIVersionResponse
 }
 
-func (o *UpdateAPIVersionResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateAPIVersionResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateAPIVersionResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateAPIVersionResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateAPIVersionResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateAPIVersionResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateAPIVersionResponse) GetAPIVersionResponse() *components.APIVersionResponse {
-	if o == nil {
+func (u *UpdateAPIVersionResponse) GetAPIVersionResponse() *components.APIVersionResponse {
+	if u == nil {
 		return nil
 	}
-	return o.APIVersionResponse
+	return u.APIVersionResponse
 }

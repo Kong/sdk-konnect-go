@@ -18,32 +18,32 @@ type UpsertKeyWithKeySetRequest struct {
 	KeyWithoutParents components.KeyWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *UpsertKeyWithKeySetRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpsertKeyWithKeySetRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpsertKeyWithKeySetRequest) GetKeySetID() string {
-	if o == nil {
+func (u *UpsertKeyWithKeySetRequest) GetKeySetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.KeySetID
+	return u.KeySetID
 }
 
-func (o *UpsertKeyWithKeySetRequest) GetKeyID() string {
-	if o == nil {
+func (u *UpsertKeyWithKeySetRequest) GetKeyID() string {
+	if u == nil {
 		return ""
 	}
-	return o.KeyID
+	return u.KeyID
 }
 
-func (o *UpsertKeyWithKeySetRequest) GetKeyWithoutParents() components.KeyWithoutParents {
-	if o == nil {
+func (u *UpsertKeyWithKeySetRequest) GetKeyWithoutParents() components.KeyWithoutParents {
+	if u == nil {
 		return components.KeyWithoutParents{}
 	}
-	return o.KeyWithoutParents
+	return u.KeyWithoutParents
 }
 
 type UpsertKeyWithKeySetResponse struct {
@@ -57,30 +57,30 @@ type UpsertKeyWithKeySetResponse struct {
 	Key *components.Key
 }
 
-func (o *UpsertKeyWithKeySetResponse) GetContentType() string {
-	if o == nil {
+func (u *UpsertKeyWithKeySetResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpsertKeyWithKeySetResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpsertKeyWithKeySetResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpsertKeyWithKeySetResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpsertKeyWithKeySetResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpsertKeyWithKeySetResponse) GetKey() *components.Key {
-	if o == nil {
+func (u *UpsertKeyWithKeySetResponse) GetKey() *components.Key {
+	if u == nil {
 		return nil
 	}
-	return o.Key
+	return u.Key
 }

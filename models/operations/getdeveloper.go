@@ -14,18 +14,18 @@ type GetDeveloperRequest struct {
 	DeveloperID string `pathParam:"style=simple,explode=false,name=developerId"`
 }
 
-func (o *GetDeveloperRequest) GetPortalID() string {
-	if o == nil {
+func (g *GetDeveloperRequest) GetPortalID() string {
+	if g == nil {
 		return ""
 	}
-	return o.PortalID
+	return g.PortalID
 }
 
-func (o *GetDeveloperRequest) GetDeveloperID() string {
-	if o == nil {
+func (g *GetDeveloperRequest) GetDeveloperID() string {
+	if g == nil {
 		return ""
 	}
-	return o.DeveloperID
+	return g.DeveloperID
 }
 
 type GetDeveloperResponse struct {
@@ -39,30 +39,30 @@ type GetDeveloperResponse struct {
 	PortalDeveloper *components.PortalDeveloper
 }
 
-func (o *GetDeveloperResponse) GetContentType() string {
-	if o == nil {
+func (g *GetDeveloperResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetDeveloperResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetDeveloperResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetDeveloperResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetDeveloperResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetDeveloperResponse) GetPortalDeveloper() *components.PortalDeveloper {
-	if o == nil {
+func (g *GetDeveloperResponse) GetPortalDeveloper() *components.PortalDeveloper {
+	if g == nil {
 		return nil
 	}
-	return o.PortalDeveloper
+	return g.PortalDeveloper
 }

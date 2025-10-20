@@ -25,11 +25,11 @@ func (d *DateTimeFieldGTEFilter) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DateTimeFieldGTEFilter) GetLte() *time.Time {
-	if o == nil {
+func (d *DateTimeFieldGTEFilter) GetLte() *time.Time {
+	if d == nil {
 		return nil
 	}
-	return o.Lte
+	return d.Lte
 }
 
 type DateTimeFieldGTFilter struct {
@@ -48,11 +48,11 @@ func (d *DateTimeFieldGTFilter) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DateTimeFieldGTFilter) GetLt() *time.Time {
-	if o == nil {
+func (d *DateTimeFieldGTFilter) GetLt() *time.Time {
+	if d == nil {
 		return nil
 	}
-	return o.Lt
+	return d.Lt
 }
 
 type DateTimeFieldLTEFilter struct {
@@ -71,11 +71,11 @@ func (d *DateTimeFieldLTEFilter) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DateTimeFieldLTEFilter) GetLte() time.Time {
-	if o == nil {
+func (d *DateTimeFieldLTEFilter) GetLte() time.Time {
+	if d == nil {
 		return time.Time{}
 	}
-	return o.Lte
+	return d.Lte
 }
 
 type DateTimeFieldLTFilter struct {
@@ -94,11 +94,11 @@ func (d *DateTimeFieldLTFilter) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DateTimeFieldLTFilter) GetLt() time.Time {
-	if o == nil {
+func (d *DateTimeFieldLTFilter) GetLt() time.Time {
+	if d == nil {
 		return time.Time{}
 	}
-	return o.Lt
+	return d.Lt
 }
 
 type DateTimeFieldEqualsFilter struct {
@@ -117,11 +117,11 @@ func (d *DateTimeFieldEqualsFilter) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DateTimeFieldEqualsFilter) GetEq() time.Time {
-	if o == nil {
+func (d *DateTimeFieldEqualsFilter) GetEq() time.Time {
+	if d == nil {
 		return time.Time{}
 	}
-	return o.Eq
+	return d.Eq
 }
 
 type DateTimeFieldFilterType string
@@ -136,11 +136,11 @@ const (
 
 // DateTimeFieldFilter - Filters on the given datetime (RFC-3339) field value.
 type DateTimeFieldFilter struct {
-	DateTimeFieldEqualsFilter *DateTimeFieldEqualsFilter `queryParam:"inline" name:"DateTimeFieldFilter"`
-	DateTimeFieldLTFilter     *DateTimeFieldLTFilter     `queryParam:"inline" name:"DateTimeFieldFilter"`
-	DateTimeFieldLTEFilter    *DateTimeFieldLTEFilter    `queryParam:"inline" name:"DateTimeFieldFilter"`
-	DateTimeFieldGTFilter     *DateTimeFieldGTFilter     `queryParam:"inline" name:"DateTimeFieldFilter"`
-	DateTimeFieldGTEFilter    *DateTimeFieldGTEFilter    `queryParam:"inline" name:"DateTimeFieldFilter"`
+	DateTimeFieldEqualsFilter *DateTimeFieldEqualsFilter `queryParam:"inline,name=DateTimeFieldFilter"`
+	DateTimeFieldLTFilter     *DateTimeFieldLTFilter     `queryParam:"inline,name=DateTimeFieldFilter"`
+	DateTimeFieldLTEFilter    *DateTimeFieldLTEFilter    `queryParam:"inline,name=DateTimeFieldFilter"`
+	DateTimeFieldGTFilter     *DateTimeFieldGTFilter     `queryParam:"inline,name=DateTimeFieldFilter"`
+	DateTimeFieldGTEFilter    *DateTimeFieldGTEFilter    `queryParam:"inline,name=DateTimeFieldFilter"`
 
 	Type DateTimeFieldFilterType
 }

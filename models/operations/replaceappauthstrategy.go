@@ -13,26 +13,26 @@ type ReplaceAppAuthStrategyRequest struct {
 	CreateAppAuthStrategyRequest components.CreateAppAuthStrategyRequest `request:"mediaType=application/json"`
 }
 
-func (o *ReplaceAppAuthStrategyRequest) GetAuthStrategyID() string {
-	if o == nil {
+func (r *ReplaceAppAuthStrategyRequest) GetAuthStrategyID() string {
+	if r == nil {
 		return ""
 	}
-	return o.AuthStrategyID
+	return r.AuthStrategyID
 }
 
-func (o *ReplaceAppAuthStrategyRequest) GetCreateAppAuthStrategyRequest() components.CreateAppAuthStrategyRequest {
-	if o == nil {
+func (r *ReplaceAppAuthStrategyRequest) GetCreateAppAuthStrategyRequest() components.CreateAppAuthStrategyRequest {
+	if r == nil {
 		return components.CreateAppAuthStrategyRequest{}
 	}
-	return o.CreateAppAuthStrategyRequest
+	return r.CreateAppAuthStrategyRequest
 }
 
-func (o *ReplaceAppAuthStrategyRequest) GetCreateAppAuthStrategyRequestKeyAuth() *components.AppAuthStrategyKeyAuthRequest {
-	return o.GetCreateAppAuthStrategyRequest().AppAuthStrategyKeyAuthRequest
+func (r *ReplaceAppAuthStrategyRequest) GetCreateAppAuthStrategyRequestKeyAuth() *components.AppAuthStrategyKeyAuthRequest {
+	return r.GetCreateAppAuthStrategyRequest().AppAuthStrategyKeyAuthRequest
 }
 
-func (o *ReplaceAppAuthStrategyRequest) GetCreateAppAuthStrategyRequestOpenidConnect() *components.AppAuthStrategyOpenIDConnectRequest {
-	return o.GetCreateAppAuthStrategyRequest().AppAuthStrategyOpenIDConnectRequest
+func (r *ReplaceAppAuthStrategyRequest) GetCreateAppAuthStrategyRequestOpenidConnect() *components.AppAuthStrategyOpenIDConnectRequest {
+	return r.GetCreateAppAuthStrategyRequest().AppAuthStrategyOpenIDConnectRequest
 }
 
 type ReplaceAppAuthStrategyResponse struct {
@@ -46,43 +46,43 @@ type ReplaceAppAuthStrategyResponse struct {
 	CreateAppAuthStrategyResponse *components.CreateAppAuthStrategyResponse
 }
 
-func (o *ReplaceAppAuthStrategyResponse) GetContentType() string {
-	if o == nil {
+func (r *ReplaceAppAuthStrategyResponse) GetContentType() string {
+	if r == nil {
 		return ""
 	}
-	return o.ContentType
+	return r.ContentType
 }
 
-func (o *ReplaceAppAuthStrategyResponse) GetStatusCode() int {
-	if o == nil {
+func (r *ReplaceAppAuthStrategyResponse) GetStatusCode() int {
+	if r == nil {
 		return 0
 	}
-	return o.StatusCode
+	return r.StatusCode
 }
 
-func (o *ReplaceAppAuthStrategyResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (r *ReplaceAppAuthStrategyResponse) GetRawResponse() *http.Response {
+	if r == nil {
 		return nil
 	}
-	return o.RawResponse
+	return r.RawResponse
 }
 
-func (o *ReplaceAppAuthStrategyResponse) GetCreateAppAuthStrategyResponse() *components.CreateAppAuthStrategyResponse {
-	if o == nil {
+func (r *ReplaceAppAuthStrategyResponse) GetCreateAppAuthStrategyResponse() *components.CreateAppAuthStrategyResponse {
+	if r == nil {
 		return nil
 	}
-	return o.CreateAppAuthStrategyResponse
+	return r.CreateAppAuthStrategyResponse
 }
 
-func (o *ReplaceAppAuthStrategyResponse) GetCreateAppAuthStrategyResponseKeyAuth() *components.AppAuthStrategyKeyAuthResponse {
-	if v := o.GetCreateAppAuthStrategyResponse(); v != nil {
+func (r *ReplaceAppAuthStrategyResponse) GetCreateAppAuthStrategyResponseKeyAuth() *components.AppAuthStrategyKeyAuthResponse {
+	if v := r.GetCreateAppAuthStrategyResponse(); v != nil {
 		return v.AppAuthStrategyKeyAuthResponse
 	}
 	return nil
 }
 
-func (o *ReplaceAppAuthStrategyResponse) GetCreateAppAuthStrategyResponseOpenidConnect() *components.AppAuthStrategyOpenIDConnectResponse {
-	if v := o.GetCreateAppAuthStrategyResponse(); v != nil {
+func (r *ReplaceAppAuthStrategyResponse) GetCreateAppAuthStrategyResponseOpenidConnect() *components.AppAuthStrategyOpenIDConnectResponse {
+	if v := r.GetCreateAppAuthStrategyResponse(); v != nil {
 		return v.AppAuthStrategyOpenIDConnectResponse
 	}
 	return nil

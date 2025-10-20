@@ -9,16 +9,16 @@ type ListPrivateDNSResponse struct {
 	Data []PrivateDNSResponse `json:"data"`
 }
 
-func (o *ListPrivateDNSResponse) GetMeta() PaginatedMeta {
-	if o == nil {
+func (l *ListPrivateDNSResponse) GetMeta() PaginatedMeta {
+	if l == nil {
 		return PaginatedMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListPrivateDNSResponse) GetData() []PrivateDNSResponse {
-	if o == nil {
+func (l *ListPrivateDNSResponse) GetData() []PrivateDNSResponse {
+	if l == nil {
 		return []PrivateDNSResponse{}
 	}
-	return o.Data
+	return l.Data
 }

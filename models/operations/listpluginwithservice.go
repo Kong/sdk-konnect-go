@@ -32,39 +32,39 @@ func (l *ListPluginWithServiceRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListPluginWithServiceRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListPluginWithServiceRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListPluginWithServiceRequest) GetServiceID() string {
-	if o == nil {
+func (l *ListPluginWithServiceRequest) GetServiceID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ServiceID
+	return l.ServiceID
 }
 
-func (o *ListPluginWithServiceRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListPluginWithServiceRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListPluginWithServiceRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListPluginWithServiceRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListPluginWithServiceRequest) GetTags() *string {
-	if o == nil {
+func (l *ListPluginWithServiceRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListPluginWithServiceResponseBody - A successful response listing Plugins
@@ -76,25 +76,25 @@ type ListPluginWithServiceResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListPluginWithServiceResponseBody) GetData() []components.Plugin {
-	if o == nil {
+func (l *ListPluginWithServiceResponseBody) GetData() []components.Plugin {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListPluginWithServiceResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListPluginWithServiceResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListPluginWithServiceResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListPluginWithServiceResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListPluginWithServiceResponse struct {
@@ -108,30 +108,30 @@ type ListPluginWithServiceResponse struct {
 	Object *ListPluginWithServiceResponseBody
 }
 
-func (o *ListPluginWithServiceResponse) GetContentType() string {
-	if o == nil {
+func (l *ListPluginWithServiceResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListPluginWithServiceResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListPluginWithServiceResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListPluginWithServiceResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListPluginWithServiceResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListPluginWithServiceResponse) GetObject() *ListPluginWithServiceResponseBody {
-	if o == nil {
+func (l *ListPluginWithServiceResponse) GetObject() *ListPluginWithServiceResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

@@ -14,18 +14,18 @@ type GetServiceRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 }
 
-func (o *GetServiceRequest) GetServiceID() string {
-	if o == nil {
+func (g *GetServiceRequest) GetServiceID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ServiceID
+	return g.ServiceID
 }
 
-func (o *GetServiceRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetServiceRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
 type GetServiceResponse struct {
@@ -39,30 +39,30 @@ type GetServiceResponse struct {
 	Service *components.ServiceOutput
 }
 
-func (o *GetServiceResponse) GetContentType() string {
-	if o == nil {
+func (g *GetServiceResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetServiceResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetServiceResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetServiceResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetServiceResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetServiceResponse) GetService() *components.ServiceOutput {
-	if o == nil {
+func (g *GetServiceResponse) GetService() *components.ServiceOutput {
+	if g == nil {
 		return nil
 	}
-	return o.Service
+	return g.Service
 }

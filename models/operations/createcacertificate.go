@@ -14,18 +14,18 @@ type CreateCaCertificateRequest struct {
 	CACertificate components.CACertificate `request:"mediaType=application/json"`
 }
 
-func (o *CreateCaCertificateRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreateCaCertificateRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreateCaCertificateRequest) GetCACertificate() components.CACertificate {
-	if o == nil {
+func (c *CreateCaCertificateRequest) GetCACertificate() components.CACertificate {
+	if c == nil {
 		return components.CACertificate{}
 	}
-	return o.CACertificate
+	return c.CACertificate
 }
 
 type CreateCaCertificateResponse struct {
@@ -39,30 +39,30 @@ type CreateCaCertificateResponse struct {
 	CACertificate *components.CACertificate
 }
 
-func (o *CreateCaCertificateResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateCaCertificateResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateCaCertificateResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateCaCertificateResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateCaCertificateResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateCaCertificateResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateCaCertificateResponse) GetCACertificate() *components.CACertificate {
-	if o == nil {
+func (c *CreateCaCertificateResponse) GetCACertificate() *components.CACertificate {
+	if c == nil {
 		return nil
 	}
-	return o.CACertificate
+	return c.CACertificate
 }

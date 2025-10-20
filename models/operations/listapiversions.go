@@ -18,32 +18,32 @@ type ListAPIVersionsRequest struct {
 	Filter *components.APIVersionFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *ListAPIVersionsRequest) GetAPIID() string {
-	if o == nil {
+func (l *ListAPIVersionsRequest) GetAPIID() string {
+	if l == nil {
 		return ""
 	}
-	return o.APIID
+	return l.APIID
 }
 
-func (o *ListAPIVersionsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListAPIVersionsRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListAPIVersionsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListAPIVersionsRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListAPIVersionsRequest) GetFilter() *components.APIVersionFilterParameters {
-	if o == nil {
+func (l *ListAPIVersionsRequest) GetFilter() *components.APIVersionFilterParameters {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
 type ListAPIVersionsResponse struct {
@@ -57,30 +57,30 @@ type ListAPIVersionsResponse struct {
 	ListAPIVersionResponse *components.ListAPIVersionResponse
 }
 
-func (o *ListAPIVersionsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListAPIVersionsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListAPIVersionsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListAPIVersionsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListAPIVersionsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListAPIVersionsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListAPIVersionsResponse) GetListAPIVersionResponse() *components.ListAPIVersionResponse {
-	if o == nil {
+func (l *ListAPIVersionsResponse) GetListAPIVersionResponse() *components.ListAPIVersionResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListAPIVersionResponse
+	return l.ListAPIVersionResponse
 }

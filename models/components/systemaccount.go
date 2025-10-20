@@ -34,44 +34,44 @@ func (s *SystemAccount) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *SystemAccount) GetID() *string {
-	if o == nil {
+func (s *SystemAccount) GetID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *SystemAccount) GetName() *string {
-	if o == nil {
+func (s *SystemAccount) GetName() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Name
+	return s.Name
 }
 
-func (o *SystemAccount) GetDescription() *string {
-	if o == nil {
+func (s *SystemAccount) GetDescription() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Description
+	return s.Description
 }
 
-func (o *SystemAccount) GetCreatedAt() *time.Time {
-	if o == nil {
+func (s *SystemAccount) GetCreatedAt() *time.Time {
+	if s == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return s.CreatedAt
 }
 
-func (o *SystemAccount) GetUpdatedAt() *time.Time {
-	if o == nil {
+func (s *SystemAccount) GetUpdatedAt() *time.Time {
+	if s == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return s.UpdatedAt
 }
 
-func (o *SystemAccount) GetKonnectManaged() *bool {
-	if o == nil {
+func (s *SystemAccount) GetKonnectManaged() *bool {
+	if s == nil {
 		return nil
 	}
-	return o.KonnectManaged
+	return s.KonnectManaged
 }

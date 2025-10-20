@@ -16,25 +16,25 @@ type GetPluginWithServiceRequest struct {
 	PluginID string `pathParam:"style=simple,explode=false,name=PluginId"`
 }
 
-func (o *GetPluginWithServiceRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetPluginWithServiceRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
-func (o *GetPluginWithServiceRequest) GetServiceID() string {
-	if o == nil {
+func (g *GetPluginWithServiceRequest) GetServiceID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ServiceID
+	return g.ServiceID
 }
 
-func (o *GetPluginWithServiceRequest) GetPluginID() string {
-	if o == nil {
+func (g *GetPluginWithServiceRequest) GetPluginID() string {
+	if g == nil {
 		return ""
 	}
-	return o.PluginID
+	return g.PluginID
 }
 
 type GetPluginWithServiceResponse struct {
@@ -48,30 +48,30 @@ type GetPluginWithServiceResponse struct {
 	Plugin *components.Plugin
 }
 
-func (o *GetPluginWithServiceResponse) GetContentType() string {
-	if o == nil {
+func (g *GetPluginWithServiceResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetPluginWithServiceResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetPluginWithServiceResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetPluginWithServiceResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetPluginWithServiceResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetPluginWithServiceResponse) GetPlugin() *components.Plugin {
-	if o == nil {
+func (g *GetPluginWithServiceResponse) GetPlugin() *components.Plugin {
+	if g == nil {
 		return nil
 	}
-	return o.Plugin
+	return g.Plugin
 }

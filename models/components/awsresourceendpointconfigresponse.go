@@ -32,23 +32,23 @@ func (a *AwsResourceEndpointConfigResponse) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *AwsResourceEndpointConfigResponse) GetResourceConfigID() string {
-	if o == nil {
+func (a *AwsResourceEndpointConfigResponse) GetResourceConfigID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ResourceConfigID
+	return a.ResourceConfigID
 }
 
-func (o *AwsResourceEndpointConfigResponse) GetDomainName() string {
-	if o == nil {
+func (a *AwsResourceEndpointConfigResponse) GetDomainName() string {
+	if a == nil {
 		return ""
 	}
-	return o.DomainName
+	return a.DomainName
 }
 
-func (o *AwsResourceEndpointConfigResponse) GetState() AwsResourceEndpointConfigState {
-	if o == nil {
+func (a *AwsResourceEndpointConfigResponse) GetState() AwsResourceEndpointConfigState {
+	if a == nil {
 		return AwsResourceEndpointConfigState("")
 	}
-	return o.State
+	return a.State
 }

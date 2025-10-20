@@ -31,8 +31,8 @@ const (
 
 // CustomDomainStateFieldEqualsFilter - Filter custom domain state by exact match.
 type CustomDomainStateFieldEqualsFilter struct {
-	CustomDomainState                      *CustomDomainState                      `queryParam:"inline" name:"CustomDomainStateFieldEqualsFilter"`
-	CustomDomainStateFieldEqualsComparison *CustomDomainStateFieldEqualsComparison `queryParam:"inline" name:"CustomDomainStateFieldEqualsFilter"`
+	CustomDomainState                      *CustomDomainState                      `queryParam:"inline,name=CustomDomainStateFieldEqualsFilter"`
+	CustomDomainStateFieldEqualsComparison *CustomDomainStateFieldEqualsComparison `queryParam:"inline,name=CustomDomainStateFieldEqualsFilter"`
 
 	Type CustomDomainStateFieldEqualsFilterType
 }
@@ -57,17 +57,17 @@ func CreateCustomDomainStateFieldEqualsFilterCustomDomainStateFieldEqualsCompari
 
 func (u *CustomDomainStateFieldEqualsFilter) UnmarshalJSON(data []byte) error {
 
-	var customDomainStateFieldEqualsComparison CustomDomainStateFieldEqualsComparison = CustomDomainStateFieldEqualsComparison{}
-	if err := utils.UnmarshalJSON(data, &customDomainStateFieldEqualsComparison, "", true, nil); err == nil {
-		u.CustomDomainStateFieldEqualsComparison = &customDomainStateFieldEqualsComparison
-		u.Type = CustomDomainStateFieldEqualsFilterTypeCustomDomainStateFieldEqualsComparison
-		return nil
-	}
-
 	var customDomainState CustomDomainState = CustomDomainState("")
 	if err := utils.UnmarshalJSON(data, &customDomainState, "", true, nil); err == nil {
 		u.CustomDomainState = &customDomainState
 		u.Type = CustomDomainStateFieldEqualsFilterTypeCustomDomainState
+		return nil
+	}
+
+	var customDomainStateFieldEqualsComparison CustomDomainStateFieldEqualsComparison = CustomDomainStateFieldEqualsComparison{}
+	if err := utils.UnmarshalJSON(data, &customDomainStateFieldEqualsComparison, "", true, nil); err == nil {
+		u.CustomDomainStateFieldEqualsComparison = &customDomainStateFieldEqualsComparison
+		u.Type = CustomDomainStateFieldEqualsFilterTypeCustomDomainStateFieldEqualsComparison
 		return nil
 	}
 

@@ -23,16 +23,16 @@ func (p *PortalCreateTeamRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PortalCreateTeamRequest) GetName() string {
-	if o == nil {
+func (p *PortalCreateTeamRequest) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PortalCreateTeamRequest) GetDescription() *string {
-	if o == nil {
+func (p *PortalCreateTeamRequest) GetDescription() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Description
+	return p.Description
 }

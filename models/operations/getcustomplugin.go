@@ -14,18 +14,18 @@ type GetCustomPluginRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 }
 
-func (o *GetCustomPluginRequest) GetCustomPluginID() string {
-	if o == nil {
+func (g *GetCustomPluginRequest) GetCustomPluginID() string {
+	if g == nil {
 		return ""
 	}
-	return o.CustomPluginID
+	return g.CustomPluginID
 }
 
-func (o *GetCustomPluginRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetCustomPluginRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
 type GetCustomPluginResponse struct {
@@ -39,30 +39,30 @@ type GetCustomPluginResponse struct {
 	CustomPlugin *components.CustomPlugin
 }
 
-func (o *GetCustomPluginResponse) GetContentType() string {
-	if o == nil {
+func (g *GetCustomPluginResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetCustomPluginResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetCustomPluginResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetCustomPluginResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetCustomPluginResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetCustomPluginResponse) GetCustomPlugin() *components.CustomPlugin {
-	if o == nil {
+func (g *GetCustomPluginResponse) GetCustomPlugin() *components.CustomPlugin {
+	if g == nil {
 		return nil
 	}
-	return o.CustomPlugin
+	return g.CustomPlugin
 }

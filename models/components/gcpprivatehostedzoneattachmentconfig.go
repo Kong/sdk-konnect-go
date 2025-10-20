@@ -52,30 +52,30 @@ func (g *GcpPrivateHostedZoneAttachmentConfig) UnmarshalJSON(data []byte) error 
 	return nil
 }
 
-func (o *GcpPrivateHostedZoneAttachmentConfig) GetKind() GCPPrivateHostedZoneType {
-	if o == nil {
+func (g *GcpPrivateHostedZoneAttachmentConfig) GetKind() GCPPrivateHostedZoneType {
+	if g == nil {
 		return GCPPrivateHostedZoneType("")
 	}
-	return o.Kind
+	return g.Kind
 }
 
-func (o *GcpPrivateHostedZoneAttachmentConfig) GetDomainName() string {
-	if o == nil {
+func (g *GcpPrivateHostedZoneAttachmentConfig) GetDomainName() string {
+	if g == nil {
 		return ""
 	}
-	return o.DomainName
+	return g.DomainName
 }
 
-func (o *GcpPrivateHostedZoneAttachmentConfig) GetPeerProjectID() string {
-	if o == nil {
+func (g *GcpPrivateHostedZoneAttachmentConfig) GetPeerProjectID() string {
+	if g == nil {
 		return ""
 	}
-	return o.PeerProjectID
+	return g.PeerProjectID
 }
 
-func (o *GcpPrivateHostedZoneAttachmentConfig) GetPeerVpcName() string {
-	if o == nil {
+func (g *GcpPrivateHostedZoneAttachmentConfig) GetPeerVpcName() string {
+	if g == nil {
 		return ""
 	}
-	return o.PeerVpcName
+	return g.PeerVpcName
 }

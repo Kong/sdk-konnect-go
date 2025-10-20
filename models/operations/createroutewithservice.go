@@ -16,25 +16,25 @@ type CreateRouteWithServiceRequest struct {
 	RouteWithoutParents components.RouteWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *CreateRouteWithServiceRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreateRouteWithServiceRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreateRouteWithServiceRequest) GetServiceID() string {
-	if o == nil {
+func (c *CreateRouteWithServiceRequest) GetServiceID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ServiceID
+	return c.ServiceID
 }
 
-func (o *CreateRouteWithServiceRequest) GetRouteWithoutParents() components.RouteWithoutParents {
-	if o == nil {
+func (c *CreateRouteWithServiceRequest) GetRouteWithoutParents() components.RouteWithoutParents {
+	if c == nil {
 		return components.RouteWithoutParents{}
 	}
-	return o.RouteWithoutParents
+	return c.RouteWithoutParents
 }
 
 type CreateRouteWithServiceResponse struct {
@@ -48,30 +48,30 @@ type CreateRouteWithServiceResponse struct {
 	Route *components.Route
 }
 
-func (o *CreateRouteWithServiceResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateRouteWithServiceResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateRouteWithServiceResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateRouteWithServiceResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateRouteWithServiceResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateRouteWithServiceResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateRouteWithServiceResponse) GetRoute() *components.Route {
-	if o == nil {
+func (c *CreateRouteWithServiceResponse) GetRoute() *components.Route {
+	if c == nil {
 		return nil
 	}
-	return o.Route
+	return c.Route
 }

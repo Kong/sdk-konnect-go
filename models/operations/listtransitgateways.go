@@ -22,32 +22,32 @@ type ListTransitGatewaysRequest struct {
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 }
 
-func (o *ListTransitGatewaysRequest) GetNetworkID() string {
-	if o == nil {
+func (l *ListTransitGatewaysRequest) GetNetworkID() string {
+	if l == nil {
 		return ""
 	}
-	return o.NetworkID
+	return l.NetworkID
 }
 
-func (o *ListTransitGatewaysRequest) GetFilter() *components.TransitGatewaysFilterParameters {
-	if o == nil {
+func (l *ListTransitGatewaysRequest) GetFilter() *components.TransitGatewaysFilterParameters {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
-func (o *ListTransitGatewaysRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListTransitGatewaysRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListTransitGatewaysRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListTransitGatewaysRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
 type ListTransitGatewaysResponse struct {
@@ -61,30 +61,30 @@ type ListTransitGatewaysResponse struct {
 	ListTransitGatewaysResponse *components.ListTransitGatewaysResponse
 }
 
-func (o *ListTransitGatewaysResponse) GetContentType() string {
-	if o == nil {
+func (l *ListTransitGatewaysResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListTransitGatewaysResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListTransitGatewaysResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListTransitGatewaysResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListTransitGatewaysResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListTransitGatewaysResponse) GetListTransitGatewaysResponse() *components.ListTransitGatewaysResponse {
-	if o == nil {
+func (l *ListTransitGatewaysResponse) GetListTransitGatewaysResponse() *components.ListTransitGatewaysResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListTransitGatewaysResponse
+	return l.ListTransitGatewaysResponse
 }

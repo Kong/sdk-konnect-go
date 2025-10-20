@@ -30,37 +30,37 @@ func (c *CursorMetaPage) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CursorMetaPage) GetFirst() *string {
-	if o == nil {
+func (c *CursorMetaPage) GetFirst() *string {
+	if c == nil {
 		return nil
 	}
-	return o.First
+	return c.First
 }
 
-func (o *CursorMetaPage) GetLast() *string {
-	if o == nil {
+func (c *CursorMetaPage) GetLast() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Last
+	return c.Last
 }
 
-func (o *CursorMetaPage) GetNext() *string {
-	if o == nil {
+func (c *CursorMetaPage) GetNext() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Next
+	return c.Next
 }
 
-func (o *CursorMetaPage) GetPrevious() *string {
-	if o == nil {
+func (c *CursorMetaPage) GetPrevious() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Previous
+	return c.Previous
 }
 
-func (o *CursorMetaPage) GetSize() float64 {
-	if o == nil {
+func (c *CursorMetaPage) GetSize() float64 {
+	if c == nil {
 		return 0.0
 	}
-	return o.Size
+	return c.Size
 }

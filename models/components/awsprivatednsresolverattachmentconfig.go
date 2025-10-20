@@ -49,16 +49,16 @@ func (a *AwsPrivateDNSResolverAttachmentConfig) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (o *AwsPrivateDNSResolverAttachmentConfig) GetKind() AWSPrivateDNSResolverType {
-	if o == nil {
+func (a *AwsPrivateDNSResolverAttachmentConfig) GetKind() AWSPrivateDNSResolverType {
+	if a == nil {
 		return AWSPrivateDNSResolverType("")
 	}
-	return o.Kind
+	return a.Kind
 }
 
-func (o *AwsPrivateDNSResolverAttachmentConfig) GetDNSConfig() map[string]PrivateDNSResolverConfig {
-	if o == nil {
+func (a *AwsPrivateDNSResolverAttachmentConfig) GetDNSConfig() map[string]PrivateDNSResolverConfig {
+	if a == nil {
 		return map[string]PrivateDNSResolverConfig{}
 	}
-	return o.DNSConfig
+	return a.DNSConfig
 }

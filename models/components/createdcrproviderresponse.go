@@ -65,74 +65,74 @@ func (d *DCRProviderHTTP) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DCRProviderHTTP) GetProviderType() string {
-	if o == nil {
+func (d *DCRProviderHTTP) GetProviderType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ProviderType
+	return d.ProviderType
 }
 
-func (o *DCRProviderHTTP) GetDcrConfig() DcrProviderHTTPDcrConfig {
-	if o == nil {
+func (d *DCRProviderHTTP) GetDcrConfig() DcrProviderHTTPDcrConfig {
+	if d == nil {
 		return DcrProviderHTTPDcrConfig{}
 	}
-	return o.DcrConfig
+	return d.DcrConfig
 }
 
-func (o *DCRProviderHTTP) GetID() string {
-	if o == nil {
+func (d *DCRProviderHTTP) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DCRProviderHTTP) GetName() string {
-	if o == nil {
+func (d *DCRProviderHTTP) GetName() string {
+	if d == nil {
 		return ""
 	}
-	return o.Name
+	return d.Name
 }
 
-func (o *DCRProviderHTTP) GetDisplayName() *string {
-	if o == nil {
+func (d *DCRProviderHTTP) GetDisplayName() *string {
+	if d == nil {
 		return nil
 	}
-	return o.DisplayName
+	return d.DisplayName
 }
 
-func (o *DCRProviderHTTP) GetIssuer() string {
-	if o == nil {
+func (d *DCRProviderHTTP) GetIssuer() string {
+	if d == nil {
 		return ""
 	}
-	return o.Issuer
+	return d.Issuer
 }
 
-func (o *DCRProviderHTTP) GetActive() bool {
-	if o == nil {
+func (d *DCRProviderHTTP) GetActive() bool {
+	if d == nil {
 		return false
 	}
-	return o.Active
+	return d.Active
 }
 
-func (o *DCRProviderHTTP) GetLabels() map[string]string {
-	if o == nil {
+func (d *DCRProviderHTTP) GetLabels() map[string]string {
+	if d == nil {
 		return nil
 	}
-	return o.Labels
+	return d.Labels
 }
 
-func (o *DCRProviderHTTP) GetCreatedAt() time.Time {
-	if o == nil {
+func (d *DCRProviderHTTP) GetCreatedAt() time.Time {
+	if d == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return d.CreatedAt
 }
 
-func (o *DCRProviderHTTP) GetUpdatedAt() time.Time {
-	if o == nil {
+func (d *DCRProviderHTTP) GetUpdatedAt() time.Time {
+	if d == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return d.UpdatedAt
 }
 
 // DcrProviderOktaDcrConfig - The DCR configuration for this DCR provider.
@@ -190,74 +190,74 @@ func (d *DCRProviderOKTA) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DCRProviderOKTA) GetProviderType() string {
-	if o == nil {
+func (d *DCRProviderOKTA) GetProviderType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ProviderType
+	return d.ProviderType
 }
 
-func (o *DCRProviderOKTA) GetDcrConfig() DcrProviderOktaDcrConfig {
-	if o == nil {
+func (d *DCRProviderOKTA) GetDcrConfig() DcrProviderOktaDcrConfig {
+	if d == nil {
 		return DcrProviderOktaDcrConfig{}
 	}
-	return o.DcrConfig
+	return d.DcrConfig
 }
 
-func (o *DCRProviderOKTA) GetID() string {
-	if o == nil {
+func (d *DCRProviderOKTA) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DCRProviderOKTA) GetName() string {
-	if o == nil {
+func (d *DCRProviderOKTA) GetName() string {
+	if d == nil {
 		return ""
 	}
-	return o.Name
+	return d.Name
 }
 
-func (o *DCRProviderOKTA) GetDisplayName() *string {
-	if o == nil {
+func (d *DCRProviderOKTA) GetDisplayName() *string {
+	if d == nil {
 		return nil
 	}
-	return o.DisplayName
+	return d.DisplayName
 }
 
-func (o *DCRProviderOKTA) GetIssuer() string {
-	if o == nil {
+func (d *DCRProviderOKTA) GetIssuer() string {
+	if d == nil {
 		return ""
 	}
-	return o.Issuer
+	return d.Issuer
 }
 
-func (o *DCRProviderOKTA) GetActive() bool {
-	if o == nil {
+func (d *DCRProviderOKTA) GetActive() bool {
+	if d == nil {
 		return false
 	}
-	return o.Active
+	return d.Active
 }
 
-func (o *DCRProviderOKTA) GetLabels() map[string]string {
-	if o == nil {
+func (d *DCRProviderOKTA) GetLabels() map[string]string {
+	if d == nil {
 		return nil
 	}
-	return o.Labels
+	return d.Labels
 }
 
-func (o *DCRProviderOKTA) GetCreatedAt() time.Time {
-	if o == nil {
+func (d *DCRProviderOKTA) GetCreatedAt() time.Time {
+	if d == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return d.CreatedAt
 }
 
-func (o *DCRProviderOKTA) GetUpdatedAt() time.Time {
-	if o == nil {
+func (d *DCRProviderOKTA) GetUpdatedAt() time.Time {
+	if d == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return d.UpdatedAt
 }
 
 // DcrProviderCurityDcrConfig - The DCR configuration for this DCR provider.
@@ -315,74 +315,74 @@ func (d *DCRProviderCurity) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DCRProviderCurity) GetProviderType() string {
-	if o == nil {
+func (d *DCRProviderCurity) GetProviderType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ProviderType
+	return d.ProviderType
 }
 
-func (o *DCRProviderCurity) GetDcrConfig() DcrProviderCurityDcrConfig {
-	if o == nil {
+func (d *DCRProviderCurity) GetDcrConfig() DcrProviderCurityDcrConfig {
+	if d == nil {
 		return DcrProviderCurityDcrConfig{}
 	}
-	return o.DcrConfig
+	return d.DcrConfig
 }
 
-func (o *DCRProviderCurity) GetID() string {
-	if o == nil {
+func (d *DCRProviderCurity) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DCRProviderCurity) GetName() string {
-	if o == nil {
+func (d *DCRProviderCurity) GetName() string {
+	if d == nil {
 		return ""
 	}
-	return o.Name
+	return d.Name
 }
 
-func (o *DCRProviderCurity) GetDisplayName() *string {
-	if o == nil {
+func (d *DCRProviderCurity) GetDisplayName() *string {
+	if d == nil {
 		return nil
 	}
-	return o.DisplayName
+	return d.DisplayName
 }
 
-func (o *DCRProviderCurity) GetIssuer() string {
-	if o == nil {
+func (d *DCRProviderCurity) GetIssuer() string {
+	if d == nil {
 		return ""
 	}
-	return o.Issuer
+	return d.Issuer
 }
 
-func (o *DCRProviderCurity) GetActive() bool {
-	if o == nil {
+func (d *DCRProviderCurity) GetActive() bool {
+	if d == nil {
 		return false
 	}
-	return o.Active
+	return d.Active
 }
 
-func (o *DCRProviderCurity) GetLabels() map[string]string {
-	if o == nil {
+func (d *DCRProviderCurity) GetLabels() map[string]string {
+	if d == nil {
 		return nil
 	}
-	return o.Labels
+	return d.Labels
 }
 
-func (o *DCRProviderCurity) GetCreatedAt() time.Time {
-	if o == nil {
+func (d *DCRProviderCurity) GetCreatedAt() time.Time {
+	if d == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return d.CreatedAt
 }
 
-func (o *DCRProviderCurity) GetUpdatedAt() time.Time {
-	if o == nil {
+func (d *DCRProviderCurity) GetUpdatedAt() time.Time {
+	if d == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return d.UpdatedAt
 }
 
 // DcrProviderAzureAdDcrConfig - The DCR configuration for this DCR provider.
@@ -440,74 +440,74 @@ func (d *DCRProviderAzureAD) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DCRProviderAzureAD) GetProviderType() string {
-	if o == nil {
+func (d *DCRProviderAzureAD) GetProviderType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ProviderType
+	return d.ProviderType
 }
 
-func (o *DCRProviderAzureAD) GetDcrConfig() DcrProviderAzureAdDcrConfig {
-	if o == nil {
+func (d *DCRProviderAzureAD) GetDcrConfig() DcrProviderAzureAdDcrConfig {
+	if d == nil {
 		return DcrProviderAzureAdDcrConfig{}
 	}
-	return o.DcrConfig
+	return d.DcrConfig
 }
 
-func (o *DCRProviderAzureAD) GetID() string {
-	if o == nil {
+func (d *DCRProviderAzureAD) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DCRProviderAzureAD) GetName() string {
-	if o == nil {
+func (d *DCRProviderAzureAD) GetName() string {
+	if d == nil {
 		return ""
 	}
-	return o.Name
+	return d.Name
 }
 
-func (o *DCRProviderAzureAD) GetDisplayName() *string {
-	if o == nil {
+func (d *DCRProviderAzureAD) GetDisplayName() *string {
+	if d == nil {
 		return nil
 	}
-	return o.DisplayName
+	return d.DisplayName
 }
 
-func (o *DCRProviderAzureAD) GetIssuer() string {
-	if o == nil {
+func (d *DCRProviderAzureAD) GetIssuer() string {
+	if d == nil {
 		return ""
 	}
-	return o.Issuer
+	return d.Issuer
 }
 
-func (o *DCRProviderAzureAD) GetActive() bool {
-	if o == nil {
+func (d *DCRProviderAzureAD) GetActive() bool {
+	if d == nil {
 		return false
 	}
-	return o.Active
+	return d.Active
 }
 
-func (o *DCRProviderAzureAD) GetLabels() map[string]string {
-	if o == nil {
+func (d *DCRProviderAzureAD) GetLabels() map[string]string {
+	if d == nil {
 		return nil
 	}
-	return o.Labels
+	return d.Labels
 }
 
-func (o *DCRProviderAzureAD) GetCreatedAt() time.Time {
-	if o == nil {
+func (d *DCRProviderAzureAD) GetCreatedAt() time.Time {
+	if d == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return d.CreatedAt
 }
 
-func (o *DCRProviderAzureAD) GetUpdatedAt() time.Time {
-	if o == nil {
+func (d *DCRProviderAzureAD) GetUpdatedAt() time.Time {
+	if d == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return d.UpdatedAt
 }
 
 // DcrProviderAuth0CreateDcrProviderResponseDcrConfig - The DCR configuration for this DCR provider.
@@ -565,74 +565,74 @@ func (d *DCRProviderAuth0) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DCRProviderAuth0) GetProviderType() string {
-	if o == nil {
+func (d *DCRProviderAuth0) GetProviderType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ProviderType
+	return d.ProviderType
 }
 
-func (o *DCRProviderAuth0) GetDcrConfig() DcrProviderAuth0CreateDcrProviderResponseDcrConfig {
-	if o == nil {
+func (d *DCRProviderAuth0) GetDcrConfig() DcrProviderAuth0CreateDcrProviderResponseDcrConfig {
+	if d == nil {
 		return DcrProviderAuth0CreateDcrProviderResponseDcrConfig{}
 	}
-	return o.DcrConfig
+	return d.DcrConfig
 }
 
-func (o *DCRProviderAuth0) GetID() string {
-	if o == nil {
+func (d *DCRProviderAuth0) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DCRProviderAuth0) GetName() string {
-	if o == nil {
+func (d *DCRProviderAuth0) GetName() string {
+	if d == nil {
 		return ""
 	}
-	return o.Name
+	return d.Name
 }
 
-func (o *DCRProviderAuth0) GetDisplayName() *string {
-	if o == nil {
+func (d *DCRProviderAuth0) GetDisplayName() *string {
+	if d == nil {
 		return nil
 	}
-	return o.DisplayName
+	return d.DisplayName
 }
 
-func (o *DCRProviderAuth0) GetIssuer() string {
-	if o == nil {
+func (d *DCRProviderAuth0) GetIssuer() string {
+	if d == nil {
 		return ""
 	}
-	return o.Issuer
+	return d.Issuer
 }
 
-func (o *DCRProviderAuth0) GetActive() bool {
-	if o == nil {
+func (d *DCRProviderAuth0) GetActive() bool {
+	if d == nil {
 		return false
 	}
-	return o.Active
+	return d.Active
 }
 
-func (o *DCRProviderAuth0) GetLabels() map[string]string {
-	if o == nil {
+func (d *DCRProviderAuth0) GetLabels() map[string]string {
+	if d == nil {
 		return nil
 	}
-	return o.Labels
+	return d.Labels
 }
 
-func (o *DCRProviderAuth0) GetCreatedAt() time.Time {
-	if o == nil {
+func (d *DCRProviderAuth0) GetCreatedAt() time.Time {
+	if d == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return d.CreatedAt
 }
 
-func (o *DCRProviderAuth0) GetUpdatedAt() time.Time {
-	if o == nil {
+func (d *DCRProviderAuth0) GetUpdatedAt() time.Time {
+	if d == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return d.UpdatedAt
 }
 
 type CreateDcrProviderResponseType string
@@ -647,11 +647,11 @@ const (
 
 // CreateDcrProviderResponse - A response containing the newly created DCR provider object.
 type CreateDcrProviderResponse struct {
-	DCRProviderAuth0   *DCRProviderAuth0   `queryParam:"inline" name:"CreateDcrProviderResponse"`
-	DCRProviderAzureAD *DCRProviderAzureAD `queryParam:"inline" name:"CreateDcrProviderResponse"`
-	DCRProviderCurity  *DCRProviderCurity  `queryParam:"inline" name:"CreateDcrProviderResponse"`
-	DCRProviderOKTA    *DCRProviderOKTA    `queryParam:"inline" name:"CreateDcrProviderResponse"`
-	DCRProviderHTTP    *DCRProviderHTTP    `queryParam:"inline" name:"CreateDcrProviderResponse"`
+	DCRProviderAuth0   *DCRProviderAuth0   `queryParam:"inline,name=CreateDcrProviderResponse"`
+	DCRProviderAzureAD *DCRProviderAzureAD `queryParam:"inline,name=CreateDcrProviderResponse"`
+	DCRProviderCurity  *DCRProviderCurity  `queryParam:"inline,name=CreateDcrProviderResponse"`
+	DCRProviderOKTA    *DCRProviderOKTA    `queryParam:"inline,name=CreateDcrProviderResponse"`
+	DCRProviderHTTP    *DCRProviderHTTP    `queryParam:"inline,name=CreateDcrProviderResponse"`
 
 	Type CreateDcrProviderResponseType
 }

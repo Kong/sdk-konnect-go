@@ -30,32 +30,32 @@ func (l *ListServiceRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListServiceRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListServiceRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListServiceRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListServiceRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListServiceRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListServiceRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListServiceRequest) GetTags() *string {
-	if o == nil {
+func (l *ListServiceRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListServiceResponseBody - A successful response listing Services
@@ -67,25 +67,25 @@ type ListServiceResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListServiceResponseBody) GetData() []components.ServiceOutput {
-	if o == nil {
+func (l *ListServiceResponseBody) GetData() []components.ServiceOutput {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListServiceResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListServiceResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListServiceResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListServiceResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListServiceResponse struct {
@@ -99,30 +99,30 @@ type ListServiceResponse struct {
 	Object *ListServiceResponseBody
 }
 
-func (o *ListServiceResponse) GetContentType() string {
-	if o == nil {
+func (l *ListServiceResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListServiceResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListServiceResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListServiceResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListServiceResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListServiceResponse) GetObject() *ListServiceResponseBody {
-	if o == nil {
+func (l *ListServiceResponse) GetObject() *ListServiceResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

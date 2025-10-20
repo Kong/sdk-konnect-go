@@ -14,18 +14,18 @@ type CreatePluginRequest struct {
 	Plugin components.Plugin `request:"mediaType=application/json"`
 }
 
-func (o *CreatePluginRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreatePluginRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreatePluginRequest) GetPlugin() components.Plugin {
-	if o == nil {
+func (c *CreatePluginRequest) GetPlugin() components.Plugin {
+	if c == nil {
 		return components.Plugin{}
 	}
-	return o.Plugin
+	return c.Plugin
 }
 
 type CreatePluginResponse struct {
@@ -39,30 +39,30 @@ type CreatePluginResponse struct {
 	Plugin *components.Plugin
 }
 
-func (o *CreatePluginResponse) GetContentType() string {
-	if o == nil {
+func (c *CreatePluginResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreatePluginResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreatePluginResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreatePluginResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreatePluginResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreatePluginResponse) GetPlugin() *components.Plugin {
-	if o == nil {
+func (c *CreatePluginResponse) GetPlugin() *components.Plugin {
+	if c == nil {
 		return nil
 	}
-	return o.Plugin
+	return c.Plugin
 }

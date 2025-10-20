@@ -9,30 +9,30 @@ type DefaultEmailTemplateContent struct {
 	ButtonLabel *string `json:"button_label,omitempty"`
 }
 
-func (o *DefaultEmailTemplateContent) GetSubject() string {
-	if o == nil {
+func (d *DefaultEmailTemplateContent) GetSubject() string {
+	if d == nil {
 		return ""
 	}
-	return o.Subject
+	return d.Subject
 }
 
-func (o *DefaultEmailTemplateContent) GetTitle() string {
-	if o == nil {
+func (d *DefaultEmailTemplateContent) GetTitle() string {
+	if d == nil {
 		return ""
 	}
-	return o.Title
+	return d.Title
 }
 
-func (o *DefaultEmailTemplateContent) GetBody() string {
-	if o == nil {
+func (d *DefaultEmailTemplateContent) GetBody() string {
+	if d == nil {
 		return ""
 	}
-	return o.Body
+	return d.Body
 }
 
-func (o *DefaultEmailTemplateContent) GetButtonLabel() *string {
-	if o == nil {
+func (d *DefaultEmailTemplateContent) GetButtonLabel() *string {
+	if d == nil {
 		return nil
 	}
-	return o.ButtonLabel
+	return d.ButtonLabel
 }

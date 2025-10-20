@@ -15,25 +15,25 @@ type UpdateConfigStoreRequest struct {
 	UpdateConfigStore components.UpdateConfigStore `request:"mediaType=application/json"`
 }
 
-func (o *UpdateConfigStoreRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpdateConfigStoreRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpdateConfigStoreRequest) GetConfigStoreID() string {
-	if o == nil {
+func (u *UpdateConfigStoreRequest) GetConfigStoreID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ConfigStoreID
+	return u.ConfigStoreID
 }
 
-func (o *UpdateConfigStoreRequest) GetUpdateConfigStore() components.UpdateConfigStore {
-	if o == nil {
+func (u *UpdateConfigStoreRequest) GetUpdateConfigStore() components.UpdateConfigStore {
+	if u == nil {
 		return components.UpdateConfigStore{}
 	}
-	return o.UpdateConfigStore
+	return u.UpdateConfigStore
 }
 
 type UpdateConfigStoreResponse struct {
@@ -47,30 +47,30 @@ type UpdateConfigStoreResponse struct {
 	ConfigStore *components.ConfigStore
 }
 
-func (o *UpdateConfigStoreResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateConfigStoreResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateConfigStoreResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateConfigStoreResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateConfigStoreResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateConfigStoreResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateConfigStoreResponse) GetConfigStore() *components.ConfigStore {
-	if o == nil {
+func (u *UpdateConfigStoreResponse) GetConfigStore() *components.ConfigStore {
+	if u == nil {
 		return nil
 	}
-	return o.ConfigStore
+	return u.ConfigStore
 }

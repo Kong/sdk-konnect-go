@@ -13,18 +13,18 @@ type DeleteEventSubscriptionRequest struct {
 	SubscriptionID string `pathParam:"style=simple,explode=false,name=subscriptionId"`
 }
 
-func (o *DeleteEventSubscriptionRequest) GetEventID() string {
-	if o == nil {
+func (d *DeleteEventSubscriptionRequest) GetEventID() string {
+	if d == nil {
 		return ""
 	}
-	return o.EventID
+	return d.EventID
 }
 
-func (o *DeleteEventSubscriptionRequest) GetSubscriptionID() string {
-	if o == nil {
+func (d *DeleteEventSubscriptionRequest) GetSubscriptionID() string {
+	if d == nil {
 		return ""
 	}
-	return o.SubscriptionID
+	return d.SubscriptionID
 }
 
 type DeleteEventSubscriptionResponse struct {
@@ -36,23 +36,23 @@ type DeleteEventSubscriptionResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteEventSubscriptionResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteEventSubscriptionResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteEventSubscriptionResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteEventSubscriptionResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteEventSubscriptionResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteEventSubscriptionResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

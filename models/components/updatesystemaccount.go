@@ -25,16 +25,16 @@ func (u *UpdateSystemAccount) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdateSystemAccount) GetName() *string {
-	if o == nil {
+func (u *UpdateSystemAccount) GetName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UpdateSystemAccount) GetDescription() *string {
-	if o == nil {
+func (u *UpdateSystemAccount) GetDescription() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Description
+	return u.Description
 }

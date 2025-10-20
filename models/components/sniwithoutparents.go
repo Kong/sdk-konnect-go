@@ -7,11 +7,11 @@ type SNIWithoutParentsCertificate struct {
 	ID *string `json:"id,omitempty"`
 }
 
-func (o *SNIWithoutParentsCertificate) GetID() *string {
-	if o == nil {
+func (s *SNIWithoutParentsCertificate) GetID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ID
+	return s.ID
 }
 
 // SNIWithoutParents - An SNI object represents a many-to-one mapping of hostnames to a certificate. That is, a certificate object can have many hostnames associated with it; when Kong receives an SSL request, it uses the SNI field in the Client Hello to lookup the certificate object based on the SNI associated with the certificate.
@@ -30,44 +30,44 @@ type SNIWithoutParents struct {
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 }
 
-func (o *SNIWithoutParents) GetCertificate() *SNIWithoutParentsCertificate {
-	if o == nil {
+func (s *SNIWithoutParents) GetCertificate() *SNIWithoutParentsCertificate {
+	if s == nil {
 		return nil
 	}
-	return o.Certificate
+	return s.Certificate
 }
 
-func (o *SNIWithoutParents) GetCreatedAt() *int64 {
-	if o == nil {
+func (s *SNIWithoutParents) GetCreatedAt() *int64 {
+	if s == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return s.CreatedAt
 }
 
-func (o *SNIWithoutParents) GetID() *string {
-	if o == nil {
+func (s *SNIWithoutParents) GetID() *string {
+	if s == nil {
 		return nil
 	}
-	return o.ID
+	return s.ID
 }
 
-func (o *SNIWithoutParents) GetName() string {
-	if o == nil {
+func (s *SNIWithoutParents) GetName() string {
+	if s == nil {
 		return ""
 	}
-	return o.Name
+	return s.Name
 }
 
-func (o *SNIWithoutParents) GetTags() []string {
-	if o == nil {
+func (s *SNIWithoutParents) GetTags() []string {
+	if s == nil {
 		return nil
 	}
-	return o.Tags
+	return s.Tags
 }
 
-func (o *SNIWithoutParents) GetUpdatedAt() *int64 {
-	if o == nil {
+func (s *SNIWithoutParents) GetUpdatedAt() *int64 {
+	if s == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return s.UpdatedAt
 }

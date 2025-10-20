@@ -17,44 +17,44 @@ type APIImplementationFilterParameters struct {
 	UpdatedAt *DateTimeFieldFilter `queryParam:"name=updated_at"`
 }
 
-func (o *APIImplementationFilterParameters) GetID() *UUIDFieldFilter {
-	if o == nil {
+func (a *APIImplementationFilterParameters) GetID() *UUIDFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *APIImplementationFilterParameters) GetAPIID() *UUIDFieldFilter {
-	if o == nil {
+func (a *APIImplementationFilterParameters) GetAPIID() *UUIDFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.APIID
+	return a.APIID
 }
 
-func (o *APIImplementationFilterParameters) GetServiceID() *UUIDFieldFilter {
-	if o == nil {
+func (a *APIImplementationFilterParameters) GetServiceID() *UUIDFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.ServiceID
+	return a.ServiceID
 }
 
-func (o *APIImplementationFilterParameters) GetControlPlaneID() *UUIDFieldFilter {
-	if o == nil {
+func (a *APIImplementationFilterParameters) GetControlPlaneID() *UUIDFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.ControlPlaneID
+	return a.ControlPlaneID
 }
 
-func (o *APIImplementationFilterParameters) GetCreatedAt() *DateTimeFieldFilter {
-	if o == nil {
+func (a *APIImplementationFilterParameters) GetCreatedAt() *DateTimeFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return a.CreatedAt
 }
 
-func (o *APIImplementationFilterParameters) GetUpdatedAt() *DateTimeFieldFilter {
-	if o == nil {
+func (a *APIImplementationFilterParameters) GetUpdatedAt() *DateTimeFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.UpdatedAt
+	return a.UpdatedAt
 }

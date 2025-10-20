@@ -23,8 +23,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -34,24 +34,36 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
-        PageSize: sdkkonnectgo.Int64(10),
-        PageNumber: sdkkonnectgo.Int64(1),
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
         Filter: &components.ControlPlaneFilterParameters{
-            CloudGateway: sdkkonnectgo.Bool(true),
+            CloudGateway: sdkkonnectgo.Pointer(true),
         },
-        FilterLabels: sdkkonnectgo.String("key:value,existCheck"),
-        Sort: sdkkonnectgo.String("created_at desc"),
+        FilterLabels: sdkkonnectgo.Pointer("key:value,existCheck"),
+        Sort: sdkkonnectgo.Pointer("created_at desc"),
     })
     if err != nil {
         log.Fatal(err)
     }
     if res.ListControlPlanesResponse != nil {
-        // handle response
+        for {
+            // handle items
+
+            res, err = res.Next()
+
+            if err != nil {
+                // handle error
+            }
+
+            if res == nil {
+                break
+            }
+        }
     }
 }
 ```
@@ -91,8 +103,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -101,16 +113,16 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.ControlPlanes.CreateControlPlane(ctx, components.CreateControlPlaneRequest{
         Name: "Test Control Plane",
-        Description: sdkkonnectgo.String("A test control plane for exploration."),
+        Description: sdkkonnectgo.Pointer("A test control plane for exploration."),
         ClusterType: components.CreateControlPlaneRequestClusterTypeClusterTypeControlPlane.ToPointer(),
         AuthType: components.AuthTypePinnedClientCerts.ToPointer(),
-        CloudGateway: sdkkonnectgo.Bool(false),
+        CloudGateway: sdkkonnectgo.Pointer(false),
         ProxyUrls: []components.ProxyURL{
             components.ProxyURL{
                 Host: "example.com",
@@ -167,8 +179,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -177,7 +189,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -227,8 +239,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -237,13 +249,13 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.ControlPlanes.UpdateControlPlane(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateControlPlaneRequest{
-        Name: sdkkonnectgo.String("Test Control Plane"),
-        Description: sdkkonnectgo.String("A test control plane for exploration."),
+        Name: sdkkonnectgo.Pointer("Test Control Plane"),
+        Description: sdkkonnectgo.Pointer("A test control plane for exploration."),
         AuthType: components.UpdateControlPlaneRequestAuthTypePinnedClientCerts.ToPointer(),
         ProxyUrls: []components.ProxyURL{
             components.ProxyURL{
@@ -302,8 +314,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -312,7 +324,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 

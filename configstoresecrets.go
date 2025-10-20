@@ -63,7 +63,7 @@ func (s *ConfigStoreSecrets) CreateConfigStoreSecret(ctx context.Context, reques
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-config-store-secret",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateConfigStoreSecret", "json", `request:"mediaType=application/json"`)
@@ -380,7 +380,7 @@ func (s *ConfigStoreSecrets) ListConfigStoreSecrets(ctx context.Context, request
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-config-store-secrets",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -642,7 +642,7 @@ func (s *ConfigStoreSecrets) ListConfigStoreSecrets(ctx context.Context, request
 }
 
 // GetConfigStoreSecret - Fetch Config Store Secret
-// Returns a secret for the Config Store.
+// Returns the secret entity for the Config Store. Secret values once stored cannot be retrieved.
 func (s *ConfigStoreSecrets) GetConfigStoreSecret(ctx context.Context, request operations.GetConfigStoreSecretRequest, opts ...operations.Option) (*operations.GetConfigStoreSecretResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -673,7 +673,7 @@ func (s *ConfigStoreSecrets) GetConfigStoreSecret(ctx context.Context, request o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-config-store-secret",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -941,7 +941,7 @@ func (s *ConfigStoreSecrets) UpdateConfigStoreSecret(ctx context.Context, reques
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-config-store-secret",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateConfigStoreSecret", "json", `request:"mediaType=application/json"`)
@@ -1260,7 +1260,7 @@ func (s *ConfigStoreSecrets) DeleteConfigStoreSecret(ctx context.Context, reques
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-config-store-secret",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

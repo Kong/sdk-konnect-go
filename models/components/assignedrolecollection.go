@@ -10,16 +10,16 @@ type AssignedRoleCollection struct {
 	Data []AssignedRole `json:"data,omitempty"`
 }
 
-func (o *AssignedRoleCollection) GetMeta() *PaginatedMeta {
-	if o == nil {
+func (a *AssignedRoleCollection) GetMeta() *PaginatedMeta {
+	if a == nil {
 		return nil
 	}
-	return o.Meta
+	return a.Meta
 }
 
-func (o *AssignedRoleCollection) GetData() []AssignedRole {
-	if o == nil {
+func (a *AssignedRoleCollection) GetData() []AssignedRole {
+	if a == nil {
 		return nil
 	}
-	return o.Data
+	return a.Data
 }

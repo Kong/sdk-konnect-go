@@ -20,25 +20,25 @@ type ListCustomDomainsRequest struct {
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 }
 
-func (o *ListCustomDomainsRequest) GetFilter() *components.CustomDomainsFilterParameters {
-	if o == nil {
+func (l *ListCustomDomainsRequest) GetFilter() *components.CustomDomainsFilterParameters {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
-func (o *ListCustomDomainsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListCustomDomainsRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListCustomDomainsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListCustomDomainsRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
 type ListCustomDomainsResponse struct {
@@ -52,30 +52,30 @@ type ListCustomDomainsResponse struct {
 	ListCustomDomainsResponse *components.ListCustomDomainsResponse
 }
 
-func (o *ListCustomDomainsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListCustomDomainsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListCustomDomainsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListCustomDomainsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListCustomDomainsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListCustomDomainsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListCustomDomainsResponse) GetListCustomDomainsResponse() *components.ListCustomDomainsResponse {
-	if o == nil {
+func (l *ListCustomDomainsResponse) GetListCustomDomainsResponse() *components.ListCustomDomainsResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListCustomDomainsResponse
+	return l.ListCustomDomainsResponse
 }

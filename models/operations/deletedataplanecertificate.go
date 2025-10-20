@@ -12,18 +12,18 @@ type DeleteDataplaneCertificateRequest struct {
 	CertificateID  string `pathParam:"style=simple,explode=false,name=certificateId"`
 }
 
-func (o *DeleteDataplaneCertificateRequest) GetControlPlaneID() string {
-	if o == nil {
+func (d *DeleteDataplaneCertificateRequest) GetControlPlaneID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return d.ControlPlaneID
 }
 
-func (o *DeleteDataplaneCertificateRequest) GetCertificateID() string {
-	if o == nil {
+func (d *DeleteDataplaneCertificateRequest) GetCertificateID() string {
+	if d == nil {
 		return ""
 	}
-	return o.CertificateID
+	return d.CertificateID
 }
 
 type DeleteDataplaneCertificateResponse struct {
@@ -35,23 +35,23 @@ type DeleteDataplaneCertificateResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteDataplaneCertificateResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteDataplaneCertificateResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteDataplaneCertificateResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteDataplaneCertificateResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteDataplaneCertificateResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteDataplaneCertificateResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

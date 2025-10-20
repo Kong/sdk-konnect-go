@@ -26,16 +26,16 @@ func (t *TransitGatewayDNSConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *TransitGatewayDNSConfig) GetRemoteDNSServerIPAddresses() []string {
-	if o == nil {
+func (t *TransitGatewayDNSConfig) GetRemoteDNSServerIPAddresses() []string {
+	if t == nil {
 		return []string{}
 	}
-	return o.RemoteDNSServerIPAddresses
+	return t.RemoteDNSServerIPAddresses
 }
 
-func (o *TransitGatewayDNSConfig) GetDomainProxyList() []string {
-	if o == nil {
+func (t *TransitGatewayDNSConfig) GetDomainProxyList() []string {
+	if t == nil {
 		return []string{}
 	}
-	return o.DomainProxyList
+	return t.DomainProxyList
 }

@@ -9,23 +9,23 @@ type IDFieldFilter struct {
 	Oeq *string `queryParam:"name=oeq"`
 }
 
-func (o *IDFieldFilter) GetEq() *string {
-	if o == nil {
+func (i *IDFieldFilter) GetEq() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Eq
+	return i.Eq
 }
 
-func (o *IDFieldFilter) GetNeq() *string {
-	if o == nil {
+func (i *IDFieldFilter) GetNeq() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Neq
+	return i.Neq
 }
 
-func (o *IDFieldFilter) GetOeq() *string {
-	if o == nil {
+func (i *IDFieldFilter) GetOeq() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Oeq
+	return i.Oeq
 }

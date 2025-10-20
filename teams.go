@@ -62,7 +62,7 @@ func (s *Teams) ListTeams(ctx context.Context, request operations.ListTeamsReque
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-teams",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -312,7 +312,7 @@ func (s *Teams) CreateTeam(ctx context.Context, request *components.CreateTeam, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-team",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
@@ -569,7 +569,7 @@ func (s *Teams) GetTeam(ctx context.Context, teamID string, opts ...operations.O
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-team",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -820,7 +820,7 @@ func (s *Teams) UpdateTeam(ctx context.Context, teamID string, updateTeam *compo
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-team",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "UpdateTeam", "json", `request:"mediaType=application/json"`)
@@ -1077,7 +1077,7 @@ func (s *Teams) DeleteTeam(ctx context.Context, teamID string, opts ...operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-team",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

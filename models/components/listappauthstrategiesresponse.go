@@ -9,16 +9,16 @@ type ListAppAuthStrategiesResponse struct {
 	Meta PaginatedMeta `json:"meta"`
 }
 
-func (o *ListAppAuthStrategiesResponse) GetData() []AppAuthStrategy {
-	if o == nil {
+func (l *ListAppAuthStrategiesResponse) GetData() []AppAuthStrategy {
+	if l == nil {
 		return []AppAuthStrategy{}
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListAppAuthStrategiesResponse) GetMeta() PaginatedMeta {
-	if o == nil {
+func (l *ListAppAuthStrategiesResponse) GetMeta() PaginatedMeta {
+	if l == nil {
 		return PaginatedMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }

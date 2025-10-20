@@ -24,16 +24,16 @@ func (p *PatchCustomPortalEmailTemplatePayload) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (o *PatchCustomPortalEmailTemplatePayload) GetContent() *EmailTemplateContent {
-	if o == nil {
+func (p *PatchCustomPortalEmailTemplatePayload) GetContent() *EmailTemplateContent {
+	if p == nil {
 		return nil
 	}
-	return o.Content
+	return p.Content
 }
 
-func (o *PatchCustomPortalEmailTemplatePayload) GetEnabled() *bool {
-	if o == nil {
+func (p *PatchCustomPortalEmailTemplatePayload) GetEnabled() *bool {
+	if p == nil {
 		return nil
 	}
-	return o.Enabled
+	return p.Enabled
 }

@@ -26,18 +26,18 @@ func (p *PatchAwsPrivateDNSResolver) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PatchAwsPrivateDNSResolver) GetName() *string {
-	if o == nil {
+func (p *PatchAwsPrivateDNSResolver) GetName() *string {
+	if p == nil {
 		return nil
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *PatchAwsPrivateDNSResolver) GetPrivateDNSAttachmentConfig() *AwsPrivateDNSResolverAttachmentConfig {
-	if o == nil {
+func (p *PatchAwsPrivateDNSResolver) GetPrivateDNSAttachmentConfig() *AwsPrivateDNSResolverAttachmentConfig {
+	if p == nil {
 		return nil
 	}
-	return o.PrivateDNSAttachmentConfig
+	return p.PrivateDNSAttachmentConfig
 }
 
 type PatchPrivateDNSRequestType string
@@ -48,7 +48,7 @@ const (
 
 // PatchPrivateDNSRequest - Request schema for updating a Private DNS.
 type PatchPrivateDNSRequest struct {
-	PatchAwsPrivateDNSResolver *PatchAwsPrivateDNSResolver `queryParam:"inline" name:"PatchPrivateDnsRequest"`
+	PatchAwsPrivateDNSResolver *PatchAwsPrivateDNSResolver `queryParam:"inline,name=PatchPrivateDnsRequest"`
 
 	Type PatchPrivateDNSRequestType
 }

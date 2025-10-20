@@ -30,32 +30,32 @@ func (l *ListSniRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListSniRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListSniRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListSniRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListSniRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListSniRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListSniRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListSniRequest) GetTags() *string {
-	if o == nil {
+func (l *ListSniRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListSniResponseBody - A successful response listing SNIs
@@ -67,25 +67,25 @@ type ListSniResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListSniResponseBody) GetData() []components.Sni {
-	if o == nil {
+func (l *ListSniResponseBody) GetData() []components.Sni {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListSniResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListSniResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListSniResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListSniResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListSniResponse struct {
@@ -99,30 +99,30 @@ type ListSniResponse struct {
 	Object *ListSniResponseBody
 }
 
-func (o *ListSniResponse) GetContentType() string {
-	if o == nil {
+func (l *ListSniResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListSniResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListSniResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListSniResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListSniResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListSniResponse) GetObject() *ListSniResponseBody {
-	if o == nil {
+func (l *ListSniResponse) GetObject() *ListSniResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }
