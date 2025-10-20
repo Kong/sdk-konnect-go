@@ -7,9 +7,9 @@ type ListPortalPagesResponse struct {
 	Data []PortalPageInfo `json:"data"`
 }
 
-func (o *ListPortalPagesResponse) GetData() []PortalPageInfo {
-	if o == nil {
+func (l *ListPortalPagesResponse) GetData() []PortalPageInfo {
+	if l == nil {
 		return []PortalPageInfo{}
 	}
-	return o.Data
+	return l.Data
 }

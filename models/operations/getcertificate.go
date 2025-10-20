@@ -14,18 +14,18 @@ type GetCertificateRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 }
 
-func (o *GetCertificateRequest) GetCertificateID() string {
-	if o == nil {
+func (g *GetCertificateRequest) GetCertificateID() string {
+	if g == nil {
 		return ""
 	}
-	return o.CertificateID
+	return g.CertificateID
 }
 
-func (o *GetCertificateRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetCertificateRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
 type GetCertificateResponse struct {
@@ -39,30 +39,30 @@ type GetCertificateResponse struct {
 	Certificate *components.Certificate
 }
 
-func (o *GetCertificateResponse) GetContentType() string {
-	if o == nil {
+func (g *GetCertificateResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetCertificateResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetCertificateResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetCertificateResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetCertificateResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetCertificateResponse) GetCertificate() *components.Certificate {
-	if o == nil {
+func (g *GetCertificateResponse) GetCertificate() *components.Certificate {
+	if g == nil {
 		return nil
 	}
-	return o.Certificate
+	return g.Certificate
 }

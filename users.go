@@ -62,7 +62,7 @@ func (s *Users) ListUsers(ctx context.Context, request operations.ListUsersReque
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-users",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -295,7 +295,7 @@ func (s *Users) GetUser(ctx context.Context, userID string, opts ...operations.O
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-user",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -546,7 +546,7 @@ func (s *Users) UpdateUser(ctx context.Context, userID string, updateUser *compo
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-user",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "UpdateUser", "json", `request:"mediaType=application/json"`)
@@ -824,7 +824,7 @@ func (s *Users) DeleteUser(ctx context.Context, userID string, opts ...operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-user",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

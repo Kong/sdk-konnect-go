@@ -63,7 +63,7 @@ func (s *PortalDevelopers) ListPortalDevelopers(ctx context.Context, request ope
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-portal-developers",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -361,7 +361,7 @@ func (s *PortalDevelopers) GetDeveloper(ctx context.Context, portalID string, de
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-developer",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -629,7 +629,7 @@ func (s *PortalDevelopers) UpdateDeveloper(ctx context.Context, request operatio
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-developer",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateDeveloperRequest", "json", `request:"mediaType=application/json"`)
@@ -930,7 +930,7 @@ func (s *PortalDevelopers) DeleteDeveloper(ctx context.Context, portalID string,
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-developer",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

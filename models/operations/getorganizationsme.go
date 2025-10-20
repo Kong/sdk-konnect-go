@@ -22,30 +22,30 @@ type GetOrganizationsMeResponse struct {
 	MeOrganization *components.MeOrganization
 }
 
-func (o *GetOrganizationsMeResponse) GetContentType() string {
-	if o == nil {
+func (g *GetOrganizationsMeResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetOrganizationsMeResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetOrganizationsMeResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetOrganizationsMeResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetOrganizationsMeResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetOrganizationsMeResponse) GetMeOrganization() *components.MeOrganization {
-	if o == nil {
+func (g *GetOrganizationsMeResponse) GetMeOrganization() *components.MeOrganization {
+	if g == nil {
 		return nil
 	}
-	return o.MeOrganization
+	return g.MeOrganization
 }

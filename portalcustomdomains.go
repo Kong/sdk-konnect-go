@@ -67,7 +67,7 @@ func (s *PortalCustomDomains) GetPortalCustomDomain(ctx context.Context, portalI
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-portal-custom-domain",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -340,7 +340,7 @@ func (s *PortalCustomDomains) CreatePortalCustomDomain(ctx context.Context, port
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-portal-custom-domain",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreatePortalCustomDomainRequest", "json", `request:"mediaType=application/json"`)
@@ -641,7 +641,7 @@ func (s *PortalCustomDomains) UpdatePortalCustomDomain(ctx context.Context, port
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-portal-custom-domain",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdatePortalCustomDomainRequest", "json", `request:"mediaType=application/json"`)
@@ -920,7 +920,7 @@ func (s *PortalCustomDomains) DeletePortalCustomDomain(ctx context.Context, port
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-portal-custom-domain",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

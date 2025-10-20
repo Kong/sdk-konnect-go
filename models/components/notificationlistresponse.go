@@ -8,16 +8,16 @@ type NotificationListResponse struct {
 	Meta CursorMetaPage `json:"meta"`
 }
 
-func (o *NotificationListResponse) GetData() []Notification {
-	if o == nil {
+func (n *NotificationListResponse) GetData() []Notification {
+	if n == nil {
 		return []Notification{}
 	}
-	return o.Data
+	return n.Data
 }
 
-func (o *NotificationListResponse) GetMeta() CursorMetaPage {
-	if o == nil {
+func (n *NotificationListResponse) GetMeta() CursorMetaPage {
+	if n == nil {
 		return CursorMetaPage{}
 	}
-	return o.Meta
+	return n.Meta
 }

@@ -56,144 +56,144 @@ type ListDcrProvidersRequest struct {
 	FilterInitialClientAudienceContains *string `queryParam:"style=form,explode=true,name=filter[initial_client_audience][contains]"`
 }
 
-func (o *ListDcrProvidersRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListDcrProvidersRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListDcrProvidersRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListDcrProvidersRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListDcrProvidersRequest) GetSort() *string {
-	if o == nil {
+func (l *ListDcrProvidersRequest) GetSort() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Sort
+	return l.Sort
 }
 
-func (o *ListDcrProvidersRequest) GetFilterIDEq() *string {
-	if o == nil {
+func (l *ListDcrProvidersRequest) GetFilterIDEq() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FilterIDEq
+	return l.FilterIDEq
 }
 
-func (o *ListDcrProvidersRequest) GetFilterID() *string {
-	if o == nil {
+func (l *ListDcrProvidersRequest) GetFilterID() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FilterID
+	return l.FilterID
 }
 
-func (o *ListDcrProvidersRequest) GetFilterIDContains() *string {
-	if o == nil {
+func (l *ListDcrProvidersRequest) GetFilterIDContains() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FilterIDContains
+	return l.FilterIDContains
 }
 
-func (o *ListDcrProvidersRequest) GetFilterIssuerEq() *string {
-	if o == nil {
+func (l *ListDcrProvidersRequest) GetFilterIssuerEq() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FilterIssuerEq
+	return l.FilterIssuerEq
 }
 
-func (o *ListDcrProvidersRequest) GetFilterIssuer() *string {
-	if o == nil {
+func (l *ListDcrProvidersRequest) GetFilterIssuer() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FilterIssuer
+	return l.FilterIssuer
 }
 
-func (o *ListDcrProvidersRequest) GetFilterIssuerContains() *string {
-	if o == nil {
+func (l *ListDcrProvidersRequest) GetFilterIssuerContains() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FilterIssuerContains
+	return l.FilterIssuerContains
 }
 
-func (o *ListDcrProvidersRequest) GetFilterNameEq() *string {
-	if o == nil {
+func (l *ListDcrProvidersRequest) GetFilterNameEq() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FilterNameEq
+	return l.FilterNameEq
 }
 
-func (o *ListDcrProvidersRequest) GetFilterName() *string {
-	if o == nil {
+func (l *ListDcrProvidersRequest) GetFilterName() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FilterName
+	return l.FilterName
 }
 
-func (o *ListDcrProvidersRequest) GetFilterNameContains() *string {
-	if o == nil {
+func (l *ListDcrProvidersRequest) GetFilterNameContains() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FilterNameContains
+	return l.FilterNameContains
 }
 
-func (o *ListDcrProvidersRequest) GetFilterProviderTypeEq() *string {
-	if o == nil {
+func (l *ListDcrProvidersRequest) GetFilterProviderTypeEq() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FilterProviderTypeEq
+	return l.FilterProviderTypeEq
 }
 
-func (o *ListDcrProvidersRequest) GetFilterProviderType() *string {
-	if o == nil {
+func (l *ListDcrProvidersRequest) GetFilterProviderType() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FilterProviderType
+	return l.FilterProviderType
 }
 
-func (o *ListDcrProvidersRequest) GetFilterInitialClientIDEq() *string {
-	if o == nil {
+func (l *ListDcrProvidersRequest) GetFilterInitialClientIDEq() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FilterInitialClientIDEq
+	return l.FilterInitialClientIDEq
 }
 
-func (o *ListDcrProvidersRequest) GetFilterInitialClientID() *string {
-	if o == nil {
+func (l *ListDcrProvidersRequest) GetFilterInitialClientID() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FilterInitialClientID
+	return l.FilterInitialClientID
 }
 
-func (o *ListDcrProvidersRequest) GetFilterInitialClientIDContains() *string {
-	if o == nil {
+func (l *ListDcrProvidersRequest) GetFilterInitialClientIDContains() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FilterInitialClientIDContains
+	return l.FilterInitialClientIDContains
 }
 
-func (o *ListDcrProvidersRequest) GetFilterInitialClientAudienceEq() *string {
-	if o == nil {
+func (l *ListDcrProvidersRequest) GetFilterInitialClientAudienceEq() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FilterInitialClientAudienceEq
+	return l.FilterInitialClientAudienceEq
 }
 
-func (o *ListDcrProvidersRequest) GetFilterInitialClientAudience() *string {
-	if o == nil {
+func (l *ListDcrProvidersRequest) GetFilterInitialClientAudience() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FilterInitialClientAudience
+	return l.FilterInitialClientAudience
 }
 
-func (o *ListDcrProvidersRequest) GetFilterInitialClientAudienceContains() *string {
-	if o == nil {
+func (l *ListDcrProvidersRequest) GetFilterInitialClientAudienceContains() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FilterInitialClientAudienceContains
+	return l.FilterInitialClientAudienceContains
 }
 
 type ListDcrProvidersResponse struct {
@@ -207,30 +207,30 @@ type ListDcrProvidersResponse struct {
 	ListDcrProvidersResponse *components.ListDcrProvidersResponse
 }
 
-func (o *ListDcrProvidersResponse) GetContentType() string {
-	if o == nil {
+func (l *ListDcrProvidersResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListDcrProvidersResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListDcrProvidersResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListDcrProvidersResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListDcrProvidersResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListDcrProvidersResponse) GetListDcrProvidersResponse() *components.ListDcrProvidersResponse {
-	if o == nil {
+func (l *ListDcrProvidersResponse) GetListDcrProvidersResponse() *components.ListDcrProvidersResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListDcrProvidersResponse
+	return l.ListDcrProvidersResponse
 }

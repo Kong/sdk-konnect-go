@@ -13,11 +13,11 @@ type GetPortalIdentityProvidersQueryParamFilter struct {
 	Type *components.StringFieldEqualsFilter `queryParam:"name=type"`
 }
 
-func (o *GetPortalIdentityProvidersQueryParamFilter) GetType() *components.StringFieldEqualsFilter {
-	if o == nil {
+func (g *GetPortalIdentityProvidersQueryParamFilter) GetType() *components.StringFieldEqualsFilter {
+	if g == nil {
 		return nil
 	}
-	return o.Type
+	return g.Type
 }
 
 type GetPortalIdentityProvidersRequest struct {
@@ -27,18 +27,18 @@ type GetPortalIdentityProvidersRequest struct {
 	Filter *GetPortalIdentityProvidersQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *GetPortalIdentityProvidersRequest) GetPortalID() string {
-	if o == nil {
+func (g *GetPortalIdentityProvidersRequest) GetPortalID() string {
+	if g == nil {
 		return ""
 	}
-	return o.PortalID
+	return g.PortalID
 }
 
-func (o *GetPortalIdentityProvidersRequest) GetFilter() *GetPortalIdentityProvidersQueryParamFilter {
-	if o == nil {
+func (g *GetPortalIdentityProvidersRequest) GetFilter() *GetPortalIdentityProvidersQueryParamFilter {
+	if g == nil {
 		return nil
 	}
-	return o.Filter
+	return g.Filter
 }
 
 type GetPortalIdentityProvidersResponse struct {
@@ -53,30 +53,30 @@ type GetPortalIdentityProvidersResponse struct {
 	IdentityProviders []components.IdentityProvider
 }
 
-func (o *GetPortalIdentityProvidersResponse) GetContentType() string {
-	if o == nil {
+func (g *GetPortalIdentityProvidersResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetPortalIdentityProvidersResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetPortalIdentityProvidersResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetPortalIdentityProvidersResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetPortalIdentityProvidersResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetPortalIdentityProvidersResponse) GetIdentityProviders() []components.IdentityProvider {
-	if o == nil {
+func (g *GetPortalIdentityProvidersResponse) GetIdentityProviders() []components.IdentityProvider {
+	if g == nil {
 		return nil
 	}
-	return o.IdentityProviders
+	return g.IdentityProviders
 }

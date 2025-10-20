@@ -71,37 +71,37 @@ func (p *PortalAssignedRoleResponse) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PortalAssignedRoleResponse) GetID() *string {
-	if o == nil {
+func (p *PortalAssignedRoleResponse) GetID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PortalAssignedRoleResponse) GetRoleName() *string {
-	if o == nil {
+func (p *PortalAssignedRoleResponse) GetRoleName() *string {
+	if p == nil {
 		return nil
 	}
-	return o.RoleName
+	return p.RoleName
 }
 
-func (o *PortalAssignedRoleResponse) GetEntityID() *string {
-	if o == nil {
+func (p *PortalAssignedRoleResponse) GetEntityID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.EntityID
+	return p.EntityID
 }
 
-func (o *PortalAssignedRoleResponse) GetEntityTypeName() *string {
-	if o == nil {
+func (p *PortalAssignedRoleResponse) GetEntityTypeName() *string {
+	if p == nil {
 		return nil
 	}
-	return o.EntityTypeName
+	return p.EntityTypeName
 }
 
-func (o *PortalAssignedRoleResponse) GetEntityRegion() *EntityRegion {
-	if o == nil {
+func (p *PortalAssignedRoleResponse) GetEntityRegion() *EntityRegion {
+	if p == nil {
 		return nil
 	}
-	return o.EntityRegion
+	return p.EntityRegion
 }

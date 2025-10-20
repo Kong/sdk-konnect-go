@@ -29,32 +29,32 @@ type ListPortalsRequest struct {
 	Filter *components.PortalFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *ListPortalsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListPortalsRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListPortalsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListPortalsRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListPortalsRequest) GetSort() *string {
-	if o == nil {
+func (l *ListPortalsRequest) GetSort() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Sort
+	return l.Sort
 }
 
-func (o *ListPortalsRequest) GetFilter() *components.PortalFilterParameters {
-	if o == nil {
+func (l *ListPortalsRequest) GetFilter() *components.PortalFilterParameters {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
 type ListPortalsResponse struct {
@@ -68,30 +68,30 @@ type ListPortalsResponse struct {
 	ListPortalsResponse *components.ListPortalsResponse
 }
 
-func (o *ListPortalsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListPortalsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListPortalsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListPortalsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListPortalsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListPortalsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListPortalsResponse) GetListPortalsResponse() *components.ListPortalsResponse {
-	if o == nil {
+func (l *ListPortalsResponse) GetListPortalsResponse() *components.ListPortalsResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListPortalsResponse
+	return l.ListPortalsResponse
 }

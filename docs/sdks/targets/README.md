@@ -28,8 +28,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -39,14 +39,14 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.Targets.ListTargetWithUpstream(ctx, operations.ListTargetWithUpstreamRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         UpstreamIDForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8",
-        Tags: sdkkonnectgo.String("tag1,tag2"),
+        Tags: sdkkonnectgo.Pointer("tag1,tag2"),
     })
     if err != nil {
         log.Fatal(err)
@@ -87,8 +87,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -98,7 +98,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -106,8 +106,8 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         UpstreamIDForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8",
         TargetWithoutParents: components.TargetWithoutParents{
-            ID: sdkkonnectgo.String("089292a7-ba3d-4d88-acf0-97b4b2e2621a"),
-            Target: sdkkonnectgo.String("203.0.113.42"),
+            ID: sdkkonnectgo.Pointer("089292a7-ba3d-4d88-acf0-97b4b2e2621a"),
+            Target: sdkkonnectgo.Pointer("203.0.113.42"),
         },
     })
     if err != nil {
@@ -149,8 +149,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -160,7 +160,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -208,8 +208,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -219,7 +219,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -267,8 +267,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -278,7 +278,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -287,8 +287,8 @@ func main() {
         UpstreamIDForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8",
         TargetID: "5a078780-5d4c-4aae-984a-bdc6f52113d8",
         TargetWithoutParents: components.TargetWithoutParents{
-            ID: sdkkonnectgo.String("089292a7-ba3d-4d88-acf0-97b4b2e2621a"),
-            Target: sdkkonnectgo.String("203.0.113.42"),
+            ID: sdkkonnectgo.Pointer("089292a7-ba3d-4d88-acf0-97b4b2e2621a"),
+            Target: sdkkonnectgo.Pointer("203.0.113.42"),
         },
     })
     if err != nil {

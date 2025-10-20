@@ -24,23 +24,23 @@ func (a *ApplicationDeveloperDetailed) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ApplicationDeveloperDetailed) GetID() string {
-	if o == nil {
+func (a *ApplicationDeveloperDetailed) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *ApplicationDeveloperDetailed) GetEmail() *string {
-	if o == nil {
+func (a *ApplicationDeveloperDetailed) GetEmail() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Email
+	return a.Email
 }
 
-func (o *ApplicationDeveloperDetailed) GetFullName() *string {
-	if o == nil {
+func (a *ApplicationDeveloperDetailed) GetFullName() *string {
+	if a == nil {
 		return nil
 	}
-	return o.FullName
+	return a.FullName
 }

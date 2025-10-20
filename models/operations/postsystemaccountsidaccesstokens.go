@@ -18,18 +18,18 @@ type PostSystemAccountsIDAccessTokensRequest struct {
 	CreateSystemAccountAccessToken *components.CreateSystemAccountAccessToken `request:"mediaType=application/json"`
 }
 
-func (o *PostSystemAccountsIDAccessTokensRequest) GetAccountID() string {
-	if o == nil {
+func (p *PostSystemAccountsIDAccessTokensRequest) GetAccountID() string {
+	if p == nil {
 		return ""
 	}
-	return o.AccountID
+	return p.AccountID
 }
 
-func (o *PostSystemAccountsIDAccessTokensRequest) GetCreateSystemAccountAccessToken() *components.CreateSystemAccountAccessToken {
-	if o == nil {
+func (p *PostSystemAccountsIDAccessTokensRequest) GetCreateSystemAccountAccessToken() *components.CreateSystemAccountAccessToken {
+	if p == nil {
 		return nil
 	}
-	return o.CreateSystemAccountAccessToken
+	return p.CreateSystemAccountAccessToken
 }
 
 type PostSystemAccountsIDAccessTokensResponse struct {
@@ -43,30 +43,30 @@ type PostSystemAccountsIDAccessTokensResponse struct {
 	SystemAccountAccessTokenCreated *components.SystemAccountAccessTokenCreated
 }
 
-func (o *PostSystemAccountsIDAccessTokensResponse) GetContentType() string {
-	if o == nil {
+func (p *PostSystemAccountsIDAccessTokensResponse) GetContentType() string {
+	if p == nil {
 		return ""
 	}
-	return o.ContentType
+	return p.ContentType
 }
 
-func (o *PostSystemAccountsIDAccessTokensResponse) GetStatusCode() int {
-	if o == nil {
+func (p *PostSystemAccountsIDAccessTokensResponse) GetStatusCode() int {
+	if p == nil {
 		return 0
 	}
-	return o.StatusCode
+	return p.StatusCode
 }
 
-func (o *PostSystemAccountsIDAccessTokensResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (p *PostSystemAccountsIDAccessTokensResponse) GetRawResponse() *http.Response {
+	if p == nil {
 		return nil
 	}
-	return o.RawResponse
+	return p.RawResponse
 }
 
-func (o *PostSystemAccountsIDAccessTokensResponse) GetSystemAccountAccessTokenCreated() *components.SystemAccountAccessTokenCreated {
-	if o == nil {
+func (p *PostSystemAccountsIDAccessTokensResponse) GetSystemAccountAccessTokenCreated() *components.SystemAccountAccessTokenCreated {
+	if p == nil {
 		return nil
 	}
-	return o.SystemAccountAccessTokenCreated
+	return p.SystemAccountAccessTokenCreated
 }

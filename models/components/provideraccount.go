@@ -31,37 +31,37 @@ func (p *ProviderAccount) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ProviderAccount) GetID() string {
-	if o == nil {
+func (p *ProviderAccount) GetID() string {
+	if p == nil {
 		return ""
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *ProviderAccount) GetProvider() ProviderName {
-	if o == nil {
+func (p *ProviderAccount) GetProvider() ProviderName {
+	if p == nil {
 		return ProviderName("")
 	}
-	return o.Provider
+	return p.Provider
 }
 
-func (o *ProviderAccount) GetProviderAccountID() string {
-	if o == nil {
+func (p *ProviderAccount) GetProviderAccountID() string {
+	if p == nil {
 		return ""
 	}
-	return o.ProviderAccountID
+	return p.ProviderAccountID
 }
 
-func (o *ProviderAccount) GetCreatedAt() time.Time {
-	if o == nil {
+func (p *ProviderAccount) GetCreatedAt() time.Time {
+	if p == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return p.CreatedAt
 }
 
-func (o *ProviderAccount) GetUpdatedAt() time.Time {
-	if o == nil {
+func (p *ProviderAccount) GetUpdatedAt() time.Time {
+	if p == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return p.UpdatedAt
 }

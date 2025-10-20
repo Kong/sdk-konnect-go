@@ -32,39 +32,39 @@ func (l *ListPluginWithRouteRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListPluginWithRouteRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListPluginWithRouteRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListPluginWithRouteRequest) GetRouteID() string {
-	if o == nil {
+func (l *ListPluginWithRouteRequest) GetRouteID() string {
+	if l == nil {
 		return ""
 	}
-	return o.RouteID
+	return l.RouteID
 }
 
-func (o *ListPluginWithRouteRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListPluginWithRouteRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListPluginWithRouteRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListPluginWithRouteRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListPluginWithRouteRequest) GetTags() *string {
-	if o == nil {
+func (l *ListPluginWithRouteRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListPluginWithRouteResponseBody - A successful response listing Plugins
@@ -76,25 +76,25 @@ type ListPluginWithRouteResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListPluginWithRouteResponseBody) GetData() []components.Plugin {
-	if o == nil {
+func (l *ListPluginWithRouteResponseBody) GetData() []components.Plugin {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListPluginWithRouteResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListPluginWithRouteResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListPluginWithRouteResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListPluginWithRouteResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListPluginWithRouteResponse struct {
@@ -108,30 +108,30 @@ type ListPluginWithRouteResponse struct {
 	Object *ListPluginWithRouteResponseBody
 }
 
-func (o *ListPluginWithRouteResponse) GetContentType() string {
-	if o == nil {
+func (l *ListPluginWithRouteResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListPluginWithRouteResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListPluginWithRouteResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListPluginWithRouteResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListPluginWithRouteResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListPluginWithRouteResponse) GetObject() *ListPluginWithRouteResponseBody {
-	if o == nil {
+func (l *ListPluginWithRouteResponse) GetObject() *ListPluginWithRouteResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

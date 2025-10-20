@@ -71,7 +71,7 @@ func (s *APISpecification) CreateAPISpec(ctx context.Context, apiID string, crea
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-api-spec",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateAPISpecRequest", "json", `request:"mediaType=application/json"`)
@@ -412,7 +412,7 @@ func (s *APISpecification) ListAPISpecs(ctx context.Context, request operations.
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-api-specs",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -692,7 +692,7 @@ func (s *APISpecification) FetchAPISpec(ctx context.Context, apiID string, specI
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-api-spec",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -963,7 +963,7 @@ func (s *APISpecification) UpdateAPISpec(ctx context.Context, request operations
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-api-spec",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "APISpec", "json", `request:"mediaType=application/json"`)
@@ -1309,7 +1309,7 @@ func (s *APISpecification) DeleteAPISpec(ctx context.Context, apiID string, spec
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-api-spec",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1557,7 +1557,7 @@ func (s *APISpecification) ValidateSpecification(ctx context.Context, request co
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "validate-specification",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)

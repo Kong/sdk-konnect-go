@@ -63,7 +63,7 @@ func (s *ApplicationRegistrations) ListRegistrations(ctx context.Context, reques
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-registrations",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -356,7 +356,7 @@ func (s *ApplicationRegistrations) ListRegistrationsByApplication(ctx context.Co
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-registrations-by-application",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -649,7 +649,7 @@ func (s *ApplicationRegistrations) GetApplicationRegistration(ctx context.Contex
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-application-registration",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -917,7 +917,7 @@ func (s *ApplicationRegistrations) UpdateApplicationRegistration(ctx context.Con
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-application-registration",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateApplicationRegistrationRequest", "json", `request:"mediaType=application/json"`)
@@ -1214,7 +1214,7 @@ func (s *ApplicationRegistrations) DeleteApplicationRegistration(ctx context.Con
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-application-registration",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

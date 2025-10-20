@@ -9,16 +9,16 @@ type ListCustomDomainsResponse struct {
 	Data []CustomDomain `json:"data"`
 }
 
-func (o *ListCustomDomainsResponse) GetMeta() PaginatedMeta {
-	if o == nil {
+func (l *ListCustomDomainsResponse) GetMeta() PaginatedMeta {
+	if l == nil {
 		return PaginatedMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListCustomDomainsResponse) GetData() []CustomDomain {
-	if o == nil {
+func (l *ListCustomDomainsResponse) GetData() []CustomDomain {
+	if l == nil {
 		return []CustomDomain{}
 	}
-	return o.Data
+	return l.Data
 }

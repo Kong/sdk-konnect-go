@@ -15,25 +15,25 @@ type PublishAPIToPortalRequest struct {
 	APIPublication components.APIPublication `request:"mediaType=application/json"`
 }
 
-func (o *PublishAPIToPortalRequest) GetAPIID() string {
-	if o == nil {
+func (p *PublishAPIToPortalRequest) GetAPIID() string {
+	if p == nil {
 		return ""
 	}
-	return o.APIID
+	return p.APIID
 }
 
-func (o *PublishAPIToPortalRequest) GetPortalID() string {
-	if o == nil {
+func (p *PublishAPIToPortalRequest) GetPortalID() string {
+	if p == nil {
 		return ""
 	}
-	return o.PortalID
+	return p.PortalID
 }
 
-func (o *PublishAPIToPortalRequest) GetAPIPublication() components.APIPublication {
-	if o == nil {
+func (p *PublishAPIToPortalRequest) GetAPIPublication() components.APIPublication {
+	if p == nil {
 		return components.APIPublication{}
 	}
-	return o.APIPublication
+	return p.APIPublication
 }
 
 type PublishAPIToPortalResponse struct {
@@ -47,30 +47,30 @@ type PublishAPIToPortalResponse struct {
 	APIPublicationResponse *components.APIPublicationResponse
 }
 
-func (o *PublishAPIToPortalResponse) GetContentType() string {
-	if o == nil {
+func (p *PublishAPIToPortalResponse) GetContentType() string {
+	if p == nil {
 		return ""
 	}
-	return o.ContentType
+	return p.ContentType
 }
 
-func (o *PublishAPIToPortalResponse) GetStatusCode() int {
-	if o == nil {
+func (p *PublishAPIToPortalResponse) GetStatusCode() int {
+	if p == nil {
 		return 0
 	}
-	return o.StatusCode
+	return p.StatusCode
 }
 
-func (o *PublishAPIToPortalResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (p *PublishAPIToPortalResponse) GetRawResponse() *http.Response {
+	if p == nil {
 		return nil
 	}
-	return o.RawResponse
+	return p.RawResponse
 }
 
-func (o *PublishAPIToPortalResponse) GetAPIPublicationResponse() *components.APIPublicationResponse {
-	if o == nil {
+func (p *PublishAPIToPortalResponse) GetAPIPublicationResponse() *components.APIPublicationResponse {
+	if p == nil {
 		return nil
 	}
-	return o.APIPublicationResponse
+	return p.APIPublicationResponse
 }

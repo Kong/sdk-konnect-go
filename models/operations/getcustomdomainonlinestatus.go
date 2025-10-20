@@ -16,11 +16,11 @@ type GetCustomDomainOnlineStatusRequest struct {
 	CustomDomainID string `pathParam:"style=simple,explode=false,name=customDomainId"`
 }
 
-func (o *GetCustomDomainOnlineStatusRequest) GetCustomDomainID() string {
-	if o == nil {
+func (g *GetCustomDomainOnlineStatusRequest) GetCustomDomainID() string {
+	if g == nil {
 		return ""
 	}
-	return o.CustomDomainID
+	return g.CustomDomainID
 }
 
 type GetCustomDomainOnlineStatusResponse struct {
@@ -34,30 +34,30 @@ type GetCustomDomainOnlineStatusResponse struct {
 	CustomDomainOnlineStatus *components.CustomDomainOnlineStatus
 }
 
-func (o *GetCustomDomainOnlineStatusResponse) GetContentType() string {
-	if o == nil {
+func (g *GetCustomDomainOnlineStatusResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetCustomDomainOnlineStatusResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetCustomDomainOnlineStatusResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetCustomDomainOnlineStatusResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetCustomDomainOnlineStatusResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetCustomDomainOnlineStatusResponse) GetCustomDomainOnlineStatus() *components.CustomDomainOnlineStatus {
-	if o == nil {
+func (g *GetCustomDomainOnlineStatusResponse) GetCustomDomainOnlineStatus() *components.CustomDomainOnlineStatus {
+	if g == nil {
 		return nil
 	}
-	return o.CustomDomainOnlineStatus
+	return g.CustomDomainOnlineStatus
 }

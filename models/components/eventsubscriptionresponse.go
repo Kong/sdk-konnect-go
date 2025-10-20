@@ -36,65 +36,65 @@ func (e *EventSubscriptionResponse) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *EventSubscriptionResponse) GetID() string {
-	if o == nil {
+func (e *EventSubscriptionResponse) GetID() string {
+	if e == nil {
 		return ""
 	}
-	return o.ID
+	return e.ID
 }
 
-func (o *EventSubscriptionResponse) GetEntityType() EntityTypes {
-	if o == nil {
+func (e *EventSubscriptionResponse) GetEntityType() EntityTypes {
+	if e == nil {
 		return EntityTypes("")
 	}
-	return o.EntityType
+	return e.EntityType
 }
 
-func (o *EventSubscriptionResponse) GetCreatedAt() time.Time {
-	if o == nil {
+func (e *EventSubscriptionResponse) GetCreatedAt() time.Time {
+	if e == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return e.CreatedAt
 }
 
-func (o *EventSubscriptionResponse) GetUpdatedAt() time.Time {
-	if o == nil {
+func (e *EventSubscriptionResponse) GetUpdatedAt() time.Time {
+	if e == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return e.UpdatedAt
 }
 
-func (o *EventSubscriptionResponse) GetRegions() []NotificationRegion {
-	if o == nil {
+func (e *EventSubscriptionResponse) GetRegions() []NotificationRegion {
+	if e == nil {
 		return []NotificationRegion{}
 	}
-	return o.Regions
+	return e.Regions
 }
 
-func (o *EventSubscriptionResponse) GetEntities() []string {
-	if o == nil {
+func (e *EventSubscriptionResponse) GetEntities() []string {
+	if e == nil {
 		return []string{}
 	}
-	return o.Entities
+	return e.Entities
 }
 
-func (o *EventSubscriptionResponse) GetChannels() []NotificationChannel {
-	if o == nil {
+func (e *EventSubscriptionResponse) GetChannels() []NotificationChannel {
+	if e == nil {
 		return []NotificationChannel{}
 	}
-	return o.Channels
+	return e.Channels
 }
 
-func (o *EventSubscriptionResponse) GetEnabled() bool {
-	if o == nil {
+func (e *EventSubscriptionResponse) GetEnabled() bool {
+	if e == nil {
 		return false
 	}
-	return o.Enabled
+	return e.Enabled
 }
 
-func (o *EventSubscriptionResponse) GetName() string {
-	if o == nil {
+func (e *EventSubscriptionResponse) GetName() string {
+	if e == nil {
 		return ""
 	}
-	return o.Name
+	return e.Name
 }

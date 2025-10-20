@@ -44,58 +44,58 @@ func (a *APIDocumentResponse) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *APIDocumentResponse) GetID() string {
-	if o == nil {
+func (a *APIDocumentResponse) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *APIDocumentResponse) GetContent() string {
-	if o == nil {
+func (a *APIDocumentResponse) GetContent() string {
+	if a == nil {
 		return ""
 	}
-	return o.Content
+	return a.Content
 }
 
-func (o *APIDocumentResponse) GetTitle() string {
-	if o == nil {
+func (a *APIDocumentResponse) GetTitle() string {
+	if a == nil {
 		return ""
 	}
-	return o.Title
+	return a.Title
 }
 
-func (o *APIDocumentResponse) GetSlug() string {
-	if o == nil {
+func (a *APIDocumentResponse) GetSlug() string {
+	if a == nil {
 		return ""
 	}
-	return o.Slug
+	return a.Slug
 }
 
-func (o *APIDocumentResponse) GetStatus() *APIDocumentStatus {
-	if o == nil {
+func (a *APIDocumentResponse) GetStatus() *APIDocumentStatus {
+	if a == nil {
 		return nil
 	}
-	return o.Status
+	return a.Status
 }
 
-func (o *APIDocumentResponse) GetParentDocumentID() *string {
-	if o == nil {
+func (a *APIDocumentResponse) GetParentDocumentID() *string {
+	if a == nil {
 		return nil
 	}
-	return o.ParentDocumentID
+	return a.ParentDocumentID
 }
 
-func (o *APIDocumentResponse) GetCreatedAt() time.Time {
-	if o == nil {
+func (a *APIDocumentResponse) GetCreatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return a.CreatedAt
 }
 
-func (o *APIDocumentResponse) GetUpdatedAt() time.Time {
-	if o == nil {
+func (a *APIDocumentResponse) GetUpdatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return a.UpdatedAt
 }

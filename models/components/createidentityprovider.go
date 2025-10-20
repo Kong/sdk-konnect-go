@@ -16,8 +16,8 @@ const (
 )
 
 type CreateIdentityProviderConfig struct {
-	ConfigureOIDCIdentityProviderConfig *ConfigureOIDCIdentityProviderConfig `queryParam:"inline" name:"config"`
-	SAMLIdentityProviderConfigInput     *SAMLIdentityProviderConfigInput     `queryParam:"inline" name:"config"`
+	ConfigureOIDCIdentityProviderConfig *ConfigureOIDCIdentityProviderConfig `queryParam:"inline,name=config"`
+	SAMLIdentityProviderConfigInput     *SAMLIdentityProviderConfigInput     `queryParam:"inline,name=config"`
 
 	Type CreateIdentityProviderConfigType
 }
@@ -95,30 +95,30 @@ func (c *CreateIdentityProvider) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CreateIdentityProvider) GetType() *IdentityProviderType {
-	if o == nil {
+func (c *CreateIdentityProvider) GetType() *IdentityProviderType {
+	if c == nil {
 		return nil
 	}
-	return o.Type
+	return c.Type
 }
 
-func (o *CreateIdentityProvider) GetLoginPath() *string {
-	if o == nil {
+func (c *CreateIdentityProvider) GetLoginPath() *string {
+	if c == nil {
 		return nil
 	}
-	return o.LoginPath
+	return c.LoginPath
 }
 
-func (o *CreateIdentityProvider) GetEnabled() *bool {
-	if o == nil {
+func (c *CreateIdentityProvider) GetEnabled() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.Enabled
+	return c.Enabled
 }
 
-func (o *CreateIdentityProvider) GetConfig() *CreateIdentityProviderConfig {
-	if o == nil {
+func (c *CreateIdentityProvider) GetConfig() *CreateIdentityProviderConfig {
+	if c == nil {
 		return nil
 	}
-	return o.Config
+	return c.Config
 }

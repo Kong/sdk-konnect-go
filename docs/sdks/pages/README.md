@@ -27,8 +27,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -37,7 +37,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -84,8 +84,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/types"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
@@ -96,7 +96,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -157,8 +157,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -167,17 +167,17 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.Pages.CreatePortalPage(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.CreatePortalPageRequest{
         Slug: "/my-page",
-        Title: sdkkonnectgo.String("My Page"),
+        Title: sdkkonnectgo.Pointer("My Page"),
         Content: "# Welcome to My Page",
         Visibility: components.PageVisibilityStatusPublic.ToPointer(),
         Status: components.PublishedStatusPublished.ToPointer(),
-        Description: sdkkonnectgo.String("A custom page about developer portals"),
+        Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
     })
     if err != nil {
         log.Fatal(err)
@@ -223,8 +223,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -233,7 +233,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -280,8 +280,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -291,7 +291,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -299,12 +299,12 @@ func main() {
         PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
         PageID: "ebbac5b0-ac89-45c3-9d2e-c4542c657e79",
         UpdatePortalPageRequest: components.UpdatePortalPageRequest{
-            Slug: sdkkonnectgo.String("/my-page"),
-            Title: sdkkonnectgo.String("My Page"),
-            Content: sdkkonnectgo.String("# Welcome to My Page"),
+            Slug: sdkkonnectgo.Pointer("/my-page"),
+            Title: sdkkonnectgo.Pointer("My Page"),
+            Content: sdkkonnectgo.Pointer("# Welcome to My Page"),
             Visibility: components.VisibilityStatusPublic.ToPointer(),
             Status: components.PublishedStatusPublished.ToPointer(),
-            Description: sdkkonnectgo.String("A custom page about developer portals"),
+            Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
         },
     })
     if err != nil {
@@ -350,8 +350,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -360,7 +360,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -408,8 +408,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -419,7 +419,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -427,8 +427,8 @@ func main() {
         PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
         PageID: "ebbac5b0-ac89-45c3-9d2e-c4542c657e79",
         MovePageRequestPayload: &components.MovePageRequestPayload{
-            ParentPageID: sdkkonnectgo.String("dd4e1b98-3629-4dd3-acc0-759a726ffee2"),
-            Index: sdkkonnectgo.Int64(1),
+            ParentPageID: sdkkonnectgo.Pointer("dd4e1b98-3629-4dd3-acc0-759a726ffee2"),
+            Index: sdkkonnectgo.Pointer[int64](1),
         },
     })
     if err != nil {

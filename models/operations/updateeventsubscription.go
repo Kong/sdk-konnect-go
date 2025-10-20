@@ -16,25 +16,25 @@ type UpdateEventSubscriptionRequest struct {
 	EventSubscription *components.EventSubscription `request:"mediaType=application/json"`
 }
 
-func (o *UpdateEventSubscriptionRequest) GetEventID() string {
-	if o == nil {
+func (u *UpdateEventSubscriptionRequest) GetEventID() string {
+	if u == nil {
 		return ""
 	}
-	return o.EventID
+	return u.EventID
 }
 
-func (o *UpdateEventSubscriptionRequest) GetSubscriptionID() string {
-	if o == nil {
+func (u *UpdateEventSubscriptionRequest) GetSubscriptionID() string {
+	if u == nil {
 		return ""
 	}
-	return o.SubscriptionID
+	return u.SubscriptionID
 }
 
-func (o *UpdateEventSubscriptionRequest) GetEventSubscription() *components.EventSubscription {
-	if o == nil {
+func (u *UpdateEventSubscriptionRequest) GetEventSubscription() *components.EventSubscription {
+	if u == nil {
 		return nil
 	}
-	return o.EventSubscription
+	return u.EventSubscription
 }
 
 type UpdateEventSubscriptionResponse struct {
@@ -48,30 +48,30 @@ type UpdateEventSubscriptionResponse struct {
 	EventSubscriptionResponse *components.EventSubscriptionResponse
 }
 
-func (o *UpdateEventSubscriptionResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateEventSubscriptionResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateEventSubscriptionResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateEventSubscriptionResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateEventSubscriptionResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateEventSubscriptionResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateEventSubscriptionResponse) GetEventSubscriptionResponse() *components.EventSubscriptionResponse {
-	if o == nil {
+func (u *UpdateEventSubscriptionResponse) GetEventSubscriptionResponse() *components.EventSubscriptionResponse {
+	if u == nil {
 		return nil
 	}
-	return o.EventSubscriptionResponse
+	return u.EventSubscriptionResponse
 }

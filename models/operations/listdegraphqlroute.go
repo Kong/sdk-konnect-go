@@ -30,32 +30,32 @@ func (l *ListDegraphqlRouteRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListDegraphqlRouteRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListDegraphqlRouteRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListDegraphqlRouteRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListDegraphqlRouteRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListDegraphqlRouteRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListDegraphqlRouteRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListDegraphqlRouteRequest) GetTags() *string {
-	if o == nil {
+func (l *ListDegraphqlRouteRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListDegraphqlRouteResponseBody - A successful response listing Degraphql_routes
@@ -67,25 +67,25 @@ type ListDegraphqlRouteResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListDegraphqlRouteResponseBody) GetData() []components.DegraphqlRoute {
-	if o == nil {
+func (l *ListDegraphqlRouteResponseBody) GetData() []components.DegraphqlRoute {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListDegraphqlRouteResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListDegraphqlRouteResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListDegraphqlRouteResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListDegraphqlRouteResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListDegraphqlRouteResponse struct {
@@ -99,30 +99,30 @@ type ListDegraphqlRouteResponse struct {
 	Object *ListDegraphqlRouteResponseBody
 }
 
-func (o *ListDegraphqlRouteResponse) GetContentType() string {
-	if o == nil {
+func (l *ListDegraphqlRouteResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListDegraphqlRouteResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListDegraphqlRouteResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListDegraphqlRouteResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListDegraphqlRouteResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListDegraphqlRouteResponse) GetObject() *ListDegraphqlRouteResponseBody {
-	if o == nil {
+func (l *ListDegraphqlRouteResponse) GetObject() *ListDegraphqlRouteResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

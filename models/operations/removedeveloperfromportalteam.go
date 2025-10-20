@@ -15,25 +15,25 @@ type RemoveDeveloperFromPortalTeamRequest struct {
 	TeamID string `pathParam:"style=simple,explode=false,name=teamId"`
 }
 
-func (o *RemoveDeveloperFromPortalTeamRequest) GetPortalID() string {
-	if o == nil {
+func (r *RemoveDeveloperFromPortalTeamRequest) GetPortalID() string {
+	if r == nil {
 		return ""
 	}
-	return o.PortalID
+	return r.PortalID
 }
 
-func (o *RemoveDeveloperFromPortalTeamRequest) GetDeveloperID() string {
-	if o == nil {
+func (r *RemoveDeveloperFromPortalTeamRequest) GetDeveloperID() string {
+	if r == nil {
 		return ""
 	}
-	return o.DeveloperID
+	return r.DeveloperID
 }
 
-func (o *RemoveDeveloperFromPortalTeamRequest) GetTeamID() string {
-	if o == nil {
+func (r *RemoveDeveloperFromPortalTeamRequest) GetTeamID() string {
+	if r == nil {
 		return ""
 	}
-	return o.TeamID
+	return r.TeamID
 }
 
 type RemoveDeveloperFromPortalTeamResponse struct {
@@ -45,23 +45,23 @@ type RemoveDeveloperFromPortalTeamResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *RemoveDeveloperFromPortalTeamResponse) GetContentType() string {
-	if o == nil {
+func (r *RemoveDeveloperFromPortalTeamResponse) GetContentType() string {
+	if r == nil {
 		return ""
 	}
-	return o.ContentType
+	return r.ContentType
 }
 
-func (o *RemoveDeveloperFromPortalTeamResponse) GetStatusCode() int {
-	if o == nil {
+func (r *RemoveDeveloperFromPortalTeamResponse) GetStatusCode() int {
+	if r == nil {
 		return 0
 	}
-	return o.StatusCode
+	return r.StatusCode
 }
 
-func (o *RemoveDeveloperFromPortalTeamResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (r *RemoveDeveloperFromPortalTeamResponse) GetRawResponse() *http.Response {
+	if r == nil {
 		return nil
 	}
-	return o.RawResponse
+	return r.RawResponse
 }

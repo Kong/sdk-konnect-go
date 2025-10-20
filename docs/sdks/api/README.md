@@ -24,8 +24,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -34,13 +34,13 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.API.CreateAPI(ctx, components.CreateAPIRequest{
-        Name: sdkkonnectgo.String("MyAPI"),
-        Slug: sdkkonnectgo.String("my-api-v1"),
+        Name: sdkkonnectgo.Pointer("MyAPI"),
+        Slug: sdkkonnectgo.Pointer("my-api-v1"),
         Labels: map[string]string{
             "env": "test",
         },
@@ -89,8 +89,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/types"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
@@ -101,13 +101,13 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.API.ListApis(ctx, operations.ListApisRequest{
-        PageSize: sdkkonnectgo.Int64(10),
-        PageNumber: sdkkonnectgo.Int64(1),
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
         Filter: &components.APIFilterParameters{
             CreatedAt: sdkkonnectgo.Pointer(components.CreateDateTimeFieldFilterDateTimeFieldLTEFilter(
                 components.DateTimeFieldLTEFilter{
@@ -120,7 +120,7 @@ func main() {
                 },
             )),
         },
-        Sort: sdkkonnectgo.String("created_at desc"),
+        Sort: sdkkonnectgo.Pointer("created_at desc"),
     })
     if err != nil {
         log.Fatal(err)
@@ -165,8 +165,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/types"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
@@ -177,13 +177,13 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.API.ListApisComputed(ctx, operations.ListApisComputedRequest{
-        PageSize: sdkkonnectgo.Int64(10),
-        PageNumber: sdkkonnectgo.Int64(1),
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
         Filter: &components.APIFilterParameters{
             CreatedAt: sdkkonnectgo.Pointer(components.CreateDateTimeFieldFilterDateTimeFieldLTEFilter(
                 components.DateTimeFieldLTEFilter{
@@ -196,7 +196,7 @@ func main() {
                 },
             )),
         },
-        Sort: sdkkonnectgo.String("created_at desc"),
+        Sort: sdkkonnectgo.Pointer("created_at desc"),
     })
     if err != nil {
         log.Fatal(err)
@@ -241,8 +241,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -251,7 +251,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -298,8 +298,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -308,15 +308,15 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.API.UpdateAPI(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.UpdateAPIRequest{
-        Name: sdkkonnectgo.String("MyAPI"),
-        Slug: sdkkonnectgo.String("my-api-v1"),
+        Name: sdkkonnectgo.Pointer("MyAPI"),
+        Slug: sdkkonnectgo.Pointer("my-api-v1"),
         Labels: map[string]*string{
-            "env": sdkkonnectgo.String("test"),
+            "env": sdkkonnectgo.Pointer("test"),
         },
     })
     if err != nil {
@@ -365,8 +365,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -375,7 +375,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 

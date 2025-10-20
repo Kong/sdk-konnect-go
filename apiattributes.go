@@ -63,7 +63,7 @@ func (s *APIAttributes) ListAPIAttributes(ctx context.Context, request operation
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-api-attributes",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

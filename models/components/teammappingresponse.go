@@ -27,25 +27,25 @@ func (t *TeamMappingResponsePage) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *TeamMappingResponsePage) GetNumber() *int64 {
-	if o == nil {
+func (t *TeamMappingResponsePage) GetNumber() *int64 {
+	if t == nil {
 		return nil
 	}
-	return o.Number
+	return t.Number
 }
 
-func (o *TeamMappingResponsePage) GetSize() *int64 {
-	if o == nil {
+func (t *TeamMappingResponsePage) GetSize() *int64 {
+	if t == nil {
 		return nil
 	}
-	return o.Size
+	return t.Size
 }
 
-func (o *TeamMappingResponsePage) GetTotal() *int64 {
-	if o == nil {
+func (t *TeamMappingResponsePage) GetTotal() *int64 {
+	if t == nil {
 		return nil
 	}
-	return o.Total
+	return t.Total
 }
 
 // Meta - Contains pagination data.
@@ -54,11 +54,11 @@ type Meta struct {
 	Page *TeamMappingResponsePage `json:"page,omitempty"`
 }
 
-func (o *Meta) GetPage() *TeamMappingResponsePage {
-	if o == nil {
+func (m *Meta) GetPage() *TeamMappingResponsePage {
+	if m == nil {
 		return nil
 	}
-	return o.Page
+	return m.Page
 }
 
 type TeamMappingResponseData struct {
@@ -79,18 +79,18 @@ func (t *TeamMappingResponseData) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *TeamMappingResponseData) GetGroup() *string {
-	if o == nil {
+func (t *TeamMappingResponseData) GetGroup() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Group
+	return t.Group
 }
 
-func (o *TeamMappingResponseData) GetTeamIds() []string {
-	if o == nil {
+func (t *TeamMappingResponseData) GetTeamIds() []string {
+	if t == nil {
 		return nil
 	}
-	return o.TeamIds
+	return t.TeamIds
 }
 
 // TeamMappingResponse - A paginated list response for a collection of team mappings.
@@ -100,16 +100,16 @@ type TeamMappingResponse struct {
 	Data []TeamMappingResponseData `json:"data,omitempty"`
 }
 
-func (o *TeamMappingResponse) GetMeta() *Meta {
-	if o == nil {
+func (t *TeamMappingResponse) GetMeta() *Meta {
+	if t == nil {
 		return nil
 	}
-	return o.Meta
+	return t.Meta
 }
 
-func (o *TeamMappingResponse) GetData() []TeamMappingResponseData {
-	if o == nil {
+func (t *TeamMappingResponse) GetData() []TeamMappingResponseData {
+	if t == nil {
 		return nil
 	}
-	return o.Data
+	return t.Data
 }

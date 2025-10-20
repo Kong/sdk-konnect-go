@@ -22,30 +22,30 @@ type PatchTeamGroupMappingsResponse struct {
 	TeamGroupMappingCollection *components.TeamGroupMappingCollection
 }
 
-func (o *PatchTeamGroupMappingsResponse) GetContentType() string {
-	if o == nil {
+func (p *PatchTeamGroupMappingsResponse) GetContentType() string {
+	if p == nil {
 		return ""
 	}
-	return o.ContentType
+	return p.ContentType
 }
 
-func (o *PatchTeamGroupMappingsResponse) GetStatusCode() int {
-	if o == nil {
+func (p *PatchTeamGroupMappingsResponse) GetStatusCode() int {
+	if p == nil {
 		return 0
 	}
-	return o.StatusCode
+	return p.StatusCode
 }
 
-func (o *PatchTeamGroupMappingsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (p *PatchTeamGroupMappingsResponse) GetRawResponse() *http.Response {
+	if p == nil {
 		return nil
 	}
-	return o.RawResponse
+	return p.RawResponse
 }
 
-func (o *PatchTeamGroupMappingsResponse) GetTeamGroupMappingCollection() *components.TeamGroupMappingCollection {
-	if o == nil {
+func (p *PatchTeamGroupMappingsResponse) GetTeamGroupMappingCollection() *components.TeamGroupMappingCollection {
+	if p == nil {
 		return nil
 	}
-	return o.TeamGroupMappingCollection
+	return p.TeamGroupMappingCollection
 }

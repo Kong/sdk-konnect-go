@@ -16,25 +16,25 @@ type UpdateDeveloperRequest struct {
 	UpdateDeveloperRequest components.UpdateDeveloperRequest `request:"mediaType=application/json"`
 }
 
-func (o *UpdateDeveloperRequest) GetPortalID() string {
-	if o == nil {
+func (u *UpdateDeveloperRequest) GetPortalID() string {
+	if u == nil {
 		return ""
 	}
-	return o.PortalID
+	return u.PortalID
 }
 
-func (o *UpdateDeveloperRequest) GetDeveloperID() string {
-	if o == nil {
+func (u *UpdateDeveloperRequest) GetDeveloperID() string {
+	if u == nil {
 		return ""
 	}
-	return o.DeveloperID
+	return u.DeveloperID
 }
 
-func (o *UpdateDeveloperRequest) GetUpdateDeveloperRequest() components.UpdateDeveloperRequest {
-	if o == nil {
+func (u *UpdateDeveloperRequest) GetUpdateDeveloperRequest() components.UpdateDeveloperRequest {
+	if u == nil {
 		return components.UpdateDeveloperRequest{}
 	}
-	return o.UpdateDeveloperRequest
+	return u.UpdateDeveloperRequest
 }
 
 type UpdateDeveloperResponse struct {
@@ -48,30 +48,30 @@ type UpdateDeveloperResponse struct {
 	PortalDeveloper *components.PortalDeveloper
 }
 
-func (o *UpdateDeveloperResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateDeveloperResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateDeveloperResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateDeveloperResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateDeveloperResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateDeveloperResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateDeveloperResponse) GetPortalDeveloper() *components.PortalDeveloper {
-	if o == nil {
+func (u *UpdateDeveloperResponse) GetPortalDeveloper() *components.PortalDeveloper {
+	if u == nil {
 		return nil
 	}
-	return o.PortalDeveloper
+	return u.PortalDeveloper
 }

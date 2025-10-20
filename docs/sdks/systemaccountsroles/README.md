@@ -21,8 +21,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -31,7 +31,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -79,8 +79,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -89,13 +89,13 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
     res, err := s.SystemAccountsRoles.PostSystemAccountsAccountIDAssignedRoles(ctx, "<id>", &components.AssignRole{
         RoleName: components.RoleNameViewer.ToPointer(),
-        EntityID: sdkkonnectgo.String("e67490ce-44dc-4cbd-b65e-b52c746fc26a"),
+        EntityID: sdkkonnectgo.Pointer("e67490ce-44dc-4cbd-b65e-b52c746fc26a"),
         EntityTypeName: components.EntityTypeNameControlPlanes.ToPointer(),
         EntityRegion: components.AssignRoleEntityRegionEu.ToPointer(),
     })
@@ -142,8 +142,8 @@ package main
 
 import(
 	"context"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
@@ -152,7 +152,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.String("<YOUR_BEARER_TOKEN_HERE>"),
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 

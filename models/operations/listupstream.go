@@ -30,32 +30,32 @@ func (l *ListUpstreamRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListUpstreamRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListUpstreamRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListUpstreamRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListUpstreamRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListUpstreamRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListUpstreamRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListUpstreamRequest) GetTags() *string {
-	if o == nil {
+func (l *ListUpstreamRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListUpstreamResponseBody - A successful response listing Upstreams
@@ -67,25 +67,25 @@ type ListUpstreamResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListUpstreamResponseBody) GetData() []components.Upstream {
-	if o == nil {
+func (l *ListUpstreamResponseBody) GetData() []components.Upstream {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListUpstreamResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListUpstreamResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListUpstreamResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListUpstreamResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListUpstreamResponse struct {
@@ -99,30 +99,30 @@ type ListUpstreamResponse struct {
 	Object *ListUpstreamResponseBody
 }
 
-func (o *ListUpstreamResponse) GetContentType() string {
-	if o == nil {
+func (l *ListUpstreamResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListUpstreamResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListUpstreamResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListUpstreamResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListUpstreamResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListUpstreamResponse) GetObject() *ListUpstreamResponseBody {
-	if o == nil {
+func (l *ListUpstreamResponse) GetObject() *ListUpstreamResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

@@ -10,16 +10,16 @@ type Provider struct {
 	Regions []ProviderRegion `json:"regions"`
 }
 
-func (o *Provider) GetProvider() ProviderName {
-	if o == nil {
+func (p *Provider) GetProvider() ProviderName {
+	if p == nil {
 		return ProviderName("")
 	}
-	return o.Provider
+	return p.Provider
 }
 
-func (o *Provider) GetRegions() []ProviderRegion {
-	if o == nil {
+func (p *Provider) GetRegions() []ProviderRegion {
+	if p == nil {
 		return []ProviderRegion{}
 	}
-	return o.Regions
+	return p.Regions
 }

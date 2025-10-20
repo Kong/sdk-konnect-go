@@ -63,7 +63,7 @@ func (s *API) CreateAPI(ctx context.Context, request components.CreateAPIRequest
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-api",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
@@ -380,7 +380,7 @@ func (s *API) ListApis(ctx context.Context, request operations.ListApisRequest, 
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-apis",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -673,7 +673,7 @@ func (s *API) ListApisComputed(ctx context.Context, request operations.ListApisC
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-apis-computed",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -970,7 +970,7 @@ func (s *API) FetchAPI(ctx context.Context, apiID string, opts ...operations.Opt
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "fetch-api",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1243,7 +1243,7 @@ func (s *API) UpdateAPI(ctx context.Context, apiID string, updateAPIRequest comp
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "update-api",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateAPIRequest", "json", `request:"mediaType=application/json"`)
@@ -1585,7 +1585,7 @@ func (s *API) DeleteAPI(ctx context.Context, apiID string, opts ...operations.Op
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-api",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

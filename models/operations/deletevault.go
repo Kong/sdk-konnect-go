@@ -13,18 +13,18 @@ type DeleteVaultRequest struct {
 	VaultID string `pathParam:"style=simple,explode=false,name=VaultId"`
 }
 
-func (o *DeleteVaultRequest) GetControlPlaneID() string {
-	if o == nil {
+func (d *DeleteVaultRequest) GetControlPlaneID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return d.ControlPlaneID
 }
 
-func (o *DeleteVaultRequest) GetVaultID() string {
-	if o == nil {
+func (d *DeleteVaultRequest) GetVaultID() string {
+	if d == nil {
 		return ""
 	}
-	return o.VaultID
+	return d.VaultID
 }
 
 type DeleteVaultResponse struct {
@@ -36,23 +36,23 @@ type DeleteVaultResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteVaultResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteVaultResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteVaultResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteVaultResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteVaultResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteVaultResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

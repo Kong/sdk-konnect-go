@@ -64,7 +64,7 @@ func (s *Consumers) ListConsumer(ctx context.Context, request operations.ListCon
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-consumer",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -299,7 +299,7 @@ func (s *Consumers) CreateConsumer(ctx context.Context, controlPlaneID string, c
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-consumer",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Consumer", "json", `request:"mediaType=application/json"`)
@@ -537,7 +537,7 @@ func (s *Consumers) DeleteConsumer(ctx context.Context, controlPlaneID string, c
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-consumer",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -748,7 +748,7 @@ func (s *Consumers) GetConsumer(ctx context.Context, consumerID string, controlP
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-consumer",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -976,7 +976,7 @@ func (s *Consumers) UpsertConsumer(ctx context.Context, request operations.Upser
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-consumer",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Consumer", "json", `request:"mediaType=application/json"`)
@@ -1214,7 +1214,7 @@ func (s *Consumers) RemoveConsumerFromAllConsumerGroups(ctx context.Context, con
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "remove-consumer-from-all-consumer-groups",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1401,7 +1401,7 @@ func (s *Consumers) ListConsumerGroupsForConsumer(ctx context.Context, request o
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-consumer-groups-for-consumer",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -1610,7 +1610,7 @@ func (s *Consumers) AddConsumerToSpecificConsumerGroup(ctx context.Context, requ
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "add-consumer-to-specific-consumer-group",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "json", `request:"mediaType=application/json"`)
@@ -1822,7 +1822,7 @@ func (s *Consumers) RemoveConsumerFromConsumerGroup(ctx context.Context, request
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "remove-consumer-from-consumer-group",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 

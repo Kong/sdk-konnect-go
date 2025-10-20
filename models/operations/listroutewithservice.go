@@ -32,39 +32,39 @@ func (l *ListRouteWithServiceRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListRouteWithServiceRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListRouteWithServiceRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListRouteWithServiceRequest) GetServiceID() string {
-	if o == nil {
+func (l *ListRouteWithServiceRequest) GetServiceID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ServiceID
+	return l.ServiceID
 }
 
-func (o *ListRouteWithServiceRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListRouteWithServiceRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListRouteWithServiceRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListRouteWithServiceRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListRouteWithServiceRequest) GetTags() *string {
-	if o == nil {
+func (l *ListRouteWithServiceRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListRouteWithServiceResponseBody - A successful response listing Routes
@@ -76,25 +76,25 @@ type ListRouteWithServiceResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListRouteWithServiceResponseBody) GetData() []components.Route {
-	if o == nil {
+func (l *ListRouteWithServiceResponseBody) GetData() []components.Route {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListRouteWithServiceResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListRouteWithServiceResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListRouteWithServiceResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListRouteWithServiceResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListRouteWithServiceResponse struct {
@@ -108,30 +108,30 @@ type ListRouteWithServiceResponse struct {
 	Object *ListRouteWithServiceResponseBody
 }
 
-func (o *ListRouteWithServiceResponse) GetContentType() string {
-	if o == nil {
+func (l *ListRouteWithServiceResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListRouteWithServiceResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListRouteWithServiceResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListRouteWithServiceResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListRouteWithServiceResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListRouteWithServiceResponse) GetObject() *ListRouteWithServiceResponseBody {
-	if o == nil {
+func (l *ListRouteWithServiceResponse) GetObject() *ListRouteWithServiceResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

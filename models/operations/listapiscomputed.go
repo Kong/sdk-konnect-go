@@ -23,32 +23,32 @@ type ListApisComputedRequest struct {
 	Sort *string `queryParam:"style=form,explode=true,name=sort"`
 }
 
-func (o *ListApisComputedRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListApisComputedRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListApisComputedRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListApisComputedRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListApisComputedRequest) GetFilter() *components.APIFilterParameters {
-	if o == nil {
+func (l *ListApisComputedRequest) GetFilter() *components.APIFilterParameters {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
-func (o *ListApisComputedRequest) GetSort() *string {
-	if o == nil {
+func (l *ListApisComputedRequest) GetSort() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Sort
+	return l.Sort
 }
 
 type ListApisComputedResponse struct {
@@ -62,30 +62,30 @@ type ListApisComputedResponse struct {
 	ListAPIComputedResponse *components.ListAPIComputedResponse
 }
 
-func (o *ListApisComputedResponse) GetContentType() string {
-	if o == nil {
+func (l *ListApisComputedResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListApisComputedResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListApisComputedResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListApisComputedResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListApisComputedResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListApisComputedResponse) GetListAPIComputedResponse() *components.ListAPIComputedResponse {
-	if o == nil {
+func (l *ListApisComputedResponse) GetListAPIComputedResponse() *components.ListAPIComputedResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListAPIComputedResponse
+	return l.ListAPIComputedResponse
 }

@@ -32,11 +32,11 @@ func (p *PrivateDNSStateFieldEqualsComparison) UnmarshalJSON(data []byte) error 
 	return nil
 }
 
-func (o *PrivateDNSStateFieldEqualsComparison) GetEq() PrivateDNSState {
-	if o == nil {
+func (p *PrivateDNSStateFieldEqualsComparison) GetEq() PrivateDNSState {
+	if p == nil {
 		return PrivateDNSState("")
 	}
-	return o.Eq
+	return p.Eq
 }
 
 type PrivateDNSStateFieldEqualsFilterType string
@@ -48,8 +48,8 @@ const (
 
 // PrivateDNSStateFieldEqualsFilter - Filter Private DNS state by exact match.
 type PrivateDNSStateFieldEqualsFilter struct {
-	PrivateDNSState                      *PrivateDNSState                      `queryParam:"inline" name:"PrivateDnsStateFieldEqualsFilter"`
-	PrivateDNSStateFieldEqualsComparison *PrivateDNSStateFieldEqualsComparison `queryParam:"inline" name:"PrivateDnsStateFieldEqualsFilter"`
+	PrivateDNSState                      *PrivateDNSState                      `queryParam:"inline,name=PrivateDnsStateFieldEqualsFilter"`
+	PrivateDNSStateFieldEqualsComparison *PrivateDNSStateFieldEqualsComparison `queryParam:"inline,name=PrivateDnsStateFieldEqualsFilter"`
 
 	Type PrivateDNSStateFieldEqualsFilterType
 }

@@ -24,11 +24,11 @@ func (k *KeyAuthApplicationPortal) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *KeyAuthApplicationPortal) GetID() string {
-	if o == nil {
+func (k *KeyAuthApplicationPortal) GetID() string {
+	if k == nil {
 		return ""
 	}
-	return o.ID
+	return k.ID
 }
 
 type KeyAuthApplication struct {
@@ -61,58 +61,58 @@ func (k *KeyAuthApplication) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *KeyAuthApplication) GetID() string {
-	if o == nil {
+func (k *KeyAuthApplication) GetID() string {
+	if k == nil {
 		return ""
 	}
-	return o.ID
+	return k.ID
 }
 
-func (o *KeyAuthApplication) GetCreatedAt() time.Time {
-	if o == nil {
+func (k *KeyAuthApplication) GetCreatedAt() time.Time {
+	if k == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return k.CreatedAt
 }
 
-func (o *KeyAuthApplication) GetUpdatedAt() time.Time {
-	if o == nil {
+func (k *KeyAuthApplication) GetUpdatedAt() time.Time {
+	if k == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return k.UpdatedAt
 }
 
-func (o *KeyAuthApplication) GetName() string {
-	if o == nil {
+func (k *KeyAuthApplication) GetName() string {
+	if k == nil {
 		return ""
 	}
-	return o.Name
+	return k.Name
 }
 
-func (o *KeyAuthApplication) GetDescription() *string {
-	if o == nil {
+func (k *KeyAuthApplication) GetDescription() *string {
+	if k == nil {
 		return nil
 	}
-	return o.Description
+	return k.Description
 }
 
-func (o *KeyAuthApplication) GetAuthStrategy() AuthStrategyKeyAuth {
-	if o == nil {
+func (k *KeyAuthApplication) GetAuthStrategy() AuthStrategyKeyAuth {
+	if k == nil {
 		return AuthStrategyKeyAuth{}
 	}
-	return o.AuthStrategy
+	return k.AuthStrategy
 }
 
-func (o *KeyAuthApplication) GetPortal() KeyAuthApplicationPortal {
-	if o == nil {
+func (k *KeyAuthApplication) GetPortal() KeyAuthApplicationPortal {
+	if k == nil {
 		return KeyAuthApplicationPortal{}
 	}
-	return o.Portal
+	return k.Portal
 }
 
-func (o *KeyAuthApplication) GetRegistrationCount() float64 {
-	if o == nil {
+func (k *KeyAuthApplication) GetRegistrationCount() float64 {
+	if k == nil {
 		return 0.0
 	}
-	return o.RegistrationCount
+	return k.RegistrationCount
 }

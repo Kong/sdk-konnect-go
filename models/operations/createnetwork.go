@@ -22,30 +22,30 @@ type CreateNetworkResponse struct {
 	Network *components.Network
 }
 
-func (o *CreateNetworkResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateNetworkResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateNetworkResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateNetworkResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateNetworkResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateNetworkResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateNetworkResponse) GetNetwork() *components.Network {
-	if o == nil {
+func (c *CreateNetworkResponse) GetNetwork() *components.Network {
+	if c == nil {
 		return nil
 	}
-	return o.Network
+	return c.Network
 }

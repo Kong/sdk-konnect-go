@@ -31,44 +31,44 @@ func (p *PortalDeveloper) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PortalDeveloper) GetID() string {
-	if o == nil {
+func (p *PortalDeveloper) GetID() string {
+	if p == nil {
 		return ""
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PortalDeveloper) GetCreatedAt() time.Time {
-	if o == nil {
+func (p *PortalDeveloper) GetCreatedAt() time.Time {
+	if p == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return p.CreatedAt
 }
 
-func (o *PortalDeveloper) GetUpdatedAt() time.Time {
-	if o == nil {
+func (p *PortalDeveloper) GetUpdatedAt() time.Time {
+	if p == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return p.UpdatedAt
 }
 
-func (o *PortalDeveloper) GetEmail() string {
-	if o == nil {
+func (p *PortalDeveloper) GetEmail() string {
+	if p == nil {
 		return ""
 	}
-	return o.Email
+	return p.Email
 }
 
-func (o *PortalDeveloper) GetFullName() string {
-	if o == nil {
+func (p *PortalDeveloper) GetFullName() string {
+	if p == nil {
 		return ""
 	}
-	return o.FullName
+	return p.FullName
 }
 
-func (o *PortalDeveloper) GetStatus() DeveloperStatus {
-	if o == nil {
+func (p *PortalDeveloper) GetStatus() DeveloperStatus {
+	if p == nil {
 		return DeveloperStatus("")
 	}
-	return o.Status
+	return p.Status
 }

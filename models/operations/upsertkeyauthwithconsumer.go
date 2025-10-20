@@ -18,32 +18,32 @@ type UpsertKeyAuthWithConsumerRequest struct {
 	KeyAuthWithoutParents *components.KeyAuthWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *UpsertKeyAuthWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpsertKeyAuthWithConsumerRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpsertKeyAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (u *UpsertKeyAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if u == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return u.ConsumerIDForNestedEntities
 }
 
-func (o *UpsertKeyAuthWithConsumerRequest) GetKeyAuthID() string {
-	if o == nil {
+func (u *UpsertKeyAuthWithConsumerRequest) GetKeyAuthID() string {
+	if u == nil {
 		return ""
 	}
-	return o.KeyAuthID
+	return u.KeyAuthID
 }
 
-func (o *UpsertKeyAuthWithConsumerRequest) GetKeyAuthWithoutParents() *components.KeyAuthWithoutParents {
-	if o == nil {
+func (u *UpsertKeyAuthWithConsumerRequest) GetKeyAuthWithoutParents() *components.KeyAuthWithoutParents {
+	if u == nil {
 		return nil
 	}
-	return o.KeyAuthWithoutParents
+	return u.KeyAuthWithoutParents
 }
 
 type UpsertKeyAuthWithConsumerResponse struct {
@@ -57,30 +57,30 @@ type UpsertKeyAuthWithConsumerResponse struct {
 	KeyAuth *components.KeyAuth
 }
 
-func (o *UpsertKeyAuthWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (u *UpsertKeyAuthWithConsumerResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpsertKeyAuthWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpsertKeyAuthWithConsumerResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpsertKeyAuthWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpsertKeyAuthWithConsumerResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpsertKeyAuthWithConsumerResponse) GetKeyAuth() *components.KeyAuth {
-	if o == nil {
+func (u *UpsertKeyAuthWithConsumerResponse) GetKeyAuth() *components.KeyAuth {
+	if u == nil {
 		return nil
 	}
-	return o.KeyAuth
+	return u.KeyAuth
 }

@@ -43,72 +43,72 @@ func (n *Notification) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Notification) GetID() string {
-	if o == nil {
+func (n *Notification) GetID() string {
+	if n == nil {
 		return ""
 	}
-	return o.ID
+	return n.ID
 }
 
-func (o *Notification) GetTitle() string {
-	if o == nil {
+func (n *Notification) GetTitle() string {
+	if n == nil {
 		return ""
 	}
-	return o.Title
+	return n.Title
 }
 
-func (o *Notification) GetDescription() string {
-	if o == nil {
+func (n *Notification) GetDescription() string {
+	if n == nil {
 		return ""
 	}
-	return o.Description
+	return n.Description
 }
 
-func (o *Notification) GetStatus() NotificationStatus {
-	if o == nil {
+func (n *Notification) GetStatus() NotificationStatus {
+	if n == nil {
 		return NotificationStatus("")
 	}
-	return o.Status
+	return n.Status
 }
 
-func (o *Notification) GetRegion() NotificationRegion {
-	if o == nil {
+func (n *Notification) GetRegion() NotificationRegion {
+	if n == nil {
 		return NotificationRegion("")
 	}
-	return o.Region
+	return n.Region
 }
 
-func (o *Notification) GetNamespace() NotificationNamespace {
-	if o == nil {
+func (n *Notification) GetNamespace() NotificationNamespace {
+	if n == nil {
 		return NotificationNamespace("")
 	}
-	return o.Namespace
+	return n.Namespace
 }
 
-func (o *Notification) GetEntityID() string {
-	if o == nil {
+func (n *Notification) GetEntityID() string {
+	if n == nil {
 		return ""
 	}
-	return o.EntityID
+	return n.EntityID
 }
 
-func (o *Notification) GetDetails() Details {
-	if o == nil {
+func (n *Notification) GetDetails() Details {
+	if n == nil {
 		return Details{}
 	}
-	return o.Details
+	return n.Details
 }
 
-func (o *Notification) GetCreatedAt() time.Time {
-	if o == nil {
+func (n *Notification) GetCreatedAt() time.Time {
+	if n == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return n.CreatedAt
 }
 
-func (o *Notification) GetUpdatedAt() time.Time {
-	if o == nil {
+func (n *Notification) GetUpdatedAt() time.Time {
+	if n == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return n.UpdatedAt
 }

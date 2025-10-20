@@ -15,18 +15,18 @@ type ListApplicationsQueryParamFilter struct {
 	Name *components.StringFieldFilter `queryParam:"name=name"`
 }
 
-func (o *ListApplicationsQueryParamFilter) GetDeveloperID() *components.UUIDFieldFilter {
-	if o == nil {
+func (l *ListApplicationsQueryParamFilter) GetDeveloperID() *components.UUIDFieldFilter {
+	if l == nil {
 		return nil
 	}
-	return o.DeveloperID
+	return l.DeveloperID
 }
 
-func (o *ListApplicationsQueryParamFilter) GetName() *components.StringFieldFilter {
-	if o == nil {
+func (l *ListApplicationsQueryParamFilter) GetName() *components.StringFieldFilter {
+	if l == nil {
 		return nil
 	}
-	return o.Name
+	return l.Name
 }
 
 type ListApplicationsRequest struct {
@@ -46,39 +46,39 @@ type ListApplicationsRequest struct {
 	Filter *ListApplicationsQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *ListApplicationsRequest) GetPortalID() string {
-	if o == nil {
+func (l *ListApplicationsRequest) GetPortalID() string {
+	if l == nil {
 		return ""
 	}
-	return o.PortalID
+	return l.PortalID
 }
 
-func (o *ListApplicationsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListApplicationsRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListApplicationsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListApplicationsRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListApplicationsRequest) GetSort() *string {
-	if o == nil {
+func (l *ListApplicationsRequest) GetSort() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Sort
+	return l.Sort
 }
 
-func (o *ListApplicationsRequest) GetFilter() *ListApplicationsQueryParamFilter {
-	if o == nil {
+func (l *ListApplicationsRequest) GetFilter() *ListApplicationsQueryParamFilter {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
 type ListApplicationsResponse struct {
@@ -92,30 +92,30 @@ type ListApplicationsResponse struct {
 	ListApplicationsResponse *components.ListApplicationsResponse
 }
 
-func (o *ListApplicationsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListApplicationsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListApplicationsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListApplicationsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListApplicationsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListApplicationsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListApplicationsResponse) GetListApplicationsResponse() *components.ListApplicationsResponse {
-	if o == nil {
+func (l *ListApplicationsResponse) GetListApplicationsResponse() *components.ListApplicationsResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListApplicationsResponse
+	return l.ListApplicationsResponse
 }

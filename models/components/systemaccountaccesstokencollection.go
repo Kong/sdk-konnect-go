@@ -9,16 +9,16 @@ type SystemAccountAccessTokenCollection struct {
 	Data []SystemAccountAccessToken `json:"data,omitempty"`
 }
 
-func (o *SystemAccountAccessTokenCollection) GetMeta() *PaginatedMeta {
-	if o == nil {
+func (s *SystemAccountAccessTokenCollection) GetMeta() *PaginatedMeta {
+	if s == nil {
 		return nil
 	}
-	return o.Meta
+	return s.Meta
 }
 
-func (o *SystemAccountAccessTokenCollection) GetData() []SystemAccountAccessToken {
-	if o == nil {
+func (s *SystemAccountAccessTokenCollection) GetData() []SystemAccountAccessToken {
+	if s == nil {
 		return nil
 	}
-	return o.Data
+	return s.Data
 }

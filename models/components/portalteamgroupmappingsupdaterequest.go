@@ -22,18 +22,18 @@ func (p *PortalTeamGroupMappingsUpdateRequestData) UnmarshalJSON(data []byte) er
 	return nil
 }
 
-func (o *PortalTeamGroupMappingsUpdateRequestData) GetTeamID() *string {
-	if o == nil {
+func (p *PortalTeamGroupMappingsUpdateRequestData) GetTeamID() *string {
+	if p == nil {
 		return nil
 	}
-	return o.TeamID
+	return p.TeamID
 }
 
-func (o *PortalTeamGroupMappingsUpdateRequestData) GetGroups() []string {
-	if o == nil {
+func (p *PortalTeamGroupMappingsUpdateRequestData) GetGroups() []string {
+	if p == nil {
 		return nil
 	}
-	return o.Groups
+	return p.Groups
 }
 
 // PortalTeamGroupMappingsUpdateRequest - A set of mappings to update from a team to their groups.
@@ -42,9 +42,9 @@ type PortalTeamGroupMappingsUpdateRequest struct {
 	Data []PortalTeamGroupMappingsUpdateRequestData `json:"data,omitempty"`
 }
 
-func (o *PortalTeamGroupMappingsUpdateRequest) GetData() []PortalTeamGroupMappingsUpdateRequestData {
-	if o == nil {
+func (p *PortalTeamGroupMappingsUpdateRequest) GetData() []PortalTeamGroupMappingsUpdateRequestData {
+	if p == nil {
 		return nil
 	}
-	return o.Data
+	return p.Data
 }

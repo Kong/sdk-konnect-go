@@ -9,16 +9,16 @@ type BulkPayload struct {
 	Status NotificationStatus `json:"status"`
 }
 
-func (o *BulkPayload) GetIds() []string {
-	if o == nil {
+func (b *BulkPayload) GetIds() []string {
+	if b == nil {
 		return []string{}
 	}
-	return o.Ids
+	return b.Ids
 }
 
-func (o *BulkPayload) GetStatus() NotificationStatus {
-	if o == nil {
+func (b *BulkPayload) GetStatus() NotificationStatus {
+	if b == nil {
 		return NotificationStatus("")
 	}
-	return o.Status
+	return b.Status
 }

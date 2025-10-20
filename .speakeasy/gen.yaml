@@ -17,6 +17,8 @@ generation:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
     hoistGlobalSecurity: true
+  schemas:
+    allOfMergeStrategy: shallowMerge
   tests:
     generateTests: true
     generateNewTests: false
@@ -41,6 +43,7 @@ go:
   maxMethodParams: 2
   methodArguments: require-security-and-request
   modulePath: ""
+  nullableOptionalWrapper: false
   outputModelSuffix: output
   packageName: github.com/Kong/sdk-konnect-go
   respectRequiredFields: false

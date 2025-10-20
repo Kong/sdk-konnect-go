@@ -51,23 +51,23 @@ func (a *AwsResourceEndpointAttachmentConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *AwsResourceEndpointAttachmentConfig) GetKind() AWSResourceEndpointAttachmentConfigAWSResourceEndpointAttachmentType {
-	if o == nil {
+func (a *AwsResourceEndpointAttachmentConfig) GetKind() AWSResourceEndpointAttachmentConfigAWSResourceEndpointAttachmentType {
+	if a == nil {
 		return AWSResourceEndpointAttachmentConfigAWSResourceEndpointAttachmentType("")
 	}
-	return o.Kind
+	return a.Kind
 }
 
-func (o *AwsResourceEndpointAttachmentConfig) GetRAMShareArn() string {
-	if o == nil {
+func (a *AwsResourceEndpointAttachmentConfig) GetRAMShareArn() string {
+	if a == nil {
 		return ""
 	}
-	return o.RAMShareArn
+	return a.RAMShareArn
 }
 
-func (o *AwsResourceEndpointAttachmentConfig) GetResourceConfig() []AwsResourceEndpointConfig {
-	if o == nil {
+func (a *AwsResourceEndpointAttachmentConfig) GetResourceConfig() []AwsResourceEndpointConfig {
+	if a == nil {
 		return nil
 	}
-	return o.ResourceConfig
+	return a.ResourceConfig
 }

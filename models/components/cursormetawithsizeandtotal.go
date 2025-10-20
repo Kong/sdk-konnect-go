@@ -26,23 +26,23 @@ func (c *CursorMetaWithSizeAndTotal) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CursorMetaWithSizeAndTotal) GetNext() *string {
-	if o == nil {
+func (c *CursorMetaWithSizeAndTotal) GetNext() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Next
+	return c.Next
 }
 
-func (o *CursorMetaWithSizeAndTotal) GetSize() float64 {
-	if o == nil {
+func (c *CursorMetaWithSizeAndTotal) GetSize() float64 {
+	if c == nil {
 		return 0.0
 	}
-	return o.Size
+	return c.Size
 }
 
-func (o *CursorMetaWithSizeAndTotal) GetTotal() *float64 {
-	if o == nil {
+func (c *CursorMetaWithSizeAndTotal) GetTotal() *float64 {
+	if c == nil {
 		return nil
 	}
-	return o.Total
+	return c.Total
 }

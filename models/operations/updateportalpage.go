@@ -16,25 +16,25 @@ type UpdatePortalPageRequest struct {
 	UpdatePortalPageRequest components.UpdatePortalPageRequest `request:"mediaType=application/json"`
 }
 
-func (o *UpdatePortalPageRequest) GetPortalID() string {
-	if o == nil {
+func (u *UpdatePortalPageRequest) GetPortalID() string {
+	if u == nil {
 		return ""
 	}
-	return o.PortalID
+	return u.PortalID
 }
 
-func (o *UpdatePortalPageRequest) GetPageID() string {
-	if o == nil {
+func (u *UpdatePortalPageRequest) GetPageID() string {
+	if u == nil {
 		return ""
 	}
-	return o.PageID
+	return u.PageID
 }
 
-func (o *UpdatePortalPageRequest) GetUpdatePortalPageRequest() components.UpdatePortalPageRequest {
-	if o == nil {
+func (u *UpdatePortalPageRequest) GetUpdatePortalPageRequest() components.UpdatePortalPageRequest {
+	if u == nil {
 		return components.UpdatePortalPageRequest{}
 	}
-	return o.UpdatePortalPageRequest
+	return u.UpdatePortalPageRequest
 }
 
 type UpdatePortalPageResponse struct {
@@ -48,30 +48,30 @@ type UpdatePortalPageResponse struct {
 	PortalPageResponse *components.PortalPageResponse
 }
 
-func (o *UpdatePortalPageResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdatePortalPageResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdatePortalPageResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdatePortalPageResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdatePortalPageResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdatePortalPageResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdatePortalPageResponse) GetPortalPageResponse() *components.PortalPageResponse {
-	if o == nil {
+func (u *UpdatePortalPageResponse) GetPortalPageResponse() *components.PortalPageResponse {
+	if u == nil {
 		return nil
 	}
-	return o.PortalPageResponse
+	return u.PortalPageResponse
 }

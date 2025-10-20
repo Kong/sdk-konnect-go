@@ -33,30 +33,30 @@ func (u *UpdateDcrConfigHTTPInRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UpdateDcrConfigHTTPInRequest) GetDcrBaseURL() *string {
-	if o == nil {
+func (u *UpdateDcrConfigHTTPInRequest) GetDcrBaseURL() *string {
+	if u == nil {
 		return nil
 	}
-	return o.DcrBaseURL
+	return u.DcrBaseURL
 }
 
-func (o *UpdateDcrConfigHTTPInRequest) GetAPIKey() *string {
-	if o == nil {
+func (u *UpdateDcrConfigHTTPInRequest) GetAPIKey() *string {
+	if u == nil {
 		return nil
 	}
-	return o.APIKey
+	return u.APIKey
 }
 
-func (o *UpdateDcrConfigHTTPInRequest) GetDisableEventHooks() *bool {
-	if o == nil {
+func (u *UpdateDcrConfigHTTPInRequest) GetDisableEventHooks() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.DisableEventHooks
+	return u.DisableEventHooks
 }
 
-func (o *UpdateDcrConfigHTTPInRequest) GetDisableRefreshSecret() *bool {
-	if o == nil {
+func (u *UpdateDcrConfigHTTPInRequest) GetDisableRefreshSecret() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.DisableRefreshSecret
+	return u.DisableRefreshSecret
 }

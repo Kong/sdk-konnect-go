@@ -17,18 +17,18 @@ type DeleteSystemAccountsAccountIDAssignedRolesRoleIDRequest struct {
 	RoleID string `pathParam:"style=simple,explode=false,name=roleId"`
 }
 
-func (o *DeleteSystemAccountsAccountIDAssignedRolesRoleIDRequest) GetAccountID() string {
-	if o == nil {
+func (d *DeleteSystemAccountsAccountIDAssignedRolesRoleIDRequest) GetAccountID() string {
+	if d == nil {
 		return ""
 	}
-	return o.AccountID
+	return d.AccountID
 }
 
-func (o *DeleteSystemAccountsAccountIDAssignedRolesRoleIDRequest) GetRoleID() string {
-	if o == nil {
+func (d *DeleteSystemAccountsAccountIDAssignedRolesRoleIDRequest) GetRoleID() string {
+	if d == nil {
 		return ""
 	}
-	return o.RoleID
+	return d.RoleID
 }
 
 type DeleteSystemAccountsAccountIDAssignedRolesRoleIDResponse struct {
@@ -40,23 +40,23 @@ type DeleteSystemAccountsAccountIDAssignedRolesRoleIDResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteSystemAccountsAccountIDAssignedRolesRoleIDResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteSystemAccountsAccountIDAssignedRolesRoleIDResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteSystemAccountsAccountIDAssignedRolesRoleIDResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteSystemAccountsAccountIDAssignedRolesRoleIDResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteSystemAccountsAccountIDAssignedRolesRoleIDResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteSystemAccountsAccountIDAssignedRolesRoleIDResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

@@ -32,39 +32,39 @@ func (l *ListPluginWithConsumerRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListPluginWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListPluginWithConsumerRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListPluginWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (l *ListPluginWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if l == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return l.ConsumerIDForNestedEntities
 }
 
-func (o *ListPluginWithConsumerRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListPluginWithConsumerRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListPluginWithConsumerRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListPluginWithConsumerRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListPluginWithConsumerRequest) GetTags() *string {
-	if o == nil {
+func (l *ListPluginWithConsumerRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListPluginWithConsumerResponseBody - A successful response listing Plugins
@@ -76,25 +76,25 @@ type ListPluginWithConsumerResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListPluginWithConsumerResponseBody) GetData() []components.Plugin {
-	if o == nil {
+func (l *ListPluginWithConsumerResponseBody) GetData() []components.Plugin {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListPluginWithConsumerResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListPluginWithConsumerResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListPluginWithConsumerResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListPluginWithConsumerResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListPluginWithConsumerResponse struct {
@@ -108,30 +108,30 @@ type ListPluginWithConsumerResponse struct {
 	Object *ListPluginWithConsumerResponseBody
 }
 
-func (o *ListPluginWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (l *ListPluginWithConsumerResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListPluginWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListPluginWithConsumerResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListPluginWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListPluginWithConsumerResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListPluginWithConsumerResponse) GetObject() *ListPluginWithConsumerResponseBody {
-	if o == nil {
+func (l *ListPluginWithConsumerResponse) GetObject() *ListPluginWithConsumerResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

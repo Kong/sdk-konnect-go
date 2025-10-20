@@ -36,51 +36,51 @@ func (r *ResourceQuota) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ResourceQuota) GetID() string {
-	if o == nil {
+func (r *ResourceQuota) GetID() string {
+	if r == nil {
 		return ""
 	}
-	return o.ID
+	return r.ID
 }
 
-func (o *ResourceQuota) GetResource() ResourceQuotaQualifier {
-	if o == nil {
+func (r *ResourceQuota) GetResource() ResourceQuotaQualifier {
+	if r == nil {
 		return ResourceQuotaQualifier("")
 	}
-	return o.Resource
+	return r.Resource
 }
 
-func (o *ResourceQuota) GetName() string {
-	if o == nil {
+func (r *ResourceQuota) GetName() string {
+	if r == nil {
 		return ""
 	}
-	return o.Name
+	return r.Name
 }
 
-func (o *ResourceQuota) GetDescription() string {
-	if o == nil {
+func (r *ResourceQuota) GetDescription() string {
+	if r == nil {
 		return ""
 	}
-	return o.Description
+	return r.Description
 }
 
-func (o *ResourceQuota) GetValue() int64 {
-	if o == nil {
+func (r *ResourceQuota) GetValue() int64 {
+	if r == nil {
 		return 0
 	}
-	return o.Value
+	return r.Value
 }
 
-func (o *ResourceQuota) GetCreatedAt() time.Time {
-	if o == nil {
+func (r *ResourceQuota) GetCreatedAt() time.Time {
+	if r == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return r.CreatedAt
 }
 
-func (o *ResourceQuota) GetUpdatedAt() time.Time {
-	if o == nil {
+func (r *ResourceQuota) GetUpdatedAt() time.Time {
+	if r == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return r.UpdatedAt
 }

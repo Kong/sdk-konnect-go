@@ -10,16 +10,16 @@ type CustomDomainOnlineStatus struct {
 	Ssl CustomDomainOnlinePropertyStatus `json:"ssl"`
 }
 
-func (o *CustomDomainOnlineStatus) GetCname() CustomDomainOnlinePropertyStatus {
-	if o == nil {
+func (c *CustomDomainOnlineStatus) GetCname() CustomDomainOnlinePropertyStatus {
+	if c == nil {
 		return CustomDomainOnlinePropertyStatus("")
 	}
-	return o.Cname
+	return c.Cname
 }
 
-func (o *CustomDomainOnlineStatus) GetSsl() CustomDomainOnlinePropertyStatus {
-	if o == nil {
+func (c *CustomDomainOnlineStatus) GetSsl() CustomDomainOnlinePropertyStatus {
+	if c == nil {
 		return CustomDomainOnlinePropertyStatus("")
 	}
-	return o.Ssl
+	return c.Ssl
 }

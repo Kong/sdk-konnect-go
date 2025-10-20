@@ -16,25 +16,25 @@ type UpsertConsumerRequest struct {
 	Consumer components.Consumer `request:"mediaType=application/json"`
 }
 
-func (o *UpsertConsumerRequest) GetConsumerID() string {
-	if o == nil {
+func (u *UpsertConsumerRequest) GetConsumerID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ConsumerID
+	return u.ConsumerID
 }
 
-func (o *UpsertConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpsertConsumerRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpsertConsumerRequest) GetConsumer() components.Consumer {
-	if o == nil {
+func (u *UpsertConsumerRequest) GetConsumer() components.Consumer {
+	if u == nil {
 		return components.Consumer{}
 	}
-	return o.Consumer
+	return u.Consumer
 }
 
 type UpsertConsumerResponse struct {
@@ -48,30 +48,30 @@ type UpsertConsumerResponse struct {
 	Consumer *components.Consumer
 }
 
-func (o *UpsertConsumerResponse) GetContentType() string {
-	if o == nil {
+func (u *UpsertConsumerResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpsertConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpsertConsumerResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpsertConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpsertConsumerResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpsertConsumerResponse) GetConsumer() *components.Consumer {
-	if o == nil {
+func (u *UpsertConsumerResponse) GetConsumer() *components.Consumer {
+	if u == nil {
 		return nil
 	}
-	return o.Consumer
+	return u.Consumer
 }

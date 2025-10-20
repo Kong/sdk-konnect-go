@@ -31,8 +31,8 @@ const (
 
 // TransitGatewayStateFieldEqualsFilter - Filter transit-gateway state by exact match.
 type TransitGatewayStateFieldEqualsFilter struct {
-	TransitGatewayState                      *TransitGatewayState                      `queryParam:"inline" name:"TransitGatewayStateFieldEqualsFilter"`
-	TransitGatewayStateFieldEqualsComparison *TransitGatewayStateFieldEqualsComparison `queryParam:"inline" name:"TransitGatewayStateFieldEqualsFilter"`
+	TransitGatewayState                      *TransitGatewayState                      `queryParam:"inline,name=TransitGatewayStateFieldEqualsFilter"`
+	TransitGatewayStateFieldEqualsComparison *TransitGatewayStateFieldEqualsComparison `queryParam:"inline,name=TransitGatewayStateFieldEqualsFilter"`
 
 	Type TransitGatewayStateFieldEqualsFilterType
 }
@@ -57,17 +57,17 @@ func CreateTransitGatewayStateFieldEqualsFilterTransitGatewayStateFieldEqualsCom
 
 func (u *TransitGatewayStateFieldEqualsFilter) UnmarshalJSON(data []byte) error {
 
-	var transitGatewayStateFieldEqualsComparison TransitGatewayStateFieldEqualsComparison = TransitGatewayStateFieldEqualsComparison{}
-	if err := utils.UnmarshalJSON(data, &transitGatewayStateFieldEqualsComparison, "", true, nil); err == nil {
-		u.TransitGatewayStateFieldEqualsComparison = &transitGatewayStateFieldEqualsComparison
-		u.Type = TransitGatewayStateFieldEqualsFilterTypeTransitGatewayStateFieldEqualsComparison
-		return nil
-	}
-
 	var transitGatewayState TransitGatewayState = TransitGatewayState("")
 	if err := utils.UnmarshalJSON(data, &transitGatewayState, "", true, nil); err == nil {
 		u.TransitGatewayState = &transitGatewayState
 		u.Type = TransitGatewayStateFieldEqualsFilterTypeTransitGatewayState
+		return nil
+	}
+
+	var transitGatewayStateFieldEqualsComparison TransitGatewayStateFieldEqualsComparison = TransitGatewayStateFieldEqualsComparison{}
+	if err := utils.UnmarshalJSON(data, &transitGatewayStateFieldEqualsComparison, "", true, nil); err == nil {
+		u.TransitGatewayStateFieldEqualsComparison = &transitGatewayStateFieldEqualsComparison
+		u.Type = TransitGatewayStateFieldEqualsFilterTypeTransitGatewayStateFieldEqualsComparison
 		return nil
 	}
 

@@ -14,18 +14,18 @@ type ReplacePortalAssetFaviconRequest struct {
 	ReplacePortalImageAsset *components.ReplacePortalImageAsset `request:"mediaType=application/json"`
 }
 
-func (o *ReplacePortalAssetFaviconRequest) GetPortalID() string {
-	if o == nil {
+func (r *ReplacePortalAssetFaviconRequest) GetPortalID() string {
+	if r == nil {
 		return ""
 	}
-	return o.PortalID
+	return r.PortalID
 }
 
-func (o *ReplacePortalAssetFaviconRequest) GetReplacePortalImageAsset() *components.ReplacePortalImageAsset {
-	if o == nil {
+func (r *ReplacePortalAssetFaviconRequest) GetReplacePortalImageAsset() *components.ReplacePortalImageAsset {
+	if r == nil {
 		return nil
 	}
-	return o.ReplacePortalImageAsset
+	return r.ReplacePortalImageAsset
 }
 
 type ReplacePortalAssetFaviconResponse struct {
@@ -39,30 +39,30 @@ type ReplacePortalAssetFaviconResponse struct {
 	PortalAssetResponse *components.PortalAssetResponse
 }
 
-func (o *ReplacePortalAssetFaviconResponse) GetContentType() string {
-	if o == nil {
+func (r *ReplacePortalAssetFaviconResponse) GetContentType() string {
+	if r == nil {
 		return ""
 	}
-	return o.ContentType
+	return r.ContentType
 }
 
-func (o *ReplacePortalAssetFaviconResponse) GetStatusCode() int {
-	if o == nil {
+func (r *ReplacePortalAssetFaviconResponse) GetStatusCode() int {
+	if r == nil {
 		return 0
 	}
-	return o.StatusCode
+	return r.StatusCode
 }
 
-func (o *ReplacePortalAssetFaviconResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (r *ReplacePortalAssetFaviconResponse) GetRawResponse() *http.Response {
+	if r == nil {
 		return nil
 	}
-	return o.RawResponse
+	return r.RawResponse
 }
 
-func (o *ReplacePortalAssetFaviconResponse) GetPortalAssetResponse() *components.PortalAssetResponse {
-	if o == nil {
+func (r *ReplacePortalAssetFaviconResponse) GetPortalAssetResponse() *components.PortalAssetResponse {
+	if r == nil {
 		return nil
 	}
-	return o.PortalAssetResponse
+	return r.PortalAssetResponse
 }

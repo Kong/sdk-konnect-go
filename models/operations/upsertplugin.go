@@ -16,25 +16,25 @@ type UpsertPluginRequest struct {
 	Plugin components.Plugin `request:"mediaType=application/json"`
 }
 
-func (o *UpsertPluginRequest) GetPluginID() string {
-	if o == nil {
+func (u *UpsertPluginRequest) GetPluginID() string {
+	if u == nil {
 		return ""
 	}
-	return o.PluginID
+	return u.PluginID
 }
 
-func (o *UpsertPluginRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpsertPluginRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpsertPluginRequest) GetPlugin() components.Plugin {
-	if o == nil {
+func (u *UpsertPluginRequest) GetPlugin() components.Plugin {
+	if u == nil {
 		return components.Plugin{}
 	}
-	return o.Plugin
+	return u.Plugin
 }
 
 type UpsertPluginResponse struct {
@@ -48,30 +48,30 @@ type UpsertPluginResponse struct {
 	Plugin *components.Plugin
 }
 
-func (o *UpsertPluginResponse) GetContentType() string {
-	if o == nil {
+func (u *UpsertPluginResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpsertPluginResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpsertPluginResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpsertPluginResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpsertPluginResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpsertPluginResponse) GetPlugin() *components.Plugin {
-	if o == nil {
+func (u *UpsertPluginResponse) GetPlugin() *components.Plugin {
+	if u == nil {
 		return nil
 	}
-	return o.Plugin
+	return u.Plugin
 }

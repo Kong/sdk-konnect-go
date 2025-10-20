@@ -16,11 +16,11 @@ type GetResourceConfigurationRequest struct {
 	ResourceConfigurationID string `pathParam:"style=simple,explode=false,name=resourceConfigurationId"`
 }
 
-func (o *GetResourceConfigurationRequest) GetResourceConfigurationID() string {
-	if o == nil {
+func (g *GetResourceConfigurationRequest) GetResourceConfigurationID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ResourceConfigurationID
+	return g.ResourceConfigurationID
 }
 
 type GetResourceConfigurationResponse struct {
@@ -34,30 +34,30 @@ type GetResourceConfigurationResponse struct {
 	ResourceConfiguration *components.ResourceConfiguration
 }
 
-func (o *GetResourceConfigurationResponse) GetContentType() string {
-	if o == nil {
+func (g *GetResourceConfigurationResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetResourceConfigurationResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetResourceConfigurationResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetResourceConfigurationResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetResourceConfigurationResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetResourceConfigurationResponse) GetResourceConfiguration() *components.ResourceConfiguration {
-	if o == nil {
+func (g *GetResourceConfigurationResponse) GetResourceConfiguration() *components.ResourceConfiguration {
+	if g == nil {
 		return nil
 	}
-	return o.ResourceConfiguration
+	return g.ResourceConfiguration
 }

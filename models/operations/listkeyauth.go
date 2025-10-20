@@ -30,32 +30,32 @@ func (l *ListKeyAuthRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListKeyAuthRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListKeyAuthRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListKeyAuthRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListKeyAuthRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListKeyAuthRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListKeyAuthRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListKeyAuthRequest) GetTags() *string {
-	if o == nil {
+func (l *ListKeyAuthRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListKeyAuthResponseBody - A successful response listing API-keys
@@ -67,25 +67,25 @@ type ListKeyAuthResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListKeyAuthResponseBody) GetData() []components.KeyAuth {
-	if o == nil {
+func (l *ListKeyAuthResponseBody) GetData() []components.KeyAuth {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListKeyAuthResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListKeyAuthResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListKeyAuthResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListKeyAuthResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListKeyAuthResponse struct {
@@ -99,30 +99,30 @@ type ListKeyAuthResponse struct {
 	Object *ListKeyAuthResponseBody
 }
 
-func (o *ListKeyAuthResponse) GetContentType() string {
-	if o == nil {
+func (l *ListKeyAuthResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListKeyAuthResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListKeyAuthResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListKeyAuthResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListKeyAuthResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListKeyAuthResponse) GetObject() *ListKeyAuthResponseBody {
-	if o == nil {
+func (l *ListKeyAuthResponse) GetObject() *ListKeyAuthResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

@@ -9,16 +9,16 @@ type ListApplicationRegistrationsResponse struct {
 	Data []ApplicationRegistration `json:"data"`
 }
 
-func (o *ListApplicationRegistrationsResponse) GetMeta() PaginatedMeta {
-	if o == nil {
+func (l *ListApplicationRegistrationsResponse) GetMeta() PaginatedMeta {
+	if l == nil {
 		return PaginatedMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListApplicationRegistrationsResponse) GetData() []ApplicationRegistration {
-	if o == nil {
+func (l *ListApplicationRegistrationsResponse) GetData() []ApplicationRegistration {
+	if l == nil {
 		return []ApplicationRegistration{}
 	}
-	return o.Data
+	return l.Data
 }

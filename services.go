@@ -69,7 +69,7 @@ func (s *Services) ListService(ctx context.Context, request operations.ListServi
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "list-service",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -304,7 +304,7 @@ func (s *Services) CreateService(ctx context.Context, controlPlaneID string, ser
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "create-service",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Service", "json", `request:"mediaType=application/json"`)
@@ -542,7 +542,7 @@ func (s *Services) DeleteService(ctx context.Context, controlPlaneID string, ser
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "delete-service",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -753,7 +753,7 @@ func (s *Services) GetService(ctx context.Context, serviceID string, controlPlan
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "get-service",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -981,7 +981,7 @@ func (s *Services) UpsertService(ctx context.Context, request operations.UpsertS
 		BaseURL:          baseURL,
 		Context:          ctx,
 		OperationID:      "upsert-service",
-		OAuth2Scopes:     []string{},
+		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Service", "json", `request:"mediaType=application/json"`)

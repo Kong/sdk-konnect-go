@@ -32,39 +32,39 @@ func (l *ListDegraphqlRouteWithServiceRequest) UnmarshalJSON(data []byte) error 
 	return nil
 }
 
-func (o *ListDegraphqlRouteWithServiceRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListDegraphqlRouteWithServiceRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListDegraphqlRouteWithServiceRequest) GetServiceID() string {
-	if o == nil {
+func (l *ListDegraphqlRouteWithServiceRequest) GetServiceID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ServiceID
+	return l.ServiceID
 }
 
-func (o *ListDegraphqlRouteWithServiceRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListDegraphqlRouteWithServiceRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListDegraphqlRouteWithServiceRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListDegraphqlRouteWithServiceRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListDegraphqlRouteWithServiceRequest) GetTags() *string {
-	if o == nil {
+func (l *ListDegraphqlRouteWithServiceRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListDegraphqlRouteWithServiceResponseBody - A successful response listing Degraphql_routes
@@ -76,25 +76,25 @@ type ListDegraphqlRouteWithServiceResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListDegraphqlRouteWithServiceResponseBody) GetData() []components.DegraphqlRoute {
-	if o == nil {
+func (l *ListDegraphqlRouteWithServiceResponseBody) GetData() []components.DegraphqlRoute {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListDegraphqlRouteWithServiceResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListDegraphqlRouteWithServiceResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListDegraphqlRouteWithServiceResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListDegraphqlRouteWithServiceResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListDegraphqlRouteWithServiceResponse struct {
@@ -108,30 +108,30 @@ type ListDegraphqlRouteWithServiceResponse struct {
 	Object *ListDegraphqlRouteWithServiceResponseBody
 }
 
-func (o *ListDegraphqlRouteWithServiceResponse) GetContentType() string {
-	if o == nil {
+func (l *ListDegraphqlRouteWithServiceResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListDegraphqlRouteWithServiceResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListDegraphqlRouteWithServiceResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListDegraphqlRouteWithServiceResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListDegraphqlRouteWithServiceResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListDegraphqlRouteWithServiceResponse) GetObject() *ListDegraphqlRouteWithServiceResponseBody {
-	if o == nil {
+func (l *ListDegraphqlRouteWithServiceResponse) GetObject() *ListDegraphqlRouteWithServiceResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

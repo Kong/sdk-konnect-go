@@ -61,44 +61,44 @@ func (c *CreateDcrProviderRequestAuth0) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CreateDcrProviderRequestAuth0) GetProviderType() ProviderType {
-	if o == nil {
+func (c *CreateDcrProviderRequestAuth0) GetProviderType() ProviderType {
+	if c == nil {
 		return ProviderType("")
 	}
-	return o.ProviderType
+	return c.ProviderType
 }
 
-func (o *CreateDcrProviderRequestAuth0) GetDcrConfig() CreateDcrConfigAuth0InRequest {
-	if o == nil {
+func (c *CreateDcrProviderRequestAuth0) GetDcrConfig() CreateDcrConfigAuth0InRequest {
+	if c == nil {
 		return CreateDcrConfigAuth0InRequest{}
 	}
-	return o.DcrConfig
+	return c.DcrConfig
 }
 
-func (o *CreateDcrProviderRequestAuth0) GetName() string {
-	if o == nil {
+func (c *CreateDcrProviderRequestAuth0) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *CreateDcrProviderRequestAuth0) GetDisplayName() *string {
-	if o == nil {
+func (c *CreateDcrProviderRequestAuth0) GetDisplayName() *string {
+	if c == nil {
 		return nil
 	}
-	return o.DisplayName
+	return c.DisplayName
 }
 
-func (o *CreateDcrProviderRequestAuth0) GetIssuer() string {
-	if o == nil {
+func (c *CreateDcrProviderRequestAuth0) GetIssuer() string {
+	if c == nil {
 		return ""
 	}
-	return o.Issuer
+	return c.Issuer
 }
 
-func (o *CreateDcrProviderRequestAuth0) GetLabels() map[string]string {
-	if o == nil {
+func (c *CreateDcrProviderRequestAuth0) GetLabels() map[string]string {
+	if c == nil {
 		return nil
 	}
-	return o.Labels
+	return c.Labels
 }

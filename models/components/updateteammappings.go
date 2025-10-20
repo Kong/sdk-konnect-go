@@ -22,18 +22,18 @@ func (m *Mappings) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *Mappings) GetGroup() *string {
-	if o == nil {
+func (m *Mappings) GetGroup() *string {
+	if m == nil {
 		return nil
 	}
-	return o.Group
+	return m.Group
 }
 
-func (o *Mappings) GetTeamIds() []string {
-	if o == nil {
+func (m *Mappings) GetTeamIds() []string {
+	if m == nil {
 		return nil
 	}
-	return o.TeamIds
+	return m.TeamIds
 }
 
 // UpdateTeamMappings - The request schema for updating IdP team mappings.
@@ -42,9 +42,9 @@ type UpdateTeamMappings struct {
 	Mappings []Mappings `json:"mappings,omitempty"`
 }
 
-func (o *UpdateTeamMappings) GetMappings() []Mappings {
-	if o == nil {
+func (u *UpdateTeamMappings) GetMappings() []Mappings {
+	if u == nil {
 		return nil
 	}
-	return o.Mappings
+	return u.Mappings
 }

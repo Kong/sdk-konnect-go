@@ -18,32 +18,32 @@ type UpsertSniWithCertificateRequest struct {
 	SNIWithoutParents components.SNIWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *UpsertSniWithCertificateRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpsertSniWithCertificateRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpsertSniWithCertificateRequest) GetCertificateID() string {
-	if o == nil {
+func (u *UpsertSniWithCertificateRequest) GetCertificateID() string {
+	if u == nil {
 		return ""
 	}
-	return o.CertificateID
+	return u.CertificateID
 }
 
-func (o *UpsertSniWithCertificateRequest) GetSNIID() string {
-	if o == nil {
+func (u *UpsertSniWithCertificateRequest) GetSNIID() string {
+	if u == nil {
 		return ""
 	}
-	return o.SNIID
+	return u.SNIID
 }
 
-func (o *UpsertSniWithCertificateRequest) GetSNIWithoutParents() components.SNIWithoutParents {
-	if o == nil {
+func (u *UpsertSniWithCertificateRequest) GetSNIWithoutParents() components.SNIWithoutParents {
+	if u == nil {
 		return components.SNIWithoutParents{}
 	}
-	return o.SNIWithoutParents
+	return u.SNIWithoutParents
 }
 
 type UpsertSniWithCertificateResponse struct {
@@ -57,30 +57,30 @@ type UpsertSniWithCertificateResponse struct {
 	Sni *components.Sni
 }
 
-func (o *UpsertSniWithCertificateResponse) GetContentType() string {
-	if o == nil {
+func (u *UpsertSniWithCertificateResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpsertSniWithCertificateResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpsertSniWithCertificateResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpsertSniWithCertificateResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpsertSniWithCertificateResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpsertSniWithCertificateResponse) GetSni() *components.Sni {
-	if o == nil {
+func (u *UpsertSniWithCertificateResponse) GetSni() *components.Sni {
+	if u == nil {
 		return nil
 	}
-	return o.Sni
+	return u.Sni
 }

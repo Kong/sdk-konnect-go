@@ -25,16 +25,16 @@ func (m *MoveDocumentRequestPayload) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *MoveDocumentRequestPayload) GetParentDocumentID() *string {
-	if o == nil {
+func (m *MoveDocumentRequestPayload) GetParentDocumentID() *string {
+	if m == nil {
 		return nil
 	}
-	return o.ParentDocumentID
+	return m.ParentDocumentID
 }
 
-func (o *MoveDocumentRequestPayload) GetIndex() *int64 {
-	if o == nil {
+func (m *MoveDocumentRequestPayload) GetIndex() *int64 {
+	if m == nil {
 		return nil
 	}
-	return o.Index
+	return m.Index
 }

@@ -18,18 +18,18 @@ type UpdateTeamRequest struct {
 	UpdateTeam *components.UpdateTeam `request:"mediaType=application/json"`
 }
 
-func (o *UpdateTeamRequest) GetTeamID() string {
-	if o == nil {
+func (u *UpdateTeamRequest) GetTeamID() string {
+	if u == nil {
 		return ""
 	}
-	return o.TeamID
+	return u.TeamID
 }
 
-func (o *UpdateTeamRequest) GetUpdateTeam() *components.UpdateTeam {
-	if o == nil {
+func (u *UpdateTeamRequest) GetUpdateTeam() *components.UpdateTeam {
+	if u == nil {
 		return nil
 	}
-	return o.UpdateTeam
+	return u.UpdateTeam
 }
 
 type UpdateTeamResponse struct {
@@ -43,30 +43,30 @@ type UpdateTeamResponse struct {
 	Team *components.Team
 }
 
-func (o *UpdateTeamResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateTeamResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateTeamResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateTeamResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateTeamResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateTeamResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateTeamResponse) GetTeam() *components.Team {
-	if o == nil {
+func (u *UpdateTeamResponse) GetTeam() *components.Team {
+	if u == nil {
 		return nil
 	}
-	return o.Team
+	return u.Team
 }

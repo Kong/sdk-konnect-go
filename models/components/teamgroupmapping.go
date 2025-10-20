@@ -25,16 +25,16 @@ func (t *TeamGroupMapping) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *TeamGroupMapping) GetTeamID() *string {
-	if o == nil {
+func (t *TeamGroupMapping) GetTeamID() *string {
+	if t == nil {
 		return nil
 	}
-	return o.TeamID
+	return t.TeamID
 }
 
-func (o *TeamGroupMapping) GetGroups() []string {
-	if o == nil {
+func (t *TeamGroupMapping) GetGroups() []string {
+	if t == nil {
 		return nil
 	}
-	return o.Groups
+	return t.Groups
 }

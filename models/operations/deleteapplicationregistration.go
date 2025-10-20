@@ -15,25 +15,25 @@ type DeleteApplicationRegistrationRequest struct {
 	RegistrationID string `pathParam:"style=simple,explode=false,name=registrationId"`
 }
 
-func (o *DeleteApplicationRegistrationRequest) GetPortalID() string {
-	if o == nil {
+func (d *DeleteApplicationRegistrationRequest) GetPortalID() string {
+	if d == nil {
 		return ""
 	}
-	return o.PortalID
+	return d.PortalID
 }
 
-func (o *DeleteApplicationRegistrationRequest) GetApplicationID() string {
-	if o == nil {
+func (d *DeleteApplicationRegistrationRequest) GetApplicationID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ApplicationID
+	return d.ApplicationID
 }
 
-func (o *DeleteApplicationRegistrationRequest) GetRegistrationID() string {
-	if o == nil {
+func (d *DeleteApplicationRegistrationRequest) GetRegistrationID() string {
+	if d == nil {
 		return ""
 	}
-	return o.RegistrationID
+	return d.RegistrationID
 }
 
 type DeleteApplicationRegistrationResponse struct {
@@ -45,23 +45,23 @@ type DeleteApplicationRegistrationResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteApplicationRegistrationResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteApplicationRegistrationResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteApplicationRegistrationResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteApplicationRegistrationResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteApplicationRegistrationResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteApplicationRegistrationResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

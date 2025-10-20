@@ -17,18 +17,18 @@ type DeleteSystemAccountsIDAccessTokensIDRequest struct {
 	TokenID string `pathParam:"style=simple,explode=false,name=tokenId"`
 }
 
-func (o *DeleteSystemAccountsIDAccessTokensIDRequest) GetAccountID() string {
-	if o == nil {
+func (d *DeleteSystemAccountsIDAccessTokensIDRequest) GetAccountID() string {
+	if d == nil {
 		return ""
 	}
-	return o.AccountID
+	return d.AccountID
 }
 
-func (o *DeleteSystemAccountsIDAccessTokensIDRequest) GetTokenID() string {
-	if o == nil {
+func (d *DeleteSystemAccountsIDAccessTokensIDRequest) GetTokenID() string {
+	if d == nil {
 		return ""
 	}
-	return o.TokenID
+	return d.TokenID
 }
 
 type DeleteSystemAccountsIDAccessTokensIDResponse struct {
@@ -40,23 +40,23 @@ type DeleteSystemAccountsIDAccessTokensIDResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeleteSystemAccountsIDAccessTokensIDResponse) GetContentType() string {
-	if o == nil {
+func (d *DeleteSystemAccountsIDAccessTokensIDResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteSystemAccountsIDAccessTokensIDResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteSystemAccountsIDAccessTokensIDResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteSystemAccountsIDAccessTokensIDResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteSystemAccountsIDAccessTokensIDResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

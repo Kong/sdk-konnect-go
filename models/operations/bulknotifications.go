@@ -15,23 +15,23 @@ type BulkNotificationsResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *BulkNotificationsResponse) GetContentType() string {
-	if o == nil {
+func (b *BulkNotificationsResponse) GetContentType() string {
+	if b == nil {
 		return ""
 	}
-	return o.ContentType
+	return b.ContentType
 }
 
-func (o *BulkNotificationsResponse) GetStatusCode() int {
-	if o == nil {
+func (b *BulkNotificationsResponse) GetStatusCode() int {
+	if b == nil {
 		return 0
 	}
-	return o.StatusCode
+	return b.StatusCode
 }
 
-func (o *BulkNotificationsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (b *BulkNotificationsResponse) GetRawResponse() *http.Response {
+	if b == nil {
 		return nil
 	}
-	return o.RawResponse
+	return b.RawResponse
 }

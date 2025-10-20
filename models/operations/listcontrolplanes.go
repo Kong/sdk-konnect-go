@@ -22,39 +22,39 @@ type ListControlPlanesRequest struct {
 	Sort *string `queryParam:"style=form,explode=true,name=sort"`
 }
 
-func (o *ListControlPlanesRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListControlPlanesRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListControlPlanesRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListControlPlanesRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListControlPlanesRequest) GetFilter() *components.ControlPlaneFilterParameters {
-	if o == nil {
+func (l *ListControlPlanesRequest) GetFilter() *components.ControlPlaneFilterParameters {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
-func (o *ListControlPlanesRequest) GetFilterLabels() *string {
-	if o == nil {
+func (l *ListControlPlanesRequest) GetFilterLabels() *string {
+	if l == nil {
 		return nil
 	}
-	return o.FilterLabels
+	return l.FilterLabels
 }
 
-func (o *ListControlPlanesRequest) GetSort() *string {
-	if o == nil {
+func (l *ListControlPlanesRequest) GetSort() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Sort
+	return l.Sort
 }
 
 type ListControlPlanesResponse struct {
@@ -66,32 +66,34 @@ type ListControlPlanesResponse struct {
 	RawResponse *http.Response
 	// A paginated list response for a collection of control planes.
 	ListControlPlanesResponse *components.ListControlPlanesResponse
+
+	Next func() (*ListControlPlanesResponse, error)
 }
 
-func (o *ListControlPlanesResponse) GetContentType() string {
-	if o == nil {
+func (l *ListControlPlanesResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListControlPlanesResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListControlPlanesResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListControlPlanesResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListControlPlanesResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListControlPlanesResponse) GetListControlPlanesResponse() *components.ListControlPlanesResponse {
-	if o == nil {
+func (l *ListControlPlanesResponse) GetListControlPlanesResponse() *components.ListControlPlanesResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListControlPlanesResponse
+	return l.ListControlPlanesResponse
 }

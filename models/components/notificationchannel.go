@@ -8,16 +8,16 @@ type NotificationChannel struct {
 	Enabled bool                    `json:"enabled"`
 }
 
-func (o *NotificationChannel) GetType() NotificationChannelType {
-	if o == nil {
+func (n *NotificationChannel) GetType() NotificationChannelType {
+	if n == nil {
 		return NotificationChannelType("")
 	}
-	return o.Type
+	return n.Type
 }
 
-func (o *NotificationChannel) GetEnabled() bool {
-	if o == nil {
+func (n *NotificationChannel) GetEnabled() bool {
+	if n == nil {
 		return false
 	}
-	return o.Enabled
+	return n.Enabled
 }

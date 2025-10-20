@@ -23,32 +23,32 @@ type ListUsersQueryParamFilter struct {
 	Active *bool `queryParam:"name=active"`
 }
 
-func (o *ListUsersQueryParamFilter) GetID() *components.StringFieldEqualsFilter {
-	if o == nil {
+func (l *ListUsersQueryParamFilter) GetID() *components.StringFieldEqualsFilter {
+	if l == nil {
 		return nil
 	}
-	return o.ID
+	return l.ID
 }
 
-func (o *ListUsersQueryParamFilter) GetEmail() *components.LegacyStringFieldFilter {
-	if o == nil {
+func (l *ListUsersQueryParamFilter) GetEmail() *components.LegacyStringFieldFilter {
+	if l == nil {
 		return nil
 	}
-	return o.Email
+	return l.Email
 }
 
-func (o *ListUsersQueryParamFilter) GetFullName() *components.LegacyStringFieldFilter {
-	if o == nil {
+func (l *ListUsersQueryParamFilter) GetFullName() *components.LegacyStringFieldFilter {
+	if l == nil {
 		return nil
 	}
-	return o.FullName
+	return l.FullName
 }
 
-func (o *ListUsersQueryParamFilter) GetActive() *bool {
-	if o == nil {
+func (l *ListUsersQueryParamFilter) GetActive() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Active
+	return l.Active
 }
 
 type ListUsersRequest struct {
@@ -60,25 +60,25 @@ type ListUsersRequest struct {
 	Filter *ListUsersQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *ListUsersRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListUsersRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListUsersRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListUsersRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListUsersRequest) GetFilter() *ListUsersQueryParamFilter {
-	if o == nil {
+func (l *ListUsersRequest) GetFilter() *ListUsersQueryParamFilter {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
 type ListUsersResponse struct {
@@ -92,30 +92,30 @@ type ListUsersResponse struct {
 	UserCollection *components.UserCollection
 }
 
-func (o *ListUsersResponse) GetContentType() string {
-	if o == nil {
+func (l *ListUsersResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListUsersResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListUsersResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListUsersResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListUsersResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListUsersResponse) GetUserCollection() *components.UserCollection {
-	if o == nil {
+func (l *ListUsersResponse) GetUserCollection() *components.UserCollection {
+	if l == nil {
 		return nil
 	}
-	return o.UserCollection
+	return l.UserCollection
 }

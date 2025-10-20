@@ -61,44 +61,44 @@ func (c *CreateDcrProviderRequestHTTP) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CreateDcrProviderRequestHTTP) GetProviderType() CreateDcrProviderRequestHTTPProviderType {
-	if o == nil {
+func (c *CreateDcrProviderRequestHTTP) GetProviderType() CreateDcrProviderRequestHTTPProviderType {
+	if c == nil {
 		return CreateDcrProviderRequestHTTPProviderType("")
 	}
-	return o.ProviderType
+	return c.ProviderType
 }
 
-func (o *CreateDcrProviderRequestHTTP) GetDcrConfig() CreateDcrConfigHTTPInRequest {
-	if o == nil {
+func (c *CreateDcrProviderRequestHTTP) GetDcrConfig() CreateDcrConfigHTTPInRequest {
+	if c == nil {
 		return CreateDcrConfigHTTPInRequest{}
 	}
-	return o.DcrConfig
+	return c.DcrConfig
 }
 
-func (o *CreateDcrProviderRequestHTTP) GetName() string {
-	if o == nil {
+func (c *CreateDcrProviderRequestHTTP) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *CreateDcrProviderRequestHTTP) GetDisplayName() *string {
-	if o == nil {
+func (c *CreateDcrProviderRequestHTTP) GetDisplayName() *string {
+	if c == nil {
 		return nil
 	}
-	return o.DisplayName
+	return c.DisplayName
 }
 
-func (o *CreateDcrProviderRequestHTTP) GetIssuer() string {
-	if o == nil {
+func (c *CreateDcrProviderRequestHTTP) GetIssuer() string {
+	if c == nil {
 		return ""
 	}
-	return o.Issuer
+	return c.Issuer
 }
 
-func (o *CreateDcrProviderRequestHTTP) GetLabels() map[string]string {
-	if o == nil {
+func (c *CreateDcrProviderRequestHTTP) GetLabels() map[string]string {
+	if c == nil {
 		return nil
 	}
-	return o.Labels
+	return c.Labels
 }

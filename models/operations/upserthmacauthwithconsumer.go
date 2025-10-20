@@ -18,32 +18,32 @@ type UpsertHmacAuthWithConsumerRequest struct {
 	HMACAuthWithoutParents components.HMACAuthWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *UpsertHmacAuthWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpsertHmacAuthWithConsumerRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpsertHmacAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (u *UpsertHmacAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if u == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return u.ConsumerIDForNestedEntities
 }
 
-func (o *UpsertHmacAuthWithConsumerRequest) GetHMACAuthID() string {
-	if o == nil {
+func (u *UpsertHmacAuthWithConsumerRequest) GetHMACAuthID() string {
+	if u == nil {
 		return ""
 	}
-	return o.HMACAuthID
+	return u.HMACAuthID
 }
 
-func (o *UpsertHmacAuthWithConsumerRequest) GetHMACAuthWithoutParents() components.HMACAuthWithoutParents {
-	if o == nil {
+func (u *UpsertHmacAuthWithConsumerRequest) GetHMACAuthWithoutParents() components.HMACAuthWithoutParents {
+	if u == nil {
 		return components.HMACAuthWithoutParents{}
 	}
-	return o.HMACAuthWithoutParents
+	return u.HMACAuthWithoutParents
 }
 
 type UpsertHmacAuthWithConsumerResponse struct {
@@ -57,30 +57,30 @@ type UpsertHmacAuthWithConsumerResponse struct {
 	HMACAuth *components.HMACAuth
 }
 
-func (o *UpsertHmacAuthWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (u *UpsertHmacAuthWithConsumerResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpsertHmacAuthWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpsertHmacAuthWithConsumerResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpsertHmacAuthWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpsertHmacAuthWithConsumerResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpsertHmacAuthWithConsumerResponse) GetHMACAuth() *components.HMACAuth {
-	if o == nil {
+func (u *UpsertHmacAuthWithConsumerResponse) GetHMACAuth() *components.HMACAuth {
+	if u == nil {
 		return nil
 	}
-	return o.HMACAuth
+	return u.HMACAuth
 }

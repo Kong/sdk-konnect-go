@@ -16,11 +16,11 @@ type GetResourceQuotaRequest struct {
 	ResourceQuotaID string `pathParam:"style=simple,explode=false,name=resourceQuotaId"`
 }
 
-func (o *GetResourceQuotaRequest) GetResourceQuotaID() string {
-	if o == nil {
+func (g *GetResourceQuotaRequest) GetResourceQuotaID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ResourceQuotaID
+	return g.ResourceQuotaID
 }
 
 type GetResourceQuotaResponse struct {
@@ -34,30 +34,30 @@ type GetResourceQuotaResponse struct {
 	ResourceQuota *components.ResourceQuota
 }
 
-func (o *GetResourceQuotaResponse) GetContentType() string {
-	if o == nil {
+func (g *GetResourceQuotaResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetResourceQuotaResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetResourceQuotaResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetResourceQuotaResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetResourceQuotaResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetResourceQuotaResponse) GetResourceQuota() *components.ResourceQuota {
-	if o == nil {
+func (g *GetResourceQuotaResponse) GetResourceQuota() *components.ResourceQuota {
+	if g == nil {
 		return nil
 	}
-	return o.ResourceQuota
+	return g.ResourceQuota
 }

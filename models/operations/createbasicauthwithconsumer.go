@@ -16,25 +16,25 @@ type CreateBasicAuthWithConsumerRequest struct {
 	BasicAuthWithoutParents components.BasicAuthWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *CreateBasicAuthWithConsumerRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreateBasicAuthWithConsumerRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreateBasicAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
-	if o == nil {
+func (c *CreateBasicAuthWithConsumerRequest) GetConsumerIDForNestedEntities() string {
+	if c == nil {
 		return ""
 	}
-	return o.ConsumerIDForNestedEntities
+	return c.ConsumerIDForNestedEntities
 }
 
-func (o *CreateBasicAuthWithConsumerRequest) GetBasicAuthWithoutParents() components.BasicAuthWithoutParents {
-	if o == nil {
+func (c *CreateBasicAuthWithConsumerRequest) GetBasicAuthWithoutParents() components.BasicAuthWithoutParents {
+	if c == nil {
 		return components.BasicAuthWithoutParents{}
 	}
-	return o.BasicAuthWithoutParents
+	return c.BasicAuthWithoutParents
 }
 
 type CreateBasicAuthWithConsumerResponse struct {
@@ -48,30 +48,30 @@ type CreateBasicAuthWithConsumerResponse struct {
 	BasicAuth *components.BasicAuth
 }
 
-func (o *CreateBasicAuthWithConsumerResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateBasicAuthWithConsumerResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateBasicAuthWithConsumerResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateBasicAuthWithConsumerResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateBasicAuthWithConsumerResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateBasicAuthWithConsumerResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateBasicAuthWithConsumerResponse) GetBasicAuth() *components.BasicAuth {
-	if o == nil {
+func (c *CreateBasicAuthWithConsumerResponse) GetBasicAuth() *components.BasicAuth {
+	if c == nil {
 		return nil
 	}
-	return o.BasicAuth
+	return c.BasicAuth
 }

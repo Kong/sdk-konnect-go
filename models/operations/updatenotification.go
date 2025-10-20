@@ -14,18 +14,18 @@ type UpdateNotificationRequest struct {
 	NotificationUpdatePayload *components.NotificationUpdatePayload `request:"mediaType=application/json"`
 }
 
-func (o *UpdateNotificationRequest) GetNotificationID() string {
-	if o == nil {
+func (u *UpdateNotificationRequest) GetNotificationID() string {
+	if u == nil {
 		return ""
 	}
-	return o.NotificationID
+	return u.NotificationID
 }
 
-func (o *UpdateNotificationRequest) GetNotificationUpdatePayload() *components.NotificationUpdatePayload {
-	if o == nil {
+func (u *UpdateNotificationRequest) GetNotificationUpdatePayload() *components.NotificationUpdatePayload {
+	if u == nil {
 		return nil
 	}
-	return o.NotificationUpdatePayload
+	return u.NotificationUpdatePayload
 }
 
 type UpdateNotificationResponse struct {
@@ -39,30 +39,30 @@ type UpdateNotificationResponse struct {
 	Notification *components.Notification
 }
 
-func (o *UpdateNotificationResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateNotificationResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateNotificationResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateNotificationResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateNotificationResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateNotificationResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateNotificationResponse) GetNotification() *components.Notification {
-	if o == nil {
+func (u *UpdateNotificationResponse) GetNotification() *components.Notification {
+	if u == nil {
 		return nil
 	}
-	return o.Notification
+	return u.Notification
 }

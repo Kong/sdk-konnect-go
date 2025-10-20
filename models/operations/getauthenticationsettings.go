@@ -22,30 +22,30 @@ type GetAuthenticationSettingsResponse struct {
 	AuthenticationSettings *components.AuthenticationSettings
 }
 
-func (o *GetAuthenticationSettingsResponse) GetContentType() string {
-	if o == nil {
+func (g *GetAuthenticationSettingsResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetAuthenticationSettingsResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetAuthenticationSettingsResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetAuthenticationSettingsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetAuthenticationSettingsResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetAuthenticationSettingsResponse) GetAuthenticationSettings() *components.AuthenticationSettings {
-	if o == nil {
+func (g *GetAuthenticationSettingsResponse) GetAuthenticationSettings() *components.AuthenticationSettings {
+	if g == nil {
 		return nil
 	}
-	return o.AuthenticationSettings
+	return g.AuthenticationSettings
 }

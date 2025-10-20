@@ -8,9 +8,9 @@ type ServerlessV1ProviderRegion struct {
 	Region string `json:"region"`
 }
 
-func (o *ServerlessV1ProviderRegion) GetRegion() string {
-	if o == nil {
+func (s *ServerlessV1ProviderRegion) GetRegion() string {
+	if s == nil {
 		return ""
 	}
-	return o.Region
+	return s.Region
 }

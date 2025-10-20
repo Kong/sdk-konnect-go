@@ -12,11 +12,11 @@ type CreateDefaultContentRequest struct {
 	PortalID string `pathParam:"style=simple,explode=false,name=portalId"`
 }
 
-func (o *CreateDefaultContentRequest) GetPortalID() string {
-	if o == nil {
+func (c *CreateDefaultContentRequest) GetPortalID() string {
+	if c == nil {
 		return ""
 	}
-	return o.PortalID
+	return c.PortalID
 }
 
 type CreateDefaultContentResponse struct {
@@ -30,30 +30,30 @@ type CreateDefaultContentResponse struct {
 	DefaultContent *components.DefaultContent
 }
 
-func (o *CreateDefaultContentResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateDefaultContentResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateDefaultContentResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateDefaultContentResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateDefaultContentResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateDefaultContentResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateDefaultContentResponse) GetDefaultContent() *components.DefaultContent {
-	if o == nil {
+func (c *CreateDefaultContentResponse) GetDefaultContent() *components.DefaultContent {
+	if c == nil {
 		return nil
 	}
-	return o.DefaultContent
+	return c.DefaultContent
 }

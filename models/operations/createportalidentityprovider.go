@@ -15,18 +15,18 @@ type CreatePortalIdentityProviderRequest struct {
 	CreateIdentityProvider components.CreateIdentityProvider `request:"mediaType=application/json"`
 }
 
-func (o *CreatePortalIdentityProviderRequest) GetPortalID() string {
-	if o == nil {
+func (c *CreatePortalIdentityProviderRequest) GetPortalID() string {
+	if c == nil {
 		return ""
 	}
-	return o.PortalID
+	return c.PortalID
 }
 
-func (o *CreatePortalIdentityProviderRequest) GetCreateIdentityProvider() components.CreateIdentityProvider {
-	if o == nil {
+func (c *CreatePortalIdentityProviderRequest) GetCreateIdentityProvider() components.CreateIdentityProvider {
+	if c == nil {
 		return components.CreateIdentityProvider{}
 	}
-	return o.CreateIdentityProvider
+	return c.CreateIdentityProvider
 }
 
 type CreatePortalIdentityProviderResponse struct {
@@ -41,30 +41,30 @@ type CreatePortalIdentityProviderResponse struct {
 	IdentityProvider *components.IdentityProvider
 }
 
-func (o *CreatePortalIdentityProviderResponse) GetContentType() string {
-	if o == nil {
+func (c *CreatePortalIdentityProviderResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreatePortalIdentityProviderResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreatePortalIdentityProviderResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreatePortalIdentityProviderResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreatePortalIdentityProviderResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreatePortalIdentityProviderResponse) GetIdentityProvider() *components.IdentityProvider {
-	if o == nil {
+func (c *CreatePortalIdentityProviderResponse) GetIdentityProvider() *components.IdentityProvider {
+	if c == nil {
 		return nil
 	}
-	return o.IdentityProvider
+	return c.IdentityProvider
 }

@@ -18,32 +18,32 @@ type UpsertPluginWithServiceRequest struct {
 	PluginWithoutParents components.PluginWithoutParents `request:"mediaType=application/json"`
 }
 
-func (o *UpsertPluginWithServiceRequest) GetControlPlaneID() string {
-	if o == nil {
+func (u *UpsertPluginWithServiceRequest) GetControlPlaneID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return u.ControlPlaneID
 }
 
-func (o *UpsertPluginWithServiceRequest) GetServiceID() string {
-	if o == nil {
+func (u *UpsertPluginWithServiceRequest) GetServiceID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ServiceID
+	return u.ServiceID
 }
 
-func (o *UpsertPluginWithServiceRequest) GetPluginID() string {
-	if o == nil {
+func (u *UpsertPluginWithServiceRequest) GetPluginID() string {
+	if u == nil {
 		return ""
 	}
-	return o.PluginID
+	return u.PluginID
 }
 
-func (o *UpsertPluginWithServiceRequest) GetPluginWithoutParents() components.PluginWithoutParents {
-	if o == nil {
+func (u *UpsertPluginWithServiceRequest) GetPluginWithoutParents() components.PluginWithoutParents {
+	if u == nil {
 		return components.PluginWithoutParents{}
 	}
-	return o.PluginWithoutParents
+	return u.PluginWithoutParents
 }
 
 type UpsertPluginWithServiceResponse struct {
@@ -57,30 +57,30 @@ type UpsertPluginWithServiceResponse struct {
 	Plugin *components.Plugin
 }
 
-func (o *UpsertPluginWithServiceResponse) GetContentType() string {
-	if o == nil {
+func (u *UpsertPluginWithServiceResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpsertPluginWithServiceResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpsertPluginWithServiceResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpsertPluginWithServiceResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpsertPluginWithServiceResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpsertPluginWithServiceResponse) GetPlugin() *components.Plugin {
-	if o == nil {
+func (u *UpsertPluginWithServiceResponse) GetPlugin() *components.Plugin {
+	if u == nil {
 		return nil
 	}
-	return o.Plugin
+	return u.Plugin
 }

@@ -31,9 +31,9 @@ func (p *PrivateDNSStateFieldNotEqualsFilter) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *PrivateDNSStateFieldNotEqualsFilter) GetNeq() PrivateDNSState {
-	if o == nil {
+func (p *PrivateDNSStateFieldNotEqualsFilter) GetNeq() PrivateDNSState {
+	if p == nil {
 		return PrivateDNSState("")
 	}
-	return o.Neq
+	return p.Neq
 }

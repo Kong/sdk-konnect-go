@@ -9,16 +9,16 @@ type ListConfigStoreSecretsResponse struct {
 	Data []ConfigStoreSecret `json:"data"`
 }
 
-func (o *ListConfigStoreSecretsResponse) GetMeta() CursorMeta {
-	if o == nil {
+func (l *ListConfigStoreSecretsResponse) GetMeta() CursorMeta {
+	if l == nil {
 		return CursorMeta{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListConfigStoreSecretsResponse) GetData() []ConfigStoreSecret {
-	if o == nil {
+func (l *ListConfigStoreSecretsResponse) GetData() []ConfigStoreSecret {
+	if l == nil {
 		return []ConfigStoreSecret{}
 	}
-	return o.Data
+	return l.Data
 }

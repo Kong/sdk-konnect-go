@@ -23,9 +23,9 @@ func (p *PrivateDNSStateFieldOrEqualityFilter) UnmarshalJSON(data []byte) error 
 	return nil
 }
 
-func (o *PrivateDNSStateFieldOrEqualityFilter) GetOeq() string {
-	if o == nil {
+func (p *PrivateDNSStateFieldOrEqualityFilter) GetOeq() string {
+	if p == nil {
 		return ""
 	}
-	return o.Oeq
+	return p.Oeq
 }

@@ -11,11 +11,11 @@ type DeletePortalEmailConfigRequest struct {
 	PortalID string `pathParam:"style=simple,explode=false,name=portalId"`
 }
 
-func (o *DeletePortalEmailConfigRequest) GetPortalID() string {
-	if o == nil {
+func (d *DeletePortalEmailConfigRequest) GetPortalID() string {
+	if d == nil {
 		return ""
 	}
-	return o.PortalID
+	return d.PortalID
 }
 
 type DeletePortalEmailConfigResponse struct {
@@ -27,23 +27,23 @@ type DeletePortalEmailConfigResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *DeletePortalEmailConfigResponse) GetContentType() string {
-	if o == nil {
+func (d *DeletePortalEmailConfigResponse) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeletePortalEmailConfigResponse) GetStatusCode() int {
-	if o == nil {
+func (d *DeletePortalEmailConfigResponse) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeletePortalEmailConfigResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeletePortalEmailConfigResponse) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }

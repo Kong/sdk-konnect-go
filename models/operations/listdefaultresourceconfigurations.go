@@ -18,18 +18,18 @@ type ListDefaultResourceConfigurationsRequest struct {
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 }
 
-func (o *ListDefaultResourceConfigurationsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListDefaultResourceConfigurationsRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListDefaultResourceConfigurationsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListDefaultResourceConfigurationsRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
 type ListDefaultResourceConfigurationsResponse struct {
@@ -43,30 +43,30 @@ type ListDefaultResourceConfigurationsResponse struct {
 	ListDefaultResourceConfigurationsResponse *components.ListDefaultResourceConfigurationsResponse
 }
 
-func (o *ListDefaultResourceConfigurationsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListDefaultResourceConfigurationsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListDefaultResourceConfigurationsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListDefaultResourceConfigurationsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListDefaultResourceConfigurationsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListDefaultResourceConfigurationsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListDefaultResourceConfigurationsResponse) GetListDefaultResourceConfigurationsResponse() *components.ListDefaultResourceConfigurationsResponse {
-	if o == nil {
+func (l *ListDefaultResourceConfigurationsResponse) GetListDefaultResourceConfigurationsResponse() *components.ListDefaultResourceConfigurationsResponse {
+	if l == nil {
 		return nil
 	}
-	return o.ListDefaultResourceConfigurationsResponse
+	return l.ListDefaultResourceConfigurationsResponse
 }

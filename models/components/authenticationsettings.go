@@ -31,37 +31,37 @@ func (a *AuthenticationSettings) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *AuthenticationSettings) GetBasicAuthEnabled() *bool {
-	if o == nil {
+func (a *AuthenticationSettings) GetBasicAuthEnabled() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.BasicAuthEnabled
+	return a.BasicAuthEnabled
 }
 
-func (o *AuthenticationSettings) GetOidcAuthEnabled() *bool {
-	if o == nil {
+func (a *AuthenticationSettings) GetOidcAuthEnabled() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.OidcAuthEnabled
+	return a.OidcAuthEnabled
 }
 
-func (o *AuthenticationSettings) GetSamlAuthEnabled() *bool {
-	if o == nil {
+func (a *AuthenticationSettings) GetSamlAuthEnabled() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.SamlAuthEnabled
+	return a.SamlAuthEnabled
 }
 
-func (o *AuthenticationSettings) GetIdpMappingEnabled() *bool {
-	if o == nil {
+func (a *AuthenticationSettings) GetIdpMappingEnabled() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.IdpMappingEnabled
+	return a.IdpMappingEnabled
 }
 
-func (o *AuthenticationSettings) GetKonnectMappingEnabled() *bool {
-	if o == nil {
+func (a *AuthenticationSettings) GetKonnectMappingEnabled() *bool {
+	if a == nil {
 		return nil
 	}
-	return o.KonnectMappingEnabled
+	return a.KonnectMappingEnabled
 }

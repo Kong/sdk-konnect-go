@@ -5,4 +5,4 @@
 
 | Field                                    | Type                                     | Required                                 | Description                              |
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `Name`                                   | **string*                                | :heavy_minus_sign:                       | Name of the system account access token. |
+| `Name`                                   | *string*                                 | :heavy_check_mark:                       | Name of the system account access token. |

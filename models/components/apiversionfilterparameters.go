@@ -9,16 +9,16 @@ type APIVersionFilterParameters struct {
 	Version *StringFieldFilter `queryParam:"name=version"`
 }
 
-func (o *APIVersionFilterParameters) GetType() *StringFieldFilter {
-	if o == nil {
+func (a *APIVersionFilterParameters) GetType() *StringFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.Type
+	return a.Type
 }
 
-func (o *APIVersionFilterParameters) GetVersion() *StringFieldFilter {
-	if o == nil {
+func (a *APIVersionFilterParameters) GetVersion() *StringFieldFilter {
+	if a == nil {
 		return nil
 	}
-	return o.Version
+	return a.Version
 }

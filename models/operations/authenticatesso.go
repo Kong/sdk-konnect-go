@@ -17,18 +17,18 @@ type AuthenticateSsoRequest struct {
 	ReturnTo *string `queryParam:"style=form,explode=true,name=return_to"`
 }
 
-func (o *AuthenticateSsoRequest) GetOrganizationLoginPath() string {
-	if o == nil {
+func (a *AuthenticateSsoRequest) GetOrganizationLoginPath() string {
+	if a == nil {
 		return ""
 	}
-	return o.OrganizationLoginPath
+	return a.OrganizationLoginPath
 }
 
-func (o *AuthenticateSsoRequest) GetReturnTo() *string {
-	if o == nil {
+func (a *AuthenticateSsoRequest) GetReturnTo() *string {
+	if a == nil {
 		return nil
 	}
-	return o.ReturnTo
+	return a.ReturnTo
 }
 
 type AuthenticateSsoResponse struct {
@@ -40,23 +40,23 @@ type AuthenticateSsoResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *AuthenticateSsoResponse) GetContentType() string {
-	if o == nil {
+func (a *AuthenticateSsoResponse) GetContentType() string {
+	if a == nil {
 		return ""
 	}
-	return o.ContentType
+	return a.ContentType
 }
 
-func (o *AuthenticateSsoResponse) GetStatusCode() int {
-	if o == nil {
+func (a *AuthenticateSsoResponse) GetStatusCode() int {
+	if a == nil {
 		return 0
 	}
-	return o.StatusCode
+	return a.StatusCode
 }
 
-func (o *AuthenticateSsoResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (a *AuthenticateSsoResponse) GetRawResponse() *http.Response {
+	if a == nil {
 		return nil
 	}
-	return o.RawResponse
+	return a.RawResponse
 }

@@ -23,7 +23,7 @@ func (h *HTTP) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *HTTP) GetDomainVerificationMethod() string {
+func (h *HTTP) GetDomainVerificationMethod() string {
 	return "http"
 }
 
@@ -46,22 +46,22 @@ func (c *CustomCertificate) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *CustomCertificate) GetDomainVerificationMethod() string {
+func (c *CustomCertificate) GetDomainVerificationMethod() string {
 	return "custom_certificate"
 }
 
-func (o *CustomCertificate) GetCustomCertificate() string {
-	if o == nil {
+func (c *CustomCertificate) GetCustomCertificate() string {
+	if c == nil {
 		return ""
 	}
-	return o.CustomCertificate
+	return c.CustomCertificate
 }
 
-func (o *CustomCertificate) GetCustomPrivateKey() string {
-	if o == nil {
+func (c *CustomCertificate) GetCustomPrivateKey() string {
+	if c == nil {
 		return ""
 	}
-	return o.CustomPrivateKey
+	return c.CustomPrivateKey
 }
 
 type CreatePortalCustomDomainSSLType string
@@ -72,8 +72,8 @@ const (
 )
 
 type CreatePortalCustomDomainSSL struct {
-	CustomCertificate *CustomCertificate `queryParam:"inline" name:"CreatePortalCustomDomainSSL"`
-	HTTP              *HTTP              `queryParam:"inline" name:"CreatePortalCustomDomainSSL"`
+	CustomCertificate *CustomCertificate `queryParam:"inline,name=CreatePortalCustomDomainSSL"`
+	HTTP              *HTTP              `queryParam:"inline,name=CreatePortalCustomDomainSSL"`
 
 	Type CreatePortalCustomDomainSSLType
 }

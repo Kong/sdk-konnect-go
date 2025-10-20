@@ -11,23 +11,23 @@ type ResourceConfiguration struct {
 	Value int64 `json:"value"`
 }
 
-func (o *ResourceConfiguration) GetID() string {
-	if o == nil {
+func (r *ResourceConfiguration) GetID() string {
+	if r == nil {
 		return ""
 	}
-	return o.ID
+	return r.ID
 }
 
-func (o *ResourceConfiguration) GetQualifier() ResourceConfigurationQualifier {
-	if o == nil {
+func (r *ResourceConfiguration) GetQualifier() ResourceConfigurationQualifier {
+	if r == nil {
 		return ResourceConfigurationQualifier("")
 	}
-	return o.Qualifier
+	return r.Qualifier
 }
 
-func (o *ResourceConfiguration) GetValue() int64 {
-	if o == nil {
+func (r *ResourceConfiguration) GetValue() int64 {
+	if r == nil {
 		return 0
 	}
-	return o.Value
+	return r.Value
 }

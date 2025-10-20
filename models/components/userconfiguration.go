@@ -27,44 +27,44 @@ func (u *UserConfiguration) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *UserConfiguration) GetEventID() string {
-	if o == nil {
+func (u *UserConfiguration) GetEventID() string {
+	if u == nil {
 		return ""
 	}
-	return o.EventID
+	return u.EventID
 }
 
-func (o *UserConfiguration) GetEventTitle() string {
-	if o == nil {
+func (u *UserConfiguration) GetEventTitle() string {
+	if u == nil {
 		return ""
 	}
-	return o.EventTitle
+	return u.EventTitle
 }
 
-func (o *UserConfiguration) GetEventDescription() string {
-	if o == nil {
+func (u *UserConfiguration) GetEventDescription() string {
+	if u == nil {
 		return ""
 	}
-	return o.EventDescription
+	return u.EventDescription
 }
 
-func (o *UserConfiguration) GetEventNamespace() NotificationNamespace {
-	if o == nil {
+func (u *UserConfiguration) GetEventNamespace() NotificationNamespace {
+	if u == nil {
 		return NotificationNamespace("")
 	}
-	return o.EventNamespace
+	return u.EventNamespace
 }
 
-func (o *UserConfiguration) GetEventSubscriptionCount() *int64 {
-	if o == nil {
+func (u *UserConfiguration) GetEventSubscriptionCount() *int64 {
+	if u == nil {
 		return nil
 	}
-	return o.EventSubscriptionCount
+	return u.EventSubscriptionCount
 }
 
-func (o *UserConfiguration) GetDefaultSubscription() []DefaultSubscription {
-	if o == nil {
+func (u *UserConfiguration) GetDefaultSubscription() []DefaultSubscription {
+	if u == nil {
 		return []DefaultSubscription{}
 	}
-	return o.DefaultSubscription
+	return u.DefaultSubscription
 }

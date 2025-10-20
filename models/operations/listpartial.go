@@ -30,32 +30,32 @@ func (l *ListPartialRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListPartialRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListPartialRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListPartialRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListPartialRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListPartialRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListPartialRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListPartialRequest) GetTags() *string {
-	if o == nil {
+func (l *ListPartialRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListPartialResponseBody - A successful response listing Partials
@@ -67,25 +67,25 @@ type ListPartialResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListPartialResponseBody) GetData() []components.Partial {
-	if o == nil {
+func (l *ListPartialResponseBody) GetData() []components.Partial {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListPartialResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListPartialResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListPartialResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListPartialResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListPartialResponse struct {
@@ -99,30 +99,30 @@ type ListPartialResponse struct {
 	Object *ListPartialResponseBody
 }
 
-func (o *ListPartialResponse) GetContentType() string {
-	if o == nil {
+func (l *ListPartialResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListPartialResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListPartialResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListPartialResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListPartialResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListPartialResponse) GetObject() *ListPartialResponseBody {
-	if o == nil {
+func (l *ListPartialResponse) GetObject() *ListPartialResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

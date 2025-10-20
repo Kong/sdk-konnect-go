@@ -14,18 +14,18 @@ type CreateUpstreamRequest struct {
 	Upstream components.Upstream `request:"mediaType=application/json"`
 }
 
-func (o *CreateUpstreamRequest) GetControlPlaneID() string {
-	if o == nil {
+func (c *CreateUpstreamRequest) GetControlPlaneID() string {
+	if c == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return c.ControlPlaneID
 }
 
-func (o *CreateUpstreamRequest) GetUpstream() components.Upstream {
-	if o == nil {
+func (c *CreateUpstreamRequest) GetUpstream() components.Upstream {
+	if c == nil {
 		return components.Upstream{}
 	}
-	return o.Upstream
+	return c.Upstream
 }
 
 type CreateUpstreamResponse struct {
@@ -39,30 +39,30 @@ type CreateUpstreamResponse struct {
 	Upstream *components.Upstream
 }
 
-func (o *CreateUpstreamResponse) GetContentType() string {
-	if o == nil {
+func (c *CreateUpstreamResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CreateUpstreamResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CreateUpstreamResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CreateUpstreamResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CreateUpstreamResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CreateUpstreamResponse) GetUpstream() *components.Upstream {
-	if o == nil {
+func (c *CreateUpstreamResponse) GetUpstream() *components.Upstream {
+	if c == nil {
 		return nil
 	}
-	return o.Upstream
+	return c.Upstream
 }

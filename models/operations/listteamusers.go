@@ -23,32 +23,32 @@ type ListTeamUsersQueryParamFilter struct {
 	Active *bool `queryParam:"name=active"`
 }
 
-func (o *ListTeamUsersQueryParamFilter) GetID() *components.StringFieldEqualsFilter {
-	if o == nil {
+func (l *ListTeamUsersQueryParamFilter) GetID() *components.StringFieldEqualsFilter {
+	if l == nil {
 		return nil
 	}
-	return o.ID
+	return l.ID
 }
 
-func (o *ListTeamUsersQueryParamFilter) GetEmail() *components.LegacyStringFieldFilter {
-	if o == nil {
+func (l *ListTeamUsersQueryParamFilter) GetEmail() *components.LegacyStringFieldFilter {
+	if l == nil {
 		return nil
 	}
-	return o.Email
+	return l.Email
 }
 
-func (o *ListTeamUsersQueryParamFilter) GetFullName() *components.LegacyStringFieldFilter {
-	if o == nil {
+func (l *ListTeamUsersQueryParamFilter) GetFullName() *components.LegacyStringFieldFilter {
+	if l == nil {
 		return nil
 	}
-	return o.FullName
+	return l.FullName
 }
 
-func (o *ListTeamUsersQueryParamFilter) GetActive() *bool {
-	if o == nil {
+func (l *ListTeamUsersQueryParamFilter) GetActive() *bool {
+	if l == nil {
 		return nil
 	}
-	return o.Active
+	return l.Active
 }
 
 type ListTeamUsersRequest struct {
@@ -62,32 +62,32 @@ type ListTeamUsersRequest struct {
 	Filter *ListTeamUsersQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *ListTeamUsersRequest) GetTeamID() string {
-	if o == nil {
+func (l *ListTeamUsersRequest) GetTeamID() string {
+	if l == nil {
 		return ""
 	}
-	return o.TeamID
+	return l.TeamID
 }
 
-func (o *ListTeamUsersRequest) GetPageSize() *int64 {
-	if o == nil {
+func (l *ListTeamUsersRequest) GetPageSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageSize
+	return l.PageSize
 }
 
-func (o *ListTeamUsersRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (l *ListTeamUsersRequest) GetPageNumber() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.PageNumber
+	return l.PageNumber
 }
 
-func (o *ListTeamUsersRequest) GetFilter() *ListTeamUsersQueryParamFilter {
-	if o == nil {
+func (l *ListTeamUsersRequest) GetFilter() *ListTeamUsersQueryParamFilter {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
 type ListTeamUsersResponse struct {
@@ -101,30 +101,30 @@ type ListTeamUsersResponse struct {
 	UserCollection *components.UserCollection
 }
 
-func (o *ListTeamUsersResponse) GetContentType() string {
-	if o == nil {
+func (l *ListTeamUsersResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListTeamUsersResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListTeamUsersResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListTeamUsersResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListTeamUsersResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListTeamUsersResponse) GetUserCollection() *components.UserCollection {
-	if o == nil {
+func (l *ListTeamUsersResponse) GetUserCollection() *components.UserCollection {
+	if l == nil {
 		return nil
 	}
-	return o.UserCollection
+	return l.UserCollection
 }

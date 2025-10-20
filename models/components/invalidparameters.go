@@ -19,11 +19,11 @@ const (
 )
 
 type InvalidParameters struct {
-	InvalidParameterStandard      *InvalidParameterStandard      `queryParam:"inline" name:"InvalidParameters"`
-	InvalidParameterMinimumLength *InvalidParameterMinimumLength `queryParam:"inline" name:"InvalidParameters"`
-	InvalidParameterMaximumLength *InvalidParameterMaximumLength `queryParam:"inline" name:"InvalidParameters"`
-	InvalidParameterChoiceItem    *InvalidParameterChoiceItem    `queryParam:"inline" name:"InvalidParameters"`
-	InvalidParameterDependentItem *InvalidParameterDependentItem `queryParam:"inline" name:"InvalidParameters"`
+	InvalidParameterStandard      *InvalidParameterStandard      `queryParam:"inline,name=InvalidParameters"`
+	InvalidParameterMinimumLength *InvalidParameterMinimumLength `queryParam:"inline,name=InvalidParameters"`
+	InvalidParameterMaximumLength *InvalidParameterMaximumLength `queryParam:"inline,name=InvalidParameters"`
+	InvalidParameterChoiceItem    *InvalidParameterChoiceItem    `queryParam:"inline,name=InvalidParameters"`
+	InvalidParameterDependentItem *InvalidParameterDependentItem `queryParam:"inline,name=InvalidParameters"`
 
 	Type InvalidParametersType
 }

@@ -30,32 +30,32 @@ func (a *API) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *API) GetID() string {
-	if o == nil {
+func (a *API) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *API) GetName() string {
-	if o == nil {
+func (a *API) GetName() string {
+	if a == nil {
 		return ""
 	}
-	return o.Name
+	return a.Name
 }
 
-func (o *API) GetVersion() *string {
-	if o == nil {
+func (a *API) GetVersion() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Version
+	return a.Version
 }
 
-func (o *API) GetEntityType() EntityType {
-	if o == nil {
+func (a *API) GetEntityType() EntityType {
+	if a == nil {
 		return EntityType("")
 	}
-	return o.EntityType
+	return a.EntityType
 }
 
 // ApplicationRegistrationApplication - Details about the application the registration is part of.
@@ -66,18 +66,18 @@ type ApplicationRegistrationApplication struct {
 	Name string `json:"name"`
 }
 
-func (o *ApplicationRegistrationApplication) GetID() string {
-	if o == nil {
+func (a *ApplicationRegistrationApplication) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *ApplicationRegistrationApplication) GetName() string {
-	if o == nil {
+func (a *ApplicationRegistrationApplication) GetName() string {
+	if a == nil {
 		return ""
 	}
-	return o.Name
+	return a.Name
 }
 
 // ApplicationRegistration - A application's registration for a specific version of an API.
@@ -108,44 +108,44 @@ func (a *ApplicationRegistration) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ApplicationRegistration) GetID() string {
-	if o == nil {
+func (a *ApplicationRegistration) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
-func (o *ApplicationRegistration) GetCreatedAt() time.Time {
-	if o == nil {
+func (a *ApplicationRegistration) GetCreatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.CreatedAt
+	return a.CreatedAt
 }
 
-func (o *ApplicationRegistration) GetUpdatedAt() time.Time {
-	if o == nil {
+func (a *ApplicationRegistration) GetUpdatedAt() time.Time {
+	if a == nil {
 		return time.Time{}
 	}
-	return o.UpdatedAt
+	return a.UpdatedAt
 }
 
-func (o *ApplicationRegistration) GetStatus() ApplicationRegistrationStatus {
-	if o == nil {
+func (a *ApplicationRegistration) GetStatus() ApplicationRegistrationStatus {
+	if a == nil {
 		return ApplicationRegistrationStatus("")
 	}
-	return o.Status
+	return a.Status
 }
 
-func (o *ApplicationRegistration) GetAPI() API {
-	if o == nil {
+func (a *ApplicationRegistration) GetAPI() API {
+	if a == nil {
 		return API{}
 	}
-	return o.API
+	return a.API
 }
 
-func (o *ApplicationRegistration) GetApplication() ApplicationRegistrationApplication {
-	if o == nil {
+func (a *ApplicationRegistration) GetApplication() ApplicationRegistrationApplication {
+	if a == nil {
 		return ApplicationRegistrationApplication{}
 	}
-	return o.Application
+	return a.Application
 }

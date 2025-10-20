@@ -19,11 +19,11 @@ const (
 )
 
 type CloudGatewaysStringFieldFilterOverride struct {
-	CloudGatewaysStringFieldEqualsFilterOverride *CloudGatewaysStringFieldEqualsFilterOverride `queryParam:"inline" name:"CloudGatewaysStringFieldFilterOverride"`
-	StringFieldContainsFilter                    *StringFieldContainsFilter                    `queryParam:"inline" name:"CloudGatewaysStringFieldFilterOverride"`
-	StringFieldNEQFilter                         *StringFieldNEQFilter                         `queryParam:"inline" name:"CloudGatewaysStringFieldFilterOverride"`
-	StringFieldOEQFilter                         *StringFieldOEQFilter                         `queryParam:"inline" name:"CloudGatewaysStringFieldFilterOverride"`
-	StringFieldOContainsFilter                   *StringFieldOContainsFilter                   `queryParam:"inline" name:"CloudGatewaysStringFieldFilterOverride"`
+	CloudGatewaysStringFieldEqualsFilterOverride *CloudGatewaysStringFieldEqualsFilterOverride `queryParam:"inline,name=CloudGatewaysStringFieldFilterOverride"`
+	StringFieldContainsFilter                    *StringFieldContainsFilter                    `queryParam:"inline,name=CloudGatewaysStringFieldFilterOverride"`
+	StringFieldNEQFilter                         *StringFieldNEQFilter                         `queryParam:"inline,name=CloudGatewaysStringFieldFilterOverride"`
+	StringFieldOEQFilter                         *StringFieldOEQFilter                         `queryParam:"inline,name=CloudGatewaysStringFieldFilterOverride"`
+	StringFieldOContainsFilter                   *StringFieldOContainsFilter                   `queryParam:"inline,name=CloudGatewaysStringFieldFilterOverride"`
 
 	Type CloudGatewaysStringFieldFilterOverrideType
 }

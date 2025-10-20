@@ -14,18 +14,18 @@ type GetDegraphqlRouteRequest struct {
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 }
 
-func (o *GetDegraphqlRouteRequest) GetDegraphqlRouteID() string {
-	if o == nil {
+func (g *GetDegraphqlRouteRequest) GetDegraphqlRouteID() string {
+	if g == nil {
 		return ""
 	}
-	return o.DegraphqlRouteID
+	return g.DegraphqlRouteID
 }
 
-func (o *GetDegraphqlRouteRequest) GetControlPlaneID() string {
-	if o == nil {
+func (g *GetDegraphqlRouteRequest) GetControlPlaneID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return g.ControlPlaneID
 }
 
 type GetDegraphqlRouteResponse struct {
@@ -39,30 +39,30 @@ type GetDegraphqlRouteResponse struct {
 	DegraphqlRoute *components.DegraphqlRoute
 }
 
-func (o *GetDegraphqlRouteResponse) GetContentType() string {
-	if o == nil {
+func (g *GetDegraphqlRouteResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetDegraphqlRouteResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetDegraphqlRouteResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetDegraphqlRouteResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetDegraphqlRouteResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetDegraphqlRouteResponse) GetDegraphqlRoute() *components.DegraphqlRoute {
-	if o == nil {
+func (g *GetDegraphqlRouteResponse) GetDegraphqlRoute() *components.DegraphqlRoute {
+	if g == nil {
 		return nil
 	}
-	return o.DegraphqlRoute
+	return g.DegraphqlRoute
 }

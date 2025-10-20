@@ -7,9 +7,9 @@ type ListAPIDocumentResponse struct {
 	Data []APIDocumentSummaryWithChildren `json:"data"`
 }
 
-func (o *ListAPIDocumentResponse) GetData() []APIDocumentSummaryWithChildren {
-	if o == nil {
+func (l *ListAPIDocumentResponse) GetData() []APIDocumentSummaryWithChildren {
+	if l == nil {
 		return []APIDocumentSummaryWithChildren{}
 	}
-	return o.Data
+	return l.Data
 }

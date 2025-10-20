@@ -14,18 +14,18 @@ type PostControlPlanesIDGroupMembershipsRemoveRequest struct {
 	GroupMembership *components.GroupMembership `request:"mediaType=application/json"`
 }
 
-func (o *PostControlPlanesIDGroupMembershipsRemoveRequest) GetID() string {
-	if o == nil {
+func (p *PostControlPlanesIDGroupMembershipsRemoveRequest) GetID() string {
+	if p == nil {
 		return ""
 	}
-	return o.ID
+	return p.ID
 }
 
-func (o *PostControlPlanesIDGroupMembershipsRemoveRequest) GetGroupMembership() *components.GroupMembership {
-	if o == nil {
+func (p *PostControlPlanesIDGroupMembershipsRemoveRequest) GetGroupMembership() *components.GroupMembership {
+	if p == nil {
 		return nil
 	}
-	return o.GroupMembership
+	return p.GroupMembership
 }
 
 type PostControlPlanesIDGroupMembershipsRemoveResponse struct {
@@ -37,23 +37,23 @@ type PostControlPlanesIDGroupMembershipsRemoveResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *PostControlPlanesIDGroupMembershipsRemoveResponse) GetContentType() string {
-	if o == nil {
+func (p *PostControlPlanesIDGroupMembershipsRemoveResponse) GetContentType() string {
+	if p == nil {
 		return ""
 	}
-	return o.ContentType
+	return p.ContentType
 }
 
-func (o *PostControlPlanesIDGroupMembershipsRemoveResponse) GetStatusCode() int {
-	if o == nil {
+func (p *PostControlPlanesIDGroupMembershipsRemoveResponse) GetStatusCode() int {
+	if p == nil {
 		return 0
 	}
-	return o.StatusCode
+	return p.StatusCode
 }
 
-func (o *PostControlPlanesIDGroupMembershipsRemoveResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (p *PostControlPlanesIDGroupMembershipsRemoveResponse) GetRawResponse() *http.Response {
+	if p == nil {
 		return nil
 	}
-	return o.RawResponse
+	return p.RawResponse
 }

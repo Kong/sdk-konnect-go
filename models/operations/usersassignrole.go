@@ -18,18 +18,18 @@ type UsersAssignRoleRequest struct {
 	AssignRole *components.AssignRole `request:"mediaType=application/json"`
 }
 
-func (o *UsersAssignRoleRequest) GetUserID() string {
-	if o == nil {
+func (u *UsersAssignRoleRequest) GetUserID() string {
+	if u == nil {
 		return ""
 	}
-	return o.UserID
+	return u.UserID
 }
 
-func (o *UsersAssignRoleRequest) GetAssignRole() *components.AssignRole {
-	if o == nil {
+func (u *UsersAssignRoleRequest) GetAssignRole() *components.AssignRole {
+	if u == nil {
 		return nil
 	}
-	return o.AssignRole
+	return u.AssignRole
 }
 
 type UsersAssignRoleResponse struct {
@@ -43,30 +43,30 @@ type UsersAssignRoleResponse struct {
 	AssignedRole *components.AssignedRole
 }
 
-func (o *UsersAssignRoleResponse) GetContentType() string {
-	if o == nil {
+func (u *UsersAssignRoleResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UsersAssignRoleResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UsersAssignRoleResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UsersAssignRoleResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UsersAssignRoleResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UsersAssignRoleResponse) GetAssignedRole() *components.AssignedRole {
-	if o == nil {
+func (u *UsersAssignRoleResponse) GetAssignedRole() *components.AssignedRole {
+	if u == nil {
 		return nil
 	}
-	return o.AssignedRole
+	return u.AssignedRole
 }

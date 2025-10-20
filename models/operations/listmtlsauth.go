@@ -30,32 +30,32 @@ func (l *ListMtlsAuthRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListMtlsAuthRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListMtlsAuthRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListMtlsAuthRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListMtlsAuthRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListMtlsAuthRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListMtlsAuthRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListMtlsAuthRequest) GetTags() *string {
-	if o == nil {
+func (l *ListMtlsAuthRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListMtlsAuthResponseBody - A successful response listing MTLS-auth credentials
@@ -67,25 +67,25 @@ type ListMtlsAuthResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListMtlsAuthResponseBody) GetData() []components.MTLSAuth {
-	if o == nil {
+func (l *ListMtlsAuthResponseBody) GetData() []components.MTLSAuth {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListMtlsAuthResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListMtlsAuthResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListMtlsAuthResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListMtlsAuthResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListMtlsAuthResponse struct {
@@ -99,30 +99,30 @@ type ListMtlsAuthResponse struct {
 	Object *ListMtlsAuthResponseBody
 }
 
-func (o *ListMtlsAuthResponse) GetContentType() string {
-	if o == nil {
+func (l *ListMtlsAuthResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListMtlsAuthResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListMtlsAuthResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListMtlsAuthResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListMtlsAuthResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListMtlsAuthResponse) GetObject() *ListMtlsAuthResponseBody {
-	if o == nil {
+func (l *ListMtlsAuthResponse) GetObject() *ListMtlsAuthResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

@@ -7,9 +7,9 @@ type EmailTemplateVariablesList struct {
 	Data []EmailTemplateVariable `json:"data,omitempty"`
 }
 
-func (o *EmailTemplateVariablesList) GetData() []EmailTemplateVariable {
-	if o == nil {
+func (e *EmailTemplateVariablesList) GetData() []EmailTemplateVariable {
+	if e == nil {
 		return nil
 	}
-	return o.Data
+	return e.Data
 }

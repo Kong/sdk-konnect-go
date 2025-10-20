@@ -32,39 +32,39 @@ func (l *ListKeyWithKeySetRequest) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *ListKeyWithKeySetRequest) GetControlPlaneID() string {
-	if o == nil {
+func (l *ListKeyWithKeySetRequest) GetControlPlaneID() string {
+	if l == nil {
 		return ""
 	}
-	return o.ControlPlaneID
+	return l.ControlPlaneID
 }
 
-func (o *ListKeyWithKeySetRequest) GetKeySetID() string {
-	if o == nil {
+func (l *ListKeyWithKeySetRequest) GetKeySetID() string {
+	if l == nil {
 		return ""
 	}
-	return o.KeySetID
+	return l.KeySetID
 }
 
-func (o *ListKeyWithKeySetRequest) GetSize() *int64 {
-	if o == nil {
+func (l *ListKeyWithKeySetRequest) GetSize() *int64 {
+	if l == nil {
 		return nil
 	}
-	return o.Size
+	return l.Size
 }
 
-func (o *ListKeyWithKeySetRequest) GetOffset() *string {
-	if o == nil {
+func (l *ListKeyWithKeySetRequest) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
-func (o *ListKeyWithKeySetRequest) GetTags() *string {
-	if o == nil {
+func (l *ListKeyWithKeySetRequest) GetTags() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Tags
+	return l.Tags
 }
 
 // ListKeyWithKeySetResponseBody - A successful response listing Keys
@@ -76,25 +76,25 @@ type ListKeyWithKeySetResponseBody struct {
 	Offset *string `json:"offset,omitempty"`
 }
 
-func (o *ListKeyWithKeySetResponseBody) GetData() []components.Key {
-	if o == nil {
+func (l *ListKeyWithKeySetResponseBody) GetData() []components.Key {
+	if l == nil {
 		return nil
 	}
-	return o.Data
+	return l.Data
 }
 
-func (o *ListKeyWithKeySetResponseBody) GetNext() *string {
-	if o == nil {
+func (l *ListKeyWithKeySetResponseBody) GetNext() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Next
+	return l.Next
 }
 
-func (o *ListKeyWithKeySetResponseBody) GetOffset() *string {
-	if o == nil {
+func (l *ListKeyWithKeySetResponseBody) GetOffset() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 type ListKeyWithKeySetResponse struct {
@@ -108,30 +108,30 @@ type ListKeyWithKeySetResponse struct {
 	Object *ListKeyWithKeySetResponseBody
 }
 
-func (o *ListKeyWithKeySetResponse) GetContentType() string {
-	if o == nil {
+func (l *ListKeyWithKeySetResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListKeyWithKeySetResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListKeyWithKeySetResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListKeyWithKeySetResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListKeyWithKeySetResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListKeyWithKeySetResponse) GetObject() *ListKeyWithKeySetResponseBody {
-	if o == nil {
+func (l *ListKeyWithKeySetResponse) GetObject() *ListKeyWithKeySetResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

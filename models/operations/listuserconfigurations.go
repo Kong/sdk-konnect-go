@@ -12,11 +12,11 @@ type ListUserConfigurationsRequest struct {
 	Filter *components.ConfigurationFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (o *ListUserConfigurationsRequest) GetFilter() *components.ConfigurationFilterParameters {
-	if o == nil {
+func (l *ListUserConfigurationsRequest) GetFilter() *components.ConfigurationFilterParameters {
+	if l == nil {
 		return nil
 	}
-	return o.Filter
+	return l.Filter
 }
 
 type ListUserConfigurationsResponse struct {
@@ -30,30 +30,30 @@ type ListUserConfigurationsResponse struct {
 	UserConfigurationListResponse *components.UserConfigurationListResponse
 }
 
-func (o *ListUserConfigurationsResponse) GetContentType() string {
-	if o == nil {
+func (l *ListUserConfigurationsResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListUserConfigurationsResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListUserConfigurationsResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListUserConfigurationsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListUserConfigurationsResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListUserConfigurationsResponse) GetUserConfigurationListResponse() *components.UserConfigurationListResponse {
-	if o == nil {
+func (l *ListUserConfigurationsResponse) GetUserConfigurationListResponse() *components.UserConfigurationListResponse {
+	if l == nil {
 		return nil
 	}
-	return o.UserConfigurationListResponse
+	return l.UserConfigurationListResponse
 }
