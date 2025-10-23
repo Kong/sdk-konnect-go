@@ -636,7 +636,7 @@ func (s *APIKeys) DeleteKeyAuthWithConsumer(ctx context.Context, request operati
 
 }
 
-// GetKeyAuthWithConsumer - Fetch an API-key associated with a Consumer
+// GetKeyAuthWithConsumer - Get an API-key associated with a Consumer
 // Get an API-key associated with a Consumer using ID.
 func (s *APIKeys) GetKeyAuthWithConsumer(ctx context.Context, request operations.GetKeyAuthWithConsumerRequest, opts ...operations.Option) (*operations.GetKeyAuthWithConsumerResponse, error) {
 	o := operations.Options{}
@@ -1285,7 +1285,7 @@ func (s *APIKeys) ListKeyAuth(ctx context.Context, request operations.ListKeyAut
 
 }
 
-// GetKeyAuth - Fetch an API-key
+// GetKeyAuth - Get an API-key
 // Get an API-key using ID.
 func (s *APIKeys) GetKeyAuth(ctx context.Context, keyAuthID string, controlPlaneID string, opts ...operations.Option) (*operations.GetKeyAuthResponse, error) {
 	request := operations.GetKeyAuthRequest{

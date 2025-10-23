@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 // EmailTemplateVariableName - Enum for available portal email template variables.
 type EmailTemplateVariableName string
 
@@ -25,35 +20,4 @@ const (
 
 func (e EmailTemplateVariableName) ToPointer() *EmailTemplateVariableName {
 	return &e
-}
-func (e *EmailTemplateVariableName) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "portal_display_name":
-		fallthrough
-	case "portal_domain":
-		fallthrough
-	case "developer_email":
-		fallthrough
-	case "developer_fullname":
-		fallthrough
-	case "dev_portal_reply_to":
-		fallthrough
-	case "developer_status":
-		fallthrough
-	case "api_documentation_url":
-		fallthrough
-	case "api_name":
-		fallthrough
-	case "api_version":
-		fallthrough
-	case "application_name":
-		*e = EmailTemplateVariableName(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for EmailTemplateVariableName: %v", v)
-	}
 }

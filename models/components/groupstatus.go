@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
@@ -20,23 +18,6 @@ const (
 
 func (e GroupStatusState) ToPointer() *GroupStatusState {
 	return &e
-}
-func (e *GroupStatusState) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "OK":
-		fallthrough
-	case "CONFLICT":
-		fallthrough
-	case "UNKNOWN":
-		*e = GroupStatusState(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for GroupStatusState: %v", v)
-	}
 }
 
 // GroupStatus - The Group Status object contains information about the status of a control plane group.

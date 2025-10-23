@@ -7,7 +7,7 @@
 
 * [CreateAPIVersion](#createapiversion) - Create API Version
 * [ListAPIVersions](#listapiversions) - List API Versions
-* [FetchAPIVersion](#fetchapiversion) - Fetch API Version
+* [FetchAPIVersion](#fetchapiversion) - Get an API Version
 * [UpdateAPIVersion](#updateapiversion) - Update API Version
 * [DeleteAPIVersion](#deleteapiversion) - Delete API Version
 

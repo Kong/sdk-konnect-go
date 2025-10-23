@@ -17,7 +17,7 @@ Services can be both [tagged and filtered by tags](https://developer.konghq.com/
 * [ListService](#listservice) - List all Services
 * [CreateService](#createservice) - Create a new Service
 * [DeleteService](#deleteservice) - Delete a Service
-* [GetService](#getservice) - Fetch a Service
+* [GetService](#getservice) - Get a Service
 * [UpsertService](#upsertservice) - Upsert a Service
 
 ## ListService

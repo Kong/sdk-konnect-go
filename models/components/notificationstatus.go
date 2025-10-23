@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 // NotificationStatus - Status of the notification.
 type NotificationStatus string
 
@@ -18,21 +13,4 @@ const (
 
 func (e NotificationStatus) ToPointer() *NotificationStatus {
 	return &e
-}
-func (e *NotificationStatus) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "READ":
-		fallthrough
-	case "UNREAD":
-		fallthrough
-	case "ARCHIVED":
-		*e = NotificationStatus(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for NotificationStatus: %v", v)
-	}
 }

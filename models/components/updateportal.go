@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -19,21 +17,6 @@ const (
 func (e UpdatePortalDefaultAPIVisibility) ToPointer() *UpdatePortalDefaultAPIVisibility {
 	return &e
 }
-func (e *UpdatePortalDefaultAPIVisibility) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "public":
-		fallthrough
-	case "private":
-		*e = UpdatePortalDefaultAPIVisibility(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdatePortalDefaultAPIVisibility: %v", v)
-	}
-}
 
 // UpdatePortalDefaultPageVisibility - The default visibility of pages in the portal. If set to `public`, newly created pages are visible to unauthenticated developers. If set to `private`, newly created pages are hidden from unauthenticated developers.
 type UpdatePortalDefaultPageVisibility string
@@ -45,21 +28,6 @@ const (
 
 func (e UpdatePortalDefaultPageVisibility) ToPointer() *UpdatePortalDefaultPageVisibility {
 	return &e
-}
-func (e *UpdatePortalDefaultPageVisibility) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "public":
-		fallthrough
-	case "private":
-		*e = UpdatePortalDefaultPageVisibility(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdatePortalDefaultPageVisibility: %v", v)
-	}
 }
 
 // UpdatePortal - Update a portal's settings.

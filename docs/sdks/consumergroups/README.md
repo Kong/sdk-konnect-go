@@ -11,7 +11,7 @@ By grouping consumers together, you eliminate the need to manage them individual
 * [ListConsumerGroup](#listconsumergroup) - List all Consumer Groups
 * [CreateConsumerGroup](#createconsumergroup) - Create a new Consumer Group
 * [DeleteConsumerGroup](#deleteconsumergroup) - Delete a Consumer Group
-* [GetConsumerGroup](#getconsumergroup) - Fetch a Consumer Group
+* [GetConsumerGroup](#getconsumergroup) - Get a Consumer Group
 * [UpsertConsumerGroup](#upsertconsumergroup) - Upsert a Consumer Group
 * [RemoveAllConsumersFromConsumerGroup](#removeallconsumersfromconsumergroup) - Remove consumers from consumer group
 * [ListConsumersForConsumerGroup](#listconsumersforconsumergroup) - List all Consumers in a Consumer Group

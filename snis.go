@@ -639,7 +639,7 @@ func (s *SNIs) DeleteSniWithCertificate(ctx context.Context, request operations.
 
 }
 
-// GetSniWithCertificate - Fetch an SNI associated with a Certificate
+// GetSniWithCertificate - Get an SNI associated with a Certificate
 // Get an SNI associated with a Certificate using ID or name.
 func (s *SNIs) GetSniWithCertificate(ctx context.Context, request operations.GetSniWithCertificateRequest, opts ...operations.Option) (*operations.GetSniWithCertificateResponse, error) {
 	o := operations.Options{}
@@ -1737,7 +1737,7 @@ func (s *SNIs) DeleteSni(ctx context.Context, controlPlaneID string, sniID strin
 
 }
 
-// GetSni - Fetch an SNI
+// GetSni - Get an SNI
 // Get an SNI using ID or name.
 func (s *SNIs) GetSni(ctx context.Context, sniID string, controlPlaneID string, opts ...operations.Option) (*operations.GetSniResponse, error) {
 	request := operations.GetSniRequest{

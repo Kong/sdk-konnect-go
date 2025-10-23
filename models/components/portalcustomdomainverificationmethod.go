@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 type PortalCustomDomainVerificationMethod string
 
 const (
@@ -16,19 +11,4 @@ const (
 
 func (e PortalCustomDomainVerificationMethod) ToPointer() *PortalCustomDomainVerificationMethod {
 	return &e
-}
-func (e *PortalCustomDomainVerificationMethod) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "http":
-		fallthrough
-	case "custom_certificate":
-		*e = PortalCustomDomainVerificationMethod(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for PortalCustomDomainVerificationMethod: %v", v)
-	}
 }

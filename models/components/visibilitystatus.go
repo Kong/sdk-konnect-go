@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 // VisibilityStatus - Whether the resource is publicly accessible to non-authenticated users.
 type VisibilityStatus string
 
@@ -17,19 +12,4 @@ const (
 
 func (e VisibilityStatus) ToPointer() *VisibilityStatus {
 	return &e
-}
-func (e *VisibilityStatus) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "public":
-		fallthrough
-	case "private":
-		*e = VisibilityStatus(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for VisibilityStatus: %v", v)
-	}
 }

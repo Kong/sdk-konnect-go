@@ -8,7 +8,7 @@ APIs related to Konnect Developer Portal developers.
 ### Available Operations
 
 * [ListPortalDevelopers](#listportaldevelopers) - List Developers
-* [GetDeveloper](#getdeveloper) - Fetch Developer
+* [GetDeveloper](#getdeveloper) - Get a Developer
 * [UpdateDeveloper](#updatedeveloper) - Update Developer
 * [DeleteDeveloper](#deletedeveloper) - Delete Developer
 

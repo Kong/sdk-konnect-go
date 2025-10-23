@@ -7,7 +7,7 @@
 
 * [ListControlPlanes](#listcontrolplanes) - List Control Planes
 * [CreateControlPlane](#createcontrolplane) - Create Control Plane
-* [GetControlPlane](#getcontrolplane) - Fetch Control Plane
+* [GetControlPlane](#getcontrolplane) - Get a Control Plane
 * [UpdateControlPlane](#updatecontrolplane) - Update Control Plane
 * [DeleteControlPlane](#deletecontrolplane) - Delete Control Plane
 

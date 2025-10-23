@@ -13,28 +13,28 @@ When adding a plugin configuration to a service, the plugin will run on every re
 * [ListPluginWithConsumerGroup](#listpluginwithconsumergroup) - List all Plugins associated with a Consumer Group
 * [CreatePluginWithConsumerGroup](#createpluginwithconsumergroup) - Create a new Plugin associated with a Consumer Group
 * [DeletePluginWithConsumerGroup](#deletepluginwithconsumergroup) - Delete a a Plugin associated with a Consumer Group
-* [GetPluginWithConsumerGroup](#getpluginwithconsumergroup) - Fetch a Plugin associated with a Consumer Group
+* [GetPluginWithConsumerGroup](#getpluginwithconsumergroup) - Get a Plugin associated with a Consumer Group
 * [UpsertPluginWithConsumerGroup](#upsertpluginwithconsumergroup) - Upsert a Plugin associated with a Consumer Group
 * [ListPluginWithConsumer](#listpluginwithconsumer) - List all Plugins associated with a Consumer
 * [CreatePluginWithConsumer](#createpluginwithconsumer) - Create a new Plugin associated with a Consumer
 * [DeletePluginWithConsumer](#deletepluginwithconsumer) - Delete a a Plugin associated with a Consumer
-* [GetPluginWithConsumer](#getpluginwithconsumer) - Fetch a Plugin associated with a Consumer
+* [GetPluginWithConsumer](#getpluginwithconsumer) - Get a Plugin associated with a Consumer
 * [UpsertPluginWithConsumer](#upsertpluginwithconsumer) - Upsert a Plugin associated with a Consumer
 * [ListPlugin](#listplugin) - List all Plugins
 * [CreatePlugin](#createplugin) - Create a new Plugin
 * [DeletePlugin](#deleteplugin) - Delete a Plugin
-* [GetPlugin](#getplugin) - Fetch a Plugin
+* [GetPlugin](#getplugin) - Get a Plugin
 * [UpsertPlugin](#upsertplugin) - Upsert a Plugin
 * [ListPluginWithRoute](#listpluginwithroute) - List all Plugins associated with a Route
 * [CreatePluginWithRoute](#createpluginwithroute) - Create a new Plugin associated with a Route
 * [DeletePluginWithRoute](#deletepluginwithroute) - Delete a a Plugin associated with a Route
-* [GetPluginWithRoute](#getpluginwithroute) - Fetch a Plugin associated with a Route
+* [GetPluginWithRoute](#getpluginwithroute) - Get a Plugin associated with a Route
 * [UpsertPluginWithRoute](#upsertpluginwithroute) - Upsert a Plugin associated with a Route
-* [FetchPluginSchema](#fetchpluginschema) - Fetch plugin schema
+* [FetchPluginSchema](#fetchpluginschema) - Get plugin schema
 * [ListPluginWithService](#listpluginwithservice) - List all Plugins associated with a Service
 * [CreatePluginWithService](#createpluginwithservice) - Create a new Plugin associated with a Service
 * [DeletePluginWithService](#deletepluginwithservice) - Delete a a Plugin associated with a Service
-* [GetPluginWithService](#getpluginwithservice) - Fetch a Plugin associated with a Service
+* [GetPluginWithService](#getpluginwithservice) - Get a Plugin associated with a Service
 * [UpsertPluginWithService](#upsertpluginwithservice) - Upsert a Plugin associated with a Service
 
 ## ListPluginWithConsumerGroup

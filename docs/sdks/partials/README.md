@@ -10,7 +10,7 @@ Some entities in Kong Gateway share common configuration settings that often nee
 * [ListPartial](#listpartial) - List all Partials
 * [CreatePartial](#createpartial) - Create a new Partial
 * [DeletePartial](#deletepartial) - Delete a Partial
-* [GetPartial](#getpartial) - Fetch a Partial
+* [GetPartial](#getpartial) - Get a Partial
 * [UpsertPartial](#upsertpartial) - Upsert a Partial
 
 ## ListPartial

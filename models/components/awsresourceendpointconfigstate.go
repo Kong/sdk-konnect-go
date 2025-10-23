@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 // AwsResourceEndpointConfigState - The current state of the resource config in AWS Resource Endpoint. Possible values:
 // - `initializing` - The config is in the process of being initialized and is setting up necessary resources.
 // - `missing` - The config is missing and is no longer accepting new traffic.
@@ -25,25 +20,4 @@ const (
 
 func (e AwsResourceEndpointConfigState) ToPointer() *AwsResourceEndpointConfigState {
 	return &e
-}
-func (e *AwsResourceEndpointConfigState) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "initializing":
-		fallthrough
-	case "missing":
-		fallthrough
-	case "ready":
-		fallthrough
-	case "error":
-		fallthrough
-	case "terminating":
-		*e = AwsResourceEndpointConfigState(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AwsResourceEndpointConfigState: %v", v)
-	}
 }

@@ -9,7 +9,7 @@ Custom Plugin Schemas
 
 * [ListPluginSchemas](#listpluginschemas) - List Custom Plugin Schemas
 * [CreatePluginSchemas](#createpluginschemas) - Upload custom plugin schema
-* [GetPluginSchema](#getpluginschema) - Fetch custom plugin schema
+* [GetPluginSchema](#getpluginschema) - Get a custom plugin schema
 * [DeletePluginSchemas](#deletepluginschemas) - Delete custom plugin schema
 * [UpdatePluginSchemas](#updatepluginschemas) - Create or update a custom plugin schema
 

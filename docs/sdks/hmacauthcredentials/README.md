@@ -8,10 +8,10 @@
 * [ListHmacAuthWithConsumer](#listhmacauthwithconsumer) - List all HMAC-auth credentials associated with a Consumer
 * [CreateHmacAuthWithConsumer](#createhmacauthwithconsumer) - Create a new HMAC-auth credential associated with a Consumer
 * [DeleteHmacAuthWithConsumer](#deletehmacauthwithconsumer) - Delete a a HMAC-auth credential associated with a Consumer
-* [GetHmacAuthWithConsumer](#gethmacauthwithconsumer) - Fetch a HMAC-auth credential associated with a Consumer
+* [GetHmacAuthWithConsumer](#gethmacauthwithconsumer) - Get a HMAC-auth credential associated with a Consumer
 * [UpsertHmacAuthWithConsumer](#upserthmacauthwithconsumer) - Upsert a HMAC-auth credential associated with a Consumer
 * [ListHmacAuth](#listhmacauth) - List all HMAC-auth credentials
-* [GetHmacAuth](#gethmacauth) - Fetch a HMAC-auth credential
+* [GetHmacAuth](#gethmacauth) - Get a HMAC-auth credential
 
 ## ListHmacAuthWithConsumer
 

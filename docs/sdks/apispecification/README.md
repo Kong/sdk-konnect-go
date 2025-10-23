@@ -7,7 +7,7 @@
 
 * [~~CreateAPISpec~~](#createapispec) - Create API Specification :warning: **Deprecated**
 * [~~ListAPISpecs~~](#listapispecs) - List API Specifications :warning: **Deprecated**
-* [~~FetchAPISpec~~](#fetchapispec) - Fetch API Specification :warning: **Deprecated**
+* [~~FetchAPISpec~~](#fetchapispec) - Get API Specification :warning: **Deprecated**
 * [~~UpdateAPISpec~~](#updateapispec) - Update API Specification :warning: **Deprecated**
 * [~~DeleteAPISpec~~](#deleteapispec) - Delete API Specification :warning: **Deprecated**
 * [ValidateSpecification](#validatespecification) - Validate API Specification

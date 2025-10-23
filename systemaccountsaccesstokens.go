@@ -584,7 +584,7 @@ func (s *SystemAccountsAccessTokens) PostSystemAccountsIDAccessTokens(ctx contex
 
 }
 
-// GetSystemAccountsIDAccessTokensID - Fetch System Account Access Token
+// GetSystemAccountsIDAccessTokensID - Get a System Account Access Token
 // Returns the system account (SA) access token for the SA Access Token ID specified as a path parameter.
 func (s *SystemAccountsAccessTokens) GetSystemAccountsIDAccessTokensID(ctx context.Context, accountID string, tokenID string, opts ...operations.Option) (*operations.GetSystemAccountsIDAccessTokensIDResponse, error) {
 	request := operations.GetSystemAccountsIDAccessTokensIDRequest{

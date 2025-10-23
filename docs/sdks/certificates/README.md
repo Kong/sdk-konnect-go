@@ -15,7 +15,7 @@ If intermediate certificates are required in addition to the main certificate, t
 * [ListCertificate](#listcertificate) - List all Certificates
 * [CreateCertificate](#createcertificate) - Create a new Certificate
 * [DeleteCertificate](#deletecertificate) - Delete a Certificate
-* [GetCertificate](#getcertificate) - Fetch a Certificate
+* [GetCertificate](#getcertificate) - Get a Certificate
 * [UpsertCertificate](#upsertcertificate) - Upsert a Certificate
 
 ## ListCertificate

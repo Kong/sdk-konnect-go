@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 // NotificationRegion - Region associated to a notification.
 type NotificationRegion string
 
@@ -21,27 +16,4 @@ const (
 
 func (e NotificationRegion) ToPointer() *NotificationRegion {
 	return &e
-}
-func (e *NotificationRegion) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "US":
-		fallthrough
-	case "EU":
-		fallthrough
-	case "AU":
-		fallthrough
-	case "ME":
-		fallthrough
-	case "IN":
-		fallthrough
-	case "*":
-		*e = NotificationRegion(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for NotificationRegion: %v", v)
-	}
 }

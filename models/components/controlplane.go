@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
@@ -23,27 +21,6 @@ const (
 func (e ControlPlaneClusterType) ToPointer() *ControlPlaneClusterType {
 	return &e
 }
-func (e *ControlPlaneClusterType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "CLUSTER_TYPE_CONTROL_PLANE":
-		fallthrough
-	case "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER":
-		fallthrough
-	case "CLUSTER_TYPE_CONTROL_PLANE_GROUP":
-		fallthrough
-	case "CLUSTER_TYPE_SERVERLESS":
-		fallthrough
-	case "CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY":
-		*e = ControlPlaneClusterType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ControlPlaneClusterType: %v", v)
-	}
-}
 
 // ControlPlaneAuthType - The auth type value of the cluster associated with the Runtime Group.
 type ControlPlaneAuthType string
@@ -55,21 +32,6 @@ const (
 
 func (e ControlPlaneAuthType) ToPointer() *ControlPlaneAuthType {
 	return &e
-}
-func (e *ControlPlaneAuthType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "pinned_client_certs":
-		fallthrough
-	case "pki_client_certs":
-		*e = ControlPlaneAuthType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ControlPlaneAuthType: %v", v)
-	}
 }
 
 // Config - CP configuration object for related access endpoints.

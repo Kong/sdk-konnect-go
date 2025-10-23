@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 type NotificationNamespace string
 
 const (
@@ -19,25 +14,4 @@ const (
 
 func (e NotificationNamespace) ToPointer() *NotificationNamespace {
 	return &e
-}
-func (e *NotificationNamespace) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "plan-and-usage":
-		fallthrough
-	case "organization":
-		fallthrough
-	case "dev-portal":
-		fallthrough
-	case "cloud-gateways":
-		fallthrough
-	case "gateway-manager":
-		*e = NotificationNamespace(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for NotificationNamespace: %v", v)
-	}
 }

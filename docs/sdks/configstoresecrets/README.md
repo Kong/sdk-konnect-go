@@ -9,7 +9,7 @@ Config Store Secrets
 
 * [CreateConfigStoreSecret](#createconfigstoresecret) - Create Config Store Secret
 * [ListConfigStoreSecrets](#listconfigstoresecrets) - List Config Store Secrets
-* [GetConfigStoreSecret](#getconfigstoresecret) - Fetch Config Store Secret
+* [GetConfigStoreSecret](#getconfigstoresecret) - Get a Config Store Secret
 * [UpdateConfigStoreSecret](#updateconfigstoresecret) - Update Config Store Secret
 * [DeleteConfigStoreSecret](#deleteconfigstoresecret) - Delete Config Store Secret
 

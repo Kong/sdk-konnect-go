@@ -32,7 +32,7 @@ func newPortalEmails(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hoo
 	}
 }
 
-// GetEmailConfig - Retrieve the email config for the portal
+// GetEmailConfig - Get the email config for the portal
 // Retrieve the email config for the portal
 func (s *PortalEmails) GetEmailConfig(ctx context.Context, portalID string, opts ...operations.Option) (*operations.GetEmailConfigResponse, error) {
 	request := operations.GetEmailConfigRequest{
@@ -1179,7 +1179,7 @@ func (s *PortalEmails) DeletePortalEmailConfig(ctx context.Context, portalID str
 
 }
 
-// GetEmailDelivery - Retrieve the email delivery for the portal
+// GetEmailDelivery - Get the email delivery for the portal
 // Retrieve the email delivery for the portal
 //
 // Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.

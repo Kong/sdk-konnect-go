@@ -710,7 +710,7 @@ func (s *Partials) DeletePartial(ctx context.Context, controlPlaneID string, par
 
 }
 
-// GetPartial - Fetch a Partial
+// GetPartial - Get a Partial
 // Get a Partial using ID.
 func (s *Partials) GetPartial(ctx context.Context, partialID string, controlPlaneID string, opts ...operations.Option) (*operations.GetPartialResponse, error) {
 	request := operations.GetPartialRequest{

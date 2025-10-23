@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 // ApplicationRegistrationStatus - The status of an application registration request. Each registration is linked to a single API, and application credentials will not grant access to the API until the registration is approved.
 // Pending, revoked, and rejected registrations will not provide access to the API.
 type ApplicationRegistrationStatus string
@@ -20,23 +15,4 @@ const (
 
 func (e ApplicationRegistrationStatus) ToPointer() *ApplicationRegistrationStatus {
 	return &e
-}
-func (e *ApplicationRegistrationStatus) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "approved":
-		fallthrough
-	case "pending":
-		fallthrough
-	case "revoked":
-		fallthrough
-	case "rejected":
-		*e = ApplicationRegistrationStatus(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ApplicationRegistrationStatus: %v", v)
-	}
 }

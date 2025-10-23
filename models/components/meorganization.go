@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
@@ -21,25 +19,6 @@ const (
 
 func (e MeOrganizationState) ToPointer() *MeOrganizationState {
 	return &e
-}
-func (e *MeOrganizationState) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "active":
-		fallthrough
-	case "inactive":
-		fallthrough
-	case "deleting":
-		fallthrough
-	case "deleted":
-		*e = MeOrganizationState(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for MeOrganizationState: %v", v)
-	}
 }
 
 // MeOrganization - Me Organization

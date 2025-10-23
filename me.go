@@ -31,7 +31,7 @@ func newMe(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hooks.Hooks) 
 	}
 }
 
-// GetOrganizationsMe - Retrieve My Organization
+// GetOrganizationsMe - Get My Organization
 // Returns the organization of the user identified in the token of the request.
 func (s *Me) GetOrganizationsMe(ctx context.Context, opts ...operations.Option) (*operations.GetOrganizationsMeResponse, error) {
 	o := operations.Options{}
@@ -256,7 +256,7 @@ func (s *Me) GetOrganizationsMe(ctx context.Context, opts ...operations.Option) 
 
 }
 
-// GetUsersMe - Retrieve My User Account
+// GetUsersMe - Get My User Account
 // Returns the user account for the user identified in the token of the request.
 func (s *Me) GetUsersMe(ctx context.Context, opts ...operations.Option) (*operations.GetUsersMeResponse, error) {
 	o := operations.Options{}

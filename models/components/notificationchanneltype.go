@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 type NotificationChannelType string
 
 const (
@@ -16,19 +11,4 @@ const (
 
 func (e NotificationChannelType) ToPointer() *NotificationChannelType {
 	return &e
-}
-func (e *NotificationChannelType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "EMAIL":
-		fallthrough
-	case "IN_APP":
-		*e = NotificationChannelType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for NotificationChannelType: %v", v)
-	}
 }

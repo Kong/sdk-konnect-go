@@ -534,7 +534,7 @@ func (s *Teams) CreateTeam(ctx context.Context, request *components.CreateTeam, 
 
 }
 
-// GetTeam - Fetch Team
+// GetTeam - Get a Team
 // Returns information about a team from a given team ID.
 func (s *Teams) GetTeam(ctx context.Context, teamID string, opts ...operations.Option) (*operations.GetTeamResponse, error) {
 	request := operations.GetTeamRequest{

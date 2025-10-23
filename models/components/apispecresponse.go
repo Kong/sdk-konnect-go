@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
@@ -31,23 +29,6 @@ const (
 
 func (e APISpecResponseAPISpecType) ToPointer() *APISpecResponseAPISpecType {
 	return &e
-}
-func (e *APISpecResponseAPISpecType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "oas2":
-		fallthrough
-	case "oas3":
-		fallthrough
-	case "asyncapi":
-		*e = APISpecResponseAPISpecType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for APISpecResponseAPISpecType: %v", v)
-	}
 }
 
 // APISpecResponse - API specification (OpenAPI or AsyncAPI)

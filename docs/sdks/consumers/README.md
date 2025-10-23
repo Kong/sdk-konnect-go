@@ -12,7 +12,7 @@ You can either rely on Kong Gateway as the primary datastore, or you can map the
 * [ListConsumer](#listconsumer) - List all Consumers
 * [CreateConsumer](#createconsumer) - Create a new Consumer
 * [DeleteConsumer](#deleteconsumer) - Delete a Consumer
-* [GetConsumer](#getconsumer) - Fetch a Consumer
+* [GetConsumer](#getconsumer) - Get a Consumer
 * [UpsertConsumer](#upsertconsumer) - Upsert a Consumer
 * [RemoveConsumerFromAllConsumerGroups](#removeconsumerfromallconsumergroups) - Remove consumer from all consumer groups
 * [ListConsumerGroupsForConsumer](#listconsumergroupsforconsumer) - List all Consumer Groups a Consumer belongs to

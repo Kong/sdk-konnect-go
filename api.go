@@ -934,8 +934,8 @@ func (s *API) ListApisComputed(ctx context.Context, request operations.ListApisC
 
 }
 
-// FetchAPI - Fetch API
-// Fetches an API.
+// FetchAPI - Get an API
+// Get an API.
 func (s *API) FetchAPI(ctx context.Context, apiID string, opts ...operations.Option) (*operations.FetchAPIResponse, error) {
 	request := operations.FetchAPIRequest{
 		APIID: apiID,

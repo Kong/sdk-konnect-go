@@ -12,7 +12,7 @@ The DCR provider provides credentials to each DCR-enabled application in Konnect
 
 * [CreateDcrProvider](#createdcrprovider) - Create DCR provider
 * [ListDcrProviders](#listdcrproviders) - List DCR Providers
-* [GetDcrProvider](#getdcrprovider) - Fetch DCR provider
+* [GetDcrProvider](#getdcrprovider) - Get a DCR provider
 * [UpdateDcrProvider](#updatedcrprovider) - Update DCR provider
 * [DeleteDcrProvider](#deletedcrprovider) - Delete DCR provider
 * [VerifyDcrProvider](#verifydcrprovider) - Verify DCR provider configuration

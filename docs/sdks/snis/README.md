@@ -12,12 +12,12 @@ A certificate object can have many hostnames associated with it. When Kong Gatew
 * [ListSniWithCertificate](#listsniwithcertificate) - List all SNIs associated with a Certificate
 * [CreateSniWithCertificate](#createsniwithcertificate) - Create a new SNI associated with a Certificate
 * [DeleteSniWithCertificate](#deletesniwithcertificate) - Delete a an SNI associated with a Certificate
-* [GetSniWithCertificate](#getsniwithcertificate) - Fetch an SNI associated with a Certificate
+* [GetSniWithCertificate](#getsniwithcertificate) - Get an SNI associated with a Certificate
 * [UpsertSniWithCertificate](#upsertsniwithcertificate) - Upsert an SNI associated with a Certificate
 * [ListSni](#listsni) - List all SNIs
 * [CreateSni](#createsni) - Create a new SNI
 * [DeleteSni](#deletesni) - Delete an SNI
-* [GetSni](#getsni) - Fetch an SNI
+* [GetSni](#getsni) - Get an SNI
 * [UpsertSni](#upsertsni) - Upsert a SNI
 
 ## ListSniWithCertificate

@@ -617,7 +617,7 @@ func (s *ApplicationRegistrations) ListRegistrationsByApplication(ctx context.Co
 
 }
 
-// GetApplicationRegistration - Fetch Registration
+// GetApplicationRegistration - Get a Registration
 // Returns information about an application's registration status for a particular API.
 func (s *ApplicationRegistrations) GetApplicationRegistration(ctx context.Context, request operations.GetApplicationRegistrationRequest, opts ...operations.Option) (*operations.GetApplicationRegistrationResponse, error) {
 	o := operations.Options{}

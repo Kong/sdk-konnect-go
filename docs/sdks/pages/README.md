@@ -10,7 +10,7 @@ APIs related to Konnect Developer Portal Custom Pages.
 * [CreateDefaultContent](#createdefaultcontent) - Creates Default Pages
 * [ListPortalPages](#listportalpages) - List Pages
 * [CreatePortalPage](#createportalpage) - Create Page
-* [GetPortalPage](#getportalpage) - Fetch Page
+* [GetPortalPage](#getportalpage) - Get a Page
 * [UpdatePortalPage](#updateportalpage) - Update Page
 * [DeletePortalPage](#deleteportalpage) - Delete Page
 * [MovePortalPages](#moveportalpages) - Move Page

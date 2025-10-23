@@ -8,10 +8,10 @@
 * [ListJwtWithConsumer](#listjwtwithconsumer) - List all JWTs associated with a Consumer
 * [CreateJwtWithConsumer](#createjwtwithconsumer) - Create a new JWT associated with a Consumer
 * [DeleteJwtWithConsumer](#deletejwtwithconsumer) - Delete a a JWT associated with a Consumer
-* [GetJwtWithConsumer](#getjwtwithconsumer) - Fetch a JWT associated with a Consumer
+* [GetJwtWithConsumer](#getjwtwithconsumer) - Get a JWT associated with a Consumer
 * [UpsertJwtWithConsumer](#upsertjwtwithconsumer) - Upsert a JWT associated with a Consumer
 * [ListJwt](#listjwt) - List all JWTs
-* [GetJwt](#getjwt) - Fetch a JWT
+* [GetJwt](#getjwt) - Get a JWT
 
 ## ListJwtWithConsumer
 

@@ -260,7 +260,7 @@ func (s *BasicAuthCredentials) ListBasicAuth(ctx context.Context, request operat
 
 }
 
-// GetBasicAuth - Fetch a Basic-auth credential
+// GetBasicAuth - Get a Basic-auth credential
 // Get a Basic-auth credential using ID.
 func (s *BasicAuthCredentials) GetBasicAuth(ctx context.Context, basicAuthID string, controlPlaneID string, opts ...operations.Option) (*operations.GetBasicAuthResponse, error) {
 	request := operations.GetBasicAuthRequest{
@@ -1099,7 +1099,7 @@ func (s *BasicAuthCredentials) DeleteBasicAuthWithConsumer(ctx context.Context, 
 
 }
 
-// GetBasicAuthWithConsumer - Fetch a Basic-auth credential associated with a Consumer
+// GetBasicAuthWithConsumer - Get a Basic-auth credential associated with a Consumer
 // Get a Basic-auth credential associated with a Consumer using ID.
 func (s *BasicAuthCredentials) GetBasicAuthWithConsumer(ctx context.Context, request operations.GetBasicAuthWithConsumerRequest, opts ...operations.Option) (*operations.GetBasicAuthWithConsumerResponse, error) {
 	o := operations.Options{}

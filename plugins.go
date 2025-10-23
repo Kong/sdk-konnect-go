@@ -640,7 +640,7 @@ func (s *Plugins) DeletePluginWithConsumerGroup(ctx context.Context, request ope
 
 }
 
-// GetPluginWithConsumerGroup - Fetch a Plugin associated with a Consumer Group
+// GetPluginWithConsumerGroup - Get a Plugin associated with a Consumer Group
 // Get a Plugin associated with a Consumer Group using ID.
 func (s *Plugins) GetPluginWithConsumerGroup(ctx context.Context, request operations.GetPluginWithConsumerGroupRequest, opts ...operations.Option) (*operations.GetPluginWithConsumerGroupResponse, error) {
 	o := operations.Options{}
@@ -1665,7 +1665,7 @@ func (s *Plugins) DeletePluginWithConsumer(ctx context.Context, request operatio
 
 }
 
-// GetPluginWithConsumer - Fetch a Plugin associated with a Consumer
+// GetPluginWithConsumer - Get a Plugin associated with a Consumer
 // Get a Plugin associated with a Consumer using ID.
 func (s *Plugins) GetPluginWithConsumer(ctx context.Context, request operations.GetPluginWithConsumerRequest, opts ...operations.Option) (*operations.GetPluginWithConsumerResponse, error) {
 	o := operations.Options{}
@@ -2763,7 +2763,7 @@ func (s *Plugins) DeletePlugin(ctx context.Context, controlPlaneID string, plugi
 
 }
 
-// GetPlugin - Fetch a Plugin
+// GetPlugin - Get a Plugin
 // Get a Plugin using ID.
 func (s *Plugins) GetPlugin(ctx context.Context, pluginID string, controlPlaneID string, opts ...operations.Option) (*operations.GetPluginResponse, error) {
 	request := operations.GetPluginRequest{
@@ -3835,7 +3835,7 @@ func (s *Plugins) DeletePluginWithRoute(ctx context.Context, request operations.
 
 }
 
-// GetPluginWithRoute - Fetch a Plugin associated with a Route
+// GetPluginWithRoute - Get a Plugin associated with a Route
 // Get a Plugin associated with a Route using ID.
 func (s *Plugins) GetPluginWithRoute(ctx context.Context, request operations.GetPluginWithRouteRequest, opts ...operations.Option) (*operations.GetPluginWithRouteResponse, error) {
 	o := operations.Options{}
@@ -4254,7 +4254,7 @@ func (s *Plugins) UpsertPluginWithRoute(ctx context.Context, request operations.
 
 }
 
-// FetchPluginSchema - Fetch plugin schema
+// FetchPluginSchema - Get plugin schema
 // Get the schema for a plugin
 func (s *Plugins) FetchPluginSchema(ctx context.Context, pluginName string, controlPlaneID string, opts ...operations.Option) (*operations.FetchPluginSchemaResponse, error) {
 	request := operations.FetchPluginSchemaRequest{
@@ -5070,7 +5070,7 @@ func (s *Plugins) DeletePluginWithService(ctx context.Context, request operation
 
 }
 
-// GetPluginWithService - Fetch a Plugin associated with a Service
+// GetPluginWithService - Get a Plugin associated with a Service
 // Get a Plugin associated with a Service using ID.
 func (s *Plugins) GetPluginWithService(ctx context.Context, request operations.GetPluginWithServiceRequest, opts ...operations.Option) (*operations.GetPluginWithServiceResponse, error) {
 	o := operations.Options{}

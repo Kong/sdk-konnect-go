@@ -8,10 +8,10 @@
 * [ListMtlsAuthWithConsumer](#listmtlsauthwithconsumer) - List all MTLS-auth credentials associated with a Consumer
 * [CreateMtlsAuthWithConsumer](#createmtlsauthwithconsumer) - Create a new MTLS-auth credential associated with a Consumer
 * [DeleteMtlsAuthWithConsumer](#deletemtlsauthwithconsumer) - Delete a a MTLS-auth credential associated with a Consumer
-* [GetMtlsAuthWithConsumer](#getmtlsauthwithconsumer) - Fetch a MTLS-auth credential associated with a Consumer
+* [GetMtlsAuthWithConsumer](#getmtlsauthwithconsumer) - Get a MTLS-auth credential associated with a Consumer
 * [UpsertMtlsAuthWithConsumer](#upsertmtlsauthwithconsumer) - Upsert a MTLS-auth credential associated with a Consumer
 * [ListMtlsAuth](#listmtlsauth) - List all MTLS-auth credentials
-* [GetMtlsAuth](#getmtlsauth) - Fetch a MTLS-auth credential
+* [GetMtlsAuth](#getmtlsauth) - Get a MTLS-auth credential
 
 ## ListMtlsAuthWithConsumer
 

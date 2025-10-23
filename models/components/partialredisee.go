@@ -84,23 +84,6 @@ const (
 func (e SentinelRole) ToPointer() *SentinelRole {
 	return &e
 }
-func (e *SentinelRole) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "any":
-		fallthrough
-	case "master":
-		fallthrough
-	case "slave":
-		*e = SentinelRole(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for SentinelRole: %v", v)
-	}
-}
 
 type PartialRedisEeConfig struct {
 	// Maximum retry attempts for redirection.

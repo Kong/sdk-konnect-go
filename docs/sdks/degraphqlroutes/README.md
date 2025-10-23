@@ -6,11 +6,11 @@
 ### Available Operations
 
 * [ListDegraphqlRoute](#listdegraphqlroute) - List all Degraphql_routes
-* [GetDegraphqlRoute](#getdegraphqlroute) - Fetch a Degraphql_route
+* [GetDegraphqlRoute](#getdegraphqlroute) - Get a Degraphql_route
 * [ListDegraphqlRouteWithService](#listdegraphqlroutewithservice) - List all Degraphql_routes associated with a Service
 * [CreateDegraphqlRouteWithService](#createdegraphqlroutewithservice) - Create a new Degraphql_route associated with a Service
 * [DeleteDegraphqlRouteWithService](#deletedegraphqlroutewithservice) - Delete a a Degraphql_route associated with a Service
-* [GetDegraphqlRouteWithService](#getdegraphqlroutewithservice) - Fetch a Degraphql_route associated with a Service
+* [GetDegraphqlRouteWithService](#getdegraphqlroutewithservice) - Get a Degraphql_route associated with a Service
 * [UpsertDegraphqlRouteWithService](#upsertdegraphqlroutewithservice) - Upsert a Degraphql_route associated with a Service
 
 ## ListDegraphqlRoute

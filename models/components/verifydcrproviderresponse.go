@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 type Status string
 
 const (
@@ -16,21 +11,6 @@ const (
 
 func (e Status) ToPointer() *Status {
 	return &e
-}
-func (e *Status) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "success":
-		fallthrough
-	case "failed":
-		*e = Status(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for Status: %v", v)
-	}
 }
 
 // VerifyDcrProviderResponse - A response containing the result of attempting to verify a DCR provider configuration.

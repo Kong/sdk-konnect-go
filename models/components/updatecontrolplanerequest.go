@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -18,21 +16,6 @@ const (
 
 func (e UpdateControlPlaneRequestAuthType) ToPointer() *UpdateControlPlaneRequestAuthType {
 	return &e
-}
-func (e *UpdateControlPlaneRequestAuthType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "pinned_client_certs":
-		fallthrough
-	case "pki_client_certs":
-		*e = UpdateControlPlaneRequestAuthType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateControlPlaneRequestAuthType: %v", v)
-	}
 }
 
 // UpdateControlPlaneRequest - The request schema for the update control plane request.

@@ -11,12 +11,12 @@ A key object holds a representation of asymmetric keys in various formats. When 
 * [ListKeyWithKeySet](#listkeywithkeyset) - List all Keys associated with a KeySet
 * [CreateKeyWithKeySet](#createkeywithkeyset) - Create a new Key associated with a KeySet
 * [DeleteKeyWithKeySet](#deletekeywithkeyset) - Delete a a Key associated with a KeySet
-* [GetKeyWithKeySet](#getkeywithkeyset) - Fetch a Key associated with a KeySet
+* [GetKeyWithKeySet](#getkeywithkeyset) - Get a Key associated with a KeySet
 * [UpsertKeyWithKeySet](#upsertkeywithkeyset) - Upsert a Key associated with a KeySet
 * [ListKey](#listkey) - List all Keys
 * [CreateKey](#createkey) - Create a new Key
 * [DeleteKey](#deletekey) - Delete a Key
-* [GetKey](#getkey) - Fetch a Key
+* [GetKey](#getkey) - Get a Key
 * [UpsertKey](#upsertkey) - Upsert a Key
 
 ## ListKeyWithKeySet

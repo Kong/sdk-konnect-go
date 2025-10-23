@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
@@ -22,29 +20,6 @@ const (
 
 func (e PortalAuditLogReplayJobStatus) ToPointer() *PortalAuditLogReplayJobStatus {
 	return &e
-}
-func (e *PortalAuditLogReplayJobStatus) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "unconfigured":
-		fallthrough
-	case "accepted":
-		fallthrough
-	case "pending":
-		fallthrough
-	case "running":
-		fallthrough
-	case "completed":
-		fallthrough
-	case "failed":
-		*e = PortalAuditLogReplayJobStatus(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for PortalAuditLogReplayJobStatus: %v", v)
-	}
 }
 
 // PortalAuditLogReplayJob - Response from fetching or updating an portal audit log replay job

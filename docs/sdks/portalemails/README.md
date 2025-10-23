@@ -7,11 +7,11 @@ APIs related to Konnect Developer Portal Emails.
 
 ### Available Operations
 
-* [GetEmailConfig](#getemailconfig) - Retrieve the email config for the portal
+* [GetEmailConfig](#getemailconfig) - Get the email config for the portal
 * [CreatePortalEmailConfig](#createportalemailconfig) - Create the email config for a portal
 * [UpdatePortalEmailConfig](#updateportalemailconfig) - Setup the email config for a portal
 * [DeletePortalEmailConfig](#deleteportalemailconfig) - Delete portal email config
-* [~~GetEmailDelivery~~](#getemaildelivery) - Retrieve the email delivery for the portal :warning: **Deprecated**
+* [~~GetEmailDelivery~~](#getemaildelivery) - Get the email delivery for the portal :warning: **Deprecated**
 * [~~UpdateEmailDelivery~~](#updateemaildelivery) - Setup the email delivery for a portal :warning: **Deprecated**
 * [~~DeleteEmailDelivery~~](#deleteemaildelivery) - Delete email delivery :warning: **Deprecated**
 * [ListPortalCustomEmailTemplates](#listportalcustomemailtemplates) - List custom email templates for a portal

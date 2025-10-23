@@ -1106,7 +1106,7 @@ func (s *PortalAuthSettings) UpdatePortalTeamGroupMappings(ctx context.Context, 
 
 }
 
-// GetPortalIdentityProviders - Retrieve Identity Providers
+// GetPortalIdentityProviders - List Identity Providers
 // **Pre-release Endpoint**
 // This endpoint is currently in beta and is subject to change.
 //

@@ -28,3 +28,4 @@ invalid parameters rules
 | `InvalidRulesIsSupportedNetworkAvailabilityZoneList` | is_supported_network_availability_zone_list          |
 | `InvalidRulesIsSupportedNetworkCidrBlock`            | is_supported_network_cidr_block                      |
 | `InvalidRulesIsSupportedProviderRegion`              | is_supported_provider_region                         |
+| `InvalidRulesType`                                   | type                                                 |

@@ -11,7 +11,7 @@ APIs related to configuration of Konnect Developer Portal auth settings.
 * [UpdatePortalAuthenticationSettings](#updateportalauthenticationsettings) - Update Auth Settings
 * [ListPortalTeamGroupMappings](#listportalteamgroupmappings) - List Team Group Mappings
 * [UpdatePortalTeamGroupMappings](#updateportalteamgroupmappings) - Update Team Group Mappings
-* [GetPortalIdentityProviders](#getportalidentityproviders) - Retrieve Identity Providers
+* [GetPortalIdentityProviders](#getportalidentityproviders) - List Identity Providers
 * [CreatePortalIdentityProvider](#createportalidentityprovider) - Create Identity Provider
 * [GetPortalIdentityProvider](#getportalidentityprovider) - Get Identity Provider
 * [UpdatePortalIdentityProvider](#updateportalidentityprovider) - Update Identity Provider

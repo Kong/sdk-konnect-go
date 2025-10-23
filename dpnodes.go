@@ -31,7 +31,7 @@ func newDPNodes(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hooks.Ho
 	}
 }
 
-// GetExpectedConfigHash - Fetch Expected Config Hash
+// GetExpectedConfigHash - Get an Expected Config Hash
 // Retrieve the expected config hash for this control plane. The expected config hash can be used to verify if the config hash of a data plane node is up to date with the control plane. The config hash will be the same if they are in sync.
 func (s *DPNodes) GetExpectedConfigHash(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetExpectedConfigHashResponse, error) {
 	request := operations.GetExpectedConfigHashRequest{
@@ -449,7 +449,7 @@ func (s *DPNodes) ListDataplaneNodes(ctx context.Context, request operations.Lis
 
 }
 
-// GetNodesNodeID - Fetch Data Plane Node Record
+// GetNodesNodeID - Get a Data Plane Node Record
 // Retrieve a specific data plane node record associated to this control plane. A data plane node record contains all the metadata information of the Kong Gateway dataplane.
 func (s *DPNodes) GetNodesNodeID(ctx context.Context, request operations.GetNodesNodeIDRequest, opts ...operations.Option) (*operations.GetNodesNodeIDResponse, error) {
 	o := operations.Options{}

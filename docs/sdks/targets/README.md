@@ -13,7 +13,7 @@ To disable a target, post a new one with `weight=0`, or use the `DELETE` method 
 * [ListTargetWithUpstream](#listtargetwithupstream) - List all Targets associated with an Upstream
 * [CreateTargetWithUpstream](#createtargetwithupstream) - Create a new Target associated with an Upstream
 * [DeleteTargetWithUpstream](#deletetargetwithupstream) - Delete a a Target associated with an Upstream
-* [GetTargetWithUpstream](#gettargetwithupstream) - Fetch a Target associated with an Upstream
+* [GetTargetWithUpstream](#gettargetwithupstream) - Get a Target associated with an Upstream
 * [UpsertTargetWithUpstream](#upserttargetwithupstream) - Upsert a Target associated with an Upstream
 
 ## ListTargetWithUpstream

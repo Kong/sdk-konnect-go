@@ -260,7 +260,7 @@ func (s *DegraphqlRoutes) ListDegraphqlRoute(ctx context.Context, request operat
 
 }
 
-// GetDegraphqlRoute - Fetch a Degraphql_route
+// GetDegraphqlRoute - Get a Degraphql_route
 // Get a Degraphql_route using ID or name.
 func (s *DegraphqlRoutes) GetDegraphqlRoute(ctx context.Context, degraphqlRouteID string, controlPlaneID string, opts ...operations.Option) (*operations.GetDegraphqlRouteResponse, error) {
 	request := operations.GetDegraphqlRouteRequest{
@@ -1099,7 +1099,7 @@ func (s *DegraphqlRoutes) DeleteDegraphqlRouteWithService(ctx context.Context, r
 
 }
 
-// GetDegraphqlRouteWithService - Fetch a Degraphql_route associated with a Service
+// GetDegraphqlRouteWithService - Get a Degraphql_route associated with a Service
 // Get a Degraphql_route associated with a Service using ID or name.
 func (s *DegraphqlRoutes) GetDegraphqlRouteWithService(ctx context.Context, request operations.GetDegraphqlRouteWithServiceRequest, opts ...operations.Option) (*operations.GetDegraphqlRouteWithServiceResponse, error) {
 	o := operations.Options{}

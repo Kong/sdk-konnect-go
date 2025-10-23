@@ -6,11 +6,11 @@
 ### Available Operations
 
 * [ListBasicAuth](#listbasicauth) - List all Basic-auth credentials
-* [GetBasicAuth](#getbasicauth) - Fetch a Basic-auth credential
+* [GetBasicAuth](#getbasicauth) - Get a Basic-auth credential
 * [ListBasicAuthWithConsumer](#listbasicauthwithconsumer) - List all Basic-auth credentials associated with a Consumer
 * [CreateBasicAuthWithConsumer](#createbasicauthwithconsumer) - Create a new Basic-auth credential associated with a Consumer
 * [DeleteBasicAuthWithConsumer](#deletebasicauthwithconsumer) - Delete a a Basic-auth credential associated with a Consumer
-* [GetBasicAuthWithConsumer](#getbasicauthwithconsumer) - Fetch a Basic-auth credential associated with a Consumer
+* [GetBasicAuthWithConsumer](#getbasicauthwithconsumer) - Get a Basic-auth credential associated with a Consumer
 * [UpsertBasicAuthWithConsumer](#upsertbasicauthwithconsumer) - Upsert a Basic-auth credential associated with a Consumer
 
 ## ListBasicAuth

@@ -625,7 +625,7 @@ func (s *Snippets) CreatePortalSnippet(ctx context.Context, portalID string, cre
 
 }
 
-// GetPortalSnippet - Fetch Snippet
+// GetPortalSnippet - Get a Snippet
 // Returns the configuration of a single custom snippet for this portal. Custom snippets can be used to display static content, documentation, or other information to developers.
 func (s *Snippets) GetPortalSnippet(ctx context.Context, portalID string, snippetID string, opts ...operations.Option) (*operations.GetPortalSnippetResponse, error) {
 	request := operations.GetPortalSnippetRequest{

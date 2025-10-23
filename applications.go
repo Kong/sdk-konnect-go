@@ -31,7 +31,7 @@ func newApplications(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hoo
 	}
 }
 
-// GetApplicationUnscoped - Fetch Application
+// GetApplicationUnscoped - Get an Application
 // Returns the configuration of a single application in any portal. If an application is linked to a DCR Provider, the `dcr_provider.id` and `client_id` can be used to correlate it. An application manages a set of credentials and registrations for specific APIs.
 func (s *Applications) GetApplicationUnscoped(ctx context.Context, applicationID string, opts ...operations.Option) (*operations.GetApplicationUnscopedResponse, error) {
 	request := operations.GetApplicationUnscopedRequest{
@@ -596,7 +596,7 @@ func (s *Applications) ListApplications(ctx context.Context, request operations.
 
 }
 
-// GetApplication - Fetch Application by Portal
+// GetApplication - Get an Application by Portal
 // Returns the configuration of a single application in this portal. If an application is linked to a DCR Provider, the `dcr_provider.id` and `client_id` can be used to correlate it. An application manages a set of credentials and registrations for specific APIs.
 func (s *Applications) GetApplication(ctx context.Context, portalID string, applicationID string, opts ...operations.Option) (*operations.GetApplicationResponse, error) {
 	request := operations.GetApplicationRequest{

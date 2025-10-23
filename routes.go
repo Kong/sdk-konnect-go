@@ -732,7 +732,7 @@ func (s *Routes) DeleteRoute(ctx context.Context, controlPlaneID string, routeID
 
 }
 
-// GetRoute - Fetch a Route
+// GetRoute - Get a Route
 // Get a Route using ID or name.
 func (s *Routes) GetRoute(ctx context.Context, routeID string, controlPlaneID string, opts ...operations.Option) (*operations.GetRouteResponse, error) {
 	request := operations.GetRouteRequest{
@@ -1804,7 +1804,7 @@ func (s *Routes) DeleteRouteWithService(ctx context.Context, request operations.
 
 }
 
-// GetRouteWithService - Fetch a Route associated with a Service
+// GetRouteWithService - Get a Route associated with a Service
 // Get a Route associated with a Service using ID or name.
 func (s *Routes) GetRouteWithService(ctx context.Context, request operations.GetRouteWithServiceRequest, opts ...operations.Option) (*operations.GetRouteWithServiceResponse, error) {
 	o := operations.Options{}

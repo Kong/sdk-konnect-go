@@ -579,7 +579,7 @@ func (s *Portals) CreatePortal(ctx context.Context, request components.CreatePor
 
 }
 
-// GetPortal - Fetch Portal
+// GetPortal - Get a Portal
 // Returns the configuration for a single developer portal, including the current visibility, access, and domain settings.
 func (s *Portals) GetPortal(ctx context.Context, portalID string, opts ...operations.Option) (*operations.GetPortalResponse, error) {
 	request := operations.GetPortalRequest{

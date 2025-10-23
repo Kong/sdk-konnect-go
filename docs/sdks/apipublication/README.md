@@ -7,7 +7,7 @@
 
 * [ListAPIPublications](#listapipublications) - List Publications
 * [PublishAPIToPortal](#publishapitoportal) - Publish API
-* [FetchPublication](#fetchpublication) - Fetch Publication
+* [FetchPublication](#fetchpublication) - Get a Publication
 * [DeletePublication](#deletepublication) - Delete Publication
 
 ## ListAPIPublications

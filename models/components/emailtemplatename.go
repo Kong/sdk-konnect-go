@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 // EmailTemplateName - Short name email template name.
 type EmailTemplateName string
 
@@ -23,31 +18,4 @@ const (
 
 func (e EmailTemplateName) ToPointer() *EmailTemplateName {
 	return &e
-}
-func (e *EmailTemplateName) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "confirm-email-address":
-		fallthrough
-	case "app-registration-approved":
-		fallthrough
-	case "app-registration-rejected":
-		fallthrough
-	case "app-registration-revoked":
-		fallthrough
-	case "reset-password":
-		fallthrough
-	case "account-access-approved":
-		fallthrough
-	case "account-access-rejected":
-		fallthrough
-	case "account-access-revoked":
-		*e = EmailTemplateName(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for EmailTemplateName: %v", v)
-	}
 }

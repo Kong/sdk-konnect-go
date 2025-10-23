@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 // ControlPlaneGeo - Set of control-plane geos supported for deploying cloud-gateways configurations.
 type ControlPlaneGeo string
 
@@ -21,27 +16,4 @@ const (
 
 func (e ControlPlaneGeo) ToPointer() *ControlPlaneGeo {
 	return &e
-}
-func (e *ControlPlaneGeo) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "us":
-		fallthrough
-	case "eu":
-		fallthrough
-	case "au":
-		fallthrough
-	case "me":
-		fallthrough
-	case "in":
-		fallthrough
-	case "sg":
-		*e = ControlPlaneGeo(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ControlPlaneGeo: %v", v)
-	}
 }

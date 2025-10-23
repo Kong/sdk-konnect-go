@@ -30,7 +30,7 @@ func newSystemAccountsRoles(rootSDK *SDK, sdkConfig config.SDKConfiguration, hoo
 	}
 }
 
-// GetSystemAccountsAccountIDAssignedRoles - Fetch Assigned Roles for System Account
+// GetSystemAccountsAccountIDAssignedRoles - List Assigned Roles for System Account
 // Lists the roles belonging to a system account. Returns 400 if any filter parameters are invalid.
 func (s *SystemAccountsRoles) GetSystemAccountsAccountIDAssignedRoles(ctx context.Context, accountID string, filter *operations.GetSystemAccountsAccountIDAssignedRolesQueryParamFilter, opts ...operations.Option) (*operations.GetSystemAccountsAccountIDAssignedRolesResponse, error) {
 	request := operations.GetSystemAccountsAccountIDAssignedRolesRequest{

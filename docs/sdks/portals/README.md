@@ -9,7 +9,7 @@ APIs related to configuration of Konnect Developer Portals.
 
 * [ListPortals](#listportals) - List Portals
 * [CreatePortal](#createportal) - Create Portal
-* [GetPortal](#getportal) - Fetch Portal
+* [GetPortal](#getportal) - Get a Portal
 * [UpdatePortal](#updateportal) - Update Portal
 * [DeletePortal](#deleteportal) - Delete Portal
 

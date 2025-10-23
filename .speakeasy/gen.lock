@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 1e20553d7927f3106cafdcde5f942a5e
-  docVersion: 3.0.28
-  speakeasyVersion: 1.637.0
-  generationVersion: 2.727.4
-  releaseVersion: 0.10.2
-  configChecksum: a57da93a5e21b7a80dbc97cc8817b17a
+  docChecksum: 5f91eb222ddd61ed10184276618b45c9
+  docVersion: 3.0.29
+  speakeasyVersion: 1.638.1
+  generationVersion: 2.729.2
+  releaseVersion: 0.11.0
+  configChecksum: 4377dbfe8a77411687db6b69707753f0
 features:
   go:
     acceptHeaders: 2.81.2
@@ -30,7 +30,8 @@ features:
     methodServerURLs: 2.82.1
     nameOverrides: 2.81.2
     nullables: 0.2.1
-    pagination: 2.82.4
+    openEnums: 0.1.0
+    pagination: 2.82.5
     responseFormat: 0.1.2
     retries: 2.84.2
     sdkHooks: 0.2.0
@@ -6639,7 +6640,7 @@ examples:
           tags: "tag1,tag2"
       responses:
         "200":
-          application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}]}
+          application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "username": "darius"}]}
         "401":
           application/json: {"message": "<value>", "status": 101752}
     DuplicateApiKey:
@@ -6690,7 +6691,7 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       responses:
         "200":
-          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "username": "darius"}
         "401":
           application/json: {"message": "<value>", "status": 944690}
     DuplicateApiKey:
@@ -6739,7 +6740,7 @@ examples:
           tags: "tag1,tag2"
       responses:
         "200":
-          application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}]}
+          application/json: {"data": [{"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "username": "darius"}]}
   create-basic-auth-with-consumer:
     "":
       parameters:
@@ -6760,7 +6761,7 @@ examples:
         application/json: {"id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}
       responses:
         "201":
-          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "username": "darius"}
   delete-basic-auth-with-consumer:
     "":
       parameters:
@@ -6792,7 +6793,7 @@ examples:
           BasicAuthId: "80db1b58-ca7c-4d21-b92a-64eb07725872"
       responses:
         "200":
-          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "username": "darius"}
   upsert-basic-auth-with-consumer:
     "":
       parameters:
@@ -6815,7 +6816,7 @@ examples:
         application/json: {"id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}
       responses:
         "200":
-          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "password": "hashedsoopersecretvalue", "username": "darius"}
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "username": "darius"}
   list-ca_certificate:
     "":
       parameters:
@@ -11918,7 +11919,7 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           UpstreamIdForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
       requestBody:
-        application/json: {"failover": true, "id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "weight": 100}
+        application/json: {"failover": false, "id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "weight": 100}
       responses:
         "201":
           application/json: {"failover": false, "id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "upstream": {"id": "5f1d7e76-2fed-4806-a6af-869984f025cb"}, "weight": 100}
@@ -11973,7 +11974,7 @@ examples:
           UpstreamIdForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
           TargetId: "5a078780-5d4c-4aae-984a-bdc6f52113d8"
       requestBody:
-        application/json: {"failover": true, "id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "weight": 100}
+        application/json: {"failover": false, "id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "weight": 100}
       responses:
         "200":
           application/json: {"failover": false, "id": "089292a7-ba3d-4d88-acf0-97b4b2e2621a", "target": "203.0.113.42", "upstream": {"id": "5f1d7e76-2fed-4806-a6af-869984f025cb"}, "weight": 100}
@@ -24027,7 +24028,7 @@ examples:
           portalId: "f32d905a-ed33-46a3-a093-d8f536af9a8a"
       responses:
         "200":
-          application/json: {"hostname": "diligent-executor.name", "enabled": false, "ssl": {"domain_verification_method": "http", "verification_status": "verified"}, "cname_status": "verified", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"hostname": "diligent-executor.name", "enabled": false, "ssl": {"domain_verification_method": "http", "verification_status": "verified", "uploaded_at": "2022-11-04T20:10:06.927Z", "expires_at": "2022-11-04T20:10:06.927Z"}, "cname_status": "verified", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -24073,7 +24074,7 @@ examples:
         application/json: {"hostname": "lavish-custody.org", "enabled": true, "ssl": {"domain_verification_method": "http"}}
       responses:
         "201":
-          application/json: {"hostname": "live-championship.com", "enabled": true, "ssl": {"domain_verification_method": "http", "verification_status": "error"}, "cname_status": "verified", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"hostname": "live-championship.com", "enabled": true, "ssl": {"domain_verification_method": "http", "verification_status": "error", "uploaded_at": "2022-11-04T20:10:06.927Z", "expires_at": "2022-11-04T20:10:06.927Z"}, "cname_status": "verified", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 643819, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -24129,7 +24130,7 @@ examples:
         application/json: {"enabled": null}
       responses:
         "200":
-          application/json: {"hostname": "bad-dream.biz", "enabled": true, "ssl": {"domain_verification_method": "http", "verification_status": "verified"}, "cname_status": "pending", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"hostname": "bad-dream.biz", "enabled": true, "ssl": {"domain_verification_method": "http", "verification_status": "verified", "uploaded_at": "2022-11-04T20:10:06.927Z", "expires_at": "2022-11-04T20:10:06.927Z"}, "cname_status": "pending", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 93338, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "source": "body", "reason": "is a required field"}]}
         "401":

@@ -538,7 +538,7 @@ func (s *SystemAccounts) PostSystemAccounts(ctx context.Context, request *compon
 
 }
 
-// GetSystemAccountsID - Fetch System Account
+// GetSystemAccountsID - Get a System Account
 // Returns the system account (SA) for the SA ID specified as a path parameter.
 func (s *SystemAccounts) GetSystemAccountsID(ctx context.Context, accountID string, opts ...operations.Option) (*operations.GetSystemAccountsIDResponse, error) {
 	request := operations.GetSystemAccountsIDRequest{

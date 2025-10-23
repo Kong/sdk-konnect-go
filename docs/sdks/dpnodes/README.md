@@ -7,9 +7,9 @@ DP Nodes
 
 ### Available Operations
 
-* [GetExpectedConfigHash](#getexpectedconfighash) - Fetch Expected Config Hash
+* [GetExpectedConfigHash](#getexpectedconfighash) - Get an Expected Config Hash
 * [ListDataplaneNodes](#listdataplanenodes) - List Data Plane Node Records
-* [GetNodesNodeID](#getnodesnodeid) - Fetch Data Plane Node Record
+* [GetNodesNodeID](#getnodesnodeid) - Get a Data Plane Node Record
 * [DeleteNodesNodeID](#deletenodesnodeid) - Delete Data Plane Node Record
 * [GetNodesEol](#getnodeseol) - List End-of-Life Data Plane Node Records
 

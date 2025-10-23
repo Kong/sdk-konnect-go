@@ -6,7 +6,7 @@
 ### Available Operations
 
 * [ValidateEntitySchema](#validateentityschema) - Validate entity schema
-* [FetchPartialSchema](#fetchpartialschema) - Fetch partial schema
+* [FetchPartialSchema](#fetchpartialschema) - Get partial schema
 
 ## ValidateEntitySchema
 

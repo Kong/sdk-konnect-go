@@ -260,7 +260,7 @@ func (s *Users) ListUsers(ctx context.Context, request operations.ListUsersReque
 
 }
 
-// GetUser - Fetch User
+// GetUser - Get a User
 // Returns the user object for the user ID specified as a path parameter.
 func (s *Users) GetUser(ctx context.Context, userID string, opts ...operations.Option) (*operations.GetUserResponse, error) {
 	request := operations.GetUserRequest{
