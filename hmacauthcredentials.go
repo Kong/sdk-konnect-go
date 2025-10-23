@@ -636,7 +636,7 @@ func (s *HMACAuthCredentials) DeleteHmacAuthWithConsumer(ctx context.Context, re
 
 }
 
-// GetHmacAuthWithConsumer - Fetch a HMAC-auth credential associated with a Consumer
+// GetHmacAuthWithConsumer - Get a HMAC-auth credential associated with a Consumer
 // Get a HMAC-auth credential associated with a Consumer using ID.
 func (s *HMACAuthCredentials) GetHmacAuthWithConsumer(ctx context.Context, request operations.GetHmacAuthWithConsumerRequest, opts ...operations.Option) (*operations.GetHmacAuthWithConsumerResponse, error) {
 	o := operations.Options{}
@@ -1285,7 +1285,7 @@ func (s *HMACAuthCredentials) ListHmacAuth(ctx context.Context, request operatio
 
 }
 
-// GetHmacAuth - Fetch a HMAC-auth credential
+// GetHmacAuth - Get a HMAC-auth credential
 // Get a HMAC-auth credential using ID.
 func (s *HMACAuthCredentials) GetHmacAuth(ctx context.Context, hmacAuthID string, controlPlaneID string, opts ...operations.Option) (*operations.GetHmacAuthResponse, error) {
 	request := operations.GetHmacAuthRequest{

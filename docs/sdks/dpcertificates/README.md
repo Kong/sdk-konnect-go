@@ -9,7 +9,7 @@ DP Certificates
 
 * [ListDpClientCertificates](#listdpclientcertificates) - List DP Client Certificates
 * [CreateDataplaneCertificate](#createdataplanecertificate) - Pin New DP Client Certificate
-* [GetDataplaneCertificate](#getdataplanecertificate) - Fetch DP Client Certificate
+* [GetDataplaneCertificate](#getdataplanecertificate) - Get a DP Client Certificate
 * [DeleteDataplaneCertificate](#deletedataplanecertificate) - Delete DP Client Certificate
 
 ## ListDpClientCertificates

@@ -9,7 +9,7 @@ APIs related to Konnect Developer Portal Custom Snippets.
 
 * [ListPortalSnippets](#listportalsnippets) - List Snippets
 * [CreatePortalSnippet](#createportalsnippet) - Create Snippet
-* [GetPortalSnippet](#getportalsnippet) - Fetch Snippet
+* [GetPortalSnippet](#getportalsnippet) - Get a Snippet
 * [UpdatePortalSnippet](#updateportalsnippet) - Update Snippet
 * [DeletePortalSnippet](#deleteportalsnippet) - Delete Snippet
 

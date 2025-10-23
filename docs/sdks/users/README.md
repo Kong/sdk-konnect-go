@@ -6,7 +6,7 @@
 ### Available Operations
 
 * [ListUsers](#listusers) - List Users
-* [GetUser](#getuser) - Fetch User
+* [GetUser](#getuser) - Get a User
 * [UpdateUser](#updateuser) - Update User
 * [DeleteUser](#deleteuser) - Delete User
 

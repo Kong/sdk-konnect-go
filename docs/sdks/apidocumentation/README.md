@@ -7,7 +7,7 @@
 
 * [CreateAPIDocument](#createapidocument) - Create API Document
 * [ListAPIDocuments](#listapidocuments) - List API Documents
-* [FetchAPIDocument](#fetchapidocument) - Fetch API Document
+* [FetchAPIDocument](#fetchapidocument) - Get an API Document
 * [UpdateAPIDocument](#updateapidocument) - Update API Document
 * [DeleteAPIDocument](#deleteapidocument) - Delete API Documentation
 * [MoveAPIDocument](#moveapidocument) - Move API Documentation

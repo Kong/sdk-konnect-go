@@ -7,13 +7,13 @@
 
 * [GetAuthenticationSettings](#getauthenticationsettings) - Get Auth Settings
 * [UpdateAuthenticationSettings](#updateauthenticationsettings) - Update Auth Settings
-* [GetIdpConfiguration](#getidpconfiguration) - Fetch IdP Configuration
+* [GetIdpConfiguration](#getidpconfiguration) - Get the IdP Configuration
 * [UpdateIdpConfiguration](#updateidpconfiguration) - Update IdP Configuration
-* [GetTeamGroupMappings](#getteamgroupmappings) - Fetch Team Group Mappings
+* [GetTeamGroupMappings](#getteamgroupmappings) - Get a Team Group Mappings
 * [PatchTeamGroupMappings](#patchteamgroupmappings) - Patch Mappings by Team ID
 * [UpdateIdpTeamMappings](#updateidpteammappings) - Update Team Mappings
-* [GetIdpTeamMappings](#getidpteammappings) - Fetch Team Mapping
-* [GetIdentityProviders](#getidentityproviders) - Retrieve Identity Providers
+* [GetIdpTeamMappings](#getidpteammappings) - Get a Team Mapping
+* [GetIdentityProviders](#getidentityproviders) - List Identity Providers
 * [CreateIdentityProvider](#createidentityprovider) - Create Identity Provider
 * [GetIdentityProvider](#getidentityprovider) - Get Identity Provider
 * [UpdateIdentityProvider](#updateidentityprovider) - Update Identity Provider

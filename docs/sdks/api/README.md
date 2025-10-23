@@ -8,7 +8,7 @@
 * [CreateAPI](#createapi) - Create API
 * [ListApis](#listapis) - List APIs
 * [ListApisComputed](#listapiscomputed) - List APIs computed
-* [FetchAPI](#fetchapi) - Fetch API
+* [FetchAPI](#fetchapi) - Get an API
 * [UpdateAPI](#updateapi) - Update API
 * [DeleteAPI](#deleteapi) - Delete API
 
@@ -231,7 +231,7 @@ func main() {
 
 ## FetchAPI
 
-Fetches an API.
+Get an API.
 
 ### Example Usage
 

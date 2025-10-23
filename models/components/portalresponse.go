@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
@@ -20,21 +18,6 @@ const (
 func (e PortalResponseDefaultAPIVisibility) ToPointer() *PortalResponseDefaultAPIVisibility {
 	return &e
 }
-func (e *PortalResponseDefaultAPIVisibility) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "public":
-		fallthrough
-	case "private":
-		*e = PortalResponseDefaultAPIVisibility(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for PortalResponseDefaultAPIVisibility: %v", v)
-	}
-}
 
 // PortalResponseDefaultPageVisibility - The default visibility of pages in the portal. If set to `public`, newly created pages are visible to unauthenticated developers. If set to `private`, newly created pages are hidden from unauthenticated developers.
 type PortalResponseDefaultPageVisibility string
@@ -46,21 +29,6 @@ const (
 
 func (e PortalResponseDefaultPageVisibility) ToPointer() *PortalResponseDefaultPageVisibility {
 	return &e
-}
-func (e *PortalResponseDefaultPageVisibility) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "public":
-		fallthrough
-	case "private":
-		*e = PortalResponseDefaultPageVisibility(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for PortalResponseDefaultPageVisibility: %v", v)
-	}
 }
 
 // PortalResponse - Details about a portal.

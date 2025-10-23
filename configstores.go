@@ -603,7 +603,7 @@ func (s *ConfigStores) CreateConfigStore(ctx context.Context, controlPlaneID str
 
 }
 
-// GetConfigStore - Fetch Config Store
+// GetConfigStore - Get a Config Store
 // Returns a Config Store
 func (s *ConfigStores) GetConfigStore(ctx context.Context, controlPlaneID string, configStoreID string, opts ...operations.Option) (*operations.GetConfigStoreResponse, error) {
 	request := operations.GetConfigStoreRequest{

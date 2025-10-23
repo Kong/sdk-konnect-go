@@ -7,7 +7,7 @@
 
 * [ListAPIImplementations](#listapiimplementations) - List API Implementations
 * [CreateAPIImplementation](#createapiimplementation) - Create API Implementation
-* [FetchAPIImplementation](#fetchapiimplementation) - Fetch API Implementation
+* [FetchAPIImplementation](#fetchapiimplementation) - Get an API Implementation
 * [DeleteAPIImplementation](#deleteapiimplementation) - Delete API Implementation
 
 ## ListAPIImplementations

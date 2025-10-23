@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 // InstanceTypeName - Instance type name to indicate capacity.
 type InstanceTypeName string
 
@@ -18,21 +13,4 @@ const (
 
 func (e InstanceTypeName) ToPointer() *InstanceTypeName {
 	return &e
-}
-func (e *InstanceTypeName) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "small":
-		fallthrough
-	case "medium":
-		fallthrough
-	case "large":
-		*e = InstanceTypeName(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for InstanceTypeName: %v", v)
-	}
 }

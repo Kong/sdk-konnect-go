@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 // EntityType - The type of entity that is being published. Can be either an API or an API Package.
 type EntityType string
 
@@ -17,19 +12,4 @@ const (
 
 func (e EntityType) ToPointer() *EntityType {
 	return &e
-}
-func (e *EntityType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "api":
-		fallthrough
-	case "api_package":
-		*e = EntityType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for EntityType: %v", v)
-	}
 }

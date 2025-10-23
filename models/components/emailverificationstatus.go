@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 // EmailVerificationStatus - Specifies the status of the mail domain verification
 type EmailVerificationStatus string
 
@@ -20,25 +15,4 @@ const (
 
 func (e EmailVerificationStatus) ToPointer() *EmailVerificationStatus {
 	return &e
-}
-func (e *EmailVerificationStatus) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "pending":
-		fallthrough
-	case "success":
-		fallthrough
-	case "failed":
-		fallthrough
-	case "temporary_failure":
-		fallthrough
-	case "not_started":
-		*e = EmailVerificationStatus(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for EmailVerificationStatus: %v", v)
-	}
 }

@@ -646,7 +646,7 @@ func (s *APIVersion) ListAPIVersions(ctx context.Context, request operations.Lis
 
 }
 
-// FetchAPIVersion - Fetch API Version
+// FetchAPIVersion - Get an API Version
 // Fetches the version (OpenAPI or AsyncAPI) of an API.
 func (s *APIVersion) FetchAPIVersion(ctx context.Context, apiID string, versionID string, opts ...operations.Option) (*operations.FetchAPIVersionResponse, error) {
 	request := operations.FetchAPIVersionRequest{

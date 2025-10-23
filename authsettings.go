@@ -511,7 +511,7 @@ func (s *AuthSettings) UpdateAuthenticationSettings(ctx context.Context, request
 
 }
 
-// GetIdpConfiguration - Fetch IdP Configuration
+// GetIdpConfiguration - Get the IdP Configuration
 // Fetch the IdP configuration.
 func (s *AuthSettings) GetIdpConfiguration(ctx context.Context, opts ...operations.Option) (*operations.GetIdpConfigurationResponse, error) {
 	o := operations.Options{}
@@ -1054,7 +1054,7 @@ func (s *AuthSettings) UpdateIdpConfiguration(ctx context.Context, request *comp
 
 }
 
-// GetTeamGroupMappings - Fetch Team Group Mappings
+// GetTeamGroupMappings - Get a Team Group Mappings
 // Retrieves the mappings between Konnect Teams and Identity Provider Groups.
 // Returns a 400 error if an Identity Provider has not yet been configured.
 func (s *AuthSettings) GetTeamGroupMappings(ctx context.Context, pageSize *int64, pageNumber *int64, opts ...operations.Option) (*operations.GetTeamGroupMappingsResponse, error) {
@@ -1905,7 +1905,7 @@ func (s *AuthSettings) UpdateIdpTeamMappings(ctx context.Context, request *compo
 
 }
 
-// GetIdpTeamMappings - Fetch Team Mapping
+// GetIdpTeamMappings - Get a Team Mapping
 // Fetch the IdP group to Konnect team mapping.
 func (s *AuthSettings) GetIdpTeamMappings(ctx context.Context, pageSize *int64, pageNumber *int64, opts ...operations.Option) (*operations.GetIdpTeamMappingsResponse, error) {
 	request := operations.GetIdpTeamMappingsRequest{
@@ -2202,7 +2202,7 @@ func (s *AuthSettings) GetIdpTeamMappings(ctx context.Context, pageSize *int64, 
 
 }
 
-// GetIdentityProviders - Retrieve Identity Providers
+// GetIdentityProviders - List Identity Providers
 // Retrieves the identity providers available within the organization. This operation provides information about
 // various identity providers for SAML or OIDC authentication integrations.
 func (s *AuthSettings) GetIdentityProviders(ctx context.Context, filter *operations.QueryParamFilter, opts ...operations.Option) (*operations.GetIdentityProvidersResponse, error) {

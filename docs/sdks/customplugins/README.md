@@ -8,7 +8,7 @@
 * [ListCustomPlugin](#listcustomplugin) - List all CustomPlugins
 * [CreateCustomPlugin](#createcustomplugin) - Create a new CustomPlugin
 * [DeleteCustomPlugin](#deletecustomplugin) - Delete a CustomPlugin
-* [GetCustomPlugin](#getcustomplugin) - Fetch a CustomPlugin
+* [GetCustomPlugin](#getcustomplugin) - Get a CustomPlugin
 * [UpsertCustomPlugin](#upsertcustomplugin) - Upsert a CustomPlugin
 
 ## ListCustomPlugin

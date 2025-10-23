@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -23,31 +21,6 @@ const (
 
 func (e PortalAssignRoleRequestEntityRegion) ToPointer() *PortalAssignRoleRequestEntityRegion {
 	return &e
-}
-func (e *PortalAssignRoleRequestEntityRegion) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "us":
-		fallthrough
-	case "eu":
-		fallthrough
-	case "au":
-		fallthrough
-	case "me":
-		fallthrough
-	case "in":
-		fallthrough
-	case "sg":
-		fallthrough
-	case "*":
-		*e = PortalAssignRoleRequestEntityRegion(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for PortalAssignRoleRequestEntityRegion: %v", v)
-	}
 }
 
 // PortalAssignRoleRequest - An assigned role associates a service and an action to a team.

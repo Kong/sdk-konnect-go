@@ -324,7 +324,7 @@ func (s *PortalDevelopers) ListPortalDevelopers(ctx context.Context, request ope
 
 }
 
-// GetDeveloper - Fetch Developer
+// GetDeveloper - Get a Developer
 // Returns information about a single developer in this portal. Each developer manages a set applications, providing them credentials to access registered APIs. Developer registration access can be limited to specific APIs using RBAC.
 func (s *PortalDevelopers) GetDeveloper(ctx context.Context, portalID string, developerID string, opts ...operations.Option) (*operations.GetDeveloperResponse, error) {
 	request := operations.GetDeveloperRequest{

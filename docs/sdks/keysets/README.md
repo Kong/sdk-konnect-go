@@ -11,7 +11,7 @@ A JSON Web key set. Key sets are the preferred way to expose keys to plugins bec
 * [ListKeySet](#listkeyset) - List all KeySets
 * [CreateKeySet](#createkeyset) - Create a new KeySet
 * [DeleteKeySet](#deletekeyset) - Delete a KeySet
-* [GetKeySet](#getkeyset) - Fetch a KeySet
+* [GetKeySet](#getkeyset) - Get a KeySet
 * [UpsertKeySet](#upsertkeyset) - Upsert a KeySet
 
 ## ListKeySet

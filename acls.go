@@ -260,7 +260,7 @@ func (s *ACLs) ListACL(ctx context.Context, request operations.ListACLRequest, o
 
 }
 
-// GetACL - Fetch an ACL
+// GetACL - Get an ACL
 // Get an ACL using ID.
 func (s *ACLs) GetACL(ctx context.Context, aclID string, controlPlaneID string, opts ...operations.Option) (*operations.GetACLResponse, error) {
 	request := operations.GetACLRequest{
@@ -1099,7 +1099,7 @@ func (s *ACLs) DeleteACLWithConsumer(ctx context.Context, request operations.Del
 
 }
 
-// GetACLWithConsumer - Fetch an ACL associated with a Consumer
+// GetACLWithConsumer - Get an ACL associated with a Consumer
 // Get an ACL associated with a Consumer using ID.
 func (s *ACLs) GetACLWithConsumer(ctx context.Context, request operations.GetACLWithConsumerRequest, opts ...operations.Option) (*operations.GetACLWithConsumerResponse, error) {
 	o := operations.Options{}

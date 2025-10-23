@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 type EntityTypes string
 
 const (
@@ -20,27 +15,4 @@ const (
 
 func (e EntityTypes) ToPointer() *EntityTypes {
 	return &e
-}
-func (e *EntityTypes) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "billing-invoice":
-		fallthrough
-	case "access-token":
-		fallthrough
-	case "webhook":
-		fallthrough
-	case "dev-portal":
-		fallthrough
-	case "dataplane-group":
-		fallthrough
-	case "dataplane":
-		*e = EntityTypes(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for EntityTypes: %v", v)
-	}
 }

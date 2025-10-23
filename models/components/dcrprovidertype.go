@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 // DcrProviderType - The type of DCR provider. Can be one of the following - auth0, azureAd, curity, okta, http
 type DcrProviderType string
 
@@ -20,25 +15,4 @@ const (
 
 func (e DcrProviderType) ToPointer() *DcrProviderType {
 	return &e
-}
-func (e *DcrProviderType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "auth0":
-		fallthrough
-	case "azureAd":
-		fallthrough
-	case "curity":
-		fallthrough
-	case "okta":
-		fallthrough
-	case "http":
-		*e = DcrProviderType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for DcrProviderType: %v", v)
-	}
 }

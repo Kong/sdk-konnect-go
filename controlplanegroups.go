@@ -30,7 +30,7 @@ func newControlPlaneGroups(rootSDK *SDK, sdkConfig config.SDKConfiguration, hook
 	}
 }
 
-// GetControlPlanesIDGroupMemberStatus - Control Plane Group Member Status
+// GetControlPlanesIDGroupMemberStatus - Get Control Plane Group Member Status
 // Determines the group membership status of a control plane.
 func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberStatus(ctx context.Context, id string, opts ...operations.Option) (*operations.GetControlPlanesIDGroupMemberStatusResponse, error) {
 	request := operations.GetControlPlanesIDGroupMemberStatusRequest{

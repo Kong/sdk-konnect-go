@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 // Visibility - Whether a menu item is public or private. Private menu items are only accessible to authenticated users.
 type Visibility string
 
@@ -17,21 +12,6 @@ const (
 
 func (e Visibility) ToPointer() *Visibility {
 	return &e
-}
-func (e *Visibility) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "public":
-		fallthrough
-	case "private":
-		*e = Visibility(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for Visibility: %v", v)
-	}
 }
 
 type PortalMenuItem struct {

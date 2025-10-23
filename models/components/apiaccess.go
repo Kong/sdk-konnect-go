@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 // APIAccess - Type of API access data-plane groups will support for a configuration.
 type APIAccess string
 
@@ -18,21 +13,4 @@ const (
 
 func (e APIAccess) ToPointer() *APIAccess {
 	return &e
-}
-func (e *APIAccess) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "private":
-		fallthrough
-	case "public":
-		fallthrough
-	case "private+public":
-		*e = APIAccess(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for APIAccess: %v", v)
-	}
 }

@@ -581,7 +581,7 @@ func (s *DCRProviders) ListDcrProviders(ctx context.Context, request operations.
 
 }
 
-// GetDcrProvider - Fetch DCR provider
+// GetDcrProvider - Get a DCR provider
 // Returns a DCR provider.
 func (s *DCRProviders) GetDcrProvider(ctx context.Context, dcrProviderID string, opts ...operations.Option) (*operations.GetDcrProviderResponse, error) {
 	request := operations.GetDcrProviderRequest{

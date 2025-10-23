@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -23,31 +21,6 @@ const (
 
 func (e AssignedRoleEntityRegion) ToPointer() *AssignedRoleEntityRegion {
 	return &e
-}
-func (e *AssignedRoleEntityRegion) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "us":
-		fallthrough
-	case "eu":
-		fallthrough
-	case "au":
-		fallthrough
-	case "me":
-		fallthrough
-	case "in":
-		fallthrough
-	case "sg":
-		fallthrough
-	case "*":
-		*e = AssignedRoleEntityRegion(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AssignedRoleEntityRegion: %v", v)
-	}
 }
 
 // AssignedRole - An assigned role is a role that has been assigned to a user or team.

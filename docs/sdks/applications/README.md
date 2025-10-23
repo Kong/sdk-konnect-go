@@ -7,9 +7,9 @@ APIs related to Konnect Developer Portal Applications.
 
 ### Available Operations
 
-* [GetApplicationUnscoped](#getapplicationunscoped) - Fetch Application
+* [GetApplicationUnscoped](#getapplicationunscoped) - Get an Application
 * [ListApplications](#listapplications) - List Applications
-* [GetApplication](#getapplication) - Fetch Application by Portal
+* [GetApplication](#getapplication) - Get an Application by Portal
 * [DeleteApplication](#deleteapplication) - Delete Application by Portal
 * [ListDevelopersByApplication](#listdevelopersbyapplication) - List Developers by Application
 

@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -38,63 +36,6 @@ const (
 
 func (e JWTWithoutParentsAlgorithm) ToPointer() *JWTWithoutParentsAlgorithm {
 	return &e
-}
-func (e *JWTWithoutParentsAlgorithm) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "ES256":
-		fallthrough
-	case "ES256K":
-		fallthrough
-	case "ES384":
-		fallthrough
-	case "ES512":
-		fallthrough
-	case "ESB256":
-		fallthrough
-	case "ESB320":
-		fallthrough
-	case "ESB384":
-		fallthrough
-	case "ESB512":
-		fallthrough
-	case "ESP256":
-		fallthrough
-	case "ESP384":
-		fallthrough
-	case "ESP512":
-		fallthrough
-	case "Ed25519":
-		fallthrough
-	case "Ed448":
-		fallthrough
-	case "EdDSA":
-		fallthrough
-	case "HS256":
-		fallthrough
-	case "HS384":
-		fallthrough
-	case "HS512":
-		fallthrough
-	case "PS256":
-		fallthrough
-	case "PS384":
-		fallthrough
-	case "PS512":
-		fallthrough
-	case "RS256":
-		fallthrough
-	case "RS384":
-		fallthrough
-	case "RS512":
-		*e = JWTWithoutParentsAlgorithm(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for JWTWithoutParentsAlgorithm: %v", v)
-	}
 }
 
 type JWTWithoutParentsConsumer struct {

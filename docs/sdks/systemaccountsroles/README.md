@@ -5,7 +5,7 @@
 
 ### Available Operations
 
-* [GetSystemAccountsAccountIDAssignedRoles](#getsystemaccountsaccountidassignedroles) - Fetch Assigned Roles for System Account
+* [GetSystemAccountsAccountIDAssignedRoles](#getsystemaccountsaccountidassignedroles) - List Assigned Roles for System Account
 * [PostSystemAccountsAccountIDAssignedRoles](#postsystemaccountsaccountidassignedroles) - Create Assigned Role for System Account
 * [DeleteSystemAccountsAccountIDAssignedRolesRoleID](#deletesystemaccountsaccountidassignedrolesroleid) - Delete Assigned Role from System Account
 

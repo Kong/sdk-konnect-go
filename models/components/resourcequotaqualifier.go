@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 // ResourceQuotaQualifier - Enumeration of resources available for quota enforcement.
 type ResourceQuotaQualifier string
 
@@ -19,23 +14,4 @@ const (
 
 func (e ResourceQuotaQualifier) ToPointer() *ResourceQuotaQualifier {
 	return &e
-}
-func (e *ResourceQuotaQualifier) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "count/provider-accounts.per-provider":
-		fallthrough
-	case "count/networks.not-offline":
-		fallthrough
-	case "count/data-planes-estimate":
-		fallthrough
-	case "count/serverless-data-planes-estimate":
-		*e = ResourceQuotaQualifier(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ResourceQuotaQualifier: %v", v)
-	}
 }

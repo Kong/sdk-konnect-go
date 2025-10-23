@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 // CustomDomainOnlinePropertyStatus - Set of available statuses for the online properties of a custom domain.
 type CustomDomainOnlinePropertyStatus string
 
@@ -17,19 +12,4 @@ const (
 
 func (e CustomDomainOnlinePropertyStatus) ToPointer() *CustomDomainOnlinePropertyStatus {
 	return &e
-}
-func (e *CustomDomainOnlinePropertyStatus) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "verified":
-		fallthrough
-	case "unverified":
-		*e = CustomDomainOnlinePropertyStatus(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CustomDomainOnlinePropertyStatus: %v", v)
-	}
 }

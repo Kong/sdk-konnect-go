@@ -9,7 +9,7 @@ Config Stores
 
 * [ListConfigStores](#listconfigstores) - List all config stores for a control plane
 * [CreateConfigStore](#createconfigstore) - Create Config Store
-* [GetConfigStore](#getconfigstore) - Fetch Config Store
+* [GetConfigStore](#getconfigstore) - Get a Config Store
 * [UpdateConfigStore](#updateconfigstore) - Update an individual Config Store
 * [DeleteConfigStore](#deleteconfigstore) - Delete Config Store
 

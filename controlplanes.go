@@ -750,7 +750,7 @@ func (s *ControlPlanes) CreateControlPlane(ctx context.Context, request componen
 
 }
 
-// GetControlPlane - Fetch Control Plane
+// GetControlPlane - Get a Control Plane
 // Returns information about an individual control plane.
 func (s *ControlPlanes) GetControlPlane(ctx context.Context, id string, opts ...operations.Option) (*operations.GetControlPlaneResponse, error) {
 	request := operations.GetControlPlaneRequest{

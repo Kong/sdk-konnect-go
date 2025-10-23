@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -131,37 +129,6 @@ const (
 
 func (e PluginWithoutParentsProtocols) ToPointer() *PluginWithoutParentsProtocols {
 	return &e
-}
-func (e *PluginWithoutParentsProtocols) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "grpc":
-		fallthrough
-	case "grpcs":
-		fallthrough
-	case "http":
-		fallthrough
-	case "https":
-		fallthrough
-	case "tcp":
-		fallthrough
-	case "tls":
-		fallthrough
-	case "tls_passthrough":
-		fallthrough
-	case "udp":
-		fallthrough
-	case "ws":
-		fallthrough
-	case "wss":
-		*e = PluginWithoutParentsProtocols(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for PluginWithoutParentsProtocols: %v", v)
-	}
 }
 
 // PluginWithoutParentsRoute - If set, the plugin will only activate when receiving requests via the specified route. Leave unset for the plugin to activate regardless of the Route being used.

@@ -716,7 +716,7 @@ func (s *Services) DeleteService(ctx context.Context, controlPlaneID string, ser
 
 }
 
-// GetService - Fetch a Service
+// GetService - Get a Service
 // Get a Service using ID or name.
 func (s *Services) GetService(ctx context.Context, serviceID string, controlPlaneID string, opts ...operations.Option) (*operations.GetServiceResponse, error) {
 	request := operations.GetServiceRequest{

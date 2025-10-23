@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
@@ -20,21 +18,6 @@ const (
 func (e ListPortalsResponseDefaultAPIVisibility) ToPointer() *ListPortalsResponseDefaultAPIVisibility {
 	return &e
 }
-func (e *ListPortalsResponseDefaultAPIVisibility) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "public":
-		fallthrough
-	case "private":
-		*e = ListPortalsResponseDefaultAPIVisibility(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ListPortalsResponseDefaultAPIVisibility: %v", v)
-	}
-}
 
 // ListPortalsResponseDefaultPageVisibility - The default visibility of pages in the portal. If set to `public`, newly created pages are visible to unauthenticated developers. If set to `private`, newly created pages are hidden from unauthenticated developers.
 type ListPortalsResponseDefaultPageVisibility string
@@ -46,21 +29,6 @@ const (
 
 func (e ListPortalsResponseDefaultPageVisibility) ToPointer() *ListPortalsResponseDefaultPageVisibility {
 	return &e
-}
-func (e *ListPortalsResponseDefaultPageVisibility) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "public":
-		fallthrough
-	case "private":
-		*e = ListPortalsResponseDefaultPageVisibility(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ListPortalsResponseDefaultPageVisibility: %v", v)
-	}
 }
 
 type ListPortalsResponsePortal struct {

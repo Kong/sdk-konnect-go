@@ -637,7 +637,7 @@ func (s *Keys) DeleteKeyWithKeySet(ctx context.Context, request operations.Delet
 
 }
 
-// GetKeyWithKeySet - Fetch a Key associated with a KeySet
+// GetKeyWithKeySet - Get a Key associated with a KeySet
 // Get a Key associated with a KeySet using ID or name.
 func (s *Keys) GetKeyWithKeySet(ctx context.Context, request operations.GetKeyWithKeySetRequest, opts ...operations.Option) (*operations.GetKeyWithKeySetResponse, error) {
 	o := operations.Options{}
@@ -1735,7 +1735,7 @@ func (s *Keys) DeleteKey(ctx context.Context, controlPlaneID string, keyID strin
 
 }
 
-// GetKey - Fetch a Key
+// GetKey - Get a Key
 // Get a Key using ID or name.
 func (s *Keys) GetKey(ctx context.Context, keyID string, controlPlaneID string, opts ...operations.Option) (*operations.GetKeyResponse, error) {
 	request := operations.GetKeyRequest{

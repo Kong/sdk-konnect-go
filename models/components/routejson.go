@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -54,27 +52,6 @@ const (
 func (e HTTPSRedirectStatusCode) ToPointer() *HTTPSRedirectStatusCode {
 	return &e
 }
-func (e *HTTPSRedirectStatusCode) UnmarshalJSON(data []byte) error {
-	var v int64
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case 301:
-		fallthrough
-	case 302:
-		fallthrough
-	case 307:
-		fallthrough
-	case 308:
-		fallthrough
-	case 426:
-		*e = HTTPSRedirectStatusCode(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for HTTPSRedirectStatusCode: %v", v)
-	}
-}
 
 // PathHandling - Controls how the Service path, Route path and requested path are combined when sending a request to the upstream. See above for a detailed description of each behavior.
 type PathHandling string
@@ -86,21 +63,6 @@ const (
 
 func (e PathHandling) ToPointer() *PathHandling {
 	return &e
-}
-func (e *PathHandling) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "v0":
-		fallthrough
-	case "v1":
-		*e = PathHandling(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for PathHandling: %v", v)
-	}
 }
 
 // RouteJSONProtocols - A string representing a protocol, such as HTTP or HTTPS.
@@ -121,37 +83,6 @@ const (
 
 func (e RouteJSONProtocols) ToPointer() *RouteJSONProtocols {
 	return &e
-}
-func (e *RouteJSONProtocols) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "grpc":
-		fallthrough
-	case "grpcs":
-		fallthrough
-	case "http":
-		fallthrough
-	case "https":
-		fallthrough
-	case "tcp":
-		fallthrough
-	case "tls":
-		fallthrough
-	case "tls_passthrough":
-		fallthrough
-	case "udp":
-		fallthrough
-	case "ws":
-		fallthrough
-	case "wss":
-		*e = RouteJSONProtocols(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for RouteJSONProtocols: %v", v)
-	}
 }
 
 // RouteJSONService - The Service this Route is associated to. This is where the Route proxies traffic to.

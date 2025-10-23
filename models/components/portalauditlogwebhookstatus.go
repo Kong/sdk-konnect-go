@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
@@ -20,21 +18,6 @@ const (
 
 func (e WebhookStatus) ToPointer() *WebhookStatus {
 	return &e
-}
-func (e *WebhookStatus) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "active":
-		fallthrough
-	case "inactive":
-		*e = WebhookStatus(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for WebhookStatus: %v", v)
-	}
 }
 
 // PortalAuditLogWebhookStatus - Get response for portal audit log webhook status

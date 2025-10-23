@@ -7,7 +7,7 @@
 
 * [GetSystemAccountIDAccessTokens](#getsystemaccountidaccesstokens) - List System Account Access Tokens
 * [PostSystemAccountsIDAccessTokens](#postsystemaccountsidaccesstokens) - Create System Account Access Token
-* [GetSystemAccountsIDAccessTokensID](#getsystemaccountsidaccesstokensid) - Fetch System Account Access Token
+* [GetSystemAccountsIDAccessTokensID](#getsystemaccountsidaccesstokensid) - Get a System Account Access Token
 * [PatchSystemAccountsIDAccessTokensID](#patchsystemaccountsidaccesstokensid) - Update System Account Access Token
 * [DeleteSystemAccountsIDAccessTokensID](#deletesystemaccountsidaccesstokensid) - Delete System Account Access Token
 

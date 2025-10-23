@@ -13,7 +13,7 @@ The configuration for the health checker is stored in the upstream object, and a
 * [ListUpstream](#listupstream) - List all Upstreams
 * [CreateUpstream](#createupstream) - Create a new Upstream
 * [DeleteUpstream](#deleteupstream) - Delete an Upstream
-* [GetUpstream](#getupstream) - Fetch an Upstream
+* [GetUpstream](#getupstream) - Get an Upstream
 * [UpsertUpstream](#upsertupstream) - Upsert a Upstream
 
 ## ListUpstream

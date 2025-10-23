@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Konnect API - Go SDK
-  version: 3.0.28
+  version: 3.0.29
   description: The Konnect platform API
   contact:
     name: Kong Inc
@@ -1777,7 +1777,7 @@ paths:
       x-speakeasy-entity-operation:
         terraform-resource: GatewayConfigStore#read
         terraform-datasource: null
-      summary: Fetch Config Store
+      summary: Get a Config Store
       description: Returns a Config Store
       operationId: get-config-store
       responses:
@@ -1921,7 +1921,7 @@ paths:
       x-speakeasy-entity-operation:
         terraform-resource: GatewayConfigStoreSecret#read
         terraform-datasource: null
-      summary: Fetch Config Store Secret
+      summary: Get a Config Store Secret
       description: >-
         Returns the secret entity for the Config Store. Secret values once
         stored cannot be retrieved.
@@ -2018,7 +2018,7 @@ paths:
   /v2/control-planes/{controlPlaneId}/core-entities/acls/{ACLId}:
     get:
       operationId: get-acl
-      summary: Fetch an ACL
+      summary: Get an ACL
       description: Get an ACL using ID.
       responses:
         '200':
@@ -2073,7 +2073,7 @@ paths:
   /v2/control-planes/{controlPlaneId}/core-entities/basic-auths/{BasicAuthId}:
     get:
       operationId: get-basic-auth
-      summary: Fetch a Basic-auth credential
+      summary: Get a Basic-auth credential
       description: Get a Basic-auth credential using ID.
       responses:
         '200':
@@ -2163,7 +2163,7 @@ paths:
         - CA Certificates
     get:
       operationId: get-ca_certificate
-      summary: Fetch a CA Certificate
+      summary: Get a CA Certificate
       description: Get a CA Certificate using ID.
       responses:
         '200':
@@ -2275,7 +2275,7 @@ paths:
         - Certificates
     get:
       operationId: get-certificate
-      summary: Fetch a Certificate
+      summary: Get a Certificate
       description: Get a Certificate using ID.
       responses:
         '200':
@@ -2385,7 +2385,7 @@ paths:
         - SNIs
     get:
       operationId: get-sni-with-certificate
-      summary: Fetch an SNI associated with a Certificate
+      summary: Get an SNI associated with a Certificate
       description: Get an SNI associated with a Certificate using ID or name.
       parameters:
         - $ref: '#/components/parameters/CertificateId'
@@ -2498,7 +2498,7 @@ paths:
         - Consumer Groups
     get:
       operationId: get-consumer_group
-      summary: Fetch a Consumer Group
+      summary: Get a Consumer Group
       description: Get a Consumer Group using ID.
       responses:
         '200':
@@ -2644,6 +2644,7 @@ paths:
         required: true
         schema:
           type: string
+        x-speakeasy-name-override: consumer_id
       - $ref: '#/components/parameters/controlPlaneId'
   /v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}/plugins:
     get:
@@ -2715,7 +2716,7 @@ paths:
         - Plugins
     get:
       operationId: get-plugin-with-consumer_group
-      summary: Fetch a Plugin associated with a Consumer Group
+      summary: Get a Plugin associated with a Consumer Group
       description: Get a Plugin associated with a Consumer Group using ID.
       parameters:
         - $ref: '#/components/parameters/ConsumerGroupId'
@@ -2828,7 +2829,7 @@ paths:
         - Consumers
     get:
       operationId: get-consumer
-      summary: Fetch a Consumer
+      summary: Get a Consumer
       description: Get a Consumer using ID or username.
       responses:
         '200':
@@ -3041,7 +3042,7 @@ paths:
         - ACLs
     get:
       operationId: get-acl-with-consumer
-      summary: Fetch an ACL associated with a Consumer
+      summary: Get an ACL associated with a Consumer
       description: Get an ACL associated with a Consumer using ID.
       parameters:
         - $ref: '#/components/parameters/ConsumerIdForNestedEntities'
@@ -3154,7 +3155,7 @@ paths:
         - Basic-auth credentials
     get:
       operationId: get-basic-auth-with-consumer
-      summary: Fetch a Basic-auth credential associated with a Consumer
+      summary: Get a Basic-auth credential associated with a Consumer
       description: Get a Basic-auth credential associated with a Consumer using ID.
       parameters:
         - $ref: '#/components/parameters/ConsumerIdForNestedEntities'
@@ -3269,7 +3270,7 @@ paths:
         - HMAC-auth credentials
     get:
       operationId: get-hmac-auth-with-consumer
-      summary: Fetch a HMAC-auth credential associated with a Consumer
+      summary: Get a HMAC-auth credential associated with a Consumer
       description: Get a HMAC-auth credential associated with a Consumer using ID.
       parameters:
         - $ref: '#/components/parameters/ConsumerIdForNestedEntities'
@@ -3381,7 +3382,7 @@ paths:
         - JWTs
     get:
       operationId: get-jwt-with-consumer
-      summary: Fetch a JWT associated with a Consumer
+      summary: Get a JWT associated with a Consumer
       description: Get a JWT associated with a Consumer using ID.
       parameters:
         - $ref: '#/components/parameters/ConsumerIdForNestedEntities'
@@ -3490,7 +3491,7 @@ paths:
         - API-keys
     get:
       operationId: get-key-auth-with-consumer
-      summary: Fetch an API-key associated with a Consumer
+      summary: Get an API-key associated with a Consumer
       description: Get an API-key associated with a Consumer using ID.
       parameters:
         - $ref: '#/components/parameters/ConsumerIdForNestedEntities'
@@ -3602,7 +3603,7 @@ paths:
         - MTLS-auth credentials
     get:
       operationId: get-mtls-auth-with-consumer
-      summary: Fetch a MTLS-auth credential associated with a Consumer
+      summary: Get a MTLS-auth credential associated with a Consumer
       description: Get a MTLS-auth credential associated with a Consumer using ID.
       parameters:
         - $ref: '#/components/parameters/ConsumerIdForNestedEntities'
@@ -3715,7 +3716,7 @@ paths:
         - Plugins
     get:
       operationId: get-plugin-with-consumer
-      summary: Fetch a Plugin associated with a Consumer
+      summary: Get a Plugin associated with a Consumer
       description: Get a Plugin associated with a Consumer using ID.
       parameters:
         - $ref: '#/components/parameters/ConsumerIdForNestedEntities'
@@ -3840,7 +3841,7 @@ paths:
         - CustomPlugins
     get:
       operationId: get-custom-plugin
-      summary: Fetch a CustomPlugin
+      summary: Get a CustomPlugin
       description: |-
         **Pre-release Endpoint**
         This endpoint is currently in beta and is subject to change.
@@ -3925,7 +3926,7 @@ paths:
   /v2/control-planes/{controlPlaneId}/core-entities/degraphql_routes/{Degraphql_routeId}:
     get:
       operationId: get-degraphql_route
-      summary: Fetch a Degraphql_route
+      summary: Get a Degraphql_route
       description: Get a Degraphql_route using ID or name.
       responses:
         '200':
@@ -3980,7 +3981,7 @@ paths:
   /v2/control-planes/{controlPlaneId}/core-entities/hmac-auths/{HMACAuthId}:
     get:
       operationId: get-hmac-auth
-      summary: Fetch a HMAC-auth credential
+      summary: Get a HMAC-auth credential
       description: Get a HMAC-auth credential using ID.
       responses:
         '200':
@@ -4035,7 +4036,7 @@ paths:
   /v2/control-planes/{controlPlaneId}/core-entities/jwts/{JWTId}:
     get:
       operationId: get-jwt
-      summary: Fetch a JWT
+      summary: Get a JWT
       description: Get a JWT using ID.
       responses:
         '200':
@@ -4090,7 +4091,7 @@ paths:
   /v2/control-planes/{controlPlaneId}/core-entities/key-auths/{KeyAuthId}:
     get:
       operationId: get-key-auth
-      summary: Fetch an API-key
+      summary: Get an API-key
       description: Get an API-key using ID.
       responses:
         '200':
@@ -4179,7 +4180,7 @@ paths:
         - KeySets
     get:
       operationId: get-key-set
-      summary: Fetch a KeySet
+      summary: Get a KeySet
       description: Get a KeySet using ID or name.
       responses:
         '200':
@@ -4288,7 +4289,7 @@ paths:
         - Keys
     get:
       operationId: get-key-with-key-set
-      summary: Fetch a Key associated with a KeySet
+      summary: Get a Key associated with a KeySet
       description: Get a Key associated with a KeySet using ID or name.
       parameters:
         - $ref: '#/components/parameters/KeySetId'
@@ -4401,7 +4402,7 @@ paths:
         - Keys
     get:
       operationId: get-key
-      summary: Fetch a Key
+      summary: Get a Key
       description: Get a Key using ID or name.
       responses:
         '200':
@@ -4478,7 +4479,7 @@ paths:
   /v2/control-planes/{controlPlaneId}/core-entities/mtls-auths/{MTLSAuthId}:
     get:
       operationId: get-mtls-auth
-      summary: Fetch a MTLS-auth credential
+      summary: Get a MTLS-auth credential
       description: Get a MTLS-auth credential using ID.
       responses:
         '200':
@@ -4568,7 +4569,7 @@ paths:
         - Partials
     get:
       operationId: get-partial
-      summary: Fetch a Partial
+      summary: Get a Partial
       description: Get a Partial using ID.
       responses:
         '200':
@@ -4707,7 +4708,7 @@ paths:
       x-speakeasy-entity-operation:
         terraform-resource: GatewayCustomPluginSchema#read
         terraform-datasource: null
-      summary: Fetch custom plugin schema
+      summary: Get a custom plugin schema
       responses:
         '200':
           $ref: '#/components/responses/plugin-schemas'
@@ -4833,7 +4834,7 @@ paths:
         - Plugins
     get:
       operationId: get-plugin
-      summary: Fetch a Plugin
+      summary: Get a Plugin
       description: Get a Plugin using ID.
       responses:
         '200':
@@ -4945,7 +4946,7 @@ paths:
         - Routes
     get:
       operationId: get-route
-      summary: Fetch a Route
+      summary: Get a Route
       description: Get a Route using ID or name.
       responses:
         '200':
@@ -5055,7 +5056,7 @@ paths:
         - Plugins
     get:
       operationId: get-plugin-with-route
-      summary: Fetch a Plugin associated with a Route
+      summary: Get a Plugin associated with a Route
       description: Get a Plugin associated with a Route using ID.
       parameters:
         - $ref: '#/components/parameters/RouteId'
@@ -5124,7 +5125,7 @@ paths:
   /v2/control-planes/{controlPlaneId}/core-entities/schemas/partials/{partialType}:
     get:
       operationId: fetch-partial-schema
-      summary: Fetch partial schema
+      summary: Get partial schema
       description: Get the schema for a partial
       responses:
         '200':
@@ -5142,7 +5143,7 @@ paths:
   /v2/control-planes/{controlPlaneId}/core-entities/schemas/plugins/{pluginName}:
     get:
       operationId: fetch-plugin-schema
-      summary: Fetch plugin schema
+      summary: Get plugin schema
       description: Get the schema for a plugin
       responses:
         '200':
@@ -5229,7 +5230,7 @@ paths:
         - Services
     get:
       operationId: get-service
-      summary: Fetch a Service
+      summary: Get a Service
       description: Get a Service using ID or name.
       responses:
         '200':
@@ -5339,7 +5340,7 @@ paths:
         - Degraphql_routes
     get:
       operationId: get-degraphql_route-with-service
-      summary: Fetch a Degraphql_route associated with a Service
+      summary: Get a Degraphql_route associated with a Service
       description: Get a Degraphql_route associated with a Service using ID or name.
       parameters:
         - $ref: '#/components/parameters/ServiceId'
@@ -5452,7 +5453,7 @@ paths:
         - Plugins
     get:
       operationId: get-plugin-with-service
-      summary: Fetch a Plugin associated with a Service
+      summary: Get a Plugin associated with a Service
       description: Get a Plugin associated with a Service using ID.
       parameters:
         - $ref: '#/components/parameters/ServiceId'
@@ -5563,7 +5564,7 @@ paths:
         - Routes
     get:
       operationId: get-route-with-service
-      summary: Fetch a Route associated with a Service
+      summary: Get a Route associated with a Service
       description: Get a Route associated with a Service using ID or name.
       parameters:
         - $ref: '#/components/parameters/ServiceId'
@@ -5676,7 +5677,7 @@ paths:
         - SNIs
     get:
       operationId: get-sni
-      summary: Fetch an SNI
+      summary: Get an SNI
       description: Get an SNI using ID or name.
       responses:
         '200':
@@ -5788,7 +5789,7 @@ paths:
         - Upstreams
     get:
       operationId: get-upstream
-      summary: Fetch an Upstream
+      summary: Get an Upstream
       description: Get an Upstream using ID or name.
       responses:
         '200':
@@ -5898,7 +5899,7 @@ paths:
         - Targets
     get:
       operationId: get-target-with-upstream
-      summary: Fetch a Target associated with an Upstream
+      summary: Get a Target associated with an Upstream
       description: Get a Target associated with an Upstream using ID or target.
       parameters:
         - $ref: '#/components/parameters/UpstreamIdForTarget'
@@ -6013,7 +6014,7 @@ paths:
         - Vaults
     get:
       operationId: get-vault
-      summary: Fetch a Vault
+      summary: Get a Vault
       description: Get a Vault using ID or prefix.
       responses:
         '200':
@@ -6109,7 +6110,7 @@ paths:
       x-speakeasy-entity-operation:
         terraform-resource: GatewayDataPlaneClientCertificate#read
         terraform-datasource: null
-      summary: Fetch DP Client Certificate
+      summary: Get a DP Client Certificate
       tags:
         - DP Certificates
       responses:
@@ -6151,7 +6152,7 @@ paths:
         certificate.
   /v2/control-planes/{controlPlaneId}/expected-config-hash:
     get:
-      summary: Fetch Expected Config Hash
+      summary: Get an Expected Config Hash
       tags:
         - DP Nodes
       responses:
@@ -6188,7 +6189,7 @@ paths:
       - $ref: '#/components/parameters/controlPlaneId'
       - $ref: '#/components/parameters/nodeId'
     get:
-      summary: Fetch Data Plane Node Record
+      summary: Get a Data Plane Node Record
       responses:
         '200':
           $ref: '#/components/responses/get-node'
@@ -6248,7 +6249,7 @@ paths:
       x-speakeasy-entity-operation:
         terraform-resource: GatewayControlPlane#read
         terraform-datasource: null
-      summary: Fetch Control Plane
+      summary: Get a Control Plane
       responses:
         '200':
           $ref: '#/components/responses/RetrieveControlPlaneResponse'
@@ -6331,7 +6332,7 @@ paths:
         required: true
         description: ID of a control plane
     get:
-      summary: Control Plane Group Member Status
+      summary: Get Control Plane Group Member Status
       operationId: get-control-planes-id-group-member-status
       tags:
         - Control Plane Groups
@@ -6569,7 +6570,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/DcrProviderId'
     get:
-      summary: Fetch DCR provider
+      summary: Get a DCR provider
       description: Returns a DCR provider.
       operationId: get-dcr-provider
       responses:
@@ -6803,8 +6804,8 @@ paths:
       x-speakeasy-entity-operation:
         terraform-resource: Api#read
         terraform-datasource: null
-      summary: Fetch API
-      description: Fetches an API.
+      summary: Get an API
+      description: Get an API.
       operationId: fetch-api
       responses:
         '200':
@@ -6935,7 +6936,7 @@ paths:
       x-speakeasy-entity-operation:
         terraform-resource: ApiDocument#read
         terraform-datasource: null
-      summary: Fetch API Document
+      summary: Get an API Document
       description: Returns a document for the API.
       operationId: fetch-api-document
       responses:
@@ -7071,7 +7072,7 @@ paths:
       x-speakeasy-entity-operation:
         terraform-resource: ApiImplementation#read
         terraform-datasource: null
-      summary: Fetch API Implementation
+      summary: Get an API Implementation
       description: Retrieve a gateway implementation for this API
       operationId: fetch-api-implementation
       responses:
@@ -7134,7 +7135,7 @@ paths:
       x-speakeasy-entity-operation:
         terraform-resource: ApiPublication#read
         terraform-datasource: null
-      summary: Fetch Publication
+      summary: Get a Publication
       description: |
         Retrieve an API's publication in a portal.
         If the API is not published to the portal, a 404 response is returned.
@@ -7240,7 +7241,7 @@ paths:
         terraform-resource: ApiSpecification#read
         terraform-datasource: null
       deprecated: true
-      summary: Fetch API Specification
+      summary: Get API Specification
       description: >
         Fetches the specification (OpenAPI or AsyncAPI) of an API.
 
@@ -7381,7 +7382,7 @@ paths:
       x-speakeasy-entity-operation:
         terraform-resource: ApiVersion#read
         terraform-datasource: null
-      summary: Fetch API Version
+      summary: Get an API Version
       description: Fetches the version (OpenAPI or AsyncAPI) of an API.
       operationId: fetch-api-version
       responses:
@@ -7475,7 +7476,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/ApplicationId'
     get:
-      summary: Fetch Application
+      summary: Get an Application
       description: >-
         Returns the configuration of a single application in any portal. If an
         application is linked to a DCR Provider, the `dcr_provider.id` and
@@ -7558,7 +7559,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v3/identity-provider:
     get:
-      summary: Fetch IdP Configuration
+      summary: Get the IdP Configuration
       operationId: get-idp-configuration
       responses:
         '200':
@@ -7597,7 +7598,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v3/identity-provider/team-group-mappings:
     get:
-      summary: Fetch Team Group Mappings
+      summary: Get a Team Group Mappings
       operationId: get-team-group-mappings
       parameters:
         - $ref: '#/components/parameters/PageSize'
@@ -7676,7 +7677,7 @@ paths:
       servers:
         - url: https://global.api.konghq.com/
     get:
-      summary: Fetch Team Mapping
+      summary: Get a Team Mapping
       operationId: get-idp-team-mappings
       parameters:
         - $ref: '#/components/parameters/PageSize'
@@ -7699,7 +7700,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v3/identity-providers:
     get:
-      summary: Retrieve Identity Providers
+      summary: List Identity Providers
       description: >
         Retrieves the identity providers available within the organization. This
         operation provides information about 
@@ -7902,7 +7903,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v3/organizations/me:
     get:
-      summary: Retrieve My Organization
+      summary: Get My Organization
       tags:
         - Me
       responses:
@@ -8010,7 +8011,7 @@ paths:
       x-speakeasy-entity-operation:
         terraform-resource: Portal#read
         terraform-datasource: null
-      summary: Fetch Portal
+      summary: Get a Portal
       description: >-
         Returns the configuration for a single developer portal, including the
         current visibility, access, and domain settings.
@@ -8181,7 +8182,7 @@ paths:
       - $ref: '#/components/parameters/PortalId'
       - $ref: '#/components/parameters/ApplicationId'
     get:
-      summary: Fetch Application by Portal
+      summary: Get an Application by Portal
       description: >-
         Returns the configuration of a single application in this portal. If an
         application is linked to a DCR Provider, the `dcr_provider.id` and
@@ -8304,7 +8305,7 @@ paths:
       - $ref: '#/components/parameters/ApplicationId'
       - $ref: '#/components/parameters/RegistrationId'
     get:
-      summary: Fetch Registration
+      summary: Get a Registration
       description: >-
         Returns information about an application's registration status for a
         particular API.
@@ -8887,7 +8888,7 @@ paths:
       - $ref: '#/components/parameters/PortalId'
       - $ref: '#/components/parameters/DeveloperId'
     get:
-      summary: Fetch Developer
+      summary: Get a Developer
       description: >-
         Returns information about a single developer in this portal. Each
         developer manages a set applications, providing them credentials to
@@ -8985,7 +8986,7 @@ paths:
     get:
       operationId: get-email-config
       description: Retrieve the email config for the portal
-      summary: Retrieve the email config for the portal
+      summary: Get the email config for the portal
       tags:
         - Portal Emails
       responses:
@@ -9070,7 +9071,7 @@ paths:
     get:
       operationId: get-email-delivery
       description: Retrieve the email delivery for the portal
-      summary: Retrieve the email delivery for the portal
+      summary: Get the email delivery for the portal
       deprecated: true
       tags:
         - Portal Emails
@@ -9312,7 +9313,7 @@ paths:
     parameters:
       - $ref: '#/components/parameters/PortalId'
     get:
-      summary: Retrieve Identity Providers
+      summary: List Identity Providers
       description: >-
         **Pre-release Endpoint**
 
@@ -9530,7 +9531,7 @@ paths:
       x-speakeasy-entity-operation:
         terraform-resource: PortalPage#read
         terraform-datasource: null
-      summary: Fetch Page
+      summary: Get a Page
       description: >-
         Returns the configuration of a single custom page for this portal.
         Custom pages can be used to display static content, documentation, or
@@ -9707,7 +9708,7 @@ paths:
       x-speakeasy-entity-operation:
         terraform-resource: PortalSnippet#read
         terraform-datasource: null
-      summary: Fetch Snippet
+      summary: Get a Snippet
       description: >-
         Returns the configuration of a single custom snippet for this portal.
         Custom snippets can be used to display static content, documentation, or
@@ -10292,7 +10293,7 @@ paths:
       x-speakeasy-entity-operation:
         terraform-resource: SystemAccount#read
         terraform-datasource: null
-      summary: Fetch System Account
+      summary: Get a System Account
       tags:
         - System Accounts
       responses:
@@ -10441,7 +10442,7 @@ paths:
       x-speakeasy-entity-operation:
         terraform-resource: SystemAccountAccessToken#read
         terraform-datasource: null
-      summary: Fetch System Account Access Token
+      summary: Get a System Account Access Token
       responses:
         '200':
           $ref: '#/components/responses/SystemAccountAccessTokenSingle'
@@ -10528,7 +10529,7 @@ paths:
         required: true
         description: ID of the system account.
     get:
-      summary: Fetch Assigned Roles for System Account
+      summary: List Assigned Roles for System Account
       responses:
         '200':
           $ref: '#/components/responses/AssignedRoleCollection'
@@ -10728,7 +10729,7 @@ paths:
       x-speakeasy-entity-operation:
         terraform-resource: Team#read
         terraform-datasource: null
-      summary: Fetch Team
+      summary: Get a Team
       responses:
         '200':
           $ref: '#/components/responses/TeamSingle'
@@ -11147,7 +11148,7 @@ paths:
         required: true
         description: The ID of the user being deleted.
     get:
-      summary: Fetch User
+      summary: Get a User
       tags:
         - Users
       responses:
@@ -11333,7 +11334,7 @@ paths:
         - url: https://global.api.konghq.com/
   /v3/users/me:
     get:
-      summary: Retrieve My User Account
+      summary: Get My User Account
       tags:
         - Me
       responses:
@@ -12361,19 +12362,19 @@ components:
       required: true
       schema:
         type: string
-    SNIId:
-      description: ID of the SNI to lookup
-      example: 64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f
-      in: path
-      name: SNIId
-      required: true
-      schema:
-        type: string
     ServiceId:
       description: ID of the Service to lookup
       example: 7fca84d6-7d37-4a74-a7b0-93e576089a41
       in: path
       name: ServiceId
+      required: true
+      schema:
+        type: string
+    SNIId:
+      description: ID of the SNI to lookup
+      example: 64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f
+      in: path
+      name: SNIId
       required: true
       schema:
         type: string
@@ -13892,6 +13893,7 @@ components:
                   - inactive
                   - deleting
                   - deleted
+                x-speakeasy-unknown-values: allow
               retention_period_days:
                 type: integer
                 description: >-
@@ -14599,6 +14601,7 @@ components:
                   - oas2
                   - oas3
                   - asyncapi
+                x-speakeasy-unknown-values: allow
               created_at:
                 $ref: '#/components/schemas/CreatedAt'
               updated_at:
@@ -14699,6 +14702,7 @@ components:
                       - oas3
                       - asyncapi
                     readOnly: true
+                    x-speakeasy-unknown-values: allow
                   validation_messages:
                     type: array
                     description: >-
@@ -15035,6 +15039,7 @@ components:
                       enum:
                         - public
                         - private
+                      x-speakeasy-unknown-values: allow
                     default_page_visibility:
                       type: string
                       description: >-
@@ -15046,6 +15051,7 @@ components:
                       enum:
                         - public
                         - private
+                      x-speakeasy-unknown-values: allow
                     default_application_auth_strategy_id:
                       type: string
                       format: uuid
@@ -15176,6 +15182,7 @@ components:
                 enum:
                   - public
                   - private
+                x-speakeasy-unknown-values: allow
               default_page_visibility:
                 type: string
                 description: >-
@@ -15186,6 +15193,7 @@ components:
                 enum:
                   - public
                   - private
+                x-speakeasy-unknown-values: allow
               default_application_auth_strategy_id:
                 type: string
                 format: uuid
@@ -15380,6 +15388,7 @@ components:
 
                   `inactive` indicates the webhook has been turned off due to
                   failed attempts.
+                x-speakeasy-unknown-values: allow
               webhook_enabled:
                 type: boolean
                 example: true
@@ -15454,6 +15463,7 @@ components:
                   - completed
                   - failed
                 readOnly: true
+                x-speakeasy-unknown-values: allow
               updated_at:
                 type: string
                 description: >-
@@ -16060,6 +16070,7 @@ components:
             - CLUSTER_TYPE_CONTROL_PLANE_GROUP
             - CLUSTER_TYPE_SERVERLESS
             - CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY
+          x-speakeasy-unknown-values: allow
         auth_type:
           type: string
           description: >-
@@ -16069,6 +16080,7 @@ components:
           enum:
             - pinned_client_certs
             - pki_client_certs
+          x-speakeasy-unknown-values: allow
         cloud_gateway:
           type: boolean
           description: Whether this control-plane can be used for cloud-gateways.
@@ -16107,6 +16119,7 @@ components:
           enum:
             - pinned_client_certs
             - pki_client_certs
+          x-speakeasy-unknown-values: allow
         proxy_urls:
           $ref: '#/components/schemas/ProxyURLs'
         labels:
@@ -16167,6 +16180,7 @@ components:
                 - CLUSTER_TYPE_SERVERLESS
                 - CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY
               readOnly: true
+              x-speakeasy-unknown-values: allow
             auth_type:
               type: string
               description: >-
@@ -16177,6 +16191,7 @@ components:
                 - pinned_client_certs
                 - pki_client_certs
               readOnly: true
+              x-speakeasy-unknown-values: allow
             cloud_gateway:
               type: boolean
               description: Whether the Control Plane can be used for cloud-gateways.
@@ -16261,6 +16276,7 @@ components:
             - OK
             - CONFLICT
             - UNKNOWN
+          x-speakeasy-unknown-values: allow
     GroupConflict:
       title: GroupConflict
       type: object
@@ -16576,6 +16592,8 @@ components:
         - is_supported_network_availability_zone_list
         - is_supported_network_cidr_block
         - is_supported_provider_region
+        - type
+      x-speakeasy-unknown-values: allow
     InvalidParameterStandard:
       type: object
       additionalProperties: false
@@ -16620,6 +16638,7 @@ components:
             - min_symbols
             - min_items
             - min
+          x-speakeasy-unknown-values: allow
         minimum:
           type: integer
           example: 8
@@ -16655,6 +16674,7 @@ components:
             - max_length
             - max_items
             - max
+          x-speakeasy-unknown-values: allow
         maximum:
           type: integer
           example: 8
@@ -16887,6 +16907,7 @@ components:
         - saml
       description: Specifies the type of identity provider.
       example: oidc
+      x-speakeasy-unknown-values: allow
     IdentityProviderLoginPath:
       title: Identity Provider Login Path Property
       type: string
@@ -17399,6 +17420,7 @@ components:
             - '*'
           example: eu
           description: Region of the entity.
+          x-speakeasy-unknown-values: allow
     SystemAccount:
       x-speakeasy-entity: SystemAccount
       title: System Account
@@ -17620,6 +17642,7 @@ components:
         - me
         - in
         - sg
+      x-speakeasy-unknown-values: allow
     GatewayVersion:
       title: Gateway Version
       description: Supported gateway version.
@@ -17639,6 +17662,7 @@ components:
         - medium
         - large
       description: Instance type name to indicate capacity.
+      x-speakeasy-unknown-values: allow
     ApiAccess:
       type: string
       enum:
@@ -17648,6 +17672,7 @@ components:
       description: Type of API access data-plane groups will support for a configuration.
       default: private+public
       example: private+public
+      x-speakeasy-unknown-values: allow
     InstanceType:
       title: Instance Type
       description: Resource parameters and pricing of a given supported instance type.
@@ -17796,6 +17821,7 @@ components:
         - aws
         - azure
       example: aws
+      x-speakeasy-unknown-values: allow
     ServerlessV1ProviderName:
       description: Name of cloud provider.
       type: string
@@ -18003,6 +18029,7 @@ components:
             - terminating
             - terminated
           description: State of the data-plane group.
+          x-speakeasy-unknown-values: allow
         state_metadata:
           type: object
           description: >
@@ -18220,6 +18247,7 @@ components:
       enum:
         - initializing
         - offline
+      x-speakeasy-unknown-values: allow
     NetworkState:
       x-speakeasy-terraform-ignore: true
       title: Network State
@@ -18232,6 +18260,7 @@ components:
         - terminating
         - terminated
       readOnly: true
+      x-speakeasy-unknown-values: allow
     NetworkStateMetadata:
       x-speakeasy-terraform-ignore: true
       title: Network State Metadata
@@ -18457,6 +18486,7 @@ components:
         - terminating
         - terminated
       readOnly: true
+      x-speakeasy-unknown-values: allow
     AwsResourceEndpointConfigState:
       title: AWS Resource Endpoint Config State
       type: string
@@ -18484,6 +18514,7 @@ components:
         - error
         - terminating
       readOnly: true
+      x-speakeasy-unknown-values: allow
     AwsTransitGatewayAttachmentConfig:
       title: AWS Transit Gateway Attachment Config
       type: object
@@ -19112,6 +19143,7 @@ components:
         - error
         - terminating
         - terminated
+      x-speakeasy-unknown-values: allow
     PatchAwsPrivateDnsResolver:
       description: Request schema for updating a Private DNS AWS Resolver.
       properties:
@@ -19647,6 +19679,7 @@ components:
         - terminated
         - error
       readOnly: true
+      x-speakeasy-unknown-values: allow
     CustomDomainName:
       title: Custom Domain Name
       type: string
@@ -19763,6 +19796,7 @@ components:
       enum:
         - verified
         - unverified
+      x-speakeasy-unknown-values: allow
     CustomDomainOnlineStatus:
       title: Custom Domain Online Status
       type: object
@@ -19827,6 +19861,7 @@ components:
         - count/networks.not-offline
         - count/data-planes-estimate
         - count/serverless-data-planes-estimate
+      x-speakeasy-unknown-values: allow
     ResourceQuotaName:
       type: string
       description: The human-readable name of this resource quota.
@@ -20400,6 +20435,7 @@ components:
         - READ
         - UNREAD
         - ARCHIVED
+      x-speakeasy-unknown-values: allow
     NotificationRegion:
       type: string
       description: Region associated to a notification.
@@ -20410,6 +20446,7 @@ components:
         - ME
         - IN
         - '*'
+      x-speakeasy-unknown-values: allow
     NotificationChannel:
       type: object
       description: Channel subscription details for an event.
@@ -20426,6 +20463,7 @@ components:
       enum:
         - EMAIL
         - IN_APP
+      x-speakeasy-unknown-values: allow
     NotificationNamespace:
       type: string
       enum:
@@ -20434,6 +20472,7 @@ components:
         - dev-portal
         - cloud-gateways
         - gateway-manager
+      x-speakeasy-unknown-values: allow
     EntityTypes:
       type: string
       enum:
@@ -20443,6 +20482,7 @@ components:
         - dev-portal
         - dataplane-group
         - dataplane
+      x-speakeasy-unknown-values: allow
     UserConfiguration:
       description: Properties of an event.
       type: object
@@ -20869,6 +20909,7 @@ components:
         - curity
         - okta
         - http
+      x-speakeasy-unknown-values: allow
     DcrProviderBase:
       type: object
       description: Properties common to all DCR Providers.
@@ -21231,6 +21272,7 @@ components:
           enum:
             - success
             - failed
+          x-speakeasy-unknown-values: allow
         errors:
           type: array
           items:
@@ -21867,6 +21909,7 @@ components:
             - control_plane_error_plugin_conflict
             - control_plane_error_data_constraint_error
             - control_plane_error_implementation_not_found
+          x-speakeasy-unknown-values: allow
         message:
           type: string
         info:
@@ -21913,6 +21956,7 @@ components:
         - unpublished
       description: If `status=published` the document will be visible in your live portal
       default: unpublished
+      x-speakeasy-unknown-values: allow
     ApiDocumentParentDocumentId:
       title: API Document Parent Document ID
       type: string
@@ -22056,6 +22100,7 @@ components:
                 - oas3
                 - asyncapi
               readOnly: true
+              x-speakeasy-unknown-values: allow
             validation_messages:
               type: array
               description: The errors that occurred while parsing the API version spec.
@@ -22155,6 +22200,7 @@ components:
             - oas2
             - oas3
             - asyncapi
+          x-speakeasy-unknown-values: allow
         created_at:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
@@ -22206,6 +22252,7 @@ components:
 
         Private API publications require authentication to retrieve information
         about them.
+      x-speakeasy-unknown-values: allow
     ApiPublicationAuthStrategyIds:
       title: API Publication Auth Strategy IDs
       type: array
@@ -22625,6 +22672,7 @@ components:
         - oas2
         - oas3
         - asyncapi
+      x-speakeasy-unknown-values: allow
     UnsupportedMediaTypeError:
       allOf:
         - $ref: '#/components/schemas/BaseError'
@@ -22650,6 +22698,7 @@ components:
         The type of entity that is being published. Can be either an API or an
         API Package.
       example: api
+      x-speakeasy-unknown-values: allow
     PortalImageDataUri:
       title: PortalImageDataUri
       type: string
@@ -22835,6 +22884,7 @@ components:
         - revoked
         - rejected
       example: approved
+      x-speakeasy-unknown-values: allow
     MovePageRequestPayload:
       type: object
       title: MovePage
@@ -22922,6 +22972,7 @@ components:
       enum:
         - public
         - private
+      x-speakeasy-unknown-values: allow
     PublishedStatus:
       title: PublishedStatus
       description: >-
@@ -22932,6 +22983,7 @@ components:
       enum:
         - published
         - unpublished
+      x-speakeasy-unknown-values: allow
     Description:
       title: ResourceDescription
       type: string
@@ -22949,6 +23001,7 @@ components:
         - public
         - private
       example: public
+      x-speakeasy-unknown-values: allow
     SnippetVisibilityStatus:
       title: PageVisibilityStatus
       description: >
@@ -22961,6 +23014,7 @@ components:
         - public
         - private
       example: public
+      x-speakeasy-unknown-values: allow
     UpdatePortalPageRequest:
       title: UpdatePortalPageRequest
       description: Update a page in a portal.
@@ -23718,6 +23772,7 @@ components:
         - revoked
         - rejected
       example: approved
+      x-speakeasy-unknown-values: allow
     UpdateApplicationRegistrationRequest:
       title: UpdateApplicationRegistrationRequest
       additionalProperties: false
@@ -23824,6 +23879,28 @@ components:
           $ref: '#/components/schemas/PortalCustomDomainVerificationStatus'
         validation_errors:
           $ref: '#/components/schemas/PortalCustomDomainValidationErrors'
+        uploaded_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: >-
+            An ISO-8601 timestamp representation of the ssl certificate upload
+            date.
+          readOnly: true
+        expires_at:
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          description: >-
+            An ISO-8601 timestamp representation of the ssl certificate
+            expiration date.
+          readOnly: true
+        skip_ca_check:
+          type: boolean
+          description: >
+            True when the provided certificate chain is served as-is without
+            validation against a public trust store.
+          readOnly: true
       required:
         - domain_verification_method
         - verification_status
@@ -23847,6 +23924,13 @@ components:
         custom_private_key:
           type: string
           description: Custom certificate private key to be used for the SSL termination.
+        skip_ca_check:
+          type: boolean
+          description: >
+            Advanced option. If true, the custom certificate is served exactly
+            as provided, without attempting to bundle against a public trust
+            store. Required for certificates issued by an internal/private CA.
+          default: false
       required:
         - domain_verification_method
         - custom_certificate
@@ -23866,6 +23950,7 @@ components:
       enum:
         - http
         - custom_certificate
+      x-speakeasy-unknown-values: allow
     PortalCustomDomainVerificationStatus:
       title: PortalCustomDomainVerificationStatus
       type: string
@@ -23874,6 +23959,7 @@ components:
         - verified
         - pending
         - error
+      x-speakeasy-unknown-values: allow
     PortalCustomDomainCnameStatus:
       title: PortalCustomDomainCnameStatus
       type: string
@@ -23881,6 +23967,7 @@ components:
       enum:
         - verified
         - pending
+      x-speakeasy-unknown-values: allow
     PortalCustomDomainValidationErrors:
       title: PortalCustomDomainValidationErrors
       type: array
@@ -24258,6 +24345,7 @@ components:
             - '*'
           example: eu
           description: Region of the entity.
+          x-speakeasy-unknown-values: allow
       example:
         role_name: API Viewer
         entity_id: 18ee2573-dec0-4b83-be99-fa7700bcdc61
@@ -24574,6 +24662,7 @@ components:
             - '*'
           example: eu
           description: Region of the entity.
+          x-speakeasy-unknown-values: allow
       example:
         id: 1a3c2169-27f8-4594-926b-41df3432d5dc
         role_name: API Viewer
@@ -24756,6 +24845,7 @@ components:
         - temporary_failure
         - not_started
       readOnly: true
+      x-speakeasy-unknown-values: allow
     EmailDomainVerification:
       type: object
       properties:
@@ -24844,6 +24934,7 @@ components:
         - account-access-revoked
       description: |
         Short name email template name.
+      x-speakeasy-unknown-values: allow
     EmailTemplateVariableName:
       type: string
       enum:
@@ -24859,6 +24950,7 @@ components:
         - application_name
       description: |
         Enum for available portal email template variables.
+      x-speakeasy-unknown-values: allow
     DefaultEmailTemplate:
       type: object
       properties:
@@ -25037,6 +25129,7 @@ components:
           enum:
             - public
             - private
+          x-speakeasy-unknown-values: allow
         external:
           description: When clicked, open the link in a new window
           type: boolean
@@ -25079,6 +25172,7 @@ components:
                 - light
                 - dark
                 - system
+              x-speakeasy-unknown-values: allow
             colors:
               type: object
               additionalProperties: false
@@ -25225,6 +25319,7 @@ components:
           enum:
             - client_credentials
             - self_managed_client_credentials
+          x-speakeasy-unknown-values: allow
         auth_methods:
           $ref: '#/components/schemas/AuthMethods'
         available_scopes:
@@ -25473,6 +25568,8 @@ components:
           nullable: true
         password:
           type: string
+          writeOnly: true
+          x-encrypted: true
         tags:
           description: A set of strings representing tags.
           type: array
@@ -25516,6 +25613,8 @@ components:
           nullable: true
         password:
           type: string
+          writeOnly: true
+          x-encrypted: true
         tags:
           description: A set of strings representing tags.
           type: array
@@ -25612,6 +25711,7 @@ components:
             in a vault. References must follow a [specific
             format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
           type: string
+          x-referenceable: true
         cert_alt:
           description: >-
             PEM-encoded public certificate chain of the alternate SSL key pair.
@@ -25624,6 +25724,7 @@ components:
             format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
           type: string
           nullable: true
+          x-referenceable: true
           x-speakeasy-param-computed: false
           default: null
         created_at:
@@ -25642,6 +25743,8 @@ components:
             in a vault. References must follow a [specific
             format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
           type: string
+          x-encrypted: true
+          x-referenceable: true
         key_alt:
           description: >-
             PEM-encoded private key of the alternate SSL key pair. This should
@@ -25654,6 +25757,8 @@ components:
             format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).
           type: string
           nullable: true
+          x-encrypted: true
+          x-referenceable: true
           x-speakeasy-param-computed: false
           default: null
         snis:
@@ -26056,6 +26161,7 @@ components:
             - RS384
             - RS512
           nullable: true
+          x-speakeasy-unknown-values: allow
         consumer:
           type: object
           nullable: true
@@ -26136,6 +26242,7 @@ components:
             - RS384
             - RS512
           nullable: true
+          x-speakeasy-unknown-values: allow
         consumer:
           type: object
           nullable: true
@@ -26202,6 +26309,8 @@ components:
           description: A JSON Web Key represented as a string.
           type: string
           nullable: true
+          x-encrypted: true
+          x-referenceable: true
           x-speakeasy-param-computed: false
           default: null
         kid:
@@ -26220,11 +26329,14 @@ components:
           properties:
             private_key:
               type: string
+              x-encrypted: true
+              x-referenceable: true
               x-speakeasy-param-computed: false
               nullable: true
               default: null
             public_key:
               type: string
+              x-referenceable: true
               x-speakeasy-param-computed: false
               nullable: true
               default: null
@@ -26419,6 +26531,8 @@ components:
           description: A JSON Web Key represented as a string.
           type: string
           nullable: true
+          x-encrypted: true
+          x-referenceable: true
           x-speakeasy-param-computed: false
           default: null
         kid:
@@ -26437,11 +26551,14 @@ components:
           properties:
             private_key:
               type: string
+              x-encrypted: true
+              x-referenceable: true
               x-speakeasy-param-computed: false
               nullable: true
               default: null
             public_key:
               type: string
+              x-referenceable: true
               x-speakeasy-param-computed: false
               nullable: true
               default: null
@@ -26648,6 +26765,8 @@ components:
                 Password to use for Redis connections. If undefined, no AUTH
                 commands are sent to Redis.
               type: string
+              x-encrypted: true
+              x-referenceable: true
               x-speakeasy-param-computed: false
               nullable: true
               default: null
@@ -26694,6 +26813,7 @@ components:
                 authentication won't be performed. This requires Redis v6.0.0+.
                 To be compatible with Redis v5.x.y, you can set it to `default`.
               type: string
+              x-referenceable: true
               x-speakeasy-param-computed: false
               nullable: true
               default: null
@@ -26837,6 +26957,8 @@ components:
                 Password to use for Redis connections. If undefined, no AUTH
                 commands are sent to Redis.
               type: string
+              x-encrypted: true
+              x-referenceable: true
               x-speakeasy-param-computed: false
               nullable: true
               default: null
@@ -26903,6 +27025,8 @@ components:
                 instance. If undefined, no AUTH commands are sent to Redis
                 Sentinels.
               type: string
+              x-encrypted: true
+              x-referenceable: true
               x-speakeasy-param-computed: false
               nullable: true
               default: null
@@ -26916,12 +27040,14 @@ components:
                 - any
                 - master
                 - slave
+              x-speakeasy-unknown-values: allow
             sentinel_username:
               description: >-
                 Sentinel username to authenticate with a Redis Sentinel
                 instance. If undefined, ACL authentication won't be performed.
                 This requires Redis v6.2.0+.
               type: string
+              x-referenceable: true
               x-speakeasy-param-computed: false
               nullable: true
               default: null
@@ -26952,6 +27078,7 @@ components:
                 authentication won't be performed. This requires Redis v6.0.0+.
                 To be compatible with Redis v5.x.y, you can set it to `default`.
               type: string
+              x-referenceable: true
               x-speakeasy-param-computed: false
               nullable: true
               default: null
@@ -27165,6 +27292,7 @@ components:
               - ws
               - wss
             type: string
+            x-speakeasy-unknown-values: allow
           default:
             - grpc
             - grpcs
@@ -27394,6 +27522,7 @@ components:
               - ws
               - wss
             type: string
+            x-speakeasy-unknown-values: allow
           default:
             - grpc
             - grpcs
@@ -27514,6 +27643,7 @@ components:
             - 308
             - 426
           nullable: true
+          x-speakeasy-unknown-values: allow
         id:
           description: A string representing a UUID (universally unique identifier).
           type: string
@@ -27538,6 +27668,7 @@ components:
             - v0
             - v1
           nullable: true
+          x-speakeasy-unknown-values: allow
         preserve_host:
           description: >-
             When matching a Route via one of the `hosts` domain names, use the
@@ -27579,6 +27710,7 @@ components:
               - ws
               - wss
             type: string
+            x-speakeasy-unknown-values: allow
           default:
             - http
             - https
@@ -27724,6 +27856,7 @@ components:
             - 308
             - 426
           nullable: true
+          x-speakeasy-unknown-values: allow
         id:
           description: A string representing a UUID (universally unique identifier).
           type: string
@@ -27759,6 +27892,7 @@ components:
             - v0
             - v1
           nullable: true
+          x-speakeasy-unknown-values: allow
         paths:
           description: A list of paths that match this Route.
           type: array
@@ -27802,6 +27936,7 @@ components:
               - ws
               - wss
             type: string
+            x-speakeasy-unknown-values: allow
           default:
             - http
             - https
@@ -28138,6 +28273,7 @@ components:
             - ws
             - wss
           nullable: true
+          x-speakeasy-unknown-values: allow
         read_timeout:
           description: >-
             The timeout in milliseconds between two successive read operations
@@ -28397,7 +28533,6 @@ components:
           nullable: true
       example:
         id: 089292a7-ba3d-4d88-acf0-97b4b2e2621a
-        failover: true
         target: 203.0.113.42
         weight: 100
       additionalProperties: false
@@ -28427,6 +28562,7 @@ components:
             - round-robin
             - sticky-sessions
           nullable: true
+          x-speakeasy-unknown-values: allow
         client_certificate:
           description: >-
             If set, the certificate to be used as client certificate while TLS
@@ -28460,6 +28596,7 @@ components:
             - query_arg
             - uri_capture
           nullable: true
+          x-speakeasy-unknown-values: allow
         hash_fallback_header:
           description: >-
             The header name to take the value from as hash input. Only required
@@ -28502,6 +28639,7 @@ components:
             - query_arg
             - uri_capture
           nullable: true
+          x-speakeasy-unknown-values: allow
         hash_on_cookie:
           description: >-
             The cookie name to take the value from as hash input. Only required
@@ -28548,10 +28686,95 @@ components:
         healthchecks:
           description: The array of healthchecks.
           type: object
+          default:
+            active:
+              concurrency: 10
+              healthy:
+                http_statuses:
+                  - 200
+                  - 302
+                interval: 0
+                successes: 0
+              http_path: /
+              https_verify_certificate: true
+              timeout: 1
+              type: http
+              unhealthy:
+                http_failures: 0
+                http_statuses:
+                  - 429
+                  - 404
+                  - 500
+                  - 501
+                  - 502
+                  - 503
+                  - 504
+                  - 505
+                interval: 0
+                tcp_failures: 0
+                timeouts: 0
+            passive:
+              healthy:
+                http_statuses:
+                  - 200
+                  - 201
+                  - 202
+                  - 203
+                  - 204
+                  - 205
+                  - 206
+                  - 207
+                  - 208
+                  - 226
+                  - 300
+                  - 301
+                  - 302
+                  - 303
+                  - 304
+                  - 305
+                  - 306
+                  - 307
+                  - 308
+                successes: 0
+              type: http
+              unhealthy:
+                http_failures: 0
+                http_statuses:
+                  - 429
+                  - 500
+                  - 503
+                tcp_failures: 0
+                timeouts: 0
           nullable: true
           properties:
             active:
               type: object
+              default:
+                concurrency: 10
+                healthy:
+                  http_statuses:
+                    - 200
+                    - 302
+                  interval: 0
+                  successes: 0
+                http_path: /
+                https_verify_certificate: true
+                timeout: 1
+                type: http
+                unhealthy:
+                  http_failures: 0
+                  http_statuses:
+                    - 429
+                    - 404
+                    - 500
+                    - 501
+                    - 502
+                    - 503
+                    - 504
+                    - 505
+                  interval: 0
+                  tcp_failures: 0
+                  timeouts: 0
               properties:
                 concurrency:
                   type: integer
@@ -28570,6 +28793,12 @@ components:
                   default: null
                 healthy:
                   type: object
+                  default:
+                    http_statuses:
+                      - 200
+                      - 302
+                    interval: 0
+                    successes: 0
                   properties:
                     http_statuses:
                       type: array
@@ -28590,9 +28819,6 @@ components:
                       default: 0
                       maximum: 255
                       minimum: 0
-                  x-speakeasy-param-computed: false
-                  nullable: true
-                  default: null
                 http_path:
                   description: >-
                     A string representing a URL path, such as /path/to/resource.
@@ -28625,8 +28851,23 @@ components:
                     - http
                     - https
                     - tcp
+                  x-speakeasy-unknown-values: allow
                 unhealthy:
                   type: object
+                  default:
+                    http_failures: 0
+                    http_statuses:
+                      - 429
+                      - 404
+                      - 500
+                      - 501
+                      - 502
+                      - 503
+                      - 504
+                      - 505
+                    interval: 0
+                    tcp_failures: 0
+                    timeouts: 0
                   properties:
                     http_failures:
                       type: integer
@@ -28663,17 +28904,65 @@ components:
                       default: 0
                       maximum: 255
                       minimum: 0
-                  x-speakeasy-param-computed: false
-                  nullable: true
-                  default: null
-              x-speakeasy-param-computed: false
-              nullable: true
-              default: null
             passive:
               type: object
+              default:
+                healthy:
+                  http_statuses:
+                    - 200
+                    - 201
+                    - 202
+                    - 203
+                    - 204
+                    - 205
+                    - 206
+                    - 207
+                    - 208
+                    - 226
+                    - 300
+                    - 301
+                    - 302
+                    - 303
+                    - 304
+                    - 305
+                    - 306
+                    - 307
+                    - 308
+                  successes: 0
+                type: http
+                unhealthy:
+                  http_failures: 0
+                  http_statuses:
+                    - 429
+                    - 500
+                    - 503
+                  tcp_failures: 0
+                  timeouts: 0
               properties:
                 healthy:
                   type: object
+                  default:
+                    http_statuses:
+                      - 200
+                      - 201
+                      - 202
+                      - 203
+                      - 204
+                      - 205
+                      - 206
+                      - 207
+                      - 208
+                      - 226
+                      - 300
+                      - 301
+                      - 302
+                      - 303
+                      - 304
+                      - 305
+                      - 306
+                      - 307
+                      - 308
+                    successes: 0
                   properties:
                     http_statuses:
                       type: array
@@ -28706,9 +28995,6 @@ components:
                       default: 0
                       maximum: 255
                       minimum: 0
-                  x-speakeasy-param-computed: false
-                  nullable: true
-                  default: null
                 type:
                   type: string
                   default: http
@@ -28718,8 +29004,17 @@ components:
                     - http
                     - https
                     - tcp
+                  x-speakeasy-unknown-values: allow
                 unhealthy:
                   type: object
+                  default:
+                    http_failures: 0
+                    http_statuses:
+                      - 429
+                      - 500
+                      - 503
+                    tcp_failures: 0
+                    timeouts: 0
                   properties:
                     http_failures:
                       type: integer
@@ -28746,19 +29041,11 @@ components:
                       default: 0
                       maximum: 255
                       minimum: 0
-                  x-speakeasy-param-computed: false
-                  nullable: true
-                  default: null
-              x-speakeasy-param-computed: false
-              nullable: true
-              default: null
             threshold:
               type: number
               default: 0
               maximum: 100
               minimum: 0
-          x-speakeasy-param-computed: false
-          default: null
         host_header:
           description: >-
             The hostname to be used as `Host` header when proxying requests
@@ -29320,6 +29607,7 @@ components:
                   - Upstream Admin
                   - Vault Admin
                   - Viewer
+                x-speakeasy-unknown-values: allow
               entity_id:
                 type: string
                 format: uuid
@@ -29345,6 +29633,7 @@ components:
                   - Networks
                   - Portals
                   - Service Hub
+                x-speakeasy-unknown-values: allow
               entity_region:
                 type: string
                 enum:
@@ -29357,6 +29646,7 @@ components:
                   - '*'
                 example: eu
                 description: Region of the team.
+                x-speakeasy-unknown-values: allow
       description: The request schema for assigning a role.
     InviteUser:
       content:
@@ -29802,6 +30092,7 @@ components:
                   - oas2
                   - oas3
                   - asyncapi
+                x-speakeasy-unknown-values: allow
               created_at:
                 $ref: '#/components/schemas/CreatedAt'
               updated_at:
@@ -29859,6 +30150,7 @@ components:
                       - oas3
                       - asyncapi
                     readOnly: true
+                    x-speakeasy-unknown-values: allow
                   validation_messages:
                     type: array
                     description: >-
@@ -30143,6 +30435,7 @@ components:
                 enum:
                   - public
                   - private
+                x-speakeasy-unknown-values: allow
               default_page_visibility:
                 type: string
                 description: >-
@@ -30153,6 +30446,7 @@ components:
                 enum:
                   - public
                   - private
+                x-speakeasy-unknown-values: allow
               default_application_auth_strategy_id:
                 type: string
                 format: uuid
@@ -30267,6 +30561,7 @@ components:
                 enum:
                   - public
                   - private
+                x-speakeasy-unknown-values: allow
               default_page_visibility:
                 type: string
                 description: >-
@@ -30277,6 +30572,7 @@ components:
                 enum:
                   - public
                   - private
+                x-speakeasy-unknown-values: allow
               default_application_auth_strategy_id:
                 type: string
                 format: uuid

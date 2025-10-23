@@ -9,7 +9,7 @@ APIs related to Konnect Developer Portal Application Registrations.
 
 * [ListRegistrations](#listregistrations) - List Registrations by Portal
 * [ListRegistrationsByApplication](#listregistrationsbyapplication) - List Registrations by Application
-* [GetApplicationRegistration](#getapplicationregistration) - Fetch Registration
+* [GetApplicationRegistration](#getapplicationregistration) - Get a Registration
 * [UpdateApplicationRegistration](#updateapplicationregistration) - Update Registration
 * [DeleteApplicationRegistration](#deleteapplicationregistration) - Delete Registration
 

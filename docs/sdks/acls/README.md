@@ -6,11 +6,11 @@
 ### Available Operations
 
 * [ListACL](#listacl) - List all ACLs
-* [GetACL](#getacl) - Fetch an ACL
+* [GetACL](#getacl) - Get an ACL
 * [ListACLWithConsumer](#listaclwithconsumer) - List all ACLs associated with a Consumer
 * [CreateACLWithConsumer](#createaclwithconsumer) - Create a new ACL associated with a Consumer
 * [DeleteACLWithConsumer](#deleteaclwithconsumer) - Delete a an ACL associated with a Consumer
-* [GetACLWithConsumer](#getaclwithconsumer) - Fetch an ACL associated with a Consumer
+* [GetACLWithConsumer](#getaclwithconsumer) - Get an ACL associated with a Consumer
 * [UpsertACLWithConsumer](#upsertaclwithconsumer) - Upsert an ACL associated with a Consumer
 
 ## ListACL

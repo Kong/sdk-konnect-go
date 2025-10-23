@@ -713,7 +713,7 @@ func (s *Upstreams) DeleteUpstream(ctx context.Context, controlPlaneID string, u
 
 }
 
-// GetUpstream - Fetch an Upstream
+// GetUpstream - Get an Upstream
 // Get an Upstream using ID or name.
 func (s *Upstreams) GetUpstream(ctx context.Context, upstreamID string, controlPlaneID string, opts ...operations.Option) (*operations.GetUpstreamResponse, error) {
 	request := operations.GetUpstreamRequest{

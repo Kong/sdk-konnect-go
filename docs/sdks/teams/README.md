@@ -7,7 +7,7 @@
 
 * [ListTeams](#listteams) - List Teams
 * [CreateTeam](#createteam) - Create Team
-* [GetTeam](#getteam) - Fetch Team
+* [GetTeam](#getteam) - Get a Team
 * [UpdateTeam](#updateteam) - Update Team
 * [DeleteTeam](#deleteteam) - Delete Team
 

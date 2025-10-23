@@ -34,12 +34,12 @@ Depending on the protocol, one of the following attributes must be set:
 * [ListRoute](#listroute) - List all Routes
 * [CreateRoute](#createroute) - Create a new Route
 * [DeleteRoute](#deleteroute) - Delete a Route
-* [GetRoute](#getroute) - Fetch a Route
+* [GetRoute](#getroute) - Get a Route
 * [UpsertRoute](#upsertroute) - Upsert a Route
 * [ListRouteWithService](#listroutewithservice) - List all Routes associated with a Service
 * [CreateRouteWithService](#createroutewithservice) - Create a new Route associated with a Service
 * [DeleteRouteWithService](#deleteroutewithservice) - Delete a a Route associated with a Service
-* [GetRouteWithService](#getroutewithservice) - Fetch a Route associated with a Service
+* [GetRouteWithService](#getroutewithservice) - Get a Route associated with a Service
 * [UpsertRouteWithService](#upsertroutewithservice) - Upsert a Route associated with a Service
 
 ## ListRoute

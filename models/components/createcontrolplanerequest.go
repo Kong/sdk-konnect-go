@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 // CreateControlPlaneRequestClusterType - The ClusterType value of the cluster associated with the Control Plane.
 type CreateControlPlaneRequestClusterType string
 
@@ -21,27 +16,6 @@ const (
 func (e CreateControlPlaneRequestClusterType) ToPointer() *CreateControlPlaneRequestClusterType {
 	return &e
 }
-func (e *CreateControlPlaneRequestClusterType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "CLUSTER_TYPE_CONTROL_PLANE":
-		fallthrough
-	case "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER":
-		fallthrough
-	case "CLUSTER_TYPE_CONTROL_PLANE_GROUP":
-		fallthrough
-	case "CLUSTER_TYPE_SERVERLESS":
-		fallthrough
-	case "CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY":
-		*e = CreateControlPlaneRequestClusterType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CreateControlPlaneRequestClusterType: %v", v)
-	}
-}
 
 // AuthType - The auth type value of the cluster associated with the Runtime Group.
 type AuthType string
@@ -53,21 +27,6 @@ const (
 
 func (e AuthType) ToPointer() *AuthType {
 	return &e
-}
-func (e *AuthType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "pinned_client_certs":
-		fallthrough
-	case "pki_client_certs":
-		*e = AuthType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AuthType: %v", v)
-	}
 }
 
 // CreateControlPlaneRequest - The request schema for the create control plane request.

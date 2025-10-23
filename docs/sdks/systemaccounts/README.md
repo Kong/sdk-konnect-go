@@ -7,7 +7,7 @@
 
 * [GetSystemAccounts](#getsystemaccounts) - List System Accounts
 * [PostSystemAccounts](#postsystemaccounts) - Create System Account
-* [GetSystemAccountsID](#getsystemaccountsid) - Fetch System Account
+* [GetSystemAccountsID](#getsystemaccountsid) - Get a System Account
 * [PatchSystemAccountsID](#patchsystemaccountsid) - Update System Account
 * [DeleteSystemAccountsID](#deletesystemaccountsid) - Delete System Account
 

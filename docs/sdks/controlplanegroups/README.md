@@ -5,7 +5,7 @@
 
 ### Available Operations
 
-* [GetControlPlanesIDGroupMemberStatus](#getcontrolplanesidgroupmemberstatus) - Control Plane Group Member Status
+* [GetControlPlanesIDGroupMemberStatus](#getcontrolplanesidgroupmemberstatus) - Get Control Plane Group Member Status
 * [GetControlPlanesIDGroupMemberships](#getcontrolplanesidgroupmemberships) - List Control Plane Group Memberships
 * [PutControlPlanesIDGroupMemberships](#putcontrolplanesidgroupmemberships) - Upsert Control Plane Group Members
 * [PostControlPlanesIDGroupMembershipsAdd](#postcontrolplanesidgroupmembershipsadd) - Add Control Plane Group Members

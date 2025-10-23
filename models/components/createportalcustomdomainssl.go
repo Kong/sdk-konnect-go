@@ -33,6 +33,9 @@ type CustomCertificate struct {
 	CustomCertificate string `json:"custom_certificate"`
 	// Custom certificate private key to be used for the SSL termination.
 	CustomPrivateKey string `json:"custom_private_key"`
+	// Advanced option. If true, the custom certificate is served exactly as provided, without attempting to bundle against a public trust store. Required for certificates issued by an internal/private CA.
+	//
+	SkipCaCheck *bool `default:"false" json:"skip_ca_check"`
 }
 
 func (c CustomCertificate) MarshalJSON() ([]byte, error) {
@@ -62,6 +65,13 @@ func (c *CustomCertificate) GetCustomPrivateKey() string {
 		return ""
 	}
 	return c.CustomPrivateKey
+}
+
+func (c *CustomCertificate) GetSkipCaCheck() *bool {
+	if c == nil {
+		return nil
+	}
+	return c.SkipCaCheck
 }
 
 type CreatePortalCustomDomainSSLType string

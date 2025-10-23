@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 type PortalCustomDomainCnameStatus string
 
 const (
@@ -16,19 +11,4 @@ const (
 
 func (e PortalCustomDomainCnameStatus) ToPointer() *PortalCustomDomainCnameStatus {
 	return &e
-}
-func (e *PortalCustomDomainCnameStatus) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "verified":
-		fallthrough
-	case "pending":
-		*e = PortalCustomDomainCnameStatus(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for PortalCustomDomainCnameStatus: %v", v)
-	}
 }

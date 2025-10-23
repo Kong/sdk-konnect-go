@@ -17,7 +17,7 @@ Secrets rotation can be managed using [TTLs](https://developer.konghq.com/gatewa
 * [ListVault](#listvault) - List all Vaults
 * [CreateVault](#createvault) - Create a new Vault
 * [DeleteVault](#deletevault) - Delete a Vault
-* [GetVault](#getvault) - Fetch a Vault
+* [GetVault](#getvault) - Get a Vault
 * [UpsertVault](#upsertvault) - Upsert a Vault
 
 ## ListVault

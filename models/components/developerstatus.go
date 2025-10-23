@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 // DeveloperStatus - The status of a developer in a portal. Approved developers can log in, create applications, and view and register for products they have access to. Pending, revoked, and rejected developers cannot login or view any non-public portal information, or create or modify applications or registrations.
 type DeveloperStatus string
 
@@ -19,23 +14,4 @@ const (
 
 func (e DeveloperStatus) ToPointer() *DeveloperStatus {
 	return &e
-}
-func (e *DeveloperStatus) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "approved":
-		fallthrough
-	case "pending":
-		fallthrough
-	case "revoked":
-		fallthrough
-	case "rejected":
-		*e = DeveloperStatus(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for DeveloperStatus: %v", v)
-	}
 }

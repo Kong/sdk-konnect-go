@@ -718,7 +718,7 @@ func (s *CustomPlugins) DeleteCustomPlugin(ctx context.Context, controlPlaneID s
 
 }
 
-// GetCustomPlugin - Fetch a CustomPlugin
+// GetCustomPlugin - Get a CustomPlugin
 // **Pre-release Endpoint**
 // This endpoint is currently in beta and is subject to change.
 //

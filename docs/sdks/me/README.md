@@ -5,8 +5,8 @@
 
 ### Available Operations
 
-* [GetOrganizationsMe](#getorganizationsme) - Retrieve My Organization
-* [GetUsersMe](#getusersme) - Retrieve My User Account
+* [GetOrganizationsMe](#getorganizationsme) - Get My Organization
+* [GetUsersMe](#getusersme) - Get My User Account
 
 ## GetOrganizationsMe
 

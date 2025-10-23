@@ -673,7 +673,7 @@ func (s *APIDocumentation) ListAPIDocuments(ctx context.Context, apiID string, f
 
 }
 
-// FetchAPIDocument - Fetch API Document
+// FetchAPIDocument - Get an API Document
 // Returns a document for the API.
 func (s *APIDocumentation) FetchAPIDocument(ctx context.Context, apiID string, documentID string, opts ...operations.Option) (*operations.FetchAPIDocumentResponse, error) {
 	request := operations.FetchAPIDocumentRequest{

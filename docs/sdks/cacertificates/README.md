@@ -11,7 +11,7 @@ These objects are used by Kong Gateway to verify the validity of a client or ser
 * [ListCaCertificate](#listcacertificate) - List all CA Certificates
 * [CreateCaCertificate](#createcacertificate) - Create a new CA Certificate
 * [DeleteCaCertificate](#deletecacertificate) - Delete a CA Certificate
-* [GetCaCertificate](#getcacertificate) - Fetch a CA Certificate
+* [GetCaCertificate](#getcacertificate) - Get a CA Certificate
 * [UpsertCaCertificate](#upsertcacertificate) - Upsert a CA Certificate
 
 ## ListCaCertificate

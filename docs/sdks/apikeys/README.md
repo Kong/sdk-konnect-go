@@ -8,10 +8,10 @@
 * [ListKeyAuthWithConsumer](#listkeyauthwithconsumer) - List all API-keys associated with a Consumer
 * [CreateKeyAuthWithConsumer](#createkeyauthwithconsumer) - Create a new API-key associated with a Consumer
 * [DeleteKeyAuthWithConsumer](#deletekeyauthwithconsumer) - Delete a an API-key associated with a Consumer
-* [GetKeyAuthWithConsumer](#getkeyauthwithconsumer) - Fetch an API-key associated with a Consumer
+* [GetKeyAuthWithConsumer](#getkeyauthwithconsumer) - Get an API-key associated with a Consumer
 * [UpsertKeyAuthWithConsumer](#upsertkeyauthwithconsumer) - Upsert an API-key associated with a Consumer
 * [ListKeyAuth](#listkeyauth) - List all API-keys
-* [GetKeyAuth](#getkeyauth) - Fetch an API-key
+* [GetKeyAuth](#getkeyauth) - Get an API-key
 
 ## ListKeyAuthWithConsumer
 

@@ -711,7 +711,7 @@ func (s *CACertificates) DeleteCaCertificate(ctx context.Context, controlPlaneID
 
 }
 
-// GetCaCertificate - Fetch a CA Certificate
+// GetCaCertificate - Get a CA Certificate
 // Get a CA Certificate using ID.
 func (s *CACertificates) GetCaCertificate(ctx context.Context, caCertificateID string, controlPlaneID string, opts ...operations.Option) (*operations.GetCaCertificateResponse, error) {
 	request := operations.GetCaCertificateRequest{

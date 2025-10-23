@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -17,21 +15,6 @@ const (
 
 func (e CredentialType) ToPointer() *CredentialType {
 	return &e
-}
-func (e *CredentialType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "client_credentials":
-		fallthrough
-	case "self_managed_client_credentials":
-		*e = CredentialType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for CredentialType: %v", v)
-	}
 }
 
 // AuthStrategyClientCredentials - Client Credential Auth strategy that the application uses.

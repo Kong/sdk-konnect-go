@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
@@ -22,27 +20,6 @@ const (
 
 func (e State) ToPointer() *State {
 	return &e
-}
-func (e *State) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "created":
-		fallthrough
-	case "initializing":
-		fallthrough
-	case "ready":
-		fallthrough
-	case "terminating":
-		fallthrough
-	case "terminated":
-		*e = State(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for State: %v", v)
-	}
 }
 
 // StateMetadata - Metadata describing the backing state of the dataplane group and why it may be in an erroneous state.

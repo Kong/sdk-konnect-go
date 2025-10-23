@@ -604,7 +604,7 @@ func (s *CustomPluginSchemas) CreatePluginSchemas(ctx context.Context, controlPl
 
 }
 
-// GetPluginSchema - Fetch custom plugin schema
+// GetPluginSchema - Get a custom plugin schema
 // Returns information about a custom plugin from a given name.
 func (s *CustomPluginSchemas) GetPluginSchema(ctx context.Context, controlPlaneID string, name string, opts ...operations.Option) (*operations.GetPluginSchemaResponse, error) {
 	request := operations.GetPluginSchemaRequest{

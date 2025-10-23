@@ -711,7 +711,7 @@ func (s *ConsumerGroups) DeleteConsumerGroup(ctx context.Context, controlPlaneID
 
 }
 
-// GetConsumerGroup - Fetch a Consumer Group
+// GetConsumerGroup - Get a Consumer Group
 // Get a Consumer Group using ID.
 func (s *ConsumerGroups) GetConsumerGroup(ctx context.Context, consumerGroupID string, controlPlaneID string, opts ...operations.Option) (*operations.GetConsumerGroupResponse, error) {
 	request := operations.GetConsumerGroupRequest{

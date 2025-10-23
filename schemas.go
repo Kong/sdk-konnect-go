@@ -242,7 +242,7 @@ func (s *Schemas) ValidateEntitySchema(ctx context.Context, request operations.V
 
 }
 
-// FetchPartialSchema - Fetch partial schema
+// FetchPartialSchema - Get partial schema
 // Get the schema for a partial
 func (s *Schemas) FetchPartialSchema(ctx context.Context, partialType string, controlPlaneID string, opts ...operations.Option) (*operations.FetchPartialSchemaResponse, error) {
 	request := operations.FetchPartialSchemaRequest{

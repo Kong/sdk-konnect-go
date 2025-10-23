@@ -716,7 +716,7 @@ func (s *Vaults) DeleteVault(ctx context.Context, controlPlaneID string, vaultID
 
 }
 
-// GetVault - Fetch a Vault
+// GetVault - Get a Vault
 // Get a Vault using ID or prefix.
 func (s *Vaults) GetVault(ctx context.Context, vaultID string, controlPlaneID string, opts ...operations.Option) (*operations.GetVaultResponse, error) {
 	request := operations.GetVaultRequest{
