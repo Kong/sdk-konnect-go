@@ -13893,7 +13893,7 @@ components:
                   - inactive
                   - deleting
                   - deleted
-                x-speakeasy-unknown-values: true
+                x-speakeasy-unknown-values: allow
               retention_period_days:
                 type: integer
                 description: >-
@@ -14601,7 +14601,7 @@ components:
                   - oas2
                   - oas3
                   - asyncapi
-                x-speakeasy-unknown-values: true
+                x-speakeasy-unknown-values: allow
               created_at:
                 $ref: '#/components/schemas/CreatedAt'
               updated_at:
@@ -14702,7 +14702,7 @@ components:
                       - oas3
                       - asyncapi
                     readOnly: true
-                    x-speakeasy-unknown-values: true
+                    x-speakeasy-unknown-values: allow
                   validation_messages:
                     type: array
                     description: >-
@@ -15039,7 +15039,7 @@ components:
                       enum:
                         - public
                         - private
-                      x-speakeasy-unknown-values: true
+                      x-speakeasy-unknown-values: allow
                     default_page_visibility:
                       type: string
                       description: >-
@@ -15051,7 +15051,7 @@ components:
                       enum:
                         - public
                         - private
-                      x-speakeasy-unknown-values: true
+                      x-speakeasy-unknown-values: allow
                     default_application_auth_strategy_id:
                       type: string
                       format: uuid
@@ -15182,7 +15182,7 @@ components:
                 enum:
                   - public
                   - private
-                x-speakeasy-unknown-values: true
+                x-speakeasy-unknown-values: allow
               default_page_visibility:
                 type: string
                 description: >-
@@ -15193,7 +15193,7 @@ components:
                 enum:
                   - public
                   - private
-                x-speakeasy-unknown-values: true
+                x-speakeasy-unknown-values: allow
               default_application_auth_strategy_id:
                 type: string
                 format: uuid
@@ -15388,7 +15388,7 @@ components:
 
                   `inactive` indicates the webhook has been turned off due to
                   failed attempts.
-                x-speakeasy-unknown-values: true
+                x-speakeasy-unknown-values: allow
               webhook_enabled:
                 type: boolean
                 example: true
@@ -15463,7 +15463,7 @@ components:
                   - completed
                   - failed
                 readOnly: true
-                x-speakeasy-unknown-values: true
+                x-speakeasy-unknown-values: allow
               updated_at:
                 type: string
                 description: >-
@@ -16070,7 +16070,7 @@ components:
             - CLUSTER_TYPE_CONTROL_PLANE_GROUP
             - CLUSTER_TYPE_SERVERLESS
             - CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         auth_type:
           type: string
           description: >-
@@ -16080,7 +16080,7 @@ components:
           enum:
             - pinned_client_certs
             - pki_client_certs
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         cloud_gateway:
           type: boolean
           description: Whether this control-plane can be used for cloud-gateways.
@@ -16119,7 +16119,7 @@ components:
           enum:
             - pinned_client_certs
             - pki_client_certs
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         proxy_urls:
           $ref: '#/components/schemas/ProxyURLs'
         labels:
@@ -16180,7 +16180,7 @@ components:
                 - CLUSTER_TYPE_SERVERLESS
                 - CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY
               readOnly: true
-              x-speakeasy-unknown-values: true
+              x-speakeasy-unknown-values: allow
             auth_type:
               type: string
               description: >-
@@ -16191,7 +16191,7 @@ components:
                 - pinned_client_certs
                 - pki_client_certs
               readOnly: true
-              x-speakeasy-unknown-values: true
+              x-speakeasy-unknown-values: allow
             cloud_gateway:
               type: boolean
               description: Whether the Control Plane can be used for cloud-gateways.
@@ -16276,7 +16276,7 @@ components:
             - OK
             - CONFLICT
             - UNKNOWN
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
     GroupConflict:
       title: GroupConflict
       type: object
@@ -16593,7 +16593,7 @@ components:
         - is_supported_network_cidr_block
         - is_supported_provider_region
         - type
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     InvalidParameterStandard:
       type: object
       additionalProperties: false
@@ -16638,7 +16638,7 @@ components:
             - min_symbols
             - min_items
             - min
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         minimum:
           type: integer
           example: 8
@@ -16674,7 +16674,7 @@ components:
             - max_length
             - max_items
             - max
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         maximum:
           type: integer
           example: 8
@@ -16907,7 +16907,7 @@ components:
         - saml
       description: Specifies the type of identity provider.
       example: oidc
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     IdentityProviderLoginPath:
       title: Identity Provider Login Path Property
       type: string
@@ -17420,7 +17420,7 @@ components:
             - '*'
           example: eu
           description: Region of the entity.
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
     SystemAccount:
       x-speakeasy-entity: SystemAccount
       title: System Account
@@ -17642,7 +17642,7 @@ components:
         - me
         - in
         - sg
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     GatewayVersion:
       title: Gateway Version
       description: Supported gateway version.
@@ -17662,7 +17662,7 @@ components:
         - medium
         - large
       description: Instance type name to indicate capacity.
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     ApiAccess:
       type: string
       enum:
@@ -17672,7 +17672,7 @@ components:
       description: Type of API access data-plane groups will support for a configuration.
       default: private+public
       example: private+public
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     InstanceType:
       title: Instance Type
       description: Resource parameters and pricing of a given supported instance type.
@@ -17821,7 +17821,7 @@ components:
         - aws
         - azure
       example: aws
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     ServerlessV1ProviderName:
       description: Name of cloud provider.
       type: string
@@ -18029,7 +18029,7 @@ components:
             - terminating
             - terminated
           description: State of the data-plane group.
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         state_metadata:
           type: object
           description: >
@@ -18247,7 +18247,7 @@ components:
       enum:
         - initializing
         - offline
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     NetworkState:
       x-speakeasy-terraform-ignore: true
       title: Network State
@@ -18260,7 +18260,7 @@ components:
         - terminating
         - terminated
       readOnly: true
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     NetworkStateMetadata:
       x-speakeasy-terraform-ignore: true
       title: Network State Metadata
@@ -18486,7 +18486,7 @@ components:
         - terminating
         - terminated
       readOnly: true
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     AwsResourceEndpointConfigState:
       title: AWS Resource Endpoint Config State
       type: string
@@ -18514,7 +18514,7 @@ components:
         - error
         - terminating
       readOnly: true
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     AwsTransitGatewayAttachmentConfig:
       title: AWS Transit Gateway Attachment Config
       type: object
@@ -19143,7 +19143,7 @@ components:
         - error
         - terminating
         - terminated
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     PatchAwsPrivateDnsResolver:
       description: Request schema for updating a Private DNS AWS Resolver.
       properties:
@@ -19679,7 +19679,7 @@ components:
         - terminated
         - error
       readOnly: true
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     CustomDomainName:
       title: Custom Domain Name
       type: string
@@ -19796,7 +19796,7 @@ components:
       enum:
         - verified
         - unverified
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     CustomDomainOnlineStatus:
       title: Custom Domain Online Status
       type: object
@@ -19861,7 +19861,7 @@ components:
         - count/networks.not-offline
         - count/data-planes-estimate
         - count/serverless-data-planes-estimate
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     ResourceQuotaName:
       type: string
       description: The human-readable name of this resource quota.
@@ -20435,7 +20435,7 @@ components:
         - READ
         - UNREAD
         - ARCHIVED
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     NotificationRegion:
       type: string
       description: Region associated to a notification.
@@ -20446,7 +20446,7 @@ components:
         - ME
         - IN
         - '*'
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     NotificationChannel:
       type: object
       description: Channel subscription details for an event.
@@ -20463,7 +20463,7 @@ components:
       enum:
         - EMAIL
         - IN_APP
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     NotificationNamespace:
       type: string
       enum:
@@ -20472,7 +20472,7 @@ components:
         - dev-portal
         - cloud-gateways
         - gateway-manager
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     EntityTypes:
       type: string
       enum:
@@ -20482,7 +20482,7 @@ components:
         - dev-portal
         - dataplane-group
         - dataplane
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     UserConfiguration:
       description: Properties of an event.
       type: object
@@ -20909,7 +20909,7 @@ components:
         - curity
         - okta
         - http
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     DcrProviderBase:
       type: object
       description: Properties common to all DCR Providers.
@@ -21272,7 +21272,7 @@ components:
           enum:
             - success
             - failed
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         errors:
           type: array
           items:
@@ -21909,7 +21909,7 @@ components:
             - control_plane_error_plugin_conflict
             - control_plane_error_data_constraint_error
             - control_plane_error_implementation_not_found
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         message:
           type: string
         info:
@@ -21956,7 +21956,7 @@ components:
         - unpublished
       description: If `status=published` the document will be visible in your live portal
       default: unpublished
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     ApiDocumentParentDocumentId:
       title: API Document Parent Document ID
       type: string
@@ -22100,7 +22100,7 @@ components:
                 - oas3
                 - asyncapi
               readOnly: true
-              x-speakeasy-unknown-values: true
+              x-speakeasy-unknown-values: allow
             validation_messages:
               type: array
               description: The errors that occurred while parsing the API version spec.
@@ -22200,7 +22200,7 @@ components:
             - oas2
             - oas3
             - asyncapi
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         created_at:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
@@ -22252,7 +22252,7 @@ components:
 
         Private API publications require authentication to retrieve information
         about them.
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     ApiPublicationAuthStrategyIds:
       title: API Publication Auth Strategy IDs
       type: array
@@ -22672,7 +22672,7 @@ components:
         - oas2
         - oas3
         - asyncapi
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     UnsupportedMediaTypeError:
       allOf:
         - $ref: '#/components/schemas/BaseError'
@@ -22698,7 +22698,7 @@ components:
         The type of entity that is being published. Can be either an API or an
         API Package.
       example: api
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     PortalImageDataUri:
       title: PortalImageDataUri
       type: string
@@ -22884,7 +22884,7 @@ components:
         - revoked
         - rejected
       example: approved
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     MovePageRequestPayload:
       type: object
       title: MovePage
@@ -22972,7 +22972,7 @@ components:
       enum:
         - public
         - private
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     PublishedStatus:
       title: PublishedStatus
       description: >-
@@ -22983,7 +22983,7 @@ components:
       enum:
         - published
         - unpublished
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     Description:
       title: ResourceDescription
       type: string
@@ -23001,7 +23001,7 @@ components:
         - public
         - private
       example: public
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     SnippetVisibilityStatus:
       title: PageVisibilityStatus
       description: >
@@ -23014,7 +23014,7 @@ components:
         - public
         - private
       example: public
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     UpdatePortalPageRequest:
       title: UpdatePortalPageRequest
       description: Update a page in a portal.
@@ -23772,7 +23772,7 @@ components:
         - revoked
         - rejected
       example: approved
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     UpdateApplicationRegistrationRequest:
       title: UpdateApplicationRegistrationRequest
       additionalProperties: false
@@ -23950,7 +23950,7 @@ components:
       enum:
         - http
         - custom_certificate
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     PortalCustomDomainVerificationStatus:
       title: PortalCustomDomainVerificationStatus
       type: string
@@ -23959,7 +23959,7 @@ components:
         - verified
         - pending
         - error
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     PortalCustomDomainCnameStatus:
       title: PortalCustomDomainCnameStatus
       type: string
@@ -23967,7 +23967,7 @@ components:
       enum:
         - verified
         - pending
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     PortalCustomDomainValidationErrors:
       title: PortalCustomDomainValidationErrors
       type: array
@@ -24345,7 +24345,7 @@ components:
             - '*'
           example: eu
           description: Region of the entity.
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
       example:
         role_name: API Viewer
         entity_id: 18ee2573-dec0-4b83-be99-fa7700bcdc61
@@ -24662,7 +24662,7 @@ components:
             - '*'
           example: eu
           description: Region of the entity.
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
       example:
         id: 1a3c2169-27f8-4594-926b-41df3432d5dc
         role_name: API Viewer
@@ -24845,7 +24845,7 @@ components:
         - temporary_failure
         - not_started
       readOnly: true
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     EmailDomainVerification:
       type: object
       properties:
@@ -24934,7 +24934,7 @@ components:
         - account-access-revoked
       description: |
         Short name email template name.
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     EmailTemplateVariableName:
       type: string
       enum:
@@ -24950,7 +24950,7 @@ components:
         - application_name
       description: |
         Enum for available portal email template variables.
-      x-speakeasy-unknown-values: true
+      x-speakeasy-unknown-values: allow
     DefaultEmailTemplate:
       type: object
       properties:
@@ -25129,7 +25129,7 @@ components:
           enum:
             - public
             - private
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         external:
           description: When clicked, open the link in a new window
           type: boolean
@@ -25172,7 +25172,7 @@ components:
                 - light
                 - dark
                 - system
-              x-speakeasy-unknown-values: true
+              x-speakeasy-unknown-values: allow
             colors:
               type: object
               additionalProperties: false
@@ -25319,7 +25319,7 @@ components:
           enum:
             - client_credentials
             - self_managed_client_credentials
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         auth_methods:
           $ref: '#/components/schemas/AuthMethods'
         available_scopes:
@@ -26161,7 +26161,7 @@ components:
             - RS384
             - RS512
           nullable: true
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         consumer:
           type: object
           nullable: true
@@ -26242,7 +26242,7 @@ components:
             - RS384
             - RS512
           nullable: true
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         consumer:
           type: object
           nullable: true
@@ -27040,7 +27040,7 @@ components:
                 - any
                 - master
                 - slave
-              x-speakeasy-unknown-values: true
+              x-speakeasy-unknown-values: allow
             sentinel_username:
               description: >-
                 Sentinel username to authenticate with a Redis Sentinel
@@ -27292,7 +27292,7 @@ components:
               - ws
               - wss
             type: string
-            x-speakeasy-unknown-values: true
+            x-speakeasy-unknown-values: allow
           default:
             - grpc
             - grpcs
@@ -27522,7 +27522,7 @@ components:
               - ws
               - wss
             type: string
-            x-speakeasy-unknown-values: true
+            x-speakeasy-unknown-values: allow
           default:
             - grpc
             - grpcs
@@ -27643,7 +27643,7 @@ components:
             - 308
             - 426
           nullable: true
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         id:
           description: A string representing a UUID (universally unique identifier).
           type: string
@@ -27668,7 +27668,7 @@ components:
             - v0
             - v1
           nullable: true
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         preserve_host:
           description: >-
             When matching a Route via one of the `hosts` domain names, use the
@@ -27710,7 +27710,7 @@ components:
               - ws
               - wss
             type: string
-            x-speakeasy-unknown-values: true
+            x-speakeasy-unknown-values: allow
           default:
             - http
             - https
@@ -27856,7 +27856,7 @@ components:
             - 308
             - 426
           nullable: true
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         id:
           description: A string representing a UUID (universally unique identifier).
           type: string
@@ -27892,7 +27892,7 @@ components:
             - v0
             - v1
           nullable: true
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         paths:
           description: A list of paths that match this Route.
           type: array
@@ -27936,7 +27936,7 @@ components:
               - ws
               - wss
             type: string
-            x-speakeasy-unknown-values: true
+            x-speakeasy-unknown-values: allow
           default:
             - http
             - https
@@ -28273,7 +28273,7 @@ components:
             - ws
             - wss
           nullable: true
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         read_timeout:
           description: >-
             The timeout in milliseconds between two successive read operations
@@ -28562,7 +28562,7 @@ components:
             - round-robin
             - sticky-sessions
           nullable: true
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         client_certificate:
           description: >-
             If set, the certificate to be used as client certificate while TLS
@@ -28596,7 +28596,7 @@ components:
             - query_arg
             - uri_capture
           nullable: true
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         hash_fallback_header:
           description: >-
             The header name to take the value from as hash input. Only required
@@ -28639,7 +28639,7 @@ components:
             - query_arg
             - uri_capture
           nullable: true
-          x-speakeasy-unknown-values: true
+          x-speakeasy-unknown-values: allow
         hash_on_cookie:
           description: >-
             The cookie name to take the value from as hash input. Only required
@@ -28851,7 +28851,7 @@ components:
                     - http
                     - https
                     - tcp
-                  x-speakeasy-unknown-values: true
+                  x-speakeasy-unknown-values: allow
                 unhealthy:
                   type: object
                   default:
@@ -29004,7 +29004,7 @@ components:
                     - http
                     - https
                     - tcp
-                  x-speakeasy-unknown-values: true
+                  x-speakeasy-unknown-values: allow
                 unhealthy:
                   type: object
                   default:
@@ -29607,7 +29607,7 @@ components:
                   - Upstream Admin
                   - Vault Admin
                   - Viewer
-                x-speakeasy-unknown-values: true
+                x-speakeasy-unknown-values: allow
               entity_id:
                 type: string
                 format: uuid
@@ -29633,7 +29633,7 @@ components:
                   - Networks
                   - Portals
                   - Service Hub
-                x-speakeasy-unknown-values: true
+                x-speakeasy-unknown-values: allow
               entity_region:
                 type: string
                 enum:
@@ -29646,7 +29646,7 @@ components:
                   - '*'
                 example: eu
                 description: Region of the team.
-                x-speakeasy-unknown-values: true
+                x-speakeasy-unknown-values: allow
       description: The request schema for assigning a role.
     InviteUser:
       content:
@@ -30092,7 +30092,7 @@ components:
                   - oas2
                   - oas3
                   - asyncapi
-                x-speakeasy-unknown-values: true
+                x-speakeasy-unknown-values: allow
               created_at:
                 $ref: '#/components/schemas/CreatedAt'
               updated_at:
@@ -30150,7 +30150,7 @@ components:
                       - oas3
                       - asyncapi
                     readOnly: true
-                    x-speakeasy-unknown-values: true
+                    x-speakeasy-unknown-values: allow
                   validation_messages:
                     type: array
                     description: >-
@@ -30435,7 +30435,7 @@ components:
                 enum:
                   - public
                   - private
-                x-speakeasy-unknown-values: true
+                x-speakeasy-unknown-values: allow
               default_page_visibility:
                 type: string
                 description: >-
@@ -30446,7 +30446,7 @@ components:
                 enum:
                   - public
                   - private
-                x-speakeasy-unknown-values: true
+                x-speakeasy-unknown-values: allow
               default_application_auth_strategy_id:
                 type: string
                 format: uuid
@@ -30561,7 +30561,7 @@ components:
                 enum:
                   - public
                   - private
-                x-speakeasy-unknown-values: true
+                x-speakeasy-unknown-values: allow
               default_page_visibility:
                 type: string
                 description: >-
@@ -30572,7 +30572,7 @@ components:
                 enum:
                   - public
                   - private
-                x-speakeasy-unknown-values: true
+                x-speakeasy-unknown-values: allow
               default_application_auth_strategy_id:
                 type: string
                 format: uuid
