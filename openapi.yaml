@@ -26842,8 +26842,7 @@ components:
           default: null
         type:
           type: string
-          enum:
-            - redis-ce
+          const: redis-ce
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -27107,8 +27106,7 @@ components:
           default: null
         type:
           type: string
-          enum:
-            - redis-ee
+          const: redis-ee
         updated_at:
           description: Unix epoch when the resource was last updated.
           type: integer
@@ -27161,8 +27159,6 @@ components:
           type: object
           additionalProperties: true
           nullable: true
-          x-speakeasy-param-computed: false
-          default: null
         consumer:
           description: >-
             If set, the plugin will activate only for requests where the
@@ -27391,8 +27387,6 @@ components:
           type: object
           additionalProperties: true
           nullable: true
-          x-speakeasy-param-computed: false
-          default: null
         consumer:
           description: >-
             If set, the plugin will activate only for requests where the
@@ -29198,8 +29192,6 @@ components:
           type: object
           additionalProperties: true
           nullable: true
-          x-speakeasy-param-computed: false
-          default: null
         created_at:
           description: Unix epoch when the resource was created.
           type: integer
