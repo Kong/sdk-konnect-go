@@ -13801,6 +13801,7 @@ components:
                 description: ID of the system account access token.
                 format: uuid
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
               name:
                 type: string
                 description: Name of the system account access token.
@@ -13812,6 +13813,7 @@ components:
                 description: Timestamp of when the system account access token was created.
                 format: date-time
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
               updated_at:
                 type: string
                 description: >-
@@ -13819,6 +13821,7 @@ components:
                   updated.
                 format: date-time
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
               expires_at:
                 type: string
                 description: Timestamp of when the system account access token will expire.
@@ -13829,6 +13832,7 @@ components:
                     - github.com/Kong/shared-speakeasy/customtypes/timetypes
                   schemaType: timetypes.RFC3339PreciseToSecondType{}
                   valueType: timetypes.RFC3339PreciseToSecond
+                x-speakeasy-param-suppress-computed-diff: true
               last_used_at:
                 type: string
                 description: >-
@@ -13836,12 +13840,14 @@ components:
                   used.
                 format: date-time
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
               token:
                 type: string
                 description: The token of the system account access token.
                 readOnly: true
                 x-speakeasy-param-sensitive: true
                 x-sensitive: true
+                x-speakeasy-param-suppress-computed-diff: true
     MeOrganization:
       description: Me Organization
       content:
@@ -13855,6 +13861,7 @@ components:
                 description: UUID of the organization.
                 format: uuid
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
               name:
                 type: string
                 description: Name of the organization.
@@ -13880,11 +13887,13 @@ components:
                 description: Date the organization was created.
                 format: date-time
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
               updated_at:
                 type: string
                 description: Date the organization was last updated.
                 format: date-time
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
               state:
                 type: string
                 description: State of the organization
@@ -14565,6 +14574,7 @@ components:
                 example: 7710d5c4-d902-410b-992f-18b814155b53
                 description: The API specification identifier.
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
               content:
                 type: string
                 description: >
@@ -14590,6 +14600,7 @@ components:
                   properties:
                     message:
                       type: string
+                x-speakeasy-param-suppress-computed-diff: true
               type:
                 title: API Spec Type
                 type: string
@@ -14640,6 +14651,7 @@ components:
                       example: 7710d5c4-d902-410b-992f-18b814155b53
                       description: The API specification identifier.
                       readOnly: true
+                      x-speakeasy-param-suppress-computed-diff: true
                     type:
                       $ref: '#/components/schemas/ApiSpecType'
                     created_at:
@@ -14666,6 +14678,7 @@ components:
                 example: 7710d5c4-d902-410b-992f-18b814155b53
                 description: The API version identifier.
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
               version:
                 type: string
                 description: The version of the api.
@@ -14702,6 +14715,7 @@ components:
                       - oas3
                       - asyncapi
                     readOnly: true
+                    x-speakeasy-param-suppress-computed-diff: true
                     x-speakeasy-unknown-values: allow
                   validation_messages:
                     type: array
@@ -14717,6 +14731,7 @@ components:
                       properties:
                         message:
                           type: string
+                    x-speakeasy-param-suppress-computed-diff: true
                 x-speakeasy-param-computed: false
                 nullable: true
                 default: null
@@ -14759,6 +14774,7 @@ components:
                       example: 7710d5c4-d902-410b-992f-18b814155b53
                       description: The API version identifier.
                       readOnly: true
+                      x-speakeasy-param-suppress-computed-diff: true
                     version:
                       type: string
                       description: The version of this api spec.
@@ -14778,6 +14794,7 @@ components:
                       $ref: '#/components/schemas/CreatedAt'
                     updated_at:
                       $ref: '#/components/schemas/UpdatedAt'
+                  x-speakeasy-param-suppress-computed-diff: true
                   required:
                     - id
                     - version
@@ -15087,12 +15104,14 @@ components:
                       type: string
                       format: hostname
                       readOnly: true
+                      x-speakeasy-param-suppress-computed-diff: true
                     canonical_domain:
                       type: string
                       format: hostname
                       description: The canonical domain of the developer portal
                       nullable: false
                       readOnly: true
+                      x-speakeasy-param-suppress-computed-diff: true
                     labels:
                       $ref: '#/components/schemas/Labels'
                   required:
@@ -15228,12 +15247,14 @@ components:
                 type: string
                 format: hostname
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
               canonical_domain:
                 type: string
                 format: hostname
                 description: The canonical domain of the developer portal
                 nullable: false
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
               labels:
                 $ref: '#/components/schemas/Labels'
             required:
@@ -15463,6 +15484,7 @@ components:
                   - completed
                   - failed
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
                 x-speakeasy-unknown-values: allow
               updated_at:
                 type: string
@@ -15471,6 +15493,7 @@ components:
                   0001-01-01T00:00:0Z.
                 format: date-time
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
     PortalReplayJobBadRequest:
       description: Bad Request
       content:
@@ -16161,12 +16184,14 @@ components:
               example: https://acfe5f253f.cp.konghq.com
               description: Control Plane Endpoint.
               readOnly: true
+              x-speakeasy-param-suppress-computed-diff: true
             telemetry_endpoint:
               type: string
               format: url
               example: https://acfe5f253f.tp0.konghq.com
               description: Telemetry Endpoint.
               readOnly: true
+              x-speakeasy-param-suppress-computed-diff: true
             cluster_type:
               type: string
               description: >-
@@ -16180,6 +16205,7 @@ components:
                 - CLUSTER_TYPE_SERVERLESS
                 - CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY
               readOnly: true
+              x-speakeasy-param-suppress-computed-diff: true
               x-speakeasy-unknown-values: allow
             auth_type:
               type: string
@@ -16191,12 +16217,14 @@ components:
                 - pinned_client_certs
                 - pki_client_certs
               readOnly: true
+              x-speakeasy-param-suppress-computed-diff: true
               x-speakeasy-unknown-values: allow
             cloud_gateway:
               type: boolean
               description: Whether the Control Plane can be used for cloud-gateways.
               readOnly: true
               nullable: false
+              x-speakeasy-param-suppress-computed-diff: true
             proxy_urls:
               $ref: '#/components/schemas/ProxyURLs'
           required:
@@ -16212,6 +16240,7 @@ components:
           example: '2022-11-04T20:10:06.927Z'
           description: An ISO-8604 timestamp representation of control plane creation date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           x-speakeasy-terraform-ignore: true
           type: string
@@ -16219,6 +16248,7 @@ components:
           example: '2022-11-04T20:10:06.927Z'
           description: An ISO-8604 timestamp representation of control plane update date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       required:
         - id
         - name
@@ -16243,6 +16273,7 @@ components:
           example: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
           description: The control plane group ID.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         created_at:
           type: string
           format: date-time
@@ -16251,6 +16282,7 @@ components:
             An ISO-8604 timestamp representation of control plane group status
             creation date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
@@ -16259,6 +16291,7 @@ components:
             An ISO-8604 timestamp representation of control plane group status
             update date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         conflicts:
           type: array
           maxItems: 256
@@ -16276,6 +16309,7 @@ components:
             - OK
             - CONFLICT
             - UNKNOWN
+          x-speakeasy-param-suppress-computed-diff: true
           x-speakeasy-unknown-values: allow
     GroupConflict:
       title: GroupConflict
@@ -16294,6 +16328,7 @@ components:
           example: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
           description: The ID of a control plane member of a control plane group.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         description:
           type: string
           example: >-
@@ -16301,6 +16336,7 @@ components:
             Name=foo
           description: The description of the conflict.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         resource:
           $ref: '#/components/schemas/GroupConflictResource'
     GroupConflictResource:
@@ -16314,11 +16350,13 @@ components:
           example: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
           description: The ID of the resource.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         type:
           type: string
           example: service
           description: The type of the resource.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       required:
         - id
         - type
@@ -16336,6 +16374,7 @@ components:
             Boolean indicating if a control plane is a member of a control plane
             group.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       required:
         - is_member
     Labels:
@@ -16533,6 +16572,7 @@ components:
             body to child properties in a frontend UI. Must be returned as an
             integer.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         title:
           type: string
           description: |
@@ -16540,10 +16580,12 @@ components:
             change between occurences of a problem, except for localization.
             Should be provided as "Sentence case" for direct use in the UI.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         type:
           type: string
           description: The error type.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         instance:
           type: string
           description: |
@@ -16551,6 +16593,7 @@ components:
             kong:trace:<correlation_id>. This helps us find the relevant logs
             when a customer reports an issue.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         detail:
           type: string
           description: >
@@ -16565,6 +16608,7 @@ components:
 
             provided as "Sentence case" for direct use in the UI.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
     InvalidRules:
       description: invalid parameters rules
       type: string
@@ -16593,6 +16637,7 @@ components:
         - is_supported_network_cidr_block
         - is_supported_provider_region
         - type
+      x-speakeasy-param-suppress-computed-diff: true
       x-speakeasy-unknown-values: allow
     InvalidParameterStandard:
       type: object
@@ -16602,6 +16647,7 @@ components:
           type: string
           example: name
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         rule:
           $ref: '#/components/schemas/InvalidRules'
         source:
@@ -16614,6 +16660,7 @@ components:
           type: string
           example: is a required field
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       required:
         - field
         - reason
@@ -16625,6 +16672,7 @@ components:
           type: string
           example: name
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         rule:
           description: invalid parameters rules
           type: string
@@ -16638,6 +16686,7 @@ components:
             - min_symbols
             - min_items
             - min
+          x-speakeasy-param-suppress-computed-diff: true
           x-speakeasy-unknown-values: allow
         minimum:
           type: integer
@@ -16652,6 +16701,7 @@ components:
           type: string
           example: must have at least 8 characters
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       required:
         - field
         - reason
@@ -16665,6 +16715,7 @@ components:
           type: string
           example: name
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         rule:
           description: invalid parameters rules
           type: string
@@ -16674,6 +16725,7 @@ components:
             - max_length
             - max_items
             - max
+          x-speakeasy-param-suppress-computed-diff: true
           x-speakeasy-unknown-values: allow
         maximum:
           type: integer
@@ -16688,6 +16740,7 @@ components:
           type: string
           example: must not have more than 8 characters
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       required:
         - field
         - reason
@@ -16701,6 +16754,7 @@ components:
           type: string
           example: name
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         rule:
           description: invalid parameters rules
           type: string
@@ -16708,10 +16762,12 @@ components:
           nullable: false
           enum:
             - enum
+          x-speakeasy-param-suppress-computed-diff: true
         reason:
           type: string
           example: is a required field
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         choices:
           type: array
           uniqueItems: true
@@ -16719,6 +16775,7 @@ components:
           nullable: false
           minItems: 1
           items: {}
+          x-speakeasy-param-suppress-computed-diff: true
         source:
           type: string
           example: body
@@ -16738,6 +16795,7 @@ components:
           type: string
           example: name
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         rule:
           description: invalid parameters rules
           type: string
@@ -16745,16 +16803,19 @@ components:
           nullable: true
           enum:
             - dependent_fields
+          x-speakeasy-param-suppress-computed-diff: true
         reason:
           type: string
           example: is a required field
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         dependents:
           type: array
           uniqueItems: true
           nullable: true
           items: {}
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
           x-speakeasy-param-computed: false
           default: null
         source:
@@ -17100,11 +17161,13 @@ components:
           format: path
           example: /api/v2/developer/authenticate/saml/metadata
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         sp_entity_id:
           type: string
           description: The entity ID of the service provider (SP).
           example: https://cloud.konghq.com/sp/00000000-0000-0000-0000-000000000000
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         login_url:
           type: string
           description: >-
@@ -17112,6 +17175,7 @@ components:
             provider.
           example: https://cloud.konghq.com/login/the-saml-konnect-org
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         callback_url:
           type: string
           description: >-
@@ -17120,6 +17184,7 @@ components:
           format: path
           example: /api/v2/developer/authenticate/saml/acs
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       additionalProperties: false
     IdP:
       title: IdP Configuration
@@ -17200,6 +17265,7 @@ components:
           example: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
           description: The User ID.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         email:
           type: string
           format: email
@@ -17231,6 +17297,7 @@ components:
           default: true
           description: Returns True if a user has verified their email address.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         inferred_region:
           type: string
           description: >-
@@ -17239,12 +17306,14 @@ components:
             native authentication.
           example: us
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         created_at:
           type: string
           format: date-time
           example: '2022-02-07T17:46:57.52Z'
           description: The time stamp for the date the account was registered.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
@@ -17253,6 +17322,7 @@ components:
             A Unix timestamp representation of the most recent change to the
             User account.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
     Team:
       x-speakeasy-entity: Team
       title: Team
@@ -17274,6 +17344,7 @@ components:
           example: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
           description: The team ID.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         name:
           type: string
           pattern: ^[\w \W]+$
@@ -17299,6 +17370,7 @@ components:
             teams that can manage Konnect objects, like "Organization Admin", or
             "Service"
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         labels:
           $ref: '#/components/schemas/Labels'
         created_at:
@@ -17307,6 +17379,7 @@ components:
           example: '1992-02-07T17:46:57.52Z'
           description: A Unix timestamp representation of team creation.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
@@ -17315,6 +17388,7 @@ components:
             A Unix timestamp representation of the most recent change to the
             team object in Konnect.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
     TeamMapping:
       title: TeamMapping
       type: object
@@ -17439,6 +17513,7 @@ components:
           format: uuid
           description: ID of the system account.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         name:
           type: string
           description: Name of the system account.
@@ -17456,11 +17531,13 @@ components:
           format: date-time
           description: Timestamp of when the system account was created.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
           description: Timestamp of when the system account was last updated.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         konnect_managed:
           type: boolean
           description: The system account is managed by Konnect (true/false).
@@ -17485,6 +17562,7 @@ components:
           format: uuid
           description: ID of the system account access token.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         name:
           type: string
           description: Name of the system account access token.
@@ -17496,11 +17574,13 @@ components:
           format: date-time
           description: Timestamp of when the system account access token was created.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
           description: Timestamp of when the system account access token was last updated.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         expires_at:
           type: string
           format: date-time
@@ -17518,12 +17598,14 @@ components:
           format: date-time
           description: Timestamp of when the system account access token was last used.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
     UUID:
       type: string
       format: uuid
       example: 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7
       description: Contains a unique identifier used for this resource.
       readOnly: true
+      x-speakeasy-param-suppress-computed-diff: true
     IdentityProviderEnabled:
       title: Identity Provider Enabled Property
       type: boolean
@@ -17577,6 +17659,7 @@ components:
       format: uuid
       example: edaf40f9-9fb0-4ffe-bb74-4e763a6bd471
       readOnly: true
+      x-speakeasy-param-suppress-computed-diff: true
     DataPlaneGroupId:
       type: string
       format: uuid
@@ -17585,11 +17668,13 @@ components:
         of data-planes.
       example: cbb8872a-1f83-4806-bf69-fdf0b4783c7e
       readOnly: true
+      x-speakeasy-param-suppress-computed-diff: true
     CustomDomainId:
       type: string
       format: uuid
       example: 39ed3790-085d-4605-9627-f96d86aaf425
       readOnly: true
+      x-speakeasy-param-suppress-computed-diff: true
     NetworkId:
       x-speakeasy-param-suppress-computed-diff: true
       type: string
@@ -17600,11 +17685,13 @@ components:
       format: uuid
       example: 0850820b-d153-4a2a-b9be-7d2204779139
       readOnly: true
+      x-speakeasy-param-suppress-computed-diff: true
     PrivateDnsId:
       type: string
       format: uuid
       example: 1850820b-c69f-4a2a-b9be-bbcdbc5cd618
       readOnly: true
+      x-speakeasy-param-suppress-computed-diff: true
     ProviderAccountId:
       type: string
       format: uuid
@@ -17614,21 +17701,25 @@ components:
       format: uuid
       example: 9678f205-49a1-47bb-82d9-d01cafa42a0d
       readOnly: true
+      x-speakeasy-param-suppress-computed-diff: true
     DefaultResourceQuotaId:
       type: string
       format: uuid
       example: cc504063-f3bb-4e09-8e32-bbcdbc5cd618
       readOnly: true
+      x-speakeasy-param-suppress-computed-diff: true
     ResourceConfigurationId:
       type: string
       format: uuid
       example: 9678f205-49a1-47bb-82d9-d01cafa42a0d
       readOnly: true
+      x-speakeasy-param-suppress-computed-diff: true
     DefaultResourceConfigurationId:
       type: string
       format: uuid
       example: cc504063-f3bb-4e09-8e32-bbcdbc5cd618
       readOnly: true
+      x-speakeasy-param-suppress-computed-diff: true
     ControlPlaneGeo:
       title: Control-Plane Geo
       description: >-
@@ -17655,6 +17746,7 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/GatewayVersion'
+      x-speakeasy-param-suppress-computed-diff: true
     InstanceTypeName:
       type: string
       enum:
@@ -17708,6 +17800,7 @@ components:
         - hourly_cost
         - v_cpu
         - gb_memory
+      x-speakeasy-param-suppress-computed-diff: true
     InstanceTypes:
       title: Instance Types
       description: >-
@@ -18094,6 +18187,7 @@ components:
             An RFC-3339 timestamp representation of data-plane group creation
             date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
@@ -18102,6 +18196,7 @@ components:
             An RFC-3339 timestamp representation of data-plane group update
             date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       required:
         - id
         - provider
@@ -18153,18 +18248,21 @@ components:
             Positive, monotonically increasing version integer, to serialize
             configuration changes.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         created_at:
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: An RFC-3339 timestamp representation of configuration creation date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: An RFC-3339 timestamp representation of configuration update date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         control_plane_id:
           $ref: '#/components/schemas/ControlPlaneId'
         control_plane_geo:
@@ -18217,6 +18315,7 @@ components:
           type: string
           description: ID of the cloud provider account.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         created_at:
           type: string
           format: date-time
@@ -18225,6 +18324,7 @@ components:
             An RFC-3339 timestamp representation of provider account creation
             date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
@@ -18233,6 +18333,7 @@ components:
             An RFC-3339 timestamp representation of provider account update
             date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       required:
         - id
         - provider
@@ -18260,6 +18361,7 @@ components:
         - terminating
         - terminated
       readOnly: true
+      x-speakeasy-param-suppress-computed-diff: true
       x-speakeasy-unknown-values: allow
     NetworkStateMetadata:
       x-speakeasy-terraform-ignore: true
@@ -18289,6 +18391,7 @@ components:
           nullable: true
           default: null
       readOnly: true
+      x-speakeasy-param-suppress-computed-diff: true
     NetworkProviderMetadata:
       x-speakeasy-param-suppress-computed-diff: true
       title: Network Provider Metadata
@@ -18486,6 +18589,7 @@ components:
         - terminating
         - terminated
       readOnly: true
+      x-speakeasy-param-suppress-computed-diff: true
       x-speakeasy-unknown-values: allow
     AwsResourceEndpointConfigState:
       title: AWS Resource Endpoint Config State
@@ -18514,6 +18618,7 @@ components:
         - error
         - terminating
       readOnly: true
+      x-speakeasy-param-suppress-computed-diff: true
       x-speakeasy-unknown-values: allow
     AwsTransitGatewayAttachmentConfig:
       title: AWS Transit Gateway Attachment Config
@@ -18798,18 +18903,21 @@ components:
             Private DNS.
           readOnly: true
           example: 1
+          x-speakeasy-param-suppress-computed-diff: true
         created_at:
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: An RFC-3339 timestamp representation of Private DNS creation date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: An RFC-3339 timestamp representation of Private DNS update date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         name:
           $ref: '#/components/schemas/PrivateDnsName'
         private_dns_attachment_config:
@@ -18907,18 +19015,21 @@ components:
             Private DNS.
           readOnly: true
           example: 1
+          x-speakeasy-param-suppress-computed-diff: true
         created_at:
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: An RFC-3339 timestamp representation of Private DNS creation date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: An RFC-3339 timestamp representation of Private DNS update date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         name:
           $ref: '#/components/schemas/PrivateDnsName'
         private_dns_attachment_config:
@@ -18974,18 +19085,21 @@ components:
             Private DNS.
           readOnly: true
           example: 1
+          x-speakeasy-param-suppress-computed-diff: true
         created_at:
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: An RFC-3339 timestamp representation of Private DNS creation date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: An RFC-3339 timestamp representation of Private DNS update date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         name:
           $ref: '#/components/schemas/PrivateDnsName'
       required:
@@ -19039,18 +19153,21 @@ components:
             Private DNS.
           readOnly: true
           example: 1
+          x-speakeasy-param-suppress-computed-diff: true
         created_at:
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: An RFC-3339 timestamp representation of Private DNS creation date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: An RFC-3339 timestamp representation of Private DNS update date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         name:
           $ref: '#/components/schemas/PrivateDnsName'
         private_dns_attachment_config:
@@ -19213,6 +19330,7 @@ components:
               nullable: true
               default: null
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         entity_version:
           type: integer
           description: >
@@ -19222,6 +19340,7 @@ components:
             transit gateway.
           readOnly: true
           example: 1
+          x-speakeasy-param-suppress-computed-diff: true
         created_at:
           type: string
           format: date-time
@@ -19230,12 +19349,14 @@ components:
             An RFC-3339 timestamp representation of transit gateway creation
             date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: An RFC-3339 timestamp representation of transit gateway update date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       required:
         - name
         - cidr_blocks
@@ -19291,6 +19412,7 @@ components:
               nullable: true
               default: null
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         entity_version:
           type: integer
           description: >
@@ -19300,6 +19422,7 @@ components:
             transit gateway.
           readOnly: true
           example: 1
+          x-speakeasy-param-suppress-computed-diff: true
         created_at:
           type: string
           format: date-time
@@ -19308,12 +19431,14 @@ components:
             An RFC-3339 timestamp representation of transit gateway creation
             date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: An RFC-3339 timestamp representation of transit gateway update date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       required:
         - name
         - cidr_blocks
@@ -19367,6 +19492,7 @@ components:
               nullable: true
               default: null
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         entity_version:
           type: integer
           description: >
@@ -19376,6 +19502,7 @@ components:
             transit gateway.
           readOnly: true
           example: 1
+          x-speakeasy-param-suppress-computed-diff: true
         created_at:
           type: string
           format: date-time
@@ -19384,12 +19511,14 @@ components:
             An RFC-3339 timestamp representation of transit gateway creation
             date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: An RFC-3339 timestamp representation of transit gateway update date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       required:
         - name
         - transit_gateway_attachment_config
@@ -19442,6 +19571,7 @@ components:
               nullable: true
               default: null
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         entity_version:
           type: integer
           description: >
@@ -19451,6 +19581,7 @@ components:
             transit gateway.
           readOnly: true
           example: 1
+          x-speakeasy-param-suppress-computed-diff: true
         created_at:
           type: string
           format: date-time
@@ -19459,12 +19590,14 @@ components:
             An RFC-3339 timestamp representation of transit gateway creation
             date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: An RFC-3339 timestamp representation of transit gateway update date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       required:
         - name
         - transit_gateway_attachment_config
@@ -19517,6 +19650,7 @@ components:
               nullable: true
               default: null
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         entity_version:
           type: integer
           description: >
@@ -19526,6 +19660,7 @@ components:
             transit gateway.
           readOnly: true
           example: 1
+          x-speakeasy-param-suppress-computed-diff: true
         created_at:
           type: string
           format: date-time
@@ -19534,12 +19669,14 @@ components:
             An RFC-3339 timestamp representation of transit gateway creation
             date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: An RFC-3339 timestamp representation of transit gateway update date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       required:
         - name
         - transit_gateway_attachment_config
@@ -19679,6 +19816,7 @@ components:
         - terminated
         - error
       readOnly: true
+      x-speakeasy-param-suppress-computed-diff: true
       x-speakeasy-unknown-values: allow
     CustomDomainName:
       title: Custom Domain Name
@@ -19711,6 +19849,7 @@ components:
             custom domain's control-plane.
           readOnly: true
           example: 3b7cbeee-fbec-440e-a5ef-89e7dec3b9d0
+          x-speakeasy-param-suppress-computed-diff: true
           x-speakeasy-param-computed: false
           default: null
         sni_id:
@@ -19724,6 +19863,7 @@ components:
             via the control-planes API for this custom domain's control-plane.
           readOnly: true
           example: a8f11ea8-af09-4422-9735-5d4f8910aba1
+          x-speakeasy-param-suppress-computed-diff: true
           x-speakeasy-param-computed: false
           default: null
         state:
@@ -19757,6 +19897,7 @@ components:
               nullable: true
               default: null
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         entity_version:
           type: integer
           description: >
@@ -19766,18 +19907,21 @@ components:
             domain.
           readOnly: true
           example: 1
+          x-speakeasy-param-suppress-computed-diff: true
         created_at:
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: An RFC-3339 timestamp representation of custom domain creation date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: An RFC-3339 timestamp representation of custom domain update date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       required:
         - id
         - control_plane_id
@@ -19796,6 +19940,7 @@ components:
       enum:
         - verified
         - unverified
+      x-speakeasy-param-suppress-computed-diff: true
       x-speakeasy-unknown-values: allow
     CustomDomainOnlineStatus:
       title: Custom Domain Online Status
@@ -19867,6 +20012,7 @@ components:
       description: The human-readable name of this resource quota.
       readOnly: true
       example: Active Networks
+      x-speakeasy-param-suppress-computed-diff: true
     ResourceQuotaDescription:
       type: string
       description: A more verbose description of what this resource quota enforces.
@@ -19874,6 +20020,7 @@ components:
       example: >-
         Across the organization, the aggregate number of active networks cannot
         exceed this value.
+      x-speakeasy-param-suppress-computed-diff: true
     ResourceQuotaValue:
       type: integer
       minimum: 0
@@ -19906,12 +20053,14 @@ components:
             An RFC-3339 timestamp representation of resource quota creation
             date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           description: An RFC-3339 timestamp representation of resource quota update date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       required:
         - id
         - resource
@@ -19950,6 +20099,7 @@ components:
             An RFC-3339 timestamp representation of default resource quota
             creation date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
@@ -19958,6 +20108,7 @@ components:
             An RFC-3339 timestamp representation of default resource quota
             update date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       required:
         - id
         - resource
@@ -19983,6 +20134,7 @@ components:
       description: The human-readable name of this resource configuration.
       readOnly: true
       example: Data Plane Group Idle Timeout Minutes
+      x-speakeasy-param-suppress-computed-diff: true
     ResourceConfigurationDescription:
       type: string
       description: A more verbose description of what this resource configuration enforces.
@@ -19990,6 +20142,7 @@ components:
       example: >-
         The number of minutes that a data plane group can be idle before it is
         automatically scaled down to zero instances.
+      x-speakeasy-param-suppress-computed-diff: true
     ConfigurationsFilterParameters:
       title: ConfigurationsFilterParameters
       type: object
@@ -20325,6 +20478,7 @@ components:
             An RFC-3339 timestamp representation of default resource
             configuration creation date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
@@ -20333,6 +20487,7 @@ components:
             An RFC-3339 timestamp representation of default resource
             configuration update date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       required:
         - id
         - qualifier
@@ -20944,6 +21099,7 @@ components:
           readOnly: true
           type: boolean
           description: At least one active auth strategy is using this DCR provider.
+          x-speakeasy-param-suppress-computed-diff: true
         dcr_config:
           type: object
           description: The DCR configuration for this DCR provider.
@@ -21772,6 +21928,7 @@ components:
           example: 9f5061ce-78f6-4452-9108-ad7c02821fd5
           description: The API identifier.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         name:
           type: string
           maxLength: 255
@@ -21822,6 +21979,7 @@ components:
             format: uuid
             description: The id of the API specification.
             example: 123e4567-e89b-12d3-a456-426614174000
+          x-speakeasy-param-suppress-computed-diff: true
         portals:
           readOnly: true
           type: array
@@ -21853,6 +22011,7 @@ components:
                 description: >-
                   The display name of the portal. This value will be the
                   portal's `name` in Portal API.
+          x-speakeasy-param-suppress-computed-diff: true
         labels:
           $ref: '#/components/schemas/Labels'
         attributes:
@@ -21938,6 +22097,7 @@ components:
       example: de5c9818-be5c-42e6-b514-e3d4bc30ddeb
       description: The API document identifier.
       readOnly: true
+      x-speakeasy-param-suppress-computed-diff: true
     ApiDocumentContent:
       title: API Document Content
       type: string
@@ -22064,6 +22224,7 @@ components:
           example: 7710d5c4-d902-410b-992f-18b814155b53
           description: The API version identifier.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         version:
           type: string
           description: The version of the api.
@@ -22100,6 +22261,7 @@ components:
                 - oas3
                 - asyncapi
               readOnly: true
+              x-speakeasy-param-suppress-computed-diff: true
               x-speakeasy-unknown-values: allow
             validation_messages:
               type: array
@@ -22113,6 +22275,7 @@ components:
                 properties:
                   message:
                     type: string
+              x-speakeasy-param-suppress-computed-diff: true
           x-speakeasy-param-computed: false
           nullable: true
           default: null
@@ -22134,6 +22297,7 @@ components:
           example: 7710d5c4-d902-410b-992f-18b814155b53
           description: The API version identifier.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         version:
           type: string
           description: The version of this api spec.
@@ -22153,6 +22317,7 @@ components:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
           $ref: '#/components/schemas/UpdatedAt'
+      x-speakeasy-param-suppress-computed-diff: true
     ApiSpec:
       title: API Specification
       type: object
@@ -22164,6 +22329,7 @@ components:
           example: 7710d5c4-d902-410b-992f-18b814155b53
           description: The API specification identifier.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         content:
           type: string
           description: >
@@ -22189,6 +22355,7 @@ components:
             properties:
               message:
                 type: string
+          x-speakeasy-param-suppress-computed-diff: true
         type:
           title: API Spec Type
           type: string
@@ -22294,12 +22461,14 @@ components:
           example: 9f5061ce-78f6-4452-9108-ad7c02821fd5
           description: The API identifier.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         portal_id:
           type: string
           format: uuid
           example: 7710d5c4-d902-410b-992f-18b814155b53
           description: The portal identifier.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         auto_approve_registrations:
           $ref: '#/components/schemas/AutoApproveRegistrations'
         visibility:
@@ -22355,6 +22524,7 @@ components:
           readOnly: true
           allOf:
             - $ref: '#/components/schemas/AuthStrategyApiSyncError'
+          x-speakeasy-param-suppress-computed-diff: true
     ApiImplementationListItem:
       title: API Implementation List Item
       description: An entity that implements an API
@@ -22384,6 +22554,7 @@ components:
           example: 9f5061ce-78f6-4452-9108-ad7c02821fd5
           description: The API identifier.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         service:
           $ref: '#/components/schemas/ApiImplementationService'
     ApiImplementation:
@@ -22451,6 +22622,7 @@ components:
                 description: A keyword describing the API under the attribute key
               api_count:
                 type: integer
+      x-speakeasy-param-suppress-computed-diff: true
     ApiAttributes:
       x-speakeasy-type-override: any
       title: API Attributes
@@ -22788,6 +22960,7 @@ components:
           format: uuid
           example: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         email:
           type: string
           format: email
@@ -22808,16 +22981,19 @@ components:
           type: boolean
           example: true
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         created_at:
           type: string
           format: date-time
           example: '2022-02-07T17:46:57.52Z'
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
           example: '2022-10-08T17:00:00.52Z'
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       example:
         id: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
         email: user@email.com
@@ -23496,6 +23672,7 @@ components:
           format: uuid
           example: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         email:
           type: string
           format: email
@@ -23579,12 +23756,14 @@ components:
             application.
           type: string
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         registration_count:
           description: >-
             The number of API registrations that are associated with the
             application. Registrations of any status are included in the count.
           type: number
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         dcr_provider:
           description: >-
             Information about the DCR provider this application uses, if using
@@ -23686,6 +23865,7 @@ components:
             application. Registrations of any status are included in the count.
           type: number
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
     ApplicationRegistration:
       title: ApplicationRegistration
       description: A application's registration for a specific version of an API.
@@ -23887,6 +24067,7 @@ components:
             An ISO-8601 timestamp representation of the ssl certificate upload
             date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         expires_at:
           type: string
           format: date-time
@@ -23895,12 +24076,14 @@ components:
             An ISO-8601 timestamp representation of the ssl certificate
             expiration date.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         skip_ca_check:
           type: boolean
           description: >
             True when the provided certificate chain is served as-is without
             validation against a public trust store.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       required:
         - domain_verification_method
         - verification_status
@@ -23959,6 +24142,7 @@ components:
         - verified
         - pending
         - error
+      x-speakeasy-param-suppress-computed-diff: true
       x-speakeasy-unknown-values: allow
     PortalCustomDomainCnameStatus:
       title: PortalCustomDomainCnameStatus
@@ -23967,6 +24151,7 @@ components:
       enum:
         - verified
         - pending
+      x-speakeasy-param-suppress-computed-diff: true
       x-speakeasy-unknown-values: allow
     PortalCustomDomainValidationErrors:
       title: PortalCustomDomainValidationErrors
@@ -23974,6 +24159,7 @@ components:
       readOnly: true
       items:
         type: string
+      x-speakeasy-param-suppress-computed-diff: true
     CreatePortalCustomDomainRequest:
       title: CreatePortalCustomDomainRequest
       type: object
@@ -24534,6 +24720,7 @@ components:
           format: uuid
           example: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         name:
           type: string
           pattern: ^[\w \W]+$
@@ -24554,11 +24741,13 @@ components:
           format: date-time
           example: '1992-02-07T17:46:57.52Z'
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         updated_at:
           type: string
           format: date-time
           example: '2022-02-07T17:00:00.52Z'
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       example:
         id: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
         name: IDM - Developers
@@ -24798,6 +24987,7 @@ components:
           format: uuid
           example: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         domain_name:
           type: string
           nullable: true
@@ -24845,6 +25035,7 @@ components:
         - temporary_failure
         - not_started
       readOnly: true
+      x-speakeasy-param-suppress-computed-diff: true
       x-speakeasy-unknown-values: allow
     EmailDomainVerification:
       type: object
@@ -24859,6 +25050,7 @@ components:
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         last_time_success:
           description: >-
             An ISO-8601 timestamp representation of the last time the
@@ -24867,24 +25059,29 @@ components:
           format: date-time
           example: '2022-11-04T20:10:06.927Z'
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       additionalProperties: false
       readOnly: true
       required:
         - status
         - last_time_checked
         - last_time_success
+      x-speakeasy-param-suppress-computed-diff: true
     DNSRecord:
       type: object
       properties:
         type:
           type: string
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         name:
           type: string
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         value:
           type: string
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
       additionalProperties: false
       required:
         - type
@@ -24902,6 +25099,7 @@ components:
           items:
             $ref: '#/components/schemas/DNSRecord'
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         created_at:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
@@ -25310,6 +25508,7 @@ components:
           example: b9e81174-b5bb-4638-a3c3-8afe61a0abf8
           description: The Application Auth Strategy ID.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         name:
           type: string
           example: name
@@ -25340,6 +25539,7 @@ components:
           example: b9e81174-b5bb-4638-a3c3-8afe61a0abf8
           description: The Application Auth Strategy ID.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         name:
           type: string
           example: name
@@ -25380,6 +25580,7 @@ components:
           example: b9e81174-b5bb-4638-a3c3-8afe61a0abf8
           description: The Config Store ID.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
         name:
           type: string
           description: The name of the Config Store
@@ -29256,6 +29457,7 @@ components:
           description: |
             A short summary of the problem.
           readOnly: true
+          x-speakeasy-param-suppress-computed-diff: true
     KonnectCPLegacyUnauthorizedError:
       allOf:
         - $ref: '#/components/schemas/KonnectCPLegacyBaseError'
@@ -29931,6 +30133,7 @@ components:
                 example: 9f5061ce-78f6-4452-9108-ad7c02821fd5
                 description: The API identifier.
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
               name:
                 type: string
                 maxLength: 255
@@ -29983,6 +30186,7 @@ components:
                   format: uuid
                   description: The id of the API specification.
                   example: 123e4567-e89b-12d3-a456-426614174000
+                x-speakeasy-param-suppress-computed-diff: true
               portals:
                 readOnly: true
                 type: array
@@ -30014,6 +30218,7 @@ components:
                       description: >-
                         The display name of the portal. This value will be the
                         portal's `name` in Portal API.
+                x-speakeasy-param-suppress-computed-diff: true
               labels:
                 $ref: '#/components/schemas/Labels'
               attributes:
@@ -30048,6 +30253,7 @@ components:
                 example: 7710d5c4-d902-410b-992f-18b814155b53
                 description: The API specification identifier.
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
               content:
                 type: string
                 description: >
@@ -30073,6 +30279,7 @@ components:
                   properties:
                     message:
                       type: string
+                x-speakeasy-param-suppress-computed-diff: true
               type:
                 title: API Spec Type
                 type: string
@@ -30106,6 +30313,7 @@ components:
                 example: 7710d5c4-d902-410b-992f-18b814155b53
                 description: The API version identifier.
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
               version:
                 type: string
                 description: The version of the api.
@@ -30142,6 +30350,7 @@ components:
                       - oas3
                       - asyncapi
                     readOnly: true
+                    x-speakeasy-param-suppress-computed-diff: true
                     x-speakeasy-unknown-values: allow
                   validation_messages:
                     type: array
@@ -30157,6 +30366,7 @@ components:
                       properties:
                         message:
                           type: string
+                    x-speakeasy-param-suppress-computed-diff: true
                 x-speakeasy-param-computed: false
                 nullable: true
                 default: null
@@ -30208,6 +30418,7 @@ components:
                 example: 9f5061ce-78f6-4452-9108-ad7c02821fd5
                 description: The API identifier.
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
               name:
                 type: string
                 maxLength: 255
@@ -30260,6 +30471,7 @@ components:
                   format: uuid
                   description: The id of the API specification.
                   example: 123e4567-e89b-12d3-a456-426614174000
+                x-speakeasy-param-suppress-computed-diff: true
               portals:
                 readOnly: true
                 type: array
@@ -30291,6 +30503,7 @@ components:
                       description: >-
                         The display name of the portal. This value will be the
                         portal's `name` in Portal API.
+                x-speakeasy-param-suppress-computed-diff: true
               labels:
                 $ref: '#/components/schemas/LabelsUpdate'
               attributes:
@@ -30473,12 +30686,14 @@ components:
                 type: string
                 format: hostname
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
               canonical_domain:
                 type: string
                 format: hostname
                 description: The canonical domain of the developer portal
                 nullable: false
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
               labels:
                 $ref: '#/components/schemas/LabelsUpdate'
             required:
@@ -30599,12 +30814,14 @@ components:
                 type: string
                 format: hostname
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
               canonical_domain:
                 type: string
                 format: hostname
                 description: The canonical domain of the developer portal
                 nullable: false
                 readOnly: true
+                x-speakeasy-param-suppress-computed-diff: true
               labels:
                 $ref: '#/components/schemas/LabelsUpdate'
     UpdateDeveloper:
