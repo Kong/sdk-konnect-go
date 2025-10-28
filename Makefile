@@ -1,6 +1,7 @@
 SHELL = bash
 .SHELLFLAGS = -ec -o pipefail
 
+MODULE_NAME := github.com/Kong/sdk-konnect-go
 PROJECT_DIR := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))
 TOOLS_VERSIONS_FILE = $(PROJECT_DIR)/.tools_versions.yaml
 export MISE_DATA_DIR = $(PROJECT_DIR)/bin/
@@ -36,7 +37,11 @@ mockery: mise yq ## Download mockery locally if necessary.
 IFACEMAKER_VERSION = $(shell $(YQ) -r '.ifacemaker' < $(TOOLS_VERSIONS_FILE))
 IFACEMAKER = $(PROJECT_DIR)/bin/ifacemaker
 .PHONY: ifacemaker
+<<<<<<< HEAD
 ifacemaker: yq
+=======
+ifacemaker:
+>>>>>>> 5a21da2 (chore: interface and mock generation)
 	GOBIN=$(PROJECT_DIR)/bin go install -v github.com/vburenin/ifacemaker@v$(IFACEMAKER_VERSION)
 
 # ------------------------------------------------------------------------------
@@ -173,6 +178,7 @@ _generate.ifacemaker:
 generate.interfaces: ifacemaker
 # TODO: make this iterate over all structs that need mocks if necessary.
 	$(MAKE) _generate.ifacemaker STRUCT=ControlPlanes
+	$(MAKE) _generate.ifacemaker STRUCT=APIGatewayDataPlaneCertificates
 
 # https://github.com/vektra/mockery/issues/803#issuecomment-2287198024
 .PHONY: generate.mocks
