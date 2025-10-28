@@ -17,12 +17,12 @@ generation:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
     hoistGlobalSecurity: true
+  schemas:
+    allOfMergeStrategy: shallowMerge
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
-  schemas:
-    allOfMergeStrategy: shallowMerge
 go:
   version: 0.12.1
   additionalDependencies: {}
