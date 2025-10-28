@@ -26,9 +26,6 @@ type Partial struct {
 func CreatePartialRedisCe(redisCe PartialRedisCe) Partial {
 	typ := PartialTypeRedisCe
 
-	typStr := Type(typ)
-	redisCe.Type = typStr
-
 	return Partial{
 		PartialRedisCe: &redisCe,
 		Type:           typ,
@@ -37,9 +34,6 @@ func CreatePartialRedisCe(redisCe PartialRedisCe) Partial {
 
 func CreatePartialRedisEe(redisEe PartialRedisEe) Partial {
 	typ := PartialTypeRedisEe
-
-	typStr := PartialRedisEeType(typ)
-	redisEe.Type = typStr
 
 	return Partial{
 		PartialRedisEe: &redisEe,

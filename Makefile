@@ -121,8 +121,9 @@ generate.deepcopy: controller-gen
 # NOTE: add more types that need to have DeepCopy() generated.
 .PHONY: generate.sdk
 generate.sdk:
-	$(MAKE) generate.deepcopy
 	speakeasy run --skip-versioning --skip-testing --minimal --skip-upload-spec
+	git add --update .
+	$(MAKE) generate.deepcopy
 	$(MAKE) _generate.omitempty
 	go mod tidy
 

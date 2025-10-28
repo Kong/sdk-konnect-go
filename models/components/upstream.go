@@ -107,17 +107,17 @@ func (h *Healthy) GetSuccesses() *int64 {
 	return h.Successes
 }
 
-type UpstreamType string
+type Type string
 
 const (
-	UpstreamTypeGrpc  UpstreamType = "grpc"
-	UpstreamTypeGrpcs UpstreamType = "grpcs"
-	UpstreamTypeHTTP  UpstreamType = "http"
-	UpstreamTypeHTTPS UpstreamType = "https"
-	UpstreamTypeTCP   UpstreamType = "tcp"
+	TypeGrpc  Type = "grpc"
+	TypeGrpcs Type = "grpcs"
+	TypeHTTP  Type = "http"
+	TypeHTTPS Type = "https"
+	TypeTCP   Type = "tcp"
 )
 
-func (e UpstreamType) ToPointer() *UpstreamType {
+func (e Type) ToPointer() *Type {
 	return &e
 }
 
@@ -183,11 +183,11 @@ type Active struct {
 	// A string representing a URL path, such as /path/to/resource. Must start with a forward slash (/) and must not contain empty segments (i.e., two consecutive forward slashes).
 	HTTPPath *string `default:"/" json:"http_path"`
 	// A string representing an SNI (server name indication) value for TLS.
-	HTTPSSni               *string       `default:"null" json:"https_sni"`
-	HTTPSVerifyCertificate *bool         `default:"true" json:"https_verify_certificate"`
-	Timeout                *float64      `default:"1" json:"timeout"`
-	Type                   *UpstreamType `default:"http" json:"type"`
-	Unhealthy              *Unhealthy    `json:"unhealthy,omitempty"`
+	HTTPSSni               *string    `default:"null" json:"https_sni"`
+	HTTPSVerifyCertificate *bool      `default:"true" json:"https_verify_certificate"`
+	Timeout                *float64   `default:"1" json:"timeout"`
+	Type                   *Type      `default:"http" json:"type"`
+	Unhealthy              *Unhealthy `json:"unhealthy,omitempty"`
 }
 
 func (a Active) MarshalJSON() ([]byte, error) {
@@ -250,7 +250,7 @@ func (a *Active) GetTimeout() *float64 {
 	return a.Timeout
 }
 
-func (a *Active) GetType() *UpstreamType {
+func (a *Active) GetType() *Type {
 	if a == nil {
 		return nil
 	}
@@ -294,17 +294,17 @@ func (u *UpstreamHealthy) GetSuccesses() *int64 {
 	return u.Successes
 }
 
-type UpstreamHealthchecksType string
+type UpstreamType string
 
 const (
-	UpstreamHealthchecksTypeGrpc  UpstreamHealthchecksType = "grpc"
-	UpstreamHealthchecksTypeGrpcs UpstreamHealthchecksType = "grpcs"
-	UpstreamHealthchecksTypeHTTP  UpstreamHealthchecksType = "http"
-	UpstreamHealthchecksTypeHTTPS UpstreamHealthchecksType = "https"
-	UpstreamHealthchecksTypeTCP   UpstreamHealthchecksType = "tcp"
+	UpstreamTypeGrpc  UpstreamType = "grpc"
+	UpstreamTypeGrpcs UpstreamType = "grpcs"
+	UpstreamTypeHTTP  UpstreamType = "http"
+	UpstreamTypeHTTPS UpstreamType = "https"
+	UpstreamTypeTCP   UpstreamType = "tcp"
 )
 
-func (e UpstreamHealthchecksType) ToPointer() *UpstreamHealthchecksType {
+func (e UpstreamType) ToPointer() *UpstreamType {
 	return &e
 }
 
@@ -355,9 +355,9 @@ func (u *UpstreamUnhealthy) GetTimeouts() *int64 {
 }
 
 type Passive struct {
-	Healthy   *UpstreamHealthy          `json:"healthy,omitempty"`
-	Type      *UpstreamHealthchecksType `default:"http" json:"type"`
-	Unhealthy *UpstreamUnhealthy        `json:"unhealthy,omitempty"`
+	Healthy   *UpstreamHealthy   `json:"healthy,omitempty"`
+	Type      *UpstreamType      `default:"http" json:"type"`
+	Unhealthy *UpstreamUnhealthy `json:"unhealthy,omitempty"`
 }
 
 func (p Passive) MarshalJSON() ([]byte, error) {
@@ -378,7 +378,7 @@ func (p *Passive) GetHealthy() *UpstreamHealthy {
 	return p.Healthy
 }
 
-func (p *Passive) GetType() *UpstreamHealthchecksType {
+func (p *Passive) GetType() *UpstreamType {
 	if p == nil {
 		return nil
 	}

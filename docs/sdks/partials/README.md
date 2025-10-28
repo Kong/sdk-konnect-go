@@ -106,7 +106,6 @@ func main() {
                 ServerName: sdkkonnectgo.Pointer("redis"),
                 Username: sdkkonnectgo.Pointer("username"),
             },
-            Type: components.TypeRedisCe,
         },
     ))
     if err != nil {
@@ -283,7 +282,6 @@ func main() {
         Partial: components.CreatePartialRedisEe(
             components.PartialRedisEe{
                 Config: components.PartialRedisEeConfig{},
-                Type: components.PartialRedisEeTypeRedisEe,
             },
         ),
     })
