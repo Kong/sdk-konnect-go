@@ -100,6 +100,8 @@ generate.deepcopy: controller-gen
 		models/components/upstream.go
 	$(SED) -i 's#\(type Unhealthy struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/upstream.go
+	$(SED) -i 's#\(type UpstreamHealthchecksType struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/upstream.go
 
 	$(CONTROLLER_GEN) object paths=./models/components/
 	go mod tidy
