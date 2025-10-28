@@ -36,8 +36,7 @@ jobs:
       
       - id: decision
         run: |
-          #echo "result=${{ contains(steps.changed-files.outputs.modified_files, '.speakeasy/gen.yaml') }}" >> "$GITHUB_OUTPUT"
-          echo "result=true" >> "$GITHUB_OUTPUT"
+          echo "result=${{ contains(steps.changed-files.outputs.modified_files, '.speakeasy/gen.yaml') }}" >> "$GITHUB_OUTPUT"
 
   generate:
     needs:
