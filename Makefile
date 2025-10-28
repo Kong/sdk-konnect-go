@@ -106,6 +106,8 @@ generate.deepcopy: controller-gen
 	$(CONTROLLER_GEN) object paths=./models/components/
 	go mod tidy
 
+# NOTE: This removes the +kubebuilder:object:generate=true markers after DeepCopy() generation.
+# to prevent it from being committed to the codebase.
 	git checkout -- $(OPENAPI_FILE) \
 		$(shell git ls-files models/components/route*.go) \
 		$(shell git ls-files docs/models/components/route*.md) \
