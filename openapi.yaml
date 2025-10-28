@@ -18,6 +18,58 @@ servers:
   - url: 'https://eu.api.konghq.com'
   - url: 'https://au.api.konghq.com'
 paths:
+  /v1/api-gateways/{gatewayId}/data-plane-certificates:
+    parameters:
+      - $ref: '#/components/parameters/gatewayId'
+    get:
+      summary: List API Gateway DataPlane Certificates
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageAfter'
+        - $ref: '#/components/parameters/APIGatewayCommonFilter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListAPIGatewayDataPlaneCertificatesResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      operationId: list-api-gateway-data-plane-certificates
+      tags:
+        - API Gateway DataPlane Certificates
+      description: >-
+        Returns a list of dataplane certificates that are associated to this API
+        gateway. A dataplane certificate allows dataplanes configured with the
+        certificate and corresponding private key to establish connection with
+        this API gateway.
+    post:
+      summary: Create a New DataPlane Certificate
+      description: >-
+        Create new dataplane certificate to this API gateway. A dataplane
+        certificate allows dataplanes configured with the certificate and
+        corresponding private key to establish connection with this API gateway.
+      operationId: create-api-gateway-data-plane-certificate
+      requestBody:
+        $ref: '#/components/requestBodies/CreateAPIGatewayDataPlaneCertificateRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIGatewayDataPlaneCertificate'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - API Gateway DataPlane Certificates
   /v1/notifications/configurations:
     get:
       operationId: list-user-configurations

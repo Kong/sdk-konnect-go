@@ -54,6 +54,9 @@ generatedFiles:
   - /models/components/apidocumentstatus.go
   - /models/components/apidocumentsummarywithchildren.go
   - /models/components/apifilterparameters.go
+  - /models/components/apigatewaycertificatemetadata.go
+  - /models/components/apigatewaycommonfilter.go
+  - /models/components/apigatewaydataplanecertificate.go
   - /models/components/apiimplementation.go
   - /models/components/apiimplementationfilterparameters.go
   - /models/components/apiimplementationlistitem.go
@@ -143,6 +146,7 @@ generatedFiles:
   - /models/components/controlplanegeofieldnotequalsfilter.go
   - /models/components/controlplanegeofieldorequalityfilter.go
   - /models/components/createapidocumentrequest.go
+  - /models/components/createapigatewaydataplanecertificaterequest.go
   - /models/components/createapirequest.go
   - /models/components/createapispecrequest.go
   - /models/components/createapiversionrequest.go
@@ -274,6 +278,7 @@ generatedFiles:
   - /models/components/listapiattributesresponse.go
   - /models/components/listapicomputedresponse.go
   - /models/components/listapidocumentresponse.go
+  - /models/components/listapigatewaydataplanecertificatesresponse.go
   - /models/components/listapiimplementationsresponse.go
   - /models/components/listapipublicationresponse.go
   - /models/components/listapiresponse.go
@@ -518,6 +523,7 @@ generatedFiles:
   - /models/operations/createaclwithconsumer.go
   - /models/operations/createapi.go
   - /models/operations/createapidocument.go
+  - /models/operations/createapigatewaydataplanecertificate.go
   - /models/operations/createapiimplementation.go
   - /models/operations/createapispec.go
   - /models/operations/createapiversion.go
@@ -764,6 +770,7 @@ generatedFiles:
   - /models/operations/listaclwithconsumer.go
   - /models/operations/listapiattributes.go
   - /models/operations/listapidocuments.go
+  - /models/operations/listapigatewaydataplanecertificates.go
   - /models/operations/listapiimplementations.go
   - /models/operations/listapipublications.go
   - /models/operations/listapis.go
@@ -978,6 +985,7 @@ generatedFiles:
   - api.go
   - apiattributes.go
   - apidocumentation.go
+  - apigatewaydataplanecertificates.go
   - apiimplementation.go
   - apikeys.go
   - apipublication.go
@@ -1026,6 +1034,9 @@ generatedFiles:
   - docs/models/components/apidocumentstatus.md
   - docs/models/components/apidocumentsummarywithchildren.md
   - docs/models/components/apifilterparameters.md
+  - docs/models/components/apigatewaycertificatemetadata.md
+  - docs/models/components/apigatewaycommonfilter.md
+  - docs/models/components/apigatewaydataplanecertificate.md
   - docs/models/components/apiimplementation.md
   - docs/models/components/apiimplementationfilterparameters.md
   - docs/models/components/apiimplementationlistitem.md
@@ -1183,6 +1194,7 @@ generatedFiles:
   - docs/models/components/controlplanegeofieldorequalityfilter.md
   - docs/models/components/controlplanes.md
   - docs/models/components/createapidocumentrequest.md
+  - docs/models/components/createapigatewaydataplanecertificaterequest.md
   - docs/models/components/createapirequest.md
   - docs/models/components/createapispecrequest.md
   - docs/models/components/createapispecrequestapispectype.md
@@ -1401,6 +1413,7 @@ generatedFiles:
   - docs/models/components/listapiattributesresponse.md
   - docs/models/components/listapicomputedresponse.md
   - docs/models/components/listapidocumentresponse.md
+  - docs/models/components/listapigatewaydataplanecertificatesresponse.md
   - docs/models/components/listapiimplementationsresponse.md
   - docs/models/components/listapipublicationresponse.md
   - docs/models/components/listapiresponse.md
@@ -1854,6 +1867,8 @@ generatedFiles:
   - docs/models/operations/createaclwithconsumerresponse.md
   - docs/models/operations/createapidocumentrequest.md
   - docs/models/operations/createapidocumentresponse.md
+  - docs/models/operations/createapigatewaydataplanecertificaterequest.md
+  - docs/models/operations/createapigatewaydataplanecertificateresponse.md
   - docs/models/operations/createapiimplementationrequest.md
   - docs/models/operations/createapiimplementationresponse.md
   - docs/models/operations/createapiresponse.md
@@ -2339,6 +2354,8 @@ generatedFiles:
   - docs/models/operations/listapiattributesresponse.md
   - docs/models/operations/listapidocumentsrequest.md
   - docs/models/operations/listapidocumentsresponse.md
+  - docs/models/operations/listapigatewaydataplanecertificatesrequest.md
+  - docs/models/operations/listapigatewaydataplanecertificatesresponse.md
   - docs/models/operations/listapiimplementationsrequest.md
   - docs/models/operations/listapiimplementationsresponse.md
   - docs/models/operations/listapipublicationsrequest.md
@@ -2788,6 +2805,7 @@ generatedFiles:
   - docs/sdks/api/README.md
   - docs/sdks/apiattributes/README.md
   - docs/sdks/apidocumentation/README.md
+  - docs/sdks/apigatewaydataplanecertificates/README.md
   - docs/sdks/apiimplementation/README.md
   - docs/sdks/apikeys/README.md
   - docs/sdks/apipublication/README.md

@@ -7,13 +7,14 @@ package sdkkonnectgo
 import (
 	"context"
 	"fmt"
+	"net/http"
+	"time"
+
 	"github.com/Kong/sdk-konnect-go/internal/config"
 	"github.com/Kong/sdk-konnect-go/internal/hooks"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/retry"
-	"net/http"
-	"time"
 )
 
 // ServerList contains the list of servers available to the SDK
@@ -54,7 +55,8 @@ func Pointer[T any](v T) *T { return &v }
 //
 // https://developer.konghq.com - Documentation for Kong Gateway and its APIs
 type SDK struct {
-	SDKVersion string
+	SDKVersion                      string
+	APIGatewayDataPlaneCertificates *APIGatewayDataPlaneCertificates
 	// Operations related to notifications
 	Notifications *Notifications
 	// Application Auth Strategies are sets of plugin configurations that represent how the gateway will perform authentication and authorization for a Product Version.
@@ -328,6 +330,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk.sdkConfiguration.ServerURL = serverURL
 	}
 
+	sdk.APIGatewayDataPlaneCertificates = newAPIGatewayDataPlaneCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Notifications = newNotifications(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AppAuthStrategies = newAppAuthStrategies(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CloudGateways = newCloudGateways(sdk, sdk.sdkConfiguration, sdk.hooks)
