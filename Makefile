@@ -1,6 +1,7 @@
 SHELL = bash
 .SHELLFLAGS = -ec -o pipefail
 
+MODULE_NAME := github.com/Kong/sdk-konnect-go
 PROJECT_DIR := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))
 TOOLS_VERSIONS_FILE = $(PROJECT_DIR)/.tools_versions.yaml
 export MISE_DATA_DIR = $(PROJECT_DIR)/bin/
@@ -25,6 +26,19 @@ CONTROLLER_GEN = $(PROJECT_DIR)/bin/installs/kube-controller-tools/$(CONTROLLER_
 controller-gen: mise yq ## Download controller-gen locally if necessary.
 	@$(MISE) plugin install --yes -q kube-controller-tools
 	@$(MISE) install -q kube-controller-tools@$(CONTROLLER_GEN_VERSION)
+
+MOCKERY_VERSION = $(shell $(YQ) -r '.mockery' < $(TOOLS_VERSIONS_FILE))
+MOCKERY = $(PROJECT_DIR)/bin/installs/mockery/$(MOCKERY_VERSION)/bin/mockery
+.PHONY: mockery
+mockery: mise yq ## Download mockery locally if necessary.
+	@$(MISE) plugin install --yes -q mockery https://github.com/cabify/asdf-mockery.git
+	@$(MISE) install -q mockery@$(MOCKERY_VERSION)
+
+IFACEMAKER_VERSION = $(shell $(YQ) -r '.ifacemaker' < $(TOOLS_VERSIONS_FILE))
+IFACEMAKER = $(PROJECT_DIR)/bin/ifacemaker
+.PHONY: ifacemaker
+ifacemaker: yq
+	GOBIN=$(PROJECT_DIR)/bin go install -v github.com/vburenin/ifacemaker@v$(IFACEMAKER_VERSION)
 
 # ------------------------------------------------------------------------------
 # Code generation
@@ -144,3 +158,28 @@ test.integration:
 .PHONY: cleanup.konnect
 cleanup.konnect:
 	go run ./ci/konnect-cleanup
+
+.PHONY: _generate.ifacemaker
+_generate.ifacemaker:
+	@$(eval LOWERCASE_STRUCT := $(shell echo $(STRUCT) | tr 'A-Z' 'a-z'))
+	$(IFACEMAKER) \
+		--file $(LOWERCASE_STRUCT).go \
+		--struct $(STRUCT) \
+		--iface $(STRUCT)SDK \
+		--iface-comment "$(STRUCT)SDK is a generated interface." \
+		--output $(LOWERCASE_STRUCT)_i.go \
+		-p sdkkonnectgo
+
+.PHONY: generate.interfaces
+generate.interfaces: ifacemaker
+# TODO: make this iterate over all structs that need mocks if necessary.
+	$(MAKE) _generate.ifacemaker STRUCT=ControlPlanes
+
+# https://github.com/vektra/mockery/issues/803#issuecomment-2287198024
+.PHONY: generate.mocks
+generate.mocks: mockery
+	GODEBUG=gotypesalias=0 $(MOCKERY)
+
+.PHONY: verify.diff
+verify.diff:
+	@$(PROJECT_DIR)/scripts/verify-diff.sh $(PROJECT_DIR)
