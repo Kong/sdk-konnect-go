@@ -49,3 +49,4 @@ go:
   respectRequiredFields: false
   responseFormat: envelope
   sdkPackageName: ""
+  unionDeserializationStrategy: left-to-right

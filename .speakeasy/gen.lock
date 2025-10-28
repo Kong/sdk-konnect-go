@@ -3,10 +3,10 @@ id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
   docChecksum: 5f91eb222ddd61ed10184276618b45c9
   docVersion: 3.0.29
-  speakeasyVersion: 1.638.1
-  generationVersion: 2.729.2
-  releaseVersion: 0.11.0
-  configChecksum: 4377dbfe8a77411687db6b69707753f0
+  speakeasyVersion: 1.640.0
+  generationVersion: 2.730.5
+  releaseVersion: 0.11.1
+  configChecksum: b406d34d6903326010e4de0f855f0760
 features:
   go:
     acceptHeaders: 2.81.2
@@ -36,7 +36,7 @@ features:
     retries: 2.84.2
     sdkHooks: 0.2.0
     typeOverrides: 2.81.1
-    unions: 2.86.0
+    unions: 2.87.0
 generatedFiles:
   - .gitattributes
   - /models/components/acl.go
