@@ -104,6 +104,8 @@ generate.deepcopy: controller-gen
 	$(CONTROLLER_GEN) object paths=./models/components/
 	go mod tidy
 
+# NOTE: This removes the +kubebuilder:object:generate=true markers after DeepCopy() generation.
+# to prevent it from being committed to the codebase.
 	git checkout -- $(OPENAPI_FILE) \
 		$(shell git ls-files models/components/route*.go) \
 		$(shell git ls-files docs/models/components/route*.md) \
@@ -119,8 +121,9 @@ generate.deepcopy: controller-gen
 # NOTE: add more types that need to have DeepCopy() generated.
 .PHONY: generate.sdk
 generate.sdk:
-	$(MAKE) generate.deepcopy
 	speakeasy run --skip-versioning --skip-testing --minimal --skip-upload-spec
+	git add --update .
+	$(MAKE) generate.deepcopy
 	$(MAKE) _generate.omitempty
 	go mod tidy
 

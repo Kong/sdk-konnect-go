@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 5f91eb222ddd61ed10184276618b45c9
+  docChecksum: 79fe97525b40297cfc5ec7f122dd6d24
   docVersion: 3.0.29
   speakeasyVersion: 1.640.0
   generationVersion: 2.730.5
-  releaseVersion: 0.11.1
-  configChecksum: b406d34d6903326010e4de0f855f0760
+  releaseVersion: 0.12.0
+  configChecksum: e997b6fb9f7c9e280dd228e1ebc86bd4
 features:
   go:
     acceptHeaders: 2.81.2
@@ -1496,7 +1496,6 @@ generatedFiles:
   - docs/models/components/partialredisceconfig.md
   - docs/models/components/partialredisee.md
   - docs/models/components/partialrediseeconfig.md
-  - docs/models/components/partialrediseetype.md
   - docs/models/components/partials.md
   - docs/models/components/passive.md
   - docs/models/components/patchawsprivatednsresolver.md
@@ -1795,7 +1794,6 @@ generatedFiles:
   - docs/models/components/upstreamadmin.md
   - docs/models/components/upstreamalgorithm.md
   - docs/models/components/upstreamclientcertificate.md
-  - docs/models/components/upstreamhealthcheckstype.md
   - docs/models/components/upstreamhealthy.md
   - docs/models/components/upstreamtype.md
   - docs/models/components/upstreamunhealthy.md

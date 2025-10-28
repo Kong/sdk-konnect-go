@@ -3,6 +3,10 @@
 
 ## Values
 
-| Name          | Value         |
-| ------------- | ------------- |
-| `TypeRedisCe` | redis-ce      |
+| Name        | Value       |
+| ----------- | ----------- |
+| `TypeGrpc`  | grpc        |
+| `TypeGrpcs` | grpcs       |
+| `TypeHTTP`  | http        |
+| `TypeHTTPS` | https       |
+| `TypeTCP`   | tcp         |

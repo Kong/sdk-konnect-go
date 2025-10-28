@@ -3,8 +3,6 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -103,29 +101,6 @@ func (p *PartialRedisCeConfig) GetUsername() *string {
 	return p.Username
 }
 
-type Type string
-
-const (
-	TypeRedisCe Type = "redis-ce"
-)
-
-func (e Type) ToPointer() *Type {
-	return &e
-}
-func (e *Type) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "redis-ce":
-		*e = Type(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for Type: %v", v)
-	}
-}
-
 type PartialRedisCe struct {
 	Config PartialRedisCeConfig `json:"config"`
 	// Unix epoch when the resource was created.
@@ -135,8 +110,8 @@ type PartialRedisCe struct {
 	// A unique string representing a UTF-8 encoded name.
 	Name *string `default:"null" json:"name"`
 	// A set of strings representing tags.
-	Tags []string `json:"tags,omitempty"`
-	Type Type     `json:"type"`
+	Tags  []string `json:"tags,omitempty"`
+	type_ string   `const:"redis-ce" json:"type"`
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 }
@@ -187,11 +162,8 @@ func (p *PartialRedisCe) GetTags() []string {
 	return p.Tags
 }
 
-func (p *PartialRedisCe) GetType() Type {
-	if p == nil {
-		return Type("")
-	}
-	return p.Type
+func (p *PartialRedisCe) GetType() string {
+	return "redis-ce"
 }
 
 func (p *PartialRedisCe) GetUpdatedAt() *int64 {
