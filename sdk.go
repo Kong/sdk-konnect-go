@@ -56,6 +56,7 @@ func Pointer[T any](v T) *T { return &v }
 // https://developer.konghq.com - Documentation for Kong Gateway and its APIs
 type SDK struct {
 	SDKVersion                      string
+	APIGateways                     *APIGateways
 	APIGatewayDataPlaneCertificates *APIGatewayDataPlaneCertificates
 	// Operations related to notifications
 	Notifications *Notifications
@@ -330,6 +331,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk.sdkConfiguration.ServerURL = serverURL
 	}
 
+	sdk.APIGateways = newAPIGateways(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIGatewayDataPlaneCertificates = newAPIGatewayDataPlaneCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Notifications = newNotifications(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AppAuthStrategies = newAppAuthStrategies(sdk, sdk.sdkConfiguration, sdk.hooks)

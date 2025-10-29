@@ -18,6 +18,74 @@ servers:
   - url: 'https://eu.api.konghq.com'
   - url: 'https://au.api.konghq.com'
 paths:
+  /v1/api-gateways:
+    get:
+      x-speakeasy-entity-operation: APIGatewayList#read
+      summary: List all API Gateways
+      responses:
+        '200':
+          $ref: '#/components/responses/ListGatewaysResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/NotAvailable'
+      operationId: list-api-gateways
+      description: >-
+        **Pre-release Endpoint**
+
+        This endpoint is currently in beta and is subject to change.
+
+
+        Returns an array of gateway objects containing information about the
+        Konnect API Gateways.
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageAfter'
+        - $ref: '#/components/parameters/APIGatewayCommonFilter'
+      tags:
+        - API Gateways
+    post:
+      x-speakeasy-entity-operation:
+        terraform-resource: APIGateway#create
+        terraform-datasource: null
+      summary: Create an API Gateway
+      operationId: create-api-gateway
+      responses:
+        '201':
+          $ref: '#/components/responses/CreateGatewayResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/NotAvailable'
+      tags:
+        - API Gateways
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGatewayRequest'
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Create an API Gateway in the Konnect Organization.
   /v1/api-gateways/{gatewayId}/data-plane-certificates:
     parameters:
       - $ref: '#/components/parameters/gatewayId'
@@ -40,6 +108,11 @@ paths:
       tags:
         - API Gateway DataPlane Certificates
       description: >-
+        **Pre-release Endpoint**
+
+        This endpoint is currently in beta and is subject to change.
+
+
         Returns a list of dataplane certificates that are associated to this API
         gateway. A dataplane certificate allows dataplanes configured with the
         certificate and corresponding private key to establish connection with
@@ -47,6 +120,11 @@ paths:
     post:
       summary: Create a New DataPlane Certificate
       description: >-
+        **Pre-release Endpoint**
+
+        This endpoint is currently in beta and is subject to change.
+
+
         Create new dataplane certificate to this API gateway. A dataplane
         certificate allows dataplanes configured with the certificate and
         corresponding private key to establish connection with this API gateway.

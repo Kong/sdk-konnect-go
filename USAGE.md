@@ -19,15 +19,14 @@ func main() {
 		}),
 	)
 
-	res, err := s.APIGatewayDataPlaneCertificates.ListAPIGatewayDataPlaneCertificates(ctx, operations.ListAPIGatewayDataPlaneCertificatesRequest{
-		GatewayID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+	res, err := s.APIGateways.ListAPIGateways(ctx, operations.ListAPIGatewaysRequest{
 		PageSize:  sdkkonnectgo.Pointer[int64](10),
 		PageAfter: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListAPIGatewayDataPlaneCertificatesResponse != nil {
+	if res.ListGatewaysResponse != nil {
 		// handle response
 	}
 }

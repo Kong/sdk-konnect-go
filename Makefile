@@ -179,6 +179,7 @@ generate.interfaces: ifacemaker
 # TODO: make this iterate over all structs that need mocks if necessary.
 	$(MAKE) _generate.ifacemaker STRUCT=ControlPlanes
 	$(MAKE) _generate.ifacemaker STRUCT=APIGatewayDataPlaneCertificates
+	$(MAKE) _generate.ifacemaker STRUCT=APIGateways
 
 # https://github.com/vektra/mockery/issues/803#issuecomment-2287198024
 .PHONY: generate.mocks

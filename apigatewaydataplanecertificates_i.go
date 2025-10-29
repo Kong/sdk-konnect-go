@@ -12,9 +12,15 @@ import (
 // APIGatewayDataPlaneCertificatesSDK is a generated interface.
 type APIGatewayDataPlaneCertificatesSDK interface {
 	// ListAPIGatewayDataPlaneCertificates - List API Gateway DataPlane Certificates
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
 	// Returns a list of dataplane certificates that are associated to this API gateway. A dataplane certificate allows dataplanes configured with the certificate and corresponding private key to establish connection with this API gateway.
 	ListAPIGatewayDataPlaneCertificates(ctx context.Context, request operations.ListAPIGatewayDataPlaneCertificatesRequest, opts ...operations.Option) (*operations.ListAPIGatewayDataPlaneCertificatesResponse, error)
 	// CreateAPIGatewayDataPlaneCertificate - Create a New DataPlane Certificate
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
 	// Create new dataplane certificate to this API gateway. A dataplane certificate allows dataplanes configured with the certificate and corresponding private key to establish connection with this API gateway.
 	CreateAPIGatewayDataPlaneCertificate(ctx context.Context, gatewayID string, createAPIGatewayDataPlaneCertificateRequest *components.CreateAPIGatewayDataPlaneCertificateRequest, opts ...operations.Option) (*operations.CreateAPIGatewayDataPlaneCertificateResponse, error)
 }

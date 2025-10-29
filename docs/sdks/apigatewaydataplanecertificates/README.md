@@ -10,6 +10,9 @@
 
 ## ListAPIGatewayDataPlaneCertificates
 
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
+
 Returns a list of dataplane certificates that are associated to this API gateway. A dataplane certificate allows dataplanes configured with the certificate and corresponding private key to establish connection with this API gateway.
 
 ### Example Usage
@@ -71,6 +74,9 @@ func main() {
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## CreateAPIGatewayDataPlaneCertificate
+
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
 
 Create new dataplane certificate to this API gateway. A dataplane certificate allows dataplanes configured with the certificate and corresponding private key to establish connection with this API gateway.
 

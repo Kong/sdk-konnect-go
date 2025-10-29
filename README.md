@@ -12,13 +12,14 @@ Handling errors in this SDK should largely match your expectations. All operatio
 
 By Default, an API error will return `sdkerrors.SDKError`. When custom error responses are specified for an operation, the SDK may also return their associated error. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation.
 
-For example, the `ListAPIGatewayDataPlaneCertificates` function may return the following errors:
+For example, the `ListAPIGateways` function may return the following errors:
 
 | Error Type                  | Status Code | Content Type             |
 | --------------------------- | ----------- | ------------------------ |
+| sdkerrors.BadRequestError   | 400         | application/problem+json |
 | sdkerrors.UnauthorizedError | 401         | application/problem+json |
 | sdkerrors.ForbiddenError    | 403         | application/problem+json |
-| sdkerrors.NotFoundError     | 404         | application/problem+json |
+| sdkerrors.BaseError         | 500, 503    | application/problem+json |
 | sdkerrors.SDKError          | 4XX, 5XX    | \*/\*                    |
 
 ### Example
@@ -45,12 +46,17 @@ func main() {
 		}),
 	)
 
-	res, err := s.APIGatewayDataPlaneCertificates.ListAPIGatewayDataPlaneCertificates(ctx, operations.ListAPIGatewayDataPlaneCertificatesRequest{
-		GatewayID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+	res, err := s.APIGateways.ListAPIGateways(ctx, operations.ListAPIGatewaysRequest{
 		PageSize:  sdkkonnectgo.Pointer[int64](10),
 		PageAfter: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
 	})
 	if err != nil {
+
+		var e *sdkerrors.BadRequestError
+		if errors.As(err, &e) {
+			// handle error
+			log.Fatal(e.Error())
+		}
 
 		var e *sdkerrors.UnauthorizedError
 		if errors.As(err, &e) {
@@ -64,7 +70,7 @@ func main() {
 			log.Fatal(e.Error())
 		}
 
-		var e *sdkerrors.NotFoundError
+		var e *sdkerrors.BaseError
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
@@ -118,15 +124,14 @@ func main() {
 		}),
 	)
 
-	res, err := s.APIGatewayDataPlaneCertificates.ListAPIGatewayDataPlaneCertificates(ctx, operations.ListAPIGatewayDataPlaneCertificatesRequest{
-		GatewayID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+	res, err := s.APIGateways.ListAPIGateways(ctx, operations.ListAPIGatewaysRequest{
 		PageSize:  sdkkonnectgo.Pointer[int64](10),
 		PageAfter: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListAPIGatewayDataPlaneCertificatesResponse != nil {
+	if res.ListGatewaysResponse != nil {
 		// handle response
 	}
 }
@@ -157,15 +162,14 @@ func main() {
 		}),
 	)
 
-	res, err := s.APIGatewayDataPlaneCertificates.ListAPIGatewayDataPlaneCertificates(ctx, operations.ListAPIGatewayDataPlaneCertificatesRequest{
-		GatewayID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+	res, err := s.APIGateways.ListAPIGateways(ctx, operations.ListAPIGatewaysRequest{
 		PageSize:  sdkkonnectgo.Pointer[int64](10),
 		PageAfter: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListAPIGatewayDataPlaneCertificatesResponse != nil {
+	if res.ListGatewaysResponse != nil {
 		// handle response
 	}
 }
@@ -267,15 +271,14 @@ func main() {
 		}),
 	)
 
-	res, err := s.APIGatewayDataPlaneCertificates.ListAPIGatewayDataPlaneCertificates(ctx, operations.ListAPIGatewayDataPlaneCertificatesRequest{
-		GatewayID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+	res, err := s.APIGateways.ListAPIGateways(ctx, operations.ListAPIGatewaysRequest{
 		PageSize:  sdkkonnectgo.Pointer[int64](10),
 		PageAfter: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListAPIGatewayDataPlaneCertificatesResponse != nil {
+	if res.ListGatewaysResponse != nil {
 		// handle response
 	}
 }
@@ -392,8 +395,7 @@ func main() {
 		}),
 	)
 
-	res, err := s.APIGatewayDataPlaneCertificates.ListAPIGatewayDataPlaneCertificates(ctx, operations.ListAPIGatewayDataPlaneCertificatesRequest{
-		GatewayID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+	res, err := s.APIGateways.ListAPIGateways(ctx, operations.ListAPIGatewaysRequest{
 		PageSize:  sdkkonnectgo.Pointer[int64](10),
 		PageAfter: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
 	}, operations.WithRetries(
@@ -410,7 +412,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListAPIGatewayDataPlaneCertificatesResponse != nil {
+	if res.ListGatewaysResponse != nil {
 		// handle response
 	}
 }
@@ -450,15 +452,14 @@ func main() {
 		}),
 	)
 
-	res, err := s.APIGatewayDataPlaneCertificates.ListAPIGatewayDataPlaneCertificates(ctx, operations.ListAPIGatewayDataPlaneCertificatesRequest{
-		GatewayID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+	res, err := s.APIGateways.ListAPIGateways(ctx, operations.ListAPIGatewaysRequest{
 		PageSize:  sdkkonnectgo.Pointer[int64](10),
 		PageAfter: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListAPIGatewayDataPlaneCertificatesResponse != nil {
+	if res.ListGatewaysResponse != nil {
 		// handle response
 	}
 }

@@ -14,28 +14,29 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
 	"github.com/Kong/sdk-konnect-go/retry"
 	"net/http"
+	"net/url"
 )
 
-type APIGatewayDataPlaneCertificates struct {
+type APIGateways struct {
 	rootSDK          *SDK
 	sdkConfiguration config.SDKConfiguration
 	hooks            *hooks.Hooks
 }
 
-func newAPIGatewayDataPlaneCertificates(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hooks.Hooks) *APIGatewayDataPlaneCertificates {
-	return &APIGatewayDataPlaneCertificates{
+func newAPIGateways(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hooks.Hooks) *APIGateways {
+	return &APIGateways{
 		rootSDK:          rootSDK,
 		sdkConfiguration: sdkConfig,
 		hooks:            hooks,
 	}
 }
 
-// ListAPIGatewayDataPlaneCertificates - List API Gateway DataPlane Certificates
+// ListAPIGateways - List all API Gateways
 // **Pre-release Endpoint**
 // This endpoint is currently in beta and is subject to change.
 //
-// Returns a list of dataplane certificates that are associated to this API gateway. A dataplane certificate allows dataplanes configured with the certificate and corresponding private key to establish connection with this API gateway.
-func (s *APIGatewayDataPlaneCertificates) ListAPIGatewayDataPlaneCertificates(ctx context.Context, request operations.ListAPIGatewayDataPlaneCertificatesRequest, opts ...operations.Option) (*operations.ListAPIGatewayDataPlaneCertificatesResponse, error) {
+// Returns an array of gateway objects containing information about the Konnect API Gateways.
+func (s *APIGateways) ListAPIGateways(ctx context.Context, request operations.ListAPIGatewaysRequest, opts ...operations.Option) (*operations.ListAPIGatewaysResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -54,7 +55,7 @@ func (s *APIGatewayDataPlaneCertificates) ListAPIGatewayDataPlaneCertificates(ct
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/api-gateways/{gatewayId}/data-plane-certificates", request, nil)
+	opURL, err := url.JoinPath(baseURL, "/v1/api-gateways")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -64,7 +65,7 @@ func (s *APIGatewayDataPlaneCertificates) ListAPIGatewayDataPlaneCertificates(ct
 		SDKConfiguration: s.sdkConfiguration,
 		BaseURL:          baseURL,
 		Context:          ctx,
-		OperationID:      "list-api-gateway-data-plane-certificates",
+		OperationID:      "list-api-gateways",
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
@@ -175,7 +176,7 @@ func (s *APIGatewayDataPlaneCertificates) ListAPIGatewayDataPlaneCertificates(ct
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"401", "403", "404", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "503", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -190,7 +191,7 @@ func (s *APIGatewayDataPlaneCertificates) ListAPIGatewayDataPlaneCertificates(ct
 		}
 	}
 
-	res := &operations.ListAPIGatewayDataPlaneCertificatesResponse{
+	res := &operations.ListAPIGatewaysResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: httpRes.Header.Get("Content-Type"),
 		RawResponse: httpRes,
@@ -205,12 +206,33 @@ func (s *APIGatewayDataPlaneCertificates) ListAPIGatewayDataPlaneCertificates(ct
 				return nil, err
 			}
 
-			var out components.ListAPIGatewayDataPlaneCertificatesResponse
+			var out components.ListGatewaysResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.ListAPIGatewayDataPlaneCertificatesResponse = &out
+			res.ListGatewaysResponse = &out
+		default:
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode == 400:
+		switch {
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+
+			var out sdkerrors.BadRequestError
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
+
+			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -260,7 +282,9 @@ func (s *APIGatewayDataPlaneCertificates) ListAPIGatewayDataPlaneCertificates(ct
 			}
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
-	case httpRes.StatusCode == 404:
+	case httpRes.StatusCode == 500:
+		fallthrough
+	case httpRes.StatusCode == 503:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -268,7 +292,7 @@ func (s *APIGatewayDataPlaneCertificates) ListAPIGatewayDataPlaneCertificates(ct
 				return nil, err
 			}
 
-			var out sdkerrors.NotFoundError
+			var out sdkerrors.BaseError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -305,17 +329,12 @@ func (s *APIGatewayDataPlaneCertificates) ListAPIGatewayDataPlaneCertificates(ct
 
 }
 
-// CreateAPIGatewayDataPlaneCertificate - Create a New DataPlane Certificate
+// CreateAPIGateway - Create an API Gateway
 // **Pre-release Endpoint**
 // This endpoint is currently in beta and is subject to change.
 //
-// Create new dataplane certificate to this API gateway. A dataplane certificate allows dataplanes configured with the certificate and corresponding private key to establish connection with this API gateway.
-func (s *APIGatewayDataPlaneCertificates) CreateAPIGatewayDataPlaneCertificate(ctx context.Context, gatewayID string, createAPIGatewayDataPlaneCertificateRequest *components.CreateAPIGatewayDataPlaneCertificateRequest, opts ...operations.Option) (*operations.CreateAPIGatewayDataPlaneCertificateResponse, error) {
-	request := operations.CreateAPIGatewayDataPlaneCertificateRequest{
-		GatewayID: gatewayID,
-		CreateAPIGatewayDataPlaneCertificateRequest: createAPIGatewayDataPlaneCertificateRequest,
-	}
-
+// Create an API Gateway in the Konnect Organization.
+func (s *APIGateways) CreateAPIGateway(ctx context.Context, request components.CreateGatewayRequest, opts ...operations.Option) (*operations.CreateAPIGatewayResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -334,7 +353,7 @@ func (s *APIGatewayDataPlaneCertificates) CreateAPIGatewayDataPlaneCertificate(c
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/api-gateways/{gatewayId}/data-plane-certificates", request, nil)
+	opURL, err := url.JoinPath(baseURL, "/v1/api-gateways")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -344,11 +363,11 @@ func (s *APIGatewayDataPlaneCertificates) CreateAPIGatewayDataPlaneCertificate(c
 		SDKConfiguration: s.sdkConfiguration,
 		BaseURL:          baseURL,
 		Context:          ctx,
-		OperationID:      "create-api-gateway-data-plane-certificate",
+		OperationID:      "create-api-gateway",
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "CreateAPIGatewayDataPlaneCertificateRequest", "json", `request:"mediaType=application/json"`)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
 	}
@@ -458,7 +477,7 @@ func (s *APIGatewayDataPlaneCertificates) CreateAPIGatewayDataPlaneCertificate(c
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "409", "4XX", "500", "503", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -473,7 +492,7 @@ func (s *APIGatewayDataPlaneCertificates) CreateAPIGatewayDataPlaneCertificate(c
 		}
 	}
 
-	res := &operations.CreateAPIGatewayDataPlaneCertificateResponse{
+	res := &operations.CreateAPIGatewayResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: httpRes.Header.Get("Content-Type"),
 		RawResponse: httpRes,
@@ -488,12 +507,12 @@ func (s *APIGatewayDataPlaneCertificates) CreateAPIGatewayDataPlaneCertificate(c
 				return nil, err
 			}
 
-			var out components.APIGatewayDataPlaneCertificate
+			var out components.Gateway
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.APIGatewayDataPlaneCertificate = &out
+			res.Gateway = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -573,6 +592,50 @@ func (s *APIGatewayDataPlaneCertificates) CreateAPIGatewayDataPlaneCertificate(c
 			}
 
 			var out sdkerrors.NotFoundError
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
+
+			return nil, &out
+		default:
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode == 409:
+		switch {
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+
+			var out sdkerrors.ConflictError
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
+
+			return nil, &out
+		default:
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode == 500:
+		fallthrough
+	case httpRes.StatusCode == 503:
+		switch {
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+
+			var out sdkerrors.BaseError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

@@ -170,6 +170,7 @@ generatedFiles:
   - /models/components/createdcrproviderrequesthttp.go
   - /models/components/createdcrproviderrequestokta.go
   - /models/components/createdcrproviderresponse.go
+  - /models/components/creategatewayrequest.go
   - /models/components/createidentityprovider.go
   - /models/components/createnetworkrequest.go
   - /models/components/createpluginschemas.go
@@ -231,6 +232,7 @@ generatedFiles:
   - /models/components/eventsubscription.go
   - /models/components/eventsubscriptionlistresponse.go
   - /models/components/eventsubscriptionresponse.go
+  - /models/components/gateway.go
   - /models/components/gcpprivatehostedzoneattachmentconfig.go
   - /models/components/gcpprivatehostedzoneresponse.go
   - /models/components/gcpvpcpeeringattachmentconfig.go
@@ -302,6 +304,7 @@ generatedFiles:
   - /models/components/listdevelopersresponse.go
   - /models/components/listdomains.go
   - /models/components/listemailtemplates.go
+  - /models/components/listgatewaysresponse.go
   - /models/components/listgroupmemberships.go
   - /models/components/listnetworkconfigurationreferencesresponse.go
   - /models/components/listnetworksresponse.go
@@ -523,6 +526,7 @@ generatedFiles:
   - /models/operations/createaclwithconsumer.go
   - /models/operations/createapi.go
   - /models/operations/createapidocument.go
+  - /models/operations/createapigateway.go
   - /models/operations/createapigatewaydataplanecertificate.go
   - /models/operations/createapiimplementation.go
   - /models/operations/createapispec.go
@@ -771,6 +775,7 @@ generatedFiles:
   - /models/operations/listapiattributes.go
   - /models/operations/listapidocuments.go
   - /models/operations/listapigatewaydataplanecertificates.go
+  - /models/operations/listapigateways.go
   - /models/operations/listapiimplementations.go
   - /models/operations/listapipublications.go
   - /models/operations/listapis.go
@@ -986,6 +991,7 @@ generatedFiles:
   - apiattributes.go
   - apidocumentation.go
   - apigatewaydataplanecertificates.go
+  - apigateways.go
   - apiimplementation.go
   - apikeys.go
   - apipublication.go
@@ -1225,6 +1231,7 @@ generatedFiles:
   - docs/models/components/createdcrproviderrequestokta.md
   - docs/models/components/createdcrproviderrequestoktaprovidertype.md
   - docs/models/components/createdcrproviderresponse.md
+  - docs/models/components/creategatewayrequest.md
   - docs/models/components/createidentityprovider.md
   - docs/models/components/createidentityproviderconfig.md
   - docs/models/components/createnetworkrequest.md
@@ -1331,6 +1338,7 @@ generatedFiles:
   - docs/models/components/eventsubscription.md
   - docs/models/components/eventsubscriptionlistresponse.md
   - docs/models/components/eventsubscriptionresponse.md
+  - docs/models/components/gateway.md
   - docs/models/components/gatewayserviceadmin.md
   - docs/models/components/gcpprivatehostedzoneattachmentconfig.md
   - docs/models/components/gcpprivatehostedzoneresponse.md
@@ -1440,6 +1448,7 @@ generatedFiles:
   - docs/models/components/listdevelopersresponse.md
   - docs/models/components/listdomains.md
   - docs/models/components/listemailtemplates.md
+  - docs/models/components/listgatewaysresponse.md
   - docs/models/components/listgroupmemberships.md
   - docs/models/components/listnetworkconfigurationreferencesresponse.md
   - docs/models/components/listnetworksresponse.md
@@ -1869,6 +1878,7 @@ generatedFiles:
   - docs/models/operations/createapidocumentresponse.md
   - docs/models/operations/createapigatewaydataplanecertificaterequest.md
   - docs/models/operations/createapigatewaydataplanecertificateresponse.md
+  - docs/models/operations/createapigatewayresponse.md
   - docs/models/operations/createapiimplementationrequest.md
   - docs/models/operations/createapiimplementationresponse.md
   - docs/models/operations/createapiresponse.md
@@ -2356,6 +2366,8 @@ generatedFiles:
   - docs/models/operations/listapidocumentsresponse.md
   - docs/models/operations/listapigatewaydataplanecertificatesrequest.md
   - docs/models/operations/listapigatewaydataplanecertificatesresponse.md
+  - docs/models/operations/listapigatewaysrequest.md
+  - docs/models/operations/listapigatewaysresponse.md
   - docs/models/operations/listapiimplementationsrequest.md
   - docs/models/operations/listapiimplementationsresponse.md
   - docs/models/operations/listapipublicationsrequest.md
@@ -2806,6 +2818,7 @@ generatedFiles:
   - docs/sdks/apiattributes/README.md
   - docs/sdks/apidocumentation/README.md
   - docs/sdks/apigatewaydataplanecertificates/README.md
+  - docs/sdks/apigateways/README.md
   - docs/sdks/apiimplementation/README.md
   - docs/sdks/apikeys/README.md
   - docs/sdks/apipublication/README.md
@@ -27060,5 +27073,41 @@ examples:
           application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
         "404":
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  list-api-gateways:
+    speakeasy-default-list-api-gateways:
+      parameters:
+        query:
+          page[size]: 10
+          page[after]: "ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"
+      responses:
+        "200":
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "labels": {"env": "test"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+        "400":
+          application/problem+json: {"status": 51776, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "500":
+          application/problem+json: {"status": 302617, "title": "<value>", "instance": "<value>", "detail": "<value>"}
+  create-api-gateway:
+    speakeasy-default-create-api-gateway:
+      requestBody:
+        application/json: {"name": "<value>", "labels": {"env": "test"}}
+      responses:
+        "201":
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "labels": {"env": "test"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 735753, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value 1>", "<value 2>"], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "409":
+          application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
+        "500":
+          application/problem+json: {"status": 728595, "title": "<value>", "instance": "<value>", "detail": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
