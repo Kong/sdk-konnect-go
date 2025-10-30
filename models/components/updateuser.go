@@ -2,27 +2,12 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // UpdateUser - The request schema for the update user request.
 type UpdateUser struct {
 	// The user's full name.
-	FullName *string `default:"null" json:"full_name"`
+	FullName *string `json:"full_name,omitempty"`
 	// The user's desired name.
-	PreferredName *string `default:"null" json:"preferred_name"`
-}
-
-func (u UpdateUser) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateUser) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	PreferredName *string `json:"preferred_name,omitempty"`
 }
 
 func (u *UpdateUser) GetFullName() *string {

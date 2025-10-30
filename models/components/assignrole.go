@@ -2,10 +2,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // RoleName - The desired role.
 type RoleName string
 
@@ -94,22 +90,11 @@ type AssignRole struct {
 	// The desired role.
 	RoleName *RoleName `json:"role_name,omitempty"`
 	// The ID of the entity.
-	EntityID *string `default:"null" json:"entity_id"`
+	EntityID *string `json:"entity_id,omitempty"`
 	// The type of entity.
 	EntityTypeName *EntityTypeName `json:"entity_type_name,omitempty"`
 	// Region of the team.
 	EntityRegion *AssignRoleEntityRegion `json:"entity_region,omitempty"`
-}
-
-func (a AssignRole) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AssignRole) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (a *AssignRole) GetRoleName() *RoleName {

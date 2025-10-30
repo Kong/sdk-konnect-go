@@ -10,8 +10,8 @@ import (
 // BasicDeveloper - Basic information about a developer.
 type BasicDeveloper struct {
 	ID        *string    `json:"id,omitempty"`
-	Email     *string    `default:"null" json:"email"`
-	FullName  *string    `default:"null" json:"full_name"`
+	Email     *string    `json:"email,omitempty"`
+	FullName  *string    `json:"full_name,omitempty"`
 	Active    *bool      `json:"active,omitempty"`
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`

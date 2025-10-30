@@ -39,7 +39,7 @@ func main() {
     )
 
     res, err := s.API.CreateAPI(ctx, components.CreateAPIRequest{
-        Name: sdkkonnectgo.Pointer("MyAPI"),
+        Name: "MyAPI",
         Slug: sdkkonnectgo.Pointer("my-api-v1"),
         Labels: map[string]string{
             "env": "test",

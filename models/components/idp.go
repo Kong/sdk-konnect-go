@@ -48,22 +48,11 @@ func (c *ClaimMappings) GetGroups() *string {
 //
 // NOTE: The `openid` scope is required. Removing it could break the OIDC integration.
 type IDP struct {
-	Issuer        *string        `default:"null" json:"issuer"`
-	LoginPath     *string        `default:"null" json:"login_path"`
-	ClientID      *string        `default:"null" json:"client_id"`
+	Issuer        *string        `json:"issuer,omitempty"`
+	LoginPath     *string        `json:"login_path,omitempty"`
+	ClientID      *string        `json:"client_id,omitempty"`
 	Scopes        []string       `json:"scopes,omitempty"`
 	ClaimMappings *ClaimMappings `json:"claim_mappings,omitempty"`
-}
-
-func (i IDP) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(i, "", false)
-}
-
-func (i *IDP) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &i, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (i *IDP) GetIssuer() *string {

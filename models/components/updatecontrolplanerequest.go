@@ -2,10 +2,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // UpdateControlPlaneRequestAuthType - The auth type value of the cluster associated with the Runtime Group.
 type UpdateControlPlaneRequestAuthType string
 
@@ -21,7 +17,7 @@ func (e UpdateControlPlaneRequestAuthType) ToPointer() *UpdateControlPlaneReques
 // UpdateControlPlaneRequest - The request schema for the update control plane request.
 type UpdateControlPlaneRequest struct {
 	// The name of the control plane.
-	Name *string `default:"null" json:"name"`
+	Name *string `json:"name,omitempty"`
 	// The description of the control plane in Konnect.
 	Description *string `json:"description,omitempty"`
 	// The auth type value of the cluster associated with the Runtime Group.
@@ -33,17 +29,6 @@ type UpdateControlPlaneRequest struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels,omitempty"`
-}
-
-func (u UpdateControlPlaneRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateControlPlaneRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (u *UpdateControlPlaneRequest) GetName() *string {

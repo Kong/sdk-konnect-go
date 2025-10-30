@@ -2,23 +2,8 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type GetNodeCompatibilityStatus struct {
-	State *string `default:"null" json:"state"`
-}
-
-func (g GetNodeCompatibilityStatus) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetNodeCompatibilityStatus) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	State *string `json:"state,omitempty"`
 }
 
 func (g *GetNodeCompatibilityStatus) GetState() *string {
@@ -30,25 +15,14 @@ func (g *GetNodeCompatibilityStatus) GetState() *string {
 
 type GetNodeItem struct {
 	ID                  *string                     `json:"id,omitempty"`
-	Version             *string                     `default:"null" json:"version"`
-	Hostname            *string                     `default:"null" json:"hostname"`
-	LastPing            *int64                      `default:"null" json:"last_ping"`
-	Type                *string                     `default:"null" json:"type"`
+	Version             *string                     `json:"version,omitempty"`
+	Hostname            *string                     `json:"hostname,omitempty"`
+	LastPing            *int64                      `json:"last_ping,omitempty"`
+	Type                *string                     `json:"type,omitempty"`
 	CreatedAt           *int64                      `json:"created_at,omitempty"`
 	UpdatedAt           *int64                      `json:"updated_at,omitempty"`
-	ConfigHash          *string                     `default:"null" json:"config_hash"`
+	ConfigHash          *string                     `json:"config_hash,omitempty"`
 	CompatibilityStatus *GetNodeCompatibilityStatus `json:"compatibility_status,omitempty"`
-}
-
-func (g GetNodeItem) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(g, "", false)
-}
-
-func (g *GetNodeItem) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (g *GetNodeItem) GetID() *string {

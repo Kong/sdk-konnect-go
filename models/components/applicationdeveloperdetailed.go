@@ -2,26 +2,11 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // ApplicationDeveloperDetailed - List of developers that have a registered application.
 type ApplicationDeveloperDetailed struct {
 	ID       string  `json:"id"`
-	Email    *string `default:"null" json:"email"`
-	FullName *string `default:"null" json:"full_name"`
-}
-
-func (a ApplicationDeveloperDetailed) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *ApplicationDeveloperDetailed) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id"}); err != nil {
-		return err
-	}
-	return nil
+	Email    *string `json:"email,omitempty"`
+	FullName *string `json:"full_name,omitempty"`
 }
 
 func (a *ApplicationDeveloperDetailed) GetID() string {

@@ -2,10 +2,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type KeyAuthConsumer struct {
 	ID *string `json:"id,omitempty"`
 }
@@ -23,22 +19,11 @@ type KeyAuth struct {
 	CreatedAt *int64 `json:"created_at,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID  *string `json:"id,omitempty"`
-	Key *string `default:"null" json:"key"`
+	Key *string `json:"key,omitempty"`
 	// A set of strings representing tags.
 	Tags []string `json:"tags,omitempty"`
 	// key-auth ttl in seconds
-	TTL *int64 `default:"null" json:"ttl"`
-}
-
-func (k KeyAuth) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(k, "", false)
-}
-
-func (k *KeyAuth) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &k, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	TTL *int64 `json:"ttl,omitempty"`
 }
 
 func (k *KeyAuth) GetConsumer() *KeyAuthConsumer {

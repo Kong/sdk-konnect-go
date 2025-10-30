@@ -2,27 +2,12 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // MoveDocumentRequestPayload - move document request payload
 type MoveDocumentRequestPayload struct {
 	// parent document id
-	ParentDocumentID *string `default:"null" json:"parent_document_id"`
+	ParentDocumentID *string `json:"parent_document_id,omitempty"`
 	// index of the document in the parent document's children
-	Index *int64 `default:"null" json:"index"`
-}
-
-func (m MoveDocumentRequestPayload) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(m, "", false)
-}
-
-func (m *MoveDocumentRequestPayload) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Index *int64 `json:"index,omitempty"`
 }
 
 func (m *MoveDocumentRequestPayload) GetParentDocumentID() *string {

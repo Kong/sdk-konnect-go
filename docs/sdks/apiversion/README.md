@@ -40,7 +40,7 @@ func main() {
 
     res, err := s.APIVersion.CreateAPIVersion(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.CreateAPIVersionRequest{
         Version: sdkkonnectgo.Pointer("1.0.0"),
-        Spec: &components.CreateAPIVersionRequestSpec{
+        Spec: components.CreateAPIVersionRequestSpec{
             Content: sdkkonnectgo.Pointer("{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Example API\",\"version\":\"1.0.0\"},\"paths\":{\"/example\":{\"get\":{\"summary\":\"Example endpoint\",\"responses\":{\"200\":{\"description\":\"Successful response\"}}}}}}"),
         },
     })

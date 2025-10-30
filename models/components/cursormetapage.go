@@ -2,32 +2,17 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type CursorMetaPage struct {
 	// URI to the first page
-	First *string `default:"null" json:"first"`
+	First *string `json:"first,omitempty"`
 	// URI to the last page
-	Last *string `default:"null" json:"last"`
+	Last *string `json:"last,omitempty"`
 	// URI to the next page
-	Next *string `default:"null" json:"next"`
+	Next *string `json:"next"`
 	// URI to the previous page
-	Previous *string `default:"null" json:"previous"`
+	Previous *string `json:"previous"`
 	// Requested page size
 	Size float64 `json:"size"`
-}
-
-func (c CursorMetaPage) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CursorMetaPage) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"size"}); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (c *CursorMetaPage) GetFirst() *string {

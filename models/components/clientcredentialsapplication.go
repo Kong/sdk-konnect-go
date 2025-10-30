@@ -65,7 +65,7 @@ type ClientCredentialsApplication struct {
 	// The name of the application.
 	Name string `json:"name"`
 	// A description of the application.
-	Description *string `default:"null" json:"description"`
+	Description *string `json:"description"`
 	// The ID used to linked the portal application to an Identity Provider application.
 	ClientID string `json:"client_id"`
 	// The number of API registrations that are associated with the application. Registrations of any status are included in the count.

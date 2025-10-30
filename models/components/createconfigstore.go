@@ -2,24 +2,9 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // CreateConfigStore - The request schema to create a Config Store.
 type CreateConfigStore struct {
-	Name *string `default:"null" json:"name"`
-}
-
-func (c CreateConfigStore) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateConfigStore) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Name *string `json:"name,omitempty"`
 }
 
 func (c *CreateConfigStore) GetName() *string {

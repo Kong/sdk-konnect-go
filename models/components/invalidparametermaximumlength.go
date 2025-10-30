@@ -24,7 +24,7 @@ type InvalidParameterMaximumLength struct {
 	// invalid parameters rules
 	Rule    InvalidParameterMaximumLengthRule `json:"rule"`
 	Maximum int64                             `json:"maximum"`
-	Source  *string                           `default:"null" json:"source"`
+	Source  *string                           `json:"source,omitempty"`
 	Reason  string                            `json:"reason"`
 }
 

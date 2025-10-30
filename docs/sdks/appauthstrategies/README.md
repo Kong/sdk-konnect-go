@@ -249,6 +249,7 @@ func main() {
                     },
                 },
             },
+            DcrProviderID: nil,
         },
     ))
     if err != nil {

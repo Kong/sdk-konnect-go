@@ -77,9 +77,9 @@ type ServiceOutput struct {
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
 	// The Service name.
-	Name *string `default:"null" json:"name"`
+	Name *string `json:"name,omitempty"`
 	// The path to be used in requests to the upstream server.
-	Path *string `default:"null" json:"path"`
+	Path *string `json:"path,omitempty"`
 	// The upstream server port.
 	Port *int64 `default:"80" json:"port"`
 	// The protocol used to communicate with the upstream.
@@ -93,9 +93,9 @@ type ServiceOutput struct {
 	// Additional Subject Alternative Names that can be matched on Upstream server's TLS certificate (in addition to `host`).
 	TLSSans *TLSSans `json:"tls_sans,omitempty"`
 	// Whether to enable verification of upstream server TLS certificate. If set to `null`, then the Nginx default is respected.
-	TLSVerify *bool `default:"null" json:"tls_verify"`
+	TLSVerify *bool `json:"tls_verify,omitempty"`
 	// Maximum depth of chain while verifying Upstream server's TLS certificate. If set to `null`, then the Nginx default is respected.
-	TLSVerifyDepth *int64 `default:"null" json:"tls_verify_depth"`
+	TLSVerifyDepth *int64 `json:"tls_verify_depth,omitempty"`
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 	// The timeout in milliseconds between two successive write operations for transmitting a request to the upstream server.
@@ -263,9 +263,9 @@ type Service struct {
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
 	// The Service name.
-	Name *string `default:"null" json:"name"`
+	Name *string `json:"name,omitempty"`
 	// The path to be used in requests to the upstream server.
-	Path *string `default:"null" json:"path"`
+	Path *string `json:"path,omitempty"`
 	// The upstream server port.
 	Port *int64 `default:"80" json:"port"`
 	// The protocol used to communicate with the upstream.
@@ -279,13 +279,13 @@ type Service struct {
 	// Additional Subject Alternative Names that can be matched on Upstream server's TLS certificate (in addition to `host`).
 	TLSSans *TLSSans `json:"tls_sans,omitempty"`
 	// Whether to enable verification of upstream server TLS certificate. If set to `null`, then the Nginx default is respected.
-	TLSVerify *bool `default:"null" json:"tls_verify"`
+	TLSVerify *bool `json:"tls_verify,omitempty"`
 	// Maximum depth of chain while verifying Upstream server's TLS certificate. If set to `null`, then the Nginx default is respected.
-	TLSVerifyDepth *int64 `default:"null" json:"tls_verify_depth"`
+	TLSVerifyDepth *int64 `json:"tls_verify_depth,omitempty"`
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 	// Helper field to set `protocol`, `host`, `port` and `path` using a URL. This field is write-only and is not returned in responses.
-	URL *string `default:"null" json:"url"`
+	URL *string `json:"url,omitempty"`
 	// The timeout in milliseconds between two successive write operations for transmitting a request to the upstream server.
 	WriteTimeout *int64 `default:"60000" json:"write_timeout"`
 }

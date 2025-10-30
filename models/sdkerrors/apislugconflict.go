@@ -10,7 +10,7 @@ import (
 type APISlugConflict struct {
 	Status   float64 `json:"status"`
 	Title    string  `json:"title"`
-	Type     *string `default:"null" json:"type"`
+	Type     *string `json:"type,omitempty"`
 	Instance string  `json:"instance"`
 }
 

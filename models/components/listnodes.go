@@ -2,23 +2,8 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type CompatibilityStatus struct {
-	State *string `default:"null" json:"state"`
-}
-
-func (c CompatibilityStatus) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CompatibilityStatus) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	State *string `json:"state,omitempty"`
 }
 
 func (c *CompatibilityStatus) GetState() *string {
@@ -30,25 +15,14 @@ func (c *CompatibilityStatus) GetState() *string {
 
 type ListNodesItems struct {
 	ID                  *string              `json:"id,omitempty"`
-	Version             *string              `default:"null" json:"version"`
-	Hostname            *string              `default:"null" json:"hostname"`
-	LastPing            *int64               `default:"null" json:"last_ping"`
-	Type                *string              `default:"null" json:"type"`
+	Version             *string              `json:"version,omitempty"`
+	Hostname            *string              `json:"hostname,omitempty"`
+	LastPing            *int64               `json:"last_ping,omitempty"`
+	Type                *string              `json:"type,omitempty"`
 	CreatedAt           *int64               `json:"created_at,omitempty"`
 	UpdatedAt           *int64               `json:"updated_at,omitempty"`
-	ConfigHash          *string              `default:"null" json:"config_hash"`
+	ConfigHash          *string              `json:"config_hash,omitempty"`
 	CompatibilityStatus *CompatibilityStatus `json:"compatibility_status,omitempty"`
-}
-
-func (l ListNodesItems) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
-}
-
-func (l *ListNodesItems) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (l *ListNodesItems) GetID() *string {
@@ -115,19 +89,8 @@ func (l *ListNodesItems) GetCompatibilityStatus() *CompatibilityStatus {
 }
 
 type ListNodesPage struct {
-	Total *int64  `default:"null" json:"total"`
-	Next  *string `default:"null" json:"next"`
-}
-
-func (l ListNodesPage) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
-}
-
-func (l *ListNodesPage) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Total *int64  `json:"total,omitempty"`
+	Next  *string `json:"next,omitempty"`
 }
 
 func (l *ListNodesPage) GetTotal() *int64 {

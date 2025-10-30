@@ -2,24 +2,9 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // UpdatePortalCustomDomainRequest - Create a portal custom domain.
 type UpdatePortalCustomDomainRequest struct {
-	Enabled *bool `default:"null" json:"enabled"`
-}
-
-func (u UpdatePortalCustomDomainRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdatePortalCustomDomainRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Enabled *bool `json:"enabled,omitempty"`
 }
 
 func (u *UpdatePortalCustomDomainRequest) GetEnabled() *bool {

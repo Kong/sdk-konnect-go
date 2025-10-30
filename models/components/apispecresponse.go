@@ -37,7 +37,7 @@ type APISpecResponse struct {
 	ID string `json:"id"`
 	// The raw content of your API specification, in json or yaml format (OpenAPI or AsyncAPI).
 	//
-	Content *string `default:"null" json:"content"`
+	Content string `json:"content"`
 	// The errors that occurred while parsing the API specification.
 	ValidationMessages []ValidationMessages `json:"validation_messages"`
 	// The type of specification being stored. This allows us to render the specification correctly.
@@ -54,7 +54,7 @@ func (a APISpecResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (a *APISpecResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "validation_messages", "type", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "content", "validation_messages", "type", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -67,9 +67,9 @@ func (a *APISpecResponse) GetID() string {
 	return a.ID
 }
 
-func (a *APISpecResponse) GetContent() *string {
+func (a *APISpecResponse) GetContent() string {
 	if a == nil {
-		return nil
+		return ""
 	}
 	return a.Content
 }

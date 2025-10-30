@@ -2,10 +2,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // PortalAuthenticationSettingsResponse - The developer authentication settings for a portal.
 type PortalAuthenticationSettingsResponse struct {
 	// The portal has basic auth enabled or disabled.
@@ -13,26 +9,15 @@ type PortalAuthenticationSettingsResponse struct {
 	// The portal has OIDC enabled or disabled.
 	OidcAuthEnabled bool `json:"oidc_auth_enabled"`
 	// The portal has SAML enabled or disabled.
-	SamlAuthEnabled *bool `default:"null" json:"saml_auth_enabled"`
+	SamlAuthEnabled *bool `json:"saml_auth_enabled,omitempty"`
 	// IdP groups determine the Portal Teams a developer has.
 	OidcTeamMappingEnabled bool `json:"oidc_team_mapping_enabled"`
 	// IdP groups determine the Portal Teams a developer has. This will soon replace oidc_team_mapping_enabled.
-	IdpMappingEnabled *bool `default:"null" json:"idp_mapping_enabled"`
+	IdpMappingEnabled *bool `json:"idp_mapping_enabled,omitempty"`
 	// A Konnect Identity Admin assigns teams to a developer.
 	KonnectMappingEnabled bool `json:"konnect_mapping_enabled"`
 	// Configuration properties for an OpenID Connect Identity Provider.
 	OidcConfig *PortalOIDCConfig `json:"oidc_config,omitempty"`
-}
-
-func (p PortalAuthenticationSettingsResponse) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PortalAuthenticationSettingsResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"basic_auth_enabled", "oidc_auth_enabled", "oidc_team_mapping_enabled", "konnect_mapping_enabled"}); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (p *PortalAuthenticationSettingsResponse) GetBasicAuthEnabled() bool {

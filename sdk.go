@@ -2,7 +2,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.0.29 and generator version 2.731.4
+// Generated from OpenAPI doc version 3.0.29 and generator version 2.731.6
 
 import (
 	"context"
@@ -227,6 +227,7 @@ type SDK struct {
 	Teams                        *Teams
 	TeamMembership               *TeamMembership
 	Users                        *Users
+	PersonalAccessTokens         *PersonalAccessTokens
 
 	sdkConfiguration config.SDKConfiguration
 	hooks            *hooks.Hooks
@@ -302,9 +303,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.12.1",
+		SDKVersion: "0.13.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.12.1 2.731.4 3.0.29 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.13.0 2.731.6 3.0.29 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -395,6 +396,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Teams = newTeams(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.TeamMembership = newTeamMembership(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Users = newUsers(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PersonalAccessTokens = newPersonalAccessTokens(sdk, sdk.sdkConfiguration, sdk.hooks)
 
 	return sdk
 }

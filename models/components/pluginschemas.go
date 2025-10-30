@@ -2,30 +2,15 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type Item struct {
 	// The custom plugin schema; `jq -Rs '.' schema.lua`.
-	LuaSchema *string `default:"null" json:"lua_schema"`
+	LuaSchema *string `json:"lua_schema,omitempty"`
 	// The custom plugin name determined by the custom plugin schema.
-	Name *string `default:"null" json:"name"`
+	Name *string `json:"name,omitempty"`
 	// An ISO-8604 timestamp representation of custom plugin schema creation date.
 	CreatedAt *int64 `json:"created_at,omitempty"`
 	// An ISO-8604 timestamp representation of custom plugin schema update date.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
-}
-
-func (i Item) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(i, "", false)
-}
-
-func (i *Item) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &i, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (i *Item) GetLuaSchema() *string {

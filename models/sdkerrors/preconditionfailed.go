@@ -9,13 +9,13 @@ import (
 // PreconditionFailed - The error response object.
 type PreconditionFailed struct {
 	// The HTTP status code.
-	Status *int64 `default:"null" json:"status"`
+	Status *int64 `json:"status,omitempty"`
 	// The error response code.
-	Title *string `default:"null" json:"title"`
+	Title *string `json:"title,omitempty"`
 	// The Konnect traceback code.
-	Instance *string `default:"null" json:"instance"`
+	Instance *string `json:"instance,omitempty"`
 	// Details about the error response.
-	Detail *string `default:"null" json:"detail"`
+	Detail *string `json:"detail,omitempty"`
 }
 
 var _ error = &PreconditionFailed{}

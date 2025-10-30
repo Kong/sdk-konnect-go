@@ -41,7 +41,7 @@ type KeyAuthApplication struct {
 	// The name of the application.
 	Name string `json:"name"`
 	// A description of the application.
-	Description *string `default:"null" json:"description"`
+	Description *string `json:"description"`
 	// KeyAuth Auth strategy that the application uses.
 	AuthStrategy AuthStrategyKeyAuth `json:"auth_strategy"`
 	// Information about the portal the application is in.

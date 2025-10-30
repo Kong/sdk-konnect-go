@@ -43,9 +43,9 @@ type APIResponseSchema struct {
 	ID string `json:"id"`
 	// The name of your API. The `name + version` combination must be unique for each API you publish.
 	//
-	Name *string `default:"null" json:"name"`
+	Name string `json:"name"`
 	// A description of your API. Will be visible on your live Portal.
-	Description *string `default:"null" json:"description"`
+	Description *string `json:"description,omitempty"`
 	// An optional version for your API. Leave this empty if your API is unversioned.
 	Version               *string            `json:"version"`
 	CurrentVersionSummary *APIVersionSummary `json:"current_version_summary"`
@@ -78,7 +78,7 @@ func (a APIResponseSchema) MarshalJSON() ([]byte, error) {
 }
 
 func (a *APIResponseSchema) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "api_spec_ids", "portals", "labels", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name", "api_spec_ids", "portals", "labels", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -91,9 +91,9 @@ func (a *APIResponseSchema) GetID() string {
 	return a.ID
 }
 
-func (a *APIResponseSchema) GetName() *string {
+func (a *APIResponseSchema) GetName() string {
 	if a == nil {
-		return nil
+		return ""
 	}
 	return a.Name
 }

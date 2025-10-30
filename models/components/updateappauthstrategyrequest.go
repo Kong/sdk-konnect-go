@@ -87,20 +87,9 @@ type UpdateAppAuthStrategyRequest struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels        map[string]*string `json:"labels,omitempty"`
-	DcrProviderID *string            `default:"null" json:"dcr_provider_id"`
+	DcrProviderID *string            `json:"dcr_provider_id,omitempty"`
 	// JSON-B object containing the configuration for the OIDC strategy under the key 'openid-connect' or the configuration for the Key Auth strategy under the key 'key-auth'
 	Configs *Configs `json:"configs,omitempty"`
-}
-
-func (u UpdateAppAuthStrategyRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateAppAuthStrategyRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (u *UpdateAppAuthStrategyRequest) GetName() *string {

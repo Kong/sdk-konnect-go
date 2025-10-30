@@ -107,10 +107,8 @@ func main() {
     res, err := s.PortalAuthSettings.UpdatePortalAuthenticationSettings(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalAuthenticationSettingsUpdateRequest{
         BasicAuthEnabled: sdkkonnectgo.Pointer(true),
         OidcAuthEnabled: sdkkonnectgo.Pointer(true),
-        SamlAuthEnabled: sdkkonnectgo.Pointer(false),
         OidcTeamMappingEnabled: sdkkonnectgo.Pointer(true),
         KonnectMappingEnabled: sdkkonnectgo.Pointer(false),
-        IdpMappingEnabled: sdkkonnectgo.Pointer(true),
         OidcIssuer: sdkkonnectgo.Pointer("https://identity.example.com/v2"),
         OidcClientID: sdkkonnectgo.Pointer("x7id0o42lklas0blidl2"),
         OidcScopes: []string{

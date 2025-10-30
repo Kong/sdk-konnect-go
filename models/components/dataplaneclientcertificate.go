@@ -2,10 +2,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type DataPlaneClientCertificate struct {
 	// Unique ID of the certificate entity.
 	ID *string `json:"id,omitempty"`
@@ -14,18 +10,7 @@ type DataPlaneClientCertificate struct {
 	// Date certificate was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 	// JSON escaped string of the certificate.
-	Cert *string `default:"null" json:"cert"`
-}
-
-func (d DataPlaneClientCertificate) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(d, "", false)
-}
-
-func (d *DataPlaneClientCertificate) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Cert *string `json:"cert,omitempty"`
 }
 
 func (d *DataPlaneClientCertificate) GetID() *string {

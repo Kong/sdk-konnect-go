@@ -2,24 +2,9 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type Mappings struct {
-	Group   *string  `default:"null" json:"group"`
+	Group   *string  `json:"group,omitempty"`
 	TeamIds []string `json:"team_ids,omitempty"`
-}
-
-func (m Mappings) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(m, "", false)
-}
-
-func (m *Mappings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &m, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (m *Mappings) GetGroup() *string {

@@ -2,24 +2,9 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type Data struct {
-	TeamID *string  `default:"null" json:"team_id"`
+	TeamID *string  `json:"team_id,omitempty"`
 	Groups []string `json:"groups,omitempty"`
-}
-
-func (d Data) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(d, "", false)
-}
-
-func (d *Data) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (d *Data) GetTeamID() *string {
