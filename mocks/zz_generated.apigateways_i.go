@@ -122,6 +122,172 @@ func (_c *MockAPIGatewaysSDK_CreateAPIGateway_Call) RunAndReturn(run func(ctx co
 	return _c
 }
 
+// DeleteAPIGateway provides a mock function for the type MockAPIGatewaysSDK
+func (_mock *MockAPIGatewaysSDK) DeleteAPIGateway(ctx context.Context, gatewayID string, opts ...operations.Option) (*operations.DeleteAPIGatewayResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, gatewayID, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, gatewayID)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteAPIGateway")
+	}
+
+	var r0 *operations.DeleteAPIGatewayResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.DeleteAPIGatewayResponse, error)); ok {
+		return returnFunc(ctx, gatewayID, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.DeleteAPIGatewayResponse); ok {
+		r0 = returnFunc(ctx, gatewayID, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteAPIGatewayResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, gatewayID, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAPIGatewaysSDK_DeleteAPIGateway_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAPIGateway'
+type MockAPIGatewaysSDK_DeleteAPIGateway_Call struct {
+	*mock.Call
+}
+
+// DeleteAPIGateway is a helper method to define mock.On call
+//   - ctx context.Context
+//   - gatewayID string
+//   - opts ...operations.Option
+func (_e *MockAPIGatewaysSDK_Expecter) DeleteAPIGateway(ctx interface{}, gatewayID interface{}, opts ...interface{}) *MockAPIGatewaysSDK_DeleteAPIGateway_Call {
+	return &MockAPIGatewaysSDK_DeleteAPIGateway_Call{Call: _e.mock.On("DeleteAPIGateway",
+		append([]interface{}{ctx, gatewayID}, opts...)...)}
+}
+
+func (_c *MockAPIGatewaysSDK_DeleteAPIGateway_Call) Run(run func(ctx context.Context, gatewayID string, opts ...operations.Option)) *MockAPIGatewaysSDK_DeleteAPIGateway_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAPIGatewaysSDK_DeleteAPIGateway_Call) Return(deleteAPIGatewayResponse *operations.DeleteAPIGatewayResponse, err error) *MockAPIGatewaysSDK_DeleteAPIGateway_Call {
+	_c.Call.Return(deleteAPIGatewayResponse, err)
+	return _c
+}
+
+func (_c *MockAPIGatewaysSDK_DeleteAPIGateway_Call) RunAndReturn(run func(ctx context.Context, gatewayID string, opts ...operations.Option) (*operations.DeleteAPIGatewayResponse, error)) *MockAPIGatewaysSDK_DeleteAPIGateway_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetAPIGateway provides a mock function for the type MockAPIGatewaysSDK
+func (_mock *MockAPIGatewaysSDK) GetAPIGateway(ctx context.Context, gatewayID string, opts ...operations.Option) (*operations.GetAPIGatewayResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, gatewayID, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, gatewayID)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetAPIGateway")
+	}
+
+	var r0 *operations.GetAPIGatewayResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.GetAPIGatewayResponse, error)); ok {
+		return returnFunc(ctx, gatewayID, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.GetAPIGatewayResponse); ok {
+		r0 = returnFunc(ctx, gatewayID, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetAPIGatewayResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, gatewayID, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAPIGatewaysSDK_GetAPIGateway_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAPIGateway'
+type MockAPIGatewaysSDK_GetAPIGateway_Call struct {
+	*mock.Call
+}
+
+// GetAPIGateway is a helper method to define mock.On call
+//   - ctx context.Context
+//   - gatewayID string
+//   - opts ...operations.Option
+func (_e *MockAPIGatewaysSDK_Expecter) GetAPIGateway(ctx interface{}, gatewayID interface{}, opts ...interface{}) *MockAPIGatewaysSDK_GetAPIGateway_Call {
+	return &MockAPIGatewaysSDK_GetAPIGateway_Call{Call: _e.mock.On("GetAPIGateway",
+		append([]interface{}{ctx, gatewayID}, opts...)...)}
+}
+
+func (_c *MockAPIGatewaysSDK_GetAPIGateway_Call) Run(run func(ctx context.Context, gatewayID string, opts ...operations.Option)) *MockAPIGatewaysSDK_GetAPIGateway_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAPIGatewaysSDK_GetAPIGateway_Call) Return(getAPIGatewayResponse *operations.GetAPIGatewayResponse, err error) *MockAPIGatewaysSDK_GetAPIGateway_Call {
+	_c.Call.Return(getAPIGatewayResponse, err)
+	return _c
+}
+
+func (_c *MockAPIGatewaysSDK_GetAPIGateway_Call) RunAndReturn(run func(ctx context.Context, gatewayID string, opts ...operations.Option) (*operations.GetAPIGatewayResponse, error)) *MockAPIGatewaysSDK_GetAPIGateway_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListAPIGateways provides a mock function for the type MockAPIGatewaysSDK
 func (_mock *MockAPIGatewaysSDK) ListAPIGateways(ctx context.Context, request operations.ListAPIGatewaysRequest, opts ...operations.Option) (*operations.ListAPIGatewaysResponse, error) {
 	var tmpRet mock.Arguments
@@ -201,6 +367,95 @@ func (_c *MockAPIGatewaysSDK_ListAPIGateways_Call) Return(listAPIGatewaysRespons
 }
 
 func (_c *MockAPIGatewaysSDK_ListAPIGateways_Call) RunAndReturn(run func(ctx context.Context, request operations.ListAPIGatewaysRequest, opts ...operations.Option) (*operations.ListAPIGatewaysResponse, error)) *MockAPIGatewaysSDK_ListAPIGateways_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateAPIGateway provides a mock function for the type MockAPIGatewaysSDK
+func (_mock *MockAPIGatewaysSDK) UpdateAPIGateway(ctx context.Context, gatewayID string, updateGatewayRequest components.UpdateGatewayRequest, opts ...operations.Option) (*operations.UpdateAPIGatewayResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, gatewayID, updateGatewayRequest, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, gatewayID, updateGatewayRequest)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateAPIGateway")
+	}
+
+	var r0 *operations.UpdateAPIGatewayResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpdateGatewayRequest, ...operations.Option) (*operations.UpdateAPIGatewayResponse, error)); ok {
+		return returnFunc(ctx, gatewayID, updateGatewayRequest, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpdateGatewayRequest, ...operations.Option) *operations.UpdateAPIGatewayResponse); ok {
+		r0 = returnFunc(ctx, gatewayID, updateGatewayRequest, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpdateAPIGatewayResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.UpdateGatewayRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, gatewayID, updateGatewayRequest, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAPIGatewaysSDK_UpdateAPIGateway_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAPIGateway'
+type MockAPIGatewaysSDK_UpdateAPIGateway_Call struct {
+	*mock.Call
+}
+
+// UpdateAPIGateway is a helper method to define mock.On call
+//   - ctx context.Context
+//   - gatewayID string
+//   - updateGatewayRequest components.UpdateGatewayRequest
+//   - opts ...operations.Option
+func (_e *MockAPIGatewaysSDK_Expecter) UpdateAPIGateway(ctx interface{}, gatewayID interface{}, updateGatewayRequest interface{}, opts ...interface{}) *MockAPIGatewaysSDK_UpdateAPIGateway_Call {
+	return &MockAPIGatewaysSDK_UpdateAPIGateway_Call{Call: _e.mock.On("UpdateAPIGateway",
+		append([]interface{}{ctx, gatewayID, updateGatewayRequest}, opts...)...)}
+}
+
+func (_c *MockAPIGatewaysSDK_UpdateAPIGateway_Call) Run(run func(ctx context.Context, gatewayID string, updateGatewayRequest components.UpdateGatewayRequest, opts ...operations.Option)) *MockAPIGatewaysSDK_UpdateAPIGateway_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.UpdateGatewayRequest
+		if args[2] != nil {
+			arg2 = args[2].(components.UpdateGatewayRequest)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAPIGatewaysSDK_UpdateAPIGateway_Call) Return(updateAPIGatewayResponse *operations.UpdateAPIGatewayResponse, err error) *MockAPIGatewaysSDK_UpdateAPIGateway_Call {
+	_c.Call.Return(updateAPIGatewayResponse, err)
+	return _c
+}
+
+func (_c *MockAPIGatewaysSDK_UpdateAPIGateway_Call) RunAndReturn(run func(ctx context.Context, gatewayID string, updateGatewayRequest components.UpdateGatewayRequest, opts ...operations.Option) (*operations.UpdateAPIGatewayResponse, error)) *MockAPIGatewaysSDK_UpdateAPIGateway_Call {
 	_c.Call.Return(run)
 	return _c
 }

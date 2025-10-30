@@ -23,4 +23,22 @@ type APIGatewaysSDK interface {
 	//
 	// Create an API Gateway in the Konnect Organization.
 	CreateAPIGateway(ctx context.Context, request components.CreateGatewayRequest, opts ...operations.Option) (*operations.CreateAPIGatewayResponse, error)
+	// GetAPIGateway - Get API Gateway
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Returns information about an individual API gateway.
+	GetAPIGateway(ctx context.Context, gatewayID string, opts ...operations.Option) (*operations.GetAPIGatewayResponse, error)
+	// UpdateAPIGateway - Update API Gateway
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Update an individual gateway.
+	UpdateAPIGateway(ctx context.Context, gatewayID string, updateGatewayRequest components.UpdateGatewayRequest, opts ...operations.Option) (*operations.UpdateAPIGatewayResponse, error)
+	// DeleteAPIGateway - Delete API Gateway
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Delete an individual gateway.
+	DeleteAPIGateway(ctx context.Context, gatewayID string, opts ...operations.Option) (*operations.DeleteAPIGatewayResponse, error)
 }

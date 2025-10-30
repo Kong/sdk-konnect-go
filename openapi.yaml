@@ -86,6 +86,99 @@ paths:
         This endpoint is currently in beta and is subject to change.
 
         Create an API Gateway in the Konnect Organization.
+  /v1/api-gateways/{gatewayId}:
+    parameters:
+      - $ref: '#/components/parameters/gatewayId'
+    get:
+      x-speakeasy-entity-operation:
+        terraform-resource: APIGateway#read
+        terraform-datasource: null
+      summary: Get API Gateway
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveGatewayResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/NotAvailable'
+      operationId: get-api-gateway
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Returns information about an individual API gateway.
+      tags:
+        - API Gateways
+    put:
+      x-speakeasy-entity-operation:
+        terraform-resource: APIGateway#update
+        terraform-datasource: null
+      summary: Update API Gateway
+      operationId: update-api-gateway
+      responses:
+        '200':
+          $ref: '#/components/responses/UpdateGatewayResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/NotAvailable'
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Update an individual gateway.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateGatewayRequest'
+      tags:
+        - API Gateways
+    delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: APIGateway#delete
+        terraform-datasource: null
+      summary: Delete API Gateway
+      operationId: delete-api-gateway
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/NotAvailable'
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Delete an individual gateway.
+      tags:
+        - API Gateways
   /v1/api-gateways/{gatewayId}/data-plane-certificates:
     parameters:
       - $ref: '#/components/parameters/gatewayId'

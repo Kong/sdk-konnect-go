@@ -490,6 +490,7 @@ generatedFiles:
   - /models/components/updatedcrconfigoktainrequest.go
   - /models/components/updatedcrproviderrequest.go
   - /models/components/updatedeveloperrequest.go
+  - /models/components/updategatewayrequest.go
   - /models/components/updateidentityprovider.go
   - /models/components/updateidpconfiguration.go
   - /models/components/updateimpersonationsettingsrequest.go
@@ -587,6 +588,7 @@ generatedFiles:
   - /models/operations/deleteaclwithconsumer.go
   - /models/operations/deleteapi.go
   - /models/operations/deleteapidocument.go
+  - /models/operations/deleteapigateway.go
   - /models/operations/deleteapiimplementation.go
   - /models/operations/deleteapispec.go
   - /models/operations/deleteapiversion.go
@@ -665,6 +667,7 @@ generatedFiles:
   - /models/operations/fetchpublication.go
   - /models/operations/getacl.go
   - /models/operations/getaclwithconsumer.go
+  - /models/operations/getapigateway.go
   - /models/operations/getappauthstrategy.go
   - /models/operations/getapplication.go
   - /models/operations/getapplicationregistration.go
@@ -896,6 +899,7 @@ generatedFiles:
   - /models/operations/teamsremoverole.go
   - /models/operations/updateapi.go
   - /models/operations/updateapidocument.go
+  - /models/operations/updateapigateway.go
   - /models/operations/updateapispec.go
   - /models/operations/updateapiversion.go
   - /models/operations/updateappauthstrategy.go
@@ -1813,6 +1817,7 @@ generatedFiles:
   - docs/models/components/updatedcrconfigoktainrequest.md
   - docs/models/components/updatedcrproviderrequest.md
   - docs/models/components/updatedeveloperrequest.md
+  - docs/models/components/updategatewayrequest.md
   - docs/models/components/updateidentityprovider.md
   - docs/models/components/updateidentityproviderconfig.md
   - docs/models/components/updateidpconfiguration.md
@@ -1986,6 +1991,8 @@ generatedFiles:
   - docs/models/operations/deleteaclwithconsumerresponse.md
   - docs/models/operations/deleteapidocumentrequest.md
   - docs/models/operations/deleteapidocumentresponse.md
+  - docs/models/operations/deleteapigatewayrequest.md
+  - docs/models/operations/deleteapigatewayresponse.md
   - docs/models/operations/deleteapiimplementationrequest.md
   - docs/models/operations/deleteapiimplementationresponse.md
   - docs/models/operations/deleteapirequest.md
@@ -2146,6 +2153,8 @@ generatedFiles:
   - docs/models/operations/getaclresponse.md
   - docs/models/operations/getaclwithconsumerrequest.md
   - docs/models/operations/getaclwithconsumerresponse.md
+  - docs/models/operations/getapigatewayrequest.md
+  - docs/models/operations/getapigatewayresponse.md
   - docs/models/operations/getappauthstrategyrequest.md
   - docs/models/operations/getappauthstrategyresponse.md
   - docs/models/operations/getapplicationregistrationrequest.md
@@ -2654,6 +2663,8 @@ generatedFiles:
   - docs/models/operations/teamsremoveroleresponse.md
   - docs/models/operations/updateapidocumentrequest.md
   - docs/models/operations/updateapidocumentresponse.md
+  - docs/models/operations/updateapigatewayrequest.md
+  - docs/models/operations/updateapigatewayresponse.md
   - docs/models/operations/updateapirequest.md
   - docs/models/operations/updateapiresponse.md
   - docs/models/operations/updateapispecrequest.md
@@ -27109,5 +27120,59 @@ examples:
           application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
         "500":
           application/problem+json: {"status": 728595, "title": "<value>", "instance": "<value>", "detail": "<value>"}
+  get-api-gateway:
+    speakeasy-default-get-api-gateway:
+      parameters:
+        path:
+          gatewayId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "200":
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "labels": {"env": "test"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 539185, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value 1>", "<value 2>"], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "500":
+          application/problem+json: {"status": 239356, "title": "<value>", "instance": "<value>", "detail": "<value>"}
+  update-api-gateway:
+    speakeasy-default-update-api-gateway:
+      parameters:
+        path:
+          gatewayId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      requestBody:
+        application/json: {"labels": {"env": "test"}}
+      responses:
+        "200":
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "labels": {"env": "test"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 719600, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "500":
+          application/problem+json: {"status": 306567, "title": "<value>", "instance": "<value>", "detail": "<value>"}
+  delete-api-gateway:
+    speakeasy-default-delete-api-gateway:
+      parameters:
+        path:
+          gatewayId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "400":
+          application/problem+json: {"status": 143076, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "500":
+          application/problem+json: {"status": 94887, "title": "<value>", "instance": "<value>", "detail": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
