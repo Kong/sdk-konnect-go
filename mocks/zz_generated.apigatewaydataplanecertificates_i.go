@@ -128,6 +128,184 @@ func (_c *MockAPIGatewayDataPlaneCertificatesSDK_CreateAPIGatewayDataPlaneCertif
 	return _c
 }
 
+// DeleteAPIGatewayDataPlaneCertificate provides a mock function for the type MockAPIGatewayDataPlaneCertificatesSDK
+func (_mock *MockAPIGatewayDataPlaneCertificatesSDK) DeleteAPIGatewayDataPlaneCertificate(ctx context.Context, gatewayID string, certificateID string, opts ...operations.Option) (*operations.DeleteAPIGatewayDataPlaneCertificateResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, gatewayID, certificateID, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, gatewayID, certificateID)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteAPIGatewayDataPlaneCertificate")
+	}
+
+	var r0 *operations.DeleteAPIGatewayDataPlaneCertificateResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.DeleteAPIGatewayDataPlaneCertificateResponse, error)); ok {
+		return returnFunc(ctx, gatewayID, certificateID, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.DeleteAPIGatewayDataPlaneCertificateResponse); ok {
+		r0 = returnFunc(ctx, gatewayID, certificateID, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteAPIGatewayDataPlaneCertificateResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, gatewayID, certificateID, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAPIGatewayDataPlaneCertificatesSDK_DeleteAPIGatewayDataPlaneCertificate_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAPIGatewayDataPlaneCertificate'
+type MockAPIGatewayDataPlaneCertificatesSDK_DeleteAPIGatewayDataPlaneCertificate_Call struct {
+	*mock.Call
+}
+
+// DeleteAPIGatewayDataPlaneCertificate is a helper method to define mock.On call
+//   - ctx context.Context
+//   - gatewayID string
+//   - certificateID string
+//   - opts ...operations.Option
+func (_e *MockAPIGatewayDataPlaneCertificatesSDK_Expecter) DeleteAPIGatewayDataPlaneCertificate(ctx interface{}, gatewayID interface{}, certificateID interface{}, opts ...interface{}) *MockAPIGatewayDataPlaneCertificatesSDK_DeleteAPIGatewayDataPlaneCertificate_Call {
+	return &MockAPIGatewayDataPlaneCertificatesSDK_DeleteAPIGatewayDataPlaneCertificate_Call{Call: _e.mock.On("DeleteAPIGatewayDataPlaneCertificate",
+		append([]interface{}{ctx, gatewayID, certificateID}, opts...)...)}
+}
+
+func (_c *MockAPIGatewayDataPlaneCertificatesSDK_DeleteAPIGatewayDataPlaneCertificate_Call) Run(run func(ctx context.Context, gatewayID string, certificateID string, opts ...operations.Option)) *MockAPIGatewayDataPlaneCertificatesSDK_DeleteAPIGatewayDataPlaneCertificate_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 string
+		if args[2] != nil {
+			arg2 = args[2].(string)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAPIGatewayDataPlaneCertificatesSDK_DeleteAPIGatewayDataPlaneCertificate_Call) Return(deleteAPIGatewayDataPlaneCertificateResponse *operations.DeleteAPIGatewayDataPlaneCertificateResponse, err error) *MockAPIGatewayDataPlaneCertificatesSDK_DeleteAPIGatewayDataPlaneCertificate_Call {
+	_c.Call.Return(deleteAPIGatewayDataPlaneCertificateResponse, err)
+	return _c
+}
+
+func (_c *MockAPIGatewayDataPlaneCertificatesSDK_DeleteAPIGatewayDataPlaneCertificate_Call) RunAndReturn(run func(ctx context.Context, gatewayID string, certificateID string, opts ...operations.Option) (*operations.DeleteAPIGatewayDataPlaneCertificateResponse, error)) *MockAPIGatewayDataPlaneCertificatesSDK_DeleteAPIGatewayDataPlaneCertificate_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetAPIGatewayDataPlaneCertificate provides a mock function for the type MockAPIGatewayDataPlaneCertificatesSDK
+func (_mock *MockAPIGatewayDataPlaneCertificatesSDK) GetAPIGatewayDataPlaneCertificate(ctx context.Context, gatewayID string, certificateID string, opts ...operations.Option) (*operations.GetAPIGatewayDataPlaneCertificateResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, gatewayID, certificateID, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, gatewayID, certificateID)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetAPIGatewayDataPlaneCertificate")
+	}
+
+	var r0 *operations.GetAPIGatewayDataPlaneCertificateResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.GetAPIGatewayDataPlaneCertificateResponse, error)); ok {
+		return returnFunc(ctx, gatewayID, certificateID, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.GetAPIGatewayDataPlaneCertificateResponse); ok {
+		r0 = returnFunc(ctx, gatewayID, certificateID, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetAPIGatewayDataPlaneCertificateResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, gatewayID, certificateID, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAPIGatewayDataPlaneCertificatesSDK_GetAPIGatewayDataPlaneCertificate_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAPIGatewayDataPlaneCertificate'
+type MockAPIGatewayDataPlaneCertificatesSDK_GetAPIGatewayDataPlaneCertificate_Call struct {
+	*mock.Call
+}
+
+// GetAPIGatewayDataPlaneCertificate is a helper method to define mock.On call
+//   - ctx context.Context
+//   - gatewayID string
+//   - certificateID string
+//   - opts ...operations.Option
+func (_e *MockAPIGatewayDataPlaneCertificatesSDK_Expecter) GetAPIGatewayDataPlaneCertificate(ctx interface{}, gatewayID interface{}, certificateID interface{}, opts ...interface{}) *MockAPIGatewayDataPlaneCertificatesSDK_GetAPIGatewayDataPlaneCertificate_Call {
+	return &MockAPIGatewayDataPlaneCertificatesSDK_GetAPIGatewayDataPlaneCertificate_Call{Call: _e.mock.On("GetAPIGatewayDataPlaneCertificate",
+		append([]interface{}{ctx, gatewayID, certificateID}, opts...)...)}
+}
+
+func (_c *MockAPIGatewayDataPlaneCertificatesSDK_GetAPIGatewayDataPlaneCertificate_Call) Run(run func(ctx context.Context, gatewayID string, certificateID string, opts ...operations.Option)) *MockAPIGatewayDataPlaneCertificatesSDK_GetAPIGatewayDataPlaneCertificate_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 string
+		if args[2] != nil {
+			arg2 = args[2].(string)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAPIGatewayDataPlaneCertificatesSDK_GetAPIGatewayDataPlaneCertificate_Call) Return(getAPIGatewayDataPlaneCertificateResponse *operations.GetAPIGatewayDataPlaneCertificateResponse, err error) *MockAPIGatewayDataPlaneCertificatesSDK_GetAPIGatewayDataPlaneCertificate_Call {
+	_c.Call.Return(getAPIGatewayDataPlaneCertificateResponse, err)
+	return _c
+}
+
+func (_c *MockAPIGatewayDataPlaneCertificatesSDK_GetAPIGatewayDataPlaneCertificate_Call) RunAndReturn(run func(ctx context.Context, gatewayID string, certificateID string, opts ...operations.Option) (*operations.GetAPIGatewayDataPlaneCertificateResponse, error)) *MockAPIGatewayDataPlaneCertificatesSDK_GetAPIGatewayDataPlaneCertificate_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListAPIGatewayDataPlaneCertificates provides a mock function for the type MockAPIGatewayDataPlaneCertificatesSDK
 func (_mock *MockAPIGatewayDataPlaneCertificatesSDK) ListAPIGatewayDataPlaneCertificates(ctx context.Context, request operations.ListAPIGatewayDataPlaneCertificatesRequest, opts ...operations.Option) (*operations.ListAPIGatewayDataPlaneCertificatesResponse, error) {
 	var tmpRet mock.Arguments
@@ -207,6 +385,89 @@ func (_c *MockAPIGatewayDataPlaneCertificatesSDK_ListAPIGatewayDataPlaneCertific
 }
 
 func (_c *MockAPIGatewayDataPlaneCertificatesSDK_ListAPIGatewayDataPlaneCertificates_Call) RunAndReturn(run func(ctx context.Context, request operations.ListAPIGatewayDataPlaneCertificatesRequest, opts ...operations.Option) (*operations.ListAPIGatewayDataPlaneCertificatesResponse, error)) *MockAPIGatewayDataPlaneCertificatesSDK_ListAPIGatewayDataPlaneCertificates_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateAPIGatewayDataPlaneCertificate provides a mock function for the type MockAPIGatewayDataPlaneCertificatesSDK
+func (_mock *MockAPIGatewayDataPlaneCertificatesSDK) UpdateAPIGatewayDataPlaneCertificate(ctx context.Context, request operations.UpdateAPIGatewayDataPlaneCertificateRequest, opts ...operations.Option) (*operations.UpdateAPIGatewayDataPlaneCertificateResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateAPIGatewayDataPlaneCertificate")
+	}
+
+	var r0 *operations.UpdateAPIGatewayDataPlaneCertificateResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpdateAPIGatewayDataPlaneCertificateRequest, ...operations.Option) (*operations.UpdateAPIGatewayDataPlaneCertificateResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpdateAPIGatewayDataPlaneCertificateRequest, ...operations.Option) *operations.UpdateAPIGatewayDataPlaneCertificateResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpdateAPIGatewayDataPlaneCertificateResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpdateAPIGatewayDataPlaneCertificateRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockAPIGatewayDataPlaneCertificatesSDK_UpdateAPIGatewayDataPlaneCertificate_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAPIGatewayDataPlaneCertificate'
+type MockAPIGatewayDataPlaneCertificatesSDK_UpdateAPIGatewayDataPlaneCertificate_Call struct {
+	*mock.Call
+}
+
+// UpdateAPIGatewayDataPlaneCertificate is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpdateAPIGatewayDataPlaneCertificateRequest
+//   - opts ...operations.Option
+func (_e *MockAPIGatewayDataPlaneCertificatesSDK_Expecter) UpdateAPIGatewayDataPlaneCertificate(ctx interface{}, request interface{}, opts ...interface{}) *MockAPIGatewayDataPlaneCertificatesSDK_UpdateAPIGatewayDataPlaneCertificate_Call {
+	return &MockAPIGatewayDataPlaneCertificatesSDK_UpdateAPIGatewayDataPlaneCertificate_Call{Call: _e.mock.On("UpdateAPIGatewayDataPlaneCertificate",
+		append([]interface{}{ctx, request}, opts...)...)}
+}
+
+func (_c *MockAPIGatewayDataPlaneCertificatesSDK_UpdateAPIGatewayDataPlaneCertificate_Call) Run(run func(ctx context.Context, request operations.UpdateAPIGatewayDataPlaneCertificateRequest, opts ...operations.Option)) *MockAPIGatewayDataPlaneCertificatesSDK_UpdateAPIGatewayDataPlaneCertificate_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpdateAPIGatewayDataPlaneCertificateRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpdateAPIGatewayDataPlaneCertificateRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockAPIGatewayDataPlaneCertificatesSDK_UpdateAPIGatewayDataPlaneCertificate_Call) Return(updateAPIGatewayDataPlaneCertificateResponse *operations.UpdateAPIGatewayDataPlaneCertificateResponse, err error) *MockAPIGatewayDataPlaneCertificatesSDK_UpdateAPIGatewayDataPlaneCertificate_Call {
+	_c.Call.Return(updateAPIGatewayDataPlaneCertificateResponse, err)
+	return _c
+}
+
+func (_c *MockAPIGatewayDataPlaneCertificatesSDK_UpdateAPIGatewayDataPlaneCertificate_Call) RunAndReturn(run func(ctx context.Context, request operations.UpdateAPIGatewayDataPlaneCertificateRequest, opts ...operations.Option) (*operations.UpdateAPIGatewayDataPlaneCertificateResponse, error)) *MockAPIGatewayDataPlaneCertificatesSDK_UpdateAPIGatewayDataPlaneCertificate_Call {
 	_c.Call.Return(run)
 	return _c
 }

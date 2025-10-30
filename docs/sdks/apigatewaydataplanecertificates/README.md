@@ -7,6 +7,9 @@
 
 * [ListAPIGatewayDataPlaneCertificates](#listapigatewaydataplanecertificates) - List API Gateway DataPlane Certificates
 * [CreateAPIGatewayDataPlaneCertificate](#createapigatewaydataplanecertificate) - Create a New DataPlane Certificate
+* [GetAPIGatewayDataPlaneCertificate](#getapigatewaydataplanecertificate) - Get DataPlane Certificate
+* [UpdateAPIGatewayDataPlaneCertificate](#updateapigatewaydataplanecertificate) - Update API Gateway DataPlane Certificate
+* [DeleteAPIGatewayDataPlaneCertificate](#deleteapigatewaydataplanecertificate) - Delete API Gateway DataPlane Certificate
 
 ## ListAPIGatewayDataPlaneCertificates
 
@@ -130,6 +133,192 @@ func main() {
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetAPIGatewayDataPlaneCertificate
+
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
+
+Returns information about an individual dataplane certificate.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-api-gateway-data-plane-certificate" method="get" path="/v1/api-gateways/{gatewayId}/data-plane-certificates/{certificateId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIGatewayDataPlaneCertificates.GetAPIGatewayDataPlaneCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "14c1e2da-2e59-4fb3-b54d-1de4d93f92d6")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIGatewayDataPlaneCertificate != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `gatewayID`                                              | *string*                                                 | :heavy_check_mark:                                       | The UUID of your Gateway.                                | 9524ec7d-36d9-465d-a8c5-83a3c9390458                     |
+| `certificateID`                                          | *string*                                                 | :heavy_check_mark:                                       | The ID of the dataplane certificate.                     |                                                          |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.GetAPIGatewayDataPlaneCertificateResponse](../../models/operations/getapigatewaydataplanecertificateresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## UpdateAPIGatewayDataPlaneCertificate
+
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
+
+Updates an existing dataplane certificate associated with the specified API Gateway.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="update-api-gateway-data-plane-certificate" method="put" path="/v1/api-gateways/{gatewayId}/data-plane-certificates/{certificateId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIGatewayDataPlaneCertificates.UpdateAPIGatewayDataPlaneCertificate(ctx, operations.UpdateAPIGatewayDataPlaneCertificateRequest{
+        GatewayID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        CertificateID: "131de582-0336-48b2-afb3-1b9da3c7c0ce",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIGatewayDataPlaneCertificate != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                        | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                                            | :heavy_check_mark:                                                                                                               | The context to use for the request.                                                                                              |
+| `request`                                                                                                                        | [operations.UpdateAPIGatewayDataPlaneCertificateRequest](../../models/operations/updateapigatewaydataplanecertificaterequest.md) | :heavy_check_mark:                                                                                                               | The request object to use for the request.                                                                                       |
+| `opts`                                                                                                                           | [][operations.Option](../../models/operations/option.md)                                                                         | :heavy_minus_sign:                                                                                                               | The options for this request.                                                                                                    |
+
+### Response
+
+**[*operations.UpdateAPIGatewayDataPlaneCertificateResponse](../../models/operations/updateapigatewaydataplanecertificateresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## DeleteAPIGatewayDataPlaneCertificate
+
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
+
+Deletes a specific dataplane certificate associated with the API Gateway.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-api-gateway-data-plane-certificate" method="delete" path="/v1/api-gateways/{gatewayId}/data-plane-certificates/{certificateId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIGatewayDataPlaneCertificates.DeleteAPIGatewayDataPlaneCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "78dbbadb-9a99-4c96-a524-d57754430380")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `gatewayID`                                              | *string*                                                 | :heavy_check_mark:                                       | The UUID of your Gateway.                                | 9524ec7d-36d9-465d-a8c5-83a3c9390458                     |
+| `certificateID`                                          | *string*                                                 | :heavy_check_mark:                                       | The ID of the dataplane certificate.                     |                                                          |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.DeleteAPIGatewayDataPlaneCertificateResponse](../../models/operations/deleteapigatewaydataplanecertificateresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |

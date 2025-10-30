@@ -23,4 +23,22 @@ type APIGatewayDataPlaneCertificatesSDK interface {
 	//
 	// Create new dataplane certificate to this API gateway. A dataplane certificate allows dataplanes configured with the certificate and corresponding private key to establish connection with this API gateway.
 	CreateAPIGatewayDataPlaneCertificate(ctx context.Context, gatewayID string, createAPIGatewayDataPlaneCertificateRequest *components.CreateAPIGatewayDataPlaneCertificateRequest, opts ...operations.Option) (*operations.CreateAPIGatewayDataPlaneCertificateResponse, error)
+	// GetAPIGatewayDataPlaneCertificate - Get DataPlane Certificate
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Returns information about an individual dataplane certificate.
+	GetAPIGatewayDataPlaneCertificate(ctx context.Context, gatewayID string, certificateID string, opts ...operations.Option) (*operations.GetAPIGatewayDataPlaneCertificateResponse, error)
+	// UpdateAPIGatewayDataPlaneCertificate - Update API Gateway DataPlane Certificate
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Updates an existing dataplane certificate associated with the specified API Gateway.
+	UpdateAPIGatewayDataPlaneCertificate(ctx context.Context, request operations.UpdateAPIGatewayDataPlaneCertificateRequest, opts ...operations.Option) (*operations.UpdateAPIGatewayDataPlaneCertificateResponse, error)
+	// DeleteAPIGatewayDataPlaneCertificate - Delete API Gateway DataPlane Certificate
+	// **Pre-release Endpoint**
+	// This endpoint is currently in beta and is subject to change.
+	//
+	// Deletes a specific dataplane certificate associated with the API Gateway.
+	DeleteAPIGatewayDataPlaneCertificate(ctx context.Context, gatewayID string, certificateID string, opts ...operations.Option) (*operations.DeleteAPIGatewayDataPlaneCertificateResponse, error)
 }

@@ -241,6 +241,83 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - API Gateway DataPlane Certificates
+  /v1/api-gateways/{gatewayId}/data-plane-certificates/{certificateId}:
+    parameters:
+      - $ref: '#/components/parameters/gatewayId'
+      - $ref: '#/components/parameters/certificateId'
+    get:
+      summary: Get DataPlane Certificate
+      responses:
+        '200':
+          description: A single dataplane certificate.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIGatewayDataPlaneCertificate'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      operationId: get-api-gateway-data-plane-certificate
+      tags:
+        - API Gateway DataPlane Certificates
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Returns information about an individual dataplane certificate.
+    put:
+      summary: Update API Gateway DataPlane Certificate
+      description: >-
+        **Pre-release Endpoint**
+
+        This endpoint is currently in beta and is subject to change.
+
+
+        Updates an existing dataplane certificate associated with the specified
+        API Gateway.
+      operationId: update-api-gateway-data-plane-certificate
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateAPIGatewayDataPlaneCertificateRequest'
+      responses:
+        '200':
+          description: Updated API gateway dataplane certificate object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIGatewayDataPlaneCertificate'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - API Gateway DataPlane Certificates
+    delete:
+      summary: Delete API Gateway DataPlane Certificate
+      description: >-
+        **Pre-release Endpoint**
+
+        This endpoint is currently in beta and is subject to change.
+
+
+        Deletes a specific dataplane certificate associated with the API
+        Gateway.
+      operationId: delete-api-gateway-data-plane-certificate
+      responses:
+        '204':
+          description: No Content
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - API Gateway DataPlane Certificates
   /v1/notifications/configurations:
     get:
       operationId: list-user-configurations

@@ -474,6 +474,7 @@ generatedFiles:
   - /models/components/transitgatewaystatefieldfilter.go
   - /models/components/transitgatewaystatefieldnotequalsfilter.go
   - /models/components/transitgatewaystatefieldorequalityfilter.go
+  - /models/components/updateapigatewaydataplanecertificaterequest.go
   - /models/components/updateapirequest.go
   - /models/components/updateappauthstrategyrequest.go
   - /models/components/updateappauthstrategyrequestkeyauth.go
@@ -589,6 +590,7 @@ generatedFiles:
   - /models/operations/deleteapi.go
   - /models/operations/deleteapidocument.go
   - /models/operations/deleteapigateway.go
+  - /models/operations/deleteapigatewaydataplanecertificate.go
   - /models/operations/deleteapiimplementation.go
   - /models/operations/deleteapispec.go
   - /models/operations/deleteapiversion.go
@@ -668,6 +670,7 @@ generatedFiles:
   - /models/operations/getacl.go
   - /models/operations/getaclwithconsumer.go
   - /models/operations/getapigateway.go
+  - /models/operations/getapigatewaydataplanecertificate.go
   - /models/operations/getappauthstrategy.go
   - /models/operations/getapplication.go
   - /models/operations/getapplicationregistration.go
@@ -900,6 +903,7 @@ generatedFiles:
   - /models/operations/updateapi.go
   - /models/operations/updateapidocument.go
   - /models/operations/updateapigateway.go
+  - /models/operations/updateapigatewaydataplanecertificate.go
   - /models/operations/updateapispec.go
   - /models/operations/updateapiversion.go
   - /models/operations/updateappauthstrategy.go
@@ -1800,6 +1804,7 @@ generatedFiles:
   - docs/models/components/transitgatewaystatemetadata.md
   - docs/models/components/type.md
   - docs/models/components/unhealthy.md
+  - docs/models/components/updateapigatewaydataplanecertificaterequest.md
   - docs/models/components/updateapirequest.md
   - docs/models/components/updateappauthstrategyrequest.md
   - docs/models/components/updateappauthstrategyrequestkeyauth.md
@@ -1991,6 +1996,8 @@ generatedFiles:
   - docs/models/operations/deleteaclwithconsumerresponse.md
   - docs/models/operations/deleteapidocumentrequest.md
   - docs/models/operations/deleteapidocumentresponse.md
+  - docs/models/operations/deleteapigatewaydataplanecertificaterequest.md
+  - docs/models/operations/deleteapigatewaydataplanecertificateresponse.md
   - docs/models/operations/deleteapigatewayrequest.md
   - docs/models/operations/deleteapigatewayresponse.md
   - docs/models/operations/deleteapiimplementationrequest.md
@@ -2153,6 +2160,8 @@ generatedFiles:
   - docs/models/operations/getaclresponse.md
   - docs/models/operations/getaclwithconsumerrequest.md
   - docs/models/operations/getaclwithconsumerresponse.md
+  - docs/models/operations/getapigatewaydataplanecertificaterequest.md
+  - docs/models/operations/getapigatewaydataplanecertificateresponse.md
   - docs/models/operations/getapigatewayrequest.md
   - docs/models/operations/getapigatewayresponse.md
   - docs/models/operations/getappauthstrategyrequest.md
@@ -2663,6 +2672,8 @@ generatedFiles:
   - docs/models/operations/teamsremoveroleresponse.md
   - docs/models/operations/updateapidocumentrequest.md
   - docs/models/operations/updateapidocumentresponse.md
+  - docs/models/operations/updateapigatewaydataplanecertificaterequest.md
+  - docs/models/operations/updateapigatewaydataplanecertificateresponse.md
   - docs/models/operations/updateapigatewayrequest.md
   - docs/models/operations/updateapigatewayresponse.md
   - docs/models/operations/updateapirequest.md
@@ -27174,5 +27185,48 @@ examples:
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
         "500":
           application/problem+json: {"status": 94887, "title": "<value>", "instance": "<value>", "detail": "<value>"}
+  get-api-gateway-data-plane-certificate:
+    speakeasy-default-get-api-gateway-data-plane-certificate:
+      parameters:
+        path:
+          gatewayId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          certificateId: "14c1e2da-2e59-4fb3-b54d-1de4d93f92d6"
+      responses:
+        "200":
+          application/json: {"id": "13c0bbfe-8a3d-4939-9939-f8800d44e191", "certificate": "<value>", "name": null, "description": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  update-api-gateway-data-plane-certificate:
+    speakeasy-default-update-api-gateway-data-plane-certificate:
+      parameters:
+        path:
+          gatewayId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          certificateId: "131de582-0336-48b2-afb3-1b9da3c7c0ce"
+      responses:
+        "200":
+          application/json: {"id": "79830b57-58d3-49a3-9b2f-ab146d83a2c8", "certificate": "<value>", "name": null, "description": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 329352, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+  delete-api-gateway-data-plane-certificate:
+    speakeasy-default-delete-api-gateway-data-plane-certificate:
+      parameters:
+        path:
+          gatewayId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+          certificateId: "78dbbadb-9a99-4c96-a524-d57754430380"
+      responses:
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
 examplesVersion: 1.0.2
 generatedTests: {}
