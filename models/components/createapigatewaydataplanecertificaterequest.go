@@ -2,29 +2,14 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // CreateAPIGatewayDataPlaneCertificateRequest - Request body for creating a certificate.
 type CreateAPIGatewayDataPlaneCertificateRequest struct {
 	// JSON escaped string of the certificate.
 	Certificate string `json:"certificate"`
 	// The name to identify the certificate.
-	Name *string `default:"null" json:"name"`
+	Name *string `json:"name,omitempty"`
 	// A description of the certificate.
-	Description *string `default:"null" json:"description"`
-}
-
-func (c CreateAPIGatewayDataPlaneCertificateRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateAPIGatewayDataPlaneCertificateRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"certificate"}); err != nil {
-		return err
-	}
-	return nil
+	Description *string `json:"description,omitempty"`
 }
 
 func (c *CreateAPIGatewayDataPlaneCertificateRequest) GetCertificate() string {

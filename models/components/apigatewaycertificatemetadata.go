@@ -2,20 +2,16 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // APIGatewayCertificateMetadata - Metadata extracted from a certificate.
 type APIGatewayCertificateMetadata struct {
 	// The issuer of the certificate.
-	Issuer *string `default:"null" json:"issuer"`
+	Issuer *string `json:"issuer,omitempty"`
 	// The subject of the certificate.
-	Subject *string `default:"null" json:"subject"`
+	Subject *string `json:"subject,omitempty"`
 	// The key usages of the certificate.
 	KeyUsages []string `json:"key_usages,omitempty"`
 	// The expiry date of the certificate as a unix timestamp.
-	Expiry *int64 `default:"null" json:"expiry"`
+	Expiry *int64 `json:"expiry,omitempty"`
 	// The Subject Alternative Names (SAN) of the certificate.
 	SanNames []string `json:"san_names,omitempty"`
 	// The DNS names in the certificate SAN.
@@ -27,18 +23,7 @@ type APIGatewayCertificateMetadata struct {
 	// The URIs in the certificate SAN.
 	Uris []string `json:"uris,omitempty"`
 	// The SHA-256 fingerprint of the certificate.
-	Sha256Fingerprint *string `default:"null" json:"sha256_fingerprint"`
-}
-
-func (a APIGatewayCertificateMetadata) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *APIGatewayCertificateMetadata) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Sha256Fingerprint *string `json:"sha256_fingerprint,omitempty"`
 }
 
 func (a *APIGatewayCertificateMetadata) GetIssuer() *string {

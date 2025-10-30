@@ -37,11 +37,7 @@ mockery: mise yq ## Download mockery locally if necessary.
 IFACEMAKER_VERSION = $(shell $(YQ) -r '.ifacemaker' < $(TOOLS_VERSIONS_FILE))
 IFACEMAKER = $(PROJECT_DIR)/bin/ifacemaker
 .PHONY: ifacemaker
-<<<<<<< HEAD
 ifacemaker: yq
-=======
-ifacemaker:
->>>>>>> 5a21da2 (chore: interface and mock generation)
 	GOBIN=$(PROJECT_DIR)/bin go install -v github.com/vburenin/ifacemaker@v$(IFACEMAKER_VERSION)
 
 # ------------------------------------------------------------------------------

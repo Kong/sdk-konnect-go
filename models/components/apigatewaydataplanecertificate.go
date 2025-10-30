@@ -14,9 +14,9 @@ type APIGatewayDataPlaneCertificate struct {
 	// JSON escaped string of the certificate.
 	Certificate string `json:"certificate"`
 	// The name to identify of the certificate.
-	Name *string `default:"null" json:"name"`
+	Name *string `json:"name,omitempty"`
 	// A description of the certificate.
-	Description *string `default:"null" json:"description"`
+	Description *string `json:"description,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.

@@ -2,29 +2,14 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // UpdateAPIGatewayDataPlaneCertificateRequest - The request schema for updating a dataplane certificate.
 type UpdateAPIGatewayDataPlaneCertificateRequest struct {
 	// JSON escaped string of the certificate.
 	Certificate string `json:"certificate"`
 	// The name to identify of the certificate.
-	Name *string `default:"null" json:"name"`
+	Name *string `json:"name,omitempty"`
 	// A description of the certificate.
-	Description *string `default:"null" json:"description"`
-}
-
-func (u UpdateAPIGatewayDataPlaneCertificateRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateAPIGatewayDataPlaneCertificateRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, []string{"certificate"}); err != nil {
-		return err
-	}
-	return nil
+	Description *string `json:"description,omitempty"`
 }
 
 func (u *UpdateAPIGatewayDataPlaneCertificateRequest) GetCertificate() string {

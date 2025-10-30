@@ -27193,7 +27193,7 @@ examples:
           certificateId: "14c1e2da-2e59-4fb3-b54d-1de4d93f92d6"
       responses:
         "200":
-          application/json: {"id": "13c0bbfe-8a3d-4939-9939-f8800d44e191", "certificate": "<value>", "name": null, "description": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"id": "13c0bbfe-8a3d-4939-9939-f8800d44e191", "certificate": "<value>", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -27208,7 +27208,7 @@ examples:
           certificateId: "131de582-0336-48b2-afb3-1b9da3c7c0ce"
       responses:
         "200":
-          application/json: {"id": "79830b57-58d3-49a3-9b2f-ab146d83a2c8", "certificate": "<value>", "name": null, "description": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"id": "79830b57-58d3-49a3-9b2f-ab146d83a2c8", "certificate": "<value>", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 329352, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -27238,7 +27238,7 @@ examples:
           page[after]: "ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"
       responses:
         "200":
-          application/json: {"meta": {"page": {"next": "/etc", "previous": "/boot/defaults", "size": 10}}, "data": [{"id": "a3a19429-c79b-450b-a454-bb06637df735", "certificate": "<value>", "name": null, "description": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+          application/json: {"meta": {"page": {"next": "/etc", "previous": "/boot/defaults", "size": 10}}, "data": [{"id": "a3a19429-c79b-450b-a454-bb06637df735", "certificate": "<value>", "name": "<value>", "description": "onto following concerning devise ride wholly so horse whoa well-worn", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -27252,7 +27252,7 @@ examples:
           gatewayId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       responses:
         "201":
-          application/json: {"id": "d092dc2b-abea-4263-8607-299f19002e21", "certificate": "<value>", "name": null, "description": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"id": "d092dc2b-abea-4263-8607-299f19002e21", "certificate": "<value>", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 809091, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
