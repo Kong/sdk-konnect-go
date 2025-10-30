@@ -27228,5 +27228,38 @@ examples:
           application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
         "404":
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  list-api-gateway-data-plane-certificates:
+    speakeasy-default-list-api-gateway-data-plane-certificates:
+      parameters:
+        path:
+          gatewayId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+        query:
+          page[size]: 10
+          page[after]: "ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"
+      responses:
+        "200":
+          application/json: {"meta": {"page": {"next": "/etc", "previous": "/boot/defaults", "size": 10}}, "data": [{"id": "a3a19429-c79b-450b-a454-bb06637df735", "certificate": "<value>", "name": null, "description": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  create-api-gateway-data-plane-certificate:
+    speakeasy-default-create-api-gateway-data-plane-certificate:
+      parameters:
+        path:
+          gatewayId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
+      responses:
+        "201":
+          application/json: {"id": "d092dc2b-abea-4263-8607-299f19002e21", "certificate": "<value>", "name": null, "description": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 809091, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
 examplesVersion: 1.0.2
 generatedTests: {}
