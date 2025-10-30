@@ -13,11 +13,18 @@ This is correct behavior - we don't want unstable RCs auto-installed.
 Since graduation happens after an RC is already merged (no more code changes), we'll use GitHub Actions' manual 
 workflow dispatch feature instead of requiring dummy PRs.
 
+**Key Behaviors:**
+- Pre-release labels (`rc`, `alpha`, `beta`) alone on stable versions default to patch bump (e.g., `v0.12.0` + `rc` → `v0.12.1-rc.1`)
+- Strict validation prevents invalid combinations like `patch` + `minor` or `rc` + `alpha`
+- Manual workflow dispatch enables graduating RCs without creating dummy PRs
+
 **Changes Required:**
 1. Modify `.github/workflows/bump-version.yaml` - add pre-release label support and manual workflow dispatch
 2. Update `.github/workflows/release.yaml` - mark GitHub releases as "pre-release" for RC/alpha/beta
 3. Create/update `.goreleaser.yaml` - configure GoReleaser pre-release detection
 4. Add new labels in GitHub repo settings
+
+**Estimated Effort:** 4-6 hours implementation + testing
 
 ---
 
@@ -141,8 +148,11 @@ Allow **maximum 2 labels** on a PR:
 
 Examples:
 - `minor` + `rc` → Creates `v0.13.0-rc.1` (from `v0.12.0`)
-- `rc` only → Creates `v0.12.0-rc.2` (from `v0.12.0-rc.1`, no version bump)
+- `rc` only on stable version → Creates `v0.12.1-rc.1` (from `v0.12.0`, defaults to patch bump)
+- `rc` only on RC version → Creates `v0.12.1-rc.2` (from `v0.12.1-rc.1`, increments RC counter)
 - `major` only → Creates `v1.0.0` (standard stable release)
+
+**Important:** When a pre-release label (`rc`, `alpha`, `beta`) is used alone on a stable version, the workflow defaults to a `patch` bump. This prevents version conflicts and ensures clear version progression.
 
 ### Manual Graduation Workflow
 Add `workflow_dispatch` trigger to allow manual actions on the `main` branch:
@@ -187,33 +197,106 @@ Configure workflows to mark pre-release versions as "Pre-release" in GitHub:
 
 #### Changes Section 2: Update Label Validation
 
-**Location:** Line 30
+Replace the entire `check-semver-label` job with enhanced validation that prevents invalid label combinations.
+
+**Location:** Lines 15-30 (entire `check-semver-label` job)
 
 **Current:**
 ```yaml
-labels: "patch, minor, major"
+  check-semver-label:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
+        with:
+          egress-policy: audit
+      - uses: mheap/github-action-required-labels@8afbe8ae6ab7647d0c9f0cfa7c2f939650d22509 # v5.5
+        if: github.actor != 'dependabot[bot]'
+        with:
+          mode: exactly
+          count: 1
+          labels: "patch, minor, major"
 ```
 
 **New:**
 ```yaml
-labels: "patch, minor, major, rc, alpha, beta"
+  check-semver-label:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
+        with:
+          egress-policy: audit
+
+      # Basic check: ensure at least one version label exists
+      - uses: mheap/github-action-required-labels@8afbe8ae6ab7647d0c9f0cfa7c2f939650d22509 # v5.5
+        if: github.actor != 'dependabot[bot]'
+        with:
+          mode: minimum
+          count: 1
+          labels: "patch, minor, major, rc, alpha, beta"
+
+      # Custom validation: prevent invalid label combinations
+      - name: Validate label combination
+        if: github.actor != 'dependabot[bot]'
+        run: |
+          LABELS='${{ toJson(github.event.pull_request.labels.*.name) }}'
+
+          SEMVER_COUNT=$(echo "$LABELS" | jq -r '.[]' | grep -cE '^(patch|minor|major)$' || echo "0")
+          PRERELEASE_COUNT=$(echo "$LABELS" | jq -r '.[]' | grep -cE '^(rc|alpha|beta)$' || echo "0")
+
+          echo "### Label Validation" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Semver labels found: $SEMVER_COUNT" >> $GITHUB_STEP_SUMMARY
+          echo "- Pre-release labels found: $PRERELEASE_COUNT" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Check for multiple semver labels (e.g., patch + minor)
+          if [ "$SEMVER_COUNT" -gt 1 ]; then
+            echo "❌ **Error:** Multiple semver labels detected" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Please use only ONE of: \`patch\`, \`minor\`, or \`major\`" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
+          # Check for multiple pre-release labels (e.g., rc + alpha)
+          if [ "$PRERELEASE_COUNT" -gt 1 ]; then
+            echo "❌ **Error:** Multiple pre-release labels detected" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Please use only ONE of: \`rc\`, \`alpha\`, or \`beta\`" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
+          # Check for at least one label (redundant with mheap check, but explicit)
+          if [ "$SEMVER_COUNT" -eq 0 ] && [ "$PRERELEASE_COUNT" -eq 0 ]; then
+            echo "❌ **Error:** No version label found" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Please add at least one label:" >> $GITHUB_STEP_SUMMARY
+            echo "- For stable release: \`patch\`, \`minor\`, or \`major\`" >> $GITHUB_STEP_SUMMARY
+            echo "- For pre-release: \`rc\`, \`alpha\`, or \`beta\` (optionally with semver label)" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
+          echo "✅ **Label combination is valid**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Show what will happen
+          if [ "$PRERELEASE_COUNT" -eq 1 ] && [ "$SEMVER_COUNT" -eq 0 ]; then
+            echo "ℹ️  Pre-release label without semver label will default to patch bump if on stable version" >> $GITHUB_STEP_SUMMARY
+          fi
 ```
 
-**Location:** Lines 28-30
-
-**Current:**
-```yaml
-mode: exactly
-count: 1
-labels: "patch, minor, major"
-```
-
-**New:**
-```yaml
-mode: maximum
-count: 2
-labels: "patch, minor, major, rc, alpha, beta"
-```
+**Why this approach:**
+- Prevents invalid combinations like `patch` + `minor` or `rc` + `alpha`
+- Provides clear error messages in GitHub UI
+- Still allows valid combinations: `minor` + `rc`, just `patch`, just `rc`, etc.
+- Shows helpful summary in workflow output
 
 #### Changes Section 3: Update Conditional for PR Job
 
@@ -256,7 +339,13 @@ bump-version:
       CURRENT_VERSION=$(yq '.management.releaseVersion' .speakeasy/gen.lock)
       echo "Current version: $CURRENT_VERSION"
 
-      # Apply semver bump first if specified
+      # DEFAULT TO PATCH: If no semver bump specified and current is stable, use patch
+      if [ -z "$SEMVER_BUMP" ] && [[ ! "$CURRENT_VERSION" =~ - ]]; then
+        echo "ℹ️  No semver label specified for stable version, defaulting to patch bump"
+        SEMVER_BUMP="patch"
+      fi
+
+      # Apply semver bump if specified (or defaulted)
       if [ -n "$SEMVER_BUMP" ]; then
         echo "Applying $SEMVER_BUMP bump..."
         speakeasy bump $SEMVER_BUMP
@@ -301,8 +390,14 @@ bump-version:
 
     # Verify the version was set
     FINAL_VERSION=$(yq '.management.releaseVersion' .speakeasy/gen.lock)
-    echo "Final version: $FINAL_VERSION"
+    echo "✅ Final version: $FINAL_VERSION"
 ```
+
+**Key Logic Changes:**
+- **Lines 335-339:** Automatic patch bump when pre-release label used on stable version
+- **Line 336:** Checks if current version has no `-` (stable) and no semver label provided
+- **Line 338:** Sets `SEMVER_BUMP="patch"` automatically
+- This ensures `v0.12.0` + `rc` → `v0.12.1-rc.1` (not `v0.12.0-rc.1`)
 
 #### Changes Section 5: Add Manual Workflow Job
 
@@ -625,30 +720,59 @@ go get github.com/Kong/sdk-konnect-go@v0.13.0-rc.1
 
 ---
 
-### Example 2: Increment Existing RC from PR
+### Example 2: Create RC from Stable Version (No Semver Label)
+
+**Scenario:** Want to test a small change as RC, current version is stable
+
+**Steps:**
+1. Upstream creates PR with changes
+2. Current version: `0.12.0` (stable)
+3. Maintainer adds label: `rc` only (no `patch`/`minor`/`major`)
+4. Workflow logic:
+   - Detects `rc` label only
+   - Current version is stable (no `-` in version)
+   - **Defaults to patch bump**
+   - Bumps from `0.12.0` → `0.12.1`
+   - Adds `-rc.1` suffix → `0.12.1-rc.1`
+   - Runs `speakeasy bump -v 0.12.1-rc.1`
+5. Commits and triggers SDK regeneration
+6. Merge → Release created: `v0.12.1-rc.1`
+
+**Result:**
+```bash
+go get github.com/Kong/sdk-konnect-go@v0.12.1-rc.1
+```
+
+**Note:** This default behavior prevents version conflicts (can't have both `v0.12.0` stable and `v0.12.0-rc.1`).
+
+---
+
+### Example 3: Increment Existing RC from PR
 
 **Scenario:** Bug found in RC, need another RC iteration
 
 **Steps:**
 1. Upstream creates PR with bug fix
-2. Maintainer adds label: `rc` (no semver bump)
-3. Workflow logic:
+2. Current version: `0.12.1-rc.1` (pre-release)
+3. Maintainer adds label: `rc` (no semver bump)
+4. Workflow logic:
    - Detects `rc` label only
-   - Current version: `0.13.0-rc.1`
-   - Extracts base: `0.13.0`
+   - Current version is pre-release (has `-rc.`)
+   - **Does NOT default to patch** (already a pre-release)
+   - Extracts base: `0.12.1`
    - Increments counter: `.1` → `.2`
-   - Runs `speakeasy bump -v 0.13.0-rc.2`
-4. Commits and triggers SDK regeneration
-5. Merge → Release created: `v0.13.0-rc.2`
+   - Runs `speakeasy bump -v 0.12.1-rc.2`
+5. Commits and triggers SDK regeneration
+6. Merge → Release created: `v0.12.1-rc.2`
 
 **Result:**
 ```bash
-go get github.com/Kong/sdk-konnect-go@v0.13.0-rc.2
+go get github.com/Kong/sdk-konnect-go@v0.12.1-rc.2
 ```
 
 ---
 
-### Example 3: Graduate RC to Stable (Manual)
+### Example 4: Graduate RC to Stable (Manual)
 
 **Scenario:** RC tested and approved, promote to stable release
 
@@ -682,7 +806,7 @@ go get github.com/Kong/sdk-konnect-go@latest
 
 ---
 
-### Example 4: Create Alpha/Beta Releases
+### Example 5: Create Alpha/Beta Releases
 
 **Scenario:** Early testing of experimental features
 
@@ -705,7 +829,7 @@ go get github.com/Kong/sdk-konnect-go@v0.13.0-beta.1
 
 ---
 
-### Example 5: Emergency Version Override
+### Example 6: Emergency Version Override
 
 **Scenario:** Manual intervention needed (version conflict, mistake)
 
@@ -927,15 +1051,24 @@ The workflow will:
 
 ### Label Combinations
 
-| Labels | Result | Example |
-|--------|--------|---------|
-| `patch` | Stable patch release | `0.12.0` → `0.12.1` |
-| `minor` | Stable minor release | `0.12.0` → `0.13.0` |
-| `major` | Stable major release | `0.12.0` → `1.0.0` |
-| `minor` + `rc` | New minor RC | `0.12.0` → `0.13.0-rc.1` |
-| `rc` | Increment RC | `0.13.0-rc.1` → `0.13.0-rc.2` |
-| `patch` + `alpha` | New patch alpha | `0.12.0` → `0.12.1-alpha.1` |
-| `major` + `beta` | New major beta | `0.12.0` → `1.0.0-beta.1` |
+| Labels | Current Version | Result | Example |
+|--------|----------------|--------|---------|
+| `patch` | Any stable | Stable patch release | `0.12.0` → `0.12.1` |
+| `minor` | Any stable | Stable minor release | `0.12.0` → `0.13.0` |
+| `major` | Any stable | Stable major release | `0.12.0` → `1.0.0` |
+| `minor` + `rc` | Any stable | New minor RC | `0.12.0` → `0.13.0-rc.1` |
+| `rc` only | Stable (e.g., `0.12.0`) | **Default to patch** + RC | `0.12.0` → `0.12.1-rc.1` |
+| `rc` only | Pre-release (e.g., `0.12.1-rc.1`) | Increment RC counter | `0.12.1-rc.1` → `0.12.1-rc.2` |
+| `patch` + `alpha` | Any stable | New patch alpha | `0.12.0` → `0.12.1-alpha.1` |
+| `alpha` only | Stable | **Default to patch** + alpha | `0.12.0` → `0.12.1-alpha.1` |
+| `major` + `beta` | Any stable | New major beta | `0.12.0` → `1.0.0-beta.1` |
+| `beta` only | Stable | **Default to patch** + beta | `0.12.0` → `0.12.1-beta.1` |
+
+**Invalid Combinations (will fail CI):**
+- `patch` + `minor` (multiple semver bumps)
+- `minor` + `major` (multiple semver bumps)
+- `rc` + `alpha` (multiple pre-release types)
+- `alpha` + `beta` (multiple pre-release types)
 
 ### Manual Workflow Actions
 
@@ -1126,15 +1259,40 @@ Access: Actions → "Bump Version" → "Run workflow"
 
 ## Troubleshooting
 
-### Label Validation Failed
+### Label Validation Failed - No Labels
 **Error:** "Required labels not found"
 
-**Cause:** No labels or invalid combination
+**Cause:** No version labels on PR
 
 **Fix:**
-- Ensure exactly 1-2 labels
-- Must have at least one: `patch`, `minor`, `major`, `rc`, `alpha`, `beta`
-- Can't combine semver bumps (e.g., `patch` + `minor`)
+- Add at least one label: `patch`, `minor`, `major`, `rc`, `alpha`, or `beta`
+- For stable release: use one semver label
+- For pre-release: use pre-release label (optionally with semver label)
+
+### Label Validation Failed - Multiple Semver Labels
+**Error:** "Multiple semver labels detected"
+
+**Cause:** PR has more than one of: `patch`, `minor`, `major`
+
+**Example:** PR labeled with both `patch` and `minor`
+
+**Fix:**
+- Remove all but one semver label
+- Choose the appropriate bump level
+- Note: You can combine one semver + one pre-release label (e.g., `minor` + `rc`)
+
+### Label Validation Failed - Multiple Pre-release Labels
+**Error:** "Multiple pre-release labels detected"
+
+**Cause:** PR has more than one of: `rc`, `alpha`, `beta`
+
+**Example:** PR labeled with both `rc` and `alpha`
+
+**Fix:**
+- Remove all but one pre-release label
+- Choose the appropriate pre-release type
+- RC is typically used for near-stable releases
+- Alpha for early testing, Beta for broader testing
 
 ### Version Conflict
 **Error:** Version already exists
@@ -1200,8 +1358,12 @@ Access: Actions → "Bump Version" → "Run workflow"
 **Q: Can users accidentally install RCs?**
 A: No. Go's `@latest` intentionally skips pre-releases.
 
-**Q: Can I create an RC without a version bump?**
-A: Yes. Use only the `rc` label (no `patch`/`minor`/`major`).
+**Q: What happens if I only add an `rc` label without a semver label?**
+A: Depends on the current version:
+- If current version is **stable** (e.g., `v0.12.0`): Defaults to **patch bump** → `v0.12.1-rc.1`
+- If current version is **pre-release** (e.g., `v0.12.1-rc.1`): Increments RC counter → `v0.12.1-rc.2`
+
+This prevents version conflicts and ensures clear progression.
 
 **Q: Can I skip RC and go directly to stable?**
 A: Yes. Use only `patch`/`minor`/`major` labels (no pre-release label).
@@ -1217,6 +1379,12 @@ A: Use manual workflow (`set-version`) to fix state, then resume normal process.
 
 **Q: Can I have multiple RC series?**
 A: Yes. Example: `0.13.0-rc.1` and `0.14.0-rc.1` can coexist.
+
+**Q: What if I accidentally add both `patch` and `minor` labels?**
+A: The workflow will fail with a clear error message. The validation step prevents invalid label combinations like multiple semver bumps or multiple pre-release types.
+
+**Q: Why does `rc` only on stable default to patch instead of using the same version?**
+A: Go modules don't allow having both `v0.12.0` (stable) and `v0.12.0-rc.1` published simultaneously. The patch bump ensures the RC version is distinct and progresses logically.
 ```
 
 ---
