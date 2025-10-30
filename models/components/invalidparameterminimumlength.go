@@ -28,7 +28,7 @@ type InvalidParameterMinimumLength struct {
 	// invalid parameters rules
 	Rule    Rule    `json:"rule"`
 	Minimum int64   `json:"minimum"`
-	Source  *string `default:"null" json:"source"`
+	Source  *string `json:"source,omitempty"`
 	Reason  string  `json:"reason"`
 }
 

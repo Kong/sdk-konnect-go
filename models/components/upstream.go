@@ -183,7 +183,7 @@ type Active struct {
 	// A string representing a URL path, such as /path/to/resource. Must start with a forward slash (/) and must not contain empty segments (i.e., two consecutive forward slashes).
 	HTTPPath *string `default:"/" json:"http_path"`
 	// A string representing an SNI (server name indication) value for TLS.
-	HTTPSSni               *string    `default:"null" json:"https_sni"`
+	HTTPSSni               *string    `json:"https_sni,omitempty"`
 	HTTPSVerifyCertificate *bool      `default:"true" json:"https_verify_certificate"`
 	Timeout                *float64   `default:"1" json:"timeout"`
 	Type                   *Type      `default:"http" json:"type"`
@@ -442,27 +442,27 @@ type Upstream struct {
 	// What to use as hashing input if the primary `hash_on` does not return a hash (eg. header is missing, or no Consumer identified). Not available if `hash_on` is set to `cookie`.
 	HashFallback *HashFallback `default:"none" json:"hash_fallback"`
 	// The header name to take the value from as hash input. Only required when `hash_fallback` is set to `header`.
-	HashFallbackHeader *string `default:"null" json:"hash_fallback_header"`
+	HashFallbackHeader *string `json:"hash_fallback_header,omitempty"`
 	// The name of the query string argument to take the value from as hash input. Only required when `hash_fallback` is set to `query_arg`.
-	HashFallbackQueryArg *string `default:"null" json:"hash_fallback_query_arg"`
+	HashFallbackQueryArg *string `json:"hash_fallback_query_arg,omitempty"`
 	// The name of the route URI capture to take the value from as hash input. Only required when `hash_fallback` is set to `uri_capture`.
-	HashFallbackURICapture *string `default:"null" json:"hash_fallback_uri_capture"`
+	HashFallbackURICapture *string `json:"hash_fallback_uri_capture,omitempty"`
 	// What to use as hashing input. Using `none` results in a weighted-round-robin scheme with no hashing.
 	HashOn *HashOn `default:"none" json:"hash_on"`
 	// The cookie name to take the value from as hash input. Only required when `hash_on` or `hash_fallback` is set to `cookie`. If the specified cookie is not in the request, Kong will generate a value and set the cookie in the response.
-	HashOnCookie *string `default:"null" json:"hash_on_cookie"`
+	HashOnCookie *string `json:"hash_on_cookie,omitempty"`
 	// The cookie path to set in the response headers. Only required when `hash_on` or `hash_fallback` is set to `cookie`.
 	HashOnCookiePath *string `default:"/" json:"hash_on_cookie_path"`
 	// The header name to take the value from as hash input. Only required when `hash_on` is set to `header`.
-	HashOnHeader *string `default:"null" json:"hash_on_header"`
+	HashOnHeader *string `json:"hash_on_header,omitempty"`
 	// The name of the query string argument to take the value from as hash input. Only required when `hash_on` is set to `query_arg`.
-	HashOnQueryArg *string `default:"null" json:"hash_on_query_arg"`
+	HashOnQueryArg *string `json:"hash_on_query_arg,omitempty"`
 	// The name of the route URI capture to take the value from as hash input. Only required when `hash_on` is set to `uri_capture`.
-	HashOnURICapture *string `default:"null" json:"hash_on_uri_capture"`
+	HashOnURICapture *string `json:"hash_on_uri_capture,omitempty"`
 	// The array of healthchecks.
 	Healthchecks *Healthchecks `json:"healthchecks,omitempty"`
 	// The hostname to be used as `Host` header when proxying requests through Kong.
-	HostHeader *string `default:"null" json:"host_header"`
+	HostHeader *string `json:"host_header,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
 	// This is a hostname, which must be equal to the `host` of a Service.
@@ -470,7 +470,7 @@ type Upstream struct {
 	// The number of slots in the load balancer algorithm. If `algorithm` is set to `round-robin`, this setting determines the maximum number of slots. If `algorithm` is set to `consistent-hashing`, this setting determines the actual number of slots in the algorithm. Accepts an integer in the range `10`-`65536`.
 	Slots *int64 `default:"10000" json:"slots"`
 	// The cookie name to keep sticky sessions.
-	StickySessionsCookie *string `default:"null" json:"sticky_sessions_cookie"`
+	StickySessionsCookie *string `json:"sticky_sessions_cookie,omitempty"`
 	// A string representing a URL path, such as /path/to/resource. Must start with a forward slash (/) and must not contain empty segments (i.e., two consecutive forward slashes).
 	StickySessionsCookiePath *string `default:"/" json:"sticky_sessions_cookie_path"`
 	// An optional set of strings associated with the Upstream for grouping and filtering.

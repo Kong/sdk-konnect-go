@@ -2,27 +2,12 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // PortalTeamGroupMapping - A map of portal teams to Identity Provider groups.
 type PortalTeamGroupMapping struct {
 	// The Konnect team ID.
-	TeamID *string `default:"null" json:"team_id"`
+	TeamID *string `json:"team_id,omitempty"`
 	// The IdP groups that are mapped to the specified team.
 	Groups []string `json:"groups,omitempty"`
-}
-
-func (p PortalTeamGroupMapping) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PortalTeamGroupMapping) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (p *PortalTeamGroupMapping) GetTeamID() *string {

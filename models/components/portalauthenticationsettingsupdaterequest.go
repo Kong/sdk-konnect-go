@@ -2,41 +2,26 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // PortalAuthenticationSettingsUpdateRequest - Properties to update a portal's developer auth settings.
 type PortalAuthenticationSettingsUpdateRequest struct {
 	// The organization has basic auth enabled.
-	BasicAuthEnabled *bool `default:"null" json:"basic_auth_enabled"`
+	BasicAuthEnabled *bool `json:"basic_auth_enabled,omitempty"`
 	// The organization has OIDC disabled.
-	OidcAuthEnabled *bool `default:"null" json:"oidc_auth_enabled"`
+	OidcAuthEnabled *bool `json:"oidc_auth_enabled,omitempty"`
 	// The portal has SAML enabled or disabled.
-	SamlAuthEnabled *bool `default:"null" json:"saml_auth_enabled"`
+	SamlAuthEnabled *bool `json:"saml_auth_enabled,omitempty"`
 	// Whether IdP groups determine the Konnect Portal teams a developer has.
-	OidcTeamMappingEnabled *bool `default:"null" json:"oidc_team_mapping_enabled"`
+	OidcTeamMappingEnabled *bool `json:"oidc_team_mapping_enabled,omitempty"`
 	// Whether a Konnect Identity Admin assigns teams to a developer.
-	KonnectMappingEnabled *bool `default:"null" json:"konnect_mapping_enabled"`
+	KonnectMappingEnabled *bool `json:"konnect_mapping_enabled,omitempty"`
 	// Whether IdP groups determine the Konnect Portal teams a developer has. This will soon replace oidc_team_mapping_enabled.
-	IdpMappingEnabled *bool    `default:"null" json:"idp_mapping_enabled"`
-	OidcIssuer        *string  `default:"null" json:"oidc_issuer"`
-	OidcClientID      *string  `default:"null" json:"oidc_client_id"`
-	OidcClientSecret  *string  `default:"null" json:"oidc_client_secret"`
+	IdpMappingEnabled *bool    `json:"idp_mapping_enabled,omitempty"`
+	OidcIssuer        *string  `json:"oidc_issuer,omitempty"`
+	OidcClientID      *string  `json:"oidc_client_id,omitempty"`
+	OidcClientSecret  *string  `json:"oidc_client_secret,omitempty"`
 	OidcScopes        []string `json:"oidc_scopes,omitempty"`
 	// Mappings from a portal developer atribute to an Identity Provider claim.
 	OidcClaimMappings *PortalClaimMappings `json:"oidc_claim_mappings,omitempty"`
-}
-
-func (p PortalAuthenticationSettingsUpdateRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PortalAuthenticationSettingsUpdateRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (p *PortalAuthenticationSettingsUpdateRequest) GetBasicAuthEnabled() *bool {

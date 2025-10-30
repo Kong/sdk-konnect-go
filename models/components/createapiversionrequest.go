@@ -2,25 +2,10 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type CreateAPIVersionRequestSpec struct {
 	// The raw content of your API spec, in json or yaml format (OpenAPI or AsyncAPI).
 	//
-	Content *string `default:"null" json:"content"`
-}
-
-func (c CreateAPIVersionRequestSpec) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateAPIVersionRequestSpec) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Content *string `json:"content,omitempty"`
 }
 
 func (c *CreateAPIVersionRequestSpec) GetContent() *string {
@@ -32,19 +17,8 @@ func (c *CreateAPIVersionRequestSpec) GetContent() *string {
 
 type CreateAPIVersionRequest struct {
 	// The version of the api.
-	Version *string                      `default:"null" json:"version"`
-	Spec    *CreateAPIVersionRequestSpec `json:"spec"`
-}
-
-func (c CreateAPIVersionRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateAPIVersionRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Version *string                     `json:"version,omitempty"`
+	Spec    CreateAPIVersionRequestSpec `json:"spec"`
 }
 
 func (c *CreateAPIVersionRequest) GetVersion() *string {
@@ -54,9 +28,9 @@ func (c *CreateAPIVersionRequest) GetVersion() *string {
 	return c.Version
 }
 
-func (c *CreateAPIVersionRequest) GetSpec() *CreateAPIVersionRequestSpec {
+func (c *CreateAPIVersionRequest) GetSpec() CreateAPIVersionRequestSpec {
 	if c == nil {
-		return nil
+		return CreateAPIVersionRequestSpec{}
 	}
 	return c.Spec
 }

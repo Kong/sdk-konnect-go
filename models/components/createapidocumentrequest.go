@@ -22,7 +22,7 @@ type CreateAPIDocumentRequest struct {
 	//
 	// Specify the `id` of another API Document as the `parent_document_id` to add some heirarchy do your documents.
 	//
-	ParentDocumentID *string `default:"null" json:"parent_document_id"`
+	ParentDocumentID *string `json:"parent_document_id,omitempty"`
 }
 
 func (c CreateAPIDocumentRequest) MarshalJSON() ([]byte, error) {

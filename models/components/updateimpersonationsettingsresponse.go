@@ -2,25 +2,10 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // UpdateImpersonationSettingsResponse - Response for Update Impersonation Settings endpoint
 type UpdateImpersonationSettingsResponse struct {
 	// The organization has user impersonation enabled.
-	Enabled *bool `default:"null" json:"enabled"`
-}
-
-func (u UpdateImpersonationSettingsResponse) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateImpersonationSettingsResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Enabled *bool `json:"enabled,omitempty"`
 }
 
 func (u *UpdateImpersonationSettingsResponse) GetEnabled() *bool {

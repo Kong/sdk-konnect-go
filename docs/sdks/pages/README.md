@@ -178,6 +178,7 @@ func main() {
         Visibility: components.PageVisibilityStatusPublic.ToPointer(),
         Status: components.PublishedStatusPublished.ToPointer(),
         Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
+        ParentPageID: nil,
     })
     if err != nil {
         log.Fatal(err)
@@ -305,6 +306,7 @@ func main() {
             Visibility: components.VisibilityStatusPublic.ToPointer(),
             Status: components.PublishedStatusPublished.ToPointer(),
             Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
+            ParentPageID: nil,
         },
     })
     if err != nil {

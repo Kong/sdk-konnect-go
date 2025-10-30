@@ -24,7 +24,7 @@ type APIVersionSummary struct {
 	// The API version identifier.
 	ID *string `json:"id,omitempty"`
 	// The version of this api spec.
-	Version *string `default:"null" json:"version"`
+	Version *string `json:"version,omitempty"`
 	Spec    *Spec   `json:"spec,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt *time.Time `json:"created_at,omitempty"`

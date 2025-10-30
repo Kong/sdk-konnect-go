@@ -2,16 +2,12 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type CreateAPIRequest struct {
 	// The name of your API. The `name + version` combination must be unique for each API you publish.
 	//
-	Name *string `default:"null" json:"name"`
+	Name string `json:"name"`
 	// A description of your API. Will be visible on your live Portal.
-	Description *string `default:"null" json:"description"`
+	Description *string `json:"description,omitempty"`
 	// An optional version for your API. Leave this empty if your API is unversioned.
 	Version *string `json:"version,omitempty"`
 	// The `slug` is used in generated URLs to provide human readable paths.
@@ -30,20 +26,9 @@ type CreateAPIRequest struct {
 	SpecContent *string `json:"spec_content,omitempty"`
 }
 
-func (c CreateAPIRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateAPIRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (c *CreateAPIRequest) GetName() *string {
+func (c *CreateAPIRequest) GetName() string {
 	if c == nil {
-		return nil
+		return ""
 	}
 	return c.Name
 }

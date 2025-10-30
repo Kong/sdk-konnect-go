@@ -12,15 +12,15 @@ type SystemAccount struct {
 	// ID of the system account.
 	ID *string `json:"id,omitempty"`
 	// Name of the system account.
-	Name *string `default:"null" json:"name"`
+	Name *string `json:"name,omitempty"`
 	// Description of the system account.
-	Description *string `default:"null" json:"description"`
+	Description *string `json:"description,omitempty"`
 	// Timestamp of when the system account was created.
 	CreatedAt *time.Time `json:"created_at,omitempty"`
 	// Timestamp of when the system account was last updated.
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// The system account is managed by Konnect (true/false).
-	KonnectManaged *bool `default:"null" json:"konnect_managed"`
+	KonnectManaged *bool `json:"konnect_managed,omitempty"`
 }
 
 func (s SystemAccount) MarshalJSON() ([]byte, error) {

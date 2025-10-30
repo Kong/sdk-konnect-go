@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 79fe97525b40297cfc5ec7f122dd6d24
+  docChecksum: a80f0cc5a7d7847465f3aa99a26fce3c
   docVersion: 3.0.29
-  speakeasyVersion: 1.642.1
-  generationVersion: 2.731.4
-  releaseVersion: 0.12.1
-  configChecksum: bc576dfac179526095a0ea99f38a229c
+  speakeasyVersion: 1.643.0
+  generationVersion: 2.731.6
+  releaseVersion: 0.13.0
+  configChecksum: c8d65a8a5057c51f6ed10891a469a908
 features:
   go:
     acceptHeaders: 2.81.2
@@ -355,6 +355,12 @@ generatedFiles:
   - /models/components/patchteamgroupmappings.go
   - /models/components/patchtransitgatewayrequest.go
   - /models/components/patchtransitgatewayresponse.go
+  - /models/components/personalaccesstoken.go
+  - /models/components/personalaccesstokencreaterequest.go
+  - /models/components/personalaccesstokencreateresponse.go
+  - /models/components/personalaccesstokenlistresponse.go
+  - /models/components/personalaccesstokenstate.go
+  - /models/components/personalaccesstokenupdaterequest.go
   - /models/components/plugin.go
   - /models/components/pluginschemas.go
   - /models/components/pluginwithoutparents.go
@@ -543,6 +549,7 @@ generatedFiles:
   - /models/operations/createmtlsauthwithconsumer.go
   - /models/operations/createnetwork.go
   - /models/operations/createpartial.go
+  - /models/operations/createpersonalaccesstoken.go
   - /models/operations/createplugin.go
   - /models/operations/createpluginschemas.go
   - /models/operations/createpluginwithconsumer.go
@@ -605,6 +612,7 @@ generatedFiles:
   - /models/operations/deletenodesnodeid.go
   - /models/operations/deletenotification.go
   - /models/operations/deletepartial.go
+  - /models/operations/deletepersonalaccesstoken.go
   - /models/operations/deleteplugin.go
   - /models/operations/deletepluginschemas.go
   - /models/operations/deletepluginwithconsumer.go
@@ -702,6 +710,7 @@ generatedFiles:
   - /models/operations/getnotificationdetails.go
   - /models/operations/getorganizationsme.go
   - /models/operations/getpartial.go
+  - /models/operations/getpersonalaccesstokendetails.go
   - /models/operations/getplugin.go
   - /models/operations/getpluginschema.go
   - /models/operations/getpluginwithconsumer.go
@@ -842,6 +851,7 @@ generatedFiles:
   - /models/operations/listuserconfigurations.go
   - /models/operations/listuserroles.go
   - /models/operations/listusers.go
+  - /models/operations/listuserspersonalaccesstokens.go
   - /models/operations/listuserteams.go
   - /models/operations/listvault.go
   - /models/operations/moveapidocument.go
@@ -869,6 +879,7 @@ generatedFiles:
   - /models/operations/replaceportalassetfavicon.go
   - /models/operations/replaceportalassetlogo.go
   - /models/operations/replaceportalcustomization.go
+  - /models/operations/revokepersonalaccesstoken.go
   - /models/operations/teamsassignrole.go
   - /models/operations/teamsremoverole.go
   - /models/operations/updateapi.go
@@ -891,6 +902,7 @@ generatedFiles:
   - /models/operations/updateimpersonationsettings.go
   - /models/operations/updatenetwork.go
   - /models/operations/updatenotification.go
+  - /models/operations/updatepersonalaccesstokendetails.go
   - /models/operations/updatepluginschemas.go
   - /models/operations/updateportal.go
   - /models/operations/updateportalauditlogreplayjob.go
@@ -1510,6 +1522,13 @@ generatedFiles:
   - docs/models/components/patchtransitgatewayresponse.md
   - docs/models/components/pathhandling.md
   - docs/models/components/pem.md
+  - docs/models/components/personalaccesstoken.md
+  - docs/models/components/personalaccesstokencreaterequest.md
+  - docs/models/components/personalaccesstokencreateresponse.md
+  - docs/models/components/personalaccesstokencreateresponsestate.md
+  - docs/models/components/personalaccesstokenlistresponse.md
+  - docs/models/components/personalaccesstokenstate.md
+  - docs/models/components/personalaccesstokenupdaterequest.md
   - docs/models/components/plugin.md
   - docs/models/components/pluginadmin.md
   - docs/models/components/pluginconsumer.md
@@ -1890,6 +1909,8 @@ generatedFiles:
   - docs/models/operations/createnetworkresponse.md
   - docs/models/operations/createpartialrequest.md
   - docs/models/operations/createpartialresponse.md
+  - docs/models/operations/createpersonalaccesstokenrequest.md
+  - docs/models/operations/createpersonalaccesstokenresponse.md
   - docs/models/operations/createpluginrequest.md
   - docs/models/operations/createpluginresponse.md
   - docs/models/operations/createpluginschemasrequest.md
@@ -2012,6 +2033,8 @@ generatedFiles:
   - docs/models/operations/deletenotificationresponse.md
   - docs/models/operations/deletepartialrequest.md
   - docs/models/operations/deletepartialresponse.md
+  - docs/models/operations/deletepersonalaccesstokenrequest.md
+  - docs/models/operations/deletepersonalaccesstokenresponse.md
   - docs/models/operations/deletepluginrequest.md
   - docs/models/operations/deletepluginresponse.md
   - docs/models/operations/deletepluginschemasrequest.md
@@ -2203,6 +2226,8 @@ generatedFiles:
   - docs/models/operations/getorganizationsmeresponse.md
   - docs/models/operations/getpartialrequest.md
   - docs/models/operations/getpartialresponse.md
+  - docs/models/operations/getpersonalaccesstokendetailsrequest.md
+  - docs/models/operations/getpersonalaccesstokendetailsresponse.md
   - docs/models/operations/getpluginrequest.md
   - docs/models/operations/getpluginresponse.md
   - docs/models/operations/getpluginschemarequest.md
@@ -2530,6 +2555,8 @@ generatedFiles:
   - docs/models/operations/listuserrolesqueryparamfilter.md
   - docs/models/operations/listuserrolesrequest.md
   - docs/models/operations/listuserrolesresponse.md
+  - docs/models/operations/listuserspersonalaccesstokensrequest.md
+  - docs/models/operations/listuserspersonalaccesstokensresponse.md
   - docs/models/operations/listusersqueryparamfilter.md
   - docs/models/operations/listusersrequest.md
   - docs/models/operations/listusersresponse.md
@@ -2590,6 +2617,8 @@ generatedFiles:
   - docs/models/operations/replaceportalassetlogoresponse.md
   - docs/models/operations/replaceportalcustomizationrequest.md
   - docs/models/operations/replaceportalcustomizationresponse.md
+  - docs/models/operations/revokepersonalaccesstokenrequest.md
+  - docs/models/operations/revokepersonalaccesstokenresponse.md
   - docs/models/operations/teamsassignrolerequest.md
   - docs/models/operations/teamsassignroleresponse.md
   - docs/models/operations/teamsremoverolerequest.md
@@ -2630,6 +2659,8 @@ generatedFiles:
   - docs/models/operations/updatenetworkresponse.md
   - docs/models/operations/updatenotificationrequest.md
   - docs/models/operations/updatenotificationresponse.md
+  - docs/models/operations/updatepersonalaccesstokendetailsrequest.md
+  - docs/models/operations/updatepersonalaccesstokendetailsresponse.md
   - docs/models/operations/updatepluginschemasrequest.md
   - docs/models/operations/updatepluginschemasresponse.md
   - docs/models/operations/updateportalauditlogreplayjobrequest.md
@@ -2796,6 +2827,7 @@ generatedFiles:
   - docs/sdks/pages/README.md
   - docs/sdks/partiallinks/README.md
   - docs/sdks/partials/README.md
+  - docs/sdks/personalaccesstokens/README.md
   - docs/sdks/plugins/README.md
   - docs/sdks/portalauditlogs/README.md
   - docs/sdks/portalauthsettings/README.md
@@ -2855,6 +2887,7 @@ generatedFiles:
   - pages.go
   - partiallinks.go
   - partials.go
+  - personalaccesstokens.go
   - plugins.go
   - portalauditlogs.go
   - portalauthsettings.go
@@ -2921,7 +2954,7 @@ examples:
           eventId: "invoice-ready"
       responses:
         "200":
-          application/json: {"data": [], "meta": {"first": null, "last": null, "next": null, "previous": null, "size": 10}}
+          application/json: {"data": [], "meta": {"next": null, "previous": null, "size": 10}}
         "400":
           application/problem+json: {"status": 978386, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "enum", "reason": "is a required field", "choices": [], "source": "body"}]}
         "401":
@@ -3181,7 +3214,7 @@ examples:
           page[after]: "ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"
       responses:
         "200":
-          application/json: {"data": [{"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "title": "<value>", "description": "squid yearningly ectoderm hexagon ferret dusk buck alarmed", "status": "READ", "region": "IN", "namespace": "plan-and-usage", "entity_id": "<id>", "details": {}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "title": "<value>", "description": "squid yearningly ectoderm hexagon ferret dusk buck alarmed", "status": "READ", "region": "IN", "namespace": "plan-and-usage", "entity_id": "<id>", "details": {}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "title": "<value>", "description": "squid yearningly ectoderm hexagon ferret dusk buck alarmed", "status": "READ", "region": "IN", "namespace": "plan-and-usage", "entity_id": "<id>", "details": {}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}], "meta": {"first": null, "last": null, "next": null, "previous": null, "size": 10}}
+          application/json: {"data": [{"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "title": "<value>", "description": "squid yearningly ectoderm hexagon ferret dusk buck alarmed", "status": "READ", "region": "IN", "namespace": "plan-and-usage", "entity_id": "<id>", "details": {}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "title": "<value>", "description": "squid yearningly ectoderm hexagon ferret dusk buck alarmed", "status": "READ", "region": "IN", "namespace": "plan-and-usage", "entity_id": "<id>", "details": {}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "title": "<value>", "description": "squid yearningly ectoderm hexagon ferret dusk buck alarmed", "status": "READ", "region": "IN", "namespace": "plan-and-usage", "entity_id": "<id>", "details": {}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}], "meta": {"next": null, "previous": null, "size": 10}}
         "400":
           application/problem+json: {"status": 405720, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "enum", "reason": "is a required field", "choices": [], "source": "body"}]}
         "401":
@@ -4092,7 +4125,7 @@ examples:
           page[number]: 1
       responses:
         "200":
-          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "name": "us-east-2 network", "default": false, "cloud_gateway_provider_account_id": "929b2449-c69f-44c4-b6ad-9ecec6f811ae", "region": "us-east-2", "availability_zones": ["use2-az1", "use2-az2", "use2-az3"], "cidr_block": "10.0.0.0/8", "state": "terminated", "state_metadata": {"reported_status": "INVALID", "reason": "Network could not be deployed due to insufficient cloud provider compute instances.\n"}, "provider_metadata": {"vpc_id": null}, "transit_gateway_count": 0, "configuration_reference_count": 0, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "name": "us-east-2 network", "default": false, "cloud_gateway_provider_account_id": "929b2449-c69f-44c4-b6ad-9ecec6f811ae", "region": "us-east-2", "availability_zones": ["use2-az1", "use2-az2", "use2-az3"], "cidr_block": "10.0.0.0/8", "state": "terminated", "state_metadata": {"reported_status": "INVALID", "reason": "Network could not be deployed due to insufficient cloud provider compute instances.\n"}, "provider_metadata": {"vpc_id": "<id>"}, "transit_gateway_count": 0, "configuration_reference_count": 0, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
         "400":
           application/problem+json: {"status": 672186, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -4171,7 +4204,7 @@ examples:
         application/json: {"name": "us-east-2 network", "cloud_gateway_provider_account_id": "929b2449-c69f-44c4-b6ad-9ecec6f811ae", "region": "us-east-2", "availability_zones": ["use2-az1", "use2-az2", "use2-az3"], "cidr_block": "10.0.0.0/8", "state": "initializing"}
       responses:
         "201":
-          application/json: {"id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "name": "us-east-2 network", "default": false, "cloud_gateway_provider_account_id": "929b2449-c69f-44c4-b6ad-9ecec6f811ae", "region": "us-east-2", "availability_zones": ["use2-az1", "use2-az2", "use2-az3"], "cidr_block": "10.0.0.0/8", "state": "offline", "state_metadata": {"reported_status": "INVALID", "reason": "Network could not be deployed due to insufficient cloud provider compute instances.\n"}, "provider_metadata": {"vpc_id": null}, "transit_gateway_count": 0, "configuration_reference_count": 0, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "name": "us-east-2 network", "default": false, "cloud_gateway_provider_account_id": "929b2449-c69f-44c4-b6ad-9ecec6f811ae", "region": "us-east-2", "availability_zones": ["use2-az1", "use2-az2", "use2-az3"], "cidr_block": "10.0.0.0/8", "state": "offline", "state_metadata": {"reported_status": "INVALID", "reason": "Network could not be deployed due to insufficient cloud provider compute instances.\n"}, "provider_metadata": {}, "transit_gateway_count": 0, "configuration_reference_count": 0, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 867880, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value 1>", "<value 2>", "<value 3>"], "source": "body"}]}
         "401":
@@ -4247,7 +4280,7 @@ examples:
           networkId: "36ae63d3-efd1-4bec-b246-62aa5d3f5695"
       responses:
         "200":
-          application/json: {"id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "name": "us-east-2 network", "default": false, "cloud_gateway_provider_account_id": "929b2449-c69f-44c4-b6ad-9ecec6f811ae", "region": "us-east-2", "availability_zones": ["use2-az1", "use2-az2", "use2-az3"], "cidr_block": "10.0.0.0/8", "state": "terminating", "state_metadata": {"reported_status": "INVALID", "reason": "Network could not be deployed due to insufficient cloud provider compute instances.\n"}, "provider_metadata": {"vpc_id": null}, "transit_gateway_count": 0, "configuration_reference_count": 0, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "name": "us-east-2 network", "default": false, "cloud_gateway_provider_account_id": "929b2449-c69f-44c4-b6ad-9ecec6f811ae", "region": "us-east-2", "availability_zones": ["use2-az1", "use2-az2", "use2-az3"], "cidr_block": "10.0.0.0/8", "state": "terminating", "state_metadata": {"reported_status": "INVALID", "reason": "Network could not be deployed due to insufficient cloud provider compute instances.\n"}, "provider_metadata": {}, "transit_gateway_count": 0, "configuration_reference_count": 0, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -4286,7 +4319,7 @@ examples:
         application/json: {"name": "us-east-2 network"}
       responses:
         "200":
-          application/json: {"id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "name": "us-east-2 network", "default": false, "cloud_gateway_provider_account_id": "929b2449-c69f-44c4-b6ad-9ecec6f811ae", "region": "us-east-2", "availability_zones": ["use2-az1", "use2-az2", "use2-az3"], "cidr_block": "10.0.0.0/8", "state": "terminating", "state_metadata": {"reported_status": "INVALID", "reason": "Network could not be deployed due to insufficient cloud provider compute instances.\n"}, "provider_metadata": {"vpc_id": null}, "transit_gateway_count": 0, "configuration_reference_count": 0, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"id": "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "name": "us-east-2 network", "default": false, "cloud_gateway_provider_account_id": "929b2449-c69f-44c4-b6ad-9ecec6f811ae", "region": "us-east-2", "availability_zones": ["use2-az1", "use2-az2", "use2-az3"], "cidr_block": "10.0.0.0/8", "state": "terminating", "state_metadata": {"reported_status": "INVALID", "reason": "Network could not be deployed due to insufficient cloud provider compute instances.\n"}, "provider_metadata": {}, "transit_gateway_count": 0, "configuration_reference_count": 0, "entity_version": 1, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 996797, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "max_items", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}, {"field": "name", "rule": "max_items", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}, {"field": "name", "source": "body", "reason": "is a required field"}]}
         "401":
@@ -5827,7 +5860,7 @@ examples:
           page[after]: "ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"
       responses:
         "200":
-          application/json: {"meta": {"page": {"first": null, "last": null, "next": null, "previous": null, "size": 10}}, "data": [{"id": "b9e81174-b5bb-4638-a3c3-8afe61a0abf8", "name": "My Name", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+          application/json: {"meta": {"page": {"next": null, "previous": null, "size": 10}}, "data": [{"id": "b9e81174-b5bb-4638-a3c3-8afe61a0abf8", "name": "My Name", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
         "400":
           application/problem+json: {"status": 506031, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "max_items", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
         "401":
@@ -6100,7 +6133,7 @@ examples:
         application/json: {"key": "<key>", "value": "<value>"}
       responses:
         "201":
-          application/json: {"key": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 189970, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -6194,7 +6227,7 @@ examples:
           page[after]: "ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"
       responses:
         "200":
-          application/json: {"meta": {"page": {"first": null, "last": null, "next": null, "previous": null, "size": 10}}, "data": [{"key": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+          application/json: {"meta": {"page": {"next": null, "previous": null, "size": 10}}, "data": [{"key": "<key>", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
         "400":
           application/problem+json: {"status": 710250, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "source": "body", "reason": "is a required field"}]}
         "401":
@@ -6247,7 +6280,7 @@ examples:
           key: "ConfigStoreSecretKey"
       responses:
         "200":
-          application/json: {"key": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -6294,7 +6327,7 @@ examples:
         application/json: {"value": "<value>"}
       responses:
         "200":
-          application/json: {"key": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 681242, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value 1>", "<value 2>", "<value 3>"], "source": "body"}, {"field": "name", "rule": "min", "minimum": 8, "source": "body", "reason": "must have at least 8 characters"}, {"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value 1>"], "source": "body"}]}
         "401":
@@ -7111,10 +7144,10 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "cert_alt": null, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----", "key_alt": null}
+        application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----"}
       responses:
         "201":
-          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "cert_alt": null, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----", "key_alt": null}
+          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----"}
         "401":
           application/json: {"message": "<value>", "status": 443586}
     DuplicateApiKey:
@@ -7203,7 +7236,7 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       responses:
         "200":
-          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "cert_alt": null, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----", "key_alt": null}
+          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----"}
         "401":
           application/json: {"message": "<value>", "status": 769994}
     DuplicateApiKey:
@@ -7249,10 +7282,10 @@ examples:
           CertificateId: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7"
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "cert_alt": null, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----", "key_alt": null}
+        application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----"}
       responses:
         "200":
-          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "cert_alt": null, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----", "key_alt": null}
+          application/json: {"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----", "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----"}
         "401":
           application/json: {"message": "<value>", "status": 501690}
     DuplicateApiKey:
@@ -8009,10 +8042,10 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerGroupId: ""
       requestBody:
-        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "201":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   delete-plugin-with-consumer_group:
     "":
       parameters:
@@ -8044,7 +8077,7 @@ examples:
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       responses:
         "200":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   upsert-plugin-with-consumer_group:
     "":
       parameters:
@@ -8064,10 +8097,10 @@ examples:
           ConsumerGroupId: ""
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       requestBody:
-        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "200":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   list-plugin-with-consumer:
     "":
       parameters:
@@ -8108,10 +8141,10 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
       requestBody:
-        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "201":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   delete-plugin-with-consumer:
     "":
       parameters:
@@ -8143,7 +8176,7 @@ examples:
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       responses:
         "200":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   upsert-plugin-with-consumer:
     "":
       parameters:
@@ -8163,10 +8196,10 @@ examples:
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       requestBody:
-        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "200":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   list-plugin:
     "":
       parameters:
@@ -8228,10 +8261,10 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "201":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
         "401":
           application/json: {"message": "<value>", "status": 411057}
     DuplicateApiKey:
@@ -8320,7 +8353,7 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       responses:
         "200":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
         "401":
           application/json: {"message": "<value>", "status": 939243}
     DuplicateApiKey:
@@ -8366,10 +8399,10 @@ examples:
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "200":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
         "401":
           application/json: {"message": "<value>", "status": 294960}
     DuplicateApiKey:
@@ -8442,10 +8475,10 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
       requestBody:
-        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "201":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   delete-plugin-with-route:
     "":
       parameters:
@@ -8477,7 +8510,7 @@ examples:
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       responses:
         "200":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   upsert-plugin-with-route:
     "":
       parameters:
@@ -8497,10 +8530,10 @@ examples:
           RouteId: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7"
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       requestBody:
-        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "200":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   fetch-plugin-schema:
     speakeasy-default-fetch-plugin-schema:
       parameters:
@@ -8550,10 +8583,10 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
       requestBody:
-        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "201":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   delete-plugin-with-service:
     "":
       parameters:
@@ -8585,7 +8618,7 @@ examples:
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       responses:
         "200":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   upsert-plugin-with-service:
     "":
       parameters:
@@ -8605,10 +8638,10 @@ examples:
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
           PluginId: "3473c251-5b6c-4f45-b1ff-7ede735a366d"
       requestBody:
-        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+        application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
       responses:
         "200":
-          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "instance_name": null, "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
+          application/json: {"config": {"anonymous": "<value>", "hide_credentials": false, "key_in_body": false, "key_in_header": true, "key_in_query": true, "key_names": ["apikey"], "run_on_preflight": true}, "enabled": true, "id": "3fd1eea1-885a-4011-b986-289943ff8177", "name": "key-auth", "partials": [{"id": "cff1230a-00f7-4ae8-b376-c370f0eb4dae", "name": "foo-partial", "path": "config.redis"}, {"id": "129ee345-cba8-4e55-9d6d-93c223ff91ae", "name": "bar-partial", "path": "config.redis"}], "protocols": ["grpc", "grpcs", "http", "https"]}
   list-consumer:
     "":
       parameters:
@@ -9083,10 +9116,10 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
       requestBody:
-        application/json: {"algorithm": "HS256", "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "rsa_public_key": null, "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
+        application/json: {"algorithm": "HS256", "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
       responses:
         "201":
-          application/json: {"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "rsa_public_key": null, "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
+          application/json: {"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
   delete-jwt-with-consumer:
     "":
       parameters:
@@ -9118,7 +9151,7 @@ examples:
           JWTId: "4a7f5faa-8c96-46d6-8214-c87573ef2ac4"
       responses:
         "200":
-          application/json: {"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "rsa_public_key": null, "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
+          application/json: {"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
   upsert-jwt-with-consumer:
     "":
       parameters:
@@ -9138,10 +9171,10 @@ examples:
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           JWTId: "4a7f5faa-8c96-46d6-8214-c87573ef2ac4"
       requestBody:
-        application/json: {"algorithm": "HS256", "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "rsa_public_key": null, "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
+        application/json: {"algorithm": "HS256", "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
       responses:
         "200":
-          application/json: {"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "rsa_public_key": null, "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
+          application/json: {"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
   list-jwt:
     "":
       parameters:
@@ -9215,7 +9248,7 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       responses:
         "200":
-          application/json: {"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "rsa_public_key": null, "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
+          application/json: {"algorithm": "HS256", "consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "75695322-e8a0-4109-aed4-5416b0308d85", "key": "YJdmaDvVTJxtcWRCvkMikc8oELgAVNcz", "secret": "C50k0bcahDhLNhLKSUBSR1OMiFGzNZ7X"}
         "401":
           application/json: {"message": "<value>", "status": 328558}
     DuplicateApiKey:
@@ -9282,10 +9315,10 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
       requestBody:
-        application/json: {"id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo", "ttl": null}
+        application/json: {"id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}
       responses:
         "201":
-          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo", "ttl": null}
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}
   delete-key-auth-with-consumer:
     "":
       parameters:
@@ -9317,7 +9350,7 @@ examples:
           KeyAuthId: ""
       responses:
         "200":
-          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo", "ttl": null}
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}
   upsert-key-auth-with-consumer:
     "":
       parameters:
@@ -9337,10 +9370,10 @@ examples:
           ConsumerIdForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21"
           KeyAuthId: ""
       requestBody:
-        application/json: {"id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo", "ttl": null}
+        application/json: {"id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}
       responses:
         "200":
-          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo", "ttl": null}
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}
   list-key-auth:
     "":
       parameters:
@@ -9414,7 +9447,7 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       responses:
         "200":
-          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo", "ttl": null}
+          application/json: {"consumer": {"id": "84a73fb8-50fc-44a7-a4d5-aa17728ee83f"}, "id": "b2f34145-0343-41a4-9602-4c69dec2f269", "key": "IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"}
         "401":
           application/json: {"message": "<value>", "status": 857754}
     DuplicateApiKey:
@@ -10349,10 +10382,10 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
           KeySetId: "6cc34248-50b4-4a81-9201-3bdf7a83f712"
       requestBody:
-        application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}, "x5t": null}
+        application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
       responses:
         "201":
-          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}, "x5t": null}
+          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
   delete-key-with-key-set:
     "":
       parameters:
@@ -10384,7 +10417,7 @@ examples:
           KeyId: "bba22c06-a632-42be-a018-1b9ff357b5b9"
       responses:
         "200":
-          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}, "x5t": null}
+          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
   upsert-key-with-key-set:
     "":
       parameters:
@@ -10404,10 +10437,10 @@ examples:
           KeySetId: "6cc34248-50b4-4a81-9201-3bdf7a83f712"
           KeyId: "bba22c06-a632-42be-a018-1b9ff357b5b9"
       requestBody:
-        application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}, "x5t": null}
+        application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
       responses:
         "200":
-          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}, "x5t": null}
+          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
   list-key:
     "":
       parameters:
@@ -10469,10 +10502,10 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}, "x5t": null}
+        application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
       responses:
         "201":
-          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}, "x5t": null}
+          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
         "401":
           application/json: {"message": "<value>", "status": 303922}
     DuplicateApiKey:
@@ -10561,7 +10594,7 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       responses:
         "200":
-          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}, "x5t": null}
+          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
         "401":
           application/json: {"message": "<value>", "status": 647780}
     DuplicateApiKey:
@@ -10607,10 +10640,10 @@ examples:
           KeyId: "bba22c06-a632-42be-a018-1b9ff357b5b9"
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}, "x5t": null}
+        application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
       responses:
         "200":
-          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}, "x5t": null}
+          application/json: {"id": "d958f66b-8e99-44d2-b0b4-edd5bbf24658", "jwk": "{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}", "kid": "42", "name": "a-key", "pem": {"private_key": "-----BEGIN", "public_key": "-----BEGIN"}, "set": {"id": "b86b331c-dcd0-4b3e-97ce-47c5a9543031"}}
         "401":
           application/json: {"message": "<value>", "status": 849792}
     DuplicateApiKey:
@@ -10665,7 +10698,7 @@ examples:
           tags: "tag1,tag2"
       responses:
         "200":
-          application/json: {"data": [{"config": {"cluster_max_redirections": 5, "cluster_nodes": [{"ip": "192.168.1.10", "port": 6380}], "connect_timeout": 2000, "connection_is_proxied": false, "database": 0, "host": "localhost", "keepalive_backlog": null, "keepalive_pool_size": 256, "password": "password", "port": 6379, "read_timeout": 1000, "send_timeout": 1000, "sentinel_master": null, "sentinel_nodes": [{"host": "sentinel1.redis.server", "port": 26379}], "sentinel_password": null, "sentinel_username": null, "server_name": "redis-ee", "ssl": false, "ssl_verify": false, "username": "username"}, "name": null, "type": "redis-ee"}]}
+          application/json: {"data": [{"config": {"cluster_max_redirections": 5, "cluster_nodes": [{"ip": "192.168.1.10", "port": 6380}], "connect_timeout": 2000, "connection_is_proxied": false, "database": 0, "host": "localhost", "keepalive_backlog": 707684, "keepalive_pool_size": 256, "password": "password", "port": 6379, "read_timeout": 1000, "send_timeout": 1000, "sentinel_master": "<value>", "sentinel_nodes": [{"host": "sentinel1.redis.server", "port": 26379}], "sentinel_password": "<value>", "sentinel_username": "<value>", "server_name": "redis-ee", "ssl": false, "ssl_verify": false, "username": "username"}, "name": null, "type": "redis-ee"}]}
         "401":
           application/json: {"message": "<value>", "status": 707684}
     DuplicateApiKey:
@@ -10704,10 +10737,10 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"config": {"database": 0, "host": "localhost", "password": "password", "port": 6379, "server_name": "redis", "ssl": false, "ssl_verify": false, "timeout": 2000, "username": "username"}, "name": null, "type": "redis-ce"}
+        application/json: {"config": {"database": 0, "host": "localhost", "password": "password", "port": 6379, "server_name": "redis", "ssl": false, "ssl_verify": false, "timeout": 2000, "username": "username"}, "type": "redis-ce"}
       responses:
         "201":
-          application/json: {"config": {"database": 0, "host": "localhost", "password": "password", "port": 6379, "server_name": "redis", "ssl": false, "ssl_verify": false, "timeout": 2000, "username": "username"}, "name": null, "type": "redis-ce"}
+          application/json: {"config": {"database": 0, "host": "localhost", "password": "password", "port": 6379, "server_name": "redis", "ssl": false, "ssl_verify": false, "timeout": 2000, "username": "username"}, "type": "redis-ce"}
         "401":
           application/json: {"message": "<value>", "status": 415811}
     DuplicateApiKey:
@@ -10796,7 +10829,7 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       responses:
         "200":
-          application/json: {"config": {"database": 0, "host": "localhost", "password": "password", "port": 6379, "server_name": "redis", "ssl": false, "ssl_verify": false, "timeout": 2000, "username": "username"}, "name": null, "type": "redis-ce"}
+          application/json: {"config": {"database": 0, "host": "localhost", "password": "password", "port": 6379, "server_name": "redis", "ssl": false, "ssl_verify": false, "timeout": 2000, "username": "username"}, "type": "redis-ce"}
         "401":
           application/json: {"message": "<value>", "status": 629733}
     DuplicateApiKey:
@@ -10842,10 +10875,10 @@ examples:
           PartialId: ""
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"config": {"database": 0, "host": "localhost", "password": "password", "port": 6379, "server_name": "redis", "ssl": false, "ssl_verify": false, "timeout": 2000, "username": "username"}, "name": null, "type": "redis-ce"}
+        application/json: {"config": {"database": 0, "host": "localhost", "password": "password", "port": 6379, "server_name": "redis", "ssl": false, "ssl_verify": false, "timeout": 2000, "username": "username"}, "type": "redis-ce"}
       responses:
         "200":
-          application/json: {"config": {"database": 0, "host": "localhost", "password": "password", "port": 6379, "server_name": "redis", "ssl": false, "ssl_verify": false, "timeout": 2000, "username": "username"}, "name": null, "type": "redis-ce"}
+          application/json: {"config": {"database": 0, "host": "localhost", "password": "password", "port": 6379, "server_name": "redis", "ssl": false, "ssl_verify": false, "timeout": 2000, "username": "username"}, "type": "redis-ce"}
         "401":
           application/json: {"message": "<value>", "status": 445128}
     DuplicateApiKey:
@@ -11468,10 +11501,10 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"connect_timeout": 60000, "enabled": true, "host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http", "read_timeout": 60000, "retries": 5, "tls_verify": null, "tls_verify_depth": null, "url": null, "write_timeout": 60000}
+        application/json: {"connect_timeout": 60000, "enabled": true, "host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http", "read_timeout": 60000, "retries": 5, "write_timeout": 60000}
       responses:
         "201":
-          application/json: {"connect_timeout": 60000, "enabled": true, "host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http", "read_timeout": 60000, "retries": 5, "tls_verify": null, "tls_verify_depth": null, "write_timeout": 60000}
+          application/json: {"connect_timeout": 60000, "enabled": true, "host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http", "read_timeout": 60000, "retries": 5, "write_timeout": 60000}
         "401":
           application/json: {"message": "<value>", "status": 242951}
     DuplicateApiKey:
@@ -11560,7 +11593,7 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       responses:
         "200":
-          application/json: {"connect_timeout": 60000, "enabled": true, "host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http", "read_timeout": 60000, "retries": 5, "tls_verify": null, "tls_verify_depth": null, "write_timeout": 60000}
+          application/json: {"connect_timeout": 60000, "enabled": true, "host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http", "read_timeout": 60000, "retries": 5, "write_timeout": 60000}
         "401":
           application/json: {"message": "<value>", "status": 416010}
     DuplicateApiKey:
@@ -11606,10 +11639,10 @@ examples:
           ServiceId: "7fca84d6-7d37-4a74-a7b0-93e576089a41"
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"connect_timeout": 60000, "enabled": true, "host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http", "read_timeout": 60000, "retries": 5, "tls_verify": null, "tls_verify_depth": null, "url": null, "write_timeout": 60000}
+        application/json: {"connect_timeout": 60000, "enabled": true, "host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http", "read_timeout": 60000, "retries": 5, "write_timeout": 60000}
       responses:
         "200":
-          application/json: {"connect_timeout": 60000, "enabled": true, "host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http", "read_timeout": 60000, "retries": 5, "tls_verify": null, "tls_verify_depth": null, "write_timeout": 60000}
+          application/json: {"connect_timeout": 60000, "enabled": true, "host": "example.internal", "id": "49fd316e-c457-481c-9fc7-8079153e4f3c", "name": "example-service", "path": "/", "port": 80, "protocol": "http", "read_timeout": 60000, "retries": 5, "write_timeout": 60000}
         "401":
           application/json: {"message": "<value>", "status": 715531}
     DuplicateApiKey:
@@ -11664,7 +11697,7 @@ examples:
           tags: "tag1,tag2"
       responses:
         "200":
-          application/json: {"data": [{"algorithm": "round-robin", "hash_fallback": "none", "hash_fallback_header": null, "hash_fallback_query_arg": null, "hash_fallback_uri_capture": null, "hash_on": "none", "hash_on_cookie": null, "hash_on_cookie_path": "/", "hash_on_header": null, "hash_on_query_arg": null, "hash_on_uri_capture": null, "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_sni": null, "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "host_header": null, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000, "sticky_sessions_cookie": null, "sticky_sessions_cookie_path": "/", "use_srv_name": false}]}
+          application/json: {"data": [{"algorithm": "round-robin", "hash_fallback": "none", "hash_fallback_header": null, "hash_fallback_query_arg": null, "hash_fallback_uri_capture": null, "hash_on": "none", "hash_on_cookie": null, "hash_on_cookie_path": "/", "hash_on_header": null, "hash_on_query_arg": null, "hash_on_uri_capture": null, "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_sni": "<value>", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "host_header": null, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000, "sticky_sessions_cookie": null, "sticky_sessions_cookie_path": "/", "use_srv_name": false}]}
         "401":
           application/json: {"message": "<value>", "status": 235016}
     DuplicateApiKey:
@@ -11703,10 +11736,10 @@ examples:
         path:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_fallback_header": null, "hash_fallback_query_arg": null, "hash_fallback_uri_capture": null, "hash_on": "none", "hash_on_cookie": null, "hash_on_cookie_path": "/", "hash_on_header": null, "hash_on_query_arg": null, "hash_on_uri_capture": null, "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_sni": null, "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "host_header": null, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000, "sticky_sessions_cookie": null, "sticky_sessions_cookie_path": "/", "use_srv_name": false}
+        application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000, "sticky_sessions_cookie_path": "/", "use_srv_name": false}
       responses:
         "201":
-          application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_fallback_header": null, "hash_fallback_query_arg": null, "hash_fallback_uri_capture": null, "hash_on": "none", "hash_on_cookie": null, "hash_on_cookie_path": "/", "hash_on_header": null, "hash_on_query_arg": null, "hash_on_uri_capture": null, "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_sni": null, "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "host_header": null, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000, "sticky_sessions_cookie": null, "sticky_sessions_cookie_path": "/", "use_srv_name": false}
+          application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000, "sticky_sessions_cookie_path": "/", "use_srv_name": false}
         "401":
           application/json: {"message": "<value>", "status": 876380}
     DuplicateApiKey:
@@ -11795,7 +11828,7 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       responses:
         "200":
-          application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_fallback_header": null, "hash_fallback_query_arg": null, "hash_fallback_uri_capture": null, "hash_on": "none", "hash_on_cookie": null, "hash_on_cookie_path": "/", "hash_on_header": null, "hash_on_query_arg": null, "hash_on_uri_capture": null, "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_sni": null, "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "host_header": null, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000, "sticky_sessions_cookie": null, "sticky_sessions_cookie_path": "/", "use_srv_name": false}
+          application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000, "sticky_sessions_cookie_path": "/", "use_srv_name": false}
         "401":
           application/json: {"message": "<value>", "status": 768603}
     DuplicateApiKey:
@@ -11841,10 +11874,10 @@ examples:
           UpstreamId: "426d620c-7058-4ae6-aacc-f85a3204a2c5"
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       requestBody:
-        application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_fallback_header": null, "hash_fallback_query_arg": null, "hash_fallback_uri_capture": null, "hash_on": "none", "hash_on_cookie": null, "hash_on_cookie_path": "/", "hash_on_header": null, "hash_on_query_arg": null, "hash_on_uri_capture": null, "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_sni": null, "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "host_header": null, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000, "sticky_sessions_cookie": null, "sticky_sessions_cookie_path": "/", "use_srv_name": false}
+        application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000, "sticky_sessions_cookie_path": "/", "use_srv_name": false}
       responses:
         "200":
-          application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_fallback_header": null, "hash_fallback_query_arg": null, "hash_fallback_uri_capture": null, "hash_on": "none", "hash_on_cookie": null, "hash_on_cookie_path": "/", "hash_on_header": null, "hash_on_query_arg": null, "hash_on_uri_capture": null, "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_sni": null, "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "host_header": null, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000, "sticky_sessions_cookie": null, "sticky_sessions_cookie_path": "/", "use_srv_name": false}
+          application/json: {"algorithm": "round-robin", "hash_fallback": "none", "hash_on": "none", "hash_on_cookie_path": "/", "healthchecks": {"active": {"concurrency": 10, "healthy": {"http_statuses": [200, 302], "interval": 0, "successes": 0}, "http_path": "/", "https_verify_certificate": true, "timeout": 1, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 404, 500, 501, 502, 503, 504, 505], "interval": 0, "tcp_failures": 0, "timeouts": 0}}, "passive": {"healthy": {"http_statuses": [200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308], "successes": 0}, "type": "http", "unhealthy": {"http_failures": 0, "http_statuses": [429, 500, 503], "tcp_failures": 0, "timeouts": 0}}, "threshold": 0}, "id": "6eed5e9c-5398-4026-9a4c-d48f18a2431e", "name": "api.example.internal", "slots": 10000, "sticky_sessions_cookie_path": "/", "use_srv_name": false}
         "401":
           application/json: {"message": "<value>", "status": 414556}
     DuplicateApiKey:
@@ -14451,7 +14484,7 @@ examples:
     speakeasy-default-get-organizations-me:
       responses:
         "200":
-          application/json: {"id": "d99c041a-c7cf-46a2-bf3a-44bb5f75400e", "name": "string", "owner_id": "1c9c3848-5897-4f2c-beed-df6f3e3adb37", "login_path": null, "created_at": "2023-01-23T17:22:52.150Z", "updated_at": "2023-01-23T17:22:52.150Z", "state": "active", "retention_period_days": 90}
+          application/json: {"id": "d99c041a-c7cf-46a2-bf3a-44bb5f75400e", "name": "string", "owner_id": "1c9c3848-5897-4f2c-beed-df6f3e3adb37", "created_at": "2023-01-23T17:22:52.150Z", "updated_at": "2023-01-23T17:22:52.150Z", "state": "active", "retention_period_days": 90}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
     Example:
@@ -17851,7 +17884,7 @@ examples:
         path:
           authStrategyId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
       requestBody:
-        application/json: {"labels": {"env": "test"}, "dcr_provider_id": null}
+        application/json: {"labels": {"env": "test"}}
       responses:
         "200":
           application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "display_name": "Ora_MacGyver-Waelchi", "strategy_type": "key_auth", "configs": {"key-auth": {}}, "active": false, "dcr_provider": {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "provider_type": "azureAd"}, "labels": {"env": "test"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
@@ -18208,7 +18241,7 @@ examples:
         path:
           dcrProviderId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
       requestBody:
-        application/json: {"issuer": null, "labels": {"env": "test"}}
+        application/json: {"labels": {"env": "test"}}
       responses:
         "200":
           application/json: {"provider_type": "DcrProviderAuth0", "dcr_config": {}, "id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "issuer": "https://slow-stump.org/", "active": true, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
@@ -19290,10 +19323,10 @@ examples:
   create-api:
     speakeasy-default-create-api:
       requestBody:
-        application/json: {"name": "MyAPI", "description": null, "slug": "my-api-v1", "labels": {"env": "test"}}
+        application/json: {"name": "MyAPI", "slug": "my-api-v1", "labels": {"env": "test"}}
       responses:
         "201":
-          application/json: {"id": "9f5061ce-78f6-4452-9108-ad7c02821fd5", "name": "MyAPI", "description": null, "version": null, "current_version_summary": {"id": "7710d5c4-d902-410b-992f-18b814155b53", "version": null, "spec": {"type": "oas3"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, "slug": "my-api-v1", "api_spec_ids": ["123e4567-e89b-12d3-a456-426614174000"], "portals": [], "labels": {"env": "test"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"id": "9f5061ce-78f6-4452-9108-ad7c02821fd5", "name": "MyAPI", "version": null, "current_version_summary": {"id": "7710d5c4-d902-410b-992f-18b814155b53", "spec": {"type": "oas3"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, "slug": "my-api-v1", "api_spec_ids": ["123e4567-e89b-12d3-a456-426614174000"], "portals": [], "labels": {"env": "test"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 497005, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -19382,7 +19415,7 @@ examples:
           sort: "created_at desc"
       responses:
         "200":
-          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "9f5061ce-78f6-4452-9108-ad7c02821fd5", "name": "MyAPI", "description": null, "version": "<value>", "current_version_summary": {"id": "7710d5c4-d902-410b-992f-18b814155b53", "version": null, "spec": {"type": "oas3"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, "slug": "my-api-v1", "api_spec_ids": ["123e4567-e89b-12d3-a456-426614174000"], "portals": [], "labels": {"env": "test"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 100}}, "data": [{"id": "9f5061ce-78f6-4452-9108-ad7c02821fd5", "name": "MyAPI", "description": null, "version": "<value>", "current_version_summary": {"id": "7710d5c4-d902-410b-992f-18b814155b53", "version": "<value>", "spec": {"type": "oas3"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, "slug": "my-api-v1", "api_spec_ids": ["123e4567-e89b-12d3-a456-426614174000"], "portals": [], "labels": {"env": "test"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}]}
         "400":
           application/problem+json: {"status": 606169, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -19507,7 +19540,7 @@ examples:
           apiId: "9f5061ce-78f6-4452-9108-ad7c02821fd5"
       responses:
         "200":
-          application/json: {"id": "9f5061ce-78f6-4452-9108-ad7c02821fd5", "name": "MyAPI", "description": null, "version": null, "current_version_summary": {"id": "7710d5c4-d902-410b-992f-18b814155b53", "version": null, "spec": {"type": "oas3"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, "slug": "my-api-v1", "api_spec_ids": ["123e4567-e89b-12d3-a456-426614174000"], "portals": [{"id": "25a2624c-49fc-4764-99e1-224ed819f200", "name": "My Portal", "display_name": "My Portal"}], "labels": {"env": "test"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"id": "9f5061ce-78f6-4452-9108-ad7c02821fd5", "name": "MyAPI", "version": null, "current_version_summary": {"id": "7710d5c4-d902-410b-992f-18b814155b53", "spec": {"type": "oas3"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, "slug": "my-api-v1", "api_spec_ids": ["123e4567-e89b-12d3-a456-426614174000"], "portals": [{"id": "25a2624c-49fc-4764-99e1-224ed819f200", "name": "My Portal", "display_name": "My Portal"}], "labels": {"env": "test"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -19548,10 +19581,10 @@ examples:
         path:
           apiId: "9f5061ce-78f6-4452-9108-ad7c02821fd5"
       requestBody:
-        application/json: {"name": "MyAPI", "description": null, "slug": "my-api-v1", "labels": {"env": "test"}}
+        application/json: {"name": "MyAPI", "slug": "my-api-v1", "labels": {"env": "test"}}
       responses:
         "200":
-          application/json: {"id": "9f5061ce-78f6-4452-9108-ad7c02821fd5", "name": "MyAPI", "description": null, "version": null, "current_version_summary": {"id": "7710d5c4-d902-410b-992f-18b814155b53", "version": null, "spec": {"type": "oas3"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, "slug": "my-api-v1", "api_spec_ids": ["123e4567-e89b-12d3-a456-426614174000"], "portals": [], "labels": {"env": "test"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"id": "9f5061ce-78f6-4452-9108-ad7c02821fd5", "name": "MyAPI", "version": null, "current_version_summary": {"id": "7710d5c4-d902-410b-992f-18b814155b53", "spec": {"type": "oas3"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}, "slug": "my-api-v1", "api_spec_ids": ["123e4567-e89b-12d3-a456-426614174000"], "portals": [], "labels": {"env": "test"}, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 683837, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -19708,7 +19741,7 @@ examples:
         "404":
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
         "409":
-          application/problem+json: {"status": 8787.65, "title": "<value>", "type": null, "instance": "<value>"}
+          application/problem+json: {"status": 8787.65, "title": "<value>", "instance": "<value>"}
         "415":
           application/problem+json: {"status": 415, "title": "UnsupportedMediaType", "type": "https://httpstatuses.com/415", "instance": "kong:trace:1234567890", "detail": "UnsupportedMediaType"}
     CreateApiDocumentRequestMinimalExample:
@@ -19927,7 +19960,7 @@ examples:
         "404":
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
         "409":
-          application/problem+json: {"status": 6731.06, "title": "<value>", "type": null, "instance": "<value>"}
+          application/problem+json: {"status": 6731.06, "title": "<value>", "instance": "<value>"}
         "415":
           application/problem+json: {"status": 415, "title": "UnsupportedMediaType", "type": "https://httpstatuses.com/415", "instance": "kong:trace:1234567890", "detail": "UnsupportedMediaType"}
     UpdateApiDocumentAttributes:
@@ -21585,7 +21618,7 @@ examples:
           page[number]: 1
       responses:
         "200":
-          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 3}}, "data": [{"id": "b02e23c5-8ee4-4e5a-99f4-43329923adce", "role_name": "API Viewer", "entity_id": "437c7192-fea0-4f35-8478-c8d57783f8c1", "entity_type_name": "Services", "entity_region": "us"}, {"id": "b02e23c5-8ee4-4e5a-99f4-43329923adce", "role_name": "API Consumer", "entity_id": "437c7192-fea0-4f35-8478-c8d57783f8c1", "entity_type_name": "Services", "entity_region": "us"}, {"id": "869d9402-f117-4f9a-840f-69acaf70a81a", "role_name": "API Viewer", "entity_id": "18ee2573-dec0-4b83-be99-fa7700bcdc61", "entity_type_name": "Services", "entity_region": "us"}]}
+          application/json: {"meta": {"page": {"number": 1, "size": 10, "total": 3}}, "data": [{"id": "b02e23c5-8ee4-4e5a-99f4-43329923adce", "role_name": "API Viewer", "entity_id": "437c7192-fea0-4f35-8478-c8d57783f8c1", "entity_type_name": "Services", "entity_region": "us"}, {"id": "b02e23c5-8ee4-4e5a-99f4-43329923adce", "role_name": "API Consumer", "entity_id": "437c7192-fea0-4f35-8478-c8d57783f8c1", "entity_region": "us"}, {"id": "869d9402-f117-4f9a-840f-69acaf70a81a", "role_name": "API Viewer", "entity_id": "18ee2573-dec0-4b83-be99-fa7700bcdc61", "entity_type_name": "Services", "entity_region": "us"}]}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -21945,10 +21978,10 @@ examples:
   create-portal:
     speakeasy-default-create-portal:
       requestBody:
-        application/json: {"name": null, "display_name": null, "description": null, "authentication_enabled": true, "rbac_enabled": false, "default_application_auth_strategy_id": null, "auto_approve_developers": false, "auto_approve_applications": false, "labels": {"env": "test"}}
+        application/json: {"name": "<value>", "authentication_enabled": true, "rbac_enabled": false, "auto_approve_developers": false, "auto_approve_applications": false, "labels": {"env": "test"}}
       responses:
         "201":
-          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "name": null, "display_name": null, "description": null, "authentication_enabled": true, "rbac_enabled": false, "default_api_visibility": "private", "default_page_visibility": "private", "default_application_auth_strategy_id": null, "auto_approve_developers": false, "auto_approve_applications": false, "default_domain": "tattered-verve.info", "canonical_domain": "crafty-jury.com", "labels": {"env": "test"}}
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "name": "<value>", "display_name": "Ahmed41", "description": null, "authentication_enabled": true, "rbac_enabled": false, "default_api_visibility": "private", "default_page_visibility": "private", "default_application_auth_strategy_id": null, "auto_approve_developers": false, "auto_approve_applications": false, "default_domain": "tattered-verve.info", "canonical_domain": "crafty-jury.com", "labels": {"env": "test"}}
         "400":
           application/problem+json: {"status": 114263, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "min", "minimum": 8, "source": "body", "reason": "must have at least 8 characters"}]}
         "401":
@@ -22048,7 +22081,7 @@ examples:
           portalId: "1672e313-9f8e-4485-a62b-716aad351889"
       responses:
         "200":
-          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "name": null, "display_name": null, "description": null, "authentication_enabled": true, "rbac_enabled": false, "default_api_visibility": "private", "default_page_visibility": "private", "default_application_auth_strategy_id": null, "auto_approve_developers": false, "auto_approve_applications": false, "default_domain": "crooked-tinderbox.biz", "canonical_domain": "intent-cricket.net", "labels": {"env": "test"}}
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "name": "<value>", "display_name": "Antonio.Klein91", "description": null, "authentication_enabled": true, "rbac_enabled": false, "default_api_visibility": "private", "default_page_visibility": "private", "default_application_auth_strategy_id": null, "auto_approve_developers": false, "auto_approve_applications": false, "default_domain": "crooked-tinderbox.biz", "canonical_domain": "intent-cricket.net", "labels": {"env": "test"}}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -22091,10 +22124,10 @@ examples:
         path:
           portalId: "efe853b6-a55c-4929-9b80-c39a22b01c7a"
       requestBody:
-        application/json: {"name": null, "display_name": null, "description": null, "authentication_enabled": true, "rbac_enabled": false, "default_application_auth_strategy_id": null, "auto_approve_developers": false, "auto_approve_applications": false, "labels": {"env": "test"}}
+        application/json: {"authentication_enabled": true, "rbac_enabled": false, "auto_approve_developers": false, "auto_approve_applications": false, "labels": {"env": "test"}}
       responses:
         "200":
-          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "name": null, "display_name": null, "description": null, "authentication_enabled": true, "rbac_enabled": false, "default_api_visibility": "public", "default_page_visibility": "private", "default_application_auth_strategy_id": null, "auto_approve_developers": false, "auto_approve_applications": false, "default_domain": "animated-bathrobe.name", "canonical_domain": "inferior-offset.name", "labels": {"env": "test"}}
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "name": "<value>", "display_name": "Sophia23", "description": null, "authentication_enabled": true, "rbac_enabled": false, "default_api_visibility": "public", "default_page_visibility": "private", "default_application_auth_strategy_id": null, "auto_approve_developers": false, "auto_approve_applications": false, "default_domain": "animated-bathrobe.name", "canonical_domain": "inferior-offset.name", "labels": {"env": "test"}}
         "400":
           application/problem+json: {"status": 293102, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -23076,10 +23109,10 @@ examples:
         path:
           portalId: "f32d905a-ed33-46a3-a093-d8f536af9a8a"
       requestBody:
-        application/json: {"enabled": true, "audit_log_destination_id": null}
+        application/json: {"enabled": true}
       responses:
         "200":
-          application/json: {"enabled": true, "audit_log_destination_id": null}
+          application/json: {"enabled": true}
         "400":
           application/problem+json: {"status": 597418, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "max", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
         "401":
@@ -23220,7 +23253,7 @@ examples:
           portalId: "f32d905a-ed33-46a3-a093-d8f536af9a8a"
       responses:
         "200":
-          application/json: {"enabled": true, "audit_log_destination_id": null}
+          application/json: {"enabled": true}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -23308,7 +23341,7 @@ examples:
           portalId: "f32d905a-ed33-46a3-a093-d8f536af9a8a"
       responses:
         "200":
-          application/json: {"basic_auth_enabled": true, "oidc_auth_enabled": true, "saml_auth_enabled": false, "oidc_team_mapping_enabled": true, "idp_mapping_enabled": true, "konnect_mapping_enabled": false, "oidc_config": {"issuer": "https://identity.example.com/v2", "client_id": "x7id0o42lklas0blidl2", "scopes": ["email", "openid", "profile"], "claim_mappings": {"name": "name", "email": "email", "groups": "custom-group-claim"}}}
+          application/json: {"basic_auth_enabled": true, "oidc_auth_enabled": true, "oidc_team_mapping_enabled": true, "konnect_mapping_enabled": false, "oidc_config": {"issuer": "https://identity.example.com/v2", "client_id": "x7id0o42lklas0blidl2", "scopes": ["email", "openid", "profile"], "claim_mappings": {"name": "name", "email": "email", "groups": "custom-group-claim"}}}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
     Example 1:
@@ -23338,10 +23371,10 @@ examples:
         path:
           portalId: "f32d905a-ed33-46a3-a093-d8f536af9a8a"
       requestBody:
-        application/json: {"basic_auth_enabled": true, "oidc_auth_enabled": true, "saml_auth_enabled": false, "oidc_team_mapping_enabled": true, "konnect_mapping_enabled": false, "idp_mapping_enabled": true, "oidc_issuer": "https://identity.example.com/v2", "oidc_client_id": "x7id0o42lklas0blidl2", "oidc_client_secret": null, "oidc_scopes": ["email", "openid", "profile"], "oidc_claim_mappings": {"name": "name", "email": "email", "groups": "custom-group-claim"}}
+        application/json: {"basic_auth_enabled": true, "oidc_auth_enabled": true, "oidc_team_mapping_enabled": true, "konnect_mapping_enabled": false, "oidc_issuer": "https://identity.example.com/v2", "oidc_client_id": "x7id0o42lklas0blidl2", "oidc_scopes": ["email", "openid", "profile"], "oidc_claim_mappings": {"name": "name", "email": "email", "groups": "custom-group-claim"}}
       responses:
         "200":
-          application/json: {"basic_auth_enabled": true, "oidc_auth_enabled": true, "saml_auth_enabled": false, "oidc_team_mapping_enabled": true, "idp_mapping_enabled": true, "konnect_mapping_enabled": false, "oidc_config": {"issuer": "https://identity.example.com/v2", "client_id": "x7id0o42lklas0blidl2", "scopes": ["email", "openid", "profile"], "claim_mappings": {"name": "name", "email": "email", "groups": "custom-group-claim"}}}
+          application/json: {"basic_auth_enabled": true, "oidc_auth_enabled": true, "oidc_team_mapping_enabled": true, "konnect_mapping_enabled": false, "oidc_config": {"issuer": "https://identity.example.com/v2", "client_id": "x7id0o42lklas0blidl2", "scopes": ["email", "openid", "profile"], "claim_mappings": {"name": "name", "email": "email", "groups": "custom-group-claim"}}}
         "400":
           application/problem+json: {"status": 172805, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "max_length", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
         "401":
@@ -24125,7 +24158,7 @@ examples:
         path:
           portalId: "f32d905a-ed33-46a3-a093-d8f536af9a8a"
       requestBody:
-        application/json: {"enabled": null}
+        application/json: {}
       responses:
         "200":
           application/json: {"hostname": "bad-dream.biz", "enabled": true, "ssl": {"domain_verification_method": "http", "verification_status": "verified", "uploaded_at": "2022-11-04T20:10:06.927Z", "expires_at": "2022-11-04T20:10:06.927Z"}, "cname_status": "pending", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
@@ -24186,7 +24219,7 @@ examples:
           portalId: "f32d905a-ed33-46a3-a093-d8f536af9a8a"
       responses:
         "200":
-          application/json: {"theme": {"colors": {"primary": "#000000"}}, "css": null, "menu": {"main": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": false}], "footer_sections": [{"title": "<value>", "items": []}], "footer_bottom": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": false}]}, "robots": null}
+          application/json: {"theme": {"colors": {"primary": "#000000"}}, "menu": {"main": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": false}], "footer_sections": [{"title": "<value>", "items": []}], "footer_bottom": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": false}]}}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -24222,10 +24255,10 @@ examples:
         path:
           portalId: "f32d905a-ed33-46a3-a093-d8f536af9a8a"
       requestBody:
-        application/json: {"theme": {"colors": {"primary": "#000000"}}, "css": null, "menu": {"main": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": false}], "footer_sections": [{"title": "<value>", "items": []}], "footer_bottom": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": false}]}, "robots": null}
+        application/json: {"theme": {"colors": {"primary": "#000000"}}, "menu": {"main": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": false}], "footer_sections": [{"title": "<value>", "items": []}], "footer_bottom": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": false}]}}
       responses:
         "200":
-          application/json: {"theme": {"colors": {"primary": "#000000"}}, "css": null, "menu": {"main": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": false}], "footer_sections": [{"title": "<value>", "items": []}], "footer_bottom": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": false}]}, "robots": null}
+          application/json: {"theme": {"colors": {"primary": "#000000"}}, "menu": {"main": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": false}], "footer_sections": [{"title": "<value>", "items": []}], "footer_bottom": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": false}]}}
         "400":
           application/problem+json: {"status": 589050, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "source": "body", "reason": "is a required field"}]}
         "401":
@@ -24278,10 +24311,10 @@ examples:
         path:
           portalId: "f32d905a-ed33-46a3-a093-d8f536af9a8a"
       requestBody:
-        application/json: {"theme": {"colors": {"primary": "#000000"}}, "css": null, "menu": {"main": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": false}], "footer_sections": [{"title": "<value>", "items": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": true}]}], "footer_bottom": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": true}]}, "robots": null}
+        application/json: {"theme": {"colors": {"primary": "#000000"}}, "menu": {"main": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": false}], "footer_sections": [{"title": "<value>", "items": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": true}]}], "footer_bottom": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": true}]}}
       responses:
         "200":
-          application/json: {"theme": {"colors": {"primary": "#000000"}}, "css": null, "menu": {"main": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": false}], "footer_sections": [{"title": "<value>", "items": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": true}]}], "footer_bottom": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": true}]}, "robots": null}
+          application/json: {"theme": {"colors": {"primary": "#000000"}}, "menu": {"main": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": false}], "footer_sections": [{"title": "<value>", "items": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": true}]}], "footer_bottom": [{"path": "/about/company", "title": "My Page", "visibility": "public", "external": true}]}}
         "400":
           application/problem+json: {"status": 405029, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -25336,7 +25369,7 @@ examples:
           portalId: "f32d905a-ed33-46a3-a093-d8f536af9a8a"
       responses:
         "200":
-          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "domain_name": null, "from_name": "<value>", "from_email": "Chelsea_Mayer-Schultz@hotmail.com", "reply_to_email": "Alysa.Adams39@hotmail.com", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "from_name": "<value>", "from_email": "Chelsea_Mayer-Schultz@hotmail.com", "reply_to_email": "Alysa.Adams39@hotmail.com", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -25379,10 +25412,10 @@ examples:
         path:
           portalId: "f32d905a-ed33-46a3-a093-d8f536af9a8a"
       requestBody:
-        application/json: {"domain_name": null, "from_name": null, "from_email": null, "reply_to_email": null}
+        application/json: {}
       responses:
         "201":
-          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "domain_name": null, "from_name": "<value>", "from_email": "Haylie_Runolfsdottir83@gmail.com", "reply_to_email": "Roselyn29@gmail.com", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "from_name": "<value>", "from_email": "Haylie_Runolfsdottir83@gmail.com", "reply_to_email": "Roselyn29@gmail.com", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 716743, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "enum", "reason": "is a required field", "choices": [], "source": "body"}]}
         "401":
@@ -25457,7 +25490,7 @@ examples:
           portalId: "f32d905a-ed33-46a3-a093-d8f536af9a8a"
       responses:
         "200":
-          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "domain_name": null, "from_name": "<value>", "from_email": "Sarah.Cremin59@gmail.com", "reply_to_email": "Jackson81@gmail.com", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
+          application/json: {"id": "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "from_name": "<value>", "from_email": "Sarah.Cremin59@gmail.com", "reply_to_email": "Jackson81@gmail.com", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
         "400":
           application/problem+json: {"status": 384868, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
         "401":
@@ -25591,7 +25624,7 @@ examples:
         path:
           portalId: "f32d905a-ed33-46a3-a093-d8f536af9a8a"
       requestBody:
-        application/json: {"enabled": null, "from_email": null, "reply_to_email": null}
+        application/json: {}
       responses:
         "200":
           application/json: {"enabled": false, "from_email": null, "reply_to_email": null, "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z"}
@@ -26862,7 +26895,7 @@ examples:
           controlPlaneId: "9524ec7d-36d9-465d-a8c5-83a3c9390458"
       responses:
         "200":
-          application/json: {"message": null}
+          application/json: {}
   fetch-partial-schema:
     speakeasy-default-fetch-partial-schema:
       parameters:
@@ -26907,5 +26940,107 @@ examples:
           application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
         "409":
           application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
+  list-users-personal-access-tokens:
+    speakeasy-default-list-users-personal-access-tokens:
+      parameters:
+        path:
+          userId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+      responses:
+        "200":
+          application/json: {"meta": {"number": 1, "size": 10, "total": 100}, "data": [{"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "user_id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "state": "EXPIRED", "revoked_by": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "last_used_at": "2022-11-04T20:10:06.927Z", "expires_at": "2022-11-04T20:10:06.927Z", "revoked_at": "2022-11-04T20:10:06.927Z"}]}
+        "400":
+          application/problem+json: {"status": 588606, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "min_length", "minimum": 8, "source": "body", "reason": "must have at least 8 characters"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  create-personal-access-token:
+    speakeasy-default-create-personal-access-token:
+      parameters:
+        path:
+          userId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+      requestBody:
+        application/json: {"name": "<value>", "expires_at": "2022-11-04T20:10:06.927Z"}
+      responses:
+        "201":
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "user_id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "state": "ACTIVE", "konnect_token": "<value>", "revoked_by": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "last_used_at": "2022-11-04T20:10:06.927Z", "expires_at": "2022-11-04T20:10:06.927Z", "revoked_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 365019, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "enum", "reason": "is a required field", "choices": ["<value 1>", "<value 2>"], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+        "409":
+          application/problem+json: {"status": 409, "title": "Conflict", "type": "https://httpstatuses.com/409", "instance": "kong:trace:1234567890", "detail": "Conflict"}
+  get-personal-access-token-details:
+    speakeasy-default-get-personal-access-token-details:
+      parameters:
+        path:
+          userId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          tokenId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+      responses:
+        "200":
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "user_id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "state": "EXPIRED", "revoked_by": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "last_used_at": "2022-11-04T20:10:06.927Z", "expires_at": "2022-11-04T20:10:06.927Z", "revoked_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 447926, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  update-personal-access-token-details:
+    speakeasy-default-update-personal-access-token-details:
+      parameters:
+        path:
+          userId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          tokenId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+      responses:
+        "200":
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "user_id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "state": "REVOKED", "revoked_by": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "last_used_at": "2022-11-04T20:10:06.927Z", "expires_at": "2022-11-04T20:10:06.927Z", "revoked_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 554554, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": []}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  delete-personal-access-token:
+    speakeasy-default-delete-personal-access-token:
+      parameters:
+        path:
+          userId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          tokenId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+      responses:
+        "400":
+          application/problem+json: {"status": 777200, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value 1>", "<value 2>"], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
+  revoke-personal-access-token:
+    speakeasy-default-revoke-personal-access-token:
+      parameters:
+        path:
+          userId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+          tokenId: "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7"
+      responses:
+        "200":
+          application/json: {"id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "user_id": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "name": "<value>", "state": "EXPIRED", "revoked_by": "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", "created_at": "2022-11-04T20:10:06.927Z", "updated_at": "2022-11-04T20:10:06.927Z", "last_used_at": "2022-11-04T20:10:06.927Z", "expires_at": "2022-11-04T20:10:06.927Z", "revoked_at": "2022-11-04T20:10:06.927Z"}
+        "400":
+          application/problem+json: {"status": 582153, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "dependent_fields", "reason": "is a required field", "dependents": ["<value 1>", "<value 2>"], "source": "body"}]}
+        "401":
+          application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
+        "403":
+          application/problem+json: {"status": 403, "title": "Forbidden", "type": "https://httpstatuses.com/403", "instance": "kong:trace:1234567890", "detail": "Forbidden"}
+        "404":
+          application/problem+json: {"status": 404, "title": "Not Found", "type": "https://httpstatuses.com/404", "instance": "kong:trace:1234567890", "detail": "Not found"}
 examplesVersion: 1.0.2
 generatedTests: {}

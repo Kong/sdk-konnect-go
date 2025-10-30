@@ -46,23 +46,12 @@ func (u *UpdateIDPConfigurationClaimMappings) GetGroups() *string {
 
 // UpdateIDPConfiguration - The request schema for the update IdP configuration request.
 type UpdateIDPConfiguration struct {
-	Issuer        *string                              `default:"null" json:"issuer"`
-	LoginPath     *string                              `default:"null" json:"login_path"`
-	ClientID      *string                              `default:"null" json:"client_id"`
-	ClientSecret  *string                              `default:"null" json:"client_secret"`
+	Issuer        *string                              `json:"issuer,omitempty"`
+	LoginPath     *string                              `json:"login_path,omitempty"`
+	ClientID      *string                              `json:"client_id,omitempty"`
+	ClientSecret  *string                              `json:"client_secret,omitempty"`
 	Scopes        []string                             `json:"scopes,omitempty"`
 	ClaimMappings *UpdateIDPConfigurationClaimMappings `json:"claim_mappings,omitempty"`
-}
-
-func (u UpdateIDPConfiguration) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateIDPConfiguration) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (u *UpdateIDPConfiguration) GetIssuer() *string {

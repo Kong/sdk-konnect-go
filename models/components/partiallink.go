@@ -2,28 +2,13 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type PartialLink struct {
 	// The plugin's unique identifier
 	ID string `json:"id"`
 	// The instance name of the plugin
-	InstanceName *string `default:"null" json:"instance_name"`
+	InstanceName *string `json:"instance_name,omitempty"`
 	// The plugin's name
 	Name string `json:"name"`
-}
-
-func (p PartialLink) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PartialLink) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "name"}); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (p *PartialLink) GetID() string {

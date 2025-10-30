@@ -27,13 +27,13 @@ type PortalAuditLogWebhookStatus struct {
 	WebhookStatus *WebhookStatus `json:"webhook_status,omitempty"`
 	// Configured status of a webhook. `enabled` indicates the client will accept requests.
 	// `disabled` indicates the client will not accept requests.
-	WebhookEnabled *bool `default:"null" json:"webhook_enabled"`
+	WebhookEnabled *bool `json:"webhook_enabled,omitempty"`
 	// The last time a request was made to the webhook, regardless of outcome.
-	LastAttemptAt *time.Time `default:"null" json:"last_attempt_at"`
+	LastAttemptAt *time.Time `json:"last_attempt_at,omitempty"`
 	// The last response code received from the webhook.
-	LastResponseCode *int64 `default:"null" json:"last_response_code"`
+	LastResponseCode *int64 `json:"last_response_code,omitempty"`
 	// The last message received from the webhook. Useful for debugging.
-	LastResponseMessage *string `default:"null" json:"last_response_message"`
+	LastResponseMessage *string `json:"last_response_message,omitempty"`
 }
 
 func (p PortalAuditLogWebhookStatus) MarshalJSON() ([]byte, error) {

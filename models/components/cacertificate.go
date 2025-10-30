@@ -2,16 +2,12 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // CACertificate - A CA certificate object represents a trusted CA. These objects are used by Kong to verify the validity of a client or server certificate.
 type CACertificate struct {
 	// PEM-encoded public certificate of the CA.
 	Cert string `json:"cert"`
 	// SHA256 hex digest of the public certificate. This field is read-only and it cannot be set by the caller, the value is automatically computed.
-	CertDigest *string `default:"null" json:"cert_digest"`
+	CertDigest *string `json:"cert_digest,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
 	// A string representing a UUID (universally unique identifier).
@@ -20,17 +16,6 @@ type CACertificate struct {
 	Tags []string `json:"tags,omitempty"`
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
-}
-
-func (c CACertificate) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CACertificate) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"cert"}); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (c *CACertificate) GetCert() string {

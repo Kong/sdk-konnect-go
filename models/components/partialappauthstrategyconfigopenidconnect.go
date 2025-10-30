@@ -11,7 +11,7 @@ import (
 // Once authenticated, an application will be granted access to any Product Version it is registered for that is configured for the same Auth Strategy.
 // An OIDC strategy may be used in conjunction with a DCR provider to automatically create the IdP application.
 type PartialAppAuthStrategyConfigOpenIDConnect struct {
-	Issuer               *string        `default:"null" json:"issuer"`
+	Issuer               *string        `json:"issuer,omitempty"`
 	CredentialClaim      []string       `json:"credential_claim,omitempty"`
 	Scopes               []string       `json:"scopes,omitempty"`
 	AuthMethods          []string       `json:"auth_methods,omitempty"`

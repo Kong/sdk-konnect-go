@@ -2,25 +2,10 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // PortalCreateTeamRequest - Details about a team to create.
 type PortalCreateTeamRequest struct {
 	Name        string  `json:"name"`
-	Description *string `default:"null" json:"description"`
-}
-
-func (p PortalCreateTeamRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PortalCreateTeamRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name"}); err != nil {
-		return err
-	}
-	return nil
+	Description *string `json:"description,omitempty"`
 }
 
 func (p *PortalCreateTeamRequest) GetName() string {

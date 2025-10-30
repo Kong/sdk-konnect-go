@@ -2,25 +2,10 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type ListNodesEolItems struct {
-	NodeID      *string `default:"null" json:"node_id"`
-	NodeVersion *string `default:"null" json:"node_version"`
-	Message     *string `default:"null" json:"message"`
-}
-
-func (l ListNodesEolItems) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
-}
-
-func (l *ListNodesEolItems) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	NodeID      *string `json:"node_id,omitempty"`
+	NodeVersion *string `json:"node_version,omitempty"`
+	Message     *string `json:"message,omitempty"`
 }
 
 func (l *ListNodesEolItems) GetNodeID() *string {
@@ -45,18 +30,7 @@ func (l *ListNodesEolItems) GetMessage() *string {
 }
 
 type ListNodesEolPage struct {
-	Total *int64 `default:"null" json:"total"`
-}
-
-func (l ListNodesEolPage) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(l, "", false)
-}
-
-func (l *ListNodesEolPage) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Total *int64 `json:"total,omitempty"`
 }
 
 func (l *ListNodesEolPage) GetTotal() *int64 {

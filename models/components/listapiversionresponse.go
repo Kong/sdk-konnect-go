@@ -24,7 +24,7 @@ type ListAPIVersionResponseAPIVersionSummary struct {
 	// The API version identifier.
 	ID string `json:"id"`
 	// The version of this api spec.
-	Version *string                     `default:"null" json:"version"`
+	Version string                      `json:"version"`
 	Spec    *ListAPIVersionResponseSpec `json:"spec,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
@@ -37,7 +37,7 @@ func (l ListAPIVersionResponseAPIVersionSummary) MarshalJSON() ([]byte, error) {
 }
 
 func (l *ListAPIVersionResponseAPIVersionSummary) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"id", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"id", "version", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -50,9 +50,9 @@ func (l *ListAPIVersionResponseAPIVersionSummary) GetID() string {
 	return l.ID
 }
 
-func (l *ListAPIVersionResponseAPIVersionSummary) GetVersion() *string {
+func (l *ListAPIVersionResponseAPIVersionSummary) GetVersion() string {
 	if l == nil {
-		return nil
+		return ""
 	}
 	return l.Version
 }

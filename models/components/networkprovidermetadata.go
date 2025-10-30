@@ -2,25 +2,10 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // NetworkProviderMetadata - Metadata describing attributes returned by cloud-provider for the network.
 type NetworkProviderMetadata struct {
-	VpcID     *string  `default:"null" json:"vpc_id"`
+	VpcID     *string  `json:"vpc_id,omitempty"`
 	SubnetIds []string `json:"subnet_ids,omitempty"`
-}
-
-func (n NetworkProviderMetadata) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(n, "", false)
-}
-
-func (n *NetworkProviderMetadata) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &n, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (n *NetworkProviderMetadata) GetVpcID() *string {

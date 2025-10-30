@@ -56,9 +56,9 @@ type JWTWithoutParents struct {
 	CreatedAt *int64 `json:"created_at,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID           *string `json:"id,omitempty"`
-	Key          *string `default:"null" json:"key"`
-	RsaPublicKey *string `default:"null" json:"rsa_public_key"`
-	Secret       *string `default:"null" json:"secret"`
+	Key          *string `json:"key,omitempty"`
+	RsaPublicKey *string `json:"rsa_public_key,omitempty"`
+	Secret       *string `json:"secret,omitempty"`
 	// A set of strings representing tags.
 	Tags []string `json:"tags,omitempty"`
 }

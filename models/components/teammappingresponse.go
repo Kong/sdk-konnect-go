@@ -2,29 +2,14 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // TeamMappingResponsePage - The page object.
 type TeamMappingResponsePage struct {
 	// Page number.
-	Number *int64 `default:"null" json:"number"`
+	Number *int64 `json:"number,omitempty"`
 	// Page size.
-	Size *int64 `default:"null" json:"size"`
+	Size *int64 `json:"size,omitempty"`
 	// Total number of results.
-	Total *int64 `default:"null" json:"total"`
-}
-
-func (t TeamMappingResponsePage) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(t, "", false)
-}
-
-func (t *TeamMappingResponsePage) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Total *int64 `json:"total,omitempty"`
 }
 
 func (t *TeamMappingResponsePage) GetNumber() *int64 {
@@ -63,20 +48,9 @@ func (m *Meta) GetPage() *TeamMappingResponsePage {
 
 type TeamMappingResponseData struct {
 	// Group names.
-	Group *string `default:"null" json:"group"`
+	Group *string `json:"group,omitempty"`
 	// Team ID's that belong to the specified group.
 	TeamIds []string `json:"team_ids,omitempty"`
-}
-
-func (t TeamMappingResponseData) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(t, "", false)
-}
-
-func (t *TeamMappingResponseData) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (t *TeamMappingResponseData) GetGroup() *string {

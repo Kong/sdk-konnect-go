@@ -10,10 +10,10 @@ import (
 // PrivateDNSStateMetadata - Metadata describing the backing state of the Private Dns and why it may be in an erroneous state.
 type PrivateDNSStateMetadata struct {
 	// Reported status of the Private Dns from backing infrastructure.
-	ReportedStatus *string `default:"null" json:"reported_status"`
+	ReportedStatus *string `json:"reported_status,omitempty"`
 	// Reason why the Private Dns may be in an erroneous state, reported from backing infrastructure.
 	//
-	Reason *string `default:"null" json:"reason"`
+	Reason *string `json:"reason,omitempty"`
 }
 
 func (p PrivateDNSStateMetadata) MarshalJSON() ([]byte, error) {

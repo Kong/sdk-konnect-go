@@ -8,9 +8,9 @@ import (
 
 type Destinations struct {
 	// A string representing an IP address or CIDR block, such as 192.168.1.1 or 192.168.0.0/16.
-	IP *string `default:"null" json:"ip"`
+	IP *string `json:"ip,omitempty"`
 	// An integer representing a port number between 0 and 65535, inclusive.
-	Port *int64 `default:"null" json:"port"`
+	Port *int64 `json:"port,omitempty"`
 }
 
 func (d Destinations) MarshalJSON() ([]byte, error) {
@@ -110,9 +110,9 @@ func (r *RouteJSONService) GetID() *string {
 
 type Sources struct {
 	// A string representing an IP address or CIDR block, such as 192.168.1.1 or 192.168.0.0/16.
-	IP *string `default:"null" json:"ip"`
+	IP *string `json:"ip,omitempty"`
 	// An integer representing a port number between 0 and 65535, inclusive.
-	Port *int64 `default:"null" json:"port"`
+	Port *int64 `json:"port,omitempty"`
 }
 
 func (s Sources) MarshalJSON() ([]byte, error) {
@@ -157,7 +157,7 @@ type RouteJSON struct {
 	// A list of HTTP methods that match this Route.
 	Methods []string `json:"methods,omitempty"`
 	// The name of the Route. Route names must be unique, and they are case sensitive. For example, there can be two different Routes named "test" and "Test".
-	Name *string `default:"null" json:"name"`
+	Name *string `json:"name,omitempty"`
 	// Controls how the Service path, Route path and requested path are combined when sending a request to the upstream. See above for a detailed description of each behavior.
 	PathHandling *PathHandling `default:"v0" json:"path_handling"`
 	// A list of paths that match this Route.

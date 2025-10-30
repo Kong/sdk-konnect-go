@@ -2,24 +2,9 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // UpdateConfigStore - The request schema to update a Config Store.
 type UpdateConfigStore struct {
-	Name *string `default:"null" json:"name"`
-}
-
-func (u UpdateConfigStore) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdateConfigStore) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Name *string `json:"name,omitempty"`
 }
 
 func (u *UpdateConfigStore) GetName() *string {

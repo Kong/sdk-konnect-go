@@ -2,10 +2,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // CreateSystemAccount - The request schema to create a system account.
 type CreateSystemAccount struct {
 	// Name of the system account.
@@ -13,18 +9,7 @@ type CreateSystemAccount struct {
 	// Description of the system account. Useful when the system account name is not sufficient to differentiate one system account from another.
 	Description string `json:"description"`
 	// The system account is managed by Konnect (true/false).
-	KonnectManaged *bool `default:"null" json:"konnect_managed"`
-}
-
-func (c CreateSystemAccount) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreateSystemAccount) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"name", "description"}); err != nil {
-		return err
-	}
-	return nil
+	KonnectManaged *bool `json:"konnect_managed,omitempty"`
 }
 
 func (c *CreateSystemAccount) GetName() string {

@@ -40,7 +40,7 @@ type ServiceUnavailable struct {
 	// The Konnect traceback code
 	Instance string `json:"instance"`
 	// Details about the error.
-	Detail *string `default:"null" json:"detail"`
+	Detail *string `json:"detail,omitempty"`
 }
 
 var _ error = &ServiceUnavailable{}

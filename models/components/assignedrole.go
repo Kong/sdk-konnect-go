@@ -2,10 +2,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // AssignedRoleEntityRegion - Region of the entity.
 type AssignedRoleEntityRegion string
 
@@ -28,24 +24,13 @@ type AssignedRole struct {
 	// The ID of the role assignment.
 	ID *string `json:"id,omitempty"`
 	// Name of the role being assigned.
-	RoleName *string `default:"null" json:"role_name"`
+	RoleName *string `json:"role_name,omitempty"`
 	// A RBAC entity ID.
-	EntityID *string `default:"null" json:"entity_id"`
+	EntityID *string `json:"entity_id,omitempty"`
 	// Name of the entity type the role is being assigned to.
-	EntityTypeName *string `default:"null" json:"entity_type_name"`
+	EntityTypeName *string `json:"entity_type_name,omitempty"`
 	// Region of the entity.
 	EntityRegion *AssignedRoleEntityRegion `json:"entity_region,omitempty"`
-}
-
-func (a AssignedRole) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AssignedRole) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (a *AssignedRole) GetID() *string {

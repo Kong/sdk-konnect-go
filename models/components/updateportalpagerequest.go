@@ -2,10 +2,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // UpdatePortalPageRequest - Update a page in a portal.
 type UpdatePortalPageRequest struct {
 	// The slug of a page in a portal, used to compute its full URL path within the portal hierarchy.
@@ -27,18 +23,7 @@ type UpdatePortalPageRequest struct {
 	//
 	// Specify the `id` of another page as the `parent_page_id` to add some hierarchy to your pages.
 	//
-	ParentPageID *string `default:"null" json:"parent_page_id"`
-}
-
-func (u UpdatePortalPageRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UpdatePortalPageRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	ParentPageID *string `json:"parent_page_id,omitempty"`
 }
 
 func (u *UpdatePortalPageRequest) GetSlug() *string {

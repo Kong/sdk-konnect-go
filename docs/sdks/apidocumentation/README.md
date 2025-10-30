@@ -45,6 +45,7 @@ func main() {
         Content: "<value>",
         Title: sdkkonnectgo.Pointer("API Document"),
         Slug: sdkkonnectgo.Pointer("api-document"),
+        ParentDocumentID: nil,
     })
     if err != nil {
         log.Fatal(err)
@@ -230,6 +231,7 @@ func main() {
         APIDocument: components.APIDocument{
             Title: sdkkonnectgo.Pointer("API Document"),
             Slug: sdkkonnectgo.Pointer("api-document"),
+            ParentDocumentID: nil,
         },
     })
     if err != nil {

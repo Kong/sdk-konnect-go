@@ -2,26 +2,11 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type EmailTemplateContent struct {
-	Subject     *string `default:"null" json:"subject"`
-	Title       *string `default:"null" json:"title"`
-	Body        *string `default:"null" json:"body"`
-	ButtonLabel *string `default:"null" json:"button_label"`
-}
-
-func (e EmailTemplateContent) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(e, "", false)
-}
-
-func (e *EmailTemplateContent) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Subject     *string `json:"subject,omitempty"`
+	Title       *string `json:"title,omitempty"`
+	Body        *string `json:"body,omitempty"`
+	ButtonLabel *string `json:"button_label,omitempty"`
 }
 
 func (e *EmailTemplateContent) GetSubject() *string {

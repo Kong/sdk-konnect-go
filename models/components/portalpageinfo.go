@@ -28,7 +28,7 @@ type PortalPageInfo struct {
 	//
 	// Specify the `id` of another page as the `parent_page_id` to add some hierarchy to your pages.
 	//
-	ParentPageID *string `default:"null" json:"parent_page_id"`
+	ParentPageID *string `json:"parent_page_id"`
 	// children of the page
 	Children []PortalPageInfo `json:"children"`
 	// An ISO-8601 timestamp representation of entity creation date.

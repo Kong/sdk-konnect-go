@@ -11,7 +11,7 @@ type PortalAuditLogWebhook struct {
 	// Indicates if the data should be sent to the configured audit log destination.
 	Enabled *bool `default:"false" json:"enabled"`
 	// ID of the audit log destination.
-	AuditLogDestinationID *string `default:"null" json:"audit_log_destination_id"`
+	AuditLogDestinationID *string `json:"audit_log_destination_id,omitempty"`
 }
 
 func (p PortalAuditLogWebhook) MarshalJSON() ([]byte, error) {

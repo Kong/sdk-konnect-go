@@ -2,10 +2,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // PortalAssignRoleRequestEntityRegion - Region of the entity.
 type PortalAssignRoleRequestEntityRegion string
 
@@ -25,22 +21,11 @@ func (e PortalAssignRoleRequestEntityRegion) ToPointer() *PortalAssignRoleReques
 
 // PortalAssignRoleRequest - An assigned role associates a service and an action to a team.
 type PortalAssignRoleRequest struct {
-	RoleName       *string `default:"null" json:"role_name"`
-	EntityID       *string `default:"null" json:"entity_id"`
-	EntityTypeName *string `default:"null" json:"entity_type_name"`
+	RoleName       *string `json:"role_name,omitempty"`
+	EntityID       *string `json:"entity_id,omitempty"`
+	EntityTypeName *string `json:"entity_type_name,omitempty"`
 	// Region of the entity.
 	EntityRegion *PortalAssignRoleRequestEntityRegion `json:"entity_region,omitempty"`
-}
-
-func (p PortalAssignRoleRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PortalAssignRoleRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (p *PortalAssignRoleRequest) GetRoleName() *string {

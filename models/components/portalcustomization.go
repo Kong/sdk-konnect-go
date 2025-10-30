@@ -164,21 +164,10 @@ func (s *SpecRenderer) GetAllowCustomServerUrls() *bool {
 type PortalCustomization struct {
 	Theme        *Theme        `json:"theme,omitempty"`
 	Layout       *string       `json:"layout,omitempty"`
-	CSS          *string       `default:"null" json:"css"`
+	CSS          *string       `json:"css,omitempty"`
 	Menu         *Menu         `json:"menu,omitempty"`
 	SpecRenderer *SpecRenderer `json:"spec_renderer,omitempty"`
-	Robots       *string       `default:"null" json:"robots"`
-}
-
-func (p PortalCustomization) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PortalCustomization) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
+	Robots       *string       `json:"robots,omitempty"`
 }
 
 func (p *PortalCustomization) GetTheme() *Theme {

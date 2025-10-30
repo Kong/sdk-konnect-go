@@ -2,10 +2,6 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // CreatePortalPageRequest - Create a page in a portal.
 type CreatePortalPageRequest struct {
 	// The slug of a page in a portal, used to compute its full URL path within the portal hierarchy.
@@ -29,18 +25,7 @@ type CreatePortalPageRequest struct {
 	//
 	// Specify the `id` of another page as the `parent_page_id` to add some hierarchy to your pages.
 	//
-	ParentPageID *string `default:"null" json:"parent_page_id"`
-}
-
-func (c CreatePortalPageRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *CreatePortalPageRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"slug", "content"}); err != nil {
-		return err
-	}
-	return nil
+	ParentPageID *string `json:"parent_page_id,omitempty"`
 }
 
 func (c *CreatePortalPageRequest) GetSlug() string {

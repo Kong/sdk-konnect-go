@@ -14,20 +14,9 @@ type API struct {
 	// The name of the API the application is registered to.
 	Name string `json:"name"`
 	// The version of the API the application is registered to.
-	Version *string `default:"null" json:"version"`
+	Version *string `json:"version"`
 	// The type of entity that is being published. Can be either an API or an API Package.
 	EntityType EntityType `json:"entity_type"`
-}
-
-func (a API) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *API) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name", "entity_type"}); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (a *API) GetID() string {

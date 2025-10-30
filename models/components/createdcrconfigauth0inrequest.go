@@ -20,8 +20,8 @@ type CreateDcrConfigAuth0InRequest struct {
 	// If using a custom domain on Auth0, this must be set as to the Auth0 Management API audience value.
 	// If left blank, the issuer will be used instead.
 	//
-	InitialClientAudience     *string `default:"null" json:"initial_client_audience"`
-	UseDeveloperManagedScopes *bool   `default:"null" json:"use_developer_managed_scopes"`
+	InitialClientAudience     *string `json:"initial_client_audience,omitempty"`
+	UseDeveloperManagedScopes *bool   `json:"use_developer_managed_scopes,omitempty"`
 }
 
 func (c CreateDcrConfigAuth0InRequest) MarshalJSON() ([]byte, error) {

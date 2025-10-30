@@ -2,24 +2,9 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 type PortalTeamGroupMappingsUpdateRequestData struct {
-	TeamID *string  `default:"null" json:"team_id"`
+	TeamID *string  `json:"team_id,omitempty"`
 	Groups []string `json:"groups,omitempty"`
-}
-
-func (p PortalTeamGroupMappingsUpdateRequestData) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *PortalTeamGroupMappingsUpdateRequestData) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (p *PortalTeamGroupMappingsUpdateRequestData) GetTeamID() *string {

@@ -34,23 +34,12 @@ func (a *APIVersionResponseValidationMessages) GetMessage() string {
 type APIVersionResponseSpec struct {
 	// The raw content of your API spec, in json or yaml format (OpenAPI or AsyncAPI).
 	//
-	Content *string `default:"null" json:"content"`
+	Content *string `json:"content,omitempty"`
 	// The type of specification being stored. This allows us to render the specification correctly.
 	//
 	Type *APIVersionResponseAPISpecType `json:"type,omitempty"`
 	// The errors that occurred while parsing the API version spec.
 	ValidationMessages []APIVersionResponseValidationMessages `json:"validation_messages,omitempty"`
-}
-
-func (a APIVersionResponseSpec) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *APIVersionResponseSpec) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (a *APIVersionResponseSpec) GetContent() *string {
@@ -79,7 +68,7 @@ type APIVersionResponse struct {
 	// The API version identifier.
 	ID string `json:"id"`
 	// The version of the api.
-	Version *string                 `default:"null" json:"version"`
+	Version string                  `json:"version"`
 	Spec    *APIVersionResponseSpec `json:"spec,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
@@ -92,7 +81,7 @@ func (a APIVersionResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (a *APIVersionResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "version", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
@@ -105,9 +94,9 @@ func (a *APIVersionResponse) GetID() string {
 	return a.ID
 }
 
-func (a *APIVersionResponse) GetVersion() *string {
+func (a *APIVersionResponse) GetVersion() string {
 	if a == nil {
-		return nil
+		return ""
 	}
 	return a.Version
 }

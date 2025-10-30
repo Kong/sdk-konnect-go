@@ -11,7 +11,7 @@ import (
 
 type DateTimeFieldGTEFilter struct {
 	// Value is greater than or equal to the given RFC-3339 formatted timestamp in UTC
-	Lte *time.Time `default:"null" queryParam:"name=lte"`
+	Lte *time.Time `queryParam:"name=lte"`
 }
 
 func (d DateTimeFieldGTEFilter) MarshalJSON() ([]byte, error) {
@@ -34,7 +34,7 @@ func (d *DateTimeFieldGTEFilter) GetLte() *time.Time {
 
 type DateTimeFieldGTFilter struct {
 	// Value is greater than the given RFC-3339 formatted timestamp in UTC
-	Lt *time.Time `default:"null" queryParam:"name=lt"`
+	Lt *time.Time `queryParam:"name=lt"`
 }
 
 func (d DateTimeFieldGTFilter) MarshalJSON() ([]byte, error) {

@@ -9,8 +9,8 @@ import (
 
 type EmailDelivery struct {
 	Enabled      bool    `json:"enabled"`
-	FromEmail    *string `default:"null" json:"from_email"`
-	ReplyToEmail *string `default:"null" json:"reply_to_email"`
+	FromEmail    *string `json:"from_email"`
+	ReplyToEmail *string `json:"reply_to_email"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
