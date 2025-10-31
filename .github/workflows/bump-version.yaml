@@ -7,6 +7,20 @@ on:
     types:
     - labeled
     - unlabeled
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Action to perform'
+        required: true
+        type: choice
+        options:
+          - graduate
+          - increment-rc
+          - set-version
+      version:
+        description: 'Version (required for set-version action only)'
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -22,14 +36,66 @@ jobs:
         uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
         with:
           egress-policy: audit
+
+      # Basic check: ensure at least one version label exists
       - uses: mheap/github-action-required-labels@8afbe8ae6ab7647d0c9f0cfa7c2f939650d22509 # v5.5
         if: github.actor != 'dependabot[bot]'
         with:
-          mode: exactly
+          mode: minimum
           count: 1
-          labels: "patch, minor, major"
+          labels: "patch, minor, major, rc, alpha, beta"
+
+      # Custom validation: prevent invalid label combinations
+      - name: Validate label combination
+        if: github.actor != 'dependabot[bot]'
+        run: |
+          LABELS='${{ toJson(github.event.pull_request.labels.*.name) }}'
+
+          SEMVER_COUNT=$(echo "$LABELS" | jq -r '.[]' | grep -cE '^(patch|minor|major)$' || echo "0")
+          PRERELEASE_COUNT=$(echo "$LABELS" | jq -r '.[]' | grep -cE '^(rc|alpha|beta)$' || echo "0")
+
+          echo "### Label Validation" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Semver labels found: $SEMVER_COUNT" >> $GITHUB_STEP_SUMMARY
+          echo "- Pre-release labels found: $PRERELEASE_COUNT" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Check for multiple semver labels (e.g., patch + minor)
+          if [ "$SEMVER_COUNT" -gt 1 ]; then
+            echo "❌ **Error:** Multiple semver labels detected" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Please use only ONE of: \`patch\`, \`minor\`, or \`major\`" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
+          # Check for multiple pre-release labels (e.g., rc + alpha)
+          if [ "$PRERELEASE_COUNT" -gt 1 ]; then
+            echo "❌ **Error:** Multiple pre-release labels detected" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Please use only ONE of: \`rc\`, \`alpha\`, or \`beta\`" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
+          # Check for at least one label (redundant with mheap check, but explicit)
+          if [ "$SEMVER_COUNT" -eq 0 ] && [ "$PRERELEASE_COUNT" -eq 0 ]; then
+            echo "❌ **Error:** No version label found" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Please add at least one label:" >> $GITHUB_STEP_SUMMARY
+            echo "- For stable release: \`patch\`, \`minor\`, or \`major\`" >> $GITHUB_STEP_SUMMARY
+            echo "- For pre-release: \`rc\`, \`alpha\`, or \`beta\` (optionally with semver label)" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
+          echo "✅ **Label combination is valid**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Show what will happen
+          if [ "$PRERELEASE_COUNT" -eq 1 ] && [ "$SEMVER_COUNT" -eq 0 ]; then
+            echo "ℹ️  Pre-release label without semver label will default to patch bump if on stable version" >> $GITHUB_STEP_SUMMARY
+          fi
 
   bump-version:
+    if: github.event_name == 'pull_request'
     needs:
     - check-semver-label
     runs-on: ubuntu-latest
@@ -61,10 +127,74 @@ jobs:
           git fetch origin main
           git checkout origin/main .speakeasy/gen.yaml .speakeasy/gen.lock
 
-      - name: Set bump (patch)
+      - name: Set bump (with pre-release support)
         run: |
-          BUMP_TYPE=$(echo '${{ toJson(github.event.pull_request.labels.*.name) }}' | jq -r '.[]' | grep -E 'patch|minor|major')
-          speakeasy bump $BUMP_TYPE
+          LABELS='${{ toJson(github.event.pull_request.labels.*.name) }}'
+
+          # Extract label types
+          SEMVER_BUMP=$(echo "$LABELS" | jq -r '.[]' | grep -E '^(patch|minor|major)$' || echo "")
+          PRERELEASE_TYPE=$(echo "$LABELS" | jq -r '.[]' | grep -E '^(rc|alpha|beta)$' || echo "")
+
+          echo "Semantic bump: '$SEMVER_BUMP'"
+          echo "Pre-release type: '$PRERELEASE_TYPE'"
+
+          if [ -n "$PRERELEASE_TYPE" ]; then
+            # Pre-release workflow
+            CURRENT_VERSION=$(yq '.management.releaseVersion' .speakeasy/gen.lock)
+            echo "Current version: $CURRENT_VERSION"
+
+            # DEFAULT TO PATCH: If no semver bump specified and current is stable, use patch
+            if [ -z "$SEMVER_BUMP" ] && [[ ! "$CURRENT_VERSION" =~ - ]]; then
+              echo "ℹ️  No semver label specified for stable version, defaulting to patch bump"
+              SEMVER_BUMP="patch"
+            fi
+
+            # Apply semver bump if specified (or defaulted)
+            if [ -n "$SEMVER_BUMP" ]; then
+              echo "Applying $SEMVER_BUMP bump..."
+              speakeasy bump $SEMVER_BUMP
+              BASE_VERSION=$(yq '.management.releaseVersion' .speakeasy/gen.lock)
+            else
+              # Extract base version (remove pre-release suffix if exists)
+              if [[ "$CURRENT_VERSION" =~ ^([0-9]+\.[0-9]+\.[0-9]+) ]]; then
+                BASE_VERSION="${BASH_REMATCH[1]}"
+              else
+                BASE_VERSION="$CURRENT_VERSION"
+              fi
+            fi
+
+            echo "Base version: $BASE_VERSION"
+
+            # Determine pre-release counter
+            if [[ "$CURRENT_VERSION" == *"-${PRERELEASE_TYPE}."* ]]; then
+              # Increment existing counter for this pre-release type
+              COUNTER=$(echo "$CURRENT_VERSION" | grep -oE "${PRERELEASE_TYPE}\.([0-9]+)" | grep -oE "[0-9]+$")
+              NEXT_COUNTER=$((COUNTER + 1))
+              echo "Incrementing existing ${PRERELEASE_TYPE} counter: $COUNTER -> $NEXT_COUNTER"
+            else
+              # Start new pre-release series
+              NEXT_COUNTER=1
+              echo "Starting new ${PRERELEASE_TYPE} series at .1"
+            fi
+
+            # Set version with pre-release suffix
+            NEW_VERSION="${BASE_VERSION}-${PRERELEASE_TYPE}.${NEXT_COUNTER}"
+            echo "Setting version to: $NEW_VERSION"
+            speakeasy bump -v "$NEW_VERSION"
+
+          elif [ -n "$SEMVER_BUMP" ]; then
+            # Standard semver bump (stable release)
+            echo "Applying standard $SEMVER_BUMP bump"
+            speakeasy bump $SEMVER_BUMP
+
+          else
+            echo "Error: No valid label found"
+            exit 1
+          fi
+
+          # Verify the version was set
+          FINAL_VERSION=$(yq '.management.releaseVersion' .speakeasy/gen.lock)
+          echo "✅ Final version: $FINAL_VERSION"
 
       - name: Commit SDK changes to the PR
         uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9.1.4
@@ -72,3 +202,117 @@ jobs:
           add: .
           default_author: github_actions
           message: Bump .speakeasy/gen.yaml based on label
+
+  manual-bump:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
+        with:
+          egress-policy: audit
+
+      - name: Install Speakeasy
+        uses: mheap/setup-go-cli@fa9b01cdd4115eac636164f0de43bf7d51c82697 # v1.2.2
+        with:
+          owner: speakeasy-api
+          repo: speakeasy
+          cli_name: speakeasy
+          package_type: zip
+          version: 1.640.0 # renovate: datasource=github-releases depName=speakeasy-api/speakeasy
+
+      - name: Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          ref: main
+          token: ${{ secrets.PAT }}
+
+      - name: Configure speakeasy CLI
+        run: |
+          mkdir -p ~/.speakeasy
+          echo 'speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}' > ~/.speakeasy/config.yaml
+
+      - uses: jdx/mise-action@e3d7b8d67a7958d1207f6ed871e83b1ea780e7b0 # v3.3.1
+        with:
+          install: false
+
+      - name: Validate current version
+        run: |
+          CURRENT=$(yq '.management.releaseVersion' .speakeasy/gen.lock)
+          echo "Current version: $CURRENT"
+
+          case "${{ github.event.inputs.action }}" in
+            graduate)
+              if [[ ! "$CURRENT" =~ -rc\.|^alpha\.|^beta\. ]]; then
+                echo "Error: Current version '$CURRENT' is not a pre-release"
+                echo "Graduate can only be used on RC, alpha, or beta versions"
+                exit 1
+              fi
+              echo "✓ Version is a pre-release, proceeding with graduation"
+              ;;
+            increment-rc)
+              if [[ ! "$CURRENT" =~ -rc\. ]]; then
+                echo "Error: Current version '$CURRENT' is not an RC"
+                exit 1
+              fi
+              echo "✓ Version is an RC, proceeding with increment"
+              ;;
+            set-version)
+              if [ -z "${{ github.event.inputs.version }}" ]; then
+                echo "Error: version input is required for set-version action"
+                exit 1
+              fi
+              echo "✓ Version specified: ${{ github.event.inputs.version }}"
+              ;;
+          esac
+
+      - name: Execute action
+        run: |
+          case "${{ github.event.inputs.action }}" in
+            graduate)
+              echo "Graduating pre-release to stable version..."
+              speakeasy bump graduate
+              ;;
+            increment-rc)
+              CURRENT=$(yq '.management.releaseVersion' .speakeasy/gen.lock)
+              if [[ "$CURRENT" =~ (.*-rc\.)([0-9]+) ]]; then
+                BASE="${BASH_REMATCH[1]}"
+                NUM="${BASH_REMATCH[2]}"
+                NEW_VERSION="${BASE}$((NUM + 1))"
+                echo "Incrementing RC: $CURRENT -> $NEW_VERSION"
+                speakeasy bump -v "$NEW_VERSION"
+              else
+                echo "Error: Failed to parse RC version from '$CURRENT'"
+                exit 1
+              fi
+              ;;
+            set-version)
+              echo "Setting version to: ${{ github.event.inputs.version }}"
+              speakeasy bump -v "${{ github.event.inputs.version }}"
+              ;;
+          esac
+
+      - name: Generate SDK
+        run: |
+          export PATH=${PATH}:$(go env GOPATH)/bin
+          make generate.sdk
+
+      - name: Commit SDK changes to main
+        uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9.1.4
+        with:
+          add: .
+          default_author: github_actions
+          message: |
+            ${{ github.event.inputs.action }}: automated version update
+
+      - name: Report new version
+        run: |
+          NEW_VERSION=$(yq '.management.releaseVersion' .speakeasy/gen.lock)
+          echo "## ✅ Version Updated" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Action:** ${{ github.event.inputs.action }}" >> $GITHUB_STEP_SUMMARY
+          echo "**New Version:** v$NEW_VERSION" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "The release will be created automatically by the publish workflow." >> $GITHUB_STEP_SUMMARY
