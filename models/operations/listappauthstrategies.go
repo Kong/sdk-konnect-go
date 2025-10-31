@@ -74,6 +74,8 @@ type ListAppAuthStrategiesRequest struct {
 	//
 	//
 	//
+	//
+	//
 	//   - created_at
 	//   - updated_at
 	//   - strategy_type

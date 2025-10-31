@@ -734,12 +734,12 @@ func (s *Assets) GetPortalAssetFaviconRaw(ctx context.Context, portalID string, 
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `image/png`):
-			res.TwoHundredImagePngPortalImageAssetBlob = httpRes.Body
-
-			return res, nil
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `image/jpeg`):
 			res.TwoHundredImageJpegPortalImageAssetBlob = httpRes.Body
+
+			return res, nil
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `image/png`):
+			res.TwoHundredImagePngPortalImageAssetBlob = httpRes.Body
 
 			return res, nil
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `image/svg+xml`):
@@ -1522,12 +1522,12 @@ func (s *Assets) GetPortalAssetLogoRaw(ctx context.Context, portalID string, opt
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
-		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `image/png`):
-			res.TwoHundredImagePngPortalImageAssetBlob = httpRes.Body
-
-			return res, nil
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `image/jpeg`):
 			res.TwoHundredImageJpegPortalImageAssetBlob = httpRes.Body
+
+			return res, nil
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `image/png`):
+			res.TwoHundredImagePngPortalImageAssetBlob = httpRes.Body
 
 			return res, nil
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `image/svg+xml`):
