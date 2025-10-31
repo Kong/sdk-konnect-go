@@ -39,6 +39,19 @@ jobs:
 
           git tag -a v$TAG -m "Release v$TAG"
           git push origin v$TAG
+      - name: Mark as pre-release if applicable
+        run: |
+          TAG=$(yq '.management.releaseVersion' .speakeasy/gen.lock)
+          echo "Released version: v$TAG"
+
+          if [[ "$TAG" =~ -rc\.|^alpha\.|^beta\. ]]; then
+            echo "This is a pre-release version"
+            echo "IS_PRERELEASE=true" >> $GITHUB_ENV
+          else
+            echo "This is a stable release"
+            echo "IS_PRERELEASE=false" >> $GITHUB_ENV
+          fi
+
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@e435ccd777264be153ace6237001ef4d979d3a7a # v6.4.0
         with:
