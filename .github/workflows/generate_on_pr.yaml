@@ -81,6 +81,13 @@ jobs:
           export PATH=${PATH}:$(go env GOPATH)/bin
           make generate.sdk
 
+      - name: Git add generated changes
+        run: git add .
+
+      - name: Generate interfaces and mocks
+        run: |
+          make generate.interfaces generate.mocks
+
       - name: Commit deepcopy changes to the PR
         uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9.1.4
         with:
