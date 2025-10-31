@@ -33,6 +33,8 @@ type ListDevelopersByApplicationRequest struct {
 	//
 	//
 	//
+	//
+	//
 	//   - id
 	//
 	Sort *string `queryParam:"style=form,explode=true,name=sort"`

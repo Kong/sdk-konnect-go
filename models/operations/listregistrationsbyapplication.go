@@ -33,6 +33,8 @@ type ListRegistrationsByApplicationRequest struct {
 	//
 	//
 	//
+	//
+	//
 	//   - created_at
 	//   - updated_at
 	//   - status

@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: a80f0cc5a7d7847465f3aa99a26fce3c
+  docChecksum: 562b9e5bf25902e8967a7e2c32d8da59
   docVersion: 3.0.29
-  speakeasyVersion: 1.643.0
-  generationVersion: 2.731.6
-  releaseVersion: 0.13.0
-  configChecksum: c8d65a8a5057c51f6ed10891a469a908
+  speakeasyVersion: 1.643.3
+  generationVersion: 2.731.9
+  releaseVersion: 0.13.1
+  configChecksum: 7f4730f46d7373ad11ce8a95bcbeebee
 features:
   go:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.2
     constsAndDefaults: 0.1.12
-    core: 3.12.0
+    core: 3.12.1
     deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.3
