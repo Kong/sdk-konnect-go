@@ -1,7 +1,6 @@
 SHELL = bash
 .SHELLFLAGS = -ec -o pipefail
 
-MODULE_NAME := github.com/Kong/sdk-konnect-go
 PROJECT_DIR := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))
 TOOLS_VERSIONS_FILE = $(PROJECT_DIR)/.tools_versions.yaml
 export MISE_DATA_DIR = $(PROJECT_DIR)/bin/
