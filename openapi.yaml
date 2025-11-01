@@ -25792,6 +25792,7 @@ components:
           schema:
             oneOf:
               - $ref: '#/components/schemas/AwsResourceEndpointGatewayResponse'
+              - $ref: '#/components/schemas/AwsTransitGatewayResponse'
     ListTransitGatewaysResponse:
       description: A paginated list for a collection of transit gateways for a network.
       content:
