@@ -1,8 +1,53 @@
 before:
   hooks:
     - go mod tidy
+
 builds:
   - skip: true
+
 archives:
   - format: zip
     name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^tests:'
+      - '^chore:'
+      - '^ci:'
+
+release:
+  # Automatically detect pre-release versions based on SemVer
+  prerelease: auto
+
+  # Release notes
+  header: |
+    ## Kong Konnect Go SDK {{ .Tag }}
+
+    {{ if contains .Version "-rc." }}
+    **This is a Release Candidate** - not recommended for production use.
+    {{ else if contains .Version "-alpha." }}
+    **This is an Alpha Release** - not recommended for production use.
+    {{ else if contains .Version "-beta." }}
+    **This is a Beta Release** - use with caution.
+    {{ else }}
+    **Stable Release**
+    {{ end }}
+
+    Install this version:
+    ```bash
+    go get github.com/Kong/sdk-konnect-go@{{ .Tag }}
+    ```
+
+  footer: |
+    ---
+    🤖 Generated with GoReleaser
+
+    **Note:** Pre-release versions (RC, alpha, beta) are not fetched by `@latest`.
+    Users must specify the exact version tag.
+
+  # Don't create draft releases
+  draft: false
