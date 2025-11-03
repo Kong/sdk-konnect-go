@@ -51,8 +51,8 @@ jobs:
         run: |
           LABELS='${{ toJson(github.event.pull_request.labels.*.name) }}'
 
-          SEMVER_COUNT=$(echo "$LABELS" | jq -r '.[]' | grep -cE '^(patch|minor|major)$' || echo "0")
-          PRERELEASE_COUNT=$(echo "$LABELS" | jq -r '.[]' | grep -cE '^(rc|alpha|beta)$' || echo "0")
+          SEMVER_COUNT=$(echo "$LABELS" | jq -r '[.[]| select(test("^(patch|minor|major)$"))] | length')
+          PRERELEASE_COUNT=$(echo "$LABELS" | jq -r '[.[]| select(test("^(rc|alpha|beta)$"))] | length')
 
           echo "### Label Validation" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY

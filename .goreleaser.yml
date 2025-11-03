@@ -15,7 +15,9 @@ changelog:
     exclude:
       - '^docs:'
       - '^test:'
+      - '^tests:'
       - '^chore:'
+      - '^ci:'
 
 release:
   # Automatically detect pre-release versions based on SemVer
