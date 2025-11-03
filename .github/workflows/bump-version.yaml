@@ -132,8 +132,8 @@ jobs:
           LABELS='${{ toJson(github.event.pull_request.labels.*.name) }}'
 
           # Extract label types
-          SEMVER_BUMP=$(echo "$LABELS" | jq -r '.[]' | grep -E '^(patch|minor|major)$' || echo "")
-          PRERELEASE_TYPE=$(echo "$LABELS" | jq -r '.[]' | grep -E '^(rc|alpha|beta)$' || echo "")
+          SEMVER_BUMP=$(echo "$LABELS" | jq -r '.[] | select(test("^(patch|minor|major)$"))')
+          PRERELEASE_TYPE=$(echo "$LABELS" | jq -r '.[] | select(test("^(rc|alpha|beta)$"))')
 
           echo "Semantic bump: '$SEMVER_BUMP'"
           echo "Pre-release type: '$PRERELEASE_TYPE'"
@@ -153,7 +153,8 @@ jobs:
             if [ -n "$SEMVER_BUMP" ]; then
               echo "Applying $SEMVER_BUMP bump..."
               speakeasy bump $SEMVER_BUMP
-              BASE_VERSION=$(yq '.management.releaseVersion' .speakeasy/gen.lock)
+              # Read from gen.yaml since speakeasy bump writes there
+              BASE_VERSION=$(yq '.management.releaseVersion' .speakeasy/gen.yaml)
             else
               # Extract base version (remove pre-release suffix if exists)
               if [[ "$CURRENT_VERSION" =~ ^([0-9]+\.[0-9]+\.[0-9]+) ]]; then
@@ -192,8 +193,8 @@ jobs:
             exit 1
           fi
 
-          # Verify the version was set
-          FINAL_VERSION=$(yq '.management.releaseVersion' .speakeasy/gen.lock)
+          # Verify the version was set (read from gen.yaml where speakeasy bump writes)
+          FINAL_VERSION=$(yq '.management.releaseVersion' .speakeasy/gen.yaml)
           echo "✅ Final version: $FINAL_VERSION"
 
       - name: Commit SDK changes to the PR
