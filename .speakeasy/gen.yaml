@@ -39,6 +39,7 @@ go:
       operations: models/operations
       shared: models/components
       webhooks: models/webhooks
+  includeEmptyObjects: false
   inputModelSuffix: input
   maxMethodParams: 2
   methodArguments: require-security-and-request
