@@ -125,7 +125,7 @@ jobs:
       - name: Reset .speakeasy/gen.yaml to the version on main
         run: |
           git fetch origin main
-          git checkout origin/main .speakeasy/gen.yaml .speakeasy/gen.lock
+          git checkout origin/main .speakeasy/gen.yaml
 
       - name: Set bump (with pre-release support)
         run: |
