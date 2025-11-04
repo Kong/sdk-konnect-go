@@ -25,6 +25,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: bump-version-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
 jobs:
   check-semver-label:
     runs-on: ubuntu-latest
@@ -95,7 +99,7 @@ jobs:
           fi
 
   bump-version:
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request' && github.event.sender.login != 'github-actions[bot]'
     needs:
     - check-semver-label
     runs-on: ubuntu-latest
