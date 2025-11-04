@@ -122,10 +122,18 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           token: ${{ secrets.PAT }}
 
-      - name: Reset .speakeasy/gen.yaml to the version on main
+      - name: Reset version in gen.yaml to match main
         run: |
           git fetch origin main
-          git checkout origin/main .speakeasy/gen.yaml
+          # Get the version from main's gen.yaml
+          MAIN_VERSION=$(git show origin/main:.speakeasy/gen.yaml | yq '.go.version')
+          echo "Version on main: $MAIN_VERSION"
+
+          # Update only the version field in the branch's gen.yaml, preserving all other changes
+          yq -i ".go.version = \"$MAIN_VERSION\"" .speakeasy/gen.yaml
+
+          BRANCH_VERSION=$(yq '.go.version' .speakeasy/gen.yaml)
+          echo "Version reset to: $BRANCH_VERSION"
 
       - name: Set bump (with pre-release support)
         run: |
