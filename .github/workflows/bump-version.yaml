@@ -153,8 +153,8 @@ jobs:
             if [ -n "$SEMVER_BUMP" ]; then
               echo "Applying $SEMVER_BUMP bump..."
               speakeasy bump $SEMVER_BUMP
-              # Read from gen.yaml since speakeasy bump writes there
-              BASE_VERSION=$(yq '.management.releaseVersion' .speakeasy/gen.yaml)
+              # Read from gen.yaml since speakeasy bump writes there (different path than gen.lock)
+              BASE_VERSION=$(yq '.go.version' .speakeasy/gen.yaml)
             else
               # Extract base version (remove pre-release suffix if exists)
               if [[ "$CURRENT_VERSION" =~ ^([0-9]+\.[0-9]+\.[0-9]+) ]]; then
@@ -194,7 +194,7 @@ jobs:
           fi
 
           # Verify the version was set (read from gen.yaml where speakeasy bump writes)
-          FINAL_VERSION=$(yq '.management.releaseVersion' .speakeasy/gen.yaml)
+          FINAL_VERSION=$(yq '.go.version' .speakeasy/gen.yaml)
           echo "✅ Final version: $FINAL_VERSION"
 
       - name: Commit SDK changes to the PR
