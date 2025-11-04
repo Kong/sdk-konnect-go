@@ -24,7 +24,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 go:
-  version: 0.13.2-alpha.1
+  version: 0.13.2-alpha.2
   additionalDependencies: {}
   allowUnknownFieldsInWeakUnions: false
   baseErrorName: SDKBaseError
@@ -39,7 +39,6 @@ go:
       operations: models/operations
       shared: models/components
       webhooks: models/webhooks
-  includeEmptyObjects: false
   inputModelSuffix: input
   maxMethodParams: 2
   methodArguments: require-security-and-request
