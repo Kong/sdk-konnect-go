@@ -12,11 +12,13 @@ type PatchTransitGatewayResponseType string
 
 const (
 	PatchTransitGatewayResponseTypeAwsResourceEndpointGatewayResponse PatchTransitGatewayResponseType = "AwsResourceEndpointGatewayResponse"
+	PatchTransitGatewayResponseTypeAwsTransitGatewayResponse          PatchTransitGatewayResponseType = "AwsTransitGatewayResponse"
 )
 
 // PatchTransitGatewayResponse - Response format for updating a transit gateway.
 type PatchTransitGatewayResponse struct {
 	AwsResourceEndpointGatewayResponse *AwsResourceEndpointGatewayResponse `queryParam:"inline,name=PatchTransitGatewayResponse"`
+	AwsTransitGatewayResponse          *AwsTransitGatewayResponse          `queryParam:"inline,name=PatchTransitGatewayResponse"`
 
 	Type PatchTransitGatewayResponseType
 }
@@ -30,7 +32,23 @@ func CreatePatchTransitGatewayResponseAwsResourceEndpointGatewayResponse(awsReso
 	}
 }
 
+func CreatePatchTransitGatewayResponseAwsTransitGatewayResponse(awsTransitGatewayResponse AwsTransitGatewayResponse) PatchTransitGatewayResponse {
+	typ := PatchTransitGatewayResponseTypeAwsTransitGatewayResponse
+
+	return PatchTransitGatewayResponse{
+		AwsTransitGatewayResponse: &awsTransitGatewayResponse,
+		Type:                      typ,
+	}
+}
+
 func (u *PatchTransitGatewayResponse) UnmarshalJSON(data []byte) error {
+
+	var awsTransitGatewayResponse AwsTransitGatewayResponse = AwsTransitGatewayResponse{}
+	if err := utils.UnmarshalJSON(data, &awsTransitGatewayResponse, "", true, nil); err == nil {
+		u.AwsTransitGatewayResponse = &awsTransitGatewayResponse
+		u.Type = PatchTransitGatewayResponseTypeAwsTransitGatewayResponse
+		return nil
+	}
 
 	var awsResourceEndpointGatewayResponse AwsResourceEndpointGatewayResponse = AwsResourceEndpointGatewayResponse{}
 	if err := utils.UnmarshalJSON(data, &awsResourceEndpointGatewayResponse, "", true, nil); err == nil {
@@ -45,6 +63,10 @@ func (u *PatchTransitGatewayResponse) UnmarshalJSON(data []byte) error {
 func (u PatchTransitGatewayResponse) MarshalJSON() ([]byte, error) {
 	if u.AwsResourceEndpointGatewayResponse != nil {
 		return utils.MarshalJSON(u.AwsResourceEndpointGatewayResponse, "", true)
+	}
+
+	if u.AwsTransitGatewayResponse != nil {
+		return utils.MarshalJSON(u.AwsTransitGatewayResponse, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type PatchTransitGatewayResponse: all fields are null")
