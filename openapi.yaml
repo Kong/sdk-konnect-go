@@ -23223,6 +23223,7 @@ components:
                 description: The user's full name.
                 type: string
                 example: James C. Woods
+                maxLength: 250
                 pattern: '^[\w \W]+$'
                 writeOnly: true
               preferred_name:
