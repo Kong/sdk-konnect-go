@@ -22,8 +22,6 @@ Depending on the protocol, one of the following attributes must be set:
 
 
 
-
-
   <br>
   A route can't have both `tls` and `tls_passthrough` protocols at same time.
   <br><br>

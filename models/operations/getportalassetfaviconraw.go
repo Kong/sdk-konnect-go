@@ -28,10 +28,10 @@ type GetPortalAssetFaviconRawResponse struct {
 	RawResponse *http.Response
 	// Logo of the portal. Can be either png, jpeg or svg
 	// The Close method must be called on this field, even if it is not used, to prevent resource leaks.
-	TwoHundredImageJpegPortalImageAssetBlob io.ReadCloser
+	TwoHundredImagePngPortalImageAssetBlob io.ReadCloser
 	// Logo of the portal. Can be either png, jpeg or svg
 	// The Close method must be called on this field, even if it is not used, to prevent resource leaks.
-	TwoHundredImagePngPortalImageAssetBlob io.ReadCloser
+	TwoHundredImageJpegPortalImageAssetBlob io.ReadCloser
 	// Logo of the portal. Can be either png, jpeg or svg
 	// The Close method must be called on this field, even if it is not used, to prevent resource leaks.
 	TwoHundredImageSvgPlusXMLPortalImageAssetBlob io.ReadCloser
@@ -58,18 +58,18 @@ func (g *GetPortalAssetFaviconRawResponse) GetRawResponse() *http.Response {
 	return g.RawResponse
 }
 
-func (g *GetPortalAssetFaviconRawResponse) GetTwoHundredImageJpegPortalImageAssetBlob() io.ReadCloser {
-	if g == nil {
-		return nil
-	}
-	return g.TwoHundredImageJpegPortalImageAssetBlob
-}
-
 func (g *GetPortalAssetFaviconRawResponse) GetTwoHundredImagePngPortalImageAssetBlob() io.ReadCloser {
 	if g == nil {
 		return nil
 	}
 	return g.TwoHundredImagePngPortalImageAssetBlob
+}
+
+func (g *GetPortalAssetFaviconRawResponse) GetTwoHundredImageJpegPortalImageAssetBlob() io.ReadCloser {
+	if g == nil {
+		return nil
+	}
+	return g.TwoHundredImageJpegPortalImageAssetBlob
 }
 
 func (g *GetPortalAssetFaviconRawResponse) GetTwoHundredImageSvgPlusXMLPortalImageAssetBlob() io.ReadCloser {

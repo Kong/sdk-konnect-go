@@ -11,3 +11,9 @@ Response format for updating a transit gateway.
 patchTransitGatewayResponse := components.CreatePatchTransitGatewayResponseAwsResourceEndpointGatewayResponse(components.AwsResourceEndpointGatewayResponse{/* values here */})
 ```
 
+### AwsTransitGatewayResponse
+
+```go
+patchTransitGatewayResponse := components.CreatePatchTransitGatewayResponseAwsTransitGatewayResponse(components.AwsTransitGatewayResponse{/* values here */})
+```
+
