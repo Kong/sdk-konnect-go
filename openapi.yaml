@@ -23223,6 +23223,7 @@ components:
                 description: The user's full name.
                 type: string
                 example: James C. Woods
+                maxLength: 250
                 pattern: '^[\w \W]+$'
                 writeOnly: true
               preferred_name:
@@ -25792,6 +25793,7 @@ components:
           schema:
             oneOf:
               - $ref: '#/components/schemas/AwsResourceEndpointGatewayResponse'
+              - $ref: '#/components/schemas/AwsTransitGatewayResponse'
     ListTransitGatewaysResponse:
       description: A paginated list for a collection of transit gateways for a network.
       content:

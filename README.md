@@ -106,7 +106,7 @@ func main() {
 	ctx := context.Background()
 
 	s := sdkkonnectgo.New(
-		sdkkonnectgo.WithServerIndex(3),
+		sdkkonnectgo.WithServerIndex(0),
 		sdkkonnectgo.WithSecurity(components.Security{
 			PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
 		}),

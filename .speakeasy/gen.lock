@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 562b9e5bf25902e8967a7e2c32d8da59
+  docChecksum: 751a3b1ab129cdbf329bff679f51c558
   docVersion: 3.0.29
-  speakeasyVersion: 1.643.3
-  generationVersion: 2.731.9
-  releaseVersion: 0.13.1
-  configChecksum: 7f4730f46d7373ad11ce8a95bcbeebee
+  speakeasyVersion: 1.649.0
+  generationVersion: 2.739.1
+  releaseVersion: 0.13.2-alpha.1
+  configChecksum: 91fbb80149019c256ba2358cd14b3c99
 features:
   go:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.2
     constsAndDefaults: 0.1.12
-    core: 3.12.1
+    core: 3.13.0
     deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.3
@@ -22,7 +22,7 @@ features:
     flattening: 2.81.1
     globalSecurity: 2.82.12
     globalSecurityCallbacks: 0.1.0
-    globalServerURLs: 2.82.3
+    globalServerURLs: 2.83.0
     groups: 2.81.3
     ignores: 2.81.1
     inputOutputModels: 2.83.0
