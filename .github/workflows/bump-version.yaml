@@ -32,6 +32,8 @@ concurrency:
 jobs:
   check-semver-label:
     runs-on: ubuntu-latest
+    outputs:
+      has_version_labels: ${{ steps.label_check.outputs.has_version_labels }}
     permissions:
       issues: write
       pull-requests: write
@@ -41,17 +43,9 @@ jobs:
         with:
           egress-policy: audit
 
-      # Basic check: ensure at least one version label exists
-      - uses: mheap/github-action-required-labels@8afbe8ae6ab7647d0c9f0cfa7c2f939650d22509 # v5.5
-        if: github.actor != 'dependabot[bot]'
-        with:
-          mode: minimum
-          count: 1
-          labels: "patch, minor, major, rc, alpha, beta"
-
-      # Custom validation: prevent invalid label combinations
+      # Validate label combination (or gracefully skip if no labels)
       - name: Validate label combination
-        if: github.actor != 'dependabot[bot]'
+        id: label_check
         run: |
           LABELS='${{ toJson(github.event.pull_request.labels.*.name) }}'
 
@@ -63,6 +57,20 @@ jobs:
           echo "- Semver labels found: $SEMVER_COUNT" >> $GITHUB_STEP_SUMMARY
           echo "- Pre-release labels found: $PRERELEASE_COUNT" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
+
+          # If no version labels, skip gracefully
+          if [ "$SEMVER_COUNT" -eq 0 ] && [ "$PRERELEASE_COUNT" -eq 0 ]; then
+            echo "ℹ️  **No version labels found**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "This PR will not trigger a version bump." >> $GITHUB_STEP_SUMMARY
+            echo "Add one of these labels if you want to bump the version:" >> $GITHUB_STEP_SUMMARY
+            echo "- For stable release: \`patch\`, \`minor\`, or \`major\`" >> $GITHUB_STEP_SUMMARY
+            echo "- For pre-release: \`rc\`, \`alpha\`, or \`beta\`" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "✅ Skipping version bump"
+            echo "has_version_labels=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
 
           # Check for multiple semver labels (e.g., patch + minor)
           if [ "$SEMVER_COUNT" -gt 1 ]; then
@@ -80,16 +88,6 @@ jobs:
             exit 1
           fi
 
-          # Check for at least one label (redundant with mheap check, but explicit)
-          if [ "$SEMVER_COUNT" -eq 0 ] && [ "$PRERELEASE_COUNT" -eq 0 ]; then
-            echo "❌ **Error:** No version label found" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "Please add at least one label:" >> $GITHUB_STEP_SUMMARY
-            echo "- For stable release: \`patch\`, \`minor\`, or \`major\`" >> $GITHUB_STEP_SUMMARY
-            echo "- For pre-release: \`rc\`, \`alpha\`, or \`beta\` (optionally with semver label)" >> $GITHUB_STEP_SUMMARY
-            exit 1
-          fi
-
           echo "✅ **Label combination is valid**" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
@@ -98,8 +96,10 @@ jobs:
             echo "ℹ️  Pre-release label without semver label will default to patch bump if on stable version" >> $GITHUB_STEP_SUMMARY
           fi
 
+          echo "has_version_labels=true" >> $GITHUB_OUTPUT
+
   bump-version:
-    if: github.event_name == 'pull_request' && github.event.sender.login != 'github-actions[bot]'
+    if: github.event_name == 'pull_request' && github.event.sender.login != 'github-actions[bot]' && needs.check-semver-label.outputs.has_version_labels == 'true'
     needs:
     - check-semver-label
     runs-on: ubuntu-latest
