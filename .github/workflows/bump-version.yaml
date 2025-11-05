@@ -25,15 +25,9 @@ on:
 permissions:
   contents: read
 
-concurrency:
-  group: bump-version-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: false
-
 jobs:
   check-semver-label:
     runs-on: ubuntu-latest
-    outputs:
-      has_version_labels: ${{ steps.label_check.outputs.has_version_labels }}
     permissions:
       issues: write
       pull-requests: write
@@ -43,9 +37,17 @@ jobs:
         with:
           egress-policy: audit
 
-      # Validate label combination (or gracefully skip if no labels)
+      # Basic check: ensure at least one version label exists
+      - uses: mheap/github-action-required-labels@8afbe8ae6ab7647d0c9f0cfa7c2f939650d22509 # v5.5
+        if: github.actor != 'dependabot[bot]'
+        with:
+          mode: minimum
+          count: 1
+          labels: "patch, minor, major, rc, alpha, beta"
+
+      # Custom validation: prevent invalid label combinations
       - name: Validate label combination
-        id: label_check
+        if: github.actor != 'dependabot[bot]'
         run: |
           LABELS='${{ toJson(github.event.pull_request.labels.*.name) }}'
 
@@ -57,20 +59,6 @@ jobs:
           echo "- Semver labels found: $SEMVER_COUNT" >> $GITHUB_STEP_SUMMARY
           echo "- Pre-release labels found: $PRERELEASE_COUNT" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-
-          # If no version labels, skip gracefully
-          if [ "$SEMVER_COUNT" -eq 0 ] && [ "$PRERELEASE_COUNT" -eq 0 ]; then
-            echo "ℹ️  **No version labels found**" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "This PR will not trigger a version bump." >> $GITHUB_STEP_SUMMARY
-            echo "Add one of these labels if you want to bump the version:" >> $GITHUB_STEP_SUMMARY
-            echo "- For stable release: \`patch\`, \`minor\`, or \`major\`" >> $GITHUB_STEP_SUMMARY
-            echo "- For pre-release: \`rc\`, \`alpha\`, or \`beta\`" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "✅ Skipping version bump"
-            echo "has_version_labels=false" >> $GITHUB_OUTPUT
-            exit 0
-          fi
 
           # Check for multiple semver labels (e.g., patch + minor)
           if [ "$SEMVER_COUNT" -gt 1 ]; then
@@ -88,6 +76,16 @@ jobs:
             exit 1
           fi
 
+          # Check for at least one label (redundant with mheap check, but explicit)
+          if [ "$SEMVER_COUNT" -eq 0 ] && [ "$PRERELEASE_COUNT" -eq 0 ]; then
+            echo "❌ **Error:** No version label found" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Please add at least one label:" >> $GITHUB_STEP_SUMMARY
+            echo "- For stable release: \`patch\`, \`minor\`, or \`major\`" >> $GITHUB_STEP_SUMMARY
+            echo "- For pre-release: \`rc\`, \`alpha\`, or \`beta\` (optionally with semver label)" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
           echo "✅ **Label combination is valid**" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
@@ -96,10 +94,8 @@ jobs:
             echo "ℹ️  Pre-release label without semver label will default to patch bump if on stable version" >> $GITHUB_STEP_SUMMARY
           fi
 
-          echo "has_version_labels=true" >> $GITHUB_OUTPUT
-
   bump-version:
-    if: github.event_name == 'pull_request' && github.event.sender.login != 'github-actions[bot]' && needs.check-semver-label.outputs.has_version_labels == 'true'
+    if: github.event_name == 'pull_request'
     needs:
     - check-semver-label
     runs-on: ubuntu-latest
@@ -140,6 +136,7 @@ jobs:
           echo "Version reset to: $BRANCH_VERSION"
 
       - name: Set bump (with pre-release support)
+        id: bump
         run: |
           # Idempotency check: skip if we just bumped the version
           LAST_COMMIT_MSG=$(git log -1 --pretty=%B)
@@ -153,6 +150,7 @@ jobs:
             echo "The version was bumped ${TIME_DIFF} seconds ago by a previous workflow run." >> $GITHUB_STEP_SUMMARY
             echo "Skipping duplicate bump operation." >> $GITHUB_STEP_SUMMARY
             echo "✅ No action needed - version already set"
+            echo "bumped=false" >> $GITHUB_OUTPUT
             exit 0
           fi
 
@@ -224,7 +222,11 @@ jobs:
           FINAL_VERSION=$(yq '.go.version' .speakeasy/gen.yaml)
           echo "✅ Final version: $FINAL_VERSION"
 
+          # Signal that we actually bumped the version
+          echo "bumped=true" >> $GITHUB_OUTPUT
+
       - name: Commit SDK changes to the PR
+        if: steps.bump.outputs.bumped == 'true'
         uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9.1.4
         with:
           add: .
