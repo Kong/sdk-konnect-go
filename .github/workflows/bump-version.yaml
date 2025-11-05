@@ -98,6 +98,70 @@ jobs:
 
           echo "has_version_labels=true" >> $GITHUB_OUTPUT
 
+  reset-version:
+    if: github.event_name == 'pull_request' && github.event.sender.login != 'github-actions[bot]' && needs.check-semver-label.outputs.has_version_labels == 'false'
+    needs:
+    - check-semver-label
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
+        with:
+          egress-policy: audit
+
+      - name: Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ secrets.PAT }}
+
+      - name: Check if version needs reset
+        id: check_reset
+        run: |
+          git fetch origin main
+
+          # Get versions
+          BRANCH_VERSION=$(yq '.go.version' .speakeasy/gen.yaml)
+          MAIN_VERSION=$(git show origin/main:.speakeasy/gen.yaml | yq '.go.version')
+
+          echo "Branch version: $BRANCH_VERSION"
+          echo "Main version: $MAIN_VERSION"
+
+          if [ "$BRANCH_VERSION" != "$MAIN_VERSION" ]; then
+            echo "## ⚠️  Version Mismatch Detected" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "No version labels present, but branch has version \`$BRANCH_VERSION\` while main has \`$MAIN_VERSION\`" >> $GITHUB_STEP_SUMMARY
+            echo "Resetting to main's version..." >> $GITHUB_STEP_SUMMARY
+            echo "needs_reset=true" >> $GITHUB_OUTPUT
+          else
+            echo "## ✅ Version Already Matches Main" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Branch version \`$BRANCH_VERSION\` matches main. No reset needed." >> $GITHUB_STEP_SUMMARY
+            echo "needs_reset=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Reset version to match main
+        if: steps.check_reset.outputs.needs_reset == 'true'
+        run: |
+          git fetch origin main
+          MAIN_VERSION=$(git show origin/main:.speakeasy/gen.yaml | yq '.go.version')
+
+          # Reset only the version field
+          yq -i ".go.version = \"$MAIN_VERSION\"" .speakeasy/gen.yaml
+
+          echo "✅ Reset version to: $MAIN_VERSION"
+
+      - name: Commit version reset
+        if: steps.check_reset.outputs.needs_reset == 'true'
+        uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9.1.4
+        with:
+          add: .speakeasy/gen.yaml
+          default_author: github_actions
+          message: Reset version to main - no version labels present
+
   bump-version:
     if: github.event_name == 'pull_request' && github.event.sender.login != 'github-actions[bot]' && needs.check-semver-label.outputs.has_version_labels == 'true'
     needs:
