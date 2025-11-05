@@ -140,6 +140,7 @@ jobs:
           echo "Version reset to: $BRANCH_VERSION"
 
       - name: Set bump (with pre-release support)
+        id: bump
         run: |
           # Idempotency check: skip if we just bumped the version
           LAST_COMMIT_MSG=$(git log -1 --pretty=%B)
@@ -153,6 +154,7 @@ jobs:
             echo "The version was bumped ${TIME_DIFF} seconds ago by a previous workflow run." >> $GITHUB_STEP_SUMMARY
             echo "Skipping duplicate bump operation." >> $GITHUB_STEP_SUMMARY
             echo "✅ No action needed - version already set"
+            echo "bumped=false" >> $GITHUB_OUTPUT
             exit 0
           fi
 
@@ -224,7 +226,11 @@ jobs:
           FINAL_VERSION=$(yq '.go.version' .speakeasy/gen.yaml)
           echo "✅ Final version: $FINAL_VERSION"
 
+          # Signal that we actually bumped the version
+          echo "bumped=true" >> $GITHUB_OUTPUT
+
       - name: Commit SDK changes to the PR
+        if: steps.bump.outputs.bumped == 'true'
         uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9.1.4
         with:
           add: .
