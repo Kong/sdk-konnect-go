@@ -141,6 +141,21 @@ jobs:
 
       - name: Set bump (with pre-release support)
         run: |
+          # Idempotency check: skip if we just bumped the version
+          LAST_COMMIT_MSG=$(git log -1 --pretty=%B)
+          LAST_COMMIT_TIME=$(git log -1 --pretty=%ct)
+          CURRENT_TIME=$(date +%s)
+          TIME_DIFF=$((CURRENT_TIME - LAST_COMMIT_TIME))
+
+          if [[ "$LAST_COMMIT_MSG" == "Bump .speakeasy/gen.yaml based on label" ]] && [ $TIME_DIFF -lt 300 ]; then
+            echo "## ℹ️  Version Already Bumped" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "The version was bumped ${TIME_DIFF} seconds ago by a previous workflow run." >> $GITHUB_STEP_SUMMARY
+            echo "Skipping duplicate bump operation." >> $GITHUB_STEP_SUMMARY
+            echo "✅ No action needed - version already set"
+            exit 0
+          fi
+
           LABELS='${{ toJson(github.event.pull_request.labels.*.name) }}'
 
           # Extract label types
