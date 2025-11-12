@@ -3,17 +3,17 @@ id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
   docChecksum: 751a3b1ab129cdbf329bff679f51c558
   docVersion: 3.0.29
-  speakeasyVersion: 1.649.0
-  generationVersion: 2.739.1
-  releaseVersion: 0.13.2-alpha.1
-  configChecksum: 91fbb80149019c256ba2358cd14b3c99
+  speakeasyVersion: 1.654.0
+  generationVersion: 2.750.0
+  releaseVersion: 0.13.2-alpha.2
+  configChecksum: 230f1897a044a5e62149255dd9857baa
 features:
   go:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.2
     constsAndDefaults: 0.1.12
-    core: 3.13.0
+    core: 3.13.1
     deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.3
@@ -36,7 +36,7 @@ features:
     retries: 2.84.2
     sdkHooks: 0.2.0
     typeOverrides: 2.81.1
-    unions: 2.87.0
+    unions: 2.87.1
 generatedFiles:
   - .gitattributes
   - /models/components/acl.go
