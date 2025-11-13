@@ -6770,6 +6770,7 @@ paths:
         - $ref: '#/components/parameters/PageSize'
         - $ref: '#/components/parameters/PageNumber'
         - $ref: '#/components/parameters/ApiVersionFilters'
+        - $ref: '#/components/parameters/ApiVersionSort'
       responses:
         '200':
           $ref: '#/components/responses/ListApiVersionResponse'
@@ -10800,6 +10801,15 @@ components:
       schema:
         $ref: '#/components/schemas/ApiVersionFilterParameters'
       style: deepObject
+    ApiVersionSort:
+      name: sort
+      description: |
+        Sorts a collection of API versions. Supported sort attributes are:
+          - created_at
+      required: false
+      in: query
+      schema:
+        $ref: '#/components/schemas/SortQuery'
     ApplicationId:
       name: applicationId
       in: path
@@ -12048,43 +12058,82 @@ components:
       type: object
       properties:
         id:
-          description: Returns entities that exact match any of the comma-delimited phrases in the filter string.
+          description: 'Filter using **one** of the following operators: `oeq`'
           type: object
           additionalProperties: false
+          oneOf:
+            - type: string
+            - type: object
+              title: StringFieldEqualsComparison
+              additionalProperties: false
+              properties:
+                eq:
+                  type: string
+              required:
+                - eq
           properties:
-            eq:
-              type: string
             oeq:
+              description: The field matches any of the provided values.
               type: string
+              example: '?filter[field_name_here][oeq]=foo,bar'
         name:
-          description: Filters on the given string field value by exact match inequality.
+          description: 'Filter using **one** of the following operators: `neq`, `contains`'
           type: object
           additionalProperties: false
+          oneOf:
+            - type: string
+            - type: object
+              title: StringFieldEqualsComparison
+              additionalProperties: false
+              properties:
+                eq:
+                  type: string
+              required:
+                - eq
           properties:
-            eq:
-              type: string
             contains:
+              description: The field contains the provided value.
               type: string
+              example: '?filter[field_name_here][contains]=foo'
             neq:
+              description: The field does not match the provided value.
               type: string
+              example: '?filter[field_name_here][neq]=bar'
         cluster_type:
-          description: Filters on the given string field value by exact match inequality.
+          description: 'Filter using **one** of the following operators: `neq`'
           type: object
           additionalProperties: false
+          oneOf:
+            - type: string
+            - type: object
+              title: StringFieldEqualsComparison
+              additionalProperties: false
+              properties:
+                eq:
+                  type: string
+              required:
+                - eq
           properties:
-            eq:
-              type: string
             neq:
+              description: The field does not match the provided value.
               type: string
+              example: '?filter[field_name_here][neq]=bar'
         cloud_gateway:
           $ref: '#/components/schemas/BooleanFieldFilter'
       additionalProperties: false
       title: ControlPlaneFilterParameters
     StringFieldEqualsFilter:
       description: Filters on the given string field value by exact match.
-      properties:
-        eq:
-          type: string
+      oneOf:
+        - type: string
+        - type: object
+          title: StringFieldEqualsComparison
+          additionalProperties: false
+          properties:
+            eq:
+              type: string
+          required:
+            - eq
       title: StringFieldEqualsFilter
     StringFieldOEQFilter:
       description: Returns entities that exact match any of the comma-delimited phrases in the filter string.
@@ -12136,12 +12185,15 @@ components:
         number:
           type: number
           example: 1
+          x-speakeasy-terraform-ignore: true
         size:
           type: number
           example: 10
+          x-speakeasy-terraform-ignore: true
         total:
           type: number
           example: 100
+          x-speakeasy-terraform-ignore: true
       required:
         - number
         - size
@@ -12155,6 +12207,7 @@ components:
       required:
         - page
       title: PaginatedMeta
+      x-speakeasy-terraform-ignore: true
     BaseError:
       description: standard error
       type: object
@@ -13087,14 +13140,24 @@ components:
       default: false
       title: Identity Provider Enabled Property
     LegacyStringFieldFilter:
-      description: Filters on the given string field value by fuzzy match.
+      description: 'Filter using **one** of the following operators: `contains`'
       type: object
       properties:
-        eq:
-          type: string
         contains:
+          description: The field contains the provided value.
           type: string
+          example: '?filter[field_name_here][contains]=foo'
       additionalProperties: false
+      oneOf:
+        - type: string
+        - type: object
+          title: StringFieldEqualsComparison
+          additionalProperties: false
+          properties:
+            eq:
+              type: string
+          required:
+            - eq
     LabelsUpdate:
       description: |
         Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types. 
@@ -15526,16 +15589,28 @@ components:
         - oeq
       title: PrivateDnsStateFieldOrEqualityFilter
     IDFieldFilter:
-      description: Returns entities that exact match any of the comma-delimited phrases in the filter string.
+      description: 'Filter using **one** of the following operators: `oeq`, `neq`'
       type: object
       properties:
-        eq:
-          type: string
         neq:
+          description: The field does not match the provided value.
           type: string
+          example: '?filter[field_name_here][neq]=bar'
         oeq:
+          description: The field matches any of the provided values.
           type: string
+          example: '?filter[field_name_here][oeq]=foo,bar'
       additionalProperties: false
+      oneOf:
+        - type: string
+        - type: object
+          title: StringFieldEqualsComparison
+          additionalProperties: false
+          properties:
+            eq:
+              type: string
+          required:
+            - eq
     ControlPlaneGeoFieldFilter:
       oneOf:
         - $ref: '#/components/schemas/ControlPlaneGeoFieldEqualsFilter'
@@ -16899,31 +16974,59 @@ components:
       type: string
       maxLength: 256
     StringFieldFilter:
-      description: Filters on the given string field value by exact match inequality.
+      description: 'Filter using **one** of the following operators: `oeq`, `neq`, `contains`, `ocontains`'
       type: object
       properties:
-        eq:
-          type: string
         contains:
+          description: The field contains the provided value.
           type: string
+          example: '?filter[field_name_here][contains]=foo'
         ocontains:
+          description: The field contains any of the provided values.
           type: string
+          example: '?filter[field_name_here][ocontains]=foo,bar'
         oeq:
+          description: The field matches any of the provided values.
           type: string
+          example: '?filter[field_name_here][oeq]=foo,bar'
         neq:
+          description: The field does not match the provided value.
           type: string
+          example: '?filter[field_name_here][neq]=bar'
       additionalProperties: false
+      oneOf:
+        - type: string
+        - type: object
+          title: StringFieldEqualsComparison
+          additionalProperties: false
+          properties:
+            eq:
+              type: string
+          required:
+            - eq
     UuidFieldFilter:
-      description: Filters on the given string field value by exact match inequality.
+      description: 'Filter using **one** of the following operators: `oeq`, `neq`'
       type: object
       properties:
-        eq:
-          type: string
         oeq:
+          description: The field matches any of the provided values.
           type: string
+          example: '?filter[field_name_here][oeq]=foo,bar'
         neq:
+          description: The field does not match the provided value.
           type: string
+          example: '?filter[field_name_here][neq]=bar'
       additionalProperties: false
+      oneOf:
+        - type: string
+        - type: object
+          title: StringFieldEqualsComparison
+          additionalProperties: false
+          properties:
+            eq:
+              type: string
+          required:
+            - eq
     ApiResponseSchema:
       type: object
       properties:
@@ -20332,7 +20435,6 @@ components:
           nullable: true
         password:
           type: string
-          writeOnly: true
           x-encrypted: true
         tags:
           description: A set of strings representing tags.
@@ -20373,7 +20475,6 @@ components:
           nullable: true
         password:
           type: string
-          writeOnly: true
           x-encrypted: true
         tags:
           description: A set of strings representing tags.
