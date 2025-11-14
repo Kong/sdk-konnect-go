@@ -2,11 +2,6 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
 // UpdateControlPlaneRequestAuthType - The auth type value of the cluster associated with the Runtime Group.
 type UpdateControlPlaneRequestAuthType string
 
@@ -17,21 +12,6 @@ const (
 
 func (e UpdateControlPlaneRequestAuthType) ToPointer() *UpdateControlPlaneRequestAuthType {
 	return &e
-}
-func (e *UpdateControlPlaneRequestAuthType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "pinned_client_certs":
-		fallthrough
-	case "pki_client_certs":
-		*e = UpdateControlPlaneRequestAuthType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for UpdateControlPlaneRequestAuthType: %v", v)
-	}
 }
 
 // UpdateControlPlaneRequest - The request schema for the update control plane request.
@@ -44,41 +24,44 @@ type UpdateControlPlaneRequest struct {
 	AuthType *UpdateControlPlaneRequestAuthType `json:"auth_type,omitempty"`
 	// Array of proxy URLs associated with reaching the data-planes connected to a control-plane.
 	ProxyUrls []ProxyURL `json:"proxy_urls,omitempty"`
-	// Labels to facilitate tagged search on control planes. Keys must be of length 1-63 characters, and cannot start with 'kong', 'konnect', 'mesh', 'kic', or '_'.
+	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
+	//
+	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
+	//
 	Labels map[string]string `json:"labels,omitempty"`
 }
 
-func (o *UpdateControlPlaneRequest) GetName() *string {
-	if o == nil {
+func (u *UpdateControlPlaneRequest) GetName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UpdateControlPlaneRequest) GetDescription() *string {
-	if o == nil {
+func (u *UpdateControlPlaneRequest) GetDescription() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Description
+	return u.Description
 }
 
-func (o *UpdateControlPlaneRequest) GetAuthType() *UpdateControlPlaneRequestAuthType {
-	if o == nil {
+func (u *UpdateControlPlaneRequest) GetAuthType() *UpdateControlPlaneRequestAuthType {
+	if u == nil {
 		return nil
 	}
-	return o.AuthType
+	return u.AuthType
 }
 
-func (o *UpdateControlPlaneRequest) GetProxyUrls() []ProxyURL {
-	if o == nil {
+func (u *UpdateControlPlaneRequest) GetProxyUrls() []ProxyURL {
+	if u == nil {
 		return nil
 	}
-	return o.ProxyUrls
+	return u.ProxyUrls
 }
 
-func (o *UpdateControlPlaneRequest) GetLabels() map[string]string {
-	if o == nil {
+func (u *UpdateControlPlaneRequest) GetLabels() map[string]string {
+	if u == nil {
 		return nil
 	}
-	return o.Labels
+	return u.Labels
 }

@@ -2,38 +2,87 @@
 
 package components
 
+import (
+	"encoding/json"
+	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
+// InvalidParameterChoiceItemRule - invalid parameters rules
+type InvalidParameterChoiceItemRule string
+
+const (
+	InvalidParameterChoiceItemRuleEnum InvalidParameterChoiceItemRule = "enum"
+)
+
+func (e InvalidParameterChoiceItemRule) ToPointer() *InvalidParameterChoiceItemRule {
+	return &e
+}
+func (e *InvalidParameterChoiceItemRule) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "enum":
+		*e = InvalidParameterChoiceItemRule(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for InvalidParameterChoiceItemRule: %v", v)
+	}
+}
+
 type InvalidParameterChoiceItem struct {
 	Field string `json:"field"`
 	// invalid parameters rules
-	Rule    *InvalidRules `json:"rule,omitempty"`
-	Reason  string        `json:"reason"`
-	Choices []any         `json:"choices,omitempty"`
+	Rule    InvalidParameterChoiceItemRule `json:"rule"`
+	Reason  string                         `json:"reason"`
+	Choices []any                          `json:"choices"`
+	Source  *string                        `json:"source,omitempty"`
 }
 
-func (o *InvalidParameterChoiceItem) GetField() string {
-	if o == nil {
+func (i InvalidParameterChoiceItem) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *InvalidParameterChoiceItem) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"field", "rule", "reason", "choices"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (i *InvalidParameterChoiceItem) GetField() string {
+	if i == nil {
 		return ""
 	}
-	return o.Field
+	return i.Field
 }
 
-func (o *InvalidParameterChoiceItem) GetRule() *InvalidRules {
-	if o == nil {
-		return nil
+func (i *InvalidParameterChoiceItem) GetRule() InvalidParameterChoiceItemRule {
+	if i == nil {
+		return InvalidParameterChoiceItemRule("")
 	}
-	return o.Rule
+	return i.Rule
 }
 
-func (o *InvalidParameterChoiceItem) GetReason() string {
-	if o == nil {
+func (i *InvalidParameterChoiceItem) GetReason() string {
+	if i == nil {
 		return ""
 	}
-	return o.Reason
+	return i.Reason
 }
 
-func (o *InvalidParameterChoiceItem) GetChoices() []any {
-	if o == nil {
+func (i *InvalidParameterChoiceItem) GetChoices() []any {
+	if i == nil {
+		return []any{}
+	}
+	return i.Choices
+}
+
+func (i *InvalidParameterChoiceItem) GetSource() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Choices
+	return i.Source
 }

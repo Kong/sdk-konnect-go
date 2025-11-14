@@ -1,2 +1,9 @@
+.env
+.env.local
+.DS_Store
+**/.speakeasy/temp/
+**/.speakeasy/logs/
 .speakeasy/reports
+.speakeasy/logs
 # .gitignore
+bin/

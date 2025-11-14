@@ -1,0 +1,11 @@
+# ConfigurationFilterParameters
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `EventTitle`                                                                              | [*components.LegacyStringFieldFilter](../../models/components/legacystringfieldfilter.md) | :heavy_minus_sign:                                                                        | Filters on the given string field value by fuzzy match.                                   |
+| `EventDescription`                                                                        | [*components.LegacyStringFieldFilter](../../models/components/legacystringfieldfilter.md) | :heavy_minus_sign:                                                                        | Filters on the given string field value by fuzzy match.                                   |
+| `EventNamespace`                                                                          | [*components.LegacyStringFieldFilter](../../models/components/legacystringfieldfilter.md) | :heavy_minus_sign:                                                                        | Filters on the given string field value by fuzzy match.                                   |
+| `Region`                                                                                  | [*components.LegacyStringFieldFilter](../../models/components/legacystringfieldfilter.md) | :heavy_minus_sign:                                                                        | Filters on the given string field value by fuzzy match.                                   |

@@ -3,48 +3,114 @@
 package components
 
 import (
-	"github.com/Kong/sdk-konnect-go-internal/internal/utils"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
+
+// ControlPlaneClusterType - The ClusterType value of the cluster associated with the Control Plane.
+type ControlPlaneClusterType string
+
+const (
+	ControlPlaneClusterTypeClusterTypeControlPlane          ControlPlaneClusterType = "CLUSTER_TYPE_CONTROL_PLANE"
+	ControlPlaneClusterTypeClusterTypeK8SIngressController  ControlPlaneClusterType = "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER"
+	ControlPlaneClusterTypeClusterTypeControlPlaneGroup     ControlPlaneClusterType = "CLUSTER_TYPE_CONTROL_PLANE_GROUP"
+	ControlPlaneClusterTypeClusterTypeServerless            ControlPlaneClusterType = "CLUSTER_TYPE_SERVERLESS"
+	ControlPlaneClusterTypeClusterTypeKafkaNativeEventProxy ControlPlaneClusterType = "CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY"
+)
+
+func (e ControlPlaneClusterType) ToPointer() *ControlPlaneClusterType {
+	return &e
+}
+
+// ControlPlaneAuthType - The auth type value of the cluster associated with the Runtime Group.
+type ControlPlaneAuthType string
+
+const (
+	ControlPlaneAuthTypePinnedClientCerts ControlPlaneAuthType = "pinned_client_certs"
+	ControlPlaneAuthTypePkiClientCerts    ControlPlaneAuthType = "pki_client_certs"
+)
+
+func (e ControlPlaneAuthType) ToPointer() *ControlPlaneAuthType {
+	return &e
+}
 
 // Config - CP configuration object for related access endpoints.
 type Config struct {
 	// Control Plane Endpoint.
-	ControlPlaneEndpoint *string `json:"control_plane_endpoint,omitempty"`
+	ControlPlaneEndpoint string `json:"control_plane_endpoint"`
 	// Telemetry Endpoint.
-	TelemetryEndpoint *string `json:"telemetry_endpoint,omitempty"`
+	TelemetryEndpoint string `json:"telemetry_endpoint"`
+	// The ClusterType value of the cluster associated with the Control Plane.
+	ClusterType ControlPlaneClusterType `json:"cluster_type"`
+	// The auth type value of the cluster associated with the Runtime Group.
+	AuthType ControlPlaneAuthType `json:"auth_type"`
+	// Whether the Control Plane can be used for cloud-gateways.
+	CloudGateway bool `json:"cloud_gateway"`
+	// Array of proxy URLs associated with reaching the data-planes connected to a control-plane.
+	ProxyUrls []ProxyURL `json:"proxy_urls,omitempty"`
 }
 
-func (o *Config) GetControlPlaneEndpoint() *string {
-	if o == nil {
-		return nil
+func (c *Config) GetControlPlaneEndpoint() string {
+	if c == nil {
+		return ""
 	}
-	return o.ControlPlaneEndpoint
+	return c.ControlPlaneEndpoint
 }
 
-func (o *Config) GetTelemetryEndpoint() *string {
-	if o == nil {
+func (c *Config) GetTelemetryEndpoint() string {
+	if c == nil {
+		return ""
+	}
+	return c.TelemetryEndpoint
+}
+
+func (c *Config) GetClusterType() ControlPlaneClusterType {
+	if c == nil {
+		return ControlPlaneClusterType("")
+	}
+	return c.ClusterType
+}
+
+func (c *Config) GetAuthType() ControlPlaneAuthType {
+	if c == nil {
+		return ControlPlaneAuthType("")
+	}
+	return c.AuthType
+}
+
+func (c *Config) GetCloudGateway() bool {
+	if c == nil {
+		return false
+	}
+	return c.CloudGateway
+}
+
+func (c *Config) GetProxyUrls() []ProxyURL {
+	if c == nil {
 		return nil
 	}
-	return o.TelemetryEndpoint
+	return c.ProxyUrls
 }
 
 // ControlPlane - The control plane object contains information about a Kong control plane.
 type ControlPlane struct {
 	// The control plane ID.
-	ID *string `json:"id,omitempty"`
+	ID string `json:"id"`
 	// The name of the control plane.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	// The description of the control plane in Konnect.
 	Description *string `json:"description,omitempty"`
-	// Labels to facilitate tagged search on control planes. Keys must be of length 1-63 characters, and cannot start with 'kong', 'konnect', 'mesh', 'kic', or '_'.
+	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
+	//
+	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
+	//
 	Labels map[string]string `json:"labels,omitempty"`
 	// CP configuration object for related access endpoints.
-	Config *Config `json:"config,omitempty"`
+	Config Config `json:"config"`
 	// An ISO-8604 timestamp representation of control plane creation date.
-	CreatedAt *time.Time `json:"created_at,omitempty"`
+	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8604 timestamp representation of control plane update date.
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	UpdatedAt time.Time `json:"updated_at"`
 }
 
 func (c ControlPlane) MarshalJSON() ([]byte, error) {
@@ -52,57 +118,57 @@ func (c ControlPlane) MarshalJSON() ([]byte, error) {
 }
 
 func (c *ControlPlane) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "name", "config", "created_at", "updated_at"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ControlPlane) GetID() *string {
-	if o == nil {
-		return nil
+func (c *ControlPlane) GetID() string {
+	if c == nil {
+		return ""
 	}
-	return o.ID
+	return c.ID
 }
 
-func (o *ControlPlane) GetName() *string {
-	if o == nil {
-		return nil
+func (c *ControlPlane) GetName() string {
+	if c == nil {
+		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *ControlPlane) GetDescription() *string {
-	if o == nil {
+func (c *ControlPlane) GetDescription() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Description
+	return c.Description
 }
 
-func (o *ControlPlane) GetLabels() map[string]string {
-	if o == nil {
+func (c *ControlPlane) GetLabels() map[string]string {
+	if c == nil {
 		return nil
 	}
-	return o.Labels
+	return c.Labels
 }
 
-func (o *ControlPlane) GetConfig() *Config {
-	if o == nil {
-		return nil
+func (c *ControlPlane) GetConfig() Config {
+	if c == nil {
+		return Config{}
 	}
-	return o.Config
+	return c.Config
 }
 
-func (o *ControlPlane) GetCreatedAt() *time.Time {
-	if o == nil {
-		return nil
+func (c *ControlPlane) GetCreatedAt() time.Time {
+	if c == nil {
+		return time.Time{}
 	}
-	return o.CreatedAt
+	return c.CreatedAt
 }
 
-func (o *ControlPlane) GetUpdatedAt() *time.Time {
-	if o == nil {
-		return nil
+func (c *ControlPlane) GetUpdatedAt() time.Time {
+	if c == nil {
+		return time.Time{}
 	}
-	return o.UpdatedAt
+	return c.UpdatedAt
 }

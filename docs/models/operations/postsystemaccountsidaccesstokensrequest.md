@@ -1,0 +1,9 @@
+# PostSystemAccountsIDAccessTokensRequest
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `AccountID`                                                                                             | *string*                                                                                                | :heavy_check_mark:                                                                                      | ID of the system account.                                                                               |
+| `CreateSystemAccountAccessToken`                                                                        | [*components.CreateSystemAccountAccessToken](../../models/components/createsystemaccountaccesstoken.md) | :heavy_minus_sign:                                                                                      | The request body to create a system account access token.                                               |

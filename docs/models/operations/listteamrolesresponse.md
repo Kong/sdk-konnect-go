@@ -1,0 +1,11 @@
+# ListTeamRolesResponse
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `ContentType`                                                                           | *string*                                                                                | :heavy_check_mark:                                                                      | HTTP response content type for this operation                                           |
+| `StatusCode`                                                                            | *int*                                                                                   | :heavy_check_mark:                                                                      | HTTP response status code for this operation                                            |
+| `RawResponse`                                                                           | [*http.Response](https://pkg.go.dev/net/http#Response)                                  | :heavy_check_mark:                                                                      | Raw HTTP response; suitable for custom response parsing                                 |
+| `AssignedRoleCollection`                                                                | [*components.AssignedRoleCollection](../../models/components/assignedrolecollection.md) | :heavy_minus_sign:                                                                      | A paginated list response for a collection of assigned roles.                           |

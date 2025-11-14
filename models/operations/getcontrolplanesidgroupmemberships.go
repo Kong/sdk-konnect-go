@@ -3,7 +3,7 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go-internal/models/components"
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
 
@@ -12,29 +12,29 @@ type GetControlPlanesIDGroupMembershipsRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 	// The maximum number of items to include per page. The last page of a collection may include fewer items.
 	PageSize *int64 `queryParam:"style=form,explode=true,name=page[size]"`
-	// Determines which page of the entities to retrieve.
-	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
+	// Request the next page of data, starting with the item after this parameter.
+	PageAfter *string `queryParam:"style=form,explode=true,name=page[after]"`
 }
 
-func (o *GetControlPlanesIDGroupMembershipsRequest) GetID() string {
-	if o == nil {
+func (g *GetControlPlanesIDGroupMembershipsRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetControlPlanesIDGroupMembershipsRequest) GetPageSize() *int64 {
-	if o == nil {
+func (g *GetControlPlanesIDGroupMembershipsRequest) GetPageSize() *int64 {
+	if g == nil {
 		return nil
 	}
-	return o.PageSize
+	return g.PageSize
 }
 
-func (o *GetControlPlanesIDGroupMembershipsRequest) GetPageNumber() *int64 {
-	if o == nil {
+func (g *GetControlPlanesIDGroupMembershipsRequest) GetPageAfter() *string {
+	if g == nil {
 		return nil
 	}
-	return o.PageNumber
+	return g.PageAfter
 }
 
 type GetControlPlanesIDGroupMembershipsResponse struct {
@@ -48,30 +48,30 @@ type GetControlPlanesIDGroupMembershipsResponse struct {
 	ListGroupMemberships *components.ListGroupMemberships
 }
 
-func (o *GetControlPlanesIDGroupMembershipsResponse) GetContentType() string {
-	if o == nil {
+func (g *GetControlPlanesIDGroupMembershipsResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetControlPlanesIDGroupMembershipsResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetControlPlanesIDGroupMembershipsResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetControlPlanesIDGroupMembershipsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetControlPlanesIDGroupMembershipsResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetControlPlanesIDGroupMembershipsResponse) GetListGroupMemberships() *components.ListGroupMemberships {
-	if o == nil {
+func (g *GetControlPlanesIDGroupMembershipsResponse) GetListGroupMemberships() *components.ListGroupMemberships {
+	if g == nil {
 		return nil
 	}
-	return o.ListGroupMemberships
+	return g.ListGroupMemberships
 }

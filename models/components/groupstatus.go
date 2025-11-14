@@ -3,53 +3,34 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
-	"github.com/Kong/sdk-konnect-go-internal/internal/utils"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"time"
 )
 
-// State - The state of the control plane group.
-type State string
+// GroupStatusState - The state of the control plane group.
+type GroupStatusState string
 
 const (
-	StateOk       State = "OK"
-	StateConflict State = "CONFLICT"
-	StateUnknown  State = "UNKNOWN"
+	GroupStatusStateOk       GroupStatusState = "OK"
+	GroupStatusStateConflict GroupStatusState = "CONFLICT"
+	GroupStatusStateUnknown  GroupStatusState = "UNKNOWN"
 )
 
-func (e State) ToPointer() *State {
+func (e GroupStatusState) ToPointer() *GroupStatusState {
 	return &e
-}
-func (e *State) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "OK":
-		fallthrough
-	case "CONFLICT":
-		fallthrough
-	case "UNKNOWN":
-		*e = State(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for State: %v", v)
-	}
 }
 
 // GroupStatus - The Group Status object contains information about the status of a control plane group.
 type GroupStatus struct {
 	// The control plane group ID.
-	ID *string `json:"id,omitempty"`
+	ID string `json:"id"`
 	// An ISO-8604 timestamp representation of control plane group status creation date.
-	CreatedAt *time.Time `json:"created_at,omitempty"`
+	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8604 timestamp representation of control plane group status update date.
-	UpdatedAt *time.Time      `json:"updated_at,omitempty"`
+	UpdatedAt time.Time       `json:"updated_at"`
 	Conflicts []GroupConflict `json:"conflicts,omitempty"`
 	// The state of the control plane group.
-	State *State `json:"state,omitempty"`
+	State GroupStatusState `json:"state"`
 }
 
 func (g GroupStatus) MarshalJSON() ([]byte, error) {
@@ -57,43 +38,43 @@ func (g GroupStatus) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GroupStatus) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "created_at", "updated_at", "state"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *GroupStatus) GetID() *string {
-	if o == nil {
-		return nil
+func (g *GroupStatus) GetID() string {
+	if g == nil {
+		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GroupStatus) GetCreatedAt() *time.Time {
-	if o == nil {
-		return nil
+func (g *GroupStatus) GetCreatedAt() time.Time {
+	if g == nil {
+		return time.Time{}
 	}
-	return o.CreatedAt
+	return g.CreatedAt
 }
 
-func (o *GroupStatus) GetUpdatedAt() *time.Time {
-	if o == nil {
-		return nil
+func (g *GroupStatus) GetUpdatedAt() time.Time {
+	if g == nil {
+		return time.Time{}
 	}
-	return o.UpdatedAt
+	return g.UpdatedAt
 }
 
-func (o *GroupStatus) GetConflicts() []GroupConflict {
-	if o == nil {
+func (g *GroupStatus) GetConflicts() []GroupConflict {
+	if g == nil {
 		return nil
 	}
-	return o.Conflicts
+	return g.Conflicts
 }
 
-func (o *GroupStatus) GetState() *State {
-	if o == nil {
-		return nil
+func (g *GroupStatus) GetState() GroupStatusState {
+	if g == nil {
+		return GroupStatusState("")
 	}
-	return o.State
+	return g.State
 }

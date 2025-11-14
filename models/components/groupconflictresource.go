@@ -10,16 +10,16 @@ type GroupConflictResource struct {
 	Type string `json:"type"`
 }
 
-func (o *GroupConflictResource) GetID() string {
-	if o == nil {
+func (g *GroupConflictResource) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GroupConflictResource) GetType() string {
-	if o == nil {
+func (g *GroupConflictResource) GetType() string {
+	if g == nil {
 		return ""
 	}
-	return o.Type
+	return g.Type
 }

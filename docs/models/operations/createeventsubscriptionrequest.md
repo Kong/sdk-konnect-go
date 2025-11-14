@@ -1,0 +1,9 @@
+# CreateEventSubscriptionRequest
+
+
+## Fields
+
+| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   | Example                                                                       |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `EventID`                                                                     | *string*                                                                      | :heavy_check_mark:                                                            | Formatted string ID of the notification event.                                | invoice-ready                                                                 |
+| `EventSubscription`                                                           | [*components.EventSubscription](../../models/components/eventsubscription.md) | :heavy_minus_sign:                                                            | Request body schema for creating/updating event subscription.                 |                                                                               |

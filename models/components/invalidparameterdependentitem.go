@@ -5,64 +5,84 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// Rule - invalid parameters rules
-type Rule string
+// InvalidParameterDependentItemRule - invalid parameters rules
+type InvalidParameterDependentItemRule string
 
 const (
-	RuleDependentFields Rule = "dependent_fields"
+	InvalidParameterDependentItemRuleDependentFields InvalidParameterDependentItemRule = "dependent_fields"
 )
 
-func (e Rule) ToPointer() *Rule {
+func (e InvalidParameterDependentItemRule) ToPointer() *InvalidParameterDependentItemRule {
 	return &e
 }
-func (e *Rule) UnmarshalJSON(data []byte) error {
+func (e *InvalidParameterDependentItemRule) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "dependent_fields":
-		*e = Rule(v)
+		*e = InvalidParameterDependentItemRule(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Rule: %v", v)
+		return fmt.Errorf("invalid value for InvalidParameterDependentItemRule: %v", v)
 	}
 }
 
 type InvalidParameterDependentItem struct {
 	Field string `json:"field"`
 	// invalid parameters rules
-	Rule       *Rule  `json:"rule"`
-	Reason     string `json:"reason"`
-	Dependents []any  `json:"dependents"`
+	Rule       *InvalidParameterDependentItemRule `json:"rule"`
+	Reason     string                             `json:"reason"`
+	Dependents []any                              `json:"dependents"`
+	Source     *string                            `json:"source,omitempty"`
 }
 
-func (o *InvalidParameterDependentItem) GetField() string {
-	if o == nil {
+func (i InvalidParameterDependentItem) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(i, "", false)
+}
+
+func (i *InvalidParameterDependentItem) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &i, "", false, []string{"field", "reason"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (i *InvalidParameterDependentItem) GetField() string {
+	if i == nil {
 		return ""
 	}
-	return o.Field
+	return i.Field
 }
 
-func (o *InvalidParameterDependentItem) GetRule() *Rule {
-	if o == nil {
+func (i *InvalidParameterDependentItem) GetRule() *InvalidParameterDependentItemRule {
+	if i == nil {
 		return nil
 	}
-	return o.Rule
+	return i.Rule
 }
 
-func (o *InvalidParameterDependentItem) GetReason() string {
-	if o == nil {
+func (i *InvalidParameterDependentItem) GetReason() string {
+	if i == nil {
 		return ""
 	}
-	return o.Reason
+	return i.Reason
 }
 
-func (o *InvalidParameterDependentItem) GetDependents() []any {
-	if o == nil {
+func (i *InvalidParameterDependentItem) GetDependents() []any {
+	if i == nil {
 		return nil
 	}
-	return o.Dependents
+	return i.Dependents
+}
+
+func (i *InvalidParameterDependentItem) GetSource() *string {
+	if i == nil {
+		return nil
+	}
+	return i.Source
 }

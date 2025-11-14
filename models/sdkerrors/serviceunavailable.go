@@ -8,7 +8,7 @@ import (
 )
 
 // Status - The HTTP status code.
-type Status int64
+type Status int
 
 const (
 	StatusFiveHundredAndThree Status = 503
@@ -18,7 +18,7 @@ func (e Status) ToPointer() *Status {
 	return &e
 }
 func (e *Status) UnmarshalJSON(data []byte) error {
-	var v int64
+	var v int
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}

@@ -1,0 +1,9 @@
+# GetBasicAuthRequest
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `BasicAuthID`                                                                      | *string*                                                                           | :heavy_check_mark:                                                                 | ID of the Basic-auth credential to lookup                                          | 80db1b58-ca7c-4d21-b92a-64eb07725872                                               |
+| `ControlPlaneID`                                                                   | *string*                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |

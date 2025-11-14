@@ -5,18 +5,34 @@ package components
 type Security struct {
 	PersonalAccessToken      *string `security:"scheme,type=http,subtype=bearer,name=Authorization"`
 	SystemAccountAccessToken *string `security:"scheme,type=http,subtype=bearer,name=Authorization"`
+	KonnectAccessToken       *string `security:"scheme,type=http,subtype=bearer,name=Authorization"`
+	ServiceAccessToken       *string `security:"scheme,type=http,subtype=bearer,name=Authorization"`
 }
 
-func (o *Security) GetPersonalAccessToken() *string {
-	if o == nil {
+func (s *Security) GetPersonalAccessToken() *string {
+	if s == nil {
 		return nil
 	}
-	return o.PersonalAccessToken
+	return s.PersonalAccessToken
 }
 
-func (o *Security) GetSystemAccountAccessToken() *string {
-	if o == nil {
+func (s *Security) GetSystemAccountAccessToken() *string {
+	if s == nil {
 		return nil
 	}
-	return o.SystemAccountAccessToken
+	return s.SystemAccountAccessToken
+}
+
+func (s *Security) GetKonnectAccessToken() *string {
+	if s == nil {
+		return nil
+	}
+	return s.KonnectAccessToken
+}
+
+func (s *Security) GetServiceAccessToken() *string {
+	if s == nil {
+		return nil
+	}
+	return s.ServiceAccessToken
 }

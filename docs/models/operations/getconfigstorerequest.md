@@ -1,0 +1,9 @@
+# GetConfigStoreRequest
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ControlPlaneID`                                                                   | *string*                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
+| `ConfigStoreID`                                                                    | *string*                                                                           | :heavy_check_mark:                                                                 | Config Store identifier                                                            | d32d905a-ed33-46a3-a093-d8f536af9a8a                                               |

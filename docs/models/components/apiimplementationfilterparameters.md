@@ -1,0 +1,13 @@
+# APIImplementationFilterParameters
+
+
+## Fields
+
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `ID`                                                                              | [*components.UUIDFieldFilter](../../models/components/uuidfieldfilter.md)         | :heavy_minus_sign:                                                                | Filters on the given string field value by exact match inequality.                |
+| `APIID`                                                                           | [*components.UUIDFieldFilter](../../models/components/uuidfieldfilter.md)         | :heavy_minus_sign:                                                                | Filters on the given string field value by exact match inequality.                |
+| `ServiceID`                                                                       | [*components.UUIDFieldFilter](../../models/components/uuidfieldfilter.md)         | :heavy_minus_sign:                                                                | Filters on the given string field value by exact match inequality.                |
+| `ControlPlaneID`                                                                  | [*components.UUIDFieldFilter](../../models/components/uuidfieldfilter.md)         | :heavy_minus_sign:                                                                | Filters on the given string field value by exact match inequality.                |
+| `CreatedAt`                                                                       | [*components.DateTimeFieldFilter](../../models/components/datetimefieldfilter.md) | :heavy_minus_sign:                                                                | Filters on the given datetime (RFC-3339) field value.                             |
+| `UpdatedAt`                                                                       | [*components.DateTimeFieldFilter](../../models/components/datetimefieldfilter.md) | :heavy_minus_sign:                                                                | Filters on the given datetime (RFC-3339) field value.                             |

@@ -1,0 +1,14 @@
+# ProviderAccount
+
+Object containing mapping for organization and cloud provider to account ID.
+
+
+## Fields
+
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             | Example                                                                 |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `ID`                                                                    | *string*                                                                | :heavy_check_mark:                                                      | N/A                                                                     | 929b2449-c69f-44c4-b6ad-9ecec6f811ae                                    |
+| `Provider`                                                              | [components.ProviderName](../../models/components/providername.md)      | :heavy_check_mark:                                                      | Name of cloud provider.                                                 | aws                                                                     |
+| `ProviderAccountID`                                                     | *string*                                                                | :heavy_check_mark:                                                      | ID of the cloud provider account.                                       |                                                                         |
+| `CreatedAt`                                                             | [time.Time](https://pkg.go.dev/time#Time)                               | :heavy_check_mark:                                                      | An RFC-3339 timestamp representation of provider account creation date. | 2022-11-04T20:10:06.927Z                                                |
+| `UpdatedAt`                                                             | [time.Time](https://pkg.go.dev/time#Time)                               | :heavy_check_mark:                                                      | An RFC-3339 timestamp representation of provider account update date.   | 2022-11-04T20:10:06.927Z                                                |

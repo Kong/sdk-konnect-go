@@ -4,8 +4,8 @@ package operations
 
 import (
 	"errors"
-	"github.com/Kong/sdk-konnect-go-internal/internal/utils"
-	"github.com/Kong/sdk-konnect-go-internal/retry"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/retry"
 	"time"
 )
 
@@ -23,6 +23,10 @@ type AcceptHeaderEnum string
 const (
 	AcceptHeaderEnumApplicationJson            AcceptHeaderEnum = "application/json"
 	AcceptHeaderEnumApplicationProblemPlusJson AcceptHeaderEnum = "application/problem+json"
+	AcceptHeaderEnumWildcardRootWildcard       AcceptHeaderEnum = "*/*"
+	AcceptHeaderEnumImageJpeg                  AcceptHeaderEnum = "image/jpeg"
+	AcceptHeaderEnumImagePng                   AcceptHeaderEnum = "image/png"
+	AcceptHeaderEnumImageSvgPlusXml            AcceptHeaderEnum = "image/svg+xml"
 )
 
 func (e AcceptHeaderEnum) ToPointer() *AcceptHeaderEnum {

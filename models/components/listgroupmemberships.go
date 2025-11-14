@@ -5,21 +5,21 @@ package components
 // ListGroupMemberships - A paginated list response for a collection of control plane group memberships.
 type ListGroupMemberships struct {
 	// returns the pagination information
-	Meta *PaginatedMeta `json:"meta,omitempty"`
+	Meta CursorPaginatedMetaWithSizeAndTotal `json:"meta"`
 	// Array of control planes summary who are a child to this control plane group.
-	Data []ControlPlaneSummary `json:"data,omitempty"`
+	Data []ControlPlane `json:"data"`
 }
 
-func (o *ListGroupMemberships) GetMeta() *PaginatedMeta {
-	if o == nil {
-		return nil
+func (l *ListGroupMemberships) GetMeta() CursorPaginatedMetaWithSizeAndTotal {
+	if l == nil {
+		return CursorPaginatedMetaWithSizeAndTotal{}
 	}
-	return o.Meta
+	return l.Meta
 }
 
-func (o *ListGroupMemberships) GetData() []ControlPlaneSummary {
-	if o == nil {
-		return nil
+func (l *ListGroupMemberships) GetData() []ControlPlane {
+	if l == nil {
+		return []ControlPlane{}
 	}
-	return o.Data
+	return l.Data
 }

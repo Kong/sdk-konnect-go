@@ -1,13 +1,11 @@
 # ClusterType
 
-The ClusterType value of the cluster associated with the Control Plane.
+Filters on the given string field value by exact match inequality.
 
 
-## Values
+## Fields
 
-| Name                                         | Value                                        |
-| -------------------------------------------- | -------------------------------------------- |
-| `ClusterTypeClusterTypeControlPlane`         | CLUSTER_TYPE_CONTROL_PLANE                   |
-| `ClusterTypeClusterTypeHybrid`               | CLUSTER_TYPE_HYBRID                          |
-| `ClusterTypeClusterTypeK8SIngressController` | CLUSTER_TYPE_K8S_INGRESS_CONTROLLER          |
-| `ClusterTypeClusterTypeControlPlaneGroup`    | CLUSTER_TYPE_CONTROL_PLANE_GROUP             |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `Eq`               | **string*          | :heavy_minus_sign: | N/A                |
+| `Neq`              | **string*          | :heavy_minus_sign: | N/A                |

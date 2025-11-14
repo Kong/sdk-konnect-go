@@ -8,9 +8,9 @@ type GroupMemberStatus struct {
 	IsMember bool `json:"is_member"`
 }
 
-func (o *GroupMemberStatus) GetIsMember() bool {
-	if o == nil {
+func (g *GroupMemberStatus) GetIsMember() bool {
+	if g == nil {
 		return false
 	}
-	return o.IsMember
+	return g.IsMember
 }

@@ -5,56 +5,62 @@
 
 ### Available Operations
 
-* [List](#list) - List Control Planes
-* [Create](#create) - Create Control Plane
-* [Get](#get) - Fetch Control Plane
-* [Update](#update) - Update Control Plane
-* [Delete](#delete) - Delete Control Plane
+* [ListControlPlanes](#listcontrolplanes) - List Control Planes
+* [CreateControlPlane](#createcontrolplane) - Create Control Plane
+* [GetControlPlane](#getcontrolplane) - Get a Control Plane
+* [UpdateControlPlane](#updatecontrolplane) - Update Control Plane
+* [DeleteControlPlane](#deletecontrolplane) - Delete Control Plane
 
-## List
+## ListControlPlanes
 
 Returns an array of control plane objects containing information about the Konnect Control Planes.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="list-control-planes" method="get" path="/v2/control-planes" -->
 ```go
 package main
 
 import(
 	"context"
-	sdkkonnectgointernal "github.com/Kong/sdk-konnect-go-internal"
-	"github.com/Kong/sdk-konnect-go-internal/models/components"
-	"github.com/Kong/sdk-konnect-go-internal/models/operations"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
-    
-    s := sdkkonnectgointernal.New(
-        sdkkonnectgointernal.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgointernal.String("<YOUR_BEARER_TOKEN_HERE>"),
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    res, err := s.ControlPlanes.List(ctx, operations.ListControlPlanesRequest{
-        FilterNameEq: sdkkonnectgointernal.String("test"),
-        FilterName: sdkkonnectgointernal.String("test"),
-        FilterNameContains: sdkkonnectgointernal.String("test"),
-        FilterNameNeq: sdkkonnectgointernal.String("test"),
-        FilterIDEq: sdkkonnectgointernal.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
-        FilterID: sdkkonnectgointernal.String("7f9fd312-a987-4628-b4c5-bb4f4fddd5f7"),
-        FilterIDOeq: sdkkonnectgointernal.String("some-value,some-other-value"),
-        FilterClusterTypeEq: sdkkonnectgointernal.String("CLUSTER_TYPE_CONTROL_PLANE"),
-        FilterClusterType: sdkkonnectgointernal.String("CLUSTER_TYPE_CONTROL_PLANE"),
-        FilterClusterTypeNeq: sdkkonnectgointernal.String("test"),
-        Labels: sdkkonnectgointernal.String("key:value,existCheck"),
+    res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+        FilterLabels: sdkkonnectgo.Pointer("key:value,existCheck"),
+        Sort: sdkkonnectgo.Pointer("created_at desc"),
     })
     if err != nil {
         log.Fatal(err)
     }
     if res.ListControlPlanesResponse != nil {
-        // handle response
+        for {
+            // handle items
+
+            res, err = res.Next()
+
+            if err != nil {
+                // handle error
+            }
+
+            if res == nil {
+                break
+            }
+        }
     }
 }
 ```
@@ -78,39 +84,41 @@ func main() {
 | sdkerrors.BadRequestError    | 400                          | application/problem+json     |
 | sdkerrors.UnauthorizedError  | 401                          | application/problem+json     |
 | sdkerrors.ForbiddenError     | 403                          | application/problem+json     |
+| sdkerrors.BaseError          | 500                          | application/problem+json     |
 | sdkerrors.ServiceUnavailable | 503                          | application/problem+json     |
 | sdkerrors.SDKError           | 4XX, 5XX                     | \*/\*                        |
 
-## Create
+## CreateControlPlane
 
 Create a control plane in the Konnect Organization.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="create-control-plane" method="post" path="/v2/control-planes" -->
 ```go
 package main
 
 import(
 	"context"
-	sdkkonnectgointernal "github.com/Kong/sdk-konnect-go-internal"
-	"github.com/Kong/sdk-konnect-go-internal/models/components"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
-    
-    s := sdkkonnectgointernal.New(
-        sdkkonnectgointernal.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgointernal.String("<YOUR_BEARER_TOKEN_HERE>"),
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    res, err := s.ControlPlanes.Create(ctx, components.CreateControlPlaneRequest{
+    res, err := s.ControlPlanes.CreateControlPlane(ctx, components.CreateControlPlaneRequest{
         Name: "Test Control Plane",
-        Description: sdkkonnectgointernal.String("A test control plane for exploration."),
-        ClusterType: components.ClusterTypeClusterTypeK8SIngressController.ToPointer(),
-        CloudGateway: sdkkonnectgointernal.Bool(false),
+        Description: sdkkonnectgo.Pointer("A test control plane for exploration."),
+        ClusterType: components.CreateControlPlaneRequestClusterTypeClusterTypeK8SIngressController.ToPointer(),
+        CloudGateway: sdkkonnectgo.Pointer(false),
         ProxyUrls: []components.ProxyURL{
             components.ProxyURL{
                 Host: "example.com",
@@ -155,32 +163,33 @@ func main() {
 | sdkerrors.ServiceUnavailable  | 503                           | application/problem+json      |
 | sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
-## Get
+## GetControlPlane
 
-Returns information about a team from a given team ID.
+Returns information about an individual control plane.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="get-control-plane" method="get" path="/v2/control-planes/{id}" -->
 ```go
 package main
 
 import(
 	"context"
-	sdkkonnectgointernal "github.com/Kong/sdk-konnect-go-internal"
-	"github.com/Kong/sdk-konnect-go-internal/models/components"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
-    
-    s := sdkkonnectgointernal.New(
-        sdkkonnectgointernal.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgointernal.String("<YOUR_BEARER_TOKEN_HERE>"),
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    res, err := s.ControlPlanes.Get(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a")
+    res, err := s.ControlPlanes.GetControlPlane(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a")
     if err != nil {
         log.Fatal(err)
     }
@@ -210,37 +219,39 @@ func main() {
 | sdkerrors.UnauthorizedError  | 401                          | application/problem+json     |
 | sdkerrors.ForbiddenError     | 403                          | application/problem+json     |
 | sdkerrors.NotFoundError      | 404                          | application/problem+json     |
+| sdkerrors.BaseError          | 500                          | application/problem+json     |
 | sdkerrors.ServiceUnavailable | 503                          | application/problem+json     |
 | sdkerrors.SDKError           | 4XX, 5XX                     | \*/\*                        |
 
-## Update
+## UpdateControlPlane
 
 Update an individual control plane.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{id}" -->
 ```go
 package main
 
 import(
 	"context"
-	sdkkonnectgointernal "github.com/Kong/sdk-konnect-go-internal"
-	"github.com/Kong/sdk-konnect-go-internal/models/components"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
-    
-    s := sdkkonnectgointernal.New(
-        sdkkonnectgointernal.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgointernal.String("<YOUR_BEARER_TOKEN_HERE>"),
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    res, err := s.ControlPlanes.Update(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateControlPlaneRequest{
-        Name: sdkkonnectgointernal.String("Test Control Plane"),
-        Description: sdkkonnectgointernal.String("A test control plane for exploration."),
+    res, err := s.ControlPlanes.UpdateControlPlane(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateControlPlaneRequest{
+        Name: sdkkonnectgo.Pointer("Test Control Plane"),
+        Description: sdkkonnectgo.Pointer("A test control plane for exploration."),
         ProxyUrls: []components.ProxyURL{
             components.ProxyURL{
                 Host: "example.com",
@@ -286,32 +297,33 @@ func main() {
 | sdkerrors.ServiceUnavailable  | 503                           | application/problem+json      |
 | sdkerrors.SDKError            | 4XX, 5XX                      | \*/\*                         |
 
-## Delete
+## DeleteControlPlane
 
 Delete an individual control plane.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="delete-control-plane" method="delete" path="/v2/control-planes/{id}" -->
 ```go
 package main
 
 import(
 	"context"
-	sdkkonnectgointernal "github.com/Kong/sdk-konnect-go-internal"
-	"github.com/Kong/sdk-konnect-go-internal/models/components"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"log"
 )
 
 func main() {
     ctx := context.Background()
-    
-    s := sdkkonnectgointernal.New(
-        sdkkonnectgointernal.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgointernal.String("<YOUR_BEARER_TOKEN_HERE>"),
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
-    res, err := s.ControlPlanes.Delete(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a")
+    res, err := s.ControlPlanes.DeleteControlPlane(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a")
     if err != nil {
         log.Fatal(err)
     }

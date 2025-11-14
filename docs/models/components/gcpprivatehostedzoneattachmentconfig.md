@@ -1,0 +1,11 @@
+# GcpPrivateHostedZoneAttachmentConfig
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `Kind`                                                                                     | [components.GCPPrivateHostedZoneType](../../models/components/gcpprivatehostedzonetype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `DomainName`                                                                               | *string*                                                                                   | :heavy_check_mark:                                                                         | Domain name to create attachment to.                                                       |
+| `PeerProjectID`                                                                            | *string*                                                                                   | :heavy_check_mark:                                                                         | Customer's GCP Project ID.                                                                 |
+| `PeerVpcName`                                                                              | *string*                                                                                   | :heavy_check_mark:                                                                         | Customer's GCP VPC ID.                                                                     |

@@ -1,0 +1,10 @@
+# CursorMetaWithSizeAndTotal
+
+
+## Fields
+
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `Next`                                                                            | *string*                                                                          | :heavy_check_mark:                                                                | URI to the next page                                                              |                                                                                   |
+| `Size`                                                                            | *float64*                                                                         | :heavy_check_mark:                                                                | Requested page size                                                               | 10                                                                                |
+| `Total`                                                                           | *float64*                                                                         | :heavy_check_mark:                                                                | Total number of objects in the collection; will only be present on the first page | 974                                                                               |

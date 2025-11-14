@@ -2,42 +2,19 @@
 
 package components
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
-// The ClusterType value of the cluster associated with the Control Plane.
-type ClusterType string
+// CreateControlPlaneRequestClusterType - The ClusterType value of the cluster associated with the Control Plane.
+type CreateControlPlaneRequestClusterType string
 
 const (
-	ClusterTypeClusterTypeControlPlane         ClusterType = "CLUSTER_TYPE_CONTROL_PLANE"
-	ClusterTypeClusterTypeHybrid               ClusterType = "CLUSTER_TYPE_HYBRID"
-	ClusterTypeClusterTypeK8SIngressController ClusterType = "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER"
-	ClusterTypeClusterTypeControlPlaneGroup    ClusterType = "CLUSTER_TYPE_CONTROL_PLANE_GROUP"
+	CreateControlPlaneRequestClusterTypeClusterTypeControlPlane          CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_CONTROL_PLANE"
+	CreateControlPlaneRequestClusterTypeClusterTypeK8SIngressController  CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER"
+	CreateControlPlaneRequestClusterTypeClusterTypeControlPlaneGroup     CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_CONTROL_PLANE_GROUP"
+	CreateControlPlaneRequestClusterTypeClusterTypeServerless            CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_SERVERLESS"
+	CreateControlPlaneRequestClusterTypeClusterTypeKafkaNativeEventProxy CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY"
 )
 
-func (e ClusterType) ToPointer() *ClusterType {
+func (e CreateControlPlaneRequestClusterType) ToPointer() *CreateControlPlaneRequestClusterType {
 	return &e
-}
-func (e *ClusterType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "CLUSTER_TYPE_CONTROL_PLANE":
-		fallthrough
-	case "CLUSTER_TYPE_HYBRID":
-		fallthrough
-	case "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER":
-		fallthrough
-	case "CLUSTER_TYPE_CONTROL_PLANE_GROUP":
-		*e = ClusterType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ClusterType: %v", v)
-	}
 }
 
 // AuthType - The auth type value of the cluster associated with the Runtime Group.
@@ -51,21 +28,6 @@ const (
 func (e AuthType) ToPointer() *AuthType {
 	return &e
 }
-func (e *AuthType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "pinned_client_certs":
-		fallthrough
-	case "pki_client_certs":
-		*e = AuthType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for AuthType: %v", v)
-	}
-}
 
 // CreateControlPlaneRequest - The request schema for the create control plane request.
 type CreateControlPlaneRequest struct {
@@ -74,62 +36,65 @@ type CreateControlPlaneRequest struct {
 	// The description of the control plane in Konnect.
 	Description *string `json:"description,omitempty"`
 	// The ClusterType value of the cluster associated with the Control Plane.
-	ClusterType *ClusterType `json:"cluster_type,omitempty"`
+	ClusterType *CreateControlPlaneRequestClusterType `json:"cluster_type,omitempty"`
 	// The auth type value of the cluster associated with the Runtime Group.
 	AuthType *AuthType `json:"auth_type,omitempty"`
 	// Whether this control-plane can be used for cloud-gateways.
 	CloudGateway *bool `json:"cloud_gateway,omitempty"`
 	// Array of proxy URLs associated with reaching the data-planes connected to a control-plane.
 	ProxyUrls []ProxyURL `json:"proxy_urls,omitempty"`
-	// Labels to facilitate tagged search on control planes. Keys must be of length 1-63 characters, and cannot start with 'kong', 'konnect', 'mesh', 'kic', or '_'.
+	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
+	//
+	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
+	//
 	Labels map[string]string `json:"labels,omitempty"`
 }
 
-func (o *CreateControlPlaneRequest) GetName() string {
-	if o == nil {
+func (c *CreateControlPlaneRequest) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
 }
 
-func (o *CreateControlPlaneRequest) GetDescription() *string {
-	if o == nil {
+func (c *CreateControlPlaneRequest) GetDescription() *string {
+	if c == nil {
 		return nil
 	}
-	return o.Description
+	return c.Description
 }
 
-func (o *CreateControlPlaneRequest) GetClusterType() *ClusterType {
-	if o == nil {
+func (c *CreateControlPlaneRequest) GetClusterType() *CreateControlPlaneRequestClusterType {
+	if c == nil {
 		return nil
 	}
-	return o.ClusterType
+	return c.ClusterType
 }
 
-func (o *CreateControlPlaneRequest) GetAuthType() *AuthType {
-	if o == nil {
+func (c *CreateControlPlaneRequest) GetAuthType() *AuthType {
+	if c == nil {
 		return nil
 	}
-	return o.AuthType
+	return c.AuthType
 }
 
-func (o *CreateControlPlaneRequest) GetCloudGateway() *bool {
-	if o == nil {
+func (c *CreateControlPlaneRequest) GetCloudGateway() *bool {
+	if c == nil {
 		return nil
 	}
-	return o.CloudGateway
+	return c.CloudGateway
 }
 
-func (o *CreateControlPlaneRequest) GetProxyUrls() []ProxyURL {
-	if o == nil {
+func (c *CreateControlPlaneRequest) GetProxyUrls() []ProxyURL {
+	if c == nil {
 		return nil
 	}
-	return o.ProxyUrls
+	return c.ProxyUrls
 }
 
-func (o *CreateControlPlaneRequest) GetLabels() map[string]string {
-	if o == nil {
+func (c *CreateControlPlaneRequest) GetLabels() map[string]string {
+	if c == nil {
 		return nil
 	}
-	return o.Labels
+	return c.Labels
 }

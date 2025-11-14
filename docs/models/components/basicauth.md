@@ -1,0 +1,12 @@
+# BasicAuth
+
+
+## Fields
+
+| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `Consumer`                                                                    | [*components.BasicAuthConsumer](../../models/components/basicauthconsumer.md) | :heavy_minus_sign:                                                            | N/A                                                                           |
+| `CreatedAt`                                                                   | **int64*                                                                      | :heavy_minus_sign:                                                            | Unix epoch when the resource was created.                                     |
+| `ID`                                                                          | **string*                                                                     | :heavy_minus_sign:                                                            | A string representing a UUID (universally unique identifier).                 |
+| `Tags`                                                                        | []*string*                                                                    | :heavy_minus_sign:                                                            | A set of strings representing tags.                                           |
+| `Username`                                                                    | *string*                                                                      | :heavy_check_mark:                                                            | N/A                                                                           |

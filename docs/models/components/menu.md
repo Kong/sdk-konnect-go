@@ -1,0 +1,10 @@
+# Menu
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `Main`                                                                                     | [][components.PortalMenuItem](../../models/components/portalmenuitem.md)                   | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `FooterSections`                                                                           | [][components.PortalFooterMenuSection](../../models/components/portalfootermenusection.md) | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `FooterBottom`                                                                             | [][components.PortalMenuItem](../../models/components/portalmenuitem.md)                   | :heavy_minus_sign:                                                                         | N/A                                                                                        |
