@@ -2,7 +2,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.0.29 and generator version 2.753.1
+// Generated from OpenAPI doc version 3.0.29 and generator version 2.753.7
 
 import (
 	"context"
@@ -307,7 +307,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		SDKVersion: "0.0.1",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.0.1 2.753.1 3.0.29 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.0.1 2.753.7 3.0.29 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),

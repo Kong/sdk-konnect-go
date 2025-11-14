@@ -1,4 +1,55 @@
-undefined
+## How to use this SDK
+
+> **READ THIS SECTION!**
+
+This repository is a private version of <https://github.com/Kong/sdk-konnect-go>.
+
+It mostly serves a purpose for internal development and testing of the SDK as the
+underlying APIs evolve towards their stable versions.
+
+Typical usage of this SDK is to import `github.com/Kong/sdk-konnect-go` in your
+Go project and add a replace directorive in your `go.mod` file to point to this
+private repository.
+
+For example, having the following Go file using the SDK:
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+func main() {
+	s := sdkkonnectgo.New(
+		sdkkonnectgo.WithSecurity(components.Security{
+			PersonalAccessToken: sdkkonnectgo.Pointer(os.Getenv("KONNECT_TOKEN")),
+		}),
+	)
+	_ = s
+}
+```
+
+We use the replace directive in `go.mod` as follows:
+
+```
+# Replace `main` with your desired branch or tag
+go mod edit -replace=github.com/Kong/sdk-konnect-go=github.com/Kong/sdk-konnect-go-internal@main
+go mod tidy
+```
+
+> **NOTE**: Make sure that you have `GOPRIVATE` set to `github.com/Kong/sdk-konnect-go-internal`
+> or `github.com/Kong`. You might need to tweak your `git` authentication settings
+> accordingly to be able to access the private repository.
+
+This way allows users of the SDK to easily switch between the public and private
+versions of the SDK as needed without the need for changing any code in their projects.
+
 <!-- Start Summary [summary] -->
 ## Summary
 
@@ -10,6 +61,7 @@ For more information about the API: [Documentation for Kong Gateway and its APIs
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
+  * [How to use this SDK](#how-to-use-this-sdk)
   * [SDK Installation](#sdk-installation)
   * [SDK Example Usage](#sdk-example-usage)
   * [Authentication](#authentication)
