@@ -1,18 +1,31 @@
 package hooks
 
+import "os"
+
 /*
  * This file is only ever generated once on the first generation and then is free to be modified.
- * Any hooks you wish to add should be registered in the initHooks function. Feel free to define
- * your hooks in this file or in separate files in the hooks package.
- *
- * Hooks are registered per SDK instance, and are valid for the lifetime of the SDK instance.
+ * Any hooks you wish to add should be registered in the InitHooks function. Feel free to define them
+ * in this file or in separate files in the hooks package.
  */
 
 func initHooks(h *Hooks) {
-	// exampleHook := &ExampleHook{}
+	h.registerBeforeRequestHook(&UserAgentPreRequestHook{})
 
-	// h.registerSDKInitHook(exampleHook)
-	// h.registerBeforeRequestHook(exampleHook)
-	// h.registerAfterErrorHook(exampleHook)
-	// h.registerAfterSuccessHook(exampleHook)
+	h.registerBeforeRequestHook(&GlobalAPIURLRequestHook{})
+
+	h.registerBeforeRequestHook(&APIURLRequestHook{
+		CustomDomain: os.Getenv("KONG_CUSTOM_DOMAIN"),
+	})
+
+	if os.Getenv("KONNECT_SDK_HTTP_DUMP_REQUEST") == "true" {
+		h.registerBeforeRequestHook(&HTTPDumpRequestHook{})
+	}
+
+	if os.Getenv("KONNECT_SDK_HTTP_DUMP_RESPONSE") == "true" {
+		h.registerAfterSuccessHook(&HTTPDumpResponseHook{})
+	}
+
+	if os.Getenv("KONNECT_SDK_HTTP_DUMP_RESPONSE_ERROR") == "true" {
+		h.registerAfterErrorHook(&HTTPDumpResponseErrorHook{})
+	}
 }
