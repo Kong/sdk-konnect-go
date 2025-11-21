@@ -169,10 +169,13 @@ _generate.ifacemaker:
 		--output $(LOWERCASE_STRUCT)_i.go \
 		-p sdkkonnectgo
 
+# TODO: Update TYPES_TO_MOCK as new types are added that need mocking.
+TYPES_TO_MOCK := ControlPlanes Consumers ConsumerGroups Services Keys KeySets Plugins
+
 .PHONY: generate.interfaces
 generate.interfaces: ifacemaker
-# TODO: make this iterate over all structs that need mocks if necessary.
-	$(MAKE) _generate.ifacemaker STRUCT=ControlPlanes
+	@$(foreach s, $(TYPES_TO_MOCK), \
+		$(MAKE) _generate.ifacemaker STRUCT=$(s);)
 
 # https://github.com/vektra/mockery/issues/803#issuecomment-2287198024
 .PHONY: generate.mocks
