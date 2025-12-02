@@ -343,7 +343,7 @@ jobs:
 
           case "${{ github.event.inputs.action }}" in
             graduate)
-              if [[ ! "$CURRENT" =~ -rc\.|^alpha\.|^beta\. ]]; then
+              if [[ ! "$CURRENT" =~ -rc\.|-alpha\.|-beta\. ]]; then
                 echo "Error: Current version '$CURRENT' is not a pre-release"
                 echo "Graduate can only be used on RC, alpha, or beta versions"
                 exit 1
