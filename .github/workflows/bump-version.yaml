@@ -51,15 +51,17 @@ jobs:
 
           SEMVER_COUNT=$(echo "$LABELS" | jq -r '[.[]| select(test("^(patch|minor|major)$"))] | length')
           PRERELEASE_COUNT=$(echo "$LABELS" | jq -r '[.[]| select(test("^(rc|alpha|beta)$"))] | length')
+          GRADUATE_COUNT=$(echo "$LABELS" | jq -r '[.[]| select(test("^graduate$"))] | length')
 
           echo "### Label Validation" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- Semver labels found: $SEMVER_COUNT" >> $GITHUB_STEP_SUMMARY
           echo "- Pre-release labels found: $PRERELEASE_COUNT" >> $GITHUB_STEP_SUMMARY
+          echo "- Graduate labels found: $GRADUATE_COUNT" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
           # If no version labels, skip gracefully
-          if [ "$SEMVER_COUNT" -eq 0 ] && [ "$PRERELEASE_COUNT" -eq 0 ]; then
+          if [ "$SEMVER_COUNT" -eq 0 ] && [ "$PRERELEASE_COUNT" -eq 0 ] && [ "$GRADUATE_COUNT" -eq 0 ]; then
             echo "ℹ️  **No version labels found**" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "This PR will not trigger a version bump." >> $GITHUB_STEP_SUMMARY
@@ -88,10 +90,29 @@ jobs:
             exit 1
           fi
 
+          # Only one graduate label allowed
+          if [ "$GRADUATE_COUNT" -gt 1 ]; then
+            echo "❌ **Error:** Multiple graduate labels detected" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Please use only ONE \`graduate\` label" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
+          # Graduate is exclusive with all other bump labels
+          if [ "$GRADUATE_COUNT" -eq 1 ] && { [ "$SEMVER_COUNT" -gt 0 ] || [ "$PRERELEASE_COUNT" -gt 0 ]; }; then
+            echo "❌ **Error:** Graduate label cannot be combined with semver or pre-release labels" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Use only \`graduate\` to remove a pre-release suffix, or use semver/pre-release labels without \`graduate\`" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+
           echo "✅ **Label combination is valid**" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
           # Show what will happen
+          if [ "$GRADUATE_COUNT" -eq 1 ]; then
+            echo "ℹ️  Graduate label will drop the current pre-release suffix" >> $GITHUB_STEP_SUMMARY
+          fi
           if [ "$PRERELEASE_COUNT" -eq 1 ] && [ "$SEMVER_COUNT" -eq 0 ]; then
             echo "ℹ️  Pre-release label without semver label will default to patch bump if on stable version" >> $GITHUB_STEP_SUMMARY
           fi
@@ -227,11 +248,25 @@ jobs:
           # Extract label types
           SEMVER_BUMP=$(echo "$LABELS" | jq -r '.[] | select(test("^(patch|minor|major)$"))')
           PRERELEASE_TYPE=$(echo "$LABELS" | jq -r '.[] | select(test("^(rc|alpha|beta)$"))')
+          GRADUATE_LABEL=$(echo "$LABELS" | jq -r '.[] | select(test("^graduate$"))')
 
           echo "Semantic bump: '$SEMVER_BUMP'"
           echo "Pre-release type: '$PRERELEASE_TYPE'"
+          echo "Graduate: '$GRADUATE_LABEL'"
 
-          if [ -n "$PRERELEASE_TYPE" ]; then
+          if [ -n "$GRADUATE_LABEL" ]; then
+            CURRENT_VERSION=$(yq '.management.releaseVersion' .speakeasy/gen.lock)
+            echo "Current version: $CURRENT_VERSION"
+
+            if [[ ! "$CURRENT_VERSION" =~ - ]]; then
+              echo "❌ Error: Graduate label requires current version to be a pre-release (rc/alpha/beta)"
+              exit 1
+            fi
+
+            echo "Applying graduate bump to drop pre-release suffix..."
+            speakeasy bump graduate
+
+          elif [ -n "$PRERELEASE_TYPE" ]; then
             # Pre-release workflow
             CURRENT_VERSION=$(yq '.management.releaseVersion' .speakeasy/gen.lock)
             echo "Current version: $CURRENT_VERSION"
