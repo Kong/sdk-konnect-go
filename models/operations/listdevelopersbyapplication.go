@@ -9,7 +9,7 @@ import (
 
 // ListDevelopersByApplicationQueryParamFilter - Filter application developers returned in the response.
 type ListDevelopersByApplicationQueryParamFilter struct {
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	ID *components.StringFieldFilter `queryParam:"name=id"`
 }
 

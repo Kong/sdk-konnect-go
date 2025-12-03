@@ -19,6 +19,17 @@ func (e ListPortalsResponseDefaultAPIVisibility) ToPointer() *ListPortalsRespons
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *ListPortalsResponseDefaultAPIVisibility) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "public", "private":
+			return true
+		}
+	}
+	return false
+}
+
 // ListPortalsResponseDefaultPageVisibility - The default visibility of pages in the portal. If set to `public`, newly created pages are visible to unauthenticated developers. If set to `private`, newly created pages are hidden from unauthenticated developers.
 type ListPortalsResponseDefaultPageVisibility string
 
@@ -29,6 +40,17 @@ const (
 
 func (e ListPortalsResponseDefaultPageVisibility) ToPointer() *ListPortalsResponseDefaultPageVisibility {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *ListPortalsResponseDefaultPageVisibility) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "public", "private":
+			return true
+		}
+	}
+	return false
 }
 
 type ListPortalsResponsePortal struct {

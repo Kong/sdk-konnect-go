@@ -25,3 +25,14 @@ const (
 func (e PrivateDNSState) ToPointer() *PrivateDNSState {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *PrivateDNSState) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "created", "initializing", "pending-association", "ready", "error", "terminating", "terminated":
+			return true
+		}
+	}
+	return false
+}

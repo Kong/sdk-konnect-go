@@ -277,6 +277,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerGroupID: "",
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        ExpandPartials: sdkkonnectgo.Pointer(true),
     })
     if err != nil {
         log.Fatal(err)
@@ -637,6 +638,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        ExpandPartials: sdkkonnectgo.Pointer(true),
     })
     if err != nil {
         log.Fatal(err)
@@ -787,6 +789,8 @@ func main() {
     res, err := s.Plugins.ListPlugin(ctx, operations.ListPluginRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        FilterNameContains: sdkkonnectgo.Pointer("john"),
+        FilterNameEq: sdkkonnectgo.Pointer("john"),
     })
     if err != nil {
         log.Fatal(err)
@@ -974,6 +978,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -986,7 +991,11 @@ func main() {
         }),
     )
 
-    res, err := s.Plugins.GetPlugin(ctx, "3473c251-5b6c-4f45-b1ff-7ede735a366d", "9524ec7d-36d9-465d-a8c5-83a3c9390458")
+    res, err := s.Plugins.GetPlugin(ctx, operations.GetPluginRequest{
+        PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ExpandPartials: sdkkonnectgo.Pointer(true),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -998,12 +1007,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `pluginID`                                                                         | *string*                                                                           | :heavy_check_mark:                                                                 | ID of the Plugin to lookup                                                         | 3473c251-5b6c-4f45-b1ff-7ede735a366d                                               |
-| `controlPlaneID`                                                                   | *string*                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
+| `request`                                                                  | [operations.GetPluginRequest](../../models/operations/getpluginrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| `opts`                                                                     | [][operations.Option](../../models/operations/option.md)                   | :heavy_minus_sign:                                                         | The options for this request.                                              |
 
 ### Response
 
@@ -1348,6 +1356,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        ExpandPartials: sdkkonnectgo.Pointer(true),
     })
     if err != nil {
         log.Fatal(err)
@@ -1763,6 +1772,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        ExpandPartials: sdkkonnectgo.Pointer(true),
     })
     if err != nil {
         log.Fatal(err)

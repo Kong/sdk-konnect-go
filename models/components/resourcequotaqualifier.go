@@ -15,3 +15,14 @@ const (
 func (e ResourceQuotaQualifier) ToPointer() *ResourceQuotaQualifier {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *ResourceQuotaQualifier) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "count/provider-accounts.per-provider", "count/networks.not-offline", "count/data-planes-estimate", "count/serverless-data-planes-estimate":
+			return true
+		}
+	}
+	return false
+}

@@ -21,6 +21,17 @@ func (e UpstreamAlgorithm) ToPointer() *UpstreamAlgorithm {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *UpstreamAlgorithm) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "consistent-hashing", "latency", "least-connections", "round-robin", "sticky-sessions":
+			return true
+		}
+	}
+	return false
+}
+
 // UpstreamClientCertificate - If set, the certificate to be used as client certificate while TLS handshaking to the upstream server.
 type UpstreamClientCertificate struct {
 	ID *string `json:"id,omitempty"`
@@ -51,6 +62,17 @@ func (e HashFallback) ToPointer() *HashFallback {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *HashFallback) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "consumer", "cookie", "header", "ip", "none", "path", "query_arg", "uri_capture":
+			return true
+		}
+	}
+	return false
+}
+
 // HashOn - What to use as hashing input. Using `none` results in a weighted-round-robin scheme with no hashing.
 type HashOn string
 
@@ -67,6 +89,17 @@ const (
 
 func (e HashOn) ToPointer() *HashOn {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *HashOn) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "consumer", "cookie", "header", "ip", "none", "path", "query_arg", "uri_capture":
+			return true
+		}
+	}
+	return false
 }
 
 type Healthy struct {
@@ -107,18 +140,29 @@ func (h *Healthy) GetSuccesses() *int64 {
 	return h.Successes
 }
 
-type Type string
+type UpstreamType string
 
 const (
-	TypeGrpc  Type = "grpc"
-	TypeGrpcs Type = "grpcs"
-	TypeHTTP  Type = "http"
-	TypeHTTPS Type = "https"
-	TypeTCP   Type = "tcp"
+	UpstreamTypeGrpc  UpstreamType = "grpc"
+	UpstreamTypeGrpcs UpstreamType = "grpcs"
+	UpstreamTypeHTTP  UpstreamType = "http"
+	UpstreamTypeHTTPS UpstreamType = "https"
+	UpstreamTypeTCP   UpstreamType = "tcp"
 )
 
-func (e Type) ToPointer() *Type {
+func (e UpstreamType) ToPointer() *UpstreamType {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *UpstreamType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "grpc", "grpcs", "http", "https", "tcp":
+			return true
+		}
+	}
+	return false
 }
 
 type Unhealthy struct {
@@ -183,11 +227,11 @@ type Active struct {
 	// A string representing a URL path, such as /path/to/resource. Must start with a forward slash (/) and must not contain empty segments (i.e., two consecutive forward slashes).
 	HTTPPath *string `default:"/" json:"http_path"`
 	// A string representing an SNI (server name indication) value for TLS.
-	HTTPSSni               *string    `json:"https_sni,omitempty"`
-	HTTPSVerifyCertificate *bool      `default:"true" json:"https_verify_certificate"`
-	Timeout                *float64   `default:"1" json:"timeout"`
-	Type                   *Type      `default:"http" json:"type"`
-	Unhealthy              *Unhealthy `json:"unhealthy,omitempty"`
+	HTTPSSni               *string       `json:"https_sni,omitempty"`
+	HTTPSVerifyCertificate *bool         `default:"true" json:"https_verify_certificate"`
+	Timeout                *float64      `default:"1" json:"timeout"`
+	Type                   *UpstreamType `default:"http" json:"type"`
+	Unhealthy              *Unhealthy    `json:"unhealthy,omitempty"`
 }
 
 func (a Active) MarshalJSON() ([]byte, error) {
@@ -250,7 +294,7 @@ func (a *Active) GetTimeout() *float64 {
 	return a.Timeout
 }
 
-func (a *Active) GetType() *Type {
+func (a *Active) GetType() *UpstreamType {
 	if a == nil {
 		return nil
 	}
@@ -294,18 +338,29 @@ func (u *UpstreamHealthy) GetSuccesses() *int64 {
 	return u.Successes
 }
 
-type UpstreamType string
+type UpstreamHealthchecksType string
 
 const (
-	UpstreamTypeGrpc  UpstreamType = "grpc"
-	UpstreamTypeGrpcs UpstreamType = "grpcs"
-	UpstreamTypeHTTP  UpstreamType = "http"
-	UpstreamTypeHTTPS UpstreamType = "https"
-	UpstreamTypeTCP   UpstreamType = "tcp"
+	UpstreamHealthchecksTypeGrpc  UpstreamHealthchecksType = "grpc"
+	UpstreamHealthchecksTypeGrpcs UpstreamHealthchecksType = "grpcs"
+	UpstreamHealthchecksTypeHTTP  UpstreamHealthchecksType = "http"
+	UpstreamHealthchecksTypeHTTPS UpstreamHealthchecksType = "https"
+	UpstreamHealthchecksTypeTCP   UpstreamHealthchecksType = "tcp"
 )
 
-func (e UpstreamType) ToPointer() *UpstreamType {
+func (e UpstreamHealthchecksType) ToPointer() *UpstreamHealthchecksType {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *UpstreamHealthchecksType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "grpc", "grpcs", "http", "https", "tcp":
+			return true
+		}
+	}
+	return false
 }
 
 type UpstreamUnhealthy struct {
@@ -355,9 +410,9 @@ func (u *UpstreamUnhealthy) GetTimeouts() *int64 {
 }
 
 type Passive struct {
-	Healthy   *UpstreamHealthy   `json:"healthy,omitempty"`
-	Type      *UpstreamType      `default:"http" json:"type"`
-	Unhealthy *UpstreamUnhealthy `json:"unhealthy,omitempty"`
+	Healthy   *UpstreamHealthy          `json:"healthy,omitempty"`
+	Type      *UpstreamHealthchecksType `default:"http" json:"type"`
+	Unhealthy *UpstreamUnhealthy        `json:"unhealthy,omitempty"`
 }
 
 func (p Passive) MarshalJSON() ([]byte, error) {
@@ -378,7 +433,7 @@ func (p *Passive) GetHealthy() *UpstreamHealthy {
 	return p.Healthy
 }
 
-func (p *Passive) GetType() *UpstreamType {
+func (p *Passive) GetType() *UpstreamHealthchecksType {
 	if p == nil {
 		return nil
 	}

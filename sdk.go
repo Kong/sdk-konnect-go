@@ -2,7 +2,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.0.29 and generator version 2.755.9
+// Generated from OpenAPI doc version 3.0.29 and generator version 2.770.0
 
 import (
 	"context"
@@ -55,8 +55,124 @@ func Pointer[T any](v T) *T { return &v }
 // https://developer.konghq.com - Documentation for Kong Gateway and its APIs
 type SDK struct {
 	SDKVersion string
+	// Create and maintain a centralized catalog of all services running in your organization.
+	// Add custom fields and map resources from across your organization to provide a 360-degree overview of your services.
+	//
+	// Custom fields allow you to surface key information such as:
+	// - `Owner`: The person or team responsible for the service
+	// - `Product Manager`: The person assigned to guide the service's direction for customer success
+	// - `Jira Project`: The Jira project which represents past, present and future work for the service
+	//
+	// Resources are discovered from the integrations you use within your organization to create, operate and manage your services.
+	// Mapping the resources relevant to your service will provide a rich view of the service's communication channels, dependencies and more.
+	// Types of resources which you can map to a service include:
+	// - `Code Repositories:` The software project(s) that make up the service
+	// - `Monitors and Dashboards:` Tools providing visibility into the health and performance of the service
+	// - `Communication Channels`: Virtual spaces where questions and concerns can be raised about the service
+	// - `Incident Management Resources`: Alerts setup within your incident management platform to notify individuals regarding issues with the service
+	//
+	CatalogServices *CatalogServices
+	// Represents all the resources mapped to a specific service.
+	//
+	CatalogServiceResources *CatalogServiceResources
+	// Create an Event Gateway Control Plane, used to store Event Gateway configuration
+	//
+	EventGateways *EventGateways
+	// A backend cluster is an abstraction of a real Kafka cluster. It stores the connection and configuration details required for Kong Event Gateway to proxy traffic to Kafka.
+	//
+	// Multiple Kafka clusters can be proxied through a single Kong Event Gateway.
+	//
+	EventGatewayBackendClusters *EventGatewayBackendClusters
+	// DataPlane certificates control how your running Event Gateway instances connect to the Control Plane
+	//
+	EventGatewayDataPlaneCertificates *EventGatewayDataPlaneCertificates
+	// A listener represents hostname-port or IP-port combinations that connect to TCP sockets. Listeners need at least as many ports as backend brokers if you use port mapping in a Forward to Virtual Cluster policy. For SNI routing, you can route all brokers using a listener with only one port. Ports can be expressed as a single port or range. Addresses can be IPv4, IPv6, or hostnames.
+	//
+	// A listener can have policies that enforce TLS certificates and perform SNI routing. The listener runs at Layer 4 of the network stack. In Kong Event Gateway, listeners first take in the connection and then route the TCP connection to a virtual cluster based on conditions defined in listener policies.
+	//
+	EventGatewayListeners *EventGatewayListeners
+	// Policies control how Kafka protocol traffic is modified between the client and the backend cluster.
+	//
+	// Listener policies are routing policies that pass traffic to the virtual cluster.
+	//
+	EventGatewayListenerPolicies *EventGatewayListenerPolicies
+	EventGatewayNodes            *EventGatewayNodes
+	// Configure a schema registry that can be used to validate payloads when producing/consuming messages
+	//
+	EventGatewaySchemaRegistries *EventGatewaySchemaRegistries
+	// Static Keys are used by the Encrypt and Decrypt policies to encrypt data at rest
+	//
+	EventGatewayStaticKeys *EventGatewayStaticKeys
+	// Virtual clusters are the primary way clients interact with the Event Gateway proxy. They allow you to isolate clients from each other when connecting to the same backend cluster, and provide each client with modified view while still appearing as a standard Kafka cluster.
+	//
+	EventGatewayVirtualClusters *EventGatewayVirtualClusters
+	// Policies control how Kafka protocol traffic is modified between the client and the backend cluster.
+	//
+	// Cluster policies are transformation and validation policies that can be applied to Kafka messages.
+	//
+	EventGatewayVirtualClusterPolicies *EventGatewayVirtualClusterPolicies
+	// Consume policies operate on Kafka messages as they are read from a Kafka cluster.
+	//
+	// Transformations may be applied at consume time, but they are applied once per Consumer. Where possible, transofmrations should be applied as a Produce policy
+	//
+	EventGatewayVirtualClusterConsumePolicies *EventGatewayVirtualClusterConsumePolicies
+	// Produce policies operate on Kafka messages before they are written to the Kafka cluster.
+	//
+	// Where possible, apply transformations to the data using produce policies rather than consume policies for maximum efficiency.
+	//
+	EventGatewayVirtualClusterProducePolicies *EventGatewayVirtualClusterProducePolicies
+	// An integration instance represents a specific account of the integration which contains the resources used to manage and support your services.
+	// Some integrations provide configuration options to customize how it should behave once authorized (see the integration's manifest for details).
+	// Konnect-internal integrations are built-in and do not need to be installed.
+	//
+	// Once an integration instance is created, authorize the instance to allow the Service Catalog to discover its resources.
+	// Note that deleting an integration instance is a **destructive** operation.
+	// When an integration instance is deleted, all its resources and mappings will be deleted from the service catalog.
+	// In cases where the integration instance's credentials need to be updated, you may re-authorize the instance to retain all currently discovered resources and mappings.
+	// To set up and view a list of all the integrations we support, please view our [documentation](https://developer.konghq.com/service-catalog/integrations/).
+	//
+	IntegrationInstances *IntegrationInstances
+	// A integration instance may need to be provided with an auth config before authorizing the instance.
+	// Typically an auth config will be required when authorizing against a integration which is hosted within your organization.
+	// The integration instance's auth config will inform how the Service Catalog will authorize the integration instance.
+	// Note that updating the auth config for an instance which is already authorized will **remove the existing credential**, requiring you to re-authorize the instance.
+	//
+	IntegrationInstanceAuthConfig *IntegrationInstanceAuthConfig
+	// Represents the credentials use to authorize an integration instance.
+	// You will want to configure the integration instance settings and authorization configuration before authorizing the instance.
+	// This will inform the authorization process on how to reach and authorize the account.
+	// Once the integration instance is authorized, the system will automatically discover all the relevant resources from the account.
+	// The integration instance's auth credentials can be removed or updated while retaining all resources which have already been discovered.
+	//
+	IntegrationInstanceAuthCredentials *IntegrationInstanceAuthCredentials
+	// Resources are entities discovered from integration instances and are intended to be mapped to the relevant services in the catalog.
+	// Once a resource has been mapped to a service, a rich view of this resource will be displayed when viewing your service.
+	//
+	// Any resources which you would like to ignore and hide can be archived.
+	// Note that archiving a resource will **remove** any mappings it has to services in the catalog.
+	//
+	// You can create Resources using only the properties required to identify the resource in the third-party system.
+	// Additional data will be hydrated if the integration that the Resource is linked to has been provided with authentication credentials.
+	// Resources which have not yet been hydrated may still be mapped to a Catalog Service.
+	//
+	CatalogResources *CatalogResources
+	// Integrations are applications, either Konnect-internal or external, which extend the functionality of the Service Catalog.
+	// Install and authorize an integration to discover the resources across your organization which support your services.
+	// Map relevant resources to your services to provide a rich view of cataloged services.
+	// To set up and view a list of all the integrations we support please view our [documentation](https://developer.konghq.com/service-catalog/integrations/).
+	//
+	CatalogIntegrations *CatalogIntegrations
 	// Operations related to notifications
 	Notifications *Notifications
+	// Resource mappings represent the link between a resource and a service.
+	// Once a resource is mapped to a service, a rich view of the resource will be presented on the service page.
+	// A resource may be mapped to multiple services, but it cannot be mapped to the same service twice.
+	// If a resource mapped to a service is later archived, the resource mapping will be deleted.
+	//
+	CatalogResourceMappings *CatalogResourceMappings
+	// Represents all the services mapped to a specific resource.
+	//
+	CatalogResourceServices *CatalogResourceServices
 	// Application Auth Strategies are sets of plugin configurations that represent how the gateway will perform authentication and authorization for a Product Version.
 	// Called “Auth Strategy” for short in the context of portals/applications.
 	// The plugins are synced to any Gateway Service that is currently linked or becomes linked to the Product Version.
@@ -305,9 +421,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.13.2-alpha.3",
+		SDKVersion: "0.14.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.13.2-alpha.3 2.755.9 3.0.29 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.14.0 2.770.0 3.0.29 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -328,7 +444,28 @@ func New(opts ...SDKOption) *SDK {
 		sdk.sdkConfiguration.ServerURL = serverURL
 	}
 
+	sdk.CatalogServices = newCatalogServices(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogServiceResources = newCatalogServiceResources(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGateways = newEventGateways(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayBackendClusters = newEventGatewayBackendClusters(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayDataPlaneCertificates = newEventGatewayDataPlaneCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayListeners = newEventGatewayListeners(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayListenerPolicies = newEventGatewayListenerPolicies(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayNodes = newEventGatewayNodes(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewaySchemaRegistries = newEventGatewaySchemaRegistries(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayStaticKeys = newEventGatewayStaticKeys(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayVirtualClusters = newEventGatewayVirtualClusters(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayVirtualClusterPolicies = newEventGatewayVirtualClusterPolicies(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayVirtualClusterConsumePolicies = newEventGatewayVirtualClusterConsumePolicies(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EventGatewayVirtualClusterProducePolicies = newEventGatewayVirtualClusterProducePolicies(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.IntegrationInstances = newIntegrationInstances(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.IntegrationInstanceAuthConfig = newIntegrationInstanceAuthConfig(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.IntegrationInstanceAuthCredentials = newIntegrationInstanceAuthCredentials(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogResources = newCatalogResources(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogIntegrations = newCatalogIntegrations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Notifications = newNotifications(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogResourceMappings = newCatalogResourceMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogResourceServices = newCatalogResourceServices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AppAuthStrategies = newAppAuthStrategies(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CloudGateways = newCloudGateways(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ControlPlanes = newControlPlanes(sdk, sdk.sdkConfiguration, sdk.hooks)

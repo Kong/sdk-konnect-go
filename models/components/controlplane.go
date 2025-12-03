@@ -22,6 +22,17 @@ func (e ControlPlaneClusterType) ToPointer() *ControlPlaneClusterType {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *ControlPlaneClusterType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "CLUSTER_TYPE_CONTROL_PLANE", "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER", "CLUSTER_TYPE_CONTROL_PLANE_GROUP", "CLUSTER_TYPE_SERVERLESS", "CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY":
+			return true
+		}
+	}
+	return false
+}
+
 // ControlPlaneAuthType - The auth type value of the cluster associated with the Runtime Group.
 type ControlPlaneAuthType string
 
@@ -34,8 +45,19 @@ func (e ControlPlaneAuthType) ToPointer() *ControlPlaneAuthType {
 	return &e
 }
 
-// Config - CP configuration object for related access endpoints.
-type Config struct {
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *ControlPlaneAuthType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "pinned_client_certs", "pki_client_certs":
+			return true
+		}
+	}
+	return false
+}
+
+// ControlPlaneConfig - CP configuration object for related access endpoints.
+type ControlPlaneConfig struct {
 	// Control Plane Endpoint.
 	ControlPlaneEndpoint string `json:"control_plane_endpoint"`
 	// Telemetry Endpoint.
@@ -50,42 +72,42 @@ type Config struct {
 	ProxyUrls []ProxyURL `json:"proxy_urls,omitempty"`
 }
 
-func (c *Config) GetControlPlaneEndpoint() string {
+func (c *ControlPlaneConfig) GetControlPlaneEndpoint() string {
 	if c == nil {
 		return ""
 	}
 	return c.ControlPlaneEndpoint
 }
 
-func (c *Config) GetTelemetryEndpoint() string {
+func (c *ControlPlaneConfig) GetTelemetryEndpoint() string {
 	if c == nil {
 		return ""
 	}
 	return c.TelemetryEndpoint
 }
 
-func (c *Config) GetClusterType() ControlPlaneClusterType {
+func (c *ControlPlaneConfig) GetClusterType() ControlPlaneClusterType {
 	if c == nil {
 		return ControlPlaneClusterType("")
 	}
 	return c.ClusterType
 }
 
-func (c *Config) GetAuthType() ControlPlaneAuthType {
+func (c *ControlPlaneConfig) GetAuthType() ControlPlaneAuthType {
 	if c == nil {
 		return ControlPlaneAuthType("")
 	}
 	return c.AuthType
 }
 
-func (c *Config) GetCloudGateway() bool {
+func (c *ControlPlaneConfig) GetCloudGateway() bool {
 	if c == nil {
 		return false
 	}
 	return c.CloudGateway
 }
 
-func (c *Config) GetProxyUrls() []ProxyURL {
+func (c *ControlPlaneConfig) GetProxyUrls() []ProxyURL {
 	if c == nil {
 		return nil
 	}
@@ -106,7 +128,7 @@ type ControlPlane struct {
 	//
 	Labels map[string]string `json:"labels,omitempty"`
 	// CP configuration object for related access endpoints.
-	Config Config `json:"config"`
+	Config ControlPlaneConfig `json:"config"`
 	// An ISO-8604 timestamp representation of control plane creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8604 timestamp representation of control plane update date.
@@ -152,9 +174,9 @@ func (c *ControlPlane) GetLabels() map[string]string {
 	return c.Labels
 }
 
-func (c *ControlPlane) GetConfig() Config {
+func (c *ControlPlane) GetConfig() ControlPlaneConfig {
 	if c == nil {
-		return Config{}
+		return ControlPlaneConfig{}
 	}
 	return c.Config
 }

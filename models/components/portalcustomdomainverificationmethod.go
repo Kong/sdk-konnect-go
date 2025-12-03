@@ -12,3 +12,14 @@ const (
 func (e PortalCustomDomainVerificationMethod) ToPointer() *PortalCustomDomainVerificationMethod {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *PortalCustomDomainVerificationMethod) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "http", "custom_certificate":
+			return true
+		}
+	}
+	return false
+}

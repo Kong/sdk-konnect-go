@@ -9,7 +9,7 @@ import (
 
 // ListRegistrationsByApplicationQueryParamFilter - Filter application registrations returned in the response.
 type ListRegistrationsByApplicationQueryParamFilter struct {
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Status *components.StringFieldFilter `queryParam:"name=status"`
 }
 

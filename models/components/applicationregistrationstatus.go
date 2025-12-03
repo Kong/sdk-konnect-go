@@ -16,3 +16,14 @@ const (
 func (e ApplicationRegistrationStatus) ToPointer() *ApplicationRegistrationStatus {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *ApplicationRegistrationStatus) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "approved", "pending", "revoked", "rejected":
+			return true
+		}
+	}
+	return false
+}

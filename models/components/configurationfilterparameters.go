@@ -3,13 +3,13 @@
 package components
 
 type ConfigurationFilterParameters struct {
-	// Filters on the given string field value by fuzzy match.
+	// Filter using **one** of the following operators: `eq`, `contains`
 	EventTitle *LegacyStringFieldFilter `queryParam:"name=event_title"`
-	// Filters on the given string field value by fuzzy match.
+	// Filter using **one** of the following operators: `eq`, `contains`
 	EventDescription *LegacyStringFieldFilter `queryParam:"name=event_description"`
-	// Filters on the given string field value by fuzzy match.
+	// Filter using **one** of the following operators: `eq`, `contains`
 	EventNamespace *LegacyStringFieldFilter `queryParam:"name=event_namespace"`
-	// Filters on the given string field value by fuzzy match.
+	// Filter using **one** of the following operators: `eq`, `contains`
 	Region *LegacyStringFieldFilter `queryParam:"name=region"`
 }
 

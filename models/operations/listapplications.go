@@ -9,9 +9,9 @@ import (
 
 // ListApplicationsQueryParamFilter - Filter applications returned in the response.
 type ListApplicationsQueryParamFilter struct {
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	DeveloperID *components.UUIDFieldFilter `queryParam:"name=developer_id"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Name *components.StringFieldFilter `queryParam:"name=name"`
 }
 

@@ -50,6 +50,8 @@ func main() {
     res, err := s.Services.ListService(ctx, operations.ListServiceRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        FilterNameContains: sdkkonnectgo.Pointer("john"),
+        FilterNameEq: sdkkonnectgo.Pointer("john"),
     })
     if err != nil {
         log.Fatal(err)

@@ -13,3 +13,14 @@ const (
 func (e EntityType) ToPointer() *EntityType {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *EntityType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "api", "api_package":
+			return true
+		}
+	}
+	return false
+}

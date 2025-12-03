@@ -1,12 +1,17 @@
 # Name
 
-Filters on the given string field value by exact match inequality.
 
+## Values
 
-## Fields
-
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `Eq`               | **string*          | :heavy_minus_sign: | N/A                |
-| `Contains`         | **string*          | :heavy_minus_sign: | N/A                |
-| `Neq`              | **string*          | :heavy_minus_sign: | N/A                |
+| Name                  | Value                 |
+| --------------------- | --------------------- |
+| `NameAll`             | all                   |
+| `NameAlter`           | alter                 |
+| `NameAlterConfigs`    | alter_configs         |
+| `NameCreate`          | create                |
+| `NameDelete`          | delete                |
+| `NameDescribe`        | describe              |
+| `NameDescribeConfigs` | describe_configs      |
+| `NameIdempotentWrite` | idempotent_write      |
+| `NameRead`            | read                  |
+| `NameWrite`           | write                 |

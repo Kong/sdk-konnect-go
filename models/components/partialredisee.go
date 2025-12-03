@@ -83,6 +83,17 @@ func (e SentinelRole) ToPointer() *SentinelRole {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *SentinelRole) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "any", "master", "slave":
+			return true
+		}
+	}
+	return false
+}
+
 type PartialRedisEeConfig struct {
 	// Maximum retry attempts for redirection.
 	ClusterMaxRedirections *int64 `default:"5" json:"cluster_max_redirections"`

@@ -61,6 +61,32 @@ func (a *AppAuthStrategyOpenIDConnectResponseAppAuthStrategyConfigs) GetOpenidCo
 	return a.OpenidConnect
 }
 
+// AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType - The type of DCR provider.
+type AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType string
+
+const (
+	AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeAuth0   AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType = "auth0"
+	AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeAzureAd AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType = "azureAd"
+	AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeCurity  AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType = "curity"
+	AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeOkta    AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType = "okta"
+	AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderTypeHTTP    AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType = "http"
+)
+
+func (e AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType) ToPointer() *AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "auth0", "azureAd", "curity", "okta", "http":
+			return true
+		}
+	}
+	return false
+}
+
 type AppAuthStrategyOpenIDConnectResponseAppAuthStrategyDcrProvider struct {
 	// Contains a unique identifier used for this resource.
 	ID   string `json:"id"`
@@ -68,8 +94,8 @@ type AppAuthStrategyOpenIDConnectResponseAppAuthStrategyDcrProvider struct {
 	// The display name of the DCR provider. This is used to identify the DCR provider in the Portal UI.
 	//
 	DisplayName *string `json:"display_name,omitempty"`
-	// The type of DCR provider. Can be one of the following - auth0, azureAd, curity, okta, http
-	ProviderType DcrProviderType `json:"provider_type"`
+	// The type of DCR provider.
+	ProviderType AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType `json:"provider_type"`
 }
 
 func (a AppAuthStrategyOpenIDConnectResponseAppAuthStrategyDcrProvider) MarshalJSON() ([]byte, error) {
@@ -104,9 +130,9 @@ func (a *AppAuthStrategyOpenIDConnectResponseAppAuthStrategyDcrProvider) GetDisp
 	return a.DisplayName
 }
 
-func (a *AppAuthStrategyOpenIDConnectResponseAppAuthStrategyDcrProvider) GetProviderType() DcrProviderType {
+func (a *AppAuthStrategyOpenIDConnectResponseAppAuthStrategyDcrProvider) GetProviderType() AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType {
 	if a == nil {
-		return DcrProviderType("")
+		return AppAuthStrategyOpenIDConnectResponseAppAuthStrategyProviderType("")
 	}
 	return a.ProviderType
 }
@@ -269,6 +295,32 @@ func (a *AppAuthStrategyKeyAuthResponseAppAuthStrategyConfigs) GetKeyAuth() AppA
 	return a.KeyAuth
 }
 
+// AppAuthStrategyKeyAuthResponseProviderType - The type of DCR provider.
+type AppAuthStrategyKeyAuthResponseProviderType string
+
+const (
+	AppAuthStrategyKeyAuthResponseProviderTypeAuth0   AppAuthStrategyKeyAuthResponseProviderType = "auth0"
+	AppAuthStrategyKeyAuthResponseProviderTypeAzureAd AppAuthStrategyKeyAuthResponseProviderType = "azureAd"
+	AppAuthStrategyKeyAuthResponseProviderTypeCurity  AppAuthStrategyKeyAuthResponseProviderType = "curity"
+	AppAuthStrategyKeyAuthResponseProviderTypeOkta    AppAuthStrategyKeyAuthResponseProviderType = "okta"
+	AppAuthStrategyKeyAuthResponseProviderTypeHTTP    AppAuthStrategyKeyAuthResponseProviderType = "http"
+)
+
+func (e AppAuthStrategyKeyAuthResponseProviderType) ToPointer() *AppAuthStrategyKeyAuthResponseProviderType {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AppAuthStrategyKeyAuthResponseProviderType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "auth0", "azureAd", "curity", "okta", "http":
+			return true
+		}
+	}
+	return false
+}
+
 type AppAuthStrategyKeyAuthResponseDcrProvider struct {
 	// Contains a unique identifier used for this resource.
 	ID   string `json:"id"`
@@ -276,8 +328,8 @@ type AppAuthStrategyKeyAuthResponseDcrProvider struct {
 	// The display name of the DCR provider. This is used to identify the DCR provider in the Portal UI.
 	//
 	DisplayName *string `json:"display_name,omitempty"`
-	// The type of DCR provider. Can be one of the following - auth0, azureAd, curity, okta, http
-	ProviderType DcrProviderType `json:"provider_type"`
+	// The type of DCR provider.
+	ProviderType AppAuthStrategyKeyAuthResponseProviderType `json:"provider_type"`
 }
 
 func (a AppAuthStrategyKeyAuthResponseDcrProvider) MarshalJSON() ([]byte, error) {
@@ -312,9 +364,9 @@ func (a *AppAuthStrategyKeyAuthResponseDcrProvider) GetDisplayName() *string {
 	return a.DisplayName
 }
 
-func (a *AppAuthStrategyKeyAuthResponseDcrProvider) GetProviderType() DcrProviderType {
+func (a *AppAuthStrategyKeyAuthResponseDcrProvider) GetProviderType() AppAuthStrategyKeyAuthResponseProviderType {
 	if a == nil {
-		return DcrProviderType("")
+		return AppAuthStrategyKeyAuthResponseProviderType("")
 	}
 	return a.ProviderType
 }

@@ -18,11 +18,17 @@ func main() {
 		}),
 	)
 
-	res, err := s.Notifications.ListUserConfigurations(ctx, nil)
+	res, err := s.CatalogServices.CreateCatalogService(ctx, components.CreateCatalogService{
+		Name:        "user-svc",
+		DisplayName: "User Service",
+		Labels: map[string]string{
+			"env": "test",
+		},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.UserConfigurationListResponse != nil {
+	if res.CatalogService != nil {
 		// handle response
 	}
 }

@@ -9,7 +9,7 @@ import (
 
 // ListPortalTeamsQueryParamFilter - Filter teams returned in the response.
 type ListPortalTeamsQueryParamFilter struct {
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Name *components.StringFieldFilter `queryParam:"name=name"`
 }
 

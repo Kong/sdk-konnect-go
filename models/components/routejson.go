@@ -53,6 +53,17 @@ func (e HTTPSRedirectStatusCode) ToPointer() *HTTPSRedirectStatusCode {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *HTTPSRedirectStatusCode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case 301, 302, 307, 308, 426:
+			return true
+		}
+	}
+	return false
+}
+
 // PathHandling - Controls how the Service path, Route path and requested path are combined when sending a request to the upstream. See above for a detailed description of each behavior.
 type PathHandling string
 
@@ -63,6 +74,17 @@ const (
 
 func (e PathHandling) ToPointer() *PathHandling {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *PathHandling) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "v0", "v1":
+			return true
+		}
+	}
+	return false
 }
 
 // RouteJSONProtocols - A string representing a protocol, such as HTTP or HTTPS.
@@ -83,6 +105,17 @@ const (
 
 func (e RouteJSONProtocols) ToPointer() *RouteJSONProtocols {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *RouteJSONProtocols) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "grpc", "grpcs", "http", "https", "tcp", "tls", "tls_passthrough", "udp", "ws", "wss":
+			return true
+		}
+	}
+	return false
 }
 
 // RouteJSONService - The Service this Route is associated to. This is where the Route proxies traffic to.

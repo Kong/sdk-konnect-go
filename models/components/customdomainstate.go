@@ -17,3 +17,14 @@ const (
 func (e CustomDomainState) ToPointer() *CustomDomainState {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *CustomDomainState) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "created", "initializing", "ready", "terminating", "terminated", "error":
+			return true
+		}
+	}
+	return false
+}

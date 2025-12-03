@@ -22,6 +22,17 @@ func (e State) ToPointer() *State {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *State) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "created", "initializing", "ready", "terminating", "terminated":
+			return true
+		}
+	}
+	return false
+}
+
 // StateMetadata - Metadata describing the backing state of the dataplane group and why it may be in an erroneous state.
 type StateMetadata struct {
 	// Reported status of the dataplane group from backing infrastructure.

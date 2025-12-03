@@ -20,6 +20,17 @@ func (e GroupStatusState) ToPointer() *GroupStatusState {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *GroupStatusState) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "OK", "CONFLICT", "UNKNOWN":
+			return true
+		}
+	}
+	return false
+}
+
 // GroupStatus - The Group Status object contains information about the status of a control plane group.
 type GroupStatus struct {
 	// The control plane group ID.

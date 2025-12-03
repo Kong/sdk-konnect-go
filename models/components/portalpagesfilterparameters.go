@@ -3,13 +3,13 @@
 package components
 
 type PortalPagesFilterParameters struct {
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	ID *UUIDFieldFilter `queryParam:"name=id"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Slug *StringFieldFilter `queryParam:"name=slug"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Title *StringFieldFilter `queryParam:"name=title"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Visibility *StringFieldFilter `queryParam:"name=visibility"`
 	// Filters on the given datetime (RFC-3339) field value.
 	CreatedAt *DateTimeFieldFilter `queryParam:"name=created_at"`

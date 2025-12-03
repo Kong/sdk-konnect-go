@@ -14,3 +14,14 @@ const (
 func (e NotificationStatus) ToPointer() *NotificationStatus {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *NotificationStatus) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "READ", "UNREAD", "ARCHIVED":
+			return true
+		}
+	}
+	return false
+}

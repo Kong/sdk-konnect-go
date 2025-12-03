@@ -21,6 +21,17 @@ func (e RouteExpressionHTTPSRedirectStatusCode) ToPointer() *RouteExpressionHTTP
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *RouteExpressionHTTPSRedirectStatusCode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case 301, 302, 307, 308, 426:
+			return true
+		}
+	}
+	return false
+}
+
 // RouteExpressionPathHandling - Controls how the Service path, Route path and requested path are combined when sending a request to the upstream. See above for a detailed description of each behavior.
 type RouteExpressionPathHandling string
 
@@ -31,6 +42,17 @@ const (
 
 func (e RouteExpressionPathHandling) ToPointer() *RouteExpressionPathHandling {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *RouteExpressionPathHandling) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "v0", "v1":
+			return true
+		}
+	}
+	return false
 }
 
 // RouteExpressionProtocols - A string representing a protocol, such as HTTP or HTTPS.
@@ -51,6 +73,17 @@ const (
 
 func (e RouteExpressionProtocols) ToPointer() *RouteExpressionProtocols {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *RouteExpressionProtocols) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "grpc", "grpcs", "http", "https", "tcp", "tls", "tls_passthrough", "udp", "ws", "wss":
+			return true
+		}
+	}
+	return false
 }
 
 // RouteExpressionService - The Service this Route is associated to. This is where the Route proxies traffic to.

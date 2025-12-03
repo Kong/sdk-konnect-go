@@ -13,9 +13,9 @@ var GetSystemAccountsServerList = []string{
 
 // GetSystemAccountsQueryParamFilter - Filter system accounts returned in the response.
 type GetSystemAccountsQueryParamFilter struct {
-	// Filters on the given string field value by fuzzy match.
+	// Filter using **one** of the following operators: `eq`, `contains`
 	Name *components.LegacyStringFieldFilter `queryParam:"name=name"`
-	// Filters on the given string field value by fuzzy match.
+	// Filter using **one** of the following operators: `eq`, `contains`
 	Description *components.LegacyStringFieldFilter `queryParam:"name=description"`
 	// Filter by a boolean value (true/false).
 	KonnectManaged *bool `queryParam:"name=konnect_managed"`

@@ -3,15 +3,15 @@
 package components
 
 type APIPublicationFilterParameters struct {
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	PortalID *UUIDFieldFilter `queryParam:"name=portal_id"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	PortalName *StringFieldFilter `queryParam:"name=portal_name"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	APIID *UUIDFieldFilter `queryParam:"name=api_id"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	APIName *StringFieldFilter `queryParam:"name=api_name"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	AuthStrategyID *UUIDFieldFilter `queryParam:"name=auth_strategy_id"`
 }
 

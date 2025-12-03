@@ -13,7 +13,7 @@ var ListTeamsServerList = []string{
 
 // ListTeamsQueryParamFilter - Filter teams returned in the response.
 type ListTeamsQueryParamFilter struct {
-	// Filters on the given string field value by fuzzy match.
+	// Filter using **one** of the following operators: `eq`, `contains`
 	Name *components.LegacyStringFieldFilter `queryParam:"name=name"`
 }
 

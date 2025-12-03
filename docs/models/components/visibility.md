@@ -1,6 +1,6 @@
 # Visibility
 
-Whether a menu item is public or private. Private menu items are only accessible to authenticated users.
+The visibility of the integration.
 
 
 ## Values

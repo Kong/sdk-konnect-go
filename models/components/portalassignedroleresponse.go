@@ -19,6 +19,17 @@ func (e EntityRegion) ToPointer() *EntityRegion {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *EntityRegion) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "us", "eu", "au", "me", "in", "sg", "*":
+			return true
+		}
+	}
+	return false
+}
+
 // PortalAssignedRoleResponse - An assigned role associates a service and an action to a team.
 type PortalAssignedRoleResponse struct {
 	ID             *string `json:"id,omitempty"`

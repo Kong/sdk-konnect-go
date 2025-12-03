@@ -1,0 +1,10 @@
+# EventGatewayTLSListenerPolicyConfig
+
+
+## Fields
+
+| Field                                                                                                 | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `Certificates`                                                                                        | [][components.TLSCertificate](../../models/components/tlscertificate.md)                              | :heavy_check_mark:                                                                                    | N/A                                                                                                   |
+| `Versions`                                                                                            | [*components.TLSVersionRange](../../models/components/tlsversionrange.md)                             | :heavy_minus_sign:                                                                                    | A range of TLS versions.                                                                              |
+| `AllowPlaintext`                                                                                      | **bool*                                                                                               | :heavy_minus_sign:                                                                                    | If false, only TLS connections are allowed. If true, both TLS and plaintext connections are allowed.<br/> |

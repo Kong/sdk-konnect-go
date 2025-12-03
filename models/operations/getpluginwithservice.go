@@ -14,6 +14,8 @@ type GetPluginWithServiceRequest struct {
 	ServiceID string `pathParam:"style=simple,explode=false,name=ServiceId"`
 	// ID of the Plugin to lookup
 	PluginID string `pathParam:"style=simple,explode=false,name=PluginId"`
+	// Expand partials for the plugin.
+	ExpandPartials *bool `queryParam:"style=form,explode=true,name=expand_partials"`
 }
 
 func (g *GetPluginWithServiceRequest) GetControlPlaneID() string {
@@ -35,6 +37,13 @@ func (g *GetPluginWithServiceRequest) GetPluginID() string {
 		return ""
 	}
 	return g.PluginID
+}
+
+func (g *GetPluginWithServiceRequest) GetExpandPartials() *bool {
+	if g == nil {
+		return nil
+	}
+	return g.ExpandPartials
 }
 
 type GetPluginWithServiceResponse struct {

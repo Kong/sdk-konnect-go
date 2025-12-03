@@ -16,3 +16,14 @@ const (
 func (e EmailVerificationStatus) ToPointer() *EmailVerificationStatus {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *EmailVerificationStatus) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "pending", "success", "failed", "temporary_failure", "not_started":
+			return true
+		}
+	}
+	return false
+}

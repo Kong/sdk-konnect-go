@@ -14,6 +14,8 @@ type GetPluginWithRouteRequest struct {
 	RouteID string `pathParam:"style=simple,explode=false,name=RouteId"`
 	// ID of the Plugin to lookup
 	PluginID string `pathParam:"style=simple,explode=false,name=PluginId"`
+	// Expand partials for the plugin.
+	ExpandPartials *bool `queryParam:"style=form,explode=true,name=expand_partials"`
 }
 
 func (g *GetPluginWithRouteRequest) GetControlPlaneID() string {
@@ -35,6 +37,13 @@ func (g *GetPluginWithRouteRequest) GetPluginID() string {
 		return ""
 	}
 	return g.PluginID
+}
+
+func (g *GetPluginWithRouteRequest) GetExpandPartials() *bool {
+	if g == nil {
+		return nil
+	}
+	return g.ExpandPartials
 }
 
 type GetPluginWithRouteResponse struct {

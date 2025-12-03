@@ -17,6 +17,12 @@ type ListConsumerRequest struct {
 	Offset *string `queryParam:"style=form,explode=true,name=offset"`
 	// A list of tags to filter the list of resources on. Multiple tags can be concatenated using ',' to mean AND or using '/' to mean OR.
 	Tags *string `queryParam:"style=form,explode=true,name=tags"`
+	// Filter consumers by their custom_id.
+	CustomID *string `queryParam:"style=form,explode=true,name=custom_id"`
+	// Filter routes by a substring of the name.
+	FilterNameContains *string `queryParam:"style=form,explode=true,name=filter[name][contains]"`
+	// Filter routes by their name.
+	FilterNameEq *string `queryParam:"style=form,explode=true,name=filter[name][eq]"`
 }
 
 func (l ListConsumerRequest) MarshalJSON() ([]byte, error) {
@@ -56,6 +62,27 @@ func (l *ListConsumerRequest) GetTags() *string {
 		return nil
 	}
 	return l.Tags
+}
+
+func (l *ListConsumerRequest) GetCustomID() *string {
+	if l == nil {
+		return nil
+	}
+	return l.CustomID
+}
+
+func (l *ListConsumerRequest) GetFilterNameContains() *string {
+	if l == nil {
+		return nil
+	}
+	return l.FilterNameContains
+}
+
+func (l *ListConsumerRequest) GetFilterNameEq() *string {
+	if l == nil {
+		return nil
+	}
+	return l.FilterNameEq
 }
 
 // ListConsumerResponseBody - A successful response listing Consumers

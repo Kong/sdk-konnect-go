@@ -38,6 +38,17 @@ func (e Protocol) ToPointer() *Protocol {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *Protocol) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "grpc", "grpcs", "http", "https", "tcp", "tls", "tls_passthrough", "udp", "ws", "wss":
+			return true
+		}
+	}
+	return false
+}
+
 // TLSSans - Additional Subject Alternative Names that can be matched on Upstream server's TLS certificate (in addition to `host`).
 type TLSSans struct {
 	// A dnsName for TLS verification.

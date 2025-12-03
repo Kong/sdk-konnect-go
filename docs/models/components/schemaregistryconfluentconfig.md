@@ -1,0 +1,14 @@
+# SchemaRegistryConfluentConfig
+
+The configuration of [Confluent Schema Registry](https://github.com/confluentinc/schema-registry)
+
+
+
+## Fields
+
+| Field                                                                                                           | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `SchemaType`                                                                                                    | [components.SchemaType](../../models/components/schematype.md)                                                  | :heavy_check_mark:                                                                                              | The format of the message.                                                                                      |
+| `Endpoint`                                                                                                      | *string*                                                                                                        | :heavy_check_mark:                                                                                              | The endpoint of the Confluent schema registry.                                                                  |
+| `TimeoutSeconds`                                                                                                | **int64*                                                                                                        | :heavy_minus_sign:                                                                                              | Total time in seconds from establishing connection to receive a response from schema registry.<br/>             |
+| `Authentication`                                                                                                | [*components.SchemaRegistryAuthenticationScheme](../../models/components/schemaregistryauthenticationscheme.md) | :heavy_minus_sign:                                                                                              | The authentication configuration for the schema registry.                                                       |
