@@ -16,6 +16,9 @@ on:
 permissions:
   contents: read
 
+env:
+  MISE_VERBOSE: 1
+
 jobs:
   verify-diff:
     runs-on:
