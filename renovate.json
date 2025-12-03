@@ -57,6 +57,16 @@
       "matchStrings": [
         "(?<currentValue>[0-9.]+?)\\s+#\\s+renovate:\\s+datasource=(?<datasource>.*?)\\s+depName=(?<depName>.*?)\\n"
       ]
+    },
+    {
+      "description": "Match dependencies in .tools_verisons.yaml that are properly annotated with `# renovate: datasource={} depName={}.`",
+      "customType": "regex",
+      "fileMatch": [
+        "\\.tools_versions\\.yaml$"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( registryUrl=(?<registryUrl>.*?))?\\n.+\"(?<currentValue>.*?)\""
+      ]
     }
   ]
 }

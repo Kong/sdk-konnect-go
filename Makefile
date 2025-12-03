@@ -10,6 +10,10 @@ MISE := $(shell which mise)
 mise:
 	@mise -V >/dev/null || (echo "mise - https://github.com/jdx/mise - not found. Please install it." && exit 1)
 
+.PHONY: mise-install
+mise-install: mise
+	@$(MISE) install -q $(DEP_VER)
+
 # Do not store yq's version in .tools_versions.yaml as it is used to get tool versions.
 # renovate: datasource=github-releases depName=mikefarah/yq
 YQ_VERSION = 4.43.1
@@ -20,24 +24,22 @@ yq: mise # Download yq locally if necessary.
 	@$(MISE) install -q yq@$(YQ_VERSION)
 
 CONTROLLER_GEN_VERSION = $(shell $(YQ) -r '.controller-tools' < $(TOOLS_VERSIONS_FILE))
-CONTROLLER_GEN = $(PROJECT_DIR)/bin/installs/kube-controller-tools/$(CONTROLLER_GEN_VERSION)/bin/controller-gen
+CONTROLLER_GEN = $(PROJECT_DIR)/bin/installs/github-kubernetes-sigs-controller-tools/$(CONTROLLER_GEN_VERSION)/controller-gen
 .PHONY: controller-gen
 controller-gen: mise yq ## Download controller-gen locally if necessary.
-	@$(MISE) plugin install --yes -q kube-controller-tools
-	@$(MISE) install -q kube-controller-tools@$(CONTROLLER_GEN_VERSION)
+	$(MAKE) mise-install DEP_VER=github:kubernetes-sigs/controller-tools@$(CONTROLLER_GEN_VERSION)
 
 MOCKERY_VERSION = $(shell $(YQ) -r '.mockery' < $(TOOLS_VERSIONS_FILE))
-MOCKERY = $(PROJECT_DIR)/bin/installs/mockery/$(MOCKERY_VERSION)/bin/mockery
+MOCKERY = $(PROJECT_DIR)/bin/installs/github-vektra-mockery/$(MOCKERY_VERSION)/mockery
 .PHONY: mockery
 mockery: mise yq ## Download mockery locally if necessary.
-	@$(MISE) plugin install --yes -q mockery https://github.com/cabify/asdf-mockery.git
-	@$(MISE) install -q mockery@$(MOCKERY_VERSION)
+	$(MAKE) mise-install DEP_VER=github:vektra/mockery@$(MOCKERY_VERSION)
 
 IFACEMAKER_VERSION = $(shell $(YQ) -r '.ifacemaker' < $(TOOLS_VERSIONS_FILE))
-IFACEMAKER = $(PROJECT_DIR)/bin/ifacemaker
+IFACEMAKER = $(PROJECT_DIR)/bin/installs/go-github-com-vburenin-ifacemaker/$(IFACEMAKER_VERSION)/bin/ifacemaker
 .PHONY: ifacemaker
 ifacemaker: yq
-	GOBIN=$(PROJECT_DIR)/bin go install -v github.com/vburenin/ifacemaker@v$(IFACEMAKER_VERSION)
+	$(MAKE) mise-install DEP_VER=go:github.com/vburenin/ifacemaker@$(IFACEMAKER_VERSION)
 
 # ------------------------------------------------------------------------------
 # Code generation
