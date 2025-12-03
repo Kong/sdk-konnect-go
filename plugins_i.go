@@ -52,7 +52,7 @@ type PluginsSDK interface {
 	DeletePlugin(ctx context.Context, controlPlaneID string, pluginID string, opts ...operations.Option) (*operations.DeletePluginResponse, error)
 	// GetPlugin - Get a Plugin
 	// Get a Plugin using ID.
-	GetPlugin(ctx context.Context, pluginID string, controlPlaneID string, opts ...operations.Option) (*operations.GetPluginResponse, error)
+	GetPlugin(ctx context.Context, request operations.GetPluginRequest, opts ...operations.Option) (*operations.GetPluginResponse, error)
 	// UpsertPlugin - Upsert a Plugin
 	// Create or Update Plugin using ID.
 	UpsertPlugin(ctx context.Context, request operations.UpsertPluginRequest, opts ...operations.Option) (*operations.UpsertPluginResponse, error)
