@@ -31,6 +31,17 @@ func (e APISpecResponseAPISpecType) ToPointer() *APISpecResponseAPISpecType {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *APISpecResponseAPISpecType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "oas2", "oas3", "asyncapi":
+			return true
+		}
+	}
+	return false
+}
+
 // APISpecResponse - API specification (OpenAPI or AsyncAPI)
 type APISpecResponse struct {
 	// The API specification identifier.

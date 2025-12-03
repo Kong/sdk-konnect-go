@@ -49,6 +49,9 @@ func main() {
     res, err := s.Consumers.ListConsumer(ctx, operations.ListConsumerRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        CustomID: sdkkonnectgo.Pointer("my-custom-id"),
+        FilterNameContains: sdkkonnectgo.Pointer("john"),
+        FilterNameEq: sdkkonnectgo.Pointer("john"),
     })
     if err != nil {
         log.Fatal(err)

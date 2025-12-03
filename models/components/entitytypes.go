@@ -16,3 +16,14 @@ const (
 func (e EntityTypes) ToPointer() *EntityTypes {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *EntityTypes) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "billing-invoice", "access-token", "webhook", "dev-portal", "dataplane-group", "dataplane":
+			return true
+		}
+	}
+	return false
+}

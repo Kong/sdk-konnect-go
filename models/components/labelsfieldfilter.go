@@ -2,13 +2,18 @@
 
 package components
 
-// LabelsFieldFilter - Filters on the given string field value by exact match inequality.
+// LabelsFieldFilter - Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 type LabelsFieldFilter struct {
-	Eq        *string `queryParam:"name=eq"`
-	Contains  *string `queryParam:"name=contains"`
+	// The field exactly matches the provided value.
+	Eq *string `queryParam:"name=eq"`
+	// The field contains the provided value.
+	Contains *string `queryParam:"name=contains"`
+	// The field contains any of the provided values.
 	Ocontains *string `queryParam:"name=ocontains"`
-	Oeq       *string `queryParam:"name=oeq"`
-	Neq       *string `queryParam:"name=neq"`
+	// The field matches any of the provided values.
+	Oeq *string `queryParam:"name=oeq"`
+	// The field does not match the provided value.
+	Neq *string `queryParam:"name=neq"`
 }
 
 func (l *LabelsFieldFilter) GetEq() *string {

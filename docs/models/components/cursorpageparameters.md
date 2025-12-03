@@ -1,0 +1,10 @@
+# CursorPageParameters
+
+
+## Fields
+
+| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 | Example                                                                     |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `Size`                                                                      | **int64*                                                                    | :heavy_minus_sign:                                                          | The number of items included per page.                                      | 10                                                                          |
+| `After`                                                                     | **string*                                                                   | :heavy_minus_sign:                                                          | Cursor param specifying the page (i.e. the next page) of data returned.     | ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ                                          |
+| `Before`                                                                    | **string*                                                                   | :heavy_minus_sign:                                                          | Cursor param specifying the page (i.e. the previous page) of data returned. | ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ                                          |

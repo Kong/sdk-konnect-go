@@ -15,3 +15,14 @@ const (
 func (e NotificationNamespace) ToPointer() *NotificationNamespace {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *NotificationNamespace) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "plan-and-usage", "organization", "dev-portal", "cloud-gateways", "gateway-manager":
+			return true
+		}
+	}
+	return false
+}

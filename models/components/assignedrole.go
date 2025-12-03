@@ -19,6 +19,17 @@ func (e AssignedRoleEntityRegion) ToPointer() *AssignedRoleEntityRegion {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AssignedRoleEntityRegion) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "us", "eu", "au", "me", "in", "sg", "*":
+			return true
+		}
+	}
+	return false
+}
+
 // AssignedRole - An assigned role is a role that has been assigned to a user or team.
 type AssignedRole struct {
 	// The ID of the role assignment.

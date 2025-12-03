@@ -120,6 +120,17 @@ func (e PluginWithoutParentsProtocols) ToPointer() *PluginWithoutParentsProtocol
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *PluginWithoutParentsProtocols) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "grpc", "grpcs", "http", "https", "tcp", "tls", "tls_passthrough", "udp", "ws", "wss":
+			return true
+		}
+	}
+	return false
+}
+
 // PluginWithoutParentsRoute - If set, the plugin will only activate when receiving requests via the specified route. Leave unset for the plugin to activate regardless of the Route being used.
 type PluginWithoutParentsRoute struct {
 	ID *string `json:"id,omitempty"`

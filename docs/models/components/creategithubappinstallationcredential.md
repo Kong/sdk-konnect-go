@@ -1,0 +1,11 @@
+# CreateGitHubAppInstallationCredential
+
+Payload used to create an `GitHub App Installation` credential for an integration instance.
+
+
+## Fields
+
+| Field                                                                                                                            | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                                           | *string*                                                                                                                         | :heavy_check_mark:                                                                                                               | N/A                                                                                                                              |
+| `Config`                                                                                                                         | [components.CreateGitHubAppInstallationCredentialConfig](../../models/components/creategithubappinstallationcredentialconfig.md) | :heavy_check_mark:                                                                                                               | N/A                                                                                                                              |

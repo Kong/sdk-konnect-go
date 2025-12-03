@@ -6,16 +6,27 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type Mode string
+type PortalCustomizationMode string
 
 const (
-	ModeLight  Mode = "light"
-	ModeDark   Mode = "dark"
-	ModeSystem Mode = "system"
+	PortalCustomizationModeLight  PortalCustomizationMode = "light"
+	PortalCustomizationModeDark   PortalCustomizationMode = "dark"
+	PortalCustomizationModeSystem PortalCustomizationMode = "system"
 )
 
-func (e Mode) ToPointer() *Mode {
+func (e PortalCustomizationMode) ToPointer() *PortalCustomizationMode {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *PortalCustomizationMode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "light", "dark", "system":
+			return true
+		}
+	}
+	return false
 }
 
 type Colors struct {
@@ -30,9 +41,9 @@ func (c *Colors) GetPrimary() *string {
 }
 
 type Theme struct {
-	Name   *string `json:"name,omitempty"`
-	Mode   *Mode   `json:"mode,omitempty"`
-	Colors *Colors `json:"colors,omitempty"`
+	Name   *string                  `json:"name,omitempty"`
+	Mode   *PortalCustomizationMode `json:"mode,omitempty"`
+	Colors *Colors                  `json:"colors,omitempty"`
 }
 
 func (t *Theme) GetName() *string {
@@ -42,7 +53,7 @@ func (t *Theme) GetName() *string {
 	return t.Name
 }
 
-func (t *Theme) GetMode() *Mode {
+func (t *Theme) GetMode() *PortalCustomizationMode {
 	if t == nil {
 		return nil
 	}

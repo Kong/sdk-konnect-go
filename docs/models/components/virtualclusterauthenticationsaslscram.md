@@ -1,0 +1,11 @@
+# VirtualClusterAuthenticationSaslScram
+
+SASL/SCRAM authentication scheme for the virtual cluster.
+
+
+## Fields
+
+| Field                                                                                                                                  | Type                                                                                                                                   | Required                                                                                                                               | Description                                                                                                                            |
+| -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                                                 | *string*                                                                                                                               | :heavy_check_mark:                                                                                                                     | N/A                                                                                                                                    |
+| `Algorithm`                                                                                                                            | [components.VirtualClusterAuthenticationSaslScramAlgorithm](../../models/components/virtualclusterauthenticationsaslscramalgorithm.md) | :heavy_check_mark:                                                                                                                     | The algorithm used for SASL/SCRAM authentication.                                                                                      |

@@ -20,6 +20,17 @@ func (e APIVersionResponseAPISpecType) ToPointer() *APIVersionResponseAPISpecTyp
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *APIVersionResponseAPISpecType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "oas2", "oas3", "asyncapi":
+			return true
+		}
+	}
+	return false
+}
+
 type APIVersionResponseValidationMessages struct {
 	Message string `json:"message"`
 }

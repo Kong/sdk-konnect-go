@@ -9,6 +9,32 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// PatchAwsTransitGateway - Request schema for updating AWS Transit Gateway
+type PatchAwsTransitGateway struct {
+	// CIDR blocks for constructing a route table for the transit gateway, when attaching to the owning
+	// network.
+	//
+	CidrBlocks []string `json:"cidr_blocks"`
+}
+
+func (p PatchAwsTransitGateway) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchAwsTransitGateway) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"cidr_blocks"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (p *PatchAwsTransitGateway) GetCidrBlocks() []string {
+	if p == nil {
+		return []string{}
+	}
+	return p.CidrBlocks
+}
+
 type PatchAWSResourceEndpointGatewayAWSResourceEndpointAttachmentType string
 
 const (
@@ -91,11 +117,13 @@ type PatchTransitGatewayRequestType string
 
 const (
 	PatchTransitGatewayRequestTypePatchAwsResourceEndpointGateway PatchTransitGatewayRequestType = "PatchAwsResourceEndpointGateway"
+	PatchTransitGatewayRequestTypePatchAwsTransitGateway          PatchTransitGatewayRequestType = "PatchAwsTransitGateway"
 )
 
 // PatchTransitGatewayRequest - Request schema for updating a transit gateway.
 type PatchTransitGatewayRequest struct {
 	PatchAwsResourceEndpointGateway *PatchAwsResourceEndpointGateway `queryParam:"inline,name=PatchTransitGatewayRequest"`
+	PatchAwsTransitGateway          *PatchAwsTransitGateway          `queryParam:"inline,name=PatchTransitGatewayRequest"`
 
 	Type PatchTransitGatewayRequestType
 }
@@ -109,6 +137,15 @@ func CreatePatchTransitGatewayRequestPatchAwsResourceEndpointGateway(patchAwsRes
 	}
 }
 
+func CreatePatchTransitGatewayRequestPatchAwsTransitGateway(patchAwsTransitGateway PatchAwsTransitGateway) PatchTransitGatewayRequest {
+	typ := PatchTransitGatewayRequestTypePatchAwsTransitGateway
+
+	return PatchTransitGatewayRequest{
+		PatchAwsTransitGateway: &patchAwsTransitGateway,
+		Type:                   typ,
+	}
+}
+
 func (u *PatchTransitGatewayRequest) UnmarshalJSON(data []byte) error {
 
 	var patchAwsResourceEndpointGateway PatchAwsResourceEndpointGateway = PatchAwsResourceEndpointGateway{}
@@ -118,12 +155,23 @@ func (u *PatchTransitGatewayRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var patchAwsTransitGateway PatchAwsTransitGateway = PatchAwsTransitGateway{}
+	if err := utils.UnmarshalJSON(data, &patchAwsTransitGateway, "", true, nil); err == nil {
+		u.PatchAwsTransitGateway = &patchAwsTransitGateway
+		u.Type = PatchTransitGatewayRequestTypePatchAwsTransitGateway
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PatchTransitGatewayRequest", string(data))
 }
 
 func (u PatchTransitGatewayRequest) MarshalJSON() ([]byte, error) {
 	if u.PatchAwsResourceEndpointGateway != nil {
 		return utils.MarshalJSON(u.PatchAwsResourceEndpointGateway, "", true)
+	}
+
+	if u.PatchAwsTransitGateway != nil {
+		return utils.MarshalJSON(u.PatchAwsTransitGateway, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type PatchTransitGatewayRequest: all fields are null")

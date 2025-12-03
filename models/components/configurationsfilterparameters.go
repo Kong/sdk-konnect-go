@@ -3,7 +3,7 @@
 package components
 
 type ConfigurationsFilterParameters struct {
-	// Returns entities that exact match any of the comma-delimited phrases in the filter string.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	ControlPlaneID  *IDFieldFilter              `queryParam:"name=control_plane_id"`
 	ControlPlaneGeo *ControlPlaneGeoFieldFilter `queryParam:"name=control_plane_geo"`
 }

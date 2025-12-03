@@ -1,0 +1,14 @@
+# GatewayNode
+
+
+## Fields
+
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ID`                                                         | *string*                                                     | :heavy_check_mark:                                           | The node ID.                                                 | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                         |
+| `Version`                                                    | *string*                                                     | :heavy_check_mark:                                           | The string representation of the node current version.       |                                                              |
+| `LastSeenAt`                                                 | [time.Time](https://pkg.go.dev/time#Time)                    | :heavy_check_mark:                                           | An ISO-8604 timestamp representation of node last seen date. | 2025-08-04T20:10:06.927Z                                     |
+| `CreatedAt`                                                  | [time.Time](https://pkg.go.dev/time#Time)                    | :heavy_check_mark:                                           | An ISO-8604 timestamp representation of node creation date.  | 2025-08-04T20:10:06.927Z                                     |
+| `UpdatedAt`                                                  | [time.Time](https://pkg.go.dev/time#Time)                    | :heavy_check_mark:                                           | An ISO-8604 timestamp representation of node update date.    | 2025-08-04T20:10:06.927Z                                     |
+| `ConfigAppliedAt`                                            | [*time.Time](https://pkg.go.dev/time#Time)                   | :heavy_minus_sign:                                           | The time the node succeeds in applying the configuration.    |                                                              |
+| `ConfigVersion`                                              | **string*                                                    | :heavy_minus_sign:                                           | The version number of the configuration applied by the node. | v1.123                                                       |

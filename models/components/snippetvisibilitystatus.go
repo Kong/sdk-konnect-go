@@ -14,3 +14,14 @@ const (
 func (e SnippetVisibilityStatus) ToPointer() *SnippetVisibilityStatus {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *SnippetVisibilityStatus) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "public", "private":
+			return true
+		}
+	}
+	return false
+}

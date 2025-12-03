@@ -12,3 +12,14 @@ const (
 func (e NotificationChannelType) ToPointer() *NotificationChannelType {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *NotificationChannelType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "EMAIL", "IN_APP":
+			return true
+		}
+	}
+	return false
+}

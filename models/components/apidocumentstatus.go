@@ -13,3 +13,14 @@ const (
 func (e APIDocumentStatus) ToPointer() *APIDocumentStatus {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *APIDocumentStatus) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "published", "unpublished":
+			return true
+		}
+	}
+	return false
+}

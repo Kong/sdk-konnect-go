@@ -14,6 +14,17 @@ func (e UpdateControlPlaneRequestAuthType) ToPointer() *UpdateControlPlaneReques
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *UpdateControlPlaneRequestAuthType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "pinned_client_certs", "pki_client_certs":
+			return true
+		}
+	}
+	return false
+}
+
 // UpdateControlPlaneRequest - The request schema for the update control plane request.
 type UpdateControlPlaneRequest struct {
 	// The name of the control plane.

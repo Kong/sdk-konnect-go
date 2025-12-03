@@ -18,6 +18,17 @@ func (e UpdatePortalDefaultAPIVisibility) ToPointer() *UpdatePortalDefaultAPIVis
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *UpdatePortalDefaultAPIVisibility) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "public", "private":
+			return true
+		}
+	}
+	return false
+}
+
 // UpdatePortalDefaultPageVisibility - The default visibility of pages in the portal. If set to `public`, newly created pages are visible to unauthenticated developers. If set to `private`, newly created pages are hidden from unauthenticated developers.
 type UpdatePortalDefaultPageVisibility string
 
@@ -28,6 +39,17 @@ const (
 
 func (e UpdatePortalDefaultPageVisibility) ToPointer() *UpdatePortalDefaultPageVisibility {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *UpdatePortalDefaultPageVisibility) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "public", "private":
+			return true
+		}
+	}
+	return false
 }
 
 // UpdatePortal - Update a portal's settings.

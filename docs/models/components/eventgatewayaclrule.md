@@ -1,0 +1,13 @@
+# EventGatewayACLRule
+
+A Kafka ACL rule to apply to virtual cluster traffic
+
+
+## Fields
+
+| Field                                                                                                       | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `ResourceType`                                                                                              | [components.ResourceType](../../models/components/resourcetype.md)                                          | :heavy_check_mark:                                                                                          | This rule applies to access only for type of resource                                                       |
+| `Action`                                                                                                    | [components.Action](../../models/components/action.md)                                                      | :heavy_check_mark:                                                                                          | How to handle the request if the rule matches                                                               |
+| `Operations`                                                                                                | [][components.EventGatewayACLOperation](../../models/components/eventgatewayacloperation.md)                | :heavy_check_mark:                                                                                          | Types of Kafka operations to match against. Note that not every operation can apply to every resource type. |
+| `ResourceNames`                                                                                             | [][components.EventGatewayACLResourceName](../../models/components/eventgatewayaclresourcename.md)          | :heavy_check_mark:                                                                                          | If any of these entries match, the resource name matches for this rule.                                     |

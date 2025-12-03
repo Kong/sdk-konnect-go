@@ -17,6 +17,17 @@ func (e CreateControlPlaneRequestClusterType) ToPointer() *CreateControlPlaneReq
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *CreateControlPlaneRequestClusterType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "CLUSTER_TYPE_CONTROL_PLANE", "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER", "CLUSTER_TYPE_CONTROL_PLANE_GROUP", "CLUSTER_TYPE_SERVERLESS", "CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY":
+			return true
+		}
+	}
+	return false
+}
+
 // AuthType - The auth type value of the cluster associated with the Runtime Group.
 type AuthType string
 
@@ -27,6 +38,17 @@ const (
 
 func (e AuthType) ToPointer() *AuthType {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AuthType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "pinned_client_certs", "pki_client_certs":
+			return true
+		}
+	}
+	return false
 }
 
 // CreateControlPlaneRequest - The request schema for the create control plane request.

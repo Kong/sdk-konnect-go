@@ -17,6 +17,10 @@ type ListServiceRequest struct {
 	Offset *string `queryParam:"style=form,explode=true,name=offset"`
 	// A list of tags to filter the list of resources on. Multiple tags can be concatenated using ',' to mean AND or using '/' to mean OR.
 	Tags *string `queryParam:"style=form,explode=true,name=tags"`
+	// Filter routes by a substring of the name.
+	FilterNameContains *string `queryParam:"style=form,explode=true,name=filter[name][contains]"`
+	// Filter routes by their name.
+	FilterNameEq *string `queryParam:"style=form,explode=true,name=filter[name][eq]"`
 }
 
 func (l ListServiceRequest) MarshalJSON() ([]byte, error) {
@@ -56,6 +60,20 @@ func (l *ListServiceRequest) GetTags() *string {
 		return nil
 	}
 	return l.Tags
+}
+
+func (l *ListServiceRequest) GetFilterNameContains() *string {
+	if l == nil {
+		return nil
+	}
+	return l.FilterNameContains
+}
+
+func (l *ListServiceRequest) GetFilterNameEq() *string {
+	if l == nil {
+		return nil
+	}
+	return l.FilterNameEq
 }
 
 // ListServiceResponseBody - A successful response listing Services

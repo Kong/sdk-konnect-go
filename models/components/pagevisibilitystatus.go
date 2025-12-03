@@ -14,3 +14,14 @@ const (
 func (e PageVisibilityStatus) ToPointer() *PageVisibilityStatus {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *PageVisibilityStatus) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "public", "private":
+			return true
+		}
+	}
+	return false
+}

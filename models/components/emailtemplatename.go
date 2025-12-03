@@ -19,3 +19,14 @@ const (
 func (e EmailTemplateName) ToPointer() *EmailTemplateName {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *EmailTemplateName) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "confirm-email-address", "app-registration-approved", "app-registration-rejected", "app-registration-revoked", "reset-password", "account-access-approved", "account-access-rejected", "account-access-revoked":
+			return true
+		}
+	}
+	return false
+}

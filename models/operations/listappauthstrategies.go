@@ -7,62 +7,62 @@ import (
 	"net/http"
 )
 
-// Filter application auth strategies returned in the response.
-type Filter struct {
-	// Filters on the given string field value by exact match inequality.
+// QueryParamFilter - Filter application auth strategies returned in the response.
+type QueryParamFilter struct {
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	StrategyType *components.StringFieldFilter `queryParam:"name=strategy_type"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Name *components.StringFieldFilter `queryParam:"name=name"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	DisplayName *components.StringFieldFilter `queryParam:"name=display_name"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	DcrProviderID *components.UUIDFieldFilter `queryParam:"name=dcr_provider_id"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	DcrProviderName *components.StringFieldFilter `queryParam:"name=dcr_provider_name"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	DcrProviderType *components.StringFieldFilter `queryParam:"name=dcr_provider_type"`
 }
 
-func (f *Filter) GetStrategyType() *components.StringFieldFilter {
-	if f == nil {
+func (q *QueryParamFilter) GetStrategyType() *components.StringFieldFilter {
+	if q == nil {
 		return nil
 	}
-	return f.StrategyType
+	return q.StrategyType
 }
 
-func (f *Filter) GetName() *components.StringFieldFilter {
-	if f == nil {
+func (q *QueryParamFilter) GetName() *components.StringFieldFilter {
+	if q == nil {
 		return nil
 	}
-	return f.Name
+	return q.Name
 }
 
-func (f *Filter) GetDisplayName() *components.StringFieldFilter {
-	if f == nil {
+func (q *QueryParamFilter) GetDisplayName() *components.StringFieldFilter {
+	if q == nil {
 		return nil
 	}
-	return f.DisplayName
+	return q.DisplayName
 }
 
-func (f *Filter) GetDcrProviderID() *components.UUIDFieldFilter {
-	if f == nil {
+func (q *QueryParamFilter) GetDcrProviderID() *components.UUIDFieldFilter {
+	if q == nil {
 		return nil
 	}
-	return f.DcrProviderID
+	return q.DcrProviderID
 }
 
-func (f *Filter) GetDcrProviderName() *components.StringFieldFilter {
-	if f == nil {
+func (q *QueryParamFilter) GetDcrProviderName() *components.StringFieldFilter {
+	if q == nil {
 		return nil
 	}
-	return f.DcrProviderName
+	return q.DcrProviderName
 }
 
-func (f *Filter) GetDcrProviderType() *components.StringFieldFilter {
-	if f == nil {
+func (q *QueryParamFilter) GetDcrProviderType() *components.StringFieldFilter {
+	if q == nil {
 		return nil
 	}
-	return f.DcrProviderType
+	return q.DcrProviderType
 }
 
 type ListAppAuthStrategiesRequest struct {
@@ -87,7 +87,7 @@ type ListAppAuthStrategiesRequest struct {
 	//
 	Sort *string `queryParam:"style=form,explode=true,name=sort"`
 	// Filter application auth strategies returned in the response.
-	Filter *Filter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *QueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
 func (l *ListAppAuthStrategiesRequest) GetPageSize() *int64 {
@@ -111,7 +111,7 @@ func (l *ListAppAuthStrategiesRequest) GetSort() *string {
 	return l.Sort
 }
 
-func (l *ListAppAuthStrategiesRequest) GetFilter() *Filter {
+func (l *ListAppAuthStrategiesRequest) GetFilter() *QueryParamFilter {
 	if l == nil {
 		return nil
 	}

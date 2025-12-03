@@ -3,11 +3,11 @@
 package components
 
 type APIFilterParameters struct {
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	ID *UUIDFieldFilter `queryParam:"name=id"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Name *StringFieldFilter `queryParam:"name=name"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Version    *StringFieldFilter     `queryParam:"name=version"`
 	Labels     *LabelsFieldFilter     `queryParam:"name=labels"`
 	Attributes *AttributesFieldFilter `queryParam:"name=attributes"`

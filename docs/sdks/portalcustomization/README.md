@@ -105,7 +105,7 @@ func main() {
                 components.PortalMenuItem{
                     Path: "/about/company",
                     Title: "My Page",
-                    Visibility: components.VisibilityPublic,
+                    Visibility: components.PortalMenuItemVisibilityPublic,
                     External: false,
                 },
             },
@@ -119,7 +119,7 @@ func main() {
                 components.PortalMenuItem{
                     Path: "/about/company",
                     Title: "My Page",
-                    Visibility: components.VisibilityPublic,
+                    Visibility: components.PortalMenuItemVisibilityPublic,
                     External: false,
                 },
             },
@@ -194,7 +194,7 @@ func main() {
                 components.PortalMenuItem{
                     Path: "/about/company",
                     Title: "My Page",
-                    Visibility: components.VisibilityPublic,
+                    Visibility: components.PortalMenuItemVisibilityPublic,
                     External: false,
                 },
             },
@@ -205,7 +205,7 @@ func main() {
                         components.PortalMenuItem{
                             Path: "/about/company",
                             Title: "My Page",
-                            Visibility: components.VisibilityPublic,
+                            Visibility: components.PortalMenuItemVisibilityPublic,
                             External: true,
                         },
                     },
@@ -215,7 +215,7 @@ func main() {
                 components.PortalMenuItem{
                     Path: "/about/company",
                     Title: "My Page",
-                    Visibility: components.VisibilityPublic,
+                    Visibility: components.PortalMenuItemVisibilityPublic,
                     External: true,
                 },
             },

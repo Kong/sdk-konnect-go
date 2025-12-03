@@ -16,6 +16,10 @@ type ListAPIVersionsRequest struct {
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 	// Filters API Version in the response.
 	Filter *components.APIVersionFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`
+	// Sorts a collection of API versions. Supported sort attributes are:
+	//   - created_at
+	//
+	Sort *string `queryParam:"style=form,explode=true,name=sort"`
 }
 
 func (l *ListAPIVersionsRequest) GetAPIID() string {
@@ -44,6 +48,13 @@ func (l *ListAPIVersionsRequest) GetFilter() *components.APIVersionFilterParamet
 		return nil
 	}
 	return l.Filter
+}
+
+func (l *ListAPIVersionsRequest) GetSort() *string {
+	if l == nil {
+		return nil
+	}
+	return l.Sort
 }
 
 type ListAPIVersionsResponse struct {

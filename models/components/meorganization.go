@@ -21,6 +21,17 @@ func (e MeOrganizationState) ToPointer() *MeOrganizationState {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *MeOrganizationState) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "active", "inactive", "deleting", "deleted":
+			return true
+		}
+	}
+	return false
+}
+
 // MeOrganization - Me Organization
 type MeOrganization struct {
 	// UUID of the organization.

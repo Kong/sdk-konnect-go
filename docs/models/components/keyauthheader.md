@@ -1,0 +1,10 @@
+# KeyAuthHeader
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `Name`                                                                             | *string*                                                                           | :heavy_check_mark:                                                                 | The exact name of the HTTP request header where the credential should be inserted. | X-API-Key                                                                          |
+| `DisplayName`                                                                      | *string*                                                                           | :heavy_check_mark:                                                                 | An optional user-friendly label for the key, used in UI forms to guide users.      | API Key                                                                            |
+| `Description`                                                                      | *string*                                                                           | :heavy_check_mark:                                                                 | An optional brief explanation of the purpose or usage of the key.                  |                                                                                    |

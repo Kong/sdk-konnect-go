@@ -1113,7 +1113,7 @@ func (s *AuthSettings) GetTeamGroupMappings(ctx context.Context, pageSize *int64
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -1963,7 +1963,7 @@ func (s *AuthSettings) GetIdpTeamMappings(ctx context.Context, pageSize *int64, 
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -2205,7 +2205,7 @@ func (s *AuthSettings) GetIdpTeamMappings(ctx context.Context, pageSize *int64, 
 // GetIdentityProviders - List Identity Providers
 // Retrieves the identity providers available within the organization. This operation provides information about
 // various identity providers for SAML or OIDC authentication integrations.
-func (s *AuthSettings) GetIdentityProviders(ctx context.Context, filter *operations.QueryParamFilter, opts ...operations.Option) (*operations.GetIdentityProvidersResponse, error) {
+func (s *AuthSettings) GetIdentityProviders(ctx context.Context, filter *operations.GetIdentityProvidersQueryParamFilter, opts ...operations.Option) (*operations.GetIdentityProvidersResponse, error) {
 	request := operations.GetIdentityProvidersRequest{
 		Filter: filter,
 	}
@@ -2260,7 +2260,7 @@ func (s *AuthSettings) GetIdentityProviders(ctx context.Context, filter *operati
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 

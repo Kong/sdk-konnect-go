@@ -9,11 +9,11 @@ import (
 
 // ListPortalDevelopersQueryParamFilter - Filter developers returned in the response.
 type ListPortalDevelopersQueryParamFilter struct {
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Name *components.StringFieldFilter `queryParam:"name=name"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Status *components.StringFieldFilter `queryParam:"name=status"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Email *components.StringFieldFilter `queryParam:"name=email"`
 }
 

@@ -12,7 +12,7 @@ Handling errors in this SDK should largely match your expectations. All operatio
 
 By Default, an API error will return `sdkerrors.SDKError`. When custom error responses are specified for an operation, the SDK may also return their associated error. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation.
 
-For example, the `ListUserConfigurations` function may return the following errors:
+For example, the `CreateCatalogService` function may return the following errors:
 
 | Error Type                  | Status Code | Content Type             |
 | --------------------------- | ----------- | ------------------------ |
@@ -44,7 +44,13 @@ func main() {
 		}),
 	)
 
-	res, err := s.Notifications.ListUserConfigurations(ctx, nil)
+	res, err := s.CatalogServices.CreateCatalogService(ctx, components.CreateCatalogService{
+		Name:        "user-svc",
+		DisplayName: "User Service",
+		Labels: map[string]string{
+			"env": "test",
+		},
+	})
 	if err != nil {
 
 		var e *sdkerrors.BadRequestError
@@ -112,11 +118,17 @@ func main() {
 		}),
 	)
 
-	res, err := s.Notifications.ListUserConfigurations(ctx, nil)
+	res, err := s.CatalogServices.CreateCatalogService(ctx, components.CreateCatalogService{
+		Name:        "user-svc",
+		DisplayName: "User Service",
+		Labels: map[string]string{
+			"env": "test",
+		},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.UserConfigurationListResponse != nil {
+	if res.CatalogService != nil {
 		// handle response
 	}
 }
@@ -146,11 +158,17 @@ func main() {
 		}),
 	)
 
-	res, err := s.Notifications.ListUserConfigurations(ctx, nil)
+	res, err := s.CatalogServices.CreateCatalogService(ctx, components.CreateCatalogService{
+		Name:        "user-svc",
+		DisplayName: "User Service",
+		Labels: map[string]string{
+			"env": "test",
+		},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.UserConfigurationListResponse != nil {
+	if res.CatalogService != nil {
 		// handle response
 	}
 }
@@ -251,11 +269,17 @@ func main() {
 		}),
 	)
 
-	res, err := s.Notifications.ListUserConfigurations(ctx, nil)
+	res, err := s.CatalogServices.CreateCatalogService(ctx, components.CreateCatalogService{
+		Name:        "user-svc",
+		DisplayName: "User Service",
+		Labels: map[string]string{
+			"env": "test",
+		},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.UserConfigurationListResponse != nil {
+	if res.CatalogService != nil {
 		// handle response
 	}
 }
@@ -371,7 +395,13 @@ func main() {
 		}),
 	)
 
-	res, err := s.Notifications.ListUserConfigurations(ctx, nil, operations.WithRetries(
+	res, err := s.CatalogServices.CreateCatalogService(ctx, components.CreateCatalogService{
+		Name:        "user-svc",
+		DisplayName: "User Service",
+		Labels: map[string]string{
+			"env": "test",
+		},
+	}, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
 			Backoff: &retry.BackoffStrategy{
@@ -385,7 +415,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.UserConfigurationListResponse != nil {
+	if res.CatalogService != nil {
 		// handle response
 	}
 }
@@ -424,11 +454,17 @@ func main() {
 		}),
 	)
 
-	res, err := s.Notifications.ListUserConfigurations(ctx, nil)
+	res, err := s.CatalogServices.CreateCatalogService(ctx, components.CreateCatalogService{
+		Name:        "user-svc",
+		DisplayName: "User Service",
+		Labels: map[string]string{
+			"env": "test",
+		},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.UserConfigurationListResponse != nil {
+	if res.CatalogService != nil {
 		// handle response
 	}
 }
