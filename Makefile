@@ -182,7 +182,27 @@ _generate.ifacemaker:
 		-p sdkkonnectgo
 
 # TODO: Update TYPES_TO_MOCK as new types are added that need mocking.
-TYPES_TO_MOCK := ControlPlanes Consumers ConsumerGroups Services Keys KeySets Plugins
+# This can be achived with:
+# TYPES_TO_MOCK := $(shell grep -B 20 'rootSDK.*\*SDK' *.go | grep 'type.*struct' | awk '{print $$2}' | sort -u)
+# but for now we don't want to mock everything.
+TYPES_TO_MOCK := \
+	ACLs \
+	APIKeys \
+	BasicAuthCredentials \
+	ConsumerGroups \
+	Consumers \
+	ControlPlaneGroups \
+	ControlPlanes \
+	HMACAuthCredentials \
+	JWTs \
+	Keys \
+	KeySets \
+	Plugins \
+	Routes \
+	Services \
+	Targets \
+	Upstreams \
+	Vaults
 
 .PHONY: generate.interfaces
 generate.interfaces: ifacemaker
