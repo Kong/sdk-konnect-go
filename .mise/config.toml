@@ -1,0 +1,3 @@
+[tools."github:speakeasy-api/speakeasy"]
+# renovate: datasource=github-releases depName=speakeasy-api/speakeasy
+version = "1.668.0"
