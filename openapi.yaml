@@ -21509,20 +21509,24 @@ components:
       type: boolean
       example: false
       deprecated: true
+      x-speakeasy-param-computed: true
     SAMLAuthEnabled:
       description: A Konnect Identity Admin assigns teams to a developer.
       type: boolean
       example: false
       deprecated: true
+      x-speakeasy-param-computed: true
     OIDCIdpMappingEnabled:
       description: IdP groups determine the Portal Teams a developer has. Replaced by idp_mapping_enabled.
       type: boolean
       example: true
       deprecated: true
+      x-speakeasy-param-computed: true
     IDPMappingEnabled:
       description: Whether IdP groups determine the Konnect Portal teams a developer has.
       type: boolean
       example: true
+      x-speakeasy-param-computed: true
     PortalAuthenticationSettingsResponse:
       x-speakeasy-entity: PortalAuth
       description: The developer authentication settings for a portal.
@@ -21826,22 +21830,26 @@ components:
           description: The organization has basic auth enabled.
           type: boolean
           example: true
+          x-speakeasy-param-computed: true
         oidc_auth_enabled:
           description: 'Deprecated. Use the [Identity Provider API](https://developer.konghq.com/api/konnect/portal-management/v3/#/operations/update-portal-identity-provider) instead.'
           type: boolean
           example: false
           deprecated: true
+          x-speakeasy-param-computed: true
         saml_auth_enabled:
           description: 'Deprecated. Use the [Identity Provider API](https://developer.konghq.com/api/konnect/portal-management/v3/#/operations/update-portal-identity-provider) instead.'
           type: boolean
           example: false
           deprecated: true
+          x-speakeasy-param-computed: true
         oidc_team_mapping_enabled:
           $ref: '#/components/schemas/OIDCIdpMappingEnabled'
         konnect_mapping_enabled:
           description: Whether a Konnect Identity Admin assigns teams to a developer.
           type: boolean
           example: false
+          x-speakeasy-param-computed: true
         idp_mapping_enabled:
           $ref: '#/components/schemas/IDPMappingEnabled'
         oidc_issuer:
