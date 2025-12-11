@@ -67,6 +67,16 @@
       "matchStrings": [
         "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( registryUrl=(?<registryUrl>.*?))?\\n.+\"(?<currentValue>.*?)\""
       ]
+    },
+    {
+      "description": "Match dependencies in .mise/config.toml that are properly annotated with `# renovate: datasource={} depName={}.`",
+      "customType": "regex",
+      "fileMatch": [
+        "\\.mise/config\\.toml$"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)\\n.+\"(?<currentValue>.*?)\""
+      ]
     }
   ]
 }
