@@ -19,10 +19,10 @@ const (
 )
 
 type VirtualClusterAuthenticationSensitiveDataAwareScheme struct {
-	VirtualClusterAuthenticationAnonymous                   *VirtualClusterAuthenticationAnonymous                   `queryParam:"inline,name=VirtualClusterAuthenticationSensitiveDataAwareScheme"`
-	VirtualClusterAuthenticationSaslPlainSensitiveDataAware *VirtualClusterAuthenticationSaslPlainSensitiveDataAware `queryParam:"inline,name=VirtualClusterAuthenticationSensitiveDataAwareScheme"`
-	VirtualClusterAuthenticationSaslScram                   *VirtualClusterAuthenticationSaslScram                   `queryParam:"inline,name=VirtualClusterAuthenticationSensitiveDataAwareScheme"`
-	VirtualClusterAuthenticationOauthBearer                 *VirtualClusterAuthenticationOauthBearer                 `queryParam:"inline,name=VirtualClusterAuthenticationSensitiveDataAwareScheme"`
+	VirtualClusterAuthenticationAnonymous                   *VirtualClusterAuthenticationAnonymous                   `queryParam:"inline,name=VirtualClusterAuthenticationSensitiveDataAwareScheme" union:"member"`
+	VirtualClusterAuthenticationSaslPlainSensitiveDataAware *VirtualClusterAuthenticationSaslPlainSensitiveDataAware `queryParam:"inline,name=VirtualClusterAuthenticationSensitiveDataAwareScheme" union:"member"`
+	VirtualClusterAuthenticationSaslScram                   *VirtualClusterAuthenticationSaslScram                   `queryParam:"inline,name=VirtualClusterAuthenticationSensitiveDataAwareScheme" union:"member"`
+	VirtualClusterAuthenticationOauthBearer                 *VirtualClusterAuthenticationOauthBearer                 `queryParam:"inline,name=VirtualClusterAuthenticationSensitiveDataAwareScheme" union:"member"`
 
 	Type VirtualClusterAuthenticationSensitiveDataAwareSchemeType
 }

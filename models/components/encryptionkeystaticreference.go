@@ -17,8 +17,8 @@ const (
 
 // EncryptionKeyStaticReference - A static encryption key reference, either by ID or by value.
 type EncryptionKeyStaticReference struct {
-	ReferenceByID   *ReferenceByID   `queryParam:"inline,name=EncryptionKeyStaticReference"`
-	ReferenceByName *ReferenceByName `queryParam:"inline,name=EncryptionKeyStaticReference"`
+	ReferenceByID   *ReferenceByID   `queryParam:"inline,name=EncryptionKeyStaticReference" union:"member"`
+	ReferenceByName *ReferenceByName `queryParam:"inline,name=EncryptionKeyStaticReference" union:"member"`
 
 	Type EncryptionKeyStaticReferenceType
 }

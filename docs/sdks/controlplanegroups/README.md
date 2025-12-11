@@ -1,5 +1,4 @@
 # ControlPlaneGroups
-(*ControlPlaneGroups*)
 
 ## Overview
 

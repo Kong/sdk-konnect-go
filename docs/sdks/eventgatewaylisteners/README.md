@@ -1,5 +1,4 @@
 # EventGatewayListeners
-(*EventGatewayListeners*)
 
 ## Overview
 

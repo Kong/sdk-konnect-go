@@ -1,5 +1,4 @@
 # CatalogIntegrations
-(*CatalogIntegrations*)
 
 ## Overview
 

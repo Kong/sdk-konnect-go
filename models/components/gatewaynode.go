@@ -29,7 +29,7 @@ func (g GatewayNode) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GatewayNode) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "version", "last_seen_at", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
 		return err
 	}
 	return nil

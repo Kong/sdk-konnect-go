@@ -1,5 +1,4 @@
 # CatalogResourceMappings
-(*CatalogResourceMappings*)
 
 ## Overview
 

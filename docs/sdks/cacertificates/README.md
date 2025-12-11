@@ -1,5 +1,4 @@
 # CACertificates
-(*CACertificates*)
 
 ## Overview
 

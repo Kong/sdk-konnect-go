@@ -1,5 +1,4 @@
 # HMACAuthCredentials
-(*HMACAuthCredentials*)
 
 ## Overview
 

@@ -488,8 +488,8 @@ const (
 
 // AppAuthStrategy - A set of plugin configurations that represent how the gateway will perform authentication and authorization for a Product Version. Called “Auth Strategy” for short in the context of portals/applications. The plugins are synced to any Gateway Service that is currently linked or becomes linked to the Product Version.
 type AppAuthStrategy struct {
-	AppAuthStrategyKeyAuthResponseAppAuthStrategyKeyAuthResponse             *AppAuthStrategyKeyAuthResponseAppAuthStrategyKeyAuthResponse             `queryParam:"inline,name=AppAuthStrategy"`
-	AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectResponse *AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectResponse `queryParam:"inline,name=AppAuthStrategy"`
+	AppAuthStrategyKeyAuthResponseAppAuthStrategyKeyAuthResponse             *AppAuthStrategyKeyAuthResponseAppAuthStrategyKeyAuthResponse             `queryParam:"inline,name=AppAuthStrategy" union:"member"`
+	AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectResponse *AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectResponse `queryParam:"inline,name=AppAuthStrategy" union:"member"`
 
 	Type AppAuthStrategyType
 }

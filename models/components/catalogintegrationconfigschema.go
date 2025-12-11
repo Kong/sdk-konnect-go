@@ -32,10 +32,10 @@ const (
 )
 
 type CatalogIntegrationConfigSchema struct {
-	CatalogIntegrationConfigSchema1 *CatalogIntegrationConfigSchema1 `queryParam:"inline,name=CatalogIntegrationConfigSchema"`
-	StringConfigFieldSchema         *StringConfigFieldSchema         `queryParam:"inline,name=CatalogIntegrationConfigSchema"`
-	EnumConfigFieldSchema           *EnumConfigFieldSchema           `queryParam:"inline,name=CatalogIntegrationConfigSchema"`
-	BooleanConfigFieldSchema        *BooleanConfigFieldSchema        `queryParam:"inline,name=CatalogIntegrationConfigSchema"`
+	CatalogIntegrationConfigSchema1 *CatalogIntegrationConfigSchema1 `queryParam:"inline,name=CatalogIntegrationConfigSchema" union:"member"`
+	StringConfigFieldSchema         *StringConfigFieldSchema         `queryParam:"inline,name=CatalogIntegrationConfigSchema" union:"member"`
+	EnumConfigFieldSchema           *EnumConfigFieldSchema           `queryParam:"inline,name=CatalogIntegrationConfigSchema" union:"member"`
+	BooleanConfigFieldSchema        *BooleanConfigFieldSchema        `queryParam:"inline,name=CatalogIntegrationConfigSchema" union:"member"`
 
 	Type CatalogIntegrationConfigSchemaType
 }

@@ -1,5 +1,4 @@
 # EventGatewaySchemaRegistries
-(*EventGatewaySchemaRegistries*)
 
 ## Overview
 

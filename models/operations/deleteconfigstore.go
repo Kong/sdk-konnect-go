@@ -50,7 +50,7 @@ func (d DeleteConfigStoreRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DeleteConfigStoreRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"controlPlaneId", "configStoreId"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
 		return err
 	}
 	return nil

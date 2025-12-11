@@ -18,8 +18,8 @@ const (
 
 // ForwardToVirtualClusterPolicyConfig - The configuration of the policy.
 type ForwardToVirtualClusterPolicyConfig struct {
-	ForwardToClusterBySNIConfig         *ForwardToClusterBySNIConfig         `queryParam:"inline,name=config"`
-	ForwardToClusterByPortMappingConfig *ForwardToClusterByPortMappingConfig `queryParam:"inline,name=config"`
+	ForwardToClusterBySNIConfig         *ForwardToClusterBySNIConfig         `queryParam:"inline,name=config" union:"member"`
+	ForwardToClusterByPortMappingConfig *ForwardToClusterByPortMappingConfig `queryParam:"inline,name=config" union:"member"`
 
 	Type ForwardToVirtualClusterPolicyConfigType
 }

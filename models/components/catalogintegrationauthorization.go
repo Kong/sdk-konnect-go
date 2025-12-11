@@ -33,10 +33,10 @@ const (
 
 // CatalogIntegrationAuthorization - Defines the authorization strategy for an integration.
 type CatalogIntegrationAuthorization struct {
-	One                       *One                       `queryParam:"inline,name=CatalogIntegrationAuthorization"`
-	OAuth1                    *OAuth1                    `queryParam:"inline,name=CatalogIntegrationAuthorization"`
-	MultiKeyAuth1             *MultiKeyAuth1             `queryParam:"inline,name=CatalogIntegrationAuthorization"`
-	GitHubAppInstallationAuth *GitHubAppInstallationAuth `queryParam:"inline,name=CatalogIntegrationAuthorization"`
+	One                       *One                       `queryParam:"inline,name=CatalogIntegrationAuthorization" union:"member"`
+	OAuth1                    *OAuth1                    `queryParam:"inline,name=CatalogIntegrationAuthorization" union:"member"`
+	MultiKeyAuth1             *MultiKeyAuth1             `queryParam:"inline,name=CatalogIntegrationAuthorization" union:"member"`
+	GitHubAppInstallationAuth *GitHubAppInstallationAuth `queryParam:"inline,name=CatalogIntegrationAuthorization" union:"member"`
 
 	Type CatalogIntegrationAuthorizationType
 }

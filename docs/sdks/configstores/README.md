@@ -1,5 +1,4 @@
 # ConfigStores
-(*ConfigStores*)
 
 ## Overview
 

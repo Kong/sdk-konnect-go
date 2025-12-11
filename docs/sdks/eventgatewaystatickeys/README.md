@@ -1,5 +1,4 @@
 # EventGatewayStaticKeys
-(*EventGatewayStaticKeys*)
 
 ## Overview
 

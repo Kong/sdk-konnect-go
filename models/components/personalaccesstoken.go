@@ -35,7 +35,7 @@ func (p PersonalAccessToken) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PersonalAccessToken) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "user_id", "name", "state", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil

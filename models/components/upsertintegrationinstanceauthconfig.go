@@ -15,7 +15,7 @@ const (
 )
 
 type UpsertIntegrationInstanceAuthConfig struct {
-	OauthConfig *OauthConfig `queryParam:"inline,name=UpsertIntegrationInstanceAuthConfig"`
+	OauthConfig *OauthConfig `queryParam:"inline,name=UpsertIntegrationInstanceAuthConfig" union:"member"`
 
 	Type UpsertIntegrationInstanceAuthConfigType
 }

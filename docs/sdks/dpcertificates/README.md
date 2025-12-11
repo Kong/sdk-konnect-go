@@ -1,5 +1,4 @@
 # DPCertificates
-(*DPCertificates*)
 
 ## Overview
 

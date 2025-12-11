@@ -19,9 +19,9 @@ const (
 
 // EventGatewayProducePolicyCreate - The typed schema of the produce policy to modify it.
 type EventGatewayProducePolicyCreate struct {
-	EventGatewayModifyHeadersPolicyCreate     *EventGatewayModifyHeadersPolicyCreate     `queryParam:"inline,name=EventGatewayProducePolicyCreate"`
-	EventGatewayProduceSchemaValidationPolicy *EventGatewayProduceSchemaValidationPolicy `queryParam:"inline,name=EventGatewayProducePolicyCreate"`
-	EventGatewayEncryptPolicy                 *EventGatewayEncryptPolicy                 `queryParam:"inline,name=EventGatewayProducePolicyCreate"`
+	EventGatewayModifyHeadersPolicyCreate     *EventGatewayModifyHeadersPolicyCreate     `queryParam:"inline,name=EventGatewayProducePolicyCreate" union:"member"`
+	EventGatewayProduceSchemaValidationPolicy *EventGatewayProduceSchemaValidationPolicy `queryParam:"inline,name=EventGatewayProducePolicyCreate" union:"member"`
+	EventGatewayEncryptPolicy                 *EventGatewayEncryptPolicy                 `queryParam:"inline,name=EventGatewayProducePolicyCreate" union:"member"`
 
 	Type EventGatewayProducePolicyCreateType
 }

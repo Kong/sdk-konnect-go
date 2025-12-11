@@ -1,5 +1,4 @@
 # Upstreams
-(*Upstreams*)
 
 ## Overview
 

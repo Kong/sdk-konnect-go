@@ -1,5 +1,4 @@
 # SystemAccountsTeamMembership
-(*SystemAccountsTeamMembership*)
 
 ## Overview
 

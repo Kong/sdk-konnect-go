@@ -16,8 +16,8 @@ const (
 )
 
 type EventGatewayListenerPort struct {
-	Str     *string `queryParam:"inline,name=EventGatewayListenerPort"`
-	Integer *int64  `queryParam:"inline,name=EventGatewayListenerPort"`
+	Str     *string `queryParam:"inline,name=EventGatewayListenerPort" union:"member"`
+	Integer *int64  `queryParam:"inline,name=EventGatewayListenerPort" union:"member"`
 
 	Type EventGatewayListenerPortType
 }

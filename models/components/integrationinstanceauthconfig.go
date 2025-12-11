@@ -16,7 +16,7 @@ const (
 
 // IntegrationInstanceAuthConfig - A response containing integration instance auth config.
 type IntegrationInstanceAuthConfig struct {
-	OauthAuthConfig *OauthAuthConfig `queryParam:"inline,name=IntegrationInstanceAuthConfig"`
+	OauthAuthConfig *OauthAuthConfig `queryParam:"inline,name=IntegrationInstanceAuthConfig" union:"member"`
 
 	Type IntegrationInstanceAuthConfigType
 }

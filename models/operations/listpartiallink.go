@@ -26,7 +26,7 @@ func (l ListPartialLinkRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (l *ListPartialLinkRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"controlPlaneId", "PartialId"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
 		return err
 	}
 	return nil

@@ -18,8 +18,8 @@ const (
 
 // EncryptionKey - The key to use for encryption.
 type EncryptionKey struct {
-	EncryptionKeyAWS    *EncryptionKeyAWS    `queryParam:"inline,name=EncryptionKey"`
-	EncryptionKeyStatic *EncryptionKeyStatic `queryParam:"inline,name=EncryptionKey"`
+	EncryptionKeyAWS    *EncryptionKeyAWS    `queryParam:"inline,name=EncryptionKey" union:"member"`
+	EncryptionKeyStatic *EncryptionKeyStatic `queryParam:"inline,name=EncryptionKey" union:"member"`
 
 	Type EncryptionKeyType
 }

@@ -1,5 +1,4 @@
 # ConsumerGroups
-(*ConsumerGroups*)
 
 ## Overview
 

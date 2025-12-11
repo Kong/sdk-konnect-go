@@ -49,7 +49,7 @@ func (g GroupStatus) MarshalJSON() ([]byte, error) {
 }
 
 func (g *GroupStatus) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &g, "", false, []string{"id", "created_at", "updated_at", "state"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &g, "", false, nil); err != nil {
 		return err
 	}
 	return nil

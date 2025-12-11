@@ -22,7 +22,7 @@ func (r ReplacePortalAuditLogReplayJob) MarshalJSON() ([]byte, error) {
 }
 
 func (r *ReplacePortalAuditLogReplayJob) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"start_at", "end_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
 		return err
 	}
 	return nil

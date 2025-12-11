@@ -1,5 +1,4 @@
 # Consumers
-(*Consumers*)
 
 ## Overview
 

@@ -1,5 +1,4 @@
 # APISpecification
-(*APISpecification*)
 
 ## Overview
 

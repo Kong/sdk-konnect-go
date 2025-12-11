@@ -1,5 +1,4 @@
 # PortalAuditLogs
-(*PortalAuditLogs*)
 
 ## Overview
 

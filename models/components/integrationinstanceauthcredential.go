@@ -19,10 +19,10 @@ const (
 
 // IntegrationInstanceAuthCredential - Object containing metadata for an integration instance auth credential.
 type IntegrationInstanceAuthCredential struct {
-	Oauth                           *Oauth                           `queryParam:"inline,name=IntegrationInstanceAuthCredential"`
-	GithubAppInstallation           *GithubAppInstallation           `queryParam:"inline,name=IntegrationInstanceAuthCredential"`
-	MultiKeyAuthCredential          *MultiKeyAuthCredential          `queryParam:"inline,name=IntegrationInstanceAuthCredential"`
-	AWSRoleDelegationAuthCredential *AWSRoleDelegationAuthCredential `queryParam:"inline,name=IntegrationInstanceAuthCredential"`
+	Oauth                           *Oauth                           `queryParam:"inline,name=IntegrationInstanceAuthCredential" union:"member"`
+	GithubAppInstallation           *GithubAppInstallation           `queryParam:"inline,name=IntegrationInstanceAuthCredential" union:"member"`
+	MultiKeyAuthCredential          *MultiKeyAuthCredential          `queryParam:"inline,name=IntegrationInstanceAuthCredential" union:"member"`
+	AWSRoleDelegationAuthCredential *AWSRoleDelegationAuthCredential `queryParam:"inline,name=IntegrationInstanceAuthCredential" union:"member"`
 
 	Type IntegrationInstanceAuthCredentialType
 }

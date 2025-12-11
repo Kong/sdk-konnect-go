@@ -1,5 +1,4 @@
 # IntegrationInstanceAuthCredentials
-(*IntegrationInstanceAuthCredentials*)
 
 ## Overview
 

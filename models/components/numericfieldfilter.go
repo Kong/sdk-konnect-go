@@ -136,12 +136,12 @@ const (
 
 // NumericFieldFilter - Filter by a numeric value.
 type NumericFieldFilter struct {
-	Number                   *float64                  `queryParam:"inline,name=NumericFieldFilter"`
-	NumericFieldEqualsFilter *NumericFieldEqualsFilter `queryParam:"inline,name=NumericFieldFilter"`
-	NumericFieldLTFilter     *NumericFieldLTFilter     `queryParam:"inline,name=NumericFieldFilter"`
-	NumericFieldLTEFilter    *NumericFieldLTEFilter    `queryParam:"inline,name=NumericFieldFilter"`
-	NumericFieldGTFilter     *NumericFieldGTFilter     `queryParam:"inline,name=NumericFieldFilter"`
-	NumericFieldGTEFilter    *NumericFieldGTEFilter    `queryParam:"inline,name=NumericFieldFilter"`
+	Number                   *float64                  `queryParam:"inline,name=NumericFieldFilter" union:"member"`
+	NumericFieldEqualsFilter *NumericFieldEqualsFilter `queryParam:"inline,name=NumericFieldFilter" union:"member"`
+	NumericFieldLTFilter     *NumericFieldLTFilter     `queryParam:"inline,name=NumericFieldFilter" union:"member"`
+	NumericFieldLTEFilter    *NumericFieldLTEFilter    `queryParam:"inline,name=NumericFieldFilter" union:"member"`
+	NumericFieldGTFilter     *NumericFieldGTFilter     `queryParam:"inline,name=NumericFieldFilter" union:"member"`
+	NumericFieldGTEFilter    *NumericFieldGTEFilter    `queryParam:"inline,name=NumericFieldFilter" union:"member"`
 
 	Type NumericFieldFilterType
 }

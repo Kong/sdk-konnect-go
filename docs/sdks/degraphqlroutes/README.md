@@ -1,5 +1,4 @@
 # DegraphqlRoutes
-(*DegraphqlRoutes*)
 
 ## Overview
 

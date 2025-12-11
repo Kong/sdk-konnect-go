@@ -1,5 +1,4 @@
 # Me
-(*Me*)
 
 ## Overview
 

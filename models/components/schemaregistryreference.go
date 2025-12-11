@@ -17,8 +17,8 @@ const (
 
 // SchemaRegistryReference - A reference to a schema Registry.
 type SchemaRegistryReference struct {
-	SchemaRegistryReferenceByID   *SchemaRegistryReferenceByID   `queryParam:"inline,name=SchemaRegistryReference"`
-	SchemaRegistryReferenceByName *SchemaRegistryReferenceByName `queryParam:"inline,name=SchemaRegistryReference"`
+	SchemaRegistryReferenceByID   *SchemaRegistryReferenceByID   `queryParam:"inline,name=SchemaRegistryReference" union:"member"`
+	SchemaRegistryReferenceByName *SchemaRegistryReferenceByName `queryParam:"inline,name=SchemaRegistryReference" union:"member"`
 
 	Type SchemaRegistryReferenceType
 }

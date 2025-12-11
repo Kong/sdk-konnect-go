@@ -1,5 +1,4 @@
 # IntegrationInstanceAuthConfig
-(*IntegrationInstanceAuthConfig*)
 
 ## Overview
 

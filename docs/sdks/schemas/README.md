@@ -1,5 +1,4 @@
 # Schemas
-(*Schemas*)
 
 ## Overview
 

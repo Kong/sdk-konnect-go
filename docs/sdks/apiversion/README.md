@@ -1,5 +1,4 @@
 # APIVersion
-(*APIVersion*)
 
 ## Overview
 

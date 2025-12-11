@@ -1,5 +1,4 @@
 # PortalTeamRoles
-(*PortalTeamRoles*)
 
 ## Overview
 

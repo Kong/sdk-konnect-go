@@ -19,10 +19,10 @@ const (
 )
 
 type VirtualClusterAuthenticationScheme struct {
-	VirtualClusterAuthenticationAnonymous   *VirtualClusterAuthenticationAnonymous   `queryParam:"inline,name=VirtualClusterAuthenticationScheme"`
-	VirtualClusterAuthenticationSaslPlain   *VirtualClusterAuthenticationSaslPlain   `queryParam:"inline,name=VirtualClusterAuthenticationScheme"`
-	VirtualClusterAuthenticationSaslScram   *VirtualClusterAuthenticationSaslScram   `queryParam:"inline,name=VirtualClusterAuthenticationScheme"`
-	VirtualClusterAuthenticationOauthBearer *VirtualClusterAuthenticationOauthBearer `queryParam:"inline,name=VirtualClusterAuthenticationScheme"`
+	VirtualClusterAuthenticationAnonymous   *VirtualClusterAuthenticationAnonymous   `queryParam:"inline,name=VirtualClusterAuthenticationScheme" union:"member"`
+	VirtualClusterAuthenticationSaslPlain   *VirtualClusterAuthenticationSaslPlain   `queryParam:"inline,name=VirtualClusterAuthenticationScheme" union:"member"`
+	VirtualClusterAuthenticationSaslScram   *VirtualClusterAuthenticationSaslScram   `queryParam:"inline,name=VirtualClusterAuthenticationScheme" union:"member"`
+	VirtualClusterAuthenticationOauthBearer *VirtualClusterAuthenticationOauthBearer `queryParam:"inline,name=VirtualClusterAuthenticationScheme" union:"member"`
 
 	Type VirtualClusterAuthenticationSchemeType
 }

@@ -23,9 +23,9 @@ const (
 //   - `filter[custom_fields.owner][neq]=kong`
 //   - `filter[custom_fields.dashboard.link][contains]=https`
 type CustomFields struct {
-	StringFieldFilter  *StringFieldFilter  `queryParam:"inline,name=custom_fields"`
-	Boolean            *bool               `queryParam:"inline,name=custom_fields"`
-	NumericFieldFilter *NumericFieldFilter `queryParam:"inline,name=custom_fields"`
+	StringFieldFilter  *StringFieldFilter  `queryParam:"inline,name=custom_fields" union:"member"`
+	Boolean            *bool               `queryParam:"inline,name=custom_fields" union:"member"`
+	NumericFieldFilter *NumericFieldFilter `queryParam:"inline,name=custom_fields" union:"member"`
 
 	Type CustomFieldsType
 }

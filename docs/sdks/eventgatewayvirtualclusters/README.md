@@ -1,5 +1,4 @@
 # EventGatewayVirtualClusters
-(*EventGatewayVirtualClusters*)
 
 ## Overview
 

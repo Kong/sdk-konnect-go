@@ -1,5 +1,4 @@
 # EventGatewayBackendClusters
-(*EventGatewayBackendClusters*)
 
 ## Overview
 
