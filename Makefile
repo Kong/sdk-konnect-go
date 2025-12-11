@@ -67,16 +67,16 @@ generate.deepcopy: controller-gen
 		models/components/createcontrolplanerequest.go
 	$(SED) -i 's#\(type CreateNetworkRequest struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/createnetworkrequest.go
-	$(SED) -i 's#\(type RouteWithoutParents struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
-		models/components/routewithoutparents.go
+# 	$(SED) -i 's#\(type RouteWithoutParents struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+# 		models/components/routewithoutparents.go
 	$(SED) -i 's#\(type RouteWithoutParentsDestinations struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/routewithoutparents.go
 	$(SED) -i 's#\(type Destinations struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/route.go
 	$(SED) -i 's#\(type Sources struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/route.go
-	$(SED) -i 's#\(type Route struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
-		models/components/route.go
+# 	$(SED) -i 's#\(type Route struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+# 		models/components/route.go
 	$(SED) -i 's#\(type RouteService struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/route.go
 	$(SED) -i 's#\(type RouteWithoutParentsSources struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
@@ -115,6 +115,8 @@ generate.deepcopy: controller-gen
 		models/components/upstream.go
 	$(SED) -i 's#\(type Unhealthy struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/upstream.go
+	$(SED) -i 's#\(type NetworkFirewallConfig struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		models/components/networkfirewallconfig.go
 
 	$(CONTROLLER_GEN) object paths=./models/components/
 	go mod tidy
