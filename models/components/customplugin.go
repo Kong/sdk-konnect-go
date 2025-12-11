@@ -5,6 +5,8 @@ package components
 type CustomPlugin struct {
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
 	// The handler for the given custom plugin.
 	Handler string `json:"handler"`
 	// A string representing a UUID (universally unique identifier).
@@ -24,6 +26,13 @@ func (c *CustomPlugin) GetCreatedAt() *int64 {
 		return nil
 	}
 	return c.CreatedAt
+}
+
+func (c *CustomPlugin) GetDescription() *string {
+	if c == nil {
+		return nil
+	}
+	return c.Description
 }
 
 func (c *CustomPlugin) GetHandler() string {

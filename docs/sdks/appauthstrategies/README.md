@@ -1,5 +1,4 @@
 # AppAuthStrategies
-(*AppAuthStrategies*)
 
 ## Overview
 

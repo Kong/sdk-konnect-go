@@ -3,9 +3,9 @@
 package components
 
 type EmailDomainFilterParameters struct {
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Domain *StringFieldFilter `queryParam:"name=domain"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	VerificationStatus *StringFieldFilter `queryParam:"name=verification_status"`
 }
 

@@ -17,6 +17,8 @@ type BasicAuthWithoutParents struct {
 	Consumer *BasicAuthWithoutParentsConsumer `json:"consumer,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID       *string `json:"id,omitempty"`
 	Password string  `json:"password"`
@@ -37,6 +39,13 @@ func (b *BasicAuthWithoutParents) GetCreatedAt() *int64 {
 		return nil
 	}
 	return b.CreatedAt
+}
+
+func (b *BasicAuthWithoutParents) GetDescription() *string {
+	if b == nil {
+		return nil
+	}
+	return b.Description
 }
 
 func (b *BasicAuthWithoutParents) GetID() *string {

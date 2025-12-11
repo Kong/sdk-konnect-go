@@ -17,6 +17,10 @@ type CreateNetworkRequest struct {
 	AvailabilityZones []string `json:"availability_zones"`
 	// CIDR block configuration for the network.
 	CidrBlock string `json:"cidr_block"`
+	// Firewall configuration for a network.
+	Firewall *NetworkFirewallConfig `json:"firewall,omitempty"`
+	// Whether DDOS protection is enabled for the network.
+	DdosProtection *bool `json:"ddos_protection,omitempty"`
 	// Initial state for creating a network.
 	State *NetworkCreateState `default:"initializing" json:"state"`
 }
@@ -26,7 +30,7 @@ func (c CreateNetworkRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateNetworkRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"name", "cloud_gateway_provider_account_id", "region", "availability_zones", "cidr_block"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -65,6 +69,20 @@ func (c *CreateNetworkRequest) GetCidrBlock() string {
 		return ""
 	}
 	return c.CidrBlock
+}
+
+func (c *CreateNetworkRequest) GetFirewall() *NetworkFirewallConfig {
+	if c == nil {
+		return nil
+	}
+	return c.Firewall
+}
+
+func (c *CreateNetworkRequest) GetDdosProtection() *bool {
+	if c == nil {
+		return nil
+	}
+	return c.DdosProtection
 }
 
 func (c *CreateNetworkRequest) GetState() *NetworkCreateState {

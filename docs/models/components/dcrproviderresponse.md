@@ -29,6 +29,12 @@ dcrProviderResponse := components.CreateDcrProviderResponseDcrProviderCurity(com
 dcrProviderResponse := components.CreateDcrProviderResponseDcrProviderOkta(components.DCRProviderOKTADCRProviderOKTA{/* values here */})
 ```
 
+### DCRProviderKongIdentityDCRProviderKongIdentity
+
+```go
+dcrProviderResponse := components.CreateDcrProviderResponseDcrProviderKongIdentity(components.DCRProviderKongIdentityDCRProviderKongIdentity{/* values here */})
+```
+
 ### DCRProviderHTTPDCRProviderHTTP
 
 ```go

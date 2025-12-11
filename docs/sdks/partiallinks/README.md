@@ -1,5 +1,4 @@
 # PartialLinks
-(*PartialLinks*)
 
 ## Overview
 

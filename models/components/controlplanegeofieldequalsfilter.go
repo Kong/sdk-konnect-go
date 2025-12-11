@@ -40,8 +40,8 @@ const (
 
 // ControlPlaneGeoFieldEqualsFilter - Filter a control-plane geo by exact match.
 type ControlPlaneGeoFieldEqualsFilter struct {
-	ControlPlaneGeo                      *ControlPlaneGeo                      `queryParam:"inline,name=ControlPlaneGeoFieldEqualsFilter"`
-	ControlPlaneGeoFieldEqualsComparison *ControlPlaneGeoFieldEqualsComparison `queryParam:"inline,name=ControlPlaneGeoFieldEqualsFilter"`
+	ControlPlaneGeo                      *ControlPlaneGeo                      `queryParam:"inline,name=ControlPlaneGeoFieldEqualsFilter" union:"member"`
+	ControlPlaneGeoFieldEqualsComparison *ControlPlaneGeoFieldEqualsComparison `queryParam:"inline,name=ControlPlaneGeoFieldEqualsFilter" union:"member"`
 
 	Type ControlPlaneGeoFieldEqualsFilterType
 }

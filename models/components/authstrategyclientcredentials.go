@@ -17,6 +17,17 @@ func (e CredentialType) ToPointer() *CredentialType {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *CredentialType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "client_credentials", "self_managed_client_credentials":
+			return true
+		}
+	}
+	return false
+}
+
 // AuthStrategyClientCredentials - Client Credential Auth strategy that the application uses.
 type AuthStrategyClientCredentials struct {
 	// The Application Auth Strategy ID.

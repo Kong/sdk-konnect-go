@@ -8,3 +8,4 @@ Enumeration of configuration qualifiers available for organization-wide configur
 | Name                                                             | Value                                                            |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
 | `ResourceConfigurationQualifierDataPlaneGroupIdleTimeoutMinutes` | data-plane-group-idle-timeout-minutes                            |
+| `ResourceConfigurationQualifierAutoPilotBaseRpsMaxValue`         | auto-pilot-base-rps-max-value                                    |

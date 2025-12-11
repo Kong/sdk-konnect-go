@@ -1,5 +1,4 @@
 # PersonalAccessTokens
-(*PersonalAccessTokens*)
 
 ## Overview
 

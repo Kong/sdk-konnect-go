@@ -15,11 +15,25 @@ const (
 	ControlPlaneClusterTypeClusterTypeK8SIngressController  ControlPlaneClusterType = "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER"
 	ControlPlaneClusterTypeClusterTypeControlPlaneGroup     ControlPlaneClusterType = "CLUSTER_TYPE_CONTROL_PLANE_GROUP"
 	ControlPlaneClusterTypeClusterTypeServerless            ControlPlaneClusterType = "CLUSTER_TYPE_SERVERLESS"
+	ControlPlaneClusterTypeClusterTypeHTTPGateway           ControlPlaneClusterType = "CLUSTER_TYPE_HTTP_GATEWAY"
+	ControlPlaneClusterTypeClusterTypeEventGateway          ControlPlaneClusterType = "CLUSTER_TYPE_EVENT_GATEWAY"
 	ControlPlaneClusterTypeClusterTypeKafkaNativeEventProxy ControlPlaneClusterType = "CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY"
+	ControlPlaneClusterTypeClusterTypeCloudAPIGateway       ControlPlaneClusterType = "CLUSTER_TYPE_CLOUD_API_GATEWAY"
 )
 
 func (e ControlPlaneClusterType) ToPointer() *ControlPlaneClusterType {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *ControlPlaneClusterType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "CLUSTER_TYPE_CONTROL_PLANE", "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER", "CLUSTER_TYPE_CONTROL_PLANE_GROUP", "CLUSTER_TYPE_SERVERLESS", "CLUSTER_TYPE_HTTP_GATEWAY", "CLUSTER_TYPE_EVENT_GATEWAY", "CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY", "CLUSTER_TYPE_CLOUD_API_GATEWAY":
+			return true
+		}
+	}
+	return false
 }
 
 // ControlPlaneAuthType - The auth type value of the cluster associated with the Runtime Group.
@@ -32,6 +46,17 @@ const (
 
 func (e ControlPlaneAuthType) ToPointer() *ControlPlaneAuthType {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *ControlPlaneAuthType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "pinned_client_certs", "pki_client_certs":
+			return true
+		}
+	}
+	return false
 }
 
 // Config - CP configuration object for related access endpoints.
@@ -118,7 +143,7 @@ func (c ControlPlane) MarshalJSON() ([]byte, error) {
 }
 
 func (c *ControlPlane) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "name", "config", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil

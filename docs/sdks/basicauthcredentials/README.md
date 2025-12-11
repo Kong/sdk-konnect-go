@@ -1,5 +1,4 @@
 # BasicAuthCredentials
-(*BasicAuthCredentials*)
 
 ## Overview
 

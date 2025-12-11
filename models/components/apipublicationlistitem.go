@@ -15,6 +15,8 @@ type APIPublicationListItem struct {
 	PortalID string `json:"portal_id"`
 	// Whether the application registration auto approval on this portal for the api is enabled. If set to false, fallbacks on portal's auto_approve_applications value.
 	AutoApproveRegistrations bool `json:"auto_approve_registrations"`
+	// The type of entity that is being published. Can be either an API or an API Package.
+	EntityType EntityType `json:"entity_type"`
 	// The visibility of the API in the portal.
 	// Public API publications do not require authentication to view and retrieve information about them.
 	// Private API publications require authentication to retrieve information about them.
@@ -37,7 +39,7 @@ func (a APIPublicationListItem) MarshalJSON() ([]byte, error) {
 }
 
 func (a *APIPublicationListItem) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"api_id", "portal_id", "auto_approve_registrations", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -62,6 +64,13 @@ func (a *APIPublicationListItem) GetAutoApproveRegistrations() bool {
 		return false
 	}
 	return a.AutoApproveRegistrations
+}
+
+func (a *APIPublicationListItem) GetEntityType() EntityType {
+	if a == nil {
+		return EntityType("")
+	}
+	return a.EntityType
 }
 
 func (a *APIPublicationListItem) GetVisibility() *APIPublicationVisibility {

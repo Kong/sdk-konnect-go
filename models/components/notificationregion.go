@@ -17,3 +17,14 @@ const (
 func (e NotificationRegion) ToPointer() *NotificationRegion {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *NotificationRegion) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "US", "EU", "AU", "ME", "IN", "*":
+			return true
+		}
+	}
+	return false
+}

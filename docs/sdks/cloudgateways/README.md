@@ -1,5 +1,4 @@
 # CloudGateways
-(*CloudGateways*)
 
 ## Overview
 
@@ -9,35 +8,45 @@
 * [ListConfigurations](#listconfigurations) - List Configurations
 * [CreateConfiguration](#createconfiguration) - Create Configuration
 * [GetConfiguration](#getconfiguration) - Get Configuration
-* [ListCustomDomains](#listcustomdomains) - List Custom Domains
-* [CreateCustomDomains](#createcustomdomains) - Create Custom Domain
-* [GetCustomDomain](#getcustomdomain) - Get Custom Domain
-* [DeleteCustomDomain](#deletecustomdomain) - Delete Custom Domain
-* [GetCustomDomainOnlineStatus](#getcustomdomainonlinestatus) - Get Custom Domain Online Status
-* [ListDefaultResourceConfigurations](#listdefaultresourceconfigurations) - List Default Resource Configurations
-* [ListDefaultResourceQuotas](#listdefaultresourcequotas) - List Default Resource Quotas
 * [ListNetworks](#listnetworks) - List Networks
 * [CreateNetwork](#createnetwork) - Create Network
 * [GetNetwork](#getnetwork) - Get Network
 * [UpdateNetwork](#updatenetwork) - Update Network
 * [DeleteNetwork](#deletenetwork) - Delete Network
-* [ListNetworkConfigurations](#listnetworkconfigurations) - List Network Configuration References
-* [ListPrivateDNS](#listprivatedns) - List Private DNS
-* [CreatePrivateDNS](#createprivatedns) - Create Private DNS
-* [GetPrivateDNS](#getprivatedns) - Get Private DNS
-* [UpdatePrivateDNS](#updateprivatedns) - Update Private DNS
-* [DeletePrivateDNS](#deleteprivatedns) - Delete Private DNS
 * [ListTransitGateways](#listtransitgateways) - List Transit Gateways
 * [CreateTransitGateway](#createtransitgateway) - Create Transit Gateway
 * [GetTransitGateway](#gettransitgateway) - Get Transit Gateway
 * [UpdateTransitGateway](#updatetransitgateway) - Update Transit Gateway
 * [DeleteTransitGateway](#deletetransitgateway) - Delete Transit Gateway
+* [ListPrivateDNS](#listprivatedns) - List Private DNS
+* [CreatePrivateDNS](#createprivatedns) - Create Private DNS
+* [GetPrivateDNS](#getprivatedns) - Get Private DNS
+* [UpdatePrivateDNS](#updateprivatedns) - Update Private DNS
+* [DeletePrivateDNS](#deleteprivatedns) - Delete Private DNS
+* [ListNetworkConfigurations](#listnetworkconfigurations) - List Network Configuration References
 * [ListProviderAccounts](#listprovideraccounts) - List Provider Accounts
+* [CreateProviderAccount](#createprovideraccount) - Create Provider Account
 * [GetProviderAccount](#getprovideraccount) - Get Provider Account
-* [ListResourceConfigurations](#listresourceconfigurations) - List Resource Configurations
-* [GetResourceConfiguration](#getresourceconfiguration) - Get Resource Configuration
+* [DeleteProviderAccount](#deleteprovideraccount) - Delete Provider Account
+* [ListCustomDomains](#listcustomdomains) - List Custom Domains
+* [CreateCustomDomains](#createcustomdomains) - Create Custom Domain
+* [GetCustomDomain](#getcustomdomain) - Get Custom Domain
+* [DeleteCustomDomain](#deletecustomdomain) - Delete Custom Domain
+* [GetCustomDomainOnlineStatus](#getcustomdomainonlinestatus) - Get Custom Domain Online Status
+* [ListDefaultResourceQuotas](#listdefaultresourcequotas) - List Default Resource Quotas
 * [ListResourceQuotas](#listresourcequotas) - List Resource Quotas
+* [CreateResourceQuota](#createresourcequota) - Create Resource Quota
 * [GetResourceQuota](#getresourcequota) - Get Resource Quota
+* [UpdateResourceQuota](#updateresourcequota) - Update Resource Quota
+* [ListDefaultResourceConfigurations](#listdefaultresourceconfigurations) - List Default Resource Configurations
+* [ListResourceConfigurations](#listresourceconfigurations) - List Resource Configurations
+* [CreateResourceConfiguration](#createresourceconfiguration) - Create Resource Configuration
+* [GetResourceConfiguration](#getresourceconfiguration) - Get Resource Configuration
+* [UpdateResourceConfiguration](#updateresourceconfiguration) - Update Resource Configuration
+* [CreateAddOn](#createaddon) - Create Add-On
+* [ListAddOns](#listaddons) - List Add-Ons
+* [GetAddOn](#getaddon) - Get Add-On
+* [DeleteAddOn](#deleteaddon) - Delete Add-On
 
 ## GetAvailabilityJSON
 
@@ -297,429 +306,6 @@ func main() {
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## ListCustomDomains
-
-Returns a paginated collection of custom domains across control-planes for an organization (restricted by
-permitted control-plane reads).
-
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="list-custom-domains" method="get" path="/v2/cloud-gateways/custom-domains" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"github.com/Kong/sdk-konnect-go/models/operations"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.CloudGateways.ListCustomDomains(ctx, operations.ListCustomDomainsRequest{
-        PageSize: sdkkonnectgo.Pointer[int64](10),
-        PageNumber: sdkkonnectgo.Pointer[int64](1),
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ListCustomDomainsResponse != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
-| `request`                                                                                  | [operations.ListCustomDomainsRequest](../../models/operations/listcustomdomainsrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `opts`                                                                                     | [][operations.Option](../../models/operations/option.md)                                   | :heavy_minus_sign:                                                                         | The options for this request.                                                              |
-
-### Response
-
-**[*operations.ListCustomDomainsResponse](../../models/operations/listcustomdomainsresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## CreateCustomDomains
-
-Creates a new custom domain for a control-plane (restricted by permitted control-plane associate-custom-domain
-action).
-
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="create-custom-domains" method="post" path="/v2/cloud-gateways/custom-domains" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.CloudGateways.CreateCustomDomains(ctx, components.CreateCustomDomainRequest{
-        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
-        ControlPlaneGeo: components.ControlPlaneGeoUs,
-        Domain: "example.com",
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.CustomDomain != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |
-| `request`                                                                                    | [components.CreateCustomDomainRequest](../../models/components/createcustomdomainrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
-| `opts`                                                                                       | [][operations.Option](../../models/operations/option.md)                                     | :heavy_minus_sign:                                                                           | The options for this request.                                                                |
-
-### Response
-
-**[*operations.CreateCustomDomainsResponse](../../models/operations/createcustomdomainsresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.ConflictError     | 409                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## GetCustomDomain
-
-Retrieves a custom domain by ID (restricted by permitted control-plane reads).
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="get-custom-domain" method="get" path="/v2/cloud-gateways/custom-domains/{customDomainId}" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.CloudGateways.GetCustomDomain(ctx, "39ed3790-085d-4605-9627-f96d86aaf425")
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.CustomDomain != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `customDomainID`                                         | *string*                                                 | :heavy_check_mark:                                       | ID of the custom domain to operate on.                   | 39ed3790-085d-4605-9627-f96d86aaf425                     |
-| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
-
-### Response
-
-**[*operations.GetCustomDomainResponse](../../models/operations/getcustomdomainresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## DeleteCustomDomain
-
-Deletes a custom domain by ID (restricted by permitted control-plane reads).
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="delete-custom-domain" method="delete" path="/v2/cloud-gateways/custom-domains/{customDomainId}" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.CloudGateways.DeleteCustomDomain(ctx, "39ed3790-085d-4605-9627-f96d86aaf425")
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `customDomainID`                                         | *string*                                                 | :heavy_check_mark:                                       | ID of the custom domain to operate on.                   | 39ed3790-085d-4605-9627-f96d86aaf425                     |
-| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
-
-### Response
-
-**[*operations.DeleteCustomDomainResponse](../../models/operations/deletecustomdomainresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## GetCustomDomainOnlineStatus
-
-Retrieves the CNAME and SSL status of a custom domain.
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="get-custom-domain-online-status" method="get" path="/v2/cloud-gateways/custom-domains/{customDomainId}/online-status" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.CloudGateways.GetCustomDomainOnlineStatus(ctx, "39ed3790-085d-4605-9627-f96d86aaf425")
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.CustomDomainOnlineStatus != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `customDomainID`                                         | *string*                                                 | :heavy_check_mark:                                       | ID of the custom domain to operate on.                   | 39ed3790-085d-4605-9627-f96d86aaf425                     |
-| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
-
-### Response
-
-**[*operations.GetCustomDomainOnlineStatusResponse](../../models/operations/getcustomdomainonlinestatusresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## ListDefaultResourceConfigurations
-
-Returns a paginated collection of default resource configurations for cloud-gateways, along with
-organizationally-defined overrides for those resource configurations.
-Resource configurations are settings that are applied to all cloud gateway resources in an organization.
-For example, the "data-plane-group-idle-timeout-minutes" resource configuration sets the idle timeout for all data plane groups in an organization.
-
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="list-default-resource-configurations" method="get" path="/v2/cloud-gateways/default-resource-configurations" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.CloudGateways.ListDefaultResourceConfigurations(ctx, sdkkonnectgo.Pointer[int64](10), sdkkonnectgo.Pointer[int64](1))
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ListDefaultResourceConfigurationsResponse != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             | Example                                                                                                 |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                   | :heavy_check_mark:                                                                                      | The context to use for the request.                                                                     |                                                                                                         |
-| `pageSize`                                                                                              | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | The maximum number of items to include per page. The last page of a collection may include fewer items. | 10                                                                                                      |
-| `pageNumber`                                                                                            | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | Determines which page of the entities to retrieve.                                                      | 1                                                                                                       |
-| `opts`                                                                                                  | [][operations.Option](../../models/operations/option.md)                                                | :heavy_minus_sign:                                                                                      | The options for this request.                                                                           |                                                                                                         |
-
-### Response
-
-**[*operations.ListDefaultResourceConfigurationsResponse](../../models/operations/listdefaultresourceconfigurationsresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## ListDefaultResourceQuotas
-
-Returns a paginated collection of default resource quotas for cloud-gateways, along with
-organizationally-defined overrides for those resource quotas.
-
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="list-default-resource-quotas" method="get" path="/v2/cloud-gateways/default-resource-quotas" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.CloudGateways.ListDefaultResourceQuotas(ctx, sdkkonnectgo.Pointer[int64](10), sdkkonnectgo.Pointer[int64](1))
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ListDefaultResourceQuotasResponse != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             | Example                                                                                                 |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                   | :heavy_check_mark:                                                                                      | The context to use for the request.                                                                     |                                                                                                         |
-| `pageSize`                                                                                              | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | The maximum number of items to include per page. The last page of a collection may include fewer items. | 10                                                                                                      |
-| `pageNumber`                                                                                            | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | Determines which page of the entities to retrieve.                                                      | 1                                                                                                       |
-| `opts`                                                                                                  | [][operations.Option](../../models/operations/option.md)                                                | :heavy_minus_sign:                                                                                      | The options for this request.                                                                           |                                                                                                         |
-
-### Response
-
-**[*operations.ListDefaultResourceQuotasResponse](../../models/operations/listdefaultresourcequotasresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
 ## ListNetworks
 
 Returns a paginated list of networks.
@@ -817,6 +403,15 @@ func main() {
             "use2-az3",
         },
         CidrBlock: "10.0.0.0/8",
+        Firewall: &components.NetworkFirewallConfig{
+            AllowedCidrBlocks: []string{
+                "10.0.0.0/8",
+            },
+            DeniedCidrBlocks: []string{
+                "10.100.0.0/16",
+            },
+        },
+        DdosProtection: sdkkonnectgo.Pointer(false),
     })
     if err != nil {
         log.Fatal(err)
@@ -934,6 +529,14 @@ func main() {
 
     res, err := s.CloudGateways.UpdateNetwork(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.PatchNetworkRequest{
         Name: sdkkonnectgo.Pointer("us-east-2 network"),
+        Firewall: &components.NetworkFirewallConfig{
+            AllowedCidrBlocks: []string{
+                "10.0.0.0/8",
+            },
+            DeniedCidrBlocks: []string{
+                "10.100.0.0/16",
+            },
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -1015,401 +618,6 @@ func main() {
 ### Response
 
 **[*operations.DeleteNetworkResponse](../../models/operations/deletenetworkresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## ListNetworkConfigurations
-
-Returns a paginated collection of configurations that reference a network.
-
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="list-network-configurations" method="get" path="/v2/cloud-gateways/networks/{networkId}/configuration-references" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"github.com/Kong/sdk-konnect-go/models/operations"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.CloudGateways.ListNetworkConfigurations(ctx, operations.ListNetworkConfigurationsRequest{
-        NetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
-        PageSize: sdkkonnectgo.Pointer[int64](10),
-        PageNumber: sdkkonnectgo.Pointer[int64](1),
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ListNetworkConfigurationReferencesResponse != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                      | :heavy_check_mark:                                                                                         | The context to use for the request.                                                                        |
-| `request`                                                                                                  | [operations.ListNetworkConfigurationsRequest](../../models/operations/listnetworkconfigurationsrequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
-| `opts`                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                   | :heavy_minus_sign:                                                                                         | The options for this request.                                                                              |
-
-### Response
-
-**[*operations.ListNetworkConfigurationsResponse](../../models/operations/listnetworkconfigurationsresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## ListPrivateDNS
-
-Returns a paginated collection of Private DNS for a given network.
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="list-private-dns" method="get" path="/v2/cloud-gateways/networks/{networkId}/private-dns" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"github.com/Kong/sdk-konnect-go/models/operations"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.CloudGateways.ListPrivateDNS(ctx, operations.ListPrivateDNSRequest{
-        NetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
-        PageSize: sdkkonnectgo.Pointer[int64](10),
-        PageNumber: sdkkonnectgo.Pointer[int64](1),
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.ListPrivateDNSResponse != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
-| `request`                                                                            | [operations.ListPrivateDNSRequest](../../models/operations/listprivatednsrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `opts`                                                                               | [][operations.Option](../../models/operations/option.md)                             | :heavy_minus_sign:                                                                   | The options for this request.                                                        |
-
-### Response
-
-**[*operations.ListPrivateDNSResponse](../../models/operations/listprivatednsresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## CreatePrivateDNS
-
-Creates a new Private DNS for a given network.
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="create-private-dns" method="post" path="/v2/cloud-gateways/networks/{networkId}/private-dns" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.CloudGateways.CreatePrivateDNS(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreatePrivateDNSRequest{
-        Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
-        PrivateDNSAttachmentConfig: sdkkonnectgo.Pointer(components.CreatePrivateDNSAttachmentConfigAwsPrivateHostedZoneAttachmentConfig(
-            components.AwsPrivateHostedZoneAttachmentConfig{
-                Kind: components.AWSPrivateHostedZoneTypeAwsPrivateHostedZoneAttachment,
-                HostedZoneID: "<id>",
-            },
-        )),
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.PrivateDNSResponse != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              | Example                                                                                  |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |                                                                                          |
-| `networkID`                                                                              | *string*                                                                                 | :heavy_check_mark:                                                                       | The network to operate on.                                                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                                                     |
-| `createPrivateDNSRequest`                                                                | [components.CreatePrivateDNSRequest](../../models/components/createprivatednsrequest.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |                                                                                          |
-| `opts`                                                                                   | [][operations.Option](../../models/operations/option.md)                                 | :heavy_minus_sign:                                                                       | The options for this request.                                                            |                                                                                          |
-
-### Response
-
-**[*operations.CreatePrivateDNSResponse](../../models/operations/createprivatednsresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.ConflictError     | 409                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## GetPrivateDNS
-
-Retrieves a Private DNS by ID for a given network.
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="get-private-dns" method="get" path="/v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.CloudGateways.GetPrivateDNS(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "1850820b-c69f-4a2a-b9be-bbcdbc5cd618")
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.PrivateDNSResponse != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `networkID`                                              | *string*                                                 | :heavy_check_mark:                                       | The network to operate on.                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                     |
-| `privateDNSID`                                           | *string*                                                 | :heavy_check_mark:                                       | The ID of the Private DNS to operate on.                 | 1850820b-c69f-4a2a-b9be-bbcdbc5cd618                     |
-| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
-
-### Response
-
-**[*operations.GetPrivateDNSResponse](../../models/operations/getprivatednsresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## UpdatePrivateDNS
-
-Updates a Private DNS by ID for a given network.
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="update-private-dns" method="patch" path="/v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"github.com/Kong/sdk-konnect-go/models/operations"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.CloudGateways.UpdatePrivateDNS(ctx, operations.UpdatePrivateDNSRequest{
-        NetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
-        PrivateDNSID: "1850820b-c69f-4a2a-b9be-bbcdbc5cd618",
-        PatchPrivateDNSRequest: components.CreatePatchPrivateDNSRequestPatchAwsPrivateDNSResolver(
-            components.PatchAwsPrivateDNSResolver{
-                Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
-                PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
-                    Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
-                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
-                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
-                            RemoteDNSServerIPAddresses: []string{
-                                "10.0.0.2",
-                            },
-                        },
-                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
-                            RemoteDNSServerIPAddresses: []string{
-                                "10.0.0.8",
-                            },
-                        },
-                    },
-                },
-            },
-        ),
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.PrivateDNSResponse != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |
-| `request`                                                                                | [operations.UpdatePrivateDNSRequest](../../models/operations/updateprivatednsrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-| `opts`                                                                                   | [][operations.Option](../../models/operations/option.md)                                 | :heavy_minus_sign:                                                                       | The options for this request.                                                            |
-
-### Response
-
-**[*operations.UpdatePrivateDNSResponse](../../models/operations/updateprivatednsresponse.md), error**
-
-### Errors
-
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
-| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
-| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
-| sdkerrors.ConflictError     | 409                         | application/problem+json    |
-| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
-
-## DeletePrivateDNS
-
-Deletes a Private DNS by ID for a given network.
-
-### Example Usage
-
-<!-- UsageSnippet language="go" operationID="delete-private-dns" method="delete" path="/v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}" -->
-```go
-package main
-
-import(
-	"context"
-	"github.com/Kong/sdk-konnect-go/models/components"
-	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkkonnectgo.New(
-        sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
-        }),
-    )
-
-    res, err := s.CloudGateways.DeletePrivateDNS(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "1850820b-c69f-4a2a-b9be-bbcdbc5cd618")
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `networkID`                                              | *string*                                                 | :heavy_check_mark:                                       | The network to operate on.                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                     |
-| `privateDNSID`                                           | *string*                                                 | :heavy_check_mark:                                       | The ID of the Private DNS to operate on.                 | 1850820b-c69f-4a2a-b9be-bbcdbc5cd618                     |
-| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
-
-### Response
-
-**[*operations.DeletePrivateDNSResponse](../../models/operations/deleteprivatednsresponse.md), error**
 
 ### Errors
 
@@ -1755,6 +963,401 @@ func main() {
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
+## ListPrivateDNS
+
+Returns a paginated collection of Private DNS for a given network.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-private-dns" method="get" path="/v2/cloud-gateways/networks/{networkId}/private-dns" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.ListPrivateDNS(ctx, operations.ListPrivateDNSRequest{
+        NetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ListPrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
+| `request`                                                                            | [operations.ListPrivateDNSRequest](../../models/operations/listprivatednsrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `opts`                                                                               | [][operations.Option](../../models/operations/option.md)                             | :heavy_minus_sign:                                                                   | The options for this request.                                                        |
+
+### Response
+
+**[*operations.ListPrivateDNSResponse](../../models/operations/listprivatednsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## CreatePrivateDNS
+
+Creates a new Private DNS for a given network.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-private-dns" method="post" path="/v2/cloud-gateways/networks/{networkId}/private-dns" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreatePrivateDNS(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreatePrivateDNSRequest{
+        Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
+        PrivateDNSAttachmentConfig: sdkkonnectgo.Pointer(components.CreatePrivateDNSAttachmentConfigAwsPrivateHostedZoneAttachmentConfig(
+            components.AwsPrivateHostedZoneAttachmentConfig{
+                Kind: components.AWSPrivateHostedZoneTypeAwsPrivateHostedZoneAttachment,
+                HostedZoneID: "<id>",
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              | Example                                                                                  |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |                                                                                          |
+| `networkID`                                                                              | *string*                                                                                 | :heavy_check_mark:                                                                       | The network to operate on.                                                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                                                     |
+| `createPrivateDNSRequest`                                                                | [components.CreatePrivateDNSRequest](../../models/components/createprivatednsrequest.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |                                                                                          |
+| `opts`                                                                                   | [][operations.Option](../../models/operations/option.md)                                 | :heavy_minus_sign:                                                                       | The options for this request.                                                            |                                                                                          |
+
+### Response
+
+**[*operations.CreatePrivateDNSResponse](../../models/operations/createprivatednsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetPrivateDNS
+
+Retrieves a Private DNS by ID for a given network.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-private-dns" method="get" path="/v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.GetPrivateDNS(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "1850820b-c69f-4a2a-b9be-bbcdbc5cd618")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `networkID`                                              | *string*                                                 | :heavy_check_mark:                                       | The network to operate on.                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                     |
+| `privateDNSID`                                           | *string*                                                 | :heavy_check_mark:                                       | The ID of the Private DNS to operate on.                 | 1850820b-c69f-4a2a-b9be-bbcdbc5cd618                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.GetPrivateDNSResponse](../../models/operations/getprivatednsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## UpdatePrivateDNS
+
+Updates a Private DNS by ID for a given network.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="update-private-dns" method="patch" path="/v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdatePrivateDNS(ctx, operations.UpdatePrivateDNSRequest{
+        NetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
+        PrivateDNSID: "1850820b-c69f-4a2a-b9be-bbcdbc5cd618",
+        PatchPrivateDNSRequest: components.CreatePatchPrivateDNSRequestPatchAwsPrivateDNSResolver(
+            components.PatchAwsPrivateDNSResolver{
+                Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
+                PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
+                    Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
+                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
+                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
+                            RemoteDNSServerIPAddresses: []string{
+                                "10.0.0.2",
+                            },
+                        },
+                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
+                            RemoteDNSServerIPAddresses: []string{
+                                "10.0.0.8",
+                            },
+                        },
+                    },
+                },
+            },
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |
+| `request`                                                                                | [operations.UpdatePrivateDNSRequest](../../models/operations/updateprivatednsrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `opts`                                                                                   | [][operations.Option](../../models/operations/option.md)                                 | :heavy_minus_sign:                                                                       | The options for this request.                                                            |
+
+### Response
+
+**[*operations.UpdatePrivateDNSResponse](../../models/operations/updateprivatednsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## DeletePrivateDNS
+
+Deletes a Private DNS by ID for a given network.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-private-dns" method="delete" path="/v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.DeletePrivateDNS(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", "1850820b-c69f-4a2a-b9be-bbcdbc5cd618")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `networkID`                                              | *string*                                                 | :heavy_check_mark:                                       | The network to operate on.                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                     |
+| `privateDNSID`                                           | *string*                                                 | :heavy_check_mark:                                       | The ID of the Private DNS to operate on.                 | 1850820b-c69f-4a2a-b9be-bbcdbc5cd618                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.DeletePrivateDNSResponse](../../models/operations/deleteprivatednsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListNetworkConfigurations
+
+Returns a paginated collection of configurations that reference a network.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-network-configurations" method="get" path="/v2/cloud-gateways/networks/{networkId}/configuration-references" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.ListNetworkConfigurations(ctx, operations.ListNetworkConfigurationsRequest{
+        NetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ListNetworkConfigurationReferencesResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                      | :heavy_check_mark:                                                                                         | The context to use for the request.                                                                        |
+| `request`                                                                                                  | [operations.ListNetworkConfigurationsRequest](../../models/operations/listnetworkconfigurationsrequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
+| `opts`                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                   | :heavy_minus_sign:                                                                                         | The options for this request.                                                                              |
+
+### Response
+
+**[*operations.ListNetworkConfigurationsResponse](../../models/operations/listnetworkconfigurationsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
 ## ListProviderAccounts
 
 Returns a a paginated collection of provider accounts for an organization.
@@ -1816,6 +1419,66 @@ func main() {
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
+## CreateProviderAccount
+
+Creates a new provider account for an organization.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-provider-account" method="post" path="/v2/cloud-gateways/provider-accounts" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateProviderAccount(ctx, components.CreateProviderAccountRequest{
+        Provider: components.ProviderNameAws,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ProviderAccount != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |
+| `request`                                                                                          | [components.CreateProviderAccountRequest](../../models/components/createprovideraccountrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+| `opts`                                                                                             | [][operations.Option](../../models/operations/option.md)                                           | :heavy_minus_sign:                                                                                 | The options for this request.                                                                      |
+
+### Response
+
+**[*operations.CreateProviderAccountResponse](../../models/operations/createprovideraccountresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
 ## GetProviderAccount
 
 Retrieves a provider account by ID.
@@ -1871,6 +1534,726 @@ func main() {
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## DeleteProviderAccount
+
+Deletes a provider account by ID.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-provider-account" method="delete" path="/v2/cloud-gateways/provider-accounts/{providerAccountId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.DeleteProviderAccount(ctx, "929b2449-c69f-44c4-b6ad-9ecec6f811ae")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `providerAccountID`                                      | *string*                                                 | :heavy_check_mark:                                       | The ID of the provider account to operate on.            | 929b2449-c69f-44c4-b6ad-9ecec6f811ae                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.DeleteProviderAccountResponse](../../models/operations/deleteprovideraccountresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListCustomDomains
+
+Returns a paginated collection of custom domains across control-planes for an organization (restricted by
+permitted control-plane reads).
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-custom-domains" method="get" path="/v2/cloud-gateways/custom-domains" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.ListCustomDomains(ctx, operations.ListCustomDomainsRequest{
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ListCustomDomainsResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
+| `request`                                                                                  | [operations.ListCustomDomainsRequest](../../models/operations/listcustomdomainsrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| `opts`                                                                                     | [][operations.Option](../../models/operations/option.md)                                   | :heavy_minus_sign:                                                                         | The options for this request.                                                              |
+
+### Response
+
+**[*operations.ListCustomDomainsResponse](../../models/operations/listcustomdomainsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## CreateCustomDomains
+
+Creates a new custom domain for a control-plane (restricted by permitted control-plane associate-custom-domain
+action).
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-custom-domains" method="post" path="/v2/cloud-gateways/custom-domains" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateCustomDomains(ctx, components.CreateCustomDomainRequest{
+        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
+        ControlPlaneGeo: components.ControlPlaneGeoUs,
+        Domain: "example.com",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CustomDomain != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |
+| `request`                                                                                    | [components.CreateCustomDomainRequest](../../models/components/createcustomdomainrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `opts`                                                                                       | [][operations.Option](../../models/operations/option.md)                                     | :heavy_minus_sign:                                                                           | The options for this request.                                                                |
+
+### Response
+
+**[*operations.CreateCustomDomainsResponse](../../models/operations/createcustomdomainsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetCustomDomain
+
+Retrieves a custom domain by ID (restricted by permitted control-plane reads).
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-custom-domain" method="get" path="/v2/cloud-gateways/custom-domains/{customDomainId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.GetCustomDomain(ctx, "39ed3790-085d-4605-9627-f96d86aaf425")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CustomDomain != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `customDomainID`                                         | *string*                                                 | :heavy_check_mark:                                       | ID of the custom domain to operate on.                   | 39ed3790-085d-4605-9627-f96d86aaf425                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.GetCustomDomainResponse](../../models/operations/getcustomdomainresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## DeleteCustomDomain
+
+Deletes a custom domain by ID (restricted by permitted control-plane reads).
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-custom-domain" method="delete" path="/v2/cloud-gateways/custom-domains/{customDomainId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.DeleteCustomDomain(ctx, "39ed3790-085d-4605-9627-f96d86aaf425")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `customDomainID`                                         | *string*                                                 | :heavy_check_mark:                                       | ID of the custom domain to operate on.                   | 39ed3790-085d-4605-9627-f96d86aaf425                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.DeleteCustomDomainResponse](../../models/operations/deletecustomdomainresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetCustomDomainOnlineStatus
+
+Retrieves the CNAME and SSL status of a custom domain.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-custom-domain-online-status" method="get" path="/v2/cloud-gateways/custom-domains/{customDomainId}/online-status" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.GetCustomDomainOnlineStatus(ctx, "39ed3790-085d-4605-9627-f96d86aaf425")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CustomDomainOnlineStatus != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `customDomainID`                                         | *string*                                                 | :heavy_check_mark:                                       | ID of the custom domain to operate on.                   | 39ed3790-085d-4605-9627-f96d86aaf425                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.GetCustomDomainOnlineStatusResponse](../../models/operations/getcustomdomainonlinestatusresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListDefaultResourceQuotas
+
+Returns a paginated collection of default resource quotas for cloud-gateways, along with
+organizationally-defined overrides for those resource quotas.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-default-resource-quotas" method="get" path="/v2/cloud-gateways/default-resource-quotas" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.ListDefaultResourceQuotas(ctx, sdkkonnectgo.Pointer[int64](10), sdkkonnectgo.Pointer[int64](1))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ListDefaultResourceQuotasResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             | Example                                                                                                 |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                   | :heavy_check_mark:                                                                                      | The context to use for the request.                                                                     |                                                                                                         |
+| `pageSize`                                                                                              | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | The maximum number of items to include per page. The last page of a collection may include fewer items. | 10                                                                                                      |
+| `pageNumber`                                                                                            | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | Determines which page of the entities to retrieve.                                                      | 1                                                                                                       |
+| `opts`                                                                                                  | [][operations.Option](../../models/operations/option.md)                                                | :heavy_minus_sign:                                                                                      | The options for this request.                                                                           |                                                                                                         |
+
+### Response
+
+**[*operations.ListDefaultResourceQuotasResponse](../../models/operations/listdefaultresourcequotasresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListResourceQuotas
+
+Returns a paginated collection of resource quotas for an organization.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-resource-quotas" method="get" path="/v2/cloud-gateways/resource-quotas" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.ListResourceQuotas(ctx, sdkkonnectgo.Pointer[int64](10), sdkkonnectgo.Pointer[int64](1))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ListResourceQuotasResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             | Example                                                                                                 |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                   | :heavy_check_mark:                                                                                      | The context to use for the request.                                                                     |                                                                                                         |
+| `pageSize`                                                                                              | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | The maximum number of items to include per page. The last page of a collection may include fewer items. | 10                                                                                                      |
+| `pageNumber`                                                                                            | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | Determines which page of the entities to retrieve.                                                      | 1                                                                                                       |
+| `opts`                                                                                                  | [][operations.Option](../../models/operations/option.md)                                                | :heavy_minus_sign:                                                                                      | The options for this request.                                                                           |                                                                                                         |
+
+### Response
+
+**[*operations.ListResourceQuotasResponse](../../models/operations/listresourcequotasresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## CreateResourceQuota
+
+Creates a new resource quota, scoped to a given resource, for an organization.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-resource-quota" method="post" path="/v2/cloud-gateways/resource-quotas" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateResourceQuota(ctx, components.CreateResourceQuotaRequest{
+        Resource: components.ResourceQuotaQualifierCountNetworksNotOffline,
+        Value: 2,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ResourceQuota != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |
+| `request`                                                                                      | [components.CreateResourceQuotaRequest](../../models/components/createresourcequotarequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| `opts`                                                                                         | [][operations.Option](../../models/operations/option.md)                                       | :heavy_minus_sign:                                                                             | The options for this request.                                                                  |
+
+### Response
+
+**[*operations.CreateResourceQuotaResponse](../../models/operations/createresourcequotaresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetResourceQuota
+
+Retrieves a resource quota by ID.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-resource-quota" method="get" path="/v2/cloud-gateways/resource-quotas/{resourceQuotaId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.GetResourceQuota(ctx, "9678f205-49a1-47bb-82d9-d01cafa42a0d")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ResourceQuota != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `resourceQuotaID`                                        | *string*                                                 | :heavy_check_mark:                                       | The ID of the resource quota to operate on.              | 9678f205-49a1-47bb-82d9-d01cafa42a0d                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.GetResourceQuotaResponse](../../models/operations/getresourcequotaresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## UpdateResourceQuota
+
+Updates a resource quota by ID.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="update-resource-quota" method="patch" path="/v2/cloud-gateways/resource-quotas/{resourceQuotaId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdateResourceQuota(ctx, "9678f205-49a1-47bb-82d9-d01cafa42a0d", components.PatchResourceQuotaRequest{
+        Value: 2,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ResourceQuota != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |                                                                                              |
+| `resourceQuotaID`                                                                            | *string*                                                                                     | :heavy_check_mark:                                                                           | The ID of the resource quota to operate on.                                                  | 9678f205-49a1-47bb-82d9-d01cafa42a0d                                                         |
+| `patchResourceQuotaRequest`                                                                  | [components.PatchResourceQuotaRequest](../../models/components/patchresourcequotarequest.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |                                                                                              |
+| `opts`                                                                                       | [][operations.Option](../../models/operations/option.md)                                     | :heavy_minus_sign:                                                                           | The options for this request.                                                                |                                                                                              |
+
+### Response
+
+**[*operations.UpdateResourceQuotaResponse](../../models/operations/updateresourcequotaresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListDefaultResourceConfigurations
+
+Returns a paginated collection of default resource configurations for cloud-gateways, along with
+organizationally-defined overrides for those resource configurations.
+Resource configurations are settings that are applied to all cloud gateway resources in an organization.
+For example, the "data-plane-group-idle-timeout-minutes" resource configuration sets the idle timeout for all data plane groups in an organization.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-default-resource-configurations" method="get" path="/v2/cloud-gateways/default-resource-configurations" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.ListDefaultResourceConfigurations(ctx, sdkkonnectgo.Pointer[int64](10), sdkkonnectgo.Pointer[int64](1))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ListDefaultResourceConfigurationsResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             | Example                                                                                                 |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                   | :heavy_check_mark:                                                                                      | The context to use for the request.                                                                     |                                                                                                         |
+| `pageSize`                                                                                              | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | The maximum number of items to include per page. The last page of a collection may include fewer items. | 10                                                                                                      |
+| `pageNumber`                                                                                            | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | Determines which page of the entities to retrieve.                                                      | 1                                                                                                       |
+| `opts`                                                                                                  | [][operations.Option](../../models/operations/option.md)                                                | :heavy_minus_sign:                                                                                      | The options for this request.                                                                           |                                                                                                         |
+
+### Response
+
+**[*operations.ListDefaultResourceConfigurationsResponse](../../models/operations/listdefaultresourceconfigurationsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## ListResourceConfigurations
@@ -1934,6 +2317,68 @@ func main() {
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
+## CreateResourceConfiguration
+
+Creates a new resource configuration for an organization.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-resource-configuration" method="post" path="/v2/cloud-gateways/resource-configurations" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateResourceConfiguration(ctx, components.CreateResourceConfigurationRequest{
+        Qualifier: components.ResourceConfigurationQualifierAutoPilotBaseRpsMaxValue,
+        Value: 45,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ResourceConfiguration != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                          | :heavy_check_mark:                                                                                             | The context to use for the request.                                                                            |
+| `request`                                                                                                      | [components.CreateResourceConfigurationRequest](../../models/components/createresourceconfigurationrequest.md) | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
+| `opts`                                                                                                         | [][operations.Option](../../models/operations/option.md)                                                       | :heavy_minus_sign:                                                                                             | The options for this request.                                                                                  |
+
+### Response
+
+**[*operations.CreateResourceConfigurationResponse](../../models/operations/createresourceconfigurationresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
 ## GetResourceConfiguration
 
 Retrieves a resource configuration by ID.
@@ -1991,14 +2436,13 @@ func main() {
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## ListResourceQuotas
+## UpdateResourceConfiguration
 
-Returns a paginated collection of resource quotas for an organization.
-
+Updates a resource configuration by ID.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-resource-quotas" method="get" path="/v2/cloud-gateways/resource-quotas" -->
+<!-- UsageSnippet language="go" operationID="update-resource-configuration" method="patch" path="/v2/cloud-gateways/resource-configurations/{resourceConfigurationId}" -->
 ```go
 package main
 
@@ -2018,11 +2462,14 @@ func main() {
         }),
     )
 
-    res, err := s.CloudGateways.ListResourceQuotas(ctx, sdkkonnectgo.Pointer[int64](10), sdkkonnectgo.Pointer[int64](1))
+    res, err := s.CloudGateways.UpdateResourceConfiguration(ctx, "9678f205-49a1-47bb-82d9-d01cafa42a0d", components.PatchResourceConfigurationRequest{
+        Qualifier: components.ResourceConfigurationQualifierAutoPilotBaseRpsMaxValue,
+        Value: 45,
+    })
     if err != nil {
         log.Fatal(err)
     }
-    if res.ListResourceQuotasResponse != nil {
+    if res.ResourceConfiguration != nil {
         // handle response
     }
 }
@@ -2030,16 +2477,16 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             | Example                                                                                                 |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                   | :heavy_check_mark:                                                                                      | The context to use for the request.                                                                     |                                                                                                         |
-| `pageSize`                                                                                              | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | The maximum number of items to include per page. The last page of a collection may include fewer items. | 10                                                                                                      |
-| `pageNumber`                                                                                            | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | Determines which page of the entities to retrieve.                                                      | 1                                                                                                       |
-| `opts`                                                                                                  | [][operations.Option](../../models/operations/option.md)                                                | :heavy_minus_sign:                                                                                      | The options for this request.                                                                           |                                                                                                         |
+| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  | Example                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                        | :heavy_check_mark:                                                                                           | The context to use for the request.                                                                          |                                                                                                              |
+| `resourceConfigurationID`                                                                                    | *string*                                                                                                     | :heavy_check_mark:                                                                                           | The ID of the resource configuration to operate on.                                                          | 9678f205-49a1-47bb-82d9-d01cafa42a0d                                                                         |
+| `patchResourceConfigurationRequest`                                                                          | [components.PatchResourceConfigurationRequest](../../models/components/patchresourceconfigurationrequest.md) | :heavy_check_mark:                                                                                           | N/A                                                                                                          |                                                                                                              |
+| `opts`                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                     | :heavy_minus_sign:                                                                                           | The options for this request.                                                                                |                                                                                                              |
 
 ### Response
 
-**[*operations.ListResourceQuotasResponse](../../models/operations/listresourcequotasresponse.md), error**
+**[*operations.UpdateResourceConfigurationResponse](../../models/operations/updateresourceconfigurationresponse.md), error**
 
 ### Errors
 
@@ -2048,15 +2495,18 @@ func main() {
 | sdkerrors.BadRequestError   | 400                         | application/problem+json    |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## GetResourceQuota
+## CreateAddOn
 
-Retrieves a resource quota by ID.
+Creates a new add-on. Specific add-on types (e.g., managed cache)
+are defined by the sub-kind configuration.
+
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-resource-quota" method="get" path="/v2/cloud-gateways/resource-quotas/{resourceQuotaId}" -->
+<!-- UsageSnippet language="go" operationID="create-add-on" method="post" path="/v2/cloud-gateways/add-ons" -->
 ```go
 package main
 
@@ -2076,11 +2526,153 @@ func main() {
         }),
     )
 
-    res, err := s.CloudGateways.GetResourceQuota(ctx, "9678f205-49a1-47bb-82d9-d01cafa42a0d")
+    res, err := s.CloudGateways.CreateAddOn(ctx, components.CreateAddOnRequest{
+        Name: "my-add-on",
+        Owner: components.CreateAddOnOwnerControlPlaneAddOnOwner(
+            components.ControlPlaneAddOnOwner{
+                Kind: components.ControlPlaneAddOnOwnerKindControlPlane,
+                ControlPlaneID: "123e4567-e89b-12d3-a456-426614174000",
+                ControlPlaneGeo: components.ControlPlaneGeoMe,
+            },
+        ),
+        Config: components.CreateCreateAddOnConfigCreateManagedCacheAddOnConfig(
+            components.CreateManagedCacheAddOnConfig{
+                Kind: components.CreateManagedCacheAddOnConfigKindManagedCacheV0,
+                CapacityConfig: components.CreateManagedCacheCapacityConfigTieredCapacityConfig(
+                    components.TieredCapacityConfig{
+                        Kind: components.TieredCapacityConfigKindTiered,
+                        Tier: components.TierFourxlarge,
+                    },
+                ),
+            },
+        ),
+    })
     if err != nil {
         log.Fatal(err)
     }
-    if res.ResourceQuota != nil {
+    if res.AddOnResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
+| `request`                                                                      | [components.CreateAddOnRequest](../../models/components/createaddonrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |
+
+### Response
+
+**[*operations.CreateAddOnResponse](../../models/operations/createaddonresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListAddOns
+
+Returns a paginated collection of add-ons for an organization.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-add-ons" method="get" path="/v2/cloud-gateways/add-ons" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.ListAddOns(ctx, operations.ListAddOnsRequest{
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ListAddOnsResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |
+| `request`                                                                    | [operations.ListAddOnsRequest](../../models/operations/listaddonsrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+| `opts`                                                                       | [][operations.Option](../../models/operations/option.md)                     | :heavy_minus_sign:                                                           | The options for this request.                                                |
+
+### Response
+
+**[*operations.ListAddOnsResponse](../../models/operations/listaddonsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetAddOn
+
+Retrieves an add-on by ID.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-add-on" method="get" path="/v2/cloud-gateways/add-ons/{addOnId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.GetAddOn(ctx, "550e8400-e29b-41d4-a716-446655440000")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AddOnResponse != nil {
         // handle response
     }
 }
@@ -2091,17 +2683,76 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `resourceQuotaID`                                        | *string*                                                 | :heavy_check_mark:                                       | The ID of the resource quota to operate on.              | 9678f205-49a1-47bb-82d9-d01cafa42a0d                     |
+| `addOnID`                                                | *string*                                                 | :heavy_check_mark:                                       | ID of the add-on to operate on.                          | 550e8400-e29b-41d4-a716-446655440000                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
 
-**[*operations.GetResourceQuotaResponse](../../models/operations/getresourcequotaresponse.md), error**
+**[*operations.GetAddOnResponse](../../models/operations/getaddonresponse.md), error**
 
 ### Errors
 
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## DeleteAddOn
+
+Deletes an add-on by ID. The request will be rejected if the managed cache partial is still in use by some plugins.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-add-on" method="delete" path="/v2/cloud-gateways/add-ons/{addOnId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.DeleteAddOn(ctx, "550e8400-e29b-41d4-a716-446655440000")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `addOnID`                                                | *string*                                                 | :heavy_check_mark:                                       | ID of the add-on to operate on.                          | 550e8400-e29b-41d4-a716-446655440000                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.DeleteAddOnResponse](../../models/operations/deleteaddonresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |

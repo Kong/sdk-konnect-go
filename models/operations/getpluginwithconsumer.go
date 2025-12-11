@@ -14,6 +14,8 @@ type GetPluginWithConsumerRequest struct {
 	ConsumerIDForNestedEntities string `pathParam:"style=simple,explode=false,name=ConsumerIdForNestedEntities"`
 	// ID of the Plugin to lookup
 	PluginID string `pathParam:"style=simple,explode=false,name=PluginId"`
+	// Expand partials for the plugin.
+	ExpandPartials *bool `queryParam:"style=form,explode=true,name=expand_partials"`
 }
 
 func (g *GetPluginWithConsumerRequest) GetControlPlaneID() string {
@@ -35,6 +37,13 @@ func (g *GetPluginWithConsumerRequest) GetPluginID() string {
 		return ""
 	}
 	return g.PluginID
+}
+
+func (g *GetPluginWithConsumerRequest) GetExpandPartials() *bool {
+	if g == nil {
+		return nil
+	}
+	return g.ExpandPartials
 }
 
 type GetPluginWithConsumerResponse struct {

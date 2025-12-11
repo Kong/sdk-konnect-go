@@ -1,0 +1,12 @@
+# APIOperationImplementationStatus
+
+The implementation status of the operation.
+
+
+## Fields
+
+| Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `Matched`                                                                                                                | *bool*                                                                                                                   | :heavy_check_mark:                                                                                                       | Whether the operation is matched by a Kong route in the control plane                                                    |
+| `Route`                                                                                                                  | [components.APIOperationImplementationStatusRoute](../../models/components/apioperationimplementationstatusroute.md)     | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
+| `Service`                                                                                                                | [components.APIOperationImplementationStatusService](../../models/components/apioperationimplementationstatusservice.md) | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |

@@ -11,31 +11,49 @@ import (
 type APIImplementationType string
 
 const (
-	APIImplementationTypeServiceReference APIImplementationType = "Service Reference"
+	APIImplementationTypeServiceReferenceInput APIImplementationType = "Service Reference_input"
+	APIImplementationTypeControlPlaneReference APIImplementationType = "Control Plane Reference"
 )
 
 // APIImplementation - An entity that implements an API
 type APIImplementation struct {
-	ServiceReference *ServiceReference `queryParam:"inline,name=ApiImplementation"`
+	ServiceReferenceInput *ServiceReferenceInput `queryParam:"inline,name=ApiImplementation" union:"member"`
+	ControlPlaneReference *ControlPlaneReference `queryParam:"inline,name=ApiImplementation" union:"member"`
 
 	Type APIImplementationType
 }
 
-func CreateAPIImplementationServiceReference(serviceReference ServiceReference) APIImplementation {
-	typ := APIImplementationTypeServiceReference
+func CreateAPIImplementationServiceReferenceInput(serviceReferenceInput ServiceReferenceInput) APIImplementation {
+	typ := APIImplementationTypeServiceReferenceInput
 
 	return APIImplementation{
-		ServiceReference: &serviceReference,
-		Type:             typ,
+		ServiceReferenceInput: &serviceReferenceInput,
+		Type:                  typ,
+	}
+}
+
+func CreateAPIImplementationControlPlaneReference(controlPlaneReference ControlPlaneReference) APIImplementation {
+	typ := APIImplementationTypeControlPlaneReference
+
+	return APIImplementation{
+		ControlPlaneReference: &controlPlaneReference,
+		Type:                  typ,
 	}
 }
 
 func (u *APIImplementation) UnmarshalJSON(data []byte) error {
 
-	var serviceReference ServiceReference = ServiceReference{}
-	if err := utils.UnmarshalJSON(data, &serviceReference, "", true, nil); err == nil {
-		u.ServiceReference = &serviceReference
-		u.Type = APIImplementationTypeServiceReference
+	var serviceReferenceInput ServiceReferenceInput = ServiceReferenceInput{}
+	if err := utils.UnmarshalJSON(data, &serviceReferenceInput, "", true, nil); err == nil {
+		u.ServiceReferenceInput = &serviceReferenceInput
+		u.Type = APIImplementationTypeServiceReferenceInput
+		return nil
+	}
+
+	var controlPlaneReference ControlPlaneReference = ControlPlaneReference{}
+	if err := utils.UnmarshalJSON(data, &controlPlaneReference, "", true, nil); err == nil {
+		u.ControlPlaneReference = &controlPlaneReference
+		u.Type = APIImplementationTypeControlPlaneReference
 		return nil
 	}
 
@@ -43,8 +61,12 @@ func (u *APIImplementation) UnmarshalJSON(data []byte) error {
 }
 
 func (u APIImplementation) MarshalJSON() ([]byte, error) {
-	if u.ServiceReference != nil {
-		return utils.MarshalJSON(u.ServiceReference, "", true)
+	if u.ServiceReferenceInput != nil {
+		return utils.MarshalJSON(u.ServiceReferenceInput, "", true)
+	}
+
+	if u.ControlPlaneReference != nil {
+		return utils.MarshalJSON(u.ControlPlaneReference, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type APIImplementation: all fields are null")

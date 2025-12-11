@@ -24,7 +24,7 @@ func (a APISpecificationSummary) MarshalJSON() ([]byte, error) {
 }
 
 func (a *APISpecificationSummary) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "type", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil

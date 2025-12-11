@@ -5,6 +5,8 @@ package components
 type KeySet struct {
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
 	// The name to associate with the given key-set.
@@ -20,6 +22,13 @@ func (k *KeySet) GetCreatedAt() *int64 {
 		return nil
 	}
 	return k.CreatedAt
+}
+
+func (k *KeySet) GetDescription() *string {
+	if k == nil {
+		return nil
+	}
+	return k.Description
 }
 
 func (k *KeySet) GetID() *string {

@@ -17,6 +17,8 @@ type KeyAuthWithoutParents struct {
 	Consumer *KeyAuthWithoutParentsConsumer `json:"consumer,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID  *string `json:"id,omitempty"`
 	Key *string `json:"key,omitempty"`
@@ -38,6 +40,13 @@ func (k *KeyAuthWithoutParents) GetCreatedAt() *int64 {
 		return nil
 	}
 	return k.CreatedAt
+}
+
+func (k *KeyAuthWithoutParents) GetDescription() *string {
+	if k == nil {
+		return nil
+	}
+	return k.Description
 }
 
 func (k *KeyAuthWithoutParents) GetID() *string {

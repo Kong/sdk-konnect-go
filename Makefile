@@ -87,14 +87,16 @@ generate.deepcopy: controller-gen
 		models/components/route.go
 	$(SED) -i 's#\(type Destinations struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/routejson.go
-	$(SED) -i 's#\(type RouteJSON struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
-		models/components/routejson.go
+# NOTE: Adding DeepCopy to RouteJSON causes issues with DeepCopy methods generation.
+# 	$(SED) -i 's#\(type RouteJSON struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+# 		models/components/routejson.go
 	$(SED) -i 's#\(type RouteJSONService struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/routejson.go
 	$(SED) -i 's#\(type Sources struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/routejson.go
-	$(SED) -i 's#\(type RouteExpression struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
-		models/components/routeexpression.go
+# NOTE: Adding DeepCopy to RouteExpression causes issues with DeepCopy methods generation.
+# 	$(SED) -i 's#\(type RouteExpression struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+# 		models/components/routeexpression.go
 	$(SED) -i 's#\(type RouteExpressionService struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/routeexpression.go
 	$(SED) -i 's#\(type UpstreamClientCertificate struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \

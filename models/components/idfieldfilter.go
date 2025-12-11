@@ -2,10 +2,13 @@
 
 package components
 
-// IDFieldFilter - Returns entities that exact match any of the comma-delimited phrases in the filter string.
+// IDFieldFilter - Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 type IDFieldFilter struct {
-	Eq  *string `queryParam:"name=eq"`
+	// The field exactly matches the provided value.
+	Eq *string `queryParam:"name=eq"`
+	// The field does not match the provided value.
 	Neq *string `queryParam:"name=neq"`
+	// The field matches any of the provided values.
 	Oeq *string `queryParam:"name=oeq"`
 }
 

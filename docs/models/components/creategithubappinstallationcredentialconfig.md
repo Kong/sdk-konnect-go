@@ -1,0 +1,10 @@
+# CreateGitHubAppInstallationCredentialConfig
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `InstallationID`                                                               | *string*                                                                       | :heavy_check_mark:                                                             | The GitHub App installation ID.                                                | 46952218                                                                       |
+| `Code`                                                                         | *string*                                                                       | :heavy_check_mark:                                                             | The authorization code used to exchange for a GitHub user-scoped access token. | Yzk5ZDczMzRlNDEwY                                                              |
+| `AppInstalledBy`                                                               | **string*                                                                      | :heavy_minus_sign:                                                             | The GitHub user who installed the app                                          |                                                                                |

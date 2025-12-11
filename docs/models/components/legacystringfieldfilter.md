@@ -1,11 +1,11 @@
 # LegacyStringFieldFilter
 
-Filters on the given string field value by fuzzy match.
+Filter using **one** of the following operators: `eq`, `contains`
 
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `Eq`               | **string*          | :heavy_minus_sign: | N/A                |
-| `Contains`         | **string*          | :heavy_minus_sign: | N/A                |
+| Field                                         | Type                                          | Required                                      | Description                                   |
+| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
+| `Eq`                                          | **string*                                     | :heavy_minus_sign:                            | The field exactly matches the provided value. |
+| `Contains`                                    | **string*                                     | :heavy_minus_sign:                            | The field contains the provided value.        |

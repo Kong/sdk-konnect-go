@@ -23,6 +23,10 @@ type Network struct {
 	AvailabilityZones []string `json:"availability_zones"`
 	// CIDR block configuration for the network.
 	CidrBlock string `json:"cidr_block"`
+	// Firewall configuration for a network.
+	Firewall *NetworkFirewallConfig `json:"firewall,omitempty"`
+	// Whether DDOS protection is enabled for the network.
+	DdosProtection *bool `json:"ddos_protection,omitempty"`
 	// State of the network.
 	State NetworkState `json:"state"`
 	// Metadata describing the backing state of the network and why it may be in an erroneous state.
@@ -48,7 +52,7 @@ func (n Network) MarshalJSON() ([]byte, error) {
 }
 
 func (n *Network) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"id", "name", "default", "cloud_gateway_provider_account_id", "region", "availability_zones", "cidr_block", "state", "provider_metadata", "transit_gateway_count", "configuration_reference_count", "entity_version", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &n, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -101,6 +105,20 @@ func (n *Network) GetCidrBlock() string {
 		return ""
 	}
 	return n.CidrBlock
+}
+
+func (n *Network) GetFirewall() *NetworkFirewallConfig {
+	if n == nil {
+		return nil
+	}
+	return n.Firewall
+}
+
+func (n *Network) GetDdosProtection() *bool {
+	if n == nil {
+		return nil
+	}
+	return n.DdosProtection
 }
 
 func (n *Network) GetState() NetworkState {

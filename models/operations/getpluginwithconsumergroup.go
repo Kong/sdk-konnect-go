@@ -14,6 +14,8 @@ type GetPluginWithConsumerGroupRequest struct {
 	ConsumerGroupID string `pathParam:"style=simple,explode=false,name=ConsumerGroupId"`
 	// ID of the Plugin to lookup
 	PluginID string `pathParam:"style=simple,explode=false,name=PluginId"`
+	// Expand partials for the plugin.
+	ExpandPartials *bool `queryParam:"style=form,explode=true,name=expand_partials"`
 }
 
 func (g *GetPluginWithConsumerGroupRequest) GetControlPlaneID() string {
@@ -35,6 +37,13 @@ func (g *GetPluginWithConsumerGroupRequest) GetPluginID() string {
 		return ""
 	}
 	return g.PluginID
+}
+
+func (g *GetPluginWithConsumerGroupRequest) GetExpandPartials() *bool {
+	if g == nil {
+		return nil
+	}
+	return g.ExpandPartials
 }
 
 type GetPluginWithConsumerGroupResponse struct {

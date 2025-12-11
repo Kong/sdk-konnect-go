@@ -10,11 +10,25 @@ const (
 	CreateControlPlaneRequestClusterTypeClusterTypeK8SIngressController  CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER"
 	CreateControlPlaneRequestClusterTypeClusterTypeControlPlaneGroup     CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_CONTROL_PLANE_GROUP"
 	CreateControlPlaneRequestClusterTypeClusterTypeServerless            CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_SERVERLESS"
+	CreateControlPlaneRequestClusterTypeClusterTypeHTTPGateway           CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_HTTP_GATEWAY"
+	CreateControlPlaneRequestClusterTypeClusterTypeEventGateway          CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_EVENT_GATEWAY"
 	CreateControlPlaneRequestClusterTypeClusterTypeKafkaNativeEventProxy CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY"
+	CreateControlPlaneRequestClusterTypeClusterTypeCloudAPIGateway       CreateControlPlaneRequestClusterType = "CLUSTER_TYPE_CLOUD_API_GATEWAY"
 )
 
 func (e CreateControlPlaneRequestClusterType) ToPointer() *CreateControlPlaneRequestClusterType {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *CreateControlPlaneRequestClusterType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "CLUSTER_TYPE_CONTROL_PLANE", "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER", "CLUSTER_TYPE_CONTROL_PLANE_GROUP", "CLUSTER_TYPE_SERVERLESS", "CLUSTER_TYPE_HTTP_GATEWAY", "CLUSTER_TYPE_EVENT_GATEWAY", "CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY", "CLUSTER_TYPE_CLOUD_API_GATEWAY":
+			return true
+		}
+	}
+	return false
 }
 
 // AuthType - The auth type value of the cluster associated with the Runtime Group.
@@ -27,6 +41,17 @@ const (
 
 func (e AuthType) ToPointer() *AuthType {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AuthType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "pinned_client_certs", "pki_client_certs":
+			return true
+		}
+	}
+	return false
 }
 
 // CreateControlPlaneRequest - The request schema for the create control plane request.

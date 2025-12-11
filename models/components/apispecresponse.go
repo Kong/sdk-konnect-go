@@ -7,15 +7,15 @@ import (
 	"time"
 )
 
-type ValidationMessages struct {
+type APISpecResponseValidationMessages struct {
 	Message string `json:"message"`
 }
 
-func (v *ValidationMessages) GetMessage() string {
-	if v == nil {
+func (a *APISpecResponseValidationMessages) GetMessage() string {
+	if a == nil {
 		return ""
 	}
-	return v.Message
+	return a.Message
 }
 
 // APISpecResponseAPISpecType - The type of specification being stored. This allows us to render the specification correctly.
@@ -31,6 +31,17 @@ func (e APISpecResponseAPISpecType) ToPointer() *APISpecResponseAPISpecType {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *APISpecResponseAPISpecType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "oas2", "oas3", "asyncapi":
+			return true
+		}
+	}
+	return false
+}
+
 // APISpecResponse - API specification (OpenAPI or AsyncAPI)
 type APISpecResponse struct {
 	// The API specification identifier.
@@ -39,7 +50,7 @@ type APISpecResponse struct {
 	//
 	Content string `json:"content"`
 	// The errors that occurred while parsing the API specification.
-	ValidationMessages []ValidationMessages `json:"validation_messages"`
+	ValidationMessages []APISpecResponseValidationMessages `json:"validation_messages"`
 	// The type of specification being stored. This allows us to render the specification correctly.
 	//
 	Type APISpecResponseAPISpecType `json:"type"`
@@ -54,7 +65,7 @@ func (a APISpecResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (a *APISpecResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "content", "validation_messages", "type", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -74,9 +85,9 @@ func (a *APISpecResponse) GetContent() string {
 	return a.Content
 }
 
-func (a *APISpecResponse) GetValidationMessages() []ValidationMessages {
+func (a *APISpecResponse) GetValidationMessages() []APISpecResponseValidationMessages {
 	if a == nil {
-		return []ValidationMessages{}
+		return []APISpecResponseValidationMessages{}
 	}
 	return a.ValidationMessages
 }

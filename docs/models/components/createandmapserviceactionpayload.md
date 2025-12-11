@@ -1,0 +1,9 @@
+# CreateAndMapServiceActionPayload
+
+
+## Fields
+
+| Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `Type`                                                                                                             | [components.CreateAndMapServiceActionPayloadType](../../models/components/createandmapserviceactionpayloadtype.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `Data`                                                                                                             | [components.CreateAndMapServiceActionPayloadData](../../models/components/createandmapserviceactionpayloaddata.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |

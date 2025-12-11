@@ -29,6 +29,8 @@ type MTLSAuth struct {
 	Consumer      *MTLSAuthConsumer      `json:"consumer,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID          *string `json:"id,omitempty"`
 	SubjectName string  `json:"subject_name"`
@@ -55,6 +57,13 @@ func (m *MTLSAuth) GetCreatedAt() *int64 {
 		return nil
 	}
 	return m.CreatedAt
+}
+
+func (m *MTLSAuth) GetDescription() *string {
+	if m == nil {
+		return nil
+	}
+	return m.Description
 }
 
 func (m *MTLSAuth) GetID() *string {

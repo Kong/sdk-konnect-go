@@ -3,15 +3,15 @@
 package components
 
 type NotificationFilterParameters struct {
-	// Filters on the given string field value by fuzzy match.
+	// Filter using **one** of the following operators: `eq`, `contains`
 	Title *LegacyStringFieldFilter `queryParam:"name=title"`
-	// Filters on the given string field value by fuzzy match.
+	// Filter using **one** of the following operators: `eq`, `contains`
 	Description *LegacyStringFieldFilter `queryParam:"name=description"`
-	// Filters on the given string field value by fuzzy match.
+	// Filter using **one** of the following operators: `eq`, `contains`
 	Namespace *LegacyStringFieldFilter `queryParam:"name=namespace"`
-	// Filters on the given string field value by fuzzy match.
+	// Filter using **one** of the following operators: `eq`, `contains`
 	Region *LegacyStringFieldFilter `queryParam:"name=region"`
-	// Filters on the given string field value by fuzzy match.
+	// Filter using **one** of the following operators: `eq`, `contains`
 	Status *LegacyStringFieldFilter `queryParam:"name=status"`
 }
 

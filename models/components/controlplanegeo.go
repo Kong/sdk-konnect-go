@@ -17,3 +17,14 @@ const (
 func (e ControlPlaneGeo) ToPointer() *ControlPlaneGeo {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *ControlPlaneGeo) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "us", "eu", "au", "me", "in", "sg":
+			return true
+		}
+	}
+	return false
+}

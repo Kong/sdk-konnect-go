@@ -1,5 +1,4 @@
 # ControlPlanes
-(*ControlPlanes*)
 
 ## Overview
 

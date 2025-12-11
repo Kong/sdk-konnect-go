@@ -13,3 +13,14 @@ const (
 func (e NetworkCreateState) ToPointer() *NetworkCreateState {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *NetworkCreateState) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "initializing", "offline":
+			return true
+		}
+	}
+	return false
+}

@@ -1,0 +1,12 @@
+# AddOnsFilterParameters
+
+Filter parameters for add-ons list operation.
+
+
+## Fields
+
+| Field                                                                                                                   | Type                                                                                                                    | Required                                                                                                                | Description                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `Name`                                                                                                                  | [*components.CloudGatewaysStringFieldFilterOverride](../../models/components/cloudgatewaysstringfieldfilteroverride.md) | :heavy_minus_sign:                                                                                                      | N/A                                                                                                                     |
+| `State`                                                                                                                 | [*components.AddOnStateFieldFilter](../../models/components/addonstatefieldfilter.md)                                   | :heavy_minus_sign:                                                                                                      | N/A                                                                                                                     |
+| `ConfigKind`                                                                                                            | [*components.AddOnConfigKindFieldFilter](../../models/components/addonconfigkindfieldfilter.md)                         | :heavy_minus_sign:                                                                                                      | Filter for add-on config kind field.                                                                                    |

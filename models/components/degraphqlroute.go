@@ -16,6 +16,8 @@ func (d *DegraphqlRouteService) GetID() *string {
 type DegraphqlRoute struct {
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID      *string               `json:"id,omitempty"`
 	Methods []string              `json:"methods,omitempty"`
@@ -31,6 +33,13 @@ func (d *DegraphqlRoute) GetCreatedAt() *int64 {
 		return nil
 	}
 	return d.CreatedAt
+}
+
+func (d *DegraphqlRoute) GetDescription() *string {
+	if d == nil {
+		return nil
+	}
+	return d.Description
 }
 
 func (d *DegraphqlRoute) GetID() *string {

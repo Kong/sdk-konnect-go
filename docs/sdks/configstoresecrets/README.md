@@ -1,5 +1,4 @@
 # ConfigStoreSecrets
-(*ConfigStoreSecrets*)
 
 ## Overview
 

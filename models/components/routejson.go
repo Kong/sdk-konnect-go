@@ -53,6 +53,17 @@ func (e HTTPSRedirectStatusCode) ToPointer() *HTTPSRedirectStatusCode {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *HTTPSRedirectStatusCode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case 301, 302, 307, 308, 426:
+			return true
+		}
+	}
+	return false
+}
+
 // PathHandling - Controls how the Service path, Route path and requested path are combined when sending a request to the upstream. See above for a detailed description of each behavior.
 type PathHandling string
 
@@ -63,6 +74,17 @@ const (
 
 func (e PathHandling) ToPointer() *PathHandling {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *PathHandling) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "v0", "v1":
+			return true
+		}
+	}
+	return false
 }
 
 // RouteJSONProtocols - A string representing a protocol, such as HTTP or HTTPS.
@@ -83,6 +105,17 @@ const (
 
 func (e RouteJSONProtocols) ToPointer() *RouteJSONProtocols {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *RouteJSONProtocols) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "grpc", "grpcs", "http", "https", "tcp", "tls", "tls_passthrough", "udp", "ws", "wss":
+			return true
+		}
+	}
+	return false
 }
 
 // RouteJSONService - The Service this Route is associated to. This is where the Route proxies traffic to.
@@ -144,6 +177,8 @@ func (s *Sources) GetPort() *int64 {
 type RouteJSON struct {
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
 	// A list of IP destinations of incoming connections that match this Route when using stream routing. Each entry is an object with fields "ip" (optionally in CIDR range notation) and/or "port".
 	Destinations []Destinations `json:"destinations,omitempty"`
 	// One or more lists of values indexed by header name that will cause this Route to match if present in the request. The `Host` header cannot be used with this attribute: hosts should be specified using the `hosts` attribute. When `headers` contains only one value and that value starts with the special prefix `~*`, the value is interpreted as a regular expression.
@@ -154,6 +189,8 @@ type RouteJSON struct {
 	HTTPSRedirectStatusCode *HTTPSRedirectStatusCode `default:"426" json:"https_redirect_status_code"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
+	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
+	ManagedBy map[string]any `json:"managed_by,omitempty"`
 	// A list of HTTP methods that match this Route.
 	Methods []string `json:"methods,omitempty"`
 	// The name of the Route. Route names must be unique, and they are case sensitive. For example, there can be two different Routes named "test" and "Test".
@@ -204,6 +241,13 @@ func (r *RouteJSON) GetCreatedAt() *int64 {
 	return r.CreatedAt
 }
 
+func (r *RouteJSON) GetDescription() *string {
+	if r == nil {
+		return nil
+	}
+	return r.Description
+}
+
 func (r *RouteJSON) GetDestinations() []Destinations {
 	if r == nil {
 		return nil
@@ -237,6 +281,13 @@ func (r *RouteJSON) GetID() *string {
 		return nil
 	}
 	return r.ID
+}
+
+func (r *RouteJSON) GetManagedBy() map[string]any {
+	if r == nil {
+		return nil
+	}
+	return r.ManagedBy
 }
 
 func (r *RouteJSON) GetMethods() []string {

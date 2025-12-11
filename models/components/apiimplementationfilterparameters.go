@@ -3,13 +3,13 @@
 package components
 
 type APIImplementationFilterParameters struct {
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	ID *UUIDFieldFilter `queryParam:"name=id"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	APIID *UUIDFieldFilter `queryParam:"name=api_id"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	ServiceID *UUIDFieldFilter `queryParam:"name=service_id"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	ControlPlaneID *UUIDFieldFilter `queryParam:"name=control_plane_id"`
 	// Filters on the given datetime (RFC-3339) field value.
 	CreatedAt *DateTimeFieldFilter `queryParam:"name=created_at"`

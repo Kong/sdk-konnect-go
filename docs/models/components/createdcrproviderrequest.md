@@ -35,3 +35,9 @@ createDcrProviderRequest := components.CreateCreateDcrProviderRequestOkta(compon
 createDcrProviderRequest := components.CreateCreateDcrProviderRequestHTTP(components.CreateDcrProviderRequestHTTP{/* values here */})
 ```
 
+### CreateDcrProviderRequestKongIdentity
+
+```go
+createDcrProviderRequest := components.CreateCreateDcrProviderRequestKongIdentity(components.CreateDcrProviderRequestKongIdentity{/* values here */})
+```
+

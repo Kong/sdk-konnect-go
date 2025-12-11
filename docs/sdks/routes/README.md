@@ -1,5 +1,4 @@
 # Routes
-(*Routes*)
 
 ## Overview
 
@@ -19,8 +18,6 @@ Depending on the protocol, one of the following attributes must be set:
 - `grpcs`: At least one of `hosts`, `headers`, `paths`, or `snis`
 - `ws`: At least one of `hosts`, `headers`, or `paths`
 - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
-
-
 
 
 
@@ -74,6 +71,8 @@ func main() {
     res, err := s.Routes.ListRoute(ctx, operations.ListRouteRequest{
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Tags: sdkkonnectgo.Pointer("tag1,tag2"),
+        FilterNameContains: sdkkonnectgo.Pointer("john"),
+        FilterNameEq: sdkkonnectgo.Pointer("john"),
     })
     if err != nil {
         log.Fatal(err)

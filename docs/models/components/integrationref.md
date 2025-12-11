@@ -1,0 +1,12 @@
+# IntegrationRef
+
+Short-hand descriptor of an integration installed within the catalog.
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            | Example                                                                                |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `Name`                                                                                 | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    | gateway-manager                                                                        |
+| `DisplayName`                                                                          | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    | gateway-manager                                                                        |
+| `Instance`                                                                             | [components.IntegrationInstanceRef](../../models/components/integrationinstanceref.md) | :heavy_check_mark:                                                                     | Short-hand descriptor of an integration instance.                                      |                                                                                        |

@@ -18,10 +18,10 @@ const (
 )
 
 type PrivateDNSResponse struct {
-	AwsPrivateHostedZoneResponse   *AwsPrivateHostedZoneResponse   `queryParam:"inline,name=PrivateDnsResponse"`
-	AwsPrivateDNSResolverResponse  *AwsPrivateDNSResolverResponse  `queryParam:"inline,name=PrivateDnsResponse"`
-	GcpPrivateHostedZoneResponse   *GcpPrivateHostedZoneResponse   `queryParam:"inline,name=PrivateDnsResponse"`
-	AzurePrivateHostedZoneResponse *AzurePrivateHostedZoneResponse `queryParam:"inline,name=PrivateDnsResponse"`
+	AwsPrivateHostedZoneResponse   *AwsPrivateHostedZoneResponse   `queryParam:"inline,name=PrivateDnsResponse" union:"member"`
+	AwsPrivateDNSResolverResponse  *AwsPrivateDNSResolverResponse  `queryParam:"inline,name=PrivateDnsResponse" union:"member"`
+	GcpPrivateHostedZoneResponse   *GcpPrivateHostedZoneResponse   `queryParam:"inline,name=PrivateDnsResponse" union:"member"`
+	AzurePrivateHostedZoneResponse *AzurePrivateHostedZoneResponse `queryParam:"inline,name=PrivateDnsResponse" union:"member"`
 
 	Type PrivateDNSResponseType
 }

@@ -15,6 +15,8 @@ type CreateConfigurationRequest struct {
 	Version string `json:"version"`
 	// List of data-plane groups that describe where to deploy instances, along with how many instances.
 	DataplaneGroups []CreateConfigurationDataPlaneGroup `json:"dataplane_groups"`
+	// Kind of the Cloud Gateway deployment
+	Kind *ConfigurationKind `default:"dedicated.v0" json:"kind"`
 	// Type of API access data-plane groups will support for a configuration.
 	APIAccess *APIAccess `default:"private+public" json:"api_access"`
 }
@@ -24,7 +26,7 @@ func (c CreateConfigurationRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreateConfigurationRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"control_plane_id", "control_plane_geo", "version", "dataplane_groups"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -56,6 +58,13 @@ func (c *CreateConfigurationRequest) GetDataplaneGroups() []CreateConfigurationD
 		return []CreateConfigurationDataPlaneGroup{}
 	}
 	return c.DataplaneGroups
+}
+
+func (c *CreateConfigurationRequest) GetKind() *ConfigurationKind {
+	if c == nil {
+		return nil
+	}
+	return c.Kind
 }
 
 func (c *CreateConfigurationRequest) GetAPIAccess() *APIAccess {

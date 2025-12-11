@@ -15,6 +15,17 @@ func (e CreateAPISpecRequestAPISpecType) ToPointer() *CreateAPISpecRequestAPISpe
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *CreateAPISpecRequestAPISpecType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "oas2", "oas3", "asyncapi":
+			return true
+		}
+	}
+	return false
+}
+
 type CreateAPISpecRequest struct {
 	// The raw content of your API specification, in json or yaml format (OpenAPI or AsyncAPI).
 	//

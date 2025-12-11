@@ -1,5 +1,4 @@
 # APIAttributes
-(*APIAttributes*)
 
 ## Overview
 

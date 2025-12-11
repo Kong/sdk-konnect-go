@@ -14,6 +14,17 @@ func (e Visibility) ToPointer() *Visibility {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *Visibility) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "public", "private":
+			return true
+		}
+	}
+	return false
+}
+
 type PortalMenuItem struct {
 	// The absolute path of a page in a portal with a leading slash.
 	Path string `json:"path"`

@@ -26,7 +26,7 @@ func (l ListKeyWithKeySetRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (l *ListKeyWithKeySetRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"controlPlaneId", "KeySetId"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
 		return err
 	}
 	return nil

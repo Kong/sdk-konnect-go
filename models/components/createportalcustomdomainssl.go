@@ -82,8 +82,8 @@ const (
 )
 
 type CreatePortalCustomDomainSSL struct {
-	CustomCertificate *CustomCertificate `queryParam:"inline,name=CreatePortalCustomDomainSSL"`
-	HTTP              *HTTP              `queryParam:"inline,name=CreatePortalCustomDomainSSL"`
+	CustomCertificate *CustomCertificate `queryParam:"inline,name=CreatePortalCustomDomainSSL" union:"member"`
+	HTTP              *HTTP              `queryParam:"inline,name=CreatePortalCustomDomainSSL" union:"member"`
 
 	Type CreatePortalCustomDomainSSLType
 }

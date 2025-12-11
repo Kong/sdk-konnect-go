@@ -7,19 +7,30 @@ import (
 	"time"
 )
 
-// State of the data-plane group.
-type State string
+// ConfigurationDataPlaneGroupState - State of the data-plane group.
+type ConfigurationDataPlaneGroupState string
 
 const (
-	StateCreated      State = "created"
-	StateInitializing State = "initializing"
-	StateReady        State = "ready"
-	StateTerminating  State = "terminating"
-	StateTerminated   State = "terminated"
+	ConfigurationDataPlaneGroupStateCreated      ConfigurationDataPlaneGroupState = "created"
+	ConfigurationDataPlaneGroupStateInitializing ConfigurationDataPlaneGroupState = "initializing"
+	ConfigurationDataPlaneGroupStateReady        ConfigurationDataPlaneGroupState = "ready"
+	ConfigurationDataPlaneGroupStateTerminating  ConfigurationDataPlaneGroupState = "terminating"
+	ConfigurationDataPlaneGroupStateTerminated   ConfigurationDataPlaneGroupState = "terminated"
 )
 
-func (e State) ToPointer() *State {
+func (e ConfigurationDataPlaneGroupState) ToPointer() *ConfigurationDataPlaneGroupState {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *ConfigurationDataPlaneGroupState) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "created", "initializing", "ready", "terminating", "terminated":
+			return true
+		}
+	}
+	return false
 }
 
 // StateMetadata - Metadata describing the backing state of the dataplane group and why it may be in an erroneous state.
@@ -58,7 +69,7 @@ type ConfigurationDataPlaneGroup struct {
 	Environment           []ConfigurationDataPlaneGroupEnvironmentField `json:"environment,omitempty"`
 	CloudGatewayNetworkID string                                        `json:"cloud_gateway_network_id"`
 	// State of the data-plane group.
-	State State `json:"state"`
+	State ConfigurationDataPlaneGroupState `json:"state"`
 	// Metadata describing the backing state of the dataplane group and why it may be in an erroneous state.
 	//
 	StateMetadata *StateMetadata `json:"state_metadata,omitempty"`
@@ -79,7 +90,7 @@ func (c ConfigurationDataPlaneGroup) MarshalJSON() ([]byte, error) {
 }
 
 func (c *ConfigurationDataPlaneGroup) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "provider", "region", "autoscale", "cloud_gateway_network_id", "state", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -127,9 +138,9 @@ func (c *ConfigurationDataPlaneGroup) GetCloudGatewayNetworkID() string {
 	return c.CloudGatewayNetworkID
 }
 
-func (c *ConfigurationDataPlaneGroup) GetState() State {
+func (c *ConfigurationDataPlaneGroup) GetState() ConfigurationDataPlaneGroupState {
 	if c == nil {
-		return State("")
+		return ConfigurationDataPlaneGroupState("")
 	}
 	return c.State
 }

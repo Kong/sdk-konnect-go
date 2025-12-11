@@ -1,5 +1,4 @@
 # Snippets
-(*Snippets*)
 
 ## Overview
 

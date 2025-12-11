@@ -6,7 +6,156 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// AuthProvider - Auth providers to be used to authenticate to a Cloud Provider's Redis instance.
+type AuthProvider string
+
+const (
+	AuthProviderAws   AuthProvider = "aws"
+	AuthProviderAzure AuthProvider = "azure"
+	AuthProviderGcp   AuthProvider = "gcp"
+)
+
+func (e AuthProvider) ToPointer() *AuthProvider {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AuthProvider) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "aws", "azure", "gcp":
+			return true
+		}
+	}
+	return false
+}
+
+// CloudAuthentication - Cloud auth related configs for connecting to a Cloud Provider's Redis instance.
+type CloudAuthentication struct {
+	// Auth providers to be used to authenticate to a Cloud Provider's Redis instance.
+	AuthProvider *AuthProvider `json:"auth_provider,omitempty"`
+	// AWS Access Key ID to be used for authentication when `auth_provider` is set to `aws`.
+	AwsAccessKeyID *string `json:"aws_access_key_id,omitempty"`
+	// The ARN of the IAM role to assume for generating ElastiCache IAM authentication tokens.
+	AwsAssumeRoleArn *string `json:"aws_assume_role_arn,omitempty"`
+	// The name of the AWS Elasticache cluster when `auth_provider` is set to `aws`.
+	AwsCacheName *string `json:"aws_cache_name,omitempty"`
+	// This flag specifies whether the cluster is serverless when auth_provider is set to `aws`.
+	AwsIsServerless *bool `default:"true" json:"aws_is_serverless"`
+	// The region of the AWS ElastiCache cluster when `auth_provider` is set to `aws`.
+	AwsRegion *string `json:"aws_region,omitempty"`
+	// The session name for the temporary credentials when assuming the IAM role.
+	AwsRoleSessionName *string `json:"aws_role_session_name,omitempty"`
+	// AWS Secret Access Key to be used for authentication when `auth_provider` is set to `aws`.
+	AwsSecretAccessKey *string `json:"aws_secret_access_key,omitempty"`
+	// Azure Client ID to be used for authentication when `auth_provider` is set to `azure`.
+	AzureClientID *string `json:"azure_client_id,omitempty"`
+	// Azure Client Secret to be used for authentication when `auth_provider` is set to `azure`.
+	AzureClientSecret *string `json:"azure_client_secret,omitempty"`
+	// Azure Tenant ID to be used for authentication when `auth_provider` is set to `azure`.
+	AzureTenantID *string `json:"azure_tenant_id,omitempty"`
+	// GCP Service Account JSON to be used for authentication when `auth_provider` is set to `gcp`.
+	GcpServiceAccountJSON *string `json:"gcp_service_account_json,omitempty"`
+}
+
+func (c CloudAuthentication) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CloudAuthentication) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (c *CloudAuthentication) GetAuthProvider() *AuthProvider {
+	if c == nil {
+		return nil
+	}
+	return c.AuthProvider
+}
+
+func (c *CloudAuthentication) GetAwsAccessKeyID() *string {
+	if c == nil {
+		return nil
+	}
+	return c.AwsAccessKeyID
+}
+
+func (c *CloudAuthentication) GetAwsAssumeRoleArn() *string {
+	if c == nil {
+		return nil
+	}
+	return c.AwsAssumeRoleArn
+}
+
+func (c *CloudAuthentication) GetAwsCacheName() *string {
+	if c == nil {
+		return nil
+	}
+	return c.AwsCacheName
+}
+
+func (c *CloudAuthentication) GetAwsIsServerless() *bool {
+	if c == nil {
+		return nil
+	}
+	return c.AwsIsServerless
+}
+
+func (c *CloudAuthentication) GetAwsRegion() *string {
+	if c == nil {
+		return nil
+	}
+	return c.AwsRegion
+}
+
+func (c *CloudAuthentication) GetAwsRoleSessionName() *string {
+	if c == nil {
+		return nil
+	}
+	return c.AwsRoleSessionName
+}
+
+func (c *CloudAuthentication) GetAwsSecretAccessKey() *string {
+	if c == nil {
+		return nil
+	}
+	return c.AwsSecretAccessKey
+}
+
+func (c *CloudAuthentication) GetAzureClientID() *string {
+	if c == nil {
+		return nil
+	}
+	return c.AzureClientID
+}
+
+func (c *CloudAuthentication) GetAzureClientSecret() *string {
+	if c == nil {
+		return nil
+	}
+	return c.AzureClientSecret
+}
+
+func (c *CloudAuthentication) GetAzureTenantID() *string {
+	if c == nil {
+		return nil
+	}
+	return c.AzureTenantID
+}
+
+func (c *CloudAuthentication) GetGcpServiceAccountJSON() *string {
+	if c == nil {
+		return nil
+	}
+	return c.GcpServiceAccountJSON
+}
+
 type PartialRedisCeConfig struct {
+	// Cloud auth related configs for connecting to a Cloud Provider's Redis instance.
+	CloudAuthentication *CloudAuthentication `json:"cloud_authentication,omitempty"`
 	// Database to use for the Redis connection when using the `redis` strategy
 	Database *int64 `default:"0" json:"database"`
 	// A string representing a host name, such as example.com.
@@ -36,6 +185,13 @@ func (p *PartialRedisCeConfig) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	return nil
+}
+
+func (p *PartialRedisCeConfig) GetCloudAuthentication() *CloudAuthentication {
+	if p == nil {
+		return nil
+	}
+	return p.CloudAuthentication
 }
 
 func (p *PartialRedisCeConfig) GetDatabase() *int64 {

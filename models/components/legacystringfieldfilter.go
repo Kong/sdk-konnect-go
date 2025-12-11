@@ -2,9 +2,11 @@
 
 package components
 
-// LegacyStringFieldFilter - Filters on the given string field value by fuzzy match.
+// LegacyStringFieldFilter - Filter using **one** of the following operators: `eq`, `contains`
 type LegacyStringFieldFilter struct {
-	Eq       *string `queryParam:"name=eq"`
+	// The field exactly matches the provided value.
+	Eq *string `queryParam:"name=eq"`
+	// The field contains the provided value.
 	Contains *string `queryParam:"name=contains"`
 }
 

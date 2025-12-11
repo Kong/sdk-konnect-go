@@ -20,6 +20,17 @@ func (e APIVersionResponseAPISpecType) ToPointer() *APIVersionResponseAPISpecTyp
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *APIVersionResponseAPISpecType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "oas2", "oas3", "asyncapi":
+			return true
+		}
+	}
+	return false
+}
+
 type APIVersionResponseValidationMessages struct {
 	Message string `json:"message"`
 }
@@ -81,7 +92,7 @@ func (a APIVersionResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (a *APIVersionResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "version", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil

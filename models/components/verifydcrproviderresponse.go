@@ -13,6 +13,17 @@ func (e Status) ToPointer() *Status {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *Status) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "success", "failed":
+			return true
+		}
+	}
+	return false
+}
+
 // VerifyDcrProviderResponse - A response containing the result of attempting to verify a DCR provider configuration.
 type VerifyDcrProviderResponse struct {
 	Status Status   `json:"status"`

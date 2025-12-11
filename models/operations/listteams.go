@@ -11,17 +11,17 @@ var ListTeamsServerList = []string{
 	"https://global.api.konghq.com/",
 }
 
-// ListTeamsQueryParamFilter - Filter teams returned in the response.
-type ListTeamsQueryParamFilter struct {
-	// Filters on the given string field value by fuzzy match.
+// QueryParamFilter - Filter teams returned in the response.
+type QueryParamFilter struct {
+	// Filter using **one** of the following operators: `eq`, `contains`
 	Name *components.LegacyStringFieldFilter `queryParam:"name=name"`
 }
 
-func (l *ListTeamsQueryParamFilter) GetName() *components.LegacyStringFieldFilter {
-	if l == nil {
+func (q *QueryParamFilter) GetName() *components.LegacyStringFieldFilter {
+	if q == nil {
 		return nil
 	}
-	return l.Name
+	return q.Name
 }
 
 type ListTeamsRequest struct {
@@ -30,7 +30,7 @@ type ListTeamsRequest struct {
 	// Determines which page of the entities to retrieve.
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 	// Filter teams returned in the response.
-	Filter *ListTeamsQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *QueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
 func (l *ListTeamsRequest) GetPageSize() *int64 {
@@ -47,7 +47,7 @@ func (l *ListTeamsRequest) GetPageNumber() *int64 {
 	return l.PageNumber
 }
 
-func (l *ListTeamsRequest) GetFilter() *ListTeamsQueryParamFilter {
+func (l *ListTeamsRequest) GetFilter() *QueryParamFilter {
 	if l == nil {
 		return nil
 	}

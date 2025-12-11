@@ -20,11 +20,11 @@ const (
 
 // CreateTransitGatewayRequest - Request schema for creating a transit gateway.
 type CreateTransitGatewayRequest struct {
-	AWSTransitGateway           *AWSTransitGateway           `queryParam:"inline,name=CreateTransitGatewayRequest"`
-	AWSVpcPeeringGateway        *AWSVpcPeeringGateway        `queryParam:"inline,name=CreateTransitGatewayRequest"`
-	AWSResourceEndpointGateway  *AWSResourceEndpointGateway  `queryParam:"inline,name=CreateTransitGatewayRequest"`
-	AzureTransitGateway         *AzureTransitGateway         `queryParam:"inline,name=CreateTransitGatewayRequest"`
-	GcpVpcPeeringTransitGateway *GcpVpcPeeringTransitGateway `queryParam:"inline,name=CreateTransitGatewayRequest"`
+	AWSTransitGateway           *AWSTransitGateway           `queryParam:"inline,name=CreateTransitGatewayRequest" union:"member"`
+	AWSVpcPeeringGateway        *AWSVpcPeeringGateway        `queryParam:"inline,name=CreateTransitGatewayRequest" union:"member"`
+	AWSResourceEndpointGateway  *AWSResourceEndpointGateway  `queryParam:"inline,name=CreateTransitGatewayRequest" union:"member"`
+	AzureTransitGateway         *AzureTransitGateway         `queryParam:"inline,name=CreateTransitGatewayRequest" union:"member"`
+	GcpVpcPeeringTransitGateway *GcpVpcPeeringTransitGateway `queryParam:"inline,name=CreateTransitGatewayRequest" union:"member"`
 
 	Type CreateTransitGatewayRequestType
 }

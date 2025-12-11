@@ -120,6 +120,17 @@ func (e PluginWithoutParentsProtocols) ToPointer() *PluginWithoutParentsProtocol
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *PluginWithoutParentsProtocols) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "grpc", "grpcs", "http", "https", "tcp", "tls", "tls_passthrough", "udp", "ws", "wss":
+			return true
+		}
+	}
+	return false
+}
+
 // PluginWithoutParentsRoute - If set, the plugin will only activate when receiving requests via the specified route. Leave unset for the plugin to activate regardless of the Route being used.
 type PluginWithoutParentsRoute struct {
 	ID *string `json:"id,omitempty"`
@@ -146,6 +157,8 @@ func (p *PluginWithoutParentsService) GetID() *string {
 
 // PluginWithoutParents - A Plugin entity represents a plugin configuration that will be executed during the HTTP request/response lifecycle. It is how you can add functionalities to Services that run behind Kong, like Authentication or Rate Limiting for example. You can find more information about how to install and what values each plugin takes by visiting the [Kong Hub](https://docs.konghq.com/hub/). When adding a Plugin Configuration to a Service, every request made by a client to that Service will run said Plugin. If a Plugin needs to be tuned to different values for some specific Consumers, you can do so by creating a separate plugin instance that specifies both the Service and the Consumer, through the `service` and `consumer` fields.
 type PluginWithoutParents struct {
+	// Arbitrary JSON data for UI configuration. Konnect only field, not synced to the Gateway.
+	UIData map[string]any `json:"__ui_data,omitempty"`
 	// The configuration properties for the Plugin which can be found on the plugins documentation page in the [Kong Hub](https://docs.konghq.com/hub/).
 	Config map[string]any `json:"config,omitempty"`
 	// If set, the plugin will activate only for requests where the specified has been authenticated. (Note that some plugins can not be restricted to consumers this way.). Leave unset for the plugin to activate regardless of the authenticated Consumer.
@@ -154,12 +167,16 @@ type PluginWithoutParents struct {
 	ConsumerGroup *PluginWithoutParentsConsumerGroup `json:"consumer_group,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
 	// Whether the plugin is applied.
 	Enabled *bool `default:"true" json:"enabled"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
 	// A unique string representing a UTF-8 encoded name.
 	InstanceName *string `json:"instance_name,omitempty"`
+	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
+	ManagedBy map[string]any `json:"managed_by,omitempty"`
 	// The name of the Plugin that's going to be added. Currently, the Plugin must be installed in every Kong instance separately.
 	Name     string                        `json:"name"`
 	Ordering *PluginWithoutParentsOrdering `json:"ordering,omitempty"`
@@ -182,10 +199,17 @@ func (p PluginWithoutParents) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PluginWithoutParents) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
+}
+
+func (p *PluginWithoutParents) GetUIData() map[string]any {
+	if p == nil {
+		return nil
+	}
+	return p.UIData
 }
 
 func (p *PluginWithoutParents) GetConfig() map[string]any {
@@ -216,6 +240,13 @@ func (p *PluginWithoutParents) GetCreatedAt() *int64 {
 	return p.CreatedAt
 }
 
+func (p *PluginWithoutParents) GetDescription() *string {
+	if p == nil {
+		return nil
+	}
+	return p.Description
+}
+
 func (p *PluginWithoutParents) GetEnabled() *bool {
 	if p == nil {
 		return nil
@@ -235,6 +266,13 @@ func (p *PluginWithoutParents) GetInstanceName() *string {
 		return nil
 	}
 	return p.InstanceName
+}
+
+func (p *PluginWithoutParents) GetManagedBy() map[string]any {
+	if p == nil {
+		return nil
+	}
+	return p.ManagedBy
 }
 
 func (p *PluginWithoutParents) GetName() string {

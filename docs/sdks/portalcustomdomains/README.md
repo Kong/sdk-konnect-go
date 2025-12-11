@@ -1,5 +1,4 @@
 # PortalCustomDomains
-(*PortalCustomDomains*)
 
 ## Overview
 
