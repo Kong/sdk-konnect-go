@@ -1,5 +1,4 @@
 # CatalogResources
-(*CatalogResources*)
 
 ## Overview
 

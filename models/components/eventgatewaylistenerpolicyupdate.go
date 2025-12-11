@@ -18,8 +18,8 @@ const (
 
 // EventGatewayListenerPolicyUpdate - The typed schema of the listener policy to modify it.
 type EventGatewayListenerPolicyUpdate struct {
-	EventGatewayTLSListenerSensitiveDataAwarePolicy *EventGatewayTLSListenerSensitiveDataAwarePolicy `queryParam:"inline,name=EventGatewayListenerPolicyUpdate"`
-	ForwardToVirtualClusterPolicy                   *ForwardToVirtualClusterPolicy                   `queryParam:"inline,name=EventGatewayListenerPolicyUpdate"`
+	EventGatewayTLSListenerSensitiveDataAwarePolicy *EventGatewayTLSListenerSensitiveDataAwarePolicy `queryParam:"inline,name=EventGatewayListenerPolicyUpdate" union:"member"`
+	ForwardToVirtualClusterPolicy                   *ForwardToVirtualClusterPolicy                   `queryParam:"inline,name=EventGatewayListenerPolicyUpdate" union:"member"`
 
 	Type EventGatewayListenerPolicyUpdateType
 }

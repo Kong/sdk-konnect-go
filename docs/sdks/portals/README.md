@@ -1,5 +1,4 @@
 # Portals
-(*Portals*)
 
 ## Overview
 

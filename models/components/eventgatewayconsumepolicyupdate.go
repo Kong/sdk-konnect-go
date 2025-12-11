@@ -20,10 +20,10 @@ const (
 
 // EventGatewayConsumePolicyUpdate - The typed schema of the consume policy to modify it.
 type EventGatewayConsumePolicyUpdate struct {
-	EventGatewayModifyHeadersPolicy           *EventGatewayModifyHeadersPolicy           `queryParam:"inline,name=EventGatewayConsumePolicyUpdate"`
-	EventGatewayConsumeSchemaValidationPolicy *EventGatewayConsumeSchemaValidationPolicy `queryParam:"inline,name=EventGatewayConsumePolicyUpdate"`
-	EventGatewayDecryptPolicy                 *EventGatewayDecryptPolicy                 `queryParam:"inline,name=EventGatewayConsumePolicyUpdate"`
-	EventGatewaySkipRecordPolicy              *EventGatewaySkipRecordPolicy              `queryParam:"inline,name=EventGatewayConsumePolicyUpdate"`
+	EventGatewayModifyHeadersPolicy           *EventGatewayModifyHeadersPolicy           `queryParam:"inline,name=EventGatewayConsumePolicyUpdate" union:"member"`
+	EventGatewayConsumeSchemaValidationPolicy *EventGatewayConsumeSchemaValidationPolicy `queryParam:"inline,name=EventGatewayConsumePolicyUpdate" union:"member"`
+	EventGatewayDecryptPolicy                 *EventGatewayDecryptPolicy                 `queryParam:"inline,name=EventGatewayConsumePolicyUpdate" union:"member"`
+	EventGatewaySkipRecordPolicy              *EventGatewaySkipRecordPolicy              `queryParam:"inline,name=EventGatewayConsumePolicyUpdate" union:"member"`
 
 	Type EventGatewayConsumePolicyUpdateType
 }

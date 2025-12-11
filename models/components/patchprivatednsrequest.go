@@ -48,7 +48,7 @@ const (
 
 // PatchPrivateDNSRequest - Request schema for updating a Private DNS.
 type PatchPrivateDNSRequest struct {
-	PatchAwsPrivateDNSResolver *PatchAwsPrivateDNSResolver `queryParam:"inline,name=PatchPrivateDnsRequest"`
+	PatchAwsPrivateDNSResolver *PatchAwsPrivateDNSResolver `queryParam:"inline,name=PatchPrivateDnsRequest" union:"member"`
 
 	Type PatchPrivateDNSRequestType
 }

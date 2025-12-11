@@ -1,5 +1,4 @@
 # CatalogServiceResources
-(*CatalogServiceResources*)
 
 ## Overview
 

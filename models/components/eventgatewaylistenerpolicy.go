@@ -43,7 +43,7 @@ func (e EventGatewayListenerPolicy) MarshalJSON() ([]byte, error) {
 }
 
 func (e *EventGatewayListenerPolicy) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "config", "id", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
 		return err
 	}
 	return nil

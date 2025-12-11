@@ -17,8 +17,8 @@ const (
 
 // GetApplicationResponse - Details about an application in a portal.
 type GetApplicationResponse struct {
-	ClientCredentialsApplication *ClientCredentialsApplication `queryParam:"inline,name=GetApplicationResponse"`
-	KeyAuthApplication           *KeyAuthApplication           `queryParam:"inline,name=GetApplicationResponse"`
+	ClientCredentialsApplication *ClientCredentialsApplication `queryParam:"inline,name=GetApplicationResponse" union:"member"`
+	KeyAuthApplication           *KeyAuthApplication           `queryParam:"inline,name=GetApplicationResponse" union:"member"`
 
 	Type GetApplicationResponseType
 }

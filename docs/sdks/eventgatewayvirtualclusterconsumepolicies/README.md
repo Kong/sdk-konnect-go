@@ -1,5 +1,4 @@
 # EventGatewayVirtualClusterConsumePolicies
-(*EventGatewayVirtualClusterConsumePolicies*)
 
 ## Overview
 

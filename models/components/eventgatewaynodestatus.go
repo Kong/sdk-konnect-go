@@ -20,7 +20,7 @@ func (e EventGatewayNodeStatus) MarshalJSON() ([]byte, error) {
 }
 
 func (e *EventGatewayNodeStatus) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"config_applied_at", "config_version"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
 		return err
 	}
 	return nil

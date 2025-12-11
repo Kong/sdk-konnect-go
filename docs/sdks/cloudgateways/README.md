@@ -1,5 +1,4 @@
 # CloudGateways
-(*CloudGateways*)
 
 ## Overview
 

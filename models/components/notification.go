@@ -37,7 +37,7 @@ func (n Notification) MarshalJSON() ([]byte, error) {
 }
 
 func (n *Notification) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &n, "", false, []string{"id", "title", "description", "status", "region", "namespace", "entity_id", "details", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &n, "", false, nil); err != nil {
 		return err
 	}
 	return nil

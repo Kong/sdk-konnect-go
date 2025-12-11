@@ -1,5 +1,4 @@
 # AuthSettings
-(*AuthSettings*)
 
 ## Overview
 

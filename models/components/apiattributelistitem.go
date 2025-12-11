@@ -45,7 +45,7 @@ func (a APIAttributeListItem) MarshalJSON() ([]byte, error) {
 }
 
 func (a *APIAttributeListItem) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "created_at", "updated_at", "key", "values"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil

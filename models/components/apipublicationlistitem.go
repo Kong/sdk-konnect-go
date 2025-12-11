@@ -37,7 +37,7 @@ func (a APIPublicationListItem) MarshalJSON() ([]byte, error) {
 }
 
 func (a *APIPublicationListItem) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"api_id", "portal_id", "auto_approve_registrations", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil

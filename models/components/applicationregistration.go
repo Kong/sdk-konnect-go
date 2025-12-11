@@ -91,7 +91,7 @@ func (a ApplicationRegistration) MarshalJSON() ([]byte, error) {
 }
 
 func (a *ApplicationRegistration) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "created_at", "updated_at", "status", "api", "application"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil

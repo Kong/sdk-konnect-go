@@ -17,7 +17,7 @@ const (
 
 // EventGatewayClusterPolicyModify - The typed schema of the cluster policy to modify it.
 type EventGatewayClusterPolicyModify struct {
-	EventGatewayACLsPolicy *EventGatewayACLsPolicy `queryParam:"inline,name=EventGatewayClusterPolicyModify"`
+	EventGatewayACLsPolicy *EventGatewayACLsPolicy `queryParam:"inline,name=EventGatewayClusterPolicyModify" union:"member"`
 
 	Type EventGatewayClusterPolicyModifyType
 }

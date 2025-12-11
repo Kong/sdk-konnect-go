@@ -26,7 +26,7 @@ func (l ListTargetWithUpstreamRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (l *ListTargetWithUpstreamRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"controlPlaneId", "UpstreamIdForTarget"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
 		return err
 	}
 	return nil

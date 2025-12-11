@@ -26,7 +26,7 @@ func (l ListConsumerGroupsForConsumerRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (l *ListConsumerGroupsForConsumerRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"controlPlaneId", "ConsumerId"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
 		return err
 	}
 	return nil

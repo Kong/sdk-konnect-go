@@ -1,5 +1,4 @@
 # Vaults
-(*Vaults*)
 
 ## Overview
 

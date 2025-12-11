@@ -1,5 +1,4 @@
 # EventGatewayListenerPolicies
-(*EventGatewayListenerPolicies*)
 
 ## Overview
 

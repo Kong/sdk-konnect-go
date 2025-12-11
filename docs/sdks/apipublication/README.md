@@ -1,5 +1,4 @@
 # APIPublication
-(*APIPublication*)
 
 ## Overview
 

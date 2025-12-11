@@ -1,5 +1,4 @@
 # EventGateways
-(*EventGateways*)
 
 ## Overview
 

@@ -1,5 +1,4 @@
 # CustomPluginSchemas
-(*CustomPluginSchemas*)
 
 ## Overview
 

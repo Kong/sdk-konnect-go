@@ -1,5 +1,4 @@
 # EventGatewayDataPlaneCertificates
-(*EventGatewayDataPlaneCertificates*)
 
 ## Overview
 

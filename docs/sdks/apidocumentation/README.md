@@ -1,5 +1,4 @@
 # APIDocumentation
-(*APIDocumentation*)
 
 ## Overview
 

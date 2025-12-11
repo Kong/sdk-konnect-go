@@ -21,11 +21,11 @@ const (
 
 // CreateDcrProviderRequest - Request body for creating a DCR provider. The provider_type cannot be updated after creation.
 type CreateDcrProviderRequest struct {
-	CreateDcrProviderRequestAuth0   *CreateDcrProviderRequestAuth0   `queryParam:"inline,name=CreateDcrProviderRequest"`
-	CreateDcrProviderRequestAzureAd *CreateDcrProviderRequestAzureAd `queryParam:"inline,name=CreateDcrProviderRequest"`
-	CreateDcrProviderRequestCurity  *CreateDcrProviderRequestCurity  `queryParam:"inline,name=CreateDcrProviderRequest"`
-	CreateDcrProviderRequestOkta    *CreateDcrProviderRequestOkta    `queryParam:"inline,name=CreateDcrProviderRequest"`
-	CreateDcrProviderRequestHTTP    *CreateDcrProviderRequestHTTP    `queryParam:"inline,name=CreateDcrProviderRequest"`
+	CreateDcrProviderRequestAuth0   *CreateDcrProviderRequestAuth0   `queryParam:"inline,name=CreateDcrProviderRequest" union:"member"`
+	CreateDcrProviderRequestAzureAd *CreateDcrProviderRequestAzureAd `queryParam:"inline,name=CreateDcrProviderRequest" union:"member"`
+	CreateDcrProviderRequestCurity  *CreateDcrProviderRequestCurity  `queryParam:"inline,name=CreateDcrProviderRequest" union:"member"`
+	CreateDcrProviderRequestOkta    *CreateDcrProviderRequestOkta    `queryParam:"inline,name=CreateDcrProviderRequest" union:"member"`
+	CreateDcrProviderRequestHTTP    *CreateDcrProviderRequestHTTP    `queryParam:"inline,name=CreateDcrProviderRequest" union:"member"`
 
 	Type CreateDcrProviderRequestType
 }

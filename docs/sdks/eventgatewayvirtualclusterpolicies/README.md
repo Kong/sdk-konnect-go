@@ -1,5 +1,4 @@
 # EventGatewayVirtualClusterPolicies
-(*EventGatewayVirtualClusterPolicies*)
 
 ## Overview
 

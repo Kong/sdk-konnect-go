@@ -1,5 +1,4 @@
 # PortalTeamMembership
-(*PortalTeamMembership*)
 
 ## Overview
 

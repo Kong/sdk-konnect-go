@@ -1,5 +1,4 @@
 # PortalAuthSettings
-(*PortalAuthSettings*)
 
 ## Overview
 

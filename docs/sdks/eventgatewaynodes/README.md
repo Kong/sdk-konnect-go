@@ -1,5 +1,4 @@
 # EventGatewayNodes
-(*EventGatewayNodes*)
 
 ## Overview
 

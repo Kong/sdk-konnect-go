@@ -1,5 +1,4 @@
 # SNIs
-(*SNIs*)
 
 ## Overview
 

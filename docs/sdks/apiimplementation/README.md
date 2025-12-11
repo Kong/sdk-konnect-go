@@ -1,5 +1,4 @@
 # APIImplementation
-(*APIImplementation*)
 
 ## Overview
 

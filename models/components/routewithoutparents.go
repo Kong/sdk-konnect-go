@@ -16,8 +16,8 @@ const (
 )
 
 type RouteWithoutParents struct {
-	RouteJSON       *RouteJSON       `queryParam:"inline,name=RouteWithoutParents"`
-	RouteExpression *RouteExpression `queryParam:"inline,name=RouteWithoutParents"`
+	RouteJSON       *RouteJSON       `queryParam:"inline,name=RouteWithoutParents" union:"member"`
+	RouteExpression *RouteExpression `queryParam:"inline,name=RouteWithoutParents" union:"member"`
 
 	Type RouteWithoutParentsType
 }

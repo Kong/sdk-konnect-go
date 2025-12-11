@@ -122,8 +122,8 @@ const (
 
 // PatchTransitGatewayRequest - Request schema for updating a transit gateway.
 type PatchTransitGatewayRequest struct {
-	PatchAwsResourceEndpointGateway *PatchAwsResourceEndpointGateway `queryParam:"inline,name=PatchTransitGatewayRequest"`
-	PatchAwsTransitGateway          *PatchAwsTransitGateway          `queryParam:"inline,name=PatchTransitGatewayRequest"`
+	PatchAwsResourceEndpointGateway *PatchAwsResourceEndpointGateway `queryParam:"inline,name=PatchTransitGatewayRequest" union:"member"`
+	PatchAwsTransitGateway          *PatchAwsTransitGateway          `queryParam:"inline,name=PatchTransitGatewayRequest" union:"member"`
 
 	Type PatchTransitGatewayRequestType
 }

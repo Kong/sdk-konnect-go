@@ -17,8 +17,8 @@ const (
 )
 
 type VirtualClusterNamespaceTopicSelector struct {
-	VirtualClusterNamespaceTopicSelectorGlob      *VirtualClusterNamespaceTopicSelectorGlob      `queryParam:"inline,name=VirtualClusterNamespaceTopicSelector"`
-	VirtualClusterNamespaceTopicSelectorExactList *VirtualClusterNamespaceTopicSelectorExactList `queryParam:"inline,name=VirtualClusterNamespaceTopicSelector"`
+	VirtualClusterNamespaceTopicSelectorGlob      *VirtualClusterNamespaceTopicSelectorGlob      `queryParam:"inline,name=VirtualClusterNamespaceTopicSelector" union:"member"`
+	VirtualClusterNamespaceTopicSelectorExactList *VirtualClusterNamespaceTopicSelectorExactList `queryParam:"inline,name=VirtualClusterNamespaceTopicSelector" union:"member"`
 
 	Type VirtualClusterNamespaceTopicSelectorType
 }
