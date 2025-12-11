@@ -20,6 +20,17 @@ func (e PersonalAccessTokenCreateResponseState) ToPointer() *PersonalAccessToken
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *PersonalAccessTokenCreateResponseState) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "ACTIVE", "REVOKED", "EXPIRED":
+			return true
+		}
+	}
+	return false
+}
+
 // PersonalAccessTokenCreateResponse - Details of the created personal access token.
 type PersonalAccessTokenCreateResponse struct {
 	// Contains a unique identifier used for this resource.
@@ -50,7 +61,7 @@ func (p PersonalAccessTokenCreateResponse) MarshalJSON() ([]byte, error) {
 }
 
 func (p *PersonalAccessTokenCreateResponse) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id", "user_id", "name", "state", "konnect_token", "created_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil

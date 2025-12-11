@@ -13,3 +13,14 @@ const (
 func (e CustomDomainOnlinePropertyStatus) ToPointer() *CustomDomainOnlinePropertyStatus {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *CustomDomainOnlinePropertyStatus) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "verified", "unverified":
+			return true
+		}
+	}
+	return false
+}

@@ -15,3 +15,14 @@ const (
 func (e DeveloperStatus) ToPointer() *DeveloperStatus {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *DeveloperStatus) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "approved", "pending", "revoked", "rejected":
+			return true
+		}
+	}
+	return false
+}

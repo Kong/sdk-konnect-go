@@ -1,0 +1,11 @@
+# APIImplementationControlPlane
+
+A Control plane that implements an API
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          | Example                                                                                              |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `AccessControlEnforcementEnabled`                                                                    | **bool*                                                                                              | :heavy_minus_sign:                                                                                   | Indicates if the access control enforcement plugin is installed globally in the target control plane |                                                                                                      |
+| `ControlPlaneID`                                                                                     | *string*                                                                                             | :heavy_check_mark:                                                                                   | N/A                                                                                                  | 7710d5c4-d902-410b-992f-18b814155b53                                                                 |

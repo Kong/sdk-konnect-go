@@ -20,6 +20,8 @@ type SNIWithoutParents struct {
 	Certificate *SNIWithoutParentsCertificate `json:"certificate,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
 	// The SNI name to associate with the given certificate.
@@ -42,6 +44,13 @@ func (s *SNIWithoutParents) GetCreatedAt() *int64 {
 		return nil
 	}
 	return s.CreatedAt
+}
+
+func (s *SNIWithoutParents) GetDescription() *string {
+	if s == nil {
+		return nil
+	}
+	return s.Description
 }
 
 func (s *SNIWithoutParents) GetID() *string {

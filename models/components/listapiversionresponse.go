@@ -37,7 +37,7 @@ func (l ListAPIVersionResponseAPIVersionSummary) MarshalJSON() ([]byte, error) {
 }
 
 func (l *ListAPIVersionResponseAPIVersionSummary) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &l, "", false, []string{"id", "version", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &l, "", false, nil); err != nil {
 		return err
 	}
 	return nil

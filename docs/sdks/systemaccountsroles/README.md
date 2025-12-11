@@ -1,5 +1,4 @@
 # SystemAccountsRoles
-(*SystemAccountsRoles*)
 
 ## Overview
 

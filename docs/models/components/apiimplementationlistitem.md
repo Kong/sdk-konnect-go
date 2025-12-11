@@ -11,3 +11,9 @@ An entity that implements an API
 apiImplementationListItem := components.CreateAPIImplementationListItemAPIImplementationListItemGatewayServiceEntity(components.APIImplementationListItemGatewayServiceEntity{/* values here */})
 ```
 
+### APIImplementationListItemControlPlaneEntity
+
+```go
+apiImplementationListItem := components.CreateAPIImplementationListItemAPIImplementationListItemControlPlaneEntity(components.APIImplementationListItemControlPlaneEntity{/* values here */})
+```
+

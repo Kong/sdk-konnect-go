@@ -18,6 +18,17 @@ func (e Mode) ToPointer() *Mode {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *Mode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "light", "dark", "system":
+			return true
+		}
+	}
+	return false
+}
+
 type Colors struct {
 	Primary *string `json:"primary,omitempty"`
 }
@@ -54,6 +65,25 @@ func (t *Theme) GetColors() *Colors {
 		return nil
 	}
 	return t.Colors
+}
+
+type Js struct {
+	Custom  *string  `json:"custom,omitempty"`
+	Scripts []string `json:"scripts,omitempty"`
+}
+
+func (j *Js) GetCustom() *string {
+	if j == nil {
+		return nil
+	}
+	return j.Custom
+}
+
+func (j *Js) GetScripts() []string {
+	if j == nil {
+		return nil
+	}
+	return j.Scripts
 }
 
 type Menu struct {
@@ -165,6 +195,7 @@ type PortalCustomization struct {
 	Theme        *Theme        `json:"theme,omitempty"`
 	Layout       *string       `json:"layout,omitempty"`
 	CSS          *string       `json:"css,omitempty"`
+	Js           *Js           `json:"js,omitempty"`
 	Menu         *Menu         `json:"menu,omitempty"`
 	SpecRenderer *SpecRenderer `json:"spec_renderer,omitempty"`
 	Robots       *string       `json:"robots,omitempty"`
@@ -189,6 +220,13 @@ func (p *PortalCustomization) GetCSS() *string {
 		return nil
 	}
 	return p.CSS
+}
+
+func (p *PortalCustomization) GetJs() *Js {
+	if p == nil {
+		return nil
+	}
+	return p.Js
 }
 
 func (p *PortalCustomization) GetMenu() *Menu {

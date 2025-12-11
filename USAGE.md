@@ -6,6 +6,7 @@ import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -18,12 +19,29 @@ func main() {
 		}),
 	)
 
-	res, err := s.Notifications.ListUserConfigurations(ctx, nil)
+	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
+		PageSize:     sdkkonnectgo.Pointer[int64](10),
+		PageNumber:   sdkkonnectgo.Pointer[int64](1),
+		FilterLabels: sdkkonnectgo.Pointer("key:value,existCheck"),
+		Sort:         sdkkonnectgo.Pointer("created_at desc"),
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.UserConfigurationListResponse != nil {
-		// handle response
+	if res.ListControlPlanesResponse != nil {
+		for {
+			// handle items
+
+			res, err = res.Next()
+
+			if err != nil {
+				// handle error
+			}
+
+			if res == nil {
+				break
+			}
+		}
 	}
 }
 

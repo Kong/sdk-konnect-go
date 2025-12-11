@@ -1,5 +1,4 @@
 # SystemAccountsAccessTokens
-(*SystemAccountsAccessTokens*)
 
 ## Overview
 

@@ -1,5 +1,4 @@
 # PortalAuthSettings
-(*PortalAuthSettings*)
 
 ## Overview
 
@@ -80,7 +79,7 @@ func main() {
 **Pre-release Endpoint**
 This endpoint is currently in beta and is subject to change.
 
-Updates the developer authentication configuration for a portal. Developers can be allowed to login using basic auth (email & password) or use Single-Sign-On (SSO) through an OIDC Identity Provider (IdP). Developers can be automatically assigned to teams by mapping claims from thier IdP account.
+Updates the developer authentication configuration for a portal. Developers can be allowed to login using basic auth (email & password) or use Single-Sign-On through an Identity Provider. Developers can be automatically assigned to teams by mapping claims from their IdP account.
 
 ### Example Usage
 
@@ -116,7 +115,7 @@ func main() {
             "openid",
             "profile",
         },
-        OidcClaimMappings: &components.PortalClaimMappings{
+        OidcClaimMappings: &components.PortalAuthenticationSettingsUpdateRequestPortalClaimMappings{
             Groups: sdkkonnectgo.Pointer("custom-group-claim"),
         },
     })

@@ -19,6 +19,17 @@ func (e InvalidParameterMaximumLengthRule) ToPointer() *InvalidParameterMaximumL
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *InvalidParameterMaximumLengthRule) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "max_length", "max_items", "max":
+			return true
+		}
+	}
+	return false
+}
+
 type InvalidParameterMaximumLength struct {
 	Field string `json:"field"`
 	// invalid parameters rules

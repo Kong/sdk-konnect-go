@@ -40,10 +40,23 @@ const (
 	RoleNameUpstreamAdmin             RoleName = "Upstream Admin"
 	RoleNameVaultAdmin                RoleName = "Vault Admin"
 	RoleNameViewer                    RoleName = "Viewer"
+	RoleNameRegistrationApprover      RoleName = "Registration Approver"
+	RoleNameContentEditor             RoleName = "Content Editor"
 )
 
 func (e RoleName) ToPointer() *RoleName {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *RoleName) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "Admin", "Appearance Maintainer", "Application Registration", "Certificate Admin", "Cloud Gateway Cluster Admin", "Cloud Gateway Cluster Viewer", "Consumer Admin", "Connector", "Creator", "Deployer", "Discovery Admin", "Discovery Viewer", "Gateway Service Admin", "Integration Admin", "Integration Viewer", "Key Admin", "Maintainer", "Network Admin", "Network Creator", "Network Viewer", "Plugin Admin", "Plugins Admin", "Product Publisher", "Publisher", "Route Admin", "SNI Admin", "Scorecard Admin", "Scorecard Viewer", "Service Admin", "Service Creator", "Service Viewer", "Upstream Admin", "Vault Admin", "Viewer", "Registration Approver", "Content Editor":
+			return true
+		}
+	}
+	return false
 }
 
 // EntityTypeName - The type of entity.
@@ -68,6 +81,17 @@ func (e EntityTypeName) ToPointer() *EntityTypeName {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *EntityTypeName) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "APIs", "API Products", "Application Auth Strategies", "Audit Logs", "Control Planes", "Dashboards", "DCR Providers", "Identity", "Mesh Control Planes", "Networks", "Portals", "Service Hub":
+			return true
+		}
+	}
+	return false
+}
+
 // AssignRoleEntityRegion - Region of the team.
 type AssignRoleEntityRegion string
 
@@ -83,6 +107,17 @@ const (
 
 func (e AssignRoleEntityRegion) ToPointer() *AssignRoleEntityRegion {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AssignRoleEntityRegion) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "us", "eu", "au", "me", "in", "sg", "*":
+			return true
+		}
+	}
+	return false
 }
 
 // AssignRole - An assigned role is a role that has been assigned to a user or team.

@@ -17,7 +17,9 @@ type ACL struct {
 	Consumer *ACLConsumer `json:"consumer,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
-	Group     string `json:"group"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
+	Group       string  `json:"group"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
 	// A set of strings representing tags.
@@ -36,6 +38,13 @@ func (a *ACL) GetCreatedAt() *int64 {
 		return nil
 	}
 	return a.CreatedAt
+}
+
+func (a *ACL) GetDescription() *string {
+	if a == nil {
+		return nil
+	}
+	return a.Description
 }
 
 func (a *ACL) GetGroup() string {

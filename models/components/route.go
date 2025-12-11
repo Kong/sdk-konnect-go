@@ -16,8 +16,8 @@ const (
 )
 
 type Route struct {
-	RouteJSON       *RouteJSON       `queryParam:"inline,name=Route"`
-	RouteExpression *RouteExpression `queryParam:"inline,name=Route"`
+	RouteJSON       *RouteJSON       `queryParam:"inline,name=Route" union:"member"`
+	RouteExpression *RouteExpression `queryParam:"inline,name=Route" union:"member"`
 
 	Type RouteType
 }

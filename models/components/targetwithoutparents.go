@@ -22,6 +22,8 @@ func (t *TargetWithoutParentsUpstream) GetID() *string {
 type TargetWithoutParents struct {
 	// Unix epoch when the resource was created.
 	CreatedAt *float64 `json:"created_at,omitempty"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
 	// Whether to use this target only as backup or not.
 	Failover *bool `default:"false" json:"failover"`
 	// A string representing a UUID (universally unique identifier).
@@ -54,6 +56,13 @@ func (t *TargetWithoutParents) GetCreatedAt() *float64 {
 		return nil
 	}
 	return t.CreatedAt
+}
+
+func (t *TargetWithoutParents) GetDescription() *string {
+	if t == nil {
+		return nil
+	}
+	return t.Description
 }
 
 func (t *TargetWithoutParents) GetFailover() *bool {

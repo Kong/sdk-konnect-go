@@ -1,5 +1,4 @@
 # CustomPlugins
-(*CustomPlugins*)
 
 ## Overview
 

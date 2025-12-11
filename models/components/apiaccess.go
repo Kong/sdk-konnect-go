@@ -14,3 +14,14 @@ const (
 func (e APIAccess) ToPointer() *APIAccess {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *APIAccess) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "private", "public", "private+public":
+			return true
+		}
+	}
+	return false
+}

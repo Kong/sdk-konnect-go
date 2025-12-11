@@ -2,11 +2,29 @@
 
 package components
 
-// UUIDFieldFilter - Filters on the given string field value by exact match inequality.
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
+// UUIDFieldFilter - Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 type UUIDFieldFilter struct {
-	Eq  *string `queryParam:"name=eq"`
+	// The field exactly matches the provided value.
+	Eq *string `queryParam:"name=eq"`
+	// The field matches any of the provided values.
 	Oeq *string `queryParam:"name=oeq"`
+	// The field does not match the provided value.
 	Neq *string `queryParam:"name=neq"`
+}
+
+func (u UUIDFieldFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UUIDFieldFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (u *UUIDFieldFilter) GetEq() *string {

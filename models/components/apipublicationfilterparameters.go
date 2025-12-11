@@ -3,16 +3,18 @@
 package components
 
 type APIPublicationFilterParameters struct {
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	PortalID *UUIDFieldFilter `queryParam:"name=portal_id"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	PortalName *StringFieldFilter `queryParam:"name=portal_name"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	APIID *UUIDFieldFilter `queryParam:"name=api_id"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	APIName *StringFieldFilter `queryParam:"name=api_name"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	AuthStrategyID *UUIDFieldFilter `queryParam:"name=auth_strategy_id"`
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
+	EntityType *StringFieldFilter `queryParam:"name=entity_type"`
 }
 
 func (a *APIPublicationFilterParameters) GetPortalID() *UUIDFieldFilter {
@@ -48,4 +50,11 @@ func (a *APIPublicationFilterParameters) GetAuthStrategyID() *UUIDFieldFilter {
 		return nil
 	}
 	return a.AuthStrategyID
+}
+
+func (a *APIPublicationFilterParameters) GetEntityType() *StringFieldFilter {
+	if a == nil {
+		return nil
+	}
+	return a.EntityType
 }

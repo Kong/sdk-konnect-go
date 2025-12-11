@@ -23,6 +23,17 @@ func (e Rule) ToPointer() *Rule {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *Rule) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "min_length", "min_digits", "min_lowercase", "min_uppercase", "min_symbols", "min_items", "min":
+			return true
+		}
+	}
+	return false
+}
+
 type InvalidParameterMinimumLength struct {
 	Field string `json:"field"`
 	// invalid parameters rules

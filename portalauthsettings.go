@@ -268,7 +268,7 @@ func (s *PortalAuthSettings) GetPortalAuthenticationSettings(ctx context.Context
 // **Pre-release Endpoint**
 // This endpoint is currently in beta and is subject to change.
 //
-// Updates the developer authentication configuration for a portal. Developers can be allowed to login using basic auth (email & password) or use Single-Sign-On (SSO) through an OIDC Identity Provider (IdP). Developers can be automatically assigned to teams by mapping claims from thier IdP account.
+// Updates the developer authentication configuration for a portal. Developers can be allowed to login using basic auth (email & password) or use Single-Sign-On through an Identity Provider. Developers can be automatically assigned to teams by mapping claims from their IdP account.
 func (s *PortalAuthSettings) UpdatePortalAuthenticationSettings(ctx context.Context, portalID string, portalAuthenticationSettingsUpdateRequest *components.PortalAuthenticationSettingsUpdateRequest, opts ...operations.Option) (*operations.UpdatePortalAuthenticationSettingsResponse, error) {
 	request := operations.UpdatePortalAuthenticationSettingsRequest{
 		PortalID: portalID,
@@ -604,7 +604,7 @@ func (s *PortalAuthSettings) ListPortalTeamGroupMappings(ctx context.Context, re
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -1169,7 +1169,7 @@ func (s *PortalAuthSettings) GetPortalIdentityProviders(ctx context.Context, por
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 

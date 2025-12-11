@@ -1,5 +1,4 @@
 # DCRProviders
-(*DCRProviders*)
 
 ## Overview
 

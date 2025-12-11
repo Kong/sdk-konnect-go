@@ -2,7 +2,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.0.29 and generator version 2.753.7
+// Generated from OpenAPI doc version 3.0.30 and generator version 2.779.2
 
 import (
 	"context"
@@ -50,26 +50,245 @@ func Float64(f float64) *float64 { return &f }
 // Pointer provides a helper function to return a pointer to a type
 func Pointer[T any](v T) *T { return &v }
 
-// SDK - Konnect API - Go SDK: The Konnect platform API
+// SDK - Konnect API - Go Internal SDK: The Konnect platform API
 //
 // https://developer.konghq.com - Documentation for Kong Gateway and its APIs
 type SDK struct {
-	SDKVersion string
+	SDKVersion                   string
+	ControlPlanes                *ControlPlanes
+	ControlPlaneGroups           *ControlPlaneGroups
+	ControlPlaneResourceQuotas   *ControlPlaneResourceQuotas
+	OrganizationFeature          *OrganizationFeature
+	AIManager                    *AIManager
+	SSOAuth0                     *SSOAuth0
+	Auth0                        *Auth0
+	Users                        *Users
+	DeviceAuthorizationGrant     *DeviceAuthorizationGrant
+	ImpersonationSettings        *ImpersonationSettings
+	AuthSettings                 *AuthSettings
+	Invites                      *Invites
+	Roles                        *Roles
+	Teams                        *Teams
+	TeamMembership               *TeamMembership
+	SystemAccounts               *SystemAccounts
+	SystemAccountsAccessTokens   *SystemAccountsAccessTokens
+	ManagedSystemAccountsRoles   *ManagedSystemAccountsRoles
+	SystemAccountsRoles          *SystemAccountsRoles
+	SystemAccountsTeamMembership *SystemAccountsTeamMembership
+	Me                           *Me
+	Authentication               *Authentication
+	Aws                          *Aws
+	PersonalAccessTokens         *PersonalAccessTokens
+	CloudGateways                *CloudGateways
 	// Operations related to notifications
 	Notifications *Notifications
+	// Dynamic Client Registration Providers are configurations representing an external Identity Provider whose clients (i.e. Applications) Konnect will be authorized to manage.
+	// For instance, they will be able to perform dynamic client registration (DCR) with the provider.
+	// The DCR provider provides credentials to each DCR-enabled application in Konnect that can be used to access Product Versions that the app is registered for.
+	//
+	DCRProviders *DCRProviders
 	// Application Auth Strategies are sets of plugin configurations that represent how the gateway will perform authentication and authorization for a Product Version.
 	// Called “Auth Strategy” for short in the context of portals/applications.
 	// The plugins are synced to any Gateway Service that is currently linked or becomes linked to the Product Version.
 	//
-	AppAuthStrategies *AppAuthStrategies
-	CloudGateways     *CloudGateways
-	ControlPlanes     *ControlPlanes
+	AppAuthStrategies       *AppAuthStrategies
+	API                     *API
+	APISpecification        *APISpecification
+	APIDocumentation        *APIDocumentation
+	APIVersion              *APIVersion
+	APIPublication          *APIPublication
+	APIImplementation       *APIImplementation
+	APIOperations           *APIOperations
+	APIAttributes           *APIAttributes
+	APIPackages             *APIPackages
+	APIPackageDocumentation *APIPackageDocumentation
+	APIPackageOperations    *APIPackageOperations
+	APIPackageSpecification *APIPackageSpecification
+	// APIs related to configuration of Konnect Developer Portals.
+	Portals *Portals
+	// APIs related to configuration of Konnect Developer Portals custom domains.
+	PortalCustomDomains *PortalCustomDomains
+	// APIs for managing static assets for Konnect Developer Portals.
+	Assets *Assets
+	// APIs related to customization of Konnect Developer Portals.
+	PortalCustomization *PortalCustomization
+	// APIs related to Konnect Developer Portal Custom Pages.
+	Pages *Pages
+	// APIs related to Konnect Developer Portal Custom Snippets.
+	Snippets *Snippets
+	// APIs related to Konnect Developer Portal Applications.
+	Applications *Applications
+	// APIs related to Konnect Developer Portal Application Registrations.
+	ApplicationRegistrations *ApplicationRegistrations
+	// APIs related to configuration of Konnect Developer Portal auth settings.
+	PortalAuthSettings *PortalAuthSettings
+	// APIs related to configuration of Konnect Developer Portal developer teams.
+	PortalTeams *PortalTeams
+	// APIs related to Konnect Developer Portal developer team membership.
+	PortalTeamMembership *PortalTeamMembership
+	// APIs related to Konnect Developer Portal developer team roles.
+	PortalTeamRoles *PortalTeamRoles
+	// APIs related to Konnect Developer Portal developers.
+	PortalDevelopers *PortalDevelopers
+	PortalAuditLogs  *PortalAuditLogs
+	// APIs related to Konnect Developer Portal Emails.
+	PortalEmails *PortalEmails
+	// Create and maintain a centralized catalog of all services running in your organization.
+	// Add custom fields and map resources from across your organization to provide a 360-degree overview of your services.
+	//
+	// Custom fields allow you to surface key information such as:
+	// - `Owner`: The person or team responsible for the service
+	// - `Product Manager`: The person assigned to guide the service's direction for customer success
+	// - `Jira Project`: The Jira project which represents past, present and future work for the service
+	//
+	// Resources are discovered from the integrations you use within your organization to create, operate and manage your services.
+	// Mapping the resources relevant to your service will provide a rich view of the service's communication channels, dependencies and more.
+	// Types of resources which you can map to a service include:
+	// - `Code Repositories:` The software project(s) that make up the service
+	// - `Monitors and Dashboards:` Tools providing visibility into the health and performance of the service
+	// - `Communication Channels`: Virtual spaces where questions and concerns can be raised about the service
+	// - `Incident Management Resources`: Alerts setup within your incident management platform to notify individuals regarding issues with the service
+	//
+	CatalogServices *CatalogServices
+	// Attach API specifications which describe the interface and behavior of the service.
+	// These specifications describe service API constracts for internal or external consumption.
+	// You may attach an API specification by uploading a file, providing a link to the specification, or my mapping a resource from a API spec compliant integration.
+	//
+	CatalogServiceAPISpecs *CatalogServiceAPISpecs
+	// Integrations are applications, either Konnect-internal or external, which extend the functionality of the Service Catalog.
+	// Install and authorize an integration to discover the resources across your organization which support your services.
+	// Map relevant resources to your services to provide a rich view of cataloged services.
+	// To set up and view a list of all the integrations we support please view our [documentation](https://developer.konghq.com/service-catalog/integrations/).
+	//
+	CatalogIntegrations *CatalogIntegrations
+	// An integration instance represents a specific account of the integration which contains the resources used to manage and support your services.
+	// Some integrations provide configuration options to customize how it should behave once authorized (see the integration's manifest for details).
+	// Konnect-internal integrations are built-in and do not need to be installed.
+	//
+	// Once an integration instance is created, authorize the instance to allow the Service Catalog to discover its resources.
+	// Note that deleting an integration instance is a **destructive** operation.
+	// When an integration instance is deleted, all its resources and mappings will be deleted from the service catalog.
+	// In cases where the integration instance's credentials need to be updated, you may re-authorize the instance to retain all currently discovered resources and mappings.
+	// To set up and view a list of all the integrations we support, please view our [documentation](https://developer.konghq.com/service-catalog/integrations/).
+	//
+	IntegrationInstances *IntegrationInstances
+	// Represents the credentials use to authorize an integration instance.
+	// You will want to configure the integration instance settings and authorization configuration before authorizing the instance.
+	// This will inform the authorization process on how to reach and authorize the account.
+	// Once the integration instance is authorized, the system will automatically discover all the relevant resources from the account.
+	// The integration instance's auth credentials can be removed or updated while retaining all resources which have already been discovered.
+	//
+	IntegrationInstanceAuthCredentials *IntegrationInstanceAuthCredentials
+	// A integration instance may need to be provided with an auth config before authorizing the instance.
+	// Typically an auth config will be required when authorizing against a integration which is hosted within your organization.
+	// The integration instance's auth config will inform how the Service Catalog will authorize the integration instance.
+	// Note that updating the auth config for an instance which is already authorized will **remove the existing credential**, requiring you to re-authorize the instance.
+	//
+	IntegrationInstanceAuthConfig *IntegrationInstanceAuthConfig
+	// Resources are entities discovered from integration instances and are intended to be mapped to the relevant services in the catalog.
+	// Once a resource has been mapped to a service, a rich view of this resource will be displayed when viewing your service.
+	//
+	// Any resources which you would like to ignore and hide can be archived.
+	// Note that archiving a resource will **remove** any mappings it has to services in the catalog.
+	//
+	// You can create Resources using only the properties required to identify the resource in the third-party system.
+	// Additional data will be hydrated if the integration that the Resource is linked to has been provided with authentication credentials.
+	// Resources which have not yet been hydrated may still be mapped to a Catalog Service.
+	//
+	CatalogResources *CatalogResources
+	// Represents all the services mapped to a specific resource.
+	//
+	CatalogResourceServices *CatalogResourceServices
+	// Resource mappings represent the link between a resource and a service.
+	// Once a resource is mapped to a service, a rich view of the resource will be presented on the service page.
+	// A resource may be mapped to multiple services, but it cannot be mapped to the same service twice.
+	// If a resource mapped to a service is later archived, the resource mapping will be deleted.
+	//
+	CatalogResourceMappings *CatalogResourceMappings
+	// Represents all the resources mapped to a specific service.
+	//
+	CatalogServiceResources *CatalogServiceResources
+	// Several criteria templates are provided to help ensure your services adhere to industry best practices.
+	// A criteria template is a collection of criteria grouped together to target various categories.
+	//
+	// Criteria may require a specific type of integration be installed and authorized.
+	// For example, criteria which evaluates the operation performance across incident management may require a integration related to incident management to be installed and authorized.
+	// Learn more about scorecards by visiting our [documentation](https://developer.konghq.com/service-catalog/scorecards/).
+	//
+	CriteriaTemplates *CriteriaTemplates
+	// A scorecard helps you evaluate services based on its criteria.
+	// Scorecards help you detect issues, like whether there are services in the catalog that don't have an on-call engineer assigned, or if you have GitHub repositories with stale pull requests that aren't getting reviewed or closed.
+	// From the scorecard, you can view details on either a per-service or per-criteria basis.
+	// Learn more about scorecards by visiting our [documentation](https://developer.konghq.com/service-catalog/scorecards/).
+	//
+	Scorecards *Scorecards
+	// Get details and trigger resource ingestion from authorized integrations.
+	// Resource ingestion allows for manually syncing resources from authorized integrations.
+	// It provides details on when the resources were last synced from an authorized integration.
+	//
+	ResourceIngestion *ResourceIngestion
+	// Resource actions provides an overview of actions taken on resources.
+	// It provides information on when one of the following actions are taken on a resource:
+	// - Map
+	// - Unmap
+	// - Archive
+	// - Restore
+	//
+	ResourceActions *ResourceActions
+	// The integration instance proxy allows requests to be made to the authorized integration instance.
+	// The APIs which are allowed to be proxied to the integration instances are defined in the `proxies` section of the Integration.
+	//
+	IntegrationInstanceProxy *IntegrationInstanceProxy
+	// Suggestion rules allow for automated management of resources.
+	// Suggestion rule can be configured to:
+	// - Map resources to existing catalog service
+	// - Map resources to a new catalog service
+	// - Archive resources
+	//
+	// System suggestion rules are built-in rules which are configured and managed by Kong.
+	//
+	SuggestionRules *SuggestionRules
+	// Suggestion rule errors describes errors which have occured when a suggestion rule was evaluated on a resource.
+	// An error may occur due to syntax errors on the configured suggestion rule, or various other runtime errors.
+	//
+	SuggestionRuleErrors *SuggestionRuleErrors
+	// Integration events represent the activity within an integration instance.
+	//
+	IntegrationEvents *IntegrationEvents
+	// Attach documentation for your services to communicate it's architecture, support details, release notes, and usage examples, to help others understand and integrate with the service.
+	//
+	CatalogServiceDocuments *CatalogServiceDocuments
+	// Provides suggested actions to take on resources. Suggested actions are generated from suggestion rules.
+	//
+	SuggestedResourceActions *SuggestedResourceActions
+	// Retrieving, analyzing, and managing software vulnerabilities.
+	//
+	Vulnerabilities *Vulnerabilities
+	// Manage custom fields for catalog services.
+	CatalogServiceCustomFields *CatalogServiceCustomFields
+	// Service API mappings represent the link between Service and API entities.
+	// Once an API is mapped to a Service, a rich view of the linked APIs will be presented on the APIs tab of the Catalog Service.
+	// Similarily, Services mapped to an API will be listed on the API overview page under Catalog.
+	// An API may be mapped to multiple services, but it cannot be mapped to the same service twice.
+	// If a mapped API is unlinked from a Service, the mapping will be deleted.
+	//
+	CatalogServiceAPIMappings *CatalogServiceAPIMappings
+	// DP Nodes
+	DPNodes *DPNodes
+	// DP Certificates
+	DPCertificates *DPCertificates
+	Nodes          *Nodes
+	// Custom Plugin Schemas
+	CustomPluginSchemas *CustomPluginSchemas
 	// Config Stores
 	ConfigStores *ConfigStores
 	// Config Store Secrets
-	ConfigStoreSecrets   *ConfigStoreSecrets
-	ACLs                 *ACLs
-	BasicAuthCredentials *BasicAuthCredentials
+	ConfigStoreSecrets *ConfigStoreSecrets
+	// Debug Sessions
+	DebugSessions            *DebugSessions
+	DeclarativeConfiguration *DeclarativeConfiguration
+	ACLs                     *ACLs
+	BasicAuthCredentials     *BasicAuthCredentials
 	// A CA certificate object represents a trusted certificate authority.
 	// These objects are used by Kong Gateway to verify the validity of a client or server certificate.
 	CACertificates *CACertificates
@@ -111,8 +330,6 @@ type SDK struct {
 	// Some entities in Kong Gateway share common configuration settings that often need to be repeated. For example, multiple plugins that connect to Redis may require the same connection settings. Without Partials, you would need to replicate this configuration across all plugins. If the settings change, you would need to update each plugin individually.
 	Partials     *Partials
 	PartialLinks *PartialLinks
-	// Custom Plugin Schemas
-	CustomPluginSchemas *CustomPluginSchemas
 	// Route entities define rules to match client requests. Each route is associated with a service, and a service may have multiple routes associated to it. Every request matching a given route will be proxied to the associated service. You need at least one matching rule that applies to the protocol being matched by the route.
 	// <br><br>
 	// The combination of routes and services, and the separation of concerns between them, offers a powerful routing mechanism with which it is possible to define fine-grained entrypoints in Kong Gateway leading to different upstream services of your infrastructure.
@@ -129,8 +346,6 @@ type SDK struct {
 	// - `grpcs`: At least one of `hosts`, `headers`, `paths`, or `snis`
 	// - `ws`: At least one of `hosts`, `headers`, or `paths`
 	// - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
-	//
-	//
 	//
 	//
 	//
@@ -170,66 +385,6 @@ type SDK struct {
 	// Secrets rotation can be managed using [TTLs](https://developer.konghq.com/gateway/entities/vault/).
 	//
 	Vaults *Vaults
-	// DP Certificates
-	DPCertificates *DPCertificates
-	// DP Nodes
-	DPNodes            *DPNodes
-	ControlPlaneGroups *ControlPlaneGroups
-	// Dynamic Client Registration Providers are configurations representing an external Identity Provider whose clients (i.e. Applications) Konnect will be authorized to manage.
-	// For instance, they will be able to perform dynamic client registration (DCR) with the provider.
-	// The DCR provider provides credentials to each DCR-enabled application in Konnect that can be used to access Product Versions that the app is registered for.
-	//
-	DCRProviders      *DCRProviders
-	APIAttributes     *APIAttributes
-	APIImplementation *APIImplementation
-	APIPublication    *APIPublication
-	API               *API
-	APIDocumentation  *APIDocumentation
-	APISpecification  *APISpecification
-	APIVersion        *APIVersion
-	// APIs related to Konnect Developer Portal Applications.
-	Applications          *Applications
-	Authentication        *Authentication
-	AuthSettings          *AuthSettings
-	Invites               *Invites
-	ImpersonationSettings *ImpersonationSettings
-	Me                    *Me
-	// APIs related to Konnect Developer Portal developer team roles.
-	PortalTeamRoles *PortalTeamRoles
-	// APIs related to configuration of Konnect Developer Portals.
-	Portals *Portals
-	// APIs related to Konnect Developer Portal Application Registrations.
-	ApplicationRegistrations *ApplicationRegistrations
-	// APIs for managing static assets for Konnect Developer Portals.
-	Assets          *Assets
-	PortalAuditLogs *PortalAuditLogs
-	// APIs related to configuration of Konnect Developer Portal auth settings.
-	PortalAuthSettings *PortalAuthSettings
-	// APIs related to configuration of Konnect Developer Portals custom domains.
-	PortalCustomDomains *PortalCustomDomains
-	// APIs related to customization of Konnect Developer Portals.
-	PortalCustomization *PortalCustomization
-	// APIs related to Konnect Developer Portal Custom Pages.
-	Pages *Pages
-	// APIs related to Konnect Developer Portal developers.
-	PortalDevelopers *PortalDevelopers
-	// APIs related to Konnect Developer Portal developer team membership.
-	PortalTeamMembership *PortalTeamMembership
-	// APIs related to Konnect Developer Portal Emails.
-	PortalEmails *PortalEmails
-	// APIs related to Konnect Developer Portal Custom Snippets.
-	Snippets *Snippets
-	// APIs related to configuration of Konnect Developer Portal developer teams.
-	PortalTeams                  *PortalTeams
-	Roles                        *Roles
-	SystemAccounts               *SystemAccounts
-	SystemAccountsAccessTokens   *SystemAccountsAccessTokens
-	SystemAccountsRoles          *SystemAccountsRoles
-	SystemAccountsTeamMembership *SystemAccountsTeamMembership
-	Teams                        *Teams
-	TeamMembership               *TeamMembership
-	Users                        *Users
-	PersonalAccessTokens         *PersonalAccessTokens
 
 	sdkConfiguration config.SDKConfiguration
 	hooks            *hooks.Hooks
@@ -307,7 +462,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		SDKVersion: "0.0.1",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.0.1 2.753.7 3.0.29 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.0.1 2.779.2 3.0.30 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -328,12 +483,92 @@ func New(opts ...SDKOption) *SDK {
 		sdk.sdkConfiguration.ServerURL = serverURL
 	}
 
-	sdk.Notifications = newNotifications(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.AppAuthStrategies = newAppAuthStrategies(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.CloudGateways = newCloudGateways(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ControlPlanes = newControlPlanes(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ControlPlaneGroups = newControlPlaneGroups(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ControlPlaneResourceQuotas = newControlPlaneResourceQuotas(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OrganizationFeature = newOrganizationFeature(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AIManager = newAIManager(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.SSOAuth0 = newSSOAuth0(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Auth0 = newAuth0(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Users = newUsers(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.DeviceAuthorizationGrant = newDeviceAuthorizationGrant(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ImpersonationSettings = newImpersonationSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AuthSettings = newAuthSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Invites = newInvites(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Roles = newRoles(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Teams = newTeams(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.TeamMembership = newTeamMembership(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.SystemAccounts = newSystemAccounts(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.SystemAccountsAccessTokens = newSystemAccountsAccessTokens(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ManagedSystemAccountsRoles = newManagedSystemAccountsRoles(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.SystemAccountsRoles = newSystemAccountsRoles(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.SystemAccountsTeamMembership = newSystemAccountsTeamMembership(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Me = newMe(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Authentication = newAuthentication(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Aws = newAws(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PersonalAccessTokens = newPersonalAccessTokens(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CloudGateways = newCloudGateways(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Notifications = newNotifications(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.DCRProviders = newDCRProviders(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.AppAuthStrategies = newAppAuthStrategies(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.API = newAPI(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APISpecification = newAPISpecification(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIDocumentation = newAPIDocumentation(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIVersion = newAPIVersion(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIPublication = newAPIPublication(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIImplementation = newAPIImplementation(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIOperations = newAPIOperations(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIAttributes = newAPIAttributes(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIPackages = newAPIPackages(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIPackageDocumentation = newAPIPackageDocumentation(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIPackageOperations = newAPIPackageOperations(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIPackageSpecification = newAPIPackageSpecification(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Portals = newPortals(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalCustomDomains = newPortalCustomDomains(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Assets = newAssets(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalCustomization = newPortalCustomization(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Pages = newPages(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Snippets = newSnippets(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Applications = newApplications(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ApplicationRegistrations = newApplicationRegistrations(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalAuthSettings = newPortalAuthSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalTeams = newPortalTeams(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalTeamMembership = newPortalTeamMembership(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalTeamRoles = newPortalTeamRoles(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalDevelopers = newPortalDevelopers(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalAuditLogs = newPortalAuditLogs(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalEmails = newPortalEmails(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogServices = newCatalogServices(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogServiceAPISpecs = newCatalogServiceAPISpecs(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogIntegrations = newCatalogIntegrations(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.IntegrationInstances = newIntegrationInstances(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.IntegrationInstanceAuthCredentials = newIntegrationInstanceAuthCredentials(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.IntegrationInstanceAuthConfig = newIntegrationInstanceAuthConfig(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogResources = newCatalogResources(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogResourceServices = newCatalogResourceServices(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogResourceMappings = newCatalogResourceMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogServiceResources = newCatalogServiceResources(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CriteriaTemplates = newCriteriaTemplates(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Scorecards = newScorecards(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ResourceIngestion = newResourceIngestion(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.ResourceActions = newResourceActions(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.IntegrationInstanceProxy = newIntegrationInstanceProxy(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.SuggestionRules = newSuggestionRules(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.SuggestionRuleErrors = newSuggestionRuleErrors(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.IntegrationEvents = newIntegrationEvents(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogServiceDocuments = newCatalogServiceDocuments(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.SuggestedResourceActions = newSuggestedResourceActions(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Vulnerabilities = newVulnerabilities(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogServiceCustomFields = newCatalogServiceCustomFields(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CatalogServiceAPIMappings = newCatalogServiceAPIMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.DPNodes = newDPNodes(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.DPCertificates = newDPCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Nodes = newNodes(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CustomPluginSchemas = newCustomPluginSchemas(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ConfigStores = newConfigStores(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ConfigStoreSecrets = newConfigStoreSecrets(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.DebugSessions = newDebugSessions(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.DeclarativeConfiguration = newDeclarativeConfiguration(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ACLs = newACLs(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.BasicAuthCredentials = newBasicAuthCredentials(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CACertificates = newCACertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -352,53 +587,12 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Keys = newKeys(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Partials = newPartials(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PartialLinks = newPartialLinks(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.CustomPluginSchemas = newCustomPluginSchemas(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Routes = newRoutes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Schemas = newSchemas(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Services = newServices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Upstreams = newUpstreams(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Targets = newTargets(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Vaults = newVaults(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.DPCertificates = newDPCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.DPNodes = newDPNodes(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.ControlPlaneGroups = newControlPlaneGroups(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.DCRProviders = newDCRProviders(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.APIAttributes = newAPIAttributes(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.APIImplementation = newAPIImplementation(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.APIPublication = newAPIPublication(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.API = newAPI(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.APIDocumentation = newAPIDocumentation(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.APISpecification = newAPISpecification(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.APIVersion = newAPIVersion(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Applications = newApplications(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Authentication = newAuthentication(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.AuthSettings = newAuthSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Invites = newInvites(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.ImpersonationSettings = newImpersonationSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Me = newMe(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.PortalTeamRoles = newPortalTeamRoles(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Portals = newPortals(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.ApplicationRegistrations = newApplicationRegistrations(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Assets = newAssets(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.PortalAuditLogs = newPortalAuditLogs(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.PortalAuthSettings = newPortalAuthSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.PortalCustomDomains = newPortalCustomDomains(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.PortalCustomization = newPortalCustomization(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Pages = newPages(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.PortalDevelopers = newPortalDevelopers(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.PortalTeamMembership = newPortalTeamMembership(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.PortalEmails = newPortalEmails(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Snippets = newSnippets(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.PortalTeams = newPortalTeams(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Roles = newRoles(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.SystemAccounts = newSystemAccounts(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.SystemAccountsAccessTokens = newSystemAccountsAccessTokens(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.SystemAccountsRoles = newSystemAccountsRoles(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.SystemAccountsTeamMembership = newSystemAccountsTeamMembership(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Teams = newTeams(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.TeamMembership = newTeamMembership(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Users = newUsers(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.PersonalAccessTokens = newPersonalAccessTokens(sdk, sdk.sdkConfiguration, sdk.hooks)
 
 	return sdk
 }

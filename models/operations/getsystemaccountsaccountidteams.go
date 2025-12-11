@@ -13,7 +13,7 @@ var GetSystemAccountsAccountIDTeamsServerList = []string{
 
 // GetSystemAccountsAccountIDTeamsQueryParamFilter - Filter teams returned in the response.
 type GetSystemAccountsAccountIDTeamsQueryParamFilter struct {
-	// Filters on the given string field value by fuzzy match.
+	// Filter using **one** of the following operators: `eq`, `contains`
 	Name *components.LegacyStringFieldFilter `queryParam:"name=name"`
 }
 

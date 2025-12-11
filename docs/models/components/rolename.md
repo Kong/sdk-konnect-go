@@ -41,3 +41,5 @@ The desired role.
 | `RoleNameUpstreamAdmin`             | Upstream Admin                      |
 | `RoleNameVaultAdmin`                | Vault Admin                         |
 | `RoleNameViewer`                    | Viewer                              |
+| `RoleNameRegistrationApprover`      | Registration Approver               |
+| `RoleNameContentEditor`             | Content Editor                      |

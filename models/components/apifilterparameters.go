@@ -3,14 +3,16 @@
 package components
 
 type APIFilterParameters struct {
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	ID *UUIDFieldFilter `queryParam:"name=id"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Name *StringFieldFilter `queryParam:"name=name"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Version    *StringFieldFilter     `queryParam:"name=version"`
 	Labels     *LabelsFieldFilter     `queryParam:"name=labels"`
 	Attributes *AttributesFieldFilter `queryParam:"name=attributes"`
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
+	ImplementationMode *StringFieldFilter `queryParam:"name=implementation_mode"`
 	// Filters on the given datetime (RFC-3339) field value.
 	CreatedAt *DateTimeFieldFilter `queryParam:"name=created_at"`
 	// Filters on the given datetime (RFC-3339) field value.
@@ -50,6 +52,13 @@ func (a *APIFilterParameters) GetAttributes() *AttributesFieldFilter {
 		return nil
 	}
 	return a.Attributes
+}
+
+func (a *APIFilterParameters) GetImplementationMode() *StringFieldFilter {
+	if a == nil {
+		return nil
+	}
+	return a.ImplementationMode
 }
 
 func (a *APIFilterParameters) GetCreatedAt() *DateTimeFieldFilter {

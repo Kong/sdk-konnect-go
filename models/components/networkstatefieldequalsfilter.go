@@ -31,8 +31,8 @@ const (
 
 // NetworkStateFieldEqualsFilter - Filter a network state by exact match.
 type NetworkStateFieldEqualsFilter struct {
-	NetworkState                      *NetworkState                      `queryParam:"inline,name=NetworkStateFieldEqualsFilter"`
-	NetworkStateFieldEqualsComparison *NetworkStateFieldEqualsComparison `queryParam:"inline,name=NetworkStateFieldEqualsFilter"`
+	NetworkState                      *NetworkState                      `queryParam:"inline,name=NetworkStateFieldEqualsFilter" union:"member"`
+	NetworkStateFieldEqualsComparison *NetworkStateFieldEqualsComparison `queryParam:"inline,name=NetworkStateFieldEqualsFilter" union:"member"`
 
 	Type NetworkStateFieldEqualsFilterType
 }

@@ -20,6 +20,17 @@ func (e WebhookStatus) ToPointer() *WebhookStatus {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *WebhookStatus) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "active", "inactive":
+			return true
+		}
+	}
+	return false
+}
+
 // PortalAuditLogWebhookStatus - Get response for portal audit log webhook status
 type PortalAuditLogWebhookStatus struct {
 	// Current status of a webhook. `active` indicates the webhook is sending or ready to send requests.

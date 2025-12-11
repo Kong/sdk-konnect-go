@@ -15,9 +15,9 @@ var ListTeamUsersServerList = []string{
 type ListTeamUsersQueryParamFilter struct {
 	// Filters on the given string field value by exact match.
 	ID *components.StringFieldEqualsFilter `queryParam:"name=id"`
-	// Filters on the given string field value by fuzzy match.
+	// Filter using **one** of the following operators: `eq`, `contains`
 	Email *components.LegacyStringFieldFilter `queryParam:"name=email"`
-	// Filters on the given string field value by fuzzy match.
+	// Filter using **one** of the following operators: `eq`, `contains`
 	FullName *components.LegacyStringFieldFilter `queryParam:"name=full_name"`
 	// Filter by a boolean value (true/false).
 	Active *bool `queryParam:"name=active"`

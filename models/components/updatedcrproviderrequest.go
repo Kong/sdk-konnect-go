@@ -19,11 +19,11 @@ const (
 )
 
 type DcrConfig struct {
-	UpdateDcrConfigAuth0InRequest   *UpdateDcrConfigAuth0InRequest   `queryParam:"inline,name=dcr_config"`
-	UpdateDcrConfigAzureAdInRequest *UpdateDcrConfigAzureAdInRequest `queryParam:"inline,name=dcr_config"`
-	UpdateDcrConfigCurityInRequest  *UpdateDcrConfigCurityInRequest  `queryParam:"inline,name=dcr_config"`
-	UpdateDcrConfigOktaInRequest    *UpdateDcrConfigOktaInRequest    `queryParam:"inline,name=dcr_config"`
-	UpdateDcrConfigHTTPInRequest    *UpdateDcrConfigHTTPInRequest    `queryParam:"inline,name=dcr_config"`
+	UpdateDcrConfigAuth0InRequest   *UpdateDcrConfigAuth0InRequest   `queryParam:"inline,name=dcr_config" union:"member"`
+	UpdateDcrConfigAzureAdInRequest *UpdateDcrConfigAzureAdInRequest `queryParam:"inline,name=dcr_config" union:"member"`
+	UpdateDcrConfigCurityInRequest  *UpdateDcrConfigCurityInRequest  `queryParam:"inline,name=dcr_config" union:"member"`
+	UpdateDcrConfigOktaInRequest    *UpdateDcrConfigOktaInRequest    `queryParam:"inline,name=dcr_config" union:"member"`
+	UpdateDcrConfigHTTPInRequest    *UpdateDcrConfigHTTPInRequest    `queryParam:"inline,name=dcr_config" union:"member"`
 
 	Type DcrConfigType
 }

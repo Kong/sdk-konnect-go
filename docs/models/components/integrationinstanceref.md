@@ -1,0 +1,12 @@
+# IntegrationInstanceRef
+
+Short-hand descriptor of an integration instance.
+
+
+## Fields
+
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `ID`                                                                                          | *string*                                                                                      | :heavy_check_mark:                                                                            | The integration instance ID.                                                                  | 772b9caf-ddbc-4f4f-8aa4-8dfbbe420351                                                          |
+| `Name`                                                                                        | *string*                                                                                      | :heavy_check_mark:                                                                            | The machine name of the integration instance that uniquely identifies it within the catalog.<br/> | aws-lambda-prod                                                                               |
+| `DisplayName`                                                                                 | *string*                                                                                      | :heavy_check_mark:                                                                            | The display name of the integration instance.                                                 | AWS (prod)                                                                                    |

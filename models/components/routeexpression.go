@@ -21,6 +21,17 @@ func (e RouteExpressionHTTPSRedirectStatusCode) ToPointer() *RouteExpressionHTTP
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *RouteExpressionHTTPSRedirectStatusCode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case 301, 302, 307, 308, 426:
+			return true
+		}
+	}
+	return false
+}
+
 // RouteExpressionPathHandling - Controls how the Service path, Route path and requested path are combined when sending a request to the upstream. See above for a detailed description of each behavior.
 type RouteExpressionPathHandling string
 
@@ -31,6 +42,17 @@ const (
 
 func (e RouteExpressionPathHandling) ToPointer() *RouteExpressionPathHandling {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *RouteExpressionPathHandling) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "v0", "v1":
+			return true
+		}
+	}
+	return false
 }
 
 // RouteExpressionProtocols - A string representing a protocol, such as HTTP or HTTPS.
@@ -51,6 +73,17 @@ const (
 
 func (e RouteExpressionProtocols) ToPointer() *RouteExpressionProtocols {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *RouteExpressionProtocols) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "grpc", "grpcs", "http", "https", "tcp", "tls", "tls_passthrough", "udp", "ws", "wss":
+			return true
+		}
+	}
+	return false
 }
 
 // RouteExpressionService - The Service this Route is associated to. This is where the Route proxies traffic to.
@@ -80,12 +113,16 @@ func (r *RouteExpressionService) GetID() *string {
 type RouteExpression struct {
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
 	// Use Router Expression to perform route match. This option is only available when `router_flavor` is set to `expressions`.
 	Expression *string `json:"expression,omitempty"`
 	// The status code Kong responds with when all properties of a Route match except the protocol i.e. if the protocol of the request is `HTTP` instead of `HTTPS`. `Location` header is injected by Kong if the field is set to 301, 302, 307 or 308. Note: This config applies only if the Route is configured to only accept the `https` protocol.
 	HTTPSRedirectStatusCode *RouteExpressionHTTPSRedirectStatusCode `default:"426" json:"https_redirect_status_code"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
+	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
+	ManagedBy map[string]any `json:"managed_by,omitempty"`
 	// The name of the Route. Route names must be unique, and they are case sensitive. For example, there can be two different Routes named "test" and "Test".
 	Name *string `json:"name,omitempty"`
 	// Controls how the Service path, Route path and requested path are combined when sending a request to the upstream. See above for a detailed description of each behavior.
@@ -128,6 +165,13 @@ func (r *RouteExpression) GetCreatedAt() *int64 {
 	return r.CreatedAt
 }
 
+func (r *RouteExpression) GetDescription() *string {
+	if r == nil {
+		return nil
+	}
+	return r.Description
+}
+
 func (r *RouteExpression) GetExpression() *string {
 	if r == nil {
 		return nil
@@ -147,6 +191,13 @@ func (r *RouteExpression) GetID() *string {
 		return nil
 	}
 	return r.ID
+}
+
+func (r *RouteExpression) GetManagedBy() map[string]any {
+	if r == nil {
+		return nil
+	}
+	return r.ManagedBy
 }
 
 func (r *RouteExpression) GetName() *string {

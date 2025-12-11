@@ -11,3 +11,4 @@ Enumeration of resources available for quota enforcement.
 | `ResourceQuotaQualifierCountNetworksNotOffline`           | count/networks.not-offline                                |
 | `ResourceQuotaQualifierCountDataPlanesEstimate`           | count/data-planes-estimate                                |
 | `ResourceQuotaQualifierCountServerlessDataPlanesEstimate` | count/serverless-data-planes-estimate                     |
+| `ResourceQuotaQualifierCountDataPlaneGroupsEstimate`      | count/data-plane-groups-estimate                          |

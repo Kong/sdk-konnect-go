@@ -31,6 +31,60 @@ func (e *AuthStrategyKeyAuthCredentialType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type AuthStrategyKeyAuthUnit string
+
+const (
+	AuthStrategyKeyAuthUnitDays  AuthStrategyKeyAuthUnit = "days"
+	AuthStrategyKeyAuthUnitWeeks AuthStrategyKeyAuthUnit = "weeks"
+	AuthStrategyKeyAuthUnitYears AuthStrategyKeyAuthUnit = "years"
+)
+
+func (e AuthStrategyKeyAuthUnit) ToPointer() *AuthStrategyKeyAuthUnit {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AuthStrategyKeyAuthUnit) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "days", "weeks", "years":
+			return true
+		}
+	}
+	return false
+}
+
+// AuthStrategyKeyAuthTTL - Default maximum Time-To-Live for keys created under this strategy.
+type AuthStrategyKeyAuthTTL struct {
+	Value int64                   `json:"value"`
+	Unit  AuthStrategyKeyAuthUnit `json:"unit"`
+}
+
+func (a AuthStrategyKeyAuthTTL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *AuthStrategyKeyAuthTTL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"value", "unit"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AuthStrategyKeyAuthTTL) GetValue() int64 {
+	if a == nil {
+		return 0
+	}
+	return a.Value
+}
+
+func (a *AuthStrategyKeyAuthTTL) GetUnit() AuthStrategyKeyAuthUnit {
+	if a == nil {
+		return AuthStrategyKeyAuthUnit("")
+	}
+	return a.Unit
+}
+
 // AuthStrategyKeyAuth - KeyAuth Auth strategy that the application uses.
 type AuthStrategyKeyAuth struct {
 	// The Application Auth Strategy ID.
@@ -38,6 +92,8 @@ type AuthStrategyKeyAuth struct {
 	Name           *string                           `default:"name" json:"name"`
 	CredentialType AuthStrategyKeyAuthCredentialType `json:"credential_type"`
 	KeyNames       []string                          `json:"key_names"`
+	// Default maximum Time-To-Live for keys created under this strategy.
+	TTL *AuthStrategyKeyAuthTTL `json:"ttl,omitempty"`
 }
 
 func (a AuthStrategyKeyAuth) MarshalJSON() ([]byte, error) {
@@ -77,4 +133,11 @@ func (a *AuthStrategyKeyAuth) GetKeyNames() []string {
 		return []string{}
 	}
 	return a.KeyNames
+}
+
+func (a *AuthStrategyKeyAuth) GetTTL() *AuthStrategyKeyAuthTTL {
+	if a == nil {
+		return nil
+	}
+	return a.TTL
 }

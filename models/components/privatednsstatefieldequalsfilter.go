@@ -48,8 +48,8 @@ const (
 
 // PrivateDNSStateFieldEqualsFilter - Filter Private DNS state by exact match.
 type PrivateDNSStateFieldEqualsFilter struct {
-	PrivateDNSState                      *PrivateDNSState                      `queryParam:"inline,name=PrivateDnsStateFieldEqualsFilter"`
-	PrivateDNSStateFieldEqualsComparison *PrivateDNSStateFieldEqualsComparison `queryParam:"inline,name=PrivateDnsStateFieldEqualsFilter"`
+	PrivateDNSState                      *PrivateDNSState                      `queryParam:"inline,name=PrivateDnsStateFieldEqualsFilter" union:"member"`
+	PrivateDNSStateFieldEqualsComparison *PrivateDNSStateFieldEqualsComparison `queryParam:"inline,name=PrivateDnsStateFieldEqualsFilter" union:"member"`
 
 	Type PrivateDNSStateFieldEqualsFilterType
 }

@@ -3,10 +3,6 @@
 
 ## Values
 
-| Name        | Value       |
-| ----------- | ----------- |
-| `TypeGrpc`  | grpc        |
-| `TypeGrpcs` | grpcs       |
-| `TypeHTTP`  | http        |
-| `TypeHTTPS` | https       |
-| `TypeTCP`   | tcp         |
+| Name      | Value     |
+| --------- | --------- |
+| `TypeURL` | url       |

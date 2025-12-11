@@ -6,6 +6,8 @@ package components
 type PatchNetworkRequest struct {
 	// Human-readable name of the network.
 	Name *string `json:"name,omitempty"`
+	// Firewall configuration for a network.
+	Firewall *NetworkFirewallConfig `json:"firewall,omitempty"`
 }
 
 func (p *PatchNetworkRequest) GetName() *string {
@@ -13,4 +15,11 @@ func (p *PatchNetworkRequest) GetName() *string {
 		return nil
 	}
 	return p.Name
+}
+
+func (p *PatchNetworkRequest) GetFirewall() *NetworkFirewallConfig {
+	if p == nil {
+		return nil
+	}
+	return p.Firewall
 }

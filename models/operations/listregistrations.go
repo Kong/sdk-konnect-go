@@ -9,11 +9,11 @@ import (
 
 // ListRegistrationsQueryParamFilter - Filter application registrations returned in the response.
 type ListRegistrationsQueryParamFilter struct {
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	DeveloperID *components.UUIDFieldFilter `queryParam:"name=developer_id"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	ApplicationName *components.StringFieldFilter `queryParam:"name=application_name"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Status *components.StringFieldFilter `queryParam:"name=status"`
 }
 
@@ -46,8 +46,6 @@ type ListRegistrationsRequest struct {
 	// Determines which page of the entities to retrieve.
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 	// Sorts a collection of application registrations. Supported sort attributes are:
-	//
-	//
 	//
 	//
 	//

@@ -1,5 +1,4 @@
 # ACLs
-(*ACLs*)
 
 ## Overview
 

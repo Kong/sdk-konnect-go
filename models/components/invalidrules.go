@@ -33,3 +33,14 @@ const (
 func (e InvalidRules) ToPointer() *InvalidRules {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *InvalidRules) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "required", "is_array", "is_base64", "is_boolean", "is_date_time", "is_integer", "is_null", "is_number", "is_object", "is_string", "is_uuid", "is_fqdn", "is_arn", "unknown_property", "missing_reference", "is_label", "matches_regex", "invalid", "is_supported_network_availability_zone_list", "is_supported_network_cidr_block", "is_supported_provider_region", "type":
+			return true
+		}
+	}
+	return false
+}

@@ -13,7 +13,7 @@ var GetSystemAccountIDAccessTokensServerList = []string{
 
 // GetSystemAccountIDAccessTokensQueryParamFilter - Filter access tokens returned in the response.
 type GetSystemAccountIDAccessTokensQueryParamFilter struct {
-	// Filters on the given string field value by fuzzy match.
+	// Filter using **one** of the following operators: `eq`, `contains`
 	Name *components.LegacyStringFieldFilter `queryParam:"name=name"`
 }
 

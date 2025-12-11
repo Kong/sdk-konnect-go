@@ -17,8 +17,11 @@ type BasicAuth struct {
 	Consumer *BasicAuthConsumer `json:"consumer,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
-	ID *string `json:"id,omitempty"`
+	ID       *string `json:"id,omitempty"`
+	Password string  `json:"password"`
 	// A set of strings representing tags.
 	Tags     []string `json:"tags,omitempty"`
 	Username string   `json:"username"`
@@ -38,11 +41,25 @@ func (b *BasicAuth) GetCreatedAt() *int64 {
 	return b.CreatedAt
 }
 
+func (b *BasicAuth) GetDescription() *string {
+	if b == nil {
+		return nil
+	}
+	return b.Description
+}
+
 func (b *BasicAuth) GetID() *string {
 	if b == nil {
 		return nil
 	}
 	return b.ID
+}
+
+func (b *BasicAuth) GetPassword() string {
+	if b == nil {
+		return ""
+	}
+	return b.Password
 }
 
 func (b *BasicAuth) GetTags() []string {

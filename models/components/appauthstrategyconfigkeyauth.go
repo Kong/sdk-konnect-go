@@ -6,12 +6,68 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type AppAuthStrategyConfigKeyAuthUnit string
+
+const (
+	AppAuthStrategyConfigKeyAuthUnitDays  AppAuthStrategyConfigKeyAuthUnit = "days"
+	AppAuthStrategyConfigKeyAuthUnitWeeks AppAuthStrategyConfigKeyAuthUnit = "weeks"
+	AppAuthStrategyConfigKeyAuthUnitYears AppAuthStrategyConfigKeyAuthUnit = "years"
+)
+
+func (e AppAuthStrategyConfigKeyAuthUnit) ToPointer() *AppAuthStrategyConfigKeyAuthUnit {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *AppAuthStrategyConfigKeyAuthUnit) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "days", "weeks", "years":
+			return true
+		}
+	}
+	return false
+}
+
+// TTL - Default maximum Time-To-Live for keys created under this strategy.
+type TTL struct {
+	Value int64                            `json:"value"`
+	Unit  AppAuthStrategyConfigKeyAuthUnit `json:"unit"`
+}
+
+func (t TTL) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TTL) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"value", "unit"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *TTL) GetValue() int64 {
+	if t == nil {
+		return 0
+	}
+	return t.Value
+}
+
+func (t *TTL) GetUnit() AppAuthStrategyConfigKeyAuthUnit {
+	if t == nil {
+		return AppAuthStrategyConfigKeyAuthUnit("")
+	}
+	return t.Unit
+}
+
 // AppAuthStrategyConfigKeyAuth - The most basic mode to configure an Application Auth Strategy for an API Product Version.
 // Using this mode will allow developers to generate API keys that will authenticate their application requests.
 // Once authenticated, an application will be granted access to any Product Version it is registered for that is configured for Key Auth.
 type AppAuthStrategyConfigKeyAuth struct {
 	// The names of the headers containing the API key. You can specify multiple header names.
 	KeyNames []string `json:"key_names,omitempty"`
+	// Default maximum Time-To-Live for keys created under this strategy.
+	TTL *TTL `json:"ttl,omitempty"`
 }
 
 func (a AppAuthStrategyConfigKeyAuth) MarshalJSON() ([]byte, error) {
@@ -30,4 +86,11 @@ func (a *AppAuthStrategyConfigKeyAuth) GetKeyNames() []string {
 		return nil
 	}
 	return a.KeyNames
+}
+
+func (a *AppAuthStrategyConfigKeyAuth) GetTTL() *TTL {
+	if a == nil {
+		return nil
+	}
+	return a.TTL
 }

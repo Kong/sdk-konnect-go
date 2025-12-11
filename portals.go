@@ -86,7 +86,7 @@ func (s *Portals) ListPortals(ctx context.Context, request operations.ListPortal
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
@@ -1175,7 +1175,7 @@ func (s *Portals) UpdatePortal(ctx context.Context, portalID string, updatePorta
 
 // DeletePortal - Delete Portal
 // Deletes a single portal, along with all related entities.
-func (s *Portals) DeletePortal(ctx context.Context, portalID string, force *operations.QueryParamForce, opts ...operations.Option) (*operations.DeletePortalResponse, error) {
+func (s *Portals) DeletePortal(ctx context.Context, portalID string, force *operations.DeletePortalQueryParamForce, opts ...operations.Option) (*operations.DeletePortalResponse, error) {
 	request := operations.DeletePortalRequest{
 		PortalID: portalID,
 		Force:    force,
@@ -1232,7 +1232,7 @@ func (s *Portals) DeletePortal(ctx context.Context, portalID string, force *oper
 	req.Header.Set("Accept", "application/problem+json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateQueryParams(ctx, req, request, nil); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 

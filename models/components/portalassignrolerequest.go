@@ -19,6 +19,17 @@ func (e PortalAssignRoleRequestEntityRegion) ToPointer() *PortalAssignRoleReques
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *PortalAssignRoleRequestEntityRegion) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "us", "eu", "au", "me", "in", "sg", "*":
+			return true
+		}
+	}
+	return false
+}
+
 // PortalAssignRoleRequest - An assigned role associates a service and an action to a team.
 type PortalAssignRoleRequest struct {
 	RoleName       *string `json:"role_name,omitempty"`

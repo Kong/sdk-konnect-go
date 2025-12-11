@@ -38,6 +38,17 @@ func (e Algorithm) ToPointer() *Algorithm {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *Algorithm) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "ES256", "ES256K", "ES384", "ES512", "ESB256", "ESB320", "ESB384", "ESB512", "ESP256", "ESP384", "ESP512", "Ed25519", "Ed448", "EdDSA", "HS256", "HS384", "HS512", "PS256", "PS384", "PS512", "RS256", "RS384", "RS512":
+			return true
+		}
+	}
+	return false
+}
+
 type JWTConsumer struct {
 	ID *string `json:"id,omitempty"`
 }
@@ -54,6 +65,8 @@ type Jwt struct {
 	Consumer  *JWTConsumer `json:"consumer,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID           *string `json:"id,omitempty"`
 	Key          *string `json:"key,omitempty"`
@@ -93,6 +106,13 @@ func (j *Jwt) GetCreatedAt() *int64 {
 		return nil
 	}
 	return j.CreatedAt
+}
+
+func (j *Jwt) GetDescription() *string {
+	if j == nil {
+		return nil
+	}
+	return j.Description
 }
 
 func (j *Jwt) GetID() *string {

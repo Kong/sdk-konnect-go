@@ -21,6 +21,17 @@ func (e MeOrganizationState) ToPointer() *MeOrganizationState {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *MeOrganizationState) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "active", "inactive", "deleting", "deleted":
+			return true
+		}
+	}
+	return false
+}
+
 // MeOrganization - Me Organization
 type MeOrganization struct {
 	// UUID of the organization.
@@ -39,6 +50,10 @@ type MeOrganization struct {
 	State *MeOrganizationState `json:"state,omitempty"`
 	// The number of days an organization spends inactive before being deleted.
 	RetentionPeriodDays *int64 `json:"retention_period_days,omitempty"`
+	// Whether Personal Access Tokens (PATs) are enabled for the organization.
+	PatsEnabled *bool `json:"pats_enabled,omitempty"`
+	// Whether Multi-Factor Authentication (MFA) is enabled for the organization.
+	MfaEnabled *bool `json:"mfa_enabled,omitempty"`
 }
 
 func (m MeOrganization) MarshalJSON() ([]byte, error) {
@@ -106,4 +121,18 @@ func (m *MeOrganization) GetRetentionPeriodDays() *int64 {
 		return nil
 	}
 	return m.RetentionPeriodDays
+}
+
+func (m *MeOrganization) GetPatsEnabled() *bool {
+	if m == nil {
+		return nil
+	}
+	return m.PatsEnabled
+}
+
+func (m *MeOrganization) GetMfaEnabled() *bool {
+	if m == nil {
+		return nil
+	}
+	return m.MfaEnabled
 }

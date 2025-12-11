@@ -20,6 +20,8 @@ type ConfigurationManifest struct {
 	// instances.
 	//
 	DataplaneGroups []ConfigurationDataPlaneGroup `json:"dataplane_groups"`
+	// Kind of the Cloud Gateway deployment
+	Kind *ConfigurationKind `default:"dedicated.v0" json:"kind"`
 	// Positive, monotonically increasing version integer, to serialize configuration changes.
 	//
 	EntityVersion float64 `json:"entity_version"`
@@ -37,7 +39,7 @@ func (c ConfigurationManifest) MarshalJSON() ([]byte, error) {
 }
 
 func (c *ConfigurationManifest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id", "version", "dataplane_group_config", "dataplane_groups", "entity_version", "created_at", "updated_at", "control_plane_id", "control_plane_geo"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -76,6 +78,13 @@ func (c *ConfigurationManifest) GetDataplaneGroups() []ConfigurationDataPlaneGro
 		return []ConfigurationDataPlaneGroup{}
 	}
 	return c.DataplaneGroups
+}
+
+func (c *ConfigurationManifest) GetKind() *ConfigurationKind {
+	if c == nil {
+		return nil
+	}
+	return c.Kind
 }
 
 func (c *ConfigurationManifest) GetEntityVersion() float64 {

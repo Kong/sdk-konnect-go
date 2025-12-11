@@ -18,6 +18,17 @@ func (e DefaultAPIVisibility) ToPointer() *DefaultAPIVisibility {
 	return &e
 }
 
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *DefaultAPIVisibility) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "public", "private":
+			return true
+		}
+	}
+	return false
+}
+
 // DefaultPageVisibility - The default visibility of pages in the portal. If set to `public`, newly created pages are visible to unauthenticated developers. If set to `private`, newly created pages are hidden from unauthenticated developers.
 type DefaultPageVisibility string
 
@@ -28,6 +39,17 @@ const (
 
 func (e DefaultPageVisibility) ToPointer() *DefaultPageVisibility {
 	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *DefaultPageVisibility) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "public", "private":
+			return true
+		}
+	}
+	return false
 }
 
 // CreatePortal - Create a portal.
@@ -66,7 +88,7 @@ func (c CreatePortal) MarshalJSON() ([]byte, error) {
 }
 
 func (c *CreatePortal) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"name"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil

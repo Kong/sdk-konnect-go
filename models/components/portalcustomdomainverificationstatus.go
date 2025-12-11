@@ -13,3 +13,14 @@ const (
 func (e PortalCustomDomainVerificationStatus) ToPointer() *PortalCustomDomainVerificationStatus {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *PortalCustomDomainVerificationStatus) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "verified", "pending", "error":
+			return true
+		}
+	}
+	return false
+}

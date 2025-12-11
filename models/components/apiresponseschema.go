@@ -65,8 +65,11 @@ type APIResponseSchema struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels"`
+	// the implementations that are associated with this api either gateway_entity_binding or access_control_enforcement
+	ImplementationMode *string `json:"implementation_mode,omitempty"`
 	// A set of attributes that describe the API
-	Attributes any `json:"attributes,omitempty"`
+	Attributes any     `json:"attributes,omitempty"`
+	Images     *Images `json:"images,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
@@ -78,7 +81,7 @@ func (a APIResponseSchema) MarshalJSON() ([]byte, error) {
 }
 
 func (a *APIResponseSchema) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "name", "api_spec_ids", "portals", "labels", "created_at", "updated_at"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -147,11 +150,25 @@ func (a *APIResponseSchema) GetLabels() map[string]string {
 	return a.Labels
 }
 
+func (a *APIResponseSchema) GetImplementationMode() *string {
+	if a == nil {
+		return nil
+	}
+	return a.ImplementationMode
+}
+
 func (a *APIResponseSchema) GetAttributes() any {
 	if a == nil {
 		return nil
 	}
 	return a.Attributes
+}
+
+func (a *APIResponseSchema) GetImages() *Images {
+	if a == nil {
+		return nil
+	}
+	return a.Images
 }
 
 func (a *APIResponseSchema) GetCreatedAt() time.Time {

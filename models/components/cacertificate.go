@@ -10,6 +10,8 @@ type CACertificate struct {
 	CertDigest *string `json:"cert_digest,omitempty"`
 	// Unix epoch when the resource was created.
 	CreatedAt *int64 `json:"created_at,omitempty"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
 	// An optional set of strings associated with the Certificate for grouping and filtering.
@@ -37,6 +39,13 @@ func (c *CACertificate) GetCreatedAt() *int64 {
 		return nil
 	}
 	return c.CreatedAt
+}
+
+func (c *CACertificate) GetDescription() *string {
+	if c == nil {
+		return nil
+	}
+	return c.Description
 }
 
 func (c *CACertificate) GetID() *string {

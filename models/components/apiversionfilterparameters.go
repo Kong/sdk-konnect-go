@@ -3,9 +3,9 @@
 package components
 
 type APIVersionFilterParameters struct {
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Type *StringFieldFilter `queryParam:"name=type"`
-	// Filters on the given string field value by exact match inequality.
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Version *StringFieldFilter `queryParam:"name=version"`
 }
 

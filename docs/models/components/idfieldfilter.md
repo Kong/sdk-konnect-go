@@ -1,12 +1,12 @@
 # IDFieldFilter
 
-Returns entities that exact match any of the comma-delimited phrases in the filter string.
+Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `Eq`               | **string*          | :heavy_minus_sign: | N/A                |
-| `Neq`              | **string*          | :heavy_minus_sign: | N/A                |
-| `Oeq`              | **string*          | :heavy_minus_sign: | N/A                |
+| Field                                         | Type                                          | Required                                      | Description                                   |
+| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
+| `Eq`                                          | **string*                                     | :heavy_minus_sign:                            | The field exactly matches the provided value. |
+| `Neq`                                         | **string*                                     | :heavy_minus_sign:                            | The field does not match the provided value.  |
+| `Oeq`                                         | **string*                                     | :heavy_minus_sign:                            | The field matches any of the provided values. |

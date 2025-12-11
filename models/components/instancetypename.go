@@ -14,3 +14,14 @@ const (
 func (e InstanceTypeName) ToPointer() *InstanceTypeName {
 	return &e
 }
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *InstanceTypeName) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "small", "medium", "large":
+			return true
+		}
+	}
+	return false
+}

@@ -8,6 +8,8 @@ type Consumer struct {
 	CreatedAt *int64 `json:"created_at,omitempty"`
 	// Field for storing an existing unique ID for the Consumer - useful for mapping Kong with users in your existing database. You must send either this field or `username` with the request.
 	CustomID *string `json:"custom_id,omitempty"`
+	// User-defined entity description. Konnect only field, not synced to the Gateway.
+	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
 	// An optional set of strings associated with the Consumer for grouping and filtering.
@@ -30,6 +32,13 @@ func (c *Consumer) GetCustomID() *string {
 		return nil
 	}
 	return c.CustomID
+}
+
+func (c *Consumer) GetDescription() *string {
+	if c == nil {
+		return nil
+	}
+	return c.Description
 }
 
 func (c *Consumer) GetID() *string {

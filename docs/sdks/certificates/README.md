@@ -1,5 +1,4 @@
 # Certificates
-(*Certificates*)
 
 ## Overview
 

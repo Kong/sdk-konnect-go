@@ -11,25 +11,25 @@ var GetIdentityProvidersServerList = []string{
 	"https://global.api.konghq.com/",
 }
 
-// QueryParamFilter - Filter identity providers returned in the response.
-type QueryParamFilter struct {
+// Filter identity providers returned in the response.
+type Filter struct {
 	// Filters on the given string field value by exact match.
 	Type *components.StringFieldEqualsFilter `queryParam:"name=type"`
 }
 
-func (q *QueryParamFilter) GetType() *components.StringFieldEqualsFilter {
-	if q == nil {
+func (f *Filter) GetType() *components.StringFieldEqualsFilter {
+	if f == nil {
 		return nil
 	}
-	return q.Type
+	return f.Type
 }
 
 type GetIdentityProvidersRequest struct {
 	// Filter identity providers returned in the response.
-	Filter *QueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *Filter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (g *GetIdentityProvidersRequest) GetFilter() *QueryParamFilter {
+func (g *GetIdentityProvidersRequest) GetFilter() *Filter {
 	if g == nil {
 		return nil
 	}

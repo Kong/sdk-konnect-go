@@ -1,5 +1,4 @@
 # MTLSAuthCredentials
-(*MTLSAuthCredentials*)
 
 ## Overview
 

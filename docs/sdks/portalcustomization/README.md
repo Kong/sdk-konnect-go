@@ -1,5 +1,4 @@
 # PortalCustomization
-(*PortalCustomization*)
 
 ## Overview
 

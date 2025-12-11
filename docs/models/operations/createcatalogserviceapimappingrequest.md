@@ -1,0 +1,9 @@
+# CreateCatalogServiceAPIMappingRequest
+
+
+## Fields
+
+| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `ServiceID`                                                                                                    | *string*                                                                                                       | :heavy_check_mark:                                                                                             | ID of the service.                                                                                             |
+| `CreateCatalogServiceAPIMappingBody`                                                                           | [components.CreateCatalogServiceAPIMappingBody](../../models/components/createcatalogserviceapimappingbody.md) | :heavy_check_mark:                                                                                             | Request body schema for creating a new API mapping for catalog service.                                        |

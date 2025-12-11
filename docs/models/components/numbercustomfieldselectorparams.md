@@ -1,0 +1,10 @@
+# NumberCustomFieldSelectorParams
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `Field`                                                                                | *string*                                                                               | :heavy_check_mark:                                                                     | Name of the custom field.                                                              |
+| `Value`                                                                                | *float64*                                                                              | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `Operator`                                                                             | [components.NumberSelectorOperator](../../models/components/numberselectoroperator.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |

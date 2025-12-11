@@ -17,9 +17,9 @@ const (
 )
 
 type ControlPlaneGeoFieldFilter struct {
-	ControlPlaneGeoFieldEqualsFilter     *ControlPlaneGeoFieldEqualsFilter     `queryParam:"inline,name=ControlPlaneGeoFieldFilter"`
-	ControlPlaneGeoFieldNotEqualsFilter  *ControlPlaneGeoFieldNotEqualsFilter  `queryParam:"inline,name=ControlPlaneGeoFieldFilter"`
-	ControlPlaneGeoFieldOrEqualityFilter *ControlPlaneGeoFieldOrEqualityFilter `queryParam:"inline,name=ControlPlaneGeoFieldFilter"`
+	ControlPlaneGeoFieldEqualsFilter     *ControlPlaneGeoFieldEqualsFilter     `queryParam:"inline,name=ControlPlaneGeoFieldFilter" union:"member"`
+	ControlPlaneGeoFieldNotEqualsFilter  *ControlPlaneGeoFieldNotEqualsFilter  `queryParam:"inline,name=ControlPlaneGeoFieldFilter" union:"member"`
+	ControlPlaneGeoFieldOrEqualityFilter *ControlPlaneGeoFieldOrEqualityFilter `queryParam:"inline,name=ControlPlaneGeoFieldFilter" union:"member"`
 
 	Type ControlPlaneGeoFieldFilterType
 }

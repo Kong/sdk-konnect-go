@@ -1,5 +1,4 @@
 # JWTs
-(*JWTs*)
 
 ## Overview
 

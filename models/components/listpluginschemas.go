@@ -2,7 +2,7 @@
 
 package components
 
-type Items struct {
+type ListPluginSchemasItems struct {
 	// The custom plugin schema; `jq -Rs '.' schema.lua`.
 	LuaSchema *string `json:"lua_schema,omitempty"`
 	// The custom plugin name determined by the custom plugin schema.
@@ -13,59 +13,59 @@ type Items struct {
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 }
 
-func (i *Items) GetLuaSchema() *string {
-	if i == nil {
+func (l *ListPluginSchemasItems) GetLuaSchema() *string {
+	if l == nil {
 		return nil
 	}
-	return i.LuaSchema
+	return l.LuaSchema
 }
 
-func (i *Items) GetName() *string {
-	if i == nil {
+func (l *ListPluginSchemasItems) GetName() *string {
+	if l == nil {
 		return nil
 	}
-	return i.Name
+	return l.Name
 }
 
-func (i *Items) GetCreatedAt() *int64 {
-	if i == nil {
+func (l *ListPluginSchemasItems) GetCreatedAt() *int64 {
+	if l == nil {
 		return nil
 	}
-	return i.CreatedAt
+	return l.CreatedAt
 }
 
-func (i *Items) GetUpdatedAt() *int64 {
-	if i == nil {
+func (l *ListPluginSchemasItems) GetUpdatedAt() *int64 {
+	if l == nil {
 		return nil
 	}
-	return i.UpdatedAt
+	return l.UpdatedAt
 }
 
-type Page struct {
+type ListPluginSchemasPage struct {
 	Total *int64 `json:"total,omitempty"`
 }
 
-func (p *Page) GetTotal() *int64 {
-	if p == nil {
+func (l *ListPluginSchemasPage) GetTotal() *int64 {
+	if l == nil {
 		return nil
 	}
-	return p.Total
+	return l.Total
 }
 
 // ListPluginSchemas - A paginated list response for a collection of custom plugin schemas.
 type ListPluginSchemas struct {
-	Items []Items `json:"items,omitempty"`
-	Page  *Page   `json:"page,omitempty"`
+	Items []ListPluginSchemasItems `json:"items,omitempty"`
+	Page  *ListPluginSchemasPage   `json:"page,omitempty"`
 }
 
-func (l *ListPluginSchemas) GetItems() []Items {
+func (l *ListPluginSchemas) GetItems() []ListPluginSchemasItems {
 	if l == nil {
 		return nil
 	}
 	return l.Items
 }
 
-func (l *ListPluginSchemas) GetPage() *Page {
+func (l *ListPluginSchemas) GetPage() *ListPluginSchemasPage {
 	if l == nil {
 		return nil
 	}

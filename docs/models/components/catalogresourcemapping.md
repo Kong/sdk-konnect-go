@@ -1,0 +1,13 @@
+# CatalogResourceMapping
+
+Describes a mapping between a catalog resource and a service.
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ID`                                                                           | *string*                                                                       | :heavy_check_mark:                                                             | The resource mapping ID.                                                       | d277faad-ed4e-4c56-a0fb-acce065dee34                                           |
+| `Resource`                                                                     | [components.CatalogResourceRef](../../models/components/catalogresourceref.md) | :heavy_check_mark:                                                             | Short-hand descriptor of a catalog resource.                                   |                                                                                |
+| `Service`                                                                      | [components.CatalogServiceRef](../../models/components/catalogserviceref.md)   | :heavy_check_mark:                                                             | Short-hand descriptor of a catalog service.                                    |                                                                                |
+| `CreatedAt`                                                                    | [time.Time](https://pkg.go.dev/time#Time)                                      | :heavy_check_mark:                                                             | An ISO-8601 timestamp representation of entity creation date.                  | 2022-11-04T20:10:06.927Z                                                       |

@@ -21,3 +21,9 @@ privateDNSAttachmentConfig := components.CreatePrivateDNSAttachmentConfigAwsPriv
 privateDNSAttachmentConfig := components.CreatePrivateDNSAttachmentConfigGcpPrivateHostedZoneAttachmentConfig(components.GcpPrivateHostedZoneAttachmentConfig{/* values here */})
 ```
 
+### AzurePrivateHostedZoneAttachmentConfig
+
+```go
+privateDNSAttachmentConfig := components.CreatePrivateDNSAttachmentConfigAzurePrivateHostedZoneAttachmentConfig(components.AzurePrivateHostedZoneAttachmentConfig{/* values here */})
+```
+
