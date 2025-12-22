@@ -20,6 +20,7 @@ type ListPortalAPIPublicationsRequest struct {
 	//
 	//
 	//
+	//
 	//   - api_id
 	//   - api_name
 	//   - created_at

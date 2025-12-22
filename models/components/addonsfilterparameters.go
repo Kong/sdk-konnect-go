@@ -8,6 +8,9 @@ type AddOnsFilterParameters struct {
 	State *AddOnStateFieldFilter                  `queryParam:"name=state"`
 	// Filter for add-on config kind field.
 	ConfigKind *AddOnConfigKindFieldFilter `queryParam:"name=config.kind"`
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
+	OwnerControlPlaneID  *UUIDFieldFilter            `queryParam:"name=owner.control_plane_id"`
+	OwnerControlPlaneGeo *ControlPlaneGeoFieldFilter `queryParam:"name=owner.control_plane_geo"`
 }
 
 func (a *AddOnsFilterParameters) GetName() *CloudGatewaysStringFieldFilterOverride {
@@ -29,4 +32,18 @@ func (a *AddOnsFilterParameters) GetConfigKind() *AddOnConfigKindFieldFilter {
 		return nil
 	}
 	return a.ConfigKind
+}
+
+func (a *AddOnsFilterParameters) GetOwnerControlPlaneID() *UUIDFieldFilter {
+	if a == nil {
+		return nil
+	}
+	return a.OwnerControlPlaneID
+}
+
+func (a *AddOnsFilterParameters) GetOwnerControlPlaneGeo() *ControlPlaneGeoFieldFilter {
+	if a == nil {
+		return nil
+	}
+	return a.OwnerControlPlaneGeo
 }

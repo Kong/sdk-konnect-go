@@ -7,6 +7,7 @@ type SuggestionRuleErrorDetail struct {
 	//
 	//
 	//
+	//
 	//   - `error`: represents a generic error.
 	//   - `timeout`: timeout occured when evaluating jq expression
 	//   - `invalid-expression`: jq expression could not be evaluated due to syntax error(s).

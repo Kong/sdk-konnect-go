@@ -448,6 +448,7 @@ type VulnerabilitiesMetricsQuery struct {
 	//
 	//
 	//
+	//
 	//   - 1d  => daily
 	//   - 7d  => daily, weekly
 	//   - 3w  => daily, weekly
@@ -456,6 +457,7 @@ type VulnerabilitiesMetricsQuery struct {
 	//   - 1y  => daily, weekly
 	//
 	// For special time ranges:
+	//
 	//
 	//
 	//

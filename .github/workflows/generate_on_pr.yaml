@@ -65,7 +65,9 @@ jobs:
           install: false
 
       - name: Generate SDK
-        run: make generate.sdk
+        run: |
+          export PATH=${PATH}:$(go env GOPATH)/bin
+          make generate.sdk
 
       - name: Commit SDK changes to the PR
         uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9.1.4

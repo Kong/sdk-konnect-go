@@ -32,14 +32,72 @@ func (e *ManagedCacheAddOnConfigResponseKind) UnmarshalJSON(data []byte) error {
 	}
 }
 
+// CloudAuthentication - Metadata describing the cloud authentication details for managed cache add-on.
+type CloudAuthentication struct {
+	// Env vault path to cache auth provider.
+	AuthProvider *string `json:"auth_provider,omitempty"`
+	// Env vault path to aws cache name.
+	AwsCacheName *string `json:"aws_cache_name,omitempty"`
+	// Env vault path to aws region.
+	AwsRegion *string `json:"aws_region,omitempty"`
+	// Env vault path to aws assume role arn.
+	AwsAssumeRoleArn *string `json:"aws_assume_role_arn,omitempty"`
+}
+
+func (c CloudAuthentication) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CloudAuthentication) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (c *CloudAuthentication) GetAuthProvider() *string {
+	if c == nil {
+		return nil
+	}
+	return c.AuthProvider
+}
+
+func (c *CloudAuthentication) GetAwsCacheName() *string {
+	if c == nil {
+		return nil
+	}
+	return c.AwsCacheName
+}
+
+func (c *CloudAuthentication) GetAwsRegion() *string {
+	if c == nil {
+		return nil
+	}
+	return c.AwsRegion
+}
+
+func (c *CloudAuthentication) GetAwsAssumeRoleArn() *string {
+	if c == nil {
+		return nil
+	}
+	return c.AwsAssumeRoleArn
+}
+
 // ManagedCacheAddOnConfigResponseStateMetadata - Metadata describing the state of the managed cache add-on.
 type ManagedCacheAddOnConfigResponseStateMetadata struct {
-	// Fully qualified domain name for the cache endpoint.
-	CacheEndpointFqdn *string `json:"cache_endpoint_fqdn,omitempty"`
 	// Reference to cache configuration for this add-on.
 	CacheConfigID *string `json:"cache_config_id,omitempty"`
-	// Vault Reference Path for cache details like credentials, etc.
-	CacheVaultKey *string `json:"cache_vault_key,omitempty"`
+	// Env vault path to cache server name.
+	CacheServerName *string `json:"cache_server_name,omitempty"`
+	// Env vault path to cache hostname.
+	CacheHost *string `json:"cache_host,omitempty"`
+	// Env vault path to cache port.
+	CachePort *string `json:"cache_port,omitempty"`
+	// Env vault path to cache username.
+	CacheUsername *string `json:"cache_username,omitempty"`
+	// Metadata describing the cloud authentication details for managed cache add-on.
+	//
+	CloudAuthentication *CloudAuthentication `json:"cloud_authentication,omitempty"`
 }
 
 func (m ManagedCacheAddOnConfigResponseStateMetadata) MarshalJSON() ([]byte, error) {
@@ -53,13 +111,6 @@ func (m *ManagedCacheAddOnConfigResponseStateMetadata) UnmarshalJSON(data []byte
 	return nil
 }
 
-func (m *ManagedCacheAddOnConfigResponseStateMetadata) GetCacheEndpointFqdn() *string {
-	if m == nil {
-		return nil
-	}
-	return m.CacheEndpointFqdn
-}
-
 func (m *ManagedCacheAddOnConfigResponseStateMetadata) GetCacheConfigID() *string {
 	if m == nil {
 		return nil
@@ -67,11 +118,39 @@ func (m *ManagedCacheAddOnConfigResponseStateMetadata) GetCacheConfigID() *strin
 	return m.CacheConfigID
 }
 
-func (m *ManagedCacheAddOnConfigResponseStateMetadata) GetCacheVaultKey() *string {
+func (m *ManagedCacheAddOnConfigResponseStateMetadata) GetCacheServerName() *string {
 	if m == nil {
 		return nil
 	}
-	return m.CacheVaultKey
+	return m.CacheServerName
+}
+
+func (m *ManagedCacheAddOnConfigResponseStateMetadata) GetCacheHost() *string {
+	if m == nil {
+		return nil
+	}
+	return m.CacheHost
+}
+
+func (m *ManagedCacheAddOnConfigResponseStateMetadata) GetCachePort() *string {
+	if m == nil {
+		return nil
+	}
+	return m.CachePort
+}
+
+func (m *ManagedCacheAddOnConfigResponseStateMetadata) GetCacheUsername() *string {
+	if m == nil {
+		return nil
+	}
+	return m.CacheUsername
+}
+
+func (m *ManagedCacheAddOnConfigResponseStateMetadata) GetCloudAuthentication() *CloudAuthentication {
+	if m == nil {
+		return nil
+	}
+	return m.CloudAuthentication
 }
 
 // ManagedCacheAddOnConfigResponse - Configuration for managed cache add-on.

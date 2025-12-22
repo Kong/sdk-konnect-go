@@ -20,6 +20,7 @@ type ListCatalogServiceAPISpecsRequest struct {
 	//
 	//
 	//
+	//
 	//   - `name`
 	//   - `provider.type`
 	//
