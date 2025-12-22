@@ -1,0 +1,10 @@
+# LabelSelectorParams
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `Operator`                                                                             | [components.StringSelectorOperator](../../models/components/stringselectoroperator.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `Value`                                                                                | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `LabelKey`                                                                             | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |

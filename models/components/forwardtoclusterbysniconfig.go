@@ -6,6 +6,54 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+type ForwardToClusterBySNIConfigType string
+
+const (
+	ForwardToClusterBySNIConfigTypePerClusterSuffix ForwardToClusterBySNIConfigType = "per_cluster_suffix"
+	ForwardToClusterBySNIConfigTypeSharedSuffix     ForwardToClusterBySNIConfigType = "shared_suffix"
+)
+
+func (e ForwardToClusterBySNIConfigType) ToPointer() *ForwardToClusterBySNIConfigType {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *ForwardToClusterBySNIConfigType) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "per_cluster_suffix", "shared_suffix":
+			return true
+		}
+	}
+	return false
+}
+
+// BrokerHostFormat - Configures DNS names assigned to brokers in virtual clusters.
+//
+// - `per_cluster_suffix` is the default and allocates one level in the hierarchy for virtual clusters: `broker-{node_id}.{virtual_cluster}.{sni_suffix}`
+// - `shared_suffix` puts all brokers from every virtual clusters into the same level: `broker-{node_id}-{virtual_cluster}.{sni_suffix}`. This makes it easier to manage certificates for this listener.
+type BrokerHostFormat struct {
+	Type *ForwardToClusterBySNIConfigType `default:"per_cluster_suffix" json:"type"`
+}
+
+func (b BrokerHostFormat) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
+}
+
+func (b *BrokerHostFormat) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (b *BrokerHostFormat) GetType() *ForwardToClusterBySNIConfigType {
+	if b == nil {
+		return nil
+	}
+	return b.Type
+}
+
 // ForwardToClusterBySNIConfig - The configuration to forward requests to virtual clusters configured with SNI routing.
 type ForwardToClusterBySNIConfig struct {
 	type_ string `const:"sni" json:"type"`
@@ -28,6 +76,12 @@ type ForwardToClusterBySNIConfig struct {
 	// behind loadbalancer listening on different port.
 	//
 	AdvertisedPort *int64 `json:"advertised_port,omitempty"`
+	// Configures DNS names assigned to brokers in virtual clusters.
+	//
+	// - `per_cluster_suffix` is the default and allocates one level in the hierarchy for virtual clusters: `broker-{node_id}.{virtual_cluster}.{sni_suffix}`
+	// - `shared_suffix` puts all brokers from every virtual clusters into the same level: `broker-{node_id}-{virtual_cluster}.{sni_suffix}`. This makes it easier to manage certificates for this listener.
+	//
+	BrokerHostFormat *BrokerHostFormat `json:"broker_host_format,omitempty"`
 }
 
 func (f ForwardToClusterBySNIConfig) MarshalJSON() ([]byte, error) {
@@ -57,4 +111,11 @@ func (f *ForwardToClusterBySNIConfig) GetAdvertisedPort() *int64 {
 		return nil
 	}
 	return f.AdvertisedPort
+}
+
+func (f *ForwardToClusterBySNIConfig) GetBrokerHostFormat() *BrokerHostFormat {
+	if f == nil {
+		return nil
+	}
+	return f.BrokerHostFormat
 }

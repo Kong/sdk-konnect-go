@@ -1,0 +1,10 @@
+# StringCustomFieldSelectorParams
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `Field`                                                                                | *string*                                                                               | :heavy_check_mark:                                                                     | Name of the custom field.                                                              |
+| `Value`                                                                                | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `Operator`                                                                             | [components.StringSelectorOperator](../../models/components/stringselectoroperator.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |

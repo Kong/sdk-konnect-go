@@ -2,7 +2,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.0.30 and generator version 2.779.2
+// Generated from OpenAPI doc version 3.0.30 and generator version 2.788.5
 
 import (
 	"context"
@@ -75,6 +75,20 @@ type SDK struct {
 	// Represents all the resources mapped to a specific service.
 	//
 	CatalogServiceResources *CatalogServiceResources
+	// A scorecard helps you evaluate services based on its criteria.
+	// Scorecards help you detect issues, like whether there are services in the catalog that don't have an on-call engineer assigned, or if you have GitHub repositories with stale pull requests that aren't getting reviewed or closed.
+	// From the scorecard, you can view details on either a per-service or per-criteria basis.
+	// Learn more about scorecards by visiting our [documentation](https://developer.konghq.com/service-catalog/scorecards/).
+	//
+	Scorecards *Scorecards
+	// Several criteria templates are provided to help ensure your services adhere to industry best practices.
+	// A criteria template is a collection of criteria grouped together to target various categories.
+	//
+	// Criteria may require a specific type of integration be installed and authorized.
+	// For example, criteria which evaluates the operation performance across incident management may require a integration related to incident management to be installed and authorized.
+	// Learn more about scorecards by visiting our [documentation](https://developer.konghq.com/service-catalog/scorecards/).
+	//
+	CriteriaTemplates *CriteriaTemplates
 	// Create an Event Gateway Control Plane, used to store Event Gateway configuration
 	//
 	EventGateways *EventGateways
@@ -421,9 +435,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.15.0",
+		SDKVersion: "0.16.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.15.0 2.779.2 3.0.30 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.16.0 2.788.5 3.0.30 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -446,6 +460,8 @@ func New(opts ...SDKOption) *SDK {
 
 	sdk.CatalogServices = newCatalogServices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServiceResources = newCatalogServiceResources(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Scorecards = newScorecards(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.CriteriaTemplates = newCriteriaTemplates(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.EventGateways = newEventGateways(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.EventGatewayBackendClusters = newEventGatewayBackendClusters(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.EventGatewayDataPlaneCertificates = newEventGatewayDataPlaneCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)

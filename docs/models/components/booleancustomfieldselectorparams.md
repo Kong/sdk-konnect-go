@@ -1,0 +1,10 @@
+# BooleanCustomFieldSelectorParams
+
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `Field`                                                                                  | *string*                                                                                 | :heavy_check_mark:                                                                       | Name of the custom field.                                                                |
+| `Value`                                                                                  | *bool*                                                                                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `Operator`                                                                               | [components.BooleanSelectorOperator](../../models/components/booleanselectoroperator.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
