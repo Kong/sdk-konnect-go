@@ -527,6 +527,7 @@ tags:
 
 
 
+
         <br>
         A route can't have both `tls` and `tls_passthrough` protocols at same time.
         <br><br>
@@ -10315,7 +10316,6 @@ paths:
         - Catalog Service Resources
   /v1/criteria-templates:
     get:
-      x-internal: true
       summary: List Criteria Templates
       operationId: list-criteria-templates
       description: Returns a paginated collection of criteria templates.
@@ -10337,7 +10337,6 @@ paths:
         - Criteria Templates
   /v1/scorecard-templates:
     get:
-      x-internal: true
       summary: List Scorecard Templates
       operationId: list-scorecard-templates
       description: Returns a paginated collection of scorecard templates.
@@ -10359,7 +10358,6 @@ paths:
         - Scorecards
   /v1/scorecards:
     post:
-      x-internal: true
       summary: Create Scorecard
       operationId: create-scorecard
       description: Creates a scorecard.
@@ -10377,7 +10375,6 @@ paths:
       tags:
         - Scorecards
     get:
-      x-internal: true
       summary: List Scorecards
       operationId: list-scorecards
       description: Returns a paginated collection of scorecards.
@@ -10408,7 +10405,6 @@ paths:
         required: true
         description: The `id` of the scorecard.
     get:
-      x-internal: true
       summary: Get a Scorecard
       description: Fetches a scorecard.
       operationId: fetch-scorecard
@@ -10424,7 +10420,6 @@ paths:
       tags:
         - Scorecards
     put:
-      x-internal: true
       summary: Update Scorecard
       operationId: update-scorecard
       description: Updates a scorecard.
@@ -10444,7 +10439,6 @@ paths:
       tags:
         - Scorecards
     delete:
-      x-internal: true
       summary: Delete Scorecard
       description: Deletes a scorecard.
       operationId: delete-scorecard
@@ -10500,7 +10494,6 @@ paths:
         required: true
         description: The `id` of the scorecard.
     get:
-      x-internal: true
       summary: List Scorecard Services
       description: Lists services targeted by a scorecard.
       operationId: list-scorecard-services
@@ -10531,7 +10524,6 @@ paths:
         required: true
         description: The `id` of the scorecard.
     get:
-      x-internal: true
       summary: List Scorecard Criteria
       description: >-
         Lists criteria, including passing service counts, belonging to a
@@ -10572,7 +10564,6 @@ paths:
         required: true
         description: The `id` of the criteria.
     get:
-      x-internal: true
       summary: List Scorecard Criteria Services
       description: >-
         Lists services targeted by a scorecard criteria with evaluation results
@@ -10604,7 +10595,6 @@ paths:
         required: true
         description: The `id` of the service.
     get:
-      x-internal: true
       summary: List Catalog Service Scorecards
       operationId: list-catalog-service-scorecards
       description: >-
@@ -10646,7 +10636,6 @@ paths:
         required: true
         description: The `id` of the scorecard.
     get:
-      x-internal: true
       summary: Get a Catalog Service Scorecard
       operationId: fetch-catalog-service-scorecard
       description: Fetches the given scorecard targeting the service.
@@ -17036,6 +17025,7 @@ components:
 
 
 
+
           - created_at
           - updated_at
           - strategy_type
@@ -17310,6 +17300,7 @@ components:
 
 
 
+
           - path
           - method
           - api_id
@@ -17392,6 +17383,7 @@ components:
 
 
 
+
           - api_id
           - api_name
           - created_at
@@ -17413,6 +17405,7 @@ components:
       description: >
         Sorts a collection of API implementations. Supported sort attributes
         are:
+
 
 
 
@@ -17542,6 +17535,7 @@ components:
 
 
 
+
           - id
       in: query
       required: false
@@ -17552,6 +17546,7 @@ components:
       description: >
         Sorts a set of registrations for an application. Supported sort
         attributes are:
+
 
 
 
@@ -17567,6 +17562,7 @@ components:
       description: >
         Sorts a collection of application registrations. Supported sort
         attributes are:
+
 
 
 
@@ -17701,6 +17697,7 @@ components:
 
 
 
+
           - `name`
           - `provider.type`
 
@@ -17742,6 +17739,7 @@ components:
       description: >
         Sorts a collection of integration instances. Supported sort attributes
         are:
+
 
 
 
@@ -17839,6 +17837,7 @@ components:
 
 
 
+
           - `display_name`
           - `name`
 
@@ -17884,6 +17883,7 @@ components:
 
 
 
+
           - `evaluation.passing_services_count`
 
         By default, criteria will be returned in the order that they are
@@ -17924,6 +17924,7 @@ components:
 
 
 
+
           - `display_name`
           - `name`
           - `score.value`
@@ -17947,6 +17948,7 @@ components:
       description: >
         Sorts a collection of services targeted by a scorecard criteria.
         Supported sort attributes are:
+
 
 
 
@@ -18010,6 +18012,7 @@ components:
 
 
 
+
           - created_at
           - updated_at
       required: false
@@ -18021,6 +18024,7 @@ components:
       description: >
         Sorts a collection of vulnerability scans. Supported sort attributes
         are:
+
 
 
 
@@ -18090,6 +18094,7 @@ components:
 
 
 
+
           - last_opened_at
           - dismissed_at
           - fixed_at
@@ -18105,6 +18110,7 @@ components:
       description: >
         Sorts a collection of services for a given vulnerability. Supported sort
         attributes are:
+
 
 
 
@@ -18131,6 +18137,7 @@ components:
       description: >
         Sorts a collection of vulnerability instances. Supported sort attributes
         are:
+
 
 
 
@@ -18161,6 +18168,7 @@ components:
       description: >
         Sorts a collection of services with cross-ulnerability context.
         Supported sort attributes are:
+
 
 
 
@@ -18197,6 +18205,7 @@ components:
 
 
 
+
           - created_at
           - updated_at
           - name
@@ -18211,6 +18220,7 @@ components:
       description: >
         Sorts a collection of catalog service API mappings. Supported sort
         attributes are:
+
 
 
 
@@ -18231,6 +18241,7 @@ components:
 
 
 
+
           - `api_id`
           - `id`
       schema:
@@ -18243,6 +18254,7 @@ components:
       description: >
         Filters a collection of catalog API service mappings for a given API.
         Supported filter attributes are:
+
 
 
 
@@ -19957,6 +19969,7 @@ components:
               updated_at: '2022-08-02T08:35:49Z'
               expires_at: '2022-12-31T12:52:23Z'
               last_used_at: '2022-10-24T13:05:42Z'
+              token: spat_12345678901234567890123456789012345678901234567890
             properties:
               id:
                 type: string
@@ -28043,19 +28056,50 @@ components:
             Metadata describing the state of the managed cache add-on.
           additionalProperties: false
           properties:
-            cache_endpoint_fqdn:
-              type: string
-              example: us-east-1.cache-cluster.abc123.cache.amazonaws.com:6379
-              description: Fully qualified domain name for the cache endpoint.
             cache_config_id:
               type: string
               format: uuid
               example: edaf40f9-9fb0-4ffe-bb74-4e763a6bd471
               description: Reference to cache configuration for this add-on.
-            cache_vault_key:
+            cache_server_name:
               type: string
-              example: vault://konnect-managed-cache-config
-              description: Vault Reference Path for cache details like credentials, etc.
+              example: '{vault://env/ADDON_MANAGED_CACHE_SERVER_NAME}'
+              description: Env vault path to cache server name.
+            cache_host:
+              type: string
+              example: '{vault://env/ADDON_MANAGED_CACHE_HOST}'
+              description: Env vault path to cache hostname.
+            cache_port:
+              type: string
+              example: '{vault://env/ADDON_MANAGED_CACHE_PORT}'
+              description: Env vault path to cache port.
+            cache_username:
+              type: string
+              example: '{vault://env/ADDON_MANAGED_CACHE_USERNAME}'
+              description: Env vault path to cache username.
+            cloud_authentication:
+              type: object
+              description: >
+                Metadata describing the cloud authentication details for managed
+                cache add-on.
+              additionalProperties: false
+              properties:
+                auth_provider:
+                  type: string
+                  example: '{vault://env/ADDON_MANAGED_CACHE_AUTH_PROVIDER}'
+                  description: Env vault path to cache auth provider.
+                aws_cache_name:
+                  type: string
+                  example: '{vault://env/ADDON_MANAGED_CACHE_AWS_CACHE_NAME}'
+                  description: Env vault path to aws cache name.
+                aws_region:
+                  type: string
+                  example: '{vault://env/ADDON_MANAGED_CACHE_AWS_REGION}'
+                  description: Env vault path to aws region.
+                aws_assume_role_arn:
+                  type: string
+                  example: '{vault://env/ADDON_MANAGED_CACHE_AWS_ASSUME_ROLE_ARN}'
+                  description: Env vault path to aws assume role arn.
       required:
         - kind
         - capacity_config
@@ -28682,6 +28726,10 @@ components:
           $ref: '#/components/schemas/AddOnStateFieldFilter'
         config.kind:
           $ref: '#/components/schemas/AddOnConfigKindFieldFilter'
+        owner.control_plane_id:
+          $ref: '#/components/schemas/UuidFieldFilter'
+        owner.control_plane_geo:
+          $ref: '#/components/schemas/ControlPlaneGeoFieldFilter'
       additionalProperties: false
     AddOnStateFieldFilter:
       title: AddOnStateFieldFilter
@@ -28789,6 +28837,20 @@ components:
           type: string
       required:
         - ocontains
+    UuidFieldFilter:
+      description: 'Filter using **one** of the following operators: `eq`, `oeq`, `neq`'
+      properties:
+        eq:
+          type: string
+          description: The field exactly matches the provided value.
+        oeq:
+          type: string
+          description: The field matches any of the provided values.
+        neq:
+          type: string
+          description: The field does not match the provided value.
+      type: object
+      additionalProperties: false
     NotificationFilterParameters:
       title: NotificationFilterParameters
       type: object
@@ -30239,20 +30301,6 @@ components:
           description: The field does not match the provided value.
       type: object
       additionalProperties: false
-    UuidFieldFilter:
-      description: 'Filter using **one** of the following operators: `eq`, `oeq`, `neq`'
-      properties:
-        eq:
-          type: string
-          description: The field exactly matches the provided value.
-        oeq:
-          type: string
-          description: The field matches any of the provided values.
-        neq:
-          type: string
-          description: The field does not match the provided value.
-      type: object
-      additionalProperties: false
     ApiResponseSchema:
       title: API
       type: object
@@ -31547,6 +31595,7 @@ components:
 
 
 
+
               - `filter[labels.owner]`
               - `filter[labels.owner][neq]=kong`
               - `filter[labels.env]=dev`
@@ -31561,6 +31610,7 @@ components:
 
             the attribute key that will be used to filter the results. For
             example:
+
 
 
 
@@ -34385,6 +34435,7 @@ components:
 
 
 
+
               - `filter[custom_fields.owner]`
               - `filter[custom_fields.owner][neq]=kong`
               - `filter[custom_fields.dashboard.link][contains]=https`
@@ -35370,6 +35421,7 @@ components:
 
 
 
+
           - Keys are globally unique, machine-readable identifiers for each resource type.
           - Values are objects describing metadata about the resource type.
 
@@ -35501,6 +35553,7 @@ components:
           description: >
             A map of example resource `integration_data` payloads by resource
             type.
+
 
 
 
@@ -35712,6 +35765,7 @@ components:
 
 
 
+
           - Keys are the machine-readable, globally unique names of resource types registered by this integration.
           - Values are a map of event type definitions.
       type: object
@@ -35729,6 +35783,7 @@ components:
       description: >
         Defines the event types for a given resource type belonging to the
         integration that will be ingested in the catalog.
+
 
 
 
@@ -36615,6 +36670,7 @@ components:
 
 
 
+
           - `filter[config.control_plane_id]`
           - `filter[config.gateway_service_id][neq]=cedbd134-fc5c-4d44-9e38-ccd2a0c6e0ae`
       properties:
@@ -36642,6 +36698,7 @@ components:
         dot-notation to identify
 
         the property that will be used to filter the results. For example:
+
 
 
 
@@ -37535,6 +37592,7 @@ components:
 
 
 
+
               - `filter[custom_fields.owner]`
               - `filter[custom_fields.owner][neq]=kong`
               - `filter[custom_fields.dashboard.link][contains]=https`
@@ -37626,6 +37684,7 @@ components:
             field.
 
             Filter operators are dictated by the custom field type. For example:
+
 
 
 
@@ -39584,6 +39643,7 @@ components:
 
 
 
+
               - `error`: represents a generic error.
               - `timeout`: timeout occured when evaluating jq expression
               - `invalid-expression`: jq expression could not be evaluated due to syntax error(s).
@@ -40556,6 +40616,7 @@ components:
 
 
 
+
                   - `filter[custom_fields.owner]`
                   - `filter[custom_fields.owner][neq]=kong`
                   - `filter[custom_fields.dashboard.link][contains]=https`
@@ -40716,6 +40777,7 @@ components:
 
 
 
+
                   - `filter[custom_fields.owner]`
                   - `filter[custom_fields.owner][neq]=kong`
                   - `filter[custom_fields.dashboard.link][contains]=https`
@@ -40800,6 +40862,7 @@ components:
 
 
 
+
               - 1d  => daily
               - 7d  => daily, weekly
               - 3w  => daily, weekly
@@ -40808,6 +40871,7 @@ components:
               - 1y  => daily, weekly
 
             For special time ranges:
+
 
 
 
@@ -41150,6 +41214,7 @@ components:
         the meta.start and meta.end fields.
 
         Example:
+
 
 
 
@@ -43835,11 +43900,13 @@ components:
               description: >-
                 An integer representing a port number between 0 and 65535,
                 inclusive.
-              type: integer
               default: 6379
               maximum: 65535
               minimum: 0
               x-referenceable: true
+              type:
+                - integer
+                - string
             read_timeout:
               description: >-
                 An integer representing a timeout in milliseconds. Must be
