@@ -11,6 +11,7 @@ Create an Event Gateway Control Plane, used to store Event Gateway configuration
 * [CreateEventGateway](#createeventgateway) - Create Event Gateway
 * [GetEventGateway](#geteventgateway) - Get an Event Gateway
 * [UpdateEventGateway](#updateeventgateway) - Update Event Gateway
+* [PatchEventGateway](#patcheventgateway) - Partially Update Event Gateway
 * [DeleteEventGateway](#deleteeventgateway) - Delete Event Gateway
 
 ## ListEventGateways
@@ -103,6 +104,7 @@ func main() {
 
     res, err := s.EventGateways.CreateEventGateway(ctx, components.CreateGatewayRequest{
         Name: "<value>",
+        MinRuntimeVersion: sdkkonnectgo.Pointer("1.1"),
         Labels: map[string]string{
             "env": "test",
         },
@@ -226,6 +228,7 @@ func main() {
     )
 
     res, err := s.EventGateways.UpdateEventGateway(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.UpdateGatewayRequest{
+        MinRuntimeVersion: sdkkonnectgo.Pointer("1.1"),
         Labels: map[string]string{
             "env": "test",
         },
@@ -251,6 +254,71 @@ func main() {
 ### Response
 
 **[*operations.UpdateEventGatewayResponse](../../models/operations/updateeventgatewayresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.BaseError         | 500, 503                    | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## PatchEventGateway
+
+Patch an individual gateway.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="patch-event-gateway" method="patch" path="/v1/event-gateways/{gatewayId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.EventGateways.PatchEventGateway(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.PatchGatewayRequest{
+        MinRuntimeVersion: sdkkonnectgo.Pointer("1.1"),
+        Labels: map[string]string{
+            "env": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EventGatewayInfo != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      | Example                                                                          |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |                                                                                  |
+| `gatewayID`                                                                      | *string*                                                                         | :heavy_check_mark:                                                               | The UUID of your Gateway.                                                        | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                             |
+| `patchGatewayRequest`                                                            | [components.PatchGatewayRequest](../../models/components/patchgatewayrequest.md) | :heavy_check_mark:                                                               | N/A                                                                              |                                                                                  |
+| `opts`                                                                           | [][operations.Option](../../models/operations/option.md)                         | :heavy_minus_sign:                                                               | The options for this request.                                                    |                                                                                  |
+
+### Response
+
+**[*operations.PatchEventGatewayResponse](../../models/operations/patcheventgatewayresponse.md), error**
 
 ### Errors
 

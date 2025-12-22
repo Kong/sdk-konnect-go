@@ -8,6 +8,11 @@ type CreateGatewayRequest struct {
 	Name string `json:"name"`
 	// A human-readable description of the Gateway.
 	Description *string `json:"description,omitempty"`
+	// The minimum runtime version supported by the API. This is the lowest version of the data plane
+	// release that can be used with the entity model.
+	// When not specified, the minimum runtime version will be pinned to the latest available release.
+	//
+	MinRuntimeVersion *string `json:"min_runtime_version,omitempty"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
@@ -27,6 +32,13 @@ func (c *CreateGatewayRequest) GetDescription() *string {
 		return nil
 	}
 	return c.Description
+}
+
+func (c *CreateGatewayRequest) GetMinRuntimeVersion() *string {
+	if c == nil {
+		return nil
+	}
+	return c.MinRuntimeVersion
 }
 
 func (c *CreateGatewayRequest) GetLabels() map[string]string {

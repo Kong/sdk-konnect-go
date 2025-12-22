@@ -20,11 +20,11 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
+  persistentEdits: {}
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
-  persistentEdits: {}
 go:
   version: 0.16.0
   additionalDependencies: {}
@@ -33,6 +33,7 @@ go:
   clientServerStatusCodesAsErrors: true
   defaultErrorName: SDKError
   flattenGlobalSecurity: true
+  forwardCompatibleEnumsByDefault: false
   imports:
     option: openapi
     paths:

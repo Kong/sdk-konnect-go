@@ -1,0 +1,11 @@
+# HasDocsSelector
+
+Entity selector to include entities by attached documentation.
+
+
+## Fields
+
+| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `Selector`                                                                                                             | [components.HasDocsSelectorServiceSelectorSelector](../../models/components/hasdocsselectorserviceselectorselector.md) | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
+| `SelectorParameters`                                                                                                   | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |

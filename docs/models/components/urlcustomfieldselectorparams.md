@@ -1,0 +1,11 @@
+# URLCustomFieldSelectorParams
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `Field`                                                                                | *string*                                                                               | :heavy_check_mark:                                                                     | Name of the custom field.                                                              |
+| `Subfield`                                                                             | [components.Subfield](../../models/components/subfield.md)                             | :heavy_check_mark:                                                                     | Specify which subfield of the `url` custom field value to use for selection.           |
+| `Value`                                                                                | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `Operator`                                                                             | [components.StringSelectorOperator](../../models/components/stringselectoroperator.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
