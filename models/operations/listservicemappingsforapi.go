@@ -18,6 +18,7 @@ type ListServiceMappingsForAPIRequest struct {
 	//
 	//
 	//
+	//
 	//   - `created_at`
 	//   - `updated_at`
 	//
@@ -25,6 +26,7 @@ type ListServiceMappingsForAPIRequest struct {
 	//
 	Sort *string `queryParam:"style=form,explode=true,name=sort"`
 	// Filters a collection of catalog API service mappings for a given API. Supported filter attributes are:
+	//
 	//
 	//
 	//

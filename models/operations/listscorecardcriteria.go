@@ -20,6 +20,7 @@ type ListScorecardCriteriaRequest struct {
 	//
 	//
 	//
+	//
 	//   - `evaluation.passing_services_count`
 	//
 	// By default, criteria will be returned in the order that they are configured in the scorecard.

@@ -39,6 +39,7 @@ type CreatePrivateCatalogIntegration struct {
 	//
 	//
 	//
+	//
 	//   - Keys are globally unique, machine-readable identifiers for each resource type.
 	//   - Values are objects describing metadata about the resource type.
 	//

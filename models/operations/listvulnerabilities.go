@@ -18,6 +18,7 @@ type ListVulnerabilitiesRequest struct {
 	//
 	//
 	//
+	//
 	//   - last_opened_at
 	//   - dismissed_at
 	//   - fixed_at
