@@ -95,10 +95,7 @@ func main() {
     )
 
     res, err := s.DPCertificates.CreateDataplaneCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", &components.DataPlaneClientCertificateRequest{
-        Cert: "-----BEGIN CERTIFICATE-----\r\n" +
-        "*****\r\n" +
-        "-----END CERTIFICATE-----\r\n" +
-        "",
+        Cert: "-----BEGIN CERTIFICATE-----\r\n*****\r\n-----END CERTIFICATE-----\r\n",
     })
     if err != nil {
         log.Fatal(err)
