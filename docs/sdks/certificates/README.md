@@ -103,13 +103,9 @@ func main() {
     )
 
     res, err := s.Certificates.CreateCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Certificate{
-        Cert: "-----BEGIN CERTIFICATE-----\n" +
-        "certificate-content\n" +
-        "-----END CERTIFICATE-----",
+        Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
         ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
-        Key: "-----BEGIN PRIVATE KEY-----\n" +
-        "private-key-content\n" +
-        "-----END PRIVATE KEY-----",
+        Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
     })
     if err != nil {
         log.Fatal(err)
@@ -283,13 +279,9 @@ func main() {
         CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Certificate: components.Certificate{
-            Cert: "-----BEGIN CERTIFICATE-----\n" +
-            "certificate-content\n" +
-            "-----END CERTIFICATE-----",
+            Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
             ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
-            Key: "-----BEGIN PRIVATE KEY-----\n" +
-            "private-key-content\n" +
-            "-----END PRIVATE KEY-----",
+            Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
         },
     })
     if err != nil {
