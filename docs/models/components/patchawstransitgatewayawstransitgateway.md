@@ -1,4 +1,4 @@
-# PatchAwsTransitGateway
+# PatchAWSTransitGatewayAWSTransitGateway
 
 Request schema for updating AWS Transit Gateway
 

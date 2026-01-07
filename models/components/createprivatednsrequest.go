@@ -17,9 +17,9 @@ const (
 )
 
 type PrivateDNSAttachmentConfig struct {
-	AwsPrivateHostedZoneAttachmentConfig  *AwsPrivateHostedZoneAttachmentConfig  `queryParam:"inline,name=private_dns_attachment_config" union:"member"`
-	AwsPrivateDNSResolverAttachmentConfig *AwsPrivateDNSResolverAttachmentConfig `queryParam:"inline,name=private_dns_attachment_config" union:"member"`
-	GcpPrivateHostedZoneAttachmentConfig  *GcpPrivateHostedZoneAttachmentConfig  `queryParam:"inline,name=private_dns_attachment_config" union:"member"`
+	AwsPrivateHostedZoneAttachmentConfig  *AwsPrivateHostedZoneAttachmentConfig  `queryParam:"inline" union:"member"`
+	AwsPrivateDNSResolverAttachmentConfig *AwsPrivateDNSResolverAttachmentConfig `queryParam:"inline" union:"member"`
+	GcpPrivateHostedZoneAttachmentConfig  *GcpPrivateHostedZoneAttachmentConfig  `queryParam:"inline" union:"member"`
 
 	Type PrivateDNSAttachmentConfigType
 }

@@ -17,9 +17,9 @@ const (
 )
 
 type NetworkStateFieldFilter struct {
-	NetworkStateFieldEqualsFilter     *NetworkStateFieldEqualsFilter     `queryParam:"inline,name=NetworkStateFieldFilter" union:"member"`
-	NetworkStateFieldNotEqualsFilter  *NetworkStateFieldNotEqualsFilter  `queryParam:"inline,name=NetworkStateFieldFilter" union:"member"`
-	NetworkStateFieldOrEqualityFilter *NetworkStateFieldOrEqualityFilter `queryParam:"inline,name=NetworkStateFieldFilter" union:"member"`
+	NetworkStateFieldEqualsFilter     *NetworkStateFieldEqualsFilter     `queryParam:"inline" union:"member"`
+	NetworkStateFieldNotEqualsFilter  *NetworkStateFieldNotEqualsFilter  `queryParam:"inline" union:"member"`
+	NetworkStateFieldOrEqualityFilter *NetworkStateFieldOrEqualityFilter `queryParam:"inline" union:"member"`
 
 	Type NetworkStateFieldFilterType
 }

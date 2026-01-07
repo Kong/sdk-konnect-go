@@ -20,6 +20,7 @@ type ListIntegrationInstancesRequest struct {
 	//
 	//
 	//
+	//
 	//   - `display_name`
 	//   - `name`
 	//   - `created_at`

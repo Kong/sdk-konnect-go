@@ -384,11 +384,7 @@ func main() {
         Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
                 IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
-                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                "<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n" +
-                "  <!-- SAML metadata content here -->\n" +
-                "</EntityDescriptor>\n" +
-                ""),
+                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
             },
         )),
     })
@@ -527,11 +523,7 @@ func main() {
             Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigSAMLIdentityProviderConfigInput(
                 components.SAMLIdentityProviderConfigInput{
                     IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
-                    IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                    "<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n" +
-                    "  <!-- SAML metadata content here -->\n" +
-                    "</EntityDescriptor>\n" +
-                    ""),
+                    IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
                 },
             )),
         },

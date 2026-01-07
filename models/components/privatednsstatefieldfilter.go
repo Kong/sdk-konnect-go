@@ -17,9 +17,9 @@ const (
 )
 
 type PrivateDNSStateFieldFilter struct {
-	PrivateDNSStateFieldEqualsFilter     *PrivateDNSStateFieldEqualsFilter     `queryParam:"inline,name=PrivateDnsStateFieldFilter" union:"member"`
-	PrivateDNSStateFieldNotEqualsFilter  *PrivateDNSStateFieldNotEqualsFilter  `queryParam:"inline,name=PrivateDnsStateFieldFilter" union:"member"`
-	PrivateDNSStateFieldOrEqualityFilter *PrivateDNSStateFieldOrEqualityFilter `queryParam:"inline,name=PrivateDnsStateFieldFilter" union:"member"`
+	PrivateDNSStateFieldEqualsFilter     *PrivateDNSStateFieldEqualsFilter     `queryParam:"inline" union:"member"`
+	PrivateDNSStateFieldNotEqualsFilter  *PrivateDNSStateFieldNotEqualsFilter  `queryParam:"inline" union:"member"`
+	PrivateDNSStateFieldOrEqualityFilter *PrivateDNSStateFieldOrEqualityFilter `queryParam:"inline" union:"member"`
 
 	Type PrivateDNSStateFieldFilterType
 }

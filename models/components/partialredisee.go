@@ -3,6 +3,8 @@
 package components
 
 import (
+	"errors"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -185,6 +187,69 @@ func (c *ClusterNodes) GetPort() *int64 {
 	return c.Port
 }
 
+type PortType string
+
+const (
+	PortTypeInteger PortType = "integer"
+	PortTypeStr     PortType = "str"
+)
+
+type Port struct {
+	Integer *int64  `queryParam:"inline" union:"member"`
+	Str     *string `queryParam:"inline" union:"member"`
+
+	Type PortType
+}
+
+func CreatePortInteger(integer int64) Port {
+	typ := PortTypeInteger
+
+	return Port{
+		Integer: &integer,
+		Type:    typ,
+	}
+}
+
+func CreatePortStr(str string) Port {
+	typ := PortTypeStr
+
+	return Port{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *Port) UnmarshalJSON(data []byte) error {
+
+	var integer int64 = int64(0)
+	if err := utils.UnmarshalJSON(data, &integer, "", true, nil); err == nil {
+		u.Integer = &integer
+		u.Type = PortTypeInteger
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = PortTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Port", string(data))
+}
+
+func (u Port) MarshalJSON() ([]byte, error) {
+	if u.Integer != nil {
+		return utils.MarshalJSON(u.Integer, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type Port: all fields are null")
+}
+
 type SentinelNodes struct {
 	// A string representing a host name, such as example.com.
 	Host *string `default:"127.0.0.1" json:"host"`
@@ -263,7 +328,7 @@ type PartialRedisEeConfig struct {
 	// Password to use for Redis connections. If undefined, no AUTH commands are sent to Redis.
 	Password *string `json:"password,omitempty"`
 	// An integer representing a port number between 0 and 65535, inclusive.
-	Port *int64 `default:"6379" json:"port"`
+	Port *Port `json:"port,omitempty"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
 	ReadTimeout *int64 `default:"2000" json:"read_timeout"`
 	// An integer representing a timeout in milliseconds. Must be between 0 and 2^31-2.
@@ -369,7 +434,7 @@ func (p *PartialRedisEeConfig) GetPassword() *string {
 	return p.Password
 }
 
-func (p *PartialRedisEeConfig) GetPort() *int64 {
+func (p *PartialRedisEeConfig) GetPort() *Port {
 	if p == nil {
 		return nil
 	}

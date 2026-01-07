@@ -15,7 +15,7 @@ const (
 )
 
 type EvaluationPassingServicesCount struct {
-	NumericFieldFilter *NumericFieldFilter `queryParam:"inline,name=evaluation_passing_services_count" union:"member"`
+	NumericFieldFilter *NumericFieldFilter `queryParam:"inline" union:"member"`
 
 	Type EvaluationPassingServicesCountType
 }

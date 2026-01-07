@@ -647,11 +647,11 @@ const (
 
 // CreateDcrProviderResponse - A response containing the newly created DCR provider object.
 type CreateDcrProviderResponse struct {
-	DCRProviderAuth0   *DCRProviderAuth0   `queryParam:"inline,name=CreateDcrProviderResponse" union:"member"`
-	DCRProviderAzureAD *DCRProviderAzureAD `queryParam:"inline,name=CreateDcrProviderResponse" union:"member"`
-	DCRProviderCurity  *DCRProviderCurity  `queryParam:"inline,name=CreateDcrProviderResponse" union:"member"`
-	DCRProviderOKTA    *DCRProviderOKTA    `queryParam:"inline,name=CreateDcrProviderResponse" union:"member"`
-	DCRProviderHTTP    *DCRProviderHTTP    `queryParam:"inline,name=CreateDcrProviderResponse" union:"member"`
+	DCRProviderAuth0   *DCRProviderAuth0   `queryParam:"inline" union:"member"`
+	DCRProviderAzureAD *DCRProviderAzureAD `queryParam:"inline" union:"member"`
+	DCRProviderCurity  *DCRProviderCurity  `queryParam:"inline" union:"member"`
+	DCRProviderOKTA    *DCRProviderOKTA    `queryParam:"inline" union:"member"`
+	DCRProviderHTTP    *DCRProviderHTTP    `queryParam:"inline" union:"member"`
 
 	Type CreateDcrProviderResponseType
 }

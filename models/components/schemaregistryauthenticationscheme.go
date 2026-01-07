@@ -17,7 +17,7 @@ const (
 
 // SchemaRegistryAuthenticationScheme - The authentication configuration for the schema registry.
 type SchemaRegistryAuthenticationScheme struct {
-	SchemaRegistryAuthenticationBasic *SchemaRegistryAuthenticationBasic `queryParam:"inline,name=SchemaRegistryAuthenticationScheme" union:"member"`
+	SchemaRegistryAuthenticationBasic *SchemaRegistryAuthenticationBasic `queryParam:"inline" union:"member"`
 
 	Type SchemaRegistryAuthenticationSchemeType
 }

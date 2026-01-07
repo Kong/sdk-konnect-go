@@ -8,6 +8,7 @@ Defines a behavior when record value is not valid.
 
 
 
+
   to help to identify the clients violating schema.
 
 

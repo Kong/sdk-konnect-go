@@ -15,7 +15,7 @@ const (
 )
 
 type IntegrationName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type IntegrationNameType
 }
@@ -56,7 +56,7 @@ const (
 )
 
 type IntegrationDisplayName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_display_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type IntegrationDisplayNameType
 }
@@ -97,7 +97,7 @@ const (
 )
 
 type IntegrationInstanceID struct {
-	UUIDFieldFilter *UUIDFieldFilter `queryParam:"inline,name=integration_instance_id" union:"member"`
+	UUIDFieldFilter *UUIDFieldFilter `queryParam:"inline" union:"member"`
 
 	Type IntegrationInstanceIDType
 }
@@ -138,7 +138,7 @@ const (
 )
 
 type IntegrationInstanceName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_instance_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type IntegrationInstanceNameType
 }
@@ -179,7 +179,7 @@ const (
 )
 
 type IntegrationInstanceDisplayName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_instance_display_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type IntegrationInstanceDisplayNameType
 }
@@ -220,7 +220,7 @@ const (
 )
 
 type Config struct {
-	CatalogResourceConfigFieldFilter *CatalogResourceConfigFieldFilter `queryParam:"inline,name=config" union:"member"`
+	CatalogResourceConfigFieldFilter *CatalogResourceConfigFieldFilter `queryParam:"inline" union:"member"`
 
 	Type ConfigType
 }
@@ -261,7 +261,7 @@ const (
 )
 
 type IntegrationData struct {
-	CatalogResourceIntegrationDataFieldFilter *CatalogResourceIntegrationDataFieldFilter `queryParam:"inline,name=integration_data" union:"member"`
+	CatalogResourceIntegrationDataFieldFilter *CatalogResourceIntegrationDataFieldFilter `queryParam:"inline" union:"member"`
 
 	Type IntegrationDataType
 }

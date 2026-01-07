@@ -20,10 +20,10 @@ const (
 
 // EventGatewayProducePolicyUpdate - The typed schema of the produce policy to modify it.
 type EventGatewayProducePolicyUpdate struct {
-	EventGatewayProduceSchemaValidationPolicy *EventGatewayProduceSchemaValidationPolicy `queryParam:"inline,name=EventGatewayProducePolicyUpdate" union:"member"`
-	EventGatewayModifyHeadersPolicy           *EventGatewayModifyHeadersPolicy           `queryParam:"inline,name=EventGatewayProducePolicyUpdate" union:"member"`
-	EventGatewaySkipRecordPolicy              *EventGatewaySkipRecordPolicy              `queryParam:"inline,name=EventGatewayProducePolicyUpdate" union:"member"`
-	EventGatewayEncryptPolicy                 *EventGatewayEncryptPolicy                 `queryParam:"inline,name=EventGatewayProducePolicyUpdate" union:"member"`
+	EventGatewayProduceSchemaValidationPolicy *EventGatewayProduceSchemaValidationPolicy `queryParam:"inline" union:"member"`
+	EventGatewayModifyHeadersPolicy           *EventGatewayModifyHeadersPolicy           `queryParam:"inline" union:"member"`
+	EventGatewaySkipRecordPolicy              *EventGatewaySkipRecordPolicy              `queryParam:"inline" union:"member"`
+	EventGatewayEncryptPolicy                 *EventGatewayEncryptPolicy                 `queryParam:"inline" union:"member"`
 
 	Type EventGatewayProducePolicyUpdateType
 }

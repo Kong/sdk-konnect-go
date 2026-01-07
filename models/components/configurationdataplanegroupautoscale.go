@@ -16,8 +16,8 @@ const (
 )
 
 type ConfigurationDataPlaneGroupAutoscale struct {
-	ConfigurationDataPlaneGroupAutoscaleStatic    *ConfigurationDataPlaneGroupAutoscaleStatic    `queryParam:"inline,name=ConfigurationDataPlaneGroupAutoscale" union:"member"`
-	ConfigurationDataPlaneGroupAutoscaleAutopilot *ConfigurationDataPlaneGroupAutoscaleAutopilot `queryParam:"inline,name=ConfigurationDataPlaneGroupAutoscale" union:"member"`
+	ConfigurationDataPlaneGroupAutoscaleStatic    *ConfigurationDataPlaneGroupAutoscaleStatic    `queryParam:"inline" union:"member"`
+	ConfigurationDataPlaneGroupAutoscaleAutopilot *ConfigurationDataPlaneGroupAutoscaleAutopilot `queryParam:"inline" union:"member"`
 
 	Type ConfigurationDataPlaneGroupAutoscaleType
 }

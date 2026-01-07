@@ -20,6 +20,7 @@ type ListScorecardTemplatesRequest struct {
 	//
 	//
 	//
+	//
 	//   - `display_name`
 	//   - `name`
 	//

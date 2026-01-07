@@ -5,15 +5,15 @@ Request schema for updating a transit gateway.
 
 ## Supported Types
 
-### PatchAwsResourceEndpointGateway
+### PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway
 
 ```go
-patchTransitGatewayRequest := components.CreatePatchTransitGatewayRequestPatchAwsResourceEndpointGateway(components.PatchAwsResourceEndpointGateway{/* values here */})
+patchTransitGatewayRequest := components.CreatePatchTransitGatewayRequestPatchAWSResourceEndpointGatewayAWSResourceEndpointGateway(components.PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway{/* values here */})
 ```
 
-### PatchAwsTransitGateway
+### PatchAWSTransitGatewayAWSTransitGateway
 
 ```go
-patchTransitGatewayRequest := components.CreatePatchTransitGatewayRequestPatchAwsTransitGateway(components.PatchAwsTransitGateway{/* values here */})
+patchTransitGatewayRequest := components.CreatePatchTransitGatewayRequestPatchAWSTransitGatewayAWSTransitGateway(components.PatchAWSTransitGatewayAWSTransitGateway{/* values here */})
 ```
 

@@ -647,11 +647,11 @@ const (
 
 // DcrProviderResponse - A response containing a single DCR provider object. Sensitive fields will be removed from the response.
 type DcrProviderResponse struct {
-	DCRProviderAuth0DCRProviderAuth0     *DCRProviderAuth0DCRProviderAuth0     `queryParam:"inline,name=DcrProviderResponse" union:"member"`
-	DCRProviderAzureADDCRProviderAzureAD *DCRProviderAzureADDCRProviderAzureAD `queryParam:"inline,name=DcrProviderResponse" union:"member"`
-	DCRProviderCurityDCRProviderCurity   *DCRProviderCurityDCRProviderCurity   `queryParam:"inline,name=DcrProviderResponse" union:"member"`
-	DCRProviderOKTADCRProviderOKTA       *DCRProviderOKTADCRProviderOKTA       `queryParam:"inline,name=DcrProviderResponse" union:"member"`
-	DCRProviderHTTPDCRProviderHTTP       *DCRProviderHTTPDCRProviderHTTP       `queryParam:"inline,name=DcrProviderResponse" union:"member"`
+	DCRProviderAuth0DCRProviderAuth0     *DCRProviderAuth0DCRProviderAuth0     `queryParam:"inline" union:"member"`
+	DCRProviderAzureADDCRProviderAzureAD *DCRProviderAzureADDCRProviderAzureAD `queryParam:"inline" union:"member"`
+	DCRProviderCurityDCRProviderCurity   *DCRProviderCurityDCRProviderCurity   `queryParam:"inline" union:"member"`
+	DCRProviderOKTADCRProviderOKTA       *DCRProviderOKTADCRProviderOKTA       `queryParam:"inline" union:"member"`
+	DCRProviderHTTPDCRProviderHTTP       *DCRProviderHTTPDCRProviderHTTP       `queryParam:"inline" union:"member"`
 
 	Type DcrProviderResponseType
 }
