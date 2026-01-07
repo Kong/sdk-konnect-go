@@ -16,8 +16,8 @@ const (
 )
 
 type CreateIdentityProviderConfig struct {
-	ConfigureOIDCIdentityProviderConfig *ConfigureOIDCIdentityProviderConfig `queryParam:"inline,name=config" union:"member"`
-	SAMLIdentityProviderConfigInput     *SAMLIdentityProviderConfigInput     `queryParam:"inline,name=config" union:"member"`
+	ConfigureOIDCIdentityProviderConfig *ConfigureOIDCIdentityProviderConfig `queryParam:"inline" union:"member"`
+	SAMLIdentityProviderConfigInput     *SAMLIdentityProviderConfigInput     `queryParam:"inline" union:"member"`
 
 	Type CreateIdentityProviderConfigType
 }

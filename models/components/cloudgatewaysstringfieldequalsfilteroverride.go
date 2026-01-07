@@ -39,8 +39,8 @@ const (
 
 // CloudGatewaysStringFieldEqualsFilterOverride - Filters on the given string field value by exact match.
 type CloudGatewaysStringFieldEqualsFilterOverride struct {
-	Str                         *string                      `queryParam:"inline,name=CloudGatewaysStringFieldEqualsFilterOverride" union:"member"`
-	StringFieldEqualsComparison *StringFieldEqualsComparison `queryParam:"inline,name=CloudGatewaysStringFieldEqualsFilterOverride" union:"member"`
+	Str                         *string                      `queryParam:"inline" union:"member"`
+	StringFieldEqualsComparison *StringFieldEqualsComparison `queryParam:"inline" union:"member"`
 
 	Type CloudGatewaysStringFieldEqualsFilterOverrideType
 }

@@ -15,7 +15,7 @@ const (
 )
 
 type IntegrationInstanceFilterParametersIntegrationName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type IntegrationInstanceFilterParametersIntegrationNameType
 }
@@ -56,7 +56,7 @@ const (
 )
 
 type IntegrationInstanceFilterParametersIntegrationDisplayName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_display_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type IntegrationInstanceFilterParametersIntegrationDisplayNameType
 }

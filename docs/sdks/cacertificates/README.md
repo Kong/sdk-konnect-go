@@ -99,9 +99,7 @@ func main() {
     )
 
     res, err := s.CACertificates.CreateCaCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CACertificate{
-        Cert: "-----BEGIN CERTIFICATE-----\n" +
-        "certificate-content\n" +
-        "-----END CERTIFICATE-----",
+        Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
         CertDigest: sdkkonnectgo.Pointer("9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f"),
         CreatedAt: sdkkonnectgo.Pointer[int64](1706598432),
         ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260"),
@@ -282,9 +280,7 @@ func main() {
         CACertificateID: "3c31f18a-f27a-4f9b-8cd4-bf841554612f",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         CACertificate: components.CACertificate{
-            Cert: "-----BEGIN CERTIFICATE-----\n" +
-            "certificate-content\n" +
-            "-----END CERTIFICATE-----",
+            Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
             ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260"),
         },
     })

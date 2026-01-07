@@ -40,8 +40,10 @@ type VirtualClusterNamespace struct {
 	//
 	//
 	//
+	//
 	//   Created resources are written with the prefix on the backend cluster.
 	// * enforce_prefix - the configured prefix remains visible to clients.
+	//
 	//
 	//
 	//

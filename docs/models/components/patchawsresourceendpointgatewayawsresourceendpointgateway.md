@@ -1,4 +1,4 @@
-# PatchAwsResourceEndpointGateway
+# PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway
 
 Request schema for updating AWS Resource Endpoint.
 

@@ -40,19 +40,19 @@ type EventGatewayModifyHeadersPolicy struct {
 	Description *string `json:"description,omitempty"`
 	// Whether the policy is enabled.
 	Enabled *bool `default:"true" json:"enabled"`
+	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
+	//
+	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
+	//
+	Labels map[string]string `json:"labels,omitempty"`
+	// The configuration of the modify headers policy.
+	Config EventGatewayModifyHeadersPolicyConfig `json:"config"`
 	// A string containing the boolean expression that determines whether the policy is applied.
 	//
 	// When the policy is applied as a child policy of schema_validation, the expression can also reference
 	// `record.value` fields.
 	//
 	Condition *string `json:"condition,omitempty"`
-	// The configuration of the modify headers policy.
-	Config EventGatewayModifyHeadersPolicyConfig `json:"config"`
-	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
-	//
-	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
-	//
-	Labels map[string]string `json:"labels,omitempty"`
 }
 
 func (e EventGatewayModifyHeadersPolicy) MarshalJSON() ([]byte, error) {
@@ -91,11 +91,11 @@ func (e *EventGatewayModifyHeadersPolicy) GetEnabled() *bool {
 	return e.Enabled
 }
 
-func (e *EventGatewayModifyHeadersPolicy) GetCondition() *string {
+func (e *EventGatewayModifyHeadersPolicy) GetLabels() map[string]string {
 	if e == nil {
 		return nil
 	}
-	return e.Condition
+	return e.Labels
 }
 
 func (e *EventGatewayModifyHeadersPolicy) GetConfig() EventGatewayModifyHeadersPolicyConfig {
@@ -105,9 +105,9 @@ func (e *EventGatewayModifyHeadersPolicy) GetConfig() EventGatewayModifyHeadersP
 	return e.Config
 }
 
-func (e *EventGatewayModifyHeadersPolicy) GetLabels() map[string]string {
+func (e *EventGatewayModifyHeadersPolicy) GetCondition() *string {
 	if e == nil {
 		return nil
 	}
-	return e.Labels
+	return e.Condition
 }

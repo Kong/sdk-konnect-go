@@ -7,6 +7,7 @@ Methods to mediate authentication:
 
 
 
+
   validation
 * validate_forward - pass authentication from the client through proxy to the backend cluster.
 
@@ -14,8 +15,10 @@ Methods to mediate authentication:
 
 
 
+
   Proxy does the validation before forwarding it to the client.
 * terminate - terminate authentication at the proxy level and originate authentication to the backend cluster
+
 
 
 

@@ -17,8 +17,8 @@ const (
 
 // VirtualClusterReference - A reference to a virtual cluster.
 type VirtualClusterReference struct {
-	VirtualClusterReferenceByID   *VirtualClusterReferenceByID   `queryParam:"inline,name=VirtualClusterReference" union:"member"`
-	VirtualClusterReferenceByName *VirtualClusterReferenceByName `queryParam:"inline,name=VirtualClusterReference" union:"member"`
+	VirtualClusterReferenceByID   *VirtualClusterReferenceByID   `queryParam:"inline" union:"member"`
+	VirtualClusterReferenceByName *VirtualClusterReferenceByName `queryParam:"inline" union:"member"`
 
 	Type VirtualClusterReferenceType
 }

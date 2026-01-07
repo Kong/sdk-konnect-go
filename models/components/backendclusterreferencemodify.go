@@ -20,8 +20,8 @@ const (
 // Either `id` or `name` must be provided. Following changes to the backend cluster name won't affect the
 // reference, as the system will create the entities relationship by `id`.
 type BackendClusterReferenceModify struct {
-	BackendClusterReferenceByID   *BackendClusterReferenceByID   `queryParam:"inline,name=BackendClusterReferenceModify" union:"member"`
-	BackendClusterReferenceByName *BackendClusterReferenceByName `queryParam:"inline,name=BackendClusterReferenceModify" union:"member"`
+	BackendClusterReferenceByID   *BackendClusterReferenceByID   `queryParam:"inline" union:"member"`
+	BackendClusterReferenceByName *BackendClusterReferenceByName `queryParam:"inline" union:"member"`
 
 	Type BackendClusterReferenceModifyType
 }

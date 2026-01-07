@@ -8,6 +8,7 @@ The current state of the Transit Gateway. Possible values:
 - `ready` - The transit gateway attachment is fully operational and can route traffic as configured.
 - `terminating` - The attachment is in the process of being deleted and is no longer accepting new traffic.
 - `terminated` - The attachment has been fully deleted and is no longer available.
+- `error` - The attachment is in an error state.
 
 
 
@@ -22,3 +23,4 @@ The current state of the Transit Gateway. Possible values:
 | `TransitGatewayStateReady`             | ready                                  |
 | `TransitGatewayStateTerminating`       | terminating                            |
 | `TransitGatewayStateTerminated`        | terminated                             |
+| `TransitGatewayStateError`             | error                                  |

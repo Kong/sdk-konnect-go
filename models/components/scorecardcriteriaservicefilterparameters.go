@@ -23,9 +23,9 @@ const (
 //   - `filter[custom_fields.owner][neq]=kong`
 //   - `filter[custom_fields.dashboard.link][contains]=https`
 type ScorecardCriteriaServiceFilterParametersCustomFields struct {
-	StringFieldFilter  *StringFieldFilter  `queryParam:"inline,name=custom_fields" union:"member"`
-	Boolean            *bool               `queryParam:"inline,name=custom_fields" union:"member"`
-	NumericFieldFilter *NumericFieldFilter `queryParam:"inline,name=custom_fields" union:"member"`
+	StringFieldFilter  *StringFieldFilter  `queryParam:"inline" union:"member"`
+	Boolean            *bool               `queryParam:"inline" union:"member"`
+	NumericFieldFilter *NumericFieldFilter `queryParam:"inline" union:"member"`
 
 	Type ScorecardCriteriaServiceFilterParametersCustomFieldsType
 }
@@ -106,7 +106,7 @@ const (
 )
 
 type EvaluationSuccessfullyEvaluatedAt struct {
-	DateTimeFieldFilter *DateTimeFieldFilter `queryParam:"inline,name=evaluation_successfully_evaluated_at" union:"member"`
+	DateTimeFieldFilter *DateTimeFieldFilter `queryParam:"inline" union:"member"`
 
 	Type EvaluationSuccessfullyEvaluatedAtType
 }
@@ -147,7 +147,7 @@ const (
 )
 
 type EvaluationAttemptedAt struct {
-	DateTimeFieldFilter *DateTimeFieldFilter `queryParam:"inline,name=evaluation_attempted_at" union:"member"`
+	DateTimeFieldFilter *DateTimeFieldFilter `queryParam:"inline" union:"member"`
 
 	Type EvaluationAttemptedAtType
 }
@@ -190,6 +190,7 @@ type ScorecardCriteriaServiceFilterParameters struct {
 	DisplayName *StringFieldFilter `queryParam:"name=display_name"`
 	// Filter by custom fields using dot-notation to specify the custom field.
 	// Filter operators are dictated by the custom field type. For example:
+	//
 	//
 	//
 	//

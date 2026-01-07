@@ -18,9 +18,9 @@ const (
 )
 
 type BackendClusterAuthenticationSensitiveDataAwareScheme struct {
-	BackendClusterAuthenticationAnonymous                   *BackendClusterAuthenticationAnonymous                   `queryParam:"inline,name=BackendClusterAuthenticationSensitiveDataAwareScheme" union:"member"`
-	BackendClusterAuthenticationSaslPlainSensitiveDataAware *BackendClusterAuthenticationSaslPlainSensitiveDataAware `queryParam:"inline,name=BackendClusterAuthenticationSensitiveDataAwareScheme" union:"member"`
-	BackendClusterAuthenticationSaslScramSensitiveDataAware *BackendClusterAuthenticationSaslScramSensitiveDataAware `queryParam:"inline,name=BackendClusterAuthenticationSensitiveDataAwareScheme" union:"member"`
+	BackendClusterAuthenticationAnonymous                   *BackendClusterAuthenticationAnonymous                   `queryParam:"inline" union:"member"`
+	BackendClusterAuthenticationSaslPlainSensitiveDataAware *BackendClusterAuthenticationSaslPlainSensitiveDataAware `queryParam:"inline" union:"member"`
+	BackendClusterAuthenticationSaslScramSensitiveDataAware *BackendClusterAuthenticationSaslScramSensitiveDataAware `queryParam:"inline" union:"member"`
 
 	Type BackendClusterAuthenticationSensitiveDataAwareSchemeType
 }

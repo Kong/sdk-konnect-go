@@ -1691,8 +1691,8 @@ func main() {
     res, err := s.CloudGateways.UpdateTransitGateway(ctx, operations.UpdateTransitGatewayRequest{
         NetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
         TransitGatewayID: "0850820b-d153-4a2a-b9be-7d2204779139",
-        PatchTransitGatewayRequest: components.CreatePatchTransitGatewayRequestPatchAwsResourceEndpointGateway(
-            components.PatchAwsResourceEndpointGateway{
+        PatchTransitGatewayRequest: components.CreatePatchTransitGatewayRequestPatchAWSResourceEndpointGatewayAWSResourceEndpointGateway(
+            components.PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway{
                 TransitGatewayAttachmentConfig: components.TransitGatewayAttachmentConfig{
                     Kind: components.PatchAWSResourceEndpointGatewayAWSResourceEndpointAttachmentTypeAwsResourceEndpointAttachment,
                     ResourceConfig: []components.AwsResourceEndpointConfig{

@@ -19,11 +19,11 @@ const (
 )
 
 type TransitGatewayResponse struct {
-	AwsTransitGatewayResponse          *AwsTransitGatewayResponse          `queryParam:"inline,name=TransitGatewayResponse" union:"member"`
-	AwsVpcPeeringGatewayResponse       *AwsVpcPeeringGatewayResponse       `queryParam:"inline,name=TransitGatewayResponse" union:"member"`
-	AzureTransitGatewayResponse        *AzureTransitGatewayResponse        `queryParam:"inline,name=TransitGatewayResponse" union:"member"`
-	GCPVPCPeeringGatewayResponse       *GCPVPCPeeringGatewayResponse       `queryParam:"inline,name=TransitGatewayResponse" union:"member"`
-	AwsResourceEndpointGatewayResponse *AwsResourceEndpointGatewayResponse `queryParam:"inline,name=TransitGatewayResponse" union:"member"`
+	AwsTransitGatewayResponse          *AwsTransitGatewayResponse          `queryParam:"inline" union:"member"`
+	AwsVpcPeeringGatewayResponse       *AwsVpcPeeringGatewayResponse       `queryParam:"inline" union:"member"`
+	AzureTransitGatewayResponse        *AzureTransitGatewayResponse        `queryParam:"inline" union:"member"`
+	GCPVPCPeeringGatewayResponse       *GCPVPCPeeringGatewayResponse       `queryParam:"inline" union:"member"`
+	AwsResourceEndpointGatewayResponse *AwsResourceEndpointGatewayResponse `queryParam:"inline" union:"member"`
 
 	Type TransitGatewayResponseType
 }

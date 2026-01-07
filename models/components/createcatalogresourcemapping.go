@@ -16,8 +16,8 @@ const (
 )
 
 type Resource struct {
-	Str                                          *string                                       `queryParam:"inline,name=resource" union:"member"`
-	CreateCatalogResourceMappingResourceByConfig *CreateCatalogResourceMappingResourceByConfig `queryParam:"inline,name=resource" union:"member"`
+	Str                                          *string                                       `queryParam:"inline" union:"member"`
+	CreateCatalogResourceMappingResourceByConfig *CreateCatalogResourceMappingResourceByConfig `queryParam:"inline" union:"member"`
 
 	Type ResourceUnionType
 }

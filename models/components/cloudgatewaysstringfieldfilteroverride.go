@@ -19,11 +19,11 @@ const (
 )
 
 type CloudGatewaysStringFieldFilterOverride struct {
-	CloudGatewaysStringFieldEqualsFilterOverride *CloudGatewaysStringFieldEqualsFilterOverride `queryParam:"inline,name=CloudGatewaysStringFieldFilterOverride" union:"member"`
-	StringFieldContainsFilter                    *StringFieldContainsFilter                    `queryParam:"inline,name=CloudGatewaysStringFieldFilterOverride" union:"member"`
-	StringFieldNEQFilter                         *StringFieldNEQFilter                         `queryParam:"inline,name=CloudGatewaysStringFieldFilterOverride" union:"member"`
-	StringFieldOEQFilter                         *StringFieldOEQFilter                         `queryParam:"inline,name=CloudGatewaysStringFieldFilterOverride" union:"member"`
-	StringFieldOContainsFilter                   *StringFieldOContainsFilter                   `queryParam:"inline,name=CloudGatewaysStringFieldFilterOverride" union:"member"`
+	CloudGatewaysStringFieldEqualsFilterOverride *CloudGatewaysStringFieldEqualsFilterOverride `queryParam:"inline" union:"member"`
+	StringFieldContainsFilter                    *StringFieldContainsFilter                    `queryParam:"inline" union:"member"`
+	StringFieldNEQFilter                         *StringFieldNEQFilter                         `queryParam:"inline" union:"member"`
+	StringFieldOEQFilter                         *StringFieldOEQFilter                         `queryParam:"inline" union:"member"`
+	StringFieldOContainsFilter                   *StringFieldOContainsFilter                   `queryParam:"inline" union:"member"`
 
 	Type CloudGatewaysStringFieldFilterOverrideType
 }

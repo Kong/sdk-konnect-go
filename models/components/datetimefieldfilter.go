@@ -136,11 +136,11 @@ const (
 
 // DateTimeFieldFilter - Filters on the given datetime (RFC-3339) field value.
 type DateTimeFieldFilter struct {
-	DateTimeFieldEqualsFilter *DateTimeFieldEqualsFilter `queryParam:"inline,name=DateTimeFieldFilter" union:"member"`
-	DateTimeFieldLTFilter     *DateTimeFieldLTFilter     `queryParam:"inline,name=DateTimeFieldFilter" union:"member"`
-	DateTimeFieldLTEFilter    *DateTimeFieldLTEFilter    `queryParam:"inline,name=DateTimeFieldFilter" union:"member"`
-	DateTimeFieldGTFilter     *DateTimeFieldGTFilter     `queryParam:"inline,name=DateTimeFieldFilter" union:"member"`
-	DateTimeFieldGTEFilter    *DateTimeFieldGTEFilter    `queryParam:"inline,name=DateTimeFieldFilter" union:"member"`
+	DateTimeFieldEqualsFilter *DateTimeFieldEqualsFilter `queryParam:"inline" union:"member"`
+	DateTimeFieldLTFilter     *DateTimeFieldLTFilter     `queryParam:"inline" union:"member"`
+	DateTimeFieldLTEFilter    *DateTimeFieldLTEFilter    `queryParam:"inline" union:"member"`
+	DateTimeFieldGTFilter     *DateTimeFieldGTFilter     `queryParam:"inline" union:"member"`
+	DateTimeFieldGTEFilter    *DateTimeFieldGTEFilter    `queryParam:"inline" union:"member"`
 
 	Type DateTimeFieldFilterType
 }

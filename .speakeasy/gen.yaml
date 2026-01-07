@@ -20,11 +20,11 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
+  persistentEdits: {}
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
-  persistentEdits: {}
 go:
   version: 0.17.0
   additionalDependencies: {}
