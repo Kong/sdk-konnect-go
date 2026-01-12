@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Konnect API - Go SDK
-  version: 3.0.30
+  version: 3.0.31
   description: The Konnect platform API
   contact:
     name: Kong Inc
@@ -20765,13 +20765,13 @@ components:
       title: Entity Type
       x-speakeasy-unknown-values: allow
     PortalImageDataUri:
-      description: 'must be a data URL with base64 image data, e.g., data:image/jpeg;base64,<BASE64_IMAGE_DATA>'
-      type: string
-      format: uri
-      example: 'data:image/png;base64,YW5faW1hZ2VfZmlsZQ=='
-      pattern: '^data:image/(png|jpeg|svg\+xml|x-icon|ico|icon|vnd.microsoft.icon|gif)(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
+      oneOf:
+        - $ref: '#/components/schemas/ImagePNGDataUri'
+        - $ref: '#/components/schemas/ImageJPGDataUri'
+        - $ref: '#/components/schemas/ImageGIFDataUri'
+        - $ref: '#/components/schemas/ImageICODataUri'
+        - $ref: '#/components/schemas/ImageSVGDataUri'
       title: PortalImageDataUri
-      x-validation-message: 'must be a data URL with base64 image data, e.g., data:image/jpeg;base64,<BASE64_IMAGE_DATA>'
     PortalImageAssetBlob:
       description: Raw binary image data
       type: string
@@ -22987,6 +22987,46 @@ components:
         - description
         - scope
         - example
+    ImagePNGDataUri:
+      description: 'must be a data URL with base64 PNG image data, e.g., data:image/png;base64,<BASE64_IMAGE_DATA>'
+      type: string
+      format: uri
+      example: 'data:image/png,YW5faW1hZ2VfZmlsZQ=='
+      pattern: '^data:image/png(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
+      title: ImagePNGDataUri
+      x-validation-message: 'must be a data URL with base64 PNG image data, e.g., data:image/png;base64,<BASE64_IMAGE_DATA>'
+    ImageJPGDataUri:
+      description: 'must be a data URL with base64 JPEG image data, e.g., data:image/jpeg;base64,<BASE64_IMAGE_DATA>'
+      type: string
+      format: uri
+      example: 'data:image/jpeg,YW5faW1hZ2VfZmlsZQ=='
+      pattern: '^data:image/jpeg(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
+      title: ImageJPGDataUri
+      x-validation-message: 'must be a data URL with base64 JPEG image data, e.g., data:image/jpeg;base64,<BASE64_IMAGE_DATA>'
+    ImageGIFDataUri:
+      description: 'must be a data URL with base64 GIF image data, e.g., data:image/gif;base64,<BASE64_IMAGE_DATA>'
+      type: string
+      format: uri
+      example: 'data:image/gif,YW5faW1hZ2VfZmlsZQ=='
+      pattern: '^data:image/gif(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
+      title: ImageGIFDataUri
+      x-validation-message: 'must be a data URL with base64 GIF image data, e.g., data:image/gif;base64,<BASE64_IMAGE_DATA>'
+    ImageICODataUri:
+      description: 'must be a data URL with base64 ICO image data, e.g., data:image/ico;base64,<BASE64_IMAGE_DATA>'
+      type: string
+      format: uri
+      example: 'data:image/ico,YW5faW1hZ2VfZmlsZQ=='
+      pattern: '^data:image/(x-icon|ico|icon|vnd.microsoft.icon)(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
+      title: ImageICODataUri
+      x-validation-message: 'must be a data URL with base64 ICO image data, e.g., data:image/ico;base64,<BASE64_IMAGE_DATA>'
+    ImageSVGDataUri:
+      description: 'must be a data URL with base64 SVG image data, e.g., data:image/svg\+xml;base64,<BASE64_IMAGE_DATA>'
+      type: string
+      format: uri
+      example: 'data:image/svg+xml,YW5faW1hZ2VfZmlsZQ=='
+      pattern: '^data:image/svg\+xml(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
+      title: ImageSVGDataUri
+      x-validation-message: 'must be a data URL with base64 SVG image data, e.g., data:image/svg\+xml;base64,<BASE64_IMAGE_DATA>'
     PortalMenuItem:
       type: object
       properties:
@@ -23090,7 +23130,7 @@ components:
               type: boolean
               default: true
             try_it_insomnia:
-              description: Enables users to open the API spec in Insomnia to explore and send requests with the native client.
+              description: Enables users to open API specifications in Insomnia to explore and send requests with the native client. Only public API specifications are supported.
               type: boolean
               default: true
             infinite_scroll:
@@ -27459,7 +27499,6 @@ components:
           description: A unique user-defined name of the policy.
           type: string
           maxLength: 255
-          minLength: 1
           x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
         description:
           description: A human-readable description of the policy.
@@ -27491,7 +27530,6 @@ components:
           description: A string containing the boolean expression that determines whether the policy is applied.
           type: string
           maxLength: 1000
-          minLength: 1
           x-expression:
             type: boolean
             fields: []
@@ -27513,7 +27551,6 @@ components:
           description: A unique user-defined name of the policy.
           type: string
           maxLength: 255
-          minLength: 1
           x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
         description:
           description: A human-readable description of the policy.
@@ -27564,7 +27601,6 @@ components:
           description: A unique user-defined name of the policy.
           type: string
           maxLength: 255
-          minLength: 1
           x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
         description:
           description: A human-readable description of the policy.
@@ -27601,7 +27637,6 @@ components:
           description: A unique user-defined name of the policy.
           type: string
           maxLength: 255
-          minLength: 1
           x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
         description:
           description: A human-readable description of the policy.
@@ -27721,7 +27756,6 @@ components:
           type: string
           example: context.topic.name.endsWith('my_suffix')
           maxLength: 1000
-          minLength: 1
           nullable: true
           x-expression:
             type: boolean
@@ -27792,7 +27826,6 @@ components:
           description: A unique user-defined name of the policy.
           type: string
           maxLength: 255
-          minLength: 1
           x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
         description:
           description: A human-readable description of the policy.
@@ -28001,7 +28034,6 @@ components:
           description: A unique user-defined name of the policy.
           type: string
           maxLength: 255
-          minLength: 1
           x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
         description:
           description: A human-readable description of the policy.
@@ -28022,7 +28054,6 @@ components:
           type: string
           example: 'context.topic.name.endsWith("my_suffix") && records.headers["x-flag"] == "a-value"'
           maxLength: 1000
-          minLength: 1
           x-expression:
             type: boolean
             fields:
@@ -28066,7 +28097,6 @@ components:
           description: A unique user-defined name of the policy.
           type: string
           maxLength: 255
-          minLength: 1
           x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
         description:
           description: A human-readable description of the policy.
@@ -28087,7 +28117,6 @@ components:
           type: string
           example: 'context.topic.name.endsWith("my_suffix") && records.headers["x-flag"] == "a-value"'
           maxLength: 1000
-          minLength: 1
           x-expression:
             type: boolean
             fields:
@@ -28135,7 +28164,6 @@ components:
           description: A unique user-defined name of the policy.
           type: string
           maxLength: 255
-          minLength: 1
           x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
         description:
           description: A human-readable description of the policy.
@@ -28166,7 +28194,6 @@ components:
           type: string
           example: record.value.content.foo.bar == "a-value"
           maxLength: 1000
-          minLength: 1
           x-expression:
             type: boolean
             fields:
@@ -28194,7 +28221,6 @@ components:
           description: A unique user-defined name of the policy.
           type: string
           maxLength: 255
-          minLength: 1
           x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
         description:
           description: A human-readable description of the policy.
@@ -28225,7 +28251,6 @@ components:
           type: string
           example: record.value.content.foo.bar == "a-value"
           maxLength: 1000
-          minLength: 1
           x-expression:
             type: boolean
             fields:
@@ -28257,7 +28282,6 @@ components:
           description: A unique user-defined name of the policy.
           type: string
           maxLength: 255
-          minLength: 1
           x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
         description:
           description: A human-readable description of the policy.
@@ -28278,7 +28302,6 @@ components:
           type: string
           example: record.value.content.foo.bar == "a-value"
           maxLength: 1000
-          minLength: 1
           x-expression:
             type: boolean
             fields:
@@ -28304,7 +28327,6 @@ components:
           description: A unique user-defined name of the policy.
           type: string
           maxLength: 255
-          minLength: 1
           x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
         description:
           description: A human-readable description of the policy.
@@ -28325,7 +28347,6 @@ components:
           type: string
           example: record.value.content.foo.bar == "a-value"
           maxLength: 1000
-          minLength: 1
           x-expression:
             type: boolean
             fields:
@@ -28396,7 +28417,6 @@ components:
           description: A unique user-defined name of the policy.
           type: string
           maxLength: 255
-          minLength: 1
           x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
         description:
           description: A human-readable description of the policy.
@@ -28427,7 +28447,6 @@ components:
           type: string
           example: 'context.topic.name.endsWith("my_suffix") && records.headers["x-flag"] == "a-value"'
           maxLength: 1000
-          minLength: 1
           x-expression:
             type: boolean
             fields:
@@ -28453,7 +28472,6 @@ components:
           description: A unique user-defined name of the policy.
           type: string
           maxLength: 255
-          minLength: 1
           x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
         description:
           description: A human-readable description of the policy.
@@ -28474,7 +28492,6 @@ components:
           type: string
           example: 'context.topic.name.endsWith("my_suffix") && records.headers["x-flag"] == "a-value"'
           maxLength: 1000
-          minLength: 1
           x-expression:
             type: boolean
             fields:
@@ -28540,7 +28557,6 @@ components:
           description: A unique user-defined name of the policy.
           type: string
           maxLength: 255
-          minLength: 1
           x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
         description:
           description: A human-readable description of the policy.
@@ -28561,7 +28577,6 @@ components:
           type: string
           example: context.auth.principal.name == "this-user"
           maxLength: 1000
-          minLength: 1
           x-expression:
             type: boolean
             fields:
