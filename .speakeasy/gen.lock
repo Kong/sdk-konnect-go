@@ -1,16 +1,16 @@
 lockVersion: 2.0.0
 id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
-  docChecksum: 9063df8fdb77f68eba5450979a4a4411
-  docVersion: 3.0.30
+  docChecksum: 317763fc7388e91b44dd2c5bd722760d
+  docVersion: 3.0.31
   speakeasyVersion: 1.685.0
   generationVersion: 2.794.1
-  releaseVersion: 0.18.1
-  configChecksum: ee60c830059b5481c3e40f8abdbfe1af
+  releaseVersion: 0.18.2
+  configChecksum: 5e373d46e5f2097a8fa4c0f45ef4d40a
 persistentEdits:
-  generation_id: b84b74ae-b32f-4831-b8a0-5a5d1f37f813
-  pristine_commit_hash: c475ba838fd45b81601f6fedec972d0818d59b9e
-  pristine_tree_hash: c45a6b252a68c78fea29abfddad79831247bb3a5
+  generation_id: 8d78f32e-d5be-42f6-9574-6f485ce04cdb
+  pristine_commit_hash: d362ce0b3f9c03c0727e4cef7f59c8a45458b26f
+  pristine_tree_hash: 46b6af02e5c98a6632337a091f16c22a21fcba5a
 features:
   go:
     acceptHeaders: 2.81.2
@@ -3544,8 +3544,8 @@ trackedFiles:
     pristine_git_object: 53539fd6742e8bdda51bf1e735d8419b2ac93c8e
   docs/models/components/portalassetresponse.md:
     id: 65f23d827c5e
-    last_write_checksum: sha1:29b451b0bec0ac0e0eaea34afb2af4fa39b7a706
-    pristine_git_object: 45c1df799104dd3226962b547823fcf56321dc4f
+    last_write_checksum: sha1:2e8507a3770bad6632ce57e7789e2c1e2ea673f8
+    pristine_git_object: 070aa9eef3762517fcb46f6f492e49004395c016
   docs/models/components/portalassignedroleresponse.md:
     id: 2fc6a690dbac
     last_write_checksum: sha1:823e62768ca80a5fa822cf0fb5084ccdaca56804
@@ -3840,8 +3840,8 @@ trackedFiles:
     pristine_git_object: 0f5e135b3522f654038bcd2c4fab269ba90360ba
   docs/models/components/replaceportalimageasset.md:
     id: 175cee9181aa
-    last_write_checksum: sha1:70d6483ea207ef4d7aa025694f05a6c9345d32f3
-    pristine_git_object: bfe7ef258e0ecf92c3693bf9c397bb4fefa6118f
+    last_write_checksum: sha1:556c2059ff7d53c325604ef606db6365896d0b76
+    pristine_git_object: 6af32a3c35d792669764166ff230135df8c67b3f
   docs/models/components/requiredintegrationcapability.md:
     id: 4f5abf901aaa
     last_write_checksum: sha1:18a9fca1c7a59bdef8027ae3ba9ec39a0d83bb20
@@ -4564,8 +4564,8 @@ trackedFiles:
     pristine_git_object: 712837bee6b1cf65df829b176c9b41cf87d65344
   docs/models/components/specrenderer.md:
     id: fd6fe865cd1a
-    last_write_checksum: sha1:1ce80c0e3b10a12537b3bb6765118638c59f0aa0
-    pristine_git_object: 4df9c0e912f8f90a97dde30d838083af15ff30e1
+    last_write_checksum: sha1:7edf882ecb9d064545d8202e8421e5cab210faed
+    pristine_git_object: 32765e3fd5249682aaad74721d86b0fa3424d508
   docs/models/components/state.md:
     id: 441de3ea6229
     last_write_checksum: sha1:4b444458b688c8e922c8e82137d8bbd22ad9e57a
@@ -12356,8 +12356,8 @@ trackedFiles:
     pristine_git_object: 090dbbbeff986b3d6c6df47c1ea7a03eb02059a8
   models/components/portalassetresponse.go:
     id: 53b76c7298d8
-    last_write_checksum: sha1:01015d3501d9756512b5a16aeefeb60abb818ea0
-    pristine_git_object: f24afe37306f50b512549e004b3259fdee03b0be
+    last_write_checksum: sha1:f10bc7c277763d356ae7001de4fe01290d733771
+    pristine_git_object: d028059bb5bbb3e5d19fb9e6f7a7ed1ffd2da902
   models/components/portalassignedroleresponse.go:
     id: aeadb8f38851
     last_write_checksum: sha1:de58fbc3adb9809993ff8a0afc23fc01819aff44
@@ -12416,8 +12416,8 @@ trackedFiles:
     pristine_git_object: bb53b12308603a4b344041fb8e72419cf6efce12
   models/components/portalcustomization.go:
     id: c07dd4d97192
-    last_write_checksum: sha1:2f18d010a4c9c18e60314531334db64ba805e5f6
-    pristine_git_object: 16960adf1e0a27bdb385ba354fb3953fd6df49ed
+    last_write_checksum: sha1:6a52a7ff96b5b5fe6f88814e59d53c9cee32b9e0
+    pristine_git_object: 1a6d8ada3d4800a0429afeeb317578ecee075e41
   models/components/portaldeveloper.go:
     id: bfbcb7635fbb
     last_write_checksum: sha1:3b86e73105328b2a9d6c73351af955eed0815f9c
@@ -12576,8 +12576,8 @@ trackedFiles:
     pristine_git_object: 564c448e70da5fd9f4a8e041551a46abe5df0938
   models/components/replaceportalimageasset.go:
     id: f12c316156c7
-    last_write_checksum: sha1:f48972df735578928d7db675037e70b3348d1a49
-    pristine_git_object: 1a7a0466b382567b000f2dd106d65602d533e853
+    last_write_checksum: sha1:f90c14e3220ad76ebbac952e08704ddeef6415ce
+    pristine_git_object: 1dc0e85ffee3cf2dd6e5acab9aa6793d6b77599e
   models/components/resourceconfiguration.go:
     id: 7f634a889fda
     last_write_checksum: sha1:e34d2c01b77600750299188c6e62a1a8038dee0f
@@ -15644,8 +15644,8 @@ trackedFiles:
     pristine_git_object: f41822608ccbb554063a42e0272b7cb51ec16642
   sdk.go:
     id: 8db9b9536b0a
-    last_write_checksum: sha1:1f1cacec119e49001b3c6028c7af26a3cf636a14
-    pristine_git_object: 03d541953375c82a35c34a157dd5435a67d3caf5
+    last_write_checksum: sha1:f0e7af59a787f0fc5b0cbba7e3aeb977c86ff3ee
+    pristine_git_object: 995433a41eafb98172ee9c544c1bf207c0ae104d
   services.go:
     id: a2c8604526d8
     last_write_checksum: sha1:24a3ebf76a7507543b06f9565c940fed1602b688
@@ -35602,7 +35602,7 @@ examples:
           portalId: "f32d905a-ed33-46a3-a093-d8f536af9a8a"
       responses:
         "200":
-          application/json: {"data": "data:image/png;base64,YW5faW1hZ2VfZmlsZQ=="}
+          application/json: {"data": "data:image/png,YW5faW1hZ2VfZmlsZQ=="}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -35632,7 +35632,7 @@ examples:
         application/json: {"data": "data:image/jpeg;base64,bmljZV9sb29raW5nX3BpY3R1cmU="}
       responses:
         "200":
-          application/json: {"data": "data:image/png;base64,YW5faW1hZ2VfZmlsZQ=="}
+          application/json: {"data": "data:image/png,YW5faW1hZ2VfZmlsZQ=="}
         "400":
           application/problem+json: {"status": 457688, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "max_items", "maximum": 8, "source": "body", "reason": "must not have more than 8 characters"}]}
         "401":
@@ -35720,7 +35720,7 @@ examples:
           portalId: "f32d905a-ed33-46a3-a093-d8f536af9a8a"
       responses:
         "200":
-          application/json: {"data": "data:image/png;base64,YW5faW1hZ2VfZmlsZQ=="}
+          application/json: {"data": "data:image/png,YW5faW1hZ2VfZmlsZQ=="}
         "401":
           application/problem+json: {"status": 401, "title": "Unauthorized", "type": "https://httpstatuses.com/401", "instance": "kong:trace:1234567890", "detail": "Invalid credentials"}
         "403":
@@ -35750,7 +35750,7 @@ examples:
         application/json: {"data": "data:image/jpeg;base64,bmljZV9sb29raW5nX3BpY3R1cmU="}
       responses:
         "200":
-          application/json: {"data": "data:image/png;base64,YW5faW1hZ2VfZmlsZQ=="}
+          application/json: {"data": "data:image/png,YW5faW1hZ2VfZmlsZQ=="}
         "400":
           application/problem+json: {"status": 763533, "title": "<value>", "instance": "<value>", "detail": "<value>", "invalid_parameters": [{"field": "name", "rule": "enum", "reason": "is a required field", "choices": [], "source": "body"}]}
         "401":
