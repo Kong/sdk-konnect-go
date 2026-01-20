@@ -21,6 +21,12 @@ transitGatewayResponse := components.CreateTransitGatewayResponseAwsVpcPeeringGa
 transitGatewayResponse := components.CreateTransitGatewayResponseAzureTransitGatewayResponse(components.AzureTransitGatewayResponse{/* values here */})
 ```
 
+### AzureVhubPeeringGatewayResponse
+
+```go
+transitGatewayResponse := components.CreateTransitGatewayResponseAzureVhubPeeringGatewayResponse(components.AzureVhubPeeringGatewayResponse{/* values here */})
+```
+
 ### GCPVPCPeeringGatewayResponse
 
 ```go

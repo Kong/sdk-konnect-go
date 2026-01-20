@@ -186,19 +186,19 @@ func main() {
     res, err := s.CloudGateways.CreateConfiguration(ctx, components.CreateConfigurationRequest{
         ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
         ControlPlaneGeo: components.ControlPlaneGeoIn,
-        Version: "3.2",
+        Version: sdkkonnectgo.Pointer("3.2"),
         DataplaneGroups: []components.CreateConfigurationDataPlaneGroup{
             components.CreateConfigurationDataPlaneGroup{
                 Provider: components.ProviderNameAws,
                 Region: "us-east-2",
-                CloudGatewayNetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
-                Autoscale: components.CreateConfigurationDataPlaneGroupAutoscaleConfigurationDataPlaneGroupAutoscaleAutopilot(
+                CloudGatewayNetworkID: sdkkonnectgo.Pointer("36ae63d3-efd1-4bec-b246-62aa5d3f5695"),
+                Autoscale: sdkkonnectgo.Pointer(components.CreateConfigurationDataPlaneGroupAutoscaleConfigurationDataPlaneGroupAutoscaleAutopilot(
                     components.ConfigurationDataPlaneGroupAutoscaleAutopilot{
                         Kind: components.ConfigurationDataPlaneGroupAutoscaleAutopilotKindAutopilot,
                         BaseRps: 1,
                         MaxRps: sdkkonnectgo.Pointer[int64](1000),
                     },
-                ),
+                )),
                 Environment: []components.ConfigurationDataPlaneGroupEnvironmentField{
                     components.ConfigurationDataPlaneGroupEnvironmentField{
                         Name: "KONG_LOG_LEVEL",
@@ -213,14 +213,14 @@ func main() {
             components.CreateConfigurationDataPlaneGroup{
                 Provider: components.ProviderNameAws,
                 Region: "us-east-2",
-                CloudGatewayNetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
-                Autoscale: components.CreateConfigurationDataPlaneGroupAutoscaleConfigurationDataPlaneGroupAutoscaleAutopilot(
+                CloudGatewayNetworkID: sdkkonnectgo.Pointer("36ae63d3-efd1-4bec-b246-62aa5d3f5695"),
+                Autoscale: sdkkonnectgo.Pointer(components.CreateConfigurationDataPlaneGroupAutoscaleConfigurationDataPlaneGroupAutoscaleAutopilot(
                     components.ConfigurationDataPlaneGroupAutoscaleAutopilot{
                         Kind: components.ConfigurationDataPlaneGroupAutoscaleAutopilotKindAutopilot,
                         BaseRps: 1,
                         MaxRps: sdkkonnectgo.Pointer[int64](1000),
                     },
-                ),
+                )),
                 Environment: []components.ConfigurationDataPlaneGroupEnvironmentField{
                     components.ConfigurationDataPlaneGroupEnvironmentField{
                         Name: "KONG_LOG_LEVEL",

@@ -27,3 +27,9 @@ privateDNSResponse := components.CreatePrivateDNSResponseGcpPrivateHostedZoneRes
 privateDNSResponse := components.CreatePrivateDNSResponseAzurePrivateHostedZoneResponse(components.AzurePrivateHostedZoneResponse{/* values here */})
 ```
 
+### AzurePrivateDNSResolverResponse
+
+```go
+privateDNSResponse := components.CreatePrivateDNSResponseAzurePrivateDNSResolverResponse(components.AzurePrivateDNSResolverResponse{/* values here */})
+```
+

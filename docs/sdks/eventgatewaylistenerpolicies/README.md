@@ -16,6 +16,8 @@ Listener policies are routing policies that pass traffic to the virtual cluster.
 * [PatchEventGatewayListenerPolicy](#patcheventgatewaylistenerpolicy) - Partially Update Policy for Listener
 * [DeleteEventGatewayListenerPolicy](#deleteeventgatewaylistenerpolicy) - Delete Policy for Listener
 * [MoveEventGatewayListenerPolicy](#moveeventgatewaylistenerpolicy) - Move Policy
+* [GetEventGatewayListenerPolicyChain](#geteventgatewaylistenerpolicychain) - Get Policy Chain for Listener
+* [UpdateEventGatewayListenerPolicyChain](#updateeventgatewaylistenerpolicychain) - Update Policy Chain for Listener
 
 ## ListEventGatewayListenerPolicies
 
@@ -468,6 +470,125 @@ func main() {
 ### Response
 
 **[*operations.MoveEventGatewayListenerPolicyResponse](../../models/operations/moveeventgatewaylistenerpolicyresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetEventGatewayListenerPolicyChain
+
+Get the policy chain for a listener composed of all the ids of the policies in order of execution.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-event-gateway-listener-policy-chain" method="get" path="/v1/event-gateways/{gatewayId}/listeners/{eventGatewayListenerId}/policy-chain" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.EventGatewayListenerPolicies.GetEventGatewayListenerPolicyChain(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "26c421b6-e915-437b-8975-05f5925a07a5")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EventGatewayPolicyChainResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `gatewayID`                                              | *string*                                                 | :heavy_check_mark:                                       | The UUID of your Gateway.                                | 9524ec7d-36d9-465d-a8c5-83a3c9390458                     |
+| `eventGatewayListenerID`                                 | *string*                                                 | :heavy_check_mark:                                       | The ID of the Event Gateway Listener.                    |                                                          |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.GetEventGatewayListenerPolicyChainResponse](../../models/operations/geteventgatewaylistenerpolicychainresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## UpdateEventGatewayListenerPolicyChain
+
+Update the policy chain for a listener by providing an ordered list of policy ids.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="update-event-gateway-listener-policy-chain" method="put" path="/v1/event-gateways/{gatewayId}/listeners/{eventGatewayListenerId}/policy-chain" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.EventGatewayListenerPolicies.UpdateEventGatewayListenerPolicyChain(ctx, operations.UpdateEventGatewayListenerPolicyChainRequest{
+        GatewayID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        EventGatewayListenerID: "fe9f5f21-fcaa-45c3-ae26-22ad7df78b60",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EventGatewayPolicyChainResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                          | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                                                              | :heavy_check_mark:                                                                                                                 | The context to use for the request.                                                                                                |
+| `request`                                                                                                                          | [operations.UpdateEventGatewayListenerPolicyChainRequest](../../models/operations/updateeventgatewaylistenerpolicychainrequest.md) | :heavy_check_mark:                                                                                                                 | The request object to use for the request.                                                                                         |
+| `opts`                                                                                                                             | [][operations.Option](../../models/operations/option.md)                                                                           | :heavy_minus_sign:                                                                                                                 | The options for this request.                                                                                                      |
+
+### Response
+
+**[*operations.UpdateEventGatewayListenerPolicyChainResponse](../../models/operations/updateeventgatewaylistenerpolicychainresponse.md), error**
 
 ### Errors
 

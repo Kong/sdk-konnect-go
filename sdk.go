@@ -2,7 +2,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.0.31 and generator version 2.794.1
+// Generated from OpenAPI doc version 3.0.31 and generator version 2.797.1
 
 import (
 	"context"
@@ -282,16 +282,16 @@ type SDK struct {
 	// Services can be both [tagged and filtered by tags](https://developer.konghq.com/admin-api/).
 	//
 	Services *Services
-	// The upstream object represents a virtual hostname and can be used to load balance incoming requests over multiple services (targets).
-	// <br><br>
-	// An upstream also includes a [health checker](https://developer.konghq.com/gateway/traffic-control/health-checks-circuit-breakers/), which can enable and disable targets based on their ability or inability to serve requests.
-	// The configuration for the health checker is stored in the upstream object, and applies to all of its targets.
-	Upstreams *Upstreams
 	// A target is an IP address or hostname with a port that identifies an instance of a backend service. Every upstream can have many targets, and the targets can be dynamically added, modified, or deleted. Changes take effect on the fly.
 	// <br><br>
 	// To disable a target, post a new one with `weight=0`, or use the `DELETE` method to accomplish the same.
 	//
 	Targets *Targets
+	// The upstream object represents a virtual hostname and can be used to load balance incoming requests over multiple services (targets).
+	// <br><br>
+	// An upstream also includes a [health checker](https://developer.konghq.com/gateway/traffic-control/health-checks-circuit-breakers/), which can enable and disable targets based on their ability or inability to serve requests.
+	// The configuration for the health checker is stored in the upstream object, and applies to all of its targets.
+	Upstreams *Upstreams
 	// Vault objects are used to configure different vault connectors for [managing secrets](https://developer.konghq.com/gateway/secrets-management/).
 	// Configuring a vault lets you reference secrets from other entities.
 	// This allows for a proper separation of secrets and configuration and prevents secret sprawl.
@@ -436,9 +436,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.18.2",
+		SDKVersion: "0.19.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.18.2 2.794.1 3.0.31 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.19.0 2.797.1 3.0.31 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -510,8 +510,8 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Routes = newRoutes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Schemas = newSchemas(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Services = newServices(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Upstreams = newUpstreams(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Targets = newTargets(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Upstreams = newUpstreams(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Vaults = newVaults(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.DPCertificates = newDPCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.DPNodes = newDPNodes(sdk, sdk.sdkConfiguration, sdk.hooks)

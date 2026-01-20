@@ -10,6 +10,9 @@ import (
 
 // TargetsSDK is a generated interface.
 type TargetsSDK interface {
+	// ListTargets - List all targets for a control plane
+	// Returns a collection of all targets for a control plane.
+	ListTargets(ctx context.Context, request operations.ListTargetsRequest, opts ...operations.Option) (*operations.ListTargetsResponse, error)
 	// ListTargetWithUpstream - List all Targets associated with an Upstream
 	// List all Targets associated with an Upstream
 	ListTargetWithUpstream(ctx context.Context, request operations.ListTargetWithUpstreamRequest, opts ...operations.Option) (*operations.ListTargetWithUpstreamResponse, error)

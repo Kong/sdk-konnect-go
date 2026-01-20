@@ -11,7 +11,7 @@ type SchemaRegistryConfluentSensitiveDataAware struct {
 	// The unique name of the schema registry.
 	Name string `json:"name"`
 	// A human-readable description of the virtual cluster.
-	Description *string `json:"description,omitempty"`
+	Description *string `default:"" json:"description"`
 	// The type of the schema registry.
 	type_ string `const:"confluent" json:"type"`
 	// The configuration of [Confluent Schema Registry](https://github.com/confluentinc/schema-registry)

@@ -1,5 +1,7 @@
 # Port
 
+An integer representing a port number between 0 and 65535, inclusive.
+
 
 ## Supported Types
 
