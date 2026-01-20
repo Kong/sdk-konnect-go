@@ -814,6 +814,9 @@ paths:
       operationId: create-event-gateway-listener-policy
       summary: Create Policy for Listener
       description: Creates a new policy associated with the specified Event Gateway listener.
+      parameters:
+        - $ref: '#/components/parameters/EventGatewayPolicyBefore'
+        - $ref: '#/components/parameters/EventGatewayPolicyAfter'
       requestBody:
         $ref: '#/components/requestBodies/CreateEventGatewayListenerPolicyRequest'
       responses:
@@ -948,6 +951,41 @@ paths:
       responses:
         '204':
           description: No Content
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Event Gateway Listener Policies
+  '/v1/event-gateways/{gatewayId}/listeners/{eventGatewayListenerId}/policy-chain':
+    parameters:
+      - $ref: '#/components/parameters/gatewayId'
+      - $ref: '#/components/parameters/eventGatewayListenerId'
+    get:
+      operationId: get-event-gateway-listener-policy-chain
+      summary: Get Policy Chain for Listener
+      description: |
+        Get the policy chain for a listener composed of all the ids of the policies in order of execution.
+      responses:
+        '200':
+          $ref: '#/components/responses/EventGatewayPolicyChainResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Event Gateway Listener Policies
+    put:
+      operationId: update-event-gateway-listener-policy-chain
+      summary: Update Policy Chain for Listener
+      description: Update the policy chain for a listener by providing an ordered list of policy ids.
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateEventGatewayPolicyChainRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/EventGatewayPolicyChainResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1414,6 +1452,9 @@ paths:
       operationId: create-event-gateway-virtual-cluster-cluster-level-policy
       summary: Create Cluster Policy for Virtual Cluster
       description: Creates a new cluster-level policy associated with the specified Event Gateway virtual cluster.
+      parameters:
+        - $ref: '#/components/parameters/EventGatewayPolicyBefore'
+        - $ref: '#/components/parameters/EventGatewayPolicyAfter'
       requestBody:
         $ref: '#/components/requestBodies/CreateEventGatewayClusterPolicyRequest'
       responses:
@@ -1558,6 +1599,41 @@ paths:
           $ref: '#/components/responses/Forbidden'
       tags:
         - Event Gateway Virtual Cluster Policies
+  '/v1/event-gateways/{gatewayId}/virtual-clusters/{virtualClusterId}/cluster-policy-chain':
+    parameters:
+      - $ref: '#/components/parameters/gatewayId'
+      - $ref: '#/components/parameters/virtualClusterId'
+    get:
+      operationId: get-event-gateway-virtual-cluster-cluster-level-policy-chain
+      summary: Get Cluster Policy Chain for Virtual Cluster
+      description: |
+        Get the cluster-level policy chain for a virtual cluster composed of all the ids of the cluster-level policies in order of execution.
+      responses:
+        '200':
+          $ref: '#/components/responses/EventGatewayPolicyChainResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Event Gateway Virtual Cluster Policies
+    put:
+      operationId: update-event-gateway-virtual-cluster-cluster-level-policy-chain
+      summary: Update Cluster Policy Chain
+      description: Update the cluster-level policy chain for a virtual cluster by providing an ordered list of cluster-level policy ids.
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateEventGatewayPolicyChainRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/EventGatewayPolicyChainResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Event Gateway Virtual Cluster Policies
   '/v1/event-gateways/{gatewayId}/virtual-clusters/{virtualClusterId}/consume-policies':
     parameters:
       - $ref: '#/components/parameters/gatewayId'
@@ -1584,6 +1660,9 @@ paths:
       operationId: create-event-gateway-virtual-cluster-consume-policy
       summary: Create Consume Policy for Virtual Cluster
       description: Creates a new consume policy associated with the specified Event Gateway virtual cluster.
+      parameters:
+        - $ref: '#/components/parameters/EventGatewayPolicyBefore'
+        - $ref: '#/components/parameters/EventGatewayPolicyAfter'
       requestBody:
         $ref: '#/components/requestBodies/CreateEventGatewayConsumePolicyRequest'
       responses:
@@ -1728,6 +1807,41 @@ paths:
           $ref: '#/components/responses/Forbidden'
       tags:
         - Event Gateway Virtual Cluster Consume Policies
+  '/v1/event-gateways/{gatewayId}/virtual-clusters/{virtualClusterId}/consume-policy-chain':
+    parameters:
+      - $ref: '#/components/parameters/gatewayId'
+      - $ref: '#/components/parameters/virtualClusterId'
+    get:
+      operationId: get-event-gateway-virtual-cluster-consume-policy-chain
+      summary: Get Consume Policy Chain
+      description: |
+        Get the consume policy chain for a virtual cluster composed of all the ids of the consume policies in order of execution.
+      responses:
+        '200':
+          $ref: '#/components/responses/EventGatewayPolicyChainResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Event Gateway Virtual Cluster Consume Policies
+    put:
+      operationId: update-event-gateway-virtual-cluster-consume-policy-chain
+      summary: Update Consume Policy Chain
+      description: Update the consume policy chain for a virtual cluster by providing an ordered list of consume policy ids.
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateEventGatewayPolicyChainRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/EventGatewayPolicyChainResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Event Gateway Virtual Cluster Consume Policies
   '/v1/event-gateways/{gatewayId}/virtual-clusters/{virtualClusterId}/produce-policies':
     parameters:
       - $ref: '#/components/parameters/gatewayId'
@@ -1754,6 +1868,9 @@ paths:
       operationId: create-event-gateway-virtual-cluster-produce-policy
       summary: Create Produce Policy for Virtual Cluster
       description: Creates a new produce policy associated with the specified Event Gateway virtual cluster.
+      parameters:
+        - $ref: '#/components/parameters/EventGatewayPolicyBefore'
+        - $ref: '#/components/parameters/EventGatewayPolicyAfter'
       requestBody:
         $ref: '#/components/requestBodies/CreateEventGatewayProducePolicyRequest'
       responses:
@@ -1890,6 +2007,41 @@ paths:
       responses:
         '204':
           description: No Content
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Event Gateway Virtual Cluster Produce Policies
+  '/v1/event-gateways/{gatewayId}/virtual-clusters/{virtualClusterId}/produce-policy-chain':
+    parameters:
+      - $ref: '#/components/parameters/gatewayId'
+      - $ref: '#/components/parameters/virtualClusterId'
+    get:
+      operationId: get-event-gateway-virtual-cluster-produce-policy-chain
+      summary: Get Produce Policy Chain for Virtual Cluster
+      description: |
+        Get the produce policy chain for a virtual cluster composed of all the ids of the produce policies in order of execution.
+      responses:
+        '200':
+          $ref: '#/components/responses/EventGatewayPolicyChainResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Event Gateway Virtual Cluster Produce Policies
+    put:
+      operationId: update-event-gateway-virtual-cluster-produce-policy-chain
+      summary: Update Produce Policy Chain
+      description: Update the produce policy chain for a virtual cluster by providing an ordered list of produce policy ids.
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateEventGatewayPolicyChainRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/EventGatewayPolicyChainResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -7778,6 +7930,28 @@ paths:
           $ref: '#/components/responses/HTTP401Error'
       tags:
         - SNIs
+  '/v2/control-planes/{controlPlaneId}/core-entities/targets':
+    get:
+      operationId: list-targets
+      summary: List all targets for a control plane
+      description: Returns a collection of all targets for a control plane.
+      parameters:
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationOffset'
+        - $ref: '#/components/parameters/PaginationTagsFilter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListTargets'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Targets
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
   '/v2/control-planes/{controlPlaneId}/core-entities/upstreams':
     get:
       operationId: list-upstream
@@ -13751,6 +13925,24 @@ components:
       in: path
       required: true
       description: The ID of the Event Gateway Node.
+    EventGatewayPolicyAfter:
+      schema:
+        type: string
+        format: uuid
+      in: query
+      name: after
+      description: |
+        Determines the id of the existing policy the new policy should be inserted after. Either 'before' or 'after' can be provided, when both are omitted the new policy is added to the end of the chain. When both are provided, the request fails with a 400 Bad Request.
+      required: false
+    EventGatewayPolicyBefore:
+      schema:
+        type: string
+        format: uuid
+      in: query
+      name: before
+      description: |
+        Determines the id of the existing policy the new policy should be inserted before. Either 'before' or 'after' can be provided, when both are omitted the new policy is added to the end of the chain. When both are provided, the request fails with a 400 Bad Request.
+      required: false
     EventGatewayPolicyListFilter:
       schema:
         type: object
@@ -16185,6 +16377,7 @@ components:
       example: 39ed3790-085d-4605-9627-f96d86aaf425
       readOnly: true
     NetworkId:
+      description: 'The network ID to operate on. For serverless.v1 kind of cloud gateways, this field should be omitted.'
       type: string
       format: uuid
       example: 36ae63d3-efd1-4bec-b246-62aa5d3f5695
@@ -16236,7 +16429,7 @@ components:
       title: Control-Plane Geo
       x-speakeasy-unknown-values: allow
     GatewayVersion:
-      description: Supported gateway version.
+      description: 'Supported gateway version. For serverless.v1 kind of cloud gateways, this field should be omitted.'
       type: string
       example: '3.2'
       title: Gateway Version
@@ -16464,7 +16657,7 @@ components:
         - $ref: '#/components/schemas/ConfigurationDataPlaneGroupAutoscaleStatic'
         - $ref: '#/components/schemas/ConfigurationDataPlaneGroupAutoscaleAutopilot'
     ConfigurationDataPlaneGroupAutoscaleStatic:
-      description: Object that describes the static autoscaling strategy. Deprecated in favor of the autopilot autoscaling strategy. Static autoscaling will be removed in a future version.
+      description: 'Object that describes the static autoscaling strategy. Deprecated in favor of the autopilot autoscaling strategy. Static autoscaling will be removed in a future version. For serverless.v1 kind of cloud gateways, this field should be omitted.'
       type: object
       properties:
         kind:
@@ -16485,7 +16678,7 @@ components:
         - requested_instances
       title: Configuration Autoscale Static
     ConfigurationDataPlaneGroupAutoscaleAutopilot:
-      description: Object that describes the autopilot autoscaling strategy.
+      description: 'Object that describes the autopilot autoscaling strategy. For serverless.v1 kind of cloud gateways, this field should be omitted.'
       type: object
       properties:
         kind:
@@ -16551,10 +16744,8 @@ components:
           $ref: '#/components/schemas/ConfigurationDataPlaneGroupEnvironment'
       additionalProperties: false
       required:
-        - autoscale
         - provider
         - region
-        - cloud_gateway_network_id
       title: Configuration Data-Plane Group Config Item
     ConfigurationDataPlaneGroup:
       description: Object that describes the set of data-plane groups currently pointed to this configuration.
@@ -16635,14 +16826,26 @@ components:
         - id
         - provider
         - region
-        - autoscale
-        - cloud_gateway_network_id
         - state
         - created_at
         - updated_at
       title: Cloud Gateway Configuration Data-Plane Group
     NetworkConfigurationReference:
       $ref: '#/components/schemas/ConfigurationManifest'
+    ConfigurationKind:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+
+        Kind of the Cloud Gateway deployment. If serverless.v1 is specified, the following fields
+        should be omitted (will be ignored if provided): autoscale, cloud_gateway_network_id, version.
+      type: string
+      default: dedicated.v0
+      enum:
+        - dedicated.v0
+        - serverless.v1
+      title: ConfigurationKind
+      x-speakeasy-unknown-values: allow
     ConfigurationManifest:
       x-speakeasy-entity: CloudGatewayConfiguration
       description: Object containing information about a control-plane's cloud-gateways configuration.
@@ -16669,6 +16872,8 @@ components:
           items:
             $ref: '#/components/schemas/ConfigurationDataPlaneGroup'
           format: set
+        kind:
+          $ref: '#/components/schemas/ConfigurationKind'
         entity_version:
           description: |
             Positive, monotonically increasing version integer, to serialize configuration changes.
@@ -16695,7 +16900,6 @@ components:
         - id
         - control_plane_id
         - control_plane_geo
-        - version
         - dataplane_group_config
         - dataplane_groups
         - entity_version
@@ -16718,10 +16922,8 @@ components:
           $ref: '#/components/schemas/ConfigurationDataPlaneGroupEnvironment'
       additionalProperties: false
       required:
-        - autoscale
         - provider
         - region
-        - cloud_gateway_network_id
       title: CreateConfigurationDataPlaneGroup
     ProviderAccount:
       description: Object containing mapping for organization and cloud provider to account ID.
@@ -17212,6 +17414,7 @@ components:
         - $ref: '#/components/schemas/AwsPrivateDnsResolverResponse'
         - $ref: '#/components/schemas/GcpPrivateHostedZoneResponse'
         - $ref: '#/components/schemas/AzurePrivateHostedZoneResponse'
+        - $ref: '#/components/schemas/AzurePrivateDnsResolverResponse'
     AwsPrivateHostedZoneResponse:
       type: object
       properties:
@@ -17475,6 +17678,59 @@ components:
         - updated_at
         - name
         - private_dns_attachment_config
+    AzurePrivateDnsResolverResponse:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/PrivateDnsId'
+        state:
+          $ref: '#/components/schemas/PrivateDnsState'
+        state_metadata:
+          description: |
+            Metadata describing the backing state of the Private Dns and why it may be in an erroneous state.
+          type: object
+          additionalProperties: false
+          properties:
+            reported_status:
+              description: Reported status of the Private Dns from backing infrastructure.
+              type: string
+              example: ERROR
+            reason:
+              description: |
+                Reason why the Private Dns may be in an erroneous state, reported from backing infrastructure.
+              type: string
+              example: |
+                Failed to create Private Dns due to invalid Cloud Provider configuration.
+          title: PrivateDnsStateMetadata
+        entity_version:
+          description: |
+            Monotonically-increasing version count of the Private DNS, to indicate the order of updates to the
+            Private DNS.
+          type: integer
+          example: 1
+          readOnly: true
+        created_at:
+          description: An RFC-3339 timestamp representation of Private DNS creation date.
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          readOnly: true
+        updated_at:
+          description: An RFC-3339 timestamp representation of Private DNS update date.
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          readOnly: true
+        name:
+          $ref: '#/components/schemas/PrivateDnsName'
+      required:
+        - id
+        - state
+        - state_metadata
+        - entity_version
+        - created_at
+        - updated_at
+        - name
     AwsPrivateDnsResolverAttachmentConfig:
       type: object
       properties:
@@ -17810,6 +18066,64 @@ components:
         - created_at
         - updated_at
       title: Azure Transit Gateway
+    AzureVHubPeeringGatewayResponse:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/TransitGatewayName'
+        dns_config:
+          $ref: '#/components/schemas/TransitGatewayDnsConfig'
+        id:
+          $ref: '#/components/schemas/TransitGatewayId'
+        state:
+          $ref: '#/components/schemas/TransitGatewayState'
+        state_metadata:
+          description: |
+            Metadata describing the backing state of the transit gateway and why it may be in an erroneous state.
+          type: object
+          additionalProperties: false
+          properties:
+            reported_status:
+              description: Reported status of the transit gateway from backing infrastructure.
+              type: string
+              example: ERROR
+            reason:
+              description: |
+                Reason why the transit gateway may be in an erroneous state, reported from backing infrastructure.
+              type: string
+              example: |
+                Transit Gateway Attachment configuration could not find a resource with the provided ram share arn.
+          readOnly: true
+          title: TransitGatewayStateMetadata
+        entity_version:
+          description: |
+            Monotonically-increasing version count of the transit gateway, to indicate the order of updates to the
+            transit gateway.
+          type: integer
+          example: 1
+          readOnly: true
+        created_at:
+          description: An RFC-3339 timestamp representation of transit gateway creation date.
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          readOnly: true
+        updated_at:
+          description: An RFC-3339 timestamp representation of transit gateway update date.
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          readOnly: true
+      required:
+        - name
+        - id
+        - dns_config
+        - state
+        - entity_version
+        - created_at
+        - updated_at
+      title: Azure Virtual Hub Peering Gateway
+      x-speakeasy-name-override: AzureVhubPeeringGatewayResponse
     GCPVPCPeeringGatewayResponse:
       type: object
       properties:
@@ -17875,6 +18189,7 @@ components:
         - $ref: '#/components/schemas/AwsTransitGatewayResponse'
         - $ref: '#/components/schemas/AwsVpcPeeringGatewayResponse'
         - $ref: '#/components/schemas/AzureTransitGatewayResponse'
+        - $ref: '#/components/schemas/AzureVHubPeeringGatewayResponse'
         - $ref: '#/components/schemas/GCPVPCPeeringGatewayResponse'
         - $ref: '#/components/schemas/AwsResourceEndpointGatewayResponse'
     CreateAwsTransitGateway:
@@ -17939,6 +18254,17 @@ components:
         - transit_gateway_attachment_config
       title: Azure Transit Gateway
       x-speakeasy-name-override: AzureTransitGateway
+    CreateAzureVHubPeeringGateway:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/TransitGatewayName'
+        dns_config:
+          $ref: '#/components/schemas/TransitGatewayDnsConfig'
+      required:
+        - name
+      title: Azure Virtual Hub Peering Gateway
+      x-speakeasy-name-override: AzureVhubPeeringGateway
     CreateGCPVPCPeeringTransitGateway:
       type: object
       properties:
@@ -17961,6 +18287,7 @@ components:
         - $ref: '#/components/schemas/CreateAwsVpcPeeringGateway'
         - $ref: '#/components/schemas/CreateAwsResourceEndpointGateway'
         - $ref: '#/components/schemas/CreateAzureTransitGateway'
+        - $ref: '#/components/schemas/CreateAzureVHubPeeringGateway'
         - $ref: '#/components/schemas/CreateGCPVPCPeeringTransitGateway'
       title: CreateTransitGatewayRequest
     PatchAwsResourceEndpointGateway:
@@ -18134,13 +18461,14 @@ components:
           items:
             $ref: '#/components/schemas/CreateConfigurationDataPlaneGroup'
           format: set
+        kind:
+          $ref: '#/components/schemas/ConfigurationKind'
         api_access:
           $ref: '#/components/schemas/ApiAccess'
       additionalProperties: false
       required:
         - control_plane_id
         - control_plane_geo
-        - version
         - dataplane_groups
       title: CreateConfigurationRequest
     CreateCustomDomainRequest:
@@ -26600,6 +26928,7 @@ components:
         description:
           description: A human-readable description of the listener.
           type: string
+          default: ''
           maxLength: 512
         addresses:
           $ref: '#/components/schemas/EventGatewayListenerAddresses'
@@ -26666,6 +26995,7 @@ components:
         description:
           description: A human-readable description of the virtual cluster.
           type: string
+          default: ''
           maxLength: 512
         destination:
           $ref: '#/components/schemas/BackendClusterReference'
@@ -27012,6 +27342,7 @@ components:
         description:
           description: A human-readable description of the backend cluster.
           type: string
+          default: ''
           maxLength: 512
         authentication:
           $ref: '#/components/schemas/BackendClusterAuthenticationSensitiveDataAwareScheme'
@@ -27255,6 +27586,7 @@ components:
         description:
           description: A human-readable description of the virtual cluster.
           type: string
+          default: ''
           maxLength: 512
         type:
           description: The type of the schema registry.
@@ -27291,6 +27623,7 @@ components:
         description:
           description: A human-readable description of the virtual cluster.
           type: string
+          default: ''
           maxLength: 512
         type:
           description: The type of the schema registry.
@@ -27319,6 +27652,7 @@ components:
         description:
           description: A human-readable description of the virtual cluster.
           type: string
+          default: ''
           maxLength: 512
         type:
           description: The type of the schema registry.
@@ -27503,6 +27837,7 @@ components:
         description:
           description: A human-readable description of the policy.
           type: string
+          default: ''
           maxLength: 512
         enabled:
           description: Whether the policy is enabled.
@@ -27529,6 +27864,7 @@ components:
         condition:
           description: A string containing the boolean expression that determines whether the policy is applied.
           type: string
+          default: ''
           maxLength: 1000
           x-expression:
             type: boolean
@@ -27555,6 +27891,7 @@ components:
         description:
           description: A human-readable description of the policy.
           type: string
+          default: ''
           maxLength: 512
         enabled:
           description: Whether the policy is enabled.
@@ -27583,6 +27920,7 @@ components:
         - id
         - created_at
         - updated_at
+        - config
     EventGatewayTLSListenerSensitiveDataAwarePolicy:
       description: |
         The TLS Server policy defines the certificates and keys used by the gateway server when the client connects
@@ -27605,6 +27943,7 @@ components:
         description:
           description: A human-readable description of the policy.
           type: string
+          default: ''
           maxLength: 512
         enabled:
           description: Whether the policy is enabled.
@@ -27641,6 +27980,7 @@ components:
         description:
           description: A human-readable description of the policy.
           type: string
+          default: ''
           maxLength: 512
         enabled:
           description: Whether the policy is enabled.
@@ -27830,6 +28170,7 @@ components:
         description:
           description: A human-readable description of the policy.
           type: string
+          default: ''
           maxLength: 512
         enabled:
           description: Whether the policy is enabled.
@@ -28038,6 +28379,7 @@ components:
         description:
           description: A human-readable description of the policy.
           type: string
+          default: ''
           maxLength: 512
         enabled:
           description: Whether the policy is enabled.
@@ -28053,6 +28395,7 @@ components:
           description: A string containing the boolean expression that determines whether the policy is applied.
           type: string
           example: 'context.topic.name.endsWith("my_suffix") && records.headers["x-flag"] == "a-value"'
+          default: ''
           maxLength: 1000
           x-expression:
             type: boolean
@@ -28101,6 +28444,7 @@ components:
         description:
           description: A human-readable description of the policy.
           type: string
+          default: ''
           maxLength: 512
         enabled:
           description: Whether the policy is enabled.
@@ -28116,6 +28460,7 @@ components:
           description: A string containing the boolean expression that determines whether the policy is applied.
           type: string
           example: 'context.topic.name.endsWith("my_suffix") && records.headers["x-flag"] == "a-value"'
+          default: ''
           maxLength: 1000
           x-expression:
             type: boolean
@@ -28168,6 +28513,7 @@ components:
         description:
           description: A human-readable description of the policy.
           type: string
+          default: ''
           maxLength: 512
         enabled:
           description: Whether the policy is enabled.
@@ -28193,6 +28539,7 @@ components:
             `record.value` fields.
           type: string
           example: record.value.content.foo.bar == "a-value"
+          default: ''
           maxLength: 1000
           x-expression:
             type: boolean
@@ -28225,6 +28572,7 @@ components:
         description:
           description: A human-readable description of the policy.
           type: string
+          default: ''
           maxLength: 512
         enabled:
           description: Whether the policy is enabled.
@@ -28250,6 +28598,7 @@ components:
             `record.value` fields.
           type: string
           example: record.value.content.foo.bar == "a-value"
+          default: ''
           maxLength: 1000
           x-expression:
             type: boolean
@@ -28286,6 +28635,7 @@ components:
         description:
           description: A human-readable description of the policy.
           type: string
+          default: ''
           maxLength: 512
         enabled:
           description: Whether the policy is enabled.
@@ -28301,6 +28651,7 @@ components:
             `record.value` fields.
           type: string
           example: record.value.content.foo.bar == "a-value"
+          default: ''
           maxLength: 1000
           x-expression:
             type: boolean
@@ -28331,6 +28682,7 @@ components:
         description:
           description: A human-readable description of the policy.
           type: string
+          default: ''
           maxLength: 512
         enabled:
           description: Whether the policy is enabled.
@@ -28346,6 +28698,7 @@ components:
             `record.value` fields.
           type: string
           example: record.value.content.foo.bar == "a-value"
+          default: ''
           maxLength: 1000
           x-expression:
             type: boolean
@@ -28421,6 +28774,7 @@ components:
         description:
           description: A human-readable description of the policy.
           type: string
+          default: ''
           maxLength: 512
         enabled:
           description: Whether the policy is enabled.
@@ -28446,6 +28800,7 @@ components:
           description: A string containing the boolean expression that determines whether the policy is applied.
           type: string
           example: 'context.topic.name.endsWith("my_suffix") && records.headers["x-flag"] == "a-value"'
+          default: ''
           maxLength: 1000
           x-expression:
             type: boolean
@@ -28476,6 +28831,7 @@ components:
         description:
           description: A human-readable description of the policy.
           type: string
+          default: ''
           maxLength: 512
         enabled:
           description: Whether the policy is enabled.
@@ -28491,6 +28847,7 @@ components:
           description: A string containing the boolean expression that determines whether the policy is applied.
           type: string
           example: 'context.topic.name.endsWith("my_suffix") && records.headers["x-flag"] == "a-value"'
+          default: ''
           maxLength: 1000
           x-expression:
             type: boolean
@@ -28561,6 +28918,7 @@ components:
         description:
           description: A human-readable description of the policy.
           type: string
+          default: ''
           maxLength: 512
         enabled:
           description: Whether the policy is enabled.
@@ -28576,6 +28934,7 @@ components:
           description: A string containing the boolean expression that determines whether the policy is applied.
           type: string
           example: context.auth.principal.name == "this-user"
+          default: ''
           maxLength: 1000
           x-expression:
             type: boolean
@@ -29153,6 +29512,7 @@ components:
         description:
           description: A human-readable description of the static key.
           type: string
+          default: ''
           maxLength: 512
         labels:
           $ref: '#/components/schemas/Labels'
@@ -29185,6 +29545,7 @@ components:
         description:
           description: A human-readable description of the static key.
           type: string
+          default: ''
           maxLength: 512
         labels:
           $ref: '#/components/schemas/Labels'
@@ -29193,6 +29554,16 @@ components:
       required:
         - name
         - value
+    EventGatewayPolicyReference:
+      description: A reference to an Event Gateway policy.
+      type: object
+      properties:
+        id:
+          description: The unique identifier of the policy.
+          type: string
+          format: uuid
+      required:
+        - id
     GatewayName:
       description: The name of the Gateway.
       type: string
@@ -33814,6 +34185,7 @@ components:
               description:
                 description: A human-readable description of the virtual cluster.
                 type: string
+                default: ''
                 maxLength: 512
               addresses:
                 $ref: '#/components/schemas/EventGatewayListenerAddresses'
@@ -33841,6 +34213,7 @@ components:
               description:
                 description: A human-readable description of the virtual cluster.
                 type: string
+                default: ''
                 maxLength: 512
               addresses:
                 $ref: '#/components/schemas/EventGatewayListenerAddresses'
@@ -33865,6 +34238,7 @@ components:
               description:
                 description: A human-readable description of the virtual cluster.
                 type: string
+                default: ''
                 maxLength: 512
               destination:
                 $ref: '#/components/schemas/BackendClusterReferenceModify'
@@ -33897,6 +34271,7 @@ components:
               description:
                 description: A human-readable description of the virtual cluster.
                 type: string
+                default: ''
                 maxLength: 512
               destination:
                 $ref: '#/components/schemas/BackendClusterReferenceModify'
@@ -33929,6 +34304,7 @@ components:
               description:
                 description: A human-readable description of the virtual cluster.
                 type: string
+                default: ''
                 maxLength: 512
               authentication:
                 $ref: '#/components/schemas/BackendClusterAuthenticationScheme'
@@ -33964,6 +34340,7 @@ components:
               description:
                 description: A human-readable description of the virtual cluster.
                 type: string
+                default: ''
                 maxLength: 512
               authentication:
                 $ref: '#/components/schemas/BackendClusterAuthenticationSensitiveDataAwareScheme'
@@ -34105,6 +34482,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/EventGatewayStaticKeyCreate'
+    UpdateEventGatewayPolicyChainRequest:
+      description: The request schema for updating the policy chain.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/EventGatewayPolicyReference'
     DataPlaneClientCertificateRequest:
       content:
         application/json:
@@ -37245,6 +37630,14 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/EventGatewayStaticKey'
+    EventGatewayPolicyChainResponse:
+      description: A response containing the list of policies in order of execution.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/EventGatewayPolicyReference'
     DataPlaneClientCertificateResponse:
       description: Response body for retrieving a dp-client-certificate.
       content:
@@ -37444,6 +37837,21 @@ components:
                     description: An ISO-8604 timestamp representation of custom plugin schema update date.
                     type: integer
                     example: 1422412345
+    ListTargets:
+      description: A paginated list response for a collection of targets.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Target'
+              next:
+                $ref: '#/components/schemas/PaginationNextResponse'
+              offset:
+                $ref: '#/components/schemas/PaginationOffsetResponse'
     ListConfigStoresResponse:
       description: List of Config Stores
       content:

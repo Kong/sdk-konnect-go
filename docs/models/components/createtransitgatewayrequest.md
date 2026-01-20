@@ -29,6 +29,12 @@ createTransitGatewayRequest := components.CreateCreateTransitGatewayRequestAWSRe
 createTransitGatewayRequest := components.CreateCreateTransitGatewayRequestAzureTransitGateway(components.AzureTransitGateway{/* values here */})
 ```
 
+### AzureVhubPeeringGateway
+
+```go
+createTransitGatewayRequest := components.CreateCreateTransitGatewayRequestAzureVhubPeeringGateway(components.AzureVhubPeeringGateway{/* values here */})
+```
+
 ### GcpVpcPeeringTransitGateway
 
 ```go

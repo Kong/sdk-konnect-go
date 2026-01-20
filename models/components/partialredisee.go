@@ -194,6 +194,7 @@ const (
 	PortTypeStr     PortType = "str"
 )
 
+// Port - An integer representing a port number between 0 and 65535, inclusive.
 type Port struct {
 	Integer *int64  `queryParam:"inline" union:"member"`
 	Str     *string `queryParam:"inline" union:"member"`

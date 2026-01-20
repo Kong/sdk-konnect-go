@@ -1,0 +1,12 @@
+# AzureVhubPeeringGatewayResponseTransitGatewayStateMetadata
+
+Metadata describing the backing state of the transit gateway and why it may be in an erroneous state.
+
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          | Example                                                                                              |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `ReportedStatus`                                                                                     | **string*                                                                                            | :heavy_minus_sign:                                                                                   | Reported status of the transit gateway from backing infrastructure.                                  | ERROR                                                                                                |
+| `Reason`                                                                                             | **string*                                                                                            | :heavy_minus_sign:                                                                                   | Reason why the transit gateway may be in an erroneous state, reported from backing infrastructure.<br/> | Transit Gateway Attachment configuration could not find a resource with the provided ram share arn.<br/> |

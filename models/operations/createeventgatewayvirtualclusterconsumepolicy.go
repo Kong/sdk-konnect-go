@@ -12,6 +12,12 @@ type CreateEventGatewayVirtualClusterConsumePolicyRequest struct {
 	GatewayID string `pathParam:"style=simple,explode=false,name=gatewayId"`
 	// The ID of the Virtual Cluster.
 	VirtualClusterID string `pathParam:"style=simple,explode=false,name=virtualClusterId"`
+	// Determines the id of the existing policy the new policy should be inserted before. Either 'before' or 'after' can be provided, when both are omitted the new policy is added to the end of the chain. When both are provided, the request fails with a 400 Bad Request.
+	//
+	Before *string `queryParam:"style=form,explode=true,name=before"`
+	// Determines the id of the existing policy the new policy should be inserted after. Either 'before' or 'after' can be provided, when both are omitted the new policy is added to the end of the chain. When both are provided, the request fails with a 400 Bad Request.
+	//
+	After *string `queryParam:"style=form,explode=true,name=after"`
 	// The request schema for creating a consume policy.
 	EventGatewayConsumePolicyCreate *components.EventGatewayConsumePolicyCreate `request:"mediaType=application/json"`
 }
@@ -28,6 +34,20 @@ func (c *CreateEventGatewayVirtualClusterConsumePolicyRequest) GetVirtualCluster
 		return ""
 	}
 	return c.VirtualClusterID
+}
+
+func (c *CreateEventGatewayVirtualClusterConsumePolicyRequest) GetBefore() *string {
+	if c == nil {
+		return nil
+	}
+	return c.Before
+}
+
+func (c *CreateEventGatewayVirtualClusterConsumePolicyRequest) GetAfter() *string {
+	if c == nil {
+		return nil
+	}
+	return c.After
 }
 
 func (c *CreateEventGatewayVirtualClusterConsumePolicyRequest) GetEventGatewayConsumePolicyCreate() *components.EventGatewayConsumePolicyCreate {

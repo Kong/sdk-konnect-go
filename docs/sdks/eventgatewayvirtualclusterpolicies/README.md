@@ -16,6 +16,8 @@ Cluster policies are transformation and validation policies that can be applied 
 * [PatchEventGatewayVirtualClusterClusterLevelPolicy](#patcheventgatewayvirtualclusterclusterlevelpolicy) - Patch Cluster Policy for Virtual Cluster
 * [DeleteEventGatewayVirtualClusterClusterLevelPolicy](#deleteeventgatewayvirtualclusterclusterlevelpolicy) - Delete Cluster Policy for Virtual Cluster
 * [MoveEventGatewayVirtualClusterClusterLevelPolicy](#moveeventgatewayvirtualclusterclusterlevelpolicy) - Move Cluster Policy
+* [GetEventGatewayVirtualClusterClusterLevelPolicyChain](#geteventgatewayvirtualclusterclusterlevelpolicychain) - Get Cluster Policy Chain for Virtual Cluster
+* [UpdateEventGatewayVirtualClusterClusterLevelPolicyChain](#updateeventgatewayvirtualclusterclusterlevelpolicychain) - Update Cluster Policy Chain
 
 ## ListEventGatewayVirtualClusterClusterLevelPolicies
 
@@ -127,6 +129,7 @@ func main() {
                         },
                     },
                 },
+                Condition: sdkkonnectgo.Pointer("context.auth.principal.name == \"this-user\""),
             },
         )),
     })
@@ -258,6 +261,7 @@ func main() {
                 Config: components.EventGatewayACLPolicyConfig{
                     Rules: []components.EventGatewayACLRule{},
                 },
+                Condition: sdkkonnectgo.Pointer("context.auth.principal.name == \"this-user\""),
             },
         )),
     })
@@ -480,6 +484,125 @@ func main() {
 ### Response
 
 **[*operations.MoveEventGatewayVirtualClusterClusterLevelPolicyResponse](../../models/operations/moveeventgatewayvirtualclusterclusterlevelpolicyresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetEventGatewayVirtualClusterClusterLevelPolicyChain
+
+Get the cluster-level policy chain for a virtual cluster composed of all the ids of the cluster-level policies in order of execution.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-event-gateway-virtual-cluster-cluster-level-policy-chain" method="get" path="/v1/event-gateways/{gatewayId}/virtual-clusters/{virtualClusterId}/cluster-policy-chain" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.EventGatewayVirtualClusterPolicies.GetEventGatewayVirtualClusterClusterLevelPolicyChain(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", "cc7d1778-0cd3-4fa6-8469-55856fb6341b")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EventGatewayPolicyChainResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `gatewayID`                                              | *string*                                                 | :heavy_check_mark:                                       | The UUID of your Gateway.                                | 9524ec7d-36d9-465d-a8c5-83a3c9390458                     |
+| `virtualClusterID`                                       | *string*                                                 | :heavy_check_mark:                                       | The ID of the Virtual Cluster.                           |                                                          |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.GetEventGatewayVirtualClusterClusterLevelPolicyChainResponse](../../models/operations/geteventgatewayvirtualclusterclusterlevelpolicychainresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## UpdateEventGatewayVirtualClusterClusterLevelPolicyChain
+
+Update the cluster-level policy chain for a virtual cluster by providing an ordered list of cluster-level policy ids.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="update-event-gateway-virtual-cluster-cluster-level-policy-chain" method="put" path="/v1/event-gateways/{gatewayId}/virtual-clusters/{virtualClusterId}/cluster-policy-chain" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.EventGatewayVirtualClusterPolicies.UpdateEventGatewayVirtualClusterClusterLevelPolicyChain(ctx, operations.UpdateEventGatewayVirtualClusterClusterLevelPolicyChainRequest{
+        GatewayID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        VirtualClusterID: "e5934101-6a09-4d93-a554-f825eaa5c927",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EventGatewayPolicyChainResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                              | Type                                                                                                                                                                   | Required                                                                                                                                                               | Description                                                                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                  | :heavy_check_mark:                                                                                                                                                     | The context to use for the request.                                                                                                                                    |
+| `request`                                                                                                                                                              | [operations.UpdateEventGatewayVirtualClusterClusterLevelPolicyChainRequest](../../models/operations/updateeventgatewayvirtualclusterclusterlevelpolicychainrequest.md) | :heavy_check_mark:                                                                                                                                                     | The request object to use for the request.                                                                                                                             |
+| `opts`                                                                                                                                                                 | [][operations.Option](../../models/operations/option.md)                                                                                                               | :heavy_minus_sign:                                                                                                                                                     | The options for this request.                                                                                                                                          |
+
+### Response
+
+**[*operations.UpdateEventGatewayVirtualClusterClusterLevelPolicyChainResponse](../../models/operations/updateeventgatewayvirtualclusterclusterlevelpolicychainresponse.md), error**
 
 ### Errors
 

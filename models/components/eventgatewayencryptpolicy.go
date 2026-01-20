@@ -13,7 +13,7 @@ type EventGatewayEncryptPolicy struct {
 	// A unique user-defined name of the policy.
 	Name *string `json:"name,omitempty"`
 	// A human-readable description of the policy.
-	Description *string `json:"description,omitempty"`
+	Description *string `default:"" json:"description"`
 	// Whether the policy is enabled.
 	Enabled *bool `default:"true" json:"enabled"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
@@ -24,7 +24,7 @@ type EventGatewayEncryptPolicy struct {
 	// The configuration of the encrypt policy.
 	Config EventGatewayEncryptConfig `json:"config"`
 	// A string containing the boolean expression that determines whether the policy is applied.
-	Condition *string `json:"condition,omitempty"`
+	Condition *string `default:"" json:"condition"`
 }
 
 func (e EventGatewayEncryptPolicy) MarshalJSON() ([]byte, error) {

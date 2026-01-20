@@ -10,8 +10,8 @@ import (
 // NetworkConfigurationReference - Object containing information about a control-plane's cloud-gateways configuration.
 type NetworkConfigurationReference struct {
 	ID string `json:"id"`
-	// Supported gateway version.
-	Version string `json:"version"`
+	// Supported gateway version. For serverless.v1 kind of cloud gateways, this field should be omitted.
+	Version *string `json:"version,omitempty"`
 	// Type of API access data-plane groups will support for a configuration.
 	APIAccess *APIAccess `default:"private+public" json:"api_access"`
 	// Object that describes where data-planes will be deployed to, along with how many instances.
@@ -20,6 +20,12 @@ type NetworkConfigurationReference struct {
 	// instances.
 	//
 	DataplaneGroups []ConfigurationDataPlaneGroup `json:"dataplane_groups"`
+	// **Pre-release Feature**
+	// This feature is currently in beta and is subject to change.
+	//
+	// Kind of the Cloud Gateway deployment. If serverless.v1 is specified, the following fields
+	// should be omitted (will be ignored if provided): autoscale, cloud_gateway_network_id, version.
+	Kind *ConfigurationKind `default:"dedicated.v0" json:"kind"`
 	// Positive, monotonically increasing version integer, to serialize configuration changes.
 	//
 	EntityVersion float64 `json:"entity_version"`
@@ -50,9 +56,9 @@ func (n *NetworkConfigurationReference) GetID() string {
 	return n.ID
 }
 
-func (n *NetworkConfigurationReference) GetVersion() string {
+func (n *NetworkConfigurationReference) GetVersion() *string {
 	if n == nil {
-		return ""
+		return nil
 	}
 	return n.Version
 }
@@ -76,6 +82,13 @@ func (n *NetworkConfigurationReference) GetDataplaneGroups() []ConfigurationData
 		return []ConfigurationDataPlaneGroup{}
 	}
 	return n.DataplaneGroups
+}
+
+func (n *NetworkConfigurationReference) GetKind() *ConfigurationKind {
+	if n == nil {
+		return nil
+	}
+	return n.Kind
 }
 
 func (n *NetworkConfigurationReference) GetEntityVersion() float64 {

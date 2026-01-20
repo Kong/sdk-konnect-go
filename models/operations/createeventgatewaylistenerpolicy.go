@@ -12,6 +12,12 @@ type CreateEventGatewayListenerPolicyRequest struct {
 	GatewayID string `pathParam:"style=simple,explode=false,name=gatewayId"`
 	// The ID of the Event Gateway Listener.
 	EventGatewayListenerID string `pathParam:"style=simple,explode=false,name=eventGatewayListenerId"`
+	// Determines the id of the existing policy the new policy should be inserted before. Either 'before' or 'after' can be provided, when both are omitted the new policy is added to the end of the chain. When both are provided, the request fails with a 400 Bad Request.
+	//
+	Before *string `queryParam:"style=form,explode=true,name=before"`
+	// Determines the id of the existing policy the new policy should be inserted after. Either 'before' or 'after' can be provided, when both are omitted the new policy is added to the end of the chain. When both are provided, the request fails with a 400 Bad Request.
+	//
+	After *string `queryParam:"style=form,explode=true,name=after"`
 	// The request schema for creating a listener policy.
 	EventGatewayListenerPolicyCreate components.EventGatewayListenerPolicyCreate `request:"mediaType=application/json"`
 }
@@ -28,6 +34,20 @@ func (c *CreateEventGatewayListenerPolicyRequest) GetEventGatewayListenerID() st
 		return ""
 	}
 	return c.EventGatewayListenerID
+}
+
+func (c *CreateEventGatewayListenerPolicyRequest) GetBefore() *string {
+	if c == nil {
+		return nil
+	}
+	return c.Before
+}
+
+func (c *CreateEventGatewayListenerPolicyRequest) GetAfter() *string {
+	if c == nil {
+		return nil
+	}
+	return c.After
 }
 
 func (c *CreateEventGatewayListenerPolicyRequest) GetEventGatewayListenerPolicyCreate() components.EventGatewayListenerPolicyCreate {

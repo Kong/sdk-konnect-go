@@ -12,6 +12,12 @@ type CreateEventGatewayVirtualClusterProducePolicyRequest struct {
 	GatewayID string `pathParam:"style=simple,explode=false,name=gatewayId"`
 	// The ID of the Virtual Cluster.
 	VirtualClusterID string `pathParam:"style=simple,explode=false,name=virtualClusterId"`
+	// Determines the id of the existing policy the new policy should be inserted before. Either 'before' or 'after' can be provided, when both are omitted the new policy is added to the end of the chain. When both are provided, the request fails with a 400 Bad Request.
+	//
+	Before *string `queryParam:"style=form,explode=true,name=before"`
+	// Determines the id of the existing policy the new policy should be inserted after. Either 'before' or 'after' can be provided, when both are omitted the new policy is added to the end of the chain. When both are provided, the request fails with a 400 Bad Request.
+	//
+	After *string `queryParam:"style=form,explode=true,name=after"`
 	// The request schema for creating a produce policy.
 	EventGatewayProducePolicyCreate *components.EventGatewayProducePolicyCreate `request:"mediaType=application/json"`
 }
@@ -28,6 +34,20 @@ func (c *CreateEventGatewayVirtualClusterProducePolicyRequest) GetVirtualCluster
 		return ""
 	}
 	return c.VirtualClusterID
+}
+
+func (c *CreateEventGatewayVirtualClusterProducePolicyRequest) GetBefore() *string {
+	if c == nil {
+		return nil
+	}
+	return c.Before
+}
+
+func (c *CreateEventGatewayVirtualClusterProducePolicyRequest) GetAfter() *string {
+	if c == nil {
+		return nil
+	}
+	return c.After
 }
 
 func (c *CreateEventGatewayVirtualClusterProducePolicyRequest) GetEventGatewayProducePolicyCreate() *components.EventGatewayProducePolicyCreate {

@@ -15,6 +15,7 @@ const (
 	CreateTransitGatewayRequestTypeAWSVpcPeeringGateway        CreateTransitGatewayRequestType = "AWSVpcPeeringGateway"
 	CreateTransitGatewayRequestTypeAWSResourceEndpointGateway  CreateTransitGatewayRequestType = "AWSResourceEndpointGateway"
 	CreateTransitGatewayRequestTypeAzureTransitGateway         CreateTransitGatewayRequestType = "AzureTransitGateway"
+	CreateTransitGatewayRequestTypeAzureVhubPeeringGateway     CreateTransitGatewayRequestType = "AzureVhubPeeringGateway"
 	CreateTransitGatewayRequestTypeGcpVpcPeeringTransitGateway CreateTransitGatewayRequestType = "GcpVpcPeeringTransitGateway"
 )
 
@@ -24,6 +25,7 @@ type CreateTransitGatewayRequest struct {
 	AWSVpcPeeringGateway        *AWSVpcPeeringGateway        `queryParam:"inline" union:"member"`
 	AWSResourceEndpointGateway  *AWSResourceEndpointGateway  `queryParam:"inline" union:"member"`
 	AzureTransitGateway         *AzureTransitGateway         `queryParam:"inline" union:"member"`
+	AzureVhubPeeringGateway     *AzureVhubPeeringGateway     `queryParam:"inline" union:"member"`
 	GcpVpcPeeringTransitGateway *GcpVpcPeeringTransitGateway `queryParam:"inline" union:"member"`
 
 	Type CreateTransitGatewayRequestType
@@ -62,6 +64,15 @@ func CreateCreateTransitGatewayRequestAzureTransitGateway(azureTransitGateway Az
 	return CreateTransitGatewayRequest{
 		AzureTransitGateway: &azureTransitGateway,
 		Type:                typ,
+	}
+}
+
+func CreateCreateTransitGatewayRequestAzureVhubPeeringGateway(azureVhubPeeringGateway AzureVhubPeeringGateway) CreateTransitGatewayRequest {
+	typ := CreateTransitGatewayRequestTypeAzureVhubPeeringGateway
+
+	return CreateTransitGatewayRequest{
+		AzureVhubPeeringGateway: &azureVhubPeeringGateway,
+		Type:                    typ,
 	}
 }
 
@@ -111,6 +122,13 @@ func (u *CreateTransitGatewayRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var azureVhubPeeringGateway AzureVhubPeeringGateway = AzureVhubPeeringGateway{}
+	if err := utils.UnmarshalJSON(data, &azureVhubPeeringGateway, "", true, nil); err == nil {
+		u.AzureVhubPeeringGateway = &azureVhubPeeringGateway
+		u.Type = CreateTransitGatewayRequestTypeAzureVhubPeeringGateway
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CreateTransitGatewayRequest", string(data))
 }
 
@@ -129,6 +147,10 @@ func (u CreateTransitGatewayRequest) MarshalJSON() ([]byte, error) {
 
 	if u.AzureTransitGateway != nil {
 		return utils.MarshalJSON(u.AzureTransitGateway, "", true)
+	}
+
+	if u.AzureVhubPeeringGateway != nil {
+		return utils.MarshalJSON(u.AzureVhubPeeringGateway, "", true)
 	}
 
 	if u.GcpVpcPeeringTransitGateway != nil {
