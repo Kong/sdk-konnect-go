@@ -57,3 +57,4 @@ go:
   responseFormat: envelope
   sdkPackageName: ""
   unionStrategy: left-to-right
+
