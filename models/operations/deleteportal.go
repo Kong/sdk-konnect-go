@@ -9,18 +9,18 @@ import (
 	"net/http"
 )
 
-// QueryParamForce - If true, the portal will be deleted, automatically deleting all API publications. If the force param is not set, the deletion will only succeed if there are no APIs currently published.
-type QueryParamForce string
+// DeletePortalQueryParamForce - If true, the portal will be deleted, automatically deleting all API publications. If the force param is not set, the deletion will only succeed if there are no APIs currently published.
+type DeletePortalQueryParamForce string
 
 const (
-	QueryParamForceTrue  QueryParamForce = "true"
-	QueryParamForceFalse QueryParamForce = "false"
+	DeletePortalQueryParamForceTrue  DeletePortalQueryParamForce = "true"
+	DeletePortalQueryParamForceFalse DeletePortalQueryParamForce = "false"
 )
 
-func (e QueryParamForce) ToPointer() *QueryParamForce {
+func (e DeletePortalQueryParamForce) ToPointer() *DeletePortalQueryParamForce {
 	return &e
 }
-func (e *QueryParamForce) UnmarshalJSON(data []byte) error {
+func (e *DeletePortalQueryParamForce) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -29,10 +29,10 @@ func (e *QueryParamForce) UnmarshalJSON(data []byte) error {
 	case "true":
 		fallthrough
 	case "false":
-		*e = QueryParamForce(v)
+		*e = DeletePortalQueryParamForce(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for QueryParamForce: %v", v)
+		return fmt.Errorf("invalid value for DeletePortalQueryParamForce: %v", v)
 	}
 }
 
@@ -40,7 +40,7 @@ type DeletePortalRequest struct {
 	// ID of the portal.
 	PortalID string `pathParam:"style=simple,explode=false,name=portalId"`
 	// If true, the portal will be deleted, automatically deleting all API publications. If the force param is not set, the deletion will only succeed if there are no APIs currently published.
-	Force *QueryParamForce `default:"false" queryParam:"style=form,explode=true,name=force"`
+	Force *DeletePortalQueryParamForce `default:"false" queryParam:"style=form,explode=true,name=force"`
 }
 
 func (d DeletePortalRequest) MarshalJSON() ([]byte, error) {
@@ -61,7 +61,7 @@ func (d *DeletePortalRequest) GetPortalID() string {
 	return d.PortalID
 }
 
-func (d *DeletePortalRequest) GetForce() *QueryParamForce {
+func (d *DeletePortalRequest) GetForce() *DeletePortalQueryParamForce {
 	if d == nil {
 		return nil
 	}

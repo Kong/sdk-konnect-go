@@ -11,3 +11,9 @@ An entity that implements an API
 apiImplementationResponse := components.CreateAPIImplementationResponseAPIImplementationResponseServiceReference(components.APIImplementationResponseServiceReference{/* values here */})
 ```
 
+### APIImplementationResponseControlPlaneReference
+
+```go
+apiImplementationResponse := components.CreateAPIImplementationResponseAPIImplementationResponseControlPlaneReference(components.APIImplementationResponseControlPlaneReference{/* values here */})
+```
+

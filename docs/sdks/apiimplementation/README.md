@@ -87,7 +87,11 @@ func main() {
 ## CreateAPIImplementation
 
 Creates an implementation for an API.
-An API can be implemented by a single Gateway Service.
+If all operations in an API are implemented by a single gateway service and the service
+has no routes that are not part of the API, then the API can be linked to the service.
+For cases where an API is implemented by multiple gateway services, only a subset of
+routes in one or more gateway services, or API operations need to be made available for API packages,
+then the API should be linked to the control plane that defines the routes that overlap with the API.
 
 
 ### Example Usage

@@ -1175,7 +1175,7 @@ func (s *Portals) UpdatePortal(ctx context.Context, portalID string, updatePorta
 
 // DeletePortal - Delete Portal
 // Deletes a single portal, along with all related entities.
-func (s *Portals) DeletePortal(ctx context.Context, portalID string, force *operations.QueryParamForce, opts ...operations.Option) (*operations.DeletePortalResponse, error) {
+func (s *Portals) DeletePortal(ctx context.Context, portalID string, force *operations.DeletePortalQueryParamForce, opts ...operations.Option) (*operations.DeletePortalResponse, error) {
 	request := operations.DeletePortalRequest{
 		PortalID: portalID,
 		Force:    force,

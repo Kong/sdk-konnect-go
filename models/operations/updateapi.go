@@ -3,14 +3,62 @@
 package operations
 
 import (
+	"encoding/json"
+	"fmt"
+	"github.com/Kong/sdk-konnect-go/internal/utils"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	"net/http"
 )
 
+// QueryParamForce - If true, allows operations to be removed from the current version when using access control enforcement.
+// If false, operations removal will be rejected with a 409 error.
+// Omitting the value means true.
+type QueryParamForce string
+
+const (
+	QueryParamForceTrue  QueryParamForce = "true"
+	QueryParamForceFalse QueryParamForce = "false"
+)
+
+func (e QueryParamForce) ToPointer() *QueryParamForce {
+	return &e
+}
+func (e *QueryParamForce) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "true":
+		fallthrough
+	case "false":
+		*e = QueryParamForce(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for QueryParamForce: %v", v)
+	}
+}
+
 type UpdateAPIRequest struct {
 	// The UUID API identifier
-	APIID            string                      `pathParam:"style=simple,explode=false,name=apiId"`
+	APIID string `pathParam:"style=simple,explode=false,name=apiId"`
+	// If true, allows operations to be removed from the current version when using access control enforcement.
+	// If false, operations removal will be rejected with a 409 error.
+	// Omitting the value means true.
+	//
+	Force            *QueryParamForce            `default:"false" queryParam:"style=form,explode=true,name=force"`
 	UpdateAPIRequest components.UpdateAPIRequest `request:"mediaType=application/json"`
+}
+
+func (u UpdateAPIRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UpdateAPIRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (u *UpdateAPIRequest) GetAPIID() string {
@@ -18,6 +66,13 @@ func (u *UpdateAPIRequest) GetAPIID() string {
 		return ""
 	}
 	return u.APIID
+}
+
+func (u *UpdateAPIRequest) GetForce() *QueryParamForce {
+	if u == nil {
+		return nil
+	}
+	return u.Force
 }
 
 func (u *UpdateAPIRequest) GetUpdateAPIRequest() components.UpdateAPIRequest {

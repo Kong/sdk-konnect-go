@@ -81,6 +81,8 @@ type GetSystemAccountsResponse struct {
 	RawResponse *http.Response
 	// A paginated list response for a collection of system accounts.
 	SystemAccountCollection *components.SystemAccountCollection
+
+	Next func() (*GetSystemAccountsResponse, error)
 }
 
 func (g *GetSystemAccountsResponse) GetContentType() string {

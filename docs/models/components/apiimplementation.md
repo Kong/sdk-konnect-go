@@ -11,3 +11,9 @@ An entity that implements an API
 apiImplementation := components.CreateAPIImplementationServiceReference(components.ServiceReference{/* values here */})
 ```
 
+### ControlPlaneReference
+
+```go
+apiImplementation := components.CreateAPIImplementationControlPlaneReference(components.ControlPlaneReference{/* values here */})
+```
+

@@ -63,6 +63,8 @@ type ListTeamsResponse struct {
 	RawResponse *http.Response
 	// A paginated list response for a collection of users.
 	TeamCollection *components.TeamCollection
+
+	Next func() (*ListTeamsResponse, error)
 }
 
 func (l *ListTeamsResponse) GetContentType() string {

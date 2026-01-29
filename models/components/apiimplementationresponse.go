@@ -9,6 +9,57 @@ import (
 	"time"
 )
 
+// APIImplementationResponseControlPlaneReference - A control plane that implements an API
+type APIImplementationResponseControlPlaneReference struct {
+	// Contains a unique identifier used for this resource.
+	ID string `json:"id"`
+	// An ISO-8601 timestamp representation of entity creation date.
+	CreatedAt time.Time `json:"created_at"`
+	// An ISO-8601 timestamp representation of entity update date.
+	UpdatedAt time.Time `json:"updated_at"`
+	// A Control plane that implements an API
+	ControlPlane *APIImplementationControlPlane `json:"control_plane,omitempty"`
+}
+
+func (a APIImplementationResponseControlPlaneReference) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(a, "", false)
+}
+
+func (a *APIImplementationResponseControlPlaneReference) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &a, "", false, []string{"id", "created_at", "updated_at"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *APIImplementationResponseControlPlaneReference) GetID() string {
+	if a == nil {
+		return ""
+	}
+	return a.ID
+}
+
+func (a *APIImplementationResponseControlPlaneReference) GetCreatedAt() time.Time {
+	if a == nil {
+		return time.Time{}
+	}
+	return a.CreatedAt
+}
+
+func (a *APIImplementationResponseControlPlaneReference) GetUpdatedAt() time.Time {
+	if a == nil {
+		return time.Time{}
+	}
+	return a.UpdatedAt
+}
+
+func (a *APIImplementationResponseControlPlaneReference) GetControlPlane() *APIImplementationControlPlane {
+	if a == nil {
+		return nil
+	}
+	return a.ControlPlane
+}
+
 // APIImplementationResponseServiceReference - A gateway service that implements an API
 type APIImplementationResponseServiceReference struct {
 	// Contains a unique identifier used for this resource.
@@ -63,12 +114,14 @@ func (a *APIImplementationResponseServiceReference) GetService() *APIImplementat
 type APIImplementationResponseType string
 
 const (
-	APIImplementationResponseTypeAPIImplementationResponseServiceReference APIImplementationResponseType = "ApiImplementationResponse_Service Reference"
+	APIImplementationResponseTypeAPIImplementationResponseServiceReference      APIImplementationResponseType = "ApiImplementationResponse_Service Reference"
+	APIImplementationResponseTypeAPIImplementationResponseControlPlaneReference APIImplementationResponseType = "ApiImplementationResponse_Control Plane Reference"
 )
 
 // APIImplementationResponse - An entity that implements an API
 type APIImplementationResponse struct {
-	APIImplementationResponseServiceReference *APIImplementationResponseServiceReference `queryParam:"inline" union:"member"`
+	APIImplementationResponseServiceReference      *APIImplementationResponseServiceReference      `queryParam:"inline" union:"member"`
+	APIImplementationResponseControlPlaneReference *APIImplementationResponseControlPlaneReference `queryParam:"inline" union:"member"`
 
 	Type APIImplementationResponseType
 }
@@ -82,6 +135,15 @@ func CreateAPIImplementationResponseAPIImplementationResponseServiceReference(ap
 	}
 }
 
+func CreateAPIImplementationResponseAPIImplementationResponseControlPlaneReference(apiImplementationResponseControlPlaneReference APIImplementationResponseControlPlaneReference) APIImplementationResponse {
+	typ := APIImplementationResponseTypeAPIImplementationResponseControlPlaneReference
+
+	return APIImplementationResponse{
+		APIImplementationResponseControlPlaneReference: &apiImplementationResponseControlPlaneReference,
+		Type: typ,
+	}
+}
+
 func (u *APIImplementationResponse) UnmarshalJSON(data []byte) error {
 
 	var apiImplementationResponseServiceReference APIImplementationResponseServiceReference = APIImplementationResponseServiceReference{}
@@ -91,12 +153,23 @@ func (u *APIImplementationResponse) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var apiImplementationResponseControlPlaneReference APIImplementationResponseControlPlaneReference = APIImplementationResponseControlPlaneReference{}
+	if err := utils.UnmarshalJSON(data, &apiImplementationResponseControlPlaneReference, "", true, nil); err == nil {
+		u.APIImplementationResponseControlPlaneReference = &apiImplementationResponseControlPlaneReference
+		u.Type = APIImplementationResponseTypeAPIImplementationResponseControlPlaneReference
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for APIImplementationResponse", string(data))
 }
 
 func (u APIImplementationResponse) MarshalJSON() ([]byte, error) {
 	if u.APIImplementationResponseServiceReference != nil {
 		return utils.MarshalJSON(u.APIImplementationResponseServiceReference, "", true)
+	}
+
+	if u.APIImplementationResponseControlPlaneReference != nil {
+		return utils.MarshalJSON(u.APIImplementationResponseControlPlaneReference, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type APIImplementationResponse: all fields are null")

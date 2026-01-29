@@ -1,6 +1,9 @@
 # QueryParamForce
 
-If true, the portal will be deleted, automatically deleting all API publications. If the force param is not set, the deletion will only succeed if there are no APIs currently published.
+If true, allows operations to be removed from the current version when using access control enforcement.
+If false, operations removal will be rejected with a 409 error.
+Omitting the value means true.
+
 
 
 ## Values

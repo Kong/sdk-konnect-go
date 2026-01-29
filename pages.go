@@ -31,8 +31,8 @@ func newPages(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hooks.Hook
 	}
 }
 
-// CreateDefaultContent - Creates Default Pages
-// Creates the default pages for a portal if they do not already exists.
+// CreateDefaultContent - Create Boilerplate Content
+// Creates a default collection of pages, snippets, and customization config for a portal if they do not already exist. This endpoint is optional, you can call it to populate a newly created developer portal with default content, but it is not required. Existing pages and snippets will not be modified or deleted. If used, it is typically called once per portal shortly after creation.
 func (s *Pages) CreateDefaultContent(ctx context.Context, portalID string, opts ...operations.Option) (*operations.CreateDefaultContentResponse, error) {
 	request := operations.CreateDefaultContentRequest{
 		PortalID: portalID,

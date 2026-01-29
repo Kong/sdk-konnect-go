@@ -12,11 +12,13 @@ type APIImplementationListItemType string
 
 const (
 	APIImplementationListItemTypeAPIImplementationListItemGatewayServiceEntity APIImplementationListItemType = "ApiImplementationListItemGatewayServiceEntity"
+	APIImplementationListItemTypeAPIImplementationListItemControlPlaneEntity   APIImplementationListItemType = "ApiImplementationListItemControlPlaneEntity"
 )
 
 // APIImplementationListItem - An entity that implements an API
 type APIImplementationListItem struct {
 	APIImplementationListItemGatewayServiceEntity *APIImplementationListItemGatewayServiceEntity `queryParam:"inline" union:"member"`
+	APIImplementationListItemControlPlaneEntity   *APIImplementationListItemControlPlaneEntity   `queryParam:"inline" union:"member"`
 
 	Type APIImplementationListItemType
 }
@@ -30,7 +32,23 @@ func CreateAPIImplementationListItemAPIImplementationListItemGatewayServiceEntit
 	}
 }
 
+func CreateAPIImplementationListItemAPIImplementationListItemControlPlaneEntity(apiImplementationListItemControlPlaneEntity APIImplementationListItemControlPlaneEntity) APIImplementationListItem {
+	typ := APIImplementationListItemTypeAPIImplementationListItemControlPlaneEntity
+
+	return APIImplementationListItem{
+		APIImplementationListItemControlPlaneEntity: &apiImplementationListItemControlPlaneEntity,
+		Type: typ,
+	}
+}
+
 func (u *APIImplementationListItem) UnmarshalJSON(data []byte) error {
+
+	var apiImplementationListItemControlPlaneEntity APIImplementationListItemControlPlaneEntity = APIImplementationListItemControlPlaneEntity{}
+	if err := utils.UnmarshalJSON(data, &apiImplementationListItemControlPlaneEntity, "", true, nil); err == nil {
+		u.APIImplementationListItemControlPlaneEntity = &apiImplementationListItemControlPlaneEntity
+		u.Type = APIImplementationListItemTypeAPIImplementationListItemControlPlaneEntity
+		return nil
+	}
 
 	var apiImplementationListItemGatewayServiceEntity APIImplementationListItemGatewayServiceEntity = APIImplementationListItemGatewayServiceEntity{}
 	if err := utils.UnmarshalJSON(data, &apiImplementationListItemGatewayServiceEntity, "", true, nil); err == nil {
@@ -45,6 +63,10 @@ func (u *APIImplementationListItem) UnmarshalJSON(data []byte) error {
 func (u APIImplementationListItem) MarshalJSON() ([]byte, error) {
 	if u.APIImplementationListItemGatewayServiceEntity != nil {
 		return utils.MarshalJSON(u.APIImplementationListItemGatewayServiceEntity, "", true)
+	}
+
+	if u.APIImplementationListItemControlPlaneEntity != nil {
+		return utils.MarshalJSON(u.APIImplementationListItemControlPlaneEntity, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type APIImplementationListItem: all fields are null")

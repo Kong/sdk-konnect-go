@@ -1,0 +1,11 @@
+# RateLimitingConfiguration
+
+Rate limit configuration that can be applied to an API Package or an API Package Operation.
+
+
+## Fields
+
+| Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `Limit`                                                                                                                      | *int64*                                                                                                                      | :heavy_check_mark:                                                                                                           | The amount of requests allowed for each operation within the specified duration.                                             |
+| `Duration`                                                                                                                   | [components.APIPackageOperationResponseSchemaDuration](../../models/components/apipackageoperationresponseschemaduration.md) | :heavy_check_mark:                                                                                                           | The timeframe to ensure that an application does not exceed the request limit.                                               |

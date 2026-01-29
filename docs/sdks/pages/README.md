@@ -6,7 +6,7 @@ APIs related to Konnect Developer Portal Custom Pages.
 
 ### Available Operations
 
-* [CreateDefaultContent](#createdefaultcontent) - Creates Default Pages
+* [CreateDefaultContent](#createdefaultcontent) - Create Boilerplate Content
 * [ListPortalPages](#listportalpages) - List Pages
 * [CreatePortalPage](#createportalpage) - Create Page
 * [GetPortalPage](#getportalpage) - Get a Page
@@ -16,7 +16,7 @@ APIs related to Konnect Developer Portal Custom Pages.
 
 ## CreateDefaultContent
 
-Creates the default pages for a portal if they do not already exists.
+Creates a default collection of pages, snippets, and customization config for a portal if they do not already exist. This endpoint is optional, you can call it to populate a newly created developer portal with default content, but it is not required. Existing pages and snippets will not be modified or deleted. If used, it is typically called once per portal shortly after creation.
 
 ### Example Usage
 
