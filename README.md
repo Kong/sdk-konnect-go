@@ -336,19 +336,14 @@ func main() {
 		}),
 	)
 
-	res, err := s.ControlPlanes.ListControlPlanes(ctx, operations.ListControlPlanesRequest{
+	res, err := s.CloudGateways.ListProviderAccounts(ctx, operations.ListProviderAccountsRequest{
 		PageSize:   sdkkonnectgo.Pointer[int64](10),
 		PageNumber: sdkkonnectgo.Pointer[int64](1),
-		Filter: &components.ControlPlaneFilterParameters{
-			CloudGateway: sdkkonnectgo.Pointer(true),
-		},
-		FilterLabels: sdkkonnectgo.Pointer("key:value,existCheck"),
-		Sort:         sdkkonnectgo.Pointer("created_at desc"),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListControlPlanesResponse != nil {
+	if res.ListProviderAccountsResponse != nil {
 		for {
 			// handle items
 

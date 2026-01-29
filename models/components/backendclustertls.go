@@ -28,6 +28,33 @@ func (e *TLSVersions) IsExact() bool {
 	return false
 }
 
+// ClientIdentity - Client mTLS configuration.
+type ClientIdentity struct {
+	// A literal value or a reference to an existing secret as a template string expression.
+	// The value is stored and returned by the API as-is, not treated as sensitive information.
+	//
+	Certificate string `json:"certificate"`
+	// A sensitive value containing the secret or a reference to a secret as a template string expression.
+	// If the value is provided as plain text, it is encrypted at rest and omitted from API responses.
+	// If provided as an expression, the expression itself is stored and returned by the API.
+	//
+	Key string `json:"key"`
+}
+
+func (c *ClientIdentity) GetCertificate() string {
+	if c == nil {
+		return ""
+	}
+	return c.Certificate
+}
+
+func (c *ClientIdentity) GetKey() string {
+	if c == nil {
+		return ""
+	}
+	return c.Key
+}
+
 type BackendClusterTLS struct {
 	// If true, TLS is enabled for connections to this backend cluster. If false, TLS is explicitly disabled.
 	Enabled bool `json:"enabled"`
@@ -39,6 +66,8 @@ type BackendClusterTLS struct {
 	CaBundle *string `json:"ca_bundle,omitempty"`
 	// List of supported TLS versions.
 	TLSVersions []TLSVersions `json:"tls_versions,omitempty"`
+	// Client mTLS configuration.
+	ClientIdentity *ClientIdentity `json:"client_identity,omitempty"`
 }
 
 func (b BackendClusterTLS) MarshalJSON() ([]byte, error) {
@@ -78,4 +107,11 @@ func (b *BackendClusterTLS) GetTLSVersions() []TLSVersions {
 		return nil
 	}
 	return b.TLSVersions
+}
+
+func (b *BackendClusterTLS) GetClientIdentity() *ClientIdentity {
+	if b == nil {
+		return nil
+	}
+	return b.ClientIdentity
 }

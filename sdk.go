@@ -2,7 +2,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.0.31 and generator version 2.801.0
+// Generated from OpenAPI doc version 3.1.0 and generator version 2.801.2
 
 import (
 	"context"
@@ -310,14 +310,19 @@ type SDK struct {
 	// For instance, they will be able to perform dynamic client registration (DCR) with the provider.
 	// The DCR provider provides credentials to each DCR-enabled application in Konnect that can be used to access Product Versions that the app is registered for.
 	//
-	DCRProviders      *DCRProviders
-	APIAttributes     *APIAttributes
-	APIImplementation *APIImplementation
-	APIPublication    *APIPublication
-	API               *API
-	APIDocumentation  *APIDocumentation
-	APISpecification  *APISpecification
-	APIVersion        *APIVersion
+	DCRProviders            *DCRProviders
+	APIAttributes           *APIAttributes
+	APIImplementation       *APIImplementation
+	APIPackages             *APIPackages
+	APIPublication          *APIPublication
+	APIPackageSpecification *APIPackageSpecification
+	APIPackageDocumentation *APIPackageDocumentation
+	APIPackageOperations    *APIPackageOperations
+	API                     *API
+	APIDocumentation        *APIDocumentation
+	APIOperations           *APIOperations
+	APISpecification        *APISpecification
+	APIVersion              *APIVersion
 	// APIs related to Konnect Developer Portal Applications.
 	Applications          *Applications
 	Authentication        *Authentication
@@ -436,9 +441,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.19.1",
+		SDKVersion: "0.20.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.19.1 2.801.0 3.0.31 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.20.0 2.801.2 3.1.0 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -519,9 +524,14 @@ func New(opts ...SDKOption) *SDK {
 	sdk.DCRProviders = newDCRProviders(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIAttributes = newAPIAttributes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIImplementation = newAPIImplementation(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIPackages = newAPIPackages(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIPublication = newAPIPublication(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIPackageSpecification = newAPIPackageSpecification(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIPackageDocumentation = newAPIPackageDocumentation(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIPackageOperations = newAPIPackageOperations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.API = newAPI(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIDocumentation = newAPIDocumentation(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIOperations = newAPIOperations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APISpecification = newAPISpecification(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIVersion = newAPIVersion(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Applications = newApplications(sdk, sdk.sdkConfiguration, sdk.hooks)

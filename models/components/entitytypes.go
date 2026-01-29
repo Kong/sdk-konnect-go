@@ -11,6 +11,7 @@ const (
 	EntityTypesDevPortal      EntityTypes = "dev-portal"
 	EntityTypesDataplaneGroup EntityTypes = "dataplane-group"
 	EntityTypesDataplane      EntityTypes = "dataplane"
+	EntityTypesKaiEnablement  EntityTypes = "kai-enablement"
 )
 
 func (e EntityTypes) ToPointer() *EntityTypes {
@@ -21,7 +22,7 @@ func (e EntityTypes) ToPointer() *EntityTypes {
 func (e *EntityTypes) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "billing-invoice", "access-token", "webhook", "dev-portal", "dataplane-group", "dataplane":
+		case "billing-invoice", "access-token", "webhook", "dev-portal", "dataplane-group", "dataplane", "kai-enablement":
 			return true
 		}
 	}

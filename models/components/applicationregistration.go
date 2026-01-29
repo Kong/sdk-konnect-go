@@ -7,8 +7,8 @@ import (
 	"time"
 )
 
-// API - Details about the API the application is registered to.
-type API struct {
+// ApplicationRegistrationAPI - Details about the API the application is registered to.
+type ApplicationRegistrationAPI struct {
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 	// The name of the API the application is registered to.
@@ -19,28 +19,28 @@ type API struct {
 	EntityType EntityType `json:"entity_type"`
 }
 
-func (a *API) GetID() string {
+func (a *ApplicationRegistrationAPI) GetID() string {
 	if a == nil {
 		return ""
 	}
 	return a.ID
 }
 
-func (a *API) GetName() string {
+func (a *ApplicationRegistrationAPI) GetName() string {
 	if a == nil {
 		return ""
 	}
 	return a.Name
 }
 
-func (a *API) GetVersion() *string {
+func (a *ApplicationRegistrationAPI) GetVersion() *string {
 	if a == nil {
 		return nil
 	}
 	return a.Version
 }
 
-func (a *API) GetEntityType() EntityType {
+func (a *ApplicationRegistrationAPI) GetEntityType() EntityType {
 	if a == nil {
 		return EntityType("")
 	}
@@ -81,7 +81,7 @@ type ApplicationRegistration struct {
 	// Pending, revoked, and rejected registrations will not provide access to the API.
 	Status ApplicationRegistrationStatus `json:"status"`
 	// Details about the API the application is registered to.
-	API API `json:"api"`
+	API ApplicationRegistrationAPI `json:"api"`
 	// Details about the application the registration is part of.
 	Application ApplicationRegistrationApplication `json:"application"`
 }
@@ -125,9 +125,9 @@ func (a *ApplicationRegistration) GetStatus() ApplicationRegistrationStatus {
 	return a.Status
 }
 
-func (a *ApplicationRegistration) GetAPI() API {
+func (a *ApplicationRegistration) GetAPI() ApplicationRegistrationAPI {
 	if a == nil {
-		return API{}
+		return ApplicationRegistrationAPI{}
 	}
 	return a.API
 }

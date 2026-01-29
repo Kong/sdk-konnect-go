@@ -50,6 +50,8 @@ type ListProviderAccountsResponse struct {
 	RawResponse *http.Response
 	// A paginated list for a collection of provider accounts.
 	ListProviderAccountsResponse *components.ListProviderAccountsResponse
+
+	Next func() (*ListProviderAccountsResponse, error)
 }
 
 func (l *ListProviderAccountsResponse) GetContentType() string {

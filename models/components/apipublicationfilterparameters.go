@@ -13,6 +13,8 @@ type APIPublicationFilterParameters struct {
 	APIName *StringFieldFilter `queryParam:"name=api_name"`
 	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	AuthStrategyID *UUIDFieldFilter `queryParam:"name=auth_strategy_id"`
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
+	EntityType *StringFieldFilter `queryParam:"name=entity_type"`
 }
 
 func (a *APIPublicationFilterParameters) GetPortalID() *UUIDFieldFilter {
@@ -48,4 +50,11 @@ func (a *APIPublicationFilterParameters) GetAuthStrategyID() *UUIDFieldFilter {
 		return nil
 	}
 	return a.AuthStrategyID
+}
+
+func (a *APIPublicationFilterParameters) GetEntityType() *StringFieldFilter {
+	if a == nil {
+		return nil
+	}
+	return a.EntityType
 }

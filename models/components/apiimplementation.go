@@ -11,12 +11,14 @@ import (
 type APIImplementationType string
 
 const (
-	APIImplementationTypeServiceReference APIImplementationType = "Service Reference"
+	APIImplementationTypeServiceReference      APIImplementationType = "Service Reference"
+	APIImplementationTypeControlPlaneReference APIImplementationType = "Control Plane Reference"
 )
 
 // APIImplementation - An entity that implements an API
 type APIImplementation struct {
-	ServiceReference *ServiceReference `queryParam:"inline" union:"member"`
+	ServiceReference      *ServiceReference      `queryParam:"inline" union:"member"`
+	ControlPlaneReference *ControlPlaneReference `queryParam:"inline" union:"member"`
 
 	Type APIImplementationType
 }
@@ -30,6 +32,15 @@ func CreateAPIImplementationServiceReference(serviceReference ServiceReference) 
 	}
 }
 
+func CreateAPIImplementationControlPlaneReference(controlPlaneReference ControlPlaneReference) APIImplementation {
+	typ := APIImplementationTypeControlPlaneReference
+
+	return APIImplementation{
+		ControlPlaneReference: &controlPlaneReference,
+		Type:                  typ,
+	}
+}
+
 func (u *APIImplementation) UnmarshalJSON(data []byte) error {
 
 	var serviceReference ServiceReference = ServiceReference{}
@@ -39,12 +50,23 @@ func (u *APIImplementation) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var controlPlaneReference ControlPlaneReference = ControlPlaneReference{}
+	if err := utils.UnmarshalJSON(data, &controlPlaneReference, "", true, nil); err == nil {
+		u.ControlPlaneReference = &controlPlaneReference
+		u.Type = APIImplementationTypeControlPlaneReference
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for APIImplementation", string(data))
 }
 
 func (u APIImplementation) MarshalJSON() ([]byte, error) {
 	if u.ServiceReference != nil {
 		return utils.MarshalJSON(u.ServiceReference, "", true)
+	}
+
+	if u.ControlPlaneReference != nil {
+		return utils.MarshalJSON(u.ControlPlaneReference, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type APIImplementation: all fields are null")

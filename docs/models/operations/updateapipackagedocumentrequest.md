@@ -1,0 +1,10 @@
+# UpdateAPIPackageDocumentRequest
+
+
+## Fields
+
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      | Example                                                          |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `PackageID`                                                      | *string*                                                         | :heavy_check_mark:                                               | The UUID API Package identifier                                  | 9f5061ce-78f6-4452-9108-ad7c02821fd5                             |
+| `DocumentID`                                                     | *string*                                                         | :heavy_check_mark:                                               | The document identifier related to the API                       | de5c9818-be5c-42e6-b514-e3d4bc30ddeb                             |
+| `APIDocument`                                                    | [components.APIDocument](../../models/components/apidocument.md) | :heavy_check_mark:                                               | N/A                                                              |                                                                  |

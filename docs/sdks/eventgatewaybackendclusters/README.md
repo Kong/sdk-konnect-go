@@ -113,6 +113,10 @@ func main() {
         },
         TLS: components.BackendClusterTLS{
             Enabled: false,
+            ClientIdentity: &components.ClientIdentity{
+                Certificate: "<value>",
+                Key: "${vault.env['MY_ENV_VAR']}",
+            },
         },
         Labels: map[string]string{
             "env": "test",
@@ -251,6 +255,10 @@ func main() {
             },
             TLS: components.BackendClusterTLS{
                 Enabled: false,
+                ClientIdentity: &components.ClientIdentity{
+                    Certificate: "<value>",
+                    Key: "${vault.env['MY_ENV_VAR']}",
+                },
             },
             Labels: map[string]string{
                 "env": "test",
