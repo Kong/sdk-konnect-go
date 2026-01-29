@@ -23628,6 +23628,7 @@ components:
                 - profile
             claim_mappings:
               $ref: '#/components/schemas/PortalClaimMappings'
+          readOnly: true
           required:
             - issuer
             - client_id
@@ -23654,6 +23655,15 @@ components:
         - oidc_auth_enabled
         - oidc_team_mapping_enabled
       title: PortalAuthenticationSettingsResponse
+      x-speakeasy-transform-from-api:
+        jq: |
+          . + {
+            oidc_issuer: .oidc_config.issuer,
+            oidc_client_id: .oidc_config.client_id,
+            oidc_claim_mappings: .oidc_config.claim_mappings,
+            oidc_scopes: .oidc_config.scopes
+          }
+          | del(.oidc_config)
     AssignedPortalRoleCollectionResponse:
       description: A paginated list of roles assigned to a team.
       type: object
