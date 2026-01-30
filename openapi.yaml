@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Konnect API - Go SDK
-  version: 3.1.0
+  version: 3.1.1
   description: The Konnect platform API
   contact:
     name: Kong Inc
@@ -680,7 +680,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PageSize'
         - $ref: '#/components/parameters/PageAfter'
-        - $ref: '#/components/parameters/EventGatewayCommonFilter'
+        - $ref: '#/components/parameters/EventGatewayListenersFilter'
       responses:
         '200':
           $ref: '#/components/responses/ListEventGatewayListenersResponse'
@@ -14649,6 +14649,19 @@ components:
       in: path
       required: true
       description: The ID of the Event Gateway Listener.
+    EventGatewayListenersFilter:
+      schema:
+        type: object
+        properties:
+          name:
+            $ref: '#/components/schemas/StringFieldContainsFilter'
+          virtual_cluster_id:
+            $ref: '#/components/schemas/StringFieldEqualsFilter'
+      in: query
+      name: filter
+      description: Filter listeners returned in the response.
+      required: false
+      style: deepObject
     eventGatewayNodeId:
       schema:
         type: string
