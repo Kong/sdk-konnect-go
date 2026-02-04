@@ -1,6 +1,4 @@
-# ListApplicationsQueryParamFilter
-
-Filter applications returned in the response.
+# FilterApplications
 
 
 ## Fields

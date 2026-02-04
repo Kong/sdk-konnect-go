@@ -14,8 +14,8 @@ type ListEventGatewayListenersRequest struct {
 	PageSize *int64 `queryParam:"style=form,explode=true,name=page[size]"`
 	// Request the next page of data, starting with the item after this parameter.
 	PageAfter *string `queryParam:"style=form,explode=true,name=page[after]"`
-	// Filter documents returned in the response.
-	Filter *components.EventGatewayCommonFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+	// Filter listeners returned in the response.
+	Filter *components.EventGatewayListenersFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
 func (l *ListEventGatewayListenersRequest) GetGatewayID() string {
@@ -39,7 +39,7 @@ func (l *ListEventGatewayListenersRequest) GetPageAfter() *string {
 	return l.PageAfter
 }
 
-func (l *ListEventGatewayListenersRequest) GetFilter() *components.EventGatewayCommonFilter {
+func (l *ListEventGatewayListenersRequest) GetFilter() *components.EventGatewayListenersFilter {
 	if l == nil {
 		return nil
 	}
