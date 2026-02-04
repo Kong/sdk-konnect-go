@@ -18,3 +18,5 @@ Enum for available portal email template variables.
 | `EmailTemplateVariableNameAPIName`             | api_name                                       |
 | `EmailTemplateVariableNameAPIVersion`          | api_version                                    |
 | `EmailTemplateVariableNameApplicationName`     | application_name                               |
+| `EmailTemplateVariableNameCredentialName`      | credential_name                                |
+| `EmailTemplateVariableNameCredentialExpiresAt` | credential_expires_at                          |

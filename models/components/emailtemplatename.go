@@ -14,6 +14,8 @@ const (
 	EmailTemplateNameAccountAccessApproved   EmailTemplateName = "account-access-approved"
 	EmailTemplateNameAccountAccessRejected   EmailTemplateName = "account-access-rejected"
 	EmailTemplateNameAccountAccessRevoked    EmailTemplateName = "account-access-revoked"
+	EmailTemplateNameAPIKeyExpiringSoon      EmailTemplateName = "api-key-expiring-soon"
+	EmailTemplateNameAPIKeyExpired           EmailTemplateName = "api-key-expired"
 )
 
 func (e EmailTemplateName) ToPointer() *EmailTemplateName {
@@ -24,7 +26,7 @@ func (e EmailTemplateName) ToPointer() *EmailTemplateName {
 func (e *EmailTemplateName) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "confirm-email-address", "app-registration-approved", "app-registration-rejected", "app-registration-revoked", "reset-password", "account-access-approved", "account-access-rejected", "account-access-revoked":
+		case "confirm-email-address", "app-registration-approved", "app-registration-rejected", "app-registration-revoked", "reset-password", "account-access-approved", "account-access-rejected", "account-access-revoked", "api-key-expiring-soon", "api-key-expired":
 			return true
 		}
 	}

@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Konnect API - Go SDK
-  version: 3.1.0
+  version: 3.1.2
   description: The Konnect platform API
   contact:
     name: Kong Inc
@@ -680,7 +680,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PageSize'
         - $ref: '#/components/parameters/PageAfter'
-        - $ref: '#/components/parameters/EventGatewayCommonFilter'
+        - $ref: '#/components/parameters/EventGatewayListenersFilter'
       responses:
         '200':
           $ref: '#/components/responses/ListEventGatewayListenersResponse'
@@ -10883,12 +10883,7 @@ paths:
           description: Filter applications returned in the response.
           required: false
           schema:
-            type: object
-            properties:
-              developer_id:
-                $ref: '#/components/schemas/UuidFieldFilter'
-              name:
-                $ref: '#/components/schemas/StringFieldFilter'
+            $ref: '#/components/schemas/FilterApplications'
           style: deepObject
       responses:
         '200':
@@ -14649,6 +14644,19 @@ components:
       in: path
       required: true
       description: The ID of the Event Gateway Listener.
+    EventGatewayListenersFilter:
+      schema:
+        type: object
+        properties:
+          name:
+            $ref: '#/components/schemas/StringFieldContainsFilter'
+          virtual_cluster_id:
+            $ref: '#/components/schemas/StringFieldEqualsFilter'
+      in: query
+      name: filter
+      description: Filter listeners returned in the response.
+      required: false
+      style: deepObject
     eventGatewayNodeId:
       schema:
         type: string
@@ -14663,6 +14671,7 @@ components:
         format: uuid
       in: query
       name: after
+      x-speakeasy-terraform-ignore: true
       description: |
         Determines the id of the existing policy the new policy should be inserted after. Either 'before' or 'after' can be provided, when both are omitted the new policy is added to the end of the chain. When both are provided, the request fails with a 400 Bad Request.
       required: false
@@ -14672,6 +14681,7 @@ components:
         format: uuid
       in: query
       name: before
+      x-speakeasy-terraform-ignore: true
       description: |
         Determines the id of the existing policy the new policy should be inserted before. Either 'before' or 'after' can be provided, when both are omitted the new policy is added to the end of the chain. When both are provided, the request fails with a 400 Bad Request.
       required: false
@@ -20608,6 +20618,23 @@ components:
             maxLength: 256
           maxItems: 10
           minItems: 1
+        ttl:
+          description: Default maximum Time-To-Live for keys created under this strategy.
+          type: object
+          properties:
+            value:
+              type: integer
+              minimum: 1
+            unit:
+              type: string
+              enum:
+                - days
+                - weeks
+                - years
+              x-speakeasy-unknown-values: allow
+          required:
+            - value
+            - unit
       additionalProperties: false
       title: AppAuthStrategyConfigKeyAuth
     PartialAppAuthStrategyConfigOpenIDConnect:
@@ -24383,6 +24410,8 @@ components:
         - account-access-approved
         - account-access-rejected
         - account-access-revoked
+        - api-key-expiring-soon
+        - api-key-expired
       x-speakeasy-unknown-values: allow
     EmailTemplateVariableName:
       description: |
@@ -24399,6 +24428,8 @@ components:
         - api_name
         - api_version
         - application_name
+        - credential_name
+        - credential_expires_at
       x-speakeasy-unknown-values: allow
     DefaultEmailTemplate:
       type: object
@@ -24543,6 +24574,13 @@ components:
         - description
         - scope
         - example
+    FilterApplications:
+      type: object
+      properties:
+        developer_id:
+          $ref: '#/components/schemas/UuidFieldFilter'
+        name:
+          $ref: '#/components/schemas/StringFieldFilter'
     ImagePNGDataUri:
       description: 'must be a data URL with base64 PNG image data, e.g., data:image/png;base64,<BASE64_IMAGE_DATA>'
       type: string
@@ -24781,6 +24819,23 @@ components:
           type: array
           items:
             type: string
+        ttl:
+          description: Default maximum Time-To-Live for keys created under this strategy.
+          type: object
+          properties:
+            value:
+              type: integer
+              minimum: 1
+            unit:
+              type: string
+              enum:
+                - days
+                - weeks
+                - years
+              x-speakeasy-unknown-values: allow
+          required:
+            - value
+            - unit
       additionalProperties: false
       required:
         - id
@@ -25572,6 +25627,8 @@ components:
           type: string
           maxLength: 2048
           nullable: true
+        labels:
+          $ref: '#/components/schemas/Labels'
         config:
           $ref: '#/components/schemas/IntegrationInstanceConfig'
       additionalProperties: false
@@ -25602,6 +25659,8 @@ components:
           type: string
           maxLength: 2048
           nullable: true
+        labels:
+          $ref: '#/components/schemas/LabelsUpdate'
         config:
           $ref: '#/components/schemas/IntegrationInstanceConfig'
       additionalProperties: false
@@ -25620,6 +25679,8 @@ components:
             - $ref: '#/components/schemas/StringFieldFilter'
         authorized:
           $ref: '#/components/schemas/BooleanFieldFilter'
+        labels:
+          $ref: '#/components/schemas/LabelsFieldFilter'
         created_at:
           $ref: '#/components/schemas/DateTimeFieldFilter'
         updated_at:
@@ -25660,6 +25721,8 @@ components:
           type: boolean
           example: true
           readOnly: true
+        labels:
+          $ref: '#/components/schemas/Labels'
         config:
           $ref: '#/components/schemas/IntegrationInstanceConfig'
         created_at:

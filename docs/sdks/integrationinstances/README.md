@@ -51,6 +51,9 @@ func main() {
         IntegrationName: "aws-lambda",
         Name: "aws-lambda-prod",
         DisplayName: "AWS (prod)",
+        Labels: map[string]string{
+            "env": "test",
+        },
         Config: "<value>",
     })
     if err != nil {
@@ -244,6 +247,9 @@ func main() {
     res, err := s.IntegrationInstances.UpdateIntegrationInstance(ctx, "3f51fa25-310a-421d-bd1a-007f859021a3", components.UpdateIntegrationInstance{
         Name: sdkkonnectgo.Pointer("aws-lambda-prod"),
         DisplayName: sdkkonnectgo.Pointer("AWS (prod)"),
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
     })
     if err != nil {
         log.Fatal(err)

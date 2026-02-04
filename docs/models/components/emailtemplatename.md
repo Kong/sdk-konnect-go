@@ -16,3 +16,5 @@ Short name email template name.
 | `EmailTemplateNameAccountAccessApproved`   | account-access-approved                    |
 | `EmailTemplateNameAccountAccessRejected`   | account-access-rejected                    |
 | `EmailTemplateNameAccountAccessRevoked`    | account-access-revoked                     |
+| `EmailTemplateNameAPIKeyExpiringSoon`      | api-key-expiring-soon                      |
+| `EmailTemplateNameAPIKeyExpired`           | api-key-expired                            |
