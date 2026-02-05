@@ -10,7 +10,7 @@ import (
 type APIImplementationControlPlane struct {
 	// Indicates if the access control enforcement plugin is installed globally in the target control plane
 	AccessControlEnforcementEnabled *bool  `json:"access_control_enforcement_enabled,omitempty"`
-	ControlPlaneID                  string `json:"control_plane_id"`
+	ID                              string `json:"control_plane_id"`
 }
 
 func (a APIImplementationControlPlane) MarshalJSON() ([]byte, error) {
@@ -31,9 +31,9 @@ func (a *APIImplementationControlPlane) GetAccessControlEnforcementEnabled() *bo
 	return a.AccessControlEnforcementEnabled
 }
 
-func (a *APIImplementationControlPlane) GetControlPlaneID() string {
+func (a *APIImplementationControlPlane) GetID() string {
 	if a == nil {
 		return ""
 	}
-	return a.ControlPlaneID
+	return a.ID
 }

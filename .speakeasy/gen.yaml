@@ -21,12 +21,12 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
+  versioningStrategy: automatic
   persistentEdits: {}
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
-  versioningStrategy: automatic
 go:
   version: 0.20.3
   additionalDependencies: {}
@@ -55,6 +55,7 @@ go:
   outputModelSuffix: output
   packageName: github.com/Kong/sdk-konnect-go
   respectRequiredFields: false
+  respectTitlesForPrimitiveUnionMembers: false
   responseFormat: envelope
   sdkPackageName: ""
   unionStrategy: left-to-right

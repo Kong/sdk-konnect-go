@@ -13,7 +13,7 @@ type UpdateEventGatewayListenerPolicyChainRequest struct {
 	// The ID of the Event Gateway Listener.
 	EventGatewayListenerID string `pathParam:"style=simple,explode=false,name=eventGatewayListenerId"`
 	// The request schema for updating the policy chain.
-	RequestBody []components.EventGatewayPolicyReference `request:"mediaType=application/json"`
+	UpdateEventGatewayPolicyChainRequest *components.UpdateEventGatewayPolicyChainRequest `request:"mediaType=application/json"`
 }
 
 func (u *UpdateEventGatewayListenerPolicyChainRequest) GetGatewayID() string {
@@ -30,11 +30,11 @@ func (u *UpdateEventGatewayListenerPolicyChainRequest) GetEventGatewayListenerID
 	return u.EventGatewayListenerID
 }
 
-func (u *UpdateEventGatewayListenerPolicyChainRequest) GetRequestBody() []components.EventGatewayPolicyReference {
+func (u *UpdateEventGatewayListenerPolicyChainRequest) GetUpdateEventGatewayPolicyChainRequest() *components.UpdateEventGatewayPolicyChainRequest {
 	if u == nil {
 		return nil
 	}
-	return u.RequestBody
+	return u.UpdateEventGatewayPolicyChainRequest
 }
 
 type UpdateEventGatewayListenerPolicyChainResponse struct {
@@ -45,7 +45,7 @@ type UpdateEventGatewayListenerPolicyChainResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// A response containing the list of policies in order of execution.
-	EventGatewayPolicyChainResponse []components.EventGatewayPolicyReference
+	EventGatewayPolicyChainResponse *components.EventGatewayPolicyChainResponse
 }
 
 func (u *UpdateEventGatewayListenerPolicyChainResponse) GetContentType() string {
@@ -69,7 +69,7 @@ func (u *UpdateEventGatewayListenerPolicyChainResponse) GetRawResponse() *http.R
 	return u.RawResponse
 }
 
-func (u *UpdateEventGatewayListenerPolicyChainResponse) GetEventGatewayPolicyChainResponse() []components.EventGatewayPolicyReference {
+func (u *UpdateEventGatewayListenerPolicyChainResponse) GetEventGatewayPolicyChainResponse() *components.EventGatewayPolicyChainResponse {
 	if u == nil {
 		return nil
 	}
