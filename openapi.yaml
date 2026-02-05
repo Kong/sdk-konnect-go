@@ -34384,6 +34384,7 @@ components:
                   - Deployer
                   - Discovery Admin
                   - Discovery Viewer
+                  - Editor
                   - Gateway Service Admin
                   - Integration Admin
                   - Integration Viewer
@@ -34428,6 +34429,7 @@ components:
                   - Mesh Control Planes
                   - Networks
                   - Portals
+                  - Reports
                   - Service Hub
                 x-speakeasy-unknown-values: allow
               entity_region:
@@ -36955,6 +36957,54 @@ components:
                   roles:
                     type: object
                     properties:
+                      admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Admin
+                          description:
+                            type: string
+                            example: 'Allows users to edit, delete, and share a Dashboard in Konnect Analytics.'
+                            enum:
+                              - 'Allows users to edit, delete, and share a Dashboard in Konnect Analytics.'
+                        required:
+                          - name
+                          - description
+                      creator:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Creator
+                          description:
+                            type: string
+                            example: Allows users to create a new Dashboard in Konnect Analytics.
+                            enum:
+                              - Allows users to create a new Dashboard in Konnect Analytics.
+                        required:
+                          - name
+                          - description
+                      editor:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Editor
+                          description:
+                            type: string
+                            example: Allows users to edit a Dashboard in Konnect Analytics.
+                            enum:
+                              - Allows users to edit a Dashboard in Konnect Analytics.
+                        required:
+                          - name
+                          - description
                       viewer:
                         type: object
                         additionalProperties: false
@@ -36968,6 +37018,84 @@ components:
                             example: Allows users to view any Dashboards content in Konnect Analytics.
                             enum:
                               - Allows users to view any Dashboards content in Konnect Analytics.
+                        required:
+                          - name
+                          - description
+                required:
+                  - name
+                  - roles
+              reports:
+                type: object
+                additionalProperties: false
+                properties:
+                  name:
+                    type: string
+                    enum:
+                      - Reports
+                  roles:
+                    type: object
+                    properties:
+                      admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Admin
+                          description:
+                            type: string
+                            example: 'Allows users to edit, delete, and share a Report in Konnect Analytics.'
+                            enum:
+                              - 'Allows users to edit, delete, and share a Report in Konnect Analytics.'
+                        required:
+                          - name
+                          - description
+                      creator:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Creator
+                          description:
+                            type: string
+                            example: Allows users to create a new Report in Konnect Analytics.
+                            enum:
+                              - Allows users to create a new Report in Konnect Analytics.
+                        required:
+                          - name
+                          - description
+                      editor:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Editor
+                          description:
+                            type: string
+                            example: Allows users to edit a Report in Konnect Analytics.
+                            enum:
+                              - Allows users to edit a Report in Konnect Analytics.
+                        required:
+                          - name
+                          - description
+                      viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Viewer
+                          description:
+                            type: string
+                            example: Allows users to view a Report in Konnect Analytics.
+                            enum:
+                              - Allows users to view a Report in Konnect Analytics.
                         required:
                           - name
                           - description
