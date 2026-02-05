@@ -21630,6 +21630,7 @@ components:
           type: string
           format: uuid
           example: 7710d5c4-d902-410b-992f-18b814155b53
+          x-speakeasy-name-override: id
       additionalProperties: false
       required:
         - control_plane_id
@@ -35913,9 +35914,14 @@ components:
       content:
         application/json:
           schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/EventGatewayPolicyReference'
+            type: object
+            properties:
+              policies:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventGatewayPolicyReference'
+            required:
+              - policies
     DataPlaneClientCertificateRequest:
       content:
         application/json:
@@ -39207,9 +39213,14 @@ components:
       content:
         application/json:
           schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/EventGatewayPolicyReference'
+            type: object
+            properties:
+              policies:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventGatewayPolicyReference'
+            required:
+              - policies
     DataPlaneClientCertificateResponse:
       description: Response body for retrieving a dp-client-certificate.
       content:
