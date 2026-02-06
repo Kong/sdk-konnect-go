@@ -36,7 +36,7 @@ type GetEventGatewayVirtualClusterProducePolicyChainResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// A response containing the list of policies in order of execution.
-	EventGatewayPolicyChainResponse []components.EventGatewayPolicyReference
+	EventGatewayPolicyChainResponse *components.EventGatewayPolicyChainResponse
 }
 
 func (g *GetEventGatewayVirtualClusterProducePolicyChainResponse) GetContentType() string {
@@ -60,7 +60,7 @@ func (g *GetEventGatewayVirtualClusterProducePolicyChainResponse) GetRawResponse
 	return g.RawResponse
 }
 
-func (g *GetEventGatewayVirtualClusterProducePolicyChainResponse) GetEventGatewayPolicyChainResponse() []components.EventGatewayPolicyReference {
+func (g *GetEventGatewayVirtualClusterProducePolicyChainResponse) GetEventGatewayPolicyChainResponse() *components.EventGatewayPolicyChainResponse {
 	if g == nil {
 		return nil
 	}

@@ -13,7 +13,7 @@ type UpdateEventGatewayVirtualClusterProducePolicyChainRequest struct {
 	// The ID of the Virtual Cluster.
 	VirtualClusterID string `pathParam:"style=simple,explode=false,name=virtualClusterId"`
 	// The request schema for updating the policy chain.
-	RequestBody []components.EventGatewayPolicyReference `request:"mediaType=application/json"`
+	UpdateEventGatewayPolicyChainRequest *components.UpdateEventGatewayPolicyChainRequest `request:"mediaType=application/json"`
 }
 
 func (u *UpdateEventGatewayVirtualClusterProducePolicyChainRequest) GetGatewayID() string {
@@ -30,11 +30,11 @@ func (u *UpdateEventGatewayVirtualClusterProducePolicyChainRequest) GetVirtualCl
 	return u.VirtualClusterID
 }
 
-func (u *UpdateEventGatewayVirtualClusterProducePolicyChainRequest) GetRequestBody() []components.EventGatewayPolicyReference {
+func (u *UpdateEventGatewayVirtualClusterProducePolicyChainRequest) GetUpdateEventGatewayPolicyChainRequest() *components.UpdateEventGatewayPolicyChainRequest {
 	if u == nil {
 		return nil
 	}
-	return u.RequestBody
+	return u.UpdateEventGatewayPolicyChainRequest
 }
 
 type UpdateEventGatewayVirtualClusterProducePolicyChainResponse struct {
@@ -45,7 +45,7 @@ type UpdateEventGatewayVirtualClusterProducePolicyChainResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// A response containing the list of policies in order of execution.
-	EventGatewayPolicyChainResponse []components.EventGatewayPolicyReference
+	EventGatewayPolicyChainResponse *components.EventGatewayPolicyChainResponse
 }
 
 func (u *UpdateEventGatewayVirtualClusterProducePolicyChainResponse) GetContentType() string {
@@ -69,7 +69,7 @@ func (u *UpdateEventGatewayVirtualClusterProducePolicyChainResponse) GetRawRespo
 	return u.RawResponse
 }
 
-func (u *UpdateEventGatewayVirtualClusterProducePolicyChainResponse) GetEventGatewayPolicyChainResponse() []components.EventGatewayPolicyReference {
+func (u *UpdateEventGatewayVirtualClusterProducePolicyChainResponse) GetEventGatewayPolicyChainResponse() *components.EventGatewayPolicyChainResponse {
 	if u == nil {
 		return nil
 	}

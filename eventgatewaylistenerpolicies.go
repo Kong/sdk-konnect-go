@@ -2057,12 +2057,12 @@ func (s *EventGatewayListenerPolicies) GetEventGatewayListenerPolicyChain(ctx co
 				return nil, err
 			}
 
-			var out []components.EventGatewayPolicyReference
+			var out components.EventGatewayPolicyChainResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.EventGatewayPolicyChainResponse = out
+			res.EventGatewayPolicyChainResponse = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -2171,7 +2171,7 @@ func (s *EventGatewayListenerPolicies) UpdateEventGatewayListenerPolicyChain(ctx
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "RequestBody", "json", `request:"mediaType=application/json"`)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "UpdateEventGatewayPolicyChainRequest", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
 	}
@@ -2311,12 +2311,12 @@ func (s *EventGatewayListenerPolicies) UpdateEventGatewayListenerPolicyChain(ctx
 				return nil, err
 			}
 
-			var out []components.EventGatewayPolicyReference
+			var out components.EventGatewayPolicyChainResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.EventGatewayPolicyChainResponse = out
+			res.EventGatewayPolicyChainResponse = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
