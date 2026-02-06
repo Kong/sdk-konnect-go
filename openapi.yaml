@@ -12,10 +12,6 @@ info:
     Supported types:
 
 
-
-
-
-
       - `boolean`: An expression evaluates to boolean. For example, `context.topic.name == 'my-topic'`
       - `string`: A template string expression that evaluates to a string or a literal string value. For example,
         `${context.topic.name.substring(0, context.topic.name.length-4)}` or `my-literal-value`
@@ -14152,10 +14148,6 @@ components:
         Sorts a collection of API implementations. Supported sort attributes are:
 
 
-
-
-
-
           - id
           - api_id
           - control_plane_id
@@ -14203,10 +14195,6 @@ components:
       name: sort
       description: |
         Sorts a collection of API Packages Operations. Supported sort attributes are:
-
-
-
-
 
 
           - path
@@ -14890,10 +14878,6 @@ components:
         Sorts a collection of integration instances. Supported sort attributes are:
 
 
-
-
-
-
           - `display_name`
           - `name`
           - `created_at`
@@ -15136,10 +15120,6 @@ components:
         Sorts a collection of API publications within a portal. Supported sort attributes are:
 
 
-
-
-
-
           - api_id
           - api_name
           - created_at
@@ -15248,10 +15228,6 @@ components:
         Sorts a collection of services targeted by a scorecard criteria. Supported sort attributes are:
 
 
-
-
-
-
           - `display_name`
           - `name`
           - `evaluation.is_passing`
@@ -15267,10 +15243,6 @@ components:
       name: sort
       description: |
         Sorts a collection of criteria belonging to a scorecard. Supported sort attributes are:
-
-
-
-
 
 
           - `evaluation.passing_services_count`
@@ -15300,10 +15272,6 @@ components:
       name: sort
       description: |
         Sorts a collection of services targeted by a scorecard. Supported sort attributes are:
-
-
-
-
 
 
           - `display_name`
@@ -15341,10 +15309,6 @@ components:
       name: sort
       description: |
         Sorts a collection of scorecard templates. Supported sort attributes are:
-
-
-
-
 
 
           - `display_name`
@@ -15387,10 +15351,6 @@ components:
         Sorts a collection of application auth strategies. Supported sort attributes are:
 
 
-
-
-
-
           - created_at
           - updated_at
           - strategy_type
@@ -15409,10 +15369,6 @@ components:
         Sorts a set of developers for an application. Supported sort attributes are:
 
 
-
-
-
-
           - id
       in: query
       required: false
@@ -15422,10 +15378,6 @@ components:
       name: sort
       description: |
         Sorts a set of registrations for an application. Supported sort attributes are:
-
-
-
-
 
 
           - created_at
@@ -15487,10 +15439,6 @@ components:
       name: sort
       description: |
         Sorts a collection of application registrations. Supported sort attributes are:
-
-
-
-
 
 
           - created_at
@@ -22218,10 +22166,6 @@ components:
             the label key that will be used to filter the results. For example:
 
 
-
-
-
-
               - `filter[labels.owner]`
               - `filter[labels.owner][neq]=kong`
               - `filter[labels.env]=dev`
@@ -22233,10 +22177,6 @@ components:
           description: |
             Filters on the resource's `attributes` field. Filters must use dot-notation to identify
             the attribute key that will be used to filter the results. For example:
-
-
-
-
 
 
               - `filter[attributes.owner]`
@@ -24915,10 +24855,6 @@ components:
             Filter operators are dictated by the custom field type. For example:
 
 
-
-
-
-
               - `filter[custom_fields.owner]`
               - `filter[custom_fields.owner][neq]=kong`
               - `filter[custom_fields.dashboard.link][contains]=https`
@@ -25398,10 +25334,6 @@ components:
         This schema is a key-value object where:
 
 
-
-
-
-
           - Keys are globally unique, machine-readable identifiers for each resource type.
           - Values are objects describing metadata about the resource type.
 
@@ -25443,10 +25375,6 @@ components:
         resource_integration_data_examples:
           description: |
             A map of example resource `integration_data` payloads by resource type.
-
-
-
-
 
 
 
@@ -25544,10 +25472,6 @@ components:
 
 
 
-
-
-
-
           - Keys are the machine-readable, globally unique names of resource types registered by this integration.
           - Values are a map of event type definitions.
       type: object
@@ -25564,10 +25488,6 @@ components:
     IntegrationResourceEvents:
       description: |
         Defines the event types for a given resource type belonging to the integration that will be ingested in the catalog.
-
-
-
-
 
 
 
@@ -26277,10 +26197,6 @@ components:
         the property that will be used to filter the results. For example:
 
 
-
-
-
-
           - `filter[config.control_plane_id]`
           - `filter[config.gateway_service_id][neq]=cedbd134-fc5c-4d44-9e38-ccd2a0c6e0ae`
       type: object
@@ -26306,10 +26222,6 @@ components:
       description: |
         Filters on the resource's `integration_data` field. Filters must use dot-notation to identify
         the property that will be used to filter the results. For example:
-
-
-
-
 
 
           - `filter[integration_data.control_plane.id]=760562c3-fedd-43e4-b742-fc1663fef188`
@@ -26991,10 +26903,6 @@ components:
             Filter operators are dictated by the custom field type. For example:
 
 
-
-
-
-
               - `filter[custom_fields.owner]`
               - `filter[custom_fields.owner][neq]=kong`
               - `filter[custom_fields.dashboard.link][contains]=https`
@@ -27083,10 +26991,6 @@ components:
           description: |
             Filter by custom fields using dot-notation to specify the custom field.
             Filter operators are dictated by the custom field type. For example:
-
-
-
-
 
 
               - `filter[custom_fields.owner]`
@@ -28532,24 +28436,12 @@ components:
             * passthrough - pass authentication from the client through proxy to the backend cluster without any kind of
 
 
-
-
-
-
               validation
             * validate_forward - pass authentication from the client through proxy to the backend cluster.
 
 
-
-
-
-
               Proxy does the validation before forwarding it to the client.
             * terminate - terminate authentication at the proxy level and originate authentication to the backend cluster
-
-
-
-
 
 
               using the configuration defined at BackendCluster's authentication.
@@ -28605,10 +28497,6 @@ components:
       description: |
         Configures whether or not ACL policies are enforced on the gateway.
         - `enforce_on_gateway` means the gateway enforces its own ACL policies for this virtual cluster
-
-
-
-
 
 
           and does not forward ACL-related commands to the backend cluster.
@@ -30499,10 +30387,6 @@ components:
         * mark - marks a record with kong/server header and client ID value
 
 
-
-
-
-
           to help to identify the clients violating schema.
       type: string
       enum:
@@ -30514,10 +30398,6 @@ components:
         Defines a behavior when record value is not valid.
         * reject - rejects a batch for topic partition. Only available for produce.
         * mark - marks a record with kong/server header and client ID value
-
-
-
-
 
 
           to help to identify the clients violating schema.
@@ -30640,16 +30520,8 @@ components:
             * hide_prefix - the configured prefix is hidden from clients for topics and IDs when reading.
 
 
-
-
-
-
               Created resources are written with the prefix on the backend cluster.
             * enforce_prefix - the configured prefix remains visible to clients.
-
-
-
-
 
 
               Created resources must include the prefix or the request will fail.
@@ -40004,10 +39876,6 @@ tags:
       - `grpcs`: At least one of `hosts`, `headers`, `paths`, or `snis`
       - `ws`: At least one of `hosts`, `headers`, or `paths`
       - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
-
-
-
-
 
 
         <br>
