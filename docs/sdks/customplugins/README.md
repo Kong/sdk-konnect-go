@@ -79,9 +79,81 @@ This endpoint is currently in beta and is subject to change.
 
 Create a new CustomPlugin
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-custom-plugin" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/custom-plugins" -->
+<!-- UsageSnippet language="go" operationID="create-custom-plugin" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/custom-plugins" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CustomPlugins.CreateCustomPlugin(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CustomPlugin{
+        Handler: "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }",
+        ID: sdkkonnectgo.Pointer("868346aa-1105-4b77-8346-aa1105fb77c4"),
+        Name: "set-header",
+        Schema: "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CustomPlugin != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="create-custom-plugin" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/custom-plugins" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CustomPlugins.CreateCustomPlugin(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CustomPlugin{
+        Handler: "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }",
+        ID: sdkkonnectgo.Pointer("868346aa-1105-4b77-8346-aa1105fb77c4"),
+        Name: "set-header",
+        Schema: "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CustomPlugin != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="create-custom-plugin" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/custom-plugins" example="NoAPIKey" -->
 ```go
 package main
 
@@ -261,9 +333,91 @@ This endpoint is currently in beta and is subject to change.
 
 Create or Update CustomPlugin using ID or name.
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-custom-plugin" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/custom-plugins/{CustomPluginId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-custom-plugin" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/custom-plugins/{CustomPluginId}" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CustomPlugins.UpsertCustomPlugin(ctx, operations.UpsertCustomPluginRequest{
+        CustomPluginID: "",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        CustomPlugin: components.CustomPlugin{
+            Handler: "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }",
+            ID: sdkkonnectgo.Pointer("868346aa-1105-4b77-8346-aa1105fb77c4"),
+            Name: "set-header",
+            Schema: "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CustomPlugin != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="upsert-custom-plugin" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/custom-plugins/{CustomPluginId}" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CustomPlugins.UpsertCustomPlugin(ctx, operations.UpsertCustomPluginRequest{
+        CustomPluginID: "",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        CustomPlugin: components.CustomPlugin{
+            Handler: "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }",
+            ID: sdkkonnectgo.Pointer("868346aa-1105-4b77-8346-aa1105fb77c4"),
+            Name: "set-header",
+            Schema: "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CustomPlugin != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="upsert-custom-plugin" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/custom-plugins/{CustomPluginId}" example="NoAPIKey" -->
 ```go
 package main
 

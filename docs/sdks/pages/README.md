@@ -20,7 +20,7 @@ Creates a default collection of pages, snippets, and customization config for a 
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-default-content" method="post" path="/v3/portals/{portalId}/default-content" -->
+<!-- UsageSnippet language="go" operationID="create-default-content" method="post" path="/v3/portals/{portalId}/default-content" example="Example 1" -->
 ```go
 package main
 
@@ -77,7 +77,7 @@ Returns the tree view of custom pages that have been created for this portal.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-portal-pages" method="get" path="/v3/portals/{portalId}/pages" -->
+<!-- UsageSnippet language="go" operationID="list-portal-pages" method="get" path="/v3/portals/{portalId}/pages" example="Example 1" -->
 ```go
 package main
 
@@ -148,9 +148,202 @@ func main() {
 
 Creates a new custom page for this portal. Custom pages can be used to display static content, documentation, or other information to developers. Title and Description properties may be provided in the frontmatter section of `content`. If you set values in both the `POST` request _and_ in the frontmatter, the values in frontmatter will take precedence.
 
-### Example Usage
+### Example Usage: Example 1
 
-<!-- UsageSnippet language="go" operationID="create-portal-page" method="post" path="/v3/portals/{portalId}/pages" -->
+<!-- UsageSnippet language="go" operationID="create-portal-page" method="post" path="/v3/portals/{portalId}/pages" example="Example 1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Pages.CreatePortalPage(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.CreatePortalPageRequest{
+        Slug: "/getting-started",
+        Title: sdkkonnectgo.Pointer("Getting Started"),
+        Content: "Welcome to the Getting Started page. This is where you can learn how to use our APIs.",
+        Visibility: components.PageVisibilityStatusPublic.ToPointer(),
+        Status: components.PublishedStatusPublished.ToPointer(),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalPageResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="create-portal-page" method="post" path="/v3/portals/{portalId}/pages" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Pages.CreatePortalPage(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.CreatePortalPageRequest{
+        Slug: "/my-page",
+        Title: sdkkonnectgo.Pointer("My Page"),
+        Content: "# Welcome to My Page",
+        Visibility: components.PageVisibilityStatusPublic.ToPointer(),
+        Status: components.PublishedStatusPublished.ToPointer(),
+        Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
+        ParentPageID: nil,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalPageResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="create-portal-page" method="post" path="/v3/portals/{portalId}/pages" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Pages.CreatePortalPage(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.CreatePortalPageRequest{
+        Slug: "/my-page",
+        Title: sdkkonnectgo.Pointer("My Page"),
+        Content: "# Welcome to My Page",
+        Visibility: components.PageVisibilityStatusPublic.ToPointer(),
+        Status: components.PublishedStatusPublished.ToPointer(),
+        Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
+        ParentPageID: nil,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalPageResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="create-portal-page" method="post" path="/v3/portals/{portalId}/pages" example="UnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Pages.CreatePortalPage(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.CreatePortalPageRequest{
+        Slug: "/my-page",
+        Title: sdkkonnectgo.Pointer("My Page"),
+        Content: "# Welcome to My Page",
+        Visibility: components.PageVisibilityStatusPublic.ToPointer(),
+        Status: components.PublishedStatusPublished.ToPointer(),
+        Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
+        ParentPageID: nil,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalPageResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UpdatePortalPageBadRequestExample1
+
+<!-- UsageSnippet language="go" operationID="create-portal-page" method="post" path="/v3/portals/{portalId}/pages" example="UpdatePortalPageBadRequestExample1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Pages.CreatePortalPage(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.CreatePortalPageRequest{
+        Slug: "/my-page",
+        Title: sdkkonnectgo.Pointer("My Page"),
+        Content: "# Welcome to My Page",
+        Visibility: components.PageVisibilityStatusPublic.ToPointer(),
+        Status: components.PublishedStatusPublished.ToPointer(),
+        Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
+        ParentPageID: nil,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalPageResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UpdatePortalPageBadRequestExample2:
+
+<!-- UsageSnippet language="go" operationID="create-portal-page" method="post" path="/v3/portals/{portalId}/pages" example="UpdatePortalPageBadRequestExample2:" -->
 ```go
 package main
 
@@ -217,7 +410,7 @@ Returns the configuration of a single custom page for this portal. Custom pages 
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-portal-page" method="get" path="/v3/portals/{portalId}/pages/{pageId}" -->
+<!-- UsageSnippet language="go" operationID="get-portal-page" method="get" path="/v3/portals/{portalId}/pages/{pageId}" example="Example 1" -->
 ```go
 package main
 
@@ -272,9 +465,225 @@ func main() {
 
 Updates the configuration of a single custom page for this portal.
 
-### Example Usage
+### Example Usage: Example 1
 
-<!-- UsageSnippet language="go" operationID="update-portal-page" method="patch" path="/v3/portals/{portalId}/pages/{pageId}" -->
+<!-- UsageSnippet language="go" operationID="update-portal-page" method="patch" path="/v3/portals/{portalId}/pages/{pageId}" example="Example 1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Pages.UpdatePortalPage(ctx, operations.UpdatePortalPageRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageID: "ebbac5b0-ac89-45c3-9d2e-c4542c657e79",
+        UpdatePortalPageRequest: components.UpdatePortalPageRequest{
+            Slug: sdkkonnectgo.Pointer("/about-us"),
+            Title: sdkkonnectgo.Pointer("About Us"),
+            Content: sdkkonnectgo.Pointer("Welcome to the About Us page. This is where you can learn about our company."),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalPageResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="update-portal-page" method="patch" path="/v3/portals/{portalId}/pages/{pageId}" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Pages.UpdatePortalPage(ctx, operations.UpdatePortalPageRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageID: "ebbac5b0-ac89-45c3-9d2e-c4542c657e79",
+        UpdatePortalPageRequest: components.UpdatePortalPageRequest{
+            Slug: sdkkonnectgo.Pointer("/my-page"),
+            Title: sdkkonnectgo.Pointer("My Page"),
+            Content: sdkkonnectgo.Pointer("# Welcome to My Page"),
+            Visibility: components.VisibilityStatusPublic.ToPointer(),
+            Status: components.PublishedStatusPublished.ToPointer(),
+            Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
+            ParentPageID: nil,
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalPageResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="update-portal-page" method="patch" path="/v3/portals/{portalId}/pages/{pageId}" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Pages.UpdatePortalPage(ctx, operations.UpdatePortalPageRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageID: "ebbac5b0-ac89-45c3-9d2e-c4542c657e79",
+        UpdatePortalPageRequest: components.UpdatePortalPageRequest{
+            Slug: sdkkonnectgo.Pointer("/my-page"),
+            Title: sdkkonnectgo.Pointer("My Page"),
+            Content: sdkkonnectgo.Pointer("# Welcome to My Page"),
+            Visibility: components.VisibilityStatusPublic.ToPointer(),
+            Status: components.PublishedStatusPublished.ToPointer(),
+            Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
+            ParentPageID: nil,
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalPageResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="update-portal-page" method="patch" path="/v3/portals/{portalId}/pages/{pageId}" example="UnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Pages.UpdatePortalPage(ctx, operations.UpdatePortalPageRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageID: "ebbac5b0-ac89-45c3-9d2e-c4542c657e79",
+        UpdatePortalPageRequest: components.UpdatePortalPageRequest{
+            Slug: sdkkonnectgo.Pointer("/my-page"),
+            Title: sdkkonnectgo.Pointer("My Page"),
+            Content: sdkkonnectgo.Pointer("# Welcome to My Page"),
+            Visibility: components.VisibilityStatusPublic.ToPointer(),
+            Status: components.PublishedStatusPublished.ToPointer(),
+            Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
+            ParentPageID: nil,
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalPageResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UpdatePortalPageBadRequestExample1:
+
+<!-- UsageSnippet language="go" operationID="update-portal-page" method="patch" path="/v3/portals/{portalId}/pages/{pageId}" example="UpdatePortalPageBadRequestExample1:" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Pages.UpdatePortalPage(ctx, operations.UpdatePortalPageRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageID: "ebbac5b0-ac89-45c3-9d2e-c4542c657e79",
+        UpdatePortalPageRequest: components.UpdatePortalPageRequest{
+            Slug: sdkkonnectgo.Pointer("/my-page"),
+            Title: sdkkonnectgo.Pointer("My Page"),
+            Content: sdkkonnectgo.Pointer("# Welcome to My Page"),
+            Visibility: components.VisibilityStatusPublic.ToPointer(),
+            Status: components.PublishedStatusPublished.ToPointer(),
+            Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
+            ParentPageID: nil,
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalPageResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UpdatePortalPageBadRequestExample2:
+
+<!-- UsageSnippet language="go" operationID="update-portal-page" method="patch" path="/v3/portals/{portalId}/pages/{pageId}" example="UpdatePortalPageBadRequestExample2:" -->
 ```go
 package main
 
@@ -401,9 +810,87 @@ func main() {
 
 This api allows the user to move a page within the page tree using the parameters parent_page_id and index. If parent_page_id is not provided, the page will be placed at the top level of the page tree. index represents a zero-indexed page order relative to its siblings under the same parent. For example, if we want to put the page at top level in first position we would send parent_page_id: null and index: 0. This api also supports using a negative index to count backwards from the end of the page list, which means you can put the page in last position by using index: -1.
 
-### Example Usage
+### Example Usage: NotFoundExample
 
-<!-- UsageSnippet language="go" operationID="move-portal-pages" method="post" path="/v3/portals/{portalId}/pages/{pageId}/move" -->
+<!-- UsageSnippet language="go" operationID="move-portal-pages" method="post" path="/v3/portals/{portalId}/pages/{pageId}/move" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Pages.MovePortalPages(ctx, operations.MovePortalPagesRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageID: "ebbac5b0-ac89-45c3-9d2e-c4542c657e79",
+        MovePageRequestPayload: &components.MovePageRequestPayload{
+            ParentPageID: sdkkonnectgo.Pointer("dd4e1b98-3629-4dd3-acc0-759a726ffee2"),
+            Index: sdkkonnectgo.Pointer[int64](1),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="move-portal-pages" method="post" path="/v3/portals/{portalId}/pages/{pageId}/move" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Pages.MovePortalPages(ctx, operations.MovePortalPagesRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageID: "ebbac5b0-ac89-45c3-9d2e-c4542c657e79",
+        MovePageRequestPayload: &components.MovePageRequestPayload{
+            ParentPageID: sdkkonnectgo.Pointer("dd4e1b98-3629-4dd3-acc0-759a726ffee2"),
+            Index: sdkkonnectgo.Pointer[int64](1),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="move-portal-pages" method="post" path="/v3/portals/{portalId}/pages/{pageId}/move" example="UnauthorizedExample" -->
 ```go
 package main
 

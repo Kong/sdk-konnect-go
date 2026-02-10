@@ -14,7 +14,7 @@ Lists the roles belonging to a system account. Returns 400 if any filter paramet
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-system-accounts-accountId-assigned-roles" method="get" path="/v3/system-accounts/{accountId}/assigned-roles" -->
+<!-- UsageSnippet language="go" operationID="get-system-accounts-accountId-assigned-roles" method="get" path="/v3/system-accounts/{accountId}/assigned-roles" example="CollectionExample" -->
 ```go
 package main
 
@@ -70,9 +70,189 @@ func main() {
 
 Assigns a role to a system account. Returns 409 if role is already assigned.
 
-### Example Usage
+### Example Usage: Assigned Role Example
 
-<!-- UsageSnippet language="go" operationID="post-system-accounts-accountId-assigned-roles" method="post" path="/v3/system-accounts/{accountId}/assigned-roles" -->
+<!-- UsageSnippet language="go" operationID="post-system-accounts-accountId-assigned-roles" method="post" path="/v3/system-accounts/{accountId}/assigned-roles" example="Assigned Role Example" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.SystemAccountsRoles.PostSystemAccountsAccountIDAssignedRoles(ctx, "<id>", &components.AssignRole{
+        RoleName: components.RoleNameViewer.ToPointer(),
+        EntityID: sdkkonnectgo.Pointer("e67490ce-44dc-4cbd-b65e-b52c746fc26a"),
+        EntityTypeName: components.EntityTypeNameControlPlanes.ToPointer(),
+        EntityRegion: components.AssignRoleEntityRegionEu.ToPointer(),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AssignedRole != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Assigned Roles Global
+
+<!-- UsageSnippet language="go" operationID="post-system-accounts-accountId-assigned-roles" method="post" path="/v3/system-accounts/{accountId}/assigned-roles" example="Assigned Roles Global" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.SystemAccountsRoles.PostSystemAccountsAccountIDAssignedRoles(ctx, "<id>", &components.AssignRole{
+        RoleName: components.RoleNameAdmin.ToPointer(),
+        EntityID: sdkkonnectgo.Pointer("18ee2573-dec0-4b83-be99-fa7700bcdc61"),
+        EntityTypeName: components.EntityTypeNameControlPlanes.ToPointer(),
+        EntityRegion: components.AssignRoleEntityRegionWildcard.ToPointer(),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AssignedRole != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Assigned Roles US
+
+<!-- UsageSnippet language="go" operationID="post-system-accounts-accountId-assigned-roles" method="post" path="/v3/system-accounts/{accountId}/assigned-roles" example="Assigned Roles US" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.SystemAccountsRoles.PostSystemAccountsAccountIDAssignedRoles(ctx, "<id>", &components.AssignRole{
+        RoleName: components.RoleNameViewer.ToPointer(),
+        EntityID: sdkkonnectgo.Pointer("18ee2573-dec0-4b83-be99-fa7700bcdc61"),
+        EntityTypeName: components.EntityTypeNameControlPlanes.ToPointer(),
+        EntityRegion: components.AssignRoleEntityRegionUs.ToPointer(),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AssignedRole != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Not Found
+
+<!-- UsageSnippet language="go" operationID="post-system-accounts-accountId-assigned-roles" method="post" path="/v3/system-accounts/{accountId}/assigned-roles" example="Not Found" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.SystemAccountsRoles.PostSystemAccountsAccountIDAssignedRoles(ctx, "<id>", &components.AssignRole{
+        RoleName: components.RoleNameViewer.ToPointer(),
+        EntityID: sdkkonnectgo.Pointer("e67490ce-44dc-4cbd-b65e-b52c746fc26a"),
+        EntityTypeName: components.EntityTypeNameControlPlanes.ToPointer(),
+        EntityRegion: components.AssignRoleEntityRegionEu.ToPointer(),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AssignedRole != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="post-system-accounts-accountId-assigned-roles" method="post" path="/v3/system-accounts/{accountId}/assigned-roles" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.SystemAccountsRoles.PostSystemAccountsAccountIDAssignedRoles(ctx, "<id>", &components.AssignRole{
+        RoleName: components.RoleNameViewer.ToPointer(),
+        EntityID: sdkkonnectgo.Pointer("e67490ce-44dc-4cbd-b65e-b52c746fc26a"),
+        EntityTypeName: components.EntityTypeNameControlPlanes.ToPointer(),
+        EntityRegion: components.AssignRoleEntityRegionEu.ToPointer(),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AssignedRole != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: User is Already Active
+
+<!-- UsageSnippet language="go" operationID="post-system-accounts-accountId-assigned-roles" method="post" path="/v3/system-accounts/{accountId}/assigned-roles" example="User is Already Active" -->
 ```go
 package main
 

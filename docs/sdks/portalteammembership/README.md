@@ -17,7 +17,7 @@ Lists the teams to which a developer belongs. Each team a developer is a member 
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-portal-developer-teams" method="get" path="/v3/portals/{portalId}/developers/{developerId}/teams" -->
+<!-- UsageSnippet language="go" operationID="list-portal-developer-teams" method="get" path="/v3/portals/{portalId}/developers/{developerId}/teams" example="Example 1" -->
 ```go
 package main
 
@@ -80,7 +80,7 @@ List a team's developers.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-portal-team-developers" method="get" path="/v3/portals/{portalId}/teams/{teamId}/developers" -->
+<!-- UsageSnippet language="go" operationID="list-portal-team-developers" method="get" path="/v3/portals/{portalId}/teams/{teamId}/developers" example="Example 1" -->
 ```go
 package main
 
@@ -144,9 +144,199 @@ func main() {
 
 Adds a developer to a team. This associates them with all of the roles that have been assigned to the team, providing specific permissions to perform actions on resources.
 
-### Example Usage
+### Example Usage: AddDeveloperToTeamBadRequestExample1
 
-<!-- UsageSnippet language="go" operationID="add-developer-to-portal-team" method="post" path="/v3/portals/{portalId}/teams/{teamId}/developers" -->
+<!-- UsageSnippet language="go" operationID="add-developer-to-portal-team" method="post" path="/v3/portals/{portalId}/teams/{teamId}/developers" example="AddDeveloperToTeamBadRequestExample1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeamMembership.AddDeveloperToPortalTeam(ctx, operations.AddDeveloperToPortalTeamRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TeamID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        AddDeveloperToTeamRequest: &components.AddDeveloperToTeamRequest{
+            ID: "df120cb4-f60b-47bc-a2f8-6a28e6a3c63b",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: AddDeveloperToTeamBadRequestExample2
+
+<!-- UsageSnippet language="go" operationID="add-developer-to-portal-team" method="post" path="/v3/portals/{portalId}/teams/{teamId}/developers" example="AddDeveloperToTeamBadRequestExample2" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeamMembership.AddDeveloperToPortalTeam(ctx, operations.AddDeveloperToPortalTeamRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TeamID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        AddDeveloperToTeamRequest: &components.AddDeveloperToTeamRequest{
+            ID: "df120cb4-f60b-47bc-a2f8-6a28e6a3c63b",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Example 1
+
+<!-- UsageSnippet language="go" operationID="add-developer-to-portal-team" method="post" path="/v3/portals/{portalId}/teams/{teamId}/developers" example="Example 1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeamMembership.AddDeveloperToPortalTeam(ctx, operations.AddDeveloperToPortalTeamRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TeamID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        AddDeveloperToTeamRequest: &components.AddDeveloperToTeamRequest{
+            ID: "df120cb4-f60b-47bc-a2f8-6a28e6a3c63b",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="add-developer-to-portal-team" method="post" path="/v3/portals/{portalId}/teams/{teamId}/developers" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeamMembership.AddDeveloperToPortalTeam(ctx, operations.AddDeveloperToPortalTeamRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TeamID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        AddDeveloperToTeamRequest: &components.AddDeveloperToTeamRequest{
+            ID: "df120cb4-f60b-47bc-a2f8-6a28e6a3c63b",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="add-developer-to-portal-team" method="post" path="/v3/portals/{portalId}/teams/{teamId}/developers" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeamMembership.AddDeveloperToPortalTeam(ctx, operations.AddDeveloperToPortalTeamRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TeamID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        AddDeveloperToTeamRequest: &components.AddDeveloperToTeamRequest{
+            ID: "df120cb4-f60b-47bc-a2f8-6a28e6a3c63b",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="add-developer-to-portal-team" method="post" path="/v3/portals/{portalId}/teams/{teamId}/developers" example="UnauthorizedExample" -->
 ```go
 package main
 

@@ -17,7 +17,7 @@ Lists the developers that have registered for this portal. Each developer can be
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-portal-developers" method="get" path="/v3/portals/{portalId}/developers" -->
+<!-- UsageSnippet language="go" operationID="list-portal-developers" method="get" path="/v3/portals/{portalId}/developers" example="Example 1" -->
 ```go
 package main
 
@@ -80,7 +80,7 @@ Returns information about a single developer in this portal. Each developer mana
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-developer" method="get" path="/v3/portals/{portalId}/developers/{developerId}" -->
+<!-- UsageSnippet language="go" operationID="get-developer" method="get" path="/v3/portals/{portalId}/developers/{developerId}" example="Example 1" -->
 ```go
 package main
 
@@ -136,9 +136,313 @@ func main() {
 
 Updates the status of a particular developer. Approved developers have access to login to the portal. Revoked, rejected, or pending are not allowed to login. Even if a developer's status is no longer approved, they will still be able to using any existing credentials generated while they were approved, until each application registration is revoked or deleted.
 
-### Example Usage
+### Example Usage: Approved
 
-<!-- UsageSnippet language="go" operationID="update-developer" method="patch" path="/v3/portals/{portalId}/developers/{developerId}" -->
+<!-- UsageSnippet language="go" operationID="update-developer" method="patch" path="/v3/portals/{portalId}/developers/{developerId}" example="Approved" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalDevelopers.UpdateDeveloper(ctx, operations.UpdateDeveloperRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        DeveloperID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        UpdateDeveloperRequest: components.UpdateDeveloperRequest{
+            Status: components.DeveloperStatusApproved.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalDeveloper != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Example 1
+
+<!-- UsageSnippet language="go" operationID="update-developer" method="patch" path="/v3/portals/{portalId}/developers/{developerId}" example="Example 1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalDevelopers.UpdateDeveloper(ctx, operations.UpdateDeveloperRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        DeveloperID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        UpdateDeveloperRequest: components.UpdateDeveloperRequest{
+            Status: components.DeveloperStatusApproved.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalDeveloper != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="update-developer" method="patch" path="/v3/portals/{portalId}/developers/{developerId}" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalDevelopers.UpdateDeveloper(ctx, operations.UpdateDeveloperRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        DeveloperID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        UpdateDeveloperRequest: components.UpdateDeveloperRequest{
+            Status: components.DeveloperStatusApproved.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalDeveloper != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Pending
+
+<!-- UsageSnippet language="go" operationID="update-developer" method="patch" path="/v3/portals/{portalId}/developers/{developerId}" example="Pending" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalDevelopers.UpdateDeveloper(ctx, operations.UpdateDeveloperRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        DeveloperID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        UpdateDeveloperRequest: components.UpdateDeveloperRequest{
+            Status: components.DeveloperStatusPending.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalDeveloper != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Rejected
+
+<!-- UsageSnippet language="go" operationID="update-developer" method="patch" path="/v3/portals/{portalId}/developers/{developerId}" example="Rejected" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalDevelopers.UpdateDeveloper(ctx, operations.UpdateDeveloperRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        DeveloperID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        UpdateDeveloperRequest: components.UpdateDeveloperRequest{
+            Status: components.DeveloperStatusRejected.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalDeveloper != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Revoked
+
+<!-- UsageSnippet language="go" operationID="update-developer" method="patch" path="/v3/portals/{portalId}/developers/{developerId}" example="Revoked" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalDevelopers.UpdateDeveloper(ctx, operations.UpdateDeveloperRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        DeveloperID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        UpdateDeveloperRequest: components.UpdateDeveloperRequest{
+            Status: components.DeveloperStatusRevoked.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalDeveloper != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="update-developer" method="patch" path="/v3/portals/{portalId}/developers/{developerId}" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalDevelopers.UpdateDeveloper(ctx, operations.UpdateDeveloperRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        DeveloperID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        UpdateDeveloperRequest: components.UpdateDeveloperRequest{
+            Status: components.DeveloperStatusApproved.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalDeveloper != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="update-developer" method="patch" path="/v3/portals/{portalId}/developers/{developerId}" example="UnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalDevelopers.UpdateDeveloper(ctx, operations.UpdateDeveloperRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        DeveloperID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        UpdateDeveloperRequest: components.UpdateDeveloperRequest{
+            Status: components.DeveloperStatusApproved.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalDeveloper != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UpdateDeveloperBadRequestExample1
+
+<!-- UsageSnippet language="go" operationID="update-developer" method="patch" path="/v3/portals/{portalId}/developers/{developerId}" example="UpdateDeveloperBadRequestExample1" -->
 ```go
 package main
 

@@ -76,9 +76,83 @@ func main() {
 
 Create a new KeySet
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-key-set" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets" -->
+<!-- UsageSnippet language="go" operationID="create-key-set" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.KeySets.CreateKeySet(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", &components.KeySet{
+        ID: sdkkonnectgo.Pointer("b58c7d9d-e54f-444c-b24d-cdfc4159f61e"),
+        Name: sdkkonnectgo.Pointer("example-key-set"),
+        Tags: []string{
+            "idp-keys",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.KeySet != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="create-key-set" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.KeySets.CreateKeySet(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", &components.KeySet{
+        ID: sdkkonnectgo.Pointer("b58c7d9d-e54f-444c-b24d-cdfc4159f61e"),
+        Name: sdkkonnectgo.Pointer("example-key-set"),
+        Tags: []string{
+            "idp-keys",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.KeySet != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="create-key-set" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets" example="NoAPIKey" -->
 ```go
 package main
 
@@ -250,9 +324,93 @@ func main() {
 
 Create or Update KeySet using ID or name.
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-key-set" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets/{KeySetId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-key-set" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets/{KeySetId}" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.KeySets.UpsertKeySet(ctx, operations.UpsertKeySetRequest{
+        KeySetID: "6cc34248-50b4-4a81-9201-3bdf7a83f712",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        KeySet: &components.KeySet{
+            ID: sdkkonnectgo.Pointer("b58c7d9d-e54f-444c-b24d-cdfc4159f61e"),
+            Name: sdkkonnectgo.Pointer("example-key-set"),
+            Tags: []string{
+                "idp-keys",
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.KeySet != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="upsert-key-set" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets/{KeySetId}" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.KeySets.UpsertKeySet(ctx, operations.UpsertKeySetRequest{
+        KeySetID: "6cc34248-50b4-4a81-9201-3bdf7a83f712",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        KeySet: &components.KeySet{
+            ID: sdkkonnectgo.Pointer("b58c7d9d-e54f-444c-b24d-cdfc4159f61e"),
+            Name: sdkkonnectgo.Pointer("example-key-set"),
+            Tags: []string{
+                "idp-keys",
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.KeySet != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="upsert-key-set" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/key-sets/{KeySetId}" example="NoAPIKey" -->
 ```go
 package main
 

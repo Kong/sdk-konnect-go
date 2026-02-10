@@ -94,9 +94,9 @@ routes in one or more gateway services, or API operations need to be made availa
 then the API should be linked to the control plane that defines the routes that overlap with the API.
 
 
-### Example Usage
+### Example Usage: ApiForbiddenExample
 
-<!-- UsageSnippet language="go" operationID="create-api-implementation" method="post" path="/v3/apis/{apiId}/implementations" -->
+<!-- UsageSnippet language="go" operationID="create-api-implementation" method="post" path="/v3/apis/{apiId}/implementations" example="ApiForbiddenExample" -->
 ```go
 package main
 
@@ -121,6 +121,234 @@ func main() {
             Service: &components.APIImplementationService{
                 ControlPlaneID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
                 ID: "7710d5c4-d902-410b-992f-18b814155b53",
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIImplementationResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiImplementationBadRequestExample
+
+<!-- UsageSnippet language="go" operationID="create-api-implementation" method="post" path="/v3/apis/{apiId}/implementations" example="ApiImplementationBadRequestExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIImplementation.CreateAPIImplementation(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.CreateAPIImplementationServiceReference(
+        components.ServiceReference{
+            Service: &components.APIImplementationService{
+                ControlPlaneID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+                ID: "7710d5c4-d902-410b-992f-18b814155b53",
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIImplementationResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiImplementationCountConflictExample
+
+<!-- UsageSnippet language="go" operationID="create-api-implementation" method="post" path="/v3/apis/{apiId}/implementations" example="ApiImplementationCountConflictExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIImplementation.CreateAPIImplementation(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.CreateAPIImplementationServiceReference(
+        components.ServiceReference{
+            Service: &components.APIImplementationService{
+                ControlPlaneID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+                ID: "7710d5c4-d902-410b-992f-18b814155b53",
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIImplementationResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiImplementationServiceConflictExample
+
+<!-- UsageSnippet language="go" operationID="create-api-implementation" method="post" path="/v3/apis/{apiId}/implementations" example="ApiImplementationServiceConflictExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIImplementation.CreateAPIImplementation(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.CreateAPIImplementationServiceReference(
+        components.ServiceReference{
+            Service: &components.APIImplementationService{
+                ControlPlaneID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+                ID: "7710d5c4-d902-410b-992f-18b814155b53",
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIImplementationResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiNotFoundExample
+
+<!-- UsageSnippet language="go" operationID="create-api-implementation" method="post" path="/v3/apis/{apiId}/implementations" example="ApiNotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIImplementation.CreateAPIImplementation(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.CreateAPIImplementationServiceReference(
+        components.ServiceReference{
+            Service: &components.APIImplementationService{
+                ControlPlaneID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+                ID: "7710d5c4-d902-410b-992f-18b814155b53",
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIImplementationResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiUnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="create-api-implementation" method="post" path="/v3/apis/{apiId}/implementations" example="ApiUnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIImplementation.CreateAPIImplementation(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.CreateAPIImplementationServiceReference(
+        components.ServiceReference{
+            Service: &components.APIImplementationService{
+                ControlPlaneID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+                ID: "7710d5c4-d902-410b-992f-18b814155b53",
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIImplementationResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: CreateApiImplementationRequest
+
+<!-- UsageSnippet language="go" operationID="create-api-implementation" method="post" path="/v3/apis/{apiId}/implementations" example="CreateApiImplementationRequest" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIImplementation.CreateAPIImplementation(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.CreateAPIImplementationServiceReference(
+        components.ServiceReference{
+            Service: &components.APIImplementationService{
+                ControlPlaneID: "fd4e1b98-3629-4dd3-acc0-759a726ffee2",
+                ID: "dd4e1b98-3629-4dd3-acc0-759a726ffee2",
             },
         },
     ))

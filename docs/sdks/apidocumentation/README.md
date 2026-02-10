@@ -18,9 +18,298 @@ Publish a new document attached to an API.
 All configuration options may be provided in the frontmatter section of `content`. If you set values in both the `POST` request _and_ in the frontmatter, the values in the `POST` request will take precedence.
 
 
-### Example Usage
+### Example Usage: ApiForbiddenExample
 
-<!-- UsageSnippet language="go" operationID="create-api-document" method="post" path="/v3/apis/{apiId}/documents" -->
+<!-- UsageSnippet language="go" operationID="create-api-document" method="post" path="/v3/apis/{apiId}/documents" example="ApiForbiddenExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIDocumentation.CreateAPIDocument(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.CreateAPIDocumentRequest{
+        Content: "<value>",
+        Title: sdkkonnectgo.Pointer("API Document"),
+        Slug: sdkkonnectgo.Pointer("api-document"),
+        ParentDocumentID: nil,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIDocumentResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiNameBadRequestExample
+
+<!-- UsageSnippet language="go" operationID="create-api-document" method="post" path="/v3/apis/{apiId}/documents" example="ApiNameBadRequestExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIDocumentation.CreateAPIDocument(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.CreateAPIDocumentRequest{
+        Content: "<value>",
+        Title: sdkkonnectgo.Pointer("API Document"),
+        Slug: sdkkonnectgo.Pointer("api-document"),
+        ParentDocumentID: nil,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIDocumentResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiNotFoundExample
+
+<!-- UsageSnippet language="go" operationID="create-api-document" method="post" path="/v3/apis/{apiId}/documents" example="ApiNotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIDocumentation.CreateAPIDocument(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.CreateAPIDocumentRequest{
+        Content: "<value>",
+        Title: sdkkonnectgo.Pointer("API Document"),
+        Slug: sdkkonnectgo.Pointer("api-document"),
+        ParentDocumentID: nil,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIDocumentResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiSlugConflictExample
+
+<!-- UsageSnippet language="go" operationID="create-api-document" method="post" path="/v3/apis/{apiId}/documents" example="ApiSlugConflictExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIDocumentation.CreateAPIDocument(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.CreateAPIDocumentRequest{
+        Content: "<value>",
+        Title: sdkkonnectgo.Pointer("API Document"),
+        Slug: sdkkonnectgo.Pointer("api-document"),
+        ParentDocumentID: nil,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIDocumentResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiUnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="create-api-document" method="post" path="/v3/apis/{apiId}/documents" example="ApiUnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIDocumentation.CreateAPIDocument(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.CreateAPIDocumentRequest{
+        Content: "<value>",
+        Title: sdkkonnectgo.Pointer("API Document"),
+        Slug: sdkkonnectgo.Pointer("api-document"),
+        ParentDocumentID: nil,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIDocumentResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: CreateApiDocumentRequestExample
+
+<!-- UsageSnippet language="go" operationID="create-api-document" method="post" path="/v3/apis/{apiId}/documents" example="CreateApiDocumentRequestExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIDocumentation.CreateAPIDocument(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.CreateAPIDocumentRequest{
+        Content: "# API Document Header",
+        Title: sdkkonnectgo.Pointer("API Document"),
+        Slug: sdkkonnectgo.Pointer("api-document"),
+        Status: components.APIDocumentStatusPublished.ToPointer(),
+        ParentDocumentID: sdkkonnectgo.Pointer("417a2aed-9a75-4eca-a943-fa7d88ed6a73"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIDocumentResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: CreateApiDocumentRequestMinimalExample
+
+<!-- UsageSnippet language="go" operationID="create-api-document" method="post" path="/v3/apis/{apiId}/documents" example="CreateApiDocumentRequestMinimalExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIDocumentation.CreateAPIDocument(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.CreateAPIDocumentRequest{
+        Content: "# API Document Header",
+        Title: sdkkonnectgo.Pointer("API Document"),
+        Slug: sdkkonnectgo.Pointer("api-document"),
+        Status: components.APIDocumentStatusPublished.ToPointer(),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIDocumentResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: CreateApiDocumentResponse
+
+<!-- UsageSnippet language="go" operationID="create-api-document" method="post" path="/v3/apis/{apiId}/documents" example="CreateApiDocumentResponse" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIDocumentation.CreateAPIDocument(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.CreateAPIDocumentRequest{
+        Content: "<value>",
+        Title: sdkkonnectgo.Pointer("API Document"),
+        Slug: sdkkonnectgo.Pointer("api-document"),
+        ParentDocumentID: nil,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIDocumentResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnsupportedMediaTypeExample
+
+<!-- UsageSnippet language="go" operationID="create-api-document" method="post" path="/v3/apis/{apiId}/documents" example="UnsupportedMediaTypeExample" -->
 ```go
 package main
 
@@ -145,7 +434,7 @@ Returns a document for the API.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="fetch-api-document" method="get" path="/v3/apis/{apiId}/documents/{documentId}" -->
+<!-- UsageSnippet language="go" operationID="fetch-api-document" method="get" path="/v3/apis/{apiId}/documents/{documentId}" example="CreateApiDocumentResponse" -->
 ```go
 package main
 
@@ -201,9 +490,9 @@ func main() {
 
 Updates a document for an API.
 
-### Example Usage
+### Example Usage: ApiForbiddenExample
 
-<!-- UsageSnippet language="go" operationID="update-api-document" method="patch" path="/v3/apis/{apiId}/documents/{documentId}" -->
+<!-- UsageSnippet language="go" operationID="update-api-document" method="patch" path="/v3/apis/{apiId}/documents/{documentId}" example="ApiForbiddenExample" -->
 ```go
 package main
 
@@ -231,6 +520,367 @@ func main() {
             Title: sdkkonnectgo.Pointer("API Document"),
             Slug: sdkkonnectgo.Pointer("api-document"),
             ParentDocumentID: nil,
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIDocumentResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiNameBadRequestExample
+
+<!-- UsageSnippet language="go" operationID="update-api-document" method="patch" path="/v3/apis/{apiId}/documents/{documentId}" example="ApiNameBadRequestExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIDocumentation.UpdateAPIDocument(ctx, operations.UpdateAPIDocumentRequest{
+        APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+        DocumentID: "de5c9818-be5c-42e6-b514-e3d4bc30ddeb",
+        APIDocument: components.APIDocument{
+            Title: sdkkonnectgo.Pointer("API Document"),
+            Slug: sdkkonnectgo.Pointer("api-document"),
+            ParentDocumentID: nil,
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIDocumentResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiNotFoundExample
+
+<!-- UsageSnippet language="go" operationID="update-api-document" method="patch" path="/v3/apis/{apiId}/documents/{documentId}" example="ApiNotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIDocumentation.UpdateAPIDocument(ctx, operations.UpdateAPIDocumentRequest{
+        APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+        DocumentID: "de5c9818-be5c-42e6-b514-e3d4bc30ddeb",
+        APIDocument: components.APIDocument{
+            Title: sdkkonnectgo.Pointer("API Document"),
+            Slug: sdkkonnectgo.Pointer("api-document"),
+            ParentDocumentID: nil,
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIDocumentResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiSlugConflictExample
+
+<!-- UsageSnippet language="go" operationID="update-api-document" method="patch" path="/v3/apis/{apiId}/documents/{documentId}" example="ApiSlugConflictExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIDocumentation.UpdateAPIDocument(ctx, operations.UpdateAPIDocumentRequest{
+        APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+        DocumentID: "de5c9818-be5c-42e6-b514-e3d4bc30ddeb",
+        APIDocument: components.APIDocument{
+            Title: sdkkonnectgo.Pointer("API Document"),
+            Slug: sdkkonnectgo.Pointer("api-document"),
+            ParentDocumentID: nil,
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIDocumentResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiUnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="update-api-document" method="patch" path="/v3/apis/{apiId}/documents/{documentId}" example="ApiUnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIDocumentation.UpdateAPIDocument(ctx, operations.UpdateAPIDocumentRequest{
+        APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+        DocumentID: "de5c9818-be5c-42e6-b514-e3d4bc30ddeb",
+        APIDocument: components.APIDocument{
+            Title: sdkkonnectgo.Pointer("API Document"),
+            Slug: sdkkonnectgo.Pointer("api-document"),
+            ParentDocumentID: nil,
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIDocumentResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: CreateApiDocumentResponse
+
+<!-- UsageSnippet language="go" operationID="update-api-document" method="patch" path="/v3/apis/{apiId}/documents/{documentId}" example="CreateApiDocumentResponse" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIDocumentation.UpdateAPIDocument(ctx, operations.UpdateAPIDocumentRequest{
+        APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+        DocumentID: "de5c9818-be5c-42e6-b514-e3d4bc30ddeb",
+        APIDocument: components.APIDocument{
+            Title: sdkkonnectgo.Pointer("API Document"),
+            Slug: sdkkonnectgo.Pointer("api-document"),
+            ParentDocumentID: nil,
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIDocumentResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnsupportedMediaTypeExample
+
+<!-- UsageSnippet language="go" operationID="update-api-document" method="patch" path="/v3/apis/{apiId}/documents/{documentId}" example="UnsupportedMediaTypeExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIDocumentation.UpdateAPIDocument(ctx, operations.UpdateAPIDocumentRequest{
+        APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+        DocumentID: "de5c9818-be5c-42e6-b514-e3d4bc30ddeb",
+        APIDocument: components.APIDocument{
+            Title: sdkkonnectgo.Pointer("API Document"),
+            Slug: sdkkonnectgo.Pointer("api-document"),
+            ParentDocumentID: nil,
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIDocumentResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UpdateApiDocumentAttributes
+
+<!-- UsageSnippet language="go" operationID="update-api-document" method="patch" path="/v3/apis/{apiId}/documents/{documentId}" example="UpdateApiDocumentAttributes" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIDocumentation.UpdateAPIDocument(ctx, operations.UpdateAPIDocumentRequest{
+        APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+        DocumentID: "de5c9818-be5c-42e6-b514-e3d4bc30ddeb",
+        APIDocument: components.APIDocument{
+            Title: sdkkonnectgo.Pointer("API Document"),
+            Slug: sdkkonnectgo.Pointer("api-document"),
+            Status: components.APIDocumentStatusPublished.ToPointer(),
+            ParentDocumentID: sdkkonnectgo.Pointer("dd4e1b98-3629-4dd3-acc0-759a726ffee2"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIDocumentResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UpdateApiDocumentAttributesAndContent
+
+<!-- UsageSnippet language="go" operationID="update-api-document" method="patch" path="/v3/apis/{apiId}/documents/{documentId}" example="UpdateApiDocumentAttributesAndContent" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIDocumentation.UpdateAPIDocument(ctx, operations.UpdateAPIDocumentRequest{
+        APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+        DocumentID: "de5c9818-be5c-42e6-b514-e3d4bc30ddeb",
+        APIDocument: components.APIDocument{
+            Content: sdkkonnectgo.Pointer("# Updated API Document Header"),
+            Title: sdkkonnectgo.Pointer("API Document"),
+            Slug: sdkkonnectgo.Pointer("api-document"),
+            Status: components.APIDocumentStatusPublished.ToPointer(),
+            ParentDocumentID: sdkkonnectgo.Pointer("dd4e1b98-3629-4dd3-acc0-759a726ffee2"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIDocumentResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UpdateApiDocumentContent
+
+<!-- UsageSnippet language="go" operationID="update-api-document" method="patch" path="/v3/apis/{apiId}/documents/{documentId}" example="UpdateApiDocumentContent" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIDocumentation.UpdateAPIDocument(ctx, operations.UpdateAPIDocumentRequest{
+        APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+        DocumentID: "de5c9818-be5c-42e6-b514-e3d4bc30ddeb",
+        APIDocument: components.APIDocument{
+            Content: sdkkonnectgo.Pointer("# Updated API Document Header"),
         },
     })
     if err != nil {
@@ -328,9 +978,87 @@ func main() {
 
 This api allows the user to move a document within the document tree using the parameters parent_document_id and index. If parent_document_id is not provided, the document will be placed at the top level of the document tree. index represents a zero-indexed document order relative to its siblings under the same parent. For example, if we want to put the document at top level in first position we would send parent_document_id: null and index: 0. This api also supports using a negative index to count backwards from the end of the document list, which means you can put the document in last position by using index: -1.
 
-### Example Usage
+### Example Usage: ApiForbiddenExample
 
-<!-- UsageSnippet language="go" operationID="move-api-document" method="post" path="/v3/apis/{apiId}/documents/{documentId}/move" -->
+<!-- UsageSnippet language="go" operationID="move-api-document" method="post" path="/v3/apis/{apiId}/documents/{documentId}/move" example="ApiForbiddenExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIDocumentation.MoveAPIDocument(ctx, operations.MoveAPIDocumentRequest{
+        APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+        DocumentID: "de5c9818-be5c-42e6-b514-e3d4bc30ddeb",
+        MoveDocumentRequestPayload: components.MoveDocumentRequestPayload{
+            ParentDocumentID: sdkkonnectgo.Pointer("dd4e1b98-3629-4dd3-acc0-759a726ffee2"),
+            Index: sdkkonnectgo.Pointer[int64](1),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiNotFoundExample
+
+<!-- UsageSnippet language="go" operationID="move-api-document" method="post" path="/v3/apis/{apiId}/documents/{documentId}/move" example="ApiNotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIDocumentation.MoveAPIDocument(ctx, operations.MoveAPIDocumentRequest{
+        APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+        DocumentID: "de5c9818-be5c-42e6-b514-e3d4bc30ddeb",
+        MoveDocumentRequestPayload: components.MoveDocumentRequestPayload{
+            ParentDocumentID: sdkkonnectgo.Pointer("dd4e1b98-3629-4dd3-acc0-759a726ffee2"),
+            Index: sdkkonnectgo.Pointer[int64](1),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiUnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="move-api-document" method="post" path="/v3/apis/{apiId}/documents/{documentId}/move" example="ApiUnauthorizedExample" -->
 ```go
 package main
 

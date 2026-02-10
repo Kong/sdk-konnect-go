@@ -13,7 +13,7 @@ Returns the organization of the user identified in the token of the request.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-organizations-me" method="get" path="/v3/organizations/me" -->
+<!-- UsageSnippet language="go" operationID="get-organizations-me" method="get" path="/v3/organizations/me" example="Example" -->
 ```go
 package main
 
@@ -67,7 +67,7 @@ Returns the user account for the user identified in the token of the request.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-users-me" method="get" path="/v3/users/me" -->
+<!-- UsageSnippet language="go" operationID="get-users-me" method="get" path="/v3/users/me" example="Example" -->
 ```go
 package main
 

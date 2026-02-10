@@ -84,9 +84,81 @@ func main() {
 
 Create a new Service
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-service" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/services" -->
+<!-- UsageSnippet language="go" operationID="create-service" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/services" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Services.CreateService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Service{
+        Host: "example.internal",
+        ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
+        Name: sdkkonnectgo.Pointer("example-service"),
+        Path: sdkkonnectgo.Pointer("/"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Service != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="create-service" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/services" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Services.CreateService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Service{
+        Host: "example.internal",
+        ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
+        Name: sdkkonnectgo.Pointer("example-service"),
+        Path: sdkkonnectgo.Pointer("/"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Service != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="create-service" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/services" example="NoAPIKey" -->
 ```go
 package main
 
@@ -257,9 +329,91 @@ func main() {
 
 Create or Update Service using ID or name.
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-service" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-service" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Services.UpsertService(ctx, operations.UpsertServiceRequest{
+        ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Service: components.Service{
+            Host: "example.internal",
+            ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
+            Name: sdkkonnectgo.Pointer("example-service"),
+            Path: sdkkonnectgo.Pointer("/"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Service != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="upsert-service" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Services.UpsertService(ctx, operations.UpsertServiceRequest{
+        ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Service: components.Service{
+            Host: "example.internal",
+            ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
+            Name: sdkkonnectgo.Pointer("example-service"),
+            Path: sdkkonnectgo.Pointer("/"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Service != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="upsert-service" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}" example="NoAPIKey" -->
 ```go
 package main
 
