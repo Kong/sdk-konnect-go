@@ -22269,6 +22269,30 @@ components:
               example: 'kong:trace:1234567890'
             detail:
               example: UnsupportedMediaType
+    ImagePNGDataUri:
+      description: 'must be a data URL with base64 PNG image data, e.g., data:image/png;base64,<BASE64_IMAGE_DATA>'
+      type: string
+      format: uri
+      example: 'data:image/png,YW5faW1hZ2VfZmlsZQ=='
+      pattern: '^data:image/png(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
+      title: ImagePNGDataUri
+      x-validation-message: 'must be a data URL with base64 PNG image data, e.g., data:image/png;base64,<BASE64_IMAGE_DATA>'
+    ImageJPGDataUri:
+      description: 'must be a data URL with base64 JPEG image data, e.g., data:image/jpeg;base64,<BASE64_IMAGE_DATA>'
+      type: string
+      format: uri
+      example: 'data:image/jpeg,YW5faW1hZ2VfZmlsZQ=='
+      pattern: '^data:image/jpeg(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
+      title: ImageJPGDataUri
+      x-validation-message: 'must be a data URL with base64 JPEG image data, e.g., data:image/jpeg;base64,<BASE64_IMAGE_DATA>'
+    ImageSVGDataUri:
+      description: 'must be a data URL with base64 SVG image data, e.g., data:image/svg\+xml;base64,<BASE64_IMAGE_DATA>'
+      type: string
+      format: uri
+      example: 'data:image/svg+xml,YW5faW1hZ2VfZmlsZQ=='
+      pattern: '^data:image/svg\+xml(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
+      title: ImageSVGDataUri
+      x-validation-message: 'must be a data URL with base64 SVG image data, e.g., data:image/svg\+xml;base64,<BASE64_IMAGE_DATA>'
     EntityType:
       description: The type of entity that is being published. Can be either an API or an API Package.
       type: string
@@ -24522,22 +24546,6 @@ components:
           $ref: '#/components/schemas/UuidFieldFilter'
         name:
           $ref: '#/components/schemas/StringFieldFilter'
-    ImagePNGDataUri:
-      description: 'must be a data URL with base64 PNG image data, e.g., data:image/png;base64,<BASE64_IMAGE_DATA>'
-      type: string
-      format: uri
-      example: 'data:image/png,YW5faW1hZ2VfZmlsZQ=='
-      pattern: '^data:image/png(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
-      title: ImagePNGDataUri
-      x-validation-message: 'must be a data URL with base64 PNG image data, e.g., data:image/png;base64,<BASE64_IMAGE_DATA>'
-    ImageJPGDataUri:
-      description: 'must be a data URL with base64 JPEG image data, e.g., data:image/jpeg;base64,<BASE64_IMAGE_DATA>'
-      type: string
-      format: uri
-      example: 'data:image/jpeg,YW5faW1hZ2VfZmlsZQ=='
-      pattern: '^data:image/jpeg(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
-      title: ImageJPGDataUri
-      x-validation-message: 'must be a data URL with base64 JPEG image data, e.g., data:image/jpeg;base64,<BASE64_IMAGE_DATA>'
     ImageGIFDataUri:
       description: 'must be a data URL with base64 GIF image data, e.g., data:image/gif;base64,<BASE64_IMAGE_DATA>'
       type: string
@@ -24554,14 +24562,6 @@ components:
       pattern: '^data:image/(x-icon|ico|icon|vnd.microsoft.icon)(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
       title: ImageICODataUri
       x-validation-message: 'must be a data URL with base64 ICO image data, e.g., data:image/ico;base64,<BASE64_IMAGE_DATA>'
-    ImageSVGDataUri:
-      description: 'must be a data URL with base64 SVG image data, e.g., data:image/svg\+xml;base64,<BASE64_IMAGE_DATA>'
-      type: string
-      format: uri
-      example: 'data:image/svg+xml,YW5faW1hZ2VfZmlsZQ=='
-      pattern: '^data:image/svg\+xml(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
-      title: ImageSVGDataUri
-      x-validation-message: 'must be a data URL with base64 SVG image data, e.g., data:image/svg\+xml;base64,<BASE64_IMAGE_DATA>'
     PortalMenuItem:
       type: object
       properties:
