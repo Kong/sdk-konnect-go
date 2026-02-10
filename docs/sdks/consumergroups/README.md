@@ -80,9 +80,75 @@ func main() {
 
 Create a new Consumer Group
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-consumer_group" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups" -->
+<!-- UsageSnippet language="go" operationID="create-consumer_group" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConsumerGroups.CreateConsumerGroup(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.ConsumerGroup{
+        Name: "<value>",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConsumerGroup != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="create-consumer_group" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConsumerGroups.CreateConsumerGroup(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.ConsumerGroup{
+        Name: "<value>",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConsumerGroup != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="create-consumer_group" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups" example="NoAPIKey" -->
 ```go
 package main
 
@@ -250,9 +316,85 @@ func main() {
 
 Create or Update Consumer Group using ID.
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-consumer_group" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-consumer_group" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConsumerGroups.UpsertConsumerGroup(ctx, operations.UpsertConsumerGroupRequest{
+        ConsumerGroupID: "",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerGroup: components.ConsumerGroup{
+            Name: "<value>",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConsumerGroup != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="upsert-consumer_group" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConsumerGroups.UpsertConsumerGroup(ctx, operations.UpsertConsumerGroupRequest{
+        ConsumerGroupID: "",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConsumerGroup: components.ConsumerGroup{
+            Name: "<value>",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConsumerGroup != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="upsert-consumer_group" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumer_groups/{ConsumerGroupId}" example="NoAPIKey" -->
 ```go
 package main
 

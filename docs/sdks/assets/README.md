@@ -73,9 +73,108 @@ func main() {
 
 Replaces the favicon of the portal. The favicon is used in the browser tab of the portal.
 
-### Example Usage
+### Example Usage: Example 1
 
-<!-- UsageSnippet language="go" operationID="replace-portal-asset-favicon" method="put" path="/v3/portals/{portalId}/assets/favicon" -->
+<!-- UsageSnippet language="go" operationID="replace-portal-asset-favicon" method="put" path="/v3/portals/{portalId}/assets/favicon" example="Example 1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Assets.ReplacePortalAssetFavicon(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.ReplacePortalImageAsset{
+        Data: "data:image/png;base64,bmljZV9sb29raW5nX3BpY3R1cmU=",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAssetResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ReplacePortalImageAssetBadRequestExample1
+
+<!-- UsageSnippet language="go" operationID="replace-portal-asset-favicon" method="put" path="/v3/portals/{portalId}/assets/favicon" example="ReplacePortalImageAssetBadRequestExample1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Assets.ReplacePortalAssetFavicon(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.ReplacePortalImageAsset{
+        Data: "data:image/jpeg;base64,bmljZV9sb29raW5nX3BpY3R1cmU=",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAssetResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="replace-portal-asset-favicon" method="put" path="/v3/portals/{portalId}/assets/favicon" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Assets.ReplacePortalAssetFavicon(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.ReplacePortalImageAsset{
+        Data: "data:image/jpeg;base64,bmljZV9sb29raW5nX3BpY3R1cmU=",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAssetResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="replace-portal-asset-favicon" method="put" path="/v3/portals/{portalId}/assets/favicon" example="UnauthorizedExample" -->
 ```go
 package main
 
@@ -245,9 +344,108 @@ func main() {
 
 Replaces the logo of the portal.
 
-### Example Usage
+### Example Usage: Example 1
 
-<!-- UsageSnippet language="go" operationID="replace-portal-asset-logo" method="put" path="/v3/portals/{portalId}/assets/logo" -->
+<!-- UsageSnippet language="go" operationID="replace-portal-asset-logo" method="put" path="/v3/portals/{portalId}/assets/logo" example="Example 1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Assets.ReplacePortalAssetLogo(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.ReplacePortalImageAsset{
+        Data: "data:image/png;base64,bmljZV9sb29raW5nX3BpY3R1cmU=",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAssetResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ReplacePortalImageAssetBadRequestExample1
+
+<!-- UsageSnippet language="go" operationID="replace-portal-asset-logo" method="put" path="/v3/portals/{portalId}/assets/logo" example="ReplacePortalImageAssetBadRequestExample1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Assets.ReplacePortalAssetLogo(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.ReplacePortalImageAsset{
+        Data: "data:image/jpeg;base64,bmljZV9sb29raW5nX3BpY3R1cmU=",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAssetResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="replace-portal-asset-logo" method="put" path="/v3/portals/{portalId}/assets/logo" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Assets.ReplacePortalAssetLogo(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.ReplacePortalImageAsset{
+        Data: "data:image/jpeg;base64,bmljZV9sb29raW5nX3BpY3R1cmU=",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAssetResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="replace-portal-asset-logo" method="put" path="/v3/portals/{portalId}/assets/logo" example="UnauthorizedExample" -->
 ```go
 package main
 

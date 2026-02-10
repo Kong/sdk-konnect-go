@@ -384,9 +384,83 @@ func main() {
 
 Create a new SNI
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-sni" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/snis" -->
+<!-- UsageSnippet language="go" operationID="create-sni" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/snis" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.SNIs.CreateSni(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Sni{
+        Certificate: components.SNICertificate{
+            ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
+        },
+        ID: sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a"),
+        Name: "some.example.org",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Sni != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="create-sni" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/snis" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.SNIs.CreateSni(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Sni{
+        Certificate: components.SNICertificate{
+            ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
+        },
+        ID: sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a"),
+        Name: "some.example.org",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Sni != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="create-sni" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/snis" example="NoAPIKey" -->
 ```go
 package main
 
@@ -558,9 +632,93 @@ func main() {
 
 Create or Update SNI using ID or name.
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-sni" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/snis/{SNIId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-sni" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/snis/{SNIId}" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.SNIs.UpsertSni(ctx, operations.UpsertSniRequest{
+        SNIID: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Sni: components.Sni{
+            Certificate: components.SNICertificate{
+                ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
+            },
+            ID: sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a"),
+            Name: "some.example.org",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Sni != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="upsert-sni" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/snis/{SNIId}" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.SNIs.UpsertSni(ctx, operations.UpsertSniRequest{
+        SNIID: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Sni: components.Sni{
+            Certificate: components.SNICertificate{
+                ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
+            },
+            ID: sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a"),
+            Name: "some.example.org",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Sni != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="upsert-sni" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/snis/{SNIId}" example="NoAPIKey" -->
 ```go
 package main
 

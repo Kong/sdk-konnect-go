@@ -16,9 +16,204 @@ Config Store Secrets
 
 Creates a secret for a Config Store.
 
-### Example Usage
+### Example Usage: ConfigStoreSecretBadRequestExample
 
-<!-- UsageSnippet language="go" operationID="create-config-store-secret" method="post" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets" -->
+<!-- UsageSnippet language="go" operationID="create-config-store-secret" method="post" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets" example="ConfigStoreSecretBadRequestExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConfigStoreSecrets.CreateConfigStoreSecret(ctx, operations.CreateConfigStoreSecretRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        CreateConfigStoreSecret: components.CreateConfigStoreSecret{
+            Key: "<key>",
+            Value: "<value>",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigStoreSecret != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Create Config Store Secret Response
+
+<!-- UsageSnippet language="go" operationID="create-config-store-secret" method="post" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets" example="Create Config Store Secret Response" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConfigStoreSecrets.CreateConfigStoreSecret(ctx, operations.CreateConfigStoreSecretRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        CreateConfigStoreSecret: components.CreateConfigStoreSecret{
+            Key: "<key>",
+            Value: "<value>",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigStoreSecret != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: CreateConfigStoreRequestExample
+
+<!-- UsageSnippet language="go" operationID="create-config-store-secret" method="post" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets" example="CreateConfigStoreRequestExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConfigStoreSecrets.CreateConfigStoreSecret(ctx, operations.CreateConfigStoreSecretRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        CreateConfigStoreSecret: components.CreateConfigStoreSecret{
+            Key: "ConfigStoreSecretKey",
+            Value: "ConfigStoreSecretValue",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigStoreSecret != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="create-config-store-secret" method="post" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConfigStoreSecrets.CreateConfigStoreSecret(ctx, operations.CreateConfigStoreSecretRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        CreateConfigStoreSecret: components.CreateConfigStoreSecret{
+            Key: "<key>",
+            Value: "<value>",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigStoreSecret != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="create-config-store-secret" method="post" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets" example="UnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConfigStoreSecrets.CreateConfigStoreSecret(ctx, operations.CreateConfigStoreSecretRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        CreateConfigStoreSecret: components.CreateConfigStoreSecret{
+            Key: "<key>",
+            Value: "<value>",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigStoreSecret != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnsupportedMediaTypeExample
+
+<!-- UsageSnippet language="go" operationID="create-config-store-secret" method="post" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets" example="UnsupportedMediaTypeExample" -->
 ```go
 package main
 
@@ -85,7 +280,7 @@ Returns a collection of all secrets for a Config Store.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-config-store-secrets" method="get" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets" -->
+<!-- UsageSnippet language="go" operationID="list-config-store-secrets" method="get" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets" example="Config Store Secrets" -->
 ```go
 package main
 
@@ -149,7 +344,7 @@ Returns the secret entity for the Config Store. Secret values once stored cannot
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-config-store-secret" method="get" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets/{key}" -->
+<!-- UsageSnippet language="go" operationID="get-config-store-secret" method="get" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets/{key}" example="Create Config Store Secret Response" -->
 ```go
 package main
 
@@ -209,9 +404,9 @@ func main() {
 
 Updates a secret for a Config Store.
 
-### Example Usage
+### Example Usage: ConfigStoreSecretBadRequestExample
 
-<!-- UsageSnippet language="go" operationID="update-config-store-secret" method="put" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets/{key}" -->
+<!-- UsageSnippet language="go" operationID="update-config-store-secret" method="put" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets/{key}" example="ConfigStoreSecretBadRequestExample" -->
 ```go
 package main
 
@@ -238,6 +433,201 @@ func main() {
         Key: "ConfigStoreSecretKey",
         UpdateConfigStoreSecret: components.UpdateConfigStoreSecret{
             Value: "<value>",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigStoreSecret != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Create Config Store Secret Response
+
+<!-- UsageSnippet language="go" operationID="update-config-store-secret" method="put" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets/{key}" example="Create Config Store Secret Response" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConfigStoreSecrets.UpdateConfigStoreSecret(ctx, operations.UpdateConfigStoreSecretRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        Key: "ConfigStoreSecretKey",
+        UpdateConfigStoreSecret: components.UpdateConfigStoreSecret{
+            Value: "<value>",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigStoreSecret != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="update-config-store-secret" method="put" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets/{key}" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConfigStoreSecrets.UpdateConfigStoreSecret(ctx, operations.UpdateConfigStoreSecretRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        Key: "ConfigStoreSecretKey",
+        UpdateConfigStoreSecret: components.UpdateConfigStoreSecret{
+            Value: "<value>",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigStoreSecret != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="update-config-store-secret" method="put" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets/{key}" example="UnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConfigStoreSecrets.UpdateConfigStoreSecret(ctx, operations.UpdateConfigStoreSecretRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        Key: "ConfigStoreSecretKey",
+        UpdateConfigStoreSecret: components.UpdateConfigStoreSecret{
+            Value: "<value>",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigStoreSecret != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnsupportedMediaTypeExample
+
+<!-- UsageSnippet language="go" operationID="update-config-store-secret" method="put" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets/{key}" example="UnsupportedMediaTypeExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConfigStoreSecrets.UpdateConfigStoreSecret(ctx, operations.UpdateConfigStoreSecretRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        Key: "ConfigStoreSecretKey",
+        UpdateConfigStoreSecret: components.UpdateConfigStoreSecret{
+            Value: "<value>",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigStoreSecret != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UpdateConfigStoreSecretRequestExample
+
+<!-- UsageSnippet language="go" operationID="update-config-store-secret" method="put" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}/secrets/{key}" example="UpdateConfigStoreSecretRequestExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConfigStoreSecrets.UpdateConfigStoreSecret(ctx, operations.UpdateConfigStoreSecretRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        Key: "ConfigStoreSecretKey",
+        UpdateConfigStoreSecret: components.UpdateConfigStoreSecret{
+            Value: "ConfigStoreSecretValue",
         },
     })
     if err != nil {

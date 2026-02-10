@@ -18,7 +18,7 @@ List all config stores for a control plane
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-config-stores" method="get" path="/v2/control-planes/{controlPlaneId}/config-stores" -->
+<!-- UsageSnippet language="go" operationID="list-config-stores" method="get" path="/v2/control-planes/{controlPlaneId}/config-stores" example="Config Stores" -->
 ```go
 package main
 
@@ -78,9 +78,141 @@ func main() {
 
 Create a Config Store
 
-### Example Usage
+### Example Usage: ConfigStoreNameBadRequestExample
 
-<!-- UsageSnippet language="go" operationID="create-config-store" method="post" path="/v2/control-planes/{controlPlaneId}/config-stores" -->
+<!-- UsageSnippet language="go" operationID="create-config-store" method="post" path="/v2/control-planes/{controlPlaneId}/config-stores" example="ConfigStoreNameBadRequestExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConfigStores.CreateConfigStore(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateConfigStore{
+        Name: sdkkonnectgo.Pointer("Config Store"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigStore != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Create Config Store Response
+
+<!-- UsageSnippet language="go" operationID="create-config-store" method="post" path="/v2/control-planes/{controlPlaneId}/config-stores" example="Create Config Store Response" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConfigStores.CreateConfigStore(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateConfigStore{
+        Name: sdkkonnectgo.Pointer("Config Store"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigStore != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: CreateConfigStoreRequestExample
+
+<!-- UsageSnippet language="go" operationID="create-config-store" method="post" path="/v2/control-planes/{controlPlaneId}/config-stores" example="CreateConfigStoreRequestExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConfigStores.CreateConfigStore(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateConfigStore{
+        Name: sdkkonnectgo.Pointer("Config Store"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigStore != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="create-config-store" method="post" path="/v2/control-planes/{controlPlaneId}/config-stores" example="UnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConfigStores.CreateConfigStore(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateConfigStore{
+        Name: sdkkonnectgo.Pointer("Config Store"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigStore != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnsupportedMediaTypeExample
+
+<!-- UsageSnippet language="go" operationID="create-config-store" method="post" path="/v2/control-planes/{controlPlaneId}/config-stores" example="UnsupportedMediaTypeExample" -->
 ```go
 package main
 
@@ -141,7 +273,7 @@ Returns a Config Store
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-config-store" method="get" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}" -->
+<!-- UsageSnippet language="go" operationID="get-config-store" method="get" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}" example="Create Config Store Response" -->
 ```go
 package main
 
@@ -196,9 +328,9 @@ func main() {
 
 Updates a Config Store
 
-### Example Usage
+### Example Usage: ConfigStoreNameBadRequestExample
 
-<!-- UsageSnippet language="go" operationID="update-config-store" method="put" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}" -->
+<!-- UsageSnippet language="go" operationID="update-config-store" method="put" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}" example="ConfigStoreNameBadRequestExample" -->
 ```go
 package main
 
@@ -224,6 +356,196 @@ func main() {
         ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
         UpdateConfigStore: components.UpdateConfigStore{
             Name: sdkkonnectgo.Pointer("Config Store"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigStore != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Create Config Store Response
+
+<!-- UsageSnippet language="go" operationID="update-config-store" method="put" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}" example="Create Config Store Response" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConfigStores.UpdateConfigStore(ctx, operations.UpdateConfigStoreRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        UpdateConfigStore: components.UpdateConfigStore{
+            Name: sdkkonnectgo.Pointer("Config Store"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigStore != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="update-config-store" method="put" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConfigStores.UpdateConfigStore(ctx, operations.UpdateConfigStoreRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        UpdateConfigStore: components.UpdateConfigStore{
+            Name: sdkkonnectgo.Pointer("Config Store"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigStore != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="update-config-store" method="put" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}" example="UnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConfigStores.UpdateConfigStore(ctx, operations.UpdateConfigStoreRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        UpdateConfigStore: components.UpdateConfigStore{
+            Name: sdkkonnectgo.Pointer("Config Store"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigStore != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnsupportedMediaTypeExample
+
+<!-- UsageSnippet language="go" operationID="update-config-store" method="put" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}" example="UnsupportedMediaTypeExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConfigStores.UpdateConfigStore(ctx, operations.UpdateConfigStoreRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        UpdateConfigStore: components.UpdateConfigStore{
+            Name: sdkkonnectgo.Pointer("Config Store"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigStore != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UpdateConfigStoreRequestExample
+
+<!-- UsageSnippet language="go" operationID="update-config-store" method="put" path="/v2/control-planes/{controlPlaneId}/config-stores/{configStoreId}" example="UpdateConfigStoreRequestExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ConfigStores.UpdateConfigStore(ctx, operations.UpdateConfigStoreRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ConfigStoreID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        UpdateConfigStore: components.UpdateConfigStore{
+            Name: sdkkonnectgo.Pointer("Config Store with Updated Name"),
         },
     })
     if err != nil {

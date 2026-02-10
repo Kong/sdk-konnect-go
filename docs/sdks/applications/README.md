@@ -16,9 +16,71 @@ APIs related to Konnect Developer Portal Applications.
 
 Returns the configuration of a single application in any portal. If an application is linked to a DCR Provider, the `dcr_provider.id` and `client_id` can be used to correlate it. An application manages a set of credentials and registrations for specific APIs.
 
-### Example Usage
+### Example Usage: Client Credentials Application with DCR
 
-<!-- UsageSnippet language="go" operationID="get-application-unscoped" method="get" path="/v3/applications/{applicationId}" -->
+<!-- UsageSnippet language="go" operationID="get-application-unscoped" method="get" path="/v3/applications/{applicationId}" example="Client Credentials Application with DCR" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Applications.GetApplicationUnscoped(ctx, "4d27ece0-3a2f-4519-885f-39e16f79463e")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GetApplicationResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Client Credentials Application without DCR
+
+<!-- UsageSnippet language="go" operationID="get-application-unscoped" method="get" path="/v3/applications/{applicationId}" example="Client Credentials Application without DCR" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Applications.GetApplicationUnscoped(ctx, "4fa6e714-0ed8-4161-8e79-f950b56dd7a3")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GetApplicationResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Key Auth Application
+
+<!-- UsageSnippet language="go" operationID="get-application-unscoped" method="get" path="/v3/applications/{applicationId}" example="Key Auth Application" -->
 ```go
 package main
 
@@ -75,7 +137,7 @@ Lists applications in this portal. Each application can be registered for variou
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-applications" method="get" path="/v3/portals/{portalId}/applications" -->
+<!-- UsageSnippet language="go" operationID="list-applications" method="get" path="/v3/portals/{portalId}/applications" example="Example 1" -->
 ```go
 package main
 
@@ -136,9 +198,71 @@ func main() {
 
 Returns the configuration of a single application in this portal. If an application is linked to a DCR Provider, the `dcr_provider.id` and `client_id` can be used to correlate it. An application manages a set of credentials and registrations for specific APIs.
 
-### Example Usage
+### Example Usage: Client Credentials Application with DCR
 
-<!-- UsageSnippet language="go" operationID="get-application" method="get" path="/v3/portals/{portalId}/applications/{applicationId}" -->
+<!-- UsageSnippet language="go" operationID="get-application" method="get" path="/v3/portals/{portalId}/applications/{applicationId}" example="Client Credentials Application with DCR" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Applications.GetApplication(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", "0af3373d-813e-422a-9534-769be18243e0")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GetApplicationResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Client Credentials Application without DCR
+
+<!-- UsageSnippet language="go" operationID="get-application" method="get" path="/v3/portals/{portalId}/applications/{applicationId}" example="Client Credentials Application without DCR" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Applications.GetApplication(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", "24f601b0-ddc5-4889-86a9-2ad20c66b521")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GetApplicationResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Key Auth Application
+
+<!-- UsageSnippet language="go" operationID="get-application" method="get" path="/v3/portals/{portalId}/applications/{applicationId}" example="Key Auth Application" -->
 ```go
 package main
 
@@ -254,7 +378,7 @@ Lists each developer that can access the given application for this portal.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-developers-by-application" method="get" path="/v3/portals/{portalId}/applications/{applicationId}/developers" -->
+<!-- UsageSnippet language="go" operationID="list-developers-by-application" method="get" path="/v3/portals/{portalId}/applications/{applicationId}/developers" example="Example 1" -->
 ```go
 package main
 

@@ -76,9 +76,89 @@ func main() {
 
 Create a new CA Certificate
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-ca_certificate" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/ca_certificates" -->
+<!-- UsageSnippet language="go" operationID="create-ca_certificate" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/ca_certificates" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CACertificates.CreateCaCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CACertificate{
+        Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
+        CertDigest: sdkkonnectgo.Pointer("9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f"),
+        CreatedAt: sdkkonnectgo.Pointer[int64](1706598432),
+        ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260"),
+        Tags: []string{
+            "trusted",
+            "api",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CACertificate != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="create-ca_certificate" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/ca_certificates" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CACertificates.CreateCaCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CACertificate{
+        Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
+        CertDigest: sdkkonnectgo.Pointer("9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f"),
+        CreatedAt: sdkkonnectgo.Pointer[int64](1706598432),
+        ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260"),
+        Tags: []string{
+            "trusted",
+            "api",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CACertificate != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="create-ca_certificate" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/ca_certificates" example="NoAPIKey" -->
 ```go
 package main
 
@@ -253,9 +333,9 @@ func main() {
 
 Create or Update CA Certificate using ID.
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-ca_certificate" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/ca_certificates/{CACertificateId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-ca_certificate" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/ca_certificates/{CACertificateId}" example="DuplicateApiKey" -->
 ```go
 package main
 
@@ -281,7 +361,103 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         CACertificate: components.CACertificate{
             Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
+            CertDigest: sdkkonnectgo.Pointer("9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f"),
+            CreatedAt: sdkkonnectgo.Pointer[int64](1706598432),
             ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260"),
+            Tags: []string{
+                "trusted",
+                "api",
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CACertificate != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="upsert-ca_certificate" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/ca_certificates/{CACertificateId}" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CACertificates.UpsertCaCertificate(ctx, operations.UpsertCaCertificateRequest{
+        CACertificateID: "3c31f18a-f27a-4f9b-8cd4-bf841554612f",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        CACertificate: components.CACertificate{
+            Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
+            CertDigest: sdkkonnectgo.Pointer("9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f"),
+            CreatedAt: sdkkonnectgo.Pointer[int64](1706598432),
+            ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260"),
+            Tags: []string{
+                "trusted",
+                "api",
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CACertificate != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="upsert-ca_certificate" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/ca_certificates/{CACertificateId}" example="NoAPIKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CACertificates.UpsertCaCertificate(ctx, operations.UpsertCaCertificateRequest{
+        CACertificateID: "3c31f18a-f27a-4f9b-8cd4-bf841554612f",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        CACertificate: components.CACertificate{
+            Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
+            CertDigest: sdkkonnectgo.Pointer("9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f"),
+            CreatedAt: sdkkonnectgo.Pointer[int64](1706598432),
+            ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260"),
+            Tags: []string{
+                "trusted",
+                "api",
+            },
         },
     })
     if err != nil {

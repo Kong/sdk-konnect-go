@@ -71,9 +71,192 @@ func main() {
 
 Replace the portal customization options.
 
-### Example Usage
+### Example Usage: NotFoundExample
 
-<!-- UsageSnippet language="go" operationID="replace-portal-customization" method="put" path="/v3/portals/{portalId}/customization" -->
+<!-- UsageSnippet language="go" operationID="replace-portal-customization" method="put" path="/v3/portals/{portalId}/customization" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalCustomization.ReplacePortalCustomization(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalCustomization{
+        Theme: &components.Theme{
+            Colors: &components.Colors{
+                Primary: sdkkonnectgo.Pointer("#000000"),
+            },
+        },
+        Menu: &components.Menu{
+            Main: []components.PortalMenuItem{
+                components.PortalMenuItem{
+                    Path: "/about/company",
+                    Title: "My Page",
+                    Visibility: components.PortalMenuItemVisibilityPublic,
+                    External: false,
+                },
+            },
+            FooterSections: []components.PortalFooterMenuSection{
+                components.PortalFooterMenuSection{
+                    Title: "<value>",
+                    Items: []components.PortalMenuItem{},
+                },
+            },
+            FooterBottom: []components.PortalMenuItem{
+                components.PortalMenuItem{
+                    Path: "/about/company",
+                    Title: "My Page",
+                    Visibility: components.PortalMenuItemVisibilityPublic,
+                    External: false,
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalCustomization != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ReplacePortalImageAssetBadRequestExample1
+
+<!-- UsageSnippet language="go" operationID="replace-portal-customization" method="put" path="/v3/portals/{portalId}/customization" example="ReplacePortalImageAssetBadRequestExample1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalCustomization.ReplacePortalCustomization(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalCustomization{
+        Theme: &components.Theme{
+            Colors: &components.Colors{
+                Primary: sdkkonnectgo.Pointer("#000000"),
+            },
+        },
+        Menu: &components.Menu{
+            Main: []components.PortalMenuItem{
+                components.PortalMenuItem{
+                    Path: "/about/company",
+                    Title: "My Page",
+                    Visibility: components.PortalMenuItemVisibilityPublic,
+                    External: false,
+                },
+            },
+            FooterSections: []components.PortalFooterMenuSection{
+                components.PortalFooterMenuSection{
+                    Title: "<value>",
+                    Items: []components.PortalMenuItem{},
+                },
+            },
+            FooterBottom: []components.PortalMenuItem{
+                components.PortalMenuItem{
+                    Path: "/about/company",
+                    Title: "My Page",
+                    Visibility: components.PortalMenuItemVisibilityPublic,
+                    External: false,
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalCustomization != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="replace-portal-customization" method="put" path="/v3/portals/{portalId}/customization" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalCustomization.ReplacePortalCustomization(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalCustomization{
+        Theme: &components.Theme{
+            Colors: &components.Colors{
+                Primary: sdkkonnectgo.Pointer("#000000"),
+            },
+        },
+        Menu: &components.Menu{
+            Main: []components.PortalMenuItem{
+                components.PortalMenuItem{
+                    Path: "/about/company",
+                    Title: "My Page",
+                    Visibility: components.PortalMenuItemVisibilityPublic,
+                    External: false,
+                },
+            },
+            FooterSections: []components.PortalFooterMenuSection{
+                components.PortalFooterMenuSection{
+                    Title: "<value>",
+                    Items: []components.PortalMenuItem{},
+                },
+            },
+            FooterBottom: []components.PortalMenuItem{
+                components.PortalMenuItem{
+                    Path: "/about/company",
+                    Title: "My Page",
+                    Visibility: components.PortalMenuItemVisibilityPublic,
+                    External: false,
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalCustomization != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="replace-portal-customization" method="put" path="/v3/portals/{portalId}/customization" example="UnauthorizedExample" -->
 ```go
 package main
 
@@ -160,9 +343,213 @@ func main() {
 
 Update the portal customization options, merging properties.
 
-### Example Usage
+### Example Usage: NotFoundExample
 
-<!-- UsageSnippet language="go" operationID="update-portal-customization" method="patch" path="/v3/portals/{portalId}/customization" -->
+<!-- UsageSnippet language="go" operationID="update-portal-customization" method="patch" path="/v3/portals/{portalId}/customization" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalCustomization.UpdatePortalCustomization(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalCustomization{
+        Theme: &components.Theme{
+            Colors: &components.Colors{
+                Primary: sdkkonnectgo.Pointer("#000000"),
+            },
+        },
+        Menu: &components.Menu{
+            Main: []components.PortalMenuItem{
+                components.PortalMenuItem{
+                    Path: "/about/company",
+                    Title: "My Page",
+                    Visibility: components.PortalMenuItemVisibilityPublic,
+                    External: false,
+                },
+            },
+            FooterSections: []components.PortalFooterMenuSection{
+                components.PortalFooterMenuSection{
+                    Title: "<value>",
+                    Items: []components.PortalMenuItem{
+                        components.PortalMenuItem{
+                            Path: "/about/company",
+                            Title: "My Page",
+                            Visibility: components.PortalMenuItemVisibilityPublic,
+                            External: true,
+                        },
+                    },
+                },
+            },
+            FooterBottom: []components.PortalMenuItem{
+                components.PortalMenuItem{
+                    Path: "/about/company",
+                    Title: "My Page",
+                    Visibility: components.PortalMenuItemVisibilityPublic,
+                    External: true,
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalCustomization != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ReplacePortalImageAssetBadRequestExample1
+
+<!-- UsageSnippet language="go" operationID="update-portal-customization" method="patch" path="/v3/portals/{portalId}/customization" example="ReplacePortalImageAssetBadRequestExample1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalCustomization.UpdatePortalCustomization(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalCustomization{
+        Theme: &components.Theme{
+            Colors: &components.Colors{
+                Primary: sdkkonnectgo.Pointer("#000000"),
+            },
+        },
+        Menu: &components.Menu{
+            Main: []components.PortalMenuItem{
+                components.PortalMenuItem{
+                    Path: "/about/company",
+                    Title: "My Page",
+                    Visibility: components.PortalMenuItemVisibilityPublic,
+                    External: false,
+                },
+            },
+            FooterSections: []components.PortalFooterMenuSection{
+                components.PortalFooterMenuSection{
+                    Title: "<value>",
+                    Items: []components.PortalMenuItem{
+                        components.PortalMenuItem{
+                            Path: "/about/company",
+                            Title: "My Page",
+                            Visibility: components.PortalMenuItemVisibilityPublic,
+                            External: true,
+                        },
+                    },
+                },
+            },
+            FooterBottom: []components.PortalMenuItem{
+                components.PortalMenuItem{
+                    Path: "/about/company",
+                    Title: "My Page",
+                    Visibility: components.PortalMenuItemVisibilityPublic,
+                    External: true,
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalCustomization != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="update-portal-customization" method="patch" path="/v3/portals/{portalId}/customization" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalCustomization.UpdatePortalCustomization(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalCustomization{
+        Theme: &components.Theme{
+            Colors: &components.Colors{
+                Primary: sdkkonnectgo.Pointer("#000000"),
+            },
+        },
+        Menu: &components.Menu{
+            Main: []components.PortalMenuItem{
+                components.PortalMenuItem{
+                    Path: "/about/company",
+                    Title: "My Page",
+                    Visibility: components.PortalMenuItemVisibilityPublic,
+                    External: false,
+                },
+            },
+            FooterSections: []components.PortalFooterMenuSection{
+                components.PortalFooterMenuSection{
+                    Title: "<value>",
+                    Items: []components.PortalMenuItem{
+                        components.PortalMenuItem{
+                            Path: "/about/company",
+                            Title: "My Page",
+                            Visibility: components.PortalMenuItemVisibilityPublic,
+                            External: true,
+                        },
+                    },
+                },
+            },
+            FooterBottom: []components.PortalMenuItem{
+                components.PortalMenuItem{
+                    Path: "/about/company",
+                    Title: "My Page",
+                    Visibility: components.PortalMenuItemVisibilityPublic,
+                    External: true,
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalCustomization != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="update-portal-customization" method="patch" path="/v3/portals/{portalId}/customization" example="UnauthorizedExample" -->
 ```go
 package main
 

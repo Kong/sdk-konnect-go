@@ -132,9 +132,9 @@ func main() {
 
 Updates the configuration for a webhook to receive audit logs.
 
-### Example Usage
+### Example Usage: Authorization Cannot be Blank
 
-<!-- UsageSnippet language="go" operationID="update-portal-audit-log-webhook" method="patch" path="/v3/portals/{portalId}/audit-log-webhook" -->
+<!-- UsageSnippet language="go" operationID="update-portal-audit-log-webhook" method="patch" path="/v3/portals/{portalId}/audit-log-webhook" example="Authorization Cannot be Blank" -->
 ```go
 package main
 
@@ -156,6 +156,335 @@ func main() {
 
     res, err := s.PortalAuditLogs.UpdatePortalAuditLogWebhook(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdatePortalAuditLogWebhook{
         Enabled: sdkkonnectgo.Pointer(true),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAuditLogWebhook != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Disable Webhook
+
+<!-- UsageSnippet language="go" operationID="update-portal-audit-log-webhook" method="patch" path="/v3/portals/{portalId}/audit-log-webhook" example="Disable Webhook" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalAuditLogs.UpdatePortalAuditLogWebhook(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdatePortalAuditLogWebhook{})
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAuditLogWebhook != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Enable Webhook
+
+<!-- UsageSnippet language="go" operationID="update-portal-audit-log-webhook" method="patch" path="/v3/portals/{portalId}/audit-log-webhook" example="Enable Webhook" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalAuditLogs.UpdatePortalAuditLogWebhook(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdatePortalAuditLogWebhook{
+        Enabled: sdkkonnectgo.Pointer(true),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAuditLogWebhook != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Endpoint Cannot be Blank
+
+<!-- UsageSnippet language="go" operationID="update-portal-audit-log-webhook" method="patch" path="/v3/portals/{portalId}/audit-log-webhook" example="Endpoint Cannot be Blank" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalAuditLogs.UpdatePortalAuditLogWebhook(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdatePortalAuditLogWebhook{
+        Enabled: sdkkonnectgo.Pointer(true),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAuditLogWebhook != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Endpoint Must be a valid URL
+
+<!-- UsageSnippet language="go" operationID="update-portal-audit-log-webhook" method="patch" path="/v3/portals/{portalId}/audit-log-webhook" example="Endpoint Must be a valid URL" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalAuditLogs.UpdatePortalAuditLogWebhook(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdatePortalAuditLogWebhook{
+        Enabled: sdkkonnectgo.Pointer(true),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAuditLogWebhook != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Get Portal Audit Log Webhook
+
+<!-- UsageSnippet language="go" operationID="update-portal-audit-log-webhook" method="patch" path="/v3/portals/{portalId}/audit-log-webhook" example="Get Portal Audit Log Webhook" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalAuditLogs.UpdatePortalAuditLogWebhook(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdatePortalAuditLogWebhook{
+        Enabled: sdkkonnectgo.Pointer(true),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAuditLogWebhook != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="update-portal-audit-log-webhook" method="patch" path="/v3/portals/{portalId}/audit-log-webhook" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalAuditLogs.UpdatePortalAuditLogWebhook(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdatePortalAuditLogWebhook{
+        Enabled: sdkkonnectgo.Pointer(true),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAuditLogWebhook != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Request Format is Invalid
+
+<!-- UsageSnippet language="go" operationID="update-portal-audit-log-webhook" method="patch" path="/v3/portals/{portalId}/audit-log-webhook" example="Request Format is Invalid" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalAuditLogs.UpdatePortalAuditLogWebhook(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdatePortalAuditLogWebhook{
+        Enabled: sdkkonnectgo.Pointer(true),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAuditLogWebhook != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="update-portal-audit-log-webhook" method="patch" path="/v3/portals/{portalId}/audit-log-webhook" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalAuditLogs.UpdatePortalAuditLogWebhook(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdatePortalAuditLogWebhook{
+        Enabled: sdkkonnectgo.Pointer(true),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAuditLogWebhook != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="update-portal-audit-log-webhook" method="patch" path="/v3/portals/{portalId}/audit-log-webhook" example="UnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalAuditLogs.UpdatePortalAuditLogWebhook(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdatePortalAuditLogWebhook{
+        Enabled: sdkkonnectgo.Pointer(true),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAuditLogWebhook != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Update Webhook
+
+<!-- UsageSnippet language="go" operationID="update-portal-audit-log-webhook" method="patch" path="/v3/portals/{portalId}/audit-log-webhook" example="Update Webhook" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalAuditLogs.UpdatePortalAuditLogWebhook(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdatePortalAuditLogWebhook{
+        Enabled: sdkkonnectgo.Pointer(true),
+        AuditLogDestinationID: sdkkonnectgo.Pointer("9cb77dc2-ff99-4d47-84ab-7c5c1b3ef939"),
     })
     if err != nil {
         log.Fatal(err)
@@ -195,7 +524,7 @@ Returns configuration for the audit log webhook.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-portal-audit-log-webhook" method="get" path="/v3/portals/{portalId}/audit-log-webhook" -->
+<!-- UsageSnippet language="go" operationID="get-portal-audit-log-webhook" method="get" path="/v3/portals/{portalId}/audit-log-webhook" example="Get Portal Audit Log Webhook" -->
 ```go
 package main
 
@@ -310,7 +639,7 @@ Returns status of the audit log webhook.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-portal-audit-log-webhook-status" method="get" path="/v3/portals/{portalId}/audit-log-webhook/status" -->
+<!-- UsageSnippet language="go" operationID="get-portal-audit-log-webhook-status" method="get" path="/v3/portals/{portalId}/audit-log-webhook/status" example="Get Audit Log Webhook Status" -->
 ```go
 package main
 

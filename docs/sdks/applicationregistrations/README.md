@@ -18,7 +18,7 @@ Lists all of the application registrations and their current status (e.g., appro
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-registrations" method="get" path="/v3/portals/{portalId}/application-registrations" -->
+<!-- UsageSnippet language="go" operationID="list-registrations" method="get" path="/v3/portals/{portalId}/application-registrations" example="Example 1" -->
 ```go
 package main
 
@@ -81,7 +81,7 @@ Lists each API that this application is registered for and their current status 
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-registrations-by-application" method="get" path="/v3/portals/{portalId}/applications/{applicationId}/registrations" -->
+<!-- UsageSnippet language="go" operationID="list-registrations-by-application" method="get" path="/v3/portals/{portalId}/applications/{applicationId}/registrations" example="Example 1" -->
 ```go
 package main
 
@@ -145,7 +145,7 @@ Returns information about an application's registration status for a particular 
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-application-registration" method="get" path="/v3/portals/{portalId}/applications/{applicationId}/registrations/{registrationId}" -->
+<!-- UsageSnippet language="go" operationID="get-application-registration" method="get" path="/v3/portals/{portalId}/applications/{applicationId}/registrations/{registrationId}" example="Example 1" -->
 ```go
 package main
 
@@ -205,9 +205,9 @@ func main() {
 
 Updates the status of a particular application registration to an API. Approved application registrations will allow API traffic to the corresponding API. Revoked, rejected, or pending will not allow API traffic.
 
-### Example Usage
+### Example Usage: Approved
 
-<!-- UsageSnippet language="go" operationID="update-application-registration" method="patch" path="/v3/portals/{portalId}/applications/{applicationId}/registrations/{registrationId}" -->
+<!-- UsageSnippet language="go" operationID="update-application-registration" method="patch" path="/v3/portals/{portalId}/applications/{applicationId}/registrations/{registrationId}" example="Approved" -->
 ```go
 package main
 
@@ -232,6 +232,318 @@ func main() {
         PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
         ApplicationID: "8531a3ec-718e-40e8-b5ec-e12e6e00b6e1",
         RegistrationID: "f7e27313-022a-404f-b641-ad7fca249f28",
+        UpdateApplicationRegistrationRequest: components.UpdateApplicationRegistrationRequest{
+            Status: components.ApplicationRegistrationStatusApproved.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GetApplicationRegistrationResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Example 1
+
+<!-- UsageSnippet language="go" operationID="update-application-registration" method="patch" path="/v3/portals/{portalId}/applications/{applicationId}/registrations/{registrationId}" example="Example 1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ApplicationRegistrations.UpdateApplicationRegistration(ctx, operations.UpdateApplicationRegistrationRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ApplicationID: "ee68e99c-bd3a-4396-a9ee-a17dce84d550",
+        RegistrationID: "b937480e-01a8-4b5c-9e26-76d376e62f55",
+        UpdateApplicationRegistrationRequest: components.UpdateApplicationRegistrationRequest{
+            Status: components.ApplicationRegistrationStatusRejected.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GetApplicationRegistrationResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="update-application-registration" method="patch" path="/v3/portals/{portalId}/applications/{applicationId}/registrations/{registrationId}" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ApplicationRegistrations.UpdateApplicationRegistration(ctx, operations.UpdateApplicationRegistrationRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ApplicationID: "24acd281-7019-4d8f-9e94-e900d83c9e71",
+        RegistrationID: "0475f524-437f-4af4-b7a7-6e2c3f909ab0",
+        UpdateApplicationRegistrationRequest: components.UpdateApplicationRegistrationRequest{
+            Status: components.ApplicationRegistrationStatusRejected.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GetApplicationRegistrationResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Pending
+
+<!-- UsageSnippet language="go" operationID="update-application-registration" method="patch" path="/v3/portals/{portalId}/applications/{applicationId}/registrations/{registrationId}" example="Pending" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ApplicationRegistrations.UpdateApplicationRegistration(ctx, operations.UpdateApplicationRegistrationRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ApplicationID: "1a7a1699-6816-470f-b652-dc045af229de",
+        RegistrationID: "619b15a7-357b-481e-baa1-b06410b42196",
+        UpdateApplicationRegistrationRequest: components.UpdateApplicationRegistrationRequest{
+            Status: components.ApplicationRegistrationStatusPending.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GetApplicationRegistrationResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Rejected
+
+<!-- UsageSnippet language="go" operationID="update-application-registration" method="patch" path="/v3/portals/{portalId}/applications/{applicationId}/registrations/{registrationId}" example="Rejected" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ApplicationRegistrations.UpdateApplicationRegistration(ctx, operations.UpdateApplicationRegistrationRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ApplicationID: "cd96be86-5548-4f11-9752-605e4daafde8",
+        RegistrationID: "1d7446b9-6174-472a-8d14-2750bc372841",
+        UpdateApplicationRegistrationRequest: components.UpdateApplicationRegistrationRequest{
+            Status: components.ApplicationRegistrationStatusRejected.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GetApplicationRegistrationResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Revoked
+
+<!-- UsageSnippet language="go" operationID="update-application-registration" method="patch" path="/v3/portals/{portalId}/applications/{applicationId}/registrations/{registrationId}" example="Revoked" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ApplicationRegistrations.UpdateApplicationRegistration(ctx, operations.UpdateApplicationRegistrationRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ApplicationID: "72904692-d677-4cc3-a196-3ebb309d356c",
+        RegistrationID: "741d9097-1faf-4536-a52d-8fb48d72bf9c",
+        UpdateApplicationRegistrationRequest: components.UpdateApplicationRegistrationRequest{
+            Status: components.ApplicationRegistrationStatusRevoked.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GetApplicationRegistrationResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="update-application-registration" method="patch" path="/v3/portals/{portalId}/applications/{applicationId}/registrations/{registrationId}" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ApplicationRegistrations.UpdateApplicationRegistration(ctx, operations.UpdateApplicationRegistrationRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ApplicationID: "88eadf83-49d4-44a2-86ec-1376a185a864",
+        RegistrationID: "aba7a860-6fae-45bc-9e8e-81f1684a88d3",
+        UpdateApplicationRegistrationRequest: components.UpdateApplicationRegistrationRequest{
+            Status: components.ApplicationRegistrationStatusRejected.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GetApplicationRegistrationResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="update-application-registration" method="patch" path="/v3/portals/{portalId}/applications/{applicationId}/registrations/{registrationId}" example="UnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ApplicationRegistrations.UpdateApplicationRegistration(ctx, operations.UpdateApplicationRegistrationRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ApplicationID: "fe006d44-2485-4c82-ab54-ddc1b7427bac",
+        RegistrationID: "72b2aca8-229a-4a12-aab3-a490c9f41cc4",
+        UpdateApplicationRegistrationRequest: components.UpdateApplicationRegistrationRequest{
+            Status: components.ApplicationRegistrationStatusRejected.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GetApplicationRegistrationResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UpdateApplicationRegistrationBadRequestExample1
+
+<!-- UsageSnippet language="go" operationID="update-application-registration" method="patch" path="/v3/portals/{portalId}/applications/{applicationId}/registrations/{registrationId}" example="UpdateApplicationRegistrationBadRequestExample1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ApplicationRegistrations.UpdateApplicationRegistration(ctx, operations.UpdateApplicationRegistrationRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ApplicationID: "5d8b3e89-b759-4ce5-b708-322b575f974b",
+        RegistrationID: "c7ff2e33-99e7-4e9d-9861-7686dea6686b",
         UpdateApplicationRegistrationRequest: components.UpdateApplicationRegistrationRequest{
             Status: components.ApplicationRegistrationStatusRejected.ToPointer(),
         },

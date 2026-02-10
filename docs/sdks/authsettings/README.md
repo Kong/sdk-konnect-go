@@ -24,7 +24,7 @@ Returns authentication configuration, which determines how users can log in and 
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-authentication-settings" method="get" path="/v3/authentication-settings" -->
+<!-- UsageSnippet language="go" operationID="get-authentication-settings" method="get" path="/v3/authentication-settings" example="Get Authorization Settings" -->
 ```go
 package main
 
@@ -76,9 +76,453 @@ func main() {
 
 Updates authentication configuration.
 
-### Example Usage
+### Example Usage: Authentication Settings cannot be all Disabled
 
-<!-- UsageSnippet language="go" operationID="update-authentication-settings" method="patch" path="/v3/authentication-settings" -->
+<!-- UsageSnippet language="go" operationID="update-authentication-settings" method="patch" path="/v3/authentication-settings" example="Authentication Settings cannot be all Disabled" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateAuthenticationSettings(ctx, &components.UpdateAuthenticationSettings{
+        BasicAuthEnabled: sdkkonnectgo.Pointer(true),
+        OidcAuthEnabled: sdkkonnectgo.Pointer(false),
+        SamlAuthEnabled: sdkkonnectgo.Pointer(false),
+        IdpMappingEnabled: sdkkonnectgo.Pointer(true),
+        KonnectMappingEnabled: sdkkonnectgo.Pointer(false),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AuthenticationSettings != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Cannot be Blank
+
+<!-- UsageSnippet language="go" operationID="update-authentication-settings" method="patch" path="/v3/authentication-settings" example="Cannot be Blank" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateAuthenticationSettings(ctx, &components.UpdateAuthenticationSettings{
+        BasicAuthEnabled: sdkkonnectgo.Pointer(true),
+        OidcAuthEnabled: sdkkonnectgo.Pointer(false),
+        SamlAuthEnabled: sdkkonnectgo.Pointer(false),
+        IdpMappingEnabled: sdkkonnectgo.Pointer(true),
+        KonnectMappingEnabled: sdkkonnectgo.Pointer(false),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AuthenticationSettings != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Example Request Body
+
+<!-- UsageSnippet language="go" operationID="update-authentication-settings" method="patch" path="/v3/authentication-settings" example="Example Request Body" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateAuthenticationSettings(ctx, &components.UpdateAuthenticationSettings{
+        BasicAuthEnabled: sdkkonnectgo.Pointer(true),
+        OidcAuthEnabled: sdkkonnectgo.Pointer(false),
+        SamlAuthEnabled: sdkkonnectgo.Pointer(false),
+        IdpMappingEnabled: sdkkonnectgo.Pointer(false),
+        KonnectMappingEnabled: sdkkonnectgo.Pointer(true),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AuthenticationSettings != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Get Authorization Settings
+
+<!-- UsageSnippet language="go" operationID="update-authentication-settings" method="patch" path="/v3/authentication-settings" example="Get Authorization Settings" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateAuthenticationSettings(ctx, &components.UpdateAuthenticationSettings{
+        BasicAuthEnabled: sdkkonnectgo.Pointer(true),
+        OidcAuthEnabled: sdkkonnectgo.Pointer(false),
+        SamlAuthEnabled: sdkkonnectgo.Pointer(false),
+        IdpMappingEnabled: sdkkonnectgo.Pointer(true),
+        KonnectMappingEnabled: sdkkonnectgo.Pointer(false),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AuthenticationSettings != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: IdP configuration is required
+
+<!-- UsageSnippet language="go" operationID="update-authentication-settings" method="patch" path="/v3/authentication-settings" example="IdP configuration is required" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateAuthenticationSettings(ctx, &components.UpdateAuthenticationSettings{
+        BasicAuthEnabled: sdkkonnectgo.Pointer(true),
+        OidcAuthEnabled: sdkkonnectgo.Pointer(false),
+        SamlAuthEnabled: sdkkonnectgo.Pointer(false),
+        IdpMappingEnabled: sdkkonnectgo.Pointer(true),
+        KonnectMappingEnabled: sdkkonnectgo.Pointer(false),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AuthenticationSettings != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Invalid ID format
+
+<!-- UsageSnippet language="go" operationID="update-authentication-settings" method="patch" path="/v3/authentication-settings" example="Invalid ID format" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateAuthenticationSettings(ctx, &components.UpdateAuthenticationSettings{
+        BasicAuthEnabled: sdkkonnectgo.Pointer(true),
+        OidcAuthEnabled: sdkkonnectgo.Pointer(false),
+        SamlAuthEnabled: sdkkonnectgo.Pointer(false),
+        IdpMappingEnabled: sdkkonnectgo.Pointer(true),
+        KonnectMappingEnabled: sdkkonnectgo.Pointer(false),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AuthenticationSettings != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Must be a valid UUID v4
+
+<!-- UsageSnippet language="go" operationID="update-authentication-settings" method="patch" path="/v3/authentication-settings" example="Must be a valid UUID v4" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateAuthenticationSettings(ctx, &components.UpdateAuthenticationSettings{
+        BasicAuthEnabled: sdkkonnectgo.Pointer(true),
+        OidcAuthEnabled: sdkkonnectgo.Pointer(false),
+        SamlAuthEnabled: sdkkonnectgo.Pointer(false),
+        IdpMappingEnabled: sdkkonnectgo.Pointer(true),
+        KonnectMappingEnabled: sdkkonnectgo.Pointer(false),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AuthenticationSettings != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: OIDC needs an IdP configuration
+
+<!-- UsageSnippet language="go" operationID="update-authentication-settings" method="patch" path="/v3/authentication-settings" example="OIDC needs an IdP configuration" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateAuthenticationSettings(ctx, &components.UpdateAuthenticationSettings{
+        BasicAuthEnabled: sdkkonnectgo.Pointer(true),
+        OidcAuthEnabled: sdkkonnectgo.Pointer(false),
+        SamlAuthEnabled: sdkkonnectgo.Pointer(false),
+        IdpMappingEnabled: sdkkonnectgo.Pointer(true),
+        KonnectMappingEnabled: sdkkonnectgo.Pointer(false),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AuthenticationSettings != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Password Complexity
+
+<!-- UsageSnippet language="go" operationID="update-authentication-settings" method="patch" path="/v3/authentication-settings" example="Password Complexity" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateAuthenticationSettings(ctx, &components.UpdateAuthenticationSettings{
+        BasicAuthEnabled: sdkkonnectgo.Pointer(true),
+        OidcAuthEnabled: sdkkonnectgo.Pointer(false),
+        SamlAuthEnabled: sdkkonnectgo.Pointer(false),
+        IdpMappingEnabled: sdkkonnectgo.Pointer(true),
+        KonnectMappingEnabled: sdkkonnectgo.Pointer(false),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AuthenticationSettings != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Request Format is Invalid
+
+<!-- UsageSnippet language="go" operationID="update-authentication-settings" method="patch" path="/v3/authentication-settings" example="Request Format is Invalid" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateAuthenticationSettings(ctx, &components.UpdateAuthenticationSettings{
+        BasicAuthEnabled: sdkkonnectgo.Pointer(true),
+        OidcAuthEnabled: sdkkonnectgo.Pointer(false),
+        SamlAuthEnabled: sdkkonnectgo.Pointer(false),
+        IdpMappingEnabled: sdkkonnectgo.Pointer(true),
+        KonnectMappingEnabled: sdkkonnectgo.Pointer(false),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AuthenticationSettings != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: System teams cannot be modified
+
+<!-- UsageSnippet language="go" operationID="update-authentication-settings" method="patch" path="/v3/authentication-settings" example="System teams cannot be modified" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateAuthenticationSettings(ctx, &components.UpdateAuthenticationSettings{
+        BasicAuthEnabled: sdkkonnectgo.Pointer(true),
+        OidcAuthEnabled: sdkkonnectgo.Pointer(false),
+        SamlAuthEnabled: sdkkonnectgo.Pointer(false),
+        IdpMappingEnabled: sdkkonnectgo.Pointer(true),
+        KonnectMappingEnabled: sdkkonnectgo.Pointer(false),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AuthenticationSettings != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="update-authentication-settings" method="patch" path="/v3/authentication-settings" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateAuthenticationSettings(ctx, &components.UpdateAuthenticationSettings{
+        BasicAuthEnabled: sdkkonnectgo.Pointer(true),
+        OidcAuthEnabled: sdkkonnectgo.Pointer(false),
+        SamlAuthEnabled: sdkkonnectgo.Pointer(false),
+        IdpMappingEnabled: sdkkonnectgo.Pointer(true),
+        KonnectMappingEnabled: sdkkonnectgo.Pointer(false),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AuthenticationSettings != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unsupported filter operation
+
+<!-- UsageSnippet language="go" operationID="update-authentication-settings" method="patch" path="/v3/authentication-settings" example="Unsupported filter operation" -->
 ```go
 package main
 
@@ -195,9 +639,399 @@ func main() {
 
 Update the IdP configuration.
 
-### Example Usage
+### Example Usage: Authentication Settings cannot be all Disabled
 
-<!-- UsageSnippet language="go" operationID="update-idp-configuration" method="patch" path="/v3/identity-provider" -->
+<!-- UsageSnippet language="go" operationID="update-idp-configuration" method="patch" path="/v3/identity-provider" example="Authentication Settings cannot be all Disabled" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpConfiguration(ctx, &components.UpdateIDPConfiguration{
+        Issuer: sdkkonnectgo.Pointer("https://myidp.com/oauth2"),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
+        ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+        ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Groups: sdkkonnectgo.Pointer("custom-group-claim"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Idp != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Cannot be Blank
+
+<!-- UsageSnippet language="go" operationID="update-idp-configuration" method="patch" path="/v3/identity-provider" example="Cannot be Blank" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpConfiguration(ctx, &components.UpdateIDPConfiguration{
+        Issuer: sdkkonnectgo.Pointer("https://myidp.com/oauth2"),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
+        ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+        ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Groups: sdkkonnectgo.Pointer("custom-group-claim"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Idp != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: IdP configuration is required
+
+<!-- UsageSnippet language="go" operationID="update-idp-configuration" method="patch" path="/v3/identity-provider" example="IdP configuration is required" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpConfiguration(ctx, &components.UpdateIDPConfiguration{
+        Issuer: sdkkonnectgo.Pointer("https://myidp.com/oauth2"),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
+        ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+        ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Groups: sdkkonnectgo.Pointer("custom-group-claim"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Idp != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Invalid ID format
+
+<!-- UsageSnippet language="go" operationID="update-idp-configuration" method="patch" path="/v3/identity-provider" example="Invalid ID format" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpConfiguration(ctx, &components.UpdateIDPConfiguration{
+        Issuer: sdkkonnectgo.Pointer("https://myidp.com/oauth2"),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
+        ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+        ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Groups: sdkkonnectgo.Pointer("custom-group-claim"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Idp != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Must be a valid UUID v4
+
+<!-- UsageSnippet language="go" operationID="update-idp-configuration" method="patch" path="/v3/identity-provider" example="Must be a valid UUID v4" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpConfiguration(ctx, &components.UpdateIDPConfiguration{
+        Issuer: sdkkonnectgo.Pointer("https://myidp.com/oauth2"),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
+        ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+        ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Groups: sdkkonnectgo.Pointer("custom-group-claim"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Idp != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: OIDC needs an IdP configuration
+
+<!-- UsageSnippet language="go" operationID="update-idp-configuration" method="patch" path="/v3/identity-provider" example="OIDC needs an IdP configuration" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpConfiguration(ctx, &components.UpdateIDPConfiguration{
+        Issuer: sdkkonnectgo.Pointer("https://myidp.com/oauth2"),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
+        ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+        ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Groups: sdkkonnectgo.Pointer("custom-group-claim"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Idp != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Password Complexity
+
+<!-- UsageSnippet language="go" operationID="update-idp-configuration" method="patch" path="/v3/identity-provider" example="Password Complexity" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpConfiguration(ctx, &components.UpdateIDPConfiguration{
+        Issuer: sdkkonnectgo.Pointer("https://myidp.com/oauth2"),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
+        ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+        ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Groups: sdkkonnectgo.Pointer("custom-group-claim"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Idp != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Request Format is Invalid
+
+<!-- UsageSnippet language="go" operationID="update-idp-configuration" method="patch" path="/v3/identity-provider" example="Request Format is Invalid" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpConfiguration(ctx, &components.UpdateIDPConfiguration{
+        Issuer: sdkkonnectgo.Pointer("https://myidp.com/oauth2"),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
+        ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+        ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Groups: sdkkonnectgo.Pointer("custom-group-claim"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Idp != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: System teams cannot be modified
+
+<!-- UsageSnippet language="go" operationID="update-idp-configuration" method="patch" path="/v3/identity-provider" example="System teams cannot be modified" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpConfiguration(ctx, &components.UpdateIDPConfiguration{
+        Issuer: sdkkonnectgo.Pointer("https://myidp.com/oauth2"),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
+        ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+        ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Groups: sdkkonnectgo.Pointer("custom-group-claim"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Idp != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="update-idp-configuration" method="patch" path="/v3/identity-provider" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpConfiguration(ctx, &components.UpdateIDPConfiguration{
+        Issuer: sdkkonnectgo.Pointer("https://myidp.com/oauth2"),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        ClientID: sdkkonnectgo.Pointer("YOUR_CLIENT_ID"),
+        ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+        ClaimMappings: &components.UpdateIDPConfigurationClaimMappings{
+            Groups: sdkkonnectgo.Pointer("custom-group-claim"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Idp != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unsupported filter operation
+
+<!-- UsageSnippet language="go" operationID="update-idp-configuration" method="patch" path="/v3/identity-provider" example="Unsupported filter operation" -->
 ```go
 package main
 
@@ -262,7 +1096,7 @@ Returns a 400 error if an Identity Provider has not yet been configured.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-team-group-mappings" method="get" path="/v3/identity-provider/team-group-mappings" -->
+<!-- UsageSnippet language="go" operationID="get-team-group-mappings" method="get" path="/v3/identity-provider/team-group-mappings" example="Team Mapping Collection" -->
 ```go
 package main
 
@@ -323,9 +1157,610 @@ complete replacement. To remove all mappings for a given team, provide an empty 
 Returns a 400 error if an Identity Provider has not yet been configured, or if a team ID in
 the request body is not found or is not a UUID.
 
-### Example Usage
+### Example Usage: Authentication Settings cannot be all Disabled
 
-<!-- UsageSnippet language="go" operationID="patch-team-group-mappings" method="patch" path="/v3/identity-provider/team-group-mappings" -->
+<!-- UsageSnippet language="go" operationID="patch-team-group-mappings" method="patch" path="/v3/identity-provider/team-group-mappings" example="Authentication Settings cannot be all Disabled" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
+        Data: []components.Data{
+            components.Data{
+                TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
+                Groups: []string{
+                    "Service Developers",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamGroupMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Cannot be Blank
+
+<!-- UsageSnippet language="go" operationID="patch-team-group-mappings" method="patch" path="/v3/identity-provider/team-group-mappings" example="Cannot be Blank" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
+        Data: []components.Data{
+            components.Data{
+                TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
+                Groups: []string{
+                    "Service Developers",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamGroupMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Example Request Body
+
+<!-- UsageSnippet language="go" operationID="patch-team-group-mappings" method="patch" path="/v3/identity-provider/team-group-mappings" example="Example Request Body" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
+        Data: []components.Data{
+            components.Data{
+                TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
+                Groups: []string{
+                    "Team Leads",
+                    "API Engineers",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamGroupMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: IdP configuration is required
+
+<!-- UsageSnippet language="go" operationID="patch-team-group-mappings" method="patch" path="/v3/identity-provider/team-group-mappings" example="IdP configuration is required" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
+        Data: []components.Data{
+            components.Data{
+                TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
+                Groups: []string{
+                    "Service Developers",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamGroupMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Invalid ID format
+
+<!-- UsageSnippet language="go" operationID="patch-team-group-mappings" method="patch" path="/v3/identity-provider/team-group-mappings" example="Invalid ID format" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
+        Data: []components.Data{
+            components.Data{
+                TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
+                Groups: []string{
+                    "Service Developers",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamGroupMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Invalid Permissions
+
+<!-- UsageSnippet language="go" operationID="patch-team-group-mappings" method="patch" path="/v3/identity-provider/team-group-mappings" example="Invalid Permissions" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
+        Data: []components.Data{
+            components.Data{
+                TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
+                Groups: []string{
+                    "Service Developers",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamGroupMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Must be a valid UUID v4
+
+<!-- UsageSnippet language="go" operationID="patch-team-group-mappings" method="patch" path="/v3/identity-provider/team-group-mappings" example="Must be a valid UUID v4" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
+        Data: []components.Data{
+            components.Data{
+                TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
+                Groups: []string{
+                    "Service Developers",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamGroupMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: OIDC needs an IdP configuration
+
+<!-- UsageSnippet language="go" operationID="patch-team-group-mappings" method="patch" path="/v3/identity-provider/team-group-mappings" example="OIDC needs an IdP configuration" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
+        Data: []components.Data{
+            components.Data{
+                TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
+                Groups: []string{
+                    "Service Developers",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamGroupMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Password Complexity
+
+<!-- UsageSnippet language="go" operationID="patch-team-group-mappings" method="patch" path="/v3/identity-provider/team-group-mappings" example="Password Complexity" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
+        Data: []components.Data{
+            components.Data{
+                TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
+                Groups: []string{
+                    "Service Developers",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamGroupMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Permission Denied
+
+<!-- UsageSnippet language="go" operationID="patch-team-group-mappings" method="patch" path="/v3/identity-provider/team-group-mappings" example="Permission Denied" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
+        Data: []components.Data{
+            components.Data{
+                TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
+                Groups: []string{
+                    "Service Developers",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamGroupMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Request Format is Invalid
+
+<!-- UsageSnippet language="go" operationID="patch-team-group-mappings" method="patch" path="/v3/identity-provider/team-group-mappings" example="Request Format is Invalid" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
+        Data: []components.Data{
+            components.Data{
+                TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
+                Groups: []string{
+                    "Service Developers",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamGroupMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: System teams cannot be modified
+
+<!-- UsageSnippet language="go" operationID="patch-team-group-mappings" method="patch" path="/v3/identity-provider/team-group-mappings" example="System teams cannot be modified" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
+        Data: []components.Data{
+            components.Data{
+                TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
+                Groups: []string{
+                    "Service Developers",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamGroupMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Team Mapping Collection
+
+<!-- UsageSnippet language="go" operationID="patch-team-group-mappings" method="patch" path="/v3/identity-provider/team-group-mappings" example="Team Mapping Collection" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
+        Data: []components.Data{
+            components.Data{
+                TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
+                Groups: []string{
+                    "Service Developers",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamGroupMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="patch-team-group-mappings" method="patch" path="/v3/identity-provider/team-group-mappings" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
+        Data: []components.Data{
+            components.Data{
+                TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
+                Groups: []string{
+                    "Service Developers",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamGroupMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unsupported filter operation
+
+<!-- UsageSnippet language="go" operationID="patch-team-group-mappings" method="patch" path="/v3/identity-provider/team-group-mappings" example="Unsupported filter operation" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.PatchTeamGroupMappings(ctx, &components.PatchTeamGroupMappings{
+        Data: []components.Data{
+            components.Data{
+                TeamID: sdkkonnectgo.Pointer("af91db4c-6e51-403e-a2bf-33d27ae50c0a"),
+                Groups: []string{
+                    "Service Developers",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamGroupMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Username or Password invalid
+
+<!-- UsageSnippet language="go" operationID="patch-team-group-mappings" method="patch" path="/v3/identity-provider/team-group-mappings" example="Username or Password invalid" -->
 ```go
 package main
 
@@ -389,9 +1824,649 @@ func main() {
 
 Updates the IdP group to Konnect team mapping.
 
-### Example Usage
+### Example Usage: Authentication Settings cannot be all Disabled
 
-<!-- UsageSnippet language="go" operationID="update-idp-team-mappings" method="put" path="/v3/identity-provider/team-mappings" -->
+<!-- UsageSnippet language="go" operationID="update-idp-team-mappings" method="put" path="/v3/identity-provider/team-mappings" example="Authentication Settings cannot be all Disabled" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpTeamMappings(ctx, &components.UpdateTeamMappings{
+        Mappings: []components.Mappings{
+            components.Mappings{
+                Group: sdkkonnectgo.Pointer("Service Developers"),
+                TeamIds: []string{
+                    "af91db4c-6e51-403e-a2bf-33d27ae50c0a",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Cannot be Blank
+
+<!-- UsageSnippet language="go" operationID="update-idp-team-mappings" method="put" path="/v3/identity-provider/team-mappings" example="Cannot be Blank" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpTeamMappings(ctx, &components.UpdateTeamMappings{
+        Mappings: []components.Mappings{
+            components.Mappings{
+                Group: sdkkonnectgo.Pointer("Service Developers"),
+                TeamIds: []string{
+                    "af91db4c-6e51-403e-a2bf-33d27ae50c0a",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Example Request Body
+
+<!-- UsageSnippet language="go" operationID="update-idp-team-mappings" method="put" path="/v3/identity-provider/team-mappings" example="Example Request Body" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpTeamMappings(ctx, &components.UpdateTeamMappings{
+        Mappings: []components.Mappings{
+            components.Mappings{
+                Group: sdkkonnectgo.Pointer("API Engineers"),
+                TeamIds: []string{
+                    "af91db4c-6e51-403e-a2bf-33d27ae50c0a",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: IdP configuration is required
+
+<!-- UsageSnippet language="go" operationID="update-idp-team-mappings" method="put" path="/v3/identity-provider/team-mappings" example="IdP configuration is required" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpTeamMappings(ctx, &components.UpdateTeamMappings{
+        Mappings: []components.Mappings{
+            components.Mappings{
+                Group: sdkkonnectgo.Pointer("Service Developers"),
+                TeamIds: []string{
+                    "af91db4c-6e51-403e-a2bf-33d27ae50c0a",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Invalid ID format
+
+<!-- UsageSnippet language="go" operationID="update-idp-team-mappings" method="put" path="/v3/identity-provider/team-mappings" example="Invalid ID format" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpTeamMappings(ctx, &components.UpdateTeamMappings{
+        Mappings: []components.Mappings{
+            components.Mappings{
+                Group: sdkkonnectgo.Pointer("Service Developers"),
+                TeamIds: []string{
+                    "af91db4c-6e51-403e-a2bf-33d27ae50c0a",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Invalid Permissions
+
+<!-- UsageSnippet language="go" operationID="update-idp-team-mappings" method="put" path="/v3/identity-provider/team-mappings" example="Invalid Permissions" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpTeamMappings(ctx, &components.UpdateTeamMappings{
+        Mappings: []components.Mappings{
+            components.Mappings{
+                Group: sdkkonnectgo.Pointer("Service Developers"),
+                TeamIds: []string{
+                    "af91db4c-6e51-403e-a2bf-33d27ae50c0a",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Must be a valid UUID v4
+
+<!-- UsageSnippet language="go" operationID="update-idp-team-mappings" method="put" path="/v3/identity-provider/team-mappings" example="Must be a valid UUID v4" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpTeamMappings(ctx, &components.UpdateTeamMappings{
+        Mappings: []components.Mappings{
+            components.Mappings{
+                Group: sdkkonnectgo.Pointer("Service Developers"),
+                TeamIds: []string{
+                    "af91db4c-6e51-403e-a2bf-33d27ae50c0a",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Not Found
+
+<!-- UsageSnippet language="go" operationID="update-idp-team-mappings" method="put" path="/v3/identity-provider/team-mappings" example="Not Found" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpTeamMappings(ctx, &components.UpdateTeamMappings{
+        Mappings: []components.Mappings{
+            components.Mappings{
+                Group: sdkkonnectgo.Pointer("Service Developers"),
+                TeamIds: []string{
+                    "af91db4c-6e51-403e-a2bf-33d27ae50c0a",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: OIDC needs an IdP configuration
+
+<!-- UsageSnippet language="go" operationID="update-idp-team-mappings" method="put" path="/v3/identity-provider/team-mappings" example="OIDC needs an IdP configuration" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpTeamMappings(ctx, &components.UpdateTeamMappings{
+        Mappings: []components.Mappings{
+            components.Mappings{
+                Group: sdkkonnectgo.Pointer("Service Developers"),
+                TeamIds: []string{
+                    "af91db4c-6e51-403e-a2bf-33d27ae50c0a",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Password Complexity
+
+<!-- UsageSnippet language="go" operationID="update-idp-team-mappings" method="put" path="/v3/identity-provider/team-mappings" example="Password Complexity" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpTeamMappings(ctx, &components.UpdateTeamMappings{
+        Mappings: []components.Mappings{
+            components.Mappings{
+                Group: sdkkonnectgo.Pointer("Service Developers"),
+                TeamIds: []string{
+                    "af91db4c-6e51-403e-a2bf-33d27ae50c0a",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Permission Denied
+
+<!-- UsageSnippet language="go" operationID="update-idp-team-mappings" method="put" path="/v3/identity-provider/team-mappings" example="Permission Denied" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpTeamMappings(ctx, &components.UpdateTeamMappings{
+        Mappings: []components.Mappings{
+            components.Mappings{
+                Group: sdkkonnectgo.Pointer("Service Developers"),
+                TeamIds: []string{
+                    "af91db4c-6e51-403e-a2bf-33d27ae50c0a",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Precondition Failed
+
+<!-- UsageSnippet language="go" operationID="update-idp-team-mappings" method="put" path="/v3/identity-provider/team-mappings" example="Precondition Failed" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpTeamMappings(ctx, &components.UpdateTeamMappings{
+        Mappings: []components.Mappings{
+            components.Mappings{
+                Group: sdkkonnectgo.Pointer("Service Developers"),
+                TeamIds: []string{
+                    "af91db4c-6e51-403e-a2bf-33d27ae50c0a",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Request Format is Invalid
+
+<!-- UsageSnippet language="go" operationID="update-idp-team-mappings" method="put" path="/v3/identity-provider/team-mappings" example="Request Format is Invalid" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpTeamMappings(ctx, &components.UpdateTeamMappings{
+        Mappings: []components.Mappings{
+            components.Mappings{
+                Group: sdkkonnectgo.Pointer("Service Developers"),
+                TeamIds: []string{
+                    "af91db4c-6e51-403e-a2bf-33d27ae50c0a",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: System teams cannot be modified
+
+<!-- UsageSnippet language="go" operationID="update-idp-team-mappings" method="put" path="/v3/identity-provider/team-mappings" example="System teams cannot be modified" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpTeamMappings(ctx, &components.UpdateTeamMappings{
+        Mappings: []components.Mappings{
+            components.Mappings{
+                Group: sdkkonnectgo.Pointer("Service Developers"),
+                TeamIds: []string{
+                    "af91db4c-6e51-403e-a2bf-33d27ae50c0a",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Team Mapping Collection
+
+<!-- UsageSnippet language="go" operationID="update-idp-team-mappings" method="put" path="/v3/identity-provider/team-mappings" example="Team Mapping Collection" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpTeamMappings(ctx, &components.UpdateTeamMappings{
+        Mappings: []components.Mappings{
+            components.Mappings{
+                Group: sdkkonnectgo.Pointer("Service Developers"),
+                TeamIds: []string{
+                    "af91db4c-6e51-403e-a2bf-33d27ae50c0a",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unsupported filter operation
+
+<!-- UsageSnippet language="go" operationID="update-idp-team-mappings" method="put" path="/v3/identity-provider/team-mappings" example="Unsupported filter operation" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdpTeamMappings(ctx, &components.UpdateTeamMappings{
+        Mappings: []components.Mappings{
+            components.Mappings{
+                Group: sdkkonnectgo.Pointer("Service Developers"),
+                TeamIds: []string{
+                    "af91db4c-6e51-403e-a2bf-33d27ae50c0a",
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TeamMappingCollection != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Username or Password invalid
+
+<!-- UsageSnippet language="go" operationID="update-idp-team-mappings" method="put" path="/v3/identity-provider/team-mappings" example="Username or Password invalid" -->
 ```go
 package main
 
@@ -458,7 +2533,7 @@ Fetch the IdP group to Konnect team mapping.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-idp-team-mappings" method="get" path="/v3/identity-provider/team-mappings" -->
+<!-- UsageSnippet language="go" operationID="get-idp-team-mappings" method="get" path="/v3/identity-provider/team-mappings" example="Group Collection" -->
 ```go
 package main
 
@@ -519,7 +2594,7 @@ various identity providers for SAML or OIDC authentication integrations.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-identity-providers" method="get" path="/v3/identity-providers" -->
+<!-- UsageSnippet language="go" operationID="get-identity-providers" method="get" path="/v3/identity-providers" example="Identity Provider Collection" -->
 ```go
 package main
 
@@ -575,9 +2650,711 @@ Creates a new identity provider. This operation allows the creation of a new ide
 authentication purposes.
 
 
-### Example Usage
+### Example Usage: Authentication Settings cannot be all Disabled
 
-<!-- UsageSnippet language="go" operationID="create-identity-provider" method="post" path="/v3/identity-providers" -->
+<!-- UsageSnippet language="go" operationID="create-identity-provider" method="post" path="/v3/identity-providers" example="Authentication Settings cannot be all Disabled" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
+        Type: components.IdentityProviderTypeOidc.ToPointer(),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Enabled: sdkkonnectgo.Pointer(true),
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
+            components.SAMLIdentityProviderConfigInput{
+                IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
+                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Cannot be Blank
+
+<!-- UsageSnippet language="go" operationID="create-identity-provider" method="post" path="/v3/identity-providers" example="Cannot be Blank" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
+        Type: components.IdentityProviderTypeOidc.ToPointer(),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Enabled: sdkkonnectgo.Pointer(true),
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
+            components.SAMLIdentityProviderConfigInput{
+                IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
+                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: IdP configuration is required
+
+<!-- UsageSnippet language="go" operationID="create-identity-provider" method="post" path="/v3/identity-providers" example="IdP configuration is required" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
+        Type: components.IdentityProviderTypeOidc.ToPointer(),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Enabled: sdkkonnectgo.Pointer(true),
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
+            components.SAMLIdentityProviderConfigInput{
+                IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
+                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Invalid ID format
+
+<!-- UsageSnippet language="go" operationID="create-identity-provider" method="post" path="/v3/identity-providers" example="Invalid ID format" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
+        Type: components.IdentityProviderTypeOidc.ToPointer(),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Enabled: sdkkonnectgo.Pointer(true),
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
+            components.SAMLIdentityProviderConfigInput{
+                IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
+                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Must be a valid UUID v4
+
+<!-- UsageSnippet language="go" operationID="create-identity-provider" method="post" path="/v3/identity-providers" example="Must be a valid UUID v4" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
+        Type: components.IdentityProviderTypeOidc.ToPointer(),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Enabled: sdkkonnectgo.Pointer(true),
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
+            components.SAMLIdentityProviderConfigInput{
+                IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
+                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: OIDC Identity Provider
+
+<!-- UsageSnippet language="go" operationID="create-identity-provider" method="post" path="/v3/identity-providers" example="OIDC Identity Provider" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
+        Type: components.IdentityProviderTypeOidc.ToPointer(),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Enabled: sdkkonnectgo.Pointer(true),
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
+            components.SAMLIdentityProviderConfigInput{
+                IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
+                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: OIDC Identity Provider Request
+
+<!-- UsageSnippet language="go" operationID="create-identity-provider" method="post" path="/v3/identity-providers" example="OIDC Identity Provider Request" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
+        Type: components.IdentityProviderTypeOidc.ToPointer(),
+        LoginPath: sdkkonnectgo.Pointer("the-oidc-konnect-org"),
+        Enabled: sdkkonnectgo.Pointer(true),
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "0oaqhb43ckTZ02j1F357",
+                ClientSecret: sdkkonnectgo.Pointer("BbqwI8xP9E4evOK"),
+                Scopes: []string{
+                    "openid",
+                    "email",
+                    "profile",
+                },
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: OIDC needs an IdP configuration
+
+<!-- UsageSnippet language="go" operationID="create-identity-provider" method="post" path="/v3/identity-providers" example="OIDC needs an IdP configuration" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
+        Type: components.IdentityProviderTypeOidc.ToPointer(),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Enabled: sdkkonnectgo.Pointer(true),
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
+            components.SAMLIdentityProviderConfigInput{
+                IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
+                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Password Complexity
+
+<!-- UsageSnippet language="go" operationID="create-identity-provider" method="post" path="/v3/identity-providers" example="Password Complexity" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
+        Type: components.IdentityProviderTypeOidc.ToPointer(),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Enabled: sdkkonnectgo.Pointer(true),
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
+            components.SAMLIdentityProviderConfigInput{
+                IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
+                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Permission Denied
+
+<!-- UsageSnippet language="go" operationID="create-identity-provider" method="post" path="/v3/identity-providers" example="Permission Denied" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
+        Type: components.IdentityProviderTypeOidc.ToPointer(),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Enabled: sdkkonnectgo.Pointer(true),
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
+            components.SAMLIdentityProviderConfigInput{
+                IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
+                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Request Format is Invalid
+
+<!-- UsageSnippet language="go" operationID="create-identity-provider" method="post" path="/v3/identity-providers" example="Request Format is Invalid" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
+        Type: components.IdentityProviderTypeOidc.ToPointer(),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Enabled: sdkkonnectgo.Pointer(true),
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
+            components.SAMLIdentityProviderConfigInput{
+                IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
+                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: SAML Identity Provider Request With Metadata
+
+<!-- UsageSnippet language="go" operationID="create-identity-provider" method="post" path="/v3/identity-providers" example="SAML Identity Provider Request With Metadata" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
+        Type: components.IdentityProviderTypeSaml.ToPointer(),
+        LoginPath: sdkkonnectgo.Pointer("the-saml-konnect-org"),
+        Enabled: sdkkonnectgo.Pointer(true),
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
+            components.SAMLIdentityProviderConfigInput{
+                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n<!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: SAML Identity Provider Request With MetadataURL
+
+<!-- UsageSnippet language="go" operationID="create-identity-provider" method="post" path="/v3/identity-providers" example="SAML Identity Provider Request With MetadataURL" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
+        Type: components.IdentityProviderTypeSaml.ToPointer(),
+        LoginPath: sdkkonnectgo.Pointer("the-saml-konnect-org"),
+        Enabled: sdkkonnectgo.Pointer(true),
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
+            components.SAMLIdentityProviderConfigInput{
+                IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: SAML Identity Provider With Meta Data
+
+<!-- UsageSnippet language="go" operationID="create-identity-provider" method="post" path="/v3/identity-providers" example="SAML Identity Provider With Meta Data" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
+        Type: components.IdentityProviderTypeOidc.ToPointer(),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Enabled: sdkkonnectgo.Pointer(true),
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
+            components.SAMLIdentityProviderConfigInput{
+                IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
+                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: SAML Identity Provider With Meta Data URL
+
+<!-- UsageSnippet language="go" operationID="create-identity-provider" method="post" path="/v3/identity-providers" example="SAML Identity Provider With Meta Data URL" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
+        Type: components.IdentityProviderTypeOidc.ToPointer(),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Enabled: sdkkonnectgo.Pointer(true),
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
+            components.SAMLIdentityProviderConfigInput{
+                IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
+                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: System teams cannot be modified
+
+<!-- UsageSnippet language="go" operationID="create-identity-provider" method="post" path="/v3/identity-providers" example="System teams cannot be modified" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
+        Type: components.IdentityProviderTypeOidc.ToPointer(),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Enabled: sdkkonnectgo.Pointer(true),
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
+            components.SAMLIdentityProviderConfigInput{
+                IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
+                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="create-identity-provider" method="post" path="/v3/identity-providers" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
+        Type: components.IdentityProviderTypeOidc.ToPointer(),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Enabled: sdkkonnectgo.Pointer(true),
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
+            components.SAMLIdentityProviderConfigInput{
+                IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
+                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unsupported filter operation
+
+<!-- UsageSnippet language="go" operationID="create-identity-provider" method="post" path="/v3/identity-providers" example="Unsupported filter operation" -->
 ```go
 package main
 
@@ -645,9 +3422,71 @@ Retrieves the configuration of a single identity provider. This operation return
 specific identity provider's settings and authentication integration details.
 
 
-### Example Usage
+### Example Usage: OIDC Identity Provider
 
-<!-- UsageSnippet language="go" operationID="get-identity-provider" method="get" path="/v3/identity-providers/{id}" -->
+<!-- UsageSnippet language="go" operationID="get-identity-provider" method="get" path="/v3/identity-providers/{id}" example="OIDC Identity Provider" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.GetIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: SAML Identity Provider With Meta Data
+
+<!-- UsageSnippet language="go" operationID="get-identity-provider" method="get" path="/v3/identity-providers/{id}" example="SAML Identity Provider With Meta Data" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.GetIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: SAML Identity Provider With Meta Data URL
+
+<!-- UsageSnippet language="go" operationID="get-identity-provider" method="get" path="/v3/identity-providers/{id}" example="SAML Identity Provider With Meta Data URL" -->
 ```go
 package main
 
@@ -705,9 +3544,843 @@ Updates the configuration of an existing identity provider. This operation allow
 to an existing identity provider's configuration.
 
 
-### Example Usage
+### Example Usage: Authentication Settings cannot be all Disabled
 
-<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" -->
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="Authentication Settings cannot be all Disabled" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "YOUR_CLIENT_ID",
+                ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Cannot be Blank
+
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="Cannot be Blank" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "YOUR_CLIENT_ID",
+                ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: IdP configuration is required
+
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="IdP configuration is required" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "YOUR_CLIENT_ID",
+                ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Invalid ID format
+
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="Invalid ID format" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "YOUR_CLIENT_ID",
+                ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Invalid Permissions
+
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="Invalid Permissions" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "YOUR_CLIENT_ID",
+                ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Must be a valid UUID v4
+
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="Must be a valid UUID v4" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "YOUR_CLIENT_ID",
+                ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Not Found
+
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="Not Found" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "YOUR_CLIENT_ID",
+                ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: OIDC Identity Provider
+
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="OIDC Identity Provider" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "YOUR_CLIENT_ID",
+                ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: OIDC needs an IdP configuration
+
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="OIDC needs an IdP configuration" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "YOUR_CLIENT_ID",
+                ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Password Complexity
+
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="Password Complexity" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "YOUR_CLIENT_ID",
+                ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Permission Denied
+
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="Permission Denied" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "YOUR_CLIENT_ID",
+                ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Request Format is Invalid
+
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="Request Format is Invalid" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "YOUR_CLIENT_ID",
+                ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: SAML Identity Provider With Meta Data
+
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="SAML Identity Provider With Meta Data" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "YOUR_CLIENT_ID",
+                ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: SAML Identity Provider With Meta Data URL
+
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="SAML Identity Provider With Meta Data URL" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "YOUR_CLIENT_ID",
+                ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: System teams cannot be modified
+
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="System teams cannot be modified" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "YOUR_CLIENT_ID",
+                ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "YOUR_CLIENT_ID",
+                ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unsupported filter operation
+
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="Unsupported filter operation" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "YOUR_CLIENT_ID",
+                ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Update Identity Provider Login Path
+
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="Update Identity Provider Login Path" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("the-konnect-org"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Update OIDC Identity Provider
+
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="Update OIDC Identity Provider" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("the-oidc-konnect-org"),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
+            components.ConfigureOIDCIdentityProviderConfig{
+                IssuerURL: "https://konghq.okta.com/oauth2/default",
+                ClientID: "0oaqhb43ckTZ02j1F357",
+                ClientSecret: sdkkonnectgo.Pointer("BbqwI8xP9E4evOK"),
+                Scopes: []string{
+                    "openid",
+                    "email",
+                    "profile",
+                },
+                ClaimMappings: &components.OIDCIdentityProviderClaimMappings{},
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Update SAML Identity Provider
+
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="Update SAML Identity Provider" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
+        Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("the-saml-konnect-org"),
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigSAMLIdentityProviderConfigInput(
+            components.SAMLIdentityProviderConfigInput{
+                IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdentityProvider != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Username or Password invalid
+
+<!-- UsageSnippet language="go" operationID="update-identity-provider" method="patch" path="/v3/identity-providers/{id}" example="Username or Password invalid" -->
 ```go
 package main
 

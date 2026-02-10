@@ -15,7 +15,7 @@ Returns a paginated list of user objects.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-users" method="get" path="/v3/users" -->
+<!-- UsageSnippet language="go" operationID="list-users" method="get" path="/v3/users" example="User Collection Response" -->
 ```go
 package main
 
@@ -77,7 +77,7 @@ Returns the user object for the user ID specified as a path parameter.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-user" method="get" path="/v3/users/{userId}" -->
+<!-- UsageSnippet language="go" operationID="get-user" method="get" path="/v3/users/{userId}" example="Example" -->
 ```go
 package main
 
@@ -131,9 +131,213 @@ func main() {
 
 Update an individual user.
 
-### Example Usage
+### Example Usage: Example
 
-<!-- UsageSnippet language="go" operationID="update-user" method="patch" path="/v3/users/{userId}" -->
+<!-- UsageSnippet language="go" operationID="update-user" method="patch" path="/v3/users/{userId}" example="Example" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Users.UpdateUser(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateUser{
+        FullName: sdkkonnectgo.Pointer("James C. Woods"),
+        PreferredName: sdkkonnectgo.Pointer("Jimmy"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.User != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Example Request Body
+
+<!-- UsageSnippet language="go" operationID="update-user" method="patch" path="/v3/users/{userId}" example="Example Request Body" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Users.UpdateUser(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateUser{
+        FullName: sdkkonnectgo.Pointer("James C Woods"),
+        PreferredName: sdkkonnectgo.Pointer("Jimmy"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.User != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Invalid Permissions
+
+<!-- UsageSnippet language="go" operationID="update-user" method="patch" path="/v3/users/{userId}" example="Invalid Permissions" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Users.UpdateUser(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateUser{
+        FullName: sdkkonnectgo.Pointer("James C. Woods"),
+        PreferredName: sdkkonnectgo.Pointer("Jimmy"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.User != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Not Found
+
+<!-- UsageSnippet language="go" operationID="update-user" method="patch" path="/v3/users/{userId}" example="Not Found" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Users.UpdateUser(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateUser{
+        FullName: sdkkonnectgo.Pointer("James C. Woods"),
+        PreferredName: sdkkonnectgo.Pointer("Jimmy"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.User != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Permission Denied
+
+<!-- UsageSnippet language="go" operationID="update-user" method="patch" path="/v3/users/{userId}" example="Permission Denied" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Users.UpdateUser(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateUser{
+        FullName: sdkkonnectgo.Pointer("James C. Woods"),
+        PreferredName: sdkkonnectgo.Pointer("Jimmy"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.User != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="update-user" method="patch" path="/v3/users/{userId}" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Users.UpdateUser(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateUser{
+        FullName: sdkkonnectgo.Pointer("James C. Woods"),
+        PreferredName: sdkkonnectgo.Pointer("Jimmy"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.User != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Username or Password invalid
+
+<!-- UsageSnippet language="go" operationID="update-user" method="patch" path="/v3/users/{userId}" example="Username or Password invalid" -->
 ```go
 package main
 

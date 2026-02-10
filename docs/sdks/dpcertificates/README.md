@@ -74,7 +74,7 @@ Pin a new DP Client Certificate to this control plane. A pinned dataplane certif
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-dataplane-certificate" method="post" path="/v2/control-planes/{controlPlaneId}/dp-client-certificates" -->
+<!-- UsageSnippet language="go" operationID="create-dataplane-certificate" method="post" path="/v2/control-planes/{controlPlaneId}/dp-client-certificates" example="Sample DP Client Certificate" -->
 ```go
 package main
 

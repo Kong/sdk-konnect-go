@@ -15,7 +15,7 @@ Returns a paginated list of users that belong to the team specified in the path 
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-team-users" method="get" path="/v3/teams/{teamId}/users" -->
+<!-- UsageSnippet language="go" operationID="list-team-users" method="get" path="/v3/teams/{teamId}/users" example="User Collection Response" -->
 ```go
 package main
 
@@ -77,9 +77,405 @@ func main() {
 
 Adds a user to a team.
 
-### Example Usage
+### Example Usage: Authentication Settings cannot be all Disabled
 
-<!-- UsageSnippet language="go" operationID="add-user-to-team" method="post" path="/v3/teams/{teamId}/users" -->
+<!-- UsageSnippet language="go" operationID="add-user-to-team" method="post" path="/v3/teams/{teamId}/users" example="Authentication Settings cannot be all Disabled" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.TeamMembership.AddUserToTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.AddUserToTeam{
+        UserID: "df120cb4-f60b-47bc-a2f8-6a28e6a3c63b",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Cannot be Blank
+
+<!-- UsageSnippet language="go" operationID="add-user-to-team" method="post" path="/v3/teams/{teamId}/users" example="Cannot be Blank" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.TeamMembership.AddUserToTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.AddUserToTeam{
+        UserID: "df120cb4-f60b-47bc-a2f8-6a28e6a3c63b",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Example request body
+
+<!-- UsageSnippet language="go" operationID="add-user-to-team" method="post" path="/v3/teams/{teamId}/users" example="Example request body" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.TeamMembership.AddUserToTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.AddUserToTeam{
+        UserID: "df120cb4-f60b-47bc-a2f8-6a28e6a3c63b",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: IdP configuration is required
+
+<!-- UsageSnippet language="go" operationID="add-user-to-team" method="post" path="/v3/teams/{teamId}/users" example="IdP configuration is required" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.TeamMembership.AddUserToTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.AddUserToTeam{
+        UserID: "df120cb4-f60b-47bc-a2f8-6a28e6a3c63b",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Invalid ID format
+
+<!-- UsageSnippet language="go" operationID="add-user-to-team" method="post" path="/v3/teams/{teamId}/users" example="Invalid ID format" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.TeamMembership.AddUserToTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.AddUserToTeam{
+        UserID: "df120cb4-f60b-47bc-a2f8-6a28e6a3c63b",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Must be a valid UUID v4
+
+<!-- UsageSnippet language="go" operationID="add-user-to-team" method="post" path="/v3/teams/{teamId}/users" example="Must be a valid UUID v4" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.TeamMembership.AddUserToTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.AddUserToTeam{
+        UserID: "df120cb4-f60b-47bc-a2f8-6a28e6a3c63b",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Not Found
+
+<!-- UsageSnippet language="go" operationID="add-user-to-team" method="post" path="/v3/teams/{teamId}/users" example="Not Found" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.TeamMembership.AddUserToTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.AddUserToTeam{
+        UserID: "df120cb4-f60b-47bc-a2f8-6a28e6a3c63b",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: OIDC needs an IdP configuration
+
+<!-- UsageSnippet language="go" operationID="add-user-to-team" method="post" path="/v3/teams/{teamId}/users" example="OIDC needs an IdP configuration" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.TeamMembership.AddUserToTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.AddUserToTeam{
+        UserID: "df120cb4-f60b-47bc-a2f8-6a28e6a3c63b",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Password Complexity
+
+<!-- UsageSnippet language="go" operationID="add-user-to-team" method="post" path="/v3/teams/{teamId}/users" example="Password Complexity" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.TeamMembership.AddUserToTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.AddUserToTeam{
+        UserID: "df120cb4-f60b-47bc-a2f8-6a28e6a3c63b",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Request Format is Invalid
+
+<!-- UsageSnippet language="go" operationID="add-user-to-team" method="post" path="/v3/teams/{teamId}/users" example="Request Format is Invalid" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.TeamMembership.AddUserToTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.AddUserToTeam{
+        UserID: "df120cb4-f60b-47bc-a2f8-6a28e6a3c63b",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: System teams cannot be modified
+
+<!-- UsageSnippet language="go" operationID="add-user-to-team" method="post" path="/v3/teams/{teamId}/users" example="System teams cannot be modified" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.TeamMembership.AddUserToTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.AddUserToTeam{
+        UserID: "df120cb4-f60b-47bc-a2f8-6a28e6a3c63b",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unsupported filter operation
+
+<!-- UsageSnippet language="go" operationID="add-user-to-team" method="post" path="/v3/teams/{teamId}/users" example="Unsupported filter operation" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.TeamMembership.AddUserToTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.AddUserToTeam{
+        UserID: "df120cb4-f60b-47bc-a2f8-6a28e6a3c63b",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: User is Already Active
+
+<!-- UsageSnippet language="go" operationID="add-user-to-team" method="post" path="/v3/teams/{teamId}/users" example="User is Already Active" -->
 ```go
 package main
 
@@ -197,7 +593,7 @@ Returns a paginated list of a teams that the user belongs to.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-user-teams" method="get" path="/v3/users/{userId}/teams" -->
+<!-- UsageSnippet language="go" operationID="list-user-teams" method="get" path="/v3/users/{userId}/teams" example="Team Collection" -->
 ```go
 package main
 
