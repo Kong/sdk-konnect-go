@@ -14,9 +14,265 @@
 
 Creates an API.
 
-### Example Usage
+### Example Usage: ApiForbiddenExample
 
-<!-- UsageSnippet language="go" operationID="create-api" method="post" path="/v3/apis" -->
+<!-- UsageSnippet language="go" operationID="create-api" method="post" path="/v3/apis" example="ApiForbiddenExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.API.CreateAPI(ctx, components.CreateAPIRequest{
+        Name: "MyAPI",
+        Slug: sdkkonnectgo.Pointer("my-api-v1"),
+        Labels: map[string]string{
+            "env": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIResponseSchema != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiNameBadRequestExample
+
+<!-- UsageSnippet language="go" operationID="create-api" method="post" path="/v3/apis" example="ApiNameBadRequestExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.API.CreateAPI(ctx, components.CreateAPIRequest{
+        Name: "MyAPI",
+        Slug: sdkkonnectgo.Pointer("my-api-v1"),
+        Labels: map[string]string{
+            "env": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIResponseSchema != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiNotFoundExample
+
+<!-- UsageSnippet language="go" operationID="create-api" method="post" path="/v3/apis" example="ApiNotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.API.CreateAPI(ctx, components.CreateAPIRequest{
+        Name: "MyAPI",
+        Slug: sdkkonnectgo.Pointer("my-api-v1"),
+        Labels: map[string]string{
+            "env": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIResponseSchema != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiUnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="create-api" method="post" path="/v3/apis" example="ApiUnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.API.CreateAPI(ctx, components.CreateAPIRequest{
+        Name: "MyAPI",
+        Slug: sdkkonnectgo.Pointer("my-api-v1"),
+        Labels: map[string]string{
+            "env": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIResponseSchema != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: CreateApiFull
+
+<!-- UsageSnippet language="go" operationID="create-api" method="post" path="/v3/apis" example="CreateApiFull" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.API.CreateAPI(ctx, components.CreateAPIRequest{
+        Name: "myAPI",
+        Version: sdkkonnectgo.Pointer("v1"),
+        Slug: sdkkonnectgo.Pointer("my-api-v1"),
+        Labels: map[string]string{
+            "env": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIResponseSchema != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: CreateApiMinimal
+
+<!-- UsageSnippet language="go" operationID="create-api" method="post" path="/v3/apis" example="CreateApiMinimal" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.API.CreateAPI(ctx, components.CreateAPIRequest{
+        Name: "myAPI",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIResponseSchema != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: CreateApiResponse
+
+<!-- UsageSnippet language="go" operationID="create-api" method="post" path="/v3/apis" example="CreateApiResponse" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.API.CreateAPI(ctx, components.CreateAPIRequest{
+        Name: "MyAPI",
+        Slug: sdkkonnectgo.Pointer("my-api-v1"),
+        Labels: map[string]string{
+            "env": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIResponseSchema != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnsupportedMediaTypeExample
+
+<!-- UsageSnippet language="go" operationID="create-api" method="post" path="/v3/apis" example="UnsupportedMediaTypeExample" -->
 ```go
 package main
 
@@ -81,7 +337,7 @@ Returns a collection of all APIs.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-apis" method="get" path="/v3/apis" -->
+<!-- UsageSnippet language="go" operationID="list-apis" method="get" path="/v3/apis" example="ApiCollection" -->
 ```go
 package main
 
@@ -107,9 +363,9 @@ func main() {
         PageSize: sdkkonnectgo.Pointer[int64](10),
         PageNumber: sdkkonnectgo.Pointer[int64](1),
         Filter: &components.APIFilterParameters{
-            CreatedAt: sdkkonnectgo.Pointer(components.CreateDateTimeFieldFilterDateTimeFieldLTEFilter(
-                components.DateTimeFieldLTEFilter{
-                    Lte: types.MustTimeFromString("2022-03-30T07:20:50Z"),
+            CreatedAt: sdkkonnectgo.Pointer(components.CreateDateTimeFieldFilterDateTimeFieldGTEFilter(
+                components.DateTimeFieldGTEFilter{
+                    Lte: types.MustNewTimeFromString("2022-03-30T07:20:50Z"),
                 },
             )),
             UpdatedAt: sdkkonnectgo.Pointer(components.CreateDateTimeFieldFilterDateTimeFieldLTFilter(
@@ -157,7 +413,7 @@ Get an API.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="fetch-api" method="get" path="/v3/apis/{apiId}" -->
+<!-- UsageSnippet language="go" operationID="fetch-api" method="get" path="/v3/apis/{apiId}" example="CreateApiResponse" -->
 ```go
 package main
 
@@ -212,9 +468,9 @@ func main() {
 
 Updates an API.
 
-### Example Usage
+### Example Usage: ApiForbiddenExample
 
-<!-- UsageSnippet language="go" operationID="update-api" method="patch" path="/v3/apis/{apiId}" -->
+<!-- UsageSnippet language="go" operationID="update-api" method="patch" path="/v3/apis/{apiId}" example="ApiForbiddenExample" -->
 ```go
 package main
 
@@ -243,6 +499,285 @@ func main() {
             Labels: map[string]*string{
                 "env": sdkkonnectgo.Pointer("test"),
             },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIResponseSchema != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiNameBadRequestExample
+
+<!-- UsageSnippet language="go" operationID="update-api" method="patch" path="/v3/apis/{apiId}" example="ApiNameBadRequestExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.API.UpdateAPI(ctx, operations.UpdateAPIRequest{
+        APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+        UpdateAPIRequest: components.UpdateAPIRequest{
+            Name: sdkkonnectgo.Pointer("MyAPI"),
+            Slug: sdkkonnectgo.Pointer("my-api-v1"),
+            Labels: map[string]*string{
+                "env": sdkkonnectgo.Pointer("test"),
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIResponseSchema != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiNotFoundExample
+
+<!-- UsageSnippet language="go" operationID="update-api" method="patch" path="/v3/apis/{apiId}" example="ApiNotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.API.UpdateAPI(ctx, operations.UpdateAPIRequest{
+        APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+        UpdateAPIRequest: components.UpdateAPIRequest{
+            Name: sdkkonnectgo.Pointer("MyAPI"),
+            Slug: sdkkonnectgo.Pointer("my-api-v1"),
+            Labels: map[string]*string{
+                "env": sdkkonnectgo.Pointer("test"),
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIResponseSchema != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiUnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="update-api" method="patch" path="/v3/apis/{apiId}" example="ApiUnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.API.UpdateAPI(ctx, operations.UpdateAPIRequest{
+        APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+        UpdateAPIRequest: components.UpdateAPIRequest{
+            Name: sdkkonnectgo.Pointer("MyAPI"),
+            Slug: sdkkonnectgo.Pointer("my-api-v1"),
+            Labels: map[string]*string{
+                "env": sdkkonnectgo.Pointer("test"),
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIResponseSchema != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: CreateApiResponse
+
+<!-- UsageSnippet language="go" operationID="update-api" method="patch" path="/v3/apis/{apiId}" example="CreateApiResponse" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.API.UpdateAPI(ctx, operations.UpdateAPIRequest{
+        APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+        UpdateAPIRequest: components.UpdateAPIRequest{
+            Name: sdkkonnectgo.Pointer("MyAPI"),
+            Slug: sdkkonnectgo.Pointer("my-api-v1"),
+            Labels: map[string]*string{
+                "env": sdkkonnectgo.Pointer("test"),
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIResponseSchema != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnsupportedMediaTypeExample
+
+<!-- UsageSnippet language="go" operationID="update-api" method="patch" path="/v3/apis/{apiId}" example="UnsupportedMediaTypeExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.API.UpdateAPI(ctx, operations.UpdateAPIRequest{
+        APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+        UpdateAPIRequest: components.UpdateAPIRequest{
+            Name: sdkkonnectgo.Pointer("MyAPI"),
+            Slug: sdkkonnectgo.Pointer("my-api-v1"),
+            Labels: map[string]*string{
+                "env": sdkkonnectgo.Pointer("test"),
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIResponseSchema != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UpdateApiName
+
+<!-- UsageSnippet language="go" operationID="update-api" method="patch" path="/v3/apis/{apiId}" example="UpdateApiName" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.API.UpdateAPI(ctx, operations.UpdateAPIRequest{
+        APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+        UpdateAPIRequest: components.UpdateAPIRequest{
+            Name: sdkkonnectgo.Pointer("new API name"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIResponseSchema != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UpdateApiVersion
+
+<!-- UsageSnippet language="go" operationID="update-api" method="patch" path="/v3/apis/{apiId}" example="UpdateApiVersion" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.API.UpdateAPI(ctx, operations.UpdateAPIRequest{
+        APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+        UpdateAPIRequest: components.UpdateAPIRequest{
+            Version: sdkkonnectgo.Pointer("v2"),
         },
     })
     if err != nil {

@@ -77,7 +77,7 @@ Returns an array of control planes that are a member of this control plane group
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-control-planes-id-group-memberships" method="get" path="/v2/control-planes/{id}/group-memberships" -->
+<!-- UsageSnippet language="go" operationID="get-control-planes-id-group-memberships" method="get" path="/v2/control-planes/{id}/group-memberships" example="List Group Memberships Example" -->
 ```go
 package main
 
@@ -142,7 +142,7 @@ Adds one or more control planes as a member of a control plane group.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="put-control-planes-id-group-memberships" method="put" path="/v2/control-planes/{id}/group-memberships" -->
+<!-- UsageSnippet language="go" operationID="put-control-planes-id-group-memberships" method="put" path="/v2/control-planes/{id}/group-memberships" example="Example 1" -->
 ```go
 package main
 
@@ -215,7 +215,7 @@ Adds one or more control planes as a member of a control plane group.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="post-control-planes-id-group-memberships-add" method="post" path="/v2/control-planes/{id}/group-memberships/add" -->
+<!-- UsageSnippet language="go" operationID="post-control-planes-id-group-memberships-add" method="post" path="/v2/control-planes/{id}/group-memberships/add" example="Example 1" -->
 ```go
 package main
 
@@ -288,7 +288,7 @@ Removes one or more control planes from the members of a control plane group.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="post-control-planes-id-group-memberships-remove" method="post" path="/v2/control-planes/{id}/group-memberships/remove" -->
+<!-- UsageSnippet language="go" operationID="post-control-planes-id-group-memberships-remove" method="post" path="/v2/control-planes/{id}/group-memberships/remove" example="Example 1" -->
 ```go
 package main
 
@@ -359,9 +359,40 @@ func main() {
 
 Returns the status of a control plane group, including existing conflicts.
 
-### Example Usage
+### Example Usage: Group Conflict Status Example
 
-<!-- UsageSnippet language="go" operationID="get-control-planes-id-group-status" method="get" path="/v2/control-planes/{id}/group-status" -->
+<!-- UsageSnippet language="go" operationID="get-control-planes-id-group-status" method="get" path="/v2/control-planes/{id}/group-status" example="Group Conflict Status Example" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.ControlPlaneGroups.GetControlPlanesIDGroupStatus(ctx, "<id>")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GetGroupStatus != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Group No Conflict Status Example
+
+<!-- UsageSnippet language="go" operationID="get-control-planes-id-group-status" method="get" path="/v2/control-planes/{id}/group-status" example="Group No Conflict Status Example" -->
 ```go
 package main
 

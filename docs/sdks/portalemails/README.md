@@ -32,7 +32,7 @@ Retrieve the email config for the portal
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-email-config" method="get" path="/v3/portals/{portalId}/email-config" -->
+<!-- UsageSnippet language="go" operationID="get-email-config" method="get" path="/v3/portals/{portalId}/email-config" example="Example Portal Email Config Response" -->
 ```go
 package main
 
@@ -87,9 +87,138 @@ func main() {
 
 Create the email config for a portal
 
-### Example Usage
+### Example Usage: Create Portal Email Config
 
-<!-- UsageSnippet language="go" operationID="create-portal-email-config" method="post" path="/v3/portals/{portalId}/email-config" -->
+<!-- UsageSnippet language="go" operationID="create-portal-email-config" method="post" path="/v3/portals/{portalId}/email-config" example="Create Portal Email Config" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.CreatePortalEmailConfig(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.PostPortalEmailConfig{
+        DomainName: sdkkonnectgo.Pointer("example.com"),
+        FromName: sdkkonnectgo.Pointer("Gandalf"),
+        FromEmail: sdkkonnectgo.Pointer("user@example.com"),
+        ReplyToEmail: sdkkonnectgo.Pointer("admin@example.com"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalEmailConfig != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Example Portal Email Config Response
+
+<!-- UsageSnippet language="go" operationID="create-portal-email-config" method="post" path="/v3/portals/{portalId}/email-config" example="Example Portal Email Config Response" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.CreatePortalEmailConfig(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.PostPortalEmailConfig{})
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalEmailConfig != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="create-portal-email-config" method="post" path="/v3/portals/{portalId}/email-config" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.CreatePortalEmailConfig(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.PostPortalEmailConfig{})
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalEmailConfig != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="create-portal-email-config" method="post" path="/v3/portals/{portalId}/email-config" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.CreatePortalEmailConfig(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.PostPortalEmailConfig{})
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalEmailConfig != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="create-portal-email-config" method="post" path="/v3/portals/{portalId}/email-config" example="UnauthorizedExample" -->
 ```go
 package main
 
@@ -147,9 +276,40 @@ func main() {
 
 Setup the email config for a portal
 
-### Example Usage
+### Example Usage: Example Portal Email Config Response
 
-<!-- UsageSnippet language="go" operationID="update-portal-email-config" method="patch" path="/v3/portals/{portalId}/email-config" -->
+<!-- UsageSnippet language="go" operationID="update-portal-email-config" method="patch" path="/v3/portals/{portalId}/email-config" example="Example Portal Email Config Response" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.UpdatePortalEmailConfig(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalEmailConfig != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Patch Portal Email Config
+
+<!-- UsageSnippet language="go" operationID="update-portal-email-config" method="patch" path="/v3/portals/{portalId}/email-config" example="Patch Portal Email Config" -->
 ```go
 package main
 
@@ -329,9 +489,71 @@ Setup the email delivery for a portal
 
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
-### Example Usage
+### Example Usage: NotFoundExample
 
-<!-- UsageSnippet language="go" operationID="update-email-delivery" method="patch" path="/v3/portals/{portalId}/email-delivery" -->
+<!-- UsageSnippet language="go" operationID="update-email-delivery" method="patch" path="/v3/portals/{portalId}/email-delivery" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.UpdateEmailDelivery(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.EmailDeliveryUpdatePayload{})
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EmailDelivery != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="update-email-delivery" method="patch" path="/v3/portals/{portalId}/email-delivery" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.UpdateEmailDelivery(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.EmailDeliveryUpdatePayload{})
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EmailDelivery != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="update-email-delivery" method="patch" path="/v3/portals/{portalId}/email-delivery" example="UnauthorizedExample" -->
 ```go
 package main
 
@@ -449,7 +671,7 @@ List custom email templates
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-portal-custom-email-templates" method="get" path="/v3/portals/{portalId}/email-templates" -->
+<!-- UsageSnippet language="go" operationID="list-portal-custom-email-templates" method="get" path="/v3/portals/{portalId}/email-templates" example="Example 1" -->
 ```go
 package main
 
@@ -506,7 +728,7 @@ Get custom email template
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-portal-custom-email-template" method="get" path="/v3/portals/{portalId}/email-templates/{templateName}" -->
+<!-- UsageSnippet language="go" operationID="get-portal-custom-email-template" method="get" path="/v3/portals/{portalId}/email-templates/{templateName}" example="Example 1" -->
 ```go
 package main
 
@@ -562,9 +784,9 @@ func main() {
 
 Update custom email template
 
-### Example Usage
+### Example Usage: Enable Custom Template
 
-<!-- UsageSnippet language="go" operationID="update-portal-custom-email-template" method="patch" path="/v3/portals/{portalId}/email-templates/{templateName}" -->
+<!-- UsageSnippet language="go" operationID="update-portal-custom-email-template" method="patch" path="/v3/portals/{portalId}/email-templates/{templateName}" example="Enable Custom Template" -->
 ```go
 package main
 
@@ -589,6 +811,193 @@ func main() {
         PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
         TemplateName: components.EmailTemplateNameAccountAccessApproved,
         PatchCustomPortalEmailTemplatePayload: components.PatchCustomPortalEmailTemplatePayload{},
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EmailTemplate != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Example 1
+
+<!-- UsageSnippet language="go" operationID="update-portal-custom-email-template" method="patch" path="/v3/portals/{portalId}/email-templates/{templateName}" example="Example 1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.UpdatePortalCustomEmailTemplate(ctx, operations.UpdatePortalCustomEmailTemplateRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TemplateName: components.EmailTemplateNameConfirmEmailAddress,
+        PatchCustomPortalEmailTemplatePayload: components.PatchCustomPortalEmailTemplatePayload{},
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EmailTemplate != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="update-portal-custom-email-template" method="patch" path="/v3/portals/{portalId}/email-templates/{templateName}" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.UpdatePortalCustomEmailTemplate(ctx, operations.UpdatePortalCustomEmailTemplateRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TemplateName: components.EmailTemplateNameAccountAccessApproved,
+        PatchCustomPortalEmailTemplatePayload: components.PatchCustomPortalEmailTemplatePayload{},
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EmailTemplate != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="update-portal-custom-email-template" method="patch" path="/v3/portals/{portalId}/email-templates/{templateName}" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.UpdatePortalCustomEmailTemplate(ctx, operations.UpdatePortalCustomEmailTemplateRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TemplateName: components.EmailTemplateNameAccountAccessApproved,
+        PatchCustomPortalEmailTemplatePayload: components.PatchCustomPortalEmailTemplatePayload{},
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EmailTemplate != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="update-portal-custom-email-template" method="patch" path="/v3/portals/{portalId}/email-templates/{templateName}" example="UnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.UpdatePortalCustomEmailTemplate(ctx, operations.UpdatePortalCustomEmailTemplateRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TemplateName: components.EmailTemplateNameResetPassword,
+        PatchCustomPortalEmailTemplatePayload: components.PatchCustomPortalEmailTemplatePayload{},
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EmailTemplate != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Update Custom Template Content
+
+<!-- UsageSnippet language="go" operationID="update-portal-custom-email-template" method="patch" path="/v3/portals/{portalId}/email-templates/{templateName}" example="Update Custom Template Content" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.UpdatePortalCustomEmailTemplate(ctx, operations.UpdatePortalCustomEmailTemplateRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TemplateName: components.EmailTemplateNameAppRegistrationRevoked,
+        PatchCustomPortalEmailTemplatePayload: components.PatchCustomPortalEmailTemplatePayload{
+            Content: &components.EmailTemplateContent{
+                Subject: sdkkonnectgo.Pointer("{{developer_fullname}}, Your registration has been revoked"),
+                Title: sdkkonnectgo.Pointer("Revoked registration"),
+                Body: sdkkonnectgo.Pointer("Hello {{ developer_fullname }},\\n\\your registration has been **revoked**."),
+                ButtonLabel: sdkkonnectgo.Pointer("Acknowledge"),
+            },
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -684,9 +1093,51 @@ func main() {
 Send a test email based on the portal's email template, using the content provided in the request.
 The email will be sent to the Konnect user who triggered the test.
 
-### Example Usage
+### Example Usage: NotFoundExample
 
-<!-- UsageSnippet language="go" operationID="post-portal-custom-email-test-send" method="post" path="/v3/portals/{portalId}/email-templates/{templateName}/send-test-email" -->
+<!-- UsageSnippet language="go" operationID="post-portal-custom-email-test-send" method="post" path="/v3/portals/{portalId}/email-templates/{templateName}/send-test-email" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.PostPortalCustomEmailTestSend(ctx, operations.PostPortalCustomEmailTestSendRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TemplateName: components.EmailTemplateNameAppRegistrationApproved,
+        PostSendTestEmailPayload: components.PostSendTestEmailPayload{
+            Content: components.SendTestEmailTemplateContent{
+                Subject: "<value>",
+                Title: "<value>",
+                Body: "<value>",
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Send test email
+
+<!-- UsageSnippet language="go" operationID="post-portal-custom-email-test-send" method="post" path="/v3/portals/{portalId}/email-templates/{templateName}/send-test-email" example="Send test email" -->
 ```go
 package main
 
@@ -710,6 +1161,91 @@ func main() {
     res, err := s.PortalEmails.PostPortalCustomEmailTestSend(ctx, operations.PostPortalCustomEmailTestSendRequest{
         PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
         TemplateName: components.EmailTemplateNameResetPassword,
+        PostSendTestEmailPayload: components.PostSendTestEmailPayload{
+            Content: components.SendTestEmailTemplateContent{
+                Subject: "{{developer_fullname}}, Your registration has been revoked",
+                Title: "Revoked registration",
+                Body: "Hello {{ developer_fullname }},\\n\\your registration has been **revoked**.",
+                ButtonLabel: sdkkonnectgo.Pointer("Acknowledge"),
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="post-portal-custom-email-test-send" method="post" path="/v3/portals/{portalId}/email-templates/{templateName}/send-test-email" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.PostPortalCustomEmailTestSend(ctx, operations.PostPortalCustomEmailTestSendRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TemplateName: components.EmailTemplateNameAppRegistrationApproved,
+        PostSendTestEmailPayload: components.PostSendTestEmailPayload{
+            Content: components.SendTestEmailTemplateContent{
+                Subject: "<value>",
+                Title: "<value>",
+                Body: "<value>",
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="post-portal-custom-email-test-send" method="post" path="/v3/portals/{portalId}/email-templates/{templateName}/send-test-email" example="UnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.PostPortalCustomEmailTestSend(ctx, operations.PostPortalCustomEmailTestSendRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TemplateName: components.EmailTemplateNameAccountAccessRevoked,
         PostSendTestEmailPayload: components.PostSendTestEmailPayload{
             Content: components.SendTestEmailTemplateContent{
                 Subject: "<value>",
@@ -813,9 +1349,75 @@ func main() {
 
 Create an email domain
 
-### Example Usage
+### Example Usage: NotFoundExample
 
-<!-- UsageSnippet language="go" operationID="create-email-domain" method="post" path="/v3/portals/email-domains" -->
+<!-- UsageSnippet language="go" operationID="create-email-domain" method="post" path="/v3/portals/email-domains" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.CreateEmailDomain(ctx, components.EmailDomainPayload{
+        Domain: "milky-advertisement.biz",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EmailDomain != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="create-email-domain" method="post" path="/v3/portals/email-domains" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalEmails.CreateEmailDomain(ctx, components.EmailDomainPayload{
+        Domain: "milky-advertisement.biz",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EmailDomain != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="create-email-domain" method="post" path="/v3/portals/email-domains" example="UnauthorizedExample" -->
 ```go
 package main
 
@@ -989,7 +1591,7 @@ List default email templates
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-default-email-templates" method="get" path="/v3/portals/email-templates" -->
+<!-- UsageSnippet language="go" operationID="list-default-email-templates" method="get" path="/v3/portals/email-templates" example="Example 1" -->
 ```go
 package main
 
@@ -1045,7 +1647,7 @@ Get default email template
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-default-email-template" method="get" path="/v3/portals/email-templates/{templateName}" -->
+<!-- UsageSnippet language="go" operationID="get-default-email-template" method="get" path="/v3/portals/email-templates/{templateName}" example="Example 1" -->
 ```go
 package main
 
@@ -1102,7 +1704,7 @@ List email template variables
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-email-template-variables" method="get" path="/v3/portals/email-templates/variables" -->
+<!-- UsageSnippet language="go" operationID="list-email-template-variables" method="get" path="/v3/portals/email-templates/variables" example="Example 1" -->
 ```go
 package main
 

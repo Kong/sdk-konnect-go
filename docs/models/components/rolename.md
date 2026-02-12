@@ -19,6 +19,7 @@ The desired role.
 | `RoleNameDeployer`                  | Deployer                            |
 | `RoleNameDiscoveryAdmin`            | Discovery Admin                     |
 | `RoleNameDiscoveryViewer`           | Discovery Viewer                    |
+| `RoleNameEditor`                    | Editor                              |
 | `RoleNameGatewayServiceAdmin`       | Gateway Service Admin               |
 | `RoleNameIntegrationAdmin`          | Integration Admin                   |
 | `RoleNameIntegrationViewer`         | Integration Viewer                  |

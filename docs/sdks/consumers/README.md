@@ -84,9 +84,85 @@ func main() {
 
 Create a new Consumer
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers" -->
+<!-- UsageSnippet language="go" operationID="create-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Consumers.CreateConsumer(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Consumer{
+        CustomID: sdkkonnectgo.Pointer("4200"),
+        ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
+        Tags: []string{
+            "silver-tier",
+        },
+        Username: sdkkonnectgo.Pointer("bob-the-builder"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Consumer != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="create-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Consumers.CreateConsumer(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Consumer{
+        CustomID: sdkkonnectgo.Pointer("4200"),
+        ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
+        Tags: []string{
+            "silver-tier",
+        },
+        Username: sdkkonnectgo.Pointer("bob-the-builder"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Consumer != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="create-consumer" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers" example="NoAPIKey" -->
 ```go
 package main
 
@@ -259,9 +335,95 @@ func main() {
 
 Create or Update Consumer using ID or username.
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Consumers.UpsertConsumer(ctx, operations.UpsertConsumerRequest{
+        ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Consumer: components.Consumer{
+            CustomID: sdkkonnectgo.Pointer("4200"),
+            ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
+            Tags: []string{
+                "silver-tier",
+            },
+            Username: sdkkonnectgo.Pointer("bob-the-builder"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Consumer != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="upsert-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Consumers.UpsertConsumer(ctx, operations.UpsertConsumerRequest{
+        ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Consumer: components.Consumer{
+            CustomID: sdkkonnectgo.Pointer("4200"),
+            ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
+            Tags: []string{
+                "silver-tier",
+            },
+            Username: sdkkonnectgo.Pointer("bob-the-builder"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Consumer != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="upsert-consumer" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/consumers/{ConsumerId}" example="NoAPIKey" -->
 ```go
 package main
 

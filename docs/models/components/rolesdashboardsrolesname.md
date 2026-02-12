@@ -3,6 +3,6 @@
 
 ## Values
 
-| Name                             | Value                            |
-| -------------------------------- | -------------------------------- |
-| `RolesDashboardsRolesNameViewer` | Viewer                           |
+| Name                            | Value                           |
+| ------------------------------- | ------------------------------- |
+| `RolesDashboardsRolesNameAdmin` | Admin                           |

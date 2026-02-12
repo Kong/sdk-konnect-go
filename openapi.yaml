@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Konnect API - Go SDK
-  version: 3.1.2
+  version: 3.1.3
   description: The Konnect platform API
   contact:
     name: Kong Inc
@@ -10,10 +10,6 @@ info:
   x-extensions-note: |
     This API uses the `x-expression` vendor extension to indicate that a string property is a DSL expression.
     Supported types:
-
-
-
-
 
 
       - `boolean`: An expression evaluates to boolean. For example, `context.topic.name == 'my-topic'`
@@ -14152,10 +14148,6 @@ components:
         Sorts a collection of API implementations. Supported sort attributes are:
 
 
-
-
-
-
           - id
           - api_id
           - control_plane_id
@@ -14203,10 +14195,6 @@ components:
       name: sort
       description: |
         Sorts a collection of API Packages Operations. Supported sort attributes are:
-
-
-
-
 
 
           - path
@@ -14890,10 +14878,6 @@ components:
         Sorts a collection of integration instances. Supported sort attributes are:
 
 
-
-
-
-
           - `display_name`
           - `name`
           - `created_at`
@@ -15136,10 +15120,6 @@ components:
         Sorts a collection of API publications within a portal. Supported sort attributes are:
 
 
-
-
-
-
           - api_id
           - api_name
           - created_at
@@ -15248,10 +15228,6 @@ components:
         Sorts a collection of services targeted by a scorecard criteria. Supported sort attributes are:
 
 
-
-
-
-
           - `display_name`
           - `name`
           - `evaluation.is_passing`
@@ -15267,10 +15243,6 @@ components:
       name: sort
       description: |
         Sorts a collection of criteria belonging to a scorecard. Supported sort attributes are:
-
-
-
-
 
 
           - `evaluation.passing_services_count`
@@ -15300,10 +15272,6 @@ components:
       name: sort
       description: |
         Sorts a collection of services targeted by a scorecard. Supported sort attributes are:
-
-
-
-
 
 
           - `display_name`
@@ -15341,10 +15309,6 @@ components:
       name: sort
       description: |
         Sorts a collection of scorecard templates. Supported sort attributes are:
-
-
-
-
 
 
           - `display_name`
@@ -15387,10 +15351,6 @@ components:
         Sorts a collection of application auth strategies. Supported sort attributes are:
 
 
-
-
-
-
           - created_at
           - updated_at
           - strategy_type
@@ -15409,10 +15369,6 @@ components:
         Sorts a set of developers for an application. Supported sort attributes are:
 
 
-
-
-
-
           - id
       in: query
       required: false
@@ -15422,10 +15378,6 @@ components:
       name: sort
       description: |
         Sorts a set of registrations for an application. Supported sort attributes are:
-
-
-
-
 
 
           - created_at
@@ -15487,10 +15439,6 @@ components:
       name: sort
       description: |
         Sorts a collection of application registrations. Supported sort attributes are:
-
-
-
-
 
 
           - created_at
@@ -18350,6 +18298,49 @@ components:
         - updated_at
         - name
         - private_dns_attachment_config
+    AzurePrivateHostedZoneAttachmentConfig:
+      type: object
+      properties:
+        kind:
+          enum:
+            - azure-private-hosted-zone-attachment
+          title: Azure Private Hosted Zone Type
+        domain_name:
+          description: Customer's Azure Private DNS Zone Name.
+          type: string
+          title: Domain Name
+        peer_tenant_id:
+          description: Customer's Azure Tenant ID.
+          type: string
+          title: Peer Tenant Id
+        peer_subscription_id:
+          description: Customer's Azure Subscription ID.
+          type: string
+          title: Peer Subscription Id
+        peer_resource_group_id:
+          description: Customer's Azure Resource Group ID.
+          type: string
+          title: Peer Resource Group Id
+        peer_vnet_link_name:
+          description: Customer's Azure VNet Link Name.
+          type: string
+          title: Peer VNet Link Name
+      example:
+        kind: azure-private-hosted-zone-attachment
+        domain_name: example.private.azure.com
+        peer_tenant_id: 87654321-4321-4321-4321-210987654321
+        peer_subscription_id: 12345678-1234-1234-1234-123456789012
+        peer_resource_group_id: customer-dns-rg
+        peer_vnet_link_name: kong-vnet-link
+      additionalProperties: false
+      required:
+        - kind
+        - domain_name
+        - peer_tenant_id
+        - peer_subscription_id
+        - peer_resource_group_id
+        - peer_vnet_link_name
+      title: Azure Private Hosted Zone Attachment Config
     AzurePrivateHostedZoneResponse:
       type: object
       properties:
@@ -18395,6 +18386,8 @@ components:
           readOnly: true
         name:
           $ref: '#/components/schemas/PrivateDnsName'
+        private_dns_attachment_config:
+          $ref: '#/components/schemas/AzurePrivateHostedZoneAttachmentConfig'
       required:
         - id
         - state
@@ -18403,6 +18396,7 @@ components:
         - created_at
         - updated_at
         - name
+        - private_dns_attachment_config
     AwsPrivateDnsResolverResponse:
       type: object
       properties:
@@ -18504,6 +18498,8 @@ components:
           readOnly: true
         name:
           $ref: '#/components/schemas/PrivateDnsName'
+        private_dns_attachment_config:
+          $ref: '#/components/schemas/AzurePrivateDnsResolverAttachmentConfig'
       required:
         - id
         - state
@@ -18512,6 +18508,7 @@ components:
         - created_at
         - updated_at
         - name
+        - private_dns_attachment_config
     AwsPrivateDnsResolverAttachmentConfig:
       type: object
       properties:
@@ -18526,6 +18523,29 @@ components:
         - kind
         - dns_config
       title: AWS Private DNS Resolver Attachment Config
+    AzurePrivateDnsResolverAttachmentConfig:
+      type: object
+      properties:
+        kind:
+          enum:
+            - azure-outbound-resolver
+          title: Azure Private DNS Resolver Type
+        dns_config:
+          $ref: '#/components/schemas/PrivateDnsResolverConfig'
+      example:
+        kind: azure-outbound-resolver
+        dns_config:
+          global.api.konghq.com:
+            remote_dns_server_ip_addresses:
+              - 10.0.0.2
+          us.api.konghq.dev:
+            remote_dns_server_ip_addresses:
+              - 10.0.0.8
+      additionalProperties: false
+      required:
+        - kind
+        - dns_config
+      title: Azure Private DNS Resolver Attachment Config
     PrivateDnsResolverConfig:
       description: |
         Object that contains mappings from proxied internal domains to remote DNS server IP address for a Private DNS Resolver.
@@ -18583,6 +18603,13 @@ components:
           $ref: '#/components/schemas/PrivateDnsName'
         private_dns_attachment_config:
           $ref: '#/components/schemas/AwsPrivateDnsResolverAttachmentConfig'
+    PatchAzurePrivateDnsResolver:
+      description: Request schema for updating a Private DNS Azure Resolver.
+      properties:
+        name:
+          $ref: '#/components/schemas/PrivateDnsName'
+        private_dns_attachment_config:
+          $ref: '#/components/schemas/AzurePrivateDnsResolverAttachmentConfig'
     CreatePrivateDnsRequest:
       description: Request schema for creating a Private DNS.
       type: object
@@ -18594,12 +18621,15 @@ components:
             - $ref: '#/components/schemas/AwsPrivateHostedZoneAttachmentConfig'
             - $ref: '#/components/schemas/AwsPrivateDnsResolverAttachmentConfig'
             - $ref: '#/components/schemas/GcpPrivateHostedZoneAttachmentConfig'
+            - $ref: '#/components/schemas/AzurePrivateHostedZoneAttachmentConfig'
+            - $ref: '#/components/schemas/AzurePrivateDnsResolverAttachmentConfig'
       title: CreatePrivateDnsRequest
     PatchPrivateDnsRequest:
       description: Request schema for updating a Private DNS.
       type: object
       oneOf:
         - $ref: '#/components/schemas/PatchAwsPrivateDnsResolver'
+        - $ref: '#/components/schemas/PatchAzurePrivateDnsResolver'
       title: PatchPrivateDnsRequest
     AwsTransitGatewayResponse:
       type: object
@@ -21630,6 +21660,7 @@ components:
           type: string
           format: uuid
           example: 7710d5c4-d902-410b-992f-18b814155b53
+          x-speakeasy-name-override: id
       additionalProperties: false
       required:
         - control_plane_id
@@ -22217,10 +22248,6 @@ components:
             the label key that will be used to filter the results. For example:
 
 
-
-
-
-
               - `filter[labels.owner]`
               - `filter[labels.owner][neq]=kong`
               - `filter[labels.env]=dev`
@@ -22232,10 +22259,6 @@ components:
           description: |
             Filters on the resource's `attributes` field. Filters must use dot-notation to identify
             the attribute key that will be used to filter the results. For example:
-
-
-
-
 
 
               - `filter[attributes.owner]`
@@ -22328,6 +22351,30 @@ components:
               example: 'kong:trace:1234567890'
             detail:
               example: UnsupportedMediaType
+    ImagePNGDataUri:
+      description: 'must be a data URL with base64 PNG image data, e.g., data:image/png;base64,<BASE64_IMAGE_DATA>'
+      type: string
+      format: uri
+      example: 'data:image/png,YW5faW1hZ2VfZmlsZQ=='
+      pattern: '^data:image/png(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
+      title: ImagePNGDataUri
+      x-validation-message: 'must be a data URL with base64 PNG image data, e.g., data:image/png;base64,<BASE64_IMAGE_DATA>'
+    ImageJPGDataUri:
+      description: 'must be a data URL with base64 JPEG image data, e.g., data:image/jpeg;base64,<BASE64_IMAGE_DATA>'
+      type: string
+      format: uri
+      example: 'data:image/jpeg,YW5faW1hZ2VfZmlsZQ=='
+      pattern: '^data:image/jpeg(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
+      title: ImageJPGDataUri
+      x-validation-message: 'must be a data URL with base64 JPEG image data, e.g., data:image/jpeg;base64,<BASE64_IMAGE_DATA>'
+    ImageSVGDataUri:
+      description: 'must be a data URL with base64 SVG image data, e.g., data:image/svg\+xml;base64,<BASE64_IMAGE_DATA>'
+      type: string
+      format: uri
+      example: 'data:image/svg+xml,YW5faW1hZ2VfZmlsZQ=='
+      pattern: '^data:image/svg\+xml(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
+      title: ImageSVGDataUri
+      x-validation-message: 'must be a data URL with base64 SVG image data, e.g., data:image/svg\+xml;base64,<BASE64_IMAGE_DATA>'
     EntityType:
       description: The type of entity that is being published. Can be either an API or an API Package.
       type: string
@@ -24581,22 +24628,6 @@ components:
           $ref: '#/components/schemas/UuidFieldFilter'
         name:
           $ref: '#/components/schemas/StringFieldFilter'
-    ImagePNGDataUri:
-      description: 'must be a data URL with base64 PNG image data, e.g., data:image/png;base64,<BASE64_IMAGE_DATA>'
-      type: string
-      format: uri
-      example: 'data:image/png,YW5faW1hZ2VfZmlsZQ=='
-      pattern: '^data:image/png(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
-      title: ImagePNGDataUri
-      x-validation-message: 'must be a data URL with base64 PNG image data, e.g., data:image/png;base64,<BASE64_IMAGE_DATA>'
-    ImageJPGDataUri:
-      description: 'must be a data URL with base64 JPEG image data, e.g., data:image/jpeg;base64,<BASE64_IMAGE_DATA>'
-      type: string
-      format: uri
-      example: 'data:image/jpeg,YW5faW1hZ2VfZmlsZQ=='
-      pattern: '^data:image/jpeg(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
-      title: ImageJPGDataUri
-      x-validation-message: 'must be a data URL with base64 JPEG image data, e.g., data:image/jpeg;base64,<BASE64_IMAGE_DATA>'
     ImageGIFDataUri:
       description: 'must be a data URL with base64 GIF image data, e.g., data:image/gif;base64,<BASE64_IMAGE_DATA>'
       type: string
@@ -24613,14 +24644,6 @@ components:
       pattern: '^data:image/(x-icon|ico|icon|vnd.microsoft.icon)(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
       title: ImageICODataUri
       x-validation-message: 'must be a data URL with base64 ICO image data, e.g., data:image/ico;base64,<BASE64_IMAGE_DATA>'
-    ImageSVGDataUri:
-      description: 'must be a data URL with base64 SVG image data, e.g., data:image/svg\+xml;base64,<BASE64_IMAGE_DATA>'
-      type: string
-      format: uri
-      example: 'data:image/svg+xml,YW5faW1hZ2VfZmlsZQ=='
-      pattern: '^data:image/svg\+xml(;base64)?,(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$'
-      title: ImageSVGDataUri
-      x-validation-message: 'must be a data URL with base64 SVG image data, e.g., data:image/svg\+xml;base64,<BASE64_IMAGE_DATA>'
     PortalMenuItem:
       type: object
       properties:
@@ -24912,10 +24935,6 @@ components:
           description: |
             Filter by custom fields using dot-notation to specify the custom field.
             Filter operators are dictated by the custom field type. For example:
-
-
-
-
 
 
               - `filter[custom_fields.owner]`
@@ -25397,10 +25416,6 @@ components:
         This schema is a key-value object where:
 
 
-
-
-
-
           - Keys are globally unique, machine-readable identifiers for each resource type.
           - Values are objects describing metadata about the resource type.
 
@@ -25442,10 +25457,6 @@ components:
         resource_integration_data_examples:
           description: |
             A map of example resource `integration_data` payloads by resource type.
-
-
-
-
 
 
 
@@ -25543,10 +25554,6 @@ components:
 
 
 
-
-
-
-
           - Keys are the machine-readable, globally unique names of resource types registered by this integration.
           - Values are a map of event type definitions.
       type: object
@@ -25563,10 +25570,6 @@ components:
     IntegrationResourceEvents:
       description: |
         Defines the event types for a given resource type belonging to the integration that will be ingested in the catalog.
-
-
-
-
 
 
 
@@ -26276,10 +26279,6 @@ components:
         the property that will be used to filter the results. For example:
 
 
-
-
-
-
           - `filter[config.control_plane_id]`
           - `filter[config.gateway_service_id][neq]=cedbd134-fc5c-4d44-9e38-ccd2a0c6e0ae`
       type: object
@@ -26305,10 +26304,6 @@ components:
       description: |
         Filters on the resource's `integration_data` field. Filters must use dot-notation to identify
         the property that will be used to filter the results. For example:
-
-
-
-
 
 
           - `filter[integration_data.control_plane.id]=760562c3-fedd-43e4-b742-fc1663fef188`
@@ -26990,10 +26985,6 @@ components:
             Filter operators are dictated by the custom field type. For example:
 
 
-
-
-
-
               - `filter[custom_fields.owner]`
               - `filter[custom_fields.owner][neq]=kong`
               - `filter[custom_fields.dashboard.link][contains]=https`
@@ -27082,10 +27073,6 @@ components:
           description: |
             Filter by custom fields using dot-notation to specify the custom field.
             Filter operators are dictated by the custom field type. For example:
-
-
-
-
 
 
               - `filter[custom_fields.owner]`
@@ -28531,24 +28518,12 @@ components:
             * passthrough - pass authentication from the client through proxy to the backend cluster without any kind of
 
 
-
-
-
-
               validation
             * validate_forward - pass authentication from the client through proxy to the backend cluster.
 
 
-
-
-
-
               Proxy does the validation before forwarding it to the client.
             * terminate - terminate authentication at the proxy level and originate authentication to the backend cluster
-
-
-
-
 
 
               using the configuration defined at BackendCluster's authentication.
@@ -28604,10 +28579,6 @@ components:
       description: |
         Configures whether or not ACL policies are enforced on the gateway.
         - `enforce_on_gateway` means the gateway enforces its own ACL policies for this virtual cluster
-
-
-
-
 
 
           and does not forward ACL-related commands to the backend cluster.
@@ -28755,6 +28726,7 @@ components:
             - certificate
             - key
           x-min-runtime-version: '1.1'
+          x-speakeasy-param-computed: false
       required:
         - enabled
     BackendMetadataUpdateIntervalSeconds:
@@ -30497,10 +30469,6 @@ components:
         * mark - marks a record with kong/server header and client ID value
 
 
-
-
-
-
           to help to identify the clients violating schema.
       type: string
       enum:
@@ -30512,10 +30480,6 @@ components:
         Defines a behavior when record value is not valid.
         * reject - rejects a batch for topic partition. Only available for produce.
         * mark - marks a record with kong/server header and client ID value
-
-
-
-
 
 
           to help to identify the clients violating schema.
@@ -30638,16 +30602,8 @@ components:
             * hide_prefix - the configured prefix is hidden from clients for topics and IDs when reading.
 
 
-
-
-
-
               Created resources are written with the prefix on the backend cluster.
             * enforce_prefix - the configured prefix remains visible to clients.
-
-
-
-
 
 
               Created resources must include the prefix or the request will fail.
@@ -31130,6 +31086,46 @@ components:
           x-speakeasy-param-sensitive: true
       required:
         - value
+    NodeCompatibilityIssue:
+      type: object
+      properties:
+        code:
+          description: The compatibility issue code.
+          type: string
+        severity:
+          description: The severity of the issue.
+          type: string
+        description:
+          description: The description of the issue.
+          type: string
+        resolution:
+          description: Steps required to take in order to resolve the issue.
+          type: string
+        affected_resources:
+          description: Details of the resources affected by the issue.
+          type: array
+          items:
+            $ref: '#/components/schemas/NodeCompatibilityIssueAffectedResource'
+        documentation_url:
+          description: Doc URL for the compatibility issue.
+          type: string
+    NodeCompatibilityIssueAffectedResource:
+      type: object
+      properties:
+        id:
+          description: ID of the affected resource.
+          type: string
+        type:
+          description: Type of the affected resource.
+          type: string
+        parent_code:
+          description: Parent Issue Code.
+          type: string
+        details:
+          description: Deatils of the affected resource.
+          type: array
+          items:
+            type: string
     ACL:
       type: object
       properties:
@@ -34383,6 +34379,7 @@ components:
                   - Deployer
                   - Discovery Admin
                   - Discovery Viewer
+                  - Editor
                   - Gateway Service Admin
                   - Integration Admin
                   - Integration Viewer
@@ -34427,6 +34424,7 @@ components:
                   - Mesh Control Planes
                   - Networks
                   - Portals
+                  - Reports
                   - Service Hub
                 x-speakeasy-unknown-values: allow
               entity_region:
@@ -35913,9 +35911,14 @@ components:
       content:
         application/json:
           schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/EventGatewayPolicyReference'
+            type: object
+            properties:
+              policies:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventGatewayPolicyReference'
+            required:
+              - policies
     DataPlaneClientCertificateRequest:
       content:
         application/json:
@@ -36949,6 +36952,54 @@ components:
                   roles:
                     type: object
                     properties:
+                      admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Admin
+                          description:
+                            type: string
+                            example: 'Allows users to edit, delete, and share a Dashboard in Konnect Analytics.'
+                            enum:
+                              - 'Allows users to edit, delete, and share a Dashboard in Konnect Analytics.'
+                        required:
+                          - name
+                          - description
+                      creator:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Creator
+                          description:
+                            type: string
+                            example: Allows users to create a new Dashboard in Konnect Analytics.
+                            enum:
+                              - Allows users to create a new Dashboard in Konnect Analytics.
+                        required:
+                          - name
+                          - description
+                      editor:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Editor
+                          description:
+                            type: string
+                            example: Allows users to edit a Dashboard in Konnect Analytics.
+                            enum:
+                              - Allows users to edit a Dashboard in Konnect Analytics.
+                        required:
+                          - name
+                          - description
                       viewer:
                         type: object
                         additionalProperties: false
@@ -36962,6 +37013,84 @@ components:
                             example: Allows users to view any Dashboards content in Konnect Analytics.
                             enum:
                               - Allows users to view any Dashboards content in Konnect Analytics.
+                        required:
+                          - name
+                          - description
+                required:
+                  - name
+                  - roles
+              reports:
+                type: object
+                additionalProperties: false
+                properties:
+                  name:
+                    type: string
+                    enum:
+                      - Reports
+                  roles:
+                    type: object
+                    properties:
+                      admin:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Admin
+                          description:
+                            type: string
+                            example: 'Allows users to edit, delete, and share a Report in Konnect Analytics.'
+                            enum:
+                              - 'Allows users to edit, delete, and share a Report in Konnect Analytics.'
+                        required:
+                          - name
+                          - description
+                      creator:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Creator
+                          description:
+                            type: string
+                            example: Allows users to create a new Report in Konnect Analytics.
+                            enum:
+                              - Allows users to create a new Report in Konnect Analytics.
+                        required:
+                          - name
+                          - description
+                      editor:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Editor
+                          description:
+                            type: string
+                            example: Allows users to edit a Report in Konnect Analytics.
+                            enum:
+                              - Allows users to edit a Report in Konnect Analytics.
+                        required:
+                          - name
+                          - description
+                      viewer:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Viewer
+                          description:
+                            type: string
+                            example: Allows users to view a Report in Konnect Analytics.
+                            enum:
+                              - Allows users to view a Report in Konnect Analytics.
                         required:
                           - name
                           - description
@@ -39207,9 +39336,14 @@ components:
       content:
         application/json:
           schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/EventGatewayPolicyReference'
+            type: object
+            properties:
+              policies:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventGatewayPolicyReference'
+            required:
+              - policies
     DataPlaneClientCertificateResponse:
       description: Response body for retrieving a dp-client-certificate.
       content:
@@ -39288,6 +39422,10 @@ components:
                       properties:
                         state:
                           type: string
+                        issues:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/NodeCompatibilityIssue'
               page:
                 type: object
                 properties:
@@ -39349,6 +39487,10 @@ components:
                     properties:
                       state:
                         type: string
+                      issues:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/NodeCompatibilityIssue'
     list-plugin-schemas:
       description: A paginated list response for a collection of custom plugin schemas.
       content:
@@ -39864,10 +40006,6 @@ tags:
       - `grpcs`: At least one of `hosts`, `headers`, `paths`, or `snis`
       - `ws`: At least one of `hosts`, `headers`, or `paths`
       - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
-
-
-
-
 
 
         <br>

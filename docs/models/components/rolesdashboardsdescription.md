@@ -3,6 +3,6 @@
 
 ## Values
 
-| Name                                                                                | Value                                                                               |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `RolesDashboardsDescriptionAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics` | Allows users to view any Dashboards content in Konnect Analytics.                   |
+| Name                                                                                    | Value                                                                                   |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `RolesDashboardsDescriptionAllowsUsersToEditDeleteAndShareADashboardInKonnectAnalytics` | Allows users to edit, delete, and share a Dashboard in Konnect Analytics.               |

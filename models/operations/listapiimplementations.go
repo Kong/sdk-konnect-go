@@ -17,10 +17,6 @@ type ListAPIImplementationsRequest struct {
 	// Sorts a collection of API implementations. Supported sort attributes are:
 	//
 	//
-	//
-	//
-	//
-	//
 	//   - id
 	//   - api_id
 	//   - control_plane_id

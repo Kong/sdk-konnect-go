@@ -48,10 +48,6 @@ type ListRegistrationsRequest struct {
 	// Sorts a collection of application registrations. Supported sort attributes are:
 	//
 	//
-	//
-	//
-	//
-	//
 	//   - created_at
 	//   - updated_at
 	//   - developer_id

@@ -20,9 +20,214 @@ The plugins are synced to any Gateway Service that is currently linked or become
 
 Creates an application auth strategy.
 
-### Example Usage
+### Example Usage: AppAuthStrategyResponseExample1
 
-<!-- UsageSnippet language="go" operationID="create-app-auth-strategy" method="post" path="/v2/application-auth-strategies" -->
+<!-- UsageSnippet language="go" operationID="create-app-auth-strategy" method="post" path="/v2/application-auth-strategies" example="AppAuthStrategyResponseExample1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AppAuthStrategies.CreateAppAuthStrategy(ctx, components.CreateCreateAppAuthStrategyRequestOpenidConnect(
+        components.AppAuthStrategyOpenIDConnectRequest{
+            Name: "<value>",
+            DisplayName: "Jalen_Cummerata42",
+            StrategyType: components.AppAuthStrategyOpenIDConnectRequestStrategyTypeOpenidConnect,
+            Configs: components.AppAuthStrategyOpenIDConnectRequestConfigs{
+                OpenidConnect: components.AppAuthStrategyConfigOpenIDConnect{
+                    Issuer: "https://tangible-diver.com",
+                    CredentialClaim: []string{
+                        "<value 1>",
+                    },
+                    Scopes: []string{
+                        "<value 1>",
+                        "<value 2>",
+                    },
+                    AuthMethods: []string{
+                        "<value 1>",
+                    },
+                },
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateAppAuthStrategyResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: CreateAppAuthStrategyKeyAuthRequest
+
+<!-- UsageSnippet language="go" operationID="create-app-auth-strategy" method="post" path="/v2/application-auth-strategies" example="CreateAppAuthStrategyKeyAuthRequest" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AppAuthStrategies.CreateAppAuthStrategy(ctx, components.CreateCreateAppAuthStrategyRequestKeyAuth(
+        components.AppAuthStrategyKeyAuthRequest{
+            Name: "auth strategy 1",
+            DisplayName: "API Key Auth",
+            StrategyType: components.StrategyTypeKeyAuth,
+            Configs: components.AppAuthStrategyKeyAuthRequestConfigs{
+                KeyAuth: components.AppAuthStrategyConfigKeyAuth{
+                    KeyNames: []string{
+                        "apikey",
+                        "api-key",
+                        "x-api-key",
+                    },
+                },
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateAppAuthStrategyResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: CreateAppAuthStrategyOpenIDConnectDCRRequest
+
+<!-- UsageSnippet language="go" operationID="create-app-auth-strategy" method="post" path="/v2/application-auth-strategies" example="CreateAppAuthStrategyOpenIDConnectDCRRequest" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AppAuthStrategies.CreateAppAuthStrategy(ctx, components.CreateCreateAppAuthStrategyRequestOpenidConnect(
+        components.AppAuthStrategyOpenIDConnectRequest{
+            Name: "auth strategy 3",
+            DisplayName: "Enterprise Auth with DCR",
+            StrategyType: components.AppAuthStrategyOpenIDConnectRequestStrategyTypeOpenidConnect,
+            Configs: components.AppAuthStrategyOpenIDConnectRequestConfigs{
+                OpenidConnect: components.AppAuthStrategyConfigOpenIDConnect{
+                    Issuer: "https://oidc-dcr.example.com",
+                    CredentialClaim: []string{
+                        "client_id",
+                    },
+                    Scopes: []string{
+                        "openid",
+                        "email",
+                    },
+                    AuthMethods: []string{
+                        "client_credentials",
+                        "bearer",
+                    },
+                },
+            },
+            DcrProviderID: sdkkonnectgo.Pointer("73f8380e-7798-4566-99e3-2edf2b57d281"),
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateAppAuthStrategyResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: CreateAppAuthStrategyOpenIDConnectRequest
+
+<!-- UsageSnippet language="go" operationID="create-app-auth-strategy" method="post" path="/v2/application-auth-strategies" example="CreateAppAuthStrategyOpenIDConnectRequest" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AppAuthStrategies.CreateAppAuthStrategy(ctx, components.CreateCreateAppAuthStrategyRequestOpenidConnect(
+        components.AppAuthStrategyOpenIDConnectRequest{
+            Name: "auth strategy 2",
+            DisplayName: "Enterprise Auth",
+            StrategyType: components.AppAuthStrategyOpenIDConnectRequestStrategyTypeOpenidConnect,
+            Configs: components.AppAuthStrategyOpenIDConnectRequestConfigs{
+                OpenidConnect: components.AppAuthStrategyConfigOpenIDConnect{
+                    Issuer: "https://oidc.example.com",
+                    CredentialClaim: []string{
+                        "client_id",
+                    },
+                    Scopes: []string{
+                        "openid",
+                        "email",
+                    },
+                    AuthMethods: []string{
+                        "client_credentials",
+                        "bearer",
+                    },
+                },
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateAppAuthStrategyResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="create-app-auth-strategy" method="post" path="/v2/application-auth-strategies" example="Unauthorized" -->
 ```go
 package main
 
@@ -45,7 +250,47 @@ func main() {
     res, err := s.AppAuthStrategies.CreateAppAuthStrategy(ctx, components.CreateCreateAppAuthStrategyRequestKeyAuth(
         components.AppAuthStrategyKeyAuthRequest{
             Name: "<value>",
-            DisplayName: "Theo_Boyer",
+            DisplayName: "Carlee_Kozey70",
+            StrategyType: components.StrategyTypeKeyAuth,
+            Configs: components.AppAuthStrategyKeyAuthRequestConfigs{
+                KeyAuth: components.AppAuthStrategyConfigKeyAuth{},
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateAppAuthStrategyResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="create-app-auth-strategy" method="post" path="/v2/application-auth-strategies" example="UnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AppAuthStrategies.CreateAppAuthStrategy(ctx, components.CreateCreateAppAuthStrategyRequestKeyAuth(
+        components.AppAuthStrategyKeyAuthRequest{
+            Name: "<value>",
+            DisplayName: "Wyatt.Schmitt",
             StrategyType: components.StrategyTypeKeyAuth,
             Configs: components.AppAuthStrategyKeyAuthRequestConfigs{
                 KeyAuth: components.AppAuthStrategyConfigKeyAuth{},
@@ -88,7 +333,7 @@ Returns a paginated collection of application auth strategies.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-app-auth-strategies" method="get" path="/v2/application-auth-strategies" -->
+<!-- UsageSnippet language="go" operationID="list-app-auth-strategies" method="get" path="/v2/application-auth-strategies" example="AppAuthStrategyResponseExample1" -->
 ```go
 package main
 
@@ -149,7 +394,7 @@ Returns an application auth strategy.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-app-auth-strategy" method="get" path="/v2/application-auth-strategies/{authStrategyId}" -->
+<!-- UsageSnippet language="go" operationID="get-app-auth-strategy" method="get" path="/v2/application-auth-strategies/{authStrategyId}" example="AppAuthStrategyResponseExample1" -->
 ```go
 package main
 
@@ -204,9 +449,202 @@ func main() {
 
 Replaces an application auth strategy.
 
-### Example Usage
+### Example Usage: AppAuthStrategyResponseExample1
 
-<!-- UsageSnippet language="go" operationID="replace-app-auth-strategy" method="put" path="/v2/application-auth-strategies/{authStrategyId}" -->
+<!-- UsageSnippet language="go" operationID="replace-app-auth-strategy" method="put" path="/v2/application-auth-strategies/{authStrategyId}" example="AppAuthStrategyResponseExample1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AppAuthStrategies.ReplaceAppAuthStrategy(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.CreateCreateAppAuthStrategyRequestKeyAuth(
+        components.AppAuthStrategyKeyAuthRequest{
+            Name: "<value>",
+            DisplayName: "Camille45",
+            StrategyType: components.StrategyTypeKeyAuth,
+            Configs: components.AppAuthStrategyKeyAuthRequestConfigs{
+                KeyAuth: components.AppAuthStrategyConfigKeyAuth{},
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateAppAuthStrategyResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: CreateAppAuthStrategyKeyAuthRequest
+
+<!-- UsageSnippet language="go" operationID="replace-app-auth-strategy" method="put" path="/v2/application-auth-strategies/{authStrategyId}" example="CreateAppAuthStrategyKeyAuthRequest" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AppAuthStrategies.ReplaceAppAuthStrategy(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.CreateCreateAppAuthStrategyRequestKeyAuth(
+        components.AppAuthStrategyKeyAuthRequest{
+            Name: "auth strategy 1",
+            DisplayName: "API Key Auth",
+            StrategyType: components.StrategyTypeKeyAuth,
+            Configs: components.AppAuthStrategyKeyAuthRequestConfigs{
+                KeyAuth: components.AppAuthStrategyConfigKeyAuth{
+                    KeyNames: []string{
+                        "apikey",
+                        "api-key",
+                        "x-api-key",
+                    },
+                },
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateAppAuthStrategyResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: CreateAppAuthStrategyOpenIDConnectDCRRequest
+
+<!-- UsageSnippet language="go" operationID="replace-app-auth-strategy" method="put" path="/v2/application-auth-strategies/{authStrategyId}" example="CreateAppAuthStrategyOpenIDConnectDCRRequest" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AppAuthStrategies.ReplaceAppAuthStrategy(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.CreateCreateAppAuthStrategyRequestOpenidConnect(
+        components.AppAuthStrategyOpenIDConnectRequest{
+            Name: "auth strategy 3",
+            DisplayName: "Enterprise Auth with DCR",
+            StrategyType: components.AppAuthStrategyOpenIDConnectRequestStrategyTypeOpenidConnect,
+            Configs: components.AppAuthStrategyOpenIDConnectRequestConfigs{
+                OpenidConnect: components.AppAuthStrategyConfigOpenIDConnect{
+                    Issuer: "https://oidc-dcr.example.com",
+                    CredentialClaim: []string{
+                        "client_id",
+                    },
+                    Scopes: []string{
+                        "openid",
+                        "email",
+                    },
+                    AuthMethods: []string{
+                        "client_credentials",
+                        "bearer",
+                    },
+                },
+            },
+            DcrProviderID: sdkkonnectgo.Pointer("73f8380e-7798-4566-99e3-2edf2b57d281"),
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateAppAuthStrategyResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: CreateAppAuthStrategyOpenIDConnectRequest
+
+<!-- UsageSnippet language="go" operationID="replace-app-auth-strategy" method="put" path="/v2/application-auth-strategies/{authStrategyId}" example="CreateAppAuthStrategyOpenIDConnectRequest" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AppAuthStrategies.ReplaceAppAuthStrategy(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.CreateCreateAppAuthStrategyRequestOpenidConnect(
+        components.AppAuthStrategyOpenIDConnectRequest{
+            Name: "auth strategy 2",
+            DisplayName: "Enterprise Auth",
+            StrategyType: components.AppAuthStrategyOpenIDConnectRequestStrategyTypeOpenidConnect,
+            Configs: components.AppAuthStrategyOpenIDConnectRequestConfigs{
+                OpenidConnect: components.AppAuthStrategyConfigOpenIDConnect{
+                    Issuer: "https://oidc.example.com",
+                    CredentialClaim: []string{
+                        "client_id",
+                    },
+                    Scopes: []string{
+                        "openid",
+                        "email",
+                    },
+                    AuthMethods: []string{
+                        "client_credentials",
+                        "bearer",
+                    },
+                },
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateAppAuthStrategyResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="replace-app-auth-strategy" method="put" path="/v2/application-auth-strategies/{authStrategyId}" example="Unauthorized" -->
 ```go
 package main
 
@@ -229,7 +667,7 @@ func main() {
     res, err := s.AppAuthStrategies.ReplaceAppAuthStrategy(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.CreateCreateAppAuthStrategyRequestOpenidConnect(
         components.AppAuthStrategyOpenIDConnectRequest{
             Name: "<value>",
-            DisplayName: "Dannie77",
+            DisplayName: "Aliyah_Fadel",
             StrategyType: components.AppAuthStrategyOpenIDConnectRequestStrategyTypeOpenidConnect,
             Configs: components.AppAuthStrategyOpenIDConnectRequestConfigs{
                 OpenidConnect: components.AppAuthStrategyConfigOpenIDConnect{
@@ -241,14 +679,48 @@ func main() {
                     },
                     Scopes: []string{},
                     AuthMethods: []string{},
-                    AdditionalProperties: map[string]any{
-                        "labels": map[string]any{
-                            "env": "test",
-                        },
-                    },
                 },
             },
-            DcrProviderID: nil,
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateAppAuthStrategyResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="replace-app-auth-strategy" method="put" path="/v2/application-auth-strategies/{authStrategyId}" example="UnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AppAuthStrategies.ReplaceAppAuthStrategy(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.CreateCreateAppAuthStrategyRequestKeyAuth(
+        components.AppAuthStrategyKeyAuthRequest{
+            Name: "<value>",
+            DisplayName: "Leone_Veum48",
+            StrategyType: components.StrategyTypeKeyAuth,
+            Configs: components.AppAuthStrategyKeyAuthRequestConfigs{
+                KeyAuth: components.AppAuthStrategyConfigKeyAuth{},
+            },
         },
     ))
     if err != nil {
@@ -286,9 +758,9 @@ func main() {
 
 Updates an application auth strategy.
 
-### Example Usage
+### Example Usage: AppAuthStrategyResponseExample1
 
-<!-- UsageSnippet language="go" operationID="update-app-auth-strategy" method="patch" path="/v2/application-auth-strategies/{authStrategyId}" -->
+<!-- UsageSnippet language="go" operationID="update-app-auth-strategy" method="patch" path="/v2/application-auth-strategies/{authStrategyId}" example="AppAuthStrategyResponseExample1" -->
 ```go
 package main
 
@@ -312,6 +784,177 @@ func main() {
         Labels: map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
         },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateAppAuthStrategyResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="update-app-auth-strategy" method="patch" path="/v2/application-auth-strategies/{authStrategyId}" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AppAuthStrategies.UpdateAppAuthStrategy(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.UpdateAppAuthStrategyRequest{
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateAppAuthStrategyResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="update-app-auth-strategy" method="patch" path="/v2/application-auth-strategies/{authStrategyId}" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AppAuthStrategies.UpdateAppAuthStrategy(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.UpdateAppAuthStrategyRequest{
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateAppAuthStrategyResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="update-app-auth-strategy" method="patch" path="/v2/application-auth-strategies/{authStrategyId}" example="UnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AppAuthStrategies.UpdateAppAuthStrategy(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.UpdateAppAuthStrategyRequest{
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateAppAuthStrategyResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UpdateAppAuthStrategyKeyAuthRequest
+
+<!-- UsageSnippet language="go" operationID="update-app-auth-strategy" method="patch" path="/v2/application-auth-strategies/{authStrategyId}" example="UpdateAppAuthStrategyKeyAuthRequest" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AppAuthStrategies.UpdateAppAuthStrategy(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.UpdateAppAuthStrategyRequest{
+        DisplayName: sdkkonnectgo.Pointer("API Key"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateAppAuthStrategyResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UpdateAppAuthStrategyOpenIDConnectRequest
+
+<!-- UsageSnippet language="go" operationID="update-app-auth-strategy" method="patch" path="/v2/application-auth-strategies/{authStrategyId}" example="UpdateAppAuthStrategyOpenIDConnectRequest" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AppAuthStrategies.UpdateAppAuthStrategy(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.UpdateAppAuthStrategyRequest{
+        DisplayName: sdkkonnectgo.Pointer("Client Credentials"),
     })
     if err != nil {
         log.Fatal(err)

@@ -13,7 +13,7 @@ type UpdateEventGatewayVirtualClusterClusterLevelPolicyChainRequest struct {
 	// The ID of the Virtual Cluster.
 	VirtualClusterID string `pathParam:"style=simple,explode=false,name=virtualClusterId"`
 	// The request schema for updating the policy chain.
-	RequestBody []components.EventGatewayPolicyReference `request:"mediaType=application/json"`
+	UpdateEventGatewayPolicyChainRequest *components.UpdateEventGatewayPolicyChainRequest `request:"mediaType=application/json"`
 }
 
 func (u *UpdateEventGatewayVirtualClusterClusterLevelPolicyChainRequest) GetGatewayID() string {
@@ -30,11 +30,11 @@ func (u *UpdateEventGatewayVirtualClusterClusterLevelPolicyChainRequest) GetVirt
 	return u.VirtualClusterID
 }
 
-func (u *UpdateEventGatewayVirtualClusterClusterLevelPolicyChainRequest) GetRequestBody() []components.EventGatewayPolicyReference {
+func (u *UpdateEventGatewayVirtualClusterClusterLevelPolicyChainRequest) GetUpdateEventGatewayPolicyChainRequest() *components.UpdateEventGatewayPolicyChainRequest {
 	if u == nil {
 		return nil
 	}
-	return u.RequestBody
+	return u.UpdateEventGatewayPolicyChainRequest
 }
 
 type UpdateEventGatewayVirtualClusterClusterLevelPolicyChainResponse struct {
@@ -45,7 +45,7 @@ type UpdateEventGatewayVirtualClusterClusterLevelPolicyChainResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// A response containing the list of policies in order of execution.
-	EventGatewayPolicyChainResponse []components.EventGatewayPolicyReference
+	EventGatewayPolicyChainResponse *components.EventGatewayPolicyChainResponse
 }
 
 func (u *UpdateEventGatewayVirtualClusterClusterLevelPolicyChainResponse) GetContentType() string {
@@ -69,7 +69,7 @@ func (u *UpdateEventGatewayVirtualClusterClusterLevelPolicyChainResponse) GetRaw
 	return u.RawResponse
 }
 
-func (u *UpdateEventGatewayVirtualClusterClusterLevelPolicyChainResponse) GetEventGatewayPolicyChainResponse() []components.EventGatewayPolicyReference {
+func (u *UpdateEventGatewayVirtualClusterClusterLevelPolicyChainResponse) GetEventGatewayPolicyChainResponse() *components.EventGatewayPolicyChainResponse {
 	if u == nil {
 		return nil
 	}

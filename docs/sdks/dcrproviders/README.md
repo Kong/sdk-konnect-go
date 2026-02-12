@@ -20,9 +20,92 @@ The DCR provider provides credentials to each DCR-enabled application in Konnect
 
 Creates a DCR provider.
 
-### Example Usage
+### Example Usage: DcrProviderAuth0
 
-<!-- UsageSnippet language="go" operationID="create-dcr-provider" method="post" path="/v2/dcr-providers" -->
+<!-- UsageSnippet language="go" operationID="create-dcr-provider" method="post" path="/v2/dcr-providers" example="DcrProviderAuth0" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestAuth0(
+        components.CreateDcrProviderRequestAuth0{
+            ProviderType: components.ProviderTypeAuth0,
+            DcrConfig: components.CreateDcrConfigAuth0InRequest{
+                InitialClientID: "<id>",
+                InitialClientSecret: "<value>",
+            },
+            Name: "<value>",
+            Issuer: "https://physical-pension.biz",
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateDcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: DcrProviderAuth0CreateRequest
+
+<!-- UsageSnippet language="go" operationID="create-dcr-provider" method="post" path="/v2/dcr-providers" example="DcrProviderAuth0CreateRequest" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestAuth0(
+        components.CreateDcrProviderRequestAuth0{
+            ProviderType: components.ProviderTypeAuth0,
+            DcrConfig: components.CreateDcrConfigAuth0InRequest{
+                InitialClientID: "abc123",
+                InitialClientSecret: "abc123xyz098!",
+                InitialClientAudience: sdkkonnectgo.Pointer("https://my-custom-domain.com/api/v2/"),
+            },
+            Name: "DCR Auth0 1 - Segment A",
+            Issuer: "https://my-issuer.auth0.com/api/v2/",
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateDcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: DcrProviderAzureAd
+
+<!-- UsageSnippet language="go" operationID="create-dcr-provider" method="post" path="/v2/dcr-providers" example="DcrProviderAzureAd" -->
 ```go
 package main
 
@@ -49,7 +132,375 @@ func main() {
                 DcrToken: "<value>",
             },
             Name: "<value>",
-            Issuer: "https://growing-meadow.biz/",
+            Issuer: "https://sinful-operating.org",
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateDcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: DcrProviderAzureAdCreateRequest
+
+<!-- UsageSnippet language="go" operationID="create-dcr-provider" method="post" path="/v2/dcr-providers" example="DcrProviderAzureAdCreateRequest" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestAzureAd(
+        components.CreateDcrProviderRequestAzureAd{
+            ProviderType: components.CreateDcrProviderRequestAzureAdProviderTypeAzureAd,
+            DcrConfig: components.CreateDcrConfigAzureAdInRequest{
+                InitialClientID: "abc123",
+                InitialClientSecret: "abc123xyz098!",
+            },
+            Name: "DCR Azure 1 - Segment A",
+            Issuer: "https://sts.windows.net/my-tenant",
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateDcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: DcrProviderCurity
+
+<!-- UsageSnippet language="go" operationID="create-dcr-provider" method="post" path="/v2/dcr-providers" example="DcrProviderCurity" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestCurity(
+        components.CreateDcrProviderRequestCurity{
+            ProviderType: components.CreateDcrProviderRequestCurityProviderTypeCurity,
+            DcrConfig: components.CreateDcrConfigCurityInRequest{
+                InitialClientID: "<id>",
+                InitialClientSecret: "<value>",
+            },
+            Name: "<value>",
+            Issuer: "https://snarling-punctuation.com",
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateDcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: DcrProviderCurityCreateRequest
+
+<!-- UsageSnippet language="go" operationID="create-dcr-provider" method="post" path="/v2/dcr-providers" example="DcrProviderCurityCreateRequest" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestCurity(
+        components.CreateDcrProviderRequestCurity{
+            ProviderType: components.CreateDcrProviderRequestCurityProviderTypeCurity,
+            DcrConfig: components.CreateDcrConfigCurityInRequest{
+                InitialClientID: "abc123",
+                InitialClientSecret: "abc123xyz098!",
+            },
+            Name: "DCR Curity 1 - Segment A",
+            Issuer: "https://my-curity-instance.com/oauth/v2/oauth-anonymous/.well-known/openid-configuration",
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateDcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: DcrProviderHttp
+
+<!-- UsageSnippet language="go" operationID="create-dcr-provider" method="post" path="/v2/dcr-providers" example="DcrProviderHttp" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestHTTP(
+        components.CreateDcrProviderRequestHTTP{
+            ProviderType: components.CreateDcrProviderRequestHTTPProviderTypeHTTP,
+            DcrConfig: components.CreateDcrConfigHTTPInRequest{
+                DcrBaseURL: "https://wilted-information.info",
+                APIKey: "<value>",
+            },
+            Name: "<value>",
+            Issuer: "https://darling-slime.net",
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateDcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: DcrProviderHttpCreateRequest
+
+<!-- UsageSnippet language="go" operationID="create-dcr-provider" method="post" path="/v2/dcr-providers" example="DcrProviderHttpCreateRequest" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestHTTP(
+        components.CreateDcrProviderRequestHTTP{
+            ProviderType: components.CreateDcrProviderRequestHTTPProviderTypeHTTP,
+            DcrConfig: components.CreateDcrConfigHTTPInRequest{
+                DcrBaseURL: "https://my-http-dcr-server.com/v1/dcr",
+                APIKey: "gYmrbDfu_7PTsZWH",
+            },
+            Name: "DCR HTTP 1 - Segment A",
+            Issuer: "https://my-issuer-server.com",
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateDcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: DcrProviderOkta
+
+<!-- UsageSnippet language="go" operationID="create-dcr-provider" method="post" path="/v2/dcr-providers" example="DcrProviderOkta" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestAuth0(
+        components.CreateDcrProviderRequestAuth0{
+            ProviderType: components.ProviderTypeAuth0,
+            DcrConfig: components.CreateDcrConfigAuth0InRequest{
+                InitialClientID: "<id>",
+                InitialClientSecret: "<value>",
+            },
+            Name: "<value>",
+            Issuer: "https://lively-bracelet.info/",
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateDcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: DcrProviderOktaCreateRequest
+
+<!-- UsageSnippet language="go" operationID="create-dcr-provider" method="post" path="/v2/dcr-providers" example="DcrProviderOktaCreateRequest" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestOkta(
+        components.CreateDcrProviderRequestOkta{
+            ProviderType: components.CreateDcrProviderRequestOktaProviderTypeOkta,
+            DcrConfig: components.CreateDcrConfigOktaInRequest{
+                DcrToken: "abc123xyz098!",
+            },
+            Name: "DCR Okta 1 - Segment A",
+            Issuer: "https://my-issuer.okta.com/default",
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateDcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="create-dcr-provider" method="post" path="/v2/dcr-providers" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestHTTP(
+        components.CreateDcrProviderRequestHTTP{
+            ProviderType: components.CreateDcrProviderRequestHTTPProviderTypeHTTP,
+            DcrConfig: components.CreateDcrConfigHTTPInRequest{
+                DcrBaseURL: "https://wilted-information.info",
+                APIKey: "<value>",
+            },
+            Name: "<value>",
+            Issuer: "https://general-circumference.biz/",
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CreateDcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="create-dcr-provider" method="post" path="/v2/dcr-providers" example="UnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.CreateDcrProvider(ctx, components.CreateCreateDcrProviderRequestAuth0(
+        components.CreateDcrProviderRequestAuth0{
+            ProviderType: components.ProviderTypeAuth0,
+            DcrConfig: components.CreateDcrConfigAuth0InRequest{
+                InitialClientID: "<id>",
+                InitialClientSecret: "<value>",
+            },
+            Name: "<value>",
+            Issuer: "https://merry-ownership.name",
         },
     ))
     if err != nil {
@@ -88,7 +539,7 @@ Returns a paginated collection of DCR providers.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-dcr-providers" method="get" path="/v2/dcr-providers" -->
+<!-- UsageSnippet language="go" operationID="list-dcr-providers" method="get" path="/v2/dcr-providers" example="ListDcrProviders" -->
 ```go
 package main
 
@@ -147,9 +598,133 @@ func main() {
 
 Returns a DCR provider.
 
-### Example Usage
+### Example Usage: DcrProviderAuth0
 
-<!-- UsageSnippet language="go" operationID="get-dcr-provider" method="get" path="/v2/dcr-providers/{dcrProviderId}" -->
+<!-- UsageSnippet language="go" operationID="get-dcr-provider" method="get" path="/v2/dcr-providers/{dcrProviderId}" example="DcrProviderAuth0" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.GetDcrProvider(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.DcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: DcrProviderAzureAd
+
+<!-- UsageSnippet language="go" operationID="get-dcr-provider" method="get" path="/v2/dcr-providers/{dcrProviderId}" example="DcrProviderAzureAd" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.GetDcrProvider(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.DcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: DcrProviderCurity
+
+<!-- UsageSnippet language="go" operationID="get-dcr-provider" method="get" path="/v2/dcr-providers/{dcrProviderId}" example="DcrProviderCurity" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.GetDcrProvider(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.DcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: DcrProviderHttp
+
+<!-- UsageSnippet language="go" operationID="get-dcr-provider" method="get" path="/v2/dcr-providers/{dcrProviderId}" example="DcrProviderHttp" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.GetDcrProvider(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.DcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: DcrProviderOkta
+
+<!-- UsageSnippet language="go" operationID="get-dcr-provider" method="get" path="/v2/dcr-providers/{dcrProviderId}" example="DcrProviderOkta" -->
 ```go
 package main
 
@@ -204,9 +779,288 @@ func main() {
 
 Updates a DCR provider.
 
-### Example Usage
+### Example Usage: DcrProviderAuth0
 
-<!-- UsageSnippet language="go" operationID="update-dcr-provider" method="patch" path="/v2/dcr-providers/{dcrProviderId}" -->
+<!-- UsageSnippet language="go" operationID="update-dcr-provider" method="patch" path="/v2/dcr-providers/{dcrProviderId}" example="DcrProviderAuth0" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.UpdateDcrProvider(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.UpdateDcrProviderRequest{
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.DcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: DcrProviderAzureAd
+
+<!-- UsageSnippet language="go" operationID="update-dcr-provider" method="patch" path="/v2/dcr-providers/{dcrProviderId}" example="DcrProviderAzureAd" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.UpdateDcrProvider(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.UpdateDcrProviderRequest{
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.DcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: DcrProviderCurity
+
+<!-- UsageSnippet language="go" operationID="update-dcr-provider" method="patch" path="/v2/dcr-providers/{dcrProviderId}" example="DcrProviderCurity" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.UpdateDcrProvider(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.UpdateDcrProviderRequest{
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.DcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: DcrProviderHttp
+
+<!-- UsageSnippet language="go" operationID="update-dcr-provider" method="patch" path="/v2/dcr-providers/{dcrProviderId}" example="DcrProviderHttp" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.UpdateDcrProvider(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.UpdateDcrProviderRequest{
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.DcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: DcrProviderOkta
+
+<!-- UsageSnippet language="go" operationID="update-dcr-provider" method="patch" path="/v2/dcr-providers/{dcrProviderId}" example="DcrProviderOkta" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.UpdateDcrProvider(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.UpdateDcrProviderRequest{
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.DcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: DcrProviderRequest
+
+<!-- UsageSnippet language="go" operationID="update-dcr-provider" method="patch" path="/v2/dcr-providers/{dcrProviderId}" example="DcrProviderRequest" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.UpdateDcrProvider(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.UpdateDcrProviderRequest{
+        Name: sdkkonnectgo.Pointer("DCR Okta 1 - Segment A"),
+        Issuer: sdkkonnectgo.Pointer("https://my-issuer.okta.com/default"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.DcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="update-dcr-provider" method="patch" path="/v2/dcr-providers/{dcrProviderId}" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.UpdateDcrProvider(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.UpdateDcrProviderRequest{
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.DcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="update-dcr-provider" method="patch" path="/v2/dcr-providers/{dcrProviderId}" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.UpdateDcrProvider(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.UpdateDcrProviderRequest{
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.DcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="update-dcr-provider" method="patch" path="/v2/dcr-providers/{dcrProviderId}" example="UnauthorizedExample" -->
 ```go
 package main
 
@@ -324,9 +1178,40 @@ func main() {
 
 Verifies if a DCR provider is configured properly. Returns 200 for success, 4xx for failure.
 
-### Example Usage
+### Example Usage: VerifyDcrProviderFailed
 
-<!-- UsageSnippet language="go" operationID="verify-dcr-provider" method="post" path="/v2/dcr-providers/{dcrProviderId}/verify" -->
+<!-- UsageSnippet language="go" operationID="verify-dcr-provider" method="post" path="/v2/dcr-providers/{dcrProviderId}/verify" example="VerifyDcrProviderFailed" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DCRProviders.VerifyDcrProvider(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.VerifyDcrProviderResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: VerifyDcrProviderSuccess
+
+<!-- UsageSnippet language="go" operationID="verify-dcr-provider" method="post" path="/v2/dcr-providers/{dcrProviderId}/verify" example="VerifyDcrProviderSuccess" -->
 ```go
 package main
 

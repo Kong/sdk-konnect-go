@@ -20,10 +20,6 @@ Depending on the protocol, one of the following attributes must be set:
 - `wss`: At least one of `hosts`, `headers`, `paths`, or `snis`
 
 
-
-
-
-
   <br>
   A route can't have both `tls` and `tls_passthrough` protocols at same time.
   <br><br>
@@ -109,9 +105,103 @@ func main() {
 
 Create a new Route
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-route" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/routes" -->
+<!-- UsageSnippet language="go" operationID="create-route" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/routes" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Routes.CreateRoute(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateRouteRouteJSON(
+        components.RouteJSON{
+            Hosts: []string{
+                "foo.example.com",
+                "foo.example.us",
+            },
+            ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
+            Name: sdkkonnectgo.Pointer("example-route"),
+            Paths: []string{
+                "/v1",
+                "/v2",
+            },
+            Service: &components.RouteJSONService{
+                ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Route != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="create-route" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/routes" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Routes.CreateRoute(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateRouteRouteJSON(
+        components.RouteJSON{
+            Hosts: []string{
+                "foo.example.com",
+                "foo.example.us",
+            },
+            ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
+            Name: sdkkonnectgo.Pointer("example-route"),
+            Paths: []string{
+                "/v1",
+                "/v2",
+            },
+            Service: &components.RouteJSONService{
+                ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Route != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="create-route" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/routes" example="NoAPIKey" -->
 ```go
 package main
 
@@ -293,9 +383,113 @@ func main() {
 
 Create or Update Route using ID or name.
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-route" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-route" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Routes.UpsertRoute(ctx, operations.UpsertRouteRequest{
+        RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Route: components.CreateRouteRouteJSON(
+            components.RouteJSON{
+                Hosts: []string{
+                    "foo.example.com",
+                    "foo.example.us",
+                },
+                ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
+                Name: sdkkonnectgo.Pointer("example-route"),
+                Paths: []string{
+                    "/v1",
+                    "/v2",
+                },
+                Service: &components.RouteJSONService{
+                    ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
+                },
+            },
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Route != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="upsert-route" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Routes.UpsertRoute(ctx, operations.UpsertRouteRequest{
+        RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Route: components.CreateRouteRouteJSON(
+            components.RouteJSON{
+                Hosts: []string{
+                    "foo.example.com",
+                    "foo.example.us",
+                },
+                ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
+                Name: sdkkonnectgo.Pointer("example-route"),
+                Paths: []string{
+                    "/v1",
+                    "/v2",
+                },
+                Service: &components.RouteJSONService{
+                    ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
+                },
+            },
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Route != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="upsert-route" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/routes/{RouteId}" example="NoAPIKey" -->
 ```go
 package main
 

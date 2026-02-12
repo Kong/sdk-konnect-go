@@ -21,10 +21,6 @@ type ListScorecardCriteriaServicesRequest struct {
 	// Sorts a collection of services targeted by a scorecard criteria. Supported sort attributes are:
 	//
 	//
-	//
-	//
-	//
-	//
 	//   - `display_name`
 	//   - `name`
 	//   - `evaluation.is_passing`

@@ -4,24 +4,12 @@ Methods to mediate authentication:
 * passthrough - pass authentication from the client through proxy to the backend cluster without any kind of
 
 
-
-
-
-
   validation
 * validate_forward - pass authentication from the client through proxy to the backend cluster.
 
 
-
-
-
-
   Proxy does the validation before forwarding it to the client.
 * terminate - terminate authentication at the proxy level and originate authentication to the backend cluster
-
-
-
-
 
 
   using the configuration defined at BackendCluster's authentication.

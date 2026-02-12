@@ -110,10 +110,6 @@ type CatalogServiceFilterParameters struct {
 	// Filter operators are dictated by the custom field type. For example:
 	//
 	//
-	//
-	//
-	//
-	//
 	//   - `filter[custom_fields.owner]`
 	//   - `filter[custom_fields.owner][neq]=kong`
 	//   - `filter[custom_fields.dashboard.link][contains]=https`

@@ -24,7 +24,7 @@ List available user configurations.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-user-configurations" method="get" path="/v1/notifications/configurations" -->
+<!-- UsageSnippet language="go" operationID="list-user-configurations" method="get" path="/v1/notifications/configurations" example="User Configurations List" -->
 ```go
 package main
 
@@ -81,7 +81,7 @@ List event subscriptions.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-event-subscriptions" method="get" path="/v1/notifications/configurations/{eventId}/subscriptions" -->
+<!-- UsageSnippet language="go" operationID="list-event-subscriptions" method="get" path="/v1/notifications/configurations/{eventId}/subscriptions" example="Event Subscriptions List" -->
 ```go
 package main
 
@@ -136,9 +136,40 @@ func main() {
 
 Create a new subscription for an event.
 
-### Example Usage
+### Example Usage: Event Subscription
 
-<!-- UsageSnippet language="go" operationID="create-event-subscription" method="post" path="/v1/notifications/configurations/{eventId}/subscriptions" -->
+<!-- UsageSnippet language="go" operationID="create-event-subscription" method="post" path="/v1/notifications/configurations/{eventId}/subscriptions" example="Event Subscription" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Notifications.CreateEventSubscription(ctx, "invoice-ready", nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EventSubscriptionResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Example Request Body
+
+<!-- UsageSnippet language="go" operationID="create-event-subscription" method="post" path="/v1/notifications/configurations/{eventId}/subscriptions" example="Example Request Body" -->
 ```go
 package main
 
@@ -218,7 +249,7 @@ Get subscription for an event.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-event-subscription" method="get" path="/v1/notifications/configurations/{eventId}/subscriptions/{subscriptionId}" -->
+<!-- UsageSnippet language="go" operationID="get-event-subscription" method="get" path="/v1/notifications/configurations/{eventId}/subscriptions/{subscriptionId}" example="Event Subscription" -->
 ```go
 package main
 
@@ -275,9 +306,44 @@ func main() {
 
 Update subscription for an event.
 
-### Example Usage
+### Example Usage: Event Subscription
 
-<!-- UsageSnippet language="go" operationID="update-event-subscription" method="patch" path="/v1/notifications/configurations/{eventId}/subscriptions/{subscriptionId}" -->
+<!-- UsageSnippet language="go" operationID="update-event-subscription" method="patch" path="/v1/notifications/configurations/{eventId}/subscriptions/{subscriptionId}" example="Event Subscription" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Notifications.UpdateEventSubscription(ctx, operations.UpdateEventSubscriptionRequest{
+        EventID: "invoice-ready",
+        SubscriptionID: "<id>",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.EventSubscriptionResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Example Request Body
+
+<!-- UsageSnippet language="go" operationID="update-event-subscription" method="patch" path="/v1/notifications/configurations/{eventId}/subscriptions/{subscriptionId}" example="Example Request Body" -->
 ```go
 package main
 
@@ -419,7 +485,7 @@ List available notifications.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-notifications" method="get" path="/v1/notifications/inbox" -->
+<!-- UsageSnippet language="go" operationID="list-notifications" method="get" path="/v1/notifications/inbox" example="Notifications List" -->
 ```go
 package main
 
@@ -480,7 +546,7 @@ Get notification details.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-notification-details" method="get" path="/v1/notifications/inbox/{notificationId}" -->
+<!-- UsageSnippet language="go" operationID="get-notification-details" method="get" path="/v1/notifications/inbox/{notificationId}" example="Notification" -->
 ```go
 package main
 
@@ -535,9 +601,9 @@ func main() {
 
 Update notification.
 
-### Example Usage
+### Example Usage: Example Request Body
 
-<!-- UsageSnippet language="go" operationID="update-notification" method="patch" path="/v1/notifications/inbox/{notificationId}" -->
+<!-- UsageSnippet language="go" operationID="update-notification" method="patch" path="/v1/notifications/inbox/{notificationId}" example="Example Request Body" -->
 ```go
 package main
 
@@ -560,6 +626,37 @@ func main() {
     res, err := s.Notifications.UpdateNotification(ctx, "<id>", &components.NotificationUpdatePayload{
         Status: components.NotificationStatusRead,
     })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Notification != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Notification
+
+<!-- UsageSnippet language="go" operationID="update-notification" method="patch" path="/v1/notifications/inbox/{notificationId}" example="Notification" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Notifications.UpdateNotification(ctx, "<id>", nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -655,7 +752,7 @@ Mark a list of notifications to a status.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="bulk-notifications" method="post" path="/v1/notifications/inbox/bulk" -->
+<!-- UsageSnippet language="go" operationID="bulk-notifications" method="post" path="/v1/notifications/inbox/bulk" example="Example Request Body" -->
 ```go
 package main
 

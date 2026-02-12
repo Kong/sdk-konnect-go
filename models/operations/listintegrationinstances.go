@@ -17,10 +17,6 @@ type ListIntegrationInstancesRequest struct {
 	// Sorts a collection of integration instances. Supported sort attributes are:
 	//
 	//
-	//
-	//
-	//
-	//
 	//   - `display_name`
 	//   - `name`
 	//   - `created_at`

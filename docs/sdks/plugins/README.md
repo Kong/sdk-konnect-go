@@ -823,9 +823,135 @@ func main() {
 
 Create a new Plugin
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-plugin" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins" -->
+<!-- UsageSnippet language="go" operationID="create-plugin" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.CreatePlugin(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Plugin{
+        Config: map[string]any{
+            "anonymous": "<value>",
+            "hide_credentials": false,
+            "key_in_body": false,
+            "key_in_header": true,
+            "key_in_query": true,
+            "key_names": []any{
+                "apikey",
+            },
+            "run_on_preflight": true,
+        },
+        ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+        Name: "key-auth",
+        Partials: []components.Partials{
+            components.Partials{
+                ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                Name: sdkkonnectgo.Pointer("foo-partial"),
+                Path: sdkkonnectgo.Pointer("config.redis"),
+            },
+            components.Partials{
+                ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                Name: sdkkonnectgo.Pointer("bar-partial"),
+                Path: sdkkonnectgo.Pointer("config.redis"),
+            },
+        },
+        Protocols: []components.Protocols{
+            components.ProtocolsGrpc,
+            components.ProtocolsGrpcs,
+            components.ProtocolsHTTP,
+            components.ProtocolsHTTPS,
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Plugin != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="create-plugin" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.CreatePlugin(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Plugin{
+        Config: map[string]any{
+            "anonymous": "<value>",
+            "hide_credentials": false,
+            "key_in_body": false,
+            "key_in_header": true,
+            "key_in_query": true,
+            "key_names": []any{
+                "apikey",
+            },
+            "run_on_preflight": true,
+        },
+        ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+        Name: "key-auth",
+        Partials: []components.Partials{
+            components.Partials{
+                ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                Name: sdkkonnectgo.Pointer("foo-partial"),
+                Path: sdkkonnectgo.Pointer("config.redis"),
+            },
+            components.Partials{
+                ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                Name: sdkkonnectgo.Pointer("bar-partial"),
+                Path: sdkkonnectgo.Pointer("config.redis"),
+            },
+        },
+        Protocols: []components.Protocols{
+            components.ProtocolsGrpc,
+            components.ProtocolsGrpcs,
+            components.ProtocolsHTTP,
+            components.ProtocolsHTTPS,
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Plugin != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="create-plugin" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins" example="NoAPIKey" -->
 ```go
 package main
 
@@ -1027,9 +1153,145 @@ func main() {
 
 Create or Update Plugin using ID.
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-plugin" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins/{PluginId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-plugin" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins/{PluginId}" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.UpsertPlugin(ctx, operations.UpsertPluginRequest{
+        PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Plugin: components.Plugin{
+            Config: map[string]any{
+                "anonymous": "<value>",
+                "hide_credentials": false,
+                "key_in_body": false,
+                "key_in_header": true,
+                "key_in_query": true,
+                "key_names": []any{
+                    "apikey",
+                },
+                "run_on_preflight": true,
+            },
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            Name: "key-auth",
+            Partials: []components.Partials{
+                components.Partials{
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+                components.Partials{
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+            },
+            Protocols: []components.Protocols{
+                components.ProtocolsGrpc,
+                components.ProtocolsGrpcs,
+                components.ProtocolsHTTP,
+                components.ProtocolsHTTPS,
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Plugin != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="upsert-plugin" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins/{PluginId}" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Plugins.UpsertPlugin(ctx, operations.UpsertPluginRequest{
+        PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Plugin: components.Plugin{
+            Config: map[string]any{
+                "anonymous": "<value>",
+                "hide_credentials": false,
+                "key_in_body": false,
+                "key_in_header": true,
+                "key_in_query": true,
+                "key_names": []any{
+                    "apikey",
+                },
+                "run_on_preflight": true,
+            },
+            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            Name: "key-auth",
+            Partials: []components.Partials{
+                components.Partials{
+                    ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
+                    Name: sdkkonnectgo.Pointer("foo-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+                components.Partials{
+                    ID: sdkkonnectgo.Pointer("129ee345-cba8-4e55-9d6d-93c223ff91ae"),
+                    Name: sdkkonnectgo.Pointer("bar-partial"),
+                    Path: sdkkonnectgo.Pointer("config.redis"),
+                },
+            },
+            Protocols: []components.Protocols{
+                components.ProtocolsGrpc,
+                components.ProtocolsGrpcs,
+                components.ProtocolsHTTP,
+                components.ProtocolsHTTPS,
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Plugin != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="upsert-plugin" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/plugins/{PluginId}" example="NoAPIKey" -->
 ```go
 package main
 

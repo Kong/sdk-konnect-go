@@ -73,10 +73,6 @@ type ListAppAuthStrategiesRequest struct {
 	// Sorts a collection of application auth strategies. Supported sort attributes are:
 	//
 	//
-	//
-	//
-	//
-	//
 	//   - created_at
 	//   - updated_at
 	//   - strategy_type

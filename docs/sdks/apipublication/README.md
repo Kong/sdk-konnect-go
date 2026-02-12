@@ -263,9 +263,81 @@ func main() {
 Publish an API to a portal.
 
 
-### Example Usage
+### Example Usage: ApiForbiddenExample
 
-<!-- UsageSnippet language="go" operationID="publish-api-to-portal" method="put" path="/v3/apis/{apiId}/publications/{portalId}" -->
+<!-- UsageSnippet language="go" operationID="publish-api-to-portal" method="put" path="/v3/apis/{apiId}/publications/{portalId}" example="ApiForbiddenExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIPublication.PublishAPIToPortal(ctx, operations.PublishAPIToPortalRequest{
+        APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        APIPublication: components.APIPublication{},
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIPublicationResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiNotFoundExample
+
+<!-- UsageSnippet language="go" operationID="publish-api-to-portal" method="put" path="/v3/apis/{apiId}/publications/{portalId}" example="ApiNotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.APIPublication.PublishAPIToPortal(ctx, operations.PublishAPIToPortalRequest{
+        APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        APIPublication: components.APIPublication{},
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.APIPublicationResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: ApiUnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="publish-api-to-portal" method="put" path="/v3/apis/{apiId}/publications/{portalId}" example="ApiUnauthorizedExample" -->
 ```go
 package main
 

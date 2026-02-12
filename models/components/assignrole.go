@@ -18,6 +18,7 @@ const (
 	RoleNameDeployer                  RoleName = "Deployer"
 	RoleNameDiscoveryAdmin            RoleName = "Discovery Admin"
 	RoleNameDiscoveryViewer           RoleName = "Discovery Viewer"
+	RoleNameEditor                    RoleName = "Editor"
 	RoleNameGatewayServiceAdmin       RoleName = "Gateway Service Admin"
 	RoleNameIntegrationAdmin          RoleName = "Integration Admin"
 	RoleNameIntegrationViewer         RoleName = "Integration Viewer"
@@ -50,7 +51,7 @@ func (e RoleName) ToPointer() *RoleName {
 func (e *RoleName) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "Admin", "Appearance Maintainer", "Application Registration", "Certificate Admin", "Cloud Gateway Cluster Admin", "Cloud Gateway Cluster Viewer", "Consumer Admin", "Connector", "Creator", "Deployer", "Discovery Admin", "Discovery Viewer", "Gateway Service Admin", "Integration Admin", "Integration Viewer", "Key Admin", "Maintainer", "Network Admin", "Network Creator", "Network Viewer", "Plugin Admin", "Plugins Admin", "Product Publisher", "Publisher", "Route Admin", "SNI Admin", "Scorecard Admin", "Scorecard Viewer", "Service Admin", "Service Creator", "Service Viewer", "Upstream Admin", "Vault Admin", "Viewer":
+		case "Admin", "Appearance Maintainer", "Application Registration", "Certificate Admin", "Cloud Gateway Cluster Admin", "Cloud Gateway Cluster Viewer", "Consumer Admin", "Connector", "Creator", "Deployer", "Discovery Admin", "Discovery Viewer", "Editor", "Gateway Service Admin", "Integration Admin", "Integration Viewer", "Key Admin", "Maintainer", "Network Admin", "Network Creator", "Network Viewer", "Plugin Admin", "Plugins Admin", "Product Publisher", "Publisher", "Route Admin", "SNI Admin", "Scorecard Admin", "Scorecard Viewer", "Service Admin", "Service Creator", "Service Viewer", "Upstream Admin", "Vault Admin", "Viewer":
 			return true
 		}
 	}
@@ -72,6 +73,7 @@ const (
 	EntityTypeNameMeshControlPlanes         EntityTypeName = "Mesh Control Planes"
 	EntityTypeNameNetworks                  EntityTypeName = "Networks"
 	EntityTypeNamePortals                   EntityTypeName = "Portals"
+	EntityTypeNameReports                   EntityTypeName = "Reports"
 	EntityTypeNameServiceHub                EntityTypeName = "Service Hub"
 )
 
@@ -83,7 +85,7 @@ func (e EntityTypeName) ToPointer() *EntityTypeName {
 func (e *EntityTypeName) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "APIs", "API Products", "Application Auth Strategies", "Audit Logs", "Control Planes", "Dashboards", "DCR Providers", "Identity", "Mesh Control Planes", "Networks", "Portals", "Service Hub":
+		case "APIs", "API Products", "Application Auth Strategies", "Audit Logs", "Control Planes", "Dashboards", "DCR Providers", "Identity", "Mesh Control Planes", "Networks", "Portals", "Reports", "Service Hub":
 			return true
 		}
 	}

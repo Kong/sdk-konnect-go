@@ -19,10 +19,6 @@ type ListScorecardCriteriaRequest struct {
 	// Sorts a collection of criteria belonging to a scorecard. Supported sort attributes are:
 	//
 	//
-	//
-	//
-	//
-	//
 	//   - `evaluation.passing_services_count`
 	//
 	// By default, criteria will be returned in the order that they are configured in the scorecard.

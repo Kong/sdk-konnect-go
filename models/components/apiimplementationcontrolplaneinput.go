@@ -8,7 +8,7 @@ import (
 
 // APIImplementationControlPlaneInput - A Control plane that implements an API
 type APIImplementationControlPlaneInput struct {
-	ControlPlaneID string `json:"control_plane_id"`
+	ID string `json:"control_plane_id"`
 }
 
 func (a APIImplementationControlPlaneInput) MarshalJSON() ([]byte, error) {
@@ -22,9 +22,9 @@ func (a *APIImplementationControlPlaneInput) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *APIImplementationControlPlaneInput) GetControlPlaneID() string {
+func (a *APIImplementationControlPlaneInput) GetID() string {
 	if a == nil {
 		return ""
 	}
-	return a.ControlPlaneID
+	return a.ID
 }

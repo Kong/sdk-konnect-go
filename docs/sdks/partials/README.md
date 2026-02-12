@@ -75,9 +75,106 @@ func main() {
 
 Create a new Partial
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-partial" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/partials" -->
+<!-- UsageSnippet language="go" operationID="create-partial" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/partials" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Partials.CreatePartial(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreatePartialRedisCe(
+        components.PartialRedisCe{
+            Config: components.PartialRedisCeConfig{
+                Host: sdkkonnectgo.Pointer("localhost"),
+                Password: sdkkonnectgo.Pointer("password"),
+                ServerName: sdkkonnectgo.Pointer("redis"),
+                Username: sdkkonnectgo.Pointer("username"),
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Partial != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="create-partial" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/partials" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Partials.CreatePartial(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreatePartialRedisEe(
+        components.PartialRedisEe{
+            Config: components.PartialRedisEeConfig{
+                ClusterNodes: []components.ClusterNodes{
+                    components.ClusterNodes{
+                        IP: sdkkonnectgo.Pointer("192.168.1.10"),
+                        Port: sdkkonnectgo.Pointer[int64](6380),
+                    },
+                },
+                Host: sdkkonnectgo.Pointer("localhost"),
+                Password: sdkkonnectgo.Pointer("password"),
+                Port: sdkkonnectgo.Pointer(components.CreatePortInteger(
+                    6379,
+                )),
+                ReadTimeout: sdkkonnectgo.Pointer[int64](1000),
+                SendTimeout: sdkkonnectgo.Pointer[int64](1000),
+                SentinelNodes: []components.SentinelNodes{
+                    components.SentinelNodes{
+                        Host: sdkkonnectgo.Pointer("sentinel1.redis.server"),
+                        Port: sdkkonnectgo.Pointer[int64](26379),
+                    },
+                },
+                ServerName: sdkkonnectgo.Pointer("redis-ee"),
+                Username: sdkkonnectgo.Pointer("username"),
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Partial != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="create-partial" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/partials" example="NoAPIKey" -->
 ```go
 package main
 
@@ -252,9 +349,9 @@ func main() {
 
 Create or Update Partial using ID.
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-partial" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/partials/{PartialId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-partial" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/partials/{PartialId}" example="DuplicateApiKey" -->
 ```go
 package main
 
@@ -280,7 +377,119 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Partial: components.CreatePartialRedisEe(
             components.PartialRedisEe{
-                Config: components.PartialRedisEeConfig{},
+                Config: components.PartialRedisEeConfig{
+                    ClusterNodes: []components.ClusterNodes{
+                        components.ClusterNodes{
+                            IP: sdkkonnectgo.Pointer("192.168.1.10"),
+                            Port: sdkkonnectgo.Pointer[int64](6380),
+                        },
+                    },
+                    Host: sdkkonnectgo.Pointer("localhost"),
+                    Password: sdkkonnectgo.Pointer("password"),
+                    Port: sdkkonnectgo.Pointer(components.CreatePortInteger(
+                        6379,
+                    )),
+                    ReadTimeout: sdkkonnectgo.Pointer[int64](1000),
+                    SendTimeout: sdkkonnectgo.Pointer[int64](1000),
+                    SentinelNodes: []components.SentinelNodes{
+                        components.SentinelNodes{
+                            Host: sdkkonnectgo.Pointer("sentinel1.redis.server"),
+                            Port: sdkkonnectgo.Pointer[int64](26379),
+                        },
+                    },
+                    ServerName: sdkkonnectgo.Pointer("redis-ee"),
+                    Username: sdkkonnectgo.Pointer("username"),
+                },
+            },
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Partial != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="upsert-partial" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/partials/{PartialId}" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Partials.UpsertPartial(ctx, operations.UpsertPartialRequest{
+        PartialID: "",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Partial: components.CreatePartialRedisCe(
+            components.PartialRedisCe{
+                Config: components.PartialRedisCeConfig{
+                    Host: sdkkonnectgo.Pointer("localhost"),
+                    Password: sdkkonnectgo.Pointer("password"),
+                    ServerName: sdkkonnectgo.Pointer("redis"),
+                    Username: sdkkonnectgo.Pointer("username"),
+                },
+            },
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Partial != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="upsert-partial" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/partials/{PartialId}" example="NoAPIKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Partials.UpsertPartial(ctx, operations.UpsertPartialRequest{
+        PartialID: "",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Partial: components.CreatePartialRedisCe(
+            components.PartialRedisCe{
+                Config: components.PartialRedisCeConfig{
+                    Host: sdkkonnectgo.Pointer("localhost"),
+                    Password: sdkkonnectgo.Pointer("password"),
+                    ServerName: sdkkonnectgo.Pointer("redis"),
+                    Username: sdkkonnectgo.Pointer("username"),
+                },
             },
         ),
     })

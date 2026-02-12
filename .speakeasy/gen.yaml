@@ -28,7 +28,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 go:
-  version: 0.20.2
+  version: 0.21.0
   additionalDependencies: {}
   allowUnknownFieldsInWeakUnions: false
   baseErrorName: SDKBaseError
@@ -55,6 +55,7 @@ go:
   outputModelSuffix: output
   packageName: github.com/Kong/sdk-konnect-go
   respectRequiredFields: false
+  respectTitlesForPrimitiveUnionMembers: false
   responseFormat: envelope
   sdkPackageName: ""
   unionStrategy: left-to-right

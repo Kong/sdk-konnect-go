@@ -161,9 +161,9 @@ resources found in both will be updated to the requested configuration. Networks
 are in an offline state will automatically initialize (i.e. move to an initializing state).
 
 
-### Example Usage
+### Example Usage: Configuration Api Access Enum Validation
 
-<!-- UsageSnippet language="go" operationID="create-configuration" method="put" path="/v2/cloud-gateways/configurations" -->
+<!-- UsageSnippet language="go" operationID="create-configuration" method="put" path="/v2/cloud-gateways/configurations" example="Configuration Api Access Enum Validation" -->
 ```go
 package main
 
@@ -196,20 +196,52 @@ func main() {
                     components.ConfigurationDataPlaneGroupAutoscaleAutopilot{
                         Kind: components.ConfigurationDataPlaneGroupAutoscaleAutopilotKindAutopilot,
                         BaseRps: 1,
-                        MaxRps: sdkkonnectgo.Pointer[int64](1000),
                     },
                 )),
                 Environment: []components.ConfigurationDataPlaneGroupEnvironmentField{
                     components.ConfigurationDataPlaneGroupEnvironmentField{
                         Name: "KONG_LOG_LEVEL",
-                        Value: "INFO",
-                    },
-                    components.ConfigurationDataPlaneGroupEnvironmentField{
-                        Name: "KONG_LOG_LEVEL",
-                        Value: "INFO",
+                        Value: "info",
                     },
                 },
             },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigurationManifest != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Configuration Conflict
+
+<!-- UsageSnippet language="go" operationID="create-configuration" method="put" path="/v2/cloud-gateways/configurations" example="Configuration Conflict" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateConfiguration(ctx, components.CreateConfigurationRequest{
+        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
+        ControlPlaneGeo: components.ControlPlaneGeoIn,
+        Version: sdkkonnectgo.Pointer("3.2"),
+        DataplaneGroups: []components.CreateConfigurationDataPlaneGroup{
             components.CreateConfigurationDataPlaneGroup{
                 Provider: components.ProviderNameAws,
                 Region: "us-east-2",
@@ -218,17 +250,552 @@ func main() {
                     components.ConfigurationDataPlaneGroupAutoscaleAutopilot{
                         Kind: components.ConfigurationDataPlaneGroupAutoscaleAutopilotKindAutopilot,
                         BaseRps: 1,
-                        MaxRps: sdkkonnectgo.Pointer[int64](1000),
                     },
                 )),
                 Environment: []components.ConfigurationDataPlaneGroupEnvironmentField{
                     components.ConfigurationDataPlaneGroupEnvironmentField{
                         Name: "KONG_LOG_LEVEL",
-                        Value: "INFO",
+                        Value: "info",
                     },
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigurationManifest != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Configuration Data-Plane Group Autopilot Base RPS Minimum
+
+<!-- UsageSnippet language="go" operationID="create-configuration" method="put" path="/v2/cloud-gateways/configurations" example="Configuration Data-Plane Group Autopilot Base RPS Minimum" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateConfiguration(ctx, components.CreateConfigurationRequest{
+        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
+        ControlPlaneGeo: components.ControlPlaneGeoIn,
+        Version: sdkkonnectgo.Pointer("3.2"),
+        DataplaneGroups: []components.CreateConfigurationDataPlaneGroup{
+            components.CreateConfigurationDataPlaneGroup{
+                Provider: components.ProviderNameAws,
+                Region: "us-east-2",
+                CloudGatewayNetworkID: sdkkonnectgo.Pointer("36ae63d3-efd1-4bec-b246-62aa5d3f5695"),
+                Autoscale: sdkkonnectgo.Pointer(components.CreateConfigurationDataPlaneGroupAutoscaleConfigurationDataPlaneGroupAutoscaleAutopilot(
+                    components.ConfigurationDataPlaneGroupAutoscaleAutopilot{
+                        Kind: components.ConfigurationDataPlaneGroupAutoscaleAutopilotKindAutopilot,
+                        BaseRps: 1,
+                    },
+                )),
+                Environment: []components.ConfigurationDataPlaneGroupEnvironmentField{
                     components.ConfigurationDataPlaneGroupEnvironmentField{
                         Name: "KONG_LOG_LEVEL",
-                        Value: "INFO",
+                        Value: "info",
+                    },
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigurationManifest != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Configuration Data-Plane Group Static Request Instances Minimum
+
+<!-- UsageSnippet language="go" operationID="create-configuration" method="put" path="/v2/cloud-gateways/configurations" example="Configuration Data-Plane Group Static Request Instances Minimum" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateConfiguration(ctx, components.CreateConfigurationRequest{
+        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
+        ControlPlaneGeo: components.ControlPlaneGeoIn,
+        Version: sdkkonnectgo.Pointer("3.2"),
+        DataplaneGroups: []components.CreateConfigurationDataPlaneGroup{
+            components.CreateConfigurationDataPlaneGroup{
+                Provider: components.ProviderNameAws,
+                Region: "us-east-2",
+                CloudGatewayNetworkID: sdkkonnectgo.Pointer("36ae63d3-efd1-4bec-b246-62aa5d3f5695"),
+                Autoscale: sdkkonnectgo.Pointer(components.CreateConfigurationDataPlaneGroupAutoscaleConfigurationDataPlaneGroupAutoscaleAutopilot(
+                    components.ConfigurationDataPlaneGroupAutoscaleAutopilot{
+                        Kind: components.ConfigurationDataPlaneGroupAutoscaleAutopilotKindAutopilot,
+                        BaseRps: 1,
+                    },
+                )),
+                Environment: []components.ConfigurationDataPlaneGroupEnvironmentField{
+                    components.ConfigurationDataPlaneGroupEnvironmentField{
+                        Name: "KONG_LOG_LEVEL",
+                        Value: "info",
+                    },
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigurationManifest != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Custom Domain Domain Length Too Short
+
+<!-- UsageSnippet language="go" operationID="create-configuration" method="put" path="/v2/cloud-gateways/configurations" example="Custom Domain Domain Length Too Short" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateConfiguration(ctx, components.CreateConfigurationRequest{
+        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
+        ControlPlaneGeo: components.ControlPlaneGeoIn,
+        Version: sdkkonnectgo.Pointer("3.2"),
+        DataplaneGroups: []components.CreateConfigurationDataPlaneGroup{
+            components.CreateConfigurationDataPlaneGroup{
+                Provider: components.ProviderNameAws,
+                Region: "us-east-2",
+                CloudGatewayNetworkID: sdkkonnectgo.Pointer("36ae63d3-efd1-4bec-b246-62aa5d3f5695"),
+                Autoscale: sdkkonnectgo.Pointer(components.CreateConfigurationDataPlaneGroupAutoscaleConfigurationDataPlaneGroupAutoscaleAutopilot(
+                    components.ConfigurationDataPlaneGroupAutoscaleAutopilot{
+                        Kind: components.ConfigurationDataPlaneGroupAutoscaleAutopilotKindAutopilot,
+                        BaseRps: 1,
+                    },
+                )),
+                Environment: []components.ConfigurationDataPlaneGroupEnvironmentField{
+                    components.ConfigurationDataPlaneGroupEnvironmentField{
+                        Name: "KONG_LOG_LEVEL",
+                        Value: "info",
+                    },
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigurationManifest != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Network Name Length Exceeded
+
+<!-- UsageSnippet language="go" operationID="create-configuration" method="put" path="/v2/cloud-gateways/configurations" example="Network Name Length Exceeded" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateConfiguration(ctx, components.CreateConfigurationRequest{
+        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
+        ControlPlaneGeo: components.ControlPlaneGeoIn,
+        Version: sdkkonnectgo.Pointer("3.2"),
+        DataplaneGroups: []components.CreateConfigurationDataPlaneGroup{
+            components.CreateConfigurationDataPlaneGroup{
+                Provider: components.ProviderNameAws,
+                Region: "us-east-2",
+                CloudGatewayNetworkID: sdkkonnectgo.Pointer("36ae63d3-efd1-4bec-b246-62aa5d3f5695"),
+                Autoscale: sdkkonnectgo.Pointer(components.CreateConfigurationDataPlaneGroupAutoscaleConfigurationDataPlaneGroupAutoscaleAutopilot(
+                    components.ConfigurationDataPlaneGroupAutoscaleAutopilot{
+                        Kind: components.ConfigurationDataPlaneGroupAutoscaleAutopilotKindAutopilot,
+                        BaseRps: 1,
+                    },
+                )),
+                Environment: []components.ConfigurationDataPlaneGroupEnvironmentField{
+                    components.ConfigurationDataPlaneGroupEnvironmentField{
+                        Name: "KONG_LOG_LEVEL",
+                        Value: "info",
+                    },
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigurationManifest != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="create-configuration" method="put" path="/v2/cloud-gateways/configurations" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateConfiguration(ctx, components.CreateConfigurationRequest{
+        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
+        ControlPlaneGeo: components.ControlPlaneGeoIn,
+        Version: sdkkonnectgo.Pointer("3.2"),
+        DataplaneGroups: []components.CreateConfigurationDataPlaneGroup{
+            components.CreateConfigurationDataPlaneGroup{
+                Provider: components.ProviderNameAws,
+                Region: "us-east-2",
+                CloudGatewayNetworkID: sdkkonnectgo.Pointer("36ae63d3-efd1-4bec-b246-62aa5d3f5695"),
+                Autoscale: sdkkonnectgo.Pointer(components.CreateConfigurationDataPlaneGroupAutoscaleConfigurationDataPlaneGroupAutoscaleAutopilot(
+                    components.ConfigurationDataPlaneGroupAutoscaleAutopilot{
+                        Kind: components.ConfigurationDataPlaneGroupAutoscaleAutopilotKindAutopilot,
+                        BaseRps: 1,
+                    },
+                )),
+                Environment: []components.ConfigurationDataPlaneGroupEnvironmentField{
+                    components.ConfigurationDataPlaneGroupEnvironmentField{
+                        Name: "KONG_LOG_LEVEL",
+                        Value: "info",
+                    },
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigurationManifest != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Permission Denied
+
+<!-- UsageSnippet language="go" operationID="create-configuration" method="put" path="/v2/cloud-gateways/configurations" example="Permission Denied" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateConfiguration(ctx, components.CreateConfigurationRequest{
+        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
+        ControlPlaneGeo: components.ControlPlaneGeoIn,
+        Version: sdkkonnectgo.Pointer("3.2"),
+        DataplaneGroups: []components.CreateConfigurationDataPlaneGroup{
+            components.CreateConfigurationDataPlaneGroup{
+                Provider: components.ProviderNameAws,
+                Region: "us-east-2",
+                CloudGatewayNetworkID: sdkkonnectgo.Pointer("36ae63d3-efd1-4bec-b246-62aa5d3f5695"),
+                Autoscale: sdkkonnectgo.Pointer(components.CreateConfigurationDataPlaneGroupAutoscaleConfigurationDataPlaneGroupAutoscaleAutopilot(
+                    components.ConfigurationDataPlaneGroupAutoscaleAutopilot{
+                        Kind: components.ConfigurationDataPlaneGroupAutoscaleAutopilotKindAutopilot,
+                        BaseRps: 1,
+                    },
+                )),
+                Environment: []components.ConfigurationDataPlaneGroupEnvironmentField{
+                    components.ConfigurationDataPlaneGroupEnvironmentField{
+                        Name: "KONG_LOG_LEVEL",
+                        Value: "info",
+                    },
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigurationManifest != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Quota Exceeded
+
+<!-- UsageSnippet language="go" operationID="create-configuration" method="put" path="/v2/cloud-gateways/configurations" example="Quota Exceeded" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateConfiguration(ctx, components.CreateConfigurationRequest{
+        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
+        ControlPlaneGeo: components.ControlPlaneGeoIn,
+        Version: sdkkonnectgo.Pointer("3.2"),
+        DataplaneGroups: []components.CreateConfigurationDataPlaneGroup{
+            components.CreateConfigurationDataPlaneGroup{
+                Provider: components.ProviderNameAws,
+                Region: "us-east-2",
+                CloudGatewayNetworkID: sdkkonnectgo.Pointer("36ae63d3-efd1-4bec-b246-62aa5d3f5695"),
+                Autoscale: sdkkonnectgo.Pointer(components.CreateConfigurationDataPlaneGroupAutoscaleConfigurationDataPlaneGroupAutoscaleAutopilot(
+                    components.ConfigurationDataPlaneGroupAutoscaleAutopilot{
+                        Kind: components.ConfigurationDataPlaneGroupAutoscaleAutopilotKindAutopilot,
+                        BaseRps: 1,
+                    },
+                )),
+                Environment: []components.ConfigurationDataPlaneGroupEnvironmentField{
+                    components.ConfigurationDataPlaneGroupEnvironmentField{
+                        Name: "KONG_LOG_LEVEL",
+                        Value: "info",
+                    },
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigurationManifest != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Transit Gateway Name Length Exceeded
+
+<!-- UsageSnippet language="go" operationID="create-configuration" method="put" path="/v2/cloud-gateways/configurations" example="Transit Gateway Name Length Exceeded" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateConfiguration(ctx, components.CreateConfigurationRequest{
+        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
+        ControlPlaneGeo: components.ControlPlaneGeoIn,
+        Version: sdkkonnectgo.Pointer("3.2"),
+        DataplaneGroups: []components.CreateConfigurationDataPlaneGroup{
+            components.CreateConfigurationDataPlaneGroup{
+                Provider: components.ProviderNameAws,
+                Region: "us-east-2",
+                CloudGatewayNetworkID: sdkkonnectgo.Pointer("36ae63d3-efd1-4bec-b246-62aa5d3f5695"),
+                Autoscale: sdkkonnectgo.Pointer(components.CreateConfigurationDataPlaneGroupAutoscaleConfigurationDataPlaneGroupAutoscaleAutopilot(
+                    components.ConfigurationDataPlaneGroupAutoscaleAutopilot{
+                        Kind: components.ConfigurationDataPlaneGroupAutoscaleAutopilotKindAutopilot,
+                        BaseRps: 1,
+                    },
+                )),
+                Environment: []components.ConfigurationDataPlaneGroupEnvironmentField{
+                    components.ConfigurationDataPlaneGroupEnvironmentField{
+                        Name: "KONG_LOG_LEVEL",
+                        Value: "info",
+                    },
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigurationManifest != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="create-configuration" method="put" path="/v2/cloud-gateways/configurations" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateConfiguration(ctx, components.CreateConfigurationRequest{
+        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
+        ControlPlaneGeo: components.ControlPlaneGeoIn,
+        Version: sdkkonnectgo.Pointer("3.2"),
+        DataplaneGroups: []components.CreateConfigurationDataPlaneGroup{
+            components.CreateConfigurationDataPlaneGroup{
+                Provider: components.ProviderNameAws,
+                Region: "us-east-2",
+                CloudGatewayNetworkID: sdkkonnectgo.Pointer("36ae63d3-efd1-4bec-b246-62aa5d3f5695"),
+                Autoscale: sdkkonnectgo.Pointer(components.CreateConfigurationDataPlaneGroupAutoscaleConfigurationDataPlaneGroupAutoscaleAutopilot(
+                    components.ConfigurationDataPlaneGroupAutoscaleAutopilot{
+                        Kind: components.ConfigurationDataPlaneGroupAutoscaleAutopilotKindAutopilot,
+                        BaseRps: 1,
+                    },
+                )),
+                Environment: []components.ConfigurationDataPlaneGroupEnvironmentField{
+                    components.ConfigurationDataPlaneGroupEnvironmentField{
+                        Name: "KONG_LOG_LEVEL",
+                        Value: "info",
+                    },
+                },
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ConfigurationManifest != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="create-configuration" method="put" path="/v2/cloud-gateways/configurations" example="UnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateConfiguration(ctx, components.CreateConfigurationRequest{
+        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
+        ControlPlaneGeo: components.ControlPlaneGeoIn,
+        Version: sdkkonnectgo.Pointer("3.2"),
+        DataplaneGroups: []components.CreateConfigurationDataPlaneGroup{
+            components.CreateConfigurationDataPlaneGroup{
+                Provider: components.ProviderNameAws,
+                Region: "us-east-2",
+                CloudGatewayNetworkID: sdkkonnectgo.Pointer("36ae63d3-efd1-4bec-b246-62aa5d3f5695"),
+                Autoscale: sdkkonnectgo.Pointer(components.CreateConfigurationDataPlaneGroupAutoscaleConfigurationDataPlaneGroupAutoscaleAutopilot(
+                    components.ConfigurationDataPlaneGroupAutoscaleAutopilot{
+                        Kind: components.ConfigurationDataPlaneGroupAutoscaleAutopilotKindAutopilot,
+                        BaseRps: 1,
+                    },
+                )),
+                Environment: []components.ConfigurationDataPlaneGroupEnvironmentField{
+                    components.ConfigurationDataPlaneGroupEnvironmentField{
+                        Name: "KONG_LOG_LEVEL",
+                        Value: "info",
                     },
                 },
             },
@@ -393,9 +960,289 @@ Creates a new custom domain for a control-plane (restricted by permitted control
 action).
 
 
-### Example Usage
+### Example Usage: Configuration Api Access Enum Validation
 
-<!-- UsageSnippet language="go" operationID="create-custom-domains" method="post" path="/v2/cloud-gateways/custom-domains" -->
+<!-- UsageSnippet language="go" operationID="create-custom-domains" method="post" path="/v2/cloud-gateways/custom-domains" example="Configuration Api Access Enum Validation" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateCustomDomains(ctx, components.CreateCustomDomainRequest{
+        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
+        ControlPlaneGeo: components.ControlPlaneGeoUs,
+        Domain: "example.com",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CustomDomain != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Configuration Data-Plane Group Autopilot Base RPS Minimum
+
+<!-- UsageSnippet language="go" operationID="create-custom-domains" method="post" path="/v2/cloud-gateways/custom-domains" example="Configuration Data-Plane Group Autopilot Base RPS Minimum" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateCustomDomains(ctx, components.CreateCustomDomainRequest{
+        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
+        ControlPlaneGeo: components.ControlPlaneGeoUs,
+        Domain: "example.com",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CustomDomain != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Configuration Data-Plane Group Static Request Instances Minimum
+
+<!-- UsageSnippet language="go" operationID="create-custom-domains" method="post" path="/v2/cloud-gateways/custom-domains" example="Configuration Data-Plane Group Static Request Instances Minimum" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateCustomDomains(ctx, components.CreateCustomDomainRequest{
+        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
+        ControlPlaneGeo: components.ControlPlaneGeoUs,
+        Domain: "example.com",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CustomDomain != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Custom Domain Domain Length Too Short
+
+<!-- UsageSnippet language="go" operationID="create-custom-domains" method="post" path="/v2/cloud-gateways/custom-domains" example="Custom Domain Domain Length Too Short" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateCustomDomains(ctx, components.CreateCustomDomainRequest{
+        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
+        ControlPlaneGeo: components.ControlPlaneGeoUs,
+        Domain: "example.com",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CustomDomain != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Network Name Length Exceeded
+
+<!-- UsageSnippet language="go" operationID="create-custom-domains" method="post" path="/v2/cloud-gateways/custom-domains" example="Network Name Length Exceeded" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateCustomDomains(ctx, components.CreateCustomDomainRequest{
+        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
+        ControlPlaneGeo: components.ControlPlaneGeoUs,
+        Domain: "example.com",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CustomDomain != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="create-custom-domains" method="post" path="/v2/cloud-gateways/custom-domains" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateCustomDomains(ctx, components.CreateCustomDomainRequest{
+        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
+        ControlPlaneGeo: components.ControlPlaneGeoUs,
+        Domain: "example.com",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CustomDomain != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Transit Gateway Name Length Exceeded
+
+<!-- UsageSnippet language="go" operationID="create-custom-domains" method="post" path="/v2/cloud-gateways/custom-domains" example="Transit Gateway Name Length Exceeded" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateCustomDomains(ctx, components.CreateCustomDomainRequest{
+        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
+        ControlPlaneGeo: components.ControlPlaneGeoUs,
+        Domain: "example.com",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CustomDomain != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="create-custom-domains" method="post" path="/v2/cloud-gateways/custom-domains" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateCustomDomains(ctx, components.CreateCustomDomainRequest{
+        ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
+        ControlPlaneGeo: components.ControlPlaneGeoUs,
+        Domain: "example.com",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.CustomDomain != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="create-custom-domains" method="post" path="/v2/cloud-gateways/custom-domains" example="UnauthorizedExample" -->
 ```go
 package main
 
@@ -811,9 +1658,378 @@ func main() {
 
 Creates a new network for a given provider account.
 
-### Example Usage
+### Example Usage: Configuration Api Access Enum Validation
 
-<!-- UsageSnippet language="go" operationID="create-network" method="post" path="/v2/cloud-gateways/networks" -->
+<!-- UsageSnippet language="go" operationID="create-network" method="post" path="/v2/cloud-gateways/networks" example="Configuration Api Access Enum Validation" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateNetwork(ctx, components.CreateNetworkRequest{
+        Name: "us-east-2 network",
+        CloudGatewayProviderAccountID: "929b2449-c69f-44c4-b6ad-9ecec6f811ae",
+        Region: "us-east-2",
+        AvailabilityZones: []string{
+            "use2-az1",
+            "use2-az2",
+            "use2-az3",
+        },
+        CidrBlock: "10.0.0.0/8",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Network != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Configuration Data-Plane Group Autopilot Base RPS Minimum
+
+<!-- UsageSnippet language="go" operationID="create-network" method="post" path="/v2/cloud-gateways/networks" example="Configuration Data-Plane Group Autopilot Base RPS Minimum" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateNetwork(ctx, components.CreateNetworkRequest{
+        Name: "us-east-2 network",
+        CloudGatewayProviderAccountID: "929b2449-c69f-44c4-b6ad-9ecec6f811ae",
+        Region: "us-east-2",
+        AvailabilityZones: []string{
+            "use2-az1",
+            "use2-az2",
+            "use2-az3",
+        },
+        CidrBlock: "10.0.0.0/8",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Network != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Configuration Data-Plane Group Static Request Instances Minimum
+
+<!-- UsageSnippet language="go" operationID="create-network" method="post" path="/v2/cloud-gateways/networks" example="Configuration Data-Plane Group Static Request Instances Minimum" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateNetwork(ctx, components.CreateNetworkRequest{
+        Name: "us-east-2 network",
+        CloudGatewayProviderAccountID: "929b2449-c69f-44c4-b6ad-9ecec6f811ae",
+        Region: "us-east-2",
+        AvailabilityZones: []string{
+            "use2-az1",
+            "use2-az2",
+            "use2-az3",
+        },
+        CidrBlock: "10.0.0.0/8",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Network != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Custom Domain Domain Length Too Short
+
+<!-- UsageSnippet language="go" operationID="create-network" method="post" path="/v2/cloud-gateways/networks" example="Custom Domain Domain Length Too Short" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateNetwork(ctx, components.CreateNetworkRequest{
+        Name: "us-east-2 network",
+        CloudGatewayProviderAccountID: "929b2449-c69f-44c4-b6ad-9ecec6f811ae",
+        Region: "us-east-2",
+        AvailabilityZones: []string{
+            "use2-az1",
+            "use2-az2",
+            "use2-az3",
+        },
+        CidrBlock: "10.0.0.0/8",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Network != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Network Name Length Exceeded
+
+<!-- UsageSnippet language="go" operationID="create-network" method="post" path="/v2/cloud-gateways/networks" example="Network Name Length Exceeded" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateNetwork(ctx, components.CreateNetworkRequest{
+        Name: "us-east-2 network",
+        CloudGatewayProviderAccountID: "929b2449-c69f-44c4-b6ad-9ecec6f811ae",
+        Region: "us-east-2",
+        AvailabilityZones: []string{
+            "use2-az1",
+            "use2-az2",
+            "use2-az3",
+        },
+        CidrBlock: "10.0.0.0/8",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Network != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Permission Denied
+
+<!-- UsageSnippet language="go" operationID="create-network" method="post" path="/v2/cloud-gateways/networks" example="Permission Denied" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateNetwork(ctx, components.CreateNetworkRequest{
+        Name: "us-east-2 network",
+        CloudGatewayProviderAccountID: "929b2449-c69f-44c4-b6ad-9ecec6f811ae",
+        Region: "us-east-2",
+        AvailabilityZones: []string{
+            "use2-az1",
+            "use2-az2",
+            "use2-az3",
+        },
+        CidrBlock: "10.0.0.0/8",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Network != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Quota Exceeded
+
+<!-- UsageSnippet language="go" operationID="create-network" method="post" path="/v2/cloud-gateways/networks" example="Quota Exceeded" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateNetwork(ctx, components.CreateNetworkRequest{
+        Name: "us-east-2 network",
+        CloudGatewayProviderAccountID: "929b2449-c69f-44c4-b6ad-9ecec6f811ae",
+        Region: "us-east-2",
+        AvailabilityZones: []string{
+            "use2-az1",
+            "use2-az2",
+            "use2-az3",
+        },
+        CidrBlock: "10.0.0.0/8",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Network != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Transit Gateway Name Length Exceeded
+
+<!-- UsageSnippet language="go" operationID="create-network" method="post" path="/v2/cloud-gateways/networks" example="Transit Gateway Name Length Exceeded" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateNetwork(ctx, components.CreateNetworkRequest{
+        Name: "us-east-2 network",
+        CloudGatewayProviderAccountID: "929b2449-c69f-44c4-b6ad-9ecec6f811ae",
+        Region: "us-east-2",
+        AvailabilityZones: []string{
+            "use2-az1",
+            "use2-az2",
+            "use2-az3",
+        },
+        CidrBlock: "10.0.0.0/8",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Network != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="create-network" method="post" path="/v2/cloud-gateways/networks" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateNetwork(ctx, components.CreateNetworkRequest{
+        Name: "us-east-2 network",
+        CloudGatewayProviderAccountID: "929b2449-c69f-44c4-b6ad-9ecec6f811ae",
+        Region: "us-east-2",
+        AvailabilityZones: []string{
+            "use2-az1",
+            "use2-az2",
+            "use2-az3",
+        },
+        CidrBlock: "10.0.0.0/8",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Network != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="create-network" method="post" path="/v2/cloud-gateways/networks" example="UnauthorizedExample" -->
 ```go
 package main
 
@@ -936,9 +2152,339 @@ func main() {
 
 Updates a network by ID.
 
-### Example Usage
+### Example Usage: Configuration Api Access Enum Validation
 
-<!-- UsageSnippet language="go" operationID="update-network" method="patch" path="/v2/cloud-gateways/networks/{networkId}" -->
+<!-- UsageSnippet language="go" operationID="update-network" method="patch" path="/v2/cloud-gateways/networks/{networkId}" example="Configuration Api Access Enum Validation" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdateNetwork(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.PatchNetworkRequest{
+        Name: sdkkonnectgo.Pointer("us-east-2 network"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Network != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Configuration Data-Plane Group Autopilot Base RPS Minimum
+
+<!-- UsageSnippet language="go" operationID="update-network" method="patch" path="/v2/cloud-gateways/networks/{networkId}" example="Configuration Data-Plane Group Autopilot Base RPS Minimum" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdateNetwork(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.PatchNetworkRequest{
+        Name: sdkkonnectgo.Pointer("us-east-2 network"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Network != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Configuration Data-Plane Group Static Request Instances Minimum
+
+<!-- UsageSnippet language="go" operationID="update-network" method="patch" path="/v2/cloud-gateways/networks/{networkId}" example="Configuration Data-Plane Group Static Request Instances Minimum" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdateNetwork(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.PatchNetworkRequest{
+        Name: sdkkonnectgo.Pointer("us-east-2 network"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Network != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Custom Domain Domain Length Too Short
+
+<!-- UsageSnippet language="go" operationID="update-network" method="patch" path="/v2/cloud-gateways/networks/{networkId}" example="Custom Domain Domain Length Too Short" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdateNetwork(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.PatchNetworkRequest{
+        Name: sdkkonnectgo.Pointer("us-east-2 network"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Network != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Network Name Length Exceeded
+
+<!-- UsageSnippet language="go" operationID="update-network" method="patch" path="/v2/cloud-gateways/networks/{networkId}" example="Network Name Length Exceeded" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdateNetwork(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.PatchNetworkRequest{
+        Name: sdkkonnectgo.Pointer("us-east-2 network"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Network != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="update-network" method="patch" path="/v2/cloud-gateways/networks/{networkId}" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdateNetwork(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.PatchNetworkRequest{
+        Name: sdkkonnectgo.Pointer("us-east-2 network"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Network != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Permission Denied
+
+<!-- UsageSnippet language="go" operationID="update-network" method="patch" path="/v2/cloud-gateways/networks/{networkId}" example="Permission Denied" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdateNetwork(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.PatchNetworkRequest{
+        Name: sdkkonnectgo.Pointer("us-east-2 network"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Network != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Quota Exceeded
+
+<!-- UsageSnippet language="go" operationID="update-network" method="patch" path="/v2/cloud-gateways/networks/{networkId}" example="Quota Exceeded" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdateNetwork(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.PatchNetworkRequest{
+        Name: sdkkonnectgo.Pointer("us-east-2 network"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Network != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Transit Gateway Name Length Exceeded
+
+<!-- UsageSnippet language="go" operationID="update-network" method="patch" path="/v2/cloud-gateways/networks/{networkId}" example="Transit Gateway Name Length Exceeded" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdateNetwork(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.PatchNetworkRequest{
+        Name: sdkkonnectgo.Pointer("us-east-2 network"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Network != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="update-network" method="patch" path="/v2/cloud-gateways/networks/{networkId}" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdateNetwork(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.PatchNetworkRequest{
+        Name: sdkkonnectgo.Pointer("us-east-2 network"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Network != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="update-network" method="patch" path="/v2/cloud-gateways/networks/{networkId}" example="UnauthorizedExample" -->
 ```go
 package main
 
@@ -1183,9 +2729,321 @@ func main() {
 
 Creates a new Private DNS for a given network.
 
-### Example Usage
+### Example Usage: Configuration Api Access Enum Validation
 
-<!-- UsageSnippet language="go" operationID="create-private-dns" method="post" path="/v2/cloud-gateways/networks/{networkId}/private-dns" -->
+<!-- UsageSnippet language="go" operationID="create-private-dns" method="post" path="/v2/cloud-gateways/networks/{networkId}/private-dns" example="Configuration Api Access Enum Validation" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreatePrivateDNS(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreatePrivateDNSRequest{
+        Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
+        PrivateDNSAttachmentConfig: sdkkonnectgo.Pointer(components.CreatePrivateDNSAttachmentConfigAwsPrivateHostedZoneAttachmentConfig(
+            components.AwsPrivateHostedZoneAttachmentConfig{
+                Kind: components.AWSPrivateHostedZoneTypeAwsPrivateHostedZoneAttachment,
+                HostedZoneID: "<id>",
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Configuration Data-Plane Group Autopilot Base RPS Minimum
+
+<!-- UsageSnippet language="go" operationID="create-private-dns" method="post" path="/v2/cloud-gateways/networks/{networkId}/private-dns" example="Configuration Data-Plane Group Autopilot Base RPS Minimum" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreatePrivateDNS(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreatePrivateDNSRequest{
+        Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
+        PrivateDNSAttachmentConfig: sdkkonnectgo.Pointer(components.CreatePrivateDNSAttachmentConfigAwsPrivateHostedZoneAttachmentConfig(
+            components.AwsPrivateHostedZoneAttachmentConfig{
+                Kind: components.AWSPrivateHostedZoneTypeAwsPrivateHostedZoneAttachment,
+                HostedZoneID: "<id>",
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Configuration Data-Plane Group Static Request Instances Minimum
+
+<!-- UsageSnippet language="go" operationID="create-private-dns" method="post" path="/v2/cloud-gateways/networks/{networkId}/private-dns" example="Configuration Data-Plane Group Static Request Instances Minimum" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreatePrivateDNS(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreatePrivateDNSRequest{
+        Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
+        PrivateDNSAttachmentConfig: sdkkonnectgo.Pointer(components.CreatePrivateDNSAttachmentConfigAwsPrivateHostedZoneAttachmentConfig(
+            components.AwsPrivateHostedZoneAttachmentConfig{
+                Kind: components.AWSPrivateHostedZoneTypeAwsPrivateHostedZoneAttachment,
+                HostedZoneID: "<id>",
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Custom Domain Domain Length Too Short
+
+<!-- UsageSnippet language="go" operationID="create-private-dns" method="post" path="/v2/cloud-gateways/networks/{networkId}/private-dns" example="Custom Domain Domain Length Too Short" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreatePrivateDNS(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreatePrivateDNSRequest{
+        Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
+        PrivateDNSAttachmentConfig: sdkkonnectgo.Pointer(components.CreatePrivateDNSAttachmentConfigAwsPrivateHostedZoneAttachmentConfig(
+            components.AwsPrivateHostedZoneAttachmentConfig{
+                Kind: components.AWSPrivateHostedZoneTypeAwsPrivateHostedZoneAttachment,
+                HostedZoneID: "<id>",
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Network Name Length Exceeded
+
+<!-- UsageSnippet language="go" operationID="create-private-dns" method="post" path="/v2/cloud-gateways/networks/{networkId}/private-dns" example="Network Name Length Exceeded" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreatePrivateDNS(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreatePrivateDNSRequest{
+        Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
+        PrivateDNSAttachmentConfig: sdkkonnectgo.Pointer(components.CreatePrivateDNSAttachmentConfigAwsPrivateHostedZoneAttachmentConfig(
+            components.AwsPrivateHostedZoneAttachmentConfig{
+                Kind: components.AWSPrivateHostedZoneTypeAwsPrivateHostedZoneAttachment,
+                HostedZoneID: "<id>",
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="create-private-dns" method="post" path="/v2/cloud-gateways/networks/{networkId}/private-dns" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreatePrivateDNS(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreatePrivateDNSRequest{
+        Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
+        PrivateDNSAttachmentConfig: sdkkonnectgo.Pointer(components.CreatePrivateDNSAttachmentConfigAwsPrivateHostedZoneAttachmentConfig(
+            components.AwsPrivateHostedZoneAttachmentConfig{
+                Kind: components.AWSPrivateHostedZoneTypeAwsPrivateHostedZoneAttachment,
+                HostedZoneID: "<id>",
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Transit Gateway Name Length Exceeded
+
+<!-- UsageSnippet language="go" operationID="create-private-dns" method="post" path="/v2/cloud-gateways/networks/{networkId}/private-dns" example="Transit Gateway Name Length Exceeded" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreatePrivateDNS(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreatePrivateDNSRequest{
+        Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
+        PrivateDNSAttachmentConfig: sdkkonnectgo.Pointer(components.CreatePrivateDNSAttachmentConfigAwsPrivateHostedZoneAttachmentConfig(
+            components.AwsPrivateHostedZoneAttachmentConfig{
+                Kind: components.AWSPrivateHostedZoneTypeAwsPrivateHostedZoneAttachment,
+                HostedZoneID: "<id>",
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="create-private-dns" method="post" path="/v2/cloud-gateways/networks/{networkId}/private-dns" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreatePrivateDNS(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreatePrivateDNSRequest{
+        Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
+        PrivateDNSAttachmentConfig: sdkkonnectgo.Pointer(components.CreatePrivateDNSAttachmentConfigAwsPrivateHostedZoneAttachmentConfig(
+            components.AwsPrivateHostedZoneAttachmentConfig{
+                Kind: components.AWSPrivateHostedZoneTypeAwsPrivateHostedZoneAttachment,
+                HostedZoneID: "<id>",
+            },
+        )),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="create-private-dns" method="post" path="/v2/cloud-gateways/networks/{networkId}/private-dns" example="UnauthorizedExample" -->
 ```go
 package main
 
@@ -1309,9 +3167,449 @@ func main() {
 
 Updates a Private DNS by ID for a given network.
 
-### Example Usage
+### Example Usage: Configuration Api Access Enum Validation
 
-<!-- UsageSnippet language="go" operationID="update-private-dns" method="patch" path="/v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}" -->
+<!-- UsageSnippet language="go" operationID="update-private-dns" method="patch" path="/v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}" example="Configuration Api Access Enum Validation" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdatePrivateDNS(ctx, operations.UpdatePrivateDNSRequest{
+        NetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
+        PrivateDNSID: "1850820b-c69f-4a2a-b9be-bbcdbc5cd618",
+        PatchPrivateDNSRequest: components.CreatePatchPrivateDNSRequestPatchAwsPrivateDNSResolver(
+            components.PatchAwsPrivateDNSResolver{
+                Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
+                PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
+                    Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
+                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
+                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
+                            RemoteDNSServerIPAddresses: []string{
+                                "10.0.0.2",
+                            },
+                        },
+                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
+                            RemoteDNSServerIPAddresses: []string{
+                                "10.0.0.8",
+                            },
+                        },
+                    },
+                },
+            },
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Configuration Data-Plane Group Autopilot Base RPS Minimum
+
+<!-- UsageSnippet language="go" operationID="update-private-dns" method="patch" path="/v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}" example="Configuration Data-Plane Group Autopilot Base RPS Minimum" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdatePrivateDNS(ctx, operations.UpdatePrivateDNSRequest{
+        NetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
+        PrivateDNSID: "1850820b-c69f-4a2a-b9be-bbcdbc5cd618",
+        PatchPrivateDNSRequest: components.CreatePatchPrivateDNSRequestPatchAwsPrivateDNSResolver(
+            components.PatchAwsPrivateDNSResolver{
+                Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
+                PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
+                    Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
+                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
+                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
+                            RemoteDNSServerIPAddresses: []string{
+                                "10.0.0.2",
+                            },
+                        },
+                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
+                            RemoteDNSServerIPAddresses: []string{
+                                "10.0.0.8",
+                            },
+                        },
+                    },
+                },
+            },
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Configuration Data-Plane Group Static Request Instances Minimum
+
+<!-- UsageSnippet language="go" operationID="update-private-dns" method="patch" path="/v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}" example="Configuration Data-Plane Group Static Request Instances Minimum" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdatePrivateDNS(ctx, operations.UpdatePrivateDNSRequest{
+        NetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
+        PrivateDNSID: "1850820b-c69f-4a2a-b9be-bbcdbc5cd618",
+        PatchPrivateDNSRequest: components.CreatePatchPrivateDNSRequestPatchAwsPrivateDNSResolver(
+            components.PatchAwsPrivateDNSResolver{
+                Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
+                PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
+                    Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
+                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
+                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
+                            RemoteDNSServerIPAddresses: []string{
+                                "10.0.0.2",
+                            },
+                        },
+                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
+                            RemoteDNSServerIPAddresses: []string{
+                                "10.0.0.8",
+                            },
+                        },
+                    },
+                },
+            },
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Custom Domain Domain Length Too Short
+
+<!-- UsageSnippet language="go" operationID="update-private-dns" method="patch" path="/v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}" example="Custom Domain Domain Length Too Short" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdatePrivateDNS(ctx, operations.UpdatePrivateDNSRequest{
+        NetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
+        PrivateDNSID: "1850820b-c69f-4a2a-b9be-bbcdbc5cd618",
+        PatchPrivateDNSRequest: components.CreatePatchPrivateDNSRequestPatchAwsPrivateDNSResolver(
+            components.PatchAwsPrivateDNSResolver{
+                Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
+                PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
+                    Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
+                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
+                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
+                            RemoteDNSServerIPAddresses: []string{
+                                "10.0.0.2",
+                            },
+                        },
+                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
+                            RemoteDNSServerIPAddresses: []string{
+                                "10.0.0.8",
+                            },
+                        },
+                    },
+                },
+            },
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Network Name Length Exceeded
+
+<!-- UsageSnippet language="go" operationID="update-private-dns" method="patch" path="/v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}" example="Network Name Length Exceeded" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdatePrivateDNS(ctx, operations.UpdatePrivateDNSRequest{
+        NetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
+        PrivateDNSID: "1850820b-c69f-4a2a-b9be-bbcdbc5cd618",
+        PatchPrivateDNSRequest: components.CreatePatchPrivateDNSRequestPatchAwsPrivateDNSResolver(
+            components.PatchAwsPrivateDNSResolver{
+                Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
+                PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
+                    Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
+                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
+                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
+                            RemoteDNSServerIPAddresses: []string{
+                                "10.0.0.2",
+                            },
+                        },
+                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
+                            RemoteDNSServerIPAddresses: []string{
+                                "10.0.0.8",
+                            },
+                        },
+                    },
+                },
+            },
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="update-private-dns" method="patch" path="/v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdatePrivateDNS(ctx, operations.UpdatePrivateDNSRequest{
+        NetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
+        PrivateDNSID: "1850820b-c69f-4a2a-b9be-bbcdbc5cd618",
+        PatchPrivateDNSRequest: components.CreatePatchPrivateDNSRequestPatchAwsPrivateDNSResolver(
+            components.PatchAwsPrivateDNSResolver{
+                Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
+                PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
+                    Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
+                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
+                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
+                            RemoteDNSServerIPAddresses: []string{
+                                "10.0.0.2",
+                            },
+                        },
+                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
+                            RemoteDNSServerIPAddresses: []string{
+                                "10.0.0.8",
+                            },
+                        },
+                    },
+                },
+            },
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Transit Gateway Name Length Exceeded
+
+<!-- UsageSnippet language="go" operationID="update-private-dns" method="patch" path="/v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}" example="Transit Gateway Name Length Exceeded" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdatePrivateDNS(ctx, operations.UpdatePrivateDNSRequest{
+        NetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
+        PrivateDNSID: "1850820b-c69f-4a2a-b9be-bbcdbc5cd618",
+        PatchPrivateDNSRequest: components.CreatePatchPrivateDNSRequestPatchAwsPrivateDNSResolver(
+            components.PatchAwsPrivateDNSResolver{
+                Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
+                PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
+                    Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
+                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
+                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
+                            RemoteDNSServerIPAddresses: []string{
+                                "10.0.0.2",
+                            },
+                        },
+                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
+                            RemoteDNSServerIPAddresses: []string{
+                                "10.0.0.8",
+                            },
+                        },
+                    },
+                },
+            },
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="update-private-dns" method="patch" path="/v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdatePrivateDNS(ctx, operations.UpdatePrivateDNSRequest{
+        NetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
+        PrivateDNSID: "1850820b-c69f-4a2a-b9be-bbcdbc5cd618",
+        PatchPrivateDNSRequest: components.CreatePatchPrivateDNSRequestPatchAwsPrivateDNSResolver(
+            components.PatchAwsPrivateDNSResolver{
+                Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
+                PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
+                    Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
+                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
+                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
+                            RemoteDNSServerIPAddresses: []string{
+                                "10.0.0.2",
+                            },
+                        },
+                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
+                            RemoteDNSServerIPAddresses: []string{
+                                "10.0.0.8",
+                            },
+                        },
+                    },
+                },
+            },
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PrivateDNSResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="update-private-dns" method="patch" path="/v2/cloud-gateways/networks/{networkId}/private-dns/{privateDnsId}" example="UnauthorizedExample" -->
 ```go
 package main
 
@@ -1514,9 +3812,64 @@ func main() {
 
 Creates a new transit gateway for a given network.
 
-### Example Usage
+### Example Usage: Configuration Api Access Enum Validation
 
-<!-- UsageSnippet language="go" operationID="create-transit-gateway" method="post" path="/v2/cloud-gateways/networks/{networkId}/transit-gateways" -->
+<!-- UsageSnippet language="go" operationID="create-transit-gateway" method="post" path="/v2/cloud-gateways/networks/{networkId}/transit-gateways" example="Configuration Api Access Enum Validation" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateTransitGateway(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreateCreateTransitGatewayRequestAWSTransitGateway(
+        components.AWSTransitGateway{
+            Name: "us-east-2 transit gateway",
+            DNSConfig: []components.TransitGatewayDNSConfig{
+                components.TransitGatewayDNSConfig{
+                    RemoteDNSServerIPAddresses: []string{
+                        "10.0.0.2",
+                    },
+                    DomainProxyList: []string{
+                        "foobar.com",
+                    },
+                },
+            },
+            CidrBlocks: []string{
+                "10.0.0.0/8",
+                "100.64.0.0/10",
+                "172.16.0.0/12",
+            },
+            TransitGatewayAttachmentConfig: components.AwsTransitGatewayAttachmentConfig{
+                Kind: components.AWSTransitGatewayAttachmentTypeAwsTransitGatewayAttachment,
+                TransitGatewayID: "<id>",
+                RAMShareArn: "<value>",
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TransitGatewayResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Configuration Data-Plane Group Autopilot Base RPS Minimum
+
+<!-- UsageSnippet language="go" operationID="create-transit-gateway" method="post" path="/v2/cloud-gateways/networks/{networkId}/transit-gateways" example="Configuration Data-Plane Group Autopilot Base RPS Minimum" -->
 ```go
 package main
 
@@ -1548,6 +3901,54 @@ func main() {
                         "foobar.com",
                     },
                 },
+            },
+            CidrBlocks: []string{
+                "10.0.0.0/8",
+                "100.64.0.0/10",
+                "172.16.0.0/12",
+            },
+            TransitGatewayAttachmentConfig: components.AwsVpcPeeringGatewayAttachmentConfig{
+                Kind: components.AWSVPCPeeringAttachmentConfigAwsVpcPeeringAttachment,
+                PeerAccountID: "<id>",
+                PeerVpcID: "<id>",
+                PeerVpcRegion: "<value>",
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TransitGatewayResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Configuration Data-Plane Group Static Request Instances Minimum
+
+<!-- UsageSnippet language="go" operationID="create-transit-gateway" method="post" path="/v2/cloud-gateways/networks/{networkId}/transit-gateways" example="Configuration Data-Plane Group Static Request Instances Minimum" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateTransitGateway(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreateCreateTransitGatewayRequestAWSVpcPeeringGateway(
+        components.AWSVpcPeeringGateway{
+            Name: "us-east-2 transit gateway",
+            DNSConfig: []components.TransitGatewayDNSConfig{
                 components.TransitGatewayDNSConfig{
                     RemoteDNSServerIPAddresses: []string{
                         "10.0.0.2",
@@ -1567,6 +3968,336 @@ func main() {
                 PeerAccountID: "<id>",
                 PeerVpcID: "<id>",
                 PeerVpcRegion: "<value>",
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TransitGatewayResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Custom Domain Domain Length Too Short
+
+<!-- UsageSnippet language="go" operationID="create-transit-gateway" method="post" path="/v2/cloud-gateways/networks/{networkId}/transit-gateways" example="Custom Domain Domain Length Too Short" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateTransitGateway(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreateCreateTransitGatewayRequestAWSTransitGateway(
+        components.AWSTransitGateway{
+            Name: "us-east-2 transit gateway",
+            DNSConfig: []components.TransitGatewayDNSConfig{
+                components.TransitGatewayDNSConfig{
+                    RemoteDNSServerIPAddresses: []string{
+                        "10.0.0.2",
+                    },
+                    DomainProxyList: []string{
+                        "foobar.com",
+                    },
+                },
+            },
+            CidrBlocks: []string{
+                "10.0.0.0/8",
+                "100.64.0.0/10",
+                "172.16.0.0/12",
+            },
+            TransitGatewayAttachmentConfig: components.AwsTransitGatewayAttachmentConfig{
+                Kind: components.AWSTransitGatewayAttachmentTypeAwsTransitGatewayAttachment,
+                TransitGatewayID: "<id>",
+                RAMShareArn: "<value>",
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TransitGatewayResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Network Name Length Exceeded
+
+<!-- UsageSnippet language="go" operationID="create-transit-gateway" method="post" path="/v2/cloud-gateways/networks/{networkId}/transit-gateways" example="Network Name Length Exceeded" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateTransitGateway(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreateCreateTransitGatewayRequestAWSVpcPeeringGateway(
+        components.AWSVpcPeeringGateway{
+            Name: "us-east-2 transit gateway",
+            DNSConfig: []components.TransitGatewayDNSConfig{
+                components.TransitGatewayDNSConfig{
+                    RemoteDNSServerIPAddresses: []string{
+                        "10.0.0.2",
+                    },
+                    DomainProxyList: []string{
+                        "foobar.com",
+                    },
+                },
+            },
+            CidrBlocks: []string{
+                "10.0.0.0/8",
+                "100.64.0.0/10",
+                "172.16.0.0/12",
+            },
+            TransitGatewayAttachmentConfig: components.AwsVpcPeeringGatewayAttachmentConfig{
+                Kind: components.AWSVPCPeeringAttachmentConfigAwsVpcPeeringAttachment,
+                PeerAccountID: "<id>",
+                PeerVpcID: "<id>",
+                PeerVpcRegion: "<value>",
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TransitGatewayResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="create-transit-gateway" method="post" path="/v2/cloud-gateways/networks/{networkId}/transit-gateways" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateTransitGateway(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreateCreateTransitGatewayRequestAWSVpcPeeringGateway(
+        components.AWSVpcPeeringGateway{
+            Name: "us-east-2 transit gateway",
+            DNSConfig: []components.TransitGatewayDNSConfig{
+                components.TransitGatewayDNSConfig{
+                    RemoteDNSServerIPAddresses: []string{
+                        "10.0.0.2",
+                    },
+                    DomainProxyList: []string{
+                        "foobar.com",
+                    },
+                },
+            },
+            CidrBlocks: []string{
+                "10.0.0.0/8",
+                "100.64.0.0/10",
+                "172.16.0.0/12",
+            },
+            TransitGatewayAttachmentConfig: components.AwsVpcPeeringGatewayAttachmentConfig{
+                Kind: components.AWSVPCPeeringAttachmentConfigAwsVpcPeeringAttachment,
+                PeerAccountID: "<id>",
+                PeerVpcID: "<id>",
+                PeerVpcRegion: "<value>",
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TransitGatewayResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Transit Gateway Name Length Exceeded
+
+<!-- UsageSnippet language="go" operationID="create-transit-gateway" method="post" path="/v2/cloud-gateways/networks/{networkId}/transit-gateways" example="Transit Gateway Name Length Exceeded" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateTransitGateway(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreateCreateTransitGatewayRequestAWSVpcPeeringGateway(
+        components.AWSVpcPeeringGateway{
+            Name: "us-east-2 transit gateway",
+            DNSConfig: []components.TransitGatewayDNSConfig{
+                components.TransitGatewayDNSConfig{
+                    RemoteDNSServerIPAddresses: []string{
+                        "10.0.0.2",
+                    },
+                    DomainProxyList: []string{
+                        "foobar.com",
+                    },
+                },
+            },
+            CidrBlocks: []string{
+                "10.0.0.0/8",
+                "100.64.0.0/10",
+                "172.16.0.0/12",
+            },
+            TransitGatewayAttachmentConfig: components.AwsVpcPeeringGatewayAttachmentConfig{
+                Kind: components.AWSVPCPeeringAttachmentConfigAwsVpcPeeringAttachment,
+                PeerAccountID: "<id>",
+                PeerVpcID: "<id>",
+                PeerVpcRegion: "<value>",
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TransitGatewayResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="create-transit-gateway" method="post" path="/v2/cloud-gateways/networks/{networkId}/transit-gateways" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateTransitGateway(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreateCreateTransitGatewayRequestAWSTransitGateway(
+        components.AWSTransitGateway{
+            Name: "us-east-2 transit gateway",
+            DNSConfig: []components.TransitGatewayDNSConfig{
+                components.TransitGatewayDNSConfig{
+                    RemoteDNSServerIPAddresses: []string{
+                        "10.0.0.2",
+                    },
+                    DomainProxyList: []string{
+                        "foobar.com",
+                    },
+                },
+            },
+            CidrBlocks: []string{
+                "10.0.0.0/8",
+                "100.64.0.0/10",
+                "172.16.0.0/12",
+            },
+            TransitGatewayAttachmentConfig: components.AwsTransitGatewayAttachmentConfig{
+                Kind: components.AWSTransitGatewayAttachmentTypeAwsTransitGatewayAttachment,
+                TransitGatewayID: "<id>",
+                RAMShareArn: "<value>",
+            },
+        },
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.TransitGatewayResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="create-transit-gateway" method="post" path="/v2/cloud-gateways/networks/{networkId}/transit-gateways" example="UnauthorizedExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateTransitGateway(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreateCreateTransitGatewayRequestAzureTransitGateway(
+        components.AzureTransitGateway{
+            Name: "us-east-2 transit gateway",
+            DNSConfig: []components.TransitGatewayDNSConfig{
+                components.TransitGatewayDNSConfig{
+                    RemoteDNSServerIPAddresses: []string{
+                        "10.0.0.2",
+                    },
+                    DomainProxyList: []string{
+                        "foobar.com",
+                    },
+                },
+            },
+            TransitGatewayAttachmentConfig: components.AzureVNETPeeringAttachmentConfig{
+                Kind: components.AzureVNETPeeringAttachmentTypeAzureVnetPeeringAttachment,
+                TenantID: "<id>",
+                SubscriptionID: "<id>",
+                ResourceGroupName: "<value>",
+                VnetName: "<value>",
             },
         },
     ))
