@@ -32,10 +32,6 @@ type ListDevelopersByApplicationRequest struct {
 	// Sorts a set of developers for an application. Supported sort attributes are:
 	//
 	//
-	//
-	//
-	//
-	//
 	//   - id
 	//
 	Sort *string `queryParam:"style=form,explode=true,name=sort"`

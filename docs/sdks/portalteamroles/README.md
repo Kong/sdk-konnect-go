@@ -17,7 +17,7 @@ List roles that can be assigned to teams in a portal. Each role provides a set o
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-portal-roles" method="get" path="/v3/portal-roles" -->
+<!-- UsageSnippet language="go" operationID="list-portal-roles" method="get" path="/v3/portal-roles" example="Example 1" -->
 ```go
 package main
 
@@ -72,7 +72,7 @@ Lists the roles belonging to a developer team. Each role provides permissions to
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-portal-team-roles" method="get" path="/v3/portals/{portalId}/teams/{teamId}/assigned-roles" -->
+<!-- UsageSnippet language="go" operationID="list-portal-team-roles" method="get" path="/v3/portals/{portalId}/teams/{teamId}/assigned-roles" example="Example 1" -->
 ```go
 package main
 
@@ -133,9 +133,439 @@ func main() {
 
 Assign a role to a developer team. This associates the set of permissions in a role with the team, so that they will be applied to any developer who is a member of the team.
 
-### Example Usage
+### Example Usage: API Consumer
 
-<!-- UsageSnippet language="go" operationID="assign-role-to-portal-teams" method="post" path="/v3/portals/{portalId}/teams/{teamId}/assigned-roles" -->
+<!-- UsageSnippet language="go" operationID="assign-role-to-portal-teams" method="post" path="/v3/portals/{portalId}/teams/{teamId}/assigned-roles" example="API Consumer" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeamRoles.AssignRoleToPortalTeams(ctx, operations.AssignRoleToPortalTeamsRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TeamID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+        PortalAssignRoleRequest: &components.PortalAssignRoleRequest{
+            RoleName: sdkkonnectgo.Pointer("API Consumer"),
+            EntityID: sdkkonnectgo.Pointer("18ee2573-dec0-4b83-be99-fa7700bcdc61"),
+            EntityTypeName: sdkkonnectgo.Pointer("Services"),
+            EntityRegion: components.PortalAssignRoleRequestEntityRegionUs.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAssignedRoleResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: API Viewer
+
+<!-- UsageSnippet language="go" operationID="assign-role-to-portal-teams" method="post" path="/v3/portals/{portalId}/teams/{teamId}/assigned-roles" example="API Viewer" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeamRoles.AssignRoleToPortalTeams(ctx, operations.AssignRoleToPortalTeamsRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TeamID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+        PortalAssignRoleRequest: &components.PortalAssignRoleRequest{
+            RoleName: sdkkonnectgo.Pointer("API Viewer"),
+            EntityID: sdkkonnectgo.Pointer("18ee2573-dec0-4b83-be99-fa7700bcdc61"),
+            EntityTypeName: sdkkonnectgo.Pointer("Services"),
+            EntityRegion: components.PortalAssignRoleRequestEntityRegionUs.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAssignedRoleResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: All Regions Example
+
+<!-- UsageSnippet language="go" operationID="assign-role-to-portal-teams" method="post" path="/v3/portals/{portalId}/teams/{teamId}/assigned-roles" example="All Regions Example" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeamRoles.AssignRoleToPortalTeams(ctx, operations.AssignRoleToPortalTeamsRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TeamID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+        PortalAssignRoleRequest: &components.PortalAssignRoleRequest{
+            RoleName: sdkkonnectgo.Pointer("API Viewer"),
+            EntityID: sdkkonnectgo.Pointer("18ee2573-dec0-4b83-be99-fa7700bcdc61"),
+            EntityTypeName: sdkkonnectgo.Pointer("Services"),
+            EntityRegion: components.PortalAssignRoleRequestEntityRegionUs.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAssignedRoleResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: AssignRoleBadRequestExample1
+
+<!-- UsageSnippet language="go" operationID="assign-role-to-portal-teams" method="post" path="/v3/portals/{portalId}/teams/{teamId}/assigned-roles" example="AssignRoleBadRequestExample1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeamRoles.AssignRoleToPortalTeams(ctx, operations.AssignRoleToPortalTeamsRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TeamID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+        PortalAssignRoleRequest: &components.PortalAssignRoleRequest{
+            RoleName: sdkkonnectgo.Pointer("API Viewer"),
+            EntityID: sdkkonnectgo.Pointer("18ee2573-dec0-4b83-be99-fa7700bcdc61"),
+            EntityTypeName: sdkkonnectgo.Pointer("Services"),
+            EntityRegion: components.PortalAssignRoleRequestEntityRegionUs.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAssignedRoleResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: AssignRoleBadRequestExample2
+
+<!-- UsageSnippet language="go" operationID="assign-role-to-portal-teams" method="post" path="/v3/portals/{portalId}/teams/{teamId}/assigned-roles" example="AssignRoleBadRequestExample2" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeamRoles.AssignRoleToPortalTeams(ctx, operations.AssignRoleToPortalTeamsRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TeamID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+        PortalAssignRoleRequest: &components.PortalAssignRoleRequest{
+            RoleName: sdkkonnectgo.Pointer("API Viewer"),
+            EntityID: sdkkonnectgo.Pointer("18ee2573-dec0-4b83-be99-fa7700bcdc61"),
+            EntityTypeName: sdkkonnectgo.Pointer("Services"),
+            EntityRegion: components.PortalAssignRoleRequestEntityRegionUs.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAssignedRoleResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: AssignRoleBadRequestExample3
+
+<!-- UsageSnippet language="go" operationID="assign-role-to-portal-teams" method="post" path="/v3/portals/{portalId}/teams/{teamId}/assigned-roles" example="AssignRoleBadRequestExample3" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeamRoles.AssignRoleToPortalTeams(ctx, operations.AssignRoleToPortalTeamsRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TeamID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+        PortalAssignRoleRequest: &components.PortalAssignRoleRequest{
+            RoleName: sdkkonnectgo.Pointer("API Viewer"),
+            EntityID: sdkkonnectgo.Pointer("18ee2573-dec0-4b83-be99-fa7700bcdc61"),
+            EntityTypeName: sdkkonnectgo.Pointer("Services"),
+            EntityRegion: components.PortalAssignRoleRequestEntityRegionUs.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAssignedRoleResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: AssignRoleBadRequestExample4
+
+<!-- UsageSnippet language="go" operationID="assign-role-to-portal-teams" method="post" path="/v3/portals/{portalId}/teams/{teamId}/assigned-roles" example="AssignRoleBadRequestExample4" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeamRoles.AssignRoleToPortalTeams(ctx, operations.AssignRoleToPortalTeamsRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TeamID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+        PortalAssignRoleRequest: &components.PortalAssignRoleRequest{
+            RoleName: sdkkonnectgo.Pointer("API Viewer"),
+            EntityID: sdkkonnectgo.Pointer("18ee2573-dec0-4b83-be99-fa7700bcdc61"),
+            EntityTypeName: sdkkonnectgo.Pointer("Services"),
+            EntityRegion: components.PortalAssignRoleRequestEntityRegionUs.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAssignedRoleResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="assign-role-to-portal-teams" method="post" path="/v3/portals/{portalId}/teams/{teamId}/assigned-roles" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeamRoles.AssignRoleToPortalTeams(ctx, operations.AssignRoleToPortalTeamsRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TeamID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+        PortalAssignRoleRequest: &components.PortalAssignRoleRequest{
+            RoleName: sdkkonnectgo.Pointer("API Viewer"),
+            EntityID: sdkkonnectgo.Pointer("18ee2573-dec0-4b83-be99-fa7700bcdc61"),
+            EntityTypeName: sdkkonnectgo.Pointer("Services"),
+            EntityRegion: components.PortalAssignRoleRequestEntityRegionUs.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAssignedRoleResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: US Example
+
+<!-- UsageSnippet language="go" operationID="assign-role-to-portal-teams" method="post" path="/v3/portals/{portalId}/teams/{teamId}/assigned-roles" example="US Example" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeamRoles.AssignRoleToPortalTeams(ctx, operations.AssignRoleToPortalTeamsRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TeamID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+        PortalAssignRoleRequest: &components.PortalAssignRoleRequest{
+            RoleName: sdkkonnectgo.Pointer("API Viewer"),
+            EntityID: sdkkonnectgo.Pointer("18ee2573-dec0-4b83-be99-fa7700bcdc61"),
+            EntityTypeName: sdkkonnectgo.Pointer("Services"),
+            EntityRegion: components.PortalAssignRoleRequestEntityRegionUs.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAssignedRoleResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="assign-role-to-portal-teams" method="post" path="/v3/portals/{portalId}/teams/{teamId}/assigned-roles" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeamRoles.AssignRoleToPortalTeams(ctx, operations.AssignRoleToPortalTeamsRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        TeamID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+        PortalAssignRoleRequest: &components.PortalAssignRoleRequest{
+            RoleName: sdkkonnectgo.Pointer("API Viewer"),
+            EntityID: sdkkonnectgo.Pointer("18ee2573-dec0-4b83-be99-fa7700bcdc61"),
+            EntityTypeName: sdkkonnectgo.Pointer("Services"),
+            EntityRegion: components.PortalAssignRoleRequestEntityRegionUs.ToPointer(),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalAssignedRoleResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="assign-role-to-portal-teams" method="post" path="/v3/portals/{portalId}/teams/{teamId}/assigned-roles" example="UnauthorizedExample" -->
 ```go
 package main
 

@@ -11,3 +11,9 @@ Request schema for updating a Private DNS.
 patchPrivateDNSRequest := components.CreatePatchPrivateDNSRequestPatchAwsPrivateDNSResolver(components.PatchAwsPrivateDNSResolver{/* values here */})
 ```
 
+### PatchAzurePrivateDNSResolver
+
+```go
+patchPrivateDNSRequest := components.CreatePatchPrivateDNSRequestPatchAzurePrivateDNSResolver(components.PatchAzurePrivateDNSResolver{/* values here */})
+```
+

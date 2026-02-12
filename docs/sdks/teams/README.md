@@ -16,7 +16,7 @@ Returns an array of team objects containing information about the Konnect Teams.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-teams" method="get" path="/v3/teams" -->
+<!-- UsageSnippet language="go" operationID="list-teams" method="get" path="/v3/teams" example="Team Collection" -->
 ```go
 package main
 
@@ -86,9 +86,528 @@ func main() {
 
 Creates a team in the Konnect Organization. 
 
-### Example Usage
+### Example Usage: Authentication Settings cannot be all Disabled
 
-<!-- UsageSnippet language="go" operationID="create-team" method="post" path="/v3/teams" -->
+<!-- UsageSnippet language="go" operationID="create-team" method="post" path="/v3/teams" example="Authentication Settings cannot be all Disabled" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.CreateTeam(ctx, &components.CreateTeam{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) team."),
+        Labels: map[string]string{
+            "env": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Cannot be Blank
+
+<!-- UsageSnippet language="go" operationID="create-team" method="post" path="/v3/teams" example="Cannot be Blank" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.CreateTeam(ctx, &components.CreateTeam{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) team."),
+        Labels: map[string]string{
+            "env": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Example Request Body
+
+<!-- UsageSnippet language="go" operationID="create-team" method="post" path="/v3/teams" example="Example Request Body" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.CreateTeam(ctx, &components.CreateTeam{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) team."),
+        Labels: map[string]string{
+            "env": "test",
+            "service": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: IdP configuration is required
+
+<!-- UsageSnippet language="go" operationID="create-team" method="post" path="/v3/teams" example="IdP configuration is required" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.CreateTeam(ctx, &components.CreateTeam{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) team."),
+        Labels: map[string]string{
+            "env": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Invalid ID format
+
+<!-- UsageSnippet language="go" operationID="create-team" method="post" path="/v3/teams" example="Invalid ID format" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.CreateTeam(ctx, &components.CreateTeam{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) team."),
+        Labels: map[string]string{
+            "env": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Invalid Permissions
+
+<!-- UsageSnippet language="go" operationID="create-team" method="post" path="/v3/teams" example="Invalid Permissions" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.CreateTeam(ctx, &components.CreateTeam{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) team."),
+        Labels: map[string]string{
+            "env": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Must be a valid UUID v4
+
+<!-- UsageSnippet language="go" operationID="create-team" method="post" path="/v3/teams" example="Must be a valid UUID v4" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.CreateTeam(ctx, &components.CreateTeam{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) team."),
+        Labels: map[string]string{
+            "env": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: OIDC needs an IdP configuration
+
+<!-- UsageSnippet language="go" operationID="create-team" method="post" path="/v3/teams" example="OIDC needs an IdP configuration" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.CreateTeam(ctx, &components.CreateTeam{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) team."),
+        Labels: map[string]string{
+            "env": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Password Complexity
+
+<!-- UsageSnippet language="go" operationID="create-team" method="post" path="/v3/teams" example="Password Complexity" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.CreateTeam(ctx, &components.CreateTeam{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) team."),
+        Labels: map[string]string{
+            "env": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Permission Denied
+
+<!-- UsageSnippet language="go" operationID="create-team" method="post" path="/v3/teams" example="Permission Denied" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.CreateTeam(ctx, &components.CreateTeam{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) team."),
+        Labels: map[string]string{
+            "env": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Request Format is Invalid
+
+<!-- UsageSnippet language="go" operationID="create-team" method="post" path="/v3/teams" example="Request Format is Invalid" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.CreateTeam(ctx, &components.CreateTeam{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) team."),
+        Labels: map[string]string{
+            "env": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Single team response
+
+<!-- UsageSnippet language="go" operationID="create-team" method="post" path="/v3/teams" example="Single team response" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.CreateTeam(ctx, &components.CreateTeam{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) team."),
+        Labels: map[string]string{
+            "env": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: System teams cannot be modified
+
+<!-- UsageSnippet language="go" operationID="create-team" method="post" path="/v3/teams" example="System teams cannot be modified" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.CreateTeam(ctx, &components.CreateTeam{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) team."),
+        Labels: map[string]string{
+            "env": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unsupported filter operation
+
+<!-- UsageSnippet language="go" operationID="create-team" method="post" path="/v3/teams" example="Unsupported filter operation" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.CreateTeam(ctx, &components.CreateTeam{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) team."),
+        Labels: map[string]string{
+            "env": "test",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Username or Password invalid
+
+<!-- UsageSnippet language="go" operationID="create-team" method="post" path="/v3/teams" example="Username or Password invalid" -->
 ```go
 package main
 
@@ -150,7 +669,7 @@ Returns information about a team from a given team ID.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-team" method="get" path="/v3/teams/{teamId}" -->
+<!-- UsageSnippet language="go" operationID="get-team" method="get" path="/v3/teams/{teamId}" example="Single team response" -->
 ```go
 package main
 
@@ -204,9 +723,453 @@ func main() {
 
 Updates an individual team.
 
-### Example Usage
+### Example Usage: Authentication Settings cannot be all Disabled
 
-<!-- UsageSnippet language="go" operationID="update-team" method="patch" path="/v3/teams/{teamId}" -->
+<!-- UsageSnippet language="go" operationID="update-team" method="patch" path="/v3/teams/{teamId}" example="Authentication Settings cannot be all Disabled" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
+        Name: sdkkonnectgo.Pointer("IDM - Developers"),
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Cannot be Blank
+
+<!-- UsageSnippet language="go" operationID="update-team" method="patch" path="/v3/teams/{teamId}" example="Cannot be Blank" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
+        Name: sdkkonnectgo.Pointer("IDM - Developers"),
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Example Request Body
+
+<!-- UsageSnippet language="go" operationID="update-team" method="patch" path="/v3/teams/{teamId}" example="Example Request Body" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
+        Name: sdkkonnectgo.Pointer("IDM - Developers"),
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("prod"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: IdP configuration is required
+
+<!-- UsageSnippet language="go" operationID="update-team" method="patch" path="/v3/teams/{teamId}" example="IdP configuration is required" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
+        Name: sdkkonnectgo.Pointer("IDM - Developers"),
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Invalid ID format
+
+<!-- UsageSnippet language="go" operationID="update-team" method="patch" path="/v3/teams/{teamId}" example="Invalid ID format" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
+        Name: sdkkonnectgo.Pointer("IDM - Developers"),
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Must be a valid UUID v4
+
+<!-- UsageSnippet language="go" operationID="update-team" method="patch" path="/v3/teams/{teamId}" example="Must be a valid UUID v4" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
+        Name: sdkkonnectgo.Pointer("IDM - Developers"),
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Not Found
+
+<!-- UsageSnippet language="go" operationID="update-team" method="patch" path="/v3/teams/{teamId}" example="Not Found" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
+        Name: sdkkonnectgo.Pointer("IDM - Developers"),
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: OIDC needs an IdP configuration
+
+<!-- UsageSnippet language="go" operationID="update-team" method="patch" path="/v3/teams/{teamId}" example="OIDC needs an IdP configuration" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
+        Name: sdkkonnectgo.Pointer("IDM - Developers"),
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Password Complexity
+
+<!-- UsageSnippet language="go" operationID="update-team" method="patch" path="/v3/teams/{teamId}" example="Password Complexity" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
+        Name: sdkkonnectgo.Pointer("IDM - Developers"),
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Request Format is Invalid
+
+<!-- UsageSnippet language="go" operationID="update-team" method="patch" path="/v3/teams/{teamId}" example="Request Format is Invalid" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
+        Name: sdkkonnectgo.Pointer("IDM - Developers"),
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Single team response
+
+<!-- UsageSnippet language="go" operationID="update-team" method="patch" path="/v3/teams/{teamId}" example="Single team response" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
+        Name: sdkkonnectgo.Pointer("IDM - Developers"),
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: System teams cannot be modified
+
+<!-- UsageSnippet language="go" operationID="update-team" method="patch" path="/v3/teams/{teamId}" example="System teams cannot be modified" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
+        Name: sdkkonnectgo.Pointer("IDM - Developers"),
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Team != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unsupported filter operation
+
+<!-- UsageSnippet language="go" operationID="update-team" method="patch" path="/v3/teams/{teamId}" example="Unsupported filter operation" -->
 ```go
 package main
 

@@ -18,4 +18,5 @@ The type of entity.
 | `EntityTypeNameMeshControlPlanes`         | Mesh Control Planes                       |
 | `EntityTypeNameNetworks`                  | Networks                                  |
 | `EntityTypeNamePortals`                   | Portals                                   |
+| `EntityTypeNameReports`                   | Reports                                   |
 | `EntityTypeNameServiceHub`                | Service Hub                               |

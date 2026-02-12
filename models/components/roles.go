@@ -2093,7 +2093,7 @@ func (e *RolesDashboardsName) UnmarshalJSON(data []byte) error {
 type RolesDashboardsRolesName string
 
 const (
-	RolesDashboardsRolesNameViewer RolesDashboardsRolesName = "Viewer"
+	RolesDashboardsRolesNameAdmin RolesDashboardsRolesName = "Admin"
 )
 
 func (e RolesDashboardsRolesName) ToPointer() *RolesDashboardsRolesName {
@@ -2105,7 +2105,7 @@ func (e *RolesDashboardsRolesName) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "Viewer":
+	case "Admin":
 		*e = RolesDashboardsRolesName(v)
 		return nil
 	default:
@@ -2116,7 +2116,7 @@ func (e *RolesDashboardsRolesName) UnmarshalJSON(data []byte) error {
 type RolesDashboardsDescription string
 
 const (
-	RolesDashboardsDescriptionAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics RolesDashboardsDescription = "Allows users to view any Dashboards content in Konnect Analytics."
+	RolesDashboardsDescriptionAllowsUsersToEditDeleteAndShareADashboardInKonnectAnalytics RolesDashboardsDescription = "Allows users to edit, delete, and share a Dashboard in Konnect Analytics."
 )
 
 func (e RolesDashboardsDescription) ToPointer() *RolesDashboardsDescription {
@@ -2128,7 +2128,7 @@ func (e *RolesDashboardsDescription) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	switch v {
-	case "Allows users to view any Dashboards content in Konnect Analytics.":
+	case "Allows users to edit, delete, and share a Dashboard in Konnect Analytics.":
 		*e = RolesDashboardsDescription(v)
 		return nil
 	default:
@@ -2136,27 +2136,246 @@ func (e *RolesDashboardsDescription) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type RolesDashboardsViewer struct {
+type RolesDashboardsAdmin struct {
 	Name        RolesDashboardsRolesName   `json:"name"`
 	Description RolesDashboardsDescription `json:"description"`
 }
 
-func (r *RolesDashboardsViewer) GetName() RolesDashboardsRolesName {
+func (r *RolesDashboardsAdmin) GetName() RolesDashboardsRolesName {
 	if r == nil {
 		return RolesDashboardsRolesName("")
 	}
 	return r.Name
 }
 
-func (r *RolesDashboardsViewer) GetDescription() RolesDashboardsDescription {
+func (r *RolesDashboardsAdmin) GetDescription() RolesDashboardsDescription {
 	if r == nil {
 		return RolesDashboardsDescription("")
 	}
 	return r.Description
 }
 
+type RolesDashboardsRolesCreatorName string
+
+const (
+	RolesDashboardsRolesCreatorNameCreator RolesDashboardsRolesCreatorName = "Creator"
+)
+
+func (e RolesDashboardsRolesCreatorName) ToPointer() *RolesDashboardsRolesCreatorName {
+	return &e
+}
+func (e *RolesDashboardsRolesCreatorName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Creator":
+		*e = RolesDashboardsRolesCreatorName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesDashboardsRolesCreatorName: %v", v)
+	}
+}
+
+type RolesDashboardsRolesDescription string
+
+const (
+	RolesDashboardsRolesDescriptionAllowsUsersToCreateANewDashboardInKonnectAnalytics RolesDashboardsRolesDescription = "Allows users to create a new Dashboard in Konnect Analytics."
+)
+
+func (e RolesDashboardsRolesDescription) ToPointer() *RolesDashboardsRolesDescription {
+	return &e
+}
+func (e *RolesDashboardsRolesDescription) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Allows users to create a new Dashboard in Konnect Analytics.":
+		*e = RolesDashboardsRolesDescription(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesDashboardsRolesDescription: %v", v)
+	}
+}
+
+type RolesDashboardsCreator struct {
+	Name        RolesDashboardsRolesCreatorName `json:"name"`
+	Description RolesDashboardsRolesDescription `json:"description"`
+}
+
+func (r *RolesDashboardsCreator) GetName() RolesDashboardsRolesCreatorName {
+	if r == nil {
+		return RolesDashboardsRolesCreatorName("")
+	}
+	return r.Name
+}
+
+func (r *RolesDashboardsCreator) GetDescription() RolesDashboardsRolesDescription {
+	if r == nil {
+		return RolesDashboardsRolesDescription("")
+	}
+	return r.Description
+}
+
+type RolesDashboardsRolesEditorName string
+
+const (
+	RolesDashboardsRolesEditorNameEditor RolesDashboardsRolesEditorName = "Editor"
+)
+
+func (e RolesDashboardsRolesEditorName) ToPointer() *RolesDashboardsRolesEditorName {
+	return &e
+}
+func (e *RolesDashboardsRolesEditorName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Editor":
+		*e = RolesDashboardsRolesEditorName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesDashboardsRolesEditorName: %v", v)
+	}
+}
+
+type RolesDashboardsRolesEditorDescription string
+
+const (
+	RolesDashboardsRolesEditorDescriptionAllowsUsersToEditADashboardInKonnectAnalytics RolesDashboardsRolesEditorDescription = "Allows users to edit a Dashboard in Konnect Analytics."
+)
+
+func (e RolesDashboardsRolesEditorDescription) ToPointer() *RolesDashboardsRolesEditorDescription {
+	return &e
+}
+func (e *RolesDashboardsRolesEditorDescription) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Allows users to edit a Dashboard in Konnect Analytics.":
+		*e = RolesDashboardsRolesEditorDescription(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesDashboardsRolesEditorDescription: %v", v)
+	}
+}
+
+type Editor struct {
+	Name        RolesDashboardsRolesEditorName        `json:"name"`
+	Description RolesDashboardsRolesEditorDescription `json:"description"`
+}
+
+func (e *Editor) GetName() RolesDashboardsRolesEditorName {
+	if e == nil {
+		return RolesDashboardsRolesEditorName("")
+	}
+	return e.Name
+}
+
+func (e *Editor) GetDescription() RolesDashboardsRolesEditorDescription {
+	if e == nil {
+		return RolesDashboardsRolesEditorDescription("")
+	}
+	return e.Description
+}
+
+type RolesDashboardsRolesViewerName string
+
+const (
+	RolesDashboardsRolesViewerNameViewer RolesDashboardsRolesViewerName = "Viewer"
+)
+
+func (e RolesDashboardsRolesViewerName) ToPointer() *RolesDashboardsRolesViewerName {
+	return &e
+}
+func (e *RolesDashboardsRolesViewerName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Viewer":
+		*e = RolesDashboardsRolesViewerName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesDashboardsRolesViewerName: %v", v)
+	}
+}
+
+type RolesDashboardsRolesViewerDescription string
+
+const (
+	RolesDashboardsRolesViewerDescriptionAllowsUsersToViewAnyDashboardsContentInKonnectAnalytics RolesDashboardsRolesViewerDescription = "Allows users to view any Dashboards content in Konnect Analytics."
+)
+
+func (e RolesDashboardsRolesViewerDescription) ToPointer() *RolesDashboardsRolesViewerDescription {
+	return &e
+}
+func (e *RolesDashboardsRolesViewerDescription) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Allows users to view any Dashboards content in Konnect Analytics.":
+		*e = RolesDashboardsRolesViewerDescription(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesDashboardsRolesViewerDescription: %v", v)
+	}
+}
+
+type RolesDashboardsViewer struct {
+	Name        RolesDashboardsRolesViewerName        `json:"name"`
+	Description RolesDashboardsRolesViewerDescription `json:"description"`
+}
+
+func (r *RolesDashboardsViewer) GetName() RolesDashboardsRolesViewerName {
+	if r == nil {
+		return RolesDashboardsRolesViewerName("")
+	}
+	return r.Name
+}
+
+func (r *RolesDashboardsViewer) GetDescription() RolesDashboardsRolesViewerDescription {
+	if r == nil {
+		return RolesDashboardsRolesViewerDescription("")
+	}
+	return r.Description
+}
+
 type RolesDashboardsRoles struct {
-	Viewer *RolesDashboardsViewer `json:"viewer,omitempty"`
+	Admin   *RolesDashboardsAdmin   `json:"admin,omitempty"`
+	Creator *RolesDashboardsCreator `json:"creator,omitempty"`
+	Editor  *Editor                 `json:"editor,omitempty"`
+	Viewer  *RolesDashboardsViewer  `json:"viewer,omitempty"`
+}
+
+func (r *RolesDashboardsRoles) GetAdmin() *RolesDashboardsAdmin {
+	if r == nil {
+		return nil
+	}
+	return r.Admin
+}
+
+func (r *RolesDashboardsRoles) GetCreator() *RolesDashboardsCreator {
+	if r == nil {
+		return nil
+	}
+	return r.Creator
+}
+
+func (r *RolesDashboardsRoles) GetEditor() *Editor {
+	if r == nil {
+		return nil
+	}
+	return r.Editor
 }
 
 func (r *RolesDashboardsRoles) GetViewer() *RolesDashboardsViewer {
@@ -2185,6 +2404,343 @@ func (d *Dashboards) GetRoles() RolesDashboardsRoles {
 	return d.Roles
 }
 
+type RolesReportsName string
+
+const (
+	RolesReportsNameReports RolesReportsName = "Reports"
+)
+
+func (e RolesReportsName) ToPointer() *RolesReportsName {
+	return &e
+}
+func (e *RolesReportsName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Reports":
+		*e = RolesReportsName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesReportsName: %v", v)
+	}
+}
+
+type RolesReportsRolesName string
+
+const (
+	RolesReportsRolesNameAdmin RolesReportsRolesName = "Admin"
+)
+
+func (e RolesReportsRolesName) ToPointer() *RolesReportsRolesName {
+	return &e
+}
+func (e *RolesReportsRolesName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Admin":
+		*e = RolesReportsRolesName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesReportsRolesName: %v", v)
+	}
+}
+
+type RolesReportsDescription string
+
+const (
+	RolesReportsDescriptionAllowsUsersToEditDeleteAndShareAReportInKonnectAnalytics RolesReportsDescription = "Allows users to edit, delete, and share a Report in Konnect Analytics."
+)
+
+func (e RolesReportsDescription) ToPointer() *RolesReportsDescription {
+	return &e
+}
+func (e *RolesReportsDescription) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Allows users to edit, delete, and share a Report in Konnect Analytics.":
+		*e = RolesReportsDescription(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesReportsDescription: %v", v)
+	}
+}
+
+type RolesReportsAdmin struct {
+	Name        RolesReportsRolesName   `json:"name"`
+	Description RolesReportsDescription `json:"description"`
+}
+
+func (r *RolesReportsAdmin) GetName() RolesReportsRolesName {
+	if r == nil {
+		return RolesReportsRolesName("")
+	}
+	return r.Name
+}
+
+func (r *RolesReportsAdmin) GetDescription() RolesReportsDescription {
+	if r == nil {
+		return RolesReportsDescription("")
+	}
+	return r.Description
+}
+
+type RolesReportsRolesCreatorName string
+
+const (
+	RolesReportsRolesCreatorNameCreator RolesReportsRolesCreatorName = "Creator"
+)
+
+func (e RolesReportsRolesCreatorName) ToPointer() *RolesReportsRolesCreatorName {
+	return &e
+}
+func (e *RolesReportsRolesCreatorName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Creator":
+		*e = RolesReportsRolesCreatorName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesReportsRolesCreatorName: %v", v)
+	}
+}
+
+type RolesReportsRolesDescription string
+
+const (
+	RolesReportsRolesDescriptionAllowsUsersToCreateANewReportInKonnectAnalytics RolesReportsRolesDescription = "Allows users to create a new Report in Konnect Analytics."
+)
+
+func (e RolesReportsRolesDescription) ToPointer() *RolesReportsRolesDescription {
+	return &e
+}
+func (e *RolesReportsRolesDescription) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Allows users to create a new Report in Konnect Analytics.":
+		*e = RolesReportsRolesDescription(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesReportsRolesDescription: %v", v)
+	}
+}
+
+type RolesReportsCreator struct {
+	Name        RolesReportsRolesCreatorName `json:"name"`
+	Description RolesReportsRolesDescription `json:"description"`
+}
+
+func (r *RolesReportsCreator) GetName() RolesReportsRolesCreatorName {
+	if r == nil {
+		return RolesReportsRolesCreatorName("")
+	}
+	return r.Name
+}
+
+func (r *RolesReportsCreator) GetDescription() RolesReportsRolesDescription {
+	if r == nil {
+		return RolesReportsRolesDescription("")
+	}
+	return r.Description
+}
+
+type RolesReportsRolesEditorName string
+
+const (
+	RolesReportsRolesEditorNameEditor RolesReportsRolesEditorName = "Editor"
+)
+
+func (e RolesReportsRolesEditorName) ToPointer() *RolesReportsRolesEditorName {
+	return &e
+}
+func (e *RolesReportsRolesEditorName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Editor":
+		*e = RolesReportsRolesEditorName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesReportsRolesEditorName: %v", v)
+	}
+}
+
+type RolesReportsRolesEditorDescription string
+
+const (
+	RolesReportsRolesEditorDescriptionAllowsUsersToEditAReportInKonnectAnalytics RolesReportsRolesEditorDescription = "Allows users to edit a Report in Konnect Analytics."
+)
+
+func (e RolesReportsRolesEditorDescription) ToPointer() *RolesReportsRolesEditorDescription {
+	return &e
+}
+func (e *RolesReportsRolesEditorDescription) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Allows users to edit a Report in Konnect Analytics.":
+		*e = RolesReportsRolesEditorDescription(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesReportsRolesEditorDescription: %v", v)
+	}
+}
+
+type RolesEditor struct {
+	Name        RolesReportsRolesEditorName        `json:"name"`
+	Description RolesReportsRolesEditorDescription `json:"description"`
+}
+
+func (r *RolesEditor) GetName() RolesReportsRolesEditorName {
+	if r == nil {
+		return RolesReportsRolesEditorName("")
+	}
+	return r.Name
+}
+
+func (r *RolesEditor) GetDescription() RolesReportsRolesEditorDescription {
+	if r == nil {
+		return RolesReportsRolesEditorDescription("")
+	}
+	return r.Description
+}
+
+type RolesReportsRolesViewerName string
+
+const (
+	RolesReportsRolesViewerNameViewer RolesReportsRolesViewerName = "Viewer"
+)
+
+func (e RolesReportsRolesViewerName) ToPointer() *RolesReportsRolesViewerName {
+	return &e
+}
+func (e *RolesReportsRolesViewerName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Viewer":
+		*e = RolesReportsRolesViewerName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesReportsRolesViewerName: %v", v)
+	}
+}
+
+type RolesReportsRolesViewerDescription string
+
+const (
+	RolesReportsRolesViewerDescriptionAllowsUsersToViewAReportInKonnectAnalytics RolesReportsRolesViewerDescription = "Allows users to view a Report in Konnect Analytics."
+)
+
+func (e RolesReportsRolesViewerDescription) ToPointer() *RolesReportsRolesViewerDescription {
+	return &e
+}
+func (e *RolesReportsRolesViewerDescription) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Allows users to view a Report in Konnect Analytics.":
+		*e = RolesReportsRolesViewerDescription(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesReportsRolesViewerDescription: %v", v)
+	}
+}
+
+type RolesReportsViewer struct {
+	Name        RolesReportsRolesViewerName        `json:"name"`
+	Description RolesReportsRolesViewerDescription `json:"description"`
+}
+
+func (r *RolesReportsViewer) GetName() RolesReportsRolesViewerName {
+	if r == nil {
+		return RolesReportsRolesViewerName("")
+	}
+	return r.Name
+}
+
+func (r *RolesReportsViewer) GetDescription() RolesReportsRolesViewerDescription {
+	if r == nil {
+		return RolesReportsRolesViewerDescription("")
+	}
+	return r.Description
+}
+
+type RolesReportsRoles struct {
+	Admin   *RolesReportsAdmin   `json:"admin,omitempty"`
+	Creator *RolesReportsCreator `json:"creator,omitempty"`
+	Editor  *RolesEditor         `json:"editor,omitempty"`
+	Viewer  *RolesReportsViewer  `json:"viewer,omitempty"`
+}
+
+func (r *RolesReportsRoles) GetAdmin() *RolesReportsAdmin {
+	if r == nil {
+		return nil
+	}
+	return r.Admin
+}
+
+func (r *RolesReportsRoles) GetCreator() *RolesReportsCreator {
+	if r == nil {
+		return nil
+	}
+	return r.Creator
+}
+
+func (r *RolesReportsRoles) GetEditor() *RolesEditor {
+	if r == nil {
+		return nil
+	}
+	return r.Editor
+}
+
+func (r *RolesReportsRoles) GetViewer() *RolesReportsViewer {
+	if r == nil {
+		return nil
+	}
+	return r.Viewer
+}
+
+type Reports struct {
+	Name  RolesReportsName  `json:"name"`
+	Roles RolesReportsRoles `json:"roles"`
+}
+
+func (r *Reports) GetName() RolesReportsName {
+	if r == nil {
+		return RolesReportsName("")
+	}
+	return r.Name
+}
+
+func (r *Reports) GetRoles() RolesReportsRoles {
+	if r == nil {
+		return RolesReportsRoles{}
+	}
+	return r.Roles
+}
+
 // Roles - The predefined, or system managed, roles.
 type Roles struct {
 	ControlPlanes     *ControlPlanes     `json:"control_planes,omitempty"`
@@ -2193,6 +2749,7 @@ type Roles struct {
 	Identity          *Identity          `json:"identity,omitempty"`
 	MeshControlPlanes *MeshControlPlanes `json:"mesh_control_planes,omitempty"`
 	Dashboards        *Dashboards        `json:"dashboards,omitempty"`
+	Reports           *Reports           `json:"reports,omitempty"`
 }
 
 func (r *Roles) GetControlPlanes() *ControlPlanes {
@@ -2235,4 +2792,11 @@ func (r *Roles) GetDashboards() *Dashboards {
 		return nil
 	}
 	return r.Dashboards
+}
+
+func (r *Roles) GetReports() *Reports {
+	if r == nil {
+		return nil
+	}
+	return r.Reports
 }

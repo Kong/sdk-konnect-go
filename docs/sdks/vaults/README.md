@@ -82,9 +82,95 @@ func main() {
 
 Create a new Vault
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-vault" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/vaults" -->
+<!-- UsageSnippet language="go" operationID="create-vault" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/vaults" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Vaults.CreateVault(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Vault{
+        Config: map[string]any{
+            "prefix": "ENV_PREFIX",
+        },
+        Description: sdkkonnectgo.Pointer("environment variable based vault"),
+        ID: sdkkonnectgo.Pointer("2747d1e5-8246-4f65-a939-b392f1ee17f8"),
+        Name: "env",
+        Prefix: "env",
+        Tags: []string{
+            "foo",
+            "bar",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Vault != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="create-vault" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/vaults" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Vaults.CreateVault(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Vault{
+        Config: map[string]any{
+            "prefix": "ENV_PREFIX",
+        },
+        Description: sdkkonnectgo.Pointer("environment variable based vault"),
+        ID: sdkkonnectgo.Pointer("2747d1e5-8246-4f65-a939-b392f1ee17f8"),
+        Name: "env",
+        Prefix: "env",
+        Tags: []string{
+            "foo",
+            "bar",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Vault != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="create-vault" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/vaults" example="NoAPIKey" -->
 ```go
 package main
 
@@ -262,9 +348,105 @@ func main() {
 
 Create or Update Vault using ID or prefix.
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-vault" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/vaults/{VaultId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-vault" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/vaults/{VaultId}" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Vaults.UpsertVault(ctx, operations.UpsertVaultRequest{
+        VaultID: "9d4d6d19-77c6-428e-a965-9bc9647633e9",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Vault: components.Vault{
+            Config: map[string]any{
+                "prefix": "ENV_PREFIX",
+            },
+            Description: sdkkonnectgo.Pointer("environment variable based vault"),
+            ID: sdkkonnectgo.Pointer("2747d1e5-8246-4f65-a939-b392f1ee17f8"),
+            Name: "env",
+            Prefix: "env",
+            Tags: []string{
+                "foo",
+                "bar",
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Vault != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="upsert-vault" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/vaults/{VaultId}" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Vaults.UpsertVault(ctx, operations.UpsertVaultRequest{
+        VaultID: "9d4d6d19-77c6-428e-a965-9bc9647633e9",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Vault: components.Vault{
+            Config: map[string]any{
+                "prefix": "ENV_PREFIX",
+            },
+            Description: sdkkonnectgo.Pointer("environment variable based vault"),
+            ID: sdkkonnectgo.Pointer("2747d1e5-8246-4f65-a939-b392f1ee17f8"),
+            Name: "env",
+            Prefix: "env",
+            Tags: []string{
+                "foo",
+                "bar",
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Vault != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="upsert-vault" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/vaults/{VaultId}" example="NoAPIKey" -->
 ```go
 package main
 

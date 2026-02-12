@@ -1,0 +1,11 @@
+# RolesReportsRoles
+
+
+## Fields
+
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `Admin`                                                                           | [*components.RolesReportsAdmin](../../models/components/rolesreportsadmin.md)     | :heavy_minus_sign:                                                                | N/A                                                                               |
+| `Creator`                                                                         | [*components.RolesReportsCreator](../../models/components/rolesreportscreator.md) | :heavy_minus_sign:                                                                | N/A                                                                               |
+| `Editor`                                                                          | [*components.RolesEditor](../../models/components/roleseditor.md)                 | :heavy_minus_sign:                                                                | N/A                                                                               |
+| `Viewer`                                                                          | [*components.RolesReportsViewer](../../models/components/rolesreportsviewer.md)   | :heavy_minus_sign:                                                                | N/A                                                                               |

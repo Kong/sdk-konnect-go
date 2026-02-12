@@ -17,10 +17,6 @@ type ListScorecardTemplatesRequest struct {
 	// Sorts a collection of scorecard templates. Supported sort attributes are:
 	//
 	//
-	//
-	//
-	//
-	//
 	//   - `display_name`
 	//   - `name`
 	//

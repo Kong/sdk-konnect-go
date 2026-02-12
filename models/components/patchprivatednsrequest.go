@@ -8,6 +8,38 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// PatchAzurePrivateDNSResolver - Request schema for updating a Private DNS Azure Resolver.
+type PatchAzurePrivateDNSResolver struct {
+	// Human-readable name of the Private DNS.
+	Name                       *string                                  `json:"name,omitempty"`
+	PrivateDNSAttachmentConfig *AzurePrivateDNSResolverAttachmentConfig `json:"private_dns_attachment_config,omitempty"`
+}
+
+func (p PatchAzurePrivateDNSResolver) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PatchAzurePrivateDNSResolver) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (p *PatchAzurePrivateDNSResolver) GetName() *string {
+	if p == nil {
+		return nil
+	}
+	return p.Name
+}
+
+func (p *PatchAzurePrivateDNSResolver) GetPrivateDNSAttachmentConfig() *AzurePrivateDNSResolverAttachmentConfig {
+	if p == nil {
+		return nil
+	}
+	return p.PrivateDNSAttachmentConfig
+}
+
 // PatchAwsPrivateDNSResolver - Request schema for updating a Private DNS AWS Resolver.
 type PatchAwsPrivateDNSResolver struct {
 	// Human-readable name of the Private DNS.
@@ -43,12 +75,14 @@ func (p *PatchAwsPrivateDNSResolver) GetPrivateDNSAttachmentConfig() *AwsPrivate
 type PatchPrivateDNSRequestType string
 
 const (
-	PatchPrivateDNSRequestTypePatchAwsPrivateDNSResolver PatchPrivateDNSRequestType = "PatchAwsPrivateDnsResolver"
+	PatchPrivateDNSRequestTypePatchAwsPrivateDNSResolver   PatchPrivateDNSRequestType = "PatchAwsPrivateDnsResolver"
+	PatchPrivateDNSRequestTypePatchAzurePrivateDNSResolver PatchPrivateDNSRequestType = "PatchAzurePrivateDnsResolver"
 )
 
 // PatchPrivateDNSRequest - Request schema for updating a Private DNS.
 type PatchPrivateDNSRequest struct {
-	PatchAwsPrivateDNSResolver *PatchAwsPrivateDNSResolver `queryParam:"inline" union:"member"`
+	PatchAwsPrivateDNSResolver   *PatchAwsPrivateDNSResolver   `queryParam:"inline" union:"member"`
+	PatchAzurePrivateDNSResolver *PatchAzurePrivateDNSResolver `queryParam:"inline" union:"member"`
 
 	Type PatchPrivateDNSRequestType
 }
@@ -62,6 +96,15 @@ func CreatePatchPrivateDNSRequestPatchAwsPrivateDNSResolver(patchAwsPrivateDNSRe
 	}
 }
 
+func CreatePatchPrivateDNSRequestPatchAzurePrivateDNSResolver(patchAzurePrivateDNSResolver PatchAzurePrivateDNSResolver) PatchPrivateDNSRequest {
+	typ := PatchPrivateDNSRequestTypePatchAzurePrivateDNSResolver
+
+	return PatchPrivateDNSRequest{
+		PatchAzurePrivateDNSResolver: &patchAzurePrivateDNSResolver,
+		Type:                         typ,
+	}
+}
+
 func (u *PatchPrivateDNSRequest) UnmarshalJSON(data []byte) error {
 
 	var patchAwsPrivateDNSResolver PatchAwsPrivateDNSResolver = PatchAwsPrivateDNSResolver{}
@@ -71,12 +114,23 @@ func (u *PatchPrivateDNSRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var patchAzurePrivateDNSResolver PatchAzurePrivateDNSResolver = PatchAzurePrivateDNSResolver{}
+	if err := utils.UnmarshalJSON(data, &patchAzurePrivateDNSResolver, "", true, nil); err == nil {
+		u.PatchAzurePrivateDNSResolver = &patchAzurePrivateDNSResolver
+		u.Type = PatchPrivateDNSRequestTypePatchAzurePrivateDNSResolver
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PatchPrivateDNSRequest", string(data))
 }
 
 func (u PatchPrivateDNSRequest) MarshalJSON() ([]byte, error) {
 	if u.PatchAwsPrivateDNSResolver != nil {
 		return utils.MarshalJSON(u.PatchAwsPrivateDNSResolver, "", true)
+	}
+
+	if u.PatchAzurePrivateDNSResolver != nil {
+		return utils.MarshalJSON(u.PatchAzurePrivateDNSResolver, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type PatchPrivateDNSRequest: all fields are null")

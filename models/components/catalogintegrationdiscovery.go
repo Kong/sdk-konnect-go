@@ -9,10 +9,6 @@ type CatalogIntegrationDiscovery struct {
 	//
 	//
 	//
-	//
-	//
-	//
-	//
 	//   - Keys are the machine-readable, globally unique names of resource types registered by this integration.
 	//   - Values are example `integration_data` payloads.
 	//

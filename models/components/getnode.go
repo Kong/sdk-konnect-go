@@ -3,7 +3,8 @@
 package components
 
 type GetNodeCompatibilityStatus struct {
-	State *string `json:"state,omitempty"`
+	State  *string                  `json:"state,omitempty"`
+	Issues []NodeCompatibilityIssue `json:"issues,omitempty"`
 }
 
 func (g *GetNodeCompatibilityStatus) GetState() *string {
@@ -11,6 +12,13 @@ func (g *GetNodeCompatibilityStatus) GetState() *string {
 		return nil
 	}
 	return g.State
+}
+
+func (g *GetNodeCompatibilityStatus) GetIssues() []NodeCompatibilityIssue {
+	if g == nil {
+		return nil
+	}
+	return g.Issues
 }
 
 type GetNodeItem struct {

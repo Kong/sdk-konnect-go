@@ -21,12 +21,12 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
+  versioningStrategy: automatic
   persistentEdits: {}
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
-  versioningStrategy: automatic
 go:
   version: 0.21.0
   additionalDependencies: {}

@@ -19,10 +19,6 @@ type ListScorecardServicesRequest struct {
 	// Sorts a collection of services targeted by a scorecard. Supported sort attributes are:
 	//
 	//
-	//
-	//
-	//
-	//
 	//   - `display_name`
 	//   - `name`
 	//   - `score.value`

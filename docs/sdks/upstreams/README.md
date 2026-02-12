@@ -78,9 +78,185 @@ func main() {
 
 Create a new Upstream
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-upstream" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams" -->
+<!-- UsageSnippet language="go" operationID="create-upstream" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Upstreams.CreateUpstream(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Upstream{
+        Healthchecks: &components.Healthchecks{
+            Active: &components.Active{
+                Healthy: &components.Healthy{
+                    HTTPStatuses: []int64{
+                        200,
+                        302,
+                    },
+                },
+                Unhealthy: &components.Unhealthy{
+                    HTTPStatuses: []int64{
+                        429,
+                        404,
+                        500,
+                        501,
+                        502,
+                        503,
+                        504,
+                        505,
+                    },
+                },
+            },
+            Passive: &components.Passive{
+                Healthy: &components.UpstreamHealthy{
+                    HTTPStatuses: []int64{
+                        200,
+                        201,
+                        202,
+                        203,
+                        204,
+                        205,
+                        206,
+                        207,
+                        208,
+                        226,
+                        300,
+                        301,
+                        302,
+                        303,
+                        304,
+                        305,
+                        306,
+                        307,
+                        308,
+                    },
+                },
+                Unhealthy: &components.UpstreamUnhealthy{
+                    HTTPStatuses: []int64{
+                        429,
+                        500,
+                        503,
+                    },
+                },
+            },
+        },
+        ID: sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e"),
+        Name: "api.example.internal",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Upstream != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="create-upstream" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Upstreams.CreateUpstream(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Upstream{
+        Healthchecks: &components.Healthchecks{
+            Active: &components.Active{
+                Healthy: &components.Healthy{
+                    HTTPStatuses: []int64{
+                        200,
+                        302,
+                    },
+                },
+                Unhealthy: &components.Unhealthy{
+                    HTTPStatuses: []int64{
+                        429,
+                        404,
+                        500,
+                        501,
+                        502,
+                        503,
+                        504,
+                        505,
+                    },
+                },
+            },
+            Passive: &components.Passive{
+                Healthy: &components.UpstreamHealthy{
+                    HTTPStatuses: []int64{
+                        200,
+                        201,
+                        202,
+                        203,
+                        204,
+                        205,
+                        206,
+                        207,
+                        208,
+                        226,
+                        300,
+                        301,
+                        302,
+                        303,
+                        304,
+                        305,
+                        306,
+                        307,
+                        308,
+                    },
+                },
+                Unhealthy: &components.UpstreamUnhealthy{
+                    HTTPStatuses: []int64{
+                        429,
+                        500,
+                        503,
+                    },
+                },
+            },
+        },
+        ID: sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e"),
+        Name: "api.example.internal",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Upstream != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="create-upstream" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams" example="NoAPIKey" -->
 ```go
 package main
 
@@ -303,9 +479,195 @@ func main() {
 
 Create or Update Upstream using ID or name.
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-upstream" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-upstream" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamId}" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Upstreams.UpsertUpstream(ctx, operations.UpsertUpstreamRequest{
+        UpstreamID: "426d620c-7058-4ae6-aacc-f85a3204a2c5",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Upstream: components.Upstream{
+            Healthchecks: &components.Healthchecks{
+                Active: &components.Active{
+                    Healthy: &components.Healthy{
+                        HTTPStatuses: []int64{
+                            200,
+                            302,
+                        },
+                    },
+                    Unhealthy: &components.Unhealthy{
+                        HTTPStatuses: []int64{
+                            429,
+                            404,
+                            500,
+                            501,
+                            502,
+                            503,
+                            504,
+                            505,
+                        },
+                    },
+                },
+                Passive: &components.Passive{
+                    Healthy: &components.UpstreamHealthy{
+                        HTTPStatuses: []int64{
+                            200,
+                            201,
+                            202,
+                            203,
+                            204,
+                            205,
+                            206,
+                            207,
+                            208,
+                            226,
+                            300,
+                            301,
+                            302,
+                            303,
+                            304,
+                            305,
+                            306,
+                            307,
+                            308,
+                        },
+                    },
+                    Unhealthy: &components.UpstreamUnhealthy{
+                        HTTPStatuses: []int64{
+                            429,
+                            500,
+                            503,
+                        },
+                    },
+                },
+            },
+            ID: sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e"),
+            Name: "api.example.internal",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Upstream != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="upsert-upstream" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamId}" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Upstreams.UpsertUpstream(ctx, operations.UpsertUpstreamRequest{
+        UpstreamID: "426d620c-7058-4ae6-aacc-f85a3204a2c5",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Upstream: components.Upstream{
+            Healthchecks: &components.Healthchecks{
+                Active: &components.Active{
+                    Healthy: &components.Healthy{
+                        HTTPStatuses: []int64{
+                            200,
+                            302,
+                        },
+                    },
+                    Unhealthy: &components.Unhealthy{
+                        HTTPStatuses: []int64{
+                            429,
+                            404,
+                            500,
+                            501,
+                            502,
+                            503,
+                            504,
+                            505,
+                        },
+                    },
+                },
+                Passive: &components.Passive{
+                    Healthy: &components.UpstreamHealthy{
+                        HTTPStatuses: []int64{
+                            200,
+                            201,
+                            202,
+                            203,
+                            204,
+                            205,
+                            206,
+                            207,
+                            208,
+                            226,
+                            300,
+                            301,
+                            302,
+                            303,
+                            304,
+                            305,
+                            306,
+                            307,
+                            308,
+                        },
+                    },
+                    Unhealthy: &components.UpstreamUnhealthy{
+                        HTTPStatuses: []int64{
+                            429,
+                            500,
+                            503,
+                        },
+                    },
+                },
+            },
+            ID: sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e"),
+            Name: "api.example.internal",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Upstream != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="upsert-upstream" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/upstreams/{UpstreamId}" example="NoAPIKey" -->
 ```go
 package main
 

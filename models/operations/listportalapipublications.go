@@ -19,10 +19,6 @@ type ListPortalAPIPublicationsRequest struct {
 	// Sorts a collection of API publications within a portal. Supported sort attributes are:
 	//
 	//
-	//
-	//
-	//
-	//
 	//   - api_id
 	//   - api_name
 	//   - created_at

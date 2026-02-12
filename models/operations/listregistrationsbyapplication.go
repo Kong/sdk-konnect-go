@@ -32,10 +32,6 @@ type ListRegistrationsByApplicationRequest struct {
 	// Sorts a set of registrations for an application. Supported sort attributes are:
 	//
 	//
-	//
-	//
-	//
-	//
 	//   - created_at
 	//   - updated_at
 	//   - status

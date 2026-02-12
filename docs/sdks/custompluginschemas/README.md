@@ -80,7 +80,7 @@ Upload a custom plugin schema associated with a control plane.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-plugin-schemas" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/plugin-schemas" -->
+<!-- UsageSnippet language="go" operationID="create-plugin-schemas" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/plugin-schemas" example="UnauthorizedExample" -->
 ```go
 package main
 
@@ -257,7 +257,7 @@ Create or update an individual custom plugin schema.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="update-plugin-schemas" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/plugin-schemas/{name}" -->
+<!-- UsageSnippet language="go" operationID="update-plugin-schemas" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/plugin-schemas/{name}" example="UnauthorizedExample" -->
 ```go
 package main
 

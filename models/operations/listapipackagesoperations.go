@@ -19,10 +19,6 @@ type ListAPIPackagesOperationsRequest struct {
 	// Sorts a collection of API Packages Operations. Supported sort attributes are:
 	//
 	//
-	//
-	//
-	//
-	//
 	//   - path
 	//   - method
 	//   - api_id

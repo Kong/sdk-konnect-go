@@ -18,7 +18,7 @@ Lists the developer teams in a portal. Each team can contain any developer and d
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-portal-teams" method="get" path="/v3/portals/{portalId}/teams" -->
+<!-- UsageSnippet language="go" operationID="list-portal-teams" method="get" path="/v3/portals/{portalId}/teams" example="Example 1" -->
 ```go
 package main
 
@@ -78,9 +78,247 @@ func main() {
 
 Creates a developer team in a portal. Developers can be added to teams to provide RBAC access to API products. Teams can be assigned roles that grant permissions to perform an action on a resource.
 
-### Example Usage
+### Example Usage: CreateTeamBadRequestExample1
 
-<!-- UsageSnippet language="go" operationID="create-portal-team" method="post" path="/v3/portals/{portalId}/teams" -->
+<!-- UsageSnippet language="go" operationID="create-portal-team" method="post" path="/v3/portals/{portalId}/teams" example="CreateTeamBadRequestExample1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeams.CreatePortalTeam(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalCreateTeamRequest{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) team."),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalTeamResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: CreateTeamBadRequestExample2
+
+<!-- UsageSnippet language="go" operationID="create-portal-team" method="post" path="/v3/portals/{portalId}/teams" example="CreateTeamBadRequestExample2" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeams.CreatePortalTeam(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalCreateTeamRequest{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) team."),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalTeamResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: CreateTeamBadRequestExample3
+
+<!-- UsageSnippet language="go" operationID="create-portal-team" method="post" path="/v3/portals/{portalId}/teams" example="CreateTeamBadRequestExample3" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeams.CreatePortalTeam(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalCreateTeamRequest{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) team."),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalTeamResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Example 1
+
+<!-- UsageSnippet language="go" operationID="create-portal-team" method="post" path="/v3/portals/{portalId}/teams" example="Example 1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeams.CreatePortalTeam(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalCreateTeamRequest{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalTeamResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="create-portal-team" method="post" path="/v3/portals/{portalId}/teams" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeams.CreatePortalTeam(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalCreateTeamRequest{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) team."),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalTeamResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: PortalTeamExample1
+
+<!-- UsageSnippet language="go" operationID="create-portal-team" method="post" path="/v3/portals/{portalId}/teams" example="PortalTeamExample1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeams.CreatePortalTeam(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalCreateTeamRequest{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) team."),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalTeamResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="create-portal-team" method="post" path="/v3/portals/{portalId}/teams" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeams.CreatePortalTeam(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalCreateTeamRequest{
+        Name: "IDM - Developers",
+        Description: sdkkonnectgo.Pointer("The Identity Management (IDM) team."),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalTeamResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="create-portal-team" method="post" path="/v3/portals/{portalId}/teams" example="UnauthorizedExample" -->
 ```go
 package main
 
@@ -142,7 +380,7 @@ Get an individual team.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-portal-team" method="get" path="/v3/portals/{portalId}/teams/{teamId}" -->
+<!-- UsageSnippet language="go" operationID="get-portal-team" method="get" path="/v3/portals/{portalId}/teams/{teamId}" example="PortalTeamExample1" -->
 ```go
 package main
 
@@ -198,9 +436,165 @@ func main() {
 
 Updates an individual developer team for a portal.
 
-### Example Usage
+### Example Usage: Example 1
 
-<!-- UsageSnippet language="go" operationID="update-portal-team" method="patch" path="/v3/portals/{portalId}/teams/{teamId}" -->
+<!-- UsageSnippet language="go" operationID="update-portal-team" method="patch" path="/v3/portals/{portalId}/teams/{teamId}" example="Example 1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeams.UpdatePortalTeam(ctx, operations.UpdatePortalTeamRequest{
+        TeamID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PortalUpdateTeamRequest: &components.PortalUpdateTeamRequest{
+            Name: sdkkonnectgo.Pointer("IDM - Developers"),
+            Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalTeamResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NotFoundExample
+
+<!-- UsageSnippet language="go" operationID="update-portal-team" method="patch" path="/v3/portals/{portalId}/teams/{teamId}" example="NotFoundExample" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeams.UpdatePortalTeam(ctx, operations.UpdatePortalTeamRequest{
+        TeamID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PortalUpdateTeamRequest: &components.PortalUpdateTeamRequest{
+            Name: sdkkonnectgo.Pointer("IDM - Developers"),
+            Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalTeamResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: PortalTeamExample1
+
+<!-- UsageSnippet language="go" operationID="update-portal-team" method="patch" path="/v3/portals/{portalId}/teams/{teamId}" example="PortalTeamExample1" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeams.UpdatePortalTeam(ctx, operations.UpdatePortalTeamRequest{
+        TeamID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PortalUpdateTeamRequest: &components.PortalUpdateTeamRequest{
+            Name: sdkkonnectgo.Pointer("IDM - Developers"),
+            Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalTeamResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: Unauthorized
+
+<!-- UsageSnippet language="go" operationID="update-portal-team" method="patch" path="/v3/portals/{portalId}/teams/{teamId}" example="Unauthorized" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalTeams.UpdatePortalTeam(ctx, operations.UpdatePortalTeamRequest{
+        TeamID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PortalUpdateTeamRequest: &components.PortalUpdateTeamRequest{
+            Name: sdkkonnectgo.Pointer("IDM - Developers"),
+            Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalTeamResponse != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: UnauthorizedExample
+
+<!-- UsageSnippet language="go" operationID="update-portal-team" method="patch" path="/v3/portals/{portalId}/teams/{teamId}" example="UnauthorizedExample" -->
 ```go
 package main
 

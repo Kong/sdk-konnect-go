@@ -401,9 +401,95 @@ func main() {
 
 Create a new Key
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="create-key" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/keys" -->
+<!-- UsageSnippet language="go" operationID="create-key" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/keys" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Keys.CreateKey(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Key{
+        ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
+        Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
+        Kid: "42",
+        Name: sdkkonnectgo.Pointer("a-key"),
+        Pem: &components.Pem{
+            PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
+            PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
+        },
+        Set: &components.Set{
+            ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Key != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="create-key" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/keys" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Keys.CreateKey(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Key{
+        ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
+        Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
+        Kid: "42",
+        Name: sdkkonnectgo.Pointer("a-key"),
+        Pem: &components.Pem{
+            PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
+            PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
+        },
+        Set: &components.Set{
+            ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Key != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="create-key" method="post" path="/v2/control-planes/{controlPlaneId}/core-entities/keys" example="NoAPIKey" -->
 ```go
 package main
 
@@ -581,9 +667,105 @@ func main() {
 
 Create or Update Key using ID or name.
 
-### Example Usage
+### Example Usage: DuplicateApiKey
 
-<!-- UsageSnippet language="go" operationID="upsert-key" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/keys/{KeyId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-key" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/keys/{KeyId}" example="DuplicateApiKey" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Keys.UpsertKey(ctx, operations.UpsertKeyRequest{
+        KeyID: "bba22c06-a632-42be-a018-1b9ff357b5b9",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Key: components.Key{
+            ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
+            Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
+            Kid: "42",
+            Name: sdkkonnectgo.Pointer("a-key"),
+            Pem: &components.Pem{
+                PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
+                PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
+            },
+            Set: &components.Set{
+                ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Key != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: InvalidAuthCred
+
+<!-- UsageSnippet language="go" operationID="upsert-key" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/keys/{KeyId}" example="InvalidAuthCred" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Keys.UpsertKey(ctx, operations.UpsertKeyRequest{
+        KeyID: "bba22c06-a632-42be-a018-1b9ff357b5b9",
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        Key: components.Key{
+            ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
+            Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
+            Kid: "42",
+            Name: sdkkonnectgo.Pointer("a-key"),
+            Pem: &components.Pem{
+                PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
+                PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
+            },
+            Set: &components.Set{
+                ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
+            },
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Key != nil {
+        // handle response
+    }
+}
+```
+### Example Usage: NoAPIKey
+
+<!-- UsageSnippet language="go" operationID="upsert-key" method="put" path="/v2/control-planes/{controlPlaneId}/core-entities/keys/{KeyId}" example="NoAPIKey" -->
 ```go
 package main
 
