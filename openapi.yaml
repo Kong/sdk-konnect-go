@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Konnect API - Go SDK
-  version: 3.1.3
+  version: 3.1.5
   description: The Konnect platform API
   contact:
     name: Kong Inc
@@ -14632,6 +14632,7 @@ components:
       in: path
       required: true
       description: The ID of the Event Gateway Listener.
+      x-speakeasy-name-override: listenerId
     EventGatewayListenersFilter:
       schema:
         type: object
@@ -17316,6 +17317,7 @@ components:
       enum:
         - aws
         - azure
+        - gcp
       title: Provider Name
       x-speakeasy-unknown-values: allow
     ServerlessV1ProviderName:
@@ -23763,7 +23765,7 @@ components:
           - id: b02e23c5-8ee4-4e5a-99f4-43329923adce
             role_name: API Consumer
             entity_id: 437c7192-fea0-4f35-8478-c8d57783f8c1
-            entity_type: Services
+            entity_type_name: Services
             entity_region: us
           - id: 869d9402-f117-4f9a-840f-69acaf70a81a
             role_name: API Viewer
@@ -23947,6 +23949,11 @@ components:
         entity_id: 18ee2573-dec0-4b83-be99-fa7700bcdc61
         entity_type_name: Services
         entity_region: us
+      required:
+        - role_name
+        - entity_id
+        - entity_type_name
+        - entity_region
       title: PortalAssignRoleRequest
     PortalAuthenticationSettingsUpdateRequest:
       x-speakeasy-entity: PortalAuth
@@ -24224,6 +24231,12 @@ components:
         entity_id: 18ee2573-dec0-4b83-be99-fa7700bcdc61
         entity_type_name: Services
         entity_region: us
+      required:
+        - id
+        - role_name
+        - entity_id
+        - entity_type_name
+        - entity_region
       title: PortalAssignedRoleResponse
     ListDomains:
       type: object
@@ -28314,6 +28327,7 @@ components:
       anyOf:
         - $ref: '#/components/schemas/VirtualClusterReferenceById'
         - $ref: '#/components/schemas/VirtualClusterReferenceByName'
+      x-terraform-preferred: '#/components/schemas/VirtualClusterReferenceById'
     VirtualClusterReferenceById:
       description: Reference a virtual cluster by its unique identifier.
       type: object
@@ -29048,6 +29062,7 @@ components:
       oneOf:
         - $ref: '#/components/schemas/SchemaRegistryReferenceById'
         - $ref: '#/components/schemas/SchemaRegistryReferenceByName'
+      x-terraform-preferred: '#/components/schemas/SchemaRegistryReferenceById'
     SchemaRegistryReferenceById:
       type: object
       properties:
@@ -30259,10 +30274,24 @@ components:
           items:
             $ref: '#/components/schemas/EventGatewayACLOperation'
         resource_names:
-          description: 'If any of these entries match, the resource name matches for this rule.'
-          type: array
-          items:
-            $ref: '#/components/schemas/EventGatewayACLResourceName'
+          description: 'If any of these entries match, the resource name matches for this rule. A maximum of 50 entries are allowed.'
+          oneOf:
+            - type: array
+              maxItems: 50
+              items:
+                $ref: '#/components/schemas/EventGatewayACLResourceName'
+            - type: string
+              x-min-runtime-version: '1.1'
+              example: 'context.auth.tokens.claims["topics"]'
+              x-expression:
+                type: array
+                fields:
+                  - context.auth.principal.name
+                  - context.auth.type
+                  - context.auth.token.claims
+              description: |
+                This expression should evaluate to an array of glob patterns,
+                equivalent to the `match` values in the array form of `resource_names`.
       required:
         - resource_type
         - action
@@ -30416,6 +30445,7 @@ components:
       anyOf:
         - $ref: '#/components/schemas/EncryptionKeyStaticReferenceById'
         - $ref: '#/components/schemas/EncryptionKeyStaticReferenceByName'
+      x-terraform-preferred: '#/components/schemas/EncryptionKeyStaticReferenceById'
     EncryptionKeyStaticReferenceById:
       description: A static encryption key reference by ID.
       type: object
@@ -30427,7 +30457,6 @@ components:
           minLength: 1
       required:
         - id
-      x-speakeasy-name-override: ReferenceByID
     EncryptionKeyStaticReferenceByName:
       description: A static encryption key reference by name.
       type: object
@@ -35607,7 +35636,7 @@ components:
                 maxLength: 255
                 minLength: 1
               description:
-                description: A human-readable description of the virtual cluster.
+                description: A human-readable description of the listener.
                 type: string
                 default: ''
                 maxLength: 512
@@ -35635,7 +35664,7 @@ components:
                 maxLength: 255
                 minLength: 1
               description:
-                description: A human-readable description of the virtual cluster.
+                description: A human-readable description of the listener.
                 type: string
                 default: ''
                 maxLength: 512
@@ -35726,7 +35755,7 @@ components:
               name:
                 $ref: '#/components/schemas/BackendClusterName'
               description:
-                description: A human-readable description of the virtual cluster.
+                description: A human-readable description of the backend cluster.
                 type: string
                 default: ''
                 maxLength: 512
@@ -35762,7 +35791,7 @@ components:
               name:
                 $ref: '#/components/schemas/BackendClusterName'
               description:
-                description: A human-readable description of the virtual cluster.
+                description: A human-readable description of the backend cluster.
                 type: string
                 default: ''
                 maxLength: 512
