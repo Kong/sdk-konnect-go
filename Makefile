@@ -189,17 +189,23 @@ TYPES_TO_MOCK := \
 	ACLs \
 	APIKeys \
 	BasicAuthCredentials \
+	CACertificates \
+	Certificates \
+	CloudGateways \
 	ConsumerGroups \
 	Consumers \
 	ControlPlaneGroups \
 	ControlPlanes \
+	DPCertificates \
 	HMACAuthCredentials \
 	JWTs \
 	Keys \
 	KeySets \
+	Me \
 	Plugins \
 	Routes \
 	Services \
+	SNIs \
 	Targets \
 	Upstreams \
 	Vaults
