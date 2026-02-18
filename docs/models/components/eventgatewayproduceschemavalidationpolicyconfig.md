@@ -17,3 +17,15 @@ eventGatewayProduceSchemaValidationPolicyConfig := components.CreateEventGateway
 eventGatewayProduceSchemaValidationPolicyConfig := components.CreateEventGatewayProduceSchemaValidationPolicyConfigJSON(components.EventGatewayProduceSchemaValidationPolicyJSONConfig{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch eventGatewayProduceSchemaValidationPolicyConfig.Type {
+	case components.EventGatewayProduceSchemaValidationPolicyConfigTypeConfluentSchemaRegistry:
+		// eventGatewayProduceSchemaValidationPolicyConfig.EventGatewayProduceSchemaValidationPolicySchemaRegistryConfig is populated
+	case components.EventGatewayProduceSchemaValidationPolicyConfigTypeJSON:
+		// eventGatewayProduceSchemaValidationPolicyConfig.EventGatewayProduceSchemaValidationPolicyJSONConfig is populated
+}
+```

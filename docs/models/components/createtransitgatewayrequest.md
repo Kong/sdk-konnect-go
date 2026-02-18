@@ -41,3 +41,23 @@ createTransitGatewayRequest := components.CreateCreateTransitGatewayRequestAzure
 createTransitGatewayRequest := components.CreateCreateTransitGatewayRequestGcpVpcPeeringTransitGateway(components.GcpVpcPeeringTransitGateway{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch createTransitGatewayRequest.Type {
+	case components.CreateTransitGatewayRequestTypeAWSTransitGateway:
+		// createTransitGatewayRequest.AWSTransitGateway is populated
+	case components.CreateTransitGatewayRequestTypeAWSVpcPeeringGateway:
+		// createTransitGatewayRequest.AWSVpcPeeringGateway is populated
+	case components.CreateTransitGatewayRequestTypeAWSResourceEndpointGateway:
+		// createTransitGatewayRequest.AWSResourceEndpointGateway is populated
+	case components.CreateTransitGatewayRequestTypeAzureTransitGateway:
+		// createTransitGatewayRequest.AzureTransitGateway is populated
+	case components.CreateTransitGatewayRequestTypeAzureVhubPeeringGateway:
+		// createTransitGatewayRequest.AzureVhubPeeringGateway is populated
+	case components.CreateTransitGatewayRequestTypeGcpVpcPeeringTransitGateway:
+		// createTransitGatewayRequest.GcpVpcPeeringTransitGateway is populated
+}
+```

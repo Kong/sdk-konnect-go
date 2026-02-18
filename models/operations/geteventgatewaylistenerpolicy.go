@@ -11,7 +11,7 @@ type GetEventGatewayListenerPolicyRequest struct {
 	// The UUID of your Gateway.
 	GatewayID string `pathParam:"style=simple,explode=false,name=gatewayId"`
 	// The ID of the Event Gateway Listener.
-	EventGatewayListenerID string `pathParam:"style=simple,explode=false,name=eventGatewayListenerId"`
+	ListenerID string `pathParam:"style=simple,explode=false,name=eventGatewayListenerId"`
 	// The UUID of the policy.
 	PolicyID string `pathParam:"style=simple,explode=false,name=policyId"`
 }
@@ -23,11 +23,11 @@ func (g *GetEventGatewayListenerPolicyRequest) GetGatewayID() string {
 	return g.GatewayID
 }
 
-func (g *GetEventGatewayListenerPolicyRequest) GetEventGatewayListenerID() string {
+func (g *GetEventGatewayListenerPolicyRequest) GetListenerID() string {
 	if g == nil {
 		return ""
 	}
-	return g.EventGatewayListenerID
+	return g.ListenerID
 }
 
 func (g *GetEventGatewayListenerPolicyRequest) GetPolicyID() string {

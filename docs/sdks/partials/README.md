@@ -111,7 +111,13 @@ func main() {
         log.Fatal(err)
     }
     if res.Partial != nil {
-        // handle response
+        switch res.Partial.Type {
+            case components.PartialTypeRedisCe:
+                // res.Partial.PartialRedisCe is populated
+            case components.PartialTypeRedisEe:
+                // res.Partial.PartialRedisEe is populated
+        }
+
     }
 }
 ```
@@ -168,7 +174,13 @@ func main() {
         log.Fatal(err)
     }
     if res.Partial != nil {
-        // handle response
+        switch res.Partial.Type {
+            case components.PartialTypeRedisCe:
+                // res.Partial.PartialRedisCe is populated
+            case components.PartialTypeRedisEe:
+                // res.Partial.PartialRedisEe is populated
+        }
+
     }
 }
 ```
@@ -208,7 +220,13 @@ func main() {
         log.Fatal(err)
     }
     if res.Partial != nil {
-        // handle response
+        switch res.Partial.Type {
+            case components.PartialTypeRedisCe:
+                // res.Partial.PartialRedisCe is populated
+            case components.PartialTypeRedisEe:
+                // res.Partial.PartialRedisEe is populated
+        }
+
     }
 }
 ```
@@ -320,7 +338,13 @@ func main() {
         log.Fatal(err)
     }
     if res.Partial != nil {
-        // handle response
+        switch res.Partial.Type {
+            case components.PartialTypeRedisCe:
+                // res.Partial.PartialRedisCe is populated
+            case components.PartialTypeRedisEe:
+                // res.Partial.PartialRedisEe is populated
+        }
+
     }
 }
 ```
@@ -407,7 +431,13 @@ func main() {
         log.Fatal(err)
     }
     if res.Partial != nil {
-        // handle response
+        switch res.Partial.Type {
+            case components.PartialTypeRedisCe:
+                // res.Partial.PartialRedisCe is populated
+            case components.PartialTypeRedisEe:
+                // res.Partial.PartialRedisEe is populated
+        }
+
     }
 }
 ```
@@ -452,7 +482,13 @@ func main() {
         log.Fatal(err)
     }
     if res.Partial != nil {
-        // handle response
+        switch res.Partial.Type {
+            case components.PartialTypeRedisCe:
+                // res.Partial.PartialRedisCe is populated
+            case components.PartialTypeRedisEe:
+                // res.Partial.PartialRedisEe is populated
+        }
+
     }
 }
 ```
@@ -497,7 +533,13 @@ func main() {
         log.Fatal(err)
     }
     if res.Partial != nil {
-        // handle response
+        switch res.Partial.Type {
+            case components.PartialTypeRedisCe:
+                // res.Partial.PartialRedisCe is populated
+            case components.PartialTypeRedisEe:
+                // res.Partial.PartialRedisEe is populated
+        }
+
     }
 }
 ```

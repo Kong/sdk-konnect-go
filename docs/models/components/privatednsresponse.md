@@ -33,3 +33,21 @@ privateDNSResponse := components.CreatePrivateDNSResponseAzurePrivateHostedZoneR
 privateDNSResponse := components.CreatePrivateDNSResponseAzurePrivateDNSResolverResponse(components.AzurePrivateDNSResolverResponse{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch privateDNSResponse.Type {
+	case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+		// privateDNSResponse.AwsPrivateHostedZoneResponse is populated
+	case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+		// privateDNSResponse.AwsPrivateDNSResolverResponse is populated
+	case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+		// privateDNSResponse.GcpPrivateHostedZoneResponse is populated
+	case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+		// privateDNSResponse.AzurePrivateHostedZoneResponse is populated
+	case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+		// privateDNSResponse.AzurePrivateDNSResolverResponse is populated
+}
+```

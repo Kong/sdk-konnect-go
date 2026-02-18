@@ -17,3 +17,15 @@ controlPlaneGeoFieldEqualsFilter := components.CreateControlPlaneGeoFieldEqualsF
 controlPlaneGeoFieldEqualsFilter := components.CreateControlPlaneGeoFieldEqualsFilterControlPlaneGeoFieldEqualsComparison(components.ControlPlaneGeoFieldEqualsComparison{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch controlPlaneGeoFieldEqualsFilter.Type {
+	case components.ControlPlaneGeoFieldEqualsFilterTypeControlPlaneGeo:
+		// controlPlaneGeoFieldEqualsFilter.ControlPlaneGeo is populated
+	case components.ControlPlaneGeoFieldEqualsFilterTypeControlPlaneGeoFieldEqualsComparison:
+		// controlPlaneGeoFieldEqualsFilter.ControlPlaneGeoFieldEqualsComparison is populated
+}
+```

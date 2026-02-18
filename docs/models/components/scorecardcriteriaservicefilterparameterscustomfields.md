@@ -30,3 +30,17 @@ scorecardCriteriaServiceFilterParametersCustomFields := components.CreateScoreca
 scorecardCriteriaServiceFilterParametersCustomFields := components.CreateScorecardCriteriaServiceFilterParametersCustomFieldsNumericFieldFilter(components.NumericFieldFilter{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch scorecardCriteriaServiceFilterParametersCustomFields.Type {
+	case components.ScorecardCriteriaServiceFilterParametersCustomFieldsTypeStringFieldFilter:
+		// scorecardCriteriaServiceFilterParametersCustomFields.StringFieldFilter is populated
+	case components.ScorecardCriteriaServiceFilterParametersCustomFieldsTypeBoolean:
+		// scorecardCriteriaServiceFilterParametersCustomFields.Boolean is populated
+	case components.ScorecardCriteriaServiceFilterParametersCustomFieldsTypeNumericFieldFilter:
+		// scorecardCriteriaServiceFilterParametersCustomFields.NumericFieldFilter is populated
+}
+```

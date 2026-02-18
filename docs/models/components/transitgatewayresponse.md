@@ -39,3 +39,23 @@ transitGatewayResponse := components.CreateTransitGatewayResponseGCPVPCPeeringGa
 transitGatewayResponse := components.CreateTransitGatewayResponseAwsResourceEndpointGatewayResponse(components.AwsResourceEndpointGatewayResponse{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch transitGatewayResponse.Type {
+	case components.TransitGatewayResponseTypeAwsTransitGatewayResponse:
+		// transitGatewayResponse.AwsTransitGatewayResponse is populated
+	case components.TransitGatewayResponseTypeAwsVpcPeeringGatewayResponse:
+		// transitGatewayResponse.AwsVpcPeeringGatewayResponse is populated
+	case components.TransitGatewayResponseTypeAzureTransitGatewayResponse:
+		// transitGatewayResponse.AzureTransitGatewayResponse is populated
+	case components.TransitGatewayResponseTypeAzureVhubPeeringGatewayResponse:
+		// transitGatewayResponse.AzureVhubPeeringGatewayResponse is populated
+	case components.TransitGatewayResponseTypeGCPVPCPeeringGatewayResponse:
+		// transitGatewayResponse.GCPVPCPeeringGatewayResponse is populated
+	case components.TransitGatewayResponseTypeAwsResourceEndpointGatewayResponse:
+		// transitGatewayResponse.AwsResourceEndpointGatewayResponse is populated
+}
+```

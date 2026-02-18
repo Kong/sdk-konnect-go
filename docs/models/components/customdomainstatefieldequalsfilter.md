@@ -17,3 +17,15 @@ customDomainStateFieldEqualsFilter := components.CreateCustomDomainStateFieldEqu
 customDomainStateFieldEqualsFilter := components.CreateCustomDomainStateFieldEqualsFilterCustomDomainStateFieldEqualsComparison(components.CustomDomainStateFieldEqualsComparison{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch customDomainStateFieldEqualsFilter.Type {
+	case components.CustomDomainStateFieldEqualsFilterTypeCustomDomainState:
+		// customDomainStateFieldEqualsFilter.CustomDomainState is populated
+	case components.CustomDomainStateFieldEqualsFilterTypeCustomDomainStateFieldEqualsComparison:
+		// customDomainStateFieldEqualsFilter.CustomDomainStateFieldEqualsComparison is populated
+}
+```

@@ -30,3 +30,17 @@ customFields := components.CreateCustomFieldsBoolean(bool{/* values here */})
 customFields := components.CreateCustomFieldsNumericFieldFilter(components.NumericFieldFilter{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch customFields.Type {
+	case components.CustomFieldsTypeStringFieldFilter:
+		// customFields.StringFieldFilter is populated
+	case components.CustomFieldsTypeBoolean:
+		// customFields.Boolean is populated
+	case components.CustomFieldsTypeNumericFieldFilter:
+		// customFields.NumericFieldFilter is populated
+}
+```

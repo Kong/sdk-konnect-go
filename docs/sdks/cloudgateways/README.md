@@ -2764,7 +2764,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -2803,7 +2815,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -2842,7 +2866,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -2881,7 +2917,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -2920,7 +2968,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -2959,7 +3019,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -2998,7 +3070,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -3037,7 +3121,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -3076,7 +3172,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -3136,7 +3244,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -3218,7 +3338,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -3273,7 +3405,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -3328,7 +3472,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -3383,7 +3539,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -3438,7 +3606,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -3493,7 +3673,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -3548,7 +3740,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -3603,7 +3807,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -3658,7 +3874,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -3863,7 +4091,21 @@ func main() {
         log.Fatal(err)
     }
     if res.TransitGatewayResponse != nil {
-        // handle response
+        switch res.TransitGatewayResponse.Type {
+            case components.TransitGatewayResponseTypeAwsTransitGatewayResponse:
+                // res.TransitGatewayResponse.AwsTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsVpcPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AwsVpcPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureTransitGatewayResponse:
+                // res.TransitGatewayResponse.AzureTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureVhubPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AzureVhubPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeGCPVPCPeeringGatewayResponse:
+                // res.TransitGatewayResponse.GCPVPCPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsResourceEndpointGatewayResponse:
+                // res.TransitGatewayResponse.AwsResourceEndpointGatewayResponse is populated
+        }
+
     }
 }
 ```
@@ -3919,7 +4161,21 @@ func main() {
         log.Fatal(err)
     }
     if res.TransitGatewayResponse != nil {
-        // handle response
+        switch res.TransitGatewayResponse.Type {
+            case components.TransitGatewayResponseTypeAwsTransitGatewayResponse:
+                // res.TransitGatewayResponse.AwsTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsVpcPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AwsVpcPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureTransitGatewayResponse:
+                // res.TransitGatewayResponse.AzureTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureVhubPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AzureVhubPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeGCPVPCPeeringGatewayResponse:
+                // res.TransitGatewayResponse.GCPVPCPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsResourceEndpointGatewayResponse:
+                // res.TransitGatewayResponse.AwsResourceEndpointGatewayResponse is populated
+        }
+
     }
 }
 ```
@@ -3975,7 +4231,21 @@ func main() {
         log.Fatal(err)
     }
     if res.TransitGatewayResponse != nil {
-        // handle response
+        switch res.TransitGatewayResponse.Type {
+            case components.TransitGatewayResponseTypeAwsTransitGatewayResponse:
+                // res.TransitGatewayResponse.AwsTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsVpcPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AwsVpcPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureTransitGatewayResponse:
+                // res.TransitGatewayResponse.AzureTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureVhubPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AzureVhubPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeGCPVPCPeeringGatewayResponse:
+                // res.TransitGatewayResponse.GCPVPCPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsResourceEndpointGatewayResponse:
+                // res.TransitGatewayResponse.AwsResourceEndpointGatewayResponse is populated
+        }
+
     }
 }
 ```
@@ -4030,7 +4300,21 @@ func main() {
         log.Fatal(err)
     }
     if res.TransitGatewayResponse != nil {
-        // handle response
+        switch res.TransitGatewayResponse.Type {
+            case components.TransitGatewayResponseTypeAwsTransitGatewayResponse:
+                // res.TransitGatewayResponse.AwsTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsVpcPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AwsVpcPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureTransitGatewayResponse:
+                // res.TransitGatewayResponse.AzureTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureVhubPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AzureVhubPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeGCPVPCPeeringGatewayResponse:
+                // res.TransitGatewayResponse.GCPVPCPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsResourceEndpointGatewayResponse:
+                // res.TransitGatewayResponse.AwsResourceEndpointGatewayResponse is populated
+        }
+
     }
 }
 ```
@@ -4086,7 +4370,21 @@ func main() {
         log.Fatal(err)
     }
     if res.TransitGatewayResponse != nil {
-        // handle response
+        switch res.TransitGatewayResponse.Type {
+            case components.TransitGatewayResponseTypeAwsTransitGatewayResponse:
+                // res.TransitGatewayResponse.AwsTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsVpcPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AwsVpcPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureTransitGatewayResponse:
+                // res.TransitGatewayResponse.AzureTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureVhubPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AzureVhubPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeGCPVPCPeeringGatewayResponse:
+                // res.TransitGatewayResponse.GCPVPCPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsResourceEndpointGatewayResponse:
+                // res.TransitGatewayResponse.AwsResourceEndpointGatewayResponse is populated
+        }
+
     }
 }
 ```
@@ -4142,7 +4440,21 @@ func main() {
         log.Fatal(err)
     }
     if res.TransitGatewayResponse != nil {
-        // handle response
+        switch res.TransitGatewayResponse.Type {
+            case components.TransitGatewayResponseTypeAwsTransitGatewayResponse:
+                // res.TransitGatewayResponse.AwsTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsVpcPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AwsVpcPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureTransitGatewayResponse:
+                // res.TransitGatewayResponse.AzureTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureVhubPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AzureVhubPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeGCPVPCPeeringGatewayResponse:
+                // res.TransitGatewayResponse.GCPVPCPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsResourceEndpointGatewayResponse:
+                // res.TransitGatewayResponse.AwsResourceEndpointGatewayResponse is populated
+        }
+
     }
 }
 ```
@@ -4198,7 +4510,21 @@ func main() {
         log.Fatal(err)
     }
     if res.TransitGatewayResponse != nil {
-        // handle response
+        switch res.TransitGatewayResponse.Type {
+            case components.TransitGatewayResponseTypeAwsTransitGatewayResponse:
+                // res.TransitGatewayResponse.AwsTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsVpcPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AwsVpcPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureTransitGatewayResponse:
+                // res.TransitGatewayResponse.AzureTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureVhubPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AzureVhubPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeGCPVPCPeeringGatewayResponse:
+                // res.TransitGatewayResponse.GCPVPCPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsResourceEndpointGatewayResponse:
+                // res.TransitGatewayResponse.AwsResourceEndpointGatewayResponse is populated
+        }
+
     }
 }
 ```
@@ -4253,7 +4579,21 @@ func main() {
         log.Fatal(err)
     }
     if res.TransitGatewayResponse != nil {
-        // handle response
+        switch res.TransitGatewayResponse.Type {
+            case components.TransitGatewayResponseTypeAwsTransitGatewayResponse:
+                // res.TransitGatewayResponse.AwsTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsVpcPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AwsVpcPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureTransitGatewayResponse:
+                // res.TransitGatewayResponse.AzureTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureVhubPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AzureVhubPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeGCPVPCPeeringGatewayResponse:
+                // res.TransitGatewayResponse.GCPVPCPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsResourceEndpointGatewayResponse:
+                // res.TransitGatewayResponse.AwsResourceEndpointGatewayResponse is populated
+        }
+
     }
 }
 ```
@@ -4305,7 +4645,21 @@ func main() {
         log.Fatal(err)
     }
     if res.TransitGatewayResponse != nil {
-        // handle response
+        switch res.TransitGatewayResponse.Type {
+            case components.TransitGatewayResponseTypeAwsTransitGatewayResponse:
+                // res.TransitGatewayResponse.AwsTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsVpcPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AwsVpcPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureTransitGatewayResponse:
+                // res.TransitGatewayResponse.AzureTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureVhubPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AzureVhubPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeGCPVPCPeeringGatewayResponse:
+                // res.TransitGatewayResponse.GCPVPCPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsResourceEndpointGatewayResponse:
+                // res.TransitGatewayResponse.AwsResourceEndpointGatewayResponse is populated
+        }
+
     }
 }
 ```
@@ -4365,7 +4719,21 @@ func main() {
         log.Fatal(err)
     }
     if res.TransitGatewayResponse != nil {
-        // handle response
+        switch res.TransitGatewayResponse.Type {
+            case components.TransitGatewayResponseTypeAwsTransitGatewayResponse:
+                // res.TransitGatewayResponse.AwsTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsVpcPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AwsVpcPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureTransitGatewayResponse:
+                // res.TransitGatewayResponse.AzureTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureVhubPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AzureVhubPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeGCPVPCPeeringGatewayResponse:
+                // res.TransitGatewayResponse.GCPVPCPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsResourceEndpointGatewayResponse:
+                // res.TransitGatewayResponse.AwsResourceEndpointGatewayResponse is populated
+        }
+
     }
 }
 ```
@@ -4440,7 +4808,13 @@ func main() {
         log.Fatal(err)
     }
     if res.PatchTransitGatewayResponse != nil {
-        // handle response
+        switch res.PatchTransitGatewayResponse.Type {
+            case components.PatchTransitGatewayResponseTypeAwsResourceEndpointGatewayResponse:
+                // res.PatchTransitGatewayResponse.AwsResourceEndpointGatewayResponse is populated
+            case components.PatchTransitGatewayResponseTypeAwsTransitGatewayResponse:
+                // res.PatchTransitGatewayResponse.AwsTransitGatewayResponse is populated
+        }
+
     }
 }
 ```

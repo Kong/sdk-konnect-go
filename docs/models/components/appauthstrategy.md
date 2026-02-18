@@ -17,3 +17,15 @@ appAuthStrategy := components.CreateAppAuthStrategyKeyAuth(components.AppAuthStr
 appAuthStrategy := components.CreateAppAuthStrategyOpenidConnect(components.AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectResponse{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch appAuthStrategy.Type {
+	case components.AppAuthStrategyTypeKeyAuth:
+		// appAuthStrategy.AppAuthStrategyKeyAuthResponseAppAuthStrategyKeyAuthResponse is populated
+	case components.AppAuthStrategyTypeOpenidConnect:
+		// appAuthStrategy.AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectResponse is populated
+}
+```

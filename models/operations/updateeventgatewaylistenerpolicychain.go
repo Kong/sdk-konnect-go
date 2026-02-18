@@ -11,7 +11,7 @@ type UpdateEventGatewayListenerPolicyChainRequest struct {
 	// The UUID of your Gateway.
 	GatewayID string `pathParam:"style=simple,explode=false,name=gatewayId"`
 	// The ID of the Event Gateway Listener.
-	EventGatewayListenerID string `pathParam:"style=simple,explode=false,name=eventGatewayListenerId"`
+	ListenerID string `pathParam:"style=simple,explode=false,name=eventGatewayListenerId"`
 	// The request schema for updating the policy chain.
 	UpdateEventGatewayPolicyChainRequest *components.UpdateEventGatewayPolicyChainRequest `request:"mediaType=application/json"`
 }
@@ -23,11 +23,11 @@ func (u *UpdateEventGatewayListenerPolicyChainRequest) GetGatewayID() string {
 	return u.GatewayID
 }
 
-func (u *UpdateEventGatewayListenerPolicyChainRequest) GetEventGatewayListenerID() string {
+func (u *UpdateEventGatewayListenerPolicyChainRequest) GetListenerID() string {
 	if u == nil {
 		return ""
 	}
-	return u.EventGatewayListenerID
+	return u.ListenerID
 }
 
 func (u *UpdateEventGatewayListenerPolicyChainRequest) GetUpdateEventGatewayPolicyChainRequest() *components.UpdateEventGatewayPolicyChainRequest {

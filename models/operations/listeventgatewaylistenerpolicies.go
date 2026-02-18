@@ -11,7 +11,7 @@ type ListEventGatewayListenerPoliciesRequest struct {
 	// The UUID of your Gateway.
 	GatewayID string `pathParam:"style=simple,explode=false,name=gatewayId"`
 	// The ID of the Event Gateway Listener.
-	EventGatewayListenerID string `pathParam:"style=simple,explode=false,name=eventGatewayListenerId"`
+	ListenerID string `pathParam:"style=simple,explode=false,name=eventGatewayListenerId"`
 	// Filter documents returned in the response.
 	Filter *components.EventGatewayCommonFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
@@ -23,11 +23,11 @@ func (l *ListEventGatewayListenerPoliciesRequest) GetGatewayID() string {
 	return l.GatewayID
 }
 
-func (l *ListEventGatewayListenerPoliciesRequest) GetEventGatewayListenerID() string {
+func (l *ListEventGatewayListenerPoliciesRequest) GetListenerID() string {
 	if l == nil {
 		return ""
 	}
-	return l.EventGatewayListenerID
+	return l.ListenerID
 }
 
 func (l *ListEventGatewayListenerPoliciesRequest) GetFilter() *components.EventGatewayCommonFilter {

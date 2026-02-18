@@ -2687,7 +2687,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -2728,7 +2734,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -2769,7 +2781,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -2810,7 +2828,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -2851,7 +2875,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -2892,7 +2922,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -2940,7 +2976,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -2981,7 +3023,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3022,7 +3070,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3063,7 +3117,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3104,7 +3164,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3144,7 +3210,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3184,7 +3256,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3225,7 +3303,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3266,7 +3350,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3307,7 +3397,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3348,7 +3444,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3389,7 +3491,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3449,7 +3557,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3480,7 +3594,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3511,7 +3631,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3582,7 +3708,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3624,7 +3756,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3666,7 +3804,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3708,7 +3852,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3750,7 +3900,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3792,7 +3948,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3834,7 +3996,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3876,7 +4044,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3918,7 +4092,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -3960,7 +4140,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -4002,7 +4188,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -4044,7 +4236,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -4086,7 +4284,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -4128,7 +4332,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -4170,7 +4380,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -4212,7 +4428,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -4254,7 +4476,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -4288,7 +4516,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -4335,7 +4569,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -4374,7 +4614,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -4416,7 +4662,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```

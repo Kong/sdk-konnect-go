@@ -45,7 +45,11 @@ func main() {
         log.Fatal(err)
     }
     if res.IntegrationInstanceAuthConfig != nil {
-        // handle response
+        switch res.IntegrationInstanceAuthConfig.Type {
+            case components.IntegrationInstanceAuthConfigTypeOauthAuthConfig:
+                // res.IntegrationInstanceAuthConfig.OauthAuthConfig is populated
+        }
+
     }
 }
 ```
@@ -109,7 +113,11 @@ func main() {
         log.Fatal(err)
     }
     if res.IntegrationInstanceAuthConfig != nil {
-        // handle response
+        switch res.IntegrationInstanceAuthConfig.Type {
+            case components.IntegrationInstanceAuthConfigTypeOauthAuthConfig:
+                // res.IntegrationInstanceAuthConfig.OauthAuthConfig is populated
+        }
+
     }
 }
 ```

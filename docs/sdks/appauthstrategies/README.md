@@ -68,7 +68,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -114,7 +120,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -168,7 +180,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -221,7 +239,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -261,7 +285,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -301,7 +331,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -419,7 +455,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -485,7 +527,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -531,7 +579,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -585,7 +639,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -638,7 +698,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -687,7 +753,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -727,7 +799,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -789,7 +867,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -824,7 +908,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -859,7 +949,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -894,7 +990,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -927,7 +1029,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -960,7 +1068,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
