@@ -21,3 +21,15 @@ backendClusterReferenceModify := components.CreateBackendClusterReferenceModifyB
 backendClusterReferenceModify := components.CreateBackendClusterReferenceModifyBackendClusterReferenceByName(components.BackendClusterReferenceByName{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch backendClusterReferenceModify.Type {
+	case components.BackendClusterReferenceModifyTypeBackendClusterReferenceByID:
+		// backendClusterReferenceModify.BackendClusterReferenceByID is populated
+	case components.BackendClusterReferenceModifyTypeBackendClusterReferenceByName:
+		// backendClusterReferenceModify.BackendClusterReferenceByName is populated
+}
+```

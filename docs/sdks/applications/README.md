@@ -43,7 +43,13 @@ func main() {
         log.Fatal(err)
     }
     if res.GetApplicationResponse != nil {
-        // handle response
+        switch res.GetApplicationResponse.Type {
+            case components.GetApplicationResponseTypeClientCredentialsApplication:
+                // res.GetApplicationResponse.ClientCredentialsApplication is populated
+            case components.GetApplicationResponseTypeKeyAuthApplication:
+                // res.GetApplicationResponse.KeyAuthApplication is populated
+        }
+
     }
 }
 ```
@@ -74,7 +80,13 @@ func main() {
         log.Fatal(err)
     }
     if res.GetApplicationResponse != nil {
-        // handle response
+        switch res.GetApplicationResponse.Type {
+            case components.GetApplicationResponseTypeClientCredentialsApplication:
+                // res.GetApplicationResponse.ClientCredentialsApplication is populated
+            case components.GetApplicationResponseTypeKeyAuthApplication:
+                // res.GetApplicationResponse.KeyAuthApplication is populated
+        }
+
     }
 }
 ```
@@ -105,7 +117,13 @@ func main() {
         log.Fatal(err)
     }
     if res.GetApplicationResponse != nil {
-        // handle response
+        switch res.GetApplicationResponse.Type {
+            case components.GetApplicationResponseTypeClientCredentialsApplication:
+                // res.GetApplicationResponse.ClientCredentialsApplication is populated
+            case components.GetApplicationResponseTypeKeyAuthApplication:
+                // res.GetApplicationResponse.KeyAuthApplication is populated
+        }
+
     }
 }
 ```
@@ -225,7 +243,13 @@ func main() {
         log.Fatal(err)
     }
     if res.GetApplicationResponse != nil {
-        // handle response
+        switch res.GetApplicationResponse.Type {
+            case components.GetApplicationResponseTypeClientCredentialsApplication:
+                // res.GetApplicationResponse.ClientCredentialsApplication is populated
+            case components.GetApplicationResponseTypeKeyAuthApplication:
+                // res.GetApplicationResponse.KeyAuthApplication is populated
+        }
+
     }
 }
 ```
@@ -256,7 +280,13 @@ func main() {
         log.Fatal(err)
     }
     if res.GetApplicationResponse != nil {
-        // handle response
+        switch res.GetApplicationResponse.Type {
+            case components.GetApplicationResponseTypeClientCredentialsApplication:
+                // res.GetApplicationResponse.ClientCredentialsApplication is populated
+            case components.GetApplicationResponseTypeKeyAuthApplication:
+                // res.GetApplicationResponse.KeyAuthApplication is populated
+        }
+
     }
 }
 ```
@@ -287,7 +317,13 @@ func main() {
         log.Fatal(err)
     }
     if res.GetApplicationResponse != nil {
-        // handle response
+        switch res.GetApplicationResponse.Type {
+            case components.GetApplicationResponseTypeClientCredentialsApplication:
+                // res.GetApplicationResponse.ClientCredentialsApplication is populated
+            case components.GetApplicationResponseTypeKeyAuthApplication:
+                // res.GetApplicationResponse.KeyAuthApplication is populated
+        }
+
     }
 }
 ```

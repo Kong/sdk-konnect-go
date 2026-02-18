@@ -29,3 +29,19 @@ integrationInstanceAuthCredential := components.CreateIntegrationInstanceAuthCre
 integrationInstanceAuthCredential := components.CreateIntegrationInstanceAuthCredentialAWSRoleDelegationAuthCredential(components.AWSRoleDelegationAuthCredential{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch integrationInstanceAuthCredential.Type {
+	case components.IntegrationInstanceAuthCredentialTypeOauth:
+		// integrationInstanceAuthCredential.Oauth is populated
+	case components.IntegrationInstanceAuthCredentialTypeGithubAppInstallation:
+		// integrationInstanceAuthCredential.GithubAppInstallation is populated
+	case components.IntegrationInstanceAuthCredentialTypeMultiKeyAuthCredential:
+		// integrationInstanceAuthCredential.MultiKeyAuthCredential is populated
+	case components.IntegrationInstanceAuthCredentialTypeAWSRoleDelegationAuthCredential:
+		// integrationInstanceAuthCredential.AWSRoleDelegationAuthCredential is populated
+}
+```

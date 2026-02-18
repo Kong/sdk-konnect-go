@@ -3,6 +3,8 @@
 package components
 
 import (
+	"errors"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
@@ -54,6 +56,70 @@ func (e *Action) IsExact() bool {
 	return false
 }
 
+type ResourceNamesType string
+
+const (
+	ResourceNamesTypeArrayOfEventGatewayACLResourceName ResourceNamesType = "arrayOfEventGatewayACLResourceName"
+	ResourceNamesTypeStr                                ResourceNamesType = "str"
+)
+
+// ResourceNames - If any of these entries match, the resource name matches for this rule. A maximum of 50 entries are allowed.
+type ResourceNames struct {
+	ArrayOfEventGatewayACLResourceName []EventGatewayACLResourceName `queryParam:"inline" union:"member"`
+	Str                                *string                       `queryParam:"inline" union:"member"`
+
+	Type ResourceNamesType
+}
+
+func CreateResourceNamesArrayOfEventGatewayACLResourceName(arrayOfEventGatewayACLResourceName []EventGatewayACLResourceName) ResourceNames {
+	typ := ResourceNamesTypeArrayOfEventGatewayACLResourceName
+
+	return ResourceNames{
+		ArrayOfEventGatewayACLResourceName: arrayOfEventGatewayACLResourceName,
+		Type:                               typ,
+	}
+}
+
+func CreateResourceNamesStr(str string) ResourceNames {
+	typ := ResourceNamesTypeStr
+
+	return ResourceNames{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *ResourceNames) UnmarshalJSON(data []byte) error {
+
+	var arrayOfEventGatewayACLResourceName []EventGatewayACLResourceName = []EventGatewayACLResourceName{}
+	if err := utils.UnmarshalJSON(data, &arrayOfEventGatewayACLResourceName, "", true, nil); err == nil {
+		u.ArrayOfEventGatewayACLResourceName = arrayOfEventGatewayACLResourceName
+		u.Type = ResourceNamesTypeArrayOfEventGatewayACLResourceName
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = ResourceNamesTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ResourceNames", string(data))
+}
+
+func (u ResourceNames) MarshalJSON() ([]byte, error) {
+	if u.ArrayOfEventGatewayACLResourceName != nil {
+		return utils.MarshalJSON(u.ArrayOfEventGatewayACLResourceName, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ResourceNames: all fields are null")
+}
+
 // EventGatewayACLRule - A Kafka ACL rule to apply to virtual cluster traffic
 type EventGatewayACLRule struct {
 	// This rule applies to access only for type of resource
@@ -62,8 +128,8 @@ type EventGatewayACLRule struct {
 	Action Action `json:"action"`
 	// Types of Kafka operations to match against. Note that not every operation can apply to every resource type.
 	Operations []EventGatewayACLOperation `json:"operations"`
-	// If any of these entries match, the resource name matches for this rule.
-	ResourceNames []EventGatewayACLResourceName `json:"resource_names"`
+	// If any of these entries match, the resource name matches for this rule. A maximum of 50 entries are allowed.
+	ResourceNames ResourceNames `json:"resource_names"`
 }
 
 func (e EventGatewayACLRule) MarshalJSON() ([]byte, error) {
@@ -98,9 +164,9 @@ func (e *EventGatewayACLRule) GetOperations() []EventGatewayACLOperation {
 	return e.Operations
 }
 
-func (e *EventGatewayACLRule) GetResourceNames() []EventGatewayACLResourceName {
+func (e *EventGatewayACLRule) GetResourceNames() ResourceNames {
 	if e == nil {
-		return []EventGatewayACLResourceName{}
+		return ResourceNames{}
 	}
 	return e.ResourceNames
 }

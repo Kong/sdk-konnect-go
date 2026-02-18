@@ -20,3 +20,15 @@ eventGatewayKeySource := components.CreateEventGatewayKeySourceAws(components.Ev
 eventGatewayKeySource := components.CreateEventGatewayKeySourceStatic(components.EventGatewayStaticKeySource{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch eventGatewayKeySource.Type {
+	case components.EventGatewayKeySourceTypeAws:
+		// eventGatewayKeySource.EventGatewayAWSKeySource is populated
+	case components.EventGatewayKeySourceTypeStatic:
+		// eventGatewayKeySource.EventGatewayStaticKeySource is populated
+}
+```

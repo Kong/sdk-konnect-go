@@ -121,11 +121,13 @@ func main() {
                                     Name: components.NameRead,
                                 },
                             },
-                            ResourceNames: []components.EventGatewayACLResourceName{
-                                components.EventGatewayACLResourceName{
-                                    Match: "<value>",
+                            ResourceNames: components.CreateResourceNamesArrayOfEventGatewayACLResourceName(
+                                []components.EventGatewayACLResourceName{
+                                    components.EventGatewayACLResourceName{
+                                        Match: "<value>",
+                                    },
                                 },
-                            },
+                            ),
                         },
                     },
                 },

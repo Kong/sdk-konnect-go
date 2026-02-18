@@ -57,7 +57,19 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateDcrProviderResponse != nil {
-        // handle response
+        switch res.CreateDcrProviderResponse.Type {
+            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+                // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+                // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+                // res.CreateDcrProviderResponse.DCRProviderCurity is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+                // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+                // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -99,7 +111,19 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateDcrProviderResponse != nil {
-        // handle response
+        switch res.CreateDcrProviderResponse.Type {
+            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+                // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+                // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+                // res.CreateDcrProviderResponse.DCRProviderCurity is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+                // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+                // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -139,7 +163,19 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateDcrProviderResponse != nil {
-        // handle response
+        switch res.CreateDcrProviderResponse.Type {
+            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+                // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+                // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+                // res.CreateDcrProviderResponse.DCRProviderCurity is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+                // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+                // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -180,7 +216,19 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateDcrProviderResponse != nil {
-        // handle response
+        switch res.CreateDcrProviderResponse.Type {
+            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+                // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+                // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+                // res.CreateDcrProviderResponse.DCRProviderCurity is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+                // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+                // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -221,7 +269,19 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateDcrProviderResponse != nil {
-        // handle response
+        switch res.CreateDcrProviderResponse.Type {
+            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+                // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+                // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+                // res.CreateDcrProviderResponse.DCRProviderCurity is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+                // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+                // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -262,7 +322,19 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateDcrProviderResponse != nil {
-        // handle response
+        switch res.CreateDcrProviderResponse.Type {
+            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+                // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+                // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+                // res.CreateDcrProviderResponse.DCRProviderCurity is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+                // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+                // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -303,7 +375,19 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateDcrProviderResponse != nil {
-        // handle response
+        switch res.CreateDcrProviderResponse.Type {
+            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+                // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+                // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+                // res.CreateDcrProviderResponse.DCRProviderCurity is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+                // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+                // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -344,7 +428,19 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateDcrProviderResponse != nil {
-        // handle response
+        switch res.CreateDcrProviderResponse.Type {
+            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+                // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+                // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+                // res.CreateDcrProviderResponse.DCRProviderCurity is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+                // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+                // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -385,7 +481,19 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateDcrProviderResponse != nil {
-        // handle response
+        switch res.CreateDcrProviderResponse.Type {
+            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+                // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+                // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+                // res.CreateDcrProviderResponse.DCRProviderCurity is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+                // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+                // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -425,7 +533,19 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateDcrProviderResponse != nil {
-        // handle response
+        switch res.CreateDcrProviderResponse.Type {
+            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+                // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+                // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+                // res.CreateDcrProviderResponse.DCRProviderCurity is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+                // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+                // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -466,7 +586,19 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateDcrProviderResponse != nil {
-        // handle response
+        switch res.CreateDcrProviderResponse.Type {
+            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+                // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+                // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+                // res.CreateDcrProviderResponse.DCRProviderCurity is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+                // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+                // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -507,7 +639,19 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateDcrProviderResponse != nil {
-        // handle response
+        switch res.CreateDcrProviderResponse.Type {
+            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+                // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+                // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+                // res.CreateDcrProviderResponse.DCRProviderCurity is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+                // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+                // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -625,7 +769,19 @@ func main() {
         log.Fatal(err)
     }
     if res.DcrProviderResponse != nil {
-        // handle response
+        switch res.DcrProviderResponse.Type {
+            case components.DcrProviderResponseTypeDcrProviderAuth0:
+                // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
+            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+                // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
+            case components.DcrProviderResponseTypeDcrProviderCurity:
+                // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
+            case components.DcrProviderResponseTypeDcrProviderOkta:
+                // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeDcrProviderHTTP:
+                // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -656,7 +812,19 @@ func main() {
         log.Fatal(err)
     }
     if res.DcrProviderResponse != nil {
-        // handle response
+        switch res.DcrProviderResponse.Type {
+            case components.DcrProviderResponseTypeDcrProviderAuth0:
+                // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
+            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+                // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
+            case components.DcrProviderResponseTypeDcrProviderCurity:
+                // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
+            case components.DcrProviderResponseTypeDcrProviderOkta:
+                // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeDcrProviderHTTP:
+                // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -687,7 +855,19 @@ func main() {
         log.Fatal(err)
     }
     if res.DcrProviderResponse != nil {
-        // handle response
+        switch res.DcrProviderResponse.Type {
+            case components.DcrProviderResponseTypeDcrProviderAuth0:
+                // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
+            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+                // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
+            case components.DcrProviderResponseTypeDcrProviderCurity:
+                // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
+            case components.DcrProviderResponseTypeDcrProviderOkta:
+                // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeDcrProviderHTTP:
+                // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -718,7 +898,19 @@ func main() {
         log.Fatal(err)
     }
     if res.DcrProviderResponse != nil {
-        // handle response
+        switch res.DcrProviderResponse.Type {
+            case components.DcrProviderResponseTypeDcrProviderAuth0:
+                // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
+            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+                // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
+            case components.DcrProviderResponseTypeDcrProviderCurity:
+                // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
+            case components.DcrProviderResponseTypeDcrProviderOkta:
+                // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeDcrProviderHTTP:
+                // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -749,7 +941,19 @@ func main() {
         log.Fatal(err)
     }
     if res.DcrProviderResponse != nil {
-        // handle response
+        switch res.DcrProviderResponse.Type {
+            case components.DcrProviderResponseTypeDcrProviderAuth0:
+                // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
+            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+                // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
+            case components.DcrProviderResponseTypeDcrProviderCurity:
+                // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
+            case components.DcrProviderResponseTypeDcrProviderOkta:
+                // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeDcrProviderHTTP:
+                // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -810,7 +1014,19 @@ func main() {
         log.Fatal(err)
     }
     if res.DcrProviderResponse != nil {
-        // handle response
+        switch res.DcrProviderResponse.Type {
+            case components.DcrProviderResponseTypeDcrProviderAuth0:
+                // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
+            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+                // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
+            case components.DcrProviderResponseTypeDcrProviderCurity:
+                // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
+            case components.DcrProviderResponseTypeDcrProviderOkta:
+                // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeDcrProviderHTTP:
+                // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -845,7 +1061,19 @@ func main() {
         log.Fatal(err)
     }
     if res.DcrProviderResponse != nil {
-        // handle response
+        switch res.DcrProviderResponse.Type {
+            case components.DcrProviderResponseTypeDcrProviderAuth0:
+                // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
+            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+                // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
+            case components.DcrProviderResponseTypeDcrProviderCurity:
+                // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
+            case components.DcrProviderResponseTypeDcrProviderOkta:
+                // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeDcrProviderHTTP:
+                // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -880,7 +1108,19 @@ func main() {
         log.Fatal(err)
     }
     if res.DcrProviderResponse != nil {
-        // handle response
+        switch res.DcrProviderResponse.Type {
+            case components.DcrProviderResponseTypeDcrProviderAuth0:
+                // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
+            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+                // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
+            case components.DcrProviderResponseTypeDcrProviderCurity:
+                // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
+            case components.DcrProviderResponseTypeDcrProviderOkta:
+                // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeDcrProviderHTTP:
+                // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -915,7 +1155,19 @@ func main() {
         log.Fatal(err)
     }
     if res.DcrProviderResponse != nil {
-        // handle response
+        switch res.DcrProviderResponse.Type {
+            case components.DcrProviderResponseTypeDcrProviderAuth0:
+                // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
+            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+                // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
+            case components.DcrProviderResponseTypeDcrProviderCurity:
+                // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
+            case components.DcrProviderResponseTypeDcrProviderOkta:
+                // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeDcrProviderHTTP:
+                // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -950,7 +1202,19 @@ func main() {
         log.Fatal(err)
     }
     if res.DcrProviderResponse != nil {
-        // handle response
+        switch res.DcrProviderResponse.Type {
+            case components.DcrProviderResponseTypeDcrProviderAuth0:
+                // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
+            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+                // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
+            case components.DcrProviderResponseTypeDcrProviderCurity:
+                // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
+            case components.DcrProviderResponseTypeDcrProviderOkta:
+                // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeDcrProviderHTTP:
+                // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -984,7 +1248,19 @@ func main() {
         log.Fatal(err)
     }
     if res.DcrProviderResponse != nil {
-        // handle response
+        switch res.DcrProviderResponse.Type {
+            case components.DcrProviderResponseTypeDcrProviderAuth0:
+                // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
+            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+                // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
+            case components.DcrProviderResponseTypeDcrProviderCurity:
+                // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
+            case components.DcrProviderResponseTypeDcrProviderOkta:
+                // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeDcrProviderHTTP:
+                // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -1019,7 +1295,19 @@ func main() {
         log.Fatal(err)
     }
     if res.DcrProviderResponse != nil {
-        // handle response
+        switch res.DcrProviderResponse.Type {
+            case components.DcrProviderResponseTypeDcrProviderAuth0:
+                // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
+            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+                // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
+            case components.DcrProviderResponseTypeDcrProviderCurity:
+                // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
+            case components.DcrProviderResponseTypeDcrProviderOkta:
+                // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeDcrProviderHTTP:
+                // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -1054,7 +1342,19 @@ func main() {
         log.Fatal(err)
     }
     if res.DcrProviderResponse != nil {
-        // handle response
+        switch res.DcrProviderResponse.Type {
+            case components.DcrProviderResponseTypeDcrProviderAuth0:
+                // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
+            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+                // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
+            case components.DcrProviderResponseTypeDcrProviderCurity:
+                // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
+            case components.DcrProviderResponseTypeDcrProviderOkta:
+                // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeDcrProviderHTTP:
+                // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -1089,7 +1389,19 @@ func main() {
         log.Fatal(err)
     }
     if res.DcrProviderResponse != nil {
-        // handle response
+        switch res.DcrProviderResponse.Type {
+            case components.DcrProviderResponseTypeDcrProviderAuth0:
+                // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
+            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+                // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
+            case components.DcrProviderResponseTypeDcrProviderCurity:
+                // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
+            case components.DcrProviderResponseTypeDcrProviderOkta:
+                // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeDcrProviderHTTP:
+                // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
+        }
+
     }
 }
 ```

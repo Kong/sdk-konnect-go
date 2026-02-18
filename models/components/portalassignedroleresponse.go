@@ -32,45 +32,45 @@ func (e *EntityRegion) IsExact() bool {
 
 // PortalAssignedRoleResponse - An assigned role associates a service and an action to a team.
 type PortalAssignedRoleResponse struct {
-	ID             *string `json:"id,omitempty"`
-	RoleName       *string `json:"role_name,omitempty"`
-	EntityID       *string `json:"entity_id,omitempty"`
-	EntityTypeName *string `json:"entity_type_name,omitempty"`
+	ID             string `json:"id"`
+	RoleName       string `json:"role_name"`
+	EntityID       string `json:"entity_id"`
+	EntityTypeName string `json:"entity_type_name"`
 	// Region of the entity.
-	EntityRegion *EntityRegion `json:"entity_region,omitempty"`
+	EntityRegion EntityRegion `json:"entity_region"`
 }
 
-func (p *PortalAssignedRoleResponse) GetID() *string {
+func (p *PortalAssignedRoleResponse) GetID() string {
 	if p == nil {
-		return nil
+		return ""
 	}
 	return p.ID
 }
 
-func (p *PortalAssignedRoleResponse) GetRoleName() *string {
+func (p *PortalAssignedRoleResponse) GetRoleName() string {
 	if p == nil {
-		return nil
+		return ""
 	}
 	return p.RoleName
 }
 
-func (p *PortalAssignedRoleResponse) GetEntityID() *string {
+func (p *PortalAssignedRoleResponse) GetEntityID() string {
 	if p == nil {
-		return nil
+		return ""
 	}
 	return p.EntityID
 }
 
-func (p *PortalAssignedRoleResponse) GetEntityTypeName() *string {
+func (p *PortalAssignedRoleResponse) GetEntityTypeName() string {
 	if p == nil {
-		return nil
+		return ""
 	}
 	return p.EntityTypeName
 }
 
-func (p *PortalAssignedRoleResponse) GetEntityRegion() *EntityRegion {
+func (p *PortalAssignedRoleResponse) GetEntityRegion() EntityRegion {
 	if p == nil {
-		return nil
+		return EntityRegion("")
 	}
 	return p.EntityRegion
 }

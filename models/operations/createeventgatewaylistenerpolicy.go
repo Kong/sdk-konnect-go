@@ -11,7 +11,7 @@ type CreateEventGatewayListenerPolicyRequest struct {
 	// The UUID of your Gateway.
 	GatewayID string `pathParam:"style=simple,explode=false,name=gatewayId"`
 	// The ID of the Event Gateway Listener.
-	EventGatewayListenerID string `pathParam:"style=simple,explode=false,name=eventGatewayListenerId"`
+	ListenerID string `pathParam:"style=simple,explode=false,name=eventGatewayListenerId"`
 	// Determines the id of the existing policy the new policy should be inserted before. Either 'before' or 'after' can be provided, when both are omitted the new policy is added to the end of the chain. When both are provided, the request fails with a 400 Bad Request.
 	//
 	Before *string `queryParam:"style=form,explode=true,name=before"`
@@ -29,11 +29,11 @@ func (c *CreateEventGatewayListenerPolicyRequest) GetGatewayID() string {
 	return c.GatewayID
 }
 
-func (c *CreateEventGatewayListenerPolicyRequest) GetEventGatewayListenerID() string {
+func (c *CreateEventGatewayListenerPolicyRequest) GetListenerID() string {
 	if c == nil {
 		return ""
 	}
-	return c.EventGatewayListenerID
+	return c.ListenerID
 }
 
 func (c *CreateEventGatewayListenerPolicyRequest) GetBefore() *string {

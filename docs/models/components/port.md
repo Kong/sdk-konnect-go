@@ -17,3 +17,15 @@ port := components.CreatePortInteger(int64{/* values here */})
 port := components.CreatePortStr(string{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch port.Type {
+	case components.PortTypeInteger:
+		// port.Integer is populated
+	case components.PortTypeStr:
+		// port.Str is populated
+}
+```
