@@ -126,7 +126,15 @@ func main() {
         log.Fatal(err)
     }
     if res.BackendCluster != nil {
-        // handle response
+        switch res.BackendCluster.Authentication.Type {
+            case components.BackendClusterAuthenticationSensitiveDataAwareSchemeTypeAnonymous:
+                // res.BackendCluster.Authentication.BackendClusterAuthenticationAnonymous is populated
+            case components.BackendClusterAuthenticationSensitiveDataAwareSchemeTypeSaslPlain:
+                // res.BackendCluster.Authentication.BackendClusterAuthenticationSaslPlainSensitiveDataAware is populated
+            case components.BackendClusterAuthenticationSensitiveDataAwareSchemeTypeSaslScram:
+                // res.BackendCluster.Authentication.BackendClusterAuthenticationSaslScramSensitiveDataAware is populated
+        }
+
     }
 }
 ```
@@ -184,7 +192,15 @@ func main() {
         log.Fatal(err)
     }
     if res.BackendCluster != nil {
-        // handle response
+        switch res.BackendCluster.Authentication.Type {
+            case components.BackendClusterAuthenticationSensitiveDataAwareSchemeTypeAnonymous:
+                // res.BackendCluster.Authentication.BackendClusterAuthenticationAnonymous is populated
+            case components.BackendClusterAuthenticationSensitiveDataAwareSchemeTypeSaslPlain:
+                // res.BackendCluster.Authentication.BackendClusterAuthenticationSaslPlainSensitiveDataAware is populated
+            case components.BackendClusterAuthenticationSensitiveDataAwareSchemeTypeSaslScram:
+                // res.BackendCluster.Authentication.BackendClusterAuthenticationSaslScramSensitiveDataAware is populated
+        }
+
     }
 }
 ```
@@ -269,7 +285,15 @@ func main() {
         log.Fatal(err)
     }
     if res.BackendCluster != nil {
-        // handle response
+        switch res.BackendCluster.Authentication.Type {
+            case components.BackendClusterAuthenticationSensitiveDataAwareSchemeTypeAnonymous:
+                // res.BackendCluster.Authentication.BackendClusterAuthenticationAnonymous is populated
+            case components.BackendClusterAuthenticationSensitiveDataAwareSchemeTypeSaslPlain:
+                // res.BackendCluster.Authentication.BackendClusterAuthenticationSaslPlainSensitiveDataAware is populated
+            case components.BackendClusterAuthenticationSensitiveDataAwareSchemeTypeSaslScram:
+                // res.BackendCluster.Authentication.BackendClusterAuthenticationSaslScramSensitiveDataAware is populated
+        }
+
     }
 }
 ```

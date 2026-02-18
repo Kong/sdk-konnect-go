@@ -6,10 +6,10 @@ A static encryption key reference, either by ID or by value.
 
 ## Supported Types
 
-### ReferenceByID
+### EncryptionKeyStaticReferenceByID
 
 ```go
-encryptionKeyStaticReference := components.CreateEncryptionKeyStaticReferenceReferenceByID(components.ReferenceByID{/* values here */})
+encryptionKeyStaticReference := components.CreateEncryptionKeyStaticReferenceEncryptionKeyStaticReferenceByID(components.EncryptionKeyStaticReferenceByID{/* values here */})
 ```
 
 ### ReferenceByName
@@ -18,3 +18,15 @@ encryptionKeyStaticReference := components.CreateEncryptionKeyStaticReferenceRef
 encryptionKeyStaticReference := components.CreateEncryptionKeyStaticReferenceReferenceByName(components.ReferenceByName{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch encryptionKeyStaticReference.Type {
+	case components.EncryptionKeyStaticReferenceTypeEncryptionKeyStaticReferenceByID:
+		// encryptionKeyStaticReference.EncryptionKeyStaticReferenceByID is populated
+	case components.EncryptionKeyStaticReferenceTypeReferenceByName:
+		// encryptionKeyStaticReference.ReferenceByName is populated
+}
+```

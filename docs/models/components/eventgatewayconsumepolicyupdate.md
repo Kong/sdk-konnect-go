@@ -29,3 +29,19 @@ eventGatewayConsumePolicyUpdate := components.CreateEventGatewayConsumePolicyUpd
 eventGatewayConsumePolicyUpdate := components.CreateEventGatewayConsumePolicyUpdateSkipRecord(components.EventGatewaySkipRecordPolicy{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch eventGatewayConsumePolicyUpdate.Type {
+	case components.EventGatewayConsumePolicyUpdateTypeModifyHeaders:
+		// eventGatewayConsumePolicyUpdate.EventGatewayModifyHeadersPolicy is populated
+	case components.EventGatewayConsumePolicyUpdateTypeSchemaValidation:
+		// eventGatewayConsumePolicyUpdate.EventGatewayConsumeSchemaValidationPolicy is populated
+	case components.EventGatewayConsumePolicyUpdateTypeDecrypt:
+		// eventGatewayConsumePolicyUpdate.EventGatewayDecryptPolicy is populated
+	case components.EventGatewayConsumePolicyUpdateTypeSkipRecord:
+		// eventGatewayConsumePolicyUpdate.EventGatewaySkipRecordPolicy is populated
+}
+```

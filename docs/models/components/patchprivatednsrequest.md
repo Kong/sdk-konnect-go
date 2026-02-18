@@ -17,3 +17,15 @@ patchPrivateDNSRequest := components.CreatePatchPrivateDNSRequestPatchAwsPrivate
 patchPrivateDNSRequest := components.CreatePatchPrivateDNSRequestPatchAzurePrivateDNSResolver(components.PatchAzurePrivateDNSResolver{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch patchPrivateDNSRequest.Type {
+	case components.PatchPrivateDNSRequestTypePatchAwsPrivateDNSResolver:
+		// patchPrivateDNSRequest.PatchAwsPrivateDNSResolver is populated
+	case components.PatchPrivateDNSRequestTypePatchAzurePrivateDNSResolver:
+		// patchPrivateDNSRequest.PatchAzurePrivateDNSResolver is populated
+}
+```

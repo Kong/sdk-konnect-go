@@ -1886,10 +1886,10 @@ func (s *EventGatewayListenerPolicies) MoveEventGatewayListenerPolicy(ctx contex
 
 // GetEventGatewayListenerPolicyChain - Get Policy Chain for Listener
 // Get the policy chain for a listener composed of all the ids of the policies in order of execution.
-func (s *EventGatewayListenerPolicies) GetEventGatewayListenerPolicyChain(ctx context.Context, gatewayID string, eventGatewayListenerID string, opts ...operations.Option) (*operations.GetEventGatewayListenerPolicyChainResponse, error) {
+func (s *EventGatewayListenerPolicies) GetEventGatewayListenerPolicyChain(ctx context.Context, gatewayID string, listenerID string, opts ...operations.Option) (*operations.GetEventGatewayListenerPolicyChainResponse, error) {
 	request := operations.GetEventGatewayListenerPolicyChainRequest{
-		GatewayID:              gatewayID,
-		EventGatewayListenerID: eventGatewayListenerID,
+		GatewayID:  gatewayID,
+		ListenerID: listenerID,
 	}
 
 	o := operations.Options{}

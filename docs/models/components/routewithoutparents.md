@@ -15,3 +15,15 @@ routeWithoutParents := components.CreateRouteWithoutParentsRouteJSON(components.
 routeWithoutParents := components.CreateRouteWithoutParentsRouteExpression(components.RouteExpression{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch routeWithoutParents.Type {
+	case components.RouteWithoutParentsTypeRouteJSON:
+		// routeWithoutParents.RouteJSON is populated
+	case components.RouteWithoutParentsTypeRouteExpression:
+		// routeWithoutParents.RouteExpression is populated
+}
+```

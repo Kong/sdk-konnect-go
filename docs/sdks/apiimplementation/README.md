@@ -128,7 +128,13 @@ func main() {
         log.Fatal(err)
     }
     if res.APIImplementationResponse != nil {
-        // handle response
+        switch res.APIImplementationResponse.Type {
+            case components.APIImplementationResponseTypeAPIImplementationResponseServiceReference:
+                // res.APIImplementationResponse.APIImplementationResponseServiceReference is populated
+            case components.APIImplementationResponseTypeAPIImplementationResponseControlPlaneReference:
+                // res.APIImplementationResponse.APIImplementationResponseControlPlaneReference is populated
+        }
+
     }
 }
 ```
@@ -166,7 +172,13 @@ func main() {
         log.Fatal(err)
     }
     if res.APIImplementationResponse != nil {
-        // handle response
+        switch res.APIImplementationResponse.Type {
+            case components.APIImplementationResponseTypeAPIImplementationResponseServiceReference:
+                // res.APIImplementationResponse.APIImplementationResponseServiceReference is populated
+            case components.APIImplementationResponseTypeAPIImplementationResponseControlPlaneReference:
+                // res.APIImplementationResponse.APIImplementationResponseControlPlaneReference is populated
+        }
+
     }
 }
 ```
@@ -204,7 +216,13 @@ func main() {
         log.Fatal(err)
     }
     if res.APIImplementationResponse != nil {
-        // handle response
+        switch res.APIImplementationResponse.Type {
+            case components.APIImplementationResponseTypeAPIImplementationResponseServiceReference:
+                // res.APIImplementationResponse.APIImplementationResponseServiceReference is populated
+            case components.APIImplementationResponseTypeAPIImplementationResponseControlPlaneReference:
+                // res.APIImplementationResponse.APIImplementationResponseControlPlaneReference is populated
+        }
+
     }
 }
 ```
@@ -242,7 +260,13 @@ func main() {
         log.Fatal(err)
     }
     if res.APIImplementationResponse != nil {
-        // handle response
+        switch res.APIImplementationResponse.Type {
+            case components.APIImplementationResponseTypeAPIImplementationResponseServiceReference:
+                // res.APIImplementationResponse.APIImplementationResponseServiceReference is populated
+            case components.APIImplementationResponseTypeAPIImplementationResponseControlPlaneReference:
+                // res.APIImplementationResponse.APIImplementationResponseControlPlaneReference is populated
+        }
+
     }
 }
 ```
@@ -280,7 +304,13 @@ func main() {
         log.Fatal(err)
     }
     if res.APIImplementationResponse != nil {
-        // handle response
+        switch res.APIImplementationResponse.Type {
+            case components.APIImplementationResponseTypeAPIImplementationResponseServiceReference:
+                // res.APIImplementationResponse.APIImplementationResponseServiceReference is populated
+            case components.APIImplementationResponseTypeAPIImplementationResponseControlPlaneReference:
+                // res.APIImplementationResponse.APIImplementationResponseControlPlaneReference is populated
+        }
+
     }
 }
 ```
@@ -318,7 +348,13 @@ func main() {
         log.Fatal(err)
     }
     if res.APIImplementationResponse != nil {
-        // handle response
+        switch res.APIImplementationResponse.Type {
+            case components.APIImplementationResponseTypeAPIImplementationResponseServiceReference:
+                // res.APIImplementationResponse.APIImplementationResponseServiceReference is populated
+            case components.APIImplementationResponseTypeAPIImplementationResponseControlPlaneReference:
+                // res.APIImplementationResponse.APIImplementationResponseControlPlaneReference is populated
+        }
+
     }
 }
 ```
@@ -356,7 +392,13 @@ func main() {
         log.Fatal(err)
     }
     if res.APIImplementationResponse != nil {
-        // handle response
+        switch res.APIImplementationResponse.Type {
+            case components.APIImplementationResponseTypeAPIImplementationResponseServiceReference:
+                // res.APIImplementationResponse.APIImplementationResponseServiceReference is populated
+            case components.APIImplementationResponseTypeAPIImplementationResponseControlPlaneReference:
+                // res.APIImplementationResponse.APIImplementationResponseControlPlaneReference is populated
+        }
+
     }
 }
 ```
@@ -416,7 +458,13 @@ func main() {
         log.Fatal(err)
     }
     if res.APIImplementationResponse != nil {
-        // handle response
+        switch res.APIImplementationResponse.Type {
+            case components.APIImplementationResponseTypeAPIImplementationResponseServiceReference:
+                // res.APIImplementationResponse.APIImplementationResponseServiceReference is populated
+            case components.APIImplementationResponseTypeAPIImplementationResponseControlPlaneReference:
+                // res.APIImplementationResponse.APIImplementationResponseControlPlaneReference is populated
+        }
+
     }
 }
 ```

@@ -148,7 +148,13 @@ func main() {
         log.Fatal(err)
     }
     if res.Route != nil {
-        // handle response
+        switch res.Route.Type {
+            case components.RouteTypeRouteJSON:
+                // res.Route.RouteJSON is populated
+            case components.RouteTypeRouteExpression:
+                // res.Route.RouteExpression is populated
+        }
+
     }
 }
 ```
@@ -195,7 +201,13 @@ func main() {
         log.Fatal(err)
     }
     if res.Route != nil {
-        // handle response
+        switch res.Route.Type {
+            case components.RouteTypeRouteJSON:
+                // res.Route.RouteJSON is populated
+            case components.RouteTypeRouteExpression:
+                // res.Route.RouteExpression is populated
+        }
+
     }
 }
 ```
@@ -242,7 +254,13 @@ func main() {
         log.Fatal(err)
     }
     if res.Route != nil {
-        // handle response
+        switch res.Route.Type {
+            case components.RouteTypeRouteJSON:
+                // res.Route.RouteJSON is populated
+            case components.RouteTypeRouteExpression:
+                // res.Route.RouteExpression is populated
+        }
+
     }
 }
 ```
@@ -354,7 +372,13 @@ func main() {
         log.Fatal(err)
     }
     if res.Route != nil {
-        // handle response
+        switch res.Route.Type {
+            case components.RouteTypeRouteJSON:
+                // res.Route.RouteJSON is populated
+            case components.RouteTypeRouteExpression:
+                // res.Route.RouteExpression is populated
+        }
+
     }
 }
 ```
@@ -431,7 +455,13 @@ func main() {
         log.Fatal(err)
     }
     if res.Route != nil {
-        // handle response
+        switch res.Route.Type {
+            case components.RouteTypeRouteJSON:
+                // res.Route.RouteJSON is populated
+            case components.RouteTypeRouteExpression:
+                // res.Route.RouteExpression is populated
+        }
+
     }
 }
 ```
@@ -483,7 +513,13 @@ func main() {
         log.Fatal(err)
     }
     if res.Route != nil {
-        // handle response
+        switch res.Route.Type {
+            case components.RouteTypeRouteJSON:
+                // res.Route.RouteJSON is populated
+            case components.RouteTypeRouteExpression:
+                // res.Route.RouteExpression is populated
+        }
+
     }
 }
 ```
@@ -535,7 +571,13 @@ func main() {
         log.Fatal(err)
     }
     if res.Route != nil {
-        // handle response
+        switch res.Route.Type {
+            case components.RouteTypeRouteJSON:
+                // res.Route.RouteJSON is populated
+            case components.RouteTypeRouteExpression:
+                // res.Route.RouteExpression is populated
+        }
+
     }
 }
 ```
@@ -670,7 +712,13 @@ func main() {
         log.Fatal(err)
     }
     if res.Route != nil {
-        // handle response
+        switch res.Route.Type {
+            case components.RouteTypeRouteJSON:
+                // res.Route.RouteJSON is populated
+            case components.RouteTypeRouteExpression:
+                // res.Route.RouteExpression is populated
+        }
+
     }
 }
 ```
@@ -788,7 +836,13 @@ func main() {
         log.Fatal(err)
     }
     if res.Route != nil {
-        // handle response
+        switch res.Route.Type {
+            case components.RouteTypeRouteJSON:
+                // res.Route.RouteJSON is populated
+            case components.RouteTypeRouteExpression:
+                // res.Route.RouteExpression is populated
+        }
+
     }
 }
 ```
@@ -864,7 +918,13 @@ func main() {
         log.Fatal(err)
     }
     if res.Route != nil {
-        // handle response
+        switch res.Route.Type {
+            case components.RouteTypeRouteJSON:
+                // res.Route.RouteJSON is populated
+            case components.RouteTypeRouteExpression:
+                // res.Route.RouteExpression is populated
+        }
+
     }
 }
 ```

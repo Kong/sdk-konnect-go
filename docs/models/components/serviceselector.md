@@ -63,3 +63,31 @@ serviceSelector := components.CreateServiceSelectorHasApisSelector(components.Ha
 serviceSelector := components.CreateServiceSelectorHasResourcesSelector(components.HasResourcesSelector{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch serviceSelector.Type {
+	case components.ServiceSelectorTypeAllEntitiesSelector:
+		// serviceSelector.AllEntitiesSelector is populated
+	case components.ServiceSelectorTypeByIDsSelector:
+		// serviceSelector.ByIDsSelector is populated
+	case components.ServiceSelectorTypeByNameSelector:
+		// serviceSelector.ByNameSelector is populated
+	case components.ServiceSelectorTypeByDisplayNameSelector:
+		// serviceSelector.ByDisplayNameSelector is populated
+	case components.ServiceSelectorTypeByCustomFieldSelector:
+		// serviceSelector.ByCustomFieldSelector is populated
+	case components.ServiceSelectorTypeByLabelSelector:
+		// serviceSelector.ByLabelSelector is populated
+	case components.ServiceSelectorTypeHasLabelKeySelector:
+		// serviceSelector.HasLabelKeySelector is populated
+	case components.ServiceSelectorTypeHasDocsSelector:
+		// serviceSelector.HasDocsSelector is populated
+	case components.ServiceSelectorTypeHasApisSelector:
+		// serviceSelector.HasApisSelector is populated
+	case components.ServiceSelectorTypeHasResourcesSelector:
+		// serviceSelector.HasResourcesSelector is populated
+}
+```

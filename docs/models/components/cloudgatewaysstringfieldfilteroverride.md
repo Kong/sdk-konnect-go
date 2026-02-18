@@ -33,3 +33,21 @@ cloudGatewaysStringFieldFilterOverride := components.CreateCloudGatewaysStringFi
 cloudGatewaysStringFieldFilterOverride := components.CreateCloudGatewaysStringFieldFilterOverrideStringFieldOContainsFilter(components.StringFieldOContainsFilter{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch cloudGatewaysStringFieldFilterOverride.Type {
+	case components.CloudGatewaysStringFieldFilterOverrideTypeCloudGatewaysStringFieldEqualsFilterOverride:
+		// cloudGatewaysStringFieldFilterOverride.CloudGatewaysStringFieldEqualsFilterOverride is populated
+	case components.CloudGatewaysStringFieldFilterOverrideTypeStringFieldContainsFilter:
+		// cloudGatewaysStringFieldFilterOverride.StringFieldContainsFilter is populated
+	case components.CloudGatewaysStringFieldFilterOverrideTypeStringFieldNEQFilter:
+		// cloudGatewaysStringFieldFilterOverride.StringFieldNEQFilter is populated
+	case components.CloudGatewaysStringFieldFilterOverrideTypeStringFieldOEQFilter:
+		// cloudGatewaysStringFieldFilterOverride.StringFieldOEQFilter is populated
+	case components.CloudGatewaysStringFieldFilterOverrideTypeStringFieldOContainsFilter:
+		// cloudGatewaysStringFieldFilterOverride.StringFieldOContainsFilter is populated
+}
+```

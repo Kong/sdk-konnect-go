@@ -9,3 +9,4 @@ Name of cloud provider.
 | ------------------- | ------------------- |
 | `ProviderNameAws`   | aws                 |
 | `ProviderNameAzure` | azure               |
+| `ProviderNameGcp`   | gcp                 |

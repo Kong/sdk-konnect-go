@@ -48,7 +48,7 @@ func main() {
 
     res, err := s.EventGatewayListenerPolicies.ListEventGatewayListenerPolicies(ctx, operations.ListEventGatewayListenerPoliciesRequest{
         GatewayID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        EventGatewayListenerID: "6c709b1e-c2a0-4793-9e98-d1d902fe8b6f",
+        ListenerID: "6c709b1e-c2a0-4793-9e98-d1d902fe8b6f",
     })
     if err != nil {
         log.Fatal(err)
@@ -108,7 +108,7 @@ func main() {
 
     res, err := s.EventGatewayListenerPolicies.CreateEventGatewayListenerPolicy(ctx, operations.CreateEventGatewayListenerPolicyRequest{
         GatewayID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        EventGatewayListenerID: "3407fe24-3af9-43d2-92df-f7396e794e62",
+        ListenerID: "3407fe24-3af9-43d2-92df-f7396e794e62",
         EventGatewayListenerPolicyCreate: components.CreateEventGatewayListenerPolicyCreateTLSServer(
             components.EventGatewayTLSListenerPolicy{
                 Config: components.EventGatewayTLSListenerPolicyConfig{
@@ -176,7 +176,7 @@ func main() {
 
     res, err := s.EventGatewayListenerPolicies.GetEventGatewayListenerPolicy(ctx, operations.GetEventGatewayListenerPolicyRequest{
         GatewayID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        EventGatewayListenerID: "028b6c72-e081-4f74-a7c0-60c1911a2615",
+        ListenerID: "028b6c72-e081-4f74-a7c0-60c1911a2615",
         PolicyID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
     })
     if err != nil {
@@ -238,7 +238,7 @@ func main() {
 
     res, err := s.EventGatewayListenerPolicies.UpdateEventGatewayListenerPolicy(ctx, operations.UpdateEventGatewayListenerPolicyRequest{
         GatewayID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        EventGatewayListenerID: "ba676a00-d85e-467e-b0b8-728645f766fb",
+        ListenerID: "ba676a00-d85e-467e-b0b8-728645f766fb",
         PolicyID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         EventGatewayListenerPolicyUpdate: components.CreateEventGatewayListenerPolicyUpdateForwardToVirtualCluster(
             components.ForwardToVirtualClusterPolicy{
@@ -314,7 +314,7 @@ func main() {
 
     res, err := s.EventGatewayListenerPolicies.PatchEventGatewayListenerPolicy(ctx, operations.PatchEventGatewayListenerPolicyRequest{
         GatewayID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        EventGatewayListenerID: "d34c0b72-33a5-4a32-8aba-d9c0867897f8",
+        ListenerID: "d34c0b72-33a5-4a32-8aba-d9c0867897f8",
         PolicyID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         EventGatewayListenerPolicyPatch: &components.EventGatewayListenerPolicyPatch{
             Labels: map[string]string{
@@ -381,7 +381,7 @@ func main() {
 
     res, err := s.EventGatewayListenerPolicies.DeleteEventGatewayListenerPolicy(ctx, operations.DeleteEventGatewayListenerPolicyRequest{
         GatewayID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        EventGatewayListenerID: "bba98afd-6e26-46d2-b5c2-ae9d8d47cecc",
+        ListenerID: "bba98afd-6e26-46d2-b5c2-ae9d8d47cecc",
         PolicyID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
     })
     if err != nil {
@@ -444,7 +444,7 @@ func main() {
 
     res, err := s.EventGatewayListenerPolicies.MoveEventGatewayListenerPolicy(ctx, operations.MoveEventGatewayListenerPolicyRequest{
         GatewayID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        EventGatewayListenerID: "49affc92-6aff-4fa8-ab92-e31bc124708f",
+        ListenerID: "49affc92-6aff-4fa8-ab92-e31bc124708f",
         PolicyID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         MoveEventGatewayPolicy: components.MoveEventGatewayPolicy{
             Index: 2,
@@ -523,7 +523,7 @@ func main() {
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
 | `gatewayID`                                              | *string*                                                 | :heavy_check_mark:                                       | The UUID of your Gateway.                                | 9524ec7d-36d9-465d-a8c5-83a3c9390458                     |
-| `eventGatewayListenerID`                                 | *string*                                                 | :heavy_check_mark:                                       | The ID of the Event Gateway Listener.                    |                                                          |
+| `listenerID`                                             | *string*                                                 | :heavy_check_mark:                                       | The ID of the Event Gateway Listener.                    |                                                          |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -567,7 +567,7 @@ func main() {
 
     res, err := s.EventGatewayListenerPolicies.UpdateEventGatewayListenerPolicyChain(ctx, operations.UpdateEventGatewayListenerPolicyChainRequest{
         GatewayID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        EventGatewayListenerID: "fe9f5f21-fcaa-45c3-ae26-22ad7df78b60",
+        ListenerID: "fe9f5f21-fcaa-45c3-ae26-22ad7df78b60",
     })
     if err != nil {
         log.Fatal(err)

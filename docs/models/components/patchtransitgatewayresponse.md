@@ -17,3 +17,15 @@ patchTransitGatewayResponse := components.CreatePatchTransitGatewayResponseAwsRe
 patchTransitGatewayResponse := components.CreatePatchTransitGatewayResponseAwsTransitGatewayResponse(components.AwsTransitGatewayResponse{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch patchTransitGatewayResponse.Type {
+	case components.PatchTransitGatewayResponseTypeAwsResourceEndpointGatewayResponse:
+		// patchTransitGatewayResponse.AwsResourceEndpointGatewayResponse is populated
+	case components.PatchTransitGatewayResponseTypeAwsTransitGatewayResponse:
+		// patchTransitGatewayResponse.AwsTransitGatewayResponse is populated
+}
+```

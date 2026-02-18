@@ -124,7 +124,11 @@ func main() {
         log.Fatal(err)
     }
     if res.CatalogServiceScorecard != nil {
-        // handle response
+        switch res.CatalogServiceScorecard.EntitySelector.Type {
+            case components.ScorecardEntitySelectorTypeServiceSelector:
+                // res.CatalogServiceScorecard.EntitySelector.ServiceSelector is populated
+        }
+
     }
 }
 ```
@@ -280,7 +284,11 @@ func main() {
         log.Fatal(err)
     }
     if res.ScorecardWithCriteria != nil {
-        // handle response
+        switch res.ScorecardWithCriteria.EntitySelector.Type {
+            case components.ScorecardEntitySelectorTypeServiceSelector:
+                // res.ScorecardWithCriteria.EntitySelector.ServiceSelector is populated
+        }
+
     }
 }
 ```
@@ -406,7 +414,11 @@ func main() {
         log.Fatal(err)
     }
     if res.ScorecardWithCriteria != nil {
-        // handle response
+        switch res.ScorecardWithCriteria.EntitySelector.Type {
+            case components.ScorecardEntitySelectorTypeServiceSelector:
+                // res.ScorecardWithCriteria.EntitySelector.ServiceSelector is populated
+        }
+
     }
 }
 ```
@@ -480,7 +492,11 @@ func main() {
         log.Fatal(err)
     }
     if res.ScorecardWithCriteria != nil {
-        // handle response
+        switch res.ScorecardWithCriteria.EntitySelector.Type {
+            case components.ScorecardEntitySelectorTypeServiceSelector:
+                // res.ScorecardWithCriteria.EntitySelector.ServiceSelector is populated
+        }
+
     }
 }
 ```

@@ -8,6 +8,7 @@ type ProviderName string
 const (
 	ProviderNameAws   ProviderName = "aws"
 	ProviderNameAzure ProviderName = "azure"
+	ProviderNameGcp   ProviderName = "gcp"
 )
 
 func (e ProviderName) ToPointer() *ProviderName {
@@ -18,7 +19,7 @@ func (e ProviderName) ToPointer() *ProviderName {
 func (e *ProviderName) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "aws", "azure":
+		case "aws", "azure", "gcp":
 			return true
 		}
 	}

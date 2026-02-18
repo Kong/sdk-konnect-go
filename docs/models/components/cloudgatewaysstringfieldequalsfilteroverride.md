@@ -17,3 +17,15 @@ cloudGatewaysStringFieldEqualsFilterOverride := components.CreateCloudGatewaysSt
 cloudGatewaysStringFieldEqualsFilterOverride := components.CreateCloudGatewaysStringFieldEqualsFilterOverrideStringFieldEqualsComparison(components.StringFieldEqualsComparison{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch cloudGatewaysStringFieldEqualsFilterOverride.Type {
+	case components.CloudGatewaysStringFieldEqualsFilterOverrideTypeStr:
+		// cloudGatewaysStringFieldEqualsFilterOverride.Str is populated
+	case components.CloudGatewaysStringFieldEqualsFilterOverrideTypeStringFieldEqualsComparison:
+		// cloudGatewaysStringFieldEqualsFilterOverride.StringFieldEqualsComparison is populated
+}
+```

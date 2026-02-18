@@ -62,7 +62,17 @@ func main() {
         log.Fatal(err)
     }
     if res.IntegrationInstanceAuthCredential != nil {
-        // handle response
+        switch res.IntegrationInstanceAuthCredential.Type {
+            case components.IntegrationInstanceAuthCredentialTypeOauth:
+                // res.IntegrationInstanceAuthCredential.Oauth is populated
+            case components.IntegrationInstanceAuthCredentialTypeGithubAppInstallation:
+                // res.IntegrationInstanceAuthCredential.GithubAppInstallation is populated
+            case components.IntegrationInstanceAuthCredentialTypeMultiKeyAuthCredential:
+                // res.IntegrationInstanceAuthCredential.MultiKeyAuthCredential is populated
+            case components.IntegrationInstanceAuthCredentialTypeAWSRoleDelegationAuthCredential:
+                // res.IntegrationInstanceAuthCredential.AWSRoleDelegationAuthCredential is populated
+        }
+
     }
 }
 ```
@@ -122,7 +132,17 @@ func main() {
         log.Fatal(err)
     }
     if res.IntegrationInstanceAuthCredential != nil {
-        // handle response
+        switch res.IntegrationInstanceAuthCredential.Type {
+            case components.IntegrationInstanceAuthCredentialTypeOauth:
+                // res.IntegrationInstanceAuthCredential.Oauth is populated
+            case components.IntegrationInstanceAuthCredentialTypeGithubAppInstallation:
+                // res.IntegrationInstanceAuthCredential.GithubAppInstallation is populated
+            case components.IntegrationInstanceAuthCredentialTypeMultiKeyAuthCredential:
+                // res.IntegrationInstanceAuthCredential.MultiKeyAuthCredential is populated
+            case components.IntegrationInstanceAuthCredentialTypeAWSRoleDelegationAuthCredential:
+                // res.IntegrationInstanceAuthCredential.AWSRoleDelegationAuthCredential is populated
+        }
+
     }
 }
 ```

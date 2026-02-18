@@ -35,3 +35,21 @@ createDcrProviderResponse := components.CreateCreateDcrProviderResponseDcrProvid
 createDcrProviderResponse := components.CreateCreateDcrProviderResponseDcrProviderHTTP(components.DCRProviderHTTP{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch createDcrProviderResponse.Type {
+	case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+		// createDcrProviderResponse.DCRProviderAuth0 is populated
+	case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+		// createDcrProviderResponse.DCRProviderAzureAD is populated
+	case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+		// createDcrProviderResponse.DCRProviderCurity is populated
+	case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+		// createDcrProviderResponse.DCRProviderOKTA is populated
+	case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+		// createDcrProviderResponse.DCRProviderHTTP is populated
+}
+```
