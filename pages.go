@@ -1590,6 +1590,7 @@ func (s *Pages) DeletePortalPage(ctx context.Context, portalID string, pageID st
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 401:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
@@ -1845,6 +1846,7 @@ func (s *Pages) MovePortalPages(ctx context.Context, request operations.MovePort
 
 	switch {
 	case httpRes.StatusCode == 201:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 400:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):

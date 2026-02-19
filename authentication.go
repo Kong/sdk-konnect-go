@@ -198,6 +198,7 @@ func (s *Authentication) AuthenticateSso(ctx context.Context, organizationLoginP
 
 	switch {
 	case httpRes.StatusCode == 302:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 400:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):

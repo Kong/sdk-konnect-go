@@ -673,6 +673,7 @@ func (s *CustomPlugins) DeleteCustomPlugin(ctx context.Context, controlPlaneID s
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 401:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):

@@ -2148,6 +2148,7 @@ func (s *CloudGateways) DeleteCustomDomain(ctx context.Context, customDomainID s
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 400:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
@@ -4411,6 +4412,7 @@ func (s *CloudGateways) DeleteNetwork(ctx context.Context, networkID string, opt
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 400:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
@@ -6189,6 +6191,7 @@ func (s *CloudGateways) DeletePrivateDNS(ctx context.Context, networkID string, 
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 400:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
@@ -7675,6 +7678,7 @@ func (s *CloudGateways) DeleteTransitGateway(ctx context.Context, networkID stri
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 400:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
