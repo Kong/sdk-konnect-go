@@ -2460,6 +2460,7 @@ func (s *PortalAuthSettings) DeletePortalIdentityProvider(ctx context.Context, p
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 400:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):

@@ -1049,6 +1049,7 @@ func (s *PortalCustomDomains) DeletePortalCustomDomain(ctx context.Context, port
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 404:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):

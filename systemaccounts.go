@@ -1300,6 +1300,7 @@ func (s *SystemAccounts) DeleteSystemAccountsID(ctx context.Context, accountID s
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 401:
 		fallthrough
 	case httpRes.StatusCode == 403:

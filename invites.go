@@ -198,6 +198,7 @@ func (s *Invites) InviteUser(ctx context.Context, request *components.InviteUser
 
 	switch {
 	case httpRes.StatusCode == 201:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 400:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):

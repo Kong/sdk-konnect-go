@@ -1075,6 +1075,7 @@ func (s *BasicAuthCredentials) DeleteBasicAuthWithConsumer(ctx context.Context, 
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {

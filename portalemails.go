@@ -1092,6 +1092,7 @@ func (s *PortalEmails) DeletePortalEmailConfig(ctx context.Context, portalID str
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 401:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
@@ -1923,6 +1924,7 @@ func (s *PortalEmails) DeleteEmailDelivery(ctx context.Context, portalID string,
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 401:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
@@ -3017,6 +3019,7 @@ func (s *PortalEmails) DeletePortalCustomEmailTemplate(ctx context.Context, port
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 401:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
@@ -3273,6 +3276,7 @@ func (s *PortalEmails) PostPortalCustomEmailTestSend(ctx context.Context, reques
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 400:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
@@ -4365,6 +4369,7 @@ func (s *PortalEmails) DeleteEmailDomain(ctx context.Context, emailDomain string
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 401:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
