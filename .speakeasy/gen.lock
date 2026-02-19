@@ -3,21 +3,21 @@ id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
   docChecksum: 52f9410e19a0efe300288d34773394ad
   docVersion: 3.1.5
-  speakeasyVersion: 1.722.6
-  generationVersion: 2.832.6
-  releaseVersion: 0.22.3
-  configChecksum: 267b2c4cb1928b00f501a551c853099a
+  speakeasyVersion: 1.722.7
+  generationVersion: 2.832.9
+  releaseVersion: 0.22.4
+  configChecksum: 87fdce8b155ccc937857dc64add25d62
 persistentEdits:
-  generation_id: ab2714cb-c614-4972-a017-4a8688bb367f
-  pristine_commit_hash: ba0931a0b75db08b1509ebdb073373fdf2a5a6a5
-  pristine_tree_hash: a27021ac0e34815665b5b13e459c13be09ea303b
+  generation_id: 6d9e4176-a8b4-409a-a4d9-2ebe237320f3
+  pristine_commit_hash: 8c6d5c7efdd34849abf726d032bdc03e75f53aed
+  pristine_tree_hash: a2bb6c3f9c2e1d13d6a032e31df08a12034ab94e
 features:
   go:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.2
     constsAndDefaults: 0.1.13
-    core: 3.13.13
+    core: 3.13.15
     deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.3
@@ -10989,8 +10989,8 @@ trackedFiles:
     pristine_git_object: f66814c73ace94d8e71d785fd6161fb405745754
   internal/utils/utils.go:
     id: 1133b2a27019
-    last_write_checksum: sha1:6dcbc976da5ac2a70a12af22ce6c1271317071de
-    pristine_git_object: 0f60377a3326756234aceda36e215e4f0ceac7d5
+    last_write_checksum: sha1:22e28614144c04201e6cf662643d96a0416f7d8c
+    pristine_git_object: 4f35c6b5ed8d47d0ac4a904f540a24b524cf2312
   invites.go:
     id: 00974e97345e
     last_write_checksum: sha1:fea163e60811514958e362bfae9672a46d809da4
@@ -16565,8 +16565,8 @@ trackedFiles:
     pristine_git_object: 10ff74b733f8fc22731d92f375bfd17d08e59664
   sdk.go:
     id: 8db9b9536b0a
-    last_write_checksum: sha1:942c13e782f16c301ef0a61a6dcdc269b1365129
-    pristine_git_object: bdcf8828f1669c801aa356ea73ad34955288f4c3
+    last_write_checksum: sha1:222ada54fc4c86e33e37e3f99a9b7218440b78d9
+    pristine_git_object: 6f868c7ee31e6bb80c1a2974e7b6cb4a545a5448
   services.go:
     id: a2c8604526d8
     last_write_checksum: sha1:9e75e424fc0554c9aa9ea21f94126ead787a766f
