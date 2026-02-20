@@ -11,23 +11,23 @@ import (
 type CreateIdentityProviderConfigType string
 
 const (
-	CreateIdentityProviderConfigTypeConfigureOIDCIdentityProviderConfig CreateIdentityProviderConfigType = "ConfigureOIDCIdentityProviderConfig"
-	CreateIdentityProviderConfigTypeSAMLIdentityProviderConfigInput     CreateIdentityProviderConfigType = "SAMLIdentityProviderConfig_input"
+	CreateIdentityProviderConfigTypeOIDCIdentityProviderConfig      CreateIdentityProviderConfigType = "OIDCIdentityProviderConfig"
+	CreateIdentityProviderConfigTypeSAMLIdentityProviderConfigInput CreateIdentityProviderConfigType = "SAMLIdentityProviderConfig_input"
 )
 
 type CreateIdentityProviderConfig struct {
-	ConfigureOIDCIdentityProviderConfig *ConfigureOIDCIdentityProviderConfig `queryParam:"inline" union:"member"`
-	SAMLIdentityProviderConfigInput     *SAMLIdentityProviderConfigInput     `queryParam:"inline" union:"member"`
+	OIDCIdentityProviderConfig      *OIDCIdentityProviderConfig      `queryParam:"inline" union:"member"`
+	SAMLIdentityProviderConfigInput *SAMLIdentityProviderConfigInput `queryParam:"inline" union:"member"`
 
 	Type CreateIdentityProviderConfigType
 }
 
-func CreateCreateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(configureOIDCIdentityProviderConfig ConfigureOIDCIdentityProviderConfig) CreateIdentityProviderConfig {
-	typ := CreateIdentityProviderConfigTypeConfigureOIDCIdentityProviderConfig
+func CreateCreateIdentityProviderConfigOIDCIdentityProviderConfig(oidcIdentityProviderConfig OIDCIdentityProviderConfig) CreateIdentityProviderConfig {
+	typ := CreateIdentityProviderConfigTypeOIDCIdentityProviderConfig
 
 	return CreateIdentityProviderConfig{
-		ConfigureOIDCIdentityProviderConfig: &configureOIDCIdentityProviderConfig,
-		Type:                                typ,
+		OIDCIdentityProviderConfig: &oidcIdentityProviderConfig,
+		Type:                       typ,
 	}
 }
 
@@ -42,10 +42,10 @@ func CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(samlIdent
 
 func (u *CreateIdentityProviderConfig) UnmarshalJSON(data []byte) error {
 
-	var configureOIDCIdentityProviderConfig ConfigureOIDCIdentityProviderConfig = ConfigureOIDCIdentityProviderConfig{}
-	if err := utils.UnmarshalJSON(data, &configureOIDCIdentityProviderConfig, "", true, nil); err == nil {
-		u.ConfigureOIDCIdentityProviderConfig = &configureOIDCIdentityProviderConfig
-		u.Type = CreateIdentityProviderConfigTypeConfigureOIDCIdentityProviderConfig
+	var oidcIdentityProviderConfig OIDCIdentityProviderConfig = OIDCIdentityProviderConfig{}
+	if err := utils.UnmarshalJSON(data, &oidcIdentityProviderConfig, "", true, nil); err == nil {
+		u.OIDCIdentityProviderConfig = &oidcIdentityProviderConfig
+		u.Type = CreateIdentityProviderConfigTypeOIDCIdentityProviderConfig
 		return nil
 	}
 
@@ -60,8 +60,8 @@ func (u *CreateIdentityProviderConfig) UnmarshalJSON(data []byte) error {
 }
 
 func (u CreateIdentityProviderConfig) MarshalJSON() ([]byte, error) {
-	if u.ConfigureOIDCIdentityProviderConfig != nil {
-		return utils.MarshalJSON(u.ConfigureOIDCIdentityProviderConfig, "", true)
+	if u.OIDCIdentityProviderConfig != nil {
+		return utils.MarshalJSON(u.OIDCIdentityProviderConfig, "", true)
 	}
 
 	if u.SAMLIdentityProviderConfigInput != nil {
@@ -75,13 +75,13 @@ func (u CreateIdentityProviderConfig) MarshalJSON() ([]byte, error) {
 type CreateIdentityProvider struct {
 	// Specifies the type of identity provider.
 	Type *IdentityProviderType `json:"type,omitempty"`
-	// The path used for initiating login requests with the identity provider.
-	LoginPath *string `json:"login_path,omitempty"`
 	// Indicates whether the identity provider is enabled.
 	// Only one identity provider can be active at a time, such as SAML or OIDC.
 	//
-	Enabled *bool                         `default:"false" json:"enabled"`
-	Config  *CreateIdentityProviderConfig `json:"config,omitempty"`
+	Enabled *bool `default:"false" json:"enabled"`
+	// The path used for initiating login requests with the identity provider.
+	LoginPath *string                       `json:"login_path,omitempty"`
+	Config    *CreateIdentityProviderConfig `json:"config,omitempty"`
 }
 
 func (c CreateIdentityProvider) MarshalJSON() ([]byte, error) {
@@ -102,18 +102,18 @@ func (c *CreateIdentityProvider) GetType() *IdentityProviderType {
 	return c.Type
 }
 
-func (c *CreateIdentityProvider) GetLoginPath() *string {
-	if c == nil {
-		return nil
-	}
-	return c.LoginPath
-}
-
 func (c *CreateIdentityProvider) GetEnabled() *bool {
 	if c == nil {
 		return nil
 	}
 	return c.Enabled
+}
+
+func (c *CreateIdentityProvider) GetLoginPath() *string {
+	if c == nil {
+		return nil
+	}
+	return c.LoginPath
 }
 
 func (c *CreateIdentityProvider) GetConfig() *CreateIdentityProviderConfig {

@@ -6,14 +6,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// OIDCIdentityProviderConfig - The identity provider that contains configuration data for the OIDC authentication integration.
-type OIDCIdentityProviderConfig struct {
+// OIDCIdentityProviderConfigOutput - The identity provider that contains configuration data for the OIDC authentication integration.
+type OIDCIdentityProviderConfigOutput struct {
 	// The issuer URI of the identity provider. This is the URL where the provider's metadata can be obtained.
 	IssuerURL string `json:"issuer_url"`
 	// The client ID assigned to your application by the identity provider.
 	ClientID string `json:"client_id"`
-	// The Client Secret assigned to your application by the identity provider.
-	ClientSecret *string `json:"client_secret,omitempty"`
 	// The scopes requested by your application when authenticating with the identity provider.
 	Scopes []string `json:"scopes,omitempty"`
 	// Defines the mappings between OpenID Connect (OIDC) claims and local claims used by your application for
@@ -22,46 +20,39 @@ type OIDCIdentityProviderConfig struct {
 	ClaimMappings *OIDCIdentityProviderClaimMappings `json:"claim_mappings,omitempty"`
 }
 
-func (o OIDCIdentityProviderConfig) MarshalJSON() ([]byte, error) {
+func (o OIDCIdentityProviderConfigOutput) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(o, "", false)
 }
 
-func (o *OIDCIdentityProviderConfig) UnmarshalJSON(data []byte) error {
+func (o *OIDCIdentityProviderConfigOutput) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"issuer_url", "client_id"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *OIDCIdentityProviderConfig) GetIssuerURL() string {
+func (o *OIDCIdentityProviderConfigOutput) GetIssuerURL() string {
 	if o == nil {
 		return ""
 	}
 	return o.IssuerURL
 }
 
-func (o *OIDCIdentityProviderConfig) GetClientID() string {
+func (o *OIDCIdentityProviderConfigOutput) GetClientID() string {
 	if o == nil {
 		return ""
 	}
 	return o.ClientID
 }
 
-func (o *OIDCIdentityProviderConfig) GetClientSecret() *string {
-	if o == nil {
-		return nil
-	}
-	return o.ClientSecret
-}
-
-func (o *OIDCIdentityProviderConfig) GetScopes() []string {
+func (o *OIDCIdentityProviderConfigOutput) GetScopes() []string {
 	if o == nil {
 		return nil
 	}
 	return o.Scopes
 }
 
-func (o *OIDCIdentityProviderConfig) GetClaimMappings() *OIDCIdentityProviderClaimMappings {
+func (o *OIDCIdentityProviderConfigOutput) GetClaimMappings() *OIDCIdentityProviderClaimMappings {
 	if o == nil {
 		return nil
 	}

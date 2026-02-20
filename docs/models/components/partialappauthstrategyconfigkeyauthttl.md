@@ -1,0 +1,11 @@
+# PartialAppAuthStrategyConfigKeyAuthTTL
+
+Default maximum Time-To-Live for keys created under this strategy. Set to null to unset.
+
+
+## Fields
+
+| Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `Value`                                                                                                                  | *int64*                                                                                                                  | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
+| `Unit`                                                                                                                   | [components.PartialAppAuthStrategyConfigKeyAuthUnit](../../models/components/partialappauthstrategyconfigkeyauthunit.md) | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
