@@ -2,7 +2,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.1.5 and generator version 2.832.9
+// Generated from OpenAPI doc version 3.1.5 and generator version 2.835.2
 
 import (
 	"context"
@@ -55,6 +55,13 @@ func Pointer[T any](v T) *T { return &v }
 // https://developer.konghq.com - Documentation for Kong Gateway and its APIs
 type SDK struct {
 	SDKVersion string
+	// Service API mappings represent the link between Service and API entities.
+	// Once an API is mapped to a Service, a rich view of the linked APIs will be presented on the APIs tab of the Catalog Service.
+	// Similarly, Services mapped to an API will be listed on the API overview page under Catalog.
+	// An API may be mapped to multiple services, but it cannot be mapped to the same service twice.
+	// If a mapped API is unlinked from a Service, the mapping will be deleted.
+	//
+	CatalogServiceAPIMappings *CatalogServiceAPIMappings
 	// Create and maintain a centralized catalog of all services running in your organization.
 	// Add custom fields and map resources from across your organization to provide a 360-degree overview of your services.
 	//
@@ -437,9 +444,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.22.4",
+		SDKVersion: "0.23.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.22.4 2.832.9 3.1.5 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.23.0 2.835.2 3.1.5 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -460,6 +467,7 @@ func New(opts ...SDKOption) *SDK {
 		sdk.sdkConfiguration.ServerURL = serverURL
 	}
 
+	sdk.CatalogServiceAPIMappings = newCatalogServiceAPIMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServices = newCatalogServices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServiceResources = newCatalogServiceResources(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Scorecards = newScorecards(sdk, sdk.sdkConfiguration, sdk.hooks)

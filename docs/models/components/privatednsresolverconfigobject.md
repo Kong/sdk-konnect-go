@@ -1,4 +1,4 @@
-# PrivateDNSResolverConfig
+# PrivateDNSResolverConfigObject
 
 
 ## Fields

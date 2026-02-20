@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### ConfigureOIDCIdentityProviderConfig
+### OIDCIdentityProviderConfig
 
 ```go
-createIdentityProviderConfig := components.CreateCreateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(components.ConfigureOIDCIdentityProviderConfig{/* values here */})
+createIdentityProviderConfig := components.CreateCreateIdentityProviderConfigOIDCIdentityProviderConfig(components.OIDCIdentityProviderConfig{/* values here */})
 ```
 
 ### SAMLIdentityProviderConfigInput
@@ -21,8 +21,8 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch createIdentityProviderConfig.Type {
-	case components.CreateIdentityProviderConfigTypeConfigureOIDCIdentityProviderConfig:
-		// createIdentityProviderConfig.ConfigureOIDCIdentityProviderConfig is populated
+	case components.CreateIdentityProviderConfigTypeOIDCIdentityProviderConfig:
+		// createIdentityProviderConfig.OIDCIdentityProviderConfig is populated
 	case components.CreateIdentityProviderConfigTypeSAMLIdentityProviderConfigInput:
 		// createIdentityProviderConfig.SAMLIdentityProviderConfigInput is populated
 }

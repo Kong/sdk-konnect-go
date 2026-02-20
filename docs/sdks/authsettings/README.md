@@ -2588,7 +2588,7 @@ func main() {
 
 ## GetIdentityProviders
 
-Retrieves the identity providers available within the organization. This operation provides information about 
+Retrieves the identity providers available within the organization. This operation provides information about
 various identity providers for SAML or OIDC authentication integrations.
 
 
@@ -2646,7 +2646,7 @@ func main() {
 
 ## CreateIdentityProvider
 
-Creates a new identity provider. This operation allows the creation of a new identity provider for 
+Creates a new identity provider. This operation allows the creation of a new identity provider for
 authentication purposes.
 
 
@@ -2674,8 +2674,8 @@ func main() {
 
     res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
                 IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
@@ -2688,8 +2688,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -2721,8 +2721,8 @@ func main() {
 
     res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
                 IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
@@ -2735,8 +2735,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -2768,8 +2768,8 @@ func main() {
 
     res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
                 IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
@@ -2782,8 +2782,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -2815,8 +2815,8 @@ func main() {
 
     res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
                 IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
@@ -2829,8 +2829,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -2862,8 +2862,8 @@ func main() {
 
     res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
                 IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
@@ -2876,8 +2876,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -2909,8 +2909,8 @@ func main() {
 
     res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
                 IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
@@ -2923,8 +2923,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -2956,10 +2956,10 @@ func main() {
 
     res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.Pointer("the-oidc-konnect-org"),
         Enabled: sdkkonnectgo.Pointer(true),
-        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        LoginPath: sdkkonnectgo.Pointer("the-oidc-konnect-org"),
+        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "0oaqhb43ckTZ02j1F357",
                 ClientSecret: sdkkonnectgo.Pointer("BbqwI8xP9E4evOK"),
@@ -2977,8 +2977,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3010,8 +3010,8 @@ func main() {
 
     res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
                 IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
@@ -3024,8 +3024,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3057,8 +3057,8 @@ func main() {
 
     res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
                 IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
@@ -3071,8 +3071,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3104,8 +3104,8 @@ func main() {
 
     res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
                 IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
@@ -3118,8 +3118,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3151,8 +3151,8 @@ func main() {
 
     res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
                 IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
@@ -3165,8 +3165,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3198,8 +3198,8 @@ func main() {
 
     res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeSaml.ToPointer(),
-        LoginPath: sdkkonnectgo.Pointer("the-saml-konnect-org"),
         Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("the-saml-konnect-org"),
         Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
                 IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n<!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
@@ -3211,8 +3211,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3244,8 +3244,8 @@ func main() {
 
     res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeSaml.ToPointer(),
-        LoginPath: sdkkonnectgo.Pointer("the-saml-konnect-org"),
         Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("the-saml-konnect-org"),
         Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
                 IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
@@ -3257,8 +3257,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3290,8 +3290,8 @@ func main() {
 
     res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
                 IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
@@ -3304,8 +3304,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3337,8 +3337,8 @@ func main() {
 
     res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
                 IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
@@ -3351,8 +3351,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3384,8 +3384,8 @@ func main() {
 
     res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
                 IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
@@ -3398,8 +3398,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3431,8 +3431,8 @@ func main() {
 
     res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
                 IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
@@ -3445,8 +3445,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3478,8 +3478,8 @@ func main() {
 
     res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
                 IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
@@ -3492,8 +3492,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3526,7 +3526,7 @@ func main() {
 
 ## GetIdentityProvider
 
-Retrieves the configuration of a single identity provider. This operation returns information about a 
+Retrieves the configuration of a single identity provider. This operation returns information about a
 specific identity provider's settings and authentication integration details.
 
 
@@ -3558,8 +3558,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3595,8 +3595,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3632,8 +3632,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3666,7 +3666,7 @@ func main() {
 
 ## UpdateIdentityProvider
 
-Updates the configuration of an existing identity provider. This operation allows modifications to be made 
+Updates the configuration of an existing identity provider. This operation allows modifications to be made
 to an existing identity provider's configuration.
 
 
@@ -3695,8 +3695,8 @@ func main() {
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         LoginPath: sdkkonnectgo.Pointer("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
@@ -3709,8 +3709,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3743,8 +3743,8 @@ func main() {
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         LoginPath: sdkkonnectgo.Pointer("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
@@ -3757,8 +3757,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3791,8 +3791,8 @@ func main() {
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         LoginPath: sdkkonnectgo.Pointer("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
@@ -3805,8 +3805,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3839,8 +3839,8 @@ func main() {
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         LoginPath: sdkkonnectgo.Pointer("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
@@ -3853,8 +3853,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3887,8 +3887,8 @@ func main() {
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         LoginPath: sdkkonnectgo.Pointer("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
@@ -3901,8 +3901,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3935,8 +3935,8 @@ func main() {
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         LoginPath: sdkkonnectgo.Pointer("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
@@ -3949,8 +3949,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -3983,8 +3983,8 @@ func main() {
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         LoginPath: sdkkonnectgo.Pointer("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
@@ -3997,8 +3997,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -4031,8 +4031,8 @@ func main() {
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         LoginPath: sdkkonnectgo.Pointer("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
@@ -4045,8 +4045,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -4079,8 +4079,8 @@ func main() {
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         LoginPath: sdkkonnectgo.Pointer("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
@@ -4093,8 +4093,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -4127,8 +4127,8 @@ func main() {
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         LoginPath: sdkkonnectgo.Pointer("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
@@ -4141,8 +4141,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -4175,8 +4175,8 @@ func main() {
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         LoginPath: sdkkonnectgo.Pointer("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
@@ -4189,8 +4189,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -4223,8 +4223,8 @@ func main() {
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         LoginPath: sdkkonnectgo.Pointer("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
@@ -4237,8 +4237,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -4271,8 +4271,8 @@ func main() {
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         LoginPath: sdkkonnectgo.Pointer("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
@@ -4285,8 +4285,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -4319,8 +4319,8 @@ func main() {
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         LoginPath: sdkkonnectgo.Pointer("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
@@ -4333,8 +4333,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -4367,8 +4367,8 @@ func main() {
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         LoginPath: sdkkonnectgo.Pointer("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
@@ -4381,8 +4381,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -4415,8 +4415,8 @@ func main() {
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         LoginPath: sdkkonnectgo.Pointer("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
@@ -4429,8 +4429,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -4463,8 +4463,8 @@ func main() {
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         LoginPath: sdkkonnectgo.Pointer("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
@@ -4477,8 +4477,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -4517,8 +4517,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -4551,8 +4551,8 @@ func main() {
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         LoginPath: sdkkonnectgo.Pointer("the-oidc-konnect-org"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "0oaqhb43ckTZ02j1F357",
                 ClientSecret: sdkkonnectgo.Pointer("BbqwI8xP9E4evOK"),
@@ -4570,8 +4570,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -4615,8 +4615,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -4649,8 +4649,8 @@ func main() {
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         LoginPath: sdkkonnectgo.Pointer("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
@@ -4663,8 +4663,8 @@ func main() {
     }
     if res.IdentityProvider != nil {
         switch res.IdentityProvider.Config.Type {
-            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfig:
-                // res.IdentityProvider.Config.OIDCIdentityProviderConfig is populated
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
             case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
                 // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
         }
@@ -4699,7 +4699,7 @@ func main() {
 
 ## DeleteIdentityProvider
 
-Deletes an existing identity provider configuration. This operation removes a specific identity provider 
+Deletes an existing identity provider configuration. This operation removes a specific identity provider
 from the organization.
 
 

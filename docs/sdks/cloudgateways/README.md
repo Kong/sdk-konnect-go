@@ -3318,13 +3318,13 @@ func main() {
                 Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
                 PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
                     Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
-                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
-                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
+                    DNSConfig: map[string]components.PrivateDNSResolverConfigObject{
+                        "global.api.konghq.com": components.PrivateDNSResolverConfigObject{
                             RemoteDNSServerIPAddresses: []string{
                                 "10.0.0.2",
                             },
                         },
-                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
+                        "us.api.konghq.dev": components.PrivateDNSResolverConfigObject{
                             RemoteDNSServerIPAddresses: []string{
                                 "10.0.0.8",
                             },
@@ -3385,13 +3385,13 @@ func main() {
                 Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
                 PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
                     Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
-                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
-                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
+                    DNSConfig: map[string]components.PrivateDNSResolverConfigObject{
+                        "global.api.konghq.com": components.PrivateDNSResolverConfigObject{
                             RemoteDNSServerIPAddresses: []string{
                                 "10.0.0.2",
                             },
                         },
-                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
+                        "us.api.konghq.dev": components.PrivateDNSResolverConfigObject{
                             RemoteDNSServerIPAddresses: []string{
                                 "10.0.0.8",
                             },
@@ -3452,13 +3452,13 @@ func main() {
                 Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
                 PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
                     Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
-                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
-                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
+                    DNSConfig: map[string]components.PrivateDNSResolverConfigObject{
+                        "global.api.konghq.com": components.PrivateDNSResolverConfigObject{
                             RemoteDNSServerIPAddresses: []string{
                                 "10.0.0.2",
                             },
                         },
-                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
+                        "us.api.konghq.dev": components.PrivateDNSResolverConfigObject{
                             RemoteDNSServerIPAddresses: []string{
                                 "10.0.0.8",
                             },
@@ -3519,13 +3519,13 @@ func main() {
                 Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
                 PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
                     Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
-                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
-                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
+                    DNSConfig: map[string]components.PrivateDNSResolverConfigObject{
+                        "global.api.konghq.com": components.PrivateDNSResolverConfigObject{
                             RemoteDNSServerIPAddresses: []string{
                                 "10.0.0.2",
                             },
                         },
-                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
+                        "us.api.konghq.dev": components.PrivateDNSResolverConfigObject{
                             RemoteDNSServerIPAddresses: []string{
                                 "10.0.0.8",
                             },
@@ -3586,13 +3586,13 @@ func main() {
                 Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
                 PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
                     Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
-                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
-                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
+                    DNSConfig: map[string]components.PrivateDNSResolverConfigObject{
+                        "global.api.konghq.com": components.PrivateDNSResolverConfigObject{
                             RemoteDNSServerIPAddresses: []string{
                                 "10.0.0.2",
                             },
                         },
-                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
+                        "us.api.konghq.dev": components.PrivateDNSResolverConfigObject{
                             RemoteDNSServerIPAddresses: []string{
                                 "10.0.0.8",
                             },
@@ -3653,13 +3653,13 @@ func main() {
                 Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
                 PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
                     Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
-                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
-                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
+                    DNSConfig: map[string]components.PrivateDNSResolverConfigObject{
+                        "global.api.konghq.com": components.PrivateDNSResolverConfigObject{
                             RemoteDNSServerIPAddresses: []string{
                                 "10.0.0.2",
                             },
                         },
-                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
+                        "us.api.konghq.dev": components.PrivateDNSResolverConfigObject{
                             RemoteDNSServerIPAddresses: []string{
                                 "10.0.0.8",
                             },
@@ -3720,13 +3720,13 @@ func main() {
                 Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
                 PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
                     Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
-                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
-                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
+                    DNSConfig: map[string]components.PrivateDNSResolverConfigObject{
+                        "global.api.konghq.com": components.PrivateDNSResolverConfigObject{
                             RemoteDNSServerIPAddresses: []string{
                                 "10.0.0.2",
                             },
                         },
-                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
+                        "us.api.konghq.dev": components.PrivateDNSResolverConfigObject{
                             RemoteDNSServerIPAddresses: []string{
                                 "10.0.0.8",
                             },
@@ -3787,13 +3787,13 @@ func main() {
                 Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
                 PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
                     Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
-                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
-                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
+                    DNSConfig: map[string]components.PrivateDNSResolverConfigObject{
+                        "global.api.konghq.com": components.PrivateDNSResolverConfigObject{
                             RemoteDNSServerIPAddresses: []string{
                                 "10.0.0.2",
                             },
                         },
-                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
+                        "us.api.konghq.dev": components.PrivateDNSResolverConfigObject{
                             RemoteDNSServerIPAddresses: []string{
                                 "10.0.0.8",
                             },
@@ -3854,13 +3854,13 @@ func main() {
                 Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
                 PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
                     Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
-                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
-                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
+                    DNSConfig: map[string]components.PrivateDNSResolverConfigObject{
+                        "global.api.konghq.com": components.PrivateDNSResolverConfigObject{
                             RemoteDNSServerIPAddresses: []string{
                                 "10.0.0.2",
                             },
                         },
-                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
+                        "us.api.konghq.dev": components.PrivateDNSResolverConfigObject{
                             RemoteDNSServerIPAddresses: []string{
                                 "10.0.0.8",
                             },
