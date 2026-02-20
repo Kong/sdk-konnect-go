@@ -34,6 +34,37 @@ servers:
   - url: 'https://eu.api.konghq.com'
   - url: 'https://au.api.konghq.com'
 paths:
+  '/v1/apis/{apiId}/service-mappings':
+    parameters:
+      - name: apiId
+        in: path
+        description: ID of the API.
+        required: true
+        schema:
+          type: string
+          format: uuid
+    get:
+      operationId: list-service-mappings-for-api
+      summary: List Service Mappings for an API
+      description: Returns a paginated collection of Service mappings for the given API.
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/CatalogServiceApiMappingSort'
+        - $ref: '#/components/parameters/CatalogApiServiceMappingFilter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListCatalogServiceApiMappingsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Catalog Service API Mappings
   /v1/catalog-services:
     post:
       x-speakeasy-entity-operation: CatalogService#create
@@ -199,6 +230,109 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Scorecards
+  '/v1/catalog-services/{serviceId}/api-mappings':
+    parameters:
+      - name: serviceId
+        in: path
+        description: The `id` of the service.
+        required: true
+        schema:
+          type: string
+          example: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
+    get:
+      operationId: list-catalog-service-api-mappings
+      summary: List API Mappings for a Service
+      description: Returns a paginated collection of API mappings for the given service.
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/CatalogServiceApiMappingSort'
+        - $ref: '#/components/parameters/CatalogServiceApiMappingFilter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListCatalogServiceApiMappingsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Catalog Service API Mappings
+    post:
+      operationId: create-catalog-service-api-mapping
+      summary: Create API Mapping for a Service
+      description: Creates a new API mapping for the given service.
+      requestBody:
+        $ref: '#/components/requestBodies/CreateCatalogServiceApiMappingBody'
+      responses:
+        '201':
+          $ref: '#/components/responses/CatalogServiceApiMappingResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Catalog Service API Mappings
+  '/v1/catalog-services/{serviceId}/api-mappings/{mappingId}':
+    parameters:
+      - name: serviceId
+        in: path
+        description: The `id` of the service.
+        required: true
+        schema:
+          type: string
+          example: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
+      - name: mappingId
+        in: path
+        description: ID of the catalog service API mapping.
+        required: true
+        schema:
+          type: string
+          format: uuid
+          example: d277faad-ed4e-4c56-a0fb-acce065dee34
+    get:
+      operationId: get-catalog-service-api-mapping
+      summary: Get API Mapping for a Service
+      description: Returns information about a specific API mapping for the given service.
+      responses:
+        '200':
+          $ref: '#/components/responses/CatalogServiceApiMappingResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Catalog Service API Mappings
+    delete:
+      operationId: delete-catalog-service-api-mapping
+      summary: Delete API Mapping for a Service
+      description: Deletes a specific API mapping for the given service.
+      responses:
+        '204':
+          description: Catalog service API mapping was deleted successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Catalog Service API Mappings
   '/v1/catalog-services/{serviceId}/scorecards/{scorecardId}':
     parameters:
       - name: serviceId
@@ -10271,6 +10405,9 @@ paths:
         - Authentication
   /v3/authentication-settings:
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: AuthenticationSettings#read
+        terraform-datasource: null
       operationId: get-authentication-settings
       summary: Get Auth Settings
       description: 'Returns authentication configuration, which determines how users can log in and how they are assigned to teams.'
@@ -10284,6 +10421,7 @@ paths:
       tags:
         - Auth Settings
     patch:
+      x-speakeasy-entity-operation: 'AuthenticationSettings#create,update'
       operationId: update-authentication-settings
       summary: Update Auth Settings
       description: Updates authentication configuration.
@@ -10438,7 +10576,7 @@ paths:
       operationId: get-identity-providers
       summary: List Identity Providers
       description: |
-        Retrieves the identity providers available within the organization. This operation provides information about 
+        Retrieves the identity providers available within the organization. This operation provides information about
         various identity providers for SAML or OIDC authentication integrations.
       parameters:
         - name: filter
@@ -10463,10 +10601,11 @@ paths:
       tags:
         - Auth Settings
     post:
+      x-speakeasy-entity-operation: IdentityProvider#create
       operationId: create-identity-provider
       summary: Create Identity Provider
       description: |
-        Creates a new identity provider. This operation allows the creation of a new identity provider for 
+        Creates a new identity provider. This operation allows the creation of a new identity provider for
         authentication purposes.
       requestBody:
         $ref: '#/components/requestBodies/CreateIdentityProviderRequest'
@@ -10496,10 +10635,13 @@ paths:
           format: uuid
           example: d32d905a-ed33-46a3-a093-d8f536af9a8a
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: IdentityProvider#read
+        terraform-datasource: null
       operationId: get-identity-provider
       summary: Get Identity Provider
       description: |
-        Retrieves the configuration of a single identity provider. This operation returns information about a 
+        Retrieves the configuration of a single identity provider. This operation returns information about a
         specific identity provider's settings and authentication integration details.
       responses:
         '200':
@@ -10517,10 +10659,11 @@ paths:
       tags:
         - Auth Settings
     patch:
+      x-speakeasy-entity-operation: IdentityProvider#update
       operationId: update-identity-provider
       summary: Update Identity Provider
       description: |
-        Updates the configuration of an existing identity provider. This operation allows modifications to be made 
+        Updates the configuration of an existing identity provider. This operation allows modifications to be made
         to an existing identity provider's configuration.
       requestBody:
         $ref: '#/components/requestBodies/UpdateIdentityProviderRequest'
@@ -10542,10 +10685,11 @@ paths:
       tags:
         - Auth Settings
     delete:
+      x-speakeasy-entity-operation: IdentityProvider#delete
       operationId: delete-identity-provider
       summary: Delete Identity Provider
       description: |
-        Deletes an existing identity provider configuration. This operation removes a specific identity provider 
+        Deletes an existing identity provider configuration. This operation removes a specific identity provider
         from the organization.
       responses:
         '204':
@@ -14309,6 +14453,18 @@ components:
       required: true
       schema:
         type: string
+    CatalogApiServiceMappingFilter:
+      name: filter
+      in: query
+      required: false
+      style: deepObject
+      description: |
+        Filters a collection of catalog API service mappings for a given API. Supported filter attributes are:
+
+
+          - `service_id`
+      schema:
+        $ref: '#/components/schemas/CatalogApiServiceMappingFilterParameters'
     CatalogIntegrationFilter:
       name: filter
       description: Filters a collection of integrations.
@@ -14374,6 +14530,32 @@ components:
         Default sort is `created_at` in descending order.
       required: false
       in: query
+      schema:
+        $ref: '#/components/schemas/SortQuery'
+    CatalogServiceApiMappingFilter:
+      name: filter
+      in: query
+      required: false
+      style: deepObject
+      description: |
+        Filters a collection of catalog service API mappings for a given Service. Supported filter attributes are:
+
+
+          - `api_id`
+      schema:
+        $ref: '#/components/schemas/CatalogServiceApiMappingFilterParameters'
+    CatalogServiceApiMappingSort:
+      name: sort
+      in: query
+      required: false
+      description: |
+        Sorts a collection of catalog service API mappings. Supported sort attributes are:
+
+
+          - `created_at`
+          - `updated_at`
+
+        Default sort is `created_at` in descending order.
       schema:
         $ref: '#/components/schemas/SortQuery'
     CatalogServiceFilter:
@@ -16429,6 +16611,9 @@ components:
       type: string
       example: YOUR_CLIENT_SECRET
       title: OIDC Identity Provider Login Client Secret Property
+      writeOnly: true
+      x-speakeasy-param-sensitive: true
+      x-speakeasy-terraform-plan-only: true
     OIDCIdentityProviderScopes:
       description: The scopes requested by your application when authenticating with the identity provider.
       type: array
@@ -16478,22 +16663,24 @@ components:
         </EntityDescriptor>
       title: SAML Identity Provider Metadata
     CreateIdentityProvider:
+      x-speakeasy-entity: IdentityProvider
       description: The identity provider that contains configuration data for creating an authentication integration.
       type: object
       properties:
         type:
           $ref: '#/components/schemas/IdentityProviderType'
-        login_path:
-          $ref: '#/components/schemas/IdentityProviderLoginPath'
         enabled:
           $ref: '#/components/schemas/IdentityProviderEnabled'
+        login_path:
+          $ref: '#/components/schemas/IdentityProviderLoginPath'
         config:
           type: object
           oneOf:
-            - $ref: '#/components/schemas/ConfigureOIDCIdentityProviderConfig'
+            - $ref: '#/components/schemas/OIDCIdentityProviderConfig'
             - $ref: '#/components/schemas/SAMLIdentityProviderConfig'
       title: Identity Provider
     UpdateIdentityProvider:
+      x-speakeasy-entity: IdentityProvider
       description: The identity provider that contains configuration data for updating an authentication integration.
       type: object
       properties:
@@ -16504,10 +16691,11 @@ components:
         config:
           type: object
           oneOf:
-            - $ref: '#/components/schemas/ConfigureOIDCIdentityProviderConfig'
+            - $ref: '#/components/schemas/OIDCIdentityProviderConfig'
             - $ref: '#/components/schemas/SAMLIdentityProviderConfig'
       title: Identity Provider
     IdentityProvider:
+      x-speakeasy-entity: IdentityProvider
       description: The identity provider that contains configuration data for authentication integration.
       type: object
       properties:
@@ -16530,23 +16718,6 @@ components:
           $ref: '#/components/schemas/UpdatedAt'
       title: Identity Provider
     OIDCIdentityProviderConfig:
-      description: The identity provider that contains configuration data for the OIDC authentication integration.
-      type: object
-      properties:
-        issuer_url:
-          $ref: '#/components/schemas/OIDCIdentityProviderIssuer'
-        client_id:
-          $ref: '#/components/schemas/OIDCIdentityProviderClientId'
-        scopes:
-          $ref: '#/components/schemas/OIDCIdentityProviderScopes'
-        claim_mappings:
-          $ref: '#/components/schemas/OIDCIdentityProviderClaimMappings'
-      additionalProperties: false
-      required:
-        - issuer_url
-        - client_id
-      title: OIDC Identity Provider Config
-    ConfigureOIDCIdentityProviderConfig:
       description: The identity provider that contains configuration data for the OIDC authentication integration.
       type: object
       properties:
@@ -18560,18 +18731,20 @@ components:
           remote_dns_server_ip_addresses:
             - 10.0.0.8
       additionalProperties:
-        type: object
-        properties:
-          remote_dns_server_ip_addresses:
-            description: IP addresses of remote DNS servers used by the Private DNS Resolver for DNS resolution.
-            type: array
-            items:
-              type: string
-            example:
-              - 10.0.0.2
-        required:
-          - remote_dns_server_ip_addresses
+        $ref: '#/components/schemas/PrivateDnsResolverConfigObject'
       title: Private DNS Resolver Config Item
+    PrivateDnsResolverConfigObject:
+      type: object
+      properties:
+        remote_dns_server_ip_addresses:
+          description: IP addresses of remote DNS servers used by the Private DNS Resolver for DNS resolution.
+          type: array
+          items:
+            type: string
+          example:
+            - 10.0.0.2
+      required:
+        - remote_dns_server_ip_addresses
     PrivateDnsName:
       description: Human-readable name of the Private DNS.
       type: string
@@ -20669,6 +20842,40 @@ components:
             - unit
       additionalProperties: false
       title: AppAuthStrategyConfigKeyAuth
+    PartialAppAuthStrategyConfigKeyAuth:
+      description: |
+        Key Auth configuration for updating an Application Auth Strategy.
+        The ttl field can be set to null to unset the Time-To-Live.
+      type: object
+      properties:
+        key_names:
+          description: The names of the headers containing the API key. You can specify multiple header names.
+          type: array
+          items:
+            type: string
+            maxLength: 256
+          maxItems: 10
+          minItems: 1
+        ttl:
+          description: Default maximum Time-To-Live for keys created under this strategy. Set to null to unset.
+          type: object
+          nullable: true
+          properties:
+            value:
+              type: integer
+              minimum: 1
+            unit:
+              type: string
+              enum:
+                - days
+                - weeks
+                - years
+              x-speakeasy-unknown-values: allow
+          required:
+            - value
+            - unit
+      additionalProperties: false
+      title: PartialAppAuthStrategyConfigKeyAuth
     PartialAppAuthStrategyConfigOpenIDConnect:
       description: |
         A more advanced mode to configure an API Product Version’s Application Auth Strategy. 
@@ -21007,7 +21214,7 @@ components:
       type: object
       properties:
         key-auth:
-          $ref: '#/components/schemas/AppAuthStrategyConfigKeyAuth'
+          $ref: '#/components/schemas/PartialAppAuthStrategyConfigKeyAuth'
       additionalProperties: false
       required:
         - key-auth
@@ -28053,6 +28260,50 @@ components:
       required:
         - value
         - unit
+    CatalogServiceApiMapping:
+      description: Represents an API mapping associated with a service in the catalog.
+      type: object
+      properties:
+        id:
+          description: The mapping ID.
+          type: string
+          format: uuid
+        service_id:
+          description: The ID of the service.
+          type: string
+          format: uuid
+        api_id:
+          description: The ID of the API.
+          type: string
+          format: uuid
+        created_at:
+          description: Creation timestamp.
+          type: string
+          format: date-time
+        updated_at:
+          description: Last update timestamp.
+          type: string
+          format: date-time
+      required:
+        - id
+        - service_id
+        - api_id
+        - created_at
+        - updated_at
+    CatalogServiceApiMappingFilterParameters:
+      type: object
+      properties:
+        api_id:
+          $ref: '#/components/schemas/UuidFieldFilter'
+      additionalProperties: false
+      title: CatalogServiceApiMappingFilterParameters
+    CatalogApiServiceMappingFilterParameters:
+      type: object
+      properties:
+        service_id:
+          $ref: '#/components/schemas/UuidFieldFilter'
+      additionalProperties: false
+      title: CatalogApiServiceMappingFilterParameters
     NumericFieldFilter:
       description: Filter by a numeric value.
       oneOf:
@@ -29685,7 +29936,7 @@ components:
         condition:
           description: A string containing the boolean expression that determines whether the policy is applied.
           type: string
-          example: 'context.topic.name.endsWith("my_suffix") && records.headers["x-flag"] == "a-value"'
+          example: 'context.topic.name.endsWith("my_suffix") && record.headers["x-flag"] == "a-value"'
           default: ''
           maxLength: 1000
           x-expression:
@@ -29750,7 +30001,7 @@ components:
         condition:
           description: A string containing the boolean expression that determines whether the policy is applied.
           type: string
-          example: 'context.topic.name.endsWith("my_suffix") && records.headers["x-flag"] == "a-value"'
+          example: 'context.topic.name.endsWith("my_suffix") && record.headers["x-flag"] == "a-value"'
           default: ''
           maxLength: 1000
           x-expression:
@@ -30090,7 +30341,7 @@ components:
         condition:
           description: A string containing the boolean expression that determines whether the policy is applied.
           type: string
-          example: 'context.topic.name.endsWith("my_suffix") && records.headers["x-flag"] == "a-value"'
+          example: 'context.topic.name.endsWith("my_suffix") && record.headers["x-flag"] == "a-value"'
           default: ''
           maxLength: 1000
           x-expression:
@@ -30137,7 +30388,7 @@ components:
         condition:
           description: A string containing the boolean expression that determines whether the policy is applied.
           type: string
-          example: 'context.topic.name.endsWith("my_suffix") && records.headers["x-flag"] == "a-value"'
+          example: 'context.topic.name.endsWith("my_suffix") && record.headers["x-flag"] == "a-value"'
           default: ''
           maxLength: 1000
           x-expression:
@@ -35623,6 +35874,21 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/UpdateScorecard'
+    CreateCatalogServiceApiMappingBody:
+      description: Request body schema for creating a new API mapping for catalog service.
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              api_id:
+                description: The ID of the API Entity to map.
+                type: string
+                format: uuid
+            additionalProperties: false
+            required:
+              - api_id
     CreateEventGatewayListenerRequest:
       description: The request schema for creating a listener.
       content:
@@ -39168,6 +39434,29 @@ components:
             required:
               - meta
               - data
+    CatalogServiceApiMappingResponse:
+      description: A response containing a single catalog service API mapping.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CatalogServiceApiMapping'
+    ListCatalogServiceApiMappingsResponse:
+      description: A paginated list response for a collection of catalog service API mappings.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/PaginatedMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CatalogServiceApiMapping'
+            additionalProperties: false
+            required:
+              - meta
+              - data
     EventGatewayNodeStatus:
       description: The status of an event gateway node.
       content:
@@ -39920,6 +40209,13 @@ tags:
       Scorecards help you detect issues, like whether there are services in the catalog that don't have an on-call engineer assigned, or if you have GitHub repositories with stale pull requests that aren't getting reviewed or closed.
       From the scorecard, you can view details on either a per-service or per-criteria basis.
       Learn more about scorecards by visiting our [documentation](https://developer.konghq.com/service-catalog/scorecards/).
+  - name: Catalog Service API Mappings
+    description: |
+      Service API mappings represent the link between Service and API entities.
+      Once an API is mapped to a Service, a rich view of the linked APIs will be presented on the APIs tab of the Catalog Service.
+      Similarly, Services mapped to an API will be listed on the API overview page under Catalog.
+      An API may be mapped to multiple services, but it cannot be mapped to the same service twice.
+      If a mapped API is unlinked from a Service, the mapping will be deleted.
   - name: Event Gateways
     description: |
       Create an Event Gateway Control Plane, used to store Event Gateway configuration
