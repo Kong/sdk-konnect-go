@@ -2,6 +2,33 @@
 
 This is a prototype and should not be used. See [CONTRIBUTING.md](https://github.com/Kong/sdk-konnect-go/blob/main/CONTRIBUTING.md) for information on how this SDK is generated.
 
+## MCP Client Support
+
+This SDK includes a Model Context Protocol (MCP) client for integrating with MCP servers. MCP enables AI applications to securely connect to external data sources and tools.
+
+### Quick Start with MCP
+
+```go
+import "github.com/Kong/sdk-konnect-go/pkg/mcp"
+
+client := mcp.NewClient("http://localhost:3000/mcp")
+err := client.Initialize(context.Background(), mcp.ClientInfo{
+    Name:    "my-app",
+    Version: "1.0.0",
+})
+
+// List available tools
+tools, _ := client.ListTools(context.Background(), nil)
+
+// Call a tool
+result, _ := client.CallTool(context.Background(), mcp.CallToolRequest{
+    Name: "calculator",
+    Arguments: map[string]interface{}{"operation": "add", "a": 5, "b": 3},
+})
+```
+
+For more details, see the [MCP Client Documentation](./pkg/mcp/README.md).
+
 <!-- No SDK Installation -->
 <!-- No SDK Example Usage -->
 <!-- No SDK Available Operations -->
