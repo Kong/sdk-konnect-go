@@ -254,9 +254,9 @@ Supported features:
 - ✅ Resource listing and reading
 - ✅ JSON-RPC 2.0 over HTTP
 - ✅ Pagination support
-- ⏳ Prompts (future)
-- ⏳ Sampling (future)
-- ⏳ WebSocket transport (future)
+- [Planned] Prompts
+- [Planned] Sampling
+- [Planned] WebSocket transport
 
 ## Testing
 
