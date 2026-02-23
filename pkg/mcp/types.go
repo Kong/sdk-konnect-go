@@ -39,10 +39,10 @@ type InitializeRequest struct {
 
 // InitializeResponse represents the initialize response
 type InitializeResponse struct {
-	ProtocolVersion string              `json:"protocolVersion"`
-	Capabilities    ServerCapabilities  `json:"capabilities"`
-	ServerInfo      ServerInfo          `json:"serverInfo"`
-	Instructions    string              `json:"instructions,omitempty"`
+	ProtocolVersion string             `json:"protocolVersion"`
+	Capabilities    ServerCapabilities `json:"capabilities"`
+	ServerInfo      ServerInfo         `json:"serverInfo"`
+	Instructions    string             `json:"instructions,omitempty"`
 }
 
 // Capabilities represents client capabilities
