@@ -7,8 +7,8 @@ import (
 	"net/http"
 )
 
-// QueryParamFilter - Filter application auth strategies returned in the response.
-type QueryParamFilter struct {
+// ListAppAuthStrategiesQueryParamFilter - Filter application auth strategies returned in the response.
+type ListAppAuthStrategiesQueryParamFilter struct {
 	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	StrategyType *components.StringFieldFilter `queryParam:"name=strategy_type"`
 	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
@@ -23,46 +23,46 @@ type QueryParamFilter struct {
 	DcrProviderType *components.StringFieldFilter `queryParam:"name=dcr_provider_type"`
 }
 
-func (q *QueryParamFilter) GetStrategyType() *components.StringFieldFilter {
-	if q == nil {
+func (l *ListAppAuthStrategiesQueryParamFilter) GetStrategyType() *components.StringFieldFilter {
+	if l == nil {
 		return nil
 	}
-	return q.StrategyType
+	return l.StrategyType
 }
 
-func (q *QueryParamFilter) GetName() *components.StringFieldFilter {
-	if q == nil {
+func (l *ListAppAuthStrategiesQueryParamFilter) GetName() *components.StringFieldFilter {
+	if l == nil {
 		return nil
 	}
-	return q.Name
+	return l.Name
 }
 
-func (q *QueryParamFilter) GetDisplayName() *components.StringFieldFilter {
-	if q == nil {
+func (l *ListAppAuthStrategiesQueryParamFilter) GetDisplayName() *components.StringFieldFilter {
+	if l == nil {
 		return nil
 	}
-	return q.DisplayName
+	return l.DisplayName
 }
 
-func (q *QueryParamFilter) GetDcrProviderID() *components.UUIDFieldFilter {
-	if q == nil {
+func (l *ListAppAuthStrategiesQueryParamFilter) GetDcrProviderID() *components.UUIDFieldFilter {
+	if l == nil {
 		return nil
 	}
-	return q.DcrProviderID
+	return l.DcrProviderID
 }
 
-func (q *QueryParamFilter) GetDcrProviderName() *components.StringFieldFilter {
-	if q == nil {
+func (l *ListAppAuthStrategiesQueryParamFilter) GetDcrProviderName() *components.StringFieldFilter {
+	if l == nil {
 		return nil
 	}
-	return q.DcrProviderName
+	return l.DcrProviderName
 }
 
-func (q *QueryParamFilter) GetDcrProviderType() *components.StringFieldFilter {
-	if q == nil {
+func (l *ListAppAuthStrategiesQueryParamFilter) GetDcrProviderType() *components.StringFieldFilter {
+	if l == nil {
 		return nil
 	}
-	return q.DcrProviderType
+	return l.DcrProviderType
 }
 
 type ListAppAuthStrategiesRequest struct {
@@ -84,7 +84,7 @@ type ListAppAuthStrategiesRequest struct {
 	//
 	Sort *string `queryParam:"style=form,explode=true,name=sort"`
 	// Filter application auth strategies returned in the response.
-	Filter *QueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *ListAppAuthStrategiesQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
 func (l *ListAppAuthStrategiesRequest) GetPageSize() *int64 {
@@ -108,7 +108,7 @@ func (l *ListAppAuthStrategiesRequest) GetSort() *string {
 	return l.Sort
 }
 
-func (l *ListAppAuthStrategiesRequest) GetFilter() *QueryParamFilter {
+func (l *ListAppAuthStrategiesRequest) GetFilter() *ListAppAuthStrategiesQueryParamFilter {
 	if l == nil {
 		return nil
 	}

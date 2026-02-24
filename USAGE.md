@@ -6,7 +6,6 @@ import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -19,16 +18,11 @@ func main() {
 		}),
 	)
 
-	res, err := s.CatalogServiceAPIMappings.ListServiceMappingsForAPI(ctx, operations.ListServiceMappingsForAPIRequest{
-		APIID:      "d687f4ea-aa04-4157-b446-34519e5b18a7",
-		PageSize:   sdkkonnectgo.Pointer[int64](10),
-		PageNumber: sdkkonnectgo.Pointer[int64](1),
-		Sort:       sdkkonnectgo.Pointer("created_at desc"),
-	})
+	res, err := s.OpenMeterApps.ListApps(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListCatalogServiceAPIMappingsResponse != nil {
+	if res.AppPagePaginatedResponse != nil {
 		// handle response
 	}
 }

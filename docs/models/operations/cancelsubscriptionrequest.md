@@ -1,0 +1,9 @@
+# CancelSubscriptionRequest
+
+
+## Fields
+
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `SubscriptionID`                                                                             | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          | 01G65Z755AFWAKHE12NY0CQ9FH                                                                   |
+| `BillingSubscriptionCancel`                                                                  | [components.BillingSubscriptionCancel](../../models/components/billingsubscriptioncancel.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |                                                                                              |

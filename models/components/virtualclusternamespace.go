@@ -2,26 +2,26 @@
 
 package components
 
-// Mode - * hide_prefix - the configured prefix is hidden from clients for topics and IDs when reading.
+// VirtualClusterNamespaceMode - * hide_prefix - the configured prefix is hidden from clients for topics and IDs when reading.
 //
 //	Created resources are written with the prefix on the backend cluster.
 //
 // * enforce_prefix - the configured prefix remains visible to clients.
 //
 //	Created resources must include the prefix or the request will fail.
-type Mode string
+type VirtualClusterNamespaceMode string
 
 const (
-	ModeHidePrefix    Mode = "hide_prefix"
-	ModeEnforcePrefix Mode = "enforce_prefix"
+	VirtualClusterNamespaceModeHidePrefix    VirtualClusterNamespaceMode = "hide_prefix"
+	VirtualClusterNamespaceModeEnforcePrefix VirtualClusterNamespaceMode = "enforce_prefix"
 )
 
-func (e Mode) ToPointer() *Mode {
+func (e VirtualClusterNamespaceMode) ToPointer() *VirtualClusterNamespaceMode {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *Mode) IsExact() bool {
+func (e *VirtualClusterNamespaceMode) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "hide_prefix", "enforce_prefix":
@@ -43,7 +43,7 @@ type VirtualClusterNamespace struct {
 	//
 	//   Created resources must include the prefix or the request will fail.
 	//
-	Mode Mode `json:"mode"`
+	Mode VirtualClusterNamespaceMode `json:"mode"`
 	// The namespace is differentiated by this chosen prefix.
 	// For example, if the prefix is set to "analytics_" the topic named "analytics_user_clicks" is available to the clients
 	// of the virtual cluster. Topics without the prefix will be ignored unless added via `additional.topics`.
@@ -52,9 +52,9 @@ type VirtualClusterNamespace struct {
 	Additional *VirtualClusterNamespaceAdditionalProperties `json:"additional,omitempty"`
 }
 
-func (v *VirtualClusterNamespace) GetMode() Mode {
+func (v *VirtualClusterNamespace) GetMode() VirtualClusterNamespaceMode {
 	if v == nil {
-		return Mode("")
+		return VirtualClusterNamespaceMode("")
 	}
 	return v.Mode
 }

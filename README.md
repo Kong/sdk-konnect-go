@@ -12,14 +12,13 @@ Handling errors in this SDK should largely match your expectations. All operatio
 
 By Default, an API error will return `sdkerrors.SDKError`. When custom error responses are specified for an operation, the SDK may also return their associated error. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation.
 
-For example, the `ListServiceMappingsForAPI` function may return the following errors:
+For example, the `ListApps` function may return the following errors:
 
 | Error Type                  | Status Code | Content Type             |
 | --------------------------- | ----------- | ------------------------ |
 | sdkerrors.BadRequestError   | 400         | application/problem+json |
 | sdkerrors.UnauthorizedError | 401         | application/problem+json |
 | sdkerrors.ForbiddenError    | 403         | application/problem+json |
-| sdkerrors.NotFoundError     | 404         | application/problem+json |
 | sdkerrors.SDKError          | 4XX, 5XX    | \*/\*                    |
 
 ### Example
@@ -32,7 +31,6 @@ import (
 	"errors"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"github.com/Kong/sdk-konnect-go/models/operations"
 	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
 	"log"
 )
@@ -46,12 +44,7 @@ func main() {
 		}),
 	)
 
-	res, err := s.CatalogServiceAPIMappings.ListServiceMappingsForAPI(ctx, operations.ListServiceMappingsForAPIRequest{
-		APIID:      "d687f4ea-aa04-4157-b446-34519e5b18a7",
-		PageSize:   sdkkonnectgo.Pointer[int64](10),
-		PageNumber: sdkkonnectgo.Pointer[int64](1),
-		Sort:       sdkkonnectgo.Pointer("created_at desc"),
-	})
+	res, err := s.OpenMeterApps.ListApps(ctx, nil)
 	if err != nil {
 
 		var e *sdkerrors.BadRequestError
@@ -67,12 +60,6 @@ func main() {
 		}
 
 		var e *sdkerrors.ForbiddenError
-		if errors.As(err, &e) {
-			// handle error
-			log.Fatal(e.Error())
-		}
-
-		var e *sdkerrors.NotFoundError
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
@@ -112,7 +99,6 @@ import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -126,16 +112,11 @@ func main() {
 		}),
 	)
 
-	res, err := s.CatalogServiceAPIMappings.ListServiceMappingsForAPI(ctx, operations.ListServiceMappingsForAPIRequest{
-		APIID:      "d687f4ea-aa04-4157-b446-34519e5b18a7",
-		PageSize:   sdkkonnectgo.Pointer[int64](10),
-		PageNumber: sdkkonnectgo.Pointer[int64](1),
-		Sort:       sdkkonnectgo.Pointer("created_at desc"),
-	})
+	res, err := s.OpenMeterApps.ListApps(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListCatalogServiceAPIMappingsResponse != nil {
+	if res.AppPagePaginatedResponse != nil {
 		// handle response
 	}
 }
@@ -152,7 +133,6 @@ import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -166,16 +146,11 @@ func main() {
 		}),
 	)
 
-	res, err := s.CatalogServiceAPIMappings.ListServiceMappingsForAPI(ctx, operations.ListServiceMappingsForAPIRequest{
-		APIID:      "d687f4ea-aa04-4157-b446-34519e5b18a7",
-		PageSize:   sdkkonnectgo.Pointer[int64](10),
-		PageNumber: sdkkonnectgo.Pointer[int64](1),
-		Sort:       sdkkonnectgo.Pointer("created_at desc"),
-	})
+	res, err := s.OpenMeterApps.ListApps(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListCatalogServiceAPIMappingsResponse != nil {
+	if res.AppPagePaginatedResponse != nil {
 		// handle response
 	}
 }
@@ -264,7 +239,6 @@ import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
 
@@ -277,16 +251,11 @@ func main() {
 		}),
 	)
 
-	res, err := s.CatalogServiceAPIMappings.ListServiceMappingsForAPI(ctx, operations.ListServiceMappingsForAPIRequest{
-		APIID:      "d687f4ea-aa04-4157-b446-34519e5b18a7",
-		PageSize:   sdkkonnectgo.Pointer[int64](10),
-		PageNumber: sdkkonnectgo.Pointer[int64](1),
-		Sort:       sdkkonnectgo.Pointer("created_at desc"),
-	})
+	res, err := s.OpenMeterApps.ListApps(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListCatalogServiceAPIMappingsResponse != nil {
+	if res.AppPagePaginatedResponse != nil {
 		// handle response
 	}
 }
@@ -383,7 +352,6 @@ import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"github.com/Kong/sdk-konnect-go/models/operations"
 	"github.com/Kong/sdk-konnect-go/retry"
 	"log"
 	"models/operations"
@@ -398,12 +366,7 @@ func main() {
 		}),
 	)
 
-	res, err := s.CatalogServiceAPIMappings.ListServiceMappingsForAPI(ctx, operations.ListServiceMappingsForAPIRequest{
-		APIID:      "d687f4ea-aa04-4157-b446-34519e5b18a7",
-		PageSize:   sdkkonnectgo.Pointer[int64](10),
-		PageNumber: sdkkonnectgo.Pointer[int64](1),
-		Sort:       sdkkonnectgo.Pointer("created_at desc"),
-	}, operations.WithRetries(
+	res, err := s.OpenMeterApps.ListApps(ctx, nil, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
 			Backoff: &retry.BackoffStrategy{
@@ -417,7 +380,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListCatalogServiceAPIMappingsResponse != nil {
+	if res.AppPagePaginatedResponse != nil {
 		// handle response
 	}
 }
@@ -432,7 +395,6 @@ import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/models/components"
-	"github.com/Kong/sdk-konnect-go/models/operations"
 	"github.com/Kong/sdk-konnect-go/retry"
 	"log"
 )
@@ -457,16 +419,11 @@ func main() {
 		}),
 	)
 
-	res, err := s.CatalogServiceAPIMappings.ListServiceMappingsForAPI(ctx, operations.ListServiceMappingsForAPIRequest{
-		APIID:      "d687f4ea-aa04-4157-b446-34519e5b18a7",
-		PageSize:   sdkkonnectgo.Pointer[int64](10),
-		PageNumber: sdkkonnectgo.Pointer[int64](1),
-		Sort:       sdkkonnectgo.Pointer("created_at desc"),
-	})
+	res, err := s.OpenMeterApps.ListApps(ctx, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.ListCatalogServiceAPIMappingsResponse != nil {
+	if res.AppPagePaginatedResponse != nil {
 		// handle response
 	}
 }

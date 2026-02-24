@@ -3,6 +3,6 @@
 
 ## Values
 
-| Name                                   | Value                                  |
-| -------------------------------------- | -------------------------------------- |
-| `CriteriaTemplateSchemaTypeJSONSchema` | json_schema                            |
+| Name                               | Value                              |
+| ---------------------------------- | ---------------------------------- |
+| `CriteriaTemplateSchemaTypeSimple` | simple                             |
