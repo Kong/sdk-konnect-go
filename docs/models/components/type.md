@@ -1,8 +1,10 @@
 # Type
 
+The app type.
+
 
 ## Values
 
-| Name                    | Value                   |
-| ----------------------- | ----------------------- |
-| `TypeAwsRoleDelegation` | aws_role_delegation     |
+| Name         | Value        |
+| ------------ | ------------ |
+| `TypeStripe` | stripe       |

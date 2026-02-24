@@ -2,7 +2,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.1.5 and generator version 2.835.2
+// Generated from OpenAPI doc version 3.1.5 and generator version 2.836.5
 
 import (
 	"context"
@@ -55,6 +55,20 @@ func Pointer[T any](v T) *T { return &v }
 // https://developer.konghq.com - Documentation for Kong Gateway and its APIs
 type SDK struct {
 	SDKVersion string
+	// Apps enable you to extend and customize billing and usage workflows by integrating with external systems and services. Apps can automate and enhance your billing ecosystem by supporting capabilities such as synchronizing usage data with third-party platforms, calculating taxes, generating and delivering invoices, handling payment collection, and other billing-related tasks.
+	OpenMeterApps *OpenMeterApps
+	// Customers are used to track usage of your product or service. Customers can be individuals or organizations that can subscribe to plans and have access to features.
+	OpenMeterCustomers *OpenMeterCustomers
+	// Entitlements are used to control access to features for customers.
+	OpenMeterEntitlements *OpenMeterEntitlements
+	// Metering events are used to track usage of your product or service. Events are processed asynchronously by the meters, so they may not be immediately available for querying.
+	MeteringEvents *MeteringEvents
+	// Meters specify how to aggregate events for billing and analytics purposes. Meters can be configured with multiple aggregation methods and groupings. Multiple meters can be created for the same event type, enabling flexible metering scenarios.
+	Meters *Meters
+	// Billing manages the billing profiles, and invoices for customers.
+	OpenMeterBilling *OpenMeterBilling
+	// Subscriptions are used to track usage of your product or service. Subscriptions can be individuals or organizations that can subscribe to plans and have access to features.
+	OpenMeterSubscriptions *OpenMeterSubscriptions
 	// Service API mappings represent the link between Service and API entities.
 	// Once an API is mapped to a Service, a rich view of the linked APIs will be presented on the APIs tab of the Catalog Service.
 	// Similarly, Services mapped to an API will be listed on the API overview page under Catalog.
@@ -444,9 +458,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.23.0",
+		SDKVersion: "0.24.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.23.0 2.835.2 3.1.5 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.24.0 2.836.5 3.1.5 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -467,6 +481,13 @@ func New(opts ...SDKOption) *SDK {
 		sdk.sdkConfiguration.ServerURL = serverURL
 	}
 
+	sdk.OpenMeterApps = newOpenMeterApps(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OpenMeterCustomers = newOpenMeterCustomers(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OpenMeterEntitlements = newOpenMeterEntitlements(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.MeteringEvents = newMeteringEvents(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Meters = newMeters(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OpenMeterBilling = newOpenMeterBilling(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OpenMeterSubscriptions = newOpenMeterSubscriptions(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServiceAPIMappings = newCatalogServiceAPIMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServices = newCatalogServices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServiceResources = newCatalogServiceResources(sdk, sdk.sdkConfiguration, sdk.hooks)

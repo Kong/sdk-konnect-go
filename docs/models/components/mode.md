@@ -1,19 +1,12 @@
 # Mode
 
-* hide_prefix - the configured prefix is hidden from clients for topics and IDs when reading.
+Mode of the checkout session.
 
-
-  Created resources are written with the prefix on the backend cluster.
-* enforce_prefix - the configured prefix remains visible to clients.
-
-
-  Created resources must include the prefix or the request will fail.
-
+Currently only "setup" mode is supported for collecting payment methods.
 
 
 ## Values
 
-| Name                | Value               |
-| ------------------- | ------------------- |
-| `ModeHidePrefix`    | hide_prefix         |
-| `ModeEnforcePrefix` | enforce_prefix      |
+| Name        | Value       |
+| ----------- | ----------- |
+| `ModeSetup` | setup       |

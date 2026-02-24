@@ -1,0 +1,9 @@
+# ChangeSubscriptionRequest
+
+
+## Fields
+
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `SubscriptionID`                                                                             | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          | 01G65Z755AFWAKHE12NY0CQ9FH                                                                   |
+| `BillingSubscriptionChange`                                                                  | [components.BillingSubscriptionChange](../../models/components/billingsubscriptionchange.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |                                                                                              |

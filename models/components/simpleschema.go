@@ -30,20 +30,20 @@ func (e *SimpleSchemaType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type Definition string
+type SimpleSchemaDefinition string
 
 const (
-	DefinitionString  Definition = "string"
-	DefinitionNumber  Definition = "number"
-	DefinitionBoolean Definition = "boolean"
+	SimpleSchemaDefinitionString  SimpleSchemaDefinition = "string"
+	SimpleSchemaDefinitionNumber  SimpleSchemaDefinition = "number"
+	SimpleSchemaDefinitionBoolean SimpleSchemaDefinition = "boolean"
 )
 
-func (e Definition) ToPointer() *Definition {
+func (e SimpleSchemaDefinition) ToPointer() *SimpleSchemaDefinition {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *Definition) IsExact() bool {
+func (e *SimpleSchemaDefinition) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "string", "number", "boolean":
@@ -54,8 +54,8 @@ func (e *Definition) IsExact() bool {
 }
 
 type SimpleSchema struct {
-	Type       SimpleSchemaType      `json:"type"`
-	Definition map[string]Definition `json:"definition"`
+	Type       SimpleSchemaType                  `json:"type"`
+	Definition map[string]SimpleSchemaDefinition `json:"definition"`
 }
 
 func (s *SimpleSchema) GetType() SimpleSchemaType {
@@ -65,9 +65,9 @@ func (s *SimpleSchema) GetType() SimpleSchemaType {
 	return s.Type
 }
 
-func (s *SimpleSchema) GetDefinition() map[string]Definition {
+func (s *SimpleSchema) GetDefinition() map[string]SimpleSchemaDefinition {
 	if s == nil {
-		return map[string]Definition{}
+		return map[string]SimpleSchemaDefinition{}
 	}
 	return s.Definition
 }

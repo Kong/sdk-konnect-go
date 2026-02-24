@@ -7,26 +7,26 @@ import (
 	"net/http"
 )
 
-// Filter documents returned in the response.
-type Filter struct {
+// QueryParamFilter - Filter documents returned in the response.
+type QueryParamFilter struct {
 	// Filters on the given string field value by exact match.
 	BackendClusterID *components.StringFieldEqualsFilter `queryParam:"name=backend_cluster_id"`
 	// Filters on the given string field value by fuzzy match.
 	Name *components.StringFieldContainsFilter `queryParam:"name=name"`
 }
 
-func (f *Filter) GetBackendClusterID() *components.StringFieldEqualsFilter {
-	if f == nil {
+func (q *QueryParamFilter) GetBackendClusterID() *components.StringFieldEqualsFilter {
+	if q == nil {
 		return nil
 	}
-	return f.BackendClusterID
+	return q.BackendClusterID
 }
 
-func (f *Filter) GetName() *components.StringFieldContainsFilter {
-	if f == nil {
+func (q *QueryParamFilter) GetName() *components.StringFieldContainsFilter {
+	if q == nil {
 		return nil
 	}
-	return f.Name
+	return q.Name
 }
 
 type ListEventGatewayVirtualClustersRequest struct {
@@ -37,7 +37,7 @@ type ListEventGatewayVirtualClustersRequest struct {
 	// Request the next page of data, starting with the item after this parameter.
 	PageAfter *string `queryParam:"style=form,explode=true,name=page[after]"`
 	// Filter documents returned in the response.
-	Filter *Filter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *QueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
 func (l *ListEventGatewayVirtualClustersRequest) GetGatewayID() string {
@@ -61,7 +61,7 @@ func (l *ListEventGatewayVirtualClustersRequest) GetPageAfter() *string {
 	return l.PageAfter
 }
 
-func (l *ListEventGatewayVirtualClustersRequest) GetFilter() *Filter {
+func (l *ListEventGatewayVirtualClustersRequest) GetFilter() *QueryParamFilter {
 	if l == nil {
 		return nil
 	}
