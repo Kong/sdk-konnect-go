@@ -3,21 +3,21 @@ id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
   docChecksum: a615ebdbf22ecdd75c328fa1834983b4
   docVersion: 3.1.5
-  speakeasyVersion: 1.725.0
-  generationVersion: 2.836.5
-  releaseVersion: 0.24.0
-  configChecksum: 6f17c229790ebcd682baa15cc3d67524
+  speakeasyVersion: 1.729.0
+  generationVersion: 2.841.0
+  releaseVersion: 0.25.0
+  configChecksum: 27abc5b2269238a1c98b766bb33f1ffa
 persistentEdits:
-  generation_id: d2dc6195-b0de-427f-9c4e-9bd7611452ff
-  pristine_commit_hash: 9e0fb32ccc2f8411d4d28a6853b8bf223ee9ad33
-  pristine_tree_hash: 6006283c743714c8a076ec1c4c183dc8f4d5a760
+  generation_id: 95812da2-dff6-4468-9cbd-5d148143c0a4
+  pristine_commit_hash: d0cff9a92b6d4d78064c8b341e53cc0f66c0928b
+  pristine_tree_hash: ece8feed7f5d92e7d292443bed475276647089de
 features:
   go:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.2
-    constsAndDefaults: 0.1.13
-    core: 3.13.16
+    constsAndDefaults: 0.1.14
+    core: 3.13.17
     deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.3
@@ -35,7 +35,7 @@ features:
     nameOverrides: 2.81.4
     nullables: 0.2.1
     openEnums: 0.1.0
-    pagination: 2.82.5
+    pagination: 2.82.6
     responseFormat: 0.1.2
     retries: 2.84.2
     sdkHooks: 0.3.0
@@ -17929,8 +17929,8 @@ trackedFiles:
     pristine_git_object: 10ff74b733f8fc22731d92f375bfd17d08e59664
   sdk.go:
     id: 8db9b9536b0a
-    last_write_checksum: sha1:b29ff36684ef7cb06241ec09d137b0fcca37b823
-    pristine_git_object: 32bb02447cdc48fa26eb4f4941abad0a85ccce8f
+    last_write_checksum: sha1:5c42a4a588e32e9b91f0292f267494c197bedda6
+    pristine_git_object: bff7f0dd10e5eb7e8a7d47827ba3013bfb01cc97
   services.go:
     id: a2c8604526d8
     last_write_checksum: sha1:9e75e424fc0554c9aa9ea21f94126ead787a766f
