@@ -3,21 +3,21 @@ id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
   docChecksum: a615ebdbf22ecdd75c328fa1834983b4
   docVersion: 3.1.5
-  speakeasyVersion: 1.729.0
-  generationVersion: 2.841.0
-  releaseVersion: 0.25.0
-  configChecksum: 27abc5b2269238a1c98b766bb33f1ffa
+  speakeasyVersion: 1.739.0
+  generationVersion: 2.846.1
+  releaseVersion: 0.25.1
+  configChecksum: dc27c7c42a82a1ad8f505e43cca13767
 persistentEdits:
-  generation_id: 95812da2-dff6-4468-9cbd-5d148143c0a4
-  pristine_commit_hash: d0cff9a92b6d4d78064c8b341e53cc0f66c0928b
-  pristine_tree_hash: ece8feed7f5d92e7d292443bed475276647089de
+  generation_id: 7347e98d-cd4c-4ebe-bd90-605fe92dec63
+  pristine_commit_hash: 6c973880be6ae03ec4a6b061973d212b94b493c8
+  pristine_tree_hash: 9130d65f196a5b5aef557da0c658c76782c187c1
 features:
   go:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.2
     constsAndDefaults: 0.1.14
-    core: 3.13.17
+    core: 3.13.20
     deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.3
@@ -26,12 +26,12 @@ features:
     flattening: 2.81.1
     globalSecurity: 2.82.13
     globalSecurityCallbacks: 0.1.0
-    globalServerURLs: 2.83.0
+    globalServerURLs: 2.83.1
     groups: 2.81.3
     ignores: 2.81.1
     inputOutputModels: 2.83.0
     intellisenseMarkdownSupport: 0.1.0
-    methodServerURLs: 2.82.1
+    methodServerURLs: 2.82.2
     nameOverrides: 2.81.4
     nullables: 0.2.1
     openEnums: 0.1.0
@@ -17929,8 +17929,8 @@ trackedFiles:
     pristine_git_object: 10ff74b733f8fc22731d92f375bfd17d08e59664
   sdk.go:
     id: 8db9b9536b0a
-    last_write_checksum: sha1:5c42a4a588e32e9b91f0292f267494c197bedda6
-    pristine_git_object: bff7f0dd10e5eb7e8a7d47827ba3013bfb01cc97
+    last_write_checksum: sha1:34f4fcb6cacb60f568d6da25473eb2081f61e4e5
+    pristine_git_object: 2b2ed77059a441c297e1f67cf87700d6c8b490c9
   services.go:
     id: a2c8604526d8
     last_write_checksum: sha1:9e75e424fc0554c9aa9ea21f94126ead787a766f
