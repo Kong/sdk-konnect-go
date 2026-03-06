@@ -39,6 +39,89 @@ func (_m *MockCloudGatewaysSDK) EXPECT() *MockCloudGatewaysSDK_Expecter {
 	return &MockCloudGatewaysSDK_Expecter{mock: &_m.Mock}
 }
 
+// CreateAddOn provides a mock function for the type MockCloudGatewaysSDK
+func (_mock *MockCloudGatewaysSDK) CreateAddOn(ctx context.Context, request components.CreateAddOnRequest, opts ...operations.Option) (*operations.CreateAddOnResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateAddOn")
+	}
+
+	var r0 *operations.CreateAddOnResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.CreateAddOnRequest, ...operations.Option) (*operations.CreateAddOnResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, components.CreateAddOnRequest, ...operations.Option) *operations.CreateAddOnResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreateAddOnResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, components.CreateAddOnRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCloudGatewaysSDK_CreateAddOn_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateAddOn'
+type MockCloudGatewaysSDK_CreateAddOn_Call struct {
+	*mock.Call
+}
+
+// CreateAddOn is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request components.CreateAddOnRequest
+//   - opts ...operations.Option
+func (_e *MockCloudGatewaysSDK_Expecter) CreateAddOn(ctx interface{}, request interface{}, opts ...interface{}) *MockCloudGatewaysSDK_CreateAddOn_Call {
+	return &MockCloudGatewaysSDK_CreateAddOn_Call{Call: _e.mock.On("CreateAddOn",
+		append([]interface{}{ctx, request}, opts...)...)}
+}
+
+func (_c *MockCloudGatewaysSDK_CreateAddOn_Call) Run(run func(ctx context.Context, request components.CreateAddOnRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_CreateAddOn_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 components.CreateAddOnRequest
+		if args[1] != nil {
+			arg1 = args[1].(components.CreateAddOnRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_CreateAddOn_Call) Return(createAddOnResponse *operations.CreateAddOnResponse, err error) *MockCloudGatewaysSDK_CreateAddOn_Call {
+	_c.Call.Return(createAddOnResponse, err)
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_CreateAddOn_Call) RunAndReturn(run func(ctx context.Context, request components.CreateAddOnRequest, opts ...operations.Option) (*operations.CreateAddOnResponse, error)) *MockCloudGatewaysSDK_CreateAddOn_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // CreateConfiguration provides a mock function for the type MockCloudGatewaysSDK
 func (_mock *MockCloudGatewaysSDK) CreateConfiguration(ctx context.Context, request components.CreateConfigurationRequest, opts ...operations.Option) (*operations.CreateConfigurationResponse, error) {
 	var tmpRet mock.Arguments
@@ -466,6 +549,89 @@ func (_c *MockCloudGatewaysSDK_CreateTransitGateway_Call) RunAndReturn(run func(
 	return _c
 }
 
+// DeleteAddOn provides a mock function for the type MockCloudGatewaysSDK
+func (_mock *MockCloudGatewaysSDK) DeleteAddOn(ctx context.Context, addOnID string, opts ...operations.Option) (*operations.DeleteAddOnResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, addOnID, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, addOnID)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteAddOn")
+	}
+
+	var r0 *operations.DeleteAddOnResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.DeleteAddOnResponse, error)); ok {
+		return returnFunc(ctx, addOnID, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.DeleteAddOnResponse); ok {
+		r0 = returnFunc(ctx, addOnID, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeleteAddOnResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, addOnID, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCloudGatewaysSDK_DeleteAddOn_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteAddOn'
+type MockCloudGatewaysSDK_DeleteAddOn_Call struct {
+	*mock.Call
+}
+
+// DeleteAddOn is a helper method to define mock.On call
+//   - ctx context.Context
+//   - addOnID string
+//   - opts ...operations.Option
+func (_e *MockCloudGatewaysSDK_Expecter) DeleteAddOn(ctx interface{}, addOnID interface{}, opts ...interface{}) *MockCloudGatewaysSDK_DeleteAddOn_Call {
+	return &MockCloudGatewaysSDK_DeleteAddOn_Call{Call: _e.mock.On("DeleteAddOn",
+		append([]interface{}{ctx, addOnID}, opts...)...)}
+}
+
+func (_c *MockCloudGatewaysSDK_DeleteAddOn_Call) Run(run func(ctx context.Context, addOnID string, opts ...operations.Option)) *MockCloudGatewaysSDK_DeleteAddOn_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_DeleteAddOn_Call) Return(deleteAddOnResponse *operations.DeleteAddOnResponse, err error) *MockCloudGatewaysSDK_DeleteAddOn_Call {
+	_c.Call.Return(deleteAddOnResponse, err)
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_DeleteAddOn_Call) RunAndReturn(run func(ctx context.Context, addOnID string, opts ...operations.Option) (*operations.DeleteAddOnResponse, error)) *MockCloudGatewaysSDK_DeleteAddOn_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeleteCustomDomain provides a mock function for the type MockCloudGatewaysSDK
 func (_mock *MockCloudGatewaysSDK) DeleteCustomDomain(ctx context.Context, customDomainID string, opts ...operations.Option) (*operations.DeleteCustomDomainResponse, error) {
 	var tmpRet mock.Arguments
@@ -806,6 +972,89 @@ func (_c *MockCloudGatewaysSDK_DeleteTransitGateway_Call) Return(deleteTransitGa
 }
 
 func (_c *MockCloudGatewaysSDK_DeleteTransitGateway_Call) RunAndReturn(run func(ctx context.Context, networkID string, transitGatewayID string, opts ...operations.Option) (*operations.DeleteTransitGatewayResponse, error)) *MockCloudGatewaysSDK_DeleteTransitGateway_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetAddOn provides a mock function for the type MockCloudGatewaysSDK
+func (_mock *MockCloudGatewaysSDK) GetAddOn(ctx context.Context, addOnID string, opts ...operations.Option) (*operations.GetAddOnResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, addOnID, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, addOnID)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetAddOn")
+	}
+
+	var r0 *operations.GetAddOnResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.GetAddOnResponse, error)); ok {
+		return returnFunc(ctx, addOnID, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.GetAddOnResponse); ok {
+		r0 = returnFunc(ctx, addOnID, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetAddOnResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, addOnID, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCloudGatewaysSDK_GetAddOn_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetAddOn'
+type MockCloudGatewaysSDK_GetAddOn_Call struct {
+	*mock.Call
+}
+
+// GetAddOn is a helper method to define mock.On call
+//   - ctx context.Context
+//   - addOnID string
+//   - opts ...operations.Option
+func (_e *MockCloudGatewaysSDK_Expecter) GetAddOn(ctx interface{}, addOnID interface{}, opts ...interface{}) *MockCloudGatewaysSDK_GetAddOn_Call {
+	return &MockCloudGatewaysSDK_GetAddOn_Call{Call: _e.mock.On("GetAddOn",
+		append([]interface{}{ctx, addOnID}, opts...)...)}
+}
+
+func (_c *MockCloudGatewaysSDK_GetAddOn_Call) Run(run func(ctx context.Context, addOnID string, opts ...operations.Option)) *MockCloudGatewaysSDK_GetAddOn_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_GetAddOn_Call) Return(getAddOnResponse *operations.GetAddOnResponse, err error) *MockCloudGatewaysSDK_GetAddOn_Call {
+	_c.Call.Return(getAddOnResponse, err)
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_GetAddOn_Call) RunAndReturn(run func(ctx context.Context, addOnID string, opts ...operations.Option) (*operations.GetAddOnResponse, error)) *MockCloudGatewaysSDK_GetAddOn_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1642,6 +1891,89 @@ func (_c *MockCloudGatewaysSDK_GetTransitGateway_Call) Return(getTransitGatewayR
 }
 
 func (_c *MockCloudGatewaysSDK_GetTransitGateway_Call) RunAndReturn(run func(ctx context.Context, networkID string, transitGatewayID string, opts ...operations.Option) (*operations.GetTransitGatewayResponse, error)) *MockCloudGatewaysSDK_GetTransitGateway_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListAddOns provides a mock function for the type MockCloudGatewaysSDK
+func (_mock *MockCloudGatewaysSDK) ListAddOns(ctx context.Context, request operations.ListAddOnsRequest, opts ...operations.Option) (*operations.ListAddOnsResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListAddOns")
+	}
+
+	var r0 *operations.ListAddOnsResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListAddOnsRequest, ...operations.Option) (*operations.ListAddOnsResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListAddOnsRequest, ...operations.Option) *operations.ListAddOnsResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListAddOnsResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListAddOnsRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCloudGatewaysSDK_ListAddOns_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListAddOns'
+type MockCloudGatewaysSDK_ListAddOns_Call struct {
+	*mock.Call
+}
+
+// ListAddOns is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListAddOnsRequest
+//   - opts ...operations.Option
+func (_e *MockCloudGatewaysSDK_Expecter) ListAddOns(ctx interface{}, request interface{}, opts ...interface{}) *MockCloudGatewaysSDK_ListAddOns_Call {
+	return &MockCloudGatewaysSDK_ListAddOns_Call{Call: _e.mock.On("ListAddOns",
+		append([]interface{}{ctx, request}, opts...)...)}
+}
+
+func (_c *MockCloudGatewaysSDK_ListAddOns_Call) Run(run func(ctx context.Context, request operations.ListAddOnsRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_ListAddOns_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListAddOnsRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListAddOnsRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_ListAddOns_Call) Return(listAddOnsResponse *operations.ListAddOnsResponse, err error) *MockCloudGatewaysSDK_ListAddOns_Call {
+	_c.Call.Return(listAddOnsResponse, err)
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_ListAddOns_Call) RunAndReturn(run func(ctx context.Context, request operations.ListAddOnsRequest, opts ...operations.Option) (*operations.ListAddOnsResponse, error)) *MockCloudGatewaysSDK_ListAddOns_Call {
 	_c.Call.Return(run)
 	return _c
 }

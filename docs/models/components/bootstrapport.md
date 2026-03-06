@@ -9,6 +9,19 @@ then we will use 4 ports: 9092 (bootstrap), 9093 (id=1), 9094 (id=2), 9095 (id=3
 With `none` we will use 3 ports: 9092 (id=1), 9093 (id=2), 9094 (id=3).
 
 
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.BootstrapPortNone
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.BootstrapPort("custom_value")
+```
+
 
 ## Values
 

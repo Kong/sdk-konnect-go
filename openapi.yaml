@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Konnect API - Go SDK
-  version: 3.1.5
+  version: 3.2.0
   description: The Konnect platform API
   contact:
     name: Kong Inc
@@ -4088,6 +4088,113 @@ paths:
           $ref: '#/components/responses/Conflict'
       tags:
         - App Auth Strategies
+  /v2/cloud-gateways/add-ons:
+    post:
+      x-speakeasy-entity-operation:
+        terraform-resource: CloudGatewayAddon#create
+      operationId: create-add-on
+      summary: Create Add-On
+      description: |
+        Creates a new add-on. Specific add-on types (e.g., managed cache)
+        are defined by the sub-kind configuration.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAddOnRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/CreateAddOnResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/CloudGatewaysForbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/CloudGatewaysConflict'
+      servers:
+        - url: 'https://global.api.konghq.com/'
+      tags:
+        - Add-Ons
+      x-speakeasy-group: CloudGateways
+    get:
+      operationId: list-add-ons
+      summary: List Add-Ons
+      description: |
+        Returns a paginated collection of add-ons for an organization.
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/AddOnsFilter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListAddOnsResponse'
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://global.api.konghq.com/'
+      tags:
+        - Add-Ons
+      x-speakeasy-group: CloudGateways
+  '/v2/cloud-gateways/add-ons/{addOnId}':
+    get:
+      x-speakeasy-entity-operation:
+        terraform-resource: CloudGatewayAddon#read
+      operationId: get-add-on
+      summary: Get Add-On
+      description: Retrieves an add-on by ID.
+      parameters:
+        - $ref: '#/components/parameters/AddOnId'
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveAddOnResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://global.api.konghq.com/'
+      tags:
+        - Add-Ons
+      x-speakeasy-group: CloudGateways
+    delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: CloudGatewayAddon#delete
+        terraform-datasource: null
+      operationId: delete-add-on
+      summary: Delete Add-On
+      description: |
+        Deletes an add-on by ID. The request will be rejected if the managed cache partial is still in use by some plugins.
+      parameters:
+        - $ref: '#/components/parameters/AddOnId'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/CloudGatewaysBadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      servers:
+        - url: 'https://global.api.konghq.com/'
+      tags:
+        - Add-Ons
+      x-speakeasy-group: CloudGateways
   /v2/cloud-gateways/availability.json:
     get:
       operationId: get-availability-json
@@ -11961,6 +12068,34 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Applications
+  '/v3/portals/{portalId}/applications/{applicationId}/credentials':
+    parameters:
+      - $ref: '#/components/parameters/PortalId'
+      - $ref: '#/components/parameters/ApplicationId'
+    get:
+      operationId: list-credentials-by-application
+      summary: List Credentials by Application
+      description: 'Lists all credentials for an application. This endpoint returns both API key credentials and DCR credentials, depending on the auth strategy the application uses: - For DCR applications: Credential information is retrieved from the identity provider using provider-specific APIs - For Key-Auth applications: Returns information about credentials Basic information about the credential is returned, but not the credential secret itself.'
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListApplicationCredentials'
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Applications
   '/v3/portals/{portalId}/applications/{applicationId}/developers':
     parameters:
       - $ref: '#/components/parameters/PortalId'
@@ -15118,6 +15253,22 @@ components:
       required: true
       schema:
         type: string
+    AddOnId:
+      name: addOnId
+      description: ID of the add-on to operate on.
+      required: true
+      in: path
+      schema:
+        $ref: '#/components/schemas/AddOnId'
+      x-speakeasy-match: id
+    AddOnsFilter:
+      name: filter
+      description: Filters supported for add-ons.
+      required: false
+      in: query
+      schema:
+        $ref: '#/components/schemas/AddOnsFilterParameters'
+      style: deepObject
     ApiAttributeFilters:
       name: filter
       description: Filters API attributes in the response.
@@ -17033,7 +17184,7 @@ components:
               description: The field does not match the provided value.
               type: string
         cluster_type:
-          description: 'Filter using **one** of the following operators: `eq`, `neq`'
+          description: 'Filter using **one** of the following operators: `eq`, `oeq`, `neq`'
           type: object
           additionalProperties: false
           properties:
@@ -17042,6 +17193,9 @@ components:
               type: string
             neq:
               description: The field does not match the provided value.
+              type: string
+            oeq:
+              description: The field matches any of the provided values.
               type: string
         cloud_gateway:
           $ref: '#/components/schemas/BooleanFieldFilter'
@@ -20491,6 +20645,340 @@ components:
       type: string
       example: The number of minutes that a data plane group can be idle before it is automatically scaled down to zero instances.
       readOnly: true
+    AddOnId:
+      type: string
+      format: uuid
+      example: 550e8400-e29b-41d4-a716-446655440000
+      readOnly: true
+    AddOnConfigResponse:
+      description: Configuration object for different types of add-ons.
+      type: object
+      oneOf:
+        - $ref: '#/components/schemas/ManagedCacheAddOnConfigResponse'
+      title: AddOnConfigResponse
+    ManagedCacheAddOnConfigResponse:
+      description: Configuration for managed cache add-on.
+      type: object
+      properties:
+        kind:
+          description: Type of add-on configuration.
+          type: string
+          const: managed-cache.v0
+        capacity_config:
+          $ref: '#/components/schemas/ManagedCacheCapacityConfig'
+        data_plane_groups:
+          description: List of data-plane groups where the managed cache is deployed.
+          type: array
+          items:
+            $ref: '#/components/schemas/ManagedCacheAddOnDataPlaneGroup'
+        state_metadata:
+          description: |
+            Metadata describing the state of the managed cache add-on.
+          type: object
+          additionalProperties: false
+          properties:
+            cache_config_id:
+              description: Reference to cache configuration for this add-on.
+              type: string
+              format: uuid
+              example: edaf40f9-9fb0-4ffe-bb74-4e763a6bd471
+            cache_server_name:
+              description: Env vault path to cache server name.
+              type: string
+              example: '{vault://env/ADDON_MANAGED_CACHE_SERVER_NAME}'
+            cache_host:
+              description: Env vault path to cache hostname.
+              type: string
+              example: '{vault://env/ADDON_MANAGED_CACHE_HOST}'
+            cache_port:
+              description: Env vault path to cache port.
+              type: string
+              example: '{vault://env/ADDON_MANAGED_CACHE_PORT}'
+            cache_username:
+              description: Env vault path to cache username.
+              type: string
+              example: '{vault://env/ADDON_MANAGED_CACHE_USERNAME}'
+            cloud_authentication:
+              description: |
+                Metadata describing the cloud authentication details for managed cache add-on.
+              type: object
+              additionalProperties: false
+              properties:
+                auth_provider:
+                  description: Env vault path to cache auth provider.
+                  type: string
+                  example: '{vault://env/ADDON_MANAGED_CACHE_AUTH_PROVIDER}'
+                aws_cache_name:
+                  description: Env vault path to aws cache name.
+                  type: string
+                  example: '{vault://env/ADDON_MANAGED_CACHE_AWS_CACHE_NAME}'
+                aws_region:
+                  description: Env vault path to aws region.
+                  type: string
+                  example: '{vault://env/ADDON_MANAGED_CACHE_AWS_REGION}'
+                aws_assume_role_arn:
+                  description: Env vault path to aws assume role arn.
+                  type: string
+                  example: '{vault://env/ADDON_MANAGED_CACHE_AWS_ASSUME_ROLE_ARN}'
+                azure_tenant_id:
+                  description: Env vault path to azure tenant id.
+                  type: string
+                  example: '{vault://env/ADDON_MANAGED_CACHE_AZURE_TENANT_ID}'
+      additionalProperties: false
+      required:
+        - kind
+        - capacity_config
+        - data_plane_groups
+        - state_metadata
+      title: ManagedCacheAddOnConfigResponse
+    ManagedCacheAddOnDataPlaneGroup:
+      description: Object that describes a data-plane group where managed cache add-on is deployed.
+      type: object
+      properties:
+        id:
+          description: ID of the data-plane group.
+          type: string
+          format: uuid
+          example: 1150820b-c69f-4a2a-b9be-bbcdbc5cd618
+        cloud_gateway_network_id:
+          description: Network ID this data-plane group is attached to.
+          type: string
+          format: uuid
+          example: 36ae63d3-efd1-4bec-b246-62aa5d3f5695
+        provider:
+          $ref: '#/components/schemas/ProviderName'
+        region:
+          description: Region of cloud provider the data-plane group is deployed to.
+          type: string
+          example: us-east-1
+        state:
+          description: |
+            The current state of the managed cache add-on in the data-plane group. Possible values:
+            - `initializing` - The add-on is in the process of being initialized/updated and is setting up necessary resources for this data-plane group.
+            - `ready` - The add-on is fully operational for this data-plane group.
+            - `error` - The add-on is in an error state, and is not operational for this data-plane group.
+            - `terminating` - The add-on is in the process of being deleted for this data-plane group.
+          type: string
+          enum:
+            - initializing
+            - ready
+            - error
+            - terminating
+          readOnly: true
+          x-speakeasy-unknown-values: allow
+        state_metadata:
+          description: |
+            Metadata describing the state of the managed cache add-on in the data-plane group.
+          type: object
+          additionalProperties: false
+          properties:
+            error_reason:
+              description: |
+                Reason why the managed cache add-on may be in an error state, reported from backing infrastructure.
+              type: string
+              example: |
+                Failed to create managed cache add-on due to invalid configuration.
+      additionalProperties: false
+      required:
+        - id
+        - cloud_gateway_network_id
+        - provider
+        - region
+        - state
+        - state_metadata
+      title: ManagedCacheAddOnDataPlaneGroup
+    AddOnState:
+      description: |
+        The current state of the add-on. Possible values:
+        - `initializing` - The add-on is in the process of being initialized/updated.
+        - `ready` - The add-on is fully operational.
+        - `terminating` - The add-on is in the process of being deleted.
+      type: string
+      enum:
+        - initializing
+        - ready
+        - terminating
+      readOnly: true
+      title: Add-On State
+      x-speakeasy-unknown-values: allow
+    AddOnResponse:
+      description: Object containing information about an add-on.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/AddOnId'
+        name:
+          $ref: '#/components/schemas/AddOnName'
+        owner:
+          $ref: '#/components/schemas/AddOnOwner'
+        config:
+          $ref: '#/components/schemas/AddOnConfigResponse'
+        entity_version:
+          description: 'Monotonically-increasing version count of the add-on, to indicate the order of updates to the add-on.'
+          type: integer
+          example: 1
+          readOnly: true
+        state:
+          $ref: '#/components/schemas/AddOnState'
+        created_at:
+          description: RFC-3339 timestamp representation of add-on creation date.
+          type: string
+          format: date-time
+          example: '2025-08-26T06:56:41Z'
+          readOnly: true
+        updated_at:
+          description: RFC-3339 timestamp representation of add-on update date.
+          type: string
+          format: date-time
+          example: '2025-08-26T06:56:41Z'
+          readOnly: true
+      additionalProperties: false
+      required:
+        - id
+        - name
+        - owner
+        - config
+        - entity_version
+        - state
+        - created_at
+        - updated_at
+      title: AddOnResponse
+    CreateAddOnRequest:
+      description: Request schema for creating an add-on.
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/AddOnName'
+        owner:
+          $ref: '#/components/schemas/AddOnOwner'
+        config:
+          $ref: '#/components/schemas/CreateAddOnConfig'
+      additionalProperties: false
+      required:
+        - name
+        - owner
+        - config
+      title: CreateAddOnRequest
+    AddOnName:
+      description: Unique human-readable name of the add-on.
+      type: string
+      example: my-add-on
+      maxLength: 70
+      minLength: 1
+      title: AddOnName
+    AddOnOwner:
+      description: Owner for the add-on.
+      type: object
+      oneOf:
+        - $ref: '#/components/schemas/ControlPlaneAddOnOwner'
+        - $ref: '#/components/schemas/ControlPlaneGroupAddOnOwner'
+      title: AddOnOwner
+    ControlPlaneAddOnOwner:
+      description: Control Plane is the owner for the add-on.
+      type: object
+      properties:
+        kind:
+          description: Type of owner for the add-on.
+          type: string
+          const: control-plane
+        control_plane_id:
+          description: ID of the control-plane that owns this add-on.
+          type: string
+          format: uuid
+          example: 123e4567-e89b-12d3-a456-426614174000
+        control_plane_geo:
+          $ref: '#/components/schemas/ControlPlaneGeo'
+      additionalProperties: false
+      required:
+        - kind
+        - control_plane_id
+        - control_plane_geo
+      title: ControlPlaneAddOnOwner
+      x-speakeasy-name-override: control_plane
+    ControlPlaneGroupAddOnOwner:
+      description: Control Plane Group is the owner for the add-on.
+      type: object
+      properties:
+        kind:
+          description: Type of owner for the add-on.
+          type: string
+          const: control-plane-group
+        control_plane_group_id:
+          description: ID of the control-plane group that owns this add-on.
+          type: string
+          format: uuid
+          example: 123e4567-e89b-12d3-a456-426614174000
+        control_plane_group_geo:
+          $ref: '#/components/schemas/ControlPlaneGeo'
+      additionalProperties: false
+      required:
+        - kind
+        - control_plane_group_id
+        - control_plane_group_geo
+      title: ControlPlaneGroupAddOnOwner
+      x-speakeasy-name-override: control_plane_group
+    CreateAddOnConfig:
+      description: Configuration for creating different types of add-ons.
+      type: object
+      oneOf:
+        - $ref: '#/components/schemas/CreateManagedCacheAddOnConfig'
+      title: CreateAddOnConfig
+    CreateManagedCacheAddOnConfig:
+      description: Configuration for creating a managed cache add-on.
+      type: object
+      properties:
+        kind:
+          description: Type of add-on configuration.
+          type: string
+          const: managed-cache.v0
+        capacity_config:
+          $ref: '#/components/schemas/ManagedCacheCapacityConfig'
+      additionalProperties: false
+      required:
+        - kind
+        - capacity_config
+      title: CreateManagedCacheAddOnConfig
+      x-speakeasy-name-override: managed_cache
+    ManagedCacheCapacityConfig:
+      description: Configuration for managed cache capacity and performance characteristics.
+      type: object
+      oneOf:
+        - $ref: '#/components/schemas/TieredCapacityConfig'
+      title: ManagedCacheCapacityConfig
+    TieredCapacityConfig:
+      description: Capacity tiers with pre-configured size and performance characteristics.
+      type: object
+      properties:
+        kind:
+          description: Type of capacity configuration.
+          type: string
+          const: tiered
+        tier:
+          description: |
+            Capacity tier that determines both cache size and performance characteristics:
+            - micro: ~0.5 GiB capacity
+            - small: ~1 GiB capacity
+            - medium: ~3 GiB capacity
+            - large: ~6 GiB capacity
+            - xlarge: ~12 GiB capacity
+            - 2xlarge: ~25 GiB capacity
+            - 4xlarge: ~52 GiB capacity
+          type: string
+          enum:
+            - micro
+            - small
+            - medium
+            - large
+            - xlarge
+            - 2xlarge
+            - 4xlarge
+          x-speakeasy-unknown-values: allow
+      additionalProperties: false
+      required:
+        - kind
+        - tier
+      title: TieredCapacityConfig
+      x-speakeasy-name-override: Tiered
     ConfigurationsFilterParameters:
       type: object
       properties:
@@ -20828,6 +21316,117 @@ components:
         - created_at
         - updated_at
       title: Default Resource Configuration
+    AddOnsFilterParameters:
+      description: Filter parameters for add-ons list operation.
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/CloudGatewaysStringFieldFilterOverride'
+        state:
+          $ref: '#/components/schemas/AddOnStateFieldFilter'
+        config.kind:
+          $ref: '#/components/schemas/AddOnConfigKindFieldFilter'
+        owner.control_plane_id:
+          $ref: '#/components/schemas/UuidFieldFilter'
+        owner.control_plane_geo:
+          $ref: '#/components/schemas/ControlPlaneGeoFieldFilter'
+        owner.control_plane_group_id:
+          $ref: '#/components/schemas/UuidFieldFilter'
+        owner.control_plane_group_geo:
+          $ref: '#/components/schemas/ControlPlaneGeoFieldFilter'
+      additionalProperties: false
+      title: Add-Ons Filter Parameters
+    AddOnStateFieldFilter:
+      oneOf:
+        - $ref: '#/components/schemas/AddOnStateFieldEqualsFilter'
+        - $ref: '#/components/schemas/AddOnStateFieldNotEqualsFilter'
+        - $ref: '#/components/schemas/AddOnStateFieldOrEqualityFilter'
+      title: AddOnStateFieldFilter
+    AddOnStateFieldEqualsFilter:
+      description: Filter add-on state by exact match.
+      oneOf:
+        - $ref: '#/components/schemas/AddOnState'
+        - $ref: '#/components/schemas/AddOnStateFieldEqualsComparison'
+      title: AddOnStateFieldEqualsFilter
+    AddOnStateFieldEqualsComparison:
+      type: object
+      properties:
+        eq:
+          $ref: '#/components/schemas/AddOnState'
+      additionalProperties: false
+      required:
+        - eq
+      title: AddOnStateFieldEqualsComparison
+    AddOnStateFieldNotEqualsFilter:
+      description: Filter add-on state by inequality match.
+      type: object
+      properties:
+        neq:
+          $ref: '#/components/schemas/AddOnState'
+      additionalProperties: false
+      required:
+        - neq
+      title: AddOnStateFieldNotEqualsFilter
+    AddOnStateFieldOrEqualityFilter:
+      description: |
+        Filter add-on state by determining if the value is equal to any in a set of values, where the set is a comma-delimited list.
+      type: object
+      properties:
+        oeq:
+          type: string
+      additionalProperties: false
+      required:
+        - oeq
+      title: AddOnStateFieldOrEqualityFilter
+    AddOnConfigKindFieldFilter:
+      description: Filter for add-on config kind field.
+      oneOf:
+        - $ref: '#/components/schemas/AddOnConfigKindFieldEqualsFilter'
+        - $ref: '#/components/schemas/AddOnConfigKindFieldNotEqualsFilter'
+        - $ref: '#/components/schemas/AddOnConfigKindFieldOrEqualityFilter'
+      title: Add-On Config Kind Field Filter
+    AddOnConfigKindFieldEqualsFilter:
+      description: Filter add-on config kind by exact match.
+      oneOf:
+        - $ref: '#/components/schemas/AddOnConfigKind'
+        - $ref: '#/components/schemas/AddOnConfigKindFieldEqualsComparison'
+      title: Add-On Config Kind Field Equals Filter
+    AddOnConfigKindFieldEqualsComparison:
+      type: object
+      properties:
+        eq:
+          $ref: '#/components/schemas/AddOnConfigKind'
+      additionalProperties: false
+      required:
+        - eq
+      title: AddOnConfigKindFieldEqualsComparison
+    AddOnConfigKindFieldNotEqualsFilter:
+      description: Filter add-on config kind by inequality match.
+      type: object
+      properties:
+        neq:
+          $ref: '#/components/schemas/AddOnConfigKind'
+      additionalProperties: false
+      required:
+        - neq
+      title: Add-On Config Kind Field Not Equals Filter
+    AddOnConfigKindFieldOrEqualityFilter:
+      description: Filter add-on config kind by determining if the value is equal to any in a set of values.
+      type: object
+      properties:
+        oeq:
+          description: Comma-delimited list of add-on kinds.
+          type: string
+      additionalProperties: false
+      required:
+        - oeq
+      title: Add-On Config Kind Field Or Equality Filter
+    AddOnConfigKind:
+      description: Type of add-on config.
+      type: string
+      enum:
+        - managed-cache.v0
+      title: Add-On Config Kind
     StringFieldOContainsFilter:
       description: Returns entities that fuzzy-match any of the comma-delimited phrases in the filter string.
       type: object
@@ -21180,6 +21779,11 @@ components:
       description: This flag disable the refresh-secret endpoint on the application flow for the DCR provider.
       type: boolean
       title: DcrConfigPropertyDisableRefreshSecret
+    DcrConfigPropertyAllowMultipleCredentials:
+      description: 'When enabled, indicates that the HTTP DCR provider supports creating and managing multiple credentials per application.'
+      type: boolean
+      default: false
+      title: DcrConfigPropertyAllowMultipleCredentials
     DcrConfigAuth0InResponse:
       description: A DCR provider configuration for Auth0
       type: object
@@ -21233,6 +21837,8 @@ components:
       properties:
         initial_client_id:
           $ref: '#/components/schemas/DcrConfigPropertyInitialClientId'
+        allow_multiple_credentials:
+          $ref: '#/components/schemas/DcrConfigPropertyAllowMultipleCredentials'
       additionalProperties: false
       required:
         - initial_client_id
@@ -21245,6 +21851,8 @@ components:
           $ref: '#/components/schemas/DcrConfigPropertyInitialClientId'
         initial_client_secret:
           $ref: '#/components/schemas/DcrConfigPropertyInitialClientSecret'
+        allow_multiple_credentials:
+          $ref: '#/components/schemas/DcrConfigPropertyAllowMultipleCredentials'
       additionalProperties: false
       required:
         - initial_client_id
@@ -21258,6 +21866,8 @@ components:
           $ref: '#/components/schemas/DcrConfigPropertyInitialClientId'
         initial_client_secret:
           $ref: '#/components/schemas/DcrConfigPropertyInitialClientSecret'
+        allow_multiple_credentials:
+          $ref: '#/components/schemas/DcrConfigPropertyAllowMultipleCredentials'
       additionalProperties: false
       title: DcrConfigAzureAdInRequest
     DcrConfigCurityInResponse:
@@ -21296,6 +21906,9 @@ components:
     DcrConfigOktaInResponse:
       description: A DCR provider configuration for Okta
       type: object
+      properties:
+        allow_multiple_credentials:
+          $ref: '#/components/schemas/DcrConfigPropertyAllowMultipleCredentials'
       additionalProperties: false
       title: DcrConfigOktaInResponse
     CreateDcrConfigOktaInRequest:
@@ -21304,6 +21917,8 @@ components:
       properties:
         dcr_token:
           $ref: '#/components/schemas/DcrConfigPropertyDcrToken'
+        allow_multiple_credentials:
+          $ref: '#/components/schemas/DcrConfigPropertyAllowMultipleCredentials'
       additionalProperties: false
       required:
         - dcr_token
@@ -21314,6 +21929,8 @@ components:
       properties:
         dcr_token:
           $ref: '#/components/schemas/DcrConfigPropertyDcrToken'
+        allow_multiple_credentials:
+          $ref: '#/components/schemas/DcrConfigPropertyAllowMultipleCredentials'
       additionalProperties: false
       title: DcrConfigOktaInRequest
     DcrConfigHttpInResponse:
@@ -21327,6 +21944,8 @@ components:
           $ref: '#/components/schemas/DcrConfigPropertyDisableEventHooks'
         disable_refresh_secret:
           $ref: '#/components/schemas/DcrConfigPropertyDisableRefreshSecret'
+        allow_multiple_credentials:
+          $ref: '#/components/schemas/DcrConfigPropertyAllowMultipleCredentials'
       additionalProperties: false
       required:
         - dcr_base_url
@@ -21343,6 +21962,8 @@ components:
           $ref: '#/components/schemas/DcrConfigPropertyDisableEventHooks'
         disable_refresh_secret:
           $ref: '#/components/schemas/DcrConfigPropertyDisableRefreshSecret'
+        allow_multiple_credentials:
+          $ref: '#/components/schemas/DcrConfigPropertyAllowMultipleCredentials'
       additionalProperties: false
       required:
         - dcr_base_url
@@ -21360,6 +21981,8 @@ components:
           $ref: '#/components/schemas/DcrConfigPropertyDisableEventHooks'
         disable_refresh_secret:
           $ref: '#/components/schemas/DcrConfigPropertyDisableRefreshSecret'
+        allow_multiple_credentials:
+          $ref: '#/components/schemas/DcrConfigPropertyAllowMultipleCredentials'
       additionalProperties: false
       title: CreateDcrConfigHttpInRequest
     DcrProviderBase:
@@ -21930,6 +22553,13 @@ components:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
           $ref: '#/components/schemas/UpdatedAt'
+        supports_multiple_credentials:
+          description: |
+            Indicates whether this auth strategy supports multiple credentials.
+            Always `true` for KEY_AUTH.
+          type: boolean
+          default: true
+          readOnly: true
       additionalProperties: false
       required:
         - id
@@ -22034,6 +22664,13 @@ components:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
           $ref: '#/components/schemas/UpdatedAt'
+        supports_multiple_credentials:
+          description: |
+            Indicates whether this auth strategy supports multiple credentials.
+            - `true` for Key Auth strategies and when supported for Client Credentials strategies
+            - `false` when not supported for Client Credentials strategies
+          type: boolean
+          readOnly: true
       additionalProperties: false
       required:
         - id
@@ -25983,6 +26620,92 @@ components:
         - name
         - credential_type
         - key_names
+    ApiKeyCredentialListItem:
+      description: API key credential returned when listing credentials.
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - api_key
+          readOnly: true
+        id:
+          $ref: '#/components/schemas/UUID'
+        display_name:
+          type: string
+        status:
+          type: string
+          enum:
+            - active
+            - expired
+            - revoked
+          readOnly: true
+          x-speakeasy-unknown-values: allow
+        expires_at:
+          type: string
+          format: date-time
+          nullable: true
+          readOnly: true
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+      additionalProperties: false
+      required:
+        - type
+        - id
+        - display_name
+        - created_at
+    ClientSecretCredentialListItem:
+      description: Client secret credential returned when listing credentials.
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - client_secret
+          readOnly: true
+        id:
+          description: Credential identifier
+          type: string
+        display_name:
+          description: May not be available for all Client Credentials applications
+          type: string
+          nullable: true
+        client_id:
+          description: OAuth2 client identifier
+          type: string
+          readOnly: true
+        created_at:
+          description: 'Creation timestamp, if available'
+          type: string
+          format: date-time
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+      required:
+        - type
+        - id
+        - client_id
+        - created_at
+    CredentialListItem:
+      type: object
+      discriminator:
+        propertyName: type
+      oneOf:
+        - $ref: '#/components/schemas/ApiKeyCredentialListItem'
+        - $ref: '#/components/schemas/ClientSecretCredentialListItem'
+    ListCredentialsResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/PaginatedMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CredentialListItem'
+      additionalProperties: false
+      required:
+        - data
+        - meta
     CreateCatalogService:
       type: object
       properties:
@@ -31431,7 +32154,7 @@ components:
                 $ref: '#/components/schemas/EventGatewayACLResourceName'
             - type: string
               x-min-runtime-version: '1.1'
-              example: 'context.auth.tokens.claims["topics"]'
+              example: 'context.auth.token.claims["topics"]'
               x-expression:
                 type: array
                 fields:
@@ -38920,6 +39643,8 @@ components:
                   - Upstream Admin
                   - Vault Admin
                   - Viewer
+                  - Registration Approver
+                  - Content Editor
                 x-speakeasy-unknown-values: allow
               entity_id:
                 description: The ID of the entity.
@@ -41075,6 +41800,22 @@ components:
                         required:
                           - name
                           - description
+                      debug_session_creator:
+                        type: object
+                        additionalProperties: false
+                        properties:
+                          name:
+                            type: string
+                            enum:
+                              - Debug Session Creator
+                          description:
+                            type: string
+                            example: This role grants access to create debug sessions. This role also grants read-only access to all entities within a control plane.
+                            enum:
+                              - This role grants access to create debug sessions. This role also grants read-only access to all entities within a control plane.
+                        required:
+                          - name
+                          - description
                       deployer:
                         type: object
                         additionalProperties: false
@@ -42158,6 +42899,35 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ResourceConfiguration'
+    ListAddOnsResponse:
+      description: A paginated list for a collection of add-ons.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/PaginatedMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AddOnResponse'
+            required:
+              - meta
+              - data
+            title: ListAddOnsResponse
+    CreateAddOnResponse:
+      description: Response format for creating an add-on.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AddOnResponse'
+    RetrieveAddOnResponse:
+      description: Response format for retrieving an add-on by ID.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AddOnResponse'
     NotificationResponse:
       description: View a single notification.
       content:
@@ -43222,6 +43992,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/GetApplicationResponse'
+    ListApplicationCredentials:
+      description: A paginated list of credentials for an application.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListCredentialsResponse'
     ListApplicationDevelopers:
       description: A paginated list developers of an application.
       content:
@@ -44314,6 +45090,7 @@ tags:
   - name: Networks
   - name: Transit Gateways
   - name: Private DNS
+  - name: Add-Ons
   - name: Provider Accounts
   - name: Custom Domains
   - name: Cloud Gateways Resource Quotas

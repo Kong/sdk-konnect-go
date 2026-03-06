@@ -10,6 +10,19 @@ The current state of the Private DNS attachment. Possible values:
 - `terminated` - The attachment has been fully deleted and is no longer available.
 
 
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.PrivateDNSStateCreated
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.PrivateDNSState("custom_value")
+```
+
 
 ## Values
 

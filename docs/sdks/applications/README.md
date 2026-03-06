@@ -10,6 +10,7 @@ APIs related to Konnect Developer Portal Applications.
 * [ListApplications](#listapplications) - List Applications
 * [GetApplication](#getapplication) - Get an Application by Portal
 * [DeleteApplication](#deleteapplication) - Delete Application by Portal
+* [ListCredentialsByApplication](#listcredentialsbyapplication) - List Credentials by Application
 * [ListDevelopersByApplication](#listdevelopersbyapplication) - List Developers by Application
 
 ## GetApplicationUnscoped
@@ -403,6 +404,70 @@ func main() {
 
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListCredentialsByApplication
+
+Lists all credentials for an application. This endpoint returns both API key credentials and DCR credentials, depending on the auth strategy the application uses: - For DCR applications: Credential information is retrieved from the identity provider using provider-specific APIs - For Key-Auth applications: Returns information about credentials Basic information about the credential is returned, but not the credential secret itself.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-credentials-by-application" method="get" path="/v3/portals/{portalId}/applications/{applicationId}/credentials" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Applications.ListCredentialsByApplication(ctx, operations.ListCredentialsByApplicationRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ApplicationID: "0c69eaf8-4e88-43b0-9884-2bd94caa2d0a",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ListCredentialsResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                            | :heavy_check_mark:                                                                                               | The context to use for the request.                                                                              |
+| `request`                                                                                                        | [operations.ListCredentialsByApplicationRequest](../../models/operations/listcredentialsbyapplicationrequest.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
+| `opts`                                                                                                           | [][operations.Option](../../models/operations/option.md)                                                         | :heavy_minus_sign:                                                                                               | The options for this request.                                                                                    |
+
+### Response
+
+**[*operations.ListCredentialsByApplicationResponse](../../models/operations/listcredentialsbyapplicationresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |

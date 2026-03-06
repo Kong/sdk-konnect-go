@@ -11,6 +11,19 @@ import (
 
 // CloudGatewaysSDK is a generated interface.
 type CloudGatewaysSDK interface {
+	// CreateAddOn - Create Add-On
+	// Creates a new add-on. Specific add-on types (e.g., managed cache)
+	// are defined by the sub-kind configuration.
+	CreateAddOn(ctx context.Context, request components.CreateAddOnRequest, opts ...operations.Option) (*operations.CreateAddOnResponse, error)
+	// ListAddOns - List Add-Ons
+	// Returns a paginated collection of add-ons for an organization.
+	ListAddOns(ctx context.Context, request operations.ListAddOnsRequest, opts ...operations.Option) (*operations.ListAddOnsResponse, error)
+	// GetAddOn - Get Add-On
+	// Retrieves an add-on by ID.
+	GetAddOn(ctx context.Context, addOnID string, opts ...operations.Option) (*operations.GetAddOnResponse, error)
+	// DeleteAddOn - Delete Add-On
+	// Deletes an add-on by ID. The request will be rejected if the managed cache partial is still in use by some plugins.
+	DeleteAddOn(ctx context.Context, addOnID string, opts ...operations.Option) (*operations.DeleteAddOnResponse, error)
 	// GetAvailabilityJSON - Get Resource Availability JSON
 	// Get Cloud Gateways Availability JSON document for describing cloud provider and region availability, pricing,
 	// gateway version availability, and instance type information.

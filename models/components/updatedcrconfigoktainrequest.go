@@ -12,6 +12,8 @@ type UpdateDcrConfigOktaInRequest struct {
 	// and assign it as the management client for DCR for this developer portal
 	//
 	DcrToken *string `json:"dcr_token,omitempty"`
+	// When enabled, indicates that the HTTP DCR provider supports creating and managing multiple credentials per application.
+	AllowMultipleCredentials *bool `default:"false" json:"allow_multiple_credentials"`
 }
 
 func (u UpdateDcrConfigOktaInRequest) MarshalJSON() ([]byte, error) {
@@ -30,4 +32,11 @@ func (u *UpdateDcrConfigOktaInRequest) GetDcrToken() *string {
 		return nil
 	}
 	return u.DcrToken
+}
+
+func (u *UpdateDcrConfigOktaInRequest) GetAllowMultipleCredentials() *bool {
+	if u == nil {
+		return nil
+	}
+	return u.AllowMultipleCredentials
 }

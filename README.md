@@ -166,6 +166,7 @@ package main
 import (
 	"context"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/components"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -173,14 +174,41 @@ import (
 func main() {
 	ctx := context.Background()
 
-	s := sdkkonnectgo.New()
+	s := sdkkonnectgo.New(
+		sdkkonnectgo.WithSecurity(components.Security{
+			PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+		}),
+	)
 
-	res, err := s.CloudGateways.GetAvailabilityJSON(ctx, operations.WithServerURL("https://global.api.konghq.com/"))
+	res, err := s.CloudGateways.CreateAddOn(ctx, components.CreateAddOnRequest{
+		Name: "my-add-on",
+		Owner: components.CreateAddOnOwnerControlPlaneGroup(
+			components.ControlPlaneGroup{
+				ControlPlaneGroupID:  "123e4567-e89b-12d3-a456-426614174000",
+				ControlPlaneGroupGeo: components.ControlPlaneGeoSg,
+			},
+		),
+		Config: components.CreateCreateAddOnConfigManagedCache(
+			components.ManagedCache{
+				CapacityConfig: components.CreateManagedCacheCapacityConfigTiered(
+					components.Tiered{
+						Tier: components.TierSmall,
+					},
+				),
+			},
+		),
+	}, operations.WithServerURL("https://global.api.konghq.com/"))
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.AvailabilityDocument != nil {
-		// handle response
+	if res.AddOnResponse != nil {
+		switch res.AddOnResponse.Owner.Type {
+		case components.AddOnOwnerTypeControlPlane:
+			// res.AddOnResponse.Owner.ControlPlane is populated
+		case components.AddOnOwnerTypeControlPlaneGroup:
+			// res.AddOnResponse.Owner.ControlPlaneGroup is populated
+		}
+
 	}
 }
 

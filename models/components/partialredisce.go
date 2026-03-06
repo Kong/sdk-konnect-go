@@ -30,8 +30,8 @@ func (e *AuthProvider) IsExact() bool {
 	return false
 }
 
-// CloudAuthentication - Cloud auth related configs for connecting to a Cloud Provider's Redis instance.
-type CloudAuthentication struct {
+// PartialRedisCeCloudAuthentication - Cloud auth related configs for connecting to a Cloud Provider's Redis instance.
+type PartialRedisCeCloudAuthentication struct {
 	// Auth providers to be used to authenticate to a Cloud Provider's Redis instance.
 	AuthProvider *AuthProvider `json:"auth_provider,omitempty"`
 	// AWS Access Key ID to be used for authentication when `auth_provider` is set to `aws`.
@@ -58,104 +58,104 @@ type CloudAuthentication struct {
 	GcpServiceAccountJSON *string `json:"gcp_service_account_json,omitempty"`
 }
 
-func (c CloudAuthentication) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
+func (p PartialRedisCeCloudAuthentication) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
 }
 
-func (c *CloudAuthentication) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+func (p *PartialRedisCeCloudAuthentication) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (c *CloudAuthentication) GetAuthProvider() *AuthProvider {
-	if c == nil {
+func (p *PartialRedisCeCloudAuthentication) GetAuthProvider() *AuthProvider {
+	if p == nil {
 		return nil
 	}
-	return c.AuthProvider
+	return p.AuthProvider
 }
 
-func (c *CloudAuthentication) GetAwsAccessKeyID() *string {
-	if c == nil {
+func (p *PartialRedisCeCloudAuthentication) GetAwsAccessKeyID() *string {
+	if p == nil {
 		return nil
 	}
-	return c.AwsAccessKeyID
+	return p.AwsAccessKeyID
 }
 
-func (c *CloudAuthentication) GetAwsAssumeRoleArn() *string {
-	if c == nil {
+func (p *PartialRedisCeCloudAuthentication) GetAwsAssumeRoleArn() *string {
+	if p == nil {
 		return nil
 	}
-	return c.AwsAssumeRoleArn
+	return p.AwsAssumeRoleArn
 }
 
-func (c *CloudAuthentication) GetAwsCacheName() *string {
-	if c == nil {
+func (p *PartialRedisCeCloudAuthentication) GetAwsCacheName() *string {
+	if p == nil {
 		return nil
 	}
-	return c.AwsCacheName
+	return p.AwsCacheName
 }
 
-func (c *CloudAuthentication) GetAwsIsServerless() *bool {
-	if c == nil {
+func (p *PartialRedisCeCloudAuthentication) GetAwsIsServerless() *bool {
+	if p == nil {
 		return nil
 	}
-	return c.AwsIsServerless
+	return p.AwsIsServerless
 }
 
-func (c *CloudAuthentication) GetAwsRegion() *string {
-	if c == nil {
+func (p *PartialRedisCeCloudAuthentication) GetAwsRegion() *string {
+	if p == nil {
 		return nil
 	}
-	return c.AwsRegion
+	return p.AwsRegion
 }
 
-func (c *CloudAuthentication) GetAwsRoleSessionName() *string {
-	if c == nil {
+func (p *PartialRedisCeCloudAuthentication) GetAwsRoleSessionName() *string {
+	if p == nil {
 		return nil
 	}
-	return c.AwsRoleSessionName
+	return p.AwsRoleSessionName
 }
 
-func (c *CloudAuthentication) GetAwsSecretAccessKey() *string {
-	if c == nil {
+func (p *PartialRedisCeCloudAuthentication) GetAwsSecretAccessKey() *string {
+	if p == nil {
 		return nil
 	}
-	return c.AwsSecretAccessKey
+	return p.AwsSecretAccessKey
 }
 
-func (c *CloudAuthentication) GetAzureClientID() *string {
-	if c == nil {
+func (p *PartialRedisCeCloudAuthentication) GetAzureClientID() *string {
+	if p == nil {
 		return nil
 	}
-	return c.AzureClientID
+	return p.AzureClientID
 }
 
-func (c *CloudAuthentication) GetAzureClientSecret() *string {
-	if c == nil {
+func (p *PartialRedisCeCloudAuthentication) GetAzureClientSecret() *string {
+	if p == nil {
 		return nil
 	}
-	return c.AzureClientSecret
+	return p.AzureClientSecret
 }
 
-func (c *CloudAuthentication) GetAzureTenantID() *string {
-	if c == nil {
+func (p *PartialRedisCeCloudAuthentication) GetAzureTenantID() *string {
+	if p == nil {
 		return nil
 	}
-	return c.AzureTenantID
+	return p.AzureTenantID
 }
 
-func (c *CloudAuthentication) GetGcpServiceAccountJSON() *string {
-	if c == nil {
+func (p *PartialRedisCeCloudAuthentication) GetGcpServiceAccountJSON() *string {
+	if p == nil {
 		return nil
 	}
-	return c.GcpServiceAccountJSON
+	return p.GcpServiceAccountJSON
 }
 
 type PartialRedisCeConfig struct {
 	// Cloud auth related configs for connecting to a Cloud Provider's Redis instance.
-	CloudAuthentication *CloudAuthentication `json:"cloud_authentication,omitempty"`
+	CloudAuthentication *PartialRedisCeCloudAuthentication `json:"cloud_authentication,omitempty"`
 	// Database to use for the Redis connection when using the `redis` strategy
 	Database *int64 `default:"0" json:"database"`
 	// A string representing a host name, such as example.com.
@@ -187,7 +187,7 @@ func (p *PartialRedisCeConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (p *PartialRedisCeConfig) GetCloudAuthentication() *CloudAuthentication {
+func (p *PartialRedisCeConfig) GetCloudAuthentication() *PartialRedisCeCloudAuthentication {
 	if p == nil {
 		return nil
 	}

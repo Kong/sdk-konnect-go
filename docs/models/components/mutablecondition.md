@@ -8,6 +8,16 @@ For example, setting `mutable_condition: unauthorized` means the field can only 
 changed while the integration is in an unauthorized state.
 
 
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.MutableConditionUnauthorized
+```
+
 
 ## Values
 
