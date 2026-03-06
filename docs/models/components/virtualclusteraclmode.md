@@ -9,6 +9,19 @@ Configures whether or not ACL policies are enforced on the gateway.
 - `passthrough` tells the gateway to forward all ACL-related commands.
 
 
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.VirtualClusterACLModeEnforceOnGateway
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.VirtualClusterACLMode("custom_value")
+```
+
 
 ## Values
 

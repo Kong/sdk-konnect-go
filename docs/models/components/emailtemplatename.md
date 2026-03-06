@@ -3,6 +3,19 @@
 Short name email template name.
 
 
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.EmailTemplateNameConfirmEmailAddress
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.EmailTemplateName("custom_value")
+```
+
 
 ## Values
 

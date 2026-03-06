@@ -5,6 +5,16 @@ If false, operations removal will be rejected with a 409 error.
 Omitting the value (i.e., setting `?force`) means true.
 
 
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/operations"
+)
+
+value := operations.UpdateAPIVersionQueryParamForceTrue
+```
+
 
 ## Values
 

@@ -5,6 +5,19 @@ How to inform the user about conflicts where multiple backend topics would map t
 * ignore - do not do anything. It does not cause knep_namespace_topic_conflict metric to be set to 1.
 
 
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.VirtualClusterNamespaceTopicSelectorExactListConflictWarn
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.VirtualClusterNamespaceTopicSelectorExactListConflict("custom_value")
+```
+
 
 ## Values
 
