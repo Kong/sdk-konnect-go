@@ -587,7 +587,7 @@ func (s *ControlPlanes) CreateControlPlane(ctx context.Context, request componen
 				return nil, err
 			}
 
-			var out components.ControlPlane
+			var out components.ControlPlane1
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -922,7 +922,7 @@ func (s *ControlPlanes) GetControlPlane(ctx context.Context, id string, opts ...
 				return nil, err
 			}
 
-			var out components.ControlPlane
+			var out components.ControlPlane1
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1265,7 +1265,7 @@ func (s *ControlPlanes) UpdateControlPlane(ctx context.Context, id string, updat
 				return nil, err
 			}
 
-			var out components.ControlPlane
+			var out components.ControlPlane1
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

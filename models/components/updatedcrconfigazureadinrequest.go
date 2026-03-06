@@ -16,6 +16,8 @@ type UpdateDcrConfigAzureAdInRequest struct {
 	// and assign it as the management client for DCR for this developer portal
 	//
 	InitialClientSecret *string `json:"initial_client_secret,omitempty"`
+	// When enabled, indicates that the HTTP DCR provider supports creating and managing multiple credentials per application.
+	AllowMultipleCredentials *bool `default:"false" json:"allow_multiple_credentials"`
 }
 
 func (u UpdateDcrConfigAzureAdInRequest) MarshalJSON() ([]byte, error) {
@@ -41,4 +43,11 @@ func (u *UpdateDcrConfigAzureAdInRequest) GetInitialClientSecret() *string {
 		return nil
 	}
 	return u.InitialClientSecret
+}
+
+func (u *UpdateDcrConfigAzureAdInRequest) GetAllowMultipleCredentials() *bool {
+	if u == nil {
+		return nil
+	}
+	return u.AllowMultipleCredentials
 }

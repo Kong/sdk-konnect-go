@@ -4,6 +4,10 @@
 
 ### Available Operations
 
+* [CreateAddOn](#createaddon) - Create Add-On
+* [ListAddOns](#listaddons) - List Add-Ons
+* [GetAddOn](#getaddon) - Get Add-On
+* [DeleteAddOn](#deleteaddon) - Delete Add-On
 * [GetAvailabilityJSON](#getavailabilityjson) - Get Resource Availability JSON
 * [ListConfigurations](#listconfigurations) - List Configurations
 * [CreateConfiguration](#createconfiguration) - Create Configuration
@@ -37,6 +41,275 @@
 * [GetResourceConfiguration](#getresourceconfiguration) - Get Resource Configuration
 * [ListResourceQuotas](#listresourcequotas) - List Resource Quotas
 * [GetResourceQuota](#getresourcequota) - Get Resource Quota
+
+## CreateAddOn
+
+Creates a new add-on. Specific add-on types (e.g., managed cache)
+are defined by the sub-kind configuration.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-add-on" method="post" path="/v2/cloud-gateways/add-ons" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.CreateAddOn(ctx, components.CreateAddOnRequest{
+        Name: "my-add-on",
+        Owner: components.CreateAddOnOwnerControlPlaneGroup(
+            components.ControlPlaneGroup{
+                ControlPlaneGroupID: "123e4567-e89b-12d3-a456-426614174000",
+                ControlPlaneGroupGeo: components.ControlPlaneGeoSg,
+            },
+        ),
+        Config: components.CreateCreateAddOnConfigManagedCache(
+            components.ManagedCache{
+                CapacityConfig: components.CreateManagedCacheCapacityConfigTiered(
+                    components.Tiered{
+                        Tier: components.TierSmall,
+                    },
+                ),
+            },
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AddOnResponse != nil {
+        switch res.AddOnResponse.Owner.Type {
+            case components.AddOnOwnerTypeControlPlane:
+                // res.AddOnResponse.Owner.ControlPlane is populated
+            case components.AddOnOwnerTypeControlPlaneGroup:
+                // res.AddOnResponse.Owner.ControlPlaneGroup is populated
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
+| `request`                                                                      | [components.CreateAddOnRequest](../../models/components/createaddonrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |
+
+### Response
+
+**[*operations.CreateAddOnResponse](../../models/operations/createaddonresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListAddOns
+
+Returns a paginated collection of add-ons for an organization.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-add-ons" method="get" path="/v2/cloud-gateways/add-ons" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.ListAddOns(ctx, operations.ListAddOnsRequest{
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageNumber: sdkkonnectgo.Pointer[int64](1),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.ListAddOnsResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |
+| `request`                                                                    | [operations.ListAddOnsRequest](../../models/operations/listaddonsrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
+| `opts`                                                                       | [][operations.Option](../../models/operations/option.md)                     | :heavy_minus_sign:                                                           | The options for this request.                                                |
+
+### Response
+
+**[*operations.ListAddOnsResponse](../../models/operations/listaddonsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetAddOn
+
+Retrieves an add-on by ID.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-add-on" method="get" path="/v2/cloud-gateways/add-ons/{addOnId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.GetAddOn(ctx, "550e8400-e29b-41d4-a716-446655440000")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AddOnResponse != nil {
+        switch res.AddOnResponse.Owner.Type {
+            case components.AddOnOwnerTypeControlPlane:
+                // res.AddOnResponse.Owner.ControlPlane is populated
+            case components.AddOnOwnerTypeControlPlaneGroup:
+                // res.AddOnResponse.Owner.ControlPlaneGroup is populated
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `addOnID`                                                | *string*                                                 | :heavy_check_mark:                                       | ID of the add-on to operate on.                          | 550e8400-e29b-41d4-a716-446655440000                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.GetAddOnResponse](../../models/operations/getaddonresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## DeleteAddOn
+
+Deletes an add-on by ID. The request will be rejected if the managed cache partial is still in use by some plugins.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-add-on" method="delete" path="/v2/cloud-gateways/add-ons/{addOnId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.DeleteAddOn(ctx, "550e8400-e29b-41d4-a716-446655440000")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `addOnID`                                                | *string*                                                 | :heavy_check_mark:                                       | ID of the add-on to operate on.                          | 550e8400-e29b-41d4-a716-446655440000                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.DeleteAddOnResponse](../../models/operations/deleteaddonresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## GetAvailabilityJSON
 

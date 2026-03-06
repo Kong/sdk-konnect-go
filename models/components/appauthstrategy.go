@@ -162,6 +162,11 @@ type AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectResponse st
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
 	UpdatedAt time.Time `json:"updated_at"`
+	// Indicates whether this auth strategy supports multiple credentials.
+	// - `true` for Key Auth strategies and when supported for Client Credentials strategies
+	// - `false` when not supported for Client Credentials strategies
+	//
+	SupportsMultipleCredentials *bool `json:"supports_multiple_credentials,omitempty"`
 }
 
 func (a AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectResponse) MarshalJSON() ([]byte, error) {
@@ -243,6 +248,13 @@ func (a *AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectRespons
 		return time.Time{}
 	}
 	return a.UpdatedAt
+}
+
+func (a *AppAuthStrategyOpenIDConnectResponseAppAuthStrategyOpenIDConnectResponse) GetSupportsMultipleCredentials() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.SupportsMultipleCredentials
 }
 
 type AppAuthStrategyKeyAuthResponseAppAuthStrategyStrategyType string
@@ -396,6 +408,10 @@ type AppAuthStrategyKeyAuthResponseAppAuthStrategyKeyAuthResponse struct {
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
 	UpdatedAt time.Time `json:"updated_at"`
+	// Indicates whether this auth strategy supports multiple credentials.
+	// Always `true` for KEY_AUTH.
+	//
+	SupportsMultipleCredentials *bool `default:"true" json:"supports_multiple_credentials"`
 }
 
 func (a AppAuthStrategyKeyAuthResponseAppAuthStrategyKeyAuthResponse) MarshalJSON() ([]byte, error) {
@@ -477,6 +493,13 @@ func (a *AppAuthStrategyKeyAuthResponseAppAuthStrategyKeyAuthResponse) GetUpdate
 		return time.Time{}
 	}
 	return a.UpdatedAt
+}
+
+func (a *AppAuthStrategyKeyAuthResponseAppAuthStrategyKeyAuthResponse) GetSupportsMultipleCredentials() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.SupportsMultipleCredentials
 }
 
 type AppAuthStrategyType string

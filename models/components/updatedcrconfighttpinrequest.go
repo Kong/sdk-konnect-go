@@ -20,6 +20,8 @@ type UpdateDcrConfigHTTPInRequest struct {
 	DisableEventHooks *bool `json:"disable_event_hooks,omitempty"`
 	// This flag disable the refresh-secret endpoint on the application flow for the DCR provider.
 	DisableRefreshSecret *bool `json:"disable_refresh_secret,omitempty"`
+	// When enabled, indicates that the HTTP DCR provider supports creating and managing multiple credentials per application.
+	AllowMultipleCredentials *bool `default:"false" json:"allow_multiple_credentials"`
 }
 
 func (u UpdateDcrConfigHTTPInRequest) MarshalJSON() ([]byte, error) {
@@ -59,4 +61,11 @@ func (u *UpdateDcrConfigHTTPInRequest) GetDisableRefreshSecret() *bool {
 		return nil
 	}
 	return u.DisableRefreshSecret
+}
+
+func (u *UpdateDcrConfigHTTPInRequest) GetAllowMultipleCredentials() *bool {
+	if u == nil {
+		return nil
+	}
+	return u.AllowMultipleCredentials
 }

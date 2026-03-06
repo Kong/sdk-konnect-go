@@ -11,6 +11,19 @@ The current state of the Transit Gateway. Possible values:
 - `error` - The attachment is in an error state.
 
 
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.TransitGatewayStateCreated
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.TransitGatewayState("custom_value")
+```
+
 
 ## Values
 

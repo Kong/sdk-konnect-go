@@ -8,6 +8,19 @@ Defines a behavior when record key is not valid.
   to help to identify the clients violating schema.
 
 
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.ProduceKeyValidationActionReject
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.ProduceKeyValidationAction("custom_value")
+```
+
 
 ## Values
 

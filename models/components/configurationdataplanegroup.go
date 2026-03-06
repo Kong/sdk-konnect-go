@@ -7,23 +7,23 @@ import (
 	"time"
 )
 
-// State of the data-plane group.
-type State string
+// ConfigurationDataPlaneGroupState - State of the data-plane group.
+type ConfigurationDataPlaneGroupState string
 
 const (
-	StateCreated      State = "created"
-	StateInitializing State = "initializing"
-	StateReady        State = "ready"
-	StateTerminating  State = "terminating"
-	StateTerminated   State = "terminated"
+	ConfigurationDataPlaneGroupStateCreated      ConfigurationDataPlaneGroupState = "created"
+	ConfigurationDataPlaneGroupStateInitializing ConfigurationDataPlaneGroupState = "initializing"
+	ConfigurationDataPlaneGroupStateReady        ConfigurationDataPlaneGroupState = "ready"
+	ConfigurationDataPlaneGroupStateTerminating  ConfigurationDataPlaneGroupState = "terminating"
+	ConfigurationDataPlaneGroupStateTerminated   ConfigurationDataPlaneGroupState = "terminated"
 )
 
-func (e State) ToPointer() *State {
+func (e ConfigurationDataPlaneGroupState) ToPointer() *ConfigurationDataPlaneGroupState {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *State) IsExact() bool {
+func (e *ConfigurationDataPlaneGroupState) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "created", "initializing", "ready", "terminating", "terminated":
@@ -33,8 +33,8 @@ func (e *State) IsExact() bool {
 	return false
 }
 
-// StateMetadata - Metadata describing the backing state of the dataplane group and why it may be in an erroneous state.
-type StateMetadata struct {
+// ConfigurationDataPlaneGroupStateMetadata - Metadata describing the backing state of the dataplane group and why it may be in an erroneous state.
+type ConfigurationDataPlaneGroupStateMetadata struct {
 	// Reported status of the dataplane group from backing infrastructure.
 	ReportedStatus *string `json:"reported_status,omitempty"`
 	// Reason why the dataplane group may be in an erroneous state, reported from backing infrastructure.
@@ -42,18 +42,18 @@ type StateMetadata struct {
 	Reason *string `json:"reason,omitempty"`
 }
 
-func (s *StateMetadata) GetReportedStatus() *string {
-	if s == nil {
+func (c *ConfigurationDataPlaneGroupStateMetadata) GetReportedStatus() *string {
+	if c == nil {
 		return nil
 	}
-	return s.ReportedStatus
+	return c.ReportedStatus
 }
 
-func (s *StateMetadata) GetReason() *string {
-	if s == nil {
+func (c *ConfigurationDataPlaneGroupStateMetadata) GetReason() *string {
+	if c == nil {
 		return nil
 	}
-	return s.Reason
+	return c.Reason
 }
 
 // ConfigurationDataPlaneGroup - Object that describes the set of data-plane groups currently pointed to this configuration.
@@ -70,10 +70,10 @@ type ConfigurationDataPlaneGroup struct {
 	// The network ID to operate on. For serverless.v1 kind of cloud gateways, this field should be omitted.
 	CloudGatewayNetworkID *string `json:"cloud_gateway_network_id,omitempty"`
 	// State of the data-plane group.
-	State State `json:"state"`
+	State ConfigurationDataPlaneGroupState `json:"state"`
 	// Metadata describing the backing state of the dataplane group and why it may be in an erroneous state.
 	//
-	StateMetadata *StateMetadata `json:"state_metadata,omitempty"`
+	StateMetadata *ConfigurationDataPlaneGroupStateMetadata `json:"state_metadata,omitempty"`
 	// List of private IP addresses of the internal load balancer that proxies traffic to this data-plane group.
 	//
 	PrivateIPAddresses []string `json:"private_ip_addresses,omitempty"`
@@ -139,14 +139,14 @@ func (c *ConfigurationDataPlaneGroup) GetCloudGatewayNetworkID() *string {
 	return c.CloudGatewayNetworkID
 }
 
-func (c *ConfigurationDataPlaneGroup) GetState() State {
+func (c *ConfigurationDataPlaneGroup) GetState() ConfigurationDataPlaneGroupState {
 	if c == nil {
-		return State("")
+		return ConfigurationDataPlaneGroupState("")
 	}
 	return c.State
 }
 
-func (c *ConfigurationDataPlaneGroup) GetStateMetadata() *StateMetadata {
+func (c *ConfigurationDataPlaneGroup) GetStateMetadata() *ConfigurationDataPlaneGroupStateMetadata {
 	if c == nil {
 		return nil
 	}

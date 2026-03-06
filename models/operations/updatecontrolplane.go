@@ -35,7 +35,7 @@ type UpdateControlPlaneResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// A response to updating a control plane.
-	ControlPlane *components.ControlPlane
+	ControlPlane *components.ControlPlane1
 }
 
 func (u *UpdateControlPlaneResponse) GetContentType() string {
@@ -59,7 +59,7 @@ func (u *UpdateControlPlaneResponse) GetRawResponse() *http.Response {
 	return u.RawResponse
 }
 
-func (u *UpdateControlPlaneResponse) GetControlPlane() *components.ControlPlane {
+func (u *UpdateControlPlaneResponse) GetControlPlane() *components.ControlPlane1 {
 	if u == nil {
 		return nil
 	}

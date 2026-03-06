@@ -292,6 +292,71 @@ func (c *Creator) GetDescription() RolesControlPlanesRolesCreatorDescription {
 	return c.Description
 }
 
+type RolesControlPlanesRolesDebugSessionCreatorName string
+
+const (
+	RolesControlPlanesRolesDebugSessionCreatorNameDebugSessionCreator RolesControlPlanesRolesDebugSessionCreatorName = "Debug Session Creator"
+)
+
+func (e RolesControlPlanesRolesDebugSessionCreatorName) ToPointer() *RolesControlPlanesRolesDebugSessionCreatorName {
+	return &e
+}
+func (e *RolesControlPlanesRolesDebugSessionCreatorName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "Debug Session Creator":
+		*e = RolesControlPlanesRolesDebugSessionCreatorName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesControlPlanesRolesDebugSessionCreatorName: %v", v)
+	}
+}
+
+type RolesControlPlanesRolesDebugSessionCreatorDescription string
+
+const (
+	RolesControlPlanesRolesDebugSessionCreatorDescriptionThisRoleGrantsAccessToCreateDebugSessionsThisRoleAlsoGrantsReadOnlyAccessToAllEntitiesWithinAControlPlane RolesControlPlanesRolesDebugSessionCreatorDescription = "This role grants access to create debug sessions. This role also grants read-only access to all entities within a control plane."
+)
+
+func (e RolesControlPlanesRolesDebugSessionCreatorDescription) ToPointer() *RolesControlPlanesRolesDebugSessionCreatorDescription {
+	return &e
+}
+func (e *RolesControlPlanesRolesDebugSessionCreatorDescription) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "This role grants access to create debug sessions. This role also grants read-only access to all entities within a control plane.":
+		*e = RolesControlPlanesRolesDebugSessionCreatorDescription(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RolesControlPlanesRolesDebugSessionCreatorDescription: %v", v)
+	}
+}
+
+type DebugSessionCreator struct {
+	Name        RolesControlPlanesRolesDebugSessionCreatorName        `json:"name"`
+	Description RolesControlPlanesRolesDebugSessionCreatorDescription `json:"description"`
+}
+
+func (d *DebugSessionCreator) GetName() RolesControlPlanesRolesDebugSessionCreatorName {
+	if d == nil {
+		return RolesControlPlanesRolesDebugSessionCreatorName("")
+	}
+	return d.Name
+}
+
+func (d *DebugSessionCreator) GetDescription() RolesControlPlanesRolesDebugSessionCreatorDescription {
+	if d == nil {
+		return RolesControlPlanesRolesDebugSessionCreatorDescription("")
+	}
+	return d.Description
+}
+
 type RolesControlPlanesRolesDeployerName string
 
 const (
@@ -760,6 +825,7 @@ type RolesRoles struct {
 	CertificateAdmin    *CertificateAdmin    `json:"certificate_admin,omitempty"`
 	ConsumerAdmin       *ConsumerAdmin       `json:"consumer_admin,omitempty"`
 	Creator             *Creator             `json:"creator,omitempty"`
+	DebugSessionCreator *DebugSessionCreator `json:"debug_session_creator,omitempty"`
 	Deployer            *Deployer            `json:"deployer,omitempty"`
 	GatewayServiceAdmin *GatewayServiceAdmin `json:"gateway_service_admin,omitempty"`
 	PluginAdmin         *PluginAdmin         `json:"plugin_admin,omitempty"`
@@ -795,6 +861,13 @@ func (r *RolesRoles) GetCreator() *Creator {
 		return nil
 	}
 	return r.Creator
+}
+
+func (r *RolesRoles) GetDebugSessionCreator() *DebugSessionCreator {
+	if r == nil {
+		return nil
+	}
+	return r.DebugSessionCreator
 }
 
 func (r *RolesRoles) GetDeployer() *Deployer {
