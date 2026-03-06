@@ -3,6 +3,19 @@
 Enum for available portal email template variables.
 
 
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.EmailTemplateVariableNamePortalDisplayName
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.EmailTemplateVariableName("custom_value")
+```
+
 
 ## Values
 

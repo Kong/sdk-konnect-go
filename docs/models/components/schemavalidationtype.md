@@ -5,6 +5,19 @@ How to validate the schema and parse the record.
 * json - simple JSON parsing without the schema.
 
 
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.SchemaValidationTypeConfluentSchemaRegistry
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.SchemaValidationType("custom_value")
+```
+
 
 ## Values
 
