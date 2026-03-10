@@ -7,4 +7,4 @@ A reference to an Event Gateway policy.
 
 | Field                                | Type                                 | Required                             | Description                          |
 | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `ID`                                 | *string*                             | :heavy_check_mark:                   | The unique identifier of the policy. |
+| `ID`                                 | `string`                             | :heavy_check_mark:                   | The unique identifier of the policy. |

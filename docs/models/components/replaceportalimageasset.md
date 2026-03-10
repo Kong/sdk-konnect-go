@@ -7,4 +7,4 @@ The image data to upload. Images must be a data URL with binary image data in ba
 
 | Field                               | Type                                | Required                            | Description                         | Example                             |
 | ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| `Data`                              | *string*                            | :heavy_check_mark:                  | N/A                                 | data:image/png,YW5faW1hZ2VfZmlsZQ== |
+| `Data`                              | `string`                            | :heavy_check_mark:                  | N/A                                 | data:image/png,YW5faW1hZ2VfZmlsZQ== |

@@ -7,4 +7,4 @@ The Service this Route is associated to. This is where the Route proxies traffic
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `ID`               | **string*          | :heavy_minus_sign: | N/A                |
+| `ID`               | `*string`          | :heavy_minus_sign: | N/A                |

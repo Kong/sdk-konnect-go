@@ -8,4 +8,4 @@ A key source that uses static symmetric keys.
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `Type`             | *string*           | :heavy_check_mark: | N/A                |
+| `Type`             | `string`           | :heavy_check_mark: | N/A                |

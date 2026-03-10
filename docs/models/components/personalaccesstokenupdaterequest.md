@@ -7,4 +7,4 @@ Request body schema for updating personal access tokens.
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `Name`             | **string*          | :heavy_minus_sign: | N/A                |
+| `Name`             | `*string`          | :heavy_minus_sign: | N/A                |

@@ -7,4 +7,4 @@ Anonymous authentication scheme for the backend cluster.
 
 | Field                              | Type                               | Required                           | Description                        |
 | ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `Type`                             | *string*                           | :heavy_check_mark:                 | The type of authentication scheme. |
+| `Type`                             | `string`                           | :heavy_check_mark:                 | The type of authentication scheme. |

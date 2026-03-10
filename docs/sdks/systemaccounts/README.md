@@ -186,7 +186,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `accountID`                                              | *string*                                                 | :heavy_check_mark:                                       | ID of the system account.                                |
+| `accountID`                                              | `string`                                                 | :heavy_check_mark:                                       | ID of the system account.                                |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -242,7 +242,7 @@ func main() {
 | Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | `ctx`                                                                             | [context.Context](https://pkg.go.dev/context#Context)                             | :heavy_check_mark:                                                                | The context to use for the request.                                               |
-| `accountID`                                                                       | *string*                                                                          | :heavy_check_mark:                                                                | ID of the system account.                                                         |
+| `accountID`                                                                       | `string`                                                                          | :heavy_check_mark:                                                                | ID of the system account.                                                         |
 | `updateSystemAccount`                                                             | [*components.UpdateSystemAccount](../../models/components/updatesystemaccount.md) | :heavy_minus_sign:                                                                | The request schema for the update system account request.                         |
 | `opts`                                                                            | [][operations.Option](../../models/operations/option.md)                          | :heavy_minus_sign:                                                                | The options for this request.                                                     |
 
@@ -300,7 +300,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `accountID`                                              | *string*                                                 | :heavy_check_mark:                                       | ID of the system account.                                |
+| `accountID`                                              | `string`                                                 | :heavy_check_mark:                                       | ID of the system account.                                |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response

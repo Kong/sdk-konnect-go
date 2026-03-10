@@ -7,4 +7,4 @@ Returns entities that fuzzy-match any of the comma-delimited phrases in the filt
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `Ocontains`        | *string*           | :heavy_check_mark: | N/A                |
+| `Ocontains`        | `string`           | :heavy_check_mark: | N/A                |

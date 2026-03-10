@@ -7,4 +7,4 @@ Returns entities that exact match any of the comma-delimited phrases in the filt
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `Oeq`              | *string*           | :heavy_check_mark: | N/A                |
+| `Oeq`              | `string`           | :heavy_check_mark: | N/A                |

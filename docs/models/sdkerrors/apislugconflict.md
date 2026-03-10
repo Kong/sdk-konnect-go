@@ -7,7 +7,7 @@ Conflict - `slug` property must be unique
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `Status`           | *float64*          | :heavy_check_mark: | N/A                |
-| `Title`            | *string*           | :heavy_check_mark: | N/A                |
-| `Type`             | **string*          | :heavy_minus_sign: | N/A                |
-| `Instance`         | *string*           | :heavy_check_mark: | N/A                |
+| `Status`           | `float64`          | :heavy_check_mark: | N/A                |
+| `Title`            | `string`           | :heavy_check_mark: | N/A                |
+| `Type`             | `*string`          | :heavy_minus_sign: | N/A                |
+| `Instance`         | `string`           | :heavy_check_mark: | N/A                |

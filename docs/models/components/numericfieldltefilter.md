@@ -5,4 +5,4 @@
 
 | Field                                                   | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `Lte`                                                   | *float64*                                               | :heavy_check_mark:                                      | Value is less than or equal to the given numeric value. | 10                                                      |
+| `Lte`                                                   | `float64`                                               | :heavy_check_mark:                                      | Value is less than or equal to the given numeric value. | 10                                                      |

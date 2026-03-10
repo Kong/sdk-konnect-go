@@ -7,4 +7,4 @@ Filters on the given string field value by exact match.
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `Eq`               | **string*          | :heavy_minus_sign: | N/A                |
+| `Eq`               | `*string`          | :heavy_minus_sign: | N/A                |

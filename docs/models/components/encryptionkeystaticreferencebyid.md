@@ -7,4 +7,4 @@ A static encryption key reference by ID.
 
 | Field                                               | Type                                                | Required                                            | Description                                         |
 | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `ID`                                                | *string*                                            | :heavy_check_mark:                                  | The ID of the static key defined in the key source. |
+| `ID`                                                | `string`                                            | :heavy_check_mark:                                  | The ID of the static key defined in the key source. |

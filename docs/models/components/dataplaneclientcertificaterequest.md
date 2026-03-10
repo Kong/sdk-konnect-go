@@ -7,4 +7,4 @@ Request body for creating a dp-client-certificate.
 
 | Field                                   | Type                                    | Required                                | Description                             |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| `Cert`                                  | *string*                                | :heavy_check_mark:                      | JSON escaped string of the certificate. |
+| `Cert`                                  | `string`                                | :heavy_check_mark:                      | JSON escaped string of the certificate. |

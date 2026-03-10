@@ -7,5 +7,5 @@ Short-hand descriptor of an integration that omits instance metadata.
 
 | Field              | Type               | Required           | Description        | Example            |
 | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `Name`             | *string*           | :heavy_check_mark: | N/A                | gateway-manager    |
-| `DisplayName`      | *string*           | :heavy_check_mark: | N/A                | gateway-manager    |
+| `Name`             | `string`           | :heavy_check_mark: | N/A                | gateway-manager    |
+| `DisplayName`      | `string`           | :heavy_check_mark: | N/A                | gateway-manager    |
