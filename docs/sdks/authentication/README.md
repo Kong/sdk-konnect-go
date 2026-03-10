@@ -47,8 +47,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `organizationLoginPath`                                  | *string*                                                 | :heavy_check_mark:                                       | The login path for the organization.                     |
-| `returnTo`                                               | **string*                                                | :heavy_minus_sign:                                       | Return destination for the callback.                     |
+| `organizationLoginPath`                                  | `string`                                                 | :heavy_check_mark:                                       | The login path for the organization.                     |
+| `returnTo`                                               | `*string`                                                | :heavy_minus_sign:                                       | Return destination for the callback.                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response

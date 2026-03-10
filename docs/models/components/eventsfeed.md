@@ -5,4 +5,4 @@
 
 | Field                                                             | Type                                                              | Required                                                          | Description                                                       |
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `Enabled`                                                         | *bool*                                                            | :heavy_check_mark:                                                | Whether this event type is returned by default in the Events API. |
+| `Enabled`                                                         | `bool`                                                            | :heavy_check_mark:                                                | Whether this event type is returned by default in the Events API. |

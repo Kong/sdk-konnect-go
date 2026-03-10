@@ -11,4 +11,4 @@ for more information about how credential retrieval.
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `Type`             | *string*           | :heavy_check_mark: | N/A                |
+| `Type`             | `string`           | :heavy_check_mark: | N/A                |

@@ -8,4 +8,4 @@ Filter add-on state by determining if the value is equal to any in a set of valu
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `Oeq`              | *string*           | :heavy_check_mark: | N/A                |
+| `Oeq`              | `string`           | :heavy_check_mark: | N/A                |

@@ -7,4 +7,4 @@ The request schema for adding a system account to a team.
 
 | Field                     | Type                      | Required                  | Description               |
 | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `AccountID`               | **string*                 | :heavy_minus_sign:        | ID of the system account. |
+| `AccountID`               | `*string`                 | :heavy_minus_sign:        | ID of the system account. |
