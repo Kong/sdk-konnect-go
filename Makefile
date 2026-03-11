@@ -208,7 +208,8 @@ TYPES_TO_MOCK := \
 	SNIs \
 	Targets \
 	Upstreams \
-	Vaults
+	Vaults \
+	EventGateways
 
 .PHONY: generate.interfaces
 generate.interfaces: ifacemaker
