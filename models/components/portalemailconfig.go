@@ -13,11 +13,11 @@ type PortalEmailConfig struct {
 	// The domain name used for sending emails. Null means default.
 	DomainName *string `json:"domain_name,omitempty"`
 	// The name displayed in the 'From' field of emails.
-	FromName string `json:"from_name"`
+	FromName *string `json:"from_name"`
 	// The email address used in the 'From' field.
-	FromEmail string `json:"from_email"`
-	// The email address used in the 'Reply-To' field.
-	ReplyToEmail string `json:"reply_to_email"`
+	FromEmail *string `json:"from_email"`
+	// The email address used in the 'Reply-To' field. 'Reply-To' header is omitted when null.
+	ReplyToEmail *string `json:"reply_to_email"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
@@ -49,23 +49,23 @@ func (p *PortalEmailConfig) GetDomainName() *string {
 	return p.DomainName
 }
 
-func (p *PortalEmailConfig) GetFromName() string {
+func (p *PortalEmailConfig) GetFromName() *string {
 	if p == nil {
-		return ""
+		return nil
 	}
 	return p.FromName
 }
 
-func (p *PortalEmailConfig) GetFromEmail() string {
+func (p *PortalEmailConfig) GetFromEmail() *string {
 	if p == nil {
-		return ""
+		return nil
 	}
 	return p.FromEmail
 }
 
-func (p *PortalEmailConfig) GetReplyToEmail() string {
+func (p *PortalEmailConfig) GetReplyToEmail() *string {
 	if p == nil {
-		return ""
+		return nil
 	}
 	return p.ReplyToEmail
 }

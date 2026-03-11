@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Konnect API - Go SDK
-  version: 3.2.0
+  version: 3.2.2
   description: The Konnect platform API
   contact:
     name: Kong Inc
@@ -1980,6 +1980,9 @@ paths:
       - $ref: '#/components/parameters/gatewayId'
       - $ref: '#/components/parameters/eventGatewayListenerId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: EventGatewayListenerPolicyChain#read
+        terraform-datasource: null
       operationId: get-event-gateway-listener-policy-chain
       summary: Get Policy Chain for Listener
       description: |
@@ -1994,6 +1997,9 @@ paths:
       tags:
         - Event Gateway Listener Policies
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: 'EventGatewayListenerPolicyChain#create,update'
+        terraform-datasource: null
       operationId: update-event-gateway-listener-policy-chain
       summary: Update Policy Chain for Listener
       description: Update the policy chain for a listener by providing an ordered list of policy ids.
@@ -2620,6 +2626,9 @@ paths:
       - $ref: '#/components/parameters/gatewayId'
       - $ref: '#/components/parameters/virtualClusterId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: EventGatewayVirtualClusterClusterPolicyChain#read
+        terraform-datasource: null
       operationId: get-event-gateway-virtual-cluster-cluster-level-policy-chain
       summary: Get Cluster Policy Chain for Virtual Cluster
       description: |
@@ -2634,6 +2643,9 @@ paths:
       tags:
         - Event Gateway Virtual Cluster Policies
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: 'EventGatewayVirtualClusterClusterPolicyChain#create,update'
+        terraform-datasource: null
       operationId: update-event-gateway-virtual-cluster-cluster-level-policy-chain
       summary: Update Cluster Policy Chain
       description: Update the cluster-level policy chain for a virtual cluster by providing an ordered list of cluster-level policy ids.
@@ -2828,6 +2840,9 @@ paths:
       - $ref: '#/components/parameters/gatewayId'
       - $ref: '#/components/parameters/virtualClusterId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: EventGatewayVirtualClusterConsumePolicyChain#read
+        terraform-datasource: null
       operationId: get-event-gateway-virtual-cluster-consume-policy-chain
       summary: Get Consume Policy Chain
       description: |
@@ -2842,6 +2857,9 @@ paths:
       tags:
         - Event Gateway Virtual Cluster Consume Policies
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: 'EventGatewayVirtualClusterConsumePolicyChain#create,update'
+        terraform-datasource: null
       operationId: update-event-gateway-virtual-cluster-consume-policy-chain
       summary: Update Consume Policy Chain
       description: Update the consume policy chain for a virtual cluster by providing an ordered list of consume policy ids.
@@ -3036,6 +3054,9 @@ paths:
       - $ref: '#/components/parameters/gatewayId'
       - $ref: '#/components/parameters/virtualClusterId'
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: EventGatewayVirtualClusterProducePolicyChain#read
+        terraform-datasource: null
       operationId: get-event-gateway-virtual-cluster-produce-policy-chain
       summary: Get Produce Policy Chain for Virtual Cluster
       description: |
@@ -3050,6 +3071,9 @@ paths:
       tags:
         - Event Gateway Virtual Cluster Produce Policies
     put:
+      x-speakeasy-entity-operation:
+        terraform-resource: 'EventGatewayVirtualClusterProducePolicyChain#create,update'
+        terraform-datasource: null
       operationId: update-event-gateway-virtual-cluster-produce-policy-chain
       summary: Update Produce Policy Chain
       description: Update the produce policy chain for a virtual cluster by providing an ordered list of produce policy ids.
@@ -4107,15 +4131,35 @@ paths:
         '201':
           $ref: '#/components/responses/CreateAddOnResponse'
         '400':
-          $ref: '#/components/responses/CloudGatewaysBadRequest'
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
         '401':
-          $ref: '#/components/responses/Unauthorized'
+          description: Unauthorized
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
         '403':
-          $ref: '#/components/responses/CloudGatewaysForbidden'
+          description: Forbidden
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
         '404':
-          $ref: '#/components/responses/NotFound'
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
         '409':
-          $ref: '#/components/responses/CloudGatewaysConflict'
+          description: Conflict
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ConflictError'
       servers:
         - url: 'https://global.api.konghq.com/'
       tags:
@@ -4134,13 +4178,23 @@ paths:
         '200':
           $ref: '#/components/responses/ListAddOnsResponse'
         '400':
-          $ref: '#/components/responses/CloudGatewaysBadRequest'
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
         '401':
-          $ref: '#/components/responses/Unauthorized'
+          description: Unauthorized
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
         '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
+          description: Forbidden
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
       servers:
         - url: 'https://global.api.konghq.com/'
       tags:
@@ -4159,11 +4213,23 @@ paths:
         '200':
           $ref: '#/components/responses/RetrieveAddOnResponse'
         '401':
-          $ref: '#/components/responses/Unauthorized'
+          description: Unauthorized
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
         '403':
-          $ref: '#/components/responses/Forbidden'
+          description: Forbidden
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
         '404':
-          $ref: '#/components/responses/NotFound'
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
       servers:
         - url: 'https://global.api.konghq.com/'
       tags:
@@ -4183,13 +4249,29 @@ paths:
         '204':
           description: No Content
         '400':
-          $ref: '#/components/responses/CloudGatewaysBadRequest'
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
         '401':
-          $ref: '#/components/responses/Unauthorized'
+          description: Unauthorized
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
         '403':
-          $ref: '#/components/responses/Forbidden'
+          description: Forbidden
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
         '404':
-          $ref: '#/components/responses/NotFound'
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
       servers:
         - url: 'https://global.api.konghq.com/'
       tags:
@@ -19162,6 +19244,31 @@ components:
         - transit_gateway_id
         - ram_share_arn
       title: AWS Transit Gateway Attachment Config
+    AwsTransitGatewayAttachmentConfigForResponse:
+      type: object
+      properties:
+        kind:
+          enum:
+            - aws-transit-gateway-attachment
+          title: AWS Transit Gateway Attachment Type
+        transit_gateway_id:
+          description: AWS Transit Gateway ID to create attachment to.
+          type: string
+          title: Transit Gateway ID
+        ram_share_arn:
+          description: Resource Share ARN to verify request to create transit gateway attachment.
+          type: string
+          title: RAM Share ARN
+        attachment_id:
+          description: ID of the AWS Transit Gateway attachment.
+          type: string
+          title: AWS Transit Gateway Attachment ID
+      additionalProperties: false
+      required:
+        - kind
+        - transit_gateway_id
+        - ram_share_arn
+      title: AWS Transit Gateway Attachment Config
     AwsVpcPeeringGatewayAttachmentConfig:
       type: object
       properties:
@@ -19174,6 +19281,28 @@ components:
         peer_vpc_id:
           type: string
         peer_vpc_region:
+          type: string
+      additionalProperties: false
+      required:
+        - kind
+        - peer_account_id
+        - peer_vpc_id
+        - peer_vpc_region
+      title: AWS VPC Peering Attachment Config
+    AwsVpcPeeringGatewayAttachmentConfigForResponse:
+      type: object
+      properties:
+        kind:
+          enum:
+            - aws-vpc-peering-attachment
+          title: AWS VPC Peering Attachment Config
+        peer_account_id:
+          type: string
+        peer_vpc_id:
+          type: string
+        peer_vpc_region:
+          type: string
+        peering_connection_id:
           type: string
       additionalProperties: false
       required:
@@ -19868,7 +19997,7 @@ components:
         cidr_blocks:
           $ref: '#/components/schemas/TransitGatewayCIDRBlocks'
         transit_gateway_attachment_config:
-          $ref: '#/components/schemas/AwsTransitGatewayAttachmentConfig'
+          $ref: '#/components/schemas/AwsTransitGatewayAttachmentConfigForResponse'
         id:
           $ref: '#/components/schemas/TransitGatewayId'
         state:
@@ -19931,7 +20060,7 @@ components:
         cidr_blocks:
           $ref: '#/components/schemas/TransitGatewayCIDRBlocks'
         transit_gateway_attachment_config:
-          $ref: '#/components/schemas/AwsVpcPeeringGatewayAttachmentConfig'
+          $ref: '#/components/schemas/AwsVpcPeeringGatewayAttachmentConfigForResponse'
         id:
           $ref: '#/components/schemas/TransitGatewayId'
         state:
@@ -20973,6 +21102,9 @@ components:
             - 2xlarge
             - 4xlarge
           x-speakeasy-unknown-values: allow
+      example:
+        kind: tiered
+        tier: small
       additionalProperties: false
       required:
         - kind
@@ -26047,7 +26179,7 @@ components:
           format: email
           nullable: true
         reply_to_email:
-          description: The email address to use in the 'Reply-To' field.
+          description: 'The email address to use in the ''Reply-To'' field. If set to null, ''Reply-To'' header is omitted.'
           type: string
           format: email
           nullable: true
@@ -26069,7 +26201,7 @@ components:
           format: email
           nullable: true
         reply_to_email:
-          description: The email address to use in the 'Reply-To' field.
+          description: The email address to use in the 'Reply-To' field. 'Reply-To' header is omitted if omitted or null.
           type: string
           format: email
           nullable: true
@@ -26089,14 +26221,17 @@ components:
         from_name:
           description: The name displayed in the 'From' field of emails.
           type: string
+          nullable: true
         from_email:
           description: The email address used in the 'From' field.
           type: string
           format: email
+          nullable: true
         reply_to_email:
-          description: The email address used in the 'Reply-To' field.
+          description: The email address used in the 'Reply-To' field. 'Reply-To' header is omitted when null.
           type: string
           format: email
+          nullable: true
         created_at:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
@@ -31563,10 +31698,19 @@ components:
           x-expression:
             type: boolean
             fields:
-              - context.auth.principal.name
-              - context.auth.type
-              - context.topic.name
-              - record.headers
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.topic.name
+                type: string
+                description: The name of the topic.
+              - name: record.headers
+                type: object
+                description: An associative array of header key value pairs.
       required:
         - type
         - config
@@ -31628,10 +31772,19 @@ components:
           x-expression:
             type: boolean
             fields:
-              - context.auth.principal.name
-              - context.auth.type
-              - context.topic.name
-              - record.headers
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.topic.name
+                type: string
+                description: The name of the topic.
+              - name: record.headers
+                type: object
+                description: An associative array of header key value pairs.
       required:
         - type
         - config
@@ -31707,12 +31860,25 @@ components:
           x-expression:
             type: boolean
             fields:
-              - context.auth.principal.name
-              - context.auth.type
-              - context.topic.name
-              - record.headers
-              - record.value.validated
-              - record.value.content
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.topic.name
+                type: string
+                description: The name of the topic.
+              - name: record.headers
+                type: object
+                description: An associative array of header key value pairs.
+              - name: record.value.validated
+                type: boolean
+                description: Indicates whether the record value was successfully validated.
+              - name: record.value.content
+                type: object
+                description: The content of the record value.
       required:
         - type
         - config
@@ -31766,12 +31932,25 @@ components:
           x-expression:
             type: boolean
             fields:
-              - context.auth.principal.name
-              - context.auth.type
-              - context.topic.name
-              - record.headers
-              - record.value.validated
-              - record.value.content
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.topic.name
+                type: string
+                description: The name of the topic.
+              - name: record.headers
+                type: object
+                description: An associative array of header key value pairs.
+              - name: record.value.validated
+                type: boolean
+                description: Indicates whether the record value was successfully validated.
+              - name: record.value.content
+                type: object
+                description: The content of the record value.
         parent_policy_id:
           description: 'The unique identifier of the parent schema validation policy, if any.'
           type: string
@@ -31819,12 +31998,25 @@ components:
           x-expression:
             type: boolean
             fields:
-              - context.auth.principal.name
-              - context.auth.type
-              - context.topic.name
-              - record.headers
-              - record.value.validated
-              - record.value.content
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.topic.name
+                type: string
+                description: The name of the topic.
+              - name: record.headers
+                type: object
+                description: An associative array of header key value pairs.
+              - name: record.value.validated
+                type: boolean
+                description: Indicates whether the record value was successfully validated.
+              - name: record.value.content
+                type: object
+                description: The content of the record value.
       required:
         - type
     EventGatewaySkipRecordPolicyCreate:
@@ -31866,12 +32058,25 @@ components:
           x-expression:
             type: boolean
             fields:
-              - context.auth.principal.name
-              - context.auth.type
-              - context.topic.name
-              - record.headers
-              - record.value.validated
-              - record.value.content
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.topic.name
+                type: string
+                description: The name of the topic.
+              - name: record.headers
+                type: object
+                description: An associative array of header key value pairs.
+              - name: record.value.validated
+                type: boolean
+                description: Indicates whether the record value was successfully validated.
+              - name: record.value.content
+                type: object
+                description: The content of the record value.
         parent_policy_id:
           description: 'The unique identifier of the parent schema validation policy, if any.'
           type: string
@@ -31968,10 +32173,19 @@ components:
           x-expression:
             type: boolean
             fields:
-              - context.auth.principal.name
-              - context.auth.type
-              - context.topic.name
-              - record.headers
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.topic.name
+                type: string
+                description: The name of the topic.
+              - name: record.headers
+                type: object
+                description: An associative array of header key value pairs.
       required:
         - type
         - config
@@ -32015,10 +32229,19 @@ components:
           x-expression:
             type: boolean
             fields:
-              - context.auth.principal.name
-              - context.auth.type
-              - context.topic.name
-              - record.headers
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.topic.name
+                type: string
+                description: The name of the topic.
+              - name: record.headers
+                type: object
+                description: An associative array of header key value pairs.
       required:
         - type
         - config
@@ -32102,8 +32325,13 @@ components:
           x-expression:
             type: boolean
             fields:
-              - context.auth.principal.name
-              - context.auth.type
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
       required:
         - type
         - config
@@ -32157,10 +32385,19 @@ components:
               example: 'context.auth.token.claims["topics"]'
               x-expression:
                 type: array
+                items:
+                  type: string
                 fields:
-                  - context.auth.principal.name
-                  - context.auth.type
-                  - context.auth.token.claims
+                  - name: context.auth.principal.name
+                    type: string
+                    description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+                  - name: context.auth.type
+                    type: string
+                    description: |
+                      The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+                  - name: context.auth.token.claims
+                    type: object
+                    description: 'All claims from the JWT token. Only populated for sasl_oauth_bearer authentication. Claims can be strings, numbers, booleans, arrays or nested JSON objects.'
               description: |
                 This expression should evaluate to an array of glob patterns,
                 equivalent to the `match` values in the array form of `resource_names`.

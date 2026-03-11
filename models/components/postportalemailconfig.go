@@ -10,7 +10,7 @@ type PostPortalEmailConfig struct {
 	FromName *string `json:"from_name,omitempty"`
 	// The email address to use in the 'From' field.
 	FromEmail *string `json:"from_email,omitempty"`
-	// The email address to use in the 'Reply-To' field.
+	// The email address to use in the 'Reply-To' field. 'Reply-To' header is omitted if omitted or null.
 	ReplyToEmail *string `json:"reply_to_email,omitempty"`
 }
 

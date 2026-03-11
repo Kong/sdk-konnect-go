@@ -23,3 +23,6 @@ func (s *ServerlessV1Provider) GetRegions() []ServerlessV1ProviderRegion {
 	}
 	return s.Regions
 }
+
+// #region class-body-serverlessv1provider
+// #endregion class-body-serverlessv1provider

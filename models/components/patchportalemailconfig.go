@@ -10,7 +10,7 @@ type PatchPortalEmailConfig struct {
 	FromName *string `json:"from_name,omitempty"`
 	// The email address to use in the 'From' field.
 	FromEmail *string `json:"from_email,omitempty"`
-	// The email address to use in the 'Reply-To' field.
+	// The email address to use in the 'Reply-To' field. If set to null, 'Reply-To' header is omitted.
 	ReplyToEmail *string `json:"reply_to_email,omitempty"`
 }
 

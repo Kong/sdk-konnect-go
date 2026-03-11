@@ -32,6 +32,7 @@ func (e *VirtualClusterNamespaceTopicSelectorExactListConflict) IsExact() bool {
 }
 
 type VirtualClusterNamespaceTopicSelectorExactList struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"exact_list" json:"type"`
 	// Explicit allow-list of backend topic names.
 	ExactList []NamespaceExactAllowListItem `json:"exact_list,omitempty"`

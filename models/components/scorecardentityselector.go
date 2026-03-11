@@ -191,8 +191,9 @@ func (e *HasDocsSelectorServiceSelectorSelector) UnmarshalJSON(data []byte) erro
 
 // HasDocsSelector - Entity selector to include entities by attached documentation.
 type HasDocsSelector struct {
-	Selector           HasDocsSelectorServiceSelectorSelector `json:"selector"`
-	selectorParameters *string                                `const:"null" json:"selector_parameters"`
+	Selector HasDocsSelectorServiceSelectorSelector `json:"selector"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	selectorParameters *string `const:"null" json:"selector_parameters"`
 }
 
 func (h HasDocsSelector) MarshalJSON() ([]byte, error) {
@@ -943,8 +944,9 @@ func (e *Selector) UnmarshalJSON(data []byte) error {
 
 // AllEntitiesSelector - Entity selector that includes all entities of the given type within the catalog.
 type AllEntitiesSelector struct {
-	Selector           Selector `json:"selector"`
-	selectorParameters *string  `const:"null" json:"selector_parameters"`
+	Selector Selector `json:"selector"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	selectorParameters *string `const:"null" json:"selector_parameters"`
 }
 
 func (a AllEntitiesSelector) MarshalJSON() ([]byte, error) {

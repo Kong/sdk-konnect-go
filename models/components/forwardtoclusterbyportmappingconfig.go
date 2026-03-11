@@ -52,6 +52,7 @@ func (e *BootstrapPort) IsExact() bool {
 //
 // It is strongly discouraged to use port mapping in production.
 type ForwardToClusterByPortMappingConfig struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"port_mapping" json:"type"`
 	// A reference to a virtual cluster.
 	Destination VirtualClusterReference `json:"destination"`

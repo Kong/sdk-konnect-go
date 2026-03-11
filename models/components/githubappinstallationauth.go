@@ -155,6 +155,7 @@ func (g *GitHubAppInstallationAuthConfig) GetPendingAppInstallsEndpoint() Pendin
 // Unlike standard OAuth flows, this strategy leverages GitHub's custom app installation flow
 // and token lifecycle, making it ideal for deep, organization-level GitHub integration.
 type GitHubAppInstallationAuth struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_  string                          `const:"github_app_installation" json:"type"`
 	Config GitHubAppInstallationAuthConfig `json:"config"`
 }
