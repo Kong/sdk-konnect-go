@@ -14,3 +14,6 @@ func (s *ServerlessV1ProviderRegion) GetRegion() string {
 	}
 	return s.Region
 }
+
+// #region class-body-serverlessv1providerregion
+// #endregion class-body-serverlessv1providerregion

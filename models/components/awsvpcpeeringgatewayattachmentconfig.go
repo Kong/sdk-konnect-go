@@ -8,34 +8,34 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type AWSVPCPeeringAttachmentConfig string
+type AWSVPCPeeringGatewayAttachmentConfigAWSVPCPeeringAttachmentConfig string
 
 const (
-	AWSVPCPeeringAttachmentConfigAwsVpcPeeringAttachment AWSVPCPeeringAttachmentConfig = "aws-vpc-peering-attachment"
+	AWSVPCPeeringGatewayAttachmentConfigAWSVPCPeeringAttachmentConfigAwsVpcPeeringAttachment AWSVPCPeeringGatewayAttachmentConfigAWSVPCPeeringAttachmentConfig = "aws-vpc-peering-attachment"
 )
 
-func (e AWSVPCPeeringAttachmentConfig) ToPointer() *AWSVPCPeeringAttachmentConfig {
+func (e AWSVPCPeeringGatewayAttachmentConfigAWSVPCPeeringAttachmentConfig) ToPointer() *AWSVPCPeeringGatewayAttachmentConfigAWSVPCPeeringAttachmentConfig {
 	return &e
 }
-func (e *AWSVPCPeeringAttachmentConfig) UnmarshalJSON(data []byte) error {
+func (e *AWSVPCPeeringGatewayAttachmentConfigAWSVPCPeeringAttachmentConfig) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "aws-vpc-peering-attachment":
-		*e = AWSVPCPeeringAttachmentConfig(v)
+		*e = AWSVPCPeeringGatewayAttachmentConfigAWSVPCPeeringAttachmentConfig(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for AWSVPCPeeringAttachmentConfig: %v", v)
+		return fmt.Errorf("invalid value for AWSVPCPeeringGatewayAttachmentConfigAWSVPCPeeringAttachmentConfig: %v", v)
 	}
 }
 
 type AwsVpcPeeringGatewayAttachmentConfig struct {
-	Kind          AWSVPCPeeringAttachmentConfig `json:"kind"`
-	PeerAccountID string                        `json:"peer_account_id"`
-	PeerVpcID     string                        `json:"peer_vpc_id"`
-	PeerVpcRegion string                        `json:"peer_vpc_region"`
+	Kind          AWSVPCPeeringGatewayAttachmentConfigAWSVPCPeeringAttachmentConfig `json:"kind"`
+	PeerAccountID string                                                            `json:"peer_account_id"`
+	PeerVpcID     string                                                            `json:"peer_vpc_id"`
+	PeerVpcRegion string                                                            `json:"peer_vpc_region"`
 }
 
 func (a AwsVpcPeeringGatewayAttachmentConfig) MarshalJSON() ([]byte, error) {
@@ -49,9 +49,9 @@ func (a *AwsVpcPeeringGatewayAttachmentConfig) UnmarshalJSON(data []byte) error 
 	return nil
 }
 
-func (a *AwsVpcPeeringGatewayAttachmentConfig) GetKind() AWSVPCPeeringAttachmentConfig {
+func (a *AwsVpcPeeringGatewayAttachmentConfig) GetKind() AWSVPCPeeringGatewayAttachmentConfigAWSVPCPeeringAttachmentConfig {
 	if a == nil {
-		return AWSVPCPeeringAttachmentConfig("")
+		return AWSVPCPeeringGatewayAttachmentConfigAWSVPCPeeringAttachmentConfig("")
 	}
 	return a.Kind
 }

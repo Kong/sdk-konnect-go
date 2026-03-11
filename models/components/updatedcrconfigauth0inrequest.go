@@ -62,3 +62,6 @@ func (u *UpdateDcrConfigAuth0InRequest) GetUseDeveloperManagedScopes() *bool {
 	}
 	return u.UseDeveloperManagedScopes
 }
+
+// #region class-body-updatedcrconfigauth0inrequest
+// #endregion class-body-updatedcrconfigauth0inrequest

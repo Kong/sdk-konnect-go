@@ -525,6 +525,9 @@ func (d *DcrProviderAuth0CreateDcrProviderResponseDcrConfig) UnmarshalJSON(data 
 	return nil
 }
 
+// #region class-body-dcrproviderauth0createdcrproviderresponsedcrconfig
+// #endregion class-body-dcrproviderauth0createdcrproviderresponsedcrconfig
+
 // DCRProviderAuth0 - A DCR provider for Auth0 -- only properties not included in DcrProviderBase
 type DCRProviderAuth0 struct {
 	// The type of DCR provider. Can be one of the following - auth0, azureAd, curity, okta, http
@@ -634,6 +637,9 @@ func (d *DCRProviderAuth0) GetUpdatedAt() time.Time {
 	}
 	return d.UpdatedAt
 }
+
+// #region class-body-dcrproviderauth0
+// #endregion class-body-dcrproviderauth0
 
 type CreateDcrProviderResponseType string
 

@@ -22,6 +22,9 @@ func (c *CatalogIntegrationConfigSchema1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// #region class-body-catalogintegrationconfigschema1
+// #endregion class-body-catalogintegrationconfigschema1
+
 type CatalogIntegrationConfigSchemaType string
 
 const (

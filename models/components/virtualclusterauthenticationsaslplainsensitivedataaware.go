@@ -31,6 +31,7 @@ func (e *Mediation) IsExact() bool {
 
 // VirtualClusterAuthenticationSaslPlainSensitiveDataAware - SASL/PLAIN authentication scheme for the virtual cluster.
 type VirtualClusterAuthenticationSaslPlainSensitiveDataAware struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"sasl_plain" json:"type"`
 	// The mediation type for SASL/PLAIN authentication.
 	Mediation Mediation `json:"mediation"`

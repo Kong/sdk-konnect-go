@@ -35,6 +35,8 @@ go:
   baseErrorName: SDKBaseError
   clientServerStatusCodesAsErrors: true
   defaultErrorName: SDKError
+  enableCustomCodeRegions: false
+  enableSkipDeserialization: false
   flattenGlobalSecurity: true
   forwardCompatibleEnumsByDefault: false
   forwardCompatibleUnionsByDefault: "false"

@@ -186,7 +186,6 @@ func main() {
 | sdkerrors.BadRequestError   | 400                         | application/problem+json    |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## GetAddOn
@@ -4354,7 +4353,7 @@ func main() {
                 "172.16.0.0/12",
             },
             TransitGatewayAttachmentConfig: components.AwsTransitGatewayAttachmentConfig{
-                Kind: components.AWSTransitGatewayAttachmentTypeAwsTransitGatewayAttachment,
+                Kind: components.AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentTypeAwsTransitGatewayAttachment,
                 TransitGatewayID: "<id>",
                 RAMShareArn: "<value>",
             },
@@ -4423,7 +4422,7 @@ func main() {
                 "172.16.0.0/12",
             },
             TransitGatewayAttachmentConfig: components.AwsVpcPeeringGatewayAttachmentConfig{
-                Kind: components.AWSVPCPeeringAttachmentConfigAwsVpcPeeringAttachment,
+                Kind: components.AWSVPCPeeringGatewayAttachmentConfigAWSVPCPeeringAttachmentConfigAwsVpcPeeringAttachment,
                 PeerAccountID: "<id>",
                 PeerVpcID: "<id>",
                 PeerVpcRegion: "<value>",
@@ -4493,7 +4492,7 @@ func main() {
                 "172.16.0.0/12",
             },
             TransitGatewayAttachmentConfig: components.AwsVpcPeeringGatewayAttachmentConfig{
-                Kind: components.AWSVPCPeeringAttachmentConfigAwsVpcPeeringAttachment,
+                Kind: components.AWSVPCPeeringGatewayAttachmentConfigAWSVPCPeeringAttachmentConfigAwsVpcPeeringAttachment,
                 PeerAccountID: "<id>",
                 PeerVpcID: "<id>",
                 PeerVpcRegion: "<value>",
@@ -4563,7 +4562,7 @@ func main() {
                 "172.16.0.0/12",
             },
             TransitGatewayAttachmentConfig: components.AwsTransitGatewayAttachmentConfig{
-                Kind: components.AWSTransitGatewayAttachmentTypeAwsTransitGatewayAttachment,
+                Kind: components.AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentTypeAwsTransitGatewayAttachment,
                 TransitGatewayID: "<id>",
                 RAMShareArn: "<value>",
             },
@@ -4632,7 +4631,7 @@ func main() {
                 "172.16.0.0/12",
             },
             TransitGatewayAttachmentConfig: components.AwsVpcPeeringGatewayAttachmentConfig{
-                Kind: components.AWSVPCPeeringAttachmentConfigAwsVpcPeeringAttachment,
+                Kind: components.AWSVPCPeeringGatewayAttachmentConfigAWSVPCPeeringAttachmentConfigAwsVpcPeeringAttachment,
                 PeerAccountID: "<id>",
                 PeerVpcID: "<id>",
                 PeerVpcRegion: "<value>",
@@ -4702,7 +4701,7 @@ func main() {
                 "172.16.0.0/12",
             },
             TransitGatewayAttachmentConfig: components.AwsVpcPeeringGatewayAttachmentConfig{
-                Kind: components.AWSVPCPeeringAttachmentConfigAwsVpcPeeringAttachment,
+                Kind: components.AWSVPCPeeringGatewayAttachmentConfigAWSVPCPeeringAttachmentConfigAwsVpcPeeringAttachment,
                 PeerAccountID: "<id>",
                 PeerVpcID: "<id>",
                 PeerVpcRegion: "<value>",
@@ -4772,7 +4771,7 @@ func main() {
                 "172.16.0.0/12",
             },
             TransitGatewayAttachmentConfig: components.AwsVpcPeeringGatewayAttachmentConfig{
-                Kind: components.AWSVPCPeeringAttachmentConfigAwsVpcPeeringAttachment,
+                Kind: components.AWSVPCPeeringGatewayAttachmentConfigAWSVPCPeeringAttachmentConfigAwsVpcPeeringAttachment,
                 PeerAccountID: "<id>",
                 PeerVpcID: "<id>",
                 PeerVpcRegion: "<value>",
@@ -4842,7 +4841,7 @@ func main() {
                 "172.16.0.0/12",
             },
             TransitGatewayAttachmentConfig: components.AwsTransitGatewayAttachmentConfig{
-                Kind: components.AWSTransitGatewayAttachmentTypeAwsTransitGatewayAttachment,
+                Kind: components.AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentTypeAwsTransitGatewayAttachment,
                 TransitGatewayID: "<id>",
                 RAMShareArn: "<value>",
             },

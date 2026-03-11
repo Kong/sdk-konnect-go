@@ -102,3 +102,6 @@ func (c *CreateDcrProviderRequestAuth0) GetLabels() map[string]string {
 	}
 	return c.Labels
 }
+
+// #region class-body-createdcrproviderrequestauth0
+// #endregion class-body-createdcrproviderrequestauth0
