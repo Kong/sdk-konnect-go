@@ -3,21 +3,21 @@ id: b81e5def-5b1e-4753-ae7c-0efccc2e6f61
 management:
   docChecksum: 4e22f08edf468b3982afd1549cae2bf2
   docVersion: 3.2.0
-  speakeasyVersion: 1.750.0
-  generationVersion: 2.856.1
-  releaseVersion: 0.26.1
-  configChecksum: f9076268ec6319942b139abf495e48cf
+  speakeasyVersion: 1.751.0
+  generationVersion: 2.858.2
+  releaseVersion: 0.26.2
+  configChecksum: 45f2e1df52bb130ea853f3a70792aa55
 persistentEdits:
-  generation_id: 06dd76e6-8de5-4527-afb5-d5ae3c55bde5
-  pristine_commit_hash: bdb26b16ce703c61f3113595a1aeecfa1753f42a
-  pristine_tree_hash: 1828d6bf25f97e3df6699c811c23ceaa0e1ed1c1
+  generation_id: cbff6026-83e0-4db8-bbeb-e7b0e567516b
+  pristine_commit_hash: 7a4647a66411ec8f2ca2db107c167b0d3885ecbb
+  pristine_tree_hash: 271f163e03b88620872865bc1459c76de3991504
 features:
   go:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     additionalProperties: 0.1.2
     constsAndDefaults: 0.1.14
-    core: 3.13.21
+    core: 3.13.22
     deepObjectParams: 0.1.1
     defaultEnabledRetries: 0.2.0
     deprecations: 2.81.3
@@ -18269,8 +18269,8 @@ trackedFiles:
     pristine_git_object: 10ff74b733f8fc22731d92f375bfd17d08e59664
   sdk.go:
     id: 8db9b9536b0a
-    last_write_checksum: sha1:ae96a4354c87ecf1854cb05d64d11bfdd9df0f17
-    pristine_git_object: 6ce1167c06cdade36d6221caf1ac155d78c37b48
+    last_write_checksum: sha1:838050c7861fcde7d4f6ecafe13d2aeb8dc2b024
+    pristine_git_object: 78782d8f3273d049b9f83403b66c0c7cac0ba74a
   services.go:
     id: a2c8604526d8
     last_write_checksum: sha1:9e75e424fc0554c9aa9ea21f94126ead787a766f
