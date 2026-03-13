@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Konnect API - Go SDK
-  version: 3.2.2
+  version: 3.3.1
   description: The Konnect platform API
   contact:
     name: Kong Inc
@@ -1980,9 +1980,6 @@ paths:
       - $ref: '#/components/parameters/gatewayId'
       - $ref: '#/components/parameters/eventGatewayListenerId'
     get:
-      x-speakeasy-entity-operation:
-        terraform-resource: EventGatewayListenerPolicyChain#read
-        terraform-datasource: null
       operationId: get-event-gateway-listener-policy-chain
       summary: Get Policy Chain for Listener
       description: |
@@ -1997,9 +1994,6 @@ paths:
       tags:
         - Event Gateway Listener Policies
     put:
-      x-speakeasy-entity-operation:
-        terraform-resource: 'EventGatewayListenerPolicyChain#create,update'
-        terraform-datasource: null
       operationId: update-event-gateway-listener-policy-chain
       summary: Update Policy Chain for Listener
       description: Update the policy chain for a listener by providing an ordered list of policy ids.
@@ -2626,9 +2620,6 @@ paths:
       - $ref: '#/components/parameters/gatewayId'
       - $ref: '#/components/parameters/virtualClusterId'
     get:
-      x-speakeasy-entity-operation:
-        terraform-resource: EventGatewayVirtualClusterClusterPolicyChain#read
-        terraform-datasource: null
       operationId: get-event-gateway-virtual-cluster-cluster-level-policy-chain
       summary: Get Cluster Policy Chain for Virtual Cluster
       description: |
@@ -2643,9 +2634,6 @@ paths:
       tags:
         - Event Gateway Virtual Cluster Policies
     put:
-      x-speakeasy-entity-operation:
-        terraform-resource: 'EventGatewayVirtualClusterClusterPolicyChain#create,update'
-        terraform-datasource: null
       operationId: update-event-gateway-virtual-cluster-cluster-level-policy-chain
       summary: Update Cluster Policy Chain
       description: Update the cluster-level policy chain for a virtual cluster by providing an ordered list of cluster-level policy ids.
@@ -2840,9 +2828,6 @@ paths:
       - $ref: '#/components/parameters/gatewayId'
       - $ref: '#/components/parameters/virtualClusterId'
     get:
-      x-speakeasy-entity-operation:
-        terraform-resource: EventGatewayVirtualClusterConsumePolicyChain#read
-        terraform-datasource: null
       operationId: get-event-gateway-virtual-cluster-consume-policy-chain
       summary: Get Consume Policy Chain
       description: |
@@ -2857,9 +2842,6 @@ paths:
       tags:
         - Event Gateway Virtual Cluster Consume Policies
     put:
-      x-speakeasy-entity-operation:
-        terraform-resource: 'EventGatewayVirtualClusterConsumePolicyChain#create,update'
-        terraform-datasource: null
       operationId: update-event-gateway-virtual-cluster-consume-policy-chain
       summary: Update Consume Policy Chain
       description: Update the consume policy chain for a virtual cluster by providing an ordered list of consume policy ids.
@@ -3054,9 +3036,6 @@ paths:
       - $ref: '#/components/parameters/gatewayId'
       - $ref: '#/components/parameters/virtualClusterId'
     get:
-      x-speakeasy-entity-operation:
-        terraform-resource: EventGatewayVirtualClusterProducePolicyChain#read
-        terraform-datasource: null
       operationId: get-event-gateway-virtual-cluster-produce-policy-chain
       summary: Get Produce Policy Chain for Virtual Cluster
       description: |
@@ -3071,9 +3050,6 @@ paths:
       tags:
         - Event Gateway Virtual Cluster Produce Policies
     put:
-      x-speakeasy-entity-operation:
-        terraform-resource: 'EventGatewayVirtualClusterProducePolicyChain#create,update'
-        terraform-datasource: null
       operationId: update-event-gateway-virtual-cluster-produce-policy-chain
       summary: Update Produce Policy Chain
       description: Update the produce policy chain for a virtual cluster by providing an ordered list of produce policy ids.
@@ -3392,6 +3368,537 @@ paths:
           $ref: '#/components/responses/Forbidden'
       tags:
         - Catalog Integrations
+  '/v1/mcp-cp/{controlPlaneId}/mcp-servers':
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+    get:
+      operationId: list-mcp-servers-by-control-plane
+      summary: List MCP Servers by Control Plane
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Returns an array of MCP server objects for the specified control plane.
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageAfter'
+        - $ref: '#/components/parameters/MCPServerCommonFilter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListMCPServersResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - MCP Servers
+  '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}':
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/mcpServerId'
+    get:
+      operationId: get-mcp-server-by-control-plane
+      summary: Get MCP Server by Control Plane
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Retrieves an MCP server by its ID within a specific control plane context.
+      responses:
+        '200':
+          description: A response to retrieving a single MCP server.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MCPServerInfo'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - MCP Servers
+  '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}/code':
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/mcpServerId'
+    get:
+      operationId: get-mcp-server-code
+      summary: Get generated Python code for the MCP Server
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Retrieves generated Python code for the MCP Server implementation.
+      responses:
+        '200':
+          description: Generated Python code for the MCP server
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MCPServerCodeResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - MCP Servers
+  '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}/kong-entities':
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/mcpServerId'
+    get:
+      operationId: get-mcp-server-kong-entities
+      summary: Get Kong entities for the MCP Server Gateway
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Retrieves Kong entities (Routes, Services, Plugins) for the Gateway in front of the MCP Server.
+      parameters:
+        - name: runtime_version
+          in: query
+          description: Kong Gateway runtime version to generate entities for
+          required: false
+          schema:
+            type: string
+            example: 3.13.0.0
+      responses:
+        '200':
+          description: Kong entities for the MCP server
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KongEntitiesResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - MCP Servers
+  '/v1/mcp-cp/{controlPlaneId}/mcp-servers/{mcpServerId}/status':
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+      - $ref: '#/components/parameters/mcpServerId'
+    post:
+      operationId: post-mcp-server-status
+      summary: Report MCP Server deployment status
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Reports the current deployment status of an MCP server, including replica counts and per-version pod statuses.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MCPServerStatusRequest'
+      responses:
+        '204':
+          description: Status accepted.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - MCP Servers
+  '/v1/mcp-cp/{controlPlaneId}/signals':
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+    get:
+      operationId: get-mcp-server-signals
+      summary: Get MCP Server Signals
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Client-initiated signals fetch with long-polling capabilities.
+        The client supplies `capabilities` as a deepObject query parameter:
+
+
+          - Keys are capability names (e.g. `mcp`)
+          - Values contain the capability request fields (`version`)
+
+        Example:
+
+
+          GET /mcp-cp/{controlPlaneId}/signals?capabilities[mcp][version]=5
+
+        The CP responds with a JSON payload containing zero or more signals that the client should process.
+        If no signals are available, the CP responds with HTTP 304 Not Modified.
+      parameters:
+        - $ref: '#/components/parameters/MCPCapabilities'
+      responses:
+        '200':
+          $ref: '#/components/responses/MCPServerSignalsResponse'
+        '304':
+          description: No signals available (client is up to date)
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - MCP Servers
+  /v1/mcp-servers:
+    get:
+      operationId: list-mcp-server-configs
+      summary: List all MCP Servers
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Returns an array of MCP server objects.
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageAfter'
+        - $ref: '#/components/parameters/MCPServerCommonFilter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListMCPServersResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - MCP Servers
+    post:
+      operationId: create-mcp-server-config
+      summary: Create an MCP Server
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Create an MCP Server in the Konnect Organization.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMCPServerRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/CreateMCPServerResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - MCP Servers
+  '/v1/mcp-servers/{mcpServerId}':
+    parameters:
+      - $ref: '#/components/parameters/mcpServerId'
+    get:
+      operationId: get-mcp-server-config
+      summary: Get MCP Server
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Returns information about an individual MCP server.
+      responses:
+        '200':
+          description: A response to retrieving a single MCP server.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MCPServerInfo'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - MCP Servers
+    put:
+      operationId: update-mcp-server-config
+      summary: Update MCP Server
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Update an individual MCP server.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMCPServerRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/UpdateMCPServerResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - MCP Servers
+    patch:
+      operationId: patch-mcp-server-config
+      summary: Partially Update MCP Server
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Partially update an individual MCP server.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchMCPServerRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/UpdateMCPServerResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - MCP Servers
+    delete:
+      operationId: delete-mcp-server-config
+      summary: Delete MCP Server
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Delete an MCP server.
+      responses:
+        '204':
+          description: Successfully deleted MCP server.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - MCP Servers
+  '/v1/mcp-servers/{mcpServerId}/tools':
+    parameters:
+      - $ref: '#/components/parameters/mcpServerId'
+    get:
+      operationId: list-mcp-server-tools
+      summary: List MCP Server Tools
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Returns an array of MCP server tool objects.
+      parameters:
+        - $ref: '#/components/parameters/includeLayoutMetadata'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageAfter'
+        - $ref: '#/components/parameters/MCPServerCommonFilter'
+      responses:
+        '200':
+          description: A response to listing MCP server tools.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListMCPServerToolsResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - MCP Servers
+    post:
+      operationId: create-mcp-server-tool
+      summary: Create MCP Server Tool
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Create an MCP server tool under the specified MCP server.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MCPServerToolInput'
+      responses:
+        '201':
+          description: A response to creating an MCP server tool.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MCPServerTool'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - MCP Servers
+  '/v1/mcp-servers/{mcpServerId}/tools/{toolId}':
+    parameters:
+      - $ref: '#/components/parameters/mcpServerId'
+      - $ref: '#/components/parameters/mcpServerToolId'
+    get:
+      operationId: get-mcp-server-tool
+      summary: Get MCP Server Tool
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Returns information about an individual MCP server tool.
+      responses:
+        '200':
+          description: A response to retrieving a single MCP server tool.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MCPServerTool'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - MCP Servers
+    put:
+      operationId: update-mcp-server-tool
+      summary: Update MCP Server Tool
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Update an individual MCP server tool.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MCPServerToolInput'
+      responses:
+        '200':
+          description: A response to updating an MCP server tool.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MCPServerTool'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - MCP Servers
+    patch:
+      operationId: patch-mcp-server-tool
+      summary: Partially Update MCP Server Tool
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Partially update an individual MCP server tool.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchMCPServerToolRequest'
+      responses:
+        '200':
+          description: A response to partially updating an MCP server tool.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MCPServerTool'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - MCP Servers
+    delete:
+      operationId: delete-mcp-server-tool
+      summary: Delete MCP Server Tool
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Delete an MCP server tool under the specified MCP server.
+      responses:
+        '204':
+          description: Successfully deleted MCP server tool.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - MCP Servers
   /v1/notifications/configurations:
     get:
       operationId: list-user-configurations
@@ -13337,6 +13844,74 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Portal Auth Settings
+  '/v3/portals/{portalId}/integrations':
+    get:
+      operationId: get-portal-integrations
+      summary: Get Portal Integration Configurations
+      description: Returns the portal integration configurations.
+      parameters:
+        - $ref: '#/components/parameters/PortalId'
+      responses:
+        '200':
+          $ref: '#/components/responses/PortalIntegrationsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Portal Integrations
+    put:
+      operationId: upsert-portal-integrations
+      summary: Replace Integration Configurations
+      description: Replace the portal integration configurations.
+      parameters:
+        - $ref: '#/components/parameters/PortalId'
+      requestBody:
+        $ref: '#/components/requestBodies/ReplacePortalIntegrations'
+      responses:
+        '200':
+          $ref: '#/components/responses/PortalIntegrationsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Portal Integrations
+    patch:
+      operationId: update-portal-integrations
+      summary: Update Integration Configurations
+      description: 'Update the portal integration configurations, merging properties.'
+      parameters:
+        - $ref: '#/components/parameters/PortalId'
+      requestBody:
+        $ref: '#/components/requestBodies/UpdatePortalIntegrations'
+      responses:
+        '200':
+          $ref: '#/components/responses/PortalIntegrationsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Portal Integrations
   '/v3/portals/{portalId}/pages':
     get:
       operationId: list-portal-pages
@@ -15782,7 +16357,6 @@ components:
         $ref: '#/components/schemas/ControlPlaneFilterParameters'
       style: deepObject
     controlPlaneId:
-      x-speakeasy-param-force-new: true
       name: controlPlaneId
       in: path
       required: true
@@ -15791,6 +16365,7 @@ components:
         format: uuid
         example: 9524ec7d-36d9-465d-a8c5-83a3c9390458
       description: The UUID of your control plane. This variable is available in the Konnect manager.
+      x-speakeasy-param-force-new: true
     ControlPlaneSort:
       name: sort
       description: |
@@ -16165,6 +16740,14 @@ components:
       required: true
       description: The Portal identifier
       x-speakeasy-match: id
+    includeLayoutMetadata:
+      name: include_layout_metadata
+      in: query
+      required: false
+      description: Determines whether layout metadata is included in the response.
+      schema:
+        type: boolean
+        default: false
     IntegrationInstanceFilter:
       name: filter
       description: Filters a collection of integration instances.
@@ -16222,6 +16805,47 @@ components:
       required: true
       schema:
         type: string
+    MCPCapabilities:
+      name: capabilities
+      in: query
+      style: deepObject
+      explode: true
+      description: |
+        Capability requests as a deepObject map.
+        - Keys are capability names (e.g. `mcp`).
+        - Values contain the capability request fields (`version`).
+      schema:
+        $ref: '#/components/schemas/MCPCapabilitiesMap'
+      example:
+        mcp:
+          version: '5'
+    MCPServerCommonFilter:
+      schema:
+        type: object
+        properties:
+          name:
+            $ref: '#/components/schemas/StringFieldContainsFilter'
+      in: query
+      name: filter
+      description: Filter documents returned in the response.
+      required: false
+      style: deepObject
+    mcpServerId:
+      name: mcpServerId
+      in: path
+      required: true
+      description: The ID of the MCP server.
+      schema:
+        type: string
+        format: uuid
+    mcpServerToolId:
+      name: toolId
+      in: path
+      required: true
+      description: The ID of the MCP server tool.
+      schema:
+        type: string
+        format: uuid
     MTLSAuthId:
       description: ID of the MTLS-auth credential to lookup
       example: ''
@@ -16948,6 +17572,7 @@ components:
             - CLUSTER_TYPE_CONTROL_PLANE_GROUP
             - CLUSTER_TYPE_SERVERLESS
             - CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY
+            - CLUSTER_TYPE_SERVERLESS_V1
           x-speakeasy-unknown-values: allow
         auth_type:
           description: The auth type value of the cluster associated with the Runtime Group.
@@ -17047,6 +17672,7 @@ components:
                 - CLUSTER_TYPE_CONTROL_PLANE_GROUP
                 - CLUSTER_TYPE_SERVERLESS
                 - CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY
+                - CLUSTER_TYPE_SERVERLESS_V1
               readOnly: true
               x-speakeasy-unknown-values: allow
             auth_type:
@@ -17716,6 +18342,12 @@ components:
       example: '2022-11-04T20:10:06.927Z'
       readOnly: true
       x-speakeasy-param-suppress-computed-diff: true
+    PaginationNextResponse:
+      description: URI to the next page (may be null)
+      type: string
+    PaginationOffsetResponse:
+      description: Offset is used to paginate through the API. Provide this value to the next list operation to fetch the next page
+      type: string
     IdentityProviderType:
       description: Specifies the type of identity provider.
       type: string
@@ -18226,6 +18858,22 @@ components:
       maxLength: 256
       minLength: 1
       pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.'']*[\p{L}\p{N}]$'
+    PersonalAccessTokenCreateRequestWithExpiresAt:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/PATName'
+        expires_at:
+          description: An ISO-8601 timestamp representation of entity expiration date.
+          type: string
+          format: date-time
+          example: '2022-11-04T20:10:06.927Z'
+          readOnly: false
+          x-speakeasy-param-suppress-computed-diff: true
+      additionalProperties: false
+      required:
+        - name
+        - expires_at
     PersonalAccessTokenCreateResponse:
       description: Details of the created personal access token.
       type: object
@@ -19422,6 +20070,37 @@ components:
         - resource_group_name
         - vnet_name
       title: Azure VNET Peering Attachment Config
+    AzureVHubPeeringAttachmentConfig:
+      type: object
+      properties:
+        kind:
+          enum:
+            - azure-vhub-peering-attachment
+          title: Azure Virtual Hub Peering Attachment Type
+        tenant_id:
+          description: Tenant ID of the Azure Virtual Hub resource.
+          type: string
+          title: Tenant ID
+        subscription_id:
+          description: Subscription ID of the Azure Virtual Hub resource.
+          type: string
+          title: Subscription ID
+        resource_group_name:
+          description: Resource Group Name of the Azure Virtual Hub resource.
+          type: string
+          title: Resource Group Name
+        vhub_name:
+          description: Name of the Azure Virtual Hub resource.
+          type: string
+          title: Virtual Hub Name
+      additionalProperties: false
+      required:
+        - kind
+        - tenant_id
+        - subscription_id
+        - resource_group_name
+        - vhub_name
+      title: Azure Virtual Hub Peering Attachment Config
     GCPVPCPeeringAttachmentConfig:
       type: object
       properties:
@@ -20240,6 +20919,8 @@ components:
           $ref: '#/components/schemas/TransitGatewayName'
         dns_config:
           $ref: '#/components/schemas/TransitGatewayDnsConfig'
+        transit_gateway_attachment_config:
+          $ref: '#/components/schemas/AzureVHubPeeringAttachmentConfig'
         id:
           $ref: '#/components/schemas/TransitGatewayId'
         state:
@@ -20283,6 +20964,7 @@ components:
           readOnly: true
       required:
         - name
+        - transit_gateway_attachment_config
         - id
         - dns_config
         - state
@@ -20428,8 +21110,11 @@ components:
           $ref: '#/components/schemas/TransitGatewayName'
         dns_config:
           $ref: '#/components/schemas/TransitGatewayDnsConfig'
+        transit_gateway_attachment_config:
+          $ref: '#/components/schemas/AzureVHubPeeringAttachmentConfig'
       required:
         - name
+        - transit_gateway_attachment_config
       title: Azure Virtual Hub Peering Gateway
       x-speakeasy-name-override: AzureVhubPeeringGateway
     CreateGCPVPCPeeringTransitGateway:
@@ -21912,7 +22597,7 @@ components:
       type: boolean
       title: DcrConfigPropertyDisableRefreshSecret
     DcrConfigPropertyAllowMultipleCredentials:
-      description: 'When enabled, indicates that the HTTP DCR provider supports creating and managing multiple credentials per application.'
+      description: 'When enabled, indicates that the DCR provider supports creating and managing multiple credentials per application.'
       type: boolean
       default: false
       title: DcrConfigPropertyAllowMultipleCredentials
@@ -21969,8 +22654,6 @@ components:
       properties:
         initial_client_id:
           $ref: '#/components/schemas/DcrConfigPropertyInitialClientId'
-        allow_multiple_credentials:
-          $ref: '#/components/schemas/DcrConfigPropertyAllowMultipleCredentials'
       additionalProperties: false
       required:
         - initial_client_id
@@ -21983,8 +22666,6 @@ components:
           $ref: '#/components/schemas/DcrConfigPropertyInitialClientId'
         initial_client_secret:
           $ref: '#/components/schemas/DcrConfigPropertyInitialClientSecret'
-        allow_multiple_credentials:
-          $ref: '#/components/schemas/DcrConfigPropertyAllowMultipleCredentials'
       additionalProperties: false
       required:
         - initial_client_id
@@ -21998,8 +22679,6 @@ components:
           $ref: '#/components/schemas/DcrConfigPropertyInitialClientId'
         initial_client_secret:
           $ref: '#/components/schemas/DcrConfigPropertyInitialClientSecret'
-        allow_multiple_credentials:
-          $ref: '#/components/schemas/DcrConfigPropertyAllowMultipleCredentials'
       additionalProperties: false
       title: DcrConfigAzureAdInRequest
     DcrConfigCurityInResponse:
@@ -22038,9 +22717,7 @@ components:
     DcrConfigOktaInResponse:
       description: A DCR provider configuration for Okta
       type: object
-      properties:
-        allow_multiple_credentials:
-          $ref: '#/components/schemas/DcrConfigPropertyAllowMultipleCredentials'
+      properties: {}
       additionalProperties: false
       title: DcrConfigOktaInResponse
     CreateDcrConfigOktaInRequest:
@@ -22049,8 +22726,6 @@ components:
       properties:
         dcr_token:
           $ref: '#/components/schemas/DcrConfigPropertyDcrToken'
-        allow_multiple_credentials:
-          $ref: '#/components/schemas/DcrConfigPropertyAllowMultipleCredentials'
       additionalProperties: false
       required:
         - dcr_token
@@ -22061,8 +22736,6 @@ components:
       properties:
         dcr_token:
           $ref: '#/components/schemas/DcrConfigPropertyDcrToken'
-        allow_multiple_credentials:
-          $ref: '#/components/schemas/DcrConfigPropertyAllowMultipleCredentials'
       additionalProperties: false
       title: DcrConfigOktaInRequest
     DcrConfigHttpInResponse:
@@ -26665,6 +27338,250 @@ components:
           nullable: true
       additionalProperties: false
       title: PortalCustomization
+    GoogleTagManagerIntegrationConfigProperties:
+      description: Configuration data for the Google Tag Manager integration
+      type: object
+      properties:
+        id:
+          description: The Google Tag Manager container ID
+          type: string
+          example: GTM-XXXXXX
+          maxLength: 20
+          minLength: 5
+          pattern: '^GTM-[A-Za-z0-9]+$'
+          x-validation-message: 'must be a valid GTM container ID (format: GTM-XXXXXX)'
+        l:
+          description: Optional dataLayer variable name
+          type: string
+          example: myNewName
+          maxLength: 100
+          nullable: true
+        preview:
+          description: Preview environment name
+          type: string
+          example: preview
+          maxLength: 100
+          nullable: true
+        cookies_win:
+          description: Forces GTM cookies to take precedence when true
+          type: boolean
+          nullable: true
+        debug:
+          description: Enables debug mode when true
+          type: boolean
+          nullable: true
+        npa:
+          description: No Personal Advertising - disables advertising features when true
+          type: boolean
+          nullable: true
+        data_layer:
+          description: Custom dataLayer name (alternative to "l" property)
+          type: string
+          example: myNewName
+          maxLength: 100
+          nullable: true
+        env_name:
+          description: Environment name for environment-specific container
+          type: string
+          example: production
+          maxLength: 100
+          nullable: true
+        auth_referrer_policy:
+          description: Referrer policy for analytics requests
+          type: string
+          example: no-referrer
+          maxLength: 100
+          nullable: true
+      additionalProperties: false
+    GoogleTagManagerIntegration:
+      description: Google Tag Manager integration configuration
+      type: object
+      properties:
+        enabled:
+          description: Whether the integration is enabled
+          type: boolean
+        type:
+          description: The type of the integration for categorization
+          type: string
+          enum:
+            - tracking
+        config_data:
+          description: Configuration data for the Google Tag Manager integration
+          type: object
+          additionalProperties: false
+          properties:
+            id:
+              description: The Google Tag Manager container ID
+              type: string
+              example: GTM-XXXXXX
+              maxLength: 20
+              minLength: 5
+              pattern: '^GTM-[A-Za-z0-9]+$'
+              x-validation-message: 'must be a valid GTM container ID (format: GTM-XXXXXX)'
+            l:
+              description: Optional dataLayer variable name
+              type: string
+              example: myNewName
+              maxLength: 100
+              nullable: true
+            preview:
+              description: Preview environment name
+              type: string
+              example: preview
+              maxLength: 100
+              nullable: true
+            cookies_win:
+              description: Forces GTM cookies to take precedence when true
+              type: boolean
+              nullable: true
+            debug:
+              description: Enables debug mode when true
+              type: boolean
+              nullable: true
+            npa:
+              description: No Personal Advertising - disables advertising features when true
+              type: boolean
+              nullable: true
+            data_layer:
+              description: Custom dataLayer name (alternative to "l" property)
+              type: string
+              example: myNewName
+              maxLength: 100
+              nullable: true
+            env_name:
+              description: Environment name for environment-specific container
+              type: string
+              example: production
+              maxLength: 100
+              nullable: true
+            auth_referrer_policy:
+              description: Referrer policy for analytics requests
+              type: string
+              example: no-referrer
+              maxLength: 100
+              nullable: true
+          required:
+            - id
+      additionalProperties: false
+      nullable: true
+      required:
+        - enabled
+        - type
+        - config_data
+    GoogleAnalytics4IntegrationConfigProperties:
+      description: Configuration data for the Google Analytics integration
+      type: object
+      properties:
+        id:
+          description: The Google Analytics measurement ID
+          type: string
+          example: G-XXXXXXX
+          maxLength: 20
+          minLength: 5
+          pattern: '^G-[A-Za-z0-9-]+$'
+          x-validation-message: 'must be a valid Google Analytics ID (format: G-XXXXXXX)'
+        l:
+          description: The datalayer's name you want data to be associated with
+          type: string
+          example: myNewName
+          maxLength: 100
+          nullable: true
+      additionalProperties: false
+    GoogleAnalytics4Integration:
+      description: Google Analytics integration configuration
+      type: object
+      properties:
+        enabled:
+          description: Whether the integration is enabled
+          type: boolean
+        type:
+          description: The type of the integration for categorization
+          type: string
+          enum:
+            - analytics
+        config_data:
+          description: Configuration data for the Google Analytics integration
+          type: object
+          additionalProperties: false
+          properties:
+            id:
+              description: The Google Analytics measurement ID
+              type: string
+              example: G-XXXXXXX
+              maxLength: 20
+              minLength: 5
+              pattern: '^G-[A-Za-z0-9-]+$'
+              x-validation-message: 'must be a valid Google Analytics ID (format: G-XXXXXXX)'
+            l:
+              description: The datalayer's name you want data to be associated with
+              type: string
+              example: myNewName
+              maxLength: 100
+              nullable: true
+          required:
+            - id
+      additionalProperties: false
+      nullable: true
+      required:
+        - enabled
+        - type
+        - config_data
+    PortalIntegrations:
+      description: Configuration data for Dev Portal integrations
+      type: object
+      properties:
+        google_tag_manager:
+          $ref: '#/components/schemas/GoogleTagManagerIntegration'
+        google_analytics_4:
+          $ref: '#/components/schemas/GoogleAnalytics4Integration'
+      default: {}
+      additionalProperties: false
+      title: Portal Integrations
+    UpdateGoogleTagManagerIntegration:
+      description: Partially update Google Tag Manager integration configuration
+      type: object
+      properties:
+        enabled:
+          description: Whether the integration is enabled
+          type: boolean
+        type:
+          description: The type of the integration for categorization
+          type: string
+          enum:
+            - tracking
+        config_data:
+          type: object
+          $ref: '#/components/schemas/GoogleTagManagerIntegrationConfigProperties'
+      additionalProperties: false
+      nullable: true
+    UpdateGoogleAnalytics4Integration:
+      description: Partially update Google Analytics 4 integration configuration
+      type: object
+      properties:
+        enabled:
+          description: Whether the integration is enabled
+          type: boolean
+        type:
+          description: The type of the integration for categorization
+          type: string
+          enum:
+            - analytics
+        config_data:
+          type: object
+          $ref: '#/components/schemas/GoogleAnalytics4IntegrationConfigProperties'
+      additionalProperties: false
+      nullable: true
+    UpdatePortalIntegrations:
+      description: Partially update configuration data for Dev Portal integrations
+      type: object
+      properties:
+        google_tag_manager:
+          $ref: '#/components/schemas/UpdateGoogleTagManagerIntegration'
+        google_analytics_4:
+          $ref: '#/components/schemas/UpdateGoogleAnalytics4Integration'
+      default: {}
+      additionalProperties: false
+      title: Update Portal Integrations
     AuthMethods:
       type: array
       items:
@@ -26811,6 +27728,12 @@ components:
           readOnly: true
         created_at:
           description: 'Creation timestamp, if available'
+          type: string
+          format: date-time
+          nullable: true
+          readOnly: true
+        expires_at:
+          description: 'Expiration timestamp, if applicable'
           type: string
           format: date-time
           nullable: true
@@ -30382,11 +31305,13 @@ components:
           sasl_plain: '#/components/schemas/VirtualClusterAuthenticationSaslPlainSensitiveDataAware'
           sasl_scram: '#/components/schemas/VirtualClusterAuthenticationSaslScram'
           oauth_bearer: '#/components/schemas/VirtualClusterAuthenticationOauthBearer'
+          client_certificate: '#/components/schemas/VirtualClusterAuthenticationClientCertificate'
       oneOf:
         - $ref: '#/components/schemas/VirtualClusterAuthenticationAnonymous'
         - $ref: '#/components/schemas/VirtualClusterAuthenticationSaslPlainSensitiveDataAware'
         - $ref: '#/components/schemas/VirtualClusterAuthenticationSaslScram'
         - $ref: '#/components/schemas/VirtualClusterAuthenticationOauthBearer'
+        - $ref: '#/components/schemas/VirtualClusterAuthenticationClientCertificate'
     VirtualClusterAuthenticationScheme:
       discriminator:
         propertyName: type
@@ -30395,11 +31320,13 @@ components:
           sasl_plain: '#/components/schemas/VirtualClusterAuthenticationSaslPlain'
           sasl_scram: '#/components/schemas/VirtualClusterAuthenticationSaslScram'
           oauth_bearer: '#/components/schemas/VirtualClusterAuthenticationOauthBearer'
+          client_certificate: '#/components/schemas/VirtualClusterAuthenticationClientCertificate'
       oneOf:
         - $ref: '#/components/schemas/VirtualClusterAuthenticationAnonymous'
         - $ref: '#/components/schemas/VirtualClusterAuthenticationSaslPlain'
         - $ref: '#/components/schemas/VirtualClusterAuthenticationSaslScram'
         - $ref: '#/components/schemas/VirtualClusterAuthenticationOauthBearer'
+        - $ref: '#/components/schemas/VirtualClusterAuthenticationClientCertificate'
     VirtualClusterAuthenticationAnonymous:
       type: object
       properties:
@@ -30408,6 +31335,51 @@ components:
           const: anonymous
       required:
         - type
+    VirtualClusterAuthenticationClientCertificate:
+      description: Client certificate (mTLS) authentication scheme for the virtual cluster.
+      type: object
+      properties:
+        type:
+          type: string
+          const: client_certificate
+      example:
+        type: client_certificate
+      additionalProperties: false
+      required:
+        - type
+      x-min-runtime-version: '1.1'
+    TLSTrustBundleName:
+      description: The unique name of the TLS trust bundle.
+      type: string
+      maxLength: 255
+      minLength: 1
+      x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
+    TLSTrustBundleReference:
+      description: |
+        A reference to a TLS trust bundle resource.
+
+        Either `id` or `name` must be provided. Following changes to the trust bundle name won't affect the
+        reference, as the system will create the entities relationship by `id`.
+      anyOf:
+        - $ref: '#/components/schemas/TLSTrustBundleReferenceById'
+        - $ref: '#/components/schemas/TLSTrustBundleReferenceByName'
+    TLSTrustBundleReferenceById:
+      type: object
+      properties:
+        id:
+          description: The unique identifier of the TLS trust bundle.
+          type: string
+          format: uuid
+          minLength: 1
+      required:
+        - id
+    TLSTrustBundleReferenceByName:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/TLSTrustBundleName'
+      required:
+        - name
     VirtualClusterAuthenticationSaslPlainSensitiveDataAware:
       description: SASL/PLAIN authentication scheme for the virtual cluster.
       type: object
@@ -31309,6 +32281,35 @@ components:
             If false, only TLS connections are allowed. If true, both TLS and plaintext connections are allowed.
           type: boolean
           default: false
+        client_authentication:
+          description: |
+            Configures mutual TLS (mTLS) client certificate verification. When set, the gateway
+            requests or requires clients to present a certificate during the TLS handshake.
+          type: object
+          properties:
+            mode:
+              description: |
+                * required - Reject TLS connections without a valid client certificate.
+                * requested - Request a client certificate during the TLS handshake, but allow connections without one (falls back to other configured authentication methods). If a certificate is presented but cannot be verified, the connection is closed.
+              type: string
+              enum:
+                - required
+                - requested
+              x-speakeasy-unknown-values: allow
+            tls_trust_bundles:
+              description: |
+                References to TLS trust bundle resources used to verify client certificates. Evaluated in order;
+                verification stops at the first trust bundle that successfully validates the client certificate
+                chain. If no trust bundle validates the certificate chain, the connection is closed when mode is
+                `required`.
+              type: array
+              items:
+                $ref: '#/components/schemas/TLSTrustBundleReference'
+              minItems: 1
+          required:
+            - mode
+            - tls_trust_bundles
+          x-min-runtime-version: '1.1'
       required:
         - certificates
     EventGatewayTLSListenerPolicyConfig:
@@ -31327,6 +32328,35 @@ components:
             If false, only TLS connections are allowed. If true, both TLS and plaintext connections are allowed.
           type: boolean
           default: false
+        client_authentication:
+          description: |
+            Configures mutual TLS (mTLS) client certificate verification. When set, the gateway
+            requests or requires clients to present a certificate during the TLS handshake.
+          type: object
+          properties:
+            mode:
+              description: |
+                * required - Reject TLS connections without a valid client certificate.
+                * requested - Request a client certificate during the TLS handshake, but allow connections without one (falls back to other configured authentication methods). If a certificate is presented but cannot be verified, the connection is closed.
+              type: string
+              enum:
+                - required
+                - requested
+              x-speakeasy-unknown-values: allow
+            tls_trust_bundles:
+              description: |
+                References to TLS trust bundle resources used to verify client certificates. Evaluated in order;
+                verification stops at the first trust bundle that successfully validates the client certificate
+                chain. If no trust bundle validates the certificate chain, the connection is closed when mode is
+                `required`.
+              type: array
+              items:
+                $ref: '#/components/schemas/TLSTrustBundleReference'
+              minItems: 1
+          required:
+            - mode
+            - tls_trust_bundles
+          x-min-runtime-version: '1.1'
       required:
         - certificates
     TLSCertificateSensitiveDataAware:
@@ -32953,15 +33983,9 @@ components:
         - name
         - value
     EventGatewayPolicyReference:
-      description: A reference to an Event Gateway policy.
-      type: object
-      properties:
-        id:
-          description: The unique identifier of the policy.
-          type: string
-          format: uuid
-      required:
-        - id
+      description: The unique identifier of the policy.
+      type: string
+      format: uuid
     GatewayName:
       description: The name of the Gateway.
       type: string
@@ -36464,6 +37488,430 @@ components:
               example: 'kong:trace:1234567890'
             detail:
               example: Gone
+    MCPServerPodsStatus:
+      type: object
+      properties:
+        ready:
+          description: Number of pods in the ready state.
+          type: integer
+          example: 2
+          minimum: 0
+        starting:
+          description: Number of pods in the starting state.
+          type: integer
+          example: 0
+          minimum: 0
+        failing:
+          description: Number of pods in the failing state.
+          type: integer
+          example: 0
+          minimum: 0
+      required:
+        - ready
+        - starting
+        - failing
+    MCPServerVersionStatus:
+      type: object
+      properties:
+        version:
+          description: The version identifier of the MCP server deployment.
+          type: string
+          example: v1
+        desired_replicas:
+          description: The desired number of replicas for this version.
+          type: integer
+          example: 2
+          minimum: 0
+        created_replicas:
+          description: The number of replicas that have been created for this version.
+          type: integer
+          example: 2
+          minimum: 0
+        pods_status:
+          $ref: '#/components/schemas/MCPServerPodsStatus'
+      required:
+        - version
+        - desired_replicas
+        - created_replicas
+        - pods_status
+    MCPServerStatusRequest:
+      description: |
+        List of per-version deployment statuses for the MCP server.
+      type: array
+      items:
+        $ref: '#/components/schemas/MCPServerVersionStatus'
+    MCPServerInfo:
+      type: object
+      properties:
+        id:
+          description: The unique identifier for the MCP server.
+          type: string
+          format: uuid
+        name:
+          description: The name of the MCP server.
+          type: string
+          maxLength: 256
+          minLength: 1
+        description:
+          description: A description of the MCP server.
+          type: string
+          maxLength: 1024
+        labels:
+          description: Labels for the MCP server.
+          type: object
+          additionalProperties:
+            type: string
+        deployed_at:
+          description: The timestamp when the MCP server was deployed.
+          type: string
+          format: date-time
+        control_plane_id:
+          description: The control plane ID associated with the MCP server.
+          type: string
+          format: uuid
+        tools_total:
+          description: The total number of tools associated with the MCP server.
+          type: integer
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      required:
+        - id
+        - name
+        - tools_total
+        - created_at
+        - updated_at
+    CreateMCPServerRequest:
+      type: object
+      properties:
+        name:
+          description: The name of the MCP server.
+          type: string
+          maxLength: 256
+          minLength: 1
+        description:
+          description: A description of the MCP server.
+          type: string
+          maxLength: 1024
+        labels:
+          description: Labels for the MCP server.
+          type: object
+          additionalProperties:
+            type: string
+        control_plane_id:
+          description: The control plane ID associated with the MCP server.
+          type: string
+          format: uuid
+      required:
+        - name
+    UpdateMCPServerRequest:
+      type: object
+      properties:
+        name:
+          description: The name of the MCP server.
+          type: string
+          maxLength: 256
+          minLength: 1
+        description:
+          description: A description of the MCP server.
+          type: string
+          maxLength: 1024
+        labels:
+          description: Labels for the MCP server.
+          type: object
+          additionalProperties:
+            type: string
+        control_plane_id:
+          description: The control plane ID associated with the MCP server.
+          type: string
+          format: uuid
+      required:
+        - name
+    PatchMCPServerRequest:
+      type: object
+      properties:
+        name:
+          description: The name of the MCP server.
+          type: string
+          maxLength: 256
+          minLength: 1
+        description:
+          description: A description of the MCP server.
+          type: string
+          maxLength: 1024
+          nullable: true
+        labels:
+          description: Labels for the MCP server.
+          type: object
+          additionalProperties:
+            type: string
+          nullable: true
+        deployed_at:
+          description: The timestamp when the MCP server was deployed.
+          type: string
+          format: date-time
+          nullable: true
+        control_plane_id:
+          description: The control plane ID associated with the MCP server.
+          type: string
+          format: uuid
+          nullable: true
+    ListMCPServersResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MCPServerInfo'
+        meta:
+          $ref: '#/components/schemas/CursorMeta'
+      required:
+        - data
+        - meta
+    ListMCPServerToolsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MCPServerTool'
+        meta:
+          $ref: '#/components/schemas/CursorMeta'
+      required:
+        - data
+        - meta
+    MCPServerToolInput:
+      type: object
+      properties:
+        name:
+          description: The unique name of the MCP server tool.
+          type: string
+          maxLength: 255
+          minLength: 1
+          pattern: '^[\w_-]+$'
+        state:
+          $ref: '#/components/schemas/MCPServerToolState'
+        definition:
+          $ref: '#/components/schemas/MCPToolDefinition'
+        definition_draft:
+          $ref: '#/components/schemas/MCPToolDefinition'
+        layout_metadata:
+          description: Layout metadata for the MCP server tool.
+          type: object
+          additionalProperties: true
+      required:
+        - name
+    PatchMCPServerToolRequest:
+      type: object
+      properties:
+        name:
+          description: The unique name of the MCP server tool.
+          type: string
+          maxLength: 255
+          minLength: 1
+          pattern: '^[\w_-]+$'
+        state:
+          $ref: '#/components/schemas/MCPServerToolState'
+        definition:
+          $ref: '#/components/schemas/MCPToolDefinition'
+        definition_draft:
+          $ref: '#/components/schemas/MCPToolDefinition'
+        layout_metadata:
+          description: Layout metadata for the MCP server tool.
+          type: object
+          additionalProperties: true
+          nullable: true
+    MCPToolDefinition:
+      type: array
+      items:
+        type: object
+        additionalProperties: true
+    MCPServerTool:
+      allOf:
+        - $ref: '#/components/schemas/MCPServerToolInput'
+        - type: object
+          required:
+            - id
+            - created_at
+            - updated_at
+          properties:
+            id:
+              description: The unique identifier for the MCP server tool.
+              type: string
+              format: uuid
+            created_at:
+              $ref: '#/components/schemas/CreatedAt'
+            updated_at:
+              $ref: '#/components/schemas/UpdatedAt'
+    MCPServerToolState:
+      description: The state of the MCP server tool.
+      type: string
+      default: draft
+      enum:
+        - draft
+        - published
+      x-speakeasy-unknown-values: allow
+    KongEntitiesResponse:
+      type: object
+      properties:
+        routes:
+          type: array
+          items:
+            $ref: '#/components/schemas/KongRoute'
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/KongService'
+      required:
+        - routes
+        - services
+    KongService:
+      type: object
+      properties:
+        id:
+          description: Service ID
+          type: string
+          format: uuid
+        name:
+          description: Service name
+          type: string
+          example: mcp-test-service
+        protocol:
+          description: The protocol used to communicate with the Service.
+          type: string
+          example: https
+        host:
+          description: Service host
+          type: string
+          example: mcp-test-service.svc.cluster.local
+        port:
+          description: Service port
+          type: integer
+          example: 80
+          maximum: 65535
+          minimum: 1
+        path:
+          description: Service path
+          type: string
+          example: /
+      required:
+        - name
+        - protocol
+        - host
+        - port
+        - path
+    KongRoute:
+      type: object
+      properties:
+        id:
+          description: Route ID
+          type: string
+          format: uuid
+        name:
+          description: Route name
+          type: string
+          example: mcp-test-route-jsonrpc
+        service:
+          description: Reference to the service
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+        paths:
+          description: Request paths
+          type: array
+          items:
+            type: string
+          example:
+            - /mcp/test-service
+        methods:
+          description: HTTP methods
+          type: array
+          items:
+            type: string
+          example:
+            - POST
+      required:
+        - name
+        - paths
+        - methods
+    MCPServerCodeResponse:
+      type: object
+      properties:
+        code:
+          description: Generated Python code for the MCP server implementation
+          type: string
+          example: print("Hello MCP")
+      required:
+        - code
+    MCPCapabilitiesMap:
+      description: |
+        Map of capability name -> capability request fields.
+
+        Example:
+          {
+            "mcp": { "version": "v1", "offset": "5" }
+          }
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/MCPCapabilityRequest'
+    MCPCapabilityRequest:
+      type: object
+      properties:
+        version:
+          description: 'The version of the capability schema (e.g., v1).'
+          type: string
+        offset:
+          description: The version of the control plane known by the client.
+          type: string
+      additionalProperties: false
+      required:
+        - version
+    MCPServerSignalV1:
+      description: |
+        Signal notifying the client that the MCP control plane config has changed.
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - mcp
+        version:
+          description: The current version of the MCP control plane.
+          type: string
+        offset:
+          description: The offset for the MCP signal.
+          type: string
+      example:
+        type: mcp
+        version: v1
+        offset: '6'
+      additionalProperties: false
+      required:
+        - type
+        - version
+        - offset
+    MCPServerSignal:
+      description: A single signal envelope containing exactly one typed capability signal.
+      discriminator:
+        propertyName: type
+        mapping:
+          mcp: '#/components/schemas/MCPServerSignalV1'
+      oneOf:
+        - $ref: '#/components/schemas/MCPServerSignalV1'
+    MCPServerSignals:
+      description: The MCP server signals response.
+      type: object
+      properties:
+        signals:
+          description: A list of signals for the MCP server.
+          type: array
+          items:
+            $ref: '#/components/schemas/MCPServerSignal'
+      required:
+        - signals
     DataPlaneClientCertificate:
       x-speakeasy-entity: GatewayDataPlaneClientCertificate
       type: object
@@ -37618,12 +39066,6 @@ components:
       additionalProperties: false
       required:
         - subject_name
-    PaginationNextResponse:
-      description: URI to the next page (may be null)
-      type: string
-    PaginationOffsetResponse:
-      description: Offset is used to paginate through the API. Provide this value to the next list operation to fetch the next page
-      type: string
     Partial:
       type: object
       discriminator:
@@ -40111,20 +41553,8 @@ components:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              name:
-                $ref: '#/components/schemas/PATName'
-              expires_at:
-                description: An ISO-8601 timestamp representation of entity expiration date.
-                type: string
-                format: date-time
-                example: '2022-11-04T20:10:06.927Z'
-                readOnly: false
-                x-speakeasy-param-suppress-computed-diff: true
-            required:
-              - name
-              - expires_at
+            oneOf:
+              - $ref: '#/components/schemas/PersonalAccessTokenCreateRequestWithExpiresAt'
     PersonalAccessTokenUpdateRequest:
       description: Request body schema for updating personal access tokens.
       content:
@@ -40861,6 +42291,16 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/PortalCustomization'
+    ReplacePortalIntegrations:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PortalIntegrations'
+    UpdatePortalIntegrations:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdatePortalIntegrations'
     CreatePortalPage:
       description: Create a page in a portal.
       required: true
@@ -44187,6 +45627,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/PortalCustomization'
+    PortalIntegrationsResponse:
+      description: The current integration configurations for a portal.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PortalIntegrations'
     DefaultContentResponse:
       description: Summary of created default content
       content:
@@ -44919,6 +46365,30 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/GoneError'
+    MCPServerSignalsResponse:
+      description: The MCP server signals response.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MCPServerSignals'
+    ListMCPServersResponse:
+      description: A response to listing MCP servers.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListMCPServersResponse'
+    CreateMCPServerResponse:
+      description: A response to creating an MCP server.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MCPServerInfo'
+    UpdateMCPServerResponse:
+      description: A response to updating an MCP server.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MCPServerInfo'
     DataPlaneClientCertificateResponse:
       description: Response body for retrieving a dp-client-certificate.
       content:
@@ -45371,6 +46841,8 @@ tags:
     description: APIs related to Konnect Developer Portal developer team membership.
   - name: Portal Team Roles
     description: APIs related to Konnect Developer Portal developer team roles.
+  - name: Portal Integrations
+    description: APIs to configure Konnect Developer Portal integrations.
   - name: Assets
     description: APIs for managing static assets for Konnect Developer Portals.
   - name: Pages
@@ -45521,7 +46993,7 @@ tags:
       Configure a schema registry that can be used to validate payloads when producing/consuming messages
   - name: Event Gateway Nodes
   - name: OpenMeter Billing
-    description: 'Billing manages the billing profiles, and invoices for customers.'
+    description: 'Billing manages the billing profiles, currencies, cost bases, and invoices for customers.'
   - name: OpenMeter Apps
     description: 'Apps enable you to extend and customize billing and usage workflows by integrating with external systems and services. Apps can automate and enhance your billing ecosystem by supporting capabilities such as synchronizing usage data with third-party platforms, calculating taxes, generating and delivering invoices, handling payment collection, and other billing-related tasks.'
   - name: OpenMeter Entitlements
@@ -45534,6 +47006,7 @@ tags:
     description: 'Metering events are used to track usage of your product or service. Events are processed asynchronously by the meters, so they may not be immediately available for querying.'
   - name: Meters
     description: 'Meters specify how to aggregate events for billing and analytics purposes. Meters can be configured with multiple aggregation methods and groupings. Multiple meters can be created for the same event type, enabling flexible metering scenarios.'
+  - name: MCP Servers
   - description: DP Nodes
     name: DP Nodes
   - description: DP Certificates
