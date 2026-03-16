@@ -3,9 +3,21 @@
 Request body schema for creating personal access tokens.
 
 
-## Fields
+## Supported Types
 
-| Field                                                           | Type                                                            | Required                                                        | Description                                                     | Example                                                         |
-| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `Name`                                                          | `string`                                                        | :heavy_check_mark:                                              | N/A                                                             |                                                                 |
-| `ExpiresAt`                                                     | [time.Time](https://pkg.go.dev/time#Time)                       | :heavy_check_mark:                                              | An ISO-8601 timestamp representation of entity expiration date. | 2022-11-04T20:10:06.927Z                                        |
+### PersonalAccessTokenCreateRequestWithExpiresAt
+
+```go
+personalAccessTokenCreateRequest := components.CreatePersonalAccessTokenCreateRequestPersonalAccessTokenCreateRequestWithExpiresAt(components.PersonalAccessTokenCreateRequestWithExpiresAt{/* values here */})
+```
+
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch personalAccessTokenCreateRequest.Type {
+	case components.PersonalAccessTokenCreateRequestTypePersonalAccessTokenCreateRequestWithExpiresAt:
+		// personalAccessTokenCreateRequest.PersonalAccessTokenCreateRequestWithExpiresAt is populated
+}
+```

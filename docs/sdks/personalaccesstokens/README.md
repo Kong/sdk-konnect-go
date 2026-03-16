@@ -96,10 +96,12 @@ func main() {
         }),
     )
 
-    res, err := s.PersonalAccessTokens.CreatePersonalAccessToken(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", &components.PersonalAccessTokenCreateRequest{
-        Name: "<value>",
-        ExpiresAt: types.MustTimeFromString("2022-11-04T20:10:06.927Z"),
-    })
+    res, err := s.PersonalAccessTokens.CreatePersonalAccessToken(ctx, "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7", sdkkonnectgo.Pointer(components.CreatePersonalAccessTokenCreateRequestPersonalAccessTokenCreateRequestWithExpiresAt(
+        components.PersonalAccessTokenCreateRequestWithExpiresAt{
+            Name: "<value>",
+            ExpiresAt: types.MustTimeFromString("2022-11-04T20:10:06.927Z"),
+        },
+    )))
     if err != nil {
         log.Fatal(err)
     }

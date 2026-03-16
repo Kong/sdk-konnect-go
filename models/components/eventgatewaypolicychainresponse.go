@@ -4,12 +4,12 @@ package components
 
 // EventGatewayPolicyChainResponse - A response containing the list of policies in order of execution.
 type EventGatewayPolicyChainResponse struct {
-	Policies []EventGatewayPolicyReference `json:"policies"`
+	Policies []string `json:"policies"`
 }
 
-func (e *EventGatewayPolicyChainResponse) GetPolicies() []EventGatewayPolicyReference {
+func (e *EventGatewayPolicyChainResponse) GetPolicies() []string {
 	if e == nil {
-		return []EventGatewayPolicyReference{}
+		return []string{}
 	}
 	return e.Policies
 }

@@ -107,6 +107,13 @@ func (u *TransitGatewayResponse) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var azureVhubPeeringGatewayResponse AzureVhubPeeringGatewayResponse = AzureVhubPeeringGatewayResponse{}
+	if err := utils.UnmarshalJSON(data, &azureVhubPeeringGatewayResponse, "", true, nil); err == nil {
+		u.AzureVhubPeeringGatewayResponse = &azureVhubPeeringGatewayResponse
+		u.Type = TransitGatewayResponseTypeAzureVhubPeeringGatewayResponse
+		return nil
+	}
+
 	var gcpvpcPeeringGatewayResponse GCPVPCPeeringGatewayResponse = GCPVPCPeeringGatewayResponse{}
 	if err := utils.UnmarshalJSON(data, &gcpvpcPeeringGatewayResponse, "", true, nil); err == nil {
 		u.GCPVPCPeeringGatewayResponse = &gcpvpcPeeringGatewayResponse
@@ -118,13 +125,6 @@ func (u *TransitGatewayResponse) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &awsResourceEndpointGatewayResponse, "", true, nil); err == nil {
 		u.AwsResourceEndpointGatewayResponse = &awsResourceEndpointGatewayResponse
 		u.Type = TransitGatewayResponseTypeAwsResourceEndpointGatewayResponse
-		return nil
-	}
-
-	var azureVhubPeeringGatewayResponse AzureVhubPeeringGatewayResponse = AzureVhubPeeringGatewayResponse{}
-	if err := utils.UnmarshalJSON(data, &azureVhubPeeringGatewayResponse, "", true, nil); err == nil {
-		u.AzureVhubPeeringGatewayResponse = &azureVhubPeeringGatewayResponse
-		u.Type = TransitGatewayResponseTypeAzureVhubPeeringGatewayResponse
 		return nil
 	}
 

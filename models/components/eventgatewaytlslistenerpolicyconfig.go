@@ -6,6 +6,70 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// EventGatewayTLSListenerPolicyConfigMode - * required - Reject TLS connections without a valid client certificate.
+// * requested - Request a client certificate during the TLS handshake, but allow connections without one (falls back to other configured authentication methods). If a certificate is presented but cannot be verified, the connection is closed.
+type EventGatewayTLSListenerPolicyConfigMode string
+
+const (
+	EventGatewayTLSListenerPolicyConfigModeRequired  EventGatewayTLSListenerPolicyConfigMode = "required"
+	EventGatewayTLSListenerPolicyConfigModeRequested EventGatewayTLSListenerPolicyConfigMode = "requested"
+)
+
+func (e EventGatewayTLSListenerPolicyConfigMode) ToPointer() *EventGatewayTLSListenerPolicyConfigMode {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *EventGatewayTLSListenerPolicyConfigMode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "required", "requested":
+			return true
+		}
+	}
+	return false
+}
+
+// ClientAuthentication - Configures mutual TLS (mTLS) client certificate verification. When set, the gateway
+// requests or requires clients to present a certificate during the TLS handshake.
+type ClientAuthentication struct {
+	// * required - Reject TLS connections without a valid client certificate.
+	// * requested - Request a client certificate during the TLS handshake, but allow connections without one (falls back to other configured authentication methods). If a certificate is presented but cannot be verified, the connection is closed.
+	//
+	Mode EventGatewayTLSListenerPolicyConfigMode `json:"mode"`
+	// References to TLS trust bundle resources used to verify client certificates. Evaluated in order;
+	// verification stops at the first trust bundle that successfully validates the client certificate
+	// chain. If no trust bundle validates the certificate chain, the connection is closed when mode is
+	// `required`.
+	//
+	TLSTrustBundles []TLSTrustBundleReference `json:"tls_trust_bundles"`
+}
+
+func (c ClientAuthentication) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ClientAuthentication) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"mode", "tls_trust_bundles"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (c *ClientAuthentication) GetMode() EventGatewayTLSListenerPolicyConfigMode {
+	if c == nil {
+		return EventGatewayTLSListenerPolicyConfigMode("")
+	}
+	return c.Mode
+}
+
+func (c *ClientAuthentication) GetTLSTrustBundles() []TLSTrustBundleReference {
+	if c == nil {
+		return []TLSTrustBundleReference{}
+	}
+	return c.TLSTrustBundles
+}
+
 type EventGatewayTLSListenerPolicyConfig struct {
 	Certificates []TLSCertificate `json:"certificates"`
 	// A range of TLS versions.
@@ -13,6 +77,10 @@ type EventGatewayTLSListenerPolicyConfig struct {
 	// If false, only TLS connections are allowed. If true, both TLS and plaintext connections are allowed.
 	//
 	AllowPlaintext *bool `default:"false" json:"allow_plaintext"`
+	// Configures mutual TLS (mTLS) client certificate verification. When set, the gateway
+	// requests or requires clients to present a certificate during the TLS handshake.
+	//
+	ClientAuthentication *ClientAuthentication `json:"client_authentication,omitempty"`
 }
 
 func (e EventGatewayTLSListenerPolicyConfig) MarshalJSON() ([]byte, error) {
@@ -45,4 +113,11 @@ func (e *EventGatewayTLSListenerPolicyConfig) GetAllowPlaintext() *bool {
 		return nil
 	}
 	return e.AllowPlaintext
+}
+
+func (e *EventGatewayTLSListenerPolicyConfig) GetClientAuthentication() *ClientAuthentication {
+	if e == nil {
+		return nil
+	}
+	return e.ClientAuthentication
 }

@@ -16,6 +16,7 @@ const (
 	ControlPlaneClusterTypeClusterTypeControlPlaneGroup     ControlPlaneClusterType = "CLUSTER_TYPE_CONTROL_PLANE_GROUP"
 	ControlPlaneClusterTypeClusterTypeServerless            ControlPlaneClusterType = "CLUSTER_TYPE_SERVERLESS"
 	ControlPlaneClusterTypeClusterTypeKafkaNativeEventProxy ControlPlaneClusterType = "CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY"
+	ControlPlaneClusterTypeClusterTypeServerlessV1          ControlPlaneClusterType = "CLUSTER_TYPE_SERVERLESS_V1"
 )
 
 func (e ControlPlaneClusterType) ToPointer() *ControlPlaneClusterType {
@@ -26,7 +27,7 @@ func (e ControlPlaneClusterType) ToPointer() *ControlPlaneClusterType {
 func (e *ControlPlaneClusterType) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "CLUSTER_TYPE_CONTROL_PLANE", "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER", "CLUSTER_TYPE_CONTROL_PLANE_GROUP", "CLUSTER_TYPE_SERVERLESS", "CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY":
+		case "CLUSTER_TYPE_CONTROL_PLANE", "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER", "CLUSTER_TYPE_CONTROL_PLANE_GROUP", "CLUSTER_TYPE_SERVERLESS", "CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY", "CLUSTER_TYPE_SERVERLESS_V1":
 			return true
 		}
 	}

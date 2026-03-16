@@ -43,6 +43,8 @@ type ClientSecretCredentialListItem struct {
 	ClientID string `json:"client_id"`
 	// Creation timestamp, if available
 	CreatedAt *time.Time `json:"created_at"`
+	// Expiration timestamp, if applicable
+	ExpiresAt *time.Time `json:"expires_at,omitempty"`
 }
 
 func (c ClientSecretCredentialListItem) MarshalJSON() ([]byte, error) {
@@ -89,4 +91,11 @@ func (c *ClientSecretCredentialListItem) GetCreatedAt() *time.Time {
 		return nil
 	}
 	return c.CreatedAt
+}
+
+func (c *ClientSecretCredentialListItem) GetExpiresAt() *time.Time {
+	if c == nil {
+		return nil
+	}
+	return c.ExpiresAt
 }

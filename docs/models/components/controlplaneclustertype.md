@@ -25,3 +25,4 @@ custom := components.ControlPlaneClusterType("custom_value")
 | `ControlPlaneClusterTypeClusterTypeControlPlaneGroup`     | CLUSTER_TYPE_CONTROL_PLANE_GROUP                          |
 | `ControlPlaneClusterTypeClusterTypeServerless`            | CLUSTER_TYPE_SERVERLESS                                   |
 | `ControlPlaneClusterTypeClusterTypeKafkaNativeEventProxy` | CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY                     |
+| `ControlPlaneClusterTypeClusterTypeServerlessV1`          | CLUSTER_TYPE_SERVERLESS_V1                                |

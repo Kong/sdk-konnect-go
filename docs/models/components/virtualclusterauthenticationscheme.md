@@ -27,6 +27,12 @@ virtualClusterAuthenticationScheme := components.CreateVirtualClusterAuthenticat
 virtualClusterAuthenticationScheme := components.CreateVirtualClusterAuthenticationSchemeOauthBearer(components.VirtualClusterAuthenticationOauthBearer{/* values here */})
 ```
 
+### VirtualClusterAuthenticationClientCertificate
+
+```go
+virtualClusterAuthenticationScheme := components.CreateVirtualClusterAuthenticationSchemeClientCertificate(components.VirtualClusterAuthenticationClientCertificate{/* values here */})
+```
+
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -41,5 +47,7 @@ switch virtualClusterAuthenticationScheme.Type {
 		// virtualClusterAuthenticationScheme.VirtualClusterAuthenticationSaslScram is populated
 	case components.VirtualClusterAuthenticationSchemeTypeOauthBearer:
 		// virtualClusterAuthenticationScheme.VirtualClusterAuthenticationOauthBearer is populated
+	case components.VirtualClusterAuthenticationSchemeTypeClientCertificate:
+		// virtualClusterAuthenticationScheme.VirtualClusterAuthenticationClientCertificate is populated
 }
 ```
