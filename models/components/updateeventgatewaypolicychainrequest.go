@@ -4,12 +4,12 @@ package components
 
 // UpdateEventGatewayPolicyChainRequest - The request schema for updating the policy chain.
 type UpdateEventGatewayPolicyChainRequest struct {
-	Policies []EventGatewayPolicyReference `json:"policies"`
+	Policies []string `json:"policies"`
 }
 
-func (u *UpdateEventGatewayPolicyChainRequest) GetPolicies() []EventGatewayPolicyReference {
+func (u *UpdateEventGatewayPolicyChainRequest) GetPolicies() []string {
 	if u == nil {
-		return []EventGatewayPolicyReference{}
+		return []string{}
 	}
 	return u.Policies
 }

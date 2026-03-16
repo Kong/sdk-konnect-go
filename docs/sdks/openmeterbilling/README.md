@@ -2,7 +2,7 @@
 
 ## Overview
 
-Billing manages the billing profiles, and invoices for customers.
+Billing manages the billing profiles, currencies, cost bases, and invoices for customers.
 
 ### Available Operations
 

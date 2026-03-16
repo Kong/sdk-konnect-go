@@ -1,0 +1,12 @@
+# MCPServerToolInput
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `Name`                                                                          | `string`                                                                        | :heavy_check_mark:                                                              | The unique name of the MCP server tool.                                         |
+| `State`                                                                         | [*components.MCPServerToolState](../../models/components/mcpservertoolstate.md) | :heavy_minus_sign:                                                              | The state of the MCP server tool.                                               |
+| `Definition`                                                                    | []map[string]`any`                                                              | :heavy_minus_sign:                                                              | N/A                                                                             |
+| `DefinitionDraft`                                                               | []map[string]`any`                                                              | :heavy_minus_sign:                                                              | N/A                                                                             |
+| `LayoutMetadata`                                                                | map[string]`any`                                                                | :heavy_minus_sign:                                                              | Layout metadata for the MCP server tool.                                        |

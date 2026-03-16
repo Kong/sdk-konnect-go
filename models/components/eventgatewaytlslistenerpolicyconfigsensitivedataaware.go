@@ -6,6 +6,70 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
+// EventGatewayTLSListenerPolicyConfigSensitiveDataAwareMode - * required - Reject TLS connections without a valid client certificate.
+// * requested - Request a client certificate during the TLS handshake, but allow connections without one (falls back to other configured authentication methods). If a certificate is presented but cannot be verified, the connection is closed.
+type EventGatewayTLSListenerPolicyConfigSensitiveDataAwareMode string
+
+const (
+	EventGatewayTLSListenerPolicyConfigSensitiveDataAwareModeRequired  EventGatewayTLSListenerPolicyConfigSensitiveDataAwareMode = "required"
+	EventGatewayTLSListenerPolicyConfigSensitiveDataAwareModeRequested EventGatewayTLSListenerPolicyConfigSensitiveDataAwareMode = "requested"
+)
+
+func (e EventGatewayTLSListenerPolicyConfigSensitiveDataAwareMode) ToPointer() *EventGatewayTLSListenerPolicyConfigSensitiveDataAwareMode {
+	return &e
+}
+
+// IsExact returns true if the value matches a known enum value, false otherwise.
+func (e *EventGatewayTLSListenerPolicyConfigSensitiveDataAwareMode) IsExact() bool {
+	if e != nil {
+		switch *e {
+		case "required", "requested":
+			return true
+		}
+	}
+	return false
+}
+
+// EventGatewayTLSListenerPolicyConfigSensitiveDataAwareClientAuthentication - Configures mutual TLS (mTLS) client certificate verification. When set, the gateway
+// requests or requires clients to present a certificate during the TLS handshake.
+type EventGatewayTLSListenerPolicyConfigSensitiveDataAwareClientAuthentication struct {
+	// * required - Reject TLS connections without a valid client certificate.
+	// * requested - Request a client certificate during the TLS handshake, but allow connections without one (falls back to other configured authentication methods). If a certificate is presented but cannot be verified, the connection is closed.
+	//
+	Mode EventGatewayTLSListenerPolicyConfigSensitiveDataAwareMode `json:"mode"`
+	// References to TLS trust bundle resources used to verify client certificates. Evaluated in order;
+	// verification stops at the first trust bundle that successfully validates the client certificate
+	// chain. If no trust bundle validates the certificate chain, the connection is closed when mode is
+	// `required`.
+	//
+	TLSTrustBundles []TLSTrustBundleReference `json:"tls_trust_bundles"`
+}
+
+func (e EventGatewayTLSListenerPolicyConfigSensitiveDataAwareClientAuthentication) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EventGatewayTLSListenerPolicyConfigSensitiveDataAwareClientAuthentication) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"mode", "tls_trust_bundles"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EventGatewayTLSListenerPolicyConfigSensitiveDataAwareClientAuthentication) GetMode() EventGatewayTLSListenerPolicyConfigSensitiveDataAwareMode {
+	if e == nil {
+		return EventGatewayTLSListenerPolicyConfigSensitiveDataAwareMode("")
+	}
+	return e.Mode
+}
+
+func (e *EventGatewayTLSListenerPolicyConfigSensitiveDataAwareClientAuthentication) GetTLSTrustBundles() []TLSTrustBundleReference {
+	if e == nil {
+		return []TLSTrustBundleReference{}
+	}
+	return e.TLSTrustBundles
+}
+
 type EventGatewayTLSListenerPolicyConfigSensitiveDataAware struct {
 	Certificates []TLSCertificateSensitiveDataAware `json:"certificates"`
 	// A range of TLS versions.
@@ -13,6 +77,10 @@ type EventGatewayTLSListenerPolicyConfigSensitiveDataAware struct {
 	// If false, only TLS connections are allowed. If true, both TLS and plaintext connections are allowed.
 	//
 	AllowPlaintext *bool `default:"false" json:"allow_plaintext"`
+	// Configures mutual TLS (mTLS) client certificate verification. When set, the gateway
+	// requests or requires clients to present a certificate during the TLS handshake.
+	//
+	ClientAuthentication *EventGatewayTLSListenerPolicyConfigSensitiveDataAwareClientAuthentication `json:"client_authentication,omitempty"`
 }
 
 func (e EventGatewayTLSListenerPolicyConfigSensitiveDataAware) MarshalJSON() ([]byte, error) {
@@ -45,4 +113,11 @@ func (e *EventGatewayTLSListenerPolicyConfigSensitiveDataAware) GetAllowPlaintex
 		return nil
 	}
 	return e.AllowPlaintext
+}
+
+func (e *EventGatewayTLSListenerPolicyConfigSensitiveDataAware) GetClientAuthentication() *EventGatewayTLSListenerPolicyConfigSensitiveDataAwareClientAuthentication {
+	if e == nil {
+		return nil
+	}
+	return e.ClientAuthentication
 }

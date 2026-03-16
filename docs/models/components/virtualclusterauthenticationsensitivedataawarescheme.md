@@ -27,6 +27,12 @@ virtualClusterAuthenticationSensitiveDataAwareScheme := components.CreateVirtual
 virtualClusterAuthenticationSensitiveDataAwareScheme := components.CreateVirtualClusterAuthenticationSensitiveDataAwareSchemeOauthBearer(components.VirtualClusterAuthenticationOauthBearer{/* values here */})
 ```
 
+### VirtualClusterAuthenticationClientCertificate
+
+```go
+virtualClusterAuthenticationSensitiveDataAwareScheme := components.CreateVirtualClusterAuthenticationSensitiveDataAwareSchemeClientCertificate(components.VirtualClusterAuthenticationClientCertificate{/* values here */})
+```
+
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -41,5 +47,7 @@ switch virtualClusterAuthenticationSensitiveDataAwareScheme.Type {
 		// virtualClusterAuthenticationSensitiveDataAwareScheme.VirtualClusterAuthenticationSaslScram is populated
 	case components.VirtualClusterAuthenticationSensitiveDataAwareSchemeTypeOauthBearer:
 		// virtualClusterAuthenticationSensitiveDataAwareScheme.VirtualClusterAuthenticationOauthBearer is populated
+	case components.VirtualClusterAuthenticationSensitiveDataAwareSchemeTypeClientCertificate:
+		// virtualClusterAuthenticationSensitiveDataAwareScheme.VirtualClusterAuthenticationClientCertificate is populated
 }
 ```

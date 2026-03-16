@@ -115,17 +115,17 @@ func (u *CreateTransitGatewayRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var gcpVpcPeeringTransitGateway GcpVpcPeeringTransitGateway = GcpVpcPeeringTransitGateway{}
-	if err := utils.UnmarshalJSON(data, &gcpVpcPeeringTransitGateway, "", true, nil); err == nil {
-		u.GcpVpcPeeringTransitGateway = &gcpVpcPeeringTransitGateway
-		u.Type = CreateTransitGatewayRequestTypeGcpVpcPeeringTransitGateway
-		return nil
-	}
-
 	var azureVhubPeeringGateway AzureVhubPeeringGateway = AzureVhubPeeringGateway{}
 	if err := utils.UnmarshalJSON(data, &azureVhubPeeringGateway, "", true, nil); err == nil {
 		u.AzureVhubPeeringGateway = &azureVhubPeeringGateway
 		u.Type = CreateTransitGatewayRequestTypeAzureVhubPeeringGateway
+		return nil
+	}
+
+	var gcpVpcPeeringTransitGateway GcpVpcPeeringTransitGateway = GcpVpcPeeringTransitGateway{}
+	if err := utils.UnmarshalJSON(data, &gcpVpcPeeringTransitGateway, "", true, nil); err == nil {
+		u.GcpVpcPeeringTransitGateway = &gcpVpcPeeringTransitGateway
+		u.Type = CreateTransitGatewayRequestTypeGcpVpcPeeringTransitGateway
 		return nil
 	}
 

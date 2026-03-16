@@ -17,7 +17,7 @@ import (
 	"net/url"
 )
 
-// OpenMeterBilling - Billing manages the billing profiles, and invoices for customers.
+// OpenMeterBilling - Billing manages the billing profiles, currencies, cost bases, and invoices for customers.
 type OpenMeterBilling struct {
 	rootSDK          *SDK
 	sdkConfiguration config.SDKConfiguration

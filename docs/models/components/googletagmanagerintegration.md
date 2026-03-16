@@ -1,0 +1,12 @@
+# GoogleTagManagerIntegration
+
+Google Tag Manager integration configuration
+
+
+## Fields
+
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `Enabled`                                                                                                | `bool`                                                                                                   | :heavy_check_mark:                                                                                       | Whether the integration is enabled                                                                       |
+| `Type`                                                                                                   | [components.GoogleTagManagerIntegrationType](../../models/components/googletagmanagerintegrationtype.md) | :heavy_check_mark:                                                                                       | The type of the integration for categorization                                                           |
+| `ConfigData`                                                                                             | [components.ConfigData](../../models/components/configdata.md)                                           | :heavy_check_mark:                                                                                       | Configuration data for the Google Tag Manager integration                                                |

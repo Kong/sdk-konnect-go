@@ -2,7 +2,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.2.2 and generator version 2.859.2
+// Generated from OpenAPI doc version 3.3.1 and generator version 2.865.2
 
 import (
 	"context"
@@ -65,7 +65,7 @@ type SDK struct {
 	MeteringEvents *MeteringEvents
 	// Meters specify how to aggregate events for billing and analytics purposes. Meters can be configured with multiple aggregation methods and groupings. Multiple meters can be created for the same event type, enabling flexible metering scenarios.
 	Meters *Meters
-	// Billing manages the billing profiles, and invoices for customers.
+	// Billing manages the billing profiles, currencies, cost bases, and invoices for customers.
 	OpenMeterBilling *OpenMeterBilling
 	// Subscriptions are used to track usage of your product or service. Subscriptions can be individuals or organizations that can subscribe to plans and have access to features.
 	OpenMeterSubscriptions *OpenMeterSubscriptions
@@ -197,6 +197,7 @@ type SDK struct {
 	// To set up and view a list of all the integrations we support please view our [documentation](https://developer.konghq.com/service-catalog/integrations/).
 	//
 	CatalogIntegrations *CatalogIntegrations
+	MCPServers          *MCPServers
 	// Operations related to notifications
 	Notifications *Notifications
 	// Resource mappings represent the link between a resource and a service.
@@ -370,6 +371,8 @@ type SDK struct {
 	PortalTeamMembership *PortalTeamMembership
 	// APIs related to Konnect Developer Portal Emails.
 	PortalEmails *PortalEmails
+	// APIs to configure Konnect Developer Portal integrations.
+	PortalIntegrations *PortalIntegrations
 	// APIs related to Konnect Developer Portal Custom Snippets.
 	Snippets *Snippets
 	// APIs related to configuration of Konnect Developer Portal developer teams.
@@ -458,9 +461,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.26.2",
+		SDKVersion: "0.27.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.26.2 2.859.2 3.2.2 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.27.0 2.865.2 3.3.1 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -510,6 +513,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.IntegrationInstanceAuthCredentials = newIntegrationInstanceAuthCredentials(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResources = newCatalogResources(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogIntegrations = newCatalogIntegrations(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.MCPServers = newMCPServers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Notifications = newNotifications(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResourceMappings = newCatalogResourceMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogResourceServices = newCatalogResourceServices(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -577,6 +581,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.PortalDevelopers = newPortalDevelopers(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalTeamMembership = newPortalTeamMembership(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalEmails = newPortalEmails(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalIntegrations = newPortalIntegrations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Snippets = newSnippets(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalTeams = newPortalTeams(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Roles = newRoles(sdk, sdk.sdkConfiguration, sdk.hooks)
