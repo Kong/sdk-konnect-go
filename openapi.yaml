@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Konnect API - Go SDK
-  version: 3.3.1
+  version: 3.3.2
   description: The Konnect platform API
   contact:
     name: Kong Inc
@@ -3385,7 +3385,7 @@ paths:
         - $ref: '#/components/parameters/MCPServerCommonFilter'
       responses:
         '200':
-          $ref: '#/components/responses/ListMCPServersResponse'
+          $ref: '#/components/responses/ListMCPServersCPInfoResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -3408,11 +3408,11 @@ paths:
         Retrieves an MCP server by its ID within a specific control plane context.
       responses:
         '200':
-          description: A response to retrieving a single MCP server.
+          description: A response to retrieving a single MCP server within a control plane context.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MCPServerInfo'
+                $ref: '#/components/schemas/MCPServerCPInfo'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -12642,6 +12642,29 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Applications
+    patch:
+      operationId: update-application
+      summary: Update Application
+      description: Updates an application.
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateApplication'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetApplication'
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Applications
     delete:
       operationId: delete-application
       summary: Delete Application by Portal
@@ -13388,6 +13411,16 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PageSize'
         - $ref: '#/components/parameters/PageNumber'
+        - name: filter
+          in: query
+          description: Filter teams returned in the response.
+          required: false
+          schema:
+            type: object
+            properties:
+              can_own_applications:
+                $ref: '#/components/schemas/BooleanFieldFilter'
+          style: deepObject
       responses:
         '200':
           $ref: '#/components/responses/ListPortalTeams'
@@ -14218,6 +14251,8 @@ paths:
             properties:
               name:
                 $ref: '#/components/schemas/StringFieldFilter'
+              can_own_applications:
+                $ref: '#/components/schemas/BooleanFieldFilter'
           style: deepObject
       responses:
         '200':
@@ -25506,6 +25541,13 @@ components:
         - name
         - content
       title: CreatePortalSnippetRequest
+    UpdateApplicationRequest:
+      type: object
+      properties:
+        owner:
+          $ref: '#/components/schemas/ApplicationOwner'
+      additionalProperties: false
+      title: UpdateApplicationRequest
     ListApplicationsResponse:
       type: object
       properties:
@@ -25774,6 +25816,8 @@ components:
           items:
             type: string
           nullable: true
+        owner:
+          $ref: '#/components/schemas/ApplicationOwner'
       additionalProperties: false
       required:
         - id
@@ -25822,6 +25866,8 @@ components:
           description: The number of API registrations that are associated with the application. Registrations of any status are included in the count.
           type: number
           readOnly: true
+        owner:
+          $ref: '#/components/schemas/ApplicationOwner'
       example:
         id: b15e2460-ba40-431d-9df0-4957fcffacda
         labels:
@@ -26345,16 +26391,19 @@ components:
             description: Team with access to Partner APIs
             created_at: '2022-02-07T17:46:57.52Z'
             updated_at: '2022-09-25T13:00:00.00Z'
+            can_own_applications: false
           - id: af9fd312-a987-4628-b4c5-bb4f4fddd5f7
             name: Internal
             description: Team with access to Internal APIs
             created_at: '2022-02-07T17:46:57.52Z'
             updated_at: '2022-09-25T13:00:00.00Z'
+            can_own_applications: true
           - id: 4f9fd312-a987-4628-b4c5-bb4f4fddd5f7
             name: Root
             description: Team with access to Internal Systems
             created_at: '2022-02-07T17:46:57.52Z'
             updated_at: '2022-09-25T13:00:00.00Z'
+            can_own_applications: true
       required:
         - data
         - meta
@@ -26633,9 +26682,14 @@ components:
           example: The Identity Management (IDM) API team.
           maxLength: 250
           writeOnly: true
+        can_own_applications:
+          description: Whether the team is allowed to own applications.
+          type: boolean
+          example: true
       example:
         name: IDM - Developers
         description: The Identity Management (IDM) API team.
+        can_own_applications: false
       title: PortalUpdateTeamRequest
     PortalCreateTeamRequest:
       x-speakeasy-entity: PortalTeam
@@ -26652,9 +26706,15 @@ components:
           example: The Identity Management (IDM) team.
           maxLength: 250
           writeOnly: true
+        can_own_applications:
+          description: Whether the team is allowed to own applications
+          type: boolean
+          example: true
+          default: false
       example:
         name: IDM - Developers
         description: The Identity Management (IDM) team.
+        can_own_applications: false
       required:
         - name
       title: PortalCreateTeamRequest
@@ -26686,12 +26746,17 @@ components:
           format: date-time
           example: '2022-02-07T17:00:00.52Z'
           readOnly: true
+        can_own_applications:
+          description: Whether the team is allowed to own applications.
+          type: boolean
+          example: false
       example:
         id: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
         name: IDM - Developers
         description: The developers for the IDM API.
         created_at: '1992-02-07T17:46:57.52Z'
         updated_at: '2022-08-31T17:00:00.52Z'
+        can_own_applications: false
       title: PortalTeamResponse
     PortalTeamGroupMappingResponse:
       description: A paginated list of portal team group mappings.
@@ -27191,6 +27256,8 @@ components:
           $ref: '#/components/schemas/UuidFieldFilter'
         name:
           $ref: '#/components/schemas/StringFieldFilter'
+        team_id:
+          $ref: '#/components/schemas/UuidFieldFilter'
     ImageGIFDataUri:
       description: 'must be a data URL with base64 GIF image data, e.g., data:image/gif;base64,<BASE64_IMAGE_DATA>'
       type: string
@@ -27627,6 +27694,28 @@ components:
         - name
         - credential_type
         - auth_methods
+    ApplicationOwnerType:
+      description: The type of the owner of the application. Can be `developer` (individual developer) or `team`.
+      type: string
+      enum:
+        - developer
+        - team
+      x-speakeasy-unknown-values: allow
+    ApplicationOwnerId:
+      description: 'The ID of the owner of the application. When type is `developer`, this is the developer ID. When type is `team`, this is the team ID.'
+      type: string
+      format: uuid
+    ApplicationOwner:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ApplicationOwnerType'
+        id:
+          $ref: '#/components/schemas/ApplicationOwnerId'
+      additionalProperties: false
+      required:
+        - type
+        - id
     AuthStrategyKeyAuth:
       description: KeyAuth Auth strategy that the application uses.
       type: object
@@ -32298,14 +32387,56 @@ components:
               x-speakeasy-unknown-values: allow
             tls_trust_bundles:
               description: |
-                References to TLS trust bundle resources used to verify client certificates. Evaluated in order;
-                verification stops at the first trust bundle that successfully validates the client certificate
-                chain. If no trust bundle validates the certificate chain, the connection is closed when mode is
-                `required`.
+                TLS trust bundles contain CA certificate bundles used to verify client certificates.
+                All bundles are merged into a single trust store; a client certificate is accepted if it
+                chains to any trusted CA across all bundles.
               type: array
               items:
                 $ref: '#/components/schemas/TLSTrustBundleReference'
               minItems: 1
+            principal_mapping:
+              description: |
+                An expression that extracts a principal identifier from a verified client certificate.
+                This expression must evaluate to a string.
+              type: string
+              example: '${context.certificate.subject[''CN''] ? context.certificate.subject[''CN''] : context.certificate.sans.uri[0]}'
+              x-expression:
+                type: string
+                fields:
+                  - name: context.certificate.serialNumber
+                    type: string
+                    description: The string serial number of the certificate
+                  - name: context.certificate.subject
+                    type: object
+                    description: |
+                      A map of the subject distinguished name.
+
+                      A distinguished name as described by RFC 4514 is represented as a map with each key being
+                      the attribute type and the value being the attribute value.
+                      For example:
+                      * `certificate.subject['CN']` is the common name
+                      * `certificate.subject['O']` is the organization
+                  - name: context.certificate.issuer
+                    type: object
+                    description: |
+                      A map of the issuer distinguished name.
+
+                      A distinguished name as described by RFC 4514 is represented as a map with each key being
+                      the attribute type and the value being the attribute value.
+                      For example:
+                      * `certificate.issuer['CN']` is the common name
+                      * `certificate.issuer['O']` is the organization
+                  - name: context.certificate.sans.dns
+                    type: array
+                    items:
+                      type: string
+                    description: An array of the DNS Subject Alternative Names from the certificate.
+                  - name: context.certificate.sans.uri
+                    type: array
+                    items:
+                      type: string
+                    description: An array of the URI Subject Alternative Names from the certificate.
+              x-min-runtime-version: '1.1'
           required:
             - mode
             - tls_trust_bundles
@@ -32345,14 +32476,56 @@ components:
               x-speakeasy-unknown-values: allow
             tls_trust_bundles:
               description: |
-                References to TLS trust bundle resources used to verify client certificates. Evaluated in order;
-                verification stops at the first trust bundle that successfully validates the client certificate
-                chain. If no trust bundle validates the certificate chain, the connection is closed when mode is
-                `required`.
+                TLS trust bundles contain CA certificate bundles used to verify client certificates.
+                All bundles are merged into a single trust store; a client certificate is accepted if it
+                chains to any trusted CA across all bundles.
               type: array
               items:
                 $ref: '#/components/schemas/TLSTrustBundleReference'
               minItems: 1
+            principal_mapping:
+              description: |
+                An expression that extracts a principal identifier from a verified client certificate.
+                This expression must evaluate to a string.
+              type: string
+              example: '${context.certificate.subject[''CN''] ? context.certificate.subject[''CN''] : context.certificate.sans.uri[0]}'
+              x-expression:
+                type: string
+                fields:
+                  - name: context.certificate.serialNumber
+                    type: string
+                    description: The string serial number of the certificate
+                  - name: context.certificate.subject
+                    type: object
+                    description: |
+                      A map of the subject distinguished name.
+
+                      A distinguished name as described by RFC 4514 is represented as a map with each key being
+                      the attribute type and the value being the attribute value.
+                      For example:
+                      * `certificate.subject['CN']` is the common name
+                      * `certificate.subject['O']` is the organization
+                  - name: context.certificate.issuer
+                    type: object
+                    description: |
+                      A map of the issuer distinguished name.
+
+                      A distinguished name as described by RFC 4514 is represented as a map with each key being
+                      the attribute type and the value being the attribute value.
+                      For example:
+                      * `certificate.issuer['CN']` is the common name
+                      * `certificate.issuer['O']` is the organization
+                  - name: context.certificate.sans.dns
+                    type: array
+                    items:
+                      type: string
+                    description: An array of the DNS Subject Alternative Names from the certificate.
+                  - name: context.certificate.sans.uri
+                    type: array
+                    items:
+                      type: string
+                    description: An array of the URI Subject Alternative Names from the certificate.
+              x-min-runtime-version: '1.1'
           required:
             - mode
             - tls_trust_bundles
@@ -37582,6 +37755,25 @@ components:
         - tools_total
         - created_at
         - updated_at
+    ContainerSpec:
+      type: object
+      properties:
+        image:
+          description: The container image to use.
+          type: string
+    MCPServerCPInfo:
+      allOf:
+        - $ref: '#/components/schemas/MCPServerInfo'
+        - type: object
+          properties:
+            container:
+              allOf:
+                - $ref: '#/components/schemas/ContainerSpec'
+                - description: Configuration for the main container.
+            init_container:
+              allOf:
+                - $ref: '#/components/schemas/ContainerSpec'
+                - description: Configuration for the init container.
     CreateMCPServerRequest:
       type: object
       properties:
@@ -37664,6 +37856,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/MCPServerInfo'
+        meta:
+          $ref: '#/components/schemas/CursorMeta'
+      required:
+        - data
+        - meta
+    ListMCPServersCPInfoResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MCPServerCPInfo'
         meta:
           $ref: '#/components/schemas/CursorMeta'
       required:
@@ -42342,6 +42546,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/UpdateApplicationRegistrationRequest'
+    UpdateApplication:
+      description: Update an application.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateApplicationRequest'
     ReplacePortalAuditLogReplayJob:
       description: The request schema to replace a portal audit log replay job.
       content:
@@ -46383,6 +46594,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/MCPServerInfo'
+    ListMCPServersCPInfoResponse:
+      description: A response to listing MCP servers with CP info.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListMCPServersCPInfoResponse'
     UpdateMCPServerResponse:
       description: A response to updating an MCP server.
       content:
