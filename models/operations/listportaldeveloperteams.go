@@ -7,6 +7,19 @@ import (
 	"net/http"
 )
 
+// ListPortalDeveloperTeamsQueryParamFilter - Filter teams returned in the response.
+type ListPortalDeveloperTeamsQueryParamFilter struct {
+	// Filter by a boolean value (true/false).
+	CanOwnApplications *bool `queryParam:"name=can_own_applications"`
+}
+
+func (l *ListPortalDeveloperTeamsQueryParamFilter) GetCanOwnApplications() *bool {
+	if l == nil {
+		return nil
+	}
+	return l.CanOwnApplications
+}
+
 type ListPortalDeveloperTeamsRequest struct {
 	// ID of the developer.
 	DeveloperID string `pathParam:"style=simple,explode=false,name=developerId"`
@@ -16,6 +29,8 @@ type ListPortalDeveloperTeamsRequest struct {
 	PageSize *int64 `queryParam:"style=form,explode=true,name=page[size]"`
 	// Determines which page of the entities to retrieve.
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
+	// Filter teams returned in the response.
+	Filter *ListPortalDeveloperTeamsQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
 func (l *ListPortalDeveloperTeamsRequest) GetDeveloperID() string {
@@ -44,6 +59,13 @@ func (l *ListPortalDeveloperTeamsRequest) GetPageNumber() *int64 {
 		return nil
 	}
 	return l.PageNumber
+}
+
+func (l *ListPortalDeveloperTeamsRequest) GetFilter() *ListPortalDeveloperTeamsQueryParamFilter {
+	if l == nil {
+		return nil
+	}
+	return l.Filter
 }
 
 type ListPortalDeveloperTeamsResponse struct {

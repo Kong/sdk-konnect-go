@@ -47,7 +47,8 @@ type KeyAuthApplication struct {
 	// Information about the portal the application is in.
 	Portal KeyAuthApplicationPortal `json:"portal"`
 	// The number of API registrations that are associated with the application. Registrations of any status are included in the count.
-	RegistrationCount float64 `json:"registration_count"`
+	RegistrationCount float64           `json:"registration_count"`
+	Owner             *ApplicationOwner `json:"owner,omitempty"`
 }
 
 func (k KeyAuthApplication) MarshalJSON() ([]byte, error) {
@@ -115,4 +116,11 @@ func (k *KeyAuthApplication) GetRegistrationCount() float64 {
 		return 0.0
 	}
 	return k.RegistrationCount
+}
+
+func (k *KeyAuthApplication) GetOwner() *ApplicationOwner {
+	if k == nil {
+		return nil
+	}
+	return k.Owner
 }

@@ -6,6 +6,8 @@ package components
 type PortalUpdateTeamRequest struct {
 	Name        *string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
+	// Whether the team is allowed to own applications.
+	CanOwnApplications *bool `json:"can_own_applications,omitempty"`
 }
 
 func (p *PortalUpdateTeamRequest) GetName() *string {
@@ -20,4 +22,11 @@ func (p *PortalUpdateTeamRequest) GetDescription() *string {
 		return nil
 	}
 	return p.Description
+}
+
+func (p *PortalUpdateTeamRequest) GetCanOwnApplications() *bool {
+	if p == nil {
+		return nil
+	}
+	return p.CanOwnApplications
 }

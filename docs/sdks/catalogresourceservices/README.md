@@ -44,7 +44,7 @@ func main() {
         Filter: &components.CatalogServiceFilterParameters{
             CustomFields: sdkkonnectgo.Pointer(components.CreateCustomFieldsNumericFieldFilter(
                 components.CreateNumericFieldFilterNumber(
-                    21,
+                    21.0,
                 ),
             )),
             CreatedAt: sdkkonnectgo.Pointer(components.CreateDateTimeFieldFilterDateTimeFieldEqualsFilter(

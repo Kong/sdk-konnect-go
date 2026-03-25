@@ -14,7 +14,7 @@ type GetMcpServerSignalsRequest struct {
 	// - Keys are capability names (e.g. `mcp`).
 	// - Values contain the capability request fields (`version`).
 	//
-	Capabilities map[string]components.MCPCapabilityRequest `queryParam:"style=deepObject,explode=true,name=capabilities"`
+	Capabilities *components.MCPCapabilitiesMap `queryParam:"style=deepObject,explode=true,name=capabilities"`
 }
 
 func (g *GetMcpServerSignalsRequest) GetControlPlaneID() string {
@@ -24,7 +24,7 @@ func (g *GetMcpServerSignalsRequest) GetControlPlaneID() string {
 	return g.ControlPlaneID
 }
 
-func (g *GetMcpServerSignalsRequest) GetCapabilities() map[string]components.MCPCapabilityRequest {
+func (g *GetMcpServerSignalsRequest) GetCapabilities() *components.MCPCapabilitiesMap {
 	if g == nil {
 		return nil
 	}

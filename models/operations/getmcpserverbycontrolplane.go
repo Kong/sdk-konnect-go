@@ -35,8 +35,8 @@ type GetMcpServerByControlPlaneResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// A response to retrieving a single MCP server.
-	MCPServerInfo *components.MCPServerInfo
+	// A response to retrieving a single MCP server within a control plane context.
+	MCPServerCPInfo *components.MCPServerCPInfo
 }
 
 func (g *GetMcpServerByControlPlaneResponse) GetContentType() string {
@@ -60,9 +60,9 @@ func (g *GetMcpServerByControlPlaneResponse) GetRawResponse() *http.Response {
 	return g.RawResponse
 }
 
-func (g *GetMcpServerByControlPlaneResponse) GetMCPServerInfo() *components.MCPServerInfo {
+func (g *GetMcpServerByControlPlaneResponse) GetMCPServerCPInfo() *components.MCPServerCPInfo {
 	if g == nil {
 		return nil
 	}
-	return g.MCPServerInfo
+	return g.MCPServerCPInfo
 }
