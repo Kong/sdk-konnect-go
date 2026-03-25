@@ -77,7 +77,8 @@ type ClientCredentialsApplication struct {
 	// Client Credential Auth strategy that the application uses.
 	AuthStrategy AuthStrategyClientCredentials `json:"auth_strategy"`
 	// List of granted scopes for the application. Null if application type does not support returning granted scopes.
-	GrantedScopes []string `json:"granted_scopes"`
+	GrantedScopes []string          `json:"granted_scopes"`
+	Owner         *ApplicationOwner `json:"owner,omitempty"`
 }
 
 func (c ClientCredentialsApplication) MarshalJSON() ([]byte, error) {
@@ -166,4 +167,11 @@ func (c *ClientCredentialsApplication) GetGrantedScopes() []string {
 		return nil
 	}
 	return c.GrantedScopes
+}
+
+func (c *ClientCredentialsApplication) GetOwner() *ApplicationOwner {
+	if c == nil {
+		return nil
+	}
+	return c.Owner
 }

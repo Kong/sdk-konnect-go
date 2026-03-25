@@ -56,7 +56,7 @@ func main() {
         Filter: &components.ScorecardFilterParameters{
             ScoreRawValue: sdkkonnectgo.Pointer(components.CreateScoreRawValueNumericFieldFilter(
                 components.CreateNumericFieldFilterNumber(
-                    21,
+                    21.0,
                 ),
             )),
         },
@@ -347,7 +347,7 @@ func main() {
         Filter: &components.ScorecardFilterParameters{
             ScoreRawValue: sdkkonnectgo.Pointer(components.CreateScoreRawValueNumericFieldFilter(
                 components.CreateNumericFieldFilterNumber(
-                    21,
+                    21.0,
                 ),
             )),
         },
@@ -616,7 +616,7 @@ func main() {
         Filter: &components.ScorecardServiceFilterParameters{
             CustomFields: sdkkonnectgo.Pointer(components.CreateScorecardServiceFilterParametersCustomFieldsNumericFieldFilter(
                 components.CreateNumericFieldFilterNumber(
-                    21,
+                    21.0,
                 ),
             )),
             CreatedAt: sdkkonnectgo.Pointer(components.CreateDateTimeFieldFilterDateTimeFieldLTFilter(
@@ -631,7 +631,7 @@ func main() {
             )),
             ScoreRawValue: sdkkonnectgo.Pointer(components.CreateScorecardServiceFilterParametersScoreRawValueNumericFieldFilter(
                 components.CreateNumericFieldFilterNumber(
-                    21,
+                    21.0,
                 ),
             )),
         },
@@ -701,7 +701,7 @@ func main() {
         Filter: &components.ScorecardCriteriaFilterParameters{
             EvaluationPassingServicesCount: sdkkonnectgo.Pointer(components.CreateEvaluationPassingServicesCountNumericFieldFilter(
                 components.CreateNumericFieldFilterNumber(
-                    21,
+                    21.0,
                 ),
             )),
         },

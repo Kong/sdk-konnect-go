@@ -37,12 +37,15 @@ type EventGatewayTLSListenerPolicyConfigSensitiveDataAwareClientAuthentication s
 	// * requested - Request a client certificate during the TLS handshake, but allow connections without one (falls back to other configured authentication methods). If a certificate is presented but cannot be verified, the connection is closed.
 	//
 	Mode EventGatewayTLSListenerPolicyConfigSensitiveDataAwareMode `json:"mode"`
-	// References to TLS trust bundle resources used to verify client certificates. Evaluated in order;
-	// verification stops at the first trust bundle that successfully validates the client certificate
-	// chain. If no trust bundle validates the certificate chain, the connection is closed when mode is
-	// `required`.
+	// TLS trust bundles contain CA certificate bundles used to verify client certificates.
+	// All bundles are merged into a single trust store; a client certificate is accepted if it
+	// chains to any trusted CA across all bundles.
 	//
 	TLSTrustBundles []TLSTrustBundleReference `json:"tls_trust_bundles"`
+	// An expression that extracts a principal identifier from a verified client certificate.
+	// This expression must evaluate to a string.
+	//
+	PrincipalMapping *string `json:"principal_mapping,omitempty"`
 }
 
 func (e EventGatewayTLSListenerPolicyConfigSensitiveDataAwareClientAuthentication) MarshalJSON() ([]byte, error) {
@@ -68,6 +71,13 @@ func (e *EventGatewayTLSListenerPolicyConfigSensitiveDataAwareClientAuthenticati
 		return []TLSTrustBundleReference{}
 	}
 	return e.TLSTrustBundles
+}
+
+func (e *EventGatewayTLSListenerPolicyConfigSensitiveDataAwareClientAuthentication) GetPrincipalMapping() *string {
+	if e == nil {
+		return nil
+	}
+	return e.PrincipalMapping
 }
 
 type EventGatewayTLSListenerPolicyConfigSensitiveDataAware struct {

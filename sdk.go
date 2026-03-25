@@ -2,7 +2,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.3.1 and generator version 2.865.2
+// Generated from OpenAPI doc version 3.13.0 and generator version 2.869.23
 
 import (
 	"context"
@@ -299,7 +299,8 @@ type SDK struct {
 	// <br><br>
 	// Services can be both [tagged and filtered by tags](https://developer.konghq.com/admin-api/).
 	//
-	Services *Services
+	Services               *Services
+	GraphQLCostDecorations *GraphQLCostDecorations
 	// A target is an IP address or hostname with a port that identifies an instance of a backend service. Every upstream can have many targets, and the targets can be dynamically added, modified, or deleted. Changes take effect on the fly.
 	// <br><br>
 	// To disable a target, post a new one with `weight=0`, or use the `DELETE` method to accomplish the same.
@@ -461,9 +462,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.27.1",
+		SDKVersion: "0.28.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.27.1 2.865.2 3.3.1 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.28.0 2.869.23 3.13.0 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -544,6 +545,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Routes = newRoutes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Schemas = newSchemas(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Services = newServices(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.GraphQLCostDecorations = newGraphQLCostDecorations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Targets = newTargets(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Upstreams = newUpstreams(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Vaults = newVaults(sdk, sdk.sdkConfiguration, sdk.hooks)

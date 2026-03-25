@@ -120,7 +120,7 @@ func main() {
         },
         Filter: &components.CatalogResourceFilterParameters{
             ServiceAssociations: sdkkonnectgo.Pointer(components.CreateNumericFieldFilterNumber(
-                21,
+                21.0,
             )),
             CreatedAt: sdkkonnectgo.Pointer(components.CreateDateTimeFieldFilterDateTimeFieldLTFilter(
                 components.DateTimeFieldLTFilter{

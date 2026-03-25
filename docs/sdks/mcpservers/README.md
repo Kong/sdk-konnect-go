@@ -61,7 +61,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.ListMCPServersResponse != nil {
+    if res.ListMCPServersCPInfoResponse != nil {
         // handle response
     }
 }
@@ -121,7 +121,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.MCPServerInfo != nil {
+    if res.MCPServerCPInfo != nil {
         // handle response
     }
 }
@@ -397,8 +397,8 @@ func main() {
         }),
     )
 
-    res, err := s.MCPServers.GetMcpServerSignals(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", map[string]components.MCPCapabilityRequest{
-        "mcp": components.MCPCapabilityRequest{
+    res, err := s.MCPServers.GetMcpServerSignals(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", &components.MCPCapabilitiesMap{
+        Mcp: &components.MCPCapabilityRequest{
             Version: "5",
         },
     })
@@ -417,7 +417,7 @@ func main() {
 | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                                                           | [context.Context](https://pkg.go.dev/context#Context)                                                                                           | :heavy_check_mark:                                                                                                                              | The context to use for the request.                                                                                                             |                                                                                                                                                 |
 | `controlPlaneID`                                                                                                                                | `string`                                                                                                                                        | :heavy_check_mark:                                                                                                                              | The UUID of your control plane. This variable is available in the Konnect manager.                                                              | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                                                                                            |
-| `capabilities`                                                                                                                                  | map[string][components.MCPCapabilityRequest](../../models/components/mcpcapabilityrequest.md)                                                   | :heavy_minus_sign:                                                                                                                              | Capability requests as a deepObject map.<br/>- Keys are capability names (e.g. `mcp`).<br/>- Values contain the capability request fields (`version`).<br/> | {<br/>"mcp": {<br/>"version": "5"<br/>}<br/>}                                                                                                   |
+| `capabilities`                                                                                                                                  | [*components.MCPCapabilitiesMap](../../models/components/mcpcapabilitiesmap.md)                                                                 | :heavy_minus_sign:                                                                                                                              | Capability requests as a deepObject map.<br/>- Keys are capability names (e.g. `mcp`).<br/>- Values contain the capability request fields (`version`).<br/> | {<br/>"mcp": {<br/>"version": "5"<br/>}<br/>}                                                                                                   |
 | `opts`                                                                                                                                          | [][operations.Option](../../models/operations/option.md)                                                                                        | :heavy_minus_sign:                                                                                                                              | The options for this request.                                                                                                                   |                                                                                                                                                 |
 
 ### Response

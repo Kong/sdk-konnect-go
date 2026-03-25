@@ -9,6 +9,7 @@ APIs related to Konnect Developer Portal Applications.
 * [GetApplicationUnscoped](#getapplicationunscoped) - Get an Application
 * [ListApplications](#listapplications) - List Applications
 * [GetApplication](#getapplication) - Get an Application by Portal
+* [UpdateApplication](#updateapplication) - Update Application
 * [DeleteApplication](#deleteapplication) - Delete Application by Portal
 * [ListCredentialsByApplication](#listcredentialsbyapplication) - List Credentials by Application
 * [ListDevelopersByApplication](#listdevelopersbyapplication) - List Developers by Application
@@ -346,6 +347,75 @@ func main() {
 
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## UpdateApplication
+
+Updates an application.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="update-application" method="patch" path="/v3/portals/{portalId}/applications/{applicationId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Applications.UpdateApplication(ctx, operations.UpdateApplicationRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ApplicationID: "9162a78a-62d3-429d-bb0f-d113e634fa68",
+        UpdateApplicationRequest: components.UpdateApplicationRequest{},
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GetApplicationResponse != nil {
+        switch res.GetApplicationResponse.Type {
+            case components.GetApplicationResponseTypeClientCredentialsApplication:
+                // res.GetApplicationResponse.ClientCredentialsApplication is populated
+            case components.GetApplicationResponseTypeKeyAuthApplication:
+                // res.GetApplicationResponse.KeyAuthApplication is populated
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |
+| `request`                                                                                  | [operations.UpdateApplicationRequest](../../models/operations/updateapplicationrequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| `opts`                                                                                     | [][operations.Option](../../models/operations/option.md)                                   | :heavy_minus_sign:                                                                         | The options for this request.                                                              |
+
+### Response
+
+**[*operations.UpdateApplicationResponse](../../models/operations/updateapplicationresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |

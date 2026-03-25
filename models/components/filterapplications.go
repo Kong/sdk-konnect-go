@@ -7,6 +7,8 @@ type FilterApplications struct {
 	DeveloperID *UUIDFieldFilter `queryParam:"name=developer_id"`
 	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Name *StringFieldFilter `queryParam:"name=name"`
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
+	TeamID *UUIDFieldFilter `queryParam:"name=team_id"`
 }
 
 func (f *FilterApplications) GetDeveloperID() *UUIDFieldFilter {
@@ -21,4 +23,11 @@ func (f *FilterApplications) GetName() *StringFieldFilter {
 		return nil
 	}
 	return f.Name
+}
+
+func (f *FilterApplications) GetTeamID() *UUIDFieldFilter {
+	if f == nil {
+		return nil
+	}
+	return f.TeamID
 }

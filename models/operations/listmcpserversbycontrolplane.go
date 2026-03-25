@@ -53,8 +53,8 @@ type ListMcpServersByControlPlaneResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// A response to listing MCP servers.
-	ListMCPServersResponse *components.ListMCPServersResponse
+	// A response to listing MCP servers with CP info.
+	ListMCPServersCPInfoResponse *components.ListMCPServersCPInfoResponse
 }
 
 func (l *ListMcpServersByControlPlaneResponse) GetContentType() string {
@@ -78,9 +78,9 @@ func (l *ListMcpServersByControlPlaneResponse) GetRawResponse() *http.Response {
 	return l.RawResponse
 }
 
-func (l *ListMcpServersByControlPlaneResponse) GetListMCPServersResponse() *components.ListMCPServersResponse {
+func (l *ListMcpServersByControlPlaneResponse) GetListMCPServersCPInfoResponse() *components.ListMCPServersCPInfoResponse {
 	if l == nil {
 		return nil
 	}
-	return l.ListMCPServersResponse
+	return l.ListMCPServersCPInfoResponse
 }

@@ -206,12 +206,12 @@ func (s *MCPServers) ListMcpServersByControlPlane(ctx context.Context, request o
 				return nil, err
 			}
 
-			var out components.ListMCPServersResponse
+			var out components.ListMCPServersCPInfoResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.ListMCPServersResponse = &out
+			res.ListMCPServersCPInfoResponse = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -482,12 +482,12 @@ func (s *MCPServers) GetMcpServerByControlPlane(ctx context.Context, controlPlan
 				return nil, err
 			}
 
-			var out components.MCPServerInfo
+			var out components.MCPServerCPInfo
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.MCPServerInfo = &out
+			res.MCPServerCPInfo = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -1492,7 +1492,7 @@ func (s *MCPServers) PostMcpServerStatus(ctx context.Context, request operations
 //
 // The CP responds with a JSON payload containing zero or more signals that the client should process.
 // If no signals are available, the CP responds with HTTP 304 Not Modified.
-func (s *MCPServers) GetMcpServerSignals(ctx context.Context, controlPlaneID string, capabilities map[string]components.MCPCapabilityRequest, opts ...operations.Option) (*operations.GetMcpServerSignalsResponse, error) {
+func (s *MCPServers) GetMcpServerSignals(ctx context.Context, controlPlaneID string, capabilities *components.MCPCapabilitiesMap, opts ...operations.Option) (*operations.GetMcpServerSignalsResponse, error) {
 	request := operations.GetMcpServerSignalsRequest{
 		ControlPlaneID: controlPlaneID,
 		Capabilities:   capabilities,
