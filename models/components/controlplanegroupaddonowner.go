@@ -6,8 +6,8 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// ControlPlaneGroup - Control Plane Group is the owner for the add-on.
-type ControlPlaneGroup struct {
+// ControlPlaneGroupAddOnOwner - Control Plane Group is the owner for the add-on.
+type ControlPlaneGroupAddOnOwner struct {
 	// Type of owner for the add-on.
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	kind string `const:"control-plane-group" json:"kind"`
@@ -17,29 +17,29 @@ type ControlPlaneGroup struct {
 	ControlPlaneGroupGeo ControlPlaneGeo `json:"control_plane_group_geo"`
 }
 
-func (c ControlPlaneGroup) MarshalJSON() ([]byte, error) {
+func (c ControlPlaneGroupAddOnOwner) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(c, "", false)
 }
 
-func (c *ControlPlaneGroup) UnmarshalJSON(data []byte) error {
+func (c *ControlPlaneGroupAddOnOwner) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"kind", "control_plane_group_id", "control_plane_group_geo"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (c *ControlPlaneGroup) GetKind() string {
+func (c *ControlPlaneGroupAddOnOwner) GetKind() string {
 	return "control-plane-group"
 }
 
-func (c *ControlPlaneGroup) GetControlPlaneGroupID() string {
+func (c *ControlPlaneGroupAddOnOwner) GetControlPlaneGroupID() string {
 	if c == nil {
 		return ""
 	}
 	return c.ControlPlaneGroupID
 }
 
-func (c *ControlPlaneGroup) GetControlPlaneGroupGeo() ControlPlaneGeo {
+func (c *ControlPlaneGroupAddOnOwner) GetControlPlaneGroupGeo() ControlPlaneGeo {
 	if c == nil {
 		return ControlPlaneGeo("")
 	}

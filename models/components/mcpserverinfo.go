@@ -20,8 +20,8 @@ type MCPServerInfo struct {
 	DeployedAt *time.Time `json:"deployed_at,omitempty"`
 	// The control plane ID associated with the MCP server.
 	ControlPlaneID *string `json:"control_plane_id,omitempty"`
-	// The total number of tools associated with the MCP server.
-	ToolsTotal int64 `json:"tools_total"`
+	// The MCP resource ID associated with the MCP server.
+	ResourceID *string `json:"resource_id,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
@@ -81,11 +81,11 @@ func (m *MCPServerInfo) GetControlPlaneID() *string {
 	return m.ControlPlaneID
 }
 
-func (m *MCPServerInfo) GetToolsTotal() int64 {
+func (m *MCPServerInfo) GetResourceID() *string {
 	if m == nil {
-		return 0
+		return nil
 	}
-	return m.ToolsTotal
+	return m.ResourceID
 }
 
 func (m *MCPServerInfo) GetCreatedAt() time.Time {

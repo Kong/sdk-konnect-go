@@ -1,4 +1,4 @@
-# ControlPlaneGroup
+# ControlPlaneGroupAddOnOwner
 
 Control Plane Group is the owner for the add-on.
 

@@ -15,7 +15,7 @@ type CreateControlPlaneResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// A response to creating a control plane.
-	ControlPlane *components.ControlPlane1
+	ControlPlane *components.ControlPlane
 }
 
 func (c *CreateControlPlaneResponse) GetContentType() string {
@@ -39,7 +39,7 @@ func (c *CreateControlPlaneResponse) GetRawResponse() *http.Response {
 	return c.RawResponse
 }
 
-func (c *CreateControlPlaneResponse) GetControlPlane() *components.ControlPlane1 {
+func (c *CreateControlPlaneResponse) GetControlPlane() *components.ControlPlane {
 	if c == nil {
 		return nil
 	}

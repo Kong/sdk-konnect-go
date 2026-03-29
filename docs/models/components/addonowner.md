@@ -5,16 +5,16 @@ Owner for the add-on.
 
 ## Supported Types
 
-### ControlPlane
+### ControlPlaneAddOnOwner
 
 ```go
-addOnOwner := components.CreateAddOnOwnerControlPlane(components.ControlPlane{/* values here */})
+addOnOwner := components.CreateAddOnOwnerControlPlaneAddOnOwner(components.ControlPlaneAddOnOwner{/* values here */})
 ```
 
-### ControlPlaneGroup
+### ControlPlaneGroupAddOnOwner
 
 ```go
-addOnOwner := components.CreateAddOnOwnerControlPlaneGroup(components.ControlPlaneGroup{/* values here */})
+addOnOwner := components.CreateAddOnOwnerControlPlaneGroupAddOnOwner(components.ControlPlaneGroupAddOnOwner{/* values here */})
 ```
 
 ## Union Discrimination
@@ -23,9 +23,9 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch addOnOwner.Type {
-	case components.AddOnOwnerTypeControlPlane:
-		// addOnOwner.ControlPlane is populated
-	case components.AddOnOwnerTypeControlPlaneGroup:
-		// addOnOwner.ControlPlaneGroup is populated
+	case components.AddOnOwnerTypeControlPlaneAddOnOwner:
+		// addOnOwner.ControlPlaneAddOnOwner is populated
+	case components.AddOnOwnerTypeControlPlaneGroupAddOnOwner:
+		// addOnOwner.ControlPlaneGroupAddOnOwner is populated
 }
 ```
