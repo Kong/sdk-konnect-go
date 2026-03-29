@@ -221,6 +221,46 @@ generate.interfaces: ifacemaker
 generate.mocks: mockery
 	GODEBUG=gotypesalias=0 $(MOCKERY)
 
+# TYPES_TO_TEST_FIELDS is a list of types in models/components/
+# which have field tests generated for them.
+# This prevents breaking changes to fields of these types from being merged.
+# Note that this is a different list than TYPES_TO_MOCK as that one
+# is a list of SDK types which have CRUD operations attached to them.
+TYPES_TO_TEST_FIELDS := \
+	ACL \
+	BasicAuth \
+	CACertificate \
+	Certificate \
+	Consumer \
+	ConsumerGroup \
+	ControlPlane \
+	Network \
+	HMACAuth \
+	Jwt \
+	Key \
+	KeySet \
+	Plugin \
+	Route \
+	Service \
+	Target \
+	Upstream \
+	Vault
+
+comma := ,
+empty :=
+space := $(empty) $(empty)
+TYPES_TO_TEST_FIELDS_COMMA := $(subst $(space),$(comma),$(strip $(TYPES_TO_TEST_FIELDS)))
+
+.PHONY: generate.field_tests
+generate.field_tests:
+	go run ./scripts/gentests/ \
+		-types=$(TYPES_TO_TEST_FIELDS_COMMA)
+
+.PHONY: test.fields
+test.fields:
+	go test -v -race $(GOTESTFLAGS) \
+		./test/fields/...
+
 .PHONY: verify.diff
 verify.diff:
 	@$(PROJECT_DIR)/scripts/verify-diff.sh $(PROJECT_DIR)
