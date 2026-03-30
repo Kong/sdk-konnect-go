@@ -11,6 +11,8 @@ type UpdateMCPServerRequest struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// The control plane ID associated with the MCP server.
 	ControlPlaneID *string `json:"control_plane_id,omitempty"`
+	// The MCP resource ID associated with the MCP server.
+	ResourceID *string `json:"resource_id,omitempty"`
 }
 
 func (u *UpdateMCPServerRequest) GetName() string {
@@ -39,4 +41,11 @@ func (u *UpdateMCPServerRequest) GetControlPlaneID() *string {
 		return nil
 	}
 	return u.ControlPlaneID
+}
+
+func (u *UpdateMCPServerRequest) GetResourceID() *string {
+	if u == nil {
+		return nil
+	}
+	return u.ResourceID
 }

@@ -10,3 +10,4 @@
 | `Labels`                                             | map[string]`string`                                  | :heavy_minus_sign:                                   | Labels for the MCP server.                           |
 | `DeployedAt`                                         | [*time.Time](https://pkg.go.dev/time#Time)           | :heavy_minus_sign:                                   | The timestamp when the MCP server was deployed.      |
 | `ControlPlaneID`                                     | `*string`                                            | :heavy_minus_sign:                                   | The control plane ID associated with the MCP server. |
+| `ResourceID`                                         | `*string`                                            | :heavy_minus_sign:                                   | The MCP resource ID associated with the MCP server.  |

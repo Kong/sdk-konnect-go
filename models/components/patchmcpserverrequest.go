@@ -18,6 +18,8 @@ type PatchMCPServerRequest struct {
 	DeployedAt *time.Time `json:"deployed_at,omitempty"`
 	// The control plane ID associated with the MCP server.
 	ControlPlaneID *string `json:"control_plane_id,omitempty"`
+	// The MCP resource ID associated with the MCP server.
+	ResourceID *string `json:"resource_id,omitempty"`
 }
 
 func (p PatchMCPServerRequest) MarshalJSON() ([]byte, error) {
@@ -64,4 +66,11 @@ func (p *PatchMCPServerRequest) GetControlPlaneID() *string {
 		return nil
 	}
 	return p.ControlPlaneID
+}
+
+func (p *PatchMCPServerRequest) GetResourceID() *string {
+	if p == nil {
+		return nil
+	}
+	return p.ResourceID
 }

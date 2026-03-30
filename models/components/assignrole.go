@@ -15,6 +15,7 @@ const (
 	RoleNameConsumerAdmin             RoleName = "Consumer Admin"
 	RoleNameConnector                 RoleName = "Connector"
 	RoleNameCreator                   RoleName = "Creator"
+	RoleNameDebugSessionCreator       RoleName = "Debug Session Creator"
 	RoleNameDeployer                  RoleName = "Deployer"
 	RoleNameDiscoveryAdmin            RoleName = "Discovery Admin"
 	RoleNameDiscoveryViewer           RoleName = "Discovery Viewer"
@@ -53,7 +54,7 @@ func (e RoleName) ToPointer() *RoleName {
 func (e *RoleName) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "Admin", "Appearance Maintainer", "Application Registration", "Certificate Admin", "Cloud Gateway Cluster Admin", "Cloud Gateway Cluster Viewer", "Consumer Admin", "Connector", "Creator", "Deployer", "Discovery Admin", "Discovery Viewer", "Editor", "Gateway Service Admin", "Integration Admin", "Integration Viewer", "Key Admin", "Maintainer", "Network Admin", "Network Creator", "Network Viewer", "Plugin Admin", "Plugins Admin", "Product Publisher", "Publisher", "Route Admin", "SNI Admin", "Scorecard Admin", "Scorecard Viewer", "Service Admin", "Service Creator", "Service Viewer", "Upstream Admin", "Vault Admin", "Viewer", "Registration Approver", "Content Editor":
+		case "Admin", "Appearance Maintainer", "Application Registration", "Certificate Admin", "Cloud Gateway Cluster Admin", "Cloud Gateway Cluster Viewer", "Consumer Admin", "Connector", "Creator", "Debug Session Creator", "Deployer", "Discovery Admin", "Discovery Viewer", "Editor", "Gateway Service Admin", "Integration Admin", "Integration Viewer", "Key Admin", "Maintainer", "Network Admin", "Network Creator", "Network Viewer", "Plugin Admin", "Plugins Admin", "Product Publisher", "Publisher", "Route Admin", "SNI Admin", "Scorecard Admin", "Scorecard Viewer", "Service Admin", "Service Creator", "Service Viewer", "Upstream Admin", "Vault Admin", "Viewer", "Registration Approver", "Content Editor":
 			return true
 		}
 	}

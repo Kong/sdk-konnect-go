@@ -11,6 +11,8 @@ type CreateMCPServerRequest struct {
 	Labels map[string]string `json:"labels,omitempty"`
 	// The control plane ID associated with the MCP server.
 	ControlPlaneID *string `json:"control_plane_id,omitempty"`
+	// The MCP resource ID associated with the MCP server.
+	ResourceID *string `json:"resource_id,omitempty"`
 }
 
 func (c *CreateMCPServerRequest) GetName() string {
@@ -39,4 +41,11 @@ func (c *CreateMCPServerRequest) GetControlPlaneID() *string {
 		return nil
 	}
 	return c.ControlPlaneID
+}
+
+func (c *CreateMCPServerRequest) GetResourceID() *string {
+	if c == nil {
+		return nil
+	}
+	return c.ResourceID
 }

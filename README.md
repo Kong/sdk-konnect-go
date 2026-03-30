@@ -182,8 +182,8 @@ func main() {
 
 	res, err := s.CloudGateways.CreateAddOn(ctx, components.CreateAddOnRequest{
 		Name: "my-add-on",
-		Owner: components.CreateAddOnOwnerControlPlaneGroup(
-			components.ControlPlaneGroup{
+		Owner: components.CreateAddOnOwnerControlPlaneGroupAddOnOwner(
+			components.ControlPlaneGroupAddOnOwner{
 				ControlPlaneGroupID:  "123e4567-e89b-12d3-a456-426614174000",
 				ControlPlaneGroupGeo: components.ControlPlaneGeoSg,
 			},
@@ -203,10 +203,10 @@ func main() {
 	}
 	if res.AddOnResponse != nil {
 		switch res.AddOnResponse.Owner.Type {
-		case components.AddOnOwnerTypeControlPlane:
-			// res.AddOnResponse.Owner.ControlPlane is populated
-		case components.AddOnOwnerTypeControlPlaneGroup:
-			// res.AddOnResponse.Owner.ControlPlaneGroup is populated
+		case components.AddOnOwnerTypeControlPlaneAddOnOwner:
+			// res.AddOnResponse.Owner.ControlPlaneAddOnOwner is populated
+		case components.AddOnOwnerTypeControlPlaneGroupAddOnOwner:
+			// res.AddOnResponse.Owner.ControlPlaneGroupAddOnOwner is populated
 		}
 
 	}

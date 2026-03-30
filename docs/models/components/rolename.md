@@ -29,6 +29,7 @@ custom := components.RoleName("custom_value")
 | `RoleNameConsumerAdmin`             | Consumer Admin                      |
 | `RoleNameConnector`                 | Connector                           |
 | `RoleNameCreator`                   | Creator                             |
+| `RoleNameDebugSessionCreator`       | Debug Session Creator               |
 | `RoleNameDeployer`                  | Deployer                            |
 | `RoleNameDiscoveryAdmin`            | Discovery Admin                     |
 | `RoleNameDiscoveryViewer`           | Discovery Viewer                    |
