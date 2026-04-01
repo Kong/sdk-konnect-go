@@ -15,5 +15,7 @@ type MeSDK interface {
 	GetOrganizationsMe(ctx context.Context, opts ...operations.Option) (*operations.GetOrganizationsMeResponse, error)
 	// GetUsersMe - Get My User Account
 	// Returns the user account for the user identified in the token of the request.
+	//
+	// If set, this operation will use either [Security.PersonalAccessToken] or [Security.KonnectAccessToken] from the global security.
 	GetUsersMe(ctx context.Context, opts ...operations.Option) (*operations.GetUsersMeResponse, error)
 }

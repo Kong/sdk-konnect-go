@@ -365,7 +365,7 @@ func main() {
         Filter: &components.APIFilterParameters{
             CreatedAt: sdkkonnectgo.Pointer(components.CreateDateTimeFieldFilterDateTimeFieldGTEFilter(
                 components.DateTimeFieldGTEFilter{
-                    Lte: types.MustNewTimeFromString("2022-03-30T07:20:50Z"),
+                    Gte: types.MustTimeFromString("2022-03-30T07:20:50Z"),
                 },
             )),
             UpdatedAt: sdkkonnectgo.Pointer(components.CreateDateTimeFieldFilterDateTimeFieldLTFilter(

@@ -22,6 +22,8 @@ type MCPServerCPInfo struct {
 	ControlPlaneID *string `json:"control_plane_id,omitempty"`
 	// The MCP resource ID associated with the MCP server.
 	ResourceID *string `json:"resource_id,omitempty"`
+	// The version of the MCP server.
+	Version string `json:"version"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
@@ -88,6 +90,13 @@ func (m *MCPServerCPInfo) GetResourceID() *string {
 		return nil
 	}
 	return m.ResourceID
+}
+
+func (m *MCPServerCPInfo) GetVersion() string {
+	if m == nil {
+		return ""
+	}
+	return m.Version
 }
 
 func (m *MCPServerCPInfo) GetCreatedAt() time.Time {

@@ -31,3 +31,4 @@ custom := components.EmailTemplateName("custom_value")
 | `EmailTemplateNameAccountAccessRevoked`    | account-access-revoked                     |
 | `EmailTemplateNameAPIKeyExpiringSoon`      | api-key-expiring-soon                      |
 | `EmailTemplateNameAPIKeyExpired`           | api-key-expired                            |
+| `EmailTemplateNameDeveloperInvitation`     | developer-invitation                       |
