@@ -25089,7 +25089,7 @@ components:
           title: DateTimeFieldGTFilter
           additionalProperties: false
           properties:
-            lt:
+            gt:
               description: Value is greater than the given RFC-3339 formatted timestamp in UTC
               type: string
               format: date-time
@@ -25100,7 +25100,7 @@ components:
           title: DateTimeFieldGTEFilter
           additionalProperties: false
           properties:
-            lte:
+            gte:
               description: Value is greater than or equal to the given RFC-3339 formatted timestamp in UTC
               type: string
               format: date-time
@@ -25167,6 +25167,28 @@ components:
         - api_package
       title: Entity Type
       x-speakeasy-unknown-values: allow
+    ApplicationOwnerType:
+      description: The type of the owner of the application. Can be `developer` (individual developer) or `team`.
+      type: string
+      enum:
+        - developer
+        - team
+      x-speakeasy-unknown-values: allow
+    ApplicationOwnerId:
+      description: 'The ID of the owner of the application. When type is `developer`, this is the developer ID. When type is `team`, this is the team ID.'
+      type: string
+      format: uuid
+    ApplicationOwner:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ApplicationOwnerType'
+        id:
+          $ref: '#/components/schemas/ApplicationOwnerId'
+      additionalProperties: false
+      required:
+        - type
+        - id
     PortalImageDataUri:
       oneOf:
         - $ref: '#/components/schemas/ImagePNGDataUri'
@@ -27292,6 +27314,7 @@ components:
         - account-access-revoked
         - api-key-expiring-soon
         - api-key-expired
+        - developer-invitation
       x-speakeasy-unknown-values: allow
     EmailTemplateVariableName:
       description: |
@@ -27899,28 +27922,6 @@ components:
         - name
         - credential_type
         - auth_methods
-    ApplicationOwnerType:
-      description: The type of the owner of the application. Can be `developer` (individual developer) or `team`.
-      type: string
-      enum:
-        - developer
-        - team
-      x-speakeasy-unknown-values: allow
-    ApplicationOwnerId:
-      description: 'The ID of the owner of the application. When type is `developer`, this is the developer ID. When type is `team`, this is the team ID.'
-      type: string
-      format: uuid
-    ApplicationOwner:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ApplicationOwnerType'
-        id:
-          $ref: '#/components/schemas/ApplicationOwnerId'
-      additionalProperties: false
-      required:
-        - type
-        - id
     AuthStrategyKeyAuth:
       description: KeyAuth Auth strategy that the application uses.
       type: object
@@ -38005,6 +38006,9 @@ components:
           type: string
           format: uuid
           nullable: true
+        version:
+          description: The version of the MCP server.
+          type: string
         created_at:
           $ref: '#/components/schemas/CreatedAt'
         updated_at:
@@ -38014,6 +38018,7 @@ components:
         - name
         - created_at
         - updated_at
+        - version
     ContainerSpec:
       type: object
       properties:
