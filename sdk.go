@@ -2,7 +2,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.13.0 and generator version 2.879.1
+// Generated from OpenAPI doc version 3.13.0 and generator version 2.879.6
 
 import (
 	"context"
@@ -252,13 +252,14 @@ type SDK struct {
 	// The consumer object represents a consumer - or a user - of a service.
 	// You can either rely on Kong Gateway as the primary datastore, or you can map the consumer list with your database to keep consistency between Kong Gateway and your existing primary datastore.
 	//
-	Consumers           *Consumers
-	HMACAuthCredentials *HMACAuthCredentials
-	JWTs                *JWTs
-	APIKeys             *APIKeys
-	MTLSAuthCredentials *MTLSAuthCredentials
-	CustomPlugins       *CustomPlugins
-	DegraphqlRoutes     *DegraphqlRoutes
+	Consumers              *Consumers
+	HMACAuthCredentials    *HMACAuthCredentials
+	JWTs                   *JWTs
+	APIKeys                *APIKeys
+	MTLSAuthCredentials    *MTLSAuthCredentials
+	CustomPlugins          *CustomPlugins
+	DegraphqlRoutes        *DegraphqlRoutes
+	GraphQLCostDecorations *GraphQLCostDecorations
 	// A JSON Web key set. Key sets are the preferred way to expose keys to plugins because they tell the plugin where to look for keys or have a scoping mechanism to restrict plugins to specific keys.
 	//
 	KeySets *KeySets
@@ -304,8 +305,7 @@ type SDK struct {
 	// <br><br>
 	// Services can be both [tagged and filtered by tags](https://developer.konghq.com/admin-api/).
 	//
-	Services               *Services
-	GraphQLCostDecorations *GraphQLCostDecorations
+	Services *Services
 	// A target is an IP address or hostname with a port that identifies an instance of a backend service. Every upstream can have many targets, and the targets can be dynamically added, modified, or deleted. Changes take effect on the fly.
 	// <br><br>
 	// To disable a target, post a new one with `weight=0`, or use the `DELETE` method to accomplish the same.
@@ -379,6 +379,8 @@ type SDK struct {
 	PortalEmails *PortalEmails
 	// APIs to configure Konnect Developer Portal integrations.
 	PortalIntegrations *PortalIntegrations
+	// APIs related to Konnect Portal IP Allow List.
+	PortalsIPAllowList *PortalsIPAllowList
 	// APIs related to Konnect Developer Portal Custom Snippets.
 	Snippets *Snippets
 	// APIs related to configuration of Konnect Developer Portal developer teams.
@@ -467,9 +469,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.30.0",
+		SDKVersion: "0.31.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.30.0 2.879.1 3.13.0 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.31.0 2.879.6 3.13.0 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -543,6 +545,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.MTLSAuthCredentials = newMTLSAuthCredentials(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CustomPlugins = newCustomPlugins(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.DegraphqlRoutes = newDegraphqlRoutes(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.GraphQLCostDecorations = newGraphQLCostDecorations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.KeySets = newKeySets(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Keys = newKeys(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Partials = newPartials(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -551,7 +554,6 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Routes = newRoutes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Schemas = newSchemas(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Services = newServices(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.GraphQLCostDecorations = newGraphQLCostDecorations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Targets = newTargets(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Upstreams = newUpstreams(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Vaults = newVaults(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -590,6 +592,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.PortalTeamMembership = newPortalTeamMembership(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalEmails = newPortalEmails(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalIntegrations = newPortalIntegrations(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalsIPAllowList = newPortalsIPAllowList(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Snippets = newSnippets(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalTeams = newPortalTeams(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Roles = newRoles(sdk, sdk.sdkConfiguration, sdk.hooks)
