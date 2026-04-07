@@ -3841,6 +3841,34 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - MCP Servers
+  '/v1/mcp-servers/{mcpServerId}/status':
+    parameters:
+      - $ref: '#/components/parameters/mcpServerId'
+    get:
+      operationId: get-mcp-server-status
+      summary: Get MCP Server deployment status
+      description: |-
+        **Pre-release Endpoint**
+        This endpoint is currently in beta and is subject to change.
+
+        Returns the current aggregated deployment status of an MCP server.
+      responses:
+        '200':
+          description: Deployment status of the MCP server.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MCPServerStatusResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - MCP Servers
   '/v1/mcp-servers/{mcpServerId}/tools':
     parameters:
       - $ref: '#/components/parameters/mcpServerId'
@@ -8051,6 +8079,58 @@ paths:
         - Degraphql_routes
     parameters:
       - $ref: '#/components/parameters/Degraphql_routeId'
+      - $ref: '#/components/parameters/controlPlaneId'
+  '/v2/control-planes/{controlPlaneId}/core-entities/graphql-rate-limiting-advanced/costs':
+    get:
+      operationId: list-graphql-rate-limiting-advanced-cost
+      summary: List all GraphQL Cost Decorations
+      description: List all GraphQL Cost Decorations
+      parameters:
+        - $ref: '#/components/parameters/PaginationSize'
+        - $ref: '#/components/parameters/PaginationOffset'
+        - $ref: '#/components/parameters/PaginationTagsFilter'
+      responses:
+        '200':
+          description: A successful response listing GraphQL Cost Decorations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/GraphQLCostDecoration'
+                  next:
+                    $ref: '#/components/schemas/PaginationNextResponse'
+                  offset:
+                    $ref: '#/components/schemas/PaginationOffsetResponse'
+        '401':
+          $ref: '#/components/responses/HTTP401Error'
+      tags:
+        - GraphQL Cost Decorations
+    parameters:
+      - $ref: '#/components/parameters/controlPlaneId'
+  '/v2/control-planes/{controlPlaneId}/core-entities/graphql-rate-limiting-advanced/costs/{GraphQLCostDecorationId}':
+    get:
+      operationId: get-graphql-rate-limiting-advanced-cost
+      summary: Get a GraphQL Cost Decoration
+      description: Get a GraphQL Cost Decoration using ID.
+      responses:
+        '200':
+          description: Successfully fetched GraphQL Cost Decoration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GraphQLCostDecoration'
+        '401':
+          $ref: '#/components/responses/HTTP401Error'
+        '404':
+          description: Resource does not exist
+      tags:
+        - GraphQL Cost Decorations
+    parameters:
+      - $ref: '#/components/parameters/GraphQLCostDecorationId'
       - $ref: '#/components/parameters/controlPlaneId'
   '/v2/control-planes/{controlPlaneId}/core-entities/hmac-auths':
     get:
@@ -14121,6 +14201,113 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Portal Integrations
+  '/v3/portals/{portalId}/ip-allow-list':
+    parameters:
+      - $ref: '#/components/parameters/PortalId'
+    post:
+      operationId: create-portal-ip-allow-list
+      summary: Create an IP allow list for a portal
+      description: |
+        Create an IP allow list for a portal.
+      requestBody:
+        $ref: '#/components/requestBodies/CreatePortalSourceIPRestriction'
+      responses:
+        '201':
+          $ref: '#/components/responses/PortalSourceIPRestriction'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Portals IP Allow List
+    get:
+      operationId: list-portal-ip-allow-list
+      summary: List the IP allow list for portal
+      description: |
+        Lists the IP allow list configuration for a portal.
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageBefore'
+        - $ref: '#/components/parameters/PageAfter'
+      responses:
+        '200':
+          $ref: '#/components/responses/PortalSourceIPRestrictionPaginatedResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Portals IP Allow List
+  '/v3/portals/{portalId}/ip-allow-list/{id}':
+    parameters:
+      - $ref: '#/components/parameters/PortalId'
+      - name: id
+        in: path
+        description: ID of the allow list.
+        required: true
+        schema:
+          type: string
+          format: uuid
+    put:
+      operationId: put-portal-ip-allow-list
+      summary: Replace an IP allow list for a portal
+      description: |
+        Replace an IP allow list for a portal.
+      requestBody:
+        $ref: '#/components/requestBodies/CreatePortalSourceIPRestriction'
+      responses:
+        '201':
+          $ref: '#/components/responses/PortalSourceIPRestriction'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Portals IP Allow List
+    patch:
+      operationId: update-portal-ip-allow-list
+      summary: Update an IP allow list for a portal
+      description: |
+        Update an IP allow list for a portal.
+      requestBody:
+        $ref: '#/components/requestBodies/UpdatePortalSourceIPRestriction'
+      responses:
+        '201':
+          $ref: '#/components/responses/PortalSourceIPRestriction'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Portals IP Allow List
+    delete:
+      operationId: delete-portal-ip-allow-list
+      summary: Delete an IP allow list from a portal
+      description: |
+        Delete the IP allow list for a portal.
+      responses:
+        '204':
+          description: No Content
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Portals IP Allow List
   '/v3/portals/{portalId}/pages':
     get:
       operationId: list-portal-pages
@@ -15209,6 +15396,28 @@ paths:
         schema:
           type: string
         x-speakeasy-match: id
+    get:
+      x-speakeasy-entity-operation:
+        terraform-resource: SystemAccountRole#read
+        terraform-datasource: null
+      operationId: get-system-account-role
+      summary: Get System Account Role
+      description: Returns the assigned role for the specified ID.
+      responses:
+        '200':
+          $ref: '#/components/responses/AssignedRoleSingle'
+        '400':
+          $ref: '#/components/responses/IdentityBadRequest'
+        '401':
+          $ref: '#/components/responses/IdentityUnauthenticated'
+        '403':
+          $ref: '#/components/responses/IdentityPermissionDenied'
+        '404':
+          $ref: '#/components/responses/IdentityNotFound'
+      servers:
+        - url: 'https://global.api.konghq.com/'
+      tags:
+        - System Accounts - Roles
     delete:
       x-speakeasy-entity-operation:
         terraform-resource: SystemAccountRole#delete
@@ -15486,6 +15695,28 @@ paths:
           format: uuid
           example: 8350205f-a305-4e39-abe9-bc082a80091a
         x-speakeasy-match: id
+    get:
+      x-speakeasy-entity-operation:
+        terraform-resource: TeamRole#read
+        terraform-datasource: null
+      operationId: get-team-role
+      summary: Get Team Role
+      description: Returns the assigned role for the specified ID.
+      responses:
+        '200':
+          $ref: '#/components/responses/AssignedRoleSingle'
+        '400':
+          $ref: '#/components/responses/IdentityBadRequest'
+        '401':
+          $ref: '#/components/responses/IdentityUnauthenticated'
+        '403':
+          $ref: '#/components/responses/IdentityPermissionDenied'
+        '404':
+          $ref: '#/components/responses/IdentityNotFound'
+      servers:
+        - url: 'https://global.api.konghq.com/'
+      tags:
+        - Roles
     delete:
       x-speakeasy-entity-operation:
         terraform-resource: TeamRole#delete
@@ -16041,6 +16272,26 @@ paths:
           type: string
           format: uuid
           example: 8350205f-a305-4e39-abe9-bc082a80091a
+        x-speakeasy-match: id
+    get:
+      operationId: get-user-role
+      summary: Get User Role
+      description: Returns the assigned role for the specified ID.
+      responses:
+        '200':
+          $ref: '#/components/responses/AssignedRoleSingle'
+        '400':
+          $ref: '#/components/responses/IdentityBadRequest'
+        '401':
+          $ref: '#/components/responses/IdentityUnauthenticated'
+        '403':
+          $ref: '#/components/responses/IdentityPermissionDenied'
+        '404':
+          $ref: '#/components/responses/IdentityNotFound'
+      servers:
+        - url: 'https://global.api.konghq.com/'
+      tags:
+        - Roles
     delete:
       operationId: users-remove-role
       summary: Remove Role
@@ -16924,6 +17175,14 @@ components:
         format: uuid
         example: 9524ec7d-36d9-465d-a8c5-83a3c9390458
       description: The UUID of your Gateway.
+    GraphQLCostDecorationId:
+      description: ID of the GraphQL Cost Decoration to lookup
+      example: ''
+      in: path
+      name: GraphQLCostDecorationId
+      required: true
+      schema:
+        type: string
     HMACAuthId:
       description: ID of the HMAC-auth credential to lookup
       example: 70e7b00b-72f2-471b-a5ce-9c4171775360
@@ -27486,6 +27745,11 @@ components:
           $ref: '#/components/schemas/StringFieldFilter'
         team_id:
           $ref: '#/components/schemas/UuidFieldFilter'
+    SourceIPEnabled:
+      description: Whether ip allow list is enabled for the organization.
+      type: boolean
+      example: true
+      default: false
     ImageGIFDataUri:
       description: 'must be a data URL with base64 GIF image data, e.g., data:image/gif;base64,<BASE64_IMAGE_DATA>'
       type: string
@@ -28059,6 +28323,48 @@ components:
       required:
         - data
         - meta
+    PortalAllowedIPs:
+      description: The list of allowed ips for the portal.
+      type: array
+      items:
+        type: string
+      example:
+        - 192.168.1.1
+        - 192.168.1.0/22
+      maxItems: 25
+      minItems: 1
+      uniqueItems: true
+    IPEntry:
+      description: An entry representing a collection of allowed IP addresses or CIDR blocks.
+      type: object
+      properties:
+        id:
+          description: Contains a unique identifier used for this resource.
+          type: string
+          format: uuid
+          example: 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7
+          readOnly: false
+        allowed_ips:
+          $ref: '#/components/schemas/PortalAllowedIPs'
+      additionalProperties: false
+      required:
+        - id
+        - allowed_ips
+    IPEntries:
+      description: The list of allowed ips for the portal.
+      type: array
+      items:
+        $ref: '#/components/schemas/IPEntry'
+      example:
+        - id: 660e8400-e29b-41d4-a716-446655440000
+          allowed_ips:
+            - 192.168.1.1
+        - id: 550e8400-e29b-41d4-a716-446655440000
+          allowed_ips:
+            - 192.168.1.0/22
+            - 192.168.1.52
+      maxItems: 1000
+      uniqueItems: true
     CreateCatalogService:
       type: object
       properties:
@@ -37971,6 +38277,28 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/MCPServerVersionStatus'
+    MCPServerStatusResponse:
+      type: object
+      properties:
+        status:
+          description: |-
+            Aggregated deployment status of the MCP server.
+            - `deploying` — single version with desired replicas not yet fully ready.
+            - `healthy` — single version running with no failing pods.
+            - `pending` — no deployment status has been reported yet.
+            - `unhealthy` — one or more failing pods across any version.
+            - `upgrading` — multiple versions running with no failing pods.
+          type: string
+          example: healthy
+          enum:
+            - deploying
+            - healthy
+            - pending
+            - unhealthy
+            - upgrading
+          x-speakeasy-unknown-values: allow
+      required:
+        - status
     MCPServerInfo:
       type: object
       properties:
@@ -40071,6 +40399,11 @@ components:
       description: 'A Plugin entity represents a plugin configuration that will be executed during the HTTP request/response lifecycle. It is how you can add functionalities to Services that run behind Kong, like Authentication or Rate Limiting for example. You can find more information about how to install and what values each plugin takes by visiting the [Kong Hub](https://docs.konghq.com/hub/). When adding a Plugin Configuration to a Service, every request made by a client to that Service will run said Plugin. If a Plugin needs to be tuned to different values for some specific Consumers, you can do so by creating a separate plugin instance that specifies both the Service and the Consumer, through the `service` and `consumer` fields.'
       type: object
       properties:
+        condition:
+          description: 'An expression used for conditional control over plugin execution. If the expression evaluates to `true` during the request flow, the plugin is executed; otherwise, it is skipped.'
+          type: string
+          maxLength: 1024
+          nullable: true
         config:
           description: 'The configuration properties for the Plugin which can be found on the plugins documentation page in the [Kong Hub](https://docs.konghq.com/hub/).'
           type: object
@@ -40231,6 +40564,11 @@ components:
       description: 'A Plugin entity represents a plugin configuration that will be executed during the HTTP request/response lifecycle. It is how you can add functionalities to Services that run behind Kong, like Authentication or Rate Limiting for example. You can find more information about how to install and what values each plugin takes by visiting the [Kong Hub](https://docs.konghq.com/hub/). When adding a Plugin Configuration to a Service, every request made by a client to that Service will run said Plugin. If a Plugin needs to be tuned to different values for some specific Consumers, you can do so by creating a separate plugin instance that specifies both the Service and the Consumer, through the `service` and `consumer` fields.'
       type: object
       properties:
+        condition:
+          description: 'An expression used for conditional control over plugin execution. If the expression evaluates to `true` during the request flow, the plugin is executed; otherwise, it is skipped.'
+          type: string
+          maxLength: 1024
+          nullable: true
         config:
           description: 'The configuration properties for the Plugin which can be found on the plugins documentation page in the [Kong Hub](https://docs.konghq.com/hub/).'
           type: object
@@ -42720,6 +43058,8 @@ components:
                 description: 'Whether the portal resources are protected by Role Based Access Control (RBAC). If enabled, developers view or register for APIs until unless assigned to teams with access to view and consume specific APIs. Authentication must be enabled to use RBAC.'
                 type: boolean
                 default: false
+              sipr_enabled:
+                $ref: '#/components/schemas/SourceIPEnabled'
               default_api_visibility:
                 description: 'The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.'
                 type: string
@@ -42803,6 +43143,8 @@ components:
                 description: 'Whether the portal resources are protected by Role Based Access Control (RBAC). If enabled, developers view or register for APIs until unless assigned to teams with access to view and consume specific APIs. Authentication must be enabled to use RBAC.'
                 type: boolean
                 default: false
+              sipr_enabled:
+                $ref: '#/components/schemas/SourceIPEnabled'
               default_api_visibility:
                 description: 'The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.'
                 type: string
@@ -43034,6 +43376,27 @@ components:
                 $ref: '#/components/schemas/SendTestEmailTemplateContent'
             required:
               - content
+    CreatePortalSourceIPRestriction:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              allowed_ips:
+                $ref: '#/components/schemas/PortalAllowedIPs'
+            additionalProperties: false
+            required:
+              - allowed_ips
+    UpdatePortalSourceIPRestriction:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              allowed_ips:
+                $ref: '#/components/schemas/PortalAllowedIPs'
+            additionalProperties: false
+            minProperties: 1
     CreateCatalogServiceRequest:
       required: true
       content:
@@ -46062,6 +46425,8 @@ components:
                       description: 'Whether the portal resources are protected by Role Based Access Control (RBAC). If enabled, developers view or register for APIs until unless assigned to teams with access to view and consume specific APIs. Authentication must be enabled to use RBAC.'
                       type: boolean
                       default: false
+                    sipr_enabled:
+                      $ref: '#/components/schemas/SourceIPEnabled'
                     default_api_visibility:
                       description: 'The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.'
                       type: string
@@ -46109,6 +46474,7 @@ components:
                     - description
                     - authentication_enabled
                     - rbac_enabled
+                    - sipr_enabled
                     - default_api_visibility
                     - default_page_visibility
                     - default_application_auth_strategy_id
@@ -46162,6 +46528,8 @@ components:
                 description: 'Whether the portal resources are protected by Role Based Access Control (RBAC). If enabled, developers view or register for APIs until unless assigned to teams with access to view and consume specific APIs. Authentication must be enabled to use RBAC.'
                 type: boolean
                 default: false
+              sipr_enabled:
+                $ref: '#/components/schemas/SourceIPEnabled'
               default_api_visibility:
                 description: 'The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.'
                 type: string
@@ -46210,6 +46578,7 @@ components:
               - description
               - authentication_enabled
               - rbac_enabled
+              - sipr_enabled
               - default_api_visibility
               - default_page_visibility
               - default_application_auth_strategy_id
@@ -46485,6 +46854,27 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/PortalEmailConfig'
+    PortalSourceIPRestrictionPaginatedResponse:
+      description: The portal's IP allow list configuration.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/CursorMetaPage'
+              data:
+                $ref: '#/components/schemas/IPEntries'
+            additionalProperties: false
+            required:
+              - data
+              - meta
+    PortalSourceIPRestriction:
+      description: The portal's IP allow list configuration.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/IPEntry'
     CatalogServiceResponse:
       description: A response containing a single service object.
       content:
@@ -47497,6 +47887,8 @@ tags:
     description: APIs related to Konnect Developer Portal Application Registrations.
   - name: Portal Emails
     description: APIs related to Konnect Developer Portal Emails.
+  - name: Portals IP Allow List
+    description: APIs related to Konnect Portal IP Allow List.
   - name: Catalog Services
     description: |
       Create and maintain a centralized catalog of all services running in your organization.
