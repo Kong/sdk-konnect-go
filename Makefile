@@ -209,7 +209,8 @@ TYPES_TO_MOCK := \
 	Targets \
 	Upstreams \
 	Vaults \
-	EventGateways
+	EventGateways \
+	EventGatewayDataPlaneCertificates
 
 .PHONY: generate.interfaces
 generate.interfaces: ifacemaker
