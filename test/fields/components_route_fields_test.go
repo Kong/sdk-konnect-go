@@ -14,5 +14,5 @@ func TestComponentsRouteFieldTypes(t *testing.T) {
 	var value components.Route
 	var _ *components.RouteJSON = value.RouteJSON
 	var _ *components.RouteExpression = value.RouteExpression
-	var _ components.RouteType = value.Type
+	var _ components.RouteUnionType = value.Type
 }
