@@ -197,20 +197,21 @@ TYPES_TO_MOCK := \
 	ControlPlaneGroups \
 	ControlPlanes \
 	DPCertificates \
+	EventGatewayDataPlaneCertificates \
+	EventGateways \
 	HMACAuthCredentials \
 	JWTs \
 	Keys \
 	KeySets \
 	Me \
 	Plugins \
+	Portals \
 	Routes \
 	Services \
 	SNIs \
 	Targets \
 	Upstreams \
-	Vaults \
-	EventGateways \
-	EventGatewayDataPlaneCertificates
+	Vaults
 
 .PHONY: generate.interfaces
 generate.interfaces: ifacemaker
