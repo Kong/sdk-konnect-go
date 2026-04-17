@@ -12,11 +12,13 @@ type PersonalAccessTokenCreateRequestType string
 
 const (
 	PersonalAccessTokenCreateRequestTypePersonalAccessTokenCreateRequestWithExpiresAt PersonalAccessTokenCreateRequestType = "PersonalAccessTokenCreateRequestWithExpiresAt"
+	PersonalAccessTokenCreateRequestTypePersonalAccessTokenCreateRequestWithTTL       PersonalAccessTokenCreateRequestType = "PersonalAccessTokenCreateRequestWithTTL"
 )
 
 // PersonalAccessTokenCreateRequest - Request body schema for creating personal access tokens.
 type PersonalAccessTokenCreateRequest struct {
 	PersonalAccessTokenCreateRequestWithExpiresAt *PersonalAccessTokenCreateRequestWithExpiresAt `queryParam:"inline" union:"member"`
+	PersonalAccessTokenCreateRequestWithTTL       *PersonalAccessTokenCreateRequestWithTTL       `queryParam:"inline" union:"member"`
 
 	Type PersonalAccessTokenCreateRequestType
 }
@@ -30,6 +32,15 @@ func CreatePersonalAccessTokenCreateRequestPersonalAccessTokenCreateRequestWithE
 	}
 }
 
+func CreatePersonalAccessTokenCreateRequestPersonalAccessTokenCreateRequestWithTTL(personalAccessTokenCreateRequestWithTTL PersonalAccessTokenCreateRequestWithTTL) PersonalAccessTokenCreateRequest {
+	typ := PersonalAccessTokenCreateRequestTypePersonalAccessTokenCreateRequestWithTTL
+
+	return PersonalAccessTokenCreateRequest{
+		PersonalAccessTokenCreateRequestWithTTL: &personalAccessTokenCreateRequestWithTTL,
+		Type:                                    typ,
+	}
+}
+
 func (u *PersonalAccessTokenCreateRequest) UnmarshalJSON(data []byte) error {
 
 	var personalAccessTokenCreateRequestWithExpiresAt PersonalAccessTokenCreateRequestWithExpiresAt = PersonalAccessTokenCreateRequestWithExpiresAt{}
@@ -39,12 +50,23 @@ func (u *PersonalAccessTokenCreateRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var personalAccessTokenCreateRequestWithTTL PersonalAccessTokenCreateRequestWithTTL = PersonalAccessTokenCreateRequestWithTTL{}
+	if err := utils.UnmarshalJSON(data, &personalAccessTokenCreateRequestWithTTL, "", true, nil); err == nil {
+		u.PersonalAccessTokenCreateRequestWithTTL = &personalAccessTokenCreateRequestWithTTL
+		u.Type = PersonalAccessTokenCreateRequestTypePersonalAccessTokenCreateRequestWithTTL
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PersonalAccessTokenCreateRequest", string(data))
 }
 
 func (u PersonalAccessTokenCreateRequest) MarshalJSON() ([]byte, error) {
 	if u.PersonalAccessTokenCreateRequestWithExpiresAt != nil {
 		return utils.MarshalJSON(u.PersonalAccessTokenCreateRequestWithExpiresAt, "", true)
+	}
+
+	if u.PersonalAccessTokenCreateRequestWithTTL != nil {
+		return utils.MarshalJSON(u.PersonalAccessTokenCreateRequestWithTTL, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type PersonalAccessTokenCreateRequest: all fields are null")

@@ -304,7 +304,7 @@ func (s *Pages) CreateDefaultContent(ctx context.Context, portalID string, opts 
 }
 
 // ListPortalPages - List Pages
-// Returns the tree view of custom pages that have been created for this portal.
+// Returns the tree view of custom pages that have been created for this portal. The full tree is returned in one response; this endpoint is not paginated.
 func (s *Pages) ListPortalPages(ctx context.Context, request operations.ListPortalPagesRequest, opts ...operations.Option) (*operations.ListPortalPagesResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{

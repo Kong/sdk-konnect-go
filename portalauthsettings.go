@@ -32,9 +32,6 @@ func newPortalAuthSettings(rootSDK *SDK, sdkConfig config.SDKConfiguration, hook
 }
 
 // GetPortalAuthenticationSettings - Get Auth Settings
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Returns the developer authentication configuration for a portal, which determines how developers can log in and how they are assigned to teams.
 func (s *PortalAuthSettings) GetPortalAuthenticationSettings(ctx context.Context, portalID string, opts ...operations.Option) (*operations.GetPortalAuthenticationSettingsResponse, error) {
 	request := operations.GetPortalAuthenticationSettingsRequest{
@@ -265,9 +262,6 @@ func (s *PortalAuthSettings) GetPortalAuthenticationSettings(ctx context.Context
 }
 
 // UpdatePortalAuthenticationSettings - Update Auth Settings
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Updates the developer authentication configuration for a portal. Developers can be allowed to login using basic auth (email & password) or use Single-Sign-On through an Identity Provider. Developers can be automatically assigned to teams by mapping claims from their IdP account.
 func (s *PortalAuthSettings) UpdatePortalAuthenticationSettings(ctx context.Context, portalID string, portalAuthenticationSettingsUpdateRequest *components.PortalAuthenticationSettingsUpdateRequest, opts ...operations.Option) (*operations.UpdatePortalAuthenticationSettingsResponse, error) {
 	request := operations.UpdatePortalAuthenticationSettingsRequest{
@@ -1107,9 +1101,6 @@ func (s *PortalAuthSettings) UpdatePortalTeamGroupMappings(ctx context.Context, 
 }
 
 // GetPortalIdentityProviders - List Identity Providers
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Retrieves the identity providers available within the portal. This operation provides information about
 // various identity providers for SAML or OIDC authentication integrations.
 func (s *PortalAuthSettings) GetPortalIdentityProviders(ctx context.Context, portalID string, filter *operations.GetPortalIdentityProvidersQueryParamFilter, opts ...operations.Option) (*operations.GetPortalIdentityProvidersResponse, error) {
@@ -1367,9 +1358,6 @@ func (s *PortalAuthSettings) GetPortalIdentityProviders(ctx context.Context, por
 }
 
 // CreatePortalIdentityProvider - Create Identity Provider
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Creates a new identity provider. This operation allows the creation of a new identity provider for
 // authentication purposes.
 func (s *PortalAuthSettings) CreatePortalIdentityProvider(ctx context.Context, portalID string, createIdentityProvider components.CreateIdentityProvider, opts ...operations.Option) (*operations.CreatePortalIdentityProviderResponse, error) {
@@ -1672,9 +1660,6 @@ func (s *PortalAuthSettings) CreatePortalIdentityProvider(ctx context.Context, p
 }
 
 // GetPortalIdentityProvider - Get Identity Provider
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Retrieves the configuration of a single identity provider. This operation returns information about a
 // specific identity provider's settings and authentication integration details.
 func (s *PortalAuthSettings) GetPortalIdentityProvider(ctx context.Context, portalID string, id string, opts ...operations.Option) (*operations.GetPortalIdentityProviderResponse, error) {
@@ -1970,9 +1955,6 @@ func (s *PortalAuthSettings) GetPortalIdentityProvider(ctx context.Context, port
 }
 
 // UpdatePortalIdentityProvider - Update Identity Provider
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Updates the configuration of an existing identity provider. This operation allows modifications to be made
 // to an existing identity provider's configuration.
 func (s *PortalAuthSettings) UpdatePortalIdentityProvider(ctx context.Context, request operations.UpdatePortalIdentityProviderRequest, opts ...operations.Option) (*operations.UpdatePortalIdentityProviderResponse, error) {
@@ -2291,9 +2273,6 @@ func (s *PortalAuthSettings) UpdatePortalIdentityProvider(ctx context.Context, r
 }
 
 // DeletePortalIdentityProvider - Delete Identity Provider
-// **Pre-release Endpoint**
-// This endpoint is currently in beta and is subject to change.
-//
 // Deletes an existing identity provider configuration. This operation removes a specific identity provider
 // from the portal.
 func (s *PortalAuthSettings) DeletePortalIdentityProvider(ctx context.Context, portalID string, id string, opts ...operations.Option) (*operations.DeletePortalIdentityProviderResponse, error) {

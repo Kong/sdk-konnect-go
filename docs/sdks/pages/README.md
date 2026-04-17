@@ -73,7 +73,7 @@ func main() {
 
 ## ListPortalPages
 
-Returns the tree view of custom pages that have been created for this portal.
+Returns the tree view of custom pages that have been created for this portal. The full tree is returned in one response; this endpoint is not paginated.
 
 ### Example Usage
 

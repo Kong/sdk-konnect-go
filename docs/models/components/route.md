@@ -21,9 +21,9 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch route.Type {
-	case components.RouteTypeRouteJSON:
+	case components.RouteUnionTypeRouteJSON:
 		// route.RouteJSON is populated
-	case components.RouteTypeRouteExpression:
+	case components.RouteUnionTypeRouteExpression:
 		// route.RouteExpression is populated
 }
 ```

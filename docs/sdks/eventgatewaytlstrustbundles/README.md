@@ -19,6 +19,8 @@ determine which client certificates are accepted.
 
 Returns a list of TLS trust bundles associated with the specified Event Gateway.
 
+**Requires a minimum runtime version of `1.1`**.
+
 ### Example Usage
 
 <!-- UsageSnippet language="go" operationID="list-event-gateway-tls-trust-bundles" method="get" path="/v1/event-gateways/{gatewayId}/tls-trust-bundles" -->
@@ -79,6 +81,8 @@ func main() {
 ## CreateEventGatewayTLSTrustBundle
 
 Creates a new TLS trust bundle containing trusted CA certificates for client certificate verification.
+
+**Requires a minimum runtime version of `1.1`**.
 
 ### Example Usage
 
@@ -146,6 +150,8 @@ func main() {
 
 Returns information about a specific TLS trust bundle.
 
+**Requires a minimum runtime version of `1.1`**.
+
 ### Example Usage
 
 <!-- UsageSnippet language="go" operationID="get-event-gateway-tls-trust-bundle" method="get" path="/v1/event-gateways/{gatewayId}/tls-trust-bundles/{tlsTrustBundleId}" -->
@@ -203,6 +209,8 @@ func main() {
 ## UpdateEventGatewayTLSTrustBundle
 
 Updates an existing TLS trust bundle.
+
+**Requires a minimum runtime version of `1.1`**.
 
 ### Example Usage
 
@@ -269,6 +277,8 @@ func main() {
 ## DeleteEventGatewayTLSTrustBundle
 
 Deletes a specific TLS trust bundle associated with the Event Gateway.
+
+**Requires a minimum runtime version of `1.1`**.
 
 ### Example Usage
 

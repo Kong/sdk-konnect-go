@@ -12,15 +12,39 @@ import (
 type PartialType string
 
 const (
-	PartialTypeRedisCe PartialType = "redis-ce"
-	PartialTypeRedisEe PartialType = "redis-ee"
+	PartialTypeEmbeddings PartialType = "embeddings"
+	PartialTypeModel      PartialType = "model"
+	PartialTypeRedisCe    PartialType = "redis-ce"
+	PartialTypeRedisEe    PartialType = "redis-ee"
+	PartialTypeVectordb   PartialType = "vectordb"
 )
 
 type Partial struct {
-	PartialRedisCe *PartialRedisCe `queryParam:"inline" union:"member"`
-	PartialRedisEe *PartialRedisEe `queryParam:"inline" union:"member"`
+	PartialRedisCe    *PartialRedisCe    `queryParam:"inline" union:"member"`
+	PartialRedisEe    *PartialRedisEe    `queryParam:"inline" union:"member"`
+	PartialVectordb   *PartialVectordb   `queryParam:"inline" union:"member"`
+	PartialEmbeddings *PartialEmbeddings `queryParam:"inline" union:"member"`
+	PartialModel      *PartialModel      `queryParam:"inline" union:"member"`
 
 	Type PartialType
+}
+
+func CreatePartialEmbeddings(embeddings PartialEmbeddings) Partial {
+	typ := PartialTypeEmbeddings
+
+	return Partial{
+		PartialEmbeddings: &embeddings,
+		Type:              typ,
+	}
+}
+
+func CreatePartialModel(model PartialModel) Partial {
+	typ := PartialTypeModel
+
+	return Partial{
+		PartialModel: &model,
+		Type:         typ,
+	}
 }
 
 func CreatePartialRedisCe(redisCe PartialRedisCe) Partial {
@@ -41,6 +65,15 @@ func CreatePartialRedisEe(redisEe PartialRedisEe) Partial {
 	}
 }
 
+func CreatePartialVectordb(vectordb PartialVectordb) Partial {
+	typ := PartialTypeVectordb
+
+	return Partial{
+		PartialVectordb: &vectordb,
+		Type:            typ,
+	}
+}
+
 func (u *Partial) UnmarshalJSON(data []byte) error {
 
 	type discriminator struct {
@@ -53,6 +86,24 @@ func (u *Partial) UnmarshalJSON(data []byte) error {
 	}
 
 	switch dis.Type {
+	case "embeddings":
+		partialEmbeddings := new(PartialEmbeddings)
+		if err := utils.UnmarshalJSON(data, &partialEmbeddings, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == embeddings) type PartialEmbeddings within Partial: %w", string(data), err)
+		}
+
+		u.PartialEmbeddings = partialEmbeddings
+		u.Type = PartialTypeEmbeddings
+		return nil
+	case "model":
+		partialModel := new(PartialModel)
+		if err := utils.UnmarshalJSON(data, &partialModel, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == model) type PartialModel within Partial: %w", string(data), err)
+		}
+
+		u.PartialModel = partialModel
+		u.Type = PartialTypeModel
+		return nil
 	case "redis-ce":
 		partialRedisCe := new(PartialRedisCe)
 		if err := utils.UnmarshalJSON(data, &partialRedisCe, "", true, nil); err != nil {
@@ -71,6 +122,15 @@ func (u *Partial) UnmarshalJSON(data []byte) error {
 		u.PartialRedisEe = partialRedisEe
 		u.Type = PartialTypeRedisEe
 		return nil
+	case "vectordb":
+		partialVectordb := new(PartialVectordb)
+		if err := utils.UnmarshalJSON(data, &partialVectordb, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == vectordb) type PartialVectordb within Partial: %w", string(data), err)
+		}
+
+		u.PartialVectordb = partialVectordb
+		u.Type = PartialTypeVectordb
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Partial", string(data))
@@ -83,6 +143,18 @@ func (u Partial) MarshalJSON() ([]byte, error) {
 
 	if u.PartialRedisEe != nil {
 		return utils.MarshalJSON(u.PartialRedisEe, "", true)
+	}
+
+	if u.PartialVectordb != nil {
+		return utils.MarshalJSON(u.PartialVectordb, "", true)
+	}
+
+	if u.PartialEmbeddings != nil {
+		return utils.MarshalJSON(u.PartialEmbeddings, "", true)
+	}
+
+	if u.PartialModel != nil {
+		return utils.MarshalJSON(u.PartialModel, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type Partial: all fields are null")

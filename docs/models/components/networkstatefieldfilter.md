@@ -1,37 +1,10 @@
 # NetworkStateFieldFilter
 
+Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 
-## Supported Types
 
-### NetworkStateFieldEqualsFilter
+## Fields
 
-```go
-networkStateFieldFilter := components.CreateNetworkStateFieldFilterNetworkStateFieldEqualsFilter(components.NetworkStateFieldEqualsFilter{/* values here */})
-```
-
-### NetworkStateFieldNotEqualsFilter
-
-```go
-networkStateFieldFilter := components.CreateNetworkStateFieldFilterNetworkStateFieldNotEqualsFilter(components.NetworkStateFieldNotEqualsFilter{/* values here */})
-```
-
-### NetworkStateFieldOrEqualityFilter
-
-```go
-networkStateFieldFilter := components.CreateNetworkStateFieldFilterNetworkStateFieldOrEqualityFilter(components.NetworkStateFieldOrEqualityFilter{/* values here */})
-```
-
-## Union Discrimination
-
-Use the `Type` field to determine which variant is active, then access the corresponding field:
-
-```go
-switch networkStateFieldFilter.Type {
-	case components.NetworkStateFieldFilterTypeNetworkStateFieldEqualsFilter:
-		// networkStateFieldFilter.NetworkStateFieldEqualsFilter is populated
-	case components.NetworkStateFieldFilterTypeNetworkStateFieldNotEqualsFilter:
-		// networkStateFieldFilter.NetworkStateFieldNotEqualsFilter is populated
-	case components.NetworkStateFieldFilterTypeNetworkStateFieldOrEqualityFilter:
-		// networkStateFieldFilter.NetworkStateFieldOrEqualityFilter is populated
-}
-```
+| Field                                         | Type                                          | Required                                      | Description                                   |
+| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
+| `Oeq`                                         | `*string`                                     | :heavy_minus_sign:                            | The field matches any of the provided values. |

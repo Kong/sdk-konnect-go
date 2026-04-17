@@ -32,6 +32,8 @@ func (e *EventGatewayTLSListenerPolicyConfigSensitiveDataAwareMode) IsExact() bo
 
 // EventGatewayTLSListenerPolicyConfigSensitiveDataAwareClientAuthentication - Configures mutual TLS (mTLS) client certificate verification. When set, the gateway
 // requests or requires clients to present a certificate during the TLS handshake.
+//
+// **Requires a minimum runtime version of `1.1`**.
 type EventGatewayTLSListenerPolicyConfigSensitiveDataAwareClientAuthentication struct {
 	// * required - Reject TLS connections without a valid client certificate.
 	// * requested - Request a client certificate during the TLS handshake, but allow connections without one (falls back to other configured authentication methods). If a certificate is presented but cannot be verified, the connection is closed.
@@ -45,6 +47,7 @@ type EventGatewayTLSListenerPolicyConfigSensitiveDataAwareClientAuthentication s
 	// An expression that extracts a principal identifier from a verified client certificate.
 	// This expression must evaluate to a string.
 	//
+	// **Requires a minimum runtime version of `1.1`**.
 	PrincipalMapping *string `json:"principal_mapping,omitempty"`
 }
 
@@ -90,6 +93,7 @@ type EventGatewayTLSListenerPolicyConfigSensitiveDataAware struct {
 	// Configures mutual TLS (mTLS) client certificate verification. When set, the gateway
 	// requests or requires clients to present a certificate during the TLS handshake.
 	//
+	// **Requires a minimum runtime version of `1.1`**.
 	ClientAuthentication *EventGatewayTLSListenerPolicyConfigSensitiveDataAwareClientAuthentication `json:"client_authentication,omitempty"`
 }
 

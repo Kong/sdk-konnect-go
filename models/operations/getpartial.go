@@ -67,6 +67,20 @@ func (g *GetPartialResponse) GetPartial() *components.Partial {
 	return g.Partial
 }
 
+func (g *GetPartialResponse) GetPartialEmbeddings() *components.PartialEmbeddings {
+	if v := g.GetPartial(); v != nil {
+		return v.PartialEmbeddings
+	}
+	return nil
+}
+
+func (g *GetPartialResponse) GetPartialModel() *components.PartialModel {
+	if v := g.GetPartial(); v != nil {
+		return v.PartialModel
+	}
+	return nil
+}
+
 func (g *GetPartialResponse) GetPartialRedisCe() *components.PartialRedisCe {
 	if v := g.GetPartial(); v != nil {
 		return v.PartialRedisCe
@@ -77,6 +91,13 @@ func (g *GetPartialResponse) GetPartialRedisCe() *components.PartialRedisCe {
 func (g *GetPartialResponse) GetPartialRedisEe() *components.PartialRedisEe {
 	if v := g.GetPartial(); v != nil {
 		return v.PartialRedisEe
+	}
+	return nil
+}
+
+func (g *GetPartialResponse) GetPartialVectordb() *components.PartialVectordb {
+	if v := g.GetPartial(); v != nil {
+		return v.PartialVectordb
 	}
 	return nil
 }

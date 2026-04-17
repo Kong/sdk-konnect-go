@@ -3,6 +3,7 @@
 package components
 
 type ProviderAccountsFilterParameters struct {
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Provider *CloudGatewaysStringFieldFilterOverride `queryParam:"name=provider"`
 }
 

@@ -3,6 +3,7 @@
 package components
 
 type PrivateDNSFilterParameters struct {
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Name  *CloudGatewaysStringFieldFilterOverride `queryParam:"name=name"`
 	State *PrivateDNSStateFieldFilter             `queryParam:"name=state"`
 }

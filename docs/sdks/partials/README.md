@@ -103,6 +103,7 @@ func main() {
                 Host: sdkkonnectgo.Pointer("localhost"),
                 Password: sdkkonnectgo.Pointer("password"),
                 ServerName: sdkkonnectgo.Pointer("redis"),
+                SslVerify: sdkkonnectgo.Pointer(false),
                 Username: sdkkonnectgo.Pointer("username"),
             },
         },
@@ -112,10 +113,16 @@ func main() {
     }
     if res.Partial != nil {
         switch res.Partial.Type {
+            case components.PartialTypeEmbeddings:
+                // res.Partial.PartialEmbeddings is populated
+            case components.PartialTypeModel:
+                // res.Partial.PartialModel is populated
             case components.PartialTypeRedisCe:
                 // res.Partial.PartialRedisCe is populated
             case components.PartialTypeRedisEe:
                 // res.Partial.PartialRedisEe is populated
+            case components.PartialTypeVectordb:
+                // res.Partial.PartialVectordb is populated
         }
 
     }
@@ -166,6 +173,7 @@ func main() {
                     },
                 },
                 ServerName: sdkkonnectgo.Pointer("redis-ee"),
+                SslVerify: sdkkonnectgo.Pointer(false),
                 Username: sdkkonnectgo.Pointer("username"),
             },
         },
@@ -175,10 +183,16 @@ func main() {
     }
     if res.Partial != nil {
         switch res.Partial.Type {
+            case components.PartialTypeEmbeddings:
+                // res.Partial.PartialEmbeddings is populated
+            case components.PartialTypeModel:
+                // res.Partial.PartialModel is populated
             case components.PartialTypeRedisCe:
                 // res.Partial.PartialRedisCe is populated
             case components.PartialTypeRedisEe:
                 // res.Partial.PartialRedisEe is populated
+            case components.PartialTypeVectordb:
+                // res.Partial.PartialVectordb is populated
         }
 
     }
@@ -212,6 +226,7 @@ func main() {
                 Host: sdkkonnectgo.Pointer("localhost"),
                 Password: sdkkonnectgo.Pointer("password"),
                 ServerName: sdkkonnectgo.Pointer("redis"),
+                SslVerify: sdkkonnectgo.Pointer(false),
                 Username: sdkkonnectgo.Pointer("username"),
             },
         },
@@ -221,10 +236,16 @@ func main() {
     }
     if res.Partial != nil {
         switch res.Partial.Type {
+            case components.PartialTypeEmbeddings:
+                // res.Partial.PartialEmbeddings is populated
+            case components.PartialTypeModel:
+                // res.Partial.PartialModel is populated
             case components.PartialTypeRedisCe:
                 // res.Partial.PartialRedisCe is populated
             case components.PartialTypeRedisEe:
                 // res.Partial.PartialRedisEe is populated
+            case components.PartialTypeVectordb:
+                // res.Partial.PartialVectordb is populated
         }
 
     }
@@ -339,10 +360,16 @@ func main() {
     }
     if res.Partial != nil {
         switch res.Partial.Type {
+            case components.PartialTypeEmbeddings:
+                // res.Partial.PartialEmbeddings is populated
+            case components.PartialTypeModel:
+                // res.Partial.PartialModel is populated
             case components.PartialTypeRedisCe:
                 // res.Partial.PartialRedisCe is populated
             case components.PartialTypeRedisEe:
                 // res.Partial.PartialRedisEe is populated
+            case components.PartialTypeVectordb:
+                // res.Partial.PartialVectordb is populated
         }
 
     }
@@ -422,6 +449,7 @@ func main() {
                         },
                     },
                     ServerName: sdkkonnectgo.Pointer("redis-ee"),
+                    SslVerify: sdkkonnectgo.Pointer(false),
                     Username: sdkkonnectgo.Pointer("username"),
                 },
             },
@@ -432,10 +460,16 @@ func main() {
     }
     if res.Partial != nil {
         switch res.Partial.Type {
+            case components.PartialTypeEmbeddings:
+                // res.Partial.PartialEmbeddings is populated
+            case components.PartialTypeModel:
+                // res.Partial.PartialModel is populated
             case components.PartialTypeRedisCe:
                 // res.Partial.PartialRedisCe is populated
             case components.PartialTypeRedisEe:
                 // res.Partial.PartialRedisEe is populated
+            case components.PartialTypeVectordb:
+                // res.Partial.PartialVectordb is populated
         }
 
     }
@@ -473,6 +507,7 @@ func main() {
                     Host: sdkkonnectgo.Pointer("localhost"),
                     Password: sdkkonnectgo.Pointer("password"),
                     ServerName: sdkkonnectgo.Pointer("redis"),
+                    SslVerify: sdkkonnectgo.Pointer(false),
                     Username: sdkkonnectgo.Pointer("username"),
                 },
             },
@@ -483,10 +518,16 @@ func main() {
     }
     if res.Partial != nil {
         switch res.Partial.Type {
+            case components.PartialTypeEmbeddings:
+                // res.Partial.PartialEmbeddings is populated
+            case components.PartialTypeModel:
+                // res.Partial.PartialModel is populated
             case components.PartialTypeRedisCe:
                 // res.Partial.PartialRedisCe is populated
             case components.PartialTypeRedisEe:
                 // res.Partial.PartialRedisEe is populated
+            case components.PartialTypeVectordb:
+                // res.Partial.PartialVectordb is populated
         }
 
     }
@@ -524,6 +565,7 @@ func main() {
                     Host: sdkkonnectgo.Pointer("localhost"),
                     Password: sdkkonnectgo.Pointer("password"),
                     ServerName: sdkkonnectgo.Pointer("redis"),
+                    SslVerify: sdkkonnectgo.Pointer(false),
                     Username: sdkkonnectgo.Pointer("username"),
                 },
             },
@@ -534,10 +576,16 @@ func main() {
     }
     if res.Partial != nil {
         switch res.Partial.Type {
+            case components.PartialTypeEmbeddings:
+                // res.Partial.PartialEmbeddings is populated
+            case components.PartialTypeModel:
+                // res.Partial.PartialModel is populated
             case components.PartialTypeRedisCe:
                 // res.Partial.PartialRedisCe is populated
             case components.PartialTypeRedisEe:
                 // res.Partial.PartialRedisEe is populated
+            case components.PartialTypeVectordb:
+                // res.Partial.PartialVectordb is populated
         }
 
     }

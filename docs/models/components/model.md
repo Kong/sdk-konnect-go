@@ -1,0 +1,10 @@
+# Model
+
+
+## Fields
+
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `Name`                                                                                       | `string`                                                                                     | :heavy_check_mark:                                                                           | Model name to execute.                                                                       |
+| `Options`                                                                                    | [*components.OptionsObj](../../models/components/optionsobj.md)                              | :heavy_minus_sign:                                                                           | Key/value settings for the model                                                             |
+| `Provider`                                                                                   | [components.PartialEmbeddingsProvider](../../models/components/partialembeddingsprovider.md) | :heavy_check_mark:                                                                           | AI provider format to use for embeddings API                                                 |

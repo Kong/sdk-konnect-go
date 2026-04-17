@@ -2,6 +2,8 @@
 
 Client mTLS configuration.
 
+**Requires a minimum runtime version of `1.1`**.
+
 
 ## Fields
 

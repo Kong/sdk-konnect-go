@@ -149,9 +149,9 @@ func main() {
     }
     if res.Route != nil {
         switch res.Route.Type {
-            case components.RouteTypeRouteJSON:
+            case components.RouteUnionTypeRouteJSON:
                 // res.Route.RouteJSON is populated
-            case components.RouteTypeRouteExpression:
+            case components.RouteUnionTypeRouteExpression:
                 // res.Route.RouteExpression is populated
         }
 
@@ -202,9 +202,9 @@ func main() {
     }
     if res.Route != nil {
         switch res.Route.Type {
-            case components.RouteTypeRouteJSON:
+            case components.RouteUnionTypeRouteJSON:
                 // res.Route.RouteJSON is populated
-            case components.RouteTypeRouteExpression:
+            case components.RouteUnionTypeRouteExpression:
                 // res.Route.RouteExpression is populated
         }
 
@@ -255,9 +255,9 @@ func main() {
     }
     if res.Route != nil {
         switch res.Route.Type {
-            case components.RouteTypeRouteJSON:
+            case components.RouteUnionTypeRouteJSON:
                 // res.Route.RouteJSON is populated
-            case components.RouteTypeRouteExpression:
+            case components.RouteUnionTypeRouteExpression:
                 // res.Route.RouteExpression is populated
         }
 
@@ -373,9 +373,9 @@ func main() {
     }
     if res.Route != nil {
         switch res.Route.Type {
-            case components.RouteTypeRouteJSON:
+            case components.RouteUnionTypeRouteJSON:
                 // res.Route.RouteJSON is populated
-            case components.RouteTypeRouteExpression:
+            case components.RouteUnionTypeRouteExpression:
                 // res.Route.RouteExpression is populated
         }
 
@@ -456,9 +456,9 @@ func main() {
     }
     if res.Route != nil {
         switch res.Route.Type {
-            case components.RouteTypeRouteJSON:
+            case components.RouteUnionTypeRouteJSON:
                 // res.Route.RouteJSON is populated
-            case components.RouteTypeRouteExpression:
+            case components.RouteUnionTypeRouteExpression:
                 // res.Route.RouteExpression is populated
         }
 
@@ -514,9 +514,9 @@ func main() {
     }
     if res.Route != nil {
         switch res.Route.Type {
-            case components.RouteTypeRouteJSON:
+            case components.RouteUnionTypeRouteJSON:
                 // res.Route.RouteJSON is populated
-            case components.RouteTypeRouteExpression:
+            case components.RouteUnionTypeRouteExpression:
                 // res.Route.RouteExpression is populated
         }
 
@@ -572,9 +572,9 @@ func main() {
     }
     if res.Route != nil {
         switch res.Route.Type {
-            case components.RouteTypeRouteJSON:
+            case components.RouteUnionTypeRouteJSON:
                 // res.Route.RouteJSON is populated
-            case components.RouteTypeRouteExpression:
+            case components.RouteUnionTypeRouteExpression:
                 // res.Route.RouteExpression is populated
         }
 
@@ -713,9 +713,9 @@ func main() {
     }
     if res.Route != nil {
         switch res.Route.Type {
-            case components.RouteTypeRouteJSON:
+            case components.RouteUnionTypeRouteJSON:
                 // res.Route.RouteJSON is populated
-            case components.RouteTypeRouteExpression:
+            case components.RouteUnionTypeRouteExpression:
                 // res.Route.RouteExpression is populated
         }
 
@@ -837,9 +837,9 @@ func main() {
     }
     if res.Route != nil {
         switch res.Route.Type {
-            case components.RouteTypeRouteJSON:
+            case components.RouteUnionTypeRouteJSON:
                 // res.Route.RouteJSON is populated
-            case components.RouteTypeRouteExpression:
+            case components.RouteUnionTypeRouteExpression:
                 // res.Route.RouteExpression is populated
         }
 
@@ -919,9 +919,9 @@ func main() {
     }
     if res.Route != nil {
         switch res.Route.Type {
-            case components.RouteTypeRouteJSON:
+            case components.RouteUnionTypeRouteJSON:
                 // res.Route.RouteJSON is populated
-            case components.RouteTypeRouteExpression:
+            case components.RouteUnionTypeRouteExpression:
                 // res.Route.RouteExpression is populated
         }
 

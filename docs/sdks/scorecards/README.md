@@ -784,19 +784,15 @@ func main() {
                     Lte: types.MustTimeFromString("2022-03-30T07:20:50Z"),
                 },
             )),
-            EvaluationSuccessfullyEvaluatedAt: sdkkonnectgo.Pointer(components.CreateEvaluationSuccessfullyEvaluatedAtDateTimeFieldFilter(
-                components.CreateDateTimeFieldFilterDateTimeFieldLTFilter(
-                    components.DateTimeFieldLTFilter{
-                        Lt: types.MustTimeFromString("2022-03-30T07:20:50Z"),
-                    },
-                ),
+            EvaluationSuccessfullyEvaluatedAt: sdkkonnectgo.Pointer(components.CreateScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldFilterDateTimeFieldLTFilter(
+                components.DateTimeFieldFilterDateTimeFieldLTFilter{
+                    Lt: types.MustTimeFromString("2022-03-30T07:20:50Z"),
+                },
             )),
-            EvaluationAttemptedAt: sdkkonnectgo.Pointer(components.CreateEvaluationAttemptedAtDateTimeFieldFilter(
-                components.CreateDateTimeFieldFilterDateTimeFieldLTEFilter(
-                    components.DateTimeFieldLTEFilter{
-                        Lte: types.MustTimeFromString("2022-03-30T07:20:50Z"),
-                    },
-                ),
+            EvaluationAttemptedAt: sdkkonnectgo.Pointer(components.CreateScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter(
+                components.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter{
+                    Lte: types.MustTimeFromString("2022-03-30T07:20:50Z"),
+                },
             )),
         },
         Sort: sdkkonnectgo.Pointer("created_at desc"),

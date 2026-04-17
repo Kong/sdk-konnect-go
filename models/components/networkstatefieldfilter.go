@@ -2,93 +2,15 @@
 
 package components
 
-import (
-	"errors"
-	"fmt"
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
-type NetworkStateFieldFilterType string
-
-const (
-	NetworkStateFieldFilterTypeNetworkStateFieldEqualsFilter     NetworkStateFieldFilterType = "NetworkStateFieldEqualsFilter"
-	NetworkStateFieldFilterTypeNetworkStateFieldNotEqualsFilter  NetworkStateFieldFilterType = "NetworkStateFieldNotEqualsFilter"
-	NetworkStateFieldFilterTypeNetworkStateFieldOrEqualityFilter NetworkStateFieldFilterType = "NetworkStateFieldOrEqualityFilter"
-)
-
+// NetworkStateFieldFilter - Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 type NetworkStateFieldFilter struct {
-	NetworkStateFieldEqualsFilter     *NetworkStateFieldEqualsFilter     `queryParam:"inline" union:"member"`
-	NetworkStateFieldNotEqualsFilter  *NetworkStateFieldNotEqualsFilter  `queryParam:"inline" union:"member"`
-	NetworkStateFieldOrEqualityFilter *NetworkStateFieldOrEqualityFilter `queryParam:"inline" union:"member"`
-
-	Type NetworkStateFieldFilterType
+	// The field matches any of the provided values.
+	Oeq *string `queryParam:"name=oeq"`
 }
 
-func CreateNetworkStateFieldFilterNetworkStateFieldEqualsFilter(networkStateFieldEqualsFilter NetworkStateFieldEqualsFilter) NetworkStateFieldFilter {
-	typ := NetworkStateFieldFilterTypeNetworkStateFieldEqualsFilter
-
-	return NetworkStateFieldFilter{
-		NetworkStateFieldEqualsFilter: &networkStateFieldEqualsFilter,
-		Type:                          typ,
-	}
-}
-
-func CreateNetworkStateFieldFilterNetworkStateFieldNotEqualsFilter(networkStateFieldNotEqualsFilter NetworkStateFieldNotEqualsFilter) NetworkStateFieldFilter {
-	typ := NetworkStateFieldFilterTypeNetworkStateFieldNotEqualsFilter
-
-	return NetworkStateFieldFilter{
-		NetworkStateFieldNotEqualsFilter: &networkStateFieldNotEqualsFilter,
-		Type:                             typ,
-	}
-}
-
-func CreateNetworkStateFieldFilterNetworkStateFieldOrEqualityFilter(networkStateFieldOrEqualityFilter NetworkStateFieldOrEqualityFilter) NetworkStateFieldFilter {
-	typ := NetworkStateFieldFilterTypeNetworkStateFieldOrEqualityFilter
-
-	return NetworkStateFieldFilter{
-		NetworkStateFieldOrEqualityFilter: &networkStateFieldOrEqualityFilter,
-		Type:                              typ,
-	}
-}
-
-func (u *NetworkStateFieldFilter) UnmarshalJSON(data []byte) error {
-
-	var networkStateFieldOrEqualityFilter NetworkStateFieldOrEqualityFilter = NetworkStateFieldOrEqualityFilter{}
-	if err := utils.UnmarshalJSON(data, &networkStateFieldOrEqualityFilter, "", true, nil); err == nil {
-		u.NetworkStateFieldOrEqualityFilter = &networkStateFieldOrEqualityFilter
-		u.Type = NetworkStateFieldFilterTypeNetworkStateFieldOrEqualityFilter
+func (n *NetworkStateFieldFilter) GetOeq() *string {
+	if n == nil {
 		return nil
 	}
-
-	var networkStateFieldEqualsFilter NetworkStateFieldEqualsFilter = NetworkStateFieldEqualsFilter{}
-	if err := utils.UnmarshalJSON(data, &networkStateFieldEqualsFilter, "", true, nil); err == nil {
-		u.NetworkStateFieldEqualsFilter = &networkStateFieldEqualsFilter
-		u.Type = NetworkStateFieldFilterTypeNetworkStateFieldEqualsFilter
-		return nil
-	}
-
-	var networkStateFieldNotEqualsFilter NetworkStateFieldNotEqualsFilter = NetworkStateFieldNotEqualsFilter{}
-	if err := utils.UnmarshalJSON(data, &networkStateFieldNotEqualsFilter, "", true, nil); err == nil {
-		u.NetworkStateFieldNotEqualsFilter = &networkStateFieldNotEqualsFilter
-		u.Type = NetworkStateFieldFilterTypeNetworkStateFieldNotEqualsFilter
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for NetworkStateFieldFilter", string(data))
-}
-
-func (u NetworkStateFieldFilter) MarshalJSON() ([]byte, error) {
-	if u.NetworkStateFieldEqualsFilter != nil {
-		return utils.MarshalJSON(u.NetworkStateFieldEqualsFilter, "", true)
-	}
-
-	if u.NetworkStateFieldNotEqualsFilter != nil {
-		return utils.MarshalJSON(u.NetworkStateFieldNotEqualsFilter, "", true)
-	}
-
-	if u.NetworkStateFieldOrEqualityFilter != nil {
-		return utils.MarshalJSON(u.NetworkStateFieldOrEqualityFilter, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type NetworkStateFieldFilter: all fields are null")
+	return n.Oeq
 }

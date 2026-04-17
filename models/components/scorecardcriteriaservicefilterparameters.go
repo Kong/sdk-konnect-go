@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"time"
 )
 
 type ScorecardCriteriaServiceFilterParametersCustomFieldsType string
@@ -99,86 +100,494 @@ func (u ScorecardCriteriaServiceFilterParametersCustomFields) MarshalJSON() ([]b
 	return nil, errors.New("could not marshal union type ScorecardCriteriaServiceFilterParametersCustomFields: all fields are null")
 }
 
-type EvaluationSuccessfullyEvaluatedAtType string
-
-const (
-	EvaluationSuccessfullyEvaluatedAtTypeDateTimeFieldFilter EvaluationSuccessfullyEvaluatedAtType = "DateTimeFieldFilter"
-)
-
-type EvaluationSuccessfullyEvaluatedAt struct {
-	DateTimeFieldFilter *DateTimeFieldFilter `queryParam:"inline" union:"member"`
-
-	Type EvaluationSuccessfullyEvaluatedAtType
+type DateTimeFieldFilterDateTimeFieldGTEFilter struct {
+	// Value is greater than or equal to the given RFC-3339 formatted timestamp in UTC
+	Gte time.Time `queryParam:"name=gte"`
 }
 
-func CreateEvaluationSuccessfullyEvaluatedAtDateTimeFieldFilter(dateTimeFieldFilter DateTimeFieldFilter) EvaluationSuccessfullyEvaluatedAt {
-	typ := EvaluationSuccessfullyEvaluatedAtTypeDateTimeFieldFilter
+func (d DateTimeFieldFilterDateTimeFieldGTEFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
 
-	return EvaluationSuccessfullyEvaluatedAt{
-		DateTimeFieldFilter: &dateTimeFieldFilter,
-		Type:                typ,
+func (d *DateTimeFieldFilterDateTimeFieldGTEFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"gte"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DateTimeFieldFilterDateTimeFieldGTEFilter) GetGte() time.Time {
+	if d == nil {
+		return time.Time{}
+	}
+	return d.Gte
+}
+
+type DateTimeFieldFilterDateTimeFieldGTFilter struct {
+	// Value is greater than the given RFC-3339 formatted timestamp in UTC
+	Gt time.Time `queryParam:"name=gt"`
+}
+
+func (d DateTimeFieldFilterDateTimeFieldGTFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DateTimeFieldFilterDateTimeFieldGTFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"gt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DateTimeFieldFilterDateTimeFieldGTFilter) GetGt() time.Time {
+	if d == nil {
+		return time.Time{}
+	}
+	return d.Gt
+}
+
+type DateTimeFieldFilterDateTimeFieldLTEFilter struct {
+	// Value is less than or equal to the given RFC-3339 formatted timestamp in UTC
+	Lte time.Time `queryParam:"name=lte"`
+}
+
+func (d DateTimeFieldFilterDateTimeFieldLTEFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DateTimeFieldFilterDateTimeFieldLTEFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"lte"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DateTimeFieldFilterDateTimeFieldLTEFilter) GetLte() time.Time {
+	if d == nil {
+		return time.Time{}
+	}
+	return d.Lte
+}
+
+type DateTimeFieldFilterDateTimeFieldLTFilter struct {
+	// Value is less than the given RFC-3339 formatted timestamp in UTC
+	Lt time.Time `queryParam:"name=lt"`
+}
+
+func (d DateTimeFieldFilterDateTimeFieldLTFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DateTimeFieldFilterDateTimeFieldLTFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"lt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DateTimeFieldFilterDateTimeFieldLTFilter) GetLt() time.Time {
+	if d == nil {
+		return time.Time{}
+	}
+	return d.Lt
+}
+
+type DateTimeFieldFilterDateTimeFieldEqualsFilter struct {
+	// Value strictly equals given RFC-3339 formatted timestamp in UTC
+	Eq time.Time `queryParam:"name=eq"`
+}
+
+func (d DateTimeFieldFilterDateTimeFieldEqualsFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DateTimeFieldFilterDateTimeFieldEqualsFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"eq"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DateTimeFieldFilterDateTimeFieldEqualsFilter) GetEq() time.Time {
+	if d == nil {
+		return time.Time{}
+	}
+	return d.Eq
+}
+
+type ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterType string
+
+const (
+	ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterTypeDateTimeFieldFilterDateTimeFieldEqualsFilter ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterType = "DateTimeFieldFilter_DateTimeFieldEqualsFilter"
+	ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterTypeDateTimeFieldFilterDateTimeFieldLTFilter     ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterType = "DateTimeFieldFilter_DateTimeFieldLTFilter"
+	ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterTypeDateTimeFieldFilterDateTimeFieldLTEFilter    ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterType = "DateTimeFieldFilter_DateTimeFieldLTEFilter"
+	ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterTypeDateTimeFieldFilterDateTimeFieldGTFilter     ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterType = "DateTimeFieldFilter_DateTimeFieldGTFilter"
+	ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterTypeDateTimeFieldFilterDateTimeFieldGTEFilter    ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterType = "DateTimeFieldFilter_DateTimeFieldGTEFilter"
+)
+
+// ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter - Filters on the given datetime (RFC-3339) field value.
+type ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter struct {
+	DateTimeFieldFilterDateTimeFieldEqualsFilter *DateTimeFieldFilterDateTimeFieldEqualsFilter `queryParam:"inline" union:"member"`
+	DateTimeFieldFilterDateTimeFieldLTFilter     *DateTimeFieldFilterDateTimeFieldLTFilter     `queryParam:"inline" union:"member"`
+	DateTimeFieldFilterDateTimeFieldLTEFilter    *DateTimeFieldFilterDateTimeFieldLTEFilter    `queryParam:"inline" union:"member"`
+	DateTimeFieldFilterDateTimeFieldGTFilter     *DateTimeFieldFilterDateTimeFieldGTFilter     `queryParam:"inline" union:"member"`
+	DateTimeFieldFilterDateTimeFieldGTEFilter    *DateTimeFieldFilterDateTimeFieldGTEFilter    `queryParam:"inline" union:"member"`
+
+	Type ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterType
+}
+
+func CreateScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldFilterDateTimeFieldEqualsFilter(dateTimeFieldFilterDateTimeFieldEqualsFilter DateTimeFieldFilterDateTimeFieldEqualsFilter) ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter {
+	typ := ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterTypeDateTimeFieldFilterDateTimeFieldEqualsFilter
+
+	return ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter{
+		DateTimeFieldFilterDateTimeFieldEqualsFilter: &dateTimeFieldFilterDateTimeFieldEqualsFilter,
+		Type: typ,
 	}
 }
 
-func (u *EvaluationSuccessfullyEvaluatedAt) UnmarshalJSON(data []byte) error {
+func CreateScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldFilterDateTimeFieldLTFilter(dateTimeFieldFilterDateTimeFieldLTFilter DateTimeFieldFilterDateTimeFieldLTFilter) ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter {
+	typ := ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterTypeDateTimeFieldFilterDateTimeFieldLTFilter
 
-	var dateTimeFieldFilter DateTimeFieldFilter = DateTimeFieldFilter{}
-	if err := utils.UnmarshalJSON(data, &dateTimeFieldFilter, "", true, nil); err == nil {
-		u.DateTimeFieldFilter = &dateTimeFieldFilter
-		u.Type = EvaluationSuccessfullyEvaluatedAtTypeDateTimeFieldFilter
+	return ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter{
+		DateTimeFieldFilterDateTimeFieldLTFilter: &dateTimeFieldFilterDateTimeFieldLTFilter,
+		Type:                                     typ,
+	}
+}
+
+func CreateScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldFilterDateTimeFieldLTEFilter(dateTimeFieldFilterDateTimeFieldLTEFilter DateTimeFieldFilterDateTimeFieldLTEFilter) ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter {
+	typ := ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterTypeDateTimeFieldFilterDateTimeFieldLTEFilter
+
+	return ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter{
+		DateTimeFieldFilterDateTimeFieldLTEFilter: &dateTimeFieldFilterDateTimeFieldLTEFilter,
+		Type: typ,
+	}
+}
+
+func CreateScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldFilterDateTimeFieldGTFilter(dateTimeFieldFilterDateTimeFieldGTFilter DateTimeFieldFilterDateTimeFieldGTFilter) ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter {
+	typ := ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterTypeDateTimeFieldFilterDateTimeFieldGTFilter
+
+	return ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter{
+		DateTimeFieldFilterDateTimeFieldGTFilter: &dateTimeFieldFilterDateTimeFieldGTFilter,
+		Type:                                     typ,
+	}
+}
+
+func CreateScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldFilterDateTimeFieldGTEFilter(dateTimeFieldFilterDateTimeFieldGTEFilter DateTimeFieldFilterDateTimeFieldGTEFilter) ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter {
+	typ := ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterTypeDateTimeFieldFilterDateTimeFieldGTEFilter
+
+	return ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter{
+		DateTimeFieldFilterDateTimeFieldGTEFilter: &dateTimeFieldFilterDateTimeFieldGTEFilter,
+		Type: typ,
+	}
+}
+
+func (u *ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter) UnmarshalJSON(data []byte) error {
+
+	var dateTimeFieldFilterDateTimeFieldEqualsFilter DateTimeFieldFilterDateTimeFieldEqualsFilter = DateTimeFieldFilterDateTimeFieldEqualsFilter{}
+	if err := utils.UnmarshalJSON(data, &dateTimeFieldFilterDateTimeFieldEqualsFilter, "", true, nil); err == nil {
+		u.DateTimeFieldFilterDateTimeFieldEqualsFilter = &dateTimeFieldFilterDateTimeFieldEqualsFilter
+		u.Type = ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterTypeDateTimeFieldFilterDateTimeFieldEqualsFilter
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EvaluationSuccessfullyEvaluatedAt", string(data))
-}
-
-func (u EvaluationSuccessfullyEvaluatedAt) MarshalJSON() ([]byte, error) {
-	if u.DateTimeFieldFilter != nil {
-		return utils.MarshalJSON(u.DateTimeFieldFilter, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type EvaluationSuccessfullyEvaluatedAt: all fields are null")
-}
-
-type EvaluationAttemptedAtType string
-
-const (
-	EvaluationAttemptedAtTypeDateTimeFieldFilter EvaluationAttemptedAtType = "DateTimeFieldFilter"
-)
-
-type EvaluationAttemptedAt struct {
-	DateTimeFieldFilter *DateTimeFieldFilter `queryParam:"inline" union:"member"`
-
-	Type EvaluationAttemptedAtType
-}
-
-func CreateEvaluationAttemptedAtDateTimeFieldFilter(dateTimeFieldFilter DateTimeFieldFilter) EvaluationAttemptedAt {
-	typ := EvaluationAttemptedAtTypeDateTimeFieldFilter
-
-	return EvaluationAttemptedAt{
-		DateTimeFieldFilter: &dateTimeFieldFilter,
-		Type:                typ,
-	}
-}
-
-func (u *EvaluationAttemptedAt) UnmarshalJSON(data []byte) error {
-
-	var dateTimeFieldFilter DateTimeFieldFilter = DateTimeFieldFilter{}
-	if err := utils.UnmarshalJSON(data, &dateTimeFieldFilter, "", true, nil); err == nil {
-		u.DateTimeFieldFilter = &dateTimeFieldFilter
-		u.Type = EvaluationAttemptedAtTypeDateTimeFieldFilter
+	var dateTimeFieldFilterDateTimeFieldLTFilter DateTimeFieldFilterDateTimeFieldLTFilter = DateTimeFieldFilterDateTimeFieldLTFilter{}
+	if err := utils.UnmarshalJSON(data, &dateTimeFieldFilterDateTimeFieldLTFilter, "", true, nil); err == nil {
+		u.DateTimeFieldFilterDateTimeFieldLTFilter = &dateTimeFieldFilterDateTimeFieldLTFilter
+		u.Type = ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterTypeDateTimeFieldFilterDateTimeFieldLTFilter
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EvaluationAttemptedAt", string(data))
-}
-
-func (u EvaluationAttemptedAt) MarshalJSON() ([]byte, error) {
-	if u.DateTimeFieldFilter != nil {
-		return utils.MarshalJSON(u.DateTimeFieldFilter, "", true)
+	var dateTimeFieldFilterDateTimeFieldLTEFilter DateTimeFieldFilterDateTimeFieldLTEFilter = DateTimeFieldFilterDateTimeFieldLTEFilter{}
+	if err := utils.UnmarshalJSON(data, &dateTimeFieldFilterDateTimeFieldLTEFilter, "", true, nil); err == nil {
+		u.DateTimeFieldFilterDateTimeFieldLTEFilter = &dateTimeFieldFilterDateTimeFieldLTEFilter
+		u.Type = ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterTypeDateTimeFieldFilterDateTimeFieldLTEFilter
+		return nil
 	}
 
-	return nil, errors.New("could not marshal union type EvaluationAttemptedAt: all fields are null")
+	var dateTimeFieldFilterDateTimeFieldGTFilter DateTimeFieldFilterDateTimeFieldGTFilter = DateTimeFieldFilterDateTimeFieldGTFilter{}
+	if err := utils.UnmarshalJSON(data, &dateTimeFieldFilterDateTimeFieldGTFilter, "", true, nil); err == nil {
+		u.DateTimeFieldFilterDateTimeFieldGTFilter = &dateTimeFieldFilterDateTimeFieldGTFilter
+		u.Type = ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterTypeDateTimeFieldFilterDateTimeFieldGTFilter
+		return nil
+	}
+
+	var dateTimeFieldFilterDateTimeFieldGTEFilter DateTimeFieldFilterDateTimeFieldGTEFilter = DateTimeFieldFilterDateTimeFieldGTEFilter{}
+	if err := utils.UnmarshalJSON(data, &dateTimeFieldFilterDateTimeFieldGTEFilter, "", true, nil); err == nil {
+		u.DateTimeFieldFilterDateTimeFieldGTEFilter = &dateTimeFieldFilterDateTimeFieldGTEFilter
+		u.Type = ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterTypeDateTimeFieldFilterDateTimeFieldGTEFilter
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter", string(data))
+}
+
+func (u ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter) MarshalJSON() ([]byte, error) {
+	if u.DateTimeFieldFilterDateTimeFieldEqualsFilter != nil {
+		return utils.MarshalJSON(u.DateTimeFieldFilterDateTimeFieldEqualsFilter, "", true)
+	}
+
+	if u.DateTimeFieldFilterDateTimeFieldLTFilter != nil {
+		return utils.MarshalJSON(u.DateTimeFieldFilterDateTimeFieldLTFilter, "", true)
+	}
+
+	if u.DateTimeFieldFilterDateTimeFieldLTEFilter != nil {
+		return utils.MarshalJSON(u.DateTimeFieldFilterDateTimeFieldLTEFilter, "", true)
+	}
+
+	if u.DateTimeFieldFilterDateTimeFieldGTFilter != nil {
+		return utils.MarshalJSON(u.DateTimeFieldFilterDateTimeFieldGTFilter, "", true)
+	}
+
+	if u.DateTimeFieldFilterDateTimeFieldGTEFilter != nil {
+		return utils.MarshalJSON(u.DateTimeFieldFilterDateTimeFieldGTEFilter, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter: all fields are null")
+}
+
+type ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter struct {
+	// Value is greater than or equal to the given RFC-3339 formatted timestamp in UTC
+	Gte time.Time `queryParam:"name=gte"`
+}
+
+func (s ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"gte"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter) GetGte() time.Time {
+	if s == nil {
+		return time.Time{}
+	}
+	return s.Gte
+}
+
+type ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter struct {
+	// Value is greater than the given RFC-3339 formatted timestamp in UTC
+	Gt time.Time `queryParam:"name=gt"`
+}
+
+func (s ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"gt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter) GetGt() time.Time {
+	if s == nil {
+		return time.Time{}
+	}
+	return s.Gt
+}
+
+type ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter struct {
+	// Value is less than or equal to the given RFC-3339 formatted timestamp in UTC
+	Lte time.Time `queryParam:"name=lte"`
+}
+
+func (s ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"lte"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter) GetLte() time.Time {
+	if s == nil {
+		return time.Time{}
+	}
+	return s.Lte
+}
+
+type ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter struct {
+	// Value is less than the given RFC-3339 formatted timestamp in UTC
+	Lt time.Time `queryParam:"name=lt"`
+}
+
+func (s ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"lt"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter) GetLt() time.Time {
+	if s == nil {
+		return time.Time{}
+	}
+	return s.Lt
+}
+
+type ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter struct {
+	// Value strictly equals given RFC-3339 formatted timestamp in UTC
+	Eq time.Time `queryParam:"name=eq"`
+}
+
+func (s ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"eq"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter) GetEq() time.Time {
+	if s == nil {
+		return time.Time{}
+	}
+	return s.Eq
+}
+
+type ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterType string
+
+const (
+	ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterTypeScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterType = "ScorecardCriteriaServiceFilterParameters_DateTimeFieldFilter_DateTimeFieldEqualsFilter"
+	ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterTypeScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter     ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterType = "ScorecardCriteriaServiceFilterParameters_DateTimeFieldFilter_DateTimeFieldLTFilter"
+	ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterTypeScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter    ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterType = "ScorecardCriteriaServiceFilterParameters_DateTimeFieldFilter_DateTimeFieldLTEFilter"
+	ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterTypeScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter     ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterType = "ScorecardCriteriaServiceFilterParameters_DateTimeFieldFilter_DateTimeFieldGTFilter"
+	ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterTypeScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter    ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterType = "ScorecardCriteriaServiceFilterParameters_DateTimeFieldFilter_DateTimeFieldGTEFilter"
+)
+
+// ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter - Filters on the given datetime (RFC-3339) field value.
+type ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter struct {
+	ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter *ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter `queryParam:"inline" union:"member"`
+	ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter     *ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter     `queryParam:"inline" union:"member"`
+	ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter    *ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter    `queryParam:"inline" union:"member"`
+	ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter     *ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter     `queryParam:"inline" union:"member"`
+	ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter    *ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter    `queryParam:"inline" union:"member"`
+
+	Type ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterType
+}
+
+func CreateScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter(scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter) ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter {
+	typ := ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterTypeScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter
+
+	return ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter{
+		ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter: &scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter,
+		Type: typ,
+	}
+}
+
+func CreateScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter(scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter) ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter {
+	typ := ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterTypeScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter
+
+	return ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter{
+		ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter: &scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter,
+		Type: typ,
+	}
+}
+
+func CreateScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter(scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter) ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter {
+	typ := ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterTypeScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter
+
+	return ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter{
+		ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter: &scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter,
+		Type: typ,
+	}
+}
+
+func CreateScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter(scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter) ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter {
+	typ := ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterTypeScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter
+
+	return ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter{
+		ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter: &scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter,
+		Type: typ,
+	}
+}
+
+func CreateScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter(scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter) ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter {
+	typ := ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterTypeScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter
+
+	return ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter{
+		ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter: &scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter,
+		Type: typ,
+	}
+}
+
+func (u *ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter) UnmarshalJSON(data []byte) error {
+
+	var scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter = ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter{}
+	if err := utils.UnmarshalJSON(data, &scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter, "", true, nil); err == nil {
+		u.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter = &scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter
+		u.Type = ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterTypeScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter
+		return nil
+	}
+
+	var scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter = ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter{}
+	if err := utils.UnmarshalJSON(data, &scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter, "", true, nil); err == nil {
+		u.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter = &scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter
+		u.Type = ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterTypeScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter
+		return nil
+	}
+
+	var scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter = ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter{}
+	if err := utils.UnmarshalJSON(data, &scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter, "", true, nil); err == nil {
+		u.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter = &scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter
+		u.Type = ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterTypeScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter
+		return nil
+	}
+
+	var scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter = ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter{}
+	if err := utils.UnmarshalJSON(data, &scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter, "", true, nil); err == nil {
+		u.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter = &scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter
+		u.Type = ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterTypeScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter
+		return nil
+	}
+
+	var scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter = ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter{}
+	if err := utils.UnmarshalJSON(data, &scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter, "", true, nil); err == nil {
+		u.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter = &scorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter
+		u.Type = ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterTypeScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter", string(data))
+}
+
+func (u ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter) MarshalJSON() ([]byte, error) {
+	if u.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter != nil {
+		return utils.MarshalJSON(u.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldEqualsFilter, "", true)
+	}
+
+	if u.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter != nil {
+		return utils.MarshalJSON(u.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTFilter, "", true)
+	}
+
+	if u.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter != nil {
+		return utils.MarshalJSON(u.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter, "", true)
+	}
+
+	if u.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter != nil {
+		return utils.MarshalJSON(u.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTFilter, "", true)
+	}
+
+	if u.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter != nil {
+		return utils.MarshalJSON(u.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldGTEFilter, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter: all fields are null")
 }
 
 type ScorecardCriteriaServiceFilterParameters struct {
@@ -201,10 +610,12 @@ type ScorecardCriteriaServiceFilterParameters struct {
 	// Filters on the given datetime (RFC-3339) field value.
 	CreatedAt *DateTimeFieldFilter `queryParam:"name=created_at"`
 	// Filters on the given datetime (RFC-3339) field value.
-	UpdatedAt                         *DateTimeFieldFilter               `queryParam:"name=updated_at"`
-	EvaluationIsPassing               *bool                              `queryParam:"name=evaluation.is_passing"`
-	EvaluationSuccessfullyEvaluatedAt *EvaluationSuccessfullyEvaluatedAt `queryParam:"name=evaluation.successfully_evaluated_at"`
-	EvaluationAttemptedAt             *EvaluationAttemptedAt             `queryParam:"name=evaluation.attempted_at"`
+	UpdatedAt           *DateTimeFieldFilter `queryParam:"name=updated_at"`
+	EvaluationIsPassing *bool                `queryParam:"name=evaluation.is_passing"`
+	// Filters on the given datetime (RFC-3339) field value.
+	EvaluationSuccessfullyEvaluatedAt *ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter `queryParam:"name=evaluation.successfully_evaluated_at"`
+	// Filters on the given datetime (RFC-3339) field value.
+	EvaluationAttemptedAt *ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter `queryParam:"name=evaluation.attempted_at"`
 }
 
 func (s *ScorecardCriteriaServiceFilterParameters) GetID() *UUIDFieldFilter {
@@ -263,14 +674,14 @@ func (s *ScorecardCriteriaServiceFilterParameters) GetEvaluationIsPassing() *boo
 	return s.EvaluationIsPassing
 }
 
-func (s *ScorecardCriteriaServiceFilterParameters) GetEvaluationSuccessfullyEvaluatedAt() *EvaluationSuccessfullyEvaluatedAt {
+func (s *ScorecardCriteriaServiceFilterParameters) GetEvaluationSuccessfullyEvaluatedAt() *ScorecardCriteriaServiceFilterParametersDateTimeFieldFilter {
 	if s == nil {
 		return nil
 	}
 	return s.EvaluationSuccessfullyEvaluatedAt
 }
 
-func (s *ScorecardCriteriaServiceFilterParameters) GetEvaluationAttemptedAt() *EvaluationAttemptedAt {
+func (s *ScorecardCriteriaServiceFilterParameters) GetEvaluationAttemptedAt() *ScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilter {
 	if s == nil {
 		return nil
 	}
