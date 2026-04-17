@@ -1,0 +1,9 @@
+# SimpleSchema
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                            | [components.SimpleSchemaType](../../models/components/simpleschematype.md)                        | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `Definition`                                                                                      | map[string][components.SimpleSchemaDefinition](../../models/components/simpleschemadefinition.md) | :heavy_check_mark:                                                                                | N/A                                                                                               |

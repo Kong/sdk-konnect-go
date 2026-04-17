@@ -1,0 +1,12 @@
+# GoogleAnalytics4Integration
+
+Google Analytics integration configuration
+
+
+## Fields
+
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `Enabled`                                                                                                            | `bool`                                                                                                               | :heavy_check_mark:                                                                                                   | Whether the integration is enabled                                                                                   |
+| `Type`                                                                                                               | [components.GoogleAnalytics4IntegrationType](../../models/components/googleanalytics4integrationtype.md)             | :heavy_check_mark:                                                                                                   | The type of the integration for categorization                                                                       |
+| `ConfigData`                                                                                                         | [components.GoogleAnalytics4IntegrationConfigData](../../models/components/googleanalytics4integrationconfigdata.md) | :heavy_check_mark:                                                                                                   | Configuration data for the Google Analytics integration                                                              |

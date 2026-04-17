@@ -1,0 +1,39 @@
+# TransitGatewayState
+
+The current state of the Transit Gateway. Possible values:
+- `created` - The attachment has been created but is not attached to transit gateway.
+- `initializing` - The attachment is in the process of being initialized and is setting up necessary resources.
+- `pending-acceptance` The attachment request is awaiting acceptance in customer VPC.
+- `pending-user-action` The attachment request is awaiting user action in customer VPC.
+- `ready` - The transit gateway attachment is fully operational and can route traffic as configured.
+- `terminating` - The attachment is in the process of being deleted and is no longer accepting new traffic.
+- `terminated` - The attachment has been fully deleted and is no longer available.
+- `error` - The attachment is in an error state.
+
+
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.TransitGatewayStateCreated
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.TransitGatewayState("custom_value")
+```
+
+
+## Values
+
+| Name                                   | Value                                  |
+| -------------------------------------- | -------------------------------------- |
+| `TransitGatewayStateCreated`           | created                                |
+| `TransitGatewayStateInitializing`      | initializing                           |
+| `TransitGatewayStatePendingAcceptance` | pending-acceptance                     |
+| `TransitGatewayStatePendingUserAction` | pending-user-action                    |
+| `TransitGatewayStateReady`             | ready                                  |
+| `TransitGatewayStateTerminating`       | terminating                            |
+| `TransitGatewayStateTerminated`        | terminated                             |
+| `TransitGatewayStateError`             | error                                  |

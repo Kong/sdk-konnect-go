@@ -1,0 +1,11 @@
+# ByCustomFieldSelector
+
+Entity selector that include entities by a custom field.
+
+
+## Fields
+
+| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `Selector`                                                                                                                         | [components.ByCustomFieldSelectorServiceSelectorSelector](../../models/components/bycustomfieldselectorserviceselectorselector.md) | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `SelectorParameters`                                                                                                               | [components.ServiceSelectorSelectorParameters](../../models/components/serviceselectorselectorparameters.md)                       | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |

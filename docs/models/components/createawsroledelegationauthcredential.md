@@ -1,0 +1,11 @@
+# CreateAWSRoleDelegationAuthCredential
+
+Payload used to create an `AWS Role Delegation` credential for an integration instance.
+
+
+## Fields
+
+| Field                                                                                                                            | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                                           | [components.CreateAWSRoleDelegationAuthCredentialType](../../models/components/createawsroledelegationauthcredentialtype.md)     | :heavy_check_mark:                                                                                                               | N/A                                                                                                                              |
+| `Config`                                                                                                                         | [components.CreateAWSRoleDelegationAuthCredentialConfig](../../models/components/createawsroledelegationauthcredentialconfig.md) | :heavy_check_mark:                                                                                                               | N/A                                                                                                                              |

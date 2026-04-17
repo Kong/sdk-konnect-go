@@ -1,0 +1,11 @@
+# AlignmentBillingWorkflowCollectionAlignmentSubscription
+
+BillingWorkflowCollectionAlignmentSubscription specifies the alignment for collecting the pending line items
+into an invoice.
+
+
+## Fields
+
+| Field                                                                                                                                                            | Type                                                                                                                                                             | Required                                                                                                                                                         | Description                                                                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                                                                           | [components.BillingWorkflowCollectionAlignmentSubscriptionAlignmentType](../../models/components/billingworkflowcollectionalignmentsubscriptionalignmenttype.md) | :heavy_check_mark:                                                                                                                                               | The type of alignment.                                                                                                                                           |

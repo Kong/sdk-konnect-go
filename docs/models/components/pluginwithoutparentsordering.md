@@ -1,0 +1,9 @@
+# PluginWithoutParentsOrdering
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `After`                                                                                         | [*components.PluginWithoutParentsAfter](../../models/components/pluginwithoutparentsafter.md)   | :heavy_minus_sign:                                                                              | N/A                                                                                             |
+| `Before`                                                                                        | [*components.PluginWithoutParentsBefore](../../models/components/pluginwithoutparentsbefore.md) | :heavy_minus_sign:                                                                              | N/A                                                                                             |

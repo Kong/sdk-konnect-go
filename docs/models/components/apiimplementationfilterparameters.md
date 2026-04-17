@@ -1,0 +1,13 @@
+# APIImplementationFilterParameters
+
+
+## Fields
+
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `ID`                                                                              | [*components.UUIDFieldFilter](../../models/components/uuidfieldfilter.md)         | :heavy_minus_sign:                                                                | Filter using **one** of the following operators: `eq`, `oeq`, `neq`               |
+| `APIID`                                                                           | [*components.UUIDFieldFilter](../../models/components/uuidfieldfilter.md)         | :heavy_minus_sign:                                                                | Filter using **one** of the following operators: `eq`, `oeq`, `neq`               |
+| `ServiceID`                                                                       | [*components.UUIDFieldFilter](../../models/components/uuidfieldfilter.md)         | :heavy_minus_sign:                                                                | Filter using **one** of the following operators: `eq`, `oeq`, `neq`               |
+| `ControlPlaneID`                                                                  | [*components.UUIDFieldFilter](../../models/components/uuidfieldfilter.md)         | :heavy_minus_sign:                                                                | Filter using **one** of the following operators: `eq`, `oeq`, `neq`               |
+| `CreatedAt`                                                                       | [*components.DateTimeFieldFilter](../../models/components/datetimefieldfilter.md) | :heavy_minus_sign:                                                                | Filters on the given datetime (RFC-3339) field value.                             |
+| `UpdatedAt`                                                                       | [*components.DateTimeFieldFilter](../../models/components/datetimefieldfilter.md) | :heavy_minus_sign:                                                                | Filters on the given datetime (RFC-3339) field value.                             |

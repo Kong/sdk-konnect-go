@@ -1,0 +1,14 @@
+# BillingCustomerStripeCreateCheckoutSessionRequest
+
+Request to create a Stripe Checkout Session for the customer.
+
+Checkout Sessions are used to collect payment method information from customers
+in a secure, Stripe-hosted interface. This integration uses setup mode to collect
+payment methods that can be charged later for subscription billing.
+
+
+## Fields
+
+| Field                                                                                                                                                                                      | Type                                                                                                                                                                                       | Required                                                                                                                                                                                   | Description                                                                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `StripeOptions`                                                                                                                                                                            | [components.StripeOptions](../../models/components/stripeoptions.md)                                                                                                                       | :heavy_check_mark:                                                                                                                                                                         | Options for configuring the Stripe Checkout Session.<br/><br/>These options are passed directly to Stripe's [checkout session creation API](https://docs.stripe.com/api/checkout/sessions/create). |

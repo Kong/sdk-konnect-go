@@ -1,0 +1,10 @@
+# CreateBillingProfileRequestStripeTaxConfig
+
+Stripe tax config.
+
+
+## Fields
+
+| Field                                                      | Type                                                       | Required                                                   | Description                                                | Example                                                    |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `Code`                                                     | `string`                                                   | :heavy_check_mark:                                         | Product [tax code](https://docs.stripe.com/tax/tax-codes). | txcd_10000000                                              |
