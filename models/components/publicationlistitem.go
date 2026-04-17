@@ -28,6 +28,8 @@ type PublicationListItem struct {
 	// DCR support for application registration is currently in development.
 	//
 	AuthStrategyIds []string `json:"auth_strategy_ids"`
+	// Informational warnings (e.g. incompatible fields stripped for ACE). Empty if none.
+	Warnings []string `json:"warnings,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
@@ -85,6 +87,13 @@ func (p *PublicationListItem) GetAuthStrategyIds() []string {
 		return nil
 	}
 	return p.AuthStrategyIds
+}
+
+func (p *PublicationListItem) GetWarnings() []string {
+	if p == nil {
+		return nil
+	}
+	return p.Warnings
 }
 
 func (p *PublicationListItem) GetCreatedAt() time.Time {

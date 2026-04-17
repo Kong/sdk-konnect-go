@@ -2,6 +2,8 @@
 
 Client certificate (mTLS) authentication scheme for the virtual cluster.
 
+**Requires a minimum runtime version of `1.1`**.
+
 
 ## Fields
 

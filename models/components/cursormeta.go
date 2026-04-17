@@ -2,9 +2,24 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // CursorMeta - Pagination metadata.
 type CursorMeta struct {
 	Page CursorMetaPage `json:"page"`
+}
+
+func (c CursorMeta) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CursorMeta) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"page"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (c *CursorMeta) GetPage() CursorMetaPage {

@@ -2,24 +2,9 @@
 
 package components
 
-import (
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
 // StringFieldContainsFilter - Filters on the given string field value by fuzzy match.
 type StringFieldContainsFilter struct {
 	Contains string `queryParam:"name=contains"`
-}
-
-func (s StringFieldContainsFilter) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(s, "", false)
-}
-
-func (s *StringFieldContainsFilter) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, []string{"contains"}); err != nil {
-		return err
-	}
-	return nil
 }
 
 func (s *StringFieldContainsFilter) GetContains() string {

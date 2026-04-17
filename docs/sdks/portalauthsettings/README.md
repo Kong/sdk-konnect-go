@@ -18,9 +18,6 @@ APIs related to configuration of Konnect Developer Portal auth settings.
 
 ## GetPortalAuthenticationSettings
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Returns the developer authentication configuration for a portal, which determines how developers can log in and how they are assigned to teams.
 
 ### Example Usage
@@ -75,9 +72,6 @@ func main() {
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## UpdatePortalAuthenticationSettings
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Updates the developer authentication configuration for a portal. Developers can be allowed to login using basic auth (email & password) or use Single-Sign-On through an Identity Provider. Developers can be automatically assigned to teams by mapping claims from their IdP account.
 
@@ -991,11 +985,9 @@ func main() {
 
 ## GetPortalIdentityProviders
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Retrieves the identity providers available within the portal. This operation provides information about
 various identity providers for SAML or OIDC authentication integrations.
+
 
 ### Example Usage
 
@@ -1052,11 +1044,9 @@ func main() {
 
 ## CreatePortalIdentityProvider
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Creates a new identity provider. This operation allows the creation of a new identity provider for
 authentication purposes.
+
 
 ### Example Usage: OIDC Identity Provider
 
@@ -1465,11 +1455,9 @@ func main() {
 
 ## GetPortalIdentityProvider
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Retrieves the configuration of a single identity provider. This operation returns information about a
 specific identity provider's settings and authentication integration details.
+
 
 ### Example Usage: OIDC Identity Provider
 
@@ -1608,11 +1596,9 @@ func main() {
 
 ## UpdatePortalIdentityProvider
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Updates the configuration of an existing identity provider. This operation allows modifications to be made
 to an existing identity provider's configuration.
+
 
 ### Example Usage: NotFoundExample
 
@@ -2099,11 +2085,9 @@ func main() {
 
 ## DeletePortalIdentityProvider
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Deletes an existing identity provider configuration. This operation removes a specific identity provider
 from the portal.
+
 
 ### Example Usage
 

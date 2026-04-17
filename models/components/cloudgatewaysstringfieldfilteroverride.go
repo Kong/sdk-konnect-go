@@ -2,137 +2,51 @@
 
 package components
 
-import (
-	"errors"
-	"fmt"
-	"github.com/Kong/sdk-konnect-go/internal/utils"
-)
-
-type CloudGatewaysStringFieldFilterOverrideType string
-
-const (
-	CloudGatewaysStringFieldFilterOverrideTypeCloudGatewaysStringFieldEqualsFilterOverride CloudGatewaysStringFieldFilterOverrideType = "CloudGatewaysStringFieldEqualsFilterOverride"
-	CloudGatewaysStringFieldFilterOverrideTypeStringFieldContainsFilter                    CloudGatewaysStringFieldFilterOverrideType = "StringFieldContainsFilter"
-	CloudGatewaysStringFieldFilterOverrideTypeStringFieldNEQFilter                         CloudGatewaysStringFieldFilterOverrideType = "StringFieldNEQFilter"
-	CloudGatewaysStringFieldFilterOverrideTypeStringFieldOEQFilter                         CloudGatewaysStringFieldFilterOverrideType = "StringFieldOEQFilter"
-	CloudGatewaysStringFieldFilterOverrideTypeStringFieldOContainsFilter                   CloudGatewaysStringFieldFilterOverrideType = "StringFieldOContainsFilter"
-)
-
+// CloudGatewaysStringFieldFilterOverride - Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 type CloudGatewaysStringFieldFilterOverride struct {
-	CloudGatewaysStringFieldEqualsFilterOverride *CloudGatewaysStringFieldEqualsFilterOverride `queryParam:"inline" union:"member"`
-	StringFieldContainsFilter                    *StringFieldContainsFilter                    `queryParam:"inline" union:"member"`
-	StringFieldNEQFilter                         *StringFieldNEQFilter                         `queryParam:"inline" union:"member"`
-	StringFieldOEQFilter                         *StringFieldOEQFilter                         `queryParam:"inline" union:"member"`
-	StringFieldOContainsFilter                   *StringFieldOContainsFilter                   `queryParam:"inline" union:"member"`
-
-	Type CloudGatewaysStringFieldFilterOverrideType
+	// The field exactly matches the provided value.
+	Eq *string `queryParam:"name=eq"`
+	// The field contains the provided value.
+	Contains *string `queryParam:"name=contains"`
+	// The field does not match the provided value.
+	Neq *string `queryParam:"name=neq"`
+	// The field matches any of the provided values.
+	Oeq *string `queryParam:"name=oeq"`
+	// The field contains any of the provided values.
+	Ocontains *string `queryParam:"name=ocontains"`
 }
 
-func CreateCloudGatewaysStringFieldFilterOverrideCloudGatewaysStringFieldEqualsFilterOverride(cloudGatewaysStringFieldEqualsFilterOverride CloudGatewaysStringFieldEqualsFilterOverride) CloudGatewaysStringFieldFilterOverride {
-	typ := CloudGatewaysStringFieldFilterOverrideTypeCloudGatewaysStringFieldEqualsFilterOverride
-
-	return CloudGatewaysStringFieldFilterOverride{
-		CloudGatewaysStringFieldEqualsFilterOverride: &cloudGatewaysStringFieldEqualsFilterOverride,
-		Type: typ,
-	}
-}
-
-func CreateCloudGatewaysStringFieldFilterOverrideStringFieldContainsFilter(stringFieldContainsFilter StringFieldContainsFilter) CloudGatewaysStringFieldFilterOverride {
-	typ := CloudGatewaysStringFieldFilterOverrideTypeStringFieldContainsFilter
-
-	return CloudGatewaysStringFieldFilterOverride{
-		StringFieldContainsFilter: &stringFieldContainsFilter,
-		Type:                      typ,
-	}
-}
-
-func CreateCloudGatewaysStringFieldFilterOverrideStringFieldNEQFilter(stringFieldNEQFilter StringFieldNEQFilter) CloudGatewaysStringFieldFilterOverride {
-	typ := CloudGatewaysStringFieldFilterOverrideTypeStringFieldNEQFilter
-
-	return CloudGatewaysStringFieldFilterOverride{
-		StringFieldNEQFilter: &stringFieldNEQFilter,
-		Type:                 typ,
-	}
-}
-
-func CreateCloudGatewaysStringFieldFilterOverrideStringFieldOEQFilter(stringFieldOEQFilter StringFieldOEQFilter) CloudGatewaysStringFieldFilterOverride {
-	typ := CloudGatewaysStringFieldFilterOverrideTypeStringFieldOEQFilter
-
-	return CloudGatewaysStringFieldFilterOverride{
-		StringFieldOEQFilter: &stringFieldOEQFilter,
-		Type:                 typ,
-	}
-}
-
-func CreateCloudGatewaysStringFieldFilterOverrideStringFieldOContainsFilter(stringFieldOContainsFilter StringFieldOContainsFilter) CloudGatewaysStringFieldFilterOverride {
-	typ := CloudGatewaysStringFieldFilterOverrideTypeStringFieldOContainsFilter
-
-	return CloudGatewaysStringFieldFilterOverride{
-		StringFieldOContainsFilter: &stringFieldOContainsFilter,
-		Type:                       typ,
-	}
-}
-
-func (u *CloudGatewaysStringFieldFilterOverride) UnmarshalJSON(data []byte) error {
-
-	var stringFieldContainsFilter StringFieldContainsFilter = StringFieldContainsFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldContainsFilter, "", true, nil); err == nil {
-		u.StringFieldContainsFilter = &stringFieldContainsFilter
-		u.Type = CloudGatewaysStringFieldFilterOverrideTypeStringFieldContainsFilter
+func (c *CloudGatewaysStringFieldFilterOverride) GetEq() *string {
+	if c == nil {
 		return nil
 	}
-
-	var stringFieldNEQFilter StringFieldNEQFilter = StringFieldNEQFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldNEQFilter, "", true, nil); err == nil {
-		u.StringFieldNEQFilter = &stringFieldNEQFilter
-		u.Type = CloudGatewaysStringFieldFilterOverrideTypeStringFieldNEQFilter
-		return nil
-	}
-
-	var stringFieldOEQFilter StringFieldOEQFilter = StringFieldOEQFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldOEQFilter, "", true, nil); err == nil {
-		u.StringFieldOEQFilter = &stringFieldOEQFilter
-		u.Type = CloudGatewaysStringFieldFilterOverrideTypeStringFieldOEQFilter
-		return nil
-	}
-
-	var stringFieldOContainsFilter StringFieldOContainsFilter = StringFieldOContainsFilter{}
-	if err := utils.UnmarshalJSON(data, &stringFieldOContainsFilter, "", true, nil); err == nil {
-		u.StringFieldOContainsFilter = &stringFieldOContainsFilter
-		u.Type = CloudGatewaysStringFieldFilterOverrideTypeStringFieldOContainsFilter
-		return nil
-	}
-
-	var cloudGatewaysStringFieldEqualsFilterOverride CloudGatewaysStringFieldEqualsFilterOverride = CloudGatewaysStringFieldEqualsFilterOverride{}
-	if err := utils.UnmarshalJSON(data, &cloudGatewaysStringFieldEqualsFilterOverride, "", true, nil); err == nil {
-		u.CloudGatewaysStringFieldEqualsFilterOverride = &cloudGatewaysStringFieldEqualsFilterOverride
-		u.Type = CloudGatewaysStringFieldFilterOverrideTypeCloudGatewaysStringFieldEqualsFilterOverride
-		return nil
-	}
-
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for CloudGatewaysStringFieldFilterOverride", string(data))
+	return c.Eq
 }
 
-func (u CloudGatewaysStringFieldFilterOverride) MarshalJSON() ([]byte, error) {
-	if u.CloudGatewaysStringFieldEqualsFilterOverride != nil {
-		return utils.MarshalJSON(u.CloudGatewaysStringFieldEqualsFilterOverride, "", true)
+func (c *CloudGatewaysStringFieldFilterOverride) GetContains() *string {
+	if c == nil {
+		return nil
 	}
+	return c.Contains
+}
 
-	if u.StringFieldContainsFilter != nil {
-		return utils.MarshalJSON(u.StringFieldContainsFilter, "", true)
+func (c *CloudGatewaysStringFieldFilterOverride) GetNeq() *string {
+	if c == nil {
+		return nil
 	}
+	return c.Neq
+}
 
-	if u.StringFieldNEQFilter != nil {
-		return utils.MarshalJSON(u.StringFieldNEQFilter, "", true)
+func (c *CloudGatewaysStringFieldFilterOverride) GetOeq() *string {
+	if c == nil {
+		return nil
 	}
+	return c.Oeq
+}
 
-	if u.StringFieldOEQFilter != nil {
-		return utils.MarshalJSON(u.StringFieldOEQFilter, "", true)
+func (c *CloudGatewaysStringFieldFilterOverride) GetOcontains() *string {
+	if c == nil {
+		return nil
 	}
-
-	if u.StringFieldOContainsFilter != nil {
-		return utils.MarshalJSON(u.StringFieldOContainsFilter, "", true)
-	}
-
-	return nil, errors.New("could not marshal union type CloudGatewaysStringFieldFilterOverride: all fields are null")
+	return c.Ocontains
 }

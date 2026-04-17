@@ -5,13 +5,14 @@ package components
 type EntityTypes string
 
 const (
-	EntityTypesBillingInvoice EntityTypes = "billing-invoice"
-	EntityTypesAccessToken    EntityTypes = "access-token"
-	EntityTypesWebhook        EntityTypes = "webhook"
-	EntityTypesDevPortal      EntityTypes = "dev-portal"
-	EntityTypesDataplaneGroup EntityTypes = "dataplane-group"
-	EntityTypesDataplane      EntityTypes = "dataplane"
-	EntityTypesKaiEnablement  EntityTypes = "kai-enablement"
+	EntityTypesBillingInvoice  EntityTypes = "billing-invoice"
+	EntityTypesAccessToken     EntityTypes = "access-token"
+	EntityTypesWebhook         EntityTypes = "webhook"
+	EntityTypesDevPortal       EntityTypes = "dev-portal"
+	EntityTypesDataplaneGroup  EntityTypes = "dataplane-group"
+	EntityTypesDataplane       EntityTypes = "dataplane"
+	EntityTypesKaiEnablement   EntityTypes = "kai-enablement"
+	EntityTypesEnterpriseTrial EntityTypes = "enterprise-trial"
 )
 
 func (e EntityTypes) ToPointer() *EntityTypes {
@@ -22,7 +23,7 @@ func (e EntityTypes) ToPointer() *EntityTypes {
 func (e *EntityTypes) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "billing-invoice", "access-token", "webhook", "dev-portal", "dataplane-group", "dataplane", "kai-enablement":
+		case "billing-invoice", "access-token", "webhook", "dev-portal", "dataplane-group", "dataplane", "kai-enablement", "enterprise-trial":
 			return true
 		}
 	}

@@ -2,7 +2,7 @@
 
 package components
 
-// ListPortalSnippetsResponse - A paginated list of custom pages in a portal.
+// ListPortalSnippetsResponse - A paginated list of custom snippets in a portal.
 type ListPortalSnippetsResponse struct {
 	Data []PortalSnippetInfo `json:"data"`
 	// returns the pagination information

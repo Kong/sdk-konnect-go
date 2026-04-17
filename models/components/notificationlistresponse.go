@@ -5,7 +5,7 @@ package components
 // NotificationListResponse - A paginated list response for a collection of notifications
 type NotificationListResponse struct {
 	Data []Notification `json:"data"`
-	Meta CursorMetaPage `json:"meta"`
+	Meta ListCursorMeta `json:"meta"`
 }
 
 func (n *NotificationListResponse) GetData() []Notification {
@@ -15,9 +15,9 @@ func (n *NotificationListResponse) GetData() []Notification {
 	return n.Data
 }
 
-func (n *NotificationListResponse) GetMeta() CursorMetaPage {
+func (n *NotificationListResponse) GetMeta() ListCursorMeta {
 	if n == nil {
-		return CursorMetaPage{}
+		return ListCursorMeta{}
 	}
 	return n.Meta
 }

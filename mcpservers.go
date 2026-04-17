@@ -607,7 +607,7 @@ func (s *MCPServers) GetMcpServerByControlPlane(ctx context.Context, controlPlan
 // **Pre-release Endpoint**
 // This endpoint is currently in beta and is subject to change.
 //
-// Retrieves generated Python code for the MCP Server implementation.
+// Generates MCP server Python code from the OpenAPI specifications associated with the MCP server.
 func (s *MCPServers) GetMcpServerCode(ctx context.Context, controlPlaneID string, mcpServerID string, opts ...operations.Option) (*operations.GetMcpServerCodeResponse, error) {
 	request := operations.GetMcpServerCodeRequest{
 		ControlPlaneID: controlPlaneID,

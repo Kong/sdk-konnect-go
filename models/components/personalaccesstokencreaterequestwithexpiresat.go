@@ -7,6 +7,9 @@ import (
 	"time"
 )
 
+// PersonalAccessTokenCreateRequestWithExpiresAt - **Deprecated:** Use `ttl_seconds` instead of `expires_at` to specify token expiration. Using a time-to-live value avoids clock skew issues when setting token expiration.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 type PersonalAccessTokenCreateRequestWithExpiresAt struct {
 	Name string `json:"name"`
 	// An ISO-8601 timestamp representation of entity expiration date.

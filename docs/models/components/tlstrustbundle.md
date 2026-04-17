@@ -4,6 +4,7 @@ A TLS trust bundle defines a set of trusted certificate authorities (CAs) used f
 verification during mutual TLS (mTLS). Trust bundles are referenced by TLS listener policies to
 determine which client certificates are accepted.
 
+**Requires a minimum runtime version of `1.1`**.
 
 
 ## Fields

@@ -1,6 +1,6 @@
 # PortalSnippetResponse
 
-Details about a page in a portal.
+Details about a snippet in a portal.
 
 
 ## Fields

@@ -15,14 +15,12 @@ const (
 	EventGatewayProducePolicyUpdateTypeModifyHeaders    EventGatewayProducePolicyUpdateType = "modify_headers"
 	EventGatewayProducePolicyUpdateTypeSchemaValidation EventGatewayProducePolicyUpdateType = "schema_validation"
 	EventGatewayProducePolicyUpdateTypeEncrypt          EventGatewayProducePolicyUpdateType = "encrypt"
-	EventGatewayProducePolicyUpdateTypeSkipRecord       EventGatewayProducePolicyUpdateType = "skip_record"
 )
 
 // EventGatewayProducePolicyUpdate - The typed schema of the produce policy to modify it.
 type EventGatewayProducePolicyUpdate struct {
 	EventGatewayProduceSchemaValidationPolicy *EventGatewayProduceSchemaValidationPolicy `queryParam:"inline" union:"member"`
 	EventGatewayModifyHeadersPolicy           *EventGatewayModifyHeadersPolicy           `queryParam:"inline" union:"member"`
-	EventGatewaySkipRecordPolicy              *EventGatewaySkipRecordPolicy              `queryParam:"inline" union:"member"`
 	EventGatewayEncryptPolicy                 *EventGatewayEncryptPolicy                 `queryParam:"inline" union:"member"`
 
 	Type EventGatewayProducePolicyUpdateType
@@ -52,15 +50,6 @@ func CreateEventGatewayProducePolicyUpdateEncrypt(encrypt EventGatewayEncryptPol
 	return EventGatewayProducePolicyUpdate{
 		EventGatewayEncryptPolicy: &encrypt,
 		Type:                      typ,
-	}
-}
-
-func CreateEventGatewayProducePolicyUpdateSkipRecord(skipRecord EventGatewaySkipRecordPolicy) EventGatewayProducePolicyUpdate {
-	typ := EventGatewayProducePolicyUpdateTypeSkipRecord
-
-	return EventGatewayProducePolicyUpdate{
-		EventGatewaySkipRecordPolicy: &skipRecord,
-		Type:                         typ,
 	}
 }
 
@@ -103,15 +92,6 @@ func (u *EventGatewayProducePolicyUpdate) UnmarshalJSON(data []byte) error {
 		u.EventGatewayEncryptPolicy = eventGatewayEncryptPolicy
 		u.Type = EventGatewayProducePolicyUpdateTypeEncrypt
 		return nil
-	case "skip_record":
-		eventGatewaySkipRecordPolicy := new(EventGatewaySkipRecordPolicy)
-		if err := utils.UnmarshalJSON(data, &eventGatewaySkipRecordPolicy, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == skip_record) type EventGatewaySkipRecordPolicy within EventGatewayProducePolicyUpdate: %w", string(data), err)
-		}
-
-		u.EventGatewaySkipRecordPolicy = eventGatewaySkipRecordPolicy
-		u.Type = EventGatewayProducePolicyUpdateTypeSkipRecord
-		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EventGatewayProducePolicyUpdate", string(data))
@@ -124,10 +104,6 @@ func (u EventGatewayProducePolicyUpdate) MarshalJSON() ([]byte, error) {
 
 	if u.EventGatewayModifyHeadersPolicy != nil {
 		return utils.MarshalJSON(u.EventGatewayModifyHeadersPolicy, "", true)
-	}
-
-	if u.EventGatewaySkipRecordPolicy != nil {
-		return utils.MarshalJSON(u.EventGatewaySkipRecordPolicy, "", true)
 	}
 
 	if u.EventGatewayEncryptPolicy != nil {

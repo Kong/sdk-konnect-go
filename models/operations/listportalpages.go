@@ -50,7 +50,7 @@ type ListPortalPagesResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// A paginated list of custom pages in a portal.
+	// Tree of custom pages in a portal (nested `children`). Not paginated.
 	ListPortalPagesResponse *components.ListPortalPagesResponse
 }
 

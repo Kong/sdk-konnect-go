@@ -4,6 +4,7 @@ package components
 
 // AddOnsFilterParameters - Filter parameters for add-ons list operation.
 type AddOnsFilterParameters struct {
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Name  *CloudGatewaysStringFieldFilterOverride `queryParam:"name=name"`
 	State *AddOnStateFieldFilter                  `queryParam:"name=state"`
 	// Filter for add-on config kind field.
