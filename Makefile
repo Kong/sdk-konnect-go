@@ -196,6 +196,7 @@ TYPES_TO_MOCK := \
 	Consumers \
 	ControlPlaneGroups \
 	ControlPlanes \
+	DCRProviders \
 	DPCertificates \
 	EventGatewayDataPlaneCertificates \
 	EventGateways \
@@ -206,6 +207,10 @@ TYPES_TO_MOCK := \
 	Me \
 	Plugins \
 	Portals \
+	PortalAuthSettings \
+	PortalDevelopers \
+	PortalEmails \
+	PortalTeamMembership \
 	Routes \
 	Services \
 	SNIs \
