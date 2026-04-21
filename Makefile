@@ -208,9 +208,13 @@ TYPES_TO_MOCK := \
 	Plugins \
 	Portals \
 	PortalAuthSettings \
+	PortalCustomDomains \
+	PortalIntegrations \
 	PortalDevelopers \
 	PortalEmails \
 	PortalTeamMembership \
+	PortalTeamRoles \
+	PortalTeams \
 	Routes \
 	Services \
 	SNIs \
