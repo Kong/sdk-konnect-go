@@ -14,7 +14,7 @@ List customer entitlement access
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-customer-entitlement-access" method="get" path="/openmeter/customers/{customerId}/entitlement-access" -->
+<!-- UsageSnippet language="go" operationID="list-customer-entitlement-access" method="get" path="/v3/openmeter/customers/{customerId}/entitlement-access" -->
 ```go
 package main
 

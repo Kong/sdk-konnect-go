@@ -2,28 +2,28 @@
 
 package components
 
-// MCPServerStatusResponseStatus - Aggregated deployment status of the MCP server.
+// Status - Aggregated deployment status of the MCP server.
 // - `deploying` — single version with desired replicas not yet fully ready.
 // - `healthy` — single version running with no failing pods.
 // - `pending` — no deployment status has been reported yet.
 // - `unhealthy` — one or more failing pods across any version.
 // - `upgrading` — multiple versions running with no failing pods.
-type MCPServerStatusResponseStatus string
+type Status string
 
 const (
-	MCPServerStatusResponseStatusDeploying MCPServerStatusResponseStatus = "deploying"
-	MCPServerStatusResponseStatusHealthy   MCPServerStatusResponseStatus = "healthy"
-	MCPServerStatusResponseStatusPending   MCPServerStatusResponseStatus = "pending"
-	MCPServerStatusResponseStatusUnhealthy MCPServerStatusResponseStatus = "unhealthy"
-	MCPServerStatusResponseStatusUpgrading MCPServerStatusResponseStatus = "upgrading"
+	StatusDeploying Status = "deploying"
+	StatusHealthy   Status = "healthy"
+	StatusPending   Status = "pending"
+	StatusUnhealthy Status = "unhealthy"
+	StatusUpgrading Status = "upgrading"
 )
 
-func (e MCPServerStatusResponseStatus) ToPointer() *MCPServerStatusResponseStatus {
+func (e Status) ToPointer() *Status {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *MCPServerStatusResponseStatus) IsExact() bool {
+func (e *Status) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "deploying", "healthy", "pending", "unhealthy", "upgrading":
@@ -40,12 +40,12 @@ type MCPServerStatusResponse struct {
 	// - `pending` — no deployment status has been reported yet.
 	// - `unhealthy` — one or more failing pods across any version.
 	// - `upgrading` — multiple versions running with no failing pods.
-	Status MCPServerStatusResponseStatus `json:"status"`
+	Status Status `json:"status"`
 }
 
-func (m *MCPServerStatusResponse) GetStatus() MCPServerStatusResponseStatus {
+func (m *MCPServerStatusResponse) GetStatus() Status {
 	if m == nil {
-		return MCPServerStatusResponseStatus("")
+		return Status("")
 	}
 	return m.Status
 }

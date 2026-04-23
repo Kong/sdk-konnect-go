@@ -9,34 +9,34 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type CriteriaTemplateSchema3Type string
+type CriteriaTemplateSchemaType string
 
 const (
-	CriteriaTemplateSchema3TypeJSONSchema CriteriaTemplateSchema3Type = "json_schema"
+	CriteriaTemplateSchemaTypeJSONSchema CriteriaTemplateSchemaType = "json_schema"
 )
 
-func (e CriteriaTemplateSchema3Type) ToPointer() *CriteriaTemplateSchema3Type {
+func (e CriteriaTemplateSchemaType) ToPointer() *CriteriaTemplateSchemaType {
 	return &e
 }
-func (e *CriteriaTemplateSchema3Type) UnmarshalJSON(data []byte) error {
+func (e *CriteriaTemplateSchemaType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "json_schema":
-		*e = CriteriaTemplateSchema3Type(v)
+		*e = CriteriaTemplateSchemaType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CriteriaTemplateSchema3Type: %v", v)
+		return fmt.Errorf("invalid value for CriteriaTemplateSchemaType: %v", v)
 	}
 }
 
 // CriteriaTemplateJSONSchema - Defines the parameters required to evaluate the criteria using JSON schema.
 // Set to `null` when the given criteria does not rely on parameterization.
 type CriteriaTemplateJSONSchema struct {
-	Type       CriteriaTemplateSchema3Type `json:"type"`
-	Definition map[string]any              `json:"definition"`
+	Type       CriteriaTemplateSchemaType `json:"type"`
+	Definition map[string]any             `json:"definition"`
 }
 
 func (c CriteriaTemplateJSONSchema) MarshalJSON() ([]byte, error) {
@@ -50,9 +50,9 @@ func (c *CriteriaTemplateJSONSchema) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (c *CriteriaTemplateJSONSchema) GetType() CriteriaTemplateSchema3Type {
+func (c *CriteriaTemplateJSONSchema) GetType() CriteriaTemplateSchemaType {
 	if c == nil {
-		return CriteriaTemplateSchema3Type("")
+		return CriteriaTemplateSchemaType("")
 	}
 	return c.Type
 }
@@ -64,26 +64,26 @@ func (c *CriteriaTemplateJSONSchema) GetDefinition() map[string]any {
 	return c.Definition
 }
 
-type CriteriaTemplateSchemaType string
+type CriteriaTemplateSchema2Type string
 
 const (
-	CriteriaTemplateSchemaTypeSimple CriteriaTemplateSchemaType = "simple"
+	CriteriaTemplateSchema2TypeSimple CriteriaTemplateSchema2Type = "simple"
 )
 
-func (e CriteriaTemplateSchemaType) ToPointer() *CriteriaTemplateSchemaType {
+func (e CriteriaTemplateSchema2Type) ToPointer() *CriteriaTemplateSchema2Type {
 	return &e
 }
-func (e *CriteriaTemplateSchemaType) UnmarshalJSON(data []byte) error {
+func (e *CriteriaTemplateSchema2Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "simple":
-		*e = CriteriaTemplateSchemaType(v)
+		*e = CriteriaTemplateSchema2Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CriteriaTemplateSchemaType: %v", v)
+		return fmt.Errorf("invalid value for CriteriaTemplateSchema2Type: %v", v)
 	}
 }
 
@@ -119,7 +119,7 @@ func (e *CriteriaTemplateSchemaDefinition) UnmarshalJSON(data []byte) error {
 // CriteriaTemplateSimpleSchema - Defines the parameters required to evaluate the criteria using simple schema.
 // Set to `null` when the given criteria does not rely on parameterization.
 type CriteriaTemplateSimpleSchema struct {
-	Type       CriteriaTemplateSchemaType                  `json:"type"`
+	Type       CriteriaTemplateSchema2Type                 `json:"type"`
 	Definition map[string]CriteriaTemplateSchemaDefinition `json:"definition"`
 }
 
@@ -134,9 +134,9 @@ func (c *CriteriaTemplateSimpleSchema) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (c *CriteriaTemplateSimpleSchema) GetType() CriteriaTemplateSchemaType {
+func (c *CriteriaTemplateSimpleSchema) GetType() CriteriaTemplateSchema2Type {
 	if c == nil {
-		return CriteriaTemplateSchemaType("")
+		return CriteriaTemplateSchema2Type("")
 	}
 	return c.Type
 }

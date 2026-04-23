@@ -55,7 +55,7 @@ func (s *OpenMeterEntitlements) ListCustomerEntitlementAccess(ctx context.Contex
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/openmeter/customers/{customerId}/entitlement-access", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/openmeter/customers/{customerId}/entitlement-access", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

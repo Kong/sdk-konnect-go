@@ -52,7 +52,7 @@ func (s *MeteringEvents) IngestMeteringEvents(ctx context.Context, request opera
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := url.JoinPath(baseURL, "/openmeter/events")
+	opURL, err := url.JoinPath(baseURL, "/v3/openmeter/events")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

@@ -17,7 +17,7 @@ Create a meter.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-meter" method="post" path="/openmeter/meters" -->
+<!-- UsageSnippet language="go" operationID="create-meter" method="post" path="/v3/openmeter/meters" -->
 ```go
 package main
 
@@ -88,7 +88,7 @@ List meters.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-meters" method="get" path="/openmeter/meters" -->
+<!-- UsageSnippet language="go" operationID="list-meters" method="get" path="/v3/openmeter/meters" -->
 ```go
 package main
 
@@ -145,7 +145,7 @@ Get a meter by ID.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-meter" method="get" path="/openmeter/meters/{meterId}" -->
+<!-- UsageSnippet language="go" operationID="get-meter" method="get" path="/v3/openmeter/meters/{meterId}" -->
 ```go
 package main
 
@@ -203,7 +203,7 @@ Delete a meter.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-meter" method="delete" path="/openmeter/meters/{meterId}" -->
+<!-- UsageSnippet language="go" operationID="delete-meter" method="delete" path="/v3/openmeter/meters/{meterId}" -->
 ```go
 package main
 

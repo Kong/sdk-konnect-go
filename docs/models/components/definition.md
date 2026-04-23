@@ -1,12 +1,23 @@
 # Definition
 
-The app catalog definition that this installed app is based on.
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.DefinitionString
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.Definition("custom_value")
+```
 
 
-## Fields
+## Values
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `Type`                                                                             | [components.BillingAppStripeType](../../models/components/billingappstripetype.md) | :heavy_check_mark:                                                                 | Type of the app.                                                                   |
-| `Name`                                                                             | `string`                                                                           | :heavy_check_mark:                                                                 | Name of the app.                                                                   |
-| `Description`                                                                      | `string`                                                                           | :heavy_check_mark:                                                                 | Description of the app.                                                            |
+| Name                | Value               |
+| ------------------- | ------------------- |
+| `DefinitionString`  | string              |
+| `DefinitionNumber`  | number              |
+| `DefinitionBoolean` | boolean             |

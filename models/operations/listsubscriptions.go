@@ -7,24 +7,24 @@ import (
 	"net/http"
 )
 
-// Filter subscriptions.
-type Filter struct {
+// ListSubscriptionsQueryParamFilter - Filter subscriptions.
+type ListSubscriptionsQueryParamFilter struct {
 	// Filter subscriptions by customer ID.
 	CustomerID *string `queryParam:"name=customer_id"`
 }
 
-func (f *Filter) GetCustomerID() *string {
-	if f == nil {
+func (l *ListSubscriptionsQueryParamFilter) GetCustomerID() *string {
+	if l == nil {
 		return nil
 	}
-	return f.CustomerID
+	return l.CustomerID
 }
 
 type ListSubscriptionsRequest struct {
 	// Determines which page of the collection to retrieve.
 	Page *components.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
 	// Filter subscriptions.
-	Filter *Filter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *ListSubscriptionsQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
 func (l *ListSubscriptionsRequest) GetPage() *components.PagePaginationQuery {
@@ -34,7 +34,7 @@ func (l *ListSubscriptionsRequest) GetPage() *components.PagePaginationQuery {
 	return l.Page
 }
 
-func (l *ListSubscriptionsRequest) GetFilter() *Filter {
+func (l *ListSubscriptionsRequest) GetFilter() *ListSubscriptionsQueryParamFilter {
 	if l == nil {
 		return nil
 	}

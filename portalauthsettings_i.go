@@ -50,4 +50,17 @@ type PortalAuthSettingsSDK interface {
 	// Deletes an existing identity provider configuration. This operation removes a specific identity provider
 	// from the portal.
 	DeletePortalIdentityProvider(ctx context.Context, portalID string, id string, opts ...operations.Option) (*operations.DeletePortalIdentityProviderResponse, error)
+	// ListPortalIdpTeamGroupMappings - List Team Group Mappings
+	// Returns a paginated list of team group mappings for the specified identity provider.
+	ListPortalIdpTeamGroupMappings(ctx context.Context, request operations.ListPortalIdpTeamGroupMappingsRequest, opts ...operations.Option) (*operations.ListPortalIdpTeamGroupMappingsResponse, error)
+	// CreatePortalIdpTeamGroupMapping - Create Team Group Mapping
+	// Creates a new team group mapping for the specified identity provider.
+	CreatePortalIdpTeamGroupMapping(ctx context.Context, request operations.CreatePortalIdpTeamGroupMappingRequest, opts ...operations.Option) (*operations.CreatePortalIdpTeamGroupMappingResponse, error)
+	// GetPortalIdpTeamGroupMapping - Get Team Group Mapping
+	// Returns the team group mapping for the specified ID.
+	GetPortalIdpTeamGroupMapping(ctx context.Context, request operations.GetPortalIdpTeamGroupMappingRequest, opts ...operations.Option) (*operations.GetPortalIdpTeamGroupMappingResponse, error)
+	// DeletePortalIdpTeamGroupMapping - Delete Team Group Mapping
+	// Deletes a team group mapping by ID.
+	// Returns 204 if the mapping was deleted, or 404 if the mapping was not found.
+	DeletePortalIdpTeamGroupMapping(ctx context.Context, request operations.DeletePortalIdpTeamGroupMappingRequest, opts ...operations.Option) (*operations.DeletePortalIdpTeamGroupMappingResponse, error)
 }

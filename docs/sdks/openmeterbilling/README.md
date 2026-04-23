@@ -18,7 +18,7 @@ List billing profiles.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-billing-profiles" method="get" path="/openmeter/profiles" -->
+<!-- UsageSnippet language="go" operationID="list-billing-profiles" method="get" path="/v3/openmeter/profiles" -->
 ```go
 package main
 
@@ -79,7 +79,7 @@ A billing profile is linked to a specific app. This association is established d
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-billing-profile" method="post" path="/openmeter/profiles" -->
+<!-- UsageSnippet language="go" operationID="create-billing-profile" method="post" path="/v3/openmeter/profiles" -->
 ```go
 package main
 
@@ -186,7 +186,7 @@ Get a billing profile.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-billing-profile" method="get" path="/openmeter/profiles/{id}" -->
+<!-- UsageSnippet language="go" operationID="get-billing-profile" method="get" path="/v3/openmeter/profiles/{id}" -->
 ```go
 package main
 
@@ -244,7 +244,7 @@ Update a billing profile.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="update-billing-profile" method="put" path="/openmeter/profiles/{id}" -->
+<!-- UsageSnippet language="go" operationID="update-billing-profile" method="put" path="/v3/openmeter/profiles/{id}" -->
 ```go
 package main
 
@@ -347,7 +347,7 @@ Only such billing profiles can be deleted that are:
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-billing-profile" method="delete" path="/openmeter/profiles/{id}" -->
+<!-- UsageSnippet language="go" operationID="delete-billing-profile" method="delete" path="/v3/openmeter/profiles/{id}" -->
 ```go
 package main
 

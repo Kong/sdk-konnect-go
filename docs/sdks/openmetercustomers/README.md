@@ -23,7 +23,7 @@ Create customer
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-customer" method="post" path="/openmeter/customers" -->
+<!-- UsageSnippet language="go" operationID="create-customer" method="post" path="/v3/openmeter/customers" -->
 ```go
 package main
 
@@ -90,7 +90,7 @@ List customers
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-customers" method="get" path="/openmeter/customers" -->
+<!-- UsageSnippet language="go" operationID="list-customers" method="get" path="/v3/openmeter/customers" -->
 ```go
 package main
 
@@ -153,7 +153,7 @@ Get customer
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-customer" method="get" path="/openmeter/customers/{customerId}" -->
+<!-- UsageSnippet language="go" operationID="get-customer" method="get" path="/v3/openmeter/customers/{customerId}" -->
 ```go
 package main
 
@@ -211,7 +211,7 @@ Upsert customer
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="upsert-customer" method="put" path="/openmeter/customers/{customerId}" -->
+<!-- UsageSnippet language="go" operationID="upsert-customer" method="put" path="/v3/openmeter/customers/{customerId}" -->
 ```go
 package main
 
@@ -280,7 +280,7 @@ Delete customer
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-customer" method="delete" path="/openmeter/customers/{customerId}" -->
+<!-- UsageSnippet language="go" operationID="delete-customer" method="delete" path="/v3/openmeter/customers/{customerId}" -->
 ```go
 package main
 
@@ -338,7 +338,7 @@ Get customer billing data
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-customer-billing" method="get" path="/openmeter/customers/{customerId}/billing" -->
+<!-- UsageSnippet language="go" operationID="get-customer-billing" method="get" path="/v3/openmeter/customers/{customerId}/billing" -->
 ```go
 package main
 
@@ -396,7 +396,7 @@ Update customer billing data
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="update-customer-billing" method="put" path="/openmeter/customers/{customerId}/billing" -->
+<!-- UsageSnippet language="go" operationID="update-customer-billing" method="put" path="/v3/openmeter/customers/{customerId}/billing" -->
 ```go
 package main
 
@@ -474,7 +474,7 @@ Update customer billing app data
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="update-customer-billing-app-data" method="put" path="/openmeter/customers/{customerId}/billing/app-data" -->
+<!-- UsageSnippet language="go" operationID="update-customer-billing-app-data" method="put" path="/v3/openmeter/customers/{customerId}/billing/app-data" -->
 ```go
 package main
 
@@ -555,7 +555,7 @@ sessions, use the client_secret to initialize Stripe.js in your application.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-customer-stripe-checkout-session" method="post" path="/openmeter/customers/{customerId}/billing/stripe/checkout-sessions" -->
+<!-- UsageSnippet language="go" operationID="create-customer-stripe-checkout-session" method="post" path="/v3/openmeter/customers/{customerId}/billing/stripe/checkout-sessions" -->
 ```go
 package main
 
@@ -623,7 +623,7 @@ Only returns URL if the customer billing profile is linked to a stripe app and c
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-customer-stripe-portal-session" method="post" path="/openmeter/customers/{customerId}/billing/stripe/portal-sessions" -->
+<!-- UsageSnippet language="go" operationID="create-customer-stripe-portal-session" method="post" path="/v3/openmeter/customers/{customerId}/billing/stripe/portal-sessions" -->
 ```go
 package main
 

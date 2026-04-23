@@ -2,7 +2,7 @@
 
 package sdkkonnectgo
 
-// Generated from OpenAPI doc version 3.14.0 and generator version 2.881.2
+// Generated from OpenAPI doc version 3.14.0 and generator version 2.881.4
 
 import (
 	"context"
@@ -55,20 +55,6 @@ func Pointer[T any](v T) *T { return &v }
 // https://developer.konghq.com - Documentation for Kong Gateway and its APIs
 type SDK struct {
 	SDKVersion string
-	// Apps enable you to extend and customize billing and usage workflows by integrating with external systems and services. Apps can automate and enhance your billing ecosystem by supporting capabilities such as synchronizing usage data with third-party platforms, calculating taxes, generating and delivering invoices, handling payment collection, and other billing-related tasks.
-	OpenMeterApps *OpenMeterApps
-	// Customers are used to track usage of your product or service. Customers can be individuals or organizations that can subscribe to plans and have access to features.
-	OpenMeterCustomers *OpenMeterCustomers
-	// Entitlements are used to control access to features for customers.
-	OpenMeterEntitlements *OpenMeterEntitlements
-	// Metering events are used to track usage of your product or service. Events are processed asynchronously by the meters, so they may not be immediately available for querying.
-	MeteringEvents *MeteringEvents
-	// Meters specify how to aggregate events for billing and analytics purposes. Meters can be configured with multiple aggregation methods and groupings. Multiple meters can be created for the same event type, enabling flexible metering scenarios.
-	Meters *Meters
-	// Billing manages the billing profiles, currencies, cost bases, and invoices for customers.
-	OpenMeterBilling *OpenMeterBilling
-	// Subscriptions are used to track usage of your product or service. Subscriptions can be individuals or organizations that can subscribe to plans and have access to features.
-	OpenMeterSubscriptions *OpenMeterSubscriptions
 	// Service API mappings represent the link between Service and API entities.
 	// Once an API is mapped to a Service, a rich view of the linked APIs will be presented on the APIs tab of the Catalog Service.
 	// Similarly, Services mapped to an API will be listed on the API overview page under Catalog.
@@ -348,12 +334,26 @@ type SDK struct {
 	APISpecification        *APISpecification
 	APIVersion              *APIVersion
 	// APIs related to Konnect Developer Portal Applications.
-	Applications          *Applications
-	Authentication        *Authentication
-	AuthSettings          *AuthSettings
-	Invites               *Invites
-	ImpersonationSettings *ImpersonationSettings
-	Me                    *Me
+	Applications   *Applications
+	Authentication *Authentication
+	AuthSettings   *AuthSettings
+	Invites        *Invites
+	// Apps enable you to extend and customize billing and usage workflows by integrating with external systems and services. Apps can automate and enhance your billing ecosystem by supporting capabilities such as synchronizing usage data with third-party platforms, calculating taxes, generating and delivering invoices, handling payment collection, and other billing-related tasks.
+	OpenMeterApps *OpenMeterApps
+	// Customers are used to track usage of your product or service. Customers can be individuals or organizations that can subscribe to plans and have access to features.
+	OpenMeterCustomers *OpenMeterCustomers
+	// Entitlements are used to control access to features for customers.
+	OpenMeterEntitlements *OpenMeterEntitlements
+	// Metering events are used to track usage of your product or service. Events are processed asynchronously by the meters, so they may not be immediately available for querying.
+	MeteringEvents *MeteringEvents
+	// Meters specify how to aggregate events for billing and analytics purposes. Meters can be configured with multiple aggregation methods and groupings. Multiple meters can be created for the same event type, enabling flexible metering scenarios.
+	Meters *Meters
+	// Billing manages the billing profiles, currencies, cost bases, and invoices for customers.
+	OpenMeterBilling *OpenMeterBilling
+	// Subscriptions are used to track usage of your product or service. Subscriptions can be individuals or organizations that can subscribe to plans and have access to features.
+	OpenMeterSubscriptions *OpenMeterSubscriptions
+	ImpersonationSettings  *ImpersonationSettings
+	Me                     *Me
 	// APIs related to Konnect Developer Portal developer team roles.
 	PortalTeamRoles *PortalTeamRoles
 	// APIs related to configuration of Konnect Developer Portals.
@@ -381,6 +381,7 @@ type SDK struct {
 	PortalIntegrations *PortalIntegrations
 	// APIs related to Konnect Portal IP Allow List.
 	PortalsIPAllowList *PortalsIPAllowList
+	PortalPages        *PortalPages
 	// APIs related to Konnect Developer Portal Custom Snippets.
 	Snippets *Snippets
 	// APIs related to configuration of Konnect Developer Portal developer teams.
@@ -469,9 +470,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.32.1",
+		SDKVersion: "0.33.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.32.1 2.881.2 3.14.0 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.33.0 2.881.4 3.14.0 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -492,13 +493,6 @@ func New(opts ...SDKOption) *SDK {
 		sdk.sdkConfiguration.ServerURL = serverURL
 	}
 
-	sdk.OpenMeterApps = newOpenMeterApps(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.OpenMeterCustomers = newOpenMeterCustomers(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.OpenMeterEntitlements = newOpenMeterEntitlements(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.MeteringEvents = newMeteringEvents(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.Meters = newMeters(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.OpenMeterBilling = newOpenMeterBilling(sdk, sdk.sdkConfiguration, sdk.hooks)
-	sdk.OpenMeterSubscriptions = newOpenMeterSubscriptions(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServiceAPIMappings = newCatalogServiceAPIMappings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServices = newCatalogServices(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.CatalogServiceResources = newCatalogServiceResources(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -577,6 +571,13 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Authentication = newAuthentication(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.AuthSettings = newAuthSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Invites = newInvites(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OpenMeterApps = newOpenMeterApps(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OpenMeterCustomers = newOpenMeterCustomers(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OpenMeterEntitlements = newOpenMeterEntitlements(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.MeteringEvents = newMeteringEvents(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Meters = newMeters(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OpenMeterBilling = newOpenMeterBilling(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.OpenMeterSubscriptions = newOpenMeterSubscriptions(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ImpersonationSettings = newImpersonationSettings(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Me = newMe(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalTeamRoles = newPortalTeamRoles(sdk, sdk.sdkConfiguration, sdk.hooks)
@@ -593,6 +594,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.PortalEmails = newPortalEmails(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalIntegrations = newPortalIntegrations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalsIPAllowList = newPortalsIPAllowList(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.PortalPages = newPortalPages(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Snippets = newSnippets(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.PortalTeams = newPortalTeams(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Roles = newRoles(sdk, sdk.sdkConfiguration, sdk.hooks)

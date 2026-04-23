@@ -17,6 +17,10 @@
 * [GetIdentityProvider](#getidentityprovider) - Get Identity Provider
 * [UpdateIdentityProvider](#updateidentityprovider) - Update Identity Provider
 * [DeleteIdentityProvider](#deleteidentityprovider) - Delete Identity Provider
+* [ListIdpTeamGroupMappings](#listidpteamgroupmappings) - List Team Group Mappings
+* [CreateIdpTeamGroupMapping](#createidpteamgroupmapping) - Create Team Group Mapping
+* [GetIdpTeamGroupMapping](#getidpteamgroupmapping) - Get Team Group Mapping
+* [DeleteIdpTeamGroupMapping](#deleteidpteamgroupmapping) - Delete Team Group Mapping
 
 ## GetAuthenticationSettings
 
@@ -4746,6 +4750,257 @@ func main() {
 ### Response
 
 **[*operations.DeleteIdentityProviderResponse](../../models/operations/deleteidentityproviderresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListIdpTeamGroupMappings
+
+Returns a paginated list of team group mappings for the specified identity provider.
+Mappings define the relationship between identity provider groups and Konnect teams.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-idp-team-group-mappings" method="get" path="/v3/identity-providers/{idpId}/team-group-mappings" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.ListIdpTeamGroupMappings(ctx, operations.ListIdpTeamGroupMappingsRequest{
+        IdpID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageAfter: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
+        PageBefore: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdpTeamGroupMappingsCollection != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                    | :heavy_check_mark:                                                                                       | The context to use for the request.                                                                      |
+| `request`                                                                                                | [operations.ListIdpTeamGroupMappingsRequest](../../models/operations/listidpteamgroupmappingsrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
+| `opts`                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                 | :heavy_minus_sign:                                                                                       | The options for this request.                                                                            |
+
+### Response
+
+**[*operations.ListIdpTeamGroupMappingsResponse](../../models/operations/listidpteamgroupmappingsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## CreateIdpTeamGroupMapping
+
+Creates a new team group mapping for the specified identity provider.
+A mapping associates an identity provider group with a Konnect team.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-idp-team-group-mapping" method="post" path="/v3/identity-providers/{idpId}/team-group-mappings" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.CreateIdpTeamGroupMapping(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.CreateIdpTeamGroupMappingRequest{
+        TeamID: "6801e673-cc10-498a-94cd-4271de07a0d3",
+        Group: "Tech Leads",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdpTeamGroupMapping != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                | Example                                                                                                    |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                      | :heavy_check_mark:                                                                                         | The context to use for the request.                                                                        |                                                                                                            |
+| `idpID`                                                                                                    | `string`                                                                                                   | :heavy_check_mark:                                                                                         | ID of the identity provider.                                                                               | d32d905a-ed33-46a3-a093-d8f536af9a8a                                                                       |
+| `createIdpTeamGroupMappingRequest`                                                                         | [components.CreateIdpTeamGroupMappingRequest](../../models/components/createidpteamgroupmappingrequest.md) | :heavy_check_mark:                                                                                         | Request to create an IDP team group mapping.                                                               |                                                                                                            |
+| `opts`                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                   | :heavy_minus_sign:                                                                                         | The options for this request.                                                                              |                                                                                                            |
+
+### Response
+
+**[*operations.CreateIdpTeamGroupMappingResponse](../../models/operations/createidpteamgroupmappingresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetIdpTeamGroupMapping
+
+Returns the team group mapping for the specified ID.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-idp-team-group-mapping" method="get" path="/v3/identity-providers/{idpId}/team-group-mappings/{id}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.GetIdpTeamGroupMapping(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdpTeamGroupMapping != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `idpID`                                                  | `string`                                                 | :heavy_check_mark:                                       | ID of the identity provider.                             | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `id`                                                     | `string`                                                 | :heavy_check_mark:                                       | ID of the team group mapping.                            | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.GetIdpTeamGroupMappingResponse](../../models/operations/getidpteamgroupmappingresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## DeleteIdpTeamGroupMapping
+
+Deletes a team group mapping by ID.
+Returns 204 if the mapping was deleted, or 404 if the mapping was not found.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-idp-team-group-mapping" method="delete" path="/v3/identity-providers/{idpId}/team-group-mappings/{id}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.DeleteIdpTeamGroupMapping(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `idpID`                                                  | `string`                                                 | :heavy_check_mark:                                       | ID of the identity provider.                             | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `id`                                                     | `string`                                                 | :heavy_check_mark:                                       | ID of the team group mapping.                            | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.DeleteIdpTeamGroupMappingResponse](../../models/operations/deleteidpteamgroupmappingresponse.md), error**
 
 ### Errors
 

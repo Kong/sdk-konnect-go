@@ -8,26 +8,26 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type CreateAWSRoleDelegationAuthCredentialType string
+type Type string
 
 const (
-	CreateAWSRoleDelegationAuthCredentialTypeAwsRoleDelegation CreateAWSRoleDelegationAuthCredentialType = "aws_role_delegation"
+	TypeAwsRoleDelegation Type = "aws_role_delegation"
 )
 
-func (e CreateAWSRoleDelegationAuthCredentialType) ToPointer() *CreateAWSRoleDelegationAuthCredentialType {
+func (e Type) ToPointer() *Type {
 	return &e
 }
-func (e *CreateAWSRoleDelegationAuthCredentialType) UnmarshalJSON(data []byte) error {
+func (e *Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "aws_role_delegation":
-		*e = CreateAWSRoleDelegationAuthCredentialType(v)
+		*e = Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for CreateAWSRoleDelegationAuthCredentialType: %v", v)
+		return fmt.Errorf("invalid value for Type: %v", v)
 	}
 }
 
@@ -57,7 +57,7 @@ func (c *CreateAWSRoleDelegationAuthCredentialConfig) GetRoleArn() string {
 
 // CreateAWSRoleDelegationAuthCredential - Payload used to create an `AWS Role Delegation` credential for an integration instance.
 type CreateAWSRoleDelegationAuthCredential struct {
-	Type   CreateAWSRoleDelegationAuthCredentialType   `json:"type"`
+	Type   Type                                        `json:"type"`
 	Config CreateAWSRoleDelegationAuthCredentialConfig `json:"config"`
 }
 
@@ -72,9 +72,9 @@ func (c *CreateAWSRoleDelegationAuthCredential) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (c *CreateAWSRoleDelegationAuthCredential) GetType() CreateAWSRoleDelegationAuthCredentialType {
+func (c *CreateAWSRoleDelegationAuthCredential) GetType() Type {
 	if c == nil {
-		return CreateAWSRoleDelegationAuthCredentialType("")
+		return Type("")
 	}
 	return c.Type
 }
