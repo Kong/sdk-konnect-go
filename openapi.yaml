@@ -34,891 +34,6 @@ servers:
   - url: 'https://eu.api.konghq.com'
   - url: 'https://au.api.konghq.com'
 paths:
-  /openmeter/apps:
-    get:
-      operationId: list-apps
-      summary: List apps
-      description: List installed apps.
-      parameters:
-        - $ref: '#/components/parameters/PagePaginationQuery'
-      responses:
-        '200':
-          description: Page paginated response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AppPagePaginatedResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-      tags:
-        - OpenMeter Apps
-  '/openmeter/apps/{appId}':
-    get:
-      operationId: get-app
-      summary: Get app
-      description: Get an installed app.
-      parameters:
-        - name: appId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/ULID'
-      responses:
-        '200':
-          description: App response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingApp'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      tags:
-        - OpenMeter Apps
-  /openmeter/customers:
-    post:
-      operationId: create-customer
-      summary: Create customer
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateCustomerRequest'
-      responses:
-        '201':
-          description: Customer created response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingCustomer'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-      tags:
-        - OpenMeter Customers
-    get:
-      operationId: list-customers
-      summary: List customers
-      parameters:
-        - $ref: '#/components/parameters/PagePaginationQuery'
-        - name: sort
-          in: query
-          description: |-
-            Sort customers returned in the response.
-            Supported sort attributes are:
-            - `id`
-            - `name` (default)
-            - `created_at`
-
-            The `asc` suffix is optional as the default sort order is ascending.
-            The `desc` suffix is used to specify a descending order.
-          required: false
-          schema:
-            $ref: '#/components/schemas/SortQuery'
-          explode: false
-          style: form
-        - name: filter
-          in: query
-          description: |-
-            Filter customers returned in the response.
-
-            To filter customers by key add the following query param: filter[key]=my-db-id
-          required: false
-          schema:
-            $ref: '#/components/schemas/ListCustomersParamsFilter'
-          style: deepObject
-      responses:
-        '200':
-          description: Page paginated response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CustomerPagePaginatedResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-      tags:
-        - OpenMeter Customers
-  '/openmeter/customers/{customerId}':
-    get:
-      operationId: get-customer
-      summary: Get customer
-      parameters:
-        - name: customerId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/ULID'
-      responses:
-        '200':
-          description: Customer response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingCustomer'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      tags:
-        - OpenMeter Customers
-    put:
-      operationId: upsert-customer
-      summary: Upsert customer
-      parameters:
-        - name: customerId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/ULID'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpsertCustomerRequest'
-      responses:
-        '200':
-          description: Customer upsert response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingCustomer'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '410':
-          $ref: '#/components/responses/Gone'
-      tags:
-        - OpenMeter Customers
-    delete:
-      operationId: delete-customer
-      summary: Delete customer
-      parameters:
-        - name: customerId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/ULID'
-      responses:
-        '204':
-          description: Deleted response.
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      tags:
-        - OpenMeter Customers
-  '/openmeter/customers/{customerId}/billing':
-    get:
-      operationId: get-customer-billing
-      summary: Get customer billing data
-      parameters:
-        - name: customerId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/ULID'
-      responses:
-        '200':
-          description: CustomerBillingData response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingCustomerData'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      tags:
-        - OpenMeter Customers
-    put:
-      operationId: update-customer-billing
-      summary: Update customer billing data
-      parameters:
-        - name: customerId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/ULID'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpsertCustomerBillingDataRequest'
-      responses:
-        '200':
-          description: CustomerBillingData upsert response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingCustomerData'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '410':
-          $ref: '#/components/responses/Gone'
-      tags:
-        - OpenMeter Customers
-  '/openmeter/customers/{customerId}/billing/app-data':
-    put:
-      operationId: update-customer-billing-app-data
-      summary: Update customer billing app data
-      parameters:
-        - name: customerId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/ULID'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpsertAppCustomerDataRequest'
-      responses:
-        '200':
-          description: AppCustomerData upsert response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingAppCustomerData'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '410':
-          $ref: '#/components/responses/Gone'
-      tags:
-        - OpenMeter Customers
-  '/openmeter/customers/{customerId}/billing/stripe/checkout-sessions':
-    post:
-      operationId: create-customer-stripe-checkout-session
-      summary: Create Stripe Checkout Session
-      description: |-
-        Create a [Stripe Checkout Session](https://docs.stripe.com/payments/checkout) for the customer.
-
-        Creates a Checkout Session for collecting payment method information from customers.
-        The session operates in "setup" mode, which collects payment details without charging
-        the customer immediately. The collected payment method can be used for future
-        subscription billing.
-
-        For hosted checkout sessions, redirect customers to the returned URL. For embedded
-        sessions, use the client_secret to initialize Stripe.js in your application.
-      parameters:
-        - name: customerId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/ULID'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BillingCustomerStripeCreateCheckoutSessionRequest'
-      responses:
-        '201':
-          description: CreateStripeCheckoutSessionResult created response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingAppStripeCreateCheckoutSessionResult'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '410':
-          $ref: '#/components/responses/Gone'
-      tags:
-        - OpenMeter Customers
-  '/openmeter/customers/{customerId}/billing/stripe/portal-sessions':
-    post:
-      operationId: create-customer-stripe-portal-session
-      summary: Create Stripe customer portal session
-      description: |-
-        Create Stripe Customer Portal Session.
-
-        Useful to redirect the customer to the Stripe Customer Portal to manage their payment methods,
-        change their billing address and access their invoice history.
-        Only returns URL if the customer billing profile is linked to a stripe app and customer.
-      parameters:
-        - name: customerId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/ULID'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BillingCustomerStripeCreateCustomerPortalSessionRequest'
-      responses:
-        '201':
-          description: CreateStripeCustomerPortalSessionResult created response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingAppStripeCreateCustomerPortalSessionResult'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '410':
-          $ref: '#/components/responses/Gone'
-      tags:
-        - OpenMeter Customers
-  '/openmeter/customers/{customerId}/entitlement-access':
-    get:
-      operationId: list-customer-entitlement-access
-      summary: List customer entitlement access
-      parameters:
-        - name: customerId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/ULID'
-      responses:
-        '200':
-          description: List the customer's active features and their access.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListCustomerEntitlementAccessResponseData'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      tags:
-        - OpenMeter Entitlements
-  /openmeter/events:
-    post:
-      operationId: ingest-metering-events
-      summary: Ingest metering events
-      description: Ingests an event or batch of events following the CloudEvents specification.
-      requestBody:
-        required: true
-        content:
-          application/cloudevents+json:
-            schema:
-              $ref: '#/components/schemas/MeteringEvent'
-          application/cloudevents-batch+json:
-            schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/MeteringEvent'
-          application/json:
-            schema:
-              anyOf:
-                - $ref: '#/components/schemas/MeteringEvent'
-                - type: array
-                  items:
-                    $ref: '#/components/schemas/MeteringEvent'
-      responses:
-        '202':
-          description: The events have been ingested and are being processed asynchronously.
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-      tags:
-        - Metering Events
-  /openmeter/meters:
-    post:
-      operationId: create-meter
-      summary: Create meter
-      description: Create a meter.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateMeterRequest'
-      responses:
-        '201':
-          description: Meter created response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Meter'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-      tags:
-        - Meters
-    get:
-      operationId: list-meters
-      summary: List meters
-      description: List meters.
-      parameters:
-        - $ref: '#/components/parameters/PagePaginationQuery'
-      responses:
-        '200':
-          description: Page paginated response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MeterPagePaginatedResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-      tags:
-        - Meters
-  '/openmeter/meters/{meterId}':
-    get:
-      operationId: get-meter
-      summary: Get meter
-      description: Get a meter by ID.
-      parameters:
-        - name: meterId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/ULID'
-      responses:
-        '200':
-          description: Meter response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Meter'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      tags:
-        - Meters
-    delete:
-      operationId: delete-meter
-      summary: Delete meter
-      description: Delete a meter.
-      parameters:
-        - name: meterId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/ULID'
-      responses:
-        '204':
-          description: Deleted response.
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      tags:
-        - Meters
-  /openmeter/profiles:
-    get:
-      operationId: list-billing-profiles
-      summary: List billing profiles
-      description: List billing profiles.
-      parameters:
-        - $ref: '#/components/parameters/PagePaginationQuery'
-      responses:
-        '200':
-          description: Page paginated response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingProfilePagePaginatedResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-      tags:
-        - OpenMeter Billing
-    post:
-      operationId: create-billing-profile
-      summary: Create a new billing profile
-      description: |-
-        Create a new billing profile.
-
-        Billing profiles contain the settings for billing and controls invoice generation.
-        An organization can have multiple billing profiles defined.
-        A billing profile is linked to a specific app. This association is established during the billing profile's creation and remains immutable.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateBillingProfileRequest'
-      responses:
-        '201':
-          description: BillingProfile created response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingProfile'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-      tags:
-        - OpenMeter Billing
-  '/openmeter/profiles/{id}':
-    get:
-      operationId: get-billing-profile
-      summary: Get a billing profile
-      description: Get a billing profile.
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/ULID'
-      responses:
-        '200':
-          description: BillingProfile response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingProfile'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      tags:
-        - OpenMeter Billing
-    put:
-      operationId: update-billing-profile
-      summary: Update a billing profile
-      description: Update a billing profile.
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/ULID'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpsertBillingProfileRequest'
-      responses:
-        '200':
-          description: BillingProfile updated response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingProfile'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      tags:
-        - OpenMeter Billing
-    delete:
-      operationId: delete-billing-profile
-      summary: Delete a billing profile
-      description: |-
-        Delete a billing profile.
-
-        Only such billing profiles can be deleted that are:
-        - not the default profile
-        - not pinned to any customer using customer overrides
-        - only have finalized invoices
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/ULID'
-      responses:
-        '204':
-          description: Deleted response.
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      tags:
-        - OpenMeter Billing
-  /openmeter/subscriptions:
-    post:
-      operationId: create-subscription
-      summary: Create subscription
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BillingSubscriptionCreate'
-      responses:
-        '201':
-          description: Subscription created response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingSubscription'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '409':
-          $ref: '#/components/responses/Conflict'
-      tags:
-        - OpenMeter Subscriptions
-    get:
-      operationId: list-subscriptions
-      summary: List subscriptions
-      parameters:
-        - $ref: '#/components/parameters/PagePaginationQuery'
-        - name: filter
-          in: query
-          description: Filter subscriptions.
-          required: false
-          schema:
-            type: object
-            properties:
-              customer_id:
-                description: Filter subscriptions by customer ID.
-                type: string
-                example: 01G65Z755AFWAKHE12NY0CQ9FH
-                pattern: '^[0-7][0-9A-HJKMNP-TV-Z]{25}$'
-                title: ULID
-          style: deepObject
-      responses:
-        '200':
-          description: Page paginated response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SubscriptionPagePaginatedResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      tags:
-        - OpenMeter Subscriptions
-  '/openmeter/subscriptions/{subscriptionId}':
-    get:
-      operationId: get-subscription
-      summary: Get subscription
-      parameters:
-        - name: subscriptionId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/ULID'
-      responses:
-        '200':
-          description: Subscription response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingSubscription'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      tags:
-        - OpenMeter Subscriptions
-  '/openmeter/subscriptions/{subscriptionId}/cancel':
-    post:
-      operationId: cancel-subscription
-      summary: Cancel subscription
-      description: |-
-        Cancels the subscription.
-        Will result in a scheduling conflict if there are other subscriptions scheduled to start after the cancelation time.
-      parameters:
-        - name: subscriptionId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/ULID'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BillingSubscriptionCancel'
-      responses:
-        '200':
-          description: Subscription updated response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingSubscription'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '409':
-          $ref: '#/components/responses/Conflict'
-      tags:
-        - OpenMeter Subscriptions
-  '/openmeter/subscriptions/{subscriptionId}/change':
-    post:
-      operationId: change-subscription
-      summary: Change subscription
-      description: |-
-        Closes a running subscription and starts a new one according to the specification.
-        Can be used for upgrades, downgrades, and plan changes.
-      parameters:
-        - name: subscriptionId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/ULID'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BillingSubscriptionChange'
-      responses:
-        '200':
-          description: The request has succeeded.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingSubscriptionChangeResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '409':
-          $ref: '#/components/responses/Conflict'
-      tags:
-        - OpenMeter Subscriptions
-  '/openmeter/subscriptions/{subscriptionId}/unschedule-cancelation':
-    post:
-      operationId: unschedule-cancelation
-      summary: Unschedule subscription cancelation
-      description: Unschedules the subscription cancelation.
-      parameters:
-        - name: subscriptionId
-          in: path
-          required: true
-          schema:
-            $ref: '#/components/schemas/ULID'
-      responses:
-        '200':
-          description: Subscription updated response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BillingSubscription'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '409':
-          $ref: '#/components/responses/Conflict'
-      tags:
-        - OpenMeter Subscriptions
   '/v1/apis/{apiId}/service-mappings':
     parameters:
       - name: apiId
@@ -3874,188 +2989,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MCPServerStatusResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      tags:
-        - MCP Servers
-  '/v1/mcp-servers/{mcpServerId}/tools':
-    parameters:
-      - $ref: '#/components/parameters/mcpServerId'
-    get:
-      operationId: list-mcp-server-tools
-      summary: List MCP Server Tools
-      description: |-
-        **Pre-release Endpoint**
-        This endpoint is currently in beta and is subject to change.
-
-        Returns an array of MCP server tool objects.
-      parameters:
-        - $ref: '#/components/parameters/includeLayoutMetadata'
-        - $ref: '#/components/parameters/PageSize'
-        - $ref: '#/components/parameters/PageAfter'
-        - $ref: '#/components/parameters/MCPServerCommonFilter'
-      responses:
-        '200':
-          description: A response to listing MCP server tools.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListMCPServerToolsResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      tags:
-        - MCP Servers
-    post:
-      operationId: create-mcp-server-tool
-      summary: Create MCP Server Tool
-      description: |-
-        **Pre-release Endpoint**
-        This endpoint is currently in beta and is subject to change.
-
-        Create an MCP server tool under the specified MCP server.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/MCPServerToolInput'
-      responses:
-        '201':
-          description: A response to creating an MCP server tool.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MCPServerTool'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '409':
-          $ref: '#/components/responses/Conflict'
-      tags:
-        - MCP Servers
-  '/v1/mcp-servers/{mcpServerId}/tools/{toolId}':
-    parameters:
-      - $ref: '#/components/parameters/mcpServerId'
-      - $ref: '#/components/parameters/mcpServerToolId'
-    get:
-      operationId: get-mcp-server-tool
-      summary: Get MCP Server Tool
-      description: |-
-        **Pre-release Endpoint**
-        This endpoint is currently in beta and is subject to change.
-
-        Returns information about an individual MCP server tool.
-      responses:
-        '200':
-          description: A response to retrieving a single MCP server tool.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MCPServerTool'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-      tags:
-        - MCP Servers
-    put:
-      operationId: update-mcp-server-tool
-      summary: Update MCP Server Tool
-      description: |-
-        **Pre-release Endpoint**
-        This endpoint is currently in beta and is subject to change.
-
-        Update an individual MCP server tool.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/MCPServerToolInput'
-      responses:
-        '200':
-          description: A response to updating an MCP server tool.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MCPServerTool'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '409':
-          $ref: '#/components/responses/Conflict'
-      tags:
-        - MCP Servers
-    patch:
-      operationId: patch-mcp-server-tool
-      summary: Partially Update MCP Server Tool
-      description: |-
-        **Pre-release Endpoint**
-        This endpoint is currently in beta and is subject to change.
-
-        Partially update an individual MCP server tool.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PatchMCPServerToolRequest'
-      responses:
-        '200':
-          description: A response to partially updating an MCP server tool.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MCPServerTool'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '409':
-          $ref: '#/components/responses/Conflict'
-      tags:
-        - MCP Servers
-    delete:
-      operationId: delete-mcp-server-tool
-      summary: Delete MCP Server Tool
-      description: |-
-        **Pre-release Endpoint**
-        This endpoint is currently in beta and is subject to change.
-
-        Delete an MCP server tool under the specified MCP server.
-      responses:
-        '204':
-          description: Successfully deleted MCP server tool.
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -12599,6 +11532,136 @@ paths:
         - url: 'https://global.api.konghq.com/'
       tags:
         - Auth Settings
+  '/v3/identity-providers/{idpId}/team-group-mappings':
+    parameters:
+      - name: idpId
+        in: path
+        description: ID of the identity provider.
+        required: true
+        schema:
+          type: string
+          format: uuid
+          example: d32d905a-ed33-46a3-a093-d8f536af9a8a
+    get:
+      operationId: list-idp-team-group-mappings
+      summary: List Team Group Mappings
+      description: |
+        Returns a paginated list of team group mappings for the specified identity provider.
+        Mappings define the relationship between identity provider groups and Konnect teams.
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageAfter'
+        - $ref: '#/components/parameters/PageBefore'
+        - name: filter
+          in: query
+          description: Filter mappings by team ID or group name.
+          required: false
+          schema:
+            type: object
+            properties:
+              team_id:
+                $ref: '#/components/schemas/StringFieldEqualsFilter'
+              group:
+                $ref: '#/components/schemas/StringFieldEqualsFilter'
+          style: deepObject
+      responses:
+        '200':
+          $ref: '#/components/responses/IdpTeamGroupMappingsCollection'
+        '400':
+          $ref: '#/components/responses/IdentityBadRequest'
+        '401':
+          $ref: '#/components/responses/IdentityUnauthenticated'
+        '403':
+          $ref: '#/components/responses/IdentityPermissionDenied'
+        '404':
+          $ref: '#/components/responses/IdentityNotFound'
+      servers:
+        - url: 'https://global.api.konghq.com/'
+      tags:
+        - Auth Settings
+    post:
+      operationId: create-idp-team-group-mapping
+      summary: Create Team Group Mapping
+      description: |
+        Creates a new team group mapping for the specified identity provider.
+        A mapping associates an identity provider group with a Konnect team.
+      requestBody:
+        $ref: '#/components/requestBodies/CreateIdpTeamGroupMappingRequest'
+      responses:
+        '201':
+          $ref: '#/components/responses/IdpTeamGroupMapping'
+        '400':
+          $ref: '#/components/responses/IdentityBadRequest'
+        '401':
+          $ref: '#/components/responses/IdentityUnauthenticated'
+        '403':
+          $ref: '#/components/responses/IdentityPermissionDenied'
+        '404':
+          $ref: '#/components/responses/IdentityNotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      servers:
+        - url: 'https://global.api.konghq.com/'
+      tags:
+        - Auth Settings
+  '/v3/identity-providers/{idpId}/team-group-mappings/{id}':
+    parameters:
+      - name: idpId
+        in: path
+        description: ID of the identity provider.
+        required: true
+        schema:
+          type: string
+          format: uuid
+          example: d32d905a-ed33-46a3-a093-d8f536af9a8a
+      - name: id
+        in: path
+        description: ID of the team group mapping.
+        required: true
+        schema:
+          type: string
+          format: uuid
+          example: 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7
+    get:
+      operationId: get-idp-team-group-mapping
+      summary: Get Team Group Mapping
+      description: Returns the team group mapping for the specified ID.
+      responses:
+        '200':
+          $ref: '#/components/responses/IdpTeamGroupMapping'
+        '400':
+          $ref: '#/components/responses/IdentityBadRequest'
+        '401':
+          $ref: '#/components/responses/IdentityUnauthenticated'
+        '403':
+          $ref: '#/components/responses/IdentityPermissionDenied'
+        '404':
+          $ref: '#/components/responses/IdentityNotFound'
+      servers:
+        - url: 'https://global.api.konghq.com/'
+      tags:
+        - Auth Settings
+    delete:
+      operationId: delete-idp-team-group-mapping
+      summary: Delete Team Group Mapping
+      description: |
+        Deletes a team group mapping by ID.
+        Returns 204 if the mapping was deleted, or 404 if the mapping was not found.
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/IdentityBadRequest'
+        '401':
+          $ref: '#/components/responses/IdentityUnauthenticated'
+        '403':
+          $ref: '#/components/responses/IdentityPermissionDenied'
+        '404':
+          $ref: '#/components/responses/IdentityNotFound'
+      servers:
+        - url: 'https://global.api.konghq.com/'
+      tags:
+        - Auth Settings
   /v3/invites:
     post:
       operationId: invite-user
@@ -12619,6 +11682,891 @@ paths:
         - url: 'https://global.api.konghq.com/'
       tags:
         - Invites
+  /v3/openmeter/apps:
+    get:
+      operationId: list-apps
+      summary: List apps
+      description: List installed apps.
+      parameters:
+        - $ref: '#/components/parameters/PagePaginationQuery'
+      responses:
+        '200':
+          description: Page paginated response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppPagePaginatedResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - OpenMeter Apps
+  '/v3/openmeter/apps/{appId}':
+    get:
+      operationId: get-app
+      summary: Get app
+      description: Get an installed app.
+      parameters:
+        - name: appId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ULID'
+      responses:
+        '200':
+          description: App response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingApp'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - OpenMeter Apps
+  /v3/openmeter/customers:
+    post:
+      operationId: create-customer
+      summary: Create customer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomerRequest'
+      responses:
+        '201':
+          description: Customer created response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingCustomer'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - OpenMeter Customers
+    get:
+      operationId: list-customers
+      summary: List customers
+      parameters:
+        - $ref: '#/components/parameters/PagePaginationQuery'
+        - name: sort
+          in: query
+          description: |-
+            Sort customers returned in the response.
+            Supported sort attributes are:
+            - `id`
+            - `name` (default)
+            - `created_at`
+
+            The `asc` suffix is optional as the default sort order is ascending.
+            The `desc` suffix is used to specify a descending order.
+          required: false
+          schema:
+            $ref: '#/components/schemas/SortQuery'
+          explode: false
+          style: form
+        - name: filter
+          in: query
+          description: |-
+            Filter customers returned in the response.
+
+            To filter customers by key add the following query param: filter[key]=my-db-id
+          required: false
+          schema:
+            $ref: '#/components/schemas/ListCustomersParamsFilter'
+          style: deepObject
+      responses:
+        '200':
+          description: Page paginated response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerPagePaginatedResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - OpenMeter Customers
+  '/v3/openmeter/customers/{customerId}':
+    get:
+      operationId: get-customer
+      summary: Get customer
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ULID'
+      responses:
+        '200':
+          description: Customer response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingCustomer'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - OpenMeter Customers
+    put:
+      operationId: upsert-customer
+      summary: Upsert customer
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ULID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertCustomerRequest'
+      responses:
+        '200':
+          description: Customer upsert response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingCustomer'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '410':
+          $ref: '#/components/responses/Gone'
+      tags:
+        - OpenMeter Customers
+    delete:
+      operationId: delete-customer
+      summary: Delete customer
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ULID'
+      responses:
+        '204':
+          description: Deleted response.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - OpenMeter Customers
+  '/v3/openmeter/customers/{customerId}/billing':
+    get:
+      operationId: get-customer-billing
+      summary: Get customer billing data
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ULID'
+      responses:
+        '200':
+          description: CustomerBillingData response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingCustomerData'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - OpenMeter Customers
+    put:
+      operationId: update-customer-billing
+      summary: Update customer billing data
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ULID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertCustomerBillingDataRequest'
+      responses:
+        '200':
+          description: CustomerBillingData upsert response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingCustomerData'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '410':
+          $ref: '#/components/responses/Gone'
+      tags:
+        - OpenMeter Customers
+  '/v3/openmeter/customers/{customerId}/billing/app-data':
+    put:
+      operationId: update-customer-billing-app-data
+      summary: Update customer billing app data
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ULID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertAppCustomerDataRequest'
+      responses:
+        '200':
+          description: AppCustomerData upsert response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingAppCustomerData'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '410':
+          $ref: '#/components/responses/Gone'
+      tags:
+        - OpenMeter Customers
+  '/v3/openmeter/customers/{customerId}/billing/stripe/checkout-sessions':
+    post:
+      operationId: create-customer-stripe-checkout-session
+      summary: Create Stripe Checkout Session
+      description: |-
+        Create a [Stripe Checkout Session](https://docs.stripe.com/payments/checkout) for the customer.
+
+        Creates a Checkout Session for collecting payment method information from customers.
+        The session operates in "setup" mode, which collects payment details without charging
+        the customer immediately. The collected payment method can be used for future
+        subscription billing.
+
+        For hosted checkout sessions, redirect customers to the returned URL. For embedded
+        sessions, use the client_secret to initialize Stripe.js in your application.
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ULID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BillingCustomerStripeCreateCheckoutSessionRequest'
+      responses:
+        '201':
+          description: CreateStripeCheckoutSessionResult created response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingAppStripeCreateCheckoutSessionResult'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '410':
+          $ref: '#/components/responses/Gone'
+      tags:
+        - OpenMeter Customers
+  '/v3/openmeter/customers/{customerId}/billing/stripe/portal-sessions':
+    post:
+      operationId: create-customer-stripe-portal-session
+      summary: Create Stripe customer portal session
+      description: |-
+        Create Stripe Customer Portal Session.
+
+        Useful to redirect the customer to the Stripe Customer Portal to manage their payment methods,
+        change their billing address and access their invoice history.
+        Only returns URL if the customer billing profile is linked to a stripe app and customer.
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ULID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BillingCustomerStripeCreateCustomerPortalSessionRequest'
+      responses:
+        '201':
+          description: CreateStripeCustomerPortalSessionResult created response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingAppStripeCreateCustomerPortalSessionResult'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '410':
+          $ref: '#/components/responses/Gone'
+      tags:
+        - OpenMeter Customers
+  '/v3/openmeter/customers/{customerId}/entitlement-access':
+    get:
+      operationId: list-customer-entitlement-access
+      summary: List customer entitlement access
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ULID'
+      responses:
+        '200':
+          description: List the customer's active features and their access.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCustomerEntitlementAccessResponseData'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - OpenMeter Entitlements
+  /v3/openmeter/events:
+    post:
+      operationId: ingest-metering-events
+      summary: Ingest metering events
+      description: Ingests an event or batch of events following the CloudEvents specification.
+      requestBody:
+        required: true
+        content:
+          application/cloudevents+json:
+            schema:
+              $ref: '#/components/schemas/MeteringEvent'
+          application/cloudevents-batch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/MeteringEvent'
+          application/json:
+            schema:
+              anyOf:
+                - $ref: '#/components/schemas/MeteringEvent'
+                - type: array
+                  items:
+                    $ref: '#/components/schemas/MeteringEvent'
+      responses:
+        '202':
+          description: The events have been ingested and are being processed asynchronously.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Metering Events
+  /v3/openmeter/meters:
+    post:
+      operationId: create-meter
+      summary: Create meter
+      description: Create a meter.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMeterRequest'
+      responses:
+        '201':
+          description: Meter created response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Meter'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Meters
+    get:
+      operationId: list-meters
+      summary: List meters
+      description: List meters.
+      parameters:
+        - $ref: '#/components/parameters/PagePaginationQuery'
+      responses:
+        '200':
+          description: Page paginated response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeterPagePaginatedResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - Meters
+  '/v3/openmeter/meters/{meterId}':
+    get:
+      operationId: get-meter
+      summary: Get meter
+      description: Get a meter by ID.
+      parameters:
+        - name: meterId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ULID'
+      responses:
+        '200':
+          description: Meter response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Meter'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Meters
+    delete:
+      operationId: delete-meter
+      summary: Delete meter
+      description: Delete a meter.
+      parameters:
+        - name: meterId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ULID'
+      responses:
+        '204':
+          description: Deleted response.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Meters
+  /v3/openmeter/profiles:
+    get:
+      operationId: list-billing-profiles
+      summary: List billing profiles
+      description: List billing profiles.
+      parameters:
+        - $ref: '#/components/parameters/PagePaginationQuery'
+      responses:
+        '200':
+          description: Page paginated response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingProfilePagePaginatedResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - OpenMeter Billing
+    post:
+      operationId: create-billing-profile
+      summary: Create a new billing profile
+      description: |-
+        Create a new billing profile.
+
+        Billing profiles contain the settings for billing and controls invoice generation.
+        An organization can have multiple billing profiles defined.
+        A billing profile is linked to a specific app. This association is established during the billing profile's creation and remains immutable.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBillingProfileRequest'
+      responses:
+        '201':
+          description: BillingProfile created response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingProfile'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      tags:
+        - OpenMeter Billing
+  '/v3/openmeter/profiles/{id}':
+    get:
+      operationId: get-billing-profile
+      summary: Get a billing profile
+      description: Get a billing profile.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ULID'
+      responses:
+        '200':
+          description: BillingProfile response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingProfile'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - OpenMeter Billing
+    put:
+      operationId: update-billing-profile
+      summary: Update a billing profile
+      description: Update a billing profile.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ULID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertBillingProfileRequest'
+      responses:
+        '200':
+          description: BillingProfile updated response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingProfile'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - OpenMeter Billing
+    delete:
+      operationId: delete-billing-profile
+      summary: Delete a billing profile
+      description: |-
+        Delete a billing profile.
+
+        Only such billing profiles can be deleted that are:
+        - not the default profile
+        - not pinned to any customer using customer overrides
+        - only have finalized invoices
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ULID'
+      responses:
+        '204':
+          description: Deleted response.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - OpenMeter Billing
+  /v3/openmeter/subscriptions:
+    post:
+      operationId: create-subscription
+      summary: Create subscription
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BillingSubscriptionCreate'
+      responses:
+        '201':
+          description: Subscription created response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingSubscription'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - OpenMeter Subscriptions
+    get:
+      operationId: list-subscriptions
+      summary: List subscriptions
+      parameters:
+        - $ref: '#/components/parameters/PagePaginationQuery'
+        - name: filter
+          in: query
+          description: Filter subscriptions.
+          required: false
+          schema:
+            type: object
+            properties:
+              customer_id:
+                description: Filter subscriptions by customer ID.
+                type: string
+                example: 01G65Z755AFWAKHE12NY0CQ9FH
+                pattern: '^[0-7][0-9A-HJKMNP-TV-Z]{25}$'
+                title: ULID
+          style: deepObject
+      responses:
+        '200':
+          description: Page paginated response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionPagePaginatedResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - OpenMeter Subscriptions
+  '/v3/openmeter/subscriptions/{subscriptionId}':
+    get:
+      operationId: get-subscription
+      summary: Get subscription
+      parameters:
+        - name: subscriptionId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ULID'
+      responses:
+        '200':
+          description: Subscription response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingSubscription'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - OpenMeter Subscriptions
+  '/v3/openmeter/subscriptions/{subscriptionId}/cancel':
+    post:
+      operationId: cancel-subscription
+      summary: Cancel subscription
+      description: |-
+        Cancels the subscription.
+        Will result in a scheduling conflict if there are other subscriptions scheduled to start after the cancelation time.
+      parameters:
+        - name: subscriptionId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ULID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BillingSubscriptionCancel'
+      responses:
+        '200':
+          description: Subscription updated response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingSubscription'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - OpenMeter Subscriptions
+  '/v3/openmeter/subscriptions/{subscriptionId}/change':
+    post:
+      operationId: change-subscription
+      summary: Change subscription
+      description: |-
+        Closes a running subscription and starts a new one according to the specification.
+        Can be used for upgrades, downgrades, and plan changes.
+      parameters:
+        - name: subscriptionId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ULID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BillingSubscriptionChange'
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingSubscriptionChangeResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - OpenMeter Subscriptions
+  '/v3/openmeter/subscriptions/{subscriptionId}/unschedule-cancelation':
+    post:
+      operationId: unschedule-cancelation
+      summary: Unschedule subscription cancelation
+      description: Unschedules the subscription cancelation.
+      parameters:
+        - name: subscriptionId
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/ULID'
+      responses:
+        '200':
+          description: Subscription updated response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingSubscription'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - OpenMeter Subscriptions
   /v3/organizations/impersonation:
     get:
       operationId: get-impersonation-settings
@@ -14166,6 +14114,116 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Portal Auth Settings
+  '/v3/portals/{portalId}/identity-providers/{id}/team-group-mappings':
+    parameters:
+      - $ref: '#/components/parameters/PortalId'
+      - $ref: '#/components/parameters/IdentityProviderId'
+    get:
+      operationId: list-portal-idp-team-group-mappings
+      summary: List Team Group Mappings
+      description: |
+        Returns a paginated list of team group mappings for the specified identity provider.
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageAfter'
+        - $ref: '#/components/parameters/PageBefore'
+        - name: filter
+          in: query
+          description: Filter mappings by team ID or group name.
+          required: false
+          schema:
+            type: object
+            properties:
+              team_id:
+                $ref: '#/components/schemas/StringFieldEqualsFilter'
+              group:
+                $ref: '#/components/schemas/StringFieldEqualsFilter'
+          style: deepObject
+      responses:
+        '200':
+          $ref: '#/components/responses/PortalIdpTeamGroupMappingCollection'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Portal Auth Settings
+    post:
+      x-speakeasy-entity-operation:
+        terraform-resource: PortalIdpTeamGroupMapping#create
+        terraform-datasource: null
+      operationId: create-portal-idp-team-group-mapping
+      summary: Create Team Group Mapping
+      description: |
+        Creates a new team group mapping for the specified identity provider.
+      requestBody:
+        $ref: '#/components/requestBodies/CreatePortalIdpTeamGroupMapping'
+      responses:
+        '201':
+          $ref: '#/components/responses/PortalIdpTeamGroupMapping'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      tags:
+        - Portal Auth Settings
+  '/v3/portals/{portalId}/identity-providers/{id}/team-group-mappings/{mappingId}':
+    parameters:
+      - $ref: '#/components/parameters/PortalId'
+      - $ref: '#/components/parameters/IdentityProviderId'
+      - $ref: '#/components/parameters/TeamGroupMappingId'
+    get:
+      x-speakeasy-entity-operation:
+        terraform-resource: PortalIdpTeamGroupMapping#read
+        terraform-datasource: null
+      operationId: get-portal-idp-team-group-mapping
+      summary: Get Team Group Mapping
+      description: Returns the team group mapping for the specified ID.
+      responses:
+        '200':
+          $ref: '#/components/responses/PortalIdpTeamGroupMapping'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Portal Auth Settings
+    delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: PortalIdpTeamGroupMapping#delete
+        terraform-datasource: null
+      operationId: delete-portal-idp-team-group-mapping
+      summary: Delete Team Group Mapping
+      description: |
+        Deletes a team group mapping by ID.
+        Returns 204 if the mapping was deleted, or 404 if the mapping was not found.
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      tags:
+        - Portal Auth Settings
   '/v3/portals/{portalId}/integrations':
     get:
       operationId: get-portal-integrations
@@ -14371,6 +14429,7 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Pages
+      x-speakeasy-group: Portal Pages
     post:
       x-speakeasy-entity-operation:
         terraform-resource: PortalPage#create
@@ -14399,6 +14458,7 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Pages
+      x-speakeasy-group: Portal Pages
   '/v3/portals/{portalId}/pages/{pageId}':
     get:
       x-speakeasy-entity-operation:
@@ -14419,6 +14479,7 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Pages
+      x-speakeasy-group: Portal Pages
     patch:
       x-speakeasy-entity-operation:
         terraform-resource: PortalPage#update
@@ -14448,6 +14509,7 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Pages
+      x-speakeasy-group: Portal Pages
     delete:
       x-speakeasy-entity-operation:
         terraform-resource: PortalPage#delete
@@ -14469,6 +14531,7 @@ paths:
           $ref: '#/components/responses/NotFound'
       tags:
         - Pages
+      x-speakeasy-group: Portal Pages
   '/v3/portals/{portalId}/pages/{pageId}/move':
     post:
       operationId: move-portal-pages
@@ -14494,6 +14557,7 @@ paths:
           $ref: '#/components/responses/Conflict'
       tags:
         - Pages
+      x-speakeasy-group: Portal Pages
   '/v3/portals/{portalId}/snippets':
     get:
       operationId: list-portal-snippets
@@ -17243,14 +17307,6 @@ components:
       required: true
       description: The Portal identifier
       x-speakeasy-match: id
-    includeLayoutMetadata:
-      name: include_layout_metadata
-      in: query
-      required: false
-      description: Determines whether layout metadata is included in the response.
-      schema:
-        type: boolean
-        default: false
     IntegrationInstanceFilter:
       name: filter
       description: Filters a collection of integration instances.
@@ -17338,14 +17394,6 @@ components:
       in: path
       required: true
       description: The ID of the MCP server.
-      schema:
-        type: string
-        format: uuid
-    mcpServerToolId:
-      name: toolId
-      in: path
-      required: true
-      description: The ID of the MCP server tool.
       schema:
         type: string
         format: uuid
@@ -17959,6 +18007,14 @@ components:
       required: true
       schema:
         type: string
+    TeamGroupMappingId:
+      name: mappingId
+      in: path
+      required: true
+      description: ID of the team group mapping.
+      schema:
+        type: string
+        format: uuid
     TeamId:
       x-speakeasy-match: id
       schema:
@@ -19212,6 +19268,32 @@ components:
           - Tech Leads
           - API Engineers
       title: TeamGroupMapping
+    IdpTeamGroupMapping:
+      description: A mapping between a Konnect team and an identity provider group.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        team_id:
+          description: The Konnect team ID.
+          type: string
+          format: uuid
+          example: 6801e673-cc10-498a-94cd-4271de07a0d3
+        group:
+          description: The identity provider group name. Group names are case sensitive.
+          type: string
+          example: Tech Leads
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      required:
+        - id
+        - team_id
+        - group
+        - created_at
+        - updated_at
+      title: IdpTeamGroupMapping
     AssignedRole:
       description: An assigned role is a role that has been assigned to a user or team.
       type: object
@@ -22328,6 +22410,10 @@ components:
             - xlarge: ~12 GiB capacity
             - 2xlarge: ~25 GiB capacity
             - 4xlarge: ~52 GiB capacity
+            - 8xlarge: ~100 GiB capacity
+            - 12xlarge: ~150 GiB capacity
+            - 16xlarge: ~200 GiB capacity
+            - 24xlarge: ~300 GiB capacity
           type: string
           enum:
             - micro
@@ -22337,6 +22423,10 @@ components:
             - xlarge
             - 2xlarge
             - 4xlarge
+            - 8xlarge
+            - 12xlarge
+            - 16xlarge
+            - 24xlarge
           x-speakeasy-unknown-values: allow
       example:
         kind: tiered
@@ -25472,6 +25562,69 @@ components:
       required:
         - type
         - id
+    CreatePortalIdpTeamGroupMappingRequest:
+      type: object
+      properties:
+        team_id:
+          description: The Konnect team ID.
+          type: string
+          format: uuid
+          example: 6801e673-cc10-498a-94cd-4271de07a0d3
+        group:
+          description: The IdP group name.
+          type: string
+          example: API Engineers
+      required:
+        - team_id
+        - group
+    PortalIdpTeamGroupMapping:
+      type: object
+      properties:
+        id:
+          description: The mapping ID.
+          type: string
+          format: uuid
+          example: a1b2c3d4-e5f6-4a8b-9c0d-1e2f3a4b5c6d
+          readOnly: true
+        team_id:
+          description: The Konnect team ID.
+          type: string
+          format: uuid
+          example: 6801e673-cc10-498a-94cd-4271de07a0d3
+        group:
+          description: The IdP group name.
+          type: string
+          example: API Engineers
+        created_at:
+          description: Creation timestamp.
+          type: string
+          format: date-time
+          example: '2024-01-15T10:30:00Z'
+          readOnly: true
+        updated_at:
+          description: Last update timestamp.
+          type: string
+          format: date-time
+          example: '2024-01-15T10:30:00Z'
+          readOnly: true
+      required:
+        - id
+        - team_id
+        - group
+        - created_at
+        - updated_at
+    PortalIdpTeamGroupMappingCollectionResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/CursorMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PortalIdpTeamGroupMapping'
+      required:
+        - meta
+        - data
     PortalImageDataUri:
       oneOf:
         - $ref: '#/components/schemas/ImagePNGDataUri'
@@ -38636,89 +38789,6 @@ components:
       required:
         - data
         - meta
-    ListMCPServerToolsResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/MCPServerTool'
-        meta:
-          $ref: '#/components/schemas/CursorMeta'
-      required:
-        - data
-        - meta
-    MCPServerToolInput:
-      type: object
-      properties:
-        name:
-          description: The unique name of the MCP server tool.
-          type: string
-          maxLength: 255
-          minLength: 1
-          pattern: '^[\w_-]+$'
-        state:
-          $ref: '#/components/schemas/MCPServerToolState'
-        definition:
-          $ref: '#/components/schemas/MCPToolDefinition'
-        definition_draft:
-          $ref: '#/components/schemas/MCPToolDefinition'
-        layout_metadata:
-          description: Layout metadata for the MCP server tool.
-          type: object
-          additionalProperties: true
-      required:
-        - name
-    PatchMCPServerToolRequest:
-      type: object
-      properties:
-        name:
-          description: The unique name of the MCP server tool.
-          type: string
-          maxLength: 255
-          minLength: 1
-          pattern: '^[\w_-]+$'
-        state:
-          $ref: '#/components/schemas/MCPServerToolState'
-        definition:
-          $ref: '#/components/schemas/MCPToolDefinition'
-        definition_draft:
-          $ref: '#/components/schemas/MCPToolDefinition'
-        layout_metadata:
-          description: Layout metadata for the MCP server tool.
-          type: object
-          additionalProperties: true
-          nullable: true
-    MCPToolDefinition:
-      type: array
-      items:
-        type: object
-        additionalProperties: true
-    MCPServerTool:
-      allOf:
-        - $ref: '#/components/schemas/MCPServerToolInput'
-        - type: object
-          required:
-            - id
-            - created_at
-            - updated_at
-          properties:
-            id:
-              description: The unique identifier for the MCP server tool.
-              type: string
-              format: uuid
-            created_at:
-              $ref: '#/components/schemas/CreatedAt'
-            updated_at:
-              $ref: '#/components/schemas/UpdatedAt'
-    MCPServerToolState:
-      description: The state of the MCP server tool.
-      type: string
-      default: draft
-      enum:
-        - draft
-        - published
-      x-speakeasy-unknown-values: allow
     KongEntitiesResponse:
       type: object
       properties:
@@ -43241,6 +43311,26 @@ components:
                   groups:
                     - Service Developers
       description: The request schema for a partial update of mappings from Konnect Teams to IdP Groups.
+    CreateIdpTeamGroupMappingRequest:
+      description: Request to create an IDP team group mapping.
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              team_id:
+                description: The Konnect team ID to associate with the identity provider group.
+                type: string
+                format: uuid
+                example: 6801e673-cc10-498a-94cd-4271de07a0d3
+              group:
+                description: The identity provider group name. Group names are case sensitive.
+                type: string
+                example: Tech Leads
+            required:
+              - team_id
+              - group
     AssignRole:
       content:
         application/json:
@@ -44062,6 +44152,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ValidateApiSpecRequestPayload'
+    CreatePortalIdpTeamGroupMapping:
+      description: Create a team group mapping for an identity provider.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreatePortalIdpTeamGroupMappingRequest'
     CreatePortalCustomDomain:
       description: Create a portal custom domain.
       required: true
@@ -44116,7 +44213,10 @@ components:
                 type: boolean
                 default: false
               sipr_enabled:
-                $ref: '#/components/schemas/SourceIPEnabled'
+                description: Whether ip allow list is enabled for the portal.
+                type: boolean
+                example: true
+                default: false
               default_api_visibility:
                 description: 'The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.'
                 type: string
@@ -44201,7 +44301,10 @@ components:
                 type: boolean
                 default: false
               sipr_enabled:
-                $ref: '#/components/schemas/SourceIPEnabled'
+                description: Whether ip allow list is enabled for the portal.
+                type: boolean
+                example: true
+                default: false
               default_api_visibility:
                 description: 'The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.'
                 type: string
@@ -45259,6 +45362,25 @@ components:
                 items:
                   $ref: '#/components/schemas/TeamGroupMapping'
             title: Team Group Mapping Collection Response
+    IdpTeamGroupMapping:
+      description: A single team group mapping.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/IdpTeamGroupMapping'
+    IdpTeamGroupMappingsCollection:
+      description: A paginated collection of IDP team group mappings.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              meta:
+                $ref: '#/components/schemas/CursorMeta'
+              data:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IdpTeamGroupMapping'
     AssignedRoleSingle:
       description: A get action response of a single assigned role.
       content:
@@ -47377,6 +47499,18 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/UnsupportedMediaTypeError'
+    PortalIdpTeamGroupMapping:
+      description: A team group mapping for an identity provider.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PortalIdpTeamGroupMapping'
+    PortalIdpTeamGroupMappingCollection:
+      description: A paginated collection of team group mappings.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PortalIdpTeamGroupMappingCollectionResponse'
     PortalTeamGroupMappingCollection:
       description: A paginated collection of mappings grouped by team ID.
       content:
@@ -47495,7 +47629,10 @@ components:
                       type: boolean
                       default: false
                     sipr_enabled:
-                      $ref: '#/components/schemas/SourceIPEnabled'
+                      description: Whether ip allow list is enabled for the portal.
+                      type: boolean
+                      example: true
+                      default: false
                     default_api_visibility:
                       description: 'The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.'
                       type: string
@@ -47598,7 +47735,10 @@ components:
                 type: boolean
                 default: false
               sipr_enabled:
-                $ref: '#/components/schemas/SourceIPEnabled'
+                description: Whether ip allow list is enabled for the portal.
+                type: boolean
+                example: true
+                default: false
               default_api_visibility:
                 description: 'The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.'
                 type: string
