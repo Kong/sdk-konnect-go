@@ -2,26 +2,26 @@
 
 package components
 
-// VirtualClusterNamespaceMode - * hide_prefix - the configured prefix is hidden from clients for topics and IDs when reading.
+// Mode - * hide_prefix - the configured prefix is hidden from clients for topics and IDs when reading.
 //
 //	Created resources are written with the prefix on the backend cluster.
 //
 // * enforce_prefix - the configured prefix remains visible to clients.
 //
 //	Created resources must include the prefix or the request will fail.
-type VirtualClusterNamespaceMode string
+type Mode string
 
 const (
-	VirtualClusterNamespaceModeHidePrefix    VirtualClusterNamespaceMode = "hide_prefix"
-	VirtualClusterNamespaceModeEnforcePrefix VirtualClusterNamespaceMode = "enforce_prefix"
+	ModeHidePrefix    Mode = "hide_prefix"
+	ModeEnforcePrefix Mode = "enforce_prefix"
 )
 
-func (e VirtualClusterNamespaceMode) ToPointer() *VirtualClusterNamespaceMode {
+func (e Mode) ToPointer() *Mode {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *VirtualClusterNamespaceMode) IsExact() bool {
+func (e *Mode) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "hide_prefix", "enforce_prefix":
@@ -43,7 +43,7 @@ type VirtualClusterNamespace struct {
 	//
 	//   Created resources must include the prefix or the request will fail.
 	//
-	Mode VirtualClusterNamespaceMode `json:"mode"`
+	Mode Mode `json:"mode"`
 	// The namespace is differentiated by this chosen prefix.
 	// For example, if the prefix is set to "analytics_" the topic named "analytics_user_clicks" is available to the clients
 	// of the virtual cluster. Topics without the prefix will be ignored unless added via `additional.topics`.
@@ -52,9 +52,9 @@ type VirtualClusterNamespace struct {
 	Additional *VirtualClusterNamespaceAdditionalProperties `json:"additional,omitempty"`
 }
 
-func (v *VirtualClusterNamespace) GetMode() VirtualClusterNamespaceMode {
+func (v *VirtualClusterNamespace) GetMode() Mode {
 	if v == nil {
-		return VirtualClusterNamespaceMode("")
+		return Mode("")
 	}
 	return v.Mode
 }

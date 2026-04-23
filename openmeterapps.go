@@ -57,7 +57,7 @@ func (s *OpenMeterApps) ListApps(ctx context.Context, page *components.PagePagin
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := url.JoinPath(baseURL, "/openmeter/apps")
+	opURL, err := url.JoinPath(baseURL, "/v3/openmeter/apps")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -333,7 +333,7 @@ func (s *OpenMeterApps) GetApp(ctx context.Context, appID string, opts ...operat
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/openmeter/apps/{appId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/openmeter/apps/{appId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

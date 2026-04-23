@@ -57,7 +57,7 @@ func (s *OpenMeterBilling) ListBillingProfiles(ctx context.Context, page *compon
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := url.JoinPath(baseURL, "/openmeter/profiles")
+	opURL, err := url.JoinPath(baseURL, "/v3/openmeter/profiles")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -333,7 +333,7 @@ func (s *OpenMeterBilling) CreateBillingProfile(ctx context.Context, request com
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := url.JoinPath(baseURL, "/openmeter/profiles")
+	opURL, err := url.JoinPath(baseURL, "/v3/openmeter/profiles")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -612,7 +612,7 @@ func (s *OpenMeterBilling) GetBillingProfile(ctx context.Context, id string, opt
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/openmeter/profiles/{id}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/openmeter/profiles/{id}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -906,7 +906,7 @@ func (s *OpenMeterBilling) UpdateBillingProfile(ctx context.Context, id string, 
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/openmeter/profiles/{id}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/openmeter/profiles/{id}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1211,7 +1211,7 @@ func (s *OpenMeterBilling) DeleteBillingProfile(ctx context.Context, id string, 
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/openmeter/profiles/{id}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/openmeter/profiles/{id}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

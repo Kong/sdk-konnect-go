@@ -1,6 +1,6 @@
 # BillingAppStripeType
 
-Type of the app.
+The app type.
 
 ## Example Usage
 
@@ -9,17 +9,12 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.BillingAppStripeTypeSandbox
-
-// Open enum: custom values can be created with a direct type cast
-custom := components.BillingAppStripeType("custom_value")
+value := components.BillingAppStripeTypeStripe
 ```
 
 
 ## Values
 
-| Name                                    | Value                                   |
-| --------------------------------------- | --------------------------------------- |
-| `BillingAppStripeTypeSandbox`           | sandbox                                 |
-| `BillingAppStripeTypeStripe`            | stripe                                  |
-| `BillingAppStripeTypeExternalInvoicing` | external_invoicing                      |
+| Name                         | Value                        |
+| ---------------------------- | ---------------------------- |
+| `BillingAppStripeTypeStripe` | stripe                       |

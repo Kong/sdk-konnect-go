@@ -15,6 +15,10 @@ APIs related to configuration of Konnect Developer Portal auth settings.
 * [GetPortalIdentityProvider](#getportalidentityprovider) - Get Identity Provider
 * [UpdatePortalIdentityProvider](#updateportalidentityprovider) - Update Identity Provider
 * [DeletePortalIdentityProvider](#deleteportalidentityprovider) - Delete Identity Provider
+* [ListPortalIdpTeamGroupMappings](#listportalidpteamgroupmappings) - List Team Group Mappings
+* [CreatePortalIdpTeamGroupMapping](#createportalidpteamgroupmapping) - Create Team Group Mapping
+* [GetPortalIdpTeamGroupMapping](#getportalidpteamgroupmapping) - Get Team Group Mapping
+* [DeletePortalIdpTeamGroupMapping](#deleteportalidpteamgroupmapping) - Delete Team Group Mapping
 
 ## GetPortalAuthenticationSettings
 
@@ -2133,6 +2137,268 @@ func main() {
 ### Response
 
 **[*operations.DeletePortalIdentityProviderResponse](../../models/operations/deleteportalidentityproviderresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListPortalIdpTeamGroupMappings
+
+Returns a paginated list of team group mappings for the specified identity provider.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-portal-idp-team-group-mappings" method="get" path="/v3/portals/{portalId}/identity-providers/{id}/team-group-mappings" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalAuthSettings.ListPortalIdpTeamGroupMappings(ctx, operations.ListPortalIdpTeamGroupMappingsRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageAfter: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
+        PageBefore: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalIdpTeamGroupMappingCollectionResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                | :heavy_check_mark:                                                                                                   | The context to use for the request.                                                                                  |
+| `request`                                                                                                            | [operations.ListPortalIdpTeamGroupMappingsRequest](../../models/operations/listportalidpteamgroupmappingsrequest.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
+| `opts`                                                                                                               | [][operations.Option](../../models/operations/option.md)                                                             | :heavy_minus_sign:                                                                                                   | The options for this request.                                                                                        |
+
+### Response
+
+**[*operations.ListPortalIdpTeamGroupMappingsResponse](../../models/operations/listportalidpteamgroupmappingsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## CreatePortalIdpTeamGroupMapping
+
+Creates a new team group mapping for the specified identity provider.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-portal-idp-team-group-mapping" method="post" path="/v3/portals/{portalId}/identity-providers/{id}/team-group-mappings" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalAuthSettings.CreatePortalIdpTeamGroupMapping(ctx, operations.CreatePortalIdpTeamGroupMappingRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        CreatePortalIdpTeamGroupMappingRequest: components.CreatePortalIdpTeamGroupMappingRequest{
+            TeamID: "6801e673-cc10-498a-94cd-4271de07a0d3",
+            Group: "API Engineers",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalIdpTeamGroupMapping != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                                  | :heavy_check_mark:                                                                                                     | The context to use for the request.                                                                                    |
+| `request`                                                                                                              | [operations.CreatePortalIdpTeamGroupMappingRequest](../../models/operations/createportalidpteamgroupmappingrequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
+| `opts`                                                                                                                 | [][operations.Option](../../models/operations/option.md)                                                               | :heavy_minus_sign:                                                                                                     | The options for this request.                                                                                          |
+
+### Response
+
+**[*operations.CreatePortalIdpTeamGroupMappingResponse](../../models/operations/createportalidpteamgroupmappingresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetPortalIdpTeamGroupMapping
+
+Returns the team group mapping for the specified ID.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-portal-idp-team-group-mapping" method="get" path="/v3/portals/{portalId}/identity-providers/{id}/team-group-mappings/{mappingId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalAuthSettings.GetPortalIdpTeamGroupMapping(ctx, operations.GetPortalIdpTeamGroupMappingRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        MappingID: "56c235bd-3352-46d8-9883-d32c2d0f5e91",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalIdpTeamGroupMapping != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                            | :heavy_check_mark:                                                                                               | The context to use for the request.                                                                              |
+| `request`                                                                                                        | [operations.GetPortalIdpTeamGroupMappingRequest](../../models/operations/getportalidpteamgroupmappingrequest.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
+| `opts`                                                                                                           | [][operations.Option](../../models/operations/option.md)                                                         | :heavy_minus_sign:                                                                                               | The options for this request.                                                                                    |
+
+### Response
+
+**[*operations.GetPortalIdpTeamGroupMappingResponse](../../models/operations/getportalidpteamgroupmappingresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## DeletePortalIdpTeamGroupMapping
+
+Deletes a team group mapping by ID.
+Returns 204 if the mapping was deleted, or 404 if the mapping was not found.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-portal-idp-team-group-mapping" method="delete" path="/v3/portals/{portalId}/identity-providers/{id}/team-group-mappings/{mappingId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalAuthSettings.DeletePortalIdpTeamGroupMapping(ctx, operations.DeletePortalIdpTeamGroupMappingRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        MappingID: "5b5e1891-c25e-4cee-989c-f6b017b178a5",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                                  | :heavy_check_mark:                                                                                                     | The context to use for the request.                                                                                    |
+| `request`                                                                                                              | [operations.DeletePortalIdpTeamGroupMappingRequest](../../models/operations/deleteportalidpteamgroupmappingrequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
+| `opts`                                                                                                                 | [][operations.Option](../../models/operations/option.md)                                                               | :heavy_minus_sign:                                                                                                     | The options for this request.                                                                                          |
+
+### Response
+
+**[*operations.DeletePortalIdpTeamGroupMappingResponse](../../models/operations/deleteportalidpteamgroupmappingresponse.md), error**
 
 ### Errors
 

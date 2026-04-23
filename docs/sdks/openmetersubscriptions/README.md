@@ -19,7 +19,7 @@ Create subscription
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="create-subscription" method="post" path="/openmeter/subscriptions" -->
+<!-- UsageSnippet language="go" operationID="create-subscription" method="post" path="/v3/openmeter/subscriptions" -->
 ```go
 package main
 
@@ -92,7 +92,7 @@ List subscriptions
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-subscriptions" method="get" path="/openmeter/subscriptions" -->
+<!-- UsageSnippet language="go" operationID="list-subscriptions" method="get" path="/v3/openmeter/subscriptions" -->
 ```go
 package main
 
@@ -113,7 +113,7 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterSubscriptions.ListSubscriptions(ctx, nil, &operations.Filter{
+    res, err := s.OpenMeterSubscriptions.ListSubscriptions(ctx, nil, &operations.ListSubscriptionsQueryParamFilter{
         CustomerID: sdkkonnectgo.Pointer("01G65Z755AFWAKHE12NY0CQ9FH"),
     })
     if err != nil {
@@ -127,12 +127,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `ctx`                                                                             | [context.Context](https://pkg.go.dev/context#Context)                             | :heavy_check_mark:                                                                | The context to use for the request.                                               |
-| `page`                                                                            | [*components.PagePaginationQuery](../../models/components/pagepaginationquery.md) | :heavy_minus_sign:                                                                | Determines which page of the collection to retrieve.                              |
-| `filter`                                                                          | [*operations.Filter](../../models/operations/filter.md)                           | :heavy_minus_sign:                                                                | Filter subscriptions.                                                             |
-| `opts`                                                                            | [][operations.Option](../../models/operations/option.md)                          | :heavy_minus_sign:                                                                | The options for this request.                                                     |
+| Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                         | [context.Context](https://pkg.go.dev/context#Context)                                                         | :heavy_check_mark:                                                                                            | The context to use for the request.                                                                           |
+| `page`                                                                                                        | [*components.PagePaginationQuery](../../models/components/pagepaginationquery.md)                             | :heavy_minus_sign:                                                                                            | Determines which page of the collection to retrieve.                                                          |
+| `filter`                                                                                                      | [*operations.ListSubscriptionsQueryParamFilter](../../models/operations/listsubscriptionsqueryparamfilter.md) | :heavy_minus_sign:                                                                                            | Filter subscriptions.                                                                                         |
+| `opts`                                                                                                        | [][operations.Option](../../models/operations/option.md)                                                      | :heavy_minus_sign:                                                                                            | The options for this request.                                                                                 |
 
 ### Response
 
@@ -154,7 +154,7 @@ Get subscription
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-subscription" method="get" path="/openmeter/subscriptions/{subscriptionId}" -->
+<!-- UsageSnippet language="go" operationID="get-subscription" method="get" path="/v3/openmeter/subscriptions/{subscriptionId}" -->
 ```go
 package main
 
@@ -213,7 +213,7 @@ Will result in a scheduling conflict if there are other subscriptions scheduled 
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="cancel-subscription" method="post" path="/openmeter/subscriptions/{subscriptionId}/cancel" -->
+<!-- UsageSnippet language="go" operationID="cancel-subscription" method="post" path="/v3/openmeter/subscriptions/{subscriptionId}/cancel" -->
 ```go
 package main
 
@@ -278,7 +278,7 @@ Can be used for upgrades, downgrades, and plan changes.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="change-subscription" method="post" path="/openmeter/subscriptions/{subscriptionId}/change" -->
+<!-- UsageSnippet language="go" operationID="change-subscription" method="post" path="/v3/openmeter/subscriptions/{subscriptionId}/change" -->
 ```go
 package main
 
@@ -355,7 +355,7 @@ Unschedules the subscription cancelation.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="unschedule-cancelation" method="post" path="/openmeter/subscriptions/{subscriptionId}/unschedule-cancelation" -->
+<!-- UsageSnippet language="go" operationID="unschedule-cancelation" method="post" path="/v3/openmeter/subscriptions/{subscriptionId}/unschedule-cancelation" -->
 ```go
 package main
 

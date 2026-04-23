@@ -9,29 +9,29 @@ import (
 	"time"
 )
 
-// Mode of the checkout session.
+// BillingAppStripeCreateCheckoutSessionResultMode - Mode of the checkout session.
 //
 // Currently only "setup" mode is supported for collecting payment methods.
-type Mode string
+type BillingAppStripeCreateCheckoutSessionResultMode string
 
 const (
-	ModeSetup Mode = "setup"
+	BillingAppStripeCreateCheckoutSessionResultModeSetup BillingAppStripeCreateCheckoutSessionResultMode = "setup"
 )
 
-func (e Mode) ToPointer() *Mode {
+func (e BillingAppStripeCreateCheckoutSessionResultMode) ToPointer() *BillingAppStripeCreateCheckoutSessionResultMode {
 	return &e
 }
-func (e *Mode) UnmarshalJSON(data []byte) error {
+func (e *BillingAppStripeCreateCheckoutSessionResultMode) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "setup":
-		*e = Mode(v)
+		*e = BillingAppStripeCreateCheckoutSessionResultMode(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Mode: %v", v)
+		return fmt.Errorf("invalid value for BillingAppStripeCreateCheckoutSessionResultMode: %v", v)
 	}
 }
 
@@ -76,7 +76,7 @@ type BillingAppStripeCreateCheckoutSessionResult struct {
 	// Mode of the checkout session.
 	//
 	// Currently only "setup" mode is supported for collecting payment methods.
-	Mode Mode `json:"mode"`
+	Mode BillingAppStripeCreateCheckoutSessionResultMode `json:"mode"`
 	// The cancel URL where customers are redirected if they cancel.
 	CancelURL *string `json:"cancel_url,omitempty"`
 	// The success URL where customers are redirected after completion.
@@ -187,9 +187,9 @@ func (b *BillingAppStripeCreateCheckoutSessionResult) GetURL() *string {
 	return b.URL
 }
 
-func (b *BillingAppStripeCreateCheckoutSessionResult) GetMode() Mode {
+func (b *BillingAppStripeCreateCheckoutSessionResult) GetMode() BillingAppStripeCreateCheckoutSessionResultMode {
 	if b == nil {
-		return Mode("")
+		return BillingAppStripeCreateCheckoutSessionResultMode("")
 	}
 	return b.Mode
 }

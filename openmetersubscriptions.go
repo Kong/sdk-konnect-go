@@ -52,7 +52,7 @@ func (s *OpenMeterSubscriptions) CreateSubscription(ctx context.Context, request
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := url.JoinPath(baseURL, "/openmeter/subscriptions")
+	opURL, err := url.JoinPath(baseURL, "/v3/openmeter/subscriptions")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -349,7 +349,7 @@ func (s *OpenMeterSubscriptions) CreateSubscription(ctx context.Context, request
 }
 
 // ListSubscriptions - List subscriptions
-func (s *OpenMeterSubscriptions) ListSubscriptions(ctx context.Context, page *components.PagePaginationQuery, filter *operations.Filter, opts ...operations.Option) (*operations.ListSubscriptionsResponse, error) {
+func (s *OpenMeterSubscriptions) ListSubscriptions(ctx context.Context, page *components.PagePaginationQuery, filter *operations.ListSubscriptionsQueryParamFilter, opts ...operations.Option) (*operations.ListSubscriptionsResponse, error) {
 	request := operations.ListSubscriptionsRequest{
 		Page:   page,
 		Filter: filter,
@@ -373,7 +373,7 @@ func (s *OpenMeterSubscriptions) ListSubscriptions(ctx context.Context, page *co
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := url.JoinPath(baseURL, "/openmeter/subscriptions")
+	opURL, err := url.JoinPath(baseURL, "/v3/openmeter/subscriptions")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -669,7 +669,7 @@ func (s *OpenMeterSubscriptions) GetSubscription(ctx context.Context, subscripti
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/openmeter/subscriptions/{subscriptionId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/openmeter/subscriptions/{subscriptionId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -964,7 +964,7 @@ func (s *OpenMeterSubscriptions) CancelSubscription(ctx context.Context, subscri
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/openmeter/subscriptions/{subscriptionId}/cancel", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/openmeter/subscriptions/{subscriptionId}/cancel", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1287,7 +1287,7 @@ func (s *OpenMeterSubscriptions) ChangeSubscription(ctx context.Context, subscri
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/openmeter/subscriptions/{subscriptionId}/change", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/openmeter/subscriptions/{subscriptionId}/change", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1608,7 +1608,7 @@ func (s *OpenMeterSubscriptions) UnscheduleCancelation(ctx context.Context, subs
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/openmeter/subscriptions/{subscriptionId}/unschedule-cancelation", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/openmeter/subscriptions/{subscriptionId}/unschedule-cancelation", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

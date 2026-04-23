@@ -53,7 +53,7 @@ func (s *Meters) CreateMeter(ctx context.Context, request components.CreateMeter
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := url.JoinPath(baseURL, "/openmeter/meters")
+	opURL, err := url.JoinPath(baseURL, "/v3/openmeter/meters")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -332,7 +332,7 @@ func (s *Meters) ListMeters(ctx context.Context, page *components.PagePagination
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := url.JoinPath(baseURL, "/openmeter/meters")
+	opURL, err := url.JoinPath(baseURL, "/v3/openmeter/meters")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -608,7 +608,7 @@ func (s *Meters) GetMeter(ctx context.Context, meterID string, opts ...operation
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/openmeter/meters/{meterId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/openmeter/meters/{meterId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -901,7 +901,7 @@ func (s *Meters) DeleteMeter(ctx context.Context, meterID string, opts ...operat
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/openmeter/meters/{meterId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/openmeter/meters/{meterId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

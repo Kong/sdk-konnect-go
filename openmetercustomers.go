@@ -52,7 +52,7 @@ func (s *OpenMeterCustomers) CreateCustomer(ctx context.Context, request compone
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := url.JoinPath(baseURL, "/openmeter/customers")
+	opURL, err := url.JoinPath(baseURL, "/v3/openmeter/customers")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -326,7 +326,7 @@ func (s *OpenMeterCustomers) ListCustomers(ctx context.Context, request operatio
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := url.JoinPath(baseURL, "/openmeter/customers")
+	opURL, err := url.JoinPath(baseURL, "/v3/openmeter/customers")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -601,7 +601,7 @@ func (s *OpenMeterCustomers) GetCustomer(ctx context.Context, customerID string,
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/openmeter/customers/{customerId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/openmeter/customers/{customerId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -894,7 +894,7 @@ func (s *OpenMeterCustomers) UpsertCustomer(ctx context.Context, customerID stri
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/openmeter/customers/{customerId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/openmeter/customers/{customerId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1214,7 +1214,7 @@ func (s *OpenMeterCustomers) DeleteCustomer(ctx context.Context, customerID stri
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/openmeter/customers/{customerId}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/openmeter/customers/{customerId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1487,7 +1487,7 @@ func (s *OpenMeterCustomers) GetCustomerBilling(ctx context.Context, customerID 
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/openmeter/customers/{customerId}/billing", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/openmeter/customers/{customerId}/billing", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1780,7 +1780,7 @@ func (s *OpenMeterCustomers) UpdateCustomerBilling(ctx context.Context, customer
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/openmeter/customers/{customerId}/billing", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/openmeter/customers/{customerId}/billing", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -2101,7 +2101,7 @@ func (s *OpenMeterCustomers) UpdateCustomerBillingAppData(ctx context.Context, c
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/openmeter/customers/{customerId}/billing/app-data", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/openmeter/customers/{customerId}/billing/app-data", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -2431,7 +2431,7 @@ func (s *OpenMeterCustomers) CreateCustomerStripeCheckoutSession(ctx context.Con
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/openmeter/customers/{customerId}/billing/stripe/checkout-sessions", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/openmeter/customers/{customerId}/billing/stripe/checkout-sessions", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -2757,7 +2757,7 @@ func (s *OpenMeterCustomers) CreateCustomerStripePortalSession(ctx context.Conte
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/openmeter/customers/{customerId}/billing/stripe/portal-sessions", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v3/openmeter/customers/{customerId}/billing/stripe/portal-sessions", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}

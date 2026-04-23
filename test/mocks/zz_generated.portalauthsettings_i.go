@@ -128,6 +128,89 @@ func (_c *MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call) RunAndRet
 	return _c
 }
 
+// CreatePortalIdpTeamGroupMapping provides a mock function for the type MockPortalAuthSettingsSDK
+func (_mock *MockPortalAuthSettingsSDK) CreatePortalIdpTeamGroupMapping(ctx context.Context, request operations.CreatePortalIdpTeamGroupMappingRequest, opts ...operations.Option) (*operations.CreatePortalIdpTeamGroupMappingResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreatePortalIdpTeamGroupMapping")
+	}
+
+	var r0 *operations.CreatePortalIdpTeamGroupMappingResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreatePortalIdpTeamGroupMappingRequest, ...operations.Option) (*operations.CreatePortalIdpTeamGroupMappingResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.CreatePortalIdpTeamGroupMappingRequest, ...operations.Option) *operations.CreatePortalIdpTeamGroupMappingResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.CreatePortalIdpTeamGroupMappingResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.CreatePortalIdpTeamGroupMappingRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPortalAuthSettingsSDK_CreatePortalIdpTeamGroupMapping_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreatePortalIdpTeamGroupMapping'
+type MockPortalAuthSettingsSDK_CreatePortalIdpTeamGroupMapping_Call struct {
+	*mock.Call
+}
+
+// CreatePortalIdpTeamGroupMapping is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.CreatePortalIdpTeamGroupMappingRequest
+//   - opts ...operations.Option
+func (_e *MockPortalAuthSettingsSDK_Expecter) CreatePortalIdpTeamGroupMapping(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalAuthSettingsSDK_CreatePortalIdpTeamGroupMapping_Call {
+	return &MockPortalAuthSettingsSDK_CreatePortalIdpTeamGroupMapping_Call{Call: _e.mock.On("CreatePortalIdpTeamGroupMapping",
+		append([]interface{}{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPortalAuthSettingsSDK_CreatePortalIdpTeamGroupMapping_Call) Run(run func(ctx context.Context, request operations.CreatePortalIdpTeamGroupMappingRequest, opts ...operations.Option)) *MockPortalAuthSettingsSDK_CreatePortalIdpTeamGroupMapping_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.CreatePortalIdpTeamGroupMappingRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.CreatePortalIdpTeamGroupMappingRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPortalAuthSettingsSDK_CreatePortalIdpTeamGroupMapping_Call) Return(createPortalIdpTeamGroupMappingResponse *operations.CreatePortalIdpTeamGroupMappingResponse, err error) *MockPortalAuthSettingsSDK_CreatePortalIdpTeamGroupMapping_Call {
+	_c.Call.Return(createPortalIdpTeamGroupMappingResponse, err)
+	return _c
+}
+
+func (_c *MockPortalAuthSettingsSDK_CreatePortalIdpTeamGroupMapping_Call) RunAndReturn(run func(ctx context.Context, request operations.CreatePortalIdpTeamGroupMappingRequest, opts ...operations.Option) (*operations.CreatePortalIdpTeamGroupMappingResponse, error)) *MockPortalAuthSettingsSDK_CreatePortalIdpTeamGroupMapping_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeletePortalIdentityProvider provides a mock function for the type MockPortalAuthSettingsSDK
 func (_mock *MockPortalAuthSettingsSDK) DeletePortalIdentityProvider(ctx context.Context, portalID string, id string, opts ...operations.Option) (*operations.DeletePortalIdentityProviderResponse, error) {
 	var tmpRet mock.Arguments
@@ -213,6 +296,89 @@ func (_c *MockPortalAuthSettingsSDK_DeletePortalIdentityProvider_Call) Return(de
 }
 
 func (_c *MockPortalAuthSettingsSDK_DeletePortalIdentityProvider_Call) RunAndReturn(run func(ctx context.Context, portalID string, id string, opts ...operations.Option) (*operations.DeletePortalIdentityProviderResponse, error)) *MockPortalAuthSettingsSDK_DeletePortalIdentityProvider_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeletePortalIdpTeamGroupMapping provides a mock function for the type MockPortalAuthSettingsSDK
+func (_mock *MockPortalAuthSettingsSDK) DeletePortalIdpTeamGroupMapping(ctx context.Context, request operations.DeletePortalIdpTeamGroupMappingRequest, opts ...operations.Option) (*operations.DeletePortalIdpTeamGroupMappingResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeletePortalIdpTeamGroupMapping")
+	}
+
+	var r0 *operations.DeletePortalIdpTeamGroupMappingResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeletePortalIdpTeamGroupMappingRequest, ...operations.Option) (*operations.DeletePortalIdpTeamGroupMappingResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.DeletePortalIdpTeamGroupMappingRequest, ...operations.Option) *operations.DeletePortalIdpTeamGroupMappingResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.DeletePortalIdpTeamGroupMappingResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.DeletePortalIdpTeamGroupMappingRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPortalAuthSettingsSDK_DeletePortalIdpTeamGroupMapping_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeletePortalIdpTeamGroupMapping'
+type MockPortalAuthSettingsSDK_DeletePortalIdpTeamGroupMapping_Call struct {
+	*mock.Call
+}
+
+// DeletePortalIdpTeamGroupMapping is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.DeletePortalIdpTeamGroupMappingRequest
+//   - opts ...operations.Option
+func (_e *MockPortalAuthSettingsSDK_Expecter) DeletePortalIdpTeamGroupMapping(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalAuthSettingsSDK_DeletePortalIdpTeamGroupMapping_Call {
+	return &MockPortalAuthSettingsSDK_DeletePortalIdpTeamGroupMapping_Call{Call: _e.mock.On("DeletePortalIdpTeamGroupMapping",
+		append([]interface{}{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPortalAuthSettingsSDK_DeletePortalIdpTeamGroupMapping_Call) Run(run func(ctx context.Context, request operations.DeletePortalIdpTeamGroupMappingRequest, opts ...operations.Option)) *MockPortalAuthSettingsSDK_DeletePortalIdpTeamGroupMapping_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.DeletePortalIdpTeamGroupMappingRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.DeletePortalIdpTeamGroupMappingRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPortalAuthSettingsSDK_DeletePortalIdpTeamGroupMapping_Call) Return(deletePortalIdpTeamGroupMappingResponse *operations.DeletePortalIdpTeamGroupMappingResponse, err error) *MockPortalAuthSettingsSDK_DeletePortalIdpTeamGroupMapping_Call {
+	_c.Call.Return(deletePortalIdpTeamGroupMappingResponse, err)
+	return _c
+}
+
+func (_c *MockPortalAuthSettingsSDK_DeletePortalIdpTeamGroupMapping_Call) RunAndReturn(run func(ctx context.Context, request operations.DeletePortalIdpTeamGroupMappingRequest, opts ...operations.Option) (*operations.DeletePortalIdpTeamGroupMappingResponse, error)) *MockPortalAuthSettingsSDK_DeletePortalIdpTeamGroupMapping_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -474,6 +640,172 @@ func (_c *MockPortalAuthSettingsSDK_GetPortalIdentityProviders_Call) Return(getP
 }
 
 func (_c *MockPortalAuthSettingsSDK_GetPortalIdentityProviders_Call) RunAndReturn(run func(ctx context.Context, portalID string, filter *operations.GetPortalIdentityProvidersQueryParamFilter, opts ...operations.Option) (*operations.GetPortalIdentityProvidersResponse, error)) *MockPortalAuthSettingsSDK_GetPortalIdentityProviders_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetPortalIdpTeamGroupMapping provides a mock function for the type MockPortalAuthSettingsSDK
+func (_mock *MockPortalAuthSettingsSDK) GetPortalIdpTeamGroupMapping(ctx context.Context, request operations.GetPortalIdpTeamGroupMappingRequest, opts ...operations.Option) (*operations.GetPortalIdpTeamGroupMappingResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetPortalIdpTeamGroupMapping")
+	}
+
+	var r0 *operations.GetPortalIdpTeamGroupMappingResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetPortalIdpTeamGroupMappingRequest, ...operations.Option) (*operations.GetPortalIdpTeamGroupMappingResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.GetPortalIdpTeamGroupMappingRequest, ...operations.Option) *operations.GetPortalIdpTeamGroupMappingResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetPortalIdpTeamGroupMappingResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.GetPortalIdpTeamGroupMappingRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPortalAuthSettingsSDK_GetPortalIdpTeamGroupMapping_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPortalIdpTeamGroupMapping'
+type MockPortalAuthSettingsSDK_GetPortalIdpTeamGroupMapping_Call struct {
+	*mock.Call
+}
+
+// GetPortalIdpTeamGroupMapping is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.GetPortalIdpTeamGroupMappingRequest
+//   - opts ...operations.Option
+func (_e *MockPortalAuthSettingsSDK_Expecter) GetPortalIdpTeamGroupMapping(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalAuthSettingsSDK_GetPortalIdpTeamGroupMapping_Call {
+	return &MockPortalAuthSettingsSDK_GetPortalIdpTeamGroupMapping_Call{Call: _e.mock.On("GetPortalIdpTeamGroupMapping",
+		append([]interface{}{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPortalAuthSettingsSDK_GetPortalIdpTeamGroupMapping_Call) Run(run func(ctx context.Context, request operations.GetPortalIdpTeamGroupMappingRequest, opts ...operations.Option)) *MockPortalAuthSettingsSDK_GetPortalIdpTeamGroupMapping_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.GetPortalIdpTeamGroupMappingRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.GetPortalIdpTeamGroupMappingRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPortalAuthSettingsSDK_GetPortalIdpTeamGroupMapping_Call) Return(getPortalIdpTeamGroupMappingResponse *operations.GetPortalIdpTeamGroupMappingResponse, err error) *MockPortalAuthSettingsSDK_GetPortalIdpTeamGroupMapping_Call {
+	_c.Call.Return(getPortalIdpTeamGroupMappingResponse, err)
+	return _c
+}
+
+func (_c *MockPortalAuthSettingsSDK_GetPortalIdpTeamGroupMapping_Call) RunAndReturn(run func(ctx context.Context, request operations.GetPortalIdpTeamGroupMappingRequest, opts ...operations.Option) (*operations.GetPortalIdpTeamGroupMappingResponse, error)) *MockPortalAuthSettingsSDK_GetPortalIdpTeamGroupMapping_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListPortalIdpTeamGroupMappings provides a mock function for the type MockPortalAuthSettingsSDK
+func (_mock *MockPortalAuthSettingsSDK) ListPortalIdpTeamGroupMappings(ctx context.Context, request operations.ListPortalIdpTeamGroupMappingsRequest, opts ...operations.Option) (*operations.ListPortalIdpTeamGroupMappingsResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListPortalIdpTeamGroupMappings")
+	}
+
+	var r0 *operations.ListPortalIdpTeamGroupMappingsResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListPortalIdpTeamGroupMappingsRequest, ...operations.Option) (*operations.ListPortalIdpTeamGroupMappingsResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.ListPortalIdpTeamGroupMappingsRequest, ...operations.Option) *operations.ListPortalIdpTeamGroupMappingsResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.ListPortalIdpTeamGroupMappingsResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.ListPortalIdpTeamGroupMappingsRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPortalAuthSettingsSDK_ListPortalIdpTeamGroupMappings_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPortalIdpTeamGroupMappings'
+type MockPortalAuthSettingsSDK_ListPortalIdpTeamGroupMappings_Call struct {
+	*mock.Call
+}
+
+// ListPortalIdpTeamGroupMappings is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.ListPortalIdpTeamGroupMappingsRequest
+//   - opts ...operations.Option
+func (_e *MockPortalAuthSettingsSDK_Expecter) ListPortalIdpTeamGroupMappings(ctx interface{}, request interface{}, opts ...interface{}) *MockPortalAuthSettingsSDK_ListPortalIdpTeamGroupMappings_Call {
+	return &MockPortalAuthSettingsSDK_ListPortalIdpTeamGroupMappings_Call{Call: _e.mock.On("ListPortalIdpTeamGroupMappings",
+		append([]interface{}{ctx, request}, opts...)...)}
+}
+
+func (_c *MockPortalAuthSettingsSDK_ListPortalIdpTeamGroupMappings_Call) Run(run func(ctx context.Context, request operations.ListPortalIdpTeamGroupMappingsRequest, opts ...operations.Option)) *MockPortalAuthSettingsSDK_ListPortalIdpTeamGroupMappings_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.ListPortalIdpTeamGroupMappingsRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.ListPortalIdpTeamGroupMappingsRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPortalAuthSettingsSDK_ListPortalIdpTeamGroupMappings_Call) Return(listPortalIdpTeamGroupMappingsResponse *operations.ListPortalIdpTeamGroupMappingsResponse, err error) *MockPortalAuthSettingsSDK_ListPortalIdpTeamGroupMappings_Call {
+	_c.Call.Return(listPortalIdpTeamGroupMappingsResponse, err)
+	return _c
+}
+
+func (_c *MockPortalAuthSettingsSDK_ListPortalIdpTeamGroupMappings_Call) RunAndReturn(run func(ctx context.Context, request operations.ListPortalIdpTeamGroupMappingsRequest, opts ...operations.Option) (*operations.ListPortalIdpTeamGroupMappingsResponse, error)) *MockPortalAuthSettingsSDK_ListPortalIdpTeamGroupMappings_Call {
 	_c.Call.Return(run)
 	return _c
 }

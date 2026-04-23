@@ -29,7 +29,7 @@ type BillingApp struct {
 func CreateBillingAppStripe(stripe BillingAppStripe) BillingApp {
 	typ := BillingAppTypeStripe
 
-	typStr := Type(typ)
+	typStr := BillingAppStripeType(typ)
 	stripe.Type = typStr
 
 	return BillingApp{

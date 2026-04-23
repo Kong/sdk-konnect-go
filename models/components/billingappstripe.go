@@ -9,45 +9,45 @@ import (
 	"time"
 )
 
-// Type - The app type.
-type Type string
+// BillingAppStripeType - The app type.
+type BillingAppStripeType string
 
 const (
-	TypeStripe Type = "stripe"
+	BillingAppStripeTypeStripe BillingAppStripeType = "stripe"
 )
 
-func (e Type) ToPointer() *Type {
+func (e BillingAppStripeType) ToPointer() *BillingAppStripeType {
 	return &e
 }
-func (e *Type) UnmarshalJSON(data []byte) error {
+func (e *BillingAppStripeType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "stripe":
-		*e = Type(v)
+		*e = BillingAppStripeType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Type: %v", v)
+		return fmt.Errorf("invalid value for BillingAppStripeType: %v", v)
 	}
 }
 
-// BillingAppStripeType - Type of the app.
-type BillingAppStripeType string
+// BillingAppStripeDefinitionType - Type of the app.
+type BillingAppStripeDefinitionType string
 
 const (
-	BillingAppStripeTypeSandbox           BillingAppStripeType = "sandbox"
-	BillingAppStripeTypeStripe            BillingAppStripeType = "stripe"
-	BillingAppStripeTypeExternalInvoicing BillingAppStripeType = "external_invoicing"
+	BillingAppStripeDefinitionTypeSandbox           BillingAppStripeDefinitionType = "sandbox"
+	BillingAppStripeDefinitionTypeStripe            BillingAppStripeDefinitionType = "stripe"
+	BillingAppStripeDefinitionTypeExternalInvoicing BillingAppStripeDefinitionType = "external_invoicing"
 )
 
-func (e BillingAppStripeType) ToPointer() *BillingAppStripeType {
+func (e BillingAppStripeDefinitionType) ToPointer() *BillingAppStripeDefinitionType {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *BillingAppStripeType) IsExact() bool {
+func (e *BillingAppStripeDefinitionType) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "sandbox", "stripe", "external_invoicing":
@@ -57,62 +57,62 @@ func (e *BillingAppStripeType) IsExact() bool {
 	return false
 }
 
-// Definition - The app catalog definition that this installed app is based on.
-type Definition struct {
+// BillingAppStripeDefinition - The app catalog definition that this installed app is based on.
+type BillingAppStripeDefinition struct {
 	// Type of the app.
-	Type BillingAppStripeType `json:"type"`
+	Type BillingAppStripeDefinitionType `json:"type"`
 	// Name of the app.
 	Name string `json:"name"`
 	// Description of the app.
 	Description string `json:"description"`
 }
 
-func (d Definition) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(d, "", false)
+func (b BillingAppStripeDefinition) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(b, "", false)
 }
 
-func (d *Definition) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "name", "description"}); err != nil {
+func (b *BillingAppStripeDefinition) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &b, "", false, []string{"type", "name", "description"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (d *Definition) GetType() BillingAppStripeType {
-	if d == nil {
-		return BillingAppStripeType("")
+func (b *BillingAppStripeDefinition) GetType() BillingAppStripeDefinitionType {
+	if b == nil {
+		return BillingAppStripeDefinitionType("")
 	}
-	return d.Type
+	return b.Type
 }
 
-func (d *Definition) GetName() string {
-	if d == nil {
+func (b *BillingAppStripeDefinition) GetName() string {
+	if b == nil {
 		return ""
 	}
-	return d.Name
+	return b.Name
 }
 
-func (d *Definition) GetDescription() string {
-	if d == nil {
+func (b *BillingAppStripeDefinition) GetDescription() string {
+	if b == nil {
 		return ""
 	}
-	return d.Description
+	return b.Description
 }
 
-// Status of the app connection.
-type Status string
+// BillingAppStripeStatus - Status of the app connection.
+type BillingAppStripeStatus string
 
 const (
-	StatusReady        Status = "ready"
-	StatusUnauthorized Status = "unauthorized"
+	BillingAppStripeStatusReady        BillingAppStripeStatus = "ready"
+	BillingAppStripeStatusUnauthorized BillingAppStripeStatus = "unauthorized"
 )
 
-func (e Status) ToPointer() *Status {
+func (e BillingAppStripeStatus) ToPointer() *BillingAppStripeStatus {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *Status) IsExact() bool {
+func (e *BillingAppStripeStatus) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "ready", "unauthorized":
@@ -146,11 +146,11 @@ type BillingAppStripe struct {
 	// An ISO-8601 timestamp representation of entity deletion date.
 	DeletedAt *time.Time `json:"deleted_at,omitempty"`
 	// The app type.
-	Type Type `json:"type"`
+	Type BillingAppStripeType `json:"type"`
 	// The app catalog definition that this installed app is based on.
-	Definition Definition `json:"definition"`
+	Definition BillingAppStripeDefinition `json:"definition"`
 	// Status of the app connection.
-	Status Status `json:"status"`
+	Status BillingAppStripeStatus `json:"status"`
 	// The Stripe account ID associated with the connected Stripe account.
 	AccountID string `json:"account_id"`
 	// Indicates whether the app is connected to a live Stripe account.
@@ -219,23 +219,23 @@ func (b *BillingAppStripe) GetDeletedAt() *time.Time {
 	return b.DeletedAt
 }
 
-func (b *BillingAppStripe) GetType() Type {
+func (b *BillingAppStripe) GetType() BillingAppStripeType {
 	if b == nil {
-		return Type("")
+		return BillingAppStripeType("")
 	}
 	return b.Type
 }
 
-func (b *BillingAppStripe) GetDefinition() Definition {
+func (b *BillingAppStripe) GetDefinition() BillingAppStripeDefinition {
 	if b == nil {
-		return Definition{}
+		return BillingAppStripeDefinition{}
 	}
 	return b.Definition
 }
 
-func (b *BillingAppStripe) GetStatus() Status {
+func (b *BillingAppStripe) GetStatus() BillingAppStripeStatus {
 	if b == nil {
-		return Status("")
+		return BillingAppStripeStatus("")
 	}
 	return b.Status
 }

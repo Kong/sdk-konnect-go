@@ -14,7 +14,7 @@ Ingests an event or batch of events following the CloudEvents specification.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="ingest-metering-events" method="post" path="/openmeter/events" -->
+<!-- UsageSnippet language="go" operationID="ingest-metering-events" method="post" path="/v3/openmeter/events" -->
 ```go
 package main
 

@@ -15,7 +15,7 @@ List installed apps.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="list-apps" method="get" path="/openmeter/apps" -->
+<!-- UsageSnippet language="go" operationID="list-apps" method="get" path="/v3/openmeter/apps" -->
 ```go
 package main
 
@@ -72,7 +72,7 @@ Get an installed app.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-app" method="get" path="/openmeter/apps/{appId}" -->
+<!-- UsageSnippet language="go" operationID="get-app" method="get" path="/v3/openmeter/apps/{appId}" -->
 ```go
 package main
 
