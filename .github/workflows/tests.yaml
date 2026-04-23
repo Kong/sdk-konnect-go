@@ -45,7 +45,7 @@ jobs:
     - run: echo "GO_CACHE_KEY_2=go-unittests-${{ runner.os }}-${{ runner.arch }}-go" >> $GITHUB_ENV
 
     - name: Go cache
-      uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7
+      uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae
       with:
         path: |
           ${{ env.GO_MOD_CACHE }}
@@ -84,7 +84,7 @@ jobs:
     - run: echo "GO_CACHE_KEY_2=go-integrationtests-${{ runner.os }}-${{ runner.arch }}-go" >> $GITHUB_ENV
 
     - name: Go cache
-      uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7
+      uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae
       with:
         path: |
           ${{ env.GO_MOD_CACHE }}
@@ -121,7 +121,7 @@ jobs:
     - run: echo "GO_CACHE_KEY_2=go-fieldtests-${{ runner.os }}-${{ runner.arch }}-go" >> $GITHUB_ENV
 
     - name: Go cache
-      uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7
+      uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae
       with:
         path: |
           ${{ env.GO_MOD_CACHE }}
