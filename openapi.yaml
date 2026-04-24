@@ -4893,6 +4893,94 @@ paths:
           $ref: '#/components/responses/ServiceUnavailable'
       tags:
         - Control Planes
+  '/v2/control-planes/{controlPlaneId}':
+    parameters:
+      - name: controlPlaneId
+        in: path
+        description: The control plane ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+          example: d32d905a-ed33-46a3-a093-d8f536af9a8a
+    get:
+      x-speakeasy-entity-operation:
+        terraform-resource: GatewayControlPlane#read
+        terraform-datasource: null
+      operationId: get-control-plane
+      summary: Get a Control Plane
+      description: Returns information about an individual control plane.
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveControlPlaneResponse'
+        '400':
+          $ref: '#/components/responses/ControlPlanesBadRequest'
+        '401':
+          $ref: '#/components/responses/ControlPlaneUnauthenticated'
+        '403':
+          $ref: '#/components/responses/ControlPlanePermissionDenied'
+        '404':
+          $ref: '#/components/responses/ControlPlaneNotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      tags:
+        - Control Planes
+    patch:
+      x-speakeasy-entity-operation:
+        terraform-resource: GatewayControlPlane#update
+        terraform-datasource: null
+      operationId: update-control-plane
+      summary: Update Control Plane
+      description: Update an individual control plane.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateControlPlaneRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/UpdateControlPlaneResponse'
+        '400':
+          $ref: '#/components/responses/ControlPlanesBadRequest'
+        '401':
+          $ref: '#/components/responses/ControlPlaneUnauthenticated'
+        '403':
+          $ref: '#/components/responses/ControlPlanePermissionDenied'
+        '404':
+          $ref: '#/components/responses/ControlPlaneNotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      tags:
+        - Control Planes
+    delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: GatewayControlPlane#delete
+        terraform-datasource: null
+      operationId: delete-control-plane
+      summary: Delete Control Plane
+      description: Delete an individual control plane.
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/ControlPlanesBadRequest'
+        '401':
+          $ref: '#/components/responses/ControlPlaneUnauthenticated'
+        '403':
+          $ref: '#/components/responses/ControlPlanePermissionDenied'
+        '404':
+          $ref: '#/components/responses/ControlPlaneNotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      tags:
+        - Control Planes
   '/v2/control-planes/{controlPlaneId}/config-stores':
     get:
       operationId: list-config-stores
@@ -9339,6 +9427,187 @@ paths:
         - DP Nodes
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
+  '/v2/control-planes/{controlPlaneId}/group-member-status':
+    parameters:
+      - name: controlPlaneId
+        in: path
+        description: ID of a control plane
+        required: true
+        schema:
+          type: string
+    get:
+      operationId: get-control-planes-id-group-member-status
+      summary: Get Control Plane Group Member Status
+      description: Determines the group membership status of a control plane.
+      responses:
+        '200':
+          $ref: '#/components/responses/GetGroupMemberStatus'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      tags:
+        - Control Plane Groups
+  '/v2/control-planes/{controlPlaneId}/group-memberships':
+    parameters:
+      - name: controlPlaneId
+        in: path
+        description: ID of a control plane group
+        required: true
+        schema:
+          type: string
+    get:
+      operationId: get-control-planes-id-group-memberships
+      summary: List Control Plane Group Memberships
+      description: Returns an array of control planes that are a member of this control plane group.
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageAfter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListGroupMemberships'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      tags:
+        - Control Plane Groups
+    put:
+      operationId: put-control-planes-id-group-memberships
+      summary: Upsert Control Plane Group Members
+      description: Adds one or more control planes as a member of a control plane group.
+      requestBody:
+        $ref: '#/components/requestBodies/GroupMembershipUpsert'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      tags:
+        - Control Plane Groups
+  '/v2/control-planes/{controlPlaneId}/group-memberships/add':
+    parameters:
+      - name: controlPlaneId
+        in: path
+        description: ID of a control plane group
+        required: true
+        schema:
+          type: string
+    post:
+      x-speakeasy-entity-operation:
+        terraform-resource: GatewayControlPlaneMembership#create
+        terraform-datasource: null
+      operationId: post-control-planes-id-group-memberships-add
+      summary: Add Control Plane Group Members
+      description: Adds one or more control planes as a member of a control plane group.
+      requestBody:
+        $ref: '#/components/requestBodies/GroupMembershipAdd'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      tags:
+        - Control Plane Groups
+  '/v2/control-planes/{controlPlaneId}/group-memberships/remove':
+    parameters:
+      - name: controlPlaneId
+        in: path
+        description: ID of a control plane group
+        required: true
+        schema:
+          type: string
+    post:
+      x-speakeasy-entity-operation:
+        terraform-resource: GatewayControlPlaneMembership#delete
+        terraform-datasource: null
+      operationId: post-control-planes-id-group-memberships-remove
+      summary: Remove Control Plane Group Members
+      description: Removes one or more control planes from the members of a control plane group.
+      requestBody:
+        $ref: '#/components/requestBodies/GroupMembershipRemove'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      tags:
+        - Control Plane Groups
+  '/v2/control-planes/{controlPlaneId}/group-status':
+    parameters:
+      - name: controlPlaneId
+        in: path
+        description: ID of a control plane group
+        required: true
+        schema:
+          type: string
+    get:
+      operationId: get-control-planes-id-group-status
+      summary: Get Control Plane Group Status
+      description: 'Returns the status of a control plane group, including existing conflicts.'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetGroupStatus'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      tags:
+        - Control Plane Groups
   '/v2/control-planes/{controlPlaneId}/nodes':
     get:
       operationId: list-dataplane-nodes
@@ -9394,275 +9663,6 @@ paths:
         - DP Nodes
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
-  '/v2/control-planes/{id}':
-    parameters:
-      - name: id
-        in: path
-        description: The control plane ID
-        required: true
-        schema:
-          type: string
-          format: uuid
-          example: d32d905a-ed33-46a3-a093-d8f536af9a8a
-    get:
-      x-speakeasy-entity-operation:
-        terraform-resource: GatewayControlPlane#read
-        terraform-datasource: null
-      operationId: get-control-plane
-      summary: Get a Control Plane
-      description: Returns information about an individual control plane.
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveControlPlaneResponse'
-        '400':
-          $ref: '#/components/responses/ControlPlanesBadRequest'
-        '401':
-          $ref: '#/components/responses/ControlPlaneUnauthenticated'
-        '403':
-          $ref: '#/components/responses/ControlPlanePermissionDenied'
-        '404':
-          $ref: '#/components/responses/ControlPlaneNotFound'
-        '500':
-          $ref: '#/components/responses/Internal'
-        '503':
-          $ref: '#/components/responses/ServiceUnavailable'
-      tags:
-        - Control Planes
-    patch:
-      x-speakeasy-entity-operation:
-        terraform-resource: GatewayControlPlane#update
-        terraform-datasource: null
-      operationId: update-control-plane
-      summary: Update Control Plane
-      description: Update an individual control plane.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateControlPlaneRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateControlPlaneResponse'
-        '400':
-          $ref: '#/components/responses/ControlPlanesBadRequest'
-        '401':
-          $ref: '#/components/responses/ControlPlaneUnauthenticated'
-        '403':
-          $ref: '#/components/responses/ControlPlanePermissionDenied'
-        '404':
-          $ref: '#/components/responses/ControlPlaneNotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-        '503':
-          $ref: '#/components/responses/ServiceUnavailable'
-      tags:
-        - Control Planes
-    delete:
-      x-speakeasy-entity-operation:
-        terraform-resource: GatewayControlPlane#delete
-        terraform-datasource: null
-      operationId: delete-control-plane
-      summary: Delete Control Plane
-      description: Delete an individual control plane.
-      responses:
-        '204':
-          description: No Content
-        '400':
-          $ref: '#/components/responses/ControlPlanesBadRequest'
-        '401':
-          $ref: '#/components/responses/ControlPlaneUnauthenticated'
-        '403':
-          $ref: '#/components/responses/ControlPlanePermissionDenied'
-        '404':
-          $ref: '#/components/responses/ControlPlaneNotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-        '503':
-          $ref: '#/components/responses/ServiceUnavailable'
-      tags:
-        - Control Planes
-  '/v2/control-planes/{id}/group-member-status':
-    parameters:
-      - name: id
-        in: path
-        description: ID of a control plane
-        required: true
-        schema:
-          type: string
-    get:
-      operationId: get-control-planes-id-group-member-status
-      summary: Get Control Plane Group Member Status
-      description: Determines the group membership status of a control plane.
-      responses:
-        '200':
-          $ref: '#/components/responses/GetGroupMemberStatus'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/Internal'
-        '503':
-          $ref: '#/components/responses/ServiceUnavailable'
-      tags:
-        - Control Plane Groups
-  '/v2/control-planes/{id}/group-memberships':
-    parameters:
-      - name: id
-        in: path
-        description: ID of a control plane group
-        required: true
-        schema:
-          type: string
-    get:
-      operationId: get-control-planes-id-group-memberships
-      summary: List Control Plane Group Memberships
-      description: Returns an array of control planes that are a member of this control plane group.
-      parameters:
-        - $ref: '#/components/parameters/PageSize'
-        - $ref: '#/components/parameters/PageAfter'
-      responses:
-        '200':
-          $ref: '#/components/responses/ListGroupMemberships'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/Internal'
-        '503':
-          $ref: '#/components/responses/ServiceUnavailable'
-      tags:
-        - Control Plane Groups
-    put:
-      operationId: put-control-planes-id-group-memberships
-      summary: Upsert Control Plane Group Members
-      description: Adds one or more control planes as a member of a control plane group.
-      requestBody:
-        $ref: '#/components/requestBodies/GroupMembershipUpsert'
-      responses:
-        '204':
-          description: No Content
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/Internal'
-        '503':
-          $ref: '#/components/responses/ServiceUnavailable'
-      tags:
-        - Control Plane Groups
-  '/v2/control-planes/{id}/group-memberships/add':
-    parameters:
-      - name: id
-        in: path
-        description: ID of a control plane group
-        required: true
-        schema:
-          type: string
-    post:
-      x-speakeasy-entity-operation:
-        terraform-resource: GatewayControlPlaneMembership#create
-        terraform-datasource: null
-      operationId: post-control-planes-id-group-memberships-add
-      summary: Add Control Plane Group Members
-      description: Adds one or more control planes as a member of a control plane group.
-      requestBody:
-        $ref: '#/components/requestBodies/GroupMembershipAdd'
-      responses:
-        '204':
-          description: No Content
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/Internal'
-        '503':
-          $ref: '#/components/responses/ServiceUnavailable'
-      tags:
-        - Control Plane Groups
-  '/v2/control-planes/{id}/group-memberships/remove':
-    parameters:
-      - name: id
-        in: path
-        description: ID of a control plane group
-        required: true
-        schema:
-          type: string
-    post:
-      x-speakeasy-entity-operation:
-        terraform-resource: GatewayControlPlaneMembership#delete
-        terraform-datasource: null
-      operationId: post-control-planes-id-group-memberships-remove
-      summary: Remove Control Plane Group Members
-      description: Removes one or more control planes from the members of a control plane group.
-      requestBody:
-        $ref: '#/components/requestBodies/GroupMembershipRemove'
-      responses:
-        '204':
-          description: No Content
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/Internal'
-        '503':
-          $ref: '#/components/responses/ServiceUnavailable'
-      tags:
-        - Control Plane Groups
-  '/v2/control-planes/{id}/group-status':
-    parameters:
-      - name: id
-        in: path
-        description: ID of a control plane group
-        required: true
-        schema:
-          type: string
-    get:
-      operationId: get-control-planes-id-group-status
-      summary: Get Control Plane Group Status
-      description: 'Returns the status of a control plane group, including existing conflicts.'
-      responses:
-        '200':
-          $ref: '#/components/responses/GetGroupStatus'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/Internal'
-        '503':
-          $ref: '#/components/responses/ServiceUnavailable'
-      tags:
-        - Control Plane Groups
   /v2/dcr-providers:
     post:
       operationId: create-dcr-provider
@@ -43381,6 +43381,8 @@ components:
                   - Viewer
                   - Registration Approver
                   - Content Editor
+                  - Add On Admin
+                  - Add On Viewer
                 x-speakeasy-unknown-values: allow
               entity_id:
                 description: The ID of the entity.
@@ -43392,6 +43394,7 @@ components:
                 type: string
                 example: Control Planes
                 enum:
+                  - Add Ons
                   - APIs
                   - API Products
                   - Application Auth Strategies
