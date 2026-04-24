@@ -209,12 +209,15 @@ TYPES_TO_MOCK := \
 	Portals \
 	PortalAuthSettings \
 	PortalCustomDomains \
+	PortalCustomization \
 	PortalIntegrations \
+	PortalsIPAllowList \
 	PortalDevelopers \
 	PortalEmails \
 	PortalTeamMembership \
 	PortalTeamRoles \
 	PortalTeams \
+	PortalPages \
 	Routes \
 	Services \
 	SNIs \
@@ -225,11 +228,13 @@ TYPES_TO_MOCK := \
 .PHONY: generate.interfaces
 generate.interfaces: ifacemaker
 	@$(foreach s, $(TYPES_TO_MOCK), \
-		$(MAKE) _generate.ifacemaker STRUCT=$(s);)
+		rm -f $(shell echo $(s) | tr 'A-Z' 'a-z')_i.go; \
+		$(MAKE) _generate.ifacemaker STRUCT=$(s) || exit 1;)
 
 # https://github.com/vektra/mockery/issues/803#issuecomment-2287198024
 .PHONY: generate.mocks
 generate.mocks: mockery
+	rm -f test/mocks/zz_generated*.go
 	GODEBUG=gotypesalias=0 $(MOCKERY)
 
 # TYPES_TO_TEST_FIELDS is a list of types in models/components/
