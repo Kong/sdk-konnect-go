@@ -200,6 +200,7 @@ TYPES_TO_MOCK := \
 	DPCertificates \
 	EventGatewayDataPlaneCertificates \
 	EventGateways \
+	EventGatewayListeners \
 	HMACAuthCredentials \
 	JWTs \
 	Keys \
