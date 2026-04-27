@@ -9,16 +9,16 @@ import (
 
 type PostControlPlanesIDGroupMembershipsAddRequest struct {
 	// ID of a control plane group
-	ID string `pathParam:"style=simple,explode=false,name=id"`
+	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Request body for adding a list of child control planes to a control plane group membership.
 	GroupMembership *components.GroupMembership `request:"mediaType=application/json"`
 }
 
-func (p *PostControlPlanesIDGroupMembershipsAddRequest) GetID() string {
+func (p *PostControlPlanesIDGroupMembershipsAddRequest) GetControlPlaneID() string {
 	if p == nil {
 		return ""
 	}
-	return p.ID
+	return p.ControlPlaneID
 }
 
 func (p *PostControlPlanesIDGroupMembershipsAddRequest) GetGroupMembership() *components.GroupMembership {

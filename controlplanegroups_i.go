@@ -13,20 +13,20 @@ import (
 type ControlPlaneGroupsSDK interface {
 	// GetControlPlanesIDGroupMemberStatus - Get Control Plane Group Member Status
 	// Determines the group membership status of a control plane.
-	GetControlPlanesIDGroupMemberStatus(ctx context.Context, id string, opts ...operations.Option) (*operations.GetControlPlanesIDGroupMemberStatusResponse, error)
+	GetControlPlanesIDGroupMemberStatus(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlanesIDGroupMemberStatusResponse, error)
 	// GetControlPlanesIDGroupMemberships - List Control Plane Group Memberships
 	// Returns an array of control planes that are a member of this control plane group.
 	GetControlPlanesIDGroupMemberships(ctx context.Context, request operations.GetControlPlanesIDGroupMembershipsRequest, opts ...operations.Option) (*operations.GetControlPlanesIDGroupMembershipsResponse, error)
 	// PutControlPlanesIDGroupMemberships - Upsert Control Plane Group Members
 	// Adds one or more control planes as a member of a control plane group.
-	PutControlPlanesIDGroupMemberships(ctx context.Context, id string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PutControlPlanesIDGroupMembershipsResponse, error)
+	PutControlPlanesIDGroupMemberships(ctx context.Context, controlPlaneID string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PutControlPlanesIDGroupMembershipsResponse, error)
 	// PostControlPlanesIDGroupMembershipsAdd - Add Control Plane Group Members
 	// Adds one or more control planes as a member of a control plane group.
-	PostControlPlanesIDGroupMembershipsAdd(ctx context.Context, id string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PostControlPlanesIDGroupMembershipsAddResponse, error)
+	PostControlPlanesIDGroupMembershipsAdd(ctx context.Context, controlPlaneID string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PostControlPlanesIDGroupMembershipsAddResponse, error)
 	// PostControlPlanesIDGroupMembershipsRemove - Remove Control Plane Group Members
 	// Removes one or more control planes from the members of a control plane group.
-	PostControlPlanesIDGroupMembershipsRemove(ctx context.Context, id string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PostControlPlanesIDGroupMembershipsRemoveResponse, error)
+	PostControlPlanesIDGroupMembershipsRemove(ctx context.Context, controlPlaneID string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PostControlPlanesIDGroupMembershipsRemoveResponse, error)
 	// GetControlPlanesIDGroupStatus - Get Control Plane Group Status
 	// Returns the status of a control plane group, including existing conflicts.
-	GetControlPlanesIDGroupStatus(ctx context.Context, id string, opts ...operations.Option) (*operations.GetControlPlanesIDGroupStatusResponse, error)
+	GetControlPlanesIDGroupStatus(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlanesIDGroupStatusResponse, error)
 }

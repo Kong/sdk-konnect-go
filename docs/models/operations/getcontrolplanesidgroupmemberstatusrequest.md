@@ -5,4 +5,4 @@
 
 | Field                 | Type                  | Required              | Description           |
 | --------------------- | --------------------- | --------------------- | --------------------- |
-| `ID`                  | `string`              | :heavy_check_mark:    | ID of a control plane |
+| `ControlPlaneID`      | `string`              | :heavy_check_mark:    | ID of a control plane |

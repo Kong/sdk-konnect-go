@@ -123,12 +123,12 @@ func (_c *MockControlPlanesSDK_CreateControlPlane_Call) RunAndReturn(run func(ct
 }
 
 // DeleteControlPlane provides a mock function for the type MockControlPlanesSDK
-func (_mock *MockControlPlanesSDK) DeleteControlPlane(ctx context.Context, id string, opts ...operations.Option) (*operations.DeleteControlPlaneResponse, error) {
+func (_mock *MockControlPlanesSDK) DeleteControlPlane(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.DeleteControlPlaneResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, id, opts)
+		tmpRet = _mock.Called(ctx, controlPlaneID, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, id)
+		tmpRet = _mock.Called(ctx, controlPlaneID)
 	}
 	ret := tmpRet
 
@@ -139,17 +139,17 @@ func (_mock *MockControlPlanesSDK) DeleteControlPlane(ctx context.Context, id st
 	var r0 *operations.DeleteControlPlaneResponse
 	var r1 error
 	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.DeleteControlPlaneResponse, error)); ok {
-		return returnFunc(ctx, id, opts...)
+		return returnFunc(ctx, controlPlaneID, opts...)
 	}
 	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.DeleteControlPlaneResponse); ok {
-		r0 = returnFunc(ctx, id, opts...)
+		r0 = returnFunc(ctx, controlPlaneID, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.DeleteControlPlaneResponse)
 		}
 	}
 	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, id, opts...)
+		r1 = returnFunc(ctx, controlPlaneID, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -163,14 +163,14 @@ type MockControlPlanesSDK_DeleteControlPlane_Call struct {
 
 // DeleteControlPlane is a helper method to define mock.On call
 //   - ctx context.Context
-//   - id string
+//   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockControlPlanesSDK_Expecter) DeleteControlPlane(ctx interface{}, id interface{}, opts ...interface{}) *MockControlPlanesSDK_DeleteControlPlane_Call {
+func (_e *MockControlPlanesSDK_Expecter) DeleteControlPlane(ctx interface{}, controlPlaneID interface{}, opts ...interface{}) *MockControlPlanesSDK_DeleteControlPlane_Call {
 	return &MockControlPlanesSDK_DeleteControlPlane_Call{Call: _e.mock.On("DeleteControlPlane",
-		append([]interface{}{ctx, id}, opts...)...)}
+		append([]interface{}{ctx, controlPlaneID}, opts...)...)}
 }
 
-func (_c *MockControlPlanesSDK_DeleteControlPlane_Call) Run(run func(ctx context.Context, id string, opts ...operations.Option)) *MockControlPlanesSDK_DeleteControlPlane_Call {
+func (_c *MockControlPlanesSDK_DeleteControlPlane_Call) Run(run func(ctx context.Context, controlPlaneID string, opts ...operations.Option)) *MockControlPlanesSDK_DeleteControlPlane_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -200,18 +200,18 @@ func (_c *MockControlPlanesSDK_DeleteControlPlane_Call) Return(deleteControlPlan
 	return _c
 }
 
-func (_c *MockControlPlanesSDK_DeleteControlPlane_Call) RunAndReturn(run func(ctx context.Context, id string, opts ...operations.Option) (*operations.DeleteControlPlaneResponse, error)) *MockControlPlanesSDK_DeleteControlPlane_Call {
+func (_c *MockControlPlanesSDK_DeleteControlPlane_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.DeleteControlPlaneResponse, error)) *MockControlPlanesSDK_DeleteControlPlane_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // GetControlPlane provides a mock function for the type MockControlPlanesSDK
-func (_mock *MockControlPlanesSDK) GetControlPlane(ctx context.Context, id string, opts ...operations.Option) (*operations.GetControlPlaneResponse, error) {
+func (_mock *MockControlPlanesSDK) GetControlPlane(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlaneResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, id, opts)
+		tmpRet = _mock.Called(ctx, controlPlaneID, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, id)
+		tmpRet = _mock.Called(ctx, controlPlaneID)
 	}
 	ret := tmpRet
 
@@ -222,17 +222,17 @@ func (_mock *MockControlPlanesSDK) GetControlPlane(ctx context.Context, id strin
 	var r0 *operations.GetControlPlaneResponse
 	var r1 error
 	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.GetControlPlaneResponse, error)); ok {
-		return returnFunc(ctx, id, opts...)
+		return returnFunc(ctx, controlPlaneID, opts...)
 	}
 	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.GetControlPlaneResponse); ok {
-		r0 = returnFunc(ctx, id, opts...)
+		r0 = returnFunc(ctx, controlPlaneID, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.GetControlPlaneResponse)
 		}
 	}
 	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, id, opts...)
+		r1 = returnFunc(ctx, controlPlaneID, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -246,14 +246,14 @@ type MockControlPlanesSDK_GetControlPlane_Call struct {
 
 // GetControlPlane is a helper method to define mock.On call
 //   - ctx context.Context
-//   - id string
+//   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockControlPlanesSDK_Expecter) GetControlPlane(ctx interface{}, id interface{}, opts ...interface{}) *MockControlPlanesSDK_GetControlPlane_Call {
+func (_e *MockControlPlanesSDK_Expecter) GetControlPlane(ctx interface{}, controlPlaneID interface{}, opts ...interface{}) *MockControlPlanesSDK_GetControlPlane_Call {
 	return &MockControlPlanesSDK_GetControlPlane_Call{Call: _e.mock.On("GetControlPlane",
-		append([]interface{}{ctx, id}, opts...)...)}
+		append([]interface{}{ctx, controlPlaneID}, opts...)...)}
 }
 
-func (_c *MockControlPlanesSDK_GetControlPlane_Call) Run(run func(ctx context.Context, id string, opts ...operations.Option)) *MockControlPlanesSDK_GetControlPlane_Call {
+func (_c *MockControlPlanesSDK_GetControlPlane_Call) Run(run func(ctx context.Context, controlPlaneID string, opts ...operations.Option)) *MockControlPlanesSDK_GetControlPlane_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -283,7 +283,7 @@ func (_c *MockControlPlanesSDK_GetControlPlane_Call) Return(getControlPlaneRespo
 	return _c
 }
 
-func (_c *MockControlPlanesSDK_GetControlPlane_Call) RunAndReturn(run func(ctx context.Context, id string, opts ...operations.Option) (*operations.GetControlPlaneResponse, error)) *MockControlPlanesSDK_GetControlPlane_Call {
+func (_c *MockControlPlanesSDK_GetControlPlane_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlaneResponse, error)) *MockControlPlanesSDK_GetControlPlane_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -372,12 +372,12 @@ func (_c *MockControlPlanesSDK_ListControlPlanes_Call) RunAndReturn(run func(ctx
 }
 
 // UpdateControlPlane provides a mock function for the type MockControlPlanesSDK
-func (_mock *MockControlPlanesSDK) UpdateControlPlane(ctx context.Context, id string, updateControlPlaneRequest components.UpdateControlPlaneRequest, opts ...operations.Option) (*operations.UpdateControlPlaneResponse, error) {
+func (_mock *MockControlPlanesSDK) UpdateControlPlane(ctx context.Context, controlPlaneID string, updateControlPlaneRequest components.UpdateControlPlaneRequest, opts ...operations.Option) (*operations.UpdateControlPlaneResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, id, updateControlPlaneRequest, opts)
+		tmpRet = _mock.Called(ctx, controlPlaneID, updateControlPlaneRequest, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, id, updateControlPlaneRequest)
+		tmpRet = _mock.Called(ctx, controlPlaneID, updateControlPlaneRequest)
 	}
 	ret := tmpRet
 
@@ -388,17 +388,17 @@ func (_mock *MockControlPlanesSDK) UpdateControlPlane(ctx context.Context, id st
 	var r0 *operations.UpdateControlPlaneResponse
 	var r1 error
 	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpdateControlPlaneRequest, ...operations.Option) (*operations.UpdateControlPlaneResponse, error)); ok {
-		return returnFunc(ctx, id, updateControlPlaneRequest, opts...)
+		return returnFunc(ctx, controlPlaneID, updateControlPlaneRequest, opts...)
 	}
 	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpdateControlPlaneRequest, ...operations.Option) *operations.UpdateControlPlaneResponse); ok {
-		r0 = returnFunc(ctx, id, updateControlPlaneRequest, opts...)
+		r0 = returnFunc(ctx, controlPlaneID, updateControlPlaneRequest, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.UpdateControlPlaneResponse)
 		}
 	}
 	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.UpdateControlPlaneRequest, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, id, updateControlPlaneRequest, opts...)
+		r1 = returnFunc(ctx, controlPlaneID, updateControlPlaneRequest, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -412,15 +412,15 @@ type MockControlPlanesSDK_UpdateControlPlane_Call struct {
 
 // UpdateControlPlane is a helper method to define mock.On call
 //   - ctx context.Context
-//   - id string
+//   - controlPlaneID string
 //   - updateControlPlaneRequest components.UpdateControlPlaneRequest
 //   - opts ...operations.Option
-func (_e *MockControlPlanesSDK_Expecter) UpdateControlPlane(ctx interface{}, id interface{}, updateControlPlaneRequest interface{}, opts ...interface{}) *MockControlPlanesSDK_UpdateControlPlane_Call {
+func (_e *MockControlPlanesSDK_Expecter) UpdateControlPlane(ctx interface{}, controlPlaneID interface{}, updateControlPlaneRequest interface{}, opts ...interface{}) *MockControlPlanesSDK_UpdateControlPlane_Call {
 	return &MockControlPlanesSDK_UpdateControlPlane_Call{Call: _e.mock.On("UpdateControlPlane",
-		append([]interface{}{ctx, id, updateControlPlaneRequest}, opts...)...)}
+		append([]interface{}{ctx, controlPlaneID, updateControlPlaneRequest}, opts...)...)}
 }
 
-func (_c *MockControlPlanesSDK_UpdateControlPlane_Call) Run(run func(ctx context.Context, id string, updateControlPlaneRequest components.UpdateControlPlaneRequest, opts ...operations.Option)) *MockControlPlanesSDK_UpdateControlPlane_Call {
+func (_c *MockControlPlanesSDK_UpdateControlPlane_Call) Run(run func(ctx context.Context, controlPlaneID string, updateControlPlaneRequest components.UpdateControlPlaneRequest, opts ...operations.Option)) *MockControlPlanesSDK_UpdateControlPlane_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -455,7 +455,7 @@ func (_c *MockControlPlanesSDK_UpdateControlPlane_Call) Return(updateControlPlan
 	return _c
 }
 
-func (_c *MockControlPlanesSDK_UpdateControlPlane_Call) RunAndReturn(run func(ctx context.Context, id string, updateControlPlaneRequest components.UpdateControlPlaneRequest, opts ...operations.Option) (*operations.UpdateControlPlaneResponse, error)) *MockControlPlanesSDK_UpdateControlPlane_Call {
+func (_c *MockControlPlanesSDK_UpdateControlPlane_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, updateControlPlaneRequest components.UpdateControlPlaneRequest, opts ...operations.Option) (*operations.UpdateControlPlaneResponse, error)) *MockControlPlanesSDK_UpdateControlPlane_Call {
 	_c.Call.Return(run)
 	return _c
 }

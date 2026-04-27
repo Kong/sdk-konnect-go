@@ -747,9 +747,9 @@ func (s *ControlPlanes) CreateControlPlane(ctx context.Context, request componen
 
 // GetControlPlane - Get a Control Plane
 // Returns information about an individual control plane.
-func (s *ControlPlanes) GetControlPlane(ctx context.Context, id string, opts ...operations.Option) (*operations.GetControlPlaneResponse, error) {
+func (s *ControlPlanes) GetControlPlane(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlaneResponse, error) {
 	request := operations.GetControlPlaneRequest{
-		ID: id,
+		ControlPlaneID: controlPlaneID,
 	}
 
 	o := operations.Options{}
@@ -770,7 +770,7 @@ func (s *ControlPlanes) GetControlPlane(ctx context.Context, id string, opts ...
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{id}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1082,9 +1082,9 @@ func (s *ControlPlanes) GetControlPlane(ctx context.Context, id string, opts ...
 
 // UpdateControlPlane - Update Control Plane
 // Update an individual control plane.
-func (s *ControlPlanes) UpdateControlPlane(ctx context.Context, id string, updateControlPlaneRequest components.UpdateControlPlaneRequest, opts ...operations.Option) (*operations.UpdateControlPlaneResponse, error) {
+func (s *ControlPlanes) UpdateControlPlane(ctx context.Context, controlPlaneID string, updateControlPlaneRequest components.UpdateControlPlaneRequest, opts ...operations.Option) (*operations.UpdateControlPlaneResponse, error) {
 	request := operations.UpdateControlPlaneRequest{
-		ID:                        id,
+		ControlPlaneID:            controlPlaneID,
 		UpdateControlPlaneRequest: updateControlPlaneRequest,
 	}
 
@@ -1106,7 +1106,7 @@ func (s *ControlPlanes) UpdateControlPlane(ctx context.Context, id string, updat
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{id}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1425,9 +1425,9 @@ func (s *ControlPlanes) UpdateControlPlane(ctx context.Context, id string, updat
 
 // DeleteControlPlane - Delete Control Plane
 // Delete an individual control plane.
-func (s *ControlPlanes) DeleteControlPlane(ctx context.Context, id string, opts ...operations.Option) (*operations.DeleteControlPlaneResponse, error) {
+func (s *ControlPlanes) DeleteControlPlane(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.DeleteControlPlaneResponse, error) {
 	request := operations.DeleteControlPlaneRequest{
-		ID: id,
+		ControlPlaneID: controlPlaneID,
 	}
 
 	o := operations.Options{}
@@ -1448,7 +1448,7 @@ func (s *ControlPlanes) DeleteControlPlane(ctx context.Context, id string, opts 
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{id}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
