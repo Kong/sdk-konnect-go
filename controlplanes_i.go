@@ -19,11 +19,11 @@ type ControlPlanesSDK interface {
 	CreateControlPlane(ctx context.Context, request components.CreateControlPlaneRequest, opts ...operations.Option) (*operations.CreateControlPlaneResponse, error)
 	// GetControlPlane - Get a Control Plane
 	// Returns information about an individual control plane.
-	GetControlPlane(ctx context.Context, id string, opts ...operations.Option) (*operations.GetControlPlaneResponse, error)
+	GetControlPlane(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlaneResponse, error)
 	// UpdateControlPlane - Update Control Plane
 	// Update an individual control plane.
-	UpdateControlPlane(ctx context.Context, id string, updateControlPlaneRequest components.UpdateControlPlaneRequest, opts ...operations.Option) (*operations.UpdateControlPlaneResponse, error)
+	UpdateControlPlane(ctx context.Context, controlPlaneID string, updateControlPlaneRequest components.UpdateControlPlaneRequest, opts ...operations.Option) (*operations.UpdateControlPlaneResponse, error)
 	// DeleteControlPlane - Delete Control Plane
 	// Delete an individual control plane.
-	DeleteControlPlane(ctx context.Context, id string, opts ...operations.Option) (*operations.DeleteControlPlaneResponse, error)
+	DeleteControlPlane(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.DeleteControlPlaneResponse, error)
 }

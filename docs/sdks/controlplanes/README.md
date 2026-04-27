@@ -688,7 +688,7 @@ Returns information about an individual control plane.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="get-control-plane" method="get" path="/v2/control-planes/{id}" example="Single control plane response" -->
+<!-- UsageSnippet language="go" operationID="get-control-plane" method="get" path="/v2/control-planes/{controlPlaneId}" example="Single control plane response" -->
 ```go
 package main
 
@@ -723,7 +723,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `id`                                                     | `string`                                                 | :heavy_check_mark:                                       | The control plane ID                                     | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `controlPlaneID`                                         | `string`                                                 | :heavy_check_mark:                                       | The control plane ID                                     | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -748,7 +748,7 @@ Update an individual control plane.
 
 ### Example Usage: Cannot Be Blank
 
-<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{id}" example="Cannot Be Blank" -->
+<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{controlPlaneId}" example="Cannot Be Blank" -->
 ```go
 package main
 
@@ -793,7 +793,7 @@ func main() {
 ```
 ### Example Usage: Example Request Body
 
-<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{id}" example="Example Request Body" -->
+<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{controlPlaneId}" example="Example Request Body" -->
 ```go
 package main
 
@@ -837,7 +837,7 @@ func main() {
 ```
 ### Example Usage: Internal Server Error
 
-<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{id}" example="Internal Server Error" -->
+<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{controlPlaneId}" example="Internal Server Error" -->
 ```go
 package main
 
@@ -882,7 +882,7 @@ func main() {
 ```
 ### Example Usage: Invalid ID Format
 
-<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{id}" example="Invalid ID Format" -->
+<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{controlPlaneId}" example="Invalid ID Format" -->
 ```go
 package main
 
@@ -927,7 +927,7 @@ func main() {
 ```
 ### Example Usage: Not Found
 
-<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{id}" example="Not Found" -->
+<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{controlPlaneId}" example="Not Found" -->
 ```go
 package main
 
@@ -972,7 +972,7 @@ func main() {
 ```
 ### Example Usage: Permission Denied
 
-<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{id}" example="Permission Denied" -->
+<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{controlPlaneId}" example="Permission Denied" -->
 ```go
 package main
 
@@ -1017,7 +1017,7 @@ func main() {
 ```
 ### Example Usage: Request Format Invalid
 
-<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{id}" example="Request Format Invalid" -->
+<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{controlPlaneId}" example="Request Format Invalid" -->
 ```go
 package main
 
@@ -1062,7 +1062,7 @@ func main() {
 ```
 ### Example Usage: Service Unavailable
 
-<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{id}" example="Service Unavailable" -->
+<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{controlPlaneId}" example="Service Unavailable" -->
 ```go
 package main
 
@@ -1107,7 +1107,7 @@ func main() {
 ```
 ### Example Usage: Unauthorized
 
-<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{id}" example="Unauthorized" -->
+<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{controlPlaneId}" example="Unauthorized" -->
 ```go
 package main
 
@@ -1152,7 +1152,7 @@ func main() {
 ```
 ### Example Usage: Unknown Property
 
-<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{id}" example="Unknown Property" -->
+<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{controlPlaneId}" example="Unknown Property" -->
 ```go
 package main
 
@@ -1197,7 +1197,7 @@ func main() {
 ```
 ### Example Usage: Update Control Plane Response
 
-<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{id}" example="Update Control Plane Response" -->
+<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{controlPlaneId}" example="Update Control Plane Response" -->
 ```go
 package main
 
@@ -1242,7 +1242,7 @@ func main() {
 ```
 ### Example Usage: Usage Limits Reached
 
-<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{id}" example="Usage Limits Reached" -->
+<!-- UsageSnippet language="go" operationID="update-control-plane" method="patch" path="/v2/control-planes/{controlPlaneId}" example="Usage Limits Reached" -->
 ```go
 package main
 
@@ -1291,7 +1291,7 @@ func main() {
 | Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |                                                                                              |
-| `id`                                                                                         | `string`                                                                                     | :heavy_check_mark:                                                                           | The control plane ID                                                                         | d32d905a-ed33-46a3-a093-d8f536af9a8a                                                         |
+| `controlPlaneID`                                                                             | `string`                                                                                     | :heavy_check_mark:                                                                           | The control plane ID                                                                         | d32d905a-ed33-46a3-a093-d8f536af9a8a                                                         |
 | `updateControlPlaneRequest`                                                                  | [components.UpdateControlPlaneRequest](../../models/components/updatecontrolplanerequest.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |                                                                                              |
 | `opts`                                                                                       | [][operations.Option](../../models/operations/option.md)                                     | :heavy_minus_sign:                                                                           | The options for this request.                                                                |                                                                                              |
 
@@ -1317,7 +1317,7 @@ Delete an individual control plane.
 
 ### Example Usage
 
-<!-- UsageSnippet language="go" operationID="delete-control-plane" method="delete" path="/v2/control-planes/{id}" -->
+<!-- UsageSnippet language="go" operationID="delete-control-plane" method="delete" path="/v2/control-planes/{controlPlaneId}" -->
 ```go
 package main
 
@@ -1352,7 +1352,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `id`                                                     | `string`                                                 | :heavy_check_mark:                                       | The control plane ID                                     | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `controlPlaneID`                                         | `string`                                                 | :heavy_check_mark:                                       | The control plane ID                                     | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response

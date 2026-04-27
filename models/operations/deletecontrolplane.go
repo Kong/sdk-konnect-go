@@ -8,14 +8,14 @@ import (
 
 type DeleteControlPlaneRequest struct {
 	// The control plane ID
-	ID string `pathParam:"style=simple,explode=false,name=id"`
+	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 }
 
-func (d *DeleteControlPlaneRequest) GetID() string {
+func (d *DeleteControlPlaneRequest) GetControlPlaneID() string {
 	if d == nil {
 		return ""
 	}
-	return d.ID
+	return d.ControlPlaneID
 }
 
 type DeleteControlPlaneResponse struct {

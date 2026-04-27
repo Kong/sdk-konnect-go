@@ -9,7 +9,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/models/components"
 )
 
-value := components.EntityTypeNameApIs
+value := components.EntityTypeNameAddOns
 
 // Open enum: custom values can be created with a direct type cast
 custom := components.EntityTypeName("custom_value")
@@ -20,6 +20,7 @@ custom := components.EntityTypeName("custom_value")
 
 | Name                                      | Value                                     |
 | ----------------------------------------- | ----------------------------------------- |
+| `EntityTypeNameAddOns`                    | Add Ons                                   |
 | `EntityTypeNameApIs`                      | APIs                                      |
 | `EntityTypeNameAPIProducts`               | API Products                              |
 | `EntityTypeNameApplicationAuthStrategies` | Application Auth Strategies               |

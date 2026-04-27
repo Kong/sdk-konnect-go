@@ -327,9 +327,11 @@ type SDK struct {
 	APIPublication          *APIPublication
 	APIPackageSpecification *APIPackageSpecification
 	APIPackageDocumentation *APIPackageDocumentation
+	APIPackageImage         *APIPackageImage
 	APIPackageOperations    *APIPackageOperations
 	API                     *API
 	APIDocumentation        *APIDocumentation
+	APIImage                *APIImage
 	APIOperations           *APIOperations
 	APISpecification        *APISpecification
 	APIVersion              *APIVersion
@@ -470,9 +472,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.33.0",
+		SDKVersion: "0.34.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.33.0 2.881.4 3.14.0 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.34.0 2.881.4 3.14.0 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -561,9 +563,11 @@ func New(opts ...SDKOption) *SDK {
 	sdk.APIPublication = newAPIPublication(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIPackageSpecification = newAPIPackageSpecification(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIPackageDocumentation = newAPIPackageDocumentation(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIPackageImage = newAPIPackageImage(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIPackageOperations = newAPIPackageOperations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.API = newAPI(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIDocumentation = newAPIDocumentation(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.APIImage = newAPIImage(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIOperations = newAPIOperations(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APISpecification = newAPISpecification(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIVersion = newAPIVersion(sdk, sdk.sdkConfiguration, sdk.hooks)

@@ -4893,6 +4893,94 @@ paths:
           $ref: '#/components/responses/ServiceUnavailable'
       tags:
         - Control Planes
+  '/v2/control-planes/{controlPlaneId}':
+    parameters:
+      - name: controlPlaneId
+        in: path
+        description: The control plane ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+          example: d32d905a-ed33-46a3-a093-d8f536af9a8a
+    get:
+      x-speakeasy-entity-operation:
+        terraform-resource: GatewayControlPlane#read
+        terraform-datasource: null
+      operationId: get-control-plane
+      summary: Get a Control Plane
+      description: Returns information about an individual control plane.
+      responses:
+        '200':
+          $ref: '#/components/responses/RetrieveControlPlaneResponse'
+        '400':
+          $ref: '#/components/responses/ControlPlanesBadRequest'
+        '401':
+          $ref: '#/components/responses/ControlPlaneUnauthenticated'
+        '403':
+          $ref: '#/components/responses/ControlPlanePermissionDenied'
+        '404':
+          $ref: '#/components/responses/ControlPlaneNotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      tags:
+        - Control Planes
+    patch:
+      x-speakeasy-entity-operation:
+        terraform-resource: GatewayControlPlane#update
+        terraform-datasource: null
+      operationId: update-control-plane
+      summary: Update Control Plane
+      description: Update an individual control plane.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateControlPlaneRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/UpdateControlPlaneResponse'
+        '400':
+          $ref: '#/components/responses/ControlPlanesBadRequest'
+        '401':
+          $ref: '#/components/responses/ControlPlaneUnauthenticated'
+        '403':
+          $ref: '#/components/responses/ControlPlanePermissionDenied'
+        '404':
+          $ref: '#/components/responses/ControlPlaneNotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      tags:
+        - Control Planes
+    delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: GatewayControlPlane#delete
+        terraform-datasource: null
+      operationId: delete-control-plane
+      summary: Delete Control Plane
+      description: Delete an individual control plane.
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/ControlPlanesBadRequest'
+        '401':
+          $ref: '#/components/responses/ControlPlaneUnauthenticated'
+        '403':
+          $ref: '#/components/responses/ControlPlanePermissionDenied'
+        '404':
+          $ref: '#/components/responses/ControlPlaneNotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      tags:
+        - Control Planes
   '/v2/control-planes/{controlPlaneId}/config-stores':
     get:
       operationId: list-config-stores
@@ -8548,6 +8636,24 @@ paths:
           description: Successfully deleted GraphQL Cost Decoration or the resource didn't exist
       tags:
         - GraphQL Cost Decorations
+    get:
+      operationId: get-graphql-rate-limiting-advanced-cost-with-service
+      summary: Get a GraphQL Cost Decoration associated with a Service
+      description: Get a GraphQL Cost Decoration associated with a Service using ID.
+      parameters:
+        - $ref: '#/components/parameters/ServiceId'
+        - $ref: '#/components/parameters/GraphQLCostDecorationId'
+      responses:
+        '200':
+          description: Successfully fetched GraphQL Cost Decoration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GraphQLCostDecoration'
+        '404':
+          description: Resource does not exist
+      tags:
+        - GraphQL Cost Decorations
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
     put:
@@ -9339,6 +9445,187 @@ paths:
         - DP Nodes
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
+  '/v2/control-planes/{controlPlaneId}/group-member-status':
+    parameters:
+      - name: controlPlaneId
+        in: path
+        description: ID of a control plane
+        required: true
+        schema:
+          type: string
+    get:
+      operationId: get-control-planes-id-group-member-status
+      summary: Get Control Plane Group Member Status
+      description: Determines the group membership status of a control plane.
+      responses:
+        '200':
+          $ref: '#/components/responses/GetGroupMemberStatus'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      tags:
+        - Control Plane Groups
+  '/v2/control-planes/{controlPlaneId}/group-memberships':
+    parameters:
+      - name: controlPlaneId
+        in: path
+        description: ID of a control plane group
+        required: true
+        schema:
+          type: string
+    get:
+      operationId: get-control-planes-id-group-memberships
+      summary: List Control Plane Group Memberships
+      description: Returns an array of control planes that are a member of this control plane group.
+      parameters:
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageAfter'
+      responses:
+        '200':
+          $ref: '#/components/responses/ListGroupMemberships'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      tags:
+        - Control Plane Groups
+    put:
+      operationId: put-control-planes-id-group-memberships
+      summary: Upsert Control Plane Group Members
+      description: Adds one or more control planes as a member of a control plane group.
+      requestBody:
+        $ref: '#/components/requestBodies/GroupMembershipUpsert'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      tags:
+        - Control Plane Groups
+  '/v2/control-planes/{controlPlaneId}/group-memberships/add':
+    parameters:
+      - name: controlPlaneId
+        in: path
+        description: ID of a control plane group
+        required: true
+        schema:
+          type: string
+    post:
+      x-speakeasy-entity-operation:
+        terraform-resource: GatewayControlPlaneMembership#create
+        terraform-datasource: null
+      operationId: post-control-planes-id-group-memberships-add
+      summary: Add Control Plane Group Members
+      description: Adds one or more control planes as a member of a control plane group.
+      requestBody:
+        $ref: '#/components/requestBodies/GroupMembershipAdd'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      tags:
+        - Control Plane Groups
+  '/v2/control-planes/{controlPlaneId}/group-memberships/remove':
+    parameters:
+      - name: controlPlaneId
+        in: path
+        description: ID of a control plane group
+        required: true
+        schema:
+          type: string
+    post:
+      x-speakeasy-entity-operation:
+        terraform-resource: GatewayControlPlaneMembership#delete
+        terraform-datasource: null
+      operationId: post-control-planes-id-group-memberships-remove
+      summary: Remove Control Plane Group Members
+      description: Removes one or more control planes from the members of a control plane group.
+      requestBody:
+        $ref: '#/components/requestBodies/GroupMembershipRemove'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      tags:
+        - Control Plane Groups
+  '/v2/control-planes/{controlPlaneId}/group-status':
+    parameters:
+      - name: controlPlaneId
+        in: path
+        description: ID of a control plane group
+        required: true
+        schema:
+          type: string
+    get:
+      operationId: get-control-planes-id-group-status
+      summary: Get Control Plane Group Status
+      description: 'Returns the status of a control plane group, including existing conflicts.'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetGroupStatus'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/Internal'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+      tags:
+        - Control Plane Groups
   '/v2/control-planes/{controlPlaneId}/nodes':
     get:
       operationId: list-dataplane-nodes
@@ -9394,275 +9681,6 @@ paths:
         - DP Nodes
     parameters:
       - $ref: '#/components/parameters/controlPlaneId'
-  '/v2/control-planes/{id}':
-    parameters:
-      - name: id
-        in: path
-        description: The control plane ID
-        required: true
-        schema:
-          type: string
-          format: uuid
-          example: d32d905a-ed33-46a3-a093-d8f536af9a8a
-    get:
-      x-speakeasy-entity-operation:
-        terraform-resource: GatewayControlPlane#read
-        terraform-datasource: null
-      operationId: get-control-plane
-      summary: Get a Control Plane
-      description: Returns information about an individual control plane.
-      responses:
-        '200':
-          $ref: '#/components/responses/RetrieveControlPlaneResponse'
-        '400':
-          $ref: '#/components/responses/ControlPlanesBadRequest'
-        '401':
-          $ref: '#/components/responses/ControlPlaneUnauthenticated'
-        '403':
-          $ref: '#/components/responses/ControlPlanePermissionDenied'
-        '404':
-          $ref: '#/components/responses/ControlPlaneNotFound'
-        '500':
-          $ref: '#/components/responses/Internal'
-        '503':
-          $ref: '#/components/responses/ServiceUnavailable'
-      tags:
-        - Control Planes
-    patch:
-      x-speakeasy-entity-operation:
-        terraform-resource: GatewayControlPlane#update
-        terraform-datasource: null
-      operationId: update-control-plane
-      summary: Update Control Plane
-      description: Update an individual control plane.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateControlPlaneRequest'
-      responses:
-        '200':
-          $ref: '#/components/responses/UpdateControlPlaneResponse'
-        '400':
-          $ref: '#/components/responses/ControlPlanesBadRequest'
-        '401':
-          $ref: '#/components/responses/ControlPlaneUnauthenticated'
-        '403':
-          $ref: '#/components/responses/ControlPlanePermissionDenied'
-        '404':
-          $ref: '#/components/responses/ControlPlaneNotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-        '503':
-          $ref: '#/components/responses/ServiceUnavailable'
-      tags:
-        - Control Planes
-    delete:
-      x-speakeasy-entity-operation:
-        terraform-resource: GatewayControlPlane#delete
-        terraform-datasource: null
-      operationId: delete-control-plane
-      summary: Delete Control Plane
-      description: Delete an individual control plane.
-      responses:
-        '204':
-          description: No Content
-        '400':
-          $ref: '#/components/responses/ControlPlanesBadRequest'
-        '401':
-          $ref: '#/components/responses/ControlPlaneUnauthenticated'
-        '403':
-          $ref: '#/components/responses/ControlPlanePermissionDenied'
-        '404':
-          $ref: '#/components/responses/ControlPlaneNotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-        '503':
-          $ref: '#/components/responses/ServiceUnavailable'
-      tags:
-        - Control Planes
-  '/v2/control-planes/{id}/group-member-status':
-    parameters:
-      - name: id
-        in: path
-        description: ID of a control plane
-        required: true
-        schema:
-          type: string
-    get:
-      operationId: get-control-planes-id-group-member-status
-      summary: Get Control Plane Group Member Status
-      description: Determines the group membership status of a control plane.
-      responses:
-        '200':
-          $ref: '#/components/responses/GetGroupMemberStatus'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/Internal'
-        '503':
-          $ref: '#/components/responses/ServiceUnavailable'
-      tags:
-        - Control Plane Groups
-  '/v2/control-planes/{id}/group-memberships':
-    parameters:
-      - name: id
-        in: path
-        description: ID of a control plane group
-        required: true
-        schema:
-          type: string
-    get:
-      operationId: get-control-planes-id-group-memberships
-      summary: List Control Plane Group Memberships
-      description: Returns an array of control planes that are a member of this control plane group.
-      parameters:
-        - $ref: '#/components/parameters/PageSize'
-        - $ref: '#/components/parameters/PageAfter'
-      responses:
-        '200':
-          $ref: '#/components/responses/ListGroupMemberships'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/Internal'
-        '503':
-          $ref: '#/components/responses/ServiceUnavailable'
-      tags:
-        - Control Plane Groups
-    put:
-      operationId: put-control-planes-id-group-memberships
-      summary: Upsert Control Plane Group Members
-      description: Adds one or more control planes as a member of a control plane group.
-      requestBody:
-        $ref: '#/components/requestBodies/GroupMembershipUpsert'
-      responses:
-        '204':
-          description: No Content
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/Internal'
-        '503':
-          $ref: '#/components/responses/ServiceUnavailable'
-      tags:
-        - Control Plane Groups
-  '/v2/control-planes/{id}/group-memberships/add':
-    parameters:
-      - name: id
-        in: path
-        description: ID of a control plane group
-        required: true
-        schema:
-          type: string
-    post:
-      x-speakeasy-entity-operation:
-        terraform-resource: GatewayControlPlaneMembership#create
-        terraform-datasource: null
-      operationId: post-control-planes-id-group-memberships-add
-      summary: Add Control Plane Group Members
-      description: Adds one or more control planes as a member of a control plane group.
-      requestBody:
-        $ref: '#/components/requestBodies/GroupMembershipAdd'
-      responses:
-        '204':
-          description: No Content
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/Internal'
-        '503':
-          $ref: '#/components/responses/ServiceUnavailable'
-      tags:
-        - Control Plane Groups
-  '/v2/control-planes/{id}/group-memberships/remove':
-    parameters:
-      - name: id
-        in: path
-        description: ID of a control plane group
-        required: true
-        schema:
-          type: string
-    post:
-      x-speakeasy-entity-operation:
-        terraform-resource: GatewayControlPlaneMembership#delete
-        terraform-datasource: null
-      operationId: post-control-planes-id-group-memberships-remove
-      summary: Remove Control Plane Group Members
-      description: Removes one or more control planes from the members of a control plane group.
-      requestBody:
-        $ref: '#/components/requestBodies/GroupMembershipRemove'
-      responses:
-        '204':
-          description: No Content
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/Internal'
-        '503':
-          $ref: '#/components/responses/ServiceUnavailable'
-      tags:
-        - Control Plane Groups
-  '/v2/control-planes/{id}/group-status':
-    parameters:
-      - name: id
-        in: path
-        description: ID of a control plane group
-        required: true
-        schema:
-          type: string
-    get:
-      operationId: get-control-planes-id-group-status
-      summary: Get Control Plane Group Status
-      description: 'Returns the status of a control plane group, including existing conflicts.'
-      responses:
-        '200':
-          $ref: '#/components/responses/GetGroupStatus'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '403':
-          $ref: '#/components/responses/Forbidden'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/Internal'
-        '503':
-          $ref: '#/components/responses/ServiceUnavailable'
-      tags:
-        - Control Plane Groups
   /v2/dcr-providers:
     post:
       operationId: create-dcr-provider
@@ -10266,6 +10284,101 @@ paths:
           $ref: '#/components/responses/Conflict'
       tags:
         - API Package Documentation
+  '/v3/api-packages/{packageId}/images/{imageType}':
+    parameters:
+      - $ref: '#/components/parameters/ImageType'
+      - name: packageId
+        in: path
+        description: The UUID API Package identifier
+        required: true
+        schema:
+          type: string
+          format: uuid
+          example: 9f5061ce-78f6-4452-9108-ad7c02821fd5
+        x-speakeasy-match: id
+    put:
+      operationId: upsert-api-package-image
+      summary: Create or Replace an API Package Image
+      description: Create or Replace an API Package Image. The replacement image is not applied to the API Package until asynchronous validation completes successfully.
+      requestBody:
+        $ref: '#/components/requestBodies/ReplaceApiPackageImageRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/ApiPackageImageResponse'
+        '201':
+          $ref: '#/components/responses/ApiPackageImageResponse'
+        '401':
+          $ref: '#/components/responses/ApiPackageImageUnauthorized'
+        '403':
+          $ref: '#/components/responses/ApiPackageImageForbidden'
+        '404':
+          $ref: '#/components/responses/ApiPackageImageNotFound'
+        '409':
+          $ref: '#/components/responses/ApiPackageImageConflict'
+      tags:
+        - API Package Image
+    get:
+      operationId: fetch-api-package-image
+      summary: Get API Package Image
+      description: 'Retrieves the status and metadata associated with an API package Image. Returns the latest image if it has not yet been applied (status: uploading, validating, or invalid), otherwise returns the details of currently applied image (status: valid).'
+      responses:
+        '200':
+          $ref: '#/components/responses/ApiPackageImageResponse'
+        '401':
+          $ref: '#/components/responses/ApiPackageImageUnauthorized'
+        '403':
+          $ref: '#/components/responses/ApiPackageImageForbidden'
+        '404':
+          $ref: '#/components/responses/ApiPackageImageNotFound'
+      tags:
+        - API Package Image
+    delete:
+      operationId: delete-api-package-image
+      summary: Delete an API Package Image
+      description: Delete an API Package Image.
+      responses:
+        '204':
+          description: API Package Image was deleted successfully.
+        '401':
+          $ref: '#/components/responses/ApiPackageImageUnauthorized'
+        '403':
+          $ref: '#/components/responses/ApiPackageImageForbidden'
+        '404':
+          $ref: '#/components/responses/ApiPackageImageNotFound'
+      tags:
+        - API Package Image
+  '/v3/api-packages/{packageId}/images/{imageType}/raw':
+    parameters:
+      - $ref: '#/components/parameters/ImageType'
+      - name: packageId
+        in: path
+        description: The UUID API Package identifier
+        required: true
+        schema:
+          type: string
+          format: uuid
+          example: 9f5061ce-78f6-4452-9108-ad7c02821fd5
+        x-speakeasy-match: id
+    get:
+      operationId: fetch-api-package-raw-image
+      summary: Get an API Package Raw Image
+      description: 'Retrieves the raw image of an API Package. Only the currently applied image (status: valid) can be retrieved.'
+      responses:
+        '302':
+          description: Redirect to the image URL.
+          headers:
+            Location:
+              description: The CDN URL of the image.
+              schema:
+                type: string
+        '401':
+          $ref: '#/components/responses/ApiPackageImageUnauthorized'
+        '403':
+          $ref: '#/components/responses/ApiPackageImageForbidden'
+        '404':
+          $ref: '#/components/responses/ApiPackageImageNotFound'
+      tags:
+        - API Package Image
   '/v3/api-packages/{packageId}/operations':
     parameters:
       - name: packageId
@@ -10696,6 +10809,85 @@ paths:
           $ref: '#/components/responses/Conflict'
       tags:
         - API Documentation
+  '/v3/apis/{apiId}/images/{imageType}':
+    parameters:
+      - $ref: '#/components/parameters/ApiId'
+      - $ref: '#/components/parameters/ImageType'
+    put:
+      operationId: upsert-api-image
+      summary: Create or Replace an API Image
+      description: Create or Replace an API Image. The replacement image is not applied to the API until asynchronous validation completes successfully.
+      requestBody:
+        $ref: '#/components/requestBodies/ReplaceApiImageRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/ApiImageResponse'
+        '201':
+          $ref: '#/components/responses/ApiImageResponse'
+        '401':
+          $ref: '#/components/responses/ApiImageUnauthorized'
+        '403':
+          $ref: '#/components/responses/ApiImageForbidden'
+        '404':
+          $ref: '#/components/responses/ApiImageNotFound'
+        '409':
+          $ref: '#/components/responses/ApiImageConflict'
+      tags:
+        - API Image
+    get:
+      operationId: fetch-api-image
+      summary: Get API Image
+      description: 'Retrieves the status and metadata associated with an API Image. Returns the latest image if it has not yet been applied (status: uploading, validating, or invalid), otherwise returns the details of currently applied image (status: valid).'
+      responses:
+        '200':
+          $ref: '#/components/responses/ApiImageResponse'
+        '401':
+          $ref: '#/components/responses/ApiImageUnauthorized'
+        '403':
+          $ref: '#/components/responses/ApiImageForbidden'
+        '404':
+          $ref: '#/components/responses/ApiImageNotFound'
+      tags:
+        - API Image
+    delete:
+      operationId: delete-api-image
+      summary: Delete an API Image
+      description: Delete an API Image.
+      responses:
+        '204':
+          description: API Image was deleted successfully.
+        '401':
+          $ref: '#/components/responses/ApiImageUnauthorized'
+        '403':
+          $ref: '#/components/responses/ApiImageForbidden'
+        '404':
+          $ref: '#/components/responses/ApiImageNotFound'
+      tags:
+        - API Image
+  '/v3/apis/{apiId}/images/{imageType}/raw':
+    parameters:
+      - $ref: '#/components/parameters/ApiId'
+      - $ref: '#/components/parameters/ImageType'
+    get:
+      operationId: fetch-api-raw-image
+      summary: Get an API Raw Image
+      description: 'Retrieves the raw image of an API. Only the currently applied image (status: valid) can be retrieved.'
+      responses:
+        '302':
+          description: Redirect to the image URL.
+          headers:
+            Location:
+              description: The CDN URL of the image.
+              schema:
+                type: string
+        '401':
+          $ref: '#/components/responses/ApiImageUnauthorized'
+        '403':
+          $ref: '#/components/responses/ApiImageForbidden'
+        '404':
+          $ref: '#/components/responses/ApiImageNotFound'
+      tags:
+        - API Image
   '/v3/apis/{apiId}/implementations':
     parameters:
       - $ref: '#/components/parameters/ApiId'
@@ -17297,6 +17489,13 @@ components:
       in: path
       required: true
       description: ID of the identity provider.
+    ImageType:
+      schema:
+        $ref: '#/components/schemas/ImageTypeSchema'
+      name: imageType
+      in: path
+      required: true
+      description: The Supported image type.
     ImplementationId:
       schema:
         type: string
@@ -24212,6 +24411,28 @@ components:
           description: The field does not match the provided value.
           type: string
       additionalProperties: false
+    ImageDataUri:
+      example: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA'
+      oneOf:
+        - $ref: '#/components/schemas/ImagePNGDataUri'
+        - $ref: '#/components/schemas/ImageJPGDataUri'
+        - $ref: '#/components/schemas/ImageSVGDataUri'
+      title: ImageDataUri
+    ImageTypeSchema:
+      description: The type of the image.
+      type: string
+      example: icon
+      enum:
+        - icon
+    ReplaceImageRequestSchema:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ImageDataUri'
+      additionalProperties: false
+      required:
+        - data
+      title: Replace Image Payload
     ApiResponseSchema:
       type: object
       properties:
@@ -24314,6 +24535,49 @@ components:
         - api_spec_ids
         - current_version_summary
       title: API
+    APIImage:
+      type: object
+      properties:
+        error:
+          description: An error related to the image invalid status.
+          type: string
+          example: null
+          nullable: true
+          readOnly: true
+        status:
+          description: The status of the image.
+          type: string
+          example: valid
+          enum:
+            - uploading
+            - validating
+            - valid
+            - invalid
+          readOnly: true
+          x-speakeasy-unknown-values: allow
+        api_id:
+          description: The API identifier which the image belongs to.
+          type: string
+          format: uuid
+          example: 123e4567-e89b-12d3-a456-426614174000
+          readOnly: true
+        image_type:
+          allOf:
+            - $ref: '#/components/schemas/ImageTypeSchema'
+            - readOnly: true
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      additionalProperties: false
+      required:
+        - status
+        - error
+        - api_id
+        - image_type
+        - created_at
+        - updated_at
+      title: Image Status
     AuthStrategyApiSyncError:
       type: object
       properties:
@@ -25396,6 +25660,49 @@ components:
         - limit
         - duration
       title: Rate Limiting configuration
+    APIPackageImage:
+      type: object
+      properties:
+        error:
+          description: An error related to the image invalid status.
+          type: string
+          example: null
+          nullable: true
+          readOnly: true
+        status:
+          description: The status of the image.
+          type: string
+          example: valid
+          enum:
+            - uploading
+            - validating
+            - valid
+            - invalid
+          readOnly: true
+          x-speakeasy-unknown-values: allow
+        api_package_id:
+          description: The API identifier which the image belongs to.
+          type: string
+          format: uuid
+          example: 123e4567-e89b-12d3-a456-426614174000
+          readOnly: true
+        image_type:
+          allOf:
+            - $ref: '#/components/schemas/ImageTypeSchema'
+            - readOnly: true
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      additionalProperties: false
+      required:
+        - status
+        - error
+        - api_package_id
+        - image_type
+        - created_at
+        - updated_at
+      title: Image Status
     LabelsFieldFilter:
       allOf:
         - title: LabelsFieldFilter
@@ -43381,6 +43688,8 @@ components:
                   - Viewer
                   - Registration Approver
                   - Content Editor
+                  - Add On Admin
+                  - Add On Viewer
                 x-speakeasy-unknown-values: allow
               entity_id:
                 description: The ID of the entity.
@@ -43392,6 +43701,7 @@ components:
                 type: string
                 example: Control Planes
                 enum:
+                  - Add Ons
                   - APIs
                   - API Products
                   - Application Auth Strategies
@@ -44152,6 +44462,20 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ValidateApiSpecRequestPayload'
+    ReplaceApiImageRequest:
+      required: true
+      description: Request body to upload an image base64 dataURI for API.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReplaceImageRequestSchema'
+    ReplaceApiPackageImageRequest:
+      required: true
+      description: Request body to upload an image base64 dataURI for API.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReplaceImageRequestSchema'
     CreatePortalIdpTeamGroupMapping:
       description: Create a team group mapping for an identity provider.
       required: true
@@ -47493,6 +47817,66 @@ components:
               - data
               - meta
             title: ListApiOperations
+    ApiImageResponse:
+      description: ApiImageResponse
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/APIImage'
+    ApiImageUnauthorized:
+      description: ApiImageUnauthorized
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/UnauthorizedError'
+    ApiImageNotFound:
+      description: Not Found
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/NotFoundError'
+    ApiImageForbidden:
+      description: ApiImageForbidden
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ForbiddenError'
+    ApiImageConflict:
+      description: Conflict - The image is currently being updated by another request
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ConflictError'
+    ApiPackageImageResponse:
+      description: ApiPackageImageResponse
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/APIPackageImage'
+    ApiPackageImageUnauthorized:
+      description: ApiPackageImageUnauthorized
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/UnauthorizedError'
+    ApiPackageImageNotFound:
+      description: Not Found
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/NotFoundError'
+    ApiPackageImageForbidden:
+      description: ApiImageForbidden
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ForbiddenError'
+    ApiPackageImageConflict:
+      description: Conflict - The image is currently being updated by another request
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ConflictError'
     UnsupportedMediaType:
       description: Unsupported Media Type
       content:
@@ -49060,12 +49444,14 @@ tags:
   - name: API Documentation
   - name: API Specification
   - name: API Publication
+  - name: API Image
   - name: API Implementation
   - name: API Operations
   - name: API Attributes
   - name: API Packages
   - name: API Package Operations
   - name: API Package Documentation
+  - name: API Package Image
   - name: Portals
     description: APIs related to configuration of Konnect Developer Portals.
   - name: Portal Custom Domains

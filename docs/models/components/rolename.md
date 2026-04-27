@@ -58,3 +58,5 @@ custom := components.RoleName("custom_value")
 | `RoleNameViewer`                    | Viewer                              |
 | `RoleNameRegistrationApprover`      | Registration Approver               |
 | `RoleNameContentEditor`             | Content Editor                      |
+| `RoleNameAddOnAdmin`                | Add On Admin                        |
+| `RoleNameAddOnViewer`               | Add On Viewer                       |

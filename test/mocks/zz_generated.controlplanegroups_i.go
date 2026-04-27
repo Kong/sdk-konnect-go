@@ -40,12 +40,12 @@ func (_m *MockControlPlaneGroupsSDK) EXPECT() *MockControlPlaneGroupsSDK_Expecte
 }
 
 // GetControlPlanesIDGroupMemberStatus provides a mock function for the type MockControlPlaneGroupsSDK
-func (_mock *MockControlPlaneGroupsSDK) GetControlPlanesIDGroupMemberStatus(ctx context.Context, id string, opts ...operations.Option) (*operations.GetControlPlanesIDGroupMemberStatusResponse, error) {
+func (_mock *MockControlPlaneGroupsSDK) GetControlPlanesIDGroupMemberStatus(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlanesIDGroupMemberStatusResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, id, opts)
+		tmpRet = _mock.Called(ctx, controlPlaneID, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, id)
+		tmpRet = _mock.Called(ctx, controlPlaneID)
 	}
 	ret := tmpRet
 
@@ -56,17 +56,17 @@ func (_mock *MockControlPlaneGroupsSDK) GetControlPlanesIDGroupMemberStatus(ctx 
 	var r0 *operations.GetControlPlanesIDGroupMemberStatusResponse
 	var r1 error
 	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.GetControlPlanesIDGroupMemberStatusResponse, error)); ok {
-		return returnFunc(ctx, id, opts...)
+		return returnFunc(ctx, controlPlaneID, opts...)
 	}
 	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.GetControlPlanesIDGroupMemberStatusResponse); ok {
-		r0 = returnFunc(ctx, id, opts...)
+		r0 = returnFunc(ctx, controlPlaneID, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.GetControlPlanesIDGroupMemberStatusResponse)
 		}
 	}
 	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, id, opts...)
+		r1 = returnFunc(ctx, controlPlaneID, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -80,14 +80,14 @@ type MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberStatus_Call struct {
 
 // GetControlPlanesIDGroupMemberStatus is a helper method to define mock.On call
 //   - ctx context.Context
-//   - id string
+//   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockControlPlaneGroupsSDK_Expecter) GetControlPlanesIDGroupMemberStatus(ctx interface{}, id interface{}, opts ...interface{}) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberStatus_Call {
+func (_e *MockControlPlaneGroupsSDK_Expecter) GetControlPlanesIDGroupMemberStatus(ctx interface{}, controlPlaneID interface{}, opts ...interface{}) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberStatus_Call {
 	return &MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberStatus_Call{Call: _e.mock.On("GetControlPlanesIDGroupMemberStatus",
-		append([]interface{}{ctx, id}, opts...)...)}
+		append([]interface{}{ctx, controlPlaneID}, opts...)...)}
 }
 
-func (_c *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberStatus_Call) Run(run func(ctx context.Context, id string, opts ...operations.Option)) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberStatus_Call {
+func (_c *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberStatus_Call) Run(run func(ctx context.Context, controlPlaneID string, opts ...operations.Option)) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberStatus_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -117,7 +117,7 @@ func (_c *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberStatus_Call) Re
 	return _c
 }
 
-func (_c *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberStatus_Call) RunAndReturn(run func(ctx context.Context, id string, opts ...operations.Option) (*operations.GetControlPlanesIDGroupMemberStatusResponse, error)) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberStatus_Call {
+func (_c *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberStatus_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlanesIDGroupMemberStatusResponse, error)) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberStatus_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -206,12 +206,12 @@ func (_c *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupMemberships_Call) Run
 }
 
 // GetControlPlanesIDGroupStatus provides a mock function for the type MockControlPlaneGroupsSDK
-func (_mock *MockControlPlaneGroupsSDK) GetControlPlanesIDGroupStatus(ctx context.Context, id string, opts ...operations.Option) (*operations.GetControlPlanesIDGroupStatusResponse, error) {
+func (_mock *MockControlPlaneGroupsSDK) GetControlPlanesIDGroupStatus(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlanesIDGroupStatusResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, id, opts)
+		tmpRet = _mock.Called(ctx, controlPlaneID, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, id)
+		tmpRet = _mock.Called(ctx, controlPlaneID)
 	}
 	ret := tmpRet
 
@@ -222,17 +222,17 @@ func (_mock *MockControlPlaneGroupsSDK) GetControlPlanesIDGroupStatus(ctx contex
 	var r0 *operations.GetControlPlanesIDGroupStatusResponse
 	var r1 error
 	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) (*operations.GetControlPlanesIDGroupStatusResponse, error)); ok {
-		return returnFunc(ctx, id, opts...)
+		return returnFunc(ctx, controlPlaneID, opts...)
 	}
 	if returnFunc, ok := ret.Get(0).(func(context.Context, string, ...operations.Option) *operations.GetControlPlanesIDGroupStatusResponse); ok {
-		r0 = returnFunc(ctx, id, opts...)
+		r0 = returnFunc(ctx, controlPlaneID, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.GetControlPlanesIDGroupStatusResponse)
 		}
 	}
 	if returnFunc, ok := ret.Get(1).(func(context.Context, string, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, id, opts...)
+		r1 = returnFunc(ctx, controlPlaneID, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -246,14 +246,14 @@ type MockControlPlaneGroupsSDK_GetControlPlanesIDGroupStatus_Call struct {
 
 // GetControlPlanesIDGroupStatus is a helper method to define mock.On call
 //   - ctx context.Context
-//   - id string
+//   - controlPlaneID string
 //   - opts ...operations.Option
-func (_e *MockControlPlaneGroupsSDK_Expecter) GetControlPlanesIDGroupStatus(ctx interface{}, id interface{}, opts ...interface{}) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupStatus_Call {
+func (_e *MockControlPlaneGroupsSDK_Expecter) GetControlPlanesIDGroupStatus(ctx interface{}, controlPlaneID interface{}, opts ...interface{}) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupStatus_Call {
 	return &MockControlPlaneGroupsSDK_GetControlPlanesIDGroupStatus_Call{Call: _e.mock.On("GetControlPlanesIDGroupStatus",
-		append([]interface{}{ctx, id}, opts...)...)}
+		append([]interface{}{ctx, controlPlaneID}, opts...)...)}
 }
 
-func (_c *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupStatus_Call) Run(run func(ctx context.Context, id string, opts ...operations.Option)) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupStatus_Call {
+func (_c *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupStatus_Call) Run(run func(ctx context.Context, controlPlaneID string, opts ...operations.Option)) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupStatus_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -283,18 +283,18 @@ func (_c *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupStatus_Call) Return(g
 	return _c
 }
 
-func (_c *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupStatus_Call) RunAndReturn(run func(ctx context.Context, id string, opts ...operations.Option) (*operations.GetControlPlanesIDGroupStatusResponse, error)) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupStatus_Call {
+func (_c *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupStatus_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlanesIDGroupStatusResponse, error)) *MockControlPlaneGroupsSDK_GetControlPlanesIDGroupStatus_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // PostControlPlanesIDGroupMembershipsAdd provides a mock function for the type MockControlPlaneGroupsSDK
-func (_mock *MockControlPlaneGroupsSDK) PostControlPlanesIDGroupMembershipsAdd(ctx context.Context, id string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PostControlPlanesIDGroupMembershipsAddResponse, error) {
+func (_mock *MockControlPlaneGroupsSDK) PostControlPlanesIDGroupMembershipsAdd(ctx context.Context, controlPlaneID string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PostControlPlanesIDGroupMembershipsAddResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, id, groupMembership, opts)
+		tmpRet = _mock.Called(ctx, controlPlaneID, groupMembership, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, id, groupMembership)
+		tmpRet = _mock.Called(ctx, controlPlaneID, groupMembership)
 	}
 	ret := tmpRet
 
@@ -305,17 +305,17 @@ func (_mock *MockControlPlaneGroupsSDK) PostControlPlanesIDGroupMembershipsAdd(c
 	var r0 *operations.PostControlPlanesIDGroupMembershipsAddResponse
 	var r1 error
 	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.GroupMembership, ...operations.Option) (*operations.PostControlPlanesIDGroupMembershipsAddResponse, error)); ok {
-		return returnFunc(ctx, id, groupMembership, opts...)
+		return returnFunc(ctx, controlPlaneID, groupMembership, opts...)
 	}
 	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.GroupMembership, ...operations.Option) *operations.PostControlPlanesIDGroupMembershipsAddResponse); ok {
-		r0 = returnFunc(ctx, id, groupMembership, opts...)
+		r0 = returnFunc(ctx, controlPlaneID, groupMembership, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.PostControlPlanesIDGroupMembershipsAddResponse)
 		}
 	}
 	if returnFunc, ok := ret.Get(1).(func(context.Context, string, *components.GroupMembership, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, id, groupMembership, opts...)
+		r1 = returnFunc(ctx, controlPlaneID, groupMembership, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -329,15 +329,15 @@ type MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsAdd_Call struc
 
 // PostControlPlanesIDGroupMembershipsAdd is a helper method to define mock.On call
 //   - ctx context.Context
-//   - id string
+//   - controlPlaneID string
 //   - groupMembership *components.GroupMembership
 //   - opts ...operations.Option
-func (_e *MockControlPlaneGroupsSDK_Expecter) PostControlPlanesIDGroupMembershipsAdd(ctx interface{}, id interface{}, groupMembership interface{}, opts ...interface{}) *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsAdd_Call {
+func (_e *MockControlPlaneGroupsSDK_Expecter) PostControlPlanesIDGroupMembershipsAdd(ctx interface{}, controlPlaneID interface{}, groupMembership interface{}, opts ...interface{}) *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsAdd_Call {
 	return &MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsAdd_Call{Call: _e.mock.On("PostControlPlanesIDGroupMembershipsAdd",
-		append([]interface{}{ctx, id, groupMembership}, opts...)...)}
+		append([]interface{}{ctx, controlPlaneID, groupMembership}, opts...)...)}
 }
 
-func (_c *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsAdd_Call) Run(run func(ctx context.Context, id string, groupMembership *components.GroupMembership, opts ...operations.Option)) *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsAdd_Call {
+func (_c *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsAdd_Call) Run(run func(ctx context.Context, controlPlaneID string, groupMembership *components.GroupMembership, opts ...operations.Option)) *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsAdd_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -372,18 +372,18 @@ func (_c *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsAdd_Call)
 	return _c
 }
 
-func (_c *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsAdd_Call) RunAndReturn(run func(ctx context.Context, id string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PostControlPlanesIDGroupMembershipsAddResponse, error)) *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsAdd_Call {
+func (_c *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsAdd_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PostControlPlanesIDGroupMembershipsAddResponse, error)) *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsAdd_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // PostControlPlanesIDGroupMembershipsRemove provides a mock function for the type MockControlPlaneGroupsSDK
-func (_mock *MockControlPlaneGroupsSDK) PostControlPlanesIDGroupMembershipsRemove(ctx context.Context, id string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PostControlPlanesIDGroupMembershipsRemoveResponse, error) {
+func (_mock *MockControlPlaneGroupsSDK) PostControlPlanesIDGroupMembershipsRemove(ctx context.Context, controlPlaneID string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PostControlPlanesIDGroupMembershipsRemoveResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, id, groupMembership, opts)
+		tmpRet = _mock.Called(ctx, controlPlaneID, groupMembership, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, id, groupMembership)
+		tmpRet = _mock.Called(ctx, controlPlaneID, groupMembership)
 	}
 	ret := tmpRet
 
@@ -394,17 +394,17 @@ func (_mock *MockControlPlaneGroupsSDK) PostControlPlanesIDGroupMembershipsRemov
 	var r0 *operations.PostControlPlanesIDGroupMembershipsRemoveResponse
 	var r1 error
 	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.GroupMembership, ...operations.Option) (*operations.PostControlPlanesIDGroupMembershipsRemoveResponse, error)); ok {
-		return returnFunc(ctx, id, groupMembership, opts...)
+		return returnFunc(ctx, controlPlaneID, groupMembership, opts...)
 	}
 	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.GroupMembership, ...operations.Option) *operations.PostControlPlanesIDGroupMembershipsRemoveResponse); ok {
-		r0 = returnFunc(ctx, id, groupMembership, opts...)
+		r0 = returnFunc(ctx, controlPlaneID, groupMembership, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.PostControlPlanesIDGroupMembershipsRemoveResponse)
 		}
 	}
 	if returnFunc, ok := ret.Get(1).(func(context.Context, string, *components.GroupMembership, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, id, groupMembership, opts...)
+		r1 = returnFunc(ctx, controlPlaneID, groupMembership, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -418,15 +418,15 @@ type MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsRemove_Call st
 
 // PostControlPlanesIDGroupMembershipsRemove is a helper method to define mock.On call
 //   - ctx context.Context
-//   - id string
+//   - controlPlaneID string
 //   - groupMembership *components.GroupMembership
 //   - opts ...operations.Option
-func (_e *MockControlPlaneGroupsSDK_Expecter) PostControlPlanesIDGroupMembershipsRemove(ctx interface{}, id interface{}, groupMembership interface{}, opts ...interface{}) *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsRemove_Call {
+func (_e *MockControlPlaneGroupsSDK_Expecter) PostControlPlanesIDGroupMembershipsRemove(ctx interface{}, controlPlaneID interface{}, groupMembership interface{}, opts ...interface{}) *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsRemove_Call {
 	return &MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsRemove_Call{Call: _e.mock.On("PostControlPlanesIDGroupMembershipsRemove",
-		append([]interface{}{ctx, id, groupMembership}, opts...)...)}
+		append([]interface{}{ctx, controlPlaneID, groupMembership}, opts...)...)}
 }
 
-func (_c *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsRemove_Call) Run(run func(ctx context.Context, id string, groupMembership *components.GroupMembership, opts ...operations.Option)) *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsRemove_Call {
+func (_c *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsRemove_Call) Run(run func(ctx context.Context, controlPlaneID string, groupMembership *components.GroupMembership, opts ...operations.Option)) *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsRemove_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -461,18 +461,18 @@ func (_c *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsRemove_Ca
 	return _c
 }
 
-func (_c *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsRemove_Call) RunAndReturn(run func(ctx context.Context, id string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PostControlPlanesIDGroupMembershipsRemoveResponse, error)) *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsRemove_Call {
+func (_c *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsRemove_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PostControlPlanesIDGroupMembershipsRemoveResponse, error)) *MockControlPlaneGroupsSDK_PostControlPlanesIDGroupMembershipsRemove_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // PutControlPlanesIDGroupMemberships provides a mock function for the type MockControlPlaneGroupsSDK
-func (_mock *MockControlPlaneGroupsSDK) PutControlPlanesIDGroupMemberships(ctx context.Context, id string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PutControlPlanesIDGroupMembershipsResponse, error) {
+func (_mock *MockControlPlaneGroupsSDK) PutControlPlanesIDGroupMemberships(ctx context.Context, controlPlaneID string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PutControlPlanesIDGroupMembershipsResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, id, groupMembership, opts)
+		tmpRet = _mock.Called(ctx, controlPlaneID, groupMembership, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, id, groupMembership)
+		tmpRet = _mock.Called(ctx, controlPlaneID, groupMembership)
 	}
 	ret := tmpRet
 
@@ -483,17 +483,17 @@ func (_mock *MockControlPlaneGroupsSDK) PutControlPlanesIDGroupMemberships(ctx c
 	var r0 *operations.PutControlPlanesIDGroupMembershipsResponse
 	var r1 error
 	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.GroupMembership, ...operations.Option) (*operations.PutControlPlanesIDGroupMembershipsResponse, error)); ok {
-		return returnFunc(ctx, id, groupMembership, opts...)
+		return returnFunc(ctx, controlPlaneID, groupMembership, opts...)
 	}
 	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.GroupMembership, ...operations.Option) *operations.PutControlPlanesIDGroupMembershipsResponse); ok {
-		r0 = returnFunc(ctx, id, groupMembership, opts...)
+		r0 = returnFunc(ctx, controlPlaneID, groupMembership, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.PutControlPlanesIDGroupMembershipsResponse)
 		}
 	}
 	if returnFunc, ok := ret.Get(1).(func(context.Context, string, *components.GroupMembership, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, id, groupMembership, opts...)
+		r1 = returnFunc(ctx, controlPlaneID, groupMembership, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -507,15 +507,15 @@ type MockControlPlaneGroupsSDK_PutControlPlanesIDGroupMemberships_Call struct {
 
 // PutControlPlanesIDGroupMemberships is a helper method to define mock.On call
 //   - ctx context.Context
-//   - id string
+//   - controlPlaneID string
 //   - groupMembership *components.GroupMembership
 //   - opts ...operations.Option
-func (_e *MockControlPlaneGroupsSDK_Expecter) PutControlPlanesIDGroupMemberships(ctx interface{}, id interface{}, groupMembership interface{}, opts ...interface{}) *MockControlPlaneGroupsSDK_PutControlPlanesIDGroupMemberships_Call {
+func (_e *MockControlPlaneGroupsSDK_Expecter) PutControlPlanesIDGroupMemberships(ctx interface{}, controlPlaneID interface{}, groupMembership interface{}, opts ...interface{}) *MockControlPlaneGroupsSDK_PutControlPlanesIDGroupMemberships_Call {
 	return &MockControlPlaneGroupsSDK_PutControlPlanesIDGroupMemberships_Call{Call: _e.mock.On("PutControlPlanesIDGroupMemberships",
-		append([]interface{}{ctx, id, groupMembership}, opts...)...)}
+		append([]interface{}{ctx, controlPlaneID, groupMembership}, opts...)...)}
 }
 
-func (_c *MockControlPlaneGroupsSDK_PutControlPlanesIDGroupMemberships_Call) Run(run func(ctx context.Context, id string, groupMembership *components.GroupMembership, opts ...operations.Option)) *MockControlPlaneGroupsSDK_PutControlPlanesIDGroupMemberships_Call {
+func (_c *MockControlPlaneGroupsSDK_PutControlPlanesIDGroupMemberships_Call) Run(run func(ctx context.Context, controlPlaneID string, groupMembership *components.GroupMembership, opts ...operations.Option)) *MockControlPlaneGroupsSDK_PutControlPlanesIDGroupMemberships_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -550,7 +550,7 @@ func (_c *MockControlPlaneGroupsSDK_PutControlPlanesIDGroupMemberships_Call) Ret
 	return _c
 }
 
-func (_c *MockControlPlaneGroupsSDK_PutControlPlanesIDGroupMemberships_Call) RunAndReturn(run func(ctx context.Context, id string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PutControlPlanesIDGroupMembershipsResponse, error)) *MockControlPlaneGroupsSDK_PutControlPlanesIDGroupMemberships_Call {
+func (_c *MockControlPlaneGroupsSDK_PutControlPlanesIDGroupMemberships_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PutControlPlanesIDGroupMembershipsResponse, error)) *MockControlPlaneGroupsSDK_PutControlPlanesIDGroupMemberships_Call {
 	_c.Call.Return(run)
 	return _c
 }

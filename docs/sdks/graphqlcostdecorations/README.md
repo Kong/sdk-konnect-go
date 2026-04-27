@@ -9,6 +9,7 @@
 * [ListGraphqlRateLimitingAdvancedCostWithService](#listgraphqlratelimitingadvancedcostwithservice) - List all GraphQL Cost Decorations associated with a Service
 * [CreateGraphqlRateLimitingAdvancedCostWithService](#creategraphqlratelimitingadvancedcostwithservice) - Create a new GraphQL Cost Decoration associated with a Service
 * [DeleteGraphqlRateLimitingAdvancedCostWithService](#deletegraphqlratelimitingadvancedcostwithservice) - Delete a a GraphQL Cost Decoration associated with a Service
+* [GetGraphqlRateLimitingAdvancedCostWithService](#getgraphqlratelimitingadvancedcostwithservice) - Get a GraphQL Cost Decoration associated with a Service
 * [UpsertGraphqlRateLimitingAdvancedCostWithService](#upsertgraphqlratelimitingadvancedcostwithservice) - Upsert a GraphQL Cost Decoration associated with a Service
 
 ## ListGraphqlRateLimitingAdvancedCost
@@ -298,6 +299,65 @@ func main() {
 ### Response
 
 **[*operations.DeleteGraphqlRateLimitingAdvancedCostWithServiceResponse](../../models/operations/deletegraphqlratelimitingadvancedcostwithserviceresponse.md), error**
+
+### Errors
+
+| Error Type         | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 4XX, 5XX           | \*/\*              |
+
+## GetGraphqlRateLimitingAdvancedCostWithService
+
+Get a GraphQL Cost Decoration associated with a Service using ID.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-graphql-rate-limiting-advanced-cost-with-service" method="get" path="/v2/control-planes/{controlPlaneId}/core-entities/services/{ServiceId}/graphql-rate-limiting-advanced/costs/{GraphQLCostDecorationId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.GraphQLCostDecorations.GetGraphqlRateLimitingAdvancedCostWithService(ctx, operations.GetGraphqlRateLimitingAdvancedCostWithServiceRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
+        GraphQLCostDecorationID: "",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.GraphQLCostDecoration != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                          | Type                                                                                                                                               | Required                                                                                                                                           | Description                                                                                                                                        |
+| -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                                                                              | :heavy_check_mark:                                                                                                                                 | The context to use for the request.                                                                                                                |
+| `request`                                                                                                                                          | [operations.GetGraphqlRateLimitingAdvancedCostWithServiceRequest](../../models/operations/getgraphqlratelimitingadvancedcostwithservicerequest.md) | :heavy_check_mark:                                                                                                                                 | The request object to use for the request.                                                                                                         |
+| `opts`                                                                                                                                             | [][operations.Option](../../models/operations/option.md)                                                                                           | :heavy_minus_sign:                                                                                                                                 | The options for this request.                                                                                                                      |
+
+### Response
+
+**[*operations.GetGraphqlRateLimitingAdvancedCostWithServiceResponse](../../models/operations/getgraphqlratelimitingadvancedcostwithserviceresponse.md), error**
 
 ### Errors
 
