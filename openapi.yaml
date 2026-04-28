@@ -14345,9 +14345,6 @@ paths:
       tags:
         - Portal Auth Settings
     post:
-      x-speakeasy-entity-operation:
-        terraform-resource: PortalIdpTeamGroupMapping#create
-        terraform-datasource: null
       operationId: create-portal-idp-team-group-mapping
       summary: Create Team Group Mapping
       description: |
@@ -14375,9 +14372,6 @@ paths:
       - $ref: '#/components/parameters/IdentityProviderId'
       - $ref: '#/components/parameters/TeamGroupMappingId'
     get:
-      x-speakeasy-entity-operation:
-        terraform-resource: PortalIdpTeamGroupMapping#read
-        terraform-datasource: null
       operationId: get-portal-idp-team-group-mapping
       summary: Get Team Group Mapping
       description: Returns the team group mapping for the specified ID.
@@ -14395,9 +14389,6 @@ paths:
       tags:
         - Portal Auth Settings
     delete:
-      x-speakeasy-entity-operation:
-        terraform-resource: PortalIdpTeamGroupMapping#delete
-        terraform-datasource: null
       operationId: delete-portal-idp-team-group-mapping
       summary: Delete Team Group Mapping
       description: |
