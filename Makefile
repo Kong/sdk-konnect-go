@@ -253,13 +253,17 @@ TYPES_TO_TEST_FIELDS := \
 	Certificate \
 	Consumer \
 	ConsumerGroup \
-	ControlPlane \
-	Network \
+	CreateControlPlaneRequest \
+	CreateNetworkRequest \
 	HMACAuth \
 	Jwt \
 	Key \
 	KeySet \
 	Plugin \
+	CreatePluginWithConsumerGroupRequest \
+	UpsertPluginWithConsumerGroupRequest \
+	CreatePluginWithConsumerRequest \
+	UpsertPluginWithConsumerRequest \
 	Route \
 	Service \
 	Target \
@@ -273,6 +277,7 @@ TYPES_TO_TEST_FIELDS_COMMA := $(subst $(space),$(comma),$(strip $(TYPES_TO_TEST_
 
 .PHONY: generate.field_tests
 generate.field_tests:
+	rm -rf test/fields/*
 	go run ./scripts/gentests/ \
 		-types=$(TYPES_TO_TEST_FIELDS_COMMA)
 

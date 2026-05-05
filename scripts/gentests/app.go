@@ -44,7 +44,7 @@ func run(rawArgs []string) int {
 			return fail(fmt.Errorf("generate %s.%s: %w", target.Pkg.Name, target.Name, err))
 		}
 
-		fileName := fmt.Sprintf("%s_%s_fields_test.go", target.Pkg.Name, toSnakeCase(target.Name))
+		fileName := fmt.Sprintf("zz_generated_%s_%s_fields_test.go", target.Pkg.Name, toSnakeCase(target.Name))
 		filePath := filepath.Join(outputDir, fileName)
 		if err := os.WriteFile(filePath, output, 0o644); err != nil {
 			return fail(fmt.Errorf("write %s: %w", filePath, err))
