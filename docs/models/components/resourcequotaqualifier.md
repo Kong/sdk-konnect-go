@@ -24,3 +24,4 @@ custom := components.ResourceQuotaQualifier("custom_value")
 | `ResourceQuotaQualifierCountNetworksNotOffline`           | count/networks.not-offline                                |
 | `ResourceQuotaQualifierCountDataPlanesEstimate`           | count/data-planes-estimate                                |
 | `ResourceQuotaQualifierCountServerlessDataPlanesEstimate` | count/serverless-data-planes-estimate                     |
+| `ResourceQuotaQualifierCountDataPlaneGroupsEstimate`      | count/data-plane-groups-estimate                          |

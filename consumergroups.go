@@ -714,12 +714,7 @@ func (s *ConsumerGroups) DeleteConsumerGroup(ctx context.Context, controlPlaneID
 
 // GetConsumerGroup - Get a Consumer Group
 // Get a Consumer Group using ID.
-func (s *ConsumerGroups) GetConsumerGroup(ctx context.Context, consumerGroupID string, controlPlaneID string, opts ...operations.Option) (*operations.GetConsumerGroupResponse, error) {
-	request := operations.GetConsumerGroupRequest{
-		ConsumerGroupID: consumerGroupID,
-		ControlPlaneID:  controlPlaneID,
-	}
-
+func (s *ConsumerGroups) GetConsumerGroup(ctx context.Context, request operations.GetConsumerGroupRequest, opts ...operations.Option) (*operations.GetConsumerGroupResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -770,6 +765,10 @@ func (s *ConsumerGroups) GetConsumerGroup(ctx context.Context, consumerGroupID s
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
+
+	if err := utils.PopulateQueryParams(ctx, req, request, nil, nil); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
 
 	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
 		return nil, err

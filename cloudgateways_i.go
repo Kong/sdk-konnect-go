@@ -24,6 +24,9 @@ type CloudGatewaysSDK interface {
 	// DeleteAddOn - Delete Add-On
 	// Deletes an add-on by ID. The request will be rejected if the managed cache partial is still in use by some plugins.
 	DeleteAddOn(ctx context.Context, addOnID string, opts ...operations.Option) (*operations.DeleteAddOnResponse, error)
+	// UpdateAddOn - Update Add-On
+	// Updates the configuration of an existing add-on.
+	UpdateAddOn(ctx context.Context, addOnID string, updateAddOnRequest components.UpdateAddOnRequest, opts ...operations.Option) (*operations.UpdateAddOnResponse, error)
 	// GetAvailabilityJSON - Get Resource Availability JSON
 	// Get Cloud Gateways Availability JSON document for describing cloud provider and region availability, pricing,
 	// gateway version availability, and instance type information.

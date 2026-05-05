@@ -4,7 +4,8 @@ package components
 
 // UpdatePortalCustomDomainRequest - Create a portal custom domain.
 type UpdatePortalCustomDomainRequest struct {
-	Enabled *bool `json:"enabled,omitempty"`
+	Enabled *bool                        `json:"enabled,omitempty"`
+	Ssl     *UpdatePortalCustomDomainSSL `json:"ssl,omitempty"`
 }
 
 func (u *UpdatePortalCustomDomainRequest) GetEnabled() *bool {
@@ -12,4 +13,11 @@ func (u *UpdatePortalCustomDomainRequest) GetEnabled() *bool {
 		return nil
 	}
 	return u.Enabled
+}
+
+func (u *UpdatePortalCustomDomainRequest) GetSsl() *UpdatePortalCustomDomainSSL {
+	if u == nil {
+		return nil
+	}
+	return u.Ssl
 }
