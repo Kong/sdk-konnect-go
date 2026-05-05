@@ -22,7 +22,7 @@ type ConsumerGroupsSDK interface {
 	DeleteConsumerGroup(ctx context.Context, controlPlaneID string, consumerGroupID string, opts ...operations.Option) (*operations.DeleteConsumerGroupResponse, error)
 	// GetConsumerGroup - Get a Consumer Group
 	// Get a Consumer Group using ID.
-	GetConsumerGroup(ctx context.Context, consumerGroupID string, controlPlaneID string, opts ...operations.Option) (*operations.GetConsumerGroupResponse, error)
+	GetConsumerGroup(ctx context.Context, request operations.GetConsumerGroupRequest, opts ...operations.Option) (*operations.GetConsumerGroupResponse, error)
 	// UpsertConsumerGroup - Upsert a Consumer Group
 	// Create or Update Consumer Group using ID.
 	UpsertConsumerGroup(ctx context.Context, request operations.UpsertConsumerGroupRequest, opts ...operations.Option) (*operations.UpsertConsumerGroupResponse, error)

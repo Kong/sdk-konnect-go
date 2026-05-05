@@ -3884,6 +3884,53 @@ paths:
       tags:
         - Add-Ons
       x-speakeasy-group: CloudGateways
+    patch:
+      x-speakeasy-entity-operation:
+        terraform-resource: CloudGatewayAddon#update
+        terraform-datasource: null
+      operationId: update-add-on
+      summary: Update Add-On
+      description: Updates the configuration of an existing add-on.
+      parameters:
+        - $ref: '#/components/parameters/AddOnId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAddOnRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/UpdateAddOnResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        '401':
+          description: Unauthorized
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        '403':
+          description: Forbidden
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenError'
+        '404':
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+      servers:
+        - url: 'https://global.api.konghq.com/'
+      tags:
+        - Add-Ons
+      x-speakeasy-group: CloudGateways
   /v2/cloud-gateways/availability.json:
     get:
       operationId: get-availability-json
@@ -5740,6 +5787,8 @@ paths:
       operationId: get-consumer_group
       summary: Get a Consumer Group
       description: Get a Consumer Group using ID.
+      parameters:
+        - $ref: '#/components/parameters/ListConsumers'
       responses:
         '200':
           description: Successfully fetched Consumer Group
@@ -13459,6 +13508,9 @@ paths:
     parameters:
       - $ref: '#/components/parameters/PortalId'
     patch:
+      x-speakeasy-entity-operation:
+        terraform-resource: 'PortalAuditLogWebhook#create,update'
+        terraform-datasource: null
       operationId: update-portal-audit-log-webhook
       summary: Update Portal Audit Log Webhook
       description: Updates the configuration for a webhook to receive audit logs.
@@ -13478,6 +13530,9 @@ paths:
       tags:
         - Portal Audit Logs
     get:
+      x-speakeasy-entity-operation:
+        terraform-resource: PortalAuditLogWebhook#read
+        terraform-datasource: null
       operationId: get-portal-audit-log-webhook
       summary: Get Portal Audit Log Webhook
       description: Returns configuration for the audit log webhook.
@@ -13493,6 +13548,9 @@ paths:
       tags:
         - Portal Audit Logs
     delete:
+      x-speakeasy-entity-operation:
+        terraform-resource: PortalAuditLogWebhook#delete
+        terraform-datasource: null
       operationId: delete-portal-audit-log-webhook
       summary: Delete Portal Audit Log Webhook
       description: 'Removes configuration for the audit log webhook. The destination ID is set to empty, and the webhook enabled field is set to false'
@@ -17554,6 +17612,13 @@ components:
       required: true
       schema:
         type: string
+    ListConsumers:
+      description: Expand the consumer group to include a list of its consumers.
+      example: false
+      in: query
+      name: list_consumers
+      schema:
+        type: boolean
     MCPCapabilities:
       name: capabilities
       in: query
@@ -18446,6 +18511,7 @@ components:
             - cluster_type
             - auth_type
             - cloud_gateway
+            - proxy_urls
         created_at:
           description: An ISO-8604 timestamp representation of control plane creation date.
           type: string
@@ -18467,6 +18533,8 @@ components:
         - config
         - created_at
         - updated_at
+        - description
+        - labels
     GroupStatus:
       description: The Group Status object contains information about the status of a control plane group.
       type: object
@@ -18658,6 +18726,34 @@ components:
           $ref: '#/components/schemas/BooleanFieldFilter'
       additionalProperties: false
       title: ControlPlaneFilterParameters
+    CursorPaginatedMetaWithSizeAndTotal:
+      description: returns the pagination information
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/CursorMetaWithSizeAndTotal'
+      required:
+        - page
+      title: CursorPaginatedMetaWithSizeAndTotal
+    CursorMetaWithSizeAndTotal:
+      type: object
+      properties:
+        next:
+          description: URI to the next page
+          type: string
+          format: path
+          nullable: true
+        size:
+          description: Requested page size
+          type: number
+          example: 10
+        total:
+          description: Total number of objects in the collection; will only be present on the first page
+          type: number
+          example: 974
+      required:
+        - size
+        - next
     StringFieldEqualsFilter:
       description: Filters on the given string field value by exact match.
       properties:
@@ -19027,36 +19123,6 @@ components:
               example: 'kong:trace:1234567890'
             detail:
               example: Not found
-    CursorMetaWithSizeAndTotal:
-      type: object
-      properties:
-        next:
-          description: URI to the next page
-          type: string
-          format: path
-          nullable: true
-        size:
-          description: Requested page size
-          type: number
-          example: 10
-        total:
-          description: Total number of objects in the collection; will only be present on the first page
-          type: number
-          example: 974
-          nullable: true
-      required:
-        - size
-        - next
-        - total
-    CursorPaginatedMetaWithSizeAndTotal:
-      description: returns the pagination information
-      type: object
-      properties:
-        page:
-          $ref: '#/components/schemas/CursorMetaWithSizeAndTotal'
-      required:
-        - page
-      title: CursorPaginatedMetaWithSizeAndTotal
     CreatedAt:
       description: An ISO-8601 timestamp representation of entity creation date.
       type: string
@@ -22172,6 +22238,7 @@ components:
         - count/networks.not-offline
         - count/data-planes-estimate
         - count/serverless-data-planes-estimate
+        - count/data-plane-groups-estimate
       x-speakeasy-unknown-values: allow
     ResourceQuotaName:
       description: The human-readable name of this resource quota.
@@ -22575,6 +22642,38 @@ components:
         - kind
         - capacity_config
       title: CreateManagedCacheAddOnConfig
+      x-speakeasy-name-override: managed_cache
+    UpdateAddOnRequest:
+      description: Request body for updating an add-on.
+      type: object
+      properties:
+        config:
+          $ref: '#/components/schemas/UpdateAddOnConfig'
+      additionalProperties: false
+      required:
+        - config
+      title: UpdateAddOnRequest
+    UpdateAddOnConfig:
+      description: Configuration for updating different types of add-ons.
+      type: object
+      oneOf:
+        - $ref: '#/components/schemas/UpdateManagedCacheAddOnConfig'
+      title: UpdateAddOnConfig
+    UpdateManagedCacheAddOnConfig:
+      description: Configuration for updating a managed cache add-on.
+      type: object
+      properties:
+        kind:
+          description: Type of add-on configuration.
+          type: string
+          const: managed-cache.v0
+        capacity_config:
+          $ref: '#/components/schemas/ManagedCacheCapacityConfig'
+      additionalProperties: false
+      required:
+        - kind
+        - capacity_config
+      title: UpdateManagedCacheAddOnConfig
       x-speakeasy-name-override: managed_cache
     ManagedCacheCapacityConfig:
       description: Configuration for managed cache capacity and performance characteristics.
@@ -27102,6 +27201,22 @@ components:
       required:
         - domain_verification_method
       title: http
+    UpdatePortalCustomDomainSSL:
+      type: object
+      properties:
+        custom_certificate:
+          description: Custom certificate to be used for the SSL termination.
+          type: string
+        custom_private_key:
+          description: Custom certificate private key to be used for the SSL termination.
+          type: string
+        skip_ca_check:
+          description: |
+            Advanced option. If true, the custom certificate is served exactly as provided, without attempting to bundle against a public trust store. Required for certificates issued by an internal/private CA.
+          type: boolean
+          default: false
+      additionalProperties: false
+      title: UpdatePortalCustomDomainSSL
     PortalCustomDomainVerificationMethod:
       type: string
       enum:
@@ -27152,6 +27267,8 @@ components:
       properties:
         enabled:
           type: boolean
+        ssl:
+          $ref: '#/components/schemas/UpdatePortalCustomDomainSSL'
       additionalProperties: false
       title: UpdatePortalCustomDomainRequest
     PortalClaimMappings:
@@ -32404,6 +32521,21 @@ components:
           $ref: '#/components/schemas/VirtualClusterAuthenticationSensitiveDataAwareSchemes'
         namespace:
           $ref: '#/components/schemas/VirtualClusterNamespace'
+        topic_aliases:
+          description: |-
+            **Pre-release Feature**
+            This feature is currently in beta and is subject to change.
+
+            Topic aliases allow exposing backend topics under additional names.
+            An alias creates a new entry point to the same physical data.
+            The alias `topic` field references namespace-visible names (if namespace is configured).
+            Aliases are independent of namespace and can be used without it.
+
+            **Requires a minimum runtime version of `1.2`**.
+          type: array
+          items:
+            $ref: '#/components/schemas/VirtualClusterTopicAlias'
+          x-min-runtime-version: '1.2'
         name:
           $ref: '#/components/schemas/VirtualClusterName'
         dns_label:
@@ -35151,6 +35283,65 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/VirtualClusterNamespaceIdSelector'
+    VirtualClusterTopicAlias:
+      description: |-
+        **Pre-release Feature**
+        This feature is currently in beta and is subject to change.
+
+        A topic alias maps an alias name to a namespace-visible topic name.
+        Clients can produce to, consume from, and discover the topic under the alias name.
+        The original topic name remains accessible.
+
+        **Requires a minimum runtime version of `1.2`**.
+      type: object
+      properties:
+        alias:
+          description: The client-visible topic name.
+          type: string
+          minLength: 1
+        topic:
+          description: The namespace-visible topic name this alias resolves to.
+          type: string
+          minLength: 1
+        match:
+          description: |
+            CEL expression evaluated against the connection's auth context.
+            If omitted or empty, the alias is active for all connections.
+          type: string
+          default: ''
+          x-expression:
+            type: boolean
+            fields:
+              - name: context.auth.principal.name
+                type: string
+                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.type
+                type: string
+                description: |
+                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
+              - name: context.auth.token.claims
+                type: object
+                description: 'All claims from the JWT token. Only populated for sasl_oauth_bearer authentication. Claims can be strings, numbers, booleans, arrays or nested JSON objects.'
+        conflict:
+          $ref: '#/components/schemas/VirtualClusterTopicAliasConflict'
+      required:
+        - alias
+        - topic
+      x-min-runtime-version: '1.2'
+    VirtualClusterTopicAliasConflict:
+      description: |
+        How to handle conflicts where an alias shadows a physical topic.
+        * warn - activate the alias but log a warning and set the conflict metric to 1.
+        * ignore - activate the alias silently.
+      type: string
+      default: warn
+      enum:
+        - warn
+        - ignore
+      x-enum-varnames:
+        - VirtualClusterTopicAliasConflictWarn
+        - VirtualClusterTopicAliasConflictIgnore
+      x-speakeasy-unknown-values: allow
     VirtualClusterNamespaceTopicSelector:
       type: object
       discriminator:
@@ -45023,6 +45214,21 @@ components:
                 $ref: '#/components/schemas/VirtualClusterAuthenticationSchemes'
               namespace:
                 $ref: '#/components/schemas/VirtualClusterNamespace'
+              topic_aliases:
+                description: |-
+                  **Pre-release Feature**
+                  This feature is currently in beta and is subject to change.
+
+                  Topic aliases allow exposing backend topics under additional names.
+                  An alias creates a new entry point to the same physical data.
+                  The alias `topic` field references namespace-visible names (if namespace is configured).
+                  Aliases are independent of namespace and can be used without it.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                type: array
+                items:
+                  $ref: '#/components/schemas/VirtualClusterTopicAlias'
+                x-min-runtime-version: '1.2'
               acl_mode:
                 $ref: '#/components/schemas/VirtualClusterACLMode'
               dns_label:
@@ -45056,6 +45262,21 @@ components:
                 $ref: '#/components/schemas/VirtualClusterAuthenticationSensitiveDataAwareSchemes'
               namespace:
                 $ref: '#/components/schemas/VirtualClusterNamespace'
+              topic_aliases:
+                description: |-
+                  **Pre-release Feature**
+                  This feature is currently in beta and is subject to change.
+
+                  Topic aliases allow exposing backend topics under additional names.
+                  An alias creates a new entry point to the same physical data.
+                  The alias `topic` field references namespace-visible names (if namespace is configured).
+                  Aliases are independent of namespace and can be used without it.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                type: array
+                items:
+                  $ref: '#/components/schemas/VirtualClusterTopicAlias'
+                x-min-runtime-version: '1.2'
               acl_mode:
                 $ref: '#/components/schemas/VirtualClusterACLMode'
               dns_label:
@@ -47081,6 +47302,12 @@ components:
             $ref: '#/components/schemas/AddOnResponse'
     RetrieveAddOnResponse:
       description: Response format for retrieving an add-on by ID.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AddOnResponse'
+    UpdateAddOnResponse:
+      description: Response format for updating an add-on.
       content:
         application/json:
           schema:

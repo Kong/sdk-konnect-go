@@ -10,6 +10,7 @@ const (
 	ResourceQuotaQualifierCountNetworksNotOffline           ResourceQuotaQualifier = "count/networks.not-offline"
 	ResourceQuotaQualifierCountDataPlanesEstimate           ResourceQuotaQualifier = "count/data-planes-estimate"
 	ResourceQuotaQualifierCountServerlessDataPlanesEstimate ResourceQuotaQualifier = "count/serverless-data-planes-estimate"
+	ResourceQuotaQualifierCountDataPlaneGroupsEstimate      ResourceQuotaQualifier = "count/data-plane-groups-estimate"
 )
 
 func (e ResourceQuotaQualifier) ToPointer() *ResourceQuotaQualifier {
@@ -20,7 +21,7 @@ func (e ResourceQuotaQualifier) ToPointer() *ResourceQuotaQualifier {
 func (e *ResourceQuotaQualifier) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "count/provider-accounts.per-provider", "count/networks.not-offline", "count/data-planes-estimate", "count/serverless-data-planes-estimate":
+		case "count/provider-accounts.per-provider", "count/networks.not-offline", "count/data-planes-estimate", "count/serverless-data-planes-estimate", "count/data-plane-groups-estimate":
 			return true
 		}
 	}

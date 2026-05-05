@@ -2915,6 +2915,95 @@ func (_c *MockCloudGatewaysSDK_ListTransitGateways_Call) RunAndReturn(run func(c
 	return _c
 }
 
+// UpdateAddOn provides a mock function for the type MockCloudGatewaysSDK
+func (_mock *MockCloudGatewaysSDK) UpdateAddOn(ctx context.Context, addOnID string, updateAddOnRequest components.UpdateAddOnRequest, opts ...operations.Option) (*operations.UpdateAddOnResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, addOnID, updateAddOnRequest, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, addOnID, updateAddOnRequest)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateAddOn")
+	}
+
+	var r0 *operations.UpdateAddOnResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpdateAddOnRequest, ...operations.Option) (*operations.UpdateAddOnResponse, error)); ok {
+		return returnFunc(ctx, addOnID, updateAddOnRequest, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.UpdateAddOnRequest, ...operations.Option) *operations.UpdateAddOnResponse); ok {
+		r0 = returnFunc(ctx, addOnID, updateAddOnRequest, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpdateAddOnResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.UpdateAddOnRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, addOnID, updateAddOnRequest, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockCloudGatewaysSDK_UpdateAddOn_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateAddOn'
+type MockCloudGatewaysSDK_UpdateAddOn_Call struct {
+	*mock.Call
+}
+
+// UpdateAddOn is a helper method to define mock.On call
+//   - ctx context.Context
+//   - addOnID string
+//   - updateAddOnRequest components.UpdateAddOnRequest
+//   - opts ...operations.Option
+func (_e *MockCloudGatewaysSDK_Expecter) UpdateAddOn(ctx interface{}, addOnID interface{}, updateAddOnRequest interface{}, opts ...interface{}) *MockCloudGatewaysSDK_UpdateAddOn_Call {
+	return &MockCloudGatewaysSDK_UpdateAddOn_Call{Call: _e.mock.On("UpdateAddOn",
+		append([]interface{}{ctx, addOnID, updateAddOnRequest}, opts...)...)}
+}
+
+func (_c *MockCloudGatewaysSDK_UpdateAddOn_Call) Run(run func(ctx context.Context, addOnID string, updateAddOnRequest components.UpdateAddOnRequest, opts ...operations.Option)) *MockCloudGatewaysSDK_UpdateAddOn_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 components.UpdateAddOnRequest
+		if args[2] != nil {
+			arg2 = args[2].(components.UpdateAddOnRequest)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_UpdateAddOn_Call) Return(updateAddOnResponse *operations.UpdateAddOnResponse, err error) *MockCloudGatewaysSDK_UpdateAddOn_Call {
+	_c.Call.Return(updateAddOnResponse, err)
+	return _c
+}
+
+func (_c *MockCloudGatewaysSDK_UpdateAddOn_Call) RunAndReturn(run func(ctx context.Context, addOnID string, updateAddOnRequest components.UpdateAddOnRequest, opts ...operations.Option) (*operations.UpdateAddOnResponse, error)) *MockCloudGatewaysSDK_UpdateAddOn_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpdateNetwork provides a mock function for the type MockCloudGatewaysSDK
 func (_mock *MockCloudGatewaysSDK) UpdateNetwork(ctx context.Context, networkID string, patchNetworkRequest components.PatchNetworkRequest, opts ...operations.Option) (*operations.UpdateNetworkResponse, error) {
 	var tmpRet mock.Arguments

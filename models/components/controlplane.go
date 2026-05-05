@@ -70,7 +70,7 @@ type ControlPlaneConfig struct {
 	// Whether the Control Plane can be used for cloud-gateways.
 	CloudGateway bool `json:"cloud_gateway"`
 	// Array of proxy URLs associated with reaching the data-planes connected to a control-plane.
-	ProxyUrls []ProxyURL `json:"proxy_urls,omitempty"`
+	ProxyUrls []ProxyURL `json:"proxy_urls"`
 }
 
 func (c *ControlPlaneConfig) GetControlPlaneEndpoint() string {
@@ -110,7 +110,7 @@ func (c *ControlPlaneConfig) GetCloudGateway() bool {
 
 func (c *ControlPlaneConfig) GetProxyUrls() []ProxyURL {
 	if c == nil {
-		return nil
+		return []ProxyURL{}
 	}
 	return c.ProxyUrls
 }
@@ -122,12 +122,12 @@ type ControlPlane struct {
 	// The name of the control plane.
 	Name string `json:"name"`
 	// The description of the control plane in Konnect.
-	Description *string `json:"description,omitempty"`
+	Description string `json:"description"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
-	Labels map[string]string `json:"labels,omitempty"`
+	Labels map[string]string `json:"labels"`
 	// CP configuration object for related access endpoints.
 	Config ControlPlaneConfig `json:"config"`
 	// An ISO-8604 timestamp representation of control plane creation date.
@@ -161,16 +161,16 @@ func (c *ControlPlane) GetName() string {
 	return c.Name
 }
 
-func (c *ControlPlane) GetDescription() *string {
+func (c *ControlPlane) GetDescription() string {
 	if c == nil {
-		return nil
+		return ""
 	}
 	return c.Description
 }
 
 func (c *ControlPlane) GetLabels() map[string]string {
 	if c == nil {
-		return nil
+		return map[string]string{}
 	}
 	return c.Labels
 }

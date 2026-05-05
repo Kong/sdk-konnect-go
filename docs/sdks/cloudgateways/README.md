@@ -8,6 +8,7 @@
 * [ListAddOns](#listaddons) - List Add-Ons
 * [GetAddOn](#getaddon) - Get Add-On
 * [DeleteAddOn](#deleteaddon) - Delete Add-On
+* [UpdateAddOn](#updateaddon) - Update Add-On
 * [GetAvailabilityJSON](#getavailabilityjson) - Get Resource Availability JSON
 * [ListConfigurations](#listconfigurations) - List Configurations
 * [CreateConfiguration](#createconfiguration) - Create Configuration
@@ -299,6 +300,81 @@ func main() {
 ### Response
 
 **[*operations.DeleteAddOnResponse](../../models/operations/deleteaddonresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## UpdateAddOn
+
+Updates the configuration of an existing add-on.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="update-add-on" method="patch" path="/v2/cloud-gateways/add-ons/{addOnId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdateAddOn(ctx, "550e8400-e29b-41d4-a716-446655440000", components.UpdateAddOnRequest{
+        Config: components.CreateUpdateAddOnConfigManagedCache(
+            components.ManagedCache{
+                CapacityConfig: components.CreateManagedCacheCapacityConfigTiered(
+                    components.Tiered{
+                        Tier: components.TierSmall,
+                    },
+                ),
+            },
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AddOnResponse != nil {
+        switch res.AddOnResponse.Owner.Type {
+            case components.AddOnOwnerTypeControlPlaneAddOnOwner:
+                // res.AddOnResponse.Owner.ControlPlaneAddOnOwner is populated
+            case components.AddOnOwnerTypeControlPlaneGroupAddOnOwner:
+                // res.AddOnResponse.Owner.ControlPlaneGroupAddOnOwner is populated
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |                                                                                |
+| `addOnID`                                                                      | `string`                                                                       | :heavy_check_mark:                                                             | ID of the add-on to operate on.                                                | 550e8400-e29b-41d4-a716-446655440000                                           |
+| `updateAddOnRequest`                                                           | [components.UpdateAddOnRequest](../../models/components/updateaddonrequest.md) | :heavy_check_mark:                                                             | N/A                                                                            |                                                                                |
+| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |                                                                                |
+
+### Response
+
+**[*operations.UpdateAddOnResponse](../../models/operations/updateaddonresponse.md), error**
 
 ### Errors
 
