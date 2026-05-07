@@ -42,9 +42,9 @@ type Current struct {
 	//
 	Labels map[string]string `json:"labels,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
-	CreatedAt *time.Time `json:"created_at,omitempty"`
+	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity last update date.
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	UpdatedAt time.Time `json:"updated_at"`
 	// An ISO-8601 timestamp representation of entity deletion date.
 	DeletedAt *time.Time `json:"deleted_at,omitempty"`
 	// The customer ID of the subscription.
@@ -88,16 +88,16 @@ func (c *Current) GetLabels() map[string]string {
 	return c.Labels
 }
 
-func (c *Current) GetCreatedAt() *time.Time {
+func (c *Current) GetCreatedAt() time.Time {
 	if c == nil {
-		return nil
+		return time.Time{}
 	}
 	return c.CreatedAt
 }
 
-func (c *Current) GetUpdatedAt() *time.Time {
+func (c *Current) GetUpdatedAt() time.Time {
 	if c == nil {
-		return nil
+		return time.Time{}
 	}
 	return c.UpdatedAt
 }
@@ -172,9 +172,9 @@ type Next struct {
 	//
 	Labels map[string]string `json:"labels,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
-	CreatedAt *time.Time `json:"created_at,omitempty"`
+	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity last update date.
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	UpdatedAt time.Time `json:"updated_at"`
 	// An ISO-8601 timestamp representation of entity deletion date.
 	DeletedAt *time.Time `json:"deleted_at,omitempty"`
 	// The customer ID of the subscription.
@@ -218,16 +218,16 @@ func (n *Next) GetLabels() map[string]string {
 	return n.Labels
 }
 
-func (n *Next) GetCreatedAt() *time.Time {
+func (n *Next) GetCreatedAt() time.Time {
 	if n == nil {
-		return nil
+		return time.Time{}
 	}
 	return n.CreatedAt
 }
 
-func (n *Next) GetUpdatedAt() *time.Time {
+func (n *Next) GetUpdatedAt() time.Time {
 	if n == nil {
-		return nil
+		return time.Time{}
 	}
 	return n.UpdatedAt
 }

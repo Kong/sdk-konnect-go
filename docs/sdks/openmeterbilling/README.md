@@ -131,8 +131,8 @@ func main() {
             )),
             Tax: &components.CreateBillingProfileRequestWorkflowTaxSettings{
                 DefaultTaxConfig: &components.CreateBillingProfileRequestDefaultTaxConfig{
-                    Stripe: &components.CreateBillingProfileRequestStripeTaxConfig{
-                        Code: "txcd_10000000",
+                    TaxCode: &components.CreateBillingProfileRequestTaxCode{
+                        ID: "01G65Z755AFWAKHE12NY0CQ9FH",
                     },
                 },
             },
@@ -296,8 +296,8 @@ func main() {
             )),
             Tax: &components.UpsertBillingProfileRequestWorkflowTaxSettings{
                 DefaultTaxConfig: &components.UpsertBillingProfileRequestDefaultTaxConfig{
-                    Stripe: &components.UpsertBillingProfileRequestStripeTaxConfig{
-                        Code: "txcd_10000000",
+                    TaxCode: &components.UpsertBillingProfileRequestTaxCode{
+                        ID: "01G65Z755AFWAKHE12NY0CQ9FH",
                     },
                 },
             },

@@ -309,11 +309,7 @@ func (s *Meters) CreateMeter(ctx context.Context, request components.CreateMeter
 
 // ListMeters - List meters
 // List meters.
-func (s *Meters) ListMeters(ctx context.Context, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListMetersResponse, error) {
-	request := operations.ListMetersRequest{
-		Page: page,
-	}
-
+func (s *Meters) ListMeters(ctx context.Context, request operations.ListMetersRequest, opts ...operations.Option) (*operations.ListMetersResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,

@@ -48,8 +48,8 @@ type UpdateAPIVersionRequest struct {
 	// If false, operations removal will be rejected with a 409 error.
 	// Omitting the value (i.e., setting `?force`) means true.
 	//
-	Force      *UpdateAPIVersionQueryParamForce `default:"false" queryParam:"style=form,explode=true,name=force"`
-	APIVersion components.APIVersion            `request:"mediaType=application/json"`
+	Force             *UpdateAPIVersionQueryParamForce `default:"false" queryParam:"style=form,explode=true,name=force"`
+	APIVersionRequest components.APIVersionRequest     `request:"mediaType=application/json"`
 }
 
 func (u UpdateAPIVersionRequest) MarshalJSON() ([]byte, error) {
@@ -84,11 +84,11 @@ func (u *UpdateAPIVersionRequest) GetForce() *UpdateAPIVersionQueryParamForce {
 	return u.Force
 }
 
-func (u *UpdateAPIVersionRequest) GetAPIVersion() components.APIVersion {
+func (u *UpdateAPIVersionRequest) GetAPIVersionRequest() components.APIVersionRequest {
 	if u == nil {
-		return components.APIVersion{}
+		return components.APIVersionRequest{}
 	}
-	return u.APIVersion
+	return u.APIVersionRequest
 }
 
 type UpdateAPIVersionResponse struct {

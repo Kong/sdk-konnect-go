@@ -656,9 +656,9 @@ func main() {
     res, err := s.APIVersion.UpdateAPIVersion(ctx, operations.UpdateAPIVersionRequest{
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         VersionID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
-        APIVersion: components.APIVersion{
+        APIVersionRequest: components.APIVersionRequest{
             Version: sdkkonnectgo.Pointer("1.0.0"),
-            Spec: &components.APIVersionSpec{
+            Spec: &components.APIVersionRequestSpec{
                 Content: sdkkonnectgo.Pointer("{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Example API\",\"version\":\"1.0.0\"},\"paths\":{\"/example\":{\"get\":{\"summary\":\"Example endpoint\",\"responses\":{\"200\":{\"description\":\"Successful response\"}}}}}}"),
             },
         },
@@ -697,9 +697,9 @@ func main() {
     res, err := s.APIVersion.UpdateAPIVersion(ctx, operations.UpdateAPIVersionRequest{
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         VersionID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
-        APIVersion: components.APIVersion{
+        APIVersionRequest: components.APIVersionRequest{
             Version: sdkkonnectgo.Pointer("1.0.0"),
-            Spec: &components.APIVersionSpec{
+            Spec: &components.APIVersionRequestSpec{
                 Content: sdkkonnectgo.Pointer("{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Example API\",\"version\":\"1.0.0\"},\"paths\":{\"/example\":{\"get\":{\"summary\":\"Example endpoint\",\"responses\":{\"200\":{\"description\":\"Successful response\"}}}}}}"),
             },
         },
@@ -738,9 +738,9 @@ func main() {
     res, err := s.APIVersion.UpdateAPIVersion(ctx, operations.UpdateAPIVersionRequest{
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         VersionID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
-        APIVersion: components.APIVersion{
+        APIVersionRequest: components.APIVersionRequest{
             Version: sdkkonnectgo.Pointer("1.0.0"),
-            Spec: &components.APIVersionSpec{
+            Spec: &components.APIVersionRequestSpec{
                 Content: sdkkonnectgo.Pointer("{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Example API\",\"version\":\"1.0.0\"},\"paths\":{\"/example\":{\"get\":{\"summary\":\"Example endpoint\",\"responses\":{\"200\":{\"description\":\"Successful response\"}}}}}}"),
             },
         },
@@ -779,9 +779,9 @@ func main() {
     res, err := s.APIVersion.UpdateAPIVersion(ctx, operations.UpdateAPIVersionRequest{
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         VersionID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
-        APIVersion: components.APIVersion{
+        APIVersionRequest: components.APIVersionRequest{
             Version: sdkkonnectgo.Pointer("1.0.0"),
-            Spec: &components.APIVersionSpec{
+            Spec: &components.APIVersionRequestSpec{
                 Content: sdkkonnectgo.Pointer("{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Example API\",\"version\":\"1.0.0\"},\"paths\":{\"/example\":{\"get\":{\"summary\":\"Example endpoint\",\"responses\":{\"200\":{\"description\":\"Successful response\"}}}}}}"),
             },
         },
@@ -820,9 +820,9 @@ func main() {
     res, err := s.APIVersion.UpdateAPIVersion(ctx, operations.UpdateAPIVersionRequest{
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         VersionID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
-        APIVersion: components.APIVersion{
+        APIVersionRequest: components.APIVersionRequest{
             Version: sdkkonnectgo.Pointer("1.0.0"),
-            Spec: &components.APIVersionSpec{
+            Spec: &components.APIVersionRequestSpec{
                 Content: sdkkonnectgo.Pointer("{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Example API\",\"version\":\"1.0.0\"},\"paths\":{\"/example\":{\"get\":{\"summary\":\"Example endpoint\",\"responses\":{\"200\":{\"description\":\"Successful response\"}}}}}}"),
             },
         },
@@ -861,9 +861,9 @@ func main() {
     res, err := s.APIVersion.UpdateAPIVersion(ctx, operations.UpdateAPIVersionRequest{
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         VersionID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
-        APIVersion: components.APIVersion{
+        APIVersionRequest: components.APIVersionRequest{
             Version: sdkkonnectgo.Pointer("1.0.0"),
-            Spec: &components.APIVersionSpec{
+            Spec: &components.APIVersionRequestSpec{
                 Content: sdkkonnectgo.Pointer("{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Example API\",\"version\":\"1.0.0\"},\"paths\":{\"/example\":{\"get\":{\"summary\":\"Example endpoint\",\"responses\":{\"200\":{\"description\":\"Successful response\"}}}}}}"),
             },
         },
@@ -902,9 +902,9 @@ func main() {
     res, err := s.APIVersion.UpdateAPIVersion(ctx, operations.UpdateAPIVersionRequest{
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         VersionID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
-        APIVersion: components.APIVersion{
+        APIVersionRequest: components.APIVersionRequest{
             Version: sdkkonnectgo.Pointer("1.0.0"),
-            Spec: &components.APIVersionSpec{
+            Spec: &components.APIVersionRequestSpec{
                 Content: sdkkonnectgo.Pointer("{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Example API\",\"version\":\"1.0.0\"},\"paths\":{\"/example\":{\"get\":{\"summary\":\"Example endpoint\",\"responses\":{\"200\":{\"description\":\"Successful response\"}}}}}}"),
             },
         },
@@ -943,9 +943,9 @@ func main() {
     res, err := s.APIVersion.UpdateAPIVersion(ctx, operations.UpdateAPIVersionRequest{
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         VersionID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
-        APIVersion: components.APIVersion{
+        APIVersionRequest: components.APIVersionRequest{
             Version: sdkkonnectgo.Pointer("1.0.0"),
-            Spec: &components.APIVersionSpec{
+            Spec: &components.APIVersionRequestSpec{
                 Content: sdkkonnectgo.Pointer("{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Example API\",\"version\":\"1.0.0\"},\"paths\":{\"/example\":{\"get\":{\"summary\":\"Example endpoint\",\"responses\":{\"200\":{\"description\":\"Successful response\"}}}}}}"),
             },
         },
@@ -984,9 +984,9 @@ func main() {
     res, err := s.APIVersion.UpdateAPIVersion(ctx, operations.UpdateAPIVersionRequest{
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         VersionID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
-        APIVersion: components.APIVersion{
+        APIVersionRequest: components.APIVersionRequest{
             Version: sdkkonnectgo.Pointer("1.0.1"),
-            Spec: &components.APIVersionSpec{
+            Spec: &components.APIVersionRequestSpec{
                 Content: sdkkonnectgo.Pointer("{\"openapi\":\"3.0.3\",\"info\":{\"title\":\"Example API\",\"version\":\"1.0.1\"},\"paths\":{\"/example\":{\"get\":{\"summary\":\"Example endpoint\",\"responses\":{\"200\":{\"description\":\"Successful response\"}}}}}}"),
             },
         },
@@ -1025,9 +1025,9 @@ func main() {
     res, err := s.APIVersion.UpdateAPIVersion(ctx, operations.UpdateAPIVersionRequest{
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         VersionID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
-        APIVersion: components.APIVersion{
+        APIVersionRequest: components.APIVersionRequest{
             Version: sdkkonnectgo.Pointer("1.0.2"),
-            Spec: &components.APIVersionSpec{
+            Spec: &components.APIVersionRequestSpec{
                 Content: sdkkonnectgo.Pointer("{\"asyncapi\":\"2.6.0\",\"info\":{\"title\":\"Account Service Updated\",\"version\":\"1.0.1\",\"description\":\"This service is in charge of processing user signups (updated)\"},\"channels\":{\"user/signedup\":{\"publish\":{\"summary\":\"Inform about signed up users\",\"operationId\":\"sendUserSignedUp\",\"message\":{\"name\":\"UserSignedUp\",\"payload\":{\"type\":\"object\",\"properties\":{\"displayName\":{\"type\":\"string\",\"description\":\"Name of the user\"},\"email\":{\"type\":\"string\",\"format\":\"email\",\"description\":\"Email of the user\"}}}}}}}}"),
             },
         },

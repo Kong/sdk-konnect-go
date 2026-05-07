@@ -3,7 +3,9 @@
 package components
 
 type PagePaginationQuery struct {
-	Size   *int64 `queryParam:"name=size"`
+	// The number of items to include per page.
+	Size *int64 `queryParam:"name=size"`
+	// The page number.
 	Number *int64 `queryParam:"name=number"`
 }
 

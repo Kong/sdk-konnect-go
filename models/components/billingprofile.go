@@ -585,6 +585,8 @@ func (e *TaxBehavior) IsExact() bool {
 }
 
 // StripeTaxConfig - Stripe tax config.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 type StripeTaxConfig struct {
 	// Product [tax code](https://docs.stripe.com/tax/tax-codes).
 	Code string `json:"code"`
@@ -598,6 +600,8 @@ func (s *StripeTaxConfig) GetCode() string {
 }
 
 // ExternalInvoicingTaxConfig - External invoicing tax config.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 type ExternalInvoicingTaxConfig struct {
 	// The tax code should be interpreted by the external invoicing provider.
 	Code string `json:"code"`
@@ -610,6 +614,22 @@ func (e *ExternalInvoicingTaxConfig) GetCode() string {
 	return e.Code
 }
 
+// TaxCode - Tax code reference.
+//
+// When both `tax_code` and `tax_code_id` are provided, `tax_code` takes precedence.
+// When `stripe.code` is also provided, `tax_code` still wins and `stripe.code` is ignored.
+type TaxCode struct {
+	// ULID (Universally Unique Lexicographically Sortable Identifier).
+	ID string `json:"id"`
+}
+
+func (t *TaxCode) GetID() string {
+	if t == nil {
+		return ""
+	}
+	return t.ID
+}
+
 // DefaultTaxConfig - Default tax configuration to apply to the invoices for line items.
 type DefaultTaxConfig struct {
 	// Tax behavior.
@@ -618,9 +638,22 @@ type DefaultTaxConfig struct {
 	// If not specified in the billing profile, the provider's default behavior is used.
 	Behavior *TaxBehavior `json:"behavior,omitempty"`
 	// Stripe tax config.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	Stripe *StripeTaxConfig `json:"stripe,omitempty"`
 	// External invoicing tax config.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	ExternalInvoicing *ExternalInvoicingTaxConfig `json:"external_invoicing,omitempty"`
+	// Tax code ID.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
+	TaxCodeID *string `json:"tax_code_id,omitempty"`
+	// Tax code reference.
+	//
+	// When both `tax_code` and `tax_code_id` are provided, `tax_code` takes precedence.
+	// When `stripe.code` is also provided, `tax_code` still wins and `stripe.code` is ignored.
+	TaxCode *TaxCode `json:"tax_code,omitempty"`
 }
 
 func (d *DefaultTaxConfig) GetBehavior() *TaxBehavior {
@@ -642,6 +675,20 @@ func (d *DefaultTaxConfig) GetExternalInvoicing() *ExternalInvoicingTaxConfig {
 		return nil
 	}
 	return d.ExternalInvoicing
+}
+
+func (d *DefaultTaxConfig) GetTaxCodeID() *string {
+	if d == nil {
+		return nil
+	}
+	return d.TaxCodeID
+}
+
+func (d *DefaultTaxConfig) GetTaxCode() *TaxCode {
+	if d == nil {
+		return nil
+	}
+	return d.TaxCode
 }
 
 // WorkflowTaxSettings - The tax settings for this workflow
@@ -832,9 +879,9 @@ type BillingProfile struct {
 	//
 	Labels map[string]string `json:"labels,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
-	CreatedAt *time.Time `json:"created_at,omitempty"`
+	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity last update date.
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	UpdatedAt time.Time `json:"updated_at"`
 	// An ISO-8601 timestamp representation of entity deletion date.
 	DeletedAt *time.Time `json:"deleted_at,omitempty"`
 	// The name and contact information for the supplier this billing profile represents
@@ -886,16 +933,16 @@ func (b *BillingProfile) GetLabels() map[string]string {
 	return b.Labels
 }
 
-func (b *BillingProfile) GetCreatedAt() *time.Time {
+func (b *BillingProfile) GetCreatedAt() time.Time {
 	if b == nil {
-		return nil
+		return time.Time{}
 	}
 	return b.CreatedAt
 }
 
-func (b *BillingProfile) GetUpdatedAt() *time.Time {
+func (b *BillingProfile) GetUpdatedAt() time.Time {
 	if b == nil {
-		return nil
+		return time.Time{}
 	}
 	return b.UpdatedAt
 }
