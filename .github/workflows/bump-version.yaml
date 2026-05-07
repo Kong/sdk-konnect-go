@@ -180,7 +180,7 @@ jobs:
 
       - name: Commit version reset
         if: steps.check_reset.outputs.needs_reset == 'true'
-        uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9.1.4
+        uses: EndBug/add-and-commit@290ea2c423ad77ca9c62ae0f5b224379612c0321 # v10.0.0
         with:
           add: .speakeasy/gen.yaml
           default_author: github_actions
@@ -329,7 +329,7 @@ jobs:
 
       - name: Commit SDK changes to the PR
         if: steps.bump.outputs.bumped == 'true'
-        uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9.1.4
+        uses: EndBug/add-and-commit@290ea2c423ad77ca9c62ae0f5b224379612c0321 # v10.0.0
         with:
           add: .
           default_author: github_actions
@@ -423,7 +423,7 @@ jobs:
           make generate.sdk
 
       - name: Commit SDK changes to main
-        uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5 # v9.1.4
+        uses: EndBug/add-and-commit@290ea2c423ad77ca9c62ae0f5b224379612c0321 # v10.0.0
         with:
           add: .
           default_author: github_actions
