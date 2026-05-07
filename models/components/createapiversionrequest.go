@@ -3,8 +3,7 @@
 package components
 
 type CreateAPIVersionRequestSpec struct {
-	// The raw content of your API spec, in json or yaml format (OpenAPI or AsyncAPI).
-	//
+	// The raw content of API specification, in json or yaml format (OpenAPI or AsyncAPI).
 	Content *string `json:"content,omitempty"`
 }
 

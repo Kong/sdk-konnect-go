@@ -53,9 +53,9 @@ type Meter struct {
 	//
 	Labels map[string]string `json:"labels,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
-	CreatedAt *time.Time `json:"created_at,omitempty"`
+	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity last update date.
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	UpdatedAt time.Time `json:"updated_at"`
 	// An ISO-8601 timestamp representation of entity deletion date.
 	DeletedAt *time.Time `json:"deleted_at,omitempty"`
 	// A key is a unique string that is used to identify a resource.
@@ -119,16 +119,16 @@ func (m *Meter) GetLabels() map[string]string {
 	return m.Labels
 }
 
-func (m *Meter) GetCreatedAt() *time.Time {
+func (m *Meter) GetCreatedAt() time.Time {
 	if m == nil {
-		return nil
+		return time.Time{}
 	}
 	return m.CreatedAt
 }
 
-func (m *Meter) GetUpdatedAt() *time.Time {
+func (m *Meter) GetUpdatedAt() time.Time {
 	if m == nil {
-		return nil
+		return time.Time{}
 	}
 	return m.UpdatedAt
 }

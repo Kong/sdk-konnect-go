@@ -12402,6 +12402,34 @@ paths:
       description: List meters.
       parameters:
         - $ref: '#/components/parameters/PagePaginationQuery'
+        - name: sort
+          in: query
+          description: |-
+            Sort meters returned in the response.
+            Supported sort attributes are:
+            - `key`
+            - `name`
+            - `aggregation`
+            - `createdAt` (default)
+            - `updatedAt`
+
+            The `asc` suffix is optional as the default sort order is ascending.
+            The `desc` suffix is used to specify a descending order.
+          required: false
+          schema:
+            $ref: '#/components/schemas/SortQuery'
+          explode: false
+          style: form
+        - name: filter
+          in: query
+          description: |-
+            Filter meters returned in the response.
+
+            To filter meters by key add the following query param: filter[key]=my-meter-key
+          required: false
+          schema:
+            $ref: '#/components/schemas/ListMetersParamsFilter'
+          style: deepObject
       responses:
         '200':
           description: Page paginated response.
@@ -17771,8 +17799,10 @@ components:
         type: object
         properties:
           size:
+            description: The number of items to include per page.
             type: integer
           number:
+            description: The page number.
             type: integer
       style: deepObject
     PageSize:
@@ -24818,58 +24848,6 @@ components:
           type: integer
           example: 1
       title: Move document
-    ApiVersion:
-      type: object
-      properties:
-        id:
-          description: The API version identifier.
-          type: string
-          format: uuid
-          example: 7710d5c4-d902-410b-992f-18b814155b53
-          readOnly: true
-        version:
-          description: The version of the api.
-          type: string
-          example: 1.0.0
-        spec:
-          type: object
-          additionalProperties: false
-          properties:
-            content:
-              description: |
-                The raw content of your API spec, in json or yaml format (OpenAPI or AsyncAPI).
-              example: '{"openapi":"3.0.3","info":{"title":"Example API","version":"1.0.0"},"paths":{"/example":{"get":{"summary":"Example endpoint","responses":{"200":{"description":"Successful response"}}}}}}'
-              type: string
-            type:
-              description: |
-                The type of specification being stored. This allows us to render the specification correctly.
-              type: string
-              example: oas3
-              enum:
-                - oas2
-                - oas3
-                - asyncapi
-              readOnly: true
-              title: API Spec Type
-              x-speakeasy-unknown-values: allow
-            validation_messages:
-              description: The errors that occurred while parsing the API version spec.
-              type: array
-              items:
-                type: object
-                additionalProperties: false
-                required:
-                  - message
-                properties:
-                  message:
-                    type: string
-              readOnly: true
-        created_at:
-          $ref: '#/components/schemas/CreatedAt'
-        updated_at:
-          $ref: '#/components/schemas/UpdatedAt'
-      additionalProperties: false
-      title: API Version
     ApiVersionSummary:
       type: object
       properties:
@@ -24897,6 +24875,23 @@ components:
       readOnly: true
       title: API Version Summary
       x-speakeasy-terraform-ignore: true
+    APIVersionRequest:
+      type: object
+      properties:
+        version:
+          description: The version of the api.
+          type: string
+          example: 1.0.0
+        spec:
+          type: object
+          additionalProperties: false
+          properties:
+            content:
+              description: 'The raw content of API specification, in json or yaml format (OpenAPI or AsyncAPI).'
+              example: '{"openapi":"3.0.3","info":{"title":"Example API","version":"1.0.0"},"paths":{"/example":{"get":{"summary":"Example endpoint","responses":{"200":{"description":"Successful response"}}}}}}'
+              type: string
+      additionalProperties: false
+      title: API Version Request
     ApiSpec:
       type: object
       properties:
@@ -35923,6 +35918,8 @@ components:
       required:
         - id
         - name
+        - created_at
+        - updated_at
         - type
         - definition
         - status
@@ -36036,6 +36033,8 @@ components:
       required:
         - id
         - name
+        - created_at
+        - updated_at
         - type
         - definition
         - status
@@ -36147,6 +36146,8 @@ components:
       required:
         - id
         - name
+        - created_at
+        - updated_at
         - type
         - definition
         - status
@@ -36449,6 +36450,8 @@ components:
       required:
         - id
         - name
+        - created_at
+        - updated_at
         - key
     BillingCustomerData:
       description: Billing customer data.
@@ -37060,6 +37063,7 @@ components:
                     stripe:
                       description: Stripe tax config.
                       type: object
+                      deprecated: true
                       properties:
                         code:
                           description: 'Product [tax code](https://docs.stripe.com/tax/tax-codes).'
@@ -37073,6 +37077,7 @@ components:
                     external_invoicing:
                       description: External invoicing tax config.
                       type: object
+                      deprecated: true
                       properties:
                         code:
                           description: The tax code should be interpreted by the external invoicing provider.
@@ -37082,6 +37087,26 @@ components:
                       required:
                         - code
                       title: External invoicing tax config
+                    tax_code_id:
+                      description: Tax code ID.
+                      type: string
+                      example: 01G65Z755AFWAKHE12NY0CQ9FH
+                      deprecated: true
+                      pattern: '^[0-7][0-9A-HJKMNP-TV-Z]{25}$'
+                      title: Tax code ID
+                    tax_code:
+                      description: |-
+                        Tax code reference.
+
+                        When both `tax_code` and `tax_code_id` are provided, `tax_code` takes precedence.
+                        When `stripe.code` is also provided, `tax_code` still wins and `stripe.code` is ignored.
+                      type: object
+                      properties:
+                        id:
+                          $ref: '#/components/schemas/ULID'
+                      required:
+                        - id
+                      title: Tax code
               title: Workflow tax settings
         apps:
           description: The applications used by this billing profile.
@@ -37133,6 +37158,8 @@ components:
       required:
         - id
         - name
+        - created_at
+        - updated_at
         - supplier
         - workflow
         - apps
@@ -37226,6 +37253,8 @@ components:
           x-speakeasy-unknown-values: allow
       required:
         - id
+        - created_at
+        - updated_at
         - customer_id
         - billing_anchor
         - status
@@ -37411,6 +37440,8 @@ components:
               x-speakeasy-unknown-values: allow
           required:
             - id
+            - created_at
+            - updated_at
             - customer_id
             - billing_anchor
             - status
@@ -37490,6 +37521,8 @@ components:
               x-speakeasy-unknown-values: allow
           required:
             - id
+            - created_at
+            - updated_at
             - customer_id
             - billing_anchor
             - status
@@ -37607,6 +37640,7 @@ components:
         stripe:
           description: Stripe tax config.
           type: object
+          deprecated: true
           properties:
             code:
               description: 'Product [tax code](https://docs.stripe.com/tax/tax-codes).'
@@ -37620,6 +37654,7 @@ components:
         external_invoicing:
           description: External invoicing tax config.
           type: object
+          deprecated: true
           properties:
             code:
               description: The tax code should be interpreted by the external invoicing provider.
@@ -37629,6 +37664,26 @@ components:
           required:
             - code
           title: External invoicing tax config
+        tax_code_id:
+          description: Tax code ID.
+          type: string
+          example: 01G65Z755AFWAKHE12NY0CQ9FH
+          deprecated: true
+          pattern: '^[0-7][0-9A-HJKMNP-TV-Z]{25}$'
+          title: Tax code ID
+        tax_code:
+          description: |-
+            Tax code reference.
+
+            When both `tax_code` and `tax_code_id` are provided, `tax_code` takes precedence.
+            When `stripe.code` is also provided, `tax_code` still wins and `stripe.code` is ignored.
+          type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/ULID'
+          required:
+            - id
+          title: Tax code
     BillingTaxIdentificationCode:
       description: Tax identifier code is a normalized tax code shown on the original identity document.
       type: string
@@ -37821,6 +37876,7 @@ components:
             stripe:
               description: Stripe tax config.
               type: object
+              deprecated: true
               properties:
                 code:
                   description: 'Product [tax code](https://docs.stripe.com/tax/tax-codes).'
@@ -37834,6 +37890,7 @@ components:
             external_invoicing:
               description: External invoicing tax config.
               type: object
+              deprecated: true
               properties:
                 code:
                   description: The tax code should be interpreted by the external invoicing provider.
@@ -37843,6 +37900,26 @@ components:
               required:
                 - code
               title: External invoicing tax config
+            tax_code_id:
+              description: Tax code ID.
+              type: string
+              example: 01G65Z755AFWAKHE12NY0CQ9FH
+              deprecated: true
+              pattern: '^[0-7][0-9A-HJKMNP-TV-Z]{25}$'
+              title: Tax code ID
+            tax_code:
+              description: |-
+                Tax code reference.
+
+                When both `tax_code` and `tax_code_id` are provided, `tax_code` takes precedence.
+                When `stripe.code` is also provided, `tax_code` still wins and `stripe.code` is ignored.
+              type: object
+              properties:
+                id:
+                  $ref: '#/components/schemas/ULID'
+              required:
+                - id
+              title: Tax code
       title: Workflow tax settings
     CreateBillingProfileRequest:
       description: BillingProfile create request.
@@ -38035,6 +38112,7 @@ components:
                     stripe:
                       description: Stripe tax config.
                       type: object
+                      deprecated: true
                       properties:
                         code:
                           description: 'Product [tax code](https://docs.stripe.com/tax/tax-codes).'
@@ -38048,6 +38126,7 @@ components:
                     external_invoicing:
                       description: External invoicing tax config.
                       type: object
+                      deprecated: true
                       properties:
                         code:
                           description: The tax code should be interpreted by the external invoicing provider.
@@ -38057,6 +38136,26 @@ components:
                       required:
                         - code
                       title: External invoicing tax config
+                    tax_code_id:
+                      description: Tax code ID.
+                      type: string
+                      example: 01G65Z755AFWAKHE12NY0CQ9FH
+                      deprecated: true
+                      pattern: '^[0-7][0-9A-HJKMNP-TV-Z]{25}$'
+                      title: Tax code ID
+                    tax_code:
+                      description: |-
+                        Tax code reference.
+
+                        When both `tax_code` and `tax_code_id` are provided, `tax_code` takes precedence.
+                        When `stripe.code` is also provided, `tax_code` still wins and `stripe.code` is ignored.
+                      type: object
+                      properties:
+                        id:
+                          $ref: '#/components/schemas/ULID'
+                      required:
+                        - id
+                      title: Tax code
               title: Workflow tax settings
         apps:
           description: The applications used by this billing profile.
@@ -38330,14 +38429,114 @@ components:
       type: object
       properties:
         key:
-          description: |-
-            Filter customers by key.
-            Case-insensitive partial match.
-          type: string
-          example: 019ae40f-4258-7f15-9491-842f42a7d6ac
-          maxLength: 256
-          minLength: 1
-          title: External Resource Key
+          description: Filter customers by key.
+          type: object
+          additionalProperties: false
+          properties:
+            eq:
+              type: string
+            contains:
+              type: string
+            ocontains:
+              type: string
+            oeq:
+              type: string
+            neq:
+              type: string
+          required:
+            - contains
+            - ocontains
+            - oeq
+            - neq
+          title: StringFieldNEQFilter
+        name:
+          description: Filter customers by name.
+          type: object
+          additionalProperties: false
+          properties:
+            eq:
+              type: string
+            contains:
+              type: string
+            ocontains:
+              type: string
+            oeq:
+              type: string
+            neq:
+              type: string
+          required:
+            - contains
+            - ocontains
+            - oeq
+            - neq
+          title: StringFieldNEQFilter
+        primary_email:
+          description: Filter customers by primary email.
+          type: object
+          additionalProperties: false
+          properties:
+            eq:
+              type: string
+            contains:
+              type: string
+            ocontains:
+              type: string
+            oeq:
+              type: string
+            neq:
+              type: string
+          required:
+            - contains
+            - ocontains
+            - oeq
+            - neq
+          title: StringFieldNEQFilter
+    ListMetersParamsFilter:
+      description: Filter options for listing meters.
+      type: object
+      properties:
+        key:
+          description: Filter meters by key.
+          type: object
+          additionalProperties: false
+          properties:
+            eq:
+              type: string
+            contains:
+              type: string
+            ocontains:
+              type: string
+            oeq:
+              type: string
+            neq:
+              type: string
+          required:
+            - contains
+            - ocontains
+            - oeq
+            - neq
+          title: StringFieldNEQFilter
+        name:
+          description: Filter meters by name.
+          type: object
+          additionalProperties: false
+          properties:
+            eq:
+              type: string
+            contains:
+              type: string
+            ocontains:
+              type: string
+            oeq:
+              type: string
+            neq:
+              type: string
+          required:
+            - contains
+            - ocontains
+            - oeq
+            - neq
+          title: StringFieldNEQFilter
     Meter:
       description: A meter is a configuration that defines how to match and aggregate events.
       type: object
@@ -38451,6 +38650,8 @@ components:
       required:
         - id
         - name
+        - created_at
+        - updated_at
         - key
         - aggregation
         - event_type
@@ -38810,6 +39011,7 @@ components:
                     stripe:
                       description: Stripe tax config.
                       type: object
+                      deprecated: true
                       properties:
                         code:
                           description: 'Product [tax code](https://docs.stripe.com/tax/tax-codes).'
@@ -38823,6 +39025,7 @@ components:
                     external_invoicing:
                       description: External invoicing tax config.
                       type: object
+                      deprecated: true
                       properties:
                         code:
                           description: The tax code should be interpreted by the external invoicing provider.
@@ -38832,6 +39035,26 @@ components:
                       required:
                         - code
                       title: External invoicing tax config
+                    tax_code_id:
+                      description: Tax code ID.
+                      type: string
+                      example: 01G65Z755AFWAKHE12NY0CQ9FH
+                      deprecated: true
+                      pattern: '^[0-7][0-9A-HJKMNP-TV-Z]{25}$'
+                      title: Tax code ID
+                    tax_code:
+                      description: |-
+                        Tax code reference.
+
+                        When both `tax_code` and `tax_code_id` are provided, `tax_code` takes precedence.
+                        When `stripe.code` is also provided, `tax_code` still wins and `stripe.code` is ignored.
+                      type: object
+                      properties:
+                        id:
+                          $ref: '#/components/schemas/ULID'
+                      required:
+                        - id
+                      title: Tax code
               title: Workflow tax settings
         default:
           description: Whether this is the default profile.
@@ -44366,12 +44589,6 @@ components:
           schema:
             type: object
             properties:
-              id:
-                description: The API version identifier.
-                type: string
-                format: uuid
-                example: 7710d5c4-d902-410b-992f-18b814155b53
-                readOnly: true
               version:
                 description: The version of the api.
                 type: string
@@ -44381,42 +44598,13 @@ components:
                 additionalProperties: false
                 properties:
                   content:
-                    description: |
-                      The raw content of your API spec, in json or yaml format (OpenAPI or AsyncAPI).
+                    description: 'The raw content of API specification, in json or yaml format (OpenAPI or AsyncAPI).'
                     example: '{"openapi":"3.0.3","info":{"title":"Example API","version":"1.0.0"},"paths":{"/example":{"get":{"summary":"Example endpoint","responses":{"200":{"description":"Successful response"}}}}}}'
                     type: string
-                  type:
-                    description: |
-                      The type of specification being stored. This allows us to render the specification correctly.
-                    type: string
-                    example: oas3
-                    enum:
-                      - oas2
-                      - oas3
-                      - asyncapi
-                    readOnly: true
-                    title: API Spec Type
-                    x-speakeasy-unknown-values: allow
-                  validation_messages:
-                    description: The errors that occurred while parsing the API version spec.
-                    type: array
-                    items:
-                      type: object
-                      additionalProperties: false
-                      required:
-                        - message
-                      properties:
-                        message:
-                          type: string
-                    readOnly: true
-              created_at:
-                $ref: '#/components/schemas/CreatedAt'
-              updated_at:
-                $ref: '#/components/schemas/UpdatedAt'
             additionalProperties: false
             required:
               - spec
-            title: API Version
+            title: API Version Request
     CreateApiDocumentRequest:
       required: true
       content:
@@ -44611,7 +44799,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ApiVersion'
+            $ref: '#/components/schemas/APIVersionRequest'
     PutApiPublicationRequest:
       required: true
       content:

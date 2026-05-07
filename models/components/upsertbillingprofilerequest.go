@@ -576,6 +576,8 @@ func (e *UpsertBillingProfileRequestTaxBehavior) IsExact() bool {
 }
 
 // UpsertBillingProfileRequestStripeTaxConfig - Stripe tax config.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 type UpsertBillingProfileRequestStripeTaxConfig struct {
 	// Product [tax code](https://docs.stripe.com/tax/tax-codes).
 	Code string `json:"code"`
@@ -589,6 +591,8 @@ func (u *UpsertBillingProfileRequestStripeTaxConfig) GetCode() string {
 }
 
 // UpsertBillingProfileRequestExternalInvoicingTaxConfig - External invoicing tax config.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 type UpsertBillingProfileRequestExternalInvoicingTaxConfig struct {
 	// The tax code should be interpreted by the external invoicing provider.
 	Code string `json:"code"`
@@ -601,6 +605,22 @@ func (u *UpsertBillingProfileRequestExternalInvoicingTaxConfig) GetCode() string
 	return u.Code
 }
 
+// UpsertBillingProfileRequestTaxCode - Tax code reference.
+//
+// When both `tax_code` and `tax_code_id` are provided, `tax_code` takes precedence.
+// When `stripe.code` is also provided, `tax_code` still wins and `stripe.code` is ignored.
+type UpsertBillingProfileRequestTaxCode struct {
+	// ULID (Universally Unique Lexicographically Sortable Identifier).
+	ID string `json:"id"`
+}
+
+func (u *UpsertBillingProfileRequestTaxCode) GetID() string {
+	if u == nil {
+		return ""
+	}
+	return u.ID
+}
+
 // UpsertBillingProfileRequestDefaultTaxConfig - Default tax configuration to apply to the invoices for line items.
 type UpsertBillingProfileRequestDefaultTaxConfig struct {
 	// Tax behavior.
@@ -609,9 +629,22 @@ type UpsertBillingProfileRequestDefaultTaxConfig struct {
 	// If not specified in the billing profile, the provider's default behavior is used.
 	Behavior *UpsertBillingProfileRequestTaxBehavior `json:"behavior,omitempty"`
 	// Stripe tax config.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	Stripe *UpsertBillingProfileRequestStripeTaxConfig `json:"stripe,omitempty"`
 	// External invoicing tax config.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	ExternalInvoicing *UpsertBillingProfileRequestExternalInvoicingTaxConfig `json:"external_invoicing,omitempty"`
+	// Tax code ID.
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
+	TaxCodeID *string `json:"tax_code_id,omitempty"`
+	// Tax code reference.
+	//
+	// When both `tax_code` and `tax_code_id` are provided, `tax_code` takes precedence.
+	// When `stripe.code` is also provided, `tax_code` still wins and `stripe.code` is ignored.
+	TaxCode *UpsertBillingProfileRequestTaxCode `json:"tax_code,omitempty"`
 }
 
 func (u *UpsertBillingProfileRequestDefaultTaxConfig) GetBehavior() *UpsertBillingProfileRequestTaxBehavior {
@@ -633,6 +666,20 @@ func (u *UpsertBillingProfileRequestDefaultTaxConfig) GetExternalInvoicing() *Up
 		return nil
 	}
 	return u.ExternalInvoicing
+}
+
+func (u *UpsertBillingProfileRequestDefaultTaxConfig) GetTaxCodeID() *string {
+	if u == nil {
+		return nil
+	}
+	return u.TaxCodeID
+}
+
+func (u *UpsertBillingProfileRequestDefaultTaxConfig) GetTaxCode() *UpsertBillingProfileRequestTaxCode {
+	if u == nil {
+		return nil
+	}
+	return u.TaxCode
 }
 
 // UpsertBillingProfileRequestWorkflowTaxSettings - The tax settings for this workflow

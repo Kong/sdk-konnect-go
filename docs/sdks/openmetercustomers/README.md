@@ -114,7 +114,12 @@ func main() {
     res, err := s.OpenMeterCustomers.ListCustomers(ctx, operations.ListCustomersRequest{
         Sort: sdkkonnectgo.Pointer("created_at desc"),
         Filter: &components.ListCustomersParamsFilter{
-            Key: sdkkonnectgo.Pointer("019ae40f-4258-7f15-9491-842f42a7d6ac"),
+            Key: &components.StringFieldNEQFilter{
+                Contains: "<value>",
+                Ocontains: "<value>",
+                Oeq: "<value>",
+                Neq: "<value>",
+            },
         },
     })
     if err != nil {

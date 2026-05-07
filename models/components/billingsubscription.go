@@ -42,9 +42,9 @@ type BillingSubscription struct {
 	//
 	Labels map[string]string `json:"labels,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
-	CreatedAt *time.Time `json:"created_at,omitempty"`
+	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity last update date.
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	UpdatedAt time.Time `json:"updated_at"`
 	// An ISO-8601 timestamp representation of entity deletion date.
 	DeletedAt *time.Time `json:"deleted_at,omitempty"`
 	// The customer ID of the subscription.
@@ -88,16 +88,16 @@ func (b *BillingSubscription) GetLabels() map[string]string {
 	return b.Labels
 }
 
-func (b *BillingSubscription) GetCreatedAt() *time.Time {
+func (b *BillingSubscription) GetCreatedAt() time.Time {
 	if b == nil {
-		return nil
+		return time.Time{}
 	}
 	return b.CreatedAt
 }
 
-func (b *BillingSubscription) GetUpdatedAt() *time.Time {
+func (b *BillingSubscription) GetUpdatedAt() time.Time {
 	if b == nil {
-		return nil
+		return time.Time{}
 	}
 	return b.UpdatedAt
 }
