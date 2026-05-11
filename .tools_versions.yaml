@@ -1,5 +1,5 @@
 # renovate: datasource=github-releases depName=kubernetes-sigs/controller-tools
-controller-tools: "0.20.1"
+controller-tools: "0.21.0"
 # renovate: datasource=github-releases depName=vektra/mockery
 mockery: "3.7.0"
 # renovate: datasource=github-releases depName=vburenin/ifacemaker
