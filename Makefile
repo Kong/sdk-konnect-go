@@ -204,6 +204,9 @@ TYPES_TO_MOCK := \
 	EventGatewayVirtualClusters \
 	EventGatewayListenerPolicies \
 	EventGatewayListeners \
+	EventGatewayVirtualClusterPolicies \
+	EventGatewayVirtualClusterConsumePolicies \
+	EventGatewayVirtualClusterProducePolicies \
 	HMACAuthCredentials \
 	JWTs \
 	Keys \
@@ -222,6 +225,7 @@ TYPES_TO_MOCK := \
 	PortalTeamRoles \
 	PortalTeams \
 	PortalPages \
+	Snippets \
 	Routes \
 	Services \
 	SNIs \
