@@ -154,20 +154,20 @@ func (c *CustomerUpdate) GetShipping() *Shipping {
 	return c.Shipping
 }
 
-// Position and visibility of the payment method reuse agreement.
-type Position string
+// BillingCustomerStripeCreateCheckoutSessionRequestPosition - Position and visibility of the payment method reuse agreement.
+type BillingCustomerStripeCreateCheckoutSessionRequestPosition string
 
 const (
-	PositionAuto   Position = "auto"
-	PositionHidden Position = "hidden"
+	BillingCustomerStripeCreateCheckoutSessionRequestPositionAuto   BillingCustomerStripeCreateCheckoutSessionRequestPosition = "auto"
+	BillingCustomerStripeCreateCheckoutSessionRequestPositionHidden BillingCustomerStripeCreateCheckoutSessionRequestPosition = "hidden"
 )
 
-func (e Position) ToPointer() *Position {
+func (e BillingCustomerStripeCreateCheckoutSessionRequestPosition) ToPointer() *BillingCustomerStripeCreateCheckoutSessionRequestPosition {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *Position) IsExact() bool {
+func (e *BillingCustomerStripeCreateCheckoutSessionRequestPosition) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "auto", "hidden":
@@ -180,10 +180,10 @@ func (e *Position) IsExact() bool {
 // PaymentMethodReuseAgreement - Controls the visibility of payment method reuse agreement.
 type PaymentMethodReuseAgreement struct {
 	// Position and visibility of the payment method reuse agreement.
-	Position *Position `json:"position,omitempty"`
+	Position *BillingCustomerStripeCreateCheckoutSessionRequestPosition `json:"position,omitempty"`
 }
 
-func (p *PaymentMethodReuseAgreement) GetPosition() *Position {
+func (p *PaymentMethodReuseAgreement) GetPosition() *BillingCustomerStripeCreateCheckoutSessionRequestPosition {
 	if p == nil {
 		return nil
 	}
