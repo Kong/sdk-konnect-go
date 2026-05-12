@@ -316,6 +316,7 @@ type SDK struct {
 	// DP Nodes
 	DPNodes            *DPNodes
 	ControlPlaneGroups *ControlPlaneGroups
+	Dashboards         *Dashboards
 	// Dynamic Client Registration Providers are configurations representing an external Identity Provider whose clients (i.e. Applications) Konnect will be authorized to manage.
 	// For instance, they will be able to perform dynamic client registration (DCR) with the provider.
 	// The DCR provider provides credentials to each DCR-enabled application in Konnect that can be used to access Product Versions that the app is registered for.
@@ -472,9 +473,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		SDKVersion: "0.35.1",
+		SDKVersion: "0.36.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.35.1 2.882.0 3.14.0 github.com/Kong/sdk-konnect-go",
+			UserAgent:  "speakeasy-sdk/go 0.36.0 2.882.0 3.14.0 github.com/Kong/sdk-konnect-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -556,6 +557,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk.DPCertificates = newDPCertificates(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.DPNodes = newDPNodes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.ControlPlaneGroups = newControlPlaneGroups(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Dashboards = newDashboards(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.DCRProviders = newDCRProviders(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIAttributes = newAPIAttributes(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.APIImplementation = newAPIImplementation(sdk, sdk.sdkConfiguration, sdk.hooks)

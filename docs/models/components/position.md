@@ -1,24 +1,12 @@
 # Position
 
-Position and visibility of the payment method reuse agreement.
-
-## Example Usage
-
-```go
-import (
-	"github.com/Kong/sdk-konnect-go/models/components"
-)
-
-value := components.PositionAuto
-
-// Open enum: custom values can be created with a direct type cast
-custom := components.Position("custom_value")
-```
+Position of the tile in the dashboard's grid.  Numbering starts at 0, so a tile in the upper left of the dashboard will be at column 0, row 0.
 
 
-## Values
 
-| Name             | Value            |
-| ---------------- | ---------------- |
-| `PositionAuto`   | auto             |
-| `PositionHidden` | hidden           |
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `Col`              | `int64`            | :heavy_check_mark: | N/A                |
+| `Row`              | `int64`            | :heavy_check_mark: | N/A                |

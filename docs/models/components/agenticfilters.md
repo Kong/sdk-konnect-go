@@ -1,0 +1,10 @@
+# AgenticFilters
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `Field`                                                                                | [components.AgenticFiltersField](../../models/components/agenticfiltersfield.md)       | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `Operator`                                                                             | [components.AgenticFiltersOperator](../../models/components/agenticfiltersoperator.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `Value`                                                                                | `any`                                                                                  | :heavy_minus_sign:                                                                     | N/A                                                                                    |
