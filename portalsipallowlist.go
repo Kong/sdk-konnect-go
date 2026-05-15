@@ -750,7 +750,7 @@ func (s *PortalsIPAllowList) PutPortalIPAllowList(ctx context.Context, request o
 	}
 
 	switch {
-	case httpRes.StatusCode == 201:
+	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1046,7 +1046,7 @@ func (s *PortalsIPAllowList) UpdatePortalIPAllowList(ctx context.Context, reques
 	}
 
 	switch {
-	case httpRes.StatusCode == 201:
+	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
 			rawBody, err := utils.ConsumeRawBody(httpRes)

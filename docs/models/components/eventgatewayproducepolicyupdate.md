@@ -23,6 +23,12 @@ eventGatewayProducePolicyUpdate := components.CreateEventGatewayProducePolicyUpd
 eventGatewayProducePolicyUpdate := components.CreateEventGatewayProducePolicyUpdateEncrypt(components.EventGatewayEncryptPolicy{/* values here */})
 ```
 
+### EventGatewayParsedRecordEncryptFieldsPolicy
+
+```go
+eventGatewayProducePolicyUpdate := components.CreateEventGatewayProducePolicyUpdateEncryptFields(components.EventGatewayParsedRecordEncryptFieldsPolicy{/* values here */})
+```
+
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -35,5 +41,7 @@ switch eventGatewayProducePolicyUpdate.Type {
 		// eventGatewayProducePolicyUpdate.EventGatewayProduceSchemaValidationPolicy is populated
 	case components.EventGatewayProducePolicyUpdateTypeEncrypt:
 		// eventGatewayProducePolicyUpdate.EventGatewayEncryptPolicy is populated
+	case components.EventGatewayProducePolicyUpdateTypeEncryptFields:
+		// eventGatewayProducePolicyUpdate.EventGatewayParsedRecordEncryptFieldsPolicy is populated
 }
 ```

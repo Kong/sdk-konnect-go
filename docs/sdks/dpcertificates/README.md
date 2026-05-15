@@ -9,6 +9,7 @@ DP Certificates
 * [ListDpClientCertificates](#listdpclientcertificates) - List DP Client Certificates
 * [CreateDataplaneCertificate](#createdataplanecertificate) - Pin New DP Client Certificate
 * [GetDataplaneCertificate](#getdataplanecertificate) - Get a DP Client Certificate
+* [UpdateDataplaneCertificate](#updatedataplanecertificate) - Update DP Client Certificate
 * [DeleteDataplaneCertificate](#deletedataplanecertificate) - Delete DP Client Certificate
 
 ## ListDpClientCertificates
@@ -182,6 +183,68 @@ func main() {
 
 | Error Type                                 | Status Code                                | Content Type                               |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| sdkerrors.KonnectCPLegacyUnauthorizedError | 401                                        | application/json                           |
+| sdkerrors.KonnectCPLegacyForbiddenError    | 403                                        | application/json                           |
+| sdkerrors.KonnectCPLegacyNotFoundError     | 404                                        | application/json                           |
+| sdkerrors.SDKError                         | 4XX, 5XX                                   | \*/\*                                      |
+
+## UpdateDataplaneCertificate
+
+Update a DP Client Certificate for this control plane. A dataplane certificate allows dataplanes configured with the certificate and corresponding private key to establish connection with this control plane.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="update-dataplane-certificate" method="put" path="/v2/control-planes/{controlPlaneId}/dp-client-certificates/{certificateId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.DPCertificates.UpdateDataplaneCertificate(ctx, operations.UpdateDataplaneCertificateRequest{
+        ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
+        CertificateID: "<id>",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.DataPlaneClientCertificateResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                        | :heavy_check_mark:                                                                                           | The context to use for the request.                                                                          |
+| `request`                                                                                                    | [operations.UpdateDataplaneCertificateRequest](../../models/operations/updatedataplanecertificaterequest.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
+| `opts`                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                     | :heavy_minus_sign:                                                                                           | The options for this request.                                                                                |
+
+### Response
+
+**[*operations.UpdateDataplaneCertificateResponse](../../models/operations/updatedataplanecertificateresponse.md), error**
+
+### Errors
+
+| Error Type                                 | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| sdkerrors.KonnectCPLegacyBadRequestError   | 400                                        | application/json                           |
 | sdkerrors.KonnectCPLegacyUnauthorizedError | 401                                        | application/json                           |
 | sdkerrors.KonnectCPLegacyForbiddenError    | 403                                        | application/json                           |
 | sdkerrors.KonnectCPLegacyNotFoundError     | 404                                        | application/json                           |

@@ -644,11 +644,11 @@ func (d *DCRProviderAuth0DCRProviderAuth0) GetUpdatedAt() time.Time {
 type DcrProviderResponseType string
 
 const (
-	DcrProviderResponseTypeDcrProviderAuth0   DcrProviderResponseType = "DcrProviderAuth0"
-	DcrProviderResponseTypeDcrProviderAzureAd DcrProviderResponseType = "DcrProviderAzureAd"
-	DcrProviderResponseTypeDcrProviderCurity  DcrProviderResponseType = "DcrProviderCurity"
-	DcrProviderResponseTypeDcrProviderOkta    DcrProviderResponseType = "DcrProviderOkta"
-	DcrProviderResponseTypeDcrProviderHTTP    DcrProviderResponseType = "DcrProviderHttp"
+	DcrProviderResponseTypeAuth0   DcrProviderResponseType = "auth0"
+	DcrProviderResponseTypeAzureAd DcrProviderResponseType = "azureAd"
+	DcrProviderResponseTypeCurity  DcrProviderResponseType = "curity"
+	DcrProviderResponseTypeOkta    DcrProviderResponseType = "okta"
+	DcrProviderResponseTypeHTTP    DcrProviderResponseType = "http"
 )
 
 // DcrProviderResponse - A response containing a single DCR provider object. Sensitive fields will be removed from the response.
@@ -662,62 +662,62 @@ type DcrProviderResponse struct {
 	Type DcrProviderResponseType
 }
 
-func CreateDcrProviderResponseDcrProviderAuth0(dcrProviderAuth0 DCRProviderAuth0DCRProviderAuth0) DcrProviderResponse {
-	typ := DcrProviderResponseTypeDcrProviderAuth0
+func CreateDcrProviderResponseAuth0(auth0 DCRProviderAuth0DCRProviderAuth0) DcrProviderResponse {
+	typ := DcrProviderResponseTypeAuth0
 
 	typStr := string(typ)
-	dcrProviderAuth0.ProviderType = typStr
+	auth0.ProviderType = typStr
 
 	return DcrProviderResponse{
-		DCRProviderAuth0DCRProviderAuth0: &dcrProviderAuth0,
+		DCRProviderAuth0DCRProviderAuth0: &auth0,
 		Type:                             typ,
 	}
 }
 
-func CreateDcrProviderResponseDcrProviderAzureAd(dcrProviderAzureAd DCRProviderAzureADDCRProviderAzureAD) DcrProviderResponse {
-	typ := DcrProviderResponseTypeDcrProviderAzureAd
+func CreateDcrProviderResponseAzureAd(azureAd DCRProviderAzureADDCRProviderAzureAD) DcrProviderResponse {
+	typ := DcrProviderResponseTypeAzureAd
 
 	typStr := string(typ)
-	dcrProviderAzureAd.ProviderType = typStr
+	azureAd.ProviderType = typStr
 
 	return DcrProviderResponse{
-		DCRProviderAzureADDCRProviderAzureAD: &dcrProviderAzureAd,
+		DCRProviderAzureADDCRProviderAzureAD: &azureAd,
 		Type:                                 typ,
 	}
 }
 
-func CreateDcrProviderResponseDcrProviderCurity(dcrProviderCurity DCRProviderCurityDCRProviderCurity) DcrProviderResponse {
-	typ := DcrProviderResponseTypeDcrProviderCurity
+func CreateDcrProviderResponseCurity(curity DCRProviderCurityDCRProviderCurity) DcrProviderResponse {
+	typ := DcrProviderResponseTypeCurity
 
 	typStr := string(typ)
-	dcrProviderCurity.ProviderType = typStr
+	curity.ProviderType = typStr
 
 	return DcrProviderResponse{
-		DCRProviderCurityDCRProviderCurity: &dcrProviderCurity,
+		DCRProviderCurityDCRProviderCurity: &curity,
 		Type:                               typ,
 	}
 }
 
-func CreateDcrProviderResponseDcrProviderOkta(dcrProviderOkta DCRProviderOKTADCRProviderOKTA) DcrProviderResponse {
-	typ := DcrProviderResponseTypeDcrProviderOkta
+func CreateDcrProviderResponseOkta(okta DCRProviderOKTADCRProviderOKTA) DcrProviderResponse {
+	typ := DcrProviderResponseTypeOkta
 
 	typStr := string(typ)
-	dcrProviderOkta.ProviderType = typStr
+	okta.ProviderType = typStr
 
 	return DcrProviderResponse{
-		DCRProviderOKTADCRProviderOKTA: &dcrProviderOkta,
+		DCRProviderOKTADCRProviderOKTA: &okta,
 		Type:                           typ,
 	}
 }
 
-func CreateDcrProviderResponseDcrProviderHTTP(dcrProviderHTTP DCRProviderHTTPDCRProviderHTTP) DcrProviderResponse {
-	typ := DcrProviderResponseTypeDcrProviderHTTP
+func CreateDcrProviderResponseHTTP(http DCRProviderHTTPDCRProviderHTTP) DcrProviderResponse {
+	typ := DcrProviderResponseTypeHTTP
 
 	typStr := string(typ)
-	dcrProviderHTTP.ProviderType = typStr
+	http.ProviderType = typStr
 
 	return DcrProviderResponse{
-		DCRProviderHTTPDCRProviderHTTP: &dcrProviderHTTP,
+		DCRProviderHTTPDCRProviderHTTP: &http,
 		Type:                           typ,
 	}
 }
@@ -734,50 +734,50 @@ func (u *DcrProviderResponse) UnmarshalJSON(data []byte) error {
 	}
 
 	switch dis.ProviderType {
-	case "DcrProviderAuth0":
+	case "auth0":
 		dcrProviderAuth0DCRProviderAuth0 := new(DCRProviderAuth0DCRProviderAuth0)
 		if err := utils.UnmarshalJSON(data, &dcrProviderAuth0DCRProviderAuth0, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == DcrProviderAuth0) type DCRProviderAuth0DCRProviderAuth0 within DcrProviderResponse: %w", string(data), err)
+			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == auth0) type DCRProviderAuth0DCRProviderAuth0 within DcrProviderResponse: %w", string(data), err)
 		}
 
 		u.DCRProviderAuth0DCRProviderAuth0 = dcrProviderAuth0DCRProviderAuth0
-		u.Type = DcrProviderResponseTypeDcrProviderAuth0
+		u.Type = DcrProviderResponseTypeAuth0
 		return nil
-	case "DcrProviderAzureAd":
+	case "azureAd":
 		dcrProviderAzureADDCRProviderAzureAD := new(DCRProviderAzureADDCRProviderAzureAD)
 		if err := utils.UnmarshalJSON(data, &dcrProviderAzureADDCRProviderAzureAD, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == DcrProviderAzureAd) type DCRProviderAzureADDCRProviderAzureAD within DcrProviderResponse: %w", string(data), err)
+			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == azureAd) type DCRProviderAzureADDCRProviderAzureAD within DcrProviderResponse: %w", string(data), err)
 		}
 
 		u.DCRProviderAzureADDCRProviderAzureAD = dcrProviderAzureADDCRProviderAzureAD
-		u.Type = DcrProviderResponseTypeDcrProviderAzureAd
+		u.Type = DcrProviderResponseTypeAzureAd
 		return nil
-	case "DcrProviderCurity":
+	case "curity":
 		dcrProviderCurityDCRProviderCurity := new(DCRProviderCurityDCRProviderCurity)
 		if err := utils.UnmarshalJSON(data, &dcrProviderCurityDCRProviderCurity, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == DcrProviderCurity) type DCRProviderCurityDCRProviderCurity within DcrProviderResponse: %w", string(data), err)
+			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == curity) type DCRProviderCurityDCRProviderCurity within DcrProviderResponse: %w", string(data), err)
 		}
 
 		u.DCRProviderCurityDCRProviderCurity = dcrProviderCurityDCRProviderCurity
-		u.Type = DcrProviderResponseTypeDcrProviderCurity
+		u.Type = DcrProviderResponseTypeCurity
 		return nil
-	case "DcrProviderOkta":
+	case "okta":
 		dcrProviderOKTADCRProviderOKTA := new(DCRProviderOKTADCRProviderOKTA)
 		if err := utils.UnmarshalJSON(data, &dcrProviderOKTADCRProviderOKTA, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == DcrProviderOkta) type DCRProviderOKTADCRProviderOKTA within DcrProviderResponse: %w", string(data), err)
+			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == okta) type DCRProviderOKTADCRProviderOKTA within DcrProviderResponse: %w", string(data), err)
 		}
 
 		u.DCRProviderOKTADCRProviderOKTA = dcrProviderOKTADCRProviderOKTA
-		u.Type = DcrProviderResponseTypeDcrProviderOkta
+		u.Type = DcrProviderResponseTypeOkta
 		return nil
-	case "DcrProviderHttp":
+	case "http":
 		dcrProviderHTTPDCRProviderHTTP := new(DCRProviderHTTPDCRProviderHTTP)
 		if err := utils.UnmarshalJSON(data, &dcrProviderHTTPDCRProviderHTTP, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == DcrProviderHttp) type DCRProviderHTTPDCRProviderHTTP within DcrProviderResponse: %w", string(data), err)
+			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == http) type DCRProviderHTTPDCRProviderHTTP within DcrProviderResponse: %w", string(data), err)
 		}
 
 		u.DCRProviderHTTPDCRProviderHTTP = dcrProviderHTTPDCRProviderHTTP
-		u.Type = DcrProviderResponseTypeDcrProviderHTTP
+		u.Type = DcrProviderResponseTypeHTTP
 		return nil
 	}
 

@@ -20,6 +20,9 @@ type DPCertificatesSDK interface {
 	// GetDataplaneCertificate - Get a DP Client Certificate
 	// Retrieve a pinned dataplane client certificate associated to this control plane. A pinned dataplane certificate allows dataplanes configured with the certificate and corresponding private key to establish connection with this control plane.
 	GetDataplaneCertificate(ctx context.Context, controlPlaneID string, certificateID string, opts ...operations.Option) (*operations.GetDataplaneCertificateResponse, error)
+	// UpdateDataplaneCertificate - Update DP Client Certificate
+	// Update a DP Client Certificate for this control plane. A dataplane certificate allows dataplanes configured with the certificate and corresponding private key to establish connection with this control plane.
+	UpdateDataplaneCertificate(ctx context.Context, request operations.UpdateDataplaneCertificateRequest, opts ...operations.Option) (*operations.UpdateDataplaneCertificateResponse, error)
 	// DeleteDataplaneCertificate - Delete DP Client Certificate
 	// Remove a pinned dataplane client certificate associated to this control plane. Removing a pinned dataplane certificate would invalidate any dataplanes currently connected to this control plane using this certificate.
 	DeleteDataplaneCertificate(ctx context.Context, controlPlaneID string, certificateID string, opts ...operations.Option) (*operations.DeleteDataplaneCertificateResponse, error)

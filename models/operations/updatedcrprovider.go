@@ -66,35 +66,35 @@ func (u *UpdateDcrProviderResponse) GetDcrProviderResponse() *components.DcrProv
 	return u.DcrProviderResponse
 }
 
-func (u *UpdateDcrProviderResponse) GetDcrProviderResponseDcrProviderAuth0() *components.DCRProviderAuth0DCRProviderAuth0 {
+func (u *UpdateDcrProviderResponse) GetDcrProviderResponseAuth0() *components.DCRProviderAuth0DCRProviderAuth0 {
 	if v := u.GetDcrProviderResponse(); v != nil {
 		return v.DCRProviderAuth0DCRProviderAuth0
 	}
 	return nil
 }
 
-func (u *UpdateDcrProviderResponse) GetDcrProviderResponseDcrProviderAzureAd() *components.DCRProviderAzureADDCRProviderAzureAD {
+func (u *UpdateDcrProviderResponse) GetDcrProviderResponseAzureAd() *components.DCRProviderAzureADDCRProviderAzureAD {
 	if v := u.GetDcrProviderResponse(); v != nil {
 		return v.DCRProviderAzureADDCRProviderAzureAD
 	}
 	return nil
 }
 
-func (u *UpdateDcrProviderResponse) GetDcrProviderResponseDcrProviderCurity() *components.DCRProviderCurityDCRProviderCurity {
+func (u *UpdateDcrProviderResponse) GetDcrProviderResponseCurity() *components.DCRProviderCurityDCRProviderCurity {
 	if v := u.GetDcrProviderResponse(); v != nil {
 		return v.DCRProviderCurityDCRProviderCurity
 	}
 	return nil
 }
 
-func (u *UpdateDcrProviderResponse) GetDcrProviderResponseDcrProviderOkta() *components.DCRProviderOKTADCRProviderOKTA {
+func (u *UpdateDcrProviderResponse) GetDcrProviderResponseOkta() *components.DCRProviderOKTADCRProviderOKTA {
 	if v := u.GetDcrProviderResponse(); v != nil {
 		return v.DCRProviderOKTADCRProviderOKTA
 	}
 	return nil
 }
 
-func (u *UpdateDcrProviderResponse) GetDcrProviderResponseDcrProviderHTTP() *components.DCRProviderHTTPDCRProviderHTTP {
+func (u *UpdateDcrProviderResponse) GetDcrProviderResponseHTTP() *components.DCRProviderHTTPDCRProviderHTTP {
 	if v := u.GetDcrProviderResponse(); v != nil {
 		return v.DCRProviderHTTPDCRProviderHTTP
 	}

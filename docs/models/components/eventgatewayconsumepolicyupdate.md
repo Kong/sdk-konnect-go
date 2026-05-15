@@ -29,6 +29,12 @@ eventGatewayConsumePolicyUpdate := components.CreateEventGatewayConsumePolicyUpd
 eventGatewayConsumePolicyUpdate := components.CreateEventGatewayConsumePolicyUpdateSkipRecord(components.EventGatewaySkipRecordPolicy{/* values here */})
 ```
 
+### EventGatewayParsedRecordDecryptFieldsPolicy
+
+```go
+eventGatewayConsumePolicyUpdate := components.CreateEventGatewayConsumePolicyUpdateDecryptFields(components.EventGatewayParsedRecordDecryptFieldsPolicy{/* values here */})
+```
+
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -43,5 +49,7 @@ switch eventGatewayConsumePolicyUpdate.Type {
 		// eventGatewayConsumePolicyUpdate.EventGatewayDecryptPolicy is populated
 	case components.EventGatewayConsumePolicyUpdateTypeSkipRecord:
 		// eventGatewayConsumePolicyUpdate.EventGatewaySkipRecordPolicy is populated
+	case components.EventGatewayConsumePolicyUpdateTypeDecryptFields:
+		// eventGatewayConsumePolicyUpdate.EventGatewayParsedRecordDecryptFieldsPolicy is populated
 }
 ```

@@ -15,13 +15,15 @@ const (
 	EventGatewayProducePolicyCreateTypeModifyHeaders    EventGatewayProducePolicyCreateType = "modify_headers"
 	EventGatewayProducePolicyCreateTypeSchemaValidation EventGatewayProducePolicyCreateType = "schema_validation"
 	EventGatewayProducePolicyCreateTypeEncrypt          EventGatewayProducePolicyCreateType = "encrypt"
+	EventGatewayProducePolicyCreateTypeEncryptFields    EventGatewayProducePolicyCreateType = "encrypt_fields"
 )
 
 // EventGatewayProducePolicyCreate - The typed schema of the produce policy to modify it.
 type EventGatewayProducePolicyCreate struct {
-	EventGatewayModifyHeadersPolicyCreate     *EventGatewayModifyHeadersPolicyCreate     `queryParam:"inline" union:"member"`
-	EventGatewayProduceSchemaValidationPolicy *EventGatewayProduceSchemaValidationPolicy `queryParam:"inline" union:"member"`
-	EventGatewayEncryptPolicy                 *EventGatewayEncryptPolicy                 `queryParam:"inline" union:"member"`
+	EventGatewayModifyHeadersPolicyCreate             *EventGatewayModifyHeadersPolicyCreate             `queryParam:"inline" union:"member"`
+	EventGatewayProduceSchemaValidationPolicy         *EventGatewayProduceSchemaValidationPolicy         `queryParam:"inline" union:"member"`
+	EventGatewayEncryptPolicy                         *EventGatewayEncryptPolicy                         `queryParam:"inline" union:"member"`
+	EventGatewayParsedRecordEncryptFieldsPolicyCreate *EventGatewayParsedRecordEncryptFieldsPolicyCreate `queryParam:"inline" union:"member"`
 
 	Type EventGatewayProducePolicyCreateType
 }
@@ -50,6 +52,15 @@ func CreateEventGatewayProducePolicyCreateEncrypt(encrypt EventGatewayEncryptPol
 	return EventGatewayProducePolicyCreate{
 		EventGatewayEncryptPolicy: &encrypt,
 		Type:                      typ,
+	}
+}
+
+func CreateEventGatewayProducePolicyCreateEncryptFields(encryptFields EventGatewayParsedRecordEncryptFieldsPolicyCreate) EventGatewayProducePolicyCreate {
+	typ := EventGatewayProducePolicyCreateTypeEncryptFields
+
+	return EventGatewayProducePolicyCreate{
+		EventGatewayParsedRecordEncryptFieldsPolicyCreate: &encryptFields,
+		Type: typ,
 	}
 }
 
@@ -92,6 +103,15 @@ func (u *EventGatewayProducePolicyCreate) UnmarshalJSON(data []byte) error {
 		u.EventGatewayEncryptPolicy = eventGatewayEncryptPolicy
 		u.Type = EventGatewayProducePolicyCreateTypeEncrypt
 		return nil
+	case "encrypt_fields":
+		eventGatewayParsedRecordEncryptFieldsPolicyCreate := new(EventGatewayParsedRecordEncryptFieldsPolicyCreate)
+		if err := utils.UnmarshalJSON(data, &eventGatewayParsedRecordEncryptFieldsPolicyCreate, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == encrypt_fields) type EventGatewayParsedRecordEncryptFieldsPolicyCreate within EventGatewayProducePolicyCreate: %w", string(data), err)
+		}
+
+		u.EventGatewayParsedRecordEncryptFieldsPolicyCreate = eventGatewayParsedRecordEncryptFieldsPolicyCreate
+		u.Type = EventGatewayProducePolicyCreateTypeEncryptFields
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EventGatewayProducePolicyCreate", string(data))
@@ -108,6 +128,10 @@ func (u EventGatewayProducePolicyCreate) MarshalJSON() ([]byte, error) {
 
 	if u.EventGatewayEncryptPolicy != nil {
 		return utils.MarshalJSON(u.EventGatewayEncryptPolicy, "", true)
+	}
+
+	if u.EventGatewayParsedRecordEncryptFieldsPolicyCreate != nil {
+		return utils.MarshalJSON(u.EventGatewayParsedRecordEncryptFieldsPolicyCreate, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type EventGatewayProducePolicyCreate: all fields are null")

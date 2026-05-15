@@ -388,3 +388,86 @@ func (_c *MockDPCertificatesSDK_ListDpClientCertificates_Call) RunAndReturn(run 
 	_c.Call.Return(run)
 	return _c
 }
+
+// UpdateDataplaneCertificate provides a mock function for the type MockDPCertificatesSDK
+func (_mock *MockDPCertificatesSDK) UpdateDataplaneCertificate(ctx context.Context, request operations.UpdateDataplaneCertificateRequest, opts ...operations.Option) (*operations.UpdateDataplaneCertificateResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, request, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, request)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateDataplaneCertificate")
+	}
+
+	var r0 *operations.UpdateDataplaneCertificateResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpdateDataplaneCertificateRequest, ...operations.Option) (*operations.UpdateDataplaneCertificateResponse, error)); ok {
+		return returnFunc(ctx, request, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, operations.UpdateDataplaneCertificateRequest, ...operations.Option) *operations.UpdateDataplaneCertificateResponse); ok {
+		r0 = returnFunc(ctx, request, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.UpdateDataplaneCertificateResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, operations.UpdateDataplaneCertificateRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, request, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockDPCertificatesSDK_UpdateDataplaneCertificate_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateDataplaneCertificate'
+type MockDPCertificatesSDK_UpdateDataplaneCertificate_Call struct {
+	*mock.Call
+}
+
+// UpdateDataplaneCertificate is a helper method to define mock.On call
+//   - ctx context.Context
+//   - request operations.UpdateDataplaneCertificateRequest
+//   - opts ...operations.Option
+func (_e *MockDPCertificatesSDK_Expecter) UpdateDataplaneCertificate(ctx interface{}, request interface{}, opts ...interface{}) *MockDPCertificatesSDK_UpdateDataplaneCertificate_Call {
+	return &MockDPCertificatesSDK_UpdateDataplaneCertificate_Call{Call: _e.mock.On("UpdateDataplaneCertificate",
+		append([]interface{}{ctx, request}, opts...)...)}
+}
+
+func (_c *MockDPCertificatesSDK_UpdateDataplaneCertificate_Call) Run(run func(ctx context.Context, request operations.UpdateDataplaneCertificateRequest, opts ...operations.Option)) *MockDPCertificatesSDK_UpdateDataplaneCertificate_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 operations.UpdateDataplaneCertificateRequest
+		if args[1] != nil {
+			arg1 = args[1].(operations.UpdateDataplaneCertificateRequest)
+		}
+		var arg2 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 2 {
+			variadicArgs = args[2].([]operations.Option)
+		}
+		arg2 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockDPCertificatesSDK_UpdateDataplaneCertificate_Call) Return(updateDataplaneCertificateResponse *operations.UpdateDataplaneCertificateResponse, err error) *MockDPCertificatesSDK_UpdateDataplaneCertificate_Call {
+	_c.Call.Return(updateDataplaneCertificateResponse, err)
+	return _c
+}
+
+func (_c *MockDPCertificatesSDK_UpdateDataplaneCertificate_Call) RunAndReturn(run func(ctx context.Context, request operations.UpdateDataplaneCertificateRequest, opts ...operations.Option) (*operations.UpdateDataplaneCertificateResponse, error)) *MockDPCertificatesSDK_UpdateDataplaneCertificate_Call {
+	_c.Call.Return(run)
+	return _c
+}
