@@ -8,31 +8,31 @@ A response containing a single DCR provider object. Sensitive fields will be rem
 ### DCRProviderAuth0DCRProviderAuth0
 
 ```go
-dcrProviderResponse := components.CreateDcrProviderResponseDcrProviderAuth0(components.DCRProviderAuth0DCRProviderAuth0{/* values here */})
+dcrProviderResponse := components.CreateDcrProviderResponseAuth0(components.DCRProviderAuth0DCRProviderAuth0{/* values here */})
 ```
 
 ### DCRProviderAzureADDCRProviderAzureAD
 
 ```go
-dcrProviderResponse := components.CreateDcrProviderResponseDcrProviderAzureAd(components.DCRProviderAzureADDCRProviderAzureAD{/* values here */})
+dcrProviderResponse := components.CreateDcrProviderResponseAzureAd(components.DCRProviderAzureADDCRProviderAzureAD{/* values here */})
 ```
 
 ### DCRProviderCurityDCRProviderCurity
 
 ```go
-dcrProviderResponse := components.CreateDcrProviderResponseDcrProviderCurity(components.DCRProviderCurityDCRProviderCurity{/* values here */})
+dcrProviderResponse := components.CreateDcrProviderResponseCurity(components.DCRProviderCurityDCRProviderCurity{/* values here */})
 ```
 
 ### DCRProviderOKTADCRProviderOKTA
 
 ```go
-dcrProviderResponse := components.CreateDcrProviderResponseDcrProviderOkta(components.DCRProviderOKTADCRProviderOKTA{/* values here */})
+dcrProviderResponse := components.CreateDcrProviderResponseOkta(components.DCRProviderOKTADCRProviderOKTA{/* values here */})
 ```
 
 ### DCRProviderHTTPDCRProviderHTTP
 
 ```go
-dcrProviderResponse := components.CreateDcrProviderResponseDcrProviderHTTP(components.DCRProviderHTTPDCRProviderHTTP{/* values here */})
+dcrProviderResponse := components.CreateDcrProviderResponseHTTP(components.DCRProviderHTTPDCRProviderHTTP{/* values here */})
 ```
 
 ## Union Discrimination
@@ -41,15 +41,15 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch dcrProviderResponse.Type {
-	case components.DcrProviderResponseTypeDcrProviderAuth0:
+	case components.DcrProviderResponseTypeAuth0:
 		// dcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
-	case components.DcrProviderResponseTypeDcrProviderAzureAd:
+	case components.DcrProviderResponseTypeAzureAd:
 		// dcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
-	case components.DcrProviderResponseTypeDcrProviderCurity:
+	case components.DcrProviderResponseTypeCurity:
 		// dcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
-	case components.DcrProviderResponseTypeDcrProviderOkta:
+	case components.DcrProviderResponseTypeOkta:
 		// dcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
-	case components.DcrProviderResponseTypeDcrProviderHTTP:
+	case components.DcrProviderResponseTypeHTTP:
 		// dcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
 }
 ```

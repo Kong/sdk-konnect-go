@@ -23,6 +23,12 @@ eventGatewayProducePolicyCreate := components.CreateEventGatewayProducePolicyCre
 eventGatewayProducePolicyCreate := components.CreateEventGatewayProducePolicyCreateEncrypt(components.EventGatewayEncryptPolicy{/* values here */})
 ```
 
+### EventGatewayParsedRecordEncryptFieldsPolicyCreate
+
+```go
+eventGatewayProducePolicyCreate := components.CreateEventGatewayProducePolicyCreateEncryptFields(components.EventGatewayParsedRecordEncryptFieldsPolicyCreate{/* values here */})
+```
+
 ## Union Discrimination
 
 Use the `Type` field to determine which variant is active, then access the corresponding field:
@@ -35,5 +41,7 @@ switch eventGatewayProducePolicyCreate.Type {
 		// eventGatewayProducePolicyCreate.EventGatewayProduceSchemaValidationPolicy is populated
 	case components.EventGatewayProducePolicyCreateTypeEncrypt:
 		// eventGatewayProducePolicyCreate.EventGatewayEncryptPolicy is populated
+	case components.EventGatewayProducePolicyCreateTypeEncryptFields:
+		// eventGatewayProducePolicyCreate.EventGatewayParsedRecordEncryptFieldsPolicyCreate is populated
 }
 ```

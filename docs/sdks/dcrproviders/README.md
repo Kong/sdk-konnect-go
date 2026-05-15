@@ -58,15 +58,15 @@ func main() {
     }
     if res.CreateDcrProviderResponse != nil {
         switch res.CreateDcrProviderResponse.Type {
-            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+            case components.CreateDcrProviderResponseTypeAuth0:
                 // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+            case components.CreateDcrProviderResponseTypeAzureAd:
                 // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+            case components.CreateDcrProviderResponseTypeCurity:
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+            case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+            case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
 
@@ -112,15 +112,15 @@ func main() {
     }
     if res.CreateDcrProviderResponse != nil {
         switch res.CreateDcrProviderResponse.Type {
-            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+            case components.CreateDcrProviderResponseTypeAuth0:
                 // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+            case components.CreateDcrProviderResponseTypeAzureAd:
                 // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+            case components.CreateDcrProviderResponseTypeCurity:
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+            case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+            case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
 
@@ -164,15 +164,15 @@ func main() {
     }
     if res.CreateDcrProviderResponse != nil {
         switch res.CreateDcrProviderResponse.Type {
-            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+            case components.CreateDcrProviderResponseTypeAuth0:
                 // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+            case components.CreateDcrProviderResponseTypeAzureAd:
                 // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+            case components.CreateDcrProviderResponseTypeCurity:
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+            case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+            case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
 
@@ -217,15 +217,15 @@ func main() {
     }
     if res.CreateDcrProviderResponse != nil {
         switch res.CreateDcrProviderResponse.Type {
-            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+            case components.CreateDcrProviderResponseTypeAuth0:
                 // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+            case components.CreateDcrProviderResponseTypeAzureAd:
                 // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+            case components.CreateDcrProviderResponseTypeCurity:
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+            case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+            case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
 
@@ -270,15 +270,15 @@ func main() {
     }
     if res.CreateDcrProviderResponse != nil {
         switch res.CreateDcrProviderResponse.Type {
-            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+            case components.CreateDcrProviderResponseTypeAuth0:
                 // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+            case components.CreateDcrProviderResponseTypeAzureAd:
                 // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+            case components.CreateDcrProviderResponseTypeCurity:
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+            case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+            case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
 
@@ -323,15 +323,15 @@ func main() {
     }
     if res.CreateDcrProviderResponse != nil {
         switch res.CreateDcrProviderResponse.Type {
-            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+            case components.CreateDcrProviderResponseTypeAuth0:
                 // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+            case components.CreateDcrProviderResponseTypeAzureAd:
                 // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+            case components.CreateDcrProviderResponseTypeCurity:
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+            case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+            case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
 
@@ -376,15 +376,15 @@ func main() {
     }
     if res.CreateDcrProviderResponse != nil {
         switch res.CreateDcrProviderResponse.Type {
-            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+            case components.CreateDcrProviderResponseTypeAuth0:
                 // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+            case components.CreateDcrProviderResponseTypeAzureAd:
                 // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+            case components.CreateDcrProviderResponseTypeCurity:
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+            case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+            case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
 
@@ -429,15 +429,15 @@ func main() {
     }
     if res.CreateDcrProviderResponse != nil {
         switch res.CreateDcrProviderResponse.Type {
-            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+            case components.CreateDcrProviderResponseTypeAuth0:
                 // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+            case components.CreateDcrProviderResponseTypeAzureAd:
                 // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+            case components.CreateDcrProviderResponseTypeCurity:
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+            case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+            case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
 
@@ -482,15 +482,15 @@ func main() {
     }
     if res.CreateDcrProviderResponse != nil {
         switch res.CreateDcrProviderResponse.Type {
-            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+            case components.CreateDcrProviderResponseTypeAuth0:
                 // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+            case components.CreateDcrProviderResponseTypeAzureAd:
                 // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+            case components.CreateDcrProviderResponseTypeCurity:
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+            case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+            case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
 
@@ -534,15 +534,15 @@ func main() {
     }
     if res.CreateDcrProviderResponse != nil {
         switch res.CreateDcrProviderResponse.Type {
-            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+            case components.CreateDcrProviderResponseTypeAuth0:
                 // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+            case components.CreateDcrProviderResponseTypeAzureAd:
                 // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+            case components.CreateDcrProviderResponseTypeCurity:
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+            case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+            case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
 
@@ -587,15 +587,15 @@ func main() {
     }
     if res.CreateDcrProviderResponse != nil {
         switch res.CreateDcrProviderResponse.Type {
-            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+            case components.CreateDcrProviderResponseTypeAuth0:
                 // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+            case components.CreateDcrProviderResponseTypeAzureAd:
                 // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+            case components.CreateDcrProviderResponseTypeCurity:
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+            case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+            case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
 
@@ -640,15 +640,15 @@ func main() {
     }
     if res.CreateDcrProviderResponse != nil {
         switch res.CreateDcrProviderResponse.Type {
-            case components.CreateDcrProviderResponseTypeDcrProviderAuth0:
+            case components.CreateDcrProviderResponseTypeAuth0:
                 // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderAzureAd:
+            case components.CreateDcrProviderResponseTypeAzureAd:
                 // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderCurity:
+            case components.CreateDcrProviderResponseTypeCurity:
                 // res.CreateDcrProviderResponse.DCRProviderCurity is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderOkta:
+            case components.CreateDcrProviderResponseTypeOkta:
                 // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
-            case components.CreateDcrProviderResponseTypeDcrProviderHTTP:
+            case components.CreateDcrProviderResponseTypeHTTP:
                 // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
         }
 
@@ -770,15 +770,15 @@ func main() {
     }
     if res.DcrProviderResponse != nil {
         switch res.DcrProviderResponse.Type {
-            case components.DcrProviderResponseTypeDcrProviderAuth0:
+            case components.DcrProviderResponseTypeAuth0:
                 // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
-            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+            case components.DcrProviderResponseTypeAzureAd:
                 // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
-            case components.DcrProviderResponseTypeDcrProviderCurity:
+            case components.DcrProviderResponseTypeCurity:
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
-            case components.DcrProviderResponseTypeDcrProviderOkta:
+            case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
-            case components.DcrProviderResponseTypeDcrProviderHTTP:
+            case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
 
@@ -813,15 +813,15 @@ func main() {
     }
     if res.DcrProviderResponse != nil {
         switch res.DcrProviderResponse.Type {
-            case components.DcrProviderResponseTypeDcrProviderAuth0:
+            case components.DcrProviderResponseTypeAuth0:
                 // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
-            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+            case components.DcrProviderResponseTypeAzureAd:
                 // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
-            case components.DcrProviderResponseTypeDcrProviderCurity:
+            case components.DcrProviderResponseTypeCurity:
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
-            case components.DcrProviderResponseTypeDcrProviderOkta:
+            case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
-            case components.DcrProviderResponseTypeDcrProviderHTTP:
+            case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
 
@@ -856,15 +856,15 @@ func main() {
     }
     if res.DcrProviderResponse != nil {
         switch res.DcrProviderResponse.Type {
-            case components.DcrProviderResponseTypeDcrProviderAuth0:
+            case components.DcrProviderResponseTypeAuth0:
                 // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
-            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+            case components.DcrProviderResponseTypeAzureAd:
                 // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
-            case components.DcrProviderResponseTypeDcrProviderCurity:
+            case components.DcrProviderResponseTypeCurity:
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
-            case components.DcrProviderResponseTypeDcrProviderOkta:
+            case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
-            case components.DcrProviderResponseTypeDcrProviderHTTP:
+            case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
 
@@ -899,15 +899,15 @@ func main() {
     }
     if res.DcrProviderResponse != nil {
         switch res.DcrProviderResponse.Type {
-            case components.DcrProviderResponseTypeDcrProviderAuth0:
+            case components.DcrProviderResponseTypeAuth0:
                 // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
-            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+            case components.DcrProviderResponseTypeAzureAd:
                 // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
-            case components.DcrProviderResponseTypeDcrProviderCurity:
+            case components.DcrProviderResponseTypeCurity:
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
-            case components.DcrProviderResponseTypeDcrProviderOkta:
+            case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
-            case components.DcrProviderResponseTypeDcrProviderHTTP:
+            case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
 
@@ -942,15 +942,15 @@ func main() {
     }
     if res.DcrProviderResponse != nil {
         switch res.DcrProviderResponse.Type {
-            case components.DcrProviderResponseTypeDcrProviderAuth0:
+            case components.DcrProviderResponseTypeAuth0:
                 // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
-            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+            case components.DcrProviderResponseTypeAzureAd:
                 // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
-            case components.DcrProviderResponseTypeDcrProviderCurity:
+            case components.DcrProviderResponseTypeCurity:
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
-            case components.DcrProviderResponseTypeDcrProviderOkta:
+            case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
-            case components.DcrProviderResponseTypeDcrProviderHTTP:
+            case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
 
@@ -1015,15 +1015,15 @@ func main() {
     }
     if res.DcrProviderResponse != nil {
         switch res.DcrProviderResponse.Type {
-            case components.DcrProviderResponseTypeDcrProviderAuth0:
+            case components.DcrProviderResponseTypeAuth0:
                 // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
-            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+            case components.DcrProviderResponseTypeAzureAd:
                 // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
-            case components.DcrProviderResponseTypeDcrProviderCurity:
+            case components.DcrProviderResponseTypeCurity:
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
-            case components.DcrProviderResponseTypeDcrProviderOkta:
+            case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
-            case components.DcrProviderResponseTypeDcrProviderHTTP:
+            case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
 
@@ -1062,15 +1062,15 @@ func main() {
     }
     if res.DcrProviderResponse != nil {
         switch res.DcrProviderResponse.Type {
-            case components.DcrProviderResponseTypeDcrProviderAuth0:
+            case components.DcrProviderResponseTypeAuth0:
                 // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
-            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+            case components.DcrProviderResponseTypeAzureAd:
                 // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
-            case components.DcrProviderResponseTypeDcrProviderCurity:
+            case components.DcrProviderResponseTypeCurity:
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
-            case components.DcrProviderResponseTypeDcrProviderOkta:
+            case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
-            case components.DcrProviderResponseTypeDcrProviderHTTP:
+            case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
 
@@ -1109,15 +1109,15 @@ func main() {
     }
     if res.DcrProviderResponse != nil {
         switch res.DcrProviderResponse.Type {
-            case components.DcrProviderResponseTypeDcrProviderAuth0:
+            case components.DcrProviderResponseTypeAuth0:
                 // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
-            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+            case components.DcrProviderResponseTypeAzureAd:
                 // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
-            case components.DcrProviderResponseTypeDcrProviderCurity:
+            case components.DcrProviderResponseTypeCurity:
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
-            case components.DcrProviderResponseTypeDcrProviderOkta:
+            case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
-            case components.DcrProviderResponseTypeDcrProviderHTTP:
+            case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
 
@@ -1156,15 +1156,15 @@ func main() {
     }
     if res.DcrProviderResponse != nil {
         switch res.DcrProviderResponse.Type {
-            case components.DcrProviderResponseTypeDcrProviderAuth0:
+            case components.DcrProviderResponseTypeAuth0:
                 // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
-            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+            case components.DcrProviderResponseTypeAzureAd:
                 // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
-            case components.DcrProviderResponseTypeDcrProviderCurity:
+            case components.DcrProviderResponseTypeCurity:
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
-            case components.DcrProviderResponseTypeDcrProviderOkta:
+            case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
-            case components.DcrProviderResponseTypeDcrProviderHTTP:
+            case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
 
@@ -1203,15 +1203,15 @@ func main() {
     }
     if res.DcrProviderResponse != nil {
         switch res.DcrProviderResponse.Type {
-            case components.DcrProviderResponseTypeDcrProviderAuth0:
+            case components.DcrProviderResponseTypeAuth0:
                 // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
-            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+            case components.DcrProviderResponseTypeAzureAd:
                 // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
-            case components.DcrProviderResponseTypeDcrProviderCurity:
+            case components.DcrProviderResponseTypeCurity:
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
-            case components.DcrProviderResponseTypeDcrProviderOkta:
+            case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
-            case components.DcrProviderResponseTypeDcrProviderHTTP:
+            case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
 
@@ -1249,15 +1249,15 @@ func main() {
     }
     if res.DcrProviderResponse != nil {
         switch res.DcrProviderResponse.Type {
-            case components.DcrProviderResponseTypeDcrProviderAuth0:
+            case components.DcrProviderResponseTypeAuth0:
                 // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
-            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+            case components.DcrProviderResponseTypeAzureAd:
                 // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
-            case components.DcrProviderResponseTypeDcrProviderCurity:
+            case components.DcrProviderResponseTypeCurity:
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
-            case components.DcrProviderResponseTypeDcrProviderOkta:
+            case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
-            case components.DcrProviderResponseTypeDcrProviderHTTP:
+            case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
 
@@ -1296,15 +1296,15 @@ func main() {
     }
     if res.DcrProviderResponse != nil {
         switch res.DcrProviderResponse.Type {
-            case components.DcrProviderResponseTypeDcrProviderAuth0:
+            case components.DcrProviderResponseTypeAuth0:
                 // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
-            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+            case components.DcrProviderResponseTypeAzureAd:
                 // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
-            case components.DcrProviderResponseTypeDcrProviderCurity:
+            case components.DcrProviderResponseTypeCurity:
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
-            case components.DcrProviderResponseTypeDcrProviderOkta:
+            case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
-            case components.DcrProviderResponseTypeDcrProviderHTTP:
+            case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
 
@@ -1343,15 +1343,15 @@ func main() {
     }
     if res.DcrProviderResponse != nil {
         switch res.DcrProviderResponse.Type {
-            case components.DcrProviderResponseTypeDcrProviderAuth0:
+            case components.DcrProviderResponseTypeAuth0:
                 // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
-            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+            case components.DcrProviderResponseTypeAzureAd:
                 // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
-            case components.DcrProviderResponseTypeDcrProviderCurity:
+            case components.DcrProviderResponseTypeCurity:
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
-            case components.DcrProviderResponseTypeDcrProviderOkta:
+            case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
-            case components.DcrProviderResponseTypeDcrProviderHTTP:
+            case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
 
@@ -1390,15 +1390,15 @@ func main() {
     }
     if res.DcrProviderResponse != nil {
         switch res.DcrProviderResponse.Type {
-            case components.DcrProviderResponseTypeDcrProviderAuth0:
+            case components.DcrProviderResponseTypeAuth0:
                 // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
-            case components.DcrProviderResponseTypeDcrProviderAzureAd:
+            case components.DcrProviderResponseTypeAzureAd:
                 // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
-            case components.DcrProviderResponseTypeDcrProviderCurity:
+            case components.DcrProviderResponseTypeCurity:
                 // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
-            case components.DcrProviderResponseTypeDcrProviderOkta:
+            case components.DcrProviderResponseTypeOkta:
                 // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
-            case components.DcrProviderResponseTypeDcrProviderHTTP:
+            case components.DcrProviderResponseTypeHTTP:
                 // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
         }
 

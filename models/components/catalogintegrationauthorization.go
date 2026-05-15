@@ -8,45 +8,48 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type One struct {
+type CatalogIntegrationAuthorization1 struct {
 }
 
-func (o One) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(o, "", false)
+func (c CatalogIntegrationAuthorization1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
 }
 
-func (o *One) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &o, "", false, nil); err != nil {
+func (c *CatalogIntegrationAuthorization1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
+// #region class-body-catalogintegrationauthorization1
+// #endregion class-body-catalogintegrationauthorization1
+
 type CatalogIntegrationAuthorizationType string
 
 const (
-	CatalogIntegrationAuthorizationTypeOne                       CatalogIntegrationAuthorizationType = "1"
-	CatalogIntegrationAuthorizationTypeOAuth1                    CatalogIntegrationAuthorizationType = "OAuth1"
-	CatalogIntegrationAuthorizationTypeMultiKeyAuth1             CatalogIntegrationAuthorizationType = "MultiKeyAuth1"
-	CatalogIntegrationAuthorizationTypeGitHubAppInstallationAuth CatalogIntegrationAuthorizationType = "GitHubAppInstallationAuth"
+	CatalogIntegrationAuthorizationTypeCatalogIntegrationAuthorization1 CatalogIntegrationAuthorizationType = "CatalogIntegrationAuthorization_1"
+	CatalogIntegrationAuthorizationTypeOAuth1                           CatalogIntegrationAuthorizationType = "OAuth1"
+	CatalogIntegrationAuthorizationTypeMultiKeyAuth1                    CatalogIntegrationAuthorizationType = "MultiKeyAuth1"
+	CatalogIntegrationAuthorizationTypeGitHubAppInstallationAuth        CatalogIntegrationAuthorizationType = "GitHubAppInstallationAuth"
 )
 
 // CatalogIntegrationAuthorization - Defines the authorization strategy for an integration.
 type CatalogIntegrationAuthorization struct {
-	One                       *One                       `queryParam:"inline" union:"member"`
-	OAuth1                    *OAuth1                    `queryParam:"inline" union:"member"`
-	MultiKeyAuth1             *MultiKeyAuth1             `queryParam:"inline" union:"member"`
-	GitHubAppInstallationAuth *GitHubAppInstallationAuth `queryParam:"inline" union:"member"`
+	CatalogIntegrationAuthorization1 *CatalogIntegrationAuthorization1 `queryParam:"inline" union:"member"`
+	OAuth1                           *OAuth1                           `queryParam:"inline" union:"member"`
+	MultiKeyAuth1                    *MultiKeyAuth1                    `queryParam:"inline" union:"member"`
+	GitHubAppInstallationAuth        *GitHubAppInstallationAuth        `queryParam:"inline" union:"member"`
 
 	Type CatalogIntegrationAuthorizationType
 }
 
-func CreateCatalogIntegrationAuthorizationOne(one One) CatalogIntegrationAuthorization {
-	typ := CatalogIntegrationAuthorizationTypeOne
+func CreateCatalogIntegrationAuthorizationCatalogIntegrationAuthorization1(catalogIntegrationAuthorization1 CatalogIntegrationAuthorization1) CatalogIntegrationAuthorization {
+	typ := CatalogIntegrationAuthorizationTypeCatalogIntegrationAuthorization1
 
 	return CatalogIntegrationAuthorization{
-		One:  &one,
-		Type: typ,
+		CatalogIntegrationAuthorization1: &catalogIntegrationAuthorization1,
+		Type:                             typ,
 	}
 }
 
@@ -100,10 +103,10 @@ func (u *CatalogIntegrationAuthorization) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var one One = One{}
-	if err := utils.UnmarshalJSON(data, &one, "", true, nil); err == nil {
-		u.One = &one
-		u.Type = CatalogIntegrationAuthorizationTypeOne
+	var catalogIntegrationAuthorization1 CatalogIntegrationAuthorization1 = CatalogIntegrationAuthorization1{}
+	if err := utils.UnmarshalJSON(data, &catalogIntegrationAuthorization1, "", true, nil); err == nil {
+		u.CatalogIntegrationAuthorization1 = &catalogIntegrationAuthorization1
+		u.Type = CatalogIntegrationAuthorizationTypeCatalogIntegrationAuthorization1
 		return nil
 	}
 
@@ -111,8 +114,8 @@ func (u *CatalogIntegrationAuthorization) UnmarshalJSON(data []byte) error {
 }
 
 func (u CatalogIntegrationAuthorization) MarshalJSON() ([]byte, error) {
-	if u.One != nil {
-		return utils.MarshalJSON(u.One, "", true)
+	if u.CatalogIntegrationAuthorization1 != nil {
+		return utils.MarshalJSON(u.CatalogIntegrationAuthorization1, "", true)
 	}
 
 	if u.OAuth1 != nil {

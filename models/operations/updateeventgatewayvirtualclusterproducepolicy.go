@@ -67,6 +67,13 @@ func (u *UpdateEventGatewayVirtualClusterProducePolicyRequest) GetEventGatewayPr
 	return nil
 }
 
+func (u *UpdateEventGatewayVirtualClusterProducePolicyRequest) GetEventGatewayProducePolicyUpdateEncryptFields() *components.EventGatewayParsedRecordEncryptFieldsPolicy {
+	if v := u.GetEventGatewayProducePolicyUpdate(); v != nil {
+		return v.EventGatewayParsedRecordEncryptFieldsPolicy
+	}
+	return nil
+}
+
 type UpdateEventGatewayVirtualClusterProducePolicyResponse struct {
 	// HTTP response content type for this operation
 	ContentType string

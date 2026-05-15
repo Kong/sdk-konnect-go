@@ -9,3 +9,4 @@
 | `CreatedAt`                             | `*int64`                                | :heavy_minus_sign:                      | Date certificate was created.           |
 | `UpdatedAt`                             | `*int64`                                | :heavy_minus_sign:                      | Date certificate was last updated.      |
 | `Cert`                                  | `*string`                               | :heavy_minus_sign:                      | JSON escaped string of the certificate. |
+| `Title`                                 | `*string`                               | :heavy_minus_sign:                      | Title of the certificate.               |

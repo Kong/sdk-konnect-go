@@ -85,6 +85,13 @@ func (c *CreateEventGatewayVirtualClusterConsumePolicyRequest) GetEventGatewayCo
 	return nil
 }
 
+func (c *CreateEventGatewayVirtualClusterConsumePolicyRequest) GetEventGatewayConsumePolicyCreateDecryptFields() *components.EventGatewayParsedRecordDecryptFieldsPolicyCreate {
+	if v := c.GetEventGatewayConsumePolicyCreate(); v != nil {
+		return v.EventGatewayParsedRecordDecryptFieldsPolicyCreate
+	}
+	return nil
+}
+
 type CreateEventGatewayVirtualClusterConsumePolicyResponse struct {
 	// HTTP response content type for this operation
 	ContentType string

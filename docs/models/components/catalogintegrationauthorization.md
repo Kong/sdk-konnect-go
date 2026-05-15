@@ -5,10 +5,10 @@ Defines the authorization strategy for an integration.
 
 ## Supported Types
 
-### One
+### CatalogIntegrationAuthorization1
 
 ```go
-catalogIntegrationAuthorization := components.CreateCatalogIntegrationAuthorizationOne(components.One{/* values here */})
+catalogIntegrationAuthorization := components.CreateCatalogIntegrationAuthorizationCatalogIntegrationAuthorization1(components.CatalogIntegrationAuthorization1{/* values here */})
 ```
 
 ### OAuth1
@@ -35,8 +35,8 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch catalogIntegrationAuthorization.Type {
-	case components.CatalogIntegrationAuthorizationTypeOne:
-		// catalogIntegrationAuthorization.One is populated
+	case components.CatalogIntegrationAuthorizationTypeCatalogIntegrationAuthorization1:
+		// catalogIntegrationAuthorization.CatalogIntegrationAuthorization1 is populated
 	case components.CatalogIntegrationAuthorizationTypeOAuth1:
 		// catalogIntegrationAuthorization.OAuth1 is populated
 	case components.CatalogIntegrationAuthorizationTypeMultiKeyAuth1:
