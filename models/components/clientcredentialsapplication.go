@@ -31,28 +31,28 @@ func (d *DcrProvider) GetID() string {
 	return d.ID
 }
 
-// Portal - Information about the portal the application is in.
-type Portal struct {
+// ClientCredentialsApplicationPortal - Information about the portal the application is in.
+type ClientCredentialsApplicationPortal struct {
 	// Contains a unique identifier used for this resource.
 	ID string `json:"id"`
 }
 
-func (p Portal) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
+func (c ClientCredentialsApplicationPortal) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
 }
 
-func (p *Portal) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"id"}); err != nil {
+func (c *ClientCredentialsApplicationPortal) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, []string{"id"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (p *Portal) GetID() string {
-	if p == nil {
+func (c *ClientCredentialsApplicationPortal) GetID() string {
+	if c == nil {
 		return ""
 	}
-	return p.ID
+	return c.ID
 }
 
 type ClientCredentialsApplication struct {
@@ -73,7 +73,7 @@ type ClientCredentialsApplication struct {
 	// Information about the DCR provider this application uses, if using DCR.
 	DcrProvider *DcrProvider `json:"dcr_provider"`
 	// Information about the portal the application is in.
-	Portal Portal `json:"portal"`
+	Portal ClientCredentialsApplicationPortal `json:"portal"`
 	// Client Credential Auth strategy that the application uses.
 	AuthStrategy AuthStrategyClientCredentials `json:"auth_strategy"`
 	// List of granted scopes for the application. Null if application type does not support returning granted scopes.
@@ -148,9 +148,9 @@ func (c *ClientCredentialsApplication) GetDcrProvider() *DcrProvider {
 	return c.DcrProvider
 }
 
-func (c *ClientCredentialsApplication) GetPortal() Portal {
+func (c *ClientCredentialsApplication) GetPortal() ClientCredentialsApplicationPortal {
 	if c == nil {
-		return Portal{}
+		return ClientCredentialsApplicationPortal{}
 	}
 	return c.Portal
 }

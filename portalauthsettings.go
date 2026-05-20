@@ -1278,12 +1278,12 @@ func (s *PortalAuthSettings) GetPortalIdentityProviders(ctx context.Context, por
 				return nil, err
 			}
 
-			var out []components.IdentityProvider
+			var out []components.PortalIdentityProvider
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.IdentityProviders = out
+			res.PortalIdentityProviders = out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -1360,10 +1360,10 @@ func (s *PortalAuthSettings) GetPortalIdentityProviders(ctx context.Context, por
 // CreatePortalIdentityProvider - Create Identity Provider
 // Creates a new identity provider. This operation allows the creation of a new identity provider for
 // authentication purposes.
-func (s *PortalAuthSettings) CreatePortalIdentityProvider(ctx context.Context, portalID string, createIdentityProvider components.CreateIdentityProvider, opts ...operations.Option) (*operations.CreatePortalIdentityProviderResponse, error) {
+func (s *PortalAuthSettings) CreatePortalIdentityProvider(ctx context.Context, portalID string, portalCreateIdentityProvider components.PortalCreateIdentityProvider, opts ...operations.Option) (*operations.CreatePortalIdentityProviderResponse, error) {
 	request := operations.CreatePortalIdentityProviderRequest{
-		PortalID:               portalID,
-		CreateIdentityProvider: createIdentityProvider,
+		PortalID:                     portalID,
+		PortalCreateIdentityProvider: portalCreateIdentityProvider,
 	}
 
 	o := operations.Options{}
@@ -1398,7 +1398,7 @@ func (s *PortalAuthSettings) CreatePortalIdentityProvider(ctx context.Context, p
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CreateIdentityProvider", "json", `request:"mediaType=application/json"`)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PortalCreateIdentityProvider", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
 	}
@@ -1538,12 +1538,12 @@ func (s *PortalAuthSettings) CreatePortalIdentityProvider(ctx context.Context, p
 				return nil, err
 			}
 
-			var out components.IdentityProvider
+			var out components.PortalIdentityProvider
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.IdentityProvider = &out
+			res.PortalIdentityProvider = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -1833,12 +1833,12 @@ func (s *PortalAuthSettings) GetPortalIdentityProvider(ctx context.Context, port
 				return nil, err
 			}
 
-			var out components.IdentityProvider
+			var out components.PortalIdentityProvider
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.IdentityProvider = &out
+			res.PortalIdentityProvider = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -1990,7 +1990,7 @@ func (s *PortalAuthSettings) UpdatePortalIdentityProvider(ctx context.Context, r
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "UpdateIdentityProvider", "json", `request:"mediaType=application/json"`)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "PortalUpdateIdentityProvider", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
 	}
@@ -2130,12 +2130,12 @@ func (s *PortalAuthSettings) UpdatePortalIdentityProvider(ctx context.Context, r
 				return nil, err
 			}
 
-			var out components.IdentityProvider
+			var out components.PortalIdentityProvider
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.IdentityProvider = &out
+			res.PortalIdentityProvider = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {

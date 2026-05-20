@@ -40,12 +40,12 @@ func (_m *MockPortalAuthSettingsSDK) EXPECT() *MockPortalAuthSettingsSDK_Expecte
 }
 
 // CreatePortalIdentityProvider provides a mock function for the type MockPortalAuthSettingsSDK
-func (_mock *MockPortalAuthSettingsSDK) CreatePortalIdentityProvider(ctx context.Context, portalID string, createIdentityProvider components.CreateIdentityProvider, opts ...operations.Option) (*operations.CreatePortalIdentityProviderResponse, error) {
+func (_mock *MockPortalAuthSettingsSDK) CreatePortalIdentityProvider(ctx context.Context, portalID string, portalCreateIdentityProvider components.PortalCreateIdentityProvider, opts ...operations.Option) (*operations.CreatePortalIdentityProviderResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, portalID, createIdentityProvider, opts)
+		tmpRet = _mock.Called(ctx, portalID, portalCreateIdentityProvider, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, portalID, createIdentityProvider)
+		tmpRet = _mock.Called(ctx, portalID, portalCreateIdentityProvider)
 	}
 	ret := tmpRet
 
@@ -55,18 +55,18 @@ func (_mock *MockPortalAuthSettingsSDK) CreatePortalIdentityProvider(ctx context
 
 	var r0 *operations.CreatePortalIdentityProviderResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CreateIdentityProvider, ...operations.Option) (*operations.CreatePortalIdentityProviderResponse, error)); ok {
-		return returnFunc(ctx, portalID, createIdentityProvider, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.PortalCreateIdentityProvider, ...operations.Option) (*operations.CreatePortalIdentityProviderResponse, error)); ok {
+		return returnFunc(ctx, portalID, portalCreateIdentityProvider, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CreateIdentityProvider, ...operations.Option) *operations.CreatePortalIdentityProviderResponse); ok {
-		r0 = returnFunc(ctx, portalID, createIdentityProvider, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.PortalCreateIdentityProvider, ...operations.Option) *operations.CreatePortalIdentityProviderResponse); ok {
+		r0 = returnFunc(ctx, portalID, portalCreateIdentityProvider, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.CreatePortalIdentityProviderResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.CreateIdentityProvider, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, portalID, createIdentityProvider, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.PortalCreateIdentityProvider, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, portalID, portalCreateIdentityProvider, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -81,14 +81,14 @@ type MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call struct {
 // CreatePortalIdentityProvider is a helper method to define mock.On call
 //   - ctx context.Context
 //   - portalID string
-//   - createIdentityProvider components.CreateIdentityProvider
+//   - portalCreateIdentityProvider components.PortalCreateIdentityProvider
 //   - opts ...operations.Option
-func (_e *MockPortalAuthSettingsSDK_Expecter) CreatePortalIdentityProvider(ctx interface{}, portalID interface{}, createIdentityProvider interface{}, opts ...interface{}) *MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call {
+func (_e *MockPortalAuthSettingsSDK_Expecter) CreatePortalIdentityProvider(ctx interface{}, portalID interface{}, portalCreateIdentityProvider interface{}, opts ...interface{}) *MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call {
 	return &MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call{Call: _e.mock.On("CreatePortalIdentityProvider",
-		append([]interface{}{ctx, portalID, createIdentityProvider}, opts...)...)}
+		append([]interface{}{ctx, portalID, portalCreateIdentityProvider}, opts...)...)}
 }
 
-func (_c *MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call) Run(run func(ctx context.Context, portalID string, createIdentityProvider components.CreateIdentityProvider, opts ...operations.Option)) *MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call {
+func (_c *MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call) Run(run func(ctx context.Context, portalID string, portalCreateIdentityProvider components.PortalCreateIdentityProvider, opts ...operations.Option)) *MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -98,9 +98,9 @@ func (_c *MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call) Run(run f
 		if args[1] != nil {
 			arg1 = args[1].(string)
 		}
-		var arg2 components.CreateIdentityProvider
+		var arg2 components.PortalCreateIdentityProvider
 		if args[2] != nil {
-			arg2 = args[2].(components.CreateIdentityProvider)
+			arg2 = args[2].(components.PortalCreateIdentityProvider)
 		}
 		var arg3 []operations.Option
 		var variadicArgs []operations.Option
@@ -123,7 +123,7 @@ func (_c *MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call) Return(cr
 	return _c
 }
 
-func (_c *MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call) RunAndReturn(run func(ctx context.Context, portalID string, createIdentityProvider components.CreateIdentityProvider, opts ...operations.Option) (*operations.CreatePortalIdentityProviderResponse, error)) *MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call {
+func (_c *MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call) RunAndReturn(run func(ctx context.Context, portalID string, portalCreateIdentityProvider components.PortalCreateIdentityProvider, opts ...operations.Option) (*operations.CreatePortalIdentityProviderResponse, error)) *MockPortalAuthSettingsSDK_CreatePortalIdentityProvider_Call {
 	_c.Call.Return(run)
 	return _c
 }

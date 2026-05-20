@@ -9,6 +9,8 @@ import (
 // EventGatewayParsedRecordDecryptFieldsPolicy - Decrypts fields of parsed Kafka records using AES_256_GCM. Keys are therefore 256 bits long.
 //
 // Note this policy can only be used as a child of a `EventGatewayConsumeSchemaValidationPolicy` policy.
+//
+// **Requires a minimum runtime version of `1.2`**.
 type EventGatewayParsedRecordDecryptFieldsPolicy struct {
 	// The type name of the policy.
 	//lint:ignore U1000 accessed via reflection for JSON marshaling

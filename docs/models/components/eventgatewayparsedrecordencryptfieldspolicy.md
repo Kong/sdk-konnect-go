@@ -4,6 +4,7 @@ Encrypts fields of parsed Kafka records using AES_256_GCM. Keys are therefore 25
 
 Note this policy can only be used as a child of a `EventGatewayProduceSchemaValidationPolicy` policy.
 
+**Requires a minimum runtime version of `1.2`**.
 
 
 ## Fields
