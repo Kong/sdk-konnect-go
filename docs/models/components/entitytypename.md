@@ -28,9 +28,9 @@ custom := components.EntityTypeName("custom_value")
 | `EntityTypeNameControlPlanes`             | Control Planes                            |
 | `EntityTypeNameDashboards`                | Dashboards                                |
 | `EntityTypeNameDcrProviders`              | DCR Providers                             |
-| `EntityTypeNameIdentity`                  | Identity                                  |
 | `EntityTypeNameMeshControlPlanes`         | Mesh Control Planes                       |
 | `EntityTypeNameNetworks`                  | Networks                                  |
 | `EntityTypeNamePortals`                   | Portals                                   |
 | `EntityTypeNameReports`                   | Reports                                   |
 | `EntityTypeNameServiceHub`                | Service Hub                               |
+| `EntityTypeNameAuthServers`               | Auth Servers                              |

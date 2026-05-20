@@ -43,7 +43,7 @@ type GetIdentityProvidersResponse struct {
 	StatusCode int
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
-	// A collection of identity providers. This response contains a collection of identity providers, which may  include both OIDC and SAML identity providers.
+	// A collection of identity providers. This response contains a collection of identity providers, which may include both OIDC and SAML identity providers.
 	//
 	IdentityProviders []components.IdentityProvider
 }

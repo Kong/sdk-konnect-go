@@ -37,7 +37,7 @@ type GetPortalIdentityProviderResponse struct {
 	RawResponse *http.Response
 	// An identity provider configuration. This response represents the configuration of a specific identity provider, which can be either OIDC or SAML.
 	//
-	IdentityProvider *components.IdentityProvider
+	PortalIdentityProvider *components.PortalIdentityProvider
 }
 
 func (g *GetPortalIdentityProviderResponse) GetContentType() string {
@@ -61,9 +61,9 @@ func (g *GetPortalIdentityProviderResponse) GetRawResponse() *http.Response {
 	return g.RawResponse
 }
 
-func (g *GetPortalIdentityProviderResponse) GetIdentityProvider() *components.IdentityProvider {
+func (g *GetPortalIdentityProviderResponse) GetPortalIdentityProvider() *components.PortalIdentityProvider {
 	if g == nil {
 		return nil
 	}
-	return g.IdentityProvider
+	return g.PortalIdentityProvider
 }

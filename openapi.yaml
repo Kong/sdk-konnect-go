@@ -11289,6 +11289,28 @@ paths:
           $ref: '#/components/responses/ApiNotFound'
       tags:
         - API Publication
+  '/v3/apis/{apiId}/registrations':
+    parameters:
+      - $ref: '#/components/parameters/ApiId'
+    get:
+      operationId: list-api-registrations
+      summary: List API Registrations
+      description: Returns a paginated list of registrations for an API.
+      parameters:
+        - $ref: '#/components/parameters/ApiRegistrationsFilters'
+        - $ref: '#/components/parameters/PageSize'
+        - $ref: '#/components/parameters/PageNumber'
+      responses:
+        '200':
+          $ref: '#/components/responses/ApiRegistrationsList'
+        '401':
+          $ref: '#/components/responses/ApiUnauthorized'
+        '403':
+          $ref: '#/components/responses/ApiForbidden'
+        '404':
+          $ref: '#/components/responses/ApiNotFound'
+      tags:
+        - API
   '/v3/apis/{apiId}/specifications':
     parameters:
       - $ref: '#/components/parameters/ApiId'
@@ -14473,7 +14495,7 @@ paths:
           style: deepObject
       responses:
         '200':
-          $ref: '#/components/responses/IdentityProviders'
+          $ref: '#/components/responses/PortalIdentityProviders'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -14487,10 +14509,10 @@ paths:
         Creates a new identity provider. This operation allows the creation of a new identity provider for
         authentication purposes.
       requestBody:
-        $ref: '#/components/requestBodies/CreateIdentityProviderRequest'
+        $ref: '#/components/requestBodies/PortalCreateIdentityProviderRequest'
       responses:
         '201':
-          $ref: '#/components/responses/IdentityProvider'
+          $ref: '#/components/responses/PortalIdentityProvider'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -14513,7 +14535,7 @@ paths:
         specific identity provider's settings and authentication integration details.
       responses:
         '200':
-          $ref: '#/components/responses/IdentityProvider'
+          $ref: '#/components/responses/PortalIdentityProvider'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -14531,10 +14553,10 @@ paths:
         Updates the configuration of an existing identity provider. This operation allows modifications to be made
         to an existing identity provider's configuration.
       requestBody:
-        $ref: '#/components/requestBodies/UpdateIdentityProviderRequest'
+        $ref: '#/components/requestBodies/PortalUpdateIdentityProviderRequest'
       responses:
         '200':
-          $ref: '#/components/responses/IdentityProvider'
+          $ref: '#/components/responses/PortalIdentityProvider'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -17079,6 +17101,29 @@ components:
       in: query
       schema:
         $ref: '#/components/schemas/SortQuery'
+    ApiRegistrationsFilters:
+      name: filter
+      description: Filters API registrations in the response.
+      required: false
+      in: query
+      schema:
+        type: object
+        properties:
+          status:
+            $ref: '#/components/schemas/StringFieldFilter'
+          portal_id:
+            $ref: '#/components/schemas/UuidFieldFilter'
+          portal_name:
+            $ref: '#/components/schemas/StringFieldFilter'
+          application_id:
+            $ref: '#/components/schemas/UuidFieldFilter'
+          application_name:
+            $ref: '#/components/schemas/StringFieldFilter'
+          application_owner_type:
+            $ref: '#/components/schemas/StringFieldFilter'
+          application_owner_id:
+            $ref: '#/components/schemas/UuidFieldFilter'
+      style: deepObject
     ApiSort:
       name: sort
       description: |
@@ -19468,7 +19513,7 @@ components:
           oneOf:
             - $ref: '#/components/schemas/OIDCIdentityProviderConfig'
             - $ref: '#/components/schemas/SAMLIdentityProviderConfig'
-      title: Identity Provider
+      title: Create Identity Provider
     UpdateIdentityProvider:
       x-speakeasy-entity: IdentityProvider
       description: The identity provider that contains configuration data for updating an authentication integration.
@@ -19483,7 +19528,7 @@ components:
           oneOf:
             - $ref: '#/components/schemas/OIDCIdentityProviderConfig'
             - $ref: '#/components/schemas/SAMLIdentityProviderConfig'
-      title: Identity Provider
+      title: Update Identity Provider
     IdentityProvider:
       x-speakeasy-entity: IdentityProvider
       description: The identity provider that contains configuration data for authentication integration.
@@ -19536,8 +19581,8 @@ components:
           $ref: '#/components/schemas/SAMLIdentityProviderMetadata'
         sp_metadata_url:
           type: string
-          format: path
-          example: /api/v2/developer/authenticate/saml/metadata
+          format: uri
+          example: 'https://cloud.konghq.com/v2/authenticate/the-saml-konnect-org/saml/metadata'
           readOnly: true
         sp_entity_id:
           description: The entity ID of the service provider (SP).
@@ -19550,10 +19595,10 @@ components:
           example: 'https://cloud.konghq.com/login/the-saml-konnect-org'
           readOnly: true
         callback_url:
-          description: The path URL where the SAML identity provider sends authentication responses after successful login attempts.
+          description: The URL where the SAML identity provider sends authentication responses after successful login attempts.
           type: string
-          format: path
-          example: /api/v2/developer/authenticate/saml/acs
+          format: uri
+          example: 'https://cloud.konghq.com/v2/authenticate/the-saml-konnect-org/saml/acs'
           readOnly: true
       additionalProperties: false
       title: SAML Identity Provider Config
@@ -22608,6 +22653,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ManagedCacheAddOnDataPlaneGroup'
+          readOnly: true
         state_metadata:
           description: |
             Metadata describing the state of the managed cache add-on.
@@ -22661,6 +22707,7 @@ components:
                   description: Env vault path to azure tenant id.
                   type: string
                   example: '{vault://env/ADDON_MANAGED_CACHE_AZURE_TENANT_ID}'
+          readOnly: true
       additionalProperties: false
       required:
         - kind
@@ -22701,7 +22748,6 @@ components:
             - ready
             - error
             - terminating
-          readOnly: true
           x-speakeasy-unknown-values: allow
         state_metadata:
           description: |
@@ -22716,6 +22762,7 @@ components:
               example: |
                 Failed to create managed cache add-on due to invalid configuration.
       additionalProperties: false
+      readOnly: true
       required:
         - id
         - cloud_gateway_network_id
@@ -26001,6 +26048,69 @@ components:
         - created_at
         - updated_at
       title: Image Status
+    ApiRegistrationsListResponse:
+      description: The response for a list of API registrations.
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/PaginatedMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiRegistration'
+      additionalProperties: false
+      required:
+        - data
+        - meta
+      title: ApiRegistrationsListResponse
+    ApiRegistration:
+      description: An API registration.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        status:
+          type: string
+          enum:
+            - approved
+            - pending
+            - rejected
+            - revoked
+          x-speakeasy-unknown-values: allow
+        portal:
+          type: object
+          additionalProperties: false
+          properties:
+            id:
+              $ref: '#/components/schemas/UUID'
+            name:
+              type: string
+          required:
+            - id
+            - name
+        application:
+          type: object
+          additionalProperties: false
+          properties:
+            id:
+              $ref: '#/components/schemas/UUID'
+            name:
+              type: string
+            description:
+              type: string
+            owner:
+              $ref: '#/components/schemas/ApplicationOwner'
+          required:
+            - id
+            - name
+            - owner
+      additionalProperties: false
+      required:
+        - id
+        - status
+        - portal
+        - application
+      title: ApiRegistration
     LabelsFieldFilter:
       allOf:
         - title: LabelsFieldFilter
@@ -29123,6 +29233,83 @@ components:
       required:
         - data
         - meta
+    PortalSAMLIdentityProviderConfig:
+      description: The identity provider that contains configuration data for the SAML authentication integration.
+      type: object
+      properties:
+        idp_metadata_url:
+          $ref: '#/components/schemas/SAMLIdentityProviderMetadataURL'
+        idp_metadata_xml:
+          $ref: '#/components/schemas/SAMLIdentityProviderMetadata'
+        sp_metadata_url:
+          type: string
+          format: path
+          example: /api/v2/developer/authenticate/saml/metadata
+          readOnly: true
+        sp_entity_id:
+          description: The entity ID of the service provider (SP).
+          type: string
+          example: 'https://cloud.konghq.com/sp/00000000-0000-0000-0000-000000000000'
+          readOnly: true
+        callback_url:
+          description: The path URL where the SAML identity provider sends authentication responses after successful login attempts.
+          type: string
+          format: path
+          example: /api/v2/developer/authenticate/saml/acs
+          readOnly: true
+      additionalProperties: false
+      title: Portal SAML Identity Provider Config
+    PortalIdentityProvider:
+      description: The identity provider that contains configuration data for authentication integration.
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/UUID'
+        type:
+          $ref: '#/components/schemas/IdentityProviderType'
+        enabled:
+          $ref: '#/components/schemas/IdentityProviderEnabled'
+        config:
+          type: object
+          oneOf:
+            - $ref: '#/components/schemas/OIDCIdentityProviderConfig'
+            - $ref: '#/components/schemas/PortalSAMLIdentityProviderConfig'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      title: Portal Identity Provider
+    PortalCreateIdentityProvider:
+      description: The identity provider that contains configuration data for creating an authentication integration.
+      type: object
+      properties:
+        enabled:
+          description: |
+            Indicates whether the identity provider is enabled.
+            Only one identity provider can be active at a time, such as SAML or OIDC.
+          type: boolean
+          example: true
+          title: Identity Provider Enabled Property
+        type:
+          $ref: '#/components/schemas/IdentityProviderType'
+        config:
+          type: object
+          oneOf:
+            - $ref: '#/components/schemas/OIDCIdentityProviderConfig'
+            - $ref: '#/components/schemas/PortalSAMLIdentityProviderConfig'
+      title: Portal Identity Provider
+    PortalUpdateIdentityProvider:
+      description: The identity provider that contains configuration data for updating an authentication integration.
+      type: object
+      properties:
+        enabled:
+          $ref: '#/components/schemas/IdentityProviderEnabled'
+        config:
+          type: object
+          oneOf:
+            - $ref: '#/components/schemas/OIDCIdentityProviderConfig'
+            - $ref: '#/components/schemas/PortalSAMLIdentityProviderConfig'
+      title: Portal Identity Provider
     PortalAllowedIPs:
       description: The list of allowed ips for the portal.
       type: array
@@ -34411,6 +34598,20 @@ components:
               - name: context.auth.principal.name
                 type: string
                 description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: |-
+                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.principal.metadata
+                type: object
+                description: |-
+                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
               - name: context.auth.type
                 type: string
                 description: |
@@ -34444,10 +34645,12 @@ components:
         - part_of_record
         - encryption_key
     EventGatewayParsedRecordEncryptFieldsPolicy:
-      description: |
+      description: |-
         Encrypts fields of parsed Kafka records using AES_256_GCM. Keys are therefore 256 bits long.
 
         Note this policy can only be used as a child of a `EventGatewayProduceSchemaValidationPolicy` policy.
+
+        **Requires a minimum runtime version of `1.2`**.
       type: object
       properties:
         type:
@@ -34492,6 +34695,20 @@ components:
               - name: context.auth.principal.name
                 type: string
                 description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: |-
+                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.principal.metadata
+                type: object
+                description: |-
+                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
               - name: context.auth.type
                 type: string
                 description: |
@@ -34512,11 +34729,14 @@ components:
         - type
         - config
       title: Encrypt Parsed Record
+      x-min-runtime-version: '1.2'
     EventGatewayParsedRecordEncryptFieldsPolicyCreate:
-      description: |
+      description: |-
         Encrypts fields of parsed Kafka records using AES_256_GCM. Keys are therefore 256 bits long.
 
         Note this policy can only be used as a child of a `EventGatewayProduceSchemaValidationPolicy` policy.
+
+        **Requires a minimum runtime version of `1.2`**.
       type: object
       properties:
         type:
@@ -34561,6 +34781,20 @@ components:
               - name: context.auth.principal.name
                 type: string
                 description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: |-
+                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.principal.metadata
+                type: object
+                description: |-
+                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
               - name: context.auth.type
                 type: string
                 description: |
@@ -34586,6 +34820,7 @@ components:
         - config
         - parent_policy_id
       title: Encrypt Parsed Record Fields
+      x-min-runtime-version: '1.2'
     EventGatewayParsedRecordEncryptFieldsConfig:
       description: The configuration of the encrypt parsed record policy.
       type: object
@@ -34631,6 +34866,20 @@ components:
                   - name: context.auth.principal.name
                     type: string
                     description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+                  - name: context.auth.principal.id
+                    type: string
+                    description: |-
+                      Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                      **Requires a minimum runtime version of `1.2`**.
+                    x-min-runtime-version: '1.2'
+                  - name: context.auth.principal.metadata
+                    type: object
+                    description: |-
+                      Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                      **Requires a minimum runtime version of `1.2`**.
+                    x-min-runtime-version: '1.2'
                   - name: context.auth.type
                     type: string
                     description: |
@@ -34696,6 +34945,20 @@ components:
               - name: context.auth.principal.name
                 type: string
                 description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: |-
+                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.principal.metadata
+                type: object
+                description: |-
+                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
               - name: context.auth.type
                 type: string
                 description: |
@@ -34733,10 +34996,12 @@ components:
         - key_sources
         - part_of_record
     EventGatewayParsedRecordDecryptFieldsPolicy:
-      description: |
+      description: |-
         Decrypts fields of parsed Kafka records using AES_256_GCM. Keys are therefore 256 bits long.
 
         Note this policy can only be used as a child of a `EventGatewayConsumeSchemaValidationPolicy` policy.
+
+        **Requires a minimum runtime version of `1.2`**.
       type: object
       properties:
         type:
@@ -34781,6 +35046,20 @@ components:
               - name: context.auth.principal.name
                 type: string
                 description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: |-
+                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.principal.metadata
+                type: object
+                description: |-
+                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
               - name: context.auth.type
                 type: string
                 description: |
@@ -34801,11 +35080,14 @@ components:
         - type
         - config
       title: Decrypt Parsed Record Fields
+      x-min-runtime-version: '1.2'
     EventGatewayParsedRecordDecryptFieldsPolicyCreate:
-      description: |
+      description: |-
         Decrypts fields of parsed Kafka records using AES_256_GCM. Keys are therefore 256 bits long.
 
         Note this policy can only be used as a child of a `EventGatewayConsumeSchemaValidationPolicy` policy.
+
+        **Requires a minimum runtime version of `1.2`**.
       type: object
       properties:
         type:
@@ -34850,6 +35132,20 @@ components:
               - name: context.auth.principal.name
                 type: string
                 description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: |-
+                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.principal.metadata
+                type: object
+                description: |-
+                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
               - name: context.auth.type
                 type: string
                 description: |
@@ -34875,6 +35171,7 @@ components:
         - config
         - parent_policy_id
       title: Decrypt Parsed Record Fields
+      x-min-runtime-version: '1.2'
     EventGatewayParsedRecordDecryptFieldsConfig:
       description: The configuration of the decrypt parsed record fields policy.
       type: object
@@ -34927,6 +35224,20 @@ components:
                   - name: context.auth.principal.name
                     type: string
                     description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+                  - name: context.auth.principal.id
+                    type: string
+                    description: |-
+                      Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                      **Requires a minimum runtime version of `1.2`**.
+                    x-min-runtime-version: '1.2'
+                  - name: context.auth.principal.metadata
+                    type: object
+                    description: |-
+                      Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                      **Requires a minimum runtime version of `1.2`**.
+                    x-min-runtime-version: '1.2'
                   - name: context.auth.type
                     type: string
                     description: |
@@ -34999,6 +35310,20 @@ components:
               - name: context.auth.principal.name
                 type: string
                 description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: |-
+                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.principal.metadata
+                type: object
+                description: |-
+                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
               - name: context.auth.type
                 type: string
                 description: |
@@ -35071,6 +35396,20 @@ components:
               - name: context.auth.principal.name
                 type: string
                 description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: |-
+                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.principal.metadata
+                type: object
+                description: |-
+                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
               - name: context.auth.type
                 type: string
                 description: |
@@ -35137,6 +35476,20 @@ components:
               - name: context.auth.principal.name
                 type: string
                 description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: |-
+                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.principal.metadata
+                type: object
+                description: |-
+                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
               - name: context.auth.type
                 type: string
                 description: |
@@ -35197,6 +35550,20 @@ components:
               - name: context.auth.principal.name
                 type: string
                 description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: |-
+                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.principal.metadata
+                type: object
+                description: |-
+                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
               - name: context.auth.type
                 type: string
                 description: |
@@ -35312,6 +35679,20 @@ components:
               - name: context.auth.principal.name
                 type: string
                 description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: |-
+                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.principal.metadata
+                type: object
+                description: |-
+                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
               - name: context.auth.type
                 type: string
                 description: |
@@ -35368,6 +35749,20 @@ components:
               - name: context.auth.principal.name
                 type: string
                 description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: |-
+                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.principal.metadata
+                type: object
+                description: |-
+                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
               - name: context.auth.type
                 type: string
                 description: |
@@ -35464,6 +35859,20 @@ components:
               - name: context.auth.principal.name
                 type: string
                 description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: |-
+                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.principal.metadata
+                type: object
+                description: |-
+                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
               - name: context.auth.type
                 type: string
                 description: |
@@ -35576,6 +35985,20 @@ components:
           - name: context.auth.principal.name
             type: string
             description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+          - name: context.auth.principal.id
+            type: string
+            description: |-
+              Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+              **Requires a minimum runtime version of `1.2`**.
+            x-min-runtime-version: '1.2'
+          - name: context.auth.principal.metadata
+            type: object
+            description: |-
+              Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+              **Requires a minimum runtime version of `1.2`**.
+            x-min-runtime-version: '1.2'
           - name: context.auth.type
             type: string
             description: |
@@ -35983,6 +36406,20 @@ components:
               - name: context.auth.principal.name
                 type: string
                 description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
+              - name: context.auth.principal.id
+                type: string
+                description: |-
+                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
+              - name: context.auth.principal.metadata
+                type: object
+                description: |-
+                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
+
+                  **Requires a minimum runtime version of `1.2`**.
+                x-min-runtime-version: '1.2'
               - name: context.auth.type
                 type: string
                 description: |
@@ -46980,12 +47417,12 @@ components:
                   - Control Planes
                   - Dashboards
                   - DCR Providers
-                  - Identity
                   - Mesh Control Planes
                   - Networks
                   - Portals
                   - Reports
                   - Service Hub
+                  - Auth Servers
                 x-speakeasy-unknown-values: allow
               entity_region:
                 description: Region of the team.
@@ -47172,7 +47609,7 @@ components:
       description: The request schema for the update IdP configuration request.
     CreateIdentityProviderRequest:
       description: |
-        An object representing the configuration for creating a new identity provider. This configuration may pertain  to either an OIDC or a SAML identity provider.
+        An object representing the configuration for creating a new identity provider. This configuration may pertain to either an OIDC or a SAML identity provider.
       required: true
       content:
         application/json:
@@ -47180,7 +47617,7 @@ components:
             $ref: '#/components/schemas/CreateIdentityProvider'
     UpdateIdentityProviderRequest:
       description: |
-        An object representing the configuration for updating an identity provider. This configuration may pertain  to either an OIDC or a SAML identity provider.
+        An object representing the configuration for updating an identity provider. This configuration may pertain to either an OIDC or a SAML identity provider.
       required: true
       content:
         application/json:
@@ -48117,6 +48554,22 @@ components:
                 $ref: '#/components/schemas/PortalAllowedIPs'
             additionalProperties: false
             minProperties: 1
+    PortalCreateIdentityProviderRequest:
+      description: |
+        An object representing the configuration for creating a new identity provider. This configuration may pertain  to either an OIDC or a SAML identity provider.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PortalCreateIdentityProvider'
+    PortalUpdateIdentityProviderRequest:
+      description: |
+        An object representing the configuration for updating an identity provider. This configuration may pertain  to either an OIDC or a SAML identity provider.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PortalUpdateIdentityProvider'
     CreateCatalogServiceRequest:
       required: true
       content:
@@ -49964,7 +50417,7 @@ components:
             $ref: '#/components/schemas/IdentityProvider'
     IdentityProviders:
       description: |
-        A collection of identity providers. This response contains a collection of identity providers, which may  include both OIDC and SAML identity providers.
+        A collection of identity providers. This response contains a collection of identity providers, which may include both OIDC and SAML identity providers.
       content:
         application/json:
           schema:
@@ -51152,6 +51605,12 @@ components:
         application/problem+json:
           schema:
             $ref: '#/components/schemas/ConflictError'
+    ApiRegistrationsList:
+      description: Paginated list of registrations for an API.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiRegistrationsListResponse'
     UnsupportedMediaType:
       description: Unsupported Media Type
       content:
@@ -51743,6 +52202,23 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/IPEntry'
+    PortalIdentityProviders:
+      description: |
+        A collection of identity providers. This response contains a collection of identity providers, which may  include both OIDC and SAML identity providers.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/PortalIdentityProvider'
+            title: Portal Identity Provider Collection Response
+    PortalIdentityProvider:
+      description: |
+        An identity provider configuration. This response represents the configuration of a specific identity provider, which can be either OIDC or SAML.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PortalIdentityProvider'
     CatalogServiceResponse:
       description: A response containing a single service object.
       content:

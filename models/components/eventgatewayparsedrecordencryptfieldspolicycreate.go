@@ -9,6 +9,8 @@ import (
 // EventGatewayParsedRecordEncryptFieldsPolicyCreate - Encrypts fields of parsed Kafka records using AES_256_GCM. Keys are therefore 256 bits long.
 //
 // Note this policy can only be used as a child of a `EventGatewayProduceSchemaValidationPolicy` policy.
+//
+// **Requires a minimum runtime version of `1.2`**.
 type EventGatewayParsedRecordEncryptFieldsPolicyCreate struct {
 	// The type name of the policy.
 	//lint:ignore U1000 accessed via reflection for JSON marshaling

@@ -37,7 +37,7 @@ type PortalAuthSettingsSDK interface {
 	// CreatePortalIdentityProvider - Create Identity Provider
 	// Creates a new identity provider. This operation allows the creation of a new identity provider for
 	// authentication purposes.
-	CreatePortalIdentityProvider(ctx context.Context, portalID string, createIdentityProvider components.CreateIdentityProvider, opts ...operations.Option) (*operations.CreatePortalIdentityProviderResponse, error)
+	CreatePortalIdentityProvider(ctx context.Context, portalID string, portalCreateIdentityProvider components.PortalCreateIdentityProvider, opts ...operations.Option) (*operations.CreatePortalIdentityProviderResponse, error)
 	// GetPortalIdentityProvider - Get Identity Provider
 	// Retrieves the configuration of a single identity provider. This operation returns information about a
 	// specific identity provider's settings and authentication integration details.
