@@ -91,6 +91,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -108,17 +109,17 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         KeySetID: "6cc34248-50b4-4a81-9201-3bdf7a83f712",
         KeyWithoutParents: components.KeyWithoutParents{
-            ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
-            Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658")),
+            Jwk: optionalnullable.From(sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}")),
             Kid: "42",
-            Name: sdkkonnectgo.Pointer("a-key"),
-            Pem: &components.KeyWithoutParentsPem{
+            Name: optionalnullable.From(sdkkonnectgo.Pointer("a-key")),
+            Pem: optionalnullable.From(&components.KeyWithoutParentsPem{
                 PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
                 PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
-            },
-            Set: &components.KeyWithoutParentsSet{
+            }),
+            Set: optionalnullable.From(&components.KeyWithoutParentsSet{
                 ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
-            },
+            }),
         },
     })
     if err != nil {
@@ -280,6 +281,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -298,17 +300,17 @@ func main() {
         KeySetID: "6cc34248-50b4-4a81-9201-3bdf7a83f712",
         KeyID: "bba22c06-a632-42be-a018-1b9ff357b5b9",
         KeyWithoutParents: components.KeyWithoutParents{
-            ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
-            Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658")),
+            Jwk: optionalnullable.From(sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}")),
             Kid: "42",
-            Name: sdkkonnectgo.Pointer("a-key"),
-            Pem: &components.KeyWithoutParentsPem{
+            Name: optionalnullable.From(sdkkonnectgo.Pointer("a-key")),
+            Pem: optionalnullable.From(&components.KeyWithoutParentsPem{
                 PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
                 PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
-            },
-            Set: &components.KeyWithoutParentsSet{
+            }),
+            Set: optionalnullable.From(&components.KeyWithoutParentsSet{
                 ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
-            },
+            }),
         },
     })
     if err != nil {
@@ -411,6 +413,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -424,17 +427,17 @@ func main() {
     )
 
     res, err := s.Keys.CreateKey(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Key{
-        ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
-        Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658")),
+        Jwk: optionalnullable.From(sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}")),
         Kid: "42",
-        Name: sdkkonnectgo.Pointer("a-key"),
-        Pem: &components.Pem{
+        Name: optionalnullable.From(sdkkonnectgo.Pointer("a-key")),
+        Pem: optionalnullable.From(&components.Pem{
             PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
             PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
-        },
-        Set: &components.Set{
+        }),
+        Set: optionalnullable.From(&components.Set{
             ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
-        },
+        }),
     })
     if err != nil {
         log.Fatal(err)
@@ -454,6 +457,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -467,17 +471,17 @@ func main() {
     )
 
     res, err := s.Keys.CreateKey(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Key{
-        ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
-        Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658")),
+        Jwk: optionalnullable.From(sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}")),
         Kid: "42",
-        Name: sdkkonnectgo.Pointer("a-key"),
-        Pem: &components.Pem{
+        Name: optionalnullable.From(sdkkonnectgo.Pointer("a-key")),
+        Pem: optionalnullable.From(&components.Pem{
             PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
             PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
-        },
-        Set: &components.Set{
+        }),
+        Set: optionalnullable.From(&components.Set{
             ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
-        },
+        }),
     })
     if err != nil {
         log.Fatal(err)
@@ -497,6 +501,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -510,17 +515,17 @@ func main() {
     )
 
     res, err := s.Keys.CreateKey(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Key{
-        ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
-        Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658")),
+        Jwk: optionalnullable.From(sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}")),
         Kid: "42",
-        Name: sdkkonnectgo.Pointer("a-key"),
-        Pem: &components.Pem{
+        Name: optionalnullable.From(sdkkonnectgo.Pointer("a-key")),
+        Pem: optionalnullable.From(&components.Pem{
             PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
             PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
-        },
-        Set: &components.Set{
+        }),
+        Set: optionalnullable.From(&components.Set{
             ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
-        },
+        }),
     })
     if err != nil {
         log.Fatal(err)
@@ -677,6 +682,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -694,17 +700,17 @@ func main() {
         KeyID: "bba22c06-a632-42be-a018-1b9ff357b5b9",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Key: components.Key{
-            ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
-            Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658")),
+            Jwk: optionalnullable.From(sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}")),
             Kid: "42",
-            Name: sdkkonnectgo.Pointer("a-key"),
-            Pem: &components.Pem{
+            Name: optionalnullable.From(sdkkonnectgo.Pointer("a-key")),
+            Pem: optionalnullable.From(&components.Pem{
                 PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
                 PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
-            },
-            Set: &components.Set{
+            }),
+            Set: optionalnullable.From(&components.Set{
                 ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
-            },
+            }),
         },
     })
     if err != nil {
@@ -725,6 +731,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -742,17 +749,17 @@ func main() {
         KeyID: "bba22c06-a632-42be-a018-1b9ff357b5b9",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Key: components.Key{
-            ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
-            Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658")),
+            Jwk: optionalnullable.From(sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}")),
             Kid: "42",
-            Name: sdkkonnectgo.Pointer("a-key"),
-            Pem: &components.Pem{
+            Name: optionalnullable.From(sdkkonnectgo.Pointer("a-key")),
+            Pem: optionalnullable.From(&components.Pem{
                 PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
                 PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
-            },
-            Set: &components.Set{
+            }),
+            Set: optionalnullable.From(&components.Set{
                 ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
-            },
+            }),
         },
     })
     if err != nil {
@@ -773,6 +780,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -790,17 +798,17 @@ func main() {
         KeyID: "bba22c06-a632-42be-a018-1b9ff357b5b9",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Key: components.Key{
-            ID: sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658"),
-            Jwk: sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("d958f66b-8e99-44d2-b0b4-edd5bbf24658")),
+            Jwk: optionalnullable.From(sdkkonnectgo.Pointer("{\"alg\":\"RSA\",  \"kid\": \"42\",  ...}")),
             Kid: "42",
-            Name: sdkkonnectgo.Pointer("a-key"),
-            Pem: &components.Pem{
+            Name: optionalnullable.From(sdkkonnectgo.Pointer("a-key")),
+            Pem: optionalnullable.From(&components.Pem{
                 PrivateKey: sdkkonnectgo.Pointer("-----BEGIN"),
                 PublicKey: sdkkonnectgo.Pointer("-----BEGIN"),
-            },
-            Set: &components.Set{
+            }),
+            Set: optionalnullable.From(&components.Set{
                 ID: sdkkonnectgo.Pointer("b86b331c-dcd0-4b3e-97ce-47c5a9543031"),
-            },
+            }),
         },
     })
     if err != nil {

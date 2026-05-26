@@ -4,6 +4,7 @@ package components
 
 import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"time"
 )
 
@@ -11,15 +12,15 @@ type PatchMCPServerRequest struct {
 	// The name of the MCP server.
 	Name *string `json:"name,omitempty"`
 	// A description of the MCP server.
-	Description *string `json:"description,omitempty"`
+	Description optionalnullable.OptionalNullable[string] `json:"description,omitempty"`
 	// Labels for the MCP server.
-	Labels map[string]string `json:"labels,omitempty"`
+	Labels optionalnullable.OptionalNullable[map[string]string] `json:"labels,omitempty"`
 	// The timestamp when the MCP server was deployed.
-	DeployedAt *time.Time `json:"deployed_at,omitempty"`
+	DeployedAt optionalnullable.OptionalNullable[time.Time] `json:"deployed_at,omitempty"`
 	// The control plane ID associated with the MCP server.
-	ControlPlaneID *string `json:"control_plane_id,omitempty"`
+	ControlPlaneID optionalnullable.OptionalNullable[string] `json:"control_plane_id,omitempty"`
 	// The MCP resource ID associated with the MCP server.
-	ResourceID *string `json:"resource_id,omitempty"`
+	ResourceID optionalnullable.OptionalNullable[string] `json:"resource_id,omitempty"`
 }
 
 func (p PatchMCPServerRequest) MarshalJSON() ([]byte, error) {
@@ -40,35 +41,35 @@ func (p *PatchMCPServerRequest) GetName() *string {
 	return p.Name
 }
 
-func (p *PatchMCPServerRequest) GetDescription() *string {
+func (p *PatchMCPServerRequest) GetDescription() optionalnullable.OptionalNullable[string] {
 	if p == nil {
 		return nil
 	}
 	return p.Description
 }
 
-func (p *PatchMCPServerRequest) GetLabels() map[string]string {
+func (p *PatchMCPServerRequest) GetLabels() optionalnullable.OptionalNullable[map[string]string] {
 	if p == nil {
 		return nil
 	}
 	return p.Labels
 }
 
-func (p *PatchMCPServerRequest) GetDeployedAt() *time.Time {
+func (p *PatchMCPServerRequest) GetDeployedAt() optionalnullable.OptionalNullable[time.Time] {
 	if p == nil {
 		return nil
 	}
 	return p.DeployedAt
 }
 
-func (p *PatchMCPServerRequest) GetControlPlaneID() *string {
+func (p *PatchMCPServerRequest) GetControlPlaneID() optionalnullable.OptionalNullable[string] {
 	if p == nil {
 		return nil
 	}
 	return p.ControlPlaneID
 }
 
-func (p *PatchMCPServerRequest) GetResourceID() *string {
+func (p *PatchMCPServerRequest) GetResourceID() optionalnullable.OptionalNullable[string] {
 	if p == nil {
 		return nil
 	}

@@ -6,18 +6,19 @@ import (
 	"testing"
 
 	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 )
 
 func TestComponentsTargetFieldTypes(t *testing.T) {
 	t.Parallel()
 
 	var value components.Target
-	var _ *float64 = value.CreatedAt
-	var _ *bool = value.Failover
-	var _ *string = value.ID
-	var _ []string = value.Tags
+	var _ optionalnullable.OptionalNullable[float64] = value.CreatedAt
+	var _ optionalnullable.OptionalNullable[bool] = value.Failover
+	var _ optionalnullable.OptionalNullable[string] = value.ID
+	var _ optionalnullable.OptionalNullable[[]string] = value.Tags
 	var _ *string = value.Target
-	var _ *float64 = value.UpdatedAt
-	var _ *components.TargetUpstream = value.Upstream
-	var _ *int64 = value.Weight
+	var _ optionalnullable.OptionalNullable[float64] = value.UpdatedAt
+	var _ optionalnullable.OptionalNullable[components.TargetUpstream] = value.Upstream
+	var _ optionalnullable.OptionalNullable[int64] = value.Weight
 }

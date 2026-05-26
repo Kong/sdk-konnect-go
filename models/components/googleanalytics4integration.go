@@ -5,6 +5,7 @@ package components
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 )
 
 // GoogleAnalytics4IntegrationType - The type of the integration for categorization
@@ -36,7 +37,7 @@ type GoogleAnalytics4IntegrationConfigData struct {
 	// The Google Analytics measurement ID
 	ID string `json:"id"`
 	// The datalayer's name you want data to be associated with
-	L *string `json:"l,omitempty"`
+	L optionalnullable.OptionalNullable[string] `json:"l,omitempty"`
 }
 
 func (g *GoogleAnalytics4IntegrationConfigData) GetID() string {
@@ -46,7 +47,7 @@ func (g *GoogleAnalytics4IntegrationConfigData) GetID() string {
 	return g.ID
 }
 
-func (g *GoogleAnalytics4IntegrationConfigData) GetL() *string {
+func (g *GoogleAnalytics4IntegrationConfigData) GetL() optionalnullable.OptionalNullable[string] {
 	if g == nil {
 		return nil
 	}

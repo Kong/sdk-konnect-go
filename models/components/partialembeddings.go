@@ -4,6 +4,7 @@ package components
 
 import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 )
 
 // ParamLocation - Specify whether the 'param_name' and 'param_value' options go in a query string, or the POST form/JSON body.
@@ -554,17 +555,17 @@ func (p *PartialEmbeddingsConfig) GetModel() Model {
 type PartialEmbeddings struct {
 	Config PartialEmbeddingsConfig `json:"config"`
 	// Unix epoch when the resource was created.
-	CreatedAt *int64 `json:"created_at,omitempty"`
+	CreatedAt optionalnullable.OptionalNullable[int64] `json:"created_at,omitempty"`
 	// A string representing a UUID (universally unique identifier).
-	ID *string `json:"id,omitempty"`
+	ID optionalnullable.OptionalNullable[string] `json:"id,omitempty"`
 	// A unique string representing a UTF-8 encoded name.
-	Name *string `json:"name,omitempty"`
+	Name optionalnullable.OptionalNullable[string] `json:"name,omitempty"`
 	// A set of strings representing tags.
-	Tags []string `json:"tags,omitempty"`
+	Tags optionalnullable.OptionalNullable[[]string] `json:"tags,omitempty"`
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"embeddings" json:"type"`
 	// Unix epoch when the resource was last updated.
-	UpdatedAt *int64 `json:"updated_at,omitempty"`
+	UpdatedAt optionalnullable.OptionalNullable[int64] `json:"updated_at,omitempty"`
 }
 
 func (p PartialEmbeddings) MarshalJSON() ([]byte, error) {
@@ -585,28 +586,28 @@ func (p *PartialEmbeddings) GetConfig() PartialEmbeddingsConfig {
 	return p.Config
 }
 
-func (p *PartialEmbeddings) GetCreatedAt() *int64 {
+func (p *PartialEmbeddings) GetCreatedAt() optionalnullable.OptionalNullable[int64] {
 	if p == nil {
 		return nil
 	}
 	return p.CreatedAt
 }
 
-func (p *PartialEmbeddings) GetID() *string {
+func (p *PartialEmbeddings) GetID() optionalnullable.OptionalNullable[string] {
 	if p == nil {
 		return nil
 	}
 	return p.ID
 }
 
-func (p *PartialEmbeddings) GetName() *string {
+func (p *PartialEmbeddings) GetName() optionalnullable.OptionalNullable[string] {
 	if p == nil {
 		return nil
 	}
 	return p.Name
 }
 
-func (p *PartialEmbeddings) GetTags() []string {
+func (p *PartialEmbeddings) GetTags() optionalnullable.OptionalNullable[[]string] {
 	if p == nil {
 		return nil
 	}
@@ -617,7 +618,7 @@ func (p *PartialEmbeddings) GetType() string {
 	return "embeddings"
 }
 
-func (p *PartialEmbeddings) GetUpdatedAt() *int64 {
+func (p *PartialEmbeddings) GetUpdatedAt() optionalnullable.OptionalNullable[int64] {
 	if p == nil {
 		return nil
 	}

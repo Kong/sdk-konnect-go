@@ -1,6 +1,6 @@
 module github.com/Kong/sdk-konnect-go
 
-go 1.22
+go 1.26
 
 require (
 	github.com/itchyny/gojq v0.12.17

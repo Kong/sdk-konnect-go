@@ -4,6 +4,7 @@ package components
 
 import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 )
 
 // DistanceMetric - the distance metric to use for vector searches
@@ -714,17 +715,17 @@ func (p *PartialVectordbConfig) GetThreshold() *float64 {
 type PartialVectordb struct {
 	Config PartialVectordbConfig `json:"config"`
 	// Unix epoch when the resource was created.
-	CreatedAt *int64 `json:"created_at,omitempty"`
+	CreatedAt optionalnullable.OptionalNullable[int64] `json:"created_at,omitempty"`
 	// A string representing a UUID (universally unique identifier).
-	ID *string `json:"id,omitempty"`
+	ID optionalnullable.OptionalNullable[string] `json:"id,omitempty"`
 	// A unique string representing a UTF-8 encoded name.
-	Name *string `json:"name,omitempty"`
+	Name optionalnullable.OptionalNullable[string] `json:"name,omitempty"`
 	// A set of strings representing tags.
-	Tags []string `json:"tags,omitempty"`
+	Tags optionalnullable.OptionalNullable[[]string] `json:"tags,omitempty"`
 	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"vectordb" json:"type"`
 	// Unix epoch when the resource was last updated.
-	UpdatedAt *int64 `json:"updated_at,omitempty"`
+	UpdatedAt optionalnullable.OptionalNullable[int64] `json:"updated_at,omitempty"`
 }
 
 func (p PartialVectordb) MarshalJSON() ([]byte, error) {
@@ -745,28 +746,28 @@ func (p *PartialVectordb) GetConfig() PartialVectordbConfig {
 	return p.Config
 }
 
-func (p *PartialVectordb) GetCreatedAt() *int64 {
+func (p *PartialVectordb) GetCreatedAt() optionalnullable.OptionalNullable[int64] {
 	if p == nil {
 		return nil
 	}
 	return p.CreatedAt
 }
 
-func (p *PartialVectordb) GetID() *string {
+func (p *PartialVectordb) GetID() optionalnullable.OptionalNullable[string] {
 	if p == nil {
 		return nil
 	}
 	return p.ID
 }
 
-func (p *PartialVectordb) GetName() *string {
+func (p *PartialVectordb) GetName() optionalnullable.OptionalNullable[string] {
 	if p == nil {
 		return nil
 	}
 	return p.Name
 }
 
-func (p *PartialVectordb) GetTags() []string {
+func (p *PartialVectordb) GetTags() optionalnullable.OptionalNullable[[]string] {
 	if p == nil {
 		return nil
 	}
@@ -777,7 +778,7 @@ func (p *PartialVectordb) GetType() string {
 	return "vectordb"
 }
 
-func (p *PartialVectordb) GetUpdatedAt() *int64 {
+func (p *PartialVectordb) GetUpdatedAt() optionalnullable.OptionalNullable[int64] {
 	if p == nil {
 		return nil
 	}

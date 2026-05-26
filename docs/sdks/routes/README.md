@@ -115,6 +115,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -129,19 +130,19 @@ func main() {
 
     res, err := s.Routes.CreateRoute(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateRouteRouteJSON(
         components.RouteJSON{
-            Hosts: []string{
+            Hosts: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                 "foo.example.com",
                 "foo.example.us",
-            },
-            ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
-            Name: sdkkonnectgo.Pointer("example-route"),
-            Paths: []string{
+            })),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a")),
+            Name: optionalnullable.From(sdkkonnectgo.Pointer("example-route")),
+            Paths: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                 "/v1",
                 "/v2",
-            },
-            Service: &components.RouteJSONService{
+            })),
+            Service: optionalnullable.From(&components.RouteJSONService{
                 ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
-            },
+            }),
         },
     ))
     if err != nil {
@@ -168,6 +169,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -182,19 +184,19 @@ func main() {
 
     res, err := s.Routes.CreateRoute(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateRouteRouteJSON(
         components.RouteJSON{
-            Hosts: []string{
+            Hosts: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                 "foo.example.com",
                 "foo.example.us",
-            },
-            ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
-            Name: sdkkonnectgo.Pointer("example-route"),
-            Paths: []string{
+            })),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a")),
+            Name: optionalnullable.From(sdkkonnectgo.Pointer("example-route")),
+            Paths: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                 "/v1",
                 "/v2",
-            },
-            Service: &components.RouteJSONService{
+            })),
+            Service: optionalnullable.From(&components.RouteJSONService{
                 ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
-            },
+            }),
         },
     ))
     if err != nil {
@@ -221,6 +223,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -235,19 +238,19 @@ func main() {
 
     res, err := s.Routes.CreateRoute(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateRouteRouteJSON(
         components.RouteJSON{
-            Hosts: []string{
+            Hosts: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                 "foo.example.com",
                 "foo.example.us",
-            },
-            ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
-            Name: sdkkonnectgo.Pointer("example-route"),
-            Paths: []string{
+            })),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a")),
+            Name: optionalnullable.From(sdkkonnectgo.Pointer("example-route")),
+            Paths: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                 "/v1",
                 "/v2",
-            },
-            Service: &components.RouteJSONService{
+            })),
+            Service: optionalnullable.From(&components.RouteJSONService{
                 ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
-            },
+            }),
         },
     ))
     if err != nil {
@@ -417,6 +420,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -435,19 +439,19 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Route: components.CreateRouteRouteJSON(
             components.RouteJSON{
-                Hosts: []string{
+                Hosts: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                     "foo.example.com",
                     "foo.example.us",
-                },
-                ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
-                Name: sdkkonnectgo.Pointer("example-route"),
-                Paths: []string{
+                })),
+                ID: optionalnullable.From(sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a")),
+                Name: optionalnullable.From(sdkkonnectgo.Pointer("example-route")),
+                Paths: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                     "/v1",
                     "/v2",
-                },
-                Service: &components.RouteJSONService{
+                })),
+                Service: optionalnullable.From(&components.RouteJSONService{
                     ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
-                },
+                }),
             },
         ),
     })
@@ -475,6 +479,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -493,19 +498,19 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Route: components.CreateRouteRouteJSON(
             components.RouteJSON{
-                Hosts: []string{
+                Hosts: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                     "foo.example.com",
                     "foo.example.us",
-                },
-                ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
-                Name: sdkkonnectgo.Pointer("example-route"),
-                Paths: []string{
+                })),
+                ID: optionalnullable.From(sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a")),
+                Name: optionalnullable.From(sdkkonnectgo.Pointer("example-route")),
+                Paths: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                     "/v1",
                     "/v2",
-                },
-                Service: &components.RouteJSONService{
+                })),
+                Service: optionalnullable.From(&components.RouteJSONService{
                     ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
-                },
+                }),
             },
         ),
     })
@@ -533,6 +538,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -551,19 +557,19 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Route: components.CreateRouteRouteJSON(
             components.RouteJSON{
-                Hosts: []string{
+                Hosts: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                     "foo.example.com",
                     "foo.example.us",
-                },
-                ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
-                Name: sdkkonnectgo.Pointer("example-route"),
-                Paths: []string{
+                })),
+                ID: optionalnullable.From(sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a")),
+                Name: optionalnullable.From(sdkkonnectgo.Pointer("example-route")),
+                Paths: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                     "/v1",
                     "/v2",
-                },
-                Service: &components.RouteJSONService{
+                })),
+                Service: optionalnullable.From(&components.RouteJSONService{
                     ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
-                },
+                }),
             },
         ),
     })
@@ -674,6 +680,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -692,19 +699,19 @@ func main() {
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         RouteWithoutParents: components.CreateRouteWithoutParentsRouteJSON(
             components.RouteJSON{
-                Hosts: []string{
+                Hosts: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                     "foo.example.com",
                     "foo.example.us",
-                },
-                ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
-                Name: sdkkonnectgo.Pointer("example-route"),
-                Paths: []string{
+                })),
+                ID: optionalnullable.From(sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a")),
+                Name: optionalnullable.From(sdkkonnectgo.Pointer("example-route")),
+                Paths: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                     "/v1",
                     "/v2",
-                },
-                Service: &components.RouteJSONService{
+                })),
+                Service: optionalnullable.From(&components.RouteJSONService{
                     ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
-                },
+                }),
             },
         ),
     })
@@ -879,6 +886,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -898,19 +906,19 @@ func main() {
         RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
         RouteWithoutParents: components.CreateRouteWithoutParentsRouteJSON(
             components.RouteJSON{
-                Hosts: []string{
+                Hosts: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                     "foo.example.com",
                     "foo.example.us",
-                },
-                ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
-                Name: sdkkonnectgo.Pointer("example-route"),
-                Paths: []string{
+                })),
+                ID: optionalnullable.From(sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a")),
+                Name: optionalnullable.From(sdkkonnectgo.Pointer("example-route")),
+                Paths: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                     "/v1",
                     "/v2",
-                },
-                Service: &components.RouteJSONService{
+                })),
+                Service: optionalnullable.From(&components.RouteJSONService{
                     ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
-                },
+                }),
             },
         ),
     })

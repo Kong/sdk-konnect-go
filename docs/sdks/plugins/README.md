@@ -109,6 +109,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -126,7 +127,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerGroupID: "",
         PluginWithoutParents: components.PluginWithoutParents{
-            Config: map[string]any{
+            Config: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
                 "anonymous": "<value>",
                 "hide_credentials": false,
                 "key_in_body": false,
@@ -136,10 +137,10 @@ func main() {
                     "apikey",
                 },
                 "run_on_preflight": true,
-            },
-            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            })),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177")),
             Name: "key-auth",
-            Partials: []components.PluginWithoutParentsPartials{
+            Partials: optionalnullable.From(sdkkonnectgo.Pointer([]components.PluginWithoutParentsPartials{
                 components.PluginWithoutParentsPartials{
                     ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
                     Name: sdkkonnectgo.Pointer("foo-partial"),
@@ -150,13 +151,13 @@ func main() {
                     Name: sdkkonnectgo.Pointer("bar-partial"),
                     Path: sdkkonnectgo.Pointer("config.redis"),
                 },
-            },
-            Protocols: []components.PluginWithoutParentsProtocols{
+            })),
+            Protocols: optionalnullable.From(sdkkonnectgo.Pointer([]components.PluginWithoutParentsProtocols{
                 components.PluginWithoutParentsProtocolsGrpc,
                 components.PluginWithoutParentsProtocolsGrpcs,
                 components.PluginWithoutParentsProtocolsHTTP,
                 components.PluginWithoutParentsProtocolsHTTPS,
-            },
+            })),
         },
     })
     if err != nil {
@@ -319,6 +320,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -337,7 +339,7 @@ func main() {
         ConsumerGroupID: "",
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
         PluginWithoutParents: components.PluginWithoutParents{
-            Config: map[string]any{
+            Config: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
                 "anonymous": "<value>",
                 "hide_credentials": false,
                 "key_in_body": false,
@@ -347,10 +349,10 @@ func main() {
                     "apikey",
                 },
                 "run_on_preflight": true,
-            },
-            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            })),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177")),
             Name: "key-auth",
-            Partials: []components.PluginWithoutParentsPartials{
+            Partials: optionalnullable.From(sdkkonnectgo.Pointer([]components.PluginWithoutParentsPartials{
                 components.PluginWithoutParentsPartials{
                     ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
                     Name: sdkkonnectgo.Pointer("foo-partial"),
@@ -361,13 +363,13 @@ func main() {
                     Name: sdkkonnectgo.Pointer("bar-partial"),
                     Path: sdkkonnectgo.Pointer("config.redis"),
                 },
-            },
-            Protocols: []components.PluginWithoutParentsProtocols{
+            })),
+            Protocols: optionalnullable.From(sdkkonnectgo.Pointer([]components.PluginWithoutParentsProtocols{
                 components.PluginWithoutParentsProtocolsGrpc,
                 components.PluginWithoutParentsProtocolsGrpcs,
                 components.PluginWithoutParentsProtocolsHTTP,
                 components.PluginWithoutParentsProtocolsHTTPS,
-            },
+            })),
         },
     })
     if err != nil {
@@ -470,6 +472,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -487,7 +490,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         PluginWithoutParents: components.PluginWithoutParents{
-            Config: map[string]any{
+            Config: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
                 "anonymous": "<value>",
                 "hide_credentials": false,
                 "key_in_body": false,
@@ -497,10 +500,10 @@ func main() {
                     "apikey",
                 },
                 "run_on_preflight": true,
-            },
-            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            })),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177")),
             Name: "key-auth",
-            Partials: []components.PluginWithoutParentsPartials{
+            Partials: optionalnullable.From(sdkkonnectgo.Pointer([]components.PluginWithoutParentsPartials{
                 components.PluginWithoutParentsPartials{
                     ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
                     Name: sdkkonnectgo.Pointer("foo-partial"),
@@ -511,13 +514,13 @@ func main() {
                     Name: sdkkonnectgo.Pointer("bar-partial"),
                     Path: sdkkonnectgo.Pointer("config.redis"),
                 },
-            },
-            Protocols: []components.PluginWithoutParentsProtocols{
+            })),
+            Protocols: optionalnullable.From(sdkkonnectgo.Pointer([]components.PluginWithoutParentsProtocols{
                 components.PluginWithoutParentsProtocolsGrpc,
                 components.PluginWithoutParentsProtocolsGrpcs,
                 components.PluginWithoutParentsProtocolsHTTP,
                 components.PluginWithoutParentsProtocolsHTTPS,
-            },
+            })),
         },
     })
     if err != nil {
@@ -680,6 +683,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -698,7 +702,7 @@ func main() {
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
         PluginWithoutParents: components.PluginWithoutParents{
-            Config: map[string]any{
+            Config: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
                 "anonymous": "<value>",
                 "hide_credentials": false,
                 "key_in_body": false,
@@ -708,10 +712,10 @@ func main() {
                     "apikey",
                 },
                 "run_on_preflight": true,
-            },
-            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            })),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177")),
             Name: "key-auth",
-            Partials: []components.PluginWithoutParentsPartials{
+            Partials: optionalnullable.From(sdkkonnectgo.Pointer([]components.PluginWithoutParentsPartials{
                 components.PluginWithoutParentsPartials{
                     ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
                     Name: sdkkonnectgo.Pointer("foo-partial"),
@@ -722,13 +726,13 @@ func main() {
                     Name: sdkkonnectgo.Pointer("bar-partial"),
                     Path: sdkkonnectgo.Pointer("config.redis"),
                 },
-            },
-            Protocols: []components.PluginWithoutParentsProtocols{
+            })),
+            Protocols: optionalnullable.From(sdkkonnectgo.Pointer([]components.PluginWithoutParentsProtocols{
                 components.PluginWithoutParentsProtocolsGrpc,
                 components.PluginWithoutParentsProtocolsGrpcs,
                 components.PluginWithoutParentsProtocolsHTTP,
                 components.PluginWithoutParentsProtocolsHTTPS,
-            },
+            })),
         },
     })
     if err != nil {
@@ -833,6 +837,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -846,7 +851,7 @@ func main() {
     )
 
     res, err := s.Plugins.CreatePlugin(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Plugin{
-        Config: map[string]any{
+        Config: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
             "anonymous": "<value>",
             "hide_credentials": false,
             "key_in_body": false,
@@ -856,10 +861,10 @@ func main() {
                 "apikey",
             },
             "run_on_preflight": true,
-        },
-        ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+        })),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177")),
         Name: "key-auth",
-        Partials: []components.Partials{
+        Partials: optionalnullable.From(sdkkonnectgo.Pointer([]components.Partials{
             components.Partials{
                 ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
                 Name: sdkkonnectgo.Pointer("foo-partial"),
@@ -870,13 +875,13 @@ func main() {
                 Name: sdkkonnectgo.Pointer("bar-partial"),
                 Path: sdkkonnectgo.Pointer("config.redis"),
             },
-        },
-        Protocols: []components.Protocols{
+        })),
+        Protocols: optionalnullable.From(sdkkonnectgo.Pointer([]components.Protocols{
             components.ProtocolsGrpc,
             components.ProtocolsGrpcs,
             components.ProtocolsHTTP,
             components.ProtocolsHTTPS,
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -896,6 +901,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -909,7 +915,7 @@ func main() {
     )
 
     res, err := s.Plugins.CreatePlugin(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Plugin{
-        Config: map[string]any{
+        Config: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
             "anonymous": "<value>",
             "hide_credentials": false,
             "key_in_body": false,
@@ -919,10 +925,10 @@ func main() {
                 "apikey",
             },
             "run_on_preflight": true,
-        },
-        ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+        })),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177")),
         Name: "key-auth",
-        Partials: []components.Partials{
+        Partials: optionalnullable.From(sdkkonnectgo.Pointer([]components.Partials{
             components.Partials{
                 ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
                 Name: sdkkonnectgo.Pointer("foo-partial"),
@@ -933,13 +939,13 @@ func main() {
                 Name: sdkkonnectgo.Pointer("bar-partial"),
                 Path: sdkkonnectgo.Pointer("config.redis"),
             },
-        },
-        Protocols: []components.Protocols{
+        })),
+        Protocols: optionalnullable.From(sdkkonnectgo.Pointer([]components.Protocols{
             components.ProtocolsGrpc,
             components.ProtocolsGrpcs,
             components.ProtocolsHTTP,
             components.ProtocolsHTTPS,
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -959,6 +965,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -972,7 +979,7 @@ func main() {
     )
 
     res, err := s.Plugins.CreatePlugin(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Plugin{
-        Config: map[string]any{
+        Config: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
             "anonymous": "<value>",
             "hide_credentials": false,
             "key_in_body": false,
@@ -982,10 +989,10 @@ func main() {
                 "apikey",
             },
             "run_on_preflight": true,
-        },
-        ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+        })),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177")),
         Name: "key-auth",
-        Partials: []components.Partials{
+        Partials: optionalnullable.From(sdkkonnectgo.Pointer([]components.Partials{
             components.Partials{
                 ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
                 Name: sdkkonnectgo.Pointer("foo-partial"),
@@ -996,13 +1003,13 @@ func main() {
                 Name: sdkkonnectgo.Pointer("bar-partial"),
                 Path: sdkkonnectgo.Pointer("config.redis"),
             },
-        },
-        Protocols: []components.Protocols{
+        })),
+        Protocols: optionalnullable.From(sdkkonnectgo.Pointer([]components.Protocols{
             components.ProtocolsGrpc,
             components.ProtocolsGrpcs,
             components.ProtocolsHTTP,
             components.ProtocolsHTTPS,
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -1163,6 +1170,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -1180,7 +1188,7 @@ func main() {
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Plugin: components.Plugin{
-            Config: map[string]any{
+            Config: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
                 "anonymous": "<value>",
                 "hide_credentials": false,
                 "key_in_body": false,
@@ -1190,10 +1198,10 @@ func main() {
                     "apikey",
                 },
                 "run_on_preflight": true,
-            },
-            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            })),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177")),
             Name: "key-auth",
-            Partials: []components.Partials{
+            Partials: optionalnullable.From(sdkkonnectgo.Pointer([]components.Partials{
                 components.Partials{
                     ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
                     Name: sdkkonnectgo.Pointer("foo-partial"),
@@ -1204,13 +1212,13 @@ func main() {
                     Name: sdkkonnectgo.Pointer("bar-partial"),
                     Path: sdkkonnectgo.Pointer("config.redis"),
                 },
-            },
-            Protocols: []components.Protocols{
+            })),
+            Protocols: optionalnullable.From(sdkkonnectgo.Pointer([]components.Protocols{
                 components.ProtocolsGrpc,
                 components.ProtocolsGrpcs,
                 components.ProtocolsHTTP,
                 components.ProtocolsHTTPS,
-            },
+            })),
         },
     })
     if err != nil {
@@ -1231,6 +1239,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -1248,7 +1257,7 @@ func main() {
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Plugin: components.Plugin{
-            Config: map[string]any{
+            Config: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
                 "anonymous": "<value>",
                 "hide_credentials": false,
                 "key_in_body": false,
@@ -1258,10 +1267,10 @@ func main() {
                     "apikey",
                 },
                 "run_on_preflight": true,
-            },
-            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            })),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177")),
             Name: "key-auth",
-            Partials: []components.Partials{
+            Partials: optionalnullable.From(sdkkonnectgo.Pointer([]components.Partials{
                 components.Partials{
                     ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
                     Name: sdkkonnectgo.Pointer("foo-partial"),
@@ -1272,13 +1281,13 @@ func main() {
                     Name: sdkkonnectgo.Pointer("bar-partial"),
                     Path: sdkkonnectgo.Pointer("config.redis"),
                 },
-            },
-            Protocols: []components.Protocols{
+            })),
+            Protocols: optionalnullable.From(sdkkonnectgo.Pointer([]components.Protocols{
                 components.ProtocolsGrpc,
                 components.ProtocolsGrpcs,
                 components.ProtocolsHTTP,
                 components.ProtocolsHTTPS,
-            },
+            })),
         },
     })
     if err != nil {
@@ -1299,6 +1308,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -1316,7 +1326,7 @@ func main() {
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Plugin: components.Plugin{
-            Config: map[string]any{
+            Config: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
                 "anonymous": "<value>",
                 "hide_credentials": false,
                 "key_in_body": false,
@@ -1326,10 +1336,10 @@ func main() {
                     "apikey",
                 },
                 "run_on_preflight": true,
-            },
-            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            })),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177")),
             Name: "key-auth",
-            Partials: []components.Partials{
+            Partials: optionalnullable.From(sdkkonnectgo.Pointer([]components.Partials{
                 components.Partials{
                     ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
                     Name: sdkkonnectgo.Pointer("foo-partial"),
@@ -1340,13 +1350,13 @@ func main() {
                     Name: sdkkonnectgo.Pointer("bar-partial"),
                     Path: sdkkonnectgo.Pointer("config.redis"),
                 },
-            },
-            Protocols: []components.Protocols{
+            })),
+            Protocols: optionalnullable.From(sdkkonnectgo.Pointer([]components.Protocols{
                 components.ProtocolsGrpc,
                 components.ProtocolsGrpcs,
                 components.ProtocolsHTTP,
                 components.ProtocolsHTTPS,
-            },
+            })),
         },
     })
     if err != nil {
@@ -1450,6 +1460,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -1467,7 +1478,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
         PluginWithoutParents: components.PluginWithoutParents{
-            Config: map[string]any{
+            Config: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
                 "anonymous": "<value>",
                 "hide_credentials": false,
                 "key_in_body": false,
@@ -1477,10 +1488,10 @@ func main() {
                     "apikey",
                 },
                 "run_on_preflight": true,
-            },
-            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            })),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177")),
             Name: "key-auth",
-            Partials: []components.PluginWithoutParentsPartials{
+            Partials: optionalnullable.From(sdkkonnectgo.Pointer([]components.PluginWithoutParentsPartials{
                 components.PluginWithoutParentsPartials{
                     ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
                     Name: sdkkonnectgo.Pointer("foo-partial"),
@@ -1491,13 +1502,13 @@ func main() {
                     Name: sdkkonnectgo.Pointer("bar-partial"),
                     Path: sdkkonnectgo.Pointer("config.redis"),
                 },
-            },
-            Protocols: []components.PluginWithoutParentsProtocols{
+            })),
+            Protocols: optionalnullable.From(sdkkonnectgo.Pointer([]components.PluginWithoutParentsProtocols{
                 components.PluginWithoutParentsProtocolsGrpc,
                 components.PluginWithoutParentsProtocolsGrpcs,
                 components.PluginWithoutParentsProtocolsHTTP,
                 components.PluginWithoutParentsProtocolsHTTPS,
-            },
+            })),
         },
     })
     if err != nil {
@@ -1660,6 +1671,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -1678,7 +1690,7 @@ func main() {
         RouteID: "a4326a41-aa12-44e3-93e4-6b6e58bfb9d7",
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
         PluginWithoutParents: components.PluginWithoutParents{
-            Config: map[string]any{
+            Config: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
                 "anonymous": "<value>",
                 "hide_credentials": false,
                 "key_in_body": false,
@@ -1688,10 +1700,10 @@ func main() {
                     "apikey",
                 },
                 "run_on_preflight": true,
-            },
-            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            })),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177")),
             Name: "key-auth",
-            Partials: []components.PluginWithoutParentsPartials{
+            Partials: optionalnullable.From(sdkkonnectgo.Pointer([]components.PluginWithoutParentsPartials{
                 components.PluginWithoutParentsPartials{
                     ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
                     Name: sdkkonnectgo.Pointer("foo-partial"),
@@ -1702,13 +1714,13 @@ func main() {
                     Name: sdkkonnectgo.Pointer("bar-partial"),
                     Path: sdkkonnectgo.Pointer("config.redis"),
                 },
-            },
-            Protocols: []components.PluginWithoutParentsProtocols{
+            })),
+            Protocols: optionalnullable.From(sdkkonnectgo.Pointer([]components.PluginWithoutParentsProtocols{
                 components.PluginWithoutParentsProtocolsGrpc,
                 components.PluginWithoutParentsProtocolsGrpcs,
                 components.PluginWithoutParentsProtocolsHTTP,
                 components.PluginWithoutParentsProtocolsHTTPS,
-            },
+            })),
         },
     })
     if err != nil {
@@ -1866,6 +1878,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -1883,7 +1896,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         PluginWithoutParents: components.PluginWithoutParents{
-            Config: map[string]any{
+            Config: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
                 "anonymous": "<value>",
                 "hide_credentials": false,
                 "key_in_body": false,
@@ -1893,10 +1906,10 @@ func main() {
                     "apikey",
                 },
                 "run_on_preflight": true,
-            },
-            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            })),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177")),
             Name: "key-auth",
-            Partials: []components.PluginWithoutParentsPartials{
+            Partials: optionalnullable.From(sdkkonnectgo.Pointer([]components.PluginWithoutParentsPartials{
                 components.PluginWithoutParentsPartials{
                     ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
                     Name: sdkkonnectgo.Pointer("foo-partial"),
@@ -1907,13 +1920,13 @@ func main() {
                     Name: sdkkonnectgo.Pointer("bar-partial"),
                     Path: sdkkonnectgo.Pointer("config.redis"),
                 },
-            },
-            Protocols: []components.PluginWithoutParentsProtocols{
+            })),
+            Protocols: optionalnullable.From(sdkkonnectgo.Pointer([]components.PluginWithoutParentsProtocols{
                 components.PluginWithoutParentsProtocolsGrpc,
                 components.PluginWithoutParentsProtocolsGrpcs,
                 components.PluginWithoutParentsProtocolsHTTP,
                 components.PluginWithoutParentsProtocolsHTTPS,
-            },
+            })),
         },
     })
     if err != nil {
@@ -2076,6 +2089,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -2094,7 +2108,7 @@ func main() {
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         PluginID: "3473c251-5b6c-4f45-b1ff-7ede735a366d",
         PluginWithoutParents: components.PluginWithoutParents{
-            Config: map[string]any{
+            Config: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
                 "anonymous": "<value>",
                 "hide_credentials": false,
                 "key_in_body": false,
@@ -2104,10 +2118,10 @@ func main() {
                     "apikey",
                 },
                 "run_on_preflight": true,
-            },
-            ID: sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177"),
+            })),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("3fd1eea1-885a-4011-b986-289943ff8177")),
             Name: "key-auth",
-            Partials: []components.PluginWithoutParentsPartials{
+            Partials: optionalnullable.From(sdkkonnectgo.Pointer([]components.PluginWithoutParentsPartials{
                 components.PluginWithoutParentsPartials{
                     ID: sdkkonnectgo.Pointer("cff1230a-00f7-4ae8-b376-c370f0eb4dae"),
                     Name: sdkkonnectgo.Pointer("foo-partial"),
@@ -2118,13 +2132,13 @@ func main() {
                     Name: sdkkonnectgo.Pointer("bar-partial"),
                     Path: sdkkonnectgo.Pointer("config.redis"),
                 },
-            },
-            Protocols: []components.PluginWithoutParentsProtocols{
+            })),
+            Protocols: optionalnullable.From(sdkkonnectgo.Pointer([]components.PluginWithoutParentsProtocols{
                 components.PluginWithoutParentsProtocolsGrpc,
                 components.PluginWithoutParentsProtocolsGrpcs,
                 components.PluginWithoutParentsProtocolsHTTP,
                 components.PluginWithoutParentsProtocolsHTTPS,
-            },
+            })),
         },
     })
     if err != nil {

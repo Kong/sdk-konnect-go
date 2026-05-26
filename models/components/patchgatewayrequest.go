@@ -2,22 +2,26 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
+)
+
 // PatchGatewayRequest - The request schema for the patch gateway request.
 type PatchGatewayRequest struct {
 	// The name of the Gateway.
 	Name *string `json:"name,omitempty"`
 	// A human-readable description of the Gateway.
-	Description *string `json:"description,omitempty"`
+	Description optionalnullable.OptionalNullable[string] `json:"description,omitempty"`
 	// The minimum runtime version supported by the API. This is the lowest version of the data plane
 	// release that can be used with the entity model.
 	// When not specified, the minimum runtime version will not be updated.
 	//
-	MinRuntimeVersion *string `json:"min_runtime_version,omitempty"`
+	MinRuntimeVersion optionalnullable.OptionalNullable[string] `json:"min_runtime_version,omitempty"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
-	Labels map[string]string `json:"labels,omitempty"`
+	Labels optionalnullable.OptionalNullable[map[string]string] `json:"labels,omitempty"`
 }
 
 func (p *PatchGatewayRequest) GetName() *string {
@@ -27,21 +31,21 @@ func (p *PatchGatewayRequest) GetName() *string {
 	return p.Name
 }
 
-func (p *PatchGatewayRequest) GetDescription() *string {
+func (p *PatchGatewayRequest) GetDescription() optionalnullable.OptionalNullable[string] {
 	if p == nil {
 		return nil
 	}
 	return p.Description
 }
 
-func (p *PatchGatewayRequest) GetMinRuntimeVersion() *string {
+func (p *PatchGatewayRequest) GetMinRuntimeVersion() optionalnullable.OptionalNullable[string] {
 	if p == nil {
 		return nil
 	}
 	return p.MinRuntimeVersion
 }
 
-func (p *PatchGatewayRequest) GetLabels() map[string]string {
+func (p *PatchGatewayRequest) GetLabels() optionalnullable.OptionalNullable[map[string]string] {
 	if p == nil {
 		return nil
 	}

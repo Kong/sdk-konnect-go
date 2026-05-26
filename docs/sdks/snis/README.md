@@ -92,6 +92,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -109,7 +110,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
         SNIWithoutParents: components.SNIWithoutParents{
-            ID: sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a")),
             Name: "some.example.org",
         },
     })
@@ -272,6 +273,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -290,7 +292,7 @@ func main() {
         CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
         SNIID: "64c17a1a-b7d7-4a65-a5a4-42e4a7016e7f",
         SNIWithoutParents: components.SNIWithoutParents{
-            ID: sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a")),
             Name: "some.example.org",
         },
     })
@@ -394,6 +396,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -410,7 +413,7 @@ func main() {
         Certificate: components.SNICertificate{
             ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
         },
-        ID: sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a"),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a")),
         Name: "some.example.org",
     })
     if err != nil {
@@ -431,6 +434,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -447,7 +451,7 @@ func main() {
         Certificate: components.SNICertificate{
             ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
         },
-        ID: sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a"),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a")),
         Name: "some.example.org",
     })
     if err != nil {
@@ -468,6 +472,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -484,7 +489,7 @@ func main() {
         Certificate: components.SNICertificate{
             ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
         },
-        ID: sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a"),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a")),
         Name: "some.example.org",
     })
     if err != nil {
@@ -642,6 +647,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -662,7 +668,7 @@ func main() {
             Certificate: components.SNICertificate{
                 ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
             },
-            ID: sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a")),
             Name: "some.example.org",
         },
     })
@@ -684,6 +690,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -704,7 +711,7 @@ func main() {
             Certificate: components.SNICertificate{
                 ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
             },
-            ID: sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a")),
             Name: "some.example.org",
         },
     })
@@ -726,6 +733,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -746,7 +754,7 @@ func main() {
             Certificate: components.SNICertificate{
                 ID: sdkkonnectgo.Pointer("bd380f99-659d-415e-b0e7-72ea05df3218"),
             },
-            ID: sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("36c4566c-14cc-4132-9011-4139fcbbe50a")),
             Name: "some.example.org",
         },
     })

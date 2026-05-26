@@ -88,6 +88,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -101,7 +102,7 @@ func main() {
     )
 
     res, err := s.Upstreams.CreateUpstream(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Upstream{
-        Healthchecks: &components.Healthchecks{
+        Healthchecks: optionalnullable.From(&components.Healthchecks{
             Active: &components.Active{
                 Healthy: &components.Healthy{
                     HTTPStatuses: []int64{
@@ -154,8 +155,8 @@ func main() {
                     },
                 },
             },
-        },
-        ID: sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e"),
+        }),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e")),
         Name: "api.example.internal",
     })
     if err != nil {
@@ -176,6 +177,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -189,7 +191,7 @@ func main() {
     )
 
     res, err := s.Upstreams.CreateUpstream(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Upstream{
-        Healthchecks: &components.Healthchecks{
+        Healthchecks: optionalnullable.From(&components.Healthchecks{
             Active: &components.Active{
                 Healthy: &components.Healthy{
                     HTTPStatuses: []int64{
@@ -242,8 +244,8 @@ func main() {
                     },
                 },
             },
-        },
-        ID: sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e"),
+        }),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e")),
         Name: "api.example.internal",
     })
     if err != nil {
@@ -264,6 +266,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -277,7 +280,7 @@ func main() {
     )
 
     res, err := s.Upstreams.CreateUpstream(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Upstream{
-        Healthchecks: &components.Healthchecks{
+        Healthchecks: optionalnullable.From(&components.Healthchecks{
             Active: &components.Active{
                 Healthy: &components.Healthy{
                     HTTPStatuses: []int64{
@@ -330,8 +333,8 @@ func main() {
                     },
                 },
             },
-        },
-        ID: sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e"),
+        }),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e")),
         Name: "api.example.internal",
     })
     if err != nil {
@@ -489,6 +492,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -506,7 +510,7 @@ func main() {
         UpstreamID: "426d620c-7058-4ae6-aacc-f85a3204a2c5",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Upstream: components.Upstream{
-            Healthchecks: &components.Healthchecks{
+            Healthchecks: optionalnullable.From(&components.Healthchecks{
                 Active: &components.Active{
                     Healthy: &components.Healthy{
                         HTTPStatuses: []int64{
@@ -559,8 +563,8 @@ func main() {
                         },
                     },
                 },
-            },
-            ID: sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e"),
+            }),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e")),
             Name: "api.example.internal",
         },
     })
@@ -582,6 +586,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -599,7 +604,7 @@ func main() {
         UpstreamID: "426d620c-7058-4ae6-aacc-f85a3204a2c5",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Upstream: components.Upstream{
-            Healthchecks: &components.Healthchecks{
+            Healthchecks: optionalnullable.From(&components.Healthchecks{
                 Active: &components.Active{
                     Healthy: &components.Healthy{
                         HTTPStatuses: []int64{
@@ -652,8 +657,8 @@ func main() {
                         },
                     },
                 },
-            },
-            ID: sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e"),
+            }),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e")),
             Name: "api.example.internal",
         },
     })
@@ -675,6 +680,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -692,7 +698,7 @@ func main() {
         UpstreamID: "426d620c-7058-4ae6-aacc-f85a3204a2c5",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Upstream: components.Upstream{
-            Healthchecks: &components.Healthchecks{
+            Healthchecks: optionalnullable.From(&components.Healthchecks{
                 Active: &components.Active{
                     Healthy: &components.Healthy{
                         HTTPStatuses: []int64{
@@ -745,8 +751,8 @@ func main() {
                         },
                     },
                 },
-            },
-            ID: sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e"),
+            }),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("6eed5e9c-5398-4026-9a4c-d48f18a2431e")),
             Name: "api.example.internal",
         },
     })

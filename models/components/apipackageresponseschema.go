@@ -4,6 +4,7 @@ package components
 
 import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"time"
 )
 
@@ -14,7 +15,7 @@ type APIPackageResponseSchema struct {
 	//
 	Name string `json:"name"`
 	// A description of your API Package. Will be visible on your live Portal.
-	Description *string `json:"description,omitempty"`
+	Description optionalnullable.OptionalNullable[string] `json:"description,omitempty"`
 	// The unique slug for your API Package, It should be unique across all APIs and API Packages.
 	//
 	Slug *string `json:"slug"`
@@ -60,7 +61,7 @@ func (a *APIPackageResponseSchema) GetName() string {
 	return a.Name
 }
 
-func (a *APIPackageResponseSchema) GetDescription() *string {
+func (a *APIPackageResponseSchema) GetDescription() optionalnullable.OptionalNullable[string] {
 	if a == nil {
 		return nil
 	}

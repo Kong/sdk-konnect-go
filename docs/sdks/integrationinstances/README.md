@@ -232,6 +232,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -247,9 +248,9 @@ func main() {
     res, err := s.IntegrationInstances.UpdateIntegrationInstance(ctx, "3f51fa25-310a-421d-bd1a-007f859021a3", components.UpdateIntegrationInstance{
         Name: sdkkonnectgo.Pointer("aws-lambda-prod"),
         DisplayName: sdkkonnectgo.Pointer("AWS (prod)"),
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)

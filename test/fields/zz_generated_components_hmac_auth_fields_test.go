@@ -6,16 +6,17 @@ import (
 	"testing"
 
 	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 )
 
 func TestComponentsHMACAuthFieldTypes(t *testing.T) {
 	t.Parallel()
 
 	var value components.HMACAuth
-	var _ *components.HMACAuthConsumer = value.Consumer
-	var _ *int64 = value.CreatedAt
-	var _ *string = value.ID
-	var _ *string = value.Secret
-	var _ []string = value.Tags
+	var _ optionalnullable.OptionalNullable[components.HMACAuthConsumer] = value.Consumer
+	var _ optionalnullable.OptionalNullable[int64] = value.CreatedAt
+	var _ optionalnullable.OptionalNullable[string] = value.ID
+	var _ optionalnullable.OptionalNullable[string] = value.Secret
+	var _ optionalnullable.OptionalNullable[[]string] = value.Tags
 	var _ string = value.Username
 }

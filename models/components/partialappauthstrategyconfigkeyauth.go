@@ -4,6 +4,7 @@ package components
 
 import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 )
 
 type PartialAppAuthStrategyConfigKeyAuthUnit string
@@ -66,7 +67,7 @@ type PartialAppAuthStrategyConfigKeyAuth struct {
 	// The names of the headers containing the API key. You can specify multiple header names.
 	KeyNames []string `json:"key_names,omitempty"`
 	// Default maximum Time-To-Live for keys created under this strategy. Set to null to unset.
-	TTL *PartialAppAuthStrategyConfigKeyAuthTTL `json:"ttl,omitempty"`
+	TTL optionalnullable.OptionalNullable[PartialAppAuthStrategyConfigKeyAuthTTL] `json:"ttl,omitempty"`
 }
 
 func (p PartialAppAuthStrategyConfigKeyAuth) MarshalJSON() ([]byte, error) {
@@ -87,7 +88,7 @@ func (p *PartialAppAuthStrategyConfigKeyAuth) GetKeyNames() []string {
 	return p.KeyNames
 }
 
-func (p *PartialAppAuthStrategyConfigKeyAuth) GetTTL() *PartialAppAuthStrategyConfigKeyAuthTTL {
+func (p *PartialAppAuthStrategyConfigKeyAuth) GetTTL() optionalnullable.OptionalNullable[PartialAppAuthStrategyConfigKeyAuthTTL] {
 	if p == nil {
 		return nil
 	}

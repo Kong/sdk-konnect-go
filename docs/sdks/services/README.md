@@ -94,6 +94,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -108,9 +109,9 @@ func main() {
 
     res, err := s.Services.CreateService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Service{
         Host: "example.internal",
-        ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
-        Name: sdkkonnectgo.Pointer("example-service"),
-        Path: sdkkonnectgo.Pointer("/"),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c")),
+        Name: optionalnullable.From(sdkkonnectgo.Pointer("example-service")),
+        Path: optionalnullable.From(sdkkonnectgo.Pointer("/")),
     })
     if err != nil {
         log.Fatal(err)
@@ -130,6 +131,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -144,9 +146,9 @@ func main() {
 
     res, err := s.Services.CreateService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Service{
         Host: "example.internal",
-        ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
-        Name: sdkkonnectgo.Pointer("example-service"),
-        Path: sdkkonnectgo.Pointer("/"),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c")),
+        Name: optionalnullable.From(sdkkonnectgo.Pointer("example-service")),
+        Path: optionalnullable.From(sdkkonnectgo.Pointer("/")),
     })
     if err != nil {
         log.Fatal(err)
@@ -166,6 +168,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -180,9 +183,9 @@ func main() {
 
     res, err := s.Services.CreateService(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Service{
         Host: "example.internal",
-        ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
-        Name: sdkkonnectgo.Pointer("example-service"),
-        Path: sdkkonnectgo.Pointer("/"),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c")),
+        Name: optionalnullable.From(sdkkonnectgo.Pointer("example-service")),
+        Path: optionalnullable.From(sdkkonnectgo.Pointer("/")),
     })
     if err != nil {
         log.Fatal(err)
@@ -339,6 +342,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -357,9 +361,9 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Service: components.Service{
             Host: "example.internal",
-            ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
-            Name: sdkkonnectgo.Pointer("example-service"),
-            Path: sdkkonnectgo.Pointer("/"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c")),
+            Name: optionalnullable.From(sdkkonnectgo.Pointer("example-service")),
+            Path: optionalnullable.From(sdkkonnectgo.Pointer("/")),
         },
     })
     if err != nil {
@@ -380,6 +384,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -398,9 +403,9 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Service: components.Service{
             Host: "example.internal",
-            ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
-            Name: sdkkonnectgo.Pointer("example-service"),
-            Path: sdkkonnectgo.Pointer("/"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c")),
+            Name: optionalnullable.From(sdkkonnectgo.Pointer("example-service")),
+            Path: optionalnullable.From(sdkkonnectgo.Pointer("/")),
         },
     })
     if err != nil {
@@ -421,6 +426,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -439,9 +445,9 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Service: components.Service{
             Host: "example.internal",
-            ID: sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c"),
-            Name: sdkkonnectgo.Pointer("example-service"),
-            Path: sdkkonnectgo.Pointer("/"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("49fd316e-c457-481c-9fc7-8079153e4f3c")),
+            Name: optionalnullable.From(sdkkonnectgo.Pointer("example-service")),
+            Path: optionalnullable.From(sdkkonnectgo.Pointer("/")),
         },
     })
     if err != nil {

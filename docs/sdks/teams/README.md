@@ -733,6 +733,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -748,9 +749,9 @@ func main() {
     res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
         Name: sdkkonnectgo.Pointer("IDM - Developers"),
         Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -770,6 +771,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -785,9 +787,9 @@ func main() {
     res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
         Name: sdkkonnectgo.Pointer("IDM - Developers"),
         Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -807,6 +809,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -822,9 +825,9 @@ func main() {
     res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
         Name: sdkkonnectgo.Pointer("IDM - Developers"),
         Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("prod"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -844,6 +847,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -859,9 +863,9 @@ func main() {
     res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
         Name: sdkkonnectgo.Pointer("IDM - Developers"),
         Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -881,6 +885,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -896,9 +901,9 @@ func main() {
     res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
         Name: sdkkonnectgo.Pointer("IDM - Developers"),
         Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -918,6 +923,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -933,9 +939,9 @@ func main() {
     res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
         Name: sdkkonnectgo.Pointer("IDM - Developers"),
         Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -955,6 +961,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -970,9 +977,9 @@ func main() {
     res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
         Name: sdkkonnectgo.Pointer("IDM - Developers"),
         Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -992,6 +999,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -1007,9 +1015,9 @@ func main() {
     res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
         Name: sdkkonnectgo.Pointer("IDM - Developers"),
         Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -1029,6 +1037,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -1044,9 +1053,9 @@ func main() {
     res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
         Name: sdkkonnectgo.Pointer("IDM - Developers"),
         Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -1066,6 +1075,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -1081,9 +1091,9 @@ func main() {
     res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
         Name: sdkkonnectgo.Pointer("IDM - Developers"),
         Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -1103,6 +1113,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -1118,9 +1129,9 @@ func main() {
     res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
         Name: sdkkonnectgo.Pointer("IDM - Developers"),
         Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -1140,6 +1151,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -1155,9 +1167,9 @@ func main() {
     res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
         Name: sdkkonnectgo.Pointer("IDM - Developers"),
         Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -1177,6 +1189,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -1192,9 +1205,9 @@ func main() {
     res, err := s.Teams.UpdateTeam(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdateTeam{
         Name: sdkkonnectgo.Pointer("IDM - Developers"),
         Description: sdkkonnectgo.Pointer("The Identity Management (IDM) API team."),
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)

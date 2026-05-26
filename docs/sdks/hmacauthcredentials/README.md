@@ -85,6 +85,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -102,8 +103,8 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         HMACAuthWithoutParents: components.HMACAuthWithoutParents{
-            ID: sdkkonnectgo.Pointer("75695322-e8a0-4109-aed4-5416b0308d85"),
-            Secret: sdkkonnectgo.Pointer("wQazJ304DW5huJklHgUfjfiSyCyTAEDZ"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("75695322-e8a0-4109-aed4-5416b0308d85")),
+            Secret: optionalnullable.From(sdkkonnectgo.Pointer("wQazJ304DW5huJklHgUfjfiSyCyTAEDZ")),
             Username: "xerxes",
         },
     })
@@ -266,6 +267,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -284,8 +286,8 @@ func main() {
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         HMACAuthID: "70e7b00b-72f2-471b-a5ce-9c4171775360",
         HMACAuthWithoutParents: components.HMACAuthWithoutParents{
-            ID: sdkkonnectgo.Pointer("75695322-e8a0-4109-aed4-5416b0308d85"),
-            Secret: sdkkonnectgo.Pointer("wQazJ304DW5huJklHgUfjfiSyCyTAEDZ"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("75695322-e8a0-4109-aed4-5416b0308d85")),
+            Secret: optionalnullable.From(sdkkonnectgo.Pointer("wQazJ304DW5huJklHgUfjfiSyCyTAEDZ")),
             Username: "xerxes",
         },
     })

@@ -230,6 +230,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -244,9 +245,9 @@ func main() {
 
     res, err := s.Portals.CreatePortal(ctx, components.CreatePortal{
         Name: "<value>",
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -266,6 +267,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -280,9 +282,9 @@ func main() {
 
     res, err := s.Portals.CreatePortal(ctx, components.CreatePortal{
         Name: "<value>",
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -302,6 +304,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -316,9 +319,9 @@ func main() {
 
     res, err := s.Portals.CreatePortal(ctx, components.CreatePortal{
         Name: "<value>",
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -338,6 +341,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -352,9 +356,9 @@ func main() {
 
     res, err := s.Portals.CreatePortal(ctx, components.CreatePortal{
         Name: "<value>",
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -374,6 +378,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -388,9 +393,9 @@ func main() {
 
     res, err := s.Portals.CreatePortal(ctx, components.CreatePortal{
         Name: "<value>",
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -410,6 +415,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -424,9 +430,9 @@ func main() {
 
     res, err := s.Portals.CreatePortal(ctx, components.CreatePortal{
         Name: "<value>",
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -446,6 +452,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -460,9 +467,9 @@ func main() {
 
     res, err := s.Portals.CreatePortal(ctx, components.CreatePortal{
         Name: "<value>",
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -698,6 +705,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -711,9 +719,9 @@ func main() {
     )
 
     res, err := s.Portals.UpdatePortal(ctx, "11e433bf-d599-4a1d-95d3-d79b8659de0e", components.UpdatePortal{
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -733,6 +741,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -746,9 +755,9 @@ func main() {
     )
 
     res, err := s.Portals.UpdatePortal(ctx, "1bbd136e-032f-41e0-ac85-574f86daa79b", components.UpdatePortal{
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -768,6 +777,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -781,9 +791,9 @@ func main() {
     )
 
     res, err := s.Portals.UpdatePortal(ctx, "02bccb4f-0606-4eb1-afe4-af597707eae1", components.UpdatePortal{
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -803,6 +813,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -816,9 +827,9 @@ func main() {
     )
 
     res, err := s.Portals.UpdatePortal(ctx, "b646206d-66de-4dee-8106-381967797727", components.UpdatePortal{
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -838,6 +849,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -851,9 +863,9 @@ func main() {
     )
 
     res, err := s.Portals.UpdatePortal(ctx, "e2802368-801b-4ad3-994f-f01954a4f348", components.UpdatePortal{
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -873,6 +885,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -886,9 +899,9 @@ func main() {
     )
 
     res, err := s.Portals.UpdatePortal(ctx, "0abeae52-4205-4262-bf1c-ce816dc7730f", components.UpdatePortal{
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -908,6 +921,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -921,9 +935,9 @@ func main() {
     )
 
     res, err := s.Portals.UpdatePortal(ctx, "a92fd996-1a8b-4414-a3fb-9333666a001f", components.UpdatePortal{
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -943,6 +957,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -956,9 +971,9 @@ func main() {
     )
 
     res, err := s.Portals.UpdatePortal(ctx, "f0c9976f-d0f3-42ad-9f78-b7cd2eb521ae", components.UpdatePortal{
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)

@@ -86,6 +86,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -99,11 +100,11 @@ func main() {
     )
 
     res, err := s.KeySets.CreateKeySet(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", &components.KeySet{
-        ID: sdkkonnectgo.Pointer("b58c7d9d-e54f-444c-b24d-cdfc4159f61e"),
-        Name: sdkkonnectgo.Pointer("example-key-set"),
-        Tags: []string{
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("b58c7d9d-e54f-444c-b24d-cdfc4159f61e")),
+        Name: optionalnullable.From(sdkkonnectgo.Pointer("example-key-set")),
+        Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
             "idp-keys",
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -123,6 +124,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -136,11 +138,11 @@ func main() {
     )
 
     res, err := s.KeySets.CreateKeySet(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", &components.KeySet{
-        ID: sdkkonnectgo.Pointer("b58c7d9d-e54f-444c-b24d-cdfc4159f61e"),
-        Name: sdkkonnectgo.Pointer("example-key-set"),
-        Tags: []string{
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("b58c7d9d-e54f-444c-b24d-cdfc4159f61e")),
+        Name: optionalnullable.From(sdkkonnectgo.Pointer("example-key-set")),
+        Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
             "idp-keys",
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -160,6 +162,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -173,11 +176,11 @@ func main() {
     )
 
     res, err := s.KeySets.CreateKeySet(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", &components.KeySet{
-        ID: sdkkonnectgo.Pointer("b58c7d9d-e54f-444c-b24d-cdfc4159f61e"),
-        Name: sdkkonnectgo.Pointer("example-key-set"),
-        Tags: []string{
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("b58c7d9d-e54f-444c-b24d-cdfc4159f61e")),
+        Name: optionalnullable.From(sdkkonnectgo.Pointer("example-key-set")),
+        Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
             "idp-keys",
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -334,6 +337,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -351,11 +355,11 @@ func main() {
         KeySetID: "6cc34248-50b4-4a81-9201-3bdf7a83f712",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         KeySet: &components.KeySet{
-            ID: sdkkonnectgo.Pointer("b58c7d9d-e54f-444c-b24d-cdfc4159f61e"),
-            Name: sdkkonnectgo.Pointer("example-key-set"),
-            Tags: []string{
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("b58c7d9d-e54f-444c-b24d-cdfc4159f61e")),
+            Name: optionalnullable.From(sdkkonnectgo.Pointer("example-key-set")),
+            Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                 "idp-keys",
-            },
+            })),
         },
     })
     if err != nil {
@@ -376,6 +380,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -393,11 +398,11 @@ func main() {
         KeySetID: "6cc34248-50b4-4a81-9201-3bdf7a83f712",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         KeySet: &components.KeySet{
-            ID: sdkkonnectgo.Pointer("b58c7d9d-e54f-444c-b24d-cdfc4159f61e"),
-            Name: sdkkonnectgo.Pointer("example-key-set"),
-            Tags: []string{
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("b58c7d9d-e54f-444c-b24d-cdfc4159f61e")),
+            Name: optionalnullable.From(sdkkonnectgo.Pointer("example-key-set")),
+            Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                 "idp-keys",
-            },
+            })),
         },
     })
     if err != nil {
@@ -418,6 +423,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -435,11 +441,11 @@ func main() {
         KeySetID: "6cc34248-50b4-4a81-9201-3bdf7a83f712",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         KeySet: &components.KeySet{
-            ID: sdkkonnectgo.Pointer("b58c7d9d-e54f-444c-b24d-cdfc4159f61e"),
-            Name: sdkkonnectgo.Pointer("example-key-set"),
-            Tags: []string{
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("b58c7d9d-e54f-444c-b24d-cdfc4159f61e")),
+            Name: optionalnullable.From(sdkkonnectgo.Pointer("example-key-set")),
+            Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                 "idp-keys",
-            },
+            })),
         },
     })
     if err != nil {

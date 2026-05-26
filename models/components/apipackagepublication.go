@@ -4,6 +4,7 @@ package components
 
 import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 )
 
 // APIPackagePublication - An API Package publication in a portal
@@ -15,7 +16,7 @@ type APIPackagePublication struct {
 	// Setting to null means the API will not require application authentication.
 	// DCR support for application registration is currently in development.
 	//
-	AuthStrategyIds []string `json:"auth_strategy_ids,omitempty"`
+	AuthStrategyIds optionalnullable.OptionalNullable[[]string] `json:"auth_strategy_ids,omitempty"`
 	// The visibility of the API in the portal.
 	// Public API publications do not require authentication to view and retrieve information about them.
 	// Private API publications require authentication to retrieve information about them.
@@ -41,7 +42,7 @@ func (a *APIPackagePublication) GetAutoApproveRegistrations() *bool {
 	return a.AutoApproveRegistrations
 }
 
-func (a *APIPackagePublication) GetAuthStrategyIds() []string {
+func (a *APIPackagePublication) GetAuthStrategyIds() optionalnullable.OptionalNullable[[]string] {
 	if a == nil {
 		return nil
 	}

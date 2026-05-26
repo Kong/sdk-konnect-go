@@ -2,19 +2,23 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
+)
+
 type CreateAPIPackageRequest struct {
 	// The name of your API Package. The `name + version` combination must be unique for each API Package you publish.
 	//
 	Name string `json:"name"`
 	// A description of your API Package. Will be visible on your live Portal.
-	Description *string `json:"description,omitempty"`
+	Description optionalnullable.OptionalNullable[string] `json:"description,omitempty"`
 	// The unique slug for your API Package, It should be unique across all APIs and API Packages.
 	//
-	Slug *string `json:"slug,omitempty"`
+	Slug optionalnullable.OptionalNullable[string] `json:"slug,omitempty"`
 	// An optional version for your API Package. Leave this empty if your API Package is unversioned.
-	Version *string `json:"version,omitempty"`
+	Version optionalnullable.OptionalNullable[string] `json:"version,omitempty"`
 	// Rate limit configuration that can be applied to an API Package or an API Package Operation.
-	RateLimitingConfig *RateLimitingConfig `json:"rate_limiting_config,omitempty"`
+	RateLimitingConfig optionalnullable.OptionalNullable[RateLimitingConfig] `json:"rate_limiting_config,omitempty"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
@@ -31,28 +35,28 @@ func (c *CreateAPIPackageRequest) GetName() string {
 	return c.Name
 }
 
-func (c *CreateAPIPackageRequest) GetDescription() *string {
+func (c *CreateAPIPackageRequest) GetDescription() optionalnullable.OptionalNullable[string] {
 	if c == nil {
 		return nil
 	}
 	return c.Description
 }
 
-func (c *CreateAPIPackageRequest) GetSlug() *string {
+func (c *CreateAPIPackageRequest) GetSlug() optionalnullable.OptionalNullable[string] {
 	if c == nil {
 		return nil
 	}
 	return c.Slug
 }
 
-func (c *CreateAPIPackageRequest) GetVersion() *string {
+func (c *CreateAPIPackageRequest) GetVersion() optionalnullable.OptionalNullable[string] {
 	if c == nil {
 		return nil
 	}
 	return c.Version
 }
 
-func (c *CreateAPIPackageRequest) GetRateLimitingConfig() *RateLimitingConfig {
+func (c *CreateAPIPackageRequest) GetRateLimitingConfig() optionalnullable.OptionalNullable[RateLimitingConfig] {
 	if c == nil {
 		return nil
 	}

@@ -6,30 +6,31 @@ import (
 	"testing"
 
 	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 )
 
 func TestComponentsServiceFieldTypes(t *testing.T) {
 	t.Parallel()
 
 	var value components.Service
-	var _ []string = value.CaCertificates
-	var _ *components.ClientCertificate = value.ClientCertificate
-	var _ *int64 = value.ConnectTimeout
-	var _ *int64 = value.CreatedAt
-	var _ *bool = value.Enabled
+	var _ optionalnullable.OptionalNullable[[]string] = value.CaCertificates
+	var _ optionalnullable.OptionalNullable[components.ClientCertificate] = value.ClientCertificate
+	var _ optionalnullable.OptionalNullable[int64] = value.ConnectTimeout
+	var _ optionalnullable.OptionalNullable[int64] = value.CreatedAt
+	var _ optionalnullable.OptionalNullable[bool] = value.Enabled
 	var _ string = value.Host
-	var _ *string = value.ID
-	var _ *string = value.Name
-	var _ *string = value.Path
-	var _ *int64 = value.Port
-	var _ *components.Protocol = value.Protocol
-	var _ *int64 = value.ReadTimeout
-	var _ *int64 = value.Retries
-	var _ []string = value.Tags
-	var _ *components.TLSSans = value.TLSSans
-	var _ *bool = value.TLSVerify
-	var _ *int64 = value.TLSVerifyDepth
-	var _ *int64 = value.UpdatedAt
+	var _ optionalnullable.OptionalNullable[string] = value.ID
+	var _ optionalnullable.OptionalNullable[string] = value.Name
+	var _ optionalnullable.OptionalNullable[string] = value.Path
+	var _ optionalnullable.OptionalNullable[int64] = value.Port
+	var _ optionalnullable.OptionalNullable[components.Protocol] = value.Protocol
+	var _ optionalnullable.OptionalNullable[int64] = value.ReadTimeout
+	var _ optionalnullable.OptionalNullable[int64] = value.Retries
+	var _ optionalnullable.OptionalNullable[[]string] = value.Tags
+	var _ optionalnullable.OptionalNullable[components.TLSSans] = value.TLSSans
+	var _ optionalnullable.OptionalNullable[bool] = value.TLSVerify
+	var _ optionalnullable.OptionalNullable[int64] = value.TLSVerifyDepth
+	var _ optionalnullable.OptionalNullable[int64] = value.UpdatedAt
 	var _ *string = value.URL
-	var _ *int64 = value.WriteTimeout
+	var _ optionalnullable.OptionalNullable[int64] = value.WriteTimeout
 }

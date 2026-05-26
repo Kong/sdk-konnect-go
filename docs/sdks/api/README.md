@@ -25,6 +25,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -39,7 +40,7 @@ func main() {
 
     res, err := s.API.CreateAPI(ctx, components.CreateAPIRequest{
         Name: "MyAPI",
-        Slug: sdkkonnectgo.Pointer("my-api-v1"),
+        Slug: optionalnullable.From(sdkkonnectgo.Pointer("my-api-v1")),
         Labels: map[string]string{
             "env": "test",
         },
@@ -62,6 +63,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -76,7 +78,7 @@ func main() {
 
     res, err := s.API.CreateAPI(ctx, components.CreateAPIRequest{
         Name: "MyAPI",
-        Slug: sdkkonnectgo.Pointer("my-api-v1"),
+        Slug: optionalnullable.From(sdkkonnectgo.Pointer("my-api-v1")),
         Labels: map[string]string{
             "env": "test",
         },
@@ -99,6 +101,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -113,7 +116,7 @@ func main() {
 
     res, err := s.API.CreateAPI(ctx, components.CreateAPIRequest{
         Name: "MyAPI",
-        Slug: sdkkonnectgo.Pointer("my-api-v1"),
+        Slug: optionalnullable.From(sdkkonnectgo.Pointer("my-api-v1")),
         Labels: map[string]string{
             "env": "test",
         },
@@ -136,6 +139,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -150,7 +154,7 @@ func main() {
 
     res, err := s.API.CreateAPI(ctx, components.CreateAPIRequest{
         Name: "MyAPI",
-        Slug: sdkkonnectgo.Pointer("my-api-v1"),
+        Slug: optionalnullable.From(sdkkonnectgo.Pointer("my-api-v1")),
         Labels: map[string]string{
             "env": "test",
         },
@@ -173,6 +177,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -187,8 +192,8 @@ func main() {
 
     res, err := s.API.CreateAPI(ctx, components.CreateAPIRequest{
         Name: "myAPI",
-        Version: sdkkonnectgo.Pointer("v1"),
-        Slug: sdkkonnectgo.Pointer("my-api-v1"),
+        Version: optionalnullable.From(sdkkonnectgo.Pointer("v1")),
+        Slug: optionalnullable.From(sdkkonnectgo.Pointer("my-api-v1")),
         Labels: map[string]string{
             "env": "test",
         },
@@ -244,6 +249,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -258,7 +264,7 @@ func main() {
 
     res, err := s.API.CreateAPI(ctx, components.CreateAPIRequest{
         Name: "MyAPI",
-        Slug: sdkkonnectgo.Pointer("my-api-v1"),
+        Slug: optionalnullable.From(sdkkonnectgo.Pointer("my-api-v1")),
         Labels: map[string]string{
             "env": "test",
         },
@@ -281,6 +287,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -295,7 +302,7 @@ func main() {
 
     res, err := s.API.CreateAPI(ctx, components.CreateAPIRequest{
         Name: "MyAPI",
-        Slug: sdkkonnectgo.Pointer("my-api-v1"),
+        Slug: optionalnullable.From(sdkkonnectgo.Pointer("my-api-v1")),
         Labels: map[string]string{
             "env": "test",
         },
@@ -479,6 +486,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -496,10 +504,10 @@ func main() {
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         UpdateAPIRequest: components.UpdateAPIRequest{
             Name: sdkkonnectgo.Pointer("MyAPI"),
-            Slug: sdkkonnectgo.Pointer("my-api-v1"),
-            Labels: map[string]*string{
+            Slug: optionalnullable.From(sdkkonnectgo.Pointer("my-api-v1")),
+            Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
                 "env": sdkkonnectgo.Pointer("test"),
-            },
+            })),
         },
     })
     if err != nil {
@@ -520,6 +528,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -537,10 +546,10 @@ func main() {
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         UpdateAPIRequest: components.UpdateAPIRequest{
             Name: sdkkonnectgo.Pointer("MyAPI"),
-            Slug: sdkkonnectgo.Pointer("my-api-v1"),
-            Labels: map[string]*string{
+            Slug: optionalnullable.From(sdkkonnectgo.Pointer("my-api-v1")),
+            Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
                 "env": sdkkonnectgo.Pointer("test"),
-            },
+            })),
         },
     })
     if err != nil {
@@ -561,6 +570,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -578,10 +588,10 @@ func main() {
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         UpdateAPIRequest: components.UpdateAPIRequest{
             Name: sdkkonnectgo.Pointer("MyAPI"),
-            Slug: sdkkonnectgo.Pointer("my-api-v1"),
-            Labels: map[string]*string{
+            Slug: optionalnullable.From(sdkkonnectgo.Pointer("my-api-v1")),
+            Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
                 "env": sdkkonnectgo.Pointer("test"),
-            },
+            })),
         },
     })
     if err != nil {
@@ -602,6 +612,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -619,10 +630,10 @@ func main() {
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         UpdateAPIRequest: components.UpdateAPIRequest{
             Name: sdkkonnectgo.Pointer("MyAPI"),
-            Slug: sdkkonnectgo.Pointer("my-api-v1"),
-            Labels: map[string]*string{
+            Slug: optionalnullable.From(sdkkonnectgo.Pointer("my-api-v1")),
+            Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
                 "env": sdkkonnectgo.Pointer("test"),
-            },
+            })),
         },
     })
     if err != nil {
@@ -643,6 +654,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -660,10 +672,10 @@ func main() {
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         UpdateAPIRequest: components.UpdateAPIRequest{
             Name: sdkkonnectgo.Pointer("MyAPI"),
-            Slug: sdkkonnectgo.Pointer("my-api-v1"),
-            Labels: map[string]*string{
+            Slug: optionalnullable.From(sdkkonnectgo.Pointer("my-api-v1")),
+            Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
                 "env": sdkkonnectgo.Pointer("test"),
-            },
+            })),
         },
     })
     if err != nil {
@@ -684,6 +696,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -701,10 +714,10 @@ func main() {
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         UpdateAPIRequest: components.UpdateAPIRequest{
             Name: sdkkonnectgo.Pointer("MyAPI"),
-            Slug: sdkkonnectgo.Pointer("my-api-v1"),
-            Labels: map[string]*string{
+            Slug: optionalnullable.From(sdkkonnectgo.Pointer("my-api-v1")),
+            Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
                 "env": sdkkonnectgo.Pointer("test"),
-            },
+            })),
         },
     })
     if err != nil {
@@ -762,6 +775,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -778,7 +792,7 @@ func main() {
     res, err := s.API.UpdateAPI(ctx, operations.UpdateAPIRequest{
         APIID: "9f5061ce-78f6-4452-9108-ad7c02821fd5",
         UpdateAPIRequest: components.UpdateAPIRequest{
-            Version: sdkkonnectgo.Pointer("v2"),
+            Version: optionalnullable.From(sdkkonnectgo.Pointer("v2")),
         },
     })
     if err != nil {

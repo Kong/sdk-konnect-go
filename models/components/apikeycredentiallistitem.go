@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"time"
 )
 
@@ -59,10 +60,10 @@ func (e *APIKeyCredentialListItemStatus) IsExact() bool {
 type APIKeyCredentialListItem struct {
 	Type APIKeyCredentialListItemType `json:"type"`
 	// Contains a unique identifier used for this resource.
-	ID          string                          `json:"id"`
-	DisplayName string                          `json:"display_name"`
-	Status      *APIKeyCredentialListItemStatus `json:"status,omitempty"`
-	ExpiresAt   *time.Time                      `json:"expires_at,omitempty"`
+	ID          string                                       `json:"id"`
+	DisplayName string                                       `json:"display_name"`
+	Status      *APIKeyCredentialListItemStatus              `json:"status,omitempty"`
+	ExpiresAt   optionalnullable.OptionalNullable[time.Time] `json:"expires_at,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 }
@@ -106,7 +107,7 @@ func (a *APIKeyCredentialListItem) GetStatus() *APIKeyCredentialListItemStatus {
 	return a.Status
 }
 
-func (a *APIKeyCredentialListItem) GetExpiresAt() *time.Time {
+func (a *APIKeyCredentialListItem) GetExpiresAt() optionalnullable.OptionalNullable[time.Time] {
 	if a == nil {
 		return nil
 	}

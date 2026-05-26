@@ -4,6 +4,7 @@ package components
 
 import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"time"
 )
 
@@ -33,7 +34,7 @@ type ScorecardCriteriaService struct {
 	// Evaluation for a scorecard criteria relative to the given service service.
 	// Has a `null` value when the criteria has not yet been evaluated for the service.
 	//
-	Score *ScorecardCriteriaServiceEvaluation `json:"score,omitempty"`
+	Score optionalnullable.OptionalNullable[ScorecardCriteriaServiceEvaluation] `json:"score,omitempty"`
 }
 
 func (s ScorecardCriteriaService) MarshalJSON() ([]byte, error) {
@@ -103,7 +104,7 @@ func (s *ScorecardCriteriaService) GetUpdatedAt() time.Time {
 	return s.UpdatedAt
 }
 
-func (s *ScorecardCriteriaService) GetScore() *ScorecardCriteriaServiceEvaluation {
+func (s *ScorecardCriteriaService) GetScore() optionalnullable.OptionalNullable[ScorecardCriteriaServiceEvaluation] {
 	if s == nil {
 		return nil
 	}

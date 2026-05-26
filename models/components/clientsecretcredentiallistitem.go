@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"time"
 )
 
@@ -38,13 +39,13 @@ type ClientSecretCredentialListItem struct {
 	// Credential identifier
 	ID string `json:"id"`
 	// May not be available for all Client Credentials applications
-	DisplayName *string `json:"display_name,omitempty"`
+	DisplayName optionalnullable.OptionalNullable[string] `json:"display_name,omitempty"`
 	// OAuth2 client identifier
 	ClientID string `json:"client_id"`
 	// Creation timestamp, if available
 	CreatedAt *time.Time `json:"created_at"`
 	// Expiration timestamp, if applicable
-	ExpiresAt *time.Time `json:"expires_at,omitempty"`
+	ExpiresAt optionalnullable.OptionalNullable[time.Time] `json:"expires_at,omitempty"`
 }
 
 func (c ClientSecretCredentialListItem) MarshalJSON() ([]byte, error) {
@@ -72,7 +73,7 @@ func (c *ClientSecretCredentialListItem) GetID() string {
 	return c.ID
 }
 
-func (c *ClientSecretCredentialListItem) GetDisplayName() *string {
+func (c *ClientSecretCredentialListItem) GetDisplayName() optionalnullable.OptionalNullable[string] {
 	if c == nil {
 		return nil
 	}
@@ -93,7 +94,7 @@ func (c *ClientSecretCredentialListItem) GetCreatedAt() *time.Time {
 	return c.CreatedAt
 }
 
-func (c *ClientSecretCredentialListItem) GetExpiresAt() *time.Time {
+func (c *ClientSecretCredentialListItem) GetExpiresAt() optionalnullable.OptionalNullable[time.Time] {
 	if c == nil {
 		return nil
 	}

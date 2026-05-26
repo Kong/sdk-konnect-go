@@ -85,6 +85,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -102,8 +103,8 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         KeyAuthWithoutParents: &components.KeyAuthWithoutParents{
-            ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
-            Key: sdkkonnectgo.Pointer("IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269")),
+            Key: optionalnullable.From(sdkkonnectgo.Pointer("IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo")),
         },
     })
     if err != nil {
@@ -265,6 +266,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -283,8 +285,8 @@ func main() {
         ConsumerIDForNestedEntities: "f28acbfa-c866-4587-b688-0208ac24df21",
         KeyAuthID: "",
         KeyAuthWithoutParents: &components.KeyAuthWithoutParents{
-            ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
-            Key: sdkkonnectgo.Pointer("IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269")),
+            Key: optionalnullable.From(sdkkonnectgo.Pointer("IL1deIyHyQA40WpeLeA1bIUXuvTwlGjo")),
         },
     })
     if err != nil {
