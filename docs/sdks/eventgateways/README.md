@@ -280,6 +280,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -293,10 +294,10 @@ func main() {
     )
 
     res, err := s.EventGateways.PatchEventGateway(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.PatchGatewayRequest{
-        MinRuntimeVersion: sdkkonnectgo.Pointer("1.1"),
-        Labels: map[string]string{
+        MinRuntimeVersion: optionalnullable.From(sdkkonnectgo.Pointer("1.1")),
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]string{
             "env": "test",
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)

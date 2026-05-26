@@ -101,6 +101,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -115,7 +116,7 @@ func main() {
 
     res, err := s.APIPackages.CreateAPIPackage(ctx, components.CreateAPIPackageRequest{
         Name: "MyAPIPackage",
-        Slug: sdkkonnectgo.Pointer("my-api-package-v1"),
+        Slug: optionalnullable.From(sdkkonnectgo.Pointer("my-api-package-v1")),
         Labels: map[string]string{
             "env": "test",
         },
@@ -224,6 +225,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -238,10 +240,10 @@ func main() {
 
     res, err := s.APIPackages.PatchAPIPackage(ctx, "9f5061ce-78f6-4452-9108-ad7c02821fd5", components.UpdateAPIPackageRequest{
         Name: sdkkonnectgo.Pointer("MyAPIPackage"),
-        Slug: sdkkonnectgo.Pointer("my-api-package-v1"),
-        Labels: map[string]*string{
+        Slug: optionalnullable.From(sdkkonnectgo.Pointer("my-api-package-v1")),
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)

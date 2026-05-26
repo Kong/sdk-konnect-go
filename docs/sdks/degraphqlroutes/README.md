@@ -200,6 +200,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -217,7 +218,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         DegraphqlRouteWithoutParents: components.DegraphqlRouteWithoutParents{
-            ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a")),
             Query: "query{ user { email } }",
             URI: "/users",
         },
@@ -381,6 +382,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -399,7 +401,7 @@ func main() {
         ServiceID: "7fca84d6-7d37-4a74-a7b0-93e576089a41",
         DegraphqlRouteID: "",
         DegraphqlRouteWithoutParents: components.DegraphqlRouteWithoutParents{
-            ID: sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("56c4566c-14cc-4132-9011-4139fcbbe50a")),
             Query: "query{ user { email } }",
             URI: "/users",
         },

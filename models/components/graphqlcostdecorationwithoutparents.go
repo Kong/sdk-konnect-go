@@ -4,6 +4,7 @@ package components
 
 import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 )
 
 type GraphQLCostDecorationWithoutParentsService struct {
@@ -18,16 +19,16 @@ func (g *GraphQLCostDecorationWithoutParentsService) GetID() *string {
 }
 
 type GraphQLCostDecorationWithoutParents struct {
-	AddArguments []string `json:"add_arguments,omitempty"`
-	AddConstant  *float64 `default:"1" json:"add_constant"`
+	AddArguments optionalnullable.OptionalNullable[[]string] `json:"add_arguments,omitempty"`
+	AddConstant  optionalnullable.OptionalNullable[float64]  `default:"1" json:"add_constant"`
 	// Unix epoch when the resource was created.
-	CreatedAt *int64 `json:"created_at,omitempty"`
+	CreatedAt optionalnullable.OptionalNullable[int64] `json:"created_at,omitempty"`
 	// A string representing a UUID (universally unique identifier).
-	ID           *string                                     `json:"id,omitempty"`
-	MulArguments []string                                    `json:"mul_arguments,omitempty"`
-	MulConstant  *float64                                    `default:"1" json:"mul_constant"`
-	Service      *GraphQLCostDecorationWithoutParentsService `json:"service,omitempty"`
-	TypePath     string                                      `json:"type_path"`
+	ID           optionalnullable.OptionalNullable[string]                                     `json:"id,omitempty"`
+	MulArguments optionalnullable.OptionalNullable[[]string]                                   `json:"mul_arguments,omitempty"`
+	MulConstant  optionalnullable.OptionalNullable[float64]                                    `default:"1" json:"mul_constant"`
+	Service      optionalnullable.OptionalNullable[GraphQLCostDecorationWithoutParentsService] `json:"service,omitempty"`
+	TypePath     string                                                                        `json:"type_path"`
 }
 
 func (g GraphQLCostDecorationWithoutParents) MarshalJSON() ([]byte, error) {
@@ -41,49 +42,49 @@ func (g *GraphQLCostDecorationWithoutParents) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (g *GraphQLCostDecorationWithoutParents) GetAddArguments() []string {
+func (g *GraphQLCostDecorationWithoutParents) GetAddArguments() optionalnullable.OptionalNullable[[]string] {
 	if g == nil {
 		return nil
 	}
 	return g.AddArguments
 }
 
-func (g *GraphQLCostDecorationWithoutParents) GetAddConstant() *float64 {
+func (g *GraphQLCostDecorationWithoutParents) GetAddConstant() optionalnullable.OptionalNullable[float64] {
 	if g == nil {
 		return nil
 	}
 	return g.AddConstant
 }
 
-func (g *GraphQLCostDecorationWithoutParents) GetCreatedAt() *int64 {
+func (g *GraphQLCostDecorationWithoutParents) GetCreatedAt() optionalnullable.OptionalNullable[int64] {
 	if g == nil {
 		return nil
 	}
 	return g.CreatedAt
 }
 
-func (g *GraphQLCostDecorationWithoutParents) GetID() *string {
+func (g *GraphQLCostDecorationWithoutParents) GetID() optionalnullable.OptionalNullable[string] {
 	if g == nil {
 		return nil
 	}
 	return g.ID
 }
 
-func (g *GraphQLCostDecorationWithoutParents) GetMulArguments() []string {
+func (g *GraphQLCostDecorationWithoutParents) GetMulArguments() optionalnullable.OptionalNullable[[]string] {
 	if g == nil {
 		return nil
 	}
 	return g.MulArguments
 }
 
-func (g *GraphQLCostDecorationWithoutParents) GetMulConstant() *float64 {
+func (g *GraphQLCostDecorationWithoutParents) GetMulConstant() optionalnullable.OptionalNullable[float64] {
 	if g == nil {
 		return nil
 	}
 	return g.MulConstant
 }
 
-func (g *GraphQLCostDecorationWithoutParents) GetService() *GraphQLCostDecorationWithoutParentsService {
+func (g *GraphQLCostDecorationWithoutParents) GetService() optionalnullable.OptionalNullable[GraphQLCostDecorationWithoutParentsService] {
 	if g == nil {
 		return nil
 	}

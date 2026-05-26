@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"time"
 )
 
@@ -44,16 +45,16 @@ type MeteringEvent struct {
 	// Contains a value describing the type of event related to the originating occurrence.
 	Type string `json:"type"`
 	// Content type of the CloudEvents data value. Only the value "application/json" is allowed over HTTP.
-	Datacontenttype *Datacontenttype `json:"datacontenttype,omitempty"`
+	Datacontenttype optionalnullable.OptionalNullable[Datacontenttype] `json:"datacontenttype,omitempty"`
 	// Identifies the schema that data adheres to.
-	Dataschema *string `json:"dataschema,omitempty"`
+	Dataschema optionalnullable.OptionalNullable[string] `json:"dataschema,omitempty"`
 	// Describes the subject of the event in the context of the event producer (identified by source).
 	Subject string `json:"subject"`
 	// Timestamp of when the occurrence happened. Must adhere to RFC 3339.
-	Time *time.Time `json:"time,omitempty"`
+	Time optionalnullable.OptionalNullable[time.Time] `json:"time,omitempty"`
 	// The event payload.
 	// Optional, if present it must be a JSON object.
-	Data map[string]any `json:"data,omitempty"`
+	Data optionalnullable.OptionalNullable[map[string]any] `json:"data,omitempty"`
 }
 
 func (m MeteringEvent) MarshalJSON() ([]byte, error) {
@@ -95,14 +96,14 @@ func (m *MeteringEvent) GetType() string {
 	return m.Type
 }
 
-func (m *MeteringEvent) GetDatacontenttype() *Datacontenttype {
+func (m *MeteringEvent) GetDatacontenttype() optionalnullable.OptionalNullable[Datacontenttype] {
 	if m == nil {
 		return nil
 	}
 	return m.Datacontenttype
 }
 
-func (m *MeteringEvent) GetDataschema() *string {
+func (m *MeteringEvent) GetDataschema() optionalnullable.OptionalNullable[string] {
 	if m == nil {
 		return nil
 	}
@@ -116,14 +117,14 @@ func (m *MeteringEvent) GetSubject() string {
 	return m.Subject
 }
 
-func (m *MeteringEvent) GetTime() *time.Time {
+func (m *MeteringEvent) GetTime() optionalnullable.OptionalNullable[time.Time] {
 	if m == nil {
 		return nil
 	}
 	return m.Time
 }
 
-func (m *MeteringEvent) GetData() map[string]any {
+func (m *MeteringEvent) GetData() optionalnullable.OptionalNullable[map[string]any] {
 	if m == nil {
 		return nil
 	}

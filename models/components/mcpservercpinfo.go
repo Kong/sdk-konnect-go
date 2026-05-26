@@ -4,6 +4,7 @@ package components
 
 import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"time"
 )
 
@@ -19,9 +20,9 @@ type MCPServerCPInfo struct {
 	// The timestamp when the MCP server was deployed.
 	DeployedAt *time.Time `json:"deployed_at,omitempty"`
 	// The control plane ID associated with the MCP server.
-	ControlPlaneID *string `json:"control_plane_id,omitempty"`
+	ControlPlaneID optionalnullable.OptionalNullable[string] `json:"control_plane_id,omitempty"`
 	// The MCP resource ID associated with the MCP server.
-	ResourceID *string `json:"resource_id,omitempty"`
+	ResourceID optionalnullable.OptionalNullable[string] `json:"resource_id,omitempty"`
 	// The version of the MCP server.
 	Version string `json:"version"`
 	// An ISO-8601 timestamp representation of entity creation date.
@@ -78,14 +79,14 @@ func (m *MCPServerCPInfo) GetDeployedAt() *time.Time {
 	return m.DeployedAt
 }
 
-func (m *MCPServerCPInfo) GetControlPlaneID() *string {
+func (m *MCPServerCPInfo) GetControlPlaneID() optionalnullable.OptionalNullable[string] {
 	if m == nil {
 		return nil
 	}
 	return m.ControlPlaneID
 }
 
-func (m *MCPServerCPInfo) GetResourceID() *string {
+func (m *MCPServerCPInfo) GetResourceID() optionalnullable.OptionalNullable[string] {
 	if m == nil {
 		return nil
 	}

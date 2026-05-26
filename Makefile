@@ -125,8 +125,11 @@ generate.deepcopy: controller-gen
 		models/components/upstream.go
 	$(SED) -i 's#\(type Unhealthy struct\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
 		models/components/upstream.go
+	$(SED) -i 's#\(type OptionalNullable\)#// $(KUBEBUILDER_GENERATE_CODE_MARKER)\n\1#g' \
+		optionalnullable/optionalnullable.go
 
 	$(CONTROLLER_GEN) object paths=./models/components/
+	$(CONTROLLER_GEN) object paths=./optionalnullable/
 	go mod tidy
 
 # NOTE: This removes the +kubebuilder:object:generate=true markers after DeepCopy() generation.

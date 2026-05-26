@@ -40,6 +40,7 @@ import (
 // The type is implemented as a map[bool]*T where:
 // - nil map represents unset state
 // - Map with true key represents set state (value may be nil)
+// +kubebuilder:object:generate=true
 type OptionalNullable[T any] map[bool]*T
 
 // From creates a new OptionalNullable with the given value.
@@ -196,6 +197,7 @@ func (n *OptionalNullable[T]) UnmarshalJSON(data []byte) error {
 
 // NullableInterface defines the interface that all OptionalNullable[T] types implement.
 // This interface provides untyped access to optional nullable values for reflection-based code.
+// +kubebuilder:object:generate=true
 type OptionalNullableInterface interface {
 	GetUntyped() (interface{}, bool)
 }

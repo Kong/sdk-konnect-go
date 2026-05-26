@@ -2,12 +2,16 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
+)
+
 // GoogleAnalytics4IntegrationConfigProperties - Configuration data for the Google Analytics integration
 type GoogleAnalytics4IntegrationConfigProperties struct {
 	// The Google Analytics measurement ID
 	ID *string `json:"id,omitempty"`
 	// The datalayer's name you want data to be associated with
-	L *string `json:"l,omitempty"`
+	L optionalnullable.OptionalNullable[string] `json:"l,omitempty"`
 }
 
 func (g *GoogleAnalytics4IntegrationConfigProperties) GetID() *string {
@@ -17,7 +21,7 @@ func (g *GoogleAnalytics4IntegrationConfigProperties) GetID() *string {
 	return g.ID
 }
 
-func (g *GoogleAnalytics4IntegrationConfigProperties) GetL() *string {
+func (g *GoogleAnalytics4IntegrationConfigProperties) GetL() optionalnullable.OptionalNullable[string] {
 	if g == nil {
 		return nil
 	}

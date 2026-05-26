@@ -94,6 +94,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -107,12 +108,12 @@ func main() {
     )
 
     res, err := s.Consumers.CreateConsumer(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Consumer{
-        CustomID: sdkkonnectgo.Pointer("4200"),
-        ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
-        Tags: []string{
+        CustomID: optionalnullable.From(sdkkonnectgo.Pointer("4200")),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21")),
+        Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
             "silver-tier",
-        },
-        Username: sdkkonnectgo.Pointer("bob-the-builder"),
+        })),
+        Username: optionalnullable.From(sdkkonnectgo.Pointer("bob-the-builder")),
     })
     if err != nil {
         log.Fatal(err)
@@ -132,6 +133,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -145,12 +147,12 @@ func main() {
     )
 
     res, err := s.Consumers.CreateConsumer(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Consumer{
-        CustomID: sdkkonnectgo.Pointer("4200"),
-        ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
-        Tags: []string{
+        CustomID: optionalnullable.From(sdkkonnectgo.Pointer("4200")),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21")),
+        Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
             "silver-tier",
-        },
-        Username: sdkkonnectgo.Pointer("bob-the-builder"),
+        })),
+        Username: optionalnullable.From(sdkkonnectgo.Pointer("bob-the-builder")),
     })
     if err != nil {
         log.Fatal(err)
@@ -170,6 +172,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -183,12 +186,12 @@ func main() {
     )
 
     res, err := s.Consumers.CreateConsumer(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Consumer{
-        CustomID: sdkkonnectgo.Pointer("4200"),
-        ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
-        Tags: []string{
+        CustomID: optionalnullable.From(sdkkonnectgo.Pointer("4200")),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21")),
+        Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
             "silver-tier",
-        },
-        Username: sdkkonnectgo.Pointer("bob-the-builder"),
+        })),
+        Username: optionalnullable.From(sdkkonnectgo.Pointer("bob-the-builder")),
     })
     if err != nil {
         log.Fatal(err)
@@ -345,6 +348,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -362,12 +366,12 @@ func main() {
         ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Consumer: components.Consumer{
-            CustomID: sdkkonnectgo.Pointer("4200"),
-            ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
-            Tags: []string{
+            CustomID: optionalnullable.From(sdkkonnectgo.Pointer("4200")),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21")),
+            Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                 "silver-tier",
-            },
-            Username: sdkkonnectgo.Pointer("bob-the-builder"),
+            })),
+            Username: optionalnullable.From(sdkkonnectgo.Pointer("bob-the-builder")),
         },
     })
     if err != nil {
@@ -388,6 +392,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -405,12 +410,12 @@ func main() {
         ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Consumer: components.Consumer{
-            CustomID: sdkkonnectgo.Pointer("4200"),
-            ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
-            Tags: []string{
+            CustomID: optionalnullable.From(sdkkonnectgo.Pointer("4200")),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21")),
+            Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                 "silver-tier",
-            },
-            Username: sdkkonnectgo.Pointer("bob-the-builder"),
+            })),
+            Username: optionalnullable.From(sdkkonnectgo.Pointer("bob-the-builder")),
         },
     })
     if err != nil {
@@ -431,6 +436,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -448,12 +454,12 @@ func main() {
         ConsumerID: "c1059869-6fa7-4329-a5f5-5946d14ca2c5",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Consumer: components.Consumer{
-            CustomID: sdkkonnectgo.Pointer("4200"),
-            ID: sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21"),
-            Tags: []string{
+            CustomID: optionalnullable.From(sdkkonnectgo.Pointer("4200")),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("8a388226-80e8-4027-a486-25e4f7db5d21")),
+            Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                 "silver-tier",
-            },
-            Username: sdkkonnectgo.Pointer("bob-the-builder"),
+            })),
+            Username: optionalnullable.From(sdkkonnectgo.Pointer("bob-the-builder")),
         },
     })
     if err != nil {

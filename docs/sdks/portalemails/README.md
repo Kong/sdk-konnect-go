@@ -97,6 +97,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -110,10 +111,10 @@ func main() {
     )
 
     res, err := s.PortalEmails.CreatePortalEmailConfig(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.PostPortalEmailConfig{
-        DomainName: sdkkonnectgo.Pointer("example.com"),
-        FromName: sdkkonnectgo.Pointer("Gandalf"),
-        FromEmail: sdkkonnectgo.Pointer("user@example.com"),
-        ReplyToEmail: sdkkonnectgo.Pointer("admin@example.com"),
+        DomainName: optionalnullable.From(sdkkonnectgo.Pointer("example.com")),
+        FromName: optionalnullable.From(sdkkonnectgo.Pointer("Gandalf")),
+        FromEmail: optionalnullable.From(sdkkonnectgo.Pointer("user@example.com")),
+        ReplyToEmail: optionalnullable.From(sdkkonnectgo.Pointer("admin@example.com")),
     })
     if err != nil {
         log.Fatal(err)
@@ -317,6 +318,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -330,10 +332,10 @@ func main() {
     )
 
     res, err := s.PortalEmails.UpdatePortalEmailConfig(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PatchPortalEmailConfig{
-        DomainName: sdkkonnectgo.Pointer("example.com"),
-        FromName: sdkkonnectgo.Pointer("Gandalf"),
-        FromEmail: sdkkonnectgo.Pointer("user@example.com"),
-        ReplyToEmail: sdkkonnectgo.Pointer("admin@example.com"),
+        DomainName: optionalnullable.From(sdkkonnectgo.Pointer("example.com")),
+        FromName: optionalnullable.From(sdkkonnectgo.Pointer("Gandalf")),
+        FromEmail: optionalnullable.From(sdkkonnectgo.Pointer("user@example.com")),
+        ReplyToEmail: optionalnullable.From(sdkkonnectgo.Pointer("admin@example.com")),
     })
     if err != nil {
         log.Fatal(err)
@@ -974,6 +976,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -991,12 +994,12 @@ func main() {
         PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
         TemplateName: components.EmailTemplateNameAppRegistrationRevoked,
         PatchCustomPortalEmailTemplatePayload: components.PatchCustomPortalEmailTemplatePayload{
-            Content: &components.EmailTemplateContent{
-                Subject: sdkkonnectgo.Pointer("{{developer_fullname}}, Your registration has been revoked"),
-                Title: sdkkonnectgo.Pointer("Revoked registration"),
-                Body: sdkkonnectgo.Pointer("Hello {{ developer_fullname }},\\n\\your registration has been **revoked**."),
-                ButtonLabel: sdkkonnectgo.Pointer("Acknowledge"),
-            },
+            Content: optionalnullable.From(&components.EmailTemplateContent{
+                Subject: optionalnullable.From(sdkkonnectgo.Pointer("{{developer_fullname}}, Your registration has been revoked")),
+                Title: optionalnullable.From(sdkkonnectgo.Pointer("Revoked registration")),
+                Body: optionalnullable.From(sdkkonnectgo.Pointer("Hello {{ developer_fullname }},\\n\\your registration has been **revoked**.")),
+                ButtonLabel: optionalnullable.From(sdkkonnectgo.Pointer("Acknowledge")),
+            }),
         },
     })
     if err != nil {

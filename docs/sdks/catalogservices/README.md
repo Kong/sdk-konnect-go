@@ -239,6 +239,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -254,9 +255,9 @@ func main() {
     res, err := s.CatalogServices.UpdateCatalogService(ctx, "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.UpdateCatalogService{
         Name: sdkkonnectgo.Pointer("user-svc"),
         DisplayName: sdkkonnectgo.Pointer("User Service"),
-        Labels: map[string]*string{
+        Labels: optionalnullable.From(sdkkonnectgo.Pointer(map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)

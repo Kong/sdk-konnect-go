@@ -89,6 +89,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -103,7 +104,7 @@ func main() {
 
     res, err := s.CustomPlugins.CreateCustomPlugin(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CustomPlugin{
         Handler: "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }",
-        ID: sdkkonnectgo.Pointer("868346aa-1105-4b77-8346-aa1105fb77c4"),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("868346aa-1105-4b77-8346-aa1105fb77c4")),
         Name: "set-header",
         Schema: "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }",
     })
@@ -125,6 +126,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -139,7 +141,7 @@ func main() {
 
     res, err := s.CustomPlugins.CreateCustomPlugin(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CustomPlugin{
         Handler: "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }",
-        ID: sdkkonnectgo.Pointer("868346aa-1105-4b77-8346-aa1105fb77c4"),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("868346aa-1105-4b77-8346-aa1105fb77c4")),
         Name: "set-header",
         Schema: "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }",
     })
@@ -161,6 +163,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -175,7 +178,7 @@ func main() {
 
     res, err := s.CustomPlugins.CreateCustomPlugin(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CustomPlugin{
         Handler: "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }",
-        ID: sdkkonnectgo.Pointer("868346aa-1105-4b77-8346-aa1105fb77c4"),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("868346aa-1105-4b77-8346-aa1105fb77c4")),
         Name: "set-header",
         Schema: "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }",
     })
@@ -343,6 +346,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -361,7 +365,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         CustomPlugin: components.CustomPlugin{
             Handler: "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }",
-            ID: sdkkonnectgo.Pointer("868346aa-1105-4b77-8346-aa1105fb77c4"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("868346aa-1105-4b77-8346-aa1105fb77c4")),
             Name: "set-header",
             Schema: "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }",
         },
@@ -384,6 +388,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -402,7 +407,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         CustomPlugin: components.CustomPlugin{
             Handler: "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }",
-            ID: sdkkonnectgo.Pointer("868346aa-1105-4b77-8346-aa1105fb77c4"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("868346aa-1105-4b77-8346-aa1105fb77c4")),
             Name: "set-header",
             Schema: "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }",
         },
@@ -425,6 +430,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -443,7 +449,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         CustomPlugin: components.CustomPlugin{
             Handler: "return { VERSION = '1.0,0', PRIORITY = 500, access = function(self, config) kong.service.request.set_header(config.name, config.value) end }",
-            ID: sdkkonnectgo.Pointer("868346aa-1105-4b77-8346-aa1105fb77c4"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("868346aa-1105-4b77-8346-aa1105fb77c4")),
             Name: "set-header",
             Schema: "return { name = 'set-header', fields = { { protocols = require('kong.db.schema.typedefs').protocols_http }, { config = { type = 'record', fields = { { name = { description = 'The name of the header to set.', type = 'string', required = true } }, { value = { description = 'The value for the header.', type = 'string', required = true } } } } } } }",
         },

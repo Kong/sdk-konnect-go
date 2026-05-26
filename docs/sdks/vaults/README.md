@@ -92,6 +92,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -105,17 +106,17 @@ func main() {
     )
 
     res, err := s.Vaults.CreateVault(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Vault{
-        Config: map[string]any{
+        Config: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
             "prefix": "ENV_PREFIX",
-        },
-        Description: sdkkonnectgo.Pointer("environment variable based vault"),
-        ID: sdkkonnectgo.Pointer("2747d1e5-8246-4f65-a939-b392f1ee17f8"),
+        })),
+        Description: optionalnullable.From(sdkkonnectgo.Pointer("environment variable based vault")),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("2747d1e5-8246-4f65-a939-b392f1ee17f8")),
         Name: "env",
         Prefix: "env",
-        Tags: []string{
+        Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
             "foo",
             "bar",
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -135,6 +136,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -148,17 +150,17 @@ func main() {
     )
 
     res, err := s.Vaults.CreateVault(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Vault{
-        Config: map[string]any{
+        Config: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
             "prefix": "ENV_PREFIX",
-        },
-        Description: sdkkonnectgo.Pointer("environment variable based vault"),
-        ID: sdkkonnectgo.Pointer("2747d1e5-8246-4f65-a939-b392f1ee17f8"),
+        })),
+        Description: optionalnullable.From(sdkkonnectgo.Pointer("environment variable based vault")),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("2747d1e5-8246-4f65-a939-b392f1ee17f8")),
         Name: "env",
         Prefix: "env",
-        Tags: []string{
+        Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
             "foo",
             "bar",
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -178,6 +180,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -191,17 +194,17 @@ func main() {
     )
 
     res, err := s.Vaults.CreateVault(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Vault{
-        Config: map[string]any{
+        Config: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
             "prefix": "ENV_PREFIX",
-        },
-        Description: sdkkonnectgo.Pointer("environment variable based vault"),
-        ID: sdkkonnectgo.Pointer("2747d1e5-8246-4f65-a939-b392f1ee17f8"),
+        })),
+        Description: optionalnullable.From(sdkkonnectgo.Pointer("environment variable based vault")),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("2747d1e5-8246-4f65-a939-b392f1ee17f8")),
         Name: "env",
         Prefix: "env",
-        Tags: []string{
+        Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
             "foo",
             "bar",
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -358,6 +361,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -375,17 +379,17 @@ func main() {
         VaultID: "9d4d6d19-77c6-428e-a965-9bc9647633e9",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Vault: components.Vault{
-            Config: map[string]any{
+            Config: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
                 "prefix": "ENV_PREFIX",
-            },
-            Description: sdkkonnectgo.Pointer("environment variable based vault"),
-            ID: sdkkonnectgo.Pointer("2747d1e5-8246-4f65-a939-b392f1ee17f8"),
+            })),
+            Description: optionalnullable.From(sdkkonnectgo.Pointer("environment variable based vault")),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("2747d1e5-8246-4f65-a939-b392f1ee17f8")),
             Name: "env",
             Prefix: "env",
-            Tags: []string{
+            Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                 "foo",
                 "bar",
-            },
+            })),
         },
     })
     if err != nil {
@@ -406,6 +410,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -423,17 +428,17 @@ func main() {
         VaultID: "9d4d6d19-77c6-428e-a965-9bc9647633e9",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Vault: components.Vault{
-            Config: map[string]any{
+            Config: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
                 "prefix": "ENV_PREFIX",
-            },
-            Description: sdkkonnectgo.Pointer("environment variable based vault"),
-            ID: sdkkonnectgo.Pointer("2747d1e5-8246-4f65-a939-b392f1ee17f8"),
+            })),
+            Description: optionalnullable.From(sdkkonnectgo.Pointer("environment variable based vault")),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("2747d1e5-8246-4f65-a939-b392f1ee17f8")),
             Name: "env",
             Prefix: "env",
-            Tags: []string{
+            Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                 "foo",
                 "bar",
-            },
+            })),
         },
     })
     if err != nil {
@@ -454,6 +459,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -471,17 +477,17 @@ func main() {
         VaultID: "9d4d6d19-77c6-428e-a965-9bc9647633e9",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         Vault: components.Vault{
-            Config: map[string]any{
+            Config: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
                 "prefix": "ENV_PREFIX",
-            },
-            Description: sdkkonnectgo.Pointer("environment variable based vault"),
-            ID: sdkkonnectgo.Pointer("2747d1e5-8246-4f65-a939-b392f1ee17f8"),
+            })),
+            Description: optionalnullable.From(sdkkonnectgo.Pointer("environment variable based vault")),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("2747d1e5-8246-4f65-a939-b392f1ee17f8")),
             Name: "env",
             Prefix: "env",
-            Tags: []string{
+            Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                 "foo",
                 "bar",
-            },
+            })),
         },
     })
     if err != nil {

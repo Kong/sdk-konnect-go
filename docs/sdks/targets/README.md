@@ -150,6 +150,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -167,7 +168,7 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         UpstreamIDForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8",
         TargetWithoutParents: components.TargetWithoutParents{
-            ID: sdkkonnectgo.Pointer("089292a7-ba3d-4d88-acf0-97b4b2e2621a"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("089292a7-ba3d-4d88-acf0-97b4b2e2621a")),
             Target: sdkkonnectgo.Pointer("203.0.113.42"),
         },
     })
@@ -330,6 +331,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -348,7 +350,7 @@ func main() {
         UpstreamIDForTarget: "5a078780-5d4c-4aae-984a-bdc6f52113d8",
         TargetID: "5a078780-5d4c-4aae-984a-bdc6f52113d8",
         TargetWithoutParents: components.TargetWithoutParents{
-            ID: sdkkonnectgo.Pointer("089292a7-ba3d-4d88-acf0-97b4b2e2621a"),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("089292a7-ba3d-4d88-acf0-97b4b2e2621a")),
             Target: sdkkonnectgo.Pointer("203.0.113.42"),
         },
     })

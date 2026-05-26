@@ -28,6 +28,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -44,7 +45,7 @@ func main() {
         Content: "<value>",
         Title: sdkkonnectgo.Pointer("API Document"),
         Slug: sdkkonnectgo.Pointer("api-document"),
-        ParentDocumentID: nil,
+        ParentDocumentID: optionalnullable.From[string](nil),
     })
     if err != nil {
         log.Fatal(err)
@@ -64,6 +65,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -80,7 +82,7 @@ func main() {
         Content: "<value>",
         Title: sdkkonnectgo.Pointer("API Document"),
         Slug: sdkkonnectgo.Pointer("api-document"),
-        ParentDocumentID: nil,
+        ParentDocumentID: optionalnullable.From[string](nil),
     })
     if err != nil {
         log.Fatal(err)
@@ -100,6 +102,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -116,7 +119,7 @@ func main() {
         Content: "<value>",
         Title: sdkkonnectgo.Pointer("API Document"),
         Slug: sdkkonnectgo.Pointer("api-document"),
-        ParentDocumentID: nil,
+        ParentDocumentID: optionalnullable.From[string](nil),
     })
     if err != nil {
         log.Fatal(err)
@@ -136,6 +139,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -152,7 +156,7 @@ func main() {
         Content: "<value>",
         Title: sdkkonnectgo.Pointer("API Document"),
         Slug: sdkkonnectgo.Pointer("api-document"),
-        ParentDocumentID: nil,
+        ParentDocumentID: optionalnullable.From[string](nil),
     })
     if err != nil {
         log.Fatal(err)
@@ -172,6 +176,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -188,7 +193,7 @@ func main() {
         Content: "<value>",
         Title: sdkkonnectgo.Pointer("API Document"),
         Slug: sdkkonnectgo.Pointer("api-document"),
-        ParentDocumentID: nil,
+        ParentDocumentID: optionalnullable.From[string](nil),
     })
     if err != nil {
         log.Fatal(err)
@@ -208,6 +213,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -225,7 +231,7 @@ func main() {
         Title: sdkkonnectgo.Pointer("API Document"),
         Slug: sdkkonnectgo.Pointer("api-document"),
         Status: components.APIDocumentStatusPublished.ToPointer(),
-        ParentDocumentID: sdkkonnectgo.Pointer("417a2aed-9a75-4eca-a943-fa7d88ed6a73"),
+        ParentDocumentID: optionalnullable.From(sdkkonnectgo.Pointer("417a2aed-9a75-4eca-a943-fa7d88ed6a73")),
     })
     if err != nil {
         log.Fatal(err)
@@ -281,6 +287,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -297,7 +304,7 @@ func main() {
         Content: "<value>",
         Title: sdkkonnectgo.Pointer("API Document"),
         Slug: sdkkonnectgo.Pointer("api-document"),
-        ParentDocumentID: nil,
+        ParentDocumentID: optionalnullable.From[string](nil),
     })
     if err != nil {
         log.Fatal(err)
@@ -317,6 +324,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -333,7 +341,7 @@ func main() {
         Content: "<value>",
         Title: sdkkonnectgo.Pointer("API Document"),
         Slug: sdkkonnectgo.Pointer("api-document"),
-        ParentDocumentID: nil,
+        ParentDocumentID: optionalnullable.From[string](nil),
     })
     if err != nil {
         log.Fatal(err)
@@ -500,6 +508,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -519,7 +528,7 @@ func main() {
         APIDocument: components.APIDocument{
             Title: sdkkonnectgo.Pointer("API Document"),
             Slug: sdkkonnectgo.Pointer("api-document"),
-            ParentDocumentID: nil,
+            ParentDocumentID: optionalnullable.From[string](nil),
         },
     })
     if err != nil {
@@ -540,6 +549,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -559,7 +569,7 @@ func main() {
         APIDocument: components.APIDocument{
             Title: sdkkonnectgo.Pointer("API Document"),
             Slug: sdkkonnectgo.Pointer("api-document"),
-            ParentDocumentID: nil,
+            ParentDocumentID: optionalnullable.From[string](nil),
         },
     })
     if err != nil {
@@ -580,6 +590,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -599,7 +610,7 @@ func main() {
         APIDocument: components.APIDocument{
             Title: sdkkonnectgo.Pointer("API Document"),
             Slug: sdkkonnectgo.Pointer("api-document"),
-            ParentDocumentID: nil,
+            ParentDocumentID: optionalnullable.From[string](nil),
         },
     })
     if err != nil {
@@ -620,6 +631,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -639,7 +651,7 @@ func main() {
         APIDocument: components.APIDocument{
             Title: sdkkonnectgo.Pointer("API Document"),
             Slug: sdkkonnectgo.Pointer("api-document"),
-            ParentDocumentID: nil,
+            ParentDocumentID: optionalnullable.From[string](nil),
         },
     })
     if err != nil {
@@ -660,6 +672,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -679,7 +692,7 @@ func main() {
         APIDocument: components.APIDocument{
             Title: sdkkonnectgo.Pointer("API Document"),
             Slug: sdkkonnectgo.Pointer("api-document"),
-            ParentDocumentID: nil,
+            ParentDocumentID: optionalnullable.From[string](nil),
         },
     })
     if err != nil {
@@ -700,6 +713,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -719,7 +733,7 @@ func main() {
         APIDocument: components.APIDocument{
             Title: sdkkonnectgo.Pointer("API Document"),
             Slug: sdkkonnectgo.Pointer("api-document"),
-            ParentDocumentID: nil,
+            ParentDocumentID: optionalnullable.From[string](nil),
         },
     })
     if err != nil {
@@ -740,6 +754,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -759,7 +774,7 @@ func main() {
         APIDocument: components.APIDocument{
             Title: sdkkonnectgo.Pointer("API Document"),
             Slug: sdkkonnectgo.Pointer("api-document"),
-            ParentDocumentID: nil,
+            ParentDocumentID: optionalnullable.From[string](nil),
         },
     })
     if err != nil {
@@ -780,6 +795,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -800,7 +816,7 @@ func main() {
             Title: sdkkonnectgo.Pointer("API Document"),
             Slug: sdkkonnectgo.Pointer("api-document"),
             Status: components.APIDocumentStatusPublished.ToPointer(),
-            ParentDocumentID: sdkkonnectgo.Pointer("dd4e1b98-3629-4dd3-acc0-759a726ffee2"),
+            ParentDocumentID: optionalnullable.From(sdkkonnectgo.Pointer("dd4e1b98-3629-4dd3-acc0-759a726ffee2")),
         },
     })
     if err != nil {
@@ -821,6 +837,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -842,7 +859,7 @@ func main() {
             Title: sdkkonnectgo.Pointer("API Document"),
             Slug: sdkkonnectgo.Pointer("api-document"),
             Status: components.APIDocumentStatusPublished.ToPointer(),
-            ParentDocumentID: sdkkonnectgo.Pointer("dd4e1b98-3629-4dd3-acc0-759a726ffee2"),
+            ParentDocumentID: optionalnullable.From(sdkkonnectgo.Pointer("dd4e1b98-3629-4dd3-acc0-759a726ffee2")),
         },
     })
     if err != nil {

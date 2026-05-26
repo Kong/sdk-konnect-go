@@ -2,26 +2,30 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
+)
+
 // GoogleTagManagerIntegrationConfigProperties - Configuration data for the Google Tag Manager integration
 type GoogleTagManagerIntegrationConfigProperties struct {
 	// The Google Tag Manager container ID
 	ID *string `json:"id,omitempty"`
 	// Optional dataLayer variable name
-	L *string `json:"l,omitempty"`
+	L optionalnullable.OptionalNullable[string] `json:"l,omitempty"`
 	// Preview environment name
-	Preview *string `json:"preview,omitempty"`
+	Preview optionalnullable.OptionalNullable[string] `json:"preview,omitempty"`
 	// Forces GTM cookies to take precedence when true
-	CookiesWin *bool `json:"cookies_win,omitempty"`
+	CookiesWin optionalnullable.OptionalNullable[bool] `json:"cookies_win,omitempty"`
 	// Enables debug mode when true
-	Debug *bool `json:"debug,omitempty"`
+	Debug optionalnullable.OptionalNullable[bool] `json:"debug,omitempty"`
 	// No Personal Advertising - disables advertising features when true
-	Npa *bool `json:"npa,omitempty"`
+	Npa optionalnullable.OptionalNullable[bool] `json:"npa,omitempty"`
 	// Custom dataLayer name (alternative to "l" property)
-	DataLayer *string `json:"data_layer,omitempty"`
+	DataLayer optionalnullable.OptionalNullable[string] `json:"data_layer,omitempty"`
 	// Environment name for environment-specific container
-	EnvName *string `json:"env_name,omitempty"`
+	EnvName optionalnullable.OptionalNullable[string] `json:"env_name,omitempty"`
 	// Referrer policy for analytics requests
-	AuthReferrerPolicy *string `json:"auth_referrer_policy,omitempty"`
+	AuthReferrerPolicy optionalnullable.OptionalNullable[string] `json:"auth_referrer_policy,omitempty"`
 }
 
 func (g *GoogleTagManagerIntegrationConfigProperties) GetID() *string {
@@ -31,56 +35,56 @@ func (g *GoogleTagManagerIntegrationConfigProperties) GetID() *string {
 	return g.ID
 }
 
-func (g *GoogleTagManagerIntegrationConfigProperties) GetL() *string {
+func (g *GoogleTagManagerIntegrationConfigProperties) GetL() optionalnullable.OptionalNullable[string] {
 	if g == nil {
 		return nil
 	}
 	return g.L
 }
 
-func (g *GoogleTagManagerIntegrationConfigProperties) GetPreview() *string {
+func (g *GoogleTagManagerIntegrationConfigProperties) GetPreview() optionalnullable.OptionalNullable[string] {
 	if g == nil {
 		return nil
 	}
 	return g.Preview
 }
 
-func (g *GoogleTagManagerIntegrationConfigProperties) GetCookiesWin() *bool {
+func (g *GoogleTagManagerIntegrationConfigProperties) GetCookiesWin() optionalnullable.OptionalNullable[bool] {
 	if g == nil {
 		return nil
 	}
 	return g.CookiesWin
 }
 
-func (g *GoogleTagManagerIntegrationConfigProperties) GetDebug() *bool {
+func (g *GoogleTagManagerIntegrationConfigProperties) GetDebug() optionalnullable.OptionalNullable[bool] {
 	if g == nil {
 		return nil
 	}
 	return g.Debug
 }
 
-func (g *GoogleTagManagerIntegrationConfigProperties) GetNpa() *bool {
+func (g *GoogleTagManagerIntegrationConfigProperties) GetNpa() optionalnullable.OptionalNullable[bool] {
 	if g == nil {
 		return nil
 	}
 	return g.Npa
 }
 
-func (g *GoogleTagManagerIntegrationConfigProperties) GetDataLayer() *string {
+func (g *GoogleTagManagerIntegrationConfigProperties) GetDataLayer() optionalnullable.OptionalNullable[string] {
 	if g == nil {
 		return nil
 	}
 	return g.DataLayer
 }
 
-func (g *GoogleTagManagerIntegrationConfigProperties) GetEnvName() *string {
+func (g *GoogleTagManagerIntegrationConfigProperties) GetEnvName() optionalnullable.OptionalNullable[string] {
 	if g == nil {
 		return nil
 	}
 	return g.EnvName
 }
 
-func (g *GoogleTagManagerIntegrationConfigProperties) GetAuthReferrerPolicy() *string {
+func (g *GoogleTagManagerIntegrationConfigProperties) GetAuthReferrerPolicy() optionalnullable.OptionalNullable[string] {
 	if g == nil {
 		return nil
 	}

@@ -411,6 +411,42 @@ func TestUnset(t *testing.T) {
 	})
 }
 
+func TestDeepCopy(t *testing.T) {
+	t.Parallel()
+
+	t.Run("preserves nil state", func(t *testing.T) {
+		t.Parallel()
+
+		nullable := From[string](nil)
+		copy := nullable.DeepCopy()
+
+		assert.True(t, copy.IsSet())
+		assert.True(t, copy.IsNull())
+	})
+
+	t.Run("copies pointed value into a distinct pointer", func(t *testing.T) {
+		t.Parallel()
+
+		value := TestStruct{Name: "John", Age: 30}
+		nullable := From(&value)
+		copy := nullable.DeepCopy()
+
+		originalPtr, ok := nullable.Get()
+		require.True(t, ok)
+		require.NotNil(t, originalPtr)
+
+		copiedPtr, ok := copy.Get()
+		require.True(t, ok)
+		require.NotNil(t, copiedPtr)
+
+		assert.Equal(t, *originalPtr, *copiedPtr)
+		assert.NotSame(t, originalPtr, copiedPtr)
+
+		copiedPtr.Age = 31
+		assert.Equal(t, 30, originalPtr.Age)
+	})
+}
+
 // TestMarshalJSON tests JSON marshaling
 func TestMarshalJSON(t *testing.T) {
 	t.Parallel()

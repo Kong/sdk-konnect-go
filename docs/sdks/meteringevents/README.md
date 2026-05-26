@@ -23,6 +23,7 @@ import(
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/types"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -42,13 +43,13 @@ func main() {
             Source: "service-name",
             Type: "prompt",
             Subject: "customer-id",
-            Time: types.MustNewTimeFromString("2023-01-01T01:01:01.001Z"),
-            Data: map[string]any{
+            Time: optionalnullable.From(sdkkonnectgo.Pointer(types.MustNewTimeFromString("2023-01-01T01:01:01.001Z"))),
+            Data: optionalnullable.From(sdkkonnectgo.Pointer(map[string]any{
                 "prompt": "Hello, world!",
                 "tokens": 100,
                 "model": "gpt-4o",
                 "type": "input",
-            },
+            })),
         },
     ))
     if err != nil {

@@ -28,6 +28,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -44,7 +45,7 @@ func main() {
         Content: "<value>",
         Title: sdkkonnectgo.Pointer("API Document"),
         Slug: sdkkonnectgo.Pointer("api-document"),
-        ParentDocumentID: nil,
+        ParentDocumentID: optionalnullable.From[string](nil),
     })
     if err != nil {
         log.Fatal(err)
@@ -211,6 +212,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -230,7 +232,7 @@ func main() {
         APIDocument: components.APIDocument{
             Title: sdkkonnectgo.Pointer("API Document"),
             Slug: sdkkonnectgo.Pointer("api-document"),
-            ParentDocumentID: nil,
+            ParentDocumentID: optionalnullable.From[string](nil),
         },
     })
     if err != nil {

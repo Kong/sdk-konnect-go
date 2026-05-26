@@ -135,6 +135,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -154,7 +155,7 @@ func main() {
         Visibility: components.PageVisibilityStatusPublic.ToPointer(),
         Status: components.PublishedStatusPublished.ToPointer(),
         Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
-        ParentPageID: nil,
+        ParentPageID: optionalnullable.From[string](nil),
     })
     if err != nil {
         log.Fatal(err)
@@ -174,6 +175,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -193,7 +195,7 @@ func main() {
         Visibility: components.PageVisibilityStatusPublic.ToPointer(),
         Status: components.PublishedStatusPublished.ToPointer(),
         Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
-        ParentPageID: nil,
+        ParentPageID: optionalnullable.From[string](nil),
     })
     if err != nil {
         log.Fatal(err)
@@ -213,6 +215,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -232,7 +235,7 @@ func main() {
         Visibility: components.PageVisibilityStatusPublic.ToPointer(),
         Status: components.PublishedStatusPublished.ToPointer(),
         Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
-        ParentPageID: nil,
+        ParentPageID: optionalnullable.From[string](nil),
     })
     if err != nil {
         log.Fatal(err)
@@ -252,6 +255,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -271,7 +275,7 @@ func main() {
         Visibility: components.PageVisibilityStatusPublic.ToPointer(),
         Status: components.PublishedStatusPublished.ToPointer(),
         Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
-        ParentPageID: nil,
+        ParentPageID: optionalnullable.From[string](nil),
     })
     if err != nil {
         log.Fatal(err)
@@ -291,6 +295,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -310,7 +315,7 @@ func main() {
         Visibility: components.PageVisibilityStatusPublic.ToPointer(),
         Status: components.PublishedStatusPublished.ToPointer(),
         Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
-        ParentPageID: nil,
+        ParentPageID: optionalnullable.From[string](nil),
     })
     if err != nil {
         log.Fatal(err)
@@ -455,6 +460,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -478,7 +484,7 @@ func main() {
             Visibility: components.VisibilityStatusPublic.ToPointer(),
             Status: components.PublishedStatusPublished.ToPointer(),
             Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
-            ParentPageID: nil,
+            ParentPageID: optionalnullable.From[string](nil),
         },
     })
     if err != nil {
@@ -499,6 +505,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -522,7 +529,7 @@ func main() {
             Visibility: components.VisibilityStatusPublic.ToPointer(),
             Status: components.PublishedStatusPublished.ToPointer(),
             Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
-            ParentPageID: nil,
+            ParentPageID: optionalnullable.From[string](nil),
         },
     })
     if err != nil {
@@ -543,6 +550,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -566,7 +574,7 @@ func main() {
             Visibility: components.VisibilityStatusPublic.ToPointer(),
             Status: components.PublishedStatusPublished.ToPointer(),
             Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
-            ParentPageID: nil,
+            ParentPageID: optionalnullable.From[string](nil),
         },
     })
     if err != nil {
@@ -587,6 +595,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -610,7 +619,7 @@ func main() {
             Visibility: components.VisibilityStatusPublic.ToPointer(),
             Status: components.PublishedStatusPublished.ToPointer(),
             Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
-            ParentPageID: nil,
+            ParentPageID: optionalnullable.From[string](nil),
         },
     })
     if err != nil {
@@ -631,6 +640,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -654,7 +664,7 @@ func main() {
             Visibility: components.VisibilityStatusPublic.ToPointer(),
             Status: components.PublishedStatusPublished.ToPointer(),
             Description: sdkkonnectgo.Pointer("A custom page about developer portals"),
-            ParentPageID: nil,
+            ParentPageID: optionalnullable.From[string](nil),
         },
     })
     if err != nil {

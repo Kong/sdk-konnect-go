@@ -2,26 +2,30 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
+)
+
 type UpdateAPIPackageRequest struct {
 	// The name of your API Package. The `name + version` combination must be unique for each API Package you publish.
 	//
 	Name *string `json:"name,omitempty"`
 	// A description of your API Package. Will be visible on your live Portal.
-	Description *string `json:"description,omitempty"`
+	Description optionalnullable.OptionalNullable[string] `json:"description,omitempty"`
 	// The unique slug for your API Package, It should be unique across all APIs and API Packages.
 	//
-	Slug *string `json:"slug,omitempty"`
+	Slug optionalnullable.OptionalNullable[string] `json:"slug,omitempty"`
 	// An optional version for your API Package. Leave this empty if your API Package is unversioned.
-	Version *string `json:"version,omitempty"`
+	Version optionalnullable.OptionalNullable[string] `json:"version,omitempty"`
 	// Rate limit configuration that can be applied to an API Package or an API Package Operation.
-	RateLimitingConfig *RateLimitingConfig `json:"rate_limiting_config,omitempty"`
+	RateLimitingConfig optionalnullable.OptionalNullable[RateLimitingConfig] `json:"rate_limiting_config,omitempty"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Labels are intended to store **INTERNAL** metadata.
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
-	Labels map[string]*string `json:"labels,omitempty"`
+	Labels optionalnullable.OptionalNullable[map[string]*string] `json:"labels,omitempty"`
 	// A set of attributes that describe the API
 	Attributes any `json:"attributes,omitempty"`
 }
@@ -33,35 +37,35 @@ func (u *UpdateAPIPackageRequest) GetName() *string {
 	return u.Name
 }
 
-func (u *UpdateAPIPackageRequest) GetDescription() *string {
+func (u *UpdateAPIPackageRequest) GetDescription() optionalnullable.OptionalNullable[string] {
 	if u == nil {
 		return nil
 	}
 	return u.Description
 }
 
-func (u *UpdateAPIPackageRequest) GetSlug() *string {
+func (u *UpdateAPIPackageRequest) GetSlug() optionalnullable.OptionalNullable[string] {
 	if u == nil {
 		return nil
 	}
 	return u.Slug
 }
 
-func (u *UpdateAPIPackageRequest) GetVersion() *string {
+func (u *UpdateAPIPackageRequest) GetVersion() optionalnullable.OptionalNullable[string] {
 	if u == nil {
 		return nil
 	}
 	return u.Version
 }
 
-func (u *UpdateAPIPackageRequest) GetRateLimitingConfig() *RateLimitingConfig {
+func (u *UpdateAPIPackageRequest) GetRateLimitingConfig() optionalnullable.OptionalNullable[RateLimitingConfig] {
 	if u == nil {
 		return nil
 	}
 	return u.RateLimitingConfig
 }
 
-func (u *UpdateAPIPackageRequest) GetLabels() map[string]*string {
+func (u *UpdateAPIPackageRequest) GetLabels() optionalnullable.OptionalNullable[map[string]*string] {
 	if u == nil {
 		return nil
 	}

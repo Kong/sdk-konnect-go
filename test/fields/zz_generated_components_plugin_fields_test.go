@@ -6,26 +6,27 @@ import (
 	"testing"
 
 	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 )
 
 func TestComponentsPluginFieldTypes(t *testing.T) {
 	t.Parallel()
 
 	var value components.Plugin
-	var _ *string = value.Condition
-	var _ map[string]any = value.Config
-	var _ *components.PluginConsumer = value.Consumer
-	var _ *components.PluginConsumerGroup = value.ConsumerGroup
-	var _ *int64 = value.CreatedAt
-	var _ *bool = value.Enabled
-	var _ *string = value.ID
-	var _ *string = value.InstanceName
+	var _ optionalnullable.OptionalNullable[string] = value.Condition
+	var _ optionalnullable.OptionalNullable[map[string]any] = value.Config
+	var _ optionalnullable.OptionalNullable[components.PluginConsumer] = value.Consumer
+	var _ optionalnullable.OptionalNullable[components.PluginConsumerGroup] = value.ConsumerGroup
+	var _ optionalnullable.OptionalNullable[int64] = value.CreatedAt
+	var _ optionalnullable.OptionalNullable[bool] = value.Enabled
+	var _ optionalnullable.OptionalNullable[string] = value.ID
+	var _ optionalnullable.OptionalNullable[string] = value.InstanceName
 	var _ string = value.Name
-	var _ *components.Ordering = value.Ordering
-	var _ []components.Partials = value.Partials
-	var _ []components.Protocols = value.Protocols
-	var _ *components.PluginRoute = value.Route
-	var _ *components.PluginService = value.Service
-	var _ []string = value.Tags
-	var _ *int64 = value.UpdatedAt
+	var _ optionalnullable.OptionalNullable[components.Ordering] = value.Ordering
+	var _ optionalnullable.OptionalNullable[[]components.Partials] = value.Partials
+	var _ optionalnullable.OptionalNullable[[]components.Protocols] = value.Protocols
+	var _ optionalnullable.OptionalNullable[components.PluginRoute] = value.Route
+	var _ optionalnullable.OptionalNullable[components.PluginService] = value.Service
+	var _ optionalnullable.OptionalNullable[[]string] = value.Tags
+	var _ optionalnullable.OptionalNullable[int64] = value.UpdatedAt
 }

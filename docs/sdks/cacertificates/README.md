@@ -86,6 +86,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -100,13 +101,13 @@ func main() {
 
     res, err := s.CACertificates.CreateCaCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CACertificate{
         Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
-        CertDigest: sdkkonnectgo.Pointer("9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f"),
-        CreatedAt: sdkkonnectgo.Pointer[int64](1706598432),
-        ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260"),
-        Tags: []string{
+        CertDigest: optionalnullable.From(sdkkonnectgo.Pointer("9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f")),
+        CreatedAt: optionalnullable.From(sdkkonnectgo.Pointer[int64](1706598432)),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260")),
+        Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
             "trusted",
             "api",
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -126,6 +127,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -140,13 +142,13 @@ func main() {
 
     res, err := s.CACertificates.CreateCaCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CACertificate{
         Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
-        CertDigest: sdkkonnectgo.Pointer("9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f"),
-        CreatedAt: sdkkonnectgo.Pointer[int64](1706598432),
-        ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260"),
-        Tags: []string{
+        CertDigest: optionalnullable.From(sdkkonnectgo.Pointer("9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f")),
+        CreatedAt: optionalnullable.From(sdkkonnectgo.Pointer[int64](1706598432)),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260")),
+        Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
             "trusted",
             "api",
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -166,6 +168,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -180,13 +183,13 @@ func main() {
 
     res, err := s.CACertificates.CreateCaCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CACertificate{
         Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
-        CertDigest: sdkkonnectgo.Pointer("9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f"),
-        CreatedAt: sdkkonnectgo.Pointer[int64](1706598432),
-        ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260"),
-        Tags: []string{
+        CertDigest: optionalnullable.From(sdkkonnectgo.Pointer("9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f")),
+        CreatedAt: optionalnullable.From(sdkkonnectgo.Pointer[int64](1706598432)),
+        ID: optionalnullable.From(sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260")),
+        Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
             "trusted",
             "api",
-        },
+        })),
     })
     if err != nil {
         log.Fatal(err)
@@ -343,6 +346,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -361,13 +365,13 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         CACertificate: components.CACertificate{
             Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
-            CertDigest: sdkkonnectgo.Pointer("9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f"),
-            CreatedAt: sdkkonnectgo.Pointer[int64](1706598432),
-            ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260"),
-            Tags: []string{
+            CertDigest: optionalnullable.From(sdkkonnectgo.Pointer("9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f")),
+            CreatedAt: optionalnullable.From(sdkkonnectgo.Pointer[int64](1706598432)),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260")),
+            Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                 "trusted",
                 "api",
-            },
+            })),
         },
     })
     if err != nil {
@@ -388,6 +392,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -406,13 +411,13 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         CACertificate: components.CACertificate{
             Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
-            CertDigest: sdkkonnectgo.Pointer("9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f"),
-            CreatedAt: sdkkonnectgo.Pointer[int64](1706598432),
-            ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260"),
-            Tags: []string{
+            CertDigest: optionalnullable.From(sdkkonnectgo.Pointer("9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f")),
+            CreatedAt: optionalnullable.From(sdkkonnectgo.Pointer[int64](1706598432)),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260")),
+            Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                 "trusted",
                 "api",
-            },
+            })),
         },
     })
     if err != nil {
@@ -433,6 +438,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -451,13 +457,13 @@ func main() {
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         CACertificate: components.CACertificate{
             Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
-            CertDigest: sdkkonnectgo.Pointer("9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f"),
-            CreatedAt: sdkkonnectgo.Pointer[int64](1706598432),
-            ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260"),
-            Tags: []string{
+            CertDigest: optionalnullable.From(sdkkonnectgo.Pointer("9b8aaf19a276885f6c8a6bc48a30700fdb3a351d8b05374d153bfb7b178e2a9f")),
+            CreatedAt: optionalnullable.From(sdkkonnectgo.Pointer[int64](1706598432)),
+            ID: optionalnullable.From(sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f260")),
+            Tags: optionalnullable.From(sdkkonnectgo.Pointer([]string{
                 "trusted",
                 "api",
-            },
+            })),
         },
     })
     if err != nil {

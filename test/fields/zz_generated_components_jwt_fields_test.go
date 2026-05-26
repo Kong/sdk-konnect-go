@@ -6,18 +6,19 @@ import (
 	"testing"
 
 	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 )
 
 func TestComponentsJwtFieldTypes(t *testing.T) {
 	t.Parallel()
 
 	var value components.Jwt
-	var _ *components.JWTAlgorithm = value.Algorithm
-	var _ *components.JWTConsumer = value.Consumer
-	var _ *int64 = value.CreatedAt
-	var _ *string = value.ID
-	var _ *string = value.Key
-	var _ *string = value.RsaPublicKey
-	var _ *string = value.Secret
-	var _ []string = value.Tags
+	var _ optionalnullable.OptionalNullable[components.JWTAlgorithm] = value.Algorithm
+	var _ optionalnullable.OptionalNullable[components.JWTConsumer] = value.Consumer
+	var _ optionalnullable.OptionalNullable[int64] = value.CreatedAt
+	var _ optionalnullable.OptionalNullable[string] = value.ID
+	var _ optionalnullable.OptionalNullable[string] = value.Key
+	var _ optionalnullable.OptionalNullable[string] = value.RsaPublicKey
+	var _ optionalnullable.OptionalNullable[string] = value.Secret
+	var _ optionalnullable.OptionalNullable[[]string] = value.Tags
 }

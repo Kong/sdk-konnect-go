@@ -6,15 +6,16 @@ import (
 	"testing"
 
 	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 )
 
 func TestComponentsACLFieldTypes(t *testing.T) {
 	t.Parallel()
 
 	var value components.ACL
-	var _ *components.ACLConsumer = value.Consumer
-	var _ *int64 = value.CreatedAt
+	var _ optionalnullable.OptionalNullable[components.ACLConsumer] = value.Consumer
+	var _ optionalnullable.OptionalNullable[int64] = value.CreatedAt
 	var _ string = value.Group
-	var _ *string = value.ID
-	var _ []string = value.Tags
+	var _ optionalnullable.OptionalNullable[string] = value.ID
+	var _ optionalnullable.OptionalNullable[[]string] = value.Tags
 }

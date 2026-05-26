@@ -2,22 +2,26 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
+)
+
 // UpdatePortalIntegrations - Partially update configuration data for Dev Portal integrations
 type UpdatePortalIntegrations struct {
 	// Partially update Google Tag Manager integration configuration
-	GoogleTagManager *UpdateGoogleTagManagerIntegration `json:"google_tag_manager,omitempty"`
+	GoogleTagManager optionalnullable.OptionalNullable[UpdateGoogleTagManagerIntegration] `json:"google_tag_manager,omitempty"`
 	// Partially update Google Analytics 4 integration configuration
-	GoogleAnalytics4 *UpdateGoogleAnalytics4Integration `json:"google_analytics_4,omitempty"`
+	GoogleAnalytics4 optionalnullable.OptionalNullable[UpdateGoogleAnalytics4Integration] `json:"google_analytics_4,omitempty"`
 }
 
-func (u *UpdatePortalIntegrations) GetGoogleTagManager() *UpdateGoogleTagManagerIntegration {
+func (u *UpdatePortalIntegrations) GetGoogleTagManager() optionalnullable.OptionalNullable[UpdateGoogleTagManagerIntegration] {
 	if u == nil {
 		return nil
 	}
 	return u.GoogleTagManager
 }
 
-func (u *UpdatePortalIntegrations) GetGoogleAnalytics4() *UpdateGoogleAnalytics4Integration {
+func (u *UpdatePortalIntegrations) GetGoogleAnalytics4() optionalnullable.OptionalNullable[UpdateGoogleAnalytics4Integration] {
 	if u == nil {
 		return nil
 	}

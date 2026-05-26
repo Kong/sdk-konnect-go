@@ -294,6 +294,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -312,7 +313,7 @@ func main() {
         VirtualClusterID: "5a14b7d8-84d2-42fe-ae35-6ce8a06f4033",
         PolicyID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
         EventGatewayPolicyPatch: &components.EventGatewayPolicyPatch{
-            Condition: sdkkonnectgo.Pointer("context.topic.name.endsWith('my_suffix')"),
+            Condition: optionalnullable.From(sdkkonnectgo.Pointer("context.topic.name.endsWith('my_suffix')")),
             Labels: map[string]string{
                 "env": "test",
             },

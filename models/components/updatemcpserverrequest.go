@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
+)
+
 type UpdateMCPServerRequest struct {
 	// The name of the MCP server.
 	Name string `json:"name"`
@@ -10,9 +14,9 @@ type UpdateMCPServerRequest struct {
 	// Labels for the MCP server.
 	Labels map[string]string `json:"labels,omitempty"`
 	// The control plane ID associated with the MCP server.
-	ControlPlaneID *string `json:"control_plane_id,omitempty"`
+	ControlPlaneID optionalnullable.OptionalNullable[string] `json:"control_plane_id,omitempty"`
 	// The MCP resource ID associated with the MCP server.
-	ResourceID *string `json:"resource_id,omitempty"`
+	ResourceID optionalnullable.OptionalNullable[string] `json:"resource_id,omitempty"`
 }
 
 func (u *UpdateMCPServerRequest) GetName() string {
@@ -36,14 +40,14 @@ func (u *UpdateMCPServerRequest) GetLabels() map[string]string {
 	return u.Labels
 }
 
-func (u *UpdateMCPServerRequest) GetControlPlaneID() *string {
+func (u *UpdateMCPServerRequest) GetControlPlaneID() optionalnullable.OptionalNullable[string] {
 	if u == nil {
 		return nil
 	}
 	return u.ControlPlaneID
 }
 
-func (u *UpdateMCPServerRequest) GetResourceID() *string {
+func (u *UpdateMCPServerRequest) GetResourceID() optionalnullable.OptionalNullable[string] {
 	if u == nil {
 		return nil
 	}

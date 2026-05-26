@@ -81,6 +81,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -94,26 +95,26 @@ func main() {
     )
 
     res, err := s.PortalIntegrations.UpsertPortalIntegrations(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.PortalIntegrations{
-        GoogleTagManager: &components.GoogleTagManagerIntegration{
+        GoogleTagManager: optionalnullable.From(&components.GoogleTagManagerIntegration{
             Enabled: false,
             Type: components.GoogleTagManagerIntegrationTypeTracking,
             ConfigData: components.ConfigData{
                 ID: "GTM-XXXXXX",
-                L: sdkkonnectgo.Pointer("myNewName"),
-                Preview: sdkkonnectgo.Pointer("preview"),
-                DataLayer: sdkkonnectgo.Pointer("myNewName"),
-                EnvName: sdkkonnectgo.Pointer("production"),
-                AuthReferrerPolicy: sdkkonnectgo.Pointer("no-referrer"),
+                L: optionalnullable.From(sdkkonnectgo.Pointer("myNewName")),
+                Preview: optionalnullable.From(sdkkonnectgo.Pointer("preview")),
+                DataLayer: optionalnullable.From(sdkkonnectgo.Pointer("myNewName")),
+                EnvName: optionalnullable.From(sdkkonnectgo.Pointer("production")),
+                AuthReferrerPolicy: optionalnullable.From(sdkkonnectgo.Pointer("no-referrer")),
             },
-        },
-        GoogleAnalytics4: &components.GoogleAnalytics4Integration{
+        }),
+        GoogleAnalytics4: optionalnullable.From(&components.GoogleAnalytics4Integration{
             Enabled: true,
             Type: components.GoogleAnalytics4IntegrationTypeAnalytics,
             ConfigData: components.GoogleAnalytics4IntegrationConfigData{
                 ID: "G-XXXXXXX",
-                L: sdkkonnectgo.Pointer("myNewName"),
+                L: optionalnullable.From(sdkkonnectgo.Pointer("myNewName")),
             },
-        },
+        }),
     })
     if err != nil {
         log.Fatal(err)
@@ -161,6 +162,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 	"log"
 )
 
@@ -174,22 +176,22 @@ func main() {
     )
 
     res, err := s.PortalIntegrations.UpdatePortalIntegrations(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", &components.UpdatePortalIntegrations{
-        GoogleTagManager: &components.UpdateGoogleTagManagerIntegration{
+        GoogleTagManager: optionalnullable.From(&components.UpdateGoogleTagManagerIntegration{
             ConfigData: &components.GoogleTagManagerIntegrationConfigProperties{
                 ID: sdkkonnectgo.Pointer("GTM-XXXXXX"),
-                L: sdkkonnectgo.Pointer("myNewName"),
-                Preview: sdkkonnectgo.Pointer("preview"),
-                DataLayer: sdkkonnectgo.Pointer("myNewName"),
-                EnvName: sdkkonnectgo.Pointer("production"),
-                AuthReferrerPolicy: sdkkonnectgo.Pointer("no-referrer"),
+                L: optionalnullable.From(sdkkonnectgo.Pointer("myNewName")),
+                Preview: optionalnullable.From(sdkkonnectgo.Pointer("preview")),
+                DataLayer: optionalnullable.From(sdkkonnectgo.Pointer("myNewName")),
+                EnvName: optionalnullable.From(sdkkonnectgo.Pointer("production")),
+                AuthReferrerPolicy: optionalnullable.From(sdkkonnectgo.Pointer("no-referrer")),
             },
-        },
-        GoogleAnalytics4: &components.UpdateGoogleAnalytics4Integration{
+        }),
+        GoogleAnalytics4: optionalnullable.From(&components.UpdateGoogleAnalytics4Integration{
             ConfigData: &components.GoogleAnalytics4IntegrationConfigProperties{
                 ID: sdkkonnectgo.Pointer("G-XXXXXXX"),
-                L: sdkkonnectgo.Pointer("myNewName"),
+                L: optionalnullable.From(sdkkonnectgo.Pointer("myNewName")),
             },
-        },
+        }),
     })
     if err != nil {
         log.Fatal(err)

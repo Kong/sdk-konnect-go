@@ -6,33 +6,34 @@ import (
 	"testing"
 
 	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/optionalnullable"
 )
 
 func TestComponentsUpstreamFieldTypes(t *testing.T) {
 	t.Parallel()
 
 	var value components.Upstream
-	var _ *components.UpstreamAlgorithm = value.Algorithm
-	var _ *components.UpstreamClientCertificate = value.ClientCertificate
-	var _ *int64 = value.CreatedAt
-	var _ *components.HashFallback = value.HashFallback
-	var _ *string = value.HashFallbackHeader
-	var _ *string = value.HashFallbackQueryArg
-	var _ *string = value.HashFallbackURICapture
-	var _ *components.HashOn = value.HashOn
-	var _ *string = value.HashOnCookie
-	var _ *string = value.HashOnCookiePath
-	var _ *string = value.HashOnHeader
-	var _ *string = value.HashOnQueryArg
-	var _ *string = value.HashOnURICapture
-	var _ *components.Healthchecks = value.Healthchecks
-	var _ *string = value.HostHeader
-	var _ *string = value.ID
+	var _ optionalnullable.OptionalNullable[components.UpstreamAlgorithm] = value.Algorithm
+	var _ optionalnullable.OptionalNullable[components.UpstreamClientCertificate] = value.ClientCertificate
+	var _ optionalnullable.OptionalNullable[int64] = value.CreatedAt
+	var _ optionalnullable.OptionalNullable[components.HashFallback] = value.HashFallback
+	var _ optionalnullable.OptionalNullable[string] = value.HashFallbackHeader
+	var _ optionalnullable.OptionalNullable[string] = value.HashFallbackQueryArg
+	var _ optionalnullable.OptionalNullable[string] = value.HashFallbackURICapture
+	var _ optionalnullable.OptionalNullable[components.HashOn] = value.HashOn
+	var _ optionalnullable.OptionalNullable[string] = value.HashOnCookie
+	var _ optionalnullable.OptionalNullable[string] = value.HashOnCookiePath
+	var _ optionalnullable.OptionalNullable[string] = value.HashOnHeader
+	var _ optionalnullable.OptionalNullable[string] = value.HashOnQueryArg
+	var _ optionalnullable.OptionalNullable[string] = value.HashOnURICapture
+	var _ optionalnullable.OptionalNullable[components.Healthchecks] = value.Healthchecks
+	var _ optionalnullable.OptionalNullable[string] = value.HostHeader
+	var _ optionalnullable.OptionalNullable[string] = value.ID
 	var _ string = value.Name
-	var _ *int64 = value.Slots
-	var _ *string = value.StickySessionsCookie
-	var _ *string = value.StickySessionsCookiePath
-	var _ []string = value.Tags
-	var _ *int64 = value.UpdatedAt
-	var _ *bool = value.UseSrvName
+	var _ optionalnullable.OptionalNullable[int64] = value.Slots
+	var _ optionalnullable.OptionalNullable[string] = value.StickySessionsCookie
+	var _ optionalnullable.OptionalNullable[string] = value.StickySessionsCookiePath
+	var _ optionalnullable.OptionalNullable[[]string] = value.Tags
+	var _ optionalnullable.OptionalNullable[int64] = value.UpdatedAt
+	var _ optionalnullable.OptionalNullable[bool] = value.UseSrvName
 }
