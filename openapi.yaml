@@ -21880,7 +21880,7 @@ components:
           description: Value assigned to the environment variable field for the data-plane group.
           type: string
           example: info
-          maxLength: 120
+          maxLength: 2048
           minLength: 1
       required:
         - name
