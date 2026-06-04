@@ -45613,6 +45613,10 @@ components:
         type: string
         enum:
           - error_rate
+          - kong_internal_latency_average
+          - kong_internal_latency_p50
+          - kong_internal_latency_p95
+          - kong_internal_latency_p99
           - kong_latency_average
           - kong_latency_p50
           - kong_latency_p95
@@ -46853,6 +46857,10 @@ components:
           - a2a_latency_average
           - a2a_response_size_sum
           - error_rate
+          - kong_internal_latency_average
+          - kong_internal_latency_p50
+          - kong_internal_latency_p95
+          - kong_internal_latency_p99
           - kong_latency_average
           - kong_latency_p50
           - kong_latency_p95
