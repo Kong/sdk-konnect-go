@@ -50946,6 +50946,7 @@ components:
         url:
           description: 'Helper field to set `protocol`, `host`, `port` and `path` using a URL. This field is write-only and is not returned in responses.'
           type: string
+          nullable: true
           writeOnly: true
         write_timeout:
           description: The timeout in milliseconds between two successive write operations for transmitting a request to the upstream server.
