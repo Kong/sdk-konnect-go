@@ -76,6 +76,7 @@ func (m *MultiKeyAuthConfig) GetHeaders() []KeyAuthHeader {
 // This strategy supports integrations that require custom headers for credential-based access,
 // allowing flexibility across providers with different authentication header requirements.
 type MultiKeyAuth struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_  string             `const:"multi_key_auth" json:"type"`
 	Config MultiKeyAuthConfig `json:"config"`
 }

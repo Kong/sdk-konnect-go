@@ -32,6 +32,8 @@ func newManagedSystemAccountsRoles(rootSDK *SDK, sdkConfig config.SDKConfigurati
 
 // GetSystemAccountsAssignedRolesInternal - List Roles (Internal)
 // Lists the roles belonging to a managed system account.  Returns 400 if any filter parameters are invalid.
+//
+// If set, this operation will use [Security.ClientToken] from the global security.
 func (s *ManagedSystemAccountsRoles) GetSystemAccountsAssignedRolesInternal(ctx context.Context, accountID string, filter *operations.GetSystemAccountsAssignedRolesInternalQueryParamFilter, opts ...operations.Option) (*operations.GetSystemAccountsAssignedRolesInternalResponse, error) {
 	request := operations.GetSystemAccountsAssignedRolesInternalRequest{
 		AccountID: accountID,
@@ -92,7 +94,7 @@ func (s *ManagedSystemAccountsRoles) GetSystemAccountsAssignedRolesInternal(ctx 
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security, "ClientToken"); err != nil {
 		return nil, err
 	}
 
@@ -176,7 +178,7 @@ func (s *ManagedSystemAccountsRoles) GetSystemAccountsAssignedRolesInternal(ctx 
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -310,6 +312,8 @@ func (s *ManagedSystemAccountsRoles) GetSystemAccountsAssignedRolesInternal(ctx 
 
 // CreateSystemAccountsAssignedRolesInternal - Assign a role to a managed System Account
 // Assigns a role to a managed system account. Returns 409 if role is already assigned.
+//
+// If set, this operation will use [Security.ClientToken] from the global security.
 func (s *ManagedSystemAccountsRoles) CreateSystemAccountsAssignedRolesInternal(ctx context.Context, accountID string, assignParameterizedRole *components.AssignParameterizedRole, opts ...operations.Option) (*operations.CreateSystemAccountsAssignedRolesInternalResponse, error) {
 	request := operations.CreateSystemAccountsAssignedRolesInternalRequest{
 		AccountID:               accountID,
@@ -373,7 +377,7 @@ func (s *ManagedSystemAccountsRoles) CreateSystemAccountsAssignedRolesInternal(c
 		req.Header.Set("Content-Type", reqContentType)
 	}
 
-	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security, "ClientToken"); err != nil {
 		return nil, err
 	}
 
@@ -457,7 +461,7 @@ func (s *ManagedSystemAccountsRoles) CreateSystemAccountsAssignedRolesInternal(c
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"401", "403", "404", "409", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err

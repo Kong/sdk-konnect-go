@@ -21,8 +21,7 @@ type CreateAPIPackageRequest struct {
 	//
 	Labels map[string]string `json:"labels,omitempty"`
 	// A set of attributes that describe the API
-	Attributes any     `json:"attributes,omitempty"`
-	Images     *Images `json:"images,omitempty"`
+	Attributes any `json:"attributes,omitempty"`
 }
 
 func (c *CreateAPIPackageRequest) GetName() string {
@@ -72,11 +71,4 @@ func (c *CreateAPIPackageRequest) GetAttributes() any {
 		return nil
 	}
 	return c.Attributes
-}
-
-func (c *CreateAPIPackageRequest) GetImages() *Images {
-	if c == nil {
-		return nil
-	}
-	return c.Images
 }

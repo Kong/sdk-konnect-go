@@ -62,3 +62,6 @@ func (c *CreateDcrConfigAuth0InRequest) GetUseDeveloperManagedScopes() *bool {
 	}
 	return c.UseDeveloperManagedScopes
 }
+
+// #region class-body-createdcrconfigauth0inrequest
+// #endregion class-body-createdcrconfigauth0inrequest

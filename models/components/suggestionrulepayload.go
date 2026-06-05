@@ -17,9 +17,9 @@ const (
 )
 
 type SuggestionRulePayloadAction struct {
-	ArchiveActionPayload *ArchiveActionPayload `queryParam:"inline,name=action" union:"member"`
-	MapActionPayload     *MapActionPayload     `queryParam:"inline,name=action" union:"member"`
-	CreateOrMapAction    *CreateOrMapAction    `queryParam:"inline,name=action" union:"member"`
+	ArchiveActionPayload *ArchiveActionPayload `queryParam:"inline" union:"member"`
+	MapActionPayload     *MapActionPayload     `queryParam:"inline" union:"member"`
+	CreateOrMapAction    *CreateOrMapAction    `queryParam:"inline" union:"member"`
 
 	Type SuggestionRulePayloadActionType
 }
@@ -101,8 +101,8 @@ const (
 )
 
 type Rank struct {
-	RankAfterPayload  *RankAfterPayload  `queryParam:"inline,name=rank" union:"member"`
-	RankBeforePayload *RankBeforePayload `queryParam:"inline,name=rank" union:"member"`
+	RankAfterPayload  *RankAfterPayload  `queryParam:"inline" union:"member"`
+	RankBeforePayload *RankBeforePayload `queryParam:"inline" union:"member"`
 
 	Type RankType
 }

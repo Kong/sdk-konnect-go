@@ -31,8 +31,8 @@ const (
 
 // CustomDomainStateFieldEqualsFilter - Filter custom domain state by exact match.
 type CustomDomainStateFieldEqualsFilter struct {
-	CustomDomainState                      *CustomDomainState                      `queryParam:"inline,name=CustomDomainStateFieldEqualsFilter" union:"member"`
-	CustomDomainStateFieldEqualsComparison *CustomDomainStateFieldEqualsComparison `queryParam:"inline,name=CustomDomainStateFieldEqualsFilter" union:"member"`
+	CustomDomainState                      *CustomDomainState                      `queryParam:"inline" union:"member"`
+	CustomDomainStateFieldEqualsComparison *CustomDomainStateFieldEqualsComparison `queryParam:"inline" union:"member"`
 
 	Type CustomDomainStateFieldEqualsFilterType
 }

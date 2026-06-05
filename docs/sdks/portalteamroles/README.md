@@ -107,10 +107,10 @@ func main() {
         PageSize: sdkkonnectgo.Pointer[int64](10),
         PageNumber: sdkkonnectgo.Pointer[int64](1),
         PortalAssignRoleRequest: &components.PortalAssignRoleRequest{
-            RoleName: sdkkonnectgo.Pointer("API Viewer"),
-            EntityID: sdkkonnectgo.Pointer("18ee2573-dec0-4b83-be99-fa7700bcdc61"),
-            EntityTypeName: sdkkonnectgo.Pointer("Services"),
-            EntityRegion: components.PortalAssignRoleRequestEntityRegionUs.ToPointer(),
+            RoleName: "API Viewer",
+            EntityID: "18ee2573-dec0-4b83-be99-fa7700bcdc61",
+            EntityTypeName: "Services",
+            EntityRegion: components.PortalAssignRoleRequestEntityRegionUs,
         },
     })
     if err != nil {

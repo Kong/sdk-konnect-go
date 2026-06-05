@@ -120,8 +120,8 @@ const (
 
 // APIImplementationResponse - An entity that implements an API
 type APIImplementationResponse struct {
-	APIImplementationResponseServiceReference      *APIImplementationResponseServiceReference      `queryParam:"inline,name=ApiImplementationResponse" union:"member"`
-	APIImplementationResponseControlPlaneReference *APIImplementationResponseControlPlaneReference `queryParam:"inline,name=ApiImplementationResponse" union:"member"`
+	APIImplementationResponseServiceReference      *APIImplementationResponseServiceReference      `queryParam:"inline" union:"member"`
+	APIImplementationResponseControlPlaneReference *APIImplementationResponseControlPlaneReference `queryParam:"inline" union:"member"`
 
 	Type APIImplementationResponseType
 }

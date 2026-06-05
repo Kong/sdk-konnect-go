@@ -8,7 +8,7 @@ import (
 )
 
 type CreateCatalogServiceAPIMappingRequest struct {
-	// ID of the service.
+	// The `id` of the service.
 	ServiceID string `pathParam:"style=simple,explode=false,name=serviceId"`
 	// Request body schema for creating a new API mapping for catalog service.
 	CreateCatalogServiceAPIMappingBody components.CreateCatalogServiceAPIMappingBody `request:"mediaType=application/json"`

@@ -25,6 +25,19 @@ A single error code from the following enum.
   invalid_scope
      The requested scope is invalid, unknown, malformed, or exceeds the scope granted by the resource owner.
 
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
+)
+
+value := sdkerrors.DeviceAuthorizationGrantTokenBadRequestErrorInvalidRequest
+
+// Open enum: custom values can be created with a direct type cast
+custom := sdkerrors.DeviceAuthorizationGrantTokenBadRequestError("custom_value")
+```
+
 
 ## Values
 

@@ -210,6 +210,13 @@ func main() {
 
 ### [ACLs](docs/sdks/acls/README.md)
 
+* [ListACLInWorkspace](docs/sdks/acls/README.md#listaclinworkspace) - List all ACLs in a workspace
+* [GetACLInWorkspace](docs/sdks/acls/README.md#getaclinworkspace) - Get an ACL in a workspace
+* [ListACLWithConsumerInWorkspace](docs/sdks/acls/README.md#listaclwithconsumerinworkspace) - List all ACLs associated with a Consumer in a workspace
+* [CreateACLWithConsumerInWorkspace](docs/sdks/acls/README.md#createaclwithconsumerinworkspace) - Create a new ACL associated with a Consumer in a workspace
+* [DeleteACLWithConsumerInWorkspace](docs/sdks/acls/README.md#deleteaclwithconsumerinworkspace) - Delete a an ACL associated with a Consumer in a workspace
+* [GetACLWithConsumerInWorkspace](docs/sdks/acls/README.md#getaclwithconsumerinworkspace) - Get an ACL associated with a Consumer in a workspace
+* [UpsertACLWithConsumerInWorkspace](docs/sdks/acls/README.md#upsertaclwithconsumerinworkspace) - Upsert an ACL associated with a Consumer in a workspace
 * [ListACL](docs/sdks/acls/README.md#listacl) - List all ACLs
 * [GetACL](docs/sdks/acls/README.md#getacl) - Get an ACL
 * [ListACLWithConsumer](docs/sdks/acls/README.md#listaclwithconsumer) - List all ACLs associated with a Consumer
@@ -217,6 +224,100 @@ func main() {
 * [DeleteACLWithConsumer](docs/sdks/acls/README.md#deleteaclwithconsumer) - Delete a an ACL associated with a Consumer
 * [GetACLWithConsumer](docs/sdks/acls/README.md#getaclwithconsumer) - Get an ACL associated with a Consumer
 * [UpsertACLWithConsumer](docs/sdks/acls/README.md#upsertaclwithconsumer) - Upsert an ACL associated with a Consumer
+
+### [AIGatewayAgents](docs/sdks/aigatewayagents/README.md)
+
+* [ListAiGatewayAgents](docs/sdks/aigatewayagents/README.md#listaigatewayagents) - List AI Gateway Agents
+* [CreateAiGatewayAgent](docs/sdks/aigatewayagents/README.md#createaigatewayagent) - Create an AI Gateway Agent
+* [GetAiGatewayAgent](docs/sdks/aigatewayagents/README.md#getaigatewayagent) - Get an AI Gateway Agent
+* [UpdateAiGatewayAgent](docs/sdks/aigatewayagents/README.md#updateaigatewayagent) - Update an AI Gateway Agent
+* [DeleteAiGatewayAgent](docs/sdks/aigatewayagents/README.md#deleteaigatewayagent) - Delete an AI Gateway Agent
+
+### [AIGatewayConsumerGroups](docs/sdks/aigatewayconsumergroups/README.md)
+
+* [ListAiGatewayConsumerGroups](docs/sdks/aigatewayconsumergroups/README.md#listaigatewayconsumergroups) - List AI Gateway Consumer Groups
+* [CreateAiGatewayConsumerGroup](docs/sdks/aigatewayconsumergroups/README.md#createaigatewayconsumergroup) - Create an AI Gateway Consumer Group
+* [GetAiGatewayConsumerGroup](docs/sdks/aigatewayconsumergroups/README.md#getaigatewayconsumergroup) - Get an AI Gateway Consumer Group
+* [UpdateAiGatewayConsumerGroup](docs/sdks/aigatewayconsumergroups/README.md#updateaigatewayconsumergroup) - Update an AI Gateway Consumer Group
+* [DeleteAiGatewayConsumerGroup](docs/sdks/aigatewayconsumergroups/README.md#deleteaigatewayconsumergroup) - Delete an AI Gateway Consumer Group
+* [ListAiGatewayConsumersInConsumerGroup](docs/sdks/aigatewayconsumergroups/README.md#listaigatewayconsumersinconsumergroup) - List AI Gateway Consumers in a Consumer Group
+* [AddAiGatewayConsumerToConsumerGroup](docs/sdks/aigatewayconsumergroups/README.md#addaigatewayconsumertoconsumergroup) - Add a Consumer to a Consumer Group
+* [RemoveAiGatewayConsumerFromConsumerGroup](docs/sdks/aigatewayconsumergroups/README.md#removeaigatewayconsumerfromconsumergroup) - Remove a Consumer from a Consumer Group
+
+### [AIGatewayConsumers](docs/sdks/aigatewayconsumers/README.md)
+
+* [ListAiGatewayConsumers](docs/sdks/aigatewayconsumers/README.md#listaigatewayconsumers) - List AI Gateway Consumers
+* [CreateAiGatewayConsumer](docs/sdks/aigatewayconsumers/README.md#createaigatewayconsumer) - Create an AI Gateway Consumer
+* [GetAiGatewayConsumer](docs/sdks/aigatewayconsumers/README.md#getaigatewayconsumer) - Get an AI Gateway Consumer
+* [UpdateAiGatewayConsumer](docs/sdks/aigatewayconsumers/README.md#updateaigatewayconsumer) - Update an AI Gateway Consumer
+* [DeleteAiGatewayConsumer](docs/sdks/aigatewayconsumers/README.md#deleteaigatewayconsumer) - Delete an AI Gateway Consumer
+* [ListAiGatewayConsumerCredentials](docs/sdks/aigatewayconsumers/README.md#listaigatewayconsumercredentials) - List AI Gateway Consumer Credentials
+* [CreateAiGatewayConsumerCredential](docs/sdks/aigatewayconsumers/README.md#createaigatewayconsumercredential) - Create an AI Gateway Consumer Credential
+* [GetAiGatewayConsumerCredential](docs/sdks/aigatewayconsumers/README.md#getaigatewayconsumercredential) - Get an AI Gateway Consumer Credential
+* [DeleteAiGatewayConsumerCredential](docs/sdks/aigatewayconsumers/README.md#deleteaigatewayconsumercredential) - Delete an AI Gateway Consumer Credential
+
+### [AIGatewayDataPlaneCertificates](docs/sdks/aigatewaydataplanecertificates/README.md)
+
+* [ListAiGatewayDataPlaneCertificates](docs/sdks/aigatewaydataplanecertificates/README.md#listaigatewaydataplanecertificates) - List AI Gateway DataPlane Certificates
+* [CreateAiGatewayDataPlaneCertificate](docs/sdks/aigatewaydataplanecertificates/README.md#createaigatewaydataplanecertificate) - Create New AI Gateway DataPlane Certificate
+* [GetAiGatewayDataPlaneCertificate](docs/sdks/aigatewaydataplanecertificates/README.md#getaigatewaydataplanecertificate) - Get a DataPlane Certificate
+* [DeleteAiGatewayDataPlaneCertificate](docs/sdks/aigatewaydataplanecertificates/README.md#deleteaigatewaydataplanecertificate) - Delete AI Gateway DataPlane Certificate
+
+### [AIGatewayMCPServers](docs/sdks/aigatewaymcpservers/README.md)
+
+* [ListAiGatewayMcpServers](docs/sdks/aigatewaymcpservers/README.md#listaigatewaymcpservers) - List MCP Servers
+* [CreateAiGatewayMcpServer](docs/sdks/aigatewaymcpservers/README.md#createaigatewaymcpserver) - Create an MCP Server
+* [GetAiGatewayMcpServer](docs/sdks/aigatewaymcpservers/README.md#getaigatewaymcpserver) - Get an MCP Server
+* [UpdateAiGatewayMcpServer](docs/sdks/aigatewaymcpservers/README.md#updateaigatewaymcpserver) - Update an MCP Server
+* [DeleteAiGatewayMcpServer](docs/sdks/aigatewaymcpservers/README.md#deleteaigatewaymcpserver) - Delete an MCP Server
+
+### [AIGatewayModels](docs/sdks/aigatewaymodels/README.md)
+
+* [ListAiGatewayModels](docs/sdks/aigatewaymodels/README.md#listaigatewaymodels) - List AI Gateway Models
+* [CreateAiGatewayModel](docs/sdks/aigatewaymodels/README.md#createaigatewaymodel) - Create an AI Gateway Model
+* [GetAiGatewayModel](docs/sdks/aigatewaymodels/README.md#getaigatewaymodel) - Get an AI Gateway Model
+* [UpdateAiGatewayModel](docs/sdks/aigatewaymodels/README.md#updateaigatewaymodel) - Update an AI Gateway Model
+* [DeleteAiGatewayModel](docs/sdks/aigatewaymodels/README.md#deleteaigatewaymodel) - Delete an AI Gateway Model
+
+### [AIGatewayNodes](docs/sdks/aigatewaynodes/README.md)
+
+* [ListAiGatewayNodes](docs/sdks/aigatewaynodes/README.md#listaigatewaynodes) - List Nodes
+* [GetAiGatewayNode](docs/sdks/aigatewaynodes/README.md#getaigatewaynode) - Get a Node
+
+### [AIGatewayPolicies](docs/sdks/aigatewaypolicies/README.md)
+
+* [ListAiGatewayAvailablePolicies](docs/sdks/aigatewaypolicies/README.md#listaigatewayavailablepolicies) - List AI Gateway Available Policies
+* [GetAiGatewayPolicySchema](docs/sdks/aigatewaypolicies/README.md#getaigatewaypolicyschema) - Get an AI Gateway Policy Schema
+* [ListAiGatewayPolicies](docs/sdks/aigatewaypolicies/README.md#listaigatewaypolicies) - List AI Gateway Policies
+* [CreateAiGatewayPolicy](docs/sdks/aigatewaypolicies/README.md#createaigatewaypolicy) - Create an AI Gateway Policy
+* [GetAiGatewayPolicy](docs/sdks/aigatewaypolicies/README.md#getaigatewaypolicy) - Get an AI Gateway Policy
+* [UpdateAiGatewayPolicy](docs/sdks/aigatewaypolicies/README.md#updateaigatewaypolicy) - Update an AI Gateway Policy
+* [DeleteAiGatewayPolicy](docs/sdks/aigatewaypolicies/README.md#deleteaigatewaypolicy) - Delete an AI Gateway Policy
+* [ListAiGatewayPolicyUsage](docs/sdks/aigatewaypolicies/README.md#listaigatewaypolicyusage) - List AI Gateway Policy Usage
+
+### [AIGatewayProviders](docs/sdks/aigatewayproviders/README.md)
+
+* [ListAiGatewayProviders](docs/sdks/aigatewayproviders/README.md#listaigatewayproviders) - List AI Gateway Providers
+* [CreateAiGatewayProvider](docs/sdks/aigatewayproviders/README.md#createaigatewayprovider) - Create an AI Gateway Provider
+* [GetAiGatewayProvider](docs/sdks/aigatewayproviders/README.md#getaigatewayprovider) - Get an AI Gateway Provider
+* [UpdateAiGatewayProvider](docs/sdks/aigatewayproviders/README.md#updateaigatewayprovider) - Update an AI Gateway Provider
+* [DeleteAiGatewayProvider](docs/sdks/aigatewayproviders/README.md#deleteaigatewayprovider) - Delete an AI Gateway Provider
+
+### [AIGatewayVaults](docs/sdks/aigatewayvaults/README.md)
+
+* [ListAiGatewayVaults](docs/sdks/aigatewayvaults/README.md#listaigatewayvaults) - List AI Gateway Vaults
+* [CreateAiGatewayVault](docs/sdks/aigatewayvaults/README.md#createaigatewayvault) - Create an AI Gateway Vault
+* [GetAiGatewayVault](docs/sdks/aigatewayvaults/README.md#getaigatewayvault) - Get an AI Gateway Vault
+* [UpdateAiGatewayVault](docs/sdks/aigatewayvaults/README.md#updateaigatewayvault) - Update an AI Gateway Vault
+* [DeleteAiGatewayVault](docs/sdks/aigatewayvaults/README.md#deleteaigatewayvault) - Delete an AI Gateway Vault
+
+### [AIGateways](docs/sdks/aigateways/README.md)
+
+* [ListAiGateways](docs/sdks/aigateways/README.md#listaigateways) - List AI Gateways
+* [CreateAiGateway](docs/sdks/aigateways/README.md#createaigateway) - Create an AI Gateway
+* [GetAiGateway](docs/sdks/aigateways/README.md#getaigateway) - Get an AI Gateway
+* [UpdateAiGateway](docs/sdks/aigateways/README.md#updateaigateway) - Update an AI Gateway
+* [DeleteAiGateway](docs/sdks/aigateways/README.md#deleteaigateway) - Delete an AI Gateway
 
 ### [AIManager](docs/sdks/aimanager/README.md)
 
@@ -230,6 +331,7 @@ func main() {
 * [UpdateAPI](docs/sdks/api/README.md#updateapi) - Update API
 * [DeleteAPI](docs/sdks/api/README.md#deleteapi) - Delete API
 * [ListApisComputed](docs/sdks/api/README.md#listapiscomputed) - List APIs computed
+* [ListAPIRegistrations](docs/sdks/api/README.md#listapiregistrations) - List API Registrations
 
 ### [APIAttributes](docs/sdks/apiattributes/README.md)
 
@@ -243,6 +345,13 @@ func main() {
 * [UpdateAPIDocument](docs/sdks/apidocumentation/README.md#updateapidocument) - Update API Document
 * [DeleteAPIDocument](docs/sdks/apidocumentation/README.md#deleteapidocument) - Delete API Documentation
 * [MoveAPIDocument](docs/sdks/apidocumentation/README.md#moveapidocument) - Move API Documentation
+
+### [APIImage](docs/sdks/apiimage/README.md)
+
+* [UpsertAPIImage](docs/sdks/apiimage/README.md#upsertapiimage) - Create or Replace an API Image
+* [FetchAPIImage](docs/sdks/apiimage/README.md#fetchapiimage) - Get API Image
+* [DeleteAPIImage](docs/sdks/apiimage/README.md#deleteapiimage) - Delete an API Image
+* [FetchAPIRawImage](docs/sdks/apiimage/README.md#fetchapirawimage) - Get an API Raw Image
 
 ### [APIImplementation](docs/sdks/apiimplementation/README.md)
 
@@ -264,6 +373,13 @@ func main() {
 * [UpdateAPIPackageDocument](docs/sdks/apipackagedocumentation/README.md#updateapipackagedocument) - Update API Package Document
 * [DeleteAPIPackageDocument](docs/sdks/apipackagedocumentation/README.md#deleteapipackagedocument) - Delete API Package Documentation
 * [MoveAPIPackageDocument](docs/sdks/apipackagedocumentation/README.md#moveapipackagedocument) - Move API Package Documentation
+
+### [APIPackageImage](docs/sdks/apipackageimage/README.md)
+
+* [UpsertAPIPackageImage](docs/sdks/apipackageimage/README.md#upsertapipackageimage) - Create or Replace an API Package Image
+* [FetchAPIPackageImage](docs/sdks/apipackageimage/README.md#fetchapipackageimage) - Get API Package Image
+* [DeleteAPIPackageImage](docs/sdks/apipackageimage/README.md#deleteapipackageimage) - Delete an API Package Image
+* [FetchAPIPackageRawImage](docs/sdks/apipackageimage/README.md#fetchapipackagerawimage) - Get an API Package Raw Image
 
 ### [APIPackageOperations](docs/sdks/apipackageoperations/README.md)
 
@@ -307,6 +423,10 @@ func main() {
 * [~~UpdateAPISpec~~](docs/sdks/apispecification/README.md#updateapispec) - Update API Specification :warning: **Deprecated**
 * [~~DeleteAPISpec~~](docs/sdks/apispecification/README.md#deleteapispec) - Delete API Specification :warning: **Deprecated**
 
+### [APISpecsPreview](docs/sdks/apispecspreview/README.md)
+
+* [PreviewAPISpec](docs/sdks/apispecspreview/README.md#previewapispec) - Preview API Spec
+
 ### [APIVersion](docs/sdks/apiversion/README.md)
 
 * [CreateAPIVersion](docs/sdks/apiversion/README.md#createapiversion) - Create API Version
@@ -317,6 +437,13 @@ func main() {
 
 ### [APIKeys](docs/sdks/apikeys/README.md)
 
+* [ListKeyAuthWithConsumerInWorkspace](docs/sdks/apikeys/README.md#listkeyauthwithconsumerinworkspace) - List all API-keys associated with a Consumer in a workspace
+* [CreateKeyAuthWithConsumerInWorkspace](docs/sdks/apikeys/README.md#createkeyauthwithconsumerinworkspace) - Create a new API-key associated with a Consumer in a workspace
+* [DeleteKeyAuthWithConsumerInWorkspace](docs/sdks/apikeys/README.md#deletekeyauthwithconsumerinworkspace) - Delete a an API-key associated with a Consumer in a workspace
+* [GetKeyAuthWithConsumerInWorkspace](docs/sdks/apikeys/README.md#getkeyauthwithconsumerinworkspace) - Get an API-key associated with a Consumer in a workspace
+* [UpsertKeyAuthWithConsumerInWorkspace](docs/sdks/apikeys/README.md#upsertkeyauthwithconsumerinworkspace) - Upsert an API-key associated with a Consumer in a workspace
+* [ListKeyAuthInWorkspace](docs/sdks/apikeys/README.md#listkeyauthinworkspace) - List all API-keys in a workspace
+* [GetKeyAuthInWorkspace](docs/sdks/apikeys/README.md#getkeyauthinworkspace) - Get an API-key in a workspace
 * [ListKeyAuthWithConsumer](docs/sdks/apikeys/README.md#listkeyauthwithconsumer) - List all API-keys associated with a Consumer
 * [CreateKeyAuthWithConsumer](docs/sdks/apikeys/README.md#createkeyauthwithconsumer) - Create a new API-key associated with a Consumer
 * [DeleteKeyAuthWithConsumer](docs/sdks/apikeys/README.md#deletekeyauthwithconsumer) - Delete a an API-key associated with a Consumer
@@ -337,20 +464,26 @@ func main() {
 ### [ApplicationRegistrations](docs/sdks/applicationregistrations/README.md)
 
 * [ListRegistrations](docs/sdks/applicationregistrations/README.md#listregistrations) - List Registrations by Portal
+* [CreateApplicationRegistration](docs/sdks/applicationregistrations/README.md#createapplicationregistration) - Create Registration
 * [ListRegistrationsByApplication](docs/sdks/applicationregistrations/README.md#listregistrationsbyapplication) - List Registrations by Application
 * [GetApplicationRegistration](docs/sdks/applicationregistrations/README.md#getapplicationregistration) - Get a Registration
 * [UpdateApplicationRegistration](docs/sdks/applicationregistrations/README.md#updateapplicationregistration) - Update Registration
 * [DeleteApplicationRegistration](docs/sdks/applicationregistrations/README.md#deleteapplicationregistration) - Delete Registration
+* [UpdateApplicationRegistrationConsumer](docs/sdks/applicationregistrations/README.md#updateapplicationregistrationconsumer) - Update application consumer mapping
+* [DeleteApplicationRegistrationConsumer](docs/sdks/applicationregistrations/README.md#deleteapplicationregistrationconsumer) - Delete application consumer mapping
 
 ### [Applications](docs/sdks/applications/README.md)
 
+* [CreateApplication](docs/sdks/applications/README.md#createapplication) - Create Application
 * [ListApplications](docs/sdks/applications/README.md#listapplications) - List Applications
 * [GetApplication](docs/sdks/applications/README.md#getapplication) - Get an Application by Portal
+* [UpdateApplication](docs/sdks/applications/README.md#updateapplication) - Update Application
 * [DeleteApplication](docs/sdks/applications/README.md#deleteapplication) - Delete Application by Portal
 * [ListDevelopersByApplication](docs/sdks/applications/README.md#listdevelopersbyapplication) - List Developers by Application
 * [AddDeveloperToApplication](docs/sdks/applications/README.md#adddevelopertoapplication) - Add Developer to Application
 * [RemoveDeveloperFromApplication](docs/sdks/applications/README.md#removedeveloperfromapplication) - Remove Developer from Application
 * [GetApplicationUnscoped](docs/sdks/applications/README.md#getapplicationunscoped) - Get an Application
+* [ListCredentialsByApplication](docs/sdks/applications/README.md#listcredentialsbyapplication) - List Credentials by Application
 
 ### [Assets](docs/sdks/assets/README.md)
 
@@ -370,6 +503,10 @@ func main() {
 * [GetIdentityProvider](docs/sdks/authsettings/README.md#getidentityprovider) - Get Identity Provider
 * [UpdateIdentityProvider](docs/sdks/authsettings/README.md#updateidentityprovider) - Update Identity Provider
 * [DeleteIdentityProvider](docs/sdks/authsettings/README.md#deleteidentityprovider) - Delete Identity Provider
+* [ListIdpTeamGroupMappings](docs/sdks/authsettings/README.md#listidpteamgroupmappings) - List Team Group Mappings
+* [CreateIdpTeamGroupMapping](docs/sdks/authsettings/README.md#createidpteamgroupmapping) - Create Team Group Mapping
+* [GetIdpTeamGroupMapping](docs/sdks/authsettings/README.md#getidpteamgroupmapping) - Get Team Group Mapping
+* [DeleteIdpTeamGroupMapping](docs/sdks/authsettings/README.md#deleteidpteamgroupmapping) - Delete Team Group Mapping
 * [GetIdpConfiguration](docs/sdks/authsettings/README.md#getidpconfiguration) - Get the IdP Configuration
 * [UpdateIdpConfiguration](docs/sdks/authsettings/README.md#updateidpconfiguration) - Update IdP Configuration
 * [UpdateIdpTeamMappings](docs/sdks/authsettings/README.md#updateidpteammappings) - Update Team Mappings
@@ -393,6 +530,13 @@ func main() {
 
 ### [BasicAuthCredentials](docs/sdks/basicauthcredentials/README.md)
 
+* [ListBasicAuthInWorkspace](docs/sdks/basicauthcredentials/README.md#listbasicauthinworkspace) - List all Basic-auth credentials in a workspace
+* [GetBasicAuthInWorkspace](docs/sdks/basicauthcredentials/README.md#getbasicauthinworkspace) - Get a Basic-auth credential in a workspace
+* [ListBasicAuthWithConsumerInWorkspace](docs/sdks/basicauthcredentials/README.md#listbasicauthwithconsumerinworkspace) - List all Basic-auth credentials associated with a Consumer in a workspace
+* [CreateBasicAuthWithConsumerInWorkspace](docs/sdks/basicauthcredentials/README.md#createbasicauthwithconsumerinworkspace) - Create a new Basic-auth credential associated with a Consumer in a workspace
+* [DeleteBasicAuthWithConsumerInWorkspace](docs/sdks/basicauthcredentials/README.md#deletebasicauthwithconsumerinworkspace) - Delete a a Basic-auth credential associated with a Consumer in a workspace
+* [GetBasicAuthWithConsumerInWorkspace](docs/sdks/basicauthcredentials/README.md#getbasicauthwithconsumerinworkspace) - Get a Basic-auth credential associated with a Consumer in a workspace
+* [UpsertBasicAuthWithConsumerInWorkspace](docs/sdks/basicauthcredentials/README.md#upsertbasicauthwithconsumerinworkspace) - Upsert a Basic-auth credential associated with a Consumer in a workspace
 * [ListBasicAuth](docs/sdks/basicauthcredentials/README.md#listbasicauth) - List all Basic-auth credentials
 * [GetBasicAuth](docs/sdks/basicauthcredentials/README.md#getbasicauth) - Get a Basic-auth credential
 * [ListBasicAuthWithConsumer](docs/sdks/basicauthcredentials/README.md#listbasicauthwithconsumer) - List all Basic-auth credentials associated with a Consumer
@@ -403,6 +547,11 @@ func main() {
 
 ### [CACertificates](docs/sdks/cacertificates/README.md)
 
+* [ListCaCertificateInWorkspace](docs/sdks/cacertificates/README.md#listcacertificateinworkspace) - List all CA Certificates in a workspace
+* [CreateCaCertificateInWorkspace](docs/sdks/cacertificates/README.md#createcacertificateinworkspace) - Create a new CA Certificate in a workspace
+* [DeleteCaCertificateInWorkspace](docs/sdks/cacertificates/README.md#deletecacertificateinworkspace) - Delete a CA Certificate in a workspace
+* [GetCaCertificateInWorkspace](docs/sdks/cacertificates/README.md#getcacertificateinworkspace) - Get a CA Certificate in a workspace
+* [UpsertCaCertificateInWorkspace](docs/sdks/cacertificates/README.md#upsertcacertificateinworkspace) - Upsert a CA Certificate in a workspace
 * [ListCaCertificate](docs/sdks/cacertificates/README.md#listcacertificate) - List all CA Certificates
 * [CreateCaCertificate](docs/sdks/cacertificates/README.md#createcacertificate) - Create a new CA Certificate
 * [DeleteCaCertificate](docs/sdks/cacertificates/README.md#deletecacertificate) - Delete a CA Certificate
@@ -482,11 +631,24 @@ func main() {
 
 ### [Certificates](docs/sdks/certificates/README.md)
 
+* [ListCertificateInWorkspace](docs/sdks/certificates/README.md#listcertificateinworkspace) - List all Certificates in a workspace
+* [CreateCertificateInWorkspace](docs/sdks/certificates/README.md#createcertificateinworkspace) - Create a new Certificate in a workspace
+* [DeleteCertificateInWorkspace](docs/sdks/certificates/README.md#deletecertificateinworkspace) - Delete a Certificate in a workspace
+* [GetCertificateInWorkspace](docs/sdks/certificates/README.md#getcertificateinworkspace) - Get a Certificate in a workspace
+* [UpsertCertificateInWorkspace](docs/sdks/certificates/README.md#upsertcertificateinworkspace) - Upsert a Certificate in a workspace
 * [ListCertificate](docs/sdks/certificates/README.md#listcertificate) - List all Certificates
 * [CreateCertificate](docs/sdks/certificates/README.md#createcertificate) - Create a new Certificate
 * [DeleteCertificate](docs/sdks/certificates/README.md#deletecertificate) - Delete a Certificate
 * [GetCertificate](docs/sdks/certificates/README.md#getcertificate) - Get a Certificate
 * [UpsertCertificate](docs/sdks/certificates/README.md#upsertcertificate) - Upsert a Certificate
+
+### [ClonedPlugins](docs/sdks/clonedplugins/README.md)
+
+* [ListClonedPlugin](docs/sdks/clonedplugins/README.md#listclonedplugin) - List all Cloned Plugins
+* [CreateClonedPlugin](docs/sdks/clonedplugins/README.md#createclonedplugin) - Create a new Cloned Plugin
+* [GetClonedPlugin](docs/sdks/clonedplugins/README.md#getclonedplugin) - Get a Cloned Plugin
+* [UpsertClonedPlugin](docs/sdks/clonedplugins/README.md#upsertclonedplugin) - Upsert a Cloned Plugin
+* [DeleteClonedPlugin](docs/sdks/clonedplugins/README.md#deleteclonedplugin) - Delete a Cloned Plugin
 
 ### [CloudGateways](docs/sdks/cloudgateways/README.md)
 
@@ -533,6 +695,7 @@ func main() {
 * [ListAddOns](docs/sdks/cloudgateways/README.md#listaddons) - List Add-Ons
 * [GetAddOn](docs/sdks/cloudgateways/README.md#getaddon) - Get Add-On
 * [DeleteAddOn](docs/sdks/cloudgateways/README.md#deleteaddon) - Delete Add-On
+* [UpdateAddOn](docs/sdks/cloudgateways/README.md#updateaddon) - Update Add-On
 
 ### [ConfigStoreSecrets](docs/sdks/configstoresecrets/README.md)
 
@@ -541,6 +704,11 @@ func main() {
 * [GetConfigStoreSecret](docs/sdks/configstoresecrets/README.md#getconfigstoresecret) - Get a Config Store Secret
 * [UpdateConfigStoreSecret](docs/sdks/configstoresecrets/README.md#updateconfigstoresecret) - Update Config Store Secret
 * [DeleteConfigStoreSecret](docs/sdks/configstoresecrets/README.md#deleteconfigstoresecret) - Delete Config Store Secret
+* [CreateConfigStoreSecretInWorkspace](docs/sdks/configstoresecrets/README.md#createconfigstoresecretinworkspace) - Create Config Store Secret in a workspace
+* [ListConfigStoreSecretsInWorkspace](docs/sdks/configstoresecrets/README.md#listconfigstoresecretsinworkspace) - List Config Store Secrets in a workspace
+* [GetConfigStoreSecretInWorkspace](docs/sdks/configstoresecrets/README.md#getconfigstoresecretinworkspace) - Get a Config Store Secret in a workspace
+* [UpdateConfigStoreSecretInWorkspace](docs/sdks/configstoresecrets/README.md#updateconfigstoresecretinworkspace) - Update Config Store Secret in a workspace
+* [DeleteConfigStoreSecretInWorkspace](docs/sdks/configstoresecrets/README.md#deleteconfigstoresecretinworkspace) - Delete Config Store Secret in a workspace
 
 ### [ConfigStores](docs/sdks/configstores/README.md)
 
@@ -549,9 +717,23 @@ func main() {
 * [GetConfigStore](docs/sdks/configstores/README.md#getconfigstore) - Get a Config Store
 * [UpdateConfigStore](docs/sdks/configstores/README.md#updateconfigstore) - Update an individual Config Store
 * [DeleteConfigStore](docs/sdks/configstores/README.md#deleteconfigstore) - Delete Config Store
+* [ListConfigStoresInWorkspace](docs/sdks/configstores/README.md#listconfigstoresinworkspace) - List all Config Stores for a workspace
+* [CreateConfigStoreInWorkspace](docs/sdks/configstores/README.md#createconfigstoreinworkspace) - Create Config Store in a workspace
+* [GetConfigStoreInWorkspace](docs/sdks/configstores/README.md#getconfigstoreinworkspace) - Get a Config Store in a workspace
+* [UpdateConfigStoreInWorkspace](docs/sdks/configstores/README.md#updateconfigstoreinworkspace) - Update a Config Store in a workspace
+* [DeleteConfigStoreInWorkspace](docs/sdks/configstores/README.md#deleteconfigstoreinworkspace) - Delete Config Store in a workspace
 
 ### [ConsumerGroups](docs/sdks/consumergroups/README.md)
 
+* [ListConsumerGroupInWorkspace](docs/sdks/consumergroups/README.md#listconsumergroupinworkspace) - List all Consumer Groups in a workspace
+* [CreateConsumerGroupInWorkspace](docs/sdks/consumergroups/README.md#createconsumergroupinworkspace) - Create a new Consumer Group in a workspace
+* [DeleteConsumerGroupInWorkspace](docs/sdks/consumergroups/README.md#deleteconsumergroupinworkspace) - Delete a Consumer Group in a workspace
+* [GetConsumerGroupInWorkspace](docs/sdks/consumergroups/README.md#getconsumergroupinworkspace) - Get a Consumer Group in a workspace
+* [UpsertConsumerGroupInWorkspace](docs/sdks/consumergroups/README.md#upsertconsumergroupinworkspace) - Upsert a Consumer Group in a workspace
+* [RemoveAllConsumersFromConsumerGroupInWorkspace](docs/sdks/consumergroups/README.md#removeallconsumersfromconsumergroupinworkspace) - Remove consumers from consumer group in a workspace
+* [ListConsumersForConsumerGroupInWorkspace](docs/sdks/consumergroups/README.md#listconsumersforconsumergroupinworkspace) - List all Consumers in a Consumer Group in a workspace
+* [AddConsumerToGroupInWorkspace](docs/sdks/consumergroups/README.md#addconsumertogroupinworkspace) - Add consumer to consumer group in a workspace
+* [RemoveConsumerFromGroupInWorkspace](docs/sdks/consumergroups/README.md#removeconsumerfromgroupinworkspace) - Remove consumer from consumer group in a workspace
 * [ListConsumerGroup](docs/sdks/consumergroups/README.md#listconsumergroup) - List all Consumer Groups
 * [CreateConsumerGroup](docs/sdks/consumergroups/README.md#createconsumergroup) - Create a new Consumer Group
 * [DeleteConsumerGroup](docs/sdks/consumergroups/README.md#deleteconsumergroup) - Delete a Consumer Group
@@ -564,6 +746,15 @@ func main() {
 
 ### [Consumers](docs/sdks/consumers/README.md)
 
+* [ListConsumerInWorkspace](docs/sdks/consumers/README.md#listconsumerinworkspace) - List all Consumers in a workspace
+* [CreateConsumerInWorkspace](docs/sdks/consumers/README.md#createconsumerinworkspace) - Create a new Consumer in a workspace
+* [DeleteConsumerInWorkspace](docs/sdks/consumers/README.md#deleteconsumerinworkspace) - Delete a Consumer in a workspace
+* [GetConsumerInWorkspace](docs/sdks/consumers/README.md#getconsumerinworkspace) - Get a Consumer in a workspace
+* [UpsertConsumerInWorkspace](docs/sdks/consumers/README.md#upsertconsumerinworkspace) - Upsert a Consumer in a workspace
+* [RemoveConsumerFromAllConsumerGroupsInWorkspace](docs/sdks/consumers/README.md#removeconsumerfromallconsumergroupsinworkspace) - Remove consumer from all consumer groups in a workspace
+* [ListConsumerGroupsForConsumerInWorkspace](docs/sdks/consumers/README.md#listconsumergroupsforconsumerinworkspace) - List all Consumer Groups a Consumer belongs to in a workspace
+* [AddConsumerToSpecificConsumerGroupInWorkspace](docs/sdks/consumers/README.md#addconsumertospecificconsumergroupinworkspace) - Add consumer to a specific consumer group in a workspace
+* [RemoveConsumerFromConsumerGroupInWorkspace](docs/sdks/consumers/README.md#removeconsumerfromconsumergroupinworkspace) - Remove consumer from consumer group in a workspace
 * [ListConsumer](docs/sdks/consumers/README.md#listconsumer) - List all Consumers
 * [CreateConsumer](docs/sdks/consumers/README.md#createconsumer) - Create a new Consumer
 * [DeleteConsumer](docs/sdks/consumers/README.md#deleteconsumer) - Delete a Consumer
@@ -613,14 +804,32 @@ func main() {
 * [GetPluginSchema](docs/sdks/custompluginschemas/README.md#getpluginschema) - Get a custom plugin schema
 * [DeletePluginSchemas](docs/sdks/custompluginschemas/README.md#deletepluginschemas) - Delete custom plugin schema
 * [UpdatePluginSchemas](docs/sdks/custompluginschemas/README.md#updatepluginschemas) - Create or update a custom plugin schema
+* [ListPluginSchemasInWorkspace](docs/sdks/custompluginschemas/README.md#listpluginschemasinworkspace) - List Custom Plugin Schemas in a workspace
+* [CreatePluginSchemasInWorkspace](docs/sdks/custompluginschemas/README.md#createpluginschemasinworkspace) - Upload custom plugin schema in a workspace
+* [GetPluginSchemaInWorkspace](docs/sdks/custompluginschemas/README.md#getpluginschemainworkspace) - Get a custom plugin schema in a workspace
+* [DeletePluginSchemasInWorkspace](docs/sdks/custompluginschemas/README.md#deletepluginschemasinworkspace) - Delete custom plugin schema in a workspace
+* [UpdatePluginSchemasInWorkspace](docs/sdks/custompluginschemas/README.md#updatepluginschemasinworkspace) - Create or update a custom plugin schema in a workspace
 
 ### [CustomPlugins](docs/sdks/customplugins/README.md)
 
+* [ListCustomPluginInWorkspace](docs/sdks/customplugins/README.md#listcustomplugininworkspace) - List all CustomPlugins in a workspace
+* [CreateCustomPluginInWorkspace](docs/sdks/customplugins/README.md#createcustomplugininworkspace) - Create a new CustomPlugin in a workspace
+* [DeleteCustomPluginInWorkspace](docs/sdks/customplugins/README.md#deletecustomplugininworkspace) - Delete a CustomPlugin in a workspace
+* [GetCustomPluginInWorkspace](docs/sdks/customplugins/README.md#getcustomplugininworkspace) - Get a CustomPlugin in a workspace
+* [UpsertCustomPluginInWorkspace](docs/sdks/customplugins/README.md#upsertcustomplugininworkspace) - Upsert a CustomPlugin in a workspace
 * [ListCustomPlugin](docs/sdks/customplugins/README.md#listcustomplugin) - List all CustomPlugins
 * [CreateCustomPlugin](docs/sdks/customplugins/README.md#createcustomplugin) - Create a new CustomPlugin
 * [DeleteCustomPlugin](docs/sdks/customplugins/README.md#deletecustomplugin) - Delete a CustomPlugin
 * [GetCustomPlugin](docs/sdks/customplugins/README.md#getcustomplugin) - Get a CustomPlugin
 * [UpsertCustomPlugin](docs/sdks/customplugins/README.md#upsertcustomplugin) - Upsert a CustomPlugin
+
+### [Dashboards](docs/sdks/dashboards/README.md)
+
+* [DashboardsList](docs/sdks/dashboards/README.md#dashboardslist) - List dashboards
+* [DashboardsCreate](docs/sdks/dashboards/README.md#dashboardscreate) - Create a new dashboard
+* [DashboardsGet](docs/sdks/dashboards/README.md#dashboardsget) - Get a single dashboard
+* [DashboardsUpdate](docs/sdks/dashboards/README.md#dashboardsupdate) - Update an existing dashboard
+* [DashboardsDelete](docs/sdks/dashboards/README.md#dashboardsdelete) - Delete an existing dashboard
 
 ### [DCRProviders](docs/sdks/dcrproviders/README.md)
 
@@ -631,13 +840,13 @@ func main() {
 * [DeleteDcrProvider](docs/sdks/dcrproviders/README.md#deletedcrprovider) - Delete DCR provider
 * [VerifyDcrProvider](docs/sdks/dcrproviders/README.md#verifydcrprovider) - Verify DCR provider configuration
 
-### [DebugSessions](docs/sdks/debugsessions/README.md)
+### [~~DebugSessions~~](docs/sdks/debugsessions/README.md)
 
-* [ListDebugSessions](docs/sdks/debugsessions/README.md#listdebugsessions) - List all debug sessions for a control plane
-* [CreateDebugSession](docs/sdks/debugsessions/README.md#createdebugsession) - Create Debug Session
-* [GetDebugSession](docs/sdks/debugsessions/README.md#getdebugsession) - Fetch a Debug Session
-* [DeleteDebugSession](docs/sdks/debugsessions/README.md#deletedebugsession) - Delete a Debug Session
-* [StopDebugSession](docs/sdks/debugsessions/README.md#stopdebugsession) - Stops an active Debug Session
+* [~~ListDebugSessions~~](docs/sdks/debugsessions/README.md#listdebugsessions) - List all debug sessions for a control plane :warning: **Deprecated**
+* [~~CreateDebugSession~~](docs/sdks/debugsessions/README.md#createdebugsession) - Create Debug Session :warning: **Deprecated**
+* [~~GetDebugSession~~](docs/sdks/debugsessions/README.md#getdebugsession) - Fetch a Debug Session :warning: **Deprecated**
+* [~~DeleteDebugSession~~](docs/sdks/debugsessions/README.md#deletedebugsession) - Delete a Debug Session :warning: **Deprecated**
+* [~~StopDebugSession~~](docs/sdks/debugsessions/README.md#stopdebugsession) - Stops an active Debug Session :warning: **Deprecated**
 
 ### [DeclarativeConfiguration](docs/sdks/declarativeconfiguration/README.md)
 
@@ -650,6 +859,13 @@ func main() {
 
 ### [DegraphqlRoutes](docs/sdks/degraphqlroutes/README.md)
 
+* [ListDegraphqlRouteInWorkspace](docs/sdks/degraphqlroutes/README.md#listdegraphqlrouteinworkspace) - List all Degraphql_routes in a workspace
+* [GetDegraphqlRouteInWorkspace](docs/sdks/degraphqlroutes/README.md#getdegraphqlrouteinworkspace) - Get a Degraphql_route in a workspace
+* [ListDegraphqlRouteWithServiceInWorkspace](docs/sdks/degraphqlroutes/README.md#listdegraphqlroutewithserviceinworkspace) - List all Degraphql_routes associated with a Service in a workspace
+* [CreateDegraphqlRouteWithServiceInWorkspace](docs/sdks/degraphqlroutes/README.md#createdegraphqlroutewithserviceinworkspace) - Create a new Degraphql_route associated with a Service in a workspace
+* [DeleteDegraphqlRouteWithServiceInWorkspace](docs/sdks/degraphqlroutes/README.md#deletedegraphqlroutewithserviceinworkspace) - Delete a a Degraphql_route associated with a Service in a workspace
+* [GetDegraphqlRouteWithServiceInWorkspace](docs/sdks/degraphqlroutes/README.md#getdegraphqlroutewithserviceinworkspace) - Get a Degraphql_route associated with a Service in a workspace
+* [UpsertDegraphqlRouteWithServiceInWorkspace](docs/sdks/degraphqlroutes/README.md#upsertdegraphqlroutewithserviceinworkspace) - Upsert a Degraphql_route associated with a Service in a workspace
 * [ListDegraphqlRoute](docs/sdks/degraphqlroutes/README.md#listdegraphqlroute) - List all Degraphql_routes
 * [GetDegraphqlRoute](docs/sdks/degraphqlroutes/README.md#getdegraphqlroute) - Get a Degraphql_route
 * [ListDegraphqlRouteWithService](docs/sdks/degraphqlroutes/README.md#listdegraphqlroutewithservice) - List all Degraphql_routes associated with a Service
@@ -670,6 +886,7 @@ func main() {
 * [ListDpClientCertificates](docs/sdks/dpcertificates/README.md#listdpclientcertificates) - List DP Client Certificates
 * [CreateDataplaneCertificate](docs/sdks/dpcertificates/README.md#createdataplanecertificate) - Pin New DP Client Certificate
 * [GetDataplaneCertificate](docs/sdks/dpcertificates/README.md#getdataplanecertificate) - Get a DP Client Certificate
+* [UpdateDataplaneCertificate](docs/sdks/dpcertificates/README.md#updatedataplanecertificate) - Update DP Client Certificate
 * [DeleteDataplaneCertificate](docs/sdks/dpcertificates/README.md#deletedataplanecertificate) - Delete DP Client Certificate
 
 ### [DPNodes](docs/sdks/dpnodes/README.md)
@@ -681,8 +898,32 @@ func main() {
 * [GetNodesNodeID](docs/sdks/dpnodes/README.md#getnodesnodeid) - Get a Data Plane Node Record
 * [DeleteNodesNodeID](docs/sdks/dpnodes/README.md#deletenodesnodeid) - Delete Data Plane Node Record
 
+### [GraphQLCostDecorations](docs/sdks/graphqlcostdecorations/README.md)
+
+* [ListGraphqlRateLimitingAdvancedCostInWorkspace](docs/sdks/graphqlcostdecorations/README.md#listgraphqlratelimitingadvancedcostinworkspace) - List all GraphQL Cost Decorations in a workspace
+* [GetGraphqlRateLimitingAdvancedCostInWorkspace](docs/sdks/graphqlcostdecorations/README.md#getgraphqlratelimitingadvancedcostinworkspace) - Get a GraphQL Cost Decoration in a workspace
+* [ListGraphqlRateLimitingAdvancedCostWithServiceInWorkspace](docs/sdks/graphqlcostdecorations/README.md#listgraphqlratelimitingadvancedcostwithserviceinworkspace) - List all GraphQL Cost Decorations associated with a Service in a workspace
+* [CreateGraphqlRateLimitingAdvancedCostWithServiceInWorkspace](docs/sdks/graphqlcostdecorations/README.md#creategraphqlratelimitingadvancedcostwithserviceinworkspace) - Create a new GraphQL Cost Decoration associated with a Service in a workspace
+* [DeleteGraphqlRateLimitingAdvancedCostWithServiceInWorkspace](docs/sdks/graphqlcostdecorations/README.md#deletegraphqlratelimitingadvancedcostwithserviceinworkspace) - Delete a a GraphQL Cost Decoration associated with a Service in a workspace
+* [GetGraphqlRateLimitingAdvancedCostWithServiceInWorkspace](docs/sdks/graphqlcostdecorations/README.md#getgraphqlratelimitingadvancedcostwithserviceinworkspace) - Get a GraphQL Cost Decoration associated with a Service in a workspace
+* [UpsertGraphqlRateLimitingAdvancedCostWithServiceInWorkspace](docs/sdks/graphqlcostdecorations/README.md#upsertgraphqlratelimitingadvancedcostwithserviceinworkspace) - Upsert a GraphQL Cost Decoration associated with a Service in a workspace
+* [ListGraphqlRateLimitingAdvancedCost](docs/sdks/graphqlcostdecorations/README.md#listgraphqlratelimitingadvancedcost) - List all GraphQL Cost Decorations
+* [GetGraphqlRateLimitingAdvancedCost](docs/sdks/graphqlcostdecorations/README.md#getgraphqlratelimitingadvancedcost) - Get a GraphQL Cost Decoration
+* [ListGraphqlRateLimitingAdvancedCostWithService](docs/sdks/graphqlcostdecorations/README.md#listgraphqlratelimitingadvancedcostwithservice) - List all GraphQL Cost Decorations associated with a Service
+* [CreateGraphqlRateLimitingAdvancedCostWithService](docs/sdks/graphqlcostdecorations/README.md#creategraphqlratelimitingadvancedcostwithservice) - Create a new GraphQL Cost Decoration associated with a Service
+* [DeleteGraphqlRateLimitingAdvancedCostWithService](docs/sdks/graphqlcostdecorations/README.md#deletegraphqlratelimitingadvancedcostwithservice) - Delete a a GraphQL Cost Decoration associated with a Service
+* [GetGraphqlRateLimitingAdvancedCostWithService](docs/sdks/graphqlcostdecorations/README.md#getgraphqlratelimitingadvancedcostwithservice) - Get a GraphQL Cost Decoration associated with a Service
+* [UpsertGraphqlRateLimitingAdvancedCostWithService](docs/sdks/graphqlcostdecorations/README.md#upsertgraphqlratelimitingadvancedcostwithservice) - Upsert a GraphQL Cost Decoration associated with a Service
+
 ### [HMACAuthCredentials](docs/sdks/hmacauthcredentials/README.md)
 
+* [ListHmacAuthWithConsumerInWorkspace](docs/sdks/hmacauthcredentials/README.md#listhmacauthwithconsumerinworkspace) - List all HMAC-auth credentials associated with a Consumer in a workspace
+* [CreateHmacAuthWithConsumerInWorkspace](docs/sdks/hmacauthcredentials/README.md#createhmacauthwithconsumerinworkspace) - Create a new HMAC-auth credential associated with a Consumer in a workspace
+* [DeleteHmacAuthWithConsumerInWorkspace](docs/sdks/hmacauthcredentials/README.md#deletehmacauthwithconsumerinworkspace) - Delete a a HMAC-auth credential associated with a Consumer in a workspace
+* [GetHmacAuthWithConsumerInWorkspace](docs/sdks/hmacauthcredentials/README.md#gethmacauthwithconsumerinworkspace) - Get a HMAC-auth credential associated with a Consumer in a workspace
+* [UpsertHmacAuthWithConsumerInWorkspace](docs/sdks/hmacauthcredentials/README.md#upserthmacauthwithconsumerinworkspace) - Upsert a HMAC-auth credential associated with a Consumer in a workspace
+* [ListHmacAuthInWorkspace](docs/sdks/hmacauthcredentials/README.md#listhmacauthinworkspace) - List all HMAC-auth credentials in a workspace
+* [GetHmacAuthInWorkspace](docs/sdks/hmacauthcredentials/README.md#gethmacauthinworkspace) - Get a HMAC-auth credential in a workspace
 * [ListHmacAuthWithConsumer](docs/sdks/hmacauthcredentials/README.md#listhmacauthwithconsumer) - List all HMAC-auth credentials associated with a Consumer
 * [CreateHmacAuthWithConsumer](docs/sdks/hmacauthcredentials/README.md#createhmacauthwithconsumer) - Create a new HMAC-auth credential associated with a Consumer
 * [DeleteHmacAuthWithConsumer](docs/sdks/hmacauthcredentials/README.md#deletehmacauthwithconsumer) - Delete a a HMAC-auth credential associated with a Consumer
@@ -732,6 +973,13 @@ func main() {
 
 ### [JWTs](docs/sdks/jwts/README.md)
 
+* [ListJwtWithConsumerInWorkspace](docs/sdks/jwts/README.md#listjwtwithconsumerinworkspace) - List all JWTs associated with a Consumer in a workspace
+* [CreateJwtWithConsumerInWorkspace](docs/sdks/jwts/README.md#createjwtwithconsumerinworkspace) - Create a new JWT associated with a Consumer in a workspace
+* [DeleteJwtWithConsumerInWorkspace](docs/sdks/jwts/README.md#deletejwtwithconsumerinworkspace) - Delete a a JWT associated with a Consumer in a workspace
+* [GetJwtWithConsumerInWorkspace](docs/sdks/jwts/README.md#getjwtwithconsumerinworkspace) - Get a JWT associated with a Consumer in a workspace
+* [UpsertJwtWithConsumerInWorkspace](docs/sdks/jwts/README.md#upsertjwtwithconsumerinworkspace) - Upsert a JWT associated with a Consumer in a workspace
+* [ListJwtInWorkspace](docs/sdks/jwts/README.md#listjwtinworkspace) - List all JWTs in a workspace
+* [GetJwtInWorkspace](docs/sdks/jwts/README.md#getjwtinworkspace) - Get a JWT in a workspace
 * [ListJwtWithConsumer](docs/sdks/jwts/README.md#listjwtwithconsumer) - List all JWTs associated with a Consumer
 * [CreateJwtWithConsumer](docs/sdks/jwts/README.md#createjwtwithconsumer) - Create a new JWT associated with a Consumer
 * [DeleteJwtWithConsumer](docs/sdks/jwts/README.md#deletejwtwithconsumer) - Delete a a JWT associated with a Consumer
@@ -742,6 +990,16 @@ func main() {
 
 ### [Keys](docs/sdks/keys/README.md)
 
+* [ListKeyWithKeySetInWorkspace](docs/sdks/keys/README.md#listkeywithkeysetinworkspace) - List all Keys associated with a KeySet in a workspace
+* [CreateKeyWithKeySetInWorkspace](docs/sdks/keys/README.md#createkeywithkeysetinworkspace) - Create a new Key associated with a KeySet in a workspace
+* [DeleteKeyWithKeySetInWorkspace](docs/sdks/keys/README.md#deletekeywithkeysetinworkspace) - Delete a a Key associated with a KeySet in a workspace
+* [GetKeyWithKeySetInWorkspace](docs/sdks/keys/README.md#getkeywithkeysetinworkspace) - Get a Key associated with a KeySet in a workspace
+* [UpsertKeyWithKeySetInWorkspace](docs/sdks/keys/README.md#upsertkeywithkeysetinworkspace) - Upsert a Key associated with a KeySet in a workspace
+* [ListKeyInWorkspace](docs/sdks/keys/README.md#listkeyinworkspace) - List all Keys in a workspace
+* [CreateKeyInWorkspace](docs/sdks/keys/README.md#createkeyinworkspace) - Create a new Key in a workspace
+* [DeleteKeyInWorkspace](docs/sdks/keys/README.md#deletekeyinworkspace) - Delete a Key in a workspace
+* [GetKeyInWorkspace](docs/sdks/keys/README.md#getkeyinworkspace) - Get a Key in a workspace
+* [UpsertKeyInWorkspace](docs/sdks/keys/README.md#upsertkeyinworkspace) - Upsert a Key in a workspace
 * [ListKeyWithKeySet](docs/sdks/keys/README.md#listkeywithkeyset) - List all Keys associated with a KeySet
 * [CreateKeyWithKeySet](docs/sdks/keys/README.md#createkeywithkeyset) - Create a new Key associated with a KeySet
 * [DeleteKeyWithKeySet](docs/sdks/keys/README.md#deletekeywithkeyset) - Delete a a Key associated with a KeySet
@@ -755,6 +1013,11 @@ func main() {
 
 ### [KeySets](docs/sdks/keysets/README.md)
 
+* [ListKeySetInWorkspace](docs/sdks/keysets/README.md#listkeysetinworkspace) - List all KeySets in a workspace
+* [CreateKeySetInWorkspace](docs/sdks/keysets/README.md#createkeysetinworkspace) - Create a new KeySet in a workspace
+* [DeleteKeySetInWorkspace](docs/sdks/keysets/README.md#deletekeysetinworkspace) - Delete a KeySet in a workspace
+* [GetKeySetInWorkspace](docs/sdks/keysets/README.md#getkeysetinworkspace) - Get a KeySet in a workspace
+* [UpsertKeySetInWorkspace](docs/sdks/keysets/README.md#upsertkeysetinworkspace) - Upsert a KeySet in a workspace
 * [ListKeySet](docs/sdks/keysets/README.md#listkeyset) - List all KeySets
 * [CreateKeySet](docs/sdks/keysets/README.md#createkeyset) - Create a new KeySet
 * [DeleteKeySet](docs/sdks/keysets/README.md#deletekeyset) - Delete a KeySet
@@ -766,6 +1029,29 @@ func main() {
 * [GetSystemAccountsAssignedRolesInternal](docs/sdks/managedsystemaccountsroles/README.md#getsystemaccountsassignedrolesinternal) - List Roles (Internal)
 * [CreateSystemAccountsAssignedRolesInternal](docs/sdks/managedsystemaccountsroles/README.md#createsystemaccountsassignedrolesinternal) - Assign a role to a managed System Account
 
+### [MCPServers](docs/sdks/mcpservers/README.md)
+
+* [ListMcpServerConfigs](docs/sdks/mcpservers/README.md#listmcpserverconfigs) - List all MCP Servers
+* [CreateMcpServerConfig](docs/sdks/mcpservers/README.md#createmcpserverconfig) - Create an MCP Server
+* [GetMcpServerConfig](docs/sdks/mcpservers/README.md#getmcpserverconfig) - Get MCP Server
+* [UpdateMcpServerConfig](docs/sdks/mcpservers/README.md#updatemcpserverconfig) - Update MCP Server
+* [PatchMcpServerConfig](docs/sdks/mcpservers/README.md#patchmcpserverconfig) - Partially Update MCP Server
+* [DeleteMcpServerConfig](docs/sdks/mcpservers/README.md#deletemcpserverconfig) - Delete MCP Server
+* [GetMcpServerStatus](docs/sdks/mcpservers/README.md#getmcpserverstatus) - Get MCP Server deployment status
+* [GetMcpServerGeneratedCode](docs/sdks/mcpservers/README.md#getmcpservergeneratedcode) - Get generated Python code for an MCP Server
+* [ListMcpResources](docs/sdks/mcpservers/README.md#listmcpresources) - List MCP Resources
+* [CreateMcpResource](docs/sdks/mcpservers/README.md#createmcpresource) - Create an MCP Resource
+* [GetMcpResource](docs/sdks/mcpservers/README.md#getmcpresource) - Get an MCP Resource
+* [DeleteMcpResource](docs/sdks/mcpservers/README.md#deletemcpresource) - Delete an MCP Resource
+* [UpdateMcpResource](docs/sdks/mcpservers/README.md#updatemcpresource) - Update an MCP Resource
+* [GetMcpResourceSpec](docs/sdks/mcpservers/README.md#getmcpresourcespec) - Get MCP Resource Spec
+* [GetMcpServerSignals](docs/sdks/mcpservers/README.md#getmcpserversignals) - Get MCP Server Signals
+* [ListMcpServersByControlPlane](docs/sdks/mcpservers/README.md#listmcpserversbycontrolplane) - List MCP Servers by Control Plane
+* [GetMcpServerByControlPlane](docs/sdks/mcpservers/README.md#getmcpserverbycontrolplane) - Get MCP Server by Control Plane
+* [GetMcpServerKongEntities](docs/sdks/mcpservers/README.md#getmcpserverkongentities) - Get Kong entities for the MCP Server Gateway
+* [PostMcpServerStatus](docs/sdks/mcpservers/README.md#postmcpserverstatus) - Report MCP Server deployment status
+* [GetMcpServerCode](docs/sdks/mcpservers/README.md#getmcpservercode) - Get generated Python code for the MCP Server
+
 ### [Me](docs/sdks/me/README.md)
 
 * [GetUsersMe](docs/sdks/me/README.md#getusersme) - Get My User Account
@@ -775,8 +1061,29 @@ func main() {
 * [GetOrganizationsMe](docs/sdks/me/README.md#getorganizationsme) - Get My Organization
 * [UpdateOrganizationsMe](docs/sdks/me/README.md#updateorganizationsme) - Update My Organization
 
+### [MeteringEvents](docs/sdks/meteringevents/README.md)
+
+* [ListMeteringEvents](docs/sdks/meteringevents/README.md#listmeteringevents) - List metering events
+* [IngestMeteringEvents](docs/sdks/meteringevents/README.md#ingestmeteringevents) - Ingest metering events
+
+### [Meters](docs/sdks/meters/README.md)
+
+* [CreateMeter](docs/sdks/meters/README.md#createmeter) - Create meter
+* [ListMeters](docs/sdks/meters/README.md#listmeters) - List meters
+* [GetMeter](docs/sdks/meters/README.md#getmeter) - Get meter
+* [UpdateMeter](docs/sdks/meters/README.md#updatemeter) - Update meter
+* [DeleteMeter](docs/sdks/meters/README.md#deletemeter) - Delete meter
+* [QueryMeter](docs/sdks/meters/README.md#querymeter) - Query meter
+
 ### [MTLSAuthCredentials](docs/sdks/mtlsauthcredentials/README.md)
 
+* [ListMtlsAuthWithConsumerInWorkspace](docs/sdks/mtlsauthcredentials/README.md#listmtlsauthwithconsumerinworkspace) - List all MTLS-auth credentials associated with a Consumer in a workspace
+* [CreateMtlsAuthWithConsumerInWorkspace](docs/sdks/mtlsauthcredentials/README.md#createmtlsauthwithconsumerinworkspace) - Create a new MTLS-auth credential associated with a Consumer in a workspace
+* [DeleteMtlsAuthWithConsumerInWorkspace](docs/sdks/mtlsauthcredentials/README.md#deletemtlsauthwithconsumerinworkspace) - Delete a a MTLS-auth credential associated with a Consumer in a workspace
+* [GetMtlsAuthWithConsumerInWorkspace](docs/sdks/mtlsauthcredentials/README.md#getmtlsauthwithconsumerinworkspace) - Get a MTLS-auth credential associated with a Consumer in a workspace
+* [UpsertMtlsAuthWithConsumerInWorkspace](docs/sdks/mtlsauthcredentials/README.md#upsertmtlsauthwithconsumerinworkspace) - Upsert a MTLS-auth credential associated with a Consumer in a workspace
+* [ListMtlsAuthInWorkspace](docs/sdks/mtlsauthcredentials/README.md#listmtlsauthinworkspace) - List all MTLS-auth credentials in a workspace
+* [GetMtlsAuthInWorkspace](docs/sdks/mtlsauthcredentials/README.md#getmtlsauthinworkspace) - Get a MTLS-auth credential in a workspace
 * [ListMtlsAuthWithConsumer](docs/sdks/mtlsauthcredentials/README.md#listmtlsauthwithconsumer) - List all MTLS-auth credentials associated with a Consumer
 * [CreateMtlsAuthWithConsumer](docs/sdks/mtlsauthcredentials/README.md#createmtlsauthwithconsumer) - Create a new MTLS-auth credential associated with a Consumer
 * [DeleteMtlsAuthWithConsumer](docs/sdks/mtlsauthcredentials/README.md#deletemtlsauthwithconsumer) - Delete a a MTLS-auth credential associated with a Consumer
@@ -803,6 +1110,115 @@ func main() {
 * [UpdateEventSubscription](docs/sdks/notifications/README.md#updateeventsubscription) - Update subscription for an event
 * [DeleteEventSubscription](docs/sdks/notifications/README.md#deleteeventsubscription) - Delete subscription associated with event
 
+### [OpenMeterApps](docs/sdks/openmeterapps/README.md)
+
+* [ListApps](docs/sdks/openmeterapps/README.md#listapps) - List apps
+* [GetApp](docs/sdks/openmeterapps/README.md#getapp) - Get app
+
+### [OpenMeterBilling](docs/sdks/openmeterbilling/README.md)
+
+* [ListCurrencies](docs/sdks/openmeterbilling/README.md#listcurrencies) - List currencies
+* [CreateCustomCurrency](docs/sdks/openmeterbilling/README.md#createcustomcurrency) - Create custom currency
+* [ListCostBases](docs/sdks/openmeterbilling/README.md#listcostbases) - List cost bases
+* [CreateCostBasis](docs/sdks/openmeterbilling/README.md#createcostbasis) - Create cost basis
+* [ListCustomerCharges](docs/sdks/openmeterbilling/README.md#listcustomercharges) - List customer charges
+* [ListBillingProfiles](docs/sdks/openmeterbilling/README.md#listbillingprofiles) - List billing profiles
+* [CreateBillingProfile](docs/sdks/openmeterbilling/README.md#createbillingprofile) - Create a new billing profile
+* [GetBillingProfile](docs/sdks/openmeterbilling/README.md#getbillingprofile) - Get a billing profile
+* [UpdateBillingProfile](docs/sdks/openmeterbilling/README.md#updatebillingprofile) - Update a billing profile
+* [DeleteBillingProfile](docs/sdks/openmeterbilling/README.md#deletebillingprofile) - Delete a billing profile
+
+### [OpenMeterCustomers](docs/sdks/openmetercustomers/README.md)
+
+* [CreateCustomer](docs/sdks/openmetercustomers/README.md#createcustomer) - Create customer
+* [ListCustomers](docs/sdks/openmetercustomers/README.md#listcustomers) - List customers
+* [GetCustomer](docs/sdks/openmetercustomers/README.md#getcustomer) - Get customer
+* [UpsertCustomer](docs/sdks/openmetercustomers/README.md#upsertcustomer) - Upsert customer
+* [DeleteCustomer](docs/sdks/openmetercustomers/README.md#deletecustomer) - Delete customer
+* [GetCustomerBilling](docs/sdks/openmetercustomers/README.md#getcustomerbilling) - Get customer billing data
+* [UpdateCustomerBilling](docs/sdks/openmetercustomers/README.md#updatecustomerbilling) - Update customer billing data
+* [UpdateCustomerBillingAppData](docs/sdks/openmetercustomers/README.md#updatecustomerbillingappdata) - Update customer billing app data
+* [CreateCustomerStripeCheckoutSession](docs/sdks/openmetercustomers/README.md#createcustomerstripecheckoutsession) - Create Stripe Checkout Session
+* [CreateCustomerStripePortalSession](docs/sdks/openmetercustomers/README.md#createcustomerstripeportalsession) - Create Stripe customer portal session
+* [CreateCreditAdjustment](docs/sdks/openmetercustomers/README.md#createcreditadjustment) - Create a credit adjustment
+* [GetCustomerCreditBalance](docs/sdks/openmetercustomers/README.md#getcustomercreditbalance) - Get a customer's credit balance
+* [CreateCreditGrant](docs/sdks/openmetercustomers/README.md#createcreditgrant) - Create a new credit grant
+* [ListCreditGrants](docs/sdks/openmetercustomers/README.md#listcreditgrants) - List credit grants
+* [GetCreditGrant](docs/sdks/openmetercustomers/README.md#getcreditgrant) - Get a credit grant
+* [UpdateCreditGrantExternalSettlement](docs/sdks/openmetercustomers/README.md#updatecreditgrantexternalsettlement) - Update credit grant external settlement status
+* [ListCreditTransactions](docs/sdks/openmetercustomers/README.md#listcredittransactions) - List credit transactions
+
+### [OpenMeterDefaults](docs/sdks/openmeterdefaults/README.md)
+
+* [GetOrganizationDefaultTaxCodes](docs/sdks/openmeterdefaults/README.md#getorganizationdefaulttaxcodes) - Get organization default tax codes
+* [UpdateOrganizationDefaultTaxCodes](docs/sdks/openmeterdefaults/README.md#updateorganizationdefaulttaxcodes) - Update organization default tax codes
+
+### [OpenMeterEntitlements](docs/sdks/openmeterentitlements/README.md)
+
+* [ListCustomerEntitlementAccess](docs/sdks/openmeterentitlements/README.md#listcustomerentitlementaccess) - List customer entitlement access
+
+### [OpenMeterFeatures](docs/sdks/openmeterfeatures/README.md)
+
+* [ListFeatures](docs/sdks/openmeterfeatures/README.md#listfeatures) - List features
+* [CreateFeature](docs/sdks/openmeterfeatures/README.md#createfeature) - Create feature
+* [GetFeature](docs/sdks/openmeterfeatures/README.md#getfeature) - Get feature
+* [UpdateFeature](docs/sdks/openmeterfeatures/README.md#updatefeature) - Update feature
+* [DeleteFeature](docs/sdks/openmeterfeatures/README.md#deletefeature) - Delete feature
+* [QueryFeatureCost](docs/sdks/openmeterfeatures/README.md#queryfeaturecost) - Query feature cost
+
+### [OpenMeterGovernance](docs/sdks/openmetergovernance/README.md)
+
+* [QueryGovernanceAccess](docs/sdks/openmetergovernance/README.md#querygovernanceaccess) - Query governance access
+
+### [OpenMeterLLMCost](docs/sdks/openmeterllmcost/README.md)
+
+* [ListLlmCostOverrides](docs/sdks/openmeterllmcost/README.md#listllmcostoverrides) - List LLM cost overrides
+* [CreateLlmCostOverride](docs/sdks/openmeterllmcost/README.md#createllmcostoverride) - Create LLM cost override
+* [DeleteLlmCostOverride](docs/sdks/openmeterllmcost/README.md#deletellmcostoverride) - Delete LLM cost override
+* [ListLlmCostPrices](docs/sdks/openmeterllmcost/README.md#listllmcostprices) - List LLM cost prices
+* [GetLlmCostPrice](docs/sdks/openmeterllmcost/README.md#getllmcostprice) - Get LLM cost price
+
+### [OpenMeterProductCatalog](docs/sdks/openmeterproductcatalog/README.md)
+
+* [ListOpenmeterAddons](docs/sdks/openmeterproductcatalog/README.md#listopenmeteraddons) - List add-ons
+* [CreateOpenmeterAddon](docs/sdks/openmeterproductcatalog/README.md#createopenmeteraddon) - Create add-on
+* [UpdateOpenmeterAddon](docs/sdks/openmeterproductcatalog/README.md#updateopenmeteraddon) - Update add-on
+* [GetOpenmeterAddon](docs/sdks/openmeterproductcatalog/README.md#getopenmeteraddon) - Get add-on
+* [DeleteOpenmeterAddon](docs/sdks/openmeterproductcatalog/README.md#deleteopenmeteraddon) - Soft delete add-on
+* [ArchiveOpenmeterAddon](docs/sdks/openmeterproductcatalog/README.md#archiveopenmeteraddon) - Archive add-on version
+* [PublishAddon](docs/sdks/openmeterproductcatalog/README.md#publishaddon) - Publish add-on version
+* [ListPlans](docs/sdks/openmeterproductcatalog/README.md#listplans) - List plans
+* [CreatePlan](docs/sdks/openmeterproductcatalog/README.md#createplan) - Create plan
+* [UpdatePlan](docs/sdks/openmeterproductcatalog/README.md#updateplan) - Update plan
+* [GetPlan](docs/sdks/openmeterproductcatalog/README.md#getplan) - Get plan
+* [DeletePlan](docs/sdks/openmeterproductcatalog/README.md#deleteplan) - Delete plan
+* [ListPlanAddons](docs/sdks/openmeterproductcatalog/README.md#listplanaddons) - List add-ons for plan
+* [CreatePlanAddon](docs/sdks/openmeterproductcatalog/README.md#createplanaddon) - Add add-on to plan
+* [GetPlanAddon](docs/sdks/openmeterproductcatalog/README.md#getplanaddon) - Get add-on association for plan
+* [UpdatePlanAddon](docs/sdks/openmeterproductcatalog/README.md#updateplanaddon) - Update add-on association for plan
+* [DeletePlanAddon](docs/sdks/openmeterproductcatalog/README.md#deleteplanaddon) - Remove add-on from plan
+* [ArchivePlan](docs/sdks/openmeterproductcatalog/README.md#archiveplan) - Archive plan version
+* [PublishPlan](docs/sdks/openmeterproductcatalog/README.md#publishplan) - Publish plan version
+
+### [OpenMeterSubscriptions](docs/sdks/openmetersubscriptions/README.md)
+
+* [CreateSubscription](docs/sdks/openmetersubscriptions/README.md#createsubscription) - Create subscription
+* [ListSubscriptions](docs/sdks/openmetersubscriptions/README.md#listsubscriptions) - List subscriptions
+* [GetSubscription](docs/sdks/openmetersubscriptions/README.md#getsubscription) - Get subscription
+* [ListSubscriptionAddons](docs/sdks/openmetersubscriptions/README.md#listsubscriptionaddons) - List subscription addons
+* [GetSubscriptionAddon](docs/sdks/openmetersubscriptions/README.md#getsubscriptionaddon) - Get add-on association for subscription
+* [CancelSubscription](docs/sdks/openmetersubscriptions/README.md#cancelsubscription) - Cancel subscription
+* [ChangeSubscription](docs/sdks/openmetersubscriptions/README.md#changesubscription) - Change subscription
+* [UnscheduleCancelation](docs/sdks/openmetersubscriptions/README.md#unschedulecancelation) - Unschedule subscription cancelation
+
+### [OpenMeterTax](docs/sdks/openmetertax/README.md)
+
+* [CreateTaxCode](docs/sdks/openmetertax/README.md#createtaxcode) - Create tax code
+* [ListTaxCodes](docs/sdks/openmetertax/README.md#listtaxcodes) - List tax codes
+* [GetTaxCode](docs/sdks/openmetertax/README.md#gettaxcode) - Get tax code
+* [UpsertTaxCode](docs/sdks/openmetertax/README.md#upserttaxcode) - Upsert tax code
+* [DeleteTaxCode](docs/sdks/openmetertax/README.md#deletetaxcode) - Delete tax code
+
 ### [OrganizationFeature](docs/sdks/organizationfeature/README.md)
 
 * [GetOrganizationFeature](docs/sdks/organizationfeature/README.md#getorganizationfeature) - Get Feature Configuration
@@ -810,20 +1226,20 @@ func main() {
 
 ### [Pages](docs/sdks/pages/README.md)
 
-* [ListPortalPages](docs/sdks/pages/README.md#listportalpages) - List Pages
-* [CreatePortalPage](docs/sdks/pages/README.md#createportalpage) - Create Page
-* [GetPortalPage](docs/sdks/pages/README.md#getportalpage) - Get a Page
-* [UpdatePortalPage](docs/sdks/pages/README.md#updateportalpage) - Update Page
-* [DeletePortalPage](docs/sdks/pages/README.md#deleteportalpage) - Delete Page
-* [MovePortalPages](docs/sdks/pages/README.md#moveportalpages) - Move Page
-* [CreateDefaultContent](docs/sdks/pages/README.md#createdefaultcontent) - Creates Default Pages
+* [CreateDefaultContent](docs/sdks/pages/README.md#createdefaultcontent) - Create Boilerplate Content
 
 ### [PartialLinks](docs/sdks/partiallinks/README.md)
 
+* [ListPartialLinkInWorkspace](docs/sdks/partiallinks/README.md#listpartiallinkinworkspace) - List partial links in a workspace
 * [ListPartialLink](docs/sdks/partiallinks/README.md#listpartiallink) - List partial links
 
 ### [Partials](docs/sdks/partials/README.md)
 
+* [ListPartialInWorkspace](docs/sdks/partials/README.md#listpartialinworkspace) - List all Partials in a workspace
+* [CreatePartialInWorkspace](docs/sdks/partials/README.md#createpartialinworkspace) - Create a new Partial in a workspace
+* [DeletePartialInWorkspace](docs/sdks/partials/README.md#deletepartialinworkspace) - Delete a Partial in a workspace
+* [GetPartialInWorkspace](docs/sdks/partials/README.md#getpartialinworkspace) - Get a Partial in a workspace
+* [UpsertPartialInWorkspace](docs/sdks/partials/README.md#upsertpartialinworkspace) - Upsert a Partial in a workspace
 * [ListPartial](docs/sdks/partials/README.md#listpartial) - List all Partials
 * [CreatePartial](docs/sdks/partials/README.md#createpartial) - Create a new Partial
 * [DeletePartial](docs/sdks/partials/README.md#deletepartial) - Delete a Partial
@@ -841,6 +1257,32 @@ func main() {
 
 ### [Plugins](docs/sdks/plugins/README.md)
 
+* [SearchPlugin](docs/sdks/plugins/README.md#searchplugin) - Search for Plugins
+* [ListPluginWithConsumerGroupInWorkspace](docs/sdks/plugins/README.md#listpluginwithconsumergroupinworkspace) - List all Plugins associated with a Consumer Group in a workspace
+* [CreatePluginWithConsumerGroupInWorkspace](docs/sdks/plugins/README.md#createpluginwithconsumergroupinworkspace) - Create a new Plugin associated with a Consumer Group in a workspace
+* [DeletePluginWithConsumerGroupInWorkspace](docs/sdks/plugins/README.md#deletepluginwithconsumergroupinworkspace) - Delete a a Plugin associated with a Consumer Group in a workspace
+* [GetPluginWithConsumerGroupInWorkspace](docs/sdks/plugins/README.md#getpluginwithconsumergroupinworkspace) - Get a Plugin associated with a Consumer Group in a workspace
+* [UpsertPluginWithConsumerGroupInWorkspace](docs/sdks/plugins/README.md#upsertpluginwithconsumergroupinworkspace) - Upsert a Plugin associated with a Consumer Group in a workspace
+* [ListPluginWithConsumerInWorkspace](docs/sdks/plugins/README.md#listpluginwithconsumerinworkspace) - List all Plugins associated with a Consumer in a workspace
+* [CreatePluginWithConsumerInWorkspace](docs/sdks/plugins/README.md#createpluginwithconsumerinworkspace) - Create a new Plugin associated with a Consumer in a workspace
+* [DeletePluginWithConsumerInWorkspace](docs/sdks/plugins/README.md#deletepluginwithconsumerinworkspace) - Delete a a Plugin associated with a Consumer in a workspace
+* [GetPluginWithConsumerInWorkspace](docs/sdks/plugins/README.md#getpluginwithconsumerinworkspace) - Get a Plugin associated with a Consumer in a workspace
+* [UpsertPluginWithConsumerInWorkspace](docs/sdks/plugins/README.md#upsertpluginwithconsumerinworkspace) - Upsert a Plugin associated with a Consumer in a workspace
+* [ListPluginInWorkspace](docs/sdks/plugins/README.md#listplugininworkspace) - List all Plugins in a workspace
+* [CreatePluginInWorkspace](docs/sdks/plugins/README.md#createplugininworkspace) - Create a new Plugin in a workspace
+* [DeletePluginInWorkspace](docs/sdks/plugins/README.md#deleteplugininworkspace) - Delete a Plugin in a workspace
+* [GetPluginInWorkspace](docs/sdks/plugins/README.md#getplugininworkspace) - Get a Plugin in a workspace
+* [UpsertPluginInWorkspace](docs/sdks/plugins/README.md#upsertplugininworkspace) - Upsert a Plugin in a workspace
+* [ListPluginWithRouteInWorkspace](docs/sdks/plugins/README.md#listpluginwithrouteinworkspace) - List all Plugins associated with a Route in a workspace
+* [CreatePluginWithRouteInWorkspace](docs/sdks/plugins/README.md#createpluginwithrouteinworkspace) - Create a new Plugin associated with a Route in a workspace
+* [DeletePluginWithRouteInWorkspace](docs/sdks/plugins/README.md#deletepluginwithrouteinworkspace) - Delete a a Plugin associated with a Route in a workspace
+* [GetPluginWithRouteInWorkspace](docs/sdks/plugins/README.md#getpluginwithrouteinworkspace) - Get a Plugin associated with a Route in a workspace
+* [UpsertPluginWithRouteInWorkspace](docs/sdks/plugins/README.md#upsertpluginwithrouteinworkspace) - Upsert a Plugin associated with a Route in a workspace
+* [ListPluginWithServiceInWorkspace](docs/sdks/plugins/README.md#listpluginwithserviceinworkspace) - List all Plugins associated with a Service in a workspace
+* [CreatePluginWithServiceInWorkspace](docs/sdks/plugins/README.md#createpluginwithserviceinworkspace) - Create a new Plugin associated with a Service in a workspace
+* [DeletePluginWithServiceInWorkspace](docs/sdks/plugins/README.md#deletepluginwithserviceinworkspace) - Delete a a Plugin associated with a Service in a workspace
+* [GetPluginWithServiceInWorkspace](docs/sdks/plugins/README.md#getpluginwithserviceinworkspace) - Get a Plugin associated with a Service in a workspace
+* [UpsertPluginWithServiceInWorkspace](docs/sdks/plugins/README.md#upsertpluginwithserviceinworkspace) - Upsert a Plugin associated with a Service in a workspace
 * [ListPluginWithConsumerGroup](docs/sdks/plugins/README.md#listpluginwithconsumergroup) - List all Plugins associated with a Consumer Group
 * [CreatePluginWithConsumerGroup](docs/sdks/plugins/README.md#createpluginwithconsumergroup) - Create a new Plugin associated with a Consumer Group
 * [DeletePluginWithConsumerGroup](docs/sdks/plugins/README.md#deletepluginwithconsumergroup) - Delete a a Plugin associated with a Consumer Group
@@ -888,6 +1330,10 @@ func main() {
 * [GetPortalIdentityProvider](docs/sdks/portalauthsettings/README.md#getportalidentityprovider) - Get Identity Provider
 * [UpdatePortalIdentityProvider](docs/sdks/portalauthsettings/README.md#updateportalidentityprovider) - Update Identity Provider
 * [DeletePortalIdentityProvider](docs/sdks/portalauthsettings/README.md#deleteportalidentityprovider) - Delete Identity Provider
+* [ListPortalIdpTeamGroupMappings](docs/sdks/portalauthsettings/README.md#listportalidpteamgroupmappings) - List Team Group Mappings
+* [CreatePortalIdpTeamGroupMapping](docs/sdks/portalauthsettings/README.md#createportalidpteamgroupmapping) - Create Team Group Mapping
+* [GetPortalIdpTeamGroupMapping](docs/sdks/portalauthsettings/README.md#getportalidpteamgroupmapping) - Get Team Group Mapping
+* [DeletePortalIdpTeamGroupMapping](docs/sdks/portalauthsettings/README.md#deleteportalidpteamgroupmapping) - Delete Team Group Mapping
 
 ### [PortalCustomDomains](docs/sdks/portalcustomdomains/README.md)
 
@@ -904,6 +1350,7 @@ func main() {
 
 ### [PortalDevelopers](docs/sdks/portaldevelopers/README.md)
 
+* [CreateDeveloper](docs/sdks/portaldevelopers/README.md#createdeveloper) - Create Developer Account
 * [ListPortalDevelopers](docs/sdks/portaldevelopers/README.md#listportaldevelopers) - List Developers
 * [GetDeveloper](docs/sdks/portaldevelopers/README.md#getdeveloper) - Get a Developer
 * [UpdateDeveloper](docs/sdks/portaldevelopers/README.md#updatedeveloper) - Update Developer
@@ -930,6 +1377,35 @@ func main() {
 * [UpdatePortalCustomEmailTemplate](docs/sdks/portalemails/README.md#updateportalcustomemailtemplate) - Update custom email template for a portal
 * [DeletePortalCustomEmailTemplate](docs/sdks/portalemails/README.md#deleteportalcustomemailtemplate) - Delete custom email template
 * [PostPortalCustomEmailTestSend](docs/sdks/portalemails/README.md#postportalcustomemailtestsend) - Send Test Email
+
+### [PortalForms](docs/sdks/portalforms/README.md)
+
+* [CreatePortalForm](docs/sdks/portalforms/README.md#createportalform) - Create Form
+* [ListPortalForms](docs/sdks/portalforms/README.md#listportalforms) - List Forms
+* [GetPortalForm](docs/sdks/portalforms/README.md#getportalform) - Get Form
+* [ReplacePortalForm](docs/sdks/portalforms/README.md#replaceportalform) - Replace Form
+* [DeletePortalForm](docs/sdks/portalforms/README.md#deleteportalform) - Delete Form
+
+### [PortalIntegrations](docs/sdks/portalintegrations/README.md)
+
+* [GetPortalIntegrations](docs/sdks/portalintegrations/README.md#getportalintegrations) - Get Portal Integration Configurations
+* [UpsertPortalIntegrations](docs/sdks/portalintegrations/README.md#upsertportalintegrations) - Replace Integration Configurations
+* [UpdatePortalIntegrations](docs/sdks/portalintegrations/README.md#updateportalintegrations) - Update Integration Configurations
+
+### [PortalMCPRegistryPublications](docs/sdks/portalmcpregistrypublications/README.md)
+
+* [ListPortalMcpRegistryPublications](docs/sdks/portalmcpregistrypublications/README.md#listportalmcpregistrypublications) - List portal MCP registry publications
+* [ListPortalMcpRegistries](docs/sdks/portalmcpregistrypublications/README.md#listportalmcpregistries) - List MCP Registries
+* [ListPortalComputedMcpRegistries](docs/sdks/portalmcpregistrypublications/README.md#listportalcomputedmcpregistries) - List computed MCP Registries
+
+### [PortalPages](docs/sdks/portalpages/README.md)
+
+* [ListPortalPages](docs/sdks/portalpages/README.md#listportalpages) - List Pages
+* [CreatePortalPage](docs/sdks/portalpages/README.md#createportalpage) - Create Page
+* [GetPortalPage](docs/sdks/portalpages/README.md#getportalpage) - Get a Page
+* [UpdatePortalPage](docs/sdks/portalpages/README.md#updateportalpage) - Update Page
+* [DeletePortalPage](docs/sdks/portalpages/README.md#deleteportalpage) - Delete Page
+* [MovePortalPages](docs/sdks/portalpages/README.md#moveportalpages) - Move Page
 
 ### [PortalTeamMembership](docs/sdks/portalteammembership/README.md)
 
@@ -961,6 +1437,23 @@ func main() {
 * [UpdatePortal](docs/sdks/portals/README.md#updateportal) - Update Portal
 * [DeletePortal](docs/sdks/portals/README.md#deleteportal) - Delete Portal
 
+### [PortalsIPAllowList](docs/sdks/portalsipallowlist/README.md)
+
+* [CreatePortalIPAllowList](docs/sdks/portalsipallowlist/README.md#createportalipallowlist) - Create an IP allow list for a portal
+* [ListPortalIPAllowList](docs/sdks/portalsipallowlist/README.md#listportalipallowlist) - List the IP allow list for portal
+* [GetPortalIPAllowList](docs/sdks/portalsipallowlist/README.md#getportalipallowlist) - Get an IP allow list for a portal
+* [PutPortalIPAllowList](docs/sdks/portalsipallowlist/README.md#putportalipallowlist) - Replace an IP allow list for a portal
+* [UpdatePortalIPAllowList](docs/sdks/portalsipallowlist/README.md#updateportalipallowlist) - Update an IP allow list for a portal
+* [DeletePortalIPAllowList](docs/sdks/portalsipallowlist/README.md#deleteportalipallowlist) - Delete an IP allow list from a portal
+
+### [Quotas](docs/sdks/quotas/README.md)
+
+* [ListDefaultQuotas](docs/sdks/quotas/README.md#listdefaultquotas) - List Default Quotas
+* [ListQuotas](docs/sdks/quotas/README.md#listquotas) - List Quotas
+* [CreateQuota](docs/sdks/quotas/README.md#createquota) - Create Quota
+* [FetchQuota](docs/sdks/quotas/README.md#fetchquota) - Get a Quota
+* [UpdateQuota](docs/sdks/quotas/README.md#updatequota) - Update Quota
+
 ### [ResourceActions](docs/sdks/resourceactions/README.md)
 
 * [ListResourceActions](docs/sdks/resourceactions/README.md#listresourceactions) - List Resource Actions
@@ -975,13 +1468,25 @@ func main() {
 * [GetPredefinedRoles](docs/sdks/roles/README.md#getpredefinedroles) - Get Predefined Roles
 * [ListTeamRoles](docs/sdks/roles/README.md#listteamroles) - List Team Roles
 * [TeamsAssignRole](docs/sdks/roles/README.md#teamsassignrole) - Assign Team Role
+* [GetTeamRole](docs/sdks/roles/README.md#getteamrole) - Get Team Role
 * [TeamsRemoveRole](docs/sdks/roles/README.md#teamsremoverole) - Remove Team Role
 * [ListUserRoles](docs/sdks/roles/README.md#listuserroles) - List User Roles
 * [UsersAssignRole](docs/sdks/roles/README.md#usersassignrole) - Assign Role
+* [GetUserRole](docs/sdks/roles/README.md#getuserrole) - Get User Role
 * [UsersRemoveRole](docs/sdks/roles/README.md#usersremoverole) - Remove Role
 
 ### [Routes](docs/sdks/routes/README.md)
 
+* [ListRouteInWorkspace](docs/sdks/routes/README.md#listrouteinworkspace) - List all Routes in a workspace
+* [CreateRouteInWorkspace](docs/sdks/routes/README.md#createrouteinworkspace) - Create a new Route in a workspace
+* [DeleteRouteInWorkspace](docs/sdks/routes/README.md#deleterouteinworkspace) - Delete a Route in a workspace
+* [GetRouteInWorkspace](docs/sdks/routes/README.md#getrouteinworkspace) - Get a Route in a workspace
+* [UpsertRouteInWorkspace](docs/sdks/routes/README.md#upsertrouteinworkspace) - Upsert a Route in a workspace
+* [ListRouteWithServiceInWorkspace](docs/sdks/routes/README.md#listroutewithserviceinworkspace) - List all Routes associated with a Service in a workspace
+* [CreateRouteWithServiceInWorkspace](docs/sdks/routes/README.md#createroutewithserviceinworkspace) - Create a new Route associated with a Service in a workspace
+* [DeleteRouteWithServiceInWorkspace](docs/sdks/routes/README.md#deleteroutewithserviceinworkspace) - Delete a a Route associated with a Service in a workspace
+* [GetRouteWithServiceInWorkspace](docs/sdks/routes/README.md#getroutewithserviceinworkspace) - Get a Route associated with a Service in a workspace
+* [UpsertRouteWithServiceInWorkspace](docs/sdks/routes/README.md#upsertroutewithserviceinworkspace) - Upsert a Route associated with a Service in a workspace
 * [ListRoute](docs/sdks/routes/README.md#listroute) - List all Routes
 * [CreateRoute](docs/sdks/routes/README.md#createroute) - Create a new Route
 * [DeleteRoute](docs/sdks/routes/README.md#deleteroute) - Delete a Route
@@ -1015,6 +1520,11 @@ func main() {
 
 ### [Services](docs/sdks/services/README.md)
 
+* [ListServiceInWorkspace](docs/sdks/services/README.md#listserviceinworkspace) - List all Services in a workspace
+* [CreateServiceInWorkspace](docs/sdks/services/README.md#createserviceinworkspace) - Create a new Service in a workspace
+* [DeleteServiceInWorkspace](docs/sdks/services/README.md#deleteserviceinworkspace) - Delete a Service in a workspace
+* [GetServiceInWorkspace](docs/sdks/services/README.md#getserviceinworkspace) - Get a Service in a workspace
+* [UpsertServiceInWorkspace](docs/sdks/services/README.md#upsertserviceinworkspace) - Upsert a Service in a workspace
 * [ListService](docs/sdks/services/README.md#listservice) - List all Services
 * [CreateService](docs/sdks/services/README.md#createservice) - Create a new Service
 * [DeleteService](docs/sdks/services/README.md#deleteservice) - Delete a Service
@@ -1031,6 +1541,16 @@ func main() {
 
 ### [SNIs](docs/sdks/snis/README.md)
 
+* [ListSniWithCertificateInWorkspace](docs/sdks/snis/README.md#listsniwithcertificateinworkspace) - List all SNIs associated with a Certificate in a workspace
+* [CreateSniWithCertificateInWorkspace](docs/sdks/snis/README.md#createsniwithcertificateinworkspace) - Create a new SNI associated with a Certificate in a workspace
+* [DeleteSniWithCertificateInWorkspace](docs/sdks/snis/README.md#deletesniwithcertificateinworkspace) - Delete a an SNI associated with a Certificate in a workspace
+* [GetSniWithCertificateInWorkspace](docs/sdks/snis/README.md#getsniwithcertificateinworkspace) - Get an SNI associated with a Certificate in a workspace
+* [UpsertSniWithCertificateInWorkspace](docs/sdks/snis/README.md#upsertsniwithcertificateinworkspace) - Upsert an SNI associated with a Certificate in a workspace
+* [ListSniInWorkspace](docs/sdks/snis/README.md#listsniinworkspace) - List all SNIs in a workspace
+* [CreateSniInWorkspace](docs/sdks/snis/README.md#createsniinworkspace) - Create a new SNI in a workspace
+* [DeleteSniInWorkspace](docs/sdks/snis/README.md#deletesniinworkspace) - Delete an SNI in a workspace
+* [GetSniInWorkspace](docs/sdks/snis/README.md#getsniinworkspace) - Get an SNI in a workspace
+* [UpsertSniInWorkspace](docs/sdks/snis/README.md#upsertsniinworkspace) - Upsert a SNI in a workspace
 * [ListSniWithCertificate](docs/sdks/snis/README.md#listsniwithcertificate) - List all SNIs associated with a Certificate
 * [CreateSniWithCertificate](docs/sdks/snis/README.md#createsniwithcertificate) - Create a new SNI associated with a Certificate
 * [DeleteSniWithCertificate](docs/sdks/snis/README.md#deletesniwithcertificate) - Delete a an SNI associated with a Certificate
@@ -1087,6 +1607,7 @@ func main() {
 
 * [GetSystemAccountsAccountIDAssignedRoles](docs/sdks/systemaccountsroles/README.md#getsystemaccountsaccountidassignedroles) - List Assigned Roles for System Account
 * [PostSystemAccountsAccountIDAssignedRoles](docs/sdks/systemaccountsroles/README.md#postsystemaccountsaccountidassignedroles) - Create Assigned Role for System Account
+* [GetSystemAccountRole](docs/sdks/systemaccountsroles/README.md#getsystemaccountrole) - Get System Account Role
 * [DeleteSystemAccountsAccountIDAssignedRolesRoleID](docs/sdks/systemaccountsroles/README.md#deletesystemaccountsaccountidassignedrolesroleid) - Delete Assigned Role from System Account
 
 ### [SystemAccountsTeamMembership](docs/sdks/systemaccountsteammembership/README.md)
@@ -1098,6 +1619,13 @@ func main() {
 
 ### [Targets](docs/sdks/targets/README.md)
 
+* [ListTargets](docs/sdks/targets/README.md#listtargets) - List all targets for a control plane
+* [ListTargetsInWorkspace](docs/sdks/targets/README.md#listtargetsinworkspace) - List all targets for a control plane in a workspace
+* [ListTargetWithUpstreamInWorkspace](docs/sdks/targets/README.md#listtargetwithupstreaminworkspace) - List all Targets associated with an Upstream in a workspace
+* [CreateTargetWithUpstreamInWorkspace](docs/sdks/targets/README.md#createtargetwithupstreaminworkspace) - Create a new Target associated with an Upstream in a workspace
+* [DeleteTargetWithUpstreamInWorkspace](docs/sdks/targets/README.md#deletetargetwithupstreaminworkspace) - Delete a a Target associated with an Upstream in a workspace
+* [GetTargetWithUpstreamInWorkspace](docs/sdks/targets/README.md#gettargetwithupstreaminworkspace) - Get a Target associated with an Upstream in a workspace
+* [UpsertTargetWithUpstreamInWorkspace](docs/sdks/targets/README.md#upserttargetwithupstreaminworkspace) - Upsert a Target associated with an Upstream in a workspace
 * [ListTargetWithUpstream](docs/sdks/targets/README.md#listtargetwithupstream) - List all Targets associated with an Upstream
 * [CreateTargetWithUpstream](docs/sdks/targets/README.md#createtargetwithupstream) - Create a new Target associated with an Upstream
 * [DeleteTargetWithUpstream](docs/sdks/targets/README.md#deletetargetwithupstream) - Delete a a Target associated with an Upstream
@@ -1121,6 +1649,11 @@ func main() {
 
 ### [Upstreams](docs/sdks/upstreams/README.md)
 
+* [ListUpstreamInWorkspace](docs/sdks/upstreams/README.md#listupstreaminworkspace) - List all Upstreams in a workspace
+* [CreateUpstreamInWorkspace](docs/sdks/upstreams/README.md#createupstreaminworkspace) - Create a new Upstream in a workspace
+* [DeleteUpstreamInWorkspace](docs/sdks/upstreams/README.md#deleteupstreaminworkspace) - Delete an Upstream in a workspace
+* [GetUpstreamInWorkspace](docs/sdks/upstreams/README.md#getupstreaminworkspace) - Get an Upstream in a workspace
+* [UpsertUpstreamInWorkspace](docs/sdks/upstreams/README.md#upsertupstreaminworkspace) - Upsert a Upstream in a workspace
 * [ListUpstream](docs/sdks/upstreams/README.md#listupstream) - List all Upstreams
 * [CreateUpstream](docs/sdks/upstreams/README.md#createupstream) - Create a new Upstream
 * [DeleteUpstream](docs/sdks/upstreams/README.md#deleteupstream) - Delete an Upstream
@@ -1138,6 +1671,11 @@ func main() {
 
 ### [Vaults](docs/sdks/vaults/README.md)
 
+* [ListVaultInWorkspace](docs/sdks/vaults/README.md#listvaultinworkspace) - List all Vaults in a workspace
+* [CreateVaultInWorkspace](docs/sdks/vaults/README.md#createvaultinworkspace) - Create a new Vault in a workspace
+* [DeleteVaultInWorkspace](docs/sdks/vaults/README.md#deletevaultinworkspace) - Delete a Vault in a workspace
+* [GetVaultInWorkspace](docs/sdks/vaults/README.md#getvaultinworkspace) - Get a Vault in a workspace
+* [UpsertVaultInWorkspace](docs/sdks/vaults/README.md#upsertvaultinworkspace) - Upsert a Vault in a workspace
 * [ListVault](docs/sdks/vaults/README.md#listvault) - List all Vaults
 * [CreateVault](docs/sdks/vaults/README.md#createvault) - Create a new Vault
 * [DeleteVault](docs/sdks/vaults/README.md#deletevault) - Delete a Vault
@@ -1165,6 +1703,14 @@ func main() {
 * [DeleteServiceVulnerabilityDismissal](docs/sdks/vulnerabilities/README.md#deleteservicevulnerabilitydismissal) - Delete Service Vulnerability Dismissal
 * [ListCatalogVulnerabilityServices](docs/sdks/vulnerabilities/README.md#listcatalogvulnerabilityservices) - List Catalog Vulnerability-Services
 * [QueryVulnerabilitiesMetrics](docs/sdks/vulnerabilities/README.md#queryvulnerabilitiesmetrics) - Query Vulnerabilities Metrics
+
+### [Workspaces](docs/sdks/workspaces/README.md)
+
+* [ListWorkspaces](docs/sdks/workspaces/README.md#listworkspaces) - List all Workspaces
+* [CreateWorkspace](docs/sdks/workspaces/README.md#createworkspace) - Create a Workspace
+* [GetWorkspace](docs/sdks/workspaces/README.md#getworkspace) - Get a Workspace
+* [DeleteWorkspace](docs/sdks/workspaces/README.md#deleteworkspace) - Delete a Workspace
+* [UpsertWorkspace](docs/sdks/workspaces/README.md#upsertworkspace) - Upsert a Workspace
 
 </details>
 <!-- End Available Resources and Operations [operations] -->

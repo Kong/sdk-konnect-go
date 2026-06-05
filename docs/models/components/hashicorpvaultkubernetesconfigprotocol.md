@@ -1,0 +1,24 @@
+# HashiCorpVaultKubernetesConfigProtocol
+
+The protocol to connect with.
+
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.HashiCorpVaultKubernetesConfigProtocolHTTP
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.HashiCorpVaultKubernetesConfigProtocol("custom_value")
+```
+
+
+## Values
+
+| Name                                          | Value                                         |
+| --------------------------------------------- | --------------------------------------------- |
+| `HashiCorpVaultKubernetesConfigProtocolHTTP`  | http                                          |
+| `HashiCorpVaultKubernetesConfigProtocolHTTPS` | https                                         |

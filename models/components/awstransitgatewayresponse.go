@@ -51,9 +51,9 @@ type AwsTransitGatewayResponse struct {
 	// CIDR blocks for constructing a route table for the transit gateway, when attaching to the owning
 	// network.
 	//
-	CidrBlocks                     []string                          `json:"cidr_blocks"`
-	TransitGatewayAttachmentConfig AwsTransitGatewayAttachmentConfig `json:"transit_gateway_attachment_config"`
-	ID                             string                            `json:"id"`
+	CidrBlocks                     []string                                     `json:"cidr_blocks"`
+	TransitGatewayAttachmentConfig AwsTransitGatewayAttachmentConfigForResponse `json:"transit_gateway_attachment_config"`
+	ID                             string                                       `json:"id"`
 	// The current state of the Transit Gateway. Possible values:
 	// - `created` - The attachment has been created but is not attached to transit gateway.
 	// - `initializing` - The attachment is in the process of being initialized and is setting up necessary resources.
@@ -62,6 +62,7 @@ type AwsTransitGatewayResponse struct {
 	// - `ready` - The transit gateway attachment is fully operational and can route traffic as configured.
 	// - `terminating` - The attachment is in the process of being deleted and is no longer accepting new traffic.
 	// - `terminated` - The attachment has been fully deleted and is no longer available.
+	// - `error` - The attachment is in an error state.
 	//
 	State TransitGatewayState `json:"state"`
 	// Metadata describing the backing state of the transit gateway and why it may be in an erroneous state.
@@ -109,9 +110,9 @@ func (a *AwsTransitGatewayResponse) GetCidrBlocks() []string {
 	return a.CidrBlocks
 }
 
-func (a *AwsTransitGatewayResponse) GetTransitGatewayAttachmentConfig() AwsTransitGatewayAttachmentConfig {
+func (a *AwsTransitGatewayResponse) GetTransitGatewayAttachmentConfig() AwsTransitGatewayAttachmentConfigForResponse {
 	if a == nil {
-		return AwsTransitGatewayAttachmentConfig{}
+		return AwsTransitGatewayAttachmentConfigForResponse{}
 	}
 	return a.TransitGatewayAttachmentConfig
 }

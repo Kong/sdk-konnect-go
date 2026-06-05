@@ -1,6 +1,6 @@
 # ListPortalSnippetsResponse
 
-A paginated list of custom pages in a portal.
+A paginated list of custom snippets in a portal.
 
 
 ## Fields

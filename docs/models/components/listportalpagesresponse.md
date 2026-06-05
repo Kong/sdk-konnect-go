@@ -1,6 +1,6 @@
 # ListPortalPagesResponse
 
-A paginated list of custom pages in a portal.
+Tree of custom pages in a portal. Not paginated.
 
 
 ## Fields

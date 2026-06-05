@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### OIDCIdentityProviderConfig
+### OIDCIdentityProviderConfigOutput
 
 ```go
-identityProviderConfig := components.CreateIdentityProviderConfigOIDCIdentityProviderConfig(components.OIDCIdentityProviderConfig{/* values here */})
+identityProviderConfig := components.CreateIdentityProviderConfigOIDCIdentityProviderConfigOutput(components.OIDCIdentityProviderConfigOutput{/* values here */})
 ```
 
 ### SAMLIdentityProviderConfig
@@ -15,3 +15,15 @@ identityProviderConfig := components.CreateIdentityProviderConfigOIDCIdentityPro
 identityProviderConfig := components.CreateIdentityProviderConfigSAMLIdentityProviderConfig(components.SAMLIdentityProviderConfig{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch identityProviderConfig.Type {
+	case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+		// identityProviderConfig.OIDCIdentityProviderConfigOutput is populated
+	case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+		// identityProviderConfig.SAMLIdentityProviderConfig is populated
+}
+```

@@ -34,6 +34,8 @@ func (e *CreateDcrProviderRequestKongIdentityProviderType) UnmarshalJSON(data []
 // CreateDcrProviderRequestKongIdentity - Request body for creating a Kong Identity DCR provider.
 type CreateDcrProviderRequestKongIdentity struct {
 	ProviderType CreateDcrProviderRequestKongIdentityProviderType `json:"provider_type"`
+	// Payload to create a Kong Identity DCR provider.
+	DcrConfig *CreateDcrConfigKongIdentityInRequest `json:"dcr_config,omitempty"`
 	// The name of the DCR provider. This is used to identify the DCR provider in the Konnect UI.
 	//
 	Name string `json:"name"`
@@ -64,6 +66,13 @@ func (c *CreateDcrProviderRequestKongIdentity) GetProviderType() CreateDcrProvid
 		return CreateDcrProviderRequestKongIdentityProviderType("")
 	}
 	return c.ProviderType
+}
+
+func (c *CreateDcrProviderRequestKongIdentity) GetDcrConfig() *CreateDcrConfigKongIdentityInRequest {
+	if c == nil {
+		return nil
+	}
+	return c.DcrConfig
 }
 
 func (c *CreateDcrProviderRequestKongIdentity) GetName() string {

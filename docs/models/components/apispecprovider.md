@@ -29,3 +29,19 @@ apiSpecProvider := components.CreateAPISpecProviderIntegrationAPISpecProvider(co
 apiSpecProvider := components.CreateAPISpecProviderResourceBoundIntegrationAPISpecProvider(components.ResourceBoundIntegrationAPISpecProvider{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch apiSpecProvider.Type {
+	case components.APISpecProviderTypeURLAPISpecProvider:
+		// apiSpecProvider.URLAPISpecProvider is populated
+	case components.APISpecProviderTypeRawAPISpecProvider:
+		// apiSpecProvider.RawAPISpecProvider is populated
+	case components.APISpecProviderTypeIntegrationAPISpecProvider:
+		// apiSpecProvider.IntegrationAPISpecProvider is populated
+	case components.APISpecProviderTypeResourceBoundIntegrationAPISpecProvider:
+		// apiSpecProvider.ResourceBoundIntegrationAPISpecProvider is populated
+}
+```

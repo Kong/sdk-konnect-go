@@ -64,6 +64,8 @@ type UpdatePortal struct {
 	AuthenticationEnabled *bool `default:"true" json:"authentication_enabled"`
 	// Whether the portal resources are protected by Role Based Access Control (RBAC). If enabled, developers view or register for APIs until unless assigned to teams with access to view and consume specific APIs. Authentication must be enabled to use RBAC.
 	RbacEnabled *bool `default:"false" json:"rbac_enabled"`
+	// Whether ip allow list is enabled for the portal.
+	SiprEnabled *bool `default:"false" json:"sipr_enabled"`
 	// The default visibility of APIs in the portal. If set to `public`, newly published APIs are visible to unauthenticated developers. If set to `private`, newly published APIs are hidden from unauthenticated developers.
 	DefaultAPIVisibility *UpdatePortalDefaultAPIVisibility `json:"default_api_visibility,omitempty"`
 	// The default visibility of pages in the portal. If set to `public`, newly created pages are visible to unauthenticated developers. If set to `private`, newly created pages are hidden from unauthenticated developers.
@@ -81,6 +83,8 @@ type UpdatePortal struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]*string `json:"labels,omitempty"`
+	// When enabled, portal registration notifications include the registering developer's identifying information (such as name and email).
+	NotificationsDeveloperPiiVisibilityEnabled *bool `default:"false" json:"notifications_developer_pii_visibility_enabled"`
 }
 
 func (u UpdatePortal) MarshalJSON() ([]byte, error) {
@@ -129,6 +133,13 @@ func (u *UpdatePortal) GetRbacEnabled() *bool {
 	return u.RbacEnabled
 }
 
+func (u *UpdatePortal) GetSiprEnabled() *bool {
+	if u == nil {
+		return nil
+	}
+	return u.SiprEnabled
+}
+
 func (u *UpdatePortal) GetDefaultAPIVisibility() *UpdatePortalDefaultAPIVisibility {
 	if u == nil {
 		return nil
@@ -169,4 +180,11 @@ func (u *UpdatePortal) GetLabels() map[string]*string {
 		return nil
 	}
 	return u.Labels
+}
+
+func (u *UpdatePortal) GetNotificationsDeveloperPiiVisibilityEnabled() *bool {
+	if u == nil {
+		return nil
+	}
+	return u.NotificationsDeveloperPiiVisibilityEnabled
 }

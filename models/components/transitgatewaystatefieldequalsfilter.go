@@ -31,8 +31,8 @@ const (
 
 // TransitGatewayStateFieldEqualsFilter - Filter transit-gateway state by exact match.
 type TransitGatewayStateFieldEqualsFilter struct {
-	TransitGatewayState                      *TransitGatewayState                      `queryParam:"inline,name=TransitGatewayStateFieldEqualsFilter" union:"member"`
-	TransitGatewayStateFieldEqualsComparison *TransitGatewayStateFieldEqualsComparison `queryParam:"inline,name=TransitGatewayStateFieldEqualsFilter" union:"member"`
+	TransitGatewayState                      *TransitGatewayState                      `queryParam:"inline" union:"member"`
+	TransitGatewayStateFieldEqualsComparison *TransitGatewayStateFieldEqualsComparison `queryParam:"inline" union:"member"`
 
 	Type TransitGatewayStateFieldEqualsFilterType
 }

@@ -650,6 +650,9 @@ func (d *DcrProviderAuth0DcrConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// #region class-body-dcrproviderauth0dcrconfig
+// #endregion class-body-dcrproviderauth0dcrconfig
+
 // DCRProviderAuth0DCRProviderAuth0 - A DCR provider for Auth0 -- only properties not included in DcrProviderBase
 type DCRProviderAuth0DCRProviderAuth0 struct {
 	// The type of DCR provider. Can be one of the following - auth0, azureAd, curity, okta, http
@@ -760,97 +763,100 @@ func (d *DCRProviderAuth0DCRProviderAuth0) GetUpdatedAt() time.Time {
 	return d.UpdatedAt
 }
 
+// #region class-body-dcrproviderauth0dcrproviderauth0
+// #endregion class-body-dcrproviderauth0dcrproviderauth0
+
 type DcrProviderResponseType string
 
 const (
-	DcrProviderResponseTypeDcrProviderAuth0        DcrProviderResponseType = "DcrProviderAuth0"
-	DcrProviderResponseTypeDcrProviderAzureAd      DcrProviderResponseType = "DcrProviderAzureAd"
-	DcrProviderResponseTypeDcrProviderCurity       DcrProviderResponseType = "DcrProviderCurity"
-	DcrProviderResponseTypeDcrProviderOkta         DcrProviderResponseType = "DcrProviderOkta"
-	DcrProviderResponseTypeDcrProviderKongIdentity DcrProviderResponseType = "DcrProviderKongIdentity"
-	DcrProviderResponseTypeDcrProviderHTTP         DcrProviderResponseType = "DcrProviderHttp"
+	DcrProviderResponseTypeAuth0        DcrProviderResponseType = "auth0"
+	DcrProviderResponseTypeAzureAd      DcrProviderResponseType = "azureAd"
+	DcrProviderResponseTypeCurity       DcrProviderResponseType = "curity"
+	DcrProviderResponseTypeOkta         DcrProviderResponseType = "okta"
+	DcrProviderResponseTypeKongIdentity DcrProviderResponseType = "kongIdentity"
+	DcrProviderResponseTypeHTTP         DcrProviderResponseType = "http"
 )
 
 // DcrProviderResponse - A response containing a single DCR provider object. Sensitive fields will be removed from the response.
 type DcrProviderResponse struct {
-	DCRProviderAuth0DCRProviderAuth0               *DCRProviderAuth0DCRProviderAuth0               `queryParam:"inline,name=DcrProviderResponse" union:"member"`
-	DCRProviderAzureADDCRProviderAzureAD           *DCRProviderAzureADDCRProviderAzureAD           `queryParam:"inline,name=DcrProviderResponse" union:"member"`
-	DCRProviderCurityDCRProviderCurity             *DCRProviderCurityDCRProviderCurity             `queryParam:"inline,name=DcrProviderResponse" union:"member"`
-	DCRProviderOKTADCRProviderOKTA                 *DCRProviderOKTADCRProviderOKTA                 `queryParam:"inline,name=DcrProviderResponse" union:"member"`
-	DCRProviderKongIdentityDCRProviderKongIdentity *DCRProviderKongIdentityDCRProviderKongIdentity `queryParam:"inline,name=DcrProviderResponse" union:"member"`
-	DCRProviderHTTPDCRProviderHTTP                 *DCRProviderHTTPDCRProviderHTTP                 `queryParam:"inline,name=DcrProviderResponse" union:"member"`
+	DCRProviderAuth0DCRProviderAuth0               *DCRProviderAuth0DCRProviderAuth0               `queryParam:"inline" union:"member"`
+	DCRProviderAzureADDCRProviderAzureAD           *DCRProviderAzureADDCRProviderAzureAD           `queryParam:"inline" union:"member"`
+	DCRProviderCurityDCRProviderCurity             *DCRProviderCurityDCRProviderCurity             `queryParam:"inline" union:"member"`
+	DCRProviderOKTADCRProviderOKTA                 *DCRProviderOKTADCRProviderOKTA                 `queryParam:"inline" union:"member"`
+	DCRProviderKongIdentityDCRProviderKongIdentity *DCRProviderKongIdentityDCRProviderKongIdentity `queryParam:"inline" union:"member"`
+	DCRProviderHTTPDCRProviderHTTP                 *DCRProviderHTTPDCRProviderHTTP                 `queryParam:"inline" union:"member"`
 
 	Type DcrProviderResponseType
 }
 
-func CreateDcrProviderResponseDcrProviderAuth0(dcrProviderAuth0 DCRProviderAuth0DCRProviderAuth0) DcrProviderResponse {
-	typ := DcrProviderResponseTypeDcrProviderAuth0
+func CreateDcrProviderResponseAuth0(auth0 DCRProviderAuth0DCRProviderAuth0) DcrProviderResponse {
+	typ := DcrProviderResponseTypeAuth0
 
 	typStr := string(typ)
-	dcrProviderAuth0.ProviderType = typStr
+	auth0.ProviderType = typStr
 
 	return DcrProviderResponse{
-		DCRProviderAuth0DCRProviderAuth0: &dcrProviderAuth0,
+		DCRProviderAuth0DCRProviderAuth0: &auth0,
 		Type:                             typ,
 	}
 }
 
-func CreateDcrProviderResponseDcrProviderAzureAd(dcrProviderAzureAd DCRProviderAzureADDCRProviderAzureAD) DcrProviderResponse {
-	typ := DcrProviderResponseTypeDcrProviderAzureAd
+func CreateDcrProviderResponseAzureAd(azureAd DCRProviderAzureADDCRProviderAzureAD) DcrProviderResponse {
+	typ := DcrProviderResponseTypeAzureAd
 
 	typStr := string(typ)
-	dcrProviderAzureAd.ProviderType = typStr
+	azureAd.ProviderType = typStr
 
 	return DcrProviderResponse{
-		DCRProviderAzureADDCRProviderAzureAD: &dcrProviderAzureAd,
+		DCRProviderAzureADDCRProviderAzureAD: &azureAd,
 		Type:                                 typ,
 	}
 }
 
-func CreateDcrProviderResponseDcrProviderCurity(dcrProviderCurity DCRProviderCurityDCRProviderCurity) DcrProviderResponse {
-	typ := DcrProviderResponseTypeDcrProviderCurity
+func CreateDcrProviderResponseCurity(curity DCRProviderCurityDCRProviderCurity) DcrProviderResponse {
+	typ := DcrProviderResponseTypeCurity
 
 	typStr := string(typ)
-	dcrProviderCurity.ProviderType = typStr
+	curity.ProviderType = typStr
 
 	return DcrProviderResponse{
-		DCRProviderCurityDCRProviderCurity: &dcrProviderCurity,
+		DCRProviderCurityDCRProviderCurity: &curity,
 		Type:                               typ,
 	}
 }
 
-func CreateDcrProviderResponseDcrProviderOkta(dcrProviderOkta DCRProviderOKTADCRProviderOKTA) DcrProviderResponse {
-	typ := DcrProviderResponseTypeDcrProviderOkta
+func CreateDcrProviderResponseOkta(okta DCRProviderOKTADCRProviderOKTA) DcrProviderResponse {
+	typ := DcrProviderResponseTypeOkta
 
 	typStr := string(typ)
-	dcrProviderOkta.ProviderType = typStr
+	okta.ProviderType = typStr
 
 	return DcrProviderResponse{
-		DCRProviderOKTADCRProviderOKTA: &dcrProviderOkta,
+		DCRProviderOKTADCRProviderOKTA: &okta,
 		Type:                           typ,
 	}
 }
 
-func CreateDcrProviderResponseDcrProviderKongIdentity(dcrProviderKongIdentity DCRProviderKongIdentityDCRProviderKongIdentity) DcrProviderResponse {
-	typ := DcrProviderResponseTypeDcrProviderKongIdentity
+func CreateDcrProviderResponseKongIdentity(kongIdentity DCRProviderKongIdentityDCRProviderKongIdentity) DcrProviderResponse {
+	typ := DcrProviderResponseTypeKongIdentity
 
 	typStr := string(typ)
-	dcrProviderKongIdentity.ProviderType = typStr
+	kongIdentity.ProviderType = typStr
 
 	return DcrProviderResponse{
-		DCRProviderKongIdentityDCRProviderKongIdentity: &dcrProviderKongIdentity,
+		DCRProviderKongIdentityDCRProviderKongIdentity: &kongIdentity,
 		Type: typ,
 	}
 }
 
-func CreateDcrProviderResponseDcrProviderHTTP(dcrProviderHTTP DCRProviderHTTPDCRProviderHTTP) DcrProviderResponse {
-	typ := DcrProviderResponseTypeDcrProviderHTTP
+func CreateDcrProviderResponseHTTP(http DCRProviderHTTPDCRProviderHTTP) DcrProviderResponse {
+	typ := DcrProviderResponseTypeHTTP
 
 	typStr := string(typ)
-	dcrProviderHTTP.ProviderType = typStr
+	http.ProviderType = typStr
 
 	return DcrProviderResponse{
-		DCRProviderHTTPDCRProviderHTTP: &dcrProviderHTTP,
+		DCRProviderHTTPDCRProviderHTTP: &http,
 		Type:                           typ,
 	}
 }
@@ -867,59 +873,59 @@ func (u *DcrProviderResponse) UnmarshalJSON(data []byte) error {
 	}
 
 	switch dis.ProviderType {
-	case "DcrProviderAuth0":
+	case "auth0":
 		dcrProviderAuth0DCRProviderAuth0 := new(DCRProviderAuth0DCRProviderAuth0)
 		if err := utils.UnmarshalJSON(data, &dcrProviderAuth0DCRProviderAuth0, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == DcrProviderAuth0) type DCRProviderAuth0DCRProviderAuth0 within DcrProviderResponse: %w", string(data), err)
+			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == auth0) type DCRProviderAuth0DCRProviderAuth0 within DcrProviderResponse: %w", string(data), err)
 		}
 
 		u.DCRProviderAuth0DCRProviderAuth0 = dcrProviderAuth0DCRProviderAuth0
-		u.Type = DcrProviderResponseTypeDcrProviderAuth0
+		u.Type = DcrProviderResponseTypeAuth0
 		return nil
-	case "DcrProviderAzureAd":
+	case "azureAd":
 		dcrProviderAzureADDCRProviderAzureAD := new(DCRProviderAzureADDCRProviderAzureAD)
 		if err := utils.UnmarshalJSON(data, &dcrProviderAzureADDCRProviderAzureAD, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == DcrProviderAzureAd) type DCRProviderAzureADDCRProviderAzureAD within DcrProviderResponse: %w", string(data), err)
+			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == azureAd) type DCRProviderAzureADDCRProviderAzureAD within DcrProviderResponse: %w", string(data), err)
 		}
 
 		u.DCRProviderAzureADDCRProviderAzureAD = dcrProviderAzureADDCRProviderAzureAD
-		u.Type = DcrProviderResponseTypeDcrProviderAzureAd
+		u.Type = DcrProviderResponseTypeAzureAd
 		return nil
-	case "DcrProviderCurity":
+	case "curity":
 		dcrProviderCurityDCRProviderCurity := new(DCRProviderCurityDCRProviderCurity)
 		if err := utils.UnmarshalJSON(data, &dcrProviderCurityDCRProviderCurity, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == DcrProviderCurity) type DCRProviderCurityDCRProviderCurity within DcrProviderResponse: %w", string(data), err)
+			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == curity) type DCRProviderCurityDCRProviderCurity within DcrProviderResponse: %w", string(data), err)
 		}
 
 		u.DCRProviderCurityDCRProviderCurity = dcrProviderCurityDCRProviderCurity
-		u.Type = DcrProviderResponseTypeDcrProviderCurity
+		u.Type = DcrProviderResponseTypeCurity
 		return nil
-	case "DcrProviderOkta":
+	case "okta":
 		dcrProviderOKTADCRProviderOKTA := new(DCRProviderOKTADCRProviderOKTA)
 		if err := utils.UnmarshalJSON(data, &dcrProviderOKTADCRProviderOKTA, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == DcrProviderOkta) type DCRProviderOKTADCRProviderOKTA within DcrProviderResponse: %w", string(data), err)
+			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == okta) type DCRProviderOKTADCRProviderOKTA within DcrProviderResponse: %w", string(data), err)
 		}
 
 		u.DCRProviderOKTADCRProviderOKTA = dcrProviderOKTADCRProviderOKTA
-		u.Type = DcrProviderResponseTypeDcrProviderOkta
+		u.Type = DcrProviderResponseTypeOkta
 		return nil
-	case "DcrProviderKongIdentity":
+	case "kongIdentity":
 		dcrProviderKongIdentityDCRProviderKongIdentity := new(DCRProviderKongIdentityDCRProviderKongIdentity)
 		if err := utils.UnmarshalJSON(data, &dcrProviderKongIdentityDCRProviderKongIdentity, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == DcrProviderKongIdentity) type DCRProviderKongIdentityDCRProviderKongIdentity within DcrProviderResponse: %w", string(data), err)
+			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == kongIdentity) type DCRProviderKongIdentityDCRProviderKongIdentity within DcrProviderResponse: %w", string(data), err)
 		}
 
 		u.DCRProviderKongIdentityDCRProviderKongIdentity = dcrProviderKongIdentityDCRProviderKongIdentity
-		u.Type = DcrProviderResponseTypeDcrProviderKongIdentity
+		u.Type = DcrProviderResponseTypeKongIdentity
 		return nil
-	case "DcrProviderHttp":
+	case "http":
 		dcrProviderHTTPDCRProviderHTTP := new(DCRProviderHTTPDCRProviderHTTP)
 		if err := utils.UnmarshalJSON(data, &dcrProviderHTTPDCRProviderHTTP, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == DcrProviderHttp) type DCRProviderHTTPDCRProviderHTTP within DcrProviderResponse: %w", string(data), err)
+			return fmt.Errorf("could not unmarshal `%s` into expected (ProviderType == http) type DCRProviderHTTPDCRProviderHTTP within DcrProviderResponse: %w", string(data), err)
 		}
 
 		u.DCRProviderHTTPDCRProviderHTTP = dcrProviderHTTPDCRProviderHTTP
-		u.Type = DcrProviderResponseTypeDcrProviderHTTP
+		u.Type = DcrProviderResponseTypeHTTP
 		return nil
 	}
 

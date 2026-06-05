@@ -74,6 +74,9 @@ func (v *VulnerabilitiesMetricsFilterByCVE2) GetField() VulnerabilitiesMetricsFi
 	return v.Field
 }
 
+// #region class-body-vulnerabilitiesmetricsfilterbycve2
+// #endregion class-body-vulnerabilitiesmetricsfilterbycve2
+
 type EmptyValueMetricsFilterVulnerabilitiesMetricsFilterByCVEField string
 
 const (
@@ -139,8 +142,8 @@ const (
 
 // VulnerabilitiesMetricsFilterByCVE - Filters a metrics query by `cve_id`.
 type VulnerabilitiesMetricsFilterByCVE struct {
-	VulnerabilitiesMetricsFilterByCVEEmptyValueMetricsFilter *VulnerabilitiesMetricsFilterByCVEEmptyValueMetricsFilter `queryParam:"inline,name=VulnerabilitiesMetricsFilterByCVE" union:"member"`
-	VulnerabilitiesMetricsFilterByCVE2                       *VulnerabilitiesMetricsFilterByCVE2                       `queryParam:"inline,name=VulnerabilitiesMetricsFilterByCVE" union:"member"`
+	VulnerabilitiesMetricsFilterByCVEEmptyValueMetricsFilter *VulnerabilitiesMetricsFilterByCVEEmptyValueMetricsFilter `queryParam:"inline" union:"member"`
+	VulnerabilitiesMetricsFilterByCVE2                       *VulnerabilitiesMetricsFilterByCVE2                       `queryParam:"inline" union:"member"`
 
 	Type VulnerabilitiesMetricsFilterByCVEType
 }

@@ -15,7 +15,7 @@ const (
 )
 
 type SuggestionRuleFilterParametersActionType struct {
-	StringFieldFilterExact *StringFieldFilterExact `queryParam:"inline,name=action_type" union:"member"`
+	StringFieldFilterExact *StringFieldFilterExact `queryParam:"inline" union:"member"`
 
 	Type SuggestionRuleFilterParametersActionTypeType
 }

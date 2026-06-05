@@ -1,0 +1,10 @@
+# ListSubscriptionAddonsRequest
+
+
+## Fields
+
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `SubscriptionID`                                                                  | `string`                                                                          | :heavy_check_mark:                                                                | N/A                                                                               | 01G65Z755AFWAKHE12NY0CQ9FH                                                        |
+| `Page`                                                                            | [*components.PagePaginationQuery](../../models/components/pagepaginationquery.md) | :heavy_minus_sign:                                                                | Determines which page of the collection to retrieve.                              |                                                                                   |
+| `Sort`                                                                            | `*string`                                                                         | :heavy_minus_sign:                                                                | N/A                                                                               | created_at desc                                                                   |

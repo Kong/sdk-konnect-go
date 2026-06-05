@@ -45,7 +45,19 @@ func main() {
         log.Fatal(err)
     }
     if res.TeamCollection != nil {
-        // handle response
+        for {
+            // handle items
+
+            res, err = res.Next()
+
+            if err != nil {
+                // handle error
+            }
+
+            if res == nil {
+                break
+            }
+        }
     }
 }
 ```
@@ -173,7 +185,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `teamID`                                                 | *string*                                                 | :heavy_check_mark:                                       | The team ID                                              | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `teamID`                                                 | `string`                                                 | :heavy_check_mark:                                       | The team ID                                              | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -235,7 +247,7 @@ func main() {
 | Parameter                                                       | Type                                                            | Required                                                        | Description                                                     | Example                                                         |
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
 | `ctx`                                                           | [context.Context](https://pkg.go.dev/context#Context)           | :heavy_check_mark:                                              | The context to use for the request.                             |                                                                 |
-| `teamID`                                                        | *string*                                                        | :heavy_check_mark:                                              | The team ID                                                     | d32d905a-ed33-46a3-a093-d8f536af9a8a                            |
+| `teamID`                                                        | `string`                                                        | :heavy_check_mark:                                              | The team ID                                                     | d32d905a-ed33-46a3-a093-d8f536af9a8a                            |
 | `updateTeam`                                                    | [*components.UpdateTeam](../../models/components/updateteam.md) | :heavy_minus_sign:                                              | The request schema for the update team request.                 |                                                                 |
 | `opts`                                                          | [][operations.Option](../../models/operations/option.md)        | :heavy_minus_sign:                                              | The options for this request.                                   |                                                                 |
 
@@ -292,7 +304,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `teamID`                                                 | *string*                                                 | :heavy_check_mark:                                       | The team ID                                              | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `teamID`                                                 | `string`                                                 | :heavy_check_mark:                                       | The team ID                                              | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response

@@ -186,10 +186,14 @@ func (o *OAuthConfig1) GetRollingRefreshExpSeconds() *float64 {
 	return o.RollingRefreshExpSeconds
 }
 
+// #region class-body-oauthconfig1
+// #endregion class-body-oauthconfig1
+
 // OAuth - Defines the OAuth 2.0 authorization strategy used by an integration.
 // This schema provides all necessary information for the platform to initiate
 // and manage OAuth-based authorization flows on behalf of customers.
 type OAuth struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_ string `const:"oauth" json:"type"`
 	// A list of field names from the `config` object (e.g., `client_id`, `authorization_endpoint`, etc)
 	// that can be overridden on a per-customer basis. When a field is listed here, the catalog allows

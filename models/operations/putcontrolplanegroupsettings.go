@@ -9,15 +9,15 @@ import (
 
 type PutControlPlaneGroupSettingsRequest struct {
 	// ID of a control plane group
-	ID            string                    `pathParam:"style=simple,explode=false,name=id"`
-	GroupSettings *components.GroupSettings `request:"mediaType=application/json"`
+	ControlPlaneID string                    `pathParam:"style=simple,explode=false,name=controlPlaneId"`
+	GroupSettings  *components.GroupSettings `request:"mediaType=application/json"`
 }
 
-func (p *PutControlPlaneGroupSettingsRequest) GetID() string {
+func (p *PutControlPlaneGroupSettingsRequest) GetControlPlaneID() string {
 	if p == nil {
 		return ""
 	}
-	return p.ID
+	return p.ControlPlaneID
 }
 
 func (p *PutControlPlaneGroupSettingsRequest) GetGroupSettings() *components.GroupSettings {

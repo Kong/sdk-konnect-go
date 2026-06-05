@@ -51,6 +51,9 @@ func main() {
         IntegrationName: "aws-lambda",
         Name: "aws-lambda-prod",
         DisplayName: "AWS (prod)",
+        Labels: map[string]string{
+            "env": "test",
+        },
         Config: "<value>",
     })
     if err != nil {
@@ -199,7 +202,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | The `id` of the integration instance.                    | 3f51fa25-310a-421d-bd1a-007f859021a3                     |
+| `id`                                                     | `string`                                                 | :heavy_check_mark:                                       | The `id` of the integration instance.                    | 3f51fa25-310a-421d-bd1a-007f859021a3                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -244,6 +247,9 @@ func main() {
     res, err := s.IntegrationInstances.UpdateIntegrationInstance(ctx, "3f51fa25-310a-421d-bd1a-007f859021a3", components.UpdateIntegrationInstance{
         Name: sdkkonnectgo.Pointer("aws-lambda-prod"),
         DisplayName: sdkkonnectgo.Pointer("AWS (prod)"),
+        Labels: map[string]*string{
+            "env": sdkkonnectgo.Pointer("test"),
+        },
     })
     if err != nil {
         log.Fatal(err)
@@ -259,7 +265,7 @@ func main() {
 | Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |                                                                                              |
-| `id`                                                                                         | *string*                                                                                     | :heavy_check_mark:                                                                           | The `id` of the integration instance.                                                        | 3f51fa25-310a-421d-bd1a-007f859021a3                                                         |
+| `id`                                                                                         | `string`                                                                                     | :heavy_check_mark:                                                                           | The `id` of the integration instance.                                                        | 3f51fa25-310a-421d-bd1a-007f859021a3                                                         |
 | `updateIntegrationInstance`                                                                  | [components.UpdateIntegrationInstance](../../models/components/updateintegrationinstance.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |                                                                                              |
 | `opts`                                                                                       | [][operations.Option](../../models/operations/option.md)                                     | :heavy_minus_sign:                                                                           | The options for this request.                                                                |                                                                                              |
 
@@ -319,7 +325,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | The `id` of the integration instance.                    | 3f51fa25-310a-421d-bd1a-007f859021a3                     |
+| `id`                                                     | `string`                                                 | :heavy_check_mark:                                       | The `id` of the integration instance.                    | 3f51fa25-310a-421d-bd1a-007f859021a3                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response

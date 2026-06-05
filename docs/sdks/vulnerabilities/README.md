@@ -151,7 +151,11 @@ func main() {
         log.Fatal(err)
     }
     if res.VulnerabilityScan != nil {
-        // handle response
+        switch res.VulnerabilityScan.CatalogReference.Type {
+            case components.VulnerabilityScanCatalogReferenceTypeServiceVulnerabilityScanCatalogReference:
+                // res.VulnerabilityScan.CatalogReference.ServiceVulnerabilityScanCatalogReference is populated
+        }
+
     }
 }
 ```
@@ -208,7 +212,11 @@ func main() {
         log.Fatal(err)
     }
     if res.VulnerabilityScan != nil {
-        // handle response
+        switch res.VulnerabilityScan.CatalogReference.Type {
+            case components.VulnerabilityScanCatalogReferenceTypeServiceVulnerabilityScanCatalogReference:
+                // res.VulnerabilityScan.CatalogReference.ServiceVulnerabilityScanCatalogReference is populated
+        }
+
     }
 }
 ```
@@ -218,7 +226,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `scanID`                                                 | *string*                                                 | :heavy_check_mark:                                       | ID of the vulnerability scan.                            |
+| `scanID`                                                 | `string`                                                 | :heavy_check_mark:                                       | ID of the vulnerability scan.                            |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -294,7 +302,7 @@ func main() {
                 },
             )),
             InstanceCount: sdkkonnectgo.Pointer(components.CreateNumericFieldFilterNumber(
-                21,
+                21.0,
             )),
         },
         Sort: sdkkonnectgo.Pointer("created_at desc"),
@@ -433,7 +441,11 @@ func main() {
         log.Fatal(err)
     }
     if res.VulnerabilityScan != nil {
-        // handle response
+        switch res.VulnerabilityScan.CatalogReference.Type {
+            case components.VulnerabilityScanCatalogReferenceTypeServiceVulnerabilityScanCatalogReference:
+                // res.VulnerabilityScan.CatalogReference.ServiceVulnerabilityScanCatalogReference is populated
+        }
+
     }
 }
 ```
@@ -443,8 +455,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `serviceID`                                              | *string*                                                 | :heavy_check_mark:                                       | ID of the service.                                       |
-| `scanID`                                                 | *string*                                                 | :heavy_check_mark:                                       | ID of the vulnerability scan.                            |
+| `serviceID`                                              | `string`                                                 | :heavy_check_mark:                                       | ID of the service.                                       |
+| `scanID`                                                 | `string`                                                 | :heavy_check_mark:                                       | ID of the vulnerability scan.                            |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -519,10 +531,10 @@ func main() {
                 },
             )),
             InstanceCount: sdkkonnectgo.Pointer(components.CreateNumericFieldFilterNumber(
-                21,
+                21.0,
             )),
             ServiceCount: sdkkonnectgo.Pointer(components.CreateNumericFieldFilterNumber(
-                21,
+                21.0,
             )),
         },
         Sort: sdkkonnectgo.Pointer("created_at desc"),
@@ -599,7 +611,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `vulnerabilityID`                                        | *string*                                                 | :heavy_check_mark:                                       | ID of the vulnerability.                                 |
+| `vulnerabilityID`                                        | `string`                                                 | :heavy_check_mark:                                       | ID of the vulnerability.                                 |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -676,11 +688,11 @@ func main() {
                 },
             )),
             VulnerabilityInstanceCount: sdkkonnectgo.Pointer(components.CreateNumericFieldFilterNumber(
-                21,
+                21.0,
             )),
             CustomFields: sdkkonnectgo.Pointer(components.CreateVulnerabilityServiceFilterParametersCustomFieldsNumericFieldFilter(
                 components.CreateNumericFieldFilterNumber(
-                    21,
+                    21.0,
                 ),
             )),
         },
@@ -839,7 +851,7 @@ func main() {
                 },
             )),
             InstanceCount: sdkkonnectgo.Pointer(components.CreateNumericFieldFilterNumber(
-                21,
+                21.0,
             )),
         },
         Sort: sdkkonnectgo.Pointer("created_at desc"),
@@ -916,8 +928,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `serviceID`                                              | *string*                                                 | :heavy_check_mark:                                       | ID of the service.                                       |
-| `vulnerabilityID`                                        | *string*                                                 | :heavy_check_mark:                                       | ID of the vulnerability.                                 |
+| `serviceID`                                              | `string`                                                 | :heavy_check_mark:                                       | ID of the service.                                       |
+| `vulnerabilityID`                                        | `string`                                                 | :heavy_check_mark:                                       | ID of the vulnerability.                                 |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -1106,8 +1118,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `serviceID`                                              | *string*                                                 | :heavy_check_mark:                                       | ID of the service.                                       |
-| `vulnerabilityID`                                        | *string*                                                 | :heavy_check_mark:                                       | ID of the vulnerability.                                 |
+| `serviceID`                                              | `string`                                                 | :heavy_check_mark:                                       | ID of the service.                                       |
+| `vulnerabilityID`                                        | `string`                                                 | :heavy_check_mark:                                       | ID of the vulnerability.                                 |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -1231,8 +1243,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `serviceID`                                              | *string*                                                 | :heavy_check_mark:                                       | ID of the service.                                       |
-| `vulnerabilityID`                                        | *string*                                                 | :heavy_check_mark:                                       | ID of the vulnerability.                                 |
+| `serviceID`                                              | `string`                                                 | :heavy_check_mark:                                       | ID of the service.                                       |
+| `vulnerabilityID`                                        | `string`                                                 | :heavy_check_mark:                                       | ID of the vulnerability.                                 |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -1288,14 +1300,14 @@ func main() {
                 },
             )),
             VulnerabilityInstanceCount: sdkkonnectgo.Pointer(components.CreateNumericFieldFilterNumber(
-                21,
+                21.0,
             )),
             VulnerabilityVulnerabilityCount: sdkkonnectgo.Pointer(components.CreateNumericFieldFilterNumber(
-                21,
+                21.0,
             )),
             CustomFields: sdkkonnectgo.Pointer(components.CreateCatalogVulnerabilityServiceFilterParametersCustomFieldsNumericFieldFilter(
                 components.CreateNumericFieldFilterNumber(
-                    21,
+                    21.0,
                 ),
             )),
         },
@@ -1377,7 +1389,7 @@ func main() {
                 ),
             ),
         },
-        TimeRange: components.CreateTimeRangeRelative(
+        TimeRange: components.CreateVulnerabilitiesMetricsQueryTimeRangeRelative(
             components.VulnerabilityMetricsRelativeTimeRange{
                 Tz: sdkkonnectgo.Pointer("America/Chicago"),
                 Type: components.VulnerabilityMetricsRelativeTimeRangeTypeRelative,

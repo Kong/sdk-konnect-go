@@ -49,3 +49,6 @@ func (p *PostAuth0RegisterInternalResponse) GetAuth0Registration() *components.S
 	}
 	return p.Auth0Registration
 }
+
+// #region class-body-postauth0registerinternalresponse
+// #endregion class-body-postauth0registerinternalresponse

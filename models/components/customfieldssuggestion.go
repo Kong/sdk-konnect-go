@@ -18,10 +18,10 @@ const (
 )
 
 type CustomFieldsSuggestion struct {
-	Str      *string           `queryParam:"inline,name=CustomFieldsSuggestion" union:"member"`
-	Number   *float64          `queryParam:"inline,name=CustomFieldsSuggestion" union:"member"`
-	Boolean  *bool             `queryParam:"inline,name=CustomFieldsSuggestion" union:"member"`
-	MapOfStr map[string]string `queryParam:"inline,name=CustomFieldsSuggestion" union:"member"`
+	Str      *string           `queryParam:"inline" union:"member"`
+	Number   *float64          `queryParam:"inline" union:"member"`
+	Boolean  *bool             `queryParam:"inline" union:"member"`
+	MapOfStr map[string]string `queryParam:"inline" union:"member"`
 
 	Type CustomFieldsSuggestionType
 }

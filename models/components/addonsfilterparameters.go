@@ -4,6 +4,7 @@ package components
 
 // AddOnsFilterParameters - Filter parameters for add-ons list operation.
 type AddOnsFilterParameters struct {
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Name  *CloudGatewaysStringFieldFilterOverride `queryParam:"name=name"`
 	State *AddOnStateFieldFilter                  `queryParam:"name=state"`
 	// Filter for add-on config kind field.
@@ -11,6 +12,9 @@ type AddOnsFilterParameters struct {
 	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	OwnerControlPlaneID  *UUIDFieldFilter            `queryParam:"name=owner.control_plane_id"`
 	OwnerControlPlaneGeo *ControlPlaneGeoFieldFilter `queryParam:"name=owner.control_plane_geo"`
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
+	OwnerControlPlaneGroupID  *UUIDFieldFilter            `queryParam:"name=owner.control_plane_group_id"`
+	OwnerControlPlaneGroupGeo *ControlPlaneGeoFieldFilter `queryParam:"name=owner.control_plane_group_geo"`
 }
 
 func (a *AddOnsFilterParameters) GetName() *CloudGatewaysStringFieldFilterOverride {
@@ -46,4 +50,18 @@ func (a *AddOnsFilterParameters) GetOwnerControlPlaneGeo() *ControlPlaneGeoField
 		return nil
 	}
 	return a.OwnerControlPlaneGeo
+}
+
+func (a *AddOnsFilterParameters) GetOwnerControlPlaneGroupID() *UUIDFieldFilter {
+	if a == nil {
+		return nil
+	}
+	return a.OwnerControlPlaneGroupID
+}
+
+func (a *AddOnsFilterParameters) GetOwnerControlPlaneGroupGeo() *ControlPlaneGeoFieldFilter {
+	if a == nil {
+		return nil
+	}
+	return a.OwnerControlPlaneGroupGeo
 }

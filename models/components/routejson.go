@@ -6,36 +6,36 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type Destinations struct {
+type RouteJSONDestinations struct {
 	// A string representing an IP address or CIDR block, such as 192.168.1.1 or 192.168.0.0/16.
 	IP *string `json:"ip,omitempty"`
 	// An integer representing a port number between 0 and 65535, inclusive.
 	Port *int64 `json:"port,omitempty"`
 }
 
-func (d Destinations) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(d, "", false)
+func (r RouteJSONDestinations) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
 }
 
-func (d *Destinations) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+func (r *RouteJSONDestinations) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (d *Destinations) GetIP() *string {
-	if d == nil {
+func (r *RouteJSONDestinations) GetIP() *string {
+	if r == nil {
 		return nil
 	}
-	return d.IP
+	return r.IP
 }
 
-func (d *Destinations) GetPort() *int64 {
-	if d == nil {
+func (r *RouteJSONDestinations) GetPort() *int64 {
+	if r == nil {
 		return nil
 	}
-	return d.Port
+	return r.Port
 }
 
 // HTTPSRedirectStatusCode - The status code Kong responds with when all properties of a Route match except the protocol i.e. if the protocol of the request is `HTTP` instead of `HTTPS`. `Location` header is injected by Kong if the field is set to 301, 302, 307 or 308. Note: This config applies only if the Route is configured to only accept the `https` protocol.
@@ -141,36 +141,36 @@ func (r *RouteJSONService) GetID() *string {
 	return r.ID
 }
 
-type Sources struct {
+type RouteJSONSources struct {
 	// A string representing an IP address or CIDR block, such as 192.168.1.1 or 192.168.0.0/16.
 	IP *string `json:"ip,omitempty"`
 	// An integer representing a port number between 0 and 65535, inclusive.
 	Port *int64 `json:"port,omitempty"`
 }
 
-func (s Sources) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(s, "", false)
+func (r RouteJSONSources) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
 }
 
-func (s *Sources) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
+func (r *RouteJSONSources) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (s *Sources) GetIP() *string {
-	if s == nil {
+func (r *RouteJSONSources) GetIP() *string {
+	if r == nil {
 		return nil
 	}
-	return s.IP
+	return r.IP
 }
 
-func (s *Sources) GetPort() *int64 {
-	if s == nil {
+func (r *RouteJSONSources) GetPort() *int64 {
+	if r == nil {
 		return nil
 	}
-	return s.Port
+	return r.Port
 }
 
 // RouteJSON - Route entities define rules to match client requests. Each Route is associated with a Service, and a Service may have multiple Routes associated to it. Every request matching a given Route will be proxied to its associated Service. The combination of Routes and Services (and the separation of concerns between them) offers a powerful routing mechanism with which it is possible to define fine-grained entry-points in Kong leading to different upstream services of your infrastructure. You need at least one matching rule that applies to the protocol being matched by the Route.
@@ -180,7 +180,7 @@ type RouteJSON struct {
 	// User-defined entity description. Konnect only field, not synced to the Gateway.
 	Description *string `json:"description,omitempty"`
 	// A list of IP destinations of incoming connections that match this Route when using stream routing. Each entry is an object with fields "ip" (optionally in CIDR range notation) and/or "port".
-	Destinations []Destinations `json:"destinations,omitempty"`
+	Destinations []RouteJSONDestinations `json:"destinations,omitempty"`
 	// One or more lists of values indexed by header name that will cause this Route to match if present in the request. The `Host` header cannot be used with this attribute: hosts should be specified using the `hosts` attribute. When `headers` contains only one value and that value starts with the special prefix `~*`, the value is interpreted as a regular expression.
 	Headers map[string][]string `json:"headers,omitempty"`
 	// A list of domain names that match this Route. Note that the hosts value is case sensitive.
@@ -214,7 +214,7 @@ type RouteJSON struct {
 	// A list of SNIs that match this Route when using stream routing.
 	Snis []string `json:"snis,omitempty"`
 	// A list of IP sources of incoming connections that match this Route when using stream routing. Each entry is an object with fields "ip" (optionally in CIDR range notation) and/or "port".
-	Sources []Sources `json:"sources,omitempty"`
+	Sources []RouteJSONSources `json:"sources,omitempty"`
 	// When matching a Route via one of the `paths`, strip the matching prefix from the upstream request URL.
 	StripPath *bool `default:"true" json:"strip_path"`
 	// An optional set of strings associated with the Route for grouping and filtering.
@@ -248,7 +248,7 @@ func (r *RouteJSON) GetDescription() *string {
 	return r.Description
 }
 
-func (r *RouteJSON) GetDestinations() []Destinations {
+func (r *RouteJSON) GetDestinations() []RouteJSONDestinations {
 	if r == nil {
 		return nil
 	}
@@ -367,7 +367,7 @@ func (r *RouteJSON) GetSnis() []string {
 	return r.Snis
 }
 
-func (r *RouteJSON) GetSources() []Sources {
+func (r *RouteJSON) GetSources() []RouteJSONSources {
 	if r == nil {
 		return nil
 	}

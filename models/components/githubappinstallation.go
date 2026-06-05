@@ -55,9 +55,10 @@ type GithubAppInstallation struct {
 	//
 	ExpiresAt *time.Time `json:"expires_at"`
 	// An ISO-8601 timestamp representation of entity creation date.
-	CreatedAt time.Time                             `json:"created_at"`
-	type_     string                                `const:"github_app_installation" json:"type"`
-	Config    GitHubAppInstallationCredentialConfig `json:"config"`
+	CreatedAt time.Time `json:"created_at"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_  string                                `const:"github_app_installation" json:"type"`
+	Config GitHubAppInstallationCredentialConfig `json:"config"`
 }
 
 func (g GithubAppInstallation) MarshalJSON() ([]byte, error) {

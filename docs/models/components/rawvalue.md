@@ -52,3 +52,25 @@ rawValue := components.CreateRawValueMapOfAny(map[string]any{/* values here */})
 rawValue := components.CreateRawValueAny(any{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch rawValue.Type {
+	case components.RawValueTypeNumber:
+		// rawValue.Number is populated
+	case components.RawValueTypeStr:
+		// rawValue.Str is populated
+	case components.RawValueTypeBoolean:
+		// rawValue.Boolean is populated
+	case components.RawValueTypeTimeValue:
+		// rawValue.TimeValue is populated
+	case components.RawValueTypeCriteriaEvaluationRelationMap:
+		// rawValue.CriteriaEvaluationRelationMap is populated
+	case components.RawValueTypeMapOfAny:
+		// rawValue.MapOfAny is populated
+	case components.RawValueTypeAny:
+		// rawValue.Any is populated
+}
+```

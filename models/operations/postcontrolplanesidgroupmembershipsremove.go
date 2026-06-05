@@ -9,16 +9,16 @@ import (
 
 type PostControlPlanesIDGroupMembershipsRemoveRequest struct {
 	// ID of a control plane group
-	ID string `pathParam:"style=simple,explode=false,name=id"`
+	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Request body for removing a list of child control planes from a control plane group membership.
 	GroupMembership *components.GroupMembership `request:"mediaType=application/json"`
 }
 
-func (p *PostControlPlanesIDGroupMembershipsRemoveRequest) GetID() string {
+func (p *PostControlPlanesIDGroupMembershipsRemoveRequest) GetControlPlaneID() string {
 	if p == nil {
 		return ""
 	}
-	return p.ID
+	return p.ControlPlaneID
 }
 
 func (p *PostControlPlanesIDGroupMembershipsRemoveRequest) GetGroupMembership() *components.GroupMembership {

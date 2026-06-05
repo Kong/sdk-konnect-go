@@ -41,3 +41,23 @@ createDcrProviderRequest := components.CreateCreateDcrProviderRequestHTTP(compon
 createDcrProviderRequest := components.CreateCreateDcrProviderRequestKongIdentity(components.CreateDcrProviderRequestKongIdentity{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch createDcrProviderRequest.Type {
+	case components.CreateDcrProviderRequestTypeAuth0:
+		// createDcrProviderRequest.CreateDcrProviderRequestAuth0 is populated
+	case components.CreateDcrProviderRequestTypeAzureAd:
+		// createDcrProviderRequest.CreateDcrProviderRequestAzureAd is populated
+	case components.CreateDcrProviderRequestTypeCurity:
+		// createDcrProviderRequest.CreateDcrProviderRequestCurity is populated
+	case components.CreateDcrProviderRequestTypeOkta:
+		// createDcrProviderRequest.CreateDcrProviderRequestOkta is populated
+	case components.CreateDcrProviderRequestTypeHTTP:
+		// createDcrProviderRequest.CreateDcrProviderRequestHTTP is populated
+	case components.CreateDcrProviderRequestTypeKongIdentity:
+		// createDcrProviderRequest.CreateDcrProviderRequestKongIdentity is populated
+}
+```

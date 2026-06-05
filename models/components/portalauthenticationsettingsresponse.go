@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // PortalOIDCConfig - Configuration properties for an OpenID Connect Identity Provider.
 //
 // Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -65,6 +69,22 @@ type PortalAuthenticationSettingsResponse struct {
 	//
 	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	OidcConfig *PortalOIDCConfig `json:"oidc_config,omitempty"`
+}
+
+func (p PortalAuthenticationSettingsResponse) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(p, "", false)
+}
+
+func (p *PortalAuthenticationSettingsResponse) UnmarshalJSON(data []byte) error {
+	if out, err := utils.RunJQBytes(data, ". + { oidc_issuer: .oidc_config.issuer, oidc_client_id: .oidc_config.client_id, oidc_claim_mappings: .oidc_config.claim_mappings, oidc_scopes: .oidc_config.scopes } | del(.oidc_config)"); err != nil {
+		return err
+	} else {
+		data = out
+	}
+	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (p *PortalAuthenticationSettingsResponse) GetBasicAuthEnabled() bool {

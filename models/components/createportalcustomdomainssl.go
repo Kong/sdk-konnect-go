@@ -9,6 +9,7 @@ import (
 )
 
 type HTTP struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	domainVerificationMethod string `const:"http" json:"domain_verification_method"`
 }
 
@@ -28,6 +29,7 @@ func (h *HTTP) GetDomainVerificationMethod() string {
 }
 
 type CustomCertificate struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	domainVerificationMethod string `const:"custom_certificate" json:"domain_verification_method"`
 	// Custom certificate to be used for the SSL termination.
 	CustomCertificate string `json:"custom_certificate"`
@@ -82,8 +84,8 @@ const (
 )
 
 type CreatePortalCustomDomainSSL struct {
-	CustomCertificate *CustomCertificate `queryParam:"inline,name=CreatePortalCustomDomainSSL" union:"member"`
-	HTTP              *HTTP              `queryParam:"inline,name=CreatePortalCustomDomainSSL" union:"member"`
+	CustomCertificate *CustomCertificate `queryParam:"inline" union:"member"`
+	HTTP              *HTTP              `queryParam:"inline" union:"member"`
 
 	Type CreatePortalCustomDomainSSLType
 }

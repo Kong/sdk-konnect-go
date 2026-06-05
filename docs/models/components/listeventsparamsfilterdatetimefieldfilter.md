@@ -1,0 +1,55 @@
+# ListEventsParamsFilterDateTimeFieldFilter
+
+Filter events by event time.
+
+
+## Supported Types
+
+### ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter
+
+```go
+listEventsParamsFilterDateTimeFieldFilter := components.CreateListEventsParamsFilterDateTimeFieldFilterListEventsParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter(components.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter{/* values here */})
+```
+
+### ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter
+
+```go
+listEventsParamsFilterDateTimeFieldFilter := components.CreateListEventsParamsFilterDateTimeFieldFilterListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter(components.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter{/* values here */})
+```
+
+### ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter
+
+```go
+listEventsParamsFilterDateTimeFieldFilter := components.CreateListEventsParamsFilterDateTimeFieldFilterListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter(components.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter{/* values here */})
+```
+
+### ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter
+
+```go
+listEventsParamsFilterDateTimeFieldFilter := components.CreateListEventsParamsFilterDateTimeFieldFilterListEventsParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter(components.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter{/* values here */})
+```
+
+### ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter
+
+```go
+listEventsParamsFilterDateTimeFieldFilter := components.CreateListEventsParamsFilterDateTimeFieldFilterListEventsParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter(components.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter{/* values here */})
+```
+
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch listEventsParamsFilterDateTimeFieldFilter.Type {
+	case components.ListEventsParamsFilterDateTimeFieldFilterTypeListEventsParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter:
+		// listEventsParamsFilterDateTimeFieldFilter.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter is populated
+	case components.ListEventsParamsFilterDateTimeFieldFilterTypeListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter:
+		// listEventsParamsFilterDateTimeFieldFilter.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter is populated
+	case components.ListEventsParamsFilterDateTimeFieldFilterTypeListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter:
+		// listEventsParamsFilterDateTimeFieldFilter.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter is populated
+	case components.ListEventsParamsFilterDateTimeFieldFilterTypeListEventsParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter:
+		// listEventsParamsFilterDateTimeFieldFilter.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter is populated
+	case components.ListEventsParamsFilterDateTimeFieldFilterTypeListEventsParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter:
+		// listEventsParamsFilterDateTimeFieldFilter.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter is populated
+}
+```

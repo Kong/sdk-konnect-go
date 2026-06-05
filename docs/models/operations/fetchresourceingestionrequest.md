@@ -5,4 +5,4 @@
 
 | Field                                 | Type                                  | Required                              | Description                           | Example                               |
 | ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| `IntegrationInstanceID`               | *string*                              | :heavy_check_mark:                    | The `id` of the integration instance. | 004d6d17-d21f-4518-89a2-b9177cb5485c  |
+| `IntegrationInstanceID`               | `string`                              | :heavy_check_mark:                    | The `id` of the integration instance. | 004d6d17-d21f-4518-89a2-b9177cb5485c  |

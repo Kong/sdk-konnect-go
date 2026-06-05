@@ -17,8 +17,8 @@ const (
 
 // AddOnConfigKindFieldEqualsFilter - Filter add-on config kind by exact match.
 type AddOnConfigKindFieldEqualsFilter struct {
-	AddOnConfigKind                      *AddOnConfigKind                      `queryParam:"inline,name=AddOnConfigKindFieldEqualsFilter" union:"member"`
-	AddOnConfigKindFieldEqualsComparison *AddOnConfigKindFieldEqualsComparison `queryParam:"inline,name=AddOnConfigKindFieldEqualsFilter" union:"member"`
+	AddOnConfigKind                      *AddOnConfigKind                      `queryParam:"inline" union:"member"`
+	AddOnConfigKindFieldEqualsComparison *AddOnConfigKindFieldEqualsComparison `queryParam:"inline" union:"member"`
 
 	Type AddOnConfigKindFieldEqualsFilterType
 }

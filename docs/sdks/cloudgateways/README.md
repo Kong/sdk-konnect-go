@@ -47,6 +47,7 @@
 * [ListAddOns](#listaddons) - List Add-Ons
 * [GetAddOn](#getaddon) - Get Add-On
 * [DeleteAddOn](#deleteaddon) - Delete Add-On
+* [UpdateAddOn](#updateaddon) - Update Add-On
 
 ## GetAvailabilityJSON
 
@@ -196,18 +197,18 @@ func main() {
     res, err := s.CloudGateways.CreateConfiguration(ctx, components.CreateConfigurationRequest{
         ControlPlaneID: "0949471e-b759-45ba-87ab-ee63fb781388",
         ControlPlaneGeo: components.ControlPlaneGeoSg,
-        Version: "3.2",
+        Version: sdkkonnectgo.Pointer("3.2"),
         DataplaneGroups: []components.CreateConfigurationDataPlaneGroup{
             components.CreateConfigurationDataPlaneGroup{
                 Provider: components.ProviderNameAws,
                 Region: "us-east-2",
-                CloudGatewayNetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
-                Autoscale: components.CreateConfigurationDataPlaneGroupAutoscaleConfigurationDataPlaneGroupAutoscaleAutopilot(
+                CloudGatewayNetworkID: sdkkonnectgo.Pointer("36ae63d3-efd1-4bec-b246-62aa5d3f5695"),
+                Autoscale: sdkkonnectgo.Pointer(components.CreateConfigurationDataPlaneGroupAutoscaleConfigurationDataPlaneGroupAutoscaleAutopilot(
                     components.ConfigurationDataPlaneGroupAutoscaleAutopilot{
                         Kind: components.ConfigurationDataPlaneGroupAutoscaleAutopilotKindAutopilot,
                         BaseRps: 1,
                     },
-                ),
+                )),
                 Environment: []components.ConfigurationDataPlaneGroupEnvironmentField{
                     components.ConfigurationDataPlaneGroupEnvironmentField{
                         Name: "KONG_LOG_LEVEL",
@@ -290,7 +291,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `configurationID`                                        | *string*                                                 | :heavy_check_mark:                                       | The ID of the configuration to operate on.               | edaf40f9-9fb0-4ffe-bb74-4e763a6bd471                     |
+| `configurationID`                                        | `string`                                                 | :heavy_check_mark:                                       | The ID of the configuration to operate on.               | edaf40f9-9fb0-4ffe-bb74-4e763a6bd471                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -485,7 +486,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `networkID`                                              | *string*                                                 | :heavy_check_mark:                                       | The network to operate on.                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                     |
+| `networkID`                                              | `string`                                                 | :heavy_check_mark:                                       | The network to operate on.                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -552,7 +553,7 @@ func main() {
 | Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      | Example                                                                          |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |                                                                                  |
-| `networkID`                                                                      | *string*                                                                         | :heavy_check_mark:                                                               | The network to operate on.                                                       | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                                             |
+| `networkID`                                                                      | `string`                                                                         | :heavy_check_mark:                                                               | The network to operate on.                                                       | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                                             |
 | `patchNetworkRequest`                                                            | [components.PatchNetworkRequest](../../models/components/patchnetworkrequest.md) | :heavy_check_mark:                                                               | N/A                                                                              |                                                                                  |
 | `opts`                                                                           | [][operations.Option](../../models/operations/option.md)                         | :heavy_minus_sign:                                                               | The options for this request.                                                    |                                                                                  |
 
@@ -612,7 +613,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `networkID`                                              | *string*                                                 | :heavy_check_mark:                                       | The network to operate on.                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                     |
+| `networkID`                                              | `string`                                                 | :heavy_check_mark:                                       | The network to operate on.                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -741,7 +742,21 @@ func main() {
         log.Fatal(err)
     }
     if res.TransitGatewayResponse != nil {
-        // handle response
+        switch res.TransitGatewayResponse.Type {
+            case components.TransitGatewayResponseTypeAwsTransitGatewayResponse:
+                // res.TransitGatewayResponse.AwsTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsVpcPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AwsVpcPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureTransitGatewayResponse:
+                // res.TransitGatewayResponse.AzureTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureVhubPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AzureVhubPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeGCPVPCPeeringGatewayResponse:
+                // res.TransitGatewayResponse.GCPVPCPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsResourceEndpointGatewayResponse:
+                // res.TransitGatewayResponse.AwsResourceEndpointGatewayResponse is populated
+        }
+
     }
 }
 ```
@@ -751,7 +766,7 @@ func main() {
 | Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      | Example                                                                                          |
 | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
 | `ctx`                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                            | :heavy_check_mark:                                                                               | The context to use for the request.                                                              |                                                                                                  |
-| `networkID`                                                                                      | *string*                                                                                         | :heavy_check_mark:                                                                               | The network to operate on.                                                                       | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                                                             |
+| `networkID`                                                                                      | `string`                                                                                         | :heavy_check_mark:                                                                               | The network to operate on.                                                                       | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                                                             |
 | `createTransitGatewayRequest`                                                                    | [components.CreateTransitGatewayRequest](../../models/components/createtransitgatewayrequest.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |                                                                                                  |
 | `opts`                                                                                           | [][operations.Option](../../models/operations/option.md)                                         | :heavy_minus_sign:                                                                               | The options for this request.                                                                    |                                                                                                  |
 
@@ -801,7 +816,21 @@ func main() {
         log.Fatal(err)
     }
     if res.TransitGatewayResponse != nil {
-        // handle response
+        switch res.TransitGatewayResponse.Type {
+            case components.TransitGatewayResponseTypeAwsTransitGatewayResponse:
+                // res.TransitGatewayResponse.AwsTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsVpcPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AwsVpcPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureTransitGatewayResponse:
+                // res.TransitGatewayResponse.AzureTransitGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAzureVhubPeeringGatewayResponse:
+                // res.TransitGatewayResponse.AzureVhubPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeGCPVPCPeeringGatewayResponse:
+                // res.TransitGatewayResponse.GCPVPCPeeringGatewayResponse is populated
+            case components.TransitGatewayResponseTypeAwsResourceEndpointGatewayResponse:
+                // res.TransitGatewayResponse.AwsResourceEndpointGatewayResponse is populated
+        }
+
     }
 }
 ```
@@ -811,8 +840,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `networkID`                                              | *string*                                                 | :heavy_check_mark:                                       | The network to operate on.                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                     |
-| `transitGatewayID`                                       | *string*                                                 | :heavy_check_mark:                                       | The ID of the transit gateway to operate on.             | 0850820b-d153-4a2a-b9be-7d2204779139                     |
+| `networkID`                                              | `string`                                                 | :heavy_check_mark:                                       | The network to operate on.                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                     |
+| `transitGatewayID`                                       | `string`                                                 | :heavy_check_mark:                                       | The ID of the transit gateway to operate on.             | 0850820b-d153-4a2a-b9be-7d2204779139                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -858,8 +887,8 @@ func main() {
     res, err := s.CloudGateways.UpdateTransitGateway(ctx, operations.UpdateTransitGatewayRequest{
         NetworkID: "36ae63d3-efd1-4bec-b246-62aa5d3f5695",
         TransitGatewayID: "0850820b-d153-4a2a-b9be-7d2204779139",
-        PatchTransitGatewayRequest: components.CreatePatchTransitGatewayRequestPatchAwsResourceEndpointGateway(
-            components.PatchAwsResourceEndpointGateway{
+        PatchTransitGatewayRequest: components.CreatePatchTransitGatewayRequestPatchAWSResourceEndpointGatewayAWSResourceEndpointGateway(
+            components.PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway{
                 TransitGatewayAttachmentConfig: components.TransitGatewayAttachmentConfig{
                     Kind: components.PatchAWSResourceEndpointGatewayAWSResourceEndpointAttachmentTypeAwsResourceEndpointAttachment,
                     ResourceConfig: []components.AwsResourceEndpointConfig{
@@ -876,7 +905,13 @@ func main() {
         log.Fatal(err)
     }
     if res.PatchTransitGatewayResponse != nil {
-        // handle response
+        switch res.PatchTransitGatewayResponse.Type {
+            case components.PatchTransitGatewayResponseTypeAwsResourceEndpointGatewayResponse:
+                // res.PatchTransitGatewayResponse.AwsResourceEndpointGatewayResponse is populated
+            case components.PatchTransitGatewayResponseTypeAwsTransitGatewayResponse:
+                // res.PatchTransitGatewayResponse.AwsTransitGatewayResponse is populated
+        }
+
     }
 }
 ```
@@ -945,8 +980,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `networkID`                                              | *string*                                                 | :heavy_check_mark:                                       | The network to operate on.                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                     |
-| `transitGatewayID`                                       | *string*                                                 | :heavy_check_mark:                                       | The ID of the transit gateway to operate on.             | 0850820b-d153-4a2a-b9be-7d2204779139                     |
+| `networkID`                                              | `string`                                                 | :heavy_check_mark:                                       | The network to operate on.                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                     |
+| `transitGatewayID`                                       | `string`                                                 | :heavy_check_mark:                                       | The ID of the transit gateway to operate on.             | 0850820b-d153-4a2a-b9be-7d2204779139                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -1054,10 +1089,14 @@ func main() {
 
     res, err := s.CloudGateways.CreatePrivateDNS(ctx, "36ae63d3-efd1-4bec-b246-62aa5d3f5695", components.CreatePrivateDNSRequest{
         Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
-        PrivateDNSAttachmentConfig: sdkkonnectgo.Pointer(components.CreatePrivateDNSAttachmentConfigAwsPrivateHostedZoneAttachmentConfig(
-            components.AwsPrivateHostedZoneAttachmentConfig{
-                Kind: components.AWSPrivateHostedZoneTypeAwsPrivateHostedZoneAttachment,
-                HostedZoneID: "<id>",
+        PrivateDNSAttachmentConfig: sdkkonnectgo.Pointer(components.CreatePrivateDNSAttachmentConfigAzurePrivateHostedZoneAttachmentConfig(
+            components.AzurePrivateHostedZoneAttachmentConfig{
+                Kind: components.AzurePrivateHostedZoneTypeAzurePrivateHostedZoneAttachment,
+                DomainName: "example.private.azure.com",
+                PeerTenantID: "87654321-4321-4321-4321-210987654321",
+                PeerSubscriptionID: "12345678-1234-1234-1234-123456789012",
+                PeerResourceGroupID: "customer-dns-rg",
+                PeerVnetLinkName: "kong-vnet-link",
             },
         )),
     })
@@ -1065,7 +1104,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -1075,7 +1126,7 @@ func main() {
 | Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              | Example                                                                                  |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |                                                                                          |
-| `networkID`                                                                              | *string*                                                                                 | :heavy_check_mark:                                                                       | The network to operate on.                                                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                                                     |
+| `networkID`                                                                              | `string`                                                                                 | :heavy_check_mark:                                                                       | The network to operate on.                                                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                                                     |
 | `createPrivateDNSRequest`                                                                | [components.CreatePrivateDNSRequest](../../models/components/createprivatednsrequest.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |                                                                                          |
 | `opts`                                                                                   | [][operations.Option](../../models/operations/option.md)                                 | :heavy_minus_sign:                                                                       | The options for this request.                                                            |                                                                                          |
 
@@ -1125,7 +1176,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -1135,8 +1198,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `networkID`                                              | *string*                                                 | :heavy_check_mark:                                       | The network to operate on.                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                     |
-| `privateDNSID`                                           | *string*                                                 | :heavy_check_mark:                                       | The ID of the Private DNS to operate on.                 | 1850820b-c69f-4a2a-b9be-bbcdbc5cd618                     |
+| `networkID`                                              | `string`                                                 | :heavy_check_mark:                                       | The network to operate on.                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                     |
+| `privateDNSID`                                           | `string`                                                 | :heavy_check_mark:                                       | The ID of the Private DNS to operate on.                 | 1850820b-c69f-4a2a-b9be-bbcdbc5cd618                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -1187,13 +1250,13 @@ func main() {
                 Name: sdkkonnectgo.Pointer("us-east-2 private dns"),
                 PrivateDNSAttachmentConfig: &components.AwsPrivateDNSResolverAttachmentConfig{
                     Kind: components.AWSPrivateDNSResolverTypeAwsOutboundResolver,
-                    DNSConfig: map[string]components.PrivateDNSResolverConfig{
-                        "global.api.konghq.com": components.PrivateDNSResolverConfig{
+                    DNSConfig: map[string]components.PrivateDNSResolverConfigObject{
+                        "global.api.konghq.com": components.PrivateDNSResolverConfigObject{
                             RemoteDNSServerIPAddresses: []string{
                                 "10.0.0.2",
                             },
                         },
-                        "us.api.konghq.dev": components.PrivateDNSResolverConfig{
+                        "us.api.konghq.dev": components.PrivateDNSResolverConfigObject{
                             RemoteDNSServerIPAddresses: []string{
                                 "10.0.0.8",
                             },
@@ -1207,7 +1270,19 @@ func main() {
         log.Fatal(err)
     }
     if res.PrivateDNSResponse != nil {
-        // handle response
+        switch res.PrivateDNSResponse.Type {
+            case components.PrivateDNSResponseTypeAwsPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AwsPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAwsPrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AwsPrivateDNSResolverResponse is populated
+            case components.PrivateDNSResponseTypeGcpPrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.GcpPrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateHostedZoneResponse:
+                // res.PrivateDNSResponse.AzurePrivateHostedZoneResponse is populated
+            case components.PrivateDNSResponseTypeAzurePrivateDNSResolverResponse:
+                // res.PrivateDNSResponse.AzurePrivateDNSResolverResponse is populated
+        }
+
     }
 }
 ```
@@ -1276,8 +1351,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `networkID`                                              | *string*                                                 | :heavy_check_mark:                                       | The network to operate on.                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                     |
-| `privateDNSID`                                           | *string*                                                 | :heavy_check_mark:                                       | The ID of the Private DNS to operate on.                 | 1850820b-c69f-4a2a-b9be-bbcdbc5cd618                     |
+| `networkID`                                              | `string`                                                 | :heavy_check_mark:                                       | The network to operate on.                               | 36ae63d3-efd1-4bec-b246-62aa5d3f5695                     |
+| `privateDNSID`                                           | `string`                                                 | :heavy_check_mark:                                       | The ID of the Private DNS to operate on.                 | 1850820b-c69f-4a2a-b9be-bbcdbc5cd618                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -1393,7 +1468,19 @@ func main() {
         log.Fatal(err)
     }
     if res.ListProviderAccountsResponse != nil {
-        // handle response
+        for {
+            // handle items
+
+            res, err = res.Next()
+
+            if err != nil {
+                // handle error
+            }
+
+            if res == nil {
+                break
+            }
+        }
     }
 }
 ```
@@ -1520,7 +1607,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `providerAccountID`                                      | *string*                                                 | :heavy_check_mark:                                       | The ID of the provider account to operate on.            | 929b2449-c69f-44c4-b6ad-9ecec6f811ae                     |
+| `providerAccountID`                                      | `string`                                                 | :heavy_check_mark:                                       | The ID of the provider account to operate on.            | 929b2449-c69f-44c4-b6ad-9ecec6f811ae                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -1577,7 +1664,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `providerAccountID`                                      | *string*                                                 | :heavy_check_mark:                                       | The ID of the provider account to operate on.            | 929b2449-c69f-44c4-b6ad-9ecec6f811ae                     |
+| `providerAccountID`                                      | `string`                                                 | :heavy_check_mark:                                       | The ID of the provider account to operate on.            | 929b2449-c69f-44c4-b6ad-9ecec6f811ae                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -1764,7 +1851,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `customDomainID`                                         | *string*                                                 | :heavy_check_mark:                                       | ID of the custom domain to operate on.                   | 39ed3790-085d-4605-9627-f96d86aaf425                     |
+| `customDomainID`                                         | `string`                                                 | :heavy_check_mark:                                       | ID of the custom domain to operate on.                   | 39ed3790-085d-4605-9627-f96d86aaf425                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -1821,7 +1908,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `customDomainID`                                         | *string*                                                 | :heavy_check_mark:                                       | ID of the custom domain to operate on.                   | 39ed3790-085d-4605-9627-f96d86aaf425                     |
+| `customDomainID`                                         | `string`                                                 | :heavy_check_mark:                                       | ID of the custom domain to operate on.                   | 39ed3790-085d-4605-9627-f96d86aaf425                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -1879,7 +1966,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `customDomainID`                                         | *string*                                                 | :heavy_check_mark:                                       | ID of the custom domain to operate on.                   | 39ed3790-085d-4605-9627-f96d86aaf425                     |
+| `customDomainID`                                         | `string`                                                 | :heavy_check_mark:                                       | ID of the custom domain to operate on.                   | 39ed3790-085d-4605-9627-f96d86aaf425                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -1938,8 +2025,8 @@ func main() {
 | Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             | Example                                                                                                 |
 | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                   | :heavy_check_mark:                                                                                      | The context to use for the request.                                                                     |                                                                                                         |
-| `pageSize`                                                                                              | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | The maximum number of items to include per page. The last page of a collection may include fewer items. | 10                                                                                                      |
-| `pageNumber`                                                                                            | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | Determines which page of the entities to retrieve.                                                      | 1                                                                                                       |
+| `pageSize`                                                                                              | `*int64`                                                                                                | :heavy_minus_sign:                                                                                      | The maximum number of items to include per page. The last page of a collection may include fewer items. | 10                                                                                                      |
+| `pageNumber`                                                                                            | `*int64`                                                                                                | :heavy_minus_sign:                                                                                      | Determines which page of the entities to retrieve.                                                      | 1                                                                                                       |
 | `opts`                                                                                                  | [][operations.Option](../../models/operations/option.md)                                                | :heavy_minus_sign:                                                                                      | The options for this request.                                                                           |                                                                                                         |
 
 ### Response
@@ -1997,8 +2084,8 @@ func main() {
 | Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             | Example                                                                                                 |
 | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                   | :heavy_check_mark:                                                                                      | The context to use for the request.                                                                     |                                                                                                         |
-| `pageSize`                                                                                              | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | The maximum number of items to include per page. The last page of a collection may include fewer items. | 10                                                                                                      |
-| `pageNumber`                                                                                            | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | Determines which page of the entities to retrieve.                                                      | 1                                                                                                       |
+| `pageSize`                                                                                              | `*int64`                                                                                                | :heavy_minus_sign:                                                                                      | The maximum number of items to include per page. The last page of a collection may include fewer items. | 10                                                                                                      |
+| `pageNumber`                                                                                            | `*int64`                                                                                                | :heavy_minus_sign:                                                                                      | Determines which page of the entities to retrieve.                                                      | 1                                                                                                       |
 | `opts`                                                                                                  | [][operations.Option](../../models/operations/option.md)                                                | :heavy_minus_sign:                                                                                      | The options for this request.                                                                           |                                                                                                         |
 
 ### Response
@@ -2117,7 +2204,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `resourceQuotaID`                                        | *string*                                                 | :heavy_check_mark:                                       | The ID of the resource quota to operate on.              | 9678f205-49a1-47bb-82d9-d01cafa42a0d                     |
+| `resourceQuotaID`                                        | `string`                                                 | :heavy_check_mark:                                       | The ID of the resource quota to operate on.              | 9678f205-49a1-47bb-82d9-d01cafa42a0d                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -2176,7 +2263,7 @@ func main() {
 | Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |                                                                                              |
-| `resourceQuotaID`                                                                            | *string*                                                                                     | :heavy_check_mark:                                                                           | The ID of the resource quota to operate on.                                                  | 9678f205-49a1-47bb-82d9-d01cafa42a0d                                                         |
+| `resourceQuotaID`                                                                            | `string`                                                                                     | :heavy_check_mark:                                                                           | The ID of the resource quota to operate on.                                                  | 9678f205-49a1-47bb-82d9-d01cafa42a0d                                                         |
 | `patchResourceQuotaRequest`                                                                  | [components.PatchResourceQuotaRequest](../../models/components/patchresourcequotarequest.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |                                                                                              |
 | `opts`                                                                                       | [][operations.Option](../../models/operations/option.md)                                     | :heavy_minus_sign:                                                                           | The options for this request.                                                                |                                                                                              |
 
@@ -2239,8 +2326,8 @@ func main() {
 | Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             | Example                                                                                                 |
 | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                   | :heavy_check_mark:                                                                                      | The context to use for the request.                                                                     |                                                                                                         |
-| `pageSize`                                                                                              | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | The maximum number of items to include per page. The last page of a collection may include fewer items. | 10                                                                                                      |
-| `pageNumber`                                                                                            | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | Determines which page of the entities to retrieve.                                                      | 1                                                                                                       |
+| `pageSize`                                                                                              | `*int64`                                                                                                | :heavy_minus_sign:                                                                                      | The maximum number of items to include per page. The last page of a collection may include fewer items. | 10                                                                                                      |
+| `pageNumber`                                                                                            | `*int64`                                                                                                | :heavy_minus_sign:                                                                                      | Determines which page of the entities to retrieve.                                                      | 1                                                                                                       |
 | `opts`                                                                                                  | [][operations.Option](../../models/operations/option.md)                                                | :heavy_minus_sign:                                                                                      | The options for this request.                                                                           |                                                                                                         |
 
 ### Response
@@ -2300,8 +2387,8 @@ func main() {
 | Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             | Example                                                                                                 |
 | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                   | :heavy_check_mark:                                                                                      | The context to use for the request.                                                                     |                                                                                                         |
-| `pageSize`                                                                                              | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | The maximum number of items to include per page. The last page of a collection may include fewer items. | 10                                                                                                      |
-| `pageNumber`                                                                                            | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | Determines which page of the entities to retrieve.                                                      | 1                                                                                                       |
+| `pageSize`                                                                                              | `*int64`                                                                                                | :heavy_minus_sign:                                                                                      | The maximum number of items to include per page. The last page of a collection may include fewer items. | 10                                                                                                      |
+| `pageNumber`                                                                                            | `*int64`                                                                                                | :heavy_minus_sign:                                                                                      | Determines which page of the entities to retrieve.                                                      | 1                                                                                                       |
 | `opts`                                                                                                  | [][operations.Option](../../models/operations/option.md)                                                | :heavy_minus_sign:                                                                                      | The options for this request.                                                                           |                                                                                                         |
 
 ### Response
@@ -2420,7 +2507,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `resourceConfigurationID`                                | *string*                                                 | :heavy_check_mark:                                       | The ID of the resource configuration to operate on.      | 9678f205-49a1-47bb-82d9-d01cafa42a0d                     |
+| `resourceConfigurationID`                                | `string`                                                 | :heavy_check_mark:                                       | The ID of the resource configuration to operate on.      | 9678f205-49a1-47bb-82d9-d01cafa42a0d                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -2480,7 +2567,7 @@ func main() {
 | Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  | Example                                                                                                      |
 | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
 | `ctx`                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                        | :heavy_check_mark:                                                                                           | The context to use for the request.                                                                          |                                                                                                              |
-| `resourceConfigurationID`                                                                                    | *string*                                                                                                     | :heavy_check_mark:                                                                                           | The ID of the resource configuration to operate on.                                                          | 9678f205-49a1-47bb-82d9-d01cafa42a0d                                                                         |
+| `resourceConfigurationID`                                                                                    | `string`                                                                                                     | :heavy_check_mark:                                                                                           | The ID of the resource configuration to operate on.                                                          | 9678f205-49a1-47bb-82d9-d01cafa42a0d                                                                         |
 | `patchResourceConfigurationRequest`                                                                          | [components.PatchResourceConfigurationRequest](../../models/components/patchresourceconfigurationrequest.md) | :heavy_check_mark:                                                                                           | N/A                                                                                                          |                                                                                                              |
 | `opts`                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                     | :heavy_minus_sign:                                                                                           | The options for this request.                                                                                |                                                                                                              |
 
@@ -2530,17 +2617,14 @@ func main() {
         Name: "my-add-on",
         Owner: components.CreateAddOnOwnerControlPlaneAddOnOwner(
             components.ControlPlaneAddOnOwner{
-                Kind: components.ControlPlaneAddOnOwnerKindControlPlane,
                 ControlPlaneID: "123e4567-e89b-12d3-a456-426614174000",
                 ControlPlaneGeo: components.ControlPlaneGeoMe,
             },
         ),
-        Config: components.CreateCreateAddOnConfigCreateManagedCacheAddOnConfig(
-            components.CreateManagedCacheAddOnConfig{
-                Kind: components.CreateManagedCacheAddOnConfigKindManagedCacheV0,
-                CapacityConfig: components.CreateManagedCacheCapacityConfigTieredCapacityConfig(
-                    components.TieredCapacityConfig{
-                        Kind: components.TieredCapacityConfigKindTiered,
+        Config: components.CreateCreateAddOnConfigManagedCache(
+            components.ManagedCache{
+                CapacityConfig: components.CreateManagedCacheCapacityConfigTiered(
+                    components.Tiered{
                         Tier: components.TierFourxlarge,
                     },
                 ),
@@ -2551,7 +2635,13 @@ func main() {
         log.Fatal(err)
     }
     if res.AddOnResponse != nil {
-        // handle response
+        switch res.AddOnResponse.Owner.Type {
+            case components.AddOnOwnerTypeControlPlaneAddOnOwner:
+                // res.AddOnResponse.Owner.ControlPlaneAddOnOwner is populated
+            case components.AddOnOwnerTypeControlPlaneGroupAddOnOwner:
+                // res.AddOnResponse.Owner.ControlPlaneGroupAddOnOwner is populated
+        }
+
     }
 }
 ```
@@ -2639,7 +2729,6 @@ func main() {
 | sdkerrors.BadRequestError   | 400                         | application/problem+json    |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
-| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## GetAddOn
@@ -2673,7 +2762,13 @@ func main() {
         log.Fatal(err)
     }
     if res.AddOnResponse != nil {
-        // handle response
+        switch res.AddOnResponse.Owner.Type {
+            case components.AddOnOwnerTypeControlPlaneAddOnOwner:
+                // res.AddOnResponse.Owner.ControlPlaneAddOnOwner is populated
+            case components.AddOnOwnerTypeControlPlaneGroupAddOnOwner:
+                // res.AddOnResponse.Owner.ControlPlaneGroupAddOnOwner is populated
+        }
+
     }
 }
 ```
@@ -2683,7 +2778,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `addOnID`                                                | *string*                                                 | :heavy_check_mark:                                       | ID of the add-on to operate on.                          | 550e8400-e29b-41d4-a716-446655440000                     |
+| `addOnID`                                                | `string`                                                 | :heavy_check_mark:                                       | ID of the add-on to operate on.                          | 550e8400-e29b-41d4-a716-446655440000                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -2741,12 +2836,87 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `addOnID`                                                | *string*                                                 | :heavy_check_mark:                                       | ID of the add-on to operate on.                          | 550e8400-e29b-41d4-a716-446655440000                     |
+| `addOnID`                                                | `string`                                                 | :heavy_check_mark:                                       | ID of the add-on to operate on.                          | 550e8400-e29b-41d4-a716-446655440000                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
 
 **[*operations.DeleteAddOnResponse](../../models/operations/deleteaddonresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## UpdateAddOn
+
+Updates the configuration of an existing add-on.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="update-add-on" method="patch" path="/v2/cloud-gateways/add-ons/{addOnId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.CloudGateways.UpdateAddOn(ctx, "550e8400-e29b-41d4-a716-446655440000", components.UpdateAddOnRequest{
+        Config: components.CreateUpdateAddOnConfigManagedCache(
+            components.ManagedCache{
+                CapacityConfig: components.CreateManagedCacheCapacityConfigTiered(
+                    components.Tiered{
+                        Tier: components.TierSmall,
+                    },
+                ),
+            },
+        ),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AddOnResponse != nil {
+        switch res.AddOnResponse.Owner.Type {
+            case components.AddOnOwnerTypeControlPlaneAddOnOwner:
+                // res.AddOnResponse.Owner.ControlPlaneAddOnOwner is populated
+            case components.AddOnOwnerTypeControlPlaneGroupAddOnOwner:
+                // res.AddOnResponse.Owner.ControlPlaneGroupAddOnOwner is populated
+        }
+
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |                                                                                |
+| `addOnID`                                                                      | `string`                                                                       | :heavy_check_mark:                                                             | ID of the add-on to operate on.                                                | 550e8400-e29b-41d4-a716-446655440000                                           |
+| `updateAddOnRequest`                                                           | [components.UpdateAddOnRequest](../../models/components/updateaddonrequest.md) | :heavy_check_mark:                                                             | N/A                                                                            |                                                                                |
+| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |                                                                                |
+
+### Response
+
+**[*operations.UpdateAddOnResponse](../../models/operations/updateaddonresponse.md), error**
 
 ### Errors
 

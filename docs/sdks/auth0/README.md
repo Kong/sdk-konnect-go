@@ -8,7 +8,7 @@
 
 ## PostAuth0UserMfaSettingsInternal
 
-Returns whether Multi-Factor Authentication (MFA) is enabled for an Auth0 user. A user's MFA status is determined from their Konnect organization's settings.  If the user is associated with multiple organizations, MFA is considered enabled if any of their organizations have MFA enabled.  Although a user is generally uniquely identified by their email address,  this endpoint requires the user's Auth0 ID to manage cases where the user logs  in with multiple authentication providers but chooses not to link their accounts  (in which case a single email address may correspond to multiple Auth0 user IDs).
+Returns whether Multi-Factor Authentication (MFA) is enabled for an Auth0 user. A user's MFA status is determined from their Konnect organization's settings. If the user is associated with multiple organizations, MFA is considered enabled if any of their organizations have MFA enabled. Although a user is generally uniquely identified by their email address, this endpoint requires the user's Auth0 ID to manage cases where the user logs in with multiple authentication providers but chooses not to link their accounts (in which case a single email address may correspond to multiple Auth0 user IDs).
 Note: The email address is not a part of the URL path to avoid PII data in request logs/traces.
 
 ### Example Usage

@@ -163,6 +163,11 @@ type AppAuthStrategyOpenIDConnectResponse struct {
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
 	UpdatedAt time.Time `json:"updated_at"`
+	// Indicates whether this auth strategy supports multiple credentials.
+	// - `true` for Key Auth strategies and when supported for Client Credentials strategies
+	// - `false` when not supported for Client Credentials strategies
+	//
+	SupportsMultipleCredentials *bool `json:"supports_multiple_credentials,omitempty"`
 }
 
 func (a AppAuthStrategyOpenIDConnectResponse) MarshalJSON() ([]byte, error) {
@@ -244,6 +249,13 @@ func (a *AppAuthStrategyOpenIDConnectResponse) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return a.UpdatedAt
+}
+
+func (a *AppAuthStrategyOpenIDConnectResponse) GetSupportsMultipleCredentials() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.SupportsMultipleCredentials
 }
 
 type AppAuthStrategyKeyAuthResponseStrategyType string
@@ -398,6 +410,10 @@ type AppAuthStrategyKeyAuthResponse struct {
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
 	UpdatedAt time.Time `json:"updated_at"`
+	// Indicates whether this auth strategy supports multiple credentials.
+	// Always `true` for KEY_AUTH.
+	//
+	SupportsMultipleCredentials *bool `default:"true" json:"supports_multiple_credentials"`
 }
 
 func (a AppAuthStrategyKeyAuthResponse) MarshalJSON() ([]byte, error) {
@@ -481,6 +497,13 @@ func (a *AppAuthStrategyKeyAuthResponse) GetUpdatedAt() time.Time {
 	return a.UpdatedAt
 }
 
+func (a *AppAuthStrategyKeyAuthResponse) GetSupportsMultipleCredentials() *bool {
+	if a == nil {
+		return nil
+	}
+	return a.SupportsMultipleCredentials
+}
+
 type CreateAppAuthStrategyResponseType string
 
 const (
@@ -490,8 +513,8 @@ const (
 
 // CreateAppAuthStrategyResponse - A set of plugin configurations that represent how the gateway will perform authentication and authorization for a Product Version. Called “Auth Strategy” for short in the context of portals/applications. The plugins are synced to any Gateway Service that is currently linked or becomes linked to the Product Version.
 type CreateAppAuthStrategyResponse struct {
-	AppAuthStrategyKeyAuthResponse       *AppAuthStrategyKeyAuthResponse       `queryParam:"inline,name=CreateAppAuthStrategyResponse" union:"member"`
-	AppAuthStrategyOpenIDConnectResponse *AppAuthStrategyOpenIDConnectResponse `queryParam:"inline,name=CreateAppAuthStrategyResponse" union:"member"`
+	AppAuthStrategyKeyAuthResponse       *AppAuthStrategyKeyAuthResponse       `queryParam:"inline" union:"member"`
+	AppAuthStrategyOpenIDConnectResponse *AppAuthStrategyOpenIDConnectResponse `queryParam:"inline" union:"member"`
 
 	Type CreateAppAuthStrategyResponseType
 }

@@ -16,8 +16,8 @@ const (
 )
 
 type Criteria struct {
-	UpdateScorecardCriteria *UpdateScorecardCriteria `queryParam:"inline,name=criteria" union:"member"`
-	CreateScorecardCriteria *CreateScorecardCriteria `queryParam:"inline,name=criteria" union:"member"`
+	UpdateScorecardCriteria *UpdateScorecardCriteria `queryParam:"inline" union:"member"`
+	CreateScorecardCriteria *CreateScorecardCriteria `queryParam:"inline" union:"member"`
 
 	Type CriteriaType
 }

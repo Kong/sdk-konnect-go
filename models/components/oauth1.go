@@ -24,7 +24,8 @@ type Oauth1 struct {
 	ExpiresAt *time.Time `json:"expires_at"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
-	type_     string    `const:"oauth" json:"type"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"oauth" json:"type"`
 }
 
 func (o Oauth1) MarshalJSON() ([]byte, error) {
@@ -83,3 +84,6 @@ func (o *Oauth1) GetCreatedAt() time.Time {
 func (o *Oauth1) GetType() string {
 	return "oauth"
 }
+
+// #region class-body-oauth1
+// #endregion class-body-oauth1

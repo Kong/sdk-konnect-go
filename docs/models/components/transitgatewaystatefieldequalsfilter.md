@@ -17,3 +17,15 @@ transitGatewayStateFieldEqualsFilter := components.CreateTransitGatewayStateFiel
 transitGatewayStateFieldEqualsFilter := components.CreateTransitGatewayStateFieldEqualsFilterTransitGatewayStateFieldEqualsComparison(components.TransitGatewayStateFieldEqualsComparison{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch transitGatewayStateFieldEqualsFilter.Type {
+	case components.TransitGatewayStateFieldEqualsFilterTypeTransitGatewayState:
+		// transitGatewayStateFieldEqualsFilter.TransitGatewayState is populated
+	case components.TransitGatewayStateFieldEqualsFilterTypeTransitGatewayStateFieldEqualsComparison:
+		// transitGatewayStateFieldEqualsFilter.TransitGatewayStateFieldEqualsComparison is populated
+}
+```

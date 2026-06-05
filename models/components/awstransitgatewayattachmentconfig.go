@@ -8,31 +8,31 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type AWSTransitGatewayAttachmentType string
+type AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentType string
 
 const (
-	AWSTransitGatewayAttachmentTypeAwsTransitGatewayAttachment AWSTransitGatewayAttachmentType = "aws-transit-gateway-attachment"
+	AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentTypeAwsTransitGatewayAttachment AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentType = "aws-transit-gateway-attachment"
 )
 
-func (e AWSTransitGatewayAttachmentType) ToPointer() *AWSTransitGatewayAttachmentType {
+func (e AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentType) ToPointer() *AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentType {
 	return &e
 }
-func (e *AWSTransitGatewayAttachmentType) UnmarshalJSON(data []byte) error {
+func (e *AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "aws-transit-gateway-attachment":
-		*e = AWSTransitGatewayAttachmentType(v)
+		*e = AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for AWSTransitGatewayAttachmentType: %v", v)
+		return fmt.Errorf("invalid value for AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentType: %v", v)
 	}
 }
 
 type AwsTransitGatewayAttachmentConfig struct {
-	Kind AWSTransitGatewayAttachmentType `json:"kind"`
+	Kind AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentType `json:"kind"`
 	// AWS Transit Gateway ID to create attachment to.
 	TransitGatewayID string `json:"transit_gateway_id"`
 	// Resource Share ARN to verify request to create transit gateway attachment.
@@ -50,9 +50,9 @@ func (a *AwsTransitGatewayAttachmentConfig) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *AwsTransitGatewayAttachmentConfig) GetKind() AWSTransitGatewayAttachmentType {
+func (a *AwsTransitGatewayAttachmentConfig) GetKind() AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentType {
 	if a == nil {
-		return AWSTransitGatewayAttachmentType("")
+		return AWSTransitGatewayAttachmentConfigAWSTransitGatewayAttachmentType("")
 	}
 	return a.Kind
 }

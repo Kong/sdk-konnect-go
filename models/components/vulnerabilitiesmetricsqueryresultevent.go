@@ -16,7 +16,7 @@ const (
 
 // VulnerabilitiesMetricsQueryResultEvent - Payload containing the aggregated metric data and associated dimensions included in the query.
 type VulnerabilitiesMetricsQueryResultEvent struct {
-	VulnerabilityCountMetricEvent *VulnerabilityCountMetricEvent `queryParam:"inline,name=VulnerabilitiesMetricsQueryResultEvent" union:"member"`
+	VulnerabilityCountMetricEvent *VulnerabilityCountMetricEvent `queryParam:"inline" union:"member"`
 
 	Type VulnerabilitiesMetricsQueryResultEventType
 }

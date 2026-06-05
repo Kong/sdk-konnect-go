@@ -135,9 +135,9 @@ const (
 //
 // Example: `scan_attributes.image_tag`.
 type VulnerabilitiesMetricsFilterByScanAttributes struct {
-	VulnerabilitiesMetricsFilterByScanAttributesEmptyValueMetricsFilter *VulnerabilitiesMetricsFilterByScanAttributesEmptyValueMetricsFilter `queryParam:"inline,name=VulnerabilitiesMetricsFilterByScanAttributes" union:"member"`
-	StringValueMetricsFilter                                            *StringValueMetricsFilter                                            `queryParam:"inline,name=VulnerabilitiesMetricsFilterByScanAttributes" union:"member"`
-	NumericValueMetricsFilter                                           *NumericValueMetricsFilter                                           `queryParam:"inline,name=VulnerabilitiesMetricsFilterByScanAttributes" union:"member"`
+	VulnerabilitiesMetricsFilterByScanAttributesEmptyValueMetricsFilter *VulnerabilitiesMetricsFilterByScanAttributesEmptyValueMetricsFilter `queryParam:"inline" union:"member"`
+	StringValueMetricsFilter                                            *StringValueMetricsFilter                                            `queryParam:"inline" union:"member"`
+	NumericValueMetricsFilter                                           *NumericValueMetricsFilter                                           `queryParam:"inline" union:"member"`
 
 	Type VulnerabilitiesMetricsFilterByScanAttributesType
 }

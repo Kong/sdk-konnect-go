@@ -11,6 +11,8 @@ type CustomPlugin struct {
 	Handler string `json:"handler"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
+	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
+	ManagedBy map[string]any `json:"managed_by,omitempty"`
 	// The name to associate with the given custom plugin.
 	Name string `json:"name"`
 	// The schema for the given custom plugin.
@@ -47,6 +49,13 @@ func (c *CustomPlugin) GetID() *string {
 		return nil
 	}
 	return c.ID
+}
+
+func (c *CustomPlugin) GetManagedBy() map[string]any {
+	if c == nil {
+		return nil
+	}
+	return c.ManagedBy
 }
 
 func (c *CustomPlugin) GetName() string {

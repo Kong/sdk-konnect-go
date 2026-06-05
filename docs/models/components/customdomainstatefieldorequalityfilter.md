@@ -9,4 +9,4 @@ comma-delimited list.
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `Oeq`              | *string*           | :heavy_check_mark: | N/A                |
+| `Oeq`              | `string`           | :heavy_check_mark: | N/A                |

@@ -1,0 +1,29 @@
+# AIGatewayMCPServerPassthroughListener
+
+
+## Supported Types
+
+### AIGatewayMCPServerBaseACLPropertiesConsumerAIGatewayMCPServerPassthroughListenerAIGatewayMCPServerBaseACLPropertiesConsumer
+
+```go
+aiGatewayMCPServerPassthroughListener := components.CreateAIGatewayMCPServerPassthroughListenerConsumer(components.AIGatewayMCPServerBaseACLPropertiesConsumerAIGatewayMCPServerPassthroughListenerAIGatewayMCPServerBaseACLPropertiesConsumer{/* values here */})
+```
+
+### AIGatewayMCPServerBaseACLPropertiesOauthAIGatewayMCPServerPassthroughListenerAIGatewayMCPServerBaseACLPropertiesOauth
+
+```go
+aiGatewayMCPServerPassthroughListener := components.CreateAIGatewayMCPServerPassthroughListenerOauthAccessToken(components.AIGatewayMCPServerBaseACLPropertiesOauthAIGatewayMCPServerPassthroughListenerAIGatewayMCPServerBaseACLPropertiesOauth{/* values here */})
+```
+
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch aiGatewayMCPServerPassthroughListener.Type {
+	case components.AIGatewayMCPServerPassthroughListenerUnionTypeConsumer:
+		// aiGatewayMCPServerPassthroughListener.AIGatewayMCPServerBaseACLPropertiesConsumerAIGatewayMCPServerPassthroughListenerAIGatewayMCPServerBaseACLPropertiesConsumer is populated
+	case components.AIGatewayMCPServerPassthroughListenerUnionTypeOauthAccessToken:
+		// aiGatewayMCPServerPassthroughListener.AIGatewayMCPServerBaseACLPropertiesOauthAIGatewayMCPServerPassthroughListenerAIGatewayMCPServerBaseACLPropertiesOauth is populated
+}
+```

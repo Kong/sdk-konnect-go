@@ -9,6 +9,8 @@ type ConsumerGroup struct {
 	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
+	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
+	ManagedBy map[string]any `json:"managed_by,omitempty"`
 	// The name of the consumer group.
 	Name string `json:"name"`
 	// A set of strings representing tags.
@@ -36,6 +38,13 @@ func (c *ConsumerGroup) GetID() *string {
 		return nil
 	}
 	return c.ID
+}
+
+func (c *ConsumerGroup) GetManagedBy() map[string]any {
+	if c == nil {
+		return nil
+	}
+	return c.ManagedBy
 }
 
 func (c *ConsumerGroup) GetName() string {

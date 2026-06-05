@@ -78,7 +78,17 @@ func main() {
         log.Fatal(err)
     }
     if res.CatalogIntegration != nil {
-        // handle response
+        switch res.CatalogIntegration.Authorization.Type {
+            case components.CatalogIntegrationAuthorizationTypeOne:
+                // res.CatalogIntegration.Authorization.One is populated
+            case components.CatalogIntegrationAuthorizationTypeOAuth:
+                // res.CatalogIntegration.Authorization.OAuth is populated
+            case components.CatalogIntegrationAuthorizationTypeMultiKeyAuth:
+                // res.CatalogIntegration.Authorization.MultiKeyAuth is populated
+            case components.CatalogIntegrationAuthorizationTypeGitHubAppInstallationAuth:
+                // res.CatalogIntegration.Authorization.GitHubAppInstallationAuth is populated
+        }
+
     }
 }
 ```
@@ -204,7 +214,17 @@ func main() {
         log.Fatal(err)
     }
     if res.CatalogIntegration != nil {
-        // handle response
+        switch res.CatalogIntegration.Authorization.Type {
+            case components.CatalogIntegrationAuthorizationTypeOne:
+                // res.CatalogIntegration.Authorization.One is populated
+            case components.CatalogIntegrationAuthorizationTypeOAuth:
+                // res.CatalogIntegration.Authorization.OAuth is populated
+            case components.CatalogIntegrationAuthorizationTypeMultiKeyAuth:
+                // res.CatalogIntegration.Authorization.MultiKeyAuth is populated
+            case components.CatalogIntegrationAuthorizationTypeGitHubAppInstallationAuth:
+                // res.CatalogIntegration.Authorization.GitHubAppInstallationAuth is populated
+        }
+
     }
 }
 ```
@@ -214,7 +234,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `integration`                                            | *string*                                                 | :heavy_check_mark:                                       | The name of the integration.                             | jira                                                     |
+| `integration`                                            | `string`                                                 | :heavy_check_mark:                                       | The name of the integration.                             | jira                                                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -263,7 +283,17 @@ func main() {
         log.Fatal(err)
     }
     if res.CatalogIntegration != nil {
-        // handle response
+        switch res.CatalogIntegration.Authorization.Type {
+            case components.CatalogIntegrationAuthorizationTypeOne:
+                // res.CatalogIntegration.Authorization.One is populated
+            case components.CatalogIntegrationAuthorizationTypeOAuth:
+                // res.CatalogIntegration.Authorization.OAuth is populated
+            case components.CatalogIntegrationAuthorizationTypeMultiKeyAuth:
+                // res.CatalogIntegration.Authorization.MultiKeyAuth is populated
+            case components.CatalogIntegrationAuthorizationTypeGitHubAppInstallationAuth:
+                // res.CatalogIntegration.Authorization.GitHubAppInstallationAuth is populated
+        }
+
     }
 }
 ```
@@ -273,7 +303,7 @@ func main() {
 | Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |                                                                                            |
-| `integration`                                                                              | *string*                                                                                   | :heavy_check_mark:                                                                         | The name of the integration.                                                               | jira                                                                                       |
+| `integration`                                                                              | `string`                                                                                   | :heavy_check_mark:                                                                         | The name of the integration.                                                               | jira                                                                                       |
 | `updateCatalogIntegration`                                                                 | [components.UpdateCatalogIntegration](../../models/components/updatecatalogintegration.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |                                                                                            |
 | `opts`                                                                                     | [][operations.Option](../../models/operations/option.md)                                   | :heavy_minus_sign:                                                                         | The options for this request.                                                              |                                                                                            |
 
@@ -333,7 +363,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `integration`                                            | *string*                                                 | :heavy_check_mark:                                       | The name of the integration.                             | jira                                                     |
+| `integration`                                            | `string`                                                 | :heavy_check_mark:                                       | The name of the integration.                             | jira                                                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response

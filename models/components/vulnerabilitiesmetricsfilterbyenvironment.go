@@ -32,7 +32,7 @@ func (e *VulnerabilitiesMetricsFilterByEnvironmentField) UnmarshalJSON(data []by
 	}
 }
 
-type Two struct {
+type VulnerabilitiesMetricsFilterByEnvironment2 struct {
 	// The type of filter to apply.
 	//   - `in` filters will limit results to only the specified values
 	//   - `not_in` filters will exclude the specified values
@@ -42,37 +42,40 @@ type Two struct {
 	Field    VulnerabilitiesMetricsFilterByEnvironmentField `json:"field"`
 }
 
-func (t Two) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(t, "", false)
+func (v VulnerabilitiesMetricsFilterByEnvironment2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(v, "", false)
 }
 
-func (t *Two) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"operator", "value", "field"}); err != nil {
+func (v *VulnerabilitiesMetricsFilterByEnvironment2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &v, "", false, []string{"operator", "value", "field"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (t *Two) GetOperator() MetricsFilterInOperator {
-	if t == nil {
+func (v *VulnerabilitiesMetricsFilterByEnvironment2) GetOperator() MetricsFilterInOperator {
+	if v == nil {
 		return MetricsFilterInOperator("")
 	}
-	return t.Operator
+	return v.Operator
 }
 
-func (t *Two) GetValue() []string {
-	if t == nil {
+func (v *VulnerabilitiesMetricsFilterByEnvironment2) GetValue() []string {
+	if v == nil {
 		return []string{}
 	}
-	return t.Value
+	return v.Value
 }
 
-func (t *Two) GetField() VulnerabilitiesMetricsFilterByEnvironmentField {
-	if t == nil {
+func (v *VulnerabilitiesMetricsFilterByEnvironment2) GetField() VulnerabilitiesMetricsFilterByEnvironmentField {
+	if v == nil {
 		return VulnerabilitiesMetricsFilterByEnvironmentField("")
 	}
-	return t.Field
+	return v.Field
 }
+
+// #region class-body-vulnerabilitiesmetricsfilterbyenvironment2
+// #endregion class-body-vulnerabilitiesmetricsfilterbyenvironment2
 
 type EmptyValueMetricsFilterField string
 
@@ -133,14 +136,14 @@ func (e *EmptyValueMetricsFilter) GetField() EmptyValueMetricsFilterField {
 type VulnerabilitiesMetricsFilterByEnvironmentType string
 
 const (
-	VulnerabilitiesMetricsFilterByEnvironmentTypeEmptyValueMetricsFilter VulnerabilitiesMetricsFilterByEnvironmentType = "EmptyValueMetricsFilter"
-	VulnerabilitiesMetricsFilterByEnvironmentTypeTwo                     VulnerabilitiesMetricsFilterByEnvironmentType = "2"
+	VulnerabilitiesMetricsFilterByEnvironmentTypeEmptyValueMetricsFilter                    VulnerabilitiesMetricsFilterByEnvironmentType = "EmptyValueMetricsFilter"
+	VulnerabilitiesMetricsFilterByEnvironmentTypeVulnerabilitiesMetricsFilterByEnvironment2 VulnerabilitiesMetricsFilterByEnvironmentType = "VulnerabilitiesMetricsFilterByEnvironment_2"
 )
 
 // VulnerabilitiesMetricsFilterByEnvironment - Filters a metrics query by `environment`.
 type VulnerabilitiesMetricsFilterByEnvironment struct {
-	EmptyValueMetricsFilter *EmptyValueMetricsFilter `queryParam:"inline,name=VulnerabilitiesMetricsFilterByEnvironment" union:"member"`
-	Two                     *Two                     `queryParam:"inline,name=VulnerabilitiesMetricsFilterByEnvironment" union:"member"`
+	EmptyValueMetricsFilter                    *EmptyValueMetricsFilter                    `queryParam:"inline" union:"member"`
+	VulnerabilitiesMetricsFilterByEnvironment2 *VulnerabilitiesMetricsFilterByEnvironment2 `queryParam:"inline" union:"member"`
 
 	Type VulnerabilitiesMetricsFilterByEnvironmentType
 }
@@ -154,21 +157,21 @@ func CreateVulnerabilitiesMetricsFilterByEnvironmentEmptyValueMetricsFilter(empt
 	}
 }
 
-func CreateVulnerabilitiesMetricsFilterByEnvironmentTwo(two Two) VulnerabilitiesMetricsFilterByEnvironment {
-	typ := VulnerabilitiesMetricsFilterByEnvironmentTypeTwo
+func CreateVulnerabilitiesMetricsFilterByEnvironmentVulnerabilitiesMetricsFilterByEnvironment2(vulnerabilitiesMetricsFilterByEnvironment2 VulnerabilitiesMetricsFilterByEnvironment2) VulnerabilitiesMetricsFilterByEnvironment {
+	typ := VulnerabilitiesMetricsFilterByEnvironmentTypeVulnerabilitiesMetricsFilterByEnvironment2
 
 	return VulnerabilitiesMetricsFilterByEnvironment{
-		Two:  &two,
+		VulnerabilitiesMetricsFilterByEnvironment2: &vulnerabilitiesMetricsFilterByEnvironment2,
 		Type: typ,
 	}
 }
 
 func (u *VulnerabilitiesMetricsFilterByEnvironment) UnmarshalJSON(data []byte) error {
 
-	var two Two = Two{}
-	if err := utils.UnmarshalJSON(data, &two, "", true, nil); err == nil {
-		u.Two = &two
-		u.Type = VulnerabilitiesMetricsFilterByEnvironmentTypeTwo
+	var vulnerabilitiesMetricsFilterByEnvironment2 VulnerabilitiesMetricsFilterByEnvironment2 = VulnerabilitiesMetricsFilterByEnvironment2{}
+	if err := utils.UnmarshalJSON(data, &vulnerabilitiesMetricsFilterByEnvironment2, "", true, nil); err == nil {
+		u.VulnerabilitiesMetricsFilterByEnvironment2 = &vulnerabilitiesMetricsFilterByEnvironment2
+		u.Type = VulnerabilitiesMetricsFilterByEnvironmentTypeVulnerabilitiesMetricsFilterByEnvironment2
 		return nil
 	}
 
@@ -187,8 +190,8 @@ func (u VulnerabilitiesMetricsFilterByEnvironment) MarshalJSON() ([]byte, error)
 		return utils.MarshalJSON(u.EmptyValueMetricsFilter, "", true)
 	}
 
-	if u.Two != nil {
-		return utils.MarshalJSON(u.Two, "", true)
+	if u.VulnerabilitiesMetricsFilterByEnvironment2 != nil {
+		return utils.MarshalJSON(u.VulnerabilitiesMetricsFilterByEnvironment2, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type VulnerabilitiesMetricsFilterByEnvironment: all fields are null")

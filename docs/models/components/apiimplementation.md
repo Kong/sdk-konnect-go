@@ -17,3 +17,15 @@ apiImplementation := components.CreateAPIImplementationServiceReferenceInput(com
 apiImplementation := components.CreateAPIImplementationControlPlaneReference(components.ControlPlaneReference{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch apiImplementation.Type {
+	case components.APIImplementationTypeServiceReferenceInput:
+		// apiImplementation.ServiceReferenceInput is populated
+	case components.APIImplementationTypeControlPlaneReference:
+		// apiImplementation.ControlPlaneReference is populated
+}
+```

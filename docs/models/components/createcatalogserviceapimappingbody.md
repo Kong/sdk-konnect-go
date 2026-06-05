@@ -7,4 +7,4 @@ Request body schema for creating a new API mapping for catalog service.
 
 | Field                            | Type                             | Required                         | Description                      |
 | -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `APIID`                          | *string*                         | :heavy_check_mark:               | The ID of the API Entity to map. |
+| `APIID`                          | `string`                         | :heavy_check_mark:               | The ID of the API Entity to map. |

@@ -38,6 +38,8 @@ type AssignedRole struct {
 	RoleName *string `json:"role_name,omitempty"`
 	// A RBAC entity ID.
 	EntityID *string `json:"entity_id,omitempty"`
+	// The IDs of the entities associated with this role assignment. Mutually exclusive with entity_id; exactly one of entity_id or entity_ids must be provided.
+	EntityIds []string `json:"entity_ids,omitempty"`
 	// Name of the entity type the role is being assigned to.
 	EntityTypeName *string `json:"entity_type_name,omitempty"`
 	// Region of the entity.
@@ -63,6 +65,13 @@ func (a *AssignedRole) GetEntityID() *string {
 		return nil
 	}
 	return a.EntityID
+}
+
+func (a *AssignedRole) GetEntityIds() []string {
+	if a == nil {
+		return nil
+	}
+	return a.EntityIds
 }
 
 func (a *AssignedRole) GetEntityTypeName() *string {

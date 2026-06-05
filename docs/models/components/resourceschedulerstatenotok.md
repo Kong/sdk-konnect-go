@@ -1,0 +1,12 @@
+# ResourceSchedulerStateNotOk
+
+Describes the resource ingestion scheduler state.
+
+
+## Fields
+
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `Status`                                                                                                     | [components.ResourceSchedulerStateNotOkStatus](../../models/components/resourceschedulerstatenotokstatus.md) | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
+| `Reason`                                                                                                     | `string`                                                                                                     | :heavy_check_mark:                                                                                           | Reason for the current resource ingestion scheduler status.                                                  |
+| `Remediation`                                                                                                | `*string`                                                                                                    | :heavy_check_mark:                                                                                           | Possible steps which can be taken to resolve resource scheduler status back to "ok".                         |

@@ -11,12 +11,14 @@ import (
 type AddOnOwnerType string
 
 const (
-	AddOnOwnerTypeControlPlaneAddOnOwner AddOnOwnerType = "ControlPlaneAddOnOwner"
+	AddOnOwnerTypeControlPlaneAddOnOwner      AddOnOwnerType = "ControlPlaneAddOnOwner"
+	AddOnOwnerTypeControlPlaneGroupAddOnOwner AddOnOwnerType = "ControlPlaneGroupAddOnOwner"
 )
 
 // AddOnOwner - Owner for the add-on.
 type AddOnOwner struct {
-	ControlPlaneAddOnOwner *ControlPlaneAddOnOwner `queryParam:"inline,name=AddOnOwner" union:"member"`
+	ControlPlaneAddOnOwner      *ControlPlaneAddOnOwner      `queryParam:"inline" union:"member"`
+	ControlPlaneGroupAddOnOwner *ControlPlaneGroupAddOnOwner `queryParam:"inline" union:"member"`
 
 	Type AddOnOwnerType
 }
@@ -30,6 +32,15 @@ func CreateAddOnOwnerControlPlaneAddOnOwner(controlPlaneAddOnOwner ControlPlaneA
 	}
 }
 
+func CreateAddOnOwnerControlPlaneGroupAddOnOwner(controlPlaneGroupAddOnOwner ControlPlaneGroupAddOnOwner) AddOnOwner {
+	typ := AddOnOwnerTypeControlPlaneGroupAddOnOwner
+
+	return AddOnOwner{
+		ControlPlaneGroupAddOnOwner: &controlPlaneGroupAddOnOwner,
+		Type:                        typ,
+	}
+}
+
 func (u *AddOnOwner) UnmarshalJSON(data []byte) error {
 
 	var controlPlaneAddOnOwner ControlPlaneAddOnOwner = ControlPlaneAddOnOwner{}
@@ -39,12 +50,23 @@ func (u *AddOnOwner) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var controlPlaneGroupAddOnOwner ControlPlaneGroupAddOnOwner = ControlPlaneGroupAddOnOwner{}
+	if err := utils.UnmarshalJSON(data, &controlPlaneGroupAddOnOwner, "", true, nil); err == nil {
+		u.ControlPlaneGroupAddOnOwner = &controlPlaneGroupAddOnOwner
+		u.Type = AddOnOwnerTypeControlPlaneGroupAddOnOwner
+		return nil
+	}
+
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for AddOnOwner", string(data))
 }
 
 func (u AddOnOwner) MarshalJSON() ([]byte, error) {
 	if u.ControlPlaneAddOnOwner != nil {
 		return utils.MarshalJSON(u.ControlPlaneAddOnOwner, "", true)
+	}
+
+	if u.ControlPlaneGroupAddOnOwner != nil {
+		return utils.MarshalJSON(u.ControlPlaneGroupAddOnOwner, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type AddOnOwner: all fields are null")

@@ -56,7 +56,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -174,7 +180,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -184,7 +196,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `authStrategyID`                                         | *string*                                                 | :heavy_check_mark:                                       | Application auth strategy identifier                     | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `authStrategyID`                                         | `string`                                                 | :heavy_check_mark:                                       | Application auth strategy identifier                     | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -249,7 +261,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -259,7 +277,7 @@ func main() {
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |                                                                                                    |
-| `authStrategyID`                                                                                   | *string*                                                                                           | :heavy_check_mark:                                                                                 | Application auth strategy identifier                                                               | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                                                               |
+| `authStrategyID`                                                                                   | `string`                                                                                           | :heavy_check_mark:                                                                                 | Application auth strategy identifier                                                               | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                                                               |
 | `createAppAuthStrategyRequest`                                                                     | [components.CreateAppAuthStrategyRequest](../../models/components/createappauthstrategyrequest.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |                                                                                                    |
 | `opts`                                                                                             | [][operations.Option](../../models/operations/option.md)                                           | :heavy_minus_sign:                                                                                 | The options for this request.                                                                      |                                                                                                    |
 
@@ -311,7 +329,13 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateAppAuthStrategyResponse != nil {
-        // handle response
+        switch res.CreateAppAuthStrategyResponse.Type {
+            case components.CreateAppAuthStrategyResponseTypeKeyAuth:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyKeyAuthResponse is populated
+            case components.CreateAppAuthStrategyResponseTypeOpenidConnect:
+                // res.CreateAppAuthStrategyResponse.AppAuthStrategyOpenIDConnectResponse is populated
+        }
+
     }
 }
 ```
@@ -321,7 +345,7 @@ func main() {
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |                                                                                                    |
-| `authStrategyID`                                                                                   | *string*                                                                                           | :heavy_check_mark:                                                                                 | Application auth strategy identifier                                                               | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                                                               |
+| `authStrategyID`                                                                                   | `string`                                                                                           | :heavy_check_mark:                                                                                 | Application auth strategy identifier                                                               | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                                                               |
 | `updateAppAuthStrategyRequest`                                                                     | [components.UpdateAppAuthStrategyRequest](../../models/components/updateappauthstrategyrequest.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |                                                                                                    |
 | `opts`                                                                                             | [][operations.Option](../../models/operations/option.md)                                           | :heavy_minus_sign:                                                                                 | The options for this request.                                                                      |                                                                                                    |
 
@@ -380,7 +404,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `authStrategyID`                                         | *string*                                                 | :heavy_check_mark:                                       | Application auth strategy identifier                     | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `authStrategyID`                                         | `string`                                                 | :heavy_check_mark:                                       | Application auth strategy identifier                     | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response

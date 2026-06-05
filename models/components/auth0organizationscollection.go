@@ -22,3 +22,6 @@ func (a *Auth0OrganizationsCollection) GetData() []Auth0Organization {
 	}
 	return a.Data
 }
+
+// #region class-body-auth0organizationscollection
+// #endregion class-body-auth0organizationscollection

@@ -40,8 +40,8 @@ const (
 )
 
 type Map struct {
-	CriteriaEvaluationRelationResult *CriteriaEvaluationRelationResult `queryParam:"inline,name=map" union:"member"`
-	CriteriaEvaluationErrorResult    *CriteriaEvaluationErrorResult    `queryParam:"inline,name=map" union:"member"`
+	CriteriaEvaluationRelationResult *CriteriaEvaluationRelationResult `queryParam:"inline" union:"member"`
+	CriteriaEvaluationErrorResult    *CriteriaEvaluationErrorResult    `queryParam:"inline" union:"member"`
 
 	Type MapType
 }

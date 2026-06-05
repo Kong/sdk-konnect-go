@@ -21,3 +21,17 @@ controlPlaneGeoFieldFilter := components.CreateControlPlaneGeoFieldFilterControl
 controlPlaneGeoFieldFilter := components.CreateControlPlaneGeoFieldFilterControlPlaneGeoFieldOrEqualityFilter(components.ControlPlaneGeoFieldOrEqualityFilter{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch controlPlaneGeoFieldFilter.Type {
+	case components.ControlPlaneGeoFieldFilterTypeControlPlaneGeoFieldEqualsFilter:
+		// controlPlaneGeoFieldFilter.ControlPlaneGeoFieldEqualsFilter is populated
+	case components.ControlPlaneGeoFieldFilterTypeControlPlaneGeoFieldNotEqualsFilter:
+		// controlPlaneGeoFieldFilter.ControlPlaneGeoFieldNotEqualsFilter is populated
+	case components.ControlPlaneGeoFieldFilterTypeControlPlaneGeoFieldOrEqualityFilter:
+		// controlPlaneGeoFieldFilter.ControlPlaneGeoFieldOrEqualityFilter is populated
+}
+```

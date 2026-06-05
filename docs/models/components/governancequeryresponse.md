@@ -1,0 +1,12 @@
+# GovernanceQueryResponse
+
+Response of the governance query.
+
+
+## Fields
+
+| Field                                                                                                                 | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
+| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `Data`                                                                                                                | [][components.GovernanceQueryResult](../../models/components/governancequeryresult.md)                                | :heavy_check_mark:                                                                                                    | Access evaluation results, one entry per resolved customer.                                                           |
+| `Errors`                                                                                                              | [][components.GovernanceQueryError](../../models/components/governancequeryerror.md)                                  | :heavy_check_mark:                                                                                                    | Partial errors encountered while processing the request.                                                              |
+| `Meta`                                                                                                                | [components.GovernanceQueryResponseMeta](../../models/components/governancequeryresponsemeta.md)                      | :heavy_check_mark:                                                                                                    | Pagination metadata. The endpoint may return a partial response if the full<br/>response would exceed server-side limits. |

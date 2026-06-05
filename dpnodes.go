@@ -241,7 +241,7 @@ func (s *DPNodes) GetExpectedConfigHash(ctx context.Context, controlPlaneID stri
 }
 
 // GetExpectedConfigVersion - Get an Expected Config Version
-// Retrieve the expected config version for this control plane. The expected config version can be used to verify if the config version of a data plane node is up to date with the control plane. The config version will be the same if they are in sync.
+// Retrieve the expected config version for this control plane. For data planes that track the config version (e.g. those that run with Incremental Config Sync enabled), the expected config version can be used to verify if the config version of a data plane node is up to date with the control plane. The config version will be the same if they are in sync.
 func (s *DPNodes) GetExpectedConfigVersion(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetExpectedConfigVersionResponse, error) {
 	request := operations.GetExpectedConfigVersionRequest{
 		ControlPlaneID: controlPlaneID,
@@ -1242,6 +1242,7 @@ func (s *DPNodes) DeleteNodesNodeID(ctx context.Context, controlPlaneID string, 
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
 		rawBody, err := utils.ConsumeRawBody(httpRes)
 		if err != nil {

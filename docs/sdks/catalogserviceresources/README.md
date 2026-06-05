@@ -43,7 +43,7 @@ func main() {
         PageNumber: sdkkonnectgo.Pointer[int64](1),
         Filter: &components.CatalogResourceRefFilterParameters{
             ServiceAssociations: sdkkonnectgo.Pointer(components.CreateNumericFieldFilterNumber(
-                21,
+                21.0,
             )),
             CreatedAt: sdkkonnectgo.Pointer(components.CreateDateTimeFieldFilterDateTimeFieldLTEFilter(
                 components.DateTimeFieldLTEFilter{

@@ -20,8 +20,10 @@ type HMACAuth struct {
 	// User-defined entity description. Konnect only field, not synced to the Gateway.
 	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
-	ID     *string `json:"id,omitempty"`
-	Secret *string `json:"secret,omitempty"`
+	ID *string `json:"id,omitempty"`
+	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
+	ManagedBy map[string]any `json:"managed_by,omitempty"`
+	Secret    *string        `json:"secret,omitempty"`
 	// A set of strings representing tags.
 	Tags     []string `json:"tags,omitempty"`
 	Username string   `json:"username"`
@@ -53,6 +55,13 @@ func (h *HMACAuth) GetID() *string {
 		return nil
 	}
 	return h.ID
+}
+
+func (h *HMACAuth) GetManagedBy() map[string]any {
+	if h == nil {
+		return nil
+	}
+	return h.ManagedBy
 }
 
 func (h *HMACAuth) GetSecret() *string {

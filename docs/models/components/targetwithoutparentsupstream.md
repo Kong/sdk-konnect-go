@@ -7,4 +7,4 @@ The unique identifier or the name of the upstream for which to update the target
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `ID`               | **string*          | :heavy_minus_sign: | N/A                |
+| `ID`               | `*string`          | :heavy_minus_sign: | N/A                |

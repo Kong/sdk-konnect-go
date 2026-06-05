@@ -3,38 +3,71 @@
 package components
 
 import (
+	"errors"
+	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
-	"time"
+)
+
+type PersonalAccessTokenCreateRequestType string
+
+const (
+	PersonalAccessTokenCreateRequestTypePersonalAccessTokenCreateRequestWithExpiresAt PersonalAccessTokenCreateRequestType = "PersonalAccessTokenCreateRequestWithExpiresAt"
+	PersonalAccessTokenCreateRequestTypePersonalAccessTokenCreateRequestWithTTL       PersonalAccessTokenCreateRequestType = "PersonalAccessTokenCreateRequestWithTTL"
 )
 
 // PersonalAccessTokenCreateRequest - Request body schema for creating personal access tokens.
 type PersonalAccessTokenCreateRequest struct {
-	Name string `json:"name"`
-	// An ISO-8601 timestamp representation of entity expiration date.
-	ExpiresAt time.Time `json:"expires_at"`
+	PersonalAccessTokenCreateRequestWithExpiresAt *PersonalAccessTokenCreateRequestWithExpiresAt `queryParam:"inline" union:"member"`
+	PersonalAccessTokenCreateRequestWithTTL       *PersonalAccessTokenCreateRequestWithTTL       `queryParam:"inline" union:"member"`
+
+	Type PersonalAccessTokenCreateRequestType
 }
 
-func (p PersonalAccessTokenCreateRequest) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
+func CreatePersonalAccessTokenCreateRequestPersonalAccessTokenCreateRequestWithExpiresAt(personalAccessTokenCreateRequestWithExpiresAt PersonalAccessTokenCreateRequestWithExpiresAt) PersonalAccessTokenCreateRequest {
+	typ := PersonalAccessTokenCreateRequestTypePersonalAccessTokenCreateRequestWithExpiresAt
 
-func (p *PersonalAccessTokenCreateRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, nil); err != nil {
-		return err
+	return PersonalAccessTokenCreateRequest{
+		PersonalAccessTokenCreateRequestWithExpiresAt: &personalAccessTokenCreateRequestWithExpiresAt,
+		Type: typ,
 	}
-	return nil
 }
 
-func (p *PersonalAccessTokenCreateRequest) GetName() string {
-	if p == nil {
-		return ""
+func CreatePersonalAccessTokenCreateRequestPersonalAccessTokenCreateRequestWithTTL(personalAccessTokenCreateRequestWithTTL PersonalAccessTokenCreateRequestWithTTL) PersonalAccessTokenCreateRequest {
+	typ := PersonalAccessTokenCreateRequestTypePersonalAccessTokenCreateRequestWithTTL
+
+	return PersonalAccessTokenCreateRequest{
+		PersonalAccessTokenCreateRequestWithTTL: &personalAccessTokenCreateRequestWithTTL,
+		Type:                                    typ,
 	}
-	return p.Name
 }
 
-func (p *PersonalAccessTokenCreateRequest) GetExpiresAt() time.Time {
-	if p == nil {
-		return time.Time{}
+func (u *PersonalAccessTokenCreateRequest) UnmarshalJSON(data []byte) error {
+
+	var personalAccessTokenCreateRequestWithExpiresAt PersonalAccessTokenCreateRequestWithExpiresAt = PersonalAccessTokenCreateRequestWithExpiresAt{}
+	if err := utils.UnmarshalJSON(data, &personalAccessTokenCreateRequestWithExpiresAt, "", true, nil); err == nil {
+		u.PersonalAccessTokenCreateRequestWithExpiresAt = &personalAccessTokenCreateRequestWithExpiresAt
+		u.Type = PersonalAccessTokenCreateRequestTypePersonalAccessTokenCreateRequestWithExpiresAt
+		return nil
 	}
-	return p.ExpiresAt
+
+	var personalAccessTokenCreateRequestWithTTL PersonalAccessTokenCreateRequestWithTTL = PersonalAccessTokenCreateRequestWithTTL{}
+	if err := utils.UnmarshalJSON(data, &personalAccessTokenCreateRequestWithTTL, "", true, nil); err == nil {
+		u.PersonalAccessTokenCreateRequestWithTTL = &personalAccessTokenCreateRequestWithTTL
+		u.Type = PersonalAccessTokenCreateRequestTypePersonalAccessTokenCreateRequestWithTTL
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PersonalAccessTokenCreateRequest", string(data))
+}
+
+func (u PersonalAccessTokenCreateRequest) MarshalJSON() ([]byte, error) {
+	if u.PersonalAccessTokenCreateRequestWithExpiresAt != nil {
+		return utils.MarshalJSON(u.PersonalAccessTokenCreateRequestWithExpiresAt, "", true)
+	}
+
+	if u.PersonalAccessTokenCreateRequestWithTTL != nil {
+		return utils.MarshalJSON(u.PersonalAccessTokenCreateRequestWithTTL, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type PersonalAccessTokenCreateRequest: all fields are null")
 }

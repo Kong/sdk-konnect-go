@@ -27,3 +27,19 @@ customFieldsSuggestion := components.CreateCustomFieldsSuggestionBoolean(bool{/*
 customFieldsSuggestion := components.CreateCustomFieldsSuggestionMapOfStr(map[string]string{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch customFieldsSuggestion.Type {
+	case components.CustomFieldsSuggestionTypeStr:
+		// customFieldsSuggestion.Str is populated
+	case components.CustomFieldsSuggestionTypeNumber:
+		// customFieldsSuggestion.Number is populated
+	case components.CustomFieldsSuggestionTypeBoolean:
+		// customFieldsSuggestion.Boolean is populated
+	case components.CustomFieldsSuggestionTypeMapOfStr:
+		// customFieldsSuggestion.MapOfStr is populated
+}
+```

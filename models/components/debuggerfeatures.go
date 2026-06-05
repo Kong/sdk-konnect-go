@@ -5,8 +5,9 @@ package components
 type DebuggerFeatures string
 
 const (
-	DebuggerFeaturesLogs   DebuggerFeatures = "logs"
-	DebuggerFeaturesTraces DebuggerFeatures = "traces"
+	DebuggerFeaturesLogs                DebuggerFeatures = "logs"
+	DebuggerFeaturesTraces              DebuggerFeatures = "traces"
+	DebuggerFeaturesPayloadSanitization DebuggerFeatures = "payload_sanitization"
 )
 
 func (e DebuggerFeatures) ToPointer() *DebuggerFeatures {
@@ -17,7 +18,7 @@ func (e DebuggerFeatures) ToPointer() *DebuggerFeatures {
 func (e *DebuggerFeatures) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "logs", "traces":
+		case "logs", "traces", "payload_sanitization":
 			return true
 		}
 	}

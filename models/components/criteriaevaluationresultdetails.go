@@ -26,13 +26,13 @@ const (
 // the the mean time-to-ack is greater than 15 minutes. This value represents the _actual_
 // mean time-to-ack value for the service which if not passing could be 25 minutes.
 type RawValue struct {
-	Number                        *float64                       `queryParam:"inline,name=raw_value" union:"member"`
-	Str                           *string                        `queryParam:"inline,name=raw_value" union:"member"`
-	Boolean                       *bool                          `queryParam:"inline,name=raw_value" union:"member"`
-	TimeValue                     *TimeValue                     `queryParam:"inline,name=raw_value" union:"member"`
-	CriteriaEvaluationRelationMap *CriteriaEvaluationRelationMap `queryParam:"inline,name=raw_value" union:"member"`
-	MapOfAny                      map[string]any                 `queryParam:"inline,name=raw_value" union:"member"`
-	Any                           any                            `queryParam:"inline,name=raw_value" union:"member"`
+	Number                        *float64                       `queryParam:"inline" union:"member"`
+	Str                           *string                        `queryParam:"inline" union:"member"`
+	Boolean                       *bool                          `queryParam:"inline" union:"member"`
+	TimeValue                     *TimeValue                     `queryParam:"inline" union:"member"`
+	CriteriaEvaluationRelationMap *CriteriaEvaluationRelationMap `queryParam:"inline" union:"member"`
+	MapOfAny                      map[string]any                 `queryParam:"inline" union:"member"`
+	Any                           any                            `queryParam:"inline" union:"member"`
 
 	Type RawValueType
 }

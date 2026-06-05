@@ -32,8 +32,10 @@ type MTLSAuth struct {
 	// User-defined entity description. Konnect only field, not synced to the Gateway.
 	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
-	ID          *string `json:"id,omitempty"`
-	SubjectName string  `json:"subject_name"`
+	ID *string `json:"id,omitempty"`
+	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
+	ManagedBy   map[string]any `json:"managed_by,omitempty"`
+	SubjectName string         `json:"subject_name"`
 	// A set of strings representing tags.
 	Tags []string `json:"tags,omitempty"`
 }
@@ -71,6 +73,13 @@ func (m *MTLSAuth) GetID() *string {
 		return nil
 	}
 	return m.ID
+}
+
+func (m *MTLSAuth) GetManagedBy() map[string]any {
+	if m == nil {
+		return nil
+	}
+	return m.ManagedBy
 }
 
 func (m *MTLSAuth) GetSubjectName() string {

@@ -12,7 +12,11 @@
 ## CreateAPIImplementation
 
 Creates an implementation for an API.
-An API can be implemented by a single Gateway Service.
+If all operations in an API are implemented by a single gateway service and the service
+has no routes that are not part of the API, then the API can be linked to the service.
+For cases where an API is implemented by multiple gateway services, only a subset of
+routes in one or more gateway services, or API operations need to be made available for API packages,
+then the API should be linked to the control plane that defines the routes that overlap with the API.
 
 
 ### Example Usage
@@ -49,7 +53,13 @@ func main() {
         log.Fatal(err)
     }
     if res.APIImplementationResponse != nil {
-        // handle response
+        switch res.APIImplementationResponse.Type {
+            case components.APIImplementationResponseTypeAPIImplementationResponseServiceReference:
+                // res.APIImplementationResponse.APIImplementationResponseServiceReference is populated
+            case components.APIImplementationResponseTypeAPIImplementationResponseControlPlaneReference:
+                // res.APIImplementationResponse.APIImplementationResponseControlPlaneReference is populated
+        }
+
     }
 }
 ```
@@ -59,7 +69,7 @@ func main() {
 | Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  | Example                                                                      |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |                                                                              |
-| `apiID`                                                                      | *string*                                                                     | :heavy_check_mark:                                                           | The UUID API identifier                                                      | 9f5061ce-78f6-4452-9108-ad7c02821fd5                                         |
+| `apiID`                                                                      | `string`                                                                     | :heavy_check_mark:                                                           | The UUID API identifier                                                      | 9f5061ce-78f6-4452-9108-ad7c02821fd5                                         |
 | `apiImplementation`                                                          | [components.APIImplementation](../../models/components/apiimplementation.md) | :heavy_check_mark:                                                           | N/A                                                                          |                                                                              |
 | `opts`                                                                       | [][operations.Option](../../models/operations/option.md)                     | :heavy_minus_sign:                                                           | The options for this request.                                                |                                                                              |
 
@@ -109,7 +119,13 @@ func main() {
         log.Fatal(err)
     }
     if res.APIImplementationResponse != nil {
-        // handle response
+        switch res.APIImplementationResponse.Type {
+            case components.APIImplementationResponseTypeAPIImplementationResponseServiceReference:
+                // res.APIImplementationResponse.APIImplementationResponseServiceReference is populated
+            case components.APIImplementationResponseTypeAPIImplementationResponseControlPlaneReference:
+                // res.APIImplementationResponse.APIImplementationResponseControlPlaneReference is populated
+        }
+
     }
 }
 ```
@@ -119,8 +135,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `apiID`                                                  | *string*                                                 | :heavy_check_mark:                                       | The UUID API identifier                                  | 9f5061ce-78f6-4452-9108-ad7c02821fd5                     |
-| `implementationID`                                       | *string*                                                 | :heavy_check_mark:                                       | The Portal identifier                                    | 032d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `apiID`                                                  | `string`                                                 | :heavy_check_mark:                                       | The UUID API identifier                                  | 9f5061ce-78f6-4452-9108-ad7c02821fd5                     |
+| `implementationID`                                       | `string`                                                 | :heavy_check_mark:                                       | The Portal identifier                                    | 032d905a-ed33-46a3-a093-d8f536af9a8a                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -177,8 +193,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `apiID`                                                  | *string*                                                 | :heavy_check_mark:                                       | The UUID API identifier                                  | 9f5061ce-78f6-4452-9108-ad7c02821fd5                     |
-| `implementationID`                                       | *string*                                                 | :heavy_check_mark:                                       | The Portal identifier                                    | 032d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `apiID`                                                  | `string`                                                 | :heavy_check_mark:                                       | The UUID API identifier                                  | 9f5061ce-78f6-4452-9108-ad7c02821fd5                     |
+| `implementationID`                                       | `string`                                                 | :heavy_check_mark:                                       | The Portal identifier                                    | 032d905a-ed33-46a3-a093-d8f536af9a8a                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response

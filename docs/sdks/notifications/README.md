@@ -53,7 +53,13 @@ func main() {
         log.Fatal(err)
     }
     if res.NotificationListResponse != nil {
-        // handle response
+        switch res.NotificationListResponse.Meta.Type {
+            case components.ListCursorMetaTypeCursorMeta:
+                // res.NotificationListResponse.Meta.CursorMeta is populated
+            case components.ListCursorMetaTypeTwo:
+                // res.NotificationListResponse.Meta.Two is populated
+        }
+
     }
 }
 ```
@@ -120,7 +126,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `notificationID`                                         | *string*                                                 | :heavy_check_mark:                                       | ID of the notification.                                  |
+| `notificationID`                                         | `string`                                                 | :heavy_check_mark:                                       | ID of the notification.                                  |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -177,7 +183,7 @@ func main() {
 | Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                         | [context.Context](https://pkg.go.dev/context#Context)                                         | :heavy_check_mark:                                                                            | The context to use for the request.                                                           |
-| `notificationID`                                                                              | *string*                                                                                      | :heavy_check_mark:                                                                            | ID of the notification.                                                                       |
+| `notificationID`                                                                              | `string`                                                                                      | :heavy_check_mark:                                                                            | ID of the notification.                                                                       |
 | `notificationUpdatePayload`                                                                   | [*components.NotificationUpdatePayload](../../models/components/notificationupdatepayload.md) | :heavy_minus_sign:                                                                            | Request body schema for updating notification status.                                         |
 | `opts`                                                                                        | [][operations.Option](../../models/operations/option.md)                                      | :heavy_minus_sign:                                                                            | The options for this request.                                                                 |
 
@@ -236,7 +242,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `notificationID`                                         | *string*                                                 | :heavy_check_mark:                                       | ID of the notification.                                  |
+| `notificationID`                                         | `string`                                                 | :heavy_check_mark:                                       | ID of the notification.                                  |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -398,7 +404,13 @@ func main() {
         log.Fatal(err)
     }
     if res.EventSubscriptionListResponse != nil {
-        // handle response
+        switch res.EventSubscriptionListResponse.Meta.Type {
+            case components.ListCursorMetaTypeCursorMeta:
+                // res.EventSubscriptionListResponse.Meta.CursorMeta is populated
+            case components.ListCursorMetaTypeTwo:
+                // res.EventSubscriptionListResponse.Meta.Two is populated
+        }
+
     }
 }
 ```
@@ -408,7 +420,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `eventID`                                                | *string*                                                 | :heavy_check_mark:                                       | Formatted string ID of the notification event.           | invoice-ready                                            |
+| `eventID`                                                | `string`                                                 | :heavy_check_mark:                                       | Formatted string ID of the notification event.           | invoice-ready                                            |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -465,7 +477,7 @@ func main() {
 | Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   | Example                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | `ctx`                                                                         | [context.Context](https://pkg.go.dev/context#Context)                         | :heavy_check_mark:                                                            | The context to use for the request.                                           |                                                                               |
-| `eventID`                                                                     | *string*                                                                      | :heavy_check_mark:                                                            | Formatted string ID of the notification event.                                | invoice-ready                                                                 |
+| `eventID`                                                                     | `string`                                                                      | :heavy_check_mark:                                                            | Formatted string ID of the notification event.                                | invoice-ready                                                                 |
 | `eventSubscription`                                                           | [*components.EventSubscription](../../models/components/eventsubscription.md) | :heavy_minus_sign:                                                            | Request body schema for creating/updating event subscription.                 |                                                                               |
 | `opts`                                                                        | [][operations.Option](../../models/operations/option.md)                      | :heavy_minus_sign:                                                            | The options for this request.                                                 |                                                                               |
 
@@ -524,8 +536,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `eventID`                                                | *string*                                                 | :heavy_check_mark:                                       | Formatted string ID of the notification event.           | invoice-ready                                            |
-| `subscriptionID`                                         | *string*                                                 | :heavy_check_mark:                                       | Subscription ID of the user configuration.               |                                                          |
+| `eventID`                                                | `string`                                                 | :heavy_check_mark:                                       | Formatted string ID of the notification event.           | invoice-ready                                            |
+| `subscriptionID`                                         | `string`                                                 | :heavy_check_mark:                                       | Subscription ID of the user configuration.               |                                                          |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -645,8 +657,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `eventID`                                                | *string*                                                 | :heavy_check_mark:                                       | Formatted string ID of the notification event.           | invoice-ready                                            |
-| `subscriptionID`                                         | *string*                                                 | :heavy_check_mark:                                       | Subscription ID of the user configuration.               |                                                          |
+| `eventID`                                                | `string`                                                 | :heavy_check_mark:                                       | Formatted string ID of the notification event.           | invoice-ready                                            |
+| `subscriptionID`                                         | `string`                                                 | :heavy_check_mark:                                       | Subscription ID of the user configuration.               |                                                          |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response

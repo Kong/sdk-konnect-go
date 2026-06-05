@@ -1,23 +1,10 @@
 # NetworkStateFieldFilter
 
+Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 
-## Supported Types
 
-### NetworkStateFieldEqualsFilter
+## Fields
 
-```go
-networkStateFieldFilter := components.CreateNetworkStateFieldFilterNetworkStateFieldEqualsFilter(components.NetworkStateFieldEqualsFilter{/* values here */})
-```
-
-### NetworkStateFieldNotEqualsFilter
-
-```go
-networkStateFieldFilter := components.CreateNetworkStateFieldFilterNetworkStateFieldNotEqualsFilter(components.NetworkStateFieldNotEqualsFilter{/* values here */})
-```
-
-### NetworkStateFieldOrEqualityFilter
-
-```go
-networkStateFieldFilter := components.CreateNetworkStateFieldFilterNetworkStateFieldOrEqualityFilter(components.NetworkStateFieldOrEqualityFilter{/* values here */})
-```
-
+| Field                                         | Type                                          | Required                                      | Description                                   |
+| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
+| `Oeq`                                         | `*string`                                     | :heavy_minus_sign:                            | The field matches any of the provided values. |

@@ -9,26 +9,26 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-// PatchAwsTransitGateway - Request schema for updating AWS Transit Gateway
-type PatchAwsTransitGateway struct {
+// PatchAWSTransitGatewayAWSTransitGateway - Request schema for updating AWS Transit Gateway
+type PatchAWSTransitGatewayAWSTransitGateway struct {
 	// CIDR blocks for constructing a route table for the transit gateway, when attaching to the owning
 	// network.
 	//
 	CidrBlocks []string `json:"cidr_blocks"`
 }
 
-func (p PatchAwsTransitGateway) MarshalJSON() ([]byte, error) {
+func (p PatchAWSTransitGatewayAWSTransitGateway) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *PatchAwsTransitGateway) UnmarshalJSON(data []byte) error {
+func (p *PatchAWSTransitGatewayAWSTransitGateway) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"cidr_blocks"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (p *PatchAwsTransitGateway) GetCidrBlocks() []string {
+func (p *PatchAWSTransitGatewayAWSTransitGateway) GetCidrBlocks() []string {
 	if p == nil {
 		return []string{}
 	}
@@ -90,23 +90,23 @@ func (t *TransitGatewayAttachmentConfig) GetResourceConfig() []AwsResourceEndpoi
 	return t.ResourceConfig
 }
 
-// PatchAwsResourceEndpointGateway - Request schema for updating AWS Resource Endpoint.
-type PatchAwsResourceEndpointGateway struct {
+// PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway - Request schema for updating AWS Resource Endpoint.
+type PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway struct {
 	TransitGatewayAttachmentConfig TransitGatewayAttachmentConfig `json:"transit_gateway_attachment_config"`
 }
 
-func (p PatchAwsResourceEndpointGateway) MarshalJSON() ([]byte, error) {
+func (p PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(p, "", false)
 }
 
-func (p *PatchAwsResourceEndpointGateway) UnmarshalJSON(data []byte) error {
+func (p *PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"transit_gateway_attachment_config"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (p *PatchAwsResourceEndpointGateway) GetTransitGatewayAttachmentConfig() TransitGatewayAttachmentConfig {
+func (p *PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway) GetTransitGatewayAttachmentConfig() TransitGatewayAttachmentConfig {
 	if p == nil {
 		return TransitGatewayAttachmentConfig{}
 	}
@@ -116,49 +116,49 @@ func (p *PatchAwsResourceEndpointGateway) GetTransitGatewayAttachmentConfig() Tr
 type PatchTransitGatewayRequestType string
 
 const (
-	PatchTransitGatewayRequestTypePatchAwsResourceEndpointGateway PatchTransitGatewayRequestType = "PatchAwsResourceEndpointGateway"
-	PatchTransitGatewayRequestTypePatchAwsTransitGateway          PatchTransitGatewayRequestType = "PatchAwsTransitGateway"
+	PatchTransitGatewayRequestTypePatchAWSResourceEndpointGatewayAWSResourceEndpointGateway PatchTransitGatewayRequestType = "PatchAwsResourceEndpointGateway_AWSResourceEndpointGateway"
+	PatchTransitGatewayRequestTypePatchAWSTransitGatewayAWSTransitGateway                   PatchTransitGatewayRequestType = "PatchAwsTransitGateway_AWSTransitGateway"
 )
 
 // PatchTransitGatewayRequest - Request schema for updating a transit gateway.
 type PatchTransitGatewayRequest struct {
-	PatchAwsResourceEndpointGateway *PatchAwsResourceEndpointGateway `queryParam:"inline,name=PatchTransitGatewayRequest" union:"member"`
-	PatchAwsTransitGateway          *PatchAwsTransitGateway          `queryParam:"inline,name=PatchTransitGatewayRequest" union:"member"`
+	PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway *PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway `queryParam:"inline" union:"member"`
+	PatchAWSTransitGatewayAWSTransitGateway                   *PatchAWSTransitGatewayAWSTransitGateway                   `queryParam:"inline" union:"member"`
 
 	Type PatchTransitGatewayRequestType
 }
 
-func CreatePatchTransitGatewayRequestPatchAwsResourceEndpointGateway(patchAwsResourceEndpointGateway PatchAwsResourceEndpointGateway) PatchTransitGatewayRequest {
-	typ := PatchTransitGatewayRequestTypePatchAwsResourceEndpointGateway
+func CreatePatchTransitGatewayRequestPatchAWSResourceEndpointGatewayAWSResourceEndpointGateway(patchAWSResourceEndpointGatewayAWSResourceEndpointGateway PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway) PatchTransitGatewayRequest {
+	typ := PatchTransitGatewayRequestTypePatchAWSResourceEndpointGatewayAWSResourceEndpointGateway
 
 	return PatchTransitGatewayRequest{
-		PatchAwsResourceEndpointGateway: &patchAwsResourceEndpointGateway,
-		Type:                            typ,
+		PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway: &patchAWSResourceEndpointGatewayAWSResourceEndpointGateway,
+		Type: typ,
 	}
 }
 
-func CreatePatchTransitGatewayRequestPatchAwsTransitGateway(patchAwsTransitGateway PatchAwsTransitGateway) PatchTransitGatewayRequest {
-	typ := PatchTransitGatewayRequestTypePatchAwsTransitGateway
+func CreatePatchTransitGatewayRequestPatchAWSTransitGatewayAWSTransitGateway(patchAWSTransitGatewayAWSTransitGateway PatchAWSTransitGatewayAWSTransitGateway) PatchTransitGatewayRequest {
+	typ := PatchTransitGatewayRequestTypePatchAWSTransitGatewayAWSTransitGateway
 
 	return PatchTransitGatewayRequest{
-		PatchAwsTransitGateway: &patchAwsTransitGateway,
-		Type:                   typ,
+		PatchAWSTransitGatewayAWSTransitGateway: &patchAWSTransitGatewayAWSTransitGateway,
+		Type:                                    typ,
 	}
 }
 
 func (u *PatchTransitGatewayRequest) UnmarshalJSON(data []byte) error {
 
-	var patchAwsResourceEndpointGateway PatchAwsResourceEndpointGateway = PatchAwsResourceEndpointGateway{}
-	if err := utils.UnmarshalJSON(data, &patchAwsResourceEndpointGateway, "", true, nil); err == nil {
-		u.PatchAwsResourceEndpointGateway = &patchAwsResourceEndpointGateway
-		u.Type = PatchTransitGatewayRequestTypePatchAwsResourceEndpointGateway
+	var patchAWSResourceEndpointGatewayAWSResourceEndpointGateway PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway = PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway{}
+	if err := utils.UnmarshalJSON(data, &patchAWSResourceEndpointGatewayAWSResourceEndpointGateway, "", true, nil); err == nil {
+		u.PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway = &patchAWSResourceEndpointGatewayAWSResourceEndpointGateway
+		u.Type = PatchTransitGatewayRequestTypePatchAWSResourceEndpointGatewayAWSResourceEndpointGateway
 		return nil
 	}
 
-	var patchAwsTransitGateway PatchAwsTransitGateway = PatchAwsTransitGateway{}
-	if err := utils.UnmarshalJSON(data, &patchAwsTransitGateway, "", true, nil); err == nil {
-		u.PatchAwsTransitGateway = &patchAwsTransitGateway
-		u.Type = PatchTransitGatewayRequestTypePatchAwsTransitGateway
+	var patchAWSTransitGatewayAWSTransitGateway PatchAWSTransitGatewayAWSTransitGateway = PatchAWSTransitGatewayAWSTransitGateway{}
+	if err := utils.UnmarshalJSON(data, &patchAWSTransitGatewayAWSTransitGateway, "", true, nil); err == nil {
+		u.PatchAWSTransitGatewayAWSTransitGateway = &patchAWSTransitGatewayAWSTransitGateway
+		u.Type = PatchTransitGatewayRequestTypePatchAWSTransitGatewayAWSTransitGateway
 		return nil
 	}
 
@@ -166,12 +166,12 @@ func (u *PatchTransitGatewayRequest) UnmarshalJSON(data []byte) error {
 }
 
 func (u PatchTransitGatewayRequest) MarshalJSON() ([]byte, error) {
-	if u.PatchAwsResourceEndpointGateway != nil {
-		return utils.MarshalJSON(u.PatchAwsResourceEndpointGateway, "", true)
+	if u.PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway != nil {
+		return utils.MarshalJSON(u.PatchAWSResourceEndpointGatewayAWSResourceEndpointGateway, "", true)
 	}
 
-	if u.PatchAwsTransitGateway != nil {
-		return utils.MarshalJSON(u.PatchAwsTransitGateway, "", true)
+	if u.PatchAWSTransitGatewayAWSTransitGateway != nil {
+		return utils.MarshalJSON(u.PatchAWSTransitGatewayAWSTransitGateway, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type PatchTransitGatewayRequest: all fields are null")

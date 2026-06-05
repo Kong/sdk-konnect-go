@@ -21,10 +21,10 @@ const (
 // Note that `provider` cannot be patched for API specs that are bound to a resource.
 // Trying to do so will result in a 400 response.
 type UpdateCatalogServiceAPISpecCreateAPISpecProvider struct {
-	URLAPISpecProvider                             *URLAPISpecProvider                             `queryParam:"inline,name=CreateApiSpecProvider" union:"member"`
-	RawAPISpecProviderPayload                      *RawAPISpecProviderPayload                      `queryParam:"inline,name=CreateApiSpecProvider" union:"member"`
-	IntegrationAPISpecProviderPayload              *IntegrationAPISpecProviderPayload              `queryParam:"inline,name=CreateApiSpecProvider" union:"member"`
-	ResourceBoundIntegrationAPISpecProviderPayload *ResourceBoundIntegrationAPISpecProviderPayload `queryParam:"inline,name=CreateApiSpecProvider" union:"member"`
+	URLAPISpecProvider                             *URLAPISpecProvider                             `queryParam:"inline" union:"member"`
+	RawAPISpecProviderPayload                      *RawAPISpecProviderPayload                      `queryParam:"inline" union:"member"`
+	IntegrationAPISpecProviderPayload              *IntegrationAPISpecProviderPayload              `queryParam:"inline" union:"member"`
+	ResourceBoundIntegrationAPISpecProviderPayload *ResourceBoundIntegrationAPISpecProviderPayload `queryParam:"inline" union:"member"`
 
 	Type UpdateCatalogServiceAPISpecCreateAPISpecProviderType
 }

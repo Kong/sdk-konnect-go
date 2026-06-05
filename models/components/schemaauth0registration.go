@@ -21,3 +21,6 @@ func (s *SchemaAuth0Registration) GetLoginPath() *string {
 	}
 	return s.LoginPath
 }
+
+// #region class-body-schemaauth0registration
+// #endregion class-body-schemaauth0registration

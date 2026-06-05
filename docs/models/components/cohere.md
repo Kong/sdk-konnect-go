@@ -1,0 +1,9 @@
+# Cohere
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `EmbeddingInputType`                                                                                    | [*components.PartialModelEmbeddingInputType](../../models/components/partialmodelembeddinginputtype.md) | :heavy_minus_sign:                                                                                      | The purpose of the input text to calculate embedding vectors.                                           |
+| `WaitForModel`                                                                                          | `*bool`                                                                                                 | :heavy_minus_sign:                                                                                      | Wait for the model if it is not ready                                                                   |

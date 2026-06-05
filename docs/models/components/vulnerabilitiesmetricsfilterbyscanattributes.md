@@ -27,3 +27,17 @@ vulnerabilitiesMetricsFilterByScanAttributes := components.CreateVulnerabilities
 vulnerabilitiesMetricsFilterByScanAttributes := components.CreateVulnerabilitiesMetricsFilterByScanAttributesNumericValueMetricsFilter(components.NumericValueMetricsFilter{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch vulnerabilitiesMetricsFilterByScanAttributes.Type {
+	case components.VulnerabilitiesMetricsFilterByScanAttributesTypeVulnerabilitiesMetricsFilterByScanAttributesEmptyValueMetricsFilter:
+		// vulnerabilitiesMetricsFilterByScanAttributes.VulnerabilitiesMetricsFilterByScanAttributesEmptyValueMetricsFilter is populated
+	case components.VulnerabilitiesMetricsFilterByScanAttributesTypeStringValueMetricsFilter:
+		// vulnerabilitiesMetricsFilterByScanAttributes.StringValueMetricsFilter is populated
+	case components.VulnerabilitiesMetricsFilterByScanAttributesTypeNumericValueMetricsFilter:
+		// vulnerabilitiesMetricsFilterByScanAttributes.NumericValueMetricsFilter is populated
+}
+```

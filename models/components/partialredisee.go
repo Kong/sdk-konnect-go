@@ -194,9 +194,10 @@ const (
 	PortTypeStr     PortType = "str"
 )
 
+// Port - An integer representing a port number between 0 and 65535, inclusive.
 type Port struct {
-	Integer *int64  `queryParam:"inline,name=port" union:"member"`
-	Str     *string `queryParam:"inline,name=port" union:"member"`
+	Integer *int64  `queryParam:"inline" union:"member"`
+	Str     *string `queryParam:"inline" union:"member"`
 
 	Type PortType
 }
@@ -348,7 +349,7 @@ type PartialRedisEeConfig struct {
 	// If set to true, uses SSL to connect to Redis.
 	Ssl *bool `default:"false" json:"ssl"`
 	// If set to true, verifies the validity of the server SSL certificate. If setting this parameter, also configure `lua_ssl_trusted_certificate` in `kong.conf` to specify the CA (or server) certificate used by your Redis server. You may also need to configure `lua_ssl_verify_depth` accordingly.
-	SslVerify *bool `default:"false" json:"ssl_verify"`
+	SslVerify *bool `default:"true" json:"ssl_verify"`
 	// Username to use for Redis connections. If undefined, ACL authentication won't be performed. This requires Redis v6.0.0+. To be compatible with Redis v5.x.y, you can set it to `default`.
 	Username *string `json:"username,omitempty"`
 }
@@ -527,8 +528,9 @@ type PartialRedisEe struct {
 	// A unique string representing a UTF-8 encoded name.
 	Name *string `json:"name,omitempty"`
 	// A set of strings representing tags.
-	Tags  []string `json:"tags,omitempty"`
-	type_ string   `const:"redis-ee" json:"type"`
+	Tags []string `json:"tags,omitempty"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	type_ string `const:"redis-ee" json:"type"`
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 }

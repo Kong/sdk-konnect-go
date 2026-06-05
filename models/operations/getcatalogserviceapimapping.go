@@ -8,7 +8,7 @@ import (
 )
 
 type GetCatalogServiceAPIMappingRequest struct {
-	// ID of the catalog service.
+	// The `id` of the service.
 	ServiceID string `pathParam:"style=simple,explode=false,name=serviceId"`
 	// ID of the catalog service API mapping.
 	MappingID string `pathParam:"style=simple,explode=false,name=mappingId"`

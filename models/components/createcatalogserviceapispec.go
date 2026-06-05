@@ -19,10 +19,10 @@ const (
 
 // CreateAPISpecProvider - Represents the provider, or source, of an API spec
 type CreateAPISpecProvider struct {
-	URLAPISpecProvider                             *URLAPISpecProvider                             `queryParam:"inline,name=CreateApiSpecProvider" union:"member"`
-	RawAPISpecProviderPayload                      *RawAPISpecProviderPayload                      `queryParam:"inline,name=CreateApiSpecProvider" union:"member"`
-	IntegrationAPISpecProviderPayload              *IntegrationAPISpecProviderPayload              `queryParam:"inline,name=CreateApiSpecProvider" union:"member"`
-	ResourceBoundIntegrationAPISpecProviderPayload *ResourceBoundIntegrationAPISpecProviderPayload `queryParam:"inline,name=CreateApiSpecProvider" union:"member"`
+	URLAPISpecProvider                             *URLAPISpecProvider                             `queryParam:"inline" union:"member"`
+	RawAPISpecProviderPayload                      *RawAPISpecProviderPayload                      `queryParam:"inline" union:"member"`
+	IntegrationAPISpecProviderPayload              *IntegrationAPISpecProviderPayload              `queryParam:"inline" union:"member"`
+	ResourceBoundIntegrationAPISpecProviderPayload *ResourceBoundIntegrationAPISpecProviderPayload `queryParam:"inline" union:"member"`
 
 	Type CreateAPISpecProviderType
 }

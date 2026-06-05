@@ -7,4 +7,4 @@ Validation result of the request against a schema
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `Message`          | **string*          | :heavy_minus_sign: | N/A                |
+| `Message`          | `*string`          | :heavy_minus_sign: | N/A                |

@@ -5,7 +5,7 @@ package components
 // EventSubscriptionListResponse - A paginated list response for all subscriptions associated with an event.
 type EventSubscriptionListResponse struct {
 	Data []EventSubscriptionResponse `json:"data"`
-	Meta CursorMetaPage              `json:"meta"`
+	Meta ListCursorMeta              `json:"meta"`
 }
 
 func (e *EventSubscriptionListResponse) GetData() []EventSubscriptionResponse {
@@ -15,9 +15,9 @@ func (e *EventSubscriptionListResponse) GetData() []EventSubscriptionResponse {
 	return e.Data
 }
 
-func (e *EventSubscriptionListResponse) GetMeta() CursorMetaPage {
+func (e *EventSubscriptionListResponse) GetMeta() ListCursorMeta {
 	if e == nil {
-		return CursorMetaPage{}
+		return ListCursorMeta{}
 	}
 	return e.Meta
 }

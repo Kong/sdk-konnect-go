@@ -51,7 +51,7 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberships(ctx context.Cont
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{id}/group-memberships", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/group-memberships", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -172,7 +172,7 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberships(ctx context.Cont
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "503", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -367,9 +367,9 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberships(ctx context.Cont
 
 // PutControlPlanesIDGroupMemberships - Upsert Control Plane Group Members
 // Adds one or more control planes as a member of a control plane group.
-func (s *ControlPlaneGroups) PutControlPlanesIDGroupMemberships(ctx context.Context, id string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PutControlPlanesIDGroupMembershipsResponse, error) {
+func (s *ControlPlaneGroups) PutControlPlanesIDGroupMemberships(ctx context.Context, controlPlaneID string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PutControlPlanesIDGroupMembershipsResponse, error) {
 	request := operations.PutControlPlanesIDGroupMembershipsRequest{
-		ID:              id,
+		ControlPlaneID:  controlPlaneID,
 		GroupMembership: groupMembership,
 	}
 
@@ -391,7 +391,7 @@ func (s *ControlPlaneGroups) PutControlPlanesIDGroupMemberships(ctx context.Cont
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{id}/group-memberships", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/group-memberships", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -515,7 +515,7 @@ func (s *ControlPlaneGroups) PutControlPlanesIDGroupMemberships(ctx context.Cont
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "503", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -538,6 +538,7 @@ func (s *ControlPlaneGroups) PutControlPlanesIDGroupMemberships(ctx context.Cont
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 400:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
@@ -690,9 +691,9 @@ func (s *ControlPlaneGroups) PutControlPlanesIDGroupMemberships(ctx context.Cont
 
 // PostControlPlanesIDGroupMembershipsAdd - Add Control Plane Group Members
 // Adds one or more control planes as a member of a control plane group.
-func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsAdd(ctx context.Context, id string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PostControlPlanesIDGroupMembershipsAddResponse, error) {
+func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsAdd(ctx context.Context, controlPlaneID string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PostControlPlanesIDGroupMembershipsAddResponse, error) {
 	request := operations.PostControlPlanesIDGroupMembershipsAddRequest{
-		ID:              id,
+		ControlPlaneID:  controlPlaneID,
 		GroupMembership: groupMembership,
 	}
 
@@ -714,7 +715,7 @@ func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsAdd(ctx context.
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{id}/group-memberships/add", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/group-memberships/add", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -838,7 +839,7 @@ func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsAdd(ctx context.
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "503", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -861,6 +862,7 @@ func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsAdd(ctx context.
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 400:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
@@ -1013,9 +1015,9 @@ func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsAdd(ctx context.
 
 // PostControlPlanesIDGroupMembershipsRemove - Remove Control Plane Group Members
 // Removes one or more control planes from the members of a control plane group.
-func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsRemove(ctx context.Context, id string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PostControlPlanesIDGroupMembershipsRemoveResponse, error) {
+func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsRemove(ctx context.Context, controlPlaneID string, groupMembership *components.GroupMembership, opts ...operations.Option) (*operations.PostControlPlanesIDGroupMembershipsRemoveResponse, error) {
 	request := operations.PostControlPlanesIDGroupMembershipsRemoveRequest{
-		ID:              id,
+		ControlPlaneID:  controlPlaneID,
 		GroupMembership: groupMembership,
 	}
 
@@ -1037,7 +1039,7 @@ func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsRemove(ctx conte
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{id}/group-memberships/remove", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/group-memberships/remove", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1161,7 +1163,7 @@ func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsRemove(ctx conte
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "503", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1184,6 +1186,7 @@ func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsRemove(ctx conte
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 400:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
@@ -1336,9 +1339,9 @@ func (s *ControlPlaneGroups) PostControlPlanesIDGroupMembershipsRemove(ctx conte
 
 // GetControlPlanesIDGroupMemberStatus - Get Control Plane Group Member Status
 // Determines the group membership status of a control plane.
-func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberStatus(ctx context.Context, id string, opts ...operations.Option) (*operations.GetControlPlanesIDGroupMemberStatusResponse, error) {
+func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberStatus(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlanesIDGroupMemberStatusResponse, error) {
 	request := operations.GetControlPlanesIDGroupMemberStatusRequest{
-		ID: id,
+		ControlPlaneID: controlPlaneID,
 	}
 
 	o := operations.Options{}
@@ -1359,7 +1362,7 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberStatus(ctx context.Con
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{id}/group-member-status", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/group-member-status", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1476,7 +1479,7 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberStatus(ctx context.Con
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "503", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1671,9 +1674,9 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupMemberStatus(ctx context.Con
 
 // GetControlPlanesIDGroupStatus - Get Control Plane Group Status
 // Returns the status of a control plane group, including existing conflicts.
-func (s *ControlPlaneGroups) GetControlPlanesIDGroupStatus(ctx context.Context, id string, opts ...operations.Option) (*operations.GetControlPlanesIDGroupStatusResponse, error) {
+func (s *ControlPlaneGroups) GetControlPlanesIDGroupStatus(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlanesIDGroupStatusResponse, error) {
 	request := operations.GetControlPlanesIDGroupStatusRequest{
-		ID: id,
+		ControlPlaneID: controlPlaneID,
 	}
 
 	o := operations.Options{}
@@ -1694,7 +1697,7 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupStatus(ctx context.Context, 
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{id}/group-status", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/group-status", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1811,7 +1814,7 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupStatus(ctx context.Context, 
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "503", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -2006,9 +2009,9 @@ func (s *ControlPlaneGroups) GetControlPlanesIDGroupStatus(ctx context.Context, 
 
 // GetControlPlaneGroupSettings - Get Control Plane Group Settings
 // Returns the settings of a control plane group.
-func (s *ControlPlaneGroups) GetControlPlaneGroupSettings(ctx context.Context, id string, opts ...operations.Option) (*operations.GetControlPlaneGroupSettingsResponse, error) {
+func (s *ControlPlaneGroups) GetControlPlaneGroupSettings(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlaneGroupSettingsResponse, error) {
 	request := operations.GetControlPlaneGroupSettingsRequest{
-		ID: id,
+		ControlPlaneID: controlPlaneID,
 	}
 
 	o := operations.Options{}
@@ -2029,7 +2032,7 @@ func (s *ControlPlaneGroups) GetControlPlaneGroupSettings(ctx context.Context, i
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{id}/group-settings", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/group-settings", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -2146,7 +2149,7 @@ func (s *ControlPlaneGroups) GetControlPlaneGroupSettings(ctx context.Context, i
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "501", "503", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -2362,10 +2365,10 @@ func (s *ControlPlaneGroups) GetControlPlaneGroupSettings(ctx context.Context, i
 
 // PutControlPlaneGroupSettings - Upsert Control Plane Group Settings
 // Updates the settings of a control plane group. If the settings do not exist, they will be created.
-func (s *ControlPlaneGroups) PutControlPlaneGroupSettings(ctx context.Context, id string, groupSettings *components.GroupSettings, opts ...operations.Option) (*operations.PutControlPlaneGroupSettingsResponse, error) {
+func (s *ControlPlaneGroups) PutControlPlaneGroupSettings(ctx context.Context, controlPlaneID string, groupSettings *components.GroupSettings, opts ...operations.Option) (*operations.PutControlPlaneGroupSettingsResponse, error) {
 	request := operations.PutControlPlaneGroupSettingsRequest{
-		ID:            id,
-		GroupSettings: groupSettings,
+		ControlPlaneID: controlPlaneID,
+		GroupSettings:  groupSettings,
 	}
 
 	o := operations.Options{}
@@ -2386,7 +2389,7 @@ func (s *ControlPlaneGroups) PutControlPlaneGroupSettings(ctx context.Context, i
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{id}/group-settings", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}/group-settings", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -2510,7 +2513,7 @@ func (s *ControlPlaneGroups) PutControlPlaneGroupSettings(ctx context.Context, i
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "501", "503", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err

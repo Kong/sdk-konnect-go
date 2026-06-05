@@ -45,8 +45,7 @@ func main() {
 
     res, err := s.CatalogServiceAPISpecs.CreateCatalogServiceAPISpec(ctx, "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7", components.CreateCatalogServiceAPISpec{
         Name: "Pet Store",
-        Description: sdkkonnectgo.Pointer("A sample API that uses a pet store as an example to demonstrate features in the OpenAPI specification\n" +
-        ""),
+        Description: sdkkonnectgo.Pointer("A sample API that uses a pet store as an example to demonstrate features in the OpenAPI specification\n"),
         Provider: components.CreateCreateAPISpecProviderResourceBoundIntegrationAPISpecProviderPayload(
             components.ResourceBoundIntegrationAPISpecProviderPayload{
                 Type: "<value>",
@@ -60,7 +59,17 @@ func main() {
         log.Fatal(err)
     }
     if res.CatalogServiceAPISpec != nil {
-        // handle response
+        switch res.CatalogServiceAPISpec.Provider.Type {
+            case components.APISpecProviderTypeURLAPISpecProvider:
+                // res.CatalogServiceAPISpec.Provider.URLAPISpecProvider is populated
+            case components.APISpecProviderTypeRawAPISpecProvider:
+                // res.CatalogServiceAPISpec.Provider.RawAPISpecProvider is populated
+            case components.APISpecProviderTypeIntegrationAPISpecProvider:
+                // res.CatalogServiceAPISpec.Provider.IntegrationAPISpecProvider is populated
+            case components.APISpecProviderTypeResourceBoundIntegrationAPISpecProvider:
+                // res.CatalogServiceAPISpec.Provider.ResourceBoundIntegrationAPISpecProvider is populated
+        }
+
     }
 }
 ```
@@ -70,7 +79,7 @@ func main() {
 | Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      | Example                                                                                          |
 | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
 | `ctx`                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                            | :heavy_check_mark:                                                                               | The context to use for the request.                                                              |                                                                                                  |
-| `id`                                                                                             | *string*                                                                                         | :heavy_check_mark:                                                                               | The `id` of the service.                                                                         | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                                                             |
+| `id`                                                                                             | `string`                                                                                         | :heavy_check_mark:                                                                               | The `id` of the service.                                                                         | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                                                             |
 | `createCatalogServiceAPISpec`                                                                    | [components.CreateCatalogServiceAPISpec](../../models/components/createcatalogserviceapispec.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |                                                                                                  |
 | `opts`                                                                                           | [][operations.Option](../../models/operations/option.md)                                         | :heavy_minus_sign:                                                                               | The options for this request.                                                                    |                                                                                                  |
 
@@ -205,7 +214,7 @@ func main() {
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |                                                                                                    |
-| `serviceID`                                                                                        | *string*                                                                                           | :heavy_check_mark:                                                                                 | The `id` of the service.                                                                           | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                                                               |
+| `serviceID`                                                                                        | `string`                                                                                           | :heavy_check_mark:                                                                                 | The `id` of the service.                                                                           | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                                                               |
 | `previewCatalogServiceAPISpec`                                                                     | [components.PreviewCatalogServiceAPISpec](../../models/components/previewcatalogserviceapispec.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |                                                                                                    |
 | `opts`                                                                                             | [][operations.Option](../../models/operations/option.md)                                           | :heavy_minus_sign:                                                                                 | The options for this request.                                                                      |                                                                                                    |
 
@@ -254,7 +263,17 @@ func main() {
         log.Fatal(err)
     }
     if res.CatalogServiceAPISpec != nil {
-        // handle response
+        switch res.CatalogServiceAPISpec.Provider.Type {
+            case components.APISpecProviderTypeURLAPISpecProvider:
+                // res.CatalogServiceAPISpec.Provider.URLAPISpecProvider is populated
+            case components.APISpecProviderTypeRawAPISpecProvider:
+                // res.CatalogServiceAPISpec.Provider.RawAPISpecProvider is populated
+            case components.APISpecProviderTypeIntegrationAPISpecProvider:
+                // res.CatalogServiceAPISpec.Provider.IntegrationAPISpecProvider is populated
+            case components.APISpecProviderTypeResourceBoundIntegrationAPISpecProvider:
+                // res.CatalogServiceAPISpec.Provider.ResourceBoundIntegrationAPISpecProvider is populated
+        }
+
     }
 }
 ```
@@ -264,8 +283,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `serviceID`                                              | *string*                                                 | :heavy_check_mark:                                       | The `id` of the service.                                 | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
-| `apiSpecID`                                              | *string*                                                 | :heavy_check_mark:                                       | The `id` of the service.                                 | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `serviceID`                                              | `string`                                                 | :heavy_check_mark:                                       | The `id` of the service.                                 | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `apiSpecID`                                              | `string`                                                 | :heavy_check_mark:                                       | The `id` of the service.                                 | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -313,8 +332,7 @@ func main() {
         APISpecID: "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7",
         UpdateCatalogServiceAPISpec: components.UpdateCatalogServiceAPISpec{
             Name: sdkkonnectgo.Pointer("Pet Store"),
-            Description: sdkkonnectgo.Pointer("A sample API that uses a pet store as an example to demonstrate features in the OpenAPI specification\n" +
-            ""),
+            Description: sdkkonnectgo.Pointer("A sample API that uses a pet store as an example to demonstrate features in the OpenAPI specification\n"),
             Provider: sdkkonnectgo.Pointer(components.CreateUpdateCatalogServiceAPISpecCreateAPISpecProviderResourceBoundIntegrationAPISpecProviderPayload(
                 components.ResourceBoundIntegrationAPISpecProviderPayload{
                     Type: "<value>",
@@ -329,7 +347,17 @@ func main() {
         log.Fatal(err)
     }
     if res.CatalogServiceAPISpec != nil {
-        // handle response
+        switch res.CatalogServiceAPISpec.Provider.Type {
+            case components.APISpecProviderTypeURLAPISpecProvider:
+                // res.CatalogServiceAPISpec.Provider.URLAPISpecProvider is populated
+            case components.APISpecProviderTypeRawAPISpecProvider:
+                // res.CatalogServiceAPISpec.Provider.RawAPISpecProvider is populated
+            case components.APISpecProviderTypeIntegrationAPISpecProvider:
+                // res.CatalogServiceAPISpec.Provider.IntegrationAPISpecProvider is populated
+            case components.APISpecProviderTypeResourceBoundIntegrationAPISpecProvider:
+                // res.CatalogServiceAPISpec.Provider.ResourceBoundIntegrationAPISpecProvider is populated
+        }
+
     }
 }
 ```
@@ -397,8 +425,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `serviceID`                                              | *string*                                                 | :heavy_check_mark:                                       | The `id` of the service.                                 | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
-| `apiSpecID`                                              | *string*                                                 | :heavy_check_mark:                                       | The `id` of the service.                                 | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `serviceID`                                              | `string`                                                 | :heavy_check_mark:                                       | The `id` of the service.                                 | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `apiSpecID`                                              | `string`                                                 | :heavy_check_mark:                                       | The `id` of the service.                                 | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -459,8 +487,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `serviceID`                                              | *string*                                                 | :heavy_check_mark:                                       | The `id` of the service.                                 | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
-| `apiSpecID`                                              | *string*                                                 | :heavy_check_mark:                                       | The `id` of the service.                                 | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `serviceID`                                              | `string`                                                 | :heavy_check_mark:                                       | The `id` of the service.                                 | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `apiSpecID`                                              | `string`                                                 | :heavy_check_mark:                                       | The `id` of the service.                                 | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response

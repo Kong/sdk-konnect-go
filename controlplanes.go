@@ -174,7 +174,7 @@ func (s *ControlPlanes) ListControlPlanes(ctx context.Context, request operation
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "503", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -247,16 +247,11 @@ func (s *ControlPlanes) ListControlPlanes(ctx context.Context, request operation
 		if len(arr) < l {
 			return nil, nil
 		}
+		request.PageNumber = &nP
 
 		return s.ListControlPlanes(
 			ctx,
-			operations.ListControlPlanesRequest{
-				PageSize:     request.PageSize,
-				PageNumber:   &nP,
-				Filter:       request.Filter,
-				FilterLabels: request.FilterLabels,
-				Sort:         request.Sort,
-			},
+			request,
 			opts...,
 		)
 	}
@@ -557,7 +552,7 @@ func (s *ControlPlanes) CreateControlPlane(ctx context.Context, request componen
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "409", "4XX", "500", "503", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -752,9 +747,9 @@ func (s *ControlPlanes) CreateControlPlane(ctx context.Context, request componen
 
 // GetControlPlane - Get a Control Plane
 // Returns information about an individual control plane.
-func (s *ControlPlanes) GetControlPlane(ctx context.Context, id string, opts ...operations.Option) (*operations.GetControlPlaneResponse, error) {
+func (s *ControlPlanes) GetControlPlane(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.GetControlPlaneResponse, error) {
 	request := operations.GetControlPlaneRequest{
-		ID: id,
+		ControlPlaneID: controlPlaneID,
 	}
 
 	o := operations.Options{}
@@ -775,7 +770,7 @@ func (s *ControlPlanes) GetControlPlane(ctx context.Context, id string, opts ...
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{id}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -892,7 +887,7 @@ func (s *ControlPlanes) GetControlPlane(ctx context.Context, id string, opts ...
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "503", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1087,9 +1082,9 @@ func (s *ControlPlanes) GetControlPlane(ctx context.Context, id string, opts ...
 
 // UpdateControlPlane - Update Control Plane
 // Update an individual control plane.
-func (s *ControlPlanes) UpdateControlPlane(ctx context.Context, id string, updateControlPlaneRequest components.UpdateControlPlaneRequest, opts ...operations.Option) (*operations.UpdateControlPlaneResponse, error) {
+func (s *ControlPlanes) UpdateControlPlane(ctx context.Context, controlPlaneID string, updateControlPlaneRequest components.UpdateControlPlaneRequest, opts ...operations.Option) (*operations.UpdateControlPlaneResponse, error) {
 	request := operations.UpdateControlPlaneRequest{
-		ID:                        id,
+		ControlPlaneID:            controlPlaneID,
 		UpdateControlPlaneRequest: updateControlPlaneRequest,
 	}
 
@@ -1111,7 +1106,7 @@ func (s *ControlPlanes) UpdateControlPlane(ctx context.Context, id string, updat
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{id}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1235,7 +1230,7 @@ func (s *ControlPlanes) UpdateControlPlane(ctx context.Context, id string, updat
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "503", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1430,9 +1425,9 @@ func (s *ControlPlanes) UpdateControlPlane(ctx context.Context, id string, updat
 
 // DeleteControlPlane - Delete Control Plane
 // Delete an individual control plane.
-func (s *ControlPlanes) DeleteControlPlane(ctx context.Context, id string, opts ...operations.Option) (*operations.DeleteControlPlaneResponse, error) {
+func (s *ControlPlanes) DeleteControlPlane(ctx context.Context, controlPlaneID string, opts ...operations.Option) (*operations.DeleteControlPlaneResponse, error) {
 	request := operations.DeleteControlPlaneRequest{
-		ID: id,
+		ControlPlaneID: controlPlaneID,
 	}
 
 	o := operations.Options{}
@@ -1453,7 +1448,7 @@ func (s *ControlPlanes) DeleteControlPlane(ctx context.Context, id string, opts 
 	} else {
 		baseURL = *o.ServerURL
 	}
-	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{id}", request, nil)
+	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/control-planes/{controlPlaneId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -1570,7 +1565,7 @@ func (s *ControlPlanes) DeleteControlPlane(ctx context.Context, id string, opts 
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "503", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1593,6 +1588,7 @@ func (s *ControlPlanes) DeleteControlPlane(ctx context.Context, id string, opts 
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 400:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):

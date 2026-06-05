@@ -17,8 +17,8 @@ const (
 
 // APIImplementation - An entity that implements an API
 type APIImplementation struct {
-	ServiceReferenceInput *ServiceReferenceInput `queryParam:"inline,name=ApiImplementation" union:"member"`
-	ControlPlaneReference *ControlPlaneReference `queryParam:"inline,name=ApiImplementation" union:"member"`
+	ServiceReferenceInput *ServiceReferenceInput `queryParam:"inline" union:"member"`
+	ControlPlaneReference *ControlPlaneReference `queryParam:"inline" union:"member"`
 
 	Type APIImplementationType
 }

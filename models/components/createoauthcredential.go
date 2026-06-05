@@ -77,6 +77,7 @@ func (c *CreateOAuthCredentialConfig) GetRedirectURI() string {
 
 // CreateOAuthCredential - Payload used to create an `OAuth` credential for an integration instance.
 type CreateOAuthCredential struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_  string                      `const:"oauth" json:"type"`
 	Config CreateOAuthCredentialConfig `json:"config"`
 }

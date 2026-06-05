@@ -7,28 +7,6 @@ import (
 	"net/http"
 )
 
-// ListApplicationsQueryParamFilter - Filter applications returned in the response.
-type ListApplicationsQueryParamFilter struct {
-	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
-	DeveloperID *components.UUIDFieldFilter `queryParam:"name=developer_id"`
-	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
-	Name *components.StringFieldFilter `queryParam:"name=name"`
-}
-
-func (l *ListApplicationsQueryParamFilter) GetDeveloperID() *components.UUIDFieldFilter {
-	if l == nil {
-		return nil
-	}
-	return l.DeveloperID
-}
-
-func (l *ListApplicationsQueryParamFilter) GetName() *components.StringFieldFilter {
-	if l == nil {
-		return nil
-	}
-	return l.Name
-}
-
 type ListApplicationsRequest struct {
 	// ID of the portal.
 	PortalID string `pathParam:"style=simple,explode=false,name=portalId"`
@@ -43,7 +21,7 @@ type ListApplicationsRequest struct {
 	//
 	Sort *string `queryParam:"style=form,explode=true,name=sort"`
 	// Filter applications returned in the response.
-	Filter *ListApplicationsQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *components.FilterApplications `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
 func (l *ListApplicationsRequest) GetPortalID() string {
@@ -74,7 +52,7 @@ func (l *ListApplicationsRequest) GetSort() *string {
 	return l.Sort
 }
 
-func (l *ListApplicationsRequest) GetFilter() *ListApplicationsQueryParamFilter {
+func (l *ListApplicationsRequest) GetFilter() *components.FilterApplications {
 	if l == nil {
 		return nil
 	}

@@ -7,9 +7,11 @@
 * [GetPredefinedRoles](#getpredefinedroles) - Get Predefined Roles
 * [ListTeamRoles](#listteamroles) - List Team Roles
 * [TeamsAssignRole](#teamsassignrole) - Assign Team Role
+* [GetTeamRole](#getteamrole) - Get Team Role
 * [TeamsRemoveRole](#teamsremoverole) - Remove Team Role
 * [ListUserRoles](#listuserroles) - List User Roles
 * [UsersAssignRole](#usersassignrole) - Assign Role
+* [GetUserRole](#getuserrole) - Get User Role
 * [UsersRemoveRole](#usersremoverole) - Remove Role
 
 ## GetPredefinedRoles
@@ -108,7 +110,7 @@ func main() {
 | Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           | Example                                                                                               |
 | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                 | [context.Context](https://pkg.go.dev/context#Context)                                                 | :heavy_check_mark:                                                                                    | The context to use for the request.                                                                   |                                                                                                       |
-| `teamID`                                                                                              | *string*                                                                                              | :heavy_check_mark:                                                                                    | The team ID                                                                                           | e81bc3e5-e9db-4764-b7dd-e81e39072cbe                                                                  |
+| `teamID`                                                                                              | `string`                                                                                              | :heavy_check_mark:                                                                                    | The team ID                                                                                           | e81bc3e5-e9db-4764-b7dd-e81e39072cbe                                                                  |
 | `filter`                                                                                              | [*operations.ListTeamRolesQueryParamFilter](../../models/operations/listteamrolesqueryparamfilter.md) | :heavy_minus_sign:                                                                                    | Filter roles returned in the response.                                                                |                                                                                                       |
 | `opts`                                                                                                | [][operations.Option](../../models/operations/option.md)                                              | :heavy_minus_sign:                                                                                    | The options for this request.                                                                         |                                                                                                       |
 
@@ -155,6 +157,10 @@ func main() {
     res, err := s.Roles.TeamsAssignRole(ctx, "e81bc3e5-e9db-4764-b7dd-e81e39072cbe", &components.AssignRole{
         RoleName: components.RoleNameViewer.ToPointer(),
         EntityID: sdkkonnectgo.Pointer("e67490ce-44dc-4cbd-b65e-b52c746fc26a"),
+        EntityIds: []string{
+            "817d0422-45c9-4d88-8d64-45aef05c1ae7",
+            "18ee2573-dec0-4b83-be99-fa7700bcdc61",
+        },
         EntityTypeName: components.EntityTypeNameControlPlanes.ToPointer(),
         EntityRegion: components.AssignRoleEntityRegionEu.ToPointer(),
     })
@@ -172,7 +178,7 @@ func main() {
 | Parameter                                                       | Type                                                            | Required                                                        | Description                                                     | Example                                                         |
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
 | `ctx`                                                           | [context.Context](https://pkg.go.dev/context#Context)           | :heavy_check_mark:                                              | The context to use for the request.                             |                                                                 |
-| `teamID`                                                        | *string*                                                        | :heavy_check_mark:                                              | The team ID                                                     | e81bc3e5-e9db-4764-b7dd-e81e39072cbe                            |
+| `teamID`                                                        | `string`                                                        | :heavy_check_mark:                                              | The team ID                                                     | e81bc3e5-e9db-4764-b7dd-e81e39072cbe                            |
 | `assignRole`                                                    | [*components.AssignRole](../../models/components/assignrole.md) | :heavy_minus_sign:                                              | The request schema for assigning a role.                        |                                                                 |
 | `opts`                                                          | [][operations.Option](../../models/operations/option.md)        | :heavy_minus_sign:                                              | The options for this request.                                   |                                                                 |
 
@@ -189,6 +195,65 @@ func main() {
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetTeamRole
+
+Returns the assigned role for the specified ID.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-team-role" method="get" path="/v3/teams/{teamId}/assigned-roles/{roleId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Roles.GetTeamRole(ctx, "e81bc3e5-e9db-4764-b7dd-e81e39072cbe", "8350205f-a305-4e39-abe9-bc082a80091a")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AssignedRole != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `teamID`                                                 | `string`                                                 | :heavy_check_mark:                                       | The team ID.                                             | e81bc3e5-e9db-4764-b7dd-e81e39072cbe                     |
+| `roleID`                                                 | `string`                                                 | :heavy_check_mark:                                       | The role ID.                                             | 8350205f-a305-4e39-abe9-bc082a80091a                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.GetTeamRoleResponse](../../models/operations/getteamroleresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## TeamsRemoveRole
@@ -232,8 +297,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `teamID`                                                 | *string*                                                 | :heavy_check_mark:                                       | The team ID.                                             | e81bc3e5-e9db-4764-b7dd-e81e39072cbe                     |
-| `roleID`                                                 | *string*                                                 | :heavy_check_mark:                                       | The role ID.                                             | 8350205f-a305-4e39-abe9-bc082a80091a                     |
+| `teamID`                                                 | `string`                                                 | :heavy_check_mark:                                       | The team ID.                                             | e81bc3e5-e9db-4764-b7dd-e81e39072cbe                     |
+| `roleID`                                                 | `string`                                                 | :heavy_check_mark:                                       | The role ID.                                             | 8350205f-a305-4e39-abe9-bc082a80091a                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -291,7 +356,7 @@ func main() {
 | Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           | Example                                                                                               |
 | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                 | [context.Context](https://pkg.go.dev/context#Context)                                                 | :heavy_check_mark:                                                                                    | The context to use for the request.                                                                   |                                                                                                       |
-| `userID`                                                                                              | *string*                                                                                              | :heavy_check_mark:                                                                                    | The user ID                                                                                           | e81bc3e5-e9db-4764-b7dd-e81e39072cbe                                                                  |
+| `userID`                                                                                              | `string`                                                                                              | :heavy_check_mark:                                                                                    | The user ID                                                                                           | e81bc3e5-e9db-4764-b7dd-e81e39072cbe                                                                  |
 | `filter`                                                                                              | [*operations.ListUserRolesQueryParamFilter](../../models/operations/listuserrolesqueryparamfilter.md) | :heavy_minus_sign:                                                                                    | Filter roles returned in the response.                                                                |                                                                                                       |
 | `opts`                                                                                                | [][operations.Option](../../models/operations/option.md)                                              | :heavy_minus_sign:                                                                                    | The options for this request.                                                                         |                                                                                                       |
 
@@ -336,6 +401,10 @@ func main() {
     res, err := s.Roles.UsersAssignRole(ctx, "e81bc3e5-e9db-4764-b7dd-e81e39072cbe", &components.AssignRole{
         RoleName: components.RoleNameViewer.ToPointer(),
         EntityID: sdkkonnectgo.Pointer("e67490ce-44dc-4cbd-b65e-b52c746fc26a"),
+        EntityIds: []string{
+            "817d0422-45c9-4d88-8d64-45aef05c1ae7",
+            "18ee2573-dec0-4b83-be99-fa7700bcdc61",
+        },
         EntityTypeName: components.EntityTypeNameControlPlanes.ToPointer(),
         EntityRegion: components.AssignRoleEntityRegionEu.ToPointer(),
     })
@@ -353,7 +422,7 @@ func main() {
 | Parameter                                                       | Type                                                            | Required                                                        | Description                                                     | Example                                                         |
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
 | `ctx`                                                           | [context.Context](https://pkg.go.dev/context#Context)           | :heavy_check_mark:                                              | The context to use for the request.                             |                                                                 |
-| `userID`                                                        | *string*                                                        | :heavy_check_mark:                                              | The user ID                                                     | e81bc3e5-e9db-4764-b7dd-e81e39072cbe                            |
+| `userID`                                                        | `string`                                                        | :heavy_check_mark:                                              | The user ID                                                     | e81bc3e5-e9db-4764-b7dd-e81e39072cbe                            |
 | `assignRole`                                                    | [*components.AssignRole](../../models/components/assignrole.md) | :heavy_minus_sign:                                              | The request schema for assigning a role.                        |                                                                 |
 | `opts`                                                          | [][operations.Option](../../models/operations/option.md)        | :heavy_minus_sign:                                              | The options for this request.                                   |                                                                 |
 
@@ -370,6 +439,65 @@ func main() {
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetUserRole
+
+Returns the assigned role for the specified ID.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-user-role" method="get" path="/v3/users/{userId}/assigned-roles/{roleId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.Roles.GetUserRole(ctx, "e81bc3e5-e9db-4764-b7dd-e81e39072cbe", "8350205f-a305-4e39-abe9-bc082a80091a")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.AssignedRole != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `userID`                                                 | `string`                                                 | :heavy_check_mark:                                       | ID of the user.                                          | e81bc3e5-e9db-4764-b7dd-e81e39072cbe                     |
+| `roleID`                                                 | `string`                                                 | :heavy_check_mark:                                       | ID of the role.                                          | 8350205f-a305-4e39-abe9-bc082a80091a                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.GetUserRoleResponse](../../models/operations/getuserroleresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## UsersRemoveRole
@@ -413,8 +541,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `userID`                                                 | *string*                                                 | :heavy_check_mark:                                       | ID of the user.                                          | e81bc3e5-e9db-4764-b7dd-e81e39072cbe                     |
-| `roleID`                                                 | *string*                                                 | :heavy_check_mark:                                       | ID of the role.                                          | 8350205f-a305-4e39-abe9-bc082a80091a                     |
+| `userID`                                                 | `string`                                                 | :heavy_check_mark:                                       | ID of the user.                                          | e81bc3e5-e9db-4764-b7dd-e81e39072cbe                     |
+| `roleID`                                                 | `string`                                                 | :heavy_check_mark:                                       | ID of the role.                                          | 8350205f-a305-4e39-abe9-bc082a80091a                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response

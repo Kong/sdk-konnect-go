@@ -56,7 +56,21 @@ func main() {
         log.Fatal(err)
     }
     if res.CreateDcrProviderResponse != nil {
-        // handle response
+        switch res.CreateDcrProviderResponse.Type {
+            case components.CreateDcrProviderResponseTypeAuth0:
+                // res.CreateDcrProviderResponse.DCRProviderAuth0 is populated
+            case components.CreateDcrProviderResponseTypeAzureAd:
+                // res.CreateDcrProviderResponse.DCRProviderAzureAD is populated
+            case components.CreateDcrProviderResponseTypeCurity:
+                // res.CreateDcrProviderResponse.DCRProviderCurity is populated
+            case components.CreateDcrProviderResponseTypeOkta:
+                // res.CreateDcrProviderResponse.DCRProviderOKTA is populated
+            case components.CreateDcrProviderResponseTypeKongIdentity:
+                // res.CreateDcrProviderResponse.DCRProviderKongIdentity is populated
+            case components.CreateDcrProviderResponseTypeHTTP:
+                // res.CreateDcrProviderResponse.DCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -174,7 +188,21 @@ func main() {
         log.Fatal(err)
     }
     if res.DcrProviderResponse != nil {
-        // handle response
+        switch res.DcrProviderResponse.Type {
+            case components.DcrProviderResponseTypeAuth0:
+                // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
+            case components.DcrProviderResponseTypeAzureAd:
+                // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
+            case components.DcrProviderResponseTypeCurity:
+                // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
+            case components.DcrProviderResponseTypeOkta:
+                // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeKongIdentity:
+                // res.DcrProviderResponse.DCRProviderKongIdentityDCRProviderKongIdentity is populated
+            case components.DcrProviderResponseTypeHTTP:
+                // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -184,7 +212,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `dcrProviderID`                                          | *string*                                                 | :heavy_check_mark:                                       | DCR provider identifier                                  | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `dcrProviderID`                                          | `string`                                                 | :heavy_check_mark:                                       | DCR provider identifier                                  | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -235,7 +263,21 @@ func main() {
         log.Fatal(err)
     }
     if res.DcrProviderResponse != nil {
-        // handle response
+        switch res.DcrProviderResponse.Type {
+            case components.DcrProviderResponseTypeAuth0:
+                // res.DcrProviderResponse.DCRProviderAuth0DCRProviderAuth0 is populated
+            case components.DcrProviderResponseTypeAzureAd:
+                // res.DcrProviderResponse.DCRProviderAzureADDCRProviderAzureAD is populated
+            case components.DcrProviderResponseTypeCurity:
+                // res.DcrProviderResponse.DCRProviderCurityDCRProviderCurity is populated
+            case components.DcrProviderResponseTypeOkta:
+                // res.DcrProviderResponse.DCRProviderOKTADCRProviderOKTA is populated
+            case components.DcrProviderResponseTypeKongIdentity:
+                // res.DcrProviderResponse.DCRProviderKongIdentityDCRProviderKongIdentity is populated
+            case components.DcrProviderResponseTypeHTTP:
+                // res.DcrProviderResponse.DCRProviderHTTPDCRProviderHTTP is populated
+        }
+
     }
 }
 ```
@@ -245,7 +287,7 @@ func main() {
 | Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | `ctx`                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                      | :heavy_check_mark:                                                                         | The context to use for the request.                                                        |                                                                                            |
-| `dcrProviderID`                                                                            | *string*                                                                                   | :heavy_check_mark:                                                                         | DCR provider identifier                                                                    | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                                                       |
+| `dcrProviderID`                                                                            | `string`                                                                                   | :heavy_check_mark:                                                                         | DCR provider identifier                                                                    | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                                                       |
 | `updateDcrProviderRequest`                                                                 | [components.UpdateDcrProviderRequest](../../models/components/updatedcrproviderrequest.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |                                                                                            |
 | `opts`                                                                                     | [][operations.Option](../../models/operations/option.md)                                   | :heavy_minus_sign:                                                                         | The options for this request.                                                              |                                                                                            |
 
@@ -304,7 +346,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `dcrProviderID`                                          | *string*                                                 | :heavy_check_mark:                                       | DCR provider identifier                                  | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `dcrProviderID`                                          | `string`                                                 | :heavy_check_mark:                                       | DCR provider identifier                                  | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -361,7 +403,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `dcrProviderID`                                          | *string*                                                 | :heavy_check_mark:                                       | DCR provider identifier                                  | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `dcrProviderID`                                          | `string`                                                 | :heavy_check_mark:                                       | DCR provider identifier                                  | 5f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response

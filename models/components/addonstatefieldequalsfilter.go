@@ -17,8 +17,8 @@ const (
 
 // AddOnStateFieldEqualsFilter - Filter add-on state by exact match.
 type AddOnStateFieldEqualsFilter struct {
-	AddOnState                      *AddOnState                      `queryParam:"inline,name=AddOnStateFieldEqualsFilter" union:"member"`
-	AddOnStateFieldEqualsComparison *AddOnStateFieldEqualsComparison `queryParam:"inline,name=AddOnStateFieldEqualsFilter" union:"member"`
+	AddOnState                      *AddOnState                      `queryParam:"inline" union:"member"`
+	AddOnStateFieldEqualsComparison *AddOnStateFieldEqualsComparison `queryParam:"inline" union:"member"`
 
 	Type AddOnStateFieldEqualsFilterType
 }

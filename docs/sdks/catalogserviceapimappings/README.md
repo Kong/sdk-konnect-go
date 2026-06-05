@@ -4,7 +4,7 @@
 
 Service API mappings represent the link between Service and API entities.
 Once an API is mapped to a Service, a rich view of the linked APIs will be presented on the APIs tab of the Catalog Service.
-Similarily, Services mapped to an API will be listed on the API overview page under Catalog.
+Similarly, Services mapped to an API will be listed on the API overview page under Catalog.
 An API may be mapped to multiple services, but it cannot be mapped to the same service twice.
 If a mapped API is unlinked from a Service, the mapping will be deleted.
 
@@ -78,6 +78,7 @@ func main() {
 | sdkerrors.BadRequestError   | 400                         | application/problem+json    |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## CreateCatalogServiceAPIMapping
@@ -120,12 +121,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                          | :heavy_check_mark:                                                                                             | The context to use for the request.                                                                            |
-| `serviceID`                                                                                                    | *string*                                                                                                       | :heavy_check_mark:                                                                                             | ID of the service.                                                                                             |
-| `createCatalogServiceAPIMappingBody`                                                                           | [components.CreateCatalogServiceAPIMappingBody](../../models/components/createcatalogserviceapimappingbody.md) | :heavy_check_mark:                                                                                             | Request body schema for creating a new API mapping for catalog service.                                        |
-| `opts`                                                                                                         | [][operations.Option](../../models/operations/option.md)                                                       | :heavy_minus_sign:                                                                                             | The options for this request.                                                                                  |
+| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    | Example                                                                                                        |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                          | :heavy_check_mark:                                                                                             | The context to use for the request.                                                                            |                                                                                                                |
+| `serviceID`                                                                                                    | `string`                                                                                                       | :heavy_check_mark:                                                                                             | The `id` of the service.                                                                                       | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                                                                           |
+| `createCatalogServiceAPIMappingBody`                                                                           | [components.CreateCatalogServiceAPIMappingBody](../../models/components/createcatalogserviceapimappingbody.md) | :heavy_check_mark:                                                                                             | Request body schema for creating a new API mapping for catalog service.                                        |                                                                                                                |
+| `opts`                                                                                                         | [][operations.Option](../../models/operations/option.md)                                                       | :heavy_minus_sign:                                                                                             | The options for this request.                                                                                  |                                                                                                                |
 
 ### Response
 
@@ -138,6 +139,8 @@ func main() {
 | sdkerrors.BadRequestError   | 400                         | application/problem+json    |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## GetCatalogServiceAPIMapping
@@ -181,8 +184,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `serviceID`                                              | *string*                                                 | :heavy_check_mark:                                       | ID of the catalog service.                               |                                                          |
-| `mappingID`                                              | *string*                                                 | :heavy_check_mark:                                       | ID of the catalog service API mapping.                   | d277faad-ed4e-4c56-a0fb-acce065dee34                     |
+| `serviceID`                                              | `string`                                                 | :heavy_check_mark:                                       | The `id` of the service.                                 | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `mappingID`                                              | `string`                                                 | :heavy_check_mark:                                       | ID of the catalog service API mapping.                   | d277faad-ed4e-4c56-a0fb-acce065dee34                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -240,8 +243,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `serviceID`                                              | *string*                                                 | :heavy_check_mark:                                       | ID of the catalog service.                               |                                                          |
-| `mappingID`                                              | *string*                                                 | :heavy_check_mark:                                       | ID of the catalog service API mapping.                   | d277faad-ed4e-4c56-a0fb-acce065dee34                     |
+| `serviceID`                                              | `string`                                                 | :heavy_check_mark:                                       | The `id` of the service.                                 | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `mappingID`                                              | `string`                                                 | :heavy_check_mark:                                       | ID of the catalog service API mapping.                   | d277faad-ed4e-4c56-a0fb-acce065dee34                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -319,4 +322,5 @@ func main() {
 | sdkerrors.BadRequestError   | 400                         | application/problem+json    |
 | sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |

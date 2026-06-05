@@ -15,7 +15,7 @@ const (
 )
 
 type IntegrationEventsFilterParametersIntegrationName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type IntegrationEventsFilterParametersIntegrationNameType
 }
@@ -56,7 +56,7 @@ const (
 )
 
 type IntegrationEventsFilterParametersIntegrationInstanceID struct {
-	StringFieldFilterExact *StringFieldFilterExact `queryParam:"inline,name=integration_instance_id" union:"member"`
+	StringFieldFilterExact *StringFieldFilterExact `queryParam:"inline" union:"member"`
 
 	Type IntegrationEventsFilterParametersIntegrationInstanceIDType
 }
@@ -97,7 +97,7 @@ const (
 )
 
 type IntegrationEventsFilterParametersIntegrationInstanceName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_instance_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type IntegrationEventsFilterParametersIntegrationInstanceNameType
 }
@@ -138,7 +138,7 @@ const (
 )
 
 type IntegrationEventsFilterParametersIntegrationInstanceDisplayName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_instance_display_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type IntegrationEventsFilterParametersIntegrationInstanceDisplayNameType
 }
@@ -179,7 +179,7 @@ const (
 )
 
 type ActorType struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=actor_type" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type ActorTypeType
 }
@@ -220,7 +220,7 @@ const (
 )
 
 type ActorID struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=actor_id" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type ActorIDType
 }
@@ -261,7 +261,7 @@ const (
 )
 
 type ActorName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=actor_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type ActorNameType
 }

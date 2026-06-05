@@ -33,3 +33,21 @@ invalidParameters := components.CreateInvalidParametersInvalidParameterChoiceIte
 invalidParameters := components.CreateInvalidParametersInvalidParameterDependentItem(components.InvalidParameterDependentItem{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch invalidParameters.Type {
+	case components.InvalidParametersTypeInvalidParameterStandard:
+		// invalidParameters.InvalidParameterStandard is populated
+	case components.InvalidParametersTypeInvalidParameterMinimumLength:
+		// invalidParameters.InvalidParameterMinimumLength is populated
+	case components.InvalidParametersTypeInvalidParameterMaximumLength:
+		// invalidParameters.InvalidParameterMaximumLength is populated
+	case components.InvalidParametersTypeInvalidParameterChoiceItem:
+		// invalidParameters.InvalidParameterChoiceItem is populated
+	case components.InvalidParametersTypeInvalidParameterDependentItem:
+		// invalidParameters.InvalidParameterDependentItem is populated
+}
+```

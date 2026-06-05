@@ -5,4 +5,4 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `PortalID`         | *string*           | :heavy_check_mark: | ID of the portal.  |
+| `PortalID`         | `string`           | :heavy_check_mark: | ID of the portal.  |

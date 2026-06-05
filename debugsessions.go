@@ -32,6 +32,8 @@ func newDebugSessions(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *ho
 }
 
 // ListDebugSessions - List all debug sessions for a control plane
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DebugSessions) ListDebugSessions(ctx context.Context, request operations.ListDebugSessionsRequest, opts ...operations.Option) (*operations.ListDebugSessionsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -172,7 +174,7 @@ func (s *DebugSessions) ListDebugSessions(ctx context.Context, request operation
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -304,6 +306,8 @@ func (s *DebugSessions) ListDebugSessions(ctx context.Context, request operation
 
 // CreateDebugSession - Create Debug Session
 // Create Debug Session
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DebugSessions) CreateDebugSession(ctx context.Context, controlPlaneID string, debugSession components.DebugSessionInput, opts ...operations.Option) (*operations.CreateDebugSessionResponse, error) {
 	request := operations.CreateDebugSessionRequest{
 		ControlPlaneID: controlPlaneID,
@@ -452,7 +456,7 @@ func (s *DebugSessions) CreateDebugSession(ctx context.Context, controlPlaneID s
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "415", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -605,6 +609,8 @@ func (s *DebugSessions) CreateDebugSession(ctx context.Context, controlPlaneID s
 
 // GetDebugSession - Fetch a Debug Session
 // Returns a Debug Session
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DebugSessions) GetDebugSession(ctx context.Context, controlPlaneID string, debugSessionID string, opts ...operations.Option) (*operations.GetDebugSessionResponse, error) {
 	request := operations.GetDebugSessionRequest{
 		ControlPlaneID: controlPlaneID,
@@ -746,7 +752,7 @@ func (s *DebugSessions) GetDebugSession(ctx context.Context, controlPlaneID stri
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"401", "403", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -857,6 +863,8 @@ func (s *DebugSessions) GetDebugSession(ctx context.Context, controlPlaneID stri
 
 // DeleteDebugSession - Delete a Debug Session
 // Deletes a Debug Session
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DebugSessions) DeleteDebugSession(ctx context.Context, controlPlaneID string, debugSessionID string, opts ...operations.Option) (*operations.DeleteDebugSessionResponse, error) {
 	request := operations.DeleteDebugSessionRequest{
 		ControlPlaneID: controlPlaneID,
@@ -998,7 +1006,7 @@ func (s *DebugSessions) DeleteDebugSession(ctx context.Context, controlPlaneID s
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"401", "403", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1021,6 +1029,7 @@ func (s *DebugSessions) DeleteDebugSession(ctx context.Context, controlPlaneID s
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 401:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
@@ -1089,6 +1098,8 @@ func (s *DebugSessions) DeleteDebugSession(ctx context.Context, controlPlaneID s
 
 // StopDebugSession - Stops an active Debug Session
 // Stops an active Debug Session
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DebugSessions) StopDebugSession(ctx context.Context, controlPlaneID string, debugSessionID string, opts ...operations.Option) (*operations.StopDebugSessionResponse, error) {
 	request := operations.StopDebugSessionRequest{
 		ControlPlaneID: controlPlaneID,
@@ -1230,7 +1241,7 @@ func (s *DebugSessions) StopDebugSession(ctx context.Context, controlPlaneID str
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"401", "403", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err

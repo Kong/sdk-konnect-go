@@ -17,10 +17,16 @@ type DebugSessionResponse struct {
 	MaxSamples *int64 `default:"200" json:"max_samples"`
 	// An expression used to filter the requests to sample.
 	SamplingRule *string `json:"sampling_rule,omitempty"`
+	// Trace sampling rate for the session.
+	SamplingRate *float64 `default:"1" json:"sampling_rate"`
 	// The duration of the debug session in seconds.
 	DurationSecs   *int64               `default:"300" json:"duration_secs"`
 	CaptureContent []CaptureContentType `json:"capture_content,omitempty"`
 	CaptureLog     []CaptureLogType     `json:"capture_log,omitempty"`
+	// Determines if Traces should be captured for this session.
+	CaptureTraces *bool `default:"true" json:"capture_traces"`
+	// CaptureProfile contains the information around the profile that needs to be captured. Currently supports CPU profiling, with potential for memory profiling in the future.
+	CaptureProfile *CaptureProfileInfo `json:"capture_profile,omitempty"`
 	// An ISO-8601 timestamp representation of start date.
 	StartedAt *time.Time `json:"started_at,omitempty"`
 	// An ISO-8601 timestamp representation of stop date.
@@ -35,6 +41,8 @@ type DebugSessionResponse struct {
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// The data plane nodes to collect samples from.
 	Targets []string `json:"targets"`
+	// Configuration for sanitizing sensitive data in captured payloads
+	PayloadSanitization *PayloadSanitizationConfig `json:"payload_sanitization,omitempty"`
 	// Feature support and status for each node instance based on its version
 	TargetStatus []TargetStatus `json:"target_status,omitempty"`
 }
@@ -78,6 +86,13 @@ func (d *DebugSessionResponse) GetSamplingRule() *string {
 	return d.SamplingRule
 }
 
+func (d *DebugSessionResponse) GetSamplingRate() *float64 {
+	if d == nil {
+		return nil
+	}
+	return d.SamplingRate
+}
+
 func (d *DebugSessionResponse) GetDurationSecs() *int64 {
 	if d == nil {
 		return nil
@@ -97,6 +112,20 @@ func (d *DebugSessionResponse) GetCaptureLog() []CaptureLogType {
 		return nil
 	}
 	return d.CaptureLog
+}
+
+func (d *DebugSessionResponse) GetCaptureTraces() *bool {
+	if d == nil {
+		return nil
+	}
+	return d.CaptureTraces
+}
+
+func (d *DebugSessionResponse) GetCaptureProfile() *CaptureProfileInfo {
+	if d == nil {
+		return nil
+	}
+	return d.CaptureProfile
 }
 
 func (d *DebugSessionResponse) GetStartedAt() *time.Time {
@@ -146,6 +175,13 @@ func (d *DebugSessionResponse) GetTargets() []string {
 		return []string{}
 	}
 	return d.Targets
+}
+
+func (d *DebugSessionResponse) GetPayloadSanitization() *PayloadSanitizationConfig {
+	if d == nil {
+		return nil
+	}
+	return d.PayloadSanitization
 }
 
 func (d *DebugSessionResponse) GetTargetStatus() []TargetStatus {

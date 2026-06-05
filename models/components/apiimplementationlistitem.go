@@ -17,8 +17,8 @@ const (
 
 // APIImplementationListItem - An entity that implements an API
 type APIImplementationListItem struct {
-	APIImplementationListItemGatewayServiceEntity *APIImplementationListItemGatewayServiceEntity `queryParam:"inline,name=ApiImplementationListItem" union:"member"`
-	APIImplementationListItemControlPlaneEntity   *APIImplementationListItemControlPlaneEntity   `queryParam:"inline,name=ApiImplementationListItem" union:"member"`
+	APIImplementationListItemGatewayServiceEntity *APIImplementationListItemGatewayServiceEntity `queryParam:"inline" union:"member"`
+	APIImplementationListItemControlPlaneEntity   *APIImplementationListItemControlPlaneEntity   `queryParam:"inline" union:"member"`
 
 	Type APIImplementationListItemType
 }

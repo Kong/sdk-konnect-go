@@ -18,10 +18,10 @@ const (
 )
 
 type CreateIntegrationInstanceAuthCredential struct {
-	CreateOAuthCredential                 *CreateOAuthCredential                 `queryParam:"inline,name=CreateIntegrationInstanceAuthCredential" union:"member"`
-	CreateGitHubAppInstallationCredential *CreateGitHubAppInstallationCredential `queryParam:"inline,name=CreateIntegrationInstanceAuthCredential" union:"member"`
-	MultiKeyAuth1                         *MultiKeyAuth1                         `queryParam:"inline,name=CreateIntegrationInstanceAuthCredential" union:"member"`
-	CreateAWSRoleDelegationAuthCredential *CreateAWSRoleDelegationAuthCredential `queryParam:"inline,name=CreateIntegrationInstanceAuthCredential" union:"member"`
+	CreateOAuthCredential                 *CreateOAuthCredential                 `queryParam:"inline" union:"member"`
+	CreateGitHubAppInstallationCredential *CreateGitHubAppInstallationCredential `queryParam:"inline" union:"member"`
+	MultiKeyAuth1                         *MultiKeyAuth1                         `queryParam:"inline" union:"member"`
+	CreateAWSRoleDelegationAuthCredential *CreateAWSRoleDelegationAuthCredential `queryParam:"inline" union:"member"`
 
 	Type CreateIntegrationInstanceAuthCredentialType
 }

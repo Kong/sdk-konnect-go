@@ -13,6 +13,8 @@ generation:
     requestResponseComponentNamesFeb2024: true
     securityFeb2025: false
     sharedErrorComponentsApr2025: false
+    sharedNestedComponentsJan2026: false
+    nameOverrideFeb2026: false
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
@@ -20,7 +22,9 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
-  persistentEdits: {}
+  versioningStrategy: automatic
+  persistentEdits:
+    enabled: never
   tests:
     generateTests: true
     generateNewTests: false
@@ -32,7 +36,11 @@ go:
   baseErrorName: SDKBaseError
   clientServerStatusCodesAsErrors: true
   defaultErrorName: SDKError
+  enableCustomCodeRegions: false
+  enableSkipDeserialization: false
   flattenGlobalSecurity: true
+  forwardCompatibleEnumsByDefault: false
+  forwardCompatibleUnionsByDefault: "false"
   imports:
     option: openapi
     paths:
@@ -52,6 +60,7 @@ go:
   outputModelSuffix: output
   packageName: github.com/Kong/sdk-konnect-go
   respectRequiredFields: false
+  respectTitlesForPrimitiveUnionMembers: false
   responseFormat: envelope
   sdkPackageName: ""
   unionStrategy: left-to-right

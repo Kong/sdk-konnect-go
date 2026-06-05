@@ -43,7 +43,13 @@ func main() {
         log.Fatal(err)
     }
     if res.ResourceIngestionStatus != nil {
-        // handle response
+        switch res.ResourceIngestionStatus.SchedulerState.Type {
+            case components.SchedulerStateTypeResourceSchedulerStateOk:
+                // res.ResourceIngestionStatus.SchedulerState.ResourceSchedulerStateOk is populated
+            case components.SchedulerStateTypeResourceSchedulerStateNotOk:
+                // res.ResourceIngestionStatus.SchedulerState.ResourceSchedulerStateNotOk is populated
+        }
+
     }
 }
 ```
@@ -53,7 +59,7 @@ func main() {
 | Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |                                                                                              |
-| `integrationInstanceID`                                                                      | *string*                                                                                     | :heavy_check_mark:                                                                           | The `id` of the integration instance.                                                        | 004d6d17-d21f-4518-89a2-b9177cb5485c                                                         |
+| `integrationInstanceID`                                                                      | `string`                                                                                     | :heavy_check_mark:                                                                           | The `id` of the integration instance.                                                        | 004d6d17-d21f-4518-89a2-b9177cb5485c                                                         |
 | `scheduleResourceIngestion`                                                                  | [components.ScheduleResourceIngestion](../../models/components/scheduleresourceingestion.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |                                                                                              |
 | `opts`                                                                                       | [][operations.Option](../../models/operations/option.md)                                     | :heavy_minus_sign:                                                                           | The options for this request.                                                                |                                                                                              |
 
@@ -102,7 +108,13 @@ func main() {
         log.Fatal(err)
     }
     if res.ResourceIngestionStatus != nil {
-        // handle response
+        switch res.ResourceIngestionStatus.SchedulerState.Type {
+            case components.SchedulerStateTypeResourceSchedulerStateOk:
+                // res.ResourceIngestionStatus.SchedulerState.ResourceSchedulerStateOk is populated
+            case components.SchedulerStateTypeResourceSchedulerStateNotOk:
+                // res.ResourceIngestionStatus.SchedulerState.ResourceSchedulerStateNotOk is populated
+        }
+
     }
 }
 ```
@@ -112,7 +124,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `integrationInstanceID`                                  | *string*                                                 | :heavy_check_mark:                                       | The `id` of the integration instance.                    | 004d6d17-d21f-4518-89a2-b9177cb5485c                     |
+| `integrationInstanceID`                                  | `string`                                                 | :heavy_check_mark:                                       | The `id` of the integration instance.                    | 004d6d17-d21f-4518-89a2-b9177cb5485c                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response

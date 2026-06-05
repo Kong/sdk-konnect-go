@@ -11,6 +11,8 @@ import (
 type ListPortalTeamsQueryParamFilter struct {
 	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 	Name *components.StringFieldFilter `queryParam:"name=name"`
+	// Filter by a boolean value (true/false).
+	CanOwnApplications *bool `queryParam:"name=can_own_applications"`
 }
 
 func (l *ListPortalTeamsQueryParamFilter) GetName() *components.StringFieldFilter {
@@ -18,6 +20,13 @@ func (l *ListPortalTeamsQueryParamFilter) GetName() *components.StringFieldFilte
 		return nil
 	}
 	return l.Name
+}
+
+func (l *ListPortalTeamsQueryParamFilter) GetCanOwnApplications() *bool {
+	if l == nil {
+		return nil
+	}
+	return l.CanOwnApplications
 }
 
 type ListPortalTeamsRequest struct {

@@ -7,4 +7,4 @@ Filters on the given string field value by fuzzy match.
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `Contains`         | *string*           | :heavy_check_mark: | N/A                |
+| `Contains`         | `string`           | :heavy_check_mark: | N/A                |

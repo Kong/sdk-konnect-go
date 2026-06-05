@@ -65,7 +65,7 @@ func main() {
 
 ## PostOauthDeviceToken
 
-This endpoint provides the machine client a means of being notified when a request for authorization is granted or rejected. 
+This endpoint provides the machine client a means of being notified when a request for authorization is granted or rejected.
 It is expected for the client to try the access token request repeatedly in a polling fashion based on the error code in the response.
 See https://www.rfc-editor.org/rfc/rfc8628#section-3.4 for details.
 
@@ -142,7 +142,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+            KonnectAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 
@@ -200,7 +200,7 @@ func main() {
 
     s := sdkkonnectgo.New(
         sdkkonnectgo.WithSecurity(components.Security{
-            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+            KonnectAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
         }),
     )
 

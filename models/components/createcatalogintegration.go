@@ -15,7 +15,7 @@ const (
 )
 
 type CreateCatalogIntegration struct {
-	CreatePrivateCatalogIntegration *CreatePrivateCatalogIntegration `queryParam:"inline,name=CreateCatalogIntegration" union:"member"`
+	CreatePrivateCatalogIntegration *CreatePrivateCatalogIntegration `queryParam:"inline" union:"member"`
 
 	Type CreateCatalogIntegrationType
 }

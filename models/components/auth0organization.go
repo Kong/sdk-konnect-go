@@ -23,3 +23,6 @@ func (a *Auth0Organization) GetLoginPath() *string {
 	}
 	return a.LoginPath
 }
+
+// #region class-body-auth0organization
+// #endregion class-body-auth0organization

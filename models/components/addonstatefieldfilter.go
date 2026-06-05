@@ -17,9 +17,9 @@ const (
 )
 
 type AddOnStateFieldFilter struct {
-	AddOnStateFieldEqualsFilter     *AddOnStateFieldEqualsFilter     `queryParam:"inline,name=AddOnStateFieldFilter" union:"member"`
-	AddOnStateFieldNotEqualsFilter  *AddOnStateFieldNotEqualsFilter  `queryParam:"inline,name=AddOnStateFieldFilter" union:"member"`
-	AddOnStateFieldOrEqualityFilter *AddOnStateFieldOrEqualityFilter `queryParam:"inline,name=AddOnStateFieldFilter" union:"member"`
+	AddOnStateFieldEqualsFilter     *AddOnStateFieldEqualsFilter     `queryParam:"inline" union:"member"`
+	AddOnStateFieldNotEqualsFilter  *AddOnStateFieldNotEqualsFilter  `queryParam:"inline" union:"member"`
+	AddOnStateFieldOrEqualityFilter *AddOnStateFieldOrEqualityFilter `queryParam:"inline" union:"member"`
 
 	Type AddOnStateFieldFilterType
 }

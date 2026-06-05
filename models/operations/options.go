@@ -28,6 +28,7 @@ const (
 	AcceptHeaderEnumImageSvgPlusXml                           AcceptHeaderEnum = "image/svg+xml"
 	AcceptHeaderEnumApplicationYaml                           AcceptHeaderEnum = "application/yaml"
 	AcceptHeaderEnumApplicationVndKonnectDocumentTreePlusJson AcceptHeaderEnum = "application/vnd.konnect.document-tree+json"
+	AcceptHeaderEnumTextCsv                                   AcceptHeaderEnum = "text/csv"
 	AcceptHeaderEnumWildcardRootWildcard                      AcceptHeaderEnum = "*/*"
 	AcceptHeaderEnumApplicationXYaml                          AcceptHeaderEnum = "application/x-yaml"
 )

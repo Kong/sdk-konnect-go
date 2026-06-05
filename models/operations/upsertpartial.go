@@ -37,12 +37,24 @@ func (u *UpsertPartialRequest) GetPartial() components.Partial {
 	return u.Partial
 }
 
+func (u *UpsertPartialRequest) GetPartialEmbeddings() *components.PartialEmbeddings {
+	return u.GetPartial().PartialEmbeddings
+}
+
+func (u *UpsertPartialRequest) GetPartialModel() *components.PartialModel {
+	return u.GetPartial().PartialModel
+}
+
 func (u *UpsertPartialRequest) GetPartialRedisCe() *components.PartialRedisCe {
 	return u.GetPartial().PartialRedisCe
 }
 
 func (u *UpsertPartialRequest) GetPartialRedisEe() *components.PartialRedisEe {
 	return u.GetPartial().PartialRedisEe
+}
+
+func (u *UpsertPartialRequest) GetPartialVectordb() *components.PartialVectordb {
+	return u.GetPartial().PartialVectordb
 }
 
 type UpsertPartialResponse struct {
@@ -84,6 +96,20 @@ func (u *UpsertPartialResponse) GetPartial() *components.Partial {
 	return u.Partial
 }
 
+func (u *UpsertPartialResponse) GetPartialEmbeddings() *components.PartialEmbeddings {
+	if v := u.GetPartial(); v != nil {
+		return v.PartialEmbeddings
+	}
+	return nil
+}
+
+func (u *UpsertPartialResponse) GetPartialModel() *components.PartialModel {
+	if v := u.GetPartial(); v != nil {
+		return v.PartialModel
+	}
+	return nil
+}
+
 func (u *UpsertPartialResponse) GetPartialRedisCe() *components.PartialRedisCe {
 	if v := u.GetPartial(); v != nil {
 		return v.PartialRedisCe
@@ -94,6 +120,13 @@ func (u *UpsertPartialResponse) GetPartialRedisCe() *components.PartialRedisCe {
 func (u *UpsertPartialResponse) GetPartialRedisEe() *components.PartialRedisEe {
 	if v := u.GetPartial(); v != nil {
 		return v.PartialRedisEe
+	}
+	return nil
+}
+
+func (u *UpsertPartialResponse) GetPartialVectordb() *components.PartialVectordb {
+	if v := u.GetPartial(); v != nil {
+		return v.PartialVectordb
 	}
 	return nil
 }

@@ -1,0 +1,14 @@
+# BarChart
+
+A chart that can display non-timeseries data as bars.  This type of chart supports up to 2 dimensions (not `time`).
+To render a bar chart of timeseries data, use a `timeseries_bar` chart instead.
+
+
+
+## Fields
+
+| Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `ChartTitle`                                                                                                             | `*string`                                                                                                                | :heavy_minus_sign:                                                                                                       | The title of the chart, which is displayed in the tile's header.                                                         |
+| `Type`                                                                                                                   | [components.BarChartType](../../models/components/barcharttype.md)                                                       | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
+| `Stacked`                                                                                                                | `*bool`                                                                                                                  | :heavy_minus_sign:                                                                                                       | Whether to stack the bars (implicitly adding them together to form a total), or leave them independent from each other.<br/> |

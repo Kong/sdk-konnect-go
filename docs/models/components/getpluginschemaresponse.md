@@ -7,4 +7,4 @@ The schema for the plugin
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `Fields`           | []map[string]*any* | :heavy_minus_sign: | N/A                |
+| `Fields`           | []map[string]`any` | :heavy_minus_sign: | N/A                |

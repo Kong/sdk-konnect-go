@@ -1,35 +1,14 @@
 # CloudGatewaysStringFieldFilterOverride
 
+Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
 
-## Supported Types
 
-### CloudGatewaysStringFieldEqualsFilterOverride
+## Fields
 
-```go
-cloudGatewaysStringFieldFilterOverride := components.CreateCloudGatewaysStringFieldFilterOverrideCloudGatewaysStringFieldEqualsFilterOverride(components.CloudGatewaysStringFieldEqualsFilterOverride{/* values here */})
-```
-
-### StringFieldContainsFilter
-
-```go
-cloudGatewaysStringFieldFilterOverride := components.CreateCloudGatewaysStringFieldFilterOverrideStringFieldContainsFilter(components.StringFieldContainsFilter{/* values here */})
-```
-
-### StringFieldNEQFilter
-
-```go
-cloudGatewaysStringFieldFilterOverride := components.CreateCloudGatewaysStringFieldFilterOverrideStringFieldNEQFilter(components.StringFieldNEQFilter{/* values here */})
-```
-
-### StringFieldOEQFilter
-
-```go
-cloudGatewaysStringFieldFilterOverride := components.CreateCloudGatewaysStringFieldFilterOverrideStringFieldOEQFilter(components.StringFieldOEQFilter{/* values here */})
-```
-
-### StringFieldOContainsFilter
-
-```go
-cloudGatewaysStringFieldFilterOverride := components.CreateCloudGatewaysStringFieldFilterOverrideStringFieldOContainsFilter(components.StringFieldOContainsFilter{/* values here */})
-```
-
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `Eq`                                           | `*string`                                      | :heavy_minus_sign:                             | The field exactly matches the provided value.  |
+| `Contains`                                     | `*string`                                      | :heavy_minus_sign:                             | The field contains the provided value.         |
+| `Neq`                                          | `*string`                                      | :heavy_minus_sign:                             | The field does not match the provided value.   |
+| `Oeq`                                          | `*string`                                      | :heavy_minus_sign:                             | The field matches any of the provided values.  |
+| `Ocontains`                                    | `*string`                                      | :heavy_minus_sign:                             | The field contains any of the provided values. |

@@ -5,6 +5,19 @@ The type of filter to apply.
   - `not_in` filters will exclude the specified values
 
 
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.MetricsFilterInOperatorIn
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.MetricsFilterInOperator("custom_value")
+```
+
 
 ## Values
 

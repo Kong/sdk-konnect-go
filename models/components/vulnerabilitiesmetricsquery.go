@@ -76,16 +76,16 @@ const (
 )
 
 type Filters struct {
-	VulnerabilitiesMetricsFilterByService        *VulnerabilitiesMetricsFilterByService        `queryParam:"inline,name=filters" union:"member"`
-	VulnerabilitiesMetricsFilterBySeverity       *VulnerabilitiesMetricsFilterBySeverity       `queryParam:"inline,name=filters" union:"member"`
-	VulnerabilitiesMetricsFilterByState          *VulnerabilitiesMetricsFilterByState          `queryParam:"inline,name=filters" union:"member"`
-	VulnerabilitiesMetricsFilterByType           *VulnerabilitiesMetricsFilterByType           `queryParam:"inline,name=filters" union:"member"`
-	VulnerabilitiesMetricsFilterBySource         *VulnerabilitiesMetricsFilterBySource         `queryParam:"inline,name=filters" union:"member"`
-	VulnerabilitiesMetricsFilterByEnvironment    *VulnerabilitiesMetricsFilterByEnvironment    `queryParam:"inline,name=filters" union:"member"`
-	VulnerabilitiesMetricsFilterByRegion         *VulnerabilitiesMetricsFilterByRegion         `queryParam:"inline,name=filters" union:"member"`
-	VulnerabilitiesMetricsFilterByCVE            *VulnerabilitiesMetricsFilterByCVE            `queryParam:"inline,name=filters" union:"member"`
-	VulnerabilitiesMetricsFilterByPackageName    *VulnerabilitiesMetricsFilterByPackageName    `queryParam:"inline,name=filters" union:"member"`
-	VulnerabilitiesMetricsFilterByScanAttributes *VulnerabilitiesMetricsFilterByScanAttributes `queryParam:"inline,name=filters" union:"member"`
+	VulnerabilitiesMetricsFilterByService        *VulnerabilitiesMetricsFilterByService        `queryParam:"inline" union:"member"`
+	VulnerabilitiesMetricsFilterBySeverity       *VulnerabilitiesMetricsFilterBySeverity       `queryParam:"inline" union:"member"`
+	VulnerabilitiesMetricsFilterByState          *VulnerabilitiesMetricsFilterByState          `queryParam:"inline" union:"member"`
+	VulnerabilitiesMetricsFilterByType           *VulnerabilitiesMetricsFilterByType           `queryParam:"inline" union:"member"`
+	VulnerabilitiesMetricsFilterBySource         *VulnerabilitiesMetricsFilterBySource         `queryParam:"inline" union:"member"`
+	VulnerabilitiesMetricsFilterByEnvironment    *VulnerabilitiesMetricsFilterByEnvironment    `queryParam:"inline" union:"member"`
+	VulnerabilitiesMetricsFilterByRegion         *VulnerabilitiesMetricsFilterByRegion         `queryParam:"inline" union:"member"`
+	VulnerabilitiesMetricsFilterByCVE            *VulnerabilitiesMetricsFilterByCVE            `queryParam:"inline" union:"member"`
+	VulnerabilitiesMetricsFilterByPackageName    *VulnerabilitiesMetricsFilterByPackageName    `queryParam:"inline" union:"member"`
+	VulnerabilitiesMetricsFilterByScanAttributes *VulnerabilitiesMetricsFilterByScanAttributes `queryParam:"inline" union:"member"`
 
 	Type FiltersType
 }
@@ -299,7 +299,7 @@ func (u Filters) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type Filters: all fields are null")
 }
 
-// Granularity - Force time grouping into buckets of the specified duration. Only has an effect if `time` is in the `dimensions` list.
+// VulnerabilitiesMetricsQueryGranularity - Force time grouping into buckets of the specified duration. Only has an effect if `time` is in the `dimensions` list.
 //
 // The granularity of the result may be coarser than requested.
 // The exact result granularity will be reported in the response `meta.granularity_ms` field.
@@ -307,7 +307,6 @@ func (u Filters) MarshalJSON() ([]byte, error) {
 // If granularity is not specified and `time` is in the `dimensions` list, a default will be chosen based on the time range requested.
 //
 // Different relative times support different granularities:
-//
 //   - 1d  => daily
 //   - 7d  => daily, weekly
 //   - 3w  => daily, weekly
@@ -316,24 +315,23 @@ func (u Filters) MarshalJSON() ([]byte, error) {
 //   - 1y  => daily, weekly
 //
 // For special time ranges:
-//
 //   - current_week, previous_week   => daily
 //   - current_month, previous_month => daily, weekly
 //
 // For absolute time ranges, daily will be used.
-type Granularity string
+type VulnerabilitiesMetricsQueryGranularity string
 
 const (
-	GranularityDaily  Granularity = "daily"
-	GranularityWeekly Granularity = "weekly"
+	VulnerabilitiesMetricsQueryGranularityDaily  VulnerabilitiesMetricsQueryGranularity = "daily"
+	VulnerabilitiesMetricsQueryGranularityWeekly VulnerabilitiesMetricsQueryGranularity = "weekly"
 )
 
-func (e Granularity) ToPointer() *Granularity {
+func (e VulnerabilitiesMetricsQueryGranularity) ToPointer() *VulnerabilitiesMetricsQueryGranularity {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *Granularity) IsExact() bool {
+func (e *VulnerabilitiesMetricsQueryGranularity) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "daily", "weekly":
@@ -343,46 +341,46 @@ func (e *Granularity) IsExact() bool {
 	return false
 }
 
-type TimeRangeType string
+type VulnerabilitiesMetricsQueryTimeRangeType string
 
 const (
-	TimeRangeTypeRelative TimeRangeType = "relative"
-	TimeRangeTypeAbsolute TimeRangeType = "absolute"
+	VulnerabilitiesMetricsQueryTimeRangeTypeRelative VulnerabilitiesMetricsQueryTimeRangeType = "relative"
+	VulnerabilitiesMetricsQueryTimeRangeTypeAbsolute VulnerabilitiesMetricsQueryTimeRangeType = "absolute"
 )
 
-// TimeRange - The time range to query.
-type TimeRange struct {
-	VulnerabilityMetricsRelativeTimeRange *VulnerabilityMetricsRelativeTimeRange `queryParam:"inline,name=time_range" union:"member"`
-	VulnerabilityMetricsAbsoluteTimeRange *VulnerabilityMetricsAbsoluteTimeRange `queryParam:"inline,name=time_range" union:"member"`
+// VulnerabilitiesMetricsQueryTimeRange - The time range to query.
+type VulnerabilitiesMetricsQueryTimeRange struct {
+	VulnerabilityMetricsRelativeTimeRange *VulnerabilityMetricsRelativeTimeRange `queryParam:"inline" union:"member"`
+	VulnerabilityMetricsAbsoluteTimeRange *VulnerabilityMetricsAbsoluteTimeRange `queryParam:"inline" union:"member"`
 
-	Type TimeRangeType
+	Type VulnerabilitiesMetricsQueryTimeRangeType
 }
 
-func CreateTimeRangeRelative(relative VulnerabilityMetricsRelativeTimeRange) TimeRange {
-	typ := TimeRangeTypeRelative
+func CreateVulnerabilitiesMetricsQueryTimeRangeRelative(relative VulnerabilityMetricsRelativeTimeRange) VulnerabilitiesMetricsQueryTimeRange {
+	typ := VulnerabilitiesMetricsQueryTimeRangeTypeRelative
 
 	typStr := VulnerabilityMetricsRelativeTimeRangeType(typ)
 	relative.Type = typStr
 
-	return TimeRange{
+	return VulnerabilitiesMetricsQueryTimeRange{
 		VulnerabilityMetricsRelativeTimeRange: &relative,
 		Type:                                  typ,
 	}
 }
 
-func CreateTimeRangeAbsolute(absolute VulnerabilityMetricsAbsoluteTimeRange) TimeRange {
-	typ := TimeRangeTypeAbsolute
+func CreateVulnerabilitiesMetricsQueryTimeRangeAbsolute(absolute VulnerabilityMetricsAbsoluteTimeRange) VulnerabilitiesMetricsQueryTimeRange {
+	typ := VulnerabilitiesMetricsQueryTimeRangeTypeAbsolute
 
 	typStr := VulnerabilityMetricsAbsoluteTimeRangeType(typ)
 	absolute.Type = typStr
 
-	return TimeRange{
+	return VulnerabilitiesMetricsQueryTimeRange{
 		VulnerabilityMetricsAbsoluteTimeRange: &absolute,
 		Type:                                  typ,
 	}
 }
 
-func (u *TimeRange) UnmarshalJSON(data []byte) error {
+func (u *VulnerabilitiesMetricsQueryTimeRange) UnmarshalJSON(data []byte) error {
 
 	type discriminator struct {
 		Type string `json:"type"`
@@ -397,27 +395,27 @@ func (u *TimeRange) UnmarshalJSON(data []byte) error {
 	case "relative":
 		vulnerabilityMetricsRelativeTimeRange := new(VulnerabilityMetricsRelativeTimeRange)
 		if err := utils.UnmarshalJSON(data, &vulnerabilityMetricsRelativeTimeRange, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == relative) type VulnerabilityMetricsRelativeTimeRange within TimeRange: %w", string(data), err)
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == relative) type VulnerabilityMetricsRelativeTimeRange within VulnerabilitiesMetricsQueryTimeRange: %w", string(data), err)
 		}
 
 		u.VulnerabilityMetricsRelativeTimeRange = vulnerabilityMetricsRelativeTimeRange
-		u.Type = TimeRangeTypeRelative
+		u.Type = VulnerabilitiesMetricsQueryTimeRangeTypeRelative
 		return nil
 	case "absolute":
 		vulnerabilityMetricsAbsoluteTimeRange := new(VulnerabilityMetricsAbsoluteTimeRange)
 		if err := utils.UnmarshalJSON(data, &vulnerabilityMetricsAbsoluteTimeRange, "", true, nil); err != nil {
-			return fmt.Errorf("could not unmarshal `%s` into expected (Type == absolute) type VulnerabilityMetricsAbsoluteTimeRange within TimeRange: %w", string(data), err)
+			return fmt.Errorf("could not unmarshal `%s` into expected (Type == absolute) type VulnerabilityMetricsAbsoluteTimeRange within VulnerabilitiesMetricsQueryTimeRange: %w", string(data), err)
 		}
 
 		u.VulnerabilityMetricsAbsoluteTimeRange = vulnerabilityMetricsAbsoluteTimeRange
-		u.Type = TimeRangeTypeAbsolute
+		u.Type = VulnerabilitiesMetricsQueryTimeRangeTypeAbsolute
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for TimeRange", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for VulnerabilitiesMetricsQueryTimeRange", string(data))
 }
 
-func (u TimeRange) MarshalJSON() ([]byte, error) {
+func (u VulnerabilitiesMetricsQueryTimeRange) MarshalJSON() ([]byte, error) {
 	if u.VulnerabilityMetricsRelativeTimeRange != nil {
 		return utils.MarshalJSON(u.VulnerabilityMetricsRelativeTimeRange, "", true)
 	}
@@ -426,7 +424,7 @@ func (u TimeRange) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.VulnerabilityMetricsAbsoluteTimeRange, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type TimeRange: all fields are null")
+	return nil, errors.New("could not marshal union type VulnerabilitiesMetricsQueryTimeRange: all fields are null")
 }
 
 // VulnerabilitiesMetricsQuery - A query against vulnerability metrics.
@@ -445,10 +443,6 @@ type VulnerabilitiesMetricsQuery struct {
 	// If granularity is not specified and `time` is in the `dimensions` list, a default will be chosen based on the time range requested.
 	//
 	// Different relative times support different granularities:
-	//
-	//
-	//
-	//
 	//   - 1d  => daily
 	//   - 7d  => daily, weekly
 	//   - 3w  => daily, weekly
@@ -457,18 +451,14 @@ type VulnerabilitiesMetricsQuery struct {
 	//   - 1y  => daily, weekly
 	//
 	// For special time ranges:
-	//
-	//
-	//
-	//
 	//   - current_week, previous_week   => daily
 	//   - current_month, previous_month => daily, weekly
 	//
 	// For absolute time ranges, daily will be used.
 	//
-	Granularity *Granularity `json:"granularity,omitempty"`
+	Granularity *VulnerabilitiesMetricsQueryGranularity `json:"granularity,omitempty"`
 	// The time range to query.
-	TimeRange TimeRange `json:"time_range"`
+	TimeRange VulnerabilitiesMetricsQueryTimeRange `json:"time_range"`
 }
 
 func (v *VulnerabilitiesMetricsQuery) GetMetrics() []Metrics {
@@ -492,16 +482,16 @@ func (v *VulnerabilitiesMetricsQuery) GetFilters() []Filters {
 	return v.Filters
 }
 
-func (v *VulnerabilitiesMetricsQuery) GetGranularity() *Granularity {
+func (v *VulnerabilitiesMetricsQuery) GetGranularity() *VulnerabilitiesMetricsQueryGranularity {
 	if v == nil {
 		return nil
 	}
 	return v.Granularity
 }
 
-func (v *VulnerabilitiesMetricsQuery) GetTimeRange() TimeRange {
+func (v *VulnerabilitiesMetricsQuery) GetTimeRange() VulnerabilitiesMetricsQueryTimeRange {
 	if v == nil {
-		return TimeRange{}
+		return VulnerabilitiesMetricsQueryTimeRange{}
 	}
 	return v.TimeRange
 }

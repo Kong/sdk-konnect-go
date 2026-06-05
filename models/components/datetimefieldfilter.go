@@ -11,7 +11,7 @@ import (
 
 type DateTimeFieldGTEFilter struct {
 	// Value is greater than or equal to the given RFC-3339 formatted timestamp in UTC
-	Lte *time.Time `queryParam:"name=lte"`
+	Gte time.Time `queryParam:"name=gte"`
 }
 
 func (d DateTimeFieldGTEFilter) MarshalJSON() ([]byte, error) {
@@ -19,22 +19,22 @@ func (d DateTimeFieldGTEFilter) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DateTimeFieldGTEFilter) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"gte"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (d *DateTimeFieldGTEFilter) GetLte() *time.Time {
+func (d *DateTimeFieldGTEFilter) GetGte() time.Time {
 	if d == nil {
-		return nil
+		return time.Time{}
 	}
-	return d.Lte
+	return d.Gte
 }
 
 type DateTimeFieldGTFilter struct {
 	// Value is greater than the given RFC-3339 formatted timestamp in UTC
-	Lt *time.Time `queryParam:"name=lt"`
+	Gt time.Time `queryParam:"name=gt"`
 }
 
 func (d DateTimeFieldGTFilter) MarshalJSON() ([]byte, error) {
@@ -42,17 +42,17 @@ func (d DateTimeFieldGTFilter) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DateTimeFieldGTFilter) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"gt"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (d *DateTimeFieldGTFilter) GetLt() *time.Time {
+func (d *DateTimeFieldGTFilter) GetGt() time.Time {
 	if d == nil {
-		return nil
+		return time.Time{}
 	}
-	return d.Lt
+	return d.Gt
 }
 
 type DateTimeFieldLTEFilter struct {
@@ -136,11 +136,11 @@ const (
 
 // DateTimeFieldFilter - Filters on the given datetime (RFC-3339) field value.
 type DateTimeFieldFilter struct {
-	DateTimeFieldEqualsFilter *DateTimeFieldEqualsFilter `queryParam:"inline,name=DateTimeFieldFilter" union:"member"`
-	DateTimeFieldLTFilter     *DateTimeFieldLTFilter     `queryParam:"inline,name=DateTimeFieldFilter" union:"member"`
-	DateTimeFieldLTEFilter    *DateTimeFieldLTEFilter    `queryParam:"inline,name=DateTimeFieldFilter" union:"member"`
-	DateTimeFieldGTFilter     *DateTimeFieldGTFilter     `queryParam:"inline,name=DateTimeFieldFilter" union:"member"`
-	DateTimeFieldGTEFilter    *DateTimeFieldGTEFilter    `queryParam:"inline,name=DateTimeFieldFilter" union:"member"`
+	DateTimeFieldEqualsFilter *DateTimeFieldEqualsFilter `queryParam:"inline" union:"member"`
+	DateTimeFieldLTFilter     *DateTimeFieldLTFilter     `queryParam:"inline" union:"member"`
+	DateTimeFieldLTEFilter    *DateTimeFieldLTEFilter    `queryParam:"inline" union:"member"`
+	DateTimeFieldGTFilter     *DateTimeFieldGTFilter     `queryParam:"inline" union:"member"`
+	DateTimeFieldGTEFilter    *DateTimeFieldGTEFilter    `queryParam:"inline" union:"member"`
 
 	Type DateTimeFieldFilterType
 }

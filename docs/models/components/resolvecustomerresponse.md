@@ -7,4 +7,4 @@ AWS Resolve customer response
 
 | Field                     | Type                      | Required                  | Description               |
 | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `OrganizationID`          | *string*                  | :heavy_check_mark:        | UUID of the organization. |
+| `OrganizationID`          | `string`                  | :heavy_check_mark:        | UUID of the organization. |

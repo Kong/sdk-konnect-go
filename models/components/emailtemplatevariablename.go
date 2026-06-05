@@ -16,6 +16,8 @@ const (
 	EmailTemplateVariableNameAPIName             EmailTemplateVariableName = "api_name"
 	EmailTemplateVariableNameAPIVersion          EmailTemplateVariableName = "api_version"
 	EmailTemplateVariableNameApplicationName     EmailTemplateVariableName = "application_name"
+	EmailTemplateVariableNameCredentialName      EmailTemplateVariableName = "credential_name"
+	EmailTemplateVariableNameCredentialExpiresAt EmailTemplateVariableName = "credential_expires_at"
 )
 
 func (e EmailTemplateVariableName) ToPointer() *EmailTemplateVariableName {
@@ -26,7 +28,7 @@ func (e EmailTemplateVariableName) ToPointer() *EmailTemplateVariableName {
 func (e *EmailTemplateVariableName) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "portal_display_name", "portal_domain", "developer_email", "developer_fullname", "dev_portal_reply_to", "developer_status", "api_documentation_url", "api_name", "api_version", "application_name":
+		case "portal_display_name", "portal_domain", "developer_email", "developer_fullname", "dev_portal_reply_to", "developer_status", "api_documentation_url", "api_name", "api_version", "application_name", "credential_name", "credential_expires_at":
 			return true
 		}
 	}
