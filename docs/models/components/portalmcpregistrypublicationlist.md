@@ -1,0 +1,9 @@
+# PortalMcpRegistryPublicationList
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `Data`                                                                                               | [][components.PortalMcpRegistryPublication](../../models/components/portalmcpregistrypublication.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `Meta`                                                                                               | [components.PaginatedMeta](../../models/components/paginatedmeta.md)                                 | :heavy_check_mark:                                                                                   | returns the pagination information                                                                   |

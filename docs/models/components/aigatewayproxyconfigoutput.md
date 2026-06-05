@@ -1,0 +1,14 @@
+# AIGatewayProxyConfigOutput
+
+HTTP/HTTPS proxy configuration for outbound requests to the upstream AI provider.
+
+
+## Fields
+
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `HTTPProxy`                                                                                 | [*components.HTTPProxy](../../models/components/httpproxy.md)                               | :heavy_minus_sign:                                                                          | HTTP proxy server to route plaintext outbound requests through.                             |
+| `HTTPSProxy`                                                                                | [*components.HTTPSProxy](../../models/components/httpsproxy.md)                             | :heavy_minus_sign:                                                                          | HTTPS proxy server to route TLS outbound requests through.                                  |
+| `ProxyScheme`                                                                               | [*components.ProxyScheme](../../models/components/proxyscheme.md)                           | :heavy_minus_sign:                                                                          | The proxy scheme to use when connecting to the proxy server.                                |
+| `Auth`                                                                                      | [*components.AIGatewayProxyConfigAuth](../../models/components/aigatewayproxyconfigauth.md) | :heavy_minus_sign:                                                                          | Credentials used to authenticate to the proxy server.                                       |
+| `NoProxy`                                                                                   | `*string`                                                                                   | :heavy_minus_sign:                                                                          | Comma-separated list of hosts that should not be proxied.                                   |

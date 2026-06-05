@@ -1,0 +1,12 @@
+# PlatformRelativeTimeRange
+
+A duration representing a relative-to-now span of time for platform queries.
+
+
+## Fields
+
+| Field                                                                                                           | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `Tz`                                                                                                            | `*string`                                                                                                       | :heavy_minus_sign:                                                                                              | N/A                                                                                                             |
+| `Type`                                                                                                          | [components.PlatformRelativeTimeRangeType](../../models/components/platformrelativetimerangetype.md)            | :heavy_check_mark:                                                                                              | N/A                                                                                                             |
+| `TimeRange`                                                                                                     | [*components.PlatformRelativeTimeRangeTimeRange](../../models/components/platformrelativetimerangetimerange.md) | :heavy_minus_sign:                                                                                              | N/A                                                                                                             |

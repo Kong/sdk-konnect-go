@@ -1,0 +1,9 @@
+# RolesReportsAdmin
+
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              | Example                                                                                  |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `Name`                                                                                   | [components.RolesReportsRolesName](../../models/components/rolesreportsrolesname.md)     | :heavy_check_mark:                                                                       | N/A                                                                                      |                                                                                          |
+| `Description`                                                                            | [components.RolesReportsDescription](../../models/components/rolesreportsdescription.md) | :heavy_check_mark:                                                                       | N/A                                                                                      | Allows users to edit, delete, and share a Report in Konnect Analytics.                   |
