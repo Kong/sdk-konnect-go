@@ -12133,7 +12133,7 @@ paths:
         - Invites
   /v3/openmeter/addons:
     get:
-      operationId: list-addons
+      operationId: list-openmeter-addons
       summary: List add-ons
       description: |-
         **Pre-release Endpoint**
@@ -12183,7 +12183,7 @@ paths:
       tags:
         - OpenMeter Product Catalog
     post:
-      operationId: create-addon
+      operationId: create-openmeter-addon
       summary: Create add-on
       description: |-
         **Pre-release Endpoint**
@@ -12213,7 +12213,7 @@ paths:
         - OpenMeter Product Catalog
   '/v3/openmeter/addons/{addonId}':
     put:
-      operationId: update-addon
+      operationId: update-openmeter-addon
       summary: Update add-on
       description: |-
         **Pre-release Endpoint**
@@ -12252,7 +12252,7 @@ paths:
       tags:
         - OpenMeter Product Catalog
     get:
-      operationId: get-addon
+      operationId: get-openmeter-addon
       summary: Get add-on
       description: |-
         **Pre-release Endpoint**
@@ -12285,7 +12285,7 @@ paths:
       tags:
         - OpenMeter Product Catalog
     delete:
-      operationId: delete-addon
+      operationId: delete-openmeter-addon
       summary: Soft delete add-on
       description: |-
         **Pre-release Endpoint**
@@ -12313,7 +12313,7 @@ paths:
         - OpenMeter Product Catalog
   '/v3/openmeter/addons/{addonId}/archive':
     post:
-      operationId: archive-addon
+      operationId: archive-openmeter-addon
       summary: Archive add-on version
       description: |-
         **Pre-release Endpoint**
