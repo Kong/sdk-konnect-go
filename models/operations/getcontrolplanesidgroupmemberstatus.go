@@ -9,14 +9,14 @@ import (
 
 type GetControlPlanesIDGroupMemberStatusRequest struct {
 	// ID of a control plane
-	ID string `pathParam:"style=simple,explode=false,name=id"`
+	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 }
 
-func (g *GetControlPlanesIDGroupMemberStatusRequest) GetID() string {
+func (g *GetControlPlanesIDGroupMemberStatusRequest) GetControlPlaneID() string {
 	if g == nil {
 		return ""
 	}
-	return g.ID
+	return g.ControlPlaneID
 }
 
 type GetControlPlanesIDGroupMemberStatusResponse struct {

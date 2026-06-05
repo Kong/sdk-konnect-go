@@ -7,4 +7,4 @@ If set, the certificate to be used as client certificate while TLS handshaking t
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `ID`               | **string*          | :heavy_minus_sign: | N/A                |
+| `ID`               | `*string`          | :heavy_minus_sign: | N/A                |

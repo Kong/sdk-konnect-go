@@ -15,7 +15,7 @@ const (
 )
 
 type ScoreValue struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=score_value" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type ScoreValueType
 }
@@ -56,7 +56,7 @@ const (
 )
 
 type ScoreRawValue struct {
-	NumericFieldFilter *NumericFieldFilter `queryParam:"inline,name=score_raw_value" union:"member"`
+	NumericFieldFilter *NumericFieldFilter `queryParam:"inline" union:"member"`
 
 	Type ScoreRawValueType
 }

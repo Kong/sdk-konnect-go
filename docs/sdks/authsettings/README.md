@@ -11,6 +11,10 @@
 * [GetIdentityProvider](#getidentityprovider) - Get Identity Provider
 * [UpdateIdentityProvider](#updateidentityprovider) - Update Identity Provider
 * [DeleteIdentityProvider](#deleteidentityprovider) - Delete Identity Provider
+* [ListIdpTeamGroupMappings](#listidpteamgroupmappings) - List Team Group Mappings
+* [CreateIdpTeamGroupMapping](#createidpteamgroupmapping) - Create Team Group Mapping
+* [GetIdpTeamGroupMapping](#getidpteamgroupmapping) - Get Team Group Mapping
+* [DeleteIdpTeamGroupMapping](#deleteidpteamgroupmapping) - Delete Team Group Mapping
 * [GetIdpConfiguration](#getidpconfiguration) - Get the IdP Configuration
 * [UpdateIdpConfiguration](#updateidpconfiguration) - Update IdP Configuration
 * [UpdateIdpTeamMappings](#updateidpteammappings) - Update Team Mappings
@@ -136,7 +140,7 @@ func main() {
 
 ## GetIdentityProviders
 
-Retrieves the identity providers available within the organization. This operation provides information about 
+Retrieves the identity providers available within the organization. This operation provides information about
 various identity providers for SAML or OIDC authentication integrations.
 
 
@@ -194,7 +198,7 @@ func main() {
 
 ## CreateIdentityProvider
 
-Creates a new identity provider. This operation allows the creation of a new identity provider for 
+Creates a new identity provider. This operation allows the creation of a new identity provider for
 authentication purposes.
 
 
@@ -222,16 +226,12 @@ func main() {
 
     res, err := s.AuthSettings.CreateIdentityProvider(ctx, components.CreateIdentityProvider{
         Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Enabled: sdkkonnectgo.Pointer(true),
+        LoginPath: sdkkonnectgo.Pointer("myapp"),
         Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
             components.SAMLIdentityProviderConfigInput{
                 IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
-                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                "<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n" +
-                "  <!-- SAML metadata content here -->\n" +
-                "</EntityDescriptor>\n" +
-                ""),
+                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
             },
         )),
     })
@@ -239,7 +239,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -268,7 +274,7 @@ func main() {
 
 ## GetIdentityProvider
 
-Retrieves the configuration of a single identity provider. This operation returns information about a 
+Retrieves the configuration of a single identity provider. This operation returns information about a
 specific identity provider's settings and authentication integration details.
 
 
@@ -299,7 +305,13 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -309,7 +321,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | ID of the identity provider.                             | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `id`                                                     | `string`                                                 | :heavy_check_mark:                                       | ID of the identity provider.                             | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -328,7 +340,7 @@ func main() {
 
 ## UpdateIdentityProvider
 
-Updates the configuration of an existing identity provider. This operation allows modifications to be made 
+Updates the configuration of an existing identity provider. This operation allows modifications to be made
 to an existing identity provider's configuration.
 
 
@@ -357,8 +369,8 @@ func main() {
     res, err := s.AuthSettings.UpdateIdentityProvider(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.UpdateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
         LoginPath: sdkkonnectgo.Pointer("myapp"),
-        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigConfigureOIDCIdentityProviderConfig(
-            components.ConfigureOIDCIdentityProviderConfig{
+        Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigOIDCIdentityProviderConfig(
+            components.OIDCIdentityProviderConfig{
                 IssuerURL: "https://konghq.okta.com/oauth2/default",
                 ClientID: "YOUR_CLIENT_ID",
                 ClientSecret: sdkkonnectgo.Pointer("YOUR_CLIENT_SECRET"),
@@ -370,19 +382,25 @@ func main() {
         log.Fatal(err)
     }
     if res.IdentityProvider != nil {
-        // handle response
+        switch res.IdentityProvider.Config.Type {
+            case components.IdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.IdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.IdentityProviderConfigTypeSAMLIdentityProviderConfig:
+                // res.IdentityProvider.Config.SAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                                   | Type                                                                                                                                                        | Required                                                                                                                                                    | Description                                                                                                                                                 | Example                                                                                                                                                     |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                                                       | [context.Context](https://pkg.go.dev/context#Context)                                                                                                       | :heavy_check_mark:                                                                                                                                          | The context to use for the request.                                                                                                                         |                                                                                                                                                             |
-| `id`                                                                                                                                                        | *string*                                                                                                                                                    | :heavy_check_mark:                                                                                                                                          | ID of the identity provider.                                                                                                                                | d32d905a-ed33-46a3-a093-d8f536af9a8a                                                                                                                        |
-| `updateIdentityProvider`                                                                                                                                    | [components.UpdateIdentityProvider](../../models/components/updateidentityprovider.md)                                                                      | :heavy_check_mark:                                                                                                                                          | An object representing the configuration for updating an identity provider. This configuration may pertain  to either an OIDC or a SAML identity provider.<br/> |                                                                                                                                                             |
-| `opts`                                                                                                                                                      | [][operations.Option](../../models/operations/option.md)                                                                                                    | :heavy_minus_sign:                                                                                                                                          | The options for this request.                                                                                                                               |                                                                                                                                                             |
+| Parameter                                                                                                                                                  | Type                                                                                                                                                       | Required                                                                                                                                                   | Description                                                                                                                                                | Example                                                                                                                                                    |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                                                                      | :heavy_check_mark:                                                                                                                                         | The context to use for the request.                                                                                                                        |                                                                                                                                                            |
+| `id`                                                                                                                                                       | `string`                                                                                                                                                   | :heavy_check_mark:                                                                                                                                         | ID of the identity provider.                                                                                                                               | d32d905a-ed33-46a3-a093-d8f536af9a8a                                                                                                                       |
+| `updateIdentityProvider`                                                                                                                                   | [components.UpdateIdentityProvider](../../models/components/updateidentityprovider.md)                                                                     | :heavy_check_mark:                                                                                                                                         | An object representing the configuration for updating an identity provider. This configuration may pertain to either an OIDC or a SAML identity provider.<br/> |                                                                                                                                                            |
+| `opts`                                                                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                                                                   | :heavy_minus_sign:                                                                                                                                         | The options for this request.                                                                                                                              |                                                                                                                                                            |
 
 ### Response
 
@@ -401,7 +419,7 @@ func main() {
 
 ## DeleteIdentityProvider
 
-Deletes an existing identity provider configuration. This operation removes a specific identity provider 
+Deletes an existing identity provider configuration. This operation removes a specific identity provider
 from the organization.
 
 
@@ -442,12 +460,263 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | ID of the identity provider.                             | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `id`                                                     | `string`                                                 | :heavy_check_mark:                                       | ID of the identity provider.                             | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
 
 **[*operations.DeleteIdentityProviderResponse](../../models/operations/deleteidentityproviderresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListIdpTeamGroupMappings
+
+Returns a paginated list of team group mappings for the specified identity provider.
+Mappings define the relationship between identity provider groups and Konnect teams.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-idp-team-group-mappings" method="get" path="/v3/identity-providers/{idpId}/team-group-mappings" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.ListIdpTeamGroupMappings(ctx, operations.ListIdpTeamGroupMappingsRequest{
+        IdpID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageAfter: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
+        PageBefore: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdpTeamGroupMappingsCollection != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                    | :heavy_check_mark:                                                                                       | The context to use for the request.                                                                      |
+| `request`                                                                                                | [operations.ListIdpTeamGroupMappingsRequest](../../models/operations/listidpteamgroupmappingsrequest.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
+| `opts`                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                 | :heavy_minus_sign:                                                                                       | The options for this request.                                                                            |
+
+### Response
+
+**[*operations.ListIdpTeamGroupMappingsResponse](../../models/operations/listidpteamgroupmappingsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## CreateIdpTeamGroupMapping
+
+Creates a new team group mapping for the specified identity provider.
+A mapping associates an identity provider group with a Konnect team.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-idp-team-group-mapping" method="post" path="/v3/identity-providers/{idpId}/team-group-mappings" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.CreateIdpTeamGroupMapping(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", components.CreateIdpTeamGroupMappingRequest{
+        TeamID: "6801e673-cc10-498a-94cd-4271de07a0d3",
+        Group: "Tech Leads",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdpTeamGroupMapping != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                | Example                                                                                                    |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                      | :heavy_check_mark:                                                                                         | The context to use for the request.                                                                        |                                                                                                            |
+| `idpID`                                                                                                    | `string`                                                                                                   | :heavy_check_mark:                                                                                         | ID of the identity provider.                                                                               | d32d905a-ed33-46a3-a093-d8f536af9a8a                                                                       |
+| `createIdpTeamGroupMappingRequest`                                                                         | [components.CreateIdpTeamGroupMappingRequest](../../models/components/createidpteamgroupmappingrequest.md) | :heavy_check_mark:                                                                                         | Request to create an IDP team group mapping.                                                               |                                                                                                            |
+| `opts`                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                   | :heavy_minus_sign:                                                                                         | The options for this request.                                                                              |                                                                                                            |
+
+### Response
+
+**[*operations.CreateIdpTeamGroupMappingResponse](../../models/operations/createidpteamgroupmappingresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetIdpTeamGroupMapping
+
+Returns the team group mapping for the specified ID.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-idp-team-group-mapping" method="get" path="/v3/identity-providers/{idpId}/team-group-mappings/{id}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.GetIdpTeamGroupMapping(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IdpTeamGroupMapping != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `idpID`                                                  | `string`                                                 | :heavy_check_mark:                                       | ID of the identity provider.                             | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `id`                                                     | `string`                                                 | :heavy_check_mark:                                       | ID of the team group mapping.                            | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.GetIdpTeamGroupMappingResponse](../../models/operations/getidpteamgroupmappingresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## DeleteIdpTeamGroupMapping
+
+Deletes a team group mapping by ID.
+Returns 204 if the mapping was deleted, or 404 if the mapping was not found.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-idp-team-group-mapping" method="delete" path="/v3/identity-providers/{idpId}/team-group-mappings/{id}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.AuthSettings.DeleteIdpTeamGroupMapping(ctx, "d32d905a-ed33-46a3-a093-d8f536af9a8a", "7f9fd312-a987-4628-b4c5-bb4f4fddd5f7")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `idpID`                                                  | `string`                                                 | :heavy_check_mark:                                       | ID of the identity provider.                             | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `id`                                                     | `string`                                                 | :heavy_check_mark:                                       | ID of the team group mapping.                            | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.DeleteIdpTeamGroupMappingResponse](../../models/operations/deleteidpteamgroupmappingresponse.md), error**
 
 ### Errors
 
@@ -688,8 +957,8 @@ func main() {
 | Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             | Example                                                                                                 |
 | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                   | :heavy_check_mark:                                                                                      | The context to use for the request.                                                                     |                                                                                                         |
-| `pageSize`                                                                                              | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | The maximum number of items to include per page. The last page of a collection may include fewer items. | 10                                                                                                      |
-| `pageNumber`                                                                                            | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | Determines which page of the entities to retrieve.                                                      | 1                                                                                                       |
+| `pageSize`                                                                                              | `*int64`                                                                                                | :heavy_minus_sign:                                                                                      | The maximum number of items to include per page. The last page of a collection may include fewer items. | 10                                                                                                      |
+| `pageNumber`                                                                                            | `*int64`                                                                                                | :heavy_minus_sign:                                                                                      | Determines which page of the entities to retrieve.                                                      | 1                                                                                                       |
 | `opts`                                                                                                  | [][operations.Option](../../models/operations/option.md)                                                | :heavy_minus_sign:                                                                                      | The options for this request.                                                                           |                                                                                                         |
 
 ### Response
@@ -748,8 +1017,8 @@ func main() {
 | Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             | Example                                                                                                 |
 | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                   | :heavy_check_mark:                                                                                      | The context to use for the request.                                                                     |                                                                                                         |
-| `pageSize`                                                                                              | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | The maximum number of items to include per page. The last page of a collection may include fewer items. | 10                                                                                                      |
-| `pageNumber`                                                                                            | **int64*                                                                                                | :heavy_minus_sign:                                                                                      | Determines which page of the entities to retrieve.                                                      | 1                                                                                                       |
+| `pageSize`                                                                                              | `*int64`                                                                                                | :heavy_minus_sign:                                                                                      | The maximum number of items to include per page. The last page of a collection may include fewer items. | 10                                                                                                      |
+| `pageNumber`                                                                                            | `*int64`                                                                                                | :heavy_minus_sign:                                                                                      | Determines which page of the entities to retrieve.                                                      | 1                                                                                                       |
 | `opts`                                                                                                  | [][operations.Option](../../models/operations/option.md)                                                | :heavy_minus_sign:                                                                                      | The options for this request.                                                                           |                                                                                                         |
 
 ### Response

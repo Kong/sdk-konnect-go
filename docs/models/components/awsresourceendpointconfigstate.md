@@ -8,6 +8,19 @@ The current state of the resource config in AWS Resource Endpoint. Possible valu
 - `terminating` - The config is in the process of being deleted and is no longer accepting new traffic.
 
 
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.AwsResourceEndpointConfigStateInitializing
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.AwsResourceEndpointConfigState("custom_value")
+```
+
 
 ## Values
 

@@ -1,8 +1,18 @@
 # RolesDashboardsRolesName
 
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.RolesDashboardsRolesNameAdmin
+```
+
 
 ## Values
 
-| Name                             | Value                            |
-| -------------------------------- | -------------------------------- |
-| `RolesDashboardsRolesNameViewer` | Viewer                           |
+| Name                            | Value                           |
+| ------------------------------- | ------------------------------- |
+| `RolesDashboardsRolesNameAdmin` | Admin                           |

@@ -3,8 +3,10 @@
 package components
 
 type NetworksFilterParameters struct {
-	Name  *CloudGatewaysStringFieldFilterOverride `queryParam:"name=name"`
-	State *NetworkStateFieldFilter                `queryParam:"name=state"`
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
+	Name *CloudGatewaysStringFieldFilterOverride `queryParam:"name=name"`
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
+	State *NetworkStateFieldFilter `queryParam:"name=state"`
 }
 
 func (n *NetworksFilterParameters) GetName() *CloudGatewaysStringFieldFilterOverride {

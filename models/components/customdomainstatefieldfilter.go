@@ -17,9 +17,9 @@ const (
 )
 
 type CustomDomainStateFieldFilter struct {
-	CustomDomainStateFieldEqualsFilter     *CustomDomainStateFieldEqualsFilter     `queryParam:"inline,name=CustomDomainStateFieldFilter" union:"member"`
-	CustomDomainStateFieldNotEqualsFilter  *CustomDomainStateFieldNotEqualsFilter  `queryParam:"inline,name=CustomDomainStateFieldFilter" union:"member"`
-	CustomDomainStateFieldOrEqualityFilter *CustomDomainStateFieldOrEqualityFilter `queryParam:"inline,name=CustomDomainStateFieldFilter" union:"member"`
+	CustomDomainStateFieldEqualsFilter     *CustomDomainStateFieldEqualsFilter     `queryParam:"inline" union:"member"`
+	CustomDomainStateFieldNotEqualsFilter  *CustomDomainStateFieldNotEqualsFilter  `queryParam:"inline" union:"member"`
+	CustomDomainStateFieldOrEqualityFilter *CustomDomainStateFieldOrEqualityFilter `queryParam:"inline" union:"member"`
 
 	Type CustomDomainStateFieldFilterType
 }

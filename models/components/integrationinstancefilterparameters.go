@@ -15,7 +15,7 @@ const (
 )
 
 type IntegrationName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type IntegrationNameType
 }
@@ -56,7 +56,7 @@ const (
 )
 
 type IntegrationDisplayName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_display_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type IntegrationDisplayNameType
 }
@@ -98,7 +98,8 @@ type IntegrationInstanceFilterParameters struct {
 	IntegrationName        *IntegrationName        `queryParam:"name=integration.name"`
 	IntegrationDisplayName *IntegrationDisplayName `queryParam:"name=integration.display_name"`
 	// Filter by a boolean value (true/false).
-	Authorized *bool `queryParam:"name=authorized"`
+	Authorized *bool              `queryParam:"name=authorized"`
+	Labels     *LabelsFieldFilter `queryParam:"name=labels"`
 	// Filters on the given datetime (RFC-3339) field value.
 	CreatedAt *DateTimeFieldFilter `queryParam:"name=created_at"`
 	// Filters on the given datetime (RFC-3339) field value.
@@ -138,6 +139,13 @@ func (i *IntegrationInstanceFilterParameters) GetAuthorized() *bool {
 		return nil
 	}
 	return i.Authorized
+}
+
+func (i *IntegrationInstanceFilterParameters) GetLabels() *LabelsFieldFilter {
+	if i == nil {
+		return nil
+	}
+	return i.Labels
 }
 
 func (i *IntegrationInstanceFilterParameters) GetCreatedAt() *DateTimeFieldFilter {

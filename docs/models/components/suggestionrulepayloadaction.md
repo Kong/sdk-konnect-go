@@ -21,3 +21,17 @@ suggestionRulePayloadAction := components.CreateSuggestionRulePayloadActionMapAc
 suggestionRulePayloadAction := components.CreateSuggestionRulePayloadActionCreateOrMapAction(components.CreateOrMapAction{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch suggestionRulePayloadAction.Type {
+	case components.SuggestionRulePayloadActionTypeArchiveActionPayload:
+		// suggestionRulePayloadAction.ArchiveActionPayload is populated
+	case components.SuggestionRulePayloadActionTypeMapActionPayload:
+		// suggestionRulePayloadAction.MapActionPayload is populated
+	case components.SuggestionRulePayloadActionTypeCreateOrMapAction:
+		// suggestionRulePayloadAction.CreateOrMapAction is populated
+}
+```

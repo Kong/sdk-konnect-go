@@ -1,4 +1,7 @@
-# DebugSessions
+# ~~DebugSessions~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 
@@ -6,15 +9,17 @@ Debug Sessions
 
 ### Available Operations
 
-* [ListDebugSessions](#listdebugsessions) - List all debug sessions for a control plane
-* [CreateDebugSession](#createdebugsession) - Create Debug Session
-* [GetDebugSession](#getdebugsession) - Fetch a Debug Session
-* [DeleteDebugSession](#deletedebugsession) - Delete a Debug Session
-* [StopDebugSession](#stopdebugsession) - Stops an active Debug Session
+* [~~ListDebugSessions~~](#listdebugsessions) - List all debug sessions for a control plane :warning: **Deprecated**
+* [~~CreateDebugSession~~](#createdebugsession) - Create Debug Session :warning: **Deprecated**
+* [~~GetDebugSession~~](#getdebugsession) - Fetch a Debug Session :warning: **Deprecated**
+* [~~DeleteDebugSession~~](#deletedebugsession) - Delete a Debug Session :warning: **Deprecated**
+* [~~StopDebugSession~~](#stopdebugsession) - Stops an active Debug Session :warning: **Deprecated**
 
-## ListDebugSessions
+## ~~ListDebugSessions~~
 
 List all debug sessions for a control plane
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -74,9 +79,11 @@ func main() {
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## CreateDebugSession
+## ~~CreateDebugSession~~
 
 Create Debug Session
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -103,8 +110,37 @@ func main() {
     res, err := s.DebugSessions.CreateDebugSession(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.DebugSessionInput{
         MaxSamples: sdkkonnectgo.Pointer[int64](10),
         SamplingRule: sdkkonnectgo.Pointer("http.path == \"/my-path\""),
+        SamplingRate: sdkkonnectgo.Pointer[float64](0.5),
+        CaptureProfile: &components.CaptureProfileInfo{
+            CPU: &components.CPUProfile{
+                Mode: components.CPUProfileModeTime,
+                SamplingInterval: sdkkonnectgo.Pointer[int64](1000),
+            },
+        },
         Targets: []string{
             "5f9fd312-a987-4628-b4c5-bb4f4fddd5f7",
+        },
+        PayloadSanitization: &components.PayloadSanitizationConfig{
+            UserDefinedRules: &components.UserDefinedRules{
+                Headers: []components.HeaderSanitizationRule{
+                    components.HeaderSanitizationRule{
+                        Name: sdkkonnectgo.Pointer("api-key"),
+                        HeaderName: "auth-token",
+                        Scope: []components.SanitizationScope{},
+                    },
+                },
+                Body: []components.BodySanitizationRule{
+                    components.BodySanitizationRule{
+                        Name: sdkkonnectgo.Pointer("user-id"),
+                        Strategy: components.CreateBodySanitizationStrategyRegexStrategy(
+                            components.RegexStrategy{
+                                Regex: "\\d{4}-\\d{4}-\\d{4}-\\d{4}",
+                            },
+                        ),
+                        Scope: []components.SanitizationScope{},
+                    },
+                },
+            },
         },
     })
     if err != nil {
@@ -121,7 +157,7 @@ func main() {
 | Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `controlPlaneID`                                                                   | *string*                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
+| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
 | `debugSession`                                                                     | [components.DebugSessionInput](../../models/components/debugsessioninput.md)       | :heavy_check_mark:                                                                 | N/A                                                                                |                                                                                    |
 | `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
 
@@ -139,9 +175,11 @@ func main() {
 | sdkerrors.UnsupportedMediaTypeError | 415                                 | application/problem+json            |
 | sdkerrors.SDKError                  | 4XX, 5XX                            | \*/\*                               |
 
-## GetDebugSession
+## ~~GetDebugSession~~
 
 Returns a Debug Session
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -180,8 +218,8 @@ func main() {
 | Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `controlPlaneID`                                                                   | *string*                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `debugSessionID`                                                                   | *string*                                                                           | :heavy_check_mark:                                                                 | Debug Session identifier                                                           | d32d905a-ed33-46a3-a093-d8f536af9a8a                                               |
+| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
+| `debugSessionID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | Debug Session identifier                                                           | d32d905a-ed33-46a3-a093-d8f536af9a8a                                               |
 | `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
 
 ### Response
@@ -196,9 +234,11 @@ func main() {
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## DeleteDebugSession
+## ~~DeleteDebugSession~~
 
 Deletes a Debug Session
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -237,8 +277,8 @@ func main() {
 | Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `controlPlaneID`                                                                   | *string*                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `debugSessionID`                                                                   | *string*                                                                           | :heavy_check_mark:                                                                 | Debug Session identifier                                                           | d32d905a-ed33-46a3-a093-d8f536af9a8a                                               |
+| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
+| `debugSessionID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | Debug Session identifier                                                           | d32d905a-ed33-46a3-a093-d8f536af9a8a                                               |
 | `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
 
 ### Response
@@ -253,9 +293,11 @@ func main() {
 | sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
-## StopDebugSession
+## ~~StopDebugSession~~
 
 Stops an active Debug Session
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -294,8 +336,8 @@ func main() {
 | Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `controlPlaneID`                                                                   | *string*                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
-| `debugSessionID`                                                                   | *string*                                                                           | :heavy_check_mark:                                                                 | Debug Session identifier                                                           | d32d905a-ed33-46a3-a093-d8f536af9a8a                                               |
+| `controlPlaneID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | The UUID of your control plane. This variable is available in the Konnect manager. | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                               |
+| `debugSessionID`                                                                   | `string`                                                                           | :heavy_check_mark:                                                                 | Debug Session identifier                                                           | d32d905a-ed33-46a3-a093-d8f536af9a8a                                               |
 | `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
 
 ### Response

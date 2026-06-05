@@ -5,9 +5,19 @@ Configuration for creating different types of add-ons.
 
 ## Supported Types
 
-### CreateManagedCacheAddOnConfig
+### ManagedCache
 
 ```go
-createAddOnConfig := components.CreateCreateAddOnConfigCreateManagedCacheAddOnConfig(components.CreateManagedCacheAddOnConfig{/* values here */})
+createAddOnConfig := components.CreateCreateAddOnConfigManagedCache(components.ManagedCache{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch createAddOnConfig.Type {
+	case components.CreateAddOnConfigTypeManagedCache:
+		// createAddOnConfig.ManagedCache is populated
+}
+```

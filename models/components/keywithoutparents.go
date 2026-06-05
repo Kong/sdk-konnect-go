@@ -46,6 +46,8 @@ type KeyWithoutParents struct {
 	Jwk *string `json:"jwk,omitempty"`
 	// A unique identifier for a key.
 	Kid string `json:"kid"`
+	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
+	ManagedBy map[string]any `json:"managed_by,omitempty"`
 	// The name to associate with the given keys.
 	Name *string `json:"name,omitempty"`
 	// A keypair in PEM format.
@@ -93,6 +95,13 @@ func (k *KeyWithoutParents) GetKid() string {
 		return ""
 	}
 	return k.Kid
+}
+
+func (k *KeyWithoutParents) GetManagedBy() map[string]any {
+	if k == nil {
+		return nil
+	}
+	return k.ManagedBy
 }
 
 func (k *KeyWithoutParents) GetName() *string {

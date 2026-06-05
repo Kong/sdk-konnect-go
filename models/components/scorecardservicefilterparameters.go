@@ -18,14 +18,13 @@ const (
 
 // ScorecardServiceFilterParametersCustomFields - Filter by custom fields using dot-notation to specify the custom field.
 // Filter operators are dictated by the custom field type. For example:
-//
 //   - `filter[custom_fields.owner]`
 //   - `filter[custom_fields.owner][neq]=kong`
 //   - `filter[custom_fields.dashboard.link][contains]=https`
 type ScorecardServiceFilterParametersCustomFields struct {
-	StringFieldFilter  *StringFieldFilter  `queryParam:"inline,name=custom_fields" union:"member"`
-	Boolean            *bool               `queryParam:"inline,name=custom_fields" union:"member"`
-	NumericFieldFilter *NumericFieldFilter `queryParam:"inline,name=custom_fields" union:"member"`
+	StringFieldFilter  *StringFieldFilter  `queryParam:"inline" union:"member"`
+	Boolean            *bool               `queryParam:"inline" union:"member"`
+	NumericFieldFilter *NumericFieldFilter `queryParam:"inline" union:"member"`
 
 	Type ScorecardServiceFilterParametersCustomFieldsType
 }
@@ -106,7 +105,7 @@ const (
 )
 
 type ScorecardServiceFilterParametersScoreValue struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=score_value" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type ScorecardServiceFilterParametersScoreValueType
 }
@@ -147,7 +146,7 @@ const (
 )
 
 type ScorecardServiceFilterParametersScoreRawValue struct {
-	NumericFieldFilter *NumericFieldFilter `queryParam:"inline,name=score_raw_value" union:"member"`
+	NumericFieldFilter *NumericFieldFilter `queryParam:"inline" union:"member"`
 
 	Type ScorecardServiceFilterParametersScoreRawValueType
 }
@@ -190,10 +189,6 @@ type ScorecardServiceFilterParameters struct {
 	DisplayName *StringFieldFilter `queryParam:"name=display_name"`
 	// Filter by custom fields using dot-notation to specify the custom field.
 	// Filter operators are dictated by the custom field type. For example:
-	//
-	//
-	//
-	//
 	//   - `filter[custom_fields.owner]`
 	//   - `filter[custom_fields.owner][neq]=kong`
 	//   - `filter[custom_fields.dashboard.link][contains]=https`

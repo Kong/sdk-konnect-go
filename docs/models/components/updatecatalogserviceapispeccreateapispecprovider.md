@@ -32,3 +32,19 @@ updateCatalogServiceAPISpecCreateAPISpecProvider := components.CreateUpdateCatal
 updateCatalogServiceAPISpecCreateAPISpecProvider := components.CreateUpdateCatalogServiceAPISpecCreateAPISpecProviderResourceBoundIntegrationAPISpecProviderPayload(components.ResourceBoundIntegrationAPISpecProviderPayload{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch updateCatalogServiceAPISpecCreateAPISpecProvider.Type {
+	case components.UpdateCatalogServiceAPISpecCreateAPISpecProviderTypeURLAPISpecProvider:
+		// updateCatalogServiceAPISpecCreateAPISpecProvider.URLAPISpecProvider is populated
+	case components.UpdateCatalogServiceAPISpecCreateAPISpecProviderTypeRawAPISpecProviderPayload:
+		// updateCatalogServiceAPISpecCreateAPISpecProvider.RawAPISpecProviderPayload is populated
+	case components.UpdateCatalogServiceAPISpecCreateAPISpecProviderTypeIntegrationAPISpecProviderPayload:
+		// updateCatalogServiceAPISpecCreateAPISpecProvider.IntegrationAPISpecProviderPayload is populated
+	case components.UpdateCatalogServiceAPISpecCreateAPISpecProviderTypeResourceBoundIntegrationAPISpecProviderPayload:
+		// updateCatalogServiceAPISpecCreateAPISpecProvider.ResourceBoundIntegrationAPISpecProviderPayload is populated
+}
+```

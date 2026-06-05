@@ -6,6 +6,8 @@ package components
 type DataPlaneClientCertificateRequest struct {
 	// JSON escaped string of the certificate.
 	Cert string `json:"cert"`
+	// Title for the certificate.
+	Title *string `json:"title,omitempty"`
 }
 
 func (d *DataPlaneClientCertificateRequest) GetCert() string {
@@ -13,4 +15,11 @@ func (d *DataPlaneClientCertificateRequest) GetCert() string {
 		return ""
 	}
 	return d.Cert
+}
+
+func (d *DataPlaneClientCertificateRequest) GetTitle() *string {
+	if d == nil {
+		return nil
+	}
+	return d.Title
 }

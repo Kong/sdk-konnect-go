@@ -21,3 +21,17 @@ addOnStateFieldFilter := components.CreateAddOnStateFieldFilterAddOnStateFieldNo
 addOnStateFieldFilter := components.CreateAddOnStateFieldFilterAddOnStateFieldOrEqualityFilter(components.AddOnStateFieldOrEqualityFilter{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch addOnStateFieldFilter.Type {
+	case components.AddOnStateFieldFilterTypeAddOnStateFieldEqualsFilter:
+		// addOnStateFieldFilter.AddOnStateFieldEqualsFilter is populated
+	case components.AddOnStateFieldFilterTypeAddOnStateFieldNotEqualsFilter:
+		// addOnStateFieldFilter.AddOnStateFieldNotEqualsFilter is populated
+	case components.AddOnStateFieldFilterTypeAddOnStateFieldOrEqualityFilter:
+		// addOnStateFieldFilter.AddOnStateFieldOrEqualityFilter is populated
+}
+```

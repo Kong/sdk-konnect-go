@@ -15,11 +15,12 @@ APIs related to configuration of Konnect Developer Portal auth settings.
 * [GetPortalIdentityProvider](#getportalidentityprovider) - Get Identity Provider
 * [UpdatePortalIdentityProvider](#updateportalidentityprovider) - Update Identity Provider
 * [DeletePortalIdentityProvider](#deleteportalidentityprovider) - Delete Identity Provider
+* [ListPortalIdpTeamGroupMappings](#listportalidpteamgroupmappings) - List Team Group Mappings
+* [CreatePortalIdpTeamGroupMapping](#createportalidpteamgroupmapping) - Create Team Group Mapping
+* [GetPortalIdpTeamGroupMapping](#getportalidpteamgroupmapping) - Get Team Group Mapping
+* [DeletePortalIdpTeamGroupMapping](#deleteportalidpteamgroupmapping) - Delete Team Group Mapping
 
 ## GetPortalAuthenticationSettings
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Returns the developer authentication configuration for a portal, which determines how developers can log in and how they are assigned to teams.
 
@@ -60,7 +61,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `portalID`                                               | *string*                                                 | :heavy_check_mark:                                       | ID of the portal.                                        | f32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `portalID`                                               | `string`                                                 | :heavy_check_mark:                                       | ID of the portal.                                        | f32d905a-ed33-46a3-a093-d8f536af9a8a                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -75,9 +76,6 @@ func main() {
 | sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## UpdatePortalAuthenticationSettings
-
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
 
 Updates the developer authentication configuration for a portal. Developers can be allowed to login using basic auth (email & password) or use Single-Sign-On through an Identity Provider. Developers can be automatically assigned to teams by mapping claims from their IdP account.
 
@@ -133,7 +131,7 @@ func main() {
 | Parameter                                                                                                                                                                                                                                                                                                                                                                | Type                                                                                                                                                                                                                                                                                                                                                                     | Required                                                                                                                                                                                                                                                                                                                                                                 | Description                                                                                                                                                                                                                                                                                                                                                              | Example                                                                                                                                                                                                                                                                                                                                                                  |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `ctx`                                                                                                                                                                                                                                                                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                                                                                                                                                                                                                    | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                       | The context to use for the request.                                                                                                                                                                                                                                                                                                                                      |                                                                                                                                                                                                                                                                                                                                                                          |
-| `portalID`                                                                                                                                                                                                                                                                                                                                                               | *string*                                                                                                                                                                                                                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                       | ID of the portal.                                                                                                                                                                                                                                                                                                                                                        | f32d905a-ed33-46a3-a093-d8f536af9a8a                                                                                                                                                                                                                                                                                                                                     |
+| `portalID`                                                                                                                                                                                                                                                                                                                                                               | `string`                                                                                                                                                                                                                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                       | ID of the portal.                                                                                                                                                                                                                                                                                                                                                        | f32d905a-ed33-46a3-a093-d8f536af9a8a                                                                                                                                                                                                                                                                                                                                     |
 | `portalAuthenticationSettingsUpdateRequest`                                                                                                                                                                                                                                                                                                                              | [*components.PortalAuthenticationSettingsUpdateRequest](../../models/components/portalauthenticationsettingsupdaterequest.md)                                                                                                                                                                                                                                            | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                       | Update a portal's developer authentication settings.                                                                                                                                                                                                                                                                                                                     | {<br/>"basic_auth_enabled": true,<br/>"oidc_auth_enabled": true,<br/>"oidc_team_mapping_enabled": true,<br/>"konnect_mapping_enabled": false,<br/>"oidc_issuer": "https://identity.example.com/v2",<br/>"oidc_client_id": "x7id0o42lklas0blidl2",<br/>"oidc_scopes": [<br/>"email",<br/>"openid",<br/>"profile"<br/>],<br/>"oidc_claim_mappings": {<br/>"name": "name",<br/>"email": "email",<br/>"groups": "custom-group-claim"<br/>}<br/>} |
 | `opts`                                                                                                                                                                                                                                                                                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                                                                                                                                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                                                                                                                                                                                                                       | The options for this request.                                                                                                                                                                                                                                                                                                                                            |                                                                                                                                                                                                                                                                                                                                                                          |
 
@@ -269,7 +267,7 @@ func main() {
 | Parameter                                                                                                           | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         | Example                                                                                                             |
 | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                               | [context.Context](https://pkg.go.dev/context#Context)                                                               | :heavy_check_mark:                                                                                                  | The context to use for the request.                                                                                 |                                                                                                                     |
-| `portalID`                                                                                                          | *string*                                                                                                            | :heavy_check_mark:                                                                                                  | ID of the portal.                                                                                                   | f32d905a-ed33-46a3-a093-d8f536af9a8a                                                                                |
+| `portalID`                                                                                                          | `string`                                                                                                            | :heavy_check_mark:                                                                                                  | ID of the portal.                                                                                                   | f32d905a-ed33-46a3-a093-d8f536af9a8a                                                                                |
 | `portalTeamGroupMappingsUpdateRequest`                                                                              | [*components.PortalTeamGroupMappingsUpdateRequest](../../models/components/portalteamgroupmappingsupdaterequest.md) | :heavy_minus_sign:                                                                                                  | N/A                                                                                                                 | {<br/>"data": [<br/>{<br/>"team_id": "af91db4c-6e51-403e-a2bf-33d27ae50c0a",<br/>"groups": [<br/>"Service Developer"<br/>]<br/>}<br/>]<br/>} |
 | `opts`                                                                                                              | [][operations.Option](../../models/operations/option.md)                                                            | :heavy_minus_sign:                                                                                                  | The options for this request.                                                                                       |                                                                                                                     |
 
@@ -288,11 +286,9 @@ func main() {
 
 ## GetPortalIdentityProviders
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Retrieves the identity providers available within the portal. This operation provides information about
 various identity providers for SAML or OIDC authentication integrations.
+
 
 ### Example Usage
 
@@ -320,7 +316,7 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.IdentityProviders != nil {
+    if res.PortalIdentityProviders != nil {
         // handle response
     }
 }
@@ -331,7 +327,7 @@ func main() {
 | Parameter                                                                                                                       | Type                                                                                                                            | Required                                                                                                                        | Description                                                                                                                     | Example                                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                                           | [context.Context](https://pkg.go.dev/context#Context)                                                                           | :heavy_check_mark:                                                                                                              | The context to use for the request.                                                                                             |                                                                                                                                 |
-| `portalID`                                                                                                                      | *string*                                                                                                                        | :heavy_check_mark:                                                                                                              | ID of the portal.                                                                                                               | f32d905a-ed33-46a3-a093-d8f536af9a8a                                                                                            |
+| `portalID`                                                                                                                      | `string`                                                                                                                        | :heavy_check_mark:                                                                                                              | ID of the portal.                                                                                                               | f32d905a-ed33-46a3-a093-d8f536af9a8a                                                                                            |
 | `filter`                                                                                                                        | [*operations.GetPortalIdentityProvidersQueryParamFilter](../../models/operations/getportalidentityprovidersqueryparamfilter.md) | :heavy_minus_sign:                                                                                                              | Filter identity providers returned in the response.                                                                             |                                                                                                                                 |
 | `opts`                                                                                                                          | [][operations.Option](../../models/operations/option.md)                                                                        | :heavy_minus_sign:                                                                                                              | The options for this request.                                                                                                   |                                                                                                                                 |
 
@@ -349,11 +345,9 @@ func main() {
 
 ## CreatePortalIdentityProvider
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Creates a new identity provider. This operation allows the creation of a new identity provider for
 authentication purposes.
+
 
 ### Example Usage
 
@@ -377,26 +371,27 @@ func main() {
         }),
     )
 
-    res, err := s.PortalAuthSettings.CreatePortalIdentityProvider(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.CreateIdentityProvider{
-        Type: components.IdentityProviderTypeOidc.ToPointer(),
-        LoginPath: sdkkonnectgo.Pointer("myapp"),
+    res, err := s.PortalAuthSettings.CreatePortalIdentityProvider(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", components.PortalCreateIdentityProvider{
         Enabled: sdkkonnectgo.Pointer(true),
-        Config: sdkkonnectgo.Pointer(components.CreateCreateIdentityProviderConfigSAMLIdentityProviderConfigInput(
-            components.SAMLIdentityProviderConfigInput{
+        Type: components.IdentityProviderTypeOidc.ToPointer(),
+        Config: sdkkonnectgo.Pointer(components.CreatePortalCreateIdentityProviderConfigPortalSAMLIdentityProviderConfigInput(
+            components.PortalSAMLIdentityProviderConfigInput{
                 IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
-                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                "<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n" +
-                "  <!-- SAML metadata content here -->\n" +
-                "</EntityDescriptor>\n" +
-                ""),
+                IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
             },
         )),
     })
     if err != nil {
         log.Fatal(err)
     }
-    if res.IdentityProvider != nil {
-        // handle response
+    if res.PortalIdentityProvider != nil {
+        switch res.PortalIdentityProvider.Config.Type {
+            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
+                // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -406,8 +401,8 @@ func main() {
 | Parameter                                                                                                                                                      | Type                                                                                                                                                           | Required                                                                                                                                                       | Description                                                                                                                                                    | Example                                                                                                                                                        |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                                                                          | :heavy_check_mark:                                                                                                                                             | The context to use for the request.                                                                                                                            |                                                                                                                                                                |
-| `portalID`                                                                                                                                                     | *string*                                                                                                                                                       | :heavy_check_mark:                                                                                                                                             | ID of the portal.                                                                                                                                              | f32d905a-ed33-46a3-a093-d8f536af9a8a                                                                                                                           |
-| `createIdentityProvider`                                                                                                                                       | [components.CreateIdentityProvider](../../models/components/createidentityprovider.md)                                                                         | :heavy_check_mark:                                                                                                                                             | An object representing the configuration for creating a new identity provider. This configuration may pertain  to either an OIDC or a SAML identity provider.<br/> |                                                                                                                                                                |
+| `portalID`                                                                                                                                                     | `string`                                                                                                                                                       | :heavy_check_mark:                                                                                                                                             | ID of the portal.                                                                                                                                              | f32d905a-ed33-46a3-a093-d8f536af9a8a                                                                                                                           |
+| `portalCreateIdentityProvider`                                                                                                                                 | [components.PortalCreateIdentityProvider](../../models/components/portalcreateidentityprovider.md)                                                             | :heavy_check_mark:                                                                                                                                             | An object representing the configuration for creating a new identity provider. This configuration may pertain  to either an OIDC or a SAML identity provider.<br/> |                                                                                                                                                                |
 | `opts`                                                                                                                                                         | [][operations.Option](../../models/operations/option.md)                                                                                                       | :heavy_minus_sign:                                                                                                                                             | The options for this request.                                                                                                                                  |                                                                                                                                                                |
 
 ### Response
@@ -426,11 +421,9 @@ func main() {
 
 ## GetPortalIdentityProvider
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Retrieves the configuration of a single identity provider. This operation returns information about a
 specific identity provider's settings and authentication integration details.
+
 
 ### Example Usage
 
@@ -458,8 +451,14 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.IdentityProvider != nil {
-        // handle response
+    if res.PortalIdentityProvider != nil {
+        switch res.PortalIdentityProvider.Config.Type {
+            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
+                // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -469,8 +468,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `portalID`                                               | *string*                                                 | :heavy_check_mark:                                       | ID of the portal.                                        | f32d905a-ed33-46a3-a093-d8f536af9a8a                     |
-| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | ID of the identity provider.                             | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `portalID`                                               | `string`                                                 | :heavy_check_mark:                                       | ID of the portal.                                        | f32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `id`                                                     | `string`                                                 | :heavy_check_mark:                                       | ID of the identity provider.                             | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -489,11 +488,9 @@ func main() {
 
 ## UpdatePortalIdentityProvider
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Updates the configuration of an existing identity provider. This operation allows modifications to be made
 to an existing identity provider's configuration.
+
 
 ### Example Usage
 
@@ -521,17 +518,12 @@ func main() {
     res, err := s.PortalAuthSettings.UpdatePortalIdentityProvider(ctx, operations.UpdatePortalIdentityProviderRequest{
         PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
         ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
-        UpdateIdentityProvider: components.UpdateIdentityProvider{
+        PortalUpdateIdentityProvider: components.PortalUpdateIdentityProvider{
             Enabled: sdkkonnectgo.Pointer(true),
-            LoginPath: sdkkonnectgo.Pointer("myapp"),
-            Config: sdkkonnectgo.Pointer(components.CreateUpdateIdentityProviderConfigSAMLIdentityProviderConfigInput(
-                components.SAMLIdentityProviderConfigInput{
+            Config: sdkkonnectgo.Pointer(components.CreatePortalUpdateIdentityProviderConfigPortalSAMLIdentityProviderConfigInput(
+                components.PortalSAMLIdentityProviderConfigInput{
                     IdpMetadataURL: sdkkonnectgo.Pointer("https://mocksaml.com/api/saml/metadata"),
-                    IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                    "<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n" +
-                    "  <!-- SAML metadata content here -->\n" +
-                    "</EntityDescriptor>\n" +
-                    ""),
+                    IdpMetadataXML: sdkkonnectgo.Pointer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\">\n  <!-- SAML metadata content here -->\n</EntityDescriptor>\n"),
                 },
             )),
         },
@@ -539,8 +531,14 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-    if res.IdentityProvider != nil {
-        // handle response
+    if res.PortalIdentityProvider != nil {
+        switch res.PortalIdentityProvider.Config.Type {
+            case components.PortalIdentityProviderConfigTypeOIDCIdentityProviderConfigOutput:
+                // res.PortalIdentityProvider.Config.OIDCIdentityProviderConfigOutput is populated
+            case components.PortalIdentityProviderConfigTypePortalSAMLIdentityProviderConfig:
+                // res.PortalIdentityProvider.Config.PortalSAMLIdentityProviderConfig is populated
+        }
+
     }
 }
 ```
@@ -570,11 +568,9 @@ func main() {
 
 ## DeletePortalIdentityProvider
 
-**Pre-release Endpoint**
-This endpoint is currently in beta and is subject to change.
-
 Deletes an existing identity provider configuration. This operation removes a specific identity provider
 from the portal.
+
 
 ### Example Usage
 
@@ -613,13 +609,275 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `portalID`                                               | *string*                                                 | :heavy_check_mark:                                       | ID of the portal.                                        | f32d905a-ed33-46a3-a093-d8f536af9a8a                     |
-| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | ID of the identity provider.                             | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `portalID`                                               | `string`                                                 | :heavy_check_mark:                                       | ID of the portal.                                        | f32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `id`                                                     | `string`                                                 | :heavy_check_mark:                                       | ID of the identity provider.                             | d32d905a-ed33-46a3-a093-d8f536af9a8a                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
 
 **[*operations.DeletePortalIdentityProviderResponse](../../models/operations/deleteportalidentityproviderresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## ListPortalIdpTeamGroupMappings
+
+Returns a paginated list of team group mappings for the specified identity provider.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-portal-idp-team-group-mappings" method="get" path="/v3/portals/{portalId}/identity-providers/{id}/team-group-mappings" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalAuthSettings.ListPortalIdpTeamGroupMappings(ctx, operations.ListPortalIdpTeamGroupMappingsRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        PageSize: sdkkonnectgo.Pointer[int64](10),
+        PageAfter: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
+        PageBefore: sdkkonnectgo.Pointer("ewogICJpZCI6ICJoZWxsbyB3b3JsZCIKfQ"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalIdpTeamGroupMappingCollectionResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                | :heavy_check_mark:                                                                                                   | The context to use for the request.                                                                                  |
+| `request`                                                                                                            | [operations.ListPortalIdpTeamGroupMappingsRequest](../../models/operations/listportalidpteamgroupmappingsrequest.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
+| `opts`                                                                                                               | [][operations.Option](../../models/operations/option.md)                                                             | :heavy_minus_sign:                                                                                                   | The options for this request.                                                                                        |
+
+### Response
+
+**[*operations.ListPortalIdpTeamGroupMappingsResponse](../../models/operations/listportalidpteamgroupmappingsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## CreatePortalIdpTeamGroupMapping
+
+Creates a new team group mapping for the specified identity provider.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="create-portal-idp-team-group-mapping" method="post" path="/v3/portals/{portalId}/identity-providers/{id}/team-group-mappings" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalAuthSettings.CreatePortalIdpTeamGroupMapping(ctx, operations.CreatePortalIdpTeamGroupMappingRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        CreatePortalIdpTeamGroupMappingRequest: components.CreatePortalIdpTeamGroupMappingRequest{
+            TeamID: "6801e673-cc10-498a-94cd-4271de07a0d3",
+            Group: "API Engineers",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalIdpTeamGroupMapping != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                                  | :heavy_check_mark:                                                                                                     | The context to use for the request.                                                                                    |
+| `request`                                                                                                              | [operations.CreatePortalIdpTeamGroupMappingRequest](../../models/operations/createportalidpteamgroupmappingrequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
+| `opts`                                                                                                                 | [][operations.Option](../../models/operations/option.md)                                                               | :heavy_minus_sign:                                                                                                     | The options for this request.                                                                                          |
+
+### Response
+
+**[*operations.CreatePortalIdpTeamGroupMappingResponse](../../models/operations/createportalidpteamgroupmappingresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.ConflictError     | 409                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetPortalIdpTeamGroupMapping
+
+Returns the team group mapping for the specified ID.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-portal-idp-team-group-mapping" method="get" path="/v3/portals/{portalId}/identity-providers/{id}/team-group-mappings/{mappingId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalAuthSettings.GetPortalIdpTeamGroupMapping(ctx, operations.GetPortalIdpTeamGroupMappingRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        MappingID: "56c235bd-3352-46d8-9883-d32c2d0f5e91",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.PortalIdpTeamGroupMapping != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                            | :heavy_check_mark:                                                                                               | The context to use for the request.                                                                              |
+| `request`                                                                                                        | [operations.GetPortalIdpTeamGroupMappingRequest](../../models/operations/getportalidpteamgroupmappingrequest.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
+| `opts`                                                                                                           | [][operations.Option](../../models/operations/option.md)                                                         | :heavy_minus_sign:                                                                                               | The options for this request.                                                                                    |
+
+### Response
+
+**[*operations.GetPortalIdpTeamGroupMappingResponse](../../models/operations/getportalidpteamgroupmappingresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## DeletePortalIdpTeamGroupMapping
+
+Deletes a team group mapping by ID.
+Returns 204 if the mapping was deleted, or 404 if the mapping was not found.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="delete-portal-idp-team-group-mapping" method="delete" path="/v3/portals/{portalId}/identity-providers/{id}/team-group-mappings/{mappingId}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalAuthSettings.DeletePortalIdpTeamGroupMapping(ctx, operations.DeletePortalIdpTeamGroupMappingRequest{
+        PortalID: "f32d905a-ed33-46a3-a093-d8f536af9a8a",
+        ID: "d32d905a-ed33-46a3-a093-d8f536af9a8a",
+        MappingID: "5b5e1891-c25e-4cee-989c-f6b017b178a5",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                                  | :heavy_check_mark:                                                                                                     | The context to use for the request.                                                                                    |
+| `request`                                                                                                              | [operations.DeletePortalIdpTeamGroupMappingRequest](../../models/operations/deleteportalidpteamgroupmappingrequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
+| `opts`                                                                                                                 | [][operations.Option](../../models/operations/option.md)                                                               | :heavy_minus_sign:                                                                                                     | The options for this request.                                                                                          |
+
+### Response
+
+**[*operations.DeletePortalIdpTeamGroupMappingResponse](../../models/operations/deleteportalidpteamgroupmappingresponse.md), error**
 
 ### Errors
 

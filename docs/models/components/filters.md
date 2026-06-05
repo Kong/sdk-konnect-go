@@ -63,3 +63,31 @@ filters := components.CreateFiltersVulnerabilitiesMetricsFilterByPackageName(com
 filters := components.CreateFiltersVulnerabilitiesMetricsFilterByScanAttributes(components.VulnerabilitiesMetricsFilterByScanAttributes{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch filters.Type {
+	case components.FiltersTypeVulnerabilitiesMetricsFilterByService:
+		// filters.VulnerabilitiesMetricsFilterByService is populated
+	case components.FiltersTypeVulnerabilitiesMetricsFilterBySeverity:
+		// filters.VulnerabilitiesMetricsFilterBySeverity is populated
+	case components.FiltersTypeVulnerabilitiesMetricsFilterByState:
+		// filters.VulnerabilitiesMetricsFilterByState is populated
+	case components.FiltersTypeVulnerabilitiesMetricsFilterByType:
+		// filters.VulnerabilitiesMetricsFilterByType is populated
+	case components.FiltersTypeVulnerabilitiesMetricsFilterBySource:
+		// filters.VulnerabilitiesMetricsFilterBySource is populated
+	case components.FiltersTypeVulnerabilitiesMetricsFilterByEnvironment:
+		// filters.VulnerabilitiesMetricsFilterByEnvironment is populated
+	case components.FiltersTypeVulnerabilitiesMetricsFilterByRegion:
+		// filters.VulnerabilitiesMetricsFilterByRegion is populated
+	case components.FiltersTypeVulnerabilitiesMetricsFilterByCVE:
+		// filters.VulnerabilitiesMetricsFilterByCVE is populated
+	case components.FiltersTypeVulnerabilitiesMetricsFilterByPackageName:
+		// filters.VulnerabilitiesMetricsFilterByPackageName is populated
+	case components.FiltersTypeVulnerabilitiesMetricsFilterByScanAttributes:
+		// filters.VulnerabilitiesMetricsFilterByScanAttributes is populated
+}
+```

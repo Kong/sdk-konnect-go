@@ -1,5 +1,18 @@
 # EntityTypes
 
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.EntityTypesBillingInvoice
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.EntityTypes("custom_value")
+```
+
 
 ## Values
 
@@ -13,3 +26,5 @@
 | `EntityTypesRegionalEventEntity` | regional-event-entity            |
 | `EntityTypesDataplane`           | dataplane                        |
 | `EntityTypesAlertingEvents`      | alerting-events                  |
+| `EntityTypesKaiEnablement`       | kai-enablement                   |
+| `EntityTypesEnterpriseTrial`     | enterprise-trial                 |

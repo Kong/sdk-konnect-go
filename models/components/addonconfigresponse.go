@@ -16,7 +16,7 @@ const (
 
 // AddOnConfigResponse - Configuration object for different types of add-ons.
 type AddOnConfigResponse struct {
-	ManagedCacheAddOnConfigResponse *ManagedCacheAddOnConfigResponse `queryParam:"inline,name=AddOnConfigResponse" union:"member"`
+	ManagedCacheAddOnConfigResponse *ManagedCacheAddOnConfigResponse `queryParam:"inline" union:"member"`
 
 	Type AddOnConfigResponseType
 }

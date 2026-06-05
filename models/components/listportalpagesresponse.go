@@ -2,7 +2,7 @@
 
 package components
 
-// ListPortalPagesResponse - A paginated list of custom pages in a portal.
+// ListPortalPagesResponse - Tree of custom pages in a portal. Not paginated.
 type ListPortalPagesResponse struct {
 	Data []PortalPageInfo `json:"data"`
 }

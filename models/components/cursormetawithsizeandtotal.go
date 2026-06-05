@@ -8,7 +8,7 @@ type CursorMetaWithSizeAndTotal struct {
 	// Requested page size
 	Size float64 `json:"size"`
 	// Total number of objects in the collection; will only be present on the first page
-	Total *float64 `json:"total"`
+	Total *float64 `json:"total,omitempty"`
 }
 
 func (c *CursorMetaWithSizeAndTotal) GetNext() *string {

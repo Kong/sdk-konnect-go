@@ -68,10 +68,12 @@ type JWTWithoutParents struct {
 	// User-defined entity description. Konnect only field, not synced to the Gateway.
 	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
-	ID           *string `json:"id,omitempty"`
-	Key          *string `json:"key,omitempty"`
-	RsaPublicKey *string `json:"rsa_public_key,omitempty"`
-	Secret       *string `json:"secret,omitempty"`
+	ID  *string `json:"id,omitempty"`
+	Key *string `json:"key,omitempty"`
+	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
+	ManagedBy    map[string]any `json:"managed_by,omitempty"`
+	RsaPublicKey *string        `json:"rsa_public_key,omitempty"`
+	Secret       *string        `json:"secret,omitempty"`
 	// A set of strings representing tags.
 	Tags []string `json:"tags,omitempty"`
 }
@@ -127,6 +129,13 @@ func (j *JWTWithoutParents) GetKey() *string {
 		return nil
 	}
 	return j.Key
+}
+
+func (j *JWTWithoutParents) GetManagedBy() map[string]any {
+	if j == nil {
+		return nil
+	}
+	return j.ManagedBy
 }
 
 func (j *JWTWithoutParents) GetRsaPublicKey() *string {

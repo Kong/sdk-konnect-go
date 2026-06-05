@@ -5,8 +5,6 @@ package components
 type CatalogServiceAPIMappingFilterParameters struct {
 	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	APIID *UUIDFieldFilter `queryParam:"name=api_id"`
-	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
-	ID *UUIDFieldFilter `queryParam:"name=id"`
 }
 
 func (c *CatalogServiceAPIMappingFilterParameters) GetAPIID() *UUIDFieldFilter {
@@ -14,11 +12,4 @@ func (c *CatalogServiceAPIMappingFilterParameters) GetAPIID() *UUIDFieldFilter {
 		return nil
 	}
 	return c.APIID
-}
-
-func (c *CatalogServiceAPIMappingFilterParameters) GetID() *UUIDFieldFilter {
-	if c == nil {
-		return nil
-	}
-	return c.ID
 }

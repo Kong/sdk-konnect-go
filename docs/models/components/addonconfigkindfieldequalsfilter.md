@@ -17,3 +17,15 @@ addOnConfigKindFieldEqualsFilter := components.CreateAddOnConfigKindFieldEqualsF
 addOnConfigKindFieldEqualsFilter := components.CreateAddOnConfigKindFieldEqualsFilterAddOnConfigKindFieldEqualsComparison(components.AddOnConfigKindFieldEqualsComparison{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch addOnConfigKindFieldEqualsFilter.Type {
+	case components.AddOnConfigKindFieldEqualsFilterTypeAddOnConfigKind:
+		// addOnConfigKindFieldEqualsFilter.AddOnConfigKind is populated
+	case components.AddOnConfigKindFieldEqualsFilterTypeAddOnConfigKindFieldEqualsComparison:
+		// addOnConfigKindFieldEqualsFilter.AddOnConfigKindFieldEqualsComparison is populated
+}
+```

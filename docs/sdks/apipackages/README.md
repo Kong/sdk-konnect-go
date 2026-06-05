@@ -119,11 +119,6 @@ func main() {
         Labels: map[string]string{
             "env": "test",
         },
-        Images: &components.Images{
-            Icon: &components.Icon{
-                URL: sdkkonnectgo.Pointer("https://example.com/icon.png"),
-            },
-        },
     })
     if err != nil {
         log.Fatal(err)
@@ -197,7 +192,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `packageID`                                              | *string*                                                 | :heavy_check_mark:                                       | The UUID API Package identifier                          | 9f5061ce-78f6-4452-9108-ad7c02821fd5                     |
+| `packageID`                                              | `string`                                                 | :heavy_check_mark:                                       | The UUID API Package identifier                          | 9f5061ce-78f6-4452-9108-ad7c02821fd5                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -247,11 +242,6 @@ func main() {
         Labels: map[string]*string{
             "env": sdkkonnectgo.Pointer("test"),
         },
-        Images: &components.Images{
-            Icon: &components.Icon{
-                URL: sdkkonnectgo.Pointer("https://example.com/icon.png"),
-            },
-        },
     })
     if err != nil {
         log.Fatal(err)
@@ -267,7 +257,7 @@ func main() {
 | Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              | Example                                                                                  |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |                                                                                          |
-| `packageID`                                                                              | *string*                                                                                 | :heavy_check_mark:                                                                       | The UUID API Package identifier                                                          | 9f5061ce-78f6-4452-9108-ad7c02821fd5                                                     |
+| `packageID`                                                                              | `string`                                                                                 | :heavy_check_mark:                                                                       | The UUID API Package identifier                                                          | 9f5061ce-78f6-4452-9108-ad7c02821fd5                                                     |
 | `updateAPIPackageRequest`                                                                | [components.UpdateAPIPackageRequest](../../models/components/updateapipackagerequest.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |                                                                                          |
 | `opts`                                                                                   | [][operations.Option](../../models/operations/option.md)                                 | :heavy_minus_sign:                                                                       | The options for this request.                                                            |                                                                                          |
 
@@ -325,7 +315,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `packageID`                                              | *string*                                                 | :heavy_check_mark:                                       | The UUID API Package identifier                          | 9f5061ce-78f6-4452-9108-ad7c02821fd5                     |
+| `packageID`                                              | `string`                                                 | :heavy_check_mark:                                       | The UUID API Package identifier                          | 9f5061ce-78f6-4452-9108-ad7c02821fd5                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response

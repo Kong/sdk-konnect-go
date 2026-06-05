@@ -18,10 +18,10 @@ const (
 )
 
 type SuggestedRuleActionEvaluated struct {
-	ArchiveActionPayload  *ArchiveActionPayload  `queryParam:"inline,name=SuggestedRuleActionEvaluated" union:"member"`
-	IgnoreActionPayload   *IgnoreActionPayload   `queryParam:"inline,name=SuggestedRuleActionEvaluated" union:"member"`
-	MapActionPayload      *MapActionPayload      `queryParam:"inline,name=SuggestedRuleActionEvaluated" union:"member"`
-	CreateActionEvaluated *CreateActionEvaluated `queryParam:"inline,name=SuggestedRuleActionEvaluated" union:"member"`
+	ArchiveActionPayload  *ArchiveActionPayload  `queryParam:"inline" union:"member"`
+	IgnoreActionPayload   *IgnoreActionPayload   `queryParam:"inline" union:"member"`
+	MapActionPayload      *MapActionPayload      `queryParam:"inline" union:"member"`
+	CreateActionEvaluated *CreateActionEvaluated `queryParam:"inline" union:"member"`
 
 	Type SuggestedRuleActionEvaluatedType
 }

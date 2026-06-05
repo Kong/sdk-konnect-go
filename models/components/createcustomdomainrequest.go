@@ -2,6 +2,10 @@
 
 package components
 
+import (
+	"github.com/Kong/sdk-konnect-go/internal/utils"
+)
+
 // CreateCustomDomainRequest - Request schema for creating a custom domain in the global API.
 type CreateCustomDomainRequest struct {
 	ControlPlaneID string `json:"control_plane_id"`
@@ -9,6 +13,22 @@ type CreateCustomDomainRequest struct {
 	ControlPlaneGeo ControlPlaneGeo `json:"control_plane_geo"`
 	// Domain name of the custom domain.
 	Domain string `json:"domain"`
+	// **Pre-release Feature**
+	// This feature is currently in beta and is subject to change.
+	//
+	// Kind of the custom domain based on Cloud Gateway deployment.
+	Kind *CustomDomainKind `default:"dedicated.v0" json:"kind"`
+}
+
+func (c CreateCustomDomainRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *CreateCustomDomainRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (c *CreateCustomDomainRequest) GetControlPlaneID() string {
@@ -30,4 +50,11 @@ func (c *CreateCustomDomainRequest) GetDomain() string {
 		return ""
 	}
 	return c.Domain
+}
+
+func (c *CreateCustomDomainRequest) GetKind() *CustomDomainKind {
+	if c == nil {
+		return nil
+	}
+	return c.Kind
 }

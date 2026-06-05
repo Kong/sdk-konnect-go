@@ -12,7 +12,7 @@ type CreatePortalIdentityProviderRequest struct {
 	PortalID string `pathParam:"style=simple,explode=false,name=portalId"`
 	// An object representing the configuration for creating a new identity provider. This configuration may pertain  to either an OIDC or a SAML identity provider.
 	//
-	CreateIdentityProvider components.CreateIdentityProvider `request:"mediaType=application/json"`
+	PortalCreateIdentityProvider components.PortalCreateIdentityProvider `request:"mediaType=application/json"`
 }
 
 func (c *CreatePortalIdentityProviderRequest) GetPortalID() string {
@@ -22,11 +22,11 @@ func (c *CreatePortalIdentityProviderRequest) GetPortalID() string {
 	return c.PortalID
 }
 
-func (c *CreatePortalIdentityProviderRequest) GetCreateIdentityProvider() components.CreateIdentityProvider {
+func (c *CreatePortalIdentityProviderRequest) GetPortalCreateIdentityProvider() components.PortalCreateIdentityProvider {
 	if c == nil {
-		return components.CreateIdentityProvider{}
+		return components.PortalCreateIdentityProvider{}
 	}
-	return c.CreateIdentityProvider
+	return c.PortalCreateIdentityProvider
 }
 
 type CreatePortalIdentityProviderResponse struct {
@@ -38,7 +38,7 @@ type CreatePortalIdentityProviderResponse struct {
 	RawResponse *http.Response
 	// An identity provider configuration. This response represents the configuration of a specific identity provider, which can be either OIDC or SAML.
 	//
-	IdentityProvider *components.IdentityProvider
+	PortalIdentityProvider *components.PortalIdentityProvider
 }
 
 func (c *CreatePortalIdentityProviderResponse) GetContentType() string {
@@ -62,9 +62,9 @@ func (c *CreatePortalIdentityProviderResponse) GetRawResponse() *http.Response {
 	return c.RawResponse
 }
 
-func (c *CreatePortalIdentityProviderResponse) GetIdentityProvider() *components.IdentityProvider {
+func (c *CreatePortalIdentityProviderResponse) GetPortalIdentityProvider() *components.PortalIdentityProvider {
 	if c == nil {
 		return nil
 	}
-	return c.IdentityProvider
+	return c.PortalIdentityProvider
 }

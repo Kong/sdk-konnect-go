@@ -191,8 +191,9 @@ func (e *HasDocsSelectorServiceSelectorSelector) UnmarshalJSON(data []byte) erro
 
 // HasDocsSelector - Entity selector to include entities by attached documentation.
 type HasDocsSelector struct {
-	Selector           HasDocsSelectorServiceSelectorSelector `json:"selector"`
-	selectorParameters *string                                `const:"null" json:"selector_parameters"`
+	Selector HasDocsSelectorServiceSelectorSelector `json:"selector"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	selectorParameters *string `const:"null" json:"selector_parameters"`
 }
 
 func (h HasDocsSelector) MarshalJSON() ([]byte, error) {
@@ -606,10 +607,10 @@ const (
 )
 
 type ServiceSelectorSelectorParameters struct {
-	StringCustomFieldSelectorParams  *StringCustomFieldSelectorParams  `queryParam:"inline,name=selector_parameters" union:"member"`
-	NumberCustomFieldSelectorParams  *NumberCustomFieldSelectorParams  `queryParam:"inline,name=selector_parameters" union:"member"`
-	BooleanCustomFieldSelectorParams *BooleanCustomFieldSelectorParams `queryParam:"inline,name=selector_parameters" union:"member"`
-	URLCustomFieldSelectorParams     *URLCustomFieldSelectorParams     `queryParam:"inline,name=selector_parameters" union:"member"`
+	StringCustomFieldSelectorParams  *StringCustomFieldSelectorParams  `queryParam:"inline" union:"member"`
+	NumberCustomFieldSelectorParams  *NumberCustomFieldSelectorParams  `queryParam:"inline" union:"member"`
+	BooleanCustomFieldSelectorParams *BooleanCustomFieldSelectorParams `queryParam:"inline" union:"member"`
+	URLCustomFieldSelectorParams     *URLCustomFieldSelectorParams     `queryParam:"inline" union:"member"`
 
 	Type ServiceSelectorSelectorParametersType
 }
@@ -943,8 +944,9 @@ func (e *Selector) UnmarshalJSON(data []byte) error {
 
 // AllEntitiesSelector - Entity selector that includes all entities of the given type within the catalog.
 type AllEntitiesSelector struct {
-	Selector           Selector `json:"selector"`
-	selectorParameters *string  `const:"null" json:"selector_parameters"`
+	Selector Selector `json:"selector"`
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	selectorParameters *string `const:"null" json:"selector_parameters"`
 }
 
 func (a AllEntitiesSelector) MarshalJSON() ([]byte, error) {
@@ -985,16 +987,16 @@ const (
 )
 
 type ServiceSelector struct {
-	AllEntitiesSelector   *AllEntitiesSelector   `queryParam:"inline,name=ServiceSelector" union:"member"`
-	ByIDsSelector         *ByIDsSelector         `queryParam:"inline,name=ServiceSelector" union:"member"`
-	ByNameSelector        *ByNameSelector        `queryParam:"inline,name=ServiceSelector" union:"member"`
-	ByDisplayNameSelector *ByDisplayNameSelector `queryParam:"inline,name=ServiceSelector" union:"member"`
-	ByCustomFieldSelector *ByCustomFieldSelector `queryParam:"inline,name=ServiceSelector" union:"member"`
-	ByLabelSelector       *ByLabelSelector       `queryParam:"inline,name=ServiceSelector" union:"member"`
-	HasLabelKeySelector   *HasLabelKeySelector   `queryParam:"inline,name=ServiceSelector" union:"member"`
-	HasDocsSelector       *HasDocsSelector       `queryParam:"inline,name=ServiceSelector" union:"member"`
-	HasApisSelector       *HasApisSelector       `queryParam:"inline,name=ServiceSelector" union:"member"`
-	HasResourcesSelector  *HasResourcesSelector  `queryParam:"inline,name=ServiceSelector" union:"member"`
+	AllEntitiesSelector   *AllEntitiesSelector   `queryParam:"inline" union:"member"`
+	ByIDsSelector         *ByIDsSelector         `queryParam:"inline" union:"member"`
+	ByNameSelector        *ByNameSelector        `queryParam:"inline" union:"member"`
+	ByDisplayNameSelector *ByDisplayNameSelector `queryParam:"inline" union:"member"`
+	ByCustomFieldSelector *ByCustomFieldSelector `queryParam:"inline" union:"member"`
+	ByLabelSelector       *ByLabelSelector       `queryParam:"inline" union:"member"`
+	HasLabelKeySelector   *HasLabelKeySelector   `queryParam:"inline" union:"member"`
+	HasDocsSelector       *HasDocsSelector       `queryParam:"inline" union:"member"`
+	HasApisSelector       *HasApisSelector       `queryParam:"inline" union:"member"`
+	HasResourcesSelector  *HasResourcesSelector  `queryParam:"inline" union:"member"`
 
 	Type ServiceSelectorType
 }
@@ -1217,7 +1219,7 @@ const (
 // ScorecardEntitySelector - Selector used to dynamically target catalog entities that will be
 // included in the given scorecard's evaluated score.
 type ScorecardEntitySelector struct {
-	ServiceSelector *ServiceSelector `queryParam:"inline,name=ScorecardEntitySelector" union:"member"`
+	ServiceSelector *ServiceSelector `queryParam:"inline" union:"member"`
 
 	Type ScorecardEntitySelectorType
 }

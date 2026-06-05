@@ -173,9 +173,9 @@ const (
 )
 
 type CatalogIntegrationResourceTypeIntegrationDataSchema struct {
-	EmptySchema                                               *EmptySchema                                               `queryParam:"inline,name=CatalogIntegrationResourceTypeIntegrationDataSchema" union:"member"`
-	CatalogIntegrationResourceTypeIntegrationDataSimpleSchema *CatalogIntegrationResourceTypeIntegrationDataSimpleSchema `queryParam:"inline,name=CatalogIntegrationResourceTypeIntegrationDataSchema" union:"member"`
-	CatalogIntegrationResourceTypeIntegrationDataJSONSchema   *CatalogIntegrationResourceTypeIntegrationDataJSONSchema   `queryParam:"inline,name=CatalogIntegrationResourceTypeIntegrationDataSchema" union:"member"`
+	EmptySchema                                               *EmptySchema                                               `queryParam:"inline" union:"member"`
+	CatalogIntegrationResourceTypeIntegrationDataSimpleSchema *CatalogIntegrationResourceTypeIntegrationDataSimpleSchema `queryParam:"inline" union:"member"`
+	CatalogIntegrationResourceTypeIntegrationDataJSONSchema   *CatalogIntegrationResourceTypeIntegrationDataJSONSchema   `queryParam:"inline" union:"member"`
 
 	Type CatalogIntegrationResourceTypeIntegrationDataSchemaUnionType
 }

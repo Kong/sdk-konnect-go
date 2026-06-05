@@ -15,7 +15,7 @@ const (
 )
 
 type CatalogResourceRefFilterParametersIntegrationName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type CatalogResourceRefFilterParametersIntegrationNameType
 }
@@ -56,7 +56,7 @@ const (
 )
 
 type CatalogResourceRefFilterParametersIntegrationDisplayName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_display_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type CatalogResourceRefFilterParametersIntegrationDisplayNameType
 }
@@ -97,7 +97,7 @@ const (
 )
 
 type CatalogResourceRefFilterParametersIntegrationInstanceID struct {
-	UUIDFieldFilter *UUIDFieldFilter `queryParam:"inline,name=integration_instance_id" union:"member"`
+	UUIDFieldFilter *UUIDFieldFilter `queryParam:"inline" union:"member"`
 
 	Type CatalogResourceRefFilterParametersIntegrationInstanceIDType
 }
@@ -138,7 +138,7 @@ const (
 )
 
 type CatalogResourceRefFilterParametersIntegrationInstanceName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_instance_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type CatalogResourceRefFilterParametersIntegrationInstanceNameType
 }
@@ -179,7 +179,7 @@ const (
 )
 
 type CatalogResourceRefFilterParametersIntegrationInstanceDisplayName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_instance_display_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type CatalogResourceRefFilterParametersIntegrationInstanceDisplayNameType
 }
@@ -220,7 +220,7 @@ const (
 )
 
 type CatalogResourceRefFilterParametersConfig struct {
-	CatalogResourceConfigFieldFilter *CatalogResourceConfigFieldFilter `queryParam:"inline,name=config" union:"member"`
+	CatalogResourceConfigFieldFilter *CatalogResourceConfigFieldFilter `queryParam:"inline" union:"member"`
 
 	Type CatalogResourceRefFilterParametersConfigType
 }
@@ -261,7 +261,7 @@ const (
 )
 
 type CatalogResourceRefFilterParametersIntegrationData struct {
-	CatalogResourceIntegrationDataFieldFilter *CatalogResourceIntegrationDataFieldFilter `queryParam:"inline,name=integration_data" union:"member"`
+	CatalogResourceIntegrationDataFieldFilter *CatalogResourceIntegrationDataFieldFilter `queryParam:"inline" union:"member"`
 
 	Type CatalogResourceRefFilterParametersIntegrationDataType
 }

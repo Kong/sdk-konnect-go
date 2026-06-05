@@ -18,3 +18,15 @@ integrationInstanceProxyRequestResponseBody := sdkerrors.CreateIntegrationInstan
 integrationInstanceProxyRequestResponseBody := sdkerrors.CreateIntegrationInstanceProxyRequestResponseBodyIntegrationUnauthorizedError(components.IntegrationUnauthorizedError{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch integrationInstanceProxyRequestResponseBody.Type {
+	case sdkerrors.IntegrationInstanceProxyRequestResponseBodyTypeBadRequestError:
+		// integrationInstanceProxyRequestResponseBody.BadRequestError is populated
+	case sdkerrors.IntegrationInstanceProxyRequestResponseBodyTypeIntegrationUnauthorizedError:
+		// integrationInstanceProxyRequestResponseBody.IntegrationUnauthorizedError is populated
+}
+```

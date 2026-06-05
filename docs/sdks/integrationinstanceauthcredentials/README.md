@@ -49,8 +49,8 @@ func main() {
     res, err := s.IntegrationInstanceAuthCredentials.CreateIntegrationInstanceAuthCredential(ctx, "3f51fa25-310a-421d-bd1a-007f859021a3", components.CreateCreateIntegrationInstanceAuthCredentialMultiKeyAuth1(
         components.MultiKeyAuth1{
             Config: components.CreateMultiKeyAuthCredentialConfig{
-                Headers: []components.Headers{
-                    components.Headers{
+                Headers: []components.MultiKeyAuthHeaders{
+                    components.MultiKeyAuthHeaders{
                         Name: "x-api-key",
                         Key: "9f2a3b4c8d6e7f00112233445566778899aabbccddeeff001122334455667788",
                     },
@@ -62,7 +62,17 @@ func main() {
         log.Fatal(err)
     }
     if res.IntegrationInstanceAuthCredential != nil {
-        // handle response
+        switch res.IntegrationInstanceAuthCredential.Type {
+            case components.IntegrationInstanceAuthCredentialTypeOauth1:
+                // res.IntegrationInstanceAuthCredential.Oauth1 is populated
+            case components.IntegrationInstanceAuthCredentialTypeGithubAppInstallation:
+                // res.IntegrationInstanceAuthCredential.GithubAppInstallation is populated
+            case components.IntegrationInstanceAuthCredentialTypeMultiKeyAuthCredential:
+                // res.IntegrationInstanceAuthCredential.MultiKeyAuthCredential is populated
+            case components.IntegrationInstanceAuthCredentialTypeAWSRoleDelegationAuthCredential:
+                // res.IntegrationInstanceAuthCredential.AWSRoleDelegationAuthCredential is populated
+        }
+
     }
 }
 ```
@@ -72,7 +82,7 @@ func main() {
 | Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              | Example                                                                                                                  |
 | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
 | `ctx`                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                    | :heavy_check_mark:                                                                                                       | The context to use for the request.                                                                                      |                                                                                                                          |
-| `integrationInstanceID`                                                                                                  | *string*                                                                                                                 | :heavy_check_mark:                                                                                                       | The `id` of the integration instance.                                                                                    | 3f51fa25-310a-421d-bd1a-007f859021a3                                                                                     |
+| `integrationInstanceID`                                                                                                  | `string`                                                                                                                 | :heavy_check_mark:                                                                                                       | The `id` of the integration instance.                                                                                    | 3f51fa25-310a-421d-bd1a-007f859021a3                                                                                     |
 | `createIntegrationInstanceAuthCredential`                                                                                | [components.CreateIntegrationInstanceAuthCredential](../../models/components/createintegrationinstanceauthcredential.md) | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |                                                                                                                          |
 | `opts`                                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                                 | :heavy_minus_sign:                                                                                                       | The options for this request.                                                                                            |                                                                                                                          |
 
@@ -122,7 +132,17 @@ func main() {
         log.Fatal(err)
     }
     if res.IntegrationInstanceAuthCredential != nil {
-        // handle response
+        switch res.IntegrationInstanceAuthCredential.Type {
+            case components.IntegrationInstanceAuthCredentialTypeOauth1:
+                // res.IntegrationInstanceAuthCredential.Oauth1 is populated
+            case components.IntegrationInstanceAuthCredentialTypeGithubAppInstallation:
+                // res.IntegrationInstanceAuthCredential.GithubAppInstallation is populated
+            case components.IntegrationInstanceAuthCredentialTypeMultiKeyAuthCredential:
+                // res.IntegrationInstanceAuthCredential.MultiKeyAuthCredential is populated
+            case components.IntegrationInstanceAuthCredentialTypeAWSRoleDelegationAuthCredential:
+                // res.IntegrationInstanceAuthCredential.AWSRoleDelegationAuthCredential is populated
+        }
+
     }
 }
 ```
@@ -132,7 +152,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `integrationInstanceID`                                  | *string*                                                 | :heavy_check_mark:                                       | The `id` of the integration instance.                    | 3f51fa25-310a-421d-bd1a-007f859021a3                     |
+| `integrationInstanceID`                                  | `string`                                                 | :heavy_check_mark:                                       | The `id` of the integration instance.                    | 3f51fa25-310a-421d-bd1a-007f859021a3                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -189,7 +209,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `integrationInstanceID`                                  | *string*                                                 | :heavy_check_mark:                                       | The `id` of the integration instance.                    | 3f51fa25-310a-421d-bd1a-007f859021a3                     |
+| `integrationInstanceID`                                  | `string`                                                 | :heavy_check_mark:                                       | The `id` of the integration instance.                    | 3f51fa25-310a-421d-bd1a-007f859021a3                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response

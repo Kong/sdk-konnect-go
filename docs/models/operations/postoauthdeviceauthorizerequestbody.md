@@ -7,5 +7,5 @@ The request schema for the device authorization request.
 
 | Field                            | Type                             | Required                         | Description                      |
 | -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `ClientID`                       | *string*                         | :heavy_check_mark:               | The client identifier.           |
-| `Scope`                          | **string*                        | :heavy_minus_sign:               | The scope of the access request. |
+| `ClientID`                       | `string`                         | :heavy_check_mark:               | The client identifier.           |
+| `Scope`                          | `*string`                        | :heavy_minus_sign:               | The scope of the access request. |

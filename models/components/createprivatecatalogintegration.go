@@ -36,10 +36,6 @@ type CreatePrivateCatalogIntegration struct {
 	// Defines the resource types that the integration manages within the catalog.
 	//
 	// This schema is a key-value object where:
-	//
-	//
-	//
-	//
 	//   - Keys are globally unique, machine-readable identifiers for each resource type.
 	//   - Values are objects describing metadata about the resource type.
 	//

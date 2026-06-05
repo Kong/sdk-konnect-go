@@ -18,10 +18,10 @@ const (
 )
 
 type MetadataTemplate struct {
-	Str                      *string                   `queryParam:"inline,name=MetadataTemplate" union:"member"`
-	Number                   *float64                  `queryParam:"inline,name=MetadataTemplate" union:"member"`
-	Boolean                  *bool                     `queryParam:"inline,name=MetadataTemplate" union:"member"`
-	URLMetadataValueTemplate *URLMetadataValueTemplate `queryParam:"inline,name=MetadataTemplate" union:"member"`
+	Str                      *string                   `queryParam:"inline" union:"member"`
+	Number                   *float64                  `queryParam:"inline" union:"member"`
+	Boolean                  *bool                     `queryParam:"inline" union:"member"`
+	URLMetadataValueTemplate *URLMetadataValueTemplate `queryParam:"inline" union:"member"`
 
 	Type MetadataTemplateType
 }

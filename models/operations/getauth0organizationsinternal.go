@@ -49,3 +49,6 @@ func (g *GetAuth0OrganizationsInternalResponse) GetAuth0OrganizationsCollection(
 	}
 	return g.Auth0OrganizationsCollection
 }
+
+// #region class-body-getauth0organizationsinternalresponse
+// #endregion class-body-getauth0organizationsinternalresponse

@@ -15,7 +15,7 @@ const (
 )
 
 type CatalogServiceIntegrationEventsFilterParametersIntegrationName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type CatalogServiceIntegrationEventsFilterParametersIntegrationNameType
 }
@@ -56,7 +56,7 @@ const (
 )
 
 type CatalogServiceIntegrationEventsFilterParametersIntegrationInstanceID struct {
-	StringFieldFilterExact *StringFieldFilterExact `queryParam:"inline,name=integration_instance_id" union:"member"`
+	StringFieldFilterExact *StringFieldFilterExact `queryParam:"inline" union:"member"`
 
 	Type CatalogServiceIntegrationEventsFilterParametersIntegrationInstanceIDType
 }
@@ -97,7 +97,7 @@ const (
 )
 
 type CatalogServiceIntegrationEventsFilterParametersIntegrationInstanceName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_instance_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type CatalogServiceIntegrationEventsFilterParametersIntegrationInstanceNameType
 }
@@ -138,7 +138,7 @@ const (
 )
 
 type CatalogServiceIntegrationEventsFilterParametersIntegrationInstanceDisplayName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_instance_display_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type CatalogServiceIntegrationEventsFilterParametersIntegrationInstanceDisplayNameType
 }
@@ -179,7 +179,7 @@ const (
 )
 
 type CatalogServiceIntegrationEventsFilterParametersActorType struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=actor_type" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type CatalogServiceIntegrationEventsFilterParametersActorTypeType
 }
@@ -220,7 +220,7 @@ const (
 )
 
 type CatalogServiceIntegrationEventsFilterParametersActorID struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=actor_id" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type CatalogServiceIntegrationEventsFilterParametersActorIDType
 }
@@ -261,7 +261,7 @@ const (
 )
 
 type CatalogServiceIntegrationEventsFilterParametersActorName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=actor_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type CatalogServiceIntegrationEventsFilterParametersActorNameType
 }

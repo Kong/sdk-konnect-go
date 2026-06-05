@@ -27,3 +27,19 @@ suggestedRuleAction := components.CreateSuggestedRuleActionMapActionPayload(comp
 suggestedRuleAction := components.CreateSuggestedRuleActionCreateOrMapAction(components.CreateOrMapAction{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch suggestedRuleAction.Type {
+	case components.SuggestedRuleActionTypeArchiveActionPayload:
+		// suggestedRuleAction.ArchiveActionPayload is populated
+	case components.SuggestedRuleActionTypeIgnoreActionPayload:
+		// suggestedRuleAction.IgnoreActionPayload is populated
+	case components.SuggestedRuleActionTypeMapActionPayload:
+		// suggestedRuleAction.MapActionPayload is populated
+	case components.SuggestedRuleActionTypeCreateOrMapAction:
+		// suggestedRuleAction.CreateOrMapAction is populated
+}
+```

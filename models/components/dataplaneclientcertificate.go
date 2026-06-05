@@ -11,6 +11,8 @@ type DataPlaneClientCertificate struct {
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 	// JSON escaped string of the certificate.
 	Cert *string `json:"cert,omitempty"`
+	// Title of the certificate.
+	Title *string `json:"title,omitempty"`
 }
 
 func (d *DataPlaneClientCertificate) GetID() *string {
@@ -39,4 +41,11 @@ func (d *DataPlaneClientCertificate) GetCert() *string {
 		return nil
 	}
 	return d.Cert
+}
+
+func (d *DataPlaneClientCertificate) GetTitle() *string {
+	if d == nil {
+		return nil
+	}
+	return d.Title
 }

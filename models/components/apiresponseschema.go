@@ -37,6 +37,29 @@ func (p *Portals) GetDisplayName() string {
 	return p.DisplayName
 }
 
+type Icon struct {
+	// The relative API path for retrieving the raw the icon image.
+	URI *string `json:"uri,omitempty"`
+}
+
+func (i *Icon) GetURI() *string {
+	if i == nil {
+		return nil
+	}
+	return i.URI
+}
+
+type Images struct {
+	Icon *Icon `json:"icon,omitempty"`
+}
+
+func (i *Images) GetIcon() *Icon {
+	if i == nil {
+		return nil
+	}
+	return i.Icon
+}
+
 // APIResponseSchema - API
 type APIResponseSchema struct {
 	// The API identifier.
@@ -68,12 +91,12 @@ type APIResponseSchema struct {
 	// the implementations that are associated with this api either gateway_entity_binding or access_control_enforcement
 	ImplementationMode *string `json:"implementation_mode,omitempty"`
 	// A set of attributes that describe the API
-	Attributes any     `json:"attributes,omitempty"`
-	Images     *Images `json:"images,omitempty"`
+	Attributes any `json:"attributes,omitempty"`
 	// An ISO-8601 timestamp representation of entity creation date.
 	CreatedAt time.Time `json:"created_at"`
 	// An ISO-8601 timestamp representation of entity update date.
 	UpdatedAt time.Time `json:"updated_at"`
+	Images    *Images   `json:"images,omitempty"`
 }
 
 func (a APIResponseSchema) MarshalJSON() ([]byte, error) {
@@ -164,13 +187,6 @@ func (a *APIResponseSchema) GetAttributes() any {
 	return a.Attributes
 }
 
-func (a *APIResponseSchema) GetImages() *Images {
-	if a == nil {
-		return nil
-	}
-	return a.Images
-}
-
 func (a *APIResponseSchema) GetCreatedAt() time.Time {
 	if a == nil {
 		return time.Time{}
@@ -183,4 +199,11 @@ func (a *APIResponseSchema) GetUpdatedAt() time.Time {
 		return time.Time{}
 	}
 	return a.UpdatedAt
+}
+
+func (a *APIResponseSchema) GetImages() *Images {
+	if a == nil {
+		return nil
+	}
+	return a.Images
 }

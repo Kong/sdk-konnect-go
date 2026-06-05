@@ -49,3 +49,6 @@ func (p *PostAuth0UserMfaSettingsInternalResponse) GetGetMFASettingsResponse() *
 	}
 	return p.GetMFASettingsResponse
 }
+
+// #region class-body-postauth0usermfasettingsinternalresponse
+// #endregion class-body-postauth0usermfasettingsinternalresponse

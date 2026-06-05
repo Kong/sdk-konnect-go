@@ -32,6 +32,8 @@ func newPersonalAccessTokens(rootSDK *SDK, sdkConfig config.SDKConfiguration, ho
 
 // ListUsersPersonalAccessTokens - List PATs
 // List personal access tokens for a user.
+//
+// If set, this operation will use one of [Security.PersonalAccessToken], [Security.KonnectAccessToken], or [Security.ServiceAccessToken] from the global security.
 func (s *PersonalAccessTokens) ListUsersPersonalAccessTokens(ctx context.Context, userID string, opts ...operations.Option) (*operations.ListUsersPersonalAccessTokensResponse, error) {
 	request := operations.ListUsersPersonalAccessTokensRequest{
 		UserID: userID,
@@ -87,7 +89,7 @@ func (s *PersonalAccessTokens) ListUsersPersonalAccessTokens(ctx context.Context
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security, "PersonalAccessToken", "KonnectAccessToken", "ServiceAccessToken"); err != nil {
 		return nil, err
 	}
 
@@ -171,7 +173,7 @@ func (s *PersonalAccessTokens) ListUsersPersonalAccessTokens(ctx context.Context
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -324,6 +326,8 @@ func (s *PersonalAccessTokens) ListUsersPersonalAccessTokens(ctx context.Context
 
 // CreatePersonalAccessToken - Create a new personal access token
 // Create a new personal access token. A maximum of 10 personal access tokens can be created.
+//
+// If set, this operation will use either [Security.PersonalAccessToken] or [Security.KonnectAccessToken] from the global security.
 func (s *PersonalAccessTokens) CreatePersonalAccessToken(ctx context.Context, userID string, personalAccessTokenCreateRequest *components.PersonalAccessTokenCreateRequest, opts ...operations.Option) (*operations.CreatePersonalAccessTokenResponse, error) {
 	request := operations.CreatePersonalAccessTokenRequest{
 		UserID:                           userID,
@@ -387,7 +391,7 @@ func (s *PersonalAccessTokens) CreatePersonalAccessToken(ctx context.Context, us
 		req.Header.Set("Content-Type", reqContentType)
 	}
 
-	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security, "PersonalAccessToken", "KonnectAccessToken"); err != nil {
 		return nil, err
 	}
 
@@ -471,7 +475,7 @@ func (s *PersonalAccessTokens) CreatePersonalAccessToken(ctx context.Context, us
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "409", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -645,6 +649,8 @@ func (s *PersonalAccessTokens) CreatePersonalAccessToken(ctx context.Context, us
 
 // GetPersonalAccessTokenDetails - Get Personal Access Token details
 // Get Personal Access Token details.
+//
+// If set, this operation will use one of [Security.PersonalAccessToken], [Security.KonnectAccessToken], or [Security.ServiceAccessToken] from the global security.
 func (s *PersonalAccessTokens) GetPersonalAccessTokenDetails(ctx context.Context, userID string, tokenID string, opts ...operations.Option) (*operations.GetPersonalAccessTokenDetailsResponse, error) {
 	request := operations.GetPersonalAccessTokenDetailsRequest{
 		UserID:  userID,
@@ -701,7 +707,7 @@ func (s *PersonalAccessTokens) GetPersonalAccessTokenDetails(ctx context.Context
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security, "PersonalAccessToken", "KonnectAccessToken", "ServiceAccessToken"); err != nil {
 		return nil, err
 	}
 
@@ -785,7 +791,7 @@ func (s *PersonalAccessTokens) GetPersonalAccessTokenDetails(ctx context.Context
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -938,6 +944,8 @@ func (s *PersonalAccessTokens) GetPersonalAccessTokenDetails(ctx context.Context
 
 // UpdatePersonalAccessTokenDetails - Update personal access token details
 // Update personal access token details.
+//
+// If set, this operation will use either [Security.PersonalAccessToken] or [Security.KonnectAccessToken] from the global security.
 func (s *PersonalAccessTokens) UpdatePersonalAccessTokenDetails(ctx context.Context, request operations.UpdatePersonalAccessTokenDetailsRequest, opts ...operations.Option) (*operations.UpdatePersonalAccessTokenDetailsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -996,7 +1004,7 @@ func (s *PersonalAccessTokens) UpdatePersonalAccessTokenDetails(ctx context.Cont
 		req.Header.Set("Content-Type", reqContentType)
 	}
 
-	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security, "PersonalAccessToken", "KonnectAccessToken"); err != nil {
 		return nil, err
 	}
 
@@ -1080,7 +1088,7 @@ func (s *PersonalAccessTokens) UpdatePersonalAccessTokenDetails(ctx context.Cont
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1233,6 +1241,8 @@ func (s *PersonalAccessTokens) UpdatePersonalAccessTokenDetails(ctx context.Cont
 
 // DeletePersonalAccessToken - Delete personal access token
 // Delete personal access token.
+//
+// If set, this operation will use either [Security.PersonalAccessToken] or [Security.KonnectAccessToken] from the global security.
 func (s *PersonalAccessTokens) DeletePersonalAccessToken(ctx context.Context, userID string, tokenID string, opts ...operations.Option) (*operations.DeletePersonalAccessTokenResponse, error) {
 	request := operations.DeletePersonalAccessTokenRequest{
 		UserID:  userID,
@@ -1289,7 +1299,7 @@ func (s *PersonalAccessTokens) DeletePersonalAccessToken(ctx context.Context, us
 	req.Header.Set("Accept", "application/problem+json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security, "PersonalAccessToken", "KonnectAccessToken"); err != nil {
 		return nil, err
 	}
 
@@ -1373,7 +1383,7 @@ func (s *PersonalAccessTokens) DeletePersonalAccessToken(ctx context.Context, us
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1396,6 +1406,7 @@ func (s *PersonalAccessTokens) DeletePersonalAccessToken(ctx context.Context, us
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 400:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
@@ -1506,6 +1517,8 @@ func (s *PersonalAccessTokens) DeletePersonalAccessToken(ctx context.Context, us
 
 // RevokePersonalAccessToken - Revoke Personal Access Token
 // Revoke Personal Access Token.
+//
+// If set, this operation will use one of [Security.PersonalAccessToken], [Security.KonnectAccessToken], or [Security.ServiceAccessToken] from the global security.
 func (s *PersonalAccessTokens) RevokePersonalAccessToken(ctx context.Context, userID string, tokenID string, opts ...operations.Option) (*operations.RevokePersonalAccessTokenResponse, error) {
 	request := operations.RevokePersonalAccessTokenRequest{
 		UserID:  userID,
@@ -1562,7 +1575,7 @@ func (s *PersonalAccessTokens) RevokePersonalAccessToken(ctx context.Context, us
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security, "PersonalAccessToken", "KonnectAccessToken", "ServiceAccessToken"); err != nil {
 		return nil, err
 	}
 
@@ -1646,7 +1659,7 @@ func (s *PersonalAccessTokens) RevokePersonalAccessToken(ctx context.Context, us
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err

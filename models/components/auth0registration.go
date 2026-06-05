@@ -45,3 +45,6 @@ func (a *Auth0Registration) GetMfaEnabled() *bool {
 	}
 	return a.MfaEnabled
 }
+
+// #region class-body-auth0registration
+// #endregion class-body-auth0registration

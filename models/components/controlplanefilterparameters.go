@@ -55,12 +55,14 @@ func (n *Name) GetNeq() *string {
 	return n.Neq
 }
 
-// ClusterType - Filter using **one** of the following operators: `eq`, `neq`
+// ClusterType - Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 type ClusterType struct {
 	// The field exactly matches the provided value.
 	Eq *string `queryParam:"name=eq"`
 	// The field does not match the provided value.
 	Neq *string `queryParam:"name=neq"`
+	// The field matches any of the provided values.
+	Oeq *string `queryParam:"name=oeq"`
 }
 
 func (c *ClusterType) GetEq() *string {
@@ -77,12 +79,19 @@ func (c *ClusterType) GetNeq() *string {
 	return c.Neq
 }
 
+func (c *ClusterType) GetOeq() *string {
+	if c == nil {
+		return nil
+	}
+	return c.Oeq
+}
+
 type ControlPlaneFilterParameters struct {
 	// Filter using **one** of the following operators: `eq`, `oeq`
 	ID *ID `queryParam:"name=id"`
 	// Filter using **one** of the following operators: `eq`, `neq`, `contains`
 	Name *Name `queryParam:"name=name"`
-	// Filter using **one** of the following operators: `eq`, `neq`
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`
 	ClusterType *ClusterType `queryParam:"name=cluster_type"`
 	// Filter by a boolean value (true/false).
 	CloudGateway *bool `queryParam:"name=cloud_gateway"`

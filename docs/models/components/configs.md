@@ -17,3 +17,15 @@ configs := components.CreateConfigsUpdateAppAuthStrategyRequestOpenIDConnect(com
 configs := components.CreateConfigsUpdateAppAuthStrategyRequestKeyAuth(components.UpdateAppAuthStrategyRequestKeyAuth{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch configs.Type {
+	case components.ConfigsTypeUpdateAppAuthStrategyRequestOpenIDConnect:
+		// configs.UpdateAppAuthStrategyRequestOpenIDConnect is populated
+	case components.ConfigsTypeUpdateAppAuthStrategyRequestKeyAuth:
+		// configs.UpdateAppAuthStrategyRequestKeyAuth is populated
+}
+```

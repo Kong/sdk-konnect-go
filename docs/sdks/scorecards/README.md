@@ -151,7 +151,11 @@ func main() {
         log.Fatal(err)
     }
     if res.ScorecardWithCriteria != nil {
-        // handle response
+        switch res.ScorecardWithCriteria.EntitySelector.Type {
+            case components.ScorecardEntitySelectorTypeServiceSelector:
+                // res.ScorecardWithCriteria.EntitySelector.ServiceSelector is populated
+        }
+
     }
 }
 ```
@@ -210,7 +214,7 @@ func main() {
         Filter: &components.ScorecardFilterParameters{
             ScoreRawValue: sdkkonnectgo.Pointer(components.CreateScoreRawValueNumericFieldFilter(
                 components.CreateNumericFieldFilterNumber(
-                    21,
+                    21.0,
                 ),
             )),
         },
@@ -277,7 +281,11 @@ func main() {
         log.Fatal(err)
     }
     if res.ScorecardWithCriteria != nil {
-        // handle response
+        switch res.ScorecardWithCriteria.EntitySelector.Type {
+            case components.ScorecardEntitySelectorTypeServiceSelector:
+                // res.ScorecardWithCriteria.EntitySelector.ServiceSelector is populated
+        }
+
     }
 }
 ```
@@ -287,7 +295,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | The `id` of the scorecard.                               | f3704e4c-104d-4f21-998a-20d4364c893f                     |
+| `id`                                                     | `string`                                                 | :heavy_check_mark:                                       | The `id` of the scorecard.                               | f3704e4c-104d-4f21-998a-20d4364c893f                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -351,7 +359,11 @@ func main() {
         log.Fatal(err)
     }
     if res.ScorecardWithCriteria != nil {
-        // handle response
+        switch res.ScorecardWithCriteria.EntitySelector.Type {
+            case components.ScorecardEntitySelectorTypeServiceSelector:
+                // res.ScorecardWithCriteria.EntitySelector.ServiceSelector is populated
+        }
+
     }
 }
 ```
@@ -361,7 +373,7 @@ func main() {
 | Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              | Example                                                                  |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
 | `ctx`                                                                    | [context.Context](https://pkg.go.dev/context#Context)                    | :heavy_check_mark:                                                       | The context to use for the request.                                      |                                                                          |
-| `id`                                                                     | *string*                                                                 | :heavy_check_mark:                                                       | The `id` of the scorecard.                                               | f3704e4c-104d-4f21-998a-20d4364c893f                                     |
+| `id`                                                                     | `string`                                                                 | :heavy_check_mark:                                                       | The `id` of the scorecard.                                               | f3704e4c-104d-4f21-998a-20d4364c893f                                     |
 | `updateScorecard`                                                        | [components.UpdateScorecard](../../models/components/updatescorecard.md) | :heavy_check_mark:                                                       | N/A                                                                      |                                                                          |
 | `opts`                                                                   | [][operations.Option](../../models/operations/option.md)                 | :heavy_minus_sign:                                                       | The options for this request.                                            |                                                                          |
 
@@ -420,7 +432,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | The `id` of the scorecard.                               | f3704e4c-104d-4f21-998a-20d4364c893f                     |
+| `id`                                                     | `string`                                                 | :heavy_check_mark:                                       | The `id` of the scorecard.                               | f3704e4c-104d-4f21-998a-20d4364c893f                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -477,7 +489,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `id`                                                     | *string*                                                 | :heavy_check_mark:                                       | The `id` of the scorecard.                               | f3704e4c-104d-4f21-998a-20d4364c893f                     |
+| `id`                                                     | `string`                                                 | :heavy_check_mark:                                       | The `id` of the scorecard.                               | f3704e4c-104d-4f21-998a-20d4364c893f                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -529,7 +541,7 @@ func main() {
         Filter: &components.ScorecardServiceFilterParameters{
             CustomFields: sdkkonnectgo.Pointer(components.CreateScorecardServiceFilterParametersCustomFieldsNumericFieldFilter(
                 components.CreateNumericFieldFilterNumber(
-                    21,
+                    21.0,
                 ),
             )),
             CreatedAt: sdkkonnectgo.Pointer(components.CreateDateTimeFieldFilterDateTimeFieldLTFilter(
@@ -544,7 +556,7 @@ func main() {
             )),
             ScoreRawValue: sdkkonnectgo.Pointer(components.CreateScorecardServiceFilterParametersScoreRawValueNumericFieldFilter(
                 components.CreateNumericFieldFilterNumber(
-                    21,
+                    21.0,
                 ),
             )),
         },
@@ -614,7 +626,7 @@ func main() {
         Filter: &components.ScorecardCriteriaFilterParameters{
             EvaluationPassingServicesCount: sdkkonnectgo.Pointer(components.CreateEvaluationPassingServicesCountNumericFieldFilter(
                 components.CreateNumericFieldFilterNumber(
-                    21,
+                    21.0,
                 ),
             )),
         },
@@ -697,19 +709,15 @@ func main() {
                     Lte: types.MustTimeFromString("2022-03-30T07:20:50Z"),
                 },
             )),
-            EvaluationSuccessfullyEvaluatedAt: sdkkonnectgo.Pointer(components.CreateEvaluationSuccessfullyEvaluatedAtDateTimeFieldFilter(
-                components.CreateDateTimeFieldFilterDateTimeFieldLTFilter(
-                    components.DateTimeFieldLTFilter{
-                        Lt: types.MustTimeFromString("2022-03-30T07:20:50Z"),
-                    },
-                ),
+            EvaluationSuccessfullyEvaluatedAt: sdkkonnectgo.Pointer(components.CreateScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldFilterDateTimeFieldLTFilter(
+                components.DateTimeFieldFilterDateTimeFieldLTFilter{
+                    Lt: types.MustTimeFromString("2022-03-30T07:20:50Z"),
+                },
             )),
-            EvaluationAttemptedAt: sdkkonnectgo.Pointer(components.CreateEvaluationAttemptedAtDateTimeFieldFilter(
-                components.CreateDateTimeFieldFilterDateTimeFieldLTEFilter(
-                    components.DateTimeFieldLTEFilter{
-                        Lte: types.MustTimeFromString("2022-03-30T07:20:50Z"),
-                    },
-                ),
+            EvaluationAttemptedAt: sdkkonnectgo.Pointer(components.CreateScorecardCriteriaServiceFilterParametersEvaluationAttemptedAtDateTimeFieldFilterScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter(
+                components.ScorecardCriteriaServiceFilterParametersDateTimeFieldFilterDateTimeFieldLTEFilter{
+                    Lte: types.MustTimeFromString("2022-03-30T07:20:50Z"),
+                },
             )),
         },
         Sort: sdkkonnectgo.Pointer("created_at desc"),
@@ -778,7 +786,7 @@ func main() {
         Filter: &components.ScorecardFilterParameters{
             ScoreRawValue: sdkkonnectgo.Pointer(components.CreateScoreRawValueNumericFieldFilter(
                 components.CreateNumericFieldFilterNumber(
-                    21,
+                    21.0,
                 ),
             )),
         },
@@ -846,7 +854,11 @@ func main() {
         log.Fatal(err)
     }
     if res.CatalogServiceScorecard != nil {
-        // handle response
+        switch res.CatalogServiceScorecard.EntitySelector.Type {
+            case components.ScorecardEntitySelectorTypeServiceSelector:
+                // res.CatalogServiceScorecard.EntitySelector.ServiceSelector is populated
+        }
+
     }
 }
 ```
@@ -856,8 +868,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `serviceID`                                              | *string*                                                 | :heavy_check_mark:                                       | The `id` of the service.                                 | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
-| `scorecardID`                                            | *string*                                                 | :heavy_check_mark:                                       | The `id` of the scorecard.                               | f3704e4c-104d-4f21-998a-20d4364c893f                     |
+| `serviceID`                                              | `string`                                                 | :heavy_check_mark:                                       | The `id` of the service.                                 | 7f9fd312-a987-4628-b4c5-bb4f4fddd5f7                     |
+| `scorecardID`                                            | `string`                                                 | :heavy_check_mark:                                       | The `id` of the scorecard.                               | f3704e4c-104d-4f21-998a-20d4364c893f                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response

@@ -11,6 +11,8 @@ type ListPluginSchemasItems struct {
 	CreatedAt *int64 `json:"created_at,omitempty"`
 	// An ISO-8604 timestamp representation of custom plugin schema update date.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
+	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
+	ManagedBy map[string]any `json:"managed_by,omitempty"`
 }
 
 func (l *ListPluginSchemasItems) GetLuaSchema() *string {
@@ -39,6 +41,13 @@ func (l *ListPluginSchemasItems) GetUpdatedAt() *int64 {
 		return nil
 	}
 	return l.UpdatedAt
+}
+
+func (l *ListPluginSchemasItems) GetManagedBy() map[string]any {
+	if l == nil {
+		return nil
+	}
+	return l.ManagedBy
 }
 
 type ListPluginSchemasPage struct {

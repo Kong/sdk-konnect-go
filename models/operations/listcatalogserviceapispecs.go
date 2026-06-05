@@ -17,10 +17,6 @@ type ListCatalogServiceAPISpecsRequest struct {
 	// Filters a collection of API specs belonging to a service.
 	Filter *components.CatalogServiceAPISpecFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`
 	// Sorts a collection of API specs belonging to a service. Supported sort attributes are:
-	//
-	//
-	//
-	//
 	//   - `name`
 	//   - `provider.type`
 	//

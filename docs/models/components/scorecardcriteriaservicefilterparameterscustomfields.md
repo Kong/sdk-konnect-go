@@ -2,10 +2,6 @@
 
 Filter by custom fields using dot-notation to specify the custom field.
 Filter operators are dictated by the custom field type. For example:
-
-
-
-
   - `filter[custom_fields.owner]`
   - `filter[custom_fields.owner][neq]=kong`
   - `filter[custom_fields.dashboard.link][contains]=https`
@@ -32,3 +28,17 @@ scorecardCriteriaServiceFilterParametersCustomFields := components.CreateScoreca
 scorecardCriteriaServiceFilterParametersCustomFields := components.CreateScorecardCriteriaServiceFilterParametersCustomFieldsNumericFieldFilter(components.NumericFieldFilter{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch scorecardCriteriaServiceFilterParametersCustomFields.Type {
+	case components.ScorecardCriteriaServiceFilterParametersCustomFieldsTypeStringFieldFilter:
+		// scorecardCriteriaServiceFilterParametersCustomFields.StringFieldFilter is populated
+	case components.ScorecardCriteriaServiceFilterParametersCustomFieldsTypeBoolean:
+		// scorecardCriteriaServiceFilterParametersCustomFields.Boolean is populated
+	case components.ScorecardCriteriaServiceFilterParametersCustomFieldsTypeNumericFieldFilter:
+		// scorecardCriteriaServiceFilterParametersCustomFields.NumericFieldFilter is populated
+}
+```

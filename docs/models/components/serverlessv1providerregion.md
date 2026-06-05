@@ -7,4 +7,4 @@ Region ID and human-readable name for a cloud provider region.
 
 | Field                                              | Type                                               | Required                                           | Description                                        | Example                                            |
 | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `Region`                                           | *string*                                           | :heavy_check_mark:                                 | Region ID for serverless v1 cloud provider region. | us                                                 |
+| `Region`                                           | `string`                                           | :heavy_check_mark:                                 | Region ID for serverless v1 cloud provider region. | us                                                 |

@@ -2,6 +2,19 @@
 
 The desired role.
 
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.RoleNameAdmin
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.RoleName("custom_value")
+```
+
 
 ## Values
 
@@ -16,9 +29,11 @@ The desired role.
 | `RoleNameConsumerAdmin`             | Consumer Admin                      |
 | `RoleNameConnector`                 | Connector                           |
 | `RoleNameCreator`                   | Creator                             |
+| `RoleNameDebugSessionCreator`       | Debug Session Creator               |
 | `RoleNameDeployer`                  | Deployer                            |
 | `RoleNameDiscoveryAdmin`            | Discovery Admin                     |
 | `RoleNameDiscoveryViewer`           | Discovery Viewer                    |
+| `RoleNameEditor`                    | Editor                              |
 | `RoleNameGatewayServiceAdmin`       | Gateway Service Admin               |
 | `RoleNameIntegrationAdmin`          | Integration Admin                   |
 | `RoleNameIntegrationViewer`         | Integration Viewer                  |
@@ -43,3 +58,5 @@ The desired role.
 | `RoleNameViewer`                    | Viewer                              |
 | `RoleNameRegistrationApprover`      | Registration Approver               |
 | `RoleNameContentEditor`             | Content Editor                      |
+| `RoleNameAddOnAdmin`                | Add On Admin                        |
+| `RoleNameAddOnViewer`               | Add On Viewer                       |

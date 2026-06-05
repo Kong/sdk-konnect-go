@@ -5,4 +5,4 @@
 
 | Field                  | Type                   | Required               | Description            |
 | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `ApplicationID`        | *string*               | :heavy_check_mark:     | ID of the application. |
+| `ApplicationID`        | `string`               | :heavy_check_mark:     | ID of the application. |

@@ -5,4 +5,4 @@
 
 | Field                      | Type                       | Required                   | Description                |
 | -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `DomainVerificationMethod` | *string*                   | :heavy_check_mark:         | N/A                        |
+| `DomainVerificationMethod` | `string`                   | :heavy_check_mark:         | N/A                        |

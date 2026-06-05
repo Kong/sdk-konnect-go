@@ -49,6 +49,7 @@ func (c *CreateGitHubAppInstallationCredentialConfig) GetAppInstalledBy() *strin
 
 // CreateGitHubAppInstallationCredential - Payload used to create an `GitHub App Installation` credential for an integration instance.
 type CreateGitHubAppInstallationCredential struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
 	type_  string                                      `const:"github_app_installation" json:"type"`
 	Config CreateGitHubAppInstallationCredentialConfig `json:"config"`
 }

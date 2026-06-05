@@ -15,10 +15,6 @@ type ListSuggestedResourceActionRequest struct {
 	// Filters a collection of suggested resource actions.
 	Filter *components.SuggestedResourceActionFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`
 	// Sorts a collection of suggested resource actions. Supported sort attributes are:
-	//
-	//
-	//
-	//
 	//   - created_at
 	//   - updated_at
 	//

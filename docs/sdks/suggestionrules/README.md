@@ -139,7 +139,17 @@ func main() {
         log.Fatal(err)
     }
     if res.SuggestionRule != nil {
-        // handle response
+        switch res.SuggestionRule.Action.Type {
+            case components.SuggestedRuleActionTypeArchiveActionPayload:
+                // res.SuggestionRule.Action.ArchiveActionPayload is populated
+            case components.SuggestedRuleActionTypeIgnoreActionPayload:
+                // res.SuggestionRule.Action.IgnoreActionPayload is populated
+            case components.SuggestedRuleActionTypeMapActionPayload:
+                // res.SuggestionRule.Action.MapActionPayload is populated
+            case components.SuggestedRuleActionTypeCreateOrMapAction:
+                // res.SuggestionRule.Action.CreateOrMapAction is populated
+        }
+
     }
 }
 ```
@@ -149,7 +159,7 @@ func main() {
 | Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          | Example                                                                              |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
 | `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |                                                                                      |
-| `integration`                                                                        | *string*                                                                             | :heavy_check_mark:                                                                   | Machine name of the integration.                                                     | gateway-manager                                                                      |
+| `integration`                                                                        | `string`                                                                             | :heavy_check_mark:                                                                   | Machine name of the integration.                                                     | gateway-manager                                                                      |
 | `suggestionRulePayload`                                                              | [components.SuggestionRulePayload](../../models/components/suggestionrulepayload.md) | :heavy_check_mark:                                                                   | Request body schema for creating a suggestion rule for an integration.               |                                                                                      |
 | `opts`                                                                               | [][operations.Option](../../models/operations/option.md)                             | :heavy_minus_sign:                                                                   | The options for this request.                                                        |                                                                                      |
 
@@ -274,7 +284,17 @@ func main() {
         log.Fatal(err)
     }
     if res.SuggestionRule != nil {
-        // handle response
+        switch res.SuggestionRule.Action.Type {
+            case components.SuggestedRuleActionTypeArchiveActionPayload:
+                // res.SuggestionRule.Action.ArchiveActionPayload is populated
+            case components.SuggestedRuleActionTypeIgnoreActionPayload:
+                // res.SuggestionRule.Action.IgnoreActionPayload is populated
+            case components.SuggestedRuleActionTypeMapActionPayload:
+                // res.SuggestionRule.Action.MapActionPayload is populated
+            case components.SuggestedRuleActionTypeCreateOrMapAction:
+                // res.SuggestionRule.Action.CreateOrMapAction is populated
+        }
+
     }
 }
 ```
@@ -284,8 +304,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `integration`                                            | *string*                                                 | :heavy_check_mark:                                       | Machine name of the integration.                         | gateway-manager                                          |
-| `suggestionRuleID`                                       | *string*                                                 | :heavy_check_mark:                                       | ID of the suggestion rule.                               | 22f72bd1-2897-473e-9471-302de3ccf38b                     |
+| `integration`                                            | `string`                                                 | :heavy_check_mark:                                       | Machine name of the integration.                         | gateway-manager                                          |
+| `suggestionRuleID`                                       | `string`                                                 | :heavy_check_mark:                                       | ID of the suggestion rule.                               | 22f72bd1-2897-473e-9471-302de3ccf38b                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -368,7 +388,17 @@ func main() {
         log.Fatal(err)
     }
     if res.SuggestionRule != nil {
-        // handle response
+        switch res.SuggestionRule.Action.Type {
+            case components.SuggestedRuleActionTypeArchiveActionPayload:
+                // res.SuggestionRule.Action.ArchiveActionPayload is populated
+            case components.SuggestedRuleActionTypeIgnoreActionPayload:
+                // res.SuggestionRule.Action.IgnoreActionPayload is populated
+            case components.SuggestedRuleActionTypeMapActionPayload:
+                // res.SuggestionRule.Action.MapActionPayload is populated
+            case components.SuggestedRuleActionTypeCreateOrMapAction:
+                // res.SuggestionRule.Action.CreateOrMapAction is populated
+        }
+
     }
 }
 ```
@@ -436,8 +466,8 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `integration`                                            | *string*                                                 | :heavy_check_mark:                                       | Machine name of the integration.                         | gateway-manager                                          |
-| `suggestionRuleID`                                       | *string*                                                 | :heavy_check_mark:                                       | ID of the suggestion rule.                               | 22f72bd1-2897-473e-9471-302de3ccf38b                     |
+| `integration`                                            | `string`                                                 | :heavy_check_mark:                                       | Machine name of the integration.                         | gateway-manager                                          |
+| `suggestionRuleID`                                       | `string`                                                 | :heavy_check_mark:                                       | ID of the suggestion rule.                               | 22f72bd1-2897-473e-9471-302de3ccf38b                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -513,7 +543,7 @@ func main() {
 | Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |                                                                                              |
-| `integration`                                                                                | *string*                                                                                     | :heavy_check_mark:                                                                           | Machine name of the integration.                                                             | gateway-manager                                                                              |
+| `integration`                                                                                | `string`                                                                                     | :heavy_check_mark:                                                                           | Machine name of the integration.                                                             | gateway-manager                                                                              |
 | `testSuggestionRulePayload`                                                                  | [components.TestSuggestionRulePayload](../../models/components/testsuggestionrulepayload.md) | :heavy_check_mark:                                                                           | Request body schema for testing a suggestion rule configuration against an integration data. |                                                                                              |
 | `opts`                                                                                       | [][operations.Option](../../models/operations/option.md)                                     | :heavy_minus_sign:                                                                           | The options for this request.                                                                |                                                                                              |
 

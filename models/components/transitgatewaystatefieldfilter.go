@@ -17,9 +17,9 @@ const (
 )
 
 type TransitGatewayStateFieldFilter struct {
-	TransitGatewayStateFieldEqualsFilter     *TransitGatewayStateFieldEqualsFilter     `queryParam:"inline,name=TransitGatewayStateFieldFilter" union:"member"`
-	TransitGatewayStateFieldNotEqualsFilter  *TransitGatewayStateFieldNotEqualsFilter  `queryParam:"inline,name=TransitGatewayStateFieldFilter" union:"member"`
-	TransitGatewayStateFieldOrEqualityFilter *TransitGatewayStateFieldOrEqualityFilter `queryParam:"inline,name=TransitGatewayStateFieldFilter" union:"member"`
+	TransitGatewayStateFieldEqualsFilter     *TransitGatewayStateFieldEqualsFilter     `queryParam:"inline" union:"member"`
+	TransitGatewayStateFieldNotEqualsFilter  *TransitGatewayStateFieldNotEqualsFilter  `queryParam:"inline" union:"member"`
+	TransitGatewayStateFieldOrEqualityFilter *TransitGatewayStateFieldOrEqualityFilter `queryParam:"inline" union:"member"`
 
 	Type TransitGatewayStateFieldFilterType
 }

@@ -33,7 +33,11 @@ func newAPIImplementation(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks
 
 // CreateAPIImplementation - Create API Implementation
 // Creates an implementation for an API.
-// An API can be implemented by a single Gateway Service.
+// If all operations in an API are implemented by a single gateway service and the service
+// has no routes that are not part of the API, then the API can be linked to the service.
+// For cases where an API is implemented by multiple gateway services, only a subset of
+// routes in one or more gateway services, or API operations need to be made available for API packages,
+// then the API should be linked to the control plane that defines the routes that overlap with the API.
 func (s *APIImplementation) CreateAPIImplementation(ctx context.Context, apiID string, apiImplementation components.APIImplementation, opts ...operations.Option) (*operations.CreateAPIImplementationResponse, error) {
 	request := operations.CreateAPIImplementationRequest{
 		APIID:             apiID,
@@ -182,7 +186,7 @@ func (s *APIImplementation) CreateAPIImplementation(ctx context.Context, apiID s
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "409", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -497,7 +501,7 @@ func (s *APIImplementation) FetchAPIImplementation(ctx context.Context, apiID st
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"401", "403", "404", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -770,7 +774,7 @@ func (s *APIImplementation) DeleteAPIImplementation(ctx context.Context, apiID s
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"401", "403", "404", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -793,6 +797,7 @@ func (s *APIImplementation) DeleteAPIImplementation(ctx context.Context, apiID s
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 401:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
@@ -1022,7 +1027,7 @@ func (s *APIImplementation) ListAPIImplementations(ctx context.Context, request 
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"401", "403", "404", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err

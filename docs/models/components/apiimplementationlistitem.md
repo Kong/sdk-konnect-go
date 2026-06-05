@@ -17,3 +17,15 @@ apiImplementationListItem := components.CreateAPIImplementationListItemAPIImplem
 apiImplementationListItem := components.CreateAPIImplementationListItemAPIImplementationListItemControlPlaneEntity(components.APIImplementationListItemControlPlaneEntity{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch apiImplementationListItem.Type {
+	case components.APIImplementationListItemTypeAPIImplementationListItemGatewayServiceEntity:
+		// apiImplementationListItem.APIImplementationListItemGatewayServiceEntity is populated
+	case components.APIImplementationListItemTypeAPIImplementationListItemControlPlaneEntity:
+		// apiImplementationListItem.APIImplementationListItemControlPlaneEntity is populated
+}
+```

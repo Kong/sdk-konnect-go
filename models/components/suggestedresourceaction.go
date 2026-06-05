@@ -18,10 +18,10 @@ const (
 )
 
 type SuggestedResourceAction struct {
-	ArchiveActionPayload             *ArchiveActionPayload             `queryParam:"inline,name=SuggestedResourceAction" union:"member"`
-	IgnoreActionPayload              *IgnoreActionPayload              `queryParam:"inline,name=SuggestedResourceAction" union:"member"`
-	MapServiceAction                 *MapServiceAction                 `queryParam:"inline,name=SuggestedResourceAction" union:"member"`
-	CreateAndMapServiceActionPayload *CreateAndMapServiceActionPayload `queryParam:"inline,name=SuggestedResourceAction" union:"member"`
+	ArchiveActionPayload             *ArchiveActionPayload             `queryParam:"inline" union:"member"`
+	IgnoreActionPayload              *IgnoreActionPayload              `queryParam:"inline" union:"member"`
+	MapServiceAction                 *MapServiceAction                 `queryParam:"inline" union:"member"`
+	CreateAndMapServiceActionPayload *CreateAndMapServiceActionPayload `queryParam:"inline" union:"member"`
 
 	Type SuggestedResourceActionType
 }

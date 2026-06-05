@@ -11,31 +11,31 @@ import (
 type CreateAddOnConfigType string
 
 const (
-	CreateAddOnConfigTypeCreateManagedCacheAddOnConfig CreateAddOnConfigType = "CreateManagedCacheAddOnConfig"
+	CreateAddOnConfigTypeManagedCache CreateAddOnConfigType = "managed_cache"
 )
 
 // CreateAddOnConfig - Configuration for creating different types of add-ons.
 type CreateAddOnConfig struct {
-	CreateManagedCacheAddOnConfig *CreateManagedCacheAddOnConfig `queryParam:"inline,name=CreateAddOnConfig" union:"member"`
+	ManagedCache *ManagedCache `queryParam:"inline" union:"member"`
 
 	Type CreateAddOnConfigType
 }
 
-func CreateCreateAddOnConfigCreateManagedCacheAddOnConfig(createManagedCacheAddOnConfig CreateManagedCacheAddOnConfig) CreateAddOnConfig {
-	typ := CreateAddOnConfigTypeCreateManagedCacheAddOnConfig
+func CreateCreateAddOnConfigManagedCache(managedCache ManagedCache) CreateAddOnConfig {
+	typ := CreateAddOnConfigTypeManagedCache
 
 	return CreateAddOnConfig{
-		CreateManagedCacheAddOnConfig: &createManagedCacheAddOnConfig,
-		Type:                          typ,
+		ManagedCache: &managedCache,
+		Type:         typ,
 	}
 }
 
 func (u *CreateAddOnConfig) UnmarshalJSON(data []byte) error {
 
-	var createManagedCacheAddOnConfig CreateManagedCacheAddOnConfig = CreateManagedCacheAddOnConfig{}
-	if err := utils.UnmarshalJSON(data, &createManagedCacheAddOnConfig, "", true, nil); err == nil {
-		u.CreateManagedCacheAddOnConfig = &createManagedCacheAddOnConfig
-		u.Type = CreateAddOnConfigTypeCreateManagedCacheAddOnConfig
+	var managedCache ManagedCache = ManagedCache{}
+	if err := utils.UnmarshalJSON(data, &managedCache, "", true, nil); err == nil {
+		u.ManagedCache = &managedCache
+		u.Type = CreateAddOnConfigTypeManagedCache
 		return nil
 	}
 
@@ -43,8 +43,8 @@ func (u *CreateAddOnConfig) UnmarshalJSON(data []byte) error {
 }
 
 func (u CreateAddOnConfig) MarshalJSON() ([]byte, error) {
-	if u.CreateManagedCacheAddOnConfig != nil {
-		return utils.MarshalJSON(u.CreateManagedCacheAddOnConfig, "", true)
+	if u.ManagedCache != nil {
+		return utils.MarshalJSON(u.ManagedCache, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type CreateAddOnConfig: all fields are null")

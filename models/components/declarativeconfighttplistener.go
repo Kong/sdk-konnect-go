@@ -2,20 +2,20 @@
 
 package components
 
-// Protocol - The protocol for the listener.
-type Protocol string
+// DeclarativeConfigHTTPListenerProtocol - The protocol for the listener.
+type DeclarativeConfigHTTPListenerProtocol string
 
 const (
-	ProtocolHTTP  Protocol = "http"
-	ProtocolHTTPS Protocol = "https"
+	DeclarativeConfigHTTPListenerProtocolHTTP  DeclarativeConfigHTTPListenerProtocol = "http"
+	DeclarativeConfigHTTPListenerProtocolHTTPS DeclarativeConfigHTTPListenerProtocol = "https"
 )
 
-func (e Protocol) ToPointer() *Protocol {
+func (e DeclarativeConfigHTTPListenerProtocol) ToPointer() *DeclarativeConfigHTTPListenerProtocol {
 	return &e
 }
 
 // IsExact returns true if the value matches a known enum value, false otherwise.
-func (e *Protocol) IsExact() bool {
+func (e *DeclarativeConfigHTTPListenerProtocol) IsExact() bool {
 	if e != nil {
 		switch *e {
 		case "http", "https":
@@ -29,7 +29,7 @@ type DeclarativeConfigHTTPListener struct {
 	// The port number for the proxy to listen on.
 	Port int64
 	// The protocol for the listener.
-	Protocol Protocol
+	Protocol DeclarativeConfigHTTPListenerProtocol
 	// The pd script for the listener.
 	Script *string
 }
@@ -41,9 +41,9 @@ func (d *DeclarativeConfigHTTPListener) GetPort() int64 {
 	return d.Port
 }
 
-func (d *DeclarativeConfigHTTPListener) GetProtocol() Protocol {
+func (d *DeclarativeConfigHTTPListener) GetProtocol() DeclarativeConfigHTTPListenerProtocol {
 	if d == nil {
-		return Protocol("")
+		return DeclarativeConfigHTTPListenerProtocol("")
 	}
 	return d.Protocol
 }

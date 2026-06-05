@@ -17,3 +17,15 @@ vulnerabilitiesMetricsFilterByPackageName := components.CreateVulnerabilitiesMet
 vulnerabilitiesMetricsFilterByPackageName := components.CreateVulnerabilitiesMetricsFilterByPackageNameVulnerabilitiesMetricsFilterByPackageName2(components.VulnerabilitiesMetricsFilterByPackageName2{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch vulnerabilitiesMetricsFilterByPackageName.Type {
+	case components.VulnerabilitiesMetricsFilterByPackageNameTypeVulnerabilitiesMetricsFilterByPackageNameEmptyValueMetricsFilter:
+		// vulnerabilitiesMetricsFilterByPackageName.VulnerabilitiesMetricsFilterByPackageNameEmptyValueMetricsFilter is populated
+	case components.VulnerabilitiesMetricsFilterByPackageNameTypeVulnerabilitiesMetricsFilterByPackageName2:
+		// vulnerabilitiesMetricsFilterByPackageName.VulnerabilitiesMetricsFilterByPackageName2 is populated
+}
+```

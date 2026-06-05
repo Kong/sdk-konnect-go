@@ -226,8 +226,8 @@ const (
 
 // DeviceAuthorizationGrantTokenBadRequest - Bad Request
 type DeviceAuthorizationGrantTokenBadRequest struct {
-	DeviceAuthorizationGrantAuthorizeError *DeviceAuthorizationGrantAuthorizeError `queryParam:"inline,name=DeviceAuthorizationGrantTokenBadRequest" union:"member"`
-	DeviceAuthorizationGrantTokenError     *DeviceAuthorizationGrantTokenError     `queryParam:"inline,name=DeviceAuthorizationGrantTokenBadRequest" union:"member"`
+	DeviceAuthorizationGrantAuthorizeError *DeviceAuthorizationGrantAuthorizeError `queryParam:"inline" union:"member"`
+	DeviceAuthorizationGrantTokenError     *DeviceAuthorizationGrantTokenError     `queryParam:"inline" union:"member"`
 
 	Type DeviceAuthorizationGrantTokenBadRequestType
 }

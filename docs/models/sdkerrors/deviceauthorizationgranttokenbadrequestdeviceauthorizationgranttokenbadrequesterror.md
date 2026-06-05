@@ -15,6 +15,19 @@ A single error code from the following enum.
   expired_token
      The "device_code" has expired, and the device authorization session has concluded.
 
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
+)
+
+value := sdkerrors.DeviceAuthorizationGrantTokenBadRequestDeviceAuthorizationGrantTokenBadRequestErrorAuthorizationPending
+
+// Open enum: custom values can be created with a direct type cast
+custom := sdkerrors.DeviceAuthorizationGrantTokenBadRequestDeviceAuthorizationGrantTokenBadRequestError("custom_value")
+```
+
 
 ## Values
 

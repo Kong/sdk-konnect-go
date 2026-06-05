@@ -18,9 +18,9 @@ const (
 
 // AddOnConfigKindFieldFilter - Filter for add-on config kind field.
 type AddOnConfigKindFieldFilter struct {
-	AddOnConfigKindFieldEqualsFilter     *AddOnConfigKindFieldEqualsFilter     `queryParam:"inline,name=AddOnConfigKindFieldFilter" union:"member"`
-	AddOnConfigKindFieldNotEqualsFilter  *AddOnConfigKindFieldNotEqualsFilter  `queryParam:"inline,name=AddOnConfigKindFieldFilter" union:"member"`
-	AddOnConfigKindFieldOrEqualityFilter *AddOnConfigKindFieldOrEqualityFilter `queryParam:"inline,name=AddOnConfigKindFieldFilter" union:"member"`
+	AddOnConfigKindFieldEqualsFilter     *AddOnConfigKindFieldEqualsFilter     `queryParam:"inline" union:"member"`
+	AddOnConfigKindFieldNotEqualsFilter  *AddOnConfigKindFieldNotEqualsFilter  `queryParam:"inline" union:"member"`
+	AddOnConfigKindFieldOrEqualityFilter *AddOnConfigKindFieldOrEqualityFilter `queryParam:"inline" union:"member"`
 
 	Type AddOnConfigKindFieldFilterType
 }

@@ -33,6 +33,8 @@ func newMe(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hooks.Hooks) 
 
 // GetUsersMe - Get My User Account
 // Returns the user account for the user identified in the token of the request.
+//
+// If set, this operation will use either [Security.PersonalAccessToken] or [Security.KonnectAccessToken] from the global security.
 func (s *Me) GetUsersMe(ctx context.Context, opts ...operations.Option) (*operations.GetUsersMeResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -84,7 +86,7 @@ func (s *Me) GetUsersMe(ctx context.Context, opts ...operations.Option) (*operat
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security, "PersonalAccessToken", "KonnectAccessToken"); err != nil {
 		return nil, err
 	}
 
@@ -168,7 +170,7 @@ func (s *Me) GetUsersMe(ctx context.Context, opts ...operations.Option) (*operat
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"401", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -258,6 +260,8 @@ func (s *Me) GetUsersMe(ctx context.Context, opts ...operations.Option) (*operat
 
 // DeleteUsersMe - Delete My User Account
 // Deletes the user account for the user identified in the token of the request.
+//
+// If set, this operation will use [Security.KonnectAccessToken] from the global security.
 func (s *Me) DeleteUsersMe(ctx context.Context, opts ...operations.Option) (*operations.DeleteUsersMeResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -309,7 +313,7 @@ func (s *Me) DeleteUsersMe(ctx context.Context, opts ...operations.Option) (*ope
 	req.Header.Set("Accept", "application/problem+json")
 	req.Header.Set("User-Agent", s.sdkConfiguration.UserAgent)
 
-	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security, "KonnectAccessToken"); err != nil {
 		return nil, err
 	}
 
@@ -393,7 +397,7 @@ func (s *Me) DeleteUsersMe(ctx context.Context, opts ...operations.Option) (*ope
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"401", "403", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -416,6 +420,7 @@ func (s *Me) DeleteUsersMe(ctx context.Context, opts ...operations.Option) (*ope
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 401:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):
@@ -465,6 +470,8 @@ func (s *Me) DeleteUsersMe(ctx context.Context, opts ...operations.Option) (*ope
 
 // PatchUsersMe - Update My User Account
 // Updates the user account for the user identified in the token of the request.
+//
+// If set, this operation will use [Security.KonnectAccessToken] from the global security.
 func (s *Me) PatchUsersMe(ctx context.Context, request *components.UpdateUser, opts ...operations.Option) (*operations.PatchUsersMeResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -523,7 +530,7 @@ func (s *Me) PatchUsersMe(ctx context.Context, request *components.UpdateUser, o
 		req.Header.Set("Content-Type", reqContentType)
 	}
 
-	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security, "KonnectAccessToken"); err != nil {
 		return nil, err
 	}
 
@@ -607,7 +614,7 @@ func (s *Me) PatchUsersMe(ctx context.Context, request *components.UpdateUser, o
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -701,6 +708,8 @@ func (s *Me) PatchUsersMe(ctx context.Context, request *components.UpdateUser, o
 
 // GetUsersMePermissions - Get My Permissions
 // Returns the permissions for the current user
+//
+// If set, this operation will use [Security.KonnectAccessToken] from the global security.
 func (s *Me) GetUsersMePermissions(ctx context.Context, filter *operations.GetUsersMePermissionsQueryParamFilter, opts ...operations.Option) (*operations.GetUsersMePermissionsResponse, error) {
 	request := operations.GetUsersMePermissionsRequest{
 		Filter: filter,
@@ -760,7 +769,7 @@ func (s *Me) GetUsersMePermissions(ctx context.Context, filter *operations.GetUs
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security, "KonnectAccessToken"); err != nil {
 		return nil, err
 	}
 
@@ -844,7 +853,7 @@ func (s *Me) GetUsersMePermissions(ctx context.Context, filter *operations.GetUs
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1090,7 +1099,7 @@ func (s *Me) GetOrganizationsMe(ctx context.Context, opts ...operations.Option) 
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"401", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1323,7 +1332,7 @@ func (s *Me) UpdateOrganizationsMe(ctx context.Context, request *components.Upda
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err

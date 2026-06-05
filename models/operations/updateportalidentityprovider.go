@@ -14,7 +14,7 @@ type UpdatePortalIdentityProviderRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 	// An object representing the configuration for updating an identity provider. This configuration may pertain  to either an OIDC or a SAML identity provider.
 	//
-	UpdateIdentityProvider components.UpdateIdentityProvider `request:"mediaType=application/json"`
+	PortalUpdateIdentityProvider components.PortalUpdateIdentityProvider `request:"mediaType=application/json"`
 }
 
 func (u *UpdatePortalIdentityProviderRequest) GetPortalID() string {
@@ -31,11 +31,11 @@ func (u *UpdatePortalIdentityProviderRequest) GetID() string {
 	return u.ID
 }
 
-func (u *UpdatePortalIdentityProviderRequest) GetUpdateIdentityProvider() components.UpdateIdentityProvider {
+func (u *UpdatePortalIdentityProviderRequest) GetPortalUpdateIdentityProvider() components.PortalUpdateIdentityProvider {
 	if u == nil {
-		return components.UpdateIdentityProvider{}
+		return components.PortalUpdateIdentityProvider{}
 	}
-	return u.UpdateIdentityProvider
+	return u.PortalUpdateIdentityProvider
 }
 
 type UpdatePortalIdentityProviderResponse struct {
@@ -47,7 +47,7 @@ type UpdatePortalIdentityProviderResponse struct {
 	RawResponse *http.Response
 	// An identity provider configuration. This response represents the configuration of a specific identity provider, which can be either OIDC or SAML.
 	//
-	IdentityProvider *components.IdentityProvider
+	PortalIdentityProvider *components.PortalIdentityProvider
 }
 
 func (u *UpdatePortalIdentityProviderResponse) GetContentType() string {
@@ -71,9 +71,9 @@ func (u *UpdatePortalIdentityProviderResponse) GetRawResponse() *http.Response {
 	return u.RawResponse
 }
 
-func (u *UpdatePortalIdentityProviderResponse) GetIdentityProvider() *components.IdentityProvider {
+func (u *UpdatePortalIdentityProviderResponse) GetPortalIdentityProvider() *components.PortalIdentityProvider {
 	if u == nil {
 		return nil
 	}
-	return u.IdentityProvider
+	return u.PortalIdentityProvider
 }

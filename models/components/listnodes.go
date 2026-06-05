@@ -2,27 +2,35 @@
 
 package components
 
-type CompatibilityStatus struct {
-	State *string `json:"state,omitempty"`
+type ListNodesCompatibilityStatus struct {
+	State  *string                  `json:"state,omitempty"`
+	Issues []NodeCompatibilityIssue `json:"issues,omitempty"`
 }
 
-func (c *CompatibilityStatus) GetState() *string {
-	if c == nil {
+func (l *ListNodesCompatibilityStatus) GetState() *string {
+	if l == nil {
 		return nil
 	}
-	return c.State
+	return l.State
+}
+
+func (l *ListNodesCompatibilityStatus) GetIssues() []NodeCompatibilityIssue {
+	if l == nil {
+		return nil
+	}
+	return l.Issues
 }
 
 type Items struct {
-	ID                  *string              `json:"id,omitempty"`
-	Version             *string              `json:"version,omitempty"`
-	Hostname            *string              `json:"hostname,omitempty"`
-	LastPing            *int64               `json:"last_ping,omitempty"`
-	Type                *string              `json:"type,omitempty"`
-	CreatedAt           *int64               `json:"created_at,omitempty"`
-	UpdatedAt           *int64               `json:"updated_at,omitempty"`
-	ConfigHash          *string              `json:"config_hash,omitempty"`
-	CompatibilityStatus *CompatibilityStatus `json:"compatibility_status,omitempty"`
+	ID                  *string                       `json:"id,omitempty"`
+	Version             *string                       `json:"version,omitempty"`
+	Hostname            *string                       `json:"hostname,omitempty"`
+	LastPing            *int64                        `json:"last_ping,omitempty"`
+	Type                *string                       `json:"type,omitempty"`
+	CreatedAt           *int64                        `json:"created_at,omitempty"`
+	UpdatedAt           *int64                        `json:"updated_at,omitempty"`
+	ConfigHash          *string                       `json:"config_hash,omitempty"`
+	CompatibilityStatus *ListNodesCompatibilityStatus `json:"compatibility_status,omitempty"`
 }
 
 func (i *Items) GetID() *string {
@@ -81,7 +89,7 @@ func (i *Items) GetConfigHash() *string {
 	return i.ConfigHash
 }
 
-func (i *Items) GetCompatibilityStatus() *CompatibilityStatus {
+func (i *Items) GetCompatibilityStatus() *ListNodesCompatibilityStatus {
 	if i == nil {
 		return nil
 	}

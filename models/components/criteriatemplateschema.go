@@ -171,9 +171,9 @@ const (
 )
 
 type CriteriaTemplateSchema struct {
-	CriteriaTemplateSchemaEmptySchema *CriteriaTemplateSchemaEmptySchema `queryParam:"inline,name=CriteriaTemplateSchema" union:"member"`
-	CriteriaTemplateSimpleSchema      *CriteriaTemplateSimpleSchema      `queryParam:"inline,name=CriteriaTemplateSchema" union:"member"`
-	CriteriaTemplateJSONSchema        *CriteriaTemplateJSONSchema        `queryParam:"inline,name=CriteriaTemplateSchema" union:"member"`
+	CriteriaTemplateSchemaEmptySchema *CriteriaTemplateSchemaEmptySchema `queryParam:"inline" union:"member"`
+	CriteriaTemplateSimpleSchema      *CriteriaTemplateSimpleSchema      `queryParam:"inline" union:"member"`
+	CriteriaTemplateJSONSchema        *CriteriaTemplateJSONSchema        `queryParam:"inline" union:"member"`
 
 	Type CriteriaTemplateSchemaUnionType
 }

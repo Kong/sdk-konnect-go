@@ -18,10 +18,10 @@ const (
 )
 
 type SuggestedRuleAction struct {
-	ArchiveActionPayload *ArchiveActionPayload `queryParam:"inline,name=SuggestedRuleAction" union:"member"`
-	IgnoreActionPayload  *IgnoreActionPayload  `queryParam:"inline,name=SuggestedRuleAction" union:"member"`
-	MapActionPayload     *MapActionPayload     `queryParam:"inline,name=SuggestedRuleAction" union:"member"`
-	CreateOrMapAction    *CreateOrMapAction    `queryParam:"inline,name=SuggestedRuleAction" union:"member"`
+	ArchiveActionPayload *ArchiveActionPayload `queryParam:"inline" union:"member"`
+	IgnoreActionPayload  *IgnoreActionPayload  `queryParam:"inline" union:"member"`
+	MapActionPayload     *MapActionPayload     `queryParam:"inline" union:"member"`
+	CreateOrMapAction    *CreateOrMapAction    `queryParam:"inline" union:"member"`
 
 	Type SuggestedRuleActionType
 }

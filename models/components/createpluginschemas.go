@@ -6,6 +6,8 @@ type CreatePluginSchemas struct {
 	// The custom plugin schema; `jq -Rs '.' schema.lua`.
 	//
 	LuaSchema string `json:"lua_schema"`
+	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
+	ManagedBy map[string]any `json:"managed_by,omitempty"`
 }
 
 func (c *CreatePluginSchemas) GetLuaSchema() string {
@@ -13,4 +15,11 @@ func (c *CreatePluginSchemas) GetLuaSchema() string {
 		return ""
 	}
 	return c.LuaSchema
+}
+
+func (c *CreatePluginSchemas) GetManagedBy() map[string]any {
+	if c == nil {
+		return nil
+	}
+	return c.ManagedBy
 }

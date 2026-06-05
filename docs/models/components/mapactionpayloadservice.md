@@ -15,3 +15,15 @@ mapActionPayloadService := components.CreateMapActionPayloadServiceMapByName(com
 mapActionPayloadService := components.CreateMapActionPayloadServiceMapByID(components.MapByID{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch mapActionPayloadService.Type {
+	case components.MapActionPayloadServiceTypeMapByName:
+		// mapActionPayloadService.MapByName is populated
+	case components.MapActionPayloadServiceTypeMapByID:
+		// mapActionPayloadService.MapByID is populated
+}
+```

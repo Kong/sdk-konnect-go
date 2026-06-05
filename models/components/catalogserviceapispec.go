@@ -20,10 +20,10 @@ const (
 
 // APISpecProvider - Represents the provider, or source, of API spec contents.
 type APISpecProvider struct {
-	URLAPISpecProvider                      *URLAPISpecProvider                      `queryParam:"inline,name=ApiSpecProvider" union:"member"`
-	RawAPISpecProvider                      *RawAPISpecProvider                      `queryParam:"inline,name=ApiSpecProvider" union:"member"`
-	IntegrationAPISpecProvider              *IntegrationAPISpecProvider              `queryParam:"inline,name=ApiSpecProvider" union:"member"`
-	ResourceBoundIntegrationAPISpecProvider *ResourceBoundIntegrationAPISpecProvider `queryParam:"inline,name=ApiSpecProvider" union:"member"`
+	URLAPISpecProvider                      *URLAPISpecProvider                      `queryParam:"inline" union:"member"`
+	RawAPISpecProvider                      *RawAPISpecProvider                      `queryParam:"inline" union:"member"`
+	IntegrationAPISpecProvider              *IntegrationAPISpecProvider              `queryParam:"inline" union:"member"`
+	ResourceBoundIntegrationAPISpecProvider *ResourceBoundIntegrationAPISpecProvider `queryParam:"inline" union:"member"`
 
 	Type APISpecProviderType
 }

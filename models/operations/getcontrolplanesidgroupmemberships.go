@@ -9,18 +9,18 @@ import (
 
 type GetControlPlanesIDGroupMembershipsRequest struct {
 	// ID of a control plane group
-	ID string `pathParam:"style=simple,explode=false,name=id"`
+	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// The maximum number of items to include per page. The last page of a collection may include fewer items.
 	PageSize *int64 `queryParam:"style=form,explode=true,name=page[size]"`
 	// Request the next page of data, starting with the item after this parameter.
 	PageAfter *string `queryParam:"style=form,explode=true,name=page[after]"`
 }
 
-func (g *GetControlPlanesIDGroupMembershipsRequest) GetID() string {
+func (g *GetControlPlanesIDGroupMembershipsRequest) GetControlPlaneID() string {
 	if g == nil {
 		return ""
 	}
-	return g.ID
+	return g.ControlPlaneID
 }
 
 func (g *GetControlPlanesIDGroupMembershipsRequest) GetPageSize() *int64 {

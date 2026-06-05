@@ -7,5 +7,5 @@ User with Organization IDs only.
 
 | Field                      | Type                       | Required                   | Description                |
 | -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `ID`                       | **string*                  | :heavy_minus_sign:         | ID of a user.              |
-| `OrganizationID`           | **string*                  | :heavy_minus_sign:         | organization ID of a user. |
+| `ID`                       | `*string`                  | :heavy_minus_sign:         | ID of a user.              |
+| `OrganizationID`           | `*string`                  | :heavy_minus_sign:         | organization ID of a user. |

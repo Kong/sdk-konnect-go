@@ -45,7 +45,11 @@ func main() {
         log.Fatal(err)
     }
     if res.IntegrationInstanceAuthConfig != nil {
-        // handle response
+        switch res.IntegrationInstanceAuthConfig.Type {
+            case components.IntegrationInstanceAuthConfigTypeOauthAuthConfig:
+                // res.IntegrationInstanceAuthConfig.OauthAuthConfig is populated
+        }
+
     }
 }
 ```
@@ -55,7 +59,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `integrationInstanceID`                                  | *string*                                                 | :heavy_check_mark:                                       | The `id` of the integration instance.                    | 3f51fa25-310a-421d-bd1a-007f859021a3                     |
+| `integrationInstanceID`                                  | `string`                                                 | :heavy_check_mark:                                       | The `id` of the integration instance.                    | 3f51fa25-310a-421d-bd1a-007f859021a3                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -109,7 +113,11 @@ func main() {
         log.Fatal(err)
     }
     if res.IntegrationInstanceAuthConfig != nil {
-        // handle response
+        switch res.IntegrationInstanceAuthConfig.Type {
+            case components.IntegrationInstanceAuthConfigTypeOauthAuthConfig:
+                // res.IntegrationInstanceAuthConfig.OauthAuthConfig is populated
+        }
+
     }
 }
 ```
@@ -119,7 +127,7 @@ func main() {
 | Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      | Example                                                                                                          |
 | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                            | :heavy_check_mark:                                                                                               | The context to use for the request.                                                                              |                                                                                                                  |
-| `integrationInstanceID`                                                                                          | *string*                                                                                                         | :heavy_check_mark:                                                                                               | The `id` of the integration instance.                                                                            | 3f51fa25-310a-421d-bd1a-007f859021a3                                                                             |
+| `integrationInstanceID`                                                                                          | `string`                                                                                                         | :heavy_check_mark:                                                                                               | The `id` of the integration instance.                                                                            | 3f51fa25-310a-421d-bd1a-007f859021a3                                                                             |
 | `upsertIntegrationInstanceAuthConfig`                                                                            | [components.UpsertIntegrationInstanceAuthConfig](../../models/components/upsertintegrationinstanceauthconfig.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |                                                                                                                  |
 | `opts`                                                                                                           | [][operations.Option](../../models/operations/option.md)                                                         | :heavy_minus_sign:                                                                                               | The options for this request.                                                                                    |                                                                                                                  |
 
@@ -178,7 +186,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `integrationInstanceID`                                  | *string*                                                 | :heavy_check_mark:                                       | The `id` of the integration instance.                    | 3f51fa25-310a-421d-bd1a-007f859021a3                     |
+| `integrationInstanceID`                                  | `string`                                                 | :heavy_check_mark:                                       | The `id` of the integration instance.                    | 3f51fa25-310a-421d-bd1a-007f859021a3                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response

@@ -14,6 +14,8 @@ type CACertificate struct {
 	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
 	ID *string `json:"id,omitempty"`
+	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
+	ManagedBy map[string]any `json:"managed_by,omitempty"`
 	// An optional set of strings associated with the Certificate for grouping and filtering.
 	Tags []string `json:"tags,omitempty"`
 	// Unix epoch when the resource was last updated.
@@ -53,6 +55,13 @@ func (c *CACertificate) GetID() *string {
 		return nil
 	}
 	return c.ID
+}
+
+func (c *CACertificate) GetManagedBy() map[string]any {
+	if c == nil {
+		return nil
+	}
+	return c.ManagedBy
 }
 
 func (c *CACertificate) GetTags() []string {

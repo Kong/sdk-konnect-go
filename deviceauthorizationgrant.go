@@ -172,7 +172,7 @@ func (s *DeviceAuthorizationGrant) PostOauthDeviceAuthorize(ctx context.Context,
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -402,7 +402,7 @@ func (s *DeviceAuthorizationGrant) PostOauthDeviceToken(ctx context.Context, req
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -492,6 +492,8 @@ func (s *DeviceAuthorizationGrant) PostOauthDeviceToken(ctx context.Context, req
 
 // PostOauthDeviceAuthorizeUser - User device authorization request
 // Marks the device code as authorized and is a means to provide the interactive UI flow with the necessary request metadata for the user to confirm the request.
+//
+// If set, this operation will use [Security.KonnectAccessToken] from the global security.
 func (s *DeviceAuthorizationGrant) PostOauthDeviceAuthorizeUser(ctx context.Context, request components.DeviceAuthorizationUserRequest, opts ...operations.Option) (*operations.PostOauthDeviceAuthorizeUserResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -550,7 +552,7 @@ func (s *DeviceAuthorizationGrant) PostOauthDeviceAuthorizeUser(ctx context.Cont
 		req.Header.Set("Content-Type", reqContentType)
 	}
 
-	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security, "KonnectAccessToken"); err != nil {
 		return nil, err
 	}
 
@@ -634,7 +636,7 @@ func (s *DeviceAuthorizationGrant) PostOauthDeviceAuthorizeUser(ctx context.Cont
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -747,6 +749,8 @@ func (s *DeviceAuthorizationGrant) PostOauthDeviceAuthorizeUser(ctx context.Cont
 
 // PatchOauthDeviceConfirm - Device confirmation request
 // Confirms the authorization request by marking the device code as confirmed.
+//
+// If set, this operation will use [Security.KonnectAccessToken] from the global security.
 func (s *DeviceAuthorizationGrant) PatchOauthDeviceConfirm(ctx context.Context, request components.DeviceConfirmationRequest, opts ...operations.Option) (*operations.PatchOauthDeviceConfirmResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -805,7 +809,7 @@ func (s *DeviceAuthorizationGrant) PatchOauthDeviceConfirm(ctx context.Context, 
 		req.Header.Set("Content-Type", reqContentType)
 	}
 
-	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security); err != nil {
+	if err := utils.PopulateSecurity(ctx, req, s.sdkConfiguration.Security, "KonnectAccessToken"); err != nil {
 		return nil, err
 	}
 
@@ -889,7 +893,7 @@ func (s *DeviceAuthorizationGrant) PatchOauthDeviceConfirm(ctx context.Context, 
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -912,6 +916,7 @@ func (s *DeviceAuthorizationGrant) PatchOauthDeviceConfirm(ctx context.Context, 
 
 	switch {
 	case httpRes.StatusCode == 204:
+		utils.DrainBody(httpRes)
 	case httpRes.StatusCode == 400:
 		switch {
 		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/problem+json`):

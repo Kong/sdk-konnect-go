@@ -74,6 +74,9 @@ func (v *VulnerabilitiesMetricsFilterByRegion2) GetField() VulnerabilitiesMetric
 	return v.Field
 }
 
+// #region class-body-vulnerabilitiesmetricsfilterbyregion2
+// #endregion class-body-vulnerabilitiesmetricsfilterbyregion2
+
 type EmptyValueMetricsFilterVulnerabilitiesMetricsFilterByRegionField string
 
 const (
@@ -139,8 +142,8 @@ const (
 
 // VulnerabilitiesMetricsFilterByRegion - Filters a metrics query by `region`.
 type VulnerabilitiesMetricsFilterByRegion struct {
-	VulnerabilitiesMetricsFilterByRegionEmptyValueMetricsFilter *VulnerabilitiesMetricsFilterByRegionEmptyValueMetricsFilter `queryParam:"inline,name=VulnerabilitiesMetricsFilterByRegion" union:"member"`
-	VulnerabilitiesMetricsFilterByRegion2                       *VulnerabilitiesMetricsFilterByRegion2                       `queryParam:"inline,name=VulnerabilitiesMetricsFilterByRegion" union:"member"`
+	VulnerabilitiesMetricsFilterByRegionEmptyValueMetricsFilter *VulnerabilitiesMetricsFilterByRegionEmptyValueMetricsFilter `queryParam:"inline" union:"member"`
+	VulnerabilitiesMetricsFilterByRegion2                       *VulnerabilitiesMetricsFilterByRegion2                       `queryParam:"inline" union:"member"`
 
 	Type VulnerabilitiesMetricsFilterByRegionType
 }

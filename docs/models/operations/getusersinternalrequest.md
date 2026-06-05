@@ -5,4 +5,4 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `Aid`              | **string*          | :heavy_minus_sign: | Auth0 User ID      |
+| `Aid`              | `*string`          | :heavy_minus_sign: | Auth0 User ID      |

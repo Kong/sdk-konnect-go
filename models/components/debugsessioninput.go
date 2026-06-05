@@ -13,12 +13,20 @@ type DebugSessionInput struct {
 	MaxSamples *int64 `default:"200" json:"max_samples"`
 	// An expression used to filter the requests to sample.
 	SamplingRule *string `json:"sampling_rule,omitempty"`
+	// Trace sampling rate for the session.
+	SamplingRate *float64 `default:"1" json:"sampling_rate"`
 	// The duration of the debug session in seconds.
 	DurationSecs   *int64               `default:"300" json:"duration_secs"`
 	CaptureContent []CaptureContentType `json:"capture_content,omitempty"`
 	CaptureLog     []CaptureLogType     `json:"capture_log,omitempty"`
+	// Determines if Traces should be captured for this session.
+	CaptureTraces *bool `default:"true" json:"capture_traces"`
+	// CaptureProfile contains the information around the profile that needs to be captured. Currently supports CPU profiling, with potential for memory profiling in the future.
+	CaptureProfile *CaptureProfileInfo `json:"capture_profile,omitempty"`
 	// The data plane nodes to collect samples from.
 	Targets []string `json:"targets,omitempty"`
+	// Configuration for sanitizing sensitive data in captured payloads
+	PayloadSanitization *PayloadSanitizationConfig `json:"payload_sanitization,omitempty"`
 }
 
 func (d DebugSessionInput) MarshalJSON() ([]byte, error) {
@@ -53,6 +61,13 @@ func (d *DebugSessionInput) GetSamplingRule() *string {
 	return d.SamplingRule
 }
 
+func (d *DebugSessionInput) GetSamplingRate() *float64 {
+	if d == nil {
+		return nil
+	}
+	return d.SamplingRate
+}
+
 func (d *DebugSessionInput) GetDurationSecs() *int64 {
 	if d == nil {
 		return nil
@@ -74,9 +89,30 @@ func (d *DebugSessionInput) GetCaptureLog() []CaptureLogType {
 	return d.CaptureLog
 }
 
+func (d *DebugSessionInput) GetCaptureTraces() *bool {
+	if d == nil {
+		return nil
+	}
+	return d.CaptureTraces
+}
+
+func (d *DebugSessionInput) GetCaptureProfile() *CaptureProfileInfo {
+	if d == nil {
+		return nil
+	}
+	return d.CaptureProfile
+}
+
 func (d *DebugSessionInput) GetTargets() []string {
 	if d == nil {
 		return nil
 	}
 	return d.Targets
+}
+
+func (d *DebugSessionInput) GetPayloadSanitization() *PayloadSanitizationConfig {
+	if d == nil {
+		return nil
+	}
+	return d.PayloadSanitization
 }

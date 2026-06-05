@@ -15,16 +15,18 @@ const (
 	CreateTransitGatewayRequestTypeAWSVpcPeeringGateway        CreateTransitGatewayRequestType = "AWSVpcPeeringGateway"
 	CreateTransitGatewayRequestTypeAWSResourceEndpointGateway  CreateTransitGatewayRequestType = "AWSResourceEndpointGateway"
 	CreateTransitGatewayRequestTypeAzureTransitGateway         CreateTransitGatewayRequestType = "AzureTransitGateway"
+	CreateTransitGatewayRequestTypeAzureVhubPeeringGateway     CreateTransitGatewayRequestType = "AzureVhubPeeringGateway"
 	CreateTransitGatewayRequestTypeGcpVpcPeeringTransitGateway CreateTransitGatewayRequestType = "GcpVpcPeeringTransitGateway"
 )
 
 // CreateTransitGatewayRequest - Request schema for creating a transit gateway.
 type CreateTransitGatewayRequest struct {
-	AWSTransitGateway           *AWSTransitGateway           `queryParam:"inline,name=CreateTransitGatewayRequest" union:"member"`
-	AWSVpcPeeringGateway        *AWSVpcPeeringGateway        `queryParam:"inline,name=CreateTransitGatewayRequest" union:"member"`
-	AWSResourceEndpointGateway  *AWSResourceEndpointGateway  `queryParam:"inline,name=CreateTransitGatewayRequest" union:"member"`
-	AzureTransitGateway         *AzureTransitGateway         `queryParam:"inline,name=CreateTransitGatewayRequest" union:"member"`
-	GcpVpcPeeringTransitGateway *GcpVpcPeeringTransitGateway `queryParam:"inline,name=CreateTransitGatewayRequest" union:"member"`
+	AWSTransitGateway           *AWSTransitGateway           `queryParam:"inline" union:"member"`
+	AWSVpcPeeringGateway        *AWSVpcPeeringGateway        `queryParam:"inline" union:"member"`
+	AWSResourceEndpointGateway  *AWSResourceEndpointGateway  `queryParam:"inline" union:"member"`
+	AzureTransitGateway         *AzureTransitGateway         `queryParam:"inline" union:"member"`
+	AzureVhubPeeringGateway     *AzureVhubPeeringGateway     `queryParam:"inline" union:"member"`
+	GcpVpcPeeringTransitGateway *GcpVpcPeeringTransitGateway `queryParam:"inline" union:"member"`
 
 	Type CreateTransitGatewayRequestType
 }
@@ -62,6 +64,15 @@ func CreateCreateTransitGatewayRequestAzureTransitGateway(azureTransitGateway Az
 	return CreateTransitGatewayRequest{
 		AzureTransitGateway: &azureTransitGateway,
 		Type:                typ,
+	}
+}
+
+func CreateCreateTransitGatewayRequestAzureVhubPeeringGateway(azureVhubPeeringGateway AzureVhubPeeringGateway) CreateTransitGatewayRequest {
+	typ := CreateTransitGatewayRequestTypeAzureVhubPeeringGateway
+
+	return CreateTransitGatewayRequest{
+		AzureVhubPeeringGateway: &azureVhubPeeringGateway,
+		Type:                    typ,
 	}
 }
 
@@ -104,6 +115,13 @@ func (u *CreateTransitGatewayRequest) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	var azureVhubPeeringGateway AzureVhubPeeringGateway = AzureVhubPeeringGateway{}
+	if err := utils.UnmarshalJSON(data, &azureVhubPeeringGateway, "", true, nil); err == nil {
+		u.AzureVhubPeeringGateway = &azureVhubPeeringGateway
+		u.Type = CreateTransitGatewayRequestTypeAzureVhubPeeringGateway
+		return nil
+	}
+
 	var gcpVpcPeeringTransitGateway GcpVpcPeeringTransitGateway = GcpVpcPeeringTransitGateway{}
 	if err := utils.UnmarshalJSON(data, &gcpVpcPeeringTransitGateway, "", true, nil); err == nil {
 		u.GcpVpcPeeringTransitGateway = &gcpVpcPeeringTransitGateway
@@ -129,6 +147,10 @@ func (u CreateTransitGatewayRequest) MarshalJSON() ([]byte, error) {
 
 	if u.AzureTransitGateway != nil {
 		return utils.MarshalJSON(u.AzureTransitGateway, "", true)
+	}
+
+	if u.AzureVhubPeeringGateway != nil {
+		return utils.MarshalJSON(u.AzureVhubPeeringGateway, "", true)
 	}
 
 	if u.GcpVpcPeeringTransitGateway != nil {

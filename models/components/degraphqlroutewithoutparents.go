@@ -19,10 +19,12 @@ type DegraphqlRouteWithoutParents struct {
 	// User-defined entity description. Konnect only field, not synced to the Gateway.
 	Description *string `json:"description,omitempty"`
 	// A string representing a UUID (universally unique identifier).
-	ID      *string                              `json:"id,omitempty"`
-	Methods []string                             `json:"methods,omitempty"`
-	Query   string                               `json:"query"`
-	Service *DegraphqlRouteWithoutParentsService `json:"service,omitempty"`
+	ID *string `json:"id,omitempty"`
+	// Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.
+	ManagedBy map[string]any                       `json:"managed_by,omitempty"`
+	Methods   []string                             `json:"methods,omitempty"`
+	Query     string                               `json:"query"`
+	Service   *DegraphqlRouteWithoutParentsService `json:"service,omitempty"`
 	// Unix epoch when the resource was last updated.
 	UpdatedAt *int64 `json:"updated_at,omitempty"`
 	URI       string `json:"uri"`
@@ -47,6 +49,13 @@ func (d *DegraphqlRouteWithoutParents) GetID() *string {
 		return nil
 	}
 	return d.ID
+}
+
+func (d *DegraphqlRouteWithoutParents) GetManagedBy() map[string]any {
+	if d == nil {
+		return nil
+	}
+	return d.ManagedBy
 }
 
 func (d *DegraphqlRouteWithoutParents) GetMethods() []string {

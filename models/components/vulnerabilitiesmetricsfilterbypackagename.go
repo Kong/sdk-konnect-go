@@ -74,6 +74,9 @@ func (v *VulnerabilitiesMetricsFilterByPackageName2) GetField() VulnerabilitiesM
 	return v.Field
 }
 
+// #region class-body-vulnerabilitiesmetricsfilterbypackagename2
+// #endregion class-body-vulnerabilitiesmetricsfilterbypackagename2
+
 type EmptyValueMetricsFilterVulnerabilitiesMetricsFilterByPackageNameField string
 
 const (
@@ -139,8 +142,8 @@ const (
 
 // VulnerabilitiesMetricsFilterByPackageName - Filters a metrics query by `package.name`.
 type VulnerabilitiesMetricsFilterByPackageName struct {
-	VulnerabilitiesMetricsFilterByPackageNameEmptyValueMetricsFilter *VulnerabilitiesMetricsFilterByPackageNameEmptyValueMetricsFilter `queryParam:"inline,name=VulnerabilitiesMetricsFilterByPackageName" union:"member"`
-	VulnerabilitiesMetricsFilterByPackageName2                       *VulnerabilitiesMetricsFilterByPackageName2                       `queryParam:"inline,name=VulnerabilitiesMetricsFilterByPackageName" union:"member"`
+	VulnerabilitiesMetricsFilterByPackageNameEmptyValueMetricsFilter *VulnerabilitiesMetricsFilterByPackageNameEmptyValueMetricsFilter `queryParam:"inline" union:"member"`
+	VulnerabilitiesMetricsFilterByPackageName2                       *VulnerabilitiesMetricsFilterByPackageName2                       `queryParam:"inline" union:"member"`
 
 	Type VulnerabilitiesMetricsFilterByPackageNameType
 }

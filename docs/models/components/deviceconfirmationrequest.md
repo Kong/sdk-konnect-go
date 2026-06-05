@@ -7,4 +7,4 @@ The request schema for the device confirmation request.
 
 | Field                                  | Type                                   | Required                               | Description                            |
 | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `UserCode`                             | *string*                               | :heavy_check_mark:                     | The end-user device verification code. |
+| `UserCode`                             | `string`                               | :heavy_check_mark:                     | The end-user device verification code. |

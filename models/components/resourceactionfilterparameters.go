@@ -15,7 +15,7 @@ const (
 )
 
 type ResourceActionFilterParametersIntegrationName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type ResourceActionFilterParametersIntegrationNameType
 }
@@ -56,7 +56,7 @@ const (
 )
 
 type ResourceActionFilterParametersIntegrationInstanceName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_instance_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type ResourceActionFilterParametersIntegrationInstanceNameType
 }
@@ -97,7 +97,7 @@ const (
 )
 
 type ResourceActionFilterParametersIntegrationInstanceDisplayName struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=integration_instance_display_name" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type ResourceActionFilterParametersIntegrationInstanceDisplayNameType
 }
@@ -138,7 +138,7 @@ const (
 )
 
 type ResourceActionFilterParametersIntegrationInstanceID struct {
-	StringFieldFilterExact *StringFieldFilterExact `queryParam:"inline,name=integration_instance_id" union:"member"`
+	StringFieldFilterExact *StringFieldFilterExact `queryParam:"inline" union:"member"`
 
 	Type ResourceActionFilterParametersIntegrationInstanceIDType
 }

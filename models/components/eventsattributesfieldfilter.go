@@ -17,7 +17,7 @@ const (
 // EventsAttributesFieldFilter - Filters the events by values contained within the `attributes` field. Filters must use dot-notation to identify
 // the details property that will be used to filter the results.
 type EventsAttributesFieldFilter struct {
-	StringFieldFilter *StringFieldFilter `queryParam:"inline,name=EventsAttributesFieldFilter" union:"member"`
+	StringFieldFilter *StringFieldFilter `queryParam:"inline" union:"member"`
 
 	Type EventsAttributesFieldFilterType
 }

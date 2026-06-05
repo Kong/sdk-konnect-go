@@ -11,8 +11,8 @@ An OIDC strategy may be used in conjunction with a DCR provider to automatically
 
 | Field                  | Type                   | Required               | Description            |
 | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `Issuer`               | **string*              | :heavy_minus_sign:     | N/A                    |
-| `CredentialClaim`      | []*string*             | :heavy_minus_sign:     | N/A                    |
-| `Scopes`               | []*string*             | :heavy_minus_sign:     | N/A                    |
-| `AuthMethods`          | []*string*             | :heavy_minus_sign:     | N/A                    |
-| `AdditionalProperties` | map[string]*any*       | :heavy_minus_sign:     | N/A                    |
+| `Issuer`               | `*string`              | :heavy_minus_sign:     | N/A                    |
+| `CredentialClaim`      | []`string`             | :heavy_minus_sign:     | N/A                    |
+| `Scopes`               | []`string`             | :heavy_minus_sign:     | N/A                    |
+| `AuthMethods`          | []`string`             | :heavy_minus_sign:     | N/A                    |
+| `AdditionalProperties` | map[string]`any`       | :heavy_minus_sign:     | N/A                    |

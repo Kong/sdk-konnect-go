@@ -6,6 +6,19 @@ The current state of the add-on. Possible values:
 - `terminating` - The add-on is in the process of being deleted.
 
 
+## Example Usage
+
+```go
+import (
+	"github.com/Kong/sdk-konnect-go/models/components"
+)
+
+value := components.AddOnStateInitializing
+
+// Open enum: custom values can be created with a direct type cast
+custom := components.AddOnState("custom_value")
+```
+
 
 ## Values
 

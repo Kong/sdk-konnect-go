@@ -19,6 +19,7 @@ const (
 	ControlPlaneClusterTypeClusterTypeEventGateway          ControlPlaneClusterType = "CLUSTER_TYPE_EVENT_GATEWAY"
 	ControlPlaneClusterTypeClusterTypeKafkaNativeEventProxy ControlPlaneClusterType = "CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY"
 	ControlPlaneClusterTypeClusterTypeCloudAPIGateway       ControlPlaneClusterType = "CLUSTER_TYPE_CLOUD_API_GATEWAY"
+	ControlPlaneClusterTypeClusterTypeServerlessV1          ControlPlaneClusterType = "CLUSTER_TYPE_SERVERLESS_V1"
 )
 
 func (e ControlPlaneClusterType) ToPointer() *ControlPlaneClusterType {
@@ -29,7 +30,7 @@ func (e ControlPlaneClusterType) ToPointer() *ControlPlaneClusterType {
 func (e *ControlPlaneClusterType) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "CLUSTER_TYPE_CONTROL_PLANE", "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER", "CLUSTER_TYPE_CONTROL_PLANE_GROUP", "CLUSTER_TYPE_SERVERLESS", "CLUSTER_TYPE_HTTP_GATEWAY", "CLUSTER_TYPE_EVENT_GATEWAY", "CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY", "CLUSTER_TYPE_CLOUD_API_GATEWAY":
+		case "CLUSTER_TYPE_CONTROL_PLANE", "CLUSTER_TYPE_K8S_INGRESS_CONTROLLER", "CLUSTER_TYPE_CONTROL_PLANE_GROUP", "CLUSTER_TYPE_SERVERLESS", "CLUSTER_TYPE_HTTP_GATEWAY", "CLUSTER_TYPE_EVENT_GATEWAY", "CLUSTER_TYPE_KAFKA_NATIVE_EVENT_PROXY", "CLUSTER_TYPE_CLOUD_API_GATEWAY", "CLUSTER_TYPE_SERVERLESS_V1":
 			return true
 		}
 	}
@@ -72,7 +73,7 @@ type Config struct {
 	// Whether the Control Plane can be used for cloud-gateways.
 	CloudGateway bool `json:"cloud_gateway"`
 	// Array of proxy URLs associated with reaching the data-planes connected to a control-plane.
-	ProxyUrls []ProxyURL `json:"proxy_urls,omitempty"`
+	ProxyUrls []ProxyURL `json:"proxy_urls"`
 }
 
 func (c *Config) GetControlPlaneEndpoint() string {
@@ -112,7 +113,7 @@ func (c *Config) GetCloudGateway() bool {
 
 func (c *Config) GetProxyUrls() []ProxyURL {
 	if c == nil {
-		return nil
+		return []ProxyURL{}
 	}
 	return c.ProxyUrls
 }
@@ -124,12 +125,12 @@ type ControlPlane struct {
 	// The name of the control plane.
 	Name string `json:"name"`
 	// The description of the control plane in Konnect.
-	Description *string `json:"description,omitempty"`
+	Description string `json:"description"`
 	// Labels store metadata of an entity that can be used for filtering an entity list or for searching across entity types.
 	//
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
-	Labels map[string]string `json:"labels,omitempty"`
+	Labels map[string]string `json:"labels"`
 	// CP configuration object for related access endpoints.
 	Config Config `json:"config"`
 	// An ISO-8604 timestamp representation of control plane creation date.
@@ -163,16 +164,16 @@ func (c *ControlPlane) GetName() string {
 	return c.Name
 }
 
-func (c *ControlPlane) GetDescription() *string {
+func (c *ControlPlane) GetDescription() string {
 	if c == nil {
-		return nil
+		return ""
 	}
 	return c.Description
 }
 
 func (c *ControlPlane) GetLabels() map[string]string {
 	if c == nil {
-		return nil
+		return map[string]string{}
 	}
 	return c.Labels
 }

@@ -118,7 +118,17 @@ func main() {
         log.Fatal(err)
     }
     if res.SuggestedResourceActionObject != nil {
-        // handle response
+        switch res.SuggestedResourceActionObject.Action.Type {
+            case components.SuggestedResourceActionTypeArchiveActionPayload:
+                // res.SuggestedResourceActionObject.Action.ArchiveActionPayload is populated
+            case components.SuggestedResourceActionTypeIgnoreActionPayload:
+                // res.SuggestedResourceActionObject.Action.IgnoreActionPayload is populated
+            case components.SuggestedResourceActionTypeMapServiceAction:
+                // res.SuggestedResourceActionObject.Action.MapServiceAction is populated
+            case components.SuggestedResourceActionTypeCreateAndMapServiceActionPayload:
+                // res.SuggestedResourceActionObject.Action.CreateAndMapServiceActionPayload is populated
+        }
+
     }
 }
 ```
@@ -128,7 +138,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
-| `suggestedResourceActionID`                              | *string*                                                 | :heavy_check_mark:                                       | ID of the suggested resource action.                     | 76ca0689-f08e-4c04-b2a6-4c992d89d554                     |
+| `suggestedResourceActionID`                              | `string`                                                 | :heavy_check_mark:                                       | ID of the suggested resource action.                     | 76ca0689-f08e-4c04-b2a6-4c992d89d554                     |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
 
 ### Response
@@ -178,7 +188,17 @@ func main() {
         log.Fatal(err)
     }
     if res.SuggestedResourceActionObject != nil {
-        // handle response
+        switch res.SuggestedResourceActionObject.Action.Type {
+            case components.SuggestedResourceActionTypeArchiveActionPayload:
+                // res.SuggestedResourceActionObject.Action.ArchiveActionPayload is populated
+            case components.SuggestedResourceActionTypeIgnoreActionPayload:
+                // res.SuggestedResourceActionObject.Action.IgnoreActionPayload is populated
+            case components.SuggestedResourceActionTypeMapServiceAction:
+                // res.SuggestedResourceActionObject.Action.MapServiceAction is populated
+            case components.SuggestedResourceActionTypeCreateAndMapServiceActionPayload:
+                // res.SuggestedResourceActionObject.Action.CreateAndMapServiceActionPayload is populated
+        }
+
     }
 }
 ```
@@ -188,7 +208,7 @@ func main() {
 | Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          | Example                                                                                              |
 | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                | :heavy_check_mark:                                                                                   | The context to use for the request.                                                                  |                                                                                                      |
-| `suggestedResourceActionID`                                                                          | *string*                                                                                             | :heavy_check_mark:                                                                                   | ID of the suggested resource action.                                                                 | 76ca0689-f08e-4c04-b2a6-4c992d89d554                                                                 |
+| `suggestedResourceActionID`                                                                          | `string`                                                                                             | :heavy_check_mark:                                                                                   | ID of the suggested resource action.                                                                 | 76ca0689-f08e-4c04-b2a6-4c992d89d554                                                                 |
 | `updateSuggestedResourceAction`                                                                      | [components.UpdateSuggestedResourceAction](../../models/components/updatesuggestedresourceaction.md) | :heavy_check_mark:                                                                                   | Request body schema for updating a suggested resource action.                                        |                                                                                                      |
 | `opts`                                                                                               | [][operations.Option](../../models/operations/option.md)                                             | :heavy_minus_sign:                                                                                   | The options for this request.                                                                        |                                                                                                      |
 

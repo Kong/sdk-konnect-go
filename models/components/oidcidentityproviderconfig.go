@@ -12,6 +12,8 @@ type OIDCIdentityProviderConfig struct {
 	IssuerURL string `json:"issuer_url"`
 	// The client ID assigned to your application by the identity provider.
 	ClientID string `json:"client_id"`
+	// The Client Secret assigned to your application by the identity provider.
+	ClientSecret *string `json:"client_secret,omitempty"`
 	// The scopes requested by your application when authenticating with the identity provider.
 	Scopes []string `json:"scopes,omitempty"`
 	// Defines the mappings between OpenID Connect (OIDC) claims and local claims used by your application for
@@ -43,6 +45,13 @@ func (o *OIDCIdentityProviderConfig) GetClientID() string {
 		return ""
 	}
 	return o.ClientID
+}
+
+func (o *OIDCIdentityProviderConfig) GetClientSecret() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ClientSecret
 }
 
 func (o *OIDCIdentityProviderConfig) GetScopes() []string {

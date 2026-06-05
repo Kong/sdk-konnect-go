@@ -4,10 +4,6 @@ package components
 
 type SuggestionRuleErrorDetail struct {
 	// The type of error that occured when evaluating suggestion rule configuration against given integration record.
-	//
-	//
-	//
-	//
 	//   - `error`: represents a generic error.
 	//   - `timeout`: timeout occured when evaluating jq expression
 	//   - `invalid-expression`: jq expression could not be evaluated due to syntax error(s).

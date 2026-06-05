@@ -7,4 +7,4 @@ The request schema to create a Config Store.
 
 | Field              | Type               | Required           | Description        | Example            |
 | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `Name`             | **string*          | :heavy_minus_sign: | N/A                | Config Store       |
+| `Name`             | `*string`          | :heavy_minus_sign: | N/A                | Config Store       |

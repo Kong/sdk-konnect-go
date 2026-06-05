@@ -40,8 +40,8 @@ const (
 )
 
 type MapActionPayloadService struct {
-	MapByName *MapByName `queryParam:"inline,name=service" union:"member"`
-	MapByID   *MapByID   `queryParam:"inline,name=service" union:"member"`
+	MapByName *MapByName `queryParam:"inline" union:"member"`
+	MapByID   *MapByID   `queryParam:"inline" union:"member"`
 
 	Type MapActionPayloadServiceType
 }

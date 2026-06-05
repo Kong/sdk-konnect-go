@@ -20,8 +20,8 @@ const (
 
 // IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBody - Not Found
 type IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBody struct {
-	NotFoundError                *components.NotFoundError                `queryParam:"inline,name=responseBody" union:"member"`
-	IntegrationNotInstalledError *components.IntegrationNotInstalledError `queryParam:"inline,name=responseBody" union:"member"`
+	NotFoundError                *components.NotFoundError                `queryParam:"inline" union:"member"`
+	IntegrationNotInstalledError *components.IntegrationNotInstalledError `queryParam:"inline" union:"member"`
 
 	Type IntegrationInstanceProxyRequestIntegrationInstanceProxyResponseBodyType
 
@@ -102,8 +102,8 @@ const (
 
 // IntegrationInstanceProxyRequestResponseBody - Error response indicating the proxy request could not be sent due to invalid state of the request body or integration instance
 type IntegrationInstanceProxyRequestResponseBody struct {
-	BadRequestError              *components.BadRequestError              `queryParam:"inline,name=responseBody" union:"member"`
-	IntegrationUnauthorizedError *components.IntegrationUnauthorizedError `queryParam:"inline,name=responseBody" union:"member"`
+	BadRequestError              *components.BadRequestError              `queryParam:"inline" union:"member"`
+	IntegrationUnauthorizedError *components.IntegrationUnauthorizedError `queryParam:"inline" union:"member"`
 
 	Type IntegrationInstanceProxyRequestResponseBodyType
 

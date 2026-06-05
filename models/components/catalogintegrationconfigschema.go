@@ -22,6 +22,9 @@ func (c *CatalogIntegrationConfigSchema1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// #region class-body-catalogintegrationconfigschema1
+// #endregion class-body-catalogintegrationconfigschema1
+
 type CatalogIntegrationConfigSchemaType string
 
 const (
@@ -32,10 +35,10 @@ const (
 )
 
 type CatalogIntegrationConfigSchema struct {
-	CatalogIntegrationConfigSchema1 *CatalogIntegrationConfigSchema1 `queryParam:"inline,name=CatalogIntegrationConfigSchema" union:"member"`
-	StringConfigFieldSchema         *StringConfigFieldSchema         `queryParam:"inline,name=CatalogIntegrationConfigSchema" union:"member"`
-	EnumConfigFieldSchema           *EnumConfigFieldSchema           `queryParam:"inline,name=CatalogIntegrationConfigSchema" union:"member"`
-	BooleanConfigFieldSchema        *BooleanConfigFieldSchema        `queryParam:"inline,name=CatalogIntegrationConfigSchema" union:"member"`
+	CatalogIntegrationConfigSchema1 *CatalogIntegrationConfigSchema1 `queryParam:"inline" union:"member"`
+	StringConfigFieldSchema         *StringConfigFieldSchema         `queryParam:"inline" union:"member"`
+	EnumConfigFieldSchema           *EnumConfigFieldSchema           `queryParam:"inline" union:"member"`
+	BooleanConfigFieldSchema        *BooleanConfigFieldSchema        `queryParam:"inline" union:"member"`
 
 	Type CatalogIntegrationConfigSchemaType
 }

@@ -159,6 +159,8 @@ func (p *PluginService) GetID() *string {
 type Plugin struct {
 	// Arbitrary JSON data for UI configuration. Konnect only field, not synced to the Gateway.
 	UIData map[string]any `json:"__ui_data,omitempty"`
+	// An expression used for conditional control over plugin execution. If the expression evaluates to `true` during the request flow, the plugin is executed; otherwise, it is skipped.
+	Condition *string `json:"condition,omitempty"`
 	// The configuration properties for the Plugin which can be found on the plugins documentation page in the [Kong Hub](https://docs.konghq.com/hub/).
 	Config map[string]any `json:"config,omitempty"`
 	// If set, the plugin will activate only for requests where the specified has been authenticated. (Note that some plugins can not be restricted to consumers this way.). Leave unset for the plugin to activate regardless of the authenticated Consumer.
@@ -210,6 +212,13 @@ func (p *Plugin) GetUIData() map[string]any {
 		return nil
 	}
 	return p.UIData
+}
+
+func (p *Plugin) GetCondition() *string {
+	if p == nil {
+		return nil
+	}
+	return p.Condition
 }
 
 func (p *Plugin) GetConfig() map[string]any {

@@ -27,3 +27,19 @@ catalogIntegrationConfigSchema := components.CreateCatalogIntegrationConfigSchem
 catalogIntegrationConfigSchema := components.CreateCatalogIntegrationConfigSchemaBooleanConfigFieldSchema(components.BooleanConfigFieldSchema{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch catalogIntegrationConfigSchema.Type {
+	case components.CatalogIntegrationConfigSchemaTypeCatalogIntegrationConfigSchema1:
+		// catalogIntegrationConfigSchema.CatalogIntegrationConfigSchema1 is populated
+	case components.CatalogIntegrationConfigSchemaTypeStringConfigFieldSchema:
+		// catalogIntegrationConfigSchema.StringConfigFieldSchema is populated
+	case components.CatalogIntegrationConfigSchemaTypeEnumConfigFieldSchema:
+		// catalogIntegrationConfigSchema.EnumConfigFieldSchema is populated
+	case components.CatalogIntegrationConfigSchemaTypeBooleanConfigFieldSchema:
+		// catalogIntegrationConfigSchema.BooleanConfigFieldSchema is populated
+}
+```
