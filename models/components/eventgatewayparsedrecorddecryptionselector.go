@@ -8,53 +8,27 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type One struct {
-	// A field selector. It can select nested fields and array entries.
-	//
-	// Currently supported are exact matches.
-	//
-	Match string `json:"match"`
-}
-
-func (o One) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(o, "", false)
-}
-
-func (o *One) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &o, "", false, []string{"match"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *One) GetMatch() string {
-	if o == nil {
-		return ""
-	}
-	return o.Match
-}
-
 type PathsType string
 
 const (
-	PathsTypeArrayOf1 PathsType = "arrayOf1"
-	PathsTypeStr      PathsType = "str"
+	PathsTypeArrayOfEventGatewayParsedRecordFieldPathsArray PathsType = "arrayOfEventGatewayParsedRecordFieldPathsArray"
+	PathsTypeStr                                            PathsType = "str"
 )
 
 // Paths - Selects which fields of the parsed record to decrypt. A maximum of 50 path entries are allowed.
 type Paths struct {
-	ArrayOf1 []One   `queryParam:"inline" union:"member"`
-	Str      *string `queryParam:"inline" union:"member"`
+	ArrayOfEventGatewayParsedRecordFieldPathsArray []EventGatewayParsedRecordFieldPathsArray `queryParam:"inline" union:"member"`
+	Str                                            *string                                   `queryParam:"inline" union:"member"`
 
 	Type PathsType
 }
 
-func CreatePathsArrayOf1(arrayOf1 []One) Paths {
-	typ := PathsTypeArrayOf1
+func CreatePathsArrayOfEventGatewayParsedRecordFieldPathsArray(arrayOfEventGatewayParsedRecordFieldPathsArray []EventGatewayParsedRecordFieldPathsArray) Paths {
+	typ := PathsTypeArrayOfEventGatewayParsedRecordFieldPathsArray
 
 	return Paths{
-		ArrayOf1: arrayOf1,
-		Type:     typ,
+		ArrayOfEventGatewayParsedRecordFieldPathsArray: arrayOfEventGatewayParsedRecordFieldPathsArray,
+		Type: typ,
 	}
 }
 
@@ -69,10 +43,10 @@ func CreatePathsStr(str string) Paths {
 
 func (u *Paths) UnmarshalJSON(data []byte) error {
 
-	var arrayOf1 []One = []One{}
-	if err := utils.UnmarshalJSON(data, &arrayOf1, "", true, nil); err == nil {
-		u.ArrayOf1 = arrayOf1
-		u.Type = PathsTypeArrayOf1
+	var arrayOfEventGatewayParsedRecordFieldPathsArray []EventGatewayParsedRecordFieldPathsArray = []EventGatewayParsedRecordFieldPathsArray{}
+	if err := utils.UnmarshalJSON(data, &arrayOfEventGatewayParsedRecordFieldPathsArray, "", true, nil); err == nil {
+		u.ArrayOfEventGatewayParsedRecordFieldPathsArray = arrayOfEventGatewayParsedRecordFieldPathsArray
+		u.Type = PathsTypeArrayOfEventGatewayParsedRecordFieldPathsArray
 		return nil
 	}
 
@@ -87,8 +61,8 @@ func (u *Paths) UnmarshalJSON(data []byte) error {
 }
 
 func (u Paths) MarshalJSON() ([]byte, error) {
-	if u.ArrayOf1 != nil {
-		return utils.MarshalJSON(u.ArrayOf1, "", true)
+	if u.ArrayOfEventGatewayParsedRecordFieldPathsArray != nil {
+		return utils.MarshalJSON(u.ArrayOfEventGatewayParsedRecordFieldPathsArray, "", true)
 	}
 
 	if u.Str != nil {

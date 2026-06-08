@@ -10,8 +10,8 @@ import (
 	"time"
 )
 
-// UpsertBillingProfileRequestTaxID - The entity's legal identification used for tax purposes. They may have
-// other numbers, but we're only interested in those valid for tax purposes.
+// UpsertBillingProfileRequestTaxID - The entity's legal identification used for tax purposes. They may have other
+// numbers, but we're only interested in those valid for tax purposes.
 type UpsertBillingProfileRequestTaxID struct {
 	// Normalized tax identification code shown on the original identity document.
 	Code *string `json:"code,omitempty"`
@@ -26,7 +26,8 @@ func (u *UpsertBillingProfileRequestTaxID) GetCode() *string {
 
 // UpsertBillingProfileRequestBillingAddress - Billing address.
 type UpsertBillingProfileRequestBillingAddress struct {
-	// Country code in [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) alpha-2 format.
+	// Country code in [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html)
+	// alpha-2 format.
 	Country *string `json:"country,omitempty"`
 	// Postal code.
 	PostalCode *string `json:"postal_code,omitempty"`
@@ -104,14 +105,15 @@ func (u *UpsertBillingProfileRequestAddresses) GetBillingAddress() UpsertBilling
 	return u.BillingAddress
 }
 
-// UpsertBillingProfileRequestSupplier - The name and contact information for the supplier this billing profile represents
+// UpsertBillingProfileRequestSupplier - The name and contact information for the supplier this billing profile
+// represents
 type UpsertBillingProfileRequestSupplier struct {
 	// An optional unique key of the party.
 	Key *string `json:"key,omitempty"`
 	// Legal name or representation of the party.
 	Name *string `json:"name,omitempty"`
-	// The entity's legal identification used for tax purposes. They may have
-	// other numbers, but we're only interested in those valid for tax purposes.
+	// The entity's legal identification used for tax purposes. They may have other
+	// numbers, but we're only interested in those valid for tax purposes.
 	TaxID *UpsertBillingProfileRequestTaxID `json:"tax_id,omitempty"`
 	// Address for where information should be sent if needed.
 	Addresses *UpsertBillingProfileRequestAddresses `json:"addresses,omitempty"`
@@ -202,8 +204,8 @@ func (b *BillingWorkflowCollectionAlignmentAnchoredAlignmentRecurringPeriod) Get
 	return b.Interval
 }
 
-// UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored - BillingWorkflowCollectionAlignmentAnchored specifies the alignment for collecting the pending line items
-// into an invoice.
+// UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored - BillingWorkflowCollectionAlignmentAnchored specifies the alignment for
+// collecting the pending line items into an invoice.
 type UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored struct {
 	// The type of alignment.
 	Type BillingWorkflowCollectionAlignmentAnchoredAlignmentUpsertBillingProfileRequestType `json:"type"`
@@ -260,8 +262,8 @@ func (e *BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingPro
 	}
 }
 
-// UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription - BillingWorkflowCollectionAlignmentSubscription specifies the alignment for collecting the pending line items
-// into an invoice.
+// UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription - BillingWorkflowCollectionAlignmentSubscription specifies the alignment for
+// collecting the pending line items into an invoice.
 type UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription struct {
 	// The type of alignment.
 	Type BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestType `json:"type"`
@@ -375,10 +377,11 @@ func (u UpsertBillingProfileRequestAlignment) MarshalJSON() ([]byte, error) {
 type UpsertBillingProfileRequestWorkflowCollectionSettings struct {
 	// The alignment for collecting the pending line items into an invoice.
 	Alignment *UpsertBillingProfileRequestAlignment `json:"alignment,omitempty"`
-	// This grace period can be used to delay the collection of the pending line items specified in
-	// alignment.
+	// This grace period can be used to delay the collection of the pending line items
+	// specified in alignment.
 	//
-	// This is useful, in case of multiple subscriptions having slightly different billing periods.
+	// This is useful, in case of multiple subscriptions having slightly different
+	// billing periods.
 	Interval *string `default:"PT1H" json:"interval"`
 }
 
@@ -551,8 +554,8 @@ func (u UpsertBillingProfileRequestPayment) MarshalJSON() ([]byte, error) {
 
 // UpsertBillingProfileRequestTaxBehavior - Tax behavior.
 //
-// If not specified the billing profile is used to determine the tax behavior.
-// If not specified in the billing profile, the provider's default behavior is used.
+// If not specified the billing profile is used to determine the tax behavior. If
+// not specified in the billing profile, the provider's default behavior is used.
 type UpsertBillingProfileRequestTaxBehavior string
 
 const (
@@ -607,8 +610,9 @@ func (u *UpsertBillingProfileRequestExternalInvoicingTaxConfig) GetCode() string
 
 // UpsertBillingProfileRequestTaxCode - Tax code reference.
 //
-// When both `tax_code` and `tax_code_id` are provided, `tax_code` takes precedence.
-// When `stripe.code` is also provided, `tax_code` still wins and `stripe.code` is ignored.
+// When both `tax_code` and `tax_code_id` are provided, `tax_code` takes
+// precedence. When `stripe.code` is also provided, `tax_code` still wins and
+// `stripe.code` is ignored.
 type UpsertBillingProfileRequestTaxCode struct {
 	// ULID (Universally Unique Lexicographically Sortable Identifier).
 	ID string `json:"id"`
@@ -625,8 +629,8 @@ func (u *UpsertBillingProfileRequestTaxCode) GetID() string {
 type UpsertBillingProfileRequestDefaultTaxConfig struct {
 	// Tax behavior.
 	//
-	// If not specified the billing profile is used to determine the tax behavior.
-	// If not specified in the billing profile, the provider's default behavior is used.
+	// If not specified the billing profile is used to determine the tax behavior. If
+	// not specified in the billing profile, the provider's default behavior is used.
 	Behavior *UpsertBillingProfileRequestTaxBehavior `json:"behavior,omitempty"`
 	// Stripe tax config.
 	//
@@ -642,8 +646,9 @@ type UpsertBillingProfileRequestDefaultTaxConfig struct {
 	TaxCodeID *string `json:"tax_code_id,omitempty"`
 	// Tax code reference.
 	//
-	// When both `tax_code` and `tax_code_id` are provided, `tax_code` takes precedence.
-	// When `stripe.code` is also provided, `tax_code` still wins and `stripe.code` is ignored.
+	// When both `tax_code` and `tax_code_id` are provided, `tax_code` takes
+	// precedence. When `stripe.code` is also provided, `tax_code` still wins and
+	// `stripe.code` is ignored.
 	TaxCode *UpsertBillingProfileRequestTaxCode `json:"tax_code,omitempty"`
 }
 
@@ -684,13 +689,13 @@ func (u *UpsertBillingProfileRequestDefaultTaxConfig) GetTaxCode() *UpsertBillin
 
 // UpsertBillingProfileRequestWorkflowTaxSettings - The tax settings for this workflow
 type UpsertBillingProfileRequestWorkflowTaxSettings struct {
-	// Enable automatic tax calculation when tax is supported by the app.
-	// For example, with Stripe Invoicing when enabled, tax is calculated via Stripe Tax.
+	// Enable automatic tax calculation when tax is supported by the app. For example,
+	// with Stripe Invoicing when enabled, tax is calculated via Stripe Tax.
 	Enabled *bool `default:"true" json:"enabled"`
-	// Enforce tax calculation when tax is supported by the app.
-	// When enabled, the billing system will not allow to create an invoice without tax calculation.
-	// Enforcement is different per apps, for example, Stripe app requires customer
-	// to have a tax location when starting a paid subscription.
+	// Enforce tax calculation when tax is supported by the app. When enabled, the
+	// billing system will not allow to create an invoice without tax calculation.
+	// Enforcement is different per apps, for example, Stripe app requires customer to
+	// have a tax location when starting a paid subscription.
 	Enforced *bool `default:"false" json:"enforced"`
 	// Default tax configuration to apply to the invoices for line items.
 	DefaultTaxConfig *UpsertBillingProfileRequestDefaultTaxConfig `json:"default_tax_config,omitempty"`
@@ -797,7 +802,8 @@ type UpsertBillingProfileRequest struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels,omitempty"`
-	// The name and contact information for the supplier this billing profile represents
+	// The name and contact information for the supplier this billing profile
+	// represents
 	Supplier UpsertBillingProfileRequestSupplier `json:"supplier"`
 	// The billing workflow settings for this profile
 	Workflow UpsertBillingProfileRequestWorkflow `json:"workflow"`

@@ -9,8 +9,8 @@ import (
 
 // BillingCustomerUsageAttribution - Mapping to attribute metered usage to the customer by the event subject.
 type BillingCustomerUsageAttribution struct {
-	// The subjects that are attributed to the customer.
-	// Can be empty when no usage event subjects are associated with the customer.
+	// The subjects that are attributed to the customer. Can be empty when no usage
+	// event subjects are associated with the customer.
 	SubjectKeys []string `json:"subject_keys"`
 }
 
@@ -21,10 +21,10 @@ func (b *BillingCustomerUsageAttribution) GetSubjectKeys() []string {
 	return b.SubjectKeys
 }
 
-// BillingCustomerBillingAddress - The billing address of the customer.
-// Used for tax and invoicing.
+// BillingCustomerBillingAddress - The billing address of the customer. Used for tax and invoicing.
 type BillingCustomerBillingAddress struct {
-	// Country code in [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) alpha-2 format.
+	// Country code in [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html)
+	// alpha-2 format.
 	Country *string `json:"country,omitempty"`
 	// Postal code.
 	PostalCode *string `json:"postal_code,omitempty"`
@@ -89,7 +89,8 @@ func (b *BillingCustomerBillingAddress) GetPhoneNumber() *string {
 	return b.PhoneNumber
 }
 
-// BillingCustomer - Customers can be individuals or organizations that can subscribe to plans and have access to features.
+// BillingCustomer - Customers can be individuals or organizations that can subscribe to plans and
+// have access to features.
 type BillingCustomer struct {
 	// ULID (Universally Unique Lexicographically Sortable Identifier).
 	ID string `json:"id"`
@@ -112,17 +113,16 @@ type BillingCustomer struct {
 	UpdatedAt time.Time `json:"updated_at"`
 	// An ISO-8601 timestamp representation of entity deletion date.
 	DeletedAt *time.Time `json:"deleted_at,omitempty"`
-	// ExternalResourceKey is a unique string that is used to identify a resource in an external system.
+	// ExternalResourceKey is a unique string that is used to identify a resource in an
+	// external system.
 	Key string `json:"key"`
 	// Mapping to attribute metered usage to the customer by the event subject.
 	UsageAttribution *BillingCustomerUsageAttribution `json:"usage_attribution,omitempty"`
 	// The primary email address of the customer.
 	PrimaryEmail *string `json:"primary_email,omitempty"`
-	// Currency of the customer.
-	// Used for billing, tax and invoicing.
+	// Currency of the customer. Used for billing, tax and invoicing.
 	Currency *string `json:"currency,omitempty"`
-	// The billing address of the customer.
-	// Used for tax and invoicing.
+	// The billing address of the customer. Used for tax and invoicing.
 	BillingAddress *BillingCustomerBillingAddress `json:"billing_address,omitempty"`
 }
 

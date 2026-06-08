@@ -2,9 +2,9 @@
 
 package components
 
-// BillingSubscriptionEditTimingEnum - Subscription edit timing.
-// When immediate, the requested changes take effect immediately.
-// When next_billing_cycle, the requested changes take effect at the next billing cycle.
+// BillingSubscriptionEditTimingEnum - Subscription edit timing. When immediate, the requested changes take effect
+// immediately. When next_billing_cycle, the requested changes take effect at the
+// next billing cycle.
 type BillingSubscriptionEditTimingEnum string
 
 const (

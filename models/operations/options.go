@@ -24,6 +24,7 @@ const (
 	AcceptHeaderEnumApplicationJson            AcceptHeaderEnum = "application/json"
 	AcceptHeaderEnumApplicationProblemPlusJson AcceptHeaderEnum = "application/problem+json"
 	AcceptHeaderEnumWildcardRootWildcard       AcceptHeaderEnum = "*/*"
+	AcceptHeaderEnumTextCsv                    AcceptHeaderEnum = "text/csv"
 	AcceptHeaderEnumImageJpeg                  AcceptHeaderEnum = "image/jpeg"
 	AcceptHeaderEnumImagePng                   AcceptHeaderEnum = "image/png"
 	AcceptHeaderEnumImageSvgPlusXml            AcceptHeaderEnum = "image/svg+xml"

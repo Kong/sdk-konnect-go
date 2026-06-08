@@ -8,7 +8,7 @@ Selects which fields of the parsed record to encrypt. A maximum of 50 path entri
 ### 
 
 ```go
-eventGatewayParsedRecordEncryptionSelectorPaths := components.CreateEventGatewayParsedRecordEncryptionSelectorPathsArrayOfPaths1([]components.Paths1{/* values here */})
+eventGatewayParsedRecordEncryptionSelectorPaths := components.CreateEventGatewayParsedRecordEncryptionSelectorPathsArrayOfEventGatewayParsedRecordFieldPathsArray([]components.EventGatewayParsedRecordFieldPathsArray{/* values here */})
 ```
 
 ### 
@@ -23,8 +23,8 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch eventGatewayParsedRecordEncryptionSelectorPaths.Type {
-	case components.EventGatewayParsedRecordEncryptionSelectorPathsTypeArrayOfPaths1:
-		// eventGatewayParsedRecordEncryptionSelectorPaths.ArrayOfPaths1 is populated
+	case components.EventGatewayParsedRecordEncryptionSelectorPathsTypeArrayOfEventGatewayParsedRecordFieldPathsArray:
+		// eventGatewayParsedRecordEncryptionSelectorPaths.ArrayOfEventGatewayParsedRecordFieldPathsArray is populated
 	case components.EventGatewayParsedRecordEncryptionSelectorPathsTypeStr:
 		// eventGatewayParsedRecordEncryptionSelectorPaths.Str is populated
 }

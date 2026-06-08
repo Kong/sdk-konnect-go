@@ -10,14 +10,14 @@ import (
 type ListCustomersRequest struct {
 	// Determines which page of the collection to retrieve.
 	Page *components.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
-	// Sort customers returned in the response.
-	// Supported sort attributes are:
+	// Sort customers returned in the response. Supported sort attributes are:
+	//
 	// - `id`
 	// - `name` (default)
 	// - `created_at`
 	//
-	// The `asc` suffix is optional as the default sort order is ascending.
-	// The `desc` suffix is used to specify a descending order.
+	// The `asc` suffix is optional as the default sort order is ascending. The `desc`
+	// suffix is used to specify a descending order.
 	Sort *string `queryParam:"style=form,explode=false,name=sort"`
 	// Filter customers returned in the response.
 	//

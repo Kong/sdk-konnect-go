@@ -6,7 +6,92 @@ Metering events are used to track usage of your product or service. Events are p
 
 ### Available Operations
 
+* [ListMeteringEvents](#listmeteringevents) - List metering events
 * [IngestMeteringEvents](#ingestmeteringevents) - Ingest metering events
+
+## ListMeteringEvents
+
+**Pre-release Endpoint**
+This endpoint is currently in beta and is subject to change.
+
+List ingested events.
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="list-metering-events" method="get" path="/v3/openmeter/events" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/types"
+	"github.com/Kong/sdk-konnect-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.MeteringEvents.ListMeteringEvents(ctx, operations.ListMeteringEventsRequest{
+        Filter: &components.ListEventsParamsFilter{
+            CustomerID: sdkkonnectgo.Pointer(components.CreateListEventsParamsFilterULIDFieldFilterStr(
+                "01G65Z755AFWAKHE12NY0CQ9FH",
+            )),
+            Time: sdkkonnectgo.Pointer(components.CreateListEventsParamsFilterDateTimeFieldFilterListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter(
+                components.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter{
+                    Lt: types.MustTimeFromString("2022-03-30T07:20:50Z"),
+                },
+            )),
+            IngestedAt: sdkkonnectgo.Pointer(components.CreateListEventsParamsFilterIngestedAtDateTimeFieldFilterListEventsParamsFilterDateTimeFieldFilterIngestedAtDateTimeFieldLTEFilter(
+                components.ListEventsParamsFilterDateTimeFieldFilterIngestedAtDateTimeFieldLTEFilter{
+                    Lte: types.MustTimeFromString("2022-03-30T07:20:50Z"),
+                },
+            )),
+            StoredAt: sdkkonnectgo.Pointer(components.CreateListEventsParamsFilterStoredAtDateTimeFieldFilterListEventsParamsFilterDateTimeFieldFilterStoredAtDateTimeFieldEqualsFilter(
+                components.ListEventsParamsFilterDateTimeFieldFilterStoredAtDateTimeFieldEqualsFilter{
+                    Eq: types.MustTimeFromString("2022-03-30T07:20:50Z"),
+                },
+            )),
+        },
+        Sort: sdkkonnectgo.Pointer("created_at desc"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IngestedEventPaginatedResponse != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |
+| `request`                                                                                    | [operations.ListMeteringEventsRequest](../../models/operations/listmeteringeventsrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `opts`                                                                                       | [][operations.Option](../../models/operations/option.md)                                     | :heavy_minus_sign:                                                                           | The options for this request.                                                                |
+
+### Response
+
+**[*operations.ListMeteringEventsResponse](../../models/operations/listmeteringeventsresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.BadRequestError   | 400                         | application/problem+json    |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
 
 ## IngestMeteringEvents
 

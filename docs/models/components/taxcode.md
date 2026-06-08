@@ -2,8 +2,9 @@
 
 Tax code reference.
 
-When both `tax_code` and `tax_code_id` are provided, `tax_code` takes precedence.
-When `stripe.code` is also provided, `tax_code` still wins and `stripe.code` is ignored.
+When both `tax_code` and `tax_code_id` are provided, `tax_code` takes
+precedence. When `stripe.code` is also provided, `tax_code` still wins and
+`stripe.code` is ignored.
 
 
 ## Fields

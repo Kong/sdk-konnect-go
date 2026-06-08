@@ -4,8 +4,8 @@ package components
 
 // UsageAttribution - Mapping to attribute metered usage to the customer by the event subject.
 type UsageAttribution struct {
-	// The subjects that are attributed to the customer.
-	// Can be empty when no usage event subjects are associated with the customer.
+	// The subjects that are attributed to the customer. Can be empty when no usage
+	// event subjects are associated with the customer.
 	SubjectKeys []string `json:"subject_keys"`
 }
 
@@ -16,10 +16,10 @@ func (u *UsageAttribution) GetSubjectKeys() []string {
 	return u.SubjectKeys
 }
 
-// BillingAddress - The billing address of the customer.
-// Used for tax and invoicing.
+// BillingAddress - The billing address of the customer. Used for tax and invoicing.
 type BillingAddress struct {
-	// Country code in [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) alpha-2 format.
+	// Country code in [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html)
+	// alpha-2 format.
 	Country *string `json:"country,omitempty"`
 	// Postal code.
 	PostalCode *string `json:"postal_code,omitempty"`
@@ -99,17 +99,16 @@ type CreateCustomerRequest struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels,omitempty"`
-	// ExternalResourceKey is a unique string that is used to identify a resource in an external system.
+	// ExternalResourceKey is a unique string that is used to identify a resource in an
+	// external system.
 	Key string `json:"key"`
 	// Mapping to attribute metered usage to the customer by the event subject.
 	UsageAttribution *UsageAttribution `json:"usage_attribution,omitempty"`
 	// The primary email address of the customer.
 	PrimaryEmail *string `json:"primary_email,omitempty"`
-	// Currency of the customer.
-	// Used for billing, tax and invoicing.
+	// Currency of the customer. Used for billing, tax and invoicing.
 	Currency *string `json:"currency,omitempty"`
-	// The billing address of the customer.
-	// Used for tax and invoicing.
+	// The billing address of the customer. Used for tax and invoicing.
 	BillingAddress *BillingAddress `json:"billing_address,omitempty"`
 }
 

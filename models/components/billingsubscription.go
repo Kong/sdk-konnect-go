@@ -49,12 +49,12 @@ type BillingSubscription struct {
 	DeletedAt *time.Time `json:"deleted_at,omitempty"`
 	// The customer ID of the subscription.
 	CustomerID string `json:"customer_id"`
-	// The plan ID of the subscription.
-	// Set if subscription is created from a plan.
+	// The plan ID of the subscription. Set if subscription is created from a plan.
 	PlanID *string `json:"plan_id,omitempty"`
-	// A billing anchor is the fixed point in time that determines the subscription's recurring billing cycle.
-	// It affects when charges occur and how prorations are calculated.
-	// Common anchors:
+	// A billing anchor is the fixed point in time that determines the subscription's
+	// recurring billing cycle. It affects when charges occur and how prorations are
+	// calculated. Common anchors:
+	//
 	// - Calendar month (1st of each month): `2025-01-01T00:00:00Z`
 	// - Subscription anniversary (day customer signed up)
 	// - Custom date (customer-specified day)

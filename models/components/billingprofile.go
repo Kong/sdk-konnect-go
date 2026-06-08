@@ -10,8 +10,8 @@ import (
 	"time"
 )
 
-// TaxID - The entity's legal identification used for tax purposes. They may have
-// other numbers, but we're only interested in those valid for tax purposes.
+// TaxID - The entity's legal identification used for tax purposes. They may have other
+// numbers, but we're only interested in those valid for tax purposes.
 type TaxID struct {
 	// Normalized tax identification code shown on the original identity document.
 	Code *string `json:"code,omitempty"`
@@ -26,7 +26,8 @@ func (t *TaxID) GetCode() *string {
 
 // BillingProfileBillingAddress - Billing address.
 type BillingProfileBillingAddress struct {
-	// Country code in [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) alpha-2 format.
+	// Country code in [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html)
+	// alpha-2 format.
 	Country *string `json:"country,omitempty"`
 	// Postal code.
 	PostalCode *string `json:"postal_code,omitempty"`
@@ -104,7 +105,8 @@ func (a *Addresses) GetBillingAddress() BillingProfileBillingAddress {
 	return a.BillingAddress
 }
 
-// Supplier - The name and contact information for the supplier this billing profile represents
+// Supplier - The name and contact information for the supplier this billing profile
+// represents
 type Supplier struct {
 	// Unique identifier for the party.
 	ID *string `json:"id,omitempty"`
@@ -112,8 +114,8 @@ type Supplier struct {
 	Key *string `json:"key,omitempty"`
 	// Legal name or representation of the party.
 	Name *string `json:"name,omitempty"`
-	// The entity's legal identification used for tax purposes. They may have
-	// other numbers, but we're only interested in those valid for tax purposes.
+	// The entity's legal identification used for tax purposes. They may have other
+	// numbers, but we're only interested in those valid for tax purposes.
 	TaxID *TaxID `json:"tax_id,omitempty"`
 	// Address for where information should be sent if needed.
 	Addresses *Addresses `json:"addresses,omitempty"`
@@ -211,8 +213,8 @@ func (r *RecurringPeriod) GetInterval() string {
 	return r.Interval
 }
 
-// BillingWorkflowCollectionAlignmentAnchored specifies the alignment for collecting the pending line items
-// into an invoice.
+// BillingWorkflowCollectionAlignmentAnchored specifies the alignment for
+// collecting the pending line items into an invoice.
 type BillingWorkflowCollectionAlignmentAnchored struct {
 	// The type of alignment.
 	Type BillingWorkflowCollectionAlignmentAnchoredAlignmentType `json:"type"`
@@ -269,8 +271,8 @@ func (e *AlignmentType) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// BillingWorkflowCollectionAlignmentSubscription specifies the alignment for collecting the pending line items
-// into an invoice.
+// BillingWorkflowCollectionAlignmentSubscription specifies the alignment for
+// collecting the pending line items into an invoice.
 type BillingWorkflowCollectionAlignmentSubscription struct {
 	// The type of alignment.
 	Type AlignmentType `json:"type"`
@@ -384,10 +386,11 @@ func (u Alignment) MarshalJSON() ([]byte, error) {
 type WorkflowCollectionSettings struct {
 	// The alignment for collecting the pending line items into an invoice.
 	Alignment *Alignment `json:"alignment,omitempty"`
-	// This grace period can be used to delay the collection of the pending line items specified in
-	// alignment.
+	// This grace period can be used to delay the collection of the pending line items
+	// specified in alignment.
 	//
-	// This is useful, in case of multiple subscriptions having slightly different billing periods.
+	// This is useful, in case of multiple subscriptions having slightly different
+	// billing periods.
 	Interval *string `default:"PT1H" json:"interval"`
 }
 
@@ -560,8 +563,8 @@ func (u Payment) MarshalJSON() ([]byte, error) {
 
 // TaxBehavior - Tax behavior.
 //
-// If not specified the billing profile is used to determine the tax behavior.
-// If not specified in the billing profile, the provider's default behavior is used.
+// If not specified the billing profile is used to determine the tax behavior. If
+// not specified in the billing profile, the provider's default behavior is used.
 type TaxBehavior string
 
 const (
@@ -616,8 +619,9 @@ func (e *ExternalInvoicingTaxConfig) GetCode() string {
 
 // TaxCode - Tax code reference.
 //
-// When both `tax_code` and `tax_code_id` are provided, `tax_code` takes precedence.
-// When `stripe.code` is also provided, `tax_code` still wins and `stripe.code` is ignored.
+// When both `tax_code` and `tax_code_id` are provided, `tax_code` takes
+// precedence. When `stripe.code` is also provided, `tax_code` still wins and
+// `stripe.code` is ignored.
 type TaxCode struct {
 	// ULID (Universally Unique Lexicographically Sortable Identifier).
 	ID string `json:"id"`
@@ -634,8 +638,8 @@ func (t *TaxCode) GetID() string {
 type DefaultTaxConfig struct {
 	// Tax behavior.
 	//
-	// If not specified the billing profile is used to determine the tax behavior.
-	// If not specified in the billing profile, the provider's default behavior is used.
+	// If not specified the billing profile is used to determine the tax behavior. If
+	// not specified in the billing profile, the provider's default behavior is used.
 	Behavior *TaxBehavior `json:"behavior,omitempty"`
 	// Stripe tax config.
 	//
@@ -651,8 +655,9 @@ type DefaultTaxConfig struct {
 	TaxCodeID *string `json:"tax_code_id,omitempty"`
 	// Tax code reference.
 	//
-	// When both `tax_code` and `tax_code_id` are provided, `tax_code` takes precedence.
-	// When `stripe.code` is also provided, `tax_code` still wins and `stripe.code` is ignored.
+	// When both `tax_code` and `tax_code_id` are provided, `tax_code` takes
+	// precedence. When `stripe.code` is also provided, `tax_code` still wins and
+	// `stripe.code` is ignored.
 	TaxCode *TaxCode `json:"tax_code,omitempty"`
 }
 
@@ -693,13 +698,13 @@ func (d *DefaultTaxConfig) GetTaxCode() *TaxCode {
 
 // WorkflowTaxSettings - The tax settings for this workflow
 type WorkflowTaxSettings struct {
-	// Enable automatic tax calculation when tax is supported by the app.
-	// For example, with Stripe Invoicing when enabled, tax is calculated via Stripe Tax.
+	// Enable automatic tax calculation when tax is supported by the app. For example,
+	// with Stripe Invoicing when enabled, tax is calculated via Stripe Tax.
 	Enabled *bool `default:"true" json:"enabled"`
-	// Enforce tax calculation when tax is supported by the app.
-	// When enabled, the billing system will not allow to create an invoice without tax calculation.
-	// Enforcement is different per apps, for example, Stripe app requires customer
-	// to have a tax location when starting a paid subscription.
+	// Enforce tax calculation when tax is supported by the app. When enabled, the
+	// billing system will not allow to create an invoice without tax calculation.
+	// Enforcement is different per apps, for example, Stripe app requires customer to
+	// have a tax location when starting a paid subscription.
 	Enforced *bool `default:"false" json:"enforced"`
 	// Default tax configuration to apply to the invoices for line items.
 	DefaultTaxConfig *DefaultTaxConfig `json:"default_tax_config,omitempty"`
@@ -861,7 +866,8 @@ func (a *Apps) GetPayment() BillingProfilePayment {
 	return a.Payment
 }
 
-// BillingProfile - Billing profiles contain the settings for billing and controls invoice generation.
+// BillingProfile - Billing profiles contain the settings for billing and controls invoice
+// generation.
 type BillingProfile struct {
 	// ULID (Universally Unique Lexicographically Sortable Identifier).
 	ID string `json:"id"`
@@ -884,7 +890,8 @@ type BillingProfile struct {
 	UpdatedAt time.Time `json:"updated_at"`
 	// An ISO-8601 timestamp representation of entity deletion date.
 	DeletedAt *time.Time `json:"deleted_at,omitempty"`
-	// The name and contact information for the supplier this billing profile represents
+	// The name and contact information for the supplier this billing profile
+	// represents
 	Supplier Supplier `json:"supplier"`
 	// The billing workflow settings for this profile
 	Workflow Workflow `json:"workflow"`

@@ -13,6 +13,7 @@ type EventGatewayParsedRecordEncryptFieldsConfig struct {
 	// * `passthrough` - passes the record silently to the backend cluster even though policy execution failed.
 	// * `mark` - passes the record to the backend cluster but marks it with a `kong/policy-failure-<id>` header whose value is the reason for the policy failure (truncated to 512 characters).
 	//
+	// **Requires a minimum runtime version of `1.2`**.
 	FailureMode ProduceFailureMode `json:"failure_mode"`
 	// Selects which fields to encrypt and with what keys.
 	EncryptFields []EventGatewayParsedRecordEncryptionSelector `json:"encrypt_fields"`

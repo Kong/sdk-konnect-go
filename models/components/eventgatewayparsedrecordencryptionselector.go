@@ -8,56 +8,27 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/utils"
 )
 
-type Paths1 struct {
-	// A field selector. It can select nested fields and array entries.
-	//
-	// Currently supported are exact matches.
-	//
-	Match string `json:"match"`
-}
-
-func (p Paths1) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
-}
-
-func (p *Paths1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"match"}); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (p *Paths1) GetMatch() string {
-	if p == nil {
-		return ""
-	}
-	return p.Match
-}
-
-// #region class-body-paths1
-// #endregion class-body-paths1
-
 type EventGatewayParsedRecordEncryptionSelectorPathsType string
 
 const (
-	EventGatewayParsedRecordEncryptionSelectorPathsTypeArrayOfPaths1 EventGatewayParsedRecordEncryptionSelectorPathsType = "arrayOfPaths1"
-	EventGatewayParsedRecordEncryptionSelectorPathsTypeStr           EventGatewayParsedRecordEncryptionSelectorPathsType = "str"
+	EventGatewayParsedRecordEncryptionSelectorPathsTypeArrayOfEventGatewayParsedRecordFieldPathsArray EventGatewayParsedRecordEncryptionSelectorPathsType = "arrayOfEventGatewayParsedRecordFieldPathsArray"
+	EventGatewayParsedRecordEncryptionSelectorPathsTypeStr                                            EventGatewayParsedRecordEncryptionSelectorPathsType = "str"
 )
 
 // EventGatewayParsedRecordEncryptionSelectorPaths - Selects which fields of the parsed record to encrypt. A maximum of 50 path entries are allowed.
 type EventGatewayParsedRecordEncryptionSelectorPaths struct {
-	ArrayOfPaths1 []Paths1 `queryParam:"inline" union:"member"`
-	Str           *string  `queryParam:"inline" union:"member"`
+	ArrayOfEventGatewayParsedRecordFieldPathsArray []EventGatewayParsedRecordFieldPathsArray `queryParam:"inline" union:"member"`
+	Str                                            *string                                   `queryParam:"inline" union:"member"`
 
 	Type EventGatewayParsedRecordEncryptionSelectorPathsType
 }
 
-func CreateEventGatewayParsedRecordEncryptionSelectorPathsArrayOfPaths1(arrayOfPaths1 []Paths1) EventGatewayParsedRecordEncryptionSelectorPaths {
-	typ := EventGatewayParsedRecordEncryptionSelectorPathsTypeArrayOfPaths1
+func CreateEventGatewayParsedRecordEncryptionSelectorPathsArrayOfEventGatewayParsedRecordFieldPathsArray(arrayOfEventGatewayParsedRecordFieldPathsArray []EventGatewayParsedRecordFieldPathsArray) EventGatewayParsedRecordEncryptionSelectorPaths {
+	typ := EventGatewayParsedRecordEncryptionSelectorPathsTypeArrayOfEventGatewayParsedRecordFieldPathsArray
 
 	return EventGatewayParsedRecordEncryptionSelectorPaths{
-		ArrayOfPaths1: arrayOfPaths1,
-		Type:          typ,
+		ArrayOfEventGatewayParsedRecordFieldPathsArray: arrayOfEventGatewayParsedRecordFieldPathsArray,
+		Type: typ,
 	}
 }
 
@@ -72,10 +43,10 @@ func CreateEventGatewayParsedRecordEncryptionSelectorPathsStr(str string) EventG
 
 func (u *EventGatewayParsedRecordEncryptionSelectorPaths) UnmarshalJSON(data []byte) error {
 
-	var arrayOfPaths1 []Paths1 = []Paths1{}
-	if err := utils.UnmarshalJSON(data, &arrayOfPaths1, "", true, nil); err == nil {
-		u.ArrayOfPaths1 = arrayOfPaths1
-		u.Type = EventGatewayParsedRecordEncryptionSelectorPathsTypeArrayOfPaths1
+	var arrayOfEventGatewayParsedRecordFieldPathsArray []EventGatewayParsedRecordFieldPathsArray = []EventGatewayParsedRecordFieldPathsArray{}
+	if err := utils.UnmarshalJSON(data, &arrayOfEventGatewayParsedRecordFieldPathsArray, "", true, nil); err == nil {
+		u.ArrayOfEventGatewayParsedRecordFieldPathsArray = arrayOfEventGatewayParsedRecordFieldPathsArray
+		u.Type = EventGatewayParsedRecordEncryptionSelectorPathsTypeArrayOfEventGatewayParsedRecordFieldPathsArray
 		return nil
 	}
 
@@ -90,8 +61,8 @@ func (u *EventGatewayParsedRecordEncryptionSelectorPaths) UnmarshalJSON(data []b
 }
 
 func (u EventGatewayParsedRecordEncryptionSelectorPaths) MarshalJSON() ([]byte, error) {
-	if u.ArrayOfPaths1 != nil {
-		return utils.MarshalJSON(u.ArrayOfPaths1, "", true)
+	if u.ArrayOfEventGatewayParsedRecordFieldPathsArray != nil {
+		return utils.MarshalJSON(u.ArrayOfEventGatewayParsedRecordFieldPathsArray, "", true)
 	}
 
 	if u.Str != nil {

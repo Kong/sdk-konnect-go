@@ -1,7 +1,7 @@
 # TaxID
 
-The entity's legal identification used for tax purposes. They may have
-other numbers, but we're only interested in those valid for tax purposes.
+The entity's legal identification used for tax purposes. They may have other
+numbers, but we're only interested in those valid for tax purposes.
 
 
 ## Fields

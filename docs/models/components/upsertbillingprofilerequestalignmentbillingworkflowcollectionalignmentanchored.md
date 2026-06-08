@@ -1,7 +1,7 @@
 # UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentAnchored
 
-BillingWorkflowCollectionAlignmentAnchored specifies the alignment for collecting the pending line items
-into an invoice.
+BillingWorkflowCollectionAlignmentAnchored specifies the alignment for
+collecting the pending line items into an invoice.
 
 
 ## Fields

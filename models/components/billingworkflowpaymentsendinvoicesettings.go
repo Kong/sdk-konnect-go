@@ -32,12 +32,13 @@ func (e *BillingWorkflowPaymentSendInvoiceSettingsCollectionMethod) UnmarshalJSO
 	}
 }
 
-// BillingWorkflowPaymentSendInvoiceSettings - Payment settings for a billing workflow when the collection method is send invoice.
+// BillingWorkflowPaymentSendInvoiceSettings - Payment settings for a billing workflow when the collection method is send
+// invoice.
 type BillingWorkflowPaymentSendInvoiceSettings struct {
 	// The collection method for the invoice.
 	CollectionMethod BillingWorkflowPaymentSendInvoiceSettingsCollectionMethod `json:"collection_method"`
-	// The period after which the invoice is due.
-	// With some payment solutions it's only applicable for manual collection method.
+	// The period after which the invoice is due. With some payment solutions it's only
+	// applicable for manual collection method.
 	DueAfter *string `default:"P30D" json:"due_after"`
 }
 

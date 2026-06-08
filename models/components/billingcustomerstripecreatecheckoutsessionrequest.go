@@ -8,7 +8,8 @@ import (
 
 // BillingAddressCollection - Whether to collect the customer's billing address.
 //
-// Defaults to auto, which only collects the address when necessary for tax calculation.
+// Defaults to auto, which only collects the address when necessary for tax
+// calculation.
 type BillingAddressCollection string
 
 const (
@@ -192,8 +193,8 @@ func (p *PaymentMethodReuseAgreement) GetPosition() *BillingCustomerStripeCreate
 
 // Promotions - Enables collection of promotional communication consent.
 //
-// Only available to US merchants. When set to "auto", Checkout determines
-// whether to show the option based on the customer's locale.
+// Only available to US merchants. When set to "auto", Checkout determines whether
+// to show the option based on the customer's locale.
 type Promotions string
 
 const (
@@ -247,8 +248,8 @@ type ConsentCollection struct {
 	PaymentMethodReuseAgreement *PaymentMethodReuseAgreement `json:"payment_method_reuse_agreement,omitempty"`
 	// Enables collection of promotional communication consent.
 	//
-	// Only available to US merchants. When set to "auto", Checkout determines
-	// whether to show the option based on the customer's locale.
+	// Only available to US merchants. When set to "auto", Checkout determines whether
+	// to show the option based on the customer's locale.
 	Promotions *Promotions `json:"promotions,omitempty"`
 	// Requires customers to accept terms of service before payment.
 	//
@@ -371,8 +372,8 @@ func (c *CustomText) GetTermsOfServiceAcceptance() *TermsOfServiceAcceptance {
 
 // UIMode - The UI mode for the checkout session.
 //
-// "hosted" displays a Stripe-hosted page. "embedded" integrates directly into your app.
-// Defaults to "hosted".
+// "hosted" displays a Stripe-hosted page. "embedded" integrates directly into your
+// app. Defaults to "hosted".
 type UIMode string
 
 const (
@@ -397,8 +398,8 @@ func (e *UIMode) IsExact() bool {
 
 // RedirectOnCompletion - Redirect behavior for embedded checkout sessions.
 //
-// Controls when to redirect users after completion.
-// See: https://docs.stripe.com/payments/checkout/custom-success-page?payment-ui=embedded-form
+// Controls when to redirect users after completion. See:
+// https://docs.stripe.com/payments/checkout/custom-success-page?payment-ui=embedded-form
 type RedirectOnCompletion string
 
 const (
@@ -486,11 +487,13 @@ func (t *TaxIDCollection) GetRequired() *Required {
 
 // StripeOptions - Options for configuring the Stripe Checkout Session.
 //
-// These options are passed directly to Stripe's [checkout session creation API](https://docs.stripe.com/api/checkout/sessions/create).
+// These options are passed directly to Stripe's
+// [checkout session creation API](https://docs.stripe.com/api/checkout/sessions/create).
 type StripeOptions struct {
 	// Whether to collect the customer's billing address.
 	//
-	// Defaults to auto, which only collects the address when necessary for tax calculation.
+	// Defaults to auto, which only collects the address when necessary for tax
+	// calculation.
 	BillingAddressCollection *BillingAddressCollection `default:"auto" json:"billing_address_collection"`
 	// URL to redirect customers who cancel the checkout session.
 	//
@@ -524,17 +527,18 @@ type StripeOptions struct {
 	Metadata map[string]string `json:"metadata,omitempty"`
 	// Return URL for embedded checkout sessions after payment authentication.
 	//
-	// Required if ui_mode is "embedded" and redirect-based payment methods are enabled.
+	// Required if ui_mode is "embedded" and redirect-based payment methods are
+	// enabled.
 	ReturnURL *string `json:"return_url,omitempty"`
 	// Success URL to redirect customers after completing payment or setup.
 	//
-	// Not allowed when ui_mode is "embedded".
-	// See: https://docs.stripe.com/payments/checkout/custom-success-page
+	// Not allowed when ui_mode is "embedded". See:
+	// https://docs.stripe.com/payments/checkout/custom-success-page
 	SuccessURL *string `json:"success_url,omitempty"`
 	// The UI mode for the checkout session.
 	//
-	// "hosted" displays a Stripe-hosted page. "embedded" integrates directly into your app.
-	// Defaults to "hosted".
+	// "hosted" displays a Stripe-hosted page. "embedded" integrates directly into your
+	// app. Defaults to "hosted".
 	UIMode *UIMode `default:"hosted" json:"ui_mode"`
 	// List of payment method types to enable (e.g., "card", "us_bank_account").
 	//
@@ -542,8 +546,8 @@ type StripeOptions struct {
 	PaymentMethodTypes []string `json:"payment_method_types,omitempty"`
 	// Redirect behavior for embedded checkout sessions.
 	//
-	// Controls when to redirect users after completion.
-	// See: https://docs.stripe.com/payments/checkout/custom-success-page?payment-ui=embedded-form
+	// Controls when to redirect users after completion. See:
+	// https://docs.stripe.com/payments/checkout/custom-success-page?payment-ui=embedded-form
 	RedirectOnCompletion *RedirectOnCompletion `json:"redirect_on_completion,omitempty"`
 	// Configuration for collecting tax IDs during checkout.
 	TaxIDCollection *TaxIDCollection `json:"tax_id_collection,omitempty"`
@@ -675,12 +679,13 @@ func (s *StripeOptions) GetTaxIDCollection() *TaxIDCollection {
 // BillingCustomerStripeCreateCheckoutSessionRequest - Request to create a Stripe Checkout Session for the customer.
 //
 // Checkout Sessions are used to collect payment method information from customers
-// in a secure, Stripe-hosted interface. This integration uses setup mode to collect
-// payment methods that can be charged later for subscription billing.
+// in a secure, Stripe-hosted interface. This integration uses setup mode to
+// collect payment methods that can be charged later for subscription billing.
 type BillingCustomerStripeCreateCheckoutSessionRequest struct {
 	// Options for configuring the Stripe Checkout Session.
 	//
-	// These options are passed directly to Stripe's [checkout session creation API](https://docs.stripe.com/api/checkout/sessions/create).
+	// These options are passed directly to Stripe's
+	// [checkout session creation API](https://docs.stripe.com/api/checkout/sessions/create).
 	StripeOptions StripeOptions `json:"stripe_options"`
 }
 

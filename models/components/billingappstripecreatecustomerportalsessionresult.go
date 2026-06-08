@@ -7,38 +7,46 @@ import (
 	"time"
 )
 
-// BillingAppStripeCreateCustomerPortalSessionResult - Result of creating a [Stripe Customer Portal Session](https://docs.stripe.com/api/customer_portal/sessions/object).
+// BillingAppStripeCreateCustomerPortalSessionResult - Result of creating a
+// [Stripe Customer Portal Session](https://docs.stripe.com/api/customer_portal/sessions/object).
 //
-// Contains all the information needed to redirect the customer to the Stripe Customer Portal.
+// Contains all the information needed to redirect the customer to the Stripe
+// Customer Portal.
 type BillingAppStripeCreateCustomerPortalSessionResult struct {
 	// The ID of the customer portal session.
 	//
-	// See: https://docs.stripe.com/api/customer_portal/sessions/object#portal_session_object-id
+	// See:
+	// https://docs.stripe.com/api/customer_portal/sessions/object#portal_session_object-id
 	ID string `json:"id"`
 	// The ID of the stripe customer.
 	StripeCustomerID string `json:"stripe_customer_id"`
 	// Configuration used to customize the customer portal.
 	//
-	// See: https://docs.stripe.com/api/customer_portal/sessions/object#portal_session_object-configuration
+	// See:
+	// https://docs.stripe.com/api/customer_portal/sessions/object#portal_session_object-configuration
 	ConfigurationID string `json:"configuration_id"`
 	// Livemode.
 	//
-	// See: https://docs.stripe.com/api/customer_portal/sessions/object#portal_session_object-livemode
+	// See:
+	// https://docs.stripe.com/api/customer_portal/sessions/object#portal_session_object-livemode
 	Livemode bool `json:"livemode"`
 	// Created at.
 	//
-	// See: https://docs.stripe.com/api/customer_portal/sessions/object#portal_session_object-created
+	// See:
+	// https://docs.stripe.com/api/customer_portal/sessions/object#portal_session_object-created
 	CreatedAt time.Time `json:"created_at"`
 	// Return URL.
 	//
-	// See: https://docs.stripe.com/api/customer_portal/sessions/object#portal_session_object-return_url
+	// See:
+	// https://docs.stripe.com/api/customer_portal/sessions/object#portal_session_object-return_url
 	ReturnURL string `json:"return_url"`
 	// The IETF language tag of the locale customer portal is displayed in.
 	//
-	// See: https://docs.stripe.com/api/customer_portal/sessions/object#portal_session_object-locale
+	// See:
+	// https://docs.stripe.com/api/customer_portal/sessions/object#portal_session_object-locale
 	Locale string `json:"locale"`
-	// The URL to redirect the customer to after they have completed
-	// their requested actions.
+	// The URL to redirect the customer to after they have completed their requested
+	// actions.
 	URL string `json:"url"`
 }
 

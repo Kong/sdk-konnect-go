@@ -137,15 +137,17 @@ func (e *ChartTileType) UnmarshalJSON(data []byte) error {
 type QueryType string
 
 const (
-	QueryTypeAPIUsage     QueryType = "api_usage"
-	QueryTypeLlmUsage     QueryType = "llm_usage"
-	QueryTypeAgenticUsage QueryType = "agentic_usage"
+	QueryTypeAPIUsage      QueryType = "api_usage"
+	QueryTypeLlmUsage      QueryType = "llm_usage"
+	QueryTypeAgenticUsage  QueryType = "agentic_usage"
+	QueryTypePlatformUsage QueryType = "platform_usage"
 )
 
 type Query struct {
 	AdvancedQuery *AdvancedQuery `queryParam:"inline" union:"member"`
 	LLMQuery      *LLMQuery      `queryParam:"inline" union:"member"`
 	AgenticQuery  *AgenticQuery  `queryParam:"inline" union:"member"`
+	PlatformQuery *PlatformQuery `queryParam:"inline" union:"member"`
 
 	Type QueryType
 }
@@ -183,6 +185,18 @@ func CreateQueryAgenticUsage(agenticUsage AgenticQuery) Query {
 	return Query{
 		AgenticQuery: &agenticUsage,
 		Type:         typ,
+	}
+}
+
+func CreateQueryPlatformUsage(platformUsage PlatformQuery) Query {
+	typ := QueryTypePlatformUsage
+
+	typStr := PlatformQueryDatasource(typ)
+	platformUsage.Datasource = typStr
+
+	return Query{
+		PlatformQuery: &platformUsage,
+		Type:          typ,
 	}
 }
 
@@ -225,6 +239,15 @@ func (u *Query) UnmarshalJSON(data []byte) error {
 		u.AgenticQuery = agenticQuery
 		u.Type = QueryTypeAgenticUsage
 		return nil
+	case "platform_usage":
+		platformQuery := new(PlatformQuery)
+		if err := utils.UnmarshalJSON(data, &platformQuery, "", true, nil); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Datasource == platform_usage) type PlatformQuery within Query: %w", string(data), err)
+		}
+
+		u.PlatformQuery = platformQuery
+		u.Type = QueryTypePlatformUsage
+		return nil
 	}
 
 	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Query", string(data))
@@ -241,6 +264,10 @@ func (u Query) MarshalJSON() ([]byte, error) {
 
 	if u.AgenticQuery != nil {
 		return utils.MarshalJSON(u.AgenticQuery, "", true)
+	}
+
+	if u.PlatformQuery != nil {
+		return utils.MarshalJSON(u.PlatformQuery, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type Query: all fields are null")
@@ -282,6 +309,10 @@ func (c *ChartTileDefinition) GetQueryLlmUsage() *LLMQuery {
 
 func (c *ChartTileDefinition) GetQueryAgenticUsage() *AgenticQuery {
 	return c.GetQuery().AgenticQuery
+}
+
+func (c *ChartTileDefinition) GetQueryPlatformUsage() *PlatformQuery {
+	return c.GetQuery().PlatformQuery
 }
 
 func (c *ChartTileDefinition) GetChart() Chart {

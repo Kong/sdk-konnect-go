@@ -217,6 +217,95 @@ func (_c *MockPortalsIPAllowListSDK_DeletePortalIPAllowList_Call) RunAndReturn(r
 	return _c
 }
 
+// GetPortalIPAllowList provides a mock function for the type MockPortalsIPAllowListSDK
+func (_mock *MockPortalsIPAllowListSDK) GetPortalIPAllowList(ctx context.Context, portalID string, id string, opts ...operations.Option) (*operations.GetPortalIPAllowListResponse, error) {
+	var tmpRet mock.Arguments
+	if len(opts) > 0 {
+		tmpRet = _mock.Called(ctx, portalID, id, opts)
+	} else {
+		tmpRet = _mock.Called(ctx, portalID, id)
+	}
+	ret := tmpRet
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetPortalIPAllowList")
+	}
+
+	var r0 *operations.GetPortalIPAllowListResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) (*operations.GetPortalIPAllowListResponse, error)); ok {
+		return returnFunc(ctx, portalID, id, opts...)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, string, ...operations.Option) *operations.GetPortalIPAllowListResponse); ok {
+		r0 = returnFunc(ctx, portalID, id, opts...)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*operations.GetPortalIPAllowListResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, string, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, portalID, id, opts...)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockPortalsIPAllowListSDK_GetPortalIPAllowList_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetPortalIPAllowList'
+type MockPortalsIPAllowListSDK_GetPortalIPAllowList_Call struct {
+	*mock.Call
+}
+
+// GetPortalIPAllowList is a helper method to define mock.On call
+//   - ctx context.Context
+//   - portalID string
+//   - id string
+//   - opts ...operations.Option
+func (_e *MockPortalsIPAllowListSDK_Expecter) GetPortalIPAllowList(ctx interface{}, portalID interface{}, id interface{}, opts ...interface{}) *MockPortalsIPAllowListSDK_GetPortalIPAllowList_Call {
+	return &MockPortalsIPAllowListSDK_GetPortalIPAllowList_Call{Call: _e.mock.On("GetPortalIPAllowList",
+		append([]interface{}{ctx, portalID, id}, opts...)...)}
+}
+
+func (_c *MockPortalsIPAllowListSDK_GetPortalIPAllowList_Call) Run(run func(ctx context.Context, portalID string, id string, opts ...operations.Option)) *MockPortalsIPAllowListSDK_GetPortalIPAllowList_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 string
+		if args[1] != nil {
+			arg1 = args[1].(string)
+		}
+		var arg2 string
+		if args[2] != nil {
+			arg2 = args[2].(string)
+		}
+		var arg3 []operations.Option
+		var variadicArgs []operations.Option
+		if len(args) > 3 {
+			variadicArgs = args[3].([]operations.Option)
+		}
+		arg3 = variadicArgs
+		run(
+			arg0,
+			arg1,
+			arg2,
+			arg3...,
+		)
+	})
+	return _c
+}
+
+func (_c *MockPortalsIPAllowListSDK_GetPortalIPAllowList_Call) Return(getPortalIPAllowListResponse *operations.GetPortalIPAllowListResponse, err error) *MockPortalsIPAllowListSDK_GetPortalIPAllowList_Call {
+	_c.Call.Return(getPortalIPAllowListResponse, err)
+	return _c
+}
+
+func (_c *MockPortalsIPAllowListSDK_GetPortalIPAllowList_Call) RunAndReturn(run func(ctx context.Context, portalID string, id string, opts ...operations.Option) (*operations.GetPortalIPAllowListResponse, error)) *MockPortalsIPAllowListSDK_GetPortalIPAllowList_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListPortalIPAllowList provides a mock function for the type MockPortalsIPAllowListSDK
 func (_mock *MockPortalsIPAllowListSDK) ListPortalIPAllowList(ctx context.Context, request operations.ListPortalIPAllowListRequest, opts ...operations.Option) (*operations.ListPortalIPAllowListResponse, error) {
 	var tmpRet mock.Arguments

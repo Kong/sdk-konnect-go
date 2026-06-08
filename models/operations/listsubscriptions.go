@@ -7,24 +7,20 @@ import (
 	"net/http"
 )
 
-// ListSubscriptionsQueryParamFilter - Filter subscriptions.
-type ListSubscriptionsQueryParamFilter struct {
-	// Filter subscriptions by customer ID.
-	CustomerID *string `queryParam:"name=customer_id"`
-}
-
-func (l *ListSubscriptionsQueryParamFilter) GetCustomerID() *string {
-	if l == nil {
-		return nil
-	}
-	return l.CustomerID
-}
-
 type ListSubscriptionsRequest struct {
 	// Determines which page of the collection to retrieve.
 	Page *components.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
+	// Sort subscriptions returned in the response. Supported sort attributes are:
+	//
+	// - `id`
+	// - `active_from` (default)
+	// - `active_to`
+	//
+	// The `asc` suffix is optional as the default sort order is ascending. The `desc`
+	// suffix is used to specify a descending order.
+	Sort *string `queryParam:"style=form,explode=false,name=sort"`
 	// Filter subscriptions.
-	Filter *ListSubscriptionsQueryParamFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *components.ListSubscriptionsParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
 func (l *ListSubscriptionsRequest) GetPage() *components.PagePaginationQuery {
@@ -34,7 +30,14 @@ func (l *ListSubscriptionsRequest) GetPage() *components.PagePaginationQuery {
 	return l.Page
 }
 
-func (l *ListSubscriptionsRequest) GetFilter() *ListSubscriptionsQueryParamFilter {
+func (l *ListSubscriptionsRequest) GetSort() *string {
+	if l == nil {
+		return nil
+	}
+	return l.Sort
+}
+
+func (l *ListSubscriptionsRequest) GetFilter() *components.ListSubscriptionsParamsFilter {
 	if l == nil {
 		return nil
 	}

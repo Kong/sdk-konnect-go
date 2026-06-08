@@ -1,7 +1,8 @@
 # BillingSubscriptionChangeTiming
 
-Timing configuration for the change, when the change should take effect.
-For changing a subscription, the accepted values depend on the subscription configuration.
+Timing configuration for the change, when the change should take effect. For
+changing a subscription, the accepted values depend on the subscription
+configuration.
 
 
 ## Supported Types

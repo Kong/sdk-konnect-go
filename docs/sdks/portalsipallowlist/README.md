@@ -8,6 +8,7 @@ APIs related to Konnect Portal IP Allow List.
 
 * [CreatePortalIPAllowList](#createportalipallowlist) - Create an IP allow list for a portal
 * [ListPortalIPAllowList](#listportalipallowlist) - List the IP allow list for portal
+* [GetPortalIPAllowList](#getportalipallowlist) - Get an IP allow list for a portal
 * [PutPortalIPAllowList](#putportalipallowlist) - Replace an IP allow list for a portal
 * [UpdatePortalIPAllowList](#updateportalipallowlist) - Update an IP allow list for a portal
 * [DeletePortalIPAllowList](#deleteportalipallowlist) - Delete an IP allow list from a portal
@@ -130,6 +131,65 @@ func main() {
 ### Response
 
 **[*operations.ListPortalIPAllowListResponse](../../models/operations/listportalipallowlistresponse.md), error**
+
+### Errors
+
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| sdkerrors.UnauthorizedError | 401                         | application/problem+json    |
+| sdkerrors.ForbiddenError    | 403                         | application/problem+json    |
+| sdkerrors.NotFoundError     | 404                         | application/problem+json    |
+| sdkerrors.SDKError          | 4XX, 5XX                    | \*/\*                       |
+
+## GetPortalIPAllowList
+
+Get an IP allow list for a portal.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="get-portal-ip-allow-list" method="get" path="/v3/portals/{portalId}/ip-allow-list/{id}" -->
+```go
+package main
+
+import(
+	"context"
+	"github.com/Kong/sdk-konnect-go/models/components"
+	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkkonnectgo.New(
+        sdkkonnectgo.WithSecurity(components.Security{
+            PersonalAccessToken: sdkkonnectgo.Pointer("<YOUR_BEARER_TOKEN_HERE>"),
+        }),
+    )
+
+    res, err := s.PortalsIPAllowList.GetPortalIPAllowList(ctx, "f32d905a-ed33-46a3-a093-d8f536af9a8a", "848e2653-2bc6-4bf8-8b3b-c3b14bd73077")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.IPEntry != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |                                                          |
+| `portalID`                                               | `string`                                                 | :heavy_check_mark:                                       | ID of the portal.                                        | f32d905a-ed33-46a3-a093-d8f536af9a8a                     |
+| `id`                                                     | `string`                                                 | :heavy_check_mark:                                       | ID of the allow list.                                    |                                                          |
+| `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |                                                          |
+
+### Response
+
+**[*operations.GetPortalIPAllowListResponse](../../models/operations/getportalipallowlistresponse.md), error**
 
 ### Errors
 

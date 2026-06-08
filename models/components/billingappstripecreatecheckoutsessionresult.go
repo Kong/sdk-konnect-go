@@ -37,8 +37,8 @@ func (e *BillingAppStripeCreateCheckoutSessionResultMode) UnmarshalJSON(data []b
 
 // BillingAppStripeCreateCheckoutSessionResult - Result of creating a Stripe Checkout Session.
 //
-// Contains all the information needed to redirect customers to the checkout
-// or initialize an embedded checkout flow.
+// Contains all the information needed to redirect customers to the checkout or
+// initialize an embedded checkout flow.
 type BillingAppStripeCreateCheckoutSessionResult struct {
 	// The customer ID in the billing system.
 	CustomerID string `json:"customer_id"`
@@ -50,8 +50,8 @@ type BillingAppStripeCreateCheckoutSessionResult struct {
 	SetupIntentID string `json:"setup_intent_id"`
 	// Client secret for initializing Stripe.js on the client side.
 	//
-	// Required for embedded checkout sessions.
-	// See: https://docs.stripe.com/payments/checkout/custom-success-page
+	// Required for embedded checkout sessions. See:
+	// https://docs.stripe.com/payments/checkout/custom-success-page
 	ClientSecret *string `json:"client_secret,omitempty"`
 	// The client reference ID provided in the request.
 	//
@@ -69,7 +69,8 @@ type BillingAppStripeCreateCheckoutSessionResult struct {
 	Metadata map[string]string `json:"metadata,omitempty"`
 	// The status of the checkout session.
 	//
-	// See: https://docs.stripe.com/api/checkout/sessions/object#checkout_session_object-status
+	// See:
+	// https://docs.stripe.com/api/checkout/sessions/object#checkout_session_object-status
 	Status *string `json:"status,omitempty"`
 	// URL to redirect customers to the checkout page (for hosted mode).
 	URL *string `json:"url,omitempty"`

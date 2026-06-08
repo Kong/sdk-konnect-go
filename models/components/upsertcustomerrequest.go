@@ -4,8 +4,8 @@ package components
 
 // UpsertCustomerRequestUsageAttribution - Mapping to attribute metered usage to the customer by the event subject.
 type UpsertCustomerRequestUsageAttribution struct {
-	// The subjects that are attributed to the customer.
-	// Can be empty when no usage event subjects are associated with the customer.
+	// The subjects that are attributed to the customer. Can be empty when no usage
+	// event subjects are associated with the customer.
 	SubjectKeys []string `json:"subject_keys"`
 }
 
@@ -16,10 +16,10 @@ func (u *UpsertCustomerRequestUsageAttribution) GetSubjectKeys() []string {
 	return u.SubjectKeys
 }
 
-// UpsertCustomerRequestBillingAddress - The billing address of the customer.
-// Used for tax and invoicing.
+// UpsertCustomerRequestBillingAddress - The billing address of the customer. Used for tax and invoicing.
 type UpsertCustomerRequestBillingAddress struct {
-	// Country code in [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) alpha-2 format.
+	// Country code in [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html)
+	// alpha-2 format.
 	Country *string `json:"country,omitempty"`
 	// Postal code.
 	PostalCode *string `json:"postal_code,omitempty"`
@@ -103,11 +103,9 @@ type UpsertCustomerRequest struct {
 	UsageAttribution *UpsertCustomerRequestUsageAttribution `json:"usage_attribution,omitempty"`
 	// The primary email address of the customer.
 	PrimaryEmail *string `json:"primary_email,omitempty"`
-	// Currency of the customer.
-	// Used for billing, tax and invoicing.
+	// Currency of the customer. Used for billing, tax and invoicing.
 	Currency *string `json:"currency,omitempty"`
-	// The billing address of the customer.
-	// Used for tax and invoicing.
+	// The billing address of the customer. Used for tax and invoicing.
 	BillingAddress *UpsertCustomerRequestBillingAddress `json:"billing_address,omitempty"`
 }
 

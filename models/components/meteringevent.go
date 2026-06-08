@@ -9,7 +9,8 @@ import (
 	"time"
 )
 
-// Datacontenttype - Content type of the CloudEvents data value. Only the value "application/json" is allowed over HTTP.
+// Datacontenttype - Content type of the CloudEvents data value. Only the value "application/json" is
+// allowed over HTTP.
 type Datacontenttype string
 
 const (
@@ -41,18 +42,20 @@ type MeteringEvent struct {
 	Source string `json:"source"`
 	// The version of the CloudEvents specification which the event uses.
 	Specversion *string `default:"1.0" json:"specversion"`
-	// Contains a value describing the type of event related to the originating occurrence.
+	// Contains a value describing the type of event related to the originating
+	// occurrence.
 	Type string `json:"type"`
-	// Content type of the CloudEvents data value. Only the value "application/json" is allowed over HTTP.
+	// Content type of the CloudEvents data value. Only the value "application/json" is
+	// allowed over HTTP.
 	Datacontenttype *Datacontenttype `json:"datacontenttype,omitempty"`
 	// Identifies the schema that data adheres to.
 	Dataschema *string `json:"dataschema,omitempty"`
-	// Describes the subject of the event in the context of the event producer (identified by source).
+	// Describes the subject of the event in the context of the event producer
+	// (identified by source).
 	Subject string `json:"subject"`
 	// Timestamp of when the occurrence happened. Must adhere to RFC 3339.
 	Time *time.Time `json:"time,omitempty"`
-	// The event payload.
-	// Optional, if present it must be a JSON object.
+	// The event payload. Optional, if present it must be a JSON object.
 	Data map[string]any `json:"data,omitempty"`
 }
 
