@@ -8,7 +8,7 @@ Selects which fields of the parsed record to decrypt. A maximum of 50 path entri
 ### 
 
 ```go
-paths := components.CreatePathsArrayOf1([]components.One{/* values here */})
+paths := components.CreatePathsArrayOfEventGatewayParsedRecordFieldPathsArray([]components.EventGatewayParsedRecordFieldPathsArray{/* values here */})
 ```
 
 ### 
@@ -23,8 +23,8 @@ Use the `Type` field to determine which variant is active, then access the corre
 
 ```go
 switch paths.Type {
-	case components.PathsTypeArrayOf1:
-		// paths.ArrayOf1 is populated
+	case components.PathsTypeArrayOfEventGatewayParsedRecordFieldPathsArray:
+		// paths.ArrayOfEventGatewayParsedRecordFieldPathsArray is populated
 	case components.PathsTypeStr:
 		// paths.Str is populated
 }

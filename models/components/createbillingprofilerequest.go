@@ -10,8 +10,8 @@ import (
 	"time"
 )
 
-// CreateBillingProfileRequestTaxID - The entity's legal identification used for tax purposes. They may have
-// other numbers, but we're only interested in those valid for tax purposes.
+// CreateBillingProfileRequestTaxID - The entity's legal identification used for tax purposes. They may have other
+// numbers, but we're only interested in those valid for tax purposes.
 type CreateBillingProfileRequestTaxID struct {
 	// Normalized tax identification code shown on the original identity document.
 	Code *string `json:"code,omitempty"`
@@ -26,7 +26,8 @@ func (c *CreateBillingProfileRequestTaxID) GetCode() *string {
 
 // CreateBillingProfileRequestBillingAddress - Billing address.
 type CreateBillingProfileRequestBillingAddress struct {
-	// Country code in [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) alpha-2 format.
+	// Country code in [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html)
+	// alpha-2 format.
 	Country *string `json:"country,omitempty"`
 	// Postal code.
 	PostalCode *string `json:"postal_code,omitempty"`
@@ -104,14 +105,15 @@ func (c *CreateBillingProfileRequestAddresses) GetBillingAddress() CreateBilling
 	return c.BillingAddress
 }
 
-// CreateBillingProfileRequestSupplier - The name and contact information for the supplier this billing profile represents
+// CreateBillingProfileRequestSupplier - The name and contact information for the supplier this billing profile
+// represents
 type CreateBillingProfileRequestSupplier struct {
 	// An optional unique key of the party.
 	Key *string `json:"key,omitempty"`
 	// Legal name or representation of the party.
 	Name *string `json:"name,omitempty"`
-	// The entity's legal identification used for tax purposes. They may have
-	// other numbers, but we're only interested in those valid for tax purposes.
+	// The entity's legal identification used for tax purposes. They may have other
+	// numbers, but we're only interested in those valid for tax purposes.
 	TaxID *CreateBillingProfileRequestTaxID `json:"tax_id,omitempty"`
 	// Address for where information should be sent if needed.
 	Addresses *CreateBillingProfileRequestAddresses `json:"addresses,omitempty"`
@@ -202,8 +204,8 @@ func (a *AlignmentRecurringPeriod) GetInterval() string {
 	return a.Interval
 }
 
-// AlignmentBillingWorkflowCollectionAlignmentAnchored - BillingWorkflowCollectionAlignmentAnchored specifies the alignment for collecting the pending line items
-// into an invoice.
+// AlignmentBillingWorkflowCollectionAlignmentAnchored - BillingWorkflowCollectionAlignmentAnchored specifies the alignment for
+// collecting the pending line items into an invoice.
 type AlignmentBillingWorkflowCollectionAlignmentAnchored struct {
 	// The type of alignment.
 	Type BillingWorkflowCollectionAlignmentAnchoredAlignmentCreateBillingProfileRequestType `json:"type"`
@@ -260,8 +262,8 @@ func (e *BillingWorkflowCollectionAlignmentSubscriptionAlignmentType) UnmarshalJ
 	}
 }
 
-// AlignmentBillingWorkflowCollectionAlignmentSubscription - BillingWorkflowCollectionAlignmentSubscription specifies the alignment for collecting the pending line items
-// into an invoice.
+// AlignmentBillingWorkflowCollectionAlignmentSubscription - BillingWorkflowCollectionAlignmentSubscription specifies the alignment for
+// collecting the pending line items into an invoice.
 type AlignmentBillingWorkflowCollectionAlignmentSubscription struct {
 	// The type of alignment.
 	Type BillingWorkflowCollectionAlignmentSubscriptionAlignmentType `json:"type"`
@@ -375,10 +377,11 @@ func (u CreateBillingProfileRequestAlignment) MarshalJSON() ([]byte, error) {
 type CreateBillingProfileRequestWorkflowCollectionSettings struct {
 	// The alignment for collecting the pending line items into an invoice.
 	Alignment *CreateBillingProfileRequestAlignment `json:"alignment,omitempty"`
-	// This grace period can be used to delay the collection of the pending line items specified in
-	// alignment.
+	// This grace period can be used to delay the collection of the pending line items
+	// specified in alignment.
 	//
-	// This is useful, in case of multiple subscriptions having slightly different billing periods.
+	// This is useful, in case of multiple subscriptions having slightly different
+	// billing periods.
 	Interval *string `default:"PT1H" json:"interval"`
 }
 
@@ -551,8 +554,8 @@ func (u CreateBillingProfileRequestPayment) MarshalJSON() ([]byte, error) {
 
 // CreateBillingProfileRequestTaxBehavior - Tax behavior.
 //
-// If not specified the billing profile is used to determine the tax behavior.
-// If not specified in the billing profile, the provider's default behavior is used.
+// If not specified the billing profile is used to determine the tax behavior. If
+// not specified in the billing profile, the provider's default behavior is used.
 type CreateBillingProfileRequestTaxBehavior string
 
 const (
@@ -607,8 +610,9 @@ func (c *CreateBillingProfileRequestExternalInvoicingTaxConfig) GetCode() string
 
 // CreateBillingProfileRequestTaxCode - Tax code reference.
 //
-// When both `tax_code` and `tax_code_id` are provided, `tax_code` takes precedence.
-// When `stripe.code` is also provided, `tax_code` still wins and `stripe.code` is ignored.
+// When both `tax_code` and `tax_code_id` are provided, `tax_code` takes
+// precedence. When `stripe.code` is also provided, `tax_code` still wins and
+// `stripe.code` is ignored.
 type CreateBillingProfileRequestTaxCode struct {
 	// ULID (Universally Unique Lexicographically Sortable Identifier).
 	ID string `json:"id"`
@@ -625,8 +629,8 @@ func (c *CreateBillingProfileRequestTaxCode) GetID() string {
 type CreateBillingProfileRequestDefaultTaxConfig struct {
 	// Tax behavior.
 	//
-	// If not specified the billing profile is used to determine the tax behavior.
-	// If not specified in the billing profile, the provider's default behavior is used.
+	// If not specified the billing profile is used to determine the tax behavior. If
+	// not specified in the billing profile, the provider's default behavior is used.
 	Behavior *CreateBillingProfileRequestTaxBehavior `json:"behavior,omitempty"`
 	// Stripe tax config.
 	//
@@ -642,8 +646,9 @@ type CreateBillingProfileRequestDefaultTaxConfig struct {
 	TaxCodeID *string `json:"tax_code_id,omitempty"`
 	// Tax code reference.
 	//
-	// When both `tax_code` and `tax_code_id` are provided, `tax_code` takes precedence.
-	// When `stripe.code` is also provided, `tax_code` still wins and `stripe.code` is ignored.
+	// When both `tax_code` and `tax_code_id` are provided, `tax_code` takes
+	// precedence. When `stripe.code` is also provided, `tax_code` still wins and
+	// `stripe.code` is ignored.
 	TaxCode *CreateBillingProfileRequestTaxCode `json:"tax_code,omitempty"`
 }
 
@@ -684,13 +689,13 @@ func (c *CreateBillingProfileRequestDefaultTaxConfig) GetTaxCode() *CreateBillin
 
 // CreateBillingProfileRequestWorkflowTaxSettings - The tax settings for this workflow
 type CreateBillingProfileRequestWorkflowTaxSettings struct {
-	// Enable automatic tax calculation when tax is supported by the app.
-	// For example, with Stripe Invoicing when enabled, tax is calculated via Stripe Tax.
+	// Enable automatic tax calculation when tax is supported by the app. For example,
+	// with Stripe Invoicing when enabled, tax is calculated via Stripe Tax.
 	Enabled *bool `default:"true" json:"enabled"`
-	// Enforce tax calculation when tax is supported by the app.
-	// When enabled, the billing system will not allow to create an invoice without tax calculation.
-	// Enforcement is different per apps, for example, Stripe app requires customer
-	// to have a tax location when starting a paid subscription.
+	// Enforce tax calculation when tax is supported by the app. When enabled, the
+	// billing system will not allow to create an invoice without tax calculation.
+	// Enforcement is different per apps, for example, Stripe app requires customer to
+	// have a tax location when starting a paid subscription.
 	Enforced *bool `default:"false" json:"enforced"`
 	// Default tax configuration to apply to the invoices for line items.
 	DefaultTaxConfig *CreateBillingProfileRequestDefaultTaxConfig `json:"default_tax_config,omitempty"`
@@ -867,7 +872,8 @@ type CreateBillingProfileRequest struct {
 	// Keys must be of length 1-63 characters, and cannot start with "kong", "konnect", "mesh", "kic", or "_".
 	//
 	Labels map[string]string `json:"labels,omitempty"`
-	// The name and contact information for the supplier this billing profile represents
+	// The name and contact information for the supplier this billing profile
+	// represents
 	Supplier CreateBillingProfileRequestSupplier `json:"supplier"`
 	// The billing workflow settings for this profile
 	Workflow CreateBillingProfileRequestWorkflow `json:"workflow"`

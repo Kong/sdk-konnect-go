@@ -23,6 +23,7 @@ custom := components.LLMMetrics("custom_value")
 | `LLMMetricsCompletionTokens`                 | completion_tokens                            |
 | `LLMMetricsAiRequestCount`                   | ai_request_count                             |
 | `LLMMetricsCost`                             | cost                                         |
+| `LLMMetricsErrorRate`                        | error_rate                                   |
 | `LLMMetricsLlmCacheEmbeddingsLatencyAverage` | llm_cache_embeddings_latency_average         |
 | `LLMMetricsLlmCacheFetchLatencyAverage`      | llm_cache_fetch_latency_average              |
 | `LLMMetricsLlmLatencyAverage`                | llm_latency_average                          |

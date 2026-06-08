@@ -1,6 +1,7 @@
 # BillingWorkflowPaymentChargeAutomaticallySettings
 
-Payment settings for a billing workflow when the collection method is charge automatically.
+Payment settings for a billing workflow when the collection method is charge
+automatically.
 
 
 ## Fields

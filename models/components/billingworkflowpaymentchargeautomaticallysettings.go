@@ -32,7 +32,8 @@ func (e *CollectionMethod) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// BillingWorkflowPaymentChargeAutomaticallySettings - Payment settings for a billing workflow when the collection method is charge automatically.
+// BillingWorkflowPaymentChargeAutomaticallySettings - Payment settings for a billing workflow when the collection method is charge
+// automatically.
 type BillingWorkflowPaymentChargeAutomaticallySettings struct {
 	// The collection method for the invoice.
 	CollectionMethod CollectionMethod `json:"collection_method"`

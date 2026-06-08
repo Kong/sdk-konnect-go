@@ -7,50 +7,49 @@ import (
 	"time"
 )
 
-// Customer - The customer to create the subscription for.
-type Customer struct {
+// BillingSubscriptionCreateCustomer - The customer to create the subscription for.
+type BillingSubscriptionCreateCustomer struct {
 	// The ID of the customer to create the subscription for.
 	//
-	// Either customer ID or customer key must be provided.
-	// If both are provided, the ID will be used.
+	// Either customer ID or customer key must be provided. If both are provided, the
+	// ID will be used.
 	ID *string `json:"id,omitempty"`
 	// The key of the customer to create the subscription for.
 	//
-	// Either customer ID or customer key must be provided.
-	// If both are provided, the ID will be used.
+	// Either customer ID or customer key must be provided. If both are provided, the
+	// ID will be used.
 	Key *string `json:"key,omitempty"`
 }
 
-func (c *Customer) GetID() *string {
-	if c == nil {
+func (b *BillingSubscriptionCreateCustomer) GetID() *string {
+	if b == nil {
 		return nil
 	}
-	return c.ID
+	return b.ID
 }
 
-func (c *Customer) GetKey() *string {
-	if c == nil {
+func (b *BillingSubscriptionCreateCustomer) GetKey() *string {
+	if b == nil {
 		return nil
 	}
-	return c.Key
+	return b.Key
 }
 
 // Plan - The plan reference of the subscription.
 type Plan struct {
-	// The plan ID of the subscription.
-	// Set if subscription is created from a plan.
+	// The plan ID of the subscription. Set if subscription is created from a plan.
 	//
-	// ID or Key of the plan is required if creating a subscription from a plan.
-	// If both are provided, the ID will be used.
+	// ID or Key of the plan is required if creating a subscription from a plan. If
+	// both are provided, the ID will be used.
 	ID *string `json:"id,omitempty"`
-	// The plan Key of the subscription, if any.
-	// Set if subscription is created from a plan.
+	// The plan Key of the subscription, if any. Set if subscription is created from a
+	// plan.
 	//
-	// ID or Key of the plan is required if creating a subscription from a plan.
-	// If both are provided, the ID will be used.
+	// ID or Key of the plan is required if creating a subscription from a plan. If
+	// both are provided, the ID will be used.
 	Key *string `json:"key,omitempty"`
-	// The plan version of the subscription, if any.
-	// If not provided, the latest version of the plan will be used.
+	// The plan version of the subscription, if any. If not provided, the latest
+	// version of the plan will be used.
 	Version *int64 `json:"version,omitempty"`
 }
 
@@ -83,17 +82,19 @@ type BillingSubscriptionCreate struct {
 	//
 	Labels map[string]string `json:"labels,omitempty"`
 	// The customer to create the subscription for.
-	Customer Customer `json:"customer"`
+	Customer BillingSubscriptionCreateCustomer `json:"customer"`
 	// The plan reference of the subscription.
 	Plan Plan `json:"plan"`
-	// A billing anchor is the fixed point in time that determines the subscription's recurring billing cycle.
-	// It affects when charges occur and how prorations are calculated.
-	// Common anchors:
+	// A billing anchor is the fixed point in time that determines the subscription's
+	// recurring billing cycle. It affects when charges occur and how prorations are
+	// calculated. Common anchors:
+	//
 	// - Calendar month (1st of each month): `2025-01-01T00:00:00Z`
 	// - Subscription anniversary (day customer signed up)
 	// - Custom date (customer-specified day)
 	//
-	// If not provided, the subscription will be created with the subscription's creation time as the billing anchor.
+	// If not provided, the subscription will be created with the subscription's
+	// creation time as the billing anchor.
 	BillingAnchor *time.Time `json:"billing_anchor,omitempty"`
 }
 
@@ -115,9 +116,9 @@ func (b *BillingSubscriptionCreate) GetLabels() map[string]string {
 	return b.Labels
 }
 
-func (b *BillingSubscriptionCreate) GetCustomer() Customer {
+func (b *BillingSubscriptionCreate) GetCustomer() BillingSubscriptionCreateCustomer {
 	if b == nil {
-		return Customer{}
+		return BillingSubscriptionCreateCustomer{}
 	}
 	return b.Customer
 }

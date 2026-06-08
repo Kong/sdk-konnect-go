@@ -73,9 +73,10 @@ func main() {
 
 Create a new billing profile.
 
-Billing profiles contain the settings for billing and controls invoice generation.
-An organization can have multiple billing profiles defined.
-A billing profile is linked to a specific app. This association is established during the billing profile's creation and remains immutable.
+Billing profiles contain the settings for billing and controls invoice
+generation. An organization can have multiple billing profiles defined. A
+billing profile is linked to a specific app. This association is established
+during the billing profile's creation and remains immutable.
 
 ### Example Usage
 
@@ -341,6 +342,7 @@ func main() {
 Delete a billing profile.
 
 Only such billing profiles can be deleted that are:
+
 - not the default profile
 - not pinned to any customer using customer overrides
 - only have finalized invoices

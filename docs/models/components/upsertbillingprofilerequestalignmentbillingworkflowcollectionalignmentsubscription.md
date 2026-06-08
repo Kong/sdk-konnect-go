@@ -1,7 +1,7 @@
 # UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription
 
-BillingWorkflowCollectionAlignmentSubscription specifies the alignment for collecting the pending line items
-into an invoice.
+BillingWorkflowCollectionAlignmentSubscription specifies the alignment for
+collecting the pending line items into an invoice.
 
 
 ## Fields

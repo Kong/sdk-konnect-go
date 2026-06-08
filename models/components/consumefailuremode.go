@@ -7,6 +7,8 @@ package components
 // * `skip` - the record is not delivered to the client.
 // * `passthrough` - passes the record to the client even though policy execution failed.
 // * `mark` - passes the record to the client but marks it with a `kong/policy-failure-<id>` header whose value is the reason for the policy failure (truncated to 512 characters).
+//
+// **Requires a minimum runtime version of `1.2`**.
 type ConsumeFailureMode string
 
 const (

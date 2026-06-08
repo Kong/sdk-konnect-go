@@ -2,8 +2,8 @@
 
 The UI mode for the checkout session.
 
-"hosted" displays a Stripe-hosted page. "embedded" integrates directly into your app.
-Defaults to "hosted".
+"hosted" displays a Stripe-hosted page. "embedded" integrates directly into your
+app. Defaults to "hosted".
 
 ## Example Usage
 

@@ -17,6 +17,9 @@ type PortalsIPAllowListSDK interface {
 	// ListPortalIPAllowList - List the IP allow list for portal
 	// Lists the IP allow list configuration for a portal.
 	ListPortalIPAllowList(ctx context.Context, request operations.ListPortalIPAllowListRequest, opts ...operations.Option) (*operations.ListPortalIPAllowListResponse, error)
+	// GetPortalIPAllowList - Get an IP allow list for a portal
+	// Get an IP allow list for a portal.
+	GetPortalIPAllowList(ctx context.Context, portalID string, id string, opts ...operations.Option) (*operations.GetPortalIPAllowListResponse, error)
 	// PutPortalIPAllowList - Replace an IP allow list for a portal
 	// Replace an IP allow list for a portal.
 	PutPortalIPAllowList(ctx context.Context, request operations.PutPortalIPAllowListRequest, opts ...operations.Option) (*operations.PutPortalIPAllowListResponse, error)

@@ -2,165 +2,61 @@
 
 package components
 
-// StringFieldNEQFilter - Filter customers by key.
-type StringFieldNEQFilter struct {
-	Eq        *string `queryParam:"name=eq"`
-	Contains  string  `queryParam:"name=contains"`
-	Ocontains string  `queryParam:"name=ocontains"`
-	Oeq       string  `queryParam:"name=oeq"`
-	Neq       string  `queryParam:"name=neq"`
-}
-
-func (s *StringFieldNEQFilter) GetEq() *string {
-	if s == nil {
-		return nil
-	}
-	return s.Eq
-}
-
-func (s *StringFieldNEQFilter) GetContains() string {
-	if s == nil {
-		return ""
-	}
-	return s.Contains
-}
-
-func (s *StringFieldNEQFilter) GetOcontains() string {
-	if s == nil {
-		return ""
-	}
-	return s.Ocontains
-}
-
-func (s *StringFieldNEQFilter) GetOeq() string {
-	if s == nil {
-		return ""
-	}
-	return s.Oeq
-}
-
-func (s *StringFieldNEQFilter) GetNeq() string {
-	if s == nil {
-		return ""
-	}
-	return s.Neq
-}
-
-// ListCustomersParamsFilterStringFieldNEQFilter - Filter customers by name.
-type ListCustomersParamsFilterStringFieldNEQFilter struct {
-	Eq        *string `queryParam:"name=eq"`
-	Contains  string  `queryParam:"name=contains"`
-	Ocontains string  `queryParam:"name=ocontains"`
-	Oeq       string  `queryParam:"name=oeq"`
-	Neq       string  `queryParam:"name=neq"`
-}
-
-func (l *ListCustomersParamsFilterStringFieldNEQFilter) GetEq() *string {
-	if l == nil {
-		return nil
-	}
-	return l.Eq
-}
-
-func (l *ListCustomersParamsFilterStringFieldNEQFilter) GetContains() string {
-	if l == nil {
-		return ""
-	}
-	return l.Contains
-}
-
-func (l *ListCustomersParamsFilterStringFieldNEQFilter) GetOcontains() string {
-	if l == nil {
-		return ""
-	}
-	return l.Ocontains
-}
-
-func (l *ListCustomersParamsFilterStringFieldNEQFilter) GetOeq() string {
-	if l == nil {
-		return ""
-	}
-	return l.Oeq
-}
-
-func (l *ListCustomersParamsFilterStringFieldNEQFilter) GetNeq() string {
-	if l == nil {
-		return ""
-	}
-	return l.Neq
-}
-
-// ListCustomersParamsFilterPrimaryEmailStringFieldNEQFilter - Filter customers by primary email.
-type ListCustomersParamsFilterPrimaryEmailStringFieldNEQFilter struct {
-	Eq        *string `queryParam:"name=eq"`
-	Contains  string  `queryParam:"name=contains"`
-	Ocontains string  `queryParam:"name=ocontains"`
-	Oeq       string  `queryParam:"name=oeq"`
-	Neq       string  `queryParam:"name=neq"`
-}
-
-func (l *ListCustomersParamsFilterPrimaryEmailStringFieldNEQFilter) GetEq() *string {
-	if l == nil {
-		return nil
-	}
-	return l.Eq
-}
-
-func (l *ListCustomersParamsFilterPrimaryEmailStringFieldNEQFilter) GetContains() string {
-	if l == nil {
-		return ""
-	}
-	return l.Contains
-}
-
-func (l *ListCustomersParamsFilterPrimaryEmailStringFieldNEQFilter) GetOcontains() string {
-	if l == nil {
-		return ""
-	}
-	return l.Ocontains
-}
-
-func (l *ListCustomersParamsFilterPrimaryEmailStringFieldNEQFilter) GetOeq() string {
-	if l == nil {
-		return ""
-	}
-	return l.Oeq
-}
-
-func (l *ListCustomersParamsFilterPrimaryEmailStringFieldNEQFilter) GetNeq() string {
-	if l == nil {
-		return ""
-	}
-	return l.Neq
-}
-
 // ListCustomersParamsFilter - Filter options for listing customers.
 type ListCustomersParamsFilter struct {
-	// Filter customers by key.
-	Key *StringFieldNEQFilter `queryParam:"name=key"`
-	// Filter customers by name.
-	Name *ListCustomersParamsFilterStringFieldNEQFilter `queryParam:"name=name"`
-	// Filter customers by primary email.
-	PrimaryEmail *ListCustomersParamsFilterPrimaryEmailStringFieldNEQFilter `queryParam:"name=primary_email"`
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
+	Key *StringFieldFilter `queryParam:"name=key"`
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
+	Name *StringFieldFilter `queryParam:"name=name"`
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
+	PrimaryEmail *StringFieldFilter `queryParam:"name=primary_email"`
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
+	UsageAttributionSubjectKey *StringFieldFilter `queryParam:"name=usage_attribution_subject_key"`
+	// Filter using **one** of the following operators: `eq`, `oeq`, `neq`, `contains`, `ocontains`
+	PlanKey *StringFieldFilter `queryParam:"name=plan_key"`
+	// Filters on the given ULID field value by exact match. All properties are
+	// optional; provide exactly one to specify the comparison.
+	BillingProfileID *ULIDFieldFilter `queryParam:"name=billing_profile_id"`
 }
 
-func (l *ListCustomersParamsFilter) GetKey() *StringFieldNEQFilter {
+func (l *ListCustomersParamsFilter) GetKey() *StringFieldFilter {
 	if l == nil {
 		return nil
 	}
 	return l.Key
 }
 
-func (l *ListCustomersParamsFilter) GetName() *ListCustomersParamsFilterStringFieldNEQFilter {
+func (l *ListCustomersParamsFilter) GetName() *StringFieldFilter {
 	if l == nil {
 		return nil
 	}
 	return l.Name
 }
 
-func (l *ListCustomersParamsFilter) GetPrimaryEmail() *ListCustomersParamsFilterPrimaryEmailStringFieldNEQFilter {
+func (l *ListCustomersParamsFilter) GetPrimaryEmail() *StringFieldFilter {
 	if l == nil {
 		return nil
 	}
 	return l.PrimaryEmail
+}
+
+func (l *ListCustomersParamsFilter) GetUsageAttributionSubjectKey() *StringFieldFilter {
+	if l == nil {
+		return nil
+	}
+	return l.UsageAttributionSubjectKey
+}
+
+func (l *ListCustomersParamsFilter) GetPlanKey() *StringFieldFilter {
+	if l == nil {
+		return nil
+	}
+	return l.PlanKey
+}
+
+func (l *ListCustomersParamsFilter) GetBillingProfileID() *ULIDFieldFilter {
+	if l == nil {
+		return nil
+	}
+	return l.BillingProfileID
 }

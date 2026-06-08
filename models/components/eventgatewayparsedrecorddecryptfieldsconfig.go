@@ -14,11 +14,12 @@ type EventGatewayParsedRecordDecryptFieldsConfig struct {
 	// * `passthrough` - passes the record to the client even though policy execution failed.
 	// * `mark` - passes the record to the client but marks it with a `kong/policy-failure-<id>` header whose value is the reason for the policy failure (truncated to 512 characters).
 	//
+	// **Requires a minimum runtime version of `1.2`**.
 	FailureMode ConsumeFailureMode `json:"failure_mode"`
 	// Describes how to find a symmetric key for decryption.
 	KeySources []EventGatewayKeySource `json:"key_sources"`
-	// Selects which fields to decrypt.
-	DecryptFields []EventGatewayParsedRecordDecryptionSelector `json:"decrypt_fields"`
+	// Selects fields of a parsed record for decryption.
+	DecryptFields EventGatewayParsedRecordDecryptionSelector `json:"decrypt_fields"`
 }
 
 func (e EventGatewayParsedRecordDecryptFieldsConfig) MarshalJSON() ([]byte, error) {
@@ -46,9 +47,9 @@ func (e *EventGatewayParsedRecordDecryptFieldsConfig) GetKeySources() []EventGat
 	return e.KeySources
 }
 
-func (e *EventGatewayParsedRecordDecryptFieldsConfig) GetDecryptFields() []EventGatewayParsedRecordDecryptionSelector {
+func (e *EventGatewayParsedRecordDecryptFieldsConfig) GetDecryptFields() EventGatewayParsedRecordDecryptionSelector {
 	if e == nil {
-		return []EventGatewayParsedRecordDecryptionSelector{}
+		return EventGatewayParsedRecordDecryptionSelector{}
 	}
 	return e.DecryptFields
 }

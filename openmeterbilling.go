@@ -311,9 +311,10 @@ func (s *OpenMeterBilling) ListBillingProfiles(ctx context.Context, page *compon
 // CreateBillingProfile - Create a new billing profile
 // Create a new billing profile.
 //
-// Billing profiles contain the settings for billing and controls invoice generation.
-// An organization can have multiple billing profiles defined.
-// A billing profile is linked to a specific app. This association is established during the billing profile's creation and remains immutable.
+// Billing profiles contain the settings for billing and controls invoice
+// generation. An organization can have multiple billing profiles defined. A
+// billing profile is linked to a specific app. This association is established
+// during the billing profile's creation and remains immutable.
 func (s *OpenMeterBilling) CreateBillingProfile(ctx context.Context, request components.CreateBillingProfileRequest, opts ...operations.Option) (*operations.CreateBillingProfileResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1185,6 +1186,7 @@ func (s *OpenMeterBilling) UpdateBillingProfile(ctx context.Context, id string, 
 // Delete a billing profile.
 //
 // Only such billing profiles can be deleted that are:
+//
 // - not the default profile
 // - not pinned to any customer using customer overrides
 // - only have finalized invoices

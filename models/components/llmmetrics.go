@@ -10,6 +10,7 @@ const (
 	LLMMetricsCompletionTokens                 LLMMetrics = "completion_tokens"
 	LLMMetricsAiRequestCount                   LLMMetrics = "ai_request_count"
 	LLMMetricsCost                             LLMMetrics = "cost"
+	LLMMetricsErrorRate                        LLMMetrics = "error_rate"
 	LLMMetricsLlmCacheEmbeddingsLatencyAverage LLMMetrics = "llm_cache_embeddings_latency_average"
 	LLMMetricsLlmCacheFetchLatencyAverage      LLMMetrics = "llm_cache_fetch_latency_average"
 	LLMMetricsLlmLatencyAverage                LLMMetrics = "llm_latency_average"
@@ -25,7 +26,7 @@ func (e LLMMetrics) ToPointer() *LLMMetrics {
 func (e *LLMMetrics) IsExact() bool {
 	if e != nil {
 		switch *e {
-		case "total_tokens", "prompt_tokens", "completion_tokens", "ai_request_count", "cost", "llm_cache_embeddings_latency_average", "llm_cache_fetch_latency_average", "llm_latency_average", "llm_embeddings_tokens", "llm_embeddings_cost":
+		case "total_tokens", "prompt_tokens", "completion_tokens", "ai_request_count", "cost", "error_rate", "llm_cache_embeddings_latency_average", "llm_cache_fetch_latency_average", "llm_latency_average", "llm_embeddings_tokens", "llm_embeddings_cost":
 			return true
 		}
 	}

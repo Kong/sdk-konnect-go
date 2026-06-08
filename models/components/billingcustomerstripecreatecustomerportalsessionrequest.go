@@ -4,15 +4,19 @@ package components
 
 // BillingCustomerStripeCreateCustomerPortalSessionRequestStripeOptions - Options for configuring the Stripe Customer Portal Session.
 type BillingCustomerStripeCreateCustomerPortalSessionRequestStripeOptions struct {
-	// The ID of an existing [Stripe configuration](https://docs.stripe.com/api/customer_portal/configurations) to use for this session,
-	// describing its functionality and features.
-	// If not specified, the session uses the default configuration.
+	// The ID of an existing
+	// [Stripe configuration](https://docs.stripe.com/api/customer_portal/configurations)
+	// to use for this session, describing its functionality and features. If not
+	// specified, the session uses the default configuration.
 	ConfigurationID *string `json:"configuration_id,omitempty"`
-	// The IETF [language tag](https://docs.stripe.com/api/customer_portal/sessions/create#create_portal_session-locale) of the locale customer portal is displayed in.
-	// If blank or `auto`, the customer's preferred_locales or browser's locale is used.
+	// The IETF
+	// [language tag](https://docs.stripe.com/api/customer_portal/sessions/create#create_portal_session-locale)
+	// of the locale customer portal is displayed in. If blank or `auto`, the
+	// customer's preferred_locales or browser's locale is used.
 	Locale *string `json:"locale,omitempty"`
-	// The [URL to redirect](https://docs.stripe.com/api/customer_portal/sessions/create#create_portal_session-return_url) the customer to after they have completed
-	// their requested actions.
+	// The
+	// [URL to redirect](https://docs.stripe.com/api/customer_portal/sessions/create#create_portal_session-return_url)
+	// the customer to after they have completed their requested actions.
 	ReturnURL *string `json:"return_url,omitempty"`
 }
 
@@ -39,9 +43,10 @@ func (b *BillingCustomerStripeCreateCustomerPortalSessionRequestStripeOptions) G
 
 // BillingCustomerStripeCreateCustomerPortalSessionRequest - Request to create a Stripe Customer Portal Session for the customer.
 //
-// Useful to redirect the customer to the Stripe Customer Portal to manage their payment methods,
-// change their billing address and access their invoice history.
-// Only returns URL if the customer billing profile is linked to a stripe app and customer.
+// Useful to redirect the customer to the Stripe Customer Portal to manage their
+// payment methods, change their billing address and access their invoice history.
+// Only returns URL if the customer billing profile is linked to a stripe app and
+// customer.
 type BillingCustomerStripeCreateCustomerPortalSessionRequest struct {
 	// Options for configuring the Stripe Customer Portal Session.
 	StripeOptions BillingCustomerStripeCreateCustomerPortalSessionRequestStripeOptions `json:"stripe_options"`

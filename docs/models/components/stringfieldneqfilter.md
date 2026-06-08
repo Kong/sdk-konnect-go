@@ -1,6 +1,6 @@
 # StringFieldNEQFilter
 
-Filter customers by key.
+Filter events by ID.
 
 
 ## Fields

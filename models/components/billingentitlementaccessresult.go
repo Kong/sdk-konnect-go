@@ -32,13 +32,11 @@ type BillingEntitlementAccessResult struct {
 	Type BillingEntitlementAccessResultType `json:"type"`
 	// The feature key of the entitlement.
 	FeatureKey string `json:"feature_key"`
-	// Whether the customer has access to the feature.
-	// Always true for `boolean` and `static` entitlements.
-	// Depends on balance for `metered` entitlements.
+	// Whether the customer has access to the feature. Always true for `boolean` and
+	// `static` entitlements. Depends on balance for `metered` entitlements.
 	HasAccess bool `json:"has_access"`
-	// Only available for static entitlements.
-	// Config is the JSON parsable configuration of the entitlement.
-	// Useful to describe per customer configuration.
+	// Only available for static entitlements. Config is the JSON parsable
+	// configuration of the entitlement. Useful to describe per customer configuration.
 	Config *string `json:"config,omitempty"`
 }
 

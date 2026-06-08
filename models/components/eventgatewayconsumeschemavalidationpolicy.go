@@ -15,17 +15,41 @@ type EventGatewayConsumeSchemaValidationPolicyConfig struct {
 	Type SchemaValidationType `json:"type"`
 	// A reference to a schema Registry.
 	SchemaRegistry *SchemaRegistryReference `json:"schema_registry,omitempty"`
+	// Describes how to handle a failure in a policy applied to consumed records.
+	// * `error` - the batch is not delivered to the client. Use sparingly: erroring on a batch causes clients to get stuck on the problematic offset and requires manual intervention to skip it.
+	// * `skip` - the record is not delivered to the client.
+	// * `passthrough` - passes the record to the client even though policy execution failed.
+	// * `mark` - passes the record to the client but marks it with a `kong/policy-failure-<id>` header whose value is the reason for the policy failure (truncated to 512 characters).
+	//
+	// **Requires a minimum runtime version of `1.2`**.
+	FailureMode *ConsumeFailureMode `json:"failure_mode,omitempty"`
+	// If true, validate the record key.
+	//
+	// **Requires a minimum runtime version of `1.2`**.
+	ValidateKey *bool `json:"validate_key,omitempty"`
+	// If true, validate the record value.
+	//
+	// **Requires a minimum runtime version of `1.2`**.
+	ValidateValue *bool `json:"validate_value,omitempty"`
+	// Deprecated. Use `failure_mode`.
+	//
 	// Defines a behavior when record key is not valid.
 	// * mark - marks a record with kong/server header and client ID value
 	//   to help to identify the clients violating schema.
 	// * skip - skips delivering a record.
 	//
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	KeyValidationAction *ConsumeKeyValidationAction `json:"key_validation_action,omitempty"`
+	// Deprecated. Use `failure_mode`.
+	//
 	// Defines a behavior when record value is not valid.
 	// * mark - marks a record with kong/server header and client ID value
 	//   to help to identify the clients violating schema.
 	// * skip - skips delivering a record.
 	//
+	//
+	// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 	ValueValidationAction *ConsumeValueValidationAction `json:"value_validation_action,omitempty"`
 }
 
@@ -52,6 +76,27 @@ func (e *EventGatewayConsumeSchemaValidationPolicyConfig) GetSchemaRegistry() *S
 		return nil
 	}
 	return e.SchemaRegistry
+}
+
+func (e *EventGatewayConsumeSchemaValidationPolicyConfig) GetFailureMode() *ConsumeFailureMode {
+	if e == nil {
+		return nil
+	}
+	return e.FailureMode
+}
+
+func (e *EventGatewayConsumeSchemaValidationPolicyConfig) GetValidateKey() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ValidateKey
+}
+
+func (e *EventGatewayConsumeSchemaValidationPolicyConfig) GetValidateValue() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ValidateValue
 }
 
 func (e *EventGatewayConsumeSchemaValidationPolicyConfig) GetKeyValidationAction() *ConsumeKeyValidationAction {

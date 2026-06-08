@@ -1,6 +1,7 @@
 # Datacontenttype
 
-Content type of the CloudEvents data value. Only the value "application/json" is allowed over HTTP.
+Content type of the CloudEvents data value. Only the value "application/json" is
+allowed over HTTP.
 
 ## Example Usage
 

@@ -114,12 +114,9 @@ func main() {
     res, err := s.OpenMeterCustomers.ListCustomers(ctx, operations.ListCustomersRequest{
         Sort: sdkkonnectgo.Pointer("created_at desc"),
         Filter: &components.ListCustomersParamsFilter{
-            Key: &components.StringFieldNEQFilter{
-                Contains: "<value>",
-                Ocontains: "<value>",
-                Oeq: "<value>",
-                Neq: "<value>",
-            },
+            BillingProfileID: sdkkonnectgo.Pointer(components.CreateULIDFieldFilterStr(
+                "01G65Z755AFWAKHE12NY0CQ9FH",
+            )),
         },
     })
     if err != nil {
@@ -548,15 +545,17 @@ func main() {
 
 ## CreateCustomerStripeCheckoutSession
 
-Create a [Stripe Checkout Session](https://docs.stripe.com/payments/checkout) for the customer.
+Create a [Stripe Checkout Session](https://docs.stripe.com/payments/checkout)
+for the customer.
 
-Creates a Checkout Session for collecting payment method information from customers.
-The session operates in "setup" mode, which collects payment details without charging
-the customer immediately. The collected payment method can be used for future
-subscription billing.
+Creates a Checkout Session for collecting payment method information from
+customers. The session operates in "setup" mode, which collects payment details
+without charging the customer immediately. The collected payment method can be
+used for future subscription billing.
 
-For hosted checkout sessions, redirect customers to the returned URL. For embedded
-sessions, use the client_secret to initialize Stripe.js in your application.
+For hosted checkout sessions, redirect customers to the returned URL. For
+embedded sessions, use the client_secret to initialize Stripe.js in your
+application.
 
 ### Example Usage
 
@@ -622,9 +621,10 @@ func main() {
 
 Create Stripe Customer Portal Session.
 
-Useful to redirect the customer to the Stripe Customer Portal to manage their payment methods,
-change their billing address and access their invoice history.
-Only returns URL if the customer billing profile is linked to a stripe app and customer.
+Useful to redirect the customer to the Stripe Customer Portal to manage their
+payment methods, change their billing address and access their invoice history.
+Only returns URL if the customer billing profile is linked to a stripe app and
+customer.
 
 ### Example Usage
 

@@ -2398,15 +2398,17 @@ func (s *OpenMeterCustomers) UpdateCustomerBillingAppData(ctx context.Context, c
 }
 
 // CreateCustomerStripeCheckoutSession - Create Stripe Checkout Session
-// Create a [Stripe Checkout Session](https://docs.stripe.com/payments/checkout) for the customer.
+// Create a [Stripe Checkout Session](https://docs.stripe.com/payments/checkout)
+// for the customer.
 //
-// Creates a Checkout Session for collecting payment method information from customers.
-// The session operates in "setup" mode, which collects payment details without charging
-// the customer immediately. The collected payment method can be used for future
-// subscription billing.
+// Creates a Checkout Session for collecting payment method information from
+// customers. The session operates in "setup" mode, which collects payment details
+// without charging the customer immediately. The collected payment method can be
+// used for future subscription billing.
 //
-// For hosted checkout sessions, redirect customers to the returned URL. For embedded
-// sessions, use the client_secret to initialize Stripe.js in your application.
+// For hosted checkout sessions, redirect customers to the returned URL. For
+// embedded sessions, use the client_secret to initialize Stripe.js in your
+// application.
 func (s *OpenMeterCustomers) CreateCustomerStripeCheckoutSession(ctx context.Context, customerID string, billingCustomerStripeCreateCheckoutSessionRequest components.BillingCustomerStripeCreateCheckoutSessionRequest, opts ...operations.Option) (*operations.CreateCustomerStripeCheckoutSessionResponse, error) {
 	request := operations.CreateCustomerStripeCheckoutSessionRequest{
 		CustomerID: customerID,
@@ -2730,9 +2732,10 @@ func (s *OpenMeterCustomers) CreateCustomerStripeCheckoutSession(ctx context.Con
 // CreateCustomerStripePortalSession - Create Stripe customer portal session
 // Create Stripe Customer Portal Session.
 //
-// Useful to redirect the customer to the Stripe Customer Portal to manage their payment methods,
-// change their billing address and access their invoice history.
-// Only returns URL if the customer billing profile is linked to a stripe app and customer.
+// Useful to redirect the customer to the Stripe Customer Portal to manage their
+// payment methods, change their billing address and access their invoice history.
+// Only returns URL if the customer billing profile is linked to a stripe app and
+// customer.
 func (s *OpenMeterCustomers) CreateCustomerStripePortalSession(ctx context.Context, customerID string, billingCustomerStripeCreateCustomerPortalSessionRequest components.BillingCustomerStripeCreateCustomerPortalSessionRequest, opts ...operations.Option) (*operations.CreateCustomerStripePortalSessionResponse, error) {
 	request := operations.CreateCustomerStripePortalSessionRequest{
 		CustomerID: customerID,

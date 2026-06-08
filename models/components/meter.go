@@ -64,15 +64,17 @@ type Meter struct {
 	Aggregation MeterAggregation `json:"aggregation"`
 	// The event type to include in the aggregation.
 	EventType string `json:"event_type"`
-	// The date since the meter should include events.
-	// Useful to skip old events.
-	// If not specified, all historical events are included.
+	// The date since the meter should include events. Useful to skip old events. If
+	// not specified, all historical events are included.
 	EventsFrom *time.Time `json:"events_from,omitempty"`
-	// JSONPath expression to extract the value from the ingested event's data property.
+	// JSONPath expression to extract the value from the ingested event's data
+	// property.
 	//
-	// The ingested value for sum, avg, min, and max aggregations is a number or a string that can be parsed to a number.
+	// The ingested value for sum, avg, min, and max aggregations is a number or a
+	// string that can be parsed to a number.
 	//
-	// For unique_count aggregation, the ingested value must be a string. For count aggregation the value_property is ignored.
+	// For unique_count aggregation, the ingested value must be a string. For count
+	// aggregation the value_property is ignored.
 	ValueProperty *string `json:"value_property,omitempty"`
 	// Named JSONPath expressions to extract the group by values from the event data.
 	//

@@ -13,13 +13,13 @@ import (
 type BillingSubscriptionChangeCustomer struct {
 	// The ID of the customer to create the subscription for.
 	//
-	// Either customer ID or customer key must be provided.
-	// If both are provided, the ID will be used.
+	// Either customer ID or customer key must be provided. If both are provided, the
+	// ID will be used.
 	ID *string `json:"id,omitempty"`
 	// The key of the customer to create the subscription for.
 	//
-	// Either customer ID or customer key must be provided.
-	// If both are provided, the ID will be used.
+	// Either customer ID or customer key must be provided. If both are provided, the
+	// ID will be used.
 	Key *string `json:"key,omitempty"`
 }
 
@@ -39,20 +39,19 @@ func (b *BillingSubscriptionChangeCustomer) GetKey() *string {
 
 // BillingSubscriptionChangePlan - The plan reference of the subscription.
 type BillingSubscriptionChangePlan struct {
-	// The plan ID of the subscription.
-	// Set if subscription is created from a plan.
+	// The plan ID of the subscription. Set if subscription is created from a plan.
 	//
-	// ID or Key of the plan is required if creating a subscription from a plan.
-	// If both are provided, the ID will be used.
+	// ID or Key of the plan is required if creating a subscription from a plan. If
+	// both are provided, the ID will be used.
 	ID *string `json:"id,omitempty"`
-	// The plan Key of the subscription, if any.
-	// Set if subscription is created from a plan.
+	// The plan Key of the subscription, if any. Set if subscription is created from a
+	// plan.
 	//
-	// ID or Key of the plan is required if creating a subscription from a plan.
-	// If both are provided, the ID will be used.
+	// ID or Key of the plan is required if creating a subscription from a plan. If
+	// both are provided, the ID will be used.
 	Key *string `json:"key,omitempty"`
-	// The plan version of the subscription, if any.
-	// If not provided, the latest version of the plan will be used.
+	// The plan version of the subscription, if any. If not provided, the latest
+	// version of the plan will be used.
 	Version *int64 `json:"version,omitempty"`
 }
 
@@ -84,8 +83,9 @@ const (
 	BillingSubscriptionChangeTimingTypeDateTime                          BillingSubscriptionChangeTimingType = "date-time"
 )
 
-// BillingSubscriptionChangeTiming - Timing configuration for the change, when the change should take effect.
-// For changing a subscription, the accepted values depend on the subscription configuration.
+// BillingSubscriptionChangeTiming - Timing configuration for the change, when the change should take effect. For
+// changing a subscription, the accepted values depend on the subscription
+// configuration.
 type BillingSubscriptionChangeTiming struct {
 	BillingSubscriptionEditTimingEnum *BillingSubscriptionEditTimingEnum `queryParam:"inline" union:"member"`
 	DateTime                          *time.Time                         `queryParam:"inline" union:"member"`
@@ -153,17 +153,20 @@ type BillingSubscriptionChange struct {
 	Customer BillingSubscriptionChangeCustomer `json:"customer"`
 	// The plan reference of the subscription.
 	Plan BillingSubscriptionChangePlan `json:"plan"`
-	// A billing anchor is the fixed point in time that determines the subscription's recurring billing cycle.
-	// It affects when charges occur and how prorations are calculated.
-	// Common anchors:
+	// A billing anchor is the fixed point in time that determines the subscription's
+	// recurring billing cycle. It affects when charges occur and how prorations are
+	// calculated. Common anchors:
+	//
 	// - Calendar month (1st of each month): `2025-01-01T00:00:00Z`
 	// - Subscription anniversary (day customer signed up)
 	// - Custom date (customer-specified day)
 	//
-	// If not provided, the subscription will be created with the subscription's creation time as the billing anchor.
+	// If not provided, the subscription will be created with the subscription's
+	// creation time as the billing anchor.
 	BillingAnchor *time.Time `json:"billing_anchor,omitempty"`
-	// Timing configuration for the change, when the change should take effect.
-	// For changing a subscription, the accepted values depend on the subscription configuration.
+	// Timing configuration for the change, when the change should take effect. For
+	// changing a subscription, the accepted values depend on the subscription
+	// configuration.
 	Timing BillingSubscriptionChangeTiming `json:"timing"`
 }
 
