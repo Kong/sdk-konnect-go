@@ -3,13 +3,13 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type ListCustomersRequest struct {
 	// Determines which page of the collection to retrieve.
-	Page *components.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
+	Page *metering.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
 	// Sort customers returned in the response. Supported sort attributes are:
 	//
 	// - `id`
@@ -22,10 +22,10 @@ type ListCustomersRequest struct {
 	// Filter customers returned in the response.
 	//
 	// To filter customers by key add the following query param: filter[key]=my-db-id
-	Filter *components.ListCustomersParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *metering.ListCustomersParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (l *ListCustomersRequest) GetPage() *components.PagePaginationQuery {
+func (l *ListCustomersRequest) GetPage() *metering.PagePaginationQuery {
 	if l == nil {
 		return nil
 	}
@@ -39,7 +39,7 @@ func (l *ListCustomersRequest) GetSort() *string {
 	return l.Sort
 }
 
-func (l *ListCustomersRequest) GetFilter() *components.ListCustomersParamsFilter {
+func (l *ListCustomersRequest) GetFilter() *metering.ListCustomersParamsFilter {
 	if l == nil {
 		return nil
 	}
@@ -54,7 +54,7 @@ type ListCustomersResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Page paginated response.
-	CustomerPagePaginatedResponse *components.CustomerPagePaginatedResponse
+	CustomerPagePaginatedResponse *metering.CustomerPagePaginatedResponse
 }
 
 func (l *ListCustomersResponse) GetContentType() string {
@@ -78,7 +78,7 @@ func (l *ListCustomersResponse) GetRawResponse() *http.Response {
 	return l.RawResponse
 }
 
-func (l *ListCustomersResponse) GetCustomerPagePaginatedResponse() *components.CustomerPagePaginatedResponse {
+func (l *ListCustomersResponse) GetCustomerPagePaginatedResponse() *metering.CustomerPagePaginatedResponse {
 	if l == nil {
 		return nil
 	}

@@ -3,18 +3,18 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type ListMeteringEventsRequest struct {
 	// Determines which page of the collection to retrieve.
-	Page *components.CursorPaginationQueryPage `queryParam:"style=deepObject,explode=true,name=page"`
+	Page *metering.CursorPaginationQueryPage `queryParam:"style=deepObject,explode=true,name=page"`
 	// Filter events returned in the response.
 	//
 	// To filter events by subject add the following query param:
 	// filter[subject][eq]=customer-1
-	Filter *components.ListEventsParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *metering.ListEventsParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 	// Sort events returned in the response. Supported sort attributes are:
 	//
 	// - `time` (default)
@@ -27,14 +27,14 @@ type ListMeteringEventsRequest struct {
 	Sort *string `queryParam:"style=form,explode=false,name=sort"`
 }
 
-func (l *ListMeteringEventsRequest) GetPage() *components.CursorPaginationQueryPage {
+func (l *ListMeteringEventsRequest) GetPage() *metering.CursorPaginationQueryPage {
 	if l == nil {
 		return nil
 	}
 	return l.Page
 }
 
-func (l *ListMeteringEventsRequest) GetFilter() *components.ListEventsParamsFilter {
+func (l *ListMeteringEventsRequest) GetFilter() *metering.ListEventsParamsFilter {
 	if l == nil {
 		return nil
 	}
@@ -56,7 +56,7 @@ type ListMeteringEventsResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Cursor paginated response.
-	IngestedEventPaginatedResponse *components.IngestedEventPaginatedResponse
+	IngestedEventPaginatedResponse *metering.IngestedEventPaginatedResponse
 }
 
 func (l *ListMeteringEventsResponse) GetContentType() string {
@@ -80,7 +80,7 @@ func (l *ListMeteringEventsResponse) GetRawResponse() *http.Response {
 	return l.RawResponse
 }
 
-func (l *ListMeteringEventsResponse) GetIngestedEventPaginatedResponse() *components.IngestedEventPaginatedResponse {
+func (l *ListMeteringEventsResponse) GetIngestedEventPaginatedResponse() *metering.IngestedEventPaginatedResponse {
 	if l == nil {
 		return nil
 	}

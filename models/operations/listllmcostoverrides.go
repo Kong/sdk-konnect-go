@@ -3,25 +3,25 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type ListLlmCostOverridesRequest struct {
 	// Filter options for listing LLM cost prices.
-	Filter *components.ListLLMCostPricesParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *metering.ListLLMCostPricesParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 	// Determines which page of the collection to retrieve.
-	Page *components.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
+	Page *metering.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
 }
 
-func (l *ListLlmCostOverridesRequest) GetFilter() *components.ListLLMCostPricesParamsFilter {
+func (l *ListLlmCostOverridesRequest) GetFilter() *metering.ListLLMCostPricesParamsFilter {
 	if l == nil {
 		return nil
 	}
 	return l.Filter
 }
 
-func (l *ListLlmCostOverridesRequest) GetPage() *components.PagePaginationQuery {
+func (l *ListLlmCostOverridesRequest) GetPage() *metering.PagePaginationQuery {
 	if l == nil {
 		return nil
 	}
@@ -36,7 +36,7 @@ type ListLlmCostOverridesResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Page paginated response.
-	PricePagePaginatedResponse *components.PricePagePaginatedResponse
+	PricePagePaginatedResponse *metering.PricePagePaginatedResponse
 }
 
 func (l *ListLlmCostOverridesResponse) GetContentType() string {
@@ -60,7 +60,7 @@ func (l *ListLlmCostOverridesResponse) GetRawResponse() *http.Response {
 	return l.RawResponse
 }
 
-func (l *ListLlmCostOverridesResponse) GetPricePagePaginatedResponse() *components.PricePagePaginatedResponse {
+func (l *ListLlmCostOverridesResponse) GetPricePagePaginatedResponse() *metering.PricePagePaginatedResponse {
 	if l == nil {
 		return nil
 	}

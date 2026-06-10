@@ -30,6 +30,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -45,8 +46,8 @@ func main() {
 
     res, err := s.OpenMeterFeatures.ListFeatures(ctx, operations.ListFeaturesRequest{
         Sort: sdkkonnectgo.Pointer("created_at desc"),
-        Filter: &components.ListFeatureParamsFilter{
-            MeterID: sdkkonnectgo.Pointer(components.CreateULIDFieldFilterStr(
+        Filter: &metering.ListFeatureParamsFilter{
+            MeterID: sdkkonnectgo.Pointer(metering.CreateULIDFieldFilterStr(
                 "01G65Z755AFWAKHE12NY0CQ9FH",
             )),
         },
@@ -98,6 +99,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"log"
 )
 
@@ -110,13 +112,13 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterFeatures.CreateFeature(ctx, components.CreateFeatureRequest{
+    res, err := s.OpenMeterFeatures.CreateFeature(ctx, metering.CreateFeatureRequest{
         Name: "<value>",
         Labels: map[string]string{
             "env": "test",
         },
         Key: "resource_key",
-        Meter: &components.CreateFeatureRequestMeterReference{
+        Meter: &metering.CreateFeatureRequestMeterReference{
             ID: "01G65Z755AFWAKHE12NY0CQ9FH",
         },
     })
@@ -137,11 +139,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |
-| `request`                                                                          | [components.CreateFeatureRequest](../../models/components/createfeaturerequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
+| `request`                                                                      | [metering.CreateFeatureRequest](../../models/metering/createfeaturerequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |
 
 ### Response
 
@@ -241,6 +243,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"log"
 )
 
@@ -253,7 +256,7 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterFeatures.UpdateFeature(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.UpdateFeatureRequest{})
+    res, err := s.OpenMeterFeatures.UpdateFeature(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", metering.UpdateFeatureRequest{})
     if err != nil {
         log.Fatal(err)
     }
@@ -271,12 +274,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
-| `featureID`                                                                        | `string`                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                | 01G65Z755AFWAKHE12NY0CQ9FH                                                         |
-| `updateFeatureRequest`                                                             | [components.UpdateFeatureRequest](../../models/components/updatefeaturerequest.md) | :heavy_check_mark:                                                                 | N/A                                                                                |                                                                                    |
-| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |                                                                                |
+| `featureID`                                                                    | `string`                                                                       | :heavy_check_mark:                                                             | N/A                                                                            | 01G65Z755AFWAKHE12NY0CQ9FH                                                     |
+| `updateFeatureRequest`                                                         | [metering.UpdateFeatureRequest](../../models/metering/updatefeaturerequest.md) | :heavy_check_mark:                                                             | N/A                                                                            |                                                                                |
+| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |                                                                                |
 
 ### Response
 
@@ -371,6 +374,7 @@ import(
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/types"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"log"
 )
 
@@ -383,10 +387,10 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterFeatures.QueryFeatureCost(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", &components.MeterQueryRequest{
+    res, err := s.OpenMeterFeatures.QueryFeatureCost(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", &metering.MeterQueryRequest{
         From: types.MustNewTimeFromString("2023-01-01T00:00:00Z"),
         To: types.MustNewTimeFromString("2023-01-02T00:00:00Z"),
-        Granularity: components.MeterQueryRequestGranularityP1D.ToPointer(),
+        Granularity: metering.GranularityP1D.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)
@@ -403,7 +407,7 @@ func main() {
 | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                      | :heavy_check_mark:                                                                                         | The context to use for the request.                                                                        |                                                                                                            |
 | `featureID`                                                                                                | `string`                                                                                                   | :heavy_check_mark:                                                                                         | N/A                                                                                                        | 01G65Z755AFWAKHE12NY0CQ9FH                                                                                 |
-| `meterQueryRequest`                                                                                        | [*components.MeterQueryRequest](../../models/components/meterqueryrequest.md)                              | :heavy_minus_sign:                                                                                         | N/A                                                                                                        | {<br/>"from": "2023-01-01T00:00:00Z",<br/>"to": "2023-01-02T00:00:00Z",<br/>"granularity": "P1D",<br/>"time_zone": "UTC"<br/>} |
+| `meterQueryRequest`                                                                                        | [*metering.MeterQueryRequest](../../models/metering/meterqueryrequest.md)                                  | :heavy_minus_sign:                                                                                         | N/A                                                                                                        | {<br/>"from": "2023-01-01T00:00:00Z",<br/>"to": "2023-01-02T00:00:00Z",<br/>"granularity": "P1D",<br/>"time_zone": "UTC"<br/>} |
 | `opts`                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                   | :heavy_minus_sign:                                                                                         | The options for this request.                                                                              |                                                                                                            |
 
 ### Response

@@ -6,7 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
@@ -18,13 +18,13 @@ const (
 )
 
 type IngestMeteringEventsRequestBody struct {
-	MeteringEvent        *components.MeteringEvent  `queryParam:"inline" union:"member"`
-	ArrayOfMeteringEvent []components.MeteringEvent `queryParam:"inline" union:"member"`
+	MeteringEvent        *metering.MeteringEvent  `queryParam:"inline" union:"member"`
+	ArrayOfMeteringEvent []metering.MeteringEvent `queryParam:"inline" union:"member"`
 
 	Type IngestMeteringEventsRequestBodyType
 }
 
-func CreateIngestMeteringEventsRequestBodyMeteringEvent(meteringEvent components.MeteringEvent) IngestMeteringEventsRequestBody {
+func CreateIngestMeteringEventsRequestBodyMeteringEvent(meteringEvent metering.MeteringEvent) IngestMeteringEventsRequestBody {
 	typ := IngestMeteringEventsRequestBodyTypeMeteringEvent
 
 	return IngestMeteringEventsRequestBody{
@@ -33,7 +33,7 @@ func CreateIngestMeteringEventsRequestBodyMeteringEvent(meteringEvent components
 	}
 }
 
-func CreateIngestMeteringEventsRequestBodyArrayOfMeteringEvent(arrayOfMeteringEvent []components.MeteringEvent) IngestMeteringEventsRequestBody {
+func CreateIngestMeteringEventsRequestBodyArrayOfMeteringEvent(arrayOfMeteringEvent []metering.MeteringEvent) IngestMeteringEventsRequestBody {
 	typ := IngestMeteringEventsRequestBodyTypeArrayOfMeteringEvent
 
 	return IngestMeteringEventsRequestBody{
@@ -44,14 +44,14 @@ func CreateIngestMeteringEventsRequestBodyArrayOfMeteringEvent(arrayOfMeteringEv
 
 func (u *IngestMeteringEventsRequestBody) UnmarshalJSON(data []byte) error {
 
-	var meteringEvent components.MeteringEvent = components.MeteringEvent{}
+	var meteringEvent metering.MeteringEvent = metering.MeteringEvent{}
 	if err := utils.UnmarshalJSON(data, &meteringEvent, "", true, nil); err == nil {
 		u.MeteringEvent = &meteringEvent
 		u.Type = IngestMeteringEventsRequestBodyTypeMeteringEvent
 		return nil
 	}
 
-	var arrayOfMeteringEvent []components.MeteringEvent = []components.MeteringEvent{}
+	var arrayOfMeteringEvent []metering.MeteringEvent = []metering.MeteringEvent{}
 	if err := utils.UnmarshalJSON(data, &arrayOfMeteringEvent, "", true, nil); err == nil {
 		u.ArrayOfMeteringEvent = arrayOfMeteringEvent
 		u.Type = IngestMeteringEventsRequestBodyTypeArrayOfMeteringEvent

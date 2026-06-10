@@ -15,8 +15,6 @@ type ListCatalogServiceAPIMappingsRequest struct {
 	// Determines which page of the entities to retrieve.
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 	// Sorts a collection of catalog service API mappings. Supported sort attributes are:
-	//
-	//
 	//   - `created_at`
 	//   - `updated_at`
 	//
@@ -24,8 +22,6 @@ type ListCatalogServiceAPIMappingsRequest struct {
 	//
 	Sort *string `queryParam:"style=form,explode=true,name=sort"`
 	// Filters a collection of catalog service API mappings for a given Service. Supported filter attributes are:
-	//
-	//
 	//   - `api_id`
 	//
 	Filter *components.CatalogServiceAPIMappingFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`

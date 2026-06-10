@@ -15,8 +15,6 @@ type ListAPIImplementationsRequest struct {
 	// Filters APIs in the response.
 	Filter *components.APIImplementationFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`
 	// Sorts a collection of API implementations. Supported sort attributes are:
-	//
-	//
 	//   - id
 	//   - api_id
 	//   - control_plane_id

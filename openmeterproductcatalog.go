@@ -9,7 +9,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/config"
 	"github.com/Kong/sdk-konnect-go/internal/hooks"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
 	"github.com/Kong/sdk-konnect-go/retry"
@@ -207,7 +207,7 @@ func (s *OpenMeterProductCatalog) ListOpenmeterAddons(ctx context.Context, reque
 				return nil, err
 			}
 
-			var out components.AddonPagePaginatedResponse
+			var out metering.AddonPagePaginatedResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -312,7 +312,7 @@ func (s *OpenMeterProductCatalog) ListOpenmeterAddons(ctx context.Context, reque
 // This endpoint is currently in beta and is subject to change.
 //
 // Create a new add-on.
-func (s *OpenMeterProductCatalog) CreateOpenmeterAddon(ctx context.Context, request components.CreateAddonRequest1, opts ...operations.Option) (*operations.CreateOpenmeterAddonResponse, error) {
+func (s *OpenMeterProductCatalog) CreateOpenmeterAddon(ctx context.Context, request metering.CreateAddonRequest, opts ...operations.Option) (*operations.CreateOpenmeterAddonResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -485,7 +485,7 @@ func (s *OpenMeterProductCatalog) CreateOpenmeterAddon(ctx context.Context, requ
 				return nil, err
 			}
 
-			var out components.Addon
+			var out metering.Addon
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -590,7 +590,7 @@ func (s *OpenMeterProductCatalog) CreateOpenmeterAddon(ctx context.Context, requ
 // This endpoint is currently in beta and is subject to change.
 //
 // Update an add-on by id.
-func (s *OpenMeterProductCatalog) UpdateOpenmeterAddon(ctx context.Context, addonID string, upsertAddonRequest components.UpsertAddonRequest, opts ...operations.Option) (*operations.UpdateOpenmeterAddonResponse, error) {
+func (s *OpenMeterProductCatalog) UpdateOpenmeterAddon(ctx context.Context, addonID string, upsertAddonRequest metering.UpsertAddonRequest, opts ...operations.Option) (*operations.UpdateOpenmeterAddonResponse, error) {
 	request := operations.UpdateOpenmeterAddonRequest{
 		AddonID:            addonID,
 		UpsertAddonRequest: upsertAddonRequest,
@@ -768,7 +768,7 @@ func (s *OpenMeterProductCatalog) UpdateOpenmeterAddon(ctx context.Context, addo
 				return nil, err
 			}
 
-			var out components.Addon
+			var out metering.Addon
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1085,7 +1085,7 @@ func (s *OpenMeterProductCatalog) GetOpenmeterAddon(ctx context.Context, addonID
 				return nil, err
 			}
 
-			var out components.Addon
+			var out metering.Addon
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1679,7 +1679,7 @@ func (s *OpenMeterProductCatalog) ArchiveOpenmeterAddon(ctx context.Context, add
 				return nil, err
 			}
 
-			var out components.Addon
+			var out metering.Addon
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1975,7 +1975,7 @@ func (s *OpenMeterProductCatalog) PublishAddon(ctx context.Context, addonID stri
 				return nil, err
 			}
 
-			var out components.Addon
+			var out metering.Addon
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -2271,7 +2271,7 @@ func (s *OpenMeterProductCatalog) ListPlans(ctx context.Context, request operati
 				return nil, err
 			}
 
-			var out components.PlanPagePaginatedResponse
+			var out metering.PlanPagePaginatedResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -2376,7 +2376,7 @@ func (s *OpenMeterProductCatalog) ListPlans(ctx context.Context, request operati
 // This endpoint is currently in beta and is subject to change.
 //
 // Create a new plan.
-func (s *OpenMeterProductCatalog) CreatePlan(ctx context.Context, request components.CreatePlanRequest, opts ...operations.Option) (*operations.CreatePlanResponse, error) {
+func (s *OpenMeterProductCatalog) CreatePlan(ctx context.Context, request metering.CreatePlanRequest, opts ...operations.Option) (*operations.CreatePlanResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -2549,7 +2549,7 @@ func (s *OpenMeterProductCatalog) CreatePlan(ctx context.Context, request compon
 				return nil, err
 			}
 
-			var out components.BillingPlan
+			var out metering.BillingPlan
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -2654,7 +2654,7 @@ func (s *OpenMeterProductCatalog) CreatePlan(ctx context.Context, request compon
 // This endpoint is currently in beta and is subject to change.
 //
 // Update a plan by id.
-func (s *OpenMeterProductCatalog) UpdatePlan(ctx context.Context, planID string, upsertPlanRequest components.UpsertPlanRequest, opts ...operations.Option) (*operations.UpdatePlanResponse, error) {
+func (s *OpenMeterProductCatalog) UpdatePlan(ctx context.Context, planID string, upsertPlanRequest metering.UpsertPlanRequest, opts ...operations.Option) (*operations.UpdatePlanResponse, error) {
 	request := operations.UpdatePlanRequest{
 		PlanID:            planID,
 		UpsertPlanRequest: upsertPlanRequest,
@@ -2832,7 +2832,7 @@ func (s *OpenMeterProductCatalog) UpdatePlan(ctx context.Context, planID string,
 				return nil, err
 			}
 
-			var out components.BillingPlan
+			var out metering.BillingPlan
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -3149,7 +3149,7 @@ func (s *OpenMeterProductCatalog) GetPlan(ctx context.Context, planID string, op
 				return nil, err
 			}
 
-			var out components.BillingPlan
+			var out metering.BillingPlan
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -3573,7 +3573,7 @@ func (s *OpenMeterProductCatalog) DeletePlan(ctx context.Context, planID string,
 // This endpoint is currently in beta and is subject to change.
 //
 // List add-ons associated with a plan.
-func (s *OpenMeterProductCatalog) ListPlanAddons(ctx context.Context, planID string, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListPlanAddonsResponse, error) {
+func (s *OpenMeterProductCatalog) ListPlanAddons(ctx context.Context, planID string, page *metering.PagePaginationQuery, opts ...operations.Option) (*operations.ListPlanAddonsResponse, error) {
 	request := operations.ListPlanAddonsRequest{
 		PlanID: planID,
 		Page:   page,
@@ -3748,7 +3748,7 @@ func (s *OpenMeterProductCatalog) ListPlanAddons(ctx context.Context, planID str
 				return nil, err
 			}
 
-			var out components.PlanAddonPagePaginatedResponse
+			var out metering.PlanAddonPagePaginatedResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -3874,7 +3874,7 @@ func (s *OpenMeterProductCatalog) ListPlanAddons(ctx context.Context, planID str
 // This endpoint is currently in beta and is subject to change.
 //
 // Add an add-on to a plan.
-func (s *OpenMeterProductCatalog) CreatePlanAddon(ctx context.Context, planID string, createPlanAddonRequest components.CreatePlanAddonRequest, opts ...operations.Option) (*operations.CreatePlanAddonResponse, error) {
+func (s *OpenMeterProductCatalog) CreatePlanAddon(ctx context.Context, planID string, createPlanAddonRequest metering.CreatePlanAddonRequest, opts ...operations.Option) (*operations.CreatePlanAddonResponse, error) {
 	request := operations.CreatePlanAddonRequest{
 		PlanID:                 planID,
 		CreatePlanAddonRequest: createPlanAddonRequest,
@@ -4052,7 +4052,7 @@ func (s *OpenMeterProductCatalog) CreatePlanAddon(ctx context.Context, planID st
 				return nil, err
 			}
 
-			var out components.PlanAddon
+			var out metering.PlanAddon
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -4349,7 +4349,7 @@ func (s *OpenMeterProductCatalog) GetPlanAddon(ctx context.Context, planID strin
 				return nil, err
 			}
 
-			var out components.PlanAddon
+			var out metering.PlanAddon
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -4648,7 +4648,7 @@ func (s *OpenMeterProductCatalog) UpdatePlanAddon(ctx context.Context, request o
 				return nil, err
 			}
 
-			var out components.PlanAddon
+			var out metering.PlanAddon
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -5222,7 +5222,7 @@ func (s *OpenMeterProductCatalog) ArchivePlan(ctx context.Context, planID string
 				return nil, err
 			}
 
-			var out components.BillingPlan
+			var out metering.BillingPlan
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -5518,7 +5518,7 @@ func (s *OpenMeterProductCatalog) PublishPlan(ctx context.Context, planID string
 				return nil, err
 			}
 
-			var out components.BillingPlan
+			var out metering.BillingPlan
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

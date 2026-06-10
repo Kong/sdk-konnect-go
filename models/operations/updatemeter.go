@@ -3,13 +3,13 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type UpdateMeterRequest struct {
-	MeterID            string                        `pathParam:"style=simple,explode=false,name=meterId"`
-	UpdateMeterRequest components.UpdateMeterRequest `request:"mediaType=application/json"`
+	MeterID            string                      `pathParam:"style=simple,explode=false,name=meterId"`
+	UpdateMeterRequest metering.UpdateMeterRequest `request:"mediaType=application/json"`
 }
 
 func (u *UpdateMeterRequest) GetMeterID() string {
@@ -19,9 +19,9 @@ func (u *UpdateMeterRequest) GetMeterID() string {
 	return u.MeterID
 }
 
-func (u *UpdateMeterRequest) GetUpdateMeterRequest() components.UpdateMeterRequest {
+func (u *UpdateMeterRequest) GetUpdateMeterRequest() metering.UpdateMeterRequest {
 	if u == nil {
-		return components.UpdateMeterRequest{}
+		return metering.UpdateMeterRequest{}
 	}
 	return u.UpdateMeterRequest
 }
@@ -34,7 +34,7 @@ type UpdateMeterResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Meter updated response.
-	Meter *components.Meter
+	Meter *metering.Meter
 }
 
 func (u *UpdateMeterResponse) GetContentType() string {
@@ -58,7 +58,7 @@ func (u *UpdateMeterResponse) GetRawResponse() *http.Response {
 	return u.RawResponse
 }
 
-func (u *UpdateMeterResponse) GetMeter() *components.Meter {
+func (u *UpdateMeterResponse) GetMeter() *metering.Meter {
 	if u == nil {
 		return nil
 	}

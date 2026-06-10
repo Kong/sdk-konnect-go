@@ -3,13 +3,13 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type ListLlmCostPricesRequest struct {
 	// Filter prices.
-	Filter *components.ListLLMCostPricesParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *metering.ListLLMCostPricesParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 	// Sort prices returned in the response. Supported sort attributes are:
 	//
 	// - `id`
@@ -22,10 +22,10 @@ type ListLlmCostPricesRequest struct {
 	// suffix is used to specify a descending order.
 	Sort *string `queryParam:"style=form,explode=false,name=sort"`
 	// Determines which page of the collection to retrieve.
-	Page *components.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
+	Page *metering.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
 }
 
-func (l *ListLlmCostPricesRequest) GetFilter() *components.ListLLMCostPricesParamsFilter {
+func (l *ListLlmCostPricesRequest) GetFilter() *metering.ListLLMCostPricesParamsFilter {
 	if l == nil {
 		return nil
 	}
@@ -39,7 +39,7 @@ func (l *ListLlmCostPricesRequest) GetSort() *string {
 	return l.Sort
 }
 
-func (l *ListLlmCostPricesRequest) GetPage() *components.PagePaginationQuery {
+func (l *ListLlmCostPricesRequest) GetPage() *metering.PagePaginationQuery {
 	if l == nil {
 		return nil
 	}
@@ -54,7 +54,7 @@ type ListLlmCostPricesResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Page paginated response.
-	PricePagePaginatedResponse *components.PricePagePaginatedResponse
+	PricePagePaginatedResponse *metering.PricePagePaginatedResponse
 }
 
 func (l *ListLlmCostPricesResponse) GetContentType() string {
@@ -78,7 +78,7 @@ func (l *ListLlmCostPricesResponse) GetRawResponse() *http.Response {
 	return l.RawResponse
 }
 
-func (l *ListLlmCostPricesResponse) GetPricePagePaginatedResponse() *components.PricePagePaginatedResponse {
+func (l *ListLlmCostPricesResponse) GetPricePagePaginatedResponse() *metering.PricePagePaginatedResponse {
 	if l == nil {
 		return nil
 	}

@@ -9,7 +9,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/config"
 	"github.com/Kong/sdk-konnect-go/internal/hooks"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
 	"github.com/Kong/sdk-konnect-go/retry"
@@ -33,7 +33,7 @@ func newOpenMeterSubscriptions(rootSDK *SDK, sdkConfig config.SDKConfiguration, 
 }
 
 // CreateSubscription - Create subscription
-func (s *OpenMeterSubscriptions) CreateSubscription(ctx context.Context, request components.BillingSubscriptionCreate, opts ...operations.Option) (*operations.CreateSubscriptionResponse, error) {
+func (s *OpenMeterSubscriptions) CreateSubscription(ctx context.Context, request metering.BillingSubscriptionCreate, opts ...operations.Option) (*operations.CreateSubscriptionResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -206,7 +206,7 @@ func (s *OpenMeterSubscriptions) CreateSubscription(ctx context.Context, request
 				return nil, err
 			}
 
-			var out components.BillingSubscription
+			var out metering.BillingSubscription
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -519,7 +519,7 @@ func (s *OpenMeterSubscriptions) ListSubscriptions(ctx context.Context, request 
 				return nil, err
 			}
 
-			var out components.SubscriptionPagePaginatedResponse
+			var out metering.SubscriptionPagePaginatedResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -811,7 +811,7 @@ func (s *OpenMeterSubscriptions) GetSubscription(ctx context.Context, subscripti
 				return nil, err
 			}
 
-			var out components.BillingSubscription
+			var out metering.BillingSubscription
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1107,7 +1107,7 @@ func (s *OpenMeterSubscriptions) ListSubscriptionAddons(ctx context.Context, req
 				return nil, err
 			}
 
-			var out components.SubscriptionAddonPagePaginatedResponse
+			var out metering.SubscriptionAddonPagePaginatedResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1404,7 +1404,7 @@ func (s *OpenMeterSubscriptions) GetSubscriptionAddon(ctx context.Context, subsc
 				return nil, err
 			}
 
-			var out components.SubscriptionAddon
+			var out metering.SubscriptionAddon
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1528,7 +1528,7 @@ func (s *OpenMeterSubscriptions) GetSubscriptionAddon(ctx context.Context, subsc
 // CancelSubscription - Cancel subscription
 // Cancels the subscription. Will result in a scheduling conflict if there are
 // other subscriptions scheduled to start after the cancelation time.
-func (s *OpenMeterSubscriptions) CancelSubscription(ctx context.Context, subscriptionID string, billingSubscriptionCancel components.BillingSubscriptionCancel, opts ...operations.Option) (*operations.CancelSubscriptionResponse, error) {
+func (s *OpenMeterSubscriptions) CancelSubscription(ctx context.Context, subscriptionID string, billingSubscriptionCancel metering.BillingSubscriptionCancel, opts ...operations.Option) (*operations.CancelSubscriptionResponse, error) {
 	request := operations.CancelSubscriptionRequest{
 		SubscriptionID:            subscriptionID,
 		BillingSubscriptionCancel: billingSubscriptionCancel,
@@ -1706,7 +1706,7 @@ func (s *OpenMeterSubscriptions) CancelSubscription(ctx context.Context, subscri
 				return nil, err
 			}
 
-			var out components.BillingSubscription
+			var out metering.BillingSubscription
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1851,7 +1851,7 @@ func (s *OpenMeterSubscriptions) CancelSubscription(ctx context.Context, subscri
 // ChangeSubscription - Change subscription
 // Closes a running subscription and starts a new one according to the
 // specification. Can be used for upgrades, downgrades, and plan changes.
-func (s *OpenMeterSubscriptions) ChangeSubscription(ctx context.Context, subscriptionID string, billingSubscriptionChange components.BillingSubscriptionChange, opts ...operations.Option) (*operations.ChangeSubscriptionResponse, error) {
+func (s *OpenMeterSubscriptions) ChangeSubscription(ctx context.Context, subscriptionID string, billingSubscriptionChange metering.BillingSubscriptionChange, opts ...operations.Option) (*operations.ChangeSubscriptionResponse, error) {
 	request := operations.ChangeSubscriptionRequest{
 		SubscriptionID:            subscriptionID,
 		BillingSubscriptionChange: billingSubscriptionChange,
@@ -2029,7 +2029,7 @@ func (s *OpenMeterSubscriptions) ChangeSubscription(ctx context.Context, subscri
 				return nil, err
 			}
 
-			var out components.BillingSubscriptionChangeResponse
+			var out metering.BillingSubscriptionChangeResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -2343,7 +2343,7 @@ func (s *OpenMeterSubscriptions) UnscheduleCancelation(ctx context.Context, subs
 				return nil, err
 			}
 
-			var out components.BillingSubscription
+			var out metering.BillingSubscription
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

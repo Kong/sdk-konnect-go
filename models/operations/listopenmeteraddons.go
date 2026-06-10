@@ -3,13 +3,13 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type ListOpenmeterAddonsRequest struct {
 	// Determines which page of the collection to retrieve.
-	Page *components.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
+	Page *metering.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
 	// Sort add-ons returned in the response. Supported sort attributes are:
 	//
 	// - `id`
@@ -22,10 +22,10 @@ type ListOpenmeterAddonsRequest struct {
 	// suffix is used to specify a descending order.
 	Sort *string `queryParam:"style=form,explode=false,name=sort"`
 	// Filter add-ons returned in the response.
-	Filter *components.ListAddonsParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *metering.ListAddonsParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (l *ListOpenmeterAddonsRequest) GetPage() *components.PagePaginationQuery {
+func (l *ListOpenmeterAddonsRequest) GetPage() *metering.PagePaginationQuery {
 	if l == nil {
 		return nil
 	}
@@ -39,7 +39,7 @@ func (l *ListOpenmeterAddonsRequest) GetSort() *string {
 	return l.Sort
 }
 
-func (l *ListOpenmeterAddonsRequest) GetFilter() *components.ListAddonsParamsFilter {
+func (l *ListOpenmeterAddonsRequest) GetFilter() *metering.ListAddonsParamsFilter {
 	if l == nil {
 		return nil
 	}
@@ -54,7 +54,7 @@ type ListOpenmeterAddonsResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Page paginated response.
-	AddonPagePaginatedResponse *components.AddonPagePaginatedResponse
+	AddonPagePaginatedResponse *metering.AddonPagePaginatedResponse
 }
 
 func (l *ListOpenmeterAddonsResponse) GetContentType() string {
@@ -78,7 +78,7 @@ func (l *ListOpenmeterAddonsResponse) GetRawResponse() *http.Response {
 	return l.RawResponse
 }
 
-func (l *ListOpenmeterAddonsResponse) GetAddonPagePaginatedResponse() *components.AddonPagePaginatedResponse {
+func (l *ListOpenmeterAddonsResponse) GetAddonPagePaginatedResponse() *metering.AddonPagePaginatedResponse {
 	if l == nil {
 		return nil
 	}

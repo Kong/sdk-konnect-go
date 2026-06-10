@@ -9,7 +9,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/config"
 	"github.com/Kong/sdk-konnect-go/internal/hooks"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
 	"github.com/Kong/sdk-konnect-go/retry"
@@ -34,7 +34,7 @@ func newMeters(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *hooks.Hoo
 
 // CreateMeter - Create meter
 // Create a meter.
-func (s *Meters) CreateMeter(ctx context.Context, request components.CreateMeterRequest, opts ...operations.Option) (*operations.CreateMeterResponse, error) {
+func (s *Meters) CreateMeter(ctx context.Context, request metering.CreateMeterRequest, opts ...operations.Option) (*operations.CreateMeterResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -207,7 +207,7 @@ func (s *Meters) CreateMeter(ctx context.Context, request components.CreateMeter
 				return nil, err
 			}
 
-			var out components.Meter
+			var out metering.Meter
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -479,7 +479,7 @@ func (s *Meters) ListMeters(ctx context.Context, request operations.ListMetersRe
 				return nil, err
 			}
 
-			var out components.MeterPagePaginatedResponse
+			var out metering.MeterPagePaginatedResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -751,7 +751,7 @@ func (s *Meters) GetMeter(ctx context.Context, meterID string, opts ...operation
 				return nil, err
 			}
 
-			var out components.Meter
+			var out metering.Meter
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -877,7 +877,7 @@ func (s *Meters) GetMeter(ctx context.Context, meterID string, opts ...operation
 // This endpoint is currently in beta and is subject to change.
 //
 // Update a meter.
-func (s *Meters) UpdateMeter(ctx context.Context, meterID string, updateMeterRequest components.UpdateMeterRequest, opts ...operations.Option) (*operations.UpdateMeterResponse, error) {
+func (s *Meters) UpdateMeter(ctx context.Context, meterID string, updateMeterRequest metering.UpdateMeterRequest, opts ...operations.Option) (*operations.UpdateMeterResponse, error) {
 	request := operations.UpdateMeterRequest{
 		MeterID:            meterID,
 		UpdateMeterRequest: updateMeterRequest,
@@ -1055,7 +1055,7 @@ func (s *Meters) UpdateMeter(ctx context.Context, meterID string, updateMeterReq
 				return nil, err
 			}
 
-			var out components.Meter
+			var out metering.Meter
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1465,7 +1465,7 @@ func (s *Meters) DeleteMeter(ctx context.Context, meterID string, opts ...operat
 // The `subject` column is emitted only when `subject` is in the query's
 // `group_by_dimensions`. The three `customer_*` columns are emitted together only
 // when `customer_id` is in the query's `group_by_dimensions`.
-func (s *Meters) QueryMeter(ctx context.Context, meterID string, meterQueryRequest components.MeterQueryRequest, opts ...operations.Option) (*operations.QueryMeterResponse, error) {
+func (s *Meters) QueryMeter(ctx context.Context, meterID string, meterQueryRequest metering.MeterQueryRequest, opts ...operations.Option) (*operations.QueryMeterResponse, error) {
 	request := operations.QueryMeterRequest{
 		MeterID:           meterID,
 		MeterQueryRequest: meterQueryRequest,
@@ -1649,7 +1649,7 @@ func (s *Meters) QueryMeter(ctx context.Context, meterID string, meterQueryReque
 				return nil, err
 			}
 
-			var out components.MeterQueryResult
+			var out metering.MeterQueryResult
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

@@ -15,8 +15,6 @@ type ListScorecardTemplatesRequest struct {
 	// Filters a collection of scorecard templates.
 	Filter *components.ScorecardTemplateFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`
 	// Sorts a collection of scorecard templates. Supported sort attributes are:
-	//
-	//
 	//   - `display_name`
 	//   - `name`
 	//

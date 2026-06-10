@@ -3,13 +3,13 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type UpsertCustomerRequest struct {
-	CustomerID            string                           `pathParam:"style=simple,explode=false,name=customerId"`
-	UpsertCustomerRequest components.UpsertCustomerRequest `request:"mediaType=application/json"`
+	CustomerID            string                         `pathParam:"style=simple,explode=false,name=customerId"`
+	UpsertCustomerRequest metering.UpsertCustomerRequest `request:"mediaType=application/json"`
 }
 
 func (u *UpsertCustomerRequest) GetCustomerID() string {
@@ -19,9 +19,9 @@ func (u *UpsertCustomerRequest) GetCustomerID() string {
 	return u.CustomerID
 }
 
-func (u *UpsertCustomerRequest) GetUpsertCustomerRequest() components.UpsertCustomerRequest {
+func (u *UpsertCustomerRequest) GetUpsertCustomerRequest() metering.UpsertCustomerRequest {
 	if u == nil {
-		return components.UpsertCustomerRequest{}
+		return metering.UpsertCustomerRequest{}
 	}
 	return u.UpsertCustomerRequest
 }
@@ -34,7 +34,7 @@ type UpsertCustomerResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Customer upsert response.
-	BillingCustomer *components.BillingCustomer
+	BillingCustomer *metering.BillingCustomer
 }
 
 func (u *UpsertCustomerResponse) GetContentType() string {
@@ -58,7 +58,7 @@ func (u *UpsertCustomerResponse) GetRawResponse() *http.Response {
 	return u.RawResponse
 }
 
-func (u *UpsertCustomerResponse) GetBillingCustomer() *components.BillingCustomer {
+func (u *UpsertCustomerResponse) GetBillingCustomer() *metering.BillingCustomer {
 	if u == nil {
 		return nil
 	}

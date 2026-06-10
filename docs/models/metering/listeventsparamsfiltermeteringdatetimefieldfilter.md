@@ -1,0 +1,55 @@
+# ListEventsParamsFilterMeteringDateTimeFieldFilter
+
+Filter events by the time the event was stored.
+
+
+## Supported Types
+
+### ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter
+
+```go
+listEventsParamsFilterMeteringDateTimeFieldFilter := components.CreateListEventsParamsFilterMeteringDateTimeFieldFilterListEventsParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter(metering.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter{/* values here */})
+```
+
+### ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter
+
+```go
+listEventsParamsFilterMeteringDateTimeFieldFilter := components.CreateListEventsParamsFilterMeteringDateTimeFieldFilterListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter(metering.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter{/* values here */})
+```
+
+### ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter
+
+```go
+listEventsParamsFilterMeteringDateTimeFieldFilter := components.CreateListEventsParamsFilterMeteringDateTimeFieldFilterListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter(metering.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter{/* values here */})
+```
+
+### ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter
+
+```go
+listEventsParamsFilterMeteringDateTimeFieldFilter := components.CreateListEventsParamsFilterMeteringDateTimeFieldFilterListEventsParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter(metering.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter{/* values here */})
+```
+
+### ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter
+
+```go
+listEventsParamsFilterMeteringDateTimeFieldFilter := components.CreateListEventsParamsFilterMeteringDateTimeFieldFilterListEventsParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter(metering.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter{/* values here */})
+```
+
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch listEventsParamsFilterMeteringDateTimeFieldFilter.Type {
+	case components.ListEventsParamsFilterMeteringDateTimeFieldFilterTypeListEventsParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter:
+		// listEventsParamsFilterMeteringDateTimeFieldFilter.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter is populated
+	case components.ListEventsParamsFilterMeteringDateTimeFieldFilterTypeListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter:
+		// listEventsParamsFilterMeteringDateTimeFieldFilter.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter is populated
+	case components.ListEventsParamsFilterMeteringDateTimeFieldFilterTypeListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter:
+		// listEventsParamsFilterMeteringDateTimeFieldFilter.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTEFilter is populated
+	case components.ListEventsParamsFilterMeteringDateTimeFieldFilterTypeListEventsParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter:
+		// listEventsParamsFilterMeteringDateTimeFieldFilter.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldGTFilter is populated
+	case components.ListEventsParamsFilterMeteringDateTimeFieldFilterTypeListEventsParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter:
+		// listEventsParamsFilterMeteringDateTimeFieldFilter.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldGTEFilter is populated
+}
+```

@@ -1,0 +1,11 @@
+# UpsertCustomerBillingDataRequest
+
+CustomerBillingData upsert request.
+
+
+## Fields
+
+| Field                                                                                                                                 | Type                                                                                                                                  | Required                                                                                                                              | Description                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `BillingProfile`                                                                                                                      | [*metering.UpsertCustomerBillingDataRequestBillingProfile](../../models/metering/upsertcustomerbillingdatarequestbillingprofile.md)   | :heavy_minus_sign:                                                                                                                    | The billing profile for the customer.<br/><br/>If not provided, the default billing profile will be used.                             |
+| `AppData`                                                                                                                             | [*metering.UpsertCustomerBillingDataRequestAppCustomerData](../../models/metering/upsertcustomerbillingdatarequestappcustomerdata.md) | :heavy_minus_sign:                                                                                                                    | App customer data.                                                                                                                    |

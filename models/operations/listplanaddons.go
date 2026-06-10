@@ -3,14 +3,14 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type ListPlanAddonsRequest struct {
 	PlanID string `pathParam:"style=simple,explode=false,name=planId"`
 	// Determines which page of the collection to retrieve.
-	Page *components.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
+	Page *metering.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
 }
 
 func (l *ListPlanAddonsRequest) GetPlanID() string {
@@ -20,7 +20,7 @@ func (l *ListPlanAddonsRequest) GetPlanID() string {
 	return l.PlanID
 }
 
-func (l *ListPlanAddonsRequest) GetPage() *components.PagePaginationQuery {
+func (l *ListPlanAddonsRequest) GetPage() *metering.PagePaginationQuery {
 	if l == nil {
 		return nil
 	}
@@ -35,7 +35,7 @@ type ListPlanAddonsResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Page paginated response.
-	PlanAddonPagePaginatedResponse *components.PlanAddonPagePaginatedResponse
+	PlanAddonPagePaginatedResponse *metering.PlanAddonPagePaginatedResponse
 }
 
 func (l *ListPlanAddonsResponse) GetContentType() string {
@@ -59,7 +59,7 @@ func (l *ListPlanAddonsResponse) GetRawResponse() *http.Response {
 	return l.RawResponse
 }
 
-func (l *ListPlanAddonsResponse) GetPlanAddonPagePaginatedResponse() *components.PlanAddonPagePaginatedResponse {
+func (l *ListPlanAddonsResponse) GetPlanAddonPagePaginatedResponse() *metering.PlanAddonPagePaginatedResponse {
 	if l == nil {
 		return nil
 	}

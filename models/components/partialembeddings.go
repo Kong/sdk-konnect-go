@@ -480,7 +480,7 @@ func (e *PartialEmbeddingsProvider) IsExact() bool {
 	return false
 }
 
-type PartialEmbeddingsModel struct {
+type Model struct {
 	// Model name to execute.
 	Name string `json:"name"`
 	// Key/value settings for the model
@@ -489,41 +489,41 @@ type PartialEmbeddingsModel struct {
 	Provider PartialEmbeddingsProvider `json:"provider"`
 }
 
-func (p PartialEmbeddingsModel) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(p, "", false)
+func (m Model) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(m, "", false)
 }
 
-func (p *PartialEmbeddingsModel) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &p, "", false, []string{"name", "provider"}); err != nil {
+func (m *Model) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &m, "", false, []string{"name", "provider"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (p *PartialEmbeddingsModel) GetName() string {
-	if p == nil {
+func (m *Model) GetName() string {
+	if m == nil {
 		return ""
 	}
-	return p.Name
+	return m.Name
 }
 
-func (p *PartialEmbeddingsModel) GetOptions() *OptionsObj {
-	if p == nil {
+func (m *Model) GetOptions() *OptionsObj {
+	if m == nil {
 		return nil
 	}
-	return p.Options
+	return m.Options
 }
 
-func (p *PartialEmbeddingsModel) GetProvider() PartialEmbeddingsProvider {
-	if p == nil {
+func (m *Model) GetProvider() PartialEmbeddingsProvider {
+	if m == nil {
 		return PartialEmbeddingsProvider("")
 	}
-	return p.Provider
+	return m.Provider
 }
 
 type PartialEmbeddingsConfig struct {
-	Auth  *Auth                  `json:"auth,omitempty"`
-	Model PartialEmbeddingsModel `json:"model"`
+	Auth  *Auth `json:"auth,omitempty"`
+	Model Model `json:"model"`
 }
 
 func (p PartialEmbeddingsConfig) MarshalJSON() ([]byte, error) {
@@ -544,9 +544,9 @@ func (p *PartialEmbeddingsConfig) GetAuth() *Auth {
 	return p.Auth
 }
 
-func (p *PartialEmbeddingsConfig) GetModel() PartialEmbeddingsModel {
+func (p *PartialEmbeddingsConfig) GetModel() Model {
 	if p == nil {
-		return PartialEmbeddingsModel{}
+		return Model{}
 	}
 	return p.Model
 }

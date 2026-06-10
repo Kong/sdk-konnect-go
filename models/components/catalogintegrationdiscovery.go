@@ -7,8 +7,6 @@ package components
 type CatalogIntegrationDiscovery struct {
 	// A map of example resource `integration_data` payloads by resource type.
 	//
-	//
-	//
 	//   - Keys are the machine-readable, globally unique names of resource types registered by this integration.
 	//   - Values are example `integration_data` payloads.
 	//

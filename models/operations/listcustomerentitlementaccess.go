@@ -3,7 +3,7 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
@@ -26,7 +26,7 @@ type ListCustomerEntitlementAccessResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// List the customer's active features and their access.
-	ListCustomerEntitlementAccessResponseData *components.ListCustomerEntitlementAccessResponseData
+	ListCustomerEntitlementAccessResponseData *metering.ListCustomerEntitlementAccessResponseData
 }
 
 func (l *ListCustomerEntitlementAccessResponse) GetContentType() string {
@@ -50,7 +50,7 @@ func (l *ListCustomerEntitlementAccessResponse) GetRawResponse() *http.Response 
 	return l.RawResponse
 }
 
-func (l *ListCustomerEntitlementAccessResponse) GetListCustomerEntitlementAccessResponseData() *components.ListCustomerEntitlementAccessResponseData {
+func (l *ListCustomerEntitlementAccessResponse) GetListCustomerEntitlementAccessResponseData() *metering.ListCustomerEntitlementAccessResponseData {
 	if l == nil {
 		return nil
 	}

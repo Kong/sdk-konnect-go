@@ -1,0 +1,11 @@
+# UpsertCustomerBillingDataRequestAppCustomerData
+
+App customer data.
+
+
+## Fields
+
+| Field                                                                                                                                     | Type                                                                                                                                      | Required                                                                                                                                  | Description                                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `Stripe`                                                                                                                                  | [*metering.UpsertCustomerBillingDataRequestStripe](../../models/metering/upsertcustomerbillingdatarequeststripe.md)                       | :heavy_minus_sign:                                                                                                                        | Used if the customer has a linked Stripe app.                                                                                             |
+| `ExternalInvoicing`                                                                                                                       | [*metering.UpsertCustomerBillingDataRequestExternalInvoicing](../../models/metering/upsertcustomerbillingdatarequestexternalinvoicing.md) | :heavy_minus_sign:                                                                                                                        | Used if the customer has a linked external invoicing app.                                                                                 |

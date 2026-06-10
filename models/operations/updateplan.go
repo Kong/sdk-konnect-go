@@ -3,13 +3,13 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type UpdatePlanRequest struct {
-	PlanID            string                       `pathParam:"style=simple,explode=false,name=planId"`
-	UpsertPlanRequest components.UpsertPlanRequest `request:"mediaType=application/json"`
+	PlanID            string                     `pathParam:"style=simple,explode=false,name=planId"`
+	UpsertPlanRequest metering.UpsertPlanRequest `request:"mediaType=application/json"`
 }
 
 func (u *UpdatePlanRequest) GetPlanID() string {
@@ -19,9 +19,9 @@ func (u *UpdatePlanRequest) GetPlanID() string {
 	return u.PlanID
 }
 
-func (u *UpdatePlanRequest) GetUpsertPlanRequest() components.UpsertPlanRequest {
+func (u *UpdatePlanRequest) GetUpsertPlanRequest() metering.UpsertPlanRequest {
 	if u == nil {
-		return components.UpsertPlanRequest{}
+		return metering.UpsertPlanRequest{}
 	}
 	return u.UpsertPlanRequest
 }
@@ -34,7 +34,7 @@ type UpdatePlanResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Plan upsert response.
-	BillingPlan *components.BillingPlan
+	BillingPlan *metering.BillingPlan
 }
 
 func (u *UpdatePlanResponse) GetContentType() string {
@@ -58,7 +58,7 @@ func (u *UpdatePlanResponse) GetRawResponse() *http.Response {
 	return u.RawResponse
 }
 
-func (u *UpdatePlanResponse) GetBillingPlan() *components.BillingPlan {
+func (u *UpdatePlanResponse) GetBillingPlan() *metering.BillingPlan {
 	if u == nil {
 		return nil
 	}

@@ -3,13 +3,13 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type CreatePlanAddonRequest struct {
-	PlanID                 string                            `pathParam:"style=simple,explode=false,name=planId"`
-	CreatePlanAddonRequest components.CreatePlanAddonRequest `request:"mediaType=application/json"`
+	PlanID                 string                          `pathParam:"style=simple,explode=false,name=planId"`
+	CreatePlanAddonRequest metering.CreatePlanAddonRequest `request:"mediaType=application/json"`
 }
 
 func (c *CreatePlanAddonRequest) GetPlanID() string {
@@ -19,9 +19,9 @@ func (c *CreatePlanAddonRequest) GetPlanID() string {
 	return c.PlanID
 }
 
-func (c *CreatePlanAddonRequest) GetCreatePlanAddonRequest() components.CreatePlanAddonRequest {
+func (c *CreatePlanAddonRequest) GetCreatePlanAddonRequest() metering.CreatePlanAddonRequest {
 	if c == nil {
-		return components.CreatePlanAddonRequest{}
+		return metering.CreatePlanAddonRequest{}
 	}
 	return c.CreatePlanAddonRequest
 }
@@ -34,7 +34,7 @@ type CreatePlanAddonResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// PlanAddon created response.
-	PlanAddon *components.PlanAddon
+	PlanAddon *metering.PlanAddon
 }
 
 func (c *CreatePlanAddonResponse) GetContentType() string {
@@ -58,7 +58,7 @@ func (c *CreatePlanAddonResponse) GetRawResponse() *http.Response {
 	return c.RawResponse
 }
 
-func (c *CreatePlanAddonResponse) GetPlanAddon() *components.PlanAddon {
+func (c *CreatePlanAddonResponse) GetPlanAddon() *metering.PlanAddon {
 	if c == nil {
 		return nil
 	}

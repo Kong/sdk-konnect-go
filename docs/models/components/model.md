@@ -1,11 +1,10 @@
 # Model
 
-The model.
-
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `ID`                                                         | `string`                                                     | :heavy_check_mark:                                           | Identifier of the model, e.g., "gpt-4", "claude-3-5-sonnet". |
-| `Name`                                                       | `string`                                                     | :heavy_check_mark:                                           | Name of the model, e.g., "GPT-4", "Claude 3.5 Sonnet".       |
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `Name`                                                                                       | `string`                                                                                     | :heavy_check_mark:                                                                           | Model name to execute.                                                                       |
+| `Options`                                                                                    | [*components.OptionsObj](../../models/components/optionsobj.md)                              | :heavy_minus_sign:                                                                           | Key/value settings for the model                                                             |
+| `Provider`                                                                                   | [components.PartialEmbeddingsProvider](../../models/components/partialembeddingsprovider.md) | :heavy_check_mark:                                                                           | AI provider format to use for embeddings API                                                 |

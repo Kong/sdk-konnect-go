@@ -9,7 +9,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/config"
 	"github.com/Kong/sdk-konnect-go/internal/hooks"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
 	"github.com/Kong/sdk-konnect-go/retry"
@@ -207,7 +207,7 @@ func (s *OpenMeterFeatures) ListFeatures(ctx context.Context, request operations
 				return nil, err
 			}
 
-			var out components.FeaturePagePaginatedResponse
+			var out metering.FeaturePagePaginatedResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -312,7 +312,7 @@ func (s *OpenMeterFeatures) ListFeatures(ctx context.Context, request operations
 // This endpoint is currently in beta and is subject to change.
 //
 // Create a feature.
-func (s *OpenMeterFeatures) CreateFeature(ctx context.Context, request components.CreateFeatureRequest, opts ...operations.Option) (*operations.CreateFeatureResponse, error) {
+func (s *OpenMeterFeatures) CreateFeature(ctx context.Context, request metering.CreateFeatureRequest, opts ...operations.Option) (*operations.CreateFeatureResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -485,7 +485,7 @@ func (s *OpenMeterFeatures) CreateFeature(ctx context.Context, request component
 				return nil, err
 			}
 
-			var out components.Feature
+			var out metering.Feature
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -760,7 +760,7 @@ func (s *OpenMeterFeatures) GetFeature(ctx context.Context, featureID string, op
 				return nil, err
 			}
 
-			var out components.Feature
+			var out metering.Feature
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -907,7 +907,7 @@ func (s *OpenMeterFeatures) GetFeature(ctx context.Context, featureID string, op
 // This endpoint is currently in beta and is subject to change.
 //
 // Update a feature by id. Currently only the unit_cost field can be updated.
-func (s *OpenMeterFeatures) UpdateFeature(ctx context.Context, featureID string, updateFeatureRequest components.UpdateFeatureRequest, opts ...operations.Option) (*operations.UpdateFeatureResponse, error) {
+func (s *OpenMeterFeatures) UpdateFeature(ctx context.Context, featureID string, updateFeatureRequest metering.UpdateFeatureRequest, opts ...operations.Option) (*operations.UpdateFeatureResponse, error) {
 	request := operations.UpdateFeatureRequest{
 		FeatureID:            featureID,
 		UpdateFeatureRequest: updateFeatureRequest,
@@ -1085,7 +1085,7 @@ func (s *OpenMeterFeatures) UpdateFeature(ctx context.Context, featureID string,
 				return nil, err
 			}
 
-			var out components.Feature
+			var out metering.Feature
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1488,7 +1488,7 @@ func (s *OpenMeterFeatures) DeleteFeature(ctx context.Context, featureID string,
 // This endpoint is currently in beta and is subject to change.
 //
 // Query the cost of a feature.
-func (s *OpenMeterFeatures) QueryFeatureCost(ctx context.Context, featureID string, meterQueryRequest *components.MeterQueryRequest, opts ...operations.Option) (*operations.QueryFeatureCostResponse, error) {
+func (s *OpenMeterFeatures) QueryFeatureCost(ctx context.Context, featureID string, meterQueryRequest *metering.MeterQueryRequest, opts ...operations.Option) (*operations.QueryFeatureCostResponse, error) {
 	request := operations.QueryFeatureCostRequest{
 		FeatureID:         featureID,
 		MeterQueryRequest: meterQueryRequest,
@@ -1666,7 +1666,7 @@ func (s *OpenMeterFeatures) QueryFeatureCost(ctx context.Context, featureID stri
 				return nil, err
 			}
 
-			var out components.FeatureCostQueryResult
+			var out metering.FeatureCostQueryResult
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

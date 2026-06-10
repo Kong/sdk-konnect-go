@@ -9,7 +9,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/config"
 	"github.com/Kong/sdk-konnect-go/internal/hooks"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
 	"github.com/Kong/sdk-konnect-go/retry"
@@ -34,7 +34,7 @@ func newOpenMeterApps(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks *ho
 
 // ListApps - List apps
 // List installed apps.
-func (s *OpenMeterApps) ListApps(ctx context.Context, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListAppsResponse, error) {
+func (s *OpenMeterApps) ListApps(ctx context.Context, page *metering.PagePaginationQuery, opts ...operations.Option) (*operations.ListAppsResponse, error) {
 	request := operations.ListAppsRequest{
 		Page: page,
 	}
@@ -208,7 +208,7 @@ func (s *OpenMeterApps) ListApps(ctx context.Context, page *components.PagePagin
 				return nil, err
 			}
 
-			var out components.AppPagePaginatedResponse
+			var out metering.AppPagePaginatedResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -480,7 +480,7 @@ func (s *OpenMeterApps) GetApp(ctx context.Context, appID string, opts ...operat
 				return nil, err
 			}
 
-			var out components.BillingApp
+			var out metering.BillingApp
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

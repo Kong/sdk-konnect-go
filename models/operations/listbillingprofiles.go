@@ -3,16 +3,16 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type ListBillingProfilesRequest struct {
 	// Determines which page of the collection to retrieve.
-	Page *components.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
+	Page *metering.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
 }
 
-func (l *ListBillingProfilesRequest) GetPage() *components.PagePaginationQuery {
+func (l *ListBillingProfilesRequest) GetPage() *metering.PagePaginationQuery {
 	if l == nil {
 		return nil
 	}
@@ -27,7 +27,7 @@ type ListBillingProfilesResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Page paginated response.
-	BillingProfilePagePaginatedResponse *components.BillingProfilePagePaginatedResponse
+	BillingProfilePagePaginatedResponse *metering.BillingProfilePagePaginatedResponse
 }
 
 func (l *ListBillingProfilesResponse) GetContentType() string {
@@ -51,7 +51,7 @@ func (l *ListBillingProfilesResponse) GetRawResponse() *http.Response {
 	return l.RawResponse
 }
 
-func (l *ListBillingProfilesResponse) GetBillingProfilePagePaginatedResponse() *components.BillingProfilePagePaginatedResponse {
+func (l *ListBillingProfilesResponse) GetBillingProfilePagePaginatedResponse() *metering.BillingProfilePagePaginatedResponse {
 	if l == nil {
 		return nil
 	}

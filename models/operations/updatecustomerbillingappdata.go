@@ -3,13 +3,13 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type UpdateCustomerBillingAppDataRequest struct {
-	CustomerID                   string                                  `pathParam:"style=simple,explode=false,name=customerId"`
-	UpsertAppCustomerDataRequest components.UpsertAppCustomerDataRequest `request:"mediaType=application/json"`
+	CustomerID                   string                                `pathParam:"style=simple,explode=false,name=customerId"`
+	UpsertAppCustomerDataRequest metering.UpsertAppCustomerDataRequest `request:"mediaType=application/json"`
 }
 
 func (u *UpdateCustomerBillingAppDataRequest) GetCustomerID() string {
@@ -19,9 +19,9 @@ func (u *UpdateCustomerBillingAppDataRequest) GetCustomerID() string {
 	return u.CustomerID
 }
 
-func (u *UpdateCustomerBillingAppDataRequest) GetUpsertAppCustomerDataRequest() components.UpsertAppCustomerDataRequest {
+func (u *UpdateCustomerBillingAppDataRequest) GetUpsertAppCustomerDataRequest() metering.UpsertAppCustomerDataRequest {
 	if u == nil {
-		return components.UpsertAppCustomerDataRequest{}
+		return metering.UpsertAppCustomerDataRequest{}
 	}
 	return u.UpsertAppCustomerDataRequest
 }
@@ -34,7 +34,7 @@ type UpdateCustomerBillingAppDataResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// AppCustomerData upsert response.
-	BillingAppCustomerData *components.BillingAppCustomerData
+	BillingAppCustomerData *metering.BillingAppCustomerData
 }
 
 func (u *UpdateCustomerBillingAppDataResponse) GetContentType() string {
@@ -58,7 +58,7 @@ func (u *UpdateCustomerBillingAppDataResponse) GetRawResponse() *http.Response {
 	return u.RawResponse
 }
 
-func (u *UpdateCustomerBillingAppDataResponse) GetBillingAppCustomerData() *components.BillingAppCustomerData {
+func (u *UpdateCustomerBillingAppDataResponse) GetBillingAppCustomerData() *metering.BillingAppCustomerData {
 	if u == nil {
 		return nil
 	}

@@ -42,14 +42,14 @@ func (i *Items) GetUpdatedAt() *int64 {
 }
 
 type Page struct {
-	Total *int64 `json:"total,omitempty"`
+	TotalCount *int64 `json:"total_count,omitempty"`
 }
 
-func (p *Page) GetTotal() *int64 {
+func (p *Page) GetTotalCount() *int64 {
 	if p == nil {
 		return nil
 	}
-	return p.Total
+	return p.TotalCount
 }
 
 // ListPluginSchemas - A paginated list response for a collection of custom plugin schemas.

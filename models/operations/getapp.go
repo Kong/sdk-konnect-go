@@ -3,7 +3,7 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
@@ -26,7 +26,7 @@ type GetAppResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// App response.
-	BillingApp *components.BillingApp
+	BillingApp *metering.BillingApp
 }
 
 func (g *GetAppResponse) GetContentType() string {
@@ -50,28 +50,28 @@ func (g *GetAppResponse) GetRawResponse() *http.Response {
 	return g.RawResponse
 }
 
-func (g *GetAppResponse) GetBillingApp() *components.BillingApp {
+func (g *GetAppResponse) GetBillingApp() *metering.BillingApp {
 	if g == nil {
 		return nil
 	}
 	return g.BillingApp
 }
 
-func (g *GetAppResponse) GetBillingAppStripe() *components.BillingAppStripe {
+func (g *GetAppResponse) GetBillingAppStripe() *metering.BillingAppStripe {
 	if v := g.GetBillingApp(); v != nil {
 		return v.BillingAppStripe
 	}
 	return nil
 }
 
-func (g *GetAppResponse) GetBillingAppSandbox() *components.BillingAppSandbox {
+func (g *GetAppResponse) GetBillingAppSandbox() *metering.BillingAppSandbox {
 	if v := g.GetBillingApp(); v != nil {
 		return v.BillingAppSandbox
 	}
 	return nil
 }
 
-func (g *GetAppResponse) GetBillingAppExternalInvoicing() *components.BillingAppExternalInvoicing {
+func (g *GetAppResponse) GetBillingAppExternalInvoicing() *metering.BillingAppExternalInvoicing {
 	if v := g.GetBillingApp(); v != nil {
 		return v.BillingAppExternalInvoicing
 	}

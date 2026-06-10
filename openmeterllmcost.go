@@ -9,7 +9,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/config"
 	"github.com/Kong/sdk-konnect-go/internal/hooks"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
 	"github.com/Kong/sdk-konnect-go/retry"
@@ -37,7 +37,7 @@ func newOpenMeterLLMCost(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks 
 // This endpoint is currently in beta and is subject to change.
 //
 // List per-namespace price overrides.
-func (s *OpenMeterLLMCost) ListLlmCostOverrides(ctx context.Context, filter *components.ListLLMCostPricesParamsFilter, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListLlmCostOverridesResponse, error) {
+func (s *OpenMeterLLMCost) ListLlmCostOverrides(ctx context.Context, filter *metering.ListLLMCostPricesParamsFilter, page *metering.PagePaginationQuery, opts ...operations.Option) (*operations.ListLlmCostOverridesResponse, error) {
 	request := operations.ListLlmCostOverridesRequest{
 		Filter: filter,
 		Page:   page,
@@ -212,7 +212,7 @@ func (s *OpenMeterLLMCost) ListLlmCostOverrides(ctx context.Context, filter *com
 				return nil, err
 			}
 
-			var out components.PricePagePaginatedResponse
+			var out metering.PricePagePaginatedResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -317,7 +317,7 @@ func (s *OpenMeterLLMCost) ListLlmCostOverrides(ctx context.Context, filter *com
 // This endpoint is currently in beta and is subject to change.
 //
 // Create a per-namespace price override.
-func (s *OpenMeterLLMCost) CreateLlmCostOverride(ctx context.Context, request components.LLMCostOverrideCreate, opts ...operations.Option) (*operations.CreateLlmCostOverrideResponse, error) {
+func (s *OpenMeterLLMCost) CreateLlmCostOverride(ctx context.Context, request metering.LLMCostOverrideCreate, opts ...operations.Option) (*operations.CreateLlmCostOverrideResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -490,7 +490,7 @@ func (s *OpenMeterLLMCost) CreateLlmCostOverride(ctx context.Context, request co
 				return nil, err
 			}
 
-			var out components.LLMCostPrice
+			var out metering.LLMCostPrice
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1042,7 +1042,7 @@ func (s *OpenMeterLLMCost) ListLlmCostPrices(ctx context.Context, request operat
 				return nil, err
 			}
 
-			var out components.PricePagePaginatedResponse
+			var out metering.PricePagePaginatedResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1318,7 +1318,7 @@ func (s *OpenMeterLLMCost) GetLlmCostPrice(ctx context.Context, priceID string, 
 				return nil, err
 			}
 
-			var out components.LLMCostPrice
+			var out metering.LLMCostPrice
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

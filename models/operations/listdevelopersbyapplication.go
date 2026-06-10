@@ -30,8 +30,6 @@ type ListDevelopersByApplicationRequest struct {
 	// Determines which page of the entities to retrieve.
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 	// Sorts a set of developers for an application. Supported sort attributes are:
-	//
-	//
 	//   - id
 	//
 	Sort *string `queryParam:"style=form,explode=true,name=sort"`

@@ -71,8 +71,6 @@ type ListAppAuthStrategiesRequest struct {
 	// Determines which page of the entities to retrieve.
 	PageNumber *int64 `queryParam:"style=form,explode=true,name=page[number]"`
 	// Sorts a collection of application auth strategies. Supported sort attributes are:
-	//
-	//
 	//   - created_at
 	//   - updated_at
 	//   - strategy_type
