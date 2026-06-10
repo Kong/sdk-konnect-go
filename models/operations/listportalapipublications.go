@@ -17,8 +17,6 @@ type ListPortalAPIPublicationsRequest struct {
 	// Filters API Publications in a portal response (excludes portal-specific filters).
 	Filter *components.PortalAPIPublicationFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`
 	// Sorts a collection of API publications within a portal. Supported sort attributes are:
-	//
-	//
 	//   - api_id
 	//   - api_name
 	//   - created_at

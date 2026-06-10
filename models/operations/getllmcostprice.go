@@ -3,7 +3,7 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
@@ -26,7 +26,7 @@ type GetLlmCostPriceResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// The request has succeeded.
-	LLMCostPrice *components.LLMCostPrice
+	LLMCostPrice *metering.LLMCostPrice
 }
 
 func (g *GetLlmCostPriceResponse) GetContentType() string {
@@ -50,7 +50,7 @@ func (g *GetLlmCostPriceResponse) GetRawResponse() *http.Response {
 	return g.RawResponse
 }
 
-func (g *GetLlmCostPriceResponse) GetLLMCostPrice() *components.LLMCostPrice {
+func (g *GetLlmCostPriceResponse) GetLLMCostPrice() *metering.LLMCostPrice {
 	if g == nil {
 		return nil
 	}

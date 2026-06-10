@@ -3,13 +3,13 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type UpdateBillingProfileRequest struct {
-	ID                          string                                 `pathParam:"style=simple,explode=false,name=id"`
-	UpsertBillingProfileRequest components.UpsertBillingProfileRequest `request:"mediaType=application/json"`
+	ID                          string                               `pathParam:"style=simple,explode=false,name=id"`
+	UpsertBillingProfileRequest metering.UpsertBillingProfileRequest `request:"mediaType=application/json"`
 }
 
 func (u *UpdateBillingProfileRequest) GetID() string {
@@ -19,9 +19,9 @@ func (u *UpdateBillingProfileRequest) GetID() string {
 	return u.ID
 }
 
-func (u *UpdateBillingProfileRequest) GetUpsertBillingProfileRequest() components.UpsertBillingProfileRequest {
+func (u *UpdateBillingProfileRequest) GetUpsertBillingProfileRequest() metering.UpsertBillingProfileRequest {
 	if u == nil {
-		return components.UpsertBillingProfileRequest{}
+		return metering.UpsertBillingProfileRequest{}
 	}
 	return u.UpsertBillingProfileRequest
 }
@@ -34,7 +34,7 @@ type UpdateBillingProfileResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// BillingProfile updated response.
-	BillingProfile *components.BillingProfile
+	BillingProfile *metering.BillingProfile
 }
 
 func (u *UpdateBillingProfileResponse) GetContentType() string {
@@ -58,7 +58,7 @@ func (u *UpdateBillingProfileResponse) GetRawResponse() *http.Response {
 	return u.RawResponse
 }
 
-func (u *UpdateBillingProfileResponse) GetBillingProfile() *components.BillingProfile {
+func (u *UpdateBillingProfileResponse) GetBillingProfile() *metering.BillingProfile {
 	if u == nil {
 		return nil
 	}

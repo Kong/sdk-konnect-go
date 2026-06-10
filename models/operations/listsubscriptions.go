@@ -3,13 +3,13 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type ListSubscriptionsRequest struct {
 	// Determines which page of the collection to retrieve.
-	Page *components.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
+	Page *metering.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
 	// Sort subscriptions returned in the response. Supported sort attributes are:
 	//
 	// - `id`
@@ -20,10 +20,10 @@ type ListSubscriptionsRequest struct {
 	// suffix is used to specify a descending order.
 	Sort *string `queryParam:"style=form,explode=false,name=sort"`
 	// Filter subscriptions.
-	Filter *components.ListSubscriptionsParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *metering.ListSubscriptionsParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (l *ListSubscriptionsRequest) GetPage() *components.PagePaginationQuery {
+func (l *ListSubscriptionsRequest) GetPage() *metering.PagePaginationQuery {
 	if l == nil {
 		return nil
 	}
@@ -37,7 +37,7 @@ func (l *ListSubscriptionsRequest) GetSort() *string {
 	return l.Sort
 }
 
-func (l *ListSubscriptionsRequest) GetFilter() *components.ListSubscriptionsParamsFilter {
+func (l *ListSubscriptionsRequest) GetFilter() *metering.ListSubscriptionsParamsFilter {
 	if l == nil {
 		return nil
 	}
@@ -52,7 +52,7 @@ type ListSubscriptionsResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Page paginated response.
-	SubscriptionPagePaginatedResponse *components.SubscriptionPagePaginatedResponse
+	SubscriptionPagePaginatedResponse *metering.SubscriptionPagePaginatedResponse
 }
 
 func (l *ListSubscriptionsResponse) GetContentType() string {
@@ -76,7 +76,7 @@ func (l *ListSubscriptionsResponse) GetRawResponse() *http.Response {
 	return l.RawResponse
 }
 
-func (l *ListSubscriptionsResponse) GetSubscriptionPagePaginatedResponse() *components.SubscriptionPagePaginatedResponse {
+func (l *ListSubscriptionsResponse) GetSubscriptionPagePaginatedResponse() *metering.SubscriptionPagePaginatedResponse {
 	if l == nil {
 		return nil
 	}

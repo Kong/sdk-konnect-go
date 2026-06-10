@@ -43,6 +43,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -58,8 +59,8 @@ func main() {
 
     res, err := s.OpenMeterProductCatalog.ListOpenmeterAddons(ctx, operations.ListOpenmeterAddonsRequest{
         Sort: sdkkonnectgo.Pointer("created_at desc"),
-        Filter: &components.ListAddonsParamsFilter{
-            ID: sdkkonnectgo.Pointer(components.CreateULIDFieldFilterStr(
+        Filter: &metering.ListAddonsParamsFilter{
+            ID: sdkkonnectgo.Pointer(metering.CreateULIDFieldFilterStr(
                 "01G65Z755AFWAKHE12NY0CQ9FH",
             )),
         },
@@ -111,6 +112,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"log"
 )
 
@@ -123,33 +125,33 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterProductCatalog.CreateOpenmeterAddon(ctx, components.CreateAddonRequest1{
+    res, err := s.OpenMeterProductCatalog.CreateOpenmeterAddon(ctx, metering.CreateAddonRequest{
         Name: "<value>",
         Labels: map[string]string{
             "env": "test",
         },
         Key: "resource_key",
-        InstanceType: components.CreateAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultipleSingle,
+        InstanceType: metering.CreateAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultipleSingle,
         Currency: "USD",
-        RateCards: []components.BillingRateCard{
-            components.BillingRateCard{
+        RateCards: []metering.BillingRateCard{
+            metering.BillingRateCard{
                 Name: "<value>",
                 Labels: map[string]string{
                     "env": "test",
                 },
                 Key: "resource_key",
-                Feature: &components.FeatureReference{
+                Feature: &metering.FeatureReference{
                     ID: "01G65Z755AFWAKHE12NY0CQ9FH",
                 },
                 BillingCadence: sdkkonnectgo.Pointer("P1Y"),
-                Price: components.CreatePriceUnit(
-                    components.BillingPriceUnit{
-                        Type: components.BillingPriceUnitTypeUnit,
+                Price: metering.CreatePriceUnit(
+                    metering.BillingPriceUnit{
+                        Type: metering.BillingPriceUnitTypeUnit,
                         Amount: "278.76",
                     },
                 ),
-                TaxConfig: &components.TaxConfig{
-                    Code: components.TaxCodeReferenceItem{
+                TaxConfig: &metering.TaxConfig{
+                    Code: metering.TaxCodeReferenceItem{
                         ID: "01G65Z755AFWAKHE12NY0CQ9FH",
                     },
                 },
@@ -167,11 +169,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |
-| `request`                                                                        | [components.CreateAddonRequest1](../../models/components/createaddonrequest1.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `opts`                                                                           | [][operations.Option](../../models/operations/option.md)                         | :heavy_minus_sign:                                                               | The options for this request.                                                    |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
+| `request`                                                                  | [metering.CreateAddonRequest](../../models/metering/createaddonrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| `opts`                                                                     | [][operations.Option](../../models/operations/option.md)                   | :heavy_minus_sign:                                                         | The options for this request.                                              |
 
 ### Response
 
@@ -203,6 +205,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"log"
 )
 
@@ -215,30 +218,30 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterProductCatalog.UpdateOpenmeterAddon(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.UpsertAddonRequest{
+    res, err := s.OpenMeterProductCatalog.UpdateOpenmeterAddon(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", metering.UpsertAddonRequest{
         Name: "<value>",
         Labels: map[string]string{
             "env": "test",
         },
-        InstanceType: components.UpsertAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultipleMultiple,
-        RateCards: []components.BillingRateCard{
-            components.BillingRateCard{
+        InstanceType: metering.UpsertAddonRequestTheInstanceTypeOfTheAddOnsCanBeSingleOrMultipleMultiple,
+        RateCards: []metering.BillingRateCard{
+            metering.BillingRateCard{
                 Name: "<value>",
                 Labels: map[string]string{
                     "env": "test",
                 },
                 Key: "resource_key",
-                Feature: &components.FeatureReference{
+                Feature: &metering.FeatureReference{
                     ID: "01G65Z755AFWAKHE12NY0CQ9FH",
                 },
                 BillingCadence: sdkkonnectgo.Pointer("P1Y"),
-                Price: components.CreatePriceFree(
-                    components.BillingPriceFree{
-                        Type: components.BillingPriceFreeTypeFree,
+                Price: metering.CreatePriceFree(
+                    metering.BillingPriceFree{
+                        Type: metering.BillingPriceFreeTypeFree,
                     },
                 ),
-                TaxConfig: &components.TaxConfig{
-                    Code: components.TaxCodeReferenceItem{
+                TaxConfig: &metering.TaxConfig{
+                    Code: metering.TaxCodeReferenceItem{
                         ID: "01G65Z755AFWAKHE12NY0CQ9FH",
                     },
                 },
@@ -256,12 +259,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |                                                                                |
-| `addonID`                                                                      | `string`                                                                       | :heavy_check_mark:                                                             | N/A                                                                            | 01G65Z755AFWAKHE12NY0CQ9FH                                                     |
-| `upsertAddonRequest`                                                           | [components.UpsertAddonRequest](../../models/components/upsertaddonrequest.md) | :heavy_check_mark:                                                             | N/A                                                                            |                                                                                |
-| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |                                                                                |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                | Example                                                                    |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |                                                                            |
+| `addonID`                                                                  | `string`                                                                   | :heavy_check_mark:                                                         | N/A                                                                        | 01G65Z755AFWAKHE12NY0CQ9FH                                                 |
+| `upsertAddonRequest`                                                       | [metering.UpsertAddonRequest](../../models/metering/upsertaddonrequest.md) | :heavy_check_mark:                                                         | N/A                                                                        |                                                                            |
+| `opts`                                                                     | [][operations.Option](../../models/operations/option.md)                   | :heavy_minus_sign:                                                         | The options for this request.                                              |                                                                            |
 
 ### Response
 
@@ -603,6 +606,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"log"
 )
 
@@ -615,7 +619,7 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterProductCatalog.CreatePlan(ctx, components.CreatePlanRequest{
+    res, err := s.OpenMeterProductCatalog.CreatePlan(ctx, metering.CreatePlanRequest{
         Name: "<value>",
         Labels: map[string]string{
             "env": "test",
@@ -623,7 +627,7 @@ func main() {
         Key: "resource_key",
         Currency: "USD",
         BillingCadence: "P1Y",
-        Phases: []components.BillingPlanPhase{},
+        Phases: []metering.BillingPlanPhase{},
     })
     if err != nil {
         log.Fatal(err)
@@ -636,11 +640,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |
-| `request`                                                                    | [components.CreatePlanRequest](../../models/components/createplanrequest.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
-| `opts`                                                                       | [][operations.Option](../../models/operations/option.md)                     | :heavy_minus_sign:                                                           | The options for this request.                                                |
+| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `ctx`                                                                    | [context.Context](https://pkg.go.dev/context#Context)                    | :heavy_check_mark:                                                       | The context to use for the request.                                      |
+| `request`                                                                | [metering.CreatePlanRequest](../../models/metering/createplanrequest.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
+| `opts`                                                                   | [][operations.Option](../../models/operations/option.md)                 | :heavy_minus_sign:                                                       | The options for this request.                                            |
 
 ### Response
 
@@ -672,6 +676,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"log"
 )
 
@@ -684,12 +689,12 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterProductCatalog.UpdatePlan(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.UpsertPlanRequest{
+    res, err := s.OpenMeterProductCatalog.UpdatePlan(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", metering.UpsertPlanRequest{
         Name: "<value>",
         Labels: map[string]string{
             "env": "test",
         },
-        Phases: []components.BillingPlanPhase{},
+        Phases: []metering.BillingPlanPhase{},
     })
     if err != nil {
         log.Fatal(err)
@@ -702,12 +707,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  | Example                                                                      |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |                                                                              |
-| `planID`                                                                     | `string`                                                                     | :heavy_check_mark:                                                           | N/A                                                                          | 01G65Z755AFWAKHE12NY0CQ9FH                                                   |
-| `upsertPlanRequest`                                                          | [components.UpsertPlanRequest](../../models/components/upsertplanrequest.md) | :heavy_check_mark:                                                           | N/A                                                                          |                                                                              |
-| `opts`                                                                       | [][operations.Option](../../models/operations/option.md)                     | :heavy_minus_sign:                                                           | The options for this request.                                                |                                                                              |
+| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              | Example                                                                  |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `ctx`                                                                    | [context.Context](https://pkg.go.dev/context#Context)                    | :heavy_check_mark:                                                       | The context to use for the request.                                      |                                                                          |
+| `planID`                                                                 | `string`                                                                 | :heavy_check_mark:                                                       | N/A                                                                      | 01G65Z755AFWAKHE12NY0CQ9FH                                               |
+| `upsertPlanRequest`                                                      | [metering.UpsertPlanRequest](../../models/metering/upsertplanrequest.md) | :heavy_check_mark:                                                       | N/A                                                                      |                                                                          |
+| `opts`                                                                   | [][operations.Option](../../models/operations/option.md)                 | :heavy_minus_sign:                                                       | The options for this request.                                            |                                                                          |
 
 ### Response
 
@@ -888,12 +893,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `ctx`                                                                             | [context.Context](https://pkg.go.dev/context#Context)                             | :heavy_check_mark:                                                                | The context to use for the request.                                               |                                                                                   |
-| `planID`                                                                          | `string`                                                                          | :heavy_check_mark:                                                                | N/A                                                                               | 01G65Z755AFWAKHE12NY0CQ9FH                                                        |
-| `page`                                                                            | [*components.PagePaginationQuery](../../models/components/pagepaginationquery.md) | :heavy_minus_sign:                                                                | Determines which page of the collection to retrieve.                              |                                                                                   |
-| `opts`                                                                            | [][operations.Option](../../models/operations/option.md)                          | :heavy_minus_sign:                                                                | The options for this request.                                                     |                                                                                   |
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   | Example                                                                       |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `ctx`                                                                         | [context.Context](https://pkg.go.dev/context#Context)                         | :heavy_check_mark:                                                            | The context to use for the request.                                           |                                                                               |
+| `planID`                                                                      | `string`                                                                      | :heavy_check_mark:                                                            | N/A                                                                           | 01G65Z755AFWAKHE12NY0CQ9FH                                                    |
+| `page`                                                                        | [*metering.PagePaginationQuery](../../models/metering/pagepaginationquery.md) | :heavy_minus_sign:                                                            | Determines which page of the collection to retrieve.                          |                                                                               |
+| `opts`                                                                        | [][operations.Option](../../models/operations/option.md)                      | :heavy_minus_sign:                                                            | The options for this request.                                                 |                                                                               |
 
 ### Response
 
@@ -926,6 +931,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"log"
 )
 
@@ -938,12 +944,12 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterProductCatalog.CreatePlanAddon(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.CreatePlanAddonRequest{
+    res, err := s.OpenMeterProductCatalog.CreatePlanAddon(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", metering.CreatePlanAddonRequest{
         Name: "<value>",
         Labels: map[string]string{
             "env": "test",
         },
-        Addon: components.CreatePlanAddonRequestAddOn{
+        Addon: metering.CreatePlanAddonRequestAddOn{
             ID: "01G65Z755AFWAKHE12NY0CQ9FH",
         },
         FromPlanPhase: "resource_key",
@@ -959,12 +965,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            | Example                                                                                |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |                                                                                        |
-| `planID`                                                                               | `string`                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    | 01G65Z755AFWAKHE12NY0CQ9FH                                                             |
-| `createPlanAddonRequest`                                                               | [components.CreatePlanAddonRequest](../../models/components/createplanaddonrequest.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |                                                                                        |
-| `opts`                                                                                 | [][operations.Option](../../models/operations/option.md)                               | :heavy_minus_sign:                                                                     | The options for this request.                                                          |                                                                                        |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `ctx`                                                                              | [context.Context](https://pkg.go.dev/context#Context)                              | :heavy_check_mark:                                                                 | The context to use for the request.                                                |                                                                                    |
+| `planID`                                                                           | `string`                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                | 01G65Z755AFWAKHE12NY0CQ9FH                                                         |
+| `createPlanAddonRequest`                                                           | [metering.CreatePlanAddonRequest](../../models/metering/createplanaddonrequest.md) | :heavy_check_mark:                                                                 | N/A                                                                                |                                                                                    |
+| `opts`                                                                             | [][operations.Option](../../models/operations/option.md)                           | :heavy_minus_sign:                                                                 | The options for this request.                                                      |                                                                                    |
 
 ### Response
 
@@ -1059,6 +1065,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -1075,7 +1082,7 @@ func main() {
     res, err := s.OpenMeterProductCatalog.UpdatePlanAddon(ctx, operations.UpdatePlanAddonRequest{
         PlanID: "01G65Z755AFWAKHE12NY0CQ9FH",
         PlanAddonID: "01G65Z755AFWAKHE12NY0CQ9FH",
-        UpsertPlanAddonRequest: components.UpsertPlanAddonRequest{
+        UpsertPlanAddonRequest: metering.UpsertPlanAddonRequest{
             Name: "<value>",
             Labels: map[string]string{
                 "env": "test",

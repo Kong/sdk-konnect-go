@@ -3,13 +3,13 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type CreateCustomerStripePortalSessionRequest struct {
-	CustomerID                                              string                                                             `pathParam:"style=simple,explode=false,name=customerId"`
-	BillingCustomerStripeCreateCustomerPortalSessionRequest components.BillingCustomerStripeCreateCustomerPortalSessionRequest `request:"mediaType=application/json"`
+	CustomerID                                              string                                                           `pathParam:"style=simple,explode=false,name=customerId"`
+	BillingCustomerStripeCreateCustomerPortalSessionRequest metering.BillingCustomerStripeCreateCustomerPortalSessionRequest `request:"mediaType=application/json"`
 }
 
 func (c *CreateCustomerStripePortalSessionRequest) GetCustomerID() string {
@@ -19,9 +19,9 @@ func (c *CreateCustomerStripePortalSessionRequest) GetCustomerID() string {
 	return c.CustomerID
 }
 
-func (c *CreateCustomerStripePortalSessionRequest) GetBillingCustomerStripeCreateCustomerPortalSessionRequest() components.BillingCustomerStripeCreateCustomerPortalSessionRequest {
+func (c *CreateCustomerStripePortalSessionRequest) GetBillingCustomerStripeCreateCustomerPortalSessionRequest() metering.BillingCustomerStripeCreateCustomerPortalSessionRequest {
 	if c == nil {
-		return components.BillingCustomerStripeCreateCustomerPortalSessionRequest{}
+		return metering.BillingCustomerStripeCreateCustomerPortalSessionRequest{}
 	}
 	return c.BillingCustomerStripeCreateCustomerPortalSessionRequest
 }
@@ -34,7 +34,7 @@ type CreateCustomerStripePortalSessionResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// CreateStripeCustomerPortalSessionResult created response.
-	BillingAppStripeCreateCustomerPortalSessionResult *components.BillingAppStripeCreateCustomerPortalSessionResult
+	BillingAppStripeCreateCustomerPortalSessionResult *metering.BillingAppStripeCreateCustomerPortalSessionResult
 }
 
 func (c *CreateCustomerStripePortalSessionResponse) GetContentType() string {
@@ -58,7 +58,7 @@ func (c *CreateCustomerStripePortalSessionResponse) GetRawResponse() *http.Respo
 	return c.RawResponse
 }
 
-func (c *CreateCustomerStripePortalSessionResponse) GetBillingAppStripeCreateCustomerPortalSessionResult() *components.BillingAppStripeCreateCustomerPortalSessionResult {
+func (c *CreateCustomerStripePortalSessionResponse) GetBillingAppStripeCreateCustomerPortalSessionResult() *metering.BillingAppStripeCreateCustomerPortalSessionResult {
 	if c == nil {
 		return nil
 	}

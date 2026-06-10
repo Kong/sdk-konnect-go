@@ -3,13 +3,13 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type QueryFeatureCostRequest struct {
-	FeatureID         string                        `pathParam:"style=simple,explode=false,name=featureId"`
-	MeterQueryRequest *components.MeterQueryRequest `request:"mediaType=application/json"`
+	FeatureID         string                      `pathParam:"style=simple,explode=false,name=featureId"`
+	MeterQueryRequest *metering.MeterQueryRequest `request:"mediaType=application/json"`
 }
 
 func (q *QueryFeatureCostRequest) GetFeatureID() string {
@@ -19,7 +19,7 @@ func (q *QueryFeatureCostRequest) GetFeatureID() string {
 	return q.FeatureID
 }
 
-func (q *QueryFeatureCostRequest) GetMeterQueryRequest() *components.MeterQueryRequest {
+func (q *QueryFeatureCostRequest) GetMeterQueryRequest() *metering.MeterQueryRequest {
 	if q == nil {
 		return nil
 	}
@@ -34,7 +34,7 @@ type QueryFeatureCostResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// The request has succeeded.
-	FeatureCostQueryResult *components.FeatureCostQueryResult
+	FeatureCostQueryResult *metering.FeatureCostQueryResult
 }
 
 func (q *QueryFeatureCostResponse) GetContentType() string {
@@ -58,7 +58,7 @@ func (q *QueryFeatureCostResponse) GetRawResponse() *http.Response {
 	return q.RawResponse
 }
 
-func (q *QueryFeatureCostResponse) GetFeatureCostQueryResult() *components.FeatureCostQueryResult {
+func (q *QueryFeatureCostResponse) GetFeatureCostQueryResult() *metering.FeatureCostQueryResult {
 	if q == nil {
 		return nil
 	}

@@ -27,6 +27,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"github.com/Kong/sdk-konnect-go/types"
 	"log"
 )
@@ -40,13 +41,13 @@ func main() {
         }),
     )
 
-    res, err := s.Meters.CreateMeter(ctx, components.CreateMeterRequest{
+    res, err := s.Meters.CreateMeter(ctx, metering.CreateMeterRequest{
         Name: "<value>",
         Labels: map[string]string{
             "env": "test",
         },
         Key: "resource_key",
-        Aggregation: components.AggregationSum,
+        Aggregation: metering.AggregationSum,
         EventType: "prompt",
         EventsFrom: types.MustNewTimeFromString("2023-01-01T01:01:01.001Z"),
         ValueProperty: sdkkonnectgo.Pointer("$.tokens"),
@@ -65,11 +66,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |
-| `request`                                                                      | [components.CreateMeterRequest](../../models/components/createmeterrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
-| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
+| `request`                                                                  | [metering.CreateMeterRequest](../../models/metering/createmeterrequest.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| `opts`                                                                     | [][operations.Option](../../models/operations/option.md)                   | :heavy_minus_sign:                                                         | The options for this request.                                              |
 
 ### Response
 
@@ -219,6 +220,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"log"
 )
 
@@ -231,7 +233,7 @@ func main() {
         }),
     )
 
-    res, err := s.Meters.UpdateMeter(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.UpdateMeterRequest{
+    res, err := s.Meters.UpdateMeter(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", metering.UpdateMeterRequest{
         Labels: map[string]string{
             "env": "test",
         },
@@ -250,12 +252,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `ctx`                                                                          | [context.Context](https://pkg.go.dev/context#Context)                          | :heavy_check_mark:                                                             | The context to use for the request.                                            |                                                                                |
-| `meterID`                                                                      | `string`                                                                       | :heavy_check_mark:                                                             | N/A                                                                            | 01G65Z755AFWAKHE12NY0CQ9FH                                                     |
-| `updateMeterRequest`                                                           | [components.UpdateMeterRequest](../../models/components/updatemeterrequest.md) | :heavy_check_mark:                                                             | N/A                                                                            |                                                                                |
-| `opts`                                                                         | [][operations.Option](../../models/operations/option.md)                       | :heavy_minus_sign:                                                             | The options for this request.                                                  |                                                                                |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                | Example                                                                    |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |                                                                            |
+| `meterID`                                                                  | `string`                                                                   | :heavy_check_mark:                                                         | N/A                                                                        | 01G65Z755AFWAKHE12NY0CQ9FH                                                 |
+| `updateMeterRequest`                                                       | [metering.UpdateMeterRequest](../../models/metering/updatemeterrequest.md) | :heavy_check_mark:                                                         | N/A                                                                        |                                                                            |
+| `opts`                                                                     | [][operations.Option](../../models/operations/option.md)                   | :heavy_minus_sign:                                                         | The options for this request.                                              |                                                                            |
 
 ### Response
 
@@ -357,6 +359,7 @@ import(
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/types"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"log"
 )
 
@@ -369,10 +372,10 @@ func main() {
         }),
     )
 
-    res, err := s.Meters.QueryMeter(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.MeterQueryRequest{
+    res, err := s.Meters.QueryMeter(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", metering.MeterQueryRequest{
         From: types.MustNewTimeFromString("2023-01-01T00:00:00Z"),
         To: types.MustNewTimeFromString("2023-01-02T00:00:00Z"),
-        Granularity: components.MeterQueryRequestGranularityP1D.ToPointer(),
+        Granularity: metering.GranularityP1D.ToPointer(),
     })
     if err != nil {
         log.Fatal(err)
@@ -389,7 +392,7 @@ func main() {
 | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                      | :heavy_check_mark:                                                                                         | The context to use for the request.                                                                        |                                                                                                            |
 | `meterID`                                                                                                  | `string`                                                                                                   | :heavy_check_mark:                                                                                         | N/A                                                                                                        | 01G65Z755AFWAKHE12NY0CQ9FH                                                                                 |
-| `meterQueryRequest`                                                                                        | [components.MeterQueryRequest](../../models/components/meterqueryrequest.md)                               | :heavy_check_mark:                                                                                         | N/A                                                                                                        | {<br/>"from": "2023-01-01T00:00:00Z",<br/>"to": "2023-01-02T00:00:00Z",<br/>"granularity": "P1D",<br/>"time_zone": "UTC"<br/>} |
+| `meterQueryRequest`                                                                                        | [metering.MeterQueryRequest](../../models/metering/meterqueryrequest.md)                                   | :heavy_check_mark:                                                                                         | N/A                                                                                                        | {<br/>"from": "2023-01-01T00:00:00Z",<br/>"to": "2023-01-02T00:00:00Z",<br/>"granularity": "P1D",<br/>"time_zone": "UTC"<br/>} |
 | `opts`                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                   | :heavy_minus_sign:                                                                                         | The options for this request.                                                                              |                                                                                                            |
 
 ### Response

@@ -9,7 +9,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/config"
 	"github.com/Kong/sdk-konnect-go/internal/hooks"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
 	"github.com/Kong/sdk-konnect-go/retry"
@@ -33,7 +33,7 @@ func newOpenMeterCustomers(rootSDK *SDK, sdkConfig config.SDKConfiguration, hook
 }
 
 // CreateCustomer - Create customer
-func (s *OpenMeterCustomers) CreateCustomer(ctx context.Context, request components.CreateCustomerRequest, opts ...operations.Option) (*operations.CreateCustomerResponse, error) {
+func (s *OpenMeterCustomers) CreateCustomer(ctx context.Context, request metering.CreateCustomerRequest, opts ...operations.Option) (*operations.CreateCustomerResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -206,7 +206,7 @@ func (s *OpenMeterCustomers) CreateCustomer(ctx context.Context, request compone
 				return nil, err
 			}
 
-			var out components.BillingCustomer
+			var out metering.BillingCustomer
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -477,7 +477,7 @@ func (s *OpenMeterCustomers) ListCustomers(ctx context.Context, request operatio
 				return nil, err
 			}
 
-			var out components.CustomerPagePaginatedResponse
+			var out metering.CustomerPagePaginatedResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -748,7 +748,7 @@ func (s *OpenMeterCustomers) GetCustomer(ctx context.Context, customerID string,
 				return nil, err
 			}
 
-			var out components.BillingCustomer
+			var out metering.BillingCustomer
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -870,7 +870,7 @@ func (s *OpenMeterCustomers) GetCustomer(ctx context.Context, customerID string,
 }
 
 // UpsertCustomer - Upsert customer
-func (s *OpenMeterCustomers) UpsertCustomer(ctx context.Context, customerID string, upsertCustomerRequest components.UpsertCustomerRequest, opts ...operations.Option) (*operations.UpsertCustomerResponse, error) {
+func (s *OpenMeterCustomers) UpsertCustomer(ctx context.Context, customerID string, upsertCustomerRequest metering.UpsertCustomerRequest, opts ...operations.Option) (*operations.UpsertCustomerResponse, error) {
 	request := operations.UpsertCustomerRequest{
 		CustomerID:            customerID,
 		UpsertCustomerRequest: upsertCustomerRequest,
@@ -1048,7 +1048,7 @@ func (s *OpenMeterCustomers) UpsertCustomer(ctx context.Context, customerID stri
 				return nil, err
 			}
 
-			var out components.BillingCustomer
+			var out metering.BillingCustomer
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1634,7 +1634,7 @@ func (s *OpenMeterCustomers) GetCustomerBilling(ctx context.Context, customerID 
 				return nil, err
 			}
 
-			var out components.BillingCustomerData
+			var out metering.BillingCustomerData
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1756,7 +1756,7 @@ func (s *OpenMeterCustomers) GetCustomerBilling(ctx context.Context, customerID 
 }
 
 // UpdateCustomerBilling - Update customer billing data
-func (s *OpenMeterCustomers) UpdateCustomerBilling(ctx context.Context, customerID string, upsertCustomerBillingDataRequest components.UpsertCustomerBillingDataRequest, opts ...operations.Option) (*operations.UpdateCustomerBillingResponse, error) {
+func (s *OpenMeterCustomers) UpdateCustomerBilling(ctx context.Context, customerID string, upsertCustomerBillingDataRequest metering.UpsertCustomerBillingDataRequest, opts ...operations.Option) (*operations.UpdateCustomerBillingResponse, error) {
 	request := operations.UpdateCustomerBillingRequest{
 		CustomerID:                       customerID,
 		UpsertCustomerBillingDataRequest: upsertCustomerBillingDataRequest,
@@ -1934,7 +1934,7 @@ func (s *OpenMeterCustomers) UpdateCustomerBilling(ctx context.Context, customer
 				return nil, err
 			}
 
-			var out components.BillingCustomerData
+			var out metering.BillingCustomerData
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -2077,7 +2077,7 @@ func (s *OpenMeterCustomers) UpdateCustomerBilling(ctx context.Context, customer
 }
 
 // UpdateCustomerBillingAppData - Update customer billing app data
-func (s *OpenMeterCustomers) UpdateCustomerBillingAppData(ctx context.Context, customerID string, upsertAppCustomerDataRequest components.UpsertAppCustomerDataRequest, opts ...operations.Option) (*operations.UpdateCustomerBillingAppDataResponse, error) {
+func (s *OpenMeterCustomers) UpdateCustomerBillingAppData(ctx context.Context, customerID string, upsertAppCustomerDataRequest metering.UpsertAppCustomerDataRequest, opts ...operations.Option) (*operations.UpdateCustomerBillingAppDataResponse, error) {
 	request := operations.UpdateCustomerBillingAppDataRequest{
 		CustomerID:                   customerID,
 		UpsertAppCustomerDataRequest: upsertAppCustomerDataRequest,
@@ -2255,7 +2255,7 @@ func (s *OpenMeterCustomers) UpdateCustomerBillingAppData(ctx context.Context, c
 				return nil, err
 			}
 
-			var out components.BillingAppCustomerData
+			var out metering.BillingAppCustomerData
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -2409,7 +2409,7 @@ func (s *OpenMeterCustomers) UpdateCustomerBillingAppData(ctx context.Context, c
 // For hosted checkout sessions, redirect customers to the returned URL. For
 // embedded sessions, use the client_secret to initialize Stripe.js in your
 // application.
-func (s *OpenMeterCustomers) CreateCustomerStripeCheckoutSession(ctx context.Context, customerID string, billingCustomerStripeCreateCheckoutSessionRequest components.BillingCustomerStripeCreateCheckoutSessionRequest, opts ...operations.Option) (*operations.CreateCustomerStripeCheckoutSessionResponse, error) {
+func (s *OpenMeterCustomers) CreateCustomerStripeCheckoutSession(ctx context.Context, customerID string, billingCustomerStripeCreateCheckoutSessionRequest metering.BillingCustomerStripeCreateCheckoutSessionRequest, opts ...operations.Option) (*operations.CreateCustomerStripeCheckoutSessionResponse, error) {
 	request := operations.CreateCustomerStripeCheckoutSessionRequest{
 		CustomerID: customerID,
 		BillingCustomerStripeCreateCheckoutSessionRequest: billingCustomerStripeCreateCheckoutSessionRequest,
@@ -2587,7 +2587,7 @@ func (s *OpenMeterCustomers) CreateCustomerStripeCheckoutSession(ctx context.Con
 				return nil, err
 			}
 
-			var out components.BillingAppStripeCreateCheckoutSessionResult
+			var out metering.BillingAppStripeCreateCheckoutSessionResult
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -2736,7 +2736,7 @@ func (s *OpenMeterCustomers) CreateCustomerStripeCheckoutSession(ctx context.Con
 // payment methods, change their billing address and access their invoice history.
 // Only returns URL if the customer billing profile is linked to a stripe app and
 // customer.
-func (s *OpenMeterCustomers) CreateCustomerStripePortalSession(ctx context.Context, customerID string, billingCustomerStripeCreateCustomerPortalSessionRequest components.BillingCustomerStripeCreateCustomerPortalSessionRequest, opts ...operations.Option) (*operations.CreateCustomerStripePortalSessionResponse, error) {
+func (s *OpenMeterCustomers) CreateCustomerStripePortalSession(ctx context.Context, customerID string, billingCustomerStripeCreateCustomerPortalSessionRequest metering.BillingCustomerStripeCreateCustomerPortalSessionRequest, opts ...operations.Option) (*operations.CreateCustomerStripePortalSessionResponse, error) {
 	request := operations.CreateCustomerStripePortalSessionRequest{
 		CustomerID: customerID,
 		BillingCustomerStripeCreateCustomerPortalSessionRequest: billingCustomerStripeCreateCustomerPortalSessionRequest,
@@ -2914,7 +2914,7 @@ func (s *OpenMeterCustomers) CreateCustomerStripePortalSession(ctx context.Conte
 				return nil, err
 			}
 
-			var out components.BillingAppStripeCreateCustomerPortalSessionResult
+			var out metering.BillingAppStripeCreateCustomerPortalSessionResult
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

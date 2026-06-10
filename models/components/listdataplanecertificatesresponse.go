@@ -3,14 +3,14 @@
 package components
 
 type ListDataPlaneCertificatesResponsePage struct {
-	Total *int64 `json:"total,omitempty"`
+	TotalCount *int64 `json:"total_count,omitempty"`
 }
 
-func (l *ListDataPlaneCertificatesResponsePage) GetTotal() *int64 {
+func (l *ListDataPlaneCertificatesResponsePage) GetTotalCount() *int64 {
 	if l == nil {
 		return nil
 	}
-	return l.Total
+	return l.TotalCount
 }
 
 // ListDataPlaneCertificatesResponse - Example response

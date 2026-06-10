@@ -3,13 +3,13 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type CreateCustomerStripeCheckoutSessionRequest struct {
-	CustomerID                                        string                                                       `pathParam:"style=simple,explode=false,name=customerId"`
-	BillingCustomerStripeCreateCheckoutSessionRequest components.BillingCustomerStripeCreateCheckoutSessionRequest `request:"mediaType=application/json"`
+	CustomerID                                        string                                                     `pathParam:"style=simple,explode=false,name=customerId"`
+	BillingCustomerStripeCreateCheckoutSessionRequest metering.BillingCustomerStripeCreateCheckoutSessionRequest `request:"mediaType=application/json"`
 }
 
 func (c *CreateCustomerStripeCheckoutSessionRequest) GetCustomerID() string {
@@ -19,9 +19,9 @@ func (c *CreateCustomerStripeCheckoutSessionRequest) GetCustomerID() string {
 	return c.CustomerID
 }
 
-func (c *CreateCustomerStripeCheckoutSessionRequest) GetBillingCustomerStripeCreateCheckoutSessionRequest() components.BillingCustomerStripeCreateCheckoutSessionRequest {
+func (c *CreateCustomerStripeCheckoutSessionRequest) GetBillingCustomerStripeCreateCheckoutSessionRequest() metering.BillingCustomerStripeCreateCheckoutSessionRequest {
 	if c == nil {
-		return components.BillingCustomerStripeCreateCheckoutSessionRequest{}
+		return metering.BillingCustomerStripeCreateCheckoutSessionRequest{}
 	}
 	return c.BillingCustomerStripeCreateCheckoutSessionRequest
 }
@@ -34,7 +34,7 @@ type CreateCustomerStripeCheckoutSessionResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// CreateStripeCheckoutSessionResult created response.
-	BillingAppStripeCreateCheckoutSessionResult *components.BillingAppStripeCreateCheckoutSessionResult
+	BillingAppStripeCreateCheckoutSessionResult *metering.BillingAppStripeCreateCheckoutSessionResult
 }
 
 func (c *CreateCustomerStripeCheckoutSessionResponse) GetContentType() string {
@@ -58,7 +58,7 @@ func (c *CreateCustomerStripeCheckoutSessionResponse) GetRawResponse() *http.Res
 	return c.RawResponse
 }
 
-func (c *CreateCustomerStripeCheckoutSessionResponse) GetBillingAppStripeCreateCheckoutSessionResult() *components.BillingAppStripeCreateCheckoutSessionResult {
+func (c *CreateCustomerStripeCheckoutSessionResponse) GetBillingAppStripeCreateCheckoutSessionResult() *metering.BillingAppStripeCreateCheckoutSessionResult {
 	if c == nil {
 		return nil
 	}

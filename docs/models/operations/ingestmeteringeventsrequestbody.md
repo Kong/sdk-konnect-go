@@ -6,13 +6,13 @@
 ### MeteringEvent
 
 ```go
-ingestMeteringEventsRequestBody := operations.CreateIngestMeteringEventsRequestBodyMeteringEvent(components.MeteringEvent{/* values here */})
+ingestMeteringEventsRequestBody := operations.CreateIngestMeteringEventsRequestBodyMeteringEvent(metering.MeteringEvent{/* values here */})
 ```
 
 ### 
 
 ```go
-ingestMeteringEventsRequestBody := operations.CreateIngestMeteringEventsRequestBodyArrayOfMeteringEvent([]components.MeteringEvent{/* values here */})
+ingestMeteringEventsRequestBody := operations.CreateIngestMeteringEventsRequestBodyArrayOfMeteringEvent([]metering.MeteringEvent{/* values here */})
 ```
 
 ## Union Discrimination

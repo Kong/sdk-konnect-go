@@ -31,6 +31,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"log"
 )
 
@@ -43,14 +44,14 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterCustomers.CreateCustomer(ctx, components.CreateCustomerRequest{
+    res, err := s.OpenMeterCustomers.CreateCustomer(ctx, metering.CreateCustomerRequest{
         Name: "<value>",
         Labels: map[string]string{
             "env": "test",
         },
         Key: "019ae40f-4258-7f15-9491-842f42a7d6ac",
         Currency: sdkkonnectgo.Pointer("USD"),
-        BillingAddress: &components.BillingAddress{
+        BillingAddress: &metering.BillingAddress{
             Country: sdkkonnectgo.Pointer("US"),
         },
     })
@@ -65,11 +66,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
-| `request`                                                                            | [components.CreateCustomerRequest](../../models/components/createcustomerrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `opts`                                                                               | [][operations.Option](../../models/operations/option.md)                             | :heavy_minus_sign:                                                                   | The options for this request.                                                        |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |
+| `request`                                                                        | [metering.CreateCustomerRequest](../../models/metering/createcustomerrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `opts`                                                                           | [][operations.Option](../../models/operations/option.md)                         | :heavy_minus_sign:                                                               | The options for this request.                                                    |
 
 ### Response
 
@@ -98,6 +99,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -113,8 +115,8 @@ func main() {
 
     res, err := s.OpenMeterCustomers.ListCustomers(ctx, operations.ListCustomersRequest{
         Sort: sdkkonnectgo.Pointer("created_at desc"),
-        Filter: &components.ListCustomersParamsFilter{
-            BillingProfileID: sdkkonnectgo.Pointer(components.CreateULIDFieldFilterStr(
+        Filter: &metering.ListCustomersParamsFilter{
+            BillingProfileID: sdkkonnectgo.Pointer(metering.CreateULIDFieldFilterStr(
                 "01G65Z755AFWAKHE12NY0CQ9FH",
             )),
         },
@@ -221,6 +223,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"log"
 )
 
@@ -233,13 +236,13 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterCustomers.UpsertCustomer(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.UpsertCustomerRequest{
+    res, err := s.OpenMeterCustomers.UpsertCustomer(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", metering.UpsertCustomerRequest{
         Name: "<value>",
         Labels: map[string]string{
             "env": "test",
         },
         Currency: sdkkonnectgo.Pointer("USD"),
-        BillingAddress: &components.UpsertCustomerRequestBillingAddress{
+        BillingAddress: &metering.UpsertCustomerRequestBillingAddress{
             Country: sdkkonnectgo.Pointer("US"),
         },
     })
@@ -254,12 +257,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          | Example                                                                              |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |                                                                                      |
-| `customerID`                                                                         | `string`                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  | 01G65Z755AFWAKHE12NY0CQ9FH                                                           |
-| `upsertCustomerRequest`                                                              | [components.UpsertCustomerRequest](../../models/components/upsertcustomerrequest.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |                                                                                      |
-| `opts`                                                                               | [][operations.Option](../../models/operations/option.md)                             | :heavy_minus_sign:                                                                   | The options for this request.                                                        |                                                                                      |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      | Example                                                                          |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |                                                                                  |
+| `customerID`                                                                     | `string`                                                                         | :heavy_check_mark:                                                               | N/A                                                                              | 01G65Z755AFWAKHE12NY0CQ9FH                                                       |
+| `upsertCustomerRequest`                                                          | [metering.UpsertCustomerRequest](../../models/metering/upsertcustomerrequest.md) | :heavy_check_mark:                                                               | N/A                                                                              |                                                                                  |
+| `opts`                                                                           | [][operations.Option](../../models/operations/option.md)                         | :heavy_minus_sign:                                                               | The options for this request.                                                    |                                                                                  |
 
 ### Response
 
@@ -406,6 +409,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"log"
 )
 
@@ -418,19 +422,19 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterCustomers.UpdateCustomerBilling(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.UpsertCustomerBillingDataRequest{
-        BillingProfile: &components.UpsertCustomerBillingDataRequestBillingProfile{
+    res, err := s.OpenMeterCustomers.UpdateCustomerBilling(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", metering.UpsertCustomerBillingDataRequest{
+        BillingProfile: &metering.UpsertCustomerBillingDataRequestBillingProfile{
             ID: "01G65Z755AFWAKHE12NY0CQ9FH",
         },
-        AppData: &components.UpsertCustomerBillingDataRequestAppCustomerData{
-            Stripe: &components.UpsertCustomerBillingDataRequestStripe{
+        AppData: &metering.UpsertCustomerBillingDataRequestAppCustomerData{
+            Stripe: &metering.UpsertCustomerBillingDataRequestStripe{
                 CustomerID: sdkkonnectgo.Pointer("cus_1234567890"),
                 DefaultPaymentMethodID: sdkkonnectgo.Pointer("pm_1234567890"),
                 Labels: map[string]string{
                     "env": "test",
                 },
             },
-            ExternalInvoicing: &components.UpsertCustomerBillingDataRequestExternalInvoicing{
+            ExternalInvoicing: &metering.UpsertCustomerBillingDataRequestExternalInvoicing{
                 Labels: map[string]string{
                     "env": "test",
                 },
@@ -448,12 +452,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                | Example                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                      | :heavy_check_mark:                                                                                         | The context to use for the request.                                                                        |                                                                                                            |
-| `customerID`                                                                                               | `string`                                                                                                   | :heavy_check_mark:                                                                                         | N/A                                                                                                        | 01G65Z755AFWAKHE12NY0CQ9FH                                                                                 |
-| `upsertCustomerBillingDataRequest`                                                                         | [components.UpsertCustomerBillingDataRequest](../../models/components/upsertcustomerbillingdatarequest.md) | :heavy_check_mark:                                                                                         | N/A                                                                                                        |                                                                                                            |
-| `opts`                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                   | :heavy_minus_sign:                                                                                         | The options for this request.                                                                              |                                                                                                            |
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            | Example                                                                                                |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                  | :heavy_check_mark:                                                                                     | The context to use for the request.                                                                    |                                                                                                        |
+| `customerID`                                                                                           | `string`                                                                                               | :heavy_check_mark:                                                                                     | N/A                                                                                                    | 01G65Z755AFWAKHE12NY0CQ9FH                                                                             |
+| `upsertCustomerBillingDataRequest`                                                                     | [metering.UpsertCustomerBillingDataRequest](../../models/metering/upsertcustomerbillingdatarequest.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |                                                                                                        |
+| `opts`                                                                                                 | [][operations.Option](../../models/operations/option.md)                                               | :heavy_minus_sign:                                                                                     | The options for this request.                                                                          |                                                                                                        |
 
 ### Response
 
@@ -484,6 +488,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"log"
 )
 
@@ -496,15 +501,15 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterCustomers.UpdateCustomerBillingAppData(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.UpsertAppCustomerDataRequest{
-        Stripe: &components.Stripe{
+    res, err := s.OpenMeterCustomers.UpdateCustomerBillingAppData(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", metering.UpsertAppCustomerDataRequest{
+        Stripe: &metering.Stripe{
             CustomerID: sdkkonnectgo.Pointer("cus_1234567890"),
             DefaultPaymentMethodID: sdkkonnectgo.Pointer("pm_1234567890"),
             Labels: map[string]string{
                 "env": "test",
             },
         },
-        ExternalInvoicing: &components.ExternalInvoicing{
+        ExternalInvoicing: &metering.ExternalInvoicing{
             Labels: map[string]string{
                 "env": "test",
             },
@@ -521,12 +526,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |                                                                                                    |
-| `customerID`                                                                                       | `string`                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                | 01G65Z755AFWAKHE12NY0CQ9FH                                                                         |
-| `upsertAppCustomerDataRequest`                                                                     | [components.UpsertAppCustomerDataRequest](../../models/components/upsertappcustomerdatarequest.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |                                                                                                    |
-| `opts`                                                                                             | [][operations.Option](../../models/operations/option.md)                                           | :heavy_minus_sign:                                                                                 | The options for this request.                                                                      |                                                                                                    |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    | Example                                                                                        |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |                                                                                                |
+| `customerID`                                                                                   | `string`                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            | 01G65Z755AFWAKHE12NY0CQ9FH                                                                     |
+| `upsertAppCustomerDataRequest`                                                                 | [metering.UpsertAppCustomerDataRequest](../../models/metering/upsertappcustomerdatarequest.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |                                                                                                |
+| `opts`                                                                                         | [][operations.Option](../../models/operations/option.md)                                       | :heavy_minus_sign:                                                                             | The options for this request.                                                                  |                                                                                                |
 
 ### Response
 
@@ -567,6 +572,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"log"
 )
 
@@ -579,8 +585,8 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterCustomers.CreateCustomerStripeCheckoutSession(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.BillingCustomerStripeCreateCheckoutSessionRequest{
-        StripeOptions: components.StripeOptions{
+    res, err := s.OpenMeterCustomers.CreateCustomerStripeCheckoutSession(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", metering.BillingCustomerStripeCreateCheckoutSessionRequest{
+        StripeOptions: metering.StripeOptions{
             Currency: sdkkonnectgo.Pointer("USD"),
         },
     })
@@ -595,12 +601,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                                    | Type                                                                                                                                         | Required                                                                                                                                     | Description                                                                                                                                  | Example                                                                                                                                      |
-| -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                                                        | :heavy_check_mark:                                                                                                                           | The context to use for the request.                                                                                                          |                                                                                                                                              |
-| `customerID`                                                                                                                                 | `string`                                                                                                                                     | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          | 01G65Z755AFWAKHE12NY0CQ9FH                                                                                                                   |
-| `billingCustomerStripeCreateCheckoutSessionRequest`                                                                                          | [components.BillingCustomerStripeCreateCheckoutSessionRequest](../../models/components/billingcustomerstripecreatecheckoutsessionrequest.md) | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |                                                                                                                                              |
-| `opts`                                                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                                                     | :heavy_minus_sign:                                                                                                                           | The options for this request.                                                                                                                |                                                                                                                                              |
+| Parameter                                                                                                                                | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              | Example                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                                    | :heavy_check_mark:                                                                                                                       | The context to use for the request.                                                                                                      |                                                                                                                                          |
+| `customerID`                                                                                                                             | `string`                                                                                                                                 | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      | 01G65Z755AFWAKHE12NY0CQ9FH                                                                                                               |
+| `billingCustomerStripeCreateCheckoutSessionRequest`                                                                                      | [metering.BillingCustomerStripeCreateCheckoutSessionRequest](../../models/metering/billingcustomerstripecreatecheckoutsessionrequest.md) | :heavy_check_mark:                                                                                                                       | N/A                                                                                                                                      |                                                                                                                                          |
+| `opts`                                                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                                                 | :heavy_minus_sign:                                                                                                                       | The options for this request.                                                                                                            |                                                                                                                                          |
 
 ### Response
 
@@ -636,6 +642,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"log"
 )
 
@@ -648,8 +655,8 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterCustomers.CreateCustomerStripePortalSession(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.BillingCustomerStripeCreateCustomerPortalSessionRequest{
-        StripeOptions: components.BillingCustomerStripeCreateCustomerPortalSessionRequestStripeOptions{},
+    res, err := s.OpenMeterCustomers.CreateCustomerStripePortalSession(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", metering.BillingCustomerStripeCreateCustomerPortalSessionRequest{
+        StripeOptions: metering.BillingCustomerStripeCreateCustomerPortalSessionRequestStripeOptions{},
     })
     if err != nil {
         log.Fatal(err)
@@ -662,12 +669,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                                                | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              | Example                                                                                                                                                  |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                                                    | :heavy_check_mark:                                                                                                                                       | The context to use for the request.                                                                                                                      |                                                                                                                                                          |
-| `customerID`                                                                                                                                             | `string`                                                                                                                                                 | :heavy_check_mark:                                                                                                                                       | N/A                                                                                                                                                      | 01G65Z755AFWAKHE12NY0CQ9FH                                                                                                                               |
-| `billingCustomerStripeCreateCustomerPortalSessionRequest`                                                                                                | [components.BillingCustomerStripeCreateCustomerPortalSessionRequest](../../models/components/billingcustomerstripecreatecustomerportalsessionrequest.md) | :heavy_check_mark:                                                                                                                                       | N/A                                                                                                                                                      |                                                                                                                                                          |
-| `opts`                                                                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                                                                 | :heavy_minus_sign:                                                                                                                                       | The options for this request.                                                                                                                            |                                                                                                                                                          |
+| Parameter                                                                                                                                            | Type                                                                                                                                                 | Required                                                                                                                                             | Description                                                                                                                                          | Example                                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                                                | :heavy_check_mark:                                                                                                                                   | The context to use for the request.                                                                                                                  |                                                                                                                                                      |
+| `customerID`                                                                                                                                         | `string`                                                                                                                                             | :heavy_check_mark:                                                                                                                                   | N/A                                                                                                                                                  | 01G65Z755AFWAKHE12NY0CQ9FH                                                                                                                           |
+| `billingCustomerStripeCreateCustomerPortalSessionRequest`                                                                                            | [metering.BillingCustomerStripeCreateCustomerPortalSessionRequest](../../models/metering/billingcustomerstripecreatecustomerportalsessionrequest.md) | :heavy_check_mark:                                                                                                                                   | N/A                                                                                                                                                  |                                                                                                                                                      |
+| `opts`                                                                                                                                               | [][operations.Option](../../models/operations/option.md)                                                                                             | :heavy_minus_sign:                                                                                                                                   | The options for this request.                                                                                                                        |                                                                                                                                                      |
 
 ### Response
 

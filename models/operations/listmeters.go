@@ -3,13 +3,13 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type ListMetersRequest struct {
 	// Determines which page of the collection to retrieve.
-	Page *components.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
+	Page *metering.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
 	// Sort meters returned in the response. Supported sort attributes are:
 	//
 	// - `key`
@@ -24,10 +24,10 @@ type ListMetersRequest struct {
 	// Filter meters returned in the response.
 	//
 	// To filter meters by key add the following query param: filter[key]=my-meter-key
-	Filter *components.ListMetersParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *metering.ListMetersParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (l *ListMetersRequest) GetPage() *components.PagePaginationQuery {
+func (l *ListMetersRequest) GetPage() *metering.PagePaginationQuery {
 	if l == nil {
 		return nil
 	}
@@ -41,7 +41,7 @@ func (l *ListMetersRequest) GetSort() *string {
 	return l.Sort
 }
 
-func (l *ListMetersRequest) GetFilter() *components.ListMetersParamsFilter {
+func (l *ListMetersRequest) GetFilter() *metering.ListMetersParamsFilter {
 	if l == nil {
 		return nil
 	}
@@ -56,7 +56,7 @@ type ListMetersResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Page paginated response.
-	MeterPagePaginatedResponse *components.MeterPagePaginatedResponse
+	MeterPagePaginatedResponse *metering.MeterPagePaginatedResponse
 }
 
 func (l *ListMetersResponse) GetContentType() string {
@@ -80,7 +80,7 @@ func (l *ListMetersResponse) GetRawResponse() *http.Response {
 	return l.RawResponse
 }
 
-func (l *ListMetersResponse) GetMeterPagePaginatedResponse() *components.MeterPagePaginatedResponse {
+func (l *ListMetersResponse) GetMeterPagePaginatedResponse() *metering.MeterPagePaginatedResponse {
 	if l == nil {
 		return nil
 	}

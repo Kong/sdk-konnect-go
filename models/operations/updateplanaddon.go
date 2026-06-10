@@ -3,14 +3,14 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type UpdatePlanAddonRequest struct {
-	PlanID                 string                            `pathParam:"style=simple,explode=false,name=planId"`
-	PlanAddonID            string                            `pathParam:"style=simple,explode=false,name=planAddonId"`
-	UpsertPlanAddonRequest components.UpsertPlanAddonRequest `request:"mediaType=application/json"`
+	PlanID                 string                          `pathParam:"style=simple,explode=false,name=planId"`
+	PlanAddonID            string                          `pathParam:"style=simple,explode=false,name=planAddonId"`
+	UpsertPlanAddonRequest metering.UpsertPlanAddonRequest `request:"mediaType=application/json"`
 }
 
 func (u *UpdatePlanAddonRequest) GetPlanID() string {
@@ -27,9 +27,9 @@ func (u *UpdatePlanAddonRequest) GetPlanAddonID() string {
 	return u.PlanAddonID
 }
 
-func (u *UpdatePlanAddonRequest) GetUpsertPlanAddonRequest() components.UpsertPlanAddonRequest {
+func (u *UpdatePlanAddonRequest) GetUpsertPlanAddonRequest() metering.UpsertPlanAddonRequest {
 	if u == nil {
-		return components.UpsertPlanAddonRequest{}
+		return metering.UpsertPlanAddonRequest{}
 	}
 	return u.UpsertPlanAddonRequest
 }
@@ -42,7 +42,7 @@ type UpdatePlanAddonResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// PlanAddon upsert response.
-	PlanAddon *components.PlanAddon
+	PlanAddon *metering.PlanAddon
 }
 
 func (u *UpdatePlanAddonResponse) GetContentType() string {
@@ -66,7 +66,7 @@ func (u *UpdatePlanAddonResponse) GetRawResponse() *http.Response {
 	return u.RawResponse
 }
 
-func (u *UpdatePlanAddonResponse) GetPlanAddon() *components.PlanAddon {
+func (u *UpdatePlanAddonResponse) GetPlanAddon() *metering.PlanAddon {
 	if u == nil {
 		return nil
 	}

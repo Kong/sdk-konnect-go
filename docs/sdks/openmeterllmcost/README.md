@@ -53,12 +53,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                             | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
-| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                 | [context.Context](https://pkg.go.dev/context#Context)                                                 | :heavy_check_mark:                                                                                    | The context to use for the request.                                                                   |
-| `filter`                                                                                              | [*components.ListLLMCostPricesParamsFilter](../../models/components/listllmcostpricesparamsfilter.md) | :heavy_minus_sign:                                                                                    | Filter options for listing LLM cost prices.                                                           |
-| `page`                                                                                                | [*components.PagePaginationQuery](../../models/components/pagepaginationquery.md)                     | :heavy_minus_sign:                                                                                    | Determines which page of the collection to retrieve.                                                  |
-| `opts`                                                                                                | [][operations.Option](../../models/operations/option.md)                                              | :heavy_minus_sign:                                                                                    | The options for this request.                                                                         |
+| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                             | [context.Context](https://pkg.go.dev/context#Context)                                             | :heavy_check_mark:                                                                                | The context to use for the request.                                                               |
+| `filter`                                                                                          | [*metering.ListLLMCostPricesParamsFilter](../../models/metering/listllmcostpricesparamsfilter.md) | :heavy_minus_sign:                                                                                | Filter options for listing LLM cost prices.                                                       |
+| `page`                                                                                            | [*metering.PagePaginationQuery](../../models/metering/pagepaginationquery.md)                     | :heavy_minus_sign:                                                                                | Determines which page of the collection to retrieve.                                              |
+| `opts`                                                                                            | [][operations.Option](../../models/operations/option.md)                                          | :heavy_minus_sign:                                                                                | The options for this request.                                                                     |
 
 ### Response
 
@@ -90,6 +90,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"github.com/Kong/sdk-konnect-go/types"
 	"log"
 )
@@ -103,10 +104,10 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterLLMCost.CreateLlmCostOverride(ctx, components.LLMCostOverrideCreate{
+    res, err := s.OpenMeterLLMCost.CreateLlmCostOverride(ctx, metering.LLMCostOverrideCreate{
         Provider: "<value>",
         ModelID: "<id>",
-        Pricing: components.LLMCostOverrideCreatePricing{
+        Pricing: metering.LLMCostOverrideCreatePricing{
             InputPerToken: "<value>",
             OutputPerToken: "<value>",
         },
@@ -125,11 +126,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
-| `request`                                                                            | [components.LLMCostOverrideCreate](../../models/components/llmcostoverridecreate.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `opts`                                                                               | [][operations.Option](../../models/operations/option.md)                             | :heavy_minus_sign:                                                                   | The options for this request.                                                        |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |
+| `request`                                                                        | [metering.LLMCostOverrideCreate](../../models/metering/llmcostoverridecreate.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `opts`                                                                           | [][operations.Option](../../models/operations/option.md)                         | :heavy_minus_sign:                                                               | The options for this request.                                                    |
 
 ### Response
 

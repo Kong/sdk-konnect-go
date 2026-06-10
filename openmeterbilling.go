@@ -9,7 +9,7 @@ import (
 	"github.com/Kong/sdk-konnect-go/internal/config"
 	"github.com/Kong/sdk-konnect-go/internal/hooks"
 	"github.com/Kong/sdk-konnect-go/internal/utils"
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"github.com/Kong/sdk-konnect-go/models/sdkerrors"
 	"github.com/Kong/sdk-konnect-go/retry"
@@ -34,7 +34,7 @@ func newOpenMeterBilling(rootSDK *SDK, sdkConfig config.SDKConfiguration, hooks 
 
 // ListBillingProfiles - List billing profiles
 // List billing profiles.
-func (s *OpenMeterBilling) ListBillingProfiles(ctx context.Context, page *components.PagePaginationQuery, opts ...operations.Option) (*operations.ListBillingProfilesResponse, error) {
+func (s *OpenMeterBilling) ListBillingProfiles(ctx context.Context, page *metering.PagePaginationQuery, opts ...operations.Option) (*operations.ListBillingProfilesResponse, error) {
 	request := operations.ListBillingProfilesRequest{
 		Page: page,
 	}
@@ -208,7 +208,7 @@ func (s *OpenMeterBilling) ListBillingProfiles(ctx context.Context, page *compon
 				return nil, err
 			}
 
-			var out components.BillingProfilePagePaginatedResponse
+			var out metering.BillingProfilePagePaginatedResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -315,7 +315,7 @@ func (s *OpenMeterBilling) ListBillingProfiles(ctx context.Context, page *compon
 // generation. An organization can have multiple billing profiles defined. A
 // billing profile is linked to a specific app. This association is established
 // during the billing profile's creation and remains immutable.
-func (s *OpenMeterBilling) CreateBillingProfile(ctx context.Context, request components.CreateBillingProfileRequest, opts ...operations.Option) (*operations.CreateBillingProfileResponse, error) {
+func (s *OpenMeterBilling) CreateBillingProfile(ctx context.Context, request metering.CreateBillingProfileRequest, opts ...operations.Option) (*operations.CreateBillingProfileResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -488,7 +488,7 @@ func (s *OpenMeterBilling) CreateBillingProfile(ctx context.Context, request com
 				return nil, err
 			}
 
-			var out components.BillingProfile
+			var out metering.BillingProfile
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -760,7 +760,7 @@ func (s *OpenMeterBilling) GetBillingProfile(ctx context.Context, id string, opt
 				return nil, err
 			}
 
-			var out components.BillingProfile
+			var out metering.BillingProfile
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -883,7 +883,7 @@ func (s *OpenMeterBilling) GetBillingProfile(ctx context.Context, id string, opt
 
 // UpdateBillingProfile - Update a billing profile
 // Update a billing profile.
-func (s *OpenMeterBilling) UpdateBillingProfile(ctx context.Context, id string, upsertBillingProfileRequest components.UpsertBillingProfileRequest, opts ...operations.Option) (*operations.UpdateBillingProfileResponse, error) {
+func (s *OpenMeterBilling) UpdateBillingProfile(ctx context.Context, id string, upsertBillingProfileRequest metering.UpsertBillingProfileRequest, opts ...operations.Option) (*operations.UpdateBillingProfileResponse, error) {
 	request := operations.UpdateBillingProfileRequest{
 		ID:                          id,
 		UpsertBillingProfileRequest: upsertBillingProfileRequest,
@@ -1061,7 +1061,7 @@ func (s *OpenMeterBilling) UpdateBillingProfile(ctx context.Context, id string, 
 				return nil, err
 			}
 
-			var out components.BillingProfile
+			var out metering.BillingProfile
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

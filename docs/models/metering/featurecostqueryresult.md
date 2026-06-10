@@ -1,0 +1,12 @@
+# FeatureCostQueryResult
+
+Result of a feature cost query.
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    | Example                                                                        |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `From`                                                                         | [*time.Time](https://pkg.go.dev/time#Time)                                     | :heavy_minus_sign:                                                             | Start of the queried period.                                                   | 2023-01-01T01:01:01.001Z                                                       |
+| `To`                                                                           | [*time.Time](https://pkg.go.dev/time#Time)                                     | :heavy_minus_sign:                                                             | End of the queried period.                                                     | 2023-01-01T01:01:01.001Z                                                       |
+| `Data`                                                                         | [][metering.FeatureCostQueryRow](../../models/metering/featurecostqueryrow.md) | :heavy_check_mark:                                                             | The cost data rows.                                                            |                                                                                |

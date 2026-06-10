@@ -15,8 +15,6 @@ type ListIntegrationInstancesRequest struct {
 	// Filters a collection of integration instances.
 	Filter *components.IntegrationInstanceFilterParameters `queryParam:"style=deepObject,explode=true,name=filter"`
 	// Sorts a collection of integration instances. Supported sort attributes are:
-	//
-	//
 	//   - `display_name`
 	//   - `name`
 	//   - `created_at`

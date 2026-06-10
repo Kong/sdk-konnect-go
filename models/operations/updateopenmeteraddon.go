@@ -3,13 +3,13 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type UpdateOpenmeterAddonRequest struct {
-	AddonID            string                        `pathParam:"style=simple,explode=false,name=addonId"`
-	UpsertAddonRequest components.UpsertAddonRequest `request:"mediaType=application/json"`
+	AddonID            string                      `pathParam:"style=simple,explode=false,name=addonId"`
+	UpsertAddonRequest metering.UpsertAddonRequest `request:"mediaType=application/json"`
 }
 
 func (u *UpdateOpenmeterAddonRequest) GetAddonID() string {
@@ -19,9 +19,9 @@ func (u *UpdateOpenmeterAddonRequest) GetAddonID() string {
 	return u.AddonID
 }
 
-func (u *UpdateOpenmeterAddonRequest) GetUpsertAddonRequest() components.UpsertAddonRequest {
+func (u *UpdateOpenmeterAddonRequest) GetUpsertAddonRequest() metering.UpsertAddonRequest {
 	if u == nil {
-		return components.UpsertAddonRequest{}
+		return metering.UpsertAddonRequest{}
 	}
 	return u.UpsertAddonRequest
 }
@@ -34,7 +34,7 @@ type UpdateOpenmeterAddonResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Addon upsert response.
-	Addon *components.Addon
+	Addon *metering.Addon
 }
 
 func (u *UpdateOpenmeterAddonResponse) GetContentType() string {
@@ -58,7 +58,7 @@ func (u *UpdateOpenmeterAddonResponse) GetRawResponse() *http.Response {
 	return u.RawResponse
 }
 
-func (u *UpdateOpenmeterAddonResponse) GetAddon() *components.Addon {
+func (u *UpdateOpenmeterAddonResponse) GetAddon() *metering.Addon {
 	if u == nil {
 		return nil
 	}

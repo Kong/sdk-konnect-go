@@ -3,7 +3,7 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
@@ -15,7 +15,7 @@ type CreateMeterResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Meter created response.
-	Meter *components.Meter
+	Meter *metering.Meter
 }
 
 func (c *CreateMeterResponse) GetContentType() string {
@@ -39,7 +39,7 @@ func (c *CreateMeterResponse) GetRawResponse() *http.Response {
 	return c.RawResponse
 }
 
-func (c *CreateMeterResponse) GetMeter() *components.Meter {
+func (c *CreateMeterResponse) GetMeter() *metering.Meter {
 	if c == nil {
 		return nil
 	}

@@ -1,0 +1,11 @@
+# ListMetersParamsFilter
+
+Filter options for listing meters.
+
+
+## Fields
+
+| Field                                                                                                                                       | Type                                                                                                                                        | Required                                                                                                                                    | Description                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Key`                                                                                                                                       | [*metering.ListMetersParamsFilterStringFieldNEQFilter](../../models/metering/listmetersparamsfilterstringfieldneqfilter.md)                 | :heavy_minus_sign:                                                                                                                          | Filter meters by key.                                                                                                                       |
+| `Name`                                                                                                                                      | [*metering.ListMetersParamsFilterMeteringStringFieldNEQFilter](../../models/metering/listmetersparamsfiltermeteringstringfieldneqfilter.md) | :heavy_minus_sign:                                                                                                                          | Filter meters by name.                                                                                                                      |

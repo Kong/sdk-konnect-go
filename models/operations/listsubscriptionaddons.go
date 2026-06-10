@@ -3,15 +3,15 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type ListSubscriptionAddonsRequest struct {
 	SubscriptionID string `pathParam:"style=simple,explode=false,name=subscriptionId"`
 	// Determines which page of the collection to retrieve.
-	Page *components.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
-	Sort *string                         `queryParam:"style=form,explode=false,name=sort"`
+	Page *metering.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
+	Sort *string                       `queryParam:"style=form,explode=false,name=sort"`
 }
 
 func (l *ListSubscriptionAddonsRequest) GetSubscriptionID() string {
@@ -21,7 +21,7 @@ func (l *ListSubscriptionAddonsRequest) GetSubscriptionID() string {
 	return l.SubscriptionID
 }
 
-func (l *ListSubscriptionAddonsRequest) GetPage() *components.PagePaginationQuery {
+func (l *ListSubscriptionAddonsRequest) GetPage() *metering.PagePaginationQuery {
 	if l == nil {
 		return nil
 	}
@@ -43,7 +43,7 @@ type ListSubscriptionAddonsResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Page paginated response.
-	SubscriptionAddonPagePaginatedResponse *components.SubscriptionAddonPagePaginatedResponse
+	SubscriptionAddonPagePaginatedResponse *metering.SubscriptionAddonPagePaginatedResponse
 }
 
 func (l *ListSubscriptionAddonsResponse) GetContentType() string {
@@ -67,7 +67,7 @@ func (l *ListSubscriptionAddonsResponse) GetRawResponse() *http.Response {
 	return l.RawResponse
 }
 
-func (l *ListSubscriptionAddonsResponse) GetSubscriptionAddonPagePaginatedResponse() *components.SubscriptionAddonPagePaginatedResponse {
+func (l *ListSubscriptionAddonsResponse) GetSubscriptionAddonPagePaginatedResponse() *metering.SubscriptionAddonPagePaginatedResponse {
 	if l == nil {
 		return nil
 	}

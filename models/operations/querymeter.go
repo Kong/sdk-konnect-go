@@ -3,13 +3,13 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type QueryMeterRequest struct {
-	MeterID           string                       `pathParam:"style=simple,explode=false,name=meterId"`
-	MeterQueryRequest components.MeterQueryRequest `request:"mediaType=application/json"`
+	MeterID           string                     `pathParam:"style=simple,explode=false,name=meterId"`
+	MeterQueryRequest metering.MeterQueryRequest `request:"mediaType=application/json"`
 }
 
 func (q *QueryMeterRequest) GetMeterID() string {
@@ -19,9 +19,9 @@ func (q *QueryMeterRequest) GetMeterID() string {
 	return q.MeterID
 }
 
-func (q *QueryMeterRequest) GetMeterQueryRequest() components.MeterQueryRequest {
+func (q *QueryMeterRequest) GetMeterQueryRequest() metering.MeterQueryRequest {
 	if q == nil {
-		return components.MeterQueryRequest{}
+		return metering.MeterQueryRequest{}
 	}
 	return q.MeterQueryRequest
 }
@@ -34,7 +34,7 @@ type QueryMeterResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// The request has succeeded.
-	MeterQueryResult *components.MeterQueryResult
+	MeterQueryResult *metering.MeterQueryResult
 	// The request has succeeded.
 	Res *string
 }
@@ -60,7 +60,7 @@ func (q *QueryMeterResponse) GetRawResponse() *http.Response {
 	return q.RawResponse
 }
 
-func (q *QueryMeterResponse) GetMeterQueryResult() *components.MeterQueryResult {
+func (q *QueryMeterResponse) GetMeterQueryResult() *metering.MeterQueryResult {
 	if q == nil {
 		return nil
 	}

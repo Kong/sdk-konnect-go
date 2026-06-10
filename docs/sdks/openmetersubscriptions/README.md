@@ -29,6 +29,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"github.com/Kong/sdk-konnect-go/types"
 	"log"
 )
@@ -42,15 +43,15 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterSubscriptions.CreateSubscription(ctx, components.BillingSubscriptionCreate{
+    res, err := s.OpenMeterSubscriptions.CreateSubscription(ctx, metering.BillingSubscriptionCreate{
         Labels: map[string]string{
             "env": "test",
         },
-        Customer: components.BillingSubscriptionCreateCustomer{
+        Customer: metering.BillingSubscriptionCreateCustomer{
             ID: sdkkonnectgo.Pointer("01G65Z755AFWAKHE12NY0CQ9FH"),
             Key: sdkkonnectgo.Pointer("019ae40f-4258-7f15-9491-842f42a7d6ac"),
         },
-        Plan: components.Plan{
+        Plan: metering.Plan{
             ID: sdkkonnectgo.Pointer("01G65Z755AFWAKHE12NY0CQ9FH"),
             Key: sdkkonnectgo.Pointer("resource_key"),
         },
@@ -67,11 +68,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |
-| `request`                                                                                    | [components.BillingSubscriptionCreate](../../models/components/billingsubscriptioncreate.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
-| `opts`                                                                                       | [][operations.Option](../../models/operations/option.md)                                     | :heavy_minus_sign:                                                                           | The options for this request.                                                                |
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |
+| `request`                                                                                | [metering.BillingSubscriptionCreate](../../models/metering/billingsubscriptioncreate.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| `opts`                                                                                   | [][operations.Option](../../models/operations/option.md)                                 | :heavy_minus_sign:                                                                       | The options for this request.                                                            |
 
 ### Response
 
@@ -102,6 +103,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -117,14 +119,14 @@ func main() {
 
     res, err := s.OpenMeterSubscriptions.ListSubscriptions(ctx, operations.ListSubscriptionsRequest{
         Sort: sdkkonnectgo.Pointer("created_at desc"),
-        Filter: &components.ListSubscriptionsParamsFilter{
-            ID: sdkkonnectgo.Pointer(components.CreateULIDFieldFilterStr(
+        Filter: &metering.ListSubscriptionsParamsFilter{
+            ID: sdkkonnectgo.Pointer(metering.CreateULIDFieldFilterStr(
                 "01G65Z755AFWAKHE12NY0CQ9FH",
             )),
-            CustomerID: sdkkonnectgo.Pointer(components.CreateULIDFieldFilterStr(
+            CustomerID: sdkkonnectgo.Pointer(metering.CreateULIDFieldFilterStr(
                 "01G65Z755AFWAKHE12NY0CQ9FH",
             )),
-            PlanID: sdkkonnectgo.Pointer(components.CreateULIDFieldFilterStr(
+            PlanID: sdkkonnectgo.Pointer(metering.CreateULIDFieldFilterStr(
                 "01G65Z755AFWAKHE12NY0CQ9FH",
             )),
         },
@@ -360,6 +362,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"log"
 )
 
@@ -372,9 +375,9 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterSubscriptions.CancelSubscription(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.BillingSubscriptionCancel{
-        Timing: sdkkonnectgo.Pointer(components.CreateTimingBillingSubscriptionEditTimingEnum(
-            components.BillingSubscriptionEditTimingEnumImmediate,
+    res, err := s.OpenMeterSubscriptions.CancelSubscription(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", metering.BillingSubscriptionCancel{
+        Timing: sdkkonnectgo.Pointer(metering.CreateTimingBillingSubscriptionEditTimingEnum(
+            metering.BillingSubscriptionEditTimingEnumImmediate,
         )),
     })
     if err != nil {
@@ -388,12 +391,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |                                                                                              |
-| `subscriptionID`                                                                             | `string`                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          | 01G65Z755AFWAKHE12NY0CQ9FH                                                                   |
-| `billingSubscriptionCancel`                                                                  | [components.BillingSubscriptionCancel](../../models/components/billingsubscriptioncancel.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |                                                                                              |
-| `opts`                                                                                       | [][operations.Option](../../models/operations/option.md)                                     | :heavy_minus_sign:                                                                           | The options for this request.                                                                |                                                                                              |
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              | Example                                                                                  |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |                                                                                          |
+| `subscriptionID`                                                                         | `string`                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      | 01G65Z755AFWAKHE12NY0CQ9FH                                                               |
+| `billingSubscriptionCancel`                                                              | [metering.BillingSubscriptionCancel](../../models/metering/billingsubscriptioncancel.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |                                                                                          |
+| `opts`                                                                                   | [][operations.Option](../../models/operations/option.md)                                 | :heavy_minus_sign:                                                                       | The options for this request.                                                            |                                                                                          |
 
 ### Response
 
@@ -425,6 +428,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"github.com/Kong/sdk-konnect-go/types"
 	"log"
 )
@@ -438,21 +442,21 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterSubscriptions.ChangeSubscription(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.BillingSubscriptionChange{
+    res, err := s.OpenMeterSubscriptions.ChangeSubscription(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", metering.BillingSubscriptionChange{
         Labels: map[string]string{
             "env": "test",
         },
-        Customer: components.BillingSubscriptionChangeCustomer{
+        Customer: metering.BillingSubscriptionChangeCustomer{
             ID: sdkkonnectgo.Pointer("01G65Z755AFWAKHE12NY0CQ9FH"),
             Key: sdkkonnectgo.Pointer("019ae40f-4258-7f15-9491-842f42a7d6ac"),
         },
-        Plan: components.BillingSubscriptionChangePlan{
+        Plan: metering.BillingSubscriptionChangePlan{
             ID: sdkkonnectgo.Pointer("01G65Z755AFWAKHE12NY0CQ9FH"),
             Key: sdkkonnectgo.Pointer("resource_key"),
         },
         BillingAnchor: types.MustNewTimeFromString("2023-01-01T01:01:01.001Z"),
-        Timing: components.CreateBillingSubscriptionChangeTimingBillingSubscriptionEditTimingEnum(
-            components.BillingSubscriptionEditTimingEnumImmediate,
+        Timing: metering.CreateBillingSubscriptionChangeTimingTimingBillingSubscriptionEditTimingEnum(
+            metering.TimingBillingSubscriptionEditTimingEnumImmediate,
         ),
     })
     if err != nil {
@@ -466,12 +470,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |                                                                                              |
-| `subscriptionID`                                                                             | `string`                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          | 01G65Z755AFWAKHE12NY0CQ9FH                                                                   |
-| `billingSubscriptionChange`                                                                  | [components.BillingSubscriptionChange](../../models/components/billingsubscriptionchange.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |                                                                                              |
-| `opts`                                                                                       | [][operations.Option](../../models/operations/option.md)                                     | :heavy_minus_sign:                                                                           | The options for this request.                                                                |                                                                                              |
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              | Example                                                                                  |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `ctx`                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                    | :heavy_check_mark:                                                                       | The context to use for the request.                                                      |                                                                                          |
+| `subscriptionID`                                                                         | `string`                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      | 01G65Z755AFWAKHE12NY0CQ9FH                                                               |
+| `billingSubscriptionChange`                                                              | [metering.BillingSubscriptionChange](../../models/metering/billingsubscriptionchange.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |                                                                                          |
+| `opts`                                                                                   | [][operations.Option](../../models/operations/option.md)                                 | :heavy_minus_sign:                                                                       | The options for this request.                                                            |                                                                                          |
 
 ### Response
 

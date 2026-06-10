@@ -3,13 +3,13 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type ListFeaturesRequest struct {
 	// Determines which page of the collection to retrieve.
-	Page *components.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
+	Page *metering.PagePaginationQuery `queryParam:"style=deepObject,explode=true,name=page"`
 	// Sort features returned in the response. Supported sort attributes are:
 	//
 	// - `key`
@@ -24,10 +24,10 @@ type ListFeaturesRequest struct {
 	//
 	// To filter features by meter_id add the following query param:
 	// filter[meter_id][oeq]=<id>
-	Filter *components.ListFeatureParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
+	Filter *metering.ListFeatureParamsFilter `queryParam:"style=deepObject,explode=true,name=filter"`
 }
 
-func (l *ListFeaturesRequest) GetPage() *components.PagePaginationQuery {
+func (l *ListFeaturesRequest) GetPage() *metering.PagePaginationQuery {
 	if l == nil {
 		return nil
 	}
@@ -41,7 +41,7 @@ func (l *ListFeaturesRequest) GetSort() *string {
 	return l.Sort
 }
 
-func (l *ListFeaturesRequest) GetFilter() *components.ListFeatureParamsFilter {
+func (l *ListFeaturesRequest) GetFilter() *metering.ListFeatureParamsFilter {
 	if l == nil {
 		return nil
 	}
@@ -56,7 +56,7 @@ type ListFeaturesResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Page paginated response.
-	FeaturePagePaginatedResponse *components.FeaturePagePaginatedResponse
+	FeaturePagePaginatedResponse *metering.FeaturePagePaginatedResponse
 }
 
 func (l *ListFeaturesResponse) GetContentType() string {
@@ -80,7 +80,7 @@ func (l *ListFeaturesResponse) GetRawResponse() *http.Response {
 	return l.RawResponse
 }
 
-func (l *ListFeaturesResponse) GetFeaturePagePaginatedResponse() *components.FeaturePagePaginatedResponse {
+func (l *ListFeaturesResponse) GetFeaturePagePaginatedResponse() *metering.FeaturePagePaginatedResponse {
 	if l == nil {
 		return nil
 	}

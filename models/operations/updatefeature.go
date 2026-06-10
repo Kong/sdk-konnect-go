@@ -3,13 +3,13 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type UpdateFeatureRequest struct {
-	FeatureID            string                          `pathParam:"style=simple,explode=false,name=featureId"`
-	UpdateFeatureRequest components.UpdateFeatureRequest `request:"mediaType=application/json"`
+	FeatureID            string                        `pathParam:"style=simple,explode=false,name=featureId"`
+	UpdateFeatureRequest metering.UpdateFeatureRequest `request:"mediaType=application/json"`
 }
 
 func (u *UpdateFeatureRequest) GetFeatureID() string {
@@ -19,9 +19,9 @@ func (u *UpdateFeatureRequest) GetFeatureID() string {
 	return u.FeatureID
 }
 
-func (u *UpdateFeatureRequest) GetUpdateFeatureRequest() components.UpdateFeatureRequest {
+func (u *UpdateFeatureRequest) GetUpdateFeatureRequest() metering.UpdateFeatureRequest {
 	if u == nil {
-		return components.UpdateFeatureRequest{}
+		return metering.UpdateFeatureRequest{}
 	}
 	return u.UpdateFeatureRequest
 }
@@ -34,7 +34,7 @@ type UpdateFeatureResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Feature updated response.
-	Feature *components.Feature
+	Feature *metering.Feature
 }
 
 func (u *UpdateFeatureResponse) GetContentType() string {
@@ -58,7 +58,7 @@ func (u *UpdateFeatureResponse) GetRawResponse() *http.Response {
 	return u.RawResponse
 }
 
-func (u *UpdateFeatureResponse) GetFeature() *components.Feature {
+func (u *UpdateFeatureResponse) GetFeature() *metering.Feature {
 	if u == nil {
 		return nil
 	}

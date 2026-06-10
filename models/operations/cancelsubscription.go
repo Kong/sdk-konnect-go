@@ -3,13 +3,13 @@
 package operations
 
 import (
-	"github.com/Kong/sdk-konnect-go/models/components"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"net/http"
 )
 
 type CancelSubscriptionRequest struct {
-	SubscriptionID            string                               `pathParam:"style=simple,explode=false,name=subscriptionId"`
-	BillingSubscriptionCancel components.BillingSubscriptionCancel `request:"mediaType=application/json"`
+	SubscriptionID            string                             `pathParam:"style=simple,explode=false,name=subscriptionId"`
+	BillingSubscriptionCancel metering.BillingSubscriptionCancel `request:"mediaType=application/json"`
 }
 
 func (c *CancelSubscriptionRequest) GetSubscriptionID() string {
@@ -19,9 +19,9 @@ func (c *CancelSubscriptionRequest) GetSubscriptionID() string {
 	return c.SubscriptionID
 }
 
-func (c *CancelSubscriptionRequest) GetBillingSubscriptionCancel() components.BillingSubscriptionCancel {
+func (c *CancelSubscriptionRequest) GetBillingSubscriptionCancel() metering.BillingSubscriptionCancel {
 	if c == nil {
-		return components.BillingSubscriptionCancel{}
+		return metering.BillingSubscriptionCancel{}
 	}
 	return c.BillingSubscriptionCancel
 }
@@ -34,7 +34,7 @@ type CancelSubscriptionResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// Subscription updated response.
-	BillingSubscription *components.BillingSubscription
+	BillingSubscription *metering.BillingSubscription
 }
 
 func (c *CancelSubscriptionResponse) GetContentType() string {
@@ -58,7 +58,7 @@ func (c *CancelSubscriptionResponse) GetRawResponse() *http.Response {
 	return c.RawResponse
 }
 
-func (c *CancelSubscriptionResponse) GetBillingSubscription() *components.BillingSubscription {
+func (c *CancelSubscriptionResponse) GetBillingSubscription() *metering.BillingSubscription {
 	if c == nil {
 		return nil
 	}

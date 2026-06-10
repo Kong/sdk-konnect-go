@@ -26,6 +26,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"github.com/Kong/sdk-konnect-go/types"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
@@ -41,22 +42,22 @@ func main() {
     )
 
     res, err := s.MeteringEvents.ListMeteringEvents(ctx, operations.ListMeteringEventsRequest{
-        Filter: &components.ListEventsParamsFilter{
-            CustomerID: sdkkonnectgo.Pointer(components.CreateListEventsParamsFilterULIDFieldFilterStr(
+        Filter: &metering.ListEventsParamsFilter{
+            CustomerID: sdkkonnectgo.Pointer(metering.CreateListEventsParamsFilterULIDFieldFilterStr(
                 "01G65Z755AFWAKHE12NY0CQ9FH",
             )),
-            Time: sdkkonnectgo.Pointer(components.CreateListEventsParamsFilterDateTimeFieldFilterListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter(
-                components.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldLTFilter{
+            Time: sdkkonnectgo.Pointer(metering.CreateDateTimeFieldFilterDateTimeFieldLTFilter(
+                metering.DateTimeFieldLTFilter{
                     Lt: types.MustTimeFromString("2022-03-30T07:20:50Z"),
                 },
             )),
-            IngestedAt: sdkkonnectgo.Pointer(components.CreateListEventsParamsFilterIngestedAtDateTimeFieldFilterListEventsParamsFilterDateTimeFieldFilterIngestedAtDateTimeFieldLTEFilter(
-                components.ListEventsParamsFilterDateTimeFieldFilterIngestedAtDateTimeFieldLTEFilter{
+            IngestedAt: sdkkonnectgo.Pointer(metering.CreateListEventsParamsFilterDateTimeFieldFilterDateTimeFieldFilterDateTimeFieldLTEFilter(
+                metering.DateTimeFieldFilterDateTimeFieldLTEFilter{
                     Lte: types.MustTimeFromString("2022-03-30T07:20:50Z"),
                 },
             )),
-            StoredAt: sdkkonnectgo.Pointer(components.CreateListEventsParamsFilterStoredAtDateTimeFieldFilterListEventsParamsFilterDateTimeFieldFilterStoredAtDateTimeFieldEqualsFilter(
-                components.ListEventsParamsFilterDateTimeFieldFilterStoredAtDateTimeFieldEqualsFilter{
+            StoredAt: sdkkonnectgo.Pointer(metering.CreateListEventsParamsFilterMeteringDateTimeFieldFilterListEventsParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter(
+                metering.ListEventsParamsFilterDateTimeFieldFilterDateTimeFieldEqualsFilter{
                     Eq: types.MustTimeFromString("2022-03-30T07:20:50Z"),
                 },
             )),
@@ -108,6 +109,7 @@ import(
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
 	"github.com/Kong/sdk-konnect-go/types"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"github.com/Kong/sdk-konnect-go/models/operations"
 	"log"
 )
@@ -122,7 +124,7 @@ func main() {
     )
 
     res, err := s.MeteringEvents.IngestMeteringEvents(ctx, operations.CreateIngestMeteringEventsRequestBodyMeteringEvent(
-        components.MeteringEvent{
+        metering.MeteringEvent{
             ID: "5c10fade-1c9e-4d6c-8275-c52c36731d3c",
             Source: "service-name",
             Type: "prompt",

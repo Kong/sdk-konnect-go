@@ -50,11 +50,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `ctx`                                                                             | [context.Context](https://pkg.go.dev/context#Context)                             | :heavy_check_mark:                                                                | The context to use for the request.                                               |
-| `page`                                                                            | [*components.PagePaginationQuery](../../models/components/pagepaginationquery.md) | :heavy_minus_sign:                                                                | Determines which page of the collection to retrieve.                              |
-| `opts`                                                                            | [][operations.Option](../../models/operations/option.md)                          | :heavy_minus_sign:                                                                | The options for this request.                                                     |
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `ctx`                                                                         | [context.Context](https://pkg.go.dev/context#Context)                         | :heavy_check_mark:                                                            | The context to use for the request.                                           |
+| `page`                                                                        | [*metering.PagePaginationQuery](../../models/metering/pagepaginationquery.md) | :heavy_minus_sign:                                                            | Determines which page of the collection to retrieve.                          |
+| `opts`                                                                        | [][operations.Option](../../models/operations/option.md)                      | :heavy_minus_sign:                                                            | The options for this request.                                                 |
 
 ### Response
 
@@ -88,6 +88,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"log"
 )
 
@@ -100,52 +101,52 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterBilling.CreateBillingProfile(ctx, components.CreateBillingProfileRequest{
+    res, err := s.OpenMeterBilling.CreateBillingProfile(ctx, metering.CreateBillingProfileRequest{
         Name: "<value>",
         Labels: map[string]string{
             "env": "test",
         },
-        Supplier: components.CreateBillingProfileRequestSupplier{
+        Supplier: metering.CreateBillingProfileRequestSupplier{
             Key: sdkkonnectgo.Pointer("019ae40f-4258-7f15-9491-842f42a7d6ac"),
-            Addresses: &components.CreateBillingProfileRequestAddresses{
-                BillingAddress: components.CreateBillingProfileRequestBillingAddress{
+            Addresses: &metering.CreateBillingProfileRequestAddresses{
+                BillingAddress: metering.CreateBillingProfileRequestBillingAddress{
                     Country: sdkkonnectgo.Pointer("US"),
                 },
             },
         },
-        Workflow: components.CreateBillingProfileRequestWorkflow{
-            Collection: &components.CreateBillingProfileRequestWorkflowCollectionSettings{
-                Alignment: sdkkonnectgo.Pointer(components.CreateCreateBillingProfileRequestAlignmentSubscription(
-                    components.AlignmentBillingWorkflowCollectionAlignmentSubscription{
-                        Type: components.BillingWorkflowCollectionAlignmentSubscriptionAlignmentTypeSubscription,
+        Workflow: metering.CreateBillingProfileRequestWorkflow{
+            Collection: &metering.CreateBillingProfileRequestWorkflowCollectionSettings{
+                Alignment: sdkkonnectgo.Pointer(metering.CreateCreateBillingProfileRequestAlignmentSubscription(
+                    metering.AlignmentBillingWorkflowCollectionAlignmentSubscription{
+                        Type: metering.BillingWorkflowCollectionAlignmentSubscriptionAlignmentTypeSubscription,
                     },
                 )),
                 Interval: sdkkonnectgo.Pointer("P1D"),
             },
-            Invoicing: &components.CreateBillingProfileRequestWorkflowInvoiceSettings{
+            Invoicing: &metering.CreateBillingProfileRequestWorkflowInvoiceSettings{
                 DraftPeriod: sdkkonnectgo.Pointer("P1D"),
             },
-            Payment: sdkkonnectgo.Pointer(components.CreateCreateBillingProfileRequestPaymentChargeAutomatically(
-                components.BillingWorkflowPaymentChargeAutomaticallySettings{
-                    CollectionMethod: components.CollectionMethodChargeAutomatically,
+            Payment: sdkkonnectgo.Pointer(metering.CreateCreateBillingProfileRequestPaymentChargeAutomatically(
+                metering.BillingWorkflowPaymentChargeAutomaticallySettings{
+                    CollectionMethod: metering.CollectionMethodChargeAutomatically,
                 },
             )),
-            Tax: &components.CreateBillingProfileRequestWorkflowTaxSettings{
-                DefaultTaxConfig: &components.CreateBillingProfileRequestDefaultTaxConfig{
-                    TaxCode: &components.CreateBillingProfileRequestTaxCode{
+            Tax: &metering.CreateBillingProfileRequestWorkflowTaxSettings{
+                DefaultTaxConfig: &metering.CreateBillingProfileRequestDefaultTaxConfig{
+                    TaxCode: &metering.CreateBillingProfileRequestTaxCode{
                         ID: "01G65Z755AFWAKHE12NY0CQ9FH",
                     },
                 },
             },
         },
-        Apps: components.CreateBillingProfileRequestApps{
-            Tax: components.CreateBillingProfileRequestTax{
+        Apps: metering.CreateBillingProfileRequestApps{
+            Tax: metering.CreateBillingProfileRequestTax{
                 ID: "01G65Z755AFWAKHE12NY0CQ9FH",
             },
-            Invoicing: components.CreateBillingProfileRequestInvoicing{
+            Invoicing: metering.CreateBillingProfileRequestInvoicing{
                 ID: "01G65Z755AFWAKHE12NY0CQ9FH",
             },
-            Payment: components.CreateBillingProfileRequestAppsPayment{
+            Payment: metering.CreateBillingProfileRequestMeteringPayment{
                 ID: "01G65Z755AFWAKHE12NY0CQ9FH",
             },
         },
@@ -162,11 +163,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                            | :heavy_check_mark:                                                                               | The context to use for the request.                                                              |
-| `request`                                                                                        | [components.CreateBillingProfileRequest](../../models/components/createbillingprofilerequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-| `opts`                                                                                           | [][operations.Option](../../models/operations/option.md)                                         | :heavy_minus_sign:                                                                               | The options for this request.                                                                    |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |
+| `request`                                                                                    | [metering.CreateBillingProfileRequest](../../models/metering/createbillingprofilerequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `opts`                                                                                       | [][operations.Option](../../models/operations/option.md)                                     | :heavy_minus_sign:                                                                           | The options for this request.                                                                |
 
 ### Response
 
@@ -253,6 +254,7 @@ import(
 	"context"
 	"github.com/Kong/sdk-konnect-go/models/components"
 	sdkkonnectgo "github.com/Kong/sdk-konnect-go"
+	"github.com/Kong/sdk-konnect-go/models/metering"
 	"log"
 )
 
@@ -265,39 +267,39 @@ func main() {
         }),
     )
 
-    res, err := s.OpenMeterBilling.UpdateBillingProfile(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", components.UpsertBillingProfileRequest{
+    res, err := s.OpenMeterBilling.UpdateBillingProfile(ctx, "01G65Z755AFWAKHE12NY0CQ9FH", metering.UpsertBillingProfileRequest{
         Name: "<value>",
         Labels: map[string]string{
             "env": "test",
         },
-        Supplier: components.UpsertBillingProfileRequestSupplier{
+        Supplier: metering.UpsertBillingProfileRequestSupplier{
             Key: sdkkonnectgo.Pointer("019ae40f-4258-7f15-9491-842f42a7d6ac"),
-            Addresses: &components.UpsertBillingProfileRequestAddresses{
-                BillingAddress: components.UpsertBillingProfileRequestBillingAddress{
+            Addresses: &metering.UpsertBillingProfileRequestAddresses{
+                BillingAddress: metering.UpsertBillingProfileRequestBillingAddress{
                     Country: sdkkonnectgo.Pointer("US"),
                 },
             },
         },
-        Workflow: components.UpsertBillingProfileRequestWorkflow{
-            Collection: &components.UpsertBillingProfileRequestWorkflowCollectionSettings{
-                Alignment: sdkkonnectgo.Pointer(components.CreateUpsertBillingProfileRequestAlignmentSubscription(
-                    components.UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription{
-                        Type: components.BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestTypeSubscription,
+        Workflow: metering.UpsertBillingProfileRequestWorkflow{
+            Collection: &metering.UpsertBillingProfileRequestWorkflowCollectionSettings{
+                Alignment: sdkkonnectgo.Pointer(metering.CreateUpsertBillingProfileRequestAlignmentSubscription(
+                    metering.UpsertBillingProfileRequestAlignmentBillingWorkflowCollectionAlignmentSubscription{
+                        Type: metering.BillingWorkflowCollectionAlignmentSubscriptionAlignmentUpsertBillingProfileRequestTypeSubscription,
                     },
                 )),
                 Interval: sdkkonnectgo.Pointer("P1D"),
             },
-            Invoicing: &components.UpsertBillingProfileRequestWorkflowInvoiceSettings{
+            Invoicing: &metering.UpsertBillingProfileRequestWorkflowInvoiceSettings{
                 DraftPeriod: sdkkonnectgo.Pointer("P1D"),
             },
-            Payment: sdkkonnectgo.Pointer(components.CreateUpsertBillingProfileRequestPaymentChargeAutomatically(
-                components.BillingWorkflowPaymentChargeAutomaticallySettings{
-                    CollectionMethod: components.CollectionMethodChargeAutomatically,
+            Payment: sdkkonnectgo.Pointer(metering.CreateUpsertBillingProfileRequestPaymentChargeAutomatically(
+                metering.BillingWorkflowPaymentChargeAutomaticallySettings{
+                    CollectionMethod: metering.CollectionMethodChargeAutomatically,
                 },
             )),
-            Tax: &components.UpsertBillingProfileRequestWorkflowTaxSettings{
-                DefaultTaxConfig: &components.UpsertBillingProfileRequestDefaultTaxConfig{
-                    TaxCode: &components.UpsertBillingProfileRequestTaxCode{
+            Tax: &metering.UpsertBillingProfileRequestWorkflowTaxSettings{
+                DefaultTaxConfig: &metering.UpsertBillingProfileRequestDefaultTaxConfig{
+                    TaxCode: &metering.UpsertBillingProfileRequestTaxCode{
                         ID: "01G65Z755AFWAKHE12NY0CQ9FH",
                     },
                 },
@@ -316,12 +318,12 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      | Example                                                                                          |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                            | :heavy_check_mark:                                                                               | The context to use for the request.                                                              |                                                                                                  |
-| `id`                                                                                             | `string`                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              | 01G65Z755AFWAKHE12NY0CQ9FH                                                                       |
-| `upsertBillingProfileRequest`                                                                    | [components.UpsertBillingProfileRequest](../../models/components/upsertbillingprofilerequest.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |                                                                                                  |
-| `opts`                                                                                           | [][operations.Option](../../models/operations/option.md)                                         | :heavy_minus_sign:                                                                               | The options for this request.                                                                    |                                                                                                  |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  | Example                                                                                      |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                        | :heavy_check_mark:                                                                           | The context to use for the request.                                                          |                                                                                              |
+| `id`                                                                                         | `string`                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          | 01G65Z755AFWAKHE12NY0CQ9FH                                                                   |
+| `upsertBillingProfileRequest`                                                                | [metering.UpsertBillingProfileRequest](../../models/metering/upsertbillingprofilerequest.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |                                                                                              |
+| `opts`                                                                                       | [][operations.Option](../../models/operations/option.md)                                     | :heavy_minus_sign:                                                                           | The options for this request.                                                                |                                                                                              |
 
 ### Response
 
