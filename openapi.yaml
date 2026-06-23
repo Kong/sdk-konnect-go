@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Konnect API - Go SDK
-  version: 3.14.0
+  version: 3.15.0
   description: The Konnect platform API
   contact:
     name: Kong Inc
@@ -5540,7 +5540,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Certificate'
+              $ref: '#/components/schemas/CertificateRequest'
       responses:
         '201':
           description: Successfully created Certificate
@@ -5596,7 +5596,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Certificate'
+              $ref: '#/components/schemas/CertificateRequest'
       responses:
         '200':
           description: Successfully upserted Certificate
@@ -19983,10 +19983,13 @@ components:
           description: The name of the control plane.
           type: string
           example: Test Control Plane
+          maxLength: 256
+          minLength: 2
         description:
           description: The description of the control plane in Konnect.
           type: string
           example: A test control plane for exploration.
+          maxLength: 2048
           nullable: false
         cluster_type:
           description: The ClusterType value of the cluster associated with the Control Plane.
@@ -20029,10 +20032,13 @@ components:
           description: The name of the control plane.
           type: string
           example: Test Control Plane
+          maxLength: 256
+          minLength: 2
         description:
           description: The description of the control plane in Konnect.
           type: string
           example: A test control plane for exploration.
+          maxLength: 2048
           nullable: false
         auth_type:
           description: The auth type value of the cluster associated with the Runtime Group.
@@ -20265,12 +20271,17 @@ components:
         host:
           description: Hostname of the proxy URL.
           type: string
+          maxLength: 120
+          minLength: 1
         port:
           description: Port of the proxy URL.
           type: integer
+          minimum: 1
         protocol:
           description: Protocol of the proxy URL.
           type: string
+          maxLength: 32
+          minLength: 1
       example:
         host: example.com
         port: 443
@@ -20291,6 +20302,7 @@ components:
         - host: example.com
           port: 443
           protocol: https
+      maxItems: 5
       title: ProxyURLs
     ControlPlaneFilterParameters:
       type: object
@@ -35172,16 +35184,6 @@ components:
           minLength: 1
       required:
         - name
-    SchemaValidationType:
-      description: |
-        How to validate the schema and parse the record.
-        * confluent_schema_registry - validates against confluent schema registry.
-        * json - simple JSON parsing without the schema.
-      type: string
-      enum:
-        - confluent_schema_registry
-        - json
-      x-speakeasy-unknown-values: allow
     SchemaRegistryCreate:
       description: The typed schema of the schema registry to create it.
       discriminator:
@@ -36285,9 +36287,6 @@ components:
           - name: record.headers
             type: object
             description: An associative array of header key value pairs.
-          - name: record.value.content
-            type: object
-            description: The content of the record value.
     EventGatewayDecryptPolicy:
       description: Decrypts Kafka records or keys using AES_256_GCM. Keys are therefore 256 bits long.
       type: object
@@ -37096,35 +37095,9 @@ components:
         labels:
           $ref: '#/components/schemas/Labels'
         config:
-          description: The configuration of the schema validation policy.
+          description: The configuration of the policy.
           type: object
-          properties:
-            type:
-              $ref: '#/components/schemas/SchemaValidationType'
-            schema_registry:
-              $ref: '#/components/schemas/SchemaRegistryReference'
-            failure_mode:
-              $ref: '#/components/schemas/ConsumeFailureMode'
-            validate_key:
-              description: |-
-                If true, validate the record key.
-
-                **Requires a minimum runtime version of `1.2`**.
-              type: boolean
-              x-min-runtime-version: '1.2'
-            validate_value:
-              description: |-
-                If true, validate the record value.
-
-                **Requires a minimum runtime version of `1.2`**.
-              type: boolean
-              x-min-runtime-version: '1.2'
-            key_validation_action:
-              $ref: '#/components/schemas/ConsumeKeyValidationAction'
-            value_validation_action:
-              $ref: '#/components/schemas/ConsumeValueValidationAction'
-          required:
-            - type
+          $ref: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicyConfig'
         condition:
           description: A string containing the boolean expression that determines whether the policy is applied.
           type: string
@@ -37165,6 +37138,78 @@ components:
         - type
         - config
       title: Schema Validation
+    EventGatewayConsumeSchemaValidationPolicyConfig:
+      description: The configuration of the consume schema validation policy.
+      discriminator:
+        propertyName: type
+        mapping:
+          confluent_schema_registry: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfig'
+          json: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicyJsonConfig'
+      oneOf:
+        - $ref: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfig'
+        - $ref: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicyJsonConfig'
+    EventGatewayConsumeSchemaValidationPolicyJsonConfig:
+      description: The configuration of the consume schema validation policy when using JSON parsing without schema.
+      type: object
+      properties:
+        schema_registry:
+          $ref: '#/components/schemas/SchemaRegistryReference'
+        failure_mode:
+          $ref: '#/components/schemas/ConsumeFailureMode'
+        validate_key:
+          description: |-
+            If true, validate the record key.
+
+            **Requires a minimum runtime version of `1.2`**.
+          type: boolean
+          x-min-runtime-version: '1.2'
+        validate_value:
+          description: |-
+            If true, validate the record value.
+
+            **Requires a minimum runtime version of `1.2`**.
+          type: boolean
+          x-min-runtime-version: '1.2'
+        key_validation_action:
+          $ref: '#/components/schemas/ConsumeKeyValidationAction'
+        value_validation_action:
+          $ref: '#/components/schemas/ConsumeValueValidationAction'
+        type:
+          type: string
+          const: json
+      required:
+        - type
+    EventGatewayConsumeSchemaValidationPolicySchemaRegistryConfig:
+      description: The configuration of the consume schema validation policy when using a schema registry.
+      type: object
+      properties:
+        schema_registry:
+          $ref: '#/components/schemas/SchemaRegistryReference'
+        failure_mode:
+          $ref: '#/components/schemas/ConsumeFailureMode'
+        validate_key:
+          description: |-
+            If true, validate the record key.
+
+            **Requires a minimum runtime version of `1.2`**.
+          type: boolean
+          x-min-runtime-version: '1.2'
+        validate_value:
+          description: |-
+            If true, validate the record value.
+
+            **Requires a minimum runtime version of `1.2`**.
+          type: boolean
+          x-min-runtime-version: '1.2'
+        key_validation_action:
+          $ref: '#/components/schemas/ConsumeKeyValidationAction'
+        value_validation_action:
+          $ref: '#/components/schemas/ConsumeValueValidationAction'
+        type:
+          type: string
+          const: confluent_schema_registry
+      required:
+        - type
     EventGatewayProduceSchemaValidationPolicy:
       description: A policy that validates produce messages against a schema registry.
       type: object
@@ -37896,7 +37941,7 @@ components:
           description: The namespace-visible topic name this alias resolves to.
           type: string
           minLength: 1
-        match:
+        condition:
           description: |
             CEL expression evaluated against the connection's auth context.
             If omitted or empty, the alias is active for all connections.
@@ -51756,6 +51801,92 @@ components:
       required:
         - name
         - prefix
+    CertificateRequest:
+      description: 'A certificate object represents a public certificate, and can be optionally paired with the corresponding private key. These objects are used by Kong to handle SSL/TLS termination for encrypted requests, or for use as a trusted CA store when validating peer certificate of client/service. Certificates are optionally associated with SNI objects to tie a cert/key pair to one or more hostnames. If intermediate certificates are required in addition to the main certificate, they should be concatenated together into one string according to the following order: main certificate on the top, followed by any intermediates.'
+      example:
+        cert: |-
+          -----BEGIN CERTIFICATE-----
+          certificate-content
+          -----END CERTIFICATE-----
+        id: b2f34145-0343-41a4-9602-4c69dec2f269
+        key: |-
+          -----BEGIN PRIVATE KEY-----
+          private-key-content
+          -----END PRIVATE KEY-----
+      allOf:
+        - additionalProperties: false
+          properties:
+            cert:
+              description: 'PEM-encoded public certificate chain of the SSL key pair. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).'
+              type: string
+              x-referenceable: true
+            cert_alt:
+              description: 'PEM-encoded public certificate chain of the alternate SSL key pair. This should only be set if you have both RSA and ECDSA types of certificate available and would like Kong to prefer serving using ECDSA certs when client advertises support for it. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).'
+              type: string
+              nullable: true
+              x-referenceable: true
+            created_at:
+              description: Unix epoch when the resource was created.
+              type: integer
+              nullable: true
+            description:
+              description: 'User-defined entity description. Konnect only field, not synced to the Gateway.'
+              type: string
+              nullable: true
+            id:
+              description: A string representing a UUID (universally unique identifier).
+              type: string
+              nullable: true
+            key:
+              description: 'PEM-encoded private key of the SSL key pair. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).'
+              type: string
+              x-encrypted: true
+              x-referenceable: true
+            key_alt:
+              description: 'PEM-encoded private key of the alternate SSL key pair. This should only be set if you have both RSA and ECDSA types of certificate available and would like Kong to prefer serving using ECDSA certs when client advertises support for it. This field is _referenceable_, which means it can be securely stored as a [secret](/gateway/latest/plan-and-deploy/security/secrets-management/getting-started) in a vault. References must follow a [specific format](/gateway/latest/plan-and-deploy/security/secrets-management/reference-format).'
+              type: string
+              nullable: true
+              x-encrypted: true
+              x-referenceable: true
+            managed_by:
+              description: 'Arbitrary JSON data for client responsible for managing the entity. Konnect only field, not synced to the Gateway.'
+              type: object
+              additionalProperties: true
+              nullable: true
+            snis:
+              type: array
+              items:
+                description: 'A string representing a wildcard host name, such as *.example.com.'
+                type: string
+              nullable: true
+            tags:
+              description: An optional set of strings associated with the Certificate for grouping and filtering.
+              type: array
+              items:
+                description: A string representing a tag.
+                type: string
+              nullable: true
+            updated_at:
+              description: Unix epoch when the resource was last updated.
+              type: integer
+              nullable: true
+            vault:
+              description: 'Shorthand that expands into cert and key; when both vault and cert/key are provided, the vault expansion takes precedence.'
+              type: string
+              nullable: true
+              writeOnly: true
+            vault_alt:
+              description: 'Shorthand that expands into cert_alt and key_alt; when both vault_alt and cert_alt/key_alt are provided, the vault_alt expansion takes precedence.'
+              type: string
+              nullable: true
+              writeOnly: true
+          type: object
+        - anyOf:
+            - required:
+                - vault
+            - required:
+                - cert
+                - key
     KonnectCPLegacyBaseError:
       description: standard error
       type: object
@@ -52893,6 +53024,10 @@ components:
                 readOnly: true
               labels:
                 $ref: '#/components/schemas/LabelsUpdate'
+              notifications_developer_pii_visibility_enabled:
+                description: 'When enabled, portal registration notifications include the registering developer''s identifying information (such as name and email).'
+                type: boolean
+                default: false
             additionalProperties: false
             required:
               - name
@@ -52981,6 +53116,10 @@ components:
                 readOnly: true
               labels:
                 $ref: '#/components/schemas/LabelsUpdate'
+              notifications_developer_pii_visibility_enabled:
+                description: 'When enabled, portal registration notifications include the registering developer''s identifying information (such as name and email).'
+                type: boolean
+                default: false
             additionalProperties: false
             title: Portal
     UpdateDeveloper:
@@ -56430,6 +56569,10 @@ components:
                       readOnly: true
                     labels:
                       $ref: '#/components/schemas/Labels'
+                    notifications_developer_pii_visibility_enabled:
+                      description: 'When enabled, portal registration notifications include the registering developer''s identifying information (such as name and email).'
+                      type: boolean
+                      default: false
                   required:
                     - id
                     - name
@@ -56536,6 +56679,10 @@ components:
                 readOnly: true
               labels:
                 $ref: '#/components/schemas/Labels'
+              notifications_developer_pii_visibility_enabled:
+                description: 'When enabled, portal registration notifications include the registering developer''s identifying information (such as name and email).'
+                type: boolean
+                default: false
             additionalProperties: false
             required:
               - id
@@ -57462,7 +57609,7 @@ components:
               page:
                 type: object
                 properties:
-                  total:
+                  total_count:
                     type: integer
     list-nodes:
       description: Example response
@@ -57504,7 +57651,7 @@ components:
               page:
                 type: object
                 properties:
-                  total:
+                  total_count:
                     type: integer
                   next:
                     type: string
@@ -57529,7 +57676,7 @@ components:
               page:
                 type: object
                 properties:
-                  total:
+                  total_count:
                     type: integer
     get-node:
       description: Example response
@@ -57597,7 +57744,7 @@ components:
               page:
                 type: object
                 properties:
-                  total:
+                  total_count:
                     type: integer
     plugin-schemas:
       description: A response for a single custom plugin schema.
