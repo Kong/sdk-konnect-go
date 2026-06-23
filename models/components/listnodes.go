@@ -97,15 +97,15 @@ func (l *ListNodesItems) GetCompatibilityStatus() *CompatibilityStatus {
 }
 
 type ListNodesPage struct {
-	Total *int64  `json:"total,omitempty"`
-	Next  *string `json:"next,omitempty"`
+	TotalCount *int64  `json:"total_count,omitempty"`
+	Next       *string `json:"next,omitempty"`
 }
 
-func (l *ListNodesPage) GetTotal() *int64 {
+func (l *ListNodesPage) GetTotalCount() *int64 {
 	if l == nil {
 		return nil
 	}
-	return l.Total
+	return l.TotalCount
 }
 
 func (l *ListNodesPage) GetNext() *string {

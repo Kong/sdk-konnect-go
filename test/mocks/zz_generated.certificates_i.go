@@ -40,12 +40,12 @@ func (_m *MockCertificatesSDK) EXPECT() *MockCertificatesSDK_Expecter {
 }
 
 // CreateCertificate provides a mock function for the type MockCertificatesSDK
-func (_mock *MockCertificatesSDK) CreateCertificate(ctx context.Context, controlPlaneID string, certificate components.Certificate, opts ...operations.Option) (*operations.CreateCertificateResponse, error) {
+func (_mock *MockCertificatesSDK) CreateCertificate(ctx context.Context, controlPlaneID string, certificateRequest components.CertificateRequest, opts ...operations.Option) (*operations.CreateCertificateResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, controlPlaneID, certificate, opts)
+		tmpRet = _mock.Called(ctx, controlPlaneID, certificateRequest, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, controlPlaneID, certificate)
+		tmpRet = _mock.Called(ctx, controlPlaneID, certificateRequest)
 	}
 	ret := tmpRet
 
@@ -55,18 +55,18 @@ func (_mock *MockCertificatesSDK) CreateCertificate(ctx context.Context, control
 
 	var r0 *operations.CreateCertificateResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.Certificate, ...operations.Option) (*operations.CreateCertificateResponse, error)); ok {
-		return returnFunc(ctx, controlPlaneID, certificate, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CertificateRequest, ...operations.Option) (*operations.CreateCertificateResponse, error)); ok {
+		return returnFunc(ctx, controlPlaneID, certificateRequest, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.Certificate, ...operations.Option) *operations.CreateCertificateResponse); ok {
-		r0 = returnFunc(ctx, controlPlaneID, certificate, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, components.CertificateRequest, ...operations.Option) *operations.CreateCertificateResponse); ok {
+		r0 = returnFunc(ctx, controlPlaneID, certificateRequest, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.CreateCertificateResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.Certificate, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, controlPlaneID, certificate, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, components.CertificateRequest, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, controlPlaneID, certificateRequest, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -81,14 +81,14 @@ type MockCertificatesSDK_CreateCertificate_Call struct {
 // CreateCertificate is a helper method to define mock.On call
 //   - ctx context.Context
 //   - controlPlaneID string
-//   - certificate components.Certificate
+//   - certificateRequest components.CertificateRequest
 //   - opts ...operations.Option
-func (_e *MockCertificatesSDK_Expecter) CreateCertificate(ctx interface{}, controlPlaneID interface{}, certificate interface{}, opts ...interface{}) *MockCertificatesSDK_CreateCertificate_Call {
+func (_e *MockCertificatesSDK_Expecter) CreateCertificate(ctx interface{}, controlPlaneID interface{}, certificateRequest interface{}, opts ...interface{}) *MockCertificatesSDK_CreateCertificate_Call {
 	return &MockCertificatesSDK_CreateCertificate_Call{Call: _e.mock.On("CreateCertificate",
-		append([]interface{}{ctx, controlPlaneID, certificate}, opts...)...)}
+		append([]interface{}{ctx, controlPlaneID, certificateRequest}, opts...)...)}
 }
 
-func (_c *MockCertificatesSDK_CreateCertificate_Call) Run(run func(ctx context.Context, controlPlaneID string, certificate components.Certificate, opts ...operations.Option)) *MockCertificatesSDK_CreateCertificate_Call {
+func (_c *MockCertificatesSDK_CreateCertificate_Call) Run(run func(ctx context.Context, controlPlaneID string, certificateRequest components.CertificateRequest, opts ...operations.Option)) *MockCertificatesSDK_CreateCertificate_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -98,9 +98,9 @@ func (_c *MockCertificatesSDK_CreateCertificate_Call) Run(run func(ctx context.C
 		if args[1] != nil {
 			arg1 = args[1].(string)
 		}
-		var arg2 components.Certificate
+		var arg2 components.CertificateRequest
 		if args[2] != nil {
-			arg2 = args[2].(components.Certificate)
+			arg2 = args[2].(components.CertificateRequest)
 		}
 		var arg3 []operations.Option
 		var variadicArgs []operations.Option
@@ -123,7 +123,7 @@ func (_c *MockCertificatesSDK_CreateCertificate_Call) Return(createCertificateRe
 	return _c
 }
 
-func (_c *MockCertificatesSDK_CreateCertificate_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, certificate components.Certificate, opts ...operations.Option) (*operations.CreateCertificateResponse, error)) *MockCertificatesSDK_CreateCertificate_Call {
+func (_c *MockCertificatesSDK_CreateCertificate_Call) RunAndReturn(run func(ctx context.Context, controlPlaneID string, certificateRequest components.CertificateRequest, opts ...operations.Option) (*operations.CreateCertificateResponse, error)) *MockCertificatesSDK_CreateCertificate_Call {
 	_c.Call.Return(run)
 	return _c
 }

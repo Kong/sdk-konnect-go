@@ -16,7 +16,7 @@ type CertificatesSDK interface {
 	ListCertificate(ctx context.Context, request operations.ListCertificateRequest, opts ...operations.Option) (*operations.ListCertificateResponse, error)
 	// CreateCertificate - Create a new Certificate
 	// Create a new Certificate
-	CreateCertificate(ctx context.Context, controlPlaneID string, certificate components.Certificate, opts ...operations.Option) (*operations.CreateCertificateResponse, error)
+	CreateCertificate(ctx context.Context, controlPlaneID string, certificateRequest components.CertificateRequest, opts ...operations.Option) (*operations.CreateCertificateResponse, error)
 	// DeleteCertificate - Delete a Certificate
 	// Delete a Certificate
 	DeleteCertificate(ctx context.Context, controlPlaneID string, certificateID string, opts ...operations.Option) (*operations.DeleteCertificateResponse, error)

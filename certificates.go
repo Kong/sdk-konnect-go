@@ -267,10 +267,10 @@ func (s *Certificates) ListCertificate(ctx context.Context, request operations.L
 
 // CreateCertificate - Create a new Certificate
 // Create a new Certificate
-func (s *Certificates) CreateCertificate(ctx context.Context, controlPlaneID string, certificate components.Certificate, opts ...operations.Option) (*operations.CreateCertificateResponse, error) {
+func (s *Certificates) CreateCertificate(ctx context.Context, controlPlaneID string, certificateRequest components.CertificateRequest, opts ...operations.Option) (*operations.CreateCertificateResponse, error) {
 	request := operations.CreateCertificateRequest{
-		ControlPlaneID: controlPlaneID,
-		Certificate:    certificate,
+		ControlPlaneID:     controlPlaneID,
+		CertificateRequest: certificateRequest,
 	}
 
 	o := operations.Options{}
@@ -305,7 +305,7 @@ func (s *Certificates) CreateCertificate(ctx context.Context, controlPlaneID str
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Certificate", "json", `request:"mediaType=application/json"`)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CertificateRequest", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
 	}
@@ -983,7 +983,7 @@ func (s *Certificates) UpsertCertificate(ctx context.Context, request operations
 		OAuth2Scopes:     nil,
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Certificate", "json", `request:"mediaType=application/json"`)
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "CertificateRequest", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
 	}
