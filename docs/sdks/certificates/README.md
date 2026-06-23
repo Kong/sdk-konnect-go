@@ -102,11 +102,13 @@ func main() {
         }),
     )
 
-    res, err := s.Certificates.CreateCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Certificate{
-        Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
-        ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
-        Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
-    })
+    res, err := s.Certificates.CreateCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateCertificateRequestCertificateRequest2(
+        components.CertificateRequest2{
+            Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
+            ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
+            Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
+        },
+    ))
     if err != nil {
         log.Fatal(err)
     }
@@ -137,11 +139,13 @@ func main() {
         }),
     )
 
-    res, err := s.Certificates.CreateCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Certificate{
-        Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
-        ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
-        Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
-    })
+    res, err := s.Certificates.CreateCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateCertificateRequestCertificateRequest2(
+        components.CertificateRequest2{
+            Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
+            ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
+            Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
+        },
+    ))
     if err != nil {
         log.Fatal(err)
     }
@@ -172,11 +176,13 @@ func main() {
         }),
     )
 
-    res, err := s.Certificates.CreateCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.Certificate{
-        Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
-        ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
-        Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
-    })
+    res, err := s.Certificates.CreateCertificate(ctx, "9524ec7d-36d9-465d-a8c5-83a3c9390458", components.CreateCertificateRequestCertificateRequest2(
+        components.CertificateRequest2{
+            Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
+            ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
+            Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
+        },
+    ))
     if err != nil {
         log.Fatal(err)
     }
@@ -192,7 +198,7 @@ func main() {
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                                                                                                                                         | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                                                                         | :heavy_check_mark:                                                                                                                                                                                                            | The context to use for the request.                                                                                                                                                                                           |                                                                                                                                                                                                                               |
 | `controlPlaneID`                                                                                                                                                                                                              | `string`                                                                                                                                                                                                                      | :heavy_check_mark:                                                                                                                                                                                                            | The UUID of your control plane. This variable is available in the Konnect manager.                                                                                                                                            | 9524ec7d-36d9-465d-a8c5-83a3c9390458                                                                                                                                                                                          |
-| `certificate`                                                                                                                                                                                                                 | [components.Certificate](../../models/components/certificate.md)                                                                                                                                                              | :heavy_check_mark:                                                                                                                                                                                                            | Description of the new Certificate for creation                                                                                                                                                                               | {<br/>"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",<br/>"id": "b2f34145-0343-41a4-9602-4c69dec2f269",<br/>"key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----"<br/>} |
+| `certificateRequest`                                                                                                                                                                                                          | [components.CertificateRequest](../../models/components/certificaterequest.md)                                                                                                                                                | :heavy_check_mark:                                                                                                                                                                                                            | Description of the new Certificate for creation                                                                                                                                                                               | {<br/>"cert": "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",<br/>"id": "b2f34145-0343-41a4-9602-4c69dec2f269",<br/>"key": "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----"<br/>} |
 | `opts`                                                                                                                                                                                                                        | [][operations.Option](../../models/operations/option.md)                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                                                                            | The options for this request.                                                                                                                                                                                                 |                                                                                                                                                                                                                               |
 
 ### Response
@@ -348,11 +354,13 @@ func main() {
     res, err := s.Certificates.UpsertCertificate(ctx, operations.UpsertCertificateRequest{
         CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        Certificate: components.Certificate{
-            Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
-            ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
-            Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
-        },
+        CertificateRequest: components.CreateCertificateRequestCertificateRequest2(
+            components.CertificateRequest2{
+                Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
+                ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
+                Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
+            },
+        ),
     })
     if err != nil {
         log.Fatal(err)
@@ -388,11 +396,13 @@ func main() {
     res, err := s.Certificates.UpsertCertificate(ctx, operations.UpsertCertificateRequest{
         CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        Certificate: components.Certificate{
-            Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
-            ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
-            Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
-        },
+        CertificateRequest: components.CreateCertificateRequestCertificateRequest2(
+            components.CertificateRequest2{
+                Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
+                ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
+                Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
+            },
+        ),
     })
     if err != nil {
         log.Fatal(err)
@@ -428,11 +438,13 @@ func main() {
     res, err := s.Certificates.UpsertCertificate(ctx, operations.UpsertCertificateRequest{
         CertificateID: "ddf3cdaa-3329-4961-822a-ce6dbd38eff7",
         ControlPlaneID: "9524ec7d-36d9-465d-a8c5-83a3c9390458",
-        Certificate: components.Certificate{
-            Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
-            ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
-            Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
-        },
+        CertificateRequest: components.CreateCertificateRequestCertificateRequest2(
+            components.CertificateRequest2{
+                Cert: "-----BEGIN CERTIFICATE-----\ncertificate-content\n-----END CERTIFICATE-----",
+                ID: sdkkonnectgo.Pointer("b2f34145-0343-41a4-9602-4c69dec2f269"),
+                Key: "-----BEGIN PRIVATE KEY-----\nprivate-key-content\n-----END PRIVATE KEY-----",
+            },
+        ),
     })
     if err != nil {
         log.Fatal(err)

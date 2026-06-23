@@ -22,7 +22,7 @@ type VirtualClusterTopicAlias struct {
 	// CEL expression evaluated against the connection's auth context.
 	// If omitted or empty, the alias is active for all connections.
 	//
-	Match *string `default:"" json:"match"`
+	Condition *string `default:"" json:"condition"`
 	// How to handle conflicts where an alias shadows a physical topic.
 	// * warn - activate the alias but log a warning and set the conflict metric to 1.
 	// * ignore - activate the alias silently.
@@ -55,11 +55,11 @@ func (v *VirtualClusterTopicAlias) GetTopic() string {
 	return v.Topic
 }
 
-func (v *VirtualClusterTopicAlias) GetMatch() *string {
+func (v *VirtualClusterTopicAlias) GetCondition() *string {
 	if v == nil {
 		return nil
 	}
-	return v.Match
+	return v.Condition
 }
 
 func (v *VirtualClusterTopicAlias) GetConflict() *VirtualClusterTopicAliasConflict {

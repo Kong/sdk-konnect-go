@@ -13,7 +13,7 @@ type UpsertCertificateRequest struct {
 	// The UUID of your control plane. This variable is available in the Konnect manager.
 	ControlPlaneID string `pathParam:"style=simple,explode=false,name=controlPlaneId"`
 	// Description of the Certificate
-	Certificate components.Certificate `request:"mediaType=application/json"`
+	CertificateRequest components.CertificateRequest `request:"mediaType=application/json"`
 }
 
 func (u *UpsertCertificateRequest) GetCertificateID() string {
@@ -30,11 +30,11 @@ func (u *UpsertCertificateRequest) GetControlPlaneID() string {
 	return u.ControlPlaneID
 }
 
-func (u *UpsertCertificateRequest) GetCertificate() components.Certificate {
+func (u *UpsertCertificateRequest) GetCertificateRequest() components.CertificateRequest {
 	if u == nil {
-		return components.Certificate{}
+		return components.CertificateRequest{}
 	}
-	return u.Certificate
+	return u.CertificateRequest
 }
 
 type UpsertCertificateResponse struct {
