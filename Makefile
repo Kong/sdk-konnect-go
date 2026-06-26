@@ -72,7 +72,13 @@ ifacemaker: yq
 SPEAKEASY_VERSION = $(shell $(YQ) -p toml -o yaml '.tools["github:speakeasy-api/speakeasy"].version' < $(MISE_FILE))
 .PHONY: speakeasy
 speakeasy: yq
-	@command -v speakeasy >/dev/null || (echo "speakeasy $(SPEAKEASY_VERSION) not found. Install it with mise or another tool manager before running this target." && exit 1)
+	@if ! command -v speakeasy >/dev/null; then \
+		if ! command -v mise >/dev/null; then \
+			echo "speakeasy $(SPEAKEASY_VERSION) not found. Install it with mise or another tool manager before running this target."; \
+			exit 1; \
+		fi; \
+		mise install -q github:speakeasy-api/speakeasy@$(SPEAKEASY_VERSION); \
+	fi
 
 # ------------------------------------------------------------------------------
 # Code generation
