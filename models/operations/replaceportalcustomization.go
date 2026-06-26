@@ -9,8 +9,8 @@ import (
 
 type ReplacePortalCustomizationRequest struct {
 	// ID of the portal.
-	PortalID            string                          `pathParam:"style=simple,explode=false,name=portalId"`
-	PortalCustomization *components.PortalCustomization `request:"mediaType=application/json"`
+	PortalID              string                            `pathParam:"style=simple,explode=false,name=portalId"`
+	PortalCustomizationV3 *components.PortalCustomizationV3 `request:"mediaType=application/json"`
 }
 
 func (r *ReplacePortalCustomizationRequest) GetPortalID() string {
@@ -20,11 +20,11 @@ func (r *ReplacePortalCustomizationRequest) GetPortalID() string {
 	return r.PortalID
 }
 
-func (r *ReplacePortalCustomizationRequest) GetPortalCustomization() *components.PortalCustomization {
+func (r *ReplacePortalCustomizationRequest) GetPortalCustomizationV3() *components.PortalCustomizationV3 {
 	if r == nil {
 		return nil
 	}
-	return r.PortalCustomization
+	return r.PortalCustomizationV3
 }
 
 type ReplacePortalCustomizationResponse struct {
@@ -35,7 +35,7 @@ type ReplacePortalCustomizationResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// The current customization options for a portal.
-	PortalCustomization *components.PortalCustomization
+	PortalCustomizationV3 *components.PortalCustomizationV3
 }
 
 func (r *ReplacePortalCustomizationResponse) GetContentType() string {
@@ -59,9 +59,9 @@ func (r *ReplacePortalCustomizationResponse) GetRawResponse() *http.Response {
 	return r.RawResponse
 }
 
-func (r *ReplacePortalCustomizationResponse) GetPortalCustomization() *components.PortalCustomization {
+func (r *ReplacePortalCustomizationResponse) GetPortalCustomizationV3() *components.PortalCustomizationV3 {
 	if r == nil {
 		return nil
 	}
-	return r.PortalCustomization
+	return r.PortalCustomizationV3
 }

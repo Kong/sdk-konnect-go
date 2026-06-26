@@ -4,14 +4,14 @@ package components
 
 // ListMCPServersResponse - A response to listing MCP servers.
 type ListMCPServersResponse struct {
-	Data []MCPServerInfo `json:"data"`
+	Data []MCPServer `json:"data"`
 	// Pagination metadata.
 	Meta CursorMeta `json:"meta"`
 }
 
-func (l *ListMCPServersResponse) GetData() []MCPServerInfo {
+func (l *ListMCPServersResponse) GetData() []MCPServer {
 	if l == nil {
-		return []MCPServerInfo{}
+		return []MCPServer{}
 	}
 	return l.Data
 }

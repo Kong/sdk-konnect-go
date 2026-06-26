@@ -12,133 +12,163 @@ import (
 // CloudGatewaysSDK is a generated interface.
 type CloudGatewaysSDK interface {
 	// CreateAddOn - Create Add-On
-	// Creates a new add-on. Specific add-on types (e.g., managed cache)
-	// are defined by the sub-kind configuration.
+	// Creates a new add-on for a control plane or control plane group. The add-on type is
+	// determined by the `config.kind` field — currently only `managed-cache.v0` is supported,
+	// which provisions a Redis-compatible cache co-located with your data planes. After it's created,
+	// the add-on transitions through `initializing → ready` as it deploys across data plane groups.
 	CreateAddOn(ctx context.Context, request components.CreateAddOnRequest, opts ...operations.Option) (*operations.CreateAddOnResponse, error)
 	// ListAddOns - List Add-Ons
-	// Returns a paginated collection of add-ons for an organization.
+	// Returns a paginated list of add-ons for the organization. Use filter parameters to narrow
+	// results by owner (control plane or control plane group), lifecycle state, or config kind.
 	ListAddOns(ctx context.Context, request operations.ListAddOnsRequest, opts ...operations.Option) (*operations.ListAddOnsResponse, error)
 	// GetAddOn - Get Add-On
-	// Retrieves an add-on by ID.
+	// Retrieves a single add-on by ID, including its current lifecycle state and per data plane group deployment status.
 	GetAddOn(ctx context.Context, addOnID string, opts ...operations.Option) (*operations.GetAddOnResponse, error)
 	// DeleteAddOn - Delete Add-On
-	// Deletes an add-on by ID. The request will be rejected if the managed cache partial is still in use by some plugins.
+	// Deletes an add-on by ID. The request is rejected if any Kong plugins are still referencing
+	// the managed cache add-on — remove those plugin references before deleting.
 	DeleteAddOn(ctx context.Context, addOnID string, opts ...operations.Option) (*operations.DeleteAddOnResponse, error)
 	// UpdateAddOn - Update Add-On
-	// Updates the configuration of an existing add-on.
+	// Updates the configuration of an existing add-on, such as changing the managed cache
+	// capacity tier. Tier upgrades are supported; downgrades are not.
 	UpdateAddOn(ctx context.Context, addOnID string, updateAddOnRequest components.UpdateAddOnRequest, opts ...operations.Option) (*operations.UpdateAddOnResponse, error)
 	// GetAvailabilityJSON - Get Resource Availability JSON
-	// Get Cloud Gateways Availability JSON document for describing cloud provider and region availability, pricing,
-	// gateway version availability, and instance type information.
+	// Returns a public JSON document describing the supported cloud providers, regions, gateway versions, and instance types available for Kong Cloud Gateways. Authentication isn't required — query this endpoint to discover valid inputs for network and configuration requests.
 	GetAvailabilityJSON(ctx context.Context, opts ...operations.Option) (*operations.GetAvailabilityJSONResponse, error)
 	// ListConfigurations - List Configurations
-	// Returns a paginated collection of configurations across control-planes for an organization (restricted by
-	// permitted control-plane reads).
+	// Returns a paginated collection of Cloud Gateway configurations visible to the caller.
+	// Results are scoped to control planes the caller has permission to read.
 	ListConfigurations(ctx context.Context, request operations.ListConfigurationsRequest, opts ...operations.Option) (*operations.ListConfigurationsResponse, error)
 	// CreateConfiguration - Create Configuration
-	// Creates a new configuration for a control-plane (restricted by permitted control-plane permissions for
-	// configurations). This request will replace any existing configuration for the requested control_plane_id and
-	// control_plane_geo by performing a diff. From this diff, new resources detected in the requested configuration
-	// will be added, resources not found in the request configuration but in the previous will be deleted, and
-	// resources found in both will be updated to the requested configuration. Networks referenced in this request that
-	// are in an offline state will automatically initialize (i.e. move to an initializing state).
+	// Creates or replaces the Cloud Gateway configuration for a control plane and geo. The request fully describes
+	// the desired state — Kong diffs it against the current configuration, then adds, removes, or updates data plane
+	// groups to match. Any network referenced in the request that is currently `offline` automatically transitions
+	// to `initializing`.
+	//
+	// Use `kind: dedicated.v0` (default) for dedicated Cloud Gateways — `version`, `cloud_gateway_network_id`, and
+	// `autoscale` are required. Use `kind: serverless.v1` for serverless Cloud Gateways — those three fields must
+	// be omitted.
 	CreateConfiguration(ctx context.Context, request components.CreateConfigurationRequest, opts ...operations.Option) (*operations.CreateConfigurationResponse, error)
 	// GetConfiguration - Get Configuration
-	// Retrieves a configuration by ID (restricted by permitted control-plane read).
+	// Retrieves a single Cloud Gateway configuration by ID, including the current state of each deployed
+	// data plane group. Access is restricted to control planes the caller has permission to read.
 	GetConfiguration(ctx context.Context, configurationID string, opts ...operations.Option) (*operations.GetConfigurationResponse, error)
 	// ListCustomDomains - List Custom Domains
-	// Returns a paginated collection of custom domains across control-planes for an organization (restricted by
-	// permitted control-plane reads).
+	// Returns a paginated list of custom domains across all control planes in the organization,
+	// scoped to control planes you have read access to.
 	ListCustomDomains(ctx context.Context, request operations.ListCustomDomainsRequest, opts ...operations.Option) (*operations.ListCustomDomainsResponse, error)
 	// CreateCustomDomains - Create Custom Domain
-	// Creates a new custom domain for a control-plane (restricted by permitted control-plane associate-custom-domain
-	// action).
+	// Registers a custom domain for a control plane. After creation, Konnect provisions a TLS
+	// certificate and configures SNI routing, transitioning the domain through
+	// `initializing → ready`. To complete setup, configure two CNAME records at your DNS
+	// registrar: one pointing your domain to the Konnect gateway hostname, and one pointing
+	// `_acme-challenge.<your-domain>` to the ACME challenge hostname provided by Konnect.
+	// Use the online-status endpoint to verify both records are correctly configured.
 	CreateCustomDomains(ctx context.Context, request components.CreateCustomDomainRequest, opts ...operations.Option) (*operations.CreateCustomDomainsResponse, error)
 	// GetCustomDomain - Get Custom Domain
-	// Retrieves a custom domain by ID (restricted by permitted control-plane reads).
+	// Retrieves a single custom domain by ID, including its current lifecycle state and any error metadata.
 	GetCustomDomain(ctx context.Context, customDomainID string, opts ...operations.Option) (*operations.GetCustomDomainResponse, error)
 	// DeleteCustomDomain - Delete Custom Domain
-	// Deletes a custom domain by ID (restricted by permitted control-plane reads).
+	// Deletes a custom domain by ID, removing the associated TLS certificate and SNI configuration from the control plane's data planes.
 	DeleteCustomDomain(ctx context.Context, customDomainID string, opts ...operations.Option) (*operations.DeleteCustomDomainResponse, error)
 	// GetCustomDomainOnlineStatus - Get Custom Domain Online Status
-	// Retrieves the CNAME and SSL status of a custom domain.
+	// Checks whether the primary domain CNAME and ACME challenge CNAME records are correctly configured at your DNS registrar. Returns `verified` or `unverified` for each.
 	GetCustomDomainOnlineStatus(ctx context.Context, customDomainID string, opts ...operations.Option) (*operations.GetCustomDomainOnlineStatusResponse, error)
 	// ListDefaultResourceConfigurations - List Default Resource Configurations
-	// Returns a paginated collection of default resource configurations for cloud-gateways, along with
-	// organizationally-defined overrides for those resource configurations.
-	// Resource configurations are settings that are applied to all cloud gateway resources in an organization.
-	// For example, the "data-plane-group-idle-timeout-minutes" resource configuration sets the idle timeout for all data plane groups in an organization.
+	// Returns the platform-default resource configurations for Cloud Gateways, along with any
+	// organization-level overrides. Resource configurations are behavioral settings applied to
+	// Cloud Gateway resources — for example, the idle timeout for data plane groups.
+	// Use this to view the effective settings for your organization.
 	ListDefaultResourceConfigurations(ctx context.Context, pageSize *int64, pageNumber *int64, opts ...operations.Option) (*operations.ListDefaultResourceConfigurationsResponse, error)
 	// ListDefaultResourceQuotas - List Default Resource Quotas
-	// Returns a paginated collection of default resource quotas for cloud-gateways, along with
-	// organizationally-defined overrides for those resource quotas.
+	// Returns the platform-default resource quotas for Cloud Gateways, along with any
+	// organization-level overrides. Use this to view the effective limits for your organization.
 	ListDefaultResourceQuotas(ctx context.Context, pageSize *int64, pageNumber *int64, opts ...operations.Option) (*operations.ListDefaultResourceQuotasResponse, error)
 	// ListNetworks - List Networks
-	// Returns a paginated list of networks.
+	// Returns a paginated list of Cloud Gateway networks visible to the caller. Filter by
+	// `state` to narrow results — for example, poll for `state=ready` to find networks
+	// available for data plane group configurations.
 	ListNetworks(ctx context.Context, request operations.ListNetworksRequest, opts ...operations.Option) (*operations.ListNetworksResponse, error)
 	// CreateNetwork - Create Network
-	// Creates a new network for a given provider account.
+	// Creates a new Cloud Gateway network in the specified provider account and region. Network creation is
+	// asynchronous — the network starts in `initializing` state and transitions to `ready` once provisioned.
 	CreateNetwork(ctx context.Context, request components.CreateNetworkRequest, opts ...operations.Option) (*operations.CreateNetworkResponse, error)
 	// GetNetwork - Get Network
-	// Retrieves a network by ID.
+	// Retrieves a Cloud Gateway network by ID, including its current state and provider metadata.
 	GetNetwork(ctx context.Context, networkID string, opts ...operations.Option) (*operations.GetNetworkResponse, error)
 	// UpdateNetwork - Update Network
-	// Updates a network by ID.
+	// Updates a Cloud Gateway network by ID. You can also rename the network.
 	UpdateNetwork(ctx context.Context, networkID string, patchNetworkRequest components.PatchNetworkRequest, opts ...operations.Option) (*operations.UpdateNetworkResponse, error)
 	// DeleteNetwork - Delete Network
-	// Deletes a network by ID.
+	// Deletes a Cloud Gateway network by ID. The network cannot be referenced by any active configuration before it can be deleted.
 	DeleteNetwork(ctx context.Context, networkID string, opts ...operations.Option) (*operations.DeleteNetworkResponse, error)
 	// ListNetworkConfigurations - List Network Configuration References
-	// Returns a paginated collection of configurations that reference a network.
+	// Returns a paginated list of data plane group configurations that reference a given network.
+	// Use this to determine which control planes are using a network before renaming or deleting it.
 	ListNetworkConfigurations(ctx context.Context, request operations.ListNetworkConfigurationsRequest, opts ...operations.Option) (*operations.ListNetworkConfigurationsResponse, error)
 	// ListPrivateDNS - List Private DNS
-	// Returns a paginated collection of Private DNS for a given network.
+	// Returns a paginated collection of private DNS attachments for a given network.
 	ListPrivateDNS(ctx context.Context, request operations.ListPrivateDNSRequest, opts ...operations.Option) (*operations.ListPrivateDNSResponse, error)
 	// CreatePrivateDNS - Create Private DNS
-	// Creates a new Private DNS for a given network.
+	// Creates a new private DNS attachment for a given network. The attachment type is determined by
+	// `private_dns_attachment_config.kind`. Supported types: `aws-private-hosted-zone-attachment`,
+	// `aws-outbound-resolver`, `gcp-private-hosted-zone-attachment`, `azure-private-hosted-zone-attachment`,
+	// and `azure-outbound-resolver`.
 	CreatePrivateDNS(ctx context.Context, networkID string, createPrivateDNSRequest components.CreatePrivateDNSRequest, opts ...operations.Option) (*operations.CreatePrivateDNSResponse, error)
 	// GetPrivateDNS - Get Private DNS
-	// Retrieves a Private DNS by ID for a given network.
+	// Retrieves a private DNS attachment by ID, including its current state and attachment configuration.
 	GetPrivateDNS(ctx context.Context, networkID string, privateDNSID string, opts ...operations.Option) (*operations.GetPrivateDNSResponse, error)
 	// UpdatePrivateDNS - Update Private DNS
-	// Updates a Private DNS by ID for a given network.
+	// Updates a private DNS attachment by ID. Supports updating the name or DNS resolver configuration
+	// for AWS Outbound Resolver and Azure Outbound Resolver attachment types.
 	UpdatePrivateDNS(ctx context.Context, request operations.UpdatePrivateDNSRequest, opts ...operations.Option) (*operations.UpdatePrivateDNSResponse, error)
 	// DeletePrivateDNS - Delete Private DNS
-	// Deletes a Private DNS by ID for a given network.
+	// Deletes a Private DNS attachment by ID. The attachment must be in a stable state (`ready`
+	// or `error`) before deletion — requests against attachments in a transitional state
+	// (`initializing`, `terminating`) will be rejected.
 	DeletePrivateDNS(ctx context.Context, networkID string, privateDNSID string, opts ...operations.Option) (*operations.DeletePrivateDNSResponse, error)
 	// ListTransitGateways - List Transit Gateways
-	// Returns a paginated collection of transit gateways for a given network.
+	// Returns a paginated collection of transit gateways attached to a given network.
 	ListTransitGateways(ctx context.Context, request operations.ListTransitGatewaysRequest, opts ...operations.Option) (*operations.ListTransitGatewaysResponse, error)
 	// CreateTransitGateway - Create Transit Gateway
-	// Creates a new transit gateway for a given network.
+	// Creates a new transit gateway attachment for a given network. The attachment type is determined by the
+	// `transit_gateway_attachment_config.kind` field. Supported types: `aws-transit-gateway-attachment`,
+	// `aws-vpc-peering-attachment`, `aws-resource-endpoint-attachment`, `azure-vnet-peering-attachment`,
+	// `azure-vhub-peering-attachment`, and `gcp-vpc-peering-attachment`. Creation is asynchronous —
+	// the transit gateway starts in `initializing` state and transitions to `ready` once provisioned.
 	CreateTransitGateway(ctx context.Context, networkID string, createTransitGatewayRequest components.CreateTransitGatewayRequest, opts ...operations.Option) (*operations.CreateTransitGatewayResponse, error)
 	// GetTransitGateway - Get Transit Gateway
-	// Retrieves a transit gateway by ID for a given network.
+	// Retrieves a transit gateway by ID, including its current state and attachment configuration.
 	GetTransitGateway(ctx context.Context, networkID string, transitGatewayID string, opts ...operations.Option) (*operations.GetTransitGatewayResponse, error)
 	// UpdateTransitGateway - Update Transit Gateway
-	// Updates a transit gateway by ID for a given network.
+	// Updates a transit gateway by ID. Supports updating CIDR blocks on an AWS Transit Gateway, or updating
+	// the resource endpoint configuration on an AWS Resource Endpoint gateway.
 	UpdateTransitGateway(ctx context.Context, request operations.UpdateTransitGatewayRequest, opts ...operations.Option) (*operations.UpdateTransitGatewayResponse, error)
 	// DeleteTransitGateway - Delete Transit Gateway
-	// Deletes a transit gateway by ID for a given network.
+	// Deletes a transit gateway by ID. The transit gateway must be in a non-transitional state before deletion.
 	DeleteTransitGateway(ctx context.Context, networkID string, transitGatewayID string, opts ...operations.Option) (*operations.DeleteTransitGatewayResponse, error)
 	// ListProviderAccounts - List Provider Accounts
-	// Returns a a paginated collection of provider accounts for an organization.
+	// Returns a paginated list of provider accounts linked to the organization. Filter by cloud provider to see accounts for a specific CSP.
 	ListProviderAccounts(ctx context.Context, request operations.ListProviderAccountsRequest, opts ...operations.Option) (*operations.ListProviderAccountsResponse, error)
 	// GetProviderAccount - Get Provider Account
-	// Retrieves a provider account by ID.
+	// Retrieves a single provider account by ID, including the associated cloud provider and cloud account ID.
 	GetProviderAccount(ctx context.Context, providerAccountID string, opts ...operations.Option) (*operations.GetProviderAccountResponse, error)
 	// ListResourceConfigurations - List Resource Configurations
-	// Returns a paginated collection of resource configurations for an organization.
-	// Resource configurations are settings that are applied to all cloud gateway resources in an organization.
-	// For example, the "data-plane-group-idle-timeout-minutes" resource configuration sets the idle timeout for all data plane groups in an organization.
+	// Returns organization-specific resource configuration overrides that take precedence over
+	// platform defaults. Each configuration controls a behavioral setting for a specific Cloud
+	// Gateway resource type — for example, `data-plane-group-idle-timeout-minutes` sets how long
+	// a data plane group can remain idle before it scales to zero instances.
 	ListResourceConfigurations(ctx context.Context, pageSize *int64, pageNumber *int64, opts ...operations.Option) (*operations.ListResourceConfigurationsResponse, error)
 	// GetResourceConfiguration - Get Resource Configuration
-	// Retrieves a resource configuration by ID.
+	// Retrieves a single organization-level resource configuration override by ID. Returns the qualifier, override value, and description for the configuration setting.
 	GetResourceConfiguration(ctx context.Context, resourceConfigurationID string, opts ...operations.Option) (*operations.GetResourceConfigurationResponse, error)
 	// ListResourceQuotas - List Resource Quotas
-	// Returns a paginated collection of resource quotas for an organization.
+	// Returns organization-specific resource quota overrides that take precedence over platform
+	// defaults. Each quota enforces a count limit on a specific Cloud Gateway resource type —
+	// including active networks, data planes, serverless data planes, data plane groups, and
+	// provider accounts per cloud provider.
 	ListResourceQuotas(ctx context.Context, pageSize *int64, pageNumber *int64, opts ...operations.Option) (*operations.ListResourceQuotasResponse, error)
 	// GetResourceQuota - Get Resource Quota
-	// Retrieves a resource quota by ID.
+	// Retrieves a single organization-level resource quota override by ID.
 	GetResourceQuota(ctx context.Context, resourceQuotaID string, opts ...operations.Option) (*operations.GetResourceQuotaResponse, error)
 }

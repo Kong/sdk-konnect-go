@@ -32,11 +32,15 @@ func (e *AWSVPCPeeringAttachmentConfig) UnmarshalJSON(data []byte) error {
 }
 
 type AwsVpcPeeringGatewayAttachmentConfigForResponse struct {
-	Kind                AWSVPCPeeringAttachmentConfig `json:"kind"`
-	PeerAccountID       string                        `json:"peer_account_id"`
-	PeerVpcID           string                        `json:"peer_vpc_id"`
-	PeerVpcRegion       string                        `json:"peer_vpc_region"`
-	PeeringConnectionID *string                       `json:"peering_connection_id,omitempty"`
+	Kind AWSVPCPeeringAttachmentConfig `json:"kind"`
+	// AWS account ID of the peer VPC owner.
+	PeerAccountID string `json:"peer_account_id"`
+	// ID of the peer VPC to establish the peering connection with.
+	PeerVpcID string `json:"peer_vpc_id"`
+	// AWS region where the peer VPC is located.
+	PeerVpcRegion string `json:"peer_vpc_region"`
+	// ID of the AWS VPC peering connection, assigned after the peering request is accepted.
+	PeeringConnectionID *string `json:"peering_connection_id,omitempty"`
 }
 
 func (a AwsVpcPeeringGatewayAttachmentConfigForResponse) MarshalJSON() ([]byte, error) {

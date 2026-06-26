@@ -2222,12 +2222,12 @@ func (s *MCPServers) CreateMcpServerConfig(ctx context.Context, request componen
 				return nil, err
 			}
 
-			var out components.MCPServerInfo
+			var out components.MCPServer
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.MCPServerInfo = &out
+			res.MCPServer = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -2518,12 +2518,12 @@ func (s *MCPServers) GetMcpServerConfig(ctx context.Context, mcpServerID string,
 				return nil, err
 			}
 
-			var out components.MCPServerInfo
+			var out components.MCPServer
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.MCPServerInfo = &out
+			res.MCPServer = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -2822,12 +2822,12 @@ func (s *MCPServers) UpdateMcpServerConfig(ctx context.Context, mcpServerID stri
 				return nil, err
 			}
 
-			var out components.MCPServerInfo
+			var out components.MCPServer
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.MCPServerInfo = &out
+			res.MCPServer = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {
@@ -3147,12 +3147,12 @@ func (s *MCPServers) PatchMcpServerConfig(ctx context.Context, mcpServerID strin
 				return nil, err
 			}
 
-			var out components.MCPServerInfo
+			var out components.MCPServer
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
-			res.MCPServerInfo = &out
+			res.MCPServer = &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
 			if err != nil {

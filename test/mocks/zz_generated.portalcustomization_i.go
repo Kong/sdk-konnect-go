@@ -123,12 +123,12 @@ func (_c *MockPortalCustomizationSDK_GetPortalCustomization_Call) RunAndReturn(r
 }
 
 // ReplacePortalCustomization provides a mock function for the type MockPortalCustomizationSDK
-func (_mock *MockPortalCustomizationSDK) ReplacePortalCustomization(ctx context.Context, portalID string, portalCustomization *components.PortalCustomization, opts ...operations.Option) (*operations.ReplacePortalCustomizationResponse, error) {
+func (_mock *MockPortalCustomizationSDK) ReplacePortalCustomization(ctx context.Context, portalID string, portalCustomizationV3 *components.PortalCustomizationV3, opts ...operations.Option) (*operations.ReplacePortalCustomizationResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, portalID, portalCustomization, opts)
+		tmpRet = _mock.Called(ctx, portalID, portalCustomizationV3, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, portalID, portalCustomization)
+		tmpRet = _mock.Called(ctx, portalID, portalCustomizationV3)
 	}
 	ret := tmpRet
 
@@ -138,18 +138,18 @@ func (_mock *MockPortalCustomizationSDK) ReplacePortalCustomization(ctx context.
 
 	var r0 *operations.ReplacePortalCustomizationResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.PortalCustomization, ...operations.Option) (*operations.ReplacePortalCustomizationResponse, error)); ok {
-		return returnFunc(ctx, portalID, portalCustomization, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.PortalCustomizationV3, ...operations.Option) (*operations.ReplacePortalCustomizationResponse, error)); ok {
+		return returnFunc(ctx, portalID, portalCustomizationV3, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.PortalCustomization, ...operations.Option) *operations.ReplacePortalCustomizationResponse); ok {
-		r0 = returnFunc(ctx, portalID, portalCustomization, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.PortalCustomizationV3, ...operations.Option) *operations.ReplacePortalCustomizationResponse); ok {
+		r0 = returnFunc(ctx, portalID, portalCustomizationV3, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.ReplacePortalCustomizationResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, *components.PortalCustomization, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, portalID, portalCustomization, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, *components.PortalCustomizationV3, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, portalID, portalCustomizationV3, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -164,14 +164,14 @@ type MockPortalCustomizationSDK_ReplacePortalCustomization_Call struct {
 // ReplacePortalCustomization is a helper method to define mock.On call
 //   - ctx context.Context
 //   - portalID string
-//   - portalCustomization *components.PortalCustomization
+//   - portalCustomizationV3 *components.PortalCustomizationV3
 //   - opts ...operations.Option
-func (_e *MockPortalCustomizationSDK_Expecter) ReplacePortalCustomization(ctx interface{}, portalID interface{}, portalCustomization interface{}, opts ...interface{}) *MockPortalCustomizationSDK_ReplacePortalCustomization_Call {
+func (_e *MockPortalCustomizationSDK_Expecter) ReplacePortalCustomization(ctx interface{}, portalID interface{}, portalCustomizationV3 interface{}, opts ...interface{}) *MockPortalCustomizationSDK_ReplacePortalCustomization_Call {
 	return &MockPortalCustomizationSDK_ReplacePortalCustomization_Call{Call: _e.mock.On("ReplacePortalCustomization",
-		append([]interface{}{ctx, portalID, portalCustomization}, opts...)...)}
+		append([]interface{}{ctx, portalID, portalCustomizationV3}, opts...)...)}
 }
 
-func (_c *MockPortalCustomizationSDK_ReplacePortalCustomization_Call) Run(run func(ctx context.Context, portalID string, portalCustomization *components.PortalCustomization, opts ...operations.Option)) *MockPortalCustomizationSDK_ReplacePortalCustomization_Call {
+func (_c *MockPortalCustomizationSDK_ReplacePortalCustomization_Call) Run(run func(ctx context.Context, portalID string, portalCustomizationV3 *components.PortalCustomizationV3, opts ...operations.Option)) *MockPortalCustomizationSDK_ReplacePortalCustomization_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -181,9 +181,9 @@ func (_c *MockPortalCustomizationSDK_ReplacePortalCustomization_Call) Run(run fu
 		if args[1] != nil {
 			arg1 = args[1].(string)
 		}
-		var arg2 *components.PortalCustomization
+		var arg2 *components.PortalCustomizationV3
 		if args[2] != nil {
-			arg2 = args[2].(*components.PortalCustomization)
+			arg2 = args[2].(*components.PortalCustomizationV3)
 		}
 		var arg3 []operations.Option
 		var variadicArgs []operations.Option
@@ -206,18 +206,18 @@ func (_c *MockPortalCustomizationSDK_ReplacePortalCustomization_Call) Return(rep
 	return _c
 }
 
-func (_c *MockPortalCustomizationSDK_ReplacePortalCustomization_Call) RunAndReturn(run func(ctx context.Context, portalID string, portalCustomization *components.PortalCustomization, opts ...operations.Option) (*operations.ReplacePortalCustomizationResponse, error)) *MockPortalCustomizationSDK_ReplacePortalCustomization_Call {
+func (_c *MockPortalCustomizationSDK_ReplacePortalCustomization_Call) RunAndReturn(run func(ctx context.Context, portalID string, portalCustomizationV3 *components.PortalCustomizationV3, opts ...operations.Option) (*operations.ReplacePortalCustomizationResponse, error)) *MockPortalCustomizationSDK_ReplacePortalCustomization_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // UpdatePortalCustomization provides a mock function for the type MockPortalCustomizationSDK
-func (_mock *MockPortalCustomizationSDK) UpdatePortalCustomization(ctx context.Context, portalID string, portalCustomization *components.PortalCustomization, opts ...operations.Option) (*operations.UpdatePortalCustomizationResponse, error) {
+func (_mock *MockPortalCustomizationSDK) UpdatePortalCustomization(ctx context.Context, portalID string, portalCustomizationV3 *components.PortalCustomizationV3, opts ...operations.Option) (*operations.UpdatePortalCustomizationResponse, error) {
 	var tmpRet mock.Arguments
 	if len(opts) > 0 {
-		tmpRet = _mock.Called(ctx, portalID, portalCustomization, opts)
+		tmpRet = _mock.Called(ctx, portalID, portalCustomizationV3, opts)
 	} else {
-		tmpRet = _mock.Called(ctx, portalID, portalCustomization)
+		tmpRet = _mock.Called(ctx, portalID, portalCustomizationV3)
 	}
 	ret := tmpRet
 
@@ -227,18 +227,18 @@ func (_mock *MockPortalCustomizationSDK) UpdatePortalCustomization(ctx context.C
 
 	var r0 *operations.UpdatePortalCustomizationResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.PortalCustomization, ...operations.Option) (*operations.UpdatePortalCustomizationResponse, error)); ok {
-		return returnFunc(ctx, portalID, portalCustomization, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.PortalCustomizationV3, ...operations.Option) (*operations.UpdatePortalCustomizationResponse, error)); ok {
+		return returnFunc(ctx, portalID, portalCustomizationV3, opts...)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.PortalCustomization, ...operations.Option) *operations.UpdatePortalCustomizationResponse); ok {
-		r0 = returnFunc(ctx, portalID, portalCustomization, opts...)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, string, *components.PortalCustomizationV3, ...operations.Option) *operations.UpdatePortalCustomizationResponse); ok {
+		r0 = returnFunc(ctx, portalID, portalCustomizationV3, opts...)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*operations.UpdatePortalCustomizationResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, string, *components.PortalCustomization, ...operations.Option) error); ok {
-		r1 = returnFunc(ctx, portalID, portalCustomization, opts...)
+	if returnFunc, ok := ret.Get(1).(func(context.Context, string, *components.PortalCustomizationV3, ...operations.Option) error); ok {
+		r1 = returnFunc(ctx, portalID, portalCustomizationV3, opts...)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -253,14 +253,14 @@ type MockPortalCustomizationSDK_UpdatePortalCustomization_Call struct {
 // UpdatePortalCustomization is a helper method to define mock.On call
 //   - ctx context.Context
 //   - portalID string
-//   - portalCustomization *components.PortalCustomization
+//   - portalCustomizationV3 *components.PortalCustomizationV3
 //   - opts ...operations.Option
-func (_e *MockPortalCustomizationSDK_Expecter) UpdatePortalCustomization(ctx interface{}, portalID interface{}, portalCustomization interface{}, opts ...interface{}) *MockPortalCustomizationSDK_UpdatePortalCustomization_Call {
+func (_e *MockPortalCustomizationSDK_Expecter) UpdatePortalCustomization(ctx interface{}, portalID interface{}, portalCustomizationV3 interface{}, opts ...interface{}) *MockPortalCustomizationSDK_UpdatePortalCustomization_Call {
 	return &MockPortalCustomizationSDK_UpdatePortalCustomization_Call{Call: _e.mock.On("UpdatePortalCustomization",
-		append([]interface{}{ctx, portalID, portalCustomization}, opts...)...)}
+		append([]interface{}{ctx, portalID, portalCustomizationV3}, opts...)...)}
 }
 
-func (_c *MockPortalCustomizationSDK_UpdatePortalCustomization_Call) Run(run func(ctx context.Context, portalID string, portalCustomization *components.PortalCustomization, opts ...operations.Option)) *MockPortalCustomizationSDK_UpdatePortalCustomization_Call {
+func (_c *MockPortalCustomizationSDK_UpdatePortalCustomization_Call) Run(run func(ctx context.Context, portalID string, portalCustomizationV3 *components.PortalCustomizationV3, opts ...operations.Option)) *MockPortalCustomizationSDK_UpdatePortalCustomization_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
@@ -270,9 +270,9 @@ func (_c *MockPortalCustomizationSDK_UpdatePortalCustomization_Call) Run(run fun
 		if args[1] != nil {
 			arg1 = args[1].(string)
 		}
-		var arg2 *components.PortalCustomization
+		var arg2 *components.PortalCustomizationV3
 		if args[2] != nil {
-			arg2 = args[2].(*components.PortalCustomization)
+			arg2 = args[2].(*components.PortalCustomizationV3)
 		}
 		var arg3 []operations.Option
 		var variadicArgs []operations.Option
@@ -295,7 +295,7 @@ func (_c *MockPortalCustomizationSDK_UpdatePortalCustomization_Call) Return(upda
 	return _c
 }
 
-func (_c *MockPortalCustomizationSDK_UpdatePortalCustomization_Call) RunAndReturn(run func(ctx context.Context, portalID string, portalCustomization *components.PortalCustomization, opts ...operations.Option) (*operations.UpdatePortalCustomizationResponse, error)) *MockPortalCustomizationSDK_UpdatePortalCustomization_Call {
+func (_c *MockPortalCustomizationSDK_UpdatePortalCustomization_Call) RunAndReturn(run func(ctx context.Context, portalID string, portalCustomizationV3 *components.PortalCustomizationV3, opts ...operations.Option) (*operations.UpdatePortalCustomizationResponse, error)) *MockPortalCustomizationSDK_UpdatePortalCustomization_Call {
 	_c.Call.Return(run)
 	return _c
 }

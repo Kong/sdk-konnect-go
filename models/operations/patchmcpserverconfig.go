@@ -35,7 +35,7 @@ type PatchMcpServerConfigResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// A response to updating an MCP server.
-	MCPServerInfo *components.MCPServerInfo
+	MCPServer *components.MCPServer
 }
 
 func (p *PatchMcpServerConfigResponse) GetContentType() string {
@@ -59,9 +59,9 @@ func (p *PatchMcpServerConfigResponse) GetRawResponse() *http.Response {
 	return p.RawResponse
 }
 
-func (p *PatchMcpServerConfigResponse) GetMCPServerInfo() *components.MCPServerInfo {
+func (p *PatchMcpServerConfigResponse) GetMCPServer() *components.MCPServer {
 	if p == nil {
 		return nil
 	}
-	return p.MCPServerInfo
+	return p.MCPServer
 }
