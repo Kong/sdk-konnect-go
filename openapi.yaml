@@ -2881,7 +2881,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MCPServerInfo'
+                $ref: '#/components/schemas/MCPServer'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -3726,8 +3726,10 @@ paths:
       operationId: create-add-on
       summary: Create Add-On
       description: |
-        Creates a new add-on. Specific add-on types (e.g., managed cache)
-        are defined by the sub-kind configuration.
+        Creates a new add-on for a control plane or control plane group. The add-on type is
+        determined by the `config.kind` field — currently only `managed-cache.v0` is supported,
+        which provisions a Redis-compatible cache co-located with your data planes. After it's created,
+        the add-on transitions through `initializing → ready` as it deploys across data plane groups.
       requestBody:
         required: true
         content:
@@ -3776,7 +3778,8 @@ paths:
       operationId: list-add-ons
       summary: List Add-Ons
       description: |
-        Returns a paginated collection of add-ons for an organization.
+        Returns a paginated list of add-ons for the organization. Use filter parameters to narrow
+        results by owner (control plane or control plane group), lifecycle state, or config kind.
       parameters:
         - $ref: '#/components/parameters/PageSize'
         - $ref: '#/components/parameters/PageNumber'
@@ -3813,7 +3816,7 @@ paths:
         terraform-resource: CloudGatewayAddon#read
       operationId: get-add-on
       summary: Get Add-On
-      description: Retrieves an add-on by ID.
+      description: 'Retrieves a single add-on by ID, including its current lifecycle state and per data plane group deployment status.'
       parameters:
         - $ref: '#/components/parameters/AddOnId'
       responses:
@@ -3849,7 +3852,8 @@ paths:
       operationId: delete-add-on
       summary: Delete Add-On
       description: |
-        Deletes an add-on by ID. The request will be rejected if the managed cache partial is still in use by some plugins.
+        Deletes an add-on by ID. The request is rejected if any Kong plugins are still referencing
+        the managed cache add-on — remove those plugin references before deleting.
       parameters:
         - $ref: '#/components/parameters/AddOnId'
       responses:
@@ -3890,7 +3894,9 @@ paths:
         terraform-datasource: null
       operationId: update-add-on
       summary: Update Add-On
-      description: Updates the configuration of an existing add-on.
+      description: |
+        Updates the configuration of an existing add-on, such as changing the managed cache
+        capacity tier. Tier upgrades are supported; downgrades are not.
       parameters:
         - $ref: '#/components/parameters/AddOnId'
       requestBody:
@@ -3935,9 +3941,7 @@ paths:
     get:
       operationId: get-availability-json
       summary: Get Resource Availability JSON
-      description: |
-        Get Cloud Gateways Availability JSON document for describing cloud provider and region availability, pricing,
-        gateway version availability, and instance type information.
+      description: 'Returns a public JSON document describing the supported cloud providers, regions, gateway versions, and instance types available for Kong Cloud Gateways. Authentication isn''t required — query this endpoint to discover valid inputs for network and configuration requests.'
       responses:
         '200':
           $ref: '#/components/responses/RetrieveCloudGatewaysAvailabilityDocumentResponse'
@@ -3952,8 +3956,8 @@ paths:
       operationId: list-configurations
       summary: List Configurations
       description: |
-        Returns a paginated collection of configurations across control-planes for an organization (restricted by
-        permitted control-plane reads).
+        Returns a paginated collection of Cloud Gateway configurations visible to the caller.
+        Results are scoped to control planes the caller has permission to read.
       parameters:
         - $ref: '#/components/parameters/PageSize'
         - $ref: '#/components/parameters/PageNumber'
@@ -3979,12 +3983,14 @@ paths:
       operationId: create-configuration
       summary: Create Configuration
       description: |
-        Creates a new configuration for a control-plane (restricted by permitted control-plane permissions for
-        configurations). This request will replace any existing configuration for the requested control_plane_id and
-        control_plane_geo by performing a diff. From this diff, new resources detected in the requested configuration
-        will be added, resources not found in the request configuration but in the previous will be deleted, and
-        resources found in both will be updated to the requested configuration. Networks referenced in this request that
-        are in an offline state will automatically initialize (i.e. move to an initializing state).
+        Creates or replaces the Cloud Gateway configuration for a control plane and geo. The request fully describes
+        the desired state — Kong diffs it against the current configuration, then adds, removes, or updates data plane
+        groups to match. Any network referenced in the request that is currently `offline` automatically transitions
+        to `initializing`.
+
+        Use `kind: dedicated.v0` (default) for dedicated Cloud Gateways — `version`, `cloud_gateway_network_id`, and
+        `autoscale` are required. Use `kind: serverless.v1` for serverless Cloud Gateways — those three fields must
+        be omitted.
       requestBody:
         required: true
         content:
@@ -4016,7 +4022,9 @@ paths:
         terraform-datasource: null
       operationId: get-configuration
       summary: Get Configuration
-      description: Retrieves a configuration by ID (restricted by permitted control-plane read).
+      description: |
+        Retrieves a single Cloud Gateway configuration by ID, including the current state of each deployed
+        data plane group. Access is restricted to control planes the caller has permission to read.
       parameters:
         - $ref: '#/components/parameters/ConfigurationId'
       responses:
@@ -4038,8 +4046,8 @@ paths:
       operationId: list-custom-domains
       summary: List Custom Domains
       description: |
-        Returns a paginated collection of custom domains across control-planes for an organization (restricted by
-        permitted control-plane reads).
+        Returns a paginated list of custom domains across all control planes in the organization,
+        scoped to control planes you have read access to.
       parameters:
         - $ref: '#/components/parameters/CustomDomainsFilter'
         - $ref: '#/components/parameters/PageSize'
@@ -4067,8 +4075,12 @@ paths:
       operationId: create-custom-domains
       summary: Create Custom Domain
       description: |
-        Creates a new custom domain for a control-plane (restricted by permitted control-plane associate-custom-domain
-        action).
+        Registers a custom domain for a control plane. After creation, Konnect provisions a TLS
+        certificate and configures SNI routing, transitioning the domain through
+        `initializing → ready`. To complete setup, configure two CNAME records at your DNS
+        registrar: one pointing your domain to the Konnect gateway hostname, and one pointing
+        `_acme-challenge.<your-domain>` to the ACME challenge hostname provided by Konnect.
+        Use the online-status endpoint to verify both records are correctly configured.
       requestBody:
         required: true
         content:
@@ -4100,7 +4112,7 @@ paths:
         terraform-datasource: null
       operationId: get-custom-domain
       summary: Get Custom Domain
-      description: Retrieves a custom domain by ID (restricted by permitted control-plane reads).
+      description: 'Retrieves a single custom domain by ID, including its current lifecycle state and any error metadata.'
       parameters:
         - $ref: '#/components/parameters/CustomDomainId'
       responses:
@@ -4123,7 +4135,7 @@ paths:
         terraform-datasource: null
       operationId: delete-custom-domain
       summary: Delete Custom Domain
-      description: Deletes a custom domain by ID (restricted by permitted control-plane reads).
+      description: 'Deletes a custom domain by ID, removing the associated TLS certificate and SNI configuration from the control plane''s data planes.'
       parameters:
         - $ref: '#/components/parameters/CustomDomainId'
       responses:
@@ -4156,7 +4168,7 @@ paths:
     get:
       operationId: get-custom-domain-online-status
       summary: Get Custom Domain Online Status
-      description: Retrieves the CNAME and SSL status of a custom domain.
+      description: Checks whether the primary domain CNAME and ACME challenge CNAME records are correctly configured at your DNS registrar. Returns `verified` or `unverified` for each.
       parameters:
         - $ref: '#/components/parameters/CustomDomainId'
       responses:
@@ -4178,10 +4190,10 @@ paths:
       operationId: list-default-resource-configurations
       summary: List Default Resource Configurations
       description: |
-        Returns a paginated collection of default resource configurations for cloud-gateways, along with
-        organizationally-defined overrides for those resource configurations.
-        Resource configurations are settings that are applied to all cloud gateway resources in an organization.
-        For example, the "data-plane-group-idle-timeout-minutes" resource configuration sets the idle timeout for all data plane groups in an organization.
+        Returns the platform-default resource configurations for Cloud Gateways, along with any
+        organization-level overrides. Resource configurations are behavioral settings applied to
+        Cloud Gateway resources — for example, the idle timeout for data plane groups.
+        Use this to view the effective settings for your organization.
       parameters:
         - $ref: '#/components/parameters/PageSize'
         - $ref: '#/components/parameters/PageNumber'
@@ -4204,8 +4216,8 @@ paths:
       operationId: list-default-resource-quotas
       summary: List Default Resource Quotas
       description: |
-        Returns a paginated collection of default resource quotas for cloud-gateways, along with
-        organizationally-defined overrides for those resource quotas.
+        Returns the platform-default resource quotas for Cloud Gateways, along with any
+        organization-level overrides. Use this to view the effective limits for your organization.
       parameters:
         - $ref: '#/components/parameters/PageSize'
         - $ref: '#/components/parameters/PageNumber'
@@ -4230,7 +4242,10 @@ paths:
         terraform-datasource: CloudGatewayNetwork#read
       operationId: list-networks
       summary: List Networks
-      description: Returns a paginated list of networks.
+      description: |
+        Returns a paginated list of Cloud Gateway networks visible to the caller. Filter by
+        `state` to narrow results — for example, poll for `state=ready` to find networks
+        available for data plane group configurations.
       parameters:
         - $ref: '#/components/parameters/NetworksFilter'
         - $ref: '#/components/parameters/PageSize'
@@ -4255,7 +4270,9 @@ paths:
         terraform-datasource: null
       operationId: create-network
       summary: Create Network
-      description: Creates a new network for a given provider account.
+      description: |
+        Creates a new Cloud Gateway network in the specified provider account and region. Network creation is
+        asynchronous — the network starts in `initializing` state and transitions to `ready` once provisioned.
       requestBody:
         required: true
         content:
@@ -4285,7 +4302,7 @@ paths:
         terraform-datasource: null
       operationId: get-network
       summary: Get Network
-      description: Retrieves a network by ID.
+      description: 'Retrieves a Cloud Gateway network by ID, including its current state and provider metadata.'
       parameters:
         - $ref: '#/components/parameters/NetworkId'
       responses:
@@ -4308,7 +4325,7 @@ paths:
         terraform-datasource: null
       operationId: update-network
       summary: Update Network
-      description: Updates a network by ID.
+      description: Updates a Cloud Gateway network by ID. You can also rename the network.
       parameters:
         - $ref: '#/components/parameters/NetworkId'
       requestBody:
@@ -4341,7 +4358,7 @@ paths:
         terraform-datasource: null
       operationId: delete-network
       summary: Delete Network
-      description: Deletes a network by ID.
+      description: Deletes a Cloud Gateway network by ID. The network cannot be referenced by any active configuration before it can be deleted.
       parameters:
         - $ref: '#/components/parameters/NetworkId'
       responses:
@@ -4375,7 +4392,8 @@ paths:
       operationId: list-network-configurations
       summary: List Network Configuration References
       description: |
-        Returns a paginated collection of configurations that reference a network.
+        Returns a paginated list of data plane group configurations that reference a given network.
+        Use this to determine which control planes are using a network before renaming or deleting it.
       parameters:
         - $ref: '#/components/parameters/NetworkId'
         - $ref: '#/components/parameters/PageSize'
@@ -4400,7 +4418,7 @@ paths:
     get:
       operationId: list-private-dns
       summary: List Private DNS
-      description: Returns a paginated collection of Private DNS for a given network.
+      description: Returns a paginated collection of private DNS attachments for a given network.
       parameters:
         - $ref: '#/components/parameters/NetworkId'
         - $ref: '#/components/parameters/PrivateDnsFilter'
@@ -4428,7 +4446,11 @@ paths:
         terraform-datasource: null
       operationId: create-private-dns
       summary: Create Private DNS
-      description: Creates a new Private DNS for a given network.
+      description: |
+        Creates a new private DNS attachment for a given network. The attachment type is determined by
+        `private_dns_attachment_config.kind`. Supported types: `aws-private-hosted-zone-attachment`,
+        `aws-outbound-resolver`, `gcp-private-hosted-zone-attachment`, `azure-private-hosted-zone-attachment`,
+        and `azure-outbound-resolver`.
       parameters:
         - $ref: '#/components/parameters/NetworkId'
       requestBody:
@@ -4472,7 +4494,7 @@ paths:
         terraform-datasource: null
       operationId: get-private-dns
       summary: Get Private DNS
-      description: Retrieves a Private DNS by ID for a given network.
+      description: 'Retrieves a private DNS attachment by ID, including its current state and attachment configuration.'
       parameters:
         - $ref: '#/components/parameters/NetworkId'
         - $ref: '#/components/parameters/PrivateDnsId'
@@ -4493,7 +4515,9 @@ paths:
     patch:
       operationId: update-private-dns
       summary: Update Private DNS
-      description: Updates a Private DNS by ID for a given network.
+      description: |
+        Updates a private DNS attachment by ID. Supports updating the name or DNS resolver configuration
+        for AWS Outbound Resolver and Azure Outbound Resolver attachment types.
       parameters:
         - $ref: '#/components/parameters/NetworkId'
         - $ref: '#/components/parameters/PrivateDnsId'
@@ -4527,7 +4551,10 @@ paths:
         terraform-datasource: null
       operationId: delete-private-dns
       summary: Delete Private DNS
-      description: Deletes a Private DNS by ID for a given network.
+      description: |
+        Deletes a Private DNS attachment by ID. The attachment must be in a stable state (`ready`
+        or `error`) before deletion — requests against attachments in a transitional state
+        (`initializing`, `terminating`) will be rejected.
       parameters:
         - $ref: '#/components/parameters/NetworkId'
         - $ref: '#/components/parameters/PrivateDnsId'
@@ -4561,7 +4588,7 @@ paths:
     get:
       operationId: list-transit-gateways
       summary: List Transit Gateways
-      description: Returns a paginated collection of transit gateways for a given network.
+      description: Returns a paginated collection of transit gateways attached to a given network.
       parameters:
         - $ref: '#/components/parameters/NetworkId'
         - $ref: '#/components/parameters/TransitGatewaysFilter'
@@ -4589,7 +4616,12 @@ paths:
         terraform-datasource: null
       operationId: create-transit-gateway
       summary: Create Transit Gateway
-      description: Creates a new transit gateway for a given network.
+      description: |
+        Creates a new transit gateway attachment for a given network. The attachment type is determined by the
+        `transit_gateway_attachment_config.kind` field. Supported types: `aws-transit-gateway-attachment`,
+        `aws-vpc-peering-attachment`, `aws-resource-endpoint-attachment`, `azure-vnet-peering-attachment`,
+        `azure-vhub-peering-attachment`, and `gcp-vpc-peering-attachment`. Creation is asynchronous —
+        the transit gateway starts in `initializing` state and transitions to `ready` once provisioned.
       parameters:
         - $ref: '#/components/parameters/NetworkId'
       requestBody:
@@ -4633,7 +4665,7 @@ paths:
         terraform-datasource: null
       operationId: get-transit-gateway
       summary: Get Transit Gateway
-      description: Retrieves a transit gateway by ID for a given network.
+      description: 'Retrieves a transit gateway by ID, including its current state and attachment configuration.'
       parameters:
         - $ref: '#/components/parameters/NetworkId'
         - $ref: '#/components/parameters/TransitGatewayId'
@@ -4657,7 +4689,9 @@ paths:
         terraform-datasource: null
       operationId: update-transit-gateway
       summary: Update Transit Gateway
-      description: Updates a transit gateway by ID for a given network.
+      description: |
+        Updates a transit gateway by ID. Supports updating CIDR blocks on an AWS Transit Gateway, or updating
+        the resource endpoint configuration on an AWS Resource Endpoint gateway.
       parameters:
         - $ref: '#/components/parameters/NetworkId'
         - $ref: '#/components/parameters/TransitGatewayId'
@@ -4691,7 +4725,7 @@ paths:
         terraform-datasource: null
       operationId: delete-transit-gateway
       summary: Delete Transit Gateway
-      description: Deletes a transit gateway by ID for a given network.
+      description: Deletes a transit gateway by ID. The transit gateway must be in a non-transitional state before deletion.
       parameters:
         - $ref: '#/components/parameters/NetworkId'
         - $ref: '#/components/parameters/TransitGatewayId'
@@ -4726,7 +4760,7 @@ paths:
       x-speakeasy-entity-operation: CloudGatewayProviderAccountList#read
       operationId: list-provider-accounts
       summary: List Provider Accounts
-      description: Returns a a paginated collection of provider accounts for an organization.
+      description: Returns a paginated list of provider accounts linked to the organization. Filter by cloud provider to see accounts for a specific CSP.
       parameters:
         - $ref: '#/components/parameters/ProviderAccountsFilter'
         - $ref: '#/components/parameters/PageSize'
@@ -4761,7 +4795,7 @@ paths:
     get:
       operationId: get-provider-account
       summary: Get Provider Account
-      description: Retrieves a provider account by ID.
+      description: 'Retrieves a single provider account by ID, including the associated cloud provider and cloud account ID.'
       parameters:
         - $ref: '#/components/parameters/ProviderAccountId'
       responses:
@@ -4783,9 +4817,10 @@ paths:
       operationId: list-resource-configurations
       summary: List Resource Configurations
       description: |
-        Returns a paginated collection of resource configurations for an organization.
-        Resource configurations are settings that are applied to all cloud gateway resources in an organization.
-        For example, the "data-plane-group-idle-timeout-minutes" resource configuration sets the idle timeout for all data plane groups in an organization.
+        Returns organization-specific resource configuration overrides that take precedence over
+        platform defaults. Each configuration controls a behavioral setting for a specific Cloud
+        Gateway resource type — for example, `data-plane-group-idle-timeout-minutes` sets how long
+        a data plane group can remain idle before it scales to zero instances.
       parameters:
         - $ref: '#/components/parameters/PageSize'
         - $ref: '#/components/parameters/PageNumber'
@@ -4807,7 +4842,7 @@ paths:
     get:
       operationId: get-resource-configuration
       summary: Get Resource Configuration
-      description: Retrieves a resource configuration by ID.
+      description: 'Retrieves a single organization-level resource configuration override by ID. Returns the qualifier, override value, and description for the configuration setting.'
       parameters:
         - $ref: '#/components/parameters/ResourceConfigurationId'
       responses:
@@ -4829,7 +4864,10 @@ paths:
       operationId: list-resource-quotas
       summary: List Resource Quotas
       description: |
-        Returns a paginated collection of resource quotas for an organization.
+        Returns organization-specific resource quota overrides that take precedence over platform
+        defaults. Each quota enforces a count limit on a specific Cloud Gateway resource type —
+        including active networks, data planes, serverless data planes, data plane groups, and
+        provider accounts per cloud provider.
       parameters:
         - $ref: '#/components/parameters/PageSize'
         - $ref: '#/components/parameters/PageNumber'
@@ -4851,7 +4889,7 @@ paths:
     get:
       operationId: get-resource-quota
       summary: Get Resource Quota
-      description: Retrieves a resource quota by ID.
+      description: Retrieves a single organization-level resource quota override by ID.
       parameters:
         - $ref: '#/components/parameters/ResourceQuotaId'
       responses:
@@ -21537,6 +21575,7 @@ components:
         - updated_at
         - expires_at
     ControlPlaneId:
+      description: ID of the Konnect control plane. Can be retrieved from the Control Planes API or the Konnect UI.
       type: string
       format: uuid
       example: 0949471e-b759-45ba-87ab-ee63fb781388
@@ -21597,7 +21636,14 @@ components:
       example: cc504063-f3bb-4e09-8e32-bbcdbc5cd618
       readOnly: true
     ControlPlaneGeo:
-      description: Set of control-plane geos supported for deploying cloud-gateways configurations.
+      description: |
+        Geographic region of the control plane. Supported values:
+        - `us` — United States
+        - `eu` — Europe
+        - `au` — Australia
+        - `me` — Middle East
+        - `in` — India
+        - `sg` — Singapore
       type: string
       enum:
         - us
@@ -21611,7 +21657,7 @@ components:
     GatewayVersion:
       description: 'Supported gateway version. For serverless.v1 kind of cloud gateways, this field should be omitted.'
       type: string
-      example: '3.2'
+      example: '3.10'
       title: Gateway Version
     VersionList:
       description: List of supported gateway versions for cloud gateways.
@@ -21629,7 +21675,11 @@ components:
         - large
       x-speakeasy-unknown-values: allow
     ApiAccess:
-      description: Type of API access data-plane groups will support for a configuration.
+      description: |
+        Controls how data planes in a configuration are exposed. Supported values:
+        - `private` — data planes are accessible only within the VPC network; no public internet exposure
+        - `public` — data planes are accessible from the public internet
+        - `private+public` — equivalent to `public`; data planes are accessible from the public internet (default)
       type: string
       example: private+public
       default: private+public
@@ -21870,7 +21920,8 @@ components:
         base_rps:
           description: Base number of requests per second that the deployment target should support.
           type: integer
-          example: 1
+          example: 100
+          minimum: 1
         max_rps:
           description: 'Max number of requests per second that the deployment target should support. If not set, this defaults to 10x base_rps. This field is deprecated and shouldn''t be used in new configurations as it will be removed in a future version. max_rps is now calculated as 10x base_rps.'
           type: integer
@@ -22161,7 +22212,14 @@ components:
       title: Network Create State
       x-speakeasy-unknown-values: allow
     NetworkState:
-      description: State of the network.
+      description: |
+        The current state of the network. Possible values:
+        - `created`: The network was created, but provisioning hasn't started yet.
+        - `initializing`: The network is being provisioned in the cloud provider.
+        - `offline`: The network was created but isn't provisioned; no data planes can be deployed.
+        - `ready`: The network is fully provisioned and available for data plane groups.
+        - `terminating`: The network is being deleted and is no longer accepting new resources.
+        - `terminated`: The network has been fully deleted and is no longer available.
       enum:
         - created
         - initializing
@@ -22211,12 +22269,12 @@ components:
     NetworkName:
       description: Human-readable name of the network.
       type: string
-      example: us-east-2 network
+      example: us-east-2-network
       title: Network Name
     NetworkCIDRBlock:
-      description: CIDR block configuration for the network.
+      description: CIDR block for the network. Must not overlap with reserved blocks for the target region. Query the Resource Availability endpoint for valid CIDR ranges per region and provider.
       type: string
-      example: 10.0.0.0/8
+      example: 10.0.0.0/16
       title: Network CIDR Block
     NetworkAvailabilityZones:
       description: List of availability zones that the network is attached to.
@@ -22436,11 +22494,17 @@ components:
             - aws-vpc-peering-attachment
           title: AWS VPC Peering Attachment Config
         peer_account_id:
+          description: AWS account ID of the peer VPC owner.
           type: string
+          example: '123456789012'
         peer_vpc_id:
+          description: ID of the peer VPC to establish the peering connection with.
           type: string
+          example: vpc-0a1b2c3d4e5f67890
         peer_vpc_region:
+          description: AWS region where the peer VPC is located.
           type: string
+          example: us-east-2
       additionalProperties: false
       required:
         - kind
@@ -22456,13 +22520,21 @@ components:
             - aws-vpc-peering-attachment
           title: AWS VPC Peering Attachment Config
         peer_account_id:
+          description: AWS account ID of the peer VPC owner.
           type: string
+          example: '123456789012'
         peer_vpc_id:
+          description: ID of the peer VPC to establish the peering connection with.
           type: string
+          example: vpc-0a1b2c3d4e5f67890
         peer_vpc_region:
+          description: AWS region where the peer VPC is located.
           type: string
+          example: us-east-2
         peering_connection_id:
+          description: 'ID of the AWS VPC peering connection, assigned after the peering request is accepted.'
           type: string
+          example: pcx-0a1b2c3d4e5f67890
       additionalProperties: false
       required:
         - kind
@@ -23079,12 +23151,12 @@ components:
       example:
         kind: azure-outbound-resolver
         dns_config:
-          global.api.konghq.com:
+          internal.example.com:
             remote_dns_server_ip_addresses:
-              - 10.0.0.2
-          us.api.konghq.dev:
+              - 10.0.1.100
+          db.corp.internal:
             remote_dns_server_ip_addresses:
-              - 10.0.0.8
+              - 10.0.2.100
       additionalProperties: false
       required:
         - kind
@@ -23095,12 +23167,12 @@ components:
         Object that contains mappings from proxied internal domains to remote DNS server IP address for a Private DNS Resolver.
       type: object
       example:
-        global.api.konghq.com:
+        internal.example.com:
           remote_dns_server_ip_addresses:
-            - 10.0.0.2
-        us.api.konghq.dev:
+            - 10.0.1.100
+        db.corp.internal:
           remote_dns_server_ip_addresses:
-            - 10.0.0.8
+            - 10.0.2.100
       additionalProperties:
         $ref: '#/components/schemas/PrivateDnsResolverConfigObject'
       title: Private DNS Resolver Config Item
@@ -23119,7 +23191,7 @@ components:
     PrivateDnsName:
       description: Human-readable name of the Private DNS.
       type: string
-      example: us-east-2 private dns
+      example: us-east-2-private-dns
       title: Private DNS Name
     PrivateDnsState:
       description: |
@@ -23688,7 +23760,14 @@ components:
         - $ref: '#/components/schemas/PatchAwsTransitGateway'
       title: PatchTransitGatewayRequest
     CustomDomainState:
-      description: State of the custom domain.
+      description: |
+        The current state of the custom domain. Possible values:
+        - `created` — The domain has been registered but TLS provisioning has not yet started.
+        - `initializing` — Konnect is provisioning the TLS certificate and configuring SNI routing.
+        - `ready` — The domain is fully provisioned and serving traffic.
+        - `terminating` — The domain is being deleted and its TLS certificate is being removed.
+        - `terminated` — The domain has been fully deleted and is no longer available.
+        - `error` — Provisioning failed; check `state_metadata` for details.
       type: string
       enum:
         - created
@@ -23811,7 +23890,10 @@ components:
       title: Custom Domain Online Status
     CreateConfigurationRequest:
       description: |
-        Request schema for creating a configuration.
+        Describes the desired state of a control plane's Cloud Gateway deployment. Submitting
+        this request replaces the current configuration; Kong reconciles running data plane groups
+        to match. Use `kind: dedicated.v0` for Dedicated Cloud Gateways or `kind: serverless.v1`
+        for Serverless — the required fields differ by kind.
       type: object
       properties:
         control_plane_id:
@@ -27900,12 +27982,6 @@ components:
       example: '# Welcome to My Page'
       maxLength: 1000000
       title: PageContent
-    SnippetName:
-      description: The unique name of a snippet in a portal.
-      type: string
-      example: my-snippet
-      maxLength: 512
-      title: SnippetName
     SnippetTitle:
       description: The display title of a snippet in a portal.
       type: string
@@ -30070,7 +30146,13 @@ components:
       required:
         - title
         - items
-    PortalCustomization:
+    SnippetName:
+      description: The unique name of a snippet in a portal.
+      type: string
+      example: my-snippet
+      maxLength: 512
+      title: SnippetName
+    PortalCustomizationV3:
       description: The custom settings of this portal
       type: object
       properties:
@@ -44917,6 +44999,42 @@ components:
           x-speakeasy-unknown-values: allow
       required:
         - status
+    MCPServer:
+      type: object
+      properties:
+        id:
+          description: The unique identifier for the MCP server.
+          type: string
+          format: uuid
+        name:
+          description: The machine name of the MCP server.
+          type: string
+          maxLength: 256
+          minLength: 1
+        display_name:
+          description: The human-readable display name of the MCP server.
+          type: string
+          maxLength: 120
+          minLength: 1
+        description:
+          description: A description of the MCP server.
+          type: string
+          maxLength: 1024
+          nullable: true
+        labels:
+          $ref: '#/components/schemas/Labels'
+        created_at:
+          $ref: '#/components/schemas/CreatedAt'
+        updated_at:
+          $ref: '#/components/schemas/UpdatedAt'
+      required:
+        - id
+        - name
+        - display_name
+        - description
+        - labels
+        - created_at
+        - updated_at
     MCPServerInfo:
       type: object
       properties:
@@ -45082,7 +45200,7 @@ components:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/MCPServerInfo'
+            $ref: '#/components/schemas/MCPServer'
         meta:
           $ref: '#/components/schemas/CursorMeta'
       required:
@@ -53140,7 +53258,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PortalCustomization'
+            $ref: '#/components/schemas/PortalCustomizationV3'
     ReplacePortalIntegrations:
       content:
         application/json:
@@ -56731,7 +56849,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/PortalCustomization'
+            $ref: '#/components/schemas/PortalCustomizationV3'
     PortalIntegrationsResponse:
       description: The current integration configurations for a portal.
       content:
@@ -57538,7 +57656,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/MCPServerInfo'
+            $ref: '#/components/schemas/MCPServer'
     ListMCPServersCPInfoResponse:
       description: A response to listing MCP servers with CP info.
       content:
@@ -57550,7 +57668,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/MCPServerInfo'
+            $ref: '#/components/schemas/MCPServer'
     DataPlaneClientCertificateResponse:
       description: Response body for retrieving a dp-client-certificate.
       content:
@@ -57971,15 +58089,43 @@ tags:
   - name: Impersonation Settings
   - name: Personal Access Tokens
   - name: Data-Plane Group Configurations
+    description: |
+      A Cloud Gateway configuration declares the desired state of a control plane's data plane groups — where they run,
+      how many instances, the gateway version, and the autoscaling strategy. Apply a configuration with PUT, and Kong
+      reconciles the running data planes to match.
   - name: Networks
+    description: |
+      Networks are provider-backed VPC or VNet resources that host dedicated Cloud Gateway data plane groups.
+      Each network is tied to a specific cloud provider account, region, and CIDR block. A network must reach
+      the `ready` state before it can be referenced in a configuration.
   - name: Transit Gateways
+    description: |
+      Transit gateways connect a Cloud Gateway network to your cloud infrastructure. Supported attachment types
+      span all three major cloud providers: AWS Transit Gateway, AWS VPC Peering, AWS Resource Endpoint (PrivateLink),
+      Azure VNet Peering, Azure Virtual Hub Peering, and GCP VPC Peering.
   - name: Private DNS
+    description: |
+      Private DNS attachments enable a Cloud Gateway network to resolve private DNS zones hosted in your cloud
+      provider — AWS Private Hosted Zones, AWS Outbound Resolvers, Azure Private Hosted Zones, Azure Outbound
+      Resolvers, and GCP Private Hosted Zones.
   - name: Add-Ons
+    description: |
+      Optional services that extend the capabilities of a Cloud Gateway data plane group. The currently supported add-on type is managed cache (`managed-cache.v0`), which provisions a Redis-compatible in-memory cache co-located with your data planes. Each add-on is scoped to a control plane or control plane group, and is automatically deployed across all data plane groups that belong to that owner.
   - name: Provider Accounts
+    description: |
+      Provider Accounts link your Konnect organization to a cloud provider account (AWS, Azure, or GCP) so that Cloud Gateway networks can be provisioned in the dedicated cloud provider account. Each provider account maps a Konnect organization to a cloud provider account ID, which Konnect uses when creating network peering and hub-and-spoke attachments.
   - name: Custom Domains
+    description: |
+      Custom Domains let you assign bring-your-own hostnames to a Cloud Gateway control plane. After creation the domain moves through `initializing → ready` as Konnect provisions TLS certificates and configures SNI routing on the data planes. Use the online-status endpoint to confirm CNAME and SSL readiness before routing traffic.
   - name: Cloud Gateways Resource Quotas
+    description: |
+      Resource Quotas define organization-level limits on the number of Cloud Gateway resources — active networks, data planes, serverless data planes, data plane groups, and provider accounts per cloud provider. Use these endpoints to view the default platform limits and any overrides applied to your organization.
   - name: Resource Configurations
+    description: |
+      Resource Configurations define organization-wide behavioral settings for Cloud Gateway resources. Use these endpoints to view platform defaults — such as the data plane group idle timeout — and any overrides applied to your organization.
   - name: Resource Availability
+    description: |
+      Resource Availability is a public, unauthenticated endpoint that describes what Kong Cloud Gateway infrastructure is available to provision. Use it to discover supported cloud providers, regions, gateway versions, and instance type details — all the building blocks you need before creating networks or configuring data plane groups.
   - name: Notifications
     description: Operations related to notifications
   - name: DCR Providers
