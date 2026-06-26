@@ -173,8 +173,14 @@ generate.deepcopy: controller-gen
 #       DeepCopy() for the types that need it and then using speakeasy to generate
 #       the final sdk code.
 # NOTE: add more types that need to have DeepCopy() generated.
+.PHONY: clean.generated-overlays
+clean.generated-overlays:
+	rm -f *_i.go
+	rm -f test/mocks/zz_generated*.go
+
 .PHONY: generate.sdk
 generate.sdk: speakeasy
+	$(MAKE) clean.generated-overlays
 	speakeasy run --skip-versioning --skip-testing --minimal --skip-upload-spec
 	git add --update .
 	$(MAKE) generate.deepcopy
