@@ -216,7 +216,7 @@ TYPES_TO_MOCK := \
 	Portals \
 	PortalAuthSettings \
 	PortalCustomDomains \
-	PortalCustomization \
+	PortalCustomizationV3 \
 	PortalIntegrations \
 	PortalsIPAllowList \
 	PortalDevelopers \
