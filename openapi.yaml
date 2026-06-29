@@ -22,7 +22,9 @@ info:
 
     `x-min-runtime-version` indicates the minimum Event Gateway runtime version required to use a certain policy or
     policy feature. The runtime version can be configured at the Event Gateway entity level. It must be a string
-    containing a semantic version in the `MAJOR.MINOR` format, e.g., `"1.1"`.
+    containing a semantic version in the `MAJOR.MINOR` format, e.g., `"1.1"`. info.[x-latest-public-runtime-version]
+    indicates the latest public runtime version of Event Gateway. When
+    `x-min-runtime-version > x-latest-public-runtime-version`, the property or schema will only appear in dev schemas.
   license:
     name: Apache 2.0
     url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
@@ -34352,21 +34354,6 @@ components:
           $ref: '#/components/schemas/VirtualClusterAuthenticationSensitiveDataAwareSchemes'
         namespace:
           $ref: '#/components/schemas/VirtualClusterNamespace'
-        topic_aliases:
-          description: |-
-            **Pre-release Feature**
-            This feature is currently in beta and is subject to change.
-
-            Topic aliases allow exposing backend topics under additional names.
-            An alias creates a new entry point to the same physical data.
-            The alias `topic` field references namespace-visible names (if namespace is configured).
-            Aliases are independent of namespace and can be used without it.
-
-            **Requires a minimum runtime version of `1.2`**.
-          type: array
-          items:
-            $ref: '#/components/schemas/VirtualClusterTopicAlias'
-          x-min-runtime-version: '1.2'
         name:
           $ref: '#/components/schemas/VirtualClusterName'
         dns_label:
@@ -35923,13 +35910,11 @@ components:
           schema_validation: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicy'
           decrypt: '#/components/schemas/EventGatewayDecryptPolicy'
           skip_record: '#/components/schemas/EventGatewaySkipRecordPolicyCreate'
-          decrypt_fields: '#/components/schemas/EventGatewayParsedRecordDecryptFieldsPolicyCreate'
       oneOf:
         - $ref: '#/components/schemas/EventGatewayConsumeSchemaValidationPolicy'
         - $ref: '#/components/schemas/EventGatewayModifyHeadersPolicyCreate'
         - $ref: '#/components/schemas/EventGatewaySkipRecordPolicyCreate'
         - $ref: '#/components/schemas/EventGatewayDecryptPolicy'
-        - $ref: '#/components/schemas/EventGatewayParsedRecordDecryptFieldsPolicyCreate'
     EventGatewayConsumePolicyUpdate:
       description: The typed schema of the consume policy to modify it.
       discriminator:
@@ -35954,12 +35939,10 @@ components:
           modify_headers: '#/components/schemas/EventGatewayModifyHeadersPolicyCreate'
           schema_validation: '#/components/schemas/EventGatewayProduceSchemaValidationPolicy'
           encrypt: '#/components/schemas/EventGatewayEncryptPolicy'
-          encrypt_fields: '#/components/schemas/EventGatewayParsedRecordEncryptFieldsPolicyCreate'
       oneOf:
         - $ref: '#/components/schemas/EventGatewayModifyHeadersPolicyCreate'
         - $ref: '#/components/schemas/EventGatewayProduceSchemaValidationPolicy'
         - $ref: '#/components/schemas/EventGatewayEncryptPolicy'
-        - $ref: '#/components/schemas/EventGatewayParsedRecordEncryptFieldsPolicyCreate'
     EventGatewayProducePolicyUpdate:
       description: The typed schema of the produce policy to modify it.
       discriminator:
@@ -36175,122 +36158,10 @@ components:
         - config
       title: Encrypt Parsed Record
       x-min-runtime-version: '1.2'
-    EventGatewayParsedRecordEncryptFieldsPolicyCreate:
-      description: |-
-        Encrypts fields of parsed Kafka records using AES_256_GCM. Keys are therefore 256 bits long.
-
-        Note this policy can only be used as a child of a `EventGatewayProduceSchemaValidationPolicy` policy.
-
-        **Requires a minimum runtime version of `1.2`**.
-      type: object
-      properties:
-        type:
-          description: The type name of the policy.
-          type: string
-          const: encrypt_fields
-          maxLength: 255
-          minLength: 1
-        name:
-          description: A unique user-defined name of the policy.
-          type: string
-          maxLength: 255
-          x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
-        description:
-          description: A human-readable description of the policy.
-          type: string
-          default: ''
-          maxLength: 512
-        enabled:
-          description: Whether the policy is enabled.
-          type: boolean
-          default: true
-        labels:
-          $ref: '#/components/schemas/Labels'
-        config:
-          description: The configuration of the policy.
-          type: object
-          $ref: '#/components/schemas/EventGatewayParsedRecordEncryptFieldsConfig'
-        condition:
-          description: |
-            A string containing the boolean expression that determines whether the policy is applied.
-
-            When the policy is applied as a child policy of schema_validation, the expression can also reference
-            `record.value` fields.
-          type: string
-          example: record.value.content.foo.bar == "a-value"
-          default: ''
-          maxLength: 1000
-          x-expression:
-            type: boolean
-            fields:
-              - name: context.auth.principal.name
-                type: string
-                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
-              - name: context.auth.principal.id
-                type: string
-                description: |-
-                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
-
-                  **Requires a minimum runtime version of `1.2`**.
-                x-min-runtime-version: '1.2'
-              - name: context.auth.principal.metadata
-                type: object
-                description: |-
-                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
-
-                  **Requires a minimum runtime version of `1.2`**.
-                x-min-runtime-version: '1.2'
-              - name: context.auth.type
-                type: string
-                description: |
-                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
-              - name: context.topic.name
-                type: string
-                description: The name of the topic.
-              - name: record.headers
-                type: object
-                description: An associative array of header key value pairs.
-              - name: record.value.validated
-                type: boolean
-                description: Indicates whether the record value was successfully validated.
-              - name: record.value.content
-                type: object
-                description: The content of the record value.
-              - name: record.value.schema
-                type: object
-                x-min-runtime-version: '1.2'
-                description: |-
-                  Registry-supplied schema metadata for the record value. Populated when the value
-                  was validated by a Confluent schema registry. Fields: `id` (uint), `version` (uint,
-                  when returned by the registry), `format` ("avro"|"json"), and either
-                  `avro.{name, namespace}` or `json.{title, id}`. Sub-fields are absent when not
-                  applicable; use `has()` to test presence.
-
-                  **Requires a minimum runtime version of `1.2`**.
-              - name: record.key.schema
-                type: object
-                x-min-runtime-version: '1.2'
-                description: |-
-                  Same shape as `record.value.schema`, populated when the record key has
-                  schema_validation configured.
-
-                  **Requires a minimum runtime version of `1.2`**.
-        parent_policy_id:
-          description: The unique identifier of the parent schema validation policy.
-          type: string
-          format: uuid
-      required:
-        - type
-        - config
-        - parent_policy_id
-      title: Encrypt Parsed Record Fields
-      x-min-runtime-version: '1.2'
     EventGatewayParsedRecordEncryptFieldsConfig:
       description: The configuration of the encrypt parsed record policy.
       type: object
       properties:
-        failure_mode:
-          $ref: '#/components/schemas/ProduceFailureMode'
         encrypt_fields:
           description: Selects which fields to encrypt and with what keys.
           type: array
@@ -36299,7 +36170,6 @@ components:
           maxItems: 256
           minItems: 1
       required:
-        - failure_mode
         - encrypt_fields
     EventGatewayParsedRecordEncryptionSelector:
       description: Selects fields of a parsed record for encryption and defines what key to encrypt them with.
@@ -36566,122 +36436,10 @@ components:
         - config
       title: Decrypt Parsed Record Fields
       x-min-runtime-version: '1.2'
-    EventGatewayParsedRecordDecryptFieldsPolicyCreate:
-      description: |-
-        Decrypts fields of parsed Kafka records using AES_256_GCM. Keys are therefore 256 bits long.
-
-        Note this policy can only be used as a child of a `EventGatewayConsumeSchemaValidationPolicy` policy.
-
-        **Requires a minimum runtime version of `1.2`**.
-      type: object
-      properties:
-        type:
-          description: The type name of the policy.
-          type: string
-          const: decrypt_fields
-          maxLength: 255
-          minLength: 1
-        name:
-          description: A unique user-defined name of the policy.
-          type: string
-          maxLength: 255
-          x-unicode-pattern: '^[\p{L}\p{N}][\p{L}\p{N} _\-\.:/+'']*[\p{L}\p{N}]$'
-        description:
-          description: A human-readable description of the policy.
-          type: string
-          default: ''
-          maxLength: 512
-        enabled:
-          description: Whether the policy is enabled.
-          type: boolean
-          default: true
-        labels:
-          $ref: '#/components/schemas/Labels'
-        config:
-          description: The configuration of the policy.
-          type: object
-          $ref: '#/components/schemas/EventGatewayParsedRecordDecryptFieldsConfig'
-        condition:
-          description: |
-            A string containing the boolean expression that determines whether the policy is applied.
-
-            When the policy is applied as a child policy of schema_validation, the expression can also reference
-            `record.value` fields.
-          type: string
-          example: record.value.content.foo.bar == "a-value"
-          default: ''
-          maxLength: 1000
-          x-expression:
-            type: boolean
-            fields:
-              - name: context.auth.principal.name
-                type: string
-                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
-              - name: context.auth.principal.id
-                type: string
-                description: |-
-                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
-
-                  **Requires a minimum runtime version of `1.2`**.
-                x-min-runtime-version: '1.2'
-              - name: context.auth.principal.metadata
-                type: object
-                description: |-
-                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
-
-                  **Requires a minimum runtime version of `1.2`**.
-                x-min-runtime-version: '1.2'
-              - name: context.auth.type
-                type: string
-                description: |
-                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
-              - name: context.topic.name
-                type: string
-                description: The name of the topic.
-              - name: record.headers
-                type: object
-                description: An associative array of header key value pairs.
-              - name: record.value.validated
-                type: boolean
-                description: Indicates whether the record value was successfully validated.
-              - name: record.value.content
-                type: object
-                description: The content of the record value.
-              - name: record.value.schema
-                type: object
-                x-min-runtime-version: '1.2'
-                description: |-
-                  Registry-supplied schema metadata for the record value. Populated when the value
-                  was validated by a Confluent schema registry. Fields: `id` (uint), `version` (uint,
-                  when returned by the registry), `format` ("avro"|"json"), and either
-                  `avro.{name, namespace}` or `json.{title, id}`. Sub-fields are absent when not
-                  applicable; use `has()` to test presence.
-
-                  **Requires a minimum runtime version of `1.2`**.
-              - name: record.key.schema
-                type: object
-                x-min-runtime-version: '1.2'
-                description: |-
-                  Same shape as `record.value.schema`, populated when the record key has
-                  schema_validation configured.
-
-                  **Requires a minimum runtime version of `1.2`**.
-        parent_policy_id:
-          description: The unique identifier of the parent schema validation policy.
-          type: string
-          format: uuid
-      required:
-        - type
-        - config
-        - parent_policy_id
-      title: Decrypt Parsed Record Fields
-      x-min-runtime-version: '1.2'
     EventGatewayParsedRecordDecryptFieldsConfig:
       description: The configuration of the decrypt parsed record fields policy.
       type: object
       properties:
-        failure_mode:
-          $ref: '#/components/schemas/ConsumeFailureMode'
         key_sources:
           description: Describes how to find a symmetric key for decryption.
           type: array
@@ -36691,7 +36449,6 @@ components:
         decrypt_fields:
           $ref: '#/components/schemas/EventGatewayParsedRecordDecryptionSelector'
       required:
-        - failure_mode
         - key_sources
         - decrypt_fields
     EventGatewayParsedRecordDecryptionSelector:
@@ -37236,22 +36993,6 @@ components:
       properties:
         schema_registry:
           $ref: '#/components/schemas/SchemaRegistryReference'
-        failure_mode:
-          $ref: '#/components/schemas/ConsumeFailureMode'
-        validate_key:
-          description: |-
-            If true, validate the record key.
-
-            **Requires a minimum runtime version of `1.2`**.
-          type: boolean
-          x-min-runtime-version: '1.2'
-        validate_value:
-          description: |-
-            If true, validate the record value.
-
-            **Requires a minimum runtime version of `1.2`**.
-          type: boolean
-          x-min-runtime-version: '1.2'
         key_validation_action:
           $ref: '#/components/schemas/ConsumeKeyValidationAction'
         value_validation_action:
@@ -37267,22 +37008,6 @@ components:
       properties:
         schema_registry:
           $ref: '#/components/schemas/SchemaRegistryReference'
-        failure_mode:
-          $ref: '#/components/schemas/ConsumeFailureMode'
-        validate_key:
-          description: |-
-            If true, validate the record key.
-
-            **Requires a minimum runtime version of `1.2`**.
-          type: boolean
-          x-min-runtime-version: '1.2'
-        validate_value:
-          description: |-
-            If true, validate the record value.
-
-            **Requires a minimum runtime version of `1.2`**.
-          type: boolean
-          x-min-runtime-version: '1.2'
         key_validation_action:
           $ref: '#/components/schemas/ConsumeKeyValidationAction'
         value_validation_action:
@@ -37378,22 +37103,6 @@ components:
       properties:
         schema_registry:
           $ref: '#/components/schemas/SchemaRegistryReference'
-        failure_mode:
-          $ref: '#/components/schemas/ProduceFailureMode'
-        validate_key:
-          description: |-
-            If true, validate the record key.
-
-            **Requires a minimum runtime version of `1.2`**.
-          type: boolean
-          x-min-runtime-version: '1.2'
-        validate_value:
-          description: |-
-            If true, validate the record value.
-
-            **Requires a minimum runtime version of `1.2`**.
-          type: boolean
-          x-min-runtime-version: '1.2'
         key_validation_action:
           $ref: '#/components/schemas/ProduceKeyValidationAction'
         value_validation_action:
@@ -37409,22 +37118,6 @@ components:
       properties:
         schema_registry:
           $ref: '#/components/schemas/SchemaRegistryReference'
-        failure_mode:
-          $ref: '#/components/schemas/ProduceFailureMode'
-        validate_key:
-          description: |-
-            If true, validate the record key.
-
-            **Requires a minimum runtime version of `1.2`**.
-          type: boolean
-          x-min-runtime-version: '1.2'
-        validate_value:
-          description: |-
-            If true, validate the record value.
-
-            **Requires a minimum runtime version of `1.2`**.
-          type: boolean
-          x-min-runtime-version: '1.2'
         key_validation_action:
           $ref: '#/components/schemas/ProduceKeyValidationAction'
         value_validation_action:
@@ -37671,38 +37364,6 @@ components:
       enum:
         - error
         - passthrough
-      x-speakeasy-unknown-values: allow
-    ProduceFailureMode:
-      description: |-
-        Describes how to handle a failure in a policy applied to produced records.
-        * `reject` - rejects the record batch.
-        * `passthrough` - passes the record silently to the backend cluster even though policy execution failed.
-        * `mark` - passes the record to the backend cluster but marks it with a `kong/policy-failure-<id>` header whose value is the reason for the policy failure (truncated to 512 characters).
-
-        **Requires a minimum runtime version of `1.2`**.
-      type: string
-      enum:
-        - reject
-        - passthrough
-        - mark
-      x-min-runtime-version: '1.2'
-      x-speakeasy-unknown-values: allow
-    ConsumeFailureMode:
-      description: |-
-        Describes how to handle a failure in a policy applied to consumed records.
-        * `error` - the batch is not delivered to the client. Use sparingly: erroring on a batch causes clients to get stuck on the problematic offset and requires manual intervention to skip it.
-        * `skip` - the record is not delivered to the client.
-        * `passthrough` - passes the record to the client even though policy execution failed.
-        * `mark` - passes the record to the client but marks it with a `kong/policy-failure-<id>` header whose value is the reason for the policy failure (truncated to 512 characters).
-
-        **Requires a minimum runtime version of `1.2`**.
-      type: string
-      enum:
-        - error
-        - skip
-        - passthrough
-        - mark
-      x-min-runtime-version: '1.2'
       x-speakeasy-unknown-values: allow
     EncryptionRecordPart:
       description: |
@@ -38003,79 +37664,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/VirtualClusterNamespaceIdSelector'
-    VirtualClusterTopicAlias:
-      description: |-
-        **Pre-release Feature**
-        This feature is currently in beta and is subject to change.
-
-        A topic alias maps an alias name to a namespace-visible topic name.
-        Clients can produce to, consume from, and discover the topic under the alias name.
-        The original topic name remains accessible.
-
-        **Requires a minimum runtime version of `1.2`**.
-      type: object
-      properties:
-        alias:
-          description: The client-visible topic name.
-          type: string
-          minLength: 1
-        topic:
-          description: The namespace-visible topic name this alias resolves to.
-          type: string
-          minLength: 1
-        condition:
-          description: |
-            CEL expression evaluated against the connection's auth context.
-            If omitted or empty, the alias is active for all connections.
-          type: string
-          default: ''
-          x-expression:
-            type: boolean
-            fields:
-              - name: context.auth.principal.name
-                type: string
-                description: 'Name of authenticated principal. Username in case of PLAIN/SCRAM, `sub` claim in case of OAUTHBEARER.'
-              - name: context.auth.principal.id
-                type: string
-                description: |-
-                  Kong Identity principal ID. Only populated when Kong Identity principal fetching is configured and succeeds.
-
-                  **Requires a minimum runtime version of `1.2`**.
-                x-min-runtime-version: '1.2'
-              - name: context.auth.principal.metadata
-                type: object
-                description: |-
-                  Kong Identity principal metadata. Only populated when Kong Identity principal fetching is configured and succeeds. Values can be strings, numbers, booleans, arrays or nested JSON objects.
-
-                  **Requires a minimum runtime version of `1.2`**.
-                x-min-runtime-version: '1.2'
-              - name: context.auth.type
-                type: string
-                description: |
-                  The matched authentication type from a virtual cluster: anonymous, sasl_plain, sasl_scram_sha256, sasl_scram_sha512, sasl_oauth_bearer.
-              - name: context.auth.token.claims
-                type: object
-                description: 'All claims from the JWT token. Only populated for sasl_oauth_bearer authentication. Claims can be strings, numbers, booleans, arrays or nested JSON objects.'
-        conflict:
-          $ref: '#/components/schemas/VirtualClusterTopicAliasConflict'
-      required:
-        - alias
-        - topic
-      x-min-runtime-version: '1.2'
-    VirtualClusterTopicAliasConflict:
-      description: |
-        How to handle conflicts where an alias shadows a physical topic.
-        * warn - activate the alias but log a warning and set the conflict metric to 1.
-        * ignore - activate the alias silently.
-      type: string
-      default: warn
-      enum:
-        - warn
-        - ignore
-      x-enum-varnames:
-        - VirtualClusterTopicAliasConflictWarn
-        - VirtualClusterTopicAliasConflictIgnore
-      x-speakeasy-unknown-values: allow
     VirtualClusterNamespaceTopicSelector:
       type: object
       discriminator:
@@ -53617,21 +53205,6 @@ components:
                 $ref: '#/components/schemas/VirtualClusterAuthenticationSchemes'
               namespace:
                 $ref: '#/components/schemas/VirtualClusterNamespace'
-              topic_aliases:
-                description: |-
-                  **Pre-release Feature**
-                  This feature is currently in beta and is subject to change.
-
-                  Topic aliases allow exposing backend topics under additional names.
-                  An alias creates a new entry point to the same physical data.
-                  The alias `topic` field references namespace-visible names (if namespace is configured).
-                  Aliases are independent of namespace and can be used without it.
-
-                  **Requires a minimum runtime version of `1.2`**.
-                type: array
-                items:
-                  $ref: '#/components/schemas/VirtualClusterTopicAlias'
-                x-min-runtime-version: '1.2'
               acl_mode:
                 $ref: '#/components/schemas/VirtualClusterACLMode'
               dns_label:
@@ -53665,21 +53238,6 @@ components:
                 $ref: '#/components/schemas/VirtualClusterAuthenticationSensitiveDataAwareSchemes'
               namespace:
                 $ref: '#/components/schemas/VirtualClusterNamespace'
-              topic_aliases:
-                description: |-
-                  **Pre-release Feature**
-                  This feature is currently in beta and is subject to change.
-
-                  Topic aliases allow exposing backend topics under additional names.
-                  An alias creates a new entry point to the same physical data.
-                  The alias `topic` field references namespace-visible names (if namespace is configured).
-                  Aliases are independent of namespace and can be used without it.
-
-                  **Requires a minimum runtime version of `1.2`**.
-                type: array
-                items:
-                  $ref: '#/components/schemas/VirtualClusterTopicAlias'
-                x-min-runtime-version: '1.2'
               acl_mode:
                 $ref: '#/components/schemas/VirtualClusterACLMode'
               dns_label:
