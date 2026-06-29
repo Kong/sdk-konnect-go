@@ -181,57 +181,7 @@ _generate.ifacemaker:
 		--output $(LOWERCASE_STRUCT)_i.go \
 		-p sdkkonnectgo
 
-# TODO: Update TYPES_TO_MOCK as new types are added that need mocking.
-# This can be achived with:
-# TYPES_TO_MOCK := $(shell grep -B 20 'rootSDK.*\*SDK' *.go | grep 'type.*struct' | awk '{print $$2}' | sort -u)
-# but for now we don't want to mock everything.
-TYPES_TO_MOCK := \
-	ACLs \
-	APIKeys \
-	BasicAuthCredentials \
-	CACertificates \
-	Certificates \
-	CloudGateways \
-	ConsumerGroups \
-	Consumers \
-	ControlPlaneGroups \
-	ControlPlanes \
-	DCRProviders \
-	DPCertificates \
-	EventGatewayDataPlaneCertificates \
-	EventGateways \
-	EventGatewayBackendClusters \
-	EventGatewayVirtualClusters \
-	EventGatewayListenerPolicies \
-	EventGatewayListeners \
-	EventGatewayVirtualClusterPolicies \
-	EventGatewayVirtualClusterConsumePolicies \
-	EventGatewayVirtualClusterProducePolicies \
-	HMACAuthCredentials \
-	JWTs \
-	Keys \
-	KeySets \
-	Me \
-	Plugins \
-	Portals \
-	PortalAuthSettings \
-	PortalCustomDomains \
-	PortalCustomization \
-	PortalIntegrations \
-	PortalsIPAllowList \
-	PortalDevelopers \
-	PortalEmails \
-	PortalTeamMembership \
-	PortalTeamRoles \
-	PortalTeams \
-	PortalPages \
-	Snippets \
-	Routes \
-	Services \
-	SNIs \
-	Targets \
-	Upstreams \
-	Vaults
+TYPES_TO_MOCK := $(shell grep -B 20 'rootSDK.*\*SDK' *.go | grep 'type.*struct' | awk '{print $$2}' | sort -u)
 
 .PHONY: generate.interfaces
 generate.interfaces: ifacemaker
