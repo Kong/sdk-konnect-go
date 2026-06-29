@@ -4,16 +4,7 @@ SHELL = bash
 PROJECT_DIR := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))
 TOOLS_VERSIONS_FILE = $(PROJECT_DIR)/.tools_versions.yaml
 
-MISE := $(shell which mise)
 MISE_FILE := .mise/config.toml
-
-.PHONY: mise
-mise:
-	@mise -V >/dev/null || (echo "mise - https://github.com/jdx/mise - not found. Please install it." && exit 1)
-
-.PHONY: mise-install
-mise-install: mise
-	@$(MISE) install -q $(DEP_VER)
 
 OS := $(shell uname | tr '[:upper:]' '[:lower:]')
 ARCH := $(shell uname -m | sed 's/x86_64/amd64/' | sed 's/aarch64/arm64/')
@@ -23,33 +14,65 @@ ARCH := $(shell uname -m | sed 's/x86_64/amd64/' | sed 's/aarch64/arm64/')
 YQ_VERSION = 4.49.2
 YQ = $(PROJECT_DIR)/bin/installs/github-mikefarah-yq/$(YQ_VERSION)/yq_$(OS)_$(ARCH)
 .PHONY: yq
-yq: mise
-	MISE_DATA_DIR=$(PROJECT_DIR)/bin $(MAKE) mise-install DEP_VER=github:mikefarah/yq@$(YQ_VERSION)
+yq: $(YQ)
+
+$(YQ):
+	@set -euo pipefail; \
+	url="https://github.com/mikefarah/yq/releases/download/v$(YQ_VERSION)/yq_$(OS)_$(ARCH)"; \
+	tmp="$@.tmp"; \
+	trap 'rm -f "$$tmp"' EXIT; \
+	mkdir -p "$(@D)"; \
+	echo "Downloading yq $(YQ_VERSION) from $$url"; \
+	curl -fsSL "$$url" -o "$$tmp"; \
+	chmod +x "$$tmp"; \
+	mv "$$tmp" "$@"
 
 CONTROLLER_GEN_VERSION = $(shell $(YQ) -r '.controller-tools' < $(TOOLS_VERSIONS_FILE))
 CONTROLLER_GEN = $(PROJECT_DIR)/bin/installs/github-kubernetes-sigs-controller-tools/$(CONTROLLER_GEN_VERSION)/controller-gen
 .PHONY: controller-gen
-controller-gen: mise yq
-	MISE_DATA_DIR=$(PROJECT_DIR)/bin $(MAKE) mise-install DEP_VER=github:kubernetes-sigs/controller-tools@$(CONTROLLER_GEN_VERSION)
+controller-gen: yq
+	@if [ ! -x "$(CONTROLLER_GEN)" ]; then \
+		mkdir -p "$(dir $(CONTROLLER_GEN))"; \
+		GOBIN="$(dir $(CONTROLLER_GEN))" go install sigs.k8s.io/controller-tools/cmd/controller-gen@v$(CONTROLLER_GEN_VERSION); \
+	fi
 
 MOCKERY_VERSION = $(shell $(YQ) -r '.mockery' < $(TOOLS_VERSIONS_FILE))
 MOCKERY = $(PROJECT_DIR)/bin/installs/github-vektra-mockery/$(MOCKERY_VERSION)/mockery
 .PHONY: mockery
-mockery: mise yq
-	MISE_DATA_DIR=$(PROJECT_DIR)/bin $(MAKE) mise-install DEP_VER=github:vektra/mockery@$(MOCKERY_VERSION)
+mockery: yq
+	@if [ ! -x "$(MOCKERY)" ]; then \
+		os="$$(uname | tr '[:upper:]' '[:lower:]')"; \
+		arch="$$(uname -m)"; \
+		case "$$arch" in \
+			x86_64) arch=x86_64 ;; \
+			*) echo "Unsupported architecture for mockery: $$arch" >&2; exit 1 ;; \
+		esac; \
+		url="https://github.com/vektra/mockery/releases/download/v$(MOCKERY_VERSION)/mockery_$(MOCKERY_VERSION)_$${os}_$${arch}.tar.gz"; \
+		tmpdir="$$(mktemp -d)"; \
+		trap 'rm -rf "$$tmpdir"' EXIT; \
+		mkdir -p "$(dir $(MOCKERY))"; \
+		echo "Downloading mockery $(MOCKERY_VERSION) from $$url"; \
+		curl -fsSL "$$url" -o "$$tmpdir/mockery.tar.gz"; \
+		tar -xzf "$$tmpdir/mockery.tar.gz" -C "$$tmpdir"; \
+		cp "$$tmpdir/mockery" "$(MOCKERY)"; \
+		chmod +x "$(MOCKERY)"; \
+	fi
 
 IFACEMAKER_VERSION = $(shell $(YQ) -r '.ifacemaker' < $(TOOLS_VERSIONS_FILE))
 IFACEMAKER = $(PROJECT_DIR)/bin/installs/go-github-com-vburenin-ifacemaker/$(IFACEMAKER_VERSION)/bin/ifacemaker
 .PHONY: ifacemaker
-ifacemaker: mise yq
-	MISE_DATA_DIR=$(PROJECT_DIR)/bin $(MAKE) mise-install DEP_VER=go:github.com/vburenin/ifacemaker@$(IFACEMAKER_VERSION)
+ifacemaker: yq
+	@if [ ! -x "$(IFACEMAKER)" ]; then \
+		mkdir -p "$(dir $(IFACEMAKER))"; \
+		GOBIN="$(dir $(IFACEMAKER))" go install github.com/vburenin/ifacemaker@v$(IFACEMAKER_VERSION); \
+	fi
 
 # NOTE: speakeasy is not placed in $(PROJECT_DIR)/bin as it is being used in
 # GitHub workflows outside of this Makefile.
 SPEAKEASY_VERSION = $(shell $(YQ) -p toml -o yaml '.tools["github:speakeasy-api/speakeasy"].version' < $(MISE_FILE))
 .PHONY: speakeasy
-speakeasy: mise yq
-	$(MAKE) mise-install DEP_VER=github:speakeasy-api/speakeasy@$(SPEAKEASY_VERSION)
+speakeasy: yq
+	@command -v speakeasy >/dev/null || (echo "speakeasy $(SPEAKEASY_VERSION) not found. Install it with mise or another tool manager before running this target." && exit 1)
 
 # ------------------------------------------------------------------------------
 # Code generation
