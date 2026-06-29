@@ -47240,6 +47240,24 @@ components:
       required:
         - type
       title: Bar chart
+    TopNChart:
+      description: |
+        A chart that ranks dimension values by a metric and renders them as a table, showing
+        the top results.  This type of chart supports up to 3 dimensions.
+      type: object
+      properties:
+        chart_title:
+          description: 'The title of the chart, which is displayed in the tile''s header.'
+          type: string
+          nullable: false
+        type:
+          type: string
+          enum:
+            - top_n
+      additionalProperties: false
+      required:
+        - type
+      title: Top N chart
     SingleValueChart:
       description: A chart that can render a single number.  This chart works with a single metric and no dimensions.
       type: object
@@ -47288,12 +47306,14 @@ components:
           timeseries_bar: '#/components/schemas/TimeseriesChart'
           horizontal_bar: '#/components/schemas/BarChart'
           vertical_bar: '#/components/schemas/BarChart'
+          top_n: '#/components/schemas/TopNChart'
           single_value: '#/components/schemas/SingleValueChart'
           choropleth_map: '#/components/schemas/ChoroplethMapChart'
       oneOf:
         - $ref: '#/components/schemas/DonutChart'
         - $ref: '#/components/schemas/TimeseriesChart'
         - $ref: '#/components/schemas/BarChart'
+        - $ref: '#/components/schemas/TopNChart'
         - $ref: '#/components/schemas/SingleValueChart'
         - $ref: '#/components/schemas/ChoroplethMapChart'
     AllFilterItems:
